@@ -1,0 +1,8 @@
+CACHE MANIFEST
+# 2012-01-11:v2
+
+# Explicitly cached 'master entries'.
+CACHE:
+/favicon.ico
+index.php
+style.css

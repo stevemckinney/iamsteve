@@ -1,0 +1,624 @@
+@import "imports", "import/normalize";
+
+/* 
+	!Base stucture
+---------------------------------------------------------------------- */
+html, body:after {
+	font-family: "a"; }
+html {
+	font-size: 100%; }
+body {
+	font-family: $sans;
+	line-height: normal;
+	color: $primary;
+	background: url(../images/bg_wave.png); }
+.container {
+	@include pie-clearfix;
+	@include rem(padding, $line 0 0);
+	@include rem(margin, 0 0 $line);
+	@include box-shadow(0 1px 0 fade-out($white, 0.6), 0 12px 48px -24px $primary_d1);
+	position: relative;
+	overflow: hidden;
+	background: $primary url(../images/header_bg_alt.png) center bottom no-repeat;
+	@include respond-min($c) {
+		@include box-shadow(inset 0 1px 0 $black, inset 0 -1px 0 $primary_d1, 0 1px 0 fade-out($white, 0.6), 0 12px 48px -24px $primary_d1); }
+	@include respond-to(retina) {
+		background-size: cover; } }
+		
+/* !header ---------------------- */
+[role="banner"] {
+	@extend %crm;
+	@extend %transition;
+	@include border-radius(4px);
+	h1 {
+		@extend %left;
+		@extend %transition;
+		@include wh(107px, 48px);
+		@include hide-text;
+		display: block;
+		padding: 0;
+		position: relative;
+		background: url(../images/logo.png) center center no-repeat;
+		&:hover, &:focus {
+			background: url(../images/logo_hover.png) center center no-repeat; }
+		@include respond-to(retina) {
+			background: url(../images/logo_2x.png);
+			background-size: 107px 48px;
+			&:hover, &:focus {
+				background-size: 96px;
+				background: url(../images/logo_hover_2x.png) center center no-repeat; } } } }
+	.title {
+		@extend %ts;
+		@include rem(padding, $line 0 $line*2);
+		@include animation(title .5s .5s ease-in-out);
+		@include animation-fill-mode(forwards);
+		position: relative;
+		top: 2000px;
+		font-size: 72px;
+		width: 88%;
+		margin: auto;
+		text-align: center;
+		-webkit-mask: url(../images/mask.png);
+		.error & {
+			text-transform: capitalize; }
+		.no-cssanimations & {
+			top: auto; }
+		a {
+			line-height: 1.185; } }
+	
+/* !nav ---------------------- */
+[role="navigation"] {
+	@extend %ns;
+	@extend %transition;
+	position: absolute;
+	top: -255px;
+	left: -10%;
+	right: -10%;
+	z-index: 1;
+	ul {
+		@extend %no-mp; }
+	li {
+		width: 100%;
+		display: block;
+		list-style: none;
+		/*
+.loaded & {
+			&:nth-of-type(2) a {
+				@include animation(nav .25s .1s ease-in-out);
+				@include animation-fill-mode(forwards); }
+			&:nth-of-type(3) a {
+				@include animation(nav .25s .15s ease-in-out);
+				@include animation-fill-mode(forwards); }
+			&:nth-of-type(4) a {
+				@include animation(nav .25s .2s ease-in-out);
+				@include animation-fill-mode(forwards); }
+			&:nth-of-type(5) a {
+				@include animation(nav .25s .25s ease-in-out);
+				@include animation-fill-mode(forwards); } }
+*/
+		&:last-child a {
+			border-bottom: none; } }
+		a {
+			/*
+.loaded & {
+				@include animation(nav .25s .05s ease-in-out);
+				@include animation-fill-mode(forwards); }
+			.no-js &, .no-cssanimations & {
+				opacity: 1;
+				top: 0; }
+			opacity: 0;
+*/
+			position: relative;
+			right: -$base-px;
+			@extend %transition;
+			@extend %ns;
+			@extend %ts;
+			@include rem(padding, $base-px $line);
+			position: relative;
+			display: block;
+			z-index: 1;
+			text-align: center;
+			&:before {
+				@extend %mr6;
+				position: relative;
+				top: 3px;
+				display: none; } } }
+
+.shown { 
+	[role="navigation"] {
+		top: -$line; }
+	[role="banner"] {
+		padding-top: 255px - $line; } }
+		
+@include respond-max($c) {
+	[role="navigation"] {
+		background: $primary;
+		a {
+			&:focus, &:hover {
+				@include box-shadow(
+					0 0 0 1px $primary_d2,
+					inset 0 1px 1px fade-out($primary_l2, 0.35),
+					inset 0 -1px 0 fade-out($primary_d1, 0.95),
+					inset 0 -1px 1px fade-out($primary_d1, 0.9),
+					0 1px 3px fade-out($primary_d1, 0.75));
+				background: fade-out($primary_l2, 0.5); }
+			&:active {
+				position: relative;
+				z-index: 1;
+				@include box-shadow(
+					0 1px 0 darken($primary_d2, 3%),
+					inset 0 1px 0 darken($primary_d2, 40%),
+					inset 0 1px 2px fade-out($primary_d1, 0.3),
+					0 2px fade-out($primary_l1, 0.95));
+					// linear-gradient(90deg, #36393f 0%, rgba(43,46,51,.5) 100%)
+				@include background(
+					linear-gradient(
+						fade-out(darken($primary_d1, 3%), 0.65),
+						fade-out(darken($primary_d1, 3%), 1)), darken($primary, 3%)); } } } }
+
+.hover {
+	@extend %hover; }
+.active {
+	@extend %active;
+	&:hover, &:focus {
+		@extend %hover; } }
+				
+.mobile {
+	@extend %right;
+	@extend %transition;
+	@include hide-text;
+	@include wh(26px, 24px);
+	@include rem(padding, $base-px);
+	display: block;
+	margin: 13px 0 0;
+	background: url(../images/_layout/nav_icon.png) center center no-repeat;
+	&:hover, &:focus {
+		opacity: .8; }
+	@include respond-to(retina) {
+		background-size: 25px 23px;
+		background: url(../images/_layout/nav_icon_2x.png) center center no-repeat; } }
+		
+/* !section ---------------------- */
+[role="region"] {
+	@include pie-clearfix;
+	width: $whole;
+	margin: 0 0 $line;
+	&:last-child {
+		margin: 0;
+		padding: 0;
+		border: none; } }
+[role="main"], [role="contentinfo"], [role="complementary"] {
+	@extend %crm;
+	clear: both; }
+.me {
+	img {
+		@extend %rounded;
+		@extend %shadow;
+		margin: 0 cp(24px, 480px) 2.5% 0;
+		vertical-align: bottom;
+		display: inline-block;
+		border: 6px solid $white;
+		max-width: 40%;
+		float: left; } }
+
+.columns {
+	@include column-count(2); }
+
+.dribbble {
+	@include pie-clearfix;
+	h3 {
+		@include rem(margin-bottom, $base-px); }
+	a, figure {
+		display: inline-block; }
+	i, span {
+		@include rem(font-size, 14px);
+		font-style: normal;
+		display: block; }
+	i {
+		@include rem(margin, 0 $base-px/2 0 0);
+		@include rem(font-size, $base-px);
+		@include rem(bottom, $base-px);
+		position: absolute;
+		font-weight: 400;
+		float: left;
+		&:nth-of-type(1) {
+			@include rem(left, $base-px); }
+		&:nth-of-type(2) {
+			@include rem(right, $base-px/2); }
+		&:before {
+			@include rem(margin, 0 $base-px/4 0 0);
+			@include rem(font-size, $base-px);
+			position: relative;
+			top: 1px; } }
+	span {
+		font-weight: 900;
+		@include rem(margin, 0 0 0 $base-px / 2); }
+	img {
+		@extend %imgs; } }
+.shot {
+	// @include wh(cp(212px, 448px), cp(162px, 448px));
+	max-width: cp(212px, 448px);
+	min-width: cp(100px, 448px);
+	position: relative;
+	&:nth-of-type(1) {
+		margin: 3px cp(24px, 448px) 0 0; }
+	&:nth-of-type(2) {
+		margin-right: 0; }
+	&:hover, &:focus {
+		figcaption {
+			opacity: 1; } }
+	figcaption {
+		@include transition(opacity .2s linear);
+		@include rem(padding, $base-px $base-px/2);
+		@include stretch(6px, 6px, 6px, 6px);
+		max-width: 212px;
+		opacity: 0;
+		background: $white;
+		background: fade-out($white, 0.2); } }
+
+/* !article ---------------------- */
+[role="article"] {
+	@include pie-clearfix;
+	@include rem(padding, 0 0 $line);
+	margin: auto;
+	position: relative;
+	@include respond-to($c) {
+		@include rem(padding, 0 0 $line*2); }
+	figure {
+		@include pie-clearfix;
+		@include rem(margin, 0 0 $line);
+		position: relative;
+		img {
+			display: block;
+			margin: auto auto .75rem; } }
+	figcaption {
+		text-align: center; }
+	@include respond-min($c) {
+		padding-right: 7.5%;
+		padding-left: 7.5%; }
+	@include respond-min($d) {
+		padding-right: 15.5%;
+		padding-left: 15.5%;
+		figcaption {} } }
+
+/* !aside ---------------------- */
+.meta {
+	@extend %subtle-s-rounded;
+	@include rem(padding, 0 $base-px);
+	clear: both;
+	ul {
+		@include pie-clearfix;
+		margin: 0; }
+	li {
+		@extend %mr6;
+		float: left;
+		list-style: none;
+		text-transform: uppercase;
+		line-height: 1 !important;
+		&:before:hover {
+			opacity: 1; }
+		&:nth-of-type(3) {
+			float: right;
+			margin: 0;
+			white-space: nowrap; }
+		&:before {
+			@extend %mr6;
+			@include rem(font-size, 12px);
+			display: none;
+			float: left;
+			position: relative;
+			line-height: 1;
+			top: 16px;
+			opacity: .5; } }
+	a, time {
+		@include rem(padding, $base-px 0);
+		display: inline-block;
+		vertical-align: baseline; }
+	a, time, li {
+		color: fade-out($primary, .5);
+		@include rem(font-size, 12px);
+		&:hover, &:focus {
+			@extend %transition;
+			opacity: 1;
+			color: $primary;
+			&:before {
+				opacity: 1; } } } }
+
+/* 
+	!Typography & links
+---------------------------------------------------------------------- */
+@import "styles/typography";
+
+/* !pagination ---------------------- */
+@import "styles/pagination";
+
+/* pre/code ---------------------- */
+pre {
+	@include box-shadow(inset 0 1px 3px fade-out($black, 0.9), 0 1px 0 fade-out($white, 0.2));
+	@extend %margin;
+	@extend %rounded;
+	font: 16px/#{$base-line-height} $monospace;
+	border: 1px solid #ccc;
+	code {
+		@include rem(padding, $base-px);
+		display: block;
+		background: none; } }
+
+code {
+	@include rem(padding, 2px);
+	@include border-radius(2px);
+	font-family: $monospace;
+	background: fade-out($primary_l2, 0.9); }
+
+/* blockquote ---------------------- */
+$q: lighten(#f2e7c2, 5%);
+$qd: darken(desaturate($q, 50%), 40%);
+$ql: lighten($q, 10%);
+
+blockquote {
+	@extend %rounded;
+	@extend %shadow;
+	@include rem(padding, $line $line $line $line*3);
+	@include rem(margin, 0 0 $line);
+	@include background(linear-gradient(top left, transparent 1.375em, $danger 1.375em, $danger 1.5em, transparent 1.5em),
+		linear-gradient(bottom, fade-out($qd, 0.75) .05em, transparent .05em), $q);
+	@include background-size(100% 1.5em);
+	color: $qd;
+	position: relative;
+	line-height: 1.5;
+	p {
+		position: relative;
+		z-index: 1; }
+	&:before {
+		@include rem(margin, 0 $line 0 0);
+		content: "pullquote";
+		font: 900 16px/1.5 $icons;
+		color: $qd;
+		display: inline-block;
+		opacity: .5;
+		text-shadow: 0 1px 0 $ql;
+		position: absolute;
+		@include rem(top, $base-px*1.75);
+		@include rem(left, $base-px*3);
+		z-index: 0; } }
+@include respond-min($d) {
+	blockquote {} }
+
+/* 
+	Lists
+---------------------------------------------------------------------- */
+[role="article"] {
+	ul, ol {
+		margin: 0 0 $line; } }
+		
+[role="contentinfo"] {
+	ul {
+		@extend %subtle-box;
+		@include pie-clearfix;
+		@include border-radius(4px);
+		margin: 0; }
+	li {
+		display: inline-block;
+		@include respond-min(520px) {
+			float: right; }
+		&:first-child {
+			display: block;
+			@include respond-min(520px) {
+				display: inline-block;
+				float: left; } }
+	li, small {
+		color: $primary;
+		color: fade-out($primary, 0.5); }
+	small, a {
+		@include rem(font-size, 12px);
+		margin: 0;
+		display: block;
+		line-height: 1; }
+	small {
+		min-width: 204px;
+		@include rem(padding, $base-px $base-px/2 0); }
+	a {
+		@include rem(padding, $base-px $base-px/2);
+		@extend %transition;
+		color: $primary;
+		color: fade-out($primary, 0.5);
+		&:hover, &:focus {
+			color: $primary; } } } }
+
+dl {
+	line-height: 1.5; }
+dt {
+	@include rem(margin, $line 0 $base-px);
+	&:first-of-type {
+		margin-top: 0; } }
+dd {
+	margin: 0;
+	padding: 0; }
+/*
+@include respond-min($c) {
+	dt {
+		width: 100% - 70%;
+		padding: 0 cp(48px, 960px) 0 0;
+		float: left; }
+	dt, dd {
+		@include rem(margin, $base-px 0 $base-px/2);
+		&:first-of-type {
+			margin-top: 0; }
+		.skills & {
+			min-height: $line*4;
+			&:nth-of-type(3) {
+				min-height: $line*5; }
+			&:nth-of-type(4) {
+				min-height: $line*3; } } }
+	.colophon dt {
+		&:nth-of-type(2), &:nth-of-type(3) {
+			margin-top: $line*2.25; } }
+	dd {
+		width: 70%;
+		float: right; } }
+*/
+		
+/*
+	!Buttons and notices
+-----------------------------------------------------------------------*/
+.button {
+	white-space: nowrap; // remove later
+	@include element($primary_l2, $size: normal, $hover: true);
+	@extend %ts;
+	@extend %letter-spacing;
+	@include rem(font-size, 12px);
+	display: inline-block; }
+
+
+/* !notices ---------------------- */
+.notice {
+	a { color: $white; } }
+.nd {
+	@include element; }
+.ns {
+	@include element($success, $size: normal, $hover: true);
+	em { 
+		@extend %mr6; } }
+.portfolio {
+	.notice {
+		display: block;
+		float: right; } }
+
+
+/*
+	!Forms
+-----------------------------------------------------------------------*/
+@import "import/forms";
+input {
+	@include form($group: true, $radius: 4px);
+	@include appearance(none);
+	@include rem(height, $line*1.5);
+	@include rem(line-height, $line*1.5);
+	border: none; }
+[type="submit"] {
+	@include element($primary_l2, $size: small, $radius: 0 4px 4px 0, $hover: true);
+	@extend %ts;
+	@extend %letter-spacing; }
+	
+[role="contentinfo"] {
+	form {
+		@include pie-clearfix;
+		@include rem(margin, $line 0 0);
+		width: 100%;
+		input {
+			@include rem(font-size, 12px); }
+		[type="search"] {
+			@include border-radius(4px 0 0 4px); }
+		[type="submit"] {
+			width: 30%;
+			@include border-radius(0 4px 4px 0); } } }
+@include respond-min($c) {
+	[role="contentinfo"] {
+		ul, form {
+			float: left; }
+		ul {
+			width: 67.5%;
+			margin: 0 2.5% 0 0; }
+		form {
+			width: 30%;
+			margin: 0; }
+		[type="submit"] {
+			width: 40%; }
+		[type="search"] {
+			width: 60%; } } }
+[type="search"] {
+	@include rem(font-size, 12px);
+	width: 70%;
+	&::-webkit-input-placeholder {
+		color: fade-out($primary, 0.5); }
+	&:-moz-placeholder {
+		color: fade-out($primary, 0.5); }
+	&::-webkit-search-decoration {}
+	&:before {
+		display: none; } }
+			
+@import "styles/wufoo";
+
+/*
+	!Page specifics
+-----------------------------------------------------------------------*/
+// @import "import/styles/carousel";
+@import "styles/portfolio";
+
+.skills {
+ clear: both; }
+.colophon, .versions {}
+
+.colophon {
+	@include column-count(3);
+	h2 {
+		@include column-span(all); } }
+
+
+/* 
+	Misc.
+---------------------------------------------------------------------- */
+.hiddenFields {
+	display: none; }
+iframe {
+	width: 100%; }
+hr {
+	@include rem(margin, 0 0 $line);
+	@include box-shadow(0 1px 0 fade-out($white, 0.35));
+	padding: 0;
+	border: none;
+	border-top: 1px dotted fade-out($primary, 0.4);
+	background: $white;
+	background: fade-out($white, 0.35);
+	display: block; }
+	
+.hover {
+	-webkit-user-select: none;
+	-webkit-touch-callout: none; }
+
+/* figure ------------------------------ */
+figure {
+	@include pie-clearfix; }
+figcaption {}
+
+/* table ---------------------- */
+table {
+	border: 1px solid $primary;
+	border-collapse: separate;
+	background: #fff; }
+td, th {
+	padding: $line/4;
+	line-height: $base-line-height;
+	text-align: left;
+	border-top: 1px solid $primary;
+	&:nth-of-type(even) { 
+		background: lighten($secondary, 21%); } }
+
+/* !hide extras from services ---------------------- */
+.js [id="wufoo-q7x3k1"] p {
+	display: none; }
+	
+/* !screenreaders ---------------------- */
+[for="keywords"] { 
+	@extend %screenreaders; }
+	
+/* !extends ---------------------- */
+@import "styles/extends";
+%half {
+	float: left;
+	width: 50%; }
+%half-left {
+	@extend %half;
+	@include rem(padding-right, $line); }
+%half-right {
+	@extend %half;
+	@include rem(padding-left, $line);; }
+
+/* !lettering ---------------------- */
+.space {
+	@include rem(width, $line); }
+
+/*
+	Media queries
+-----------------------------------------------------------------------*/
+@import "screens/a", "screens/b", "screens/c", "screens/d", "screens/e", "screens/f", "screens/2x";

@@ -1,0 +1,158 @@
+@font-face {
+	font-family: "Geared";
+	src: url('../fonts/gearedslab-light-webfont.eot');
+	src: url('../fonts/gearedslab-light-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/gearedslab-light-webfont.woff') format('woff'),
+	     url('../fonts/gearedslab-light-webfont.ttf') format('truetype'),
+	     url('../fonts/gearedslab-light-webfont.svg#GearedSlabThin') format('svg');
+	font-weight: 100;
+	font-style: normal; }
+@import "symbolset";
+
+/* ! consistent styles ---------------------- */
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-weight: 600;
+	font-family: $sans;
+	a {
+		display: block;
+		color: $primary;
+		&:hover, &:focus, .hover {
+			color: $secondary; } } }
+		
+a {
+	@extend %transition;
+	text-decoration: none;
+	color: $primary;
+	-webkit-tap-highlight-color: $secondary;
+	p &, .colophon & {
+		color: $secondary;
+		&:hover, &:focus, .hover {
+			color: $primary; } } }
+/* !Base size ---------------------- */		
+p, .meta li, dt, dd {
+	font: #{$base-font-size}/#{$base-line-height} $sans; }
+
+[role="navigation"] a:before, pre code {
+	@extend %base; }
+	
+p, dl {
+	@include rem(padding, 0 0 $line);
+	margin: 0; }
+dt { 	
+	font-weight: 700; }
+p, li {
+	text-align: left;
+	@include hyphens(auto); }
+[role="article"] p {
+	&:last-child {
+		padding: 0; } }
+
+/* !header ---------------------- */
+.title, .title a {
+	font-family: $slab;
+	font-weight: 100;
+	color: $primary_l3; }
+
+/* !content ---------------------- */
+[role="article"], [role="main"] {
+	h1, h2, h3, h4 {
+		@include hyphens(auto);
+		@include rem(margin, $base-px/2 0 $base-px); }
+	h1 {
+		@include rem(font-size, $line*1.5); }
+	h2 {
+		@include rem(font-size, $line); }
+	h3 {
+		@include rem(font-size, 18px); }
+	p {
+		@include rem(font-size, 14px);
+		&:first-child {
+			@include rem(font-size, 16px); } } }
+			
+code {
+	@include rem(font-size, 16px);
+	pre & {
+		color: $primary;
+		direction: ltr;
+		text-align: left;
+		white-space: pre;
+		word-spacing: normal;
+	
+		-moz-tab-size: 2;
+		-o-tab-size: 2;
+		tab-size: 2; } }
+
+@include respond-min($c) {
+	code, {
+		@include rem(font-size, 16px); }
+	[role="article"], [role="main"] {
+		h1, h2, h3, h4 {
+			@include rem(margin, $base-px 0 $line); }
+		h1 {
+			@include rem(font-size, 36px); }
+		h2 {
+			@include rem(font-size, 30px); }
+		h3 {
+			@include rem(font-size, 24px); }
+		h4 {
+			@include rem(font-size, 20px); }
+		p {
+			@include rem(font-size, 16px);
+			&:first-child {
+				@include rem(font-size, 21px); } } }
+	[role="complementary"] {
+		h3 {
+			@include rem(font-size, 24px); }
+		p {
+			@include rem(font-size, 16px); } } }
+
+/* !aside ---------------------- */
+[role="complementary"] {
+	p {
+		@include rem(font-size, 14px);
+		padding: 0;
+		@include respond-to($c) {
+			@include rem(font-size, 16px); } }
+	h3 {
+		line-height: 1;
+		margin: 0;
+		@include rem(padding, 0 0 $base-px); }
+	@include respond-min($c) {
+		h3 {
+			@include rem(font-size, 24px); }
+		p {
+			@include rem(font-size, 16px); } } }
+
+/* !nav ---------------------- */
+[role="navigation"] {
+	a {
+		font-size: 15px;
+		font: 600 .9375rem/#{$base-line-height} $sans;
+		color: #f0f4fc;
+		letter-spacing: 1px; } }
+
+/* !aside ---------------------- */
+[role="complementary"], [role="contentinfo"] {
+	font-family: $sans; }
+
+/* !page specific ---------------------- */
+[class^="item"] {
+	h2 {
+		@include rem(margin, 0 0 $base-px); } }
+.portfolio-nav {
+	h2 {
+		@include rem(margin, 0 0 $base-px);
+		@include rem(font-size, 16px); } }
+
+/* !no fout ---------------------- */
+li, p, dd, dt, 
+[role="navigation"] a, 
+[role="main"] h1, 
+[role="main"] h2, 
+[role="main"] h3, 
+[role="main"] h4, 
+[role="main"] h5, 
+[role="main"] h6,
+[role="complementary"] h3, {
+	@include no-fout; }

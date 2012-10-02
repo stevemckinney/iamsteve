@@ -1,0 +1,59 @@
+@import "compass";
+@import 'stitch/patterns/animation';
+@import 'stitch/patterns/legacy';
+@import 'stitch/patterns/accessibility';
+@import 'stitch/patterns/mobile';
+@import "animate/shared";
+@import "animate/animations/fading-entrances/_fadeInLeftBig";
+@import "animate/animations/fading-entrances/_fadeInRightBig";
+@import "_reset";
+
+//	variable values number divided by 960
+$ten: 1.041666666667%;
+$twenty: 2.083333333333%;
+$forty: 4.166666666667%;
+$sixty: 6.25%;
+$eighty: 8.333333333333%;
+
+$six_sixty: 68.75%;
+$six_eighty: 70.833333333333%;
+$seven_hundred: 72.916666666667%;
+$eight_hundred: 83.333333333333%;
+
+//	variable colours
+$main_blue_hex: desaturate(#597380, 0%);
+$orange_hex: #cb4b16;
+$pink_hex: #d33682;
+
+$main_blue: desaturate(hsla(199,30%,50%,1), 15%);
+$orange: hsla(18,89%,90%,1);
+$red: #d70000;
+
+$hsla_black: hsla(0,0%,0%,1);
+$hsla_white: hsla(0,100%,100%,1);
+
+$sans: ff-meta-web-pro, helvetica, sans-serif;
+$serif: ff-meta-serif-web-pro, helvetica, sans-serif;
+
+// font sizes
+$small_size: 12px;
+$medium_size: 14px;
+$normal_size: 16px;
+
+// mixins
+@mixin transition($transition) {
+	-webkit-transition: $transition; -moz-transition: $transition; -o-transition: $transition; -ms-transition: $transition; transition: $transition;
+}
+@mixin box-size($sizing) {
+	-webkit-box-sizing: $sizing; -moz-box-sizing: $sizing; box-sizing: $sizing;
+}
+@mixin hyphens($value: "manual") {
+  @each $prefix in -webkit-, -moz-, -o-, "" {
+    #{$prefix}hyphens: $value;
+  }
+}
+
+// extends
+.transition {
+	@include transition(all .4s linear); }
+.rounded {@include border-radius(5px);}

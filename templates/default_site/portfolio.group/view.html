@@ -1,0 +1,57 @@
+{embed="include/header" entry_title="{exp:channel:entries channel="portfolio" status="Latest|open|draft"}{title}{/exp:channel:entries}"}
+
+	{exp:channel:entries channel="portfolio" require_entry="yes" status="Open" disable="categories|member_data|pagination|trackbacks"}
+	{if no_results} {redirect="portfolio"} {/if}		
+			<figure class="item-full">
+				<div data-picture data-alt="A large view of {title}">
+					
+					{!-- 
+						# breakpoints					
+						$a: 30em; /* 480px / 16px */
+						$b: 37.5em; /* 600px / 16px */
+						$c: 48em; /* 768px / 16px */
+						$d: 56.25em; /* 900px / 16px */
+						$e: 60em; /* 960px / 16px */
+						$f: 75em; /* 1200px / 16px */
+					
+					--}
+					
+					<div data-src="{full_image_small}"></div>
+					<div data-src="{full_image_small_2x}" data-media="(min-device-pixel-ratio: 2.0)"></div>
+					<div data-src="{full_image}" data-media="(min-width: 48em)"></div>
+					<div data-src="{full_image_2x}" data-media="(min-width: 48em) and (min-device-pixel-ratio: 2.0)"></div> 
+					
+					<noscript>
+						<img src="{full_image}" alt="A large view of {title}">
+					</noscript>
+				</div>
+				<figcaption>
+					<h2>Overview</h2>
+					<p>{item_description}</p>
+					{if live_url}<p><a href="{live_url}" class="button" title="View the live version of {title}">Live version</a></p>{/if}
+				</figcaption>
+			</figure>
+	{/exp:channel:entries}
+	{portfolio_nav}
+{embed="include/footer"}
+
+
+{!-- 
+	# picturefill image example
+
+<div data-picture data-alt="A large view of {title}">
+	<div data-src="small.jpg"></div>
+	<div data-src="small.jpg" data-media="(min-device-pixel-ratio: 2.0)"></div>
+	<div data-src="medium.jpg" data-media="(min-width: 400px)"></div>
+	<div data-src="medium_x2.jpg" data-media="(min-width: 400px) and (min-device-pixel-ratio: 2.0)"></div>
+	<div data-src="large.jpg" data-media="(min-width: 800px)"></div>
+	<div data-src="large_x2.jpg" data-media="(min-width: 800px) and (min-device-pixel-ratio: 2.0)"></div>  
+	<div data-src="extralarge.jpg" data-media="(min-width: 1000px)"></div>
+	<div data-src="extralarge_x2.jpg" data-media="(min-width: 1000px) and (min-device-pixel-ratio: 2.0)"></div> 
+
+
+	<noscript>
+		<img src="{full_image}" alt="A large view of {title}">
+	</noscript>
+</div>
+--}

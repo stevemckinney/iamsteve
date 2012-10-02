@@ -1,0 +1,16 @@
+@import "../imports";
+
+.container {
+	text-align: center; }
+.title {
+	@include border-radius(2px);
+	@include rem(padding, $base-px/2 $line);
+	@include rem(margin, $line*2.5 0);
+	color: #fff;
+	background: #ce4dd6;
+	display: inline-block;
+	width: auto;
+	max-width: none;
+	text-shadow: 0 -1px 2px darken(#ce4dd6, 35%);
+	.cssmask & {
+		-webkit-mask: none; } }

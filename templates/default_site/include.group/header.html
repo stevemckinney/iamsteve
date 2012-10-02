@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html lang="en" class="wf-loading ie no-js{if embed:body_class}{embed:body_class}{if:elseif segment_1 == ''}{exp:channel:entries channel='blog' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'} {url_title} home{/exp:channel:entries}{if:elseif segment_1 && segment_2 == ''} {segment_1}{if:elseif segment_2 == 'entry'} {segment_2} {exp:channel:entries channel='blog' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'}{url_title}{/exp:channel:entries}{/if}"><![endif]-->
+<!--[if gte IE 9]><!--><html lang="en" class="wf-loading no-js{if embed:body_class}{embed:body_class}{if:elseif segment_1 == ''}{exp:channel:entries channel='blog' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'} {url_title} home{/exp:channel:entries}{if:elseif segment_1 && segment_2 == ''} {segment_1}{if:elseif segment_2 == 'entry' OR segment_2 == 'view'} {segment_2} {exp:channel:entries channel='blog|portfolio' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'}{url_title}{/exp:channel:entries}{/if}"><!--<![endif]-->
+<head>
+	{!-- Meta --}
+	<meta charset="utf-8">
+	{!-- In loving memory of Albert Phillips --}
+	<title>{if embed:entry_title}{embed:entry_title} | Portfolio of Steve McKinney{if:else}Portfolio of Steve McKinney Manchester web designer | {site_name}{/if}</title>
+	<meta name="description" content="The portfolio of Steve McKinney (iamsteve), a Manchester based web designer/front end developer.">
+	<meta name="keywords" content="Steve, McKinney, web, design, designer, html, css, manchester, portfolio, iamsteve, iamsteve.me, blog, freelance, design, i am steve">
+	<meta name="author" content="Steve McKinney">
+	{!-- CSS --}
+	{exp:minimee:css}<link href="{global:theme_url}/ee/assets/css/master.css?v=1" rel="stylesheet" media="screen">{/exp:minimee:css}
+	{!-- Javascript --}
+	<script>document.cookie="resolution=" + Math.max(screen.width,screen.height) + "; path=/";</script>
+	{exp:minimee:js}<script src="{global:theme_url}/ee/assets/js/modernizr.js"></script>{/exp:minimee:js}
+	<script>(function(){var config={kitId:'fbz2ewv',scriptTimeout:3000};var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)})();</script>
+	{!-- Per page stuff --}
+	{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+		{if extra_css}<link href="{global:theme_url}/ee/assets/css/custom/{extra_css}.css?v=1" rel="stylesheet" media="screen">{/if}
+		{if extra_js}<script>(function(){var config={kitId:'{extra_js}',scriptTimeout:3000};var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)})();</script>{/if}
+	{/exp:channel:entries}
+	{!-- Mobile --}
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	{!-- Verification --}
+	<meta name="google-site-verification" content="kvxM4eH_QHyUGdJK0LEQj3aZi7Vew5AooNVxk79zruU">
+	<meta name="y_key" content="e831cde43ec8e068">
+	{!-- Other --}
+	<link rel="alternate" type="application/rss+xml" title="Blog | Portfolio of Steve McKinney" href="http://iamsteve.me/blog/feed">
+	<link rel="apple-touch-icon" href="http://iamsteve.me/apple-touch-icon.png">
+	{!-- For iPhone 4 --}
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://iamsteve.me/apple-touch-icon.png">
+	{!-- For iPad 1--}
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://iamsteve.me/apple-touch-icon.png">
+	{!-- For the new iPad --}
+	{!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://iamsteve.me/apple-touch-icon-144x144-precomposed.png"> --}
+	{!-- For iPhone 3G, iPod Touch and Android --}
+	{!-- <link rel="apple-touch-icon-precomposed" href="http://iamsteve.me/apple-touch-icon-precomposed.png"> --}
+	<link rel="shortcut icon" href="http://iamsteve.me/favicon.png">
+	
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" href="{global:theme_url}/ee/assets/css/ie.css?v=1" media="screen">
+	<![endif]-->
+</head>
+<body>
+
+	<div class="container">
+		<header role="banner">
+		<h1><a href="/" title="Back to the homepage">I am Steve</a></h1>
+		<a href="#nav" title="To the navigation" class="mobile" data-icon="list">Navigation</a>
+		<nav role="navigation" aria-hidden="false" class="nav">
+			<ul id="nav">
+				<li><a href="{global:theme_url}" title="Back to the homepage"{if segment_1 == ""} class="active"{/if} data-icon="home">Home</a></li>
+				<li><a href="{global:theme_url}/blog" title="My blog about design/technology related things"{if segment_1 == "blog"} class="active"{/if} data-icon="compose">Blog</a></li>
+				<li><a href="{global:theme_url}/portfolio" title="View all my work"{if segment_1 == "portfolio"} class="active"{/if} data-icon="picture">Portfolio</a></li>
+				<li><a href="{global:theme_url}/about" title="Detailed information about myself"{if segment_1 == "about"} class="active"{/if} data-icon="user">About</a></li>
+				<li><a href="{global:theme_url}/contact" title="My contact details"{if segment_1 == "contact"} class="active"{/if} data-icon="envelope">Contact</a></li>
+			</ul>
+		</nav>
+		</header>
+		{if segment_1 == ""}
+			{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+				<h1 class="title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full.">{title}</a></h1>
+			{/exp:channel:entries}
+		{if:elseif embed:entry_title}
+			{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+				<h1 class="title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full.">{embed:entry_title}</a></h1>
+			{/exp:channel:entries}
+		{if:else}
+			<h1 class="title">{segment_1}</h1>
+		{/if}
+	</div>	
+	<section role="main">

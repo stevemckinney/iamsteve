@@ -1,0 +1,44 @@
+/*!
+// ----------------------------------------------------------------------------
+// markItUp! Universal MarkUp Engine, JQuery plugin
+// v 1.1.7
+// Dual licensed under the MIT and GPL licenses.
+// ----------------------------------------------------------------------------
+// Copyright (C) 2007-2010 Jay Salvat
+// http://markitup.jaysalvat.com/
+// ----------------------------------------------------------------------------
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+// ----------------------------------------------------------------------------
+*/
+
+(function(c){c.fn.markItUp=function(l,f){var b,g,i,p;g=i=p=!1;b={id:"",nameSpace:"",root:"",previewInWindow:"",previewAutoRefresh:!0,previewPosition:"after",previewTemplatePath:"~/templates/preview.html",previewParserPath:"",previewParserVar:"data",resizeHandle:!0,beforeInsert:"",afterInsert:"",onEnter:{},onShiftEnter:{},onCtrlEnter:{},onTab:{},markupSet:[{}]};c.extend(b,l,f);b.root||c("script").each(function(g,i){miuScript=c(i).get(0).src.match(/(.*)jquery\.markitup(\.pack)?\.js$/);if(null!==miuScript)b.root=
+miuScript[1]});return this.each(function(){function f(a,c){return c?a.replace(/("|')~\//g,"$1"+b.root):a.replace(/^~\//,b.root)}function l(a){var b=c("<ul></ul>"),d=0;c("li:hover > ul",b).css("display","block");c.each(a,function(){var a=this,e="",h,g;h=a.key?(a.name||"")+" [Ctrl+"+a.key+"]":a.name||"";key=a.key?'accesskey="'+a.key+'"':"";if(a.separator)e=c('<li class="markItUpSeparator">'+(a.separator||"")+"</li>").appendTo(b);else{d++;for(g=s.length-1;0<=g;g--)e+=s[g]+"-";e=c('<li class="markItUpButton markItUpButton'+
+e+d+" "+(a.className||"")+'"><a href="" '+key+' title="'+h+'">'+(a.name||"")+"</a></li>").bind("contextmenu",function(){return!1}).click(function(){return!1}).mousedown(function(){a.call&&eval(a.call)();setTimeout(function(){r(a)},1);return!1}).hover(function(){c("> ul",this).show();c(document).one("click",function(){c("ul ul",u).hide()})},function(){c("> ul",this).hide()}).appendTo(b);a.dropMenu&&(s.push(d),c(e).addClass("markItUpDropMenu").append(l(a.dropMenu)))}});s.pop();return b}function E(a){return a?
+(a=a.toString(),a=a.replace(/\(\!\(([\s\S]*?)\)\!\)/g,function(a,c){var b=c.split("|!|");return!0===p?void 0!==b[1]?b[1]:b[0]:void 0===b[1]?"":b[0]}),a=a.replace(/\[\!\[([\s\S]*?)\]\!\]/g,function(a,c){var b=c.split(":!:");if(!0===t)return!1;value=prompt(b[0],b[1]?b[1]:"");null===value&&(t=!0);return value})):""}function k(a){c.isFunction(a)&&(a=a(o));return E(a)}function v(a){openWith=k(m.openWith);placeHolder=k(m.placeHolder);replaceWith=k(m.replaceWith);closeWith=k(m.closeWith);block=""!==replaceWith?
+openWith+replaceWith+closeWith:""===selection&&""!==placeHolder?openWith+placeHolder+closeWith:openWith+(a||selection)+closeWith;return{block:block,openWith:openWith,replaceWith:replaceWith,placeHolder:placeHolder,closeWith:closeWith}}function r(a){var q,f;o=m=a;w();c.extend(o,{line:"",root:b.root,textarea:h,selection:selection||"",caretPosition:e,ctrlKey:g,shiftKey:i,altKey:p});k(b.beforeInsert);k(m.beforeInsert);!0===g&&!0===i&&k(m.beforeMultiInsert);c.extend(o,{line:1});if(!0===g&&!0===i){lines=
+selection.split(/\r?\n/);for(a=0,q=lines.length,f=0;f<q;f++)""!==c.trim(lines[f])?(c.extend(o,{line:++a,selection:lines[f]}),lines[f]=v(lines[f]).block):lines[f]="";string={block:lines.join("\n")};start=e;a=string.block.length+(c.browser.opera?q:0)}else!0===g?(string=v(selection),start=e+string.openWith.length,a=string.block.length-string.openWith.length-string.closeWith.length,a-=y(string.block)):!0===i?(string=v(selection),start=e,a=string.block.length,a-=y(string.block)):(string=v(selection),start=
+e+string.block.length,a=0,start-=y(string.block));if(""===selection&&""===string.replaceWith)j+=z(string.block),start=e+string.openWith.length,a=string.block.length-string.openWith.length-string.closeWith.length,j=d.val().substring(e,d.val().length).length,j-=z(d.val().substring(0,e));c.extend(o,{caretPosition:e,scrollPosition:x});string.block!==selection&&!1===t?(q=string.block,document.selection?document.selection.createRange().text=q:d.val(d.val().substring(0,e)+q+d.val().substring(e+selection.length,
+d.val().length)),A(start,a)):j=-1;w();c.extend(o,{line:"",selection:selection});!0===g&&!0===i&&k(m.afterMultiInsert);k(m.afterInsert);k(b.afterInsert);n&&b.previewAutoRefresh&&F();i=p=g=t=!1}function z(a){return c.browser.opera?a.length-a.replace(/\n*/g,"").length:0}function y(a){return c.browser.msie?a.length-a.replace(/\r*/g,"").length:0}function A(a,b){if(h.createTextRange){if(c.browser.opera&&9.5<=c.browser.version&&0==b)return!1;range=h.createTextRange();range.collapse(!0);range.moveStart("character",
+a);range.moveEnd("character",b);range.select()}else h.setSelectionRange&&h.setSelectionRange(a,a+b);h.scrollTop=x;h.focus()}function w(){h.focus();x=h.scrollTop;if(document.selection)if(selection=document.selection.createRange().text,c.browser.msie){var a=document.selection.createRange(),b=a.duplicate();b.moveToElementText(h);for(e=-1;b.inRange(a);)b.moveStart("character"),e++}else e=h.selectionStart;else e=h.selectionStart,selection=d.val().substring(e,h.selectionEnd);return selection}function F(){""!==
+b.previewParserPath?c.ajax({type:"POST",url:b.previewParserPath,data:b.previewParserVar+"="+encodeURIComponent(d.val()),success:function(a){B(f(a,1))}}):G||c.ajax({url:b.previewTemplatePath,success:function(a){B(f(a,1).replace(/<\!-- content --\>/g,d.val()))}});return!1}function B(a){if(n.document){try{sp=n.document.documentElement.scrollTop}catch(c){sp=0}n.document.open();n.document.write(a);n.document.close();n.document.documentElement.scrollTop=sp}b.previewInWindow&&n.focus()}function C(a){i=a.shiftKey;
+p=a.altKey;g=!a.altKey||!a.ctrlKey?a.ctrlKey:!1;if("keydown"===a.type){if(!0===g&&(li=c('a[accesskey="'+String.fromCharCode(a.keyCode)+'"]',u).parent("li"),0!==li.length))return g=!1,setTimeout(function(){li.triggerHandler("mousedown")},1),!1;if(13===a.keyCode||10===a.keyCode){if(!0===g)return g=!1,r(b.onCtrlEnter),b.onCtrlEnter.keepDefault;if(!0===i)return i=!1,r(b.onShiftEnter),b.onShiftEnter.keepDefault;r(b.onEnter);return b.onEnter.keepDefault}if(9===a.keyCode){if(!0==i||!0==g||!0==p)return!1;
+if(-1!==j)return w(),j=d.val().length-j,A(j,0),j=-1,!1;r(b.onTab);return b.onTab.keepDefault}}}var d,h,s,x,e,j,m,o,u,D,n,G,t;d=c(this);h=this;s=[];t=!1;x=e=0;j=-1;b.previewParserPath=f(b.previewParserPath);b.previewTemplatePath=f(b.previewTemplatePath);(function(){nameSpace=id="";b.id?id='id="'+b.id+'"':d.attr("id")&&(id='id="markItUp'+d.attr("id").substr(0,1).toUpperCase()+d.attr("id").substr(1)+'"');b.nameSpace&&(nameSpace='class="'+b.nameSpace+'"');d.wrap("<div "+nameSpace+"></div>");d.wrap("<div "+
+id+' class="markItUp"></div>');d.wrap('<div class="markItUpContainer"></div>');d.addClass("markItUpEditor");u=c('<div class="markItUpHeader"></div>').insertBefore(d);c(l(b.markupSet)).appendTo(u);D=c('<div class="markItUpFooter"></div>').insertAfter(d);!0===b.resizeHandle&&!0!==c.browser.safari&&(resizeHandle=c('<div class="markItUpResizeHandle"></div>').insertAfter(d).bind("mousedown",function(a){var b=d.height(),e=a.clientY,f,g;f=function(a){d.css("height",Math.max(20,a.clientY+b-e)+"px");return!1};
+g=function(){c("html").unbind("mousemove",f).unbind("mouseup",g);return!1};c("html").bind("mousemove",f).bind("mouseup",g)}),D.append(resizeHandle));d.keydown(C).keyup(C);d.bind("insertion",function(a,b){!1!==b.target&&w();h===c.markItUp.focused&&r(b)});d.focus(function(){c.markItUp.focused=this})})()})};c.fn.markItUpRemove=function(){return this.each(function(){var l=c(this).unbind().removeClass("markItUpEditor");l.parent("div").parent("div.markItUp").parent("div").replaceWith(l)})};c.markItUp=function(l){var f=
+{target:!1};c.extend(f,l);if(f.target)return c(f.target).each(function(){c(this).focus();c(this).trigger("insertion",[f])});c("textarea").trigger("insertion",[f])}})(jQuery);

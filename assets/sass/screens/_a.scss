@@ -1,0 +1,12 @@
+@include respond-min($a) {
+	html, body:after {
+		font-family: "a"; }
+	.meta {
+		@include rem(padding, 0 $base-px);
+		a, time {
+			@include rem(padding, $base-px*1.25 0);
+		}
+		li {
+			&:before {
+				display: block; } } }
+} // close mq

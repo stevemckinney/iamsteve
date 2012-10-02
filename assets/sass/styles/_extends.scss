@@ -1,0 +1,151 @@
+// centre rem margin
+%crm {
+	@include pie-clearfix;
+	width: 88%;
+	margin: auto auto $line;
+	margin: auto auto 1.5rem;
+	position: relative;
+	@include respond-min($d) {
+		@include rem(max-width, 960px); } }
+		
+// light subtle box styling, for buttons, etc
+%subtle-box {
+	@include background-clip(padding-box);
+	@include box-shadow(
+		0 0 0 1px lighten($border, 10%),
+		0 1px 2px lighten($border, 1%),
+		inset 0 1px 1px fade-out($white, 0.35),
+		inset 0 -1px 1px fade-out($black, 0.95));
+	@include background(
+		linear-gradient(top, rgba(176,178,178,0) 0%, rgba(176,178,178,.15) 100%));
+	.no-boxshadow & {
+		border: 1px solid $border; } }
+
+%subtle-s-rounded {
+	@extend %subtle-box;
+	@include border-radius(4px); }
+	
+// button type/meta bg
+%subtle-rounded {
+	@extend %subtle-box;
+	@include border-radius(100px); }
+
+// some will need a hover/active state
+%subtle-states {
+	&:hover, &:focus {
+		@include box-shadow(
+			0 -1px 0 0 fade-out($white, 0.8),
+			0 0 0 1px $border,
+			0 1px 3px fade-out($black, 0.9),
+			inset 0 1px 1px fade-out($white, 0.35),
+			inset 0 -1px 1px fade-out($black, 0.9)); }
+	&:active {
+		@include background(
+			linear-gradient(top, rgba(176,178,178,.15) 0%, rgba(176,178,178,0) 100%));
+		@include box-shadow(
+			0 1px 0 0 fade-out($white, 0.8),
+			0 0 0 1px $border, 
+			0 -1px 1px fade-out($white, 0.35),
+			inset 0 1px 3px fade-out($black, 0.9)); } }
+	
+// consistent margin/padding for subtle objects
+%sp {
+	@include rem(padding, $base-px $line); }
+
+%mr6 {
+	@include rem(margin, 0 6px 0 0); }
+	
+// consistent text shadow
+%ts {
+	text-shadow: 0 -1px 2px $primary_d1; }
+
+// consistent letter spacing
+%letter-spacing {
+	text-transform: uppercase;
+	letter-spacing: 2px; }
+
+// nav shadow
+%ns {
+	@include box-shadow(
+		inset 0 -1px 0 fade-out($primary_d1, 0.85),
+		inset 0 -1px 2px fade-out($primary_d1, 0.9),
+		0 1px 0 fade-out($primary_l1, 0.95)); }
+
+// nav states
+%active {
+	@include box-shadow(
+		0 1px 0 darken($primary_d2, 3%),
+		0 -1px 0 darken($primary_d2, 10%),
+		inset 0 1px 2px fade-out($primary_d1, 0.3),
+		0 2px fade-out($primary_l1, 0.95));
+		// linear-gradient(90deg, #36393f 0%, rgba(43,46,51,.5) 100%)
+	@include background(
+		linear-gradient(
+			fade-out(darken($primary_d1, 3%), 0.65), 
+			fade-out(darken($primary_d1, 3%), 1)), darken($primary, 3%)); }
+%hover {
+	@include box-shadow(
+			0 0 0 1px $primary_d2,
+			inset 0 1px 1px fade-out($primary_l2, 0.35),
+			inset 0 -1px 0 fade-out($primary_d1, 0.95),
+			inset 0 -1px 1px fade-out($primary_d1, 0.9),
+			0 1px 3px fade-out($primary_d1, 0.75));
+		background: fade-out($primary_l2, 0.5); }
+
+%imgs {
+	@extend %rounded;
+	@extend %shadow;
+	vertical-align: bottom;
+	max-width: 100%;
+	display: inline-block;
+	border: 6px solid $white; }
+
+// social crap
+.social {
+	@include rem(margin, 0 0 $line);
+	display: block;
+	width: 100%;
+	li {
+		@include inline-block;
+		&:nth-of-type(1) a {
+			background-position: 0 0; }
+		&:nth-of-type(2) a {
+			background-position: -35px 0; }
+		&:nth-of-type(3) a {
+			background-position: -70px 0; }
+		&:nth-of-type(4) a {
+			background-position: -105px 0; }
+		&:nth-of-type(5) a {
+			background-position: -140px 0; }
+		&:nth-of-type(6) a {
+			background-position: -175px 0; } }
+	a {
+		@include wh(32px); 
+		@include hide-text;
+		display: block;
+		background: url(../images/social_icons.png) no-repeat; 
+		opacity: 1;
+		margin: 0 $base-px 0 0; 
+		line-height: 1;
+		@include box-shadow((0 0 2px transparentize($black, 0.8)));
+		&:hover {
+			opacity: .75; } } }
+
+
+@mixin bgIn($prefix) {
+	0% {
+		background-position: 0 -2000px; }
+  100% {
+    background-position: center bottom; } }
+
+@if $experimental-support-for-webkit {
+  @-webkit-keyframes bounceIn { @include bgIn(webkit); } }
+@if $experimental-support-for-khtml {
+  @-khtml-keyframes bounceIn { @include bgIn(khtml); } }
+@if $experimental-support-for-mozilla {
+  @-moz-keyframes bounceIn { @include bgIn(moz); } }
+@if $experimental-support-for-microsoft {
+  @-ms-keyframes bounceIn { @include bgIn(ms); } }
+@if $experimental-support-for-opera {
+  @-o-keyframes bounceIn { @include bgIn(o); } }
+@keyframes bgIn { @include bgIn(none); }

@@ -1,0 +1,114 @@
+// 	----------------------------------------- 
+//	Buttons — A base, mixin and options
+// 	-----------------------------------------
+@mixin button-base {
+	@include transition(none);
+	display: inline-block;
+	position: relative;
+	font: 400 $base-font-size/1 $sans; }
+	
+@mixin button($main-colour: $default, $radius: 4px, $subtle: false, $shadow: true, $size: normal, $style: true) { 
+	
+	$size: unquote($size);
+	$text-colour: $white;
+	$light-colour: lighten($main-colour, 7.5%);
+	$dark-colour: darken($main-colour, 10%);
+	
+	$hover-main-colour: lighten($main-colour, 7.5%);
+	$hover-light-colour: lighten($light-colour, 7.5%);
+	$hover-dark-colour: lighten($dark-colour, 10%);
+	
+	$active-main-colour: darken($main-colour, 7.5%);
+	$active-light-colour: darken($light-colour, 7.5%);
+	$active-dark-colour: darken($dark-colour, 10%);
+	
+	@include button-base;
+	color: $text-colour;
+	
+	@if $size == large {
+		@include rem(padding, $line $line*2); }
+	@else if $size == normal {
+		@include rem(padding, $base-px/1.3333333333 $line); }
+	@else if $size == small {
+		@include rem(padding, $base-px/2 $line/2); }
+	@else if $size == xsmall {
+		@include rem(padding, $base-px/4 $line/4); }
+	@else if $size == false {}
+	@else {
+		@include rem(padding, $base-px/1.3333333333 $line); }
+	
+	@if $style == true {
+		@include background(
+			linear-gradient(
+				$main-colour 0%,
+				fade-out($dark-colour, 0.5) 90%), $main-colour);
+				
+		@if $shadow == true {		
+			@include box-shadow(
+				0 1px 0 darken($dark-colour, 5%),
+				0 0 0 1px $dark-colour,
+				inset 0 1px 0 $light-colour,
+				0 1px 3px fade-out($black, 0.75)); }
+		
+		@if $radius != none {
+			@include border-radius($radius); }
+			
+		text-shadow: 0 1px 1px $dark-colour;
+		
+		.no-boxshadow & {
+			border: 1px solid lighten($dark-colour, 10%);
+			border-bottom: 1px solid $dark-colour; }
+		.no-cssgradients & {
+			background: $main-colour; }
+			
+		&:hover, &:focus {
+			color: $text-colour;
+			@include background(
+				linear-gradient(
+					$hover-main-colour 0%,
+					fade-out($hover-dark-colour, 0.5) 90%), $hover-main-colour);
+				
+			@if $shadow == true {		
+				@include box-shadow(
+					0 1px 0 darken($hover-dark-colour, 5%),
+					0 0 0 1px $hover-dark-colour,
+					inset 0 1px 0 $hover-light-colour,
+					0 1px 3px fade-out($black, 0.75)); }
+			
+			@if $radius != none {
+				@include border-radius($radius); }
+				
+			text-shadow: 0 1px 1px $hover-dark-colour;
+			
+			.no-boxshadow & {
+				border: 1px solid lighten($hover-dark-colour, 10%);
+				border-bottom: 1px solid $hover-dark-colour; }
+			.no-cssgradients & {
+				background: $hover-main-colour; } }
+		&:active {
+			color: $text-colour;
+			@include background(
+				linear-gradient(
+					fade-out($active-dark-colour, 0.25) 0%,
+					fade-out($active-dark-colour, 0.75) 100%), $active-main-colour);
+				
+			@if $shadow == true {		
+				@include box-shadow(
+					0 1px 0 darken($active-dark-colour, 5%),
+					0 0 0 1px $active-dark-colour,
+					inset 0 1px 3px $active-dark-colour,
+					0 1px 1px fade-out($white, 0.75)); }
+			
+			@if $radius != none {
+				@include border-radius($radius); }
+				
+			text-shadow: 0 1px 1px $active-dark-colour;
+			
+			.no-boxshadow & {
+				border: 1px solid lighten($active-dark-colour, 10%);
+				border-bottom: 1px solid $active-dark-colour; }
+			.no-cssgradients & {
+				background: $active-main-colour; } }
+	} // close $style
+		
+}

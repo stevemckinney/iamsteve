@@ -1,0 +1,138 @@
+@import "../imports";
+$wp_colour: hsl(0,0%,35%);
+
+$wp_colour_d1: darken($wp_colour, 20%);
+$wp_colour_d2: darken($wp_colour, 15%);
+$wp_colour_l1: lighten($wp_colour, 40%);
+$wp_colour_l2: lighten($wp_colour, 10%);
+
+%wpts {
+	text-shadow: 0 -1px 2px $wp_colour_d1; }
+
+.container {
+	@include box-shadow(none);
+	background: none;
+	background: url(../../images/_posts/wp/texture.png); }
+		
+[role="article"] img {
+	border: 5px solid $wp_colour;
+	margin: 0 0 20px; }
+
+body, article h1, h2, h3, p, ul, li, .title span {
+	color: $wp_colour; }
+		
+.title {
+	padding-bottom: $line*1.5;
+	margin: 0 auto;
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-family: "proxima-nova-extra-condensed", sans-serif;
+	text-shadow: none;
+	-webkit-mask: none;
+	span {
+		@include rem(padding, 0 $base-px/2); 
+		@include rem(margin, 0 $base-px/2 $base-px/2 0);
+		@include box-shadow(0 2px 3px transparentize(#000,0.81));
+		@include border-radius(3px);
+		@extend %transition;
+		position: relative;
+		display: inline-block;
+		line-height: 1.5;
+		letter-spacing: normal;
+		text-transform: uppercase;
+		background: #fff url(../../images/_posts/heading_bg.png);
+		&:nth-of-type(2n+2) {
+			@include transform(rotate(-0.75deg), translateY(-6px)); }
+		&:hover, &:focus {
+			@include box-shadow(0 2px 5px transparentize(#000,0.85));
+			@include transform(rotate(1.75deg) translateY(-3px) scale(1));
+			z-index: 100; } }
+	.space10, .space15 {
+		display: block; }
+	.char1, .char2, .char3, .char4, .char5,
+	.char6, .char7, .char8, .char9, {
+		margin: 0 $base-px/2 $base-px/2 0; }
+	.char10 {
+		height: $base-px;
+		display: block;
+		margin: 0;
+		width: 100%; }
+	.char10, .char15 {
+		@include box-shadow(none);
+		background: none; } }
+		
+[type="submit"] {
+	@extend %wpts;
+	@include box-shadow(
+		0 0 0 1px darken($wp_colour, 10%),
+		inset 0 1px 0 fade-out($wp_colour_l1, 0.8),
+		inset 0 2px 0 fade-out($wp_colour_l1, 0.85));
+	background: $wp_colour;
+	color: #eee;
+	.noboxshadow & {
+		border: 1px solid darken($wp_colour, 10%); }
+	&:hover, &:focus {
+		@include box-shadow(
+			0 0 0 1px darken($wp_colour, 5%),
+			inset 0 1px 0 fade-out($wp_colour_l1, 0.8),
+			inset 0 2px 0 fade-out($wp_colour_l1, 0.85));
+		background: lighten($wp_colour, 5%); }
+	&:active {
+		@include box-shadow(
+			0 0 0 1px darken($wp_colour_d1, 5%),
+			inset 0 1px 1px $wp_colour_d1);
+		background: darken($wp_colour, 5%); } }
+		
+// Media queries
+@include respond-min($b) {
+	.meta {
+		a, time, li {
+			color: fade-out($wp_colour, .5); } } } // close mq
+
+@include respond-min($c) {
+	.container {
+		background: none; }
+	[role="banner"] {
+		background: url(../../images/_posts/wp/texture.png); }
+	.title {
+		width: 88%;
+		span {
+			padding: 0 $base-px; 
+			margin: 0 $base-px $base-px 0; }
+		.space15 {
+			height: $base-px;
+			display: inline-block;
+			margin: 0;
+			width: $line;
+			background: none;
+			@include box-shadow(none); }
+		.char1, .char2, .char3, .char4, .char5,
+		.char6, .char7, .char8, .char9, {
+			margin: 0 $base-px $base-px 0; } }
+		
+	[role="navigation"] {
+		li {
+			a {
+				@include box-shadow(
+					0 1px 0 darken(fade-out($wp_colour_d2, 0.8), 15%),
+					0 0 0 1px $wp_colour_d2,
+					inset 0 1px 2px fade-out($wp_colour_l1, 0.75),
+					inset 0 -1px 0 fade-out($wp_colour_d1, 0.9),
+					inset 0 -1px 2px fade-out($wp_colour_d1, 0.85));
+				&:focus, &:hover, &.hover {
+					@include box-shadow(
+						0 0 0 1px $wp_colour_d2,
+						inset 0 1px 2px fade-out($wp_colour_l1, 0.65),
+						inset 0 -1px 0 fade-out($wp_colour_d1, 0.95),
+						inset 0 -1px 2px fade-out($wp_colour_d1, 0.7),
+						0 1px 3px fade-out($wp_colour_d1, 0.5));
+					background: fade-out($wp_colour_l2, 0.5); }
+				&:active, &.active {
+					@include box-shadow(
+						0 0 0 1px darken($wp_colour_d2, 0.5%),
+						inset 0 1px 3px fade-out($wp_colour_d2, 0.3),
+						0 2px 1px 0 fade-out($wp_colour_l1, 0.85));
+					@include background(
+						linear-gradient(fade-out($wp_colour_d1, 0.7), fade-out($wp_colour_d1, 1))); } } } }
+} // close mq
