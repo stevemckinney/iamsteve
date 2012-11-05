@@ -300,5 +300,5 @@ $(function() {
 		else {
 			return true; }
 	});
-			
+	$("header").find("h1 a").trigger("hover");
 });
