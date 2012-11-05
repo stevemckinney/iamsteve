@@ -48,10 +48,10 @@ $success: lighten(desaturate(#6f8a22, 15%), 10%);
 $info: #71bcc5;
 
 // font stacks
-$sans: "franklin-gothic-urw", "ff-enzo-web", "open-sans", sans-serif;
+$sans: "franklin-gothic-urw", sans-serif;
 $serif: "freight-text-pro", georgia, serif;
-$slab: "Geared Slab", "Geared", "ff-prater-serif-web";
-$monospace: "Nitti Basic", Menlo, Monaco, "Courier New", monospace;
+$slab: "Geared Slab", "Geared", serif;
+$monospace: "source-code-pro", monospace;
 $pictos: "Pictos Custom";
 
 // symbolset is brilliant but as i can't share mine it gives the option to turn it on if you have it

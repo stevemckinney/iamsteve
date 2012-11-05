@@ -1,0 +1,258 @@
+/*
+* Author: Leevi Grahan
+* Contact: leevi@newism.com.au
+* Version: 2.0
+* Notes: Styles for all table groups and tables
+*
+* CONTENTS
+* --------------------------------------------------------------------------------
+* =tg		Table groups
+* =table	Standard tables
+* =data		Date Tables
+*/
+/*
+
+Tables and Table groups
+
+<div class='mor-tg'>
+	<h2>Header</h2>
+	<div class='info'>Some information about the table group</div>
+	<div class='mor-alert error'>Error relating to the table group</div>
+	<table>
+		<thead>
+			<tr>
+				<th scope='col'>Header</th>
+				<th scope='col'>Header 2</th>
+			</tr>
+		</thead>
+		<body>
+			<tr>
+				<th scope='row'>Header</th>
+				<td>Content</td>
+			</tr>
+		</thead>
+</div>
+*/
+/* =tg
+------------------------------------------------------------------------------*/
+/* line 48, ../../sass-src/screen/tables.scss */
+.mor .tg {
+  background: #ECF1F4;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom-color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 18px;
+  margin-top: 9px;
+  -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
+  -o-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05); }
+
+/* line 56, ../../sass-src/screen/tables.scss */
+.accessorySection .mor .tg {
+  background: #ecf1f4;
+  -moz-box-shadow: "none";
+  -webkit-box-shadow: "none";
+  -o-box-shadow: "none";
+  box-shadow: "none"; }
+
+/* line 61, ../../sass-src/screen/tables.scss */
+.mor .tg h2 {
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  color: #37444D;
+  margin: 0;
+  padding: 9px;
+  font-size: 16px; }
+
+/* line 69, ../../sass-src/screen/tables.scss */
+#mainContent .mor .tg h3 {
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  color: #37444D;
+  margin: 0;
+  padding: 9px;
+  font-size: 14px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  -o-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3); }
+
+/* line 79, ../../sass-src/screen/tables.scss */
+#mainContent .mor .tg h4 {
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 12px;
+  padding: 9px; }
+
+/* line 95, ../../sass-src/screen/tables.scss */
+.mor .tg .actions {
+  padding: 9px; }
+
+/* =table
+------------------------------------------------------------------------------*/
+/* line 102, ../../sass-src/screen/tables.scss */
+.mor table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: -1px 0 0 0 !important;
+  /* Always move a table back up 1px */
+  border-bottom: 1px solid #c5ced4;
+  width: 100%; }
+
+/* line 109, ../../sass-src/screen/tables.scss */
+.mor table tr.even {
+  background-color: rgba(255, 255, 255, 0.5); }
+
+/* line 113, ../../sass-src/screen/tables.scss */
+.mor table tr.selected {
+  background: #009e00;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.9)), color-stop(100%, rgba(255, 255, 255, 0.85)));
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85));
+  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85));
+  background-image: linear-gradient(top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85)); }
+
+/* line 117, ../../sass-src/screen/tables.scss */
+.mor table label {
+  font-size: 12px; }
+
+/* line 120, ../../sass-src/screen/tables.scss */
+.mor table .note {
+  font-size: 11px;
+  font-weight: normal;
+  display: block;
+  margin-top: 5px; }
+
+/* line 128, ../../sass-src/screen/tables.scss */
+.mor table th, .mor table td {
+  border-color: #c5ced4;
+  border-width: 1px 1px 0 0;
+  border-style: solid;
+  border-right-style: dotted;
+  padding: 7px 9px;
+  text-align: left; }
+
+/* line 141, ../../sass-src/screen/tables.scss */
+.mor table tr th:last-child, .mor table tr td:last-child {
+  border-right: none; }
+
+/* line 144, ../../sass-src/screen/tables.scss */
+.mor table thead {
+  background: #9aa9b3;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  color: #fff;
+  font-size: 12px; }
+
+/* line 152, ../../sass-src/screen/tables.scss */
+.mor table thead th {
+  border-right: 1px solid #849099;
+  border-top: 1px solid #849099;
+  border-bottom: 1px solid #849099;
+  font-weight: normal;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 -1px 0; }
+
+/* line 167, ../../sass-src/screen/tables.scss */
+.mor table tbody th[scope=row] {
+  width: 200px; }
+
+/* line 170, ../../sass-src/screen/tables.scss */
+.mor table th.sub-heading {
+  font-weight: normal; }
+
+/* =datatable Data tables are used for displaying tabular data
+------------------------------------------------------------------------------*/
+/* line 177, ../../sass-src/screen/tables.scss */
+.mor table.data col.id {
+  width: 50px; }
+
+/* line 180, ../../sass-src/screen/tables.scss */
+.mor table.data col.date {
+  width: 120px; }
+
+/* =col-sortable Sortable columns
+------------------------------------------------------------------------------*/
+/* line 199, ../../sass-src/screen/tables.scss */
+table.col-sortable > thead th.sorting, table.col-sortable > thead th.header, table.col-sortable > thead th.headerSortDown, table.col-sortable > thead th.headerSortUp {
+  background-image: url("../../images/bg/sort-unsorted.png");
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+  padding-right: 22px; }
+
+/* line 207, ../../sass-src/screen/tables.scss */
+table.col-sortable > thead th.sorting:hover, table.col-sortable > thead th.header:hover {
+  background-image: url("../../images/bg/sort-unsorted-hover.png"); }
+
+/* line 213, ../../sass-src/screen/tables.scss */
+table.col-sortable > thead th.headerSortDown, table.col-sortable > thead th.headerSortUp, table.col-sortable > thead th.headerSortDown:hover, table.col-sortable > thead th.headerSortUp:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  background-position: center right;
+  background-repeat: no-repeat; }
+
+/* line 219, ../../sass-src/screen/tables.scss */
+table.col-sortable > thead th.headerSortDown, table.col-sortable > thead th.headerSortDown:hover {
+  background-image: url("../../images/bg/sort-down.png"); }
+
+/* line 223, ../../sass-src/screen/tables.scss */
+table.col-sortable > thead th.headerSortUp, table.col-sortable > thead th.headerSortUp:hover {
+  background-image: url("../../images/bg/sort-up.png"); }
+
+/* =row-sortable Sortable rows
+------------------------------------------------------------------------------*/
+/* line 231, ../../sass-src/screen/tables.scss */
+.mor table.row-sortable tr.tDnD_whileDrag, .mor table.row-sortable tr.odd.tDnD_whileDrag {
+  background: #323f47;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.4)), color-stop(100%, rgba(0, 0, 0, 0.2)));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  border-top-style: solid;
+  border-top-color: #000;
+  border-bottom-color: #000;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  cursor: move; }
+
+/* line 242, ../../sass-src/screen/tables.scss */
+.mor table.row-sortable tr td.dragHandle {
+  width: 18px; }
+
+/* line 246, ../../sass-src/screen/tables.scss */
+.mor table.row-sortable tr.tDnD_whileDrag th, .mor table.row-sortable tr.tDnD_whileDrag td {
+  color: #fff;
+  text-shadow: black 0 -1px 0; }
+
+/* =cloneable Cloneable tables allow the user to add as many rows as nessecary
+------------------------------------------------------------------------------*/
+/* line 254, ../../sass-src/screen/tables.scss */
+.mor table.cloneable {
+  border-bottom: 1px solid #a7b6bf; }
+
+/* line 257, ../../sass-src/screen/tables.scss */
+.mor table.cloneable + .actions {
+  background: #fff;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.1)));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  padding: 0; }
+
+/* line 262, ../../sass-src/screen/tables.scss */
+.mor table.cloneable + .actions:active {
+  background: #fff; }
+
+/* line 265, ../../sass-src/screen/tables.scss */
+.mor table.cloneable + .actions .add {
+  padding-top: 27px;
+  width: 100%; }

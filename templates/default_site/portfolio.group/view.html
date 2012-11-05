@@ -16,11 +16,21 @@
 					
 					--}
 					
-					<div data-src="{full_image_small}"></div>
-					<div data-src="{full_image_small_2x}" data-media="(min-device-pixel-ratio: 2.0)"></div>
-					<div data-src="{full_image}" data-media="(min-width: 48em)"></div>
-					<div data-src="{full_image_2x}" data-media="(min-width: 48em) and (min-device-pixel-ratio: 2.0)"></div> 
+				<!--
+	<div data-src="{full_image_small}"></div>
+					<div 
+						data-src="{full_image_small_2x}" 
+						data-media="(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)"></div>
+-->
+					<div 
+						data-src="{full_image}" 
+						data-media="(min-width: 0)"></div>
+		<!--
+			<div 
+						data-src="{full_image}" 
+						data-media="(min-width: 48em) and (-webkit-min-device-pixel-ratio: 1.5), (min-width: 48em) and (min--moz-device-pixel-ratio: 1.5), (min-width: 48em) and (-o-min-device-pixel-ratio: 3/2), (min-width: 48em) and (min-device-pixel-ratio: 1.5), (min-width: 48em) and (min-resolution: 1.5dppx)"></div> 
 					
+-->
 					<noscript>
 						<img src="{full_image}" alt="A large view of {title}">
 					</noscript>

@@ -1,13 +1,12 @@
 {embed="include/header"}
 
-{exp:channel:entries channel="blog" paginate="bottom" limit="1" status="open|latest" disable="member_data|trackbacks"}
-	<article role="article">
-		{exp:trunchtml chars="720" inline="&hellip;"}
-			{blog_article}
-		{/exp:trunchtml}
+{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="pagination|member_data|trackbacks"}
+	<article role="article" class="entry-summary">
+		{exp:eehive_hacksaw words="175" cutoff="<h2>" allow="<blockquote><a><p><b><strong><i><h1><h2><h3>"}
+			{exp:smartdown}{blog_article}{/exp:smartdown}
+		{/exp:eehive_hacksaw}
 		{blog_meta}
 	</article>
-	{pagination}
 {/exp:channel:entries}
 
 {embed="include/footer"}

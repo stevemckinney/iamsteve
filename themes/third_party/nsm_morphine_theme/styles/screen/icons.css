@@ -1,0 +1,33 @@
+/*
+* Author: Leevi Grahan
+* Contact: leevi@newism.com.au
+* Version: 2.0
+* Notes: Icons used in Morphine
+*/
+/* line 8, ../../sass-src/screen/icons.scss */
+.icon {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: inline-block;
+  height: 0;
+  overflow: hidden;
+  padding-top: 18px;
+  width: 18px; }
+
+/* line 19, ../../sass-src/screen/icons.scss */
+.icon.add {
+  background-image: url("../../images/icons/morphine/add.png"); }
+
+/* line 20, ../../sass-src/screen/icons.scss */
+.icon.delete {
+  background-image: url("../../images/icons/morphine/subtract.png"); }
+
+/* line 21, ../../sass-src/screen/icons.scss */
+.icon.sort {
+  background-image: url("../../images/icons/morphine/drag-y.png");
+  cursor: move; }
+
+/* line 22, ../../sass-src/screen/icons.scss */
+.icon.edit {
+  background-image: url("../../images/icons/fugue-icons/pencil-small.png"); }

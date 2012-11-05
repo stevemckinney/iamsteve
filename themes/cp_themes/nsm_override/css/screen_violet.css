@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * NSM override override.css
  *
@@ -108,11 +109,10 @@ button.submit,
 #mainContent h3.accordion,
 .ui-dialog .ui-dialog-titlebar,
 .ui-accordion-content {
-  -moz-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
-  -o-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
   -ms-border-radius: 0 !important;
-  -khtml-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
   border-radius: 0 !important;
 }
 
@@ -165,18 +165,17 @@ table.templateTable tr.odd td.webpage,
 #holder {
   background: #ecf1f4;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.3)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
   border: 0;
   padding: 9px 18px 18px 18px;
-  -moz-border-radius: 0;
   -webkit-border-radius: 0;
-  -o-border-radius: 0;
+  -moz-border-radius: 0;
   -ms-border-radius: 0;
-  -khtml-border-radius: 0;
+  -o-border-radius: 0;
   border-radius: 0;
 }
 
@@ -224,9 +223,8 @@ table.templateTable tr.odd td.webpage,
 #mainMenu {
   background-color: #27343c;
   padding: 5px 18px;
-  -moz-box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  -o-box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -243,11 +241,11 @@ html body #mainContent .formArea .formHeading,
 .ui-dialog .ui-dialog-titlebar {
   background: #566671;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.1)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-bottom: 0;
   font-size: 18px;
@@ -256,9 +254,8 @@ html body #mainContent .formArea .formHeading,
   line-height: 18px;
   padding: 9px 9px;
   text-shadow: black 0 -1px 0;
-  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
   -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-  -o-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
 }
 
@@ -370,15 +367,13 @@ h3:first-child {
   top: 28px;
   width: auto;
   min-width: 170px;
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  -moz-border-radius: 3px !important;
   -webkit-border-radius: 3px !important;
-  -o-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
   -ms-border-radius: 3px !important;
-  -khtml-border-radius: 3px !important;
+  -o-border-radius: 3px !important;
   border-radius: 3px !important;
   white-space: nowrap;
 }
@@ -449,11 +444,11 @@ h3:first-child {
 #breadCrumb {
   background: #ecf1f4;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.5)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
   border-top: 1px solid #fff;
   border-bottom: 1px solid #c5ced4;
   margin: 0 0 27px 0!important;
@@ -486,7 +481,7 @@ h3:first-child {
 #mainContent .formArea .formHeading .newTemplate,
 #mainContent #showToolbarLink {
   background: none !important;
-  display: inline;
+  display: inline-block;
   margin: 0 !important;
   padding: 0 !important;
   text-decoration: none !important;
@@ -507,8 +502,13 @@ button.submit,
 #mainContent #showToolbarLink a,
 .heading #action_nav .button a,
 .heading #action_nav .button a:link,
-.heading #action_nav .button a:visited {
+.heading #action_nav .button a:visited,
+a.submit,
+a.btn,
+button[type=submit],
+button.submit {
   border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  cursor: pointer;
   display: inline-block;
   font-family: inherit;
   font-size: 12px;
@@ -519,15 +519,13 @@ button.submit,
   padding: 3px 13px;
   width: auto;
   text-shadow: none;
-  -moz-border-radius: 4px !important;
   -webkit-border-radius: 4px !important;
-  -o-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
   -ms-border-radius: 4px !important;
-  -khtml-border-radius: 4px !important;
+  -o-border-radius: 4px !important;
   border-radius: 4px !important;
-  -moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  -o-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  -moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 input.submit:hover,
@@ -545,35 +543,46 @@ button.submit:hover,
 #mainContent #showToolbarLink a:hover,
 .heading #action_nav .button a:hover,
 .heading #action_nav .button a:link:hover,
-.heading #action_nav .button a:visited:hover {
+.heading #action_nav .button a:visited:hover,
+a.submit:hover,
+a.btn:hover,
+button[type=submit]:hover,
+button.submit:hover {
   text-decoration: none;
 }
 
 input.submit,
 input[type=submit],
+button.submit,
+a.submit,
+a.btn.submit,
+button[type=submit],
 button.submit {
   background: #6c71c4;
-  color: white;
+  color: white !important;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5) 0px 0px 1px;
 }
 input.submit:hover,
 input[type=submit]:hover,
+button.submit:hover,
+a.submit:hover,
+a.btn.submit:hover,
+button[type=submit]:hover,
 button.submit:hover {
   background: #6c71c4;
   color: white;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
   position: relative;
   top: -1px;
 }
@@ -585,15 +594,18 @@ button.submit:hover {
 #mainContent #tools .submit_alt,
 .cp_button a,
 .cp_button a:link,
-.cp_button a:visited {
-  color: #566671;
+.cp_button a:visited,
+a.btn,
+a.btn:link,
+a.btn:visited {
+  color: #566671 !important;
   background-color: #ecf1f4;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
 }
 .button a:hover,
 .button a:link:hover,
@@ -602,15 +614,18 @@ button.submit:hover {
 #mainContent #tools .submit_alt:hover,
 .cp_button a:hover,
 .cp_button a:link:hover,
-.cp_button a:visited:hover {
+.cp_button a:visited:hover,
+a.btn:hover,
+a.btn:link:hover,
+a.btn:visited:hover {
   color: #566671;
   background-color: #ecf1f4;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
   position: relative;
   top: -1px;
 }
@@ -633,9 +648,8 @@ button.submit:hover {
   display: block;
   margin-top: 5px;
   width: 100%;
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -650,13 +664,13 @@ button.submit:hover {
   margin-left: 9px !important;
   padding: 3px 13px;
   text-transform: capitalize;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: rgba(0, 0, 0, 0.5) 0 -1px 0;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.1)));
-  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
-  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -ms-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
 }
 .heading #action_nav .button a:hover,
 .heading #action_nav .button a:link:hover,
@@ -746,15 +760,13 @@ table.templateTable tbody tr:first-child th,
   font-weight: normal;
   padding: 7px 9px;
   text-shadow: rgba(0, 0, 0, 0.5) 0 -1px 0;
-  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
   -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-  -o-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-  -moz-border-radius: 0;
   -webkit-border-radius: 0;
-  -o-border-radius: 0;
+  -moz-border-radius: 0;
   -ms-border-radius: 0;
-  -khtml-border-radius: 0;
+  -o-border-radius: 0;
   border-radius: 0;
 }
 
@@ -765,11 +777,11 @@ table.templateTable tr.accessRowHeader td .accessTable tbody > tr:first-child,
 #mainContent table.mainTable > caption {
   background: #9aa9b3;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
   color: #fff;
   font-size: 12px!important;
 }
@@ -908,11 +920,10 @@ p.go_notice, div.go_notice {
   margin: 0 0 -1px 0;
   padding: 9px 9px 9px 9px;
   text-shadow: none;
-  -moz-border-radius: 0;
   -webkit-border-radius: 0;
-  -o-border-radius: 0;
+  -moz-border-radius: 0;
   -ms-border-radius: 0;
-  -khtml-border-radius: 0;
+  -o-border-radius: 0;
   border-radius: 0;
 }
 
@@ -956,11 +967,13 @@ p.go_notice, div.go_notice {
 #menu span,
 #myAccount h3 {
   background: #9aa9b3;
-  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-width: 1px 0!important;
   color: #fff;
   font-weight: normal;
   font-size: 13px;
   margin: 0 -1px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
 }
 
 #menu > li:first-child span {
@@ -1009,20 +1022,19 @@ p.go_notice, div.go_notice {
 #mainContent .tab_menu {
   background: #9aa9b3;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   height: auto;
   margin: 0 0 9px 0;
   padding: 0 100px 0 5px;
   overflow: auto;
-  -moz-box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
-  -o-box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -1054,11 +1066,10 @@ p.go_notice, div.go_notice {
   margin: 6px 0;
   padding: 5px 9px;
   text-shadow: rgba(0, 0, 0, 0.5) 0 1px 0;
-  -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
+  -moz-border-radius: 20px;
   -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
+  -o-border-radius: 20px;
   border-radius: 20px;
 }
 
@@ -1070,9 +1081,8 @@ p.go_notice, div.go_notice {
   color: #fff;
   background: rgba(0, 0, 0, 0.1);
   margin: 6px 5px;
-  -moz-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
-  -o-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -1086,11 +1096,11 @@ p.go_notice, div.go_notice {
 #mainContent div#file_manager_tools h3 {
   background: #9aa9b3;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.1)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
   font-size: 12px;
   margin: 0 0 0 -1px;
   padding: 0;
@@ -1103,19 +1113,18 @@ p.go_notice, div.go_notice {
 #mainContent div#file_manager_tools h3 a.closed {
   background: #9aa9b3;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.1)), color-stop(100%, rgba(255, 255, 255, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background-image: linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
   border: 1px solid rgba(0, 0, 0, 0.2);
   font-weight: bold;
   margin: -1px 0;
   padding: 0 9px 0 22px;
   text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0;
-  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
   -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
-  -o-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
   box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
 }
 
@@ -1188,9 +1197,8 @@ p.go_notice, div.go_notice {
 }
 #sideBar #sidebarContent #notePad #notePadTextEdit {
   width: 90%;
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 #sideBar #sidebarControl {
@@ -1248,11 +1256,10 @@ p.go_notice, div.go_notice {
   padding: 3px;
   margin-left: 5px;
   min-width: 11px;
-  -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
-  -o-border-radius: 20px;
+  -moz-border-radius: 20px;
   -ms-border-radius: 20px;
-  -khtml-border-radius: 20px;
+  -o-border-radius: 20px;
   border-radius: 20px;
 }
 
@@ -1260,12 +1267,14 @@ p.go_notice, div.go_notice {
   border-color: rgba(0, 0, 0, 0.2);
 }
 
-#accessoryTabs li a:link {
+#accessoryTabs li a:link,
+#accessoryTabs li a:visited,
+#accessoryTabs li a:active {
   border-right: 1px dotted #D1D5DE;
   padding: 0 10px;
   color: #6c71c4;
   font-size: 12px;
-  text-shadow: white 0 1px 0;
+  text-shadow: #fff 0 1px 0;
 }
 
 #accessoryTabs li:first-child a {
@@ -1281,7 +1290,9 @@ p.go_notice, div.go_notice {
   padding-top: 4px;
 }
 
-#accessoryTabs li.current a:link {
+#accessoryTabs li.current a:link,
+#accessoryTabs li.current a:visited,
+#accessoryTabs li.current a:active {
   text-shadow: black 0 -1px 0;
 }
 
@@ -1305,6 +1316,7 @@ p.go_notice, div.go_notice {
  */
 textarea,
 textarea.markItUpEditor,
+.WysiHat-editor,
 .fullfield,
 input[type="text"],
 input[type="email"],
@@ -1314,22 +1326,21 @@ input[type="password"],
 .publish_text input {
   height: auto;
   width: 100%;
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 6px;
 }
+
 textarea:focus,
 textarea.markItUpEditor:focus,
-.fullfield:focus,
+.WysiHat-editor:focus,
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="url"]:focus,
 input[type="number"]:focus,
-input[type="password"]:focus,
-.publish_text input:focus {
-  border-width: 1px;
+input[type="password"]:focus {
+  border-width: 1px !important;
   border-color: #57676f;
   padding: 6px;
 }
@@ -1425,13 +1436,11 @@ script + style + p > strong,
   margin-left: -1px;
   padding: 0;
   height: auto !important;
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -moz-box-shadow: inset 0 1px 0 0 white;
   -webkit-box-shadow: inset 0 1px 0 0 white;
-  -o-box-shadow: inset 0 1px 0 0 white;
+  -moz-box-shadow: inset 0 1px 0 0 white;
   box-shadow: inset 0 1px 0 0 white;
 }
 
@@ -1504,9 +1513,8 @@ script + style + p > strong,
   margin: 9px 9px 9px -18px;
   padding: 9px;
   visibility: visible !important;
-  -moz-box-shadow: inset 0 2px 1px 0 rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 2px 1px 0 rgba(0, 0, 0, 0.2);
-  -o-box-shadow: inset 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 2px 1px 0 rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 2px 1px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -1517,9 +1525,8 @@ script + style + p > strong,
 .publish_field.ui-sortable-helper {
   background: white;
   border: 1px solid #849099;
-  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -o-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -1610,9 +1617,8 @@ form[action*=edit_file] #publish_submit_buttons {
   margin: 0;
   padding: 9px;
   width: 100%;
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 #template_create #template_details {
@@ -1795,6 +1801,33 @@ div#templates .templateGrouping > .templateTable tr td.static, div#templates .te
   color: white;
 }
 
-/**
-* Design > Message Pages > User Message
-*/
+.heading span.msg_open_close {
+  margin-right: 0;
+}
+
+.WysiHat-editor-toolbar, .WysiHat-editor {
+  border-radius: 0 !important;
+}
+
+.WysiHat-editor {
+  padding: 10px !important;
+}
+
+.WysiHat-editor-toolbar .button,
+.WysiHat-ui-control .button {
+  padding: 4px 8px !important;
+  margin-right: 3px !important;
+}
+.WysiHat-editor-toolbar .button.select-container,
+.WysiHat-ui-control .button.select-container {
+  padding: 0 !important;
+}
+
+.WysiHat-editor-toolbar button.button,
+.WysiHat-ui-control button.button {
+  background-color: #fff !important;
+}
+
+.markitup {
+  margin: 0 27px 9px 0 !important;
+}

@@ -1,22 +1,38 @@
 {embed="/include/header" entry_title="Portfolio"}
 
-	{exp:channel:entries channel="portfolio" require_entry=“yes" status="Open" disable="categories|member_data|pagination|trackbacks" fixed_order="26|27|45|44|28|29"}
+	{exp:channel:entries channel="portfolio" require_entry=“yes" status="Open" category_group="not 18" disable="categories|member_data|pagination|trackbacks" fixed_order="26|27|45|44|28|29"}
 	{if no_results}{redirect="portfolio"}{/if}
-	{!-- <a href="{title_permalink='portfolio/view'}" title="View {title} in full." class="item_{url_title}"> --}
-		<figure class="item_{url_title}">
-			<!-- <img src="{preview_image}" alt="Preview of {title}"> -->
+	<a href="{title_permalink='portfolio/view'}" title="View {title} in full." class="item_{url_title}">
+		<figure>
+			<div class="browser" role="presentation"></div>
 			<figcaption>
 				<h2>{title}</h2>
-				<p>{exp:trunchtml chars="400" inline="&hellip;"}{item_description}{/exp:trunchtml}</p>
-				<p><em>Full view in progress&hellip;</em></p>
-				{!-- <span class="button">View more</span> --}
+				<p>{exp:eehive_hacksaw words="25" append="&hellip;"}{item_description}{/exp:eehive_hacksaw}</p>
+				<span class="button">View more</span>
 			</figcaption>
 		</figure>
-	{!--</a> /.item --}
+	</a>
+	
 	{/exp:channel:entries}
-
-</div>
-
-<p><a href="/contact" class="ns notice" title="Let's work together! Click for methods of contacting me"><em>Let's work together?</em>Contact me</a></p>
-
+	
+{!--	<hr>
+	
+	<h2>Unused designs</h2>
+	<p>These are some designs working for CandidSky, that haven't been used. I still feel they're worthy to show.</p>
+	
+	{exp:channel:entries channel="portfolio" require_entry=“yes" status="Open" category_group="18" disable="member_data|pagination|trackbacks"}
+	<a href="{title_permalink='portfolio/view'}" title="View {title} in full." class="item_{url_title}">	
+		<div class="browser" role="presentation"><img src="{preview_image}"></div>
+		<figure>
+			<figcaption>
+				<h2>{title}</h2>
+				<p>{exp:eehive_hacksaw words="25" append="&hellip;"}{item_description}{/exp:eehive_hacksaw}</p>
+				<span class="button">View more</span>
+			</figcaption>
+		</figure>
+	</a>
+	{/exp:channel:entries} --}
+	
+<p><a href="/contact" class="notice-success" title="Let's work together! Click for methods of contacting me"><em>Let's work together?</em>Contact me</a></p>
+{!-- <img src="{preview_image}"> --}
 {embed="/include/footer"}

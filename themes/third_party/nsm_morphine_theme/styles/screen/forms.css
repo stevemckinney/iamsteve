@@ -1,0 +1,74 @@
+/*
+* Author: Leevi Grahan
+* Contact: leevi@newism.com.au
+* Version: 2.0
+* Notes: General and explict form styles for the site
+*
+* CONTENTS
+* ------------------------------------------------------------------------------
+* =form									General form styles
+* =form-search							Search form
+* =form-account-create					Create account form
+* =form-account-update					Edit account form
+* =form-account-login					Login
+* =form-account-forgot_password			Forgot account password
+* =form-account-forgot_username			Forgot account username
+* 
+*/
+/* =form
+------------------------------------------------------------------------------*/
+/* line 31, ../../sass-src/screen/forms.scss */
+.mor label {
+  font-weight: inherit!important;
+  margin-right: 5px; }
+
+/* line 39, ../../sass-src/screen/forms.scss */
+.mor label.checkbox {
+  display: block; }
+
+/* line 45, ../../sass-src/screen/forms.scss */
+.mor input[type="text"], .mor textarea {
+  font-size: 12px;
+  font-family: inherit;
+  line-height: 1.3em;
+  padding: 5px !important;
+  border-top-color: #9fa8aa;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  -o-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2); }
+
+/* line 57, ../../sass-src/screen/forms.scss */
+.mor input[type=checkbox], .mor input[type=radio] {
+  margin-right: 3px; }
+
+/* line 61, ../../sass-src/screen/forms.scss */
+.mor input[type=text] {
+  width: 100%;
+  padding: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 67, ../../sass-src/screen/forms.scss */
+.mor input.hasDatePicker {
+  width: 100px; }
+
+/* line 71, ../../sass-src/screen/forms.scss */
+.mor textarea {
+  height: 100px;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 78, ../../sass-src/screen/forms.scss */
+.mor input[type=text]:focus, .mor textarea:focus {
+  outline: none;
+  border: 1px solid #323F47; }
+
+/* line 83, ../../sass-src/screen/forms.scss */
+.mor .fg {
+  margin-right: 10px; }

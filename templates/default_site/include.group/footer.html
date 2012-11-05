@@ -1,10 +1,12 @@
 </section>
 {!-- role="main" --}
 
-<aside role="complementary">
-	<section class="me" role="region">
+<hr>
+
+<aside role="complementary" class="related">
+	<section class="me vcard author" role="region">
 		<h3>About me</h3>
-		<p><img src="{global:theme_url}/ee/assets/images/me.jpg" alt="A photo of me">I'm Steve McKinney, a web designer living in Manchester, England. I've been designing from fairly young age, it's something that stuck throughout. I couldn't see myself doing anything else. I can start a website from paper, or just jump straight into Photoshop, it all leads to what I feel is the best result. I try to justify everything on a website, if it offers no value, I get rid of it. I'm good with the usual stuff HTML, CSS, &amp; Photoshop, with a little JavaScript. I also use ExpressionEngine CMS. The aim with this website is to be more of a place to share what I learn, and use it to progress; as my availability is limited.</p>
+		<p><img src="{global:theme_url}/ee/assets/images/me.jpg" class="photo" alt="A photo of me">I'm <span class="fn">Steve McKinney</span>, a <span class="role">Web Designer</span> living in <span class="adr"><span class="locality">Manchester</span>, <span class="country-name">England</span></span>. I've been designing from fairly young age, it's something that has stuck throughout my life so far. I couldn't see myself doing anything else. I can start a website from paper, or just jump straight into Photoshop, it all leads to what I feel is the best result. I try to justify everything on a website, if it offers no value, I get rid of it. I'm good with the usual stuff HTML, CSS, &amp; Photoshop, with a little JavaScript. I also use ExpressionEngine as my CMS. The aim with this website is to be more of a place to share what I learn, and to use it to spur me on to get better at what I do through blogging.</p>
 	</section>
 	<section class="dribbble" role="region">
 		<h3><a href="http://dribbble.com/stevemckinney" title="View all my shots on Dribbble">Dribbble shots</a></h3>
@@ -14,8 +16,8 @@
 
 <footer role="contentinfo">
 	<ul>
-		<li><small>Copyright &copy; Steve McKinney {current_time format="%Y"}.</small></li>
-		<li><a href="#" title="Go back to the top of the page.">Top</a></li>
+		<li><small>Copyright &copy; <span class="author vcard"><a rel="author" href="http://iamsteve.me" class="url fn">Steve McKinney</a></span> {current_time format="%Y"}.</small></li>
+		<li><a href="#" title="Go back to the top of the page." class="top">Top</a></li>
 		<li><a href="feed://iamsteve.me/blog/feed" title="The RSS feed for my blog.">RSS</a></li>
 		<li><a href="http://www.mediatemple.net#a_aid=501a3004e628b" title="MediaTemple the host of this website.">Host</a></li>
 		<li><a href="http://typekit.com" title="Fonts provided by Typekit.">Typekit</a></li>
@@ -28,11 +30,9 @@
 </div>
 
 <!-- Javascript -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<script src="{global:theme_url}/ee/assets/js/consistent.js?v=7"></script>
-<script>
-
-{!-- var _gauges = _gauges || [];
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+{exp:minimee:js minify="yes"}<script src="{global:theme_url}/ee/assets/js/consistent.js"></script>{/exp:minimee:js}
+{if global:env == "production"}<script>var _gauges = _gauges || [];
   (function() {
     var t   = document.createElement('script');
     t.type  = 'text/javascript';
@@ -42,8 +42,25 @@
     t.src = '//secure.gaug.es/track.js';
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(t, s);
-  })(); --}
-
-</script>
+  })();
+  
+  // 576547804
+var GoSquared = {};
+  GoSquared.acct = "GSN-610812-E";
+  GoSquared.UserName = "Steve";
+  (function(w){
+    function gs(){
+      w._gstc_lt = +new Date;
+      var d = document, g = d.createElement("script");
+      g.type = "text/javascript";
+      g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
+      var s = d.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(g, s);
+    }
+    w.addEventListener ?
+      w.addEventListener("load", gs, false) :
+      w.attachEvent("onload", gs);
+  })(window);
+</script>{/if}
 </body>
 </html>

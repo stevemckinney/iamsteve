@@ -1,0 +1,78 @@
+/*
+* Author: Leevi Grahan
+* Contact: leevi@newism.com.au
+* Version: 2.0
+* Notes: Styles for all navigation elements
+*
+* CONTENTS
+* --------------------------------------------------------------------------------
+* =nav					General navigation class; IE horizontal menus etc
+*/
+/* =nav
+------------------------------------------------------------------------------*/
+/* line 18, ../../sass-src/screen/navigation.scss */
+.menu, .menu li {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+/* line 19, ../../sass-src/screen/navigation.scss */
+.menu li a {
+  display: block; }
+
+/* line 21, ../../sass-src/screen/navigation.scss */
+.menu.horizontal li, .menu.tabs li {
+  float: left; }
+
+/* line 23, ../../sass-src/screen/navigation.scss */
+.menu.tabs {
+  background-color: #c8d2d7;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 0 0 18px 0;
+  overflow: auto;
+  padding: 7px 7px 0 7px;
+  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  -o-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5); }
+
+/* line 33, ../../sass-src/screen/navigation.scss */
+.tg .menu.tabs {
+  border-width: 0 0 1px 0;
+  margin: 0; }
+
+/* line 38, ../../sass-src/screen/navigation.scss */
+.menu.tabs a {
+  background: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  color: #415058;
+  font-size: 9px;
+  font-weight: bold;
+  margin-right: 7px;
+  margin-bottom: 7px;
+  padding: 6px 10px 5px 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -o-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -khtml-border-radius: 30px;
+  border-radius: 30px; }
+
+/* line 51, ../../sass-src/screen/navigation.scss */
+.menu.tabs a.active {
+  color: #fff;
+  font-weight: normal;
+  background: rgba(125, 141, 150, 0.5);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
+  -o-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2); }

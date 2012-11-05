@@ -44,7 +44,7 @@ fieldset{margin:18px 0;}
 /**
  * First remove all the rounded corners, starting from the top.
  */
-.button a, 
+.button a,
 .cp_button a, 
 #search form, 
 div.contentMenu, 
@@ -123,7 +123,7 @@ table.templateTable tr.odd td.webpage,
 #templateGroups .groupList,
 #holder {
     background:#ecf1f4;
-    @include linear-gradient(color-stops(rgba(255,255,255,.3), rgba(255,255,255,0)));
+    @include background-image(linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,0)));
     border:0;
     padding:9px 18px 18px 18px;
 
@@ -169,7 +169,7 @@ table.templateTable tr.odd td.webpage,
 #mainMenu {
     background-color:#27343c;
     padding:5px 18px;
-    @include box-shadow(rgba(0,0,0,.2), 0, 0, 10px, 0, inset);
+    @include single-box-shadow(rgba(0,0,0,.2), 0, 0, 10px, 0, inset);
 }
 
 .pageContents form em {
@@ -185,7 +185,7 @@ html body #mainContent .formArea .formHeading,
 .ui-dialog .ui-dialog-titlebar {
 
     background: #566671;
-    @include linear-gradient(color-stops(rgba(255,255,255,.1), rgba(255,255,255,0)));
+    @include background-image(linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,0)));
 
     border:1px solid rgba(0,0,0,.3);
     border-bottom:0;
@@ -195,8 +195,8 @@ html body #mainContent .formArea .formHeading,
     line-height:18px;
     padding:9px 9px;
 
-    @include text-shadow(rgba(0,0,0,1), 0, -1px, 0);
-    @include box-shadow(rgba(255,255,255,.3), 0, 1px, 0, 0, inset);
+    @include single-text-shadow(rgba(0,0,0,1), 0, -1px, 0);
+    @include single-box-shadow(rgba(255,255,255,.3), 0, 1px, 0, 0, inset);
 
 }
 h2{font-size:18px;}
@@ -280,7 +280,7 @@ h3:first-child{
 
     #addQuickTab,
     #addQuickTab:link {
-        color:$color-link;
+        color:$color-link-top-nav;
     }
 
     // Level 1 links
@@ -293,7 +293,7 @@ h3:first-child{
         padding:3px 9px;
 
         &:hover{
-            color: $color-link;
+            color: $color-link-top-nav;
         }
     }
 
@@ -324,7 +324,7 @@ h3:first-child{
     top: 28px;
     width: auto;
     min-width: 170px;
-    @include box-shadow(rgba(0,0,0,.3), 0, 1px, 3px);
+    @include single-box-shadow(rgba(0,0,0,.3), 0, 1px, 3px);
     @include border-radius(3px !important);
     white-space:nowrap;
 
@@ -422,7 +422,7 @@ h3:first-child{
 }
 #breadCrumb{
     background:#ecf1f4;
-    @include linear-gradient(color-stops(rgba(255,255,255,.5), rgba(255,255,255,0)));
+    @include background-image(linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0)));
     border-top:1px solid #fff;
     border-bottom:1px solid #c5ced4;
     margin:0 0 27px 0!important;
@@ -459,7 +459,7 @@ h3:first-child{
 #mainContent .formArea .formHeading .newTemplate,
 #mainContent #showToolbarLink {
     background:none !important;
-    display: inline;
+    display: inline-block;
     margin:0 !important;
     padding:0 !important;
     text-decoration:none !important;
@@ -481,8 +481,13 @@ button.submit,
 #mainContent #showToolbarLink a,
 .heading #action_nav .button a,
 .heading #action_nav .button a:link,
-.heading #action_nav .button a:visited{
+.heading #action_nav .button a:visited,
+a.submit,
+a.btn,
+button[type=submit],
+button.submit{
     border:1px solid rgba(0,0,0,.2) !important;
+    cursor:pointer;
     display:inline-block;
     font-family: inherit;
     font-size:12px;
@@ -493,7 +498,7 @@ button.submit,
     padding:3px 13px;
     width:auto;
 
-    @include text-shadow(none);
+    @include single-text-shadow(none);
     @include border-radius(4px !important);
     @include single-box-shadow(rgba(255,255,255,.1), 0, 0, 0, 1px, inset);
     
@@ -505,16 +510,19 @@ button.submit,
 // Pink buttons
 input.submit,
 input[type=submit],
+button.submit,
+a.submit,
+a.btn.submit,
+button[type=submit],
 button.submit {
     background: $color-accent;
-    color: $color-accent-text;
-    @include linear-gradient(color-stops(rgba(255,255,255,.2), rgba(255,255,255,0)));
-    @include text-shadow(0 -1px 0 rgba(0,0,0,.5));
+    color: $color-accent-text !important;
+    @include background-image(linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,0)));
+    @include single-text-shadow(0 -1px 0 rgba(0,0,0,.5));
     &:hover {
         background: $color-accent;
         color: $color-accent-text;
-        @include linear-gradient(color-stops(rgba(255,255,255,.2), rgba(255,255,255,0)));
-        @include text-shadow(0 -1px 0 rgba(0,0,0,.5));
+        @include background-image(linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,0)));
         position:relative;
         top:-1px;
     }
@@ -528,14 +536,17 @@ button.submit {
 #mainContent #tools .submit_alt,
 .cp_button a,
 .cp_button a:link,
-.cp_button a:visited{
-    color:#566671;
+.cp_button a:visited,
+a.btn,
+a.btn:link,
+a.btn:visited{
+    color:#566671 !important;
     background-color: #ecf1f4;
-    @include linear-gradient(color-stops(rgba(255,255,255,.7), rgba(255,255,255,0)));
+    @include background-image(linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,0)));
     &:hover {
         color:#566671;
         background-color: #ecf1f4;
-        @include linear-gradient(color-stops(rgba(255,255,255,.7), rgba(255,255,255,0)));
+        @include background-image(linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,0)));
         position:relative;
         top:-1px;
     }
@@ -574,8 +585,8 @@ button.submit {
     margin-left:9px !important;
     padding:3px 13px;
     text-transform: capitalize;
-    @include text-shadow(0 -1px 0 rgba(0,0,0,.5));
-    @include linear-gradient(color-stops(rgba(0,0,0,0), rgba(0,0,0,.1)));
+    text-shadow: rgba(0,0,0,.5) 0 -1px 0;
+    @include background-image(linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.1)));
     &:hover {
         position:relative;
         top:-1px;
@@ -665,8 +676,8 @@ table.templateTable tbody tr:first-child th,
     font-weight:normal;
     padding: 7px 9px;
 
-    @include text-shadow(rgba(0,0,0,.5), 0, -1px, 0);
-    @include box-shadow(rgba(255,255,255,.3), 0, 1px, 0, 0, inset);
+    @include single-text-shadow(rgba(0,0,0,.5), 0, -1px, 0);
+    @include single-box-shadow(rgba(255,255,255,.3), 0, 1px, 0, 0, inset);
     @include border-radius(0);
 }
 
@@ -676,7 +687,7 @@ table.templateTable > thead,
 table.templateTable tr.accessRowHeader td .accessTable tbody > tr:first-child,
 #mainContent table.mainTable > caption {
     background:#9aa9b3;
-    @include linear-gradient(color-stops( rgba(255,255,255,.2),  rgba(255,255,255,0)));
+    @include background-image(linear-gradient( rgba(255,255,255,.2),  rgba(255,255,255,0)));
     color:#fff;
     font-size:12px!important;
 }
@@ -838,7 +849,7 @@ p.go_notice, div.go_notice{
    margin: 0 0 -1px 0;
    padding: 9px 9px 9px 9px;
 
-    @include text-shadow(none);
+    @include single-text-shadow(none);
     @include border-radius(0);
 }
 
@@ -882,11 +893,13 @@ p.go_notice, div.go_notice{
 #menu span,
 #myAccount h3{
     background:#9aa9b3;
-    border:none;
+    border:1px solid rgba(0,0,0,.1)!important;
+    border-width:1px 0!important;
     color:#fff;
     font-weight:normal;
     font-size:13px;
     margin:0 -1px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.3);
 }
 #menu > li:first-child span{
     margin-top:-1px;
@@ -931,7 +944,7 @@ p.go_notice, div.go_notice{
 
 #mainContent .tab_menu{
     background: #9aa9b3;
-    @include linear-gradient(color-stops( rgba(255,255,255,.2),  rgba(255,255,255,0)));
+    @include background-image(linear-gradient( rgba(255,255,255,.2),  rgba(255,255,255,0)));
 
     border:1px solid rgba(0,0,0,.2);
     border-top:1px solid rgba(255,255,255,.5);
@@ -940,7 +953,7 @@ p.go_notice, div.go_notice{
     padding:0 100px 0 5px;
     overflow:auto;
 
-    @include box-shadow(rgba(0,0,0,.2), 0, -1px, 0);
+    @include single-box-shadow(rgba(0,0,0,.2), 0, -1px, 0);
 }
 #mainContent .tab_menu li,
 #mainContent .tab_menu li.current,
@@ -967,7 +980,7 @@ p.go_notice, div.go_notice{
     margin:6px 0;
     padding:5px 9px;
 
-    @include text-shadow(rgba(0,0,0,.5), 0, 1px, 0);
+    @include single-text-shadow(rgba(0,0,0,.5), 0, 1px, 0);
     @include border-radius(20px);
 }
 #mainContent .tab_menu li.highlight_tab a{
@@ -978,7 +991,7 @@ p.go_notice, div.go_notice{
     background:rgba(0,0,0,.1);
     margin:6px 5px;
 
-    @include box-shadow(rgba(0,0,0,.2), 0, 1px, 0, 0, inset);
+    @include single-box-shadow(rgba(0,0,0,.2), 0, 1px, 0, 0, inset);
 }
 
 #mainContent .tab_menu + #tools,
@@ -993,7 +1006,7 @@ p.go_notice, div.go_notice{
 #mainContent div#tools h3,
 #mainContent div#file_manager_tools h3{
     background:#9aa9b3;
-    @include linear-gradient(color-stops( rgba(255,255,255,.1),  rgba(255,255,255,0)));
+    @include background-image(linear-gradient( rgba(255,255,255,.1),  rgba(255,255,255,0)));
 
     font-size:12px;
   margin: 0 0 0 -1px;
@@ -1006,15 +1019,15 @@ p.go_notice, div.go_notice{
 #mainContent div#tools h3 a.closed,
 #mainContent div#file_manager_tools h3 a.closed{
     background:#9aa9b3;
-    @include linear-gradient(color-stops( rgba(255,255,255,.1),  rgba(255,255,255,0)));
+    @include background-image(linear-gradient( rgba(255,255,255,.1),  rgba(255,255,255,0)));
 
     border:1px solid rgba(0,0,0,.2);
     font-weight:bold;
     margin:-1px 0;
     padding:0 9px 0 22px;
 
-    @include text-shadow(rgba(0,0,0,.3), 0, -1px, 0);
-    @include box-shadow(rgba(255,255,255,.3), 0, 1px, 0, 0, inset);
+    @include single-text-shadow(rgba(0,0,0,.3), 0, -1px, 0);
+    @include single-box-shadow(rgba(255,255,255,.3), 0, 1px, 0, 0, inset);
 }
 
 #mainContent div#tools h3 a,
@@ -1165,27 +1178,30 @@ p.go_notice, div.go_notice{
     border-color:rgba(0,0,0,.2);
 }
 
-#accessoryTabs li a:link{
+#accessoryTabs li a:link,
+#accessoryTabs li a:visited,
+#accessoryTabs li a:active{
     border-right:1px dotted #D1D5DE;
     padding:0 10px;
     color:$color-link;
     font-size:12px;
-
-    @include text-shadow(rgba(255,255,255,1), 0, 1px, 0);
+    text-shadow: #fff 0 1px 0;
 }
 #accessoryTabs li:first-child a{
-    border-left:1px solid #D1D5DE;
+    border-left: 1px solid #D1D5DE;
 }
 
 #accessoryTabs li.current{
-    margin-top:-4px
+    margin-top: -4px
 }
 #accessoryTabs li.current a{
-    border:none;
-    padding-top:4px;
+    border: none;
+    padding-top: 4px;
 }
-#accessoryTabs li.current a:link{
-    @include text-shadow(rgba(0,0,0,1), 0, -1px, 0);
+#accessoryTabs li.current a:link,
+#accessoryTabs li.current a:visited,
+#accessoryTabs li.current a:active{
+    text-shadow: #000 0 -1px 0;
 }
 #accessoryTabs li a span{
     display:none;
@@ -1206,6 +1222,7 @@ p.go_notice, div.go_notice{
  
 textarea,
 textarea.markItUpEditor,
+.WysiHat-editor,
 .fullfield,
 input[type="text"],
 input[type="email"],
@@ -1217,13 +1234,21 @@ input[type="password"],
     width:100%;
     @include box-sizing('border-box');
     padding:6px;
-
-    &:focus {
-        border-width:1px;
-        border-color:#57676f;
-        padding:6px;
-    }
 }
+
+textarea:focus,
+textarea.markItUpEditor:focus,
+.WysiHat-editor:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
+    border-width:1px !important;
+    border-color:#57676f;
+    padding:6px;
+}
+
 input[name=config_name] {
     width:250px;
     margin-left:9px;
@@ -1314,7 +1339,7 @@ script + style + p > strong,
      height: auto !important;
      @include box-sizing('border-box');
 
-     @include box-shadow(rgba(255,255,255,1), 0, 1px, 0, 0, inset);
+     @include single-box-shadow(rgba(255,255,255,1), 0, 1px, 0, 0, inset);
  }
  .publish_field:first-child{}
 
@@ -1332,7 +1357,7 @@ script + style + p > strong,
  }
  .publish_field .hide_field span{
      cursor:pointer;
-     @include text-shadow(rgba(255,255,255,1), 0, 1px, 0);
+     @include single-text-shadow(rgba(255,255,255,1), 0, 1px, 0);
  }
  .publish_field .hide_field span img{
      opacity:.2;
@@ -1371,7 +1396,7 @@ script + style + p > strong,
      margin:9px 9px 9px -18px;
      padding:9px;
      visibility: visible !important;
-     @include box-shadow(rgba(0,0,0,.2), 0, 2px, 1px, 0, inset);
+     @include single-box-shadow(rgba(0,0,0,.2), 0, 2px, 1px, 0, inset);
  }
  .publish_field.ui-sortable-placeholder:after{
      content:"Drop";
@@ -1379,7 +1404,7 @@ script + style + p > strong,
  .publish_field.ui-sortable-helper{
      background:rgba(255,255,255,1);
      border:1px solid #849099;
-     @include box-shadow(rgba(0,0,0,.2), 0, 5px, 10px);
+     @include single-box-shadow(rgba(0,0,0,.2), 0, 5px, 10px);
  }
  .handle{
      background: #566671;
@@ -1505,7 +1530,7 @@ script + style + p > strong,
             background-color:transparent !important;
             color:inherit!important;
             margin:0;
-            @include text-shadow(none);
+            @include single-text-shadow(none);
         }
         
         > div {
@@ -1735,6 +1760,29 @@ div#templates {
      }
  }
  
-/**
-* Design > Message Pages > User Message
-*/
+.heading span.msg_open_close {margin-right:0;}
+
+.WysiHat-editor-toolbar, .WysiHat-editor {
+	border-radius:0 !important;
+}
+.WysiHat-editor {
+	padding: 10px !important;
+}
+.WysiHat-editor-toolbar .button,
+.WysiHat-ui-control .button {
+	padding:4px 8px !important;
+	margin-right:3px !important;
+	
+	&.select-container{
+		padding:0 !important;
+	}
+}
+
+.WysiHat-editor-toolbar button.button,
+.WysiHat-ui-control button.button {
+	background-color:#fff !important;
+}
+
+.markitup {
+	margin:0 27px 9px 0 !important;
+}
