@@ -1,0 +1,43 @@
+.meta {
+	@extend %subtle-s-rounded;
+	@include rem(padding, 0 $base-px);
+	clear: both;
+	ul {
+		@include pie-clearfix;
+		margin: 0; }
+	li {
+		@extend %mr6;
+		float: left;
+		list-style: none;
+		text-transform: uppercase;
+		line-height: 1 !important;
+		&:before:hover {
+			opacity: 1; }
+		&:nth-of-type(3) {
+			float: right;
+			margin: 0;
+			white-space: nowrap; }
+		&:before {
+			@extend %mr6;
+			@include rem(font-size, 12px);
+			@include rem(top, 16px);
+			display: none;
+			float: left;
+			position: relative;
+			line-height: 1;
+			opacity: .5; } }
+	a, time {
+		@include rem(padding, $base-px 0);
+		display: inline-block;
+		vertical-align: baseline; }
+	a, time, li {
+		color: fade-out($primary, .5);
+		@include rem(font-size, $base-px);
+		@include respond-min($c) {
+			@include rem(font-size, 14px); }
+		&:hover, &:focus {
+			@extend %transition;
+			opacity: 1;
+			color: $primary;
+			&:before {
+				opacity: 1; } } } }

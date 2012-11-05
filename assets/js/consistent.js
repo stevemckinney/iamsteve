@@ -206,9 +206,10 @@ $(window).load(function() {
 $(function() {
 	var $html = $("html"),
 			$window = $(window),
+			$body = $("body"),
 			$header = $("[role=\"banner\"]"),
 			$d = $(document),
-			$top = $("[role=\"contentinfo\"]").find("a").attr("href", "#"),
+			$top = $(".top");
 			$nav = $("header").find("nav"),
 			page = window.location.pathname,
 			name = page.split('/'),
@@ -237,17 +238,24 @@ $(function() {
 			}
 		},
 		{
-			context: ['b', 'c'],
+			context: ['b'],
 			call_for_each_context: false,
 			callback: function() { 
 				getshots('stevemckinney', 2, $dribbble);
 			}
 		},
 		{
-			context: ['c', 'd', 'e', 'f'],
+			context: ['c'],
 			call_for_each_context: false,
+			callback: function() { 
+				getshots('stevemckinney', 1, $dribbble);
+			}
+		},
+		{
+			context: ['c', 'd', 'e', 'f'],
+			call_for_each_context: true,
 			callback: function() {
-				if($nav.hasClass('shown')) $nav.removeClass('shown'); $header.removeClass('shown');
+				if($body.hasClass('shown')) $body.removeClass('shown');
 			}
 		},
 		{
@@ -260,22 +268,6 @@ $(function() {
 	];
 	MQ.init(queries);
 	
-	/*
-$(".mobile").toggle(function(e) {
-		$nav.prependTo("body").removeClass('hidden');
-		e.preventDefault();
-	}, function() {
-		$nav.addClass("hidden").appendTo("header");
-	});
-*/
-	
-	/*
-$('a').bind('touchstart touchend', function(e) {
-		e.preventDefault();
-		$(this).toggleClass('hover');
-	});
-*/
-	
 	$top.click(function(e) {
 		$("body, html").animate({ scrollTop: 0 }, 350, function() {
 			$(this).blur();
@@ -284,7 +276,7 @@ $('a').bind('touchstart touchend', function(e) {
 	});
 	
 	$(".mobile").click(function(e) {
-    $("body").toggleClass("shown");
+    $body.toggleClass("shown");
     e.preventDefault();
 	});
 			
@@ -297,10 +289,14 @@ $('a').bind('touchstart touchend', function(e) {
 			$("#keywords").focus(); k.preventDefault(); }
 		// left arrow / prev
 		else if(k.which == 37 || k.keyCode == 37) {
-			if (prev) window.location = url; }
+			if (prev) {
+				var url = prev;
+				window.location = url; } }
 		// right arrow / next
 		else if(k.which == 39 || k.keyCode == 39) {
-			if (next) window.location = url; }
+			if (next) {
+				var url = next;
+				window.location = url; } }
 		else {
 			return true; }
 	});

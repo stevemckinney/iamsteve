@@ -4,8 +4,8 @@
 @mixin form-base {
 	@extend %input-reset;
 	@extend %primary;
-	font: 400 16px/1 $sans;
-	.noboxshadow & { border: 1px solid $border; } }
+	.noboxshadow & { 
+		border: 1px solid $border; } }
 
 @mixin form-label(
 	$position: "top" ) {

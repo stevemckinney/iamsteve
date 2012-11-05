@@ -1,35 +1,98 @@
 @import "imports", "import/normalize";
 
+@-webkit-viewport {
+	width: device-width; }
+@-moz-viewport {
+	width: device-width; }
+@-ms-viewport {
+	width: device-width; }
+@-o-viewport {
+	width: device-width; }
+@viewport {
+	width: device-width; }
+	
 /* 
 	!Base stucture
 ---------------------------------------------------------------------- */
 html, body:after {
 	font-family: "a"; }
 html {
+	padding-bottom: $base-px/4;
+	/*
+@include background(
+		linear-gradient(
+			0deg,
+			$info 5%, 
+			$warning 5%,
+			$warning 10%, 
+			$success 10%,
+			$success 15%,
+			$danger 15%,
+			$danger 20%,
+			$info 20%,
+			$info 25%, 
+			$warning 25%,
+			$warning 30%, 
+			$success 30%,
+			$success 35%,
+			$danger 35%,
+			$danger 40%,
+			$info 40%,
+			$info 45%, 
+			$warning 45%,
+			$warning 50%, 
+			$success 50%,
+			$success 55%,
+			$danger 55%,
+			$danger 60%,
+			$info 60%,
+			$info 65%, 
+			$warning 65%,
+			$warning 70%, 
+			$success 70%,
+			$success 75%,
+			$danger 75%,
+			$danger 80%,
+			$info 80%,
+			$info 85%, 
+			$warning 85%,
+			$warning 90%, 
+			$success 90%,
+			$success 95%,
+			$danger 95%,
+			$danger 100%));
+*/
 	font-size: 100%; }
 body {
-	font-family: $sans;
 	line-height: normal;
 	color: $primary;
 	background: url(../images/bg_wave.png); }
 .container {
 	@include pie-clearfix;
 	@include rem(padding, $line 0 0);
-	@include rem(margin, 0 0 $line);
-	@include box-shadow(0 1px 0 fade-out($white, 0.6), 0 12px 48px -24px $primary_d1);
+	@extend %margin-bottom;
+	@include box-shadow(0 1px 0 fade-out($white, 0.6), 0 6px 24px -6px fade-out($primary_d1, 0.4));
 	position: relative;
 	overflow: hidden;
-	background: $primary url(../images/header_bg_alt.png) center bottom no-repeat;
+	background: $primary;
 	@include respond-min($c) {
-		@include box-shadow(inset 0 1px 0 $black, inset 0 -1px 0 $primary_d1, 0 1px 0 fade-out($white, 0.6), 0 12px 48px -24px $primary_d1); }
+		@include box-shadow(inset 0 1px 0 $black, inset 0 -1px 0 $primary, 0 1px 0 fade-out($white, 0.6), 0 12px 48px -24px $primary_d1); }
+	@include respond-min($d) {
+		background: $primary url(../images/header_bg_alt.png) center bottom no-repeat; }
 	@include respond-to(retina) {
 		background-size: cover; } }
+
+// potential to break, old imgs without a figure in blog posts
+article img {
+	@extend %imgs;
+	display: block; }
 		
 /* !header ---------------------- */
 [role="banner"] {
 	@extend %crm;
 	@extend %transition;
-	@include border-radius(4px);
+	@include border-radius(4px 4px 0 0);
+	position: relative;
 	h1 {
 		@extend %left;
 		@extend %transition;
@@ -58,125 +121,17 @@ body {
 		width: 88%;
 		margin: auto;
 		text-align: center;
-		-webkit-mask: url(../images/mask.png);
+		// -webkit-mask: url(../images/mask.png);
 		.error & {
 			text-transform: capitalize; }
 		.no-cssanimations & {
 			top: auto; }
 		a {
 			line-height: 1.185; } }
+
 	
 /* !nav ---------------------- */
-[role="navigation"] {
-	@extend %ns;
-	@extend %transition;
-	position: absolute;
-	top: -255px;
-	left: -10%;
-	right: -10%;
-	z-index: 1;
-	ul {
-		@extend %no-mp; }
-	li {
-		width: 100%;
-		display: block;
-		list-style: none;
-		/*
-.loaded & {
-			&:nth-of-type(2) a {
-				@include animation(nav .25s .1s ease-in-out);
-				@include animation-fill-mode(forwards); }
-			&:nth-of-type(3) a {
-				@include animation(nav .25s .15s ease-in-out);
-				@include animation-fill-mode(forwards); }
-			&:nth-of-type(4) a {
-				@include animation(nav .25s .2s ease-in-out);
-				@include animation-fill-mode(forwards); }
-			&:nth-of-type(5) a {
-				@include animation(nav .25s .25s ease-in-out);
-				@include animation-fill-mode(forwards); } }
-*/
-		&:last-child a {
-			border-bottom: none; } }
-		a {
-			/*
-.loaded & {
-				@include animation(nav .25s .05s ease-in-out);
-				@include animation-fill-mode(forwards); }
-			.no-js &, .no-cssanimations & {
-				opacity: 1;
-				top: 0; }
-			opacity: 0;
-*/
-			position: relative;
-			right: -$base-px;
-			@extend %transition;
-			@extend %ns;
-			@extend %ts;
-			@include rem(padding, $base-px $line);
-			position: relative;
-			display: block;
-			z-index: 1;
-			text-align: center;
-			&:before {
-				@extend %mr6;
-				position: relative;
-				top: 3px;
-				display: none; } } }
-
-.shown { 
-	[role="navigation"] {
-		top: -$line; }
-	[role="banner"] {
-		padding-top: 255px - $line; } }
-		
-@include respond-max($c) {
-	[role="navigation"] {
-		background: $primary;
-		a {
-			&:focus, &:hover {
-				@include box-shadow(
-					0 0 0 1px $primary_d2,
-					inset 0 1px 1px fade-out($primary_l2, 0.35),
-					inset 0 -1px 0 fade-out($primary_d1, 0.95),
-					inset 0 -1px 1px fade-out($primary_d1, 0.9),
-					0 1px 3px fade-out($primary_d1, 0.75));
-				background: fade-out($primary_l2, 0.5); }
-			&:active {
-				position: relative;
-				z-index: 1;
-				@include box-shadow(
-					0 1px 0 darken($primary_d2, 3%),
-					inset 0 1px 0 darken($primary_d2, 40%),
-					inset 0 1px 2px fade-out($primary_d1, 0.3),
-					0 2px fade-out($primary_l1, 0.95));
-					// linear-gradient(90deg, #36393f 0%, rgba(43,46,51,.5) 100%)
-				@include background(
-					linear-gradient(
-						fade-out(darken($primary_d1, 3%), 0.65),
-						fade-out(darken($primary_d1, 3%), 1)), darken($primary, 3%)); } } } }
-
-.hover {
-	@extend %hover; }
-.active {
-	@extend %active;
-	&:hover, &:focus {
-		@extend %hover; } }
-				
-.mobile {
-	@extend %right;
-	@extend %transition;
-	@include hide-text;
-	@include wh(26px, 24px);
-	@include rem(padding, $base-px);
-	display: block;
-	margin: 13px 0 0;
-	background: url(../images/_layout/nav_icon.png) center center no-repeat;
-	&:hover, &:focus {
-		opacity: .8; }
-	@include respond-to(retina) {
-		background-size: 25px 23px;
-		background: url(../images/_layout/nav_icon_2x.png) center center no-repeat; } }
+@import "styles/navigation";
 		
 /* !section ---------------------- */
 [role="region"] {
@@ -187,9 +142,10 @@ body {
 		margin: 0;
 		padding: 0;
 		border: none; } }
-[role="main"], [role="contentinfo"], [role="complementary"] {
+[role="main"], [role="contentinfo"], .related {
 	@extend %crm;
 	clear: both; }
+	
 .me {
 	img {
 		@extend %rounded;
@@ -204,57 +160,7 @@ body {
 .columns {
 	@include column-count(2); }
 
-.dribbble {
-	@include pie-clearfix;
-	h3 {
-		@include rem(margin-bottom, $base-px); }
-	a, figure {
-		display: inline-block; }
-	i, span {
-		@include rem(font-size, 14px);
-		font-style: normal;
-		display: block; }
-	i {
-		@include rem(margin, 0 $base-px/2 0 0);
-		@include rem(font-size, $base-px);
-		@include rem(bottom, $base-px);
-		position: absolute;
-		font-weight: 400;
-		float: left;
-		&:nth-of-type(1) {
-			@include rem(left, $base-px); }
-		&:nth-of-type(2) {
-			@include rem(right, $base-px/2); }
-		&:before {
-			@include rem(margin, 0 $base-px/4 0 0);
-			@include rem(font-size, $base-px);
-			position: relative;
-			top: 1px; } }
-	span {
-		font-weight: 900;
-		@include rem(margin, 0 0 0 $base-px / 2); }
-	img {
-		@extend %imgs; } }
-.shot {
-	// @include wh(cp(212px, 448px), cp(162px, 448px));
-	max-width: cp(212px, 448px);
-	min-width: cp(100px, 448px);
-	position: relative;
-	&:nth-of-type(1) {
-		margin: 3px cp(24px, 448px) 0 0; }
-	&:nth-of-type(2) {
-		margin-right: 0; }
-	&:hover, &:focus {
-		figcaption {
-			opacity: 1; } }
-	figcaption {
-		@include transition(opacity .2s linear);
-		@include rem(padding, $base-px $base-px/2);
-		@include stretch(6px, 6px, 6px, 6px);
-		max-width: 212px;
-		opacity: 0;
-		background: $white;
-		background: fade-out($white, 0.2); } }
+@import "styles/dribbble";
 
 /* !article ---------------------- */
 [role="article"] {
@@ -266,7 +172,7 @@ body {
 		@include rem(padding, 0 0 $line*2); }
 	figure {
 		@include pie-clearfix;
-		@include rem(margin, 0 0 $line);
+		@include rem(margin-bottom, $line);
 		position: relative;
 		img {
 			display: block;
@@ -278,51 +184,10 @@ body {
 		padding-left: 7.5%; }
 	@include respond-min($d) {
 		padding-right: 15.5%;
-		padding-left: 15.5%;
-		figcaption {} } }
+		padding-left: 15.5%; } }
 
 /* !aside ---------------------- */
-.meta {
-	@extend %subtle-s-rounded;
-	@include rem(padding, 0 $base-px);
-	clear: both;
-	ul {
-		@include pie-clearfix;
-		margin: 0; }
-	li {
-		@extend %mr6;
-		float: left;
-		list-style: none;
-		text-transform: uppercase;
-		line-height: 1 !important;
-		&:before:hover {
-			opacity: 1; }
-		&:nth-of-type(3) {
-			float: right;
-			margin: 0;
-			white-space: nowrap; }
-		&:before {
-			@extend %mr6;
-			@include rem(font-size, 12px);
-			display: none;
-			float: left;
-			position: relative;
-			line-height: 1;
-			top: 16px;
-			opacity: .5; } }
-	a, time {
-		@include rem(padding, $base-px 0);
-		display: inline-block;
-		vertical-align: baseline; }
-	a, time, li {
-		color: fade-out($primary, .5);
-		@include rem(font-size, 12px);
-		&:hover, &:focus {
-			@extend %transition;
-			opacity: 1;
-			color: $primary;
-			&:before {
-				opacity: 1; } } } }
+@import "styles/meta";
 
 /* 
 	!Typography & links
@@ -332,62 +197,10 @@ body {
 /* !pagination ---------------------- */
 @import "styles/pagination";
 
-/* pre/code ---------------------- */
-pre {
-	@include box-shadow(inset 0 1px 3px fade-out($black, 0.9), 0 1px 0 fade-out($white, 0.2));
-	@extend %margin;
-	@extend %rounded;
-	font: 16px/#{$base-line-height} $monospace;
-	border: 1px solid #ccc;
-	code {
-		@include rem(padding, $base-px);
-		display: block;
-		background: none; } }
-
-code {
-	@include rem(padding, 2px);
-	@include border-radius(2px);
-	font-family: $monospace;
-	background: fade-out($primary_l2, 0.9); }
-
-/* blockquote ---------------------- */
-$q: lighten(#f2e7c2, 5%);
-$qd: darken(desaturate($q, 50%), 40%);
-$ql: lighten($q, 10%);
-
-blockquote {
-	@extend %rounded;
-	@extend %shadow;
-	@include rem(padding, $line $line $line $line*3);
-	@include rem(margin, 0 0 $line);
-	@include background(linear-gradient(top left, transparent 1.375em, $danger 1.375em, $danger 1.5em, transparent 1.5em),
-		linear-gradient(bottom, fade-out($qd, 0.75) .05em, transparent .05em), $q);
-	@include background-size(100% 1.5em);
-	color: $qd;
-	position: relative;
-	line-height: 1.5;
-	p {
-		position: relative;
-		z-index: 1; }
-	&:before {
-		@include rem(margin, 0 $line 0 0);
-		content: "pullquote";
-		font: 900 16px/1.5 $icons;
-		color: $qd;
-		display: inline-block;
-		opacity: .5;
-		text-shadow: 0 1px 0 $ql;
-		position: absolute;
-		@include rem(top, $base-px*1.75);
-		@include rem(left, $base-px*3);
-		z-index: 0; } }
-@include respond-min($d) {
-	blockquote {} }
-
 /* 
 	Lists
 ---------------------------------------------------------------------- */
-[role="article"] {
+article {
 	ul, ol {
 		margin: 0 0 $line; } }
 		
@@ -406,24 +219,28 @@ blockquote {
 			@include respond-min(520px) {
 				display: inline-block;
 				float: left; } }
-	li, small {
-		color: $primary;
-		color: fade-out($primary, 0.5); }
-	small, a {
-		@include rem(font-size, 12px);
-		margin: 0;
-		display: block;
-		line-height: 1; }
 	small {
-		min-width: 204px;
-		@include rem(padding, $base-px $base-px/2 0); }
+		@include rem(padding, $base-px 0 0 $base-px/2); }
+	.url, .author {
+		display: inline-block;
+		padding: 0; }
 	a {
 		@include rem(padding, $base-px $base-px/2);
 		@extend %transition;
-		color: $primary;
-		color: fade-out($primary, 0.5);
 		&:hover, &:focus {
-			color: $primary; } } } }
+			color: $primary; } }
+	small, a {
+		@include rem(font-size, $base-px);
+		margin: 0;
+		display: block;
+		color: $primary;
+		color: fade-out($primary, 0.5); 
+		@include respond-min($c) {
+			height: 2.25rem;
+			line-height: 2.25rem;
+			@include rem(padding, 0 $base-px/2); }
+		@include respond-min($d) {
+			@include rem(font-size, 14px); } } } }
 
 dl {
 	line-height: 1.5; }
@@ -434,125 +251,73 @@ dt {
 dd {
 	margin: 0;
 	padding: 0; }
-/*
-@include respond-min($c) {
-	dt {
-		width: 100% - 70%;
-		padding: 0 cp(48px, 960px) 0 0;
-		float: left; }
-	dt, dd {
-		@include rem(margin, $base-px 0 $base-px/2);
-		&:first-of-type {
-			margin-top: 0; }
-		.skills & {
-			min-height: $line*4;
-			&:nth-of-type(3) {
-				min-height: $line*5; }
-			&:nth-of-type(4) {
-				min-height: $line*3; } } }
-	.colophon dt {
-		&:nth-of-type(2), &:nth-of-type(3) {
-			margin-top: $line*2.25; } }
-	dd {
-		width: 70%;
-		float: right; } }
-*/
 		
 /*
 	!Buttons and notices
 -----------------------------------------------------------------------*/
-.button {
-	white-space: nowrap; // remove later
-	@include element($primary_l2, $size: normal, $hover: true);
-	@extend %ts;
+.button, .button-small {
+	@include element($alt, $size: normal, $hover: true);
 	@extend %letter-spacing;
-	@include rem(font-size, 12px);
-	display: inline-block; }
+	@include rem(font-size, 14px);
+	white-space: nowrap; }
+
+.button-small {
+	@include rem(padding, 3px 6px);
+	font-size: 70%; }
 
 
 /* !notices ---------------------- */
 .notice {
 	a { color: $white; } }
-.nd {
+.notice-default {
 	@include element; }
-.ns {
+.notice-warning {
+	@include element($warning, $size: normal);
+	width: 100%;
+	text-align: center;
+	a { 
+		color: #fff;
+		text-decoration: underline; } }
+.notice-success {
 	@include element($success, $size: normal, $hover: true);
+	float: right;
 	em { 
 		@extend %mr6; } }
-.portfolio {
-	.notice {
-		display: block;
-		float: right; } }
 
 
 /*
 	!Forms
 -----------------------------------------------------------------------*/
-@import "import/forms";
-input {
-	@include form($group: true, $radius: 4px);
-	@include appearance(none);
-	@include rem(height, $line*1.5);
-	@include rem(line-height, $line*1.5);
-	border: none; }
-[type="submit"] {
-	@include element($primary_l2, $size: small, $radius: 0 4px 4px 0, $hover: true);
-	@extend %ts;
-	@extend %letter-spacing; }
-	
-[role="contentinfo"] {
-	form {
-		@include pie-clearfix;
-		@include rem(margin, $line 0 0);
-		width: 100%;
-		input {
-			@include rem(font-size, 12px); }
-		[type="search"] {
-			@include border-radius(4px 0 0 4px); }
-		[type="submit"] {
-			width: 30%;
-			@include border-radius(0 4px 4px 0); } } }
-@include respond-min($c) {
-	[role="contentinfo"] {
-		ul, form {
-			float: left; }
-		ul {
-			width: 67.5%;
-			margin: 0 2.5% 0 0; }
-		form {
-			width: 30%;
-			margin: 0; }
-		[type="submit"] {
-			width: 40%; }
-		[type="search"] {
-			width: 60%; } } }
-[type="search"] {
-	@include rem(font-size, 12px);
-	width: 70%;
-	&::-webkit-input-placeholder {
-		color: fade-out($primary, 0.5); }
-	&:-moz-placeholder {
-		color: fade-out($primary, 0.5); }
-	&::-webkit-search-decoration {}
-	&:before {
-		display: none; } }
-			
-@import "styles/wufoo";
+@import "import/forms", "styles/forms";
 
 /*
 	!Page specifics
 -----------------------------------------------------------------------*/
-// @import "import/styles/carousel";
-@import "styles/portfolio";
+@import "styles/portfolio", "styles/about";
 
-.skills {
- clear: both; }
-.colophon, .versions {}
 
-.colophon {
-	@include column-count(3);
-	h2 {
-		@include column-span(all); } }
+.related-entries {
+	@include pie-clearfix;
+	@extend %margin-bottom;
+	@include respond-min($c) {
+		@include rem(margin, 0 0 $line*2); }
+	@include respond-min($d) {
+		h1 {
+			padding-left: 15.5%; } } }
+.related-entry {
+	width: 46.25%;
+	&:first-of-type {
+		float: left; }
+	&:last-of-type {
+		float: right; }
+	p {
+		@extend %margin-bottom; }
+	@include respond-min($d) {
+		width: 47.5%;
+		&:first-of-type { 
+			padding-left: 15.5%; }
+		&:last-of-type { 
+			padding-right: 15.5%; } } }
 
 
 /* 
@@ -563,18 +328,64 @@ input {
 iframe {
 	width: 100%; }
 hr {
-	@include rem(margin, 0 0 $line);
+	@extend %crm;
 	@include box-shadow(0 1px 0 fade-out($white, 0.35));
 	padding: 0;
 	border: none;
 	border-top: 1px dotted fade-out($primary, 0.4);
 	background: $white;
 	background: fade-out($white, 0.35);
-	display: block; }
+	display: block;
+	[role="main"] & {
+		max-width: 100%;
+		width: 100%; } }
 	
 .hover {
 	-webkit-user-select: none;
 	-webkit-touch-callout: none; }
+
+section .gist {
+	position: relative !important;
+	.gist-file, .gist-data, .gist-highlight {
+		position: relative;
+		border-radius: 4px;
+		background: none !important;
+		border: none !important; }
+	.gist-highlight {
+		border-left: 4em solid fade-out($black, 0.95) !important;
+		@include box-shadow(inset 1px 0 0 fade-out($white, 0.7)); }
+	.gist-file .gist-data {
+		@include border-radius(4px 4px 0 0 !important);
+		@include box-shadow(0 0 0 1px #ccc, inset 0 1px 3px fade-out($black, 0.95), 0 1px 0 fade-out($white, 0.2) !important);
+		border: none !important;
+		border-bottom: none !important;
+		overflow: auto;
+		max-height: 500px;
+		padding: 0 !important;
+		background: none !important; }
+	.gist-file .gist-data pre {
+		padding: $base-px !important;
+		border: none !important;
+		box-shadow: none !important;
+		counter-reset: linenumbers;
+		div:before {
+			@include user-select(none);
+	    color: #999;
+	    text-shadow: 0 1px 0 rgba(255,255,255,0.45);
+	    content: counter(linenumbers);
+	    counter-increment: linenumbers;
+	    left: -4.5em;
+	    position: absolute;
+	    text-align: right;
+	    @include rem(width, $line*2); } }
+	.gist-meta {
+		@include element(#444, $radius: 0 0 4px 4px);
+		width: 100%;
+		color: $white !important;
+		a {
+			color: $white !important; } }
+	* {
+		font-size: .75rem; } }
 
 /* figure ------------------------------ */
 figure {
@@ -599,20 +410,11 @@ td, th {
 	display: none; }
 	
 /* !screenreaders ---------------------- */
-[for="keywords"] { 
+[for="keywords"], .screenreader { 
 	@extend %screenreaders; }
 	
 /* !extends ---------------------- */
 @import "styles/extends";
-%half {
-	float: left;
-	width: 50%; }
-%half-left {
-	@extend %half;
-	@include rem(padding-right, $line); }
-%half-right {
-	@extend %half;
-	@include rem(padding-left, $line);; }
 
 /* !lettering ---------------------- */
 .space {

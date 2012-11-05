@@ -8,9 +8,6 @@
 		a, time {
 			@include rem(padding, $base-px*1.5 0); }
 		a, time, li {
-			@include rem(font-size, $base-px);
-			letter-spacing: 2px;
-			color: fade-out($primary, .5);
 			&:before {
 				@include rem(font-size, 16px);
 				top: 17px; } } }

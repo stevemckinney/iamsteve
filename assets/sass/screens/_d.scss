@@ -3,16 +3,9 @@
 	
 	html, body:after {
 		font-family: "d"; }
-	
-	[role="navigation"] {
-			a {
-				&:before {
-					display: inline-block; } } }
+		
 	.mobile {
 		display: none; }
-	
-	[role="complementary"] {
-		@include rem(margin-bottom, $line*2); }
 	
 	.me {
 		float: left;
@@ -25,8 +18,6 @@
 		max-width: cp(212px, 448px);
 		position: relative;
 		margin: 3px cp(48px, 960px) 2.5% 0;
-		&:nth-of-type(3) {
-			margin-bottom: 0; }
 		&:nth-of-type(4) {
 			margin: 0; } }
 	.shot {
@@ -34,6 +25,8 @@
 		&:nth-of-type(1), &:nth-of-type(3) {
 			margin: 3px cp(48px, 960px) 5% 0; }
 		&:nth-of-type(2), &:nth-of-type(4) {
-			margin: 0; } }
+			margin: 0; }
+		&:nth-of-type(3) {
+			margin-bottom: 0; } }
 
 } // close mq

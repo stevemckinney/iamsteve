@@ -12,12 +12,13 @@
 /* ! consistent styles ---------------------- */
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
-	font-weight: 600;
-	font-family: $sans;
+	font-weight: 500;
+	font-family: $heading;
+	color: $primary;
 	a {
 		display: block;
 		color: $primary;
-		&:hover, &:focus, .hover {
+		&:hover, &:focus {
 			color: $secondary; } } }
 		
 a {
@@ -25,14 +26,17 @@ a {
 	text-decoration: none;
 	color: $primary;
 	-webkit-tap-highlight-color: $secondary;
-	p &, .colophon & {
+	p &, .colophon &, figure & {
 		color: $secondary;
-		&:hover, &:focus, .hover {
+		&:hover, &:focus {
 			color: $primary; } } }
 /* !Base size ---------------------- */		
-p, .meta li, dt, dd {
-	font: #{$base-font-size}/#{$base-line-height} $sans; }
-
+p, dt, dd, figcaption, li {
+	font: 400 #{$base-font-size*1.125}/#{$base-line-height} $body; }
+p, dd, figcaption, li {
+	color: fade-out($primary, 0.15); }
+.meta li {
+	font-family: $body; }
 [role="navigation"] a:before, pre code {
 	@extend %base; }
 	
@@ -49,30 +53,35 @@ p, li {
 		padding: 0; } }
 
 /* !header ---------------------- */
-.title, .title a {
+.title {
 	font-family: $slab;
 	font-weight: 100;
 	color: $primary_l3; }
 
 /* !content ---------------------- */
-[role="article"], [role="main"] {
+[role="main"] {
 	h1, h2, h3, h4 {
 		@include hyphens(auto);
 		@include rem(margin, $base-px/2 0 $base-px); }
-	h1 {
-		@include rem(font-size, $line*1.5); }
-	h2 {
-		@include rem(font-size, $line); }
-	h3 {
+	h1, .h1 {
+		@include rem(font-size, 30px); }
+	h2, .h2 {
+		@include rem(font-size, 24px); }
+	h3, .h3 {
 		@include rem(font-size, 18px); }
+	h4, .h4 {
+		@include rem(font-size, 16px); }
+	p, dt, dd {
+		@include rem(font-size, 16px); }
 	p {
-		@include rem(font-size, 14px);
 		&:first-child {
-			@include rem(font-size, 16px); } } }
+			@include rem(font-size, 18px); } } }
 			
 code {
 	@include rem(font-size, 16px);
 	pre & {
+		max-height: 200px;
+		overflow: auto;
 		color: $primary;
 		direction: ltr;
 		text-align: left;
@@ -86,29 +95,25 @@ code {
 @include respond-min($c) {
 	code, {
 		@include rem(font-size, 16px); }
-	[role="article"], [role="main"] {
+	[role="main"] {
 		h1, h2, h3, h4 {
-			@include rem(margin, $base-px 0 $line); }
-		h1 {
+			@include rem(margin, $line 0 $base-px); }
+		h1, .h1 {
+			@include rem(font-size, 42px); }
+		h2, .h2 {
 			@include rem(font-size, 36px); }
-		h2 {
+		h3, .h3 {
 			@include rem(font-size, 30px); }
-		h3 {
+		h4, .h4 {
 			@include rem(font-size, 24px); }
-		h4 {
-			@include rem(font-size, 20px); }
+		p, dt, dd {
+			@include rem(font-size, 18px); }
 		p {
-			@include rem(font-size, 16px);
 			&:first-child {
-				@include rem(font-size, 21px); } } }
-	[role="complementary"] {
-		h3 {
-			@include rem(font-size, 24px); }
-		p {
-			@include rem(font-size, 16px); } } }
+				@include rem(font-size, $line); } } } }
 
 /* !aside ---------------------- */
-[role="complementary"] {
+[role="complementary"], .related-entries {
 	p {
 		@include rem(font-size, 14px);
 		padding: 0;
@@ -120,7 +125,7 @@ code {
 		@include rem(padding, 0 0 $base-px); }
 	@include respond-min($c) {
 		h3 {
-			@include rem(font-size, 24px); }
+			@include rem(font-size, 30px); }
 		p {
 			@include rem(font-size, 16px); } } }
 
@@ -128,13 +133,13 @@ code {
 [role="navigation"] {
 	a {
 		font-size: 15px;
-		font: 600 .9375rem/#{$base-line-height} $sans;
+		font: 500 .9375rem/#{$base-line-height} $body;
 		color: #f0f4fc;
 		letter-spacing: 1px; } }
 
 /* !aside ---------------------- */
 [role="complementary"], [role="contentinfo"] {
-	font-family: $sans; }
+	font-family: $body; }
 
 /* !page specific ---------------------- */
 [class^="item"] {
@@ -156,3 +161,66 @@ li, p, dd, dt,
 [role="main"] h6,
 [role="complementary"] h3, {
 	@include no-fout; }
+	
+/* pre/code ---------------------- */
+pre {
+	@include box-shadow(inset 0 1px 3px fade-out($black, 0.9), 0 1px 0 fade-out($white, 0.2));
+	@extend %rounded;
+	@extend %margin-bottom;
+	border: 1px solid #ccc;
+	code {
+		@include rem(padding, $base-px);
+		display: block;
+		background: none; } }
+pre, code {
+	font: $base-font-size/#{$base-line-height} $monospace; }
+code {
+	@include rem(padding, 2px);
+	@include border-radius(2px);
+	background: fade-out($primary_l2, 0.9); }
+
+/* blockquote ---------------------- */
+$q: lighten(#f2e7c2, 5%);
+$qd: darken(desaturate($q, 50%), 40%);
+$ql: lighten($q, 10%);
+
+blockquote {
+	@extend %rounded;
+	@extend %shadow;
+	@include rem(padding, $line $line $line $line*3);
+	@extend %margin-bottom;
+	background: $q;
+	@include background(
+		linear-gradient(bottom, fade-out($qd, 0.75) .05em, transparent .05em), $q);
+	@include background-size(100% 1.5em);
+	color: $qd;
+	position: relative;
+	line-height: 1.5;
+	font-family: $sans;
+	p {
+		position: relative;
+		z-index: 1;
+		[role="main"] & {
+			&:first-child {
+			@include rem(font-size, 16px); } } }
+	&:before, &:after {
+		position: absolute; }
+	&:before {
+		@include rem(margin, 0 $line 0 0);
+		content: "pullquote";
+		font: 900 16px/1.5 $icons;
+		color: $qd;
+		display: inline-block;
+		opacity: .5;
+		text-shadow: 0 1px 0 $ql;
+		@include rem(top, $base-px*2);
+		@include rem(left, $line);
+		z-index: 0; }
+	&:after {
+		content: "";
+		display: inline-block;
+		width: 1px;
+		height: 100%;
+		background: $danger;
+		top: 0;
+		left: $line*2; } }

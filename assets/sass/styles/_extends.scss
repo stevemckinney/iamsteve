@@ -1,12 +1,14 @@
 // centre rem margin
 %crm {
 	@include pie-clearfix;
+	position: relative;
+	max-width: 60em; // 75em 1200px
 	width: 88%;
 	margin: auto auto $line;
 	margin: auto auto 1.5rem;
-	position: relative;
-	@include respond-min($d) {
-		@include rem(max-width, 960px); } }
+	@include respond-min($c) {
+		width: 92%;
+		margin: auto auto 3rem; } }
 		
 // light subtle box styling, for buttons, etc
 %subtle-box {
@@ -74,35 +76,36 @@
 // nav states
 %active {
 	@include box-shadow(
-		0 1px 0 darken($primary_d2, 3%),
-		0 -1px 0 darken($primary_d2, 10%),
+		0 1px 0 darken($primary_d2, 5%),
+		inset 0 1px 0 darken($primary_d2, 40%),
 		inset 0 1px 2px fade-out($primary_d1, 0.3),
 		0 2px fade-out($primary_l1, 0.95));
-		// linear-gradient(90deg, #36393f 0%, rgba(43,46,51,.5) 100%)
 	@include background(
 		linear-gradient(
-			fade-out(darken($primary_d1, 3%), 0.65), 
+			fade-out(darken($primary_d1, 3%), 0.85),
 			fade-out(darken($primary_d1, 3%), 1)), darken($primary, 3%)); }
 %hover {
 	@include box-shadow(
-			0 0 0 1px $primary_d2,
-			inset 0 1px 1px fade-out($primary_l2, 0.35),
-			inset 0 -1px 0 fade-out($primary_d1, 0.95),
-			inset 0 -1px 1px fade-out($primary_d1, 0.9),
-			0 1px 3px fade-out($primary_d1, 0.75));
-		background: fade-out($primary_l2, 0.5); }
+		0 0 0 1px darken($primary_d2, 5%),
+		inset 0 1px 1px fade-out($primary_l1, 0.8),
+		inset 0 -1px 0 fade-out($primary_d1, 0.95),
+		inset 0 -1px 1px fade-out($primary_d1, 0.9),
+		0 1px 1px fade-out($primary_d1, 0.5));
+	background: fade-out($primary_l2, 0.5);  }
 
 %imgs {
 	@extend %rounded;
 	@extend %shadow;
 	vertical-align: bottom;
-	max-width: 100%;
 	display: inline-block;
 	border: 6px solid $white; }
 
+%margin-bottom {
+	@include rem(margin, 0 0 $line); }
+
 // social crap
 .social {
-	@include rem(margin, 0 0 $line);
+	@extend %margin-bottom;
 	display: block;
 	width: 100%;
 	li {
@@ -149,3 +152,13 @@
 @if $experimental-support-for-opera {
   @-o-keyframes bounceIn { @include bgIn(o); } }
 @keyframes bgIn { @include bgIn(none); }
+
+%half {
+	float: left;
+	width: 50%; }
+%half-left {
+	@extend %half;
+	@include rem(padding-right, $line); }
+%half-right {
+	@extend %half;
+	@include rem(padding-left, $line); }

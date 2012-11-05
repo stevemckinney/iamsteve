@@ -48,9 +48,9 @@ $success: lighten(desaturate(#6f8a22, 15%), 10%);
 $info: #71bcc5;
 
 // font stacks
-$sans: "open-sans", sans-serif;
-$serif: "ff-prater-serif-web", ff-meta-serif-web-pro, georgia, serif;
-$slab: "Geared", "ff-prater-serif-web";
+$sans: "franklin-gothic-urw", "ff-enzo-web", "open-sans", sans-serif;
+$serif: "freight-text-pro", georgia, serif;
+$slab: "Geared Slab", "Geared", "ff-prater-serif-web";
 $monospace: "Nitti Basic", Menlo, Monaco, "Courier New", monospace;
 $pictos: "Pictos Custom";
 
@@ -61,7 +61,7 @@ $icons: "SSStandard";
 
 // found the need sometimes to switch fonts mid project, this makes sense when you have serif headings and it's decided they're now sans serif
 $heading: $sans;
-$body: $serif;
+$body: $sans;
 
 // font sizes
 $base-font-size: 1rem;
@@ -71,6 +71,7 @@ $base-line-height: 1.5;
 // px
 $base-px: 12px;
 $line: $base-px*2;
+$radius: 4px;
 
 $experimental-support-for-khtml: false;
 $legacy-support-for-ie: false;

@@ -1,37 +1,67 @@
+@include respond-min($d) {
+	[role="main"] {
+		&:hover, &:focus {
+			[class^="item_"] {
+				@include filter(blur(1px));
+				@include transform(scale3d(0.95, 0.95, 0.95));
+				@include respond-to(retina) {
+					@include filter(blur(2px)); }
+				&:hover, &:focus {
+					@include transform(scale3d(1, 1, 1));
+					@include filter(blur(0)); } } } } }
+
 [class^="item_"] {
 	@include rem(margin, 0 0 $line*2);
-	@extend %rounded;
-	float: left;
+	clear: both;
+	display: block;
 	min-height: 360px;
-	padding-top: 292px + $line;
 	position: relative;
+	&:before, &:after {
+		@include wh(22px, 380px);
+		content: "";
+		display: inline-block;
+		position: absolute;
+		top: -8px;
+		z-index: 1; }
 	&:nth-of-type(odd) {
 		@include respond-min($c) {
-			background-position: right $base-px; }
+			background-position: right $base-px;
+			.browser {
+				float: right;
+				margin-bottom: 0; } }
 		&:after {
-			@include wh(22px, 380px);
-			content: "";
-			display: inline-block;
 			background: url(../images/_portfolio/_pages/item_shadow.png) no-repeat;
-			position: absolute;
-			top: -8px;
-			right: -1px; } }
+			right: 0; }
+		.browser {
+			right: 2px;
+			margin-left: auto;
+			margin-bottom: $line; } }
 	&:nth-of-type(even) {
 		@include respond-min($c) {
-			background-position: left $base-px; }
+			background-position: left $base-px;
+			.browser {
+				float: left;
+				margin-bottom: 0; } }
 		&:before {
-			@include wh(22px, 380px);
-			content: "";
-			display: inline-block;
 			background: url(../images/_portfolio/_pages/item_shadow.png) -22px 0 no-repeat;
-			position: absolute;
-			top: -8px;
-			left: -1px; } }
+			left: 0; }
+		.browser {
+			left: 2px;
+			background-position: right center;
+			margin-bottom: $line;
+			&:before {
+				background-position: right 0;
+				@include respond-to(retina) {
+					background-position: right -36px; } }
+			&:after {
+				background-position: right -36px;
+				@include respond-to(retina) {
+					background-position: right -36px; } } } }
 	&:hover, &:focus {
 		@extend %transition;
 		h2 {
 			@extend %transition;
-			/* color: $secondary; */ } }
+			color: $secondary; } }
 	figcaption {
 		@include rem(padding, $line*2 0 0); }
 	p {
@@ -41,49 +71,81 @@
 		clear: both; }
 	img {
 		//width: cp(312px, 960px);
-		display: none;
 		vertical-align: bottom;
-		max-width: 100%;
-		float: right; } }
+		float: right; }
+	@include respond-to(retina) {
+		background-size: 286px 172px;
+		// padding-top: 152px;
+		&:nth-of-type(even) {	
+			background-position: -2.5% 0;
+			&:before {
+				background: url(../images/_portfolio/_pages/item_shadow.png) -12px 0 no-repeat;
+				left: -1px; } }
+		&:nth-of-type(odd) {
+			&:after {
+				right: 0; } }
+		&:before, &:after {
+			@include wh(12px, 190px);
+			top: 0;
+			background-size: 24px 196px; } } }
 
 $l_primary: #6B6661;
 
-.item_lilys_tumblr {
-	background-image: url(../images/_portfolio/_pages/lily_small.png); }
+.browser {
+	max-width: 552px;
+	height: 286px;
+	@include background-size(552px, 286px);
+	@include respond-min($c) {
+		width: cp(552px, 960px);
+		&:before, &:after {
+			width: cp(552px, 960px); } }
+	@extend %transition;
+	position: relative;
+	z-index: 0;
+	top: $base-px*4;
+	&:before, &:after {
+		@include filter(drop-shadow(0 1px 1px rgba(0,0,0,.2)));
+		content: "";
+		display: inline-block;
+		position: absolute;
+		min-width: 100%;
+		background: url(../images/_portfolio/_pages/browser.png) no-repeat;
+		background-size: 648px auto; }
+	&:before {
+		height: 36px;
+		top: -$base-px*3; }
+	&:after {
+		height: 8px;
+		background-position: 0 -36px;
+		bottom: -8px; }
+	.item_lilys_tumblr & {
+		background-image: url(../images/_portfolio/_pages/lily_small.png); }
+	.item_student_websites & {
+		background-image: url(../images/_portfolio/_pages/student_small.png); }
+	.item_coffee_expression & {
+		background-image: url(../images/_portfolio/_pages/coffee_small.png); }
+	.item_patience & {
+		background-image: url(../images/_portfolio/_pages/patience_small.png); }
+	.item_learning_html & {
+		background-image: url(../images/_portfolio/_pages/html_small.png); }
+	.item_css3_button & {
+		background-image: url(../images/_portfolio/_pages/button_small.png); } }
 		
-.item_student_websites {
-	background-image: url(../images/_portfolio/_pages/student_small.png); }
-		
-.item_coffee_expression {
-	background-image: url(../images/_portfolio/_pages/coffee_small.png); }
-
-.item_patience {
-	background-image: url(../images/_portfolio/_pages/patience_small.png); }
-
-.item_learning_html {
-	background-image: url(../images/_portfolio/_pages/html_small.png); }
-
-.item_css3_button {
-	background-image: url(../images/_portfolio/_pages/button_small.png); }
+@include respond-to(retina) {
+	.browser {
+		&:before, &:after {
+			background: url(../images/_portfolio/_pages/browser_2x.png) no-repeat !important; } } }
 	
 [class^="item_"] {
 	background-repeat: no-repeat;
 	&:nth-of-type(odd) {
-		background-position: left $base-px;
-		@include respond-min($c) {
-			background-position: 102.5% $base-px;
-			&:hover, &:focus {
-				background-position: right $base-px; } } }
+		background-position: left $base-px; }
 	&:nth-of-type(even) {
-		background-position: right $base-px;
-		@include respond-min($c) {
-			background-position: -2.5% $base-px; }
-			&:hover, &:focus {
-				background-position: left $base-px; } } }
+		background-position: right $base-px; } }
 
 // page specific portfolio stuff
 .item-full {
-	@include rem(margin, 0 0 $line);
+	@extend %margin-bottom;
 	img {
 		@extend %imgs;
 		position: relative; }
@@ -97,7 +159,7 @@ $l_primary: #6B6661;
 		display: inline-block; }
 	a { 
 		@include element($secondary, $size: xsmall, $hover: true);
-		font-size: 14px; } }
+		@include rem(font-size, 14px); } }
 
 
 @include respond-min($c) {
@@ -107,6 +169,8 @@ $l_primary: #6B6661;
 		figcaption {
 			width: 40%; }
 		&:nth-of-type(odd) {
+			figure {
+				width: 100%; }
 			figcaption {
 				float: left; } }
 		&:nth-of-type(even) {
@@ -128,7 +192,6 @@ $l_primary: #6B6661;
 		figcaption {
 			width: 47.5%; }
 		&:nth-of-type(odd) {
-			figure {}
 			figcaption {
 				margin-left: -7.5%; } }
 		&:nth-of-type(even) {

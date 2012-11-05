@@ -7,7 +7,7 @@ body {
 
 a {
 	color: $primary;
-	&:hover, &:focus, .hover {
+	&:hover, &:focus {
 		color: $secondary; } }
 
 /* header ---------------------- */

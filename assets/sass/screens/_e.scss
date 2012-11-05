@@ -3,6 +3,13 @@
 	html, body:after {
 		font-family: "e"; }
 	
+	[role="navigation"] {
+		a {
+			@include rem(padding, $base-px $line $base-px $line*1.95);
+			&:before {
+				@include rem(top, $base-px);
+				@include rem(left, $line); } } }
+	
 	[role="contentinfo"] {
 		margin-right: auto;
 		margin-left: auto; }

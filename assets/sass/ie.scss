@@ -8,7 +8,6 @@ $fix-mqs: 65em;
 		font-family: "c"; } }
 		
 .ie {
-	
-	
-	
-}
+	font-family: $sans !important;
+	[data-icon]:before, [data-icon]:after {
+		display: none !important; } }

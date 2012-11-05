@@ -1,6 +1,9 @@
 .pagination {
+	@include pie-clearfix;
 	text-align: center;
-	margin: auto;
+	margin: auto auto 1.5rem;
+	@include respond-min($c) {
+		margin: auto auto 3rem; }
 	@include respond-min($c) {
 		padding-right: 7.5%;
 		padding-left: 7.5%; }
@@ -13,7 +16,7 @@
 		@extend %letter-spacing;
 		display: inline-block;
 		padding: 0;
-		font: 400 12px/#{$base-line-height} $sans;
+		font: 500 12px/#{$base-line-height} $sans;
 		list-style: none; }
 	li:not(.next):not(.prev) {
 		@include rem(padding, 3px 9px);
@@ -23,7 +26,7 @@
 		@extend %transition;
 		display: block;
 		opacity: .5;
-		&:hover, &:focus, .hover {
+		&:hover, &:focus {
 			opacity: 1; }
 		&:before {
 			@extend %mr6; }
@@ -60,7 +63,7 @@
 	a {
 		@include rem(padding, 3px 9px); } }
 
-@media screen and (min-height: 600px) {
+@media screen and (min-height: 600px) and (min-width: $d) {
 	.pagination {
 		position: relative; }
 	.next, .prev {

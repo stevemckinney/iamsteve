@@ -149,6 +149,7 @@
 @include keyframes(bg) {
 	100% { background-position: center bottom; } }
 @include keyframes(title) {
+	0% { top: 2000px; }
 	80% { top: -5px; }
 	90% { top: 5px; }
 	100% { top: auto; } }
