@@ -25,7 +25,7 @@ a {
 	@extend %transition;
 	text-decoration: none;
 	color: $primary;
-	-webkit-tap-highlight-color: $secondary;
+	-webkit-tap-highlight-color: $primary_l3;
 	p &, .colophon &, figure & {
 		color: $secondary;
 		&:hover, &:focus {

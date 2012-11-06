@@ -95,8 +95,7 @@ article img {
 	position: relative;
 	h1 {
 		@extend %left;
-		@extend %transition;
-		@include wh(107px, 48px);
+		@include wh(106px, 49px);
 		@include hide-text;
 		display: block;
 		padding: 0;
@@ -105,6 +104,7 @@ article img {
 		&:hover, &:focus {
 			background: url(../images/logo_hover.png) center center no-repeat; }
 		@include respond-to(retina) {
+			@include wh(107px, 48px);
 			background: url(../images/logo_2x.png);
 			background-size: 107px 48px;
 			&:hover, &:focus {
