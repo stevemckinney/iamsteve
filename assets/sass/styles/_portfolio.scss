@@ -120,10 +120,10 @@
 		@include respond-to(retina) {
 			background-image: url(../images/_portfolio/_pages/button_small_2x.png); } } }
 			
-@include respond-to(retina) {
+/*
+@include respond-to(retina) { 
 	[class^="item_"] {
-		/*
-background-size: 286px 172px;
+		background-size: 286px 172px;
 		&:nth-of-type(even) {	
 			background-position: -2.5% 0;
 			&:before {
@@ -135,8 +135,8 @@ background-size: 286px 172px;
 		&:before, &:after {
 			@include wh(12px, 190px);
 			top: 0;
-			background-size: 24px 196px; }
-*/ } }
+			background-size: 24px 196px; } } }
+*/
 
 [class^="item_"] {
 	background-repeat: no-repeat;

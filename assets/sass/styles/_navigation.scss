@@ -66,16 +66,10 @@
 				
 .mobile {
 	@extend %right;
+	@extend %ss-icon;
 	@extend %transition;
-	@include hide-text;
-	@include wh(24px, 22px);
-	@include background-size(24px, 22px);
-	@include rem(padding, $base-px);
-	@include filter(drop-shadow(0 1px 1px $black));
-	display: block;
-	margin: 13px 0 0;
-	background: url(../images/_layout/nav_icon.png) center center no-repeat;
-	&:hover, &:focus {
-		opacity: .8; }
-	@include respond-to(retina) {
-		background: url(../images/_layout/nav_2x.png) 0 0 no-repeat; } }
+	@extend %ts;
+	@include rem(font-size, $line);
+	margin: 9px 0 0;
+	color: $primary_l3;
+	display: block; }

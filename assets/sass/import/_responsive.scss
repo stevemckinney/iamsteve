@@ -37,22 +37,22 @@
 
 //	Simple media queries
 @mixin respond-to($media) {
-  @if $media == iphone {
+  @if $media == a {
     @media screen and (min-width: $a) { 
     	@content; } }
-  @else if $media == tablet  {
+  @else if $media == b  {
     @media screen and (min-width: $b) { 
     	@content; } }
-  @else if $media == ipad {
+  @else if $media == c {
     @media screen and (min-width: $c) { 
     	@content; } }
-  @else if $media == id {
+  @else if $media == d {
     @media screen and (min-width: $d) { 
     	@content; } }
-  @else if $media == desktop {
+  @else if $media == e {
     @media screen and (min-width: $e) { 
     	@content; } }
-  @else if $media == max {
+  @else if $media == f {
     @media screen and (min-width: $f) { 
     	@content; } }
   @else if $media == retina {
