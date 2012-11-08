@@ -30,7 +30,7 @@ a {
 		color: $secondary;
 		&:hover, &:focus {
 			color: $primary; } } }
-/* !Base size ---------------------- */		
+/* !base size ---------------------- */		
 p, dt, dd, figcaption, li {
 	font: 400 #{$base-font-size*1.125}/#{$base-line-height} $body; }
 p, dd, figcaption, li {
