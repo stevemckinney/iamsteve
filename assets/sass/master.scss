@@ -78,7 +78,8 @@ body {
 	@include respond-min($c) {
 		@include box-shadow(inset 0 1px 0 $black, inset 0 -1px 0 $primary, 0 1px 0 fade-out($white, 0.6), 0 12px 48px -24px $primary_d1); }
 	@include respond-min($d) {
-		background: $primary url(../images/header_bg_alt.png) center bottom no-repeat; }
+		background: $primary url(../images/header_bg_alt.png) center bottom no-repeat;
+		@include background(url(../images/header_bg_alt.png) center bottom, linear-gradient($primary 75%, $primary_d2)); }
 	@include respond-to(retina) {
 		background-size: cover; } }
 
@@ -205,6 +206,9 @@ article {
 		margin: 0 0 $line; } }
 		
 [role="contentinfo"] {
+	text-align: center;
+	@include respond-min($c) {
+		text-align: left; }
 	ul {
 		@extend %subtle-box;
 		@include pie-clearfix;
@@ -220,6 +224,7 @@ article {
 				display: inline-block;
 				float: left; } }
 	small {
+		text-align: center;
 		@include rem(padding, $base-px 0 0 $base-px/2); }
 	.url, .author {
 		display: inline-block;

@@ -78,6 +78,7 @@
 	height: 286px;
 	@include background-size(552px, 286px);
 	@include respond-min($c) {
+		float: right;
 		width: cp(552px, 960px);
 		&:before, &:after {
 			width: cp(552px, 960px); } }
@@ -91,7 +92,7 @@
 		display: inline-block;
 		position: absolute;
 		min-width: 100%;
-		background: url(../images/_portfolio/_pages/browser_2x.png) no-repeat; }
+		background-repeat: no-repeat; }
 	&:before {
 		background-size: auto 44px;
 		height: 36px;
@@ -125,7 +126,16 @@
 		background-image: url(../images/_portfolio/_pages/button_small.png);
 		@include respond-to(retina) {
 			background-image: url(../images/_portfolio/_pages/button_small_2x.png); } } }
-			
+
+@include respond-to(nonretina) {
+	.browser {
+		&:before, &:after {
+			background-image: url(../images/_portfolio/_pages/browser.png); } } }
+@include respond-to(retina) {
+	.browser {
+		&:before, &:after {
+			background-image: url(../images/_portfolio/_pages/browser_2x.png); } } }
+		
 /*
 @include respond-to(retina) {
 	[class^="item_"] {

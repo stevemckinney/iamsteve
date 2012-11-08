@@ -16,14 +16,14 @@ input:not([type="submit"]) {
 	form {
 		@include pie-clearfix;
 		@include rem(margin, $line 0 0);
-		width: 100%;
+		width: 100%; }
 		input {
-			@include rem(font-size, 14px); }
+			@include rem(font-size, $base-px); }
 		[type="search"] {
 			@include border-radius(4px 0 0 4px); }
 		[type="submit"] {
 			width: 35%;
-			@include border-radius(0 4px 4px 0); } } }
+			@include border-radius(0 4px 4px 0); } }
 
 [type="search"] {
 	width: 65%;
@@ -49,3 +49,7 @@ input:not([type="submit"]) {
 			width: 40%; }
 		[type="search"] {
 			width: 60%; } } }
+@include respond-min($d) {
+	[role="contentinfo"] {
+		input {
+			@include rem(font-size, 14px); } } }

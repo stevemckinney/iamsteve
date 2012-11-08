@@ -57,6 +57,9 @@
     	@content; } }
   @else if $media == retina {
     @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) { 
+    	@content; } }
+  @else if $media == nonretina {
+    @media (-webkit-max-device-pixel-ratio: 1.499), (max-device-pixel-ratio: 1.499) { 
     	@content; } } }
 
 // Better/flexible media queries, with old IE fallback see: https://github.com/jakearchibald/sass-ie
