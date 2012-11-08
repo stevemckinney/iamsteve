@@ -71,5 +71,5 @@
 	@extend %ts;
 	@include rem(font-size, $line);
 	margin: 9px 0 0;
-	color: $primary_l3;
+	color: lighten($primary_l3, 3%);
 	display: block; }

@@ -125,10 +125,13 @@
 	a {
 		@include wh(32px); 
 		@include hide-text;
+		background-size: 207px 32px;
 		display: block;
-		background: url(../images/social_icons.png) no-repeat; 
+		background: url(../images/social_icons.png) no-repeat;
+		@include respond-to(retina) {
+			background: url(../images/social_icons_2x.png) no-repeat; }
 		opacity: 1;
-		margin: 0 $base-px 0 0; 
+		margin: 0 $base-px/2 0 0; 
 		line-height: 1;
 		@include box-shadow((0 0 2px transparentize($black, 0.8)));
 		&:hover {

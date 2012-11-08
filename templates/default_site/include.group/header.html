@@ -72,7 +72,7 @@
 </head>
 <body class="hentry">
 <!--[if lt IE 9]>
-	<p class="notice-warning">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+	<p class="notice-warning" style="padding: 12px">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 <![endif]-->
 	<div class="container">
 		<header role="banner">
@@ -95,7 +95,7 @@
 		{if:elseif segment_2 == "category"}
 			{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
 				{exp:channel:category_heading channel="blog"}
-					<h1 class="title">{category_name}</h1>
+					<h1 class="title entry-title">{category_name}</h1>
 				{/exp:channel:category_heading}
 			{/exp:channel:entries}
 		{if:elseif embed:entry_title}
@@ -103,7 +103,7 @@
 				<h1 class="title entry-title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full.">{embed:entry_title}</a></h1>
 			{/exp:channel:entries}
 		{if:else}
-			<h1 class="title">{segment_1}</h1>
+			<h1 class="title entry-title">{segment_1}</h1>
 		{/if}
 	</div>	
 	<section role="main">

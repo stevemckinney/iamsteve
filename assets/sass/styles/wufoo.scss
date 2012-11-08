@@ -44,7 +44,7 @@
 	li, .buttons {
 		padding: 0 2px; }
 	li {
-		@extend %margin-bottom; }
+		@include rem(margin, 0 0 $line); }
 	p.error {
 		@include border-radius(0 0 4px 4px);
 		@include box-shadow(0 0 0 1px $danger, 0 2px 1px $default);

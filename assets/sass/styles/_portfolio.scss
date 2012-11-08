@@ -24,11 +24,6 @@
 		top: -8px;
 		z-index: 1; }
 	&:nth-of-type(odd) {
-		@include respond-min($c) {
-			background-position: right $base-px;
-			.browser {
-				float: right;
-				margin-bottom: 0; } }
 		&:after {
 			background: url(../images/_portfolio/_pages/item_shadow.png) no-repeat;
 			right: 0; }
@@ -69,6 +64,15 @@
 		vertical-align: bottom;
 		float: right; } }
 
+[class^="item_"] {
+	background-repeat: no-repeat;
+	// to the right
+	&:nth-of-type(odd) {
+		background-position: left $base-px; }
+	// to the left
+	&:nth-of-type(even) {
+		background-position: right $base-px; } }
+
 .browser {
 	max-width: 552px;
 	height: 286px;
@@ -87,11 +91,13 @@
 		display: inline-block;
 		position: absolute;
 		min-width: 100%;
-		background: url(../images/_portfolio/_pages/browser.png) no-repeat; }
+		background: url(../images/_portfolio/_pages/browser_2x.png) no-repeat; }
 	&:before {
+		background-size: auto 44px;
 		height: 36px;
 		top: -$base-px*3; }
 	&:after {
+		background-size: auto 44px;
 		height: 8px;
 		background-position: 0 -36px;
 		bottom: -8px; }
@@ -121,7 +127,7 @@
 			background-image: url(../images/_portfolio/_pages/button_small_2x.png); } } }
 			
 /*
-@include respond-to(retina) { 
+@include respond-to(retina) {
 	[class^="item_"] {
 		background-size: 286px 172px;
 		&:nth-of-type(even) {	
@@ -138,20 +144,13 @@
 			background-size: 24px 196px; } } }
 */
 
-[class^="item_"] {
-	background-repeat: no-repeat;
-	&:nth-of-type(odd) {
-		background-position: left $base-px; }
-	&:nth-of-type(even) {
-		background-position: right $base-px; } }
-
 // page specific portfolio stuff
 .item-full {
 	@extend %margin-bottom;
 	img {
 		@extend %imgs;
-		position: relative; }
-	figcaption {} }
+		@include rem(margin, 0 0 $line);
+		position: relative; } }
 
 .portfolio-nav {
 	margin: 0;
@@ -182,7 +181,8 @@
 		img {
 			float: left;
 			width: 50%;
-			max-width: none; }
+			max-width: none;
+			margin: 0; }
 		figcaption {
 			width: 50%;
 			padding: 0 0 0 2.5%;

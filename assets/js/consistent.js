@@ -374,7 +374,7 @@ $(function() {
 	// $nav.addClass('hidden');
 	$.preloadCssImages();
 	$('.title').lettering();
-	$('.title').fitText(1, { minFontSize: '48px', maxFontSize: '72px' });
+	$('.title').fitText(1, { minFontSize: '42px', maxFontSize: '72px' });
 	$('.wordpress_post_formats .title').fitText(1, { minFontSize: '28px', maxFontSize: '68px' });
 	
 	
