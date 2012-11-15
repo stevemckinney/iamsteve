@@ -19,9 +19,9 @@
 			white-space: nowrap; }
 		&:before {
 			@extend %mr6;
-			@include rem(font-size, 12px);
 			@include rem(top, 16px);
 			display: none;
+			font-size: 75%;
 			float: left;
 			position: relative;
 			line-height: 1;
@@ -32,9 +32,9 @@
 		vertical-align: baseline; }
 	a, time, li {
 		color: fade-out($primary, .5);
-		@include rem(font-size, $base-px);
-		@include respond-min($c) {
-			@include rem(font-size, 14px); }
+		font-size: .875em;
+		@include respond-min($b) {
+			font-size: .975em; }
 		&:hover, &:focus {
 			@extend %transition;
 			opacity: 1;

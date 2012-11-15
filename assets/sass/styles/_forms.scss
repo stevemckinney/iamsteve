@@ -1,13 +1,12 @@
 input {
-	@include form($group: true, $radius: 4px);
+	@include form($group: true, $radius: none);
 	@include appearance(none);
-	@include rem(height, $line*1.5);
-	@include rem(line-height, $line*1.5);
+	@include rem(height, 36px);
 	border: none; }
 input:not([type="submit"]) {
 	font: 400 $base-font-size/1 $sans; }
 [type="submit"] {
-	@include element($primary_l2, $size: small, $radius: 0 4px 4px 0, $hover: true);
+	@include element($primary_l2, $size: small, $radius: 0 4px 4px 0, $hover: true, $font-size: false);
 	@extend %ts;
 	@extend %letter-spacing;
 	text-align: center; }
@@ -16,11 +15,12 @@ input:not([type="submit"]) {
 		@include pie-clearfix;
 		@include rem(margin, $line 0 0);
 		width: 100%; }
-		input {
-			@include rem(font-size, $base-px); }
+		[type="search"] {
+			font-size: .75em; }
 		[type="search"] {
 			@include border-radius(4px 0 0 4px); }
 		[type="submit"] {
+			font-size: .75em;
 			width: 35%;
 			@include border-radius(0 4px 4px 0); } }
 [type="search"] {
@@ -48,5 +48,5 @@ input:not([type="submit"]) {
 			width: 60%; } } }
 @include respond-min($d) {
 	[role="contentinfo"] {
-		input {
-			@include rem(font-size, 14px); } } }
+		[type="search"] {
+			font-size: .875em; } } }

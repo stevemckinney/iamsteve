@@ -5,8 +5,9 @@
 	a, figure {
 		display: inline-block; }
 	i, span {
-		@include rem(font-size, 14px);
-		font-style: normal;
+		font: {
+			size: 87.5%;
+			style: normal; }
 		display: block; }
 	i {
 		@include rem(font-size, $base-px);
@@ -26,7 +27,7 @@
 	span {
 		@include rem(margin, 0 0 0 $base-px / 2);
 		@include respond-min($c) {
-			font-size: 1rem; } }
+			font-size: 100%; } }
 	img {
 		@extend %imgs; } }
 		

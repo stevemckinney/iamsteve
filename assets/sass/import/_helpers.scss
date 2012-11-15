@@ -77,7 +77,7 @@
 
 // font size
 %base {
-	@include rem(font-size, 16px); }
+	font-size: 100%; }
 
 // mixins ---------------------- /
 

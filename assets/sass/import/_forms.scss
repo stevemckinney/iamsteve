@@ -32,9 +32,11 @@
 	padding: $padding;
 	
 	@if $group == true {
-		@include border-radius($radius); }
-	@else {
-		@include border-radius($radius 0 0 $radius); }
+		@if $radius != "none" {
+			@include border-radius($radius); } }
+	@else if $group != true {
+		@if $radius != "none" {
+			@include border-radius($radius 0 0 $radius); } }
 	
 	// element type
 	@if $type == input {

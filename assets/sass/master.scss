@@ -16,55 +16,9 @@
 ---------------------------------------------------------------------- */
 html, body:after {
 	font-family: "a"; }
-html {
-	padding-bottom: $base-px/4;
-	/*
-@include background(
-		linear-gradient(
-			0deg,
-			$info 5%, 
-			$warning 5%,
-			$warning 10%, 
-			$success 10%,
-			$success 15%,
-			$danger 15%,
-			$danger 20%,
-			$info 20%,
-			$info 25%, 
-			$warning 25%,
-			$warning 30%, 
-			$success 30%,
-			$success 35%,
-			$danger 35%,
-			$danger 40%,
-			$info 40%,
-			$info 45%, 
-			$warning 45%,
-			$warning 50%, 
-			$success 50%,
-			$success 55%,
-			$danger 55%,
-			$danger 60%,
-			$info 60%,
-			$info 65%, 
-			$warning 65%,
-			$warning 70%, 
-			$success 70%,
-			$success 75%,
-			$danger 75%,
-			$danger 80%,
-			$info 80%,
-			$info 85%, 
-			$warning 85%,
-			$warning 90%, 
-			$success 90%,
-			$success 95%,
-			$danger 95%,
-			$danger 100%));
-*/
-	font-size: 100%; }
 body {
-	line-height: normal;
+	font-size: 100%;
+ 	line-height: normal;
 	color: $primary;
 	background: url(../images/bg_wave.png); }
 .container {
@@ -235,7 +189,7 @@ article {
 		&:hover, &:focus {
 			color: $primary; } }
 	small, a {
-		@include rem(font-size, $base-px);
+		font-size: .75rem;
 		margin: 0;
 		display: block;
 		color: $primary;
@@ -245,7 +199,7 @@ article {
 			line-height: 2.25rem;
 			@include rem(padding, 0 $base-px/2); }
 		@include respond-min($d) {
-			@include rem(font-size, 14px); } } } }
+			font-size: .875rem; } } } }
 
 dl {
 	line-height: 1.5; }
@@ -263,8 +217,8 @@ dd {
 .button, .button-small {
 	@include element($alt, $size: normal, $hover: true);
 	@extend %letter-spacing;
-	@include rem(font-size, 14px);
-	white-space: nowrap; }
+	white-space: nowrap; 
+	font: 400 .75em/1 $sans; }
 
 .button-small {
 	@include rem(padding, 3px 6px);
@@ -387,7 +341,7 @@ section .gist {
 			color: $white !important; } }
 	* {
 		font-family: $monospace !important;
-		font-size: .75rem; } }
+		font-size: 95%; } }
 
 /* figure ------------------------------ */
 figure {

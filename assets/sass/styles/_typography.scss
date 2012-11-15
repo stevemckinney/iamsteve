@@ -13,7 +13,7 @@
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	font-weight: 500;
-	font-family: $heading;
+	font-family: $heading; // potentially chaparral or meta serif
 	color: $primary;
 	a {
 		display: block;
@@ -32,7 +32,7 @@ a {
 			color: $primary; } } }
 /* !base size ---------------------- */		
 p, dt, dd, figcaption, li {
-	font: 400 #{$base-font-size*1.125}/#{$base-line-height} $body; }
+	font: 400 1.125em/#{$base-line-height} $body; }
 p, dd, figcaption, li {
 	color: fade-out($primary, 0.15); }
 .meta li {
@@ -64,21 +64,18 @@ p, li {
 		@include hyphens(auto);
 		@include rem(margin, $base-px/2 0 $base-px); }
 	h1, .h1 {
-		@include rem(font-size, 30px); }
+		font-size: 1.875em; }
 	h2, .h2 {
-		@include rem(font-size, 24px); }
-	h3, .h3 {
-		@include rem(font-size, 18px); }
-	h4, .h4 {
-		@include rem(font-size, 16px); }
-	p, dt, dd {
-		@include rem(font-size, 16px); }
-	p {
-		&:first-child {
-			@include rem(font-size, 18px); } } }
+		font-size: 1.5em; }
+	h3, .h3, p:first-child {
+		font-size: 1.125em; }
+	h4, .h4, p, dt, dd  {
+		font-size: 1em; } }
 			
 code {
-	@include rem(font-size, 16px);
+	font-size: 100%;
+	font-size: 1em;
+	font-weight: 400;
 	pre & {
 		max-height: 200px;
 		overflow: auto;
@@ -93,47 +90,42 @@ code {
 		tab-size: 2; } }
 
 @include respond-min($c) {
-	code, {
-		@include rem(font-size, 16px); }
+	code {
+		font-size: 1.25em; }
 	[role="main"] {
-		h1, h2, h3, h4 {
-			@include rem(margin, $line 0 $base-px); }
 		h1, .h1 {
-			@include rem(font-size, 42px); }
+		font-size: 2.625em; }
 		h2, .h2 {
-			@include rem(font-size, 36px); }
+			font-size: 2.25em; }
 		h3, .h3 {
-			@include rem(font-size, 30px); }
-		h4, .h4 {
-			@include rem(font-size, 24px); }
-		p, dt, dd {
-			@include rem(font-size, 18px); }
-		p {
-			&:first-child {
-				@include rem(font-size, $line); } } } }
+			font-size: 1.875em; }
+		h4, .h4, p:first-child {
+			font-size: 1.5em; }
+		p, dt, dd  {
+			font-size: 1.125em; } } }
 
 /* !aside ---------------------- */
 [role="complementary"], .related-entries {
 	p {
-		@include rem(font-size, 14px);
+		font-size: 87.5%;
 		padding: 0;
 		@include respond-to($c) {
-			@include rem(font-size, 16px); } }
+			font-size: 100%; } }
 	h3 {
 		line-height: 1;
 		margin: 0;
 		@include rem(padding, 0 0 $base-px); }
 	@include respond-min($c) {
 		h3 {
-			@include rem(font-size, 30px); }
+			font-size: 1.875em; }
 		p {
-			@include rem(font-size, 16px); } } }
+			font-size: 100%; } } }
 
 /* !nav ---------------------- */
 [role="navigation"] {
 	a {
 		font-size: 15px;
-		font: 500 .9375rem/#{$base-line-height} $body;
+		font: 500 .875rem/#{$base-line-height} $body;
 		color: #f0f4fc;
 		letter-spacing: 1px; } }
 
@@ -148,7 +140,7 @@ code {
 .portfolio-nav {
 	h2 {
 		@include rem(margin, 0 0 $base-px);
-		@include rem(font-size, 16px); } }
+		font-size: 1em; } }
 
 /* !no fout ---------------------- */
 li, p, dd, dt, 
@@ -208,7 +200,7 @@ blockquote {
 	&:before {
 		@include rem(margin, 0 $line 0 0);
 		content: "pullquote";
-		font: 900 16px/1.5 $icons;
+		font: 900 100%/1.5 $icons;
 		color: $qd;
 		display: inline-block;
 		opacity: .5;
