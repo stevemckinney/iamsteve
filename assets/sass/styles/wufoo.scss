@@ -18,6 +18,7 @@
 		padding: $base-px; }
 	input.email, input.text, textarea.textarea, input.file, select.select {
 		@extend input;
+		@include border-radius($radius);
 		font-family: $sans;
 		font-weight: 400; }
 	textarea.textarea {

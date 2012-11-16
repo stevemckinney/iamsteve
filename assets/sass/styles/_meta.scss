@@ -32,9 +32,9 @@
 		vertical-align: baseline; }
 	a, time, li {
 		color: fade-out($primary, .5);
-		font-size: .875em;
+		font-size: .75rem;
 		@include respond-min($b) {
-			font-size: .975em; }
+			font-size: .875rem; }
 		&:hover, &:focus {
 			@extend %transition;
 			opacity: 1;

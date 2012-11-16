@@ -26,7 +26,7 @@
 	$status: "normal",
 	$padding: 6px,
 	$placeholder: false,
-	$radius: 4px,
+	$radius: $radius,
 	$group: false ) {
 	@include form-base;
 	padding: $padding;
@@ -41,14 +41,14 @@
 	// element type
 	@if $type == input {
 		@if $status != "normal" {
-			@include box-shadow(0 2px 1px $default, 0 0 0 1px $border);
+			@include box-shadow(0 2px 1px $default, inset 0 0 0 1px $border);
 			background-image: linear-gradient(90deg, fade-out(#afb1b1, 0.85) 0%, rgba(176,178,178,.15) 100%);
 			.noboxshadow & {
 				border: 1px solid $border; } }
 		@else {
-			@include box-shadow(0 0 0 1px $border, inset 0 1px 2px fade-out($black, 0.9), 0 2px 1px $default);
+			@include box-shadow(inset 0 0 0 1px lighten($border, 30%), inset 0 1px 3px fade-out($black, .8), 0 1px 1px $default);
 			@include background(
-				linear-gradient(top, rgba(176,178,178,.15) 0%, rgba(176,178,178,0) 100%));
+				linear-gradient(top, rgba(176,178,178,.25) 0%, rgba(176,178,178,0) 100%));
 			.noboxshadow & {
 				border: 1px solid $border; } }
 		@if $placeholder == true {
@@ -62,9 +62,9 @@
 	// hover state
 	&:hover {
 		@if $type == input { 
-			@include box-shadow(0 0 0 1px $border, inset 0 1px 2px fade-out($black, 0.9), 0 2px 1px $default);
+			@include box-shadow(inset 0 0 0 1px lighten($border, 30%), inset 0 1px 3px fade-out($black, .8), 0 1px 1px $default);
 			@include background(
-				linear-gradient(top, rgba(176,178,178,.15) 0%, rgba(176,178,178,0) 100%));
+				linear-gradient(top, rgba(176,178,178,.25) 0%, rgba(176,178,178,0) 100%), $white);
 			.noboxshadow & {
 				border: 1px solid $border; } } }
 	
@@ -72,7 +72,7 @@
 	&:active, &:focus {
 		outline: none;
 		background-color: $white;
-		@include box-shadow(0 0 0 1px $border, inset 0 0 4px fade-out($black, 0.8), 0 0 8px fade-out($colour, 0.4));
+		@include box-shadow(inset 0 0 0 1px lighten($border, 30%), inset 0 1px 4px fade-out($black, 0.8), 0 0 8px fade-out($colour, 0.4));
 		.noboxshadow & {
 			border-color: fade-out($colour, 0.4); } }
 }

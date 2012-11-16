@@ -3,34 +3,51 @@
 //	Style anything consistently
 //	Works well for anything else you'd like to style similar apart from buttons/forms
 // 	-----------------------------------------
+$black: #000;
+$white: #fff;
+
 @mixin element-base {
 	@include transition(none);
-	display: inline-block;
-	position: relative; }
+	position: relative;
+	font-family: $sans; }
 
-/*
- # To do
- - subtle style
-*/
-
-@mixin element($main-colour: $default, $radius: $radius, $subtle: false, $shadow: true, $style: true, $size: false, $hover: false, $font-size: true) {
+@mixin element(
+	$main-colour: $default, 
+	$radius: $radius, 
+	$subtle: false, 
+	$shadow: true, 
+	$style: true, 
+	$size: false, 
+	$hover: false, 
+	$font-size: true, 
+	$weight: 400, 
+	$display: inline-block) {
 	
+	$display: unquote($display);
+	$radius: unquote($radius);
 	$size: unquote($size);
 	$text-colour: $white;
-	$light-colour: lighten($main-colour, 10%);
+	$light-colour: lighten($main-colour, 40%);
 	$dark-colour: darken($main-colour, 15%);
 	
 	$hover-main-colour: lighten($main-colour, 5%);
 	$hover-light-colour: lighten($light-colour, 5%);
 	$hover-dark-colour: lighten($dark-colour, 5%);
 	
-	$active-main-colour: darken($main-colour, 7.5%);
-	$active-light-colour: darken($light-colour, 7.5%);
-	$active-dark-colour: darken($dark-colour, 10%);
+	$active-main-colour: $main-colour;
+	$active-light-colour: $light-colour;
+	$active-dark-colour: $dark-colour;
 	
 	$subtle-colour: #666;
 	
 	@include element-base;
+	
+	@if $display == block {
+		display: block; }
+	@else {
+		display: inline-block; }
+	
+	font-weight: $weight;
 	
 	@if $subtle == true { 
 		color: $subtle-colour; }
@@ -52,11 +69,14 @@
 		@include rem(padding, $base-px/4 $line/4);
 		@if $font-size == true {
 			font-size: 85%; } }
-	@else if $size == false {}
-	@else {
+	@else if $size == xxsmall {
+		@include rem(padding, 3px);
+		@if $font-size == true {
+			font-size: 70%; } }
+	@else if $size == none {
 		@include rem(padding, $base-px/1.3333333333 $line); }
 	
-	@if $radius != none {
+	@if $radius != none OR $radius == false {
 		@include border-radius($radius); }
 	
 	// you may just want a button without style 
@@ -65,65 +85,11 @@
 	@if $style == true {
 		// subtle start
 		@if $subtle == true {
-			@include box-shadow(0 0 0 1px fade-out($subtle-colour, 0.75));
+			@include box-shadow(0 0 0 1px fade-out($subtle-colour, 1));
 			.no-boxshadow & {
-				border: 1px solid lighten($active-dark-colour, 10%);
-				border-bottom: 1px solid $active-dark-colour; }
+				border: 1px solid transparent; }
 			.no-cssgradients & {
-				background: $active-main-colour; }
-			@if $hover == true {
-				&:hover, &:focus {
-					@if lightness($main-colour) > 60% {
-					  color: darken($text-colour, 80%); }
-					@else {
-					  color: $text-colour; }
-					@include background(
-						linear-gradient(
-							$hover-main-colour 0%,
-							fade-out($hover-dark-colour, 0.2) 90%), $hover-main-colour);
-						
-					@if $shadow == true {		
-						@include box-shadow(
-							0 1px 0 darken($hover-dark-colour, 5%),
-							0 0 0 1px $hover-dark-colour,
-							inset 0 1px 0 $hover-light-colour,
-							0 1px 3px fade-out($black, 0.75)); }
-					
-					@if $radius != none {
-						@include border-radius($radius); }
-						
-					text-shadow: 0 -1px 1px darken($hover-dark-colour, 15%);
-					
-					// modernizr stuff
-					.no-boxshadow & {
-						border: 1px solid lighten($hover-dark-colour, 10%);
-						border-bottom: 1px solid $hover-dark-colour; }
-					.no-cssgradients & {
-						background: $hover-main-colour; } }
-						
-				&:active {
-					color: $text-colour;
-					@include background(
-						linear-gradient(
-							fade-out($active-dark-colour, 0.1) 0%,
-							fade-out($active-dark-colour, 0.5) 100%), $active-main-colour);
-						
-					@if $shadow == true {		
-						@include box-shadow(
-							0 -1px 0 darken($active-dark-colour, 15%),
-							0 0 0 1px $active-dark-colour,
-							inset 0 1px 3px darken($active-dark-colour, 10%),
-							0 1px 1px fade-out($white, 0.75));
-						text-shadow: 0 -1px 1px darken($active-dark-colour, 15%); }
-					
-					@if $radius != none {
-						@include border-radius($radius); }
-					
-					.no-boxshadow & {
-						border: 1px solid lighten($active-dark-colour, 10%);
-						border-bottom: 1px solid $active-dark-colour; }
-					.no-cssgradients & {
-						background: $active-main-colour; } } } } // close $subtle true
+				background: $active-main-colour; } } // close $subtle true
 		// non subtle start		
 		@else {
 			@include background(
@@ -133,70 +99,70 @@
 	
 			@if $shadow == true {		
 				@include box-shadow(
-					0 1px 0 darken($dark-colour, 15%),
-					0 0 0 1px $dark-colour,
-					inset 0 1px 1px $light-colour,
+					inset 0 -1px 0 darken($dark-colour, 15%),
+					inset 0 0 0 1px $dark-colour,
+					inset 0 1px 2px $light-colour,
+					inset 0 1px 6px rgba($light-colour, .4),
+					inset 0 -1px 6px $dark-colour,
 					inset 0 -1px 3px $dark-colour,
-					0 1px 3px fade-out($black, 0.75));
+					inset -1px 0 3px saturate($dark-colour, 40%),
+					inset 1px 0 3px saturate($dark-colour, 40%),
+					0 1px 2px rgba($black, .25));
 				text-shadow: 0 -1px 1px darken($dark-colour, 15%); }
 			
 			// modernizr stuff
 			.no-boxshadow & {
-				border: 1px solid $dark-colour;
-				border-bottom: 1px solid darken($dark-colour, 15%); }
+				border: 1px solid darken($dark-colour, 15%); }
 			.no-cssgradients & {
 				background: $main-colour; }
-			
-			@if $hover == true {
-				&:hover, &:focus {
-					color: $text-colour;
-					@include background(
-						linear-gradient(
-							$hover-main-colour 0%,
-							fade-out($hover-dark-colour, 0.2) 90%), $hover-main-colour);
-						
-					@if $shadow == true {		
-						@include box-shadow(
-							0 1px 0 darken($hover-dark-colour, 5%),
-							0 0 0 1px $hover-dark-colour,
-							inset 0 1px 0 $hover-light-colour,
-							0 1px 3px fade-out($black, 0.75)); }
-					
-					@if $radius != none {
-						@include border-radius($radius); }
-						
-					text-shadow: 0 -1px 1px darken($hover-dark-colour, 15%);
-					
-					// modernizr stuff
-					.no-boxshadow & {
-						border: 1px solid lighten($hover-dark-colour, 10%);
-						border-bottom: 1px solid $hover-dark-colour; }
-					.no-cssgradients & {
-						background: $hover-main-colour; } }
-						
-				&:active {
-					color: $text-colour;
-					@include background(
-						linear-gradient(
-							fade-out($active-dark-colour, 0.1) 0%,
-							fade-out($active-dark-colour, 0.5) 100%), $active-main-colour);
-						
-					@if $shadow == true {		
-						@include box-shadow(
-							0 -1px 0 darken($active-dark-colour, 15%),
-							0 0 0 1px $active-dark-colour,
-							inset 0 1px 3px darken($active-dark-colour, 10%),
-							0 1px 1px fade-out($white, 0.75));
-						text-shadow: 0 -1px 1px darken($active-dark-colour, 15%); }
-					
-					@if $radius != none {
-						@include border-radius($radius); }
-					
-					.no-boxshadow & {
-						border: 1px solid lighten($active-dark-colour, 10%);
-						border-bottom: 1px solid $active-dark-colour; }
-					.no-cssgradients & {
-						background: $active-main-colour; } } }
 		} // close else
+		@if $hover == true {
+			&:hover, &:focus {
+				color: $text-colour;
+				@include background(
+					linear-gradient(
+						$hover-main-colour 0%,
+						fade-out($hover-dark-colour, 0.2) 90%), $hover-main-colour);
+				@if $shadow == true {		
+					@include box-shadow(
+						inset 0 -1px 0 darken($hover-dark-colour, 15%),
+						inset 0 0 0 1px $hover-dark-colour,
+						inset 0 1px 2px $hover-light-colour,
+						inset 0 1px 6px rgba($hover-light-colour, .4),
+						inset 0 -1px 6px $hover-dark-colour,
+						inset 0 -1px 3px $hover-dark-colour,
+						inset -1px 0 3px saturate($hover-dark-colour, 40%),
+						inset 1px 0 3px saturate($hover-dark-colour, 40%),
+						0 1px 2px rgba($black, .25));
+					text-shadow: 0 -1px 1px darken($hover-dark-colour, 15%); }
+				
+				// modernizr stuff
+				.no-boxshadow & {
+					border: 1px solid lighten($hover-dark-colour, 10%); }
+				.no-cssgradients & {
+					background: $hover-main-colour; } }
+					
+			&:active {
+				color: $text-colour;
+				@include background(
+					linear-gradient(
+						fade-out($active-dark-colour, 0.1) 0%,
+						fade-out($active-dark-colour, 0.5) 100%), $active-main-colour);
+				@if $shadow == true {		
+					@include box-shadow(
+						inset 0 -1px 0 $active-dark-colour,
+						inset 0 0 0 1px darken($active-dark-colour, 15%),
+						inset 0 2px 3px darken($active-dark-colour, 10%),
+						inset 0 -1px 6px $active-dark-colour,
+						inset 0 -1px 3px $active-dark-colour,
+						inset -1px 0 3px saturate($active-dark-colour, 40%),
+						inset 1px 0 3px saturate($active-dark-colour, 40%),
+						0 1px 2px rgba($white, .25));
+					text-shadow: 0 -1px 1px darken($active-dark-colour, 15%); }
+				
+				.no-boxshadow & {
+					border: 1px solid lighten($active-dark-colour, 10%); }
+				.no-cssgradients & {
+					background: $active-main-colour; } } }
 	} // close $style
 }
