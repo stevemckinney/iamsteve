@@ -124,9 +124,9 @@
 	a {
 		@include wh(32px); 
 		@include hide-text;
-		background-size: 207px 32px;
 		display: block;
 		background: url(../images/social_icons.png) no-repeat;
+		background-size: 207px 32px;
 		@include respond-to(retina) {
 			background: url(../images/social_icons_2x.png) no-repeat; }
 		opacity: 1;
