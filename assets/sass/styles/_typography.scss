@@ -89,7 +89,7 @@ code {
 
 @include respond-min($c) {
 	code {
-		font-size: 1.25em; 
+		font-size: 1em; 
 		pre & {
 			font-size: 1em; } }
 	[role="main"] {
