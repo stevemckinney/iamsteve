@@ -254,35 +254,90 @@
   }
 }
 
-/* line 3, ../../sass/custom/about_version_4.scss */
-.title {
-  -webkit-transition: -webkit-transform 0.2s linear, text-shadow 0.7s ease;
-  -moz-transition: -moz-transform 0.2s linear, text-shadow 0.7s ease;
-  -o-transition: -o-transform 0.2s linear, text-shadow 0.7s ease;
-  transition: transform 0.2s linear, text-shadow 0.7s ease;
+/* line 2, ../../sass/custom/scale_color.scss */
+.example-box {
+  width: 48.75%;
+  margin: 0 2.5% 1.5em 0;
+  display: inline-block;
+  vertical-align: top;
+}
+/* line 7, ../../sass/custom/scale_color.scss */
+.example-box p:first-child {
+  font-size: 1rem;
+}
+/* line 9, ../../sass/custom/scale_color.scss */
+.example-box:nth-of-type(2n) {
+  margin-right: 0;
+}
+/* line 11, ../../sass/custom/scale_color.scss */
+.example-box span {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  vertical-align: top;
   width: 100%;
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  text-align: center;
-  font-family: "bistro-script-web", sans-serif;
-  width: 96%;
-  margin: auto;
+  height: 200px;
+  margin: 0 0 1.5em;
 }
 
-/* line 15, ../../sass/custom/about_version_4.scss */
-.cssmask .title {
-  -webkit-mask: none !important;
+/* line 19, ../../sass/custom/scale_color.scss */
+p:empty {
+  display: none;
 }
 
-/* line 17, ../../sass/custom/about_version_4.scss */
-.about_version_4 .title:hover {
-  -webkit-transform: scale(1.015) translateY(10px);
-  -moz-transform: scale(1.015) translateY(10px);
-  -ms-transform: scale(1.015) translateY(10px);
-  -o-transform: scale(1.015) translateY(10px);
-  transform: scale(1.015) translateY(10px);
-  text-shadow: 0 -25px 5px rgba(0, 0, 0, 0.1);
+/* line 21, ../../sass/custom/scale_color.scss */
+.e1-scale {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eea29e), color-stop(50%, #dd453d), color-stop(100%, #781a15));
+  background: -webkit-linear-gradient(#eea29e, #dd453d, #781a15);
+  background: -moz-linear-gradient(#eea29e, #dd453d, #781a15);
+  background: -o-linear-gradient(#eea29e, #dd453d, #781a15);
+  background: linear-gradient(#eea29e, #dd453d, #781a15);
+}
+
+/* line 23, ../../sass/custom/scale_color.scss */
+.e1-darken {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eea29e), color-stop(50%, #dd453d), color-stop(100%, #761a15));
+  background: -webkit-linear-gradient(#eea29e, #dd453d, #761a15);
+  background: -moz-linear-gradient(#eea29e, #dd453d, #761a15);
+  background: -o-linear-gradient(#eea29e, #dd453d, #761a15);
+  background: linear-gradient(#eea29e, #dd453d, #761a15);
+}
+
+/* line 25, ../../sass/custom/scale_color.scss */
+.e2-scale {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #c7d897), color-stop(50%, #88a23d), color-stop(100%, #44511e));
+  background: -webkit-linear-gradient(#c7d897, #88a23d, #44511e);
+  background: -moz-linear-gradient(#c7d897, #88a23d, #44511e);
+  background: -o-linear-gradient(#c7d897, #88a23d, #44511e);
+  background: linear-gradient(#c7d897, #88a23d, #44511e);
+}
+
+/* line 27, ../../sass/custom/scale_color.scss */
+.e2-darken {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bcd081), color-stop(50%, #88a23d), color-stop(100%, #313a16));
+  background: -webkit-linear-gradient(#bcd081, #88a23d, #313a16);
+  background: -moz-linear-gradient(#bcd081, #88a23d, #313a16);
+  background: -o-linear-gradient(#bcd081, #88a23d, #313a16);
+  background: linear-gradient(#bcd081, #88a23d, #313a16);
+}
+
+/* line 29, ../../sass/custom/scale_color.scss */
+.e3-scale {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #9ccce4), color-stop(50%, #3a9ac9), color-stop(100%, #1c4d66));
+  background: -webkit-linear-gradient(#9ccce4, #3a9ac9, #1c4d66);
+  background: -moz-linear-gradient(#9ccce4, #3a9ac9, #1c4d66);
+  background: -o-linear-gradient(#9ccce4, #3a9ac9, #1c4d66);
+  background: linear-gradient(#9ccce4, #3a9ac9, #1c4d66);
+}
+
+/* line 31, ../../sass/custom/scale_color.scss */
+.e3-darken {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #94c8e2), color-stop(50%, #3a9ac9), color-stop(100%, #19455b));
+  background: -webkit-linear-gradient(#94c8e2, #3a9ac9, #19455b);
+  background: -moz-linear-gradient(#94c8e2, #3a9ac9, #19455b);
+  background: -o-linear-gradient(#94c8e2, #3a9ac9, #19455b);
+  background: linear-gradient(#94c8e2, #3a9ac9, #19455b);
 }

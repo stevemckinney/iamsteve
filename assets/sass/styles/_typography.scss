@@ -81,16 +81,17 @@ code {
 		color: $primary;
 		direction: ltr;
 		text-align: left;
-		white-space: pre;
-		word-spacing: normal;
+		white-space: pre-line;
 	
-		-moz-tab-size: 2;
-		-o-tab-size: 2;
-		tab-size: 2; } }
+		-moz-tab-size: 1;
+		-o-tab-size: 1;
+		tab-size: 1; } }
 
 @include respond-min($c) {
 	code {
-		font-size: 1.25em; }
+		font-size: 1.25em; 
+		pre & {
+			font-size: 1em; } }
 	[role="main"] {
 		h1, .h1 {
 		font-size: 2.625em; }
@@ -163,8 +164,6 @@ pre {
 		@include rem(padding, $base-px);
 		display: block;
 		background: none; } }
-pre, code {
-	font: $base-font-size/#{$base-line-height} $monospace; }
 code {
 	@include rem(padding, 2px);
 	@include border-radius(2px);

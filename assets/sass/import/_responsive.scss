@@ -13,7 +13,7 @@
 
 
 // px to em
-@function calc-em($target-px, $context) {
+@function em($target-px, $context) {
   @return ($target-px / $context) * 1em; }
 
 // Baseline, measured in pixels

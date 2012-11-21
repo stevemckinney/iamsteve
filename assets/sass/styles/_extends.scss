@@ -132,7 +132,7 @@
 		opacity: 1;
 		margin: 0 $base-px/2 0 0; 
 		line-height: 1;
-		@include box-shadow((0 0 2px transparentize($black, 0.8)));
+		@include box-shadow(0 0 2px transparentize($black, 0.8));
 		&:hover {
 			opacity: .75; } } }
 
