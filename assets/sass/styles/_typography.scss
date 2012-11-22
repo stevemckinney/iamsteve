@@ -55,7 +55,8 @@ p, li {
 /* !header ---------------------- */
 .title {
 	font-family: $slab;
-	font-weight: 100;
+	font-weight: 100; }
+.title, .title span {
 	color: $primary_l3; }
 
 /* !content ---------------------- */

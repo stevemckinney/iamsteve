@@ -217,12 +217,14 @@ dd {
 .button, .button-small {
 	@include element($alt, $size: normal, $hover: true);
 	@extend %letter-spacing;
-	white-space: nowrap; 
-	font: 400 .75em/1 $sans; }
+	white-space: nowrap;
+	font-size: .75em;
+	line-height: 1.5; }
 
 .button-small {
 	@include rem(padding, 6px 9px);
-	font-size: 70%; }
+	font-size: 70%;
+	line-height: 1; }
 
 
 /* !notices ---------------------- */
