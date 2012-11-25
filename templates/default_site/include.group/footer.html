@@ -32,20 +32,8 @@
 <!-- Javascript -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 {exp:minimee:js minify="yes"}<script src="{global:theme_url}/ee/assets/js/consistent.js"></script>{/exp:minimee:js}
-{if global:env == "production"}<script>var _gauges = _gauges || [];
-  (function() {
-    var t   = document.createElement('script');
-    t.type  = 'text/javascript';
-    t.async = true;
-    t.id    = 'gauges-tracker';
-    t.setAttribute('data-site-id', '4f205ec0cb25bc4a4b000001');
-    t.src = '//secure.gaug.es/track.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(t, s);
-  })();
-  
-  // 576547804
-var GoSquared = {};
+{if global:env == "production"}<script>
+	var GoSquared = {};
   GoSquared.acct = "GSN-610812-E";
   GoSquared.UserName = "visitor";
   (function(w){
@@ -60,7 +48,6 @@ var GoSquared = {};
     w.addEventListener ?
       w.addEventListener("load", gs, false) :
       w.attachEvent("onload", gs);
-  })(window);
-</script>{/if}
+  })(window);</script>{/if}
 </body>
 </html>
