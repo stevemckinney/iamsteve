@@ -104,11 +104,11 @@
 @mixin animation($animation) {
 	$animation: unquote($animation);
 	@include experimental(animation, $animation,
-    -moz, -webkit, -o, -ms, not -khtml, official); } 
+    -moz, -webkit, -o, not -ms, not -khtml, official); } 
 @mixin animation-fill-mode($mode) {
 	$mode: unquote($mode);
 	@include experimental(animation-fill-mode, $mode,
-    -moz, -webkit, -o, -ms, not -khtml, official); }
+    -moz, -webkit, -o, not -ms, not -khtml, official); }
 	
 @mixin wh($width: false, $height: false) {
 	$width: unquote($width);
@@ -150,10 +150,9 @@
 @include keyframes(bg) {
 	100% { background-position: center bottom; } }
 @include keyframes(title) {
-	0% { top: 2000px; }
 	80% { top: -5px; }
 	90% { top: 5px; }
-	100% { top: auto; } }
+	100% { top: 0; } }
 @include keyframes(nav) {
 	80% { opacity: 0.5; right: auto; }
 	90% { opacity: 0.65; right: auto; }
