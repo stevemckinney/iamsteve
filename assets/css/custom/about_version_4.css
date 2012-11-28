@@ -1,1 +1,264 @@
-.hidden{display:none}@-webkit-keyframes bg{100%{background-position:center bottom}}@-moz-keyframes bg{100%{background-position:center bottom}}@-ms-keyframes bg{100%{background-position:center bottom}}@-o-keyframes bg{100%{background-position:center bottom}}@keyframes bg{100%{background-position:center bottom}}@-webkit-keyframes title{80%{top:-5px}90%{top:5px}100%{top:0}}@-moz-keyframes title{80%{top:-5px}90%{top:5px}100%{top:0}}@-ms-keyframes title{80%{top:-5px}90%{top:5px}100%{top:0}}@-o-keyframes title{80%{top:-5px}90%{top:5px}100%{top:0}}@keyframes title{80%{top:-5px}90%{top:5px}100%{top:0}}@-webkit-keyframes nav{80%{opacity:0.5;right:auto}90%{opacity:0.65;right:auto}100%{opacity:1;right:auto}}@-moz-keyframes nav{80%{opacity:0.5;right:auto}90%{opacity:0.65;right:auto}100%{opacity:1;right:auto}}@-ms-keyframes nav{80%{opacity:0.5;right:auto}90%{opacity:0.65;right:auto}100%{opacity:1;right:auto}}@-o-keyframes nav{80%{opacity:0.5;right:auto}90%{opacity:0.65;right:auto}100%{opacity:1;right:auto}}@keyframes nav{80%{opacity:0.5;right:auto}90%{opacity:0.65;right:auto}100%{opacity:1;right:auto}}.title{-webkit-transition:-webkit-transform 0.2s linear,text-shadow 0.7s ease;-moz-transition:-moz-transform 0.2s linear,text-shadow 0.7s ease;-o-transition:-o-transform 0.2s linear,text-shadow 0.7s ease;transition:transform 0.2s linear,text-shadow 0.7s ease;width:100%;padding-left:0;padding-right:0;margin-left:auto;margin-right:auto;display:block;text-align:center;font-family:"bistro-script-web", sans-serif;width:96%;margin:auto}.cssmask .title{-webkit-mask:none !important}.about_version_4 .title:hover{-webkit-transform:scale(1.015) translateY(10px);-moz-transform:scale(1.015) translateY(10px);-ms-transform:scale(1.015) translateY(10px);-o-transform:scale(1.015) translateY(10px);transform:scale(1.015) translateY(10px);text-shadow:0 -25px 5px rgba(0,0,0,0.1)}
+/* 5px / 16px */
+/* 480px / 16px */
+/* 600px / 16px */
+/* 768px / 16px */
+/* 900px / 16px */
+/* 960px / 16px */
+/* 1200px / 16px */
+/* line 25, ../../sass/import/_helpers.scss */
+.hidden {
+  display: none;
+}
+
+@-webkit-keyframes bg {
+  /* line 151, ../../sass/import/_helpers.scss */
+  100% {
+    background-position: center bottom;
+  }
+}
+
+@-moz-keyframes bg {
+  /* line 151, ../../sass/import/_helpers.scss */
+  100% {
+    background-position: center bottom;
+  }
+}
+
+@-ms-keyframes bg {
+  /* line 151, ../../sass/import/_helpers.scss */
+  100% {
+    background-position: center bottom;
+  }
+}
+
+@-o-keyframes bg {
+  /* line 151, ../../sass/import/_helpers.scss */
+  100% {
+    background-position: center bottom;
+  }
+}
+
+@keyframes bg {
+  /* line 151, ../../sass/import/_helpers.scss */
+  100% {
+    background-position: center bottom;
+  }
+}
+
+@-webkit-keyframes title {
+  /* line 153, ../../sass/import/_helpers.scss */
+  80% {
+    top: -5px;
+  }
+
+  /* line 154, ../../sass/import/_helpers.scss */
+  90% {
+    top: 5px;
+  }
+
+  /* line 155, ../../sass/import/_helpers.scss */
+  100% {
+    top: 0;
+  }
+}
+
+@-moz-keyframes title {
+  /* line 153, ../../sass/import/_helpers.scss */
+  80% {
+    top: -5px;
+  }
+
+  /* line 154, ../../sass/import/_helpers.scss */
+  90% {
+    top: 5px;
+  }
+
+  /* line 155, ../../sass/import/_helpers.scss */
+  100% {
+    top: 0;
+  }
+}
+
+@-ms-keyframes title {
+  /* line 153, ../../sass/import/_helpers.scss */
+  80% {
+    top: -5px;
+  }
+
+  /* line 154, ../../sass/import/_helpers.scss */
+  90% {
+    top: 5px;
+  }
+
+  /* line 155, ../../sass/import/_helpers.scss */
+  100% {
+    top: 0;
+  }
+}
+
+@-o-keyframes title {
+  /* line 153, ../../sass/import/_helpers.scss */
+  80% {
+    top: -5px;
+  }
+
+  /* line 154, ../../sass/import/_helpers.scss */
+  90% {
+    top: 5px;
+  }
+
+  /* line 155, ../../sass/import/_helpers.scss */
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes title {
+  /* line 153, ../../sass/import/_helpers.scss */
+  80% {
+    top: -5px;
+  }
+
+  /* line 154, ../../sass/import/_helpers.scss */
+  90% {
+    top: 5px;
+  }
+
+  /* line 155, ../../sass/import/_helpers.scss */
+  100% {
+    top: 0;
+  }
+}
+
+@-webkit-keyframes nav {
+  /* line 157, ../../sass/import/_helpers.scss */
+  80% {
+    opacity: 0.5;
+    right: auto;
+  }
+
+  /* line 158, ../../sass/import/_helpers.scss */
+  90% {
+    opacity: 0.65;
+    right: auto;
+  }
+
+  /* line 159, ../../sass/import/_helpers.scss */
+  100% {
+    opacity: 1;
+    right: auto;
+  }
+}
+
+@-moz-keyframes nav {
+  /* line 157, ../../sass/import/_helpers.scss */
+  80% {
+    opacity: 0.5;
+    right: auto;
+  }
+
+  /* line 158, ../../sass/import/_helpers.scss */
+  90% {
+    opacity: 0.65;
+    right: auto;
+  }
+
+  /* line 159, ../../sass/import/_helpers.scss */
+  100% {
+    opacity: 1;
+    right: auto;
+  }
+}
+
+@-ms-keyframes nav {
+  /* line 157, ../../sass/import/_helpers.scss */
+  80% {
+    opacity: 0.5;
+    right: auto;
+  }
+
+  /* line 158, ../../sass/import/_helpers.scss */
+  90% {
+    opacity: 0.65;
+    right: auto;
+  }
+
+  /* line 159, ../../sass/import/_helpers.scss */
+  100% {
+    opacity: 1;
+    right: auto;
+  }
+}
+
+@-o-keyframes nav {
+  /* line 157, ../../sass/import/_helpers.scss */
+  80% {
+    opacity: 0.5;
+    right: auto;
+  }
+
+  /* line 158, ../../sass/import/_helpers.scss */
+  90% {
+    opacity: 0.65;
+    right: auto;
+  }
+
+  /* line 159, ../../sass/import/_helpers.scss */
+  100% {
+    opacity: 1;
+    right: auto;
+  }
+}
+
+@keyframes nav {
+  /* line 157, ../../sass/import/_helpers.scss */
+  80% {
+    opacity: 0.5;
+    right: auto;
+  }
+
+  /* line 158, ../../sass/import/_helpers.scss */
+  90% {
+    opacity: 0.65;
+    right: auto;
+  }
+
+  /* line 159, ../../sass/import/_helpers.scss */
+  100% {
+    opacity: 1;
+    right: auto;
+  }
+}
+
+/* line 3, ../../sass/custom/about_version_4.scss */
+.title {
+  -webkit-transition: -webkit-transform 0.2s linear, text-shadow 0.7s ease;
+  -moz-transition: -moz-transform 0.2s linear, text-shadow 0.7s ease;
+  -o-transition: -o-transform 0.2s linear, text-shadow 0.7s ease;
+  transition: transform 0.2s linear, text-shadow 0.7s ease;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+  font-family: "bistro-script-web", sans-serif;
+  width: 96%;
+  margin: auto;
+}
+
+/* line 15, ../../sass/custom/about_version_4.scss */
+.cssmask .title {
+  -webkit-mask: none !important;
+}
+
+/* line 17, ../../sass/custom/about_version_4.scss */
+.about_version_4 .title:hover {
+  -webkit-transform: scale(1.015) translateY(10px);
+  -moz-transform: scale(1.015) translateY(10px);
+  -ms-transform: scale(1.015) translateY(10px);
+  -o-transform: scale(1.015) translateY(10px);
+  transform: scale(1.015) translateY(10px);
+  text-shadow: 0 -25px 5px rgba(0, 0, 0, 0.1);
+}

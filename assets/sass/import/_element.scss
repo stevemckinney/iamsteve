@@ -22,7 +22,7 @@
 	$style: true, 
 	$size: false, 
 	$hover: false,
-	$font_size: false,
+	$font-size: false,
 	$display: inline-block) {
 	
 	$display: unquote($display);
@@ -98,7 +98,7 @@
 	@if $radius != none OR $radius == false {
 		@include border-radius($radius); }
 	
-// you may just want a button without style 
+	// you may just want a button without style 
 	// as sometimes you may just want a nice start
 	// padding, etc
 	@if $style == true {
@@ -122,6 +122,8 @@
 					inset 0 0 0 1px $dark-color,
 					inset 0 1px 2px $light-color,
 					inset 0 -1px 3px $dark-color,
+					inset -1px -2px 6px rgba($shadow-color, .35),
+					inset 1px -2px 6px rgba($shadow-color, .35),
 					0 1px 2px rgba($black, .25));
 				text-shadow: 0 -1px 1px $shadow-color; }
 			
@@ -144,6 +146,8 @@
 						inset 0 0 0 1px $hover-dark-color,
 						inset 0 1px 2px $hover-light-color,
 						inset 0 -1px 3px $hover-dark-color,
+						inset -1px -2px 6px rgba($hover-shadow-color, .35),
+					inset 1px -2px 6px rgba($hover-shadow-color, .35),
 						0 1px 2px rgba($black, .25));
 					text-shadow: 0 -1px 1px $hover-shadow-color; }
 				

@@ -30,7 +30,7 @@
 // button type/meta bg
 %subtle-rounded {
 	@extend %subtle-box;
-	@include border-radius(100px); }
+	@include border-radius(15em); }
 
 // some will need a hover/active state
 %subtle-states {
@@ -51,7 +51,7 @@
 	
 // consistent margin/padding for subtle objects
 %sp {
-	@include rem(padding, $base-px $line); }
+	padding: em($base-px, $base-font-size) em($line, $base-font-size); }
 
 %mr6 {
 	@include rem(margin, 0 6px 0 0); }
@@ -100,7 +100,7 @@
 	border: 6px solid $white; }
 
 %margin-bottom {
-	@include rem(margin, 0 0 $line); }
+	margin: 0 0 em($line, $base-font-size); }
 
 // social crap
 .social {

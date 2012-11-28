@@ -1,6 +1,6 @@
 .meta {
 	@extend %subtle-s-rounded;
-	@include rem(padding, 0 $base-px);
+	padding: 0 em($base-px, $base-font-size);
 	clear: both;
 	ul {
 		@include pie-clearfix;
@@ -19,7 +19,7 @@
 			white-space: nowrap; }
 		&:before {
 			@extend %mr6;
-			@include rem(top, 16px);
+			top: 1em;
 			display: none;
 			font-size: 75%;
 			float: left;
@@ -27,7 +27,7 @@
 			line-height: 1;
 			opacity: .5; } }
 	a, time {
-		@include rem(padding, $base-px 0);
+		padding: em($base-px, $base-font-size) 0;
 		display: inline-block;
 		vertical-align: baseline; }
 	a, time, li {

@@ -1,156 +1,101 @@
-/*
- * jQuery-Plugin "preloadCssImages"
- * by Scott Jehl, scott@filamentgroup.com
- * http://www.filamentgroup.com
- * reference article: http://www.filamentgroup.com/lab/update_automatically_preload_images_from_css_with_jquery/
- * demo page: http://www.filamentgroup.com/examples/preloadImages/index_v2.php
- * 
- * Copyright (c) 2008 Filament Group, Inc
- * Dual licensed under the MIT (filamentgroup.com/examples/mit-license.txt) and GPL (filamentgroup.com/examples/gpl-license.txt) licenses.
- *
- * Version: 5.0, 10.31.2008
- * Changelog:
- * 	02.20.2008 initial Version 1.0
- *    06.04.2008 Version 2.0 : removed need for any passed arguments. Images load from any and all directories.
- *    06.21.2008 Version 3.0 : Added options for loading status. Fixed IE abs image path bug (thanks Sam Pohlenz).
- *    07.24.2008 Version 4.0 : Added support for @imported CSS (credit: http://marcarea.com/). Fixed support in Opera as well. 
- *    10.31.2008 Version: 5.0 : Many feature and performance enhancements from trixta
- * --------------------------------------------------------------------
- */
+/**
+ * Prism: Lightweight, robust, elegant syntax highlighting
+ * MIT license http://www.opensource.org/licenses/mit-license.php/
+ * @author Lea Verou http://lea.verou.me
+ */(function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var i in e)e.hasOwnProperty(i)&&(r[i]=t.util.clone(e[i]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var i in n)r[i]=n[i];return r},insertBefore:function(e,n,r,i){i=i||t.languages;var s=i[e],o={};for(var u in s)if(s.hasOwnProperty(u)){if(u==n)for(var a in r)r.hasOwnProperty(a)&&(o[a]=r[a]);o[u]=s[u]}return i[e]=o},DFS:function(e,n){for(var r in e){n.call(e,r,e[r]);t.util.type(e)==="Object"&&t.languages.DFS(e[r],n)}}},highlightAll:function(e,n){var r=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code');for(var i=0,s;s=r[i++];)t.highlightElement(s,e===!0,n)},highlightElement:function(r,i,s){var o,u,a=r;while(a&&!e.test(a.className))a=a.parentNode;if(a){o=(a.className.match(e)||[,""])[1];u=t.languages[o]}if(!u)return;r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o;a=r.parentNode;/pre/i.test(a.nodeName)&&(a.className=a.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var f=r.textContent;if(!f)return;f=f.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\u00a0/g," ");var l={element:r,language:o,grammar:u,code:f};t.hooks.run("before-highlight",l);if(i&&self.Worker){var c=new Worker(t.filename);c.onmessage=function(e){l.highlightedCode=n.stringify(JSON.parse(e.data));l.element.innerHTML=l.highlightedCode;s&&s.call(l.element);t.hooks.run("after-highlight",l)};c.postMessage(JSON.stringify({language:l.language,code:l.code}))}else{l.highlightedCode=t.highlight(l.code,l.grammar);l.element.innerHTML=l.highlightedCode;s&&s.call(r);t.hooks.run("after-highlight",l)}},highlight:function(e,r){return n.stringify(t.tokenize(e,r))},tokenize:function(e,n){var r=t.Token,i=[e],s=n.rest;if(s){for(var o in s)n[o]=s[o];delete n.rest}e:for(var o in n){if(!n.hasOwnProperty(o)||!n[o])continue;var u=n[o],a=u.inside,f=!!u.lookbehind||0;u=u.pattern||u;for(var l=0;l<i.length;l++){var c=i[l];if(i.length>e.length)break e;if(c instanceof r)continue;u.lastIndex=0;var h=u.exec(c);if(h){f&&(f=h[1].length);var p=h.index-1+f,h=h[0].slice(f),d=h.length,v=p+d,m=c.slice(0,p+1),g=c.slice(v+1),y=[l,1];m&&y.push(m);var b=new r(o,a?t.tokenize(h,a):h);y.push(b);g&&y.push(g);Array.prototype.splice.apply(i,y)}}}return i},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[];r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(!r||!r.length)return;for(var i=0,s;s=r[i++];)s(n)}}},n=t.Token=function(e,t){this.type=e;this.content=t};n.stringify=function(e){if(typeof e=="string")return e;if(Object.prototype.toString.call(e)=="[object Array]"){for(var r=0;r<e.length;r++)e[r]=n.stringify(e[r]);return e.join("")}var i={type:e.type,content:n.stringify(e.content),tag:"span",classes:["token",e.type],attributes:{}};i.type=="comment"&&(i.attributes.spellcheck="true");t.hooks.run("wrap",i);var s="";for(var o in i.attributes)s+=o+'="'+(i.attributes[o]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+s+">"+i.content+"</"+i.tag+">"};if(!self.document){self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,i=n.code;self.postMessage(JSON.stringify(t.tokenize(i,t.languages[r])));self.close()},!1);return}var r=document.getElementsByTagName("script");r=r[r.length-1];if(r){t.filename=r.src;document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)}})();;
+Prism.languages.markup={comment:/&lt;!--[\w\W]*?--(&gt;|&gt;)/g,prolog:/&lt;\?.+?\?&gt;/,doctype:/&lt;!DOCTYPE.+?&gt;/,cdata:/&lt;!\[CDATA\[[\w\W]+?]]&gt;/i,tag:{pattern:/&lt;\/?[\w:-]+\s*(?:\s+[\w:-]+(?:=(?:("|')(\\?[\w\W])*?\1|\w+))?\s*)*\/?&gt;/gi,inside:{tag:{pattern:/^&lt;\/?[\w:-]+/i,inside:{punctuation:/^&lt;\/?/,namespace:/^[\w-]+?:/}},"attr-value":{pattern:/=(?:('|")[\w\W]*?(\1)|[^\s>]+)/gi,inside:{punctuation:/=|&gt;|"/g}},punctuation:/\/?&gt;/g,"attr-name":{pattern:/[\w:-]+/g,inside:{namespace:/^[\w-]+?:/}}}},entity:/&amp;#?[\da-z]{1,8};/gi};Prism.hooks.add("wrap",function(e){e.type==="entity"&&(e.attributes.title=e.content.replace(/&amp;/,"&"))});;
+Prism.languages.css={comment:/\/\*[\w\W]*?\*\//g,atrule:/@[\w-]+?(\s+[^;{]+)?(?=\s*{|\s*;)/gi,url:/url\((["']?).*?\1\)/gi,selector:/[^\{\}\s][^\{\}]*(?=\s*\{)/g,property:/(\b|\B)[a-z-]+(?=\s*:)/ig,string:/("|')(\\?.)*?\1/g,important:/\B!important\b/gi,ignore:/&(lt|gt|amp);/gi,punctuation:/[\{\};:]/g};Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{style:{pattern:/(&lt;|<)style[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/style(>|&gt;)/ig,inside:{tag:{pattern:/(&lt;|<)style[\w\W]*?(>|&gt;)|(&lt;|<)\/style(>|&gt;)/ig,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.css}}});;
+Prism.languages.clike={comment:{pattern:/(^|[^\\])(\/\*[\w\W]*?\*\/|\/\/.*?(\r?\n|$))/g,lookbehind:!0},string:/("|')(\\?.)*?\1/g,keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|catch|finally|null|break|continue)\b/g,"boolean":/\b(true|false)\b/g,number:/\b-?(0x)?\d*\.?[\da-f]+\b/g,operator:/[-+]{1,2}|!|=?&lt;|=?&gt;|={1,2}|(&amp;){1,2}|\|?\||\?|\*|\//g,ignore:/&(lt|gt|amp);/gi,punctuation:/[{}[\];(),.:]/g};;
+Prism.languages.javascript=Prism.languages.extend("clike",{keyword:/\b(var|let|if|else|while|do|for|return|in|instanceof|function|new|with|typeof|try|catch|finally|null|break|continue)\b/g,number:/\b(-?(0x)?\d*\.?[\da-f]+|NaN|-?Infinity)\b/g});Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:/(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\r\n])+\/[gim]{0,3}(?=\s*($|[\r\n,.;})]))/g,lookbehind:!0}});Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{script:{pattern:/(&lt;|<)script[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/script(>|&gt;)/ig,inside:{tag:{pattern:/(&lt;|<)script[\w\W]*?(>|&gt;)|(&lt;|<)\/script(>|&gt;)/ig,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.javascript}}});;
+Prism.fn = Prism.fn || {};
 
-;jQuery.preloadCssImages = function(settings){
-	settings = jQuery.extend({
-		statusTextEl: null,
-		statusBarEl: null,
-		errorDelay: 999, // handles 404-Errors in IE
-		simultaneousCacheLoading: 2
-	}, settings);
-	var allImgs = [],
-		loaded = 0,
-		imgUrls = [],
-		thisSheetRules,	
-		errorTimer;
-	
-	function onImgComplete(){
-		clearTimeout(errorTimer);
-		if (imgUrls && imgUrls.length && imgUrls[loaded]) {
-			loaded++;
-			if (settings.statusTextEl) {
-				var nowloading = (imgUrls[loaded]) ? 
-					'Now Loading: <span>' + imgUrls[loaded].split('/')[imgUrls[loaded].split('/').length - 1] : 
-					'Loading complete'; // wrong status-text bug fixed
-				jQuery(settings.statusTextEl).html('<span class="numLoaded">' + loaded + '</span> of <span class="numTotal">' + imgUrls.length + '</span> loaded (<span class="percentLoaded">' + (loaded / imgUrls.length * 100).toFixed(0) + '%</span>) <span class="currentImg">' + nowloading + '</span></span>');
-			}
-			if (settings.statusBarEl) {
-				var barWidth = jQuery(settings.statusBarEl).width();
-				jQuery(settings.statusBarEl).css('background-position', -(barWidth - (barWidth * loaded / imgUrls.length).toFixed(0)) + 'px 50%');
-			}
-			loadImgs();
+// Taken from Dabblet source & renamed
+Prism.fn.createRegExp = function(str, replacements, flags) {
+	for(var id in replacements) {
+		var replacement = replacements[id],
+			idRegExp = RegExp('{{' + id + '}}', 'gi');
+
+		if(replacement.source) {
+			replacement = replacement.source.replace(/^\^|\$$/g, '');
 		}
+
+		// Don't add extra parentheses if they already exist
+		str = str.replace(RegExp('\\(' + idRegExp.source + '\\)', 'gi'), '(' + replacement + ')');
+
+		str = str.replace(idRegExp, '(?:' + replacement + ')');
 	}
-	
-	function loadImgs(){
-		//only load 1 image at the same time / most browsers can only handle 2 http requests, 1 should remain for user-interaction (Ajax, other images, normal page requests...)
-		// otherwise set simultaneousCacheLoading to a higher number for simultaneous downloads
-		if(imgUrls && imgUrls.length && imgUrls[loaded]){
-			var img = new Image(); //new img obj
-			img.src = imgUrls[loaded];	//set src either absolute or rel to css dir
-			if(!img.complete){
-				jQuery(img).bind('error load onreadystatechange', onImgComplete);
-			} else {
-				onImgComplete();
-			}
-			errorTimer = setTimeout(onImgComplete, settings.errorDelay); // handles 404-Errors in IE
-		}
-	}
-	
-	function parseCSS(sheets, urls) {
-		var w3cImport = false,
-			imported = [],
-			importedSrc = [],
-			baseURL;
-		var sheetIndex = sheets.length;
-		while(sheetIndex--){//loop through each stylesheet
-			
-			var cssPile = '';//create large string of all css rules in sheet
-			
-			if(urls && urls[sheetIndex]){
-				baseURL = urls[sheetIndex];
-			} else {
-				var csshref = (sheets[sheetIndex].href) ? sheets[sheetIndex].href : 'window.location.href';
-				var baseURLarr = csshref.split('/');//split href at / to make array
-				baseURLarr.pop();//remove file path from baseURL array
-				baseURL = baseURLarr.join('/');//create base url for the images in this sheet (css file's dir)
-				if (baseURL) {
-					baseURL += '/'; //tack on a / if needed
-				}
-			}
-			if(sheets[sheetIndex].cssRules || sheets[sheetIndex].rules){
-				thisSheetRules = (sheets[sheetIndex].cssRules) ? //->>> http://www.quirksmode.org/dom/w3c_css.html
-					sheets[sheetIndex].cssRules : //w3
-					sheets[sheetIndex].rules; //ie 
-				var ruleIndex = thisSheetRules.length;
-				while(ruleIndex--){
-					if(thisSheetRules[ruleIndex].style && thisSheetRules[ruleIndex].style.cssText){
-						var text = thisSheetRules[ruleIndex].style.cssText;
-						if(text.toLowerCase().indexOf('url') != -1){ // only add rules to the string if you can assume, to find an image, speed improvement
-							cssPile += text; // thisSheetRules[ruleIndex].style.cssText instead of thisSheetRules[ruleIndex].cssText is a huge speed improvement
-						}
-					} else if(thisSheetRules[ruleIndex].styleSheet) {
-						imported.push(thisSheetRules[ruleIndex].styleSheet);
-						w3cImport = true;
-					}
-					
-				}
-			}
-			//parse cssPile for image urls
-			var tmpImage = cssPile.match(/[^\("]+\.(gif|jpg|jpeg|png)/g);//reg ex to get a string of between a "(" and a ".filename" / '"' for opera-bugfix
-			if(tmpImage){
-				var i = tmpImage.length;
-				while(i--){ // handle baseUrl here for multiple stylesheets in different folders bug
-					var imgSrc = (tmpImage[i].charAt(0) == '/' || tmpImage[i].match('://')) ? // protocol-bug fixed
-						tmpImage[i] : 
-						baseURL + tmpImage[i];
-					
-					if(jQuery.inArray(imgSrc, imgUrls) == -1){
-						imgUrls.push(imgSrc);
-					}
-				}
-			}
-			
-			if(!w3cImport && sheets[sheetIndex].imports && sheets[sheetIndex].imports.length) {
-				for(var iImport = 0, importLen = sheets[sheetIndex].imports.length; iImport < importLen; iImport++){
-					var iHref = sheets[sheetIndex].imports[iImport].href;
-					iHref = iHref.split('/');
-					iHref.pop();
-					iHref = iHref.join('/');
-					if (iHref) {
-						iHref += '/'; //tack on a / if needed
-					}
-					var iSrc = (iHref.charAt(0) == '/' || iHref.match('://')) ? // protocol-bug fixed
-						iHref : 
-						baseURL + iHref;
-					
-					importedSrc.push(iSrc);
-					imported.push(sheets[sheetIndex].imports[iImport]);
-				}
-				
-				
-			}
-		}//loop
-		if(imported.length){
-			parseCSS(imported, importedSrc);
-			return false;
-		}
-		var downloads = settings.simultaneousCacheLoading;
-		while( downloads--){
-			setTimeout(loadImgs, downloads);
-		}
-	}
-	parseCSS(document.styleSheets);
-	return imgUrls;
+
+	return RegExp(str, flags);
 };
 
+Prism.regExp = Prism.regExp || {};
+
+Prism.regExp.number = /-?\d*\.?\d+/;
+
+Prism.languages.sass = Prism.languages.scss = {
+	'comment': {
+		pattern: /(^|[^\\])(\/\*[\w\W]*?\*\/|\/\/.*?(\r?\n|$))/g,
+		lookbehind: true
+	},
+
+	'control': /@(if|else if|else|for|each|while)/i,
+	'directive': /@(import|extend|debug|warn)/i,
+	'keyword': /&amp;|@(mixin|include|function|return)/i,
+
+	'atrule': /@[\w-]+?(?=(\s+.+)?(\s*{|\s*;))/gi,
+	//'url': /url\((["']?).*?\1\)/gi,
+	'string': /("|')(\\?.)*?\1/g,
+	'url': /([-a-z]+-)*url(?=\()/gi, // compassified
+
+	'placeholder': /%[-_\w]+/i,
+	'variable': /\$[-_\w]+/i,
+
+	'property': /(\b|\B)[a-z-]+(?=\s*:)/ig,
+
+	'important': /\B!important\b/gi,
+	'statement': /\B!(default|optional)\b/gi,
+
+	'boolean': /\b(true|false)\b/g,
+	'null': /\b(null)\b/g,
+	'number': /\b-?(0x)?(\d*\.?\d+|([\da-f]{3}){1,2})(?=(ddpx|px|pt|cm|mm|in|em|ex|pc)|\b)/g,
+
+	// sass short mixin declaration
+	'mixin': /(^|\\n)\\s*=.*/g,
+	'mixin': /(^|\\n)\\s*\\+.*/g,
+
+	// specific css values (taken from dabblet source)
+	'gradient': /\b(repeating-)?(linear|radial)-gradient\(((rgb|hsl)a?\(.+?\)|[^\)])+\)/gi,
+	'abslength': Prism.fn.createRegExp('(\\b|\\B){{number}}{{unit}}\\b', {
+		number: Prism.regExp.number,
+		unit: /(cm|mm|in|pt|pc|px)/
+	}, 'gi'),
+	'easing': Prism.fn.createRegExp('\\b{{bezier}}\\B|\\b{{keyword}}(?=\\s|;|\\}|$)', {
+		bezier: Prism.fn.createRegExp('cubic-bezier\\(({{number}},\\s*){3}{{number}}\\)', {
+			number: Prism.regExp.number
+		}),
+		keyword: /linear|ease(-in)?(-out)?/
+	}, 'gi'),
+	'time': Prism.fn.createRegExp('(\\b|\\B){{number}}m?s\\b', {
+		number: Prism.regExp.number
+	}, 'gi'),
+	'angle': Prism.fn.createRegExp('(\\b|\\B){{number}}(deg|g?rad|turn)\\b', {
+		number: Prism.regExp.number
+	}, 'gi'),
+	'fontfamily': /(("|')[\w\s]+\2,\s*|\w+,\s*)*(sans-serif|serif|monospace|cursive|fantasy)\b/gi,
+
+	'entity': /\\[\da-f]{1,8}/gi,
+
+	//'selector-id': /#(\\w|-|_)+/g,
+	//'selector-class': /\\.(\\w|-|_)+/g,
+	'selector': /[^;\{\}\(\)\s][^;\{\}\(\)]*(?=\s*\{)/g,
+
+	'operator': /\s+([-+]{1,2}|={1,2}|!=|\|?\||\?|\*|\/|\%)\s+/g,
+
+	'unit': /\b(ddpx|px|pt|cm|mm|in|em|ex|pc)\b|%/i,
+
+	'ignore': /&(lt|gt|amp);/gi,
+	'punctuation': /[\{\}\(\);:,\.#]/g
+};
 // picturefill
 (function(e){"use strict";e.picturefill=function(){var t=e.document.getElementsByTagName("div");for(var n=0,r=t.length;n<r;n++)if(t[n].getAttribute("data-picture")!==null){var i=t[n].getElementsByTagName("div"),s=[];for(var o=0,u=i.length;o<u;o++){var a=i[o].getAttribute("data-media");(!a||e.matchMedia&&e.matchMedia(a).matches)&&s.push(i[o])}var f=t[n].getElementsByTagName("img")[0];s.length?(f||(f=e.document.createElement("img"),f.alt=t[n].getAttribute("data-alt"),t[n].appendChild(f)),f.src=s.pop().getAttribute("data-src")):f&&t[n].removeChild(f)}},e.addEventListener?(e.addEventListener("resize",e.picturefill,!1),e.addEventListener("DOMContentLoaded",function(){e.picturefill(),e.removeEventListener("load",e.picturefill,!1)},!1),e.addEventListener("load",e.picturefill,!1)):e.attachEvent&&e.attachEvent("onload",e.picturefill)})(this)
 
@@ -369,10 +314,9 @@ $(function() {
 			$dribbble = 'dribbble',
 			next = $('.next a').attr('href'),
 			prev = $('.prev a').attr('href');
-		
+	$("pre").addClass('language-sass');
 	// general stuff
 	// $nav.addClass('hidden');
-	$.preloadCssImages();
 	$('.title').lettering();
 	$('.title').fitText(1, { minFontSize: '42px', maxFontSize: '72px' });
 	$('.wordpress_post_formats .title').fitText(1, { minFontSize: '28px', maxFontSize: '68px' });

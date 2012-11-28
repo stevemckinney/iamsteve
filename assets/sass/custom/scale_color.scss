@@ -1,14 +1,15 @@
-@import "../imports";
+@import "../import/framework";
+
 .example-box {
 	width: 48.75%;
 	margin: 0 2.5% em($line, $base-font-size) 0;
 	display: inline-block;
 	vertical-align: top;
 	p:first-child {
-		@include rem(font-size, $base-font-size); }
+		font-size: em($base-font-size, $base-font-size); }
 	&:nth-of-type(2n) {
 		margin-right: 0; }
-	span {
+	[role="img"] {
 		@include border-radius($radius);
 		display: inline-block;
 		vertical-align: top;

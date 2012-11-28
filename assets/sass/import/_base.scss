@@ -18,6 +18,7 @@ $ninety: 90%;
 $whole: 100%;
 
 //	general variable colours
+// --------------------------
 $primary: #363940 !default;
 $primary_l1: #e6e9f2 !default;
 $primary_l2: #474d59 !default;
@@ -35,53 +36,75 @@ $black: hsla(0,0%,0%,1);
 $white: hsla(0,100%,100%,1);
 
 // main element styling colours
-$default: #fcfdff;
-$default-text: #444;
-$default-text-shadow: #fff;
+// ---------------------------
+$default: #ececec !default;
+$default-text: #444 !default;
+$default-text-shadow: #fff !default;
+$subtle-color: #666;
 
 $border: rgba(54,57,64,.3);
-$focus: darken(#71bcc5, 25%);
+$focus: scale-color(#71bcc5, $lightness: -25%) !default;
 
-$alt: desaturate(#27a0dc, 15%);
-$danger: saturate(#d24f48, 10%);
-$warning: adjust-hue(#f3ad30, 5);
-$success: lighten(desaturate(#6f8a22, 15%), 10%);
-$info: #71bcc5;
+// colours for status type things
+// ---------------------------
+$alt: #3a9ac9 !default;
+$danger: #dd453d !default;
+$warning: #f3bd30 !default;
+$success: #88a23d !default;
+$info: #71bcc5 !default;
 
 // font stacks
+// ---------------------------
 $sans: "franklin-gothic-urw", sans-serif;
 $serif: "freight-text-pro", georgia, serif;
 $slab: "Geared Slab", "Geared", serif;
 $monospace: "source-code-pro", monospace;
 $pictos: "Pictos Custom";
 
-// symbolset is brilliant but as i can't share mine it gives the option to turn it on if you have it
-$symbolset: true;
-// dont forget to import your file
+// if you have symbolset
+// ---------------------------
 $icons: "SSStandard";
 
-// found the need sometimes to switch fonts mid project, this makes sense when you have serif headings and it's decided they're now sans serif
+// found the need sometimes to switch fonts mid project
+// ---------------------------
 $heading: $sans;
 $body: $sans;
 
 // font sizes
+// ---------------------------
 $base-font-size: 16px;
 $normal-size: 1em;
 $base-line-height: 1.5;
 
 // px
+// ---------------------------
 $base-px: 12px;
 $line: $base-px*2;
 $radius: 5px;
 
-$experimental-support-for-khtml: false;
-$legacy-support-for-ie: false;
-$legacy-support-for-mozilla: false;
 
+// khtml support is pointless most times
+// ---------------------------
+$experimental-support-for-khtml: false;
+
+// uncomment if you're brave, or don't care
+// ---------------------------
+$legacy-support-for-ie: false;
+$legacy-support-for-mozilla: true;
+$legacy-support-for-ie7: false;
+
+// define responsive stuff: see responsive.scss
+// ---------------------------
 $old-ie: false !default;
 $fix-mqs: false !default;
-$baseline-px: 16px;
 
+// consistent radius
+// ---------------------------
+$radius: .3125em; /* 5px / 16px */
+
+// change your responsive widths here,
+// corresponds with screens scss files a lowest e highest
+// ---------------------------
 $a: 30em; /* 480px / 16px */
 $b: 37.5em; /* 600px / 16px */
 $c: 48em; /* 768px / 16px */

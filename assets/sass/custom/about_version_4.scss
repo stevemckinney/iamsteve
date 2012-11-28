@@ -1,4 +1,4 @@
-@import "../imports";
+@import "../import/framework";
 
 .title {
 	@include transition(transform .2s linear, text-shadow .7s ease);

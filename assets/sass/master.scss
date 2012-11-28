@@ -1,4 +1,4 @@
-@import "imports", "import/normalize";
+@import "import/framework", "import/normalize";
 
 @-webkit-viewport {
 	width: device-width; }
@@ -23,9 +23,9 @@ body {
 	background: url(../images/bg_wave.png); }
 .container {
 	@include pie-clearfix;
-	@include rem(padding, $line 0 0);
 	@extend %margin-bottom;
 	@include box-shadow(0 1px 0 fade-out($white, 0.6), 0 6px 24px -6px fade-out($primary_d1, 0.4));
+	padding: em($line, $base-font-size) 0 0;
 	position: relative;
 	overflow: hidden;
 	background: $primary;
@@ -67,7 +67,6 @@ article img {
 				background: url(../images/logo_hover_2x.png) center center no-repeat; } } } }
 	.title {
 		@extend %ts;
-		@include rem(padding, $line 0 $line*2);
 		@include animation(title .5s .5s ease-in-out);
 		@include animation-fill-mode(forwards);
 		position: relative;
@@ -75,6 +74,7 @@ article img {
 		font-size: 72px;
 		width: 88%;
 		margin: auto;
+		padding: em($line, $base-font-size) 0 em($line*2, $base-font-size);
 		text-align: center;
 		.error & {
 			text-transform: capitalize; }
@@ -91,7 +91,7 @@ article img {
 [role="region"] {
 	@include pie-clearfix;
 	width: $whole;
-	margin: 0 0 $line;
+	margin: 0 0 em($line, $base-font-size);
 	&:last-child {
 		margin: 0;
 		padding: 0;
@@ -119,14 +119,14 @@ article img {
 /* !article ---------------------- */
 [role="article"] {
 	@include pie-clearfix;
-	@include rem(padding, 0 0 $line);
 	margin: auto;
+	padding: 0 0 em($line, $base-font-size);
 	position: relative;
 	@include respond-to($c) {
-		@include rem(padding, 0 0 $line*2); }
+		padding: 0 0 em($line*2, $base-font-size); }
 	figure {
 		@include pie-clearfix;
-		@include rem(margin-bottom, $line);
+		margin-bottom: em($line, $base-font-size);
 		position: relative;
 		img {
 			display: block;
@@ -302,49 +302,9 @@ hr {
 		max-width: 100%;
 		width: 100%; } }
 
-section .gist {
-	position: relative !important;
-	.gist-file, .gist-data, .gist-highlight {
-		position: relative;
-		border-radius: 4px;
-		background: none !important;
-		border: none !important; }
-	.gist-highlight {
-		border-left: 4em solid fade-out($black, 0.95) !important;
-		@include box-shadow(inset 1px 0 0 fade-out($white, 0.7)); }
-	.gist-file .gist-data {
-		@include border-radius(4px 4px 0 0 !important);
-		@include box-shadow(inset 0 0 0 1px #ccc, inset 0 2px 3px fade-out($black, 0.9), 0 1px 0 fade-out($white, 0.2) !important);
-		border: none !important;
-		border-bottom: none !important;
-		overflow: auto;
-		max-height: 500px;
-		padding: 0 !important;
-		background: none !important; }
-	.gist-file .gist-data pre {
-		padding: $base-px !important;
-		border: none !important;
-		box-shadow: none !important;
-		counter-reset: linenumbers;
-		div:before {
-			@include user-select(none);
-	    color: #999;
-	    text-shadow: 0 1px 0 rgba(255,255,255,0.45);
-	    content: counter(linenumbers);
-	    counter-increment: linenumbers;
-	    left: -4.5em;
-	    position: absolute;
-	    text-align: right;
-	    @include rem(width, $line*2); } }
-	.gist-meta {
-		@include element(#444, $radius: 0 0 4px 4px);
-		width: 100%;
-		color: $white !important;
-		a {
-			color: $white !important; } }
-	* {
-		font-family: $monospace !important;
-		font-size: 95%; } }
+// code
+// ---------------------------
+@import "styles/code";
 
 /* figure ------------------------------ */
 figure {

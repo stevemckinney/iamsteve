@@ -41,7 +41,7 @@ p, dd, figcaption, li {
 	@extend %base; }
 	
 p, dl {
-	@include rem(padding, 0 0 $line);
+	padding: 0 0 em($line, $base-font-size);
 	margin: 0; }
 dt { 	
 	font-weight: 700; }
@@ -84,9 +84,9 @@ code {
 		text-align: left;
 		white-space: pre-line;
 	
-		-moz-tab-size: 1;
-		-o-tab-size: 1;
-		tab-size: 1; } }
+		-moz-tab-size: 2;
+		-o-tab-size: 2;
+		tab-size: 2; } }
 
 @include respond-min($c) {
 	code {
@@ -137,10 +137,10 @@ code {
 /* !page specific ---------------------- */
 [class^="item"] {
 	h2 {
-		@include rem(margin, 0 0 $base-px); } }
+		margin: 0 0 em($base-px, 41px); } }
 .portfolio-nav {
 	h2 {
-		@include rem(margin, 0 0 $base-px);
+		margin: 0 0 em($base-px, $base-font-size);
 		font-size: 1em; } }
 
 /* !no fout ---------------------- */
@@ -162,7 +162,6 @@ pre {
 	@extend %margin-bottom;
 	border: 1px solid #ccc;
 	code {
-		@include rem(padding, $base-px);
 		display: block;
 		background: none; } }
 code {
