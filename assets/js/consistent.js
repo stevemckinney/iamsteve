@@ -314,7 +314,8 @@ $(function() {
 			prev = $('.prev a').attr('href');
 			
 	$html.addClass("loaded");
-	$("pre").addClass('language-sass');
+	$("pre").addClass('language-scss');
+	$(".gist pre").removeClass('language-scss');
 	// general stuff
 	// $nav.addClass('hidden');
 	$('.title').lettering();
