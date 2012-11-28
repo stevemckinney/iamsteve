@@ -30,7 +30,7 @@ $prism-color-string:		#e6d06c	!default;
 $prism-color-name:			$alt	!default;
 $prism-color-number:		$alt	!default;
 $prism-color-variable:		$warning	!default;
-$prism-color-selector:		#a6e22d	!default;
+$prism-color-selector:		$success	!default;
 $prism-color-punctuation:	$prism-color-neutral !default;
 //$prism-color-funtion:	#dc322f	!default;
 
@@ -232,6 +232,8 @@ pre[class*="language-"] {
 		color: $white !important;
 		a {
 			color: $white !important; } }
+	.gist-syntax .k {
+		color: $primary; }
 	* {
 		font-family: $monospace !important;
 		font-size: 95%; } }
