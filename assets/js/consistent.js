@@ -298,9 +298,7 @@ function getshots(name, count, el) {
 /**
  *	iamsteve.me site js
  */
-$(window).load(function() { 
-	$("html").addClass("loaded");
-});
+
 $(function() {
 	var $html = $("html"),
 			$window = $(window),
@@ -314,13 +312,14 @@ $(function() {
 			$dribbble = 'dribbble',
 			next = $('.next a').attr('href'),
 			prev = $('.prev a').attr('href');
+			
+	$html.addClass("loaded");
 	$("pre").addClass('language-sass');
 	// general stuff
 	// $nav.addClass('hidden');
 	$('.title').lettering();
 	$('.title').fitText(1, { minFontSize: '42px', maxFontSize: '72px' });
 	$('.wordpress_post_formats .title').fitText(1, { minFontSize: '28px', maxFontSize: '68px' });
-	
 	
 	// do stuff at each breakpoint
 	var queries = [

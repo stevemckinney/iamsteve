@@ -7,7 +7,7 @@
  */
 
 $prism-font-family: 	$monospace	!default;
-$prism-font-size: 		em(14px, $base-font-size) !default;
+$prism-font-size: 		.875rem !default;
 $prism-padding: 		em($base-px, 14px) !default;
 $prism-line-height:		1.5 !default;
 $prism-border-radius: 	5px !default;
@@ -15,7 +15,7 @@ $prism-border: 			1px solid transparent !default;
 $prism-background: 		#2a2a2a !default;
 $prism-color: 			#76d9e6 !default;
 $prism-color-neutral:	#bebec5 !default;
-$prism-text-shadow: 	0 1px 0 #000 !default;
+$prism-text-shadow: 	0 1px 0 rgba($black, .5) !default;
 
 // $prism-linenums-padding:		7px !default;
 // $prism-linenums-width: 			40px !default;

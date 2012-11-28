@@ -109,6 +109,10 @@
 	$mode: unquote($mode);
 	@include experimental(animation-fill-mode, $mode,
     -moz, -webkit, -o, not -ms, not -khtml, official); }
+@mixin animation-play-state($mode) {
+	$mode: unquote($mode);
+	@include experimental(animation-play-state, $mode,
+    -moz, -webkit, -o, not -ms, not -khtml, official); }
 	
 @mixin wh($width: false, $height: false) {
 	$width: unquote($width);
@@ -126,7 +130,7 @@
 @mixin user-select($select) {
   $select: unquote($select);
   @include experimental(user-select, $select,
-    -moz, -webkit, not -o, not -ms, -khtml, official); }
+    -moz, -webkit, not -o, -ms, -khtml, official); }
     
 // stretch for some reason was not in my compass
 @mixin stretch($offset-top: 0, $offset-right: 0, $offset-bottom: 0, $offset-left: 0) {

@@ -11,7 +11,7 @@
 					@include filter(blur(0)); } } } } }
 
 [class^="item_"] {
-	@include rem(margin, 0 0 $line*2);
+	margin: 0 0 em($line*2, $base-font-size);
 	clear: both;
 	display: block;
 	min-height: 360px;
@@ -54,7 +54,7 @@
 			@extend %transition;
 			color: $secondary; } }
 	figcaption {
-		@include rem(padding, $line*2 0 0); }
+		padding: em($line*2, $base-font-size) 0 0; }
 	p {
 		display: block;
 		width: 100%; }
