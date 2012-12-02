@@ -169,6 +169,7 @@ article {
 		@extend %subtle-box;
 		@include pie-clearfix;
 		@include border-radius($radius);
+		padding: 0 em($base-px/2, 12px);
 		margin: 0; }
 	li {
 		display: inline-block;
