@@ -67,6 +67,7 @@ article img {
 				background: url(../images/logo_hover_2x.png) center center no-repeat; } } } }
 	.title {
 		@extend %ts;
+		@include rem(padding, $line 0 $line*2);
 		@include animation(title 1s ease-in-out);
 		@include animation-fill-mode(forwards);
 		@include animation-play-state(paused);
@@ -74,8 +75,7 @@ article img {
 		font-size: 72px;
 		width: 88%;
 		top: 500px;
-		margin: auto;
-		padding: em($line, $base-font-size) 0 em($line*2, $base-font-size);
+		margin: auto;;
 		text-align: center;
 		.loaded & {
 			@include animation-play-state(running); }
