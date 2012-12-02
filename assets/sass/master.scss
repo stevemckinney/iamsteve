@@ -122,11 +122,8 @@ article img {
 /* !article ---------------------- */
 [role="article"] {
 	@include pie-clearfix;
-	margin: auto;
-	padding: 0 0 em($line, $base-font-size);
+	margin: auto auto em($line, $base-font-size);
 	position: relative;
-	@include respond-to($c) {
-		padding: 0 0 em($line*2, $base-font-size); }
 	figure {
 		@include pie-clearfix;
 		margin-bottom: em($line, $base-font-size);
@@ -138,7 +135,8 @@ article img {
 		text-align: center; }
 	@include respond-min($c) {
 		padding-right: 7.5%;
-		padding-left: 7.5%; }
+		padding-left: 7.5%;
+		margin-bottom: em($line*2, $base-font-size); }
 	@include respond-min($d) {
 		padding-right: 15.5%;
 		padding-left: 15.5%; } }

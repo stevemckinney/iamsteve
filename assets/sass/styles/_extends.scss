@@ -4,11 +4,10 @@
 	position: relative;
 	max-width: 60em; // 75em 1200px
 	width: 88%;
-	margin: auto auto $line;
-	margin: auto auto 1.5rem;
+	margin: auto auto em($line, $base-font-size);
 	@include respond-min($c) {
 		width: 92%;
-		margin: auto auto 3rem; } }
+		margin: auto auto em($line*2, $base-font-size); } }
 		
 // light subtle box styling, for buttons, etc
 %subtle-box {
