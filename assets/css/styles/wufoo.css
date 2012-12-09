@@ -1,24 +1,26 @@
 /*
 Syntax error: Undefined variable: "$colour".
-        on line 42 of /Users/Steve/Dropbox/Sites/dev/ee/assets/sass/styles/wufoo.scss, in `box-shadow'
-        from line 42 of /Users/Steve/Dropbox/Sites/dev/ee/assets/sass/styles/wufoo.scss
+        on line 44 of /Users/Steve/Dropbox/Sites/dev/ee/assets/sass/styles/wufoo.scss
 
 Backtrace:
-/Users/Steve/Dropbox/Sites/dev/ee/assets/sass/styles/wufoo.scss:42:in `box-shadow'
-/Users/Steve/Dropbox/Sites/dev/ee/assets/sass/styles/wufoo.scss:42
+/Users/Steve/Dropbox/Sites/dev/ee/assets/sass/styles/wufoo.scss:44
 /Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/script/variable.rb:49:in `_perform'
 /Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/script/node.rb:40:in `perform'
 /Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/script/funcall.rb:93:in `block in _perform'
 /Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/script/funcall.rb:93:in `map'
 /Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/script/funcall.rb:93:in `_perform'
 /Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/script/node.rb:40:in `perform'
-/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/script/list.rb:70:in `block in _perform'
-/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/script/list.rb:70:in `map'
-/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/script/list.rb:70:in `_perform'
-/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/script/node.rb:40:in `perform'
-/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:257:in `block in visit_mixin'
-/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:257:in `map'
-/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:257:in `visit_mixin'
+/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:296:in `visit_prop'
+/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:98:in `visit'
+/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:107:in `block in visit_children'
+/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:119:in `with_environment'
+/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:106:in `visit_children'
+/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:318:in `visit_rule'
 /Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/perform.rb:98:in `visit'
 /Users/Steve/.rvm/gems/ruby-1.9.3-p194/gems/sass-3.2.3/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
@@ -92,4 +94,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$colour\".\A         on line 42 of /Users/Steve/Dropbox/Sites/dev/ee/assets/sass/styles/wufoo.scss, in `box-shadow'\A         from line 42 of /Users/Steve/Dropbox/Sites/dev/ee/assets/sass/styles/wufoo.scss"; }
+  content: "Syntax error: Undefined variable: \"$colour\".\A         on line 44 of /Users/Steve/Dropbox/Sites/dev/ee/assets/sass/styles/wufoo.scss"; }
