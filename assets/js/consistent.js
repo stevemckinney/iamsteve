@@ -285,16 +285,30 @@ function getshots(name, count, el) {
 	    });
 	    
 	    $("." + opt.elem).html(html);
-		},
-		error: function (jqXHR, textStatus, errorThrown) {
-			var html = [];
-			html += '<h3><a href="http://dribbble.com/' + opt.player + '">Dribbble shots</a></h3>';
-			html += '<p>Failed to because of ' + errorThrown + '</p>';
-			$(opt.elem).html(html);
 		}
 	});
 }
+/*global $, jQuery*/
+/*
+function getbadges(name, count, el) {
+	'use strict';
+	var opt = { user: name, badge_count: count,  elem: el };
+	var html = [], i = 0;
 
+	$.getJSON('http://teamtreehouse.com/' + opt.user + '.json', function(data) {
+	  var items = [];
+	
+	  $.each(data, function(key, val) {
+	    items.push('<li id="' + key + '">' + val + '</li>');
+	  });
+	
+	  $('<ul/>', {
+	    'class': 'my-new-list',
+	    html: items.join('')
+	  }).appendTo("." + opt.elem);
+	});
+}
+*/
 /**
  *	iamsteve.me site js
  */
@@ -310,6 +324,7 @@ $(function() {
 			page = window.location.pathname,
 			name = page.split('/'),
 			$dribbble = 'dribbble',
+			$badges = 'badges',
 			next = $('.next a').attr('href'),
 			prev = $('.prev a').attr('href');
 			
@@ -324,6 +339,8 @@ $(function() {
 		$('.title').fitText(1.5, { minFontSize: '36px', maxFontSize: '72px' });
 		$('.wordpress_post_formats .title').fitText(1, { minFontSize: '28px', maxFontSize: '68px' });
 	}
+	
+	// getbadges('stevemckinney', 10, $badges);
 	
 	// do stuff at each breakpoint
 	var queries = [

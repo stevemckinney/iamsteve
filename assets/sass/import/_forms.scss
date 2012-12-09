@@ -42,7 +42,7 @@
 	@if $type == input {
 		@if $status != "normal" {
 			@include box-shadow(0 2px 1px $default, inset 0 0 0 1px $border);
-			background-image: linear-gradient(90deg, fade-out(#afb1b1, 0.85) 0%, rgba(176,178,178,.15) 100%);
+			@include background(linear-gradient(90deg, fade-out(#afb1b1, 0.85) 0%, rgba(176,178,178,.15) 100%));
 			.noboxshadow & {
 				border: 1px solid $border; } }
 		@else {

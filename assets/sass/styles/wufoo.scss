@@ -17,10 +17,32 @@
 	textarea.textarea {
 		padding: $base-px; }
 	input.email, input.text, textarea.textarea, input.file, select.select {
-		@extend input;
+		@include box-shadow(0 2px 1px $default, inset 0 0 0 1px $border);
 		@include border-radius($radius);
 		font-family: $sans;
-		font-weight: 400; }
+		font-weight: 400;
+		@include background(linear-gradient(90deg, fade-out(#afb1b1, 0.85) 0%, rgba(176,178,178,.15) 100%));
+		.noboxshadow & {
+			border: 1px solid $border; }
+		&::-webkit-input-placeholder {
+			color: lighten(#afafaf, 10%);
+			font: 16px/1 $sans; }
+		&:-moz-placeholder {
+			color: lighten($primary, 30%);
+			font: 16px/1 $sans; }	
+		&:hover {
+			@if $type == input { 
+				@include box-shadow(inset 0 0 0 1px lighten($border, 30%), inset 0 1px 3px fade-out($black, .8), 0 1px 1px $default);
+				@include background(
+					linear-gradient(top, rgba(176,178,178,.25) 0%, rgba(176,178,178,0) 100%), $white);
+				.noboxshadow & {
+					border: 1px solid $border; } } }
+		&:active, &:focus {
+			outline: none;
+			background-color: $white;
+			@include box-shadow(inset 0 0 0 1px lighten($border, 30%), inset 0 1px 4px fade-out($black, 0.8), 0 0 8px fade-out($colour, 0.4));
+			.noboxshadow & {
+				border-color: fade-out($colour, 0.4); } } }
 	textarea.textarea {
 		height: auto;
 		max-height: 120px; 
@@ -45,7 +67,7 @@
 	li, .buttons {
 		padding: 0 2px; }
 	li {
-		@include rem(margin, 0 0 $line); }
+		padding: 0 0 em($line, $base-font-size); }
 	p.error {
 		@include border-radius(0 0 $radius $radius);
 		@include box-shadow(0 0 0 1px $danger, 0 2px 1px $default);
@@ -57,16 +79,17 @@
 		padding: 3px !important;
 		line-height: 1 !important;
 		font-weight: normal;
-		font-size: 12px;
+		font-size: em($base-px, $base-font-size);
 		color: $white !important;
 		clear: both;
-		@extend %letter-spacing; }
+		text-transform: none !important;
+		margin: 0 0 em($line, $base-font-size) !important; }
 	input.submit {
 		@include border-radius($radius);
 		@include rem(font-size, 14px);
-		@include rem(padding, 0 $line);
+		padding: 0 em($line, $base-font-size);
 		margin: 0; }
 	#fo3li6 {
-		@include rem(margin, 0 0 $base-px);
+		margin: 0 0 em($base-px, $base-font-size);
 		input { 
 			margin-bottom: -2px !important; } } }
