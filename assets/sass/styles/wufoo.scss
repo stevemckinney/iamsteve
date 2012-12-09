@@ -31,12 +31,11 @@
 			color: lighten($primary, 30%);
 			font: 16px/1 $sans; }	
 		&:hover {
-			@if $type == input { 
-				@include box-shadow(inset 0 0 0 1px lighten($border, 30%), inset 0 1px 3px fade-out($black, .8), 0 1px 1px $default);
-				@include background(
-					linear-gradient(top, rgba(176,178,178,.25) 0%, rgba(176,178,178,0) 100%), $white);
-				.noboxshadow & {
-					border: 1px solid $border; } } }
+			@include box-shadow(inset 0 0 0 1px lighten($border, 30%), inset 0 1px 3px fade-out($black, .8), 0 1px 1px $default);
+			@include background(
+				linear-gradient(top, rgba(176,178,178,.25) 0%, rgba(176,178,178,0) 100%), $white);
+			.noboxshadow & {
+				border: 1px solid $border; } }
 		&:active, &:focus {
 			outline: none;
 			background-color: $white;
