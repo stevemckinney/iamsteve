@@ -41,7 +41,7 @@
 			background-color: $white;
 			@include box-shadow(inset 0 0 0 1px lighten($border, 30%), inset 0 1px 4px fade-out($black, 0.8), 0 0 8px fade-out($alt, 0.4));
 			.noboxshadow & {
-				border-color: fade-out($colour, 0.4); } } }
+				border-color: fade-out($alt, 0.4); } } }
 	textarea.textarea {
 		height: auto;
 		max-height: 120px; 
