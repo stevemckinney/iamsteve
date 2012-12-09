@@ -1,28 +1,29 @@
 input {
-	@include form($group: true, $radius: none);
-	@include appearance(none);
-	@include rem(height, 36px);
+	@include rem(height, $footer-height);
 	border: none; }
+input[type="text"], input[type="email"], input[type="search"], textarea {
+	@include form($group: true, $radius: none); }
 input:not([type="submit"]) {
 	font: 400 $base-font-size/1 $sans; }
+	
 [type="submit"] {
 	@include element($primary_l2, $size: small, $radius: 0 $radius $radius 0, $hover: true, $font-size: false);
-	@extend %ts;
 	@extend %letter-spacing;
 	text-align: center; }
+	
 [role="contentinfo"] {
 	form {
 		@include pie-clearfix;
 		@include rem(margin, $line 0 0);
+		line-height: 2.25rem;
 		width: 100%; }
 		[type="search"] {
 			font-size: .75em; }
 		[type="search"] {
 			@include border-radius($radius 0 0 $radius); }
 		[type="submit"] {
-			font-size: .75em;
-			width: 35%;
-			@include border-radius(0 $radius $radius 0); } }
+			font-size: .875em;
+			width: 35%; } }
 [type="search"] {
 	width: 65%;
 	&::-webkit-input-placeholder {

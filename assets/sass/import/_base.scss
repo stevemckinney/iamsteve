@@ -17,6 +17,8 @@ $eighty: 80%;
 $ninety: 90%;
 $whole: 100%;
 
+$footer-height: 42px;
+
 //	general variable colours
 // --------------------------
 $primary: #363940 !default;
@@ -100,7 +102,7 @@ $fix-mqs: false !default;
 
 // consistent radius
 // ---------------------------
-$radius: .3125em; /* 5px / 16px */
+$radius: 5px; /* 5px / 16px = .3125em */
 
 // change your responsive widths here,
 // corresponds with screens scss files a lowest e highest

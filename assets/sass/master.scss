@@ -37,12 +37,15 @@ body {
 	@include respond-to(retina) {
 		background-size: cover; } }
 
+img {
+	vertical-align: bottom; }
 // potential to break, old imgs without a figure in blog posts
 article img {
 	@extend %imgs;
 	display: block; }
 		
-/* !header ---------------------- */
+// header
+// ---------------------------
 [role="banner"] {
 	@extend %crm;
 	@extend %transition;
@@ -72,7 +75,6 @@ article img {
 		@include animation-fill-mode(forwards);
 		@include animation-play-state(paused);
 		position: relative;
-		font-size: 72px;
 		width: 88%;
 		top: 500px;
 		margin: auto;;
@@ -87,10 +89,12 @@ article img {
 			line-height: 1.185; } }
 
 	
-/* !nav ---------------------- */
+// navigation
+// ---------------------------
 @import "styles/navigation";
 		
-/* !section ---------------------- */
+// section
+// ---------------------------
 [role="region"] {
 	@include pie-clearfix;
 	width: $whole;
@@ -119,7 +123,8 @@ article img {
 
 @import "styles/dribbble";
 
-/* !article ---------------------- */
+// article
+// ---------------------------
 [role="article"] {
 	@include pie-clearfix;
 	margin: auto auto em($line, $base-font-size);
@@ -149,7 +154,8 @@ article img {
 ---------------------------------------------------------------------- */
 @import "styles/typography";
 
-/* !pagination ---------------------- */
+// pagination
+// ---------------------------
 @import "styles/pagination";
 
 /* 
@@ -157,7 +163,10 @@ article img {
 ---------------------------------------------------------------------- */
 article {
 	ul, ol {
-		margin: 0 0 $line; } }
+		list-style: inside square;
+		margin: 0 0 $line;
+		@include respond-min($c) {
+			list-style-position: outside; } } }
 		
 [role="contentinfo"] {
 	text-align: center;
@@ -194,10 +203,11 @@ article {
 		margin: 0;
 		display: block;
 		color: $primary;
-		color: fade-out($primary, 0.5); 
+		color: fade-out($primary, 0.5);
+		line-height: 1; 
 		@include respond-min($c) {
-			height: 2.25rem;
-			line-height: 2.25rem;
+			@include rem(height, $footer-height);
+			@include rem(line-height, $footer-height);
 			@include rem(padding, 0 $base-px/2); }
 		@include respond-min($d) {
 			font-size: .875rem; } } } }
@@ -219,7 +229,7 @@ dd {
 	@include element($alt, $size: normal, $hover: true);
 	@extend %letter-spacing;
 	white-space: nowrap;
-	font-size: .75em;
+	font-size: .875rem;
 	line-height: 1.5; }
 
 .button-small {
@@ -228,9 +238,11 @@ dd {
 	line-height: 1; }
 
 
-/* !notices ---------------------- */
+// notices
+// ---------------------------
 .notice {
-	a { color: $white; } }
+	a { 
+		color: $white; } }
 .notice-default {
 	@include element; }
 .notice-warning {
@@ -308,12 +320,14 @@ hr {
 // ---------------------------
 @import "styles/code";
 
-/* figure ------------------------------ */
+// figure
+// ---------------------------
 figure {
 	@include pie-clearfix; }
 figcaption {}
 
-/* table ---------------------- */
+// table
+// ---------------------------
 table {
 	border: 1px solid $primary;
 	border-collapse: separate;
@@ -326,18 +340,22 @@ td, th {
 	&:nth-of-type(even) { 
 		background: lighten($secondary, 21%); } }
 
-/* !hide extras from services ---------------------- */
+// hide extras from services
+// ---------------------------
 .js [id="wufoo-q7x3k1"] p {
 	display: none; }
 	
-/* !screenreaders ---------------------- */
+// screenreaders
+// ---------------------------
 [for="keywords"], .screenreader { 
 	@extend %screenreaders; }
 	
-/* !extends ---------------------- */
+// extends
+// ---------------------------
 @import "styles/extends";
 
-/* !lettering ---------------------- */
+// lettering
+// ---------------------------
 .space {
 	@include rem(width, $line); }
 

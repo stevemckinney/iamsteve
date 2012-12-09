@@ -1,5 +1,4 @@
 @include respond-min($f) {
-
 	html, body:after {
 		font-family: "f"; }
 	
@@ -24,7 +23,8 @@
 			margin: 0 0 $line;
 			float: none;
 			width: auto; }
-			
+*/
+/*			
 	[role="navigation"] {
 		li {
 			.loaded & {

@@ -4,7 +4,6 @@
 
 
 // target / context = result
-// ---------------------------
 // long length version
 @function calc-percent($target, $container) {
   @return ($target / $container) * 100%; }
@@ -13,7 +12,6 @@
   @return calc-percent($target, $container); }
 
 // px to em
-// ---------------------------
 @function em($target-px, $context) {
   @return ($target-px / $context) * 1em; }
 
@@ -22,13 +20,11 @@
 // If the html element's font-size is set to 62.5% (of the browser's default font-size of 16px),
 // then the variable below would be 10px.
 // $base-font-size: set in _base.scss
-// ---------------------------
 @mixin rem($property, $px-values) {
   // Convert the baseline into rems
   $baseline-rem: $base-font-size / 1rem;
   // Print the first line in pixel values
-  @if $legacy-support-for-ie == true {
-  	#{$property}: $px-values; }
+  #{$property}: $px-values;
   // If there is only one (numeric) value, return the property/value line for it.
   @if type-of($px-values) == "number" {
     #{$property}: $px-values / $baseline-rem; }
@@ -45,7 +41,6 @@
     #{$property}: $rem-values; } }
 
 //	Simple media queries
-// ---------------------------
 @mixin respond-to($media) {
   @if $media == a {
     @media screen and (min-width: $a) { 
@@ -65,16 +60,15 @@
   @else if $media == f {
     @media screen and (min-width: $f) { 
     	@content; } }
-  // decisions behind this: https://gist.github.com/3446599
+  // decisions behind this: http://www.brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries/
   @else if $media == retina {
-    @media screen and (-webkit-min-device-pixel-ratio: 1.3), screen and (-o-min-device-pixel-ratio: 13/10), screen and (min-resolution: 120dpi) { 
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) { 
     	@content; } }
   @else if $media == nonretina {
-    @media screen and (-webkit-max-device-pixel-ratio: 1.3), screen and (-o-max-device-pixel-ratio: 13/10), screen and (max-resolution: 120dpi) { 
+    @media (-webkit-max-device-pixel-ratio: 1.5), (max-resolution: 144dpi) { 
     	@content; } } }
 
 // Better/flexible media queries, with old IE fallback see: https://github.com/jakearchibald/sass-ie
-// ---------------------------
 @mixin respond-min($width) {
 	@if $fix-mqs {
 		@if $fix-mqs >= $width {

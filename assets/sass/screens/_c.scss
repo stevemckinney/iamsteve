@@ -8,7 +8,7 @@
 	.container {
 		@include rem(padding, $line*2 0 0); }
 	
-	[role="banner"] {
+	/* html:not(.blog) */ [role="banner"] {
 		@include box-shadow(
 			0 0 0 1px $primary_d2,
 			0 1px 3px fade-out($primary_d1, 0.8),
@@ -99,7 +99,6 @@
 	[role="contentinfo"] {
 		form {
 			[type="submit"] {
-				width: 40%;
-				@include border-radius(0 4px 4px 0); } } }
+				width: 40%; } } }
 				
 } // close mq

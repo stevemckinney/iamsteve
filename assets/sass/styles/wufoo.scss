@@ -31,7 +31,7 @@
 			font-weight: normal !important;
 			color: $primary !important; }
 		input.email, input.text, textarea.textarea, input.file, select.select {
-			@include border-radius(4px 4px 0 0);
+			@include border-radius($radius $radius 0 0);
 			@include box-shadow(0 0 0 1px $danger, inset 0 1px 2px fade-out($black, 0.9), 0 2px 1px $default); } }
 	.info {
 		display: none; }
@@ -47,7 +47,7 @@
 	li {
 		@include rem(margin, 0 0 $line); }
 	p.error {
-		@include border-radius(0 0 4px 4px);
+		@include border-radius(0 0 $radius $radius);
 		@include box-shadow(0 0 0 1px $danger, 0 2px 1px $default);
 		background: $danger !important;
 		position: relative;
@@ -62,7 +62,7 @@
 		clear: both;
 		@extend %letter-spacing; }
 	input.submit {
-		@include border-radius(4px);
+		@include border-radius($radius);
 		@include rem(font-size, 14px);
 		@include rem(padding, 0 $line);
 		margin: 0; }

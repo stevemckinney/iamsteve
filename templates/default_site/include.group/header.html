@@ -10,13 +10,13 @@
 		{if segment_2 == "category"}
 			{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
 				{exp:channel:category_heading channel="blog"}
-					{category_name} | Portfolio of Steve McKinney
+					{category_name} | Steve McKinney
 				{/exp:channel:category_heading}
 			{/exp:channel:entries}
 		{if:elseif embed:entry_title}
-			{embed:entry_title} | Portfolio of Steve McKinney
+			{embed:entry_title} | Steve McKinney
 		{if:else}
-			Portfolio of Steve McKinney Manchester web designer | {site_name}
+			Blog & Portfolio of Steve McKinney, a Manchester web designer | {site_name}
 		{/if}
 	</title>
 	<meta name="description" content="The portfolio of Steve McKinney (iamsteve), a Manchester based web designer/front end developer.">

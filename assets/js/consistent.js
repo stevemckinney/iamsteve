@@ -319,8 +319,11 @@ $(function() {
 	// general stuff
 	// $nav.addClass('hidden');
 	$('.title').lettering();
-	$('.title').fitText(1.5, { minFontSize: '36px', maxFontSize: '72px' });
-	$('.wordpress_post_formats .title').fitText(1, { minFontSize: '28px', maxFontSize: '68px' });
+	
+	if(!Modernizr.cssvwunit) {
+		$('.title').fitText(1.5, { minFontSize: '36px', maxFontSize: '72px' });
+		$('.wordpress_post_formats .title').fitText(1, { minFontSize: '28px', maxFontSize: '68px' });
+	}
 	
 	// do stuff at each breakpoint
 	var queries = [

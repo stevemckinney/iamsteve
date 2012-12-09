@@ -27,7 +27,9 @@ body, article h1, h2, h3, p, ul, li, .title span {
 	display: block;
 	width: 100%;
 	text-align: center;
-	font: 700 48px "proxima-nova-extra-condensed", sans-serif;
+	font: 700 5.8vw "proxima-nova-extra-condensed", sans-serif;
+	.no-cssvwunit & {
+		font: 700 56px "proxima-nova-extra-condensed", sans-serif; }
 	text-shadow: none;
 	-webkit-mask: none;
 	span {

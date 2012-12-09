@@ -30,9 +30,10 @@ a {
 		color: $secondary;
 		&:hover, &:focus {
 			color: $primary; } } }
+
 /* !base size ---------------------- */		
 p, dt, dd, figcaption, li {
-	font: 400 1.125em/#{$base-line-height} $body; }
+	font: 400 #{em($base-font-size, $base-font-size)}/#{$base-line-height} $body; }
 p, dd, figcaption, li {
 	color: fade-out($primary, 0.15); }
 .meta li {
@@ -55,7 +56,16 @@ p, li {
 /* !header ---------------------- */
 .title {
 	font-family: $slab;
-	font-weight: 100; }
+	font-weight: 100;
+	font-size: 8vw;
+	@include respond-min($b) {
+		font-size: 7.5vw; }
+	@include respond-min($c) {
+		font-size: 7vw; }
+	@include respond-min($d) {
+		font-size: 5.2vw; }
+	.no-cssvwunit & {
+		font-size: 72px; } }
 .title, .title span, .title a {
 	color: $primary_l3; }
 
@@ -65,16 +75,19 @@ p, li {
 		@include hyphens(auto);
 		@include rem(margin, $base-px/2 0 $base-px); }
 	h1, .h1 {
-		font-size: 1.875em; }
-	h2, .h2 {
 		font-size: 1.5em; }
-	h3, .h3, p:first-child {
+	h2, .h2 {
 		font-size: 1.125em; }
-	h4, .h4, p, dt, dd  {
+	h3, .h3, h4, .h4, p, dt, dd  {
 		font-size: 1em; } }
-			
+
+.entry-summary p:first-child, .entry-content p:first-child {
+		font-size: 1.125em; }
+.entry-summary figcaption p:first-child, .entry-content figcaption p:first-child {
+	font-size: em($base-font-size, $base-font-size); }
+		
 code {
-	font-size: 1em;
+	font-size: em($base-font-size, $base-font-size);
 	font-weight: 400;
 	pre & {
 		max-height: 200px;
@@ -89,10 +102,6 @@ code {
 		tab-size: 2; } }
 
 @include respond-min($c) {
-	code {
-		font-size: 1em; 
-		pre & {
-			font-size: 1em; } }
 	[role="main"] {
 		h1, .h1 {
 		font-size: 2.625em; }
@@ -100,10 +109,14 @@ code {
 			font-size: 2.25em; }
 		h3, .h3 {
 			font-size: 1.875em; }
-		h4, .h4, p:first-child {
+		h4, .h4 {
 			font-size: 1.5em; }
 		p, dt, dd  {
-			font-size: 1.125em; } } }
+			font-size: 1.125em; } }
+		.entry-summary p:first-child, .entry-content p:first-child {
+			font-size: 1.5em; }
+		.entry-summary figcaption p:first-child, .entry-content figcaption p:first-child {
+			font-size: 1.125em; } }
 
 /* !aside ---------------------- */
 [role="complementary"], .related-entries {
@@ -167,7 +180,9 @@ pre {
 code {
 	@include rem(padding, 2px);
 	@include border-radius(2px);
-	background: fade-out($primary_l2, 0.9); }
+	background: fade-out($primary_l2, 0.9);
+	position: relative;
+	top: -1px; }
 
 /* blockquote ---------------------- */
 $q: lighten(#f2e7c2, 5%);
