@@ -32,9 +32,9 @@
 
 .shown {
 	[role="navigation"] {
-		@include transform(translate3d(0,-255px,0)); }
+		@include transform(translate3d(0,em(-210px - $line, $base-font-size),0)); }
 	[role="banner"] {
-		padding-top: 255px -$line; } }
+		padding-top: em(210px, $base-font-size); } }
 		
 @include respond-max($c) {
 	[role="navigation"] {

@@ -9,7 +9,8 @@
 	font-style: normal; }
 @import "symbolset";
 
-/* ! consistent styles ---------------------- */
+// base heading elements
+// ---------------------------
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 	font-weight: 500;
@@ -31,7 +32,8 @@ a {
 		&:hover, &:focus {
 			color: $primary; } } }
 
-/* !base size ---------------------- */		
+// base elements
+// ---------------------------
 p, dt, dd, figcaption, li {
 	font: 400 #{em($base-font-size, $base-font-size)}/#{$base-line-height} $body; }
 p, dd, figcaption, li {
@@ -53,7 +55,8 @@ p, li {
 	&:last-child {
 		padding: 0; } }
 
-/* !header ---------------------- */
+// header
+// ---------------------------
 .title {
 	font-family: $slab;
 	font-weight: 100;
@@ -71,7 +74,8 @@ p, li {
 .title, .title span, .title a {
 	color: $primary_l3; }
 
-/* !content ---------------------- */
+// content
+// ---------------------------
 [role="main"] {
 	h1, h2, h3, h4 {
 		@include hyphens(auto);
@@ -120,7 +124,8 @@ code {
 		.entry-summary figcaption p:first-child, .entry-content figcaption p:first-child {
 			font-size: 1.125em; } }
 
-/* !aside ---------------------- */
+// aside
+// ---------------------------
 [role="complementary"], .related-entries {
 	p {
 		font-size: 87.5%;
@@ -137,7 +142,8 @@ code {
 		p {
 			font-size: 100%; } } }
 
-/* !nav ---------------------- */
+// nav
+// ---------------------------
 [role="navigation"] {
 	a {
 		font-size: 15px;
@@ -145,11 +151,13 @@ code {
 		color: #f0f4fc;
 		letter-spacing: 1px; } }
 
-/* !aside ---------------------- */
+// aside
+// ---------------------------
 [role="complementary"], [role="contentinfo"] {
 	font-family: $body; }
 
-/* !page specific ---------------------- */
+// page specific
+// ---------------------------
 [class^="item"] {
 	h2 {
 		margin: 0 0 em($base-px, 41px); } }
@@ -158,7 +166,8 @@ code {
 		margin: 0 0 em($base-px, $base-font-size);
 		font-size: 1em; } }
 
-/* !no fout ---------------------- */
+// no fout
+// ---------------------------
 li, p, dd, dt, 
 [role="navigation"] a, 
 [role="main"] h1, 
@@ -170,7 +179,8 @@ li, p, dd, dt,
 [role="complementary"] h3, {
 	@include no-fout; }
 	
-/* pre/code ---------------------- */
+// pre/code
+// ---------------------------
 pre {
 	@include box-shadow(inset 0 1px 3px fade-out($black, 0.9), 0 1px 0 fade-out($white, 0.2));
 	@extend %rounded;
@@ -186,7 +196,8 @@ code {
 	position: relative;
 	top: -1px; }
 
-/* blockquote ---------------------- */
+// blockquote
+// ---------------------------
 $q: lighten(#f2e7c2, 5%);
 $qd: darken(desaturate($q, 50%), 40%);
 $ql: lighten($q, 10%);
