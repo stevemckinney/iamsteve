@@ -57,13 +57,15 @@ p, li {
 .title {
 	font-family: $slab;
 	font-weight: 100;
-	font-size: 8vw;
+	font-size: 8.5vw;
 	@include respond-min($b) {
-		font-size: 7.5vw; }
+		font-size: 8vw; }
 	@include respond-min($c) {
-		font-size: 7vw; }
+		font-size: 7.5vw; }
 	@include respond-min($d) {
-		font-size: 5.2vw; }
+		font-size: 6.5vw; }
+	@include respond-min($e) {
+		font-size: 5.95vw; }
 	.no-cssvwunit & {
 		font-size: 72px; } }
 .title, .title span, .title a {
