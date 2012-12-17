@@ -174,7 +174,7 @@
 		@include respond-min($c) {
 			margin: 0 em($base-px, 14px) 0 0; } }
 	a { 
-		@include element($secondary, $size: xsmall, $hover: true);
+		@include element($secondary, $size: xxsmall, $hover: true);
 		@include rem(font-size, 14px); } }
 
 

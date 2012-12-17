@@ -193,47 +193,9 @@ pre[class*="language-"] {
 // github gists
 // ---------------------------
 [role="main"] .gist {
-	position: relative !important;
-	.gist-file, .gist-data, .gist-highlight {
-		position: relative;
-		border-radius: 4px;
-		background: none !important;
-		border: none !important; }
-	.gist-highlight {
-		border-left: 4em solid fade-out($black, 0.95) !important;
-		@include box-shadow(inset 1px 0 0 fade-out($white, 0.7)); }
-	.gist-file .gist-data {
-		@include border-radius(4px 4px 0 0 !important);
-		@include box-shadow(inset 0 0 0 1px #ccc, inset 0 2px 3px fade-out($black, 0.9), 0 1px 0 fade-out($white, 0.2) !important);
-		border: none !important;
-		border-bottom: none !important;
-		overflow: auto;
-		max-height: 500px;
-		padding: 0 !important;
-		background: none !important; }
-	.gist-file .gist-data pre {
-		padding: $base-px !important;
-		border: none !important;
-		box-shadow: none !important;
-		counter-reset: linenumbers;
-		div:before {
-			@include user-select(none);
-	    color: #999;
-	    text-shadow: 0 1px 0 rgba(255,255,255,0.45);
-	    content: counter(linenumbers);
-	    counter-increment: linenumbers;
-	    left: -4.5em;
-	    position: absolute;
-	    text-align: right;
-	    @include rem(width, $line*2); } }
 	.gist-meta {
 		@include element(#444, $radius: 0 0 4px 4px);
 		width: 100%;
 		color: $white !important;
 		a {
-			color: $white !important; } }
-	.gist-syntax .k {
-		color: $primary; }
-	* {
-		font-family: $monospace !important;
-		font-size: 95%; } }
+			color: $white !important; } } }
