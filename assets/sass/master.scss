@@ -326,20 +326,6 @@ figure {
 	@include pie-clearfix; }
 figcaption {}
 
-// table
-// ---------------------------
-table {
-	border: 1px solid $primary;
-	border-collapse: separate;
-	background: #fff; }
-td, th {
-	padding: $line/4;
-	line-height: $base-line-height;
-	text-align: left;
-	border-top: 1px solid $primary;
-	&:nth-of-type(even) { 
-		background: lighten($secondary, 21%); } }
-
 // hide extras from services
 // ---------------------------
 .js [id="wufoo-q7x3k1"] p {
