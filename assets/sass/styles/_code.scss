@@ -214,6 +214,8 @@ pre[class*="language-"] {
 	.gist-file .gist-data pre {
 		border: none !important;
 		box-shadow: none !important; }
+	.gist-file .gist-data .line_data, .gist-file .gist-data .line_numbers {
+		line-height: 1.5; }
 	.gist-file .gist-data .line_numbers {
 		background-color: none !important;
 		border-right: 1px solid hsl(0, 0%, 87%);

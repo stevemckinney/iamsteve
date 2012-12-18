@@ -77,7 +77,7 @@ article img {
 		position: relative;
 		width: 88%;
 		top: 500px;
-		margin: auto;;
+		margin: auto;
 		text-align: center;
 		.loaded & {
 			@include animation-play-state(running); }
