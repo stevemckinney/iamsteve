@@ -316,10 +316,6 @@ hr {
 		max-width: 100%;
 		width: 100%; } }
 
-// code
-// ---------------------------
-@import "styles/code";
-
 // figure
 // ---------------------------
 figure {
@@ -335,6 +331,10 @@ figcaption {}
 // ---------------------------
 [for="keywords"], .screenreader { 
 	@extend %screenreaders; }
+	
+// code
+// ---------------------------
+@import "styles/code";
 	
 // extends
 // ---------------------------

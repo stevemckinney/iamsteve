@@ -201,7 +201,7 @@ pre[class*="language-"] {
 		border: none !important; }
 	.gist-highlight {
 		border-left: 4em solid fade-out($black, 0.95) !important;
-		@include box-shadow(inset 1px 0 0 fade-out($white, 0.7)); }
+		@include box-shadow(inset 1px 0 0 fade-out($white, 0.7) !important); }
 	.gist-file .gist-data {
 		@include border-radius(4px 4px 0 0 !important);
 		@include box-shadow(inset 0 0 0 1px #ccc, inset 0 2px 3px fade-out($black, 0.9), 0 1px 0 fade-out($white, 0.2) !important);
@@ -212,22 +212,26 @@ pre[class*="language-"] {
 		padding: 0 !important;
 		background: none !important; }
 	.gist-file .gist-data pre {
-		padding: $base-px !important;
 		border: none !important;
-		box-shadow: none !important;
-		counter-reset: linenumbers;
-		div:before {
-			@include user-select(none);
-	    color: #999;
-	    text-shadow: 0 1px 0 rgba(255,255,255,0.45);
-	    content: counter(linenumbers);
-	    counter-increment: linenumbers;
-	    left: -4.5em;
-	    position: absolute;
-	    text-align: right;
-	    @include rem(width, $line*2); } }
+		box-shadow: none !important; }
+	.gist-file .gist-data .line_numbers {
+		background-color: none !important;
+		border-right: 1px solid hsl(0, 0%, 87%);
+		text-align: right;
+		padding: .5em; }
+	.gist-file .gist-data .line_data {
+		display: inline-block !important; }
 	.gist-meta {
-		@include element(#444, $radius: 0 0 4px 4px);
+		background-color: #222;
+		@include element(#222, $radius: 0 0 4px 4px);
+		@include box-shadow(
+			inset 0 -1px 0 #333,
+			inset 0 0 0 1px #333,
+			inset 0 2px 0 rgba($white, .1),
+			inset 0 -1px 3px #353535,
+			inset -1px -3px 12px -3px rgba(#333, .2),
+			inset 1px -3px 12px -3px rgba(#333, .2),
+			0 1px 3px rgba($black, .2));
 		width: 100%;
 		color: $white !important;
 		a {
@@ -236,4 +240,6 @@ pre[class*="language-"] {
 		color: $primary; }
 	* {
 		font-family: $monospace !important;
-		font-size: 95%; } }
+		font-size: 100%; }
+	* {
+		font-size: 14px !important; } }

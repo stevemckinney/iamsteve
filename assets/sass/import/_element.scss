@@ -22,7 +22,7 @@
 	$subtle: false, 
 	$shadow: true, 
 	$style: true, 
-	$size: false, 
+	$size: normal, 
 	$hover: false,
 	$font-size: false,
 	$display: inline-block) {
@@ -30,16 +30,13 @@
 	$display: unquote($display);
 	$radius: unquote($radius);
 	$size: unquote($size);
-	
-	@if saturation($main-color) < 1% {
-		$text-color: #666; }
-	@else if $text-color == $white {
-		$text-color: $text-color; }
+
+	$text-color: $text-color;
 	
 	// normal state
 	$light-color: scale-color($main-color, $lightness: if-bright($main-color, 25%, 15%));
-	$dark-color: scale-color($main-color, $lightness: -20%);
-	$shadow-color: scale-color($dark-color, $lightness: -20%);
+	$dark-color: scale-color($main-color, $lightness: if-bright($main-color, -15%, -25%));
+	$shadow-color: scale-color($dark-color, $lightness: if-bright($main-color, -15%, -25%));
 	
 	// hover state
 	$hover-main-color: scale-color($main-color, $lightness: 10%);
@@ -51,7 +48,7 @@
 	$active-main-color: $main-color;
 	$active-light-color: $light-color;
 	$active-dark-color: scale-color($dark-color, $lightness: -5%);
-	$active-shadow-color: scale-color($active-dark-color, $lightness: -15%);
+	$active-shadow-color: scale-color($active-dark-color, $lightness: -20%);
 	
 	@extend %element-base;
 	
@@ -93,9 +90,6 @@
 		@if $font-size == true {
 			font-size: 80%; } }
 	
-	@else {
-		padding: em($base-px, $base-font-size) em($line, $base-font-size); }
-	
 	@if $radius != none OR $radius == false {
 		@include border-radius($radius); }
 	
@@ -125,7 +119,7 @@
 					inset 0 -1px 3px $dark-color,
 					inset -1px -3px 12px -3px rgba($shadow-color, .2),
 					inset 1px -3px 12px -3px rgba($shadow-color, .2),
-					0 1px 2px rgba($black, .2));
+					0 1px 3px rgba($black, .2));
 				@if saturation($main-color) < 1% {
 					text-shadow: 0 1px 1px rgba($light-color, .6); }
 				@else {
@@ -140,10 +134,12 @@
 		@if $hover == true {
 			&:hover, &:focus {
 				color: $text-color;
+				
 				@include background(
 					linear-gradient(
 						rgba($hover-main-color, .8) 0%,
 						rgba($hover-dark-color, .8) 60%), $hover-main-color);
+				
 				@if $shadow == true {		
 					@include box-shadow(
 						inset 0 -1px 0 $hover-shadow-color,
@@ -184,7 +180,7 @@
 					text-shadow: 0 1px 1px $active-light-color; }
 				@else {
 					text-shadow: 0 -1px 1px scale-color($active-shadow-color, $lightness: -10%); } }
-				
+
 				.no-boxshadow & {
 					border: 1px solid $active-shadow-color; }
 				.no-cssgradients & {
