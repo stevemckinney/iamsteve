@@ -21,9 +21,11 @@
 		@include border-radius($radius);
 		font-family: $sans;
 		font-weight: 400;
-		@include background(linear-gradient(90deg, fade-out(#afb1b1, 0.85) 0%, rgba(176,178,178,.15) 100%));
+		color: $primary !important;
+		border: none !important;
+		@include background(linear-gradient(90deg, fade-out(#afb1b1, 0.85) 0%, rgba(176,178,178,.15) 100%) !important);
 		.noboxshadow & {
-			border: 1px solid $border; }
+			border: 1px solid $border !important; }
 		&::-webkit-input-placeholder {
 			color: lighten(#afafaf, 10%);
 			font: 16px/1 $sans; }
