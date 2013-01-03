@@ -224,7 +224,7 @@ dd {
 	!Buttons and notices
 -----------------------------------------------------------------------*/
 .button, .button-small {
-	@include element($alt, $size: normal, $hover: true);
+	@include element($alt, $size: 5, $hover: true);
 	@extend %letter-spacing;
 	white-space: nowrap;
 	font-size: .875rem;
@@ -244,14 +244,14 @@ dd {
 .notice-default {
 	@include element; }
 .notice-warning {
-	@include element($warning, $size: normal);
+	@include element($warning, $size: 5);
 	width: 100%;
 	text-align: center;
 	a { 
 		color: #fff;
 		text-decoration: underline; } }
 .notice-success {
-	@include element($success, $size: normal, $hover: true);
+	@include element($success, $size: 6, $hover: true);
 	float: right;
 	em { 
 		@extend %mr6; } }

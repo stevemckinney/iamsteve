@@ -1,8 +1,8 @@
-// 	----------------------------------------- 
+//	----------------------------------------- 
 //	Element — A base, mixin and options
 //	Style anything consistently
 //	Works well for anything else you'd like to style similar apart from buttons/forms
-// 	-----------------------------------------
+//	-----------------------------------------
 
 @mixin element-base {
 	@include background-clip;
@@ -11,10 +11,31 @@
 	@include user-select(none);
 	position: relative;
 	font-family: $sans; }
-  
+	
 %element-base {
 	@include element-base; }
 	
+@function element-size($size: 3) {
+	@return (.75 * ($size / 5)) + em (1.5 * ($size / 4)) + em; }
+
+@function element-shadow($state, $light-color, $dark-color, $shadow-color) {
+	$normal-hover-shadow: unquote("
+		inset 0 0 0 1px #{$shadow-color},
+		inset 0 2px 0 #{$light-color},
+		inset 0 -1px 3px #{$dark-color},
+		inset -1px -3px 12px -3px #{rgba($shadow-color, .2)},
+		inset 1px -3px 12px -3px #{rgba($shadow-color, .2)},
+		0 1px 2px #{rgba($black, .2)}");
+	$active-shadow: unquote("
+		inset 0 1px 0 #{scale-lightness($shadow-color, -20%)},
+		inset 0 1px 3px #{$shadow-color},
+		inset 0 1px 0 1px #{$dark-color},
+		inset 0 2px 3px #{$dark-color},
+		inset -1px -3px 12px -3px #{rgba($shadow-color, .2)},
+		inset 1px -3px 12px -3px #{rgba($shadow-color, .2)},
+		0 1px 1px #{rgba($white, .5)}");
+	@return if($state != active, $normal-hover-shadow, $active-shadow); }
+
 @mixin element(
 	$main-color: $alt,
 	$text-color: $white,
@@ -22,73 +43,49 @@
 	$subtle: false, 
 	$shadow: true, 
 	$style: true, 
-	$size: normal, 
+	$size: 3, 
 	$hover: false,
 	$font-size: false,
 	$display: inline-block) {
 	
-	$display: unquote($display);
-	$radius: unquote($radius);
-	$size: unquote($size);
-
-	$text-color: $text-color;
+	@if saturation($main-color) < 1% {
+		@if lightness($main-color) > 80% {
+			$text-color: #666; } }
+	@else {
+		$text-color: $text-color;
+		$text-color: rgba($text-color, .9); }
 	
 	// normal state
-	$light-color: scale-color($main-color, $lightness: if-bright($main-color, 25%, 15%));
-	$dark-color: scale-color($main-color, $lightness: if-bright($main-color, -15%, -25%));
-	$shadow-color: scale-color($dark-color, $lightness: if-bright($main-color, -15%, -25%));
+	$light-color: scale-color($main-color, $lightness: if-bright($main-color, 25%, 20%));
+	$dark-color: scale-color($main-color, $lightness: if-bright($main-color, -20%, -25%));
+	$shadow-color: scale-color($dark-color, $lightness: if-bright($main-color, -20%, -25%));
 	
 	// hover state
-	$hover-main-color: scale-color($main-color, $lightness: 10%);
-	$hover-light-color: scale-color($light-color, $lightness: 10%);
-	$hover-dark-color: scale-color($dark-color, $lightness: 10%);
-	$hover-shadow-color: scale-color($hover-dark-color, $lightness: -20%);
+	$hover-main-color: scale-color($main-color, $lightness: 15%);
+	$hover-light-color: scale-color($light-color, $lightness: if-bright($main-color, 15%, 20%));
+	$hover-dark-color: scale-color($dark-color, $lightness: 15%);
+	$hover-shadow-color: $dark-color;
 	
 	// active state
 	$active-main-color: $main-color;
 	$active-light-color: $light-color;
-	$active-dark-color: scale-color($dark-color, $lightness: -5%);
-	$active-shadow-color: scale-color($active-dark-color, $lightness: -20%);
+	$active-dark-color: scale-color($dark-color, $lightness: -25%);
+	$active-shadow-color: scale-color($active-dark-color, $lightness: -25%);
 	
 	@extend %element-base;
 	
-	@if $display == block {
+	@if $display == block { 
 		display: block; }
-	@else {
+	@else { 
 		display: inline-block; }
 	
 	@if $subtle == true { 
 		color: $subtle-color; }
 	@else if $style == true { 
 		color: $text-color; }
-	
-	@if $size == xlarge {
-		padding: em($base-px*1.5, $base-font-size) em($line*1.5, $base-font-size);
-		@if $font-size == true {
-			font-size: 150%; } }
-			
-	@else if $size == large {
-		padding: em($base-px*1.25, $base-font-size) em($line*1.25, $base-font-size);
-		@if $font-size == true {
-			font-size: 125%; } }
 		
-	@else if $size == normal {
-		padding: em($base-px, $base-font-size) em($line, $base-font-size); }
-		
-	@else if $size == small {
-		padding: em($base-px/1.25, $base-font-size) em($line/1.25, $base-font-size);
-		@if $font-size == true {
-			font-size: 90%; } }
-			
-	@else if $size == xsmall {
-		padding: em($base-px/1.5, $base-font-size) em($line/1.5, $base-font-size);
-		@if $font-size == true {
-			font-size: 80%; } }
-			
-	@else if $size == xxsmall {
-		padding: em($base-px/2, $base-font-size) em($line/2, $base-font-size);
-		@if $font-size == true {
-			font-size: 80%; } }
+	@if $size != false {
+		padding: element-size($size); }
 	
 	@if $radius != none OR $radius == false {
 		@include border-radius($radius); }
@@ -108,22 +105,18 @@
 		@else {
 			@include background(
 				linear-gradient(
-					rgba($main-color, .8) 0%,
-					rgba($dark-color, .8) 60%), $main-color);
+					rgba($main-color, .8) 10%,
+					rgba($dark-color, .8) 70%), $main-color);
 	
 			@if $shadow == true {		
-				@include box-shadow(
-					inset 0 -1px 0 $shadow-color,
-					inset 0 0 0 1px $dark-color,
-					inset 0 2px 0 $light-color,
-					inset 0 -1px 3px $dark-color,
-					inset -1px -3px 12px -3px rgba($shadow-color, .2),
-					inset 1px -3px 12px -3px rgba($shadow-color, .2),
-					0 1px 3px rgba($black, .2));
+				@include box-shadow(element-shadow(normal, $light-color, $dark-color, $shadow-color));
 				@if saturation($main-color) < 1% {
-					text-shadow: 0 1px 1px rgba($light-color, .6); }
+					@if lightness($main-color) > 80% {
+						text-shadow: 0 1px 1px rgba($light-color, .6); }
+					@else {
+						text-shadow: 0 1px 1px rgba($active-dark-color, .6); } }
 				@else {
-					text-shadow: 0 1px 1px rgba($shadow-color, .6); } }
+					text-shadow: 0 1px 1px rgba($active-shadow-color, .6); } }
 			
 			// modernizr stuff
 			.no-boxshadow & {
@@ -140,17 +133,13 @@
 						rgba($hover-main-color, .8) 0%,
 						rgba($hover-dark-color, .8) 60%), $hover-main-color);
 				
-				@if $shadow == true {		
-					@include box-shadow(
-						inset 0 -1px 0 $hover-shadow-color,
-						inset 0 0 0 1px $hover-dark-color,
-						inset 0 2px 0 $hover-light-color,
-						inset 0 -1px 3px $hover-dark-color,
-						inset -1px -3px 12px -3px rgba($hover-shadow-color, .2),
-					inset 1px -3px 12px -3px rgba($hover-shadow-color, .2),
-						0 1px 2px rgba($black, .25));
+				@if $shadow == true {
+					@include box-shadow(element-shadow(hover, $hover-light-color, $hover-dark-color, $hover-shadow-color));
 					@if saturation($main-color) < 1% {
-						text-shadow: 0 1px 1px rgba($hover-light-color, .6); }
+						@if lightness($main-color) > 80% {
+							text-shadow: 0 1px 1px rgba($hover-light-color, .6); }
+						@else {
+							text-shadow: 0 1px 1px rgba($hover-shadow-color, .6); } }
 					@else {
 						text-shadow: 0 1px 1px rgba($hover-shadow-color, .6); } }
 				
@@ -162,25 +151,23 @@
 					
 			&:active {
 				color: $text-color;
+
 				@include background(
 					linear-gradient(
-						rgba($active-dark-color, .9),
-						rgba($active-dark-color, .45)), $active-main-color);
-				@if $shadow == true {		
-					@include box-shadow(
-						inset 0 1px 1px 1px $active-shadow-color,
-						inset 0 0 1px darken($active-dark-color, 7.5%),
-						inset 0 3px 6px darken($active-dark-color, 7.5%),
-						inset 0 -1px 6px $active-dark-color,
-						inset 0 -1px 3px $active-dark-color,
-						inset -1px 0 3px saturate($active-dark-color, 40%),
-						inset 1px 0 3px saturate($active-dark-color, 40%),
-						0 1px 1px rgba($white, .25));
-				@if lightness($main-color) > 65% {
-					text-shadow: 0 1px 1px $active-light-color; }
-				@else {
-					text-shadow: 0 -1px 1px scale-color($active-shadow-color, $lightness: -10%); } }
+						rgba($active-dark-color, .4),
+						rgba($main-color, .8)), $main-color);
 
+				@if $shadow == true {
+					@include box-shadow(element-shadow(active, $active-light-color, $active-dark-color, $active-shadow-color));
+
+				@if saturation($main-color) < 1% {
+					@if lightness($main-color) > 80% {
+						text-shadow: 0 1px 1px rgba($active-light-color, .6); }
+					@else {
+						text-shadow: 0 1px 1px scale-color(rgba($active-shadow-color, .6), $lightness: -10%); } }
+				@else {
+					text-shadow: 0 1px 1px scale-color(rgba($active-shadow-color, .6), $lightness: -10%); } }
+					
 				.no-boxshadow & {
 					border: 1px solid $active-shadow-color; }
 				.no-cssgradients & {
