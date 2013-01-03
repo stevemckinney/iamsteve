@@ -7,6 +7,7 @@
 		margin: 0; }
 	li {
 		@extend %mr6;
+		@extend %transition;
 		float: left;
 		list-style: none;
 		text-transform: uppercase;
