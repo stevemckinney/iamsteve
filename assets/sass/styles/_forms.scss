@@ -1,5 +1,5 @@
 input {
-	@include rem(height, $footer-height);
+	height: em($footer-height, 14px);
 	border: none; }
 input[type="text"], input[type="email"], input[type="search"], textarea {
 	@include form($group: true, $radius: none); }
@@ -14,15 +14,13 @@ input:not([type="submit"]) {
 [role="contentinfo"] {
 	form {
 		@include pie-clearfix;
-		@include rem(margin, $line 0 0);
-		line-height: 2.25rem;
+		margin: em($line, $base-font-size) 0 0;
 		width: 100%; }
-		[type="search"] {
-			font-size: .75em; }
+		[type="search"], [type="submit"] {
+			font-size: .875em; }
 		[type="search"] {
 			@include border-radius($radius 0 0 $radius); }
 		[type="submit"] {
-			font-size: .875em;
 			width: 35%; } }
 [type="search"] {
 	width: 65%;

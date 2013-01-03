@@ -180,11 +180,11 @@ article {
 		margin: 0; }
 	li {
 		display: inline-block;
-		@include respond-min(520px) {
+		@include respond-min(35em) {
 			float: right; }
 		&:first-child {
 			display: block;
-			@include respond-min(520px) {
+			@include respond-min(35em) {
 				display: inline-block;
 				float: left; } }
 	small {
@@ -199,18 +199,16 @@ article {
 		&:hover, &:focus {
 			color: $primary; } }
 	small, a {
-		font-size: .75rem;
+		font-size: .875rem;
 		margin: 0;
 		display: block;
 		color: $primary;
 		color: fade-out($primary, 0.5);
 		line-height: 1; 
-		@include respond-min($c) {
+		@include respond-min(35em) {
 			@include rem(height, $footer-height);
 			@include rem(line-height, $footer-height);
-			@include rem(padding, 0 $base-px/2); }
-		@include respond-min($d) {
-			font-size: .875rem; } } } }
+			@include rem(padding, 0 $base-px/2); } } } }
 
 dl {
 	line-height: 1.5; }
