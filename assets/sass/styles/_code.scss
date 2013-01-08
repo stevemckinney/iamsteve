@@ -12,9 +12,9 @@ $prism-padding: 		em($base-px, 14px) !default;
 $prism-line-height:		1.5 !default;
 $prism-border-radius: 	5px !default;
 $prism-border: 			1px solid transparent !default;
-$prism-background: 		$primary !default;
-$prism-color: 			$info !default;
-$prism-color-neutral:	$primary_l3 !default;
+$prism-background: 		scale-lightness($primary_d2, -5%) !default;
+$prism-color: 			#ABCCBD !default;
+$prism-color-neutral:	#E4DED0 !default;
 $prism-text-shadow: 	0 1px 0 rgba($black, .5) !default;
 
 // $prism-linenums-padding:		7px !default;
@@ -23,14 +23,25 @@ $prism-text-shadow: 	0 1px 0 rgba($black, .5) !default;
 // $prism-linenums-border-color:	#555 !default;
 // $prism-linenums-border-width:	1px !default;
 
-$prism-color-comment:		#6f705e	!default;
-$prism-color-keyword:		$warning	!default;
+/*
+
+
+E4DED0 - tan
+ABCCBD - green
+7DBEB8 - blue
+181619 - purple
+E32F21 - red
+
+*/
+
+$prism-color-comment:		#ABCCBD	!default;
+$prism-color-keyword:		#F5634A !default;
 $prism-color-value:			#76d9e6	!default;
 $prism-color-string:		#e6d06c	!default;
 $prism-color-name:			$alt	!default;
 $prism-color-number:		$alt	!default;
-$prism-color-variable:		$warning	!default;
-$prism-color-selector:		$success	!default;
+$prism-color-variable:		#FF9C5B	!default;
+$prism-color-selector:		#7DBEB8	!default;
 $prism-color-punctuation:	$prism-color-neutral !default;
 //$prism-color-funtion:	#dc322f	!default;
 
