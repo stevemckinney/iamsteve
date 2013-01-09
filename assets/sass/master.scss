@@ -270,7 +270,7 @@ dd {
 // , "styles/blog"
 
 
-.related-entries {
+.related-entries, .previous-entries {
 	@include pie-clearfix;
 	@extend %margin-bottom;
 	@include respond-min($c) {
@@ -278,7 +278,7 @@ dd {
 	@include respond-min($d) {
 		h1 {
 			padding-left: 15.5%; } } }
-.related-entry {
+.related-entry, .previous-entry {
 	width: 46.25%;
 	&:first-of-type {
 		float: left; }
