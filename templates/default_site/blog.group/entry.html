@@ -9,8 +9,8 @@
 {blog_nav}
 {/exp:channel:entries}
 <hr>
-<section role="region" class="related-entries">
-	<h1 class="h3">Related entries</h1>
+<section role="region" aria-labelledby="Related entries" class="related-entries">
+	<h1 role="heading" class="h3">Related entries</h1>
 	{exp:channel:entries channel="blog" limit="2" related_categories_mode="yes" orderby="random" custom_fields="yes" disable="member_data|pagination"}
 	{if no_results}There are currently no related articles.{/if}
 	<article class="related-entry">

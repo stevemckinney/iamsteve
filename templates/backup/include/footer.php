@@ -2,8 +2,8 @@
 {!-- role="main" --}
 
 <aside role="complementary">
-	<section class="me" role="region">
-		<h3>About me</h3>
+	<section class="me" role="region" aria-labelledby="About me">
+		<h3 role="heading">About me</h3>
 		<p><img src="{site_url}/ee/assets/images/me.jpg" alt="A photo of me">I'm Steve McKinney, a web designer living in Manchester, England. I've been designing from fairly young age, it's something that stuck throughout. I couldn't see myself doing anything else. I can start a website from paper, or just jump straight into Photoshop, it all leads to what I feel is the best result. I'm one to cut the crap, if it offers no value, I get rid of it. I'm good with the usual stuff HTML, CSS, &amp; Photoshop, with a little JavaScript. I also use ExpressionEngine CMS. The aim with this website is to be more of a place to share what I learn, and use it to progress; as my availability is limited.</p>
 	</section>
 	<section class="dribbble" role="region">

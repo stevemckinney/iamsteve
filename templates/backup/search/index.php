@@ -5,7 +5,7 @@
 <h2>Looking for something?</h2>
 </header>
 
-<section role="region">
+<section role="region" aria-labelledby="Search">
 	{search}
 </section>
 

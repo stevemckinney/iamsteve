@@ -8,8 +8,8 @@
 {/exp:channel:category_heading}
 
 {exp:channel:entries channel="downloads" limit="10"}
-<section role="region">
-	<h1>{title}</h1>
+<section role="region" aria-labelledby="{title}">
+	<h1 role="heading">{title}</h1>
 	<p>{overview}</p>
 	{exp:file:entries limit="1" channel="downloads"}
 	<img src="{dl_image}" alt="Preview of {title}" />

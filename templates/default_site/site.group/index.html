@@ -10,8 +10,8 @@
 		</article>
 		<hr>
 	{if:elseif count == "2"}
-		<section role="region" class="previous-entries">
-			<h1 class="h3">Previous entries</h1>
+		<section role="region" class="previous-entries" aria-labelledby="Previous entries">
+			<h1 role="heading" class="h3">Previous entries</h1>
 			<article class="previous-entry">
 				<h2 class="h4"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
 				<p>{exp:eehive_hacksaw words="30" append="&hellip;"}{excerpt}{/exp:eehive_hacksaw}</p>
