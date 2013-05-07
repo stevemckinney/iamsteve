@@ -1,0 +1,14 @@
+@import '_lib/copyright.scss';
+
+$color-accent: #d33682;
+$color-accent-light: lighten($color-accent, 10%);
+$color-accent-dark: darken($color-accent, 10%);
+$color-accent-text: #fff; // when $color-accent is used as a background
+
+$color-link: #d33682;
+$color-link-top-nav: #d33682;
+$color-link-light: lighten($color-link, 10%);
+$color-link-dark: darken($color-link, 10%);
+$color-link-text: #fff; // When $color-link is used as a background
+
+@import '_lib/screen.scss';
