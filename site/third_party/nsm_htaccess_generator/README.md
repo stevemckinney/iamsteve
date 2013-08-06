@@ -1,0 +1,1 @@
+Visit http://ee-garage.com/nsm-htaccess-generator for more information

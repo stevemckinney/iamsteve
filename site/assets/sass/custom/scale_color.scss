@@ -1,0 +1,33 @@
+@import "../import/framework";
+
+.example-box {
+	width: 48.75%;
+	margin: 0 2.5% em($line, $base-font-size) 0;
+	display: inline-block;
+	vertical-align: top;
+	p:first-child {
+		font-size: em($base-font-size, $base-font-size); }
+	&:nth-of-type(2n) {
+		margin-right: 0; }
+	[role="img"] {
+		@include border-radius($radius);
+		display: inline-block;
+		vertical-align: top;
+		width: 100%;
+		height: 200px;
+		margin: 0 0 em($line, $base-font-size); } }
+		
+p:empty { display: none; }
+
+.e1-scale {
+	@include background(linear-gradient(scale-color(#dd453d, $lightness: 50%), #dd453d, scale-color(#dd453d, $lightness: -50%))); }
+.e1-darken {
+	@include background(linear-gradient(lighten(#dd453d, 22.4%), #dd453d, darken(#dd453d, 28%))); }
+.e2-scale {
+	@include background(linear-gradient(scale-color($success, $lightness: 50%), $success, scale-color($success, $lightness: -50%))); }
+.e2-darken {
+	@include background(linear-gradient(lighten($success, 22.4%), $success, darken($success, 28%))); }
+.e3-scale {
+	@include background(linear-gradient(scale-color($alt, $lightness: 50%), $alt, scale-color($alt, $lightness: -50%))); }
+.e3-darken {
+	@include background(linear-gradient(lighten($alt, 22.4%), $alt, darken($alt, 28%))); }

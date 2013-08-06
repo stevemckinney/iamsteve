@@ -1,0 +1,103 @@
+1375818418
+<!DOCTYPE html>
+<!--[if IE]><html lang="en" class="wf-loading hfeed ie no-js{if embed:body_class}{if:elseif segment_1 == ''} using_ems_for_efficiency home{if:elseif segment_1 && segment_2 == ''} blog{if:elseif segment_2 == 'entry'} entry using_ems_for_efficiency{/if}"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="en" class="wf-loading hfeed no-js{if embed:body_class}{if:elseif segment_1 == ''} using_ems_for_efficiency home{if:elseif segment_1 && segment_2 == ''} blog{if:elseif segment_2 == 'entry' OR segment_2 == 'view'} entry using_ems_for_efficiency{/if}"><!--<![endif]-->
+<head>
+	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>
+		{if segment_2 == "category"}
+			
+				
+			
+		{if:elseif embed:entry_title}
+			Using em&#8217;s for efficiency | Steve McKinney
+		{if:else}
+			Blog & Portfolio of Steve McKinney, a Manchester web designer | {site_name}
+		{/if}
+	</title>
+	
+	<meta name="description" content="The portfolio of Steve McKinney (iamsteve), a Manchester based web designer/front end developer.">
+	<meta name="keywords" content="Steve, McKinney, web, design, designer, html, css, manchester, portfolio, iamsteve, iamsteve.me, blog, freelance, design, i am steve">
+	<meta name="author" content="Steve McKinney">
+	
+	
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="I am Steve">
+	
+	
+	<meta name="google-site-verification" content="kvxM4eH_QHyUGdJK0LEQj3aZi7Vew5AooNVxk79zruU">
+	
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@irsteve">
+	<meta name="twitter:description" content="There are a lot of CSS frameworks out there that are great, but their biggest flaw to me is their insistence to override styles and not use a relative measurement like em's to adjust the styles when needed. I realise a lot of the way frameworks are">
+	<meta name="twitter:title" content="Using em&#8217;s for efficiency">
+	<meta name="twitter:url" content="http://iamsteve.dev/blog/entry/using_ems_for_efficiency">
+	
+	
+	
+	<link href="http://iamsteve.dev/site/assets/css/master.css" rel="stylesheet">
+	
+		{if ""}<link href="http://iamsteve.dev/site/assets/css/custom/.css?v=1" rel="stylesheet">{/if}
+	
+	
+	<script src="http://iamsteve.dev/site/assets/js/modernizr.js"></script>
+	<script>(function(){var config={kitId:'fbz2ewv',scriptTimeout:3000};var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)})();</script>
+	
+	
+		{if ""}<script src="//use.typekit.net/.js"></script><script>try{Typekit.load();}catch(e){}</script>{/if}
+	
+	
+	
+	<link rel="author publisher" href="https://plus.google.com/114129050502065289651/posts">
+	<link rel="canonical" href="http://iamsteve.dev/blog/entry/using_ems_for_efficiency">
+	<link rel="alternate" type="application/rss+xml" title="Blog | Portfolio of Steve McKinney" href="http://iamsteve.me/blog/feed">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" href="/assets/apple-touch-icon.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144x144.png">
+</head>
+<body class="hentry">
+	<!--[if lt IE 9]>
+		<p class="notice-warning" style="padding: 12px">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+	<![endif]-->
+	<div class="container">
+		<header role="banner">
+			<h1><a href="/" title="Back to the homepage">I am Steve</a></h1>
+			<a href="#nav" title="To the navigation" class="mobile">&#xE9A1;</a>
+			<nav role="navigation" aria-hidden="false" class="nav">
+				<ul id="nav">
+					<li><a href="{site_url}" title="Back to the homepage" data-icon="home">Home</a></li>
+					<li><a href="{site_url}/blog" title="My blog about design/technology related things" class="active" data-icon="compose">Blog</a></li>
+					<li><a href="{site_url}/portfolio" title="View all my work" data-icon="picture">Portfolio</a></li>
+					<li><a href="{site_url}/about" title="Detailed information about myself" data-icon="user">About</a></li>
+					<li><a href="{site_url}/contact" title="My contact details" data-icon="envelope">Contact</a></li>
+				</ul>
+			</nav>
+		</header>
+		{if segment_1 == ""}
+			
+				<h1 class="title entry-title"><a href="http://iamsteve.dev/blog/entry/using_ems_for_efficiency" title="Read Using em&#8217;s for efficiency in full.">Using em&#8217;s for efficiency</a></h1>
+			
+		{if:elseif segment_2 == "category"}
+			
+				
+			
+		{if:elseif embed:entry_title}
+			
+				<h1 class="title entry-title"><a href="http://iamsteve.dev/blog/entry/using_ems_for_efficiency" title="Read Using em&#8217;s for efficiency in full.">Using em&#8217;s for efficiency</a></h1>
+			
+		{if:else}
+			<h1 class="title entry-title">blog</h1>
+		{/if}
+	</div>	
+	<div role="main">

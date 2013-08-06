@@ -1,0 +1,75 @@
+[role="navigation"] {
+	@extend %ns;
+	@extend %transition;
+	position: absolute;
+	@include transform(translate3d(0,-255px,0));
+	left: -10%;
+	right: -10%;
+	z-index: 1;
+	ul {
+		margin: 0; }
+	li {
+		width: 100%;
+		display: block;
+		list-style: none;
+		&:last-child a {
+			border-bottom: none; } }
+		a {
+			position: relative;
+			@extend %transition;
+			@extend %ns;
+			@extend %ts;
+			padding: em($base-px, $base-font-size) 0;
+			position: relative;
+			display: block;
+			z-index: 1;
+			text-align: center;
+			margin: 0;
+			&:before {
+				@extend %mr6;
+				position: absolute;
+				top: -9999px; } } }
+
+.shown {
+	[role="navigation"] {
+		@include transform(translate3d(0,em(-210px - $line, $base-font-size),0)); }
+	[role="banner"] {
+		padding-top: em(210px, $base-font-size); } }
+		
+@include respond-max($c) {
+	[role="navigation"] {
+		background: $primary;
+		a {
+			&:focus, &:hover {
+				@include box-shadow(
+					0 0 0 1px darken($primary_d2, 5%),
+					inset 0 1px 1px fade-out($primary_l1, 0.8),
+					inset 0 -1px 0 fade-out($primary_d1, 0.95),
+					inset 0 -1px 1px fade-out($primary_d1, 0.9),
+					0 1px 1px fade-out($primary_d1, 0.5));
+				background: fade-out($primary_l2, 0.5); }
+			&:active {
+				position: relative;
+				z-index: 1;
+				@include box-shadow(
+					0 1px 0 darken($primary_d2, 5%),
+					inset 0 1px 0 darken($primary_d2, 40%),
+					inset 0 1px 2px fade-out($primary_d1, 0.3),
+					0 2px fade-out($primary_l1, 0.95));
+				@include background(
+					linear-gradient(
+						fade-out(darken($primary_d1, 3%), 0.85),
+						fade-out(darken($primary_d1, 3%), 1)), darken($primary, 3%)); } } } }
+
+.active, [role="navigation"] .active {
+	@extend %active; }
+				
+.mobile {
+	@extend %right;
+	@extend %ss-icon;
+	@extend %transition;
+	@extend %ts;
+	@include rem(font-size, $line);
+	margin: 9px 0 0;
+	color: lighten($primary_l3, 3%);
+	display: block; }

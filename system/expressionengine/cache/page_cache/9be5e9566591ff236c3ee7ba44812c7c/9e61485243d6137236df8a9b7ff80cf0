@@ -1,0 +1,107 @@
+1375812108
+{embed="include/header"}
+
+
+	{if "1" == "1"}
+		<article role="article" class="entry-summary">
+			
+				<p>Compass has a handy feature to create default variables using !default in the same way you would use !important. Why is this handy? Well you can use them to manipulate the default values of a mixin, remove or add certain bits of code based on levels of legacy or experimental support for certain bits of CSS, to name a few.</p>
+
+
+			<aside class="meta">
+<ul>
+	<li data-icon="calendar"><time datetime="2013-05-19T10:01:00+0000" class="updated" pubdate>19/05/2013</time></li>
+	<li data-icon="tag"><a href="http://iamsteve.dev/blog/category/code" title="This post is under category:Code." rel="category tag">Code</a></li>
+	<li data-icon="link"><a href="http://iamsteve.dev/blog/entry/understanding_compass_default_variables" title="Read Understanding compass default variables in full." rel="bookmark">Continue reading</a></li>
+	{if "1" == logged_in_member_id OR logged_in_group_id == "1"}<li data-icon="write"><a href="{cp_url}?S=0&amp;D=cp&amp;C=content_publish&amp;M=entry_form&amp;channel_id=1&amp;entry_id=53">Edit</a></li>{/if}
+	<li class="screenreader"><span class="author vcard"><a rel="author" href="http://iamsteve.me" class="url fn">Steve McKinney</a></span></li>
+</ul>
+</aside>
+		</article>
+		<hr>
+	{if:elseif "1" == "2"}
+		<section role="region" class="previous-entries" aria-labelledby="Previous entries">
+			<h1 role="heading" class="h3">Previous entries</h1>
+			<article class="previous-entry">
+				<h2 class="h4"><a href="http://iamsteve.dev/blog/entry/understanding_compass_default_variables">Understanding compass default variables</a></h2>
+				<p>Compass has a handy feature to create default variables using `!default` in the same way you would use `!important`. Why is this handy? Well you can use them to manipulate&hellip;</p>
+				<a href="http://iamsteve.dev/blog/entry/understanding_compass_default_variables" title="Read Understanding compass default variables in full" class="button-small">Read entry</a>
+			</article>
+	{if:else}
+			<article class="previous-entry">
+				<h2 class="h4"><a href="http://iamsteve.dev/blog/entry/understanding_compass_default_variables">Understanding compass default variables</a></h2>
+				<p>Compass has a handy feature to create default variables using `!default` in the same way you would use `!important`. Why is this handy? Well you can use them to manipulate&hellip;</p>
+				<a href="http://iamsteve.dev/blog/entry/understanding_compass_default_variables" title="Read Understanding compass default variables in full" class="button-small">Read entry</a>
+			</article>
+		</section>
+	{/if}
+
+	{if "2" == "1"}
+		<article role="article" class="entry-summary">
+			
+				<p>There are a lot of CSS frameworks out there that are great, but their biggest flaw to me is their insistence to override styles and not use a relative measurement like em&#8217;s to adjust the styles when needed. I realise a lot of the way frameworks are made are to dummy proof them and to provide as much freedom as possible with their use. I still think there is an extent to which it can be done better.</p>
+
+
+			<aside class="meta">
+<ul>
+	<li data-icon="calendar"><time datetime="2013-04-02T11:55:03+0000" class="updated" pubdate>02/04/2013</time></li>
+	<li data-icon="tag"><a href="http://iamsteve.dev/blog/category/code" title="This post is under category:Code." rel="category tag">Code</a></li>
+	<li data-icon="link"><a href="http://iamsteve.dev/blog/entry/using_ems_for_efficiency" title="Read Using em&#8217;s for efficiency in full." rel="bookmark">Continue reading</a></li>
+	{if "1" == logged_in_member_id OR logged_in_group_id == "1"}<li data-icon="write"><a href="{cp_url}?S=0&amp;D=cp&amp;C=content_publish&amp;M=entry_form&amp;channel_id=1&amp;entry_id=52">Edit</a></li>{/if}
+	<li class="screenreader"><span class="author vcard"><a rel="author" href="http://iamsteve.me" class="url fn">Steve McKinney</a></span></li>
+</ul>
+</aside>
+		</article>
+		<hr>
+	{if:elseif "2" == "2"}
+		<section role="region" class="previous-entries" aria-labelledby="Previous entries">
+			<h1 role="heading" class="h3">Previous entries</h1>
+			<article class="previous-entry">
+				<h2 class="h4"><a href="http://iamsteve.dev/blog/entry/using_ems_for_efficiency">Using em&#8217;s for efficiency</a></h2>
+				<p>There are a lot of CSS frameworks out there that are great, but their biggest flaw to me is their insistence to override styles and not use a relative measurement&hellip;</p>
+				<a href="http://iamsteve.dev/blog/entry/using_ems_for_efficiency" title="Read Using em&#8217;s for efficiency in full" class="button-small">Read entry</a>
+			</article>
+	{if:else}
+			<article class="previous-entry">
+				<h2 class="h4"><a href="http://iamsteve.dev/blog/entry/using_ems_for_efficiency">Using em&#8217;s for efficiency</a></h2>
+				<p>There are a lot of CSS frameworks out there that are great, but their biggest flaw to me is their insistence to override styles and not use a relative measurement&hellip;</p>
+				<a href="http://iamsteve.dev/blog/entry/using_ems_for_efficiency" title="Read Using em&#8217;s for efficiency in full" class="button-small">Read entry</a>
+			</article>
+		</section>
+	{/if}
+
+	{if "3" == "1"}
+		<article role="article" class="entry-summary">
+			
+				<p>I have been curious to try find a solution to having a fluid browser around portfolio images. I have attempted to find a solution which is as simple as I have been able to find. The overall idea uses :before to apply the browser and border-image, this is purely to offset extra space caused by the widths of the border.</p>
+
+
+			<aside class="meta">
+<ul>
+	<li data-icon="calendar"><time datetime="2013-03-24T13:38:09+0000" class="updated" pubdate>24/03/2013</time></li>
+	<li data-icon="tag"><a href="http://iamsteve.dev/blog/category/code" title="This post is under category:Code." rel="category tag">Code</a></li>
+	<li data-icon="link"><a href="http://iamsteve.dev/blog/entry/create_a_fluid_browser_with_border_image" title="Read Create a fluid browser with border-image in full." rel="bookmark">Continue reading</a></li>
+	{if "1" == logged_in_member_id OR logged_in_group_id == "1"}<li data-icon="write"><a href="{cp_url}?S=0&amp;D=cp&amp;C=content_publish&amp;M=entry_form&amp;channel_id=1&amp;entry_id=51">Edit</a></li>{/if}
+	<li class="screenreader"><span class="author vcard"><a rel="author" href="http://iamsteve.me" class="url fn">Steve McKinney</a></span></li>
+</ul>
+</aside>
+		</article>
+		<hr>
+	{if:elseif "3" == "2"}
+		<section role="region" class="previous-entries" aria-labelledby="Previous entries">
+			<h1 role="heading" class="h3">Previous entries</h1>
+			<article class="previous-entry">
+				<h2 class="h4"><a href="http://iamsteve.dev/blog/entry/create_a_fluid_browser_with_border_image">Create a fluid browser with border-image</a></h2>
+				<p>I have been curious to try find a solution to having a fluid browser around portfolio images. I have attempted to find a solution which is as simple as I&hellip;</p>
+				<a href="http://iamsteve.dev/blog/entry/create_a_fluid_browser_with_border_image" title="Read Create a fluid browser with border-image in full" class="button-small">Read entry</a>
+			</article>
+	{if:else}
+			<article class="previous-entry">
+				<h2 class="h4"><a href="http://iamsteve.dev/blog/entry/create_a_fluid_browser_with_border_image">Create a fluid browser with border-image</a></h2>
+				<p>I have been curious to try find a solution to having a fluid browser around portfolio images. I have attempted to find a solution which is as simple as I&hellip;</p>
+				<a href="http://iamsteve.dev/blog/entry/create_a_fluid_browser_with_border_image" title="Read Create a fluid browser with border-image in full" class="button-small">Read entry</a>
+			</article>
+		</section>
+	{/if}
+
+{embed="include/footer"}

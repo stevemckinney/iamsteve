@@ -1,0 +1,246 @@
+@font-face {
+	font-family: "Geared";
+	src: url('../fonts/gearedslab-light-webfont.eot');
+	src: url('../fonts/gearedslab-light-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/gearedslab-light-webfont.woff') format('woff'),
+	     url('../fonts/gearedslab-light-webfont.ttf') format('truetype'),
+	     url('../fonts/gearedslab-light-webfont.svg#GearedSlabThin') format('svg');
+	font-weight: 100;
+	font-style: normal; }
+@import "symbolset";
+
+// base heading elements
+// ---------------------------
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-weight: 500;
+	font-family: $heading; // potentially chaparral or meta serif
+	color: $primary;
+	a {
+		display: block;
+		color: $primary;
+		&:hover, &:focus {
+			color: $secondary; } } }
+		
+a {
+	@extend %transition;
+	text-decoration: none;
+	color: $primary;
+	-webkit-tap-highlight-color: $primary_l3;
+	p &, .colophon &, figure & {
+		color: $secondary;
+		&:hover, &:focus {
+			color: $primary; } } }
+
+// base elements
+// ---------------------------
+p, dt, dd, figcaption, li {
+	font: 400 #{em($base-font-size, $base-font-size)}/#{$base-line-height} $body; }
+p, dd, figcaption, li {
+	color: fade-out($primary, 0.15); }
+.meta li {
+	font-family: $body; }
+[role="navigation"] a:before, pre code {
+	@extend %base; }
+	
+p, dl {
+	padding: 0 0 em($line, $base-font-size);
+	margin: 0; }
+dt { 	
+	font-weight: 700; }
+p, li {
+	text-align: left;
+	@include hyphens(auto); }
+[role="article"] p {
+	&:last-child {
+		padding: 0; } }
+
+// header
+// ---------------------------
+.title {
+	font-family: $slab;
+	font-weight: 100;
+	font-size: 7vw;
+	
+	@include respond-min($d) {
+		font-size: 5.5vw; }
+		
+	@include respond-min($e) {
+		font-size: 5vw; }
+		
+	@include respond-min($f) {
+		font-size: 4.5vw; }
+	
+	.no-cssvwunit & {
+		font-size: 72px; } }
+.title, .title span, .title a {
+	color: $primary_l3; }
+
+// content
+// ---------------------------
+[role="main"] {
+	h1, h2, h3, h4 {
+		@include hyphens(auto);
+		@include rem(margin, $base-px/2 0 $base-px); }
+	h1, .h1 {
+		font-size: 1.5em; }
+	h2, .h2 {
+		font-size: 1.125em; }
+	h3, .h3, h4, .h4, p, dt, dd  {
+		font-size: 1em; } }
+
+.entry-summary p:first-child, .entry-content p:first-child {
+		font-size: 1.125em; }
+.entry-summary figcaption p:first-child, .entry-content figcaption p:first-child {
+	font-size: em($base-font-size, $base-font-size); }
+		
+code {
+	font-size: em($base-font-size, $base-font-size);
+	font-weight: 400;
+	pre & {
+		max-height: 200px;
+		overflow: auto;
+		color: $primary;
+		direction: ltr;
+		text-align: left;
+		white-space: pre-line;
+	
+		-moz-tab-size: 2;
+		-o-tab-size: 2;
+		tab-size: 2; } }
+
+@include respond-min($c) {
+	[role="main"] {
+		h1, .h1 {
+		font-size: 2.625em; }
+		h2, .h2 {
+			font-size: 2.25em; }
+		h3, .h3 {
+			font-size: 1.875em; }
+		h4, .h4 {
+			font-size: 1.5em; }
+		p, dt, dd  {
+			font-size: 1.125em; } }
+		.entry-summary p:first-child, .entry-content p:first-child {
+			font-size: 1.5em; }
+		.entry-summary figcaption p:first-child, .entry-content figcaption p:first-child {
+			font-size: 1.125em; } }
+
+// aside
+// ---------------------------
+[role="complementary"], .related-entries, .previous-entries {
+	p {
+		font-size: 87.5%;
+		padding: 0;
+		@include respond-to($c) {
+			font-size: 100%; } }
+	h3 {
+		line-height: 1;
+		margin: 0;
+		@include rem(padding, 0 0 $base-px); }
+	@include respond-min($c) {
+		h3 {
+			font-size: 1.875em; }
+		p {
+			font-size: 100%; } } }
+
+// nav
+// ---------------------------
+[role="navigation"] {
+	a {
+		font-size: 15px;
+		font: 500 .875rem/#{$base-line-height} $body;
+		color: #f0f4fc;
+		letter-spacing: 1px; } }
+
+// aside
+// ---------------------------
+[role="complementary"], [role="contentinfo"] {
+	font-family: $body; }
+
+// page specific
+// ---------------------------
+[class^="item"] {
+	h2 {
+		margin: 0 0 em($base-px, 41px); } }
+.portfolio-nav {
+	h2 {
+		margin: 0 0 em($base-px, $base-font-size);
+		font-size: 1em; } }
+
+// no fout
+// ---------------------------
+li, p, dd, dt, 
+[role="navigation"] a, 
+[role="main"] h1, 
+[role="main"] h2, 
+[role="main"] h3, 
+[role="main"] h4, 
+[role="main"] h5, 
+[role="main"] h6,
+[role="complementary"] h3, {
+	@include no-fout; }
+	
+// pre/code
+// ---------------------------
+pre {
+	@include box-shadow(inset 0 1px 3px fade-out($black, 0.9), 0 1px 0 fade-out($white, 0.2));
+	@extend %rounded;
+	@extend %margin-bottom;
+	border: 1px solid #ccc;
+	code {
+		display: block;
+		background: none; } }
+code {
+	@include rem(padding, 2px);
+	@include border-radius(2px);
+	background: fade-out($primary_l2, 0.9);
+	position: relative;
+	top: -1px; }
+
+// blockquote
+// ---------------------------
+$q: lighten(#f2e7c2, 5%);
+$qd: darken(desaturate($q, 50%), 40%);
+$ql: lighten($q, 10%);
+
+blockquote {
+	@extend %rounded;
+	@extend %shadow;
+	@include rem(padding, $line $line $line $line*3);
+	@extend %margin-bottom;
+	background: $q;
+	@include background(
+		linear-gradient(bottom, fade-out($qd, 0.75) .05em, transparent .05em), $q);
+	@include background-size(100% 1.5em);
+	color: $qd;
+	position: relative;
+	line-height: 1.5;
+	font-family: $sans;
+	p {
+		position: relative;
+		z-index: 1;
+		[role="main"] & {
+			&:first-child {
+			@include rem(font-size, 16px); } } }
+	&:before, &:after {
+		position: absolute; }
+	&:before {
+		@include rem(margin, 0 $line 0 0);
+		content: "pullquote";
+		font: 900 100%/1.5 $icons;
+		color: $qd;
+		display: inline-block;
+		opacity: .5;
+		text-shadow: 0 1px 0 $ql;
+		@include rem(top, $base-px*2);
+		@include rem(left, $line);
+		z-index: 0; }
+	&:after {
+		content: "";
+		display: inline-block;
+		width: 1px;
+		height: 100%;
+		background: $danger;
+		top: 0;
+		left: $line*2; } }

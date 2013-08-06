@@ -1,0 +1,258 @@
+/**
+ * prism.js Monokai theme for CSS & Sass/Scss
+ *
+ * @todo test for JavaScript & HTML
+ *
+ * @author @MoOx
+ */
+
+$prism-font-family: 	$monospace	!default;
+$prism-font-size: 		.875rem !default;
+$prism-padding: 		em($base-px, 14px) !default;
+$prism-line-height:		1.5 !default;
+$prism-border-radius: 	5px !default;
+$prism-border: 			1px solid transparent !default;
+$prism-background: 		scale-lightness($primary_d2, -5%) !default;
+$prism-color: 			#ABCCBD !default;
+$prism-color-neutral:	#E4DED0 !default;
+$prism-text-shadow: 	0 1px 0 rgba($black, .5) !default;
+
+// $prism-linenums-padding:		7px !default;
+// $prism-linenums-width: 			40px !default;
+// $prism-linenums-background:		#444 !default;
+// $prism-linenums-border-color:	#555 !default;
+// $prism-linenums-border-width:	1px !default;
+
+/*
+
+
+E4DED0 - tan
+ABCCBD - green
+7DBEB8 - blue
+181619 - purple
+E32F21 - red
+
+*/
+
+$prism-color-comment:		#ABCCBD	!default;
+$prism-color-keyword:		#F5634A !default;
+$prism-color-value:			#76d9e6	!default;
+$prism-color-string:		#e6d06c	!default;
+$prism-color-name:			$alt	!default;
+$prism-color-number:		$alt	!default;
+$prism-color-variable:		#FF9C5B	!default;
+$prism-color-selector:		#7DBEB8	!default;
+$prism-color-punctuation:	$prism-color-neutral !default;
+//$prism-color-funtion:	#dc322f	!default;
+
+
+code[class*="language-"],
+pre[class*="language-"] {
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+
+	// whitespace management
+	white-space: pre; // fallback
+	white-space: pre-wrap;
+	word-break: break-all;
+	word-wrap: break-word;
+
+	// theme
+	font-family: $prism-font-family;
+	font-size: 	$prism-font-size;
+	line-height: $prism-line-height;
+
+	color: $prism-color;
+	text-shadow: $prism-text-shadow;
+}
+
+pre[class*="language-"],
+:not(pre) > code[class*="language-"] {
+	background: $prism-background;
+}
+
+// Code blocks
+pre[class*="language-"] {
+	padding: $prism-padding;
+	border-radius: $prism-border-radius;
+	border: $prism-border;
+
+	// &.linenums {
+	// 	box-shadow: inset $prism-linenums-width 0 0 $prism-linenums-background, inset ($prism-linenums-width + $prism-linenums-border-width) 0 0 $prism-linenums-border-color;
+	// 	padding-left: $prism-linenums-padding;
+	// }
+
+	// // Specify class=linenums on a pre to get line numbering
+	// ol.linenums {
+	// 	// IE indents via margin-left
+	// 	margin: 0 0 0 $prism-linenums-width;
+	// 	padding-left: 0;
+	// }
+}
+
+// Inline code
+:not(pre) > code[class*="language-"] {
+	padding: .15em .2em .05em;
+	border-radius: .3em;
+	border: .13em solid hsl(30,20%,40%);
+	box-shadow: 1px 1px .3em -.1em black inset;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token {
+	&.comment,
+	&.prolog,
+	&.doctype,
+	&.cdata {
+		color: $prism-color-comment;
+	}
+
+	&.null,
+	&.operator,
+	&.boolean,
+	&.number {
+		color: $prism-color-number;
+	}
+
+	&.attr-name,
+	&.string {
+		color: $prism-color-string;
+	}
+
+	&.entity,
+	&.url,
+	.language-css &.string,
+	.style &.string {
+		color: $prism-color-string;
+	}
+
+	&.selector {
+		color: $prism-color-selector;
+	}
+
+	&.atrule,
+	&.attr-value,
+	&.keyword,
+	&.control,
+	&.directive,
+	&.important,
+	&.unit {
+		color: $prism-color-keyword;
+	}
+
+	&.regex,
+	&.statement {
+		color: $prism-color-value;
+	}
+
+	&.placeholder,
+	&.variable {
+		color: $prism-color-variable;
+	}
+
+	&.property,
+	&.tag {
+		font-style: italic;
+	}
+
+	&.important,
+	&.statement {
+		font-weight: bold;
+	}
+
+	// todo ?
+	// &.mixin
+	// &.gradient
+	// &.abslength
+	// &.easing
+	// &.time
+	// &.angle
+	// &.fontfamily
+
+	// ruby/vim https://github.com/LeaVerou/prism/pull/18
+	// &.inst-var
+	// &.builtin
+	// &.const
+	// &.symbol
+	//
+	// php https://github.com/LeaVerou/prism/pull/20
+	// &.deliminator
+	// &.function
+
+	&.punctuation {
+		color: $prism-color-punctuation;
+	}
+
+	&.entity {
+		cursor: help;
+	}
+
+	// for dev :)
+	&.debug { color: red }
+}
+
+
+// github gists
+// ---------------------------
+[role="main"] .gist {
+	position: relative !important;
+	.gist-file, .gist-data, .gist-highlight {
+		position: relative;
+		border-radius: 4px;
+		background: none !important;
+		border: none !important; }
+	.gist-highlight {
+		border-left: 4em solid fade-out($black, 0.95) !important;
+		@include box-shadow(inset 1px 0 0 fade-out($white, 0.7) !important); }
+	.gist-file .gist-data {
+		@include border-radius(4px 4px 0 0 !important);
+		@include box-shadow(inset 0 0 0 1px #ccc, inset 0 2px 3px fade-out($black, 0.9), 0 1px 0 fade-out($white, 0.2) !important);
+		border: none !important;
+		border-bottom: none !important;
+		overflow: auto;
+		max-height: 500px;
+		padding: 0 !important;
+		background: none !important; }
+	.gist-file .gist-data pre {
+		border: none !important;
+		box-shadow: none !important; }
+	.gist-file .gist-data .line_data, .gist-file .gist-data .line_numbers {
+		line-height: 1.5; }
+	.gist-file .gist-data .line_numbers {
+		background-color: none !important;
+		border-right: 1px solid hsl(0, 0%, 87%);
+		text-align: right;
+		padding: .5em; }
+	.gist-file .gist-data .line_data {
+		display: inline-block !important; }
+	.gist-meta {
+		background-color: #222;
+		@include element(#222, $radius: 0 0 4px 4px);
+		@include box-shadow(
+			inset 0 -1px 0 #333,
+			inset 0 0 0 1px #333,
+			inset 0 2px 0 rgba($white, .1),
+			inset 0 -1px 3px #353535,
+			inset -1px -3px 12px -3px rgba(#333, .2),
+			inset 1px -3px 12px -3px rgba(#333, .2),
+			0 1px 3px rgba($black, .2));
+		width: 100%;
+		color: $white !important;
+		a {
+			color: $white !important; } }
+	.gist-syntax .k {
+		color: $primary; }
+	* {
+		font-family: $monospace !important;
+		font-size: 100%; }
+	* {
+		font-size: 14px !important; } }

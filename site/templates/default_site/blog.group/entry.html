@@ -1,0 +1,24 @@
+{embed="/include/header" entry_title="{exp:channel:entries channel="blog" status="Latest|open|draft"}{title}{/exp:channel:entries}"}
+
+{exp:channel:entries require_entry="yes" channel="blog" status="Latest|open|draft" disable="member_data|pagination|trackbacks"}
+{if no_results}{redirect="blog"}{/if}
+<article role="article" class="entry-content">
+	{exp:smartdown}{blog_article}{/exp:smartdown}
+	{blog_meta}
+</article>
+{blog_nav}
+{/exp:channel:entries}
+<hr>
+<section role="region" aria-labelledby="Related entries" class="related-entries">
+	<h1 role="heading" class="h3">Related entries</h1>
+	{exp:channel:entries channel="blog" limit="2" related_categories_mode="yes" orderby="random" custom_fields="yes" disable="member_data|pagination"}
+	{if no_results}There are currently no related articles.{/if}
+	<article class="related-entry">
+		<h2 class="h4"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+		<p>{exp:eehive_hacksaw words="30" append="&hellip;"}{excerpt}{/exp:eehive_hacksaw}</p>
+		<a href="{title_permalink='blog/entry'}" title="Read {title} in full" class="button-small">Read entry</a>
+	</article>
+	{/exp:channel:entries}
+</section>
+
+{embed="/include/footer"}

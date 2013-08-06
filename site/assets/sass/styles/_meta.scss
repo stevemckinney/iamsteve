@@ -1,0 +1,69 @@
+.meta {
+	@extend %subtle-s-rounded;
+	padding: 0 em($base-px, 12px);
+	clear: both;
+	ul {
+		@include pie-clearfix;
+		margin: 0; }
+	li {
+		@extend %mr6;
+		@extend %transition;
+		float: left;
+		list-style: none;
+		text-transform: uppercase;
+		line-height: 1 !important;
+		&:before:hover {
+			opacity: 1; }
+		&:nth-of-type(3) {
+			float: right;
+			margin: 0;
+			white-space: nowrap; }
+		&:before {
+			@extend %mr6;
+			top: 1em;
+			display: none;
+			font-size: 75%;
+			float: left;
+			position: relative;
+			line-height: 1;
+			opacity: .5; } }
+	a, time {
+		padding: em($base-px, 12px) 0;
+		display: inline-block;
+		vertical-align: baseline; }
+	a, time, li {
+		color: fade-out($primary, .5);
+		font-size: .75rem;
+		@include respond-min($b) {
+			font-size: .875rem; }
+		&:hover, &:focus {
+			@extend %transition;
+			opacity: 1;
+			color: $primary;
+			&:before {
+				opacity: 1; } } } }
+
+@include respond-min($a) {
+	.meta {
+		@include rem(padding, 0 $base-px);
+		a, time {
+			@include rem(padding, $base-px*1.25 0); }
+		a, time, li {
+			letter-spacing: 2px; }
+		li {
+			&:before {
+				font-size: em($base-font-size - 2, 12px);
+				display: block; } } }
+} // close mq
+
+@include respond-min($b) {
+	.meta {
+		li {
+			@include rem(margin, 0 $base-px 0 0); }
+		a, time {
+			@include rem(padding, $base-px*1.5 0); }
+		a, time, li {
+			&:before {
+				font-size: em($base-font-size, 14px);
+				top: 16px; } } }
+} // close mq
