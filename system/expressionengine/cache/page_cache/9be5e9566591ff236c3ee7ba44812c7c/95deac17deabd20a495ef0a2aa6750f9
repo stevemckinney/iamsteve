@@ -1,7 +1,6 @@
-1375812108
+1375858647
 <!DOCTYPE html>
-<!--[if IE]><html lang="en" class="wf-loading hfeed ie no-js{if embed:body_class}{if:elseif segment_1 == ''} understanding_compass_default_variables home{if:elseif segment_1 && segment_2 == ''} site{if:elseif segment_2 == 'entry'} themes understanding_compass_default_variables{/if}"><![endif]-->
-<!--[if gt IE 9]><!--><html lang="en" class="wf-loading hfeed no-js{if embed:body_class}{if:elseif segment_1 == ''} understanding_compass_default_variables home{if:elseif segment_1 && segment_2 == ''} site{if:elseif segment_2 == 'entry' OR segment_2 == 'view'} themes understanding_compass_default_variables{/if}"><!--<![endif]-->
+<html lang="en" class="wf-loading hfeed no-js{if embed:body_class}{if:elseif segment_1 == ''} understanding_compass_default_variables home{if:elseif segment_1 && segment_2 == ''} site{if:elseif segment_2 == 'entry' OR segment_2 == 'view'} themes understanding_compass_default_variables{/if}">
 <head>
 	
 	<meta charset="utf-8">
@@ -37,9 +36,8 @@
 	
 	
 	
-	<link href="http://iamsteve.dev/site/assets/css/master.css" rel="stylesheet">
 	
-		{if ""}<link href="http://iamsteve.dev/site/assets/css/custom/.css?v=1" rel="stylesheet">{/if}
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 	
 	
 	<script src="http://iamsteve.dev/site/assets/js/modernizr.js"></script>
@@ -54,44 +52,36 @@
 	<link rel="canonical" href="http://iamsteve.dev/site/themes/third_party/nsm_morphine_theme/styles/screen.css">
 	<link rel="alternate" type="application/rss+xml" title="Blog | Portfolio of Steve McKinney" href="http://iamsteve.me/blog/feed">
 	
+	
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="apple-touch-icon-precomposed" href="/assets/apple-touch-icon.png">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144x144.png">
+	
 </head>
 <body class="hentry">
-	<!--[if lt IE 9]>
-		<p class="notice-warning" style="padding: 12px">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-	<![endif]-->
-	<div class="container">
-		<header role="banner">
-			<h1><a href="/" title="Back to the homepage">I am Steve</a></h1>
-			<a href="#nav" title="To the navigation" class="mobile">&#xE9A1;</a>
-			<nav role="navigation" aria-hidden="false" class="nav">
-				<ul id="nav">
-					<li><a href="{site_url}" title="Back to the homepage" data-icon="home">Home</a></li>
-					<li><a href="{site_url}/blog" title="My blog about design/technology related things" data-icon="compose">Blog</a></li>
-					<li><a href="{site_url}/portfolio" title="View all my work" data-icon="picture">Portfolio</a></li>
-					<li><a href="{site_url}/about" title="Detailed information about myself" data-icon="user">About</a></li>
-					<li><a href="{site_url}/contact" title="My contact details" data-icon="envelope">Contact</a></li>
-				</ul>
-			</nav>
-		</header>
-		{if segment_1 == ""}
-			
-				<h1 class="title entry-title"><a href="http://iamsteve.dev/blog/entry/understanding_compass_default_variables" title="Read Understanding compass default variables in full.">Understanding compass default variables</a></h1>
-			
-		{if:elseif segment_2 == "category"}
-			
-				
-			
-		{if:elseif embed:entry_title}
-			
-				<h1 class="title entry-title"><a href="http://iamsteve.dev/blog/entry/understanding_compass_default_variables" title="Read Understanding compass default variables in full."></a></h1>
-			
-		{if:else}
-			<h1 class="title entry-title">site</h1>
-		{/if}
-	</div>	
-	<div role="main">
+	<header role="banner" class="site-header">
+		<a href="/" title="Back to the homepage" class="site-logo">I am Steve</a>
+		<a href="#nav" title="To the navigation" class="nav-toggle">&#xE9A1;</a>
+		<nav role="navigation" aria-hidden="false" class="site-nav">
+			<a href="{site_url}" title="Back to the homepage" class="site-nav-link" data-icon="home">Home</a>
+			<a href="{site_url}/blog" title="My blog about design/technology related things" class="site-nav-link" data-icon="compose">Blog</a>
+			<a href="{site_url}/portfolio" title="View all my work" class="site-nav-link " data-icon="picture">Portfolio</a>
+			<a href="{site_url}/about" title="Detailed information about myself" class="site-nav-link " data-icon="user">About</a>
+			<a href="{site_url}/contact" title="My contact details" class="site-nav-link" data-icon="envelope">Contact</a>
+			<a href="#search" title="Search" data-icon="search" class="search-toggle">Search</a>
+			<form method="post" action="http://iamsteve.dev/"  >
+<div class='hiddenFields'>
+<input type="hidden" name="ACT" value="6" />
+<input type="hidden" name="XID" value="" />
+<input type="hidden" name="RES" value="" />
+<input type="hidden" name="meta" value="z8+44QR6fhBQpgKUVsGgQ/IUUQIupePPb0gP/1T/24YJewKxu+8uqrcAd6EWDn3WMjF45I1ki5Ff/Fddht4o6R0FmayV6L5UjdYRG8NbQu3ETthNieqJTOm49UXUz0ZLzmnI5j4UcVH1GCznJVvNNCKvSmPfhVGgO5Ifj9R7XYWPqbAsJKGVSrSj7ZjKs6mYsFtISXstG9p1eIbkxrSuooCiJydnWIcu37LzYV49+adu61S7CNLOYlYGP3WTKXIFy4Vzp0Ls40av+IFGTtEv5ZDYfjKZ9jMsfEHJau+0I5TIPvtHzyZhbjd8tqTR2bKEavJ0t3nR417/Rm3v27+LKqjKIOwC8OrHPwIW8kh2s4gFbuF92Mo9ql+n77UZTnNO" />
+<input type="hidden" name="site_id" value="1" />
+</div>
+
+<label for="keywords">Search</label><input id="keywords" name="keywords" type="search" placeholder="Search terms..." results="5" autocorrect="off" autocapitalize="off"><input type="submit" value="Search"></form>
+		</nav>
+	</header>
+	
+	<section role="main">

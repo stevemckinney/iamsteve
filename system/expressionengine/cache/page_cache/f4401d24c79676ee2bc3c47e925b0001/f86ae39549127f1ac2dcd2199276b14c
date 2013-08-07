@@ -1,5 +1,5 @@
-1375812113
-</div>
+1375858648
+</section>
 
 
 <hr>
@@ -25,20 +25,10 @@
 		<li><a href="http://expressionengine.com/index.php?affiliate=stevemckinney" title="Running on ExpressionEngine">EE</a></li>
 		<li><a href="https://gist.github.com/2767673" title="The cookies used on this site can be found here">Cookies</a></li>
 	</ul>
-	<form method="post" action="http://iamsteve.dev/"  >
-<div class='hiddenFields'>
-<input type="hidden" name="ACT" value="6" />
-<input type="hidden" name="XID" value="" />
-<input type="hidden" name="RES" value="" />
-<input type="hidden" name="meta" value="z8+44QR6fhBQpgKUVsGgQ/IUUQIupePPb0gP/1T/24YJewKxu+8uqrcAd6EWDn3WMjF45I1ki5Ff/Fddht4o6R0FmayV6L5UjdYRG8NbQu3ETthNieqJTOm49UXUz0ZLzmnI5j4UcVH1GCznJVvNNCKvSmPfhVGgO5Ifj9R7XYWPqbAsJKGVSrSj7ZjKs6mYsFtISXstG9p1eIbkxrSuooCiJydnWIcu37LzYV49+adu61S7CNLOYlYGP3WTKXIFy4Vzp0Ls40av+IFGTtEv5ZDYfjKZ9jMsfEHJau+0I5TIPvtHzyZhbjd8tqTR2bKEavJ0t3nR417/Rm3v27+LKqjKIOwC8OrHPwIW8kh2s4gFbuF92Mo9ql+n77UZTnNO" />
-<input type="hidden" name="site_id" value="1" />
-</div>
-
-<label for="keywords">Search</label><input id="keywords" name="keywords" type="search" placeholder="Search terms..." results="5" autocorrect="off" autocapitalize="off"><input type="submit" value="Search"></form>
 </footer>
 
 <!-- Javascript -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="http://iamsteve.dev/site/assets/js/consistent.js"></script>
 
 </body>
