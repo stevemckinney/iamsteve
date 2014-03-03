@@ -15,6 +15,15 @@ module.exports = function(grunt) {
 				dest: '<%= pkg.path.js %><%= pkg.name %>.js'
 			}
 		},
+		grunticon: {
+	    logo: {
+        options: {
+        	src: "src/assets/images/",
+					dest: "site/assets/images/",
+					svgo: true
+				}
+	    }
+    },
 		uglify: {
 			options: {
 				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
@@ -40,9 +49,17 @@ module.exports = function(grunt) {
 		compass: {
 			dev: {
 				options: {
-					config: '<%= pkg.path.assets %>config.rb'
+					config: 'src/assets/config.rb'
 				}
 			}
+		},
+		copy: {
+		  main: {
+		    expand: true,
+		    cwd: 'src/',
+		    src: '**',
+		    dest: 'site/'
+		  },
 		},
 		watch: {
 			jekyll: {
@@ -51,15 +68,17 @@ module.exports = function(grunt) {
 			},
 			sass: {
         files: ['<%= pkg.path.sass %>*.scss', '<%= pkg.path.sass %>**/*.scss'],
-        tasks: ['compass:dev']
-      }
+        tasks: ['compass:dev'],
+      },
+      grunticon: {
+        files: ['src/assets/images/', 'site/assets/images/'],
+        tasks: ['grunticon'],
+      },
 		},
 		jekyll: {
 			server : {
 				src : '<%= pkg.path.src %>',
 				dest: '<%= pkg.path.dest %>',
-				server : true,
-				server_port : 8000,
 				auto : true
 			},
 			dev: {
@@ -70,13 +89,7 @@ module.exports = function(grunt) {
 				src: '<%= pkg.path.src %>',
 				dest: '<%= pkg.path.dest %>'
 			}
-		},
-		copy: {
-		  main: {
-		    src: '<%= pkg.path.src %>*',
-		    dest: '<%= pkg.path.dest %>',
-		  },
-		},
+		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -86,18 +99,18 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-html-build');
 	grunt.loadNpmTasks('grunt-jekyll');
+	grunt.loadNpmTasks('grunt-grunticon');
 	
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 	
-	// Static site use jekyll
-	grunt.registerTask('default', ['watch', 'compass', 'jekyll']);
+	// Tasks
+	grunt.registerTask('default', ['watch', 'copy', 'compass:dev']);
+	grunt.registerTask('build', ['copy', 'compass:dev', 'grunticon', 'watch']);
 	
-	// Nonstatic site use copy
-	// grunt.registerTask('default', ['watch', 'compass', 'copy']);
-	
-	grunt.registerTask('dev', ['default']);
-
-	grunt.registerTask('deploy', ['default', 'concat', 'jshint', 'uglify']);
+	grunt.event.on('watch', function(action, filepath) {
+    grunt.log.writeln(filepath + ' has ' + action);
+  });
 
 };

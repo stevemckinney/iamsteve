@@ -675,7 +675,11 @@ class CI_Email {
 	 */
 	public function subject($subject)
 	{
-		$subject = $this->_prep_q_encoding($subject);
+		if (preg_match('/[^\x20-\x7E]/', $subject))
+		{
+			$subject = $this->_prep_q_encoding($subject);			
+		}
+
 		$this->set_header('Subject', $subject);
 		return $this;
 	}
@@ -1509,7 +1513,7 @@ class CI_Email {
 	{
 		$str = str_replace(array("\r", "\n"), '', $str);
 
-		if ($this->charset === 'UTF-8')
+		if (strtoupper($this->charset) === 'UTF-8')
 		{
 			if (MB_ENABLED === TRUE)
 			{

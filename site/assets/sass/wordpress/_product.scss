@@ -1,0 +1,220 @@
+// Single products
+// ---------------------------
+.single-product .product {
+  margin-bottom: 0;
+  position: relative; }
+
+// Main title
+.product_title {
+	clear: none;
+	margin-top: 0;
+	padding: 0; }
+
+// Summary contains title, price, etc.
+.summary {
+	@extend %margin-bottom;
+	float: right;
+	width: 48%; }
+
+// Price
+// ---------------------------
+.price {
+	color: $primary;
+	
+	ins {
+		background: inherit; }
+		
+	del {
+		color: rgba($primary, .6);
+		.no-rgba & {
+			color: scale-lightness($primary, -20%); } }
+	
+	.product & {
+    display: block;
+    font-weight:normal; } }
+
+.from,
+.price del {
+	@extend .small;
+	@extend %small-caps;
+  margin: -2px 0 0 0; }
+
+// Product status
+// ---------------------------
+.stock {
+  color: $primary; }
+  
+.out-of-stock {
+  color: $danger; }
+
+.onsale {
+  position: absolute;
+  top: em($base-px/2);
+	left: em($base-px/2);
+	
+	.product & {
+    top: 0;
+    right: 0;
+    left: auto; } }
+
+// Product image and thumbnail
+// ---------------------------
+.images {
+  float:left;
+  width: 48%;
+  margin-bottom: 2em;
+  
+  img {
+    display: block;
+    width: 100%;
+	  height: auto; } }
+	  
+.thumbnails {
+	@extend %clear;
+	padding: em($line) 0;
+	a {
+		float:left;
+		width: 30.75%;
+		margin-right: 3.8%; }
+		
+	.last {
+		margin-right: 0; }
+	
+	.first {
+		clear: both; } }
+		
+// Social crap
+// ---------------------------
+.social {
+	@extend %margin-bottom;
+  text-align: right;
+  
+  iframe {
+		float:left;
+		margin-top: 3px; }
+  
+	span {
+		margin: 0 0 0 em($base-px/2);
+		
+		span {
+			margin: 0; }
+			
+		.stButton .chicklets {
+			padding-left: em(16px);
+			width: 0; } } }
+
+// Cart
+// ---------------------------  
+.cart {
+	@extend %margin-bottom;
+	@extend %clear; }
+
+a.added_to_cart {
+	padding-top: .5em;
+	white-space: nowrap;
+	display: inline-block; }
+
+form.cart {
+	table {
+		border-width: 0 0 1px 0;
+
+		td {
+			padding-left: 0; }
+		
+		.quantity {
+			float: none;
+			margin: 0; }
+		
+		.stock {
+			display: block;
+			float: none; } }
+			
+  .button {
+	  vertical-align: middle;
+    float: left; }
+
+	.group_table {
+		.label {
+			padding-right: em($base-px);
+			padding-left: em($base-px); }
+			
+		td {
+			vertical-align: top; } } }
+
+.variations {
+  @extend %margin-bottom;
+  
+  select {
+    float: left; }
+    
+  .label {
+    padding-right: em($base-px); }
+    
+  td {
+	  vertical-align: top; } }
+
+.quantity {
+	float: left;
+	margin: 0 em($base-px/2) 0 0; }
+
+// Product loops
+// ---------------------------
+.products {
+	@extend %clear;
+	@extend %margin-bottom;
+	padding: 0;
+	clear: both;
+	
+	&,
+	li {
+		list-style: none outside; }
+	
+	.product {
+		float: left;
+		margin: 0 3.8% em($line*2) 0;
+		padding: 0;
+		position: relative;
+		width: 22.05%;
+		margin-left: 0;
+	
+		h3 {
+			margin: 0; }
+		
+		a, img {}
+		
+		strong {
+			display:block; }
+			
+	  .first {
+	  	clear: both; }
+	  	
+	  .last {
+		  margin-right: 0; } } }
+
+.related,
+.upsells {
+	@extend %clear;
+	
+	.products {
+		float: none; }
+		
+	.product {
+		width: 48%;
+		
+		img {
+			display: block;
+			width: 100%;
+			height: auto; } } }
+
+// Product loop counts/ordering
+// ---------------------------
+.woocommerce-result-count {
+	@extend %margin-bottom;
+	float: left; }
+	
+.woocommerce-ordering {
+	@extend %margin-bottom;
+	float: right;
+	
+    select {
+    	vertical-align: top; } }

@@ -1,0 +1,87 @@
+// Default table vars
+// ---------------------------
+$default-table-main-color: scale-lightness($tertiary, -5%) !default;
+$default-table-hover: true !default;
+$default-table-width: 100% !default;
+$default-table-margin: 0 0 em($line) !default;
+$default-table-striped: true !default;
+$default-table-font-family: $sans !default;
+$default-table-responsive: true !default;
+$default-table-border-width: 1px !default;
+$default-table-th-border-width: 2px !default;
+
+// Table
+// ---------------------------
+@mixin table(
+	$main-color	: $default-table-main-color,
+	$hover			: $default-table-hover,
+	$width			: $default-table-width,
+	$margin			: $default-table-margin,
+	$striped		: $default-table-striped,
+	$font-family: $default-table-font-family,
+	$responsive	: $default-table-responsive,
+	$th-border-width: $default-table-th-border-width,
+	$border-width: $default-table-border-width) {
+	
+	$dark-color: scale-color($main-color, $lightness: -10%, $saturation: -10%);
+	
+	& {
+		margin: $margin;
+		padding: 0;
+		font-family: $font-family;
+		width: $width;
+		@if $responsive {
+			@include breakpoint($c, max) {
+				display: block;
+				position: relative;
+				border: 1px solid scale-lightness($main-color, -10%); } } }
+	
+	th,
+	td {
+		@extend %transition;
+		padding: em($base-px);
+		text-align: left;
+		border-bottom: $border-width solid $dark-color;
+		color: $primary; }
+	
+	th {
+		border-width: $th-border-width; }
+		
+	tr {
+		@if $striped {
+			&:nth-child(even) {
+				td, th {
+					background: $main-color;
+					@if if-bright($main-color) == false {
+						color: invert($main-color); } } } }
+		@if $hover {
+			&:hover, &:focus {
+				td {
+					background: $dark-color;
+					@if if-bright($main-color) == false {
+						color: invert($main-color); } } } } }
+	
+	@if $responsive {
+		@include breakpoint($c, max) {
+			thead {
+				float: left;
+				background: $main-color;
+				border-right: 2px solid $dark-color; }
+			td, th {
+				min-height: em($line*2); }
+			tbody {
+				@include nowrap;
+				width: auto;
+				position: relative;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				tr { 
+					display: inline-block;
+					vertical-align: top;
+					margin-right: -4px; } }
+			th, td {
+				border-bottom: 1px solid $dark-color; }
+			td:last-child, th:last-child {
+				border-bottom: none; }
+			th, td, tbody, thead tr, thead { 
+				display: block; } } } }

@@ -1,0 +1,96 @@
+// Buttons & alerts
+// ---------------------------
+$colors: $default $light-grey $alt $info $danger $success $yellow $warning $white #7375a5 #f00 !default;
+//$colors: #ff5820 #ffc041 #ffef40 #a1ea3b #3beacd #41c0ff #3d85eb #e157e1 #2f2f2f #7d7e81 #e3e6ea #fff;
+$i: 1;
+
+.button {
+	@extend %element-base-with-mixin;
+	@for $i from 1 through length($colors) {
+		$color: nth($colors, $i);
+	
+		&:nth-of-type(#{$i}) {
+			@include element($color, $hover: true, $dry: true); } } }
+
+[type="submit"] {
+	@extend %element-base-with-mixin;
+	@include element($danger, $hover: true, $dry: true); }
+
+// Alert
+.alert {
+	@extend %element-base-with-mixin;
+	width: 100%;
+	text-align: center;
+	
+	@for $i from 1 through length($colors) {
+		$color: nth($colors, $i);
+	
+		&:nth-of-type(#{$i}) {
+			@include element($color, $dry: true, $dark-bg: false); } } }
+
+// Grouped
+.group-button {
+	@include element-base;
+	@include element($alt, $hover: true, $dry: true); }
+	
+.group { 
+	@include group(compact(unquote(".group-button"), unquote("input")));
+	input + input {
+		margin-left: -1px; } }
+
+// Forms
+// ---------------------------
+form ul {
+	padding: 0;
+	list-style: none; }
+	
+label {
+	@include form-label;
+	@extend .h5; }
+
+// Text
+// ---------------------------
+[type=text],
+[type=email],
+[type=password],
+[type=search],
+[type=url],
+[type=number],
+textarea {
+	@extend %form-base-with-mixin;
+	@include form-shading(scale-color($tertiary, $lightness: -30%, $saturation: -20%));
+	&:focus {
+		@include form-shading($info, focus); } }
+
+// Select
+// ---------------------------
+.field-select {
+	position: relative;
+	
+	&:before {
+		font-family: $icons;
+		content: "▾";
+		color: inherit;
+		position: absolute;
+		bottom: em(3px, $base-px);
+		right: em($base-px, $base-px);
+		font-size: em($base-px);
+		z-index: 1; } }
+		
+select,
+.select {
+	@include form(scale-color($tertiary, $lightness: -30%, $saturation: -20%), $type: select);
+	&:focus {
+		@include form-shading($info, focus, select); } }
+
+
+// Check/radio
+// ---------------------------
+[type=radio],
+[type=checkbox] {
+	@include form($type: radio); }
+
+// Disabled
+// ---------------------------
+[disabled] {
+	@include form-shading(scale-color($tertiary, $lightness: -30%, $saturation: -20%), $state: disabled); }

@@ -1,0 +1,72 @@
+@import "form_variables";
+
+@mixin form-shading(
+	$main-color: $default-form-main-color,
+	$background-color: $default-form-background-color,
+	$state: $default-form-state,
+	$type: $default-form-type,
+	$text-elements: $default-text-elements,
+	$check-elements: $default-check-elements) {
+	
+	$background-shading-color: if(grayscale($main-color), $main-color, saturate($main-color, 100%));
+	
+	// Text
+	// ---------------------------
+	@if index($text-elements, unquote($type)) {
+		@include background(
+			linear-gradient(
+				rgba($background-shading-color, .2) -50%,
+				rgba($background-shading-color, 0) 50%), $background-color); }
+	
+	// Select
+	// ---------------------------
+	@else if $type == select {
+		@include background(
+				linear-gradient(
+					rgba($background-shading-color, .05) 40%,
+					rgba($background-shading-color, .15) 60%), $background-color); }
+	
+	// Check
+	// ---------------------------
+	@else if index($check-elements, unquote($type)) {
+		@include form-check(); }
+		
+	// Submit
+	// ---------------------------
+	@else if $type == submit {
+		@warn "#{error("Please use element mixin to style submit buttons.")}"; }
+	
+	// Not supported
+	// ---------------------------
+	@else {
+		@debug #{$type};
+		@warn "#{error("Type not supported.")}"; }
+	
+	// Shadow
+	// ---------------------------
+	box-shadow:
+		if($type != select, 
+			inset 0 1px scale-lightness($main-color, -20%),
+			inset 0 -1px scale-lightness($main-color, -20%)),
+		inset 0 0 0 1px $main-color,
+		if($type != select, 
+			inset 0 2px 3px rgba($main-color, .4),
+			if($state != focus, 
+				inset 0 1px 0 rgba($white, .4), compact(false))),
+		if($state == focus, 
+				0 0 6px rgba($main-color, .6), 
+			compact(false)),
+		if($type == select, 
+			0 1px 2px rgba($black, $default-dark-shadow/3), 
+			compact(false)),
+		if($state == active, 
+			0 1px 3px rgba($black, $default-dark-shadow),
+			0 1px 1px rgba($white, $default-light-shadow));
+			
+	// Modernizr
+	// ---------------------------
+	.no-boxshadow & {
+		border: 1px solid $main-color; }
+	
+	.no-cssgradients & {
+		background: $white; } }

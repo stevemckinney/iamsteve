@@ -445,7 +445,6 @@ class EE_Config Extends CI_Config {
 			'log_referrers',
 			'max_referrers',
 			'time_format',
-			'server_timezone',
 			'server_offset',
 			'default_site_timezone',
 			'mail_protocol',
@@ -919,13 +918,10 @@ class EE_Config Extends CI_Config {
 		// Read the config file as PHP
 		require $this->config_path;
 
-		// load the file helper
-		$EE =& get_instance();
-		$EE->load->helper('file');
-		
 		// Read the config data as a string
-		$config_file = read_file($this->config_path);
-
+		// Really no point in loading file_helper to do this one
+		$config_file = file_get_contents($this->config_path);
+		
 		// Trim it
 		$config_file = trim($config_file);
 
@@ -1119,7 +1115,8 @@ class EE_Config Extends CI_Config {
 		}
 		
 		// Now we read the file data as a string
-		$config_file = read_file($this->database_path);
+		// No point in loading file_helper to do this one
+		$config_file = file_get_contents($this->database_path);		
 
 		// Dollar signs seem to create a problem with our preg_replace
 		// so we'll temporarily swap them out

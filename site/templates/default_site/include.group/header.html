@@ -5,8 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	{!-- In loving memory of Albert Phillips --}
-	<title>
-		{if segment_2 == "category"}
+	<title>{if segment_2 == "category"}
 			{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
 				{exp:channel:category_heading channel="blog"}
 					{category_name} | Steve McKinney
@@ -16,8 +15,7 @@
 			{embed:entry_title} | Steve McKinney
 		{if:else}
 			Blog & Portfolio of Steve McKinney, a Manchester web designer | {site_name}
-		{/if}
-	</title>
+		{/if}</title>
 	
 	<meta name="description" content="The portfolio of Steve McKinney (iamsteve), a Manchester based web designer/front end developer.">
 	<meta name="keywords" content="Steve, McKinney, web, design, designer, html, css, manchester, portfolio, iamsteve, iamsteve.me, blog, freelance, design, i am steve">
@@ -42,13 +40,11 @@
 	<meta name="twitter:url" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title_permalink='blog/entry'}{/exp:channel:entries}">
 	{/if}
 	
-	{!-- CSS 
+	{!-- CSS --}
 	{exp:minimee:css minify="yes"}<link href="{global:theme_url}assets/css/master.css" rel="stylesheet">{/exp:minimee:css}
 	{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
 		{if extra_css}<link href="{global:theme_url}assets/css/custom/{extra_css}.css?v=1" rel="stylesheet">{/if}
-	{/exp:channel:entries} --}
-	
-	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	{/exp:channel:entries}
 	
 	{!-- Javascript --}
 	{exp:minimee:js minify="yes"}<script src="{global:theme_url}assets/js/modernizr.js"></script>{/exp:minimee:js}
@@ -71,9 +67,9 @@
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144x144.png">
 	
 </head>
-<body class="hentry">
+<body class="hentry site">
 	<header role="banner" class="site-header">
-		<a href="/" title="Back to the homepage" class="site-logo">I am Steve</a>
+		<a href="/" title="Back to the homepage" class="site-logo"><img src="{global:theme_url}assets/images/logo.svg" alt="iamsteve"></a>
 		<a href="#nav" title="To the navigation" class="nav-toggle">&#xE9A1;</a>
 		<nav role="navigation" aria-hidden="false" class="site-nav">
 			<a href="{site_url}" title="Back to the homepage" class="site-nav-link{if segment_1 == ''} active{/if}" data-icon="home">Home</a>

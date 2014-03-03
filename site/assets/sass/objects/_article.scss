@@ -1,0 +1,83 @@
+.entry-latest {
+	position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 40px auto 300px;
+  border-radius: 0 0 12px 12px;
+	background-clip: padding-box;
+	background-color: #fff;
+	box-shadow: 
+		0 1px 2px rgba($black, .25),
+		0 2px white,
+		0 2px 2px rgba($black, .25),
+		0 4px white;
+	background: white;
+	
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+		z-index: -1; }
+	
+	&:after {
+		top: 12px;
+		right: -5px;
+		bottom: -22px;
+		left: -5px;
+		border: 1px dashed rgba($white, .3);
+		box-shadow: inset 0 0 2px 2px $black, 0 0 0 1px $black;
+		border-radius: 6px; }
+	
+  &:before {
+		top: 6px;
+		right: -12px;
+		bottom: -30px;
+		left: -12px;
+		border-radius: 12px;
+	  background: image-url("latest_post_bg.png") #1f1f1f;
+	  background-size: em(250px) em(250px);
+	  box-shadow:
+	  	inset 0 0 0 1px #000,
+			inset 0 0 12px rgba($white, .57),
+	  	0 1px 3px #134031,
+	  	0 16px 24px -12px #134031; } }
+  
+  /*
+  border: 2px solid #000;
+border-radius: 24px;
+background-clip: padding-box;
+background-color: #000;
+box-shadow: 0 3px 6px rgba(19,64,49,.59), inset 0 0 9px rgba(255,255,255,.43);
+
+  
+  
+  
+  
+  
+  
+  
+  
+	// stitching
+	  border: 2px solid #000;
+		border-radius: 18px;
+		background-clip: padding-box;
+		background-color: rgba(41,38,37,.3);
+		box-shadow: 0 1px 6px rgba(0,0,0,.67), inset 0 1px 3px rgba(255,255,255,.64);
+	
+	// dark border
+		border: 9px solid #111010;
+		border-radius: 16px;
+		background-clip: padding-box;
+		box-shadow: inset 0 0 24px rgba(255,255,255,.57);
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  */

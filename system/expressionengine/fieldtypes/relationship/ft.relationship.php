@@ -4,10 +4,10 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2012, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
- * @since		Version 2.0
+ * @since		Version 2.6
  * @filesource
  */
 
@@ -28,7 +28,7 @@ class Relationship_ft extends EE_Fieldtype {
 		'name'		=> 'Relationships',
 		'version'	=> '1.0'
 	);
-	
+
 	public $has_array_data = FALSE;
 
 	private $_table = 'relationships';
@@ -69,7 +69,7 @@ class Relationship_ft extends EE_Fieldtype {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Save Field
 	 *
@@ -86,7 +86,14 @@ class Relationship_ft extends EE_Fieldtype {
 
 		$sort = array_filter($sort);
 
-		ee()->session->set_cache(__CLASS__, $this->field_name, array(
+		$cache_name = $this->field_name;
+
+		if (isset($this->settings['grid_row_name']))
+		{
+			$cache_name .= $this->settings['grid_row_name'];
+		}
+
+		ee()->session->set_cache(__CLASS__, $cache_name, array(
 			'data' => $data,
 			'sort' => $sort
 		));
@@ -97,7 +104,7 @@ class Relationship_ft extends EE_Fieldtype {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Post field save is where we do the actual works since we store
 	 * data in our own table based on the entry_id, which does not exist
@@ -110,15 +117,41 @@ class Relationship_ft extends EE_Fieldtype {
 	{
 		$field_id = $this->field_id;
 		$entry_id = $this->settings['entry_id'];
-		$post = ee()->session->cache(__CLASS__, $this->field_name);
+
+		$cache_name = $this->field_name;
+
+		if (isset($this->settings['grid_row_name']))
+		{
+			$cache_name .= $this->settings['grid_row_name'];
+		}
+
+		$post = ee()->session->cache(__CLASS__, $cache_name);
+
+		if ($post === FALSE)
+		{
+			// this is a channel:form edit - save() was not called. Don't do anything.
+			return;
+		}
 
 		$order = array_values($post['sort']);
 		$data = $post['data'];
 
+		$all_rows_where = array(
+			'parent_id' => $entry_id,
+			'field_id' => $field_id
+		);
+
+		if (isset($this->settings['grid_field_id']))
+		{
+			// grid takes the parent grid's field id and sticks it into "grid_field_id"
+			$all_rows_where['grid_col_id'] = $this->settings['col_id'];
+			$all_rows_where['grid_field_id'] = $this->settings['grid_field_id'];
+			$all_rows_where['grid_row_id'] = $this->settings['grid_row_id'];
+		}
+
 		// clear old stuff
 		ee()->db
-			->where('parent_id', $entry_id)
-			->where('field_id', $field_id)
+			->where($all_rows_where)
 			->delete($this->_table);
 
 		// insert new stuff
@@ -131,12 +164,12 @@ class Relationship_ft extends EE_Fieldtype {
 				continue;
 			}
 
-			$ships[] = array(
-				'parent_id'	=> $entry_id,
-				'child_id'	=> $child_id,
-				'field_id'	=> $field_id,
-				'order'		=> isset($order[$i]) ? $order[$i] : 0
-			);
+			// the old data array
+			$new_row = $all_rows_where;
+			$new_row['child_id'] = $child_id;
+			$new_row['order'] = isset($order[$i]) ? $order[$i] : 0;
+
+			$ships[] = $new_row;
 		}
 
 		// -------------------------------------------
@@ -150,7 +183,7 @@ class Relationship_ft extends EE_Fieldtype {
 		//
 		// -------------------------------------------
 
-		
+
 		// If child_id is empty, they are deleting a single relationship
 		if (count($ships))
 		{
@@ -174,6 +207,23 @@ class Relationship_ft extends EE_Fieldtype {
 			->delete($this->_table);
 	}
 
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Called when grid entries are deleted
+	 *
+	 * @access	public
+	 * @param	array of entry ids to delete
+	 */
+	public function grid_delete($ids)
+	{
+		ee()->db
+			->where('field_id', $this->field_id)
+			->where_in('grid_row_id', $ids)
+			->delete($this->_table);
+	}
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -189,6 +239,7 @@ class Relationship_ft extends EE_Fieldtype {
 	public function display_field($data)
 	{
 		$field_name = $this->field_name;
+
 		$entry_id = ee()->input->get('entry_id');
 
 		$order = array();
@@ -206,21 +257,32 @@ class Relationship_ft extends EE_Fieldtype {
 
 		if ($entry_id)
 		{
+			$wheres = array(
+				'parent_id' => $entry_id,
+				'field_id' => $this->field_id,
+			);
+
+			if (isset($this->settings['grid_row_id']))
+			{
+				$wheres['grid_col_id'] = $this->settings['col_id'];
+				$wheres['grid_field_id'] = $this->settings['grid_field_id'];
+				$wheres['grid_row_id'] = $this->settings['grid_row_id'];
+			}
+
 			ee()->db
 				->select('child_id, order')
 				->from($this->_table)
-				->where('parent_id', $entry_id)
-				->where('field_id', $this->field_id);
+				->where($wheres);
 
 			// -------------------------------------------
 			// 'relationships_display_field' hook.
 			// - Allow developers to perform their own queries to modify which entries are retrieved
-			// 
+			//
 			// 	There are 3 ways to use this hook:
 			// 	 	1) Add to the existing Active Record call, e.g. ee()->db->where('foo', 'bar');
 			// 	 	2) Call ee()->db->_reset_select(); to terminate this AR call and start a new one
 			// 	 	3) Call ee()->db->_reset_select(); and modify the currently compiled SQL string
-			//   
+			//
 			//   All 3 require a returned query result array.
 			//
 			if (ee()->extensions->active_hook('relationships_display_field') === TRUE)
@@ -229,7 +291,7 @@ class Relationship_ft extends EE_Fieldtype {
 					'relationships_display_field',
 					$entry_id,
 					$this->field_id,
-					ee()->db->_compile_select()
+					ee()->db->_compile_select(FALSE, FALSE)
 				);
 			}
 			else
@@ -251,7 +313,7 @@ class Relationship_ft extends EE_Fieldtype {
 		$limit_statuses = $this->settings['statuses'];
 		$limit_authors = $this->settings['authors'];
 		$limit = $this->settings['limit'];
-		
+
 		$show_expired = (bool) $this->settings['expired'];
 		$show_future = (bool) $this->settings['future'];
 
@@ -265,7 +327,7 @@ class Relationship_ft extends EE_Fieldtype {
 
 		ee()->db
 			->select('channel_titles.entry_id, channel_titles.title')
-			->order_by($this->settings['order_field'], $this->settings['order_dir']);
+			->order_by($order_field, $this->settings['order_dir']);
 
 		if ($limit)
 		{
@@ -357,11 +419,11 @@ class Relationship_ft extends EE_Fieldtype {
 
 		ee()->db->distinct();
 		$entries = ee()->db->get('channel_titles')->result_array();
-		
+
 		if ($this->settings['allow_multiple'] == 0)
 		{
 			$options[''] = '--';
-			
+
 			foreach ($entries as $entry)
 			{
 				$options[$entry['entry_id']] = $entry['title'];
@@ -370,99 +432,29 @@ class Relationship_ft extends EE_Fieldtype {
 			return form_dropdown($field_name.'[data][]', $options, current($selected));
 		}
 
+		ee()->cp->add_js_script(array(
+			'plugin' => 'ee_interact.event',
+			'file' => 'cp/relationships'
+		));
 
-// Performance debug
-//		$entries = array_merge($entries, $entries, $entries, $entries, $entries); // 5n
-//		$entries = array_merge($entries, $entries, $entries, $entries, $entries); // 25n
-//		$entries = array_merge($entries, $entries, $entries, $entries, $entries); // 125n
-
-		$str = '';
-		$str .= $this->_active_div($field_name);
-		$str .= $this->_multi_div($entries, $selected, $order, $field_name);
-
-		// The active section
-
-		if (count($entries))
+		if ( ! isset($this->settings['grid_row_id']) && substr($field_name, 7) != 'col_id_' && count($entries))
 		{
-			ee()->cp->add_js_script('file', 'cp/relationships');
-			ee()->javascript->output("EE.setup_relationship_field('#${field_name}');");
+			ee()->javascript->output("EE.setup_relationship_field('".$this->field_name."');");
 		}
 
-		return $str;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Draw the active/sortable half of the field
-	 *
-	 * @param
-	 *		entries - [ [title, entry_id], [...] ]
-	 *		selected - array of entry ids
-	 *		field_name - custom field name
-	 * @return	interface string
-	 */
-	public function _multi_div($entries, $selected, $order, $field_name)
-	{
-		$input_sort = $field_name.'[sort]';
-		$input_field = $field_name.'[data]';
-
-		$class = 'class="multiselect ';
-		$class .= count($entries) ? 'force-scroll' : 'empty';
-		$class .= '"';
-
-		$str = '<div class="multiselect-filter js_show">';
-		$str .= form_input('', '', 'id="'.$field_name.'-filter"');
-		$str .= '</div>';
-
-		$str .= '<div id="'.$field_name.'" '.$class.'>';
-
-		$str .= '<ul>';
-
-		foreach ($entries as $row)
+		if (REQ == 'CP')
 		{
-			$checked = in_array($row['entry_id'], $selected);
-			$sort = $checked ? $order[$row['entry_id']] : 0;
-
-			$str .= '<li'.($checked ? ' class="selected"' : '').'><label>';
-			$str .= form_input($input_sort.'[]', $sort, 'class="js_hide"');
-			$str .= form_checkbox($input_field.'[]', $row['entry_id'], $checked, 'class="js_hide"');
-			$str .= $row['title'].'</label></li>';
+			$css_link = ee()->view->head_link('css/relationship.css');
+		}
+		// Channel Form
+		else
+		{
+			$css_link = '<link rel="stylesheet" href="'.ee()->config->slash_item('theme_folder_url').'cp_themes/default/css/relationship.css" type="text/css" media="screen" />'.PHP_EOL;
 		}
 
-		if ( ! count($entries))
-		{
-			$str .= '<li>'.lang('rel_ft_no_entries').'</li>';
-		}
+		ee()->cp->add_to_head($css_link);
 
-		$str .= '</ul>';
-		$str .= '</div>';
-
-		return $str;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Draw the active/sortable half of the field
-	 *
-	 * @param   custom field name
-	 * @return	interface string
-	 */
-	public function _active_div($field_name)
-	{
-		$class = 'class="multiselect-active force-scroll"';
-
-		// underscore.js template string
-		$active_template = '<li><span class="reorder-handle">&nbsp;</span>';
-		$active_template .= '<%= title %>';
-		$active_template .= '<span class="remove-item">&times;</span></li>';
-
-		$str = '<div id="'.$field_name.'-active" '.$class.' data-template="'.form_prep($active_template).'">';
-		$str .= '<ul></ul>';
-		$str .= '</div>';
-
-		return $str;
+		return ee()->load->view('publish', compact('field_name', 'entries', 'selected', 'order'), TRUE);
 	}
 
 	// --------------------------------------------------------------------
@@ -474,7 +466,7 @@ class Relationship_ft extends EE_Fieldtype {
 	 * @param	tag parameters
 	 * @param	tag pair contents
 	 * @return	parsed output
-	 */	
+	 */
 	public function replace_tag($data, $params = '', $tagdata = '')
 	{
 		if ($tagdata)
@@ -484,7 +476,7 @@ class Relationship_ft extends EE_Fieldtype {
 
 		return $data;
 	}
-	
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -494,7 +486,7 @@ class Relationship_ft extends EE_Fieldtype {
 	 *
 	 * @param	array of previously saved settings
 	 * @return	string
-	 */	
+	 */
 	public function display_settings($data)
 	{
 		ee()->lang->loadfile('fieldtypes');
@@ -516,7 +508,7 @@ class Relationship_ft extends EE_Fieldtype {
 			$form->multiselect('channels', 'style="min-width: 225px; height: 140px;"'),
 			'top'
 		);
-		
+
 		$this->_row(
 			lang('rel_ft_include'),
 			'<label>'.$form->checkbox('expired').' '.lang('rel_ft_include_expired').'</label>'.
@@ -527,7 +519,7 @@ class Relationship_ft extends EE_Fieldtype {
 			$form->multiselect('categories', 'style="min-width: 225px; height: 140px;"'),
 			'top'
 		);
-		
+
 		$this->_row(
 			lang('rel_ft_authors'),
 			$form->multiselect('authors', 'style="min-width: 225px; height: 57px;"'),
@@ -557,6 +549,95 @@ class Relationship_ft extends EE_Fieldtype {
 
 	// --------------------------------------------------------------------
 
+	public function grid_display_settings($data)
+	{
+		ee()->load->library('Relationships_ft_cp');
+		$util = ee()->relationships_ft_cp;
+
+		return array(
+			$this->grid_checkbox_row(
+				lang('rel_ft_include_expired'),
+				'expired',
+				1,
+				(isset($data['expired']) && $data['expired'] == 1)
+			),
+			$this->grid_checkbox_row(
+				lang('rel_ft_include_future'),
+				'future',
+				1,
+				(isset($data['future']) && $data['future'] == 1)
+			),
+			$this->grid_dropdown_row(
+				lang('channels'),
+				'channels[]',
+				$util->all_channels(),
+				isset($data['channels']) ? $data['channels'] : NULL,
+				TRUE, // Multiselect
+				TRUE, // Wide select box
+				'style="height: 140px"'
+			),
+			$this->grid_dropdown_row(
+				lang('categories'),
+				'categories[]',
+				$util->all_categories(),
+				isset($data['categories']) ? $data['categories'] : NULL,
+				TRUE,
+				TRUE,
+				'style="height: 140px"'
+			),
+			$this->grid_dropdown_row(
+				lang('rel_ft_authors'),
+				'authors[]',
+				$util->all_authors(),
+				isset($data['authors']) ? $data['authors'] : NULL,
+				TRUE,
+				TRUE,
+				'style="height: 57px"'
+			),
+			$this->grid_dropdown_row(
+				lang('statuses'),
+				'statuses[]',
+				$util->all_statuses(),
+				isset($data['statuses']) ? $data['statuses'] : NULL,
+				TRUE,
+				TRUE,
+				'style="height: 43px"'
+			),
+			form_label(lang('grid_show')).NBS.NBS.NBS.
+			form_input(array(
+				'name'	=> 'limit',
+				'size'	=> 4,
+				'value'	=> isset($data['limit']) ? $data['limit'] : 100,
+				'class'	=> 'grid_input_text_small'
+			)).NBS.NBS.NBS.
+			form_label(lang('entries')),
+
+			// Order by row
+			form_label(lang('grid_order_by')).NBS.NBS.
+			form_dropdown(
+				'order_field',
+				$util->all_order_options(),
+				isset($data['order_field']) ? $data['order_field'] : NULL
+			).NBS.NBS.
+			form_label(lang('in')).NBS.NBS.
+			form_dropdown(
+				'order_dir',
+				$util->all_order_directions(),
+				isset($data['order_dir']) ? $data['order_dir'] : NULL
+			),
+
+			// Allow multiple
+			$this->grid_checkbox_row(
+				lang('rel_ft_allow_multi'),
+				'allow_multiple',
+				1,
+				(isset($data['allow_multiple']) && $data['allow_multiple'] == 1)
+			)
+		);
+	}
+
+	// --------------------------------------------------------------------
+
 	/**
 	 * Table row helper
 	 *
@@ -568,7 +649,7 @@ class Relationship_ft extends EE_Fieldtype {
 	 * @param	vertical alignment of left column
 	 *
 	 * @return	void - adds a row to the EE table class
-	 */	
+	 */
 	protected function _row($cell1, $cell2 = '', $valign = 'center')
 	{
 		if ( ! $cell2)
@@ -586,7 +667,6 @@ class Relationship_ft extends EE_Fieldtype {
 		}
 	}
 
-
 	// --------------------------------------------------------------------
 
 	/**
@@ -596,7 +676,7 @@ class Relationship_ft extends EE_Fieldtype {
 	 * settings and sends that off to be serialized.
 	 *
 	 * @return	array	settings
-	 */	
+	 */
 	public function save_settings($data)
 	{
 		$form = $this->_form();
@@ -627,7 +707,7 @@ class Relationship_ft extends EE_Fieldtype {
 	 *
 	 * @param	form prefix
 	 * @return	Object<Relationship_settings_form>
-	 */	
+	 */
 	protected function _form($prefix = 'relationship')
 	{
 		ee()->load->library('Relationships_ft_cp');
@@ -673,14 +753,14 @@ class Relationship_ft extends EE_Fieldtype {
 	 * Create our table on install
 	 *
 	 * @return	void
-	 */	
+	 */
 	public function install()
 	{
 		if (ee()->db->table_exists($this->_table))
 		{
 			return;
 		}
-		
+
 		ee()->load->dbforge();
 
 		$fields = array(
@@ -727,6 +807,15 @@ class Relationship_ft extends EE_Fieldtype {
 		ee()->dbforge->add_key('field_id');
 
 		ee()->dbforge->create_table($this->_table);
+
+		$field['field_id_'.$data['field_id']] = array(
+			'type' 			=> 'INT',
+			'constraint'	=> 10,
+			'null' 			=> FALSE,
+			'default'		=> 0
+			);
+
+		return $field;
 	}
 
 	// --------------------------------------------------------------------
@@ -735,7 +824,7 @@ class Relationship_ft extends EE_Fieldtype {
 	 * Drop the table
 	 *
 	 * @return	void
-	 */	
+	 */
 	public function uninstall()
 	{
 		ee()->load->dbforge();
@@ -743,7 +832,40 @@ class Relationship_ft extends EE_Fieldtype {
 	}
 
 	// --------------------------------------------------------------------
-	
+
+	/**
+	 * Make sure that we only accept data for grid and channels.
+	 *
+	 * Long term this should support all content types, but currently that
+	 * is not the case.
+	 *
+	 * @param string  The name of the content type
+	 * @return bool    Allows content type?
+	 */
+	public function accepts_content_type($name)
+	{
+		return ($name == 'channel' || $name == 'grid');
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Modify column settings for a Relationship field in a grid.
+	 *
+	 * @param	array	$data	An array of data with the structure:
+	 *								field_id - The id of the field to modify.
+	 * 								ee_action - delete or add (action we're
+	 *									taking)
+	 *
+	 * @return	array	The SQL definition of the modified field.
+	 */
+	public function grid_settings_modify_column($data)
+	{
+		return $this->_settings_modify_column($data, TRUE);
+	}
+
+	// --------------------------------------------------------------------
+
 	/**
 	 * Settings Modify Column
 	 *
@@ -754,23 +876,59 @@ class Relationship_ft extends EE_Fieldtype {
 	 */
 	public function settings_modify_column($data)
 	{
+		return $this->_settings_modify_column($data);
+	}
+
+	/**
+	 * Modify column settings for a Relationship field
+	 *
+	 * Handles cases both in and out of Grids, since they're mostly the
+	 * same except for a minor tweak (col_id_ vs field_id_).  If you need
+	 * to add something to both add it here.  Make sure it's valid for
+	 * both and you account for the change in field name.
+	 *
+	 * @param	array	$data	An array of data with the structure:
+	 *								field_id - The id of the field to modify.
+	 * 								ee_action - delete or add (action we're
+	 *									taking)
+	 * @param	boolean	$grid	Are we working with a grid field? If TRUE, we
+	 * 							are otherwise, it's a normal Relationship field.
+	 *
+	 * @return	array	The SQL definition of the modified field.
+	 */
+	protected function _settings_modify_column($data, $grid=FALSE)
+	{
 		if ($data['ee_action'] == 'delete')
 		{
-			// remove relationships
-			ee()->db
-				->where('field_id', $data['field_id'])
-				->delete($this->_table);
+			$this->_clear_defunct_relationships($data['field_id']);
 		}
 
 		// pretty much a dummy field. Here just for consistency's sake
 		// and in case we decide to store something in it.
+		$field_name = ($grid ? 'col_id_' . $data['col_id'] : 'field_id_' . $data['field_id']);
 
-		$fields['field_id_'.$data['field_id']] = array(
+		$fields[$field_name] = array(
 			'type' => 'VARCHAR',
 			'constraint' => 8
 		);
 
 		return $fields;
+	}
+
+	/**
+	 * Delete the relationship rows belonging to a field that has been deleted.
+	 * This code is called from multiple places.
+	 *
+	 * @param	int	$field_id	The id of the deleted field.
+	 *
+	 * @return void
+	 */
+	protected function _clear_defunct_relationships($field_id)
+	{
+		// remove relationships
+		ee()->db
+			->where('field_id', $field_id)
+			->delete($this->_table);
 	}
 }
 

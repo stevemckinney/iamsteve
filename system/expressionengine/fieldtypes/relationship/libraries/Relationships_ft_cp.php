@@ -4,13 +4,13 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2012, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
- * @since		Version 2.0
+ * @since		Version 2.6
  * @filesource
  */
- 
+
 // ------------------------------------------------------------------------
 
 /**
@@ -44,7 +44,7 @@ class Relationships_ft_cp {
 	 *
 	 * @return	array
 	 *		channel_id => site_label - channel_title
-	 */	
+	 */
 	public function all_channels()
 	{
 		$from_all_sites = (ee()->config->item('multiple_sites_enabled') == 'y');
@@ -78,7 +78,7 @@ class Relationships_ft_cp {
 	 * Grab all categories, across sites if appropriate.
 	 *
 	 * @return	Object <TreeIterator>
-	 */	
+	 */
 	public function all_categories()
 	{
 		$from_all_sites = (ee()->config->item('multiple_sites_enabled') == 'y');
@@ -128,7 +128,7 @@ class Relationships_ft_cp {
 	 *
 	 * @return	array
 	 *		id => name (id can either be g_# or m_# for group or member ids)
-	 */	
+	 */
 	public function all_authors()
 	{
 		$from_all_sites = (ee()->config->item('multiple_sites_enabled') == 'y');
@@ -155,12 +155,16 @@ class Relationships_ft_cp {
 		}
 
 		// Then all authors who are in those groups or who have author access
-		$members = ee()->db
-			->select('member_id, group_id, username, screen_name')
-			->where('in_authorlist', 'y')
-			->or_where_in('group_id', $group_ids)
-			->order_by('screen_name, username', 'ASC')
-			->get('members')->result();
+		ee()->db->select('member_id, group_id, username, screen_name');
+		ee()->db->where('in_authorlist', 'y');
+
+        if (count($groups))
+        {
+            ee()->db->or_where_in('group_id', $group_ids);
+        }
+
+		ee()->db->order_by('screen_name, username', 'ASC');
+		$members = ee()->db->get('members')->result();
 
 		$group_to_member = array_fill_keys($group_ids, array());
 
@@ -194,7 +198,7 @@ class Relationships_ft_cp {
 	 *
 	 * @return	array
 	 *		id => name
-	 */	
+	 */
 	public function all_statuses()
 	{
 		$from_all_sites = (ee()->config->item('multiple_sites_enabled') == 'y');
@@ -239,7 +243,7 @@ class Relationships_ft_cp {
 	 * Returns our possible ordering columns
 	 *
 	 * @return	array [column => human name]
-	 */	
+	 */
 	public function all_order_options()
 	{
 		return array(
@@ -254,7 +258,7 @@ class Relationships_ft_cp {
 	 * Returns our possible ordering directions
 	 *
 	 * @return	array [dir => human name]
-	 */	
+	 */
 	public function all_order_directions()
 	{
 		return array(
@@ -402,7 +406,7 @@ class Relationship_settings_form {
 			$params = array(
 				$full_name,
 				$this->_options[$name],
-				$this->_selected[$name],
+				set_value($prefix.$name, $this->_selected[$name]),
 				$extras
 			);
 		}
@@ -411,7 +415,7 @@ class Relationship_settings_form {
 			$params = array(
 				$prefix.$name,
 				1,
-				$this->_selected[$name],
+				set_value($prefix.$name, $this->_selected[$name]),
 				$extras
 			);
 		}
@@ -419,7 +423,7 @@ class Relationship_settings_form {
 		{
 			$params = array(
 				$prefix.$name,
-				$this->_selected[$name],
+				set_value($prefix.$name, $this->_selected[$name]),
 				$extras
 			);
 		}

@@ -1,0 +1,51 @@
+// Forms
+// ---------------------------
+form ul {
+	padding: 0;
+	list-style: none; }
+	
+label {
+	@include form-label;
+	@extend .h5; }
+
+// Text
+// ---------------------------
+.text,
+.textarea {
+	@extend %form-base-with-mixin;
+	@include form-shading(scale-color($tertiary, $lightness: -30%, $saturation: -20%));
+	
+	&:focus {
+		@include form-shading($info, focus); } }
+
+// Select
+// ---------------------------
+.field-select {
+	position: relative;
+	
+	&:before {
+		font-family: $icons;
+		content: "▾";
+		color: inherit;
+		position: absolute;
+		bottom: em(3px, $base-px);
+		right: em($base-px, $base-px);
+		font-size: em($base-px);
+		z-index: 1; } }
+
+.select {
+	@include form(scale-color($tertiary, $lightness: -30%, $saturation: -20%), $type: select);
+	&:focus {
+		@include form-shading($info, focus, select); } }
+
+
+// Check/radio
+// ---------------------------
+[type=radio],
+[type=checkbox] {
+	@include form($type: radio); }
+
+// Disabled
+// ---------------------------
+[disabled] {
+	@include form-shading(scale-color($tertiary, $lightness: -30%, $saturation: -20%), $state: disabled); }

@@ -1,0 +1,20 @@
+// Default vars
+// ---------------------------
+$default-form-label-position: top !default;
+$default-form-label-margin: 0 0 em($base-px/2) !default;
+$default-form-label-breakpoint: $b !default;
+$default-form-label-input-width: 66.66667% !default;
+
+$default-form-main-color: $default !default;
+$default-form-focus-color: $alt !default;
+$default-form-background-color: $white !default;
+$default-form-type: text !default;
+$default-form-state: $default-state !default;
+$default-form-radius: $radius !default;
+$default-form-shading: $default-shading !default;
+$default-form-set-height: false !default;
+$default-form-dry: $default-dry !default;
+
+// Elements
+$default-text-elements: text, textarea, password, search, email, url, number, date, month, week, year, datetime, datetime-local !default;
+$default-check-elements: radio, checkbox !default;

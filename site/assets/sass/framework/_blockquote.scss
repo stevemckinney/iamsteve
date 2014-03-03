@@ -1,0 +1,89 @@
+@mixin blockquote(
+	$main-color: lighten(#f2e7c2, 5%),
+	$line-color: $danger,
+	$size: 72px, 
+	$radius: $radius, 
+	$font: $serif, 
+	$shadow: 0 1px 3px rgba($black, .2),
+	$character: open-quote) {
+	
+	// @warn "This mixin isn't finished yet";
+	
+	$quote-size: em($size*2);
+	$padding-left: em($size*1.5);
+	
+	$dark-color: scale-color($main-color, $lightness: -40%, $saturation: -50%);
+	$light-color: scale-lightness($main-color, 20%);
+	
+	@include background(
+		linear-gradient(bottom, fade-out($dark-color, 0.75) .05em, transparent .05em), $main-color);
+	@include background-size(100% 1.5em);
+	
+	margin: 0;
+	padding-left: $padding-left;
+	
+	border-radius: $radius;
+	box-shadow: $shadow;
+	
+	p, & {
+		position: relative; }
+	p {
+		z-index: 1; }
+	&:before {
+		content: #{$character};
+		font-size: $quote-size;
+		position: absolute;
+		float: left;
+		top: 0;
+		left: 0; }
+	&:after {
+		content: "";
+		display: inline-block;
+		width: 10px;
+		height: 100%;
+		background: $line-color;
+		top: 0;
+		left: $line*2; } }
+
+blockquote {
+	@include blockquote; }
+
+/*
+blockquote {
+	@extend %rounded !optional;
+	@extend %shadow !optional;
+	@include rem(padding, $line $line $line $line*3);
+	@extend %margin-bottom !optional;
+	background: $q;
+	color: $qd;
+	position: relative;
+	line-height: 1.5;
+	font-family: $sans;
+	p {
+		position: relative;
+		z-index: 1;
+		[role="main"] & {
+			&:first-child {
+			@include rem(font-size, 16px); } } }
+	&:before, &:after {
+		position: absolute; }
+	&:before {
+		@include rem(margin, 0 $line 0 0);
+		content: "pullquote";
+		font: 700 100%/1.5 $icons;
+		color: $qd;
+		display: inline-block;
+		opacity: .5;
+		text-shadow: 0 1px 0 $ql;
+		@include rem(top, $base-px*2);
+		@include rem(left, $line);
+		z-index: 0; }
+	&:after {
+		content: "";
+		display: inline-block;
+		width: 1px;
+		height: 100%;
+		background: $danger;
+		top: 0;
+		left: $line*2; } }
+*/

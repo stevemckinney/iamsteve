@@ -1,0 +1,236 @@
+// Default vars
+// ---------------------------
+$default-element-main-color: $default !default;
+$default-element-text-color: $white !default;
+$default-element-dark-bg: $default-dark-bg !default;
+$default-element-radius: $radius !default;
+$default-element-subtle: false !default;
+$default-element-shading: $default-shading !default;
+$default-element-size: $default-size !default;
+$default-element-set-height: false !default;
+$default-element-hover: false !default;
+$default-element-font-size: false !default;
+$default-element-display: $default-display !default;
+$default-element-dry: $default-dry !default;
+$default-element-state: $default-state !default;
+$default-element-text-shadow: true !default;
+
+// Element — A base, mixin and options
+// Style notices/alerts, buttons, etc 
+// -----------------------------------------
+@mixin element(
+	$main-color	: $default-element-main-color,
+	$text-color	: $default-element-text-color,
+	$text-shadow: $default-element-text-shadow,
+	$dark-bg		: $default-element-dark-bg,
+	$radius			: $default-element-radius, 
+	$subtle			: $default-element-subtle,
+	$shading		: $default-element-shading,
+	$size				: $default-element-size,
+	$set-height	: $default-element-set-height, 
+	$hover			: $default-element-hover,
+	$font-size	: $default-element-font-size,
+	$display		: $default-element-display,
+	$dry				: $default-element-dry
+) {
+	
+	// Use element-base mixin to keep repetitive stuff together
+	@if $dry == false {		
+		@include element-base($size, $set-height, $font-size, $text-color, $radius, $display); }
+	@else { 
+		@extend %element-base-with-mixin; }
+	
+	@if $subtle {
+		.no-cssgradients & {
+			background: transparent; } }
+	
+	// non subtle start		
+	@else {
+		@if $shading {
+			@include element-shading($main-color, normal, $text-color, $text-shadow, $dark-bg); }
+		@else {
+			background: $main-color; } }
+			
+	@if $hover {
+		&:hover, &:focus {
+			@if $subtle { 
+				color: $text-color; }
+			
+			@if $shading {
+				@include element-shading($main-color, hover, false, $text-shadow, $dark-bg); }
+			
+			@else {
+				background: scale-lightness($main-color, 10%); } }
+				
+		&:active {
+			z-index: 2; // makes button above others in a group
+			
+			@if $shading {
+				@include element-shading($main-color, active, false, $text-shadow, $dark-bg); }
+			
+			@else {
+				background: scale-lightness($main-color, -10%); } } } }
+
+// Separate the overall button style
+// ---------------------------
+@mixin element-shading(
+	$main-color: $default-element-main-color,
+	$state: $default-element-state,
+	$text-color: $default-element-text-color,
+	$text-shadow: $default-element-text-shadow,
+	$dark-bg: $default-element-dark-bg) {
+	
+	// Adjust hue and saturation for hover
+	$main-color: if($state == hover, scale-lightness($main-color, 10%), $main-color);
+	
+	// Alternate shades
+	$light-color: scale-lightness($main-color, if-bright($main-color, 30%, 15%));
+	$dark-color: scale-lightness($main-color, if-bright($main-color, -2.5%, -10%));
+	$shadow-color: scale-lightness($main-color, if-bright($dark-color, -20%, -30%));
+	
+	// Shadows
+	$border-color: scale-lightness($shadow-color, if-bright($main-color, -20%, -30%));
+	$border-bottom-color: scale-lightness($border-color, if-bright($main-color, -10%, -20%));
+	$text-shadow-color: scale-lightness($shadow-color, -10%);
+	$highlight-color: if(saturation($light-color) > 80% or saturation($light-color) < 30% and lightness($main-color) > 50%, rgba($light-color, .6), $light-color);
+	
+	// Background
+	$background-main-color: $main-color;
+	$background-dark-color: $dark-color;
+	
+	@if saturation($main-color) > 20 {
+		// red
+		@if hue($main-color) > 0 and hue($main-color) < 19 or
+				hue($main-color) > 330 and hue($main-color) < 360 and
+				saturation($main-color) > 20 {
+			$background-dark-color: scale-color($background-dark-color, $lightness: -10%);
+			$background-dark-color: adjust-hue($background-dark-color, -10deg); }
+		
+		// orange
+		@else if hue($main-color) > 20 and hue($main-color) < 49 and
+				saturation($main-color) > 20 {
+			$background-dark-color: scale-color($background-dark-color, $lightness: 5%);
+			$background-dark-color: adjust-hue($background-dark-color, -10deg); }
+		
+		// yellow
+		@else if hue($main-color) > 50 and hue($main-color) < 79 and
+				saturation($main-color) > 20 {
+			$background-dark-color: scale-color($background-dark-color, $lightness: -5%);
+			$background-dark-color: adjust-hue($background-dark-color, -10deg); }
+		
+		// green
+		@else if hue($main-color) > 80 and hue($main-color) < 149 and
+				saturation($main-color) > 20 {
+			$background-dark-color: scale-color($background-dark-color, $lightness: -5%);
+			$background-dark-color: adjust-hue($background-dark-color, 20deg); }
+		
+		// blue/cyan
+		@else if hue($main-color) > 150 and hue($main-color) < 229 and
+				saturation($main-color) > 20 {
+			$background-dark-color: adjust-hue($background-dark-color, 10deg); }
+		
+		// purple
+		@else if hue($main-color) > 230 and hue($main-color) < 289 and
+				saturation($main-color) > 20 {
+			$background-dark-color: scale-color($background-dark-color, $lightness: -10%);
+			$background-dark-color: adjust-hue($background-dark-color, 15deg); }
+		
+		// magenta
+		@else if hue($main-color) > 290 and hue($main-color) < 329 and
+				saturation($main-color) > 20 {
+			$background-dark-color: scale-color($background-dark-color, $lightness: -10%);
+			$background-dark-color: adjust-hue($background-dark-color, 40deg); } }
+	
+	// Low saturation
+	@else {
+		// Shadows
+		$border-color: scale-lightness($shadow-color, if-bright($main-color, -2.5%, -20%));
+		$border-bottom-color: scale-lightness($border-color, if-bright($main-color, -10%, -20%));
+		
+		// Background
+		$background-dark-color: scale-color($background-dark-color, $lightness: if-bright($main-color, -5%, -15%)); }
+	
+	@include background(linear-gradient($background-main-color, $background-main-color 25%, $background-dark-color 100%));
+
+	@if $dark-bg {
+		box-shadow:
+			inset 0 -1px 1px rgba($shadow-color, .4),
+			if($state == active,
+				compact(
+					inset 0 1px $shadow-color,
+					inset 0 1px 3px $shadow-color, 
+					0 1px 1px rgba($white, .1)),
+				compact(
+					inset 0 1px 1px rgba($light-color, .8))),
+			if($state == active, 
+				compact(false),
+				0 2px 2px -1px rgba($black, .3)); }
+				
+	@else {
+		box-shadow:
+			inset 0 -1px $border-bottom-color,
+			inset 0 0 0 1px $border-color,
+			if($state == active,
+				compact(
+					inset 0 1px rgba($shadow-color, .4),
+					inset 0 2px 2px rgba($shadow-color, .8), 
+					0 1px 1px rgba($white, $default-light-shadow)),
+				compact(
+					inset 0 2px $highlight-color,
+					0 1px 2px rgba($shadow-color, .2))),
+			if($state == active, 
+				0 1px rgba($white, $default-light-shadow),
+				0 2px 3px -2px rgba($shadow-color, $default-dark-shadow)); }
+	
+	@if $text-shadow or $shading {
+		text-shadow: 0 1px 1px $text-shadow-color; }
+	
+	// modernizr stuff
+	.no-cssgradients & {
+		background: $main-color; } }
+
+// Separated stuff that will more often than not be
+// consistent so possibility for extending with this mixin
+// ---------------------------
+@mixin element-base(
+	$size: $default-element-size,
+	$set-height: $default-element-set-height,
+	$font-size: $default-element-font-size,
+	$text-color: $default-element-text-color,
+	$radius: $default-element-radius,
+	$display: $default-element-display) {
+	@extend %element-base;
+	
+	&, &:hover, &:focus { 
+		@if $text-color != false {
+			color: $text-color; } }
+	
+	@if $display {
+		display: $display; }
+	
+	@if $size and $set-height == false {
+		padding: element-size($size); }
+	
+	@if $set-height {
+		@include set-height($set-height, $line); }
+	
+	@if $font-size {	
+		font-size: $font-size; }
+	
+	@if $radius {
+		border-radius: $radius; } }
+
+// The most consistent stuff for each button
+// ---------------------------
+%element-base {
+	@include transition(none);
+	@include user-select(none);
+	background-clip: padding-box;
+	position: relative;
+	font-family: $element;
+	line-height: normal;
+	font-weight: 700; }
+
+%element-base-with-mixin {
+	@extend %element-base;
+	@include element-base; }

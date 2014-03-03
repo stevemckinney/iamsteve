@@ -1,0 +1,41 @@
+// Modals
+// ---------------------------
+
+@mixin modal(
+	$bg: #fff,
+	$padding: em($base-px),
+	$width: 100%,
+	$radius: $radius,
+	$shadow: 0 1px 3px rgba($black, 0.4),
+	$shadow2: 0 0 0 6px $white,
+	$shadow3: 0 0 0 200em rgba($black, 0.4)) ) {
+	
+	$shadow: compact($shadow, $shadow2, $shadow3);
+	
+	@include transition(
+		1s width,
+		1s margin-left,
+		1s 1s height,
+		1s 1s margin-top,
+		.5s 2s box-shadow);
+	
+	&.closed {
+		@include transition(
+			.5s box-shadow,
+			1s .5s height,
+			1s .5s margin-top,
+			1s 1.5s width,
+			1s 1.5s margin-left,
+			0 2.5s visibility); }
+	
+	background: $bg;
+	padding: $padding;
+	
+	@if $radius { 
+		@include border-radius($radius); }
+	@if $shadow {
+		@include box-shadow($shadow); }
+	
+	width: #{$width};
+	left: #{$width}/2;
+}

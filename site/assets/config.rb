@@ -1,27 +1,27 @@
 # Require any additional compass plugins here.
-require 'stitch'
+# require 'animate-sass'
+# require 'compass-recipes'
+
+# path: /Users/Steve/.rvm/gems/ruby-2.0.0-p0/gems/
+
+require 'ceaser-easing'
 require 'susy'
-require 'animate-sass'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "css"
-sass_dir = "sass"
-images_dir = "images"
-javascripts_dir = "js"
-
-environment = :development
+css_dir = "site/assets/css"
+sass_dir = "src/assets/sass"
+images_dir = "src/assets/images"
+javascripts_dir = "src/assets/js"
+fonts_dir = "src/assets/fonts"
 
 # You can select your preferred output style here (can be overridden via the command line):
-output_style = (environment == :production) ? :compressed : :expanded
-# or :nested or :compact or :compressed
+# output_style = :expanded or :nested or :compact or :compressed
+environment = :development
+output_style = (environment == :production) ? :expanded : :compact
 
-# sass sleuth
-if environment != :production
-	sass_options = {:debuginfo => true}
-end
 # To enable relative paths to assets via compass helper functions. Uncomment:
-# relative_assets = true
+relative_assets = true
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 # line_comments = false

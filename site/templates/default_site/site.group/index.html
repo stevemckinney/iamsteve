@@ -1,21 +1,21 @@
 {embed="include/header"}
+
 {exp:channel:entries channel="blog" limit="6" status="open|latest" global:param_disable_default}
 	{if count == "1"}
-		<article role="article" class="latest-entry">
-			<h1 class="entry-title latest-entry-title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full.">{title}</a></h1>
-			<div class="latest-entry-summary">
-			{exp:eehive_hacksaw words="175" cutoff="<h2>" allow="<blockquote><a><p><b><strong><i><h1><h2><h3>"}
-				{exp:smartdown}{blog_article}{/exp:smartdown}
-			{/exp:eehive_hacksaw}
+		<article role="article" class="entry-latest">
+			<h1 class="entry-title entry-latest-title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full.">{title}</a></h1>
+			<div class="entry-latest-summary">
+				{blog_article}
 			</div>
 			{blog_meta}
 		</article>
 	{if:else}
-		<article role="article" class="previous-entry">
-			<h2 class="h4 entry-title"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-			<p class="entry-summary previous-entry-summary">{exp:eehive_hacksaw words="30" append="&hellip;"}{excerpt}{/exp:eehive_hacksaw}</p>
+		<article role="article" class="entry-previous">
+			<h2 class="h4 entry-title entry-previous-title"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+			<p class="entry-summary entry-previous-summary">{exp:eehive_hacksaw words="30" append="&hellip;"}{excerpt}{/exp:eehive_hacksaw}</p>
 			<a href="{title_permalink='blog/entry'}" title="Read {title} in full" class="button-small">Read entry</a>
 		</article>
 	{/if}
 {/exp:channel:entries}
+
 {embed="include/footer"}

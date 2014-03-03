@@ -1,350 +1,39 @@
-@import "import/framework", "import/normalize";
-
-@-webkit-viewport {
-	width: device-width; }
-@-moz-viewport {
-	width: device-width; }
-@-ms-viewport {
-	width: device-width; }
-@-o-viewport {
-	width: device-width; }
-@viewport {
-	width: device-width; }
-	
-/* 
-	!Base stucture
----------------------------------------------------------------------- */
-html, body:after {
-	font-family: "a"; }
-body {
-	font-size: 100%;
- 	line-height: normal;
-	color: $primary;
-	background: url(../images/bg_wave.png); }
-.container {
-	@include pie-clearfix;
-	@extend %margin-bottom;
-	@include box-shadow(0 1px 0 fade-out($white, 0.6), 0 6px 24px -6px fade-out($primary_d1, 0.4));
-	padding: em($line, $base-font-size) 0 0;
-	position: relative;
-	overflow: hidden;
-	background: $primary;
-	@include respond-min($c) {
-		@include box-shadow(inset 0 1px 0 $black, inset 0 -1px 0 $primary, 0 1px 0 fade-out($white, 0.6), 0 12px 48px -24px $primary_d1); }
-	@include respond-min($d) {
-		background: $primary url(../images/header_bg_alt.png) center bottom no-repeat;
-		@include background(url(../images/header_bg_alt.png) center bottom, linear-gradient($primary 75%, $primary_d2)); }
-	@include respond-to(retina) {
-		background-size: cover; } }
-
-img {
-	vertical-align: bottom; }
-// potential to break, old imgs without a figure in blog posts
-article img {
-	@extend %imgs;
-	display: block; }
-		
-// header
+// Framework required
 // ---------------------------
-[role="banner"] {
-	@extend %crm;
-	@extend %transition;
-	@include border-radius(4px 4px 0 0);
-	position: relative;
-	h1 {
-		@extend %left;
-		@include wh(106px, 49px);
-		@include hide-text;
-		display: block;
-		padding: 0;
-		position: relative;
-		background: url(../images/logo.png) center center no-repeat;
-		&:hover, &:focus {
-			background: url(../images/logo_hover.png) center center no-repeat; }
-		@include respond-to(retina) {
-			@include wh(107px, 48px);
-			background: url(../images/logo_2x.png);
-			background-size: 107px 48px;
-			
-			&:hover, &:focus {
-				background: url(../images/logo_hover_2x.png) center center no-repeat;
-				background-size: 48px; } } } }
-	.title {
-		@extend %ts;
-		@include rem(padding, $line 0 $line*2);
-		@include animation(title 1s ease-in-out);
-		@include animation-fill-mode(forwards);
-		@include animation-play-state(paused);
-		position: relative;
-		width: 88%;
-		top: 500px;
-		margin: auto;
-		text-align: center;
-		.loaded & {
-			@include animation-play-state(running); }
-		.error & {
-			text-transform: capitalize; }
-		.no-cssanimations & {
-			top: auto; }
-		a {
-			line-height: 1.185; } }
-
-	
-// navigation
+@import "compass",
+				"compass/css3",
+				"compass/css3/user-interface",
+				"compass/layout/stretching",
+				"compass/css3/hyphenation",
+				"framework/base",
+				"site/base";
+				
+// Framework components
 // ---------------------------
-@import "styles/navigation";
-		
-// section
+@import "framework/responsive",
+				"framework/normalize",
+				"framework/grid",
+				"framework/helpers",
+				"framework/group",
+				"framework/element",
+				"framework/icon",
+				"framework/form",
+				"framework/table",
+				"framework/blockquote",
+				"framework/misc";
+
+// Site base
 // ---------------------------
-[role="region"] {
-	@include pie-clearfix;
-	width: $whole;
-	margin: 0 0 em($line, $base-font-size);
-	&:last-child {
-		margin: 0;
-		padding: 0;
-		border: none; } }
-[role="main"], [role="contentinfo"], .related {
-	@extend %crm;
-	clear: both; }
-	
-.me {
-	img {
-		@extend %rounded;
-		@extend %shadow;
-		margin: 0 cp(24px, 480px) 2.5% 0;
-		vertical-align: bottom;
-		display: inline-block;
-		border: 6px solid $white;
-		max-width: 40%;
-		float: left; } }
+@import "site/mixins", 
+				"site/extends", 
+				"site/symbolset", 
+				"site/typography",
+				"site/structure",
+				"site/shame"; // anything to be ashamed of goes in here, refactor later
 
-.columns {
-	@include column-count(2); }
-
-@import "styles/dribbble";
-
-// article
+// Site objects
 // ---------------------------
-[role="article"] {
-	@include pie-clearfix;
-	margin: auto auto em($line, $base-font-size);
-	position: relative;
-	figure {
-		@include pie-clearfix;
-		margin-bottom: em($line, $base-font-size);
-		position: relative;
-		img {
-			display: block;
-			margin: auto auto .75rem; } }
-	figcaption {
-		text-align: center; }
-	@include respond-min($c) {
-		padding-right: 7.5%;
-		padding-left: 7.5%;
-		margin-bottom: em($line*2, $base-font-size); }
-	@include respond-min($d) {
-		padding-right: 15.5%;
-		padding-left: 15.5%; } }
-
-/* !aside ---------------------- */
-@import "styles/meta";
-
-/* 
-	!Typography & links
----------------------------------------------------------------------- */
-@import "styles/typography";
-
-// pagination
-// ---------------------------
-@import "styles/pagination";
-
-/* 
-	Lists
----------------------------------------------------------------------- */
-article {
-	ul, ol {
-		list-style: inside square;
-		margin: 0 0 $line;
-		@include respond-min($c) {
-			list-style-position: outside; } } }
-		
-[role="contentinfo"] {
-	text-align: center;
-	@include respond-min($c) {
-		text-align: left; }
-	ul {
-		@extend %subtle-box;
-		@include pie-clearfix;
-		@include border-radius($radius);
-		padding: 0 em($base-px/2, 12px);
-		margin: 0; }
-	li {
-		display: inline-block;
-		@include respond-min(35em) {
-			float: right; }
-		&:first-child {
-			display: block;
-			@include respond-min(35em) {
-				display: inline-block;
-				float: left; } }
-	small {
-		text-align: center;
-		@include rem(padding, $base-px 0 0 $base-px/2); }
-	.url, .author {
-		display: inline-block;
-		padding: 0; }
-	a {
-		@include rem(padding, $base-px $base-px/2);
-		@extend %transition;
-		&:hover, &:focus {
-			color: $primary; } }
-	small, a {
-		font-size: .875rem;
-		margin: 0;
-		display: block;
-		color: $primary;
-		color: fade-out($primary, 0.5);
-		line-height: 1; 
-		@include respond-min(35em) {
-			@include rem(height, $footer-height);
-			@include rem(line-height, $footer-height);
-			@include rem(padding, 0 $base-px/2); } } } }
-
-dl {
-	line-height: 1.5; }
-dt {
-	@include rem(margin, $line 0 $base-px);
-	&:first-of-type {
-		margin-top: 0; } }
-dd {
-	margin: 0;
-	padding: 0; }
-		
-/*
-	!Buttons and notices
------------------------------------------------------------------------*/
-.button, .button-small {
-	@include element($alt, $size: 5, $hover: true);
-	@extend %letter-spacing;
-	white-space: nowrap;
-	font-size: .875rem;
-	line-height: 1.5; }
-
-.button-small {
-	@include rem(padding, 6px 9px);
-	font-size: 70%;
-	line-height: 1; }
-
-
-// notices
-// ---------------------------
-.notice {
-	a { 
-		color: $white; } }
-.notice-default {
-	@include element; }
-.notice-warning {
-	@include element($warning, $size: 5);
-	width: 100%;
-	text-align: center;
-	a { 
-		color: #fff;
-		text-decoration: underline; } }
-.notice-success {
-	@include element($success, $size: 6, $hover: true);
-	float: right;
-	em { 
-		@extend %mr6; } }
-
-
-/*
-	!Forms
------------------------------------------------------------------------*/
-@import "import/forms", "styles/forms";
-
-/*
-	!Page specifics
------------------------------------------------------------------------*/
-@import "styles/portfolio", "styles/about";
-
-// , "styles/blog"
-
-
-.related-entries, .previous-entries {
-	@include pie-clearfix;
-	@extend %margin-bottom;
-	@include respond-min($c) {
-		@include rem(margin, 0 0 $line*2); }
-	@include respond-min($d) {
-		h1 {
-			padding-left: 15.5%; } } }
-.related-entry, .previous-entry {
-	width: 46.25%;
-	&:first-of-type {
-		float: left; }
-	&:last-of-type {
-		float: right; }
-	p {
-		@extend %margin-bottom; }
-	@include respond-min($d) {
-		width: 47.5%;
-		&:first-of-type { 
-			padding-left: 15.5%; }
-		&:last-of-type { 
-			padding-right: 15.5%; } } }
-
-
-/* 
-	Misc.
----------------------------------------------------------------------- */
-.hiddenFields {
-	display: none; }
-iframe {
-	width: 100%; }
-hr {
-	@extend %crm;
-	@include box-shadow(0 1px 0 fade-out($white, 0.35));
-	padding: 0;
-	border: none;
-	border-top: 1px dotted fade-out($primary, 0.4);
-	background: $white;
-	background: fade-out($white, 0.35);
-	display: block;
-	[role="main"] & {
-		max-width: 100%;
-		width: 100%; } }
-
-// figure
-// ---------------------------
-figure {
-	@include pie-clearfix; }
-figcaption {}
-
-// hide extras from services
-// ---------------------------
-.js [id="wufoo-q7x3k1"] p {
-	display: none; }
-	
-// screenreaders
-// ---------------------------
-[for="keywords"], .screenreader { 
-	@extend %screenreaders; }
-	
-// code
-// ---------------------------
-@import "styles/code";
-	
-// extends
-// ---------------------------
-@import "styles/extends";
-
-// lettering
-// ---------------------------
-.space {
-	@include rem(width, $line); }
-
-/*
-	Media queries
------------------------------------------------------------------------*/
-@import "screens/a", "screens/b", "screens/c", "screens/d", "screens/e", "screens/f", "screens/2x";
+@import "objects/buttons",
+				"objects/header",
+				"objects/nav",
+				"objects/article";

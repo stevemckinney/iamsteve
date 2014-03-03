@@ -1,0 +1,181 @@
+//	Your traditional helper classes through
+//	mixins and extends
+// 	-----------------------------------------
+
+// General extends
+// ---------------------------
+%transition {
+	@include transition(all $default-transition-duration linear); }
+%rounded {
+	border-radius: $radius; }
+%shadow {
+	box-shadow: 0 1px 3px rgba($black, .2); }
+%left {
+	float: left; }
+%right {
+	float: right; }
+%grid,
+%clear {
+	@include pie-clearfix; }
+
+// Hiding
+// ---------------------------
+.hidden {
+	display: none; }
+	
+%screenreaders {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px; }
+
+// Resets
+// ---------------------------
+%no-outline {
+	outline: none; }
+%input-reset {
+	@include appearance(none); }
+%no-list-style {
+	list-style: none; }
+
+// Margins and paddings
+// ---------------------------
+%centre {
+	margin: auto; }
+%no-mp {
+	margin: 0;
+	padding: 0; }
+%margin-bottom {
+	margin: 0 0 em($line); }
+
+// Colour use
+// ---------------------------
+%primary {
+	color: $primary; }
+%secondary {
+	color: $secondary; }
+%tertiary {
+	color: $tertiary; }
+
+// Font size
+// ---------------------------
+%base-font-size {
+	font-size: em($base-font-size, $base-font-size); }
+
+// Sizes
+// ---------------------------
+.xxlarge {
+	font-size: $xxlarge-size; }
+.xlarge {
+	font-size: $xlarge-size; }
+.large {
+	font-size: $large-size; }
+.regular,
+.normal {
+	font-size: $normal-size; }
+.small {
+	font-size: $small-size; }
+.xsmall {
+	font-size: $xsmall-size; }
+.xxsmall {
+	font-size: $xxsmall-size; }
+
+// Mixins
+// ---------------------------
+
+// set width and height,
+// pass one value to have both set for you
+@mixin wh(
+	$width	: false,
+	$height	: false
+) {
+	$width: unquote($width);
+	@if $height != none {
+		$height: unquote($height); }
+
+	@if $height {
+		width: #{$width};
+		height: #{$height}; }
+	@else {
+		width: #{$width};
+		height: #{$width}; }
+
+}
+
+// Sets the height of stuff with the line height to match
+// ---------------------------
+@mixin set-height(
+	$set-height	: $default-set-height,
+	$padding		: $default-set-height-padding,
+	$context		: $default-context
+) {
+	@if $set-height == true {
+		$set-height: em($default-set-height); }
+	@else {
+		$set-height: em($set-height, $context); }
+
+	@if $padding {
+		padding: $padding; }
+		
+	height: $set-height;
+	line-height: $set-height; }
+
+// Create proportionally sized elements
+// ---------------------------
+@function element-size(
+	$size				: $default-size,
+	$equal			: $default-equal,
+	$ratio			: $default-ratio,
+	$multiplier	: $default-multiplier
+) {
+  @return if(
+  	$equal == false, 
+  	($size * $ratio) + em (($size * $multiplier) * $ratio) + em, 
+  	($size * $ratio) + em); }
+
+// Colour functions
+// ---------------------------
+
+// Taken from: https://github.com/imathis/nice-buttons
+// Returns true if the color is brighter than 50% lightness
+@function is-bright($color) {
+	@return (lightness($color) > 50%); }
+
+// Picks the color with the highest contrast
+@function if-bright($color, $light: true, $dark: false) {
+	@return if(is-bright($color), $light, $dark); }
+	
+// Picks the color with the highest contrast
+@function text-contrast($bg, $dark-text: #666, $light-text: rgba($text-color, .9)) {
+	@return if-bright($bg, $dark-text, $light-text); }
+
+// Returns true if the color greater than 50% saturation
+@function is-saturated($color) {
+	@return (saturation($color) > 50%); }
+
+// Layout
+// ---------------------------
+%two-columns {
+	@include column-count(2);
+	@include column-gap(em($line*2));
+	-webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+	break-inside: avoid; }
+
+// Display classes
+// ---------------------------
+.hide-small {
+	@include breakpoint($default-hide-small-breakpoint, max) {
+		display: none; } }
+
+.hide-med {
+	@media (min-width: $default-hide-med-min-breakpoint) and (max-width: $default-hide-med-max-breakpoint) {
+		display: none; } }
+
+.hide-large {
+	@include breakpoint($default-hide-large-breakpoint) {
+  	display: none; } }

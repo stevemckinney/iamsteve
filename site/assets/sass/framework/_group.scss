@@ -1,0 +1,31 @@
+// Default vars
+// ---------------------------
+$default-group-children: ".button" !default;
+$default-group-negative-spacing: $default-negative-spacing !default;
+$default-group-radius: $radius !default;
+
+// New group for shortness
+// ---------------------------
+@mixin group(
+	$children					: $default-group-children,
+	$negative-spacing	: $default-group-negative-spacing,
+	$radius						: $default-group-radius
+) {
+	
+	@if $negative-spacing {
+		letter-spacing: em($negative-spacing); }
+	
+	#{unquote($children)} {
+		border-radius: 0;
+		
+		@if $negative-spacing {
+			letter-spacing: 0; }
+		
+		+ & {
+			margin-left: -1px; }
+		
+		&:first-child {
+			border-radius: $radius 0 0 $radius; }
+		
+		&:last-child {
+			border-radius: 0 $radius $radius 0; } } }

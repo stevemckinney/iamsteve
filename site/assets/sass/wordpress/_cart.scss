@@ -1,0 +1,44 @@
+.product-thumbnail {
+	min-width: 32px; }
+
+.remove {
+	display: block;
+	text-align: center;
+	line-height: 1;
+	color: red;
+	
+	&:hover,
+	&:focus {
+		background-color: red;
+		color: #fff; } }
+
+table.cart {
+	
+	img {
+		width: 32px;
+		height: auto; }
+	
+	th, td {
+		vertical-align: middle; }
+
+.actions {
+	text-align: right;
+	
+	.coupon {
+		float:left;
+	
+		label {
+			display: none; }
+	
+		.input-text {
+			width: 80px;
+			float: left; } }
+			
+		.button.alt {
+			float: right;
+			margin-left: .25em; } }
+			
+		input {
+			margin: 0;
+			vertical-align: middle;
+			line-height: 1em; } }

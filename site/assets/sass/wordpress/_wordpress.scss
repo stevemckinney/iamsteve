@@ -1,0 +1,117 @@
+// Grid Setup
+// ---------------------------	
+.site-header,
+.site-main,
+.site-footer {
+	@extend .grid-c6;
+	@extend %clear; }
+	
+.site-main {
+	@extend .grid; }
+	
+.content-area {
+	@extend .grid-c4;
+	
+	.home & {
+		@extend .grid-c6; } }
+
+.sidebar,
+.widget-area {
+	@extend .grid-c2; }
+
+// Alignment
+// ---------------------------
+.alignleft {
+	float: left;
+	margin-right: em($line); }
+.alignright {
+	float: right;
+	margin-left: em($line); }
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 0 auto; }
+
+// Screenreaders
+// ---------------------------
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important; }
+
+.screen-reader-text {
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: #f1f1f1;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+		clip: auto !important;
+		color: #21759b;
+		display: block;
+		font-size: 14px;
+		font-weight: bold;
+		height: auto;
+		left: 5px;
+		line-height: normal;
+		padding: 15px 23px 14px;
+		text-decoration: none;
+		top: 5px;
+		width: auto;
+		z-index: 100000; } }
+
+// Posts
+// ---------------------------
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0; }
+
+.wp-caption {
+	margin-bottom: em($line);
+	max-width: 100%;
+	
+	.wp-caption-text {
+		margin: em($base-px) 0; }
+	
+	img[class*="wp-image-"] {
+		display: block;
+		margin: 1.2% auto 0;
+		max-width: 98%; } }
+		
+.wp-caption-text {
+	@extend .text-center; }
+	
+.site-content .gallery {
+	margin-bottom: em($line);
+
+	dd {
+		margin: 0; }
+		
+	a img {
+		border: none;
+		height: auto;
+		max-width: 90%; } }
+	
+//.gallery-caption {}
+//.site-content .gallery-columns-4 .gallery-item {}
+//.site-content .gallery-columns-4 .gallery-item img {}
+
+embed,
+iframe,
+object {
+	max-width: 100%; }
+
+// Widgets
+// ---------------------------
+.widget {
+	margin: 0 0 em($line); }
+	
+.widget_search .submit {
+	display: none; }
+
+// Comments
+// ---------------------------
+.comment-content a {
+	word-wrap: break-word; }
