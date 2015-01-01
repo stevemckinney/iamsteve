@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -173,16 +173,11 @@ class Channel_calendar extends Channel {
 		/**  {date format="%m %Y"}
 		/** ----------------------------------------*/
 
+		$dates = array();
+
 		// This variable is used in the heading of the calendar
 		// to show the month and year
-
-		if (preg_match_all("#".LD."date format=[\"|'](.+?)[\"|']".RD."#", ee()->TMPL->tagdata, $matches))
-		{
-			foreach ($matches['1'] as $match)
-			{
-				ee()->TMPL->tagdata = preg_replace("#".LD."date format=.+?".RD."#", ee()->localize->format_date($match, $date), ee()->TMPL->tagdata, 1);
-			}
-		}
+		$dates['date'] = $date;
 
 		/** ----------------------------------------
 		/**  {previous_date format="%m %Y"}
@@ -190,14 +185,7 @@ class Channel_calendar extends Channel {
 
 		// This variable is used in the heading of the calendar
 		// to show the month and year
-
-		if (preg_match_all("#".LD."previous_date format=[\"|'](.+?)[\"|']".RD."#", ee()->TMPL->tagdata, $matches))
-		{
-			foreach ($matches['1'] as $match)
-			{
-				ee()->TMPL->tagdata = preg_replace("#".LD."previous_date format=.+?".RD."#", ee()->localize->format_date($match, $previous_date), ee()->TMPL->tagdata, 1);
-			}
-		}
+		$dates['previous_date'] = $previous_date;
 
 		/** ----------------------------------------
 		/**  {next_date format="%m %Y"}
@@ -205,15 +193,9 @@ class Channel_calendar extends Channel {
 
 		// This variable is used in the heading of the calendar
 		// to show the month and year
+		$dates['next_date'] = $next_date;
 
-		if (preg_match_all("#".LD."next_date format=[\"|'](.+?)[\"|']".RD."#", ee()->TMPL->tagdata, $matches))
-		{
-			foreach ($matches['1'] as $match)
-			{
-				ee()->TMPL->tagdata = preg_replace("#".LD."next_date format=.+?".RD."#", ee()->localize->format_date($match, $next_date), ee()->TMPL->tagdata, 1);
-			}
-		}
-
+		ee()->TMPL->tagdata = ee()->TMPL->parse_date_variables(ee()->TMPL->tagdata, $dates);
 
 		/** ----------------------------------------
 		/**  Day Heading
@@ -306,16 +288,6 @@ class Channel_calendar extends Channel {
 
 			//  Fetch all the entry_date variable
 
-			if (preg_match_all("/".LD."entry_date\s+format=[\"'](.*?)[\"']".RD."/s", $row_chunk, $matches))
-			{
-				for ($j = 0; $j < count($matches['0']); $j++)
-				{
-					$matches['0'][$j] = str_replace(array(LD,RD), '', $matches['0'][$j]);
-
-					$entry_dates[$matches['0'][$j]] = $matches['1'][$j];
-				}
-			}
-
 			if (preg_match("/".LD."row_start".RD."(.*?)".LD.'\/'."row_start".RD."/s", $row_chunk, $match))
 			{
 				$row_start = trim($match['1']);
@@ -346,7 +318,7 @@ class Channel_calendar extends Channel {
 					$if_entries = trim($val['2']);
 
 					$row_chunk = str_replace ($val['1'], $if_entries_m, $row_chunk);
-					
+
 					unset(ee()->TMPL->var_cond[$key]);
 				}
 
@@ -413,6 +385,12 @@ class Channel_calendar extends Channel {
 
 		$this->initialize();
 
+		// Fetch custom channel fields if we have search fields
+		if ( ! empty(ee()->TMPL->search_fields))
+		{
+			$this->fetch_custom_channel_fields();
+		}
+
 		$this->build_sql_query('/'.$year.'/'.$month.'/');
 
 		if ($this->sql != '')
@@ -422,7 +400,7 @@ class Channel_calendar extends Channel {
 			$data = array();
 
 			if ($query->num_rows() > 0)
-			{  
+			{
 				// We'll need this later
 
 				ee()->load->library('typography');
@@ -466,14 +444,7 @@ class Channel_calendar extends Channel {
 
 					foreach (ee()->TMPL->var_single as $key => $val)
 					{
-						if (isset($entry_dates[$key]))
-						{
-							$entry_date[$key] = ee()->localize->format_date(
-								$entry_date[$key], 
-								$row['entry_date']
-							);
-						}
-
+						$entry_date[$key] = $row['entry_date'];
 
 						/** ----------------------------------------
 						/**  parse permalink
@@ -556,7 +527,7 @@ class Channel_calendar extends Channel {
 						}
 
 						/** ----------------------------------------
-						/**  parse comment_path 
+						/**  parse comment_path
 						/** ----------------------------------------*/
 
 						if (strncmp($key, 'comment_path', 12) == 0 OR strncmp($key, 'entry_id_path', 13) == 0)
@@ -600,12 +571,12 @@ class Channel_calendar extends Channel {
 					/** ----------------------------------------*/
 
 					$d = ee()->localize->format_date('%d', $row['entry_date']);
-					
+
 					if (substr($d, 0, 1) == '0')
 					{
 						$d = substr($d, 1);
 					}
-					
+
 					$data[$d][] = array(
 						ee()->typography->parse_type($row['title'], array('text_format' => 'lite', 'html_format' => 'none', 'auto_links' => 'n', 'allow_img_url' => 'no')),
 						$row['url_title'],
@@ -645,7 +616,7 @@ class Channel_calendar extends Channel {
 			for ($i = 0; $i < 7; $i++)
 			{
 				if ($day > 0 AND $day <= $total_days)
-				{ 
+				{
 					if ($if_entries != '' AND isset($data[$day]))
 					{
 						$out .= str_replace($if_entries_m, $this->var_replace($if_entries, $data[$day], $entries), $row_chunk);
@@ -678,7 +649,7 @@ class Channel_calendar extends Channel {
 
 					$out = str_replace(LD.'day_number'.RD, ($day <= 0) ? sprintf($day_num_fmt, $prev_total_days + $day) : sprintf($day_num_fmt, $day - $total_days), $out);
 				}
-					  
+
 				$day++;
 			}
 
@@ -697,7 +668,7 @@ class Channel_calendar extends Channel {
 			'',
 			$out
 		);
-		
+
 		return str_replace ($row_chunk_m, $out, ee()->TMPL->tagdata);
 	}
 
@@ -731,9 +702,9 @@ class Channel_calendar extends Channel {
 									$str);
 
 				// Entry Date
-				foreach ($val['2'] as $k => $v)
+				foreach ($val['2'] as $date)
 				{
-					$str = str_replace(LD.$k.RD, $v, $str);
+					$str = ee()->TMPL->parse_date_variables($str, array('entry_date' => $date));
 				}
 
 				// Permalink
@@ -765,7 +736,7 @@ class Channel_calendar extends Channel {
 				{
 					$str = str_replace(LD.$k.RD, $v, $str);
 				}
-				
+
 				// Day path
 				foreach ($val['9'] as $k => $v)
 				{

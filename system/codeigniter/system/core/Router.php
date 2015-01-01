@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -208,9 +208,10 @@ class CI_Router {
 	 *
 	 * @access	private
 	 * @param	array
+	 * @param	boolean		$show_404	Set to FALSE to bypass the override
 	 * @return	array
 	 */
-	function _validate_request($segments)
+	function _validate_request($segments, $override = TRUE)
 	{
 		if (count($segments) == 0)
 		{
@@ -266,14 +267,14 @@ class CI_Router {
 			return $segments;
 		}
 
-
 		// If we've gotten this far it means that the URI does not correlate to a valid
 		// controller class.  We will now see if there is an override
-		if (isset($this->routes['404_override']) AND $this->routes['404_override'] != '')
+		if ($override === TRUE && isset($this->routes['404_override']) && $this->routes['404_override'] != '')
 		{
 			if (strpos($this->routes['404_override'], '/') !== FALSE)
 			{
-				$x = explode('/', $this->routes['404_override']);
+				$x = $this->_validate_request(explode('/', $this->routes['404_override']), FALSE);
+				$x[1] = (empty($x[1])) ? 'index' : $x[1];
 
 				$this->set_class($x[0]);
 				$this->set_method($x[1]);

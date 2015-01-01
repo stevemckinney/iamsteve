@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.6
@@ -91,6 +91,10 @@ class EE_Channel_preparser {
 		$this->pairs	= $this->_extract_prefixed(ee()->TMPL->var_pair);
 		$this->singles	= $this->_extract_prefixed(ee()->TMPL->var_single);
 
+		// Get subscriber totals and modified conditionals
+		$this->subscriber_totals	 = $this->_subscriber_totals();
+		$this->modified_conditionals = $this->_find_modified_conditionals();
+
 		// Run through component pre_processing steps, skipping any that
 		// were specified as being disabled.
 
@@ -111,10 +115,6 @@ class EE_Channel_preparser {
 			}
 
 		}
-
-		// Some more pre-processing work.
-		$this->subscriber_totals	 = $this->_subscriber_totals();
-		$this->modified_conditionals = $this->_find_modified_conditionals();
 	}
 
 	// --------------------------------------------------------------------
@@ -180,11 +180,26 @@ class EE_Channel_preparser {
 	 *
 	 * Returns the data of the preprocessing step of a given component.
 	 *
-	 * @return mixed	Single tag preprocessing results
+	 * @return mixed	Once tag preprocessing results
 	 */
 	public function once_data($obj)
 	{
 		return $this->_once_data[spl_object_hash($obj)];
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Single tag data setter
+	 *
+	 * Sets the data passed to the replace method of a given component.
+	 *
+	 * @return EE_Channel_parser_component	Component object to set data for
+	 * @return mixed	Data to set for component
+	 */
+	public function set_once_data($obj, $data)
+	{
+		return $this->_once_data[spl_object_hash($obj)] = $data;
 	}
 
 	// --------------------------------------------------------------------
@@ -359,6 +374,7 @@ class EE_Channel_preparser {
 	public function _find_modified_conditionals()
 	{
 		$prefix = $this->_prefix;
+		$unfiltered_all_field_names = array();
 		$all_field_names = array();
 
 		if (strpos($this->_tagdata, LD.'if') === FALSE)
@@ -368,8 +384,18 @@ class EE_Channel_preparser {
 
 		foreach($this->_channel->cfields as $site_id => $fields)
 		{
-			$all_field_names = array_unique(array_merge($all_field_names, $fields));
+			$unfiltered_all_field_names = array_unique(array_merge($all_field_names, $fields));
 		}
+		
+		// Do a rough cut to slim down the number of fields
+		// else the string can be too long for the preg_match_all
+		foreach ($unfiltered_all_field_names as $name)
+		{
+			if (strpos($this->_tagdata, $name) !== FALSE)
+			{
+				$all_field_names[] = $name;
+			}
+		}		
 
 		$modified_field_options = $prefix.implode('|'.$prefix, array_keys($all_field_names));
 		$modified_conditionals = array();

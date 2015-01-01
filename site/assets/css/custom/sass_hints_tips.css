@@ -1,1 +1,187 @@
-.hidden{display:none}@-webkit-keyframes bg{100%{background-position:center bottom}}@-moz-keyframes bg{100%{background-position:center bottom}}@-ms-keyframes bg{100%{background-position:center bottom}}@-o-keyframes bg{100%{background-position:center bottom}}@keyframes bg{100%{background-position:center bottom}}@-webkit-keyframes title{80%{top:-5px}90%{top:5px}100%{top:0}}@-moz-keyframes title{80%{top:-5px}90%{top:5px}100%{top:0}}@-ms-keyframes title{80%{top:-5px}90%{top:5px}100%{top:0}}@-o-keyframes title{80%{top:-5px}90%{top:5px}100%{top:0}}@keyframes title{80%{top:-5px}90%{top:5px}100%{top:0}}@-webkit-keyframes nav{80%{opacity:0.5;right:auto}90%{opacity:0.65;right:auto}100%{opacity:1;right:auto}}@-moz-keyframes nav{80%{opacity:0.5;right:auto}90%{opacity:0.65;right:auto}100%{opacity:1;right:auto}}@-ms-keyframes nav{80%{opacity:0.5;right:auto}90%{opacity:0.65;right:auto}100%{opacity:1;right:auto}}@-o-keyframes nav{80%{opacity:0.5;right:auto}90%{opacity:0.65;right:auto}100%{opacity:1;right:auto}}@keyframes nav{80%{opacity:0.5;right:auto}90%{opacity:0.65;right:auto}100%{opacity:1;right:auto}}.container{text-align:center}.title{-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;padding:6px 24px;padding: 0.375rem 1.5rem;margin:60px 0;margin: 3.75rem 0;color:#fff;background:#ce4dd6;display:inline-block;width:auto;max-width:none;text-shadow:0 -1px 2px #57155b}.cssmask .title{-webkit-mask:none}
+/* 5px / 16px = .3125em */
+/* 480px / 16px */
+/* 600px / 16px */
+/* 768px / 16px */
+/* 900px / 16px */
+/* 960px / 16px */
+/* 1200px / 16px */
+/* line 25, ../../sass/import/_helpers.scss */
+.hidden {
+  display: none;
+}
+
+@-webkit-keyframes $name {
+  100% {
+    background-position: center bottom;
+  }
+}
+@-moz-keyframes $name {
+  100% {
+    background-position: center bottom;
+  }
+}
+@-ms-keyframes $name {
+  100% {
+    background-position: center bottom;
+  }
+}
+@-o-keyframes $name {
+  100% {
+    background-position: center bottom;
+  }
+}
+@keyframes $name {
+  100% {
+    background-position: center bottom;
+  }
+}
+@-webkit-keyframes $name {
+  80% {
+    top: -5px;
+  }
+  90% {
+    top: 5px;
+  }
+  100% {
+    top: 0;
+  }
+}
+@-moz-keyframes $name {
+  80% {
+    top: -5px;
+  }
+  90% {
+    top: 5px;
+  }
+  100% {
+    top: 0;
+  }
+}
+@-ms-keyframes $name {
+  80% {
+    top: -5px;
+  }
+  90% {
+    top: 5px;
+  }
+  100% {
+    top: 0;
+  }
+}
+@-o-keyframes $name {
+  80% {
+    top: -5px;
+  }
+  90% {
+    top: 5px;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes $name {
+  80% {
+    top: -5px;
+  }
+  90% {
+    top: 5px;
+  }
+  100% {
+    top: 0;
+  }
+}
+@-webkit-keyframes $name {
+  80% {
+    opacity: 0.5;
+    right: auto;
+  }
+  90% {
+    opacity: 0.65;
+    right: auto;
+  }
+  100% {
+    opacity: 1;
+    right: auto;
+  }
+}
+@-moz-keyframes $name {
+  80% {
+    opacity: 0.5;
+    right: auto;
+  }
+  90% {
+    opacity: 0.65;
+    right: auto;
+  }
+  100% {
+    opacity: 1;
+    right: auto;
+  }
+}
+@-ms-keyframes $name {
+  80% {
+    opacity: 0.5;
+    right: auto;
+  }
+  90% {
+    opacity: 0.65;
+    right: auto;
+  }
+  100% {
+    opacity: 1;
+    right: auto;
+  }
+}
+@-o-keyframes $name {
+  80% {
+    opacity: 0.5;
+    right: auto;
+  }
+  90% {
+    opacity: 0.65;
+    right: auto;
+  }
+  100% {
+    opacity: 1;
+    right: auto;
+  }
+}
+@keyframes $name {
+  80% {
+    opacity: 0.5;
+    right: auto;
+  }
+  90% {
+    opacity: 0.65;
+    right: auto;
+  }
+  100% {
+    opacity: 1;
+    right: auto;
+  }
+}
+/* line 3, ../../sass/custom/sass_hints_tips.scss */
+.container {
+  text-align: center;
+}
+
+/* line 5, ../../sass/custom/sass_hints_tips.scss */
+.title {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  padding: 6px 24px;
+  padding:  0.375rem 1.5rem;
+  margin: 60px 0;
+  margin:  3.75rem 0;
+  color: #fff;
+  background: #ce4dd6;
+  display: inline-block;
+  width: auto;
+  max-width: none;
+  text-shadow: 0 -1px 2px #57155b;
+}
+/* line 15, ../../sass/custom/sass_hints_tips.scss */
+.cssmask .title {
+  -webkit-mask: none;
+}

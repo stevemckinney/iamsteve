@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -56,7 +56,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 
 	// whether SET NAMES must be used to set the character set
 	var $use_set_names;
-	
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -311,6 +311,13 @@ class CI_DB_mysqli_driver extends CI_DB {
 			return $str;
 		}
 
+
+		// If we need to escape a string before the connection is made
+		if ( ! $this->conn_id)
+		{
+			$this->initialize();
+		}
+
 		if (function_exists('mysqli_real_escape_string') AND is_object($this->conn_id))
 		{
 			$str = mysqli_real_escape_string($this->conn_id, $str);
@@ -554,6 +561,25 @@ class CI_DB_mysqli_driver extends CI_DB {
 
 	// --------------------------------------------------------------------
 
+
+	/**
+	 * Replace statement
+	 *
+	 * Generates a platform-specific replace string from the supplied data
+	 *
+	 * @access	public
+	 * @param	string	the table name
+	 * @param	array	the insert keys
+	 * @param	array	the insert values
+	 * @return	string
+	 */
+	function _replace($table, $keys, $values)
+	{
+		return "REPLACE INTO ".$table." (".implode(', ', $keys).") VALUES (".implode(', ', $values).")";
+	}
+
+	// --------------------------------------------------------------------
+
 	/**
 	 * Insert_batch statement
 	 *
@@ -569,7 +595,7 @@ class CI_DB_mysqli_driver extends CI_DB {
 	{
 		return "INSERT INTO ".$table." (".implode(', ', $keys).") VALUES ".implode(', ', $values);
 	}
-	
+
 	// --------------------------------------------------------------------
 
 	/**

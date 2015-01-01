@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.6
@@ -158,10 +158,10 @@ class Relationships_ft_cp {
 		ee()->db->select('member_id, group_id, username, screen_name');
 		ee()->db->where('in_authorlist', 'y');
 
-        if (count($groups))
-        {
-            ee()->db->or_where_in('group_id', $group_ids);
-        }
+		if (count($groups))
+		{
+			ee()->db->or_where_in('group_id', $group_ids);
+		}
 
 		ee()->db->order_by('screen_name, username', 'ASC');
 		$members = ee()->db->get('members')->result();

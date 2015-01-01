@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -144,7 +144,7 @@ class File_ft extends EE_Fieldtype {
 					});
 
 					container.find(".remove_file").click(function() {
-						container.find("input[type=hidden]").val(function(i, current_value) {
+						container.find("input[type=hidden][name*='hidden']").val(function(i, current_value) {
 							last_value[i] = current_value;
 							return '';
 						});
@@ -169,7 +169,7 @@ class File_ft extends EE_Fieldtype {
 					});
 				}
 				// most of them
-				$('.file_field').each(function() {
+				$('.file_field').not('.grid_field .file_field').each(function() {
 					setupFileField($(this));
 				});
 
@@ -299,64 +299,11 @@ CSS;
 		{
 			$tagdata = ee()->functions->prep_conditionals($tagdata, $file_info);
 
-			// -----------------------------
-			// Any date variables to format?
-			// -----------------------------
-			$upload_date		= array();
-			$modified_date		= array();
-
-			$date_vars = array('upload_date', 'modified_date');
-
-			foreach ($date_vars as $val)
-			{
-				if (preg_match_all("/".LD.$val."\s+format=[\"'](.*?)[\"']".RD."/s", ee()->TMPL->tagdata, $matches))
-				{
-					for ($j = 0; $j < count($matches['0']); $j++)
-					{
-						$matches['0'][$j] = str_replace(LD, '', $matches['0'][$j]);
-						$matches['0'][$j] = str_replace(RD, '', $matches['0'][$j]);
-
-						switch ($val)
-						{
-							case 'upload_date':
-								$upload_date[$matches['0'][$j]] = $matches['1'][$j];
-								break;
-							case 'modified_date':
-								$modified_date[$matches['0'][$j]] = $matches['1'][$j];
-								break;
-						}
-					}
-				}
-			}
-
-			foreach (ee()->TMPL->var_single as $key => $val)
-			{
-				// Format {upload_date}
-				if (isset($upload_date[$key]))
-				{
-					$tagdata = ee()->TMPL->swap_var_single(
-						$key,
-						ee()->localize->format_date(
-							$upload_date[$key],
-							$file_info['upload_date']
-						),
-						$tagdata
-					);
-				}
-
-				// Format {modified_date}
-				if (isset($modified_date[$key]))
-				{
-					$tagdata = ee()->TMPL->swap_var_single(
-						$key,
-						ee()->localize->format_date(
-							$modified_date[$key],
-							$file_info['modified_date']
-						),
-						$tagdata
-					);
-				}
-			}
+			$date_vars = array(
+				'upload_date' => $file_info['upload_date'],
+				'modified_date' => $file_info['modified_date']
+			);
+			$tagdata = ee()->TMPL->parse_date_variables($tagdata, $date_vars);
 
 			// ---------------
 			// Parse the rest!
@@ -493,7 +440,7 @@ CSS;
 		);
 
 		$this->_row(
-			lang('file_ft_allowed_dirs', $prefix.'field_allowed_dirs'),
+			lang('file_ft_allowed_dirs', $prefix.'field_allowed_dirs').form_error('file_allowed_directories'),
 			form_dropdown('file_allowed_directories', $this->_allowed_directories_options(), $allowed_directories, 'id="'.$prefix.'field_allowed_dirs"')
 		);
 
@@ -641,7 +588,7 @@ JSC;
 		ee()->form_validation->set_rules(
 			'file_allowed_directories',
 			'lang:allowed_dirs_file',
-			'required|callback__check_directories'
+			'required|callback__validate_file_settings'
 		);
 	}
 
@@ -659,7 +606,10 @@ JSC;
 		if ( ! $this->_check_directories())
 		{
 			ee()->lang->loadfile('filemanager');
-			return lang('please_add_upload');
+			return sprintf(
+				lang('no_upload_directories'),
+				BASE.AMP.'C=content_files'.AMP.'M=file_upload_preferences'
+			);
 		}
 
 		return TRUE;
@@ -693,7 +643,13 @@ JSC;
 		if ( ! $this->_check_directories())
 		{
 			ee()->lang->loadfile('filemanager');
-			ee()->form_validation->set_message('_check_directories', lang('please_add_upload'));
+			ee()->form_validation->set_message(
+				'_validate_file_settings',
+				sprintf(
+					lang('no_upload_directories'),
+					BASE.AMP.'C=content_files'.AMP.'M=file_upload_preferences'
+				)
+			);
 			return FALSE;
 		}
 

@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -33,7 +33,25 @@ class Newrelic {
 	 */
 	public function set_appname()
 	{
-		newrelic_set_appname(APP_NAME.' v'.APP_VER);
+		$appname = (string) ee()->config->item('newrelic_app_name');
+
+		// -------------------------------------------
+		//	Hidden Configuration Variable
+		//	- newrelic_app_name => Change application name that appears in
+		//	  the New Relic dashboard
+		// -------------------------------------------*/
+		if ( ! empty($appname))
+		{
+			$appname .= ' - ';
+		}
+
+		// -------------------------------------------
+		//	Hidden Configuration Variable
+		//	- newrelic_include_version_number => Whether or not to include the version
+		//    number with the application name
+		// -------------------------------------------*/
+		$version = (ee()->config->item('newrelic_include_version_number') == 'y') ? ' v'.APP_VER : '';
+		newrelic_set_appname($appname.APP_NAME.$version);
 	}
 
 	// --------------------------------------------------------------------
@@ -51,6 +69,13 @@ class Newrelic {
 		if (ee()->uri->segment(2) !== FALSE)
 		{
 			$transaction_name .= '/'.ee()->uri->segment(2);
+		}
+
+		// Append site label if MSM is enabled to easily differentiate
+		// between similar requests
+		if (ee()->config->item('multiple_sites_enabled') == 'y')
+		{
+			$transaction_name .= ' - ' . ee()->config->item('site_label');
 		}
 
 		newrelic_name_transaction($transaction_name);

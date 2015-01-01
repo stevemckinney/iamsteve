@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.4
@@ -122,10 +122,12 @@ class File_field {
 		));
 
 		$vars['allowed_file_dirs'] = $allowed_file_dirs;
+		$vars['directory'] = form_hidden($field_name.'_directory', $vars['upload_location_id']);
 		$vars['dropdown'] = form_dropdown($field_name.'_directory', $upload_dirs, $vars['upload_location_id']);
 
 		// Check to see if they have access to any directories to create an upload link
-		$vars['upload_link'] = (count($upload_dirs) > 0) ? '<a href="#" class="choose_file'.($vars['filename'] ? ' js_hide' : '').'" data-directory="'.$specified_directory.'">'.lang('add_file').'</a>' : lang('directory_no_access');
+		// Note- the count is at least one because first select option is Directory
+		$vars['upload_link'] = (count($upload_dirs) > 1) ? '<a href="#" class="choose_file'.($vars['filename'] ? ' js_hide' : '').'" data-directory="'.$specified_directory.'">'.lang('add_file').'</a>' : lang('directory_no_access');
 		$vars['undo_link'] = '<a href="#" class="undo_remove js_hide">'.lang('file_undo_remove').'</a>';
 
 		// If we have a file, show the thumbnail, filename and remove link
@@ -268,8 +270,17 @@ class File_field {
 			$allowed_dirs[] = $row['id'];
 		}
 
+
 		// Upload or maybe just a path in the hidden field?
-		if (isset($_FILES[$field_name]) && $_FILES[$field_name]['size'] > 0 AND in_array($filedir, $allowed_dirs))
+		if ($existing_input)
+		{
+			$filename = $existing_input;
+		}
+		elseif ($hidden_input)
+		{
+			$filename = $hidden_input;
+		}
+		elseif (isset($_FILES[$field_name]) && ( ! empty($_FILES[$field_name]['name'])) && in_array($filedir, $allowed_dirs))
 		{
 			ee()->load->library('filemanager');
 			$data = ee()->filemanager->upload_file($filedir, $field_name);
@@ -283,13 +294,16 @@ class File_field {
 				$filename = $data['file_name'];
 			}
 		}
-		elseif ($existing_input)
+		else
 		{
-			$filename = $existing_input;
-		}
-		elseif ($hidden_input)
-		{
-			$filename = $hidden_input;
+			// Check we're not exceeding PHP's post_max_size
+			ee()->load->library('filemanager');
+
+			if ( ! ee()->filemanager->validate_post_data())
+			{
+				ee()->lang->load('upload');
+				return array('value' => '', 'error' => lang('upload_file_exceeds_limit'));
+			}
 		}
 
 		// If the current file directory is not one the user has access to
@@ -608,47 +622,33 @@ class File_field {
 	 *
 	 * @access	public
 	 * @param	string $data The string to parse {filedir_n} in
+	 * @param   bool   $parse_encoded  Set to TRUE to parse encoded (e.g. &123;)
+	 *                                 tags
 	 * @return	string The original string with all {filedir_n}'s parsed
 	 */
-	public function parse_string($data)
+	public function parse_string($data, $parse_encoded = FALSE)
 	{
+		$pattern = ($parse_encoded)
+			? '/(?:{|&#123;)filedir_(\d+)(?:}|&#125;)/'
+			: '/{filedir_(\d+)}/';
+
 		// Find each instance of {filedir_n}
-		if (preg_match_all('/{filedir_(\d+)}/', $data, $matches, PREG_SET_ORDER))
+		if (preg_match_all($pattern, $data, $matches, PREG_SET_ORDER))
 		{
-			$file_dirs = $this->_file_dirs();
+			ee()->load->model('file_upload_preferences_model');
+			$file_dirs = ee()->file_upload_preferences_model->get_paths();
 
 			// Replace each match
 			foreach ($matches as $match)
 			{
 				if (isset($file_dirs[$match[1]]))
 				{
-					$data = str_replace('{filedir_'.$match[1].'}', $file_dirs[$match[1]], $data);
+					$data = str_replace($match[0], $file_dirs[$match[1]], $data);
 				}
 			}
 		}
 
 		return $data;
-	}
-
-	// ------------------------------------------------------------------------
-
-	/**
-	 * Get the file directory data and keep it stored in the cache
-	 *
-	 * @return array Array of file directories
-	 */
-	private function _file_dirs()
-	{
-		if ( ! ee()->session->cache(__CLASS__, 'file_dirs'))
-		{
-			ee()->session->set_cache(
-				__CLASS__,
-				'file_dirs',
-				ee()->functions->fetch_file_paths()
-			);
-		}
-
-		return ee()->session->cache(__CLASS__, 'file_dirs');
 	}
 
 	// ------------------------------------------------------------------------

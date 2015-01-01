@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -67,6 +67,16 @@
 		@set_magic_quotes_runtime(0); // Kill magic quotes
 	}
 
+
+/*
+ * ------------------------------------------------------
+ *  Load the autoloader and register it
+ * ------------------------------------------------------
+ */
+	require(APPPATH.'../EllisLab/ExpressionEngine/Core/Autoloader.php');
+
+	Autoloader::getInstance()->register();
+
 /*
  * ------------------------------------------------------
  *  Set the subclass_prefix
@@ -87,7 +97,7 @@
 	{
 		get_config(array('subclass_prefix' => $assign_to_config['subclass_prefix']));
 	}
-	
+
 /*
  * ------------------------------------------------------
  *  Set a liberal script execution time limit

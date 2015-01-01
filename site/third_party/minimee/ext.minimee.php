@@ -76,8 +76,6 @@ class Minimee_ext {
 
 		// grab instance of our config object
 		$this->config = Minimee_helper::config();
-		
-		Minimee_helper::log('Extension has been instantiated.', 3);
 	}
 	// ------------------------------------------------------
 
@@ -92,7 +90,8 @@ class Minimee_ext {
 		// reset our runtime to 'factory' defaults, and return as array
 		$settings = $this->config->factory()->to_array();
 	
-		$data = array(
+		// template_post_parse hook
+		$this->EE->db->insert('extensions', array(
 			'class'		=> __CLASS__,
 			'hook'		=> 'template_post_parse',
 			'method'	=> 'template_post_parse',
@@ -100,9 +99,18 @@ class Minimee_ext {
 			'priority'	=> 10,
 			'version'	=> $this->version,
 			'enabled'	=> 'y'
-		);
-		
-		$this->EE->db->insert('extensions', $data);
+		));
+
+		// EE Debug Toolbar hook
+		$this->EE->db->insert('extensions', array(
+			'class'		=> __CLASS__,
+			'hook'		=> 'ee_debug_toolbar_add_panel',
+			'method'	=> 'ee_debug_toolbar_add_panel',
+			'settings'	=> serialize($settings),
+			'priority'	=> 10,
+			'version'	=> $this->version,
+			'enabled'	=> 'y'
+		));
 
 		Minimee_helper::log('Extension has been activated.', 3);
 	}
@@ -120,6 +128,37 @@ class Minimee_ext {
 		$this->EE->db->delete('extensions');
 
 		Minimee_helper::log('Extension has been disabled.', 3);
+	}
+	// ------------------------------------------------------
+
+
+	/**
+	 * Method for template_post_parse hook
+	 *
+	 * @param 	array	Array of debug panels
+	 * @param 	arrat	A collection of toolbar settings and values
+	 * @return 	array	The amended array of debug panels
+	 */
+	public function ee_debug_toolbar_add_panel($panels, $view)
+	{
+		// do nothing if not a page
+		if(REQ != 'PAGE') return $panels;
+
+		// play nice with others
+		$panels = ($this->EE->extensions->last_call != '' ? $this->EE->extensions->last_call : $panels);
+	
+		$panels['minimee'] = new Eedt_panel_model();
+		$panels['minimee']->set_name('minimee');
+		$panels['minimee']->set_button_label("Minimee");
+		$panels['minimee']->set_button_icon("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NjQxMzVDNTBGRDdCMTFFMzhDQzk5MzI3QzQ4QkE1NDUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NjQxMzVDNTFGRDdCMTFFMzhDQzk5MzI3QzQ4QkE1NDUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFQkM3RkNGNUZENzUxMUUzOENDOTkzMjdDNDhCQTU0NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFQkM3RkNGNkZENzUxMUUzOENDOTkzMjdDNDhCQTU0NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PpUOrpsAAAAQSURBVHjaYvj//z8DQIABAAj8Av7bok0WAAAAAElFTkSuQmCC");
+		$panels['minimee']->set_panel_contents($this->EE->load->view('eedebug_panel', array('logs' => Minimee_helper::get_log()), TRUE));
+
+		if(Minimee_helper::log_has_error())
+		{
+			$panels['minimee']->set_panel_css_class('flash');
+		}
+
+		return $panels;
 	}
 	// ------------------------------------------------------
 
@@ -165,11 +204,9 @@ class Minimee_ext {
 				include_once PATH_THIRD . 'minimee/pi.minimee.php';
 			}
 
+			// create a new instance of Minimee each time to guarantee defaults
 			$m = new Minimee();
-			
-			// this tells Minimee that we are calling it from hook
-			$m->calling_from_hook = TRUE;
-			
+
 			// save our TMPL values to put back into place once finished
 			$tagparams = $this->EE->TMPL->tagparams;
 
@@ -177,10 +214,17 @@ class Minimee_ext {
 			foreach($this->cache['template_post_parse'] as $needle => $tag)
 			{
 				Minimee_helper::log('Calling Minimee::display("' . $tag['method'] . '") during template_post_parse: ' . serialize($tag['tagparams']), 3);
-
+				
 				$this->EE->TMPL->tagparams = $tag['tagparams'];
-				$out = $m->display($tag['method']);
+
+				// our second parameter tells Minimee we are calling from template_post_parse
+				$out = $m->display($tag['method'], TRUE);
+
+				// replace our needle with output
 				$template = str_replace(LD.$needle.RD, $out, $template);
+
+				// reset Minimee for next loop
+				$m->reset();
 			}
 			
 			// put things back into place
@@ -300,11 +344,29 @@ class Minimee_ext {
 		// Merge the contents of our db with the allowed
 		$current = array_merge($this->config->get_allowed(), $current);
 
+		// Used to determine if any advanced settings have been changed
+		$clean = $this->config->sanitise_settings($this->config->get_allowed());
+		$basic = array('disable', 'cache_path', 'cache_url', 'combine_css', 'combine_js', 'minify_css', 'minify_js', 'minify_html');
+
+		// remove basic settings
+		$diff = array_diff(array_keys($clean), $basic);
+		$hide_advanced_on_startup = 'TRUE';
+
+		foreach($diff as $key)
+		{
+			if($clean[$key] != $current[$key])
+			{
+				$hide_advanced_on_startup = FALSE;
+				break;
+			}
+		}
+
 		// view vars		
 		$vars = array(
 			'config_warning' => ($this->config->location != 'db') ? lang('config_location_warning') : '',
 			'form_open' => form_open('C=addons_extensions'.AMP.'M=save_extension_settings'.AMP.'file=minimee'),
 			'settings' => $current,
+			'hide_advanced_on_startup' => $hide_advanced_on_startup,
 			'flashdata_success' => $this->EE->session->flashdata('message_success')
 			);
 
@@ -335,7 +397,7 @@ class Minimee_ext {
 		 * 
 		 * - refactor to use new Minimee_config object
 		 */
-		if ($current < '2.0.0')
+		if (version_compare($current, '2.0.0', '<'))
 		{
 			$query = $this->EE->db
 							->select('settings')
@@ -381,6 +443,47 @@ class Minimee_ext {
 			$query->free_result();			
 
 			Minimee_helper::log('Upgraded to 2.0.0', 3);
+		}
+
+		
+		/**
+		 * 2.1.8
+		 * 
+		 * - Include debug panel via EE Debug Toolbar
+		 */
+		if (version_compare($current, '2.1.8', '<'))
+		{
+			// grab a copy of our settings
+			$query = $this->EE->db
+							->select('settings')
+							->from('extensions')
+							->where('class', __CLASS__)
+							->limit(1)
+							->get();
+			
+			if ($query->num_rows() > 0)
+			{
+				$settings = $query->row()->settings;
+			}
+			else
+			{
+				$settings = serialize($this->config->factory()->to_array());
+			}
+			
+			// add extension hook
+			$this->EE->db->insert('extensions', array(
+				'class'		=> __CLASS__,
+				'hook'		=> 'ee_debug_toolbar_add_panel',
+				'method'	=> 'ee_debug_toolbar_add_panel',
+				'settings'	=> $settings,
+				'priority'	=> 10,
+				'version'	=> $this->version,
+				'enabled'	=> 'y'
+			));
+
+			$query->free_result();
+
+			Minimee_helper::log('Upgraded to 2.1.8', 3);
 		}
 
 		// update table row with version

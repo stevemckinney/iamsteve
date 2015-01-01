@@ -3,7 +3,7 @@
 $lang = array(
 
 /* no Javascript Warning */
-'no_js_warning'	=> 
+'no_js_warning'	=>
 'Javascript must be enabled in order for this theme to function properly.  Please check your browser settings.',
 
 
@@ -11,11 +11,11 @@ $lang = array(
 // Main Menu
 //----------------------------
 
-'nav_content'	   				=> 'Content',
-'nav_publish'	   				=> 'Publish',
+'nav_content'					=> 'Content',
+'nav_publish'					=> 'Publish',
 'nav_edit'						=> 'Edit',
 'nav_edit_all'					=> 'All Channels',
-'nav_files'	   					=> 'Files',
+'nav_files'						=> 'Files',
 	'nav_file_manager'				=> 'File Manager',
 	'nav_batch_upload'				=> 'Batch Upload',
 	'nav_sync_files'				=> 'Synchronize Files',
@@ -23,13 +23,13 @@ $lang = array(
 'nav_files_short_desc'			=> 'Upload, edit, and delete Files',
 'nav_edit_short_desc'			=> 'Edit Entries',
 
-'nav_design'	   				=> 'Design',
+'nav_design'					=> 'Design',
 	'nav_create_group'				=> 'Create Group',
 	'nav_create_template'			=> 'Create Template',
-	'nav_edit_template_group' 		=> 'Edit Template Group', 
+	'nav_edit_template_group' 		=> 'Edit Template Group',
 	'nav_edit_template_group_more'  => '...see more',
 'nav_templates'					=> 'Templates',
-	'nav_edit_templates'		 	=> 'Edit',
+	'nav_edit_templates'			=> 'Edit',
 	'nav_snippets'					=> 'Snippets',
 	'nav_snippets_short_desc'	=> 'Create, edit, and delete Snippets for your Templates',
 	'nav_sync_templates'			=> 'Synchronize Templates',
@@ -38,6 +38,8 @@ $lang = array(
 	'nav_global_variables_short_desc'	=> 'Create, edit, and delete User Defined Global Variables',
 	'nav_template_manager'			=> 'Template Manager',
 	'nav_template_manager_short_desc'	=> 'Create, edit, delete, and manage Templates and Template Groups',
+	'nav_template_route_manager'	=> 'Template Route Manager',
+	'nav_template_route_manager_short_desc'	=> 'Review, edit, and manage your Template Routes',
 	'nav_template_preferences'		=> 'Template Preferences',
 	'nav_template_preferences_short_desc'	=> 'Batch edit Template Preferences',
 	'nav_global_preferences'		=> 'Global Preferences',
@@ -57,19 +59,19 @@ $lang = array(
 	'nav_member_profile_templates'	=> 'Member Profile Templates',
 	'nav_member_profile_templates_short_desc'	=> 'Edit Member Profile Templates',
 
-'nav_addons'	   	   			=> 'Add-Ons',
-'nav_accessories'  	   			=> 'Accessories',
+'nav_addons'					=> 'Add-Ons',
+'nav_accessories'				=> 'Accessories',
 'nav_accessories_short_desc'	=> 'Manage Accessories and Accessory Permissions',
-'nav_extensions'   	   			=> 'Extensions',
+'nav_extensions'				=> 'Extensions',
 'nav_extensions_short_desc'	=> 'Manage Extensions',
-'nav_plugins'	   	   			=> 'Plugins',
+'nav_plugins'					=> 'Plugins',
 'nav_plugins_short_desc'	=> 'Install and Remove Plugins.  Review Plugin Usage Docs',
-'nav_modules'	   	   			=> 'Modules',
+'nav_modules'					=> 'Modules',
 'nav_modules_short_desc'	=> 'Manage Module Preferences',
 'nav_fieldtypes'				=> 'Fieldtypes',
 'nav_fieldtypes_short_desc'	=> 'Manage Fieldtypes and Fieldtypes Preferences.',
 
-'nav_members'	   	   			=> 'Members',
+'nav_members'					=> 'Members',
 'nav_view_all_members'			=> 'View All',
 'nav_view_all_members_short_desc'	=> 'View All Members',
 'nav_member_groups'				=> 'Member Groups',
@@ -88,7 +90,7 @@ $lang = array(
 'nav_member_config'				=> 'Preferences',
 'nav_member_config_short_desc'	=> 'Manage Membership Preferences ',
 
-'nav_admin'		   	   			=> 'Admin',
+'nav_admin'						=> 'Admin',
 
 'nav_channel_management'		=> 'Channel Administration',
 	'nav_channels'						=> 'Channels',
@@ -114,6 +116,8 @@ $lang = array(
 	'nav_default_html_buttons_short_desc'		=> 'Create, edit, and delete Default HTML Buttons',
 
 'nav_security_and_privacy'		=> 'Security and Privacy',
+
+'nav_software_registration'		=> 'Software Registration',
 
 'nav_admin_system'				=> 'System Administration',
 	'nav_general_configuration'			=> 'General Configuration',
@@ -145,10 +149,10 @@ $lang = array(
 	'nav_search_log_configuration'		=> 'Search Log Configuration',
 	'nav_search_log_configuration_short_desc'	=> 'Manage Search Log Configuration',
 
-'nav_tools'		   	   			=> 'Tools',
+'nav_tools'						=> 'Tools',
 'nav_tools_communicate'			=> 'Communicate',
 'nav_tools_communicate_short_desc'	=> 'Send Emails',
-'nav_tools_utilities'  			=> 'Utilities',
+'nav_tools_utilities'			=> 'Utilities',
 	'nav_translation_tool'			=> 'Translation Utility',
 	'nav_translation_tool_short_desc'	=> 'Translation Utility',
 	'nav_import_utilities'			=> 'Import Utilities',
@@ -158,7 +162,7 @@ $lang = array(
 	'nav_config_editor'				=> 'Config File Editor',
 	'nav_config_editor_short_desc'	=> 'Configuration File Editor',
 
-'nav_tools_data'	   			=> 'Data',
+'nav_tools_data'				=> 'Data',
 	'nav_sql_manager'				=> 'SQL Manager',
 	'nav_sql_manager_short_desc'	=> 'Database Management Utility',
 	'nav_clear_caching'				=> 'Clear Caching',
@@ -168,7 +172,7 @@ $lang = array(
 	'nav_recount_stats'				=> 'Recount Statistics',
 	'nav_recount_stats_short_desc'	=> 'Recount and Resync Statistics',
 
-'nav_tools_logs'	   			=> 'Logs',
+'nav_tools_logs'				=> 'Logs',
 	'nav_view_cp_log'				=> 'Control Panel Log',
 	'nav_view_cp_log_short_desc'	=> 'View and clear the Control Panel Log',
 	'nav_view_search_log'			=> 'Search Log',
@@ -180,7 +184,7 @@ $lang = array(
 	'nav_view_developer_log'		=> 'Developer Log',
 	'nav_view_developer_log_short_desc'	=> 'View and manage the Developer Log',
 
-'nav_help'			   			=> 'Help',
+'nav_help'						=> 'Help',
 'nav_overview'					=> 'Overview',
 
 'nav_add_tab'					=> '+ Add',
@@ -188,9 +192,6 @@ $lang = array(
 //----------------------------
 // Control Panel
 //----------------------------
-
-'session_expiring' =>
-'Your session has expired. Please log back in to avoid data loss.',
 
 'loading' =>
 'Loading',
@@ -210,55 +211,67 @@ $lang = array(
 'powered_by' =>
 'Powered By',
 
-'control_panel' => 
+'control_panel' =>
 'Control Panel',
 
-'main_menu' => 
+'main_menu' =>
 'CP Home',
 
-'username' => 
+'username' =>
 'Username',
 
-'password' => 
+'password' =>
 'Password',
 
 'logged_back_in'	=>
 'You are now logged back in!',
 
-'my_account' => 
+'my_account' =>
 'My Account',
 
-'myaccount' => 
+'myaccount' =>
 'My Account',
 
-'user_account' => 
+'user_account' =>
 'Member Account',
 
-'user_guide' => 
+'user_guide' =>
 'User Guide',
 
-'logout_confirm' =>
-'Are you sure you want to log-out?',
-
-'logout' => 
+'logout' =>
 'Log-out',
 
-'session_timeout' => 
-'Your session is about to expire due to inactivity',
+'session_idle' =>
+'Idle session detected',
 
-'login' => 
+'session_idle_description' =>
+'You\'ve gone idle, please enter your password to continue.',
+
+'session_idle_not_name' =>
+'Not %s?',
+
+'password_label' =>
+'Password:',
+
+'user_label' =>
+'User:',
+
+'user_avatar_alt' =>
+'User Avatar',
+
+'login' =>
 'Log-in',
 
-'copyright' => 
+'copyright' =>
 'Copyright',
 
-'rights_reserved' => 
+'rights_reserved' =>
 'All Rights Reserved',
 
-'page_rendered' => 
+'page_rendered' =>
 'Script executed in %x seconds',
 
-'queries_executed' => 
+'queries_executed' =>
 '%x SQL queries used',
 
 'build' =>
@@ -267,13 +280,13 @@ $lang = array(
 'forgot_password' =>
 'Forgot your password?',
 
-'e_no_css' => 
+'e_no_css' =>
 'The requested CSS file could not be opened.',
 
-'unauthorized' => 
+'unauthorized' =>
 'Unauthorized',
 
-'unauthorized_access' => 
+'unauthorized_access' =>
 'You are not authorized to access this page',
 
 'be_careful' =>
@@ -303,13 +316,13 @@ $lang = array(
 'required_fields' =>
 'Indicates required fields',
 
-'login' => 
+'login' =>
 'Login',
 
-'forgotten_password' => 
+'forgotten_password' =>
 'Forgotten password',
 
-'submit_email_address' => 
+'submit_email_address' =>
 'Submit your email address',
 
 'click_to_edit' =>
@@ -340,22 +353,22 @@ $lang = array(
 // Buttons
 //----------------------------
 
-'submit' => 
+'submit' =>
 'Submit',
 
-'preview' => 
+'preview' =>
 'Preview',
 
-'update' => 
+'update' =>
 'Update',
 
-'edit' => 
+'edit' =>
 'Edit',
 
-'delete' => 
+'delete' =>
 'Delete',
 
-'save_changes' => 
+'save_changes' =>
 'Save changes',
 
 'save' =>

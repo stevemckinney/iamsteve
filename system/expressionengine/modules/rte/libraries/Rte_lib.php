@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -157,9 +157,9 @@ class Rte_lib {
 		$toolset_id = ee()->input->get_post('toolset_id');
 
 		$toolset = array(
-			'name'		=> ee()->input->get_post('toolset_name'),
-			'tools' 	=> ee()->input->get_post('selected_tools'),
-			'member_id'	=> (ee()->input->get_post('private') == 'true' ? ee()->session->userdata('member_id') : 0)
+			'name'      => ee()->input->get_post('toolset_name'),
+			'tools'     => ee()->input->get_post('selected_tools'),
+			'member_id' => (ee()->input->get_post('private') == 'true' ? ee()->session->userdata('member_id') : 0)
 		);
 
 		// is this an individual’s private toolset?
@@ -170,6 +170,16 @@ class Rte_lib {
 		{
 			ee()->output->send_ajax_response(array(
 				'error' => lang('name_required')
+			));
+		}
+
+		// check name for XSS
+		if ($toolset['name'] != strip_tags($toolset['name'])
+			OR $toolset['name'] != htmlentities($toolset['name'])
+			OR $toolset['name'] != ee()->security->xss_clean($toolset['name']))
+		{
+			ee()->output->send_ajax_response(array(
+				'error' => lang('valid_name_required')
 			));
 		}
 
@@ -391,14 +401,17 @@ class Rte_lib {
 						buttons: '.json_encode($bits['buttons']).'
 					});
 
-				Grid.bind("rte", "display", function(cell)
+				if (typeof Grid === "object")
 				{
-					$("' . $selector . '", cell)
-						.addClass("WysiHat-field")
-						.wysihat({
-							buttons: '.json_encode($bits['buttons']).'
-						});
-				});
+					Grid.bind("rte", "display", function(cell)
+					{
+						$("' . $selector . '", cell)
+							.addClass("WysiHat-field")
+							.wysihat({
+								buttons: '.json_encode($bits['buttons']).'
+							});
+					});
+				}
 			}
 		})();';
 
@@ -450,15 +463,13 @@ class Rte_lib {
 		$data = preg_replace('/\n\n+/', "\n\n", $data);
 
 		// decode double encoded code chunks
-		if (preg_match_all("/\[code\](.+?)\[\/code\]/si", $data, $matches))
+		if (preg_match_all("#\[code\](.+?)\[/code\]#si", $data, $matches))
 		{
-			$i = 0;
-			foreach ($matches[1] as $chunk)
+			foreach ($matches[1] as $i => $chunk)
 			{
 				$chunk = trim($chunk);
 				$chunk = html_entity_decode($chunk, ENT_QUOTES, 'UTF-8');
 				$data = str_replace($matches[0][$i], '[code]'.$chunk.'[/code]', $data);
-				$i++;
 			}
 		}
 
@@ -505,6 +516,7 @@ class Rte_lib {
 		$code_chunks = array();
 
 		$data = trim($data);
+		$data = htmlspecialchars_decode($data, ENT_QUOTES);
 
 		// Collapse tags and undo any existing newline formatting. Typography
 		// will change it anyways and the rte will add its own. Having this here
@@ -521,9 +533,10 @@ class Rte_lib {
 		// remove code chunks
 		if (preg_match_all("/\[code\](.+?)\[\/code\]/si", $data, $matches))
 		{
+
 			foreach ($matches[1] as $i => $chunk)
 			{
-				$code_chunks[] = trim($chunk);
+				$code_chunks[$i] = trim($chunk);
 				$data = str_replace($matches[0][$i], $code_marker.$i, $data);
 			}
 		}
@@ -534,10 +547,11 @@ class Rte_lib {
 		{
 			$field['class']	= 'WysiHat-field';
 
-			foreach ($code_chunks as &$chunk)
+			foreach ($code_chunks as $i => $chunk)
 			{
 				$chunk = htmlentities($chunk, ENT_QUOTES, 'UTF-8');
 				$chunk = str_replace("\n", '<br>', $chunk);
+				$code_chunks[$i] = $chunk;
 			}
 
 			// xhtml vs br
@@ -568,8 +582,6 @@ class Rte_lib {
 
 			$data = str_replace($filedir, $d['url'], $data);
 		}
-
-		$data = htmlspecialchars_decode($data, ENT_QUOTES);
 
 		$field['value'] = $data;
 

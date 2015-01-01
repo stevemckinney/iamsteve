@@ -1,10 +1,13 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+use \Michelf\MarkdownExtra;
+
 /**
  * ExpressionEngine - by EllisLab
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -24,47 +27,52 @@
  */
 class EE_Typography extends CI_Typography {
 
-	var $single_line_pgfs			= TRUE;		// Whether to treat single lines as paragraphs in auto-xhtml
-	var $text_format				= 'xhtml';  // xhtml, markdown, br, none, or lite
-	var $html_format				= 'safe';	// safe, all, none
-	var $auto_links	 				= 'y';
-	var $allow_img_url  			= 'n';
-	var $parse_images				= TRUE;
-	var $allow_headings				= TRUE;
-	var $encode_email				= TRUE;
-	var $encode_type				= 'javascript'; // javascript or noscript
-	var $use_span_tags  			= TRUE;
-	var $popup_links				= FALSE;
-	var $bounce						= '';
-	var $smiley_array				= FALSE;
-	var $parse_smileys				= TRUE;
-	var $highlight_code				= TRUE;
-	var $convert_curly				= TRUE;		// Convert Curly Brackets Into Entities
-	var $emoticon_url				= '';
-	var $site_index					= '';
-	var $word_censor				= FALSE;
-	var $censored_words 			= array();
-	var $censored_replace			= '';
-	var $text_fmt_types				= array('xhtml', 'markdown', 'br', 'none', 'lite');
-	var $text_fmt_plugins			= array();
-	var $html_fmt_types				= array('safe', 'all', 'none');
-	var $yes_no_syntax				= array('y', 'n');
-	var $code_chunks				= array();
-	var $code_counter				= 0;
-	var $http_hidden 				= NULL; // hash to protect URLs in [url] BBCode
-	var $safe_img_src_end			= NULL; // hash to mark end of image URLs during sanitizing of image tags
+	public $single_line_pgfs = TRUE;		// Whether to treat single lines as paragraphs in auto-xhtml
+	public $text_format      = 'xhtml';  // xhtml, markdown, br, none, or lite
+	public $html_format      = 'safe';	// safe, all, none
+	public $auto_links       = 'y';
+	public $allow_img_url    = 'n';
+	public $separate_parser  = FALSE;
+	public $parse_images     = TRUE;
+	public $allow_headings   = TRUE;
+	public $encode_email     = TRUE;
+	public $encode_type      = 'javascript'; // javascript or noscript
+	public $use_span_tags    = TRUE;
+	public $popup_links      = FALSE;
+	public $bounce           = '';
+	public $smiley_array     = FALSE;
+	public $parse_smileys    = TRUE;
+	public $highlight_code   = TRUE;
+	public $convert_curly    = TRUE;		// Convert Curly Brackets Into Entities
+	public $emoticon_url     = '';
+	public $site_index       = '';
+	public $word_censor      = FALSE;
+	public $censored_words   = array();
+	public $censored_replace = '';
+	public $text_fmt_types   = array('xhtml', 'markdown', 'br', 'none', 'lite');
+	public $text_fmt_plugins = array();
+	public $html_fmt_types   = array('safe', 'all', 'none');
+	public $yes_no_syntax    = array('y', 'n');
+	public $code_chunks      = array();
+	public $code_counter     = 0;
+	public $http_hidden      = NULL; // hash to protect URLs in [url] BBCode
+	public $safe_img_src_end = NULL; // hash to mark end of image URLs during sanitizing of image tags
 
 	// Allowed tags  Note: Specified in initialize()
-	var $safe_encode = array();
-	var $safe_decode = array();
+	public $safe_encode      = array();
+	public $safe_decode      = array();
+
+	// A marker used to hide quotes in text
+	// before it is passed through the parser.
+	private $quote_marker    = NULL;
 
 	/**
 	 * Constructor
 	 */
 	public function __construct()
 	{
-		$this->EE =& get_instance();
 		$this->initialize();
+		Autoloader::getInstance()->addPrefix('Michelf', APPPATH.'libraries/typography/Markdown/Michelf/');
 	}
 
 	// --------------------------------------------------------------------
@@ -100,36 +108,37 @@ class EE_Typography extends CI_Typography {
 	public function initialize($config = array())
 	{
 		// reset class properties
-		$this->single_line_pgfs		= TRUE;		// Whether to treat single lines as paragraphs in auto-xhtml
-		$this->text_format			= 'xhtml';  // xhtml, markdown, br, none, or lite
-		$this->html_format			= 'safe';	// safe, all, none
-		$this->auto_links			= 'y';
-		$this->allow_img_url		= 'n';
-		$this->parse_images			= TRUE;
-		$this->allow_headings		= TRUE;
-		$this->encode_email			= TRUE;
-		$this->encode_type			= 'javascript'; // javascript or noscript
-		$this->use_span_tags		= TRUE;
-		$this->popup_links			= FALSE;
-		$this->bounce				= '';
-		$this->smiley_array			= FALSE;
-		$this->parse_smileys		= TRUE;
-		$this->highlight_code		= TRUE;
-		$this->convert_curly		= TRUE;		// Convert Curly Brackets Into Entities
-		$this->emoticon_url			= '';
-		$this->site_index			= '';
-		$this->word_censor			= FALSE;
-		$this->censored_words		= array();
-		$this->censored_replace		= '';
-		$this->text_fmt_types		= array('xhtml', 'markdown', 'br', 'none', 'lite');
-		$this->text_fmt_plugins		= array();
-		$this->html_fmt_types		= array('safe', 'all', 'none');
-		$this->yes_no_syntax		= array('y', 'n');
-		$this->code_chunks			= array();
-		$this->code_counter			= 0;
+		$this->single_line_pgfs = TRUE;		// Whether to treat single lines as paragraphs in auto-xhtml
+		$this->text_format      = 'xhtml';  // xhtml, markdown, br, none, or lite
+		$this->html_format      = 'safe';	// safe, all, none
+		$this->auto_links       = 'y';
+		$this->allow_img_url    = 'n';
+		$this->separate_parser  = FALSE;
+		$this->parse_images     = TRUE;
+		$this->allow_headings   = TRUE;
+		$this->encode_email     = TRUE;
+		$this->encode_type      = 'javascript'; // javascript or noscript
+		$this->use_span_tags    = TRUE;
+		$this->popup_links      = FALSE;
+		$this->bounce           = '';
+		$this->smiley_array     = FALSE;
+		$this->parse_smileys    = TRUE;
+		$this->highlight_code   = TRUE;
+		$this->convert_curly    = TRUE;		// Convert Curly Brackets Into Entities
+		$this->emoticon_url     = '';
+		$this->site_index       = '';
+		$this->word_censor      = FALSE;
+		$this->censored_words   = array();
+		$this->censored_replace = '';
+		$this->text_fmt_types   = array('xhtml', 'markdown', 'br', 'none', 'lite');
+		$this->text_fmt_plugins = array();
+		$this->html_fmt_types   = array('safe', 'all', 'none');
+		$this->yes_no_syntax    = array('y', 'n');
+		$this->code_chunks      = array();
+		$this->code_counter     = 0;
 
-		$this->http_hidden			= unique_marker('typography_url_protect'); // hash to protect URLs in [url] BBCode
-		$this->safe_img_src_end		= unique_marker('typography_img_src_end'); // hash to mark end of image URLs during sanitizing of image tags
+		$this->http_hidden      = unique_marker('typography_url_protect'); // hash to protect URLs in [url] BBCode
+		$this->safe_img_src_end = unique_marker('typography_img_src_end'); // hash to mark end of image URLs during sanitizing of image tags
 
 		foreach ($config as $key => $val)
 		{
@@ -142,20 +151,32 @@ class EE_Typography extends CI_Typography {
 
 		// Note: The decoding array is associative, allowing more precise mapping
 
-		$this->safe_encode = array('b', 'i', 'em', 'del', 'ins', 'strong', 'pre', 'code', 'blockquote');
+		$this->safe_encode = array(
+			'b',
+			'i',
+			'em',
+			'del',
+			'ins',
+			'strong',
+			'pre',
+			'code',
+			'blockquote',
+			'abbr' => array('property' => 'title')
+		);
 
 		$this->safe_decode = array(
-			'b'				=> 'b',
-			'i'				=> 'i',
-			'em'			=> 'em',
-			'del'			=> 'del',
-			'ins'			=> 'ins',
-			'strong'		=> 'strong',
-			'pre'			=> 'pre',
-			'code'			=> 'code',
-			'blockquote'	=> 'blockquote',
-			'quote'			=> 'blockquote',
-			'QUOTE'			=> 'blockquote'
+			'b'          => 'b',
+			'i'          => 'i',
+			'em'         => 'em',
+			'del'        => 'del',
+			'ins'        => 'ins',
+			'strong'     => 'strong',
+			'pre'        => 'pre',
+			'code'       => 'code',
+			'abbr'       => array('tag' => 'abbr', 'property' => 'title'),
+			'blockquote' => 'blockquote',
+			'quote'      => 'blockquote',
+			'QUOTE'      => 'blockquote'
 		);
 
 		// enable quote protection within braces for EE {variable="attributes"}
@@ -220,12 +241,8 @@ class EE_Typography extends CI_Typography {
 			return $str;
 		}
 
-		foreach (ee()->functions->fetch_file_paths() as $key => $val)
-		{
-			$str = str_replace(array("{filedir_{$key}}", "&#123;filedir_{$key}&#125;"), $val, $str);
-		}
-
-		return $str;
+		ee()->load->library('file_field');
+		return ee()->file_field->parse_string($str, TRUE);
 	}
 
 	// --------------------------------------------------------------------
@@ -240,16 +257,6 @@ class EE_Typography extends CI_Typography {
 	 */
 	public function parse_type($str, $prefs = '')
 	{
-		if ($this->parse_images === TRUE)
-		{
-			$this->file_paths = ee()->functions->fetch_file_paths();
-		}
-
-		// In the future, we might think about caching all of this processing, ya know.
-		// Do an md5 of the content, process it, store it, retrieve it, et cetera.
-		// Not sure how the clearing of it out would go, and if we stored it in the database
-		// that does add yet another query.  Hmmmm.  -Paul
-
 		if ($str == '')
 		{
 			return;
@@ -266,10 +273,150 @@ class EE_Typography extends CI_Typography {
 		//
 		// -------------------------------------------
 
-		/** -------------------------------------
-		/**  Set up our preferences
-		/** -------------------------------------*/
+		// Set up preferences
+		$this->_set_preferences($prefs);
 
+		// Parser-specific pre_process
+		if ($this->separate_parser
+			&& method_exists($this, $this->text_format.'_pre_process'))
+		{
+			$str = $this->{$this->text_format.'_pre_process'}($str);
+		}
+
+		// Handle single line paragraphs
+		if ($this->single_line_pgfs != TRUE)
+		{
+			if ($this->text_format == 'xhtml' AND strpos($str, "\r") === FALSE AND strpos($str, "\n") === FALSE)
+			{
+				$this->text_format = 'lite';
+			}
+		}
+
+		//  Fix emoticon bug
+		$str = str_replace(array('>:-(', '>:('), array(':angry:', ':mad:'), $str);
+
+
+		//  Highlight text within [code] tags
+		// If highlighting is enabled, we'll highlight <pre> tags as well.
+		if ($this->highlight_code == TRUE)
+		{
+			$str = str_replace(array('[pre]', '[/pre]'), array('[code]', '[/code]'), $str);
+		}
+
+		// We don't want BBCode parsed if it's within code examples so we'll
+		// convert the brackets
+		$str = $this->_protect_bbcode($str);
+
+		//  Strip IMG tags if not allowed
+		if ($this->allow_img_url == 'n')
+		{
+			$str = $this->strip_images($str);
+		}
+
+		//  Format HTML
+		$str = $this->format_html($str);
+
+		//  Auto-link URLs and email addresses
+		if ($this->auto_links == 'y' && ! $this->separate_parser)
+		{
+			$str = $this->auto_linker($str);
+		}
+
+		//  Parse file paths (in images)
+		$str = $this->parse_file_paths($str);
+
+		// Convert HTML links in CP to BBCode
+		//
+		// Forces HTML links output in the control panel to BBCode so they will
+		// be formatted as redirects, to prevent the control panel address from
+		// showing up in referrer logs except when sending emails, where we
+		// don't want created links piped through the site
+		if (REQ == 'CP' && ee()->input->get('M') != 'send_email' && strpos($str, 'href=') !== FALSE)
+		{
+			$str = preg_replace("#<a\s+(.*?)href=(\042|\047)([^\\2]*?)\\2(.*?)\>(.*?)</a>#si", "[url=\"\\3\"\\1\\4]\\5[/url]", $str);
+		}
+
+		//  Decode BBCode
+		$str = $this->decode_bbcode($str);
+
+		// Format text
+		switch ($this->text_format)
+		{
+			case 'none';
+				break;
+			case 'xhtml':
+				$str = $this->auto_typography($str);
+				break;
+			case 'markdown':
+				$str = $this->markdown($str, $prefs);
+				break;
+			case 'lite':
+				// Used with channel entry titles
+				$str = $this->format_characters($str);
+				break;
+			case 'br':
+				$str = $this->nl2br_except_pre($str);
+				break;
+			default:
+				// Plugin of some sort
+				$str = $this->parse_plugin($str);
+				break;
+		}
+
+		//  Parse emoticons
+		$str = $this->emoticon_replace($str);
+
+		//  Parse censored words
+		if ($this->word_censor === TRUE && count($this->censored_words > 0))
+		{
+			ee()->load->helper('text');
+			$str = word_censor($str, $this->censored_words, $this->censored_replace);
+		}
+
+		// Decode {encode=...} only in the CP since the template parser handles
+		// this for page requets
+		if (REQ == 'CP' && strpos($str, '{encode=') !== FALSE)
+		{
+			ee()->load->library('template', NULL, 'TMPL');
+			$str = ee()->TMPL->parse_encode_email($str);
+		}
+
+		// Standard email addresses
+		$str = $this->decode_emails($str);
+
+		// Insert the cached code tags
+		$str = $this->_convert_code_markers($str);
+
+		// -------------------------------------------
+		// 'typography_parse_type_end' hook.
+		//  - Modify string after all other typography processing
+		//
+			if (ee()->extensions->active_hook('typography_parse_type_end') === TRUE)
+			{
+				$str = ee()->extensions->call('typography_parse_type_end', $str, $this, $prefs);
+			}
+		//
+		// -------------------------------------------
+
+		// Encode PHP Tags
+		ee()->load->helper('security');
+		$str = encode_php_tags($str);
+
+		// Encode EE Tags
+		$str = ee()->functions->encode_ee_tags($str, $this->convert_curly);
+
+		return $str;
+	}
+
+	// -------------------------------------------------------------------------
+
+	/**
+	 * Set up preferences for parse_type()
+	 * @param Array $prefs Array of preferences
+	 * @return void
+	 */
+	private function _set_preferences($prefs)
+	{
 		if (is_array($prefs))
 		{
 			if (isset($prefs['text_format']))
@@ -313,205 +460,117 @@ class EE_Typography extends CI_Typography {
 		}
 
 		// If we're dealing with a separate parser (e.g. Markdown)
-		$separate_parser = ($this->text_format == 'markdown') ? TRUE : FALSE;
+		$this->separate_parser = ($this->text_format == 'markdown') ? TRUE : FALSE;
+	}
 
-		/** -------------------------------------
-		/**  Encode PHP tags
-		/** -------------------------------------*/
+	// -------------------------------------------------------------------------
 
-		// Before we do anything else, we'll convert PHP tags into character entities.
-		// This is so that PHP submitted in channel entries, comments, etc. won't get parsed.
-		// Since you can enable templates to parse PHP, it would open up a security
-		// hole to leave PHP submitted in entries and comments intact.
-		//
-		// If we're dealing with a separate parser, don't encode now in case of
-		// code snippets
-
-		ee()->load->helper('security');
-		if ( ! $separate_parser)
+	/**
+	 * Parse a generic plugin's contents
+	 * @param  String $str String to parse
+	 * @return String      Parsed string after going through plugin
+	 */
+	public function parse_plugin($str)
+	{
+		if ( ! class_exists('EE_Template'))
 		{
-			$str = encode_php_tags($str);
+			ee()->load->library('template', NULL, 'TMPL');
 		}
 
-		/** -------------------------------------
-		/**  Encode EE tags
-		/** -------------------------------------*/
+		$plugin = ucfirst($this->text_format);
 
-		// Next, we need to encode EE tags contained in entries, comments, etc. so that they don't get parsed.
-
-		$str = ee()->functions->encode_ee_tags($str, $this->convert_curly);
-
-		/** -------------------------------------
-		/**  Are single lines considered paragraphs?
-		/** -------------------------------------*/
-
-		if ($this->single_line_pgfs != TRUE)
+		if ( ! class_exists($plugin))
 		{
-			if ($this->text_format == 'xhtml' AND strpos($str, "\r") === FALSE AND strpos($str, "\n") === FALSE)
+			if (in_array($this->text_format, ee()->core->native_plugins))
 			{
-				$this->text_format = 'lite';
+				require_once PATH_PI.'pi.'.$this->text_format.'.php';
+			}
+			else
+			{
+				require_once PATH_THIRD.$this->text_format.'/pi.'.$this->text_format.'.php';
 			}
 		}
 
-		//  Fix emoticon bug
-		$str = str_replace(array('>:-(', '>:('), array(':angry:', ':mad:'), $str);
-
-		/** -------------------------------------
-		/**  Highlight text within [code] tags
-		/** -------------------------------------*/
-
-		// If highlighting is enabled, we'll highlight <pre> tags as well.
-
-		if ($this->highlight_code == TRUE)
+		if (class_exists($plugin))
 		{
-			$str = str_replace(array('[pre]', '[/pre]'), array('[code]', '[/code]'), $str);
-		}
+			$PLG = new $plugin($str);
 
-		// We don't want BBCode parsed if it's within code examples so we'll convert the brackets
-		$str = $this->_protect_bbcode($str);
-
-		//  Strip IMG tags if not allowed
-		if ($this->allow_img_url == 'n')
-		{
-			$str = $this->strip_images($str);
-		}
-
-		//  Format HTML
-		$str = $this->format_html($str);
-
-		//  Auto-link URLs and email addresses
-		if ($this->auto_links == 'y' && ! $separate_parser)
-		{
-			$str = $this->auto_linker($str);
-		}
-
-		//  Parse file paths (in images)
-		$str = $this->parse_file_paths($str);
-
-		/** ---------------------------------------
-		/**  Convert HTML links in CP to BBCode
-		/** ---------------------------------------*/
-
-		// Forces HTML links output in the control panel to BBCode so they will be formatted
-		// as redirects, to prevent the control panel address from showing up in referrer logs
-		// except when sending emails, where we don't want created links piped through the site
-
-		if (REQ == 'CP' && ee()->input->get('M') != 'send_email' && strpos($str, 'href=') !== FALSE)
-		{
-			$str = preg_replace("#<a\s+(.*?)href=(\042|\047)([^\\2]*?)\\2(.*?)\>(.*?)</a>#si", "[url=\"\\3\"\\1\\4]\\5[/url]", $str);
-		}
-
-
-		//  Decode BBCode
-		$str = $this->decode_bbcode($str);
-
-		/** -------------------------------------
-		/**  Format text
-		/** -------------------------------------*/
-		switch ($this->text_format)
-		{
-			case 'none';
-				break;
-			case 'xhtml':
-				$str = $this->auto_typography($str);
-				break;
-			case 'markdown':
-				$str = $this->markdown($str, $prefs);
-				break;
-			case 'lite':
-				$str = $this->format_characters($str); // Used with channel entry titles
-				break;
-			case 'br':
-				$str = $this->nl2br_except_pre($str);
-				break;
-			default:
-				// Plugin of some sort
-				if ( ! class_exists('EE_Template'))
-				{
-					require APPPATH.'libraries/Template.php';
-					ee()->TMPL = new EE_Template();
-				}
-
-				$plugin = ucfirst($this->text_format);
-
-				if ( ! class_exists($plugin))
-				{
-					if (in_array($this->text_format, ee()->core->native_plugins))
-					{
-						require_once PATH_PI.'pi.'.$this->text_format.'.php';
-					}
-					else
-					{
-						require_once PATH_THIRD.$this->text_format.'/pi.'.$this->text_format.'.php';
-					}
-				}
-
-				if (class_exists($plugin))
-				{
-					$PLG = new $plugin($str);
-
-					if (isset($PLG->return_data))
-					{
-						$str = $PLG->return_data;
-					}
-				}
-				break;
-		}
-
-		// Encode PHP post-Markdown parsing
-		if ($separate_parser)
-		{
-			$str = encode_php_tags($str);
-		}
-
-		//  Parse emoticons
-		$str = $this->emoticon_replace($str);
-
-		//  Parse censored words
-		if ($this->word_censor === TRUE && count($this->censored_words > 0))
-		{
-			ee()->load->helper('text');
-			$str = word_censor($str, $this->censored_words, $this->censored_replace);
-		}
-
-		/** ------------------------------------------
-		/**  Decode and spam-protect email addresses
-		/** ------------------------------------------*/
-
-		// {encode="you@yoursite.com" title="Click Me"}
-
-		// Note: We only do this here if it's a CP request since the
-		// template parser handles this for page requets
-
-		if (REQ == 'CP' && strpos($str, '{encode=') !== FALSE)
-		{
-			if (preg_match_all("/\{encode=(.+?)\}/i", $str, $matches))
+			if (isset($PLG->return_data))
 			{
-				for ($j = 0; $j < count($matches['0']); $j++)
-				{
-					$str = str_replace($matches['0'][$j], ee()->functions->encode_email($matches['1'][$j]), $str);
-				}
+				$str = $PLG->return_data;
 			}
 		}
-
-		// Standard email addresses
-		$str = $this->decode_emails($str);
-
-		// Insert the cached code tags
-		$str = $this->_convert_code_markers($str);
-
-		// -------------------------------------------
-		// 'typography_parse_type_end' hook.
-		//  - Modify string after all other typography processing
-		//
-			if (ee()->extensions->active_hook('typography_parse_type_end') === TRUE)
-			{
-				$str = ee()->extensions->call('typography_parse_type_end', $str, $this, $prefs);
-			}
-		//
-		// -------------------------------------------
 
 		return $str;
+	}
+
+	// -------------------------------------------------------------------------
+
+	/**
+	 * Protected Quotes in EE Tags
+	 *
+	 * Search all EE tags in the string for quotes and protect the quotes from
+	 * being parsed by subsequent parsers by replacing them with a marker.  The
+	 * marker will then be switched back out for the quotes in question by
+	 * running restore quotes in tags.
+	 *
+	 * Note: The marker is time dependent and stored in the instance of the
+	 * typography class, so the call to restore_quotes_in_tags() must be to the
+	 * same instance of typography in the same request.
+	 *
+	 * @param	string	$str	The string potentially containing EE tags that you
+	 * 		wish to protect quotes in.
+	 *
+	 * @return	string	The parsed string with any quotes in EE tags replaced
+	 * 		by {{SINGLE_QUOTE:marker}} or {{DOUBLE_QUOTE:marker}} respectively.
+	 * 		The marker is time dependent and stored in this instance of the
+	 * 		typography object.
+	 */
+	protected function protect_quotes_in_tags($str)
+	{
+		if ( ! isset($this->quote_marker) )
+		{
+			$this->quote_marker = md5(time(0) . 'quote_marker');
+		}
+
+		$single_quote_marker = '{{SINGLEQUOTE:' . $this->quote_marker . '}}';
+		$double_quote_marker = '{{DOUBLEQUOTE:' . $this->quote_marker . '}}';
+
+		if (preg_match_all("/{.*?}/", $str, $matches, PREG_SET_ORDER))
+		{
+			foreach($matches as $match)
+			{
+				$str = str_replace($match[0],
+					str_replace(
+						array('\'', '"'),
+						array($single_quote_marker, $double_quote_marker),
+						$match[0]),
+					$str
+				);
+			}
+		}
+
+		return $str;
+	}
+
+	/**
+	 *  Restores Quotes in EE Tags
+	 *
+	 *  Restores quotes in EE tags hidden by
+	 *  EE_Typography::protect_quotes_in_tags().  Must be called on the same
+	 *  instance of EE_Typography that protected the quotes, as the marker is
+	 *  time dependent and stored on the Typography instance.
+	 *
+	 *  @param	string	$str	The string in which to restore the quotes.
+	 *
+	 *  @return string	The string with quotes restored.
+	 */
+	protected function restore_quotes_in_tags($str)
+	{
+		$single_quote_marker = '{{SINGLEQUOTE:' . $this->quote_marker . '}}';
+		$double_quote_marker = '{{DOUBLEQUOTE:' . $this->quote_marker . '}}';
+
+		return str_replace(array($single_quote_marker, $double_quote_marker), array('\'', '"'), $str);
 	}
 
 	// --------------------------------------------------------------------
@@ -592,19 +651,33 @@ class EE_Typography extends CI_Typography {
 		}
 
 		// Convert allowed HTML to BBCode
-
-		foreach($this->safe_encode as $val)
+		foreach($this->safe_encode as $key => $val)
 		{
-			if (stristr($str, $val.'>') !== FALSE)
+			if ( ! is_numeric($key) && isset($val['property']))
+			{
+				if (preg_match("/<".$key.".*?".$val['property']."=(\042|\047)(.*?)\\1.*?>(.*?)<\/".$key.">/is", $str, $matches))
+				{
+					$property = ee()->security->xss_clean($matches[2]);
+					$str = preg_replace(
+						"/<".$key.".*?".$val['property']."=(\042|\047).*?\\1.*?>(.*?)<\/".$key.">/is",
+						"[".$key."=\\1".$property."\\1]\\2[/".$key."]",
+						$str
+					);
+				}
+			}
+			elseif (stristr($str, $val.'>') !== FALSE)
 			{
 				$str = preg_replace("#<".$val.">(.+?)</".$val.">#si", "[$val]\\1[/$val]", $str);
 			}
 		}
 
 		// Convert anchors to BBCode
-		// We do this to prevent allowed HTML from getting converted in the next step
-		// Old method would only convert links that had href= as the first tag attribute
-		// $str = preg_replace("#<a\s+href=[\"'](\S+?)[\"'](.*?)\>(.*?)</a>#si", "[url=\"\\1\"\\2]\\3[/url]", $str);
+		//
+		// We do this to prevent allowed HTML from getting converted in the next
+		// step Old method would only convert links that had href= as the first
+		// tag attribute $str =
+		// preg_replace("#<a\s+href=[\"'](\S+?)[\"'](.*?)\>(.*?)</a>#si",
+		// "[url=\"\\1\"\\2]\\3[/url]", $str);
 
 		if (stristr($str, '<a') !== FALSE)
 		{
@@ -631,32 +704,157 @@ class EE_Typography extends CI_Typography {
 	// --------------------------------------------------------------------
 
 	/**
+	 * Run the Mardown code through a pre processor so we can convert all code
+	 * blocks (not inline) to bbcode blocks for highlighting
+	 * @param  String $str The string to pre-process
+	 * @return String      The pre-processed string
+	 */
+	protected function markdown_pre_process($str)
+	{
+		// Must use a named group of codeblock for this to work properly
+		$hashes = array();
+		$codeblocks = array();
+		$extract_callback = function ($matches) use (&$hashes, &$codeblocks) {
+			$hash = random_string('md5');
+			$hashes[] = $hash;
+			$codeblocks[] = "[code]\n".trim($matches['codeblock'])."\n[/code]\n\n";
+			return $hash;
+		};
+
+		// First, get the fenced code blocks. Fenced code blocks consist of
+		// three tildes or backticks in a row on their own line, followed by
+		// some code, followed by a matching set of three or more tildes or
+		// backticks on their own line again
+		if (strpos($str, '```') !== FALSE
+			OR strpos($str, '~~~') !== FALSE)
+		{
+			$str = preg_replace_callback(
+				"/
+				# We only care about fences that are the beginning of their line
+				(^
+
+				# Must start with ~~~ or ``` and only contain that character
+				(?:`{3,}|~{3,}))
+
+				# Capture the codeblock AND name it
+				(?P<codeblock>.*?)
+
+				# Find the matching bunch of ~ or `
+				\\1
+				/ixsm",
+				$extract_callback,
+				$str
+			);
+		}
+
+		// Second, extract actual code blocks
+		if (strpos($str, '[code]') !== FALSE
+			&& strpos($str, '[/code]') !== FALSE)
+		{
+			$str = preg_replace_callback(
+				"/\\[code\\](?P<codeblock>.*?)\\[\\/code\\]/s",
+				$extract_callback,
+				$str
+			);
+		}
+
+		// Replace tabs with spaces
+		if (strpos($str, "\t") !== FALSE)
+		{
+			$str = preg_replace("/^\t/m", "    ", $str);
+		}
+
+		// Now process tab indented code blocks
+		if (strpos($str, '    ') !== FALSE)
+		{
+			$str = preg_replace_callback(
+				'/
+				# Must be beginning of line OR file
+				(?:\n\n|\A\n?)
+
+				# Lines must start with four spaces, using atomic groups here so
+				# the regular expression parser can not backtrack. Capture all
+				# lines like this in a row.
+				((?>[ ]{4}.*\n*)+)
+
+				# Lookahead for non space at the start or end of string
+				((?=^[ ]{0,4}\S)|\Z)
+				/xm',
+				function ($matches) {
+					$codeblock = $matches[1];
+
+					// Outdent these code blocks
+					$codeblock = preg_replace("/^[ ]{4}(.*)$/m", "$1", $codeblock);
+
+					// Trim the whole string and wrap it in [code]
+					return "[code]\n".trim($codeblock)."\n[/code]\n\n";
+				},
+				$str
+			);
+		}
+
+		// Put everything back in to place
+		return str_replace($hashes, $codeblocks, $str);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	 * Parse content to Markdown
 	 * @param  string $str     String to parse
 	 * @param  array  $options Associative array containing options
-	 *                         - encode_ee_tags (yes/no) can be used to disable
-	 *                         	ee tag encoding
-	 *                         - smartypants (yes/no) enable or disable
-	 *                         	smartypants
+	 *                         - smartypants (TRUE/FALSE) enable or disable
+	 *                           smartypants
+	 *                         - no_markup (TRUE/FALSE) set to TRUE to disable
+	 *                           the parsing of markup in Markdown
 	 * @return string          Parsed Markdown content
 	 */
 	public function markdown($str, $options = array())
 	{
-		require_once(APPPATH.'libraries/typography/Markdown/markdown.php');
-
-		// Encode EE Tags
-		if ( ! isset($options['encode_ee_tags']) OR $options['encode_ee_tags'] == 'yes')
+		// Ignore [code]
+		$code_blocks = array();
+		preg_match_all('/\<div class="codeblock">(.*?)\<\/div>/uis', $str, $matches);
+		foreach ($matches[0] as $match)
 		{
-			$str = ee()->functions->encode_ee_tags($str);
+			$hash = random_string('md5');
+			$code_blocks[$hash] = $match;
+			$str = str_replace($match, $hash, $str);
 		}
 
-		$str = Markdown($str);
+		$parser = new MarkdownExtra;
+
+		// Disable other markup if this is set
+		if (isset($options['no_markup'])
+			&& get_bool_from_string($options['no_markup']))
+		{
+			$parser->no_markup = TRUE;
+		}
+
+		// Protect any quotes in EE tags from the Markdown and SmartyPants
+		// processors.
+		$str = $this->protect_quotes_in_tags($str);
+
+		// Parse the Markdown
+		$str = $parser->transform($str);
 
 		// Run everything through SmartyPants
-		if ( ! isset($options['smartypants']) OR $options['smartypants'] == 'yes')
+		if ( ! isset($options['smartypants'])
+			OR get_bool_from_string($options['smartypants']) == TRUE)
 		{
-			require_once(APPPATH.'libraries/typography/SmartyPants/smartypants.php');
-			$str = SmartyPants($str);
+			if ( ! class_exists('SmartyPants_Parser')){
+				require_once(APPPATH.'libraries/typography/SmartyPants/smartypants.php');
+			}
+			// 2  ->  "---" for em-dashes; "--" for en-dashes
+			$str = SmartyPants($str, 2);
+		}
+
+		// Restore the quotes we protected earlier.
+		$str = $this->restore_quotes_in_tags($str);
+
+		// Replace <div class="codeblock"> ([code]) blocks.
+		foreach ($code_blocks as $hash => $code_block)
+		{
+			$str = str_replace($hash, $code_block, $str);
 		}
 
 		return $str;
@@ -700,7 +898,6 @@ class EE_Typography extends CI_Typography {
 		// Edit: Added a check for the trailing 6 characters for an edgecase
 		// where the inner url was valid, but did not exactly match the other:
 		// [url=http://www.iblamepaul.com]www.iblamepaul.com[/url] ;) -pk
-
 		$str = preg_replace_callback("#(^|\s|\(|..\])((http(s?)://)|(www\.))(\w+[^\s\)\<\[]+)(.{0,6})#im", array(&$this, 'auto_linker_callback'), $str);
 
 		// Auto link email
@@ -750,7 +947,7 @@ class EE_Typography extends CI_Typography {
 
 		$end = '';
 
-		if (preg_match("/^(.+?)([\.\,]+)$/",$matches['6'], $punc_match))
+		if (preg_match("/^(.+?)([\.\,\?\!\:\;]+)$/",$matches['6'], $punc_match))
 		{
 			$end = $punc_match[2];
 			$matches[6] = $punc_match[1];
@@ -763,8 +960,8 @@ class EE_Typography extends CI_Typography {
 				$matches['4'].'://'.
 				$matches['5'].
 				$matches['6'].'[/url]'.
-				$matches['7'].
-				$end;
+				$end.
+				$matches['7'];
 	}
 
 	// --------------------------------------------------------------------
@@ -787,20 +984,48 @@ class EE_Typography extends CI_Typography {
 
 		foreach($this->safe_decode as $key => $val)
 		{
-			$str = str_ireplace(array('['.$key.']', '[/'.$key.']'),	array('<'.$val.'>', '</'.$val.'>'),	$str);
+			if (is_array($val)
+				&& isset($val['property'])
+				&& preg_match_all('/\['.$key.'=(.*?)\](.*?)\[\/'.$key.'\]/is', $str, $matches, PREG_SET_ORDER))
+			{
+				foreach ($matches as $tag_match)
+				{
+					// Clean up the contents of the property
+					$tag_match[1] = htmlspecialchars(
+						ee()->security->xss_clean($tag_match[1])
+					);
+
+					// If there's any evidence of XSS then don't add anything
+					if (stripos($tag_match[0], '[removed]') !== FALSE)
+					{
+						$str = str_replace($tag_match[0], '', $str);
+					}
+					else
+					{
+						$str = str_replace(
+							$tag_match[0],
+							"<".$val['tag']." ".$val['property']."='".$tag_match[1]."''>".$tag_match[2]."</".$val['tag'].">",
+							$str
+						);
+					}
+				}
+			}
+			else
+			{
+				$val = (is_array($val)) ? $val['tag'] : $val;
+				$str = str_ireplace(
+					array('['.$key.']', '[/'.$key.']'),
+					array('<'.$val.'>', '</'.$val.'>'),
+					$str
+				);
+			}
 		}
 
 		/** -------------------------------------
 		/**  Decode codeblock division for code tag
 		/** -------------------------------------*/
 
-		if (count($this->code_chunks) > 0)
-		{
-			foreach ($this->code_chunks as $key => $val)
-			{
-				$str = str_replace('[div class="codeblock"]{'.$key.'yH45k02wsSdrp}[/div]', '<div class="codeblock">{'.$key.'yH45k02wsSdrp}</div>', $str);
-			}
-		}
+		$str = $this->_decode_code_tags($str);
 
 		/** -------------------------------------
 		/**  Decode color tags
@@ -1001,6 +1226,26 @@ class EE_Typography extends CI_Typography {
 		if (stripos($str, '[quote') !== FALSE)
 		{
 			$str = preg_replace('/\[quote\s+(author=".*?"\s+date=".*?")\]/si', '<blockquote \\1>', $str);
+		}
+
+		return $str;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Replace [div class="codeblock"] with <div class="codeblock">
+	 * @param  String $str The string to parse
+	 * @return String      The resulsting parsed string
+	 */
+	private function _decode_code_tags($str)
+	{
+		if (count($this->code_chunks) > 0)
+		{
+			foreach ($this->code_chunks as $key => $val)
+			{
+				$str = str_replace('[div class="codeblock"]{'.$key.'yH45k02wsSdrp}[/div]', '<div class="codeblock">{'.$key.'yH45k02wsSdrp}</div>', $str);
+			}
 		}
 
 		return $str;

@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -254,7 +254,7 @@ class Members extends CP_Controller {
 				'username'		=> '<a href="'.BASE.AMP.'C=myaccount'.AMP.'id='.$member['member_id'].'">'.$member['username'].'</a>',
 				'screen_name'	=> $member['screen_name'],
 				'email'			=> '<a href="mailto:'.$member['email'].'">'.$member['email'].'</a>',
-				'join_date'		=> $this->localize->format_date('%Y-%m-%d', $member['join_date']),
+				'join_date'		=> $this->localize->format_date(ee()->session->userdata('date_format', ee()->config->item('date_format')), $member['join_date']),
 				'last_visit'	=> ($member['last_visit'] == 0) ? ' - ' : $this->localize->human_time($member['last_visit']),
 				'group_id'		=> $groups[$member['group_id']],
 				'_check'		=> '<input class="toggle" type="checkbox" name="toggle[]" value="'.$member['member_id'].'" />'
@@ -431,98 +431,6 @@ class Members extends CP_Controller {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Delete Member (confirm)
-	 *
-	 * Warning message if you try to delete members
-	 *
-	 * @return	mixed
-	 */
-	public function member_delete_confirm()
-	{
-		if ( ! $this->cp->allowed_group('can_access_members') OR ! $this->cp->allowed_group('can_delete_members'))
-		{
-			show_error(lang('unauthorized_access'));
-		}
-
-		$from_myaccount = FALSE;
-
-		if ($this->input->get('mid') != '')
-		{
-			$from_myaccount = TRUE;
-			$_POST['toggle'][] = $this->input->get('mid');
-		}
-
-		if ( ! isset($_POST['toggle']))
-		{
-			$this->functions->redirect(BASE.AMP.'C=members'.AMP.'M=view_all_members');
-		}
-
-		if ( ! is_array($_POST['toggle']) OR count($_POST['toggle']) == 0)
-		{
-			$this->functions->redirect(BASE.AMP.'C=members'.AMP.'M=view_all_members');
-		}
-
-		$damned = array();
-
-		$vars['ids_delete'] = array();
-
-		foreach ($this->input->post('toggle') as $key => $val)
-		{
-			// Is the user trying to delete himself?
-			if ($this->session->userdata('member_id') == $val)
-			{
-				show_error(lang('can_not_delete_self'));
-			}
-
-			$damned[] = $val;
-		}
-
-		// Pass the damned on for judgement
-		$vars['damned'] = $damned;
-
-		if (count($damned) == 1)
-		{
-			$vars['user_name'] = $this->member_model->get_username($damned['0']);
-		}
-		else
-		{
-			$vars['user_name'] = '';
-		}
-
-		// Do the users being deleted have entries assigned to them?
-		// If so, fetch the member names for reassigment
-
-		if ($this->member_model->count_member_entries($damned)  > 0)
-		{
-			$vars['heirs'] = array(
-				'' => lang('member_delete_dont_reassign_entries')
-			);
-
-			$group_ids = $this->member_model->get_members_group_ids($damned);
-
-			// Find Valid Member Replacements
-			$this->db->select('member_id, username, screen_name');
-			$this->db->from('members');
-			$this->db->where_in('group_id', $group_ids);
-			$this->db->where_not_in('member_id', $damned);
-			$this->db->order_by('screen_name');
-			$heirs = $this->db->get();
-
-			foreach($heirs->result() as $heir)
-			{
-				$name_to_use = ($heir->screen_name != '') ? $heir->screen_name : $heir->username;
-				$vars['heirs'][$heir->member_id] = $name_to_use;
-			}
-		}
-
-		$this->view->cp_page_title = lang('delete_member');
-
-		$this->cp->render('members/delete_confirm', $vars);
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
 	 * Login as Member
 	 *
 	 * Login as Member - SuperAdmins only!
@@ -658,12 +566,12 @@ class Members extends CP_Controller {
 		// Set cookie expiration to one year if the "remember me" button is clicked
 
 		$expire = 0;
-		$type = (isset($_POST['return_destination']) && $_POST['return_destination'] == 'cp') ? $this->config->item('admin_session_type') : $this->config->item('user_session_type');
+		$type = (isset($_POST['return_destination']) && $_POST['return_destination'] == 'cp') ? $this->config->item('cp_session_type') : $this->config->item('website_session_type');
 
 		if ($type != 's')
 		{
-			$this->functions->set_cookie($this->session->c_expire , time()+$expire, $expire);
-			$this->functions->set_cookie($this->session->c_anon , 1,  $expire);
+			$this->input->set_cookie($this->session->c_expire , time()+$expire, $expire);
+			$this->input->set_cookie($this->session->c_anon , 1,  $expire);
 		}
 
 		// Create a new session
@@ -680,18 +588,7 @@ class Members extends CP_Controller {
 		{
 			if ($_POST['return_destination'] == 'cp')
 			{
-				$admin_session_type = $this->config->item('admin_session_type');
-
-				switch ($admin_session_type)
-				{
-					case 's' 	: $s = $this->session->userdata['session_id'];
-						break;
-					case 'cs' 	: $s = $this->session->userdata['fingerprint'];
-						break;
-					default 	: $s = 0;
-				}
-
-				$return_path = $this->config->item('cp_url', FALSE).'?S='.$s;
+				$return_path = $this->config->item('cp_url', FALSE).'?S='.ee()->session->session_id();
 			}
 			elseif ($_POST['return_destination'] == 'other' && isset($_POST['other_url']) && stristr($_POST['other_url'], 'http'))
 			{
@@ -705,6 +602,91 @@ class Members extends CP_Controller {
 	// --------------------------------------------------------------------
 
 	/**
+	 * Delete Member (confirm)
+	 *
+	 * Warning message if you try to delete members
+	 *
+	 * @return	mixed
+	 */
+	public function member_delete_confirm()
+	{
+		if ( ! ee()->cp->allowed_group('can_access_members') OR ! ee()->cp->allowed_group('can_delete_members'))
+		{
+			show_error(lang('unauthorized_access'));
+		}
+
+		$from_myaccount = FALSE;
+
+		if (ee()->input->get('mid') != '')
+		{
+			$from_myaccount = TRUE;
+			$_POST['toggle'][] = ee()->input->get('mid');
+		}
+
+		if ( ! isset($_POST['toggle']))
+		{
+			ee()->functions->redirect(BASE.AMP.'C=members'.AMP.'M=view_all_members');
+		}
+
+		if ( ! is_array($_POST['toggle']) OR count($_POST['toggle']) == 0)
+		{
+			ee()->functions->redirect(BASE.AMP.'C=members'.AMP.'M=view_all_members');
+		}
+
+		$damned = array();
+
+		$vars['ids_delete'] = array();
+
+		foreach (ee()->input->post('toggle') as $key => $val)
+		{
+			// Is the user trying to delete himself?
+			if (ee()->session->userdata('member_id') == $val)
+			{
+				show_error(lang('can_not_delete_self'));
+			}
+
+			$damned[] = $val;
+		}
+
+		// Pass the damned on for judgement
+		$vars['damned'] = $damned;
+		$usernames = ee()->db->select('username')
+			->where_in('member_id', $damned)
+			->get('members')
+			->result_array();
+		foreach ($usernames as $member)
+		{
+			$vars['usernames'][] = $member['username'];
+		}
+
+		// Do the users being deleted have entries assigned to them?
+		// If so, fetch the member names for reassigment
+		if (ee()->member_model->count_member_entries($damned) > 0)
+		{
+			$group_ids = ee()->member_model->get_members_group_ids($damned);
+
+			// Find Valid Member Replacements
+			ee()->db->select('member_id, username, screen_name')
+				->from('members')
+				->where_in('group_id', $group_ids)
+				->where_not_in('member_id', $damned)
+				->order_by('screen_name');
+			$heirs = ee()->db->get();
+
+			foreach($heirs->result() as $heir)
+			{
+				$name_to_use = ($heir->screen_name != '') ? $heir->screen_name : $heir->username;
+				$vars['heirs'][$heir->member_id] = $name_to_use;
+			}
+		}
+
+		ee()->view->cp_page_title = lang('delete_member');
+		ee()->cp->render('members/delete_confirm', $vars);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	 * Member Delete
 	 *
 	 * Delete Members
@@ -713,80 +695,111 @@ class Members extends CP_Controller {
 	 */
 	public function member_delete()
 	{
-		if ( ! $this->cp->allowed_group('can_access_members') OR ! $this->cp->allowed_group('can_delete_members'))
+		// Verify the member is allowed to delete
+		if ( ! ee()->cp->allowed_group('can_access_members')
+			OR ! ee()->cp->allowed_group('can_delete_members'))
 		{
 			show_error(lang('unauthorized_access'));
 		}
 
-		if ( ! $this->input->post('delete') OR ! is_array($this->input->post('delete')))
+		// Make sure there's something to delete
+		if ( ! ee()->input->post('delete')
+			OR ! is_array(ee()->input->post('delete')))
 		{
-			$this->functions->redirect(BASE.AMP.'C=members'.AMP.'M=view_all_members');
+			ee()->functions->redirect(BASE.AMP.'C=members'.AMP.'M=view_all_members');
 		}
-
-		$this->load->model('member_model');
 
 		//  Fetch member ID numbers and build the query
+		$member_ids = ee()->input->post('delete', TRUE);
 
-		$ids = array();
-		$member_ids = array();
+		// Check to see if they're deleting super admins
+		$this->_super_admin_delete_check($member_ids);
 
-		foreach ($this->input->post('delete') as $key => $val)
-		{
-			if ($val != '')
-			{
-				$ids[] = "member_id = '".$this->db->escape_str($val)."'";
-				$member_ids[] = $this->db->escape_str($val);
-			}
-		}
+		// If we got this far we're clear to delete the members
+		ee()->load->model('member_model');
+		$heir = (ee()->input->post('heir_action') == 'assign') ?
+			ee()->input->post('heir') : NULL;
+		ee()->member_model->delete_member($member_ids, $heir);
 
-		$IDS = implode(" OR ", $ids);
+		// Send member deletion notifications
+		$this->_member_delete_notifications($member_ids);
 
-		// SAFETY CHECK
-		// Let's fetch the Member Group ID of each member being deleted
-		// If there is a Super Admin in the bunch we'll run a few more safeties
+		/* -------------------------------------------
+		/* 'cp_members_member_delete_end' hook.
+		/*  - Additional processing when a member is deleted through the CP
+		*/
+			ee()->extensions->call('cp_members_member_delete_end', $member_ids);
+			if (ee()->extensions->end_script === TRUE) return;
+		/*
+		/* -------------------------------------------*/
 
-		$super_admins = 0;
+		// Update
+		ee()->stats->update_member_stats();
 
-		$query = $this->db->query("SELECT group_id FROM exp_members WHERE ".$IDS);
+		$cp_message = (count($member_ids) == 1) ?
+			lang('member_deleted') : lang('members_deleted');
 
-		foreach ($query->result_array() as $row)
-		{
-			if ($query->row('group_id')  == 1)
-			{
-				$super_admins++;
-			}
-		}
+		ee()->session->set_flashdata('message_success', $cp_message);
+		ee()->functions->redirect(BASE.AMP.'C=members'.AMP.'M=view_all_members');
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Check to see if the members being deleted are super admins. If they are
+	 * we need to make sure that the deleting user is a super admin and that
+	 * there is at least one more super admin remaining.
+	 *
+	 * @param  Array  $member_ids Array of member_ids being deleted
+	 * @return void
+	 */
+	private function _super_admin_delete_check($member_ids)
+	{
+		$super_admins = ee()->db->select('member_id')
+			->where(array(
+				'group_id' => 1
+			))
+			->where_in('member_id', $member_ids)
+			->count_all_results('members');
 
 		if ($super_admins > 0)
 		{
 			// You must be a Super Admin to delete a Super Admin
 
-			if ($this->session->userdata['group_id'] != 1)
+			if (ee()->session->userdata['group_id'] != 1)
 			{
 				show_error(lang('must_be_superadmin_to_delete_one'));
 			}
 
 			// You can't delete the only Super Admin
-			$query = $this->member_model->count_members(1);
+			ee()->load->model('member_model');
+			$query = ee()->member_model->count_members(1);
 
 			if ($super_admins >= $query)
 			{
 				show_error(lang('can_not_delete_super_admin'));
 			}
 		}
+	}
 
-		// If we got this far we're clear to delete the members
-		$this->load->model('member_model');
-		$this->member_model->delete_member($member_ids, $this->input->post('heir'));
+	// --------------------------------------------------------------------
 
-		/** ----------------------------------
-		/**  Email notification recipients
-		/** ----------------------------------*/
-		$this->db->select('DISTINCT(member_id), screen_name, email, mbr_delete_notify_emails');
-		$this->db->join('member_groups', 'members.group_id = member_groups.group_id', 'left');
-		$this->db->where('mbr_delete_notify_emails !=', '');
-		$this->db->where_in('member_id', $member_ids);
-		$group_query = $this->db->get('members');
+	/**
+	 * Send email notifications to email addresses for the respective member
+	 * group of the users being deleted
+	 *
+	 * @param  Array  $member_ids Array of member_ids being deleted
+	 * @return void
+	 */
+	private function _member_delete_notifications($member_ids)
+	{
+		// Email notification recipients
+		$group_query = ee()->db->distinct('member_id')
+			->select('screen_name, email, mbr_delete_notify_emails')
+			->join('member_groups', 'members.group_id = member_groups.group_id', 'left')
+			->where('mbr_delete_notify_emails !=', '')
+			->where_in('member_id', $member_ids)
+			->get('members');
 
 		foreach ($group_query->result() as $member)
 		{
@@ -795,12 +808,18 @@ class Members extends CP_Controller {
 			$swap = array(
 				'name'		=> $member->screen_name,
 				'email'		=> $member->email,
-				'site_name'	=> stripslashes($this->config->item('site_name'))
+				'site_name'	=> stripslashes(ee()->config->item('site_name'))
 			);
 
-			$this->lang->loadfile('member');
-			$email_tit = $this->functions->var_swap(lang('mbr_delete_notify_title'), $swap);
-			$email_msg = $this->functions->var_swap(lang('mbr_delete_notify_message'), $swap);
+			ee()->lang->loadfile('member');
+			$email_title = ee()->functions->var_swap(
+				lang('mbr_delete_notify_title'),
+				$swap
+			);
+			$email_message = ee()->functions->var_swap(
+				lang('mbr_delete_notify_message'),
+				$swap
+			);
 
 			// No notification for the user themselves, if they're in the list
 			if (strpos($notify_address, $member->email) !== FALSE)
@@ -813,43 +832,25 @@ class Members extends CP_Controller {
 
 			if ($notify_address != '')
 			{
-				// Send email
-				$this->load->library('email');
-
-				// Load the text helper
-				$this->load->helper('text');
+				ee()->load->library('email');
+				ee()->load->helper('text');
 
 				foreach (explode(',', $notify_address) as $addy)
 				{
-					$this->email->EE_initialize();
-					$this->email->wordwrap = FALSE;
-					$this->email->from($this->config->item('webmaster_email'), $this->config->item('webmaster_name'));
-					$this->email->to($addy);
-					$this->email->reply_to($this->config->item('webmaster_email'));
-					$this->email->subject($email_tit);
-					$this->email->message(entities_to_ascii($email_msg));
-					$this->email->send();
+					ee()->email->EE_initialize();
+					ee()->email->wordwrap = FALSE;
+					ee()->email->from(
+						ee()->config->item('webmaster_email'),
+						ee()->config->item('webmaster_name')
+					);
+					ee()->email->to($addy);
+					ee()->email->reply_to(ee()->config->item('webmaster_email'));
+					ee()->email->subject($email_title);
+					ee()->email->message(entities_to_ascii($email_message));
+					ee()->email->send();
 				}
 			}
 		}
-
-		/* -------------------------------------------
-		/* 'cp_members_member_delete_end' hook.
-		/*  - Additional processing when a member is deleted through the CP
-		*/
-			$this->extensions->call('cp_members_member_delete_end', $member_ids);
-			if ($this->extensions->end_script === TRUE) return;
-		/*
-		/* -------------------------------------------*/
-
-		// Update
-		$this->stats->update_member_stats();
-
-		$cp_message = (count($ids) == 1) ? lang('member_deleted') :
-										lang('members_deleted');
-
-		$this->session->set_flashdata('message_success', $cp_message);
-		$this->functions->redirect(BASE.AMP.'C=members'.AMP.'M=view_all_members');
 	}
 
 	// --------------------------------------------------------------------
@@ -1679,175 +1680,119 @@ class Members extends CP_Controller {
 	 */
 	public function member_config()
 	{
-		if ( ! $this->cp->allowed_group('can_access_members') OR ! $this->cp->allowed_group('can_admin_members'))
+		if ( ! ee()->cp->allowed_group('can_access_members') OR ! ee()->cp->allowed_group('can_admin_members'))
 		{
 			show_error(lang('unauthorized_access'));
 		}
 
-		$this->lang->loadfile('admin');
-		$this->load->library('table');
-
-		$f_data =  array(
-
-			'general_cfg'		=>	array(
-					'allow_member_registration'	=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'req_mbr_activation'		=> array('s', array('none' => 'no_activation', 'email' => 'email_activation', 'manual' => 'manual_activation')),
-					'require_terms_of_service'	=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'allow_member_localization'	=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'use_membership_captcha'	=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'default_member_group'		=> array('f', 'member_groups'),
-					'member_theme'				=> array('f', 'member_theme_menu'),
-					'profile_trigger'			=> ''
-					),
-
-			'memberlist_cfg'		=>	array(
-					'memberlist_order_by'		=> array('s', array('total_forum_posts'		=> 'total_posts',
-						'screen_name'		=> 'screen_name',
-						'total_comments'	=> 'total_comments',
-						'total_entries'		=> 'total_entries',
-						'join_date'			=> 'join_date')),
-					'memberlist_sort_order'		=> array('s', array('desc' => 'memberlist_desc', 'asc' => 'memberlist_asc')),
-					'memberlist_row_limit'		=> array('s', array('10' => '10', '20' => '20', '30' => '30', '40' => '40', '50' => '50', '75' => '75', '100' => '100'))
-					),
-
-'notification_cfg'		=>	array(
-					'new_member_notification'	=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'mbr_notification_emails'	=> ''
-											),
-
-			'pm_cfg'			=>	array(
-					'prv_msg_max_chars'			=> '',
-					'prv_msg_html_format'		=> array('s', array('safe' => 'html_safe', 'none' => 'html_none', 'all' => 'html_all')),
-					'prv_msg_auto_links'		=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'prv_msg_upload_path'		=> '',
-					'prv_msg_max_attachments'	=> '',
-					'prv_msg_attach_maxsize'	=> '',
-					'prv_msg_attach_total'		=> ''
-										 ),
-
-			'avatar_cfg'		=>	array(
-					'enable_avatars'		=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'allow_avatar_uploads'	=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'avatar_url'			=> '',
-					'avatar_path'			=> '',
-					'avatar_max_width'		=> '',
-					'avatar_max_height'		=> '',
-					'avatar_max_kb'			=> ''
-											),
-			'photo_cfg'		=>	array(
-					'enable_photos'			=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'photo_url'				=> '',
-					'photo_path'			=> '',
-					'photo_max_width'		=> '',
-					'photo_max_height'		=> '',
-					'photo_max_kb'			=> ''
-											),
-			'signature_cfg'		=>	array(
-					'allow_signatures'			=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'sig_maxlength'				=> '',
-					'sig_allow_img_hotlink'		=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'sig_allow_img_upload'		=> array('r', array('y' => 'yes', 'n' => 'no')),
-					'sig_img_url'				=> '',
-					'sig_img_path'				=> '',
-					'sig_img_max_width'			=> '',
-					'sig_img_max_height'		=> '',
-					'sig_img_max_kb'			=> ''
-											)
-			);
+		ee()->lang->loadfile('admin');
+		ee()->load->library('table');
 
 		$subtext = array(
-					'profile_trigger'			=> array('profile_trigger_notes'),
-					'mbr_notification_emails'	=> array('separate_emails'),
-					'default_member_group' 		=> array('group_assignment_defaults_to_two'),
-					'avatar_path'				=> array('must_be_path'),
-					'photo_path'				=> array('must_be_path'),
-					'sig_img_path'				=> array('must_be_path'),
-					'allow_member_localization'	=> array('allow_member_loc_notes')
-				);
+			'profile_trigger'           => array('profile_trigger_notes'),
+			'mbr_notification_emails'   => array('separate_emails'),
+			'default_member_group'      => array('group_assignment_defaults_to_two'),
+			'avatar_path'               => array('must_be_path'),
+			'photo_path'                => array('must_be_path'),
+			'sig_img_path'              => array('must_be_path'),
+			'allow_member_localization' => array('allow_member_loc_notes')
+		);
 
 		/** -----------------------------
 		/**  Blast through the array
 		/** -----------------------------*/
 
-		foreach ($f_data as $menu_head => $menu_array)
+		foreach ($this->get_member_config_fields() as $menu_head => $menu_array)
 		{
 			$vars['menu_head'][$menu_head] = array();
 
-			foreach ($menu_array as $key => $val)
+			foreach ($menu_array as $config_name => $config_data)
 			{
-
-				$vars['menu_head'][$menu_head][$key]['preference'] = lang($key, $key);
-				$vars['menu_head'][$menu_head][$key]['preference_subtext'] = '';
+				$vars['menu_head'][$menu_head][$config_name]['name'] = $config_name;
+				$vars['menu_head'][$menu_head][$config_name]['label'] = lang($config_name, $config_name);
+				$vars['menu_head'][$menu_head][$config_name]['preference_subtext'] = '';
 
 				// Preference sub-heading
-				if (isset($subtext[$key]))
+				if (isset($subtext[$config_name]))
 				{
-					foreach ($subtext[$key] as $sub)
+					foreach ($subtext[$config_name] as $sub)
 					{
-						$vars['menu_head'][$menu_head][$key]['preference_subtext'] = lang($sub);
+						$vars['menu_head'][$menu_head][$config_name]['preference_subtext'] = lang($sub);
 					}
 				}
 
 				$preference_controls = '';
 
-				if (is_array($val))
+				/** -----------------------------
+				/**  Text input fields
+				/** -----------------------------*/
+				if ( ! is_array($config_data) OR $config_data[0] == 'i')
 				{
+					$item = str_replace("\\'", "'", ee()->config->item($config_name));
 
-					if ($val['0'] == 's')
+					$preference_controls['type'] = "text";
+					$preference_controls['data'] = array(
+						'id'    => $config_name,
+						'name'  => $config_name,
+						'value' => set_value($config_name, $item),
+						'class' => 'field'
+					);
+				}
+				else if (is_array($config_data))
+				{
+					/** -----------------------------
+					/** Drop-down menus
+					/** -----------------------------*/
+					if ($config_data['0'] == 's')
 					{
-
-						/** -----------------------------
-						/** Drop-down menus
-						/** -----------------------------*/
-
 						$options = array();
 
-						foreach ($val['1'] as $k => $v)
+						foreach ($config_data['1'] as $k => $v)
 						{
 							$options[$k] = lang($v);
 						}
 
 						$preference_controls['type'] = "dropdown";
-						$preference_controls['id'] = $key;
+						$preference_controls['id'] = $config_name;
 						$preference_controls['options'] = $options;
-						$preference_controls['default'] = $this->config->item($key);
+						$preference_controls['default'] = set_value($config_name, ee()->config->item($config_name));
 					}
-					elseif ($val['0'] == 'r')
+					/** -----------------------------
+					/**  Radio buttons
+					/** -----------------------------*/
+					elseif ($config_data['0'] == 'r')
 					{
-						/** -----------------------------
-						/**  Radio buttons
-						/** -----------------------------*/
-
 						$radios = array();
 
-						foreach ($val['1'] as $k => $v)
+						foreach ($config_data['1'] as $k => $v)
 						{
-							$selected = ($k == $this->config->item($key)) ? TRUE : FALSE;
-
+							$checked_config = ($k == ee()->config->item($config_name))
+								? TRUE
+								: FALSE;
+							$checked = (set_radio($config_name, $k, $checked_config));
 							$radios[] = array(
-											'label'		=> lang($v, "{$key}_{$k}"),
-											'radio'		=> array(
-																	'name' 		=> $key,
-																	'id'		=> "{$key}_{$k}",
-																	'value'		=> $k,
-																	'checked'	=> ($k == $this->config->item($key)) ? TRUE : FALSE
-																)
-										  );
+								'label' => lang($v, "{$config_name}_{$k}"),
+								'radio' => array(
+									'name'    => $config_name,
+									'id'      => "{$config_name}_{$k}",
+									'value'   => $k,
+									'checked' => $checked
+								)
+							);
 						}
 
 						$preference_controls['type'] = "radio";
 						$preference_controls['radio'] = $radios;
 					}
-					elseif ($val['0'] == 'f')
+					/** -----------------------------
+					/**  Function calls
+					/** -----------------------------*/
+					elseif ($config_data['0'] == 'f')
 					{
-						/** -----------------------------
-						/**  Function calls
-						/** -----------------------------*/
-
-						switch ($val['1'])
+						switch ($config_data['1'])
 						{
 							case 'member_groups' :
-								$groups = $this->member_model->get_member_groups();
+								$groups = ee()->member_model->get_member_groups();
 
 								$options = array();
 
@@ -1862,11 +1807,11 @@ class Members extends CP_Controller {
 								$preference_controls['type'] = "dropdown";
 								$preference_controls['id'] = 'default_member_group';
 								$preference_controls['options'] = $options;
-								$preference_controls['default'] = ($this->config->item('default_member_group') != '') ? $this->config->item('default_member_group') : '5';
+								$preference_controls['default'] = (ee()->config->item('default_member_group') != '') ? ee()->config->item('default_member_group') : '5';
 
 								break;
 							case 'member_theme_menu' :
-								$themes = $this->member_model->get_theme_list(PATH_MBR_THEMES);
+								$themes = ee()->member_model->get_theme_list(PATH_MBR_THEMES);
 
 								$options = array();
 
@@ -1878,40 +1823,25 @@ class Members extends CP_Controller {
 								$preference_controls['type'] = "dropdown";
 								$preference_controls['id'] = 'member_theme';
 								$preference_controls['options'] = $options;
-								$preference_controls['default'] = $this->config->item($key);
+								$preference_controls['default'] = ee()->config->item($config_name);
 
 								break;
 						}
 					}
 				}
-				else
-				{
-					/** -----------------------------
-					/**  Text input fields
-					/** -----------------------------*/
-					$item = str_replace("\\'", "'", $this->config->item($key));
 
-					$preference_controls['type'] = "text";
-					$preference_controls['data'] = array(
-															'id' 	=> $key,
-															'name' 	=> $key,
-															'value' => $item,
-															'class'	=> 'field'
-														);
-				}
-
-				$vars['menu_head'][$menu_head][$key]['preference_controls'] = $preference_controls;
+				$vars['menu_head'][$menu_head][$config_name]['preference_controls'] = $preference_controls;
 			}
 		}
 
-		$this->view->cp_page_title = lang('member_prefs');
+		ee()->view->cp_page_title = lang('member_prefs');
 
-		$this->jquery->tablesorter('table', '{
+		ee()->jquery->tablesorter('table', '{
 			headers: {},
 			widgets: ["zebra"]
 		}');
 
-		$this->cp->render('members/member_config', $vars);
+		ee()->cp->render('members/member_config', $vars);
 	}
 
 	// --------------------------------------------------------------------
@@ -1925,33 +1855,130 @@ class Members extends CP_Controller {
 	 */
 	public function update_config()
 	{
-		if ( ! $this->cp->allowed_group('can_access_members') OR ! $this->cp->allowed_group('can_admin_members'))
+		if ( ! ee()->cp->allowed_group('can_access_members') OR ! ee()->cp->allowed_group('can_admin_members'))
 		{
 			show_error(lang('unauthorized_access'));
 		}
 
-		$config_update = $this->config->update_site_prefs($_POST);
+		// Check for form validation
+		ee()->load->library('form_validation');
+		ee()->form_validation->set_error_delimiters('<p class="notice">', '</p>');
+
+		$fields = $this->get_member_config_fields(TRUE);
+		foreach ($_POST as $key => $value)
+		{
+			$rules = (isset($fields[$key][2])) ? $fields[$key][2] : '';
+			ee()->form_validation->set_rules($key, '<b>'.lang($key).'</b>', $rules);
+		}
+
+		// Reject if validation failed
+		if (ee()->form_validation->run() === FALSE)
+		{
+			return $this->member_config();
+		}
+
+		$config_update = ee()->config->update_site_prefs($_POST);
 
 		// Member Avatars and Signatures are special little bunnies.
 		// Deal with them now.
-		$this->db->update('members', array(
-			'display_signatures'	=> $this->input->post('allow_signatures'),
-			'display_avatars'		=> $this->input->post('enable_avatars')
+		ee()->db->update('members', array(
+			'display_signatures' => ee()->input->post('allow_signatures'),
+			'display_avatars'    => ee()->input->post('enable_avatars')
 		));
-
- 		$loc = BASE.AMP.'C=members'.AMP.'M=member_config';
 
 		if ( ! empty($config_update))
 		{
-			$this->load->helper('html');
-			$this->session->set_flashdata('message_failure', ul($config_update, array('class' => 'bad_path_error_list')));
+			ee()->load->helper('html');
+			ee()->session->set_flashdata('message_failure', ul($config_update, array('class' => 'bad_path_error_list')));
 		}
 		else
 		{
-			$this->session->set_flashdata('message_success', lang('preferences_updated'));
+			ee()->session->set_flashdata('message_success', lang('preferences_updated'));
 		}
 
-		$this->functions->redirect($loc);
+		ee()->functions->redirect(BASE.AMP.'C=members'.AMP.'M=member_config');
+	}
+
+	// --------------------------------------------------------------------
+
+	private function get_member_config_fields($flat = FALSE)
+	{
+		$member_config_fields = array(
+			'general_cfg' => array(
+				'allow_member_registration' => array('r', array('y' => 'yes', 'n' => 'no')),
+				'req_mbr_activation'        => array('s', array('none' => 'no_activation', 'email' => 'email_activation', 'manual' => 'manual_activation')),
+				'require_terms_of_service'  => array('r', array('y' => 'yes', 'n' => 'no')),
+				'allow_member_localization' => array('r', array('y' => 'yes', 'n' => 'no')),
+				'use_membership_captcha'    => array('r', array('y' => 'yes', 'n' => 'no')),
+				'default_member_group'      => array('f', 'member_groups'),
+				'member_theme'              => array('f', 'member_theme_menu'),
+				'profile_trigger'           => array('i', '', 'alpha_dash')
+			),
+			'memberlist_cfg' => array(
+				'memberlist_order_by'   => array('s', array('total_forum_posts' => 'total_posts',
+				'screen_name'           => 'screen_name',
+				'total_comments'        => 'total_comments',
+				'total_entries'         => 'total_entries',
+				'join_date'             => 'join_date')),
+				'memberlist_sort_order' => array('s', array('desc' => 'memberlist_desc', 'asc' => 'memberlist_asc')),
+				'memberlist_row_limit'  => array('s', array('10' => '10', '20' => '20', '30' => '30', '40' => '40', '50' => '50', '75' => '75', '100' => '100'))
+			),
+			'notification_cfg' => array(
+				'new_member_notification' => array('r', array('y' => 'yes', 'n' => 'no')),
+				'mbr_notification_emails' => array('i', '', 'valid_email')
+			),
+			'pm_cfg' => array(
+				'prv_msg_max_chars'       => array('i', '', 'integer'),
+				'prv_msg_html_format'     => array('s', array('safe' => 'html_safe', 'none' => 'html_none', 'all' => 'html_all')),
+				'prv_msg_auto_links'      => array('r', array('y' => 'yes', 'n' => 'no')),
+				'prv_msg_upload_path'     => array('i', '', 'strip_tags|trim|valid_xss_check'),
+				'prv_msg_max_attachments' => array('i', '', 'integer'),
+				'prv_msg_attach_maxsize'  => array('i', '', 'integer'),
+				'prv_msg_attach_total'    => array('i', '', 'integer')
+			),
+			'avatar_cfg' => array(
+				'enable_avatars'       => array('r', array('y' => 'yes', 'n' => 'no')),
+				'allow_avatar_uploads' => array('r', array('y' => 'yes', 'n' => 'no')),
+				'avatar_url'           => array('i', '', 'strip_tags|trim|valid_xss_check'),
+				'avatar_path'          => array('i', '', 'strip_tags|trim|valid_xss_check'),
+				'avatar_max_width'     => array('i', '', 'integer'),
+				'avatar_max_height'    => array('i', '', 'integer'),
+				'avatar_max_kb'        => array('i', '', 'integer')
+			),
+			'photo_cfg' => array(
+				'enable_photos'    => array('r', array('y' => 'yes', 'n' => 'no')),
+				'photo_url'        => array('i', '', 'strip_tags|trim|valid_xss_check'),
+				'photo_path'       => array('i', '', 'strip_tags|trim|valid_xss_check'),
+				'photo_max_width'  => array('i', '', 'integer'),
+				'photo_max_height' => array('i', '', 'integer'),
+				'photo_max_kb'     => array('i', '', 'integer')
+			),
+			'signature_cfg' => array(
+				'allow_signatures'      => array('r', array('y' => 'yes', 'n' => 'no')),
+				'sig_maxlength'         => array('i', '', 'integer'),
+				'sig_allow_img_hotlink' => array('r', array('y' => 'yes', 'n' => 'no')),
+				'sig_allow_img_upload'  => array('r', array('y' => 'yes', 'n' => 'no')),
+				'sig_img_url'           => array('i', '', 'strip_tags|trim|valid_xss_check'),
+				'sig_img_path'          => array('i', '', 'strip_tags|trim|valid_xss_check'),
+				'sig_img_max_width'     => array('i', '', 'integer'),
+				'sig_img_max_height'    => array('i', '', 'integer'),
+				'sig_img_max_kb'        => array('i', '', 'integer')
+			)
+		);
+
+		if ($flat)
+		{
+			$return = array();
+
+			foreach ($member_config_fields as $heading => $contents)
+			{
+				$return = array_merge($return, $contents);
+			}
+
+			return $return;
+		}
+
+		return $member_config_fields;
 	}
 
 	// --------------------------------------------------------------------
@@ -2331,7 +2358,9 @@ class Members extends CP_Controller {
 		$data['join_date']	= $this->localize->now;
 		$data['language'] 	= $this->config->item('deft_lang');
 		$data['timezone'] 	= $this->config->item('default_site_timezone');
-		$data['time_format'] = $this->config->item('time_format') ? $this->config->item('time_format') : 'us';
+		$data['date_format'] = $this->config->item('date_format') ? $this->config->item('date_format') : '%n/%j/%y';
+		$data['time_format'] = $this->config->item('time_format') ? $this->config->item('time_format') : '12';
+		$data['include_seconds'] = $this->config->item('include_seconds') ? $this->config->item('include_seconds') : 'n';
 
 		// Was a member group ID submitted?
 
@@ -2820,9 +2849,9 @@ class Members extends CP_Controller {
 		$this->load->library('form_validation');
 
 		$is_edit = ($edit == TRUE) ? 'y' : 'n';
-		$this->form_validation->set_rules("m_field_name", 'lang:fieldname', 'required|callback__valid_fieldname['.$is_edit.']');
-		$this->form_validation->set_rules("m_field_label", 'lang:fieldlabel', 'required');
-		$this->form_validation->set_rules("m_field_description", '', '');
+		$this->form_validation->set_rules("m_field_name", 'lang:fieldname', 'required|strip_tags|trim|valid_xss_check|callback__valid_fieldname['.$is_edit.']');
+		$this->form_validation->set_rules("m_field_label", 'lang:fieldlabel', 'required|strip_tags|trim|valid_xss_check');
+		$this->form_validation->set_rules("m_field_description", '', 'strip_tags|trim|valid_xss_check');
 		$this->form_validation->set_rules("m_field_order", '', '');
 		$this->form_validation->set_rules("m_field_width", '', '');
 		$this->form_validation->set_rules("m_field_list_items", '', '');
@@ -3048,11 +3077,11 @@ class Members extends CP_Controller {
 		foreach ($custom_fields->result() as $field)
 		{
 			$fields[] = array(
-								'id'	=> $field->m_field_id,
-								'label'	=> $field->m_field_label,
-								'name'	=> $field->m_field_name,
-								'value'	=> $field->m_field_order
-							);
+				'id'	=> $field->m_field_id,
+				'label'	=> $field->m_field_label,
+				'name'	=> $field->m_field_name,
+				'value'	=> $field->m_field_order
+			);
 		}
 
 		$vars['fields'] = $fields;
@@ -3101,30 +3130,24 @@ class Members extends CP_Controller {
 	 */
 	public function ip_search()
 	{
-		if ( ! $this->cp->allowed_group('can_access_members') OR ! $this->cp->allowed_group('can_admin_members'))
+		if ( ! ee()->cp->allowed_group('can_access_members', 'can_admin_members'))
 		{
 			show_error(lang('unauthorized_access'));
 		}
 
-		$message = '';
-		$ip = ($this->input->get_post('ip_address') != FALSE) ? str_replace('_', '.',$this->input->get_post('ip_address')) : '';
-
-		if ($this->input->get_post('error') == 2)
+		switch ((int) ee()->input->get_post('error'))
 		{
-			$message = lang('ip_search_no_results');
-		}
-		elseif ($this->input->get_post('error') == 1)
-		{
-			$message = lang('ip_search_too_short');
+			case 1: $error = lang('ip_search_too_short');
+				break;
+			case 2: $error = lang('ip_search_no_results');
 		}
 
-        $this->load->library('table');
+		ee()->load->library('table');
 
-		$this->view->cp_page_title = lang('ip_search');
+		ee()->view->cp_page_title = lang('ip_search');
+		ee()->view->cp_messages   = compact('error');
 
-		$vars['message'] = $message;
-
-		$this->cp->render('members/ip_search', $vars);
+		ee()->cp->render('members/ip_search');
 	}
 
 	// --------------------------------------------------------------------
@@ -3138,7 +3161,7 @@ class Members extends CP_Controller {
 	 */
 	public function do_ip_search()
 	{
-		if ( ! $this->cp->allowed_group('can_access_members') OR ! $this->cp->allowed_group('can_admin_members'))
+		if ( ! $this->cp->allowed_group('can_access_members', 'can_admin_members'))
 		{
 			show_error(lang('unauthorized_access'));
 		}
@@ -3196,8 +3219,7 @@ class Members extends CP_Controller {
 				FROM exp_channel_titles t, exp_members m, exp_sites s
 				WHERE t.ip_address LIKE '%".$this->db->escape_like_str($ip)."%'
 				AND t.site_id = s.site_id
-				AND t.author_id = m.member_id
-				ORDER BY entry_id desc ";
+				AND t.author_id = m.member_id";
 
 		$query = $this->db->query($sql);
 		$total = $query->row('count');
@@ -3225,14 +3247,11 @@ class Members extends CP_Controller {
 		$this->db->where('module_name', 'Comment');
 		$comment_installed = $this->db->count_all_results();
 
-		if ($comment_installed  == 1)
+		if ($comment_installed == 1)
 		{
 			$sql = "SELECT COUNT(*) AS count
-					FROM exp_channel_titles t, exp_members m, exp_sites s
-					WHERE t.ip_address LIKE '%".$this->db->escape_like_str($ip)."%'
-					AND t.site_id = s.site_id
-					AND t.author_id = m.member_id
-					ORDER BY entry_id desc ";
+					FROM exp_comments c
+					WHERE c.ip_address LIKE '%".$this->db->escape_like_str($ip)."%'";
 
 			$query = $this->db->query($sql);
 			$total = $query->row('count');
@@ -3242,16 +3261,14 @@ class Members extends CP_Controller {
 			$config['total_rows'] = $total;
 			$this->pagination->initialize($config);
 
-			$sql = "SELECT s.site_label, t.entry_id, t.channel_id, t.title, t.ip_address, m.member_id, m.username, m.screen_name, m.email
-					FROM exp_channel_titles t, exp_members m, exp_sites s
-					WHERE t.ip_address LIKE '%".$this->db->escape_like_str($ip)."%'
-					AND t.site_id = s.site_id
-					AND t.author_id = m.member_id
-					ORDER BY entry_id desc
+			$sql = "SELECT c.entry_id, c.channel_id, c.comment, c.ip_address, c.author_id, c.name, c.comment_id, c.email
+					FROM exp_comments c
+					WHERE c.ip_address LIKE '%".$this->db->escape_like_str($ip)."%'
+					ORDER BY entry_id, comment_id desc
 					LIMIT {$per_page}, 10";
 
-			$vars['channel_entries_pagination'] = $this->pagination->create_links();
-			$vars['channel_entries'] = $this->db->query($sql);
+			$vars['comments_pagination'] = $this->pagination->create_links();
+			$vars['comments'] = $this->db->query($sql);
 		}
 
 		// Find Forum Topics with IP
@@ -3267,8 +3284,7 @@ class Members extends CP_Controller {
 					FROM exp_forum_topics f, exp_members m, exp_forum_boards b
 					WHERE f.ip_address LIKE '%".$this->db->escape_like_str($ip)."%'
 					AND f.board_id = b.board_id
-					AND f.author_id = m.member_id
-					ORDER BY f.topic_id desc";
+					AND f.author_id = m.member_id";
 
 			$query = $this->db->query($sql);
 			$total = $query->row('count');
@@ -3294,8 +3310,7 @@ class Members extends CP_Controller {
 			$sql = "SELECT COUNT(*) AS count
 					FROM exp_forum_posts p, exp_members m
 					WHERE p.ip_address LIKE '%".$this->db->escape_like_str($ip)."%'
-					AND p.author_id = m.member_id
-					ORDER BY p.topic_id desc";
+					AND p.author_id = m.member_id";
 
 			$query = $this->db->query($sql);
 			$total = $query->row('count');

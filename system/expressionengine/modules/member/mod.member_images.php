@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -86,16 +86,16 @@ class Member_images extends Member {
 
 		return $this->_var_swap($template,
 			array(
-					'form_declaration'			=> ee()->functions->form_declaration($data),
-					'path:signature_image'		=> 	ee()->config->slash_item('sig_img_url').$query->row('sig_img_filename') ,
-					'signature_image_width'		=> 	$query->row('sig_img_width') ,
-					'signature_image_height'	=> 	$query->row('sig_img_height') ,
-					'signature'					=>	$query->row('signature') ,
-					'lang:max_image_size'		=>  $max_size,
-					'maxchars'					=> (ee()->config->item('sig_maxlength') == 0) ? 10000 : ee()->config->item('sig_maxlength'),
-					'include:html_formatting_buttons' => $buttons,
-				 )
-			);
+				'form_declaration'			=> ee()->functions->form_declaration($data),
+				'path:signature_image'		=> ee()->config->slash_item('sig_img_url').$query->row('sig_img_filename'),
+				'signature_image_width'		=> $query->row('sig_img_width'),
+				'signature_image_height'	=> $query->row('sig_img_height'),
+				'signature'					=> ee()->functions->encode_ee_tags($query->row('signature'), TRUE),
+				'lang:max_image_size'		=> $max_size,
+				'maxchars'					=> (ee()->config->item('sig_maxlength') == 0) ? 10000 : ee()->config->item('sig_maxlength'),
+				'include:html_formatting_buttons' => $buttons,
+			)
+		);
 	}
 
 	// --------------------------------------------------------------------
@@ -111,32 +111,46 @@ class Member_images extends Member {
 			return $this->_trigger_error('edit_signature', 'signatures_not_allowed');
 		}
 
-		$_POST['body'] = ee()->db->escape_str(ee()->security->xss_clean($_POST['body']));
-
-		$maxlength = (ee()->config->item('sig_maxlength') == 0) ? 10000 : ee()->config->item('sig_maxlength');
-
-		if (strlen($_POST['body']) > $maxlength)
+		// Do we have what we need in $_POST?
+		if ( ! ee()->input->post('body'))
 		{
-			return ee()->output->show_user_error('submission', str_replace('%x', $maxlength, lang('sig_too_big')));
+			return ee()->functions->redirect($this->_member_path('edit_signature'));
 		}
 
-		ee()->db->query("UPDATE exp_members SET signature = '".$_POST['body']."' WHERE member_id ='".ee()->session->userdata('member_id')."'");
+		$body = ee()->db->escape_str(ee()->input->post('body', TRUE));
+
+		$maxlength = (ee()->config->item('sig_maxlength') == 0)
+			? 10000
+			: ee()->config->item('sig_maxlength');
+
+		if (strlen($body) > $maxlength)
+		{
+			return ee()->output->show_user_error(
+				'submission',
+				sprintf(lang('sig_too_big'), $maxlength)
+			);
+		}
+
+		ee()->db->update(
+			'members',
+			array('signature' => $body),
+			array('member_id' => ee()->session->userdata('member_id'))
+		);
 
 		// Is there an image to upload or remove?
-		if ((isset($_FILES['userfile']) AND 
-			$_FILES['userfile']['name'] != '') OR 
-			isset($_POST['remove']))
+		if ((isset($_FILES['userfile']) && $_FILES['userfile']['name'] != '')
+			OR isset($_POST['remove']))
 		{
 			return $this->upload_signature_image();
 		}
 
 		// Success message
 		return $this->_var_swap($this->_load_element('success'),
-								array(
-										'lang:heading'	=>	lang('signature'),
-										'lang:message'	=>	lang('signature_updated')
-									 )
-								);
+			array(
+				'lang:heading' => lang('signature'),
+				'lang:message' => lang('signature_updated')
+			)
+		);
 	}
 
 	// --------------------------------------------------------------------
@@ -208,7 +222,7 @@ class Member_images extends Member {
 			$tmpl = $this->_load_element('avatar_folder_list');
 
 		 	$folders = '';
-		 
+
 			while (FALSE !== ($file = readdir($fp)))
 			{
 				if (is_dir($avatar_path.$file) AND $file != 'uploads' AND $file != '.' AND $file != '..')
@@ -294,7 +308,7 @@ class Member_images extends Member {
 
 		// Define the paths and get the images
 		$avatar_path = ee()->config->slash_item('avatar_path').ee()->security->sanitize_filename($this->cur_id).'/';
-		$avatar_url  = ee()->config->slash_item('avatar_url').ee()->security->sanitize_filename($this->cur_id).'/';
+		$avatar_url = ee()->config->slash_item('avatar_url').ee()->security->sanitize_filename($this->cur_id).'/';
 
 		$avatars = $this->_get_avatars($avatar_path);
 
@@ -304,47 +318,43 @@ class Member_images extends Member {
 			return $this->_trigger_error('edit_avatar', 'avatars_not_found');
 		}
 
-		// Pagination anyone?
-		$pagination = '';
-		$max_rows	= 8;
-		$max_cols	= 3;
-		$col_ct		= 0;
-		$perpage 	= $max_rows * $max_cols;
-		$total_rows = count($avatars);
-		$rownum 	= ($this->uri_extra == '') ? 0 : $this->uri_extra;
-		$base_url	= $this->_member_path('browse_avatars/'.$this->cur_id.'/');
+		$template = $this->_load_element('browse_avatars');
 
-		if ($rownum > count($avatars))
+		// Check to see if the old style pagination exists
+		// @deprecated 2.8
+		if (stripos($template, LD.'if pagination'.RD) !== FALSE)
 		{
-			$rownum = 0;			
+			if (stripos($template, LD.'paginate'.RD) !== FALSE)
+			{
+				$template = str_replace('{paginate}', '{pagination_links}', $template);
+			}
+
+			$template = preg_replace("/{if pagination}(.*?){\/if}/uis", "{paginate}$1{/paginate}", $template);
+			ee()->load->library('logger');
+			ee()->logger->developer('{if paginate} has been deprecated, use normal {paginate} tags in your browse avatars template.', TRUE, 604800);
 		}
 
-		if ($total_rows > $perpage)
+		// Load up pagination and start parsing
+		ee()->load->library('pagination');
+		$pagination = ee()->pagination->create();
+		$pagination->position = 'inline';
+		$template = $pagination->prepare($template);
+
+		// Pagination anyone?
+		$max_rows = 5;
+		$max_cols = 3;
+		$per_page = $max_rows * $max_cols;
+		$total_rows = count($avatars);
+
+		if ($total_rows > $per_page)
 		{
-			$avatars = array_slice($avatars, $rownum, $perpage);
-
-			ee()->load->library('pagination');
-
-			$config['base_url']		= $base_url;
-			$config['total_rows'] 	= $total_rows;
-			$config['per_page']		= $perpage;
-			$config['cur_page']		= $rownum;
-			$config['first_link'] 	= lang('pag_first_link');
-			$config['last_link'] 	= lang('pag_last_link');
-				
-			ee()->pagination->initialize($config);
-			$pagination = ee()->pagination->create_links();			
-
-			// We add this for use later
-
-			if ($rownum != '')
-			{
-				$base_url .= $rownum.'/';
-			}
+			$pagination->build($total_rows, $per_page);
+			$avatars = array_slice($avatars, $pagination->offset, $pagination->per_page);
 		}
 
 		// Build the table rows
-		$avstr = '';
+		$avstr	= '';
+		$col_ct	= 0;
 		foreach ($avatars as $image)
 		{
 			if ($col_ct == 0)
@@ -378,20 +388,8 @@ class Member_images extends Member {
 		}
 
 		// Finalize the output
-		$template = $this->_load_element('browse_avatars');
-
-		if ($pagination == '')
-		{
-			$template = $this->_deny_if('pagination', $template);
-		}
-		else
-		{
-			$template = $this->_allow_if('pagination', $template);
-		}
-
-
-		return $this->_var_swap($template,
-			array(
+		$base_url = $this->_member_path('browse_avatars/'.$this->cur_id.'/');
+		return $this->_var_swap($pagination->render($template), array(
 			'form_declaration'		=> ee()->functions->form_declaration(
 				array(
 					'action' 		=> $this->_member_path('select_avatar'),
@@ -399,10 +397,8 @@ class Member_images extends Member {
 					)
 				),
 			'avatar_set'			=> ucwords(str_replace("_", " ", $this->cur_id)),
-			'avatar_table_rows'		=> $avstr,
-			'pagination'			=> $pagination
-			)
-		);
+			'avatar_table_rows'		=> $avstr
+		));
 	}
 
 	// --------------------------------------------------------------------
@@ -418,7 +414,7 @@ class Member_images extends Member {
 			return $this->_trigger_error('edit_avatar', 'avatars_not_enabled');
 		}
 
-		if (ee()->input->get_post('avatar') === FALSE OR 
+		if (ee()->input->get_post('avatar') === FALSE OR
 			ee()->input->get_post('folder') === FALSE)
 		{
 			return ee()->functions->redirect(ee()->input->get_post('referrer'));
@@ -426,7 +422,7 @@ class Member_images extends Member {
 
 		$folder	= ee()->security->sanitize_filename(ee()->input->get_post('folder'));
 		$file	= ee()->security->sanitize_filename(ee()->input->get_post('avatar'));
-		
+
 		$basepath 	= ee()->config->slash_item('avatar_path');
 		$avatar		= $avatar	= $folder.'/'.$file;
 
@@ -436,8 +432,8 @@ class Member_images extends Member {
 		{
 			return $this->_trigger_error('edit_avatar', 'avatars_not_found');
 		}
-		
-		// Fetch the avatar meta-data		
+
+		// Fetch the avatar meta-data
 		if ( ! function_exists('getimagesize'))
 		{
 			return $this->_trigger_error('edit_avatar', 'image_assignment_error');
@@ -452,8 +448,8 @@ class Member_images extends Member {
 		ee()->member_model->update_member(
 			ee()->session->userdata('member_id'),
 			array(
-				'avatar_filename' => $avatar, 
-				'avatar_width' => $width, 
+				'avatar_filename' => $avatar,
+				'avatar_width' => $width,
 				'avatar_height' => $height
 			)
 		);
@@ -485,15 +481,15 @@ class Member_images extends Member {
 
 	    $avatars = array();
 
-	    while (FALSE !== ($file = readdir($fp))) 
-	    { 
+	    while (FALSE !== ($file = readdir($fp)))
+	    {
 	        if (FALSE !== ($pos = strpos($file, '.')))
 	        {
 	            if (in_array(substr($file, $pos), $extensions))
 	            {
 	                $avatars[] = $file;
 	            }
-	        }                            
+	        }
 	    }
 
 	    closedir($fp);
@@ -511,7 +507,7 @@ class Member_images extends Member {
 		return $this->_upload_image('avatar');
 	}
 
-	// --------------------------------------------------------------------	
+	// --------------------------------------------------------------------
 
 	/**
 	 * Upload Photo
@@ -539,7 +535,7 @@ class Member_images extends Member {
 	function _upload_image($type = 'avatar')
 	{
 		ee()->load->library('members');
-		
+
 		$upload = ee()->members->upload_member_images($type, ee()->session->userdata('member_id'));
 
 		if (is_array($upload))

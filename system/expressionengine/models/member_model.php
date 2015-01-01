@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -99,7 +99,10 @@ class Member_model extends CI_Model {
 	 */
 	function get_members($group_id = '', $limit = '', $offset = '', $search_value = '', $order = array(), $column = 'all')
 	{
-		$this->db->select("members.username, members.member_id, members.screen_name, members.email, members.join_date, members.last_visit, members.group_id, members.member_id, members.in_authorlist");
+		// Is a unique order by specified
+		$add_orderby = TRUE;
+
+		$this->db->select("members.username, members.member_id, members.screen_name, members.email, members.join_date, members.last_visit, members.group_id, members.in_authorlist");
 
 		$this->_prep_search_query($group_id, $search_value, $column);
 
@@ -117,12 +120,22 @@ class Member_model extends CI_Model {
 		{
 			foreach ($order as $key => $val)
 			{
+				if ($key == 'member_id')
+				{
+					$add_orderby = FALSE;
+				}
+
 				$this->db->order_by($key, $val);
 			}
 		}
 		else
 		{
 			$this->db->order_by('join_date');
+		}
+
+		if ($add_orderby)
+		{
+			$this->db->order_by('member_id');
 		}
 
 		$members = $this->db->get('members');
@@ -400,7 +413,7 @@ class Member_model extends CI_Model {
 		// hook.
 		if ($this->extensions->active_hook('member_create_start'))
 		{
-			list($data, $cdata) = $this->extensions->call('member_create_start', $member_id, $data, $cdata);
+			list($data, $cdata) = $this->extensions->call('member_create_start', $data, $cdata);
 		}
 		//
 		// ---------------------------------------------------------------
@@ -865,11 +878,14 @@ class Member_model extends CI_Model {
 			$this->db->where('author_id', $member_id);
 			$new_stats = $this->db->get('channel_titles')->row_array();
 
+			// Default to 0 if there are no entries to pull back
+			$entry_date = ($new_stats['entry_date']) ? $new_stats['entry_date'] : 0;
+
 			// Update member stats
 			$this->db->where('member_id', $member_id);
 			$this->db->update('members', array(
 				'total_entries' => $new_stats['count'],
-				'last_entry_date' => $new_stats['entry_date']
+				'last_entry_date' => $entry_date
 			));
 		}
 	}
@@ -1622,24 +1638,25 @@ class Member_model extends CI_Model {
 				// Check to see if the token is ID
 				$token_name = ($token_name === 'id') ? 'member_id' : $token_name;
 
+				// Clean the token name to arrive at a potential column name
+				// and prevent any shenanigans
+				$token_name = ee()->db->protect_identifiers(
+					preg_replace('/[^\w-.]/', '', $token_name)
+				);
 				$this->db->like('members.'.$token_name, $token_value);
 			}
 		}
 		elseif ($search_value != '')
 		{
-			$search_field = 'all';
-
-			if ( ! in_array($search_in, $no_search))
+			if (in_array($search_in, $no_search) OR $search_in == 'all')
 			{
-				$search_in = $search_field;
-			}
-
-			if ($search_in == 'all')
-			{
-				$this->db->where("(`exp_members`.`screen_name` LIKE '%".$this->db->escape_like_str($search_value)."%' OR `exp_members`.`username` LIKE '%".$this->db->escape_like_str($search_value)."%' OR `exp_members`.`email` LIKE '%".$this->db->escape_like_str($search_value)."%')", NULL, TRUE);
+				$this->db->where("(`exp_members`.`screen_name` LIKE '%".$this->db->escape_like_str($search_value)."%' OR `exp_members`.`username` LIKE '%".$this->db->escape_like_str($search_value)."%' OR `exp_members`.`email` LIKE '%".$this->db->escape_like_str($search_value)."%' OR `exp_members`.`member_id` LIKE '%".$this->db->escape_like_str($search_value)."%')", NULL, TRUE);
 			}
 			else
 			{
+				$search_in = ee()->db->protect_identifiers(
+					preg_replace('/[^\w-.]/', '', $search_in)
+				);
 				$this->db->like('members.'.$search_in, $search_value);
 			}
 		}

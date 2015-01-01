@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -63,24 +63,6 @@ abstract class EE_Fieldtype {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Constructor
-	 *
-	 * @deprecated This is only here to maintain backwards compatibility
-	 * for people using parent::EE_Fieldtype() and will be removed in a
-	 * later version.  Deprecated as of version 2.6
-	 */
-	public function EE_Fieldtype()
-	{
-		$this->EE =& get_instance();
-
-		// Log the deprecation.
-		ee()->load->library('logger');
-		ee()->logger->deprecated('2.6', 'EE_Fieldtype::__construct()');
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
 	 * Re-initialize the class.
 	 *
 	 * Friend <Api_channel_fields>
@@ -126,6 +108,14 @@ abstract class EE_Fieldtype {
 		// to __set and __get when we're ready for full deprecation.
 		$this->field_id = $this->id;
 		$this->field_name = $this->name;
+
+		// Since fieldtypes are currently treated as singletons, we need to make
+		// sure if a fieldtype is instantiated without a content_id that it
+		// doesn't continue to use the content ID from the previous instantiation
+		if ( ! isset($config['content_id']))
+		{
+			$this->content_id = NULL;
+		}
 	}
 
 	// --------------------------------------------------------------------
@@ -565,7 +555,7 @@ abstract class EE_Fieldtype {
 
 		// Data from Form Validation
 		$show_fmt = set_value($prefix.'field_show_fmt', $data['field_show_fmt_y']);
-		$show_fmt = ($show_fmt == 'y' OR $show_fmt === TRUE);
+		$show_fmt = ($show_fmt == 'y' OR $show_fmt == '1');
 
 		ee()->table->add_row(
 			lang('deft_field_formatting', $prefix.'field_fmt'),
@@ -603,7 +593,7 @@ abstract class EE_Fieldtype {
 
 		// Data from Form Validation
 		$ltr_checked = set_value($prefix.'field_text_direction', $data['field_text_direction_ltr']);
-		$ltr_checked = ($ltr_checked == 'ltr' OR $ltr_checked === TRUE OR $ltr_checked === '1');
+		$ltr_checked = ($ltr_checked == 'ltr' OR $ltr_checked == '1');
 
 		ee()->table->add_row(
 			'<strong>'.lang('text_direction').'</strong>',
@@ -762,7 +752,7 @@ abstract class EE_Fieldtype {
 		$data = (isset($data[$data_key])) ? $data[$data_key] : '';
 
 		$val_is_y = set_value($prefix.$data_key, $data);
-		$val_is_y = ($val_is_y == 'y' OR $val_is_y === TRUE);
+		$val_is_y = ($val_is_y == 'y' OR $val_is_y == '1');
 
 		$yes_no_string = form_radio($prefix.$data_key, 'y', $val_is_y, 'id="'.$prefix.$data_key.'_y"').NBS.
 			lang('yes', $prefix.$data_key.'_y').NBS.NBS.NBS.NBS.NBS.

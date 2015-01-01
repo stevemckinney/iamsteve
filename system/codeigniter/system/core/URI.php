@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -47,6 +47,11 @@ class CI_URI {
 	{
 		$this->config =& load_class('Config', 'core');
 		log_message('debug', "URI Class Initialized");
+
+		if (defined('REQ') && REQ == 'CP')
+		{
+			$this->config->set_item('uri_protocol', 'QUERY_STRING');
+		}
 	}
 
 
@@ -63,7 +68,7 @@ class CI_URI {
 		if (strtoupper($this->config->item('uri_protocol')) == 'AUTO')
 		{
 			// Let's try the REQUEST_URI first, this will work in most situations
-			if ($uri = $this->_detect_uri())
+			if ($uri = $this->_detect_uri('REQUEST_URI'))
 			{
 				$this->_set_uri_string($uri);
 				return;
@@ -79,7 +84,7 @@ class CI_URI {
 			}
 
 			// No PATH_INFO?... What about QUERY_STRING?
-			$path =  (isset($_SERVER['QUERY_STRING'])) ? $_SERVER['QUERY_STRING'] : @getenv('QUERY_STRING');
+			$path = (isset($_SERVER['QUERY_STRING'])) ? $_SERVER['QUERY_STRING'] : @getenv('QUERY_STRING');
 			if (trim($path, '/') != '')
 			{
 				$this->_set_uri_string($path);
@@ -100,16 +105,16 @@ class CI_URI {
 
 		$uri = strtoupper($this->config->item('uri_protocol'));
 
-		if ($uri == 'REQUEST_URI')
+		if ($uri == 'REQUEST_URI' OR $uri == 'QUERY_STRING')
 		{
-			$this->_set_uri_string($this->_detect_uri());
+			$this->_set_uri_string($this->_detect_uri($uri));
 			return;
 		}
 
 		$path = (isset($_SERVER[$uri])) ? $_SERVER[$uri] : @getenv($uri);
 		$this->_set_uri_string($path);
 	}
-	
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -122,7 +127,7 @@ class CI_URI {
 	{
 		// Filter out control characters
 		$str = remove_invisible_characters($str, FALSE);
-		
+
 		// If the URI contains only a slash we'll kill it
 		$this->uri_string = ($str == '/') ? '' : $str;
 	}
@@ -136,40 +141,55 @@ class CI_URI {
 	 * if necessary.
 	 *
 	 * @access	private
+	 * @param string $uri_protocol uri_protocol from the config
 	 * @return	string
 	 */
-	protected function _detect_uri()
+	protected function _detect_uri($uri_protocol)
 	{
-		if ( ! isset($_SERVER['REQUEST_URI']) OR ! isset($_SERVER['SCRIPT_NAME']))
+		if ($uri_protocol == 'REQUEST_URI')
 		{
-			return '';
+			if ( ! isset($_SERVER['REQUEST_URI']) OR ! isset($_SERVER['SCRIPT_NAME']))
+			{
+				return '';
+			}
+
+			$uri = $_SERVER['REQUEST_URI'];
+
+			if (strpos($uri, $_SERVER['SCRIPT_NAME']) === 0)
+			{
+				$uri = substr($uri, strlen($_SERVER['SCRIPT_NAME']));
+			}
+			elseif (strpos($uri, dirname($_SERVER['SCRIPT_NAME'])) === 0)
+			{
+				$uri = substr($uri, strlen(dirname($_SERVER['SCRIPT_NAME'])));
+			}
+		}
+		elseif ($uri_protocol == 'QUERY_STRING')
+		{
+			$uri = (isset($_SERVER['QUERY_STRING'])) ? $_SERVER['QUERY_STRING'] : @getenv('QUERY_STRING');
 		}
 
-		$uri = $_SERVER['REQUEST_URI'];
-		
-		if (strpos($uri, $_SERVER['SCRIPT_NAME']) === 0)
-		{
-			$uri = substr($uri, strlen($_SERVER['SCRIPT_NAME']));
-		}
-		elseif (strpos($uri, dirname($_SERVER['SCRIPT_NAME'])) === 0)
-		{
-			$uri = substr($uri, strlen(dirname($_SERVER['SCRIPT_NAME'])));
-		}
+		// This section ensures that even on servers that require the URI to be
+		// in the query string (Nginx) a correct URI is found, and also fixes
+		// the QUERY_STRING server var and $_GET array.
 
-		// This section ensures that even on servers that require the URI to be in the query string (Nginx) a correct
-		// URI is found, and also fixes the QUERY_STRING server var and $_GET array.
 		if (strncmp($uri, '?/', 2) === 0)
 		{
 			$uri = substr($uri, 2);
 		}
-		
+
 		$parts = preg_split('#\?#i', $uri, 2);
 		$uri = $parts[0];
-		
+
 		if (isset($parts[1]))
 		{
 			$_SERVER['QUERY_STRING'] = $parts[1];
 			parse_str($_SERVER['QUERY_STRING'], $_GET);
+		}
+		elseif (defined('REQ') && REQ == 'CP' && reset($_GET) === '')
+		{
+			$uri = $_SERVER['QUERY_STRING'] = key($_GET);
+			array_shift($_GET);
 		}
 		else
 		{
@@ -499,7 +519,7 @@ class CI_URI {
 	{
 		$leading	= '/';
 		$trailing	= '/';
-		
+
 		if ($where == 'trailing')
 		{
 			$leading	= '';
@@ -508,7 +528,7 @@ class CI_URI {
 		{
 			$trailing	= '';
 		}
-		
+
 		return $leading.$this->$which($n).$trailing;
 	}
 

@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.7
@@ -74,14 +74,19 @@ class Grid_ft extends EE_Fieldtype {
 
 	public function post_save($data)
 	{
-		$this->_load_grid_lib();
+		// Prevent saving if save() was never called, happens in Channel Form
+		// if the field is missing from the form
+		if (($data = ee()->session->cache(__CLASS__, $this->name(), FALSE)) !== FALSE)
+		{
+			$this->_load_grid_lib();
 
-		ee()->grid_lib->save(ee()->session->cache(__CLASS__, $this->name()));
+			ee()->grid_lib->save($data);
+		}
 	}
 
 	// --------------------------------------------------------------------
 
-	// This fieldtypes has been converted, so it accepts all content types
+	// This fieldtype has been converted, so it accepts all content types
 	public function accepts_content_type($name)
 	{
 		return ($name != 'grid');
@@ -305,7 +310,8 @@ class Grid_ft extends EE_Fieldtype {
 				$this->row,
 				$this->id(),
 				$params,
-				$match[1]
+				$match[1],
+				$this->content_type()
 			);
 
 			// Replace the marker section with the parsed data
@@ -463,7 +469,7 @@ class Grid_ft extends EE_Fieldtype {
 
 		ee()->load->library('grid_parser');
 
-		return ee()->grid_parser->parse($this->row, $this->id(), $params, $tagdata);
+		return ee()->grid_parser->parse($this->row, $this->id(), $params, $tagdata, $this->content_type());
 	}
 
 	// --------------------------------------------------------------------
@@ -568,6 +574,7 @@ class Grid_ft extends EE_Fieldtype {
 
 		ee()->cp->add_to_head(ee()->view->head_link('css/grid.css'));
 
+		ee()->cp->add_js_script('plugin', 'ee_url_title');
 		ee()->cp->add_js_script('ui', 'sortable');
 		ee()->cp->add_js_script('file', 'cp/sort_helper');
 		ee()->cp->add_js_script('file', 'cp/grid');
@@ -720,8 +727,11 @@ class Grid_ft extends EE_Fieldtype {
 	{
 		ee()->load->library('grid_lib');
 
-		ee()->grid_lib->entry_id = (isset($this->settings['entry_id']))
+		// Attempt to get an entry ID first
+		$entry_id = (isset($this->settings['entry_id']))
 			? $this->settings['entry_id'] : ee()->input->get_post('entry_id');
+
+		ee()->grid_lib->entry_id = ($this->content_id() == NULL) ? $entry_id : $this->content_id();
 		ee()->grid_lib->field_id = $this->id();
 		ee()->grid_lib->field_name = $this->name();
 		ee()->grid_lib->content_type = $this->content_type();

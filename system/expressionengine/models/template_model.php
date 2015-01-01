@@ -4,14 +4,14 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
  * @filesource
  */
 
-// ------------------------------------------------------------------------ 
+// ------------------------------------------------------------------------
 /**
  * ExpressionEngine Template Model
  *
@@ -31,7 +31,7 @@ class Template_model extends CI_Model {
 	// this hopefully won't be there long.
 	// Temporary stand in cache of site preferences, to be
 	// used with multi-site manager.  Just here until we
-	// can rewrite EE_Config to do this properly.  
+	// can rewrite EE_Config to do this properly.
 	private $site_prefs_cache = array();
 
 	/**
@@ -40,25 +40,26 @@ class Template_model extends CI_Model {
 	 * Fetches templates from the database (loading the data from
 	 * a saved file if appropriate) and returns an array of
 	 * populated Template_Entity objects.
-	 * 
-	 * @param	mixed[] Optional. An array of fields and values that can be
-	 *					used to filter the entities returned. Any field from
-	 *					Template_Entity may be used.  The key of the array is
-	 *					the field name and the values of the array are the
-	 *					values to check.  Values are only checked for exact
-	 *					equality and will be connected with 'AND'.  	
-	 * @param	boolean	Optional. If set, then associated Template_Group_Entity
-	 *					objects Will be loaded and set on the returned
-	 *					Template_Entity objects.
 	 *
-	 * @return	Template_Entity[]
+	 * @param	mixed[]	$fields	Optional. An array of fields and values that
+	 * 		can be used to filter the entities returned. Any field from
+	 * 		Template_Entity may be used.  The key of the array is the field
+	 * 		name and the values of the array are the values to check.  Values
+	 * 		are only checked for exact equality and will be connected with
+	 * 		'AND'.
+	 * @param	boolean	$load_groups	Optional. If set, then associated
+	 * 		Template_Group_Entity objects Will be loaded and set on the
+	 * 		returned Template_Entity objects.
+	 *
+	 * @return	Template_Entity[]	An array of Template Entities matching
+	 * 		the fields requested.
 	 */
 	public function fetch(array $fields=array(), $load_groups=FALSE)
 	{
 		$templates = $this->fetch_from_db($fields, $load_groups);
 		foreach($templates as $template)
 		{
-			if ($template->save_template_file) 
+			if ($template->save_template_file)
 			{
 				$this->_load_template_file($template);
 			}
@@ -72,28 +73,25 @@ class Template_model extends CI_Model {
 	 * Takes a populated Template_Entity and finds the file in which the
 	 * template has been saved.  It then loads the file's content into
 	 * Template_Entity::template_data.  If the $only_load_last_edit parameter
- 	 * is passed as TRUE, then it will only load the file if the file was 
+ 	 * is passed as TRUE, then it will only load the file if the file was
 	 * edited more recently than the template in the database. Otherwise
 	 * it will bail out.
-	 * 
-	 * @param	Template_Entity	The populated template object you wish to load
-	 *							from a file.
-	 * @param	boolean			When passed as TRUE, will only load the file
-	 * 							if the file was edited more recently than
-	 * 							the database.			
+	 *
+	 * @param	Template_Entity	$template	The populated template object you
+	 * 		wish to load from a file.
+	 * @param	boolean	$only_load_last_edit	When passed as TRUE, will only
+	 * 		load the file if the file was edited more recently than the database.
 	 *
 	 * @return	void
 	 */
 	protected function _load_template_file(Template_Entity $template, $only_load_last_edit=FALSE)
 	{
-		// FIXME  Why on EARTH was this done in the Template parser and not
-		// originally written right into EE_Config?  Why is EE_Config not
-		// itself capable of caching preferences when used with MSM
+		// Fetch the site config if we need it
 		$site_switch = FALSE;
 		if ($this->config->item('site_id') != $template->site_id)
 		{
 			$site_switch = $this->config->config;
-			
+
 			if (isset($this->site_prefs_cache[$template->site_id]))
 			{
 				$this->config->config = $this->site_prefs_cache[$template->site_id];
@@ -108,16 +106,16 @@ class Template_model extends CI_Model {
 		// Get the filepath to the template's saved file.
 		$this->load->library('api');
 		$this->api->instantiate('template_structure');
-		$basepath = rtrim($this->config->item('tmpl_file_basepath'), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-		
-		$filepath = $basepath . $this->config->item('site_short_name') . DIRECTORY_SEPARATOR 
+		$basepath = $this->config->slash_item('tmpl_file_basepath');
+
+		$filepath = $basepath . $this->config->item('site_short_name') . DIRECTORY_SEPARATOR
 			. $template->get_group()->group_name . '.group' . DIRECTORY_SEPARATOR . $template->template_name
 			. $this->api_template_structure->file_extensions($template->template_type);
 
-	
+
 		// We don't need the other site's configuration values anymore, so
 		// reset them.  If we do this here we only have to do it once,
-		// otherwise we have to do it everywhere we bail out.  	
+		// otherwise we have to do it everywhere we bail out.
 		if ($site_switch !== FALSE)
 		{
 			$this->config->config = $site_switch;
@@ -125,7 +123,7 @@ class Template_model extends CI_Model {
 
 		if (file_exists($filepath))
 		{
-			if ($only_load_last_edit) 
+			if ($only_load_last_edit)
 			{
 				$this->load->helper('file');
 				$file_date = get_file_info($filepath, 'date');
@@ -134,7 +132,7 @@ class Template_model extends CI_Model {
 					return;
 				}
 			}
-				
+
 			$template->template_data = file_get_contents($filepath);
 			$template->loaded_from_file = TRUE;
 		}
@@ -150,25 +148,26 @@ class Template_model extends CI_Model {
 	 * objects.  Does not load the files associated with those entities (if
 	 * there are any), only loads the template stored in the database.
 	 *
-	 * @param	mixed[] Optional. An array of fields and values that can be
-	 *					used to filter the entities returned. Any field from
-	 *					Template_Entity may be used.  The key of the array is
-	 *					the field name and the values of the array are the
-	 *					values to check.  Values are only checked for exact
-	 *					equality and will be connected with 'AND'.  	
-	 * @param	boolean	Optional. If set, then associated Template_Group_Entity
-	 *					objects Will be loaded and set on the returned
-	 *					Template_Entity objects.
+	 * @param	mixed[]	$fields	Optional. An array of fields and values that
+	 * 		can be used to filter the entities returned. Any field from
+	 * 		Template_Entity may be used.  The key of the array is the field
+	 * 		name and the values of the array are the values to check.  Values
+	 * 		are only checked for exact equality and will be connected with
+	 * 		'AND'. So array('template_name' => 'home', 'site_id' => 1) becomes
+	 * 		"WHERE template_name = 'home' AND site_id = 1".
+	 * @param	boolean	$load_groups	Optional. If set, then associated
+	 * 		Template_Group_Entity objects Will be loaded and set on the
+	 * 		returned Template_Entity objects.
 	 *
 	 * @return	Template_Entity[]
 	 *
 	 */
-	public function fetch_from_db(array $fields=array(), $load_groups=FALSE) 
+	public function fetch_from_db(array $fields=array(), $load_groups=FALSE)
 	{
 		$this->db->select();
 		$this->db->from('templates');
 
-		if ($load_groups) 
+		if ($load_groups)
 		{
 			$this->db->join('template_groups', 'templates.group_id = template_groups.group_id');
 		}
@@ -200,7 +199,7 @@ class Template_model extends CI_Model {
 	{
 		$entities = array();
 		foreach ($result->result_array() as $row)
-		{	
+		{
 			$row['save_template_file'] = ($row['save_template_file'] == 'y' ? TRUE : FALSE);
 			$entity = new Template_Entity($row);
 			if ($load_groups)
@@ -221,24 +220,25 @@ class Template_model extends CI_Model {
 	 * saved file was editted more recently than the version in the database,
 	 * override the entity's content with the version in the file.
 	 *
-	 * @param	mixed[] Optional. An array of fields and values that can be
-	 *					used to filter the entities returned. Any field from
-	 *					Template_Entity may be used.  The key of the array is
-	 *					the field name and the values of the array are the
-	 *					values to check.  Values are only checked for exact
-	 *					equality and will be connected with 'AND'.  	
-	 * @param	boolean	Optional. If set, then associated Template_Group_Entity
-	 *					objects Will be loaded and set on the returned
-	 *					Template_Entity objects.
+	 * @param	mixed[] $fields	Optional. An array of fields and values that
+	 * 		can be used to filter the entities returned. Any field from
+	 * 		Template_Entity may be used.  The key of the array is the field
+	 * 		name and the values of the array are the values to check.  Values
+	 * 		are only checked for exact equality and will be connected with
+	 * 		'AND'.
+	 * @param	boolean	$load_groups	Optional. If set, then associated
+	 * 		Template_Group_Entity objects Will be loaded and set on the
+	 * 		returned Template_Entity objects.
 	 *
-	 * @return	Template_Entity[]
+	 * @return	Template_Entity[] The fetched array of Template Entities, from
+	 * 		the most recently editted source.
 	 */
 	public function fetch_last_edit(array $fields=array(), $load_groups=FALSE)
 	{
 		$templates = $this->fetch_from_db($fields, $load_groups);
 		foreach($templates as $template)
 		{
-			if ($template->save_template_file) 
+			if ($template->save_template_file)
 			{
 				$this->_load_template_file($template, TRUE);
 			}
@@ -259,25 +259,36 @@ class Template_model extends CI_Model {
 	public function save_entity(Template_Entity $entity)
 	{
 		$this->save_to_database($entity);
-		
+
 		if ($entity->save_template_file)
 		{
 			$this->save_to_file($entity);
-		} 
-	}		
+		}
+	}
 
 	// -----------------------------------------------------------------
 
 	/**
-	 * 
-	 */	
+	 * Save a Template_Entity to a File
+	 *
+	 * Saves a Template to a file.  Requires the Template to have the name
+	 * and group set.  Group will need to have its Template name set.
+	 *
+	 * @param	Template_Entity	$template	A populated Template_Entity that
+	 * 		also has its associated Template_Group_Entity populated and linked.
+	 * 		At a minimum Template_Entity::$template_name,
+	 * 		Template_Entity::template_type, Template_Entity::$template_data, and
+	 * 		Template_Group_Entity::$group_name will need to be set.
+	 *
+	 * 	@return	boolean	TRUE on success, FALSE on failure.
+	 */
 	public function save_to_file(Template_Entity $template)
 	{
 		$site_switch = FALSE;
 		if ($this->config->item('site_id') != $template->site_id)
 		{
 			$site_switch = $this->config->config;
-			
+
 			if (isset($this->site_prefs_cache[$template->site_id]))
 			{
 				$this->config->config = $this->site_prefs_cache[$template->site_id];
@@ -296,11 +307,11 @@ class Template_model extends CI_Model {
 		{
 			return FALSE;
 		}
+
 		$this->load->library('extensions');
-		
 		$this->load->library('api');
 		$this->api->instantiate('template_structure');
-		
+
 		// add a site short name folder, in case MSM uses the same template path, and repeat
 		$basepath .= $this->config->item('site_short_name');
 
@@ -310,7 +321,7 @@ class Template_model extends CI_Model {
 			$this->config->config = $site_switch;
 		}
 
-		
+
 		if ( ! is_dir($basepath))
 		{
 			if ( ! mkdir($basepath, DIR_WRITE_MODE))
@@ -319,7 +330,7 @@ class Template_model extends CI_Model {
 			}
 			chmod($basepath, DIR_WRITE_MODE);
 		}
-		
+
 		// and finally with our template group
 		$basepath .= DIRECTORY_SEPARATOR . $template->get_group()->group_name . '.group';
 
@@ -329,11 +340,11 @@ class Template_model extends CI_Model {
 			{
 				return FALSE;
 			}
-			chmod($basepath, DIR_WRITE_MODE); 
+			chmod($basepath, DIR_WRITE_MODE);
 		}
-		
+
 		$filename = $template->template_name . $this->api_template_structure->file_extensions($template->template_type);
-		
+
 		if ( ! $fp = fopen($basepath . DIRECTORY_SEPARATOR . $filename, FOPEN_WRITE_CREATE_DESTRUCTIVE))
 		{
 			return FALSE;
@@ -344,8 +355,8 @@ class Template_model extends CI_Model {
 			fwrite($fp, $template->template_data);
 			flock($fp, LOCK_UN);
 			fclose($fp);
-			
-			chmod($basepath . DIRECTORY_SEPARATOR . $filename, FILE_WRITE_MODE); 
+
+			chmod($basepath . DIRECTORY_SEPARATOR . $filename, FILE_WRITE_MODE);
 		}
 
 		return TRUE;
@@ -354,7 +365,16 @@ class Template_model extends CI_Model {
 	// -----------------------------------------------------------------
 
 	/**
+ 	 * Save a Template_Entity to the Database
  	 *
+ 	 * Save a Template Entity to the database.  Converts the entity to an
+ 	 * array.  If it has an ID it updates it, otherwise it inserts it. A
+ 	 *
+ 	 * @param	Template_Entity	$entity	The Template_Entity to save to the
+ 	 * 		database.  If an ID is present, Template will be updated. If
+ 	 * 		not it will be inserted.
+ 	 *
+ 	 * @return	boolean	TRUE on success, FALSE on failure.
 	 */
 	public function save_to_database(Template_Entity $entity)
 	{
@@ -368,8 +388,8 @@ class Template_model extends CI_Model {
 
 			$this->db->update('templates', $data);
 			return TRUE;
-		}		
-		else 
+		}
+		else
 		{
 			$this->db->insert('templates', $data);
 			$entity->template_id = $this->db->insert_id();
@@ -379,10 +399,16 @@ class Template_model extends CI_Model {
 	}
 
 	/**
+	 * Convert a Template_Entity to an Array
 	 *
+	 * Converts a Template_Entity to an array for saving to the database.
+	 *
+	 * @param	Template_Entity	$entity	The Entity you wish to save to the database.
+	 *
+	 * @return	mixed[]	The associative array to send to CI_DB.
 	 */
 	protected function _entity_to_db_array(Template_Entity $entity)
-	{	
+	{
 		$data = array(
 			'template_id' => $entity->template_id,
 			'site_id' => $entity->site_id,
@@ -400,7 +426,8 @@ class Template_model extends CI_Model {
 			'enable_http_auth' => $entity->enable_http_auth,
 			'allow_php' => $entity->allow_php,
 			'php_parse_location' => $entity->php_parse_location,
-			'hits' => $entity->hits
+			'hits' => $entity->hits,
+			'protect_javascript' => $entity->protect_javascript
 		);
 		return $data;
 	}
@@ -410,7 +437,7 @@ class Template_model extends CI_Model {
 	// -----------------------------------------------------------------
 
 	// -----------------------------------------------------------------
-	
+
 	/**
 	 * Get Template Group Metadata
 	 *
@@ -424,7 +451,7 @@ class Template_model extends CI_Model {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Create Group
 	 *
@@ -435,22 +462,22 @@ class Template_model extends CI_Model {
 	 * @return	int
 	 */
 	function create_group($data)
-	{		
+	{
 		if ($data['is_site_default'] == 'y')
 		{
 			$this->db->where('site_id', $data['site_id']);
 			$this->db->update('template_groups', array('is_site_default' => 'n'));
 		}
-		
+
 		if ( ! isset($data['group_order']))
 		{
 			$data['group_order'] = $this->db->count_all('template_groups') + 1;
 		}
 
 		$this->db->insert('template_groups', $data);
-		
+
 		$template_group_id = $this->db->insert_id();
-		
+
 		// If a user other than Super Admin is creating a template group, give them
 		// access to the group they just created
 		if ($this->session->userdata('group_id') != 1)
@@ -458,15 +485,15 @@ class Template_model extends CI_Model {
 			$data = array();
 			$data['group_id'] = $this->session->userdata('group_id');
 			$data['template_group_id'] = $template_group_id;
-			
+
 			$this->db->insert('template_member_groups', $data);
 		}
-		
+
 		return $template_group_id;
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Create Template
 	 *
@@ -538,6 +565,38 @@ class Template_model extends CI_Model {
 	// --------------------------------------------------------------------
 
 	/**
+	 * Update Template Route
+	 *
+	 * @access	public
+	 * @param	int
+	 * @param	array
+	 * @return	void
+	 */
+	function update_template_route($template_id, $fields = array())
+	{
+		$query = $this->db->get_where('template_routes', array('template_id' => $template_id), 1, 0);
+
+		if($query->num_rows() == 0)
+		{
+			$fields['template_id'] = $template_id;
+			$this->db->insert('template_routes', $fields);
+		}
+		else
+		{
+			$this->db->update('template_routes', $fields, array('template_id' => $template_id));
+		}
+
+		if ($this->db->affected_rows() != 1)
+		{
+			return FALSE;
+		}
+
+		return TRUE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
 	 * Get Template Info
 	 *
 	 * @access	public
@@ -552,7 +611,8 @@ class Template_model extends CI_Model {
 			$this->db->select(implode(",", $fields));
 		}
 
-		$this->db->where('template_id', $template_id);
+		$this->db->join('template_routes AS tr', 'tr.template_id = templates.template_id', 'left');
+		$this->db->where('templates.template_id', $template_id);
 		$this->db->where('site_id', $this->config->item('site_id'));
 		return $this->db->get('templates');
 	}
@@ -570,23 +630,23 @@ class Template_model extends CI_Model {
 		$this->load->library('api');
 		$this->api->instantiate('template_structure');
 		$ext = $this->api_template_structure->file_extensions($template_type);
-		
+
 		$basepath  = $this->config->slash_item('tmpl_file_basepath');
 		$basepath .= $this->config->item('site_short_name');
 		$basepath .= '/'.$template_group.'.group';
-		
+
 		$existing_path = $basepath.'/'.$old_name.$ext;
-		
+
 		if ( ! file_exists($existing_path))
 		{
 			return FALSE;
 		}
-		
+
 		return rename($existing_path, $basepath.'/'.$new_name.$ext);
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Update Template Ajax
 	 *
@@ -606,10 +666,10 @@ class Template_model extends CI_Model {
 		{
 			return FALSE;
 		}
-		
+
 		return TRUE;
 	}
-	
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -626,7 +686,7 @@ class Template_model extends CI_Model {
 		$this->db->where('template_id', $template_id);
 		$this->db->where('member_group', $m_group_id);
 		$count = $this->db->count_all_results('template_no_access');
-		
+
 		// if they are allowed to access it - remove from no_access
 		if ($new_status == 'y')
 		{
@@ -647,10 +707,10 @@ class Template_model extends CI_Model {
 				));
 			}
 		}
-		
+
 		return TRUE;
 	}
-	
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -666,7 +726,7 @@ class Template_model extends CI_Model {
 		$this->db->where('template_id', $template_id);
 
 		$this->db->update('templates', $data);
-		
+
 		return TRUE;
 	}
 
@@ -688,7 +748,7 @@ class Template_model extends CI_Model {
 				return FALSE;
 			}
 		}
-		
+
 		$this->db->where('item_id', $template_id);
 		$this->db->where('item_table', 'templates');
 		$this->db->where('item_field', 'template_data');
@@ -778,7 +838,7 @@ class Template_model extends CI_Model {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Get Snippet
 	 *
@@ -802,7 +862,7 @@ class Template_model extends CI_Model {
 		$this->db->where('(site_id = '.$this->db->escape_str($this->config->item('site_id')).' OR site_id = 0)');
 
 		$result = $this->db->get('snippets');
-		
+
 		if ($result->num_rows() != 1)
 		{
 			return FALSE;
@@ -825,7 +885,7 @@ class Template_model extends CI_Model {
 	{
 		$this->db->where('snippet_name', $snippet_name);
 		$results = $this->db->get('snippets');
-	
+
 		if ($results->num_rows() == 0)
 		{
 			return TRUE;
@@ -837,7 +897,7 @@ class Template_model extends CI_Model {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Delete Snippet
 	 *
@@ -853,7 +913,7 @@ class Template_model extends CI_Model {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Get Global Variables
 	 *
@@ -868,7 +928,7 @@ class Template_model extends CI_Model {
 		$this->db->order_by('variable_name');
 		return $this->db->get('global_variables');
 	}
-	
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -886,7 +946,7 @@ class Template_model extends CI_Model {
 		$this->db->where('variable_id', $variable_id);
 		$this->db->order_by('variable_name');
 		$results = $this->db->get('global_variables');
-	
+
 		return $results;
 	}
 
@@ -907,7 +967,7 @@ class Template_model extends CI_Model {
 		$this->db->where('variable_name', $variable_name);
 		$this->db->order_by('variable_name');
 		$results = $this->db->get('global_variables');
-	
+
 		if ($results->num_rows() == 0)
 		{
 			return TRUE;
@@ -917,7 +977,7 @@ class Template_model extends CI_Model {
 			return FALSE;
 		}
 	}
-	
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -937,10 +997,10 @@ class Template_model extends CI_Model {
 		$this->db->where('variable_id', $variable_id);
 
 		$this->db->update('global_variables');
-		
+
 		return $this->db->affected_rows();
 	}
-	
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -958,7 +1018,7 @@ class Template_model extends CI_Model {
 		$this->db->set('site_id', $this->config->item('site_id'));
 
 		$this->db->insert('global_variables');
-		
+
 		return $this->db->insert_id();
 	}
 
@@ -975,7 +1035,7 @@ class Template_model extends CI_Model {
 	{
 		$this->db->where('variable_id', $variable_id);
 		$this->db->delete('global_variables');
-		
+
 		return $this->db->affected_rows();
 	}
 
@@ -998,7 +1058,7 @@ class Template_model extends CI_Model {
 		$this->db->where('template_name !=', "offline_template");
 		$this->db->order_by('template_name');
 		$results = $this->db->get();
-	
+
 		return $results;
 	}
 
@@ -1020,10 +1080,10 @@ class Template_model extends CI_Model {
 		$this->db->where('site_id', $this->config->item('site_id'));
 		$this->db->where('template_name', $template_name);
 		$results = $this->db->get();
-				
+
 		return $results;
 	}
-	
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -1039,7 +1099,7 @@ class Template_model extends CI_Model {
 	{
 		$vars = array(
 						'admin_notify_reg'						=> array('name', 'username', 'email', 'site_name', 'control_panel_url'),
-						'admin_notify_entry'					=> array('channel_name', 'entry_title', 'entry_url', 'comment_url', 'name', 'email'),
+						'admin_notify_entry'					=> array('channel_name', 'entry_title', 'entry_url', 'comment_url', 'cp_edit_entry_url', 'name', 'email'),
 						'admin_notify_comment'					=> array('channel_name', 'entry_title', 'entry_id', 'url_title', 'channel_id', 'comment_url_title_auto_path',  'comment_url', 'comment', 'comment_id', 'name', 'url', 'email', 'location', 'unwrap}{delete_link}{/unwrap', 'unwrap}{close_link}{/unwrap', 'unwrap}{approve_link}{/unwrap'),
 						'admin_notify_forum_post'				=> array('name_of_poster', 'forum_name', 'title', 'body', 'thread_url', 'post_url'),
 						'admin_notify_mailinglist'				=> array('email', 'mailing_list'),
@@ -1049,7 +1109,7 @@ class Template_model extends CI_Model {
 						'validated_member_notify'				=> array('name', 'site_name', 'site_url'),
 						'mailinglist_activation_instructions'	=> array('activation_url', 'site_name', 'site_url', 'mailing_list'),
 						'comment_notification'					=> array('name_of_commenter', 'name_of_recipient', 'channel_name', 'entry_title', 'entry_id', 'url_title', 'channel_id', 'comment_url_title_auto_path', 'comment_url', 'comment', 'notification_removal_url', 'site_name', 'site_url', 'comment_id'),
-						
+
 						'comments_opened_notification'					=> array('name_of_recipient', 'channel_name', 'entry_title', 'entry_id', 'url_title', 'channel_id', 'comment_url_title_auto_path', 'comment_url', 'notification_removal_url', 'site_name', 'site_url', 'total_comments_added', 'comments', 'name_of_commenter', 'comment_id', 'comment', '/comments'),
 
 						'forum_post_notification'				=> array('name_of_recipient', 'name_of_poster', 'forum_name', 'title', 'thread_url', 'body', 'post_url'),
@@ -1063,7 +1123,7 @@ class Template_model extends CI_Model {
 	}
 
 	// --------------------------------------------------------------------
-	
+
 	/**
 	 * Update Specialty Template
 	 *
@@ -1076,7 +1136,7 @@ class Template_model extends CI_Model {
 	{
 		$this->db->set('template_data', $template_data);
 		$this->db->set('enable_template', $enable_template);
-		
+
 		if ($template_title)
 		{
 			$this->db->set('data_title', $template_title);
@@ -1085,27 +1145,30 @@ class Template_model extends CI_Model {
 		$this->db->where('template_id', $template_id);
 		$this->db->where('site_id', $this->config->item('site_id'));
 		$this->db->update('specialty_templates');
-		
+
 		return $this->db->affected_rows();
 	}
 
 }
 
 /**
+ * A Prototype Database Entity
  *
+ * A prototype database entity for use with the templates table. Properties
+ * have a 1 to 1 correspondence with db table properties.  In addition, the
+ * template knows whether or not it has been loaded from a file.
  */
-class Template_Entity 
-{
+class Template_Entity {
 	/**
 	 *
 	 */
 	protected $template_id;
-	
+
 	/**
 	 *
 	 */
 	protected $site_id;
-	
+
 	/**
 	 *
 	 */
@@ -1115,12 +1178,12 @@ class Template_Entity
 	 *
 	 */
 	protected $template_name;
-	
+
 	/**
 	 *
 	 */
 	protected $save_template_file;
-	
+
 	/**
 	 *
 	 */
@@ -1140,17 +1203,17 @@ class Template_Entity
 	 *
 	 */
 	protected $edit_date;
-	
+
 	/**
 	 *
 	 */
 	protected $last_author_id;
-	
+
 	/**
 	 *
 	 */
 	protected $cache;
-	
+
 	/**
 	 *
 	 */
@@ -1160,7 +1223,7 @@ class Template_Entity
 	 *
 	 */
 	protected $no_auth_bounce;
-	
+
 	/**
 	 *
 	 */
@@ -1170,7 +1233,7 @@ class Template_Entity
 	 *
 	 */
 	protected $allow_php;
-	
+
 	/**
 	 *
 	 */
@@ -1180,6 +1243,8 @@ class Template_Entity
 	 *
 	 */
 	protected $hits;
+
+	protected $protect_javascript;
 
 
 	// ----------------------------------------------------
@@ -1199,7 +1264,8 @@ class Template_Entity
 	// ----------------------------------------------------
 
 	/**
-	 *
+	 * An instance of Template_Group_Entity representing the associated
+	 * Template Group.
 	 */
 	protected $template_group;
 
@@ -1219,7 +1285,7 @@ class Template_Entity
 
 	/**
 	 *
-	 */		
+	 */
 	public function __get($name)
 	{
 		if ( strpos('_', $name) === 0  OR ! property_exists($this, $name))
@@ -1245,7 +1311,11 @@ class Template_Entity
 
 
 	/**
-	 *
+ 	 * Get Associated Template Group
+ 	 *
+ 	 * Gets an Entity representing this Template's Template Group.
+ 	 *
+	 * @returns	Template_Group_Entity	The associated Template Group.
 	 */
 	public function get_group()
 	{
@@ -1253,7 +1323,14 @@ class Template_Entity
 	}
 
 	/**
+	 * Set this Template's Template Group
 	 *
+	 * Used to set the link to this Template's Template Group.
+	 *
+	 * @param	Template_Group_Entity	$group	The group Entity to link to
+	 * 		this Template.
+	 *
+	 * @return $this
 	 */
 	public function set_group(Template_Group_Entity $group)
 	{
@@ -1262,7 +1339,6 @@ class Template_Entity
 		return $this;
 	}
 }
-
 /**
  *
  */
@@ -1277,7 +1353,7 @@ class Template_Group_Entity
 	 *
 	 */
 	private $site_id;
-	
+
 	/**
 	 *
 	 */
@@ -1287,7 +1363,7 @@ class Template_Group_Entity
 	 *
 	 */
 	private $group_order;
-	
+
 	/**
 	 *
 	 */
@@ -1309,7 +1385,7 @@ class Template_Group_Entity
 
 	/**
 	 *
-	 */		
+	 */
 	public function __get($name)
 	{
 		if ( strpos('_', $name) === 0  OR ! property_exists($this, $name))

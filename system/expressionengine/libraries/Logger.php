@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -26,15 +26,25 @@
 class EE_Logger {
 
 	protected $_dev_log_hashes = array();
+	private $db;
 
 	/**
-	 * Constructor
-	 *
-	 * @access	public
+	 * Generates or returns the logger DB as to not interfere with other Active
+	 * Record queries
+	 * @return CI_DB The database object
 	 */
-	function __construct()
+	private function logger_db()
 	{
-		$this->EE =& get_instance();
+		if ( ! isset($this->db))
+		{
+			$db = clone ee()->db;
+			$db->_reset_select();
+			$db->_reset_write();
+			$db->flush_cache();
+			$this->db = $db;
+		}
+
+		return $this->db;
 	}
 
 	// --------------------------------------------------------------------
@@ -57,8 +67,8 @@ class EE_Logger {
 			return;
 		}
 
-		ee()->db->query(
-			ee()->db->insert_string(
+		$this->logger_db()->query(
+			$this->logger_db()->insert_string(
 				'exp_cp_log',
 				array(
 					'member_id'	=> ee()->session->userdata('member_id'),
@@ -101,7 +111,7 @@ class EE_Logger {
 		{
 			// Order by timestamp to store only the latest timestamp in the
 			// cache array
-			$rows = ee()->db->select('hash, timestamp')
+			$rows = $this->logger_db()->select('hash, timestamp')
 				->order_by('timestamp', 'asc')
 				->get('developer_log')
 				->result_array();
@@ -114,10 +124,10 @@ class EE_Logger {
 
 		$log_data = array();
 
-		// If we were passed an array, add its contents to $log_data
+		// If we were passed an array, place its contents to $log_data
 		if (is_array($data))
 		{
-			$log_data = array_merge($log_data, $data);
+			$log_data = $data;
 		}
 		// Otherwise it's probably a string, stick it in the 'description' field
 		else
@@ -128,6 +138,10 @@ class EE_Logger {
 		// Get a hash of the data to see if we've aleady logged this
 		$hash = md5(serialize($log_data));
 
+		// Load Localize in case this is being called via the Javascript
+		// controller where full EE bootstrapping hasn't run
+		ee()->load->library('localize');
+
 		// If this log is not to be duplicated and it already exists in the DB
 		if ($update && isset($this->_dev_log_hashes[$hash]))
 		{
@@ -136,7 +150,7 @@ class EE_Logger {
 			{
 				// There may be multiple items with the same hash for if a log item
 				// was previously set not to update, so update based on timestamp too
-				ee()->db->where(
+				$this->logger_db()->where(
 					array(
 						'hash'		=> $hash,
 						'timestamp' => $this->_dev_log_hashes[$hash]
@@ -144,7 +158,7 @@ class EE_Logger {
 				);
 
 				// Set log item as unviewed and update the timestamp
-				ee()->db->update('developer_log',
+				$this->logger_db()->update('developer_log',
 					array(
 						'viewed'	=> 'n',
 						'timestamp' => ee()->localize->now
@@ -159,7 +173,7 @@ class EE_Logger {
 		$log_data['timestamp'] = ee()->localize->now;
 		$log_data['hash'] = $hash;
 
-		ee()->db->insert('developer_log', $log_data);
+		$this->logger_db()->insert('developer_log', $log_data);
 
 		// Add to the hash cache so we don't have to requery
 		$this->_dev_log_hashes[$hash] = $log_data['timestamp'];
@@ -263,8 +277,76 @@ class EE_Logger {
 
 		// Only bug the user about this again after a week, or 604800 seconds
 		$deprecation_log = $this->developer($deprecated, TRUE, 604800);
+		$this->show_flashdata($deprecation_log);
+	}
 
-		// Show and store flashdata only if we're in the CP, and only to Super Admins
+	// --------------------------------------------------------------------
+
+	/**
+	 * Log an extension hook as deprecated
+	 *
+	 * This method is to be called when a deprecated extension hook is
+	 * activated. The original hook name must be passed, and optionally
+	 * the version it was deprecated in, and what hook to use instead.
+	 *
+	 * From there, the use of the deprecated hook is logged in the
+	 * developer log for Super Admin review.
+	 *
+	 * @param	string	$hook - the name of the deprecated hook
+	 * @param	string	$version (optional) - the version number it was deprecated in
+	 * @param	string	$use_instead (optional) - the name of the hook to use instead
+	 * @return	void
+	 **/
+	public function deprecated_hook($hook, $version = NULL, $use_instead = NULL)
+	{
+		$hook_details = ee()->extensions->get_active_hook_info($hook);
+
+		if ($hook_details === FALSE)
+		{
+			return FALSE;
+		}
+
+		// potentially many extensions using this hook
+		$in_use = array();
+		foreach ($hook_details as $priority => $extensions)
+		{
+			foreach ($extensions as $class => $details)
+			{
+				// 0 is the method name, 1 is the settings, 2 is the version number
+				$in_use[] = $class.'::'.$details[0].'()';
+			}
+		}
+
+		ee()->lang->loadfile('tools');
+		$description = sprintf(lang('deprecated_hook'), '<br /><li>'.implode('</li><li>', $in_use).'</li>');
+
+		if ( ! empty($version))
+		{
+			$description .= '<br />'.sprintf(lang('deprecated_since'), $version);
+		}
+
+		if ( ! empty($use_instead))
+		{
+			$description .= NBS.sprintf(lang('deprecated_use_instead'), $use_instead);
+		}
+
+		// Only bug the user about this again after a week, or 604800 seconds
+		$deprecation_log = $this->developer($description, TRUE, 604800);
+		$this->show_flashdata($deprecation_log);
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Show Flashdata
+	 *
+	 * Shows and stores flashdata if we are in the CP, and only to Super Admins
+	 *
+	 * @param	array	$deprecation_log - array, returned by $this->developer()
+	 * @return	void
+	 **/
+	private function show_flashdata($deprecation_log)
+	{
 		if (REQ == 'CP' && isset(ee()->session) && ee()->session instanceof EE_Session
 			&& ee()->session->userdata('group_id') == 1)
 		{
@@ -291,6 +373,188 @@ class EE_Logger {
 			}
 		}
 	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Deprecate a template tag and replace it in templates and snippets
+	 *
+	 * @param  String $message     The message to send to the developer log,
+	 *                             uses developer() not deprecated()
+	 * @param  String $regex       Regular expression to run through
+	 *                             preg_replace
+	 * @param  String $replacement Replacement to pass to preg_replace
+	 * @return void
+	 */
+	public function deprecate_template_tag($message, $regex, $replacement)
+	{
+		ee()->load->model('template_model');
+		$templates = ee()->template_model->fetch_last_edit(array(), TRUE);
+
+		$changed = 0;
+
+		foreach ($templates as $template)
+		{
+			$old_template_data = $template->template_data;
+
+			// Find and replace the tags
+			$template->template_data = preg_replace(
+				$regex,
+				$replacement,
+				$template->template_data
+			);
+
+			// Only save if the template data changed
+			if ($old_template_data != $template->template_data)
+			{
+				// Keep track of how many changed templates we have
+				// so we know whether or not to bother the user with
+				// a deprecation notification
+				$changed++;
+
+				// save the template
+				ee()->template_model->save_to_database($template);
+
+				// if saving to file, save the file
+				if ($template->save_template_file)
+				{
+					ee()->template_model->save_to_file($template);
+				}
+			}
+		}
+
+		// Update snippets
+		ee()->load->model('snippet_model');
+		$snippets = ee()->snippet_model->fetch();
+
+		foreach ($snippets as $snippet)
+		{
+			$old_snippet_contents = $snippet->snippet_contents;
+
+			$snippet->snippet_contents = preg_replace(
+				$regex,
+				$replacement,
+				$snippet->snippet_contents
+			);
+
+			// Only save if the snippet data changed
+			if ($old_snippet_contents != $snippet->snippet_contents)
+			{
+				$changed++;
+
+				ee()->snippet_model->save($snippet);
+			}
+		}
+
+		// Update current tagdata if running outside the updater
+		if (isset(ee()->TMPL->tagdata))
+		{
+			ee()->TMPL->tagdata = preg_replace(
+				$regex,
+				$replacement,
+				ee()->TMPL->tagdata
+			);
+		}
+
+		// Only log the change if changes were made
+		if ($changed > 0)
+		{
+			$this->developer($message, TRUE, 604800);
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Deprecate tags within specialty templates (forum, profile, wiki)
+	 *
+	 * @param  String $message     The message to send to the developer log,
+	 *                             uses developer() not deprecated()
+	 * @param  String $regex       Regular expression to run through
+	 *                             preg_replace
+	 * @param  String $replacement Replacement to pass to preg_replace
+	 * @param  String $specific_template     Filename of specific template to
+	 *                                       deprecate in
+	 * @return void
+	 */
+	public function deprecate_specialty_template_tag($message, $regex, $replacement, $specific_template = '')
+	{
+		ee()->load->helper(array('directory', 'file'));
+		$results = array();
+
+		foreach (array('forum', 'wiki', 'profile') as $type)
+		{
+			if (is_dir($current_path = PATH_THEMES.$type.'_themes/'))
+			{
+				$results[$type] = $this->_update_specialty_template(
+					directory_map($current_path),
+					$current_path,
+					$regex,
+					$replacement,
+					$specific_template
+				);
+			}
+		}
+
+		if (strpos(json_encode($results), 'true') !== FALSE)
+		{
+			$this->developer($message, TRUE, 604800);
+		}
+	}
+
+	// -------------------------------------------------------------------------
+
+	/**
+	 * Update specialty templates given an array of specialty templates from
+	 * directory_map
+	 * @param  Mixed  $filename    Filename to replace or directory_map listing
+	 *                             (or section of listing)
+	 * @param  String $path        Full path to where $filename exists
+	 * @param  String $regex       Regular expression to run through
+	 *                             preg_replace
+	 * @param  String $replacement Replacement to pass to preg_replace
+	 * @param  String $specific_template     Filename of specific template to
+	 *                                       deprecate in
+	 * @return void
+	 */
+	private function _update_specialty_template($filename, $path, $regex, $replacement, $specific_template)
+	{
+		if (is_array($filename))
+		{
+			foreach ($filename as $current_directory => $file)
+			{
+				// Only append $current_directory if it's not numeric
+				$recursive_path = ( ! is_numeric($current_directory)) ? $path.$current_directory.'/' : $path;
+				$filename[$current_directory] = $this->_update_specialty_template($file, $recursive_path, $regex, $replacement, $specific_template);
+			}
+			return $filename;
+		}
+
+		// Figure out if this is .html, .css, .feed, or .xml
+		$full_filename = $path.$filename;
+		$pathinfo = pathinfo($full_filename);
+
+		if (($specific_template == ''
+			OR $specific_template == $filename)
+			&& in_array($pathinfo['extension'], array('html', 'css', 'feed', 'xml'))
+			&& ($file_contents = read_file($full_filename))
+			&& preg_match($regex, $file_contents))
+		{
+			write_file(
+				$full_filename,
+				preg_replace(
+					$regex,
+					$replacement,
+					$file_contents
+				)
+			);
+
+			return TRUE;
+		}
+
+		return FALSE;
+	}
+
 
 	// --------------------------------------------------------------------
 
@@ -392,7 +656,7 @@ class EE_Logger {
 			$data['file']	= $backtrace['file'];
 		}
 
-		ee()->db->insert('update_log', $data);
+		$this->logger_db()->insert('update_log', $data);
 	}
 
 	// --------------------------------------------------------------------
@@ -410,7 +674,7 @@ class EE_Logger {
 	{
 		$table = 'update_log';
 
-		if ( ! ee()->db->table_exists($table))
+		if ( ! $this->logger_db()->table_exists($table))
 		{
 			ee()->load->dbforge();
 

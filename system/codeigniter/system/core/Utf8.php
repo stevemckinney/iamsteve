@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 2.0
@@ -68,6 +68,7 @@ class CI_Utf8 {
 		{
 			log_message('debug', "UTF-8 Support Disabled");
 			define('UTF8_ENABLED', FALSE);
+			define('MB_ENABLED', FALSE);
 		}
 	}
 

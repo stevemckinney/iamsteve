@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -86,8 +86,8 @@ class EE_Core {
 		// application constants
 		define('IS_CORE',		FALSE);
 		define('APP_NAME',		'ExpressionEngine'.(IS_CORE ? ' Core' : ''));
-		define('APP_BUILD',		'20130827');
-		define('APP_VER',		'2.7.0');
+		define('APP_BUILD',		'20141004');
+		define('APP_VER',		'2.9.2');
 		define('SLASH',			'&#47;');
 		define('LD',			'{');
 		define('RD',			'}');
@@ -97,6 +97,9 @@ class EE_Core {
 		define('NL',			"\n");
 		define('PATH_DICT', 	APPPATH.'config/');
 		define('AJAX_REQUEST',	ee()->input->is_ajax_request());
+
+		// Load the default caching driver
+		ee()->load->driver('cache');
 
 		// Load DB and set DB preferences
 		ee()->load->database();
@@ -118,23 +121,11 @@ class EE_Core {
 
 		ee()->config->site_prefs(ee()->config->item('site_name'));
 
-		// force EE's db cache path - do this AFTER site prefs have been assigned
-		// Due to CI's DB_cache handling- suffix with site id
-		ee()->db->cache_set_path(APPPATH.'cache/db_cache_'.ee()->config->item('site_id'));
-
-		// make sure the DB cache folder exists if we're caching!
-		if (ee()->db->cache_on === TRUE &&
-			! @is_dir(APPPATH.'cache/db_cache_'.ee()->config->item('site_id')))
-		{
-			@mkdir(APPPATH.'cache/db_cache_'.ee()->config->item('site_id'), DIR_WRITE_MODE);
-
-			if ($fp = @fopen(APPPATH.'cache/db_cache_'.ee()->config->item('site_id').'/index.html', FOPEN_WRITE_CREATE_DESTRUCTIVE))
-			{
-				fclose($fp);
-			}
-
-			@chmod(APPPATH.'cache/db_cache_'.ee()->config->item('site_id'), DIR_WRITE_MODE);
-		}
+		// earliest point we can apply this, makes sure that PHPSESSID cookies
+		// don't leak to JS by setting the httpOnly flag
+		$secure = bool_config_item('cookie_secure');
+		$httpOnly = (ee()->config->item('cookie_httponly')) ? bool_config_item('cookie_httponly') : TRUE;
+		session_set_cookie_params(0, ee()->config->item('cookie_path'), ee()->config->item('cookie_domain'), $secure, $httpOnly);
 
 		// this look backwards, but QUERY_MARKER is only used where we MUST
 		// have a ?, and do not want to double up
@@ -154,6 +145,12 @@ class EE_Core {
 			$cookie_prefix = ee()->config->item('cookie_prefix');
 			$cookie_path  = ee()->config->item('cookie_path');
 			$cookie_domain =  ee()->config->item('cookie_domain');
+			$cookie_httponly = ee()->config->item('cookie_httponly');
+
+			if ($cookie_prefix)
+			{
+				$cookie_prefix .= '_';
+			}
 
 			if (! empty($last_site_id) && is_numeric($last_site_id) && $last_site_id != ee()->config->item('site_id'))
 			{
@@ -163,6 +160,7 @@ class EE_Core {
 			ee()->config->cp_cookie_prefix = $cookie_prefix;
 			ee()->config->cp_cookie_path  = $cookie_path;
 			ee()->config->cp_cookie_domain =  $cookie_domain;
+			ee()->config->cp_cookie_httponly = $cookie_httponly;
 		}
 
 		// This allows CI compatibility
@@ -175,6 +173,17 @@ class EE_Core {
 		{
 			ee()->config->set_item('index_page', ee()->config->item('site_index'));
 		}
+
+		if (IS_CORE)
+		{
+			ee()->config->set_item('enable_template_routes', 'n');
+		}
+
+		// Backwards compatibility for the removed secure forms setting.
+		// Developers are still checking against this key, so we'll wait some
+		// time before removing it.
+		$secure_forms = (bool_config_item('disable_csrf_protection')) ? 'n' : 'y';
+		ee()->config->set_item('secure_forms', $secure_forms);
 
 		// Set the path to the "themes" folder
 		if (ee()->config->item('theme_folder_path') !== FALSE &&
@@ -272,7 +281,7 @@ class EE_Core {
 	 */
 	public function run_ee()
 	{
-		$this->native_plugins = array('magpie', 'markdown', 'xml_encode');
+		$this->native_plugins = array('magpie', 'markdown', 'rss_parser', 'xml_encode');
 		$this->native_modules = array(
 			'blacklist', 'channel', 'comment', 'commerce', 'email', 'emoticon',
 			'file', 'forum', 'ip_to_nation', 'jquery', 'mailinglist', 'member',
@@ -310,10 +319,17 @@ class EE_Core {
 		ee()->load->library('session');
 		ee()->load->library('user_agent');
 
+		// Get timezone to set as PHP timezone
+		$timezone = ee()->session->userdata('timezone');
+
+		// In case this is a timezone stored in the old format...
+		if ( ! in_array($timezone, DateTimeZone::listIdentifiers()))
+		{
+			$timezone = ee()->localize->get_php_timezone($timezone);
+		}
+
 		// Set a timezone for any native PHP date functions being used
-		date_default_timezone_set(
-			ee()->localize->get_php_timezone(ee()->session->userdata('timezone'))
-		);
+		date_default_timezone_set($timezone);
 
 		// Load the "core" language file - must happen after the session is loaded
 		ee()->lang->loadfile('core');
@@ -345,7 +361,14 @@ class EE_Core {
 
 		if (REQ != 'ACTION')
 		{
-			$this->process_secure_forms();
+			if (AJAX_REQUEST && ee()->router->fetch_class() == 'login')
+			{
+				$this->process_secure_forms(EE_Security::CSRF_EXEMPT);
+			}
+			else
+			{
+				$this->process_secure_forms();
+			}
 		}
 
 		// Update system stats
@@ -410,10 +433,22 @@ class EE_Core {
 
 		// Show the control panel home page in the event that a
 		// controller class isn't found in the URL
-		if (ee()->router->fetch_class() == '' OR
-			! isset($_GET['S']))
+		if (ee()->router->fetch_class() == ''/* OR
+			! isset($_GET['S'])*/)
 		{
 			ee()->functions->redirect(BASE.AMP.'C=homepage');
+		}
+
+		if (ee()->uri->segment(1) == 'cp')
+		{
+			// new url, restore old style get
+			$get = array_filter(array(
+				'D' => 'cp',
+				'C' => ee()->uri->segment(2),
+				'M' => ee()->uri->segment(3)
+			));
+
+			$_GET = array_merge($get, $_GET);
 		}
 
 
@@ -475,10 +510,11 @@ class EE_Core {
 			ee()->functions->redirect(BASE.AMP.'C=login'.$return_url);
 		}
 
-		// Is the user banned?
+		// Is the user banned or not allowed CP access?
 		// Before rendering the full control panel we'll make sure the user isn't banned
 		// But only if they are not a Super Admin, as they can not be banned
-		if (ee()->session->userdata('group_id') != 1 AND ee()->session->ban_check('ip'))
+		if ((ee()->session->userdata('group_id') != 1 && ee()->session->ban_check('ip')) OR
+			(ee()->session->userdata('member_id') !== 0 && ! ee()->cp->allowed_group('can_access_cp')))
 		{
 			return ee()->output->fatal_error(lang('not_authorized'));
 		}
@@ -509,19 +545,7 @@ class EE_Core {
 	 */
 	private function _somebody_set_us_up_the_base()
 	{
-		$s = 0;
-
-		switch (ee()->config->item('admin_session_type'))
-		{
-			case 's'	:
-				$s = ee()->session->userdata('session_id', 0);
-				break;
-			case 'cs'	:
-				$s = ee()->session->userdata('fingerprint', 0);
-				break;
-		}
-
-		define('BASE', SELF.'?S='.$s.'&amp;D=cp'); // cp url
+		define('BASE', SELF.'?S='.ee()->session->session_id().'&amp;D=cp'); // cp url
 	}
 
 	// ------------------------------------------------------------------------
@@ -734,7 +758,6 @@ class EE_Core {
 				ee()->db->delete('throttle');
 			}
 
-			ee()->functions->clear_spam_hashes();
 			ee()->functions->clear_caching('all');
 		}
 	}
@@ -754,18 +777,21 @@ class EE_Core {
 	final public function process_secure_forms($flags = EE_Security::CSRF_STRICT)
 	{
 		// Secure forms stuff
-		if( ! ee()->security->have_valid_xid($flags))
+		if ( ! ee()->security->have_valid_xid($flags))
 		{
+			ee()->output->set_status_header(403);
+
 			if (REQ == 'CP')
 			{
-				$this->_somebody_set_us_up_the_base();
-				ee()->session->set_flashdata('message_failure', lang('invalid_action'));
-				ee()->functions->redirect(BASE);
+				if (AJAX_REQUEST)
+				{
+					header('X-EE-Broadcast: modal');
+				}
+
+				show_error(lang('csrf_token_expired'));
 			}
-			else
-			{
-				ee()->output->show_user_error('general', array(lang('invalid_action')));
-			}
+
+			ee()->output->show_user_error('general', array(lang('csrf_token_expired')));
 		}
 	}
 }

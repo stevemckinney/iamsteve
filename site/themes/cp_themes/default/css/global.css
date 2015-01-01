@@ -246,10 +246,15 @@ table a:hover {
 	margin-bottom:		3px;
 }
 
+.notice,
+.go_notice,
+.warning {
+	font-weight: bold;
+	margin: 5px 0;
+}
+
 .notice {
 	color:				#ce0000;
-	font-weight: 		bold;
-	margin: 			5px 0;
 }
 
 em.alert {
@@ -267,12 +272,14 @@ em.alert {
 
 .go_notice {
 	color:				#007822;
-	font-weight: 		bold;
-	margin: 			10px 0;
 }
 
 th .go_notice {
 	color:				#bce99a;
+}
+
+.warning {
+	color:				#ff6600;
 }
 
 .callout {
@@ -1559,6 +1566,13 @@ h2 a:hover {
 	text-shadow:		0 1px 0 #abd8f0;
 }
 
+#ee_homepage_notice.contents hr {
+	background-color: #CCCCCC;
+	border: 0;
+	height: 1px;
+	margin: 0 0 11px;
+}
+
 .bad_path_error_list li {
 	font-weight:		bold;
 	margin-bottom:		5px;color:#F72A58;
@@ -2102,9 +2116,12 @@ a.less_important_link:hover {
   overflow:				hidden;
 }
 
-.templateTable tr.accessRowHeader td .accessTable th.template_manager_template_type,
 .templateTable tr.accessRowHeader td .accessTable th.template_manager_template_name {
-	width:				25%;
+	width:				20%;
+}
+
+.templateTable tr.accessRowHeader td .accessTable th.template_manager_template_type {
+	width:				15%;
 }
 
 .templateTable tr.accessRowHeader td .accessTable th.template_manager_enable_caching,
@@ -2118,6 +2135,10 @@ a.less_important_link:hover {
 
 .templateTable tr.accessRowHeader td .accessTable th.template_manager_parse_stage {
 	width:				12%;
+}
+
+.templateTable tr.accessRowHeader td .accessTable th.protect_javascript {
+	width:				10%;
 }
 
 div.tableRowLeft {
@@ -2217,6 +2238,27 @@ div#template_keywords_reset span {
 }
 
 .templateSearchResults h3 { margin:0; }
+
+/* URL Manager */
+
+#url_manager .route_error {
+	background-color: 	#f5e9e9;
+	border-color: 		#f6b5b5;
+}
+
+#url_manager tr th:first-child,
+#url_manager tr td:first-child {
+	width: 2px;
+}
+
+#url_manager tr td:first-child {
+	background: #f5f6f5 url('../images/grid-sprite.png') no-repeat -66px 10px;
+	cursor: move;
+	cursor: hand;
+	cursor: grab !important;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
+}
 
 /* Edit Page */
 .status_open {
@@ -4140,3 +4182,46 @@ div.pageContents,
 
 	.nanner img{ margin-right: 5px; position: relative; top: 2px; }
 
+
+/**
+ * Log-back-in modal after the user has gone idle
+ */
+
+#idle-modal {
+	display: none;
+	padding: 13px 13px 13px 13px;
+}
+
+	#idle-screen-name {
+		font-size: 14px;
+		font-weight: bold;
+		margin: 0px 0 2px 0;
+	}
+
+	#idle-description {
+		font-weight: bold;
+		margin: 0px 0 2px 0;
+	}
+
+	#idle-modal label {
+		line-height: 26px;
+	}
+
+	#idle-button-group {
+		text-align: right;
+		line-height: 22px;
+	}
+
+	.idle-fourth {
+		float: left;
+		width: 25%;
+	}
+
+	.idle-three-fourths {
+		float: left;
+		width: 75%;
+	}
+
+	.idle-member-group {
+		color: #8a98a5;
+	}

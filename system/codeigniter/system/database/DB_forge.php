@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -284,6 +284,9 @@ class CI_DB_forge {
 			}
 		}
 
+		// Cached field names have changed
+		unset($this->db->data_cache['field_names'][$table]);
+
 		return TRUE;
 
 	}
@@ -313,6 +316,9 @@ class CI_DB_forge {
 
 		$sql = $this->_alter_table('DROP', $this->db->dbprefix.$table, $column_name);
 
+		// Cached field names have changed
+		unset($this->db->data_cache['field_names'][$table]);
+
 		return $this->db->query($sql);
 	}
 
@@ -333,7 +339,7 @@ class CI_DB_forge {
 		{
 			show_error('A table name is required for that operation.');
 		}
-		
+
 		// add field info into field array, but we can only do one at a time
 		// so we cycle through
 
@@ -355,6 +361,9 @@ class CI_DB_forge {
 				return FALSE;
 			}
 		}
+
+		// Cached field names have changed
+		unset($this->db->data_cache['field_names'][$table]);
 
 		return TRUE;
 	}

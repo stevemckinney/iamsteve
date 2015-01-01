@@ -7,7 +7,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -136,8 +136,25 @@ class Content_publish extends CP_Controller {
         // here for now.  -Daniel B.
         $this->lang->loadfile('publish_tabs_custom');
 
-		$entry_id	= (int) $this->input->get_post('entry_id');
-		$channel_id	= (int) $this->input->get_post('channel_id');
+		$entry_id	= (int) ee()->input->get_post('entry_id');
+		$channel_id	= (int) ee()->input->get_post('channel_id');
+		$site_id	= (int) ee()->input->get_post('site_id');
+
+		// If an entry or channel on a different site is requested, try
+		// to switch sites and reload the publish form
+		if ($site_id != 0 && $site_id != ee()->config->item('site_id') && empty($_POST))
+		{
+			ee()->cp->switch_site(
+				$site_id,
+				cp_url(
+					'content_publish/entry_form',
+					array(
+						'channel_id'	=> $channel_id,
+						'entry_id'		=> $entry_id,
+					)
+				)
+			);
+		}
 
 		// Prevent publishing new entries if disallowed
 		if ( ! $this->cp->allowed_group('can_access_content', 'can_access_publish') AND $entry_id == 0)
@@ -262,7 +279,7 @@ class Content_publish extends CP_Controller {
 		// they contain. Then work through the details of how
 		// they are show.
 
-		$this->cp->add_js_script('file', 'cp/publish');
+		$this->cp->add_js_script('file', array('cp/publish', 'cp/category_editor'));
 
 		$tab_hierarchy	= $this->_setup_tab_hierarchy($field_data, $layout_info);
 		$layout_styles	= $this->_setup_layout_styles($field_data, $layout_info);
@@ -457,9 +474,9 @@ class Content_publish extends CP_Controller {
 
 		$clean_layout = array();
 
-		foreach($layout_info as $tab => $field)
+		foreach($layout_info as $tab)
 		{
-			foreach ($field as $name => $info)
+			foreach ($tab['fields'] as $name => $info)
 			{
 				if (count($required) > 0)
 				{
@@ -479,9 +496,20 @@ class Content_publish extends CP_Controller {
 				{
 					$valid_name_error[] = 'missing_name';
 				}
+
+				$defaults = array(
+				        lang('publish')     => 'publish',
+				        lang('categories')  => 'categories',
+				        lang('options')     => 'options',
+				        lang('date')        => 'date'
+				);
+
+				if($name == '_tab_label' && ! empty($defaults[$info])) {
+				        $tab['fields'][$name] = $defaults[$info];
+				}
 			}
 
-			$clean_layout[strtolower($tab)] = $layout_info[$tab];
+			$clean_layout[strtolower($tab['name'])] = $tab['fields'];
 		}
 
 		if (count($error) > 0 OR count($valid_name_error) > 0)
@@ -651,42 +679,6 @@ class Content_publish extends CP_Controller {
 
 		$entry_title = $this->typography->format_characters($resrow['title']);
 
-		// Load this in case third-party fieldtypes access TMPL in replace_tag
-		ee()->load->library('template', NULL, 'TMPL');
-
-		foreach ($fields as $key => $val)
-		{
-			if (isset($resrow[$key]) AND $val != 'relationship' and $resrow[$key] != '')
-			{
-				$expl = explode('field_id_', $key);
-
-				if (isset($resrow['field_dt_'.$expl['1']]))
-				{
-					if ($resrow[$key] != 0)
-					{
-						$localize = ($resrow['field_dt_'.$expl['1']] != '')
-							? $resrow['field_dt_'.$expl['1']] : TRUE;
-
-						$r .= $this->localize->human_time($resrow[$key], $localize);
-					}
-				}
-				else
-				{
-					ee()->load->library('api');
-					ee()->api->instantiate('channel_fields');
-					ee()->api_channel_fields->fetch_custom_channel_fields();
-					ee()->api_channel_fields->setup_handler($expl['1']);
-					ee()->api_channel_fields->apply('_init', array(array(
-						'field_id' => $expl['1'],
-						'row' => $resrow,
-						'content_id' => $entry_id
-					)));
-					$data = ee()->api_channel_fields->apply('pre_process', array($resrow[$key]));
-					$r .= ee()->api_channel_fields->apply('replace_tag', array('data' => $data));
-				}
-			}
-		}
-
 		$publish_another_link = BASE.AMP.'C=content_publish'.AMP.'M=entry_form'.AMP.'channel_id='.$channel_id;
 
 		// Ugh, we just overwrite? Strong typing please!!
@@ -718,7 +710,7 @@ class Content_publish extends CP_Controller {
 
 		if ($show_comments_link)
 		{
-			if (isset($this->installed_modules['comment']))
+			if (isset($this->cp->installed_modules['comment']))
 			{
 				$comment_count = $this->db->where('entry_id', $entry_id)
 										  ->count_all_results('comments');
@@ -1336,6 +1328,7 @@ class Content_publish extends CP_Controller {
 			'lang.duplicate_tab_name'			=> lang('duplicate_tab_name'),
 			'lang.hide_toolbar' 				=> lang('hide_toolbar'),
 			'lang.illegal_characters'			=> lang('illegal_characters'),
+			'lang.illegal_tab_name'				=> lang('illegal_tab_name'),
 			'lang.loading'						=> lang('loading'),
 			'lang.tab_name'						=> lang('tab_name'),
 			'lang.show_toolbar' 				=> lang('show_toolbar'),
@@ -2439,7 +2432,14 @@ class Content_publish extends CP_Controller {
 		$str = str_replace("%uFFD4", "\'",		$str);
 		$str = str_replace("%uFFD5", "\'",		$str);
 
-		$str =	preg_replace("/\%u([0-9A-F]{4,4})/e","'&#'.base_convert('\\1',16,10).';'", $str);
+		$str = preg_replace_callback(
+			"/\%u([0-9A-F]{4,4})/",
+			function($matches)
+			{
+				return base_convert($matches[1], 16, 10);
+			},
+			$str
+		);
 
 		$str = $this->security->xss_clean(stripslashes(urldecode($str)));
 

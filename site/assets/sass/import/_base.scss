@@ -84,17 +84,6 @@ $base-px: 12px;
 $line: $base-px*2;
 $radius: 5px;
 
-
-// khtml support is pointless most times
-// ---------------------------
-$experimental-support-for-khtml: false;
-
-// uncomment if you're brave, or don't care
-// ---------------------------
-$legacy-support-for-ie: false;
-$legacy-support-for-mozilla: true;
-$legacy-support-for-ie7: false;
-
 // define responsive stuff: see responsive.scss
 // ---------------------------
 $old-ie: false !default;

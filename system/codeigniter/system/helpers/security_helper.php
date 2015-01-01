@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2013, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -62,32 +62,6 @@ if ( ! function_exists('sanitize_filename'))
 	}
 }
 
-// --------------------------------------------------------------------
-
-/**
- * Hash encode a string
- *
- * @access	public
- * @param	string
- * @return	string
- */
-if ( ! function_exists('do_hash'))
-{
-	function do_hash($str, $type = 'sha1')
-	{
-		$CI =& get_instance();
-		$CI->load->library('logger');
-		$CI->logger->deprecated('2.6', "PHP's hashing functions");
-
-		if ($type == 'sha1')
-		{
-			return sha1($str);
-		}
-		
-		return md5($str);
-	}
-}
-
 // ------------------------------------------------------------------------
 
 /**
@@ -121,7 +95,20 @@ if ( ! function_exists('encode_php_tags'))
 {
 	function encode_php_tags($str)
 	{
-		return str_replace(array('<?php', '<?PHP', '<?', '?>'),  array('&lt;?php', '&lt;?PHP', '&lt;?', '?&gt;'), $str);
+		$str = str_replace(array('<?php', '<?PHP', '<?', '?>', '<%', '%>'),
+		                   array('&lt;?php', '&lt;?PHP', '&lt;?', '?&gt;', '&lt;%', '%&gt;'),
+		                   $str);
+
+		if (stristr($str, '<script') &&
+			preg_match_all("/<script.*?language\s*=\s*(\042|\047)?php(\\1)?.*?>.*?<\/script>/is", $str, $matches))
+		{
+			foreach ($matches[0] as $match)
+			{
+				$str = str_replace($match, htmlspecialchars($match), $str);
+			}
+		}
+
+		return $str;
 	}
 }
 
