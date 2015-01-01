@@ -34,7 +34,7 @@
 					</noscript>
 				</div>
 				<figcaption>
-					{exp:smartdown}{image_1_description}{/exp:smartdown}
+					{exp:markdown}{image_1_description}{/exp:markdown}
 				</figcaption>
 			</figure>
 			{/if}
@@ -51,13 +51,13 @@
 					</noscript>
 				</div>
 				<figcaption>
-					{exp:smartdown}{image_2_description}{/exp:smartdown}
+					{exp:markdown}{image_2_description}{/exp:markdown}
 					{if live_url || !final_description}<p><a href="{live_url}" class="button" title="View the live version of {title}">View website</a></p>{/if}
 				</figcaption>
 			</figure>
 			{/if}
 			{if final_description}
-				{exp:smartdown}{final_description}{/exp:smartdown}
+				{exp:markdown}{final_description}{/exp:markdown}
 			{/if}
 			{if live_url && final_description}<p><a href="{live_url}" class="button" title="View the live version of {title}">View website</a></p>{/if}
 		{if:else}

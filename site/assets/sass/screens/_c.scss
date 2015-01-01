@@ -1,0 +1,104 @@
+@include respond-min($c) {
+	
+	html, body:after {
+		font-family: "c"; }
+	
+	body {
+		padding: 0; }
+	.container {
+		@include rem(padding, $line*2 0 0); }
+	
+	/* html:not(.blog) */ [role="banner"] {
+		@include box-shadow(
+			0 0 0 1px $primary_d2,
+			0 1px 3px fade-out($primary_d1, 0.8),
+			inset 0 1px 0 fade-out($primary_l1, 0.935));
+		@include border-radius(4px);
+		@include rem(padding, $line);
+		margin: auto;
+		background: fade-out($primary, 0.6); }
+	[role="banner"], [role="navigation"] {
+		position: static; }
+	
+	.title {
+		@include rem(padding, $line*2.75 0 $line*2.75);
+		-webkit-mask: url(../images/mask.png) -400px -25px; }
+		
+	[role="navigation"] {
+		@include wh(auto, auto);
+		@include box-shadow(none);
+		@include transform(translate3d(0,0,0));
+		float: right;
+		margin: 6px 0 0;
+		ul {
+			@include pie-clearfix;
+			margin: 0;
+			padding: 0;
+			display: block;
+			position: static;
+			background: none; }
+		li {
+			float: left;
+			width: auto;
+			position: static;
+			margin: 0 0 0 $base-px;
+			&:first-child {
+				margin: 0;
+				a {
+					border-left: none; } } }
+			a {
+				@include background-clip(padding-box);
+				@include box-shadow(
+					0 1px 0 darken(fade-out($primary_d2, 0.9), 15%),
+					0 0 0 1px fade-out($primary_d2, 0.2),
+					inset 0 1px 2px fade-out($primary_l1, 0.9),
+					inset 0 -1px 2px fade-out($primary_d1, 0.95));
+				@include border-radius(200px);
+				@include rem(padding, $base-px 18px);
+				@include transition(background .2s linear);
+				right: auto;
+				border-bottom: none;
+				line-height: 1;
+				display: block;
+				text-transform: uppercase;
+				&:focus, &:hover {
+					@include box-shadow(
+						0 1px 0 darken(fade-out($primary_d2, 0.8), 10%),
+						0 0 0 1px $primary_d2,
+						inset 0 1px 2px fade-out(lighten($primary_l2, 45%), 0.8),
+						inset 0 -1px 2px fade-out(darken($primary_l2, 25%), 0.8),
+						0 1px 4px fade-out($primary_d1, 0.6));
+					background: fade-out($primary_l2, 0.4); }
+				&:active, &.active {
+					@include box-shadow(
+						0 0 0 1px darken($primary_d2, 0.5%),
+						inset 0 1px 3px $primary_d2,
+						0 2px 1px 0 fade-out($primary_l1, 0.925));
+						// linear-gradient(90deg, #36393f 0%, rgba(43,46,51,.5) 100%)
+					@include background(
+						linear-gradient(fade-out($primary_d1, 0.875), fade-out($primary_d1, 1))); } } }
+	.active {
+		position: relative;
+		z-index: 3 !important; }
+	.mobile {
+		display: none; }
+	.me {
+		float: left;
+		width: 60.5%;
+		margin: 0 5% 0 0; }
+	.dribbble {
+		float: right;
+		width: 34%; }
+	.shot {
+		max-width: 100%;
+		&:nth-of-type(1), &:nth-of-type(2) {
+			margin: 3px cp(12px, 448px) 5% 0; }
+		&:nth-of-type(3) {
+			margin: 3px 0 0 0; } }
+	
+	[role="contentinfo"] {
+		form {
+			[type="submit"] {
+				width: 40%; } } }
+				
+} // close mq

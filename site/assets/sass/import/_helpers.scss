@@ -1,0 +1,175 @@
+// 	----------------------------------------- 
+//	Your traditional helper classes through
+//	mixins and extends
+// 	-----------------------------------------
+
+// Use any of these on any element, 
+// helps for a more object oriented CSS approach
+// without classitis and faster less bloated CSS
+// 
+// eg: @extend %transition;
+
+
+
+// Extends
+%transition {
+	@include transition(all .2s linear); }
+%rounded {
+	@include border-radius(4px); }
+%shadow {
+	@include box-shadow(0 1px 3px fade-out($black, 0.8)); }
+%left {
+	float: left; }
+%right {
+	float: right; }
+.hidden {
+	display: none; }
+%screenreaders { 
+	border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+%centre {
+	margin: auto; }
+	
+%no-outline {
+	outline: none; }
+
+// make form elements have no appearance
+%input-reset {
+	@include appearance(none); }	
+
+%no-list-style {	
+	list-style: none; }
+
+// margins and paddings
+%margin {
+	margin: $base-px 0; }
+%em-margin {
+	margin: em($line, 16px) 0 em($line/2, 16px); }
+%em-margin-even {
+	margin: 0.75em 0; }
+%em-margin-reverse {
+	margin: $line/2 0 $line; }
+
+%padding {
+	padding: $base-px/2 $base-px; }
+%em-padding {
+	padding: $line 0 $line/4; }
+%em-padding-even {
+	padding:  0.75em 0; }
+	
+%plr {
+	padding: 0 $base-px; }
+%ptb {
+	padding: $base-px 0; }
+	
+%mlr {
+	margin: 0 $base-px; }
+%mtb {
+	margin: $base-px 0; }
+
+%no-mp {
+	margin: 0; padding: 0; }
+	
+// colour use
+%primary {
+	color: $primary; }
+%secondary {
+	color: $secondary; }
+
+// font size
+%base {
+	font-size: 16px;
+	font-size: 1rem; }
+
+// mixins ---------------------- /
+
+// small mixins
+@mixin no-fout {
+	.wf-loading & {
+		visibility: hidden; } }
+@mixin hyphens($value: "manual") {
+  @each $prefix in -webkit-, -moz-, -o-, "" {
+    #{$prefix}hyphens: $value; } }
+
+@mixin keyframes($name) {
+	@-webkit-keyframes $name { 
+  	@content; }
+  @-moz-keyframes $name { 
+  	@content; }
+  @-ms-keyframes $name { 
+  	@content; }
+  @-o-keyframes $name { 
+  	@content; }
+  @keyframes $name { 
+  	@content; } }
+@mixin animation($animation) {
+	$animation: unquote($animation);
+	@include experimental(animation, $animation,
+    -moz, -webkit, -o, not -ms, not -khtml, official); } 
+@mixin animation-fill-mode($mode) {
+	$mode: unquote($mode);
+	@include experimental(animation-fill-mode, $mode,
+    -moz, -webkit, -o, not -ms, not -khtml, official); }
+@mixin animation-play-state($mode) {
+	$mode: unquote($mode);
+	@include experimental(animation-play-state, $mode,
+    -moz, -webkit, -o, not -ms, not -khtml, official); }
+	
+@mixin wh($width: false, $height: false) {
+	$width: unquote($width);
+	@if $height != none { 
+		$height: unquote($height); }
+		
+	@if $height != false {
+		width: #{$width};
+		height: #{$height}; }
+	@else {
+		width: #{$width};
+		height: #{$width}; } }
+
+// user-select for some reason was not in my compass
+@mixin user-select($select) {
+  $select: unquote($select);
+  @include experimental(user-select, $select,
+    -moz, -webkit, not -o, -ms, -khtml, official); }
+    
+// stretch for some reason was not in my compass
+@mixin stretch($offset-top: 0, $offset-right: 0, $offset-bottom: 0, $offset-left: 0) {
+  position: absolute;
+  @if $offset-top {
+    top: $offset-top; }
+  @if $offset-bottom {
+    bottom: $offset-bottom; }
+  @if $offset-left {
+    left: $offset-left; }
+  @if $offset-right {
+    right: $offset-right; } }
+    
+@mixin column-break-inside($value: auto) {
+  @include experimental(column-break-inside, $value, -moz, -webkit, -o, -ms, not -khtml, official); }
+@mixin column-span($value: all) {
+  @include experimental(column-span, $value, -moz, -webkit, -o, -ms, not -khtml, official); }
+
+
+// my keyframes
+@include keyframes(bg) {
+	100% { background-position: center bottom; } }
+@include keyframes(title) {
+	80% { top: -5px; }
+	90% { top: 5px; }
+	100% { top: 0; } }
+@include keyframes(nav) {
+	80% { opacity: 0.5; right: auto; }
+	90% { opacity: 0.65; right: auto; }
+	100% { opacity: 1; right: auto; } }
+
+// Returns true if the color is brighter than 50% lightness
+@function is-bright($color) {
+	@return (lightness($color) > 50%); }
+
+// Picks the color with the highest contrast
+@function if-bright($bg, $light: true, $dark: false) {
+	@return if(is-bright($bg), $light, $dark); }
+
+// Picks the color with the highest contrast
+@function text-contrast($bg, $dark-text: #000, $light-text: #fff) {
+	@return if-bright($bg, $dark-text, $light-text); }

@@ -1,0 +1,78 @@
+// 	----------------------------------------- 
+//	Base form styles
+// 	-----------------------------------------
+@mixin form-base {
+	@extend %input-reset;
+	@extend %primary;
+	.noboxshadow & { 
+		border: 1px solid $border; } }
+
+@mixin form-label(
+	$position: "top" ) {
+
+	@if $label == "top" {
+		width: $whole;
+	}
+	@else {
+		width: $threequarters;
+		
+	}
+
+}
+
+@mixin form(
+	$type: "input",
+	$colour: $alt,
+	$status: "normal",
+	$padding: .375em,
+	$placeholder: false,
+	$radius: $radius,
+	$group: false ) {
+	@include form-base;
+	padding: $padding;
+	
+	@if $group == true {
+		@if $radius != "none" {
+			@include border-radius($radius); } }
+	@else if $group != true {
+		@if $radius != "none" {
+			@include border-radius($radius 0 0 $radius); } }
+	
+	// element type
+	@if $type == input {
+		@if $status != "normal" {
+			@include box-shadow(0 2px 1px $default, inset 0 0 0 1px $border);
+			@include background(linear-gradient(90deg, fade-out(#afb1b1, 0.85) 0%, rgba(176,178,178,.15) 100%));
+			.noboxshadow & {
+				border: 1px solid $border; } }
+		@else {
+			@include box-shadow(inset 0 0 0 1px lighten($border, 30%), inset 0 1px 3px fade-out($black, .8), 0 1px 1px $default);
+			@include background(
+				linear-gradient(top, rgba(176,178,178,.25) 0%, rgba(176,178,178,0) 100%));
+			.noboxshadow & {
+				border: 1px solid $border; } }
+		@if $placeholder == true {
+			::-webkit-input-placeholder {
+				color: lighten(#afafaf, 10%);
+				font: 1em/1 $sans; }
+			:-moz-placeholder {
+				color: lighten($primary, 30%);
+				font: 1em/1 $sans; } } }
+	
+	// hover state
+	&:hover {
+		@if $type == input { 
+			@include box-shadow(inset 0 0 0 1px lighten($border, 30%), inset 0 1px 3px fade-out($black, .8), 0 1px 1px $default);
+			@include background(
+				linear-gradient(top, rgba(176,178,178,.25) 0%, rgba(176,178,178,0) 100%), $white);
+			.noboxshadow & {
+				border: 1px solid $border; } } }
+	
+	// active and focus states
+	&:active, &:focus {
+		outline: none;
+		background-color: $white;
+		@include box-shadow(inset 0 0 0 1px scale-lightness($colour, -10%), inset 0 1px 4px fade-out($black, 0.8), 0 0 6px $colour);
+		.noboxshadow & {
+			border-color: fade-out($colour, 0.4); } }
+}

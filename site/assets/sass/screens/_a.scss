@@ -1,0 +1,4 @@
+@include respond-min($a) {
+	html, body:after {
+		font-family: "a"; }
+} // close mq

@@ -1,0 +1,127 @@
+@import "compass"
+@import "compass/reset"
+@import "stitch"
+
+$main: hsl(203, 21%, 25%)
+$main_d: darken($main, 5%)
+$main_d2: darken($main, 10%)
+$main_d3: darken($main, 15%)
+$main_d4: darken($main, 20%)
+$main_l: desaturate(lighten($main, 70%), 10%)
+$button: adjust-hue(saturate(lighten($main, 30%), 20%), -20%)
+$secondary: hsl(342, 84%, 46%)
+
+$sans: "Helvetica Neue", Helvetica, sans-serif
+
+html, body
+	max-width: 480px
+	margin: auto
+	background: #000
+	font: 16px/1.5 $sans
+	@include fixed-sized-text
+	color: #fff
+
+h1
+	font-size: 18px
+h1, label, input
+	font-weight: 900
+input, p, select
+	font-size: 12px
+	color: $main
+label
+	font-size: 14px
+label, p
+	margin: 0 0 7px
+	line-height: 1
+	text-shadow: 0 1px 1px transparentize(#000, 0.4)
+	display: block
+p 
+	color: $main
+	text-shadow: 0 1px 0 transparentize($main_l, 0.5)
+	&:empty
+		display: none
+input, textarea, select
+	display: block
+	padding: 10px
+	width: 100%
+	@include box-sizing(border-box)
+	@include background-clip(padding-box)
+	@include border-radius(5px)
+	border: 1px solid desaturate(lighten($main, 15%), 10%)
+	
+input, textarea
+	@include box-shadow(inset 0 1px 3px transparentize(#000, 0.8), 0 1px 0 transparentize($main_l, 0.5))
+	-webkit-appearance: none
+
+select
+	-webkit-appearance: none
+	position: relative
+
+#status	
+	color: #fff
+	text-shadow: 0 1px 1px transparentize(#000, 0.4)
+	@include background-image(linear-gradient($main 0, $main_d 50%, darken($main_d, 2%) 50%, $main_d2 100%))
+	@include box-shadow(inset 0 1px 0 transparentize($main_l, 0.85))
+	border: 1px solid $main_d3
+
+[for="status"]:after
+	content: "\2195"
+	line-height: 1
+	padding: 7px 7px 7px 10px
+	border-left: 1px solid $main_d2
+	display: inline-block
+	position: absolute
+	right: 16px
+	top: 32px
+	z-index: 1000
+	font-size: 20px
+	
+fieldset
+	display: block
+	position: relative
+	padding: 10px
+	@include box-sizing(border-box)
+	border-bottom: 1px solid desaturate(lighten($main, 20%), 15%)
+	@include box-shadow(inset 0 1px 0 transparentize($main_l, 0.5))
+	@include background-image(linear-gradient(desaturate(lighten($main, 50%), 10%), desaturate(lighten($main, 40%), 10%)))
+		 
+[role="banner"]
+	padding: 10px 0
+	color: transparentize(#fff, 0.1)
+	text-shadow: 0 -1px 0 #000
+	text-align: center
+	position: relative
+	@include box-shadow(/* inset 0 1px 0 $main,  */inset 0 1px 0 lighten($main, 12%), inset 0 5px 20px fade-out(lighten($main, 10%), 0.7))
+	@include background(linear-gradient($main 0, $main_d 50%, darken($main_d, 2%) 50%, $main_d2 100%))
+	border-bottom: 1px solid $main_d4
+	h1
+		display: inline-block
+	a
+		display: inline-block
+		position: absolute
+		padding: 9px 15px
+		top: 9px
+		right: 8px
+		font: 900 12px/1 $sans
+		text-shadow: 0 1px 1px fade-out(#000, 0.5)
+		background: $main_d3
+		@include background(linear-gradient($main_d2 0, $main_d3 50%, darken($main_d3, 2%) 50%, $main_d4 100%))
+		@include box-shadow(inset 0 1px 1px darken($main_d3, 30%), inset 0 0 1px darken($main_d3, 40%), 0 1px 0 lighten($main, 5%))
+		@include border-radius(8px)
+		@include background-clip(padding-box)
+		
+[type="submit"]
+	display: block
+	@include border-radius(0)
+	@include box-shadow(inset 0 1px 0 lighten($button, 10%))
+	background: $button
+	border: none
+	color: #fff
+	text-shadow: 0 1px 1px fade-out(#000, 0.5)
+	font: 900 16px/1 $sans
+	padding: 20px
+
+[role="main"]
+	margin: auto
+	width: 100%
+	@include box-sizing(border-box)

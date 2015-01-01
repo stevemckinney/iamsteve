@@ -1,0 +1,56 @@
+.dribbble {
+	@include pie-clearfix;
+	h3 {
+		@include rem(margin-bottom, $base-px); }
+	a, figure {
+		display: inline-block; }
+	i, span {
+		font: {
+			size: 87.5%;
+			style: normal; }
+		display: block; }
+	i {
+		@include rem(font-size, $base-px);
+		@include rem(bottom, $base-px);
+		position: absolute;
+		font-weight: 400;
+		float: left;
+		&:nth-of-type(1) {
+			@include rem(left, $base-px); }
+		&:nth-of-type(2) {
+			@include rem(right, $base-px); }
+		&:before {
+			@include rem(margin, 0 $base-px/4 0 0);
+			@include rem(font-size, $base-px);
+			position: relative;
+			top: 1px; } }
+	span {
+		@include rem(margin, 0 0 0 $base-px / 2);
+		@include respond-min($c) {
+			font-size: 100%; } }
+	img {
+		@extend %imgs; } }
+		
+.shot {
+	max-width: cp(212px, 448px);
+	min-width: cp(100px, 448px);
+	position: relative;
+	a {
+		color: $primary;
+		&:hover, &:focus {
+			color: $primary; } }
+	figcaption {
+		@include transition(opacity .2s linear);
+		@include rem(padding, $base-px $base-px/2);
+		@include stretch(6px, 6px, 6px, 6px);
+		max-width: 212px;
+		opacity: 0;
+		background: $white;
+		background: fade-out($white, 0.2); }
+	&:nth-of-type(1) {
+		margin: 3px cp(24px, 448px) 0 0; }
+	&:nth-of-type(2) {
+		margin-right: 0; }
+	&:hover, &:focus {
+		figcaption {
+			opacity: 1; } } }
