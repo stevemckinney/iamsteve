@@ -1,3 +1,26 @@
+.DS_Store
+system/config.php
+.sass-cache
+
+# Images
+images/avatars/
+images/captchas/
+images/smileys/
+images/member_photos/
+images/signature_attachments/
+images/pm_attachments/
+images/uploads
+
+# Caches
+sized/
+thumbs/
+_thumbs/
+*/expressionengine/cache/*
+system/cache/db_cache
+system/cache/magpie_cache
+system/cache/page_cache
+system/expressionengine/cache
+
 # npm
 npm-debug.log
 node_modules/
