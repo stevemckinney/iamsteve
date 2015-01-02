@@ -4,9 +4,9 @@
  * NSM .htaccess Generator Extension
  *
  * @package			NsmHtaccessGenerator
- * @version			1.1.6
+ * @version			1.1.5
  * @author			Leevi Graham <http://leevigraham.com> - Technical Director, Newism
- * @copyright 		Copyright (c) 2007-2014 Newism <http://newism.com.au>
+ * @copyright 		Copyright (c) 2007-2012 Newism <http://newism.com.au>
  * @license 		Commercial - please see LICENSE file included with this distribution
  * @link			http://ee-garage.com/nsm-htaccess-generator
  * @see 			http://expressionengine.com/docs/development/extensions.html
@@ -14,7 +14,7 @@
 
 class Nsm_htaccess_generator_ext
 {
-	public $version			= '1.1.6';
+	public $version			= '1.1.5';
 	public $name			= 'NSM .htaccess Generator';
 	public $description		= 'Generates .htaccess rules for include method';
 	public $docs_url		= 'http://ee-garage.com/nsm-htaccess-generator';
@@ -221,7 +221,7 @@ RewriteRule (.*) /index.php/$1 [L]'
 		}
 
 		// Prepare HASH
-		$hash = "*lg:" . sha1(time()) . "*";
+		$hash = "*lg:" . do_hash(time()) . "*";
 
 		foreach ($this->settings['path'] as $path) {
 			// Check the old .htaccess file exists
@@ -418,16 +418,15 @@ RewriteRule (.*) /index.php/$1 [L]'
 			"class" => false
 		), TRUE);
 
-		$template = json_encode($template);
+		$template = $EE->javascript->generate_json($template);
 
 		$js = <<<EOE
 			NSM_htaccess = { template: $('.$template.') };
-            $(function() {
-                $("#htaccess_paths").NSM_Cloneable({
+			$("#htaccess_paths")
+				.NSM_Cloneable({
 					addTrigger: function(){ return $(this).next().find(".add") },
 					cloneTemplate: NSM_htaccess.template,
 				});
-            });
 EOE;
 
 		$EE->nsm_htaccess_generator_helper->addJS($js, array('file' => FALSE));
@@ -488,6 +487,11 @@ EOE;
 
 		$EE =& get_instance();
 
+		$EE->load->library('javascript');
+		if ( ! function_exists('json_decode')) {
+			$EE->load->library('Services_json');
+		}
+
 		if ($current < "1.0.6") {
 			// Get the extension settings
 			$query = $EE->db->query("SELECT * FROM `exp_nsm_addon_settings` WHERE `addon_id` = '{$this->addon_id}'");
@@ -499,7 +503,7 @@ EOE;
 			}
 
 			// generate the json
-			$site["settings"] = json_encode($site["settings"], true);
+			$site["settings"] = $EE->javascript->generate_json($site["settings"], true);
 
 			// update the DB
 			$query = $EE->db->update(
@@ -677,7 +681,7 @@ EOE;
 	{
 		$EE =& get_instance();
 		$data = array(
-			'settings'	=> json_encode($settings),
+			'settings'	=> $EE->javascript->generate_json($settings, true),
 			'addon_id'	=> $this->addon_id,
 			'site_id'	=> SITE_ID
 		);

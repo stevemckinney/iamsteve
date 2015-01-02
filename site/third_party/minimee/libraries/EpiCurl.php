@@ -1,7 +1,4 @@
 <?php
-/**
- * Taken from https://github.com/jmathai/twitter-async
- */
 class EpiCurl
 {
   const timeout = 3;
@@ -16,7 +13,6 @@ class EpiCurl
   private $requests = array();
   private $responses = array();
   private $properties = array();
-  private static $timers = array();
 
   function __construct()
   {
@@ -35,17 +31,6 @@ class EpiCurl
       );
   }
 
-  public function addEasyCurl($ch)
-  {
-    $key = $this->getKey($ch);
-    $this->requests[$key] = $ch;
-    curl_setopt($ch, CURLOPT_HEADERFUNCTION, array($this, 'headerCallback'));
-    $done = array('handle' => $ch);
-    $this->storeResponse($done, false);
-    $this->startTimer($key);
-    return new EpiCurlManager($key);
-  }
-
   public function addCurl($ch)
   {
     $key = $this->getKey($ch);
@@ -53,7 +38,6 @@ class EpiCurl
     curl_setopt($ch, CURLOPT_HEADERFUNCTION, array($this, 'headerCallback'));
 
     $code = curl_multi_add_handle($this->mc, $ch);
-    $this->startTimer($key);
     
     // (1)
     if($code === CURLM_OK || $code === CURLM_CALL_MULTI_PERFORM)
@@ -74,7 +58,7 @@ class EpiCurl
   {
     if($key != null)
     {
-      if(isset($this->responses[$key]))
+      if(isset($this->responses[$key]['data']))
       {
         return $this->responses[$key];
       }
@@ -82,15 +66,15 @@ class EpiCurl
       $innerSleepInt = $outerSleepInt = 1;
       while($this->running && ($this->execStatus == CURLM_OK || $this->execStatus == CURLM_CALL_MULTI_PERFORM))
       {
-        usleep(intval($outerSleepInt));
-        $outerSleepInt = intval(max(1, ($outerSleepInt*$this->sleepIncrement)));
+        usleep($outerSleepInt);
+        $outerSleepInt *= $this->sleepIncrement;
         $ms=curl_multi_select($this->mc, 0);
         if($ms > 0)
         {
           do{
             $this->execStatus = curl_multi_exec($this->mc, $this->running);
-            usleep(intval($innerSleepInt));
-            $innerSleepInt = intval(max(1, ($innerSleepInt*$this->sleepIncrement)));
+            usleep($innerSleepInt);
+            $innerSleepInt *= $this->sleepIncrement;
           }while($this->execStatus==CURLM_CALL_MULTI_PERFORM);
           $innerSleepInt = 1;
         }
@@ -105,15 +89,10 @@ class EpiCurl
     }
     return false;
   }
-
-  public static function getSequence()
+  
+  public function cleanupResponses()
   {
-    return new EpiSequence(self::$timers);
-  }
-
-  public static function getTimers()
-  {
-    return self::$timers;
+    $this->responses = array();
   }
 
   private function getKey($ch)
@@ -138,39 +117,15 @@ class EpiCurl
   {
     while($done = curl_multi_info_read($this->mc))
     {
-      $this->storeResponse($done);
-    }
-  }
-
-  private function storeResponse($done, $isAsynchronous = true)
-  {
-    $key = $this->getKey($done['handle']);
-    $this->stopTimer($key, $done);
-    if($isAsynchronous)
+      $key = (string)$done['handle'];
       $this->responses[$key]['data'] = curl_multi_getcontent($done['handle']);
-    else
-      $this->responses[$key]['data'] = curl_exec($done['handle']);
-
-    foreach($this->properties as $name => $const)
-    {
-      $this->responses[$key][$name] = curl_getinfo($done['handle'], $const);
-    }
-    if($isAsynchronous)
+      foreach($this->properties as $name => $const)
+      {
+        $this->responses[$key][$name] = curl_getinfo($done['handle'], $const);
+      }
       curl_multi_remove_handle($this->mc, $done['handle']);
-    curl_close($done['handle']);
-  }
-
-  private function startTimer($key)
-  {
-    self::$timers[$key]['start'] = microtime(true);
-  }
-
-  private function stopTimer($key, $done)
-  {
-      self::$timers[$key]['end'] = microtime(true);
-      self::$timers[$key]['api'] = curl_getinfo($done['handle'], CURLINFO_EFFECTIVE_URL);
-      self::$timers[$key]['time'] = curl_getinfo($done['handle'], CURLINFO_TOTAL_TIME);
-      self::$timers[$key]['code'] = curl_getinfo($done['handle'], CURLINFO_HTTP_CODE);
+      curl_close($done['handle']);
+    }
   }
 
   static function getInstance()
@@ -190,19 +145,19 @@ class EpiCurlManager
   private $key;
   private $epiCurl;
 
-  public function __construct($key)
+  function __construct($key)
   {
     $this->key = $key;
     $this->epiCurl = EpiCurl::getInstance();
   }
 
-  public function __get($name)
+  function __get($name)
   {
     $responses = $this->epiCurl->getResult($this->key);
-    return isset($responses[$name]) ? $responses[$name] : null;
+    return $responses[$name];
   }
 
-  public function __isset($name)
+  function __isset($name)
   {
     $val = self::__get($name);
     return empty($val);

@@ -1,11 +1,6 @@
 NSM .htaccess Generator - Changelog
 ===================================
 
-v1.1.6
-------
-
-* [Fix] Addressed EE 2.8.0 compatibility issues
-
 v1.1.5
 ------
 

@@ -14,15 +14,14 @@
  * $this->EE->nsm_example_helper->addJS('../lib/jquery.cookie.js');
  * 
  * @package			NsmHtaccessGenerator
- * @version			1.1.6
+ * @version			1.1.5
  * @author			Leevi Graham <http://leevigraham.com> - Technical Director, Newism
- * @copyright 		Copyright (c) 2007-2014 Newism <http://newism.com.au>
+ * @copyright 		Copyright (c) 2007-2012 Newism <http://newism.com.au>
  * @license 		Commercial - please see LICENSE file included with this distribution
  * @link			http://ee-garage.com/nsm-example-addon
  */
 
-class Nsm_htaccess_generator_helper
-{
+class Nsm_htaccess_generator_helper{
 
 	/**
 	 * The addon ID
@@ -86,6 +85,7 @@ class Nsm_htaccess_generator_helper
 		$EE =& get_instance();
 
 		$options = array_merge(array(
+			"where" => "head",
 			"type" => "css",
 			"file" => TRUE,
 			"theme_url" => $this->_getThemeURL()
@@ -107,7 +107,8 @@ class Nsm_htaccess_generator_helper
 				break;
 		}
 
-		$EE->cp->add_to_foot($content);
+		$method = "add_to_".$options["where"];
+		$EE->cp->$method($content);
 
 	}
 

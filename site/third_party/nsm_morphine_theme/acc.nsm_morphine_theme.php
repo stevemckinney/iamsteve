@@ -3,9 +3,9 @@
  * NSM Morphine Theme Accessory
  *
  * @package			NsmMorphineTheme
- * @version			2.0.4
+ * @version			2.0.3
  * @author			Leevi Graham <http://leevigraham.com> - Technical Director, Newism
- * @copyright 		Copyright (c) 2007-2014 Newism <http://newism.com.au>
+ * @copyright 		Copyright (c) 2007-2012 Newism <http://newism.com.au>
  * @license 		Commercial - please see LICENSE file included with this distribution
  * @link			http://expressionengine-addons.com/nsm-morphine-theme
  * @see				http://expressionengine.com/public_beta/docs/development/accessories.html
@@ -15,7 +15,7 @@ class Nsm_morphine_theme_acc
 {
 	var $name	 		= 'NSM Morphine theme';
 	var $id	 			= 'nsm_morphine_theme';
-	var $version	 	= '2.0.4';
+	var $version	 	= '2.0.3';
 	var $description	= 'Accessory for NSM Morphine theme.';
 	var $sections	 	= array();
 	var $debug			= false;
@@ -40,10 +40,10 @@ class Nsm_morphine_theme_acc
 
 		$theme_folder_url .= "third_party/nsm_morphine_theme/";
 
-		$EE->cp->add_to_foot('<link rel="stylesheet" type="text/css" href="'.$theme_folder_url.'styles/screen.css" />');
+		$EE->cp->add_to_head('<link rel="stylesheet" type="text/css" href="'.$theme_folder_url.'styles/screen.css" />');
 
 		if(!$this->debug) {
-			$EE->cp->add_to_foot('<script type="text/javascript" charset="utf-8" src="'.$theme_folder_url.'scripts/compressed.js"></script>');
+			$EE->cp->add_to_head('<script type="text/javascript" charset="utf-8" src="'.$theme_folder_url.'scripts/compressed.js"></script>');
 		} else {
 			$js_libs = array(
 							'NSM_MagicCheckboxes', 'NSM_Stripeable', 'NSM_UpdateInputsOnChange',
@@ -52,7 +52,7 @@ class Nsm_morphine_theme_acc
 			);
 
 			foreach ($js_libs as $lib) {
-				$EE->cp->add_to_foot('<script type="text/javascript" charset="utf-8" src="'.$theme_folder_url.'scripts/jquery.'.$lib.'.js"></script>');
+				$EE->cp->add_to_head('<script type="text/javascript" charset="utf-8" src="'.$theme_folder_url.'scripts/jquery.'.$lib.'.js"></script>');
 			}
 		}
 
