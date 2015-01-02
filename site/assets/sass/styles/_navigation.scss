@@ -41,21 +41,21 @@
 		background: $primary;
 		a {
 			&:focus, &:hover {
-				@include box-shadow(
+				box-shadow:
 					0 0 0 1px darken($primary_d2, 5%),
 					inset 0 1px 1px fade-out($primary_l1, 0.8),
 					inset 0 -1px 0 fade-out($primary_d1, 0.95),
 					inset 0 -1px 1px fade-out($primary_d1, 0.9),
-					0 1px 1px fade-out($primary_d1, 0.5));
+					0 1px 1px fade-out($primary_d1, 0.5);
 				background: fade-out($primary_l2, 0.5); }
 			&:active {
 				position: relative;
 				z-index: 1;
-				@include box-shadow(
+				box-shadow:
 					0 1px 0 darken($primary_d2, 5%),
 					inset 0 1px 0 darken($primary_d2, 40%),
 					inset 0 1px 2px fade-out($primary_d1, 0.3),
-					0 2px fade-out($primary_l1, 0.95));
+					0 2px fade-out($primary_l1, 0.95);
 				@include background(
 					linear-gradient(
 						fade-out(darken($primary_d1, 3%), 0.85),

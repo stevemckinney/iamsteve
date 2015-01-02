@@ -5,14 +5,17 @@
 	
 	[role="navigation"] {
 		a {
-			@include rem(padding, $base-px $line $base-px $line*1.95);
+			@include rem(padding, ($base-px + 1) $line ($base-px - 1) $line*1.95);
 			&:before {
-				@include rem(top, $base-px);
+				@include rem(top, $base-px + 1);
 				@include rem(left, $line); } } }
 	
 	[role="contentinfo"] {
 		margin-right: auto;
 		margin-left: auto; }
+	
+	.title {
+		padding: $line*2.75 15%; }
 	
 	.me {
 		width: 50.833333333%;

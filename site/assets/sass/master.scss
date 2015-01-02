@@ -24,18 +24,10 @@ body {
 .container {
 	@include pie-clearfix;
 	@extend %margin-bottom;
-	@include box-shadow(0 1px 0 fade-out($white, 0.6), 0 6px 24px -6px fade-out($primary_d1, 0.4));
 	padding: em($line, $base-font-size) 0 0;
 	position: relative;
 	overflow: hidden;
-	background: $primary;
-	@include respond-min($c) {
-		@include box-shadow(inset 0 1px 0 $black, inset 0 -1px 0 $primary, 0 1px 0 fade-out($white, 0.6), 0 12px 48px -24px $primary_d1); }
-	@include respond-min($d) {
-		background: $primary url(../images/header_bg_alt.png) center bottom no-repeat;
-		@include background(url(../images/header_bg_alt.png) center bottom, linear-gradient($primary 75%, $primary_d2)); }
-	@include respond-to(retina) {
-		background-size: cover; } }
+	background: $primary; }
 
 img {
 	vertical-align: bottom; }
@@ -72,20 +64,14 @@ article img {
 	.title {
 		@extend %ts;
 		@include rem(padding, $line 0 $line*2);
-		@include animation(title 1s ease-in-out);
-		@include animation-fill-mode(forwards);
-		@include animation-play-state(paused);
 		position: relative;
 		width: 88%;
-		top: 500px;
 		margin: auto;
 		text-align: center;
-		.loaded & {
-			@include animation-play-state(running); }
+
 		.error & {
 			text-transform: capitalize; }
-		.no-cssanimations & {
-			top: auto; }
+			
 		a {
 			line-height: 1.185; } }
 
@@ -116,7 +102,7 @@ article img {
 		vertical-align: bottom;
 		display: inline-block;
 		border: 6px solid $white;
-		max-width: 40%;
+		max-width: 33.333333%;
 		float: left; } }
 
 .columns {
@@ -279,20 +265,27 @@ dd {
 	@include respond-min($d) {
 		h1 {
 			padding-left: 15.5%; } } }
+
+.previous-entries-container {
+  @include pie-clearfix;
+  
+  @include respond-min($d) {
+    padding: 0 15.5%; } }
+
 .related-entry, .previous-entry {
-	width: 46.25%;
-	&:first-of-type {
-		float: left; }
-	&:last-of-type {
-		float: right; }
+	width: 50%;
+	display: inline-block;
+	vertical-align: top;
+	padding-bottom: $line;
+	
+	&:nth-of-type(odd) {
+  	padding-right: $base-px; }
+	
+	&:nth-of-type(even) {
+  	padding-left: $base-px; }
+	
 	p {
-		@extend %margin-bottom; }
-	@include respond-min($d) {
-		width: 47.5%;
-		&:first-of-type { 
-			padding-left: 15.5%; }
-		&:last-of-type { 
-			padding-right: 15.5%; } } }
+		@extend %margin-bottom; } }
 
 
 /* 

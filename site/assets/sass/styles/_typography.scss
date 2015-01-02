@@ -1,12 +1,3 @@
-@font-face {
-	font-family: "Geared";
-	src: url('../fonts/gearedslab-light-webfont.eot');
-	src: url('../fonts/gearedslab-light-webfont.eot?#iefix') format('embedded-opentype'),
-	     url('../fonts/gearedslab-light-webfont.woff') format('woff'),
-	     url('../fonts/gearedslab-light-webfont.ttf') format('truetype'),
-	     url('../fonts/gearedslab-light-webfont.svg#GearedSlabThin') format('svg');
-	font-weight: 100;
-	font-style: normal; }
 @import "symbolset";
 
 // base heading elements
@@ -59,20 +50,15 @@ p, li {
 // ---------------------------
 .title {
 	font-family: $slab;
-	font-weight: 100;
-	font-size: 7vw;
+	font-weight: 400;
+	font-size: 24px;
 	
-	@include respond-min($d) {
-		font-size: 5.5vw; }
-		
+	@include respond-min($c) {
+	 font-size: 42px; }
+	
 	@include respond-min($e) {
-		font-size: 5vw; }
+		font-size: 48px; } }
 		
-	@include respond-min($f) {
-		font-size: 4.5vw; }
-	
-	.no-cssvwunit & {
-		font-size: 72px; } }
 .title, .title span, .title a {
 	color: $primary_l3; }
 
@@ -112,13 +98,13 @@ code {
 @include respond-min($c) {
 	[role="main"] {
 		h1, .h1 {
-		font-size: 2.625em; }
+		font-size: 2.25em; }
 		h2, .h2 {
-			font-size: 2.25em; }
+			font-size: 2em; }
 		h3, .h3 {
-			font-size: 1.875em; }
+			font-size: 1.75em; }
 		h4, .h4 {
-			font-size: 1.5em; }
+			font-size: 1.3125em; }
 		p, dt, dd  {
 			font-size: 1.125em; } }
 		.entry-summary p:first-child, .entry-content p:first-child {
@@ -148,10 +134,8 @@ code {
 // ---------------------------
 [role="navigation"] {
 	a {
-		font-size: 15px;
 		font: 500 .875rem/#{$base-line-height} $body;
-		color: #f0f4fc;
-		letter-spacing: 1px; } }
+		color: #f0f4fc; } }
 
 // aside
 // ---------------------------

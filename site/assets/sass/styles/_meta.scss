@@ -34,10 +34,10 @@
 	a, time, li {
 		color: fade-out($primary, .5);
 		font-size: .75rem;
-		@include respond-min($b) {
-			font-size: .875rem; }
-		&:hover, &:focus {
-			@extend %transition;
+		@extend %transition; }
+  
+  &:hover, &:focus {
+		a, time, li {
 			opacity: 1;
 			color: $primary;
 			&:before {
@@ -65,5 +65,5 @@
 		a, time, li {
 			&:before {
 				font-size: em($base-font-size, 14px);
-				top: 16px; } } }
+				top: 18px; } } }
 } // close mq
