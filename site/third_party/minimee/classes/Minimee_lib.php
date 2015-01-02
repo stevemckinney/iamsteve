@@ -44,6 +44,11 @@ class Minimee_lib {
 
 
 	/**
+	 * keep track of how many bytes saved during minification
+	 */
+	protected $diff_total			= 0;
+
+	/**
 	 * Minimee_config
 	 */
 	public $config;
@@ -93,11 +98,7 @@ class Minimee_lib {
 	 */
 	public function css($files)
 	{
-		return $this->set_type('css')
-					->set_files($files)
-					->flightcheck()
-					->check_headers()
-					->cache();
+		return $this->run('css', $files);
 	}
 	// ------------------------------------------------------
 
@@ -110,11 +111,7 @@ class Minimee_lib {
 	 */
 	public function js($files)
 	{
-		return $this->set_type('js')
-					->set_files($files)
-					->flightcheck()
-					->check_headers()
-					->cache();
+		return $this->run('js', $files);
 	}
 	// ------------------------------------------------------
 
@@ -307,6 +304,20 @@ class Minimee_lib {
 
 
 	/**
+	 * Add to total diff; returns new total
+	 *
+	 * @return Integer Total bytes saved after minification
+	 */
+	public function diff_total($diff = 0)
+	{
+		$this->diff_total = $diff + $this->diff_total;
+
+		return $this->diff_total;
+	}
+	// ------------------------------------------------------
+
+
+	/**
 	 * Flightcheck - make some basic config checks before proceeding
 	 *
 	 * @return void
@@ -460,6 +471,27 @@ class Minimee_lib {
 
 
 	/**
+	 * Reset all internal props
+	 *
+	 * @return object 	Self
+	 */
+	public function reset()
+	{
+		$this->cache_lastmodified		= '';
+		$this->cache_filename_hash		= '';
+		$this->cache_filename			= '';
+		$this->filesdata				= array();
+		$this->remote_mode				= '';
+		$this->stylesheet_query		= FALSE;
+		$this->type					= '';
+
+		// chaining
+		return $this;
+	}
+	// ------------------------------------------------------
+
+
+	/**
 	 * Our basic run
 	 *
 	 * @param String 	Type of cache (css or js)
@@ -468,7 +500,8 @@ class Minimee_lib {
 	 */
 	public function run($type, $files)
 	{
-		return $this->set_type($type)
+		return $this->reset()
+					->set_type($type)
 					->set_files($files)
 					->flightcheck()
 					->check_headers()
@@ -484,6 +517,9 @@ class Minimee_lib {
 	 */	
 	protected function _create_cache()
 	{
+		// zero our diff total
+		$this->diff_total = 0;
+
 		// the eventual contents of our cache
 		$cache = '';
 		
@@ -594,14 +630,30 @@ class Minimee_lib {
 			{
 				Minimee_helper::log('Fetched contents of `' . $file['name'] . '`.', 3);
 	
-				// minify contents and append to $cache
-				$cache .= $this->_minify($this->type, $contents, $file['name'], $css_prepend_url) . "\n";
+				// minify contents
+				$minified = $this->_minify($this->type, $contents, $file['name'], $css_prepend_url);
+
+				// tack on a semicolon at end of JS?
+				if($this->type == 'js' && substr($minified, -1) != ';')
+				{
+					$minified .= ';';
+				}
+				
+				//  and append to $cache
+				$cache .= $minified . "\n";
 			}
 
 		endforeach;
 
 		// return our settings to our runtime
 		$this->config->reset()->extend($runtime);
+
+		// Log total bytes saved, if we saved any, and if there was more than one file to minify (otherwise we're reporting something we've already mentioned in a previous log)
+		if($this->diff_total > 0 && count($this->filesdata) > 1)
+		{
+			$diff_formatted = ($this->diff_total < 100) ? $this->diff_total . 'b' : round($this->diff_total / 1000, 2) . 'kb';
+			Minimee_helper::log('Total savings: ' . $diff_formatted . ' across ' . count($this->filesdata) . ' files.', 3);
+		}
 
 		// write our cache file
 		$this->_write_cache($cache);
@@ -647,8 +699,8 @@ class Minimee_lib {
 					$s_key => '',
 					// type extension
 					'/\.' . $this->type . '/i' => '',
-					// leading slash
-					'/^\//'	=> '',
+					// leading slashes
+					'/^\/+/'	=> '',
 					// other slashes
 					'/\//'	=> '.'
 				);
@@ -804,7 +856,8 @@ class Minimee_lib {
 	 */
 	protected function _minify($type, $contents, $filename, $rel = FALSE)
 	{
-		$before = strlen($contents);
+		// used in case we need to return orig
+		$contents_orig = $contents;
 	
 		switch ($type) :
 			
@@ -824,6 +877,9 @@ class Minimee_lib {
 					{
 						return $contents;
 					}
+
+					// re-set $contents_orig in case we need to return
+					$contents_orig = $contents;
 				}
 				// HOOK END
 
@@ -871,17 +927,25 @@ class Minimee_lib {
 					{
 						return $contents;
 					}
+
+					// copy to $contents_orig in case we need to return
+					$contents_orig = $contents;
 				}
 				// HOOK END
 
+				// prepend URL if relative path exists & configured to do so
+				if($rel !== FALSE && $this->config->is_yes('css_prepend_mode'))
+				{
+					Minimee_helper::library('css_urirewriter');
+					$contents = Minify_CSS_UriRewriter::prepend($contents, $rel . '/');
 
-				// set a relative path if exists
-				$relativePath = ($rel !== FALSE && $this->config->is_yes('css_prepend_mode')) ? $rel . '/' : NULL;
+					// copy to $contents_orig in case we need to return
+					$contents_orig = $contents;
+				}
 
-				// be sure we want to minify
+				// minify if configured to do so
 				if ($this->config->is_yes('minify_css'))
 				{
-
 					// See if CSSMin was explicitly requested
 					if ($this->config->css_library == 'cssmin')
 					{
@@ -895,13 +959,6 @@ class Minimee_lib {
 						
 						unset($cssmin);
 
-						// cssmin does not rewrite URLs, so we may need to do so here
-						if ($relativePath !== NULL)
-						{
-							Minimee_helper::library('css_urirewriter');
-		
-							$contents = Minify_CSS_UriRewriter::prepend($contents, $relativePath);
-						}
 					}
 
 					// the default is to run Minify_CSS
@@ -911,18 +968,7 @@ class Minimee_lib {
 					
 						Minimee_helper::library('minify');
 	
-						$contents = Minify_CSS::minify($contents, array('prependRelativePath' => $relativePath));
-					}
-				}
-
-				// un-minified, but (maybe) uri-rewritten contents
-				else
-				{
-					if ($relativePath !== NULL)
-					{
-						Minimee_helper::library('css_urirewriter');
-	
-						$contents = Minify_CSS_UriRewriter::prepend($contents, $relativePath);
+						$contents = Minify_CSS::minify($contents);
 					}
 				}
 
@@ -931,18 +977,36 @@ class Minimee_lib {
 		endswitch;
 
 		// calculate weight loss
+		$before = strlen($contents_orig);
 		$after = strlen($contents);
-		$change = round((($before - $after) / $before) * 100, 2);
-		Minimee_helper::log('Minification has reduced ' . $filename . ' by ' . $change . '%.', 3);
-		
+		$diff = $before - $after;
+
 		// quick check that contents are not empty
 		if($after == 0)
 		{
 			Minimee_helper::log('Minification has returned an empty string for `' . $filename . '`.', 2);
 		}
 
-		// cleanup		
-		unset($before, $after, $change);
+		// did we actually reduce our file size? It's possible an already minified asset
+		// uses a more aggressive algorithm than Minify; in that case, keep original contents
+		if($diff > 0)
+		{
+			$diff_formatted = ($diff < 100) ? $diff . 'b' : round($diff / 1000, 2) . 'kb';
+			$change = round(($diff / $before) * 100, 2);
+
+			Minimee_helper::log('Minification has reduced ' . $filename . ' by ' . $diff_formatted . ' (' . $change . '%).', 3);
+
+			// add to our running total
+			$this->diff_total($diff);
+		}
+		else
+		{
+			Minimee_helper::log('Minification unable to reduce ' . $filename . ', so using original content.', 3);
+			$contents = $contents_orig;
+		}
+
+		// cleanup (leave some smaller variables because they may or may not have ever been set)
+		unset($contents_orig);
 		
 		// return our (maybe) minified contents
 		return $contents;
@@ -1038,6 +1102,16 @@ class Minimee_lib {
 		@chmod($filepath, FILE_READ_MODE);
 
 		Minimee_helper::log('Cache file `' . $this->cache_filename . '` was written to ' . $this->config->cache_path, 3);
+
+		// creating the compressed file
+		if($this->config->is_yes('save_gz'))
+		{
+			$z_file = gzopen ($filepath.'.gz', 'w9');
+			gzwrite ($z_file, $file_data);
+			gzclose($z_file);
+			@chmod($filepath.'.gz', FILE_READ_MODE);
+			Minimee_helper::log('Gzipped file `' . $this->cache_filename . '.gz` was written to ' . $this->config->cache_path, 3);
+		}
 		
 		// Do we need to clean up expired caches?
 		if ($this->config->is_yes('cleanup'))
@@ -1060,7 +1134,7 @@ class Minimee_lib {
 		}
 
 		// free memory where possible
-		unset($filepath, $success);
+		unset($filepath, $z_file, $success);
 	}
 	// ------------------------------------------------------
 }

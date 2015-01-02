@@ -266,13 +266,15 @@ dd {
 		h1 {
 			padding-left: 15.5%; } } }
 
-.previous-entries-container {
+.previous-entries-container,
+.related-entries-container {
   @include pie-clearfix;
   
   @include respond-min($d) {
     padding: 0 15.5%; } }
 
-.related-entry, .previous-entry {
+.related-entry, 
+.previous-entry {
 	width: 50%;
 	display: inline-block;
 	vertical-align: top;
