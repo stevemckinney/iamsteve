@@ -3,10 +3,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 	display: block; }
 
 audio, canvas, video {
-	display: inline-block;
-	@if ($legacy-support-for-ie == true) {
-		*display: inline;
-		*zoom: 1; } }
+	display: inline-block; }
 
 audio:not([controls]) {
 	display: none; }
@@ -89,24 +86,18 @@ fieldset {
 legend {
 	border: 0; 
 	padding: 0;
-	white-space: normal; 
-	@if ($legacy-support-for-ie == true) {
-		*margin-left: -7px; } }
+	white-space: normal; }
 
 button, input, select, textarea {
 	font-size: 100%; 
 	margin: 0; 
-	vertical-align: baseline;
-	@if ($legacy-support-for-ie == true) {
-		*vertical-align: middle; } }
+	vertical-align: baseline; }
 
 button, input {
 	line-height: normal; }
 
 button, [type="button"], [type="reset"], [type="submit"] {
-	cursor: pointer;
-	@if ($legacy-support-for-ie == true) {
-		*overflow: visible; } }
+	cursor: pointer; }
 
 
 [disabled] {
@@ -114,10 +105,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
 
 [type="checkbox"],
 [type="radio"] {
-	padding: 0; 
-	@if ($legacy-support-for-ie == true) {
-		*height: 13px; 
-		*width: 13px; } }
+	padding: 0; }
 
 [type="search"]::-webkit-search-decoration,
 [type="search"]::-webkit-search-cancel-button {
