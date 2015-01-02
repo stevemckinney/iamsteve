@@ -192,7 +192,7 @@ class EE_Extensions {
 
 				$path = ee()->addons->_packages[$name]['extension']['path'];
 				$extension_path = reduce_double_slashes($path.'/ext.'.$name.'.php');
-
+        
 				if (file_exists($extension_path))
 				{
 					ee()->load->add_package_path($path, FALSE);

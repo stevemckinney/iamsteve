@@ -1,6 +1,8 @@
 .DS_Store
 system/config.php
 .sass-cache
+cache/
+cacheee_version/
 
 # Images
 images/avatars/
