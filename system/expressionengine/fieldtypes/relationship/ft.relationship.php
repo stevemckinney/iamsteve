@@ -333,11 +333,22 @@ class Relationship_ft extends EE_Fieldtype {
 			$order_field = 'entry_date';
 		}
 
-		ee()->db
-			->distinct()
-			->from('channel_titles')
-			->select('channel_titles.entry_id, channel_titles.title')
-			->order_by($order_field, $this->settings['order_dir']);
+		if ($order_field != '')
+      {
+      ee()->db
+          ->distinct()
+          ->from('channel_titles')
+          ->select('channel_titles.entry_id, channel_titles.title')
+          ->order_by($order_field, $this->settings['order_dir']);
+      }
+
+    if ($order_field == '')
+    {
+      ee()->db
+          ->distinct()
+          ->from('channel_titles')
+          ->select('channel_titles.entry_id, channel_titles.title');
+    } 
 
 		if (count($limit_channels))
 		{
