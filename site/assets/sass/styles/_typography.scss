@@ -62,6 +62,13 @@ p, li {
 	font-weight: 100;
 	font-size: 7vw;
 	
+<<<<<<< HEAD
+	@include respond-min($c) {
+	 font-size: 4vw; }
+	
+	@include respond-min($d) {
+		font-size: 48px; }
+=======
 	@include respond-min($d) {
 		font-size: 5.5vw; }
 		
@@ -70,6 +77,7 @@ p, li {
 		
 	@include respond-min($f) {
 		font-size: 4.5vw; }
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 	
 	.no-cssvwunit & {
 		font-size: 72px; } }
@@ -112,6 +120,15 @@ code {
 @include respond-min($c) {
 	[role="main"] {
 		h1, .h1 {
+<<<<<<< HEAD
+		font-size: 2em; }
+		h2, .h2 {
+			font-size: 1.75em; }
+		h3, .h3 {
+			font-size: 1.5em; }
+		h4, .h4 {
+			font-size: 1.125em; }
+=======
 		font-size: 2.625em; }
 		h2, .h2 {
 			font-size: 2.25em; }
@@ -119,6 +136,7 @@ code {
 			font-size: 1.875em; }
 		h4, .h4 {
 			font-size: 1.5em; }
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 		p, dt, dd  {
 			font-size: 1.125em; } }
 		.entry-summary p:first-child, .entry-content p:first-child {
@@ -148,10 +166,15 @@ code {
 // ---------------------------
 [role="navigation"] {
 	a {
+<<<<<<< HEAD
+		font: 500 .875rem/#{$base-line-height} $body;
+		color: #f0f4fc; } }
+=======
 		font-size: 15px;
 		font: 500 .875rem/#{$base-line-height} $body;
 		color: #f0f4fc;
 		letter-spacing: 1px; } }
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 
 // aside
 // ---------------------------

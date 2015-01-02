@@ -1,29 +1,51 @@
 {embed="include/header"}
+<<<<<<< HEAD
 
-{exp:channel:entries channel="blog" limit="3" status="open|latest" disable="pagination|member_data|trackbacks"}
+{exp:channel:entries channel="blog" limit="5" status="open|latest" disable="pagination|member_data|trackbacks"}
 	{if count == "1"}
 		<article role="article" class="entry-summary">
-			{exp:eehive_hacksaw words="175" cutoff="<h2>" allow="<blockquote><a><p><b><strong><i><h1><h2><h3>"}
+			{exp:eehive_hacksaw words="200" cutoff="<h2>" allow="<blockquote><a><p><b><strong><i><h1><h2><h3>"}
 				{exp:markdown}{blog_article}{/exp:markdown}
 			{/exp:eehive_hacksaw}
 			{blog_meta}
 		</article>
 		<hr>
-	{if:elseif count == "2"}
-		<section role="region" class="previous-entries" aria-labelledby="Previous entries">
-			<h1 role="heading" class="h3">Previous entries</h1>
-			<article class="previous-entry">
-				<h2 class="h4"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-				<p>{exp:eehive_hacksaw words="30" append="&hellip;"}{excerpt}{/exp:eehive_hacksaw}</p>
-				<a href="{title_permalink='blog/entry'}" title="Read {title} in full" class="button-small">Read entry</a>
+  {/if}
+	{if count == "2"}
+	  <section role="region" class="previous-entries" aria-labelledby="Previous entries">
+  		<h1 role="heading" class="h3">Previous entries</h1>
+  		<div class="previous-entries-container">
+  {/if}
+  {if count >= "2"}
+		<article class="previous-entry">
+			<h2 class="h4"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+  		<p>{exp:eehive_hacksaw words="30" append="&hellip;"}{excerpt}{/exp:eehive_hacksaw}</p>
+			<a href="{title_permalink='blog/entry'}" title="Read {title} in full" class="button-small">Read entry</a>
 			</article>
-	{if:else}
-			<article class="previous-entry">
-				<h2 class="h4"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-				<p>{exp:eehive_hacksaw words="30" append="&hellip;"}{excerpt}{/exp:eehive_hacksaw}</p>
-				<a href="{title_permalink='blog/entry'}" title="Read {title} in full" class="button-small">Read entry</a>
-			</article>
-		</section>
 	{/if}
+	{if count == "5"}
+  		</div>
+	  </section>
+  {/if}
+=======
+{exp:channel:entries channel="blog" limit="6" status="open|latest" global:param_disable_default}
+	{if count == "1"}
+		<article role="article" class="latest-entry">
+			<h1 class="entry-title latest-entry-title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full.">{title}</a></h1>
+			<div class="latest-entry-summary">
+			{exp:eehive_hacksaw words="175" cutoff="<h2>" allow="<blockquote><a><p><b><strong><i><h1><h2><h3>"}
+				{exp:smartdown}{blog_article}{/exp:smartdown}
+			{/exp:eehive_hacksaw}
+			</div>
+			{blog_meta}
+		</article>
+	{if:else}
+		<article role="article" class="previous-entry">
+			<h2 class="h4 entry-title"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+			<p class="entry-summary previous-entry-summary">{exp:eehive_hacksaw words="30" append="&hellip;"}{excerpt}{/exp:eehive_hacksaw}</p>
+			<a href="{title_permalink='blog/entry'}" title="Read {title} in full" class="button-small">Read entry</a>
+		</article>
+	{/if}
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 {/exp:channel:entries}
 {embed="include/footer"}

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <!--[if IE]><html lang="en" class="wf-loading hfeed ie no-js{if embed:body_class}{embed:body_class}{if:elseif segment_1 == ''}{exp:channel:entries channel='blog' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'} {url_title} home{/exp:channel:entries}{if:elseif segment_1 && segment_2 == ''} {segment_1}{if:elseif segment_2 == 'entry'} {segment_2} {exp:channel:entries channel='blog' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'}{url_title}{/exp:channel:entries}{/if}"><![endif]-->
 <!--[if gt IE 9]><!--><html lang="en" class="wf-loading hfeed no-js{if embed:body_class}{embed:body_class}{if:elseif segment_1 == ''}{exp:channel:entries channel='blog' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'} {url_title} home{/exp:channel:entries}{if:elseif segment_1 && segment_2 == ''} {segment_1}{if:elseif segment_2 == 'entry' OR segment_2 == 'view'} {segment_2} {exp:channel:entries channel='blog|portfolio' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'}{url_title}{/exp:channel:entries}{/if}"><!--<![endif]-->
+=======
+<html lang="en" class="wf-loading hfeed no-js{if embed:body_class}{embed:body_class}{if:elseif segment_1 == ''}{exp:channel:entries channel='blog' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'} {url_title} home{/exp:channel:entries}{if:elseif segment_1 && segment_2 == ''} {segment_1}{if:elseif segment_2 == 'entry' OR segment_2 == 'view'} {segment_2} {exp:channel:entries channel='blog|portfolio' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'}{url_title}{/exp:channel:entries}{/if}">
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 <head>
 	{!-- Meta --}
 	<meta charset="utf-8">
@@ -16,11 +20,20 @@
 		{if:elseif embed:entry_title}
 			{embed:entry_title} | Steve McKinney
 		{if:else}
+<<<<<<< HEAD
 			Blog & Portfolio of Steve McKinney
 		{/if}
 	</title>
 	
 	<meta name="description" content="The portfolio of Steve McKinney, a Manchester based web designer.">
+=======
+			Blog & Portfolio of Steve McKinney, a Manchester web designer | {site_name}
+		{/if}
+	</title>
+	
+	<meta name="description" content="The portfolio of Steve McKinney (iamsteve), a Manchester based web designer/front end developer.">
+	<meta name="keywords" content="Steve, McKinney, web, design, designer, html, css, manchester, portfolio, iamsteve, iamsteve.me, blog, freelance, design, i am steve">
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 	<meta name="author" content="Steve McKinney">
 	
 	{!-- Mobile --}
@@ -42,13 +55,27 @@
 	<meta name="twitter:url" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title_permalink='blog/entry'}{/exp:channel:entries}">
 	{/if}
 	
+<<<<<<< HEAD
 	{!-- CSS --}
+	<link href="//cloud.typography.com/7828432/626862/css/fonts.css" rel="stylesheet">
+	{exp:minimee:css minify="yes"}<link href="{global:theme_url}/site/assets/css/master.css" rel="stylesheet">{/exp:minimee:css}
+	{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+		{if extra_css}<link href="{global:theme_url}/site/assets/css/custom/{extra_css}.css?v=1" rel="stylesheet">{/if}
+	{/exp:channel:entries}
+	{!-- Javascript --}
+	{exp:minimee:js minify="yes"}<script src="{global:theme_url}/site/assets/js/modernizr.js"></script>{/exp:minimee:js}
+=======
+	{!-- CSS 
 	{exp:minimee:css minify="yes"}<link href="{global:theme_url}assets/css/master.css" rel="stylesheet">{/exp:minimee:css}
 	{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
 		{if extra_css}<link href="{global:theme_url}assets/css/custom/{extra_css}.css?v=1" rel="stylesheet">{/if}
-	{/exp:channel:entries}
+	{/exp:channel:entries} --}
+	
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	
 	{!-- Javascript --}
 	{exp:minimee:js minify="yes"}<script src="{global:theme_url}assets/js/modernizr.js"></script>{/exp:minimee:js}
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 	<script>(function(){var config={kitId:'fbz2ewv',scriptTimeout:3000};var h=document.getElementsByTagName("html")[0];h.className+=" wf-loading";var t=setTimeout(function(){h.className=h.className.replace(/(\s|^)wf-loading(\s|$)/g," ");h.className+=" wf-inactive"},config.scriptTimeout);var tk=document.createElement("script"),d=false;tk.src='//use.typekit.net/'+config.kitId+'.js';tk.type="text/javascript";tk.async="true";tk.onload=tk.onreadystatechange=function(){var a=this.readyState;if(d||a&&a!="complete"&&a!="loaded")return;d=true;clearTimeout(t);try{Typekit.load(config)}catch(b){}};var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(tk,s)})();</script>
 	{!-- Per page stuff --}
 	{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
@@ -59,12 +86,17 @@
 	<link rel="author publisher" href="https://plus.google.com/114129050502065289651/posts">
 	<link rel="canonical" href="{exp:seo_lite}{canonical_url}{/exp:seo_lite}">
 	<link rel="alternate" type="application/rss+xml" title="Blog | Portfolio of Steve McKinney" href="http://iamsteve.me/blog/feed">
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 	{!-- Icons --}
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="apple-touch-icon-precomposed" href="/assets/apple-touch-icon.png">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144x144.png">
+<<<<<<< HEAD
 </head>
 <body class="hentry">
 	<!--[if lt IE 9]>
@@ -103,3 +135,23 @@
 		{/if}
 	</div>	
 	<div role="main">
+=======
+	
+</head>
+<body class="hentry">
+	<header role="banner" class="site-header">
+		<a href="/" title="Back to the homepage" class="site-logo">I am Steve</a>
+		<a href="#nav" title="To the navigation" class="nav-toggle">&#xE9A1;</a>
+		<nav role="navigation" aria-hidden="false" class="site-nav">
+			<a href="{site_url}" title="Back to the homepage" class="site-nav-link{if segment_1 == ''} active{/if}" data-icon="home">Home</a>
+			<a href="{site_url}/blog" title="My blog about design/technology related things" class="site-nav-link{if segment_1 == 'blog'} active{/if}" data-icon="compose">Blog</a>
+			<a href="{site_url}/portfolio" title="View all my work" class="site-nav-link {if segment_1 == 'portfolio'} active{/if}" data-icon="picture">Portfolio</a>
+			<a href="{site_url}/about" title="Detailed information about myself" class="site-nav-link {if segment_1 == 'about'} active{/if}" data-icon="user">About</a>
+			<a href="{site_url}/contact" title="My contact details" class="site-nav-link{if segment_1 == 'contact'} site-nav-active{/if}" data-icon="envelope">Contact</a>
+			<a href="#search" title="Search" data-icon="search" class="search-toggle">Search</a>
+			{search}
+		</nav>
+	</header>
+	
+	<section role="main">
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1

@@ -24,6 +24,12 @@ body {
 .container {
 	@include pie-clearfix;
 	@extend %margin-bottom;
+<<<<<<< HEAD
+	padding: em($line, $base-font-size) 0 0;
+	position: relative;
+	overflow: hidden;
+	background: $primary; }
+=======
 	@include box-shadow(0 1px 0 fade-out($white, 0.6), 0 6px 24px -6px fade-out($primary_d1, 0.4));
 	padding: em($line, $base-font-size) 0 0;
 	position: relative;
@@ -36,6 +42,7 @@ body {
 		@include background(url(../images/header_bg_alt.png) center bottom, linear-gradient($primary 75%, $primary_d2)); }
 	@include respond-to(retina) {
 		background-size: cover; } }
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 
 img {
 	vertical-align: bottom; }
@@ -72,6 +79,16 @@ article img {
 	.title {
 		@extend %ts;
 		@include rem(padding, $line 0 $line*2);
+<<<<<<< HEAD
+		position: relative;
+		width: 88%;
+		margin: auto;
+		text-align: center;
+
+		.error & {
+			text-transform: capitalize; }
+			
+=======
 		@include animation(title 1s ease-in-out);
 		@include animation-fill-mode(forwards);
 		@include animation-play-state(paused);
@@ -86,6 +103,7 @@ article img {
 			text-transform: capitalize; }
 		.no-cssanimations & {
 			top: auto; }
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 		a {
 			line-height: 1.185; } }
 
@@ -116,7 +134,11 @@ article img {
 		vertical-align: bottom;
 		display: inline-block;
 		border: 6px solid $white;
+<<<<<<< HEAD
+		max-width: 33.333333%;
+=======
 		max-width: 40%;
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 		float: left; } }
 
 .columns {
@@ -272,13 +294,37 @@ dd {
 
 
 .related-entries, .previous-entries {
+<<<<<<< HEAD
+=======
 	@include pie-clearfix;
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 	@extend %margin-bottom;
 	@include respond-min($c) {
 		@include rem(margin, 0 0 $line*2); }
 	@include respond-min($d) {
 		h1 {
 			padding-left: 15.5%; } } }
+<<<<<<< HEAD
+
+.previous-entries-container {
+  @include pie-clearfix;
+  padding: 0 15.5%; }
+
+.related-entry, .previous-entry {
+	width: 50%;
+	display: inline-block;
+	vertical-align: top;
+	padding-bottom: $line;
+	
+	&:nth-of-type(odd) {
+  	padding-right: $base-px; }
+	
+	&:nth-of-type(even) {
+  	padding-left: $base-px; }
+	
+	p {
+		@extend %margin-bottom; } }
+=======
 .related-entry, .previous-entry {
 	width: 46.25%;
 	&:first-of-type {
@@ -293,6 +339,7 @@ dd {
 			padding-left: 15.5%; }
 		&:last-of-type { 
 			padding-right: 15.5%; } } }
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 
 
 /* 

@@ -1,8 +1,24 @@
 {embed="/include/header" entry_title="About"}
+<<<<<<< HEAD
+  <?php
+    //date in mm/dd/yyyy format; or it can be in other formats as well
+    $birthDate = "05/07/1989";
+    //explode the date to get month, day and year
+    $birthDate = explode("/", $birthDate);
+    //get age from date or birthdate
+    $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
+      ? ((date("Y") - $birthDate[2]) - 1)
+      : (date("Y") - $birthDate[2]));
+  ?>
+	<article role="article">
+		<h2>About myself</h2>
+		<p>In short: I'm <?php echo $age; ?> and I graduated from university in May 2011. I have been doing this web thing fairly consistently from when I was about 12. I consider myself more user interface focused, though I enjoy everything about the design process. I aspire to be <em>half</em> decent at illustration, someday&hellip;</p>
+=======
 
 	<article role="article">
 		<h2>About myself</h2>
 		<p>In short: I'm 23 and I graduated from university in May 2011. I have been doing this web thing fairly consistently from when I was about 12. I consider myself more user interface focused, though I enjoy everything about the design process. I aspire to be <em>half</em> decent at illustration, someday&hellip;</p>
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 	</article>
 
 	<article role="article" class="skills">
@@ -44,28 +60,44 @@
 		<p>Oh how we progress&hellip; <a href="http://dribbble.com/stevemckinney/projects/10419-My-site" title="Previous versions of my site taking shape on Dribbble">Dribbble</a> has been a good place for the most part to keep track of my previous designs (I should probably make a better effort in future to use it as a store for those). V2 onwards have links to blog posts explaining decisions.</p>
 		
 		<figure class="old-design">
+<<<<<<< HEAD
+			<img src="{global:theme_url}/site/assets/images/_about/v1_2x.jpg">
+=======
 			<img src="{global:theme_url}assets/images/_about/v1_2x.jpg">
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 			<figcaption>
 				Version one, around late 2008.
 			</figcaption>
 		</figure>
 		
 		<figure class="old-design">
+<<<<<<< HEAD
+			<img src="{global:theme_url}/site/assets/images/_about/v2_2x.jpg">
+=======
 			<img src="{global:theme_url}assets/images/_about/v2_2x.jpg">
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 			<figcaption>
 				<a href="{global:theme_url}/blog/entry/redesign">Version two, late 2010.</a>
 			</figcaption>
 		</figure>
 		
 		<figure class="old-design">
+<<<<<<< HEAD
+			<img src="{global:theme_url}/site/assets/images/_about/v3_2x.jpg">
+=======
 			<img src="{global:theme_url}assets/images/_about/v3_2x.jpg">
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 			<figcaption>
 				<a href="{global:theme_url}/blog/entry/about_the_redesign_v3">Version three, early 2011.</a>
 			</figcaption>
 		</figure>
 		
 		<figure class="old-design">
+<<<<<<< HEAD
+			<img src="{global:theme_url}/site/assets/images/_about/v4_2x.jpg">
+=======
 			<img src="{global:theme_url}assets/images/_about/v4_2x.jpg">
+>>>>>>> 0fa8825dc34df02ef80cbe3b3e72c69db1cc2cc1
 			<figcaption>
 				<a href="{global:theme_url}/blog/entry/about_version_4">Version four, late 2011.</a>
 			</figcaption>

@@ -1,4 +1,5 @@
 # Require any additional compass plugins here.
+require 'stitch'
 require 'susy'
 require 'animate-sass'
 
