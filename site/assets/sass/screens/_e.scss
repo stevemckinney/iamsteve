@@ -5,9 +5,9 @@
 	
 	[role="navigation"] {
 		a {
-			@include rem(padding, ($base-px + 1) $line ($base-px - 1) $line*1.95);
+			@include rem(padding, ($base-px + 1) $line ($base-px - 1) $line*1.75);
 			&:before {
-				@include rem(top, $base-px + 1);
+				@include rem(top, $base-px + 2);
 				@include rem(left, $line); } } }
 	
 	[role="contentinfo"] {
@@ -15,7 +15,7 @@
 		margin-left: auto; }
 	
 	.title {
-		padding: $line*2.75 20%; }
+		padding: $line*3 17.5%; }
 	
 	.me {
 		width: 50.833333333%;

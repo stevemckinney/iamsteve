@@ -12,14 +12,13 @@
   {/if}
 	{if count == "2"}
 	  <section role="region" class="previous-entries" aria-labelledby="Previous entries">
-  		<h1 role="heading" class="h3">Previous entries</h1>
+  		<h1 role="heading" class="h2">Previous entries</h1>
   		<div class="previous-entries-container">
   {/if}
   {if count >= "2"}
-		<article class="previous-entry">
+		<article class="previous-entry" data-href="{title_permalink='blog/entry'}">
 			<h2 class="h4"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
   		<p>{exp:eehive_hacksaw words="30" append="&hellip;"}{excerpt}{/exp:eehive_hacksaw}</p>
-			<a href="{title_permalink='blog/entry'}" title="Read {title} in full" class="button-small">Read entry</a>
 			</article>
 	{/if}
 	{if count == "5"}

@@ -27,40 +27,9 @@ body, article h1, h2, h3, p, ul, li, .title span {
 	display: block;
 	width: 100%;
 	text-align: center;
-
+  &, a { color: $wp_colour; }
 	text-shadow: none;
-	-webkit-mask: none;
-	span {
-		@include rem(padding, 0 $base-px/2); 
-		@include rem(margin, 0 $base-px/2 $base-px/2 0);
-		@include box-shadow(0 2px 3px transparentize(#000,0.81));
-		@include border-radius(3px);
-		@extend %transition;
-		position: relative;
-		display: inline-block;
-		line-height: 1.5;
-		letter-spacing: normal;
-		text-transform: uppercase;
-		background: #fff url(../../images/_posts/heading_bg.png);
-		&:nth-of-type(2n+2) {
-			@include transform(rotate(-0.75deg), translateY(-6px)); }
-		&:hover, &:focus {
-			@include box-shadow(0 2px 5px transparentize(#000,0.85));
-			@include transform(rotate(1.75deg) translateY(-3px) scale(1));
-			z-index: 100; } }
-	.space10, .space15 {
-		display: block; }
-	.char1, .char2, .char3, .char4, .char5,
-	.char6, .char7, .char8, .char9, {
-		margin: 0 $base-px/2 $base-px/2 0; }
-	.char10 {
-		height: $base-px;
-		display: block;
-		margin: 0;
-		width: 100%; }
-	.char10, .char15 {
-		@include box-shadow(none);
-		background: none; } }
+	-webkit-mask: none;  }
 		
 [type="submit"] {
 	@extend %wpts;

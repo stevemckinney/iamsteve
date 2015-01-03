@@ -23,11 +23,13 @@ body {
 	background: url(../images/bg_wave.png); }
 .container {
 	@include pie-clearfix;
-	@extend %margin-bottom;
+  margin-bottom: 1.5rem;
 	padding: em($line, $base-font-size) 0 0;
 	position: relative;
 	overflow: hidden;
-	background: $primary; }
+	background: $primary;
+	
+	@include respond-min($c) { margin-bottom: 3rem; } }
 
 img {
 	vertical-align: bottom; }
@@ -42,17 +44,21 @@ article img {
 	@extend %crm;
 	@extend %transition;
 	@include border-radius(4px 4px 0 0);
-	position: relative;
-	h1 {
+	position: relative; }
+	
+	.logo {
 		@extend %left;
 		@include wh(106px, 49px);
 		@include hide-text;
+		transition: none;
 		display: block;
 		padding: 0;
 		position: relative;
 		background: url(../images/logo.png) center center no-repeat;
+		
 		&:hover, &:focus {
 			background: url(../images/logo_hover.png) center center no-repeat; }
+			
 		@include respond-to(retina) {
 			@include wh(107px, 48px);
 			background: url(../images/logo_2x.png);
@@ -60,7 +66,8 @@ article img {
 			
 			&:hover, &:focus {
 				background: url(../images/logo_hover_2x.png) center center no-repeat;
-				background-size: 48px; } } } }
+				background-size: 48px; } } }
+
 	.title {
 		@extend %ts;
 		@include rem(padding, $line 0 $line*2);

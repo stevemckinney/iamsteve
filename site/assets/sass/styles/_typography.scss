@@ -2,64 +2,109 @@
 
 // base heading elements
 // ---------------------------
-h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-	font-weight: 700;
+#{headings()} {
+	font-family: $heading;
 	color: $primary;
+	text-rendering: optimizeLegibility;
+	line-height: 1.25;
+	margin-top: 0;
+	font-weight: 700; 
+	
 	a {
 		display: block;
 		color: $primary;
+		
 		&:hover, &:focus {
 			color: $secondary; } } }
 
-h1, h2, h3 {
-  font-family: $heading; }
+h1, .h1 {
+  font-size: 24px;
+  margin-bottom: $line;
+  
+  @include respond-min($c) {
+    font-size: 36px;
+    margin-bottom: $line*2; }
+  
+  .entry-content & {
+    margin-top: $line;
+    margin-bottom: $base-px;
+    font-size: 21px;
+    
+    @include respond-min($c) {
+      font-size: 30px;
+      margin-top: $line*2;
+      margin-bottom: $line; } } }
+    
+h2, .h2 { 
+  font-size: 21px;
+  margin-bottom: $line;
+  
+  @include respond-min($c) {
+    font-size: 30px;
+    margin-bottom: $line*2; }
+  
+  .entry-content & {
+    margin-top: $line;
+    margin-bottom: $base-px;
+      
+    @include respond-min($c) {
+      margin-top: $line*2;
+      margin-bottom: $line; } } }
+h3, .h3 { 
+  font-size: 18px;
+  margin-bottom: $base-px;
+  
+  @include respond-min($c) {
+    font-size: 24px; } }
+h4, .h4 { 
+  font-size: 16px;
+  margin-bottom: $base-px;
+  
+  @include respond-min($c) {
+    font-size: 21px; } }
+h5, .h6 { 
+  font-size: 16px;
+  margin-bottom: $base-px;
+  
+  @include respond-min($c) {
+    font-size: 18px; } }
+h6, .h6 {
+  margin-bottom: $base-px;
+  font-size: 16px; }
 
-h4, h5, h6 {
-  font-family: $sans; }
+.entry-summary-title {
+  margin-bottom: $base-px; }
 
+// links
+// ---------------------------
 a {
 	@extend %transition;
 	text-decoration: none;
 	color: $primary;
-	-webkit-tap-highlight-color: $primary_l3;
-	p &, .colophon &, figure & {
-		color: $secondary;
-		&:hover, &:focus {
-			color: $primary; } } }
-
-// base elements
-// ---------------------------
-p, dt, dd, figcaption, li {
-	font: 400 #{em($base-font-size, $base-font-size)}/#{$base-line-height} $body; }
-p, dd, figcaption, li {
-	color: fade-out($primary, 0.15); }
-.meta li {
-	font-family: $body; }
-[role="navigation"] a:before, pre code {
-	@extend %base; }
+	-webkit-tap-highlight-color: rgba(black, 0);
 	
-p, dl {
-	padding: 0 0 em($line, $base-font-size);
-	margin: 0; }
-dt { 	
-	font-weight: 700; }
-p, li {
-	text-align: left;
-	@include hyphens(auto); }
-[role="article"] p {
-	&:last-child {
-		padding: 0; } }
+	
+	.entry-content p &, .colophon &, figure & {	
+  	text-decoration: underline;
+  	text-decoration-color: rgba($primary_l2, .3);
+  	
+		&:hover, &:focus {
+			text-decoration-color: rgba($primary_l2, .8); } } }
+
+[data-href] { cursor: pointer; }
 
 // header
 // ---------------------------
 .title {
 	font-family: $slab;
-	font-weight: 400;
+	font-weight: 700;
 	font-size: 24px;
 	
+	a, a:hover, a:focus { color: $white; }
+	
 	@include respond-min($c) {
-	 font-size: 42px; }
+  	font-weight: 400;
+    font-size: 42px; }
 	
 	@include respond-min($e) {
 		font-size: 48px; } }
@@ -67,27 +112,19 @@ p, li {
 .title, .title span, .title a {
 	color: $primary_l3; }
 
-// content
-// ---------------------------
-[role="main"] {
-	h1, h2, h3, h4 {
-		@include hyphens(auto);
-		@include rem(margin, $base-px/2 0 $base-px); }
-	h1, .h1 {
-		font-size: 1.5em; }
-	h2, .h2 {
-		font-size: 1.125em; }
-	h3, .h3, h4, .h4, p, dt, dd  {
-		font-size: 1em; } }
-
 .entry-summary p:first-child, .entry-content p:first-child {
-		font-size: 1.125em; }
+	font-size: 1.125em;
+	
+	@include respond-min($c) {
+  	font-size: 1.3125em; } }
+		
 .entry-summary figcaption p:first-child, .entry-content figcaption p:first-child {
 	font-size: em($base-font-size, $base-font-size); }
 		
 code {
 	font-size: em($base-font-size, $base-font-size);
 	font-weight: 400;
+	
 	pre & {
 		max-height: 200px;
 		overflow: auto;
@@ -100,51 +137,41 @@ code {
 		-o-tab-size: 2;
 		tab-size: 2; } }
 
-@include respond-min($c) {
-	[role="main"] {
-		h1, .h1 {
-		font-size: 2em; }
-		h2, .h2 {
-			font-size: 1.75em; }
-		h3, .h3 {
-			font-size: 1.5em; }
-		h4, .h4 {
-			font-size: 1.3125em; }
-		p, dt, dd  {
-			font-size: 1.125em; } }
-		.entry-summary p:first-child, .entry-content p:first-child {
-			font-size: 1.5em; }
-		.entry-summary figcaption p:first-child, .entry-content figcaption p:first-child {
-			font-size: 1.125em; } }
-
-// aside
+// body content
 // ---------------------------
-[role="complementary"], .related-entries, .previous-entries {
-	p {
-		font-size: 87.5%;
-		padding: 0;
-		@include respond-to($c) {
-			font-size: 100%; } }
-	h3 {
-		line-height: 1;
-		margin: 0;
-		@include rem(padding, 0 0 $base-px); }
-	@include respond-min($c) {
-		h3 {
-			font-size: 1.5em;
-			margin-bottom: .25em; }
-		p {
-			font-size: 100%; } } }
+p {
+  margin: 0 0 .75rem;
+  
+  @include respond-min($c) {
+    margin: 0 0 1.5rem; } }
+
+p, li, dt, dd, figcaption {
+  color: scale-color($primary_l2, $lightness: 10%, $saturation: -20%);
+  font-family: $body;
+  font-size: 16px;
+  line-height: 1.5;
+  
+  @include respond-min($c) {
+    font-size: 21px; } }
+
+.related-entries p, .previous-entries p {
+  line-height: 1.35; }
+
 
 // nav
 // ---------------------------
 [role="navigation"] {
 	a {
-		font: 500 .875rem/#{$base-line-height} $body;
-		color: #f0f4fc; } }
+		font: 700 .75rem/#{$base-line-height} $body;
+		color: #f0f4fc;
+		letter-spacing: .0625em; } }
 
 // aside
 // ---------------------------
+[role="complementary"] p {
+  font-size: 18px;
+  margin: 0; }
+  
 [role="complementary"], [role="contentinfo"] {
 	font-family: $body; }
 
@@ -168,12 +195,10 @@ pre {
 	code {
 		display: block;
 		background: none; } }
+		
 code {
-	@include rem(padding, 2px);
 	@include border-radius(2px);
-	background: fade-out($primary_l2, 0.9);
-	position: relative;
-	top: -1px; }
+	background: fade-out($primary_l2, .95); }
 
 // blockquote
 // ---------------------------
@@ -197,6 +222,10 @@ blockquote {
 	p {
 		position: relative;
 		z-index: 1;
+		
+		&:only-of-type {
+  		margin: 0; }
+		
 		[role="main"] & {
 			&:first-child {
 			@include rem(font-size, 16px); } } }
