@@ -57,7 +57,7 @@ $info: #71bcc5 !default;
 
 // font stacks
 // ---------------------------
-$sans: 'Ideal Sans SSm A', 'Ideal Sans SSm B', sans-serif;
+$sans: "Verlag A", "Verlag B", sans-serif;
 $serif: "freight-text-pro", georgia, serif;
 $slab: 'Archer SSm A', 'Archer SSm B', serif;
 $monospace: "source-code-pro", monospace;
@@ -69,7 +69,7 @@ $icons: "SSStandard";
 
 // found the need sometimes to switch fonts mid project
 // ---------------------------
-$heading: $sans;
+$heading: $slab;
 $body: $sans;
 
 // font sizes

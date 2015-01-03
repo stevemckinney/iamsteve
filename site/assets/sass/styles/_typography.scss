@@ -4,15 +4,20 @@
 // ---------------------------
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
-	font-weight: 500;
-	font-family: $heading; // potentially chaparral or meta serif
+	font-weight: 700;
 	color: $primary;
 	a {
 		display: block;
 		color: $primary;
 		&:hover, &:focus {
 			color: $secondary; } } }
-		
+
+h1, h2, h3 {
+  font-family: $heading; }
+
+h4, h5, h6 {
+  font-family: $sans; }
+
 a {
 	@extend %transition;
 	text-decoration: none;
@@ -126,7 +131,8 @@ code {
 		@include rem(padding, 0 0 $base-px); }
 	@include respond-min($c) {
 		h3 {
-			font-size: 1.875em; }
+			font-size: 1.5em;
+			margin-bottom: .25em; }
 		p {
 			font-size: 100%; } } }
 

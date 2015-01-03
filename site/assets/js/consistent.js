@@ -289,26 +289,7 @@ function getshots(name, count, el) {
 	});
 }
 /*global $, jQuery*/
-/*
-function getbadges(name, count, el) {
-	'use strict';
-	var opt = { user: name, badge_count: count,  elem: el };
-	var html = [], i = 0;
 
-	$.getJSON('http://teamtreehouse.com/' + opt.user + '.json', function(data) {
-	  var items = [];
-	
-	  $.each(data, function(key, val) {
-	    items.push('<li id="' + key + '">' + val + '</li>');
-	  });
-	
-	  $('<ul/>', {
-	    'class': 'my-new-list',
-	    html: items.join('')
-	  }).appendTo("." + opt.elem);
-	});
-}
-*/
 /**
  *	iamsteve.me site js
  */
@@ -331,16 +312,6 @@ $(function() {
 	$html.addClass("loaded");
 	$("pre").addClass('language-scss');
 	$(".gist pre").removeClass('language-scss');
-	// general stuff
-	// $nav.addClass('hidden');
-	$('.title').lettering();
-	
-	if(!Modernizr.cssvwunit) {
-		$('.title').fitText(1.5, { minFontSize: '36px', maxFontSize: '72px' });
-		$('.wordpress_post_formats .title').fitText(1, { minFontSize: '28px', maxFontSize: '68px' });
-	}
-	
-	// getbadges('stevemckinney', 10, $badges);
 	
 	// do stuff at each breakpoint
 	var queries = [
