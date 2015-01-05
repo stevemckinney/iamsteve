@@ -3,7 +3,7 @@
 {exp:channel:entries require_entry="yes" channel="blog" status="Latest|open|draft" disable="member_data|pagination|trackbacks"}
 {if no_results}{redirect="blog"}{/if}
 <article role="article" class="entry-content">
-  <img src="{image}" class="push-bottom">
+  {if image != ""}<img src="{image}" class="push-bottom">{/if}
 	{exp:markdown}{blog_article}{/exp:markdown}
 	{blog_meta}
 </article>
