@@ -143,6 +143,7 @@ $mimes = array(
 				'smi'	=>	'application/smil',
 				'smil'	=>	'application/smil',
 				'so'	=>	'application/octet-stream',
+				'svg' => 'image/svg+xml',
 				'swf'	=>	'application/x-shockwave-flash',
 				'tar'	=>	'application/x-tar',
 				'text'	=>	'text/plain',
