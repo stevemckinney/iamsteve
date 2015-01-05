@@ -346,6 +346,9 @@ figcaption {}
 .space {
 	@include rem(width, $line); }
 
+.push-bottom {
+  margin-bottom: $line; }
+
 /*
 	Media queries
 -----------------------------------------------------------------------*/
