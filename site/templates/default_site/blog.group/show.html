@@ -1,6 +1,6 @@
 {embed="include/header" entry_title="{exp:channel:category_heading channel="blog"}{category_name}{/exp:channel:category_heading}" category_id="{category}"}
 	
-	{exp:channel:entries channel="blog" paginate="bottom" category="{embed:category_id}" disable="member_data" orderby="entry_date" sort="desc" limit="8"}
+	{exp:channel:entries channel="blog" paginate="bottom" category="{embed:category_id}" disable="member_data" orderby="entry_date" sort="desc" limit="8" global:param_cache_param}
     {if no_results}
       <p>No results</p>
     {/if}

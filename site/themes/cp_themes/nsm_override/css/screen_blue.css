@@ -1,0 +1,1882 @@
+@charset "UTF-8";
+/**
+ * NSM override override.css
+ *
+ * @package        NsmOverride
+ * @version        1.2.0
+ * @author         Leevi Graham <http://leevigraham.com> - Technical Director, Newism
+ * @copyright      Copyright (c) 2007-2011 Newism <http://newism.com.au>
+ * @license        Commercial - please see LICENSE file included with this distribution
+ * @link           http://expressionengine-addons.com/override-css
+ * @todo:          Convert colours to SASS variables
+
+
+ Commercial License Agreement
+ ============================
+
+ Usage
+ -----
+
+ The license entitles you to use the Software on a single primary domain and in a local development and client staging environment. Sub domain use is ok if the sub domain:
+
+ * is a alternate language clone of the primary domain ie: http://en.mysite.com or http://it.mydomain.com
+ * supporting content of the primary domain ie: http://help.mysite.com or http://faqs.mysite.com
+ * If you're unsure contact us for clarification.
+
+ Restrictions
+ ------------
+
+ Unless you have been granted prior, written consent from Newism Pty Ltd, you may not:
+
+ * Reproduce, distribute, or transfer the Software, or portions thereof, to any third party.
+ * Sell, rent, lease, assign, or sublet the Software or portions thereof.
+ * Grant rights to any other person.
+ * Use the Software in violation of any Australian or international law or regulation.
+
+ Display of Copyright Notices
+ ----------------------------
+
+ All copyright and proprietary notices and logos in the Control Panel and within the Software files must remain intact.
+
+ Disclaimer Of Warranty
+ ----------------------
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF QUALITY, PERFORMANCE, NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. FURTHER, NEWISM PTY LTD. DOES NOT WARRANT THAT THE SOFTWARE OR ANY RELATED SERVICE WILL ALWAYS BE AVAILABLE.
+
+ Limitations Of Liability
+ ------------------------
+
+ YOU ASSUME ALL RISK ASSOCIATED WITH THE INSTALLATION AND USE OF THE SOFTWARE. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS OF THE SOFTWARE BE LIABLE FOR CLAIMS, DAMAGES OR OTHER LIABILITY ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE. LICENSE HOLDERS ARE SOLELY RESPONSIBLE FOR DETERMINING THE APPROPRIATENESS OF USE AND ASSUME ALL RISKS ASSOCIATED WITH ITS USE, INCLUDING BUT NOT LIMITED TO THE RISKS OF PROGRAM ERRORS, DAMAGE TO EQUIPMENT, LOSS OF DATA OR SOFTWARE PROGRAMS, OR UNAVAILABILITY OR INTERRUPTION OF OPERATIONS.
+
+**/
+/**
+  Links
+*/
+a:link,
+.pageContents a:link {
+  color: #268bd2;
+}
+a:visited,
+.pageContents a:visited {
+  color: #268bd2;
+}
+a:link:hover, a:visited:hover,
+.pageContents a:link:hover,
+.pageContents a:visited:hover {
+  color: #4ca2df;
+}
+
+fieldset {
+  margin: 18px 0;
+}
+
+#mainContent .pageContents p {
+  margin: 18px 0;
+}
+
+.pageContents form em {
+  font-size: inherit;
+}
+
+/**
+ * First remove all the rounded corners, starting from the top.
+ */
+.button a,
+.cp_button a,
+#search form,
+div.contentMenu,
+#mainContent .formArea,
+#navigationTabs .first_level:not(.addTab),
+#navigationTabs li ul,
+.contentMenu ul,
+#overlay,
+.markItUp ul,
+.notice_texts .subcount,
+#accessoryTabs li,
+.heading,
+.tableFooter,
+div.pageContents,
+#mainContent #publishForm,
+textarea,
+textarea.markItUpEditor,
+input[type="text"],
+input[type="password"],
+input.submit,
+button.submit,
+.submit_alt,
+.button a.submit,
+.newTemplate,
+#mainContent h3.accordion,
+.ui-dialog .ui-dialog-titlebar,
+.ui-accordion-content {
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+#branding,
+#mainMenu,
+#breadCrumb,
+#breadCrumb li,
+#navigationTabs li.parent,
+#navigationTabs li a.first_level,
+#navigationTabs li a.first_level:link,
+#navigationTabs li a.first_level:visited,
+#navigationTabs li ul,
+#navigationTabs li li.parent,
+#navigationTabs li li.parent.active,
+#activeUser,
+#mainContent #filterMenu,
+#mainContent .formArea,
+#holder {
+  background: none;
+}
+
+table.templateTable tr.even td,
+table.templateTable tr.even td.index,
+table.templateTable tr.even td.feed,
+table.templateTable tr.even td.xml,
+table.templateTable tr.even td.hiddenTemplate,
+table.templateTable tr.even td.webpage,
+table.templateTable tr.odd td,
+table.templateTable tr.odd td.index,
+table.templateTable tr.odd td.feed,
+table.templateTable tr.odd td.xml,
+table.templateTable tr.odd td.hiddenTemplate,
+table.templateTable tr.odd td.webpage,
+#file_manager_list h3,
+#communicate_info li.odd, #communicate_compose li.odd,
+#communicate_info li.even, #communicate_compose li.even,
+#templateGroups .groupList,
+.formArea,
+#templateGroups .groupList li a.templateGroupName:link,
+#templateGroups .groupList li a.templateGroupName:visited,
+#mainContent #publishForm,
+#mainContent #filterMenu,
+#mainContent #registerUser {
+  background-color: transparent;
+}
+
+#mainContent .pageContents,
+#mainContent .main_tab,
+#templateGroups .groupList,
+#holder {
+  background: #ecf1f4;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.3)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  border: 0;
+  padding: 9px 18px 18px 18px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+
+#mainContent .pageContents .pageContents {
+  border: none !important;
+  padding: 0 !important;
+}
+
+#mainContent .publishPageContents .main_tab,
+#holder {
+  padding: 0;
+}
+
+#templateGroups .groupList,
+.pageContents,
+.main_tab.solo,
+#holder {
+  border: 1px solid #c5ced4 !important;
+}
+
+#holder {
+  border-top: none !important;
+}
+
+.main_tab.solo {
+  border-top: 0 !important;
+}
+
+#publish_submit_buttons {
+  border-top: 1px solid #c5ced4 !important;
+}
+
+#files_form {
+  margin: 0;
+}
+
+#file_manager_holder {
+  padding-right: 0;
+}
+
+#branding {
+  display: none;
+}
+
+#mainMenu {
+  background-color: #27343c;
+  padding: 5px 18px;
+  -webkit-box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pageContents form em {
+  color: #268bd2;
+}
+
+/*
+ * Headings
+ */
+html body #mainContent .contentMenu h2,
+html body .heading h2,
+html body #mainContent .formArea .formHeading,
+.ui-dialog .ui-dialog-titlebar {
+  background: #566671;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.1)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 0;
+  font-size: 18px;
+  font-weight: normal;
+  height: auto;
+  line-height: 18px;
+  padding: 9px 9px;
+  text-shadow: black 0 -1px 0;
+  -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+}
+
+h2 {
+  font-size: 18px;
+}
+
+html body #mainContent #templates .formHeading,
+html body #mainContent #templateGroups .formHeading {
+  font-size: 12px;
+}
+
+h3 {
+  border-top: 1px solid #c5ced4;
+  clear: left;
+  margin-top: 18px;
+  padding-top: 17px;
+}
+
+h3:first-child {
+  border: none;
+  margin-top: 9px;
+  padding-top: 0;
+}
+
+#file_manager_list h3,
+#mainContent h4 {
+  border-top: 0;
+  margin: 18px 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#mainContent h3 {
+  font-size: 16px;
+}
+
+#mainContent h4 {
+  font-size: 14px;
+}
+
+.heading .headingSubtext {
+  vertical-align: baseline;
+}
+
+/**
+ * Site Navigation
+ */
+/* Remove the arrows on the drop down */
+#navigationTabs li.parent:focus > a:after,
+#navigationTabs li.parent.active > a:after,
+#navigationTabs li li.parent:focus > a:after,
+#navigationTabs li li.parent.active > a:after {
+  display: none;
+}
+
+#navigationTabs {
+  margin: 0;
+  padding: 0;
+}
+#navigationTabs li {
+  position: relative;
+}
+#navigationTabs li.hover, #navigationTabs li.active, #navigationTabs li.parent:focus, #navigationTabs li.parent.active {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+/* LEVEL 1 */
+#navigationTabs > li {
+  border-right: 1px solid #303F4A;
+  line-height: normal;
+  padding: 4px 0;
+}
+#navigationTabs > li.msm_sites {
+  border: none;
+  margin-right: 0;
+}
+#navigationTabs > li #addQuickTab,
+#navigationTabs > li #addQuickTab:link {
+  color: #268bd2;
+}
+#navigationTabs > li > a.first_level,
+#navigationTabs > li > a.first_level:link,
+#navigationTabs > li > a.first_level:visited {
+  height: auto;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 3px 9px;
+}
+#navigationTabs > li > a.first_level:hover,
+#navigationTabs > li > a.first_level:link:hover,
+#navigationTabs > li > a.first_level:visited:hover {
+  color: #268bd2;
+}
+#navigationTabs > li.parent > a.first_level:after, #navigationTabs > li.parent:focus > a.first_level:after, #navigationTabs > li.parent.active > a.first_level:after {
+  border: none;
+  content: "▼";
+  color: rgba(255, 255, 255, 0.2);
+  display: inline;
+  font-size: 7px;
+  height: auto;
+  margin-left: 5px;
+  position: relative;
+  top: -2px;
+  width: auto;
+}
+
+/* LEVEL 2 & 3- Fly outs */
+#navigationTabs > li ul {
+  background: #fff;
+  margin: 0 !important;
+  padding: 2px;
+  top: 28px;
+  width: auto;
+  min-width: 170px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 3px !important;
+  -moz-border-radius: 3px !important;
+  -ms-border-radius: 3px !important;
+  -o-border-radius: 3px !important;
+  border-radius: 3px !important;
+  white-space: nowrap;
+}
+#navigationTabs > li ul li {
+  float: none;
+  margin: 0;
+  padding: 0;
+  width: auto !important;
+}
+#navigationTabs > li ul li.nav_divider {
+  border: none;
+  border-top: 1px solid #ecf1f4;
+  height: 0;
+  margin: 2px 0;
+  padding: 0;
+}
+#navigationTabs > li ul li > a,
+#navigationTabs > li ul li > a:link,
+#navigationTabs > li ul li > a:visited {
+  height: auto;
+  padding: 5px 30px 5px 9px;
+  width: auto !important;
+}
+#navigationTabs > li ul li.parent > a:after, #navigationTabs > li ul li.parent:focus > a:after, #navigationTabs > li ul li.parent.active > a:after, #navigationTabs > li ul li.parent.hover > a:after {
+  border: none;
+  display: block;
+  content: "→";
+  color: #465b6c;
+  height: auto;
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  width: auto;
+  z-index: 3000;
+}
+#navigationTabs > li ul li.parent:hover > a:after, #navigationTabs > li ul li.parent:focus:hover > a:after, #navigationTabs > li ul li.parent.active:hover > a:after, #navigationTabs > li ul li.parent.hover:hover > a:after {
+  color: white;
+}
+#navigationTabs > li ul li.parent:focus > a, #navigationTabs > li ul li.parent.active > a {
+  background: transparent;
+  color: inherit;
+}
+#navigationTabs > li ul li.parent.hover > a, #navigationTabs > li ul li a:hover {
+  background: #268bd2 !important;
+  color: white !important;
+}
+
+/* LEVEL 3 */
+#navigationTabs > li > ul > li ul {
+  left: 100%;
+  top: -2px;
+  margin: 0;
+}
+#navigationTabs > li > ul > li ul > li a {
+  line-height: auto;
+}
+
+/**
+ * Breadcrumb
+ */
+#breadCrumb,
+#breadCrumb li,
+#activeUser,
+#activeUser .userName,
+#activeUser .logOutButton {
+  font-size: 11px;
+  line-height: 27px;
+}
+
+#breadCrumb {
+  background: #ecf1f4;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.5)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #c5ced4;
+  margin: 0 0 27px 0!important;
+  padding: 0 0 0 25px;
+}
+#breadCrumb ol {
+  padding: 0;
+}
+#breadCrumb li {
+  background: url("../images/breadcrumb_tab.png") no-repeat 100% 50%;
+  margin: 0 7px 0 0;
+  padding: 0 16px 0 0;
+}
+#breadCrumb li.last {
+  color: #268bd2;
+}
+#breadCrumb a:hover {
+  color: #268bd2;
+}
+
+.rightNav {
+  margin-bottom: 9px;
+}
+
+/*
+ * Buttons
+ */
+.button,
+.cp_button,
+#mainContent .formArea .formHeading .newTemplate,
+#mainContent #showToolbarLink {
+  background: none !important;
+  display: inline-block;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-decoration: none !important;
+}
+
+input.submit,
+input[type=submit],
+button.submit,
+.button a,
+.button a:link,
+.button a:visited,
+.submit_alt,
+#mainContent #tools .submit_alt,
+.cp_button a,
+.cp_button a:link,
+.cp_button a:visited,
+#mainContent .formArea .formHeading .newTemplate a,
+#mainContent #showToolbarLink a,
+.heading #action_nav .button a,
+.heading #action_nav .button a:link,
+.heading #action_nav .button a:visited,
+a.submit,
+a.btn,
+button[type=submit],
+button.submit {
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 12px;
+  height: auto;
+  line-height: 18px;
+  text-decoration: none;
+  margin: 0;
+  padding: 3px 13px;
+  width: auto;
+  text-shadow: none;
+  -webkit-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
+  -ms-border-radius: 4px !important;
+  -o-border-radius: 4px !important;
+  border-radius: 4px !important;
+  -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  -moz-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+input.submit:hover,
+input[type=submit]:hover,
+button.submit:hover,
+.button a:hover,
+.button a:link:hover,
+.button a:visited:hover,
+.submit_alt:hover,
+#mainContent #tools .submit_alt:hover,
+.cp_button a:hover,
+.cp_button a:link:hover,
+.cp_button a:visited:hover,
+#mainContent .formArea .formHeading .newTemplate a:hover,
+#mainContent #showToolbarLink a:hover,
+.heading #action_nav .button a:hover,
+.heading #action_nav .button a:link:hover,
+.heading #action_nav .button a:visited:hover,
+a.submit:hover,
+a.btn:hover,
+button[type=submit]:hover,
+button.submit:hover {
+  text-decoration: none;
+}
+
+input.submit,
+input[type=submit],
+button.submit,
+a.submit,
+a.btn.submit,
+button[type=submit],
+button.submit {
+  background: #268bd2;
+  color: white !important;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5) 0px 0px 1px;
+}
+input.submit:hover,
+input[type=submit]:hover,
+button.submit:hover,
+a.submit:hover,
+a.btn.submit:hover,
+button[type=submit]:hover,
+button.submit:hover {
+  background: #268bd2;
+  color: white;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  position: relative;
+  top: -1px;
+}
+
+.button a,
+.button a:link,
+.button a:visited,
+.submit_alt,
+#mainContent #tools .submit_alt,
+.cp_button a,
+.cp_button a:link,
+.cp_button a:visited,
+a.btn,
+a.btn:link,
+a.btn:visited {
+  color: #566671 !important;
+  background-color: #ecf1f4;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+}
+.button a:hover,
+.button a:link:hover,
+.button a:visited:hover,
+.submit_alt:hover,
+#mainContent #tools .submit_alt:hover,
+.cp_button a:hover,
+.cp_button a:link:hover,
+.cp_button a:visited:hover,
+a.btn:hover,
+a.btn:link:hover,
+a.btn:visited:hover {
+  color: #566671;
+  background-color: #ecf1f4;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  position: relative;
+  top: -1px;
+}
+
+.rightNav .button a,
+.rightNav .button a:link,
+.rightNav .button a:visited {
+  margin-left: 9px !important;
+}
+
+#mainContent #tools .submit_alt,
+#mainContent #tools .submit_alt:hover {
+  background-color: #ecf1f4 !important;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.7)), color-stop(100%, rgba(255, 255, 255, 0))) !important;
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)) !important;
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)) !important;
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)) !important;
+  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)) !important;
+  background-image: linear-gradient(top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)) !important;
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.heading #action_nav .button a,
+.heading #action_nav .button a:link,
+.heading #action_nav .button a:visited,
+#mainContent .formArea .formHeading .newTemplate a,
+#mainContent #showToolbarLink a {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  color: #fff !important;
+  margin-left: 9px !important;
+  padding: 3px 13px;
+  text-transform: capitalize;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 -1px 0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.1)));
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: -ms-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1));
+}
+.heading #action_nav .button a:hover,
+.heading #action_nav .button a:link:hover,
+.heading #action_nav .button a:visited:hover,
+#mainContent .formArea .formHeading .newTemplate a:hover,
+#mainContent #showToolbarLink a:hover {
+  position: relative;
+  top: -1px;
+}
+
+#mainContent .formArea .formHeading .newTemplate a,
+.heading #action_nav .button {
+  position: relative;
+  top: -4px;
+}
+#mainContent .formArea .formHeading .newTemplate a:hover,
+.heading #action_nav .button:hover {
+  position: relative;
+  top: -5px;
+}
+
+#mainContent #showToolbarLink a {
+  position: relative;
+  top: -3px;
+}
+#mainContent #showToolbarLink a:hover {
+  position: relative;
+  top: -4px;
+}
+
+.heading #action_nav {
+  margin: 0;
+}
+
+/**
+ * Tables
+ */
+table a:link, table a:visited {
+  text-decoration: none;
+}
+
+table.mainTable,
+table.padTable,
+table.templateTable {
+  border: 1px solid #c5ced4 !important;
+  border-collapse: collapse;
+}
+
+table.mainTable th,
+.templateTable th {
+  cursor: auto;
+}
+
+#mainContent .pageContents table {
+  margin: 18px 0;
+}
+
+#mainContent .pageContents table table {
+  margin: 0;
+}
+
+table.mainTable tbody tr:nth-child(2n),
+table.padTable tbody tr:nth-child(2n),
+table.templateTable tbody tr:nth-child(2n) {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+table.mainTable tbody tr.matrix {
+  background: transparent;
+}
+
+table.mainTable thead th,
+table.mainTable thead th:first-child,
+table.mainTable thead th:last-child,
+table.padTable thead th,
+table.padTable thead th:first-child,
+table.padTable thead th:last-child,
+table.templateTable > thead th,
+table.templateTable tr.accessRowHeader td .accessTable th,
+table.templateTable tbody tr:first-child th,
+#mainContent table.mainTable > caption {
+  background: none;
+  cursor: auto;
+  border: 1px solid #849099 !important;
+  color: #fff;
+  font-size: inherit;
+  font-weight: normal;
+  padding: 7px 9px;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 -1px 0;
+  -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+
+table.mainTable > thead,
+table.templateTable > thead,
+.templateEditorTable > tbody > tr:first-child,
+table.templateTable tr.accessRowHeader td .accessTable tbody > tr:first-child,
+#mainContent table.mainTable > caption {
+  background: #9aa9b3;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  color: #fff;
+  font-size: 12px!important;
+}
+
+#mainContent .formArea .formHeading {
+  color: #fff;
+}
+
+table.mainTable body th,
+table.mainTable body th:first-child,
+table.padTable body th:first-child {
+  background: none !important;
+}
+
+.templateTable tr.odd,
+table.mainTable tr.odd td,
+table#controllers tr.odd td {
+  background: none;
+}
+
+table.mainTable td,
+table.padTable td,
+table.mainTable td:last-child,
+table.padTable td:last-child {
+  background: none;
+}
+
+table.mainTable > thead th.sorting,
+table.mainTable > thead th.header,
+table.mainTable > thead th.headerSortDown,
+table.mainTable > thead th.headerSortUp {
+  background-image: url("../images/sort-unsorted.png");
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+  padding-right: 22px;
+}
+
+table.mainTable > thead th.sorting:hover,
+table.mainTable > thead th.header:hover {
+  background-image: url("../images/sort-unsorted-hover.png");
+}
+
+table.mainTable > thead th.headerSortDown,
+table.mainTable > thead th.headerSortUp,
+table.mainTable > thead th.headerSortDown:hover,
+table.mainTable > thead th.headerSortUp:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+table.mainTable > thead th.headerSortDown,
+table.mainTable > thead th.headerSortDown:hover {
+  background-image: url("../images/sort-down.png");
+}
+
+table.mainTable > thead th.headerSortUp,
+table.mainTable > thead th.headerSortUp:hover {
+  background-image: url("../images/sort-up.png");
+}
+
+/**
+ * Alerts
+ */
+p.notice,
+div.notice,
+p.go_notice,
+div.go_notice,
+td.no_files_warning {
+  color: #fff;
+  font-weight: normal;
+  line-height: normal!important;
+  margin: 9px 0 !important;
+  padding: 5px 9px !important;
+}
+
+p.notice a,
+div.notice a,
+p.go_notice a,
+div.go_notice a {
+  color: inherit!important;
+  font-weight: bold;
+  text-decoration: underline!important;
+}
+
+span.notice, strong.notice,
+td.no_files_warning {
+  color: #a72226;
+}
+
+p.notice, div.notice {
+  background: #a72226 !important;
+  border: 1px solid #a72226!important;
+}
+
+span.go_notice {
+  color: #74a92d;
+}
+
+p.go_notice, div.go_notice {
+  background: #74a92d !important;
+  border: 1px solid #74a92d!important;
+}
+
+/**
+ * Homepage
+ */
+.contentMenu ul.homeBlocks {
+  min-height: 0;
+  padding-bottom: 0;
+  border: 1px solid #D0D7DF;
+  border-bottom: 0;
+  border-top: 0;
+}
+.contentMenu ul.homeBlocks li a {
+  border-top: 0;
+}
+.contentMenu ul.homeBlocks li a:hover {
+  color: #268bd2;
+}
+
+/**
+ * Template Editor
+ */
+/**
+ * Accordians
+ */
+#mainContent h3.accordion {
+  background: #fff;
+  color: #37444D !important;
+  border: 1px solid #c5ced4;
+  font-size: 15px;
+  text-align: left;
+  font-weight: bold;
+  margin: 0 0 -1px 0;
+  padding: 9px 9px 9px 9px;
+  text-shadow: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+
+.ui-accordion .ui-accordion-header .ui-icon {
+  background-image: url("../images/ui-icons_505050_256x240.png");
+  left: 3px;
+  top: 18px;
+}
+
+#mainContent .ui-accordion-content {
+  border: 1px solid #c5ced4;
+  background: transparent;
+  margin: 0 0 -1px 0 !important;
+  padding: 0 9px !important;
+  position: relative;
+  top: 0;
+}
+
+/*
+    I was hiding this because of the channel preferences accordion with:
+    #mainContent h3.accordion + div table thead { display: none }
+    Turns out that was a stupid idea. Now I'm specifically hiding things that are meant to be hidden
+*/
+#mainContent .ui-accordion-content table thead.visualEscapism {
+  display: none;
+}
+
+/**
+ * Member management
+ */
+#menu.side_navigation {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #c5ced4;
+  margin: 9px;
+}
+
+#registerUser {
+  margin: 18px;
+}
+
+#menu span,
+#myAccount h3 {
+  background: #9aa9b3;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-width: 1px 0!important;
+  color: #fff;
+  font-weight: normal;
+  font-size: 13px;
+  margin: 0 -1px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+#menu > li:first-child span {
+  margin-top: -1px;
+}
+
+#mainContent #registerUser p,
+#mainContent #registerUser p.submit {
+  background: none;
+  border: 1px solid #c5ced4;
+  padding: 9px 8px 9px 8px;
+  margin: 0 0 -1px 0;
+}
+
+#mainContent #registerUser p:nth-child(2n) {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+#mainContent #registerUser fieldset {
+  margin: 18px 0;
+}
+
+#mainContent #registerUser fieldset table tr {
+  background: transparent;
+}
+
+#mainContent #registerUser fieldset table strong {
+  font-weight: normal;
+}
+
+/**
+ * Publish form
+ */
+#mainContent #publishForm {
+  border: none;
+  padding: 0;
+}
+
+.publishPageContents #holder {
+  border-right: 0;
+  padding-right: 0;
+  margin-left: 10px;
+}
+
+/* Tab menu */
+#mainContent .tab_menu {
+  background: #9aa9b3;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  height: auto;
+  margin: 0 0 9px 0;
+  padding: 0 100px 0 5px;
+  overflow: auto;
+  -webkit-box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+#mainContent .tab_menu li,
+#mainContent .tab_menu li.current,
+#mainContent .tab_menu li a {
+  background: none;
+  border: none;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+#mainContent .tab_menu li,
+#mainContent .tab_menu li.current {
+  border-right: 1px dotted rgba(255, 255, 255, 0.5);
+}
+
+#mainContent .tab_menu li.highlight_tab {
+  background: #268bd2;
+  color: #fff;
+}
+
+#mainContent .tab_menu li a {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: normal;
+  margin: 6px 0;
+  padding: 5px 9px;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 1px 0;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+}
+
+#mainContent .tab_menu li.highlight_tab a {
+  color: #fff;
+}
+
+#mainContent .tab_menu li.current a {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 6px 5px;
+  -webkit-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.2);
+}
+
+#mainContent .tab_menu + #tools,
+#mainContent #holder {
+  margin-top: -9px;
+}
+
+/* Tools */
+#mainContent div#tools h3,
+#mainContent div#file_manager_tools h3 {
+  background: #9aa9b3;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.1)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  font-size: 12px;
+  margin: 0 0 0 -1px;
+  padding: 0;
+  border: none!important;
+}
+
+#mainContent div#tools h3 a,
+#mainContent div#file_manager_tools h3 a,
+#mainContent div#tools h3 a.closed,
+#mainContent div#file_manager_tools h3 a.closed {
+  background: #9aa9b3;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.1)), color-stop(100%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  margin: -1px 0;
+  padding: 0 9px 0 22px;
+  text-shadow: rgba(0, 0, 0, 0.3) 0 -1px 0;
+  -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+}
+
+#mainContent div#tools h3 a,
+#mainContent div#file_manager_tools h3 a {
+  background: url("../images/open-white.png") no-repeat 9px 50% !important;
+}
+
+#mainContent div#tools h3 a.closed,
+#mainContent div#file_manager_tools h3 a.closed {
+  background: url("../images/closed-white.png") no-repeat 12px 50% !important;
+}
+
+#mainContent #showToolbarLink {
+  position: absolute;
+  top: 9px;
+  right: 35px;
+  margin: 0 !important;
+}
+
+#mainContent #showToolbarLink img {
+  display: none !important;
+}
+
+.menu_list li a,
+.member_profile_themes li a,
+.wiki_themes li a,
+.forum_themes li a,
+.translation_files li a {
+  background-position-x: 9px;
+  border-bottom-style: dotted;
+  padding-left: 27px;
+  font-weight: normal;
+}
+
+.menu_list li a:hover,
+.member_profile_themes li a:hover,
+.wiki_themes li a:hover,
+.forum_themes li a:hover,
+.translation_files li a:hover {
+  background-position-x: 9px;
+}
+
+/** 
+ * Sidebar
+ */
+#sideBar #sidebarContent {
+  border-bottom: 1px solid #c5ced4!important;
+  font-size: 12px;
+  padding: 27px 0;
+}
+#sideBar #sidebarContent h4 {
+  border-top: 1px solid #c5ced4!important;
+  font-size: 14px;
+  margin-top: 18px;
+  padding-top: 9px;
+}
+#sideBar #sidebarContent a,
+#sideBar #sidebarContent a:link,
+#sideBar #sidebarContent a:visited {
+  border: none;
+  color: #268bd2;
+  font-size: inherit;
+  text-decoration: none;
+}
+#sideBar #sidebarContent a:hover,
+#sideBar #sidebarContent a:link:hover,
+#sideBar #sidebarContent a:visited:hover {
+  color: #4ca2df;
+  text-decoration: underline;
+}
+#sideBar #sidebarContent #quickLinks {
+  font-size: inherit;
+}
+#sideBar #sidebarContent #notePad #notePadTextEdit {
+  width: 90%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#sideBar #sidebarControl {
+  padding: 0;
+}
+#sideBar #sidebarControl #hideSidebarLink,
+#sideBar #sidebarControl #revealSidebarLink {
+  background: none;
+  font-size: 9px;
+  margin: 5px 0 0 0;
+  text-transform: uppercase;
+}
+#sideBar #activeUser {
+  background: #268bd2;
+  margin: 0;
+  padding: 1px 0;
+  text-transform: uppercase;
+}
+#sideBar #activeUser a:link,
+#sideBar #activeUser a:visited {
+  color: white;
+}
+#sideBar #activeUser .userName {
+  display: inline-block;
+  font-size: 11px;
+  margin: 0 0 0 18px;
+}
+#sideBar #activeUser .logOutButton {
+  display: inline-block;
+  padding: 0 25px;
+}
+
+/**
+ * Accessories
+ */
+#accessoryTabs {
+  background: #ecf1f4;
+  border-top: 1px solid #d1d5de;
+  margin: 0;
+  padding: 0 25px;
+}
+
+#accessoryTabs li {
+  background: none;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+#accessoryTabs li .badge {
+  display: inline-block;
+  border: 1px solid #D1D5DE;
+  line-height: 11px;
+  font-size: 11px;
+  text-align: center;
+  padding: 3px;
+  margin-left: 5px;
+  min-width: 11px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+}
+
+#accessoryTabs li.current .badge {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+#accessoryTabs li a:link,
+#accessoryTabs li a:visited,
+#accessoryTabs li a:active {
+  border-right: 1px dotted #D1D5DE;
+  padding: 0 10px;
+  color: #268bd2;
+  font-size: 12px;
+  text-shadow: #fff 0 1px 0;
+}
+
+#accessoryTabs li:first-child a {
+  border-left: 1px solid #D1D5DE;
+}
+
+#accessoryTabs li.current {
+  margin-top: -4px;
+}
+
+#accessoryTabs li.current a {
+  border: none;
+  padding-top: 4px;
+}
+
+#accessoryTabs li.current a:link,
+#accessoryTabs li.current a:visited,
+#accessoryTabs li.current a:active {
+  text-shadow: black 0 -1px 0;
+}
+
+#accessoryTabs li a span {
+  display: none;
+}
+
+#accessoryTabs .tg {
+  background: #fff;
+}
+
+/**
+ * Communicate
+ */
+#communicate_info {
+  margin-top: -18px;
+}
+
+/**
+ * Forms
+ */
+textarea,
+textarea.markItUpEditor,
+.WysiHat-editor,
+.fullfield,
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="password"],
+.publish_text input {
+  height: auto;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+textarea:focus,
+textarea.markItUpEditor:focus,
+.WysiHat-editor:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
+  border-width: 1px !important;
+  border-color: #57676f;
+  padding: 6px;
+}
+
+input[name=config_name] {
+  width: 250px;
+  margin-left: 9px;
+  margin-right: 9px;
+}
+
+.fullfield,
+.module_textarea,
+input[name$=server_port_] {
+  width: 100% !important;
+}
+
+form[action$='C=admin_content&M=category_update'] p {
+  background: none;
+  border: 1px solid #c5ced4;
+  padding: 9px 8px 9px 8px;
+  margin: 0 0 -1px 0 !important;
+}
+
+form[action$='C=admin_content&M=category_update'] p:nth-child(2n) {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+form[action$='C=admin_content&M=category_update'] p br {
+  display: none;
+}
+
+form[action$='C=admin_content&M=category_update'] p label {
+  display: inline-block;
+  margin-bottom: 9px;
+  margin-right: 9px;
+}
+
+#mainContent .pageContents form[action$='M=clear_caching'] p {
+  margin: 9px 0;
+}
+
+#mainContent .pageContents form[action$='M=clear_caching'] p input {
+  margin-right: 5px;
+}
+
+#mainContent .pageContents form[action$='M=clear_caching'] p input[type="submit"] {
+  margin-top: 18px;
+}
+
+#mainContent .pageContents form[action$='M=new_member_form'] thead {
+  display: none;
+}
+
+#mainContent .pageContents form[action$='M=status_group_update'] label,
+#mainContent .pageContents form[action$='M=field_group_update'] label {
+  display: block;
+}
+
+/**
+ * entry_type by @_rsaon fixes
+ */
+#entry_type_options thead th {
+  background-image: none;
+  cursor: normal;
+}
+
+/**
+ * Freeform
+ */
+script + style + p > strong,
+.pageContents > style + p strong {
+  color: #fff;
+  font-weight: normal;
+  position: absolute;
+  top: 11px;
+  right: 36px;
+}
+
+/**
+ * Content > Publish
+ */
+.publish_field,
+.publish_field .hide_field,
+.publish_field fieldset.holder {
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+.publish_field {
+  border-top: 1px solid #c5ced4;
+  border-left: 1px dotted #c5ced4;
+  margin-left: -1px;
+  padding: 0;
+  height: auto !important;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: inset 0 1px 0 0 white;
+  -moz-box-shadow: inset 0 1px 0 0 white;
+  box-shadow: inset 0 1px 0 0 white;
+}
+
+.publish_field .hide_field {
+  line-height: 1;
+  margin: 9px 0;
+  position: relative;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.publish_field fieldset.holder {
+  margin: 0 9px 9px 0;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.publish_field .hide_field span {
+  cursor: pointer;
+  text-shadow: white 0 1px 0;
+}
+
+.publish_field .hide_field span img {
+  opacity: .2;
+  position: absolute;
+  top: -2px;
+  left: 4px;
+}
+
+.publish_field .hide_field span:hover img {
+  opacity: 1;
+}
+
+.publish_field p {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.publish_field .ui-resizable-e {
+  right: 2px;
+  top: -2px;
+  margin: 0;
+}
+
+.instruction_text {
+  margin-bottom: 0;
+}
+
+.instruction_text p {
+  margin: 0 18px 9px 18px;
+}
+
+.instruction_text p:first-child {
+  margin-left: 15px;
+}
+
+.instruction_text p:first-child > strong:first-child {
+  display: none;
+}
+
+.publish_text input {
+  margin: 0;
+}
+
+.publish_field.ui-sortable-placeholder {
+  background: #268bd2;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin: 9px 9px 9px -18px;
+  padding: 9px;
+  visibility: visible !important;
+  -webkit-box-shadow: inset 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.publish_field.ui-sortable-placeholder:after {
+  content: "Drop";
+}
+
+.publish_field.ui-sortable-helper {
+  background: white;
+  border: 1px solid #849099;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.handle {
+  background: #566671;
+  height: auto;
+  width: 6px;
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: -3px;
+}
+
+.publish_field .required {
+  color: #268bd2;
+}
+
+#mainContent #publishForm .tab_menu li.addTabButton a {
+  color: #268bd2;
+}
+
+/**
+* Content > Edit
+*/
+/**
+ * Content > File Manager
+ */
+#file_manager_toolbar {
+  margin: 0;
+}
+
+#file_manager_toolbar h3.accordion {
+  font-size: 13px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#mainContent #file_manager_toolbar .ui-accordion-content {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 9px !important;
+}
+
+#mainContent #file_chooser_body {
+  height: 352px;
+}
+
+#file_manager_toolbar .ui-accordion-header .ui-icon {
+  top: 11px;
+}
+
+#file_upload_iframe .pageContents {
+  border: none;
+}
+
+form[action*=edit_file] #publish_submit_buttons {
+  background: #ECF1F4;
+  border-top: 0 !important;
+  border-bottom: 1px solid #C5CED4;
+  border-left: 1px solid #C5CED4;
+  border-right: 1px solid #C5CED4;
+  box-shadow: white 0 1px 0 0 inset;
+  margin: 0 10px;
+}
+
+/**
+ * Template > Edit
+ */
+#templateEditor {
+  border: 0!important;
+  padding: 0!important;
+}
+
+/* 
+    Also used in :
+        Design > Message Pages > User Message
+        Design > Message Pages > System Offline Template
+*/
+#template_create {
+  margin: 0;
+}
+#template_create p {
+  margin: 0 0 9px 0;
+}
+#template_create textarea {
+  border: 1px solid #8195A0 !important;
+  display: block;
+  font-size: 11px;
+  margin: 0;
+  padding: 9px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#template_create #template_details {
+  background: none;
+  color: inherit;
+  font-size: 14px;
+  padding: 0;
+}
+#template_create #template_details p {
+  margin: 9px 0 18px 0;
+  padding: 0;
+}
+#template_create #template_details select {
+  margin-right: 9px;
+}
+#template_create form p:last-child {
+  margin-top: 18px;
+}
+#template_create .editAccordion {
+  background: #ffc;
+  border: none !important;
+  border-bottom: 1px solid #c5ced4!important;
+}
+#template_create .editAccordion.collapsed {
+  background: none;
+}
+#template_create .editAccordion h3 {
+  background-color: transparent !important;
+  color: inherit!important;
+  margin: 0;
+  text-shadow: none;
+}
+#template_create .editAccordion > div {
+  background: transparent;
+  margin: 9px !important;
+}
+
+/**
+ * Template > Template Manager
+ */
+.templateEditorTop {
+  margin-bottom: 12px;
+  padding: 0;
+}
+
+div#templateGroups {
+  width: 30%;
+}
+div#templateGroups .column {
+  padding-right: 18px;
+  padding-left: 0;
+}
+div#templateGroups .groupList {
+  padding: 0;
+}
+div#templateGroups .groupList ul {
+  height: auto;
+  margin: 0;
+}
+div#templateGroups .groupList h3,
+div#templateGroups .groupList .defaultTemplateGroup,
+div#templateGroups .groupList .exportTemplateGroup {
+  margin: 9px;
+  padding: 0;
+  text-align: left;
+}
+div#templateGroups .groupList h3 {
+  border-bottom: 1px solid #c5ced4;
+  margin: 0;
+  padding: 9px;
+}
+div#templateGroups .groupList ul#sortable_template_groups li {
+  position: relative;
+}
+div#templateGroups .groupList ul#sortable_template_groups li a.templateGroupName {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #c5ced4;
+}
+div#templateGroups .groupList ul#sortable_template_groups li a.templateGroupName:hover {
+  background-color: #fff;
+  color: #268bd2;
+}
+div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName, div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName:link, div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName:visited, div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName:hover {
+  border-top: 1px solid #4ca2df;
+  background-color: #268bd2;
+  background-image: none;
+  color: white;
+}
+div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName:before, div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName:link:before, div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName:visited:before, div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName:hover:before {
+  content: "›";
+  font-weight: bold;
+  position: absolute;
+  left: 11px;
+}
+div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName span.defaultIndicator, div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName:link span.defaultIndicator, div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName:visited span.defaultIndicator, div#templateGroups .groupList ul#sortable_template_groups li.selected a.templateGroupName:hover span.defaultIndicator {
+  color: white;
+}
+div#templateGroups .groupList span.defaultGroupName,
+div#templateGroups .groupList span.defaultIndicator {
+  color: #268bd2;
+}
+
+div#templates {
+  margin-left: 30%;
+  width: 70%;
+}
+div#templates .column {
+  padding: 0;
+}
+div#templates .templateGrouping > .templateTable > tbody > tr.odd,
+div#templates .templateGrouping > .templateTable > tbody > tr.odd > td {
+  background-color: #fff !important;
+}
+div#templates .templateGrouping > .templateTable > tbody > tr.even,
+div#templates .templateGrouping > .templateTable > tbody > tr.even > td {
+  background-color: #ecf1f4 !important;
+}
+div#templates .templateGrouping > .templateTable > tbody > tr.highlightRow,
+div#templates .templateGrouping > .templateTable > tbody > tr.highlightRow > td,
+div#templates .templateGrouping > .templateTable > tbody > tr.accessRowHeader,
+div#templates .templateGrouping > .templateTable > tbody > tr.accessRowHeader > td {
+  background-color: #ffffcc !important;
+}
+div#templates .templateGrouping > .templateTable tr.highlightRow > td {
+  border-bottom: none;
+  background: transparent;
+  color: inherit;
+}
+div#templates .templateGrouping > .templateTable tr.highlightRow > td a {
+  color: inherit;
+}
+div#templates .templateGrouping > .templateTable tr.accessRowHeader {
+  background-color: #ff0000 !important;
+  border-bottom: 1px solid #D0D7DF;
+}
+div#templates .templateGrouping > .templateTable tr.accessRowHeader > td {
+  background-color: #fff;
+  border: none;
+  padding: 0 9px;
+}
+div#templates .templateGrouping > .templateTable tr.accessRowHeader > td .accessTable {
+  margin-bottom: 9px;
+}
+div#templates .templateGrouping > .templateTable tr.accessRowHeader > td .accessTable th.template_manager_template_name,
+div#templates .templateGrouping > .templateTable tr.accessRowHeader > td .accessTable th.template_manager_template_type,
+div#templates .templateGrouping > .templateTable tr.accessRowHeader > td .accessTable th.template_manager_enable_caching,
+div#templates .templateGrouping > .templateTable tr.accessRowHeader > td .accessTable th.template_manager_refresh_interval,
+div#templates .templateGrouping > .templateTable tr.accessRowHeader > td .accessTable th.template_manager_enable_php,
+div#templates .templateGrouping > .templateTable tr.accessRowHeader > td .accessTable th.template_manager_parse_stage,
+div#templates .templateGrouping > .templateTable tr.accessRowHeader > td .accessTable th.template_manager_hits {
+  width: auto;
+}
+div#templates .templateGrouping > .templateTable tr.accessRowHeader > td .accessTable th.template_manager_template_name {
+  width: 200px;
+}
+div#templates .templateGrouping > .templateTable tr.accessRowHeader > td .accessTable td {
+  border-bottom: 1px solid #c5ced4;
+}
+div#templates .templateGrouping > .templateTable tr td.index,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.index,
+div#templates .templateGrouping > .templateTable tr td.feed,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.feed,
+div#templates .templateGrouping > .templateTable tr td.xml,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.xml,
+div#templates .templateGrouping > .templateTable tr td.webpage,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.webpage,
+div#templates .templateGrouping > .templateTable tr td.static,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.static,
+div#templates .templateGrouping > .templateTable tr td.css,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.css,
+div#templates .templateGrouping > .templateTable tr td.js,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.js {
+  background-color: transparent !important;
+  background-image: url("../images/design_sprite.png");
+  background-repeat: no-repeat;
+}
+div#templates .templateGrouping > .templateTable tr td.index,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.index {
+  background-position: -500px -600px;
+}
+div#templates .templateGrouping > .templateTable tr td.css,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.css {
+  background-position: 0 -345px;
+}
+div#templates .templateGrouping > .templateTable tr td.js,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.js {
+  background-position: 0 -478px;
+}
+div#templates .templateGrouping > .templateTable tr td.feed,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.feed {
+  background-position: 0 -225px;
+}
+div#templates .templateGrouping > .templateTable tr td.xml,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.xml {
+  background-position: 0 -225px;
+}
+div#templates .templateGrouping > .templateTable tr td.webpage,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.webpage {
+  background-position: 0 -88px;
+}
+div#templates .templateGrouping > .templateTable tr td.static,
+div#templates .templateGrouping > .templateTable tr.highlightRow td.static {
+  background-position: -500px -88px;
+}
+
+/**
+ * Design > Message Pages > Email Notification Templates
+ */
+.menu_list li, .member_profile_themes li {
+  border-bottom: 1px solid #DEE6E9;
+}
+.menu_list li a:link:hover,
+.menu_list li a:visited:hover, .member_profile_themes li a:link:hover,
+.member_profile_themes li a:visited:hover {
+  background-color: #268bd2;
+  color: white;
+}
+
+.heading span.msg_open_close {
+  margin-right: 0;
+}
+
+.WysiHat-editor-toolbar, .WysiHat-editor {
+  border-radius: 0 !important;
+}
+
+.WysiHat-editor {
+  padding: 10px !important;
+}
+
+.WysiHat-editor-toolbar .button,
+.WysiHat-ui-control .button {
+  padding: 4px 8px !important;
+  margin-right: 3px !important;
+}
+.WysiHat-editor-toolbar .button.select-container,
+.WysiHat-ui-control .button.select-container {
+  padding: 0 !important;
+}
+
+.WysiHat-editor-toolbar button.button,
+.WysiHat-ui-control button.button {
+  background-color: #fff !important;
+}
+
+.markitup {
+  margin: 0 27px 9px 0 !important;
+}
