@@ -1,0 +1,9 @@
+adapter: sftp
+host: 178.62.26.105
+username: root
+path: var/www/iamsteve.me/html/
+
+exclude:
+    - .gitignore
+    - node_modules
+    - .sass-cache

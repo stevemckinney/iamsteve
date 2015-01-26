@@ -1,0 +1,57 @@
+body {
+  font-family: Verlag;
+}
+
+#breadCrumb {
+  background: #ecf1f4;
+  background-size: 100%;
+  border: 1px solid #ecf1f4;
+  margin: 0 0 24px 0 !important;
+  padding: 0 0 0 25px;
+}
+
+#breadCrumb, #breadCrumb li, #activeUser, #activeUser .userName, #activeUser .logOutButton {
+  font-size: 12px;
+}
+
+html body #mainContent .contentMenu h2,
+html body .heading h2,
+html body #mainContent .formArea .formHeading,
+.ui-dialog .ui-dialog-titlebar {
+  background: #566671;
+  border: 1px solid #45525a;
+  border-bottom: 0;
+  height: auto;
+  line-height: 18px;
+  padding: 12px;
+  text-shadow: none;
+  box-shadow: none;
+}
+html body #mainContent .contentMenu h2, html body #mainContent .contentMenu h2 .subtext,
+html body .heading h2,
+html body .heading h2 .subtext,
+html body #mainContent .formArea .formHeading,
+html body #mainContent .formArea .formHeading .subtext,
+.ui-dialog .ui-dialog-titlebar,
+.ui-dialog .ui-dialog-titlebar .subtext {
+  font-size: 18px;
+}
+
+.contentMenu ul.homeBlocks a {
+  font-size: 16px;
+}
+
+.contentMenu li.item a,
+.contentMenu li.group a,
+.contentMenu li.site a,
+.contentMenu li.resource a {
+  background: none;
+}
+
+.contentMenu li a {
+  display: block;
+  padding: 6px 12px;
+  background-color: #ECF1F4;
+  border-bottom: 1px solid #d0d7df;
+  border-top: 1px solid #fff;
+}
