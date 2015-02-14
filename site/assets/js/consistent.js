@@ -278,8 +278,8 @@ $(function() {
 			prev = $('.prev a').attr('href');
 			
 	$html.addClass("loaded");
-	$("pre").addClass('language-markup');
-	$(".gist pre").removeClass('language-scss');
+	$("pre").addClass('language-scss language-markup');
+	$(".gist pre").removeClass('language-scss language-markup');
 	
 	// do stuff at each breakpoint
 	var queries = [
