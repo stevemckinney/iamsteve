@@ -1,5 +1,16 @@
 {embed="/include/header" entry_title="Blog"}
 
+{if logged_in}
+  {exp:channel:entries channel="blog" paginate="bottom" limit="8" status="draft" cache="no"}
+  	<article role="article" class="hentry">
+  		<h1 class="h2 entry-title entry-summary-title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark">{title}</a></h1>
+      {excerpt}
+  		{blog_meta}
+  	</article>
+  	{pagination}
+  {/exp:channel:entries}
+{/if}
+
 {exp:channel:entries channel="blog" paginate="bottom" limit="8" status="Latest|open|{if logged_in}|draft{/if}" disable="member_data|trackbacks" global:param_disable_mt global:param_cache_param}
 	<article role="article" class="hentry">
 		<h1 class="h2 entry-title entry-summary-title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark">{title}</a></h1>
