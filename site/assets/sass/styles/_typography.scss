@@ -121,11 +121,11 @@ a {
 .entry-summary figcaption p:first-child, .entry-content figcaption p:first-child {
 	font-size: em($base-font-size, $base-font-size); }
 		
-code {
+code:not([class*="language-"]) {
 	font-size: em($base-font-size, $base-font-size);
 	font-weight: 400;
 	
-	pre & {
+	pre:not([class*="language-"]) & {
 		max-height: 200px;
 		overflow: auto;
 		color: $primary;
