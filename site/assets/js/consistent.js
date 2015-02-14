@@ -278,7 +278,6 @@ $(function() {
 			prev = $('.prev a').attr('href');
 			
 	$html.addClass("loaded");
-	$("pre").addClass('language-scss');
 	$(".gist pre").removeClass('language-scss');
 	
 	// do stuff at each breakpoint
