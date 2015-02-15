@@ -19,7 +19,7 @@
 			@extend %transition;
 			@extend %ns;
 			@extend %ts;
-			padding: em($base-px, $base-font-size) 0;
+			padding: em($line, $base-font-size) 0;
 			position: relative;
 			display: block;
 			z-index: 1;
