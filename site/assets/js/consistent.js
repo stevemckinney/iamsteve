@@ -14,5 +14,5 @@ else if(k.which==37||k.keyCode==37){if(prev){var url=prev;window.location=url;}}
 else if(k.which==39||k.keyCode==39){if(next){var url=next;window.location=url;}}
 else{return true;}});$('header').find('h1 a').trigger('hover');});var fragment_identifiers=function()
 {var headings=document.querySelectorAll('h1, h2, h3, h4, h5, h6');for(var ii=headings.length;ii--;)
-{var text=headings[ii].textContent.replace(' ','-').toLowerCase();headings[ii].setAttribute('id',text);}}
+{var text_content=headings[ii].textContent;var remove_rubbish=text_content.replace(/\W/g,'');var lowercase_text=remove_rubbish.toLowerCase();headings[ii].setAttribute('id',lowercase_text);console.log(headings[ii]);}}
 fragment_identifiers();
