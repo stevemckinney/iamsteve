@@ -65,7 +65,16 @@
 	var b=document.getElementsByTagName("script")[0];
 	a.type = "text/javascript";
 	a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0016/1566.js?"+Math.floor(new Date().getTime()/3600000);
-	a.async=true;b.parentNode.insertBefore(a,b)}, 1);$('[data-event]').on('click', function() {_gs('event', $(this).data('event'))})
+	a.async=true;b.parentNode.insertBefore(a,b)}, 1);$('[data-event]').on('click', function() {_gs('event', $(this).data('event'))});
+	// hotjar
+	(function(f,b){
+    var c;
+    f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
+    f._hjSettings={hjid:22314, hjsv:3};
+    c=b.createElement("script");c.async=1;
+    c.src="//static.hotjar.com/c/hotjar-22314.js?sv=3";
+    b.getElementsByTagName("head")[0].appendChild(c); 
+  })(window,document);
   </script>{/if}
 </body>
 </html>
