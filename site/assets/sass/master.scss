@@ -349,6 +349,30 @@ figcaption {}
 .push-bottom {
   margin-bottom: $line; }
 
+// Post layout
+// ---------------------------
+.p-flex { 
+  display: -webkit-flex;
+  display: flex;
+  
+  @media (max-width: 599px) { 
+    flex-flow: column wrap; } }
+
+.p-flex-gutter {
+  justify-content: space-between; }
+
+.p-one-half {
+  flex-basis: 50%;
+  
+  .p-flex-gutter & {
+    flex-basis: 48.75%; } }
+
+.p-one-third {
+  flex-basis: 33.333333%;
+  
+  .p-flex-gutter & {
+    flex-basis: 31.666666667%; } }
+
 /*
 	Media queries
 -----------------------------------------------------------------------*/

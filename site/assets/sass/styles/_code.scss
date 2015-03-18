@@ -1,12 +1,12 @@
-/* http://prismjs.com/download.html?themes=prism&languages=markup+css+css-extras+clike+javascript&plugins=line-highlight+line-numbers */
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css+css-extras+clike+javascript+php+php-extras+scss+bash+ruby+markdown&plugins=line-numbers */
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
  * @author Lea Verou
  */
 
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*="language"],
+pre[class*="language"] {
 	color: black;
 	text-shadow: 0 1px white;
 	font-family: Consolas, Monaco, 'Andale Mono', monospace;
@@ -25,41 +25,53 @@ pre[class*="language-"] {
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
+	
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+.entry-content iframe,
+pre {
+  margin-bottom: em($line); 
+}
+
+pre code {
+  white-space: nowrap;
+}
+
+pre[class*="language"]::-moz-selection, pre[class*="language"] ::-moz-selection,
+code[class*="language"]::-moz-selection, code[class*="language"] ::-moz-selection {
 	text-shadow: none;
 	background: #b3d4fc;
 }
 
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
+pre[class*="language"]::selection, pre[class*="language"] ::selection,
+code[class*="language"]::selection, code[class*="language"] ::selection {
 	text-shadow: none;
 	background: #b3d4fc;
 }
 
 @media print {
-	code[class*="language-"],
-	pre[class*="language-"] {
+	code[class*="language"],
+	pre[class*="language"] {
 		text-shadow: none;
 	}
 }
 
 /* Code blocks */
-pre[class*="language-"] {
+pre[class*="language"] {
 	padding: 1em;
 	margin: .5em 0;
 	overflow: auto;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
+:not(pre) > code[class*="language"],
+pre[class*="language"] {
 	background: #f5f2f0;
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*="language"] {
 	padding: .1em;
 	border-radius: .3em;
 }
@@ -101,7 +113,7 @@ pre[class*="language-"] {
 .token.operator,
 .token.entity,
 .token.url,
-.language-css .token.string,
+.languagecss .token.string,
 .style .token.string {
 	color: #a67f59;
 	background: hsla(0, 0%, 100%, .5);
@@ -135,53 +147,6 @@ pre[class*="language-"] {
 	cursor: help;
 }
 
-pre[data-line] {
-	position: relative;
-	padding: 1em 0 1em 3em;
-}
-
-.line-highlight {
-	position: absolute;
-	left: 0;
-	right: 0;
-	padding: inherit 0;
-	margin-top: 1em; /* Same as .prism’s padding-top */
-
-	background: hsla(24, 20%, 50%,.08);
-	background: -moz-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-	background: -webkit-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-	background: -o-linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-	background: linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-	
-	pointer-events: none;
-	
-	line-height: inherit;
-	white-space: pre;
-}
-
-	.line-highlight:before,
-	.line-highlight[data-end]:after {
-		content: attr(data-start);
-		position: absolute;
-		top: .4em;
-		left: .6em;
-		min-width: 1em;
-		padding: 0 .5em;
-		background-color: hsla(24, 20%, 50%,.4);
-		color: hsl(24, 20%, 95%);
-		font: bold 65%/1.5 sans-serif;
-		text-align: center;
-		vertical-align: .3em;
-		border-radius: 999px;
-		text-shadow: none;
-		box-shadow: 0 1px white;
-	}
-	
-	.line-highlight[data-end]:after {
-		content: attr(data-end);
-		top: auto;
-		bottom: .4em;
-	}
 pre.line-numbers {
 	position: relative;
 	padding-left: 3.8em;
@@ -222,64 +187,3 @@ pre.line-numbers > code {
 			padding-right: 0.8em;
 			text-align: right;
 		}
-
-
-// github gists
-// ---------------------------
-[role="main"] .gist {
-	position: relative !important;
-	.gist-file, .gist-data, .gist-highlight {
-		position: relative;
-		border-radius: 4px;
-		background: none !important;
-		border: none !important; }
-	.gist-highlight {
-		border-left: 4em solid fade-out($black, 0.95) !important;
-		@include box-shadow(inset 1px 0 0 fade-out($white, 0.7) !important); }
-	.gist-file .gist-data {
-		@include border-radius(4px 4px 0 0 !important);
-		@include box-shadow(inset 0 0 0 1px #ccc, inset 0 2px 3px fade-out($black, 0.9), 0 1px 0 fade-out($white, 0.2) !important);
-		border: none !important;
-		border-bottom: none !important;
-		overflow: auto;
-		max-height: 500px;
-		padding: 0 !important;
-		background: none !important; }
-	.gist-file .gist-data pre {
-		border: none !important;
-		box-shadow: none !important; }
-
-  .line-numbers {
-    vertical-align: top; }
-  
-	.gist-file .gist-data .line_data, .gist-file .gist-data .line_numbers {
-		line-height: 1.5; }
-	.gist-file .gist-data .line_numbers {
-		background-color: none !important;
-		border-right: 1px solid hsl(0, 0%, 87%);
-		text-align: right;
-		padding: .5em; }
-	.gist-file .gist-data .line_data {
-		display: inline-block !important; }
-	.gist-meta {
-		background-color: #222;
-		@include element(#222, $radius: 0 0 4px 4px);
-		@include box-shadow(
-			inset 0 -1px 0 #333,
-			inset 0 0 0 1px #333,
-			inset 0 2px 0 rgba($white, .1),
-			inset 0 -1px 3px #353535,
-			inset -1px -3px 12px -3px rgba(#333, .2),
-			inset 1px -3px 12px -3px rgba(#333, .2),
-			0 1px 3px rgba($black, .2));
-		width: 100%;
-		color: $white !important;
-		a {
-			color: $white !important; } }
-	.gist-syntax .k {
-		color: $primary; }
-	* {
-		font-family: $monospace !important;
-		font-size: 100%; }
-	* {
-		font-size: 14px !important; } }
