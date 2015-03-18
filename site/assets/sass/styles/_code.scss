@@ -32,7 +32,7 @@ pre[class*="language"] {
 
 .entry-content iframe,
 pre {
-  margin-bottom: em($line); 
+  margin-bottom: $line; 
 }
 
 pre code {
