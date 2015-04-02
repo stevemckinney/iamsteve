@@ -14,13 +14,16 @@
 /* 
 	!Base stucture
 ---------------------------------------------------------------------- */
-html, body:after {
+html,
+body:after {
 	font-family: "a"; }
+	
 body {
 	font-size: 100%;
  	line-height: normal;
 	color: $primary;
 	background: url(../images/bg_wave.png); }
+	
 .container {
 	@include pie-clearfix;
   margin-bottom: 1.5rem;
@@ -69,7 +72,6 @@ article img {
 				background-size: 48px; } } }
 
 	.title {
-		@extend %ts;
 		@include rem(padding, $line 0 $line*2);
 		position: relative;
 		width: 88%;
@@ -77,10 +79,7 @@ article img {
 		text-align: center;
 
 		.error & {
-			text-transform: capitalize; }
-			
-		a {
-			line-height: 1.185; } }
+			text-transform: capitalize; } }
 
 	
 // navigation
@@ -123,6 +122,7 @@ article img {
 	@include pie-clearfix;
 	margin: auto auto em($line, $base-font-size);
 	position: relative;
+	
 	figure {
 		@include pie-clearfix;
 		margin-bottom: em($line, $base-font-size);
@@ -130,12 +130,15 @@ article img {
 		img {
 			display: block;
 			margin: auto auto .75rem; } }
+			
 	figcaption {
 		text-align: center; }
+		
 	@include respond-min($c) {
 		padding-right: 7.5%;
 		padding-left: 7.5%;
 		margin-bottom: em($line*2, $base-font-size); }
+		
 	@include respond-min($d) {
 		padding-right: 15.5%;
 		padding-left: 15.5%; } }
@@ -267,8 +270,10 @@ dd {
 .related-entries, .previous-entries {
 	@include pie-clearfix;
 	@extend %margin-bottom;
+	
 	@include respond-min($c) {
 		@include rem(margin, 0 0 $line*2); }
+	
 	@include respond-min($d) {
 		h1 {
 			padding-left: 15.5%; } } }
@@ -276,6 +281,7 @@ dd {
 .previous-entries-container,
 .related-entries-container {
   @include pie-clearfix;
+  margin-bottom: -$line;
   
   @include respond-min($d) {
     padding: 0 15.5%; } }
@@ -294,7 +300,11 @@ dd {
   	padding-left: $base-px; }
 	
 	p {
-		@extend %margin-bottom; } }
+  	margin: 0;
+		font-size: 14px;
+		
+		@include respond-min($c) {
+  		font-size: 16px; } } }
 
 
 /* 
@@ -356,21 +366,27 @@ figcaption {}
   display: flex;
   
   @media (max-width: 599px) { 
+    -webkit-flex-flow: column wrap;
     flex-flow: column wrap; } }
 
 .p-flex-gutter {
+  -webkit-justify-content: space-between;
   justify-content: space-between; }
 
 .p-one-half {
+  -webkit-flex-basis: 50%;
   flex-basis: 50%;
   
   .p-flex-gutter & {
+    -webkit-flex-basis: 48.75%;
     flex-basis: 48.75%; } }
 
 .p-one-third {
+  -webkit-flex-basis: 33.333333%;
   flex-basis: 33.333333%;
   
   .p-flex-gutter & {
+    -webkit-flex-basis: 31.666666667%;
     flex-basis: 31.666666667%; } }
 
 /*

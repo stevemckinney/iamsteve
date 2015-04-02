@@ -1,21 +1,13 @@
 @import "symbolset";
 
-// base heading elements
+// Headings
 // ---------------------------
 #{headings()} {
 	font-family: $heading;
 	color: $primary;
-	text-rendering: optimizeLegibility;
 	line-height: 1.25;
 	margin-top: 0;
-	font-weight: 700; 
-	
-	a {
-		display: block;
-		color: $primary;
-		
-		&:hover, &:focus {
-			color: $secondary; } } }
+	color: $primary; }
 
 h1, .h1 {
   font-size: 24px;
@@ -23,148 +15,91 @@ h1, .h1 {
   
   @include respond-min($c) {
     font-size: 36px;
-    margin-bottom: $line*2; }
+    font-weight: 400;
+    margin-bottom: $line*2; } }
   
-  .entry-content & {
-    margin-top: $line;
-    margin-bottom: $base-px;
-    font-size: 21px;
-    
-    @include respond-min($c) {
-      font-size: 30px;
-      margin-top: $line*2;
-      margin-bottom: $line; } } }
-    
-h2, .h2 { 
-  font-size: 21px;
-  margin-bottom: $line;
-  
-  @include respond-min($c) {
-    font-size: 30px;
-    margin-bottom: $line*2; }
-  
-  .entry-content & {
-    margin-top: $line;
-    margin-bottom: $base-px;
-      
-    @include respond-min($c) {
-      margin-top: $line*2;
-      margin-bottom: $line; } } }
-h3, .h3 { 
+h2, .h2 {
   font-size: 18px;
-  margin-bottom: $base-px;
+  font-weight: 700;
+  
+  .entry-content & {
+    margin: $line 0 $base-px; }
   
   @include respond-min($c) {
-    font-size: 24px; } }
-h4, .h4 { 
-  font-size: 16px;
-  margin-bottom: $base-px;
+    font-size: 24px;
+    margin: 0 0 $line;
+    
+    .entry-content & {
+      margin: $line*1.5 0 $line; } } }
   
-  @include respond-min($c) {
-    font-size: 21px; } }
-h5, .h6 { 
-  font-size: 16px;
-  margin-bottom: $base-px;
+h3, .h3 { 
+  font-size: 21px;
+  margin: $line*1.5 0 $base-px; }
   
-  @include respond-min($c) {
-    font-size: 18px; } }
+h4, .h4 {
+  font-size: 18px;
+  margin: 0 0 $base-px;
+  
+  .entry-content & {
+    margin: $line*1.5 0 $base-px; } }
+  
+h5, .h5,
 h6, .h6 {
-  margin-bottom: $base-px;
-  font-size: 16px; }
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px; }
 
 .entry-summary-title {
   margin-bottom: $base-px; }
 
-// links
-// ---------------------------
-a {
-	@extend %transition;
-	text-decoration: none;
-	color: $primary;
-	-webkit-tap-highlight-color: rgba(black, 0);
-	
-	
-	.entry-content p &, .colophon &, figure & {	
-  	text-decoration: underline;
-  	text-decoration-color: rgba($primary_l2, .3);
-  	
-		&:hover, &:focus {
-			text-decoration-color: rgba($primary_l2, .8); } } }
+.related-entries p, .previous-entries p {
+  line-height: 1.35; }
 
-[data-href] { cursor: pointer; }
-
-// header
+// Title
 // ---------------------------
 .title {
-	font-family: $slab;
-	font-weight: 700;
-	font-size: 24px;
-	
-	a, a:hover, a:focus { color: $white; }
-	
-	@include respond-min($c) {
-  	font-weight: 400;
-    font-size: 42px; }
-	
-	@include respond-min($e) {
-		font-size: 48px; } }
-		
-.title, .title span, .title a {
-	color: $primary_l3; }
+  color: $primary_l3;
+  margin-bottom: 0; }
 
-.entry-summary p:first-child, .entry-content p:first-child {
-	font-size: 1.125em;
-	
-	@include respond-min($c) {
-  	font-size: 1.3125em; } }
-		
-.entry-summary figcaption p:first-child, .entry-content figcaption p:first-child {
-	font-size: em($base-font-size, $base-font-size); }
-		
-code:not([class*="language-"]) {
-	font-size: em($base-font-size, $base-font-size);
-	font-weight: 400;
-	
-	pre:not([class*="language-"]) & {
-		max-height: 200px;
-		overflow: auto;
-		color: $primary;
-		direction: ltr;
-		text-align: left;
-		white-space: pre-line;
-	
-		-moz-tab-size: 2;
-		-o-tab-size: 2;
-		tab-size: 2; } }
-
-// body content
+// Links
 // ---------------------------
+a {
+  color: inherit;
+  text-decoration: none; }
+
+// Main content
+// ---------------------------
+body {
+  font-family: $body;
+  line-height: 1.5;
+  color: scale-lightness($primary, 20%); }
+  
 p {
-  margin: 0 0 .75rem;
+  margin: 0 0 $base-px;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   
   @include respond-min($c) {
-    margin: 0 0 1.5rem; } }
+    margin: 0 0 $line;
+    font-size: 18px; } }
 
-p, li, dt, dd, figcaption {
-  color: scale-color($primary_l2, $lightness: 10%, $saturation: -20%);
-  font-family: $body;
-  font-size: 16px;
-  line-height: 1.5;
+.entry-content p:first-child {
+  color: $primary;
+  font-size: 18px;
   
   @include respond-min($c) {
     font-size: 21px; } }
 
-.related-entries p, .previous-entries p {
-  line-height: 1.35; }
+iframe,
+pre {
+  display: block;
+  margin-bottom: $line; }
 
-
-// nav
+// Nav
 // ---------------------------
-[role="navigation"] {
-	a {
-		font: 700 .75rem/#{$base-line-height} $body;
-		color: #f0f4fc;
-		letter-spacing: .0625em; } }
+[role="navigation"] a {
+	font: 700 .75rem/#{$base-line-height} $body;
+	color: #f0f4fc; }
 
 // aside
 // ---------------------------
@@ -180,6 +115,7 @@ p, li, dt, dd, figcaption {
 [class^="item"] {
 	h2 {
 		margin: 0 0 em($base-px, 41px); } }
+		
 .portfolio-nav {
 	h2 {
 		margin: 0 0 em($base-px, $base-font-size);
@@ -188,17 +124,21 @@ p, li, dt, dd, figcaption {
 // pre/code
 // ---------------------------
 pre {
-	@include box-shadow(inset 0 1px 3px fade-out($black, 0.9), 0 1px 0 fade-out($white, 0.2));
-	@extend %rounded;
-	@extend %margin-bottom;
-	border: 1px solid #ccc;
+  padding: $line;
+  margin: 0 0 $line;
+  display: block;
+
 	code {
 		display: block;
 		background: none; } }
-		
+
+pre,
 code {
-	@include border-radius(2px);
-	background: fade-out($primary_l2, .95); }
+  font-size: 18px;
+  font-family: Inconsolata, monospace; }
+
+code {
+	background: rgba(#f6f7ee, .8); }
 
 // blockquote
 // ---------------------------

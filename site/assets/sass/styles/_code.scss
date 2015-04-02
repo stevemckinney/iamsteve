@@ -5,11 +5,19 @@
  * @author Lea Verou
  */
 
+$code-black: #152637; // #f5f2f0
+$code-red: #f82939;
+$code-yellow: #fdc347;
+$code-green: #4ae845;
+$code-blue: #727c87;
+$code-magenta: scale-lightness(#6f4ebc, 20%);
+$code-cyan: #64cce3;
+$code-white: #f6f7ee;
+$comment: #838c95;
+
+
 code[class*="language"],
 pre[class*="language"] {
-	color: black;
-	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', monospace;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
@@ -26,29 +34,27 @@ pre[class*="language"] {
 	-ms-hyphens: none;
 	hyphens: none;
 	
+	color: $code-magenta;
+	
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
 }
 
-.entry-content iframe,
-pre {
-  margin-bottom: $line; 
-}
-
-pre code {
-  font-size: 14px;
+code[class*="language-bash"],
+pre[class*="language-bash"] {
+	color: $code-white;
 }
 
 pre[class*="language"]::-moz-selection, pre[class*="language"] ::-moz-selection,
 code[class*="language"]::-moz-selection, code[class*="language"] ::-moz-selection {
 	text-shadow: none;
-	background: #b3d4fc;
+	background: $code-black;
 }
 
 pre[class*="language"]::selection, pre[class*="language"] ::selection,
 code[class*="language"]::selection, code[class*="language"] ::selection {
 	text-shadow: none;
-	background: #b3d4fc;
+	background: $code-black;
 }
 
 @media print {
@@ -60,14 +66,12 @@ code[class*="language"]::selection, code[class*="language"] ::selection {
 
 /* Code blocks */
 pre[class*="language"] {
-	padding: 1em;
-	margin: .5em 0;
 	overflow: auto;
 }
 
 :not(pre) > code[class*="language"],
 pre[class*="language"] {
-	background: #f5f2f0;
+	background: $code-black;
 }
 
 /* Inline code */
@@ -80,25 +84,28 @@ pre[class*="language"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: slategray;
+	color: $comment;
 }
 
 .token.punctuation {
-	color: #999;
+	color: $code-white;
 }
 
 .namespace {
 	opacity: .7;
 }
 
-.token.property,
 .token.tag,
 .token.boolean,
 .token.number,
 .token.constant,
 .token.symbol,
 .token.deleted {
-	color: #905;
+	color: $code-magenta;
+}
+
+.token.property {
+  color: $code-green;
 }
 
 .token.selector,
@@ -107,7 +114,7 @@ pre[class*="language"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: #690;
+	color: $code-white;
 }
 
 .token.operator,
@@ -115,24 +122,27 @@ pre[class*="language"] {
 .token.url,
 .languagecss .token.string,
 .style .token.string {
-	color: #a67f59;
-	background: hsla(0, 0%, 100%, .5);
+	color: $code-yellow;
+	
+	.language-bash & {
+  	color: $code-white;
+	}
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-	color: #07a;
+	color: $code-red;
 }
 
 .token.function {
-	color: #DD4A68;
+	color: $code-green;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-	color: #e90;
+	color: $code-yellow;
 }
 
 .token.important,
@@ -165,7 +175,7 @@ pre.line-numbers > code {
 	left: -3.8em;
 	width: 3em; /* works for line-numbers below 1000 lines */
 	letter-spacing: -1px;
-	border-right: 1px solid #999;
+	border-right: 1px solid rgba($code-blue, .6);
 
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -182,7 +192,7 @@ pre.line-numbers > code {
 
 		.line-numbers-rows > span:before {
 			content: counter(linenumber);
-			color: #999;
+			color: $code-blue;
 			display: block;
 			padding-right: 0.8em;
 			text-align: right;
