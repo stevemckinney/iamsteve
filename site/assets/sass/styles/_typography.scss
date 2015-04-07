@@ -52,9 +52,6 @@ h6, .h6 {
 .entry-summary-title {
   margin-bottom: $base-px; }
 
-.related-entries p, .previous-entries p {
-  line-height: 1.35; }
-
 // Title
 // ---------------------------
 .title {
@@ -65,7 +62,11 @@ h6, .h6 {
 // ---------------------------
 a {
   color: inherit;
-  text-decoration: none; }
+  text-decoration: none;
+  
+  p & {
+    text-decoration: underline;
+    text-decoration-color: rgba($primary, .4); } }
 
 // Main content
 // ---------------------------
@@ -81,14 +82,17 @@ p {
   
   @include respond-min($c) {
     margin: 0 0 $line;
-    font-size: 18px; } }
+    font-size: em(18px, 16px); } }
 
-.entry-content p:first-child {
+.related-entries p, .previous-entries p {
+  line-height: 1.35; }
+
+.entry-content > p:first-child {
   color: $primary;
-  font-size: 18px;
+  font-size: em(18px, 16px);
   
   @include respond-min($c) {
-    font-size: 21px; } }
+    font-size: em(21px, 16px); } }
 
 iframe,
 pre {
@@ -104,22 +108,21 @@ pre {
 // aside
 // ---------------------------
 [role="complementary"] p {
-  font-size: 18px;
+  font-size: em(16px, 16px);
   margin: 0; }
   
-[role="complementary"], [role="contentinfo"] {
+[role="complementary"],
+[role="contentinfo"] {
 	font-family: $body; }
 
 // page specific
 // ---------------------------
-[class^="item"] {
-	h2 {
-		margin: 0 0 em($base-px, 41px); } }
+[class^="item"] h2 {
+	margin: 0 0 em($base-px, 41px); }
 		
-.portfolio-nav {
-	h2 {
-		margin: 0 0 em($base-px, $base-font-size);
-		font-size: 1em; } }
+.portfolio-nav h2 {
+	margin: 0 0 em($base-px, $base-font-size);
+	font-size: 1em; }
 	
 // pre/code
 // ---------------------------
@@ -147,46 +150,38 @@ $qd: darken(desaturate($q, 50%), 40%);
 $ql: lighten($q, 10%);
 
 blockquote {
-	@extend %rounded;
-	@extend %shadow;
-	@include rem(padding, $line $line $line $line*3);
-	@extend %margin-bottom;
-	background: $q;
-	@include background(
-		linear-gradient(bottom, fade-out($qd, 0.75) .05em, transparent .05em), $q);
-	@include background-size(100% 1.5em);
-	color: $qd;
-	position: relative;
-	line-height: 1.5;
-	font-family: $sans;
-	p {
-		position: relative;
-		z-index: 1;
-		
-		&:only-of-type {
-  		margin: 0; }
-		
-		[role="main"] & {
-			&:first-child {
-			@include rem(font-size, 16px); } } }
-	&:before, &:after {
-		position: absolute; }
-	&:before {
-		@include rem(margin, 0 $line 0 0);
-		content: "pullquote";
-		font: 900 100%/1.5 $icons;
-		color: $qd;
-		display: inline-block;
-		opacity: .5;
-		text-shadow: 0 1px 0 $ql;
-		@include rem(top, $base-px*2);
-		@include rem(left, $line);
-		z-index: 0; }
-	&:after {
-		content: "";
-		display: inline-block;
-		width: 1px;
-		height: 100%;
-		background: $danger;
-		top: 0;
-		left: $line*2; } }
+  margin: 0 0 $line;
+  padding: $line;
+  position: relative;
+  font-style: italic;
+  text-align: center;
+  background: $q;
+  box-shadow: inset 0 0 0 1px rgba($qd, .6), inset 0 2px $ql;
+  box-shadow: inset 0 0 0 1px rgba($qd, .3), 0 1px 2px rgba($qd, 0.1), inset 0 2px 3px rgba($ql, .75), inset 0 -1px 3px rgba(black, .15);
+  color: $qd;
+  border-radius: $radius;
+  
+/*
+  &:before,
+  &:after {
+    content: "";
+    width: em($line*4, 16px);
+    position: absolute;
+    left: 50%;
+    margin-left: em(-$line*2, 16px);
+    height: 1px;
+    background: rgba($primary, .2); }
+  
+  &:before {
+    top: 0; }
+  
+  &:after {
+    bottom: 0; }
+*/
+  
+  p {
+    margin: 0;
+    font-size: 14px; 
+    
+    @include respond-min($c) {
+      font-size: 16px; } } }
