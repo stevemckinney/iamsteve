@@ -22,15 +22,17 @@ body {
 	font-size: 100%;
  	line-height: normal;
 	color: $primary;
-	background: url(../images/bg_wave.png); }
+	background: #f6f7ee; }
 	
+$bg-path: "triangles.png";
 .container {
 	@include pie-clearfix;
   margin-bottom: 1.5rem;
 	padding: em($line, $base-font-size) 0 0;
 	position: relative;
 	overflow: hidden;
-	background: $primary;
+	background: image-url($bg-path);
+	background-size: ceil(image-width($bg-path)/2) ceil(image-height($bg-path)/2);
 	
 	@include respond-min($c) { margin-bottom: 3rem; } }
 
@@ -388,6 +390,16 @@ figcaption {}
   .p-flex-gutter & {
     -webkit-flex-basis: 31.666666667%;
     flex-basis: 31.666666667%; } }
+
+// New stuff
+// ---------------------------
+.wide-image.wide-image.wide-image {
+  max-width: none;
+  width: 150%;
+  margin-left: -25%;
+  margin-right: -25%;
+  border: none;
+  box-shadow: none; }
 
 /*
 	Media queries
