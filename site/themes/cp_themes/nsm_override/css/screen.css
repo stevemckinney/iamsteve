@@ -1865,10 +1865,6 @@ div#templates .templateGrouping > .templateTable tr.highlightRow td.static {
   margin: 0 27px 9px 0 !important;
 }
 
-body {
-  font-family: Verlag;
-}
-
 #breadCrumb {
   background: #ecf1f4;
   background-size: 100%;
@@ -1921,4 +1917,26 @@ html body #mainContent .formArea .formHeading .subtext,
   background-color: #ECF1F4;
   border-bottom: 1px solid #d0d7df;
   border-top: 1px solid #fff;
+}
+
+textarea.markItUpEditor,
+.holder textarea {
+  padding: 48px 10%;
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: Georgia;
+}
+
+#showToolbarLink {
+  white-space: nowrap;
+}
+
+#mainContent .tab_menu {
+  position: relative;
+  background: #9aa9b3;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: none;
+  padding: 0 100px 0 5px;
+  overflow: auto;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.2), 0 -1px 0 rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.2);
 }
