@@ -31,8 +31,8 @@ $bg-path: "triangles.png";
 	padding: em($line, $base-font-size) 0 0;
 	position: relative;
 	overflow: hidden;
-	background: image-url($bg-path);
-	background-size: ceil(image-width($bg-path)/2) ceil(image-height($bg-path)/2);
+	background: $primary;
+	//background-size: ceil(image-width($bg-path)/2) ceil(image-height($bg-path)/2);
 	
 	@include respond-min($c) { margin-bottom: 3rem; } }
 
@@ -318,13 +318,13 @@ iframe {
 	width: 100%; }
 hr {
 	@extend %crm;
-	@include box-shadow(0 1px 0 fade-out($white, 0.35));
+	box-shadow: 0 1px rgba($white, .8);
 	padding: 0;
 	border: none;
-	border-top: 1px dotted fade-out($primary, 0.4);
-	background: $white;
-	background: fade-out($white, 0.35);
+	border-top: 1px solid rgba($primary, .1);
+	background: rgba($white, .8);
 	display: block;
+
 	[role="main"] & {
 		max-width: 100%;
 		width: 100%; } }
@@ -394,12 +394,16 @@ figcaption {}
 // New stuff
 // ---------------------------
 .wide-image.wide-image.wide-image {
-  max-width: none;
-  width: 150%;
-  margin-left: -25%;
-  margin-right: -25%;
   border: none;
-  box-shadow: none; }
+  box-shadow: none;
+  border-radius: 0;
+  box-shadow: 0 0 0 1px scale-lightness(#f6f7ee, -20%);
+  
+  @include respond-min($d) {
+    max-width: none;
+    width: 150%;
+    margin-left: -25%;
+    margin-right: -25%; } }
 
 /*
 	Media queries

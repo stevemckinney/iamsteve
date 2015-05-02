@@ -34,7 +34,7 @@ pre[class*="language"] {
 	-ms-hyphens: none;
 	hyphens: none;
 	
-	color: $code-magenta;
+	color: $code-white;
 	
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
@@ -95,7 +95,6 @@ pre[class*="language"] {
 	opacity: .7;
 }
 
-.token.tag,
 .token.boolean,
 .token.number,
 .token.constant,
@@ -109,12 +108,24 @@ pre[class*="language"] {
 }
 
 .token.selector,
-.token.attr-name,
 .token.string,
 .token.char,
 .token.builtin,
 .token.inserted {
 	color: $code-white;
+}
+
+.token.attr-name {
+  color: $code-green;
+}
+
+.token.tag,
+.tag > .punctuation {
+  color: $code-red;
+}
+
+.tag .token.attr-value, .tag .attr-value .punctuation {
+  color: $code-yellow;
 }
 
 .token.operator,
