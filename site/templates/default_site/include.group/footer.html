@@ -61,20 +61,9 @@
       w.addEventListener("load", gs, false) :
       w.attachEvent("onload", gs);
   })(window);
-	setTimeout(function(){var a=document.createElement("script");
-	var b=document.getElementsByTagName("script")[0];
-	a.type = "text/javascript";
-	a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0016/1566.js?"+Math.floor(new Date().getTime()/3600000);
-	a.async=true;b.parentNode.insertBefore(a,b)}, 1);$('[data-event]').on('click', function() {_gs('event', $(this).data('event'))});
-	// hotjar
-	(function(f,b){
-    var c;
-    f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
-    f._hjSettings={hjid:22314, hjsv:3};
-    c=b.createElement("script");c.async=1;
-    c.src="//static.hotjar.com/c/hotjar-22314.js?sv=3";
-    b.getElementsByTagName("head")[0].appendChild(c); 
-  })(window,document);
-  </script>{/if}
+  $('[data-event]').on('click', function() {_gs('event', $(this).data('event'))});
+  window.intercomSettings = {
+    app_id: "pr6uqlsm"
+  };(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pr6uqlsm';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>{/if}
 </body>
 </html>
