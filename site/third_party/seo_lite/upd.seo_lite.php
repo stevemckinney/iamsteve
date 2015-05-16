@@ -13,7 +13,7 @@
  */
 class Seo_lite_upd {
 		
-	var $version        = '1.3.6';
+	var $version        = '1.4.9.3';
 	var $module_name = "Seo_lite";
 
     /**
@@ -106,6 +106,11 @@ class Seo_lite_upd {
                 'type' => 'varchar',
                 'constraint' => '60',
                 'null' => FALSE),
+            
+            'include_pagination_in_canonical' => array(
+                'type' => 'ENUM(\'y\',\'n\')',
+                'default' => 'y',
+                'null' => FALSE),
 
         );
 
@@ -120,6 +125,7 @@ class Seo_lite_upd {
             'default_keywords' => 'your, default, keywords, here',
             'default_description' => 'Your default description here',
             'default_title_postfix' => ' |&nbsp;',
+            'include_pagination_in_canonical' => 'y',
         ));
 
         $this->EE->load->library('layout');
@@ -154,7 +160,7 @@ class Seo_lite_upd {
         return $tabs;
     }
 
-	
+
 	/**
 	 * Uninstall the Seo_lite module
 	 */
@@ -199,6 +205,91 @@ class Seo_lite_upd {
             return FALSE;
         }
 
+        if($current < '1.4.9') {
+            $this->EE->db->query("ALTER TABLE  `".$this->EE->db->dbprefix('seolite_config')."` ADD  `include_pagination_in_canonical` ENUM('y', 'n') NOT NULL DEFAULT  'y'");
+        }
+
+        /**
+         * 1.4.6 of SEO Lite had support for Publisher but it was tightly coupled. If the user has made use of this
+         * functionality we clean up here and move the data over to it's own table.
+         */
+        if($current < '1.4.7') {
+
+            // first, check if user has made use of Publisher functionality
+            if($this->EE->db->table_exists('seolite_content') AND $this->EE->db->field_exists('publisher_lang_id', 'seolite_content'))
+            {
+
+                // check if the Publisher SEO Lite table already exists, if so don't create it.
+                if(!$this->EE->db->table_exists('publisher_seolite_content')) {
+
+                    // 1. Create new table for Publisher translated versions of SEO Lite
+                    $this->EE->load->dbforge();
+
+                    $publisher_seolite_content_fields = array(
+                        'publisher_seolite_content_id' => array(
+                            'type' => 'int',
+                            'constraint' => '10',
+                            'unsigned' => TRUE,
+                            'auto_increment' => TRUE,),
+                        'site_id' => array(
+                            'type' => 'int',
+                            'constraint' => '10',
+                            'null' => FALSE,),
+                        'entry_id' => array(
+                            'type' => 'int',
+                            'constraint' => '10',
+                            'null' => FALSE,),
+                        'title' => array(
+                            'type' => 'varchar',
+                            'constraint' => '1024',
+                            'null' => FALSE,),
+                        'keywords' => array(
+                            'type' => 'varchar',
+                            'constraint' => '1024',
+                            'null' => FALSE,),
+                        'description' => array(
+                            'type' => 'text',),
+                        'publisher_status' => array(
+                            'type' => 'text',),
+                        'publisher_lang_id' => array(
+                            'type' => 'int',
+                            'constraint' => '10',
+                            'null' => FALSE,),
+                    );
+
+                    $this->EE->dbforge->add_field($publisher_seolite_content_fields);
+                    $this->EE->dbforge->add_key('publisher_seolite_content_id', TRUE);
+                    $this->EE->dbforge->create_table('publisher_seolite_content');
+                }
+
+                // 2. go through existing SEO Lite content, and copy over.
+
+                $q = $this->EE->db->get('seolite_content');
+                foreach($q->result() as $seolite_content) {
+                    $this->EE->db->insert('publisher_seolite_content',
+                        array(
+                            'site_id'           => $seolite_content->site_id,
+                            'entry_id'          => $seolite_content->entry_id,
+                            'title'             => $seolite_content->title,
+                            'keywords'          => $seolite_content->keywords,
+                            'description'       => $seolite_content->description,
+                            'publisher_status'  => $seolite_content->publisher_status,
+                            'publisher_lang_id' => $seolite_content->publisher_lang_id,
+                        )
+                    );
+                }
+
+                // 3. delete all publisher content from the SEO Lite table w/publisher_lang_id > 1
+                $this->EE->db->where('publisher_lang_id > ', 1)->delete('seolite_content');
+
+                // 4. cleanup - remove publisher columns from SEO Lite table
+                $this->EE->dbforge->drop_column('seolite_content', 'publisher_status');
+                $this->EE->dbforge->drop_column('seolite_content', 'publisher_lang_id');
+
+                // Voilà - SEO Lite & Publisher totally decoupled. Which they should've been from the start ;-)
+            }
+        }
+
         if ($current < '1.2')
         {
             $this->EE->load->dbforge();
@@ -230,7 +321,7 @@ class Seo_lite_upd {
                     'default_keywords' => str_replace('&nbsp;', ' ', htmlspecialchars_decode($config->default_keywords, ENT_QUOTES)),
                     'default_title_postfix' => str_replace('&nbsp;', ' ', htmlspecialchars_decode($config->default_title_postfix, ENT_QUOTES)),
                 );
-                
+
                 $this->EE->db->update('seolite_config', $upd_arr, array('seolite_config_id'=>$config->seolite_config_id));
             }
         }
@@ -242,8 +333,8 @@ class Seo_lite_upd {
 
         return TRUE;
     }
-    
+
 }
 
-/* End of file upd.seo_lite.php */ 
-/* Location: ./system/expressionengine/third_party/seo_lite/upd.seo_lite.php */ 
+/* End of file upd.seo_lite.php */
+/* Location: ./system/expressionengine/third_party/seo_lite/upd.seo_lite.php */

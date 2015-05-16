@@ -6,8 +6,8 @@
  * @package		Seo_lite
  * @subpackage	ThirdParty
  * @category	Modules
- * @author		bjorn
- * @link		http://ee.bybjorn.com/
+ * @author		Bjørn Børresen
+ * @link		http://wedoaddons.com/addons/seo-lite
  */
 class Seo_lite_mcp 
 {
@@ -52,6 +52,7 @@ class Seo_lite_mcp
         $vars['default_description'] = $config->row('default_description');
         $vars['default_keywords'] = $config->row('default_keywords');
         $vars['default_title_postfix'] = $config->row('default_title_postfix');
+        $vars['include_pagination_in_canonical'] = $config->row('include_pagination_in_canonical');
 
 		return $this->content_wrapper('index', 'seo_lite_welcome', $vars);
 	}
@@ -62,6 +63,7 @@ class Seo_lite_mcp
         $default_keywords = $this->EE->input->post('seolite_default_keywords');
         $default_description = $this->EE->input->post('seolite_default_description');
         $default_title_postfix = $this->EE->input->post('seolite_default_title_postfix');
+        $include_pagination_in_canonical = $this->EE->input->post('seolite_include_pagination_in_canonical');
 
         $site_id = $this->EE->config->item('site_id');
         $config = $this->EE->db->get_where('seolite_config', array('site_id' => $site_id));
@@ -71,6 +73,7 @@ class Seo_lite_mcp
                 'default_keywords' => $default_keywords,
                 'default_description' => $default_description,
                 'default_title_postfix' => $default_title_postfix,
+                'include_pagination_in_canonical' => $include_pagination_in_canonical,
             );
 
         if($config->num_rows() == 0)
@@ -94,9 +97,15 @@ class Seo_lite_mcp
 		$vars['content_view'] = $content_view;
 		$vars['_base'] = $this->base;
 		$vars['_form_base'] = $this->form_base;
-		$this->EE->view->cp_page_title = lang($lang_key);
-		$this->EE->cp->set_breadcrumb($this->base, lang('seo_lite_module_name'));
 
+        // $this->EE->cp->set_variable was deprecated in 2.6
+        if (version_compare(APP_VER, '2.6', '>=')) {
+            $this->EE->view->cp_page_title = lang($lang_key);
+        } else {
+            $this->EE->cp->set_variable('cp_page_title', lang($lang_key));
+        }
+
+		$this->EE->cp->set_breadcrumb($this->base, lang('seo_lite_module_name'));
 		return $this->EE->load->view('_wrapper', $vars, TRUE);
 	}
 	

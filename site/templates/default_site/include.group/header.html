@@ -26,7 +26,7 @@
 	</title>
 	
 	
-  <meta name="description" content="{exp:seo_lite}{meta_description}{/exp:seo_lite}">
+  <meta name="description" content="{exp:markdown}{exp:seo_lite}{meta_description}{/exp:seo_lite}{exp:markdown}">
 	<meta name="author" content="Steve McKinney">
 	
 	{!-- Mobile --}
@@ -56,7 +56,11 @@
 	{exp:minimee:js minify="y"}<script src="{global:theme_url}/site/assets/js/modernizr.js"></script>{/exp:minimee:js}
 	
 	{!-- Other --}
-	<link rel="canonical" href="{exp:seo_lite}{canonical_url}{/exp:seo_lite}">
+	{if segment_1 == 'blog' && segment_2 && segment_3 == false }
+	  <link rel="canonical" href="{global:theme_url}/blog">
+	{if:else}
+	  <link rel="canonical" href="{exp:seo_lite}{canonical_url}{/exp:seo_lite}">
+	{/if}
 	<link rel="alternate" type="application/rss+xml" title="Blog | Portfolio of Steve McKinney" href="http://iamsteve.me/blog/feed">
 	{!-- Icons --}
 	<link rel="shortcut icon" href="/favicon.ico">
