@@ -25,12 +25,11 @@
 		{/if}
 	</title>
 	
-	<meta name="description" content="The blog & portfolio of Steve McKinney, a Manchester based web designer.">
+	
+  <meta name="description" content="{exp:seo_lite}{meta_description}{/exp:seo_lite}">
 	<meta name="author" content="Steve McKinney">
 	
 	{!-- Mobile --}
-	<meta name="HandheldFriendly" content="True">
-	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-title" content="I am Steve">
@@ -55,13 +54,8 @@
 	{/exp:channel:entries}
 	{!-- Javascript --}
 	{exp:minimee:js minify="y"}<script src="{global:theme_url}/site/assets/js/modernizr.js"></script>{/exp:minimee:js}
-	{!-- Per page stuff --}
-	{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
-		{if extra_js}<script src="//use.typekit.net/{extra_js}.js"></script><script>try{Typekit.load();}catch(e){}</script>{/if}
-	{/exp:channel:entries}
 	
 	{!-- Other --}
-	<link rel="author publisher" href="https://plus.google.com/114129050502065289651/posts">
 	<link rel="canonical" href="{exp:seo_lite}{canonical_url}{/exp:seo_lite}">
 	<link rel="alternate" type="application/rss+xml" title="Blog | Portfolio of Steve McKinney" href="http://iamsteve.me/blog/feed">
 	{!-- Icons --}

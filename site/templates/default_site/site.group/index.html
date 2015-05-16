@@ -2,10 +2,8 @@
 
 {exp:channel:entries channel="blog" limit="5" status="open|latest" disable="pagination|member_data|trackbacks"}
 	{if count == "1"}
-		<article role="article" class="entry-summary">
-			{exp:eehive_hacksaw words="200" cutoff="<h2>" allow="<pre><code><blockquote><a><p><b><strong><i><h1><h2><h3>"}
-				{exp:markdown}{blog_article}{/exp:markdown}
-			{/exp:eehive_hacksaw}
+		<article role="article" class="entry-content">
+			{exp:markdown}{blog_article}{/exp:markdown}
 			{blog_meta}
 		</article>
 		<hr>

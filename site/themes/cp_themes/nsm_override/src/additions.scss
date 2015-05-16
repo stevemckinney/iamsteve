@@ -28,8 +28,10 @@ html body #mainContent .formArea .formHeading,
   }
 }
 
-.contentMenu ul.homeBlocks a {
-  font-size: 16px;
+.contentMenu ul,
+.contentMenu ul li:last-child,
+.contentMenu ul li:last-child a {
+  border-radius: 0 0 3px 3px;
 }
 
 .contentMenu li.item a,
@@ -49,7 +51,7 @@ html body #mainContent .formArea .formHeading,
 
 textarea.markItUpEditor,
 .holder textarea {
-  padding: 48px 10%;
+  padding: 48px 10%!important;
   font-size: 18px;
   line-height: 1.5;
   font-family: Georgia;
