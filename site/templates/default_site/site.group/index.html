@@ -3,7 +3,7 @@
 {exp:channel:entries channel="blog" limit="5" status="open|latest" disable="pagination|member_data|trackbacks"}
 	{if count == "1"}
 		<article role="article" class="entry-content">
-			{exp:markdown}{blog_article}{/exp:markdown}
+			{exp:markdown}{excerpt}{/exp:markdown}
 			{blog_meta}
 		</article>
 		<hr>
