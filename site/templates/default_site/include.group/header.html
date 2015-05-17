@@ -11,24 +11,22 @@
 	{!-- Meta --}
 	<meta charset="utf-8">
 	{!-- In loving memory of Albert Phillips --}
-	<title>
-		{if segment_2 == "category"}
-			{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
-				{exp:channel:category_heading channel="blog"}
-					{category_name} | Steve McKinney
-				{/exp:channel:category_heading}
-			{/exp:channel:entries}
-		{if:elseif embed:entry_title}
-			{embed:entry_title} | Steve McKinney
-		{if:else}
-			Blog & Portfolio of Steve McKinney
-		{/if}
-	</title>
-	
-	
-  <meta name="description" content="{exp:seo_lite use_last_segment='y'}{meta_description}{/exp:seo_lite}">
-	<meta name="author" content="Steve McKinney">
-	
+  <title>
+	{if segment_2 == "category"}
+    {exp:channel:entries 
+      channel="blog|portfolio|site|downloads"
+      limit="1"
+      status="open|latest"
+      disable="member_data|trackbacks|pagination"}
+      {exp:channel:category_heading channel="blog"}⭐️ {category_name} | Steve McKinney{/exp:channel:category_heading}
+    {/exp:channel:entries}
+  {if:elseif embed:entry_title}
+    ⭐️ {embed:entry_title} | Steve McKinney
+  {if:else}
+    ⭐️ iamsteve — design & code blog
+  {/if}
+  </title>
+	{exp:nsm_better_meta:template}
 	{!-- Mobile --}
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -56,11 +54,6 @@
 	{exp:minimee:js minify="y"}<script src="{global:theme_url}/site/assets/js/modernizr.js"></script>{/exp:minimee:js}
 	
 	{!-- Other --}
-	{if segment_1 == 'blog' && segment_2 && segment_3 == false }
-	  <link rel="canonical" href="{global:theme_url}/blog">
-	{if:else}
-	  <link rel="canonical" href="{exp:seo_lite}{canonical_url}{/exp:seo_lite}">
-	{/if}
 	<link rel="alternate" type="application/rss+xml" title="Blog | Portfolio of Steve McKinney" href="http://iamsteve.me/blog/feed">
 	{!-- Icons --}
 	<link rel="shortcut icon" href="/favicon.ico">
@@ -79,27 +72,28 @@
 			<a href="#nav" title="To the navigation" class="mobile">&#xE9A1;</a>
 			<nav role="navigation" aria-hidden="false" class="nav">
 				<ul id="nav">
-					<li><a href="{global:theme_url}" title="Back to the homepage"{if segment_1 == ""} class="active"{/if} data-icon="home">Home</a></li>
-					<li><a href="{global:theme_url}/blog" title="All previous posts in my blog"{if segment_1 == "blog"} class="active"{/if} data-icon="compose">Archive</a></li>
-					{!--<li><a href="{global:theme_url}/portfolio" title="View all my work"{if segment_1 == "portfolio"} class="active"{/if} data-icon="picture">Portfolio</a></li>--}
-					<li><a href="{global:theme_url}/about" title="Detailed information about myself"{if segment_1 == "about"} class="active"{/if} data-icon="user">About</a></li>
-					<li><a href="{global:theme_url}/contact" title="My contact details"{if segment_1 == "contact"} class="active"{/if} data-icon="envelope">Contact</a></li>
+					<li><a href="{global:theme_url}"{if segment_1 == ""} class="active"{/if} data-icon="home">Home</a></li>
+					<li><a href="{global:theme_url}/blog"{if segment_1 == "blog"} class="active"{/if} data-icon="compose">Archive</a></li>
+					{!--<li><a href="{global:theme_url}/portfolio"{if segment_1 == "portfolio"} class="active"{/if} data-icon="picture">Portfolio</a></li>--}
+					<li><a href="{global:theme_url}/about"{if segment_1 == "about"} class="active"{/if} data-icon="user">About</a></li>
+					<li><a href="{global:theme_url}/contact"{if segment_1 == "contact"} class="active"{/if} data-icon="envelope">Contact</a></li>
 				</ul>
 			</nav>
 		</header>
 		{if segment_1 == ""}
 			{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
-				<h1 class="title entry-title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full.">{title}</a></h1>
+				<h1 class="title entry-title"><a href="{title_permalink='blog/entry'}">{title}</a></h1>
 			{/exp:channel:entries}
 		{if:elseif segment_2 == "category"}
 			{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+      {/exp:channel:category_heading}
 				{exp:channel:category_heading channel="blog"}
 					<h1 class="title entry-title">{category_name}</h1>
 				{/exp:channel:category_heading}
 			{/exp:channel:entries}
 		{if:elseif embed:entry_title}
 			{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
-				<h1 class="title entry-title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full.">{embed:entry_title}</a></h1>
+				<h1 class="title entry-title"><a href="{title_permalink='blog/entry'}">{embed:entry_title}</a></h1>
 			{/exp:channel:entries}
 		{if:else}
 			<h1 class="title entry-title">{segment_1}</h1>
