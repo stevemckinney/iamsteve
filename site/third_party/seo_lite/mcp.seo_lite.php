@@ -102,7 +102,7 @@ class Seo_lite_mcp
         if (version_compare(APP_VER, '2.6', '>=')) {
             $this->EE->view->cp_page_title = lang($lang_key);
         } else {
-            $this->EE->cp->cp_page_title = lang($lang_key));
+            $this->EE->cp->set_variable('cp_page_title', lang($lang_key));
         }
 
 		$this->EE->cp->set_breadcrumb($this->base, lang('seo_lite_module_name'));
