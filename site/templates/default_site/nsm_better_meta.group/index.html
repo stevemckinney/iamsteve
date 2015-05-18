@@ -1,0 +1,36 @@
+{preload_replace:this_index_channel="news"}
+
+<p>Template: nsm_better_meta/index</p>
+
+{exp:channel:info channel="{this_index_channel}"}
+
+	{embed="nsm_better_meta/.header"
+		title="{channel_title}"
+		title_suffix="nsm_better_meta/index"
+		description="{channel_description}"
+	}
+	<h1>{channel_title} <small> &mdash; Index</small></h1>
+
+{/exp:channel:info}
+
+<h2>Published entries in {this_index_channel}</h2>
+<ol>
+	{exp:channel:entries
+		_cache="yes"
+		disable="categories|category_fields|custom_fields|pagination|member_data"
+		limit="10"
+		refresh="10"
+		status="not closed"
+		channel="{this_index_channel}"
+	}
+		{if no_results}<li>No entries published in this channel</li>{/if}
+		<li><a href="{if page_uri}{page_uri}{if:else}{entry_id_path='nsm_better_meta/entry'}{/if}">{title}</a></li>
+	{/exp:channel:entries}
+</ol>
+
+<h2>Categories</h2>
+{exp:channel:categories channel="{this_index_channel}" style="nested"}
+	<a href="{path='nsm_better_meta/category-index'}">{category_name}</a>
+{/exp:channel:categories}
+
+{embed="nsm_better_meta/.footer"}

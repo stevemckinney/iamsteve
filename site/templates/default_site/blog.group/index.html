@@ -1,5 +1,4 @@
-{embed="/include/header" entry_title="Blog"}
-
+{embed="/include/header" entry_title="Blog" title_suffix="Blog"}
 {if logged_in}
   {exp:channel:entries channel="blog" paginate="bottom" limit="8" status="draft" cache="no"}
   	<article role="article" class="hentry">
