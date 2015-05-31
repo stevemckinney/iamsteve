@@ -6,6 +6,13 @@
 	echo lang('build'). '&nbsp;'.APP_BUILD;?> - &copy; <?=lang('copyright')?> 2003 - <?= date('Y') ?> <a href="<?=$this->cp->masked_url('http://ellislab.com/')?>" rel="external">EllisLab, Inc.</a><br />
 
 	<?php
+		$license = valid_license_pattern(config_item('license_number')) ? config_item('license_number') : lang('invalid_license');
+		echo lang('license_number').': '.$license.
+		' - '.
+		mailto(config_item('license_contact'));
+	?>
+	<br>
+	<?php
 		echo str_replace("%x", $this->benchmark->elapsed_time('total_execution_time_start', 'total_execution_time_end'), lang('page_rendered'));
 		echo ' - ';
 		echo str_replace("%x", $this->db->query_count, lang('queries_executed'));
@@ -34,7 +41,7 @@
 		<p><label for="logout-confirm-password"><?=lang('password_label')?></label></p>
 	</div>
 	<div class="idle-three-fourths shun">
-		<p><input type="password" name="password" class="field" id="logout-confirm-password"/></p>
+		<p><input type="password" name="password" class="field" id="logout-confirm-password" autocomplete="off" /></p>
 	</div>
 
 	<p id="idle-button-group">

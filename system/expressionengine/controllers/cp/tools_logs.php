@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -427,20 +427,6 @@ class Tools_logs extends CP_Controller {
 			BASE.AMP.'C=tools' => lang('tools'),
 			BASE.AMP.'C=tools_logs'=> lang('tools_logs')
 		);
-
-		$this->javascript->output('
-			$("#toggle_all").toggle(
-				function(){
-					$("input[class=toggle_email]").each(function() {
-						this.checked = true;
-					});
-				}, function (){
-					$("input[class=toggle_email]").each(function() {
-						this.checked = false;
-					});
-				}
-			);
-		');
 
 		if (count($data['rows']))
 		{

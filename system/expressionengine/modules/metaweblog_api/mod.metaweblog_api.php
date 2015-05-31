@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -1606,10 +1606,12 @@ class Metaweblog_api {
 			}
 		}
 
-		ee()->db->select('server_path, url');
-		$query = ee()->db->get_where('upload_prefs', array('id' => $this->upload_dir));
+		ee()->load->model('file_upload_preferences_model');
 
-		if ($query->num_rows() == 0)
+		$upload_prefs = ee()->file_upload_preferences_model->get_file_upload_preferences(NULL, $this->upload_dir);
+
+
+		if (empty($upload_prefs))
 		{
 			return ee()->xmlrpc->send_error_message('803', ee()->lang->line('invalid_access'));
 		}
@@ -1639,8 +1641,11 @@ class Metaweblog_api {
 			$file_path = realpath(substr($directory, 1)).'/'.$filename;
 		}
 
-		// Upload the file and check for errors
-		if (file_put_contents($file_path, $parameters['3']['bits']) === FALSE)
+		// Upload the file
+		$config = array('upload_path' => dirname($file_path));
+		ee()->load->library('upload', $config);
+
+		if (ee()->upload->raw_upload($filename, $parameters['3']['bits']) === FALSE)
 		{
 			return ee()->xmlrpc->send_error_message(
 				'810',
@@ -1672,7 +1677,7 @@ class Metaweblog_api {
 		$response = array(
 			array(
 				'url' => array(
-					$query->row('url').$filename,
+					$upload_prefs['url'].$filename,
 					'string'
 				),
 			),

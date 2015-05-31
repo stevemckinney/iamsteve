@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.8
@@ -146,7 +146,15 @@ class CI_Cache_memcached extends CI_Driver {
 	 */
 	public function cache_info()
 	{
-		return $this->_memcached->getStats();
+		if ($this->_memcached instanceOf Memcached)
+		{
+			return $this->_memcached->getStats();
+		}
+
+		if ($this->_memcached instanceOf Memcache)
+		{
+			return $this->_memcached->getExtendedStats();
+		}
 	}
 
 	// ------------------------------------------------------------------------
@@ -243,7 +251,7 @@ class CI_Cache_memcached extends CI_Driver {
 		{
 			foreach ($this->cache_info() as $server)
 			{
-				if ($server['time'] != 0)
+				if ( ! empty($server['time']))
 				{
 					// Attempt to get previously-created namespaces and assign to class variable
 					$this->_namespaces = $this->get('namespaces', Cache::GLOBAL_SCOPE, FALSE);

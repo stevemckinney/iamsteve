@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.8
@@ -114,10 +114,24 @@ class CI_Cache_file extends CI_Driver {
 		// Create namespace directory if it doesn't exist
 		if ( ! file_exists($path) OR ! is_dir($path))
 		{
-			mkdir($path, DIR_WRITE_MODE, TRUE);
+			@mkdir($path, DIR_WRITE_MODE, TRUE);
 
-			// Write an index.html file to ensure no directory indexing
-			write_index_html($path);
+			// Grab the error if there was one
+			$error = error_get_last();
+
+			// If we had trouble creating the directory, it's likely due to a
+			// concurrent process already having created it, so we'll check
+			// to see if that's the case and if not, something else went wrong
+			// and we'll show an error
+			if ( ! is_dir($path) OR ! is_really_writable($path))
+			{
+				trigger_error($error['message'], E_USER_WARNING);
+			}
+			else
+			{
+				// Write an index.html file to ensure no directory indexing
+				write_index_html($path);
+			}
 		}
 
 		if (write_file($this->_cache_path.$key, serialize($contents)))

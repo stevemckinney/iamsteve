@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -130,7 +130,7 @@ class EE_URI extends CI_URI {
 		}
 
 		// Safety Check:  If the URL contains more than 9 segments we'll show an error message
-		if (count($segs) > 9)
+		if (count($segs) > (config_item('max_url_segments') ?: 12))
 		{
 			show_error("Error: The URL contains too many segments.", 404);
 		}

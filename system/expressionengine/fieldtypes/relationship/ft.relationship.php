@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.6
@@ -333,22 +333,11 @@ class Relationship_ft extends EE_Fieldtype {
 			$order_field = 'entry_date';
 		}
 
-		if ($order_field != '')
-      {
-      ee()->db
-          ->distinct()
-          ->from('channel_titles')
-          ->select('channel_titles.entry_id, channel_titles.title')
-          ->order_by($order_field, $this->settings['order_dir']);
-      }
-
-    if ($order_field == '')
-    {
-      ee()->db
-          ->distinct()
-          ->from('channel_titles')
-          ->select('channel_titles.entry_id, channel_titles.title');
-    } 
+		ee()->db
+			->distinct()
+			->from('channel_titles')
+			->select('channel_titles.entry_id, channel_titles.title')
+			->order_by($order_field, $this->settings['order_dir']);
 
 		if (count($limit_channels))
 		{

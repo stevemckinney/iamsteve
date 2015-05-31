@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.7
@@ -31,7 +31,8 @@ class Member_field_model extends CI_Model {
 	 * Save (Create/Edit) a Member Field
 	 * @param  array  $data Associative array of data matching columns in
 	 *                      exp_member_fields
-	 * @return Void
+	 * @return array        Modified $data associative array, containing
+	 *                      defaults and sanitized values
 	 */
 	public function save_field($data = array())
 	{
@@ -103,6 +104,8 @@ class Member_field_model extends CI_Model {
 				array('m_field_id' => $data['m_field_id'])
 			);
 		}
+
+		return $data;
 	}
 
 	// -------------------------------------------------------------------------

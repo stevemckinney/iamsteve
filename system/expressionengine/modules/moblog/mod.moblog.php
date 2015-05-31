@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -1803,14 +1803,14 @@ class Moblog {
 
 		if ($upload_dir_id == 0)
 		{
-			continue;
+			return TRUE;
 		}
 
 		if ($subtype == 'appledouble')
 		{
 			if ( ! $data = $this->appledouble($value))
 			{
-				continue;
+				return TRUE;
 			}
 			else
 			{
@@ -1846,7 +1846,7 @@ class Moblog {
 
 		if (stristr($filename, 'dottedline') OR stristr($filename, 'spacer.gif') OR stristr($filename, 'masthead.jpg'))
 		{
-			continue;
+			return TRUE;
 		}
 
 		/** --------------------------------
@@ -1891,7 +1891,7 @@ class Moblog {
 				$this->body = ( ! isset($this->post_data[$type]['plain'])) ? $this->post_data[$type]['alt'] : $this->post_data[$type]['plain'];
 			}
 
-			continue;
+			return TRUE;
 		}
 
 		// Eudora and Mail.app use this by default
@@ -1917,7 +1917,6 @@ class Moblog {
 		if (stristr($encoding,"base64"))
 		{
 			$file_code = base64_decode($file_code);
-			$this->message_array[] = 'base64 decoded.';
 		}
 
 		/** ------------------------------
@@ -1964,7 +1963,7 @@ class Moblog {
 		}
 		else
 		{
-			continue;
+			return TRUE;
 		}
 
 		// Clean the file
@@ -1998,7 +1997,7 @@ class Moblog {
 			{
 				$this->attach_text = $file_code;
 				$this->attach_name = $filename;
-				continue; // No upload of file.
+				return TRUE; // No upload of file.
 			}
 		}
 
@@ -2010,9 +2009,14 @@ class Moblog {
 			$file_path = realpath(substr($directory, 1)).'/'.$filename;
 		}
 
-		// Upload the file and check for errors
-		if (file_put_contents($file_path, $file_code) === FALSE)
+		// Upload the file
+		$config = array('upload_path' => dirname($file_path));
+		$mime = $type . '/' . $subtype;
+		ee()->load->library('upload', $config);
+
+		if (ee()->upload->raw_upload($filename, $file_code) === FALSE)
 		{
+			$this->message_array[] = ee()->upload->display_errors();
 			$this->message_array[] = 'error_writing_attachment';
 			return FALSE;
 		}

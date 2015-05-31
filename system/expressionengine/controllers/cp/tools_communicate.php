@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -304,7 +304,6 @@ class Tools_communicate extends CP_Controller {
 
 		$this->load->library('upload');
 		$this->upload->initialize(array(
-			'allowed_types'	=> '*',
 			'use_temp_dir'	=> TRUE
 		));
 
@@ -1056,20 +1055,6 @@ class Tools_communicate extends CP_Controller {
 
 		$vars = $this->table->datasource('_view_cache_data', $initial_state, $params);
 
-		$this->javascript->output('
-			$(".toggle_all").toggle(
-				function(){
-					$("input.toggle").each(function() {
-						this.checked = true;
-					});
-				}, function (){
-					$("input.toggle").each(function() {
-						this.checked = false;
-					});
-				}
-			);'
-		);
-
 		$this->view->cp_page_title = lang('view_email_cache');
 
 		// a bit of a breadcrumb override is needed
@@ -1112,7 +1097,7 @@ class Tools_communicate extends CP_Controller {
 		while ($email = array_shift($emails))
 		{
 			$rows[] = array(
-				'subject'		=> "<strong><a href='".BASE.AMP.'C=tools_communicate'.AMP.'M=view_email'.AMP.'id='.$email['cache_id']."'>{$email['subject']}</a></strong>",
+				'subject'		=> "<strong><a href='".BASE.AMP.'C=tools_communicate'.AMP.'M=view_email'.AMP.'id='.$email['cache_id']."'>".htmlentities($email['subject'], ENT_QUOTES, 'UTF-8')."</a></strong>",
 				'cache_date'	=> $this->localize->human_time($email['cache_date']),
 				'total_sent'	=> $email['total_sent'],
 				'status' => ($email['recipient_array'] == '') ? lang('complete') :
@@ -1246,7 +1231,7 @@ class Tools_communicate extends CP_Controller {
 		/**  Render output
 		/** -----------------------------*/
 
-		$vars['subject'] = htmlentities($query->row('subject'));
+		$vars['subject'] = htmlentities($query->row('subject'), ENT_QUOTES, 'UTF-8');
 
 		/** ----------------------------------------
 		/**  Instantiate Typography class

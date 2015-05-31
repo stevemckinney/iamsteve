@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.8
@@ -37,11 +37,11 @@ class Relative_date {
  * Relative date object created for each instance of pagination.
  */
 class Relative_date_object {
-	public $singular 			= 'one';
-	public $less_than 			= 'less than';
-	public $about				= 'about';
-	public $past 				= '%s ago';
-	public $future 				= 'in %s';
+	public $singular;
+	public $less_than;
+	public $about;
+	public $past;
+	public $future;
 
 	private $_units				= array();
 	private $_deltas			= array();
@@ -52,6 +52,12 @@ class Relative_date_object {
 
 	public function __construct($timestamp, $reference = NULL)
 	{
+		$this->singular = lang('singular');
+		$this->less_than = lang('less_than');
+		$this->about = lang('about');
+		$this->past = lang('past');
+		$this->future = lang('future');
+
 		$this->_timestamp = (int) $timestamp;
 		$this->_reference = is_numeric($reference) ? $reference : ee()->localize->now;
 

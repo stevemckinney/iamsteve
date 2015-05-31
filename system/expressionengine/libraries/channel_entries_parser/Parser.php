@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.6
@@ -497,6 +497,15 @@ class EE_Channel_data_parser {
 		$cond['signature_image_width']	= $row['sig_img_width'];
 		$cond['signature_image_height']	= $row['sig_img_height'];
 		$cond['relative_date']			= timespan($row['entry_date']);
+
+		//-- we need to prep the default dates
+
+		$default_dates = array('entry_date', 'edit_date', 'recent_comment_date', 'expiration_date', 'comment_expiration_date');
+
+		foreach($default_dates as $value)
+		{
+			$cond[$value] = (empty($row[$value])) ? '' : $value;
+		}
 
 		foreach($channel->mfields as $key => $value)
 		{

@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -99,9 +99,10 @@ class EE_Input extends CI_Input {
 			'prefix' => $prefix
 		);
 
-		// If name is an array, then most of the values we just set in the data array
-		// are probably their defaults.  Override the defaults with whatever happens
-		// to be in the array.  Yes, this is ugly as all get out.
+		// If name is an array, then most of the values we just set in the data
+		// array are probably their defaults.  Override the defaults with
+		// whatever happens to be in the array.  Yes, this is ugly as all get
+		// out.
 		if (is_array($name))
 		{
 			foreach (array('value', 'expire', 'name', 'domain', 'path', 'prefix') as $item)
@@ -132,7 +133,7 @@ class EE_Input extends CI_Input {
 		}
 		else if ($data['expire'] > 0)
 		{
-			$data['expire'] = ee()->localize->now + $expire;
+			$data['expire'] = ee()->localize->now + $data['expire'];
 		}
 		else
 		{

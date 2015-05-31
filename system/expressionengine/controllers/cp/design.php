@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -361,11 +361,11 @@ class Design extends CP_Controller {
 
 		if ($group_id == '')
 		{
-			$group_id = $this->input->get_post('group_id');
+			$group_id = $this->input->get_post('group_id', TRUE);
 		}
 
 		// if its still blank, make them choose a template
-		if ($group_id == '')
+		if ($group_id == '' OR ! filter_var($group_id, FILTER_VALIDATE_INT))
 		{
 			return $this->template_group_pick();
 		}
@@ -2923,7 +2923,9 @@ class Design extends CP_Controller {
 			show_error(lang('unauthorized_access'));
 		}
 
-		$path = PATH_MBR_THEMES.$this->security->sanitize_filename($this->input->get_post('name'));
+		$path = PATH_MBR_THEMES.$this->security->sanitize_filename(
+			$this->input->get_post('name')
+		);
 
 		if ( ! is_dir($path))
 		{
@@ -2974,15 +2976,18 @@ class Design extends CP_Controller {
 
 		if ($theme == '')
 		{
-			$theme = $this->input->get_post('theme');
+			$theme = $this->input->get_post('theme', TRUE);
 		}
 
 		if ($name == '')
 		{
-			$name = $this->input->get_post('name');
+			$name = $this->input->get_post('name', TRUE);
 		}
 
-		$path = PATH_MBR_THEMES.$this->security->sanitize_filename($theme).'/'.$name;
+		$path = PATH_MBR_THEMES
+			.$this->security->sanitize_filename($theme)
+			.'/'
+			.$this->security->sanitize_filename($name);
 
 		if ( ! file_exists($path))
 		{
@@ -3457,9 +3462,10 @@ EOT;
 		$vars['first_template'] = $first_template['group_id'];
 
 		// Get template group ID so we can load the right preferences
-		if ($this->input->get('tgpref', TRUE))
+		if (($tgpref = $this->input->get('tgpref', TRUE))
+			&& filter_var($tgpref, FILTER_VALIDATE_INT))
 		{
-			$vars['first_template'] = $this->input->get('tgpref', TRUE);
+			$vars['first_template'] = $tgpref;
 		}
 
 		foreach ($query->result_array() as $row)
@@ -4357,21 +4363,6 @@ EOT;
 
 		$vars['cp_page_title'] = lang('sync_templates');
 		$this->cp->set_breadcrumb(cp_url('design/manager'), lang('template_manager'));
-
-		$this->javascript->output(array(
-				'$(".toggle_all").toggle(
-					function(){
-						$("input.toggle").each(function() {
-							this.checked = true;
-						});
-					}, function (){
-						var checked_status = this.checked;
-						$("input.toggle").each(function() {
-							this.checked = false;
-						});
-					}
-				);')
-		);
 
 		$vars['templates'] = array();
 		$vars['form_hidden']['confirm'] = 'confirm';

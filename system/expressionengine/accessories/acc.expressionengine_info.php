@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -102,7 +102,7 @@ class Expressionengine_info_acc {
 		end($details);
 		$latest_version = current($details);
 
-		if ($latest_version[0] > APP_VER)
+		if (version_compare($latest_version[0], APP_VER, '>'))
 		{
 			$instruct_url = ee()->cp->masked_url(ee()->config->item('doc_url').'installation/update.html');
 

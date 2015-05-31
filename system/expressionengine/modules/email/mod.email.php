@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -554,7 +554,8 @@ class Email {
 		if ($query->num_rows() > 0)
 		{
 			// Max Emails - Quick check
-			if ($query->num_rows() >= $this->email_max_emails)
+			if (ee()->session->userdata('group_id') != 1
+				&& $query->num_rows() >= $this->email_max_emails)
 			{
 				return ee()->output->show_user_error('general', array(lang('em_limit_exceeded')));
 			}
@@ -567,7 +568,8 @@ class Email {
 				$total_sent = $total_sent + $row['number_recipients'];
 			}
 
-			if ($total_sent >= $this->email_max_emails)
+			if (ee()->session->userdata('group_id') != 1
+				&& $total_sent >= $this->email_max_emails)
 			{
 				return ee()->output->show_user_error('general', array(lang('em_limit_exceeded')));
 			}

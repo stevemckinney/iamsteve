@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -136,18 +136,6 @@ class Members extends CP_Controller {
 		$vars = $this->table->datasource('_member_search', $initial_state, $params);
 
 		$this->javascript->output('
-			$(".toggle_all").toggle(
-				function(){
-					$("input.toggle").each(function() {
-						this.checked = true;
-					});
-				}, function (){
-					$("input.toggle").each(function() {
-						this.checked = false;
-					});
-				}
-			);
-
 			// Keyword filter
 			var indicator = $(".searchIndicator");
 
@@ -678,6 +666,10 @@ class Members extends CP_Controller {
 				$name_to_use = ($heir->screen_name != '') ? $heir->screen_name : $heir->username;
 				$vars['heirs'][$heir->member_id] = $name_to_use;
 			}
+
+			$vars['heir_action_y'] = TRUE;
+			$vars['heir_action_n'] = FALSE;
+			$vars['selected'] = array($vars['heirs'][$heir->member_id][0]);
 		}
 
 		ee()->view->cp_page_title = lang('delete_member');
@@ -889,7 +881,7 @@ class Members extends CP_Controller {
 			}
 
 			$groups[$row['group_id']]['group_id'] = $row['group_id'];
-			$groups[$row['group_id']]['title'] = $group_name;
+			$groups[$row['group_id']]['title'] = htmlentities($group_name, ENT_QUOTES, 'UTF-8');
 			$groups[$row['group_id']]['can_access_cp'] = $row['can_access_cp'];
 			$groups[$row['group_id']]['security_lock'] = ($row['is_locked'] == 'y') ? lang('locked') : lang('unlocked');
 			$groups[$row['group_id']]['member_count'] = $this->member_model->count_members($row['group_id']);
@@ -901,17 +893,17 @@ class Members extends CP_Controller {
 
 		foreach($g_query->result_array() as $row)
 		{
-			$vars['clone_group_options'][$row['group_id']] = $row['group_title'];
+			$vars['clone_group_options'][$row['group_id']] = htmlentities($row['group_title'], ENT_QUOTES, 'UTF-8');
 		}
 
 		$config = array(
-				'base_url'		=> BASE.AMP.'C=members'.AMP.'M=member_group_manager',
-				'total_rows'	=> $g_query->num_rows(),
-				'per_page'		=> $row_limit,
-				'page_query_string'	=> TRUE,
-				'first_link'	=> lang('pag_first_link'),
-				'last_link'		=> lang('pag_last_link')
-			);
+			'base_url'          => BASE.AMP.'C=members'.AMP.'M=member_group_manager',
+			'total_rows'        => $g_query->num_rows(),
+			'per_page'          => $row_limit,
+			'page_query_string' => TRUE,
+			'first_link'        => lang('pag_first_link'),
+			'last_link'         => lang('pag_last_link')
+		);
 
 		$this->pagination->initialize($config);
 
@@ -923,7 +915,7 @@ class Members extends CP_Controller {
 
 		$vars['groups'] = $groups;
 
-        $this->cp->set_right_nav(array('create_new_member_group' => BASE.AMP.'C=members'.AMP.'M=edit_member_group'));
+		$this->cp->set_right_nav(array('create_new_member_group' => BASE.AMP.'C=members'.AMP.'M=edit_member_group'));
 
 		$this->cp->render('members/member_group_manager', $vars);
 	}
@@ -934,13 +926,14 @@ class Members extends CP_Controller {
 	 * Edit Member Group
 	 *
 	 * Edit/Create a member group form
-
-	 * FIXME This is currently broken if you try to use the
-	 * site drop down to switch sites while editing a group.  The group
-	 * only exists for a single site, not all sites.  And so an error is
-	 * thrown.
+	 *
+	 * NOTE: The parameters are here for validation.
+	 *
+	 * @param Integer $group_id ID of the group to edit
+	 * @param Integer $clone_id ID of the group to clone
+	 * @param Integer $site_id  ID of the site you're editing the group in
 	 */
-	public function edit_member_group()
+	public function edit_member_group($group_id = NULL, $clone_id = NULL, $site_id = NULL)
 	{
 		$is_clone = FALSE;
 
@@ -958,10 +951,14 @@ class Members extends CP_Controller {
 
 		list($sites, $sites_dropdown) = $this->_get_sites();
 
-		$site_id = ($this->input->get_post('site_id'))
-			? (int) $this->input->get_post('site_id') : $this->config->item('site_id');
-		$group_id = (int) $this->input->get_post('group_id');
-		$clone_id = (int) $this->input->get_post('clone_id');
+		if ( ! $site_id)
+		{
+			$site_id = ($this->input->get_post('site_id'))
+				? (int) $this->input->get_post('site_id')
+				: $this->config->item('site_id');
+		}
+		$group_id = ($group_id) ?: (int) $this->input->get_post('group_id');
+		$clone_id = ($clone_id) ?: (int) $this->input->get_post('clone_id');
 
 		$base = BASE.AMP.'C=members'.AMP.'M=edit_member_group';
 
@@ -1009,7 +1006,7 @@ class Members extends CP_Controller {
 			'group_data'		=> $this->_setup_final_group_data($site_id, $group_data, $id, $is_clone),
 			'group_description'	=> $group_description,
 			'group_id'			=> $group_id,
-			'page_title'		=> sprintf(lang($page_title_lang), $group_title),
+			'page_title'		=> sprintf(lang($page_title_lang), htmlentities($group_title, ENT_QUOTES, 'UTF-8')),
 			'group_title'		=> ($is_clone) ? '' : $group_title,
 			'sites_dropdown'	=> $sites_dropdown,
 			'module_data'		=> $this->_setup_module_data($id),
@@ -1925,12 +1922,14 @@ class Members extends CP_Controller {
 			),
 			'notification_cfg' => array(
 				'new_member_notification' => array('r', array('y' => 'yes', 'n' => 'no')),
-				'mbr_notification_emails' => array('i', '', 'valid_email')
+				'mbr_notification_emails' => array('i', '', 'valid_emails')
 			),
 			'pm_cfg' => array(
+				'prv_msg_enabled'         => array('r', array('y' => 'yes', 'n' => 'no')),
 				'prv_msg_max_chars'       => array('i', '', 'integer'),
 				'prv_msg_html_format'     => array('s', array('safe' => 'html_safe', 'none' => 'html_none', 'all' => 'html_all')),
 				'prv_msg_auto_links'      => array('r', array('y' => 'yes', 'n' => 'no')),
+				'prv_msg_allow_attachments' => array('r', array('y' => 'yes', 'n' => 'no')),
 				'prv_msg_upload_path'     => array('i', '', 'strip_tags|trim|valid_xss_check'),
 				'prv_msg_max_attachments' => array('i', '', 'integer'),
 				'prv_msg_attach_maxsize'  => array('i', '', 'integer'),
@@ -2001,11 +2000,25 @@ class Members extends CP_Controller {
 		$this->load->model(array('Member_group_model', 'Site_model'));
 
 		$group_id = $this->input->post('group_id');
-		$clone_id = $this->input->post('clone_id');
+		$clone_id = $this->input->post('clone_id') ?: FALSE;
 		$site_id = $this->input->post('site_id');
 
 		unset($_POST['group_id']);
 		unset($_POST['clone_id']);
+
+		ee()->load->library('form_validation');
+		ee()->form_validation->set_error_delimiters('<p class="notice">', '</p>');
+
+		ee()->form_validation->set_rules(
+			'group_title',
+			'lang:group_title',
+			'required|trim|strip_tags|valid_xss_check'
+		);
+
+		if (ee()->form_validation->run() == FALSE)
+		{
+			return $this->edit_member_group($group_id, $clone_id, $site_id);
+		}
 
 		// No group name
 		if ( ! $group_title = $this->input->post('group_title'))
@@ -2015,7 +2028,7 @@ class Members extends CP_Controller {
 
 		if (empty($group_id))
 		{
-			$cp_message  = $this->Member_group_model->parse_add_form($_POST, $site_id, $clone_id, $group_title);
+			$cp_message = $this->Member_group_model->parse_add_form($_POST, $site_id, $clone_id, $group_title);
 		}
 		else
 		{
@@ -2358,7 +2371,7 @@ class Members extends CP_Controller {
 		$data['join_date']	= $this->localize->now;
 		$data['language'] 	= $this->config->item('deft_lang');
 		$data['timezone'] 	= $this->config->item('default_site_timezone');
-		$data['date_format'] = $this->config->item('date_format') ? $this->config->item('date_format') : '%n/%j/%y';
+		$data['date_format'] = $this->config->item('date_format') ? $this->config->item('date_format') : '%n/%j/%Y';
 		$data['time_format'] = $this->config->item('time_format') ? $this->config->item('time_format') : '12';
 		$data['include_seconds'] = $this->config->item('include_seconds') ? $this->config->item('include_seconds') : 'n';
 
@@ -2993,7 +3006,8 @@ class Members extends CP_Controller {
 			show_error(lang('unauthorized_access'));
 		}
 
-		if ( ! ($m_field_id = $this->input->get_post('m_field_id')))
+		if ( ! ($m_field_id = $this->input->get_post('m_field_id', TRUE))
+			&& ! filter_var($m_field_id, FILTER_VALIDATE_INT))
 		{
 			return FALSE;
 		}
@@ -3360,15 +3374,6 @@ class Members extends CP_Controller {
 		$this->view->cp_page_title = lang('member_validation');
 
 		$this->jquery->tablesorter('.mainTable', '{headers: {1: {sorter: false}},	widgets: ["zebra"]}');
-
-		$this->javascript->output('
-			$("#toggle_all").click(function() {
-				var checked_status = this.checked;
-				$("input.toggle").each(function() {
-					this.checked = checked_status;
-				});
-			});
-		');
 
 		$group_members = $this->member_model->get_group_members(4);
 

@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -414,13 +414,15 @@ class EE_Form_validation extends CI_Form_validation {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Check to see if a date is valid by passing it to strtotime()
+	 * Check to see if a date is valid by passing it to
+	 * Localize::string_to_timestamp
 	 * @param  String $date Date value to validate
 	 * @return Boolean      TRUE if it's a date, FALSE otherwise
 	 */
 	public function valid_date($date)
 	{
-		return (strtotime($date) !== FALSE);
+		ee()->load->library('localize');
+		return (ee()->localize->string_to_timestamp($date, TRUE, ee()->localize->get_date_format()) != FALSE);
 	}
 
 	// --------------------------------------------------------------------

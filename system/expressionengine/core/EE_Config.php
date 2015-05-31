@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -414,7 +414,6 @@ class EE_Config Extends CI_Config {
 			'webmaster_name',
 			'channel_nomenclature',
 			'max_caches',
-			'cache_driver',
 			'captcha_url',
 			'captcha_path',
 			'captcha_font',
@@ -538,6 +537,8 @@ class EE_Config Extends CI_Config {
 			'sig_img_max_width',
 			'sig_img_max_height',
 			'sig_img_max_kb',
+			'prv_msg_enabled',
+			'prv_msg_allow_attachments',
 			'prv_msg_upload_path',
 			'prv_msg_max_attachments',
 			'prv_msg_attach_maxsize',
@@ -934,7 +935,12 @@ class EE_Config Extends CI_Config {
 		{
 			foreach ($remove_values as $key => $val)
 			{
-				$config_file = preg_replace('#\$'."config\[(\042|\047)".$key."\\1\].*#", "", $config_file);
+				$config_file = preg_replace(
+					'#\$'."config\[(\042|\047)".$key."\\1\].*?;\n#is",
+					"",
+					$config_file
+				);
+				unset($config[$key]);
 			}
 		}
 
@@ -1006,7 +1012,14 @@ class EE_Config Extends CI_Config {
 			$new_data = '';
 			foreach ($to_be_added as $key => $val)
 			{
-				$new_data .= "\$config['".$key."'] = '".$val."';".$newline;
+				if (is_array($new_values[$key]))
+				{
+					$new_data .= "\$config['".$key."'] = ".$val.";".$newline;
+				}
+				else
+				{
+					$new_data .= "\$config['".$key."'] = '".$val."';".$newline;
+				}
 			}
 
 			// First we look for our comment marker in the config file. If found, we'll swap
@@ -1060,11 +1073,9 @@ class EE_Config Extends CI_Config {
 		{
 			return $this->_config_path_errors;
 		}
-		else
-		{
-			return TRUE;
-		}
-		 // <?php BBEdit bug fix
+
+		$this->clear_opcache($this->config_path);
+		return TRUE;
 	}
 
 	// --------------------------------------------------------------------
@@ -1189,7 +1200,34 @@ class EE_Config Extends CI_Config {
 		flock($fp, LOCK_UN);
 		fclose($fp);
 
+		$this->clear_opcache($this->database_path);
+
 		return TRUE;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Clear the opcode cache
+	 *
+	 * @param String $path Path to the modified file
+	 */
+	private function clear_opcache($path)
+	{
+		if ( ! file_exists($path))
+		{
+			return;
+		}
+
+		if (function_exists('opcache_invalidate'))
+		{
+			opcache_invalidate($path);
+		}
+
+		if (function_exists('apc_delete_file'))
+		{
+			apc_delete_file($path);
+		}
 	}
 
 	// --------------------------------------------------------------------
@@ -1284,7 +1322,7 @@ class EE_Config Extends CI_Config {
 			),
 
 			'software_registration'	=> array(
-				'license_contact' => array('i', '', 'required'),
+				'license_contact' => array('i', '', 'required|valid_email'),
 				'license_number'  => array('i', '', 'callback__valid_license_pattern')
 			),
 
@@ -1301,7 +1339,12 @@ class EE_Config Extends CI_Config {
 
 			'localization_cfg'	=>	array(
 				'default_site_timezone' => array('f', 'timezone'),
-				'date_format'           => array('s', array('%n/%j/%y' => 'mm/dd/yy', '%j-%n-%y' => 'dd-mm-yy', '%Y-%m-%d' => 'yyyy-mm-dd')),
+				'date_format'           => array('s', array(
+					'%n/%j/%Y' => 'mm/dd/yyyy',
+					'%j/%n/%Y' => 'dd/mm/yyyy',
+					'%j-%n-%Y' => 'dd-mm-yyyy',
+					'%Y-%m-%d' => 'yyyy-mm-dd'
+				)),
 				'time_format'           => array('r', array('24' => '24_hour', '12' => '12_hour')),
 				'include_seconds'       => array('r', array('y' => 'yes', 'n' => 'no')),
 			),

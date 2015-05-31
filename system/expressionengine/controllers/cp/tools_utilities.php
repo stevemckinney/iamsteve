@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -450,21 +450,6 @@ class Tools_utilities extends CP_Controller {
 
 		$this->load->helper('date');
 		$this->lang->loadfile('member_import');
-
-		$this->javascript->output(array(
-				'$(".toggle_all").toggle(
-					function(){
-						$("input.toggle").each(function() {
-							this.checked = true;
-						});
-					}, function (){
-						var checked_status = this.checked;
-						$("input.toggle").each(function() {
-							this.checked = false;
-						});
-					}
-				);')
-			);
 
 		$vars['form_hidden']['new'] = $new_custom_fields['new'];
 		$vars['xml_fields'] = $new_custom_fields['xml_fields'];

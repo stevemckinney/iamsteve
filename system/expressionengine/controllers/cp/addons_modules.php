@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -439,8 +439,8 @@ class Addons_modules extends CP_Controller {
 	 */
 	function module_uninstaller()
 	{
-		$module = $this->input->get_post('module');
-		$confirm = $this->input->get_post('confirm');
+		$module = $this->input->get_post('module', TRUE);
+		$confirm = $this->input->get_post('confirm', TRUE);
 
 		if ($module === FALSE OR $confirm === FALSE)
 		{

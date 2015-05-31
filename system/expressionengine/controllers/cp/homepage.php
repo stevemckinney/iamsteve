@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -60,9 +60,10 @@ class Homepage extends CP_Controller {
 			}
 
 			// Check to see if the config file matches the Core version constant
-			if (str_replace('.', '', APP_VER) !== $this->config->item('app_version'))
+			$config_version = $this->config->item('app_version');
+
+			if (version_compare(APP_VER, $config_version, '!='))
 			{
-				$config_version = 	substr($this->config->item('app_version'), 0, 1).'.'.substr($this->config->item('app_version'), 1, 1).'.'.substr($this->config->item('app_version'), 2);
 				$message[] = sprintf(lang('version_mismatch'), $config_version, APP_VER);
 			}
 
@@ -292,7 +293,7 @@ class Homepage extends CP_Controller {
 		// Do we have a newer version out?
 		foreach ($version_file as $app_data)
 		{
-			if ($app_data[0] > APP_VER && $app_data[2] == 'high')
+			if (version_compare($app_data[0], APP_VER, '>') && $app_data[2] == 'high')
 			{
 				$new_release = TRUE;
 				$high_priority = TRUE;

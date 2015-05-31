@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.7
@@ -51,7 +51,7 @@ class EE_content_types {
 
 		ee()->db->insert($this->_table, $param);
 
-		$this->_notify_fieldtypes('unregister_content_type', $param);
+		$this->_notify_fieldtypes('register_content_type', $param);
 	}
 
 	// --------------------------------------------------------------------
@@ -80,7 +80,7 @@ class EE_content_types {
 
 		if (ee()->db->affected_rows())
 		{
-			$this->_notify_fieldtypes('register_content_type', $param);
+			$this->_notify_fieldtypes('unregister_content_type', $param);
 		}
 
 	}

@@ -6,7 +6,7 @@
  *
  * @package		CodeIgniter
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2008 - 2015, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
  * @since		Version 1.0
@@ -259,7 +259,14 @@ if ( ! function_exists('word_censor'))
 			}
 			else
 			{
-				$str = preg_replace("/({$delim})(".str_replace('\*', '\w*?', preg_quote($badword, '/')).")({$delim})/ie", "'\\1'.str_repeat('#', strlen('\\2')).'\\3'", $str);
+				$str = preg_replace_callback(
+					"/({$delim})(".str_replace('\*', '\w*?', preg_quote($badword, '/')).")({$delim})/i",
+					function ($matches)
+					{
+						return $matches[1].str_repeat('#', strlen($matches[2])).$matches[3];
+					},
+					$str
+				);
 			}
 		}
 

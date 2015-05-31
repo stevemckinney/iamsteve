@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.8
@@ -145,8 +145,13 @@ class CI_Cache_redis extends CI_Driver
 		{
 			list($data, $time) = $data;
 
+			$ttl = $this->_redis->ttl($key);
+
 			return array(
-				'expire' => ee()->localize->now + $this->_redis->ttl($key),
+				// Infinite TTLs have a TTL value of -1; if that's set, set the
+				// expiration time to be the same as mtime to be consistent
+				// with our other drivers
+				'expire' => ($ttl == -1) ? $time : ee()->localize->now + $ttl,
 				'mtime'	=> $time,
 				'data' => $data
 			);

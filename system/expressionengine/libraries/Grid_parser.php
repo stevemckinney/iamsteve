@@ -5,7 +5,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.7
@@ -163,7 +163,7 @@ class Grid_parser {
 		// the Relationships tag pair; a better fix is having a separate parser
 		// instance for each instance of the Channel Entries parser but this
 		// will have to do for now
-		if (strpos($tagdata, $field_name) === FALSE)
+		if (strpos($tagdata, $field_name) === FALSE && strpos($field_name, ':') !== FALSE)
 		{
 			$field_name = substr($field_name, strrpos($field_name, ':') + 1);
 			$this->grid_field_names[$field_id] = $field_name;
@@ -239,7 +239,18 @@ class Grid_parser {
 		// Order by random
 		if ($params['orderby'] == 'random')
 		{
-			shuffle($entry_data);
+			// key preserving shuffle of $entry_data
+			$keys = array_keys($entry_data);
+			shuffle($keys);
+
+			$shuffled_entry_data = array();
+
+			foreach ($keys as $key)
+			{
+				$shuffled_entry_data[$key] = $entry_data[$key];
+			}
+
+			$entry_data = $shuffled_entry_data;
 		}
 
 		// We'll handle limit and offset parameters this way; we can't do
@@ -253,7 +264,7 @@ class Grid_parser {
 
 		// Collect row IDs
 		$row_ids = array_keys($entry_data);
-		
+
 		// :total_rows single variable
 		$total_rows = count($display_entry_data);
 

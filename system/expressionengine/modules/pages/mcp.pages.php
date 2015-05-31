@@ -4,7 +4,7 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
+ * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
  * @license		http://ellislab.com/expressionengine/user-guide/license.html
  * @link		http://ellislab.com
  * @since		Version 2.0
@@ -75,30 +75,14 @@ class Pages_mcp {
 	  */
 	function index()
 	{
-	    ee()->load->model('pages_model');
+		ee()->load->model('pages_model');
 
-		$vars['cp_page_title'] = ee()->lang->line('pages_module_name');
+		ee()->view->cp_page_title = ee()->lang->line('pages_module_name');
 		$vars['new_page_location'] = '';
 
 		ee()->load->library('table');
 		ee()->load->library('javascript');
 		ee()->load->helper('form');
-
-		ee()->javascript->output(array(
-				'$(".toggle_all").toggle(
-					function(){
-						$("input.toggle").each(function() {
-							this.checked = true;
-						});
-					}, function (){
-						var checked_status = this.checked;
-						$("input.toggle").each(function() {
-							this.checked = false;
-						});
-					}
-				);'
-			)
-		);
 
 		ee()->javascript->compile();
 
@@ -189,7 +173,7 @@ class Pages_mcp {
 
         ee()->load->library('table');
 
-		$vars['cp_page_title'] = ee()->lang->line('pages_configuration');
+		ee()->view->cp_page_title = ee()->lang->line('pages_configuration');
 
 		ee()->cp->set_breadcrumb(BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=pages',
 		                              ee()->lang->line('pages_module_name'));
@@ -317,7 +301,7 @@ class Pages_mcp {
 
 		ee()->cp->set_breadcrumb(BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=pages', ee()->lang->line('pages_module_name'));
 
-		$vars['cp_page_title'] = ee()->lang->line('pages_delete_confirm');
+		ee()->view->cp_page_title = ee()->lang->line('pages_delete_confirm');
 
 		foreach ($_POST['toggle'] as $key => $val)
 		{
