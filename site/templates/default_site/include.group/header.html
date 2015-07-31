@@ -18,7 +18,7 @@
       limit="1"
       status="open|latest"
       disable="member_data|trackbacks|pagination"}
-      {exp:channel:category_heading channel="blog"}{category_name} ⭐️ Steve McKinney{/exp:channel:category_heading}
+      {exp:channel:category_heading channel="blog"}{category_name} ⭐️ Steve McKinney
     {/exp:channel:entries}
   {if:elseif embed:entry_title}
     {embed:entry_title} ⭐️ Steve McKinney
@@ -26,7 +26,7 @@
     iamsteve ⭐️ design & code blog
   {/if}
   </title>
-	{exp:nsm_better_meta:template}
+	{exp:nsm_better_meta:template url_title="{segment_3}"}
 	{!-- Mobile --}
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -61,40 +61,31 @@
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144x144.png">
 </head>
 <body class="hentry">
-	<!--[if lt IE 9]>
-		<p class="notice-warning" style="padding: 12px">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-	<![endif]-->
-	<div class="container">
-		<header role="banner">
-      <a href="/" title="Back to the homepage" class="logo">I am Steve</a>
-			<a href="#nav" title="To the navigation" class="mobile">&#xE9A1;</a>
-			<nav role="navigation" aria-hidden="false" class="nav">
-				<ul id="nav">
-					<li><a href="{global:theme_url}"{if segment_1 == ""} class="active"{/if} data-icon="home">Home</a></li>
-					<li><a href="{global:theme_url}/blog"{if segment_1 == "blog"} class="active"{/if} data-icon="compose">Archive</a></li>
-					{!--<li><a href="{global:theme_url}/portfolio"{if segment_1 == "portfolio"} class="active"{/if} data-icon="picture">Portfolio</a></li>--}
-					<li><a href="{global:theme_url}/about"{if segment_1 == "about"} class="active"{/if} data-icon="user">About</a></li>
-					<li><a href="{global:theme_url}/contact"{if segment_1 == "contact"} class="active"{/if} data-icon="envelope">Contact</a></li>
-				</ul>
-			</nav>
-		</header>
-		{if segment_1 == ""}
-			{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
-				<h1 class="title entry-title"><a href="{title_permalink='blog/entry'}">{title}</a></h1>
-			{/exp:channel:entries}
-		{if:elseif segment_2 == "category"}
-			{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
-      {/exp:channel:category_heading}
-				{exp:channel:category_heading channel="blog"}
-					<h1 class="title entry-title">{category_name}</h1>
-				{/exp:channel:category_heading}
-			{/exp:channel:entries}
-		{if:elseif embed:entry_title}
-			{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
-				<h1 class="title entry-title"><a href="{title_permalink='blog/entry'}">{embed:entry_title}</a></h1>
-			{/exp:channel:entries}
-		{if:else}
-			<h1 class="title entry-title">{segment_1}</h1>
-		{/if}
-	</div>	
+	<header role="banner" class="header scroll">
+  	<a href="{global:theme_url}" class="logo"><img src="{global:theme_url}/site/assets/images/logo.png" srcset="{global:theme_url}/site/assets/images/logo_2x.png 2x" alt="iamsteve"></a>
+		<nav role="navigation" class="nav">
+			<a href="{global:theme_url}"{if segment_1 == ""} class="active"{/if} data-icon="home">Home</a>
+      <a href="{global:theme_url}/blog"{if segment_1 == "blog"} class="active"{/if} data-icon="compose">Archive</a>
+      <a href="{global:theme_url}/about"{if segment_1 == "about"} class="active"{/if} data-icon="user">About</a></li>
+			<a href="{global:theme_url}/contact"{if segment_1 == "contact"} class="active"{/if} data-icon="envelope">Contact</a>
+		</nav>
+	</header>
+	{if segment_1 == ""}
+		{!--{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+			<h1 class="title entry-title"><a href="{title_permalink='blog/entry'}">{title}</a></h1>
+		{/exp:channel:entries}--}
+	{if:elseif segment_2 == "category"}
+		{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+    {/exp:channel:entries}
+			{exp:channel:category_heading channel="blog"}
+				<h1 class="title entry-title">{category_name}</h1>
+			{/exp:channel:category_heading}
+		{/exp:channel:entries}
+	{if:elseif embed:entry_title}
+		{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+			<h1 class="title entry-title"><a href="{title_permalink='blog/entry'}">{embed:entry_title}</a></h1>
+		{/exp:channel:entries}
+	{if:else}
+		<h1 class="title entry-title">{segment_1}</h1>
+	{/if}
 	<div role="main">
