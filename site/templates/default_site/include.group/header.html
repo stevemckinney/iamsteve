@@ -18,12 +18,12 @@
       limit="1"
       status="open|latest"
       disable="member_data|trackbacks|pagination"}
-      {exp:channel:category_heading channel="blog"}{category_name} ⭐️ Steve McKinney
+      {exp:channel:category_heading channel="blog"}{category_name} ⌭ Steve McKinney
     {/exp:channel:entries}
   {if:elseif embed:entry_title}
-    {embed:entry_title} ⭐️ Steve McKinney
+    {embed:entry_title} ⌭ Steve McKinney
   {if:else}
-    iamsteve ⭐️ design & code blog
+    iamsteve ⌭ design & code blog
   {/if}
   </title>
 	{exp:nsm_better_meta:template url_title="{segment_3}"}
@@ -36,6 +36,11 @@
 	<meta name="google-site-verification" content="kvxM4eH_QHyUGdJK0LEQj3aZi7Vew5AooNVxk79zruU">
 	
 	{!-- Twitter card --}
+  <meta prefix="og: http://ogp.me/ns#" property="og:title" content="iamsteve ⌭ design & code blog">
+  <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website">
+  <meta prefix="og: http://ogp.me/ns#" property="og:image" content="{global:theme_url}/assets/images/og.png">
+  <meta prefix="og: http://ogp.me/ns#" property="og:url" content="http://iamsteve.me">
+  
 	{if segment_2 == 'entry'}
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="@irsteve">
