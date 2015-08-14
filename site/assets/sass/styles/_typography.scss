@@ -55,7 +55,6 @@ h6, .h6 {
 // Title
 // ---------------------------
 .title {
-  color: $primary_l3;
   margin-bottom: 0; }
 
 // Links
@@ -103,7 +102,7 @@ pre {
 // ---------------------------
 [role="navigation"] a {
 	font: 700 .75rem/#{$base-line-height} $body;
-	color: #f0f4fc; }
+	color: $tertiary; }
 
 // aside
 // ---------------------------

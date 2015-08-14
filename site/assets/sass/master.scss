@@ -22,7 +22,7 @@ body {
 	font-size: 100%;
  	line-height: normal;
 	color: $primary;
-	background: #f6f7ee; }
+	background: scale-saturation(#F7EEED, -50%); }
 	
 $bg-path: "triangles.png";
 .container {
@@ -45,39 +45,46 @@ article img {
 		
 // header
 // ---------------------------
-[role="banner"] {
-	@extend %crm;
-	@extend %transition;
-	@include border-radius(4px 4px 0 0);
-	position: relative; }
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+	white-space: nowrap;
+  overflow-x: scroll; 
+  -webkit-overflow-scrolling: touch;
+	position: relative;
+	box-shadow:
+		0 0 0 1px $primary_d2,
+		0 2px 4px fade-out($primary_d1, .8),
+		inset 0 1px 0 fade-out($primary_l1, .935);
+  padding: $base-px;
+	background: $primary;
 	
+	.home & {
+  	margin-bottom: $line; }
+	
+	@media (min-width: $c) {
+  	padding: $base-px $line; }
+  
+  @media (min-width: $d) {
+  	padding: $line; } }
+	
+	.nav,
 	.logo {
-		@extend %left;
-		@include wh(106px, 49px);
-		@include hide-text;
-		transition: none;
-		display: block;
-		padding: 0;
-		position: relative;
-		background: url(../images/logo.png) center center no-repeat;
-		
-		&:hover, &:focus {
-			background: url(../images/logo_hover.png) center center no-repeat; }
-			
-		@include respond-to(retina) {
-			@include wh(107px, 48px);
-			background: url(../images/logo_2x.png);
-			background-size: 107px 48px;
-			
-			&:hover, &:focus {
-				background: url(../images/logo_hover_2x.png) center center no-repeat;
-				background-size: 48px; } } }
+		display: inline-block;
+		vertical-align: middle; }
+  
+  .logo {
+    color: $tertiary;
+    font-weight: 700;
+    text-shadow: 0 1px 1px $primary_d2;
+    flex: 0 0 auto; }
 
 	.title {
-		@include rem(padding, $line 0 $line*2);
+		padding: $line;
 		position: relative;
-		width: 88%;
-		margin: auto;
+		margin-bottom: $line;
 		text-align: center;
 
 		.error & {
@@ -98,9 +105,6 @@ article img {
 		margin: 0;
 		padding: 0;
 		border: none; } }
-[role="main"], [role="contentinfo"], .related {
-	@extend %crm;
-	clear: both; }
 	
 .me {
 	img {
@@ -333,7 +337,6 @@ hr {
 // ---------------------------
 figure {
 	@include pie-clearfix; }
-figcaption {}
 
 // hide extras from services
 // ---------------------------
@@ -405,7 +408,14 @@ figcaption {}
     margin-left: -25%;
     margin-right: -25%; } }
 
+.code-tall {
+  max-height: 320px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; }
+
 /*
 	Media queries
 -----------------------------------------------------------------------*/
 @import "screens/a", "screens/b", "screens/c", "screens/d", "screens/e", "screens/f", "screens/2x";
+
+@import "styles/improvements";

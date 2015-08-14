@@ -1,0 +1,33 @@
+.entry-home {
+  margin-bottom: $line;
+  padding-bottom: $line;
+  border-bottom: 1px solid rgba($primary, .2);
+  
+  h2 {
+    margin: 0; } }
+
+.entry-meta {
+  font-size: 14px; }
+
+
+// Layout
+// ---------------------------
+[role="main"] {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap; }
+
+[role="main"],
+[role="contentinfo"],
+[role="complementary"] {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: $line $line*2; }
+
+.page-header {
+  flex-basis: 30%;
+  font-size: 14px; }
+
+.page-content {
+  flex-basis: 60%; }

@@ -1,12 +1,21 @@
 </div>
 {!-- role="main" --}
 
-<hr>
-
 <aside role="complementary" class="related">
+  <section style="background: #444; color: #fff; padding: 1.5em;">
+    {if segment_2 == 'entry'}
+      <h3 role="heading">Be notified of new posts</h3>
+      <p>I write blog posts weekly, that go out every Tuesday morning (GMT). Subscribe if you’d like to receive the highlights and takeaways to your inbox each week.</p>
+    {if:else}
+      <h3 role="heading">Want to receive more content like this?</h3>
+      <p>I write blog posts weekly, that go out every Tuesday morning (GMT). Subscribe if you’d like to receive the highlights and takeaways to your inbox each week. <strong>Sign up now and I will send you a free</strong></p>
+    {/if}
+  </section>
+  
 	<section class="me vcard author" role="region" aria-labelledby="About me">
 		<h3 role="heading">About me</h3>
-		<p><img src="{global:theme_url}/site/assets/images/me.jpg?v=2" srcset="{global:theme_url}/site/assets/images/me.jpg?v=2 2x" class="photo" alt="A photo of me">I’m <span class="fn">Steve McKinney</span>, a <span class="role">Web Designer</span> living in <span class="adr"><span class="locality">Manchester</span>, <span class="country-name">England</span></span>. I've been designing from fairly young age and doing it ‘in industry’ for the past 3 years. I couldn’t see myself doing anything else. I can start a website from paper, or just jump straight into Photoshop, it all leads to what I feel is the best result. I’m good with the usual stuff HTML, CSS, &amp; Photoshop, with some JavaScript. I’m familiar with Wordpress and ExpressionEngine. The aim with this website is to be more of a place to share what I learn, and to use it to spur me on to get better at what I do through blogging.</p>
+		<p><img src="{global:theme_url}/site/assets/images/me.jpg" srcset="{global:theme_url}/site/assets/images/me@2x.jpg 2x" class="photo" alt="A photo of me">I’m <span class="fn">Steve McKinney</span>, a <span class="role">Web Designer</span> living in <span class="adr"><span class="locality">Manchester</span>, <span class="country-name">England</span></span>. I've been designing from fairly young age and doing it ‘in industry’ for the past 4 years.</p>
+		<p>My aim for this website, is for it to be a place to share my knowledge, for people who cover a similar role to myself. So if you design and code, I’m sure you will find some value in the content.</p>
 	</section>
 	<section class="dribbble" role="region" aria-labelledby="Dribbble shots">
 		<h3 role="heading"><a href="http://dribbble.com/stevemckinney" title="View all my shots on Dribbble">Dribbble shots</a></h3>
@@ -16,7 +25,7 @@
 
 <footer role="contentinfo">
 	<ul>
-		<li><small>Copyright &copy; <span class="author vcard"><a rel="author" href="http://iamsteve.me" class="url fn">Steve McKinney</a></span> {current_time format="%Y"}.</small></li>
+		<li><small>Copyright &copy; <span class="author vcard"><a rel="author" href="http://iamsteve.me" class="url fn">Steve McKinney</a></span> {current_time format="%Y"}</small></li>
 		<li><a href="#" title="Go back to the top of the page" class="top">Top</a></li>
 		<li><a href="feed://iamsteve.me/blog/feed" title="The RSS feed for my blog">RSS</a></li>
 		<li><a href="https://www.digitalocean.com/?refcode=612d37093f16" title="DigitalOcean hosting get 2 months free credit">Host</a></li>
