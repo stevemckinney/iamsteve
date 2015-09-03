@@ -1,0 +1,74 @@
+.entry-home {
+  margin-bottom: $line;
+  padding-bottom: $line;
+  border-bottom: 1px solid rgba($primary, .2);
+  
+  h2 {
+    margin: 0; } }
+
+.entry-meta {
+  padding-top: $base-px;
+  font-size: 14px; }
+
+
+// Layout
+// ---------------------------
+[role="main"] {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap; }
+
+[role="main"],
+[role="contentinfo"],
+[role="complementary"] {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto; }
+
+[role="contentinfo"],
+[role="complementary"] {
+  @include pie-clearfix; }
+
+[role="main"],
+[role="contentinfo"] {
+  padding: $line;
+  
+  @include respond-min($c) {
+    padding: $line $line*2; } }
+
+[role="complementary"] {
+  padding: 0 $line;
+  
+  @include respond-max($c) {
+    font-size: 14px; }
+  
+  @include respond-min($c) {
+    padding: 0 $line*2 $line*2; } }
+
+.page-header {
+  font-size: 14px;
+  
+  @include respond-max($c) {
+    margin-bottom: $line; }
+  
+  @include respond-min($c) {
+    flex: 1 1 30%; } }
+  
+  .title {
+    @include respond-min($c) {
+      text-align: right; } }
+
+.page-content {
+  @include respond-min($c) {
+    flex: 1 1 60%; } }
+
+.page-header,
+.page-content {
+  @include respond-min($c) {
+    padding: $line; } }
+
+.pull-right {
+  float: right; }
+
+.text-right {
+  text-align: right; }

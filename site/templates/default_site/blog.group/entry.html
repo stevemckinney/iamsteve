@@ -1,26 +1,27 @@
 {embed="/include/header" entry_title="{exp:channel:entries channel="blog" status="Latest|open|draft"}{title}{/exp:channel:entries}"}
 
-{exp:channel:entries require_entry="yes" channel="blog" status="Latest|open|draft" global:param_disable_default global:param_cache_param}
-
-  {if no_results}{redirect="blog"}{/if}
-
-  <article role="article" class="entry-content">
-    {if image != ""}<img src="{image}" class="push-bottom">{/if}
-  	{exp:markdown}{blog_article}{/exp:markdown}
-  	{blog_meta}
-  </article>
-  {blog_nav}
-
-{/exp:channel:entries}
+<div class="page-content">
+  {exp:channel:entries require_entry="yes" channel="blog" status="Latest|open|draft" global:param_disable_default global:param_cache_param}
   
-<hr>
-
-<section role="region" aria-labelledby="Related entries" class="related-entries">
-	<h1 role="heading" class="h2">Related entries</h1>
-	<div class="related-entries-container">{exp:channel:entries channel="blog" limit="2" related_categories_mode="yes" orderby="random" custom_fields="yes" disable="member_data|pagination"}{if no_results}There are currently no related articles.{/if}<article class="related-entry" data-href="{title_permalink='blog/entry'}" data-event="Clicked related entry">
-  		<h2 class="h4"><a href="{title_permalink='blog/entry'}" data-event="Clicked related entry link">{title}</a></h2>
-  		<p>{exp:eehive_hacksaw words="30" append="&hellip;"}{excerpt}{/exp:eehive_hacksaw}</p>
-  	</article>{/exp:channel:entries}</div>
-</section>
+    {if no_results}{redirect="blog"}{/if}
+  
+    <article role="article" class="entry-content">
+      {if image != ""}<img src="{image}" class="push-bottom">{/if}
+    	{exp:markdown}{blog_article}{/exp:markdown}
+    </article>
+    {blog_nav}
+  
+  {/exp:channel:entries}
+    
+  <hr>
+  
+  <section role="region" aria-labelledby="Next to read" class="related-entries">
+  	<h1 role="heading" class="h2">Next to read</h1>
+  	<div class="related-entries-container">{exp:channel:entries channel="blog" limit="2" related_categories_mode="yes" orderby="random" custom_fields="yes" disable="member_data|pagination"}{if no_results}There are currently no related articles.{/if}<article class="related-entry" data-href="{title_permalink='blog/entry'}" data-event="Clicked related entry">
+    		<h2 class="h4"><a href="{title_permalink='blog/entry'}" data-event="Clicked related entry link">{title}</a></h2>
+    		<p>{exp:eehive_hacksaw words="30" append="&hellip;"}{excerpt}{/exp:eehive_hacksaw}</p>
+    	</article>{/exp:channel:entries}</div>
+  </section>
+</div>
 
 {embed="/include/footer"}

@@ -19,7 +19,7 @@ $whole: 100%;
 
 $footer-height: 42px;
 
-//	general variable colours
+// general variable colours
 // --------------------------
 $primary: #363940 !default;
 $primary_l1: #e6e9f2 !default;
@@ -33,6 +33,7 @@ $inner-shadow: #090e1a !default;
 $primary-border: #363940 !default;
 $primary-bg: #313a4c !default;
 $primary-l1: #98a1b2 !default;
+$tertiary: #f6f7ee !default; //scale-saturation(#F7EEED, -50%)
 
 $black: hsla(0,0%,0%,1);
 $white: hsla(0,100%,100%,1);

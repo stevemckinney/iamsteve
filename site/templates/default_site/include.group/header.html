@@ -66,40 +66,40 @@
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144x144.png">
 </head>
 <body class="hentry">
-	<!--[if lt IE 9]>
-		<p class="notice-warning" style="padding: 12px">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-	<![endif]-->
-	<div class="container">
-		<header role="banner">
-      <a href="/" title="Back to the homepage" class="logo">I am Steve</a>
-			<a href="#nav" title="To the navigation" class="mobile">&#xE9A1;</a>
-			<nav role="navigation" aria-hidden="false" class="nav">
-				<ul id="nav">
-					<li><a href="{global:theme_url}"{if segment_1 == ""} class="active"{/if} data-icon="home">Home</a></li>
-					<li><a href="{global:theme_url}/blog"{if segment_1 == "blog"} class="active"{/if} data-icon="compose">Archive</a></li>
-					{!--<li><a href="{global:theme_url}/portfolio"{if segment_1 == "portfolio"} class="active"{/if} data-icon="picture">Portfolio</a></li>--}
-					<li><a href="{global:theme_url}/about"{if segment_1 == "about"} class="active"{/if} data-icon="user">About</a></li>
-					<li><a href="{global:theme_url}/contact"{if segment_1 == "contact"} class="active"{/if} data-icon="envelope">Contact</a></li>
-				</ul>
-			</nav>
-		</header>
-		{if segment_1 == ""}
-			{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
-				<h1 class="title entry-title"><a href="{title_permalink='blog/entry'}">{title}</a></h1>
-			{/exp:channel:entries}
-		{if:elseif segment_2 == "category"}
-			{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
-      {/exp:channel:category_heading}
-				{exp:channel:category_heading channel="blog"}
-					<h1 class="title entry-title">{category_name}</h1>
-				{/exp:channel:category_heading}
-			{/exp:channel:entries}
-		{if:elseif embed:entry_title}
-			{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
-				<h1 class="title entry-title"><a href="{title_permalink='blog/entry'}">{embed:entry_title}</a></h1>
-			{/exp:channel:entries}
-		{if:else}
-			<h1 class="title entry-title">{segment_1}</h1>
-		{/if}
-	</div>	
+	<header role="banner" class="header">
+    <a href="/" title="Back to the homepage" class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="129.5" height="40" viewBox="0 0 129.5 40"><g fill="#fff"><path d="M53.7 17.2c.6 0 1.1 0 2-.2.4 0 .4.3.4.3-.8 4.7-1.3 6.6-1.3 9.9 0 1.1.3 1.5.7 1.5.7 0 1.8-1.2 2.1-2 .1-.1.2-.2.3-.2.1 0 .2.1.2.2v.1c-.4 1.9-1.7 3.6-3.3 3.6-1.8 0-2.4-2.4-2.4-5.1 0-2.8.6-6 .9-7.5 0-.2.2-.6.4-.6zm4.1-7.4c0 1.2-.9 2.8-2.1 2.8-1 0-1.5-.8-1.5-1.7 0-1.2.8-2.6 2.2-2.6 1 0 1.4.7 1.4 1.5zM66.1 18.5c.6.2 1.4.4 1.4.8 0 .9-.5 3.9-.5 6.2 0 1.7.2 3 1 3 .7 0 1.6-.7 1.9-1.4.4-.1.4-.5.5-.5.1 0 .1.2.1.3 0 1.7-1.5 3.3-3 3.3-1.3 0-2.5-1.1-2.8-4.1-.9 2.3-2.1 4.1-3.4 4.1-2.3 0-3.2-2.4-3.2-5.2 0-4.1 2-9.1 5.1-9.1 1.8 0 2.6 1.1 2.9 2.6zm-1.1 1c-.6-.7-1.1-1-1.6-1-2 0-3.4 5.3-3.4 7.8 0 1.3.3 2.3 1 2.3 2.7 0 3.7-6.5 4-9.1zM91.2 14.2c.1 0 .3 0 .3.2 0 0-.5 2.2-.5 4.7 0 2.4 2 7.4 2 10.1 0 1.9-1.6 2.9-3.1 2.9s-2.9-.9-2.9-2.7c0-.9.3-2.2.5-2.2 0 0 .1 0 .1.1v.1c0 1.8 1.1 2.9 2 2.9.7 0 1.2-.6 1.2-1.9 0-2.7-1.4-7.2-1.4-8-1 2.1-3.1 10.1-5.4 10.1-2.2 0-2.8-3-2.8-6.4 0-1.1.1-2.4.2-3.5-.9 1.6-2.1 6.6-2.8 8.8 0 .2-.2.3-.5.3-.8 0-1.8 0-1.8-.5.1-1.2.3-4.6.3-7.2 0-1.7-.1-2.9-.3-2.9-.8 0-2.2 4.1-2.8 9.8 0 .7-.5 1-1 1-.8 0-1.6-.6-1.6-1.4.1-.7 1-5.9 1-8.7 0-1.1-.2-1.9-.6-1.9-.5 0-1.4.9-2.1 2.3H69c-.3 0-.6-.1-.6-.5.9-1.7 2.2-3.2 3.9-3.2 1.3 0 1.7 1.4 1.7 3.3 0 1.5-.3 3.2-.5 4.6 1.1-4.4 2.4-7.8 3.5-7.8 1.4 0 1.8.8 1.8 2.1 0 3.7 0 5.5-.3 6.7 1-2.3 2.6-7.9 4.5-9.7.1-.1.2-.1.3-.1.4 0 1.5.8 1.5 1.1v.2c-.8 1.8-1.1 4.7-1.1 6.7 0 3.1.4 4.3.9 4.3 1.5 0 4.4-9.9 4.7-12.4 0-.7 1.4-1.3 1.9-1.3zM98.3 8h.1c.7.5 2.3.4 2.3 1.1-.3 1.6-.6 2.8-.9 4.6 3.4-.3 6.7-.9 7.4-.9.4 0 .9 0 .9.3 0 .2-.4.2-.5.4l-.3.6c-.6.3-4.4 1.2-8 1.7-.6 3.1-1.1 7-1.1 11.2 0 1 .5 1.5 1 1.5.6 0 1.4-.7 1.8-2.1 0-.1.2-.2.3-.2.2 0 .2.2.2.3-.5 2.5-1.6 3.5-2.7 3.5-2 0-2.6-2.8-2.6-6.4 0-2.2.3-5.1.6-7.5-.8.1-1.5.1-2.1.1-1.7 0-2.6-.6-2.6-2.3 0-.3.1-.8.3-.8.1 0 .1 0 .2.1 1 .4 2.5.6 4.1.6h.3c.5-3.1.9-5.2.9-5.8.1.1.2 0 .4 0z"/><path d="M109 25.1c0-.6-.1-1.1-.3-1.8 0 0 0-.2.4-.2 1.2 0 1.5 1.3 1.5 2.5 0 2.3-1.8 4.6-4.2 4.6-3.4 0-4.8-3-4.8-6.2 0-4 2.1-8.3 5.2-8.3 1.5 0 2.3 1.1 2.3 2.6 0 2-1.5 4.8-4.9 6.7.2 2.7 1.2 3.8 2.3 3.8 1.2 0 2.5-1.6 2.5-3.7zm-2.2-7.5c-1.4 0-2.5 3.1-2.6 6 1.3-.9 3.1-3.8 3.1-5.4-.1-.3-.2-.6-.5-.6zM109.9 18.8c0-.8.8-2.3 2.6-2.3 2.8 0 2.8 6.3 3.1 8.9l.1.1c1.3-5.4 3.3-11.2 6.5-11.2.4 0 .6.3.6.7 0 .5-.3 1.2-.7 1.8-2.9 0-5.7 5.7-6 11.1 0 0-.1 1.2-.3 1.3-.5.2-.5.8-.9.8-1.2-.1-1.6-.6-1.7-2.4-.1-3-.6-9.7-2.1-9.8-.3.2-.8.7-1.2 1.3v-.3zM127.9 25.1c0-.6-.1-1.1-.3-1.8 0 0 0-.2.4-.2 1.2 0 1.5 1.3 1.5 2.5 0 2.3-1.8 4.6-4.2 4.6-3.4 0-4.8-3-4.8-6.2 0-4 2.1-8.3 5.2-8.3 1.5 0 2.3 1.1 2.3 2.6 0 2-1.5 4.8-4.9 6.7.2 2.7 1.2 3.8 2.3 3.8 1.2 0 2.5-1.6 2.5-3.7zm-2.2-7.5c-1.4 0-2.5 3.1-2.6 6 1.3-.9 3.1-3.8 3.1-5.4-.1-.3-.2-.6-.5-.6z"/></g><g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"><path d="M24.9 39c-.6-5.5.4-9.7 2.7-12.9 4.3-.1 8.3-1.6 11.8-4.8 2.9-2.9 3.4-6.2 3.5-9.2l-9.6-1.9-2.4-6-.9.6L27.8 2 26 3.1 24.6 1l-1.3 1S19.5.3 14.4 3.1C10 5.8 8.1 10.9 9.2 16.4c.9 4.8 4.1 11.4 7.8 11.4 3.2 0 5.6-2.4 7.1-8.3 1-4 1.3-9.4 1.5-12.7M1 30.1c3.7-2.7 8-6.3 8.2-13.6"/></g></svg></a>
+		<nav role="navigation" class="nav">
+      <a href="{global:theme_url}"{if segment_1 == ""} class="active"{/if} data-icon="home">Home</a>
+			<a href="{global:theme_url}/blog"{if segment_1 == "blog"} class="active"{/if} data-icon="compose">Archive</a>
+      <a href="{global:theme_url}/about"{if segment_1 == "about"} class="active"{/if} data-icon="user">About</a>
+			<a href="{global:theme_url}/contact"{if segment_1 == "contact"} class="active"{/if} data-icon="envelope">Contact</a>
+		</nav>
+	</header>
 	<div role="main">
+  	{if segment_2 == "category"}
+  		{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+      {/exp:channel:category_heading}
+  			{exp:channel:category_heading channel="blog"}
+  				<div class="page-header"><h1 class="title entry-title">{category_name}</h1></div>
+  			{/exp:channel:category_heading}
+  		{/exp:channel:entries}
+    {if:elseif segment_2 == "entry"}
+      {exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+        <div class="page-header">
+    		  <h1 class="title entry-title"><a href="{title_permalink='blog/entry'}">{embed:entry_title}</a></h1>
+    		  <footer class="entry-meta text-right">
+          	<time datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" class="published" pubdate>{entry_date format="%F %d %Y"}</time> • <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated screenreader">{edit_date format="%Y %m %d"}</time>
+          	{categories channel="blog" style="linear" parent_only="yes" limit="1"}<a href="{path='blog/index'}" title="This post is under category:{category_name}." rel="category tag">{category_name}</a>{/categories}
+            <span class="screenreader author vcard"><a rel="author" href="http://iamsteve.me" class="url fn">Steve McKinney</a></span>
+      		</footer>
+    		</div>
+  		{/exp:channel:entries}
+  	{if:elseif embed:entry_title}
+  		{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+  			<div class="page-header">
+    		  <h1 class="title entry-title">{embed:entry_title}</h1>
+    		</div>
+  		{/exp:channel:entries}
+  	{if:elseif segment_1 != ""}
+  		<div class="page-header"><h1 class="title entry-title">{segment_1}</h1></div>
+  	{/if}
