@@ -4,10 +4,9 @@
 // ---------------------------
 #{headings()} {
 	font-family: $heading;
-	color: $primary;
 	line-height: 1.25;
 	margin-top: 0;
-	color: $primary; }
+	color: $primary_d2; }
 
 h1, .h1 {
   font-size: 24px;
@@ -33,12 +32,21 @@ h2, .h2 {
       margin: $line*1.5 0 $line; } } }
   
 h3, .h3 { 
-  font-size: 21px;
-  margin: $line*1.5 0 $base-px; }
+  font-size: 16px;
+  margin: $line*1.5 0 $base-px/2;
+  
+  @include respond-min($c) {
+    font-size: 21px;
+    margin: $line*1.5 0 $base-px; }
+  
+  &:first-child { margin-top: 0; } }
   
 h4, .h4 {
-  font-size: 18px;
-  margin: 0 0 $base-px;
+  font-size: 14px;
+  
+  @include respond-min($c) {
+    font-size: 18px;
+    margin: 0 0 $base-px; }
   
   .entry-content & {
     margin: $line*1.5 0 $base-px; } }
@@ -55,6 +63,9 @@ h6, .h6 {
 // Title
 // ---------------------------
 .title {
+  color: $secondary;
+  font-size: 24px;
+  font-weight: 700;
   margin-bottom: 0; }
 
 // Links
@@ -80,8 +91,12 @@ p {
   hyphens: auto;
   
   @include respond-min($c) {
-    margin: 0 0 $line;
-    font-size: em(18px, 16px); } }
+    margin: 0 0 $line; } }
+
+p,
+li {
+  @include respond-min($c) {
+    font-size: em(18px, 16px); }  }
 
 .related-entries p, .previous-entries p {
   line-height: 1.35; }
@@ -108,7 +123,9 @@ pre {
 // ---------------------------
 [role="complementary"] p {
   font-size: em(16px, 16px);
-  margin: 0; }
+  
+  &:last-child { 
+    margin-bottom: 0; } }
   
 [role="complementary"],
 [role="contentinfo"] {

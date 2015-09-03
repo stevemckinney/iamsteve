@@ -22,7 +22,7 @@ body {
 	font-size: 100%;
  	line-height: normal;
 	color: $primary;
-	background: scale-saturation(#F7EEED, -50%); }
+	background: $tertiary; }
 	
 $bg-path: "triangles.png";
 .container {
@@ -61,34 +61,28 @@ article img {
   padding: $base-px;
 	background: $primary;
 	
-	.home & {
-  	margin-bottom: $line; }
-	
 	@media (min-width: $c) {
   	padding: $base-px $line; }
   
   @media (min-width: $d) {
-  	padding: $line; } }
+  	padding: 21px $line; } }
 	
-	.nav,
-	.logo {
-		display: inline-block;
-		vertical-align: middle; }
+.nav,
+.logo {
+	display: inline-block;
+	vertical-align: middle; }
+
+.logo {
+  color: $tertiary;
+  font-weight: 700;
+  text-shadow: 0 1px 1px $primary_d2;
+  flex: 0 0 auto;
   
-  .logo {
-    color: $tertiary;
-    font-weight: 700;
-    text-shadow: 0 1px 1px $primary_d2;
-    flex: 0 0 auto; }
+  svg { display: block; } }
 
-	.title {
-		padding: $line;
-		position: relative;
-		margin-bottom: $line;
-		text-align: center;
-
-		.error & {
-			text-transform: capitalize; } }
+.title {
+	position: relative;
+  margin: 0; }
 
 	
 // navigation
@@ -138,7 +132,9 @@ article img {
 			margin: auto auto .75rem; } }
 			
 	figcaption {
-		text-align: center; }
+		text-align: center; } }
+		
+.single [role="article"] {
 		
 	@include respond-min($c) {
 		padding-right: 7.5%;
@@ -147,7 +143,7 @@ article img {
 		
 	@include respond-min($d) {
 		padding-right: 15.5%;
-		padding-left: 15.5%; } }
+		padding-left: 15.5%; }}
 
 /* !aside ---------------------- */
 @import "styles/meta";
@@ -273,24 +269,14 @@ dd {
 // , "styles/blog"
 
 
-.related-entries, .previous-entries {
+.related-entries {
 	@include pie-clearfix;
-	@extend %margin-bottom;
-	
-	@include respond-min($c) {
-		@include rem(margin, 0 0 $line*2); }
-	
-	@include respond-min($d) {
-		h1 {
-			padding-left: 15.5%; } } }
+	@extend %margin-bottom; }
 
 .previous-entries-container,
 .related-entries-container {
   @include pie-clearfix;
-  margin-bottom: -$line;
-  
-  @include respond-min($d) {
-    padding: 0 15.5%; } }
+  margin-bottom: -$line; }
 
 .related-entry, 
 .previous-entry {

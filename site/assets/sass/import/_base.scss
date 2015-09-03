@@ -19,21 +19,21 @@ $whole: 100%;
 
 $footer-height: 42px;
 
-//	general variable colours
+// general variable colours
 // --------------------------
-$primary: scale-saturation(#3F3557, -30%) !default;
-$primary_l1: scale-lightness($primary, 10%) !default;
-$primary_l2: scale-lightness($primary_l1, 10%) !default;
-$primary_l3: scale-lightness($primary_l2, 60%) !default;
-$primary_d1: scale-lightness($primary, -20%) !default;
-$primary_d2: scale-lightness($primary, -30%) !default;
+$primary: #363940 !default;
+$primary_l1: #e6e9f2 !default;
+$primary_l2: #474d59 !default;
+$primary_l3: #e6eaf1 !default;
+$primary_d1: #0a0b0c !default;
+$primary_d2: #2a2d33 !default;
 // note: #a03c21 (dark orange) #ff4411 (bright orange) alts that work well, need adjustment in other css
-$secondary: #DA4C66 !default;
-$tertiary: #f0f4fc !default;
+$secondary: #88a23d !default;
 $inner-shadow: #090e1a !default;
 $primary-border: #363940 !default;
 $primary-bg: #313a4c !default;
 $primary-l1: #98a1b2 !default;
+$tertiary: #f6f7ee !default; //scale-saturation(#F7EEED, -50%)
 
 $black: hsla(0,0%,0%,1);
 $white: hsla(0,100%,100%,1);
