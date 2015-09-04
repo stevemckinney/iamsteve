@@ -3,10 +3,12 @@
 // Headings
 // ---------------------------
 #{headings()} {
-	font-family: $heading;
+	font-family: $slab;
+	font-style: italic;
 	line-height: 1.25;
 	margin-top: 0;
-	color: $primary_d2; }
+	font-weight: 700;
+	letter-spacing: -1px; }
 
 h1, .h1 {
   font-size: 24px;
@@ -14,12 +16,10 @@ h1, .h1 {
   
   @include respond-min($c) {
     font-size: 36px;
-    font-weight: 400;
     margin-bottom: $line*2; } }
   
 h2, .h2 {
   font-size: 18px;
-  font-weight: 700;
   
   .entry-content & {
     margin: $line 0 $base-px; }
@@ -91,6 +91,7 @@ p {
   hyphens: auto;
   
   @include respond-min($c) {
+    font-size: 18px;
     margin: 0 0 $line; } }
 
 p,

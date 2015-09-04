@@ -59,7 +59,7 @@ $info: #71bcc5 !default;
 // font stacks
 // ---------------------------
 $sans: "Verlag A", "Verlag B", sans-serif;
-$serif: "Mercury SSm A", "Mercury SSm B", georgia, serif;
+$serif:  "Archer SSm A", "Archer SSm B", georgia, serif;
 $slab: 'Archer SSm A', 'Archer SSm B', serif;
 $monospace: "source-code-pro", monospace;
 $pictos: "Pictos Custom";
@@ -72,8 +72,8 @@ $icons: "SSStandard";
 
 // found the need sometimes to switch fonts mid project
 // ---------------------------
-$heading: $sans;
-$body: $ideal;
+$heading: $slab;
+$body: $sans;
 
 // font sizes
 // ---------------------------

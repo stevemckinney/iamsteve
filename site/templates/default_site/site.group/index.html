@@ -1,7 +1,7 @@
 {embed="include/header" title_suffix="⭐️ iamsteve — design & code blog" hide_site_title="y"}
 
 <div class="page-header">
-  <p>I’m Steve McKinney, a designer. I write weekly on a range of beginner and intermediate; design and code topics. I want to share all the knowledge I have, to help you become better at web related stuff. If you ever have any feedback or things you would like me to write about <a href="https://twitter.com/irsteve">tweet</a> or <a href="{global:theme_url}/contact">contact</a> me.</p>
+  <p>I’m Steve McKinney, a designer. I write on a range of beginner and intermediate; design and code topics. I want to share all the knowledge I have, to help you become better at web related stuff. If you ever have any feedback or things you would like me to write about <a href="https://twitter.com/irsteve">tweet</a> or <a href="{global:theme_url}/contact">contact</a> me.</p>
   {!-- <section style="background: #F1786D; color: #fff; padding: 1.5em;">
     <h3 role="heading" style="color:#fff;margin-top:0;">Stay up to date</h3>
     <p>It’s hard to keep track of announcements, why not subscribe to my newsletter? I‘ll email you the highlights and takeaways of my latest post and you can read when you’re ready. <strong>Sign up now and I will send you a free</strong></p> --}
@@ -11,9 +11,9 @@
   	<article data-href="{title_permalink='blog/entry'}" class="entry entry-home">
   		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
   		<footer class="entry-meta">
-      	<time datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" class="published" pubdate>{entry_date format="%F %d %Y"}</time> • <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated screenreader">{edit_date format="%Y %m %d"}</time>
-      	{categories channel="blog" style="linear" parent_only="yes" limit="1"}<a href="{path='blog/index'}" title="This post is under category:{category_name}." rel="category tag">{category_name}</a>{/categories}
-      	 <a href="{title_permalink='blog/entry'}" title="Read {title} in full." class="pull-right" rel="bookmark">Continue reading</a>
+      	<time datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" class="published" data-icon="calendar" pubdate>{entry_date:relative stop="+1 day" format="%j%S %F %Y"}</time><time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated screenreader">{edit_date format="%Y %m %d"}</time>
+      	{categories channel="blog" style="linear" parent_only="yes" limit="1"}<a href="{path='blog/index'}" title="This post is under category:{category_name}." rel="category tag" data-icon="tag">{category_name}</a>{/categories}
+      	 <a href="{title_permalink='blog/entry'}" title="Read {title} in full." class="pull-right" rel="bookmark" data-icon-after="navigateright">Continue reading</a>
         <span class="screenreader author vcard"><a rel="author" href="http://iamsteve.me" class="url fn">Steve McKinney</a></span>
   		</footer>
   	</article>
