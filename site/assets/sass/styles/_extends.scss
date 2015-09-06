@@ -93,10 +93,9 @@
 
 %imgs {
 	@extend %rounded;
-	@extend %shadow;
+  box-shadow: 0 1px rgba($black, .15), 0 2px 4px rgba($black, .2);
 	vertical-align: bottom;
-	display: inline-block;
-	border: 6px solid $white; }
+	display: inline-block; }
 
 %margin-bottom {
 	margin: 0 0 em($line, $base-font-size); }
