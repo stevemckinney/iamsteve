@@ -3237,27 +3237,27 @@ article img, .dribbble img, .item-full [data-picture], .old-design img, .related
   font-size: 14px;
 }
 @media screen and (min-width: 48em) {
-  /* line 11, ../sass/styles/_improvements.scss */
-  .entry-meta {
+  /* line 18, ../sass/styles/_improvements.scss */
+  .page-header .entry-meta {
     text-align: right;
   }
 }
-/* line 20, ../sass/styles/_improvements.scss */
+/* line 21, ../sass/styles/_improvements.scss */
 .entry-meta [data-icon]:before,
 .entry-meta [data-icon-after]:after {
   color: #363940;
   font-size: 10px;
 }
-/* line 25, ../sass/styles/_improvements.scss */
+/* line 26, ../sass/styles/_improvements.scss */
 .entry-meta [data-icon]:before {
   margin-right: 3px;
 }
-/* line 28, ../sass/styles/_improvements.scss */
+/* line 29, ../sass/styles/_improvements.scss */
 .entry-meta [data-icon-after]:after {
   margin-left: 3px;
 }
 
-/* line 34, ../sass/styles/_improvements.scss */
+/* line 35, ../sass/styles/_improvements.scss */
 [role="main"] {
   display: -webkit-flex;
   display: flex;
@@ -3267,7 +3267,7 @@ article img, .dribbble img, .item-full [data-picture], .old-design img, .related
   flex-flow: row wrap;
 }
 
-/* line 42, ../sass/styles/_improvements.scss */
+/* line 43, ../sass/styles/_improvements.scss */
 [role="main"],
 [role="contentinfo"],
 [role="complementary"] {
@@ -3276,7 +3276,7 @@ article img, .dribbble img, .item-full [data-picture], .old-design img, .related
   margin-right: auto;
 }
 
-/* line 49, ../sass/styles/_improvements.scss */
+/* line 50, ../sass/styles/_improvements.scss */
 [role="contentinfo"],
 [role="complementary"] {
   *zoom: 1;
@@ -3289,25 +3289,25 @@ article img, .dribbble img, .item-full [data-picture], .old-design img, .related
   clear: both;
 }
 
-/* line 53, ../sass/styles/_improvements.scss */
+/* line 54, ../sass/styles/_improvements.scss */
 [role="main"],
 [role="contentinfo"] {
   padding: 24px;
 }
 @media screen and (min-width: 48em) {
-  /* line 53, ../sass/styles/_improvements.scss */
+  /* line 54, ../sass/styles/_improvements.scss */
   [role="main"],
   [role="contentinfo"] {
     padding: 24px 48px;
   }
 }
 
-/* line 60, ../sass/styles/_improvements.scss */
+/* line 61, ../sass/styles/_improvements.scss */
 [role="complementary"] {
   padding: 0 48px;
 }
 @media screen and (max-width: 48em) {
-  /* line 60, ../sass/styles/_improvements.scss */
+  /* line 61, ../sass/styles/_improvements.scss */
   [role="complementary"] {
     padding: 0 24px;
     font-size: 14px;
@@ -3315,7 +3315,7 @@ article img, .dribbble img, .item-full [data-picture], .old-design img, .related
 }
 
 @media screen and (max-width: 48em) {
-  /* line 67, ../sass/styles/_improvements.scss */
+  /* line 68, ../sass/styles/_improvements.scss */
   .page-header {
     text-align: center;
     width: 100%;
@@ -3323,7 +3323,7 @@ article img, .dribbble img, .item-full [data-picture], .old-design img, .related
   }
 }
 @media screen and (min-width: 48em) {
-  /* line 67, ../sass/styles/_improvements.scss */
+  /* line 68, ../sass/styles/_improvements.scss */
   .page-header {
     font-size: 18px;
     flex: 1 1 30%;
@@ -3331,43 +3331,43 @@ article img, .dribbble img, .item-full [data-picture], .old-design img, .related
 }
 
 @media screen and (min-width: 48em) {
-  /* line 77, ../sass/styles/_improvements.scss */
+  /* line 78, ../sass/styles/_improvements.scss */
   .title {
     text-align: right;
   }
 }
 
 @media screen and (min-width: 48em) {
-  /* line 81, ../sass/styles/_improvements.scss */
+  /* line 82, ../sass/styles/_improvements.scss */
   .page-content {
     flex: 1 1 60%;
   }
 }
 
 @media screen and (min-width: 48em) {
-  /* line 85, ../sass/styles/_improvements.scss */
+  /* line 86, ../sass/styles/_improvements.scss */
   .page-header,
   .page-content {
     padding: 24px;
   }
 }
 
-/* line 90, ../sass/styles/_improvements.scss */
+/* line 91, ../sass/styles/_improvements.scss */
 .pull-right {
   float: right;
 }
 
-/* line 93, ../sass/styles/_improvements.scss */
+/* line 94, ../sass/styles/_improvements.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 96, ../sass/styles/_improvements.scss */
+/* line 97, ../sass/styles/_improvements.scss */
 [data-href] {
   cursor: pointer;
 }
 
-/* line 99, ../sass/styles/_improvements.scss */
+/* line 100, ../sass/styles/_improvements.scss */
 .button-link {
   display: block;
   text-align: right;
@@ -3375,7 +3375,7 @@ article img, .dribbble img, .item-full [data-picture], .old-design img, .related
   font-weight: 700;
 }
 
-/* line 105, ../sass/styles/_improvements.scss */
+/* line 106, ../sass/styles/_improvements.scss */
 kbd {
   background: #363940;
   color: white;

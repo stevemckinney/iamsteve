@@ -15,7 +15,8 @@
   font-size: 14px;
   
   @include respond-min($c) {
-    text-align: right; }
+    .page-header & {
+      text-align: right; } }
   
   [data-icon]:before,
   [data-icon-after]:after {
