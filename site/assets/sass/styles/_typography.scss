@@ -63,7 +63,6 @@ h6, .h6 {
 // Title
 // ---------------------------
 .title {
-  color: $secondary;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 0; }
@@ -123,7 +122,7 @@ pre {
 // aside
 // ---------------------------
 [role="complementary"] p {
-  font-size: em(16px, 16px);
+  font-size: 16px;
   
   &:last-child { 
     margin-bottom: 0; } }
@@ -144,17 +143,21 @@ pre {
 // pre/code
 // ---------------------------
 pre {
-  padding: $line;
-  margin: 0 0 $line;
+  padding: $base-px;
+  margin: 0 0 $base-px;
   display: block;
-
+  
+  @include respond-min($c) {
+    margin: 0 0 $line;
+    padding: $line;
+    font-size: 18px; }
+  
 	code {
 		display: block;
 		background: none; } }
 
 pre,
 code {
-  font-size: 18px;
   font-family: Inconsolata, monospace; }
 
 code {

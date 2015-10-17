@@ -12,17 +12,24 @@
 			inset 0 1px 2px fade-out($primary_l3, .9),
 			inset 0 -1px 2px fade-out($primary_d1, .95);
     border-radius: 200px;
-		padding: ($base-px + 1) $line ($base-px - 1) $line*1.75;
 		transition: background .2s linear;
 		border-bottom: none;
 		line-height: 1;
 		text-transform: uppercase;
 		position: relative;
+		padding: (($base-px / 2) + 1) $base-px*1.25 (($base-px / 2) - 1) $line*1.25;
+		
+		@include respond-min($c) {
+  		padding: ($base-px + 1) $line ($base-px - 1) $line*1.75; }
 		
 		&:before {
   		position: absolute;
-			top: $base-px + 2;
-			left: $line; }
+  		top: 8px;
+  		left: $base-px;
+  		
+			@include respond-min($c) {
+  			top: $base-px + 2;
+  			left: $line; } }
 		
 		&:focus,
 		&:hover {

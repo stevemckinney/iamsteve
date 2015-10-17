@@ -14,6 +14,9 @@
   padding-top: $base-px;
   font-size: 14px;
   
+  @include respond-min($c) {
+    text-align: right; }
+  
   [data-icon]:before,
   [data-icon-after]:after {
     color: $primary;
@@ -58,10 +61,13 @@
   padding: 0 $line*2;
   
   @include respond-max($c) {
+    padding: 0 $line;
     font-size: 14px; } }
 
 .page-header {
   @include respond-max($c) {
+    text-align: center;
+    width: 100%;
     margin-bottom: $line; }
   
   @include respond-min($c) {
