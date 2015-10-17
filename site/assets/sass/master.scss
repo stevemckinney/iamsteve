@@ -266,30 +266,27 @@ dd {
 -----------------------------------------------------------------------*/
 @import "styles/portfolio", "styles/about";
 
-// , "styles/blog"
-
-
 .related-entries {
-	@include pie-clearfix;
-	@extend %margin-bottom; }
+  margin-bottom: $line; }
 
 .previous-entries-container,
 .related-entries-container {
-  @include pie-clearfix;
-  margin-bottom: -$line; }
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between; 
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding-left: 2px;
+  padding-bottom: 3px; }
 
 .related-entry, 
 .previous-entry {
-	width: 50%;
-	display: inline-block;
-	vertical-align: top;
-	padding-bottom: $line;
-	
-	&:nth-of-type(odd) {
-  	padding-right: $base-px; }
-	
-	&:nth-of-type(even) {
-  	padding-left: $base-px; }
+  @extend %imgs;
+	width: 25%;
+  flex: 0 0 234px;
+  margin-right: 12px;
+  background: $white;
+  padding: $line;
 	
 	p {
   	margin: 0;

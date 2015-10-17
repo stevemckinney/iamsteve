@@ -55,13 +55,10 @@
     padding: $line $line*2; } }
 
 [role="complementary"] {
-  padding: 0 $line;
+  padding: 0 $line*2;
   
   @include respond-max($c) {
-    font-size: 14px; }
-  
-  @include respond-min($c) {
-    padding: 0 $line*2 $line*2; } }
+    font-size: 14px; } }
 
 .page-header {
   @include respond-max($c) {
@@ -98,3 +95,13 @@
   text-align: right;
   padding: $line 0;
   font-weight: 700; }
+  
+kbd {
+  background: $primary;
+  color: $white;
+  border-radius: 2px;
+  font-size: 16px;
+  padding: 2px 4px;
+  font-family: inherit;
+  font-weight: 700;
+}
