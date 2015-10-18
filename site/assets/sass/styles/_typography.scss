@@ -154,14 +154,18 @@ pre {
   
 	code {
 		display: block;
-		background: none; } }
+		background: none;
+		padding: 0;
+		font-size: 18px; } }
 
 pre,
 code {
   font-family: Inconsolata, monospace; }
 
 code {
-	background: rgba(#f6f7ee, .8); }
+	background: rgba($white, .6);
+	border-radius: 2px;
+	font-size: .875em; }
 
 // blockquote
 // ---------------------------
