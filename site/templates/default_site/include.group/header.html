@@ -18,7 +18,7 @@
       limit="1"
       status="open|latest"
       disable="member_data|trackbacks|pagination"}
-      {exp:channel:category_heading channel="blog"}{category_name} ⌭ Steve McKinney
+      {exp:channel:category_heading channel="blog"}{category_name} • Steve McKinney
     {/exp:channel:entries}
   {if:elseif embed:entry_title}
     {embed:entry_title} • Steve McKinney
@@ -38,7 +38,7 @@
 	<meta name="google-site-verification" content="kvxM4eH_QHyUGdJK0LEQj3aZi7Vew5AooNVxk79zruU">
 	
 	{!-- Twitter card --}
-  <meta prefix="og:http://ogp.me/ns#" property="og:title" content="iamsteve ⌭ design & code blog">
+  <meta prefix="og:http://ogp.me/ns#" property="og:title" content="iamsteve • design & code blog">
   <meta prefix="og:http://ogp.me/ns#" property="og:type" content="website">
   <meta prefix="og:http://ogp.me/ns#" property="og:image" content="{global:theme_url}/site/assets/images/og.png">
   <meta prefix="og:http://ogp.me/ns#" property="og:url" content="http://iamsteve.me">
@@ -66,6 +66,112 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144x144.png">
+	<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "{global:theme_url}",
+          "name": "Home"
+        }
+      }{if segment_2},{/if}
+      {if segment_2 == "category"}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "{global:theme_url}/blog",
+            "name": "Blog"
+          }
+        },
+        {exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+          {exp:channel:category_heading channel="blog"}
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@id": "{path='blog/index'}",
+                "name": "{category_name}"
+              }
+            },
+        	{/exp:channel:category_heading}
+        {/exp:channel:entries}
+      {if:elseif segment_2 == "entry"}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "{global:theme_url}/blog",
+            "name": "Blog"
+          }
+        },
+        {exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"} 
+          {categories channel="blog" style="linear" parent_only="yes" limit="1"}
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@id": "{path='blog/index'}",
+                "name": "{category_name}"
+              }
+            },
+        	{/categories}
+        {/exp:channel:entries}
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@id": "{title_permalink='blog/entry'}",
+            "name": "{embed:entry_title}"
+          }
+        }
+      {if:elseif segment_2 != ''}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "{global:theme_url}/{segment_2}",
+            "name": "{embed:entry_title}"
+          }
+        }
+      {/if}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type" : "WebSite",
+    "name" : "iamsteve",
+    "url" : "{global:theme_url}"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "{global:theme_url}",
+    "logo": "{global:theme_url}/assets/images/iamsteve-logo.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+    "@type" : "Person",
+    "name" : "Steve McKinney",
+    "url" : "{global:theme_url}",
+    "sameAs" : [
+      "https://twitter.com/irsteve",
+      "https://facebook.com/stemckinney",
+      "https://instagram.com/stevemckinney",
+      "https://uk.linkedin.com/in/steve-mckinney-5b5836102",
+      "https://plus.google.com/u/0/114129050502065289651"
+    ]
+  }
+  </script>
 </head>
 <body class="hentry">
 	<header role="banner" class="header">

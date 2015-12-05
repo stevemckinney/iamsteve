@@ -1,4 +1,4 @@
-{embed="/include/header" entry_title="Blog" title_suffix="Blog"}
+{embed="/include/header" entry_title="Blog" title_suffix="Blog" description="iamsteve is a design & code blog. You'll find tutorials on Photoshop, Illustrator, Design, CSS & Wordpress."}
 
 <div class="page-content">
   {if logged_in}
@@ -13,6 +13,9 @@
   {/if}
   
   {exp:channel:entries channel="blog" paginate="bottom" limit="8" status="Latest|open|{if logged_in}|draft{/if}" disable="member_data|trackbacks" global:param_disable_mt global:param_cache_param}
+    
+    {if no_results}{redirect="404"}{/if}
+  	
   	<article role="article" class="hentry">
   		<h1 class="h2 entry-title entry-summary-title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark">{title}</a></h1>
       {excerpt}

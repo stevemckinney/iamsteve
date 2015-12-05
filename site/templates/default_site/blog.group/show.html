@@ -1,9 +1,9 @@
 {embed="include/header" entry_title="{exp:channel:category_heading channel="blog"}{category_name}{/exp:channel:category_heading}" category_id="{category}"}
 	
 	{exp:channel:entries channel="blog" paginate="bottom" category="{embed:category_id}" disable="member_data" orderby="entry_date" sort="desc" limit="8" global:param_cache_param}
-    {if no_results}
-      <p>No results</p>
-    {/if}
+	
+	  {if no_results}{redirect="404"}{/if}
+	  
     <article role="article" class="hentry">
 			<h1 class="entry-title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark">{title}</a></h1>
 			{excerpt}
