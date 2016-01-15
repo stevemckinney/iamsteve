@@ -6,6 +6,7 @@ cacheee_version/
 
 # Images
 assets/images/_blog/*
+assets/images/
 images/avatars/
 images/captchas/
 images/smileys/
