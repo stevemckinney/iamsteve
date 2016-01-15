@@ -29,6 +29,10 @@
 	{exp:nsm_better_meta:template url_title="{segment_3}"}
 	<meta name="robots" content="NOODP">
 	
+	{if segment_2 == "category"}
+	  <meta name="robots" content="noindex, follow">
+	{/if}
+	
 	{!-- Mobile --}
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -46,18 +50,18 @@
 	{if segment_2 == 'entry'}
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="@irsteve">
-	<meta name="twitter:description" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{exp:eehive_hacksaw chars="250"}{blog_article}{/exp:eehive_hacksaw}{/exp:channel:entries}">
+	<meta name="twitter:description" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{exp:streeng characters="250"}{blog_article}{/exp:streeng}{/exp:channel:entries}">
 	<meta name="twitter:title" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title}{/exp:channel:entries}">
 	<meta name="twitter:url" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title_permalink='blog/entry'}{/exp:channel:entries}">
 	{/if}
 	
 	{!-- CSS --}
-	<link href="//cloud.typography.com/7828432/626862/css/fonts.css" rel="stylesheet">
 	{exp:minimee:css minify="y"}<link href="{global:theme_url}/site/assets/css/master.css" rel="stylesheet">{/exp:minimee:css}
 	{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
 		{if extra_css}<link href="{global:theme_url}/site/assets/css/custom/{extra_css}.css?v=1" rel="stylesheet">{/if}
 	{/exp:channel:entries}
-	
+	<link href="//cloud.typography.com/7828432/626862/css/fonts.css" rel="stylesheet">
+		
 	{!-- Other --}
 	<link rel="alternate" type="application/rss+xml" title="Blog | Portfolio of Steve McKinney" href="http://iamsteve.me/blog/feed">
 	{!-- Icons --}
@@ -84,7 +88,7 @@
           "position": 2,
           "item": {
             "@id": "{global:theme_url}/blog",
-            "name": "Blog"
+            "name": "blog"
           }
         },
         {exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
@@ -94,7 +98,7 @@
               "position": 3,
               "item": {
                 "@id": "{path='blog/index'}",
-                "name": "{category_name}"
+                "name": "{exp:streeng lower="yes"}{category_name}{/exp:streeng}"
               }
             },
         	{/exp:channel:category_heading}
@@ -105,7 +109,7 @@
           "position": 2,
           "item": {
             "@id": "{global:theme_url}/blog",
-            "name": "Blog"
+            "name": "blog"
           }
         },
         {exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"} 
@@ -115,7 +119,7 @@
               "position": 3,
               "item": {
                 "@id": "{path='blog/index'}",
-                "name": "{category_name}"
+                "name": "{exp:streeng lower="yes"}{category_name}{/exp:streeng}"
               }
             },
         	{/categories}
@@ -143,10 +147,11 @@
   </script>
   <script type="application/ld+json">
   {
-    "@context" : "http://schema.org",
-    "@type" : "WebSite",
-    "name" : "iamsteve",
-    "url" : "{global:theme_url}"
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "iamsteve",
+    "alternateName": "iamsteve",
+    "url": "{global:theme_url}"
   }
   </script>
   <script type="application/ld+json">
@@ -159,11 +164,11 @@
   </script>
   <script type="application/ld+json">
   {
-    "@context" : "http://schema.org",
-    "@type" : "Person",
-    "name" : "Steve McKinney",
-    "url" : "{global:theme_url}",
-    "sameAs" : [
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Steve McKinney",
+    "url": "{global:theme_url}",
+    "sameAs": [
       "https://twitter.com/irsteve",
       "https://facebook.com/stemckinney",
       "https://instagram.com/stevemckinney",
