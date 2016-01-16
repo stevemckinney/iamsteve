@@ -3,6 +3,9 @@ system/config.php
 .sass-cache
 cache/
 cacheee_version/
+config/
+system/expressionengine/config/database.php
+system/expressionengine/config/config.php
 
 # Images
 assets/images/_blog/*
