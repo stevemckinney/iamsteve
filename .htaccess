@@ -623,18 +623,3 @@ RewriteCond %{REQUEST_URI} ^/(site|blog|include|portfolio|downloads|search|add||
 RewriteRule (.*) /index.php/$1 [L]
 
 # -- NSM .htaccess Generator End --
-
-Options +FollowSymLinks
-RewriteEngine On
-RewriteBase /
- 
-RewriteRule !\.(html|php)$ - [S=6]
-RewriteRule ^([^_]*)_([^_]*)_([^_]*)_([^_]*)_([^_]*)_([^_]*)_(.*)$ $1-$2-$3-$4-$5-$6-$7 [E=underscores:Yes]
-RewriteRule ^([^_]*)_([^_]*)_([^_]*)_([^_]*)_([^_]*)_(.*)$ $1-$2-$3-$4-$5-$6 [E=underscores:Yes]
-RewriteRule ^([^_]*)_([^_]*)_([^_]*)_([^_]*)_(.*)$ $1-$2-$3-$4-$5 [E=underscores:Yes]
-RewriteRule ^([^_]*)_([^_]*)_([^_]*)_(.*)$ $1-$2-$3-$4 [E=underscores:Yes]
-RewriteRule ^([^_]*)_([^_]*)_(.*)$ $1-$2-$3 [E=underscores:Yes]
-RewriteRule ^([^_]*)_(.*)$ $1-$2 [E=underscores:Yes]
- 
-RewriteCond %{ENV:underscores} ^Yes$
-RewriteRule (.*) http://iamsteve.me/$1 [R=301,L] 
