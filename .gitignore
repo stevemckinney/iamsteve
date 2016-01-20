@@ -3,6 +3,8 @@ system/config.php
 .sass-cache
 cache/
 cacheee_version/
+assets/cache/
+assets/cachee_version/
 config/
 system/expressionengine/config/database.php
 system/expressionengine/config/config.php
@@ -18,6 +20,8 @@ images/member_photos/
 images/signature_attachments/
 images/pm_attachments/
 images/uploads
+uploads
+images/
 
 # Caches
 sized/

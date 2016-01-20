@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{global:theme_url}</loc>
+    <lastmod>{current_time format="%Y-%m-%d"}</lastmod>
+    <changefreq>always</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>{global:theme_url}/about</loc>
+    <lastmod>{current_time format="%Y-%m-%d"}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>{global:theme_url}/contact</loc>
+    <lastmod>{current_time format="%Y-%m-%d"}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>{global:theme_url}/blog</loc>
+    <lastmod>{current_time format="%Y-%m-%d"}</lastmod>
+    <changefreq>always</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  {!-- Blog --}
+  {exp:channel:entries channel="blog"}
+    <url>
+      <loc>{comment_url_title_auto_path}</loc>
+      <lastmod>{edit_date format="%Y-%m-%dT06:00:00+00:00"}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+    </url>
+  {/exp:channel:entries}
+  
+  {!-- Categories --}
+  {exp:channel:categories
+    disable="category_fields"
+    show_empty="no"
+    style="linear"
+    channel="blog"
+  }
+    <url>
+      <loc>{global:theme_url}/blog/category/{category_url_title}</loc>
+      <changefreq>weekly</changefreq>
+      <priority>0.5</priority>
+    </url>
+  {/exp:channel:categories}
+</urlset>

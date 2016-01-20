@@ -1,0 +1,9 @@
+<aside class="meta">
+<ul>
+	<li data-icon="calendar"><time datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" class="published" pubdate>{entry_date format="%d/%m/%Y"}</time><time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated screenreader">{edit_date format="%Y/%m/%d"}</time></li>
+	<li data-icon="tag">{categories channel="blog" style="linear" parent_only="yes" limit="1"}<a href="{path='blog/index'}" title="This post is under category:{category_name}." rel="category tag">{category_name}</a>{/categories}</li>
+	{if segment_2 != "entry"}<li data-icon="link"><a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark">Continue reading</a></li>{/if}
+	{edit}
+	<li class="screenreader"><span class="author vcard"><a rel="author" href="http://iamsteve.me" class="url fn">Steve McKinney</a></span></li>
+</ul>
+</aside>
