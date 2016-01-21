@@ -62,6 +62,8 @@ class Filesystem {
 	 */
 	public function write($path, $data, $overwrite = FALSE)
 	{
+		$path = $this->normalize($path);
+		
 		if ($this->isDir($path))
 		{
 			throw new FilesystemException("Cannot write file, path is a directory: {$path}");
@@ -85,7 +87,7 @@ class Filesystem {
 	public function mkDir($path, $with_index = TRUE)
 	{
 		$path = $this->normalize($path);
-    mkdir($path, DIR_WRITE_MODE, TRUE); 
+		mkdir($path, DIR_WRITE_MODE, TRUE);
 
 		if ($with_index)
 		{

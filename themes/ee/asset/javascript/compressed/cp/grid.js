@@ -60,9 +60,9 @@ e.toggle(i>0),i>0?(
 0==n.size()&&t("td.reorder-col",this.root).size()>0&&t("thead tr",this.root).prepend(t("<th/>",{"class":"first reorder-col"})),0==o.size()&&t("thead tr",this.root).append(t("<th/>",{"class":"last grid-remove"}))):(n.remove(),o.remove()),""!==this.settings.grid_max_rows&&
 // Show add button if row count is below the max rows setting,
 // and only if there are already other rows present
-e.toggle(i<this.settings.grid_max_rows&&i>0),""!==this.settings.grid_min_rows){var s=this.root.find(".toolbar .remove");
+e.toggle(i<this.settings.grid_max_rows&&i>0),""!==this.settings.grid_min_rows){var r=this.root.find(".toolbar .remove");
 // Show delete buttons if the row count is above the min rows setting
-s.toggle(i>this.settings.grid_min_rows)}
+r.toggle(i>this.settings.grid_min_rows)}
 // Do not allow sortable to run when there is only one row, otherwise
 // the row becomes detached from the table and column headers change
 // width in a fluid-column-width table
@@ -84,6 +84,8 @@ _addRow:function(){
 el=this.blankRow.clone(),el.removeClass("grid-blank-row"),el.removeClass("hidden"),el.show(),
 // Increment namespacing on inputs
 this.original_row_count++,el.html(el.html().replace(RegExp("new_row_[0-9]{1,}","g"),"new_row_"+this.original_row_count)),
+// Add the new row ID to the field data
+t("> td",el).attr("data-new-row-id","new_row_"+this.original_row_count),
 // Enable inputs
 el.find(":input").removeAttr("disabled"),
 // Append the row to the end of the row container
@@ -230,7 +232,9 @@ _bindAutoColName:function(i){i.each(function(i,e){t("input.grid_col_field_label"
 	 *				defaults to blank column
 	 * @return	{jQuery Object}	New column element
 	 */
-_buildNewColumn:function(i){i=void 0==i?this.blankColumn.clone():this._cloneWithFormValues(i),i.find('input[name$="\\[name\\]"]').attr("value","");
+_buildNewColumn:function(i){i=void 0==i?this.blankColumn.clone():this._cloneWithFormValues(i),
+// Clear out column name field in new column because it has to be unique
+i.find('input[name$="\\[name\\]"]').attr("value","");
 // Need to make sure the new column's field names are unique
 var e="new_"+t(".grid-item",this.root).size();
 // Make sure inputs are enabled if creating blank column

@@ -1,4 +1,10 @@
-void 0===EE.cp&&(EE.cp={}),EE.cp.datePicker={zeropad:function(e){return e+="",2==e.length?e:"0"+e},get_formatted_date:function(e,t){var a=e.getFullYear(),n=e.getMonth()+1,i=e.getDate(),r=e.getDay(),d=e.getHours(),l=e.getMinutes();d=(d+11)%12+1,1==i?suffix="st":2==i?suffix="nd":3==i?suffix="rd":suffix="th",diff=e-new Date(e.getFullYear(),0,0),doy=Math.ceil(diff/864e5)-1,2==n?1==new Date(a,1,29).getMonth()?days_in_month=29:days_in_month=28:[4,6,9,11].indexOf(n)>-1?days_in_month=30:days_in_month=31;var c={
+void 0===EE.cp&&(EE.cp={}),EE.cp.datePicker={zeropad:function(e){return e+="",2==e.length?e:"0"+e},get_formatted_date:function(e,t){var a=e.getFullYear(),n=e.getMonth()+1,i=e.getDate(),r=e.getDay(),d=e.getHours(),l=e.getMinutes();d=(d+11)%12+1,
+// Suffix
+1==i?suffix="st":2==i?suffix="nd":3==i?suffix="rd":suffix="th",
+// Calculate day of year
+diff=e-new Date(e.getFullYear(),0,0),doy=Math.ceil(diff/864e5)-1,
+// Calculate days in this month
+2==n?1==new Date(a,1,29).getMonth()?days_in_month=29:days_in_month=28:[4,6,9,11].indexOf(n)>-1?days_in_month=30:days_in_month=31;var c={
 // Day
 d:this.zeropad(i),D:EE.lang.date.days[r],j:i,l:EE.lang.date.days[r],N:0==r?7:r,S:suffix,w:r,z:doy,
 // Week

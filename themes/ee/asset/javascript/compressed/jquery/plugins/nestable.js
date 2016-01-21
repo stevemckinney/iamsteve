@@ -31,7 +31,21 @@ p.dirAx!==c?(p.distAxX=0,p.distAxY=0):(p.distAxX+=Math.abs(p.distX),0!==p.dirX&&
              */
 p.dirAx&&p.distAxX>=r.threshold&&(
 // reset move distance on x-axis for new phase
-p.distAxX=0,n=this.placeEl.prev(r.itemNodeName+"."+r.itemClass),p.distX>0&&n.length&&!n.hasClass(r.collapsedClass)&&(a=n.find(r.listNodeName+"."+r.listClass).last(),h=this.placeEl.parents(r.listNodeName+"."+r.listClass).length,h+this.dragDepth<=r.maxDepth&&(a.length?(a=n.children(r.listNodeName+"."+r.listClass).last(),a.append(this.placeEl)):(a=t("<"+r.listNodeName+"/>").addClass(r.listClass),a.append(this.placeEl),n.append(a),this.setParent(n)))),p.distX<0&&(d=this.placeEl.next(r.itemNodeName+"."+r.itemClass),d.length||(o=this.placeEl.parent(),this.placeEl.closest(r.itemNodeName+"."+r.itemClass).after(this.placeEl),o.children().length||this.unsetParent(o.parent()))));var f=!1;if(
+p.distAxX=0,n=this.placeEl.prev(r.itemNodeName+"."+r.itemClass),
+// increase horizontal level if previous sibling exists and is not collapsed
+p.distX>0&&n.length&&!n.hasClass(r.collapsedClass)&&(
+// cannot increase level when item above is collapsed
+a=n.find(r.listNodeName+"."+r.listClass).last(),
+// check if depth limit has reached
+h=this.placeEl.parents(r.listNodeName+"."+r.listClass).length,h+this.dragDepth<=r.maxDepth&&(
+// create new sub-level if one doesn't exist
+a.length?(
+// else append to next level up
+a=n.children(r.listNodeName+"."+r.listClass).last(),a.append(this.placeEl)):(a=t("<"+r.listNodeName+"/>").addClass(r.listClass),a.append(this.placeEl),n.append(a),this.setParent(n)))),
+// decrease horizontal level
+p.distX<0&&(
+// we can't decrease a level if an item preceeds the current one
+d=this.placeEl.next(r.itemNodeName+"."+r.itemClass),d.length||(o=this.placeEl.parent(),this.placeEl.closest(r.itemNodeName+"."+r.itemClass).after(this.placeEl),o.children().length||this.unsetParent(o.parent()))));var f=!1;if(
 // find list item under cursor
 l||(this.dragEl[0].style.visibility="hidden"),this.pointEl=t(e.elementFromPoint(i.pageX-e.body.scrollLeft,i.pageY-(s.pageYOffset||e.documentElement.scrollTop))),l||(this.dragEl[0].style.visibility="visible"),this.pointEl.hasClass(r.handleClass)&&(this.pointEl=this.pointEl.closest(r.itemNodeName+"."+r.itemClass)),this.pointEl.hasClass(r.emptyClass))f=!0;else if(!this.pointEl.length||!this.pointEl.hasClass(r.itemClass))return;
 // find parent list of item under cursor
@@ -40,7 +54,9 @@ var g=this.pointEl.closest("."+r.rootClass),m=this.dragRootEl.data("nestable-id"
              */
 if(!p.dirAx||m||f){
 // check if groups match if dragging over new root
-if(m&&0!==r.group&&r.group!==g.data("nestable-group"))return;if(h=this.dragDepth-1+this.pointEl.parents(r.listNodeName+"."+r.listClass).length,h>r.maxDepth)return;var u=i.pageY<this.pointEl.offset().top+this.pointEl.height()/2;o=this.placeEl.parent(),
+if(m&&0!==r.group&&r.group!==g.data("nestable-group"))return;if(
+// check depth limit
+h=this.dragDepth-1+this.pointEl.parents(r.listNodeName+"."+r.listClass).length,h>r.maxDepth)return;var u=i.pageY<this.pointEl.offset().top+this.pointEl.height()/2;o=this.placeEl.parent(),
 // if empty create new list to replace empty placeholder
 f?(a=t(e.createElement(r.listNodeName)).addClass(r.listClass),a.append(this.placeEl),this.pointEl.replaceWith(a)):u?this.pointEl.before(this.placeEl):this.pointEl.after(this.placeEl),o.children().length||this.unsetParent(o.parent()),this.dragRootEl.find(r.itemNodeName+"."+r.itemClass).length||this.dragRootEl.append('<div class="'+r.emptyClass+'"/>'),
 // parent root list has changed

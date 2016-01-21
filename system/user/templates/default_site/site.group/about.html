@@ -1,19 +1,9 @@
-{embed="/include/header" entry_title="About" title_suffix="About" description="About Steve McKinney a web designer. Information about skills and previous versions of this website."}
-  <?php
-    //date in mm/dd/yyyy format; or it can be in other formats as well
-    $birthDate = "05/07/1990";
-    //explode the date to get month, day and year
-    $birthDate = explode("/", $birthDate);
-    //get age from date or birthdate
-    $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md")
-      ? ((date("Y") - $birthDate[2]) - 1)
-      : (date("Y") - $birthDate[2]));
-  ?>
+{embed="/include/header" entry_title="About"}
   <div class="page-content">
   	<article role="article">
   		<h2>About myself</h2>
-  		<p>I’m <?php echo $age; ?> and I graduated from University in May 2011. I built my first website when I was 12, continued it in my spare time, gone on to study web development and finally make a full time career out of it.</p>
-  		<p>As a designer, I enjoy the whole process, but specialise in user interface and user experience. I think the amount of years I have been doing this web thing have helped me into a more unique position. I’m happy coding and designing equally, and believe it helps make a better end product.</p>
+  		<p>I’m 26 and I graduated from University in May 2011. It really doesn't seem that long ago. I built my first website when I was 12, I for some reason continued it in my spare time, went on to study web development and finally make a full time career out of it.</p>
+  		<p>As a designer, I enjoy the whole process, but specialise in user interface and user experience. I think the amount of years I have been doing this have helped me into a more unique position. I’m happy coding and designing equally, and believe it helps make a better end product.</p>
   		<p>I aspire to be <em>half</em> decent at illustration, someday&hellip; it’s something I have been aiming to become better at. I’m happy with my progress over the past year or so, practice makes perfect. I think illustration adds uniqueness to a website that a photo can’t.</p>
   	</article>
   

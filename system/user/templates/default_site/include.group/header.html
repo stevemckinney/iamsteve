@@ -26,7 +26,14 @@
     iamsteve • design & code blog
   {/if}
   </title>
-  {exp:seo_lite use_last_segment="yes"}
+  {if segment_1 == "about"}
+    {exp:seo_lite default_description="About Steve McKinney a web designer. Information about skills and previous versions of this website."}
+  {if:elseif segment_1 == "blog"}
+    {exp:seo_lite default_description="iamsteve is a design & code blog. You'll find tutorials on Photoshop, Illustrator, Design, CSS & Wordpress."}
+  {if:elseif segment_1 == "contact"}
+  {if:else}
+    {exp:seo_lite use_last_segment="yes"}
+  {/if}
 	<meta name="robots" content="NOODP">
 	
 	{if segment_2 == "category"}
