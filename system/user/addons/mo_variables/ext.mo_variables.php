@@ -4,7 +4,7 @@ class Mo_variables_ext
 {
 	public $settings = array();
 	public $name = 'Mo\' Variables';
-	public $version = '1.2.1';
+	public $version = '1.3.0';
 	public $description = 'Adds many useful global variables and conditionals to use in your templates.';
 	public $settings_exist = 'y';
 	public $docs_url = 'https://git.io/mo';
@@ -434,7 +434,9 @@ class Mo_variables_ext
 	{
 		$this->EE->load->helper('url');
 
-		$this->set_global_var('server_name',  $_SERVER['SERVER_NAME']);
+		$this->set_global_var('server_name', $this->EE->input->server('SERVER_NAME'));
+
+		$this->set_global_var('http_host', $this->EE->input->server('HTTP_HOST'));
 
 		$this->set_global_var('hostname', gethostname());
 

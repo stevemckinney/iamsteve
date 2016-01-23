@@ -57,14 +57,14 @@
 	{if segment_2 == 'entry'}
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="@irsteve">
-	<meta name="twitter:description" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{exp:streeng characters="250"}{blog_article}{/exp:streeng}{/exp:channel:entries}">
+	<meta name="twitter:description" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{exp:streeng characters="250"}{excerpt}{/exp:streeng}{/exp:channel:entries}">
 	<meta name="twitter:title" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title}{/exp:channel:entries}">
 	<meta name="twitter:url" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title_permalink='blog/entry'}{/exp:channel:entries}">
 	{/if}
 	
 	{!-- CSS --}
   {exp:minimee:css minify="y"}<link href="{global:theme_url}/assets/css/master.css" rel="stylesheet">{/exp:minimee:css}
-	<link href="https://cloud.typography.com/7828432/626862/css/fonts.css" rel="stylesheet">
+  <link href="https://cloud.typography.com/7828432/626862/css/fonts.css" rel="stylesheet">
 		
 	{!-- Other --}
 	<link rel="alternate" type="application/rss+xml" title="Blog | Portfolio of Steve McKinney" href="http://iamsteve.me/blog/feed">
