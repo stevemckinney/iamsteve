@@ -7,7 +7,11 @@
   
     <article role="article" class="entry-content">
       {if image != ""}<img src="{image}" class="push-bottom">{/if}
-    	{exp:markdown}{blog_article}{/exp:markdown}
+      {if article}
+        {exp:markdown}{article}{/exp:markdown}
+      {if:else}
+      	{exp:markdown}{blog_article}{/exp:markdown}
+      {/if}
     </article>
     {blog_nav}
   
