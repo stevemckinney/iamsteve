@@ -1,10 +1,11 @@
 {embed="/include/header" entry_title="{exp:channel:entries channel="blog" status="Latest|open|draft"}{title}{/exp:channel:entries}"}
 
 <div class="page-content">
-  {exp:channel:entries require_entry="yes" channel="blog" status="Latest|open|draft" global:param_disable_default global:param_cache_param}
+  {exp:channel:entries require_entry="yes" track_views="one" channel="blog" status="Latest|open|draft" global:param_disable_default global:param_cache_param}
   
-    {if no_results}{redirect="blog"}{/if}
-  
+    {if no_results OR segment_4 != ""}{redirect="404"}{/if}
+		<span style="display:none">Viewed: {view_count_one}</span>
+		
     <article role="article" class="entry-content">
       {if image != ""}<img src="{image}" class="push-bottom">{/if}
       {if article}
