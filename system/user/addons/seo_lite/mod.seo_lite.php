@@ -15,7 +15,7 @@ class Seo_lite {
 	private $tag_prefix;
 	private static $cache;
     
-	public function Seo_lite() // backwards compatible __construct() won't work
+	public function __construct() // backwards compatible __construct() won't work
 	{
         return $this->perform();
 	}
@@ -36,7 +36,7 @@ class Seo_lite {
 
     private function perform()
     {
-        $this->EE =& get_instance(); // Make a local reference to the ExpressionEngine super object
+        $this->EE = get_instance(); // Make a local reference to the ExpressionEngine super object
 
         $entry_id = $this->get_param('entry_id');
         $site_id = $this->get_param('site_id', $this->EE->config->item('site_id'));
