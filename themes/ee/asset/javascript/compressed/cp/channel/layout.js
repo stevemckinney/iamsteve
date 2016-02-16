@@ -19,9 +19,7 @@ i.draggable.remove(),
 // Add the fieldset to the new tab
 $('<fieldset class="col-group sortable"></fieldset>').append(i.draggable.html()).prependTo($("div.tab-open")),$(i.draggable).hasClass("required")){$("div.tab-open fieldset:first-child").addClass("required");var l=$(this).closest("li");$(l).find(".tab-off").length>0&&$(l).find(".tab-off").trigger("click")}
 // Add the field to the publish_layout array
-EE.publish_layout[e()].fields.unshift(t),t=null,
-// Make sure the last element has the last class
-$("fieldset.sortable").removeClass("last"),$("fieldset.sortable:last-child").addClass("last")},over:function(e,a){tab=this,d=setTimeout(function(){$(tab).trigger("click"),s.sortable("refreshPositions")},o)},out:function(e,a){clearTimeout(d)},deactivate:function(e,a){clearTimeout(d)}})}
+EE.publish_layout[e()].fields.unshift(t),t=null,$("fieldset.sortable").removeClass("last"),$("fieldset.sortable:last-child").addClass("last")},over:function(e,a){tab=this,d=setTimeout(function(){$(tab).trigger("click"),s.sortable("refreshPositions")},o)},out:function(e,a){clearTimeout(d)},deactivate:function(e,a){clearTimeout(d)}})}
 // remove debug - it has tabs and we don't want fields to end up in them
 // we'll add it back in after all the events are bound
 var t,l=$("#debug").remove(),n=$(".wrap ul.tabs"),s=$(".wrap div.tab");

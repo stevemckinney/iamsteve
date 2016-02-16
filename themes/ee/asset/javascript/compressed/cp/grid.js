@@ -232,9 +232,7 @@ _bindAutoColName:function(i){i.each(function(i,e){t("input.grid_col_field_label"
 	 *				defaults to blank column
 	 * @return	{jQuery Object}	New column element
 	 */
-_buildNewColumn:function(i){i=void 0==i?this.blankColumn.clone():this._cloneWithFormValues(i),
-// Clear out column name field in new column because it has to be unique
-i.find('input[name$="\\[name\\]"]').attr("value","");
+_buildNewColumn:function(i){i=void 0==i?this.blankColumn.clone():this._cloneWithFormValues(i),i.find('input[name$="\\[name\\]"]').attr("value","");
 // Need to make sure the new column's field names are unique
 var e="new_"+t(".grid-item",this.root).size();
 // Make sure inputs are enabled if creating blank column
