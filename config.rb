@@ -4,10 +4,10 @@ require 'animate-sass'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "site/assets/css"
-sass_dir = "site/assets/sass"
-images_dir = "site/assets/images"
-javascripts_dir = "site/assets/js"
+css_dir = "assets/css"
+sass_dir = "assets/sass"
+images_dir = "assets/images"
+javascripts_dir = "assets/js"
 
 environment = :development
 
