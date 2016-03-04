@@ -1135,6 +1135,11 @@ class Members extends CP_Controller {
 		//  Fetch member ID numbers and build the query
 		$member_ids = ee()->input->post('selection', TRUE);
 
+		if (in_array(ee()->session->userdata['member_id'], $member_ids))
+		{
+			show_error(lang('can_not_delete_self'));
+		}
+
 		// Check to see if they're deleting super admins
 		$this->_super_admin_delete_check($member_ids);
 
@@ -1236,8 +1241,8 @@ class Members extends CP_Controller {
 	private function _member_delete_notifications($member_ids)
 	{
 		// Email notification recipients
-		$group_query = ee()->db->distinct('member_id')
-			->select('screen_name, email, mbr_delete_notify_emails')
+		$group_query = ee()->db->distinct()
+			->select('member_id, screen_name, email, mbr_delete_notify_emails')
 			->join('member_groups', 'members.group_id = member_groups.group_id', 'left')
 			->where('mbr_delete_notify_emails !=', '')
 			->where_in('member_id', $member_ids)

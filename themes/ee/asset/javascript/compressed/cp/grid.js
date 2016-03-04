@@ -37,9 +37,9 @@ this.blankRow.find(":input").attr("disabled","disabled")},/**
 	 */
 _bindSortable:function(){var t=this;this.root.eeTableReorder({
 // Fire 'beforeSort' event on sort start
-beforeSort:function(i){t._fireEvent("beforeSort",i.item)},
+beforeSort:function(i){t._fireEvent("beforeSort",i)},
 // Fire 'afterSort' event on sort stop
-afterSort:function(i){t._fireEvent("afterSort",i.item)}})},/**
+afterSort:function(i){t._fireEvent("afterSort",i)}})},/**
 	 * Adds rows to a Grid field based on the fields minimum rows setting
 	 * and how many rows already exist
 	 */
@@ -57,7 +57,7 @@ _toggleRowManipulationButtons:function(){var i=this._getRows().size(),e=this.roo
 // Show add button below field when there are more than zero rows
 e.toggle(i>0),i>0?(
 // Only show reorder header if table is configured to be reorderable
-0==n.size()&&t("td.reorder-col",this.root).size()>0&&t("thead tr",this.root).prepend(t("<th/>",{"class":"first reorder-col"})),0==o.size()&&t("thead tr",this.root).append(t("<th/>",{"class":"last grid-remove"}))):(n.remove(),o.remove()),""!==this.settings.grid_max_rows&&
+0==n.size()&&t("td.reorder-col",this.root).size()>0&&t("> thead tr",this.root).prepend(t("<th/>",{"class":"first reorder-col"})),0==o.size()&&t("> thead tr",this.root).append(t("<th/>",{"class":"last grid-remove"}))):(n.remove(),o.remove()),""!==this.settings.grid_max_rows&&
 // Show add button if row count is below the max rows setting,
 // and only if there are already other rows present
 e.toggle(i<this.settings.grid_max_rows&&i>0),""!==this.settings.grid_min_rows){var r=this.root.find(".toolbar .remove");
@@ -232,7 +232,9 @@ _bindAutoColName:function(i){i.each(function(i,e){t("input.grid_col_field_label"
 	 *				defaults to blank column
 	 * @return	{jQuery Object}	New column element
 	 */
-_buildNewColumn:function(i){i=void 0==i?this.blankColumn.clone():this._cloneWithFormValues(i),i.find('input[name$="\\[name\\]"]').attr("value","");
+_buildNewColumn:function(i){i=void 0==i?this.blankColumn.clone():this._cloneWithFormValues(i),
+// Clear out column name field in new column because it has to be unique
+i.find('input[name$="\\[name\\]"]').attr("value","");
 // Need to make sure the new column's field names are unique
 var e="new_"+t(".grid-item",this.root).size();
 // Make sure inputs are enabled if creating blank column

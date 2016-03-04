@@ -19,12 +19,14 @@ i.draggable.remove(),
 // Add the fieldset to the new tab
 $('<fieldset class="col-group sortable"></fieldset>').append(i.draggable.html()).prependTo($("div.tab-open")),$(i.draggable).hasClass("required")){$("div.tab-open fieldset:first-child").addClass("required");var l=$(this).closest("li");$(l).find(".tab-off").length>0&&$(l).find(".tab-off").trigger("click")}
 // Add the field to the publish_layout array
-EE.publish_layout[e()].fields.unshift(t),t=null,$("fieldset.sortable").removeClass("last"),$("fieldset.sortable:last-child").addClass("last")},over:function(e,a){tab=this,d=setTimeout(function(){$(tab).trigger("click"),s.sortable("refreshPositions")},o)},out:function(e,a){clearTimeout(d)},deactivate:function(e,a){clearTimeout(d)}})}
+EE.publish_layout[e()].fields.unshift(t),t=null,
+// Make sure the last element has the last class
+$("fieldset.sortable").removeClass("last"),$("fieldset.sortable:last-child").addClass("last")},over:function(e,a){tab=this,d=setTimeout(function(){$(tab).trigger("click"),s.sortable("refreshPositions")},o)},out:function(e,a){clearTimeout(d)},deactivate:function(e,a){clearTimeout(d)}})}
 // remove debug - it has tabs and we don't want fields to end up in them
 // we'll add it back in after all the events are bound
 var t,l=$("#debug").remove(),n=$(".wrap ul.tabs"),s=$(".wrap div.tab");
 // Sorting the tabs
-n.sortable({cancel:"li:first-child",items:"li",start:function(e,a){tab_index_at_start=n.find("li").index(a.item[0])},update:function(e,a){var i=n.find("li").index(a.item[0]),t=EE.publish_layout.splice(tab_index_at_start,1);EE.publish_layout.splice(i,0,t[0]),tab_index_at_start=NaN}}),
+n.sortable({cancel:"li:first-child",items:"li",start:function(e,a){tab_index_at_start=n.find("li").index(a.item[0])},update:function(e,a){var i=n.find("li").index(a.item[0]),t=EE.publish_layout.splice(tab_index_at_start,1);EE.publish_layout.splice(i,0,t[0]),tab_index_at_start=0/0}}),
 // Prevent clicking the move icon from refreshing
 $(".move a").on("click",function(){return!1});var d,o=500;i(),
 // Sorting the fields

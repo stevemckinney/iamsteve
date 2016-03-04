@@ -12,13 +12,15 @@
 !function(t){t(document).ready(function(){EE.cp.formValidation.init()}),EE.cp.formValidation={paused:!1,pause:function(t){if(this.paused=!0,void 0===t){var e=this;setTimeout(function(){e.resume()},3e3)}},resume:function(){this.paused=!1},/**
 	 * @param	{jQuery object}	form	Optional jQuery object of form
 	 */
-init:function(e){var e=e||t("form"),i=this;e.each(function(e,s){i._bindButtonStateChange(t(s)),i._bindForms(t(s))}),this._focusFirstError(),this._scrollGrid()},/**
+init:function(e){var e=e||t("form"),i=this;
+// These are the text input selectors we listen to for activity
+this._textInputSelectors="input[type=text], input[type=number], input[type=password], textarea",e.each(function(e,s){i._bindButtonStateChange(t(s)),i._bindForms(t(s))}),this._focusFirstError(),this._scrollGrid()},/**
 	 * Bind inputs to the validation routine. Text inputs will trigger a
 	 * validation request on blur, while others will trigger on change.
 	 *
 	 * @param	{jQuery object}	container	jQuery object of container of elements
 	 */
-bindInputs:function(e){var i=this;t("input[type=text], input[type=password], textarea",e).blur(function(){
+bindInputs:function(e){var i=this;t(this._textInputSelectors,e).blur(function(){
 // Unbind keydown validation when the invalid field loses focus
 t(this).unbind("keydown");var e=t(this);setTimeout(function(){i._sendAjaxRequest(e)},0)}),t("input[type=checkbox], input[type=radio], select",e).change(function(){var e=t(this);setTimeout(function(){i._sendAjaxRequest(e)},0)}),
 // Upon loading the page with invalid fields, bind the text field
@@ -32,7 +34,7 @@ t("form.ajax-validate fieldset.invalid").each(function(){i._bindTextFieldTimer(t
 _focusFirstError:function(){
 // Get the first container that has a text input inside it, then get
 // the first text input
-var e=t(".invalid").has("input[type=text], textarea").first().find("input[type=text], textarea").first();
+var e=t(".invalid").has(this._textInputSelectors).first().find(this._textInputSelectors).first();
 // Bail if no field to focus
 if(0!=e.size()){
 // Multiply by 2 to ensure the cursor always ends up at the end;
@@ -57,16 +59,16 @@ e.submit(function(s){
 // If the submit was trigger by a button click, disable it to prevent futher clicks
 // Update the button text to the value of its "work-text" data attribute
 // Replace button text with working text and disable the button to prevent further clicks
-return i.size()>0&&(i.addClass("work"),i.each(function(i,n){return s.target==n?(n.prop("disabled",!0),
+return i.size()>0&&(i.addClass("work"),i.each(function(i,n){
 // Some controllers rely on the presence of the submit button in POST, but it won't
 // make it to the controller if it's disabled, so add it back as a hidden input
-e.append(t("<input/>",{type:"hidden",name:n.name,value:n.value})),!1):void 0}),""!=i.data("work-text")&&(i.is("input")?i.attr("value",i.data("work-text")):i.is("button")&&i.text(i.data("work-text")))),!0})},/**
+return s.target==n?(n.prop("disabled",!0),e.append(t("<input/>",{type:"hidden",name:n.name,value:n.value})),!1):void 0}),""!=i.data("work-text")&&(i.is("input")?i.attr("value",i.data("work-text")):i.is("button")&&i.text(i.data("work-text")))),!0})},/**
 	 * Binds forms with a class of 'ajax-validate' to the AJAX
 	 * validation routines
 	 *
 	 * @param	{jQuery object}	form	Optional jQuery object of form
 	 */
-_bindForms:function(e){var i=this;e.has(".form-ctrls .btn").each(function(e,s){var n=t(this);n.find(".form-ctrls input.btn");i.bindInputs(n),i._dismissSuccessAlert(n)})},/**
+_bindForms:function(e){var i=this;e.has(".form-ctrls .btn").each(function(e,s){{var n=t(this);n.find(".form-ctrls input.btn")}i.bindInputs(n),i._dismissSuccessAlert(n)})},/**
 	 * When a form element is interacted with after the form has been
 	 * successfully submitted, hide the success message
 	 */

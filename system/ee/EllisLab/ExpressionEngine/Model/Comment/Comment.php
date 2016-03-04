@@ -68,6 +68,7 @@ class Comment extends Model {
 	protected static $_events = array(
 		'afterInsert',
 		'afterDelete',
+		'afterSave',
 	);
 
 	protected $comment_id;
@@ -106,6 +107,12 @@ class Comment extends Model {
 
 		$last_author->updateAuthorStats();
 		$this->updateCommentStats();
+		ee()->functions->clear_caching('all');
+	}
+
+	public function onAfterSave()
+	{
+		ee()->functions->clear_caching('all');
 	}
 
 	private function updateCommentStats()
@@ -132,6 +139,14 @@ class Comment extends Model {
 		$stats->total_comments = $total_comments;
 		$stats->last_comment_date = $last_comment_date;
 		$stats->save();
+
+		// Update comment count for the entry
+		$total_entry_comments = $comments->filter('entry_id', $this->entry_id)->count();
+
+		// Query builder while a Model bug gets sorted
+		ee()->db->set('comment_total', $total_entry_comments)
+			->where('entry_id',  $this->entry_id)
+			->update('channel_titles');
 	}
 
 }

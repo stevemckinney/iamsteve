@@ -8,6 +8,7 @@ assets/cachee_version/
 config/
 system/expressionengine/config/database.php
 system/expressionengine/config/config.php
+system/user/logs/*
 
 # Images
 assets/images/_blog/*
