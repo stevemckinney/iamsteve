@@ -3,9 +3,9 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2014, EllisLab, Inc.
- * @license		https://ellislab.com/expressionengine/user-guide/license.html
- * @link		http://ellislab.com
+ * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
+ * @license		https://expressionengine.com/license
+ * @link		https://ellislab.com
  * @since		Version 3.0
  * @filesource
  */
@@ -26,7 +26,7 @@ $("fieldset.sortable").removeClass("last"),$("fieldset.sortable:last-child").add
 // we'll add it back in after all the events are bound
 var t,l=$("#debug").remove(),n=$(".wrap ul.tabs"),s=$(".wrap div.tab");
 // Sorting the tabs
-n.sortable({cancel:"li:first-child",items:"li",start:function(e,a){tab_index_at_start=n.find("li").index(a.item[0])},update:function(e,a){var i=n.find("li").index(a.item[0]),t=EE.publish_layout.splice(tab_index_at_start,1);EE.publish_layout.splice(i,0,t[0]),tab_index_at_start=0/0}}),
+n.sortable({cancel:"li:first-child",items:"li",start:function(e,a){tab_index_at_start=n.find("li").index(a.item[0])},update:function(e,a){var i=n.find("li").index(a.item[0]),t=EE.publish_layout.splice(tab_index_at_start,1);EE.publish_layout.splice(i,0,t[0]),tab_index_at_start=NaN}}),
 // Prevent clicking the move icon from refreshing
 $(".move a").on("click",function(){return!1});var d,o=500;i(),
 // Sorting the fields
@@ -47,7 +47,7 @@ a.after($("<em></em>").append(a.data("illegal"))),a.parents("fieldset").addClass
 // If you submit the form, trigger the submit button click
 $(".modal-add-new-tab form").on("submit",function(e){$(".modal-add-new-tab .submit").trigger("click"),e.preventDefault()}),
 // Removing a tab
-n.on("click",".tab-remove",function(e){var a=$(this).parents("li").eq(0),i=$("ul.tabs li").index(a),t=s.filter("."+$(a).find("a").eq(0).attr("rel"));return t.html()?void $("body").prepend(EE.alert.not_empty.replace("%s",a.text())):(EE.publish_layout.splice(i,1),a.remove(),void t.remove())}),
+n.on("click",".tab-remove",function(e){var a=$(this).parents("li").eq(0),i=$("ul.tabs li").index(a),t=s.filter("."+$(a).find("a").eq(0).attr("rel"));return t.html().trim()?void $("body").prepend(EE.alert.not_empty.replace("%s",a.text())):(EE.publish_layout.splice(i,1),a.remove(),void t.remove())}),
 // Saving the hide/unhide state of fields
 $("div.publish form").on("click","li.hide a, li.unhide a",function(i){var t=e(),l=a(this);EE.publish_layout[t].fields[l].visible=!EE.publish_layout[t].fields[l].visible,$(this).parents("li").eq(0).toggleClass("hide unhide"),i.preventDefault()}),
 // Saving the collapsed state

@@ -3,15 +3,15 @@
  *
  * @package		ExpressionEngine
  * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2015, EllisLab, Inc.
- * @license		https://ellislab.com/expressionengine/user-guide/license.html
- * @link		http://ellislab.com
+ * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
+ * @license		https://expressionengine.com/license
+ * @link		https://ellislab.com
  * @since		Version 3.0
  * @filesource
  */
 "use strict";!function(e){e(document).ready(function(){function a(a,r,s){var n=e(a).closest("fieldset").find("div.col.last").eq(0),d=e(a).closest("fieldset").serialize(),c=EE.publish.field.URL+"&field_name="+e(n).find(".relate-wrap").data("field"),o=e(a).attr("name");
 // Assume it's in a Grid
-if(0==n.length){n=e(a).closest("td");var h=e(n).data(e(n).data("row-id")?"row-id":"new-row-id");d=e(n).find("input").serialize()+"&column_id="+e(n).data("column-id")+"&row_id="+h,c=EE.publish.field.URL+"&field_name="+e(a).closest("table").attr("id")}r&&(d+="&channel="+r),
+if(0==n.length){n=e(a).closest("td");var h=e(n).data("row-id")?e(n).data("row-id"):e(n).data("new-row-id");d=e(n).find("input").serialize()+"&column_id="+e(n).data("column-id")+"&row_id="+h,c=EE.publish.field.URL+"&field_name="+e(a).closest("table").attr("id")}r&&(d+="&channel="+r),
 // Cancel the last AJAX request
 clearTimeout(t),l&&l.abort(),t=setTimeout(function(){l=e.ajax({url:c,data:d,type:"POST",dataType:"json",success:function(a){e(n).html(a.html);
 // Set focus back to current search field and place cursor at the end

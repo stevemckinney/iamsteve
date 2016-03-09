@@ -234,11 +234,11 @@ _bindAutoColName:function(i){i.each(function(i,e){t("input.grid_col_field_label"
 	 */
 _buildNewColumn:function(i){i=void 0==i?this.blankColumn.clone():this._cloneWithFormValues(i),
 // Clear out column name field in new column because it has to be unique
-i.find('input[name$="\\[name\\]"]').attr("value","");
+i.find('input[name$="\\[col_name\\]"]').attr("value","");
 // Need to make sure the new column's field names are unique
-var e="new_"+t(".grid-item",this.root).size();
+var e="new_"+t(".grid-item",this.root).size(),n=i.data("field-name");
 // Make sure inputs are enabled if creating blank column
-return i.html(i.html().replace(RegExp("(new_|col_id_)[0-9]{1,}","g"),e)),i.attr("data-field-name",e),i.find(":input").removeAttr("disabled").removeClass("grid_settings_error"),i},/**
+return i.html(i.html().replace(RegExp('name="grid\\[cols\\]\\['+n+"\\]","g"),'name="grid[cols]['+e+"]")),i.attr("data-field-name",e),i.find(":input").removeAttr("disabled").removeClass("grid_settings_error"),i},/**
 	 * Binds change listener to the data type columns dropdowns of each column
 	 * so we can load the correct settings form for the selected fieldtype
 	 */
@@ -246,9 +246,9 @@ _bindColTypeChange:function(){var i=this;this.root.on("change","select.grid_col_
 // New, fresh settings form
 var n=i.colTemplateContainer.find(".grid_col_settings_custom_field_"+t(this).val()+":last").clone();
 // Enable inputs
-n.find(":input").removeAttr("disabled");var o=t(this).parents(".grid-item").find(".grid-col-settings-custom");
+n.find(":input").removeAttr("disabled");var o=t(this).parents(".grid-item").find(".grid-col-settings-custom"),r=o.parents(".grid-item").attr("data-field-name"),s="(new_)?[0-9]{1,}";
 // Namespace fieldnames for the current column
-n.html(n.html().replace(RegExp("(new_|col_id_)[0-9]{1,}","g"),o.parents(".grid-item").data("fieldName"))),
+n.html(n.html().replace(RegExp('name="grid\\[cols\\]\\['+s+"\\]","g"),'name="grid[cols]['+r+"]")),
 // Find the container holding the settings form, replace its contents
 o.html(n),
 // Fire displaySettings event
