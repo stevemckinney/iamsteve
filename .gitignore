@@ -9,6 +9,8 @@ config/
 system/expressionengine/config/database.php
 system/expressionengine/config/config.php
 system/user/logs/*
+system/ee/installer
+system/ee/installer_*
 
 # Images
 assets/images/_blog/*
