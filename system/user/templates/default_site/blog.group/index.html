@@ -1,19 +1,5 @@
 {embed="/include/header" entry_title="Blog"}
 <div class="page-content">
-  {if logged_in}
-    <div style="background:#fffdf5">
-      <h2>Draft posts</h2>
-      {exp:channel:entries channel="blog" limit="2" status="draft" cache="no" show_future_entries="yes"}
-          <article role="article" class="hentry">
-            <h1 class="h2 entry-title entry-summary-title"><a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark">{title}</a></h1>
-	          {excerpt}
-            {blog_meta}
-          </article>
-          {pagination}
-      {/exp:channel:entries}
-    </div>
-  {/if}
-  
   {exp:channel:entries channel="blog" paginate="bottom" limit="8" status="Latest|open|{if logged_in}|draft{/if}" disable="member_data|trackbacks" global:param_disable_mt global:param_cache_param}
     
     {if no_results}{redirect="404"}{/if}
