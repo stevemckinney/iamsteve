@@ -146,6 +146,7 @@ pre {
   padding: $base-px;
   margin: 0 0 $base-px;
   display: block;
+  font-size: 14px;
   
   @include respond-min($c) {
     margin: 0 0 $line;
