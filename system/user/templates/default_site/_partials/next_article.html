@@ -1,0 +1,26 @@
+{exp:channel:entries require_entry="yes" related_categories_mode="yes" custom_fields="yes" limit="4" channel="blog" status="Latest|open|draft" global:param_disable_default global:param_cache_param}
+  {next}
+		<article data-href="{title_permalink='blog/entry'}" data-event="Related entry [new]">
+	    <h3>{next:title}</h3>
+	    {exp:markdown}{next:excerpt}{/exp:markdown}
+    </article>
+  {/next}
+  {if "{next:count}" == ""}	
+    {if count == 1}
+      <section role="region" aria-labelledby="Next to read" class="related-entries">
+        <h1 role="heading" class="h2">Next to read</h1>
+        <div class="related-entries-container">
+    {/if}
+    
+  	{if no_results}There are currently no related articles.{/if}
+  	<article class="related-entry" data-href="{title_permalink='blog/entry'}" data-event="Clicked related entry">
+      <h2 class="h4"><a href="{title_permalink='blog/entry'}" data-event="Clicked related entry link">{title}</a></h2>
+      <p>{exp:streeng words="30" append="&hellip;"}{excerpt}{/exp:streeng}</p>
+    </article>
+    
+    {if count == 4}
+        </div>
+      </section>
+    {/if}
+  {/if}
+{/exp:channel:entries}
