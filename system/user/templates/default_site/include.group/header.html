@@ -208,7 +208,7 @@
   			{/exp:channel:category_heading}
   		{/exp:channel:entries}
     {if:elseif segment_2 == "entry"}
-      {exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+      {exp:channel:entries channel="blog|portfolio|site|downloads" show_future_entries="yes" limit="1" status="open|latest|draft" disable="member_data|trackbacks|pagination"}
         <div class="page-header">
     		  <h1 class="title entry-title"><a href="{title_permalink='blog/entry'}">{embed:entry_title}</a></h1>
     		  <footer class="entry-meta">
@@ -219,7 +219,7 @@
     		</div>
   		{/exp:channel:entries}
   	{if:elseif embed:entry_title}
-  		{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+  		{exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest|draft" disable="member_data|trackbacks|pagination"}
   			<div class="page-header">
     		  <h1 class="title entry-title">{embed:entry_title}</h1>
     		</div>
