@@ -42,12 +42,20 @@
       position: fixed;
       z-index: 999;
       top: 0; left: 0; right: 0;
-      background: #222;
+      background: #fff; }
+    .menu-bar a { 
       padding: 0 .75em;
-      line-height: 44px; }
-    .menu-bar a { font-size: 12px; font-family: Helvetica; color: #666; }
+      border-right: 1px solid #eee;
+      display: inline-block;
+      height: 44px;
+      line-height: 44px;
+      font-size: 12px;
+      font-family: Helvetica;
+      color: #999; }
   </style>
-  <div class="menu-bar"><a href="{cp_url}">Control Panel</a> – <a href="{cp_url}?/cp/utilities/cache">Cache</a> – <a href="{cp_url}/cp/content_publish/entry_form&channel_id=1&S=327abb6bad14a9e5b472d82b9b96b50d">Publish</a> – <a href="{cp_url}/cp/content_edit&channel_id=1&S=327abb6bad14a9e5b472d82b9b96b50d">Edit</a>
+  <div class="menu-bar"><a href="{cp_url}">Control Panel</a><a href="{cp_url}?/cp/utilities/cache">Cache</a><a href="{cp_url}/cp/content_publish/entry_form&channel_id=1&S=327abb6bad14a9e5b472d82b9b96b50d">Publish</a>{if logged_in_group_id == 1}
+    <a href="{cp_edit_entry_url}">Edit {last_segment}</a>
+{/if} 
   </div>
 {/if}
 {!-- Javascript --}
