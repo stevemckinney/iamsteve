@@ -110,5 +110,21 @@ kbd {
   font-size: 16px;
   padding: 2px 4px;
   font-family: inherit;
-  font-weight: 700;
-}
+  font-weight: 700; }
+
+// Table
+// ---------------------------
+table {
+  width: 100%; }
+
+.page-content {
+  tr {
+    border-bottom: 1px solid rgba($primary, .05); }
+  
+  th,
+  td {
+    padding: 3px 0; }
+  
+  th:last-child,
+  td:last-child {
+    text-align: right; } }
