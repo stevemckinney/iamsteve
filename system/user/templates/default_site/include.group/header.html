@@ -86,44 +86,50 @@
           "name": "Home"
         }
       }{if segment_2},{/if}
+      
+      {!-- Blog categories --}
+      
       {if segment_2 == "category"}
         {
           "@type": "ListItem",
           "position": 2,
           "item": {
             "@id": "{global:theme_url}/blog",
-            "name": "blog"
+            "name": "Blog"
           }
         },
-        {exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+        {exp:channel:entries channel="blog|site" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
           {exp:channel:category_heading channel="blog"}
             {
               "@type": "ListItem",
               "position": 3,
               "item": {
                 "@id": "{path='blog/index'}",
-                "name": "{exp:streeng lower="yes"}{category_name}{/exp:streeng}"
+                "name": "{category_name}"
               }
             },
         	{/exp:channel:category_heading}
         {/exp:channel:entries}
+        
+      {!-- Blog entries --}
+      
       {if:elseif segment_2 == "entry"}
         {
           "@type": "ListItem",
           "position": 2,
           "item": {
             "@id": "{global:theme_url}/blog",
-            "name": "blog"
+            "name": "Blog"
           }
         },
-        {exp:channel:entries channel="blog|portfolio|site|downloads" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"} 
+        {exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"} 
           {categories channel="blog" style="linear" parent_only="yes" limit="1"}
             {
               "@type": "ListItem",
               "position": 3,
               "item": {
                 "@id": "{path='blog/index'}",
-                "name": "{exp:streeng lower="yes"}{category_name}{/exp:streeng}"
+                "name": "{category_name}"
               }
             },
         	{/categories}
@@ -132,16 +138,39 @@
           "@type": "ListItem",
           "position": 4,
           "item": {
-            "@id": "{title_permalink='blog/entry'}",
+            "@id": "{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title_permalink='blog/entry'}{/exp:channel:entries}",
             "name": "{embed:entry_title}"
           }
         }
-      {if:elseif segment_2 != ''}
+      
+      {if:elseif segment_2 == "view"}
         {
           "@type": "ListItem",
           "position": 2,
           "item": {
-            "@id": "{global:theme_url}/{segment_2}",
+            "@id": "{global:theme_url}/portfolio",
+            "name": "Portfolio"
+          }
+        },
+        {exp:channel:entries channel="portfolio" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@id": "{title_permalink='portfolio/view'}",
+              "name": "{embed:entry_title}"
+            }
+          }
+        {/exp:channel:entries}
+      
+      {!-- Pages --}
+      
+      {if:elseif segment_1 != ''}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "{global:theme_url}/{segment_1}",
             "name": "{embed:entry_title}"
           }
         }
