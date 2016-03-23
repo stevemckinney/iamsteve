@@ -27,7 +27,7 @@
   </title>
   {if segment_1 == "about"}
     {exp:seo_lite default_description="About Steve McKinney a web designer. Information about skills and previous versions of this website."}
-  {if:elseif segment_1 == "blog"}
+  {if:elseif segment_1 == "blog" && segment_2 == ""}
     {exp:seo_lite default_description="iamsteve is a design & code blog. You'll find tutorials on Photoshop, Illustrator, Design, CSS & Wordpress."}
   {if:elseif segment_1 == "contact"}
   {if:else}
