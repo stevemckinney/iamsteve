@@ -80,6 +80,7 @@
       w.addEventListener("load", gs, false) :
       w.attachEvent("onload", gs);
   })(window);
+  $('.event-download').on('click', function() {_gs('event', $(this).text())});
   $('[data-event]').on('click', function() {_gs('event', $(this).data('event'))});</script>
   <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M6CQBG"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
