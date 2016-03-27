@@ -26,7 +26,7 @@
   </url>
 
   {!-- Blog --}
-  {exp:channel:entries channel="blog"}
+  {exp:channel:entries channel="blog" status="open|latest"}
     <url>
       <loc>{comment_url_title_auto_path}</loc>
       <lastmod>{edit_date format="%Y-%m-%dT06:00:00+00:00"}</lastmod>
