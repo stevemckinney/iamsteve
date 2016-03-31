@@ -1,9 +1,17 @@
 {embed="/include/header" entry_title="Blog"}
-<div class="page-content push-bottom">
-{exp:channel:entries channel="blog" limit="10" orderby="view_count_one" sort="desc"}
-<a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark">{title} viewed {view_count_one} times</a> <br>
-{/exp:channel:entries} 
-<div>
+<div class="page-content">
+<div class="push-bottom">
+  {exp:channel:entries channel="blog" limit="10" category="2" orderby="view_count_one" sort="desc"}
+    <a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark">{title} viewed {view_count_one} times</a> <br>
+  {/exp:channel:entries} 
+</div>
+
+<div class="push-bottom">
+  {exp:channel:entries channel="blog" limit="10" category="7" orderby="view_count_one" sort="desc"}
+    <a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark">{title} viewed {view_count_one} times</a> <br>
+  {/exp:channel:entries} 
+</div>
+
 	<h2>Draft posts</h2>
 	{exp:channel:entries channel="blog" limit="10" status="draft" cache="no" show_future_entries="yes"}
 		<article role="article" class="hentry">
