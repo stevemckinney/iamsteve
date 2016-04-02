@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="hfeed no-js{if embed:body_class}
-		{embed:body_class} 
-		{if:elseif segment_1 == ''}
-			{exp:channel:entries channel='blog' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'} {url_title} home{/exp:channel:entries}
-			{if:elseif segment_1 && segment_2 == ''} {segment_1}
-			{if:elseif segment_2 == 'entry' OR segment_2 == 'view'} {segment_2} {exp:channel:entries channel='blog|portfolio' limit='1' status='open|latest' disable='member_data|trackbacks|pagination'}{url_title}{/exp:channel:entries}
-		{/if}
-	{/if}">
+<html lang="en">
 <head>
 	{!-- Meta --}
 	<meta charset="utf-8">
