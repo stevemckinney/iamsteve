@@ -102,70 +102,59 @@
     ]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "iamsteve",
-    "alternateName": "iamsteve",
-    "url": "{global:theme_url}"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "url": "{global:theme_url}",
-    "logo": "{global:theme_url}/assets/images/iamsteve-logo.png"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "Person",
-    "name": "Steve McKinney",
-    "url": "{global:theme_url}",
-    "sameAs": [
-      "https://twitter.com/irsteve",
-      "https://facebook.com/stemckinney",
-      "https://instagram.com/stevemckinney",
-      "https://uk.linkedin.com/in/steve-mckinney-5b5836102",
-      "https://plus.google.com/u/0/114129050502065289651"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "NewsArticle",
-    "mainEntityOfPage":{
-      "@type":"WebPage",
-      "@id":"https://google.com/article"
-    },
-    "headline": "Article headline",
-    "image": {
-      "@type": "ImageObject",
-      {if image} "url": "{image}",
-      {if:else} "url": "{image}",
-      "height": 800,
-      "width": 800
-    },
-    "datePublished": "2015-02-05T08:00:00+08:00",
-    "dateModified": "2015-02-05T09:20:00+08:00",
-    "author": {
-      "@type": "Person",
-      "name": "Steve McKinney"
-    },
-     "publisher": {
-      "@type": "Organization",
-      "name": "iamsteve",
-      "logo": {
+{if segment_2 == "entry"}
+	{exp:channel:entries channel="blog" status="latest|open|draft"}
+  	<meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@irsteve">
+    <meta name="twitter:creator" content="@irsteve">
+    <meta name="twitter:title" content="{title}">
+    <meta name="twitter:description" content="{exp:streeng characters="250" allowed="none"}{excerpt}{/exp:streeng}">
+
+    {if image}
+      <meta name="twitter:image" content="{image}">
+    {if:else}
+      <meta name="twitter:image" content="{global:theme_url}/assets/images/og.png">
+    {/if}
+
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage":{
+        "@type": "WebPage",
+        "@id": "{embed:url}"
+      },
+      "headline": "Article headline",
+      "image": {
         "@type": "ImageObject",
-        "url": "https://google.com/logo.jpg",
-        "width": 600,
-        "height": 60
-      }
-    },
-    "description": "A most wonderful article"
-  }
-  </script>
+        {if image}
+          "url": "{embed:image}",
+          "height": 800,
+          "width": 800
+        {if:else}
+          "url": "{global:theme_url}/assets/images/og.png",
+          "height": 800,
+          "width": 800
+        {/if}
+      },
+      "datePublished": "{embed:published}",
+      "dateModified": "{embed:updated}",
+      "author": {
+        "@type": "Person",
+        "name": "Steve McKinney"
+      },
+       "publisher": {
+        "@type": "Organization",
+        "name": "iamsteve",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{global:theme_url}/assets/images/logo.jpg",
+          "width": 600,
+          "height": 60
+        }
+      },
+      "description": "{excerpt}"
+    }
+    </script>
+  {/exp:channel:entries}
+{/if}
