@@ -1,0 +1,171 @@
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "{global:theme_url}",
+          "name": "Home"
+        }
+      }{if segment_2},{/if}
+      
+      {!-- Blog categories --}
+      
+      {if segment_2 == "category"}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "{global:theme_url}/blog",
+            "name": "Blog"
+          }
+        },
+        {exp:channel:entries channel="blog|site" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+          {exp:channel:category_heading channel="blog"}
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@id": "{path='blog/index'}",
+                "name": "{category_name}"
+              }
+            },
+        	{/exp:channel:category_heading}
+        {/exp:channel:entries}
+        
+      {!-- Blog entries --}
+      
+      {if:elseif segment_2 == "entry"}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "{global:theme_url}/blog",
+            "name": "Blog"
+          }
+        },
+        {exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"} 
+          {categories channel="blog" style="linear" parent_only="yes" limit="1"}
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@id": "{path='blog/index'}",
+                "name": "{category_name}"
+              }
+            },
+        	{/categories}
+        {/exp:channel:entries}
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@id": "{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title_permalink='blog/entry'}{/exp:channel:entries}",
+            "name": "{embed:entry_title}"
+          }
+        }
+      
+      {if:elseif segment_2 == "view"}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "{global:theme_url}/portfolio",
+            "name": "Portfolio"
+          }
+        },
+        {exp:channel:entries channel="portfolio" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@id": "{title_permalink='portfolio/view'}",
+              "name": "{embed:entry_title}"
+            }
+          }
+        {/exp:channel:entries}
+      
+      {!-- Pages --}
+      
+      {if:elseif segment_1 != ''}
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "{global:theme_url}/{segment_1}",
+            "name": "{embed:entry_title}"
+          }
+        }
+      {/if}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "iamsteve",
+    "alternateName": "iamsteve",
+    "url": "{global:theme_url}"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "{global:theme_url}",
+    "logo": "{global:theme_url}/assets/images/iamsteve-logo.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "name": "Steve McKinney",
+    "url": "{global:theme_url}",
+    "sameAs": [
+      "https://twitter.com/irsteve",
+      "https://facebook.com/stemckinney",
+      "https://instagram.com/stevemckinney",
+      "https://uk.linkedin.com/in/steve-mckinney-5b5836102",
+      "https://plus.google.com/u/0/114129050502065289651"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":"https://google.com/article"
+    },
+    "headline": "Article headline",
+    "image": {
+      "@type": "ImageObject",
+      {if image} "url": "{image}",
+      {if:else} "url": "{image}",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2015-02-05T08:00:00+08:00",
+    "dateModified": "2015-02-05T09:20:00+08:00",
+    "author": {
+      "@type": "Person",
+      "name": "Steve McKinney"
+    },
+     "publisher": {
+      "@type": "Organization",
+      "name": "iamsteve",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://google.com/logo.jpg",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "A most wonderful article"
+  }
+  </script>
