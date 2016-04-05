@@ -1,4 +1,4 @@
-{embed="/include/header" entry_title="{exp:channel:entries channel="blog" status="Latest|open|Draft"}{title}{/exp:channel:entries}" image="{image}" excerpt="{excerpt}"}
+{embed="/include/header" entry_title="{exp:channel:entries channel="blog" status="Latest|open|Draft"}{title}{/exp:channel:entries}"}
 
 <div class="page-content">
   {exp:channel:entries require_entry="yes" show_future_entries="yes" track_views="one" channel="blog" status="Latest|open|Draft" global:param_disable_default global:param_cache_param}
@@ -7,12 +7,10 @@
     <span style="display:none">Viewed: {view_count_one}</span>
 		
     <article role="article" class="entry-content">
-      {if image != ""}<img src="{image}" class="push-bottom">{/if}
-      {if article}
-        {exp:markdown}{article}{/exp:markdown}
-      {if:else}
-      	{exp:markdown}{blog_article}{/exp:markdown}
+      {if image != ""}
+        <img src="{image}" class="push-bottom">
       {/if}
+      {exp:markdown}{article}{/exp:markdown}
     </article>
     {blog_nav}
   

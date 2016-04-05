@@ -1,35 +1,193 @@
-{if segment_3 == "wordpress_post_formats"}
-<script src="http://use.typekit.com/pfk5dbj.js"></script>
-{/if}
-
-{if segment_3 == "about_version_4"}
-<script src="http://use.typekit.com/blu5obi.js"></script>
-<style>
-.about_version_4 [role="main"] header:first-child {
-	width: 100%;
-	padding-left: 0; padding-right: 0;
-	margin-left: auto; margin-right: auto; }
-.about_version_4 [role="main"] header:first-child h1, .about_version_4 [role="main"] header:first-child h2 {
-	display: block;
-	text-align: center;
-	-webkit-transition: -webkit-transform .2s linear, text-shadow .7s ease;
-	-moz-transition: -moz-transform .2s linear, text-shadow .7s ease;
-	-ms-transition: -ms-transform .2s linear, text-shadow .7s ease;
-	-o-transition: -o-transform .2s linear, text-shadow .7s ease;
-	transition: transform .2s linear, text-shadow .7s ease; }
-.about_version_4 [role="main"] header:first-child h1 {
-	font-family: "bistro-script-web", sans-serif;
-	width: 96%;
-	margin: auto; }
-.about_version_4 .word2 {
-	margin-left: 80px; }
-.about_version_4 [role="main"] header:first-child h1:hover {
-	-webkit-transform: scale(1.015) translateY(10px);
-	-moz-transform: scale(1.015) translateY(10px);
-	-ms-transform: scale(1.015) translateY(10px);
-	-o-transform: scale(1.015) translateY(10px);
-	transform: scale(1.015) translateY(10px);
-	text-shadow 0 -25px 5px rgba(0,0,0,0.1);
-}
-</style>
-{/if}
+{layout:set name="head"}
+  <meta name="robots" content="NOODP">
+  	
+  {if segment_2 == "category"}
+    <meta name="robots" content="noindex, follow">
+  {/if}
+  
+  {!-- Mobile --}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="iamsteve">
+  
+  {!-- Verification --}
+  <meta name="google-site-verification" content="kvxM4eH_QHyUGdJK0LEQj3aZi7Vew5AooNVxk79zruU">
+  
+  {!-- Twitter card --}
+  <meta prefix="og:http://ogp.me/ns#" property="og:title" content="iamsteve • design & code blog">
+  <meta prefix="og:http://ogp.me/ns#" property="og:type" content="website">
+  <meta prefix="og:http://ogp.me/ns#" property="og:image" content="{global:theme_url}/assets/images/og.png">
+  <meta prefix="og:http://ogp.me/ns#" property="og:url" content="{global:theme_url}">
+  
+  
+  {!-- Other --}
+  <link rel="alternate" type="application/rss+xml" title="iamsteve • design & code blog" href="http://iamsteve.me/blog/feed">
+  
+  {!-- Icons --}
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="/assets/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/apple-touch-icon-144x144.png">
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "{global:theme_url}",
+            "name": "Home"
+          }
+        }{if segment_2},{/if}
+        
+        {!-- Blog categories --}
+        
+        {if segment_2 == "category"}
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@id": "{global:theme_url}/blog",
+              "name": "Blog"
+            }
+          },
+          {exp:channel:entries channel="blog|site" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+            {exp:channel:category_heading channel="blog"}
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@id": "{path='blog/index'}",
+                  "name": "{category_name}"
+                }
+              },
+          	{/exp:channel:category_heading}
+          {/exp:channel:entries}
+          
+        {!-- Blog entries --}
+        
+        {if:elseif segment_2 == "entry"}
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@id": "{global:theme_url}/blog",
+              "name": "Blog"
+            }
+          },
+          {exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"} 
+            {categories channel="blog" style="linear" parent_only="yes" limit="1"}
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@id": "{path='blog/index'}",
+                  "name": "{category_name}"
+                }
+              },
+          	{/categories}
+          {/exp:channel:entries}
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@id": "{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title_permalink='blog/entry'}{/exp:channel:entries}",
+              "name": "{embed:entry_title}"
+            }
+          }
+        
+        {if:elseif segment_2 == "view"}
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@id": "{global:theme_url}/portfolio",
+              "name": "Portfolio"
+            }
+          },
+          {exp:channel:entries channel="portfolio" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@id": "{title_permalink='portfolio/view'}",
+                "name": "{embed:entry_title}"
+              }
+            }
+          {/exp:channel:entries}
+        
+        {!-- Pages --}
+        
+        {if:elseif segment_1 != ''}
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@id": "{global:theme_url}/{segment_1}",
+              "name": "{embed:entry_title}"
+            }
+          }
+        {/if}
+      ]
+    }
+  </script>
+  {if segment_2 == "entry"}
+  	{exp:channel:entries channel="blog" status="latest|open|draft" disable="member_data|trackbacks|pagination"}
+    	<meta name="twitter:card" content="summary">
+      <meta name="twitter:site" content="@irsteve">
+      <meta name="twitter:creator" content="@irsteve">
+      <meta name="twitter:title" content="{title}">
+      <meta name="twitter:description" content="{exp:streeng characters="250" allowed="none"}{excerpt}{/exp:streeng}">
+  
+      {if image}
+        <meta name="twitter:image" content="{image}">
+      {if:else}
+        <meta name="twitter:image" content="{global:theme_url}/assets/images/og.png">
+      {/if}
+  
+      <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "mainEntityOfPage":{
+          "@type": "WebPage",
+          "@id": "{title_permalink='blog/entry'}"
+        },
+        "headline": "Article headline",
+        "image": {
+          "@type": "ImageObject",
+          {if image}
+            "url": "{image}",
+            "height": 800,
+            "width": 800
+          {if:else}
+            "url": "{global:theme_url}/assets/images/og.png",
+            "height": 800,
+            "width": 800
+          {/if}
+        },
+        "datePublished": "{entry_date format='%Y-%m-%dT%H:%i:%s%O'}",
+        "dateModified": "{edit_date format='%Y-%m-%dT%H:%i:%s%O'}",
+        "author": {
+          "@type": "Person",
+          "name": "Steve McKinney"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "iamsteve",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{global:theme_url}/assets/images/logo.jpg",
+            "width": 600,
+            "height": 60
+          }
+        },
+        "description": "{exp:streeng encode="true"}{excerpt}{/exp:streeng}"
+      }
+      </script>
+    {/exp:channel:entries}
+  {/if}
+  {exp:iamsteve:json_ld}
+{/layout:set}
