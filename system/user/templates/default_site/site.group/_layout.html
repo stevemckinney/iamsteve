@@ -1,14 +1,20 @@
 {embed="include/header"}
 
   <header class="row header">
-    <a href="/" title="Back to the homepage" class="logo">iamsteve</a>
-		<nav class="nav">
+    <a href="/" title="Back to the homepage" class="logo">
+      <?php include 'assets/images/logo-small.svg'; ?>
+      <span class="logo-text">iamsteve</span>
+    </a>
+    <a href="#nav" class="toggle" id="toggle">
+      <?php include 'assets/images/nav.svg'; ?>
+    </a>
+    <nav id="nav" class="nav">
       <a href="{site_url}"{if segment_1 == ""} class="active"{/if}>Home</a>
-			<a href="{site_url}blog"{if segment_1 == "blog"} class="active"{/if}>Archive</a>
+      <a href="{site_url}blog"{if segment_1 == "blog"} class="active"{/if}>Archive</a>
       <a href="{site_url}about"{if segment_1 == "about"} class="active"{/if}>About</a>
-			<a href="{site_url}contact"{if segment_1 == "contact"} class="active"{/if}>Contact</a>
-			{search}
-		</nav>
+      <a href="{site_url}contact"{if segment_1 == "contact"} class="active"{/if}>Contact</a>
+      {search}
+    </nav>
 	</header>
 	
 	{layout:contents}
