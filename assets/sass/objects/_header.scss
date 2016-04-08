@@ -1,0 +1,31 @@
+// Header
+// ---------------------------
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: $white;
+  
+  // $b and up styles
+  @include breakpoint($b) {
+    box-shadow: inset 0 -1px $neutral-l3; }
+  
+  svg { display: block; } }
+
+// Logo
+// ---------------------------
+.logo {
+  padding: ($base-px - 2px) $base-px;
+  font: 600 em(24px) $sans;
+  color: $primary; }
+
+.logo-text {
+  @include breakpoint($b-max) {
+    display: none; } }
+
+// Toggle
+// ---------------------------
+.toggle {
+  padding: ($base-px - 2px) $base-px;
+  
+	@include breakpoint($c) {
+		display: none; } }

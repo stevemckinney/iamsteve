@@ -1,0 +1,22 @@
+// Navigation
+// ---------------------------
+.nav {
+  
+  // Small screen styles
+  @include breakpoint($b-max) {
+    
+  }
+}
+
+// Nav and search will be revealed by toggling  
+// .toggle in _header.scss
+// ---------------------------
+.nav,
+.form-search {
+  @include breakpoint($b-max) {
+    display: none; } }
+
+// Click .toggle and .active is added
+// ---------------------------
+.nav.active {
+  display: block; }
