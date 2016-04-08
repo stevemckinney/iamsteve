@@ -1,0 +1,83 @@
+// Headings
+// ---------------------------
+#{headings()} {
+	font-family: $heading;
+	color: $neutral;
+	text-rendering: optimizeLegibility;
+	line-height: 1;
+	margin-top: 0;
+	font-weight: 700; }
+	
+.h1 { 
+	font-size: em($h1-size);
+	margin-bottom: em($line, $h1-size); }
+	
+.h2 {
+	font-size: em($h2-size);
+	margin-bottom: em($line, $h2-size); }
+	
+.h3 {
+	font-size: em($h3-size);
+	margin-bottom: em($line, $h3-size); }
+	
+.h4 { 
+	font-size: em($h4-size);
+	margin-bottom: em($base-px, $h4-size); }
+	
+.h5 {
+	font-size: em($h5-size);
+	margin-bottom: em($base-px, $h5-size); }
+	
+.h6 {
+	font-size: em($h6-size);
+	margin-bottom: em($base-px, $h6-size); }
+	
+// General
+// ---------------------------
+body {
+	font: 400 100%/1.5 $body; }
+
+p {
+	margin-bottom: em($base-px); }
+
+a {
+  transition: .2s;
+	text-decoration: none;
+	color: $secondary;
+	
+	&:hover:not(.logo):not(.button),
+	&:focus:not(.logo):not(.button) {
+		opacity: .8; }
+		
+	// Normalize
+	background: transparent; // newer IE versions need this
+	
+	&:active,
+	&:hover {
+		outline: 0; } }
+
+.field {
+	font-size: 1rem; }
+
+// Code
+// ---------------------------
+code {
+	font: 400 em($base-font-size - 2px) $monospace;
+	background: rgba($primary, .05);
+	border-radius: $radius;
+	padding: em(2px, $base-font-size - 2px) em(6px, $base-font-size - 2px);
+	
+	pre & {
+		max-height: 200px;
+		overflow: auto;
+		color: $primary;
+		direction: ltr;
+		text-align: left;
+		white-space: pre-line;
+		-moz-tab-size: 2;
+		-o-tab-size: 2;
+		tab-size: 2; } }
+
+kbd {
+	background: #444;
+	color: $white; }
