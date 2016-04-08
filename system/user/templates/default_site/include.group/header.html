@@ -3,6 +3,7 @@
   <head>
   	{!-- Meta --}
   	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width">
   	{!-- In loving memory of Albert Phillips --}
     {if segment_1 == "about"}
       {exp:seo_lite default_description="About Steve McKinney a web designer. Information about skills and previous versions of this website."}
@@ -15,8 +16,11 @@
       {exp:seo_lite use_last_segment="yes"}
     {/if}
     
-    {!-- CSS 
-    {exp:minimee:css minify="y"}<link href="{site_url}assets/css/master.css" rel="stylesheet">{/exp:minimee:css} --}
+    {!-- CSS --}
+    {exp:minimee:css minify="y"}
+      <link rel="stylesheet" href="{site_url}assets/css/master.css">
+    {/exp:minimee:css}
+    <link rel="stylesheet" href="https://cloud.typography.com/7828432/640526/css/fonts.css">
     
     {!-- 
       Generally don’t need to go in here. You can find JSON-LD, and other meta
