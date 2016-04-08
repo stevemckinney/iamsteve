@@ -1,12 +1,13 @@
   {if logged_in}
     <style>
-      html { margin-top: 44px; }
       .menu-bar { 
         position: fixed;
+        display: flex;
         z-index: 999;
-        top: 0; left: 0; right: 0;
+        bottom: 0; left: 0; right: 0;
         background: #fff; }
-      .menu-bar a { 
+      .menu-bar a {
+        flex: 1;
         padding: 0 .75em;
         border-right: 1px solid #eee;
         display: inline-block;
@@ -14,7 +15,10 @@
         line-height: 44px;
         font-size: 12px;
         font-family: Helvetica;
-        color: #999; }
+        color: #999;
+        text-align: center; }
+      .menu-bar a:last-child {
+        border-right: none; }
     </style>
     <div class="menu-bar">
       {exp:channel:entries channel="blog|portfolio|site|downloads" show_future_entries="yes" limit="1" status="open|latest|draft" disable="member_data|trackbacks|pagination"}
@@ -27,6 +31,7 @@
   {!-- Javascript --}
   
   {layout:js}
+  <script src="{site_url}assets/js/global.js"></script>
   
   {if global:env == "prod"}
     <script>
