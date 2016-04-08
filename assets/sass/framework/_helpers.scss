@@ -1,0 +1,81 @@
+// Various helper mixins & functions
+// ---------------------------
+
+// Override compass mixin to exclude has-layout (browser support doesn't exclude this yet)
+// ---------------------------
+@mixin pie-clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both; } }
+    
+%grid,
+%clear {
+	@include pie-clearfix; }
+
+// Resets
+// ---------------------------
+%input-reset {
+	@include appearance(none); }
+
+// Mixins
+// ---------------------------
+
+// set width and height,
+// pass one value to have both set for you
+@mixin wh(
+	$width	: false,
+	$height	: false
+) {
+	$width: unquote($width);
+	
+	@if $height != none {
+		$height: unquote($height); }
+
+	@if $height {
+		width: #{$width};
+		height: #{$height}; }
+		
+	@else {
+		width: #{$width};
+		height: #{$width}; } }
+
+// Sets the height of stuff with the line height to match
+// ---------------------------
+@mixin set-height(
+	$set-height	: $default-set-height,
+	$padding		: $default-set-height-padding,
+	$context		: $default-context
+) {
+
+	$set-height: if($set-height == true, em($default-set-height), em($set-height, $context));
+		
+	height: $set-height;
+	line-height: $set-height;
+	
+	@if $padding {
+		padding: $padding; } }
+
+// Font face
+// Modification of: https://gist.github.com/jonathantneal/d0460e5c2d5d7f9bc5e6
+// ---------------------------
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: woff2 woff ttf) {
+	$src: null;
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+  
+	@each $ext in $exts {
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, font-url(quote($path + "." + $ext)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}

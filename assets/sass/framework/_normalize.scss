@@ -1,0 +1,196 @@
+/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+// Modified for framework with some additions and differnces
+// inputs + button generally get changed through mixins and have normalization
+// some properties will be in other files that are normalized
+// Ability to override colours and anticipate that base font size may change for some
+html {
+  box-sizing: border-box;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%; }
+
+// http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+// ---------------------------
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+	display: block; }
+
+audio,
+canvas,
+progress,
+video {
+	display: inline-block;
+	vertical-align: baseline; }
+
+audio:not([controls]) {
+	display: none;
+	height: 0; }
+
+[hidden],
+template {
+	display: none; }
+
+// Shared
+// ---------------------------
+td,
+th,
+dl,
+menu,
+legend,
+input[type="radio"],
+input[type="checkbox"] {
+	padding: 0; }
+
+dl,
+dd,
+menu,
+body {
+	margin: 0; }
+
+// Text
+// ---------------------------
+abbr[title] {
+	border-bottom: 1px dotted; }
+
+b,
+strong {
+	font-weight: font-weight(bold); }
+	
+dfn {
+	font-style: italic; }
+
+mark {
+	background: $default-mark-background;
+	color: $default-mark-color; }
+
+kbd {
+	background: $default-kbd-background; }
+
+small {
+	font-size: $xxsmall-size; }
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline; }
+
+sup {
+	top: -.5em; }
+
+sub {
+	bottom: -.25em; }
+
+pre {
+	@include force-wrap;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch; }
+
+code,
+kbd,
+pre,
+samp {
+	font-family: $monospace;
+	font-size: em($base-font-size); }
+
+img {
+  border: 0; }
+
+img,
+iframe,
+object,
+picture {
+	max-width: 100%; }
+
+hr {
+	height: 0; }
+
+// Form
+// ---------------------------
+button,
+input,
+optgroup,
+select,
+textarea {
+	color: inherit;
+	font: inherit;
+	margin: 0; }
+	
+button {
+	border: none;
+	overflow: visible; }
+
+button,
+select {
+	text-transform: none; }
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	cursor: pointer; }
+
+button[disabled],
+html input[disabled] {
+	cursor: default; }
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: none;
+	padding: 0; }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	height: auto; }
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none; }
+
+fieldset,
+legend {
+	border: none; }
+	
+textarea {
+	overflow: auto; }
+
+optgroup {
+	font-weight: font-weight(bold); }
+
+// Table
+// ---------------------------
+table {
+	border-collapse: collapse;
+	border-spacing: 0; }
+
+// Misc additions
+// ---------------------------
+:focus {
+	outline: none; }
+
+// Has to be separated as browsers will invalidate
+// the whole rule if they do not understand it
+::-moz-selection {
+	background: $default-selection-background;
+	color: $default-selection-color; 
+	text-shadow: none; }
+	
+::selection {
+	background: $default-selection-background;
+	color: $default-selection-color;
+	text-shadow: none; }

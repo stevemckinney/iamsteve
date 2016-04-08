@@ -1,0 +1,160 @@
+@import "variables";
+
+@mixin form-shading($type: $default-form-type) {
+  @if type-of($type) != string {
+		@warn "#{$type} not supported."; }
+		
+	@else {
+  	@if map-get($default-text-elements, $type) {
+    	@include form-shading-input; }
+    	
+    @if $type == select {
+      @include form-shading-input; } } }
+
+@mixin form-shading-input(
+  $color									: $default-form-color,
+	$background-color				: $default-form-background-color,
+	$state									: $default-form-state,
+	$shading								: $default-form-shading
+) {
+  
+}
+
+// Reduce logic required to style a particular input
+
+@mixin form-shading(
+	$type										: $default-form-type,
+	$color									: $default-form-color,
+	$background-color				: $default-form-background-color,
+	$state									: $default-form-state,
+	$shading								: $default-form-shading
+) {
+	$attribute-states: (disabled: disabled, readonly: readonly);
+	$shaded-states: (normal: normal, focus: focus, error: error, success: success);
+	
+	@if length($color) > 1 and $state == focus {
+		$color: nth($color, 2); }
+	@else if length($color) > 1 {
+		$color: nth($color, 1); }
+	
+	@if length($background-color) > 1 and $state == focus {
+		$background-color: nth($background-color, 2); }
+	@else if length($background-color) > 1 {
+		$background-color: nth($background-color, 1); }
+		
+	$background-shading-color: scale-lightness($background-color, -2%);
+	
+	@if type-of($type) != string {
+		@warn "#{$type} not supported."; }
+		
+	@else {
+		// Modernizr
+		// ---------------------------
+		@include for-legacy-browser("ie", "5.5", "8") {
+			.no-boxshadow & {
+				border: 1px solid $color; } }
+		
+		// Text
+		// ---------------------------
+		@if map-get($default-text-elements, $type) {
+			
+			@if map-get($shaded-states, $state) and $shading {
+				
+				background-image: linear-gradient(bottom, $background-color 0%, $background-shading-color 100%);
+						
+				box-shadow:
+					inset 0 1px scale-lightness($color, -10%),
+					inset 0 0 0 1px $color,
+					if($state != focus, inset 0 1px 2px $color, inset 0 1px 2px desaturate($color, 20%)),
+					if($state == focus, 0 0 6px -2px $color, compact(false)); }
+			
+			@if map-get($attribute-states, $state) or $shading == false {
+				box-shadow: inset 0 0 0 1px scale-lightness($color, -10%);
+				background: $background-color; }
+			
+			@else if $shading == false {
+				box-shadow: inset 0 1px scale-lightness($color, -10%), inset 0 0 0 1px $color; } }
+		
+		// Select
+		// ---------------------------
+		@if $type == select {
+			@if $shading {
+				
+				@if $state != disabled {
+					box-shadow:
+						inset 0 -1px scale-lightness($color, -10%),
+						inset 0 0 0 1px $color,
+						if($state == focus, 0 0 6px -2px $color, compact(false)); }
+				
+				@else {
+					box-shadow:
+						0 0 9px -3px rgba($color, .6),
+						inset 0 0 0 1px $color,
+						inset 0 1px 0 rgba($white, .4);
+					
+          background-image:
+						linear-gradient(
+							rgba($background-color, .025) 0%,
+							rgba($background-shading-color, .15) 60%), $default-form-select-image, $background-color; }
+						
+				@if $state == normal {
+					background:
+					  $default-form-select-image,
+						linear-gradient(
+							$background-color 0%,
+							$background-shading-color 100%); } }
+							
+			@else {
+				box-shadow: inset 0 0 0 1px $color;
+				background: $default-form-select-image $background-color; }
+			
+			// Modernizr
+			// ---------------------------
+			@include with-browser-ranges("css-gradients") {
+				.no-svg &,
+				.no-cssgradients & {
+					background: $default-form-select-png; } } }
+		
+		// Checkbox/radio
+		// ---------------------------
+		@if ($type == checkbox or $type == radio) and $state == normal and $shading {		
+			background:
+				linear-gradient(
+					$background-color 0%,
+					$background-shading-color 60%); }
+		
+		@if ($type == checkbox or $type == radio) and $state == normal and $shading == false{
+			background-color: $background-color; }
+		
+		// Radio
+		// ---------------------------
+		@if $type == radio {
+			box-shadow: 
+				inset 0 0 0 1px $color,
+				if($shading, inset 0 2px 1px $white, compact(false));
+	
+			&:checked {
+				background:
+					radial-gradient(
+						scale-lightness($background-shading-color, -20%) $default-form-radio-radial-gradient-color-stop,
+						$background-color $default-form-radio-radial-gradient-color-stop),
+					if($shading, linear-gradient($background-color 0%, $background-shading-color 60%), $background-color); } }
+	
+		// Checkbox
+		// ---------------------------			
+		@if $type == checkbox {
+			box-shadow: 
+				inset 0 0 0 1px $color,
+				if($shading, inset 0 2px 1px $white, compact(false));
+			
+			&:checked {
+				@if $shading {	
+					background: 
+					  $default-form-checkbox-image,
+					  linear-gradient(rgba($background-color, .025) 0%, rgba($background-shading-color, .15) 60%),
+					  $background-color; }
+				@else {
+					background: $default-form-checkbox-image $background-color; } 
+				background-size: $default-form-checkbox-background-size; } }
+		
+		@content; } }

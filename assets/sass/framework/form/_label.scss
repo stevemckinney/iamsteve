@@ -1,0 +1,36 @@
+// Form label positioning
+// ---------------------------
+@mixin form-label(
+	$position		: $default-form-label-position,
+	$margin			: $default-form-label-margin,
+	$breakpoint	: $default-form-label-breakpoint,
+	$input-width: $default-form-label-input-width
+) {
+	
+	@if $position != left {
+		@extend %form-block;
+		&,
+		& + input, 
+		& + select, 
+		& + textarea {
+			@extend %form-block;
+			@if $margin { 
+				margin: $margin; } } }
+	
+	@else {
+		width: 100%;
+		
+		@include breakpoint($breakpoint) {
+			display: inline-block;
+			width: 100% - $input-width; }
+			
+		& + ul
+		& + input, 
+		& + select, 
+		& + textarea {
+			width: 100%;
+			clear: left;
+			
+			@include breakpoint($breakpoint) {
+				display: inline-block;
+				width: $input-width; } } } }

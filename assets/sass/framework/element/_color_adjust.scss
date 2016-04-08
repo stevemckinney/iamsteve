@@ -1,0 +1,89 @@
+// Adjust hue based on hue
+// ---------------------------
+@function element-hue-adjust($color) {
+	$colors: $color;
+
+	@each $color in $colors {
+		// red
+		@if hue($color) > 0 and hue($color) < 19 or
+				hue($color) > 330 and hue($color) < 360 and
+				saturation($color) > 20 {
+			@return adjust-hue($color, -10deg); }
+		
+		// orange
+		@else if hue($color) > 20 and hue($color) < 49 and
+				saturation($color) > 20 {
+			@return adjust-hue($color, -10deg); }
+		
+		// yellow
+		@else if hue($color) > 50 and hue($color) < 79 and
+				saturation($color) > 20 {
+			@return adjust-hue($color, -10deg); }
+		
+		// green
+		@else if hue($color) > 80 and hue($color) < 169 and
+				saturation($color) > 20 {
+			@return adjust-hue($color, 10deg); }
+		
+		// blue/cyan
+		@else if hue($color) > 170 and hue($color) < 229 and
+				saturation($color) > 20 {
+			@return adjust-hue($color, 10deg); }
+		
+		// purple
+		@else if hue($color) > 230 and hue($color) < 289 and
+				saturation($color) > 20 {
+			@return adjust-hue($color, 15deg); }
+		
+		// magenta
+		@else if hue($color) > 290 and hue($color) < 329 and
+				saturation($color) > 20 {
+			@return adjust-hue($color, 40deg); }
+		
+		@else {
+			@return false; } } }
+
+// Adjust lightness based on hue
+// ---------------------------
+@function element-lightness-adjust($color, $positive: false) {
+	$colors: $color;
+
+	@each $color in $colors {
+		// red
+		@if hue($color) >= 0 and hue($color) < 19 or
+				hue($color) > 330 and hue($color) <= 360 and
+				saturation($color) > 20 {
+			@return if($positive, scale-lightness($color, 15%), scale-lightness($color, -5%)); }
+		
+		// orange
+		@else if hue($color) > 20 and hue($color) < 49 and
+				saturation($color) > 20 {
+			@return if($positive, scale-lightness($color, 7.5%), scale-lightness($color, -2.5%)); }
+		
+		// yellow
+		@else if hue($color) > 50 and hue($color) < 79 and
+				saturation($color) > 20 {
+			@return if($positive, scale-lightness($color, 5%), scale-lightness($color, -5%)); }
+		
+		// green
+		@else if hue($color) > 80 and hue($color) < 169 and
+				saturation($color) > 20 {
+			@return if($positive, scale-lightness($color, 10%), scale-lightness($color, -10%)); }
+		
+		// blue/cyan
+		@else if hue($color) > 170 and hue($color) < 229 and
+				saturation($color) > 20 {
+			@return if($positive, scale-lightness($color, 2.5%), scale-lightness($color, -15%)); }
+		
+		// purple
+		@else if hue($color) > 230 and hue($color) < 289 and
+				saturation($color) > 20 {
+			@return if($positive, scale-lightness($color, 15%), scale-lightness($color, -15%)); }
+		
+		// magenta
+		@else if hue($color) > 290 and hue($color) < 329 and
+				saturation($color) > 20 {
+			@return if($positive, scale-lightness($color, 10%), scale-lightness($color, -10%)); }
+		
+		@else {
+			@return if($positive, scale-lightness($color, 5%), scale-lightness($color, -5%)); } } }

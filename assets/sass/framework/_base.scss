@@ -1,0 +1,177 @@
+// Default variables override in site/_base.scss
+// ---------------------------
+
+// Site colours
+// ---------------------------
+$primary: #4c4d4c !default;
+$secondary: #6cd0d9 !default;
+$tertiary: #f2f0f0 !default;
+$neutral: #f24969 !default;
+
+// Colours (see: site/base for main site palette)
+// --------------------------
+$black: #000 !default;
+$white: #fff !default;
+$red: #cf4647 !default;
+$blue: #478afa !default;
+$cyan: #40bfbb !default;
+$green: #6db228 !default;
+$orange: adjust-hue(#478afa, -195deg) !default;
+$yellow: #fdd24c;
+$purple: #7375a5 !default;
+$light-grey: #e3e6ea !default;
+
+// Colour alternate names
+// ---------------------------
+$alt: $blue !default;
+$danger: $red !default;
+$error: $red !default;
+$info: $cyan !default;
+$warning: $orange !default;
+$success: $green !default;
+
+// Colour defaults
+// ---------------------------
+$default-color: #7d7e81 !default;
+$default-text: #7d7e81 !default;
+$default-text-shadow: #fff !default;
+
+// <kbd> background colour
+$default-kbd-background: #fff;
+
+// Set your browser selection colour
+$default-selection-background: #fefeca !default;
+$default-selection-color: inherit !default;
+
+// Set the <mark> element styles
+$default-mark-color: inherit !default;
+$default-mark-background: #fefeca !default;
+
+// Spacing
+// ---------------------------
+$base-px: 12px !default;
+$line: $base-px*2 !default;
+$baseline: 24px !default;
+
+// Font sizes
+// ---------------------------
+$base-font-size: 16px !default;
+$base-line-height: $baseline !default; // must be px if using compass vertical rhythm
+$base-line-height-unitless: 1.5 !default;
+
+// Defaults
+// ---------------------------
+$radius: 4px !default;
+$default-transition-duration: .2s !default;
+$transition-duration: $default-transition-duration !default;
+
+// For grouped elements the space left if inline-block is set
+// Awkwardly 4px in chrome/safari/firefox but IE is -5px
+// Not sure if this should be em based?
+$default-negative-spacing: -5px !default;
+
+// Default sizing for elements
+$default-size: 1 !default; // for element mixin
+$default-form-size: $base-px $line !default;
+$default-ratio: .555 !default; // for element mixin, .375 32px, .5 = 36px, .7 42px
+$default-set-height: 36px !default;
+$default-set-height-padding: $base-px !default;
+$default-equal: false !default;
+
+// How many times larger should the padding-left/right be than padding-top/bottom
+$default-multiplier: 1.5 !default;
+
+// Normal is a good choice, as firefox doesn't 
+// allow line-height change on inputs this allows
+// for consistency in everything
+$default-framework-line-height: normal !default;
+
+// Defaults for element/form paramaters and others
+$default-dark-bg: false !default;
+$default-shading: true !default;
+$default-display: inline-block !default;
+$default-state: normal !default;
+
+// Default form placeholder
+$default-placeholder-color: $default-color !default;
+
+// Default opacity for dark and light values
+$default-dark-shadow: .2 !default;
+$default-light-shadow: .6 !default;
+
+// Context in which em functions are based on
+$default-context: $base-font-size !default;
+
+// Breakpoints
+// ---------------------------
+@include breakpoint-set('to ems', $base-font-size);
+$breakpoint-subtract: 1px !default;
+$default-no-query-selector: "no-mediaqueries" !default;
+
+// min-width
+$aa:	280px !default;
+$a:		480px !default;
+$ab: 	540px !default;
+$b: 	600px !default;
+$bc:	680px !default;
+$c: 	768px !default;
+$cd:	840px !default;
+$d: 	960px !default;
+$de:	1100px !default;
+$e: 	1200px !default;
+$ef:	1300px !default;
+$f: 	1440px !default;
+
+// max-width
+$aa-max:	max-width $aa - $breakpoint-subtract !default;
+$a-max:		max-width $a - $breakpoint-subtract !default;
+$ab-max: 	max-width $ab - $breakpoint-subtract !default; 
+$b-max: 	max-width $b - $breakpoint-subtract !default;
+$bc-max: 	max-width $bc - $breakpoint-subtract !default;
+$c-max: 	max-width $c - $breakpoint-subtract !default;
+$cd-max:	max-width $cd - $breakpoint-subtract !default;
+$d-max: 	max-width $d - $breakpoint-subtract !default;
+$de-max: 	max-width $de - $breakpoint-subtract !default;
+$e-max: 	max-width $e - $breakpoint-subtract !default;
+$ef-max: 	max-width $ef - $breakpoint-subtract !default;
+$f-max: 	max-width $f - $breakpoint-subtract !default;
+
+// resolution
+$retina: min-resolution 1.5dppx !default;
+
+// Font sizes
+// ---------------------------
+$h1-size: 36px !default;
+$h2-size: 30px !default;
+$h3-size: 24px !default;
+$h4-size: 21px !default;
+$h5-size: 18px !default;
+$h6-size: 16px !default;
+
+// Sizing increments, set in _helpers.scss
+// ---------------------------
+$xxlarge-size: 225% !default;
+$xlarge-size: 150% !default;
+$large-size: 131.25% !default;
+$normal-size: 100% !default;
+$small-size: 87.5% !default;
+$xsmall-size: 75% !default;
+$xxsmall-size: 62.5% !default;
+
+// z-index
+// ---------------------------
+$z-index-0: 0 !default;
+$z-index-1: 1 !default;
+$z-index-2: 2 !default;
+$z-index-3: 3 !default;
+$z-index-4: 4 !default;
+$z-index-5: 5 !default;
+$z-index-10: 10 !default;
+$z-index-100: 100 !default;
+$z-index-200: 200 !default;
+$z-index-300: 300 !default;
+
+// Misc
+// ---------------------------
+$debug-mode: false !default;
+$_experimental-css: false !default;

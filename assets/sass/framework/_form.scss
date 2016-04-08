@@ -1,0 +1,60 @@
+// Import related files
+// ---------------------------
+@import "form/variables",
+				"form/base",
+				"form/type",
+				"form/label",
+				"form/shading",
+				"form/placeholder";
+
+@mixin form(
+	$type							: $default-form-type,
+	$color						: $default-form-color $default-form-focus-color,
+	$background-color	: $default-form-background-color $default-form-focus-background-color,
+	$shading					: $default-form-shading,
+	$base 						: $default-form-base
+) {
+	
+	// Text
+	// ---------------------------
+	@if map-get($default-text-elements, $type) {
+		@if $base {
+			@include form-base($base...); }
+		@else {
+			@extend %form-base-with-mixin; }
+		
+		@include form-text($color, $background-color, $shading); }
+	
+	// Select
+	// ---------------------------
+	@else if $type == select {
+		@if $base {
+			@include form-base($base...); }
+		@else {
+			@extend %form-base-with-mixin; }
+			
+		@include form-select($color, $background-color, $shading); }
+	
+	// Checkbox
+	// ---------------------------
+	@else if $type == checkbox {
+		@include form-checkbox($color, $background-color, $shading);
+		@extend %form-boolean-base;
+		@extend %form-checkbox-radius; }
+	
+	// Radio
+	// ---------------------------
+	@else if $type == radio {
+		@include form-radio($color, $background-color, $shading);
+		@extend %form-boolean-base;
+		@extend %form-radio-radius; }
+		
+	// Submit
+	// ---------------------------
+	@else if $type == submit {
+		@warn "Please use element mixin to style submit buttons."; }
+	
+	// Not supported
+	// ---------------------------
+	@else {
+		@warn "#{$type} not supported."; } }
