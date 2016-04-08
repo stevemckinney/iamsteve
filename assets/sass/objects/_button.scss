@@ -1,0 +1,76 @@
+// Buttons
+// ---------------------------
+.button {
+	@extend %element-base-with-mixin; }
+
+$buttons: (
+	default: $default-color,
+	primary: $primary,
+	secondary: $secondary adjust-hue(scale-lightness($secondary, -7%), 15deg),
+	tertiary: $tertiary,
+	alternate: $alt,
+	neutral: adjust-hue($neutral, 8deg) $neutral
+);
+
+@each $button, $color in $buttons {
+	.button-#{$button} {
+		@include element($color); } }
+		
+.button-inline {
+	background: transparent;
+	box-shadow: inset 0 0 0 1px $red;
+	color: $red;
+	margin: 0 0 24px;
+	position: relative;
+	-webkit-backface-visibility: hidden;
+	overflow: hidden;
+	
+	&,
+	&:after {
+		transition: .35s;
+		border-radius: $radius; }
+	
+	&:after {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		background: transparent;
+		transform: rotateX(90deg);
+		perspective: 800px;
+		-webkit-transform-style: preserve-3d; }
+	
+	&:hover,
+	&:focus {
+		box-shadow: inset 0 0 0 1px scale-lightness($red, -20%);
+		color: $white;
+		
+		&:after {
+			transform: rotateX(0);
+			background: $red;
+			width: 100%; } } }
+
+.button-link {
+	background: none;
+	color: $secondary;
+	
+	&:hover,
+	&:focus {
+		@include element-shading($yellow, $state: hover); }
+	
+	&:active {
+		@include element-shading($yellow, $state: active); } }
+
+// Grouped buttons
+// ---------------------------
+.group {
+	@include group(".button-group"); }
+
+// Disabled
+// ---------------------------
+.button[disabled] {
+	opacity: .75;
+	pointer-events: none; }

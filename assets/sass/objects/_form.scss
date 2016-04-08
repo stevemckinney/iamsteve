@@ -1,0 +1,138 @@
+// Variables
+// ---------------------------
+$forms-use-flex: true;
+
+// Forms
+// ---------------------------
+.form,
+.simple_form {
+	@extend %clear;
+	
+	@if $forms-use-flex {
+		display: flex;
+		flex-flow: row wrap; } }
+
+@if $forms-use-flex {
+	.field {
+		@include breakpoint($c) {
+			flex-basis: 100%; } }
+	
+	.field-half {
+		@include breakpoint($c) {
+			flex-basis: 50%; } } }
+@else {
+	.field-half {
+		@include breakpoint($c) {
+			display: inline-block;
+			vertical-align: top;
+			width: 50%; } }
+	
+	.field-first {
+		@include breakpoint($c) {
+			padding-right: em($base-px); } }
+	
+	.field-last {
+		@include breakpoint($c) {
+			padding-left: em($base-px); } } }
+
+// Field layouts
+// ---------------------------
+.field-half {}
+.field-first .input-text {
+	border-radius: $radius 0 0 $radius; }
+	
+.field-last .input-text {
+	border-radius: 0 $radius $radius 0; }
+
+// Label
+// ---------------------------
+.field-label {
+	display: block;
+	font-weight: 700;
+	line-height: 2.25; }
+
+// Helper
+// ---------------------------
+.field-hint { font-size: 75%; }
+
+// Legend
+// ---------------------------
+.field-legend {
+	@extend .h3 !optional; }
+
+// Fieldset
+// ---------------------------
+.field {
+	margin: 0;
+	padding: 0; }
+	
+.field-checkbox {
+	display: block; }
+	
+.field-radio {
+	@extend .field-checkbox; }
+
+.field-search {
+	@include form-search($has-label: true);
+	text-align: right; }
+
+.form-actions {
+	clear: both;
+	width: 100%; }
+
+// Grouped fields
+// ---------------------------
+.field-group {
+	display: flex;
+	
+	.field-label {
+		padding: 0 em($base-px); } }
+		
+// Input
+// ---------------------------
+	.input-text,
+	.input-select {
+		width: 100%; }
+	
+	// Text
+	// ---------------------------
+	.input-text:not([readonly]):not([disabled]) {
+		@extend %form-base-with-mixin;
+		@include form; }
+	
+	.input-text[readonly] {
+		@extend %form-base-with-mixin;
+		@include form-shading($state: readonly); }
+	
+	.input-text[disabled] {
+		@extend %form-base-with-mixin;
+		@include form-shading($color: scale-lightness($default-form-background-color, -20%), $background-color: scale-lightness($default-form-background-color, -10%), $state: readonly);
+		cursor: not-allowed;
+		color: scale-lightness($default-form-color, -30%); }
+	
+	// Select
+	// ---------------------------
+	.input-select {
+		@extend %form-base-with-mixin;
+		@include form(select); }
+	
+	// Check/radio
+	// ---------------------------
+	.input-checkbox {
+		@include form(checkbox);
+		@include wh(em($base-font-size));
+		position: relative;
+		top: em($base-font-size / 6);
+		margin: $default-form-boolean-margin; }
+	
+	.input-radio {
+		@include form(radio);
+		@include wh($default-form-radio-width, $default-form-radio-height);
+		position: relative;
+		top: em(2px);
+		margin: $default-form-boolean-margin; }
+		
+	// Submit
+	// ---------------------------
+	.button-submit {
+		@include element($red, $hover: true); }

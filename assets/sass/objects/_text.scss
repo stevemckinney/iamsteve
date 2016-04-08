@@ -1,0 +1,47 @@
+// Align
+// ---------------------------
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+
+// Case
+// ---------------------------
+.text-lowercase { text-transform: lowercase; }
+.text-uppercase { text-transform: uppercase; }
+	
+// Colour
+// ---------------------------
+$text-color-helpers: (
+	"white": $white,
+	primary: $primary,
+	secondary: $secondary,
+	"red": $red,
+	"green": $green,
+	"orange": $orange,
+	"blue": $cyan
+);
+
+@each $name, $color in $text-color-helpers {
+	.text-#{$name} { color: $color; } }
+
+// General elements
+// ---------------------------
+address { font-style: normal; }
+	
+// Various
+// ---------------------------
+.caption {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .125em; }
+	
+// Text mixins
+// ---------------------------
+@mixin small-caps {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: em(2px); }
+	
+@mixin with-border {
+	padding-bottom: rhythm(1, $base-px*4);
+	border-bottom: 1px solid $primary; }

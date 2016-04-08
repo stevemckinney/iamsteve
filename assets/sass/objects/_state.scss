@@ -1,0 +1,18 @@
+// General
+// ---------------------------
+[disabled] { cursor: not-allowed; }
+[readonly] { cursor: text; }
+
+// Validation
+// ---------------------------
+.is-valid {
+	@include form-shading(text, $green, $state: normal);
+	
+	&:focus { 
+    @include form-shading(text, $green, $state: focus); } }
+
+.is-error {
+	@include form-shading(text, $red, $state: normal);
+	
+	&:focus {
+  	@include form-shading(text, $red, $state: focus); }  }

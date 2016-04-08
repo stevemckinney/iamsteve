@@ -1,0 +1,50 @@
+// Unordered & ordered
+// ---------------------------
+ul,
+ol {
+	margin: 0 0 em($base-px) em(21px, $base-font-size);
+	
+	ul,
+	ol { 
+		margin: 0 0 0 em(21px, $base-font-size); } }
+
+ul { 
+	list-style: square; }
+
+// Lists
+// ---------------------------
+.list-default {
+  margin-left: 0;
+	padding-left: 0;
+	list-style: none; }
+
+.list-custom-bullet {
+	margin-left: 0;
+	
+	li {
+		list-style: none;
+		
+		&:before {
+			content: "▪";
+			margin-right: em($base-px/2);
+			color: $secondary; } } }
+
+// Definition
+// ---------------------------
+dl {
+	margin: 0 0 rem($base-px);
+
+	@include for-legacy-browser("ie", "5.5", "8", 5) {
+		.no-rem & {
+			margin: 0 0 $base-px; } } }
+
+dt {
+	float: left;
+	clear: right;
+	font-weight: 700;
+	width: 33.333333%; }
+
+dd {
+	float: right;
+	width: 66.666666%;
+	padding-left: cp(24px, $site-width); }

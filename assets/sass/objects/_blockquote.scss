@@ -1,0 +1,32 @@
+// Blockquote
+// ---------------------------
+$blockquote-font-size: 24px;
+.blockquote,
+ blockquote {
+	font: italic #{em(24px)}/#{1.5} $serif;
+	padding: em($line, $blockquote-font-size) 0;
+	margin: em($line, $blockquote-font-size) 0;
+	position: relative;
+	text-align: center;
+	width: 100%;
+	clear: both;
+	
+	&:before,
+	&:after {
+		content: "";
+		display: inline-block;
+		width: em(48px);
+		height: em(1px);
+		background: rgba($primary, .2);
+		position: absolute;
+		left: 50%;
+		margin-left: em(-24px); }
+	
+	&:before {
+		bottom: 100%; }
+	
+	&:after {
+		top: 100%; }
+	
+	p {
+		margin: 0; } }

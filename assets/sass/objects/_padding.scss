@@ -1,0 +1,16 @@
+// Island padding helpers
+// ---------------------------
+$isles: (
+  spit: quarter($baseline),
+  isle: half($baseline),
+  island: $baseline,
+  country: double($baseline),
+  continent: quadruple($baseline) );
+
+@each $name, $padding in $isles {
+	.#{$name} {
+		padding: $padding; }
+  
+  .#{$name}-v {
+    padding-top: $padding;
+    padding-bottom: $padding; } }

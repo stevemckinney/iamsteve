@@ -1,0 +1,14 @@
+// Sectioning elements
+// .panel, .row, .etc
+// ---------------------------
+.row {
+  display: flex; }
+
+.row-normal {
+  background: $white;
+  
+  & + & {
+    border-bottom: 1px solid $neutral-l3; } }
+
+.row-strong {
+  background: $neutral-l5; }
