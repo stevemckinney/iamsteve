@@ -1,0 +1,68 @@
+// Override variables from import/_base.scss here
+// General site variables
+// ---------------------------
+
+// Color
+// ---------------------------
+$primary: #ea5951 !global;
+$primary-d1: #904b4e;
+$primary-d2: scale-lightness($primary-d1, -20%);
+$primary-l1: #f08079;
+$primary-l2: #ffede5;
+$primary-l3: #fff5f0;
+
+$secondary: #4db898 /* #61bd89 */ !global;
+$secondary-d1: scale-lightness($secondary, -10%);
+$secondary-d2: scale-lightness($secondary, -20%);
+$secondary-l1: #9ec0b5;
+$secondary-l2: #99e0c7;
+$secondary-l3: #e6f2e3;
+
+$tertiary: #f4b96d !global;
+$tertiary-d1: #d1991e;
+$tertiary-d2: scale-lightness($tertiary, -20%);
+$tertiary-l1: #f7d77a;
+$tertiary-l2: #efdcc1;
+$tertiary-l3: #fef9ed;
+
+$neutral: #384242 !global;
+$neutral-d1: scale-lightness($neutral, -10%);
+$neutral-d2: scale-lightness($neutral, -20%);
+$neutral-l1: #727784;
+$neutral-l2: #919aa5;
+$neutral-l3: #c0d8d8;
+$neutral-l4: #e9f5f5;
+$neutral-l5: #f7fbfb;
+
+// Fonts
+// ---------------------------
+$sans: Averta, sans-serif !global;
+$serif: Sentinel A, Sentinel B, serif !global;
+$monospace: Inconsolata, Menlo, Monaco, "Courier New", monospace !default;
+$icons: "SSStandard" !default;
+$heading: $sans !default;
+$body: $serif !default;
+$form: $sans !default;
+$element: $sans !default;
+
+// Defaults
+// ---------------------------
+$default-transition-duration: .2s;
+$site-width: 800px;
+$default-form-color: darken(#eee, 10%);
+$default-form-background-color: scale-lightness(#eee, 10%);
+$default-shading: true !global;
+
+// Browser support and prefixing
+// ---------------------------
+@if $debug-mode { $debug-browser-support: true; }
+$browser-minimum-versions: ("chrome": null, "firefox": null, "ie": "8", "safari": "6");
+$supported-browsers: reject(browsers(), opera-mini, opera);
+
+$box-shadow-support-threshold: 0;
+$gradient-support-threshold: 6.51;
+//$svg-gradient-shim-threshold: 10.0;
+
+// Breakpoints
+// ---------------------------
+@include breakpoint-set('base font size', $base-font-size);
