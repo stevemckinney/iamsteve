@@ -14,7 +14,7 @@
 // Logo
 // ---------------------------
 .logo {
-  padding: ($base-px - 2px) $base-px;
+  padding: em($line);
   font: 600 em(24px) $sans;
   color: $primary; }
 
@@ -25,7 +25,7 @@
 // Toggle
 // ---------------------------
 .toggle {
-  padding: ($base-px - 2px) $base-px;
+  padding: em($line);
   
 	@include breakpoint($c) {
 		display: none; } }
