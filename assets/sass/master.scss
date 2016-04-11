@@ -1,404 +1,54 @@
-@import "import/framework", "import/normalize";
-
-@-webkit-viewport {
-	width: device-width; }
-@-moz-viewport {
-	width: device-width; }
-@-ms-viewport {
-	width: device-width; }
-@-o-viewport {
-	width: device-width; }
-@viewport {
-	width: device-width; }
-	
-/* 
-	!Base stucture
----------------------------------------------------------------------- */
-html,
-body:after {
-	font-family: "a"; }
-	
-body {
-	font-size: 100%;
- 	line-height: normal;
-	color: $primary;
-	background: $tertiary; }
-	
-$bg-path: "triangles.png";
-.container {
-	@include pie-clearfix;
-  margin-bottom: 1.5rem;
-	padding: em($line, $base-font-size) 0 0;
-	position: relative;
-	overflow: hidden;
-	background: $primary;
-	//background-size: ceil(image-width($bg-path)/2) ceil(image-height($bg-path)/2);
-	
-	@include respond-min($c) { margin-bottom: 3rem; } }
-
-img {
-	vertical-align: bottom; }
-// potential to break, old imgs without a figure in blog posts
-article img {
-	@extend %imgs;
-	display: block; }
-		
-// header
+// Framework required
 // ---------------------------
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  align-items: center;
-	white-space: nowrap;
-  overflow-x: scroll; 
-  -webkit-overflow-scrolling: touch;
-	position: relative;
-	box-shadow:
-		0 0 0 1px $primary_d2,
-		0 2px 4px fade-out($primary_d1, .8),
-		inset 0 1px 0 fade-out($primary_l1, .935);
-  padding: $base-px;
-	background: $primary;
-	
-	@media (min-width: $c) {
-  	padding: $base-px $line; }
-  
-  @media (min-width: $d) {
-  	padding: 21px $line; } }
-	
-.nav,
-.logo {
-	display: inline-block;
-	vertical-align: middle; }
-
-.logo {
-  color: $tertiary;
-  font-weight: 700;
-  text-shadow: 0 1px 1px $primary_d2;
-  flex: 0 0 auto;
-  
-  svg { display: block; } }
-
-.title {
-	position: relative;
-  margin: 0; }
-
-	
-// navigation
+@import "compass/support",
+        "compass/utilities/color",
+        "compass/typography/text",
+        "compass/css3/appearance",
+        "compass/css3/user-interface",
+				"breakpoint",
+				"framework/base", // lots of default variables
+				"site/base"; // override defaults here, fonts and colour also
+				
+// Framework components, don't edit
 // ---------------------------
-@import "styles/navigation";
-		
-// section
+@import "framework/maps",
+				"framework/conversion",
+				"framework/normalize",
+				"framework/grid",
+				"framework/helpers",
+				"framework/group",
+				"framework/element",
+				"framework/icon",
+				"framework/form",
+				"framework/table",
+				"framework/tooltip",
+				"framework/misc";
+				
+// Site base
 // ---------------------------
-[role="region"] {
-	@include pie-clearfix;
-	width: $whole;
-	margin: 0 0 em($line, $base-font-size);
-	&:last-child {
-		margin: 0;
-		padding: 0;
-		border: none; } }
-	
-.me {
-	img {
-		@extend %rounded;
-		@extend %shadow;
-		margin: 0 cp(24px, 480px) 2.5% 0;
-		vertical-align: bottom;
-		display: inline-block;
-		border: 6px solid $white;
-		max-width: 33.333333%;
-		float: left; } }
+@import "site/mixins", // Override existing framework mixins here, or break them into files or add custom mixins
+				"site/helpers", // Generic reusable class names (eg: pull-left, pull-right, etc)
+				"site/webfonts", 
+				"site/typography",
+				"site/structure",
+				"site/shame"; // anything to be ashamed of goes in here, refactor later
 
-.columns {
-	@include column-count(2); }
-
-@import "styles/dribbble";
-
-// article
+// Site objects
 // ---------------------------
-[role="article"] {
-	@include pie-clearfix;
-	margin: auto auto em($line, $base-font-size);
-	position: relative;
-	
-	figure {
-		@include pie-clearfix;
-		margin-bottom: em($line, $base-font-size);
-		position: relative;
-		img {
-			display: block;
-			margin: auto auto .75rem; } }
-			
-	figcaption {
-		text-align: center; } }
-		
-.single [role="article"] {
-		
-	@include respond-min($c) {
-		padding-right: 7.5%;
-		padding-left: 7.5%;
-		margin-bottom: em($line*2, $base-font-size); }
-		
-	@include respond-min($d) {
-		padding-right: 15.5%;
-		padding-left: 15.5%; }}
+@import "objects/button",
+				"objects/notice",
+				"objects/form",
+				"objects/state",
+				"objects/header",
+				"objects/nav",
+				"objects/footer";
 
-/* !aside ---------------------- */
-@import "styles/meta";
-
-/* 
-	!Typography & links
----------------------------------------------------------------------- */
-@import "styles/typography";
-
-// pagination
+// Optional Imports
 // ---------------------------
-@import "styles/pagination";
-
-/* 
-	Lists
----------------------------------------------------------------------- */
-article {
-	ul, ol {
-		list-style: inside square;
-		margin: 0 0 $line;
-		@include respond-min($c) {
-			list-style-position: outside; } } }
-		
-[role="contentinfo"] {
-	text-align: center;
-	@include respond-min($c) {
-		text-align: left; }
-	ul {
-		@extend %subtle-box;
-		@include pie-clearfix;
-		@include border-radius($radius);
-		padding: 0 em($base-px/2, 12px);
-		margin: 0; }
-	li {
-		display: inline-block;
-		@include respond-min(35em) {
-			float: right; }
-		&:first-child {
-			display: block;
-			@include respond-min(35em) {
-				display: inline-block;
-				float: left; } }
-	small {
-		text-align: center;
-		@include rem(padding, $base-px 0 0 $base-px/2); }
-	.url, .author {
-		display: inline-block;
-		padding: 0; }
-	a {
-		@include rem(padding, $base-px $base-px/2);
-		@extend %transition;
-		&:hover, &:focus {
-			color: $primary; } }
-	small, a {
-		font-size: .875rem;
-		margin: 0;
-		display: block;
-		color: $primary;
-		color: fade-out($primary, 0.5);
-		line-height: 1; 
-		@include respond-min(35em) {
-			@include rem(height, $footer-height);
-			@include rem(line-height, $footer-height);
-			@include rem(padding, 0 $base-px/2); } } } }
-
-dl {
-	line-height: 1.5; }
-dt {
-	@include rem(margin, $line 0 $base-px);
-	&:first-of-type {
-		margin-top: 0; } }
-dd {
-	margin: 0;
-	padding: 0; }
-		
-/*
-	!Buttons and notices
------------------------------------------------------------------------*/
-.button, .button-small {
-	@include element($alt, $size: 5, $hover: true);
-	@extend %letter-spacing;
-	white-space: nowrap;
-	font-size: .875rem;
-	line-height: 1.5; }
-
-.button-small {
-	@include rem(padding, 6px 9px);
-	font-size: 70%;
-	line-height: 1; }
-
-
-// notices
-// ---------------------------
-.notice {
-	a { 
-		color: $white; } }
-.notice-default {
-	@include element; }
-.notice-warning {
-	@include element($warning, $size: 5);
-	width: 100%;
-	text-align: center;
-	a { 
-		color: #fff;
-		text-decoration: underline; } }
-.notice-success {
-	@include element($success, $size: 6, $hover: true);
-	float: right;
-	em { 
-		@extend %mr6; } }
-
-
-/*
-	!Forms
------------------------------------------------------------------------*/
-@import "import/forms", "styles/forms";
-
-/*
-	!Page specifics
------------------------------------------------------------------------*/
-@import "styles/portfolio", "styles/about";
-
-.related-entries {
-  margin-bottom: $line; }
-
-.previous-entries-container,
-.related-entries-container {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between; 
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-  padding-left: 2px;
-  padding-bottom: 4px; }
-
-.related-entry, 
-.previous-entry {
-  @extend %imgs;
-	width: 25%;
-  flex: 0 0 234px;
-  margin-right: 12px;
-  background: $white;
-  padding: $line;
-	
-	p {
-  	margin: 0;
-		font-size: 14px;
-		
-		@include respond-min($c) {
-  		font-size: 16px; } } }
-
-
-/* 
-	Misc.
----------------------------------------------------------------------- */
-.hiddenFields {
-	display: none; }
-iframe {
-	width: 100%; }
-hr {
-	@extend %crm;
-	box-shadow: 0 1px rgba($white, .8);
-	padding: 0;
-	border: none;
-	border-top: 1px solid rgba($primary, .1);
-	background: rgba($white, .8);
-	display: block;
-
-	[role="main"] & {
-		max-width: 100%;
-		width: 100%; } }
-
-// figure
-// ---------------------------
-figure {
-	@include pie-clearfix; }
-
-// hide extras from services
-// ---------------------------
-.js [id="wufoo-q7x3k1"] p {
-	display: none; }
-	
-// screenreaders
-// ---------------------------
-[for="keywords"], .screenreader { 
-	@extend %screenreaders; }
-	
-// code
-// ---------------------------
-@import "styles/code";
-	
-// extends
-// ---------------------------
-@import "styles/extends";
-
-// lettering
-// ---------------------------
-.space {
-	@include rem(width, $line); }
-
-.push-bottom {
-  margin-bottom: $line; }
-
-// Post layout
-// ---------------------------
-.p-flex { 
-  display: -webkit-flex;
-  display: flex;
-  
-  @media (max-width: 599px) { 
-    -webkit-flex-flow: column wrap;
-    flex-flow: column wrap; } }
-
-.p-flex-gutter {
-  -webkit-justify-content: space-between;
-  justify-content: space-between; }
-
-.p-one-half {
-  -webkit-flex-basis: 50%;
-  flex-basis: 50%;
-  
-  .p-flex-gutter & {
-    -webkit-flex-basis: 48.75%;
-    flex-basis: 48.75%; } }
-
-.p-one-third {
-  -webkit-flex-basis: 33.333333%;
-  flex-basis: 33.333333%;
-  
-  .p-flex-gutter & {
-    -webkit-flex-basis: 31.666666667%;
-    flex-basis: 31.666666667%; } }
-
-// New stuff
-// ---------------------------
-.wide-image.wide-image.wide-image {
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  box-shadow: 0 0 0 1px scale-lightness(#f6f7ee, -20%);
-  
-  @include respond-min($d) {
-    max-width: none;
-    width: 150%;
-    margin-left: -25%;
-    margin-right: -25%; } }
-
-.code-tall {
-  max-height: 320px;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch; }
-
-/*
-	Media queries
------------------------------------------------------------------------*/
-@import "screens/a", "screens/b", "screens/c", "screens/d", "screens/e", "screens/f", "screens/2x";
-
-@import "styles/improvements";
+@import "objects/table",
+				"objects/text",
+				"objects/list",
+				"objects/figure",
+				"objects/blockquote",
+				"objects/media",
+				"objects/card";
