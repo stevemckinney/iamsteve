@@ -4,9 +4,7 @@
   
   // Small screen styles
   @include breakpoint($b-max) {
-    
-  }
-}
+    } }
 
 // Nav and search will be revealed by toggling  
 // .toggle in _header.scss

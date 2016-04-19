@@ -2,30 +2,41 @@
 // ---------------------------
 .header {
   display: flex;
+  flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center;
   background: $white;
+  box-shadow: inset 0 -1px $neutral-a-l2;
   
   // $b and up styles
-  @include breakpoint($b) {
-    box-shadow: inset 0 -1px $neutral-l3; }
-  
-  svg { display: block; } }
+  @include breakpoint($b) { } }
 
 // Logo
 // ---------------------------
 .logo {
-  padding: em($line);
+  white-space: nowrap;
+  padding: em($base-px);
   font: 600 em(24px) $sans;
   color: $primary; }
 
-.logo-text {
+.logo-text,
+.logo-large,
+.logo-small {
+  display: block; }
+  
+.logo-text,
+.logo-large {
   @include breakpoint($b-max) {
+    display: none; } }
+
+.logo-small {
+  @include breakpoint($b) {
     display: none; } }
 
 // Toggle
 // ---------------------------
 .toggle {
-  padding: em($line);
+  padding: em($base-px);
   
 	@include breakpoint($c) {
 		display: none; } }
