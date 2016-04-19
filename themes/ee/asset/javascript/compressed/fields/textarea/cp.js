@@ -9,12 +9,16 @@
  * @since		Version 3.0
  * @filesource
  */
-"use strict";!function(i){i(document).ready(function(){i(".textarea-field-filepicker").FilePicker({callback:function(i,e){var n=e.input_value;
+"use strict";!function(i){i(document).ready(function(){
+// Need to make sure this is loaded after markItUp has added the image button :-/
+setTimeout(function(){i(".textarea-field-filepicker, li.html-upload").FilePicker({callback:function(i,e){var t=e.input_value;
 // Output as image tag if image
 if(
+// May be a markItUp button
+0==t.size()&&(t=e.source.parents(".markItUpContainer").find("textarea.markItUpEditor")),
 // Close the modal
 e.modal.find(".m-close").click(),
 // Assign the value {filedir_#}filename.ext
-file_string="{filedir_"+i.upload_location_id+"}"+i.file_name,i.isImage){var l='<img src="'+file_string+'"';l+=' alt=""',i.file_hw_original&&(dimensions=i.file_hw_original.split(" "),l=l+' height="'+dimensions[0]+'" width="'+dimensions[1]+'"'),l+=">",n.insertAtCursor(l)}else
+file_string="{filedir_"+i.upload_location_id+"}"+i.file_name,i.isImage){var n='<img src="'+file_string+'"';n+=' alt=""',i.file_hw_original&&(dimensions=i.file_hw_original.split(" "),n=n+' height="'+dimensions[0]+'" width="'+dimensions[1]+'"'),n+=">",t.insertAtCursor(n)}else
 // Output link if non-image
-n.insertAtCursor('<a href="'+file_string+'">'+i.file_name+"</a>")}})})}(jQuery);
+t.insertAtCursor('<a href="'+file_string+'">'+i.file_name+"</a>")}})},1e3)})}(jQuery);
