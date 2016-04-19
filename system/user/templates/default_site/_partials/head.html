@@ -16,15 +16,15 @@
   {!-- Twitter card --}
   <meta prefix="og:http://ogp.me/ns#" property="og:title" content="iamsteve • design & code blog">
   <meta prefix="og:http://ogp.me/ns#" property="og:type" content="website">
-  <meta prefix="og:http://ogp.me/ns#" property="og:image" content="{global:theme_url}/assets/images/og.png">
-  <meta prefix="og:http://ogp.me/ns#" property="og:url" content="{global:theme_url}">
+  <meta prefix="og:http://ogp.me/ns#" property="og:image" content="{site_url}assets/images/og.png">
+  <meta prefix="og:http://ogp.me/ns#" property="og:url" content="{site_url}">
   
   
   {!-- Other --}
   <link rel="alternate" type="application/rss+xml" title="iamsteve • design & code blog" href="http://iamsteve.me/blog/feed">
   
   {!-- Icons --}
-  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="shortcut icon" href="https://iamsteve.me/favicon.ico?v1">
   <link rel="apple-touch-icon-precomposed" href="/assets/apple-touch-icon.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
@@ -49,7 +49,7 @@
             "@type": "ListItem",
             "position": 2,
             "item": {
-              "@id": "{global:theme_url}/blog",
+              "@id": "{site_url}blog",
               "name": "Blog"
             }
           },
@@ -73,7 +73,7 @@
             "@type": "ListItem",
             "position": 2,
             "item": {
-              "@id": "{global:theme_url}/blog",
+              "@id": "{site_url}blog",
               "name": "Blog"
             }
           },
@@ -103,7 +103,7 @@
             "@type": "ListItem",
             "position": 2,
             "item": {
-              "@id": "{global:theme_url}/portfolio",
+              "@id": "{site_url}portfolio",
               "name": "Portfolio"
             }
           },
@@ -125,7 +125,7 @@
             "@type": "ListItem",
             "position": 2,
             "item": {
-              "@id": "{global:theme_url}/{segment_1}",
+              "@id": "{site_url}/{segment_1}",
               "name": "{embed:entry_title}"
             }
           }
@@ -144,7 +144,7 @@
       {if image}
         <meta name="twitter:image" content="{image}">
       {if:else}
-        <meta name="twitter:image" content="{global:theme_url}/assets/images/og.png">
+        <meta name="twitter:image" content="{site_url}assets/images/og.png">
       {/if}
   
       <script type="application/ld+json">
@@ -163,7 +163,7 @@
             "height": 800,
             "width": 800
           {if:else}
-            "url": "{global:theme_url}/assets/images/og.png",
+            "url": "{site_url}assets/images/og.png",
             "height": 800,
             "width": 800
           {/if}
@@ -179,7 +179,7 @@
           "name": "iamsteve",
           "logo": {
             "@type": "ImageObject",
-            "url": "{global:theme_url}/assets/images/logo.jpg",
+            "url": "{site_url}assets/images/logo.jpg",
             "width": 600,
             "height": 60
           }
