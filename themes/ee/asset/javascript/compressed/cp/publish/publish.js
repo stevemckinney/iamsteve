@@ -35,12 +35,12 @@ $(this).is(":checked")||$(this).parents("li").first().find("input:checkbox").pro
 // If we're checking, check its parents too
 $(this).is(":checked")&&$(this).parents("li").find("> label input:checkbox").prop("checked",!0).trigger("change")}),
 // Category management tools toggle
-$("body").on("click",".toggle-tools a.toggle",function(e){var t=$(this).parents(".nestable");
+$("body").on("click",".toggle-tools a.toggle-btn",function(e){var t=$(this).parents(".nestable");
 // On
 $(this).hasClass("off")?($(this).removeClass("off"),$(this).addClass("on"),$(".list-reorder",t).clearQueue().animate({"margin-left":"-10px"},400),$(".toolbar",t).stop().fadeIn(),$("input[type=checkbox]",t).prop("disabled",!0)):(// Off
 $(this).removeClass("on"),$(this).addClass("off"),$(".list-reorder",t).clearQueue().animate({"margin-left":"-50px"},400),$(".toolbar",t).stop().fadeOut(),$("input[type=checkbox]",t).prop("disabled",!1))}),
 // Category modal
-$("body").on("click","a[rel=modal-checkboxes-edit]",function(t){var a=$(this),i=a.attr("rel"),s=$("."+i),n=a.parents("fieldset").find("a.toggle").hasClass("on"),o=EE.publish.add_category.URL.replace("###",$(this).data("groupId"));
+$("body").on("click","a[rel=modal-checkboxes-edit]",function(t){var a=$(this),i=a.attr("rel"),s=$("."+i),n=a.parents("fieldset").find("a.toggle-btn").hasClass("on"),o=EE.publish.add_category.URL.replace("###",$(this).data("groupId"));
 // If we're in an editing state, be sure to return to an editing state
 n&&(o+="/editing"),
 // Clear out modal from last request

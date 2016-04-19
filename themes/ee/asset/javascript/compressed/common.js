@@ -29,7 +29,7 @@ $(".scroll").on("click",function(){
 // the source window and appending to the URI
 // animate the window scroll to
 // #top for 800 milliseconds
-return $("#top").animate({scrollTop:0},800),!1}),
+return $("#top, html").animate({scrollTop:0},800),!1}),
 // ============
 // scroll wraps
 // ============

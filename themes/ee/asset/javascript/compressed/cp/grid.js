@@ -126,7 +126,7 @@ for(var o in i._eventHandlers[e])
 n.find('td[data-fieldtype="'+o+'"]').each(function(){i._eventHandlers[e][o](t(this))})}},/**
  * Grid Settings class
  */
-i.Settings=function(i){this.root=t(".grid-wrap"),this.settingsScroller=this.root.find(".grid-clip"),this.settingsContainer=this.root.find(".grid-clip-inner"),this.colTemplateContainer=t("#grid_col_settings_elements"),this.blankColumn=this.colTemplateContainer.find(".grid-item"),this.settings=i,this.init()},i.Settings.prototype={init:function(){this._bindResize(),this._bindSortable(),this._bindActionButtons(this.root),this._toggleDeleteButtons(),this._bindColTypeChange(),
+i.Settings=function(i){this.root=t(".grid-wrap"),this.settingsScroller=this.root.find(".grid-clip"),this.settingsContainer=this.root.find(".grid-clip-inner"),this.colTemplateContainer=t("#grid_col_settings_elements"),this.blankColumn=this.colTemplateContainer.find(".grid-item"),this.settings=i,this.init()},i.Settings.prototype={init:function(){this._bindResize(),this._bindSortable(),this._bindActionButtons(this.root),this._toggleDeleteButtons(),this._bindColTypeChange(),this._bindValidationCallback(),
 // If this is a new field, bind the automatic column title plugin
 // to the first column
 this._bindAutoColName(this.root.find('div.grid-item[data-field-name^="new_"]')),
@@ -135,6 +135,40 @@ this._settingsDisplay(),
 // Disable input elements in our blank template container so they
 // don't get submitted on form submission
 this.colTemplateContainer.find(":input").attr("disabled","disabled")},/**
+	 * Since the Grid settings form is laid out differently than most forms, we
+	 * need to do some extra DOM handling when a Grid settings field is validated
+	 */
+_bindValidationCallback:function(){EE.cp.formValidation.bindCallbackForField("grid",function(i,e,n){var o=t("div.grid-wrap").prev(),r=n.attr("name"),s="["+n.parents(".grid-item").attr("data-field-name")+"]";
+// Get the last segment of the fieldname so we don't show duplicate errors
+// if multiple columns have the same error; instead we'll keep track of
+// the columns that have the error and keep it persisting while those errors
+// still exist
+r.indexOf("[")>-1&&(r=r.substr(-(r.length-r.lastIndexOf("["))));
+// Isolate the error text from the <em>
+var a,d=t("<div/>").html(e).contents().html();
+// If validation failed, get the error element based on current error text
+a=void 0!==e?t('span[data-field="'+r+'"]:contains("'+d+'")',o):t('span[data-field="'+r+'"][data-columns*="'+s+'"]',o);
+// Get the error element for this field and error if we've already created it
+var l=a.attr("data-columns");
+// On validation failure
+if(i===!1){
+// Remove the inline error set by the form validation JS library,
+// it doesn't work with the design here
+n.parents("fieldset").find("em.ee-form-error-message").remove();
+// Create a span for the error message with some data attributes
+// that we'll use later to see if we need to remove the message
+// or make sure there are no duplicate error messages
+var h=t("<span/>").attr({"data-field":r,"data-columns":s,style:"display: block"}).text(d);
+// Alert not already there? Add it and add our error message
+if(o.hasClass("alert"))
+// There isn't an error span for this error yet, add it anew
+0==a.size()?t("p",o).append(h):-1==l.indexOf(s)&&a.attr("data-columns",l+s);else{var o=t("<div/>").html(EE.alert.grid_error).contents();o.html("<p>"+h.prop("outerHTML")+"</p>"),o.insertBefore(t("div.grid-wrap"))}}else o.hasClass("alert")&&(
+// If the error exists, we need to remove the column ID of the column
+// that validated successfully for this field, and if the error doesn't
+// exist for any more columns, remove the error entirely
+a.size()>0&&(a.attr("data-columns",l.replace(s,"")),""==a.attr("data-columns")&&a.remove()),
+// No more errors? Get rid of the alert
+0==t("span",o).size()&&o.remove())})},/**
 	 * Upon page load, we need to resize the column container to fit the number
 	 * of columns we have
 	 */
@@ -217,6 +251,8 @@ this.settingsScroller.animate({scrollLeft:this._getColumnsWidth()},700),i.animat
 this._bindAutoColName(i),
 // Bind column manipulation buttons
 this._bindActionButtons(i),
+// Bind AJAX form validation
+EE.cp.formValidation.bindInputs(i),
 // Fire displaySettings event
 this._fireEvent("displaySettings",t(".grid-col-settings-custom > div",i))},/**
 	 * Binds ee_url_title plugin to column label box to auto-populate the
