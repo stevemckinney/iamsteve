@@ -1,0 +1,5 @@
+// Fills for use in SVG
+// ---------------------------
+@each $color in $color-palette {
+  .fill-#{nth($color, 1)} {
+    fill: nth($color, 2); } }

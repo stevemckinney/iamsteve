@@ -4,35 +4,69 @@
 
 // Color
 // ---------------------------
-$primary: #ea5951 !global;
+$primary: #e16161 !global;
 $primary-d1: #904b4e;
 $primary-d2: scale-lightness($primary-d1, -20%);
 $primary-l1: #f08079;
-$primary-l2: #ffede5;
+$primary-l2: #fae2dc;
 $primary-l3: #fff5f0;
 
-$secondary: #4db898 /* #61bd89 */ !global;
-$secondary-d1: scale-lightness($secondary, -10%);
+$secondary: #87d4be !global;
+$secondary-d1: #4db898;
 $secondary-d2: scale-lightness($secondary, -20%);
-$secondary-l1: #9ec0b5;
-$secondary-l2: #99e0c7;
-$secondary-l3: #e6f2e3;
+$secondary-l1: #c3e5d8;
+$secondary-l2: #e1f7ee;
+$secondary-l3: #edf7f3;
 
-$tertiary: #f4b96d !global;
-$tertiary-d1: #d1991e;
-$tertiary-d2: scale-lightness($tertiary, -20%);
-$tertiary-l1: #f7d77a;
-$tertiary-l2: #efdcc1;
-$tertiary-l3: #fef9ed;
+$tertiary: #ffd7a6 !global;
+$tertiary-d1: #f2b76f;
+$tertiary-d2: #d19954;
+$tertiary-l1: #fff6e5;
+$tertiary-l2: #fffbf2;
 
-$neutral: #384242 !global;
-$neutral-d1: scale-lightness($neutral, -10%);
-$neutral-d2: scale-lightness($neutral, -20%);
-$neutral-l1: #727784;
-$neutral-l2: #919aa5;
-$neutral-l3: #c0d8d8;
-$neutral-l4: #e9f5f5;
-$neutral-l5: #f7fbfb;
+$neutral-a: #1a626e !global;
+$neutral-a-l1: #bed8d8;
+$neutral-a-l2: #e9f5f5;
+$neutral-a-l3: #f7fbfb;
+
+$neutral: #384242;
+$neutral-l1: #6c8484;
+$neutral-l2: #91a5a5;
+
+$colors: (
+  primary: $primary,
+  primary-d1: $primary-d1,
+  primary-d2: $primary-d2,
+  primary-l1: $primary-l1,
+  primary-l2: $primary-l2,
+  primary-l3: $primary-l3,
+  secondary: $secondary,
+  secondary-d1: $secondary-d1,
+  secondary-d2: $secondary-d2,
+  secondary-l1: $secondary-l1,
+  secondary-l2: $secondary-l2,
+  secondary-l3: $secondary-l3,
+  tertiary: $tertiary,
+  tertiary-d1: $tertiary-d1,
+  tertiary-d2: $tertiary-d2,
+  tertiary-l1: $tertiary-l1,
+  tertiary-l2: $tertiary-l2,
+  neutral: $neutral,
+  neutral-l1: $neutral-l1,
+  neutral-l2: $neutral-l2,
+  neutral-a: $neutral-a,
+  neutral-a-l1: $neutral-a-l1,
+  neutral-a-l2: $neutral-a-l2,
+  neutral-a-l3: $neutral-a-l3,
+);
+
+$color-palette: (
+  primary: $primary,
+  secondary: $secondary,
+  tertiary: $tertiary,
+  neutral: $neutral,
+  neutral-a: $neutral-a
+);
 
 // Fonts
 // ---------------------------
