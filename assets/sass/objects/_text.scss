@@ -1,13 +1,18 @@
 // Align
 // ---------------------------
-.text-right { text-align: right; }
-.text-center { text-align: center; }
-.text-left { text-align: left; }
+.right { text-align: right; }
+.center { text-align: center; }
+.left { text-align: left; }
 
 // Case
 // ---------------------------
-.text-lowercase { text-transform: lowercase; }
-.text-uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.uppercase { text-transform: uppercase; }
+
+// Type
+// ---------------------------
+.sans { font-family: $sans; }
+.serif { font-family: $serif; }
 	
 // Colour
 // ---------------------------
@@ -15,6 +20,7 @@ $text-color-helpers: (
 	"white": $white,
 	primary: $primary,
 	secondary: $secondary,
+	neutral: $neutral,
 	"red": $red,
 	"green": $green,
 	"orange": $orange,
@@ -22,12 +28,19 @@ $text-color-helpers: (
 );
 
 @each $name, $color in $text-color-helpers {
-	.text-#{$name} { color: $color; } }
+	.#{$name} { color: $color; } }
 
 // General elements
 // ---------------------------
 address { font-style: normal; }
 	
+// Links
+// ---------------------------
+.link { 
+  // A discrete link style
+  font-weight: 700;
+  color: $neutral; }
+
 // Various
 // ---------------------------
 .caption {

@@ -31,7 +31,7 @@ $default-enable-float: false !default;
 
 // Inline block layout
 // ---------------------------
-$default-enable-inline-block-layout: true !default;
+$default-enable-inline-block-layout: false !default;
 $helper-vertical-align-prefix: vertical-align;
 
 @if $default-enable-inline-block-layout {
@@ -132,10 +132,8 @@ $default-soft-map:
 $default-enable-margin: true !default;
 
 $default-push-map:
-  top,
-  right,
-  bottom,
-  left !default;
+  bottom !default;
+@debug half($baseline);
 
 @if $default-enable-margin {
   @each $margin in $default-push-map {

@@ -1,0 +1,12 @@
+// The introduction area is unique
+// ---------------------------
+.introduction {
+  flex-basis: 100%;
+  padding: em($line*2);
+  
+  svg {
+    display: block;
+    margin-bottom: em($base-px); }
+  
+  p {
+    max-width: 306px; } }

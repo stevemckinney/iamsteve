@@ -6,31 +6,44 @@
 	text-rendering: optimizeLegibility;
 	line-height: 1;
 	margin-top: 0;
-	font-weight: 700; }
+	font-weight: font-weight(bold); }
 	
 .h1 { 
-	font-size: em($h1-size);
-	margin-bottom: em($line, $h1-size); }
+	font-size: em($text-medium);
+	
+	@include breakpoint($b) {
+  	font-size: em($text-xxlarge);
+  	font-weight: font-weight(semibold); } }
 	
 .h2 {
-	font-size: em($h2-size);
-	margin-bottom: em($line, $h2-size); }
+	font-size: em($text-small);
+	
+	@include breakpoint($b) {
+  	font-size: em($text-xlarge); } }
 	
 .h3 {
-	font-size: em($h3-size);
-	margin-bottom: em($line, $h3-size); }
+	font-size: em($text-small);
+	
+	@include breakpoint($b) {
+  	font-size: em($text-large); } }
 	
 .h4 { 
-	font-size: em($h4-size);
-	margin-bottom: em($base-px, $h4-size); }
+	font-size: em($text-small);
+	
+	@include breakpoint($b) {
+  	font-size: em($text-medium); } }
 	
 .h5 {
-	font-size: em($h5-size);
-	margin-bottom: em($base-px, $h5-size); }
+	font-size: em($text-xsmall);
+	
+	@include breakpoint($b) {
+  	font-size: em($text-small); } }
 	
 .h6 {
-	font-size: em($h6-size);
-	margin-bottom: em($base-px, $h6-size); }
+	font-size: em($text-xxsmall);
+	
+	@include breakpoint($b) {
+  	font-size: em($text-xsmall); } }
 	
 // General
 // ---------------------------
@@ -38,16 +51,20 @@ body {
 	font: 400 100%/1.5 $body; }
 
 p {
-	margin-bottom: em($base-px); }
+  @supports (-webkit-hyphens: auto) {
+    text-align: justify;
+    -webkit-hyphens: auto; }
+  
+  @supports (hyphens: auto) {
+    text-align: justify;
+    hyphens: auto; }
+  
+	margin: 0 0 $base-px; }
 
 a {
   transition: .2s;
 	text-decoration: none;
 	color: $secondary;
-	
-	&:hover:not(.logo):not(.button),
-	&:focus:not(.logo):not(.button) {
-		opacity: .8; }
 		
 	// Normalize
 	background: transparent; // newer IE versions need this
