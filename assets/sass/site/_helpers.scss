@@ -171,7 +171,7 @@ $default-enable-undo: false !default;
   
 // Radius
 // ---------------------------
-$default-enable-radius: false !default;
+$default-enable-radius: true !default;
 
 @if $default-enable-radius {
 	.circular,
