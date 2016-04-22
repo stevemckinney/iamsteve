@@ -4,36 +4,28 @@ $forms-use-flex: true;
 
 // Forms
 // ---------------------------
-.form,
-.simple_form {
-	@extend %clear;
-	
-	@if $forms-use-flex {
-		display: flex;
-		flex-flow: row wrap; } }
+.form {
+	display: flex;
+	flex-flow: row wrap; }
 
-@if $forms-use-flex {
-	.field {
-		@include breakpoint($c) {
-			flex-basis: 100%; } }
+.form-search {
+  position: relative;
+  width: 100%; }
+
+.field-whole {
+	flex-basis: 100%; }
 	
-	.field-half {
-		@include breakpoint($c) {
-			flex-basis: 50%; } } }
-@else {
-	.field-half {
-		@include breakpoint($c) {
-			display: inline-block;
-			vertical-align: top;
-			width: 50%; } }
+.field-half {
+	@include breakpoint($c) {
+		flex-basis: 50%; } }
 	
-	.field-first {
-		@include breakpoint($c) {
-			padding-right: em($base-px); } }
-	
-	.field-last {
-		@include breakpoint($c) {
-			padding-left: em($base-px); } } }
+.field-first {
+	@include breakpoint($c) {
+		padding-right: em($base-px); } }
+
+.field-last {
+	@include breakpoint($c) {
+		padding-left: em($base-px); } }
 
 // Field layouts
 // ---------------------------
@@ -90,25 +82,20 @@ $forms-use-flex: true;
 		
 // Input
 // ---------------------------
+  .input {
+    @include form-base($radius: false); }
+
 	.input-text,
 	.input-select {
 		width: 100%; }
 	
 	// Text
 	// ---------------------------
-	.input-text:not([readonly]):not([disabled]) {
-		@extend %form-base-with-mixin;
+	.input-text {
 		@include form; }
-	
-	.input-text[readonly] {
-		@extend %form-base-with-mixin;
-		@include form-shading($state: readonly); }
-	
-	.input-text[disabled] {
-		@extend %form-base-with-mixin;
-		@include form-shading($color: scale-lightness($default-form-background-color, -20%), $background-color: scale-lightness($default-form-background-color, -10%), $state: readonly);
-		cursor: not-allowed;
-		color: scale-lightness($default-form-color, -30%); }
+
+  .input-search {
+    border-radius: 10em; }
 	
 	// Select
 	// ---------------------------
