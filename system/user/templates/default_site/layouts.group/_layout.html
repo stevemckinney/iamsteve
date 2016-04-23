@@ -1,0 +1,46 @@
+{embed="include/header"}
+
+  <header class="header">
+    <a href="/" title="Back to the homepage" class="logo">
+      <?php include 'assets/images/logo-small.svg'; ?>
+      <?php include 'assets/images/logo.svg'; ?>
+      iamsteve
+    </a>
+    <span class="icon icon-search"><?php include 'assets/images/search.svg'; ?></span>
+    <a href="#nav" class="icon toggle" id="toggle">
+      <span>Menu</span>
+    </a>
+    <nav id="nav" class="nav pin-below-lt-b">
+      <a href="{homepage}" class="nav-item{if segment_1 == ""} active{/if}">Home</a>
+      <a href="{path='blog'}" class="nav-item{if segment_1 == ""} active{/if}">Archive</a>
+      <a href="{path='about'}" class="nav-item{if segment_1 == ""} active{/if}">About</a>
+      <a href="{path='contact'}" class="nav-item{if segment_1 == ""} active{/if}">Contact</a>
+    </nav>
+    {search}
+	</header>
+	
+	{layout:contents}
+	
+	<aside class="row row-strong">
+  	<section class="column">
+  		<h2 class="h2 push-half-bottom secondary chunky">About me</h2>
+  		<p>My name is Steve McKinney, I run this website. For the majority of the time I’ve been involved in making websites, I've done it all. I started making websites around 2002, I was pretty young, so it was just a hobby to begin with. Generally, I saw no distinction between roles, like there is now, you designed and coded websites.</p>
+      <p>Now it’s much more complex, I'm first and foremost a designer, but I'm able to code my designs — 14 years does allow for that. There is a lot of debate around whether designers should code, I'm not here to push that, it’s whatever you want to do. It's not easy to learn and do both effectively, but you can certainly be a great designer and produce code. If you want to code your designs, this is what this website is about. </p>
+  	</section>
+  	<section class="column">
+  		<h2 class="h2 secondary chunky">Subscribe</h2>
+  		{form_newsletter}
+  	</section>
+  </aside>
+
+  <footer class="row footer">
+  	<p>Copyright &copy; {site_name} {current_time format="%Y"}</p>
+  	<a href="{site_url}" class="logo-footer">logo</span>
+    <a href="#0" class="top">Top</a>
+  	<a href="https://iamsteve.me/blog/feed" title="Subscribe to the blog RSS feed">RSS</a>
+  	<a href="https://www.digitalocean.com/?refcode=612d37093f16" title="DigitalOcean hosting get 2 months free credit">Host</a>
+  	<a href="http://expressionengine.com/index.php?affiliate=stevemckinney" title="Running on ExpressionEngine">EE</a>
+  	<a href="https://gist.github.com/2767673" title="The cookies used on this site can be found here">Cookies</a>
+  </footer>
+	
+{embed="include/footer"}
