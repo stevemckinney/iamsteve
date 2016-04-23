@@ -1,11 +1,15 @@
-{paginate}{if {total_pages} > 1}
-<aside role="complementary">
-{pagination_links}
-	<ul class="pagination">
-		{previous_page}<li class="prev"><a href="{pagination_url}" data-icon="previous" rel="prev">Prev</a></li>{/previous_page}
-		{page}<li {if current_page}class="active"{/if}><a href="{pagination_url}">{pagination_page_number}</a></li>{/page}
-		{next_page}<li class="next"><a href="{pagination_url}" data-icon-after="next" rel="next">Next</a></li>{/next_page}
-	</ul>
-{/pagination_links}
-</aside>
-{/if}{/paginate}
+{paginate}
+  <div class="pagination">
+  	{pagination_links page_padding='1'}
+			{previous_page}
+        <a href="{pagination_url}">Older</a>
+			{/previous_page}
+			{page}
+        <a href="{pagination_url}"{if current_page} class="active"{/if}>{pagination_page_number}</a>
+			{/page}
+			{next_page}
+				<a href="{pagination_url}">Newer</a>
+			{/next_page}
+  	{/pagination_links}
+  </div>
+{/paginate}
