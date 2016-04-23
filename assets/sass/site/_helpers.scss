@@ -177,6 +177,10 @@ $default-enable-radius: true !default;
 	.circular,
 	[class*="-circular"] {
 		border-radius: 100%; }
+		
+  .rounded,
+  [class*="-rounded"] {
+    border-radius: 20em; }
 	
 	.radius,
 	[class*="-radius"] {
@@ -190,3 +194,9 @@ $default-enable-radius-specific: false !default;
 	@each $radius in $radii {	
 		.radius-#{$radius} {
 			border-#{$radius}-radius: $radius; } } }
+
+// Misc helpers
+// ---------------------------
+.pin-below-lt-b {
+  @include breakpoint($b-max) {
+    @include pin-below; } }

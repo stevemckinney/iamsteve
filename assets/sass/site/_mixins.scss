@@ -6,3 +6,13 @@
 
 // Mixin overrides
 // ---------------------------
+
+// Site specific mixins
+// ---------------------------
+
+// Position an element absolutely
+@mixin pin-below {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0; }
