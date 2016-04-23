@@ -1,1 +1,7 @@
-{exp:search:simple_form channel="blog" form_class="form-search" search_in="everywhere" no_result_page="search/no_results"}<label for="keywords">Search</label><input id="keywords" name="keywords" type="search" placeholder="Search terms..." results="5" autocorrect="off" autocapitalize="off"><input type="submit" value="Search">{/exp:search:simple_form}
+{exp:search:simple_form channel="blog" form_class="form form-search pin-below-lt-b" search_in="everywhere" no_result_page="search/no_results"}
+  <div class="field field-whole">
+    <label for="keywords" class="visuallyhidden">Search</label>
+    <input class="input input-text rounded" id="keywords" name="keywords" type="search" placeholder="Find a post…" autocorrect="off" autocapitalize="off">
+    <button type="submit" class="button button-search"><span class="icon icon-search"><?php include 'assets/images/search.svg'; ?></span></button>
+  </div>
+{/exp:search:simple_form}
