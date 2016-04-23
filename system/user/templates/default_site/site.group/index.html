@@ -1,32 +1,50 @@
-{layout="site/_layout"}
+{layout="layouts/_layout"}
 
+{!-- channel vars (prefix ch_) --}
+{preload_replace:ch='blog'}
+{preload_replace:ch_status='open|latest'}
+{preload_replace:ch_disable='pagination|member_data|trackbacks'}
+
+{!-- 404 --}
 {if segment_1 != ''}
   {redirect="404"}
 {/if}
 
 <div class="row row-normal">
-  <section class="column">
-    <?php include 'assets/images/rio-small.svg'; ?>
-    <h1 class="h1 primary">Learn design and code</h1>
+  <div class="column column-center introduction">
+    <picture>
+      <source srcset="{site_url}assets/images/rio.svg" media="(min-width: 640px)">
+      <source srcset="{site_url}assets/images/rio-small.svg" media="(max-width: 639px)">
+      <img src="{site_url}assets/images/rio.svg">
+    </picture>
+    <h1 class="h1 primary push-half-bottom">Learn design and code</h1>
     <p>Hi there, I’m Steve McKinney, I write weekly on design and code. If you’re like me and enjoy the process of designing and seeing it through to code, I’m sure you’ll find value in the content I provide. I cover topics on Illustrator, CSS and Wordpress.</p>
-    <p><a href="{path='blog/index'}" class="link">View archives</a></p>
-  </section>
-  {exp:channel:entries channel="blog" limit="1" status="open|latest" disable="pagination|member_data|trackbacks"}
-  	<article data-href="{title_permalink='blog/entry'}" class="box box-large">
-    	{image}
-    	{date}
-    	<div class="box-body">
-    		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-    		<p>{excerpt}</p>
-    		{blog_meta}
-      </div>
-  	</article>
-  {/exp:channel:entries}
-</section>
+    <p class="sans flush-bottom"><a href="{path='blog/index'}" class="link">View the archives</a></p>
+  </div>
+  <div class="column">
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="1"}
+    	<article data-href="{title_permalink='blog/entry'}" class="box box-large">
+      	{image}<img src="{url:large}" srcset="{url:xlarge} 2x">{/image}
+      	{date}
+      	<div class="box-body">
+      		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+      		<p>{excerpt}</p>
+      		{blog_meta}
+        </div>
+    	</article>
+    {/exp:channel:entries}
+  </div>
+</div>
 
 <section class="posts">
-  <h2 class="h4 primary chunky">Previous posts</h2>
-  {exp:channel:entries channel="blog" offset="1" limit="9" status="open|latest" disable="pagination|member_data|trackbacks"}
+  <header class="row row-header">
+      <h2 class="h4 chunky row-title">Popular in design</h2>
+      <div class="pagination">
+        <span class="page-left"></span>
+        <span class="page-right"></span>
+      </div>
+    </header>
+  {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="9"}
   	<article data-href="{title_permalink='blog/entry'}" class="box box-regular">
     	{image}
   		<h3 class="h3"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
@@ -49,7 +67,7 @@
     </header>
     
     <div class="scroll">
-      {exp:channel:entries channel="blog" limit="10" category="7" orderby="view_count_one" sort="desc" status="open|latest" disable="pagination|member_data|trackbacks"}
+      {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="10" category="7" orderby="view_count_one" sort="desc"}
       	<article data-href="{title_permalink='blog/entry'}" class="box box-small">
         	{image}
       		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
@@ -70,7 +88,7 @@
     </header>
     
     <div class="scroll">
-      {exp:channel:entries channel="blog" limit="10" category="2" orderby="view_count_one" sort="desc" status="open|latest" disable="pagination|member_data|trackbacks"}
+      {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="10" category="2" orderby="view_count_one" sort="desc"}
       	<article data-href="{title_permalink='blog/entry'}" class="box box-small">
         	{image}
       		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
