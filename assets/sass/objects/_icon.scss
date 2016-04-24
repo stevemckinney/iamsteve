@@ -15,3 +15,30 @@ $default-enable-social-icons: false !default;
 
 [data-icon-after]:after {
 	content: attr(data-icon-after); }
+
+// Icon utility
+// ---------------------------
+
+// To make sure each icon is positioned centrally
+// <span class=icon><svg></svg></span>
+.icon {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  
+  svg {
+    transition: .2s; } }
+
+.icon-search {
+  padding: $base-px;
+  
+  svg { 
+    width: 16px;
+    height: 16px;
+    fill: $primary;
+  
+    @include breakpoint($c) {
+      fill: $neutral; } }
+  
+  &.active svg {
+    fill: $neutral; } }
