@@ -6,12 +6,6 @@ body {
 
 // Flexbox grid
 // ---------------------------
-.row {
-  display: flex;
-  flex-flow: row wrap;
-  flex: 1 1 100%;
-  padding: 0 calc(50% - 600px); }
-
 .column {
   display: flex;
   flex-flow: column wrap; }

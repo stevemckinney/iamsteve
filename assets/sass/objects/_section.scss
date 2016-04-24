@@ -2,7 +2,9 @@
 // .panel, .row, .etc
 // ---------------------------
 .row {
-  display: flex; }
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 1 100%; }
 
 .row-normal {
   background: $white;
@@ -12,3 +14,6 @@
 
 .row-strong {
   background: $neutral-a-l3; }
+  
+.row-header {
+  padding: 0 $line; }
