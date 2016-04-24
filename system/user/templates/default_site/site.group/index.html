@@ -23,10 +23,16 @@
   </div>
   <div class="column">
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="1"}
-    	<article data-href="{title_permalink='blog/entry'}" class="box box-large">
-      	{image}<img src="{url:large}" srcset="{url:xlarge} 2x">{/image}
+    	<article data-href="{title_permalink='blog/entry'}" class="card card-large">
+      	{if image}
+      	  {image}<img src="{url:large}" srcset="{url:xlarge} 2x">{/image}
+        {if:elseif category == 7}
+      	  <img src="{site_url}assets/images/design-default-{exp:iamsteve:number from='1' to='4'}.svg">
+      	{if:else}
+      	  <img src="{site_url}assets/images/code-default-{exp:iamsteve:number from='1' to='4'}.svg">
+      	{/if}
       	{date}
-      	<div class="box-body">
+      	<div class="card-body">
       		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
       		<p>{excerpt}</p>
       		{blog_meta}
@@ -38,20 +44,29 @@
 
 <section class="posts">
   <header class="row row-header">
-      <h2 class="h4 chunky row-title">Popular in design</h2>
-      <div class="pagination">
-        <span class="page-left"></span>
-        <span class="page-right"></span>
-      </div>
-    </header>
-  {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="9"}
-  	<article data-href="{title_permalink='blog/entry'}" class="box box-regular">
-    	{image}
-  		<h3 class="h3"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
-  		<p>{excerpt}</p>
-  		{blog_meta}
-  	</article>
-  {/exp:channel:entries}
+    <h2 class="h4 chunky row-title">Popular in design</h2>
+    <div class="pagination">
+      <span class="page-left"></span>
+      <span class="page-right"></span>
+    </div>
+  </header>
+
+  <div class="scroll">
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="9"}
+    	<article data-href="{title_permalink='blog/entry'}" class="card card-regular">
+      	{if image}
+      	  {image}<img src="{url:medium}" srcset="{url:medium-2x} 2x">{/image}
+      	{if:elseif category == 7}
+      	  <img src="{site_url}assets/images/design-default-{exp:iamsteve:number from='1' to='4'}.svg">
+      	{if:else}
+      	  <img src="{site_url}assets/images/code-default-{exp:iamsteve:number from='1' to='4'}.svg">
+      	{/if}
+    		<h3 class="h3"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+    		<p>{excerpt}</p>
+    		{blog_meta}
+    	</article>
+    {/exp:channel:entries}
+  </div>
 </section>
 
 {subscribe}
@@ -68,8 +83,12 @@
     
     <div class="scroll">
       {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="10" category="7" orderby="view_count_one" sort="desc"}
-      	<article data-href="{title_permalink='blog/entry'}" class="box box-small">
-        	{image}
+      	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
+        	{if image}
+        	  {image}<img src="{url:small}" srcset="{url:small-2x} 2x">{/image}
+        	{if:else}
+        	  <img src="{site_url}assets/images/design-default-{exp:iamsteve:number from='1' to='4'}.svg">
+        	{/if}
       		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
       		<p>{excerpt}</p>
       		{date}
@@ -89,8 +108,13 @@
     
     <div class="scroll">
       {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="10" category="2" orderby="view_count_one" sort="desc"}
-      	<article data-href="{title_permalink='blog/entry'}" class="box box-small">
-        	{image}
+      	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
+        	{if image}
+        	  {image}<img src="{url:small}" srcset="{url:small-2x} 2x">{/image}
+        	{/if}
+        	{if:else}
+        	  <img src="{site_url}assets/images/code-default-{exp:iamsteve:number from='1' to='4'}.svg">
+        	{/if}
       		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
       		<p>{excerpt}</p>
       		{date}
