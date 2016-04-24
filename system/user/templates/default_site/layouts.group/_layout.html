@@ -1,16 +1,16 @@
 {embed="include/header"}
 
-  <header class="header">
+  <header class="header" id="header">
     <a href="/" title="Back to the homepage" class="logo">
       <?php include 'assets/images/logo-small.svg'; ?>
       <?php include 'assets/images/logo.svg'; ?>
       iamsteve
     </a>
-    <span class="icon icon-search"><?php include 'assets/images/search.svg'; ?></span>
+    <a href="#search" class="icon icon-search" id="toggle-search"><?php include 'assets/images/search.svg'; ?></a>
     <a href="#nav" class="icon toggle" id="toggle">
       <span>Menu</span>
     </a>
-    <nav id="nav" class="nav pin-below-lt-b">
+    <nav id="nav" class="nav">
       <a href="{homepage}" class="nav-item{if segment_1 == ""} active{/if}">Home</a>
       <a href="{path='blog'}" class="nav-item{if segment_1 == ""} active{/if}">Archive</a>
       <a href="{path='about'}" class="nav-item{if segment_1 == ""} active{/if}">About</a>
