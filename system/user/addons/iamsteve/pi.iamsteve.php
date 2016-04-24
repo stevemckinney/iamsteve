@@ -128,6 +128,70 @@ class Iamsteve {
   	
     return $html;
 	}
+	
+	public function inc()
+	{
+  	// Include
+		$file = ee()->TMPL->fetch_param('file');
+  	$this->return_data = file_get_contents($file);
+	}
+	
+	public function image_design()
+	{
+  	$images = array(
+  	  $this->base_url . '/assets/images/design-default-1.svg',
+  	  $this->base_url . '/assets/images/design-default-2.svg',
+  	  $this->base_url . '/assets/images/design-default-3.svg',
+  	  $this->base_url . '/assets/images/design-default-4.svg',
+    );
+    
+    $image = array_rand($images, 1);
+
+    return '<img src="' . $images[$image] . '">';
+	}
+	
+	public function image_code()
+	{
+  	$images = array(
+  	  $this->base_url . '/assets/images/code-default-1.svg',
+  	  $this->base_url . '/assets/images/code-default-2.svg',
+  	  $this->base_url . '/assets/images/code-default-3.svg',
+  	  $this->base_url . '/assets/images/code-default-4.svg',
+    );
+    
+    $image = array_rand($images, 1);
+    
+    return '<img src="' . $images[$image] . '">';
+	}
+	
+	public function number($from = '', $to = '')
+	{
+		// Parameters
+		if ($from == '')
+		{
+			$from = ee()->TMPL->fetch_param('from', '0');
+		}
+
+		if ($to == '')
+		{
+			$to	= ee()->TMPL->fetch_param('to', '9');
+		}
+
+		// no from? Set to 0
+		if (!is_numeric($from))
+		{
+			$from = '0';
+		}
+
+		// no to? Set to 9
+		if (!is_numeric($to))
+		{
+			$to = '9';
+		}
+
+		// return random number
+		return strval(rand(intval($from), intval($to)));
+	}
 }
 // END CLASS
 
