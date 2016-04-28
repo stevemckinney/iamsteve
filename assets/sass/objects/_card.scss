@@ -1,3 +1,83 @@
+/**
+ * Card
+ * 3 different sizes, to cover the majority of cases
+ *
+ * <div class="card card-{size}">
+ *   <div class="card-image"><img></div>
+ *   <div class="card-body">
+ *     ...
+ *   </div>
+ * </div>
+ */
 .card {
+  color: $neutral-l2; }
+
+.card-medium,
+.card-small {
+  .card-body { 
+    padding-top: $base-px; } }
+
+.card-large {
+  background: $white;
   
-}
+  @include breakpoint($c-max) {
+    border-bottom: 1px solid $neutral-a-l2;
+    
+    .card-body {
+      padding: $line; }
+    
+    .card-image {
+      border-top: 1px solid $neutral-a-l1;
+      border-bottom: 1px solid $neutral-a-l1; } }
+  
+  @include breakpoint($c) {
+    box-shadow: inset 0 -8px $neutral-a-l2;
+    margin-bottom: -$line * 2;
+    
+    .card-body {
+      padding: double($line);
+      border: 1px solid $neutral-a-l1;
+      border-top: none;
+      border-radius: 0 0 $radius $radius; }
+    
+    .card-image img {
+      border-radius: $radius $radius 0 0;
+      border: 1px solid $neutral-a-l1; } } }
+
+// Card image
+// ---------------------------
+.card-image {
+  img {
+    border-radius: $radius; } }
+
+// Card meta
+// ---------------------------
+
+// All meta has a dashed background, with each meta element having a white
+// background to cover it up to retain legibility
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: image-url("dash.svg") center center repeat-x;
+  background-size: 8px 2px;
+  font-size: 14px;
+  font-family: $serif;
+  font-style: italic;
+  margin-bottom: half($base-px);
+  
+  a, li,
+  span, time, {
+    background-color: $white; }
+  
+  // Hide a little more of the background
+  > *:first-child {
+    padding-right: half($base-px); }
+
+  > *:not(:only-child):last-child {
+    padding-left: half($base-px); }
+  
+  a:hover,
+  a:focus {
+    color: $neutral; } }
