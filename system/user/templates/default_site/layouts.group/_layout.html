@@ -2,19 +2,21 @@
 
   <header class="header" id="header">
     <a href="/" title="Back to the homepage" class="logo">
-      <?php include 'assets/images/logo-small.svg'; ?>
-      <?php include 'assets/images/logo.svg'; ?>
+      {logo_small}
+      {logo}
       iamsteve
     </a>
-    <a href="#search" class="icon icon-search" id="toggle-search"><?php include 'assets/images/search.svg'; ?></a>
-    <a href="#nav" class="icon toggle" id="toggle">
+    <a href="#search" class="icon icon-medium icon-search fill-primary" id="toggle-search">
+      {icon_search}
+    </a>
+    <a href="#nav" class="icon icon-toggle" id="toggle">
       <span>Menu</span>
     </a>
-    <nav id="nav" class="nav">
+    <nav id="nav" class="nav invisible">
       <a href="{homepage}" class="nav-item{if segment_1 == ""} active{/if}">Home</a>
-      <a href="{path='blog'}" class="nav-item{if segment_1 == ""} active{/if}">Archive</a>
-      <a href="{path='about'}" class="nav-item{if segment_1 == ""} active{/if}">About</a>
-      <a href="{path='contact'}" class="nav-item{if segment_1 == ""} active{/if}">Contact</a>
+      <a href="{path='blog'}" class="nav-item{if segment_1 == "blog"} active{/if}">Archive</a>
+      <a href="{path='about'}" class="nav-item{if segment_1 == "about"} active{/if}">About</a>
+      <a href="{path='contact'}" class="nav-item{if segment_1 == "contact"} active{/if}">Contact</a>
     </nav>
     {search}
 	</header>
@@ -28,7 +30,7 @@
       <p>Now it’s much more complex, I'm first and foremost a designer, but I'm able to code my designs — 14 years does allow for that. There is a lot of debate around whether designers should code, I'm not here to push that, it’s whatever you want to do. It's not easy to learn and do both effectively, but you can certainly be a great designer and produce code. If you want to code your designs, this is what this website is about. </p>
   	</section>
   	<section class="column">
-  		<h2 class="h2 secondary chunky">Subscribe</h2>
+  		<h2 class="h2 push-half-bottom secondary chunky">Subscribe</h2>
   		{form_newsletter}
   	</section>
   </aside>
