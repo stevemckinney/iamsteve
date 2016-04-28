@@ -4,9 +4,12 @@
   font-family: $heading;
   color: $neutral;
   text-rendering: optimizeLegibility;
-  line-height: 1;
+  line-height: 1.25;
   margin-top: 0;
-  font-weight: font-weight(bold); }
+  font-weight: font-weight(bold);
+  
+  @include breakpoint($c) {
+    font-weight: font-weight(semibold); } }
   
 .h1 { 
   font-size: em($text-medium);
@@ -17,9 +20,11 @@
   
 .h2 {
   font-size: em($text-small);
+  margin-bottom: half($base-px);
   
   @include breakpoint($b) {
-    font-size: em($text-xlarge); } }
+    font-size: em($text-xlarge);
+    margin-bottom: $base-px; } }
   
 .h3 {
   font-size: em($text-small);
@@ -48,12 +53,15 @@
 // General
 // ---------------------------
 body {
-  color: $neutral-a;
+  color: $neutral-l1;
   font: 400 100%/1.5 $body; }
 
 p {
   font-size: 14px;
   margin: 0 0 $base-px;
+  
+  @include breakpoint($c) {
+    font-size: $base-font-size; }
   
   @supports (-webkit-hyphens: auto) {
     text-align: justify;
@@ -66,7 +74,7 @@ p {
 a {
   transition: .2s;
   text-decoration: none;
-  color: $secondary;
+  color: inherit;
     
   // Normalize
   background: transparent; // newer IE versions need this
@@ -74,6 +82,10 @@ a {
   &:active,
   &:hover {
     outline: 0; } }
+
+.entry-content a {
+  color: $secondary;
+  font-weight: font-weight(bold); }
 
 .field {
   font-size: 1rem; }
@@ -84,18 +96,20 @@ code {
   font: 400 em($base-font-size - 2px) $monospace;
   background: rgba($primary, .05);
   border-radius: $radius;
-  padding: em(2px, $base-font-size - 2px) em(6px, $base-font-size - 2px);
-  
-  pre & {
-    max-height: 200px;
-    overflow: auto;
-    color: $primary;
-    direction: ltr;
-    text-align: left;
-    white-space: pre-line;
-    -moz-tab-size: 2;
-    -o-tab-size: 2;
-    tab-size: 2; } }
+  padding: em(2px, $base-font-size - 2px) em(6px, $base-font-size - 2px); }
+
+pre code {
+  overflow: auto;
+  color: $primary;
+  direction: ltr;
+  text-align: left;
+  white-space: pre-line;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2; }
+
+.code-tall {
+  max-height: 548px; }
 
 kbd {
   background: #444;
