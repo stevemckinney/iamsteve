@@ -58,5 +58,4 @@
 // Extending this makes sure you do not repeat any code
 // ---------------------------
 %element-base-with-mixin {
-	@extend %element-base;
 	@include element-base; }
