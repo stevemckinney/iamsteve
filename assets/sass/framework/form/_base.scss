@@ -5,35 +5,19 @@
 	$radius: $default-form-radius,
 	$size: $default-form-size) {
 	
-	@extend %form-base;
-	
-	@if $radius { 
-		border-radius: $radius; }
-		
-	@if $size {
-		padding: $size; } }
-
-// Most form elements will need these styles
-// Can override the mixin to override extend
-// ---------------------------
-@mixin form-base-extend {
 	@include appearance(none);
 	border: none;
 	font-family: $form;
 	outline: none;
 	max-width: 100%;
 	color: $default-form-text-color;
-	line-height: $default-form-line-height; }
+	line-height: $default-form-line-height;
 	
-%form-base {
-	@include form-base-extend; }
-
-// Most form elements share a lot of basic styles.
-// Extend this on text/select generally
-// ---------------------------
-%form-base-with-mixin {
-	@extend %form-base;
-	@include form-base; }
+	@if $radius { 
+		border-radius: $radius; }
+		
+	@if $size {
+		padding: $size; } }
 
 // Basic styles for each radio/checkbox
 // Can override the mixin to override extend
