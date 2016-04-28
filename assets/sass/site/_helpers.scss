@@ -132,8 +132,9 @@ $default-soft-map:
 $default-enable-margin: true !default;
 
 $default-push-map:
+  left,
+  right,
   bottom !default;
-@debug half($baseline);
 
 @if $default-enable-margin {
   @each $margin in $default-push-map {

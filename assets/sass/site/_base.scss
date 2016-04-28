@@ -82,10 +82,16 @@ $element: $sans !default;
 // Defaults
 // ---------------------------
 $default-transition-duration: .2s;
-$site-width: 800px;
+$site-width: 1200px;
 $default-form-color: darken(#eee, 10%);
 $default-form-background-color: scale-lightness(#eee, 10%);
 $default-shading: true !global;
+$default-form-focus-color: $secondary;
+$default-form-color: $neutral-a-l1;
+$default-form-background-color: $neutral-a-l3;
+$default-placeholder-color: $neutral-l2;
+$default-form-text-color: $neutral;
+$radius: 8px;
 
 // Browser support and prefixing
 // ---------------------------

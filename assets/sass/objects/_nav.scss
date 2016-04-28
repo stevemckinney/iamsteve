@@ -3,58 +3,23 @@
 .nav {
   display: flex;
   flex-flow: row wrap;
-  z-index: $z-index-1;
   
   @include breakpoint($b) {
     align-content: stretch;
     align-items: stretch;
-    flex: 1; }
-    
-  @include breakpoint($b-max) {
-    overflow: hidden;
-    transition: .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    opacity: 0;
-    max-height: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: $white;
-    align-items: center;
-    align-content: center; } }
+    flex: 1; } }
 
 .nav-item {
   font-family: $sans;
   color: $neutral-l1;
   text-transform: lowercase;
   padding: $line;
-  transition: .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   
   @include breakpoint($b) {
+    transition: color .2s;
     font-weight: font-weight(bold); }
   
   @include breakpoint($b-max) {
     font-size: $text-large;
     flex: 1 1 100%;
-    text-align: center;
-    position: relative;
-    transform: translate3d(0, 36px, 0);
-    opacity: 0; } }
-
-// Click .toggle and .active is added
-// ---------------------------
-.nav.active {
-  display: flex;
-  opacity: 1;
-  max-height: 100vh;
-  background-color: $tertiary-l2;
-  
-  .nav-item {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-    transition: .6s .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    
-    @for $i from 1 through 4 {
-      &:nth-of-type(#{$i}) {
-        transition-delay: .0s + ( $i / 10 ); } } } }
+    text-align: center; } }

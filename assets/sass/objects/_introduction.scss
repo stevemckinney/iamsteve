@@ -1,12 +1,16 @@
 // The introduction area is unique
 // ---------------------------
-.introduction {
-  flex-basis: 100%;
-  padding: em($line*2);
+.introduction {  
+  @include breakpoint($c-max) {
+    padding: $line*2;
+    padding-top: 48px + $line*2; }
   
-  svg {
-    display: block;
+  svg,
+  img {
     margin-bottom: em($base-px); }
   
   p {
-    max-width: 306px; } }
+    max-width: 326px;
+    
+    @supports not (-webkit-hyphens: auto) {
+      text-align: center; } } }

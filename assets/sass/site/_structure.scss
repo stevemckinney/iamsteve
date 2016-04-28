@@ -2,14 +2,8 @@
 // ---------------------------
 body {
 	background: $white;
-	color: $neutral; }
-
-// Flexbox grid
-// ---------------------------
-.column {
-  display: flex;
-  flex-flow: column wrap; }
-
-.column-center {
-  align-items: center;
-  align-content: center; }
+	
+	overflow-x: hidden;
+	
+	@include breakpoint($c) {
+  	padding-top: $line * 6; } }

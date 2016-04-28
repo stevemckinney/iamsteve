@@ -1,7 +1,3 @@
-// Variables
-// ---------------------------
-$forms-use-flex: true;
-
 // Forms
 // ---------------------------
 .form {
@@ -9,32 +5,8 @@ $forms-use-flex: true;
 	flex-flow: row wrap; }
 
 .form-search {
-  position: relative;
-  width: 100%; }
-
-.field-whole {
-	flex-basis: 100%; }
-	
-.field-half {
-	@include breakpoint($c) {
-		flex-basis: 50%; } }
-	
-.field-first {
-	@include breakpoint($c) {
-		padding-right: em($base-px); } }
-
-.field-last {
-	@include breakpoint($c) {
-		padding-left: em($base-px); } }
-
-// Field layouts
-// ---------------------------
-.field-half {}
-.field-first .input-text {
-	border-radius: $radius 0 0 $radius; }
-	
-.field-last .input-text {
-	border-radius: 0 $radius $radius 0; }
+  @include breakpoint($b-max) {
+    width: 100%; } }
 
 // Label
 // ---------------------------
@@ -55,9 +27,33 @@ $forms-use-flex: true;
 // Fieldset
 // ---------------------------
 .field {
-	margin: 0;
-	padding: 0; }
+  position: relative; }
+
+// Field layouts
+// ---------------------------
+.field-first .input-text {
+	border-radius: $radius 0 0 $radius; }
 	
+.field-last .input-text {
+	border-radius: 0 $radius $radius 0; }
+
+.field-whole {
+	flex-basis: 100%; }
+	
+.field-half {
+	@include breakpoint($c) {
+		flex-basis: 50%; } }
+	
+.field-first {
+	@include breakpoint($c) {
+		padding-right: em($base-px); } }
+
+.field-last {
+	@include breakpoint($c) {
+		padding-left: em($base-px); } }
+
+// Field specifics
+// ---------------------------
 .field-checkbox {
 	display: block; }
 	
@@ -65,8 +61,7 @@ $forms-use-flex: true;
 	@extend .field-checkbox; }
 
 .field-search {
-	@include form-search($has-label: true);
-	text-align: right; }
+  padding: $line; }
 
 .form-actions {
 	clear: both;
@@ -82,12 +77,14 @@ $forms-use-flex: true;
 		
 // Input
 // ---------------------------
-  .input {
-    @include form-base($radius: false); }
+.input {
+  @include form-base($radius: false, $size: false);
+  padding: $base-px 0;
+  width: 100%; }
 
-	.input-text,
-	.input-select {
-		width: 100%; }
+.input-text,
+.input-select {
+	width: 100%; }
 	
 	// Text
 	// ---------------------------
@@ -95,31 +92,27 @@ $forms-use-flex: true;
 		@include form; }
 
   .input-search {
-    border-radius: 10em; }
+    font-size: $text-large; }
 	
 	// Select
 	// ---------------------------
 	.input-select {
-		@extend %form-base-with-mixin;
 		@include form(select); }
 	
 	// Check/radio
 	// ---------------------------
 	.input-checkbox {
 		@include form(checkbox);
-		@include wh(em($base-font-size));
+		width: em($base-font-size);
+		height: em($base-font-size); 
 		position: relative;
 		top: em($base-font-size / 6);
 		margin: $default-form-boolean-margin; }
 	
 	.input-radio {
 		@include form(radio);
-		@include wh($default-form-radio-width, $default-form-radio-height);
 		position: relative;
+		width: $default-form-radio-width;
+		height: $default-form-radio-height;
 		top: em(2px);
 		margin: $default-form-boolean-margin; }
-		
-	// Submit
-	// ---------------------------
-	.button-submit {
-		@include element($red, $hover: true); }

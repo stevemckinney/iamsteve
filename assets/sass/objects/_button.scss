@@ -1,7 +1,7 @@
 // Buttons
 // ---------------------------
 .button {
-	@extend %element-base-with-mixin; }
+	@include element-base; }
 
 $buttons: (
 	default: $default-color,
@@ -18,9 +18,14 @@ $buttons: (
 
 .button-search {
   position: absolute;
-  top: 0;
-  right: 0;
-  background: none; }
+  top: $line;
+  right: $line;
+  background: transparent;
+  padding: 0;
+  
+  &:active {
+    svg {
+      fill: $primary; } } }
 		
 .button-inline {
 	background: transparent;
