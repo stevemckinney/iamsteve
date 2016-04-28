@@ -1,55 +1,59 @@
 // Framework required
 // ---------------------------
-@import "compass/support",
-        "compass/utilities/color",
-        "compass/typography/text",
-        "compass/css3/appearance",
-        "compass/css3/user-interface",
-				"breakpoint",
-				"framework/base", // lots of default variables
-				"site/base"; // override defaults here, fonts and colour also
+@import "compass/support";
+@import "compass/utilities/color";
+@import "compass/typography/text";
+@import "compass/css3/appearance";
+@import "compass/css3/user-interface";
+@import "breakpoint";
+@import "framework/base"; // lots of default variables
+@import "site/base"; // override defaults here, fonts and colour also
 				
 // Framework components, don't edit
 // ---------------------------
-@import "framework/maps",
-				"framework/conversion",
-				"framework/normalize",
-				"framework/grid",
-				"framework/helpers",
-				"framework/group",
-				"framework/element",
-				"framework/icon",
-				"framework/form",
-				"framework/table",
-				"framework/tooltip",
-				"framework/misc";
+@import "framework/maps";
+@import "framework/conversion";
+@import "framework/normalize";
+@import "framework/grid";
+@import "framework/helpers";
+@import "framework/group";
+@import "framework/element";
+@import "framework/icon";
+@import "framework/form";
+@import "framework/table";
+@import "framework/tooltip";
+@import "framework/misc";
 				
 // Site base
 // ---------------------------
-@import "site/mixins", // Override existing framework mixins here, or break them into files or add custom mixins
-				"site/helpers", // Generic reusable class names (eg: pull-left, pull-right, etc)
-				"site/webfonts", 
-				"site/typography",
-				"site/structure",
-        "site/svg";
+@import "site/mixins"; // Override existing framework mixins here, or break them into files or add custom mixins
+@import "site/helpers"; // Generic reusable class names (eg: pull-left, pull-right, etc)
+@import "site/webfonts"; 
+@import "site/typography";
+@import "site/structure";
+@import "site/svg";
+@import "site/transition";
 
 // Site objects
 // ---------------------------
-@import "objects/button",
-				"objects/notice",
-				"objects/form",
-				"objects/state",
-				"objects/header",
-				"objects/nav",
-				"objects/footer",
-				"objects/introduction";
+@import "objects/button";
+@import "objects/notice";
+@import "objects/form";
+@import "objects/state";
+@import "objects/header";
+@import "objects/nav";
+@import "objects/footer";
+@import "objects/introduction";
+@import "objects/icon";
+@import "objects/section";
+@import "objects/pagination";
 
 // Optional Imports
 // ---------------------------
-@import "objects/table",
-				"objects/text",
-				"objects/list",
-				"objects/figure",
-				"objects/blockquote",
-				"objects/media",
-				"objects/card";
+@import "objects/table";
+@import "objects/text";
+@import "objects/list";
+@import "objects/figure";
+@import "objects/blockquote";
+@import "objects/media";
+@import "objects/card";
