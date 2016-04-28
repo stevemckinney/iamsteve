@@ -4,37 +4,48 @@
 {preload_replace:ch='blog'}
 {preload_replace:ch_status='open|latest'}
 {preload_replace:ch_disable='pagination|member_data|trackbacks'}
+{preload_replace:ch_limit='10'}
+{preload_replace:number='{exp:iamsteve:number from="1" to="4"}'}
 
 {!-- 404 --}
 {if segment_1 != ''}
   {redirect="404"}
 {/if}
 
-<div class="row row-normal">
-  <div class="column column-center introduction">
+<div class="row row-padded row-normal">
+  <div class="column column-c-3 column-center introduction">
     <picture>
       <source srcset="{site_url}assets/images/rio.svg" media="(min-width: 640px)">
       <source srcset="{site_url}assets/images/rio-small.svg" media="(max-width: 639px)">
       <img src="{site_url}assets/images/rio.svg">
     </picture>
     <h1 class="h1 primary push-half-bottom">Learn design and code</h1>
-    <p>Hi there, I’m Steve McKinney, I write weekly on design and code. If you’re like me and enjoy the process of designing and seeing it through to code, I’m sure you’ll find value in the content I provide. I cover topics on Illustrator, CSS and Wordpress.</p>
+    <p>Hi there, I’m Steve McKinney, I write weekly on design and code. If you’re like me and enjoy the process of designing and seeing it through to code, I’m sure you’ll find value in the content I provide. I&nbsp;cover topics on Illustrator, CSS and Wordpress.</p>
     <p class="sans flush-bottom"><a href="{path='blog/index'}" class="link">View the archives</a></p>
   </div>
-  <div class="column">
+  <div class="column column-c-5">
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="1"}
     	<article data-href="{title_permalink='blog/entry'}" class="card card-large">
-      	{if image}
-      	  {image}<img src="{url:large}" srcset="{url:xlarge} 2x">{/image}
-        {if:elseif category == 7}
-      	  <img src="{site_url}assets/images/design-default-{exp:iamsteve:number from='1' to='4'}.svg">
-      	{if:else}
-      	  <img src="{site_url}assets/images/code-default-{exp:iamsteve:number from='1' to='4'}.svg">
-      	{/if}
-      	{date}
+      	<div class="card-image">
+        	{if image}
+        	  {image}
+        	    <img src="{url:large}" srcset="{url:large-2x} 2x">
+            {/image}
+          {if:elseif category == 7}
+        	  <img src="{site_url}assets/images/design-default-{number}.svg">
+        	{if:else}
+        	  <img src="{site_url}assets/images/code-default-{number}.svg">
+        	{/if}
+      	</div>
       	<div class="card-body">
-      		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-      		<p>{excerpt}</p>
+        	<div class="meta">
+            <time datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
+              <span class="month">{entry_date format="%F"}</span>
+              <span class="day">{entry_date format="%j"}</span>
+            </time>
+          </div>
+      		<h2 class="h2 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+      		{excerpt}
       		{blog_meta}
         </div>
     	</article>
@@ -44,7 +55,7 @@
 
 <section class="posts">
   <header class="row row-header">
-    <h2 class="h4 chunky row-title">Popular in design</h2>
+    <h2 class="h4 chunky neutral-l1 row-title">Previous posts</h2>
     <div class="pagination">
       <span class="page-left"></span>
       <span class="page-right"></span>
@@ -52,18 +63,23 @@
   </header>
 
   <div class="scroll">
-    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="9"}
-    	<article data-href="{title_permalink='blog/entry'}" class="card card-regular">
-      	{if image}
-      	  {image}<img src="{url:medium}" srcset="{url:medium-2x} 2x">{/image}
-      	{if:elseif category == 7}
-      	  <img src="{site_url}assets/images/design-default-{exp:iamsteve:number from='1' to='4'}.svg">
-      	{if:else}
-      	  <img src="{site_url}assets/images/code-default-{exp:iamsteve:number from='1' to='4'}.svg">
-      	{/if}
-    		<h3 class="h3"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
-    		<p>{excerpt}</p>
-    		{blog_meta}
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="{ch_limit}"}
+    	<article data-href="{title_permalink='blog/entry'}" class="card card-medium">
+      	<div class="card-image">
+        	{if image}
+        	  {image}<img src="{url:medium}" srcset="{url:medium-2x} 2x">{/image}
+        	{if:elseif 'category' == 7}
+        	  <img src="{site_url}assets/images/design-default-{number}.svg">
+        	{if:else}
+        	  <img src="{site_url}assets/images/code-default-{number}.svg">
+        	{/if}
+      	</div>
+      	<div class="card-body">
+        	<div class="meta">{date}</div>
+      		<h3 class="h4 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+      		{excerpt}
+      		{blog_meta}
+        </div>
     	</article>
     {/exp:channel:entries}
   </div>
@@ -74,7 +90,7 @@
 <div class="row row-normal">
   <section class="posts">
     <header class="row row-header">
-      <h2 class="row-title">Popular in design</h2>
+      <h2 class="h4 neutral-l1 chunky row-title">Popular in design</h2>
       <div class="pagination">
         <span class="page-left"></span>
         <span class="page-right"></span>
@@ -82,24 +98,26 @@
     </header>
     
     <div class="scroll">
-      {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="10" category="7" orderby="view_count_one" sort="desc"}
+      {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="7" orderby="view_count_one" sort="desc"}
       	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
-        	{if image}
-        	  {image}<img src="{url:small}" srcset="{url:small-2x} 2x">{/image}
-        	{if:else}
-        	  <img src="{site_url}assets/images/design-default-{exp:iamsteve:number from='1' to='4'}.svg">
-        	{/if}
-      		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-      		<p>{excerpt}</p>
-      		{date}
-      		{blog_meta}
+        	<div class="card-image">
+          	{if image}
+          	  {image}<img src="{url:small}" srcset="{url:small-2x} 2x">{/image}
+          	{if:else}
+          	  <img src="{site_url}assets/images/design-default-{number}.svg">
+          	{/if}
+        	</div>
+        	<div class="card-body">
+        		<div class="meta">{date}</div>
+        		<h2 class="h5 neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+      		</div>
       	</article>
       {/exp:channel:entries}
     </div>
   </section>
   <section class="posts">
     <header class="row row-header">
-      <h2 class="row-title">Popular in code</h2>
+      <h2 class="h4 neutral-l1 chunky row-title">Popular in code</h2>
       <div class="pagination">
         <span class="page-left"></span>
         <span class="page-right"></span>
@@ -107,18 +125,19 @@
     </header>
     
     <div class="scroll">
-      {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="10" category="2" orderby="view_count_one" sort="desc"}
+      {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2" orderby="view_count_one" sort="desc"}
       	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
-        	{if image}
-        	  {image}<img src="{url:small}" srcset="{url:small-2x} 2x">{/image}
-        	{/if}
-        	{if:else}
-        	  <img src="{site_url}assets/images/code-default-{exp:iamsteve:number from='1' to='4'}.svg">
-        	{/if}
-      		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-      		<p>{excerpt}</p>
-      		{date}
-      		{blog_meta}
+        	<div class="card-image">
+          	{if image}
+          	  {image}<img src="{url:small}" srcset="{url:small-2x} 2x">{/image}
+          	{if:else}
+          	  <img src="{site_url}assets/images/code-default-{number}.svg">
+          	{/if}
+        	</div>
+        	<div class="card-body">
+          	<div class="meta">{date}</div>
+        		<h2 class="h5 neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+      		</div>
       	</article>
       {/exp:channel:entries}
     </div>
