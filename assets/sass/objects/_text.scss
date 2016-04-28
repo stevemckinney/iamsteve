@@ -21,10 +21,7 @@ $text-color-helpers: (
 	primary: $primary,
 	secondary: $secondary,
 	neutral: $neutral,
-	"red": $red,
-	"green": $green,
-	"orange": $orange,
-	"blue": $cyan
+	neutral-l1: $neutral-l1
 );
 
 @each $name, $color in $text-color-helpers {
@@ -33,13 +30,53 @@ $text-color-helpers: (
 // General elements
 // ---------------------------
 address { font-style: normal; }
-	
+
+// Stylistic headings
+// ---------------------------
+.chunky {
+  position: relative;
+  z-index: $z-index-2;
+  
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: calc(100% - 9px);
+    left: -3px;
+    width: 96px;
+    height: 12px;
+    background: $secondary-l2; }
+  
+  &.primary:after {
+    background: $tertiary-l2; }
+  
+  &.secondary:after {
+    background: $secondary-l1; } }
+
 // Links
 // ---------------------------
 .link { 
   // A discrete link style
   font-weight: 700;
-  color: $neutral; }
+  color: $neutral-l1;
+  
+  &:hover,
+  &:focus {
+    box-shadow: inset 0 -2px $secondary-l2, 0 2px $secondary-l2; } }
+
+// Links paired with an icon
+// eg: <a class="link-icon"><span class="icon icon-medium"><svg></svg></span></a>
+.link-icon {
+  display: flex;
+  align-items: baseline;
+  
+  &:hover .icon,
+  &:focus .icon {
+    transform: translateX($base-px/3); }
+  
+  .icon {
+    transition: .2s ease;
+    margin-left: $base-px / 3; } }
 
 // Various
 // ---------------------------
