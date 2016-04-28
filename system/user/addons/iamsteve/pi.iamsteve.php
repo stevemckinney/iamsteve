@@ -128,13 +128,7 @@ class Iamsteve {
   	
     return $html;
 	}
-	
-	public function inc()
-	{
-  	// Include
-		$file = ee()->TMPL->fetch_param('file');
-  	$this->return_data = file_get_contents($file);
-	}
+
 	
 	public function image_design()
 	{
