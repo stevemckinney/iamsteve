@@ -20,8 +20,6 @@
 	@if map-get($default-text-elements, $type) {
 		@if $base {
 			@include form-base($base...); }
-		@else {
-			@extend %form-base-with-mixin; }
 		
 		@include form-text($color, $background-color, $shading); }
 	
@@ -30,8 +28,6 @@
 	@else if $type == select {
 		@if $base {
 			@include form-base($base...); }
-		@else {
-			@extend %form-base-with-mixin; }
 			
 		@include form-select($color, $background-color, $shading); }
 	
