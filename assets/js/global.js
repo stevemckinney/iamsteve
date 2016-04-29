@@ -36,9 +36,28 @@ var iamsteve = (function ()
       }
     });
   };
-
+  
+  var flickity = function() {
+    var scrollers = document.querySelectorAll('.scroll');
+    
+    for ( var i = 0, s = scrollers.length; i < s; i++ )
+    {
+      var scroll = scrollers[i];
+      
+      new Flickity( scroll,
+      {
+        cellAlign: 'left',
+        freeScroll: true,
+        prevNextButtons: false,
+        pageDots: false,
+        contain: true
+      });
+    }
+  }
+  
   return {
-    toggler: toggler()
+    toggler: toggler(),
+    flickity: flickity()
   };
 
 })();
