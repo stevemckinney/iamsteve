@@ -64,8 +64,8 @@ var iamsteve = (function ()
     });
     
     // Pagination
-    var left = container.querySelector('.page-left');
-    var right = container.querySelector('.page-right');
+    var left = container.querySelector('.paginate-left');
+    var right = container.querySelector('.paginate-right');
     
     left.addEventListener( 'click', function( event )
     {
