@@ -9,7 +9,7 @@
   flex-flow: row wrap;
   justify-content: space-between;
   background: $white;
-  box-shadow: inset 0 -1px $neutral-a-l2;
+  box-shadow: inset 0 -1px rgba($neutral-a, .15), 0 2px 6px rgba($neutral-a, .05);
   z-index: $z-index-100;
   
   > .icon-search {
@@ -20,11 +20,7 @@
       display: none; } }
   
   @include breakpoint($b) {
-    padding: 0 calc(50% - #{$site-width / 2});
-    align-content: stretch;
-    align-items: stretch; }
-  
-  @include breakpoint($b-max) {} }
+    padding: 0 calc(50% - #{$site-width / 2}); } }
 
 // Logo
 // ---------------------------
@@ -38,9 +34,12 @@
   z-index: $z-index-200;
   
   @include breakpoint($b) {
+    align-content: center;
+    align-items: center;
     box-shadow: inset -1px 0 $neutral-a-l2;
     padding: $line $line*1.5;
-    padding-left: 0; } }
+    padding-left: 0;
+    font-size: $text-large; } }
 
 .logo-large,
 .logo-small {
