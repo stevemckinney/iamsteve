@@ -31,18 +31,20 @@
       border-bottom: 1px solid $neutral-a-l1; } }
   
   @include breakpoint($c) {
-    box-shadow: inset 0 -8px $neutral-a-l2;
-    margin-bottom: -$line * 2;
-    
     .card-body {
       padding: double($line);
       border: 1px solid $neutral-a-l1;
       border-top: none;
+      box-shadow: inset 0 -8px $neutral-a-l2;
       border-radius: 0 0 $radius $radius; }
     
     .card-image img {
       border-radius: $radius $radius 0 0;
       border: 1px solid $neutral-a-l1; } } }
+
+.row-introduction .card-large {
+  @include breakpoint($c) {
+    margin-bottom: -$line * 4; } }
 
 // Card image
 // ---------------------------
