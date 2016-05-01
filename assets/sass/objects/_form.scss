@@ -5,6 +5,10 @@
 	flex-flow: row wrap; }
 
 .form-search {
+  @include breakpoint($b) {
+    align-content: center;
+    align-items: center; }
+    
   @include breakpoint($b-max) {
     width: 100%; } }
 
@@ -61,7 +65,8 @@
 	@extend .field-checkbox; }
 
 .field-search {
-  padding: $line; }
+  @include breakpoint($b-max) {
+    padding: 0 $line; } }
 
 .form-actions {
 	clear: both;
@@ -79,6 +84,7 @@
 // ---------------------------
 .input {
   @include form-base($radius: false, $size: false);
+  background-color: transparent;
   padding: $base-px 0;
   width: 100%; }
 
