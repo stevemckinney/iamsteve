@@ -4,24 +4,43 @@
 .row {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
-  flex: 1 1 100%; }
+  flex: 1 1 100%;
+  padding-top: double($line);
+  padding-bottom: double($line); }
 
-.row-padded {
-  padding: 0 25%; }
+.contain {
+  padding-right: calc(50% - #{$site-width / 2});
+  padding-left: calc(50% - #{$site-width / 2}); }
 
+.center {
+  justify-content: center; }
+
+.around {
+  justify-content: space-around; }
+
+.between {
+  justify-content: space-between; }
+
+// Row style
+// ---------------------------
 .row-normal {
-  background: $white;
-  border-bottom: 1px solid $neutral-a-l3; }
+  background: $white; }
 
 .row-strong {
   background: $neutral-a-l3; }
-  
+
+.row-introduction {
+  box-shadow: inset 0 -1px $neutral-a-l2;
+  align-content: center;
+  align-items: center; }
+
+// Row contents
+// ---------------------------
 .row-header {
   padding: $line;
   
   @include breakpoint($c) {
-    padding: $line*2 calc(50% - #{$site-width / 2}); } }
+    padding: $line*2 calc(50% - #{$site-width / 2}) $line*2; } }
   
 .row-title {
   margin-bottom: 0; }
@@ -46,39 +65,55 @@
 .column-center {
   align-items: center;
   align-content: center; }
+  
+.column-stretch {
+  @include breakpoint($b) {
+    align-content: center;
+    align-items: stretch; } }
 
-// Posts
+// Posts container
 // ---------------------------
-.posts { overflow: hidden; }
+.posts,
+.scroll {
+  width: 100%; }
 
 // Scroll
 // ---------------------------
 .scroll {
+/*
   display: flex;
   flex-flow: row nowrap;
-  overflow-x: hidden;
+  overflow-x: auto;
   padding: 0 $base-px;
   -webkit-scroll-snap-points-x: repeat(100%);
   -webkit-scroll-snap-type: mandatory;
   -webkit-scroll-snap-destination: 0 0;
+*/
+  white-space: nowrap;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
   
   @include breakpoint($c) {
     padding: 0 $line; }
   
   .card {
+    display: inline-block;
+    vertical-align: top;
     padding: 0 $base-px / 2;
+    white-space: normal;
     
     @include breakpoint($c) {
       padding: 0 $base-px; } }
   
   .card-medium {
-    flex: 0 0 288px;
+    width: 288px;
     
     @include breakpoint($c) {
-      flex-basis: 378px; } }
+      width: 378px; } }
   
   .card-small {
-    flex: 0 0 196px;
+    width: 196px;
     
     @include breakpoint($c) {
-      flex-basis: 244px; } } }
+      width: 244px; } } }
