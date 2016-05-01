@@ -1,5 +1,30 @@
-.pagination { }
+// Pagination
+// ---------------------------
+.pagination {
+  // Remove space between pagination items
+  font-size: 0; }
 
-.page-left {
-  border-radius: 60px 0 0 60px;
-  box-shadow: inset 0 0 0 2px $tertiary; }
+// Pagination buttons
+// ---------------------------
+.paginate {
+  background-color: $tertiary-l2;
+  box-shadow: inset 0 0 0 2px $tertiary;
+  padding: 12px;
+  
+  svg {
+    fill: $tertiary; } }
+
+.paginate-left {
+  border-radius: 60px 0 0 60px; }
+
+.paginate-right {
+  border-radius: 0 60px 60px 0; }
+
+// Pagination state
+// ---------------------------
+.paginate-disabled {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px $tertiary-l1;
+  
+  svg {
+    fill: $tertiary-l1; } }

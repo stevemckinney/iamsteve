@@ -1,6 +1,5 @@
 .flickity-enabled {
-  position: relative;
-  padding: 0; }
+  position: relative; }
 
 .flickity-enabled:focus { 
   outline: none; }
@@ -8,7 +7,6 @@
 .flickity-viewport {
   position: relative;
   height: 100%;
-  padding: 0 $line;
   white-space: nowrap;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
