@@ -5,8 +5,6 @@
   flex-flow: row wrap;
   
   @include breakpoint($b) {
-    align-content: stretch;
-    align-items: stretch;
     flex: 1; } }
 
 .nav-item {
@@ -16,8 +14,12 @@
   padding: $line;
   
   @include breakpoint($b) {
+    padding: 36px 16px;
     transition: color .2s;
-    font-weight: font-weight(bold); }
+    font-weight: font-weight(bold);
+    
+    &:first-child {
+      padding-left: 32px; } }
   
   @include breakpoint($b-max) {
     font-size: $text-large;
