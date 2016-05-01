@@ -10,7 +10,5 @@
     margin-bottom: em($base-px); }
   
   p {
-    max-width: 326px;
-    
-    @supports not (-webkit-hyphens: auto) {
-      text-align: center; } } }
+    max-width: 344px;
+    text-align: center; } }
