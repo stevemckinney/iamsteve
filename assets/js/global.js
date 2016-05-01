@@ -37,22 +37,45 @@ var iamsteve = (function ()
     });
   };
   
-  var flickity = function() {
-    var scrollers = document.querySelectorAll('.scroll');
+  // Find all rows of posts, loop through them and setup flickity
+  var flickity = function()
+  {
+    var rows = document.querySelectorAll('.row-posts');
     
-    for ( var i = 0, s = scrollers.length; i < s; i++ )
+    for ( var i=0; i < rows.length; i++ )
     {
-      var scroll = scrollers[i];
-      
-      new Flickity( scroll,
-      {
-        cellAlign: 'left',
-        freeScroll: true,
-        prevNextButtons: false,
-        pageDots: false,
-        contain: true
-      });
+      setupFlickity( rows[i] );
     }
+  }
+  
+  // With multiple, and having custom pagination, you need to initialise using
+  // the parent as a reference, https://github.com/metafizzy/flickity/issues/319
+  function setupFlickity( container )
+  {
+    // init flickity
+    var scroll = container.querySelector('.scroll');
+    var flickity = new Flickity( scroll,
+    {
+      cellAlign: 'left',
+      freeScroll: true,
+      prevNextButtons: false,
+      pageDots: false,
+      contain: true
+    });
+    
+    // Pagination
+    var left = container.querySelector('.page-left');
+    var right = container.querySelector('.page-right');
+    
+    left.addEventListener( 'click', function( event )
+    {
+      flickity.previous();
+    });
+    
+    right.addEventListener( 'click', function( event )
+    {
+      flickity.next();
+    });
   }
   
   return {
