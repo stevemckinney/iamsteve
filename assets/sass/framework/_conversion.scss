@@ -4,6 +4,9 @@
 // Quadruple
 @function quadruple($number) {
   @return $number * 4; }
+
+@function triple($number) {
+  @return $number * 3; }
   
 // Double
 @function double($number) {
