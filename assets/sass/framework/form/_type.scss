@@ -49,8 +49,7 @@
 	$position	: $default-form-search-position,
 	$size			: $default-form-search-size,
 	$icon 		: $default-form-search-image,
-	$has-label: $default-form-search-has-label,
-	$fallback	: $default-form-search-png
+	$has-label: $default-form-search-has-label
 ) {
 	position: relative;
 	
@@ -72,10 +71,7 @@
 			left: 0; }
 			
 		@else {
-			@warn "#{$position} isn't a valid position, must be left or right." }
-		
-		.no-svg & {
-			background: $fallback; } } }
+			@warn "#{$position} isn't a valid position, must be left or right." } } }
 
 // Logically named alias for form-search
 // ---------------------------
