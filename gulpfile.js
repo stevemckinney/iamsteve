@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var watch = require('gulp-watch');
 var plumber = require('gulp-plumber');
+var order = require('gulp-order');
 var rename = require('gulp-rename');
 var compass = require('gulp-compass');
 var sass = require('gulp-ruby-sass');
@@ -47,7 +48,14 @@ gulp.task('images', function() {
 // JavaScript
 gulp.task('js', function() {
   return gulp.src(src.js)
-    .pipe(concat('global.js'))
+    .pipe(order([
+      'assets/js/fitvids.js',
+      'assets/js/flickity.js',
+      'assets/js/headroom.js',
+      'assets/js/prism.js',
+      'assets/js/global.js'
+    ], { base: './' }))
+    .pipe(concat('iamsteve.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
