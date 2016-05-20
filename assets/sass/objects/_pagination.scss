@@ -7,14 +7,25 @@
 // Pagination buttons
 // ---------------------------
 .paginate {
+  transition: .2s;
   background-color: $tertiary-l2;
   box-shadow: inset 0 0 0 2px $tertiary;
   padding: 12px;
+  
+  &:not(.paginate-disabled) {
+    position: relative;
+    z-index: 1; }
+  
+  &:not(.paginate-disabled):hover,
+  &:not(.paginate-disabled):focus {
+    transform: scale(1.105263158); }
   
   svg {
     fill: $tertiary; } }
 
 .paginate-left {
+  // To avoid double border
+  margin-right: -2px;
   border-radius: 60px 0 0 60px; }
 
 .paginate-right {
