@@ -1,0 +1,18 @@
+// Subscribe
+// ---------------------------
+.subscribe {
+  align-items: center; }
+  
+.subscribe-image {
+  position: absolute;
+  right: 0;
+  transform: translate(50%, -50%);
+  top: 50%;
+  max-width: 320px;
+  align-self: center; }
+
+.subscribe-content {
+  max-width: 426px;
+  
+  @include breakpoint($c) {
+    padding-right: $line; } }
