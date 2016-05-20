@@ -8,7 +8,8 @@
   position: relative;
   height: 100%;
   white-space: nowrap;
-  overflow-x: scroll;
+  overflow: hidden;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar; }
 
