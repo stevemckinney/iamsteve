@@ -41,17 +41,14 @@ address { font-style: normal; }
     content: "";
     position: absolute;
     z-index: -1;
-    bottom: 9px;
+    bottom: -1px;
     left: -3px;
     width: 96px;
     height: 12px;
     background: $secondary-l2; }
   
   &.primary:after {
-    background: $tertiary-l2; }
-  
-  &.secondary:after {
-    background: $secondary-l1; } }
+    background: $tertiary-l2; } }
 
 // Links
 // ---------------------------

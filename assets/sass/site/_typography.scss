@@ -28,12 +28,14 @@
   
 .h3 {
   font-size: em($text-small);
+  margin-bottom: half($base-px);
   
   @include breakpoint($b) {
     font-size: em($text-large); } }
   
 .h4 { 
   font-size: em($text-small);
+  margin-bottom: half($base-px);
   
   @include breakpoint($b) {
     font-size: em($text-medium); } }
@@ -59,6 +61,9 @@ body {
 p {
   font-size: 14px;
   margin: 0 0 $base-px;
+  
+  &:last-child {
+    margin-bottom: 0; }
   
   @include breakpoint($c) {
     font-size: $base-font-size; }

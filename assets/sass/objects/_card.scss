@@ -20,37 +20,38 @@
 .card-large {
   background: $white;
   
-  @include breakpoint($c-max) {
-    border-bottom: 1px solid $neutral-a-l2;
-    
+  @include breakpoint($c-max) {    
     .card-body {
       padding: $line; }
     
     .card-image {
-      border-top: 1px solid $neutral-a-l1;
-      border-bottom: 1px solid $neutral-a-l1; } }
+      border-top: 1px solid $alternate-l2;
+      border-bottom: 1px solid $alternate-l2; } }
   
   @include breakpoint($c) {
     .card-body {
       padding: double($line);
-      border: 1px solid $neutral-a-l1;
+      border: 1px solid $alternate-l2;
       border-top: none;
-      box-shadow: inset 0 -8px $neutral-a-l2;
+      box-shadow: inset 0 -8px $alternate-l3, 0 12px 24px -6px $alternate-l3;
       border-radius: 0 0 $radius $radius; }
     
     .card-image img {
       border-radius: $radius $radius 0 0;
-      border: 1px solid $neutral-a-l1; } } }
+      border: 1px solid $alternate-l2; } } }
 
 .row-introduction .card-large {
   @include breakpoint($c) {
     margin-bottom: -$line * 4; } }
 
+// Card body
+// ---------------------------
+.card-body {}
+
 // Card image
 // ---------------------------
-.card-image {
-  img {
-    border-radius: $radius; } }
+.card-image img {
+  border-radius: $radius; }
 
 // Card meta
 // ---------------------------
@@ -61,25 +62,47 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   background: image-url("dash.svg") center center repeat-x;
   background-size: 8px 2px;
   font-size: 14px;
   font-family: $serif;
   font-style: italic;
-  margin-bottom: half($base-px);
+  margin-bottom: $base-px;
   
   a, li,
-  span, time, {
+  span, time {
     background-color: $white; }
-  
-  // Hide a little more of the background
-  > *:first-child {
-    padding-right: half($base-px); }
-
-  > *:not(:only-child):last-child {
-    padding-left: half($base-px); }
   
   a:hover,
   a:focus {
     color: $neutral; } }
+
+.meta-to-calendar {
+  float: left;
+  display: inline-block;
+  margin-right: $line; }
+
+.calendar {
+  padding: $base-px $line;
+  background: #fff;
+  border: 1px solid $alternate-l2;
+  box-shadow: inset 0 -6px $alternate-l3, 0 6px 12px -3px $alternate-l3;
+  border-radius: $radius;
+  font-family: $sans;
+  font-style: normal;
+  text-align: center;
+  line-height: 1.25;
+  
+  &, span {
+    display: block; }
+  
+  span {
+    color: $secondary; } }
+
+.day {
+  font-size: 48px;
+  font-weight: font-weight(light); }
+
+.month {
+  font-weight: font-weight(bold);
+  text-transform: lowercase; }
