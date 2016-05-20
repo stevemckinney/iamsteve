@@ -84,13 +84,12 @@
 // ---------------------------
 .input {
   @include form-base($radius: false, $size: false);
-  background-color: transparent;
-  padding: $base-px 0;
   width: 100%; }
 
 .input-text,
 .input-select {
-	width: 100%; }
+  border-radius: $radius;
+  padding: $base-px; }
 	
 	// Text
 	// ---------------------------
@@ -98,6 +97,8 @@
 		@include form; }
 
   .input-search {
+    padding: $base-px 0;
+    background-color: transparent;
     font-size: $text-large; }
 	
 	// Select
