@@ -4,10 +4,10 @@
 .row {
   display: flex;
   flex-flow: row wrap;
-  flex: 1 1 100%;
-  padding-top: double($line);
-  padding-bottom: double($line); }
+  flex: 1 1 100%; }
 
+// Alignment
+// ---------------------------
 .contain {
   padding-right: calc(50% - #{$site-width / 2});
   padding-left: calc(50% - #{$site-width / 2}); }
@@ -24,13 +24,34 @@
 // Row style
 // ---------------------------
 .row-normal {
-  background: $white; }
+  background: $white;
+  
+  @include breakpoint($c) {
+    padding-top: double($line);
+    padding-bottom: double($line); }
+  
+  @include breakpoint($c-max) {
+    padding-top: $line;
+    padding-bottom: $line; }
+  
+  &.with-row-header {
+    padding-bottom: $line + $line + $line + $base-px; } }
 
+// Emphasis, more whitespace, background
 .row-strong {
-  background: $neutral-a-l3; }
+  background: $alternate-l4;
+  color: $alternate;
+  
+  @include breakpoint($c) {
+    padding-top: quadruple($line);
+    padding-bottom: quadruple($line); }
+    
+  @include breakpoint($c-max) {
+    padding-top: double($line);
+    padding-bottom: double($line); } }
 
 .row-introduction {
-  box-shadow: inset 0 -1px $neutral-a-l2;
+  box-shadow: inset 0 -1px $alternate-l3;
   align-content: center;
   align-items: center; }
 
@@ -40,9 +61,10 @@
   padding: $line;
   
   @include breakpoint($c) {
-    padding: $line*2 calc(50% - #{$site-width / 2}) $line*2; } }
+    padding: $line*2 calc(50% - #{$site-width / 2}); } }
   
 .row-title {
+  align-self: center;
   margin-bottom: 0; }
   
 // Columns
@@ -80,23 +102,12 @@
 // Scroll
 // ---------------------------
 .scroll {
-/*
-  display: flex;
-  flex-flow: row nowrap;
-  overflow-x: auto;
-  padding: 0 $base-px;
-  -webkit-scroll-snap-points-x: repeat(100%);
-  -webkit-scroll-snap-type: mandatory;
-  -webkit-scroll-snap-destination: 0 0;
-*/
   white-space: nowrap;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   
-  @include breakpoint($c) {
-    padding: 0 $line; }
-  
+  // Each card width must be offset by the padding, otherwise it’s too small.
   .card {
     display: inline-block;
     vertical-align: top;
@@ -110,10 +121,10 @@
     width: 288px;
     
     @include breakpoint($c) {
-      width: 378px; } }
+      width: 378px + $base-px + $base-px; } }
   
   .card-small {
     width: 196px;
     
     @include breakpoint($c) {
-      width: 244px; } } }
+      width: 244px + $base-px + $base-px; } } }
