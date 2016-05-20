@@ -4,34 +4,37 @@
 
 // Color
 // ---------------------------
-$primary: #e16161 !global;
-$primary-d1: #904b4e;
+$primary: #eb6e5e !global;
+$primary-d1: #9e3a2c;
 $primary-d2: scale-lightness($primary-d1, -20%);
-$primary-l1: #f08079;
-$primary-l2: #fae2dc;
-$primary-l3: #fff5f0;
+$primary-l1: #f59689;
+$primary-l2: #ffe3de;
+$primary-l3: #fff3f0;
 
 $secondary: #87d4be !global;
 $secondary-d1: #4db898;
 $secondary-d2: scale-lightness($secondary, -20%);
-$secondary-l1: #c3e5d8;
+$secondary-l1: #b9edd9;
 $secondary-l2: #e1f7ee;
 $secondary-l3: #edf7f3;
 
-$tertiary: #ffd7a6 !global;
-$tertiary-d1: #f2b76f;
+$tertiary: #ffe0a1 !global;
+$tertiary-d1: #f5c676;
 $tertiary-d2: #d19954;
 $tertiary-l1: #fff6e5;
 $tertiary-l2: #fffbf2;
 
-$neutral-a: #1a626e !global;
-$neutral-a-l1: #bed8d8;
-$neutral-a-l2: #e9f5f5;
-$neutral-a-l3: #f7fbfb;
+$alternate: #1a626e !global;
+$alternate-l1: #56959e;
+$alternate-l2: #bed8d8;
+$alternate-l3: #e9f5f5;
+$alternate-l4: #f7fbfb;
 
 $neutral: #384242;
-$neutral-l1: #6c8484;
-$neutral-l2: #91a5a5;
+$neutral-l1: #657575;
+$neutral-l2: #829494;
+$neutral-l3: #a9b8b8;
+$neutral-l4: #c9d1d1;
 
 $colors: (
   primary: $primary,
@@ -54,10 +57,13 @@ $colors: (
   neutral: $neutral,
   neutral-l1: $neutral-l1,
   neutral-l2: $neutral-l2,
-  neutral-a: $neutral-a,
-  neutral-a-l1: $neutral-a-l1,
-  neutral-a-l2: $neutral-a-l2,
-  neutral-a-l3: $neutral-a-l3,
+  neutral-l3: $neutral-l3,
+  neutral-l4: $neutral-l4,
+  alternate: $alternate,
+  alternate-l1: $alternate-l1,
+  alternate-l2: $alternate-l2,
+  alternate-l3: $alternate-l3,
+  alternate-l4: $alternate-l4
 );
 
 $color-palette: (
@@ -65,7 +71,7 @@ $color-palette: (
   secondary: $secondary,
   tertiary: $tertiary,
   neutral: $neutral,
-  neutral-a: $neutral-a
+  neutral-a: $alternate
 );
 
 // Fonts
@@ -87,8 +93,8 @@ $default-form-color: darken(#eee, 10%);
 $default-form-background-color: scale-lightness(#eee, 10%);
 $default-shading: true !global;
 $default-form-focus-color: $secondary;
-$default-form-color: $neutral-a-l1;
-$default-form-background-color: $neutral-a-l3;
+$default-form-color: $alternate-l1;
+$default-form-background-color: $alternate-l3;
 $default-placeholder-color: $neutral-l2;
 $default-form-text-color: $neutral;
 $radius: 8px;
