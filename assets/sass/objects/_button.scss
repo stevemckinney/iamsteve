@@ -4,12 +4,8 @@
 	@include element-base; }
 
 $buttons: (
-	default: $default-color,
 	primary: $primary,
-	secondary: $secondary adjust-hue(scale-lightness($secondary, -7%), 15deg),
-	tertiary: $tertiary,
-	alternate: $alt,
-	neutral: adjust-hue($neutral, 8deg) $neutral
+	secondary: $secondary adjust-hue(scale-lightness($secondary, -7%), 15deg)
 );
 
 @each $button, $color in $buttons {
