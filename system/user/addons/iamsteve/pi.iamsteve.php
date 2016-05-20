@@ -186,6 +186,125 @@ class Iamsteve {
 		// return random number
 		return strval(rand(intval($from), intval($to)));
 	}
+	
+  /**
+	 * Get random file from file system
+	 *
+	 * @param	string	$folder
+	 * @param	string	$filter
+	 * @return	string
+	 */
+	public function file($folder = '', $filter = '')
+	{
+		// init var
+		$error = FALSE;
+
+		// Parameters
+		if ($folder == '')
+		{
+			$folder = ee()->TMPL->fetch_param('folder');
+		}
+
+		if ($filter == '')
+		{
+			$filter = ee()->TMPL->fetch_param('filter', '');
+		}
+
+		// Convert filter to array
+		$filters = strlen($filter) ? explode('|', $filter) : array();
+
+		// is folder a number?
+		if (is_numeric($folder))
+		{
+			// get server path from upload prefs
+			ee()->load->model('file_upload_preferences_model');
+			$upload_prefs = ee()->file_upload_preferences_model->get_file_upload_preferences(1, $folder);
+
+			// Do we have a match? get path
+			if ($upload_prefs)
+			{
+				$folder = $upload_prefs['server_path'];
+			}
+		}
+
+		// Simple folder check
+		if (!strlen($folder))
+		{
+			$error = TRUE;
+		}
+		else
+		{
+			// check for trailing slash
+			if (substr($folder, -1, 1) != '/')
+			{
+				$folder .= '/';
+			}
+		}
+
+		// Another folder check
+		if (!is_dir($folder))
+		{
+			$error = TRUE;
+		}
+		else
+		{
+			// open dir
+			$dir = opendir($folder);
+
+			// loop through folder
+			while($f = readdir($dir))
+			{
+				// no file? skip
+				if (!is_file($folder.$f)) continue;
+
+				// set addit to 0, check filters
+				$addit = 0;
+
+				// check if filter applies
+				foreach ($filters AS $filter)
+				{
+					if (strlen($filter) && substr_count($f, $filter))
+					{
+						$addit++;
+					}
+				}
+
+				// if we have a match, add file to array
+				if ($addit == count($filters))
+				{
+					$this->set[] = $f;
+				}
+			}
+
+			// close dir
+			closedir($dir);
+		}
+
+		// return data
+		return $error ? "{$folder} is an invalid folder" : $this->_random_item_from_set();
+	}
+	
+	/**
+	 * Display invalid folder if debug is on
+	 *
+	 * @param	string	$folder
+	 * @return	string
+	 */
+	private function _invalid_folder($folder = '')
+	{
+		// return error message if debug-mode is on
+		return $this->config->debug ? "{$folder} is an invalid folder" : '';
+	}
+	
+	/**
+	 * Random item from set (array)
+	 *
+	 * @return	string
+	 */
+	private function _random_item_from_set()
+	{
+		return $this->set[array_rand($this->set)];
+	}
 }
 // END CLASS
 
