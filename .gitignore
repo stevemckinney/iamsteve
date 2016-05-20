@@ -43,3 +43,4 @@ node_modules/
 !src/node_modules/
 config_bootstrap.php
 .htaccess
+node_modules
