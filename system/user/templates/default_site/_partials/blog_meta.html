@@ -1,15 +1,10 @@
-<aside class="meta">
+<div class="meta">
   {categories channel="blog" style="linear" parent_only="yes" limit="1"}
     <a href="{path='blog/index'}" rel="category tag">{category_name}</a>
   {/categories}
 
   {if segment_2 != "entry"}
-    <a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium">{icon_arrow_right}</span></a>
+    <a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium fill-secondary">{icon_arrow_right}</span></a>
   {/if}
-</aside>
-<div class="visuallyhidden">
-  <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
-    <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated screenreader">
-    {edit_date format="%Y/%m/%d"}
-  </time>
 </div>
+{updated}
