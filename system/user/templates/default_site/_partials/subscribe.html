@@ -1,11 +1,13 @@
-<section class="subscribe">
-  <h2>Get the articles</h2>
-  <p>Subscribe to my newsletter and I’ll update you when posts go out. I’ll send you the highlights and takeaways that you can read in your own time.</p>
-  <p><strong>Enter your email and I’ll send you design templates and a form UI kit, ready for designs and code.</strong></p>
-  <picture>
+<section class="row row-strong contain center subscribe">
+  <div class="column subscribe-content">
+    <h2 class="h2 column-12 chunky secondary">Get the articles</h2>
+    <p>Subscribe to my newsletter and I’ll update you when posts go out. I’ll send you the highlights and takeaways that you can read in your own time.</p>
+    <p><strong>Enter your email and I’ll send you design templates and a form UI kit, ready for designs and code.</strong></p>
+    {form_newsletter}
+  </div>
+  <picture class="column column-stretch column-center">
     <source srcset="{site_url}assets/images/osc.svg" media="(min-width: 640px)">
     <source srcset="{site_url}assets/images/osc-small.svg" media="(max-width: 639px)">
     <img src="{site_url}assets/images/osc.svg">
   </picture>
-  {form_newsletter}
 </section>
