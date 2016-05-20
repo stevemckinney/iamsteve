@@ -50,15 +50,24 @@
 	{!-- Twitter card --}
   <meta prefix="og:http://ogp.me/ns#" property="og:title" content="iamsteve • design & code blog">
   <meta prefix="og:http://ogp.me/ns#" property="og:type" content="website">
-  <meta prefix="og:http://ogp.me/ns#" property="og:image" content="{global:theme_url}/assets/images/og.png">
+  {if image}
+    <meta prefix="og:http://ogp.me/ns#" property="og:image" content="{image}">
+  {if:else}
+    <meta prefix="og:http://ogp.me/ns#" property="og:image" content="{global:theme_url}/assets/images/og.png">
+  {/if}
   <meta prefix="og:http://ogp.me/ns#" property="og:url" content="http://iamsteve.me">
   
 	{if segment_2 == 'entry'}
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:site" content="@irsteve">
-	<meta name="twitter:description" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{exp:streeng characters="250" allowed="none"}{excerpt}{/exp:streeng}{/exp:channel:entries}">
-	<meta name="twitter:title" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title}{/exp:channel:entries}">
-	<meta name="twitter:url" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title_permalink='blog/entry'}{/exp:channel:entries}">
+	  {if image}
+  	  <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:image" content="{image}">
+    {if:else}
+      <meta name="twitter:card" content="summary">
+    {/if}
+    <meta name="twitter:site" content="@irsteve">
+    <meta name="twitter:description" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{exp:streeng characters="250" allowed="none"}{excerpt}{/exp:streeng}{/exp:channel:entries}">
+    <meta name="twitter:title" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title}{/exp:channel:entries}">
+    <meta name="twitter:url" content="{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title_permalink='blog/entry'}{/exp:channel:entries}">
 	{/if}
 
 	{!-- CSS --}
