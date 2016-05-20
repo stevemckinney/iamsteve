@@ -23,11 +23,28 @@ var src = {
   images: 'assets/images/**/*'
 };
 
+// browser-sync watched files
+// automatically reloads the page when files changed
+var browserSyncWatchFiles = [
+  './css/*.min.css',
+  './js/*.min.js',
+  './*.php'
+];
+
+// browser-sync options
+// see: https://www.browsersync.io/docs/options/
+var browserSyncOptions = {
+  proxy: 'iamsteve.dev',
+  injectChanges: true
+};
+
 // CSS
 gulp.task('sass', function() {
   return sass(src.scss, { compass: true })
     .pipe(gulp.dest(src.css))
-    .pipe(reload({ stream: true }));
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 gulp.task('autoprefixer', function() {
@@ -62,13 +79,27 @@ gulp.task('js', function() {
     .pipe(reload({ stream: true }));
 });
 
-// Serve
-gulp.task('serve', ['sass'], function() {
-  browserSync.init({
-    injectChanges: true,
-    proxy: "iamsteve.dev"
-  });
+// Run: 
+// gulp watch
+// Starts watcher. Watcher runs gulp sass task on changes
+gulp.task('watch', function () {
+  gulp.watch('dist/css/master.css', ['autoprefixer']);
+});
 
+// Run: 
+// gulp browser-sync
+// Starts browser-sync task for starting the server.
+gulp.task('browser-sync', function() {
+  browserSync.init(browserSyncWatchFiles, browserSyncOptions);
+});
+
+// Run: 
+// gulp watch-bs
+// Starts watcher with browser-sync. Browser-sync reloads page automatically on your browser
+gulp.task('watch-bs', ['browser-sync', 'watch'], function () { });
+
+// Serve
+gulp.task('serve', ['browser-sync', 'sass'], function() {
   gulp.watch(src.scss, ['sass']);
   gulp.watch(src.html).on('change', reload);
 });
