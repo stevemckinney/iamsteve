@@ -1,49 +1,49 @@
-  {if logged_in}
-    <style>
-      .menu-bar { 
-        position: fixed;
-        display: flex;
-        z-index: 999;
-        bottom: 0; left: 0; right: 0;
-        background: #fff; }
-      .menu-bar a {
-        flex: 1;
-        padding: 0 .75em;
-        border-right: 1px solid #eee;
-        display: inline-block;
-        height: 44px;
-        line-height: 44px;
-        font-size: 12px;
-        font-family: Helvetica;
-        color: #999;
-        text-align: center; }
-      .menu-bar a:last-child {
-        border-right: none; }
-    </style>
-    <div class="menu-bar">
-      {exp:channel:entries channel="blog|portfolio|site|downloads" show_future_entries="yes" limit="1" status="open|latest|draft" disable="member_data|trackbacks|pagination"}
-          <a href="{cp_url}">Control Panel</a><a href="{cp_url}?/cp/utilities/cache">Cache</a>
-          <a href="{cp_url}/cp/content_publish/admin.php?/cp/publish/edit&filter_by_channel=1">Publish</a>
-          {if logged_in_group_id == 1}<a href="{cp_edit_entry_url}">Edit {last_segment}</a>{/if}
-      {/exp:channel:entries} 
-    </div>
-  {/if}
-  {!-- Javascript --}
-  
-  {layout:js}
-  <script src="{site_url}dist/js/iamsteve.js"></script>
-  
-  {if global:env == "prod"}
-    <script>
-    	var GoSquared = {};
-      GoSquared.acct = "GSN-610812-E";
-      GoSquared.UserName = "visitor";
-      (function(w){function gs(){w._gstc_lt = +new Date;var d = document, g = d.createElement("script");g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";var s = d.getElementsByTagName("script")[0];s.parentNode.insertBefore(g, s);}w.addEventListener ?w.addEventListener("load", gs, false) :w.attachEvent("onload", gs);})(window);
-      $('.event-download').on('click', function() {_gs('event', $(this).text())});
-      $('[data-event]').on('click', function() {_gs('event', $(this).data('event'))});
-    </script>
-    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M6CQBG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M6CQBG');</script>
-  {/if}
-</body>
+    {if logged_in}
+      <style>
+        .menu-bar { 
+          position: fixed;
+          display: flex;
+          z-index: 999;
+          bottom: 0; left: 0; right: 0;
+          background: #fff; }
+        .menu-bar a {
+          flex: 1;
+          padding: 0 .75em;
+          border-right: 1px solid #eee;
+          display: inline-block;
+          height: 44px;
+          line-height: 44px;
+          font-size: 12px;
+          font-family: Helvetica;
+          color: #999;
+          text-align: center; }
+        .menu-bar a:last-child {
+          border-right: none; }
+      </style>
+      <div class="menu-bar">
+        {exp:channel:entries channel="blog|portfolio|site|downloads" show_future_entries="yes" limit="1" status="open|latest|draft" disable="member_data|trackbacks|pagination"}
+            <a href="{cp_url}">Control Panel</a><a href="{cp_url}?/cp/utilities/cache">Cache</a>
+            <a href="{cp_url}/cp/content_publish/admin.php?/cp/publish/edit&filter_by_channel=1">Publish</a>
+            {if logged_in_group_id == 1}<a href="{cp_edit_entry_url}">Edit {last_segment}</a>{/if}
+        {/exp:channel:entries} 
+      </div>
+    {/if}
+    
+    {!-- Javascript --}
+    {layout:js}
+    <script src="{site_url}dist/js/iamsteve.js"></script>
+    
+    {if global:env == "prod"}
+      <script>
+      	var GoSquared = {};
+        GoSquared.acct = "GSN-610812-E";
+        GoSquared.UserName = "visitor";
+        (function(w){function gs(){w._gstc_lt = +new Date;var d = document, g = d.createElement("script");g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";var s = d.getElementsByTagName("script")[0];s.parentNode.insertBefore(g, s);}w.addEventListener ?w.addEventListener("load", gs, false) :w.attachEvent("onload", gs);})(window);
+        $('.event-download').on('click', function() {_gs('event', $(this).text())});
+        $('[data-event]').on('click', function() {_gs('event', $(this).data('event'))});
+      </script>
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M6CQBG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M6CQBG');</script>
+    {/if}
+  </body>
 </html>
