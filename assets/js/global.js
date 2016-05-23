@@ -129,7 +129,6 @@ var iamsteve = (function ()
   
   return {
     toggler: toggler(),
-    flickity: flickity(),
     headroom: headroom()
   };
 

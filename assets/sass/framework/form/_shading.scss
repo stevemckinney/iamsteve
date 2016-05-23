@@ -11,14 +11,6 @@
     @if $type == select {
       @include form-shading-select; } } }
 
-@mixin form-shading-input(
-  $color                  : $default-form-color,
-  $background-color       : $default-form-background-color,
-  $state                  : $default-form-state,
-  $shading                : $default-form-shading
-) {
-  
-}
 
 // Reduce logic required to style a particular input
 @mixin form-shading(

@@ -92,39 +92,3 @@
   @include breakpoint($b) {
     align-content: center;
     align-items: stretch; } }
-
-// Posts container
-// ---------------------------
-.posts,
-.scroll {
-  width: 100%; }
-
-// Scroll
-// ---------------------------
-.scroll {
-  white-space: nowrap;
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  
-  // Each card width must be offset by the padding, otherwise it’s too small.
-  .card {
-    display: inline-block;
-    vertical-align: top;
-    padding: 0 $base-px / 2;
-    white-space: normal;
-    
-    @include breakpoint($c) {
-      padding: 0 $base-px; } }
-  
-  .card-medium {
-    width: 288px;
-    
-    @include breakpoint($c) {
-      width: 378px + $base-px + $base-px; } }
-  
-  .card-small {
-    width: 196px;
-    
-    @include breakpoint($c) {
-      width: 244px + $base-px + $base-px; } } }

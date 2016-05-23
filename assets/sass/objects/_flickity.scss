@@ -1,3 +1,5 @@
+// Flickity
+// ---------------------------
 .flickity-enabled {
   position: relative; }
 
@@ -35,3 +37,45 @@
 .flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
   cursor: -webkit-grabbing;
   cursor: grabbing; }
+
+// Posts container
+// ---------------------------
+.posts,
+.scroll {
+  max-width: 100%; }
+
+// Scroll
+// ---------------------------
+.scroll {
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-scroll-snap-points-x: repeat(320px);
+      -ms-scroll-snap-points-x: repeat(320px);
+          scroll-snap-points-x: repeat(320px);
+  -webkit-scroll-snap-type: mandatory;
+      -ms-scroll-snap-type: mandatory;
+          scroll-snap-type: mandatory;
+  
+  // Each card width must be offset by the padding, otherwise it’s too small.
+  .card {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 $base-px / 2;
+    white-space: normal;
+    
+    @include breakpoint($c) {
+      padding: 0 $base-px; } }
+  
+  .card-medium {
+    width: 288px;
+    
+    @include breakpoint($c) {
+      width: 378px + $base-px + $base-px; } }
+  
+  .card-small {
+    width: 196px;
+    
+    @include breakpoint($c) {
+      width: 244px + $base-px + $base-px; } } }
