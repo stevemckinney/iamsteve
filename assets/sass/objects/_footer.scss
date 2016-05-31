@@ -1,8 +1,38 @@
 // Footer
 // ---------------------------
-.site-footer {
-	clear: both; }
-	
+.footer {
+  align-items: center;
+  padding: $line*4 0;
+  color: $secondary;
+  font-family: $sans;
+  font-weight: font-weight(semibold);
+  
+  @include breakpoint($b-max) {   
+    a, p {
+      font-size: 10px; }
+    
+  @include breakpoint($aa-max) {
+    flex-flow: row wrap; }
+
+  p {
+    margin-bottom: 0; }
+  
+  nav {
+    display: flex;
+    align-content: center;
+    
+    a { 
+      display: inline-block;
+      padding-left: $base-px; } } } }
+
+.logo-footer-small {
+  @include breakpoint($b) {
+    display: none; } }
+
+.logo-footer-large {
+  @include breakpoint($b-max) {
+    display: none; } }
+
 // Copyright
 // ---------------------------
 .copyright {}
