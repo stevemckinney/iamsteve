@@ -12,6 +12,11 @@
 .card {
   color: $neutral-l2; }
 
+.card-small,
+.card-medium {
+  .meta:first-of-type {
+    margin-bottom: $base-px/2; } }
+
 .card-medium,
 .card-small {
   .card-body { 
@@ -67,7 +72,10 @@
   font-size: 14px;
   font-family: $serif;
   font-style: italic;
-  margin-bottom: $base-px;
+  line-height: 1.142857143;
+  
+  &:first-of-type {
+    margin-bottom: $base-px; }
   
   a, li,
   span, time {
@@ -77,32 +85,33 @@
   a:focus {
     color: $neutral; } }
 
-.meta-to-calendar {
-  float: left;
-  display: inline-block;
-  margin-right: $line; }
+@include breakpoint($a) {
+  .meta-to-calendar {
+    float: left;
+    display: inline-block;
+    margin-right: $line; }
 
-.calendar {
-  padding: $base-px $line;
-  background: #fff;
-  border: 1px solid $alternate-l2;
-  box-shadow: inset 0 -6px $alternate-l3, 0 6px 12px -3px $alternate-l3;
-  border-radius: $radius;
-  font-family: $sans;
-  font-style: normal;
-  text-align: center;
-  line-height: 1.25;
+  .calendar {
+    padding: $base-px $line;
+    background: #fff;
+    border: 1px solid $alternate-l2;
+    box-shadow: inset 0 -6px $alternate-l3, 0 6px 12px -3px $alternate-l3;
+    border-radius: $radius;
+    font-family: $sans;
+    font-style: normal;
+    text-align: center;
+    line-height: 1.25;
+    
+    &, span {
+      display: block; }
+    
+    span {
+      color: $secondary; } }
   
-  &, span {
-    display: block; }
+  .day {
+    font-size: 48px;
+    font-weight: font-weight(light); }
   
-  span {
-    color: $secondary; } }
-
-.day {
-  font-size: 48px;
-  font-weight: font-weight(light); }
-
-.month {
-  font-weight: font-weight(bold);
-  text-transform: lowercase; }
+  .month {
+    font-weight: font-weight(bold);
+    text-transform: lowercase; } }
