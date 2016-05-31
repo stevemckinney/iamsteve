@@ -1,0 +1,3 @@
+.featured {
+  @include breakpoint($c) {
+    flex-basis: 738px; } }

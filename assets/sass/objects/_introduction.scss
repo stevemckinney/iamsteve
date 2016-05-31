@@ -1,6 +1,9 @@
 // The introduction area is unique
 // ---------------------------
-.introduction {  
+.introduction {
+  @include breakpoint($c) {
+    flex-basis: 398px; }
+    
   @include breakpoint($c-max) {
     padding: 0 double($line) double($line); }
   
