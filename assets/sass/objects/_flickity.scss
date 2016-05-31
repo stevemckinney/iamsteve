@@ -42,6 +42,7 @@
 // ---------------------------
 .posts,
 .scroll {
+  width: 100%;
   max-width: 100%; }
 
 // Scroll
@@ -51,13 +52,7 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-  -webkit-scroll-snap-points-x: repeat(320px);
-      -ms-scroll-snap-points-x: repeat(320px);
-          scroll-snap-points-x: repeat(320px);
-  -webkit-scroll-snap-type: mandatory;
-      -ms-scroll-snap-type: mandatory;
-          scroll-snap-type: mandatory;
-  
+
   // Each card width must be offset by the padding, otherwise it’s too small.
   .card {
     display: inline-block;
