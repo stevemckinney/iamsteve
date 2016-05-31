@@ -74,6 +74,20 @@ $color-palette: (
   neutral-a: $alternate
 );
 
+// Brands
+// ---------------------------
+$dribbble: #ea4c89;
+$github: #4183c4;
+$linkedin: #0077b5;
+$twitter: #55acee;
+
+$social: (
+  dribbble: $dribbble,
+  github: $github,
+  linkedin: $linkedin,
+  twitter: $twitter
+);
+
 // Fonts
 // ---------------------------
 $sans: Averta, sans-serif !global;
@@ -88,16 +102,20 @@ $element: $sans !default;
 // Defaults
 // ---------------------------
 $default-transition-duration: .2s;
-$site-width: 1200px;
-$default-form-color: darken(#eee, 10%);
-$default-form-background-color: scale-lightness(#eee, 10%);
-$default-shading: true !global;
-$default-form-focus-color: $secondary;
-$default-form-color: $alternate-l1;
-$default-form-background-color: $alternate-l3;
-$default-placeholder-color: $neutral-l2;
-$default-form-text-color: $neutral;
-$radius: 8px;
+$radius: 6px;
+
+  // Form defaults
+  // ---------------------------
+  $default-form-focus-color: scale-color($alternate-l2, $lightness: -10%);
+  $default-form-color: $alternate-l2;
+  $default-form-background-color: $alternate-l4 $white;
+  $default-placeholder-color: $neutral-l2;
+  $default-form-text-color: $neutral;
+  $default-form-shading: false;
+
+  // Element defaults
+  // ---------------------------
+  $default-element-radius: 4px;
 
 // Browser support and prefixing
 // ---------------------------
@@ -112,3 +130,6 @@ $gradient-support-threshold: 6.51;
 // Breakpoints
 // ---------------------------
 @include breakpoint-set('base font size', $base-font-size);
+
+$site-width: 1200px;
+$site-width-max: max-width $site-width - $breakpoint-subtract;
