@@ -8,9 +8,15 @@
 
 // Alignment
 // ---------------------------
+.contain-large {
+  @include breakpoint($site-width) {
+    padding-right: calc(50% - #{$site-width / 2});
+    padding-left: calc(50% - #{$site-width / 2}); } }
+
 .contain {
-  padding-right: calc(50% - #{$site-width / 2});
-  padding-left: calc(50% - #{$site-width / 2}); }
+  @include breakpoint($site-width-max) {
+    padding-right: $line;
+    padding-left: $line; } }
 
 .center {
   justify-content: center; }
@@ -53,7 +59,10 @@
 .row-introduction {
   box-shadow: inset 0 -1px $alternate-l3;
   align-content: center;
-  align-items: center; }
+  align-items: center;
+  
+  padding-top: double($line);
+  padding-bottom: double($line); }
 
 // Row contents
 // ---------------------------
@@ -84,6 +93,10 @@
 
 // Column alignment
 // ---------------------------
+.column-push-bottom {
+  @include breakpoint($c-max) {
+    margin-bottom: $line; } }
+      
 .column-center {
   align-items: center;
   align-content: center; }
