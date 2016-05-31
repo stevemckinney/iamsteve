@@ -27,15 +27,6 @@
 	border: none;
 	@content; }
 	
-%form-boolean-base {
-	@include form-boolean-base; }
-
-%form-checkbox-radius {
-	border-radius: $default-form-checkbox-radius; }
-
-%form-radio-radius {
-	border-radius: $default-form-radio-radius; }
-	
 // Full width form elements
 // ---------------------------
 %form-block {

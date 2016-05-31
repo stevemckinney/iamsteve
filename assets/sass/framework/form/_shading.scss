@@ -1,138 +1,149 @@
 @import "variables";
 
-@mixin form-shading($type: $default-form-type) {
-  @if type-of($type) != string {
-    @warn "#{$type} not supported."; }
-    
-  @else {
-    @if map-get($default-text-elements, $type) {
-      @include form-shading-input; }
-      
-    @if $type == select {
-      @include form-shading-select; } } }
+// $attribute-states: disabled, readonly;
+// $shaded-states: normal, focus, error, success;
 
-
-// Reduce logic required to style a particular input
-@mixin form-shading(
-  $type                   : $default-form-type,
-  $color                  : $default-form-color,
-  $background-color       : $default-form-background-color,
-  $state                  : $default-form-state,
-  $shading                : $default-form-shading
-) {
-  $attribute-states: (disabled: disabled, readonly: readonly);
-  $shaded-states: (normal: normal, focus: focus, error: error, success: success);
-  
-  @if length($color) > 1 {
-    $color: nth($color, 2); }
-  @else if length($color) > 1 {
-    $color: nth($color, 1); }
-  
-  @if length($background-color) > 1 and $state == focus {
-    $background-color: nth($background-color, 2); }
-  @else if length($background-color) > 1 {
-    $background-color: nth($background-color, 1); }
+// Shading for text
+// Called in _type.scss
+// ---------------------------
+@mixin form-shading-text(
+  $color            : $default-form-color,
+  $background-color : $default-form-background-color,
+  $state            : $default-form-state,
+  $shading          : $default-form-shading
+) {  
+  // If 2 colours are passed make a gradient, otherwise a solid colour
+  $background: 
+    if( length($background-color) > 1, 
+      linear-gradient(
+        to bottom,
+        scale-lightness(nth($background-color, 1), -10%),
+        nth($background-color, 1) 3px,
+        nth($background-color, 2) 100%
+      ),
+      $background-color
+    );
     
-  $background-shading-color: scale-lightness($background-color, -2%);
+  background: $background;
   
-  @if type-of($type) != string {
-    @warn "#{$type} not supported."; }
-    
+  @if $shading {
+    box-shadow:
+      inset 0 1px scale-lightness($color, -20%),
+      inset 0 0 0 1px $color,
+      
+      // Use the regular colour, but desaturate the colour on focus
+      if($state != focus, inset 0 2px 4px -1px $color, inset 0 2px 4px -1px rgba(desaturate($color, 20%), .6)),
+      
+      // Make it clearer that the field is focused
+      if($state == focus, 0 0 6px -2px $color, compact(false)),
+      0 1px 1px rgba($white, .2); }
   @else {
-    // Text
-    // ---------------------------
-    @if map-get($default-text-elements, $type) {
-      
-      @if map-get($shaded-states, $state) and $shading {
-        
-        background-image: linear-gradient(to top, $background-color 0%, $background-shading-color 100%);
-            
-        box-shadow:
-          inset 0 1px scale-lightness($color, -10%),
-          inset 0 0 0 1px $color,
-          if($state != focus, inset 0 1px 2px $color, inset 0 1px 2px desaturate($color, 20%)),
-          if($state == focus, 0 0 6px -2px $color, compact(false)); }
-      
-      @if map-get($attribute-states, $state) or $shading == false {
-        box-shadow: inset 0 0 0 1px scale-lightness($color, -10%);
-        background: $background-color; }
-      
-      @else if $shading == false {
-        box-shadow: inset 0 1px scale-lightness($color, -10%), inset 0 0 0 1px $color; } }
-    
-    // Select
-    // ---------------------------
-    @if $type == select {
-      @if $shading {
-        
-        @if $state != disabled {
-          box-shadow:
-            inset 0 -1px scale-lightness($color, -10%),
-            inset 0 0 0 1px $color,
-            if($state == focus, 0 0 6px -2px $color, compact(false)); }
-        
-        @else {
-          box-shadow:
-            0 0 9px -3px rgba($color, .6),
-            inset 0 0 0 1px $color,
-            inset 0 1px 0 rgba($white, .4);
-          
-          background-image:
-            linear-gradient(
-              rgba($background-color, .025) 0%,
-              rgba($background-shading-color, .15) 60%), $default-form-select-image, $background-color; }
-            
-        @if $state == normal {
-          background:
-            $default-form-select-image,
-            linear-gradient(
-              $background-color 0%,
-              $background-shading-color 100%); } }
-              
-      @else {
-        box-shadow: inset 0 0 0 1px $color;
-        background: $default-form-select-image $background-color; } }
-    
-    // Checkbox/radio
-    // ---------------------------
-    @if ($type == checkbox or $type == radio) and $state == normal and $shading {   
-      background:
+    box-shadow:
+      inset 0 1px scale-lightness($color, -10%),
+      inset 0 0 0 1px $color; } }
+
+// Shading for select
+// Called in _type.scss
+// ---------------------------
+@mixin form-shading-select(
+  $color            : $default-form-color,
+  $background-color : $default-form-background-color,
+  $state            : $default-form-state,
+  $shading          : $default-form-shading
+) {  
+  // If 2 colours are passed make a gradient, otherwise a solid colour
+  // If 2 colours are passed make a gradient, otherwise a solid colour
+  $background: 
+    if( length($background-color) > 1,
+      compact(
+        $default-form-select-image, 
         linear-gradient(
-          $background-color 0%,
-          $background-shading-color 60%); }
-    
-    @if ($type == checkbox or $type == radio) and $state == normal and $shading == false {
-      background-color: $background-color; }
-    
-    // Radio
-    // ---------------------------
-    @if $type == radio {
-      box-shadow: 
-        inset 0 0 0 1px $color,
-        if($shading, inset 0 2px 1px $white, compact(false));
+          to top,
+          scale-lightness(nth($background-color, 1), -10%),
+          nth($background-color, 1) 3px,
+          nth($background-color, 2) 100%
+        )
+      ),
+      $default-form-select-image $background-color
+    );
+  background: $background;
   
-      &:checked {
-        background:
-          radial-gradient(
-            scale-lightness($background-shading-color, -20%) $default-form-radio-radial-gradient-color-stop,
-            $background-color $default-form-radio-radial-gradient-color-stop),
-          if($shading, linear-gradient($background-color 0%, $background-shading-color 60%), $background-color); } }
-  
-    // Checkbox
-    // ---------------------------      
-    @if $type == checkbox {
-      box-shadow: 
-        inset 0 0 0 1px $color,
-        if($shading, inset 0 2px 1px $white, compact(false));
+  @if $shading {        
+    box-shadow:
+      inset 0 -1px scale-lightness($color, -15%),
       
-      &:checked {
-        @if $shading {  
-          background: 
-            $default-form-checkbox-image,
-            linear-gradient(rgba($background-color, .025) 0%, rgba($background-shading-color, .15) 60%),
-            $background-color; }
-        @else {
-          background: $default-form-checkbox-image $background-color; } 
-          background-size: $default-form-checkbox-background-size; } }
-    
-    @content; } }
+      // Use the regular colour, but desaturate the colour on focus
+      if($state != focus, inset 0 -2px 4px -1px $color, inset 0 -2px 4px -1px rgba(desaturate($color, 20%), .6)),
+      
+      inset 0 2px rgba($white, .2),
+      inset 0 0 0 1px $color,
+      if($state == focus, 0 0 6px -2px $color, compact(false)); }
+  @else {
+    box-shadow:
+      inset 0 -1px scale-lightness($color, -10%),
+      inset 0 0 0 1px $color; } }
+
+// Shading for radio
+// Called in _type.scss
+// ---------------------------
+@mixin form-shading-checkbox(
+  $color            : $default-form-color,
+  $background-color : $default-form-background-color,
+  $shading          : $default-form-shading
+) {
+  // If 2 colours are passed make a gradient, otherwise a solid colour
+  $background: 
+    if( length($background-color) > 1, 
+      linear-gradient(
+        to bottom,
+        scale-lightness(nth($background-color, 1), -10%),
+        nth($background-color, 1) 3px,
+        nth($background-color, 2) 100%
+      ),
+      $background-color
+    );
+  background: $background;
+  
+  box-shadow: 
+    inset 0 1px scale-lightness($color, -15%),
+    inset 0 0 0 1px $color,
+    if($shading, inset 0 2px 1px $white, compact(false));
+  
+  &:checked {
+    @if length($background-color) > 1 {
+      background: $default-form-checkbox-image, $background; }
+    @else {
+      background: $default-form-checkbox-image $background; } } }
+
+// Shading for radio
+// Called in _type.scss
+// ---------------------------
+@mixin form-shading-radio(
+  $color            : $default-form-color,
+  $background-color : $default-form-background-color,
+  $shading          : $default-form-shading,
+  $checked-color    : $default-form-checked-color
+) {
+  // If 2 colours are passed make a gradient, otherwise a solid colour
+  $background: 
+    if( length($background-color) > 1, 
+      linear-gradient(
+        to bottom,
+        scale-lightness(nth($background-color, 1), -10%),
+        nth($background-color, 1) 3px,
+        nth($background-color, 2) 100%
+      ),
+      $background-color
+    );
+  background: $background;
+  
+  box-shadow:
+    inset 0 1px scale-lightness($color, -15%),
+    inset 0 0 0 1px $color,
+    if($shading, 0 1px 1px $white, compact(false));
+
+  &:checked {
+    background:
+      radial-gradient($checked-color $default-form-radio-radial-gradient-color-stop,
+        rgba(#fff, 0) $default-form-radio-radial-gradient-color-stop),
+      $background; } }

@@ -9,21 +9,17 @@ $default-form-type: text !default;
 
 // Default styling
 // ---------------------------
-$default-form-base: false !default;
-$default-form-focus-color: if(variable-exists(alt), $alt, #444) !default;
-$default-form-background-focus-color: scale-lightness($white, -20%) !default;
-$default-form-background-color: scale-lightness($white, -5%) !default;
+$default-form-color: scale-lightness($white, -20%) !default;
+$default-form-text-color: #666 !default;
+$default-form-checked-color: #6ad4b6 !default;
+$default-form-focus-color: $alt !default;
+$default-form-background-color: $white !default;
 $default-form-focus-background-color: $white !default;
 $default-form-radius: $radius !default;
 $default-form-checkbox-radius: $radius !default;
 $default-form-radio-radius: 30em !default;
 $default-form-line-height: normal !default;
-$default-form-shading: $default-shading !default;
-
-// Default style
-// ---------------------------
-$default-form-color: scale-lightness($tertiary, -10%) !default;
-$default-form-text-color: $primary !default;
+$default-form-shading: true !default;
 
 // Text elements map
 $default-text-elements: (
@@ -40,23 +36,16 @@ $default-text-elements: (
 	year: year,
 	datetime: datetime,
 	datetime-local: datetime-local
-);
-
-// Defaults for form search
-// ---------------------------
-$default-form-search-position: right !default;
-$default-form-search-selector: unquote(".button-search") !default;
-$default-form-search-size: $default-size !default;
-$default-form-search-has-label: false !default;
+) !default;
 
 // Defaults for checkbox/radio
 // ---------------------------
 $default-form-boolean-margin: 0 em($base-px/2) 0 0 !default;
-$default-form-radio-size: em(16px) !default;
+$default-form-radio-size: 16px !default;
 $default-form-radio-width: $default-form-radio-size !default;
 $default-form-radio-height: $default-form-radio-size !default;
 $default-form-radio-radial-gradient-color-stop: 4px !default;
-$default-form-checkbox-background-size: em(12px) !default;
+$default-form-checkbox-background-size: 12px !default;
 
 // Default select images (change colour in svg file)
 // ---------------------------

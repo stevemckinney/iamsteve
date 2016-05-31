@@ -1,49 +1,39 @@
 // Import related files
 // ---------------------------
 @import "form/variables",
-				"form/base",
-				"form/type",
-				"form/label",
-				"form/shading",
-				"form/placeholder";
+        "form/base",
+        "form/type",
+        "form/label",
+        "form/shading",
+        "form/placeholder";
 
 @mixin form(
-	$type							: $default-form-type,
-	$color						: $default-form-color $default-form-focus-color,
-	$background-color	: $default-form-background-color $default-form-focus-background-color,
-	$shading					: $default-form-shading,
-	$base 						: $default-form-base
+  $type             : $default-form-type,
+  $color            : $default-form-color,
+  $focus-color      : $default-form-focus-color,
+  $background-color	: $default-form-background-color,
+  $shading          : $default-form-shading
 ) {
-	
+
 	// Text
 	// ---------------------------
-	@if map-get($default-text-elements, $type) {
-		@if $base {
-			@include form-base($base...); }
-		
-		@include form-text($color, $background-color, $shading); }
+	@if map-get($default-text-elements, $type) {		
+		@include form-text($color, $focus-color, $background-color, $shading); }
 	
 	// Select
 	// ---------------------------
 	@else if $type == select {
-		@if $base {
-			@include form-base($base...); }
-			
-		@include form-select($color, $background-color, $shading); }
+		@include form-select($color, $focus-color, $background-color, $shading); }
 	
 	// Checkbox
 	// ---------------------------
 	@else if $type == checkbox {
-		@include form-checkbox($color, $background-color, $shading);
-		@extend %form-boolean-base;
-		@extend %form-checkbox-radius; }
+		@include form-checkbox($color, $background-color, $shading); }
 	
 	// Radio
 	// ---------------------------
 	@else if $type == radio {
-		@include form-radio($color, $background-color, $shading);
-		@extend %form-boolean-base;
-		@extend %form-radio-radius; }
+		@include form-radio($color, $background-color, $shading); }
 		
 	// Submit
 	// ---------------------------

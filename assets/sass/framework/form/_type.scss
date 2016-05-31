@@ -1,86 +1,55 @@
 @import "variables";
 
+// Form types
+// Individual mixins for specific form elements
+// ---------------------------
+
 // Text
+// Called in _form.scss
 // ---------------------------
 @mixin form-text(
-	$color									: $default-form-color $default-form-focus-color,
-	$background-color				: $default-form-background-color $default-form-focus-background-color,
-	$shading								: $default-form-shading
+  $color            : $default-form-color,
+  $focus-color      : $default-form-focus-color,
+  $background-color : $default-form-background-color,
+  $shading          : $default-form-shading
 ) {
-	@include form-shading(text, $color, $background-color, normal, $shading);
+  @include form-shading-text($color, $background-color, normal, $shading);
 
-	&:focus {
-		@include form-shading(text, $color, $background-color, focus, $shading); } }
+  &:focus {
+    @include form-shading-text($focus-color, $background-color, focus, $shading); } }
 
 // Select
+// Called in _form.scss
 // ---------------------------
 @mixin form-select(
-	$color						: $default-form-color $default-form-focus-color,
-	$background-color	: $default-form-background-color,
-	$shading					: $default-form-shading
-) {	
-	@include form-shading(select, nth($color, 1), nth($background-color, 1), normal, $shading);
+  $color            : $default-form-color,
+  $focus-color      : $default-form-focus-color,
+  $background-color : $default-form-background-color,
+  $shading          : $default-form-shading
+) { 
+  @include form-shading-select($color, $background-color, normal, $shading);
 
-	&:focus {
-		@include form-shading(select, nth($color, 2), nth($background-color, 2), focus, $shading); } }
+  &:focus {
+    @include form-shading-select($focus-color, $background-color, focus, $shading); } }
 
 // Checkbox
+// Called in _form.scss
 // ---------------------------
 @mixin form-checkbox(
-	$color						: $default-form-color,
-	$background-color	: $default-form-background-color,
-	$shading					: $default-form-shading
-) {	
-	@include form-shading(checkbox, $color, $background-color, normal, $shading); }
+  $color            : $default-form-color,
+  $background-color : $default-form-background-color,
+  $shading          : $default-form-shading
+) { 
+  @include form-shading-checkbox($color, $background-color, $shading);
+  border-radius: $default-form-checkbox-radius; }
 
 // Radio
+// Called in _form.scss
 // ---------------------------
 @mixin form-radio(
-	$color						: $default-form-color,
-	$background-color	: $default-form-background-color,
-	$shading					: $default-form-shading
-) {	
-	@include form-shading(radio, $color, $background-color, normal, $shading); }
-
-// Search
-// ---------------------------
-@mixin form-search(
-	$selector	: $default-form-search-selector,
-	$position	: $default-form-search-position,
-	$size			: $default-form-search-size,
-	$icon 		: $default-form-search-image,
-	$has-label: $default-form-search-has-label
-) {
-	position: relative;
-	
-	@if $has-label {
-		label {
-			@extend .visuallyhidden; } }
-	
-	#{$selector} {
-		@include hide-text(left);
-		position: absolute;
-		background: $icon;
-		padding: $size;
-		top: 0;
-		
-		@if $position == right {
-			right: 0; }
-			
-		@else if $position == left {
-			left: 0; }
-			
-		@else {
-			@warn "#{$position} isn't a valid position, must be left or right." } } }
-
-// Logically named alias for form-search
-// ---------------------------
-@mixin form-button(
-	$selector	: $default-form-search-selector,
-	$position	: $default-form-search-position,
-	$size			: $default-form-search-size,
-	$icon 		: $default-form-search-image,
-	$has-label: $default-form-search-has-label,
-	$fallback	: $default-form-search-png
-) {
-	@include form-search($selector, $position, $size, $icon, $has-label, $fallback); }
+  $color            : $default-form-color,
+  $background-color : $default-form-background-color,
+  $shading          : $default-form-shading
+) { 
+  @include form-shading-radio($color, $background-color, $shading);
+  border-radius: $default-form-radio-radius; }
