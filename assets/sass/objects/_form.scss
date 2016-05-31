@@ -7,7 +7,9 @@
 .form-search {
   @include breakpoint($b) {
     align-content: center;
-    align-items: center; }
+    align-items: center;
+    box-shadow: inset 1px 0 $alternate-l3;
+    padding-left: $line*1.5; }
     
   @include breakpoint($b-max) {
     width: 100%; } }
