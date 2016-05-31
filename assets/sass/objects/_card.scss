@@ -45,7 +45,7 @@
       border-radius: $radius $radius 0 0;
       border: 1px solid $alternate-l2; } } }
 
-.row-introduction .card-large {
+.hero .card-large {
   @include breakpoint($c) {
     margin-bottom: -$line * 4; } }
 
