@@ -2,6 +2,14 @@
 // ---------------------------
 body {
   background: $white;
-
+  padding-top: $line * 2;
+  
   @include breakpoint($c) {
     padding-top: $line * 4; } }
+
+hr {
+  border: none;
+  background: image-url("dash-dark.svg");
+  width: 100%;
+  height: 2px;
+  margin: 0 0 $base-px; }
