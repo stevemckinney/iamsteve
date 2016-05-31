@@ -61,6 +61,11 @@ address { font-style: normal; }
   &:focus {
     box-shadow: inset 0 -2px $secondary-l2, 0 2px $secondary-l2; } }
 
+// Social links
+// ---------------------------
+@each $name, $color in $social {
+	.link-#{$name} { color: $color; } }
+	
 // Links paired with an icon
 // eg: <a class="link-icon"><span class="icon icon-medium"><svg></svg></span></a>
 .link-icon {
