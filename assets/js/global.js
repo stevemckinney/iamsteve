@@ -129,7 +129,8 @@ var iamsteve = (function ()
   
   return {
     toggler: toggler(),
-    headroom: headroom()
+    headroom: headroom(),
+    flickity: flickity()
   };
 
 })();
