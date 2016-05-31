@@ -6,13 +6,13 @@
 // Validation
 // ---------------------------
 .is-valid {
-	@include form-shading(text, $green, $state: normal);
+	@include form-shading-text($green, $state: normal);
 	
 	&:focus { 
-    @include form-shading(text, $green, $state: focus); } }
+    @include form-shading-text($green, $state: focus); } }
 
 .is-error {
-	@include form-shading(text, $red, $state: normal);
+	@include form-shading-text($red, $state: normal);
 	
 	&:focus {
-  	@include form-shading(text, $red, $state: focus); }  }
+  	@include form-shading-text($red, $state: focus); }  }
