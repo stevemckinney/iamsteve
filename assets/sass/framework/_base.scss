@@ -71,8 +71,8 @@ $transition-duration: $default-transition-duration !default;
 $default-negative-spacing: -5px !default;
 
 // Default sizing for elements
-$default-size: 1 !default; // for element mixin
-$default-form-size: $base-px $line !default;
+$default-size: 14px $line !default; // for element mixin
+$default-form-size: 14px $line !default;
 $default-ratio: .555 !default; // for element mixin, .375 32px, .5 = 36px, .7 42px
 $default-set-height: 36px !default;
 $default-set-height-padding: $base-px !default;
@@ -110,7 +110,7 @@ $breakpoint-subtract: 1px !default;
 $default-no-query-selector: "no-mediaqueries" !default;
 
 // min-width
-$aa:	280px !default;
+$aa:	360px !default;
 $a:		480px !default;
 $ab: 	540px !default;
 $b: 	600px !default;
