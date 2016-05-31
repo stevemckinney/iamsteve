@@ -2,8 +2,10 @@
 // ---------------------------
 .introduction {  
   @include breakpoint($c-max) {
-    padding: double($line);
-    padding-top: triple($line); }
+    padding: 0 double($line) double($line); }
+  
+  @include breakpoint($aa-max) {
+    padding: 0 $line double($line); }
   
   svg,
   img {
