@@ -92,12 +92,10 @@ $social: (
 // ---------------------------
 $sans: Averta, sans-serif !global;
 $serif: Sentinel A, Sentinel B, serif !global;
-$monospace: Inconsolata, Menlo, Monaco, "Courier New", monospace !default;
-$icons: "SSStandard" !default;
-$heading: $sans !default;
-$body: $serif !default;
-$form: $sans !default;
-$element: $sans !default;
+$heading: $sans !global;
+$body: $serif !global;
+$form: $sans !global;
+$element: $sans !global;
 
 // Defaults
 // ---------------------------

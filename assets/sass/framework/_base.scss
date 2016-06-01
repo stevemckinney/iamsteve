@@ -53,6 +53,17 @@ $base-px: 12px !default;
 $line: $base-px*2 !default;
 $baseline: 24px !default;
 
+// Fonts
+// ---------------------------
+$sans: Helvetica, sans-serif !default;
+$serif: Georgia, serif !default;
+$monospace: Inconsolata, Menlo, Monaco, "Courier New", monospace !default;
+$icons: "SSStandard" !default;
+$heading: $serif !default;
+$body: $sans !default;
+$form: $sans !default;
+$element: $sans !default;
+
 // Font sizes
 // ---------------------------
 $base-font-size: 16px !default;

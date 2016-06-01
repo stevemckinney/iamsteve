@@ -1,7 +1,8 @@
 // Site
 // ---------------------------
-@import "site/base"; // override defaults here, fonts and colour also
-@import "site/mixins"; // Override existing framework mixins here, or break them into files
+@import "site/base";
+// Override existing mixins from framework files, etc. here
+@import "site/mixins";
 @import "site/webfonts"; 
 @import "site/typography";
 @import "site/structure";

@@ -7,18 +7,19 @@
 @import "compass/css3/user-interface";
 @import "breakpoint";
 				
-// Framework components, don't edit
+// Framework
+// Don't edit these files, copy mixins and override.
 // ---------------------------
 @import "framework";
 
 // Helpers
 // ---------------------------
 @import "helpers";
-				
+
 // Site base
 // ---------------------------
 @import "site";
 
-// Site objects
+// Objects
 // ---------------------------
 @import "objects";
