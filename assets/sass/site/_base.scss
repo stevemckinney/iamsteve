@@ -131,5 +131,6 @@ $gradient-support-threshold: 6.51;
 // ---------------------------
 @include breakpoint-set('base font size', $base-font-size);
 
-$site-width: 1200px;
+// Site width is 1200px, but it requires additional spacing so it works nicely
+$site-width: 1200px + $line + $line;
 $site-width-max: max-width $site-width - $breakpoint-subtract;

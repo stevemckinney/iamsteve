@@ -1,0 +1,26 @@
+// Font sizes
+// ---------------------------
+
+// ${size}-size defined in framework/base as percentage values
+// Great for sizing em based elements
+@if $default-enable-font-size {
+	.xxlarge {
+		font-size: $xxlarge-size; }
+		
+	.xlarge {
+		font-size: $xlarge-size; }
+		
+	.large {
+		font-size: $large-size; }
+	
+	.normal {
+		font-size: $normal-size; }
+		
+	.small {
+		font-size: $small-size; }
+		
+	.xsmall {
+		font-size: $xsmall-size; }
+		
+	.xxsmall {
+		font-size: $xxsmall-size; } }

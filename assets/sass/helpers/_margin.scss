@@ -1,0 +1,47 @@
+// Margin
+// ---------------------------
+@if $default-enable-margin {
+  @each $margin in $default-push-map {
+    .push-#{$margin} {
+      margin-#{$margin}: $baseline; } 
+    
+    .push-double-#{$margin} {
+      margin-#{$margin}: double($baseline); }
+    
+    .push-half-#{$margin} {
+      margin-#{$margin}: half($baseline); } } }
+
+@if $default-enable-margin-responsive {   
+    // $b margins
+    @include breakpoint($b) {
+      .push-#{$margin}-b {
+        margin-#{$margin}: $baseline; } 
+      
+      .push-double-#{$margin}-b {
+        margin-#{$margin}: double($baseline); }
+      
+      .push-half-#{$margin}-b {
+        margin-#{$margin}: half($baseline); } }
+    
+    // $d margins
+    @include breakpoint($d) {
+      .push-#{$margin}-d {
+        margin-#{$margin}: $baseline; } 
+      
+      .push-double-#{$margin}-d {
+        margin-#{$margin}: double($baseline); }
+      
+      .push-half-#{$margin}-d {
+        margin-#{$margin}: half($baseline); } } }
+
+// Undo
+// ---------------------------
+@if $default-enable-undo-margin {		
+  .undo-margin {
+		margin: 0; }
+		
+  .undo-margin-top {
+		margin-top: 0; }
+
+  .undo-margin-bottom {
+		margin-bottom: 0; } }
