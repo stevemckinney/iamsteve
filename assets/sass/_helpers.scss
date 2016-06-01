@@ -1,8 +1,7 @@
 // Helpers
-// ---------------------------
-//
 // Everything has enabling variables and some variables are defined in
 // framework/base to be overridden and used elsewhere 
+// ---------------------------
 
 // Border radius
 // ---------------------------
@@ -14,22 +13,24 @@ $default-enable-border-radius-specific: false !default;
 // ---------------------------
 $default-enable-margin: true !default;
 $default-enable-margin-responsive: true !default;
-$default-push-map:
+$default-margin-map:
   top,
   right,
   bottom,
   left !default;
+$default-enable-undo-margin: true !default;
 @import "helpers/margin";
 
 // Padding
 // ---------------------------
 $default-enable-padding: false !default;
 $default-enable-padding-responsive: true !default;
-$default-soft-map:
+$default-padding-map:
   top,
   right,
   bottom,
   left !default;
+$default-enable-undo-padding: true !default;
 @import "helpers/padding";
 
 // Font size
