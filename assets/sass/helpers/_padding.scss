@@ -1,7 +1,7 @@
 // Padding
 // ---------------------------
 @if $default-enable-padding {
-  @each $padding in $default-soft-map {
+  @each $padding in $default-padding-map {
     .soft-#{$padding} {
       padding-#{$padding}: $baseline; } 
     
@@ -9,30 +9,30 @@
       padding-#{$padding}: double($baseline); }
     
     .soft-half-#{$padding} {
-      padding-#{$padding}: half($baseline); } }
+      padding-#{$padding}: half($baseline); }
 
-@if $default-enable-padding-responsive {  
-    // $b padding
-    @include breakpoint($b) {
-      .soft-#{$padding}-b {
-        padding-#{$padding}: $baseline; } 
-      
-      .soft-double-#{$padding}-b {
-        padding-#{$padding}: double($baseline); }
-      
-      .soft-half-#{$padding}-b {
-        padding-#{$padding}: half($baseline); } }
-
-    // $d padding
-    @include breakpoint($d) {
-      .soft-#{$padding}-d {
-        padding-#{$padding}: $baseline; } 
-      
-      .soft-double-#{$padding}-d {
-        padding-#{$padding}: double($baseline); }
-      
-      .soft-half-#{$padding}-d {
-        padding-#{$padding}: half($baseline); } } } }
+    @if $default-enable-padding-responsive {  
+      // $b padding
+      @include breakpoint($b) {
+        .soft-#{$padding}-b {
+          padding-#{$padding}: $baseline; } 
+        
+        .soft-double-#{$padding}-b {
+          padding-#{$padding}: double($baseline); }
+        
+        .soft-half-#{$padding}-b {
+          padding-#{$padding}: half($baseline); } }
+  
+      // $d padding
+      @include breakpoint($d) {
+        .soft-#{$padding}-d {
+          padding-#{$padding}: $baseline; } 
+        
+        .soft-double-#{$padding}-d {
+          padding-#{$padding}: double($baseline); }
+        
+        .soft-half-#{$padding}-d {
+          padding-#{$padding}: half($baseline); } } } } }
 
 // Undo
 // ---------------------------

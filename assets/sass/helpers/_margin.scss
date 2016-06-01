@@ -1,7 +1,7 @@
 // Margin
 // ---------------------------
 @if $default-enable-margin {
-  @each $margin in $default-push-map {
+  @each $margin in $default-margin-map {
     .push-#{$margin} {
       margin-#{$margin}: $baseline; } 
     
@@ -9,30 +9,30 @@
       margin-#{$margin}: double($baseline); }
     
     .push-half-#{$margin} {
-      margin-#{$margin}: half($baseline); } } }
+      margin-#{$margin}: half($baseline); }
 
-@if $default-enable-margin-responsive {   
-    // $b margins
-    @include breakpoint($b) {
-      .push-#{$margin}-b {
-        margin-#{$margin}: $baseline; } 
+    @if $default-enable-margin-responsive {   
+      // $b margins
+      @include breakpoint($b) {
+        .push-#{$margin}-b {
+          margin-#{$margin}: $baseline; } 
+        
+        .push-double-#{$margin}-b {
+          margin-#{$margin}: double($baseline); }
+        
+        .push-half-#{$margin}-b {
+          margin-#{$margin}: half($baseline); } }
       
-      .push-double-#{$margin}-b {
-        margin-#{$margin}: double($baseline); }
-      
-      .push-half-#{$margin}-b {
-        margin-#{$margin}: half($baseline); } }
-    
-    // $d margins
-    @include breakpoint($d) {
-      .push-#{$margin}-d {
-        margin-#{$margin}: $baseline; } 
-      
-      .push-double-#{$margin}-d {
-        margin-#{$margin}: double($baseline); }
-      
-      .push-half-#{$margin}-d {
-        margin-#{$margin}: half($baseline); } } }
+      // $d margins
+      @include breakpoint($d) {
+        .push-#{$margin}-d {
+          margin-#{$margin}: $baseline; } 
+        
+        .push-double-#{$margin}-d {
+          margin-#{$margin}: double($baseline); }
+        
+        .push-half-#{$margin}-d {
+          margin-#{$margin}: half($baseline); } } } } }
 
 // Undo
 // ---------------------------
