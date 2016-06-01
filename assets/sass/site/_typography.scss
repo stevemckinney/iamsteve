@@ -8,48 +8,70 @@
   margin-top: 0;
   font-weight: font-weight(bold);
   
-  @include breakpoint($c) {
+  @include breakpoint($d) {
     font-weight: font-weight(semibold); } }
   
-.h1 { 
-  font-size: em($text-medium);
-  
-  @include breakpoint($b) {
-    font-size: em($text-xxlarge);
-    font-weight: font-weight(semibold); } }
+.h1 {
+  font-size: em($text-medium); }
   
 .h2 {
   font-size: em($text-small);
-  margin-bottom: half($base-px);
-  
-  @include breakpoint($b) {
-    font-size: em($text-xlarge);
-    margin-bottom: $base-px; } }
+  margin-bottom: half($base-px); }
   
 .h3 {
   font-size: em($text-small);
-  margin-bottom: half($base-px);
-  
-  @include breakpoint($b) {
-    font-size: em($text-large); } }
+  margin-bottom: half($base-px); }
   
 .h4 { 
   font-size: em($text-small);
-  margin-bottom: half($base-px);
-  
-  @include breakpoint($b) {
-    font-size: em($text-medium); } }
+  margin-bottom: half($base-px); }
   
 .h5 {
-  font-size: em($text-xsmall);
-  
-  @include breakpoint($b) {
-    font-size: em($text-small); } }
+  font-size: em($text-xsmall); }
   
 .h6 {
-  font-size: em($text-xxsmall);
+  font-size: em($text-xxsmall); }
+
+// At $b breakpoint create sizes
+@include breakpoint($b) {
+  .h1-b {
+    font-size: em($text-xlarge); }
   
-  @include breakpoint($b) {
+  .h2-b {
+    font-size: em($text-large);
+    margin-bottom: $base-px; }
+    
+  .h3-b {
+    font-size: em($text-medium); }
+    
+  .h4-b {
+    font-size: em($text-small); }
+    
+  .h5-b {
+    font-size: em($text-xsmall); }
+    
+  .h6-b {
+    font-size: em($text-xxsmall); } }
+
+// At $d breakpoint create sizes
+@include breakpoint($d) {
+  .h1-d {
+    font-size: em($text-xxlarge); }
+  
+  .h2-d {
+    font-size: em($text-xlarge);
+    margin-bottom: $base-px; }
+    
+  .h3-d {
+    font-size: em($text-large); }
+    
+  .h4-d {
+    font-size: em($text-medium); }
+    
+  .h5-d {
+    font-size: em($text-small); }
+    
+  .h6-d {
     font-size: em($text-xsmall); } }
   
 // General
@@ -116,3 +138,8 @@ pre code {
 kbd {
   background: #444;
   color: $white; }
+
+kbd,
+pre,
+samp {
+	font-size: $base-font-size; }
