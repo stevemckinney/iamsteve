@@ -10,7 +10,7 @@
 
 $default-enable-border-radius-specific: false !default;
 
-@if $default-enable-radius-specific {
+@if $default-enable-border-radius-specific {
 	$radii: top-left, top-right, bottom-left, bottom-right;
 	
 	@each $radius in $radii {	
