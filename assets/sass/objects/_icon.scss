@@ -58,7 +58,7 @@ $toggle-width: 16px;
   position: relative;
   z-index: $z-index-200;
   
-  @include breakpoint($b) {
+  @include breakpoint($c) {
     display: none; }
   
   // Span is where the ‘icon’ is made

@@ -14,15 +14,15 @@
   will-change: transform;
   transition: transform 200ms linear;
   
-  > .icon-search {
-    order: -1;
-    z-index: $z-index-200;
-    
-    @include breakpoint($b) {
-      display: none; } }
+  @include breakpoint($site-width) {
+    padding: 0 calc(50% - #{$site-width / 2}); }
   
-  @include breakpoint($b) {
-    padding: 0 calc(50% - #{$site-width / 2}); } }
+  > .icon-search {
+    z-index: $z-index-200;
+    order: -1;
+    
+    @include breakpoint($c) {
+      display: none; } } }
 
 // Headroom
 // ---------------------------
@@ -43,13 +43,15 @@
   position: relative;
   z-index: $z-index-200;
   
-  @include breakpoint($b) {
+  @include breakpoint($c) {
     align-content: center;
     align-items: center;
-    box-shadow: inset -1px 0 $alternate-l3;
+    box-shadow: inset -1px 0 $alternate-l3; }
+  
+  @include breakpoint($cd) {
+    font-size: $text-large;
     padding: $line $line*1.5;
-    padding-left: 0;
-    font-size: $text-large; } }
+    padding-left: 0; } }
 
 .logo-large,
 .logo-small {
@@ -58,11 +60,11 @@
 .logo-large {
   margin-right: $base-px;
    
-  @include breakpoint($b-max) {
+  @include breakpoint($cd-max) {
     display: none; } }
 
 .logo-small {
   margin-right: half($base-px);
   
-  @include breakpoint($b) {
+  @include breakpoint($cd) {
     display: none; } }

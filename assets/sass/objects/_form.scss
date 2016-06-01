@@ -5,13 +5,13 @@
 	flex-flow: row wrap; }
 
 .form-search {
-  @include breakpoint($b) {
+  @include breakpoint($c) {
     align-content: center;
     align-items: center;
     box-shadow: inset 1px 0 $alternate-l3;
     padding-left: $line*1.5; }
     
-  @include breakpoint($b-max) {
+  @include breakpoint($c-max) {
     width: 100%; } }
 
 .form-newsletter {  
@@ -113,7 +113,10 @@
   .input-search {
     padding: $base-px 0;
     background-color: transparent;
-    font-size: $text-medium; }
+    font-size: $text-medium;
+    
+    @include breakpoint($cd) {
+      font-size: $text-large; } }
 	
 	// Select
 	// ---------------------------

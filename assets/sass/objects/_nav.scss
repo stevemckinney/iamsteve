@@ -4,7 +4,7 @@
   display: flex;
   flex-flow: row wrap;
   
-  @include breakpoint($b) {
+  @include breakpoint($c) {
     flex: 1; } }
 
 .nav-item {
@@ -13,15 +13,18 @@
   text-transform: lowercase;
   padding: $line;
   
-  @include breakpoint($b) {
-    padding: 36px 16px;
+  @include breakpoint($c) {
+    padding: $line $base-px;
     transition: color .2s;
-    font-weight: font-weight(bold);
+    font-weight: font-weight(semibold);
     
     &:first-child {
       padding-left: 32px; } }
+      
+  @include breakpoint($cd) {
+   padding: 36px 16px; }
   
-  @include breakpoint($b-max) {
+  @include breakpoint($c-max) {
     font-size: $text-large;
     flex: 1 1 100%;
     text-align: center; } }
