@@ -6,74 +6,8 @@
   text-rendering: optimizeLegibility;
   line-height: 1.25;
   margin-top: 0;
-  font-weight: font-weight(bold);
-  
-  @include breakpoint($d) {
-    font-weight: font-weight(semibold); } }
-  
-.h1 {
-  font-size: em($text-medium); }
-  
-.h2 {
-  font-size: em($text-small);
-  margin-bottom: half($base-px); }
-  
-.h3 {
-  font-size: em($text-small);
-  margin-bottom: half($base-px); }
-  
-.h4 { 
-  font-size: em($text-small);
-  margin-bottom: half($base-px); }
-  
-.h5 {
-  font-size: em($text-xsmall); }
-  
-.h6 {
-  font-size: em($text-xxsmall); }
+  font-weight: font-weight(semibold); }
 
-// At $b breakpoint create sizes
-@include breakpoint($b) {
-  .h1-b {
-    font-size: em($text-xlarge); }
-  
-  .h2-b {
-    font-size: em($text-large);
-    margin-bottom: $base-px; }
-    
-  .h3-b {
-    font-size: em($text-medium); }
-    
-  .h4-b {
-    font-size: em($text-small); }
-    
-  .h5-b {
-    font-size: em($text-xsmall); }
-    
-  .h6-b {
-    font-size: em($text-xxsmall); } }
-
-// At $d breakpoint create sizes
-@include breakpoint($d) {
-  .h1-d {
-    font-size: em($text-xxlarge); }
-  
-  .h2-d {
-    font-size: em($text-xlarge);
-    margin-bottom: $base-px; }
-    
-  .h3-d {
-    font-size: em($text-large); }
-    
-  .h4-d {
-    font-size: em($text-medium); }
-    
-  .h5-d {
-    font-size: em($text-small); }
-    
-  .h6-d {
-    font-size: em($text-xsmall); } }
-  
 // General
 // ---------------------------
 body {
@@ -111,8 +45,8 @@ a {
     outline: 0; } }
 
 .entry-content a {
-  color: $secondary;
-  font-weight: font-weight(bold); }
+  color: $neutral;
+  font-weight: font-weight(semibold); }
 
 // Code
 // ---------------------------
@@ -136,8 +70,8 @@ pre code {
   max-height: 548px; }
 
 kbd {
-  background: #444;
-  color: $white; }
+  background: $alternate;
+  color: $alternate-l2; }
 
 kbd,
 pre,

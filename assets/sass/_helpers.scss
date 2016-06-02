@@ -18,6 +18,7 @@ $default-margin-map:
   right,
   bottom,
   left !default;
+$default-margin-map: bottom;
 $default-enable-undo-margin: true !default;
 @import "helpers/margin";
 
@@ -30,7 +31,8 @@ $default-padding-map:
   right,
   bottom,
   left !default;
-$default-enable-undo-padding: true !default;
+$default-enable-undo-padding: false !default;
+$default-enable-isles: false !default;
 @import "helpers/padding";
 
 // Font size

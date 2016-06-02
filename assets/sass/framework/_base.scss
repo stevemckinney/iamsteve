@@ -153,13 +153,15 @@ $retina: min-resolution 1.5dppx !default;
 
 // Font sizes
 // ---------------------------
+$text-xxxlarge: 36px !default;
 $text-xxlarge: 30px !default;
 $text-xlarge: 24px !default;
 $text-large: 21px !default;
 $text-medium: 18px !default;
 $text-small: 16px !default;
 $text-xsmall: 14px !default;
-$text-xxsmall: 14px !default;
+$text-xxsmall: 12px !default;
+$text-xxxsmall: 10px !default;
 
 // Sizing increments, set in _helpers.scss
 // ---------------------------
