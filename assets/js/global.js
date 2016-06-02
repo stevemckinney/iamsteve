@@ -17,8 +17,22 @@ var iamsteve = (function ()
   var flickity = function()
   {
     var rows = document.querySelectorAll('.posts');
-    
-    for ( var i=0; i < rows.length; i++ ) _setupFlickity( rows[i] );
+    var pagination = document.querySelectorAll('.js-pagination');
+
+    if ( ! Modernizr.touchevents ) 
+    {
+      for ( var i = 0; i < rows.length; i++ )
+      {
+        _setupFlickity( rows[i] );
+      }
+    }
+    else
+    {
+      for ( var ii = 0; ii < pagination.length; ii++ ) 
+      {
+        pagination[ii].parentNode.removeChild(pagination[ii]);
+      }
+    }
   }
   
   var headroom = function()
@@ -83,15 +97,6 @@ var iamsteve = (function ()
   {
     // init flickity
     var scroll = container.querySelector('.scroll');
-    var flickity = new Flickity( scroll,
-    {
-      cellAlign: 'left',
-      freeScroll: true,
-      prevNextButtons: false,
-      pageDots: false,
-      contain: false,
-      imagesLoaded: true
-    });
     
     // Pagination
     var left = container.querySelector('.paginate-left');
@@ -101,6 +106,16 @@ var iamsteve = (function ()
     // If so add or remove the relevant class name
     // reference: https://github.com/metafizzy/flickity/issues/220
     var disabled = 'paginate-disabled';
+    
+    var flickity = new Flickity( scroll,
+    {
+      cellAlign: 'left',
+      freeScroll: true,
+      prevNextButtons: false,
+      pageDots: false,
+      contain: true,
+      imagesLoaded: true
+    });
     
     // Initial state means left should be disabled
     left.classList.add(disabled);
