@@ -18,13 +18,17 @@
   // Input has one off padding, height aims to be 60px at large screens
   // and offset the input button to the right
   .input {
-    padding: ($line - 4px) $base-px;
-    padding-right: 84px; }
+    @include breakpoint($c) {
+      padding: ($line - 4px) $base-px;
+      padding-right: 84px; } }
   
   .button {
     position: absolute; 
     top: 6px;
-    right: 6px; } }
+    right: 6px;
+    
+    @include breakpoint($c-max) {
+      padding: half($base-px) $base-px; } } }
 
 // Label
 // ---------------------------
@@ -40,7 +44,7 @@
 // Legend
 // ---------------------------
 .field-legend {
-	@extend .h3 !optional; }
+	font-weight: font-weight(semibold); }
 
 // Fieldset
 // ---------------------------
@@ -78,9 +82,7 @@
 .field-radio {
 	@extend .field-checkbox; }
 
-.field-search {
-  @include breakpoint($b-max) {
-    padding: 0 $line; } }
+.field-search { }
 
 .form-actions {
 	clear: both;
@@ -116,7 +118,10 @@
     font-size: $text-medium;
     
     @include breakpoint($cd) {
-      font-size: $text-large; } }
+      font-size: $text-large; }
+    
+    @include breakpoint($c-max) {
+      padding: $base-px; } }
 	
 	// Select
 	// ---------------------------
