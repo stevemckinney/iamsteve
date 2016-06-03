@@ -24,7 +24,15 @@
   @include breakpoint($cd) {
    padding: 36px 16px; }
   
+  // For small screens make the nav text larger and central
   @include breakpoint($c-max) {
     font-size: $text-large;
-    flex: 1 1 100%;
-    text-align: center; } }
+    text-align: center; }
+  
+  // Make everything 100% because we’re afforded that space
+  @include breakpoint(($c-max) (orientation portrait)) {
+    flex: 1 1 100%; }
+  
+  // When we’re not afforded vertical space make halves
+  @include breakpoint(($c-max) (orientation landscape)) {
+    flex: 1 1 50%; } }
