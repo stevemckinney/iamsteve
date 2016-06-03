@@ -12,22 +12,12 @@
 .card {
   color: $neutral-l2; }
 
-.card-small,
-.card-medium {
-  .meta:first-of-type {
-    margin-bottom: $base-px/2; } }
-
-.card-medium,
-.card-small {
-  .card-body { 
-    padding-top: $base-px; } }
-
 .card-large {
   background: $white;
   
   @include breakpoint($c-max) {    
     .card-body {
-      padding: $line; }
+      padding: $line $line 0; }
     
     .card-image {
       border-top: 1px solid $alternate-l2;
@@ -73,9 +63,6 @@
   font-family: $serif;
   font-style: italic;
   line-height: 1.142857143;
-  
-  &:first-of-type {
-    margin-bottom: $base-px; }
   
   a, li,
   span, time {
