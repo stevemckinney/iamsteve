@@ -2,10 +2,17 @@
 // ---------------------------
 .footer {
   align-items: center;
-  padding: $line*4 0;
   color: $secondary;
   font-family: $sans;
   font-weight: font-weight(semibold);
+  justify-content: center;
+  
+  @include breakpoint($b) {
+    justify-content: space-between;
+    padding: $line*2 0; }
+  
+  @include breakpoint($d) {
+   padding: $line*4 0; }
   
   @include breakpoint($b-max) {   
     a, p {
@@ -23,7 +30,15 @@
     
     a { 
       display: inline-block;
-      padding-left: $base-px; } } } }
+      
+      &:first-child {
+        order: 100; }
+      
+      &:not(:first-child) {
+        padding-right: $base-px; } } } } }
+
+.logo-footer {
+  padding: $line; }
 
 .logo-footer-small {
   @include breakpoint($b) {

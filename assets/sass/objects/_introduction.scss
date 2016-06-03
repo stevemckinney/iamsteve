@@ -7,13 +7,11 @@
   @include breakpoint($c-max) {
     padding: 0 double($line) double($line); }
   
-  @include breakpoint($aa-max) {
-    padding: 0 $line double($line); }
+  @include breakpoint($a-max) {
+    padding: 0 $line*1.5 double($line); }
   
-  svg,
-  img {
-    margin-bottom: em($base-px); }
+  picture {
+    margin-bottom: $base-px; }
   
   p {
-    max-width: 344px;
-    text-align: center; } }
+    max-width: 344px; } }

@@ -16,7 +16,11 @@
 .contain {
   @include breakpoint($site-width-max) {
     padding-right: $line;
-    padding-left: $line; } }
+    padding-left: $line; }
+  
+  @include breakpoint($b-max) {
+    padding-right: $base-px;
+    padding-left: $base-px; } }
 
 .center {
   justify-content: center; }
@@ -38,10 +42,7 @@
   
   @include breakpoint($c-max) {
     padding-top: $line;
-    padding-bottom: $line; }
-  
-  &.with-row-header {
-    padding-bottom: $line + $line + $line + $base-px; } }
+    padding-bottom: $line; } }
 
 // Emphasis, more whitespace, background
 .row-strong {
@@ -59,9 +60,13 @@
 // Row contents
 // ---------------------------
 .row-header {
-  padding: $line;
+  padding: $line $base-px;
   
-  @include breakpoint($c) {
+  @include breakpoint($b) {
+    padding-left: $line;
+    padding-right: $line; }
+  
+  @include breakpoint($site-width) {
     padding: $line*2 calc(50% - #{$site-width / 2}); } }
   
 .row-title {
@@ -84,11 +89,7 @@
       flex-basis: calc(#{(100% / 8) * $i} - 32px); } } }
 
 // Column alignment
-// ---------------------------
-.column-push-bottom {
-  @include breakpoint($c-max) {
-    margin-bottom: $line; } }
-      
+// ---------------------------      
 .column-center {
   align-items: center;
   align-content: center; }

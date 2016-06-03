@@ -1,11 +1,12 @@
 // Invisible state
 // ---------------------------
+.nav,
 .invisible {
   z-index: $z-index-3;
   
   @include breakpoint($c-max) {
     overflow: hidden;
-    transition: opacity .6s cubic-bezier(0.175, 0.885, 0.32, 1.275), max-height .4s .6s;
+    transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), max-height .4s .6s ease-out;
     opacity: 0;
     max-height: 0;
     position: fixed;
@@ -23,7 +24,7 @@
     opacity: 1;
     max-height: 100vh;
     background-color: $white;
-    transition: opacity .6s .2s cubic-bezier(0.175, 0.885, 0.32, 1.275); } }
+    transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); } }
 
 // Transition
 // ---------------------------

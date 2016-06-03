@@ -1,18 +1,31 @@
 // Subscribe
 // ---------------------------
-.subscribe {
-  align-items: center; }
+.subscribe { }
   
 .subscribe-image {
   position: absolute;
+  top: 38px;
   right: 0;
-  transform: translate(50%, -50%);
-  top: 50%;
-  max-width: 320px;
-  align-self: center; }
+  max-width: 144px;
+  
+  @include breakpoint($d) {
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 320px; } }
 
 .subscribe-content {
-  max-width: 426px;
+  position: relative;
   
   @include breakpoint($c) {
-    padding-right: $line; } }
+    padding-right: 320px;
+    max-width: 66%; }
+  
+  @include breakpoint($c-max) {
+    p {
+      padding-right: $base-px;
+      max-width: calc(100% - 144px); } }
+      
+  @include breakpoint(max-width 359px) {
+    p:last-of-type {
+      padding-right: 0;
+      max-width: 100%; } } }
