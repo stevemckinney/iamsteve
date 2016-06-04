@@ -10,8 +10,5 @@
   @include breakpoint($a-max) {
     padding: 0 $line*1.5 double($line); }
   
-  picture {
-    margin-bottom: $base-px; }
-  
   p {
     max-width: 344px; } }
