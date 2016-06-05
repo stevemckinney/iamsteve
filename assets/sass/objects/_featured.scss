@@ -1,3 +1,10 @@
 .featured {
   @include breakpoint($c) {
+    padding-right: $line;
+    flex-basis: calc(56% - #{$base-px}); }
+    
+  @include breakpoint($d) {
+    flex-basis: calc(62.5% - #{$base-px}); }
+  
+  @include breakpoint($site-width) {
     flex-basis: 738px; } }

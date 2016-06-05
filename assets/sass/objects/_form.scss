@@ -9,8 +9,12 @@
     align-content: center;
     align-items: center;
     box-shadow: inset 1px 0 $alternate-l3;
-    padding-left: $line*1.5; }
+    padding-left: $line; }
     
+  @include breakpoint($d) {
+    padding-left: $line*1.5; }
+  
+  // Hidden from this point
   @include breakpoint($c-max) {
     width: 100%; } }
 
@@ -117,7 +121,7 @@
     background-color: transparent;
     font-size: $text-medium;
     
-    @include breakpoint($cd) {
+    @include breakpoint($d) {
       font-size: $text-large; }
     
     @include breakpoint($c-max) {

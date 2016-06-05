@@ -2,6 +2,13 @@
 // ---------------------------
 .introduction {
   @include breakpoint($c) {
+    padding-left: $line;
+    flex-basis: calc(44% - #{$base-px}); }
+    
+  @include breakpoint($d) {
+   flex-basis: calc(37.5% - #{$base-px}); }
+   
+  @include breakpoint($site-width) {
     flex-basis: 398px; }
     
   @include breakpoint($c-max) {

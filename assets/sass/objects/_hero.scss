@@ -4,5 +4,12 @@
   align-content: center;
   align-items: center;
   
-  padding-top: double($line);
-  padding-bottom: double($line); }
+  padding-top: $line;
+  padding-bottom: double($line);
+  justify-content: space-between;
+  
+  @include breakpoint($d) {
+    padding-top: double($line); }
+  
+  @include breakpoint($site-width) {
+    justify-content: space-around; } }

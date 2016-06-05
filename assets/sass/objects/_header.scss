@@ -44,14 +44,16 @@
   z-index: $z-index-200;
   
   @include breakpoint($c) {
+    padding: $line;
     align-content: center;
     align-items: center;
     box-shadow: inset -1px 0 $alternate-l3; }
   
-  @include breakpoint($cd) {
-    font-size: $text-large;
-    padding: $line $line*1.5;
-    padding-left: 0; } }
+  @include breakpoint($d) {
+    font-size: $text-large; }
+  
+  @include breakpoint($site-width) {
+    padding: $line $line*1.5 $line 0; } }
 
 .logo-large,
 .logo-small {
@@ -60,11 +62,11 @@
 .logo-large {
   margin-right: $base-px;
    
-  @include breakpoint($cd-max) {
+  @include breakpoint($d-max) {
     display: none; } }
 
 .logo-small {
   margin-right: half($base-px);
   
-  @include breakpoint($cd) {
+  @include breakpoint($d) {
     display: none; } }

@@ -18,7 +18,7 @@
     padding-right: $line;
     padding-left: $line; }
   
-  @include breakpoint($b-max) {
+  @include breakpoint($c-max) {
     padding-right: $base-px;
     padding-left: $base-px; } }
 
@@ -75,7 +75,7 @@
   
 // Columns
 // ---------------------------
-.column {
+  .column {
   display: flex;
   flex-flow: column wrap; }
 

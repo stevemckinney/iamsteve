@@ -51,11 +51,15 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-  padding: 0 half($base-px);
+  
+  // Padding is only on the left so initially the right appears flush
+  padding-left: half($base-px);
   
   @include breakpoint($b) {
-    padding-left: $base-px*1.5;
-    padding-right: $base-px*1.5; }
+    padding-left: $base-px*1.5; }
+  
+  @include breakpoint($c) {
+    padding-left: $base-px; }
 
   // Each card width must be offset by the padding, otherwise it’s too small.
   .card {

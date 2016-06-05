@@ -60,10 +60,11 @@ $buttons: (
 
 .button-search {
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform:translateY(-50%);
   right: 0;
   background: transparent;
-  padding: 0;
+  padding: $base-px;
   
   &:active {
     svg {

@@ -38,10 +38,28 @@ $default-enable-social-icons: false !default;
 
 .icon-large svg {
   width: 24px; }
-
-.icon-search {
-  padding: $base-px;
   
+@include breakpoint($b) {
+  .icon-small-b svg {
+    width: 12px; }
+  
+  .icon-medium-b svg {
+    width: 16px; }
+  
+  .icon-large-b svg {
+    width: 24px; } }
+  
+@include breakpoint($d) {
+  .icon-small-d svg {
+    width: 12px; }
+  
+  .icon-medium-d svg {
+    width: 16px; }
+  
+  .icon-large-d svg {
+    width: 24px; } }
+    
+.icon-search {  
   &.active svg {
     fill: $neutral; } }
 
@@ -61,12 +79,13 @@ $toggle-width: 16px;
   @include breakpoint($c) {
     display: none; }
   
+  svg,
+  span { 
+    margin: auto; }
+  
   // Span is where the ‘icon’ is made
   span {
     position: relative;
-    
-    // Make it central
-    left: $toggle-width;
     
     // Shared stylistic properties
     &,
