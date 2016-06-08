@@ -1,20 +1,20 @@
 // Margin
 // ---------------------------
 @if $default-enable-margin {
-  @each $margin in $default-margin-map {
-    .m-quarter-#{$margin} {
+  @each $abbr, $margin in $default-margin-map {
+    .m#{$abbr}-quarter {
       margin-#{$margin}: quarter($baseline); }
       
-    .m-half-#{$margin} {
+    .m#{$abbr}-half {
       margin-#{$margin}: half($baseline); }
       
-    .m-#{$margin} {
+    .m#{$abbr} {
       margin-#{$margin}: $baseline; } 
     
-    .m-double-#{$margin} {
+    .m#{$abbr}-double {
       margin-#{$margin}: double($baseline); }
 
-    @if $default-enable-margin-responsive {   
+    @if $default-enable-margin-responsive {
       // $b margins
       @include breakpoint($b) {
         .m-quarter-#{$margin}-b {
@@ -26,31 +26,54 @@
         .m-#{$margin}-b {
           margin-#{$margin}: $baseline; } 
         
-        .m-double-#{$margin}-b {
+        .m#{$abbr}-double-b {
           margin-#{$margin}: double($baseline); } }
       
       // $d margins
       @include breakpoint($d) {
-        .m-quarter-#{$margin}-d {
+        .m#{$abbr}-quarter-d {
           margin-#{$margin}: quarter($baseline); }
           
-        .m-half-#{$margin}-d {
+        .m#{$abbr}-half-d {
           margin-#{$margin}: half($baseline); }
           
-        .m-#{$margin}-d {
+        .m#{$abbr}-d {
           margin-#{$margin}: $baseline; } 
         
-        .m-double-#{$margin}-d {
+        .m#{$abbr}-double-d {
           margin-#{$margin}: double($baseline); } } } } }
 
 // Undo
 // ---------------------------
 @if $default-enable-undo-margin {		
-  .undo-margin {
+  .m-undo {
 		margin: 0; }
 		
-  .undo-margin-top {
+  .mt-undo {
 		margin-top: 0; }
 
-  .undo-margin-bottom {
-		margin-bottom: 0; } }
+  .mb-undo {
+		margin-bottom: 0; }
+
+  @if $default-enable-margin-responsive {
+    // $b margins
+    @include breakpoint($b) {
+      .m-undo-b {
+    		margin: 0; }
+    		
+      .mt-undo-b {
+    		margin-top: 0; }
+    
+      .mb-undo-b {
+    		margin-bottom: 0; } }
+    		
+    // $d margins
+    @include breakpoint($d) {
+      .m-undo-d {
+    		margin: 0; }
+    		
+      .mt-undo-d {
+    		margin-top: 0; }
+    
+      .mb-undo-d {
+    		margin-bottom: 0; } } } }

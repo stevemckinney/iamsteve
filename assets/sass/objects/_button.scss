@@ -58,36 +58,19 @@ $buttons: (
     	  inset 0 2px 1px $tertiary-d1,
     	  inset 0 2px 4px -1px $tertiary-d1; } }
 
+// Search
+// ---------------------------
 .button-search {
   position: absolute;
   top: 50%;
-  transform:translateY(-50%);
   right: 0;
   background: transparent;
   padding: $base-px;
   
+  // $c-max styles controlled in _transition.scss
+  @include breakpoint($c) {
+    transform: translateY(-50%); }
+  
   &:active {
     svg {
       fill: $primary; } } }
-
-.button-link {
-	background: none;
-	color: $secondary;
-	
-	&:hover,
-	&:focus {
-		@include element-shading($yellow, $state: hover); }
-	
-	&:active {
-		@include element-shading($yellow, $state: active); } }
-
-// Grouped buttons
-// ---------------------------
-.group {
-	@include group(".button-group"); }
-
-// Disabled
-// ---------------------------
-.button[disabled] {
-	opacity: .75;
-	pointer-events: none; }

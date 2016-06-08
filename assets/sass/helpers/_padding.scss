@@ -1,47 +1,82 @@
 // Padding
 // ---------------------------
 @if $default-enable-padding {
-  @each $padding in $default-padding-map {
-    .p-quarter-#{$padding} {
-      padding-#{$padding}: quarter($quarter); }
+  @each $abbr, $padding in $default-padding-map {
+    .p#{$abbr}-quarter {
+      padding-#{$padding}: quarter($baseline); }
       
-    .p-half-#{$padding} {
+    .p#{$abbr}-half {
       padding-#{$padding}: half($baseline); }
       
-    .p-#{$padding} {
+    .p#{$abbr} {
       padding-#{$padding}: $baseline; } 
     
-    .p-double-#{$padding} {
+    .p#{$abbr}-double {
       padding-#{$padding}: double($baseline); }
 
-    @if $default-enable-padding-responsive {  
-      // $b padding
+    @if $default-enable-padding-responsive {
+      // $b paddings
       @include breakpoint($b) {
         .p-quarter-#{$padding}-b {
-          padding-#{$padding}: quarter($quarter); }
-        
+          padding-#{$padding}: quarter($baseline); }
+          
         .p-half-#{$padding}-b {
           padding-#{$padding}: half($baseline); }
-        
+          
         .p-#{$padding}-b {
           padding-#{$padding}: $baseline; } 
         
-        .p-double-#{$padding}-b {
+        .p#{$abbr}-double-b {
           padding-#{$padding}: double($baseline); } }
-  
-      // $d padding
+      
+      // $d paddings
       @include breakpoint($d) {
-        .p-quarter-#{$padding}-d {
-          padding-#{$padding}: quarter($quarter); }
-        
-        .p-half-#{$padding}-d {
+        .p#{$abbr}-quarter-d {
+          padding-#{$padding}: quarter($baseline); }
+          
+        .p#{$abbr}-half-d {
           padding-#{$padding}: half($baseline); }
           
-        .p-#{$padding}-d {
+        .p#{$abbr}-d {
           padding-#{$padding}: $baseline; } 
         
-        .p-double-#{$padding}-d {
+        .p#{$abbr}-double-d {
           padding-#{$padding}: double($baseline); } } } } }
+
+// Undo
+// ---------------------------
+@if $default-enable-undo-padding {		
+  .p-undo {
+		padding: 0; }
+		
+  .pt-undo {
+		padding-top: 0; }
+
+  .pb-undo {
+		padding-bottom: 0; }
+
+  @if $default-enable-padding-responsive {
+    // $b paddings
+    @include breakpoint($b) {
+      .p-undo-b {
+    		padding: 0; }
+    		
+      .pt-undo-b {
+    		padding-top: 0; }
+    
+      .pb-undo-b {
+    		padding-bottom: 0; } }
+    		
+    // $d paddings
+    @include breakpoint($d) {
+      .p-undo-d {
+    		padding: 0; }
+    		
+      .pt-undo-d {
+    		padding-top: 0; }
+    
+      .pb-undo-d {
+    		padding-bottom: 0; } } } }
 
 // Island padding helpers
 // ---------------------------

@@ -66,6 +66,7 @@ gulp.task('images', function() {
 gulp.task('js', function() {
   return gulp.src(src.js)
     .pipe(order([
+      'assets/js/modernizr.js',
       'assets/js/fitvids.js',
       'assets/js/flickity.js',
       'assets/js/headroom.js',

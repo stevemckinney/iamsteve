@@ -1,6 +1,5 @@
 // Invisible state
 // ---------------------------
-.nav,
 .invisible {
   z-index: $z-index-3;
   
@@ -37,12 +36,14 @@
     transition: 
       transform .6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
       opacity .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: translate3d(0, 36px, 0);
-    opacity: 0;
+    transform: translate3d(0, 33%, 0);
+    opacity: 0; } }
     
-    .visible & {
-      opacity: 1;
-      transform: translate3d(0, 0, 0); } } }
+.visible .nav-item,
+.visible .input-search {
+  @include breakpoint($c-max) {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); } }
 
 .visible .nav-item {
   @for $i from 1 through 4 {
@@ -50,4 +51,21 @@
       transition-delay: .0s + ( $i / 10 ); } } }
 
 .visible .button-search {
-  transition-delay: .1s; }
+  @include breakpoint($c-max) {
+    transition-delay: .1s;
+    opacity: 1;
+    transform: translate3d(0, -50%, 0); } }
+    
+// No JS for later
+// ---------------------------
+/*
+.no-js .nav-item,
+.no-js .input-search
+.no-js .button-search {
+  opacity: 1;
+  transform: translate3d(0, 0, 0); }
+
+.no-js .invisible {
+  max-height: none;
+  position: static }
+*/

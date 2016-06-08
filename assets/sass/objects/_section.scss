@@ -8,20 +8,19 @@
 
 // Alignment
 // ---------------------------
+.contain {
+  padding-right: $base-px;
+  padding-left: $base-px;
+    
+  @include breakpoint($b) {
+    padding-right: $line;
+    padding-left: $line; } } 
+
 .contain-large {
   @include breakpoint($site-width) {
-    padding-right: calc(50% - #{$site-width / 2});
-    padding-left: calc(50% - #{$site-width / 2}); } }
-
-.contain {
-  @include breakpoint($site-width-max) {
-    padding-right: $line;
-    padding-left: $line; }
-  
-  @include breakpoint($c-max) {
-    padding-right: $base-px;
-    padding-left: $base-px; } }
-
+    padding-right: calc(50% - 600px);
+    padding-left: calc(50% - 600px); } }
+    
 .center {
   justify-content: center; }
 
@@ -48,26 +47,32 @@
 .row-strong {
   background: $alternate-l4;
   color: $alternate;
+  padding-top: double($line);
+  padding-bottom: double($line);
   
-  @include breakpoint($c) {
+  @include breakpoint($b) {
     padding-top: quadruple($line);
     padding-bottom: quadruple($line); }
-    
-  @include breakpoint($c-max) {
-    padding-top: double($line);
-    padding-bottom: double($line); } }
+  
+  @include breakpoint($d) {
+    padding-top: 120px;
+    padding-bottom: 120px; }
+  
+  @include breakpoint($e) {
+    padding-top: 132px;
+    padding-bottom: 132px; } }
 
 // Row contents
 // ---------------------------
 .row-header {
   padding: $line $base-px;
-  
+    
   @include breakpoint($b) {
-    padding-left: $line;
-    padding-right: $line; }
+    padding-right: $line;
+    padding-left: $line; }
   
   @include breakpoint($site-width) {
-    padding: $line*2 calc(50% - #{$site-width / 2}); } }
+    padding: $line*2 calc(50% - 600px); } }
   
 .row-title {
   align-self: center;
@@ -75,17 +80,22 @@
   
 // Columns
 // ---------------------------
-  .column {
+.column {
   display: flex;
   flex-flow: column wrap; }
 
 @for $i from 1 through 8 {
   .column-#{$i} {
-    flex-basis: calc(#{(100% / 8) * $i} - 32px); } }
+    flex-basis: calc(#{(100% / 8) * $i} - 8px); } }
 
 @for $i from 1 through 8 {
-  .column-c-#{$i} {
-    @include breakpoint($c) {
+  .column-#{$i}-b {
+    @include breakpoint($b) {
+      flex-basis: calc(#{(100% / 8) * $i} - 16px); } } }
+
+@for $i from 1 through 8 {
+  .column-#{$i}-d {
+    @include breakpoint($d) {
       flex-basis: calc(#{(100% / 8) * $i} - 32px); } } }
 
 // Column alignment

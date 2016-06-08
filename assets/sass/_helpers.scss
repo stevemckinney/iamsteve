@@ -13,12 +13,13 @@ $default-enable-border-radius-specific: false !default;
 // ---------------------------
 $default-enable-margin: true !default;
 $default-enable-margin-responsive: true !default;
-$default-margin-map:
-  top,
-  right,
-  bottom,
-  left !default;
-$default-margin-map: bottom;
+$default-margin-map: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left 
+) !default;
+$default-margin-map: ( b: bottom );
 $default-enable-undo-margin: true !default;
 @import "helpers/margin";
 
@@ -26,11 +27,12 @@ $default-enable-undo-margin: true !default;
 // ---------------------------
 $default-enable-padding: false !default;
 $default-enable-padding-responsive: true !default;
-$default-padding-map:
-  top,
-  right,
-  bottom,
-  left !default;
+$default-padding-map: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left 
+) !default;
 $default-enable-undo-padding: false !default;
 $default-enable-isles: false !default;
 @import "helpers/padding";

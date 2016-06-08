@@ -8,34 +8,35 @@
   justify-content: center;
   
   @include breakpoint($b) {
-    justify-content: space-between;
-    padding: $line*2 0; }
-  
+    justify-content: space-between; }
+    
   @include breakpoint($d) {
-   padding: $line*4 0; }
+    padding-top: quadruple($line);
+    padding-bottom: quadruple($line); }
+    
+  @include breakpoint($d-max) {
+    padding-top: double($line);
+    padding-bottom: double($line); }
   
   @include breakpoint($b-max) {   
     a, p {
       font-size: 10px; }
     
   @include breakpoint($aa-max) {
-    flex-flow: row wrap; }
+    flex-flow: row wrap; } } }
 
-  p {
-    margin-bottom: 0; }
+.footer nav {
+  display: flex;
+  align-content: center;
   
-  nav {
-    display: flex;
-    align-content: center;
+  a { 
+    display: inline-block;
     
-    a { 
-      display: inline-block;
-      
-      &:first-child {
-        order: 100; }
-      
-      &:not(:first-child) {
-        padding-right: $base-px; } } } } }
+    &:first-child {
+      order: 100; }
+    
+    &:not(:first-child) {
+      padding-right: $base-px; } } }
 
 .logo-footer {
   padding: $line; }
@@ -47,7 +48,3 @@
 .logo-footer-large {
   @include breakpoint($b-max) {
     display: none; } }
-
-// Copyright
-// ---------------------------
-.copyright {}

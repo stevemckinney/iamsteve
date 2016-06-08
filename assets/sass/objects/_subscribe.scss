@@ -8,22 +8,31 @@
   right: 0;
   max-width: 144px;
   
-  @include breakpoint($d) {
+  @include breakpoint($b) {
     top: 50%;
     transform: translateY(-50%);
+    max-width: 192px; }
+  
+  @include breakpoint($cd) {
     max-width: 320px; } }
 
 .subscribe-content {
   position: relative;
   
-  @include breakpoint($c) {
-    padding-right: 320px;
-    max-width: 66%; }
+  @include breakpoint($b) {
+    padding-right: 192px + $line;
+    max-width: 752px; }
+
+  @include breakpoint($cd) {
+    padding-right: 320px; }
   
-  @include breakpoint($c-max) {
+  @include breakpoint($b-max) {
     p {
-      padding-right: $base-px;
-      max-width: calc(100% - 144px); } }
+      max-width: calc(100% - #{144px + $line + $line}); } }
+      
+  @include breakpoint($ab-max) {
+    p {
+      max-width: calc(100% - #{144px + $base-px}); } }
       
   @include breakpoint(max-width 359px) {
     p:last-of-type {
