@@ -95,15 +95,3 @@ $isles: (
     .#{$name}-v {
       padding-top: $padding;
       padding-bottom: $padding; } } }
-
-// Undo
-// ---------------------------
-@if $default-enable-undo-padding {
-  .undo-padding {
-		padding: 0; }
-		
-  .undo-padding-top {
-		padding-top: 0; }
-
-  .undo-padding-bottom {
-		padding-bottom: 0; } }
