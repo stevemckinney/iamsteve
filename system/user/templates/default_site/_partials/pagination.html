@@ -1,15 +1,17 @@
 {paginate}
-  <div class="pagination">
-  	{pagination_links page_padding='1'}
-			{previous_page}
-        <a href="{pagination_url}">Older</a>
-			{/previous_page}
-			{page}
-        <a href="{pagination_url}"{if current_page} class="active"{/if}>{pagination_page_number}</a>
-			{/page}
-			{next_page}
-				<a href="{pagination_url}">Newer</a>
-			{/next_page}
-  	{/pagination_links}
-  </div>
+  {exp:stash:set_list name="pagination"}
+    
+    {pagination_links}
+      {previous_page}{stash:previous_page}{pagination_url}{/stash:previous_page}{/previous_page}
+      {next_page}{stash:next_page}{pagination_url}{/stash:next_page}{/next_page}
+      {stash:current_page}{current_page}{/stash:current_page}
+      {stash:total_pages}{total_pages}{/stash:total_pages}
+
+      {page}
+        {stash:pagination_url}{pagination_url}{/stash:pagination_url}
+        {stash:pagination_page_number}{pagination_page_number}{/stash:pagination_page_number}
+      {/page}
+    {/pagination_links}
+
+  {/exp:stash:set_list}
 {/paginate}
