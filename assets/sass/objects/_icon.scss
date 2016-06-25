@@ -45,6 +45,12 @@
   &.active svg {
     fill: $neutral; } }
 
+.icon-left {
+  padding-right: $base-px/2; }
+
+.icon-right {
+  padding-left: $base-px/2; }
+
 // Toggle
 // ---------------------------
 $toggle-width: 16px;

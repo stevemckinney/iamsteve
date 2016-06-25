@@ -19,7 +19,7 @@
   // To avoid double border
   margin-right: -2px;
   
-  &:not(.paginate-disabled) {
+  &:not(.disabled) {
     z-index: 1; }
   
   svg {
@@ -36,8 +36,8 @@
   padding: $base-px;
   font-weight: font-weight(semibold);
   
-  &:not(.paginate-disabled):hover,
-  &:not(.paginate-disabled):focus {
+  &:not(.disabled):hover,
+  &:not(.disabled):focus {
     z-index: 2;
     transform: scale(1.105263158); } }
 
@@ -64,7 +64,7 @@
 
 // Pagination state
 // ---------------------------
-.paginate-disabled {
+.paginate.disabled {
   background-color: $tertiary-l2;
   box-shadow: inset 0 0 0 2px $tertiary;
   color: $tertiary;

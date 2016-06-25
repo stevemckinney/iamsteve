@@ -105,7 +105,7 @@ var iamsteve = (function ()
     // Has flickity reached the first or last item?
     // If so add or remove the relevant class name
     // reference: https://github.com/metafizzy/flickity/issues/220
-    var disabled = 'paginate-disabled';
+    var disabled = 'disabled';
     
     var flickity = new Flickity( scroll,
     {
