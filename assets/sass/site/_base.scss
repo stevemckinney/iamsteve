@@ -69,6 +69,7 @@ $colors: (
 $color-palette: (
   primary: $primary,
   secondary: $secondary,
+  secondary-d1: $secondary-d1,
   tertiary: $tertiary,
   neutral: $neutral,
   neutral-a: $alternate
@@ -130,5 +131,6 @@ $gradient-support-threshold: 6.51;
 @include breakpoint-set('base font size', $base-font-size);
 
 // Site width is 1200px, but it requires additional spacing so it works nicely
-$site-width: 1360px;
+$contain: 1182px;
+$site-width: $contain + ($line*6);
 $site-width-max: max-width $site-width - $breakpoint-subtract;
