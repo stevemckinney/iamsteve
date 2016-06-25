@@ -1,4 +1,4 @@
-{layout="layouts/_layout"}
+{layout="layouts/_layout-site"}
 
 {!-- channel vars (prefix ch_) --}
 {preload_replace:ch="blog"}
@@ -7,11 +7,6 @@
 {preload_replace:ch_limit="10"}
 {preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
 {preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
-
-{!-- 404 --}
-{if segment_1 != ''}
-  {redirect="404"}
-{/if}
 
 <div class="row hero contain-large">
   <div class="column column-center introduction">
@@ -83,13 +78,13 @@
                 {if:else}
                   <img src="{url}">
                 {/if}
-              {/image}
+              {/thumbnail}
             {if:else}
           	  {categories channel="blog" limit="1"}
-                {if category_id == 2}
-                  <img src="{site_url}dist/images/{code}">
-                {if:else}
+                {if category_id == 7}
                   <img src="{site_url}dist/images/{design}">
+                {if:else}
+                  <img src="{site_url}dist/images/{code}">
                 {/if}
               {/categories}
             {/if}
