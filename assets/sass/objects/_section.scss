@@ -18,8 +18,8 @@
 
 .contain-large {
   @include breakpoint($site-width) {
-    padding-right: calc(50% - 600px);
-    padding-left: calc(50% - 600px); } }
+    padding-right: calc(50% - #{$contain / 2});
+    padding-left: calc(50% - #{$contain / 2}); } }
     
 .center {
   justify-content: center; }

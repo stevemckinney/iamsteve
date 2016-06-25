@@ -1,6 +1,14 @@
+// Entries
+// ---------------------------
+.entries {
+  // Offset .entry
+  margin-bottom: -#{double($line)}; }
+
 // Entry
 // ---------------------------
-.entry {}
+.entry {
+  flex-basis: 378px;
+  margin-bottom: double($line); }
 
 // Entry content
 // ---------------------------

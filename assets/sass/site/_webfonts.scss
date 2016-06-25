@@ -1,5 +1,6 @@
 // Averta Standard
 // ---------------------------
+/*
 $fonts: (
   extrathin 100 normal,
   extrathinitalic 100 italic,
@@ -17,6 +18,14 @@ $fonts: (
   extrabolditalic 800 italic,
   black 900 normal,
   blackitalic 900 italic
+);
+*/
+
+$fonts: (
+  regular 400 normal,
+  regularitalic 400 italic,
+  semibold 600 normal,
+  bold 700 normal
 );
 
 @each $font in $fonts {

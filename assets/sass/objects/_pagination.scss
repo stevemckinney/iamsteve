@@ -2,40 +2,72 @@
 // ---------------------------
 .pagination {
   // Remove space between pagination items
-  font-size: 0; }
+  font-size: 0;
+  padding: 16px 18px; }
 
 // Pagination buttons
 // ---------------------------
 .paginate {
+  position: relative;
   transition: .2s;
-  background-color: $tertiary-l2;
-  box-shadow: inset 0 0 0 2px $tertiary;
-  padding: $base-px;
+  background-color: $white;
+  box-shadow: inset 0 0 0 2px $tertiary-d1;
+  color: $tertiary-d1;
+  font-family: $sans;
+  font-size: $base-font-size;
+  
+  // To avoid double border
+  margin-right: -2px;
   
   &:not(.paginate-disabled) {
-    position: relative;
     z-index: 1; }
+  
+  svg {
+    fill: $tertiary-d1; } }
+
+.paginate-left {
+  border-radius: 20em 0 0 20em; }
+
+.paginate-right {
+  border-radius: 0 20em 20em 0; }
+  
+.paginate-left,
+.paginate-right {
+  padding: $base-px;
+  font-weight: font-weight(semibold);
   
   &:not(.paginate-disabled):hover,
   &:not(.paginate-disabled):focus {
-    transform: scale(1.105263158); }
+    z-index: 2;
+    transform: scale(1.105263158); } }
+
+.paginate-between {
+  padding: 0 $base-px;
   
-  svg {
-    fill: $tertiary; } }
-
-.paginate-left {
-  // To avoid double border
-  margin-right: -2px;
-  border-radius: 60px 0 0 60px; }
-
-.paginate-right {
-  border-radius: 0 60px 60px 0; }
+  a, span {
+    position: relative;
+    display: inline-block;
+    padding: $base-px 0;
+    min-width: 32px;
+    text-align: center;
+    
+    &.active {
+      color: $primary;
+      
+      &:before {
+        content: "";
+        width: $line;
+        position: absolute;
+        left: calc(50% - #{$base-px});
+        bottom: 0;
+        border-bottom: 4px solid $primary; } } } }
 
 // Pagination state
 // ---------------------------
 .paginate-disabled {
-  background-color: transparent;
-  box-shadow: inset 0 0 0 2px $tertiary-l1;
+  background-color: $tertiary-l2;
+  box-shadow: inset 0 0 0 2px $tertiary;
+  color: $tertiary;
   
   svg {
-    fill: $tertiary-l1; } }
+    fill: $tertiary; } }

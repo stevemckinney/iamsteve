@@ -10,9 +10,9 @@ $code-cyan: #64cce3;
 $code-white: #f6f7ee;
 $comment: #838c95;
 
-
 code[class*="language"],
 pre[class*="language"] {
+  border-radius: $radius;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
@@ -32,88 +32,65 @@ pre[class*="language"] {
 	
 	color: $code-white;
 	
-	overflow-x: auto;
-	-webkit-overflow-scrolling: touch;
-}
+	overflow: auto;
+	-webkit-overflow-scrolling: touch; }
 
 code[class*="language-bash"],
 pre[class*="language-bash"] {
-	color: $code-white;
-}
+	color: $code-white; }
 
 pre[class*="language"]::-moz-selection, pre[class*="language"] ::-moz-selection,
 code[class*="language"]::-moz-selection, code[class*="language"] ::-moz-selection {
 	text-shadow: none;
-	background: $code-black;
-}
+	background: $code-black; }
 
 pre[class*="language"]::selection, pre[class*="language"] ::selection,
 code[class*="language"]::selection, code[class*="language"] ::selection {
 	text-shadow: none;
-	background: $code-black;
-}
-
-@media print {
-	code[class*="language"],
-	pre[class*="language"] {
-		text-shadow: none;
-	}
-}
-
-/* Code blocks */
-pre[class*="language"] {
-	overflow: auto;
-}
+	background: $code-black; }
 
 :not(pre) > code[class*="language"],
 pre[class*="language"] {
-	background: $code-black;
-}
+	background: $code-black; }
 
 /* Inline code */
 :not(pre) > code[class*="language"] {
 	padding: .1em;
-	border-radius: .3em;
-}
+	border-radius: .3em; }
 
+// Tokens
+// ---------------------------
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: $comment;
-}
+	color: $comment; }
 
 .token.punctuation {
-	color: $code-white;
-}
+	color: $code-white; }
 
 .namespace {
-	opacity: .7;
-}
+	opacity: .75; }
 
 .token.boolean,
 .token.number,
 .token.constant,
 .token.symbol,
 .token.deleted {
-	color: $code-magenta;
-}
+	color: $code-magenta; }
 
 .token.property {
-  color: $code-green;
-}
+  color: $code-green; }
 
 .token.selector,
 .token.string,
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: $code-white;
-}
+	color: $code-white; }
 
 .token.attr-name {
-  color: $code-green;
-}
+  color: $code-green; }
 
 .token.tag,
 .tag > .punctuation {
@@ -121,8 +98,7 @@ pre[class*="language"] {
 }
 
 .tag .token.attr-value, .tag .attr-value .punctuation {
-  color: $code-yellow;
-}
+  color: $code-yellow; }
 
 .token.operator,
 .token.entity,
@@ -132,47 +108,38 @@ pre[class*="language"] {
 	color: $code-yellow;
 	
 	.language-bash & {
-  	color: $code-white;
-	}
-}
+  	color: $code-white; } }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-	color: $code-red;
-}
+	color: $code-red; }
 
 .token.function {
-	color: $code-green;
-}
+	color: $code-green; }
 
 .token.regex,
 .token.important,
 .token.variable {
-	color: $code-yellow;
-}
+	color: $code-yellow; }
 
 .token.important,
 .token.bold {
-	font-weight: bold;
-}
+	font-weight: bold; }
+	
 .token.italic {
-	font-style: italic;
-}
+	font-style: italic; }
 
 .token.entity {
-	cursor: help;
-}
+	cursor: help; }
 
 pre.line-numbers {
 	position: relative;
 	padding-left: 3.8em;
-	counter-reset: linenumber;
-}
+	counter-reset: linenumber; }
 
 pre.line-numbers > code {
-	position: relative;
-}
+	position: relative; }
 
 .line-numbers .line-numbers-rows {
 	position: absolute;
@@ -187,20 +154,16 @@ pre.line-numbers > code {
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	user-select: none;
-
-}
+	user-select: none; }
 
 	.line-numbers-rows > span {
 		pointer-events: none;
 		display: block;
-		counter-increment: linenumber;
-	}
+		counter-increment: linenumber; }
 
 		.line-numbers-rows > span:before {
 			content: counter(linenumber);
 			color: $code-blue;
 			display: block;
 			padding-right: 0.8em;
-			text-align: right;
-		}
+			text-align: right; }

@@ -1,21 +1,3 @@
-// SVG social icons
-// ---------------------------
-$default-enable-social-icons: false !default;
-
-@if $default-enable-social-icons {}
-
-// For using icon fonts
-// ---------------------------
-[data-icon]:before,
-[data-icon]:after {
-	font-family: $icons; }
-	
-[data-icon]:before {
-	content: attr(data-icon); }
-
-[data-icon-after]:after {
-	content: attr(data-icon-after); }
-
 // Icon utility
 // ---------------------------
 

@@ -1,0 +1,103 @@
+// Scoped font sizes
+// ---------------------------
+.entry-content {
+  padding: $line $base-px;
+  
+  p:first-child {
+    font-size: 24px; }
+  
+  p {
+    max-width: 640px;
+    font-size: 18px; }
+  
+  /* Aligns to 72px */
+  h2 {
+    font-size: 30px;
+    line-height: 1.2;
+    padding-top: 24px;
+    margin-bottom: 12px; }
+  
+  /* Aligns to 48px */
+  h3 {
+    font-size: 24px;
+    line-height: 1.25;
+    padding-top: 12px;
+    margin-bottom: 6px + 12px; }
+  
+  /* Aligns to 36px */
+  h4 {
+    font-size: 21px;
+    line-height: 1.3333333;
+    padding-top: 12px;
+    margin-bottom: 8px; }
+  
+  /* Aligns to 36px */
+  h5 {
+    font-size: 18px;
+    line-height: 1.5;
+    padding-top: 12px;
+    margin-bottom: 9px; }
+  
+  /* Aligns to 36px */
+  h6 {
+    font-size: 16px;
+    line-height: 1.5;
+    padding-top: 9px;
+    margin-bottom: 3px; }
+  
+  img {
+    display: block;
+    border-radius: $radius;
+    margin-bottom: $line; }
+  
+  h3, h4,
+  h5, h6 { 
+    font-weight: bold; } }
+
+// Specific pieces of content
+// ---------------------------
+.featured-image img {
+  display: block;
+  max-height: 192px;
+  max-width: 738px;
+  
+  @include breakpoint(360px) {
+    max-height: 192px + 24px; }
+  
+  @include breakpoint(400px) {
+    max-height: 192px + 48px; }
+  
+  @include breakpoint($a) {
+    max-height: 288px; }
+  
+  @include breakpoint($b) {
+    max-height: none; } // reset the height here 492px
+  
+  @include breakpoint($c-max) {
+    margin: auto; } }
+/*
+
+body {
+	position: relative;
+}
+
+body:after {
+	position: absolute;
+	width: auto;
+	height: auto;
+	z-index: 9999;
+	content: '';
+	display: block;
+	pointer-events: none;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: url(http://basehold.it/image.php?height=24) repeat top left;
+	opacity: .2;
+}
+
+body:active:after {
+	display: none;
+}
+*/

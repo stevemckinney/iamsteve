@@ -56,7 +56,11 @@ code {
   border-radius: $radius;
   padding: em(2px, $base-font-size - 2px) em(6px, $base-font-size - 2px); }
 
+pre {
+  padding: $line; }
+
 pre code {
+  padding: 0;
   overflow: auto;
   color: $primary;
   direction: ltr;
@@ -64,11 +68,16 @@ pre code {
   white-space: pre-line;
   -moz-tab-size: 2;
   -o-tab-size: 2;
-  tab-size: 2; }
+  tab-size: 2;
+  
+  @include breakpoint($c) {
+    font-size: 18px; } }
 
 .code-tall {
   max-height: 548px; }
 
+// Keyboard
+// ---------------------------
 kbd {
   background: $alternate;
   color: $alternate-l2; }
