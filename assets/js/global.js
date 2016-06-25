@@ -9,8 +9,8 @@ var iamsteve = (function ()
   // Public
   var toggler = function ()
   {    
-    toggle.addEventListener( 'click', _toggleNav);
-    toggle_search.addEventListener( 'click', _toggleSearch);
+    toggle.addEventListener( 'click', _toggleNav, false);
+    toggle_search.addEventListener( 'click', _toggleSearch, false);
   }
   
   // Find all rows of posts, loop through them and setup flickity
@@ -63,9 +63,7 @@ var iamsteve = (function ()
   
   // Private
   var _toggleSearch = function( e )
-  { 
-    e.preventDefault();
-    
+  {     
     this.classList.toggle('active');
     search.classList.toggle('visible');
     document.getElementById('keywords').focus();
@@ -75,12 +73,12 @@ var iamsteve = (function ()
       toggle.classList.remove('active');
       nav.classList.remove('visible');
     }
+    
+    e.preventDefault();
   }
   
   var _toggleNav = function( e )
-  {
-    e.preventDefault();
-    
+  {    
     this.classList.toggle('active');
     nav.classList.toggle('visible');
     
@@ -89,6 +87,8 @@ var iamsteve = (function ()
       toggle_search.classList.remove('active');
       search.classList.remove('visible');
     }
+    
+    e.preventDefault();
   }
   
   // With multiple, and having custom pagination, you need to initialise using
