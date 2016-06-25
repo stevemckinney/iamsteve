@@ -3,7 +3,7 @@
 /**
  * Iamsteve plugin class
  *
- * @package	    ExpressionEngine
+ * @package     ExpressionEngine
  * @subpackage  Addons
  * @category    Plugin
  * @author      EllisLab Dev Team
@@ -18,10 +18,10 @@ class Iamsteve {
   private $base_url;
   private $site_name;
 
-	public function __construct()
-	{
-		$this->EE = get_instance();
-		
+  public function __construct()
+  {
+    $this->EE = get_instance();
+    
     // Find the global theme_url variable
     if($this->EE->config->item('global_vars')['global:theme_url'] !== false)
     {
@@ -41,30 +41,30 @@ class Iamsteve {
     // Setup openings tags
     $this->json_ld_open = '<script type="application/ld+json"> {';
     $this->json_ld_close = '} </script>';
-	}
-	
-	public function json_ld()
-	{	
-  	$html = $this->json_ld_person();
-  	$html .= $this->json_ld_organisation();
-  	$html .= $this->json_ld_website();
-  	
+  }
+  
+  public function json_ld()
+  { 
+    $html = $this->json_ld_person();
+    $html .= $this->json_ld_organisation();
+    $html .= $this->json_ld_website();
+    
     return $html;
-	}
-	
-	public function json_ld_website()
-	{
-  	$html = $this->json_ld_open;
+  }
+  
+  public function json_ld_website()
+  {
+    $html = $this->json_ld_open;
       $html .= '"@context": "http://schema.org",';
       $html .= '"@type": "WebSite",';
       $html .= '"name": "iamsteve",';
       $html .= '"alternateName": "iamsteve",';
       $html .= '"url": "' . $this->base_url . '",';
     $html .= $this->json_ld_close;
-	}
-	
-	public function json_ld_person()
-	{
+  }
+  
+  public function json_ld_person()
+  {
     $html = $this->json_ld_open;
     
       $html .= '"@context": "http://schema.org",';
@@ -82,13 +82,13 @@ class Iamsteve {
     $html .= $this->json_ld_close;
     
     return $html;
-	}
-	
-	public function json_ld_organisation()
-	{
-  	$html = $this->json_ld_open;
-  	
-    	$html .= '"@context": "http://schema.org",';
+  }
+  
+  public function json_ld_organisation()
+  {
+    $html = $this->json_ld_open;
+    
+      $html .= '"@context": "http://schema.org",';
       $html .= '"@type": "Organization",';
       $html .= '"url": "' . $this->base_url . '",';
       $html .= '"logo": "' . $this->base_url . '/assets/images/iamsteve-logo.png"';
@@ -96,12 +96,12 @@ class Iamsteve {
     $html .= $this->json_ld_close;
     
     return $html;
-	}
-	
-	public function json_ld_list_item($position, $id, $name)
-	{
-  	$html = '{';
-    	$html .= '"@type": "ListItem",';
+  }
+  
+  public function json_ld_list_item($position, $id, $name)
+  {
+    $html = '{';
+      $html .= '"@type": "ListItem",';
       $html .= '"position": ' . $position . ',';
       $html .= '"item": {';
         $html .= '"@id": "' . $id . '",';
@@ -110,13 +110,13 @@ class Iamsteve {
     $html .= '}';
     
     return $html;
-	}
-	
-	public function json_ld_breadcrumbs()
-	{
-  	$html = $this->json_ld_open;
-  	
-  	  $html .= '"@context": "http://schema.org",';
+  }
+  
+  public function json_ld_breadcrumbs()
+  {
+    $html = $this->json_ld_open;
+    
+      $html .= '"@context": "http://schema.org",';
       $html .= '"@type": "BreadcrumbList",';
       $html .= '"itemListElement": [';
         
@@ -124,187 +124,80 @@ class Iamsteve {
         
       $html .= ']';
         
-  	$html .= $this->json_ld_close;
-  	
+    $html .= $this->json_ld_close;
+    
     return $html;
-	}
+  }
 
-	
-	public function image_design()
-	{
-  	$images = array(
-  	  $this->base_url . '/assets/images/design-default-1.svg',
-  	  $this->base_url . '/assets/images/design-default-2.svg',
-  	  $this->base_url . '/assets/images/design-default-3.svg',
-  	  $this->base_url . '/assets/images/design-default-4.svg',
+  
+  public function image_design()
+  {
+    $images = array(
+      $this->base_url . '/assets/images/design-default-1.svg',
+      $this->base_url . '/assets/images/design-default-2.svg',
+      $this->base_url . '/assets/images/design-default-3.svg',
+      $this->base_url . '/assets/images/design-default-4.svg',
     );
     
     $image = array_rand($images, 1);
 
     return '<img src="' . $images[$image] . '">';
-	}
-	
-	public function image_code()
-	{
-  	$images = array(
-  	  $this->base_url . '/assets/images/code-default-1.svg',
-  	  $this->base_url . '/assets/images/code-default-2.svg',
-  	  $this->base_url . '/assets/images/code-default-3.svg',
-  	  $this->base_url . '/assets/images/code-default-4.svg',
+  }
+  
+  public function image_code()
+  {
+    $images = array(
+      $this->base_url . '/assets/images/code-default-1.svg',
+      $this->base_url . '/assets/images/code-default-2.svg',
+      $this->base_url . '/assets/images/code-default-3.svg',
+      $this->base_url . '/assets/images/code-default-4.svg',
     );
     
     $image = array_rand($images, 1);
     
     return '<img src="' . $images[$image] . '">';
-	}
-	
-	public function number($from = '', $to = '')
-	{
-		// Parameters
-		if ($from == '')
-		{
-			$from = ee()->TMPL->fetch_param('from', '0');
-		}
+  }
+  
+  public function background($image = '')
+  {
+    $image =  ee()->TMPL->fetch_param('image');
+    $id = imagecreatefrompng($image);
+    $rgb = imagecolorat($id, 0, 0);
+    $r = ($rgb >> 16) & 0xFF;
+    $g = ($rgb >> 8) & 0xFF;
+    $b = $rgb & 0xFF;
+    
+    return 'rgb(' . $r . ', ' . $g . ', ' . $b . ')';
+  }
+  
+  public function number($from = '', $to = '')
+  {
+    // Parameters
+    if ($from == '')
+    {
+      $from = ee()->TMPL->fetch_param('from', '0');
+    }
 
-		if ($to == '')
-		{
-			$to	= ee()->TMPL->fetch_param('to', '9');
-		}
+    if ($to == '')
+    {
+      $to = ee()->TMPL->fetch_param('to', '9');
+    }
 
-		// no from? Set to 0
-		if (!is_numeric($from))
-		{
-			$from = '0';
-		}
+    // no from? Set to 0
+    if (!is_numeric($from))
+    {
+      $from = '0';
+    }
 
-		// no to? Set to 9
-		if (!is_numeric($to))
-		{
-			$to = '9';
-		}
+    // no to? Set to 9
+    if (!is_numeric($to))
+    {
+      $to = '9';
+    }
 
-		// return random number
-		return strval(rand(intval($from), intval($to)));
-	}
-	
-  /**
-	 * Get random file from file system
-	 *
-	 * @param	string	$folder
-	 * @param	string	$filter
-	 * @return	string
-	 */
-	public function file($folder = '', $filter = '')
-	{
-		// init var
-		$error = FALSE;
-
-		// Parameters
-		if ($folder == '')
-		{
-			$folder = ee()->TMPL->fetch_param('folder');
-		}
-
-		if ($filter == '')
-		{
-			$filter = ee()->TMPL->fetch_param('filter', '');
-		}
-
-		// Convert filter to array
-		$filters = strlen($filter) ? explode('|', $filter) : array();
-
-		// is folder a number?
-		if (is_numeric($folder))
-		{
-			// get server path from upload prefs
-			ee()->load->model('file_upload_preferences_model');
-			$upload_prefs = ee()->file_upload_preferences_model->get_file_upload_preferences(1, $folder);
-
-			// Do we have a match? get path
-			if ($upload_prefs)
-			{
-				$folder = $upload_prefs['server_path'];
-			}
-		}
-
-		// Simple folder check
-		if (!strlen($folder))
-		{
-			$error = TRUE;
-		}
-		else
-		{
-			// check for trailing slash
-			if (substr($folder, -1, 1) != '/')
-			{
-				$folder .= '/';
-			}
-		}
-
-		// Another folder check
-		if (!is_dir($folder))
-		{
-			$error = TRUE;
-		}
-		else
-		{
-			// open dir
-			$dir = opendir($folder);
-
-			// loop through folder
-			while($f = readdir($dir))
-			{
-				// no file? skip
-				if (!is_file($folder.$f)) continue;
-
-				// set addit to 0, check filters
-				$addit = 0;
-
-				// check if filter applies
-				foreach ($filters AS $filter)
-				{
-					if (strlen($filter) && substr_count($f, $filter))
-					{
-						$addit++;
-					}
-				}
-
-				// if we have a match, add file to array
-				if ($addit == count($filters))
-				{
-					$this->set[] = $f;
-				}
-			}
-
-			// close dir
-			closedir($dir);
-		}
-
-		// return data
-		return $error ? "{$folder} is an invalid folder" : $this->_random_item_from_set();
-	}
-	
-	/**
-	 * Display invalid folder if debug is on
-	 *
-	 * @param	string	$folder
-	 * @return	string
-	 */
-	private function _invalid_folder($folder = '')
-	{
-		// return error message if debug-mode is on
-		return $this->config->debug ? "{$folder} is an invalid folder" : '';
-	}
-	
-	/**
-	 * Random item from set (array)
-	 *
-	 * @return	string
-	 */
-	private function _random_item_from_set()
-	{
-		return $this->set[array_rand($this->set)];
-	}
+    // return random number
+    return strval(rand(intval($from), intval($to)));
+  }
 }
 // END CLASS
 
