@@ -6,17 +6,17 @@
   font-family: $sans;
   font-weight: font-weight(semibold);
   justify-content: center;
-  
+  padding-top: $line;
+  padding-bottom: $line;
+    
   @include breakpoint($b) {
+    padding-top: double($line);
+    padding-bottom: double($line);
     justify-content: space-between; }
     
   @include breakpoint($d) {
     padding-top: quadruple($line);
     padding-bottom: quadruple($line); }
-    
-  @include breakpoint($d-max) {
-    padding-top: double($line);
-    padding-bottom: double($line); }
   
   @include breakpoint($b-max) {   
     a, p {
@@ -45,6 +45,7 @@
   @include breakpoint($b) {
     display: none; } }
 
+.copyright a,
 .logo-footer-large {
   @include breakpoint($b-max) {
     display: none; } }
