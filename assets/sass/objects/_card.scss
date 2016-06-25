@@ -41,8 +41,7 @@
   
   @include breakpoint($d) {
     .card-body {
-      padding: double($line);
-      padding-bottom: (double($line) + 8px); } } }
+      padding: double($line) double($line) (double($line) + 8px) 168px; } } }
 
 .hero .card-large {
   @include breakpoint($c) {
@@ -50,7 +49,8 @@
 
 // Card body
 // ---------------------------
-.card-body {}
+.card-body {
+  position: relative; }
 
 // Card image
 // ---------------------------
@@ -83,9 +83,9 @@
 
 @include breakpoint($d) {
   .meta-to-calendar {
-    float: left;
-    display: inline-block;
-    margin-right: $line; }
+    position: absolute;
+    top: double($line);
+    left: double($line); }
 
   .calendar {
     padding: $base-px $line;
@@ -97,6 +97,7 @@
     font-style: normal;
     text-align: center;
     line-height: 1.25;
+    min-width: 96px;
     
     &, span {
       display: block; }

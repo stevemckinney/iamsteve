@@ -71,15 +71,14 @@ address { font-style: normal; }
 // eg: <a class="link-icon"><span class="icon icon-medium"><svg></svg></span></a>
 .link-icon {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   
   &:hover .icon,
   &:focus .icon {
-    transform: translateX($base-px/3); }
+    transform: translate3d($base-px/3, 0, 0); }
   
   .icon {
-    transition: .2s ease;
-    margin-left: $base-px / 3; } }
+    transition: .2s ease; } }
 
 // Various
 // ---------------------------
