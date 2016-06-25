@@ -6,7 +6,6 @@ cache/
 cacheee_version/
 assets/cache/
 assets/cachee_version/
-config/
 system/expressionengine/config/database.php
 system/expressionengine/config/config.php
 system/user/logs/*
@@ -42,3 +41,8 @@ npm-debug.log
 node_modules
 config_bootstrap.php
 .htaccess
+
+# Config
+config/config.local.php
+config/config.dev.php
+config/config.prod.php

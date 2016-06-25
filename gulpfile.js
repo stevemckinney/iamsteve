@@ -23,6 +23,10 @@ var src = {
   images: 'assets/images/**/*'
 };
 
+var path = {
+  js: 'assets/js'
+};
+
 // browser-sync watched files
 // automatically reloads the page when files changed
 var browserSyncWatchFiles = [
@@ -63,7 +67,8 @@ gulp.task('images', function() {
 });
 
 // JavaScript
-gulp.task('js', function() {
+/*
+gulp.task('js-all', function() {
   return gulp.src(src.js)
     .pipe(order([
       'assets/js/modernizr.js',
@@ -73,7 +78,41 @@ gulp.task('js', function() {
       'assets/js/prism.js',
       'assets/js/global.js'
     ], { base: './' }))
-    .pipe(concat('iamsteve.js'))
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'))
+    .pipe(reload({ stream: true }));
+});
+*/
+
+gulp.task('js-blog', function() {
+  return gulp.src([
+    path.js + '/fitvids.js',
+    path.js + '/prism.js'
+  ]).pipe(concat('blog.js'))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'))
+    .pipe(reload({ stream: true }));
+});
+
+gulp.task('js-iamsteve', function() {
+  return gulp.src([
+    path.js + '/modernizr.js',
+    path.js + '/headroom.js',
+    path.js + '/global.js'
+  ]).pipe(concat('iamsteve.js'))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'))
+    .pipe(reload({ stream: true }));
+});
+
+gulp.task('js-home', function() {
+  return gulp.src([
+    path.js + '/flickity.js'
+  ]).pipe(concat('home.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
@@ -81,8 +120,13 @@ gulp.task('js', function() {
 });
 
 // Watch files
+gulp.task('js', function () {
+  gulp.watch(src.js, ['js-iamsteve', 'js-home', 'js-blog']);
+});
+
 gulp.task('watch', function () {
   gulp.watch('dist/css/master.css', ['autoprefixer']);
+  gulp.watch(src.js, ['js-iamsteve', 'js-home', 'js-blog']);
 });
 
 gulp.task('browser-sync', function() {
