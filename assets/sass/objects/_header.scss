@@ -9,13 +9,13 @@
   flex-flow: row wrap;
   justify-content: space-between;
   background: $white;
-  box-shadow: inset 0 -1px rgba($alternate, .2), 0 2px 6px rgba($alternate, .05);
+  box-shadow: inset 0 -1px rgba($alternate, .2), inset 0 -2px 2px rgba($alternate, .05), 0 2px 6px rgba($alternate, .05);
   z-index: $z-index-100;
   will-change: transform;
   transition: transform 200ms linear;
   
   @include breakpoint($site-width) {
-    padding: 0 calc(50% - #{$site-width / 2}); }
+    padding: 0 calc(50% - #{$contain / 2}); }
   
   > .icon-search {
     z-index: $z-index-200;
@@ -47,7 +47,7 @@
     padding: $line;
     align-content: center;
     align-items: center;
-    box-shadow: inset -1px 0 $alternate-l3; }
+    box-shadow: inset -1px 0 rgba(scale-saturation($alternate-l1, 60%), .1); }
   
   @include breakpoint($d) {
     font-size: $text-large; }
