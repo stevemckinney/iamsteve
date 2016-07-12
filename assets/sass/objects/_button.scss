@@ -65,11 +65,16 @@ $buttons: (
   top: 50%;
   right: 0;
   background: transparent;
-  padding: $base-px;
   
   // $c-max styles controlled in _transition.scss
   @include breakpoint($c) {
     transform: translateY(-50%); }
+  
+  @include breakpoint($site-width) {
+    padding-right: 0; }
+  
+  @include breakpoint($b-max) {
+    padding: $base-px; }
   
   &:active {
     svg {
