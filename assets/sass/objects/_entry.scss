@@ -7,12 +7,32 @@
 // Entry
 // ---------------------------
 .entry {
-  flex-basis: 378px;
-  margin-bottom: double($line); }
+  flex-basis: calc(50% - 6px);
+  margin-bottom: $line;
+  
+  @include breakpoint($b) {
+    margin-bottom: double($line);
+    flex-basis: calc(50% - 12px); }
+  
+  @include breakpoint($c) {
+    flex-basis: calc(33.333333% - 12px); }
+  
+  @include breakpoint($e) {
+    flex-basis: 378px; } }
 
 // Entry content
 // ---------------------------
-.entry-content {}
+.entry-content {
+  // (1680 - 1288) = 392 | ( 392 / 1680 ) * 100
+  margin-left: 23.3333333%;
+  
+  .meta {
+    max-width: 684px; } }
+
+// Entry/featured image
+// ---------------------------
+.entry-image {
+  margin-left: 23.333333%; }
 
 // Entry summary
 // ---------------------------
@@ -20,12 +40,13 @@
 
 // Entry title
 // ---------------------------
-.entry-title {}
+.entry-title {
+  max-width: 684px; }
 
 // Entry meta
 // ---------------------------
 .entry-meta {}
-	
+
 	// Entry meta parts
 	// ---------------------------
 	.entry-date,
