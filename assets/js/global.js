@@ -43,7 +43,7 @@ var iamsteve = (function ()
       tolerance:
       {
         up: 12,
-        down: 0
+        down: 12
       },
       classes:
       {
@@ -51,9 +51,9 @@ var iamsteve = (function ()
         pinned: 'header-pinned',
         unpinned: 'header-unpinned',
         top: 'header-top',
-        notTop: '',
+        notTop: 'header-not-top',
         bottom: 'header-bottom',
-        notBottom: ''
+        notBottom: 'header-not-bottom'
       }
     };
     var headroom  = new Headroom(header, options);
