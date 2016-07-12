@@ -91,8 +91,8 @@ $social: (
 
 // Fonts
 // ---------------------------
-$sans: Averta, sans-serif !global;
-$serif: Sentinel A, Sentinel B, serif !global;
+$sans: Averta, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !global;
+$serif: Sentinel A, Sentinel B, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !global;
 $heading: $sans !global;
 $body: $serif !global;
 $form: $sans !global;
@@ -102,10 +102,11 @@ $element: $sans !global;
 // ---------------------------
 $default-transition-duration: .2s;
 $radius: 6px;
+$text-xxxlarge: 48px;
 
   // Form defaults
   // ---------------------------
-  $default-form-focus-color: scale-color($alternate-l2, $lightness: -10%);
+  $default-form-focus-color: $alternate-l1;
   $default-form-color: $alternate-l2;
   $default-form-background-color: $alternate-l4 $white;
   $default-placeholder-color: $neutral-l2;
@@ -115,16 +116,6 @@ $radius: 6px;
   // Element defaults
   // ---------------------------
   $default-element-radius: 4px;
-
-// Browser support and prefixing
-// ---------------------------
-@if $debug-mode { $debug-browser-support: true; }
-$browser-minimum-versions: ("chrome": null, "firefox": null, "ie": "8", "safari": "6");
-$supported-browsers: reject(browsers(), opera-mini, opera);
-
-$box-shadow-support-threshold: 0;
-$gradient-support-threshold: 6.51;
-//$svg-gradient-shim-threshold: 10.0;
 
 // Breakpoints
 // ---------------------------
