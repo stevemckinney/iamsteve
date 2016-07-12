@@ -68,10 +68,13 @@
   align-items: center;
   background: image-url("dash.svg") center center repeat-x;
   background-size: 8px 2px;
-  font-size: 14px;
   font-family: $serif;
   font-style: italic;
   line-height: 1.142857143;
+  font-size: 12px;
+  
+  @include breakpoint($b) {
+    font-size: 14px; }
   
   a, li,
   span, time {

@@ -2,7 +2,6 @@
 // ---------------------------
 .introduction {
   @include breakpoint($c) {
-    padding-left: $line;
     flex-basis: calc(44% - #{$base-px}); }
     
   @include breakpoint($d) {
@@ -10,6 +9,9 @@
    
   @include breakpoint($site-width) {
     flex-basis: 398px; }
+  
+  @include breakpoint($site-width-max) {
+    padding-left: $line; }
     
   @include breakpoint($c-max) {
     padding: 0 double($line) double($line); }
