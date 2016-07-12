@@ -72,17 +72,24 @@ address { font-style: normal; }
 .link-icon {
   display: flex;
   align-items: center;
+  font-weight: font-weight(semibold);
   
-  &:hover .icon-right,
-  &:focus .icon-right {
+  &:not(.disabled):hover .icon-right,
+  &:not(.disabled):focus .icon-right {
     transform: translate3d($base-px/3, 0, 0); }
   
-  &:hover .icon-left,
-  &:focus .icon-left {
+  &:not(.disabled):hover .icon-left,
+  &:not(.disabled):focus .icon-left {
     transform: translate3d(-#{$base-px/3}, 0, 0); }
   
   .icon {
+    position: relative;
+    top: 1px;
     transition: .2s ease; } }
+
+.link-icon.disabled {
+  opacity: .5;
+  cursor: default; }
 
 // Various
 // ---------------------------
