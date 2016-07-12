@@ -1,7 +1,13 @@
 // Margin
-// ---------------------------
+// ---------------------------    		
 @if $default-enable-margin {
+  .m-undo {
+    margin: 0; }
+    
   @each $abbr, $margin in $default-margin-map {
+    .m#{$abbr}-undo {
+      margin-#{$margin}: 0; }
+      
     .m#{$abbr}-quarter {
       margin-#{$margin}: quarter($baseline); }
       
@@ -17,20 +23,26 @@
     @if $default-enable-margin-responsive {
       // $b margins
       @include breakpoint($b) {
-        .m-quarter-#{$margin}-b {
+        .m#{$abbr}-undo-b {
+          margin-#{$margin}: 0; }
+          
+        .m#{$abbr}-quarter-b {
           margin-#{$margin}: quarter($baseline); }
           
-        .m-half-#{$margin}-b {
+        .m#{$abbr}-half-b {
           margin-#{$margin}: half($baseline); }
           
-        .m-#{$margin}-b {
+        .m#{$abbr}-b {
           margin-#{$margin}: $baseline; } 
         
         .m#{$abbr}-double-b {
           margin-#{$margin}: double($baseline); } }
       
       // $d margins
-      @include breakpoint($d) {
+      @include breakpoint($d) {          
+        .m#{$abbr}-undo-d {
+          margin-#{$margin}: 0; }
+          
         .m#{$abbr}-quarter-d {
           margin-#{$margin}: quarter($baseline); }
           
@@ -42,38 +54,3 @@
         
         .m#{$abbr}-double-d {
           margin-#{$margin}: double($baseline); } } } } }
-
-// Undo
-// ---------------------------
-@if $default-enable-undo-margin {		
-  .m-undo {
-		margin: 0; }
-		
-  .mt-undo {
-		margin-top: 0; }
-
-  .mb-undo {
-		margin-bottom: 0; }
-
-  @if $default-enable-margin-responsive {
-    // $b margins
-    @include breakpoint($b) {
-      .m-undo-b {
-    		margin: 0; }
-    		
-      .mt-undo-b {
-    		margin-top: 0; }
-    
-      .mb-undo-b {
-    		margin-bottom: 0; } }
-    		
-    // $d margins
-    @include breakpoint($d) {
-      .m-undo-d {
-    		margin: 0; }
-    		
-      .mt-undo-d {
-    		margin-top: 0; }
-    
-      .mb-undo-d {
-    		margin-bottom: 0; } } } }

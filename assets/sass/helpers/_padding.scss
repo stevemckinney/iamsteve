@@ -1,7 +1,13 @@
 // Padding
 // ---------------------------
 @if $default-enable-padding {
+  .p-undo {
+    padding: 0; }
+    
   @each $abbr, $padding in $default-padding-map {
+    .p#{$abbr}-undo {
+      padding-#{$padding}: 0; }
+          
     .p#{$abbr}-quarter {
       padding-#{$padding}: quarter($baseline); }
       
@@ -17,13 +23,16 @@
     @if $default-enable-padding-responsive {
       // $b paddings
       @include breakpoint($b) {
-        .p-quarter-#{$padding}-b {
+        .p#{$abbr}-undo-b {
+          padding-#{$padding}: 0; }
+          
+        .p#{$abbr}-quarter-b {
           padding-#{$padding}: quarter($baseline); }
           
-        .p-half-#{$padding}-b {
+        .p#{$abbr}-half-b {
           padding-#{$padding}: half($baseline); }
           
-        .p-#{$padding}-b {
+        .p#{$abbr}-b {
           padding-#{$padding}: $baseline; } 
         
         .p#{$abbr}-double-b {
@@ -31,6 +40,9 @@
       
       // $d paddings
       @include breakpoint($d) {
+        .p#{$abbr}-undo-d {
+          padding-#{$padding}: 0; }
+          
         .p#{$abbr}-quarter-d {
           padding-#{$padding}: quarter($baseline); }
           
@@ -42,41 +54,6 @@
         
         .p#{$abbr}-double-d {
           padding-#{$padding}: double($baseline); } } } } }
-
-// Undo
-// ---------------------------
-@if $default-enable-undo-padding {		
-  .p-undo {
-		padding: 0; }
-		
-  .pt-undo {
-		padding-top: 0; }
-
-  .pb-undo {
-		padding-bottom: 0; }
-
-  @if $default-enable-padding-responsive {
-    // $b paddings
-    @include breakpoint($b) {
-      .p-undo-b {
-    		padding: 0; }
-    		
-      .pt-undo-b {
-    		padding-top: 0; }
-    
-      .pb-undo-b {
-    		padding-bottom: 0; } }
-    		
-    // $d paddings
-    @include breakpoint($d) {
-      .p-undo-d {
-    		padding: 0; }
-    		
-      .pt-undo-d {
-    		padding-top: 0; }
-    
-      .pb-undo-d {
-    		padding-bottom: 0; } } } }
 
 // Island padding helpers
 // ---------------------------
