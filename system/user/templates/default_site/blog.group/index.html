@@ -8,27 +8,30 @@
 {preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
 {preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
 
-<div class="row between subheader contain contain-large pb">
+<div class="row between subheader contain contain-large pb-half pb-d">
   {exp:stash:get_list 
     name="pagination"
-    limit="1"
     process="end"
     parse_tags="yes"
     parse_vars="yes"
     parse_conditionals="yes"
   }
-    <a href="{previous_page}" class="secondary-d1 sans link-icon"><span class="icon icon-medium icon-left fill-secondary-d1">{icon_arrow_left}</span> Older</a>
+    {if previous_page}
+      <a href="{previous_page}" class="secondary-d1 sans link-icon"><span class="icon icon-medium icon-left fill-secondary-d1">{icon_arrow_left}</span> Older</a>
+    {if:else}
+      <span class="secondary-d1 sans link-icon disabled"><span class="icon icon-medium icon-left fill-secondary-d1">{icon_arrow_left}</span> Older</span>
+    {/if}
   
     {exp:channel:info channel="blog"}
-      <h1 class="f2 secondary-d1 m-undo">{channel_title}</h1>
+      <h1 class="f4 f3-b f2-d secondary-d1 mb-undo">{channel_title}</h1>
     {/exp:channel:info}
   
     <a href="{next_page}" class="secondary-d1 sans link-icon">Newer <span class="icon icon-medium icon-right fill-secondary-d1">{icon_arrow_right}</span></a>
   {/exp:stash:get_list}
 </div>
 
-<div class="row between contain contain-large pt-double pb-double" id="posts">
-  {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" paginate="bottom"}
+<div class="row between contain contain-large pt pt-double-b pb pb-double-b" id="posts">
+  {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" paginate="both"}
   	
   	{!-- 404 --}
   	{if no_results}{redirect="404"}{/if}
@@ -58,10 +61,12 @@
         {/if}
     	</div>
     	<div class="card-body">
-      	<div class="meta mb-half">{date}</div>
-    		<h3 class="f5 f4-b mb-quarter primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
-    		{exp:streeng words="44"}{excerpt}{/exp:streeng}
-    		{blog_meta}
+      	<div class="meta mb-quarter mb-half-b">{date}</div>
+    		<h3 class="f6 f5-b f4-d mb-undo mb-quarter-b primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+    		{if '{exp:iamsteve:is_mobile}' != 1}
+    		  {exp:streeng words="44"}{excerpt}{/exp:streeng}
+    		  {blog_meta}
+    		{/if}
       </div>
   	</article>
   {/exp:channel:entries}
