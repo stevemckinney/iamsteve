@@ -1,13 +1,11 @@
 // Scoped font sizes
 // ---------------------------
 .entry-content {
-  padding: $line $base-px;
-  
-  p:first-child {
+  h1 + p {
     font-size: 24px; }
   
   p {
-    max-width: 640px;
+    max-width: 684px;
     font-size: 18px; }
   
   /* Aligns to 72px */
@@ -75,7 +73,6 @@
   
   @include breakpoint($c-max) {
     margin: auto; } }
-/*
 
 body {
 	position: relative;
@@ -100,4 +97,3 @@ body:after {
 body:active:after {
 	display: none;
 }
-*/
