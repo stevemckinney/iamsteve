@@ -45,7 +45,9 @@
     <h1 class="f2 f1-b headline-d secondary-d1 mb entry-title">{title}</h1>
     {exp:streeng find='\<p><img src="|"><\/p>' replace='<img src="|">' insensitive="yes"}{article}{/exp:streeng}
   </article>
-
+  
+  {next_article}
+  
 {layout:set name="js"}
   <script src="{site_url}/dist/js/blog.js"></script>
 {/layout:set}
