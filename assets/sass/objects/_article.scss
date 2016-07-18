@@ -46,11 +46,7 @@
   img {
     display: block;
     border-radius: $radius;
-    margin-bottom: $line; }
-  
-  h3, h4,
-  h5, h6 { 
-    font-weight: bold; } }
+    margin-bottom: $line; } }
 
 // Specific pieces of content
 // ---------------------------
@@ -74,6 +70,7 @@
   @include breakpoint($c-max) {
     margin: auto; } }
 
+/*
 body {
 	position: relative;
 }
@@ -97,3 +94,4 @@ body:after {
 body:active:after {
 	display: none;
 }
+*/
