@@ -26,6 +26,12 @@
   // (1680 - 1288) = 392 | ( 392 / 1680 ) * 100
   margin-left: 23.3333333%;
   
+  img { 
+    max-width: 738px; }
+  
+  .wide-image {
+    max-width: 100%; }
+  
   .meta {
     max-width: 684px; } }
 
