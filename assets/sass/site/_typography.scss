@@ -52,8 +52,8 @@ a {
 // ---------------------------
 code {
   font: 400 em($base-font-size - 2px) $monospace;
-  background: rgba($primary, .05);
-  border-radius: $radius;
+  background: rgba($alternate, .05);
+  border-radius: 2px;
   padding: em(2px, $base-font-size - 2px) em(6px, $base-font-size - 2px); }
 
 pre {
@@ -62,13 +62,13 @@ pre {
 pre code {
   padding: 0;
   overflow: auto;
-  color: $primary;
   direction: ltr;
   text-align: left;
   white-space: pre-line;
   -moz-tab-size: 2;
   -o-tab-size: 2;
   tab-size: 2;
+  background: none;
   
   @include breakpoint($c) {
     font-size: 18px; } }

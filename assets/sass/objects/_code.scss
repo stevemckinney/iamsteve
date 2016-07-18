@@ -12,7 +12,7 @@ $comment: #838c95;
 
 code[class*="language"],
 pre[class*="language"] {
-  border-radius: $radius;
+  border-radius: $radius 0 0 $radius;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
@@ -93,8 +93,7 @@ pre[class*="language"] {
 
 .token.tag,
 .tag > .punctuation {
-  color: $code-red;
-}
+  color: $code-red; }
 
 .tag .token.attr-value, .tag .attr-value .punctuation {
   color: $code-yellow; }
