@@ -114,7 +114,8 @@ var iamsteve = (function ()
       prevNextButtons: false,
       pageDots: false,
       contain: true,
-      imagesLoaded: true
+      imagesLoaded: true,
+      dragThreshold: 24
     });
     
     // Initial state means left should be disabled
