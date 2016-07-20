@@ -5,7 +5,8 @@ body {
 
 // Page specific
 // ---------------------------
-.home {
+.page-home,
+.page-entry {
   padding-top: $line * 2;
   
   @include breakpoint($c) {
