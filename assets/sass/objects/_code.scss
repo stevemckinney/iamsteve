@@ -10,29 +10,29 @@ $code-cyan: #64cce3;
 $code-white: #f6f7ee;
 $comment: #838c95;
 
+pre[class*="language"] {
+  margin: $line 0; }
+
 code[class*="language"],
 pre[class*="language"] {
-  border-radius: $radius 0 0 $radius;
-	direction: ltr;
-	text-align: left;
-	white-space: pre;
+  border-radius: $radius;
+  max-width: $measure;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-	line-height: 1.5;
-
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
-
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	hyphens: none;
-	line-height: 23px;
-	color: $code-white;
-	
-	overflow: auto;
-	-webkit-overflow-scrolling: touch; }
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none;
+  line-height: 23px;
+  color: $code-white;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; }
 
 code[class*="language-bash"],
 pre[class*="language-bash"] {
