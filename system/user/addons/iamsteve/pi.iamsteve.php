@@ -132,13 +132,37 @@ class Iamsteve {
   public function background($image = '')
   {
     $image =  ee()->TMPL->fetch_param('image');
-    $id = imagecreatefrompng($image);
-    $rgb = imagecolorat($id, 0, 0);
-    $r = ($rgb >> 16) & 0xFF;
-    $g = ($rgb >> 8) & 0xFF;
-    $b = $rgb & 0xFF;
     
-    return 'rgb(' . $r . ', ' . $g . ', ' . $b . ')';
+    switch ( strtolower( pathinfo( $image, PATHINFO_EXTENSION ) ) )
+    {
+      case 'jpeg' :
+      case 'jpg' :
+        $id = imagecreatefromjpeg($image);
+      break;
+      
+      case 'png' :
+        $id = imagecreatefrompng($image);
+      break;
+      
+      case 'gif' :
+        $id = imagecreatefromgif($image);
+      break;
+      
+      default:
+        throw new InvalidArgumentException('File "' . $filename . '" is not valid jpg, png or gif image.');
+      break;
+    }
+    
+    if ( $id )
+    {
+      $rgb = imagecolorat($id, 2, 2);
+
+      $r = ($rgb >> 16) & 0xFF;
+      $g = ($rgb >> 8) & 0xFF;
+      $b = $rgb & 0xFF;
+    
+      return 'rgb(' . $r . ', ' . $g . ', ' . $b . ')';
+    }
   }
   
   public function number($from = '', $to = '')
