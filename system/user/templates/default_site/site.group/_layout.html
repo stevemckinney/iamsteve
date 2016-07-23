@@ -1,0 +1,44 @@
+{embed="include/header"}
+
+  <header class="row header">
+    <a href="/" title="Back to the homepage" class="logo">
+      {exp:minimee:display display="contents"}{site_url}assets/images/logo.svg{/exp:minimee:display}
+      <span class="logo-text">iamsteve</span>
+    </a>
+    <a href="#nav">
+      
+    </a>
+		<nav id="nav" class="nav">
+      <a href="{site_url}"{if segment_1 == ""} class="active"{/if}>Home</a>
+			<a href="{site_url}blog"{if segment_1 == "blog"} class="active"{/if}>Archive</a>
+      <a href="{site_url}about"{if segment_1 == "about"} class="active"{/if}>About</a>
+			<a href="{site_url}contact"{if segment_1 == "contact"} class="active"{/if}>Contact</a>
+			{search}
+		</nav>
+	</header>
+	
+	{layout:contents}
+	
+	<aside class="row row-strong">
+  	<section class="column-3">
+  		<h2 class="h2 secondary chunky">About me</h2>
+  		<p>My name is Steve McKinney, I run this website. For the majority of the time I’ve been involved in making websites, I've done it all. I started making websites around 2002, I was pretty young, so it was just a hobby to begin with. Generally, I saw no distinction between roles, like there is now, you designed and coded websites.</p>
+      <p>Now it’s much more complex, I'm first and foremost a designer, but I'm able to code my designs — 14 years does allow for that. There is a lot of debate around whether designers should code, I'm not here to push that, it’s whatever you want to do. It's not easy to learn and do both effectively, but you can certainly be a great designer and produce code. If you want to code your designs, this is what this website is about. </p>
+  	</section>
+  	<section class="column-4">
+  		<h2 class="h2 secondary chunky">Subscribe</h2>
+  		{form_newsletter}
+  	</section>
+  </aside>
+
+  <footer class="row footer">
+  	<p>Copyright &copy; iamsteve {current_time format="%Y"}</p>
+  	<a href="{site_url}" class="logo-footer">logo</span>
+    <a href="#0" title="Go back to the top of the page" class="top">Top</a>
+  	<a href="feed://iamsteve.me/blog/feed" title="The RSS feed for my blog">RSS</a>
+  	<a href="https://www.digitalocean.com/?refcode=612d37093f16" title="DigitalOcean hosting get 2 months free credit">Host</a>
+  	<a href="http://expressionengine.com/index.php?affiliate=stevemckinney" title="Running on ExpressionEngine">EE</a>
+  	<a href="https://gist.github.com/2767673" title="The cookies used on this site can be found here">Cookies</a>
+  </footer>
+	
+{embed="include/footer"}
