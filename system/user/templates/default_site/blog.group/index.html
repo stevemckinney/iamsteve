@@ -17,16 +17,20 @@
     parse_conditionals="yes"
   }
     {if previous_page}
-      <a href="{previous_page}" class="secondary-d1 sans link-icon"><span class="icon icon-medium icon-left fill-secondary-d1">{icon_arrow_left}</span> Older</a>
+      <a href="{previous_page}" class="secondary-d1 sans link-icon"><span class="icon icon-medium icon-left fill-secondary-d1">{icon_arrow_left}</span> Newer</a>
     {if:else}
-      <span class="secondary-d1 sans link-icon disabled"><span class="icon icon-medium icon-left fill-secondary-d1">{icon_arrow_left}</span> Older</span>
+      <span class="secondary-d1 sans link-icon disabled"><span class="icon icon-medium icon-left fill-secondary-d1">{icon_arrow_left}</span> Newer</span>
     {/if}
   
     {exp:channel:info channel="blog"}
       <h1 class="f4 f3-b f2-d secondary-d1 mb-undo">{channel_title}</h1>
     {/exp:channel:info}
   
-    <a href="{next_page}" class="secondary-d1 sans link-icon">Newer <span class="icon icon-medium icon-right fill-secondary-d1">{icon_arrow_right}</span></a>
+    {if next_page}
+      <a href="{next_page}" class="secondary-d1 sans link-icon">Older <span class="icon icon-medium icon-right fill-secondary-d1">{icon_arrow_right}</span></a>
+    {if:else}
+      <span class="secondary-d1 sans link-icon disabled">Older <span class="icon icon-medium icon-right fill-secondary-d1">{icon_arrow_right}</span></span>
+    {/if}
   {/exp:stash:get_list}
 </div>
 
@@ -82,9 +86,9 @@
 }
   <div class="row center pagination">
     {if previous_page}
-      <a href="{previous_page}" class="paginate paginate-left"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> Older</a>
+      <a href="{previous_page}" class="paginate paginate-left link-icon"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> Newer</a>
 		{if:else}
-		  <span class="paginate paginate-left disabled"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> Older</span>
+		  <span class="paginate paginate-left disabled link-icon"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> Newer</span>
 		{/if}
 
 		<div class="paginate paginate-between">
@@ -92,9 +96,9 @@
 		</div>
 		
 		{if next_page}
-			<a href="{next_page}" class="paginate paginate-right">Newer <span class="icon icon-medium icon-right">{icon_arrow_right}</span></a>
+			<a href="{next_page}" class="paginate paginate-right link-icon">Older <span class="icon icon-medium icon-right">{icon_arrow_right}</span></a>
 		{if:else}
-		  <span class="paginate paginate-right disabled">Newer <span class="icon icon-medium icon-right">{icon_arrow_right}</span></span>
+		  <span class="paginate paginate-right disabled link-icon">Older <span class="icon icon-medium icon-right">{icon_arrow_right}</span></span>
 		{/if} 
   </div>
 {/exp:stash:get_list}
