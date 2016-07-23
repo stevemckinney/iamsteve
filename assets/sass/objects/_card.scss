@@ -66,8 +66,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: image-url("dash.svg") center center repeat-x;
-  background-size: 8px 2px;
   font-family: $serif;
   font-style: italic;
   line-height: 1.142857143;
@@ -75,10 +73,6 @@
   
   @include breakpoint($b) {
     font-size: 14px; }
-  
-  a, li,
-  span, time {
-    background-color: $white; }
   
   a:hover,
   a:focus {

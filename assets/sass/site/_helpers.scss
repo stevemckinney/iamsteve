@@ -3,3 +3,11 @@
 .pin-below-lt-b {
   @include breakpoint($b-max) {
     @include pin-below; } }
+
+.dashes {
+  background: linear-gradient(to right, transparent 50%, $white 50%), linear-gradient(to right, $alternate-l3, $alternate-l3) center center repeat-x;
+  background-size: 12px 2px, 100% 2px;
+  
+  a, li,
+  span, time {
+    background-color: $white; } }
