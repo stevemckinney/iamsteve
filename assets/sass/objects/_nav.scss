@@ -13,6 +13,9 @@
   text-transform: lowercase;
   padding: $line;
   
+  &.active { 
+    color: $neutral; }
+  
   @include breakpoint($c) {
     padding: $line $base-px;
     transition: color .2s;
