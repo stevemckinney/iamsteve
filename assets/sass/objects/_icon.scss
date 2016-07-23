@@ -13,33 +13,33 @@
     transition: .2s; } }
 
 .icon-small svg {
-  width: 12px; }
+  width: .75em; }
   
 .icon-medium svg {
-  width: 16px; }
+  width: 1em; }
 
 .icon-large svg {
-  width: 24px; }
+  width: 1.5em; }
   
 @include breakpoint($b) {
   .icon-small-b svg {
-    width: 12px; }
+    width: .75em; }
   
   .icon-medium-b svg {
-    width: 16px; }
+    width: 1em; }
   
   .icon-large-b svg {
-    width: 24px; } }
+    width: 1.5em; } }
   
 @include breakpoint($d) {
   .icon-small-d svg {
-    width: 12px; }
+    width: .75em; }
   
   .icon-medium-d svg {
-    width: 16px; }
+    width: 1em; }
   
   .icon-large-d svg {
-    width: 24px; } }
+    width: 1.5em; } }
     
 .icon-search {  
   &.active svg {
