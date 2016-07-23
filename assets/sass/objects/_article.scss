@@ -4,9 +4,27 @@
   h1 + p {
     font-size: 24px; }
   
-  p {
-    max-width: 684px;
-    font-size: 18px; }
+  p, li {
+    font-size: 21px; }
+  
+  > p {
+    // 3px aligns back to baseline
+    margin-bottom: $line + 3px; }
+  
+  > *:not(figure), img {
+    margin-left: auto; }
+  
+  > *:not(figure) {
+    max-width: $measure; }
+  
+  strong {
+    font-weight: font-weight(semibold); }
+  
+  p a,
+  li a {
+    color: $neutral;
+    text-decoration: underline;
+    text-decoration-color: $neutral; }
   
   /* Aligns to 72px */
   h2 {
@@ -41,15 +59,43 @@
     font-size: 16px;
     line-height: 1.5;
     padding-top: 9px;
-    margin-bottom: 3px; }
-  
-  img {
+    margin-bottom: 3px; } }
+
+// Lists
+// ---------------------------
+.entry-content ul {
+  @extend %list-custom-bullet; }
+
+// Figures
+// ---------------------------
+.entry-content figure {
+  padding-top: $line;
+  position: relative;
+  text-align: left; }
+
+.entry-content figcaption {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  max-width: 184px;
+  padding: 0 $line;
+  font-style: italic;
+  line-height: 1.333333;
+    
+  &:before {
+    content: "";
     display: block;
-    border-radius: $radius;
-    margin-bottom: $line; } }
+    width: $line*3;
+    height: $base-px;
+    background-color: $secondary;
+    margin-bottom: $base-px; } }
 
 // Specific pieces of content
 // ---------------------------
+.featured-image {
+  padding: $base-px 0;
+  margin-top: $line*2; }
+
 .featured-image img {
   display: block;
   max-height: 192px;
@@ -88,7 +134,7 @@ body:after {
 	bottom: 0;
 	left: 0;
 	background: url(http://basehold.it/image.php?height=24) repeat top left;
-	opacity: .2;
+	opacity: 1;
 }
 
 body:active:after {

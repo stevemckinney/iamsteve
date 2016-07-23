@@ -22,8 +22,9 @@ p {
     margin-bottom: 0; }
   
   @include breakpoint($c) {
-    font-size: $base-font-size; }
-  
+    font-size: $base-font-size; } }
+    
+p, figcaption {
   @supports (-webkit-hyphens: auto) {
     text-align: justify;
     -webkit-hyphens: auto; }
@@ -43,10 +44,6 @@ a {
   &:active,
   &:hover {
     outline: 0; } }
-
-.entry-content a {
-  color: $neutral;
-  font-weight: font-weight(semibold); }
 
 // Code
 // ---------------------------
@@ -79,8 +76,18 @@ pre code {
 // Keyboard
 // ---------------------------
 kbd {
-  background: $alternate;
-  color: $alternate-l2; }
+  display: inline-block;
+  padding: 0 $base-px/1.5;
+  border-radius: 4px;
+  background: $white;
+  box-shadow: inset 0 0 0 1px $alternate-l2, 0 1px 2px rgba($alternate, .15);
+  font-family: $sans;
+  font-weight: font-weight(semibold);
+  
+  kbd { 
+    padding: 0;
+    box-shadow: none;
+    background: none; } }
 
 kbd,
 pre,

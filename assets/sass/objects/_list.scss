@@ -12,13 +12,8 @@ ul {
 
 // Lists
 // ---------------------------
-.list-default {
-  margin-left: 0;
-	padding-left: 0;
-	list-style: none; }
-
-.list-custom-bullet {
-	li {
+%list-custom-bullet {
+  li {
 		list-style: none;
 		
 		&:before {
@@ -30,16 +25,20 @@ ul {
 			background-color: $secondary-d1;
 			margin: .666em 12px 0 -18px;
 			color: $secondary; } } }
+			
+.list-default {
+  margin-left: 0;
+	padding-left: 0;
+	list-style: none; }
+
+.list-custom-bullet {
+	@extend %list-custom-bullet; }
 
 // Definition
 // ---------------------------
 dl {
-	margin: 0 0 rem($base-px);
-
-	@include for-legacy-browser("ie", "5.5", "8", 5) {
-		.no-rem & {
-			margin: 0 0 $base-px; } } }
-
+  @include pie-clearfix; }
+  
 dt {
 	float: left;
 	clear: right;

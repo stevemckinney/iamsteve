@@ -24,10 +24,18 @@
 // ---------------------------
 .entry-content {
   // (1680 - 1288) = 392 | ( 392 / 1680 ) * 100
-  margin-left: 23.3333333%;
+  margin-right: calc(50% - 342px);
+  padding: $line*2 0;
   
-  img { 
-    max-width: 738px; }
+  img {
+    border-radius: $radius;
+    max-width: 738px;
+    display: block;
+    margin-bottom: $line;
+    box-shadow:
+      0 1px $alternate-l2,
+      0 0 0 1px $alternate-l3,
+      0 2px 3px $alternate-l3; }
   
   .wide-image {
     max-width: 100%; }
