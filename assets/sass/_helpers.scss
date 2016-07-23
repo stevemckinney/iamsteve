@@ -58,3 +58,11 @@ $default-enable-float: false !default;
 $default-enable-inline-block-layout: true !default;
 $helper-vertical-align-prefix: vertical-align;
 @import "helpers/inline-block";
+
+// Typography
+// ---------------------------
+@import "helpers/typography";
+
+// Utilities
+// ---------------------------
+@import "helpers/utilities";
