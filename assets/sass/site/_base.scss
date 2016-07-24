@@ -11,9 +11,9 @@ $primary-l1: #f59689;
 $primary-l2: #ffe3de;
 $primary-l3: #fff3f0;
 
-$secondary: #87d4be !global;
-$secondary-d1: #4db898;
-$secondary-d2: scale-lightness($secondary, -20%);
+$secondary: #4db898 !global;
+$secondary-d1: scale-lightness($secondary, -20%);
+$secondary-l1: #87d4be;
 $secondary-l1: #b9edd9;
 $secondary-l2: #e1f7ee;
 $secondary-l3: #edf7f3;
