@@ -84,7 +84,7 @@
   parse_vars="yes"
   parse_conditionals="yes"
 }
-  <div class="row center pagination">
+  <div class="row center pagination" style="margin-bottom: -38px">
     {if previous_page}
       <a href="{previous_page}" class="paginate paginate-left link-icon"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> Newer</a>
 		{if:else}
@@ -103,4 +103,6 @@
   </div>
 {/exp:stash:get_list}
 
-{subscribe}
+<section class="row row-normal row-padding contain contain-large center subscribe">
+  {subscribe}
+</section>

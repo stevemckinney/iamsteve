@@ -8,6 +8,22 @@
 
 // Alignment
 // ---------------------------
+.row-padding {
+  padding-top: double($line);
+  padding-bottom: double($line);
+  
+  @include breakpoint($b) {
+    padding-top: quadruple($line);
+    padding-bottom: quadruple($line); }
+  
+  @include breakpoint($d) {
+    padding-top: 120px;
+    padding-bottom: 120px; }
+  
+  @include breakpoint($e) {
+    padding-top: 132px;
+    padding-bottom: 132px; } }
+    
 .contain {
   padding-right: $base-px;
   padding-left: $base-px;
@@ -35,44 +51,18 @@
 .row-normal {
   background: $white;
   
-  @include breakpoint($c) {
-    padding-top: double($line);
-    padding-bottom: double($line); }
-  
-  @include breakpoint($c-max) {
-    padding-top: $line;
-    padding-bottom: $line; } }
+  & + & {
+    border-top: 1px solid $alternate-l3; } }
 
 // Emphasis, more whitespace, background
 .row-strong {
   background: $alternate-l4;
-  color: $alternate;
-  padding-top: double($line);
-  padding-bottom: double($line);
-  
-  @include breakpoint($b) {
-    padding-top: quadruple($line);
-    padding-bottom: quadruple($line); }
-  
-  @include breakpoint($d) {
-    padding-top: 120px;
-    padding-bottom: 120px; }
-  
-  @include breakpoint($e) {
-    padding-top: 132px;
-    padding-bottom: 132px; } }
+  color: $alternate; }
 
 // Row contents
 // ---------------------------
 .row-header {
-  padding: $line $base-px;
-    
-  @include breakpoint($b) {
-    padding-right: $line;
-    padding-left: $line; }
-  
-  @include breakpoint($site-width) {
-    padding: $line*2 calc(50% - 600px); } }
+  padding-bottom: $line; }
   
 .row-title {
   align-self: center;
@@ -86,14 +76,12 @@
 
 @for $i from 1 through 8 {
   .column-#{$i} {
-    flex-basis: calc(#{(100% / 8) * $i} - 8px); } }
-
-@for $i from 1 through 8 {
+    flex-basis: calc(#{(100% / 8) * $i} - 8px); } 
+    
   .column-#{$i}-b {
     @include breakpoint($b) {
-      flex-basis: calc(#{(100% / 8) * $i} - 16px); } } }
-
-@for $i from 1 through 8 {
+      flex-basis: calc(#{(100% / 8) * $i} - 16px); } }
+      
   .column-#{$i}-d {
     @include breakpoint($d) {
       flex-basis: calc(#{(100% / 8) * $i} - 32px); } } }

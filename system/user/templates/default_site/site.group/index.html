@@ -53,129 +53,130 @@
   </div>
 </div>
 
-<div class="row-normal">
-  <section class="posts">
-    <header class="row row-header between">
-      <h2 class="f5 f4-b f3-d chunky neutral row-title">Previous posts</h2>
-      <div class="pagination js-pagination">
-        <button class="paginate paginate-left">
-          <span class="icon icon-medium">{icon_arrow_left}</span>
-        </button>
-        <button class="paginate paginate-right">
-          <span class="icon icon-medium">{icon_arrow_right}
-        </button>
-      </div>
-    </header>
+
+<section class="posts">
+  <header class="row row-header contain contain-large between">
+    <h2 class="f5 f4-b f3-d chunky neutral row-title">Previous posts</h2>
+    <div class="pagination js-pagination">
+      <button class="paginate paginate-left">
+        <span class="icon icon-medium">{icon_arrow_left}</span>
+      </button>
+      <button class="paginate paginate-right">
+        <span class="icon icon-medium">{icon_arrow_right}
+      </button>
+    </div>
+  </header>
+
+  <div class="scroll">
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="{ch_limit}"}
+    	<article data-href="{title_permalink='blog/entry'}" class="card card-medium">
+      	<div class="card-image mb-half">
+        	{if thumbnail}
+        	  {thumbnail}
+        	    {if medium_file_url}
+        	      <img src="{url:medium}" srcset="{url:medium-2x} 2x">
+              {if:else}
+                <img src="{url}">
+              {/if}
+            {/thumbnail}
+          {if:else}
+        	  {categories channel="blog" limit="1"}
+              {if category_id == 7}
+                <img src="{site_url}dist/images/{design}">
+              {if:else}
+                <img src="{site_url}dist/images/{code}">
+              {/if}
+            {/categories}
+          {/if}
+      	</div>
+      	<div class="card-body">
+        	<div class="meta dashes mb-half">{date}</div>
+      		<h3 class="f5 f4-b mb-quarter primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+      		{exp:streeng words="44"}{excerpt}{/exp:streeng}
+      		{blog_meta}
+        </div>
+    	</article>
+    {/exp:channel:entries}
+  </div>
+</section>
+
+<section class="row row-strong row-padding contain contain-large center subscribe">
+  {subscribe}
+</section>
+
+
+<section class="posts">
+  <header class="row row-header contain contain-large between">
+    <h2 class="f5 f4-b f3-d neutral chunky row-title">Popular in design</h2>
+    <div class="pagination js-pagination">
+      <button class="paginate paginate-left">
+        <span class="icon icon-medium">{icon_arrow_left}</span>
+      </button>
+      <button class="paginate paginate-right">
+        <span class="icon icon-medium">{icon_arrow_right}</span>
+      </button>
+    </div>
+  </header>
   
-    <div class="scroll">
-      {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="{ch_limit}"}
-      	<article data-href="{title_permalink='blog/entry'}" class="card card-medium">
-        	<div class="card-image mb-half">
-          	{if thumbnail}
-          	  {thumbnail}
-          	    {if medium_file_url}
-          	      <img src="{url:medium}" srcset="{url:medium-2x} 2x">
-                {if:else}
-                  <img src="{url}">
-                {/if}
-              {/thumbnail}
-            {if:else}
-          	  {categories channel="blog" limit="1"}
-                {if category_id == 7}
-                  <img src="{site_url}dist/images/{design}">
-                {if:else}
-                  <img src="{site_url}dist/images/{code}">
-                {/if}
-              {/categories}
-            {/if}
-        	</div>
-        	<div class="card-body">
-          	<div class="meta dashes mb-half">{date}</div>
-        		<h3 class="f5 f4-b mb-quarter primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
-        		{exp:streeng words="44"}{excerpt}{/exp:streeng}
-        		{blog_meta}
-          </div>
-      	</article>
-      {/exp:channel:entries}
-    </div>
-  </section>
-</div>
+  <div class="scroll">
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="7" orderby="view_count_one" sort="desc"}
+    	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
+      	<div class="card-image mb-half">
+        	{if thumbnail}
+        	  {thumbnail}
+        	    {if small_file_url}
+        	      <img src="{url:small}" srcset="{url:small-2x} 2x">
+              {if:else}
+                <img src="{url}">
+              {/if}
+            {/thumbnail}
+        	{if:else}
+        	  <img src="{site_url}dist/images/{design}">
+        	{/if}
+      	</div>
+      	<div class="card-body">
+      		<div class="meta dashes mb-quarter">{date}</div>
+      		<h2 class="f6 f5-b f4-d mb-undo neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+    		</div>
+    	</article>
+    {/exp:channel:entries}
+  </div>
+</section>
 
-{subscribe}
-
-<div class="row-normal">
-  <section class="posts">
-    <header class="row row-header between">
-      <h2 class="f5 f4-b f3-d neutral chunky row-title">Popular in design</h2>
-      <div class="pagination js-pagination">
-        <button class="paginate paginate-left">
-          <span class="icon icon-medium">{icon_arrow_left}</span>
-        </button>
-        <button class="paginate paginate-right">
-          <span class="icon icon-medium">{icon_arrow_right}</span>
-        </button>
-      </div>
-    </header>
-    
-    <div class="scroll">
-      {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="7" orderby="view_count_one" sort="desc"}
-      	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
-        	<div class="card-image mb-half">
-          	{if thumbnail}
-          	  {thumbnail}
-          	    {if small_file_url}
-          	      <img src="{url:small}" srcset="{url:small-2x} 2x">
-                {if:else}
-                  <img src="{url}">
-                {/if}
-              {/thumbnail}
-          	{if:else}
-          	  <img src="{site_url}dist/images/{design}">
-          	{/if}
-        	</div>
-        	<div class="card-body">
-        		<div class="meta dashes mb-quarter">{date}</div>
-        		<h2 class="f6 f5-b f4-d mb-undo neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-      		</div>
-      	</article>
-      {/exp:channel:entries}
+<section class="posts">
+  <header class="row row-header contain contain-large between">
+    <h2 class="f5 f4-b f3-d neutral chunky row-title">Popular in code</h2>
+    <div class="pagination js-pagination">
+      <button class="paginate paginate-left">
+        <span class="icon icon-medium">{icon_arrow_left}</span>
+      </button>
+      <button class="paginate paginate-right">
+        <span class="icon icon-medium">{icon_arrow_right}</span>
+      </button>
     </div>
-  </section>
-  <section class="posts">
-    <header class="row row-header between">
-      <h2 class="f5 f4-b f3-d neutral chunky row-title">Popular in code</h2>
-      <div class="pagination js-pagination">
-        <button class="paginate paginate-left">
-          <span class="icon icon-medium">{icon_arrow_left}</span>
-        </button>
-        <button class="paginate paginate-right">
-          <span class="icon icon-medium">{icon_arrow_right}</span>
-        </button>
-      </div>
-    </header>
-    
-    <div class="scroll">
-      {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2" orderby="view_count_one" sort="desc"}
-      	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
-        	<div class="card-image mb-half">
-          	{if thumbnail}
-          	  {thumbnail}
-          	    {if small_file_url}
-          	      <img src="{url:small}" srcset="{url:small-2x} 2x">
-                {if:else}
-                  <img src="{url}">
-                {/if}
-              {/thumbnail}
-          	{if:else}
-          	  <img src="{site_url}dist/images/{code}">
-          	{/if}
-        	</div>
-        	<div class="card-body">
-          	<div class="meta dashes mb-quarter">{date}</div>
-        		<h2 class="f6 f5-b f4-d mb-undo neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-      		</div>
-      	</article>
-      {/exp:channel:entries}
-    </div>
-  </section>
-</div>
+  </header>
+  
+  <div class="scroll">
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2" orderby="view_count_one" sort="desc"}
+    	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
+      	<div class="card-image mb-half">
+        	{if thumbnail}
+        	  {thumbnail}
+        	    {if small_file_url}
+        	      <img src="{url:small}" srcset="{url:small-2x} 2x">
+              {if:else}
+                <img src="{url}">
+              {/if}
+            {/thumbnail}
+        	{if:else}
+        	  <img src="{site_url}dist/images/{code}">
+        	{/if}
+      	</div>
+      	<div class="card-body">
+        	<div class="meta dashes mb-quarter">{date}</div>
+      		<h2 class="f6 f5-b f4-d mb-undo neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+    		</div>
+    	</article>
+    {/exp:channel:entries}
+  </div>
+</section>
