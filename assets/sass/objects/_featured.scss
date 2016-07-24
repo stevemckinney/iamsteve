@@ -8,5 +8,5 @@
   @include breakpoint($site-width) {
     flex-basis: 738px; } 
   
-  @include breakpoint($site-width-max) {
+  @include breakpoint(($c $site-width-max)) {
     padding-right: $line; } }
