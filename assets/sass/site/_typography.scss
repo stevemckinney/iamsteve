@@ -51,7 +51,7 @@ code {
   font: 400 em($base-font-size - 2px) $monospace;
   background: rgba($alternate, .05);
   border-radius: 2px;
-  padding: em(2px, $base-font-size - 2px) em(6px, $base-font-size - 2px); }
+  padding: em(2px, $base-font-size - 2px) em(4px, $base-font-size - 2px); }
 
 pre {
   padding: $line; }
