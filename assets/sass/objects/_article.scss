@@ -1,9 +1,6 @@
 // Scoped font sizes
 // ---------------------------
 .entry-content {
-  h1 + p {
-    font-size: 24px; }
-  
   p, li {
     font-size: 21px; }
   
@@ -27,39 +24,30 @@
     text-decoration-color: $neutral; }
   
   /* Aligns to 72px */
+  // default line-height: 1.25
   h2 {
-    font-size: 30px;
-    line-height: 1.2;
-    padding-top: 24px;
+    font-size: 24px;
+    padding-top: 30px;
     margin-bottom: 12px; }
   
   /* Aligns to 48px */
   h3 {
-    font-size: 24px;
-    line-height: 1.25;
-    padding-top: 12px;
-    margin-bottom: 6px + 12px; }
-  
-  /* Aligns to 36px */
-  h4 {
     font-size: 21px;
-    line-height: 1.3333333;
+    line-height: 1.333333;
     padding-top: 12px;
     margin-bottom: 8px; }
   
-  /* Aligns to 36px */
-  h5 {
+  /* Aligns to 48px */
+  h4, h5, h6 {
     font-size: 18px;
     line-height: 1.5;
-    padding-top: 12px;
-    margin-bottom: 9px; }
-  
-  /* Aligns to 36px */
-  h6 {
-    font-size: 16px;
-    line-height: 1.5;
-    padding-top: 9px;
-    margin-bottom: 3px; } }
+    padding-top: 15px;
+    margin-bottom: 6px; } }
+
+.entry-header + p,
+.entry-content > p:first-child {
+  font-size: 24px;
+  margin-bottom: 24px; }
 
 // Lists
 // ---------------------------
@@ -75,9 +63,9 @@
 
 .entry-content figcaption {
   position: absolute;
-  top: 0;
+  top: 24px;
   left: 100%;
-  max-width: 184px;
+  width: 192px;
   padding: 0 $line;
   font-style: italic;
   line-height: 1.333333;
@@ -93,8 +81,13 @@
 // Specific pieces of content
 // ---------------------------
 .featured-image {
+  margin-top: -5px;
   padding: $base-px 0;
-  margin-top: $line*2; }
+  overflow: hidden;
+  min-height: 516px;
+  
+  @include breakpoint(1200px) {
+    border-radius: $radius 0 0 $radius; } }
 
 .featured-image img {
   display: block;
@@ -116,7 +109,6 @@
   @include breakpoint($c-max) {
     margin: auto; } }
 
-/*
 body {
 	position: relative;
 }
@@ -134,10 +126,9 @@ body:after {
 	bottom: 0;
 	left: 0;
 	background: url(http://basehold.it/image.php?height=24) repeat top left;
-	opacity: 1;
+	opacity: .1;
 }
 
 body:active:after {
 	display: none;
 }
-*/

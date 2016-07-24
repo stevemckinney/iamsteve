@@ -5,8 +5,8 @@ $blockquote-font-size: 21px;
 .blockquote,
 blockquote {
   font: italic #{em($blockquote-font-size)}/#{1.5} $serif;
-  padding: em($line, $blockquote-font-size);
-  margin: em($line, $blockquote-font-size) 0;
+  padding: cp($line, $measure);
+  margin: $line 0;
   position: relative;
   text-align: center;
   width: 100%;
