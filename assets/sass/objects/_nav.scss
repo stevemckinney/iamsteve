@@ -9,12 +9,9 @@
 
 .nav-item {
   font-family: $sans;
-  color: $neutral-l1;
+  color: inherit;
   text-transform: lowercase;
   padding: $line;
-  
-  &.active { 
-    color: $neutral; }
   
   @include breakpoint($c) {
     padding: $line $base-px;

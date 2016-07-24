@@ -4,3 +4,6 @@
   .fill-#{nth($color, 1)},
   .fill-#{nth($color, 1)} svg {
     fill: nth($color, 2); } }
+
+.fill-currentcolor {
+  fill: currentcolor; }

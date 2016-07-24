@@ -2,7 +2,7 @@
 // ---------------------------
 .button {
 	@include element-base;
-  color: $neutral; }
+	color: currentcolor; }
 
 $buttons: (
 	primary: $primary,

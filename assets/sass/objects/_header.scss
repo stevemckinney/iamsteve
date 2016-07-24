@@ -13,7 +13,8 @@
   z-index: $z-index-100;
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
-  
+  color: $neutral;
+
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); }
   
@@ -33,7 +34,8 @@
   transform: translateY(-100%); }
 
 .header-not-top {
-  box-shadow: inset 0 -1px rgba($alternate, .2), 0 6px 24px rgba($alternate, .1); }
+  color: $neutral-l2;
+  box-shadow: inset 0 -1px rgba($alternate, .2), 0 6px 36px rgba($alternate, .1); }
 
 // Logo
 // ---------------------------
@@ -42,7 +44,6 @@
   white-space: nowrap;
   padding: $base-px;
   font: 600 $text-medium $sans;
-  color: $primary;
   position: relative;
   z-index: $z-index-200;
   
