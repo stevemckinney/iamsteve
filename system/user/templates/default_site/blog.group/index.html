@@ -17,19 +17,19 @@
     parse_conditionals="yes"
   }
     {if previous_page}
-      <a href="{previous_page}" class="secondary-d1 sans link-icon"><span class="icon icon-medium icon-left fill-secondary-d1">{icon_arrow_left}</span> Newer</a>
+      <a href="{previous_page}" class="secondary sans link-icon"><span class="icon icon-medium icon-left fill-secondary">{icon_arrow_left}</span> Newer</a>
     {if:else}
-      <span class="secondary-d1 sans link-icon disabled"><span class="icon icon-medium icon-left fill-secondary-d1">{icon_arrow_left}</span> Newer</span>
+      <span class="secondary sans link-icon disabled"><span class="icon icon-medium icon-left fill-secondary">{icon_arrow_left}</span> Newer</span>
     {/if}
   
     {exp:channel:info channel="blog"}
-      <h1 class="f4 f3-b f2-d secondary-d1 mb-undo">{channel_title}</h1>
+      <h1 class="f4 f3-b f2-d secondary mb-undo">{channel_title}</h1>
     {/exp:channel:info}
   
     {if next_page}
-      <a href="{next_page}" class="secondary-d1 sans link-icon">Older <span class="icon icon-medium icon-right fill-secondary-d1">{icon_arrow_right}</span></a>
+      <a href="{next_page}" class="secondary sans link-icon">Older <span class="icon icon-medium icon-right fill-secondary">{icon_arrow_right}</span></a>
     {if:else}
-      <span class="secondary-d1 sans link-icon disabled">Older <span class="icon icon-medium icon-right fill-secondary-d1">{icon_arrow_right}</span></span>
+      <span class="secondary sans link-icon disabled">Older <span class="icon icon-medium icon-right fill-secondary">{icon_arrow_right}</span></span>
     {/if}
   {/exp:stash:get_list}
 </div>
