@@ -22,7 +22,8 @@ $text-color-helpers: (
 	secondary: $secondary,
 	secondary-d1: $secondary-d1,
 	neutral: $neutral,
-	neutral-l1: $neutral-l1
+	neutral-l1: $neutral-l1,
+	alternate: $alternate
 );
 
 @each $name, $color in $text-color-helpers {
@@ -87,7 +88,6 @@ address { font-style: normal; }
     transition: .2s ease; } }
 
 .link-icon.disabled {
-  opacity: .5;
   cursor: default; }
 
 // Various
