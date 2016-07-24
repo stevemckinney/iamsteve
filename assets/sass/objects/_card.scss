@@ -43,10 +43,6 @@
     .card-body {
       padding: double($line) double($line) (double($line) + 8px) 168px; } } }
 
-.hero .card-large {
-  @include breakpoint($c) {
-    margin-bottom: -$line * 4; } }
-
 // Card body
 // ---------------------------
 .card-body {
@@ -54,14 +50,12 @@
 
 // Card image
 // ---------------------------
-.card-image img {
+.card-small .card-image img,
+.card-medium .card-image img {
   border-radius: $radius; }
 
 // Card meta
 // ---------------------------
-
-// All meta has a dashed background, with each meta element having a white
-// background to cover it up to retain legibility
 .meta {
   display: flex;
   justify-content: space-between;
@@ -109,3 +103,9 @@
   .month {
     font-weight: font-weight(bold);
     text-transform: lowercase; } }
+
+// Specifics
+// ---------------------------
+.hero .card-large {
+  @include breakpoint($c) {
+    margin-bottom: -$line * 4; } }
