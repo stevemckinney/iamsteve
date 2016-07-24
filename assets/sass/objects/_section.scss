@@ -76,12 +76,14 @@
 
 @for $i from 1 through 8 {
   .column-#{$i} {
-    flex-basis: calc(#{(100% / 8) * $i} - 8px); } 
-    
+    flex-basis: calc(#{(100% / 8) * $i} - 8px); } }
+
+@for $i from 1 through 8 {    
   .column-#{$i}-b {
     @include breakpoint($b) {
-      flex-basis: calc(#{(100% / 8) * $i} - 16px); } }
-      
+      flex-basis: calc(#{(100% / 8) * $i} - 16px); } } }
+
+@for $i from 1 through 8 {
   .column-#{$i}-d {
     @include breakpoint($d) {
       flex-basis: calc(#{(100% / 8) * $i} - 32px); } } }
