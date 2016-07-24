@@ -98,7 +98,9 @@ $body: $serif !global;
 $form: $sans !global;
 $element: $sans !global;
 
-$measure: 684px;
+$measure: 640px; // 30.476190476em new: 640px old: 684px;
+$measure-wide: 720px; // 34.285714286em
+$measure-narrow: 480px; // 22.857142857em
 
 // Defaults
 // ---------------------------
