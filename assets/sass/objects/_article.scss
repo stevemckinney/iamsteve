@@ -1,8 +1,33 @@
-// Scoped font sizes
+// Entry content
+// ---------------------------
+.entry-content {
+  padding: $line*2 0;
+  
+  @include breakpoint(1200px) {
+    margin-right: calc(50% - #{$measure / 2}); }
+  
+  img {
+    border-radius: $radius;
+    max-width: 738px;
+    display: block;
+    margin-bottom: $line;
+    box-shadow:
+      0 1px $alternate-l2,
+      0 0 0 1px $alternate-l3,
+      0 2px 3px $alternate-l3; }
+  
+  .wide-image {
+    max-width: 100%; }
+  
+  .meta {
+    max-width: $measure; } }
+
+// Scoped font sizes/alignment
 // ---------------------------
 .entry-content {
   p, li {
-    font-size: 21px; }
+    font-size: 21px;
+    font-size: 18px; }
   
   > p {
     // 3px aligns back to baseline
@@ -11,7 +36,7 @@
   > *:not(figure), img {
     margin-left: auto; }
   
-  > *:not(figure) {
+  > *:not(figure):not(img) {
     max-width: $measure; }
   
   strong {
@@ -47,6 +72,7 @@
 .entry-header + p,
 .entry-content > p:first-child {
   font-size: 24px;
+  font-size: 21px;
   margin-bottom: 24px; }
 
 // Lists
@@ -84,9 +110,10 @@
   margin-top: -5px;
   padding: $base-px 0;
   overflow: hidden;
-  min-height: 516px;
+  min-height: 240px;
   
   @include breakpoint(1200px) {
+    min-height: 516px;
     border-radius: $radius 0 0 $radius; } }
 
 .featured-image img {
@@ -109,6 +136,7 @@
   @include breakpoint($c-max) {
     margin: auto; } }
 
+/*
 body {
 	position: relative;
 }
@@ -132,3 +160,4 @@ body:after {
 body:active:after {
 	display: none;
 }
+*/
