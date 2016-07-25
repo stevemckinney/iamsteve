@@ -25,6 +25,7 @@ images/pm_attachments/
 images/uploads
 uploads
 images/
+!assets/images
 
 # Caches
 sized/

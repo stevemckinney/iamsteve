@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 378 252">
+  <defs>
+    <style>
+      .a {
+        fill: #e9f5f5;
+      }
+
+      .b, .e {
+        fill: none;
+      }
+
+      .b, .c, .e {
+        stroke: #1a626e;
+        stroke-miterlimit: 10;
+      }
+
+      .b, .c {
+        stroke-width: 2px;
+      }
+
+      .c {
+        fill: #c0d8d8;
+      }
+
+      .d {
+        fill: #1a626e;
+      }
+
+      .f {
+        fill: #f7d77a;
+      }
+
+      .g {
+        fill: #d1991e;
+      }
+
+      .h {
+        fill: #384242;
+      }
+    </style>
+  </defs>
+  <g>
+    <rect class="a" width="378" height="252"/>
+    <g>
+      <polyline class="b" points="252 76 225 76 225 133"/>
+      <path class="c" d="M154.5,76H127V184h27.5c30,0,51-23.88,51-54C205.5,100.38,184.5,76,154.5,76Zm3,83H148V102h9.5c15,0,25.5,13.69,25.5,28.5C183,145.56,172.5,159,157.5,159Z"/>
+      <rect class="d" x="124.5" y="73" width="6" height="6"/>
+      <rect class="d" x="154.5" y="181" width="6" height="6"/>
+      <rect class="d" x="155.5" y="73" width="6" height="6"/>
+      <rect class="d" x="124.5" y="181" width="6" height="6"/>
+      <g>
+        <line class="e" x1="205.5" y1="154" x2="205.5" y2="106"/>
+        <circle class="d" cx="205.5" cy="106" r="3"/>
+        <circle class="d" cx="205.5" cy="154" r="3"/>
+        <rect class="d" x="202.5" y="127" width="6" height="6"/>
+      </g>
+      <g>
+        <g>
+          <path class="f" d="M217.48,182L212,166.74l7.71-24.24h3.63v19.62a3.88,3.88,0,1,0,3.25,0V142.5h3.63L238,166.74,232.52,182h-15Z"/>
+          <path class="g" d="M229.89,143l7.55,23.73-5.27,14.77H217.83l-5.27-14.77L220.11,143h2.77v18.81a4.38,4.38,0,1,0,4.25,0V143h2.77m0.73-1h-4.5v20.46a3.38,3.38,0,1,1-2.25,0V142h-4.5l-7.87,24.75,5.63,15.75h15.75l5.63-15.75L230.63,142h0Z"/>
+        </g>
+        <rect class="h" x="216" y="182.5" width="18" height="4.5"/>
+      </g>
+      <rect class="d" x="145.5" y="98.5" width="6" height="6"/>
+      <rect class="d" x="180" y="127" width="6" height="6"/>
+      <rect class="d" x="145.5" y="155.5" width="6" height="6"/>
+      <g>
+        <line class="e" x1="225" y1="100" x2="225" y2="52"/>
+        <circle class="d" cx="225" cy="52" r="3"/>
+        <circle class="d" cx="225" cy="100" r="3"/>
+        <rect class="d" x="222" y="73" width="6" height="6"/>
+      </g>
+      <rect class="d" x="247.5" y="73" width="6" height="6"/>
+      <rect class="d" x="222" y="130" width="6" height="6"/>
+    </g>
+  </g>
+</svg>
