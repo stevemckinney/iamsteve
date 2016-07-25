@@ -9,7 +9,4 @@
   justify-content: space-between;
   
   @include breakpoint($d) {
-    padding-top: double($line); }
-  
-  @include breakpoint($site-width) {
-    justify-content: space-around; } }
+    padding-top: double($line); } }
