@@ -1,17 +1,16 @@
 // Footer
 // ---------------------------
 .footer {
+  position: relative;
   align-items: center;
   font-family: $sans;
   font-weight: font-weight(semibold);
-  justify-content: center;
   padding-top: $line;
   padding-bottom: $line;
     
   @include breakpoint($b) {
     padding-top: double($line);
-    padding-bottom: double($line);
-    justify-content: space-between; }
+    padding-bottom: double($line); }
     
   @include breakpoint($d) {
     padding-top: quadruple($line);
@@ -38,6 +37,10 @@
       padding-right: $base-px; } } }
 
 .logo-footer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: $line; }
 
 .logo-footer-small {
