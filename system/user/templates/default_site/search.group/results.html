@@ -1,12 +1,53 @@
-{embed="/include/header" entry_title="{exp:search:total_results}{total}{/exp:search:total_results} results were found for {exp:search:keywords}."}
-<div class="page-content">
-  {exp:search:search_results channel="blog" paginate="bottom" limit="8" status="open|latest" disable="member_data|trackbacks"}
-  	<article role="article">
-  		<h1><a href="{title_permalink='blog/entry'}" title="Read {title} in full.">{title}</a></h1>
-  		<p>{excerpt}</p>
-  		{blog_meta}
+{layout='layouts/_layout-blog'}
+
+{!-- channel vars (prefix ch_) --}
+{preload_replace:ch="blog"}
+{preload_replace:ch_status="latest|open"}
+{preload_replace:ch_disable="member_data|trackbacks"}
+{preload_replace:ch_limit="1"}
+{preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
+{preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
+
+<div class="row subheader center contain contain-large pb-half pb-d">
+  <h1 class="f4 f3-b f2-d secondary mb-undo">
+    {exp:search:search_results channel="{ch}" limit="" paginate="bottom" status="open|latest" disable="member_data|trackbacks"}
+      {if count == 1}
+        {exp:search:total_results}{total}{/exp:search:total_results} results were found for {exp:search:keywords}
+      {/if}
+    {/exp:search:search_results}
+  </h1>
+</div>
+
+<div class="row between contain contain-large pt pt-double-b pb pb-double-b" id="posts">
+  {exp:search:search_results channel="{ch}" limit="{ch_limit}" status="{ch_status}" disable="{ch_disable}"}
+  	<article data-href="{title_permalink='blog/entry'}" class="card card-medium entry">
+    	<div class="card-image mb-half">
+      	{if thumbnail}
+      	  {thumbnail}
+      	    {if medium_file_url}
+      	      <img src="{url:medium}" srcset="{url:medium-2x} 2x">
+            {if:else}
+              <img src="{url}">
+            {/if}
+          {/thumbnail}
+        {if:else}
+      	  {categories channel="blog" limit="1"}
+            {if category_id == 7}
+              <img src="{site_url}dist/images/{design}">
+            {if:else}
+              <img src="{site_url}dist/images/{code}">
+            {/if}
+          {/categories}
+        {/if}
+    	</div>
+    	<div class="card-body">
+      	<div class="meta dashes mb-quarter mb-half-b">{date}</div>
+    		<h3 class="f6 f5-b f4-d mb-undo mb-quarter-b primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+    		{if '{exp:iamsteve:is_mobile}' != 1}
+    		  {exp:streeng words="44"}{excerpt}{/exp:streeng}
+    		  {blog_meta}
+    		{/if}
+      </div>
   	</article>
-  	{pagination}
   {/exp:search:search_results}
 </div>
-{embed="/include/footer"}
