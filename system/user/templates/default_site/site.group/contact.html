@@ -1,42 +1,40 @@
-{embed="/include/header" entry_title="Contact"}
+{layout='layouts/_layout'}
 
-{if segment_2 != ''}
-  {redirect="404"}
-{/if}
-
-<div class="page-content">
-	<article role="article">
-		<h2>Methods of contact</h2>
-		<p>Use the contact form or {email} (<a href="http://twitter.com/irsteve">twitter</a> is an option) I'll try to reply within the day. Should you not receive a reply within 24-48 hours, send your message again, because something will have gone wrong somewhere.</p>
-	</article>
-	<article role="article">
-		<h2>Finding me</h2>
-		<p>Should you wish to see what I do elsewhere and such things, here are what I use fairly often.</p>
-		{social}
-	</article>
-	<article role="article">
-		<h2>Contact form</h2>		
-		<div id="wufoo-q1ptzq41b87c78">
-    Fill out my <a href="https://stevemckinney.wufoo.com/forms/q1ptzq41b87c78">online form</a>.
-    </div>
-    <script>var q1ptzq41b87c78;(function(d, t) {
-    var s = d.createElement(t), options = {
-    'userName':'stevemckinney',
-    'formHash':'q1ptzq41b87c78',
-    'autoResize':true,
-    'height':'627',
-    'async':true,
-    'host':'wufoo.com',
-    'header':'show',
-    'ssl':true};
-    s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
-    s.onload = s.onreadystatechange = function() {
-    var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
-    try { q1ptzq41b87c78 = new WufooForm();q1ptzq41b87c78.initialize(options);q1ptzq41b87c78.display(); } catch (e) {}};
-    var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
-    })(document, 'script');</script>
-
-	</article>
-</div>
-<span class="screenreader updated">{edit_date format='%Y-%m-%dT%H:%i:%s%O'}</span>
-{embed="/include/footer"}
+  {if segment_2 != ''}
+    {redirect="404"}
+  {/if}
+  
+  <div class="page-content">
+  	<article role="article" class="mb">
+  		<h2>Methods of contact</h2>
+  		<p>Use the contact form or {email} (<a href="http://twitter.com/irsteve">twitter</a> is an option) I'll try to reply within the day. Should you not receive a reply within 24-48 hours, send your message again, because something will have gone wrong somewhere.</p>
+  	</article>
+  	<article role="article" class="mb">
+  		<h2>Finding me</h2>
+  		<p>Should you wish to see what I do elsewhere and such things, here are what I use fairly often.</p>
+  		{social}
+  	</article>
+  	<article role="article">
+  		<h2>Contact form</h2>		
+  		<div id="wufoo-q1ptzq41b87c78">
+      Fill out my <a href="https://stevemckinney.wufoo.com/forms/q1ptzq41b87c78">online form</a>.
+      </div>
+      <script>var q1ptzq41b87c78;(function(d, t) {
+      var s = d.createElement(t), options = {
+      'userName':'stevemckinney',
+      'formHash':'q1ptzq41b87c78',
+      'autoResize':true,
+      'height':'627',
+      'async':true,
+      'host':'wufoo.com',
+      'header':'show',
+      'ssl':true};
+      s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+      s.onload = s.onreadystatechange = function() {
+      var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+      try { q1ptzq41b87c78 = new WufooForm();q1ptzq41b87c78.initialize(options);q1ptzq41b87c78.display(); } catch (e) {}};
+      var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+      })(document, 'script');</script>
+  
+  	</article>
+  </div>
