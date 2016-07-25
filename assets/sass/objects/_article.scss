@@ -26,8 +26,10 @@
 // ---------------------------
 .entry-content {
   p, li {
-    font-size: 21px;
-    font-size: 18px; }
+    font-size: 18px;
+    
+    @include breakpoint($b) {
+      font-size: 21px; } }
   
   > p {
     // 3px aligns back to baseline
