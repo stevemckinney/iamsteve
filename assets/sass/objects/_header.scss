@@ -13,7 +13,6 @@
   z-index: $z-index-100;
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
-  color: $neutral;
 
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); }

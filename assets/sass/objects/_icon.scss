@@ -41,9 +41,8 @@
   .icon-large-d svg {
     width: 1.5em; } }
     
-.icon-search {  
-  &.active svg {
-    fill: $neutral; } }
+.icon-search.active {
+  color: $primary; }
 
 .icon-left {
   padding-right: $base-px/2; }
@@ -82,7 +81,7 @@ $toggle-width: 16px;
       display: block;
       width: $toggle-width;
       height: 2px;
-      background-color: $primary;
+      background-color: $alternate;
       border-radius: 2px;
       transition: .2s cubic-bezier(.1, .68, .6, 1.12); }
     
@@ -115,7 +114,7 @@ $toggle-width: 16px;
       
     &:before,
     &:after {
-      background-color: $neutral; }
+      background-color: $primary; }
     
     &:before {
       transform: rotate(45deg); }
