@@ -66,7 +66,21 @@ var iamsteve = (function ()
   {     
     this.classList.toggle('active');
     search.classList.toggle('visible');
-    document.getElementById('keywords').focus();
+    console.log('transition starts');
+    
+    var field = document.getElementById('keywords');
+
+    search.addEventListener('transitionend', function()
+    {
+      if ( toggle.classList.contains('active') ) 
+      {
+        field.blur();
+      }
+      else
+      {
+        field.focus();
+      }
+    });
     
     if ( toggle.classList.contains('active') ) 
     {
@@ -150,3 +164,4 @@ var iamsteve = (function ()
   };
 
 })();
+console.log('ok');
