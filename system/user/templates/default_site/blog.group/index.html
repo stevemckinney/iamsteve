@@ -21,10 +21,17 @@
     {if:else}
       <span class="secondary sans link-icon disabled"><span class="icon icon-medium icon-left fill-secondary">{icon_arrow_left}</span> Newer</span>
     {/if}
-  
-    {exp:channel:info channel="blog"}
-      <h1 class="f4 f3-b f2-d secondary mb-undo">{channel_title}</h1>
-    {/exp:channel:info}
+
+    {if segment_2 == 'category'}
+    	{exp:channel:category_heading channel='{ch}'}
+    		<h1 class="f4 f3-b f2-d secondary mb-undo">{category_name}</h1>
+    	{/exp:channel:category_heading}
+    {if:else}
+      {exp:channel:info channel="blog"}
+        <h1 class="f4 f3-b f2-d secondary mb-undo">{channel_title}</h1>
+      {/exp:channel:info}
+    {/if}
+
   
     {if next_page}
       <a href="{next_page}" class="secondary sans link-icon">Older <span class="icon icon-medium icon-right fill-secondary">{icon_arrow_right}</span></a>
