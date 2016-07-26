@@ -45,9 +45,13 @@ address { font-style: normal; }
     z-index: -1;
     bottom: -1px;
     left: -3px;
-    width: 96px;
-    height: 12px;
-    background: $secondary-l2; }
+    background: $secondary-l2;
+    width: 72px;
+    height: 9px;
+    
+    @include breakpoint($b) {
+      width: 96px;
+      height: 12px; } }
   
   &.primary:after {
     background: $tertiary-l2; } }
