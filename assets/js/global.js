@@ -54,6 +54,19 @@ var iamsteve = (function ()
         notTop: 'header-not-top',
         bottom: 'header-bottom',
         notBottom: 'header-not-bottom'
+      },
+      onUnpin: function()
+      {
+        if ( _isNavVisible() )
+        {
+          this.elem.classList.remove(this.classes.unpinned);
+          this.elem.classList.add(this.classes.pinned);
+        }
+        else
+        {
+          this.elem.classList.add(this.classes.unpinned);
+          this.elem.classList.remove(this.classes.pinned);
+        }
       }
     };
     var headroom  = new Headroom(header, options);
@@ -62,6 +75,11 @@ var iamsteve = (function ()
   }
   
   // Private
+  var _isNavVisible = function()
+  {
+    return ( nav.classList.contains('visible') || search.classList.contains('visible') ? true : false );
+  }
+  
   var _toggleSearch = function( e )
   {     
     this.classList.toggle('active');
@@ -164,4 +182,3 @@ var iamsteve = (function ()
   };
 
 })();
-console.log('ok');
