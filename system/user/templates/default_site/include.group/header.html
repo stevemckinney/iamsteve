@@ -10,11 +10,11 @@
     {if:elseif segment_1 == "blog" && segment_2}
       {if segment_2 != 'category' AND segment_2  ~ '/^(?!P\d+).*/'}
         {exp:seo_lite default_description="iamsteve is a design & code blog. You'll find tutorials on Photoshop, Illustrator, Design, CSS & Wordpress."}
-        {exp:seo_lite title_override="blog • iamsteve"}
+        {exp:seo_lite title_override="blog ⨉ iamsteve"}
       {/if}
     {if:elseif segment_1 == "contact"}
-      {exp:seo_lite title_override="contact • iamsteve"}
-    {if:elseif segment_1 == ""}aa
+      {exp:seo_lite title_override="contact ⨉ iamsteve"}
+    {if:elseif segment_1 == ""}
       <title>iamsteve ⨉ design & code</title>
     {if:else}
       {exp:seo_lite use_last_segment="yes"}
