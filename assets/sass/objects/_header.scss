@@ -65,7 +65,12 @@
     display: none; } }
 
 .logo-small {
-  margin-right: half($base-px);
+  @include breakpoint($b) {
+    margin-right: half($base-px); }
   
   @include breakpoint($d) {
+    display: none; } }
+
+.logo-text {
+  @include breakpoint($b-max) {
     display: none; } }
