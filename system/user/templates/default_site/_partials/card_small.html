@@ -13,7 +13,11 @@
   	{/if}
 	</div>
 	<div class="card-body">
-		<div class="meta dashes mb-quarter">{date}</div>
+		<div class="meta dashes mb-quarter">
+  		<time datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
+        {entry_date format="%F %j%S %Y"}
+      </time>
+		</div>
 		<h2 class="f6 f5-b f4-d mb-undo neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
 	</div>
 </article>
