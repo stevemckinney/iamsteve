@@ -56,7 +56,7 @@
 
 // Emphasis, more whitespace, background
 .row-strong {
-  background: $alternate-l4;
+  background: image-url("dash-alternate.svg") repeat-x center top, image-url("dash-alternate.svg") repeat-x center bottom $alternate-l4;
   color: $alternate; }
 
 // Row contents
