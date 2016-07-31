@@ -19,10 +19,8 @@
     font-weight: font-weight(semibold); }
       
   @include breakpoint($cd) {
-    padding: 38px 16px 34px; // Align to the logo baseline
-       
-    &:first-child {
-      padding-left: 32px; } }
+    // Align to the logo baseline
+    padding: 38px $base-px 34px; }
   
   // Items will now be hidden
   // For small screens make the nav text larger and central

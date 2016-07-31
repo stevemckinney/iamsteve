@@ -112,7 +112,8 @@
 		@include form; }
 
   .input-search {
-    padding: $base-px 0;
+    // Align with logo baseline
+    padding: 16px 0 14px;
     background-color: transparent;
     min-width: 276px;
     
