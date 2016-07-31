@@ -5,16 +5,7 @@
     @include pin-below; } }
 
 .dashes {
-  background: 
-    linear-gradient(
-      to right,
-      $white 12.5%, transparent 12.5%,
-      transparent 40%, $white 40%,
-      #fff 50%, transparent 50%, 
-      transparent 60%, $white 60%, 
-      $white 70%, transparent 70%),
-    linear-gradient(to right, $alternate-l3, $alternate-l3) center calc(50% + 1px) repeat-x;
-  background-size: 48px 2px, 100% 2px;
+  background: image-url("dash-neutral.svg") repeat-x center calc(50% + 1px);
   
   a, li,
   span, time {
