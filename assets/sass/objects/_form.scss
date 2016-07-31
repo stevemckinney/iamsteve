@@ -7,12 +7,7 @@
 .form-search {
   @include breakpoint($c) {
     align-content: center;
-    align-items: center;
-    box-shadow: inset 1px 0 $alternate-l3;
-    padding-left: $line; }
-    
-  @include breakpoint($d) {
-    padding-left: $line*1.5; }
+    align-items: center; }
   
   // Hidden from this point
   @include breakpoint($c-max) {
@@ -119,10 +114,7 @@
   .input-search {
     padding: $base-px 0;
     background-color: transparent;
-    font-size: $text-medium;
-    
-    @include breakpoint($d) {
-      font-size: $text-large; }
+    min-width: 276px;
     
     @include breakpoint($c-max) {
       padding: $base-px; } }

@@ -16,13 +16,10 @@
   @include breakpoint($c) {
     padding: $line $base-px;
     transition: color .2s;
-    font-weight: font-weight(semibold);
-    
-    &:first-child {
-      padding-left: $line; } }
+    font-weight: font-weight(semibold); }
       
   @include breakpoint($cd) {
-    padding: 36px 16px;
+    padding: 38px 16px 34px; // Align to the logo baseline
        
     &:first-child {
       padding-left: 32px; } }
