@@ -57,7 +57,7 @@ var iamsteve = (function ()
       },
       onUnpin: function()
       {
-        if ( _isNavVisible() )
+        if ( _isNavVisible(nav) )
         {
           this.elem.classList.remove(this.classes.unpinned);
           this.elem.classList.add(this.classes.pinned);
@@ -69,15 +69,15 @@ var iamsteve = (function ()
         }
       }
     };
-    var headroom  = new Headroom(header, options);
+    var headroom = new Headroom(header, options);
     
     headroom.init(); 
   }
   
   // Private
-  var _isNavVisible = function()
+  var _isNavVisible = function(el)
   {
-    return ( nav.classList.contains('visible') || search.classList.contains('visible') ? true : false );
+    return ( el.classList.contains('visible') || search.classList.contains('visible') ? true : false );
   }
   
   var _toggleSearch = function( e )
