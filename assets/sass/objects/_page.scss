@@ -1,16 +1,16 @@
 .subheader {
   position: relative;
   background: linear-gradient($alternate-l4 -25%, $alternate-l3 150%);
-  padding-top: ($line * 2.5) + 2px;
+  padding-top: $line * 2.5;
   
   @include breakpoint($c) {
-    padding-top: ($line * 3.5) + 4px; }
+    padding-top: $line * 3.5; }
     
   @include breakpoint($cd) {
-    padding-top: ($line * 4.5) + 4px; }
+    padding-top: $line * 4.5; }
   
   @include breakpoint($d) {
-    padding-top: ($line * 5) + 4px; }
+    padding-top: $line * 5; }
   
   h1 { 
     line-height: 1; }

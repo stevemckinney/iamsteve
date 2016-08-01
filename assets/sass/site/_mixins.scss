@@ -32,6 +32,7 @@
   right: 0;
   
   @if $position == top {
-    bottom: 100%; }
+    bottom: calc(100% - 1px); }
+    
   @else {
-    top: 100%; } }
+    top: calc(100% - 1px); } }
