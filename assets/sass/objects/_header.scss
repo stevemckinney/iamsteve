@@ -8,12 +8,12 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  background: image-url("dash-neutral.svg") repeat-x center bottom $white;
+  background: image-url("dash-alternate.svg") repeat-x center bottom $white;
   z-index: $z-index-100;
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
   
-  box-shadow: inset 0 -2px rgba($neutral-l4, .25), 0 4px 8px rgba($neutral-l4, .25);
+  box-shadow: 0 4px 8px rgba($alternate-l4, .75);
 
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); }
