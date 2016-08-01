@@ -62,7 +62,10 @@
 // Row contents
 // ---------------------------
 .row-header {
-  padding-bottom: $line; }
+  padding-bottom: $line;
+  
+  @include breakpoint($c) {
+    padding-bottom: double($line); } }
   
 .row-title {
   align-self: center;
