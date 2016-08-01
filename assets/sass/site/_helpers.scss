@@ -10,14 +10,3 @@
   a, li,
   span, time {
     background-color: $white; } }
-
-
-
-.card-body {
-  display: flex;
-  flex-flow: row wrap;
-  
-  > * {
-    flex-basis: 100%;
-  }
-}
