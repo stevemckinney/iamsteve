@@ -16,3 +16,22 @@
   top: 100%;
   left: 0;
   right: 0; }
+
+@mixin dashes(
+  $position: bottom,
+  $image: "dash-alternate.svg",
+  $height: 2px 
+) {
+  content: "";
+  background-image: image-url(#{$image});
+  background-repeat: repeat-x;
+  background-position: left center;
+  height: #{$height};
+  position: absolute;
+  left: 0;
+  right: 0;
+  
+  @if $position == top {
+    bottom: 100%; }
+  @else {
+    top: 100%; } }

@@ -8,15 +8,16 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  background: image-url("dash-alternate.svg") repeat-x center bottom $white;
   z-index: $z-index-100;
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
+  background-color: $white;
   
-  box-shadow: 0 4px 8px rgba($alternate-l4, .75);
-
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); }
+  
+  &:after {
+    @include dashes; }
   
   > .icon-search {
     z-index: $z-index-200;
