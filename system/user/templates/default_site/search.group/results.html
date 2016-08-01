@@ -9,7 +9,7 @@
 {preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
 
 <div class="row subheader center contain contain-large pb-half pb-d">
-  <h1 class="f6 f3-b f2-d secondary mb-undo">
+  <h1 class="f5 f3-b f2-d alternate mb-undo">
     {exp:search:search_results channel="{ch}" limit="1" paginate="bottom" status="open|latest" disable="member_data|trackbacks"}
       {if count == 1}
         {exp:search:total_results}{total}{/exp:search:total_results} {if {exp:search:total_results} == 1}result was{if:else}results were{/if} found for {exp:search:keywords}
