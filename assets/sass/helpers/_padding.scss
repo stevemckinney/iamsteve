@@ -19,6 +19,9 @@
     
     .p#{$abbr}-double {
       padding-#{$padding}: double($baseline); }
+    
+    .p#{$abbr}-triple {
+      padding-#{$padding}: triple($baseline); }
 
     @if $default-enable-padding-responsive {
       // $b paddings
@@ -36,7 +39,10 @@
           padding-#{$padding}: $baseline; } 
         
         .p#{$abbr}-double-b {
-          padding-#{$padding}: double($baseline); } }
+          padding-#{$padding}: double($baseline); }
+        
+        .p#{$abbr}-triple-b {
+          padding-#{$padding}: triple($baseline); } }
       
       // $d paddings
       @include breakpoint($d) {
@@ -53,15 +59,18 @@
           padding-#{$padding}: $baseline; } 
         
         .p#{$abbr}-double-d {
-          padding-#{$padding}: double($baseline); } } } } }
+          padding-#{$padding}: double($baseline); }
+        
+        .p#{$abbr}-triple-d {
+          padding-#{$padding}: triple($baseline); } } } } }
 
 // Island padding helpers
 // ---------------------------
 $isles: (
-  spit: quarter($baseline),
-  isle: half($baseline),
-  island: $baseline,
-  country: double($baseline),
+  spit: half($baseline),
+  isle: $baseline,
+  island: double($baseline),
+  country: triple($baseline),
   continent: quadruple($baseline) );
 
 @if $default-enable-isles {
@@ -71,4 +80,14 @@ $isles: (
     
     .#{$name}-v {
       padding-top: $padding;
-      padding-bottom: $padding; } } }
+      padding-bottom: $padding; }
+    
+    .#{$name}-v-b {
+      @include breakpoint($b) {
+        padding-top: $padding;
+        padding-bottom: $padding; } }
+    
+    .#{$name}-v-d {
+      @include breakpoint($d) {
+        padding-top: $padding;
+        padding-bottom: $padding; } } } }
