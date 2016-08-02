@@ -20,7 +20,7 @@
 @mixin dashes(
   $position: bottom,
   $image: "dash-alternate.svg",
-  $height: 2px 
+  $height: 4px 
 ) {
   content: "";
   background-image: image-url(#{$image});
