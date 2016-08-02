@@ -1,6 +1,10 @@
 // Subscribe
 // ---------------------------
-.subscribe { }
+.page-blog .subscribe {
+  position: relative;
+  
+  &:before {
+    @include dashes(top, "dash-neutral.svg"); } }
   
 .subscribe-image {
   position: absolute;

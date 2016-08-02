@@ -12,9 +12,6 @@
   
   @include breakpoint($b) {
     margin-bottom: double($line);
-    flex-basis: calc(50% - 12px); }
-  
-  @include breakpoint($c) {
     flex-basis: calc(33.333333% - 12px); }
   
   @include breakpoint($e) {

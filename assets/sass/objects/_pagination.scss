@@ -62,6 +62,11 @@
         bottom: 0;
         border-bottom: 4px solid $primary; } } } }
 
+.pagination-offset {
+  position: relative;
+  z-index: 1;
+  margin-bottom: -24px; }
+
 // Pagination state
 // ---------------------------
 .paginate.disabled {

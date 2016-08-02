@@ -28,7 +28,7 @@
   padding-right: 16px;
   padding-left: 16px;
     
-  @include breakpoint($b) {
+  @include breakpoint($c) {
     padding-right: $line;
     padding-left: $line; } } 
 

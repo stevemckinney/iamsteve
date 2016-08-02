@@ -1,7 +1,7 @@
 .subheader {
   position: relative;
   align-items: center;
-  background-color: $neutral-l5;
+  background-color: $tertiary-l2;
   padding-top: $line * 2.5;
   
   @include breakpoint($c) {
