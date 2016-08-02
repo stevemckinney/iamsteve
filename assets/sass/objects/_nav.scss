@@ -15,15 +15,16 @@
   color: inherit;
   text-transform: lowercase;
   padding: $line;
+  line-height: 1;
   
   @include breakpoint($c) {
-    padding: $line $base-px;
+    padding: ($line + 4px) $base-px;
     transition: color .2s;
     font-weight: font-weight(semibold); }
       
   @include breakpoint($cd) {
     // Align to the logo baseline
-    padding: 38px $base-px 34px; }
+    padding: 40px $base-px 38px; }
   
   // Items will now be hidden
   // For small screens make the nav text larger and central

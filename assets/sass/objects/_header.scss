@@ -46,10 +46,11 @@
   z-index: $z-index-200;
   
   @include breakpoint($c) {
+    padding: $base-px $line;
     align-content: center;
     align-items: center; }
   
-  @include breakpoint($d) {
+  @include breakpoint($cd) {
     font-size: $text-large; }
   
   @include breakpoint($site-width) {
@@ -62,14 +63,14 @@
 .logo-large {
   margin-right: $base-px;
    
-  @include breakpoint($d-max) {
+  @include breakpoint($cd-max) {
     display: none; } }
 
 .logo-small {
   @include breakpoint($b) {
     margin-right: half($base-px); }
   
-  @include breakpoint($d) {
+  @include breakpoint($cd) {
     display: none; } }
 
 .logo-text {
