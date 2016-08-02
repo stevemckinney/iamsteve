@@ -1,6 +1,6 @@
 .subheader {
   position: relative;
-  background: linear-gradient($alternate-l4 -25%, $alternate-l3 150%);
+  background-color: $neutral-l5;
   padding-top: $line * 2.5;
   
   @include breakpoint($c) {
@@ -16,4 +16,4 @@
     line-height: 1; }
   
   &:after {
-    @include dashes; } }
+    @include dashes($image: "dash-neutral.svg"); } }

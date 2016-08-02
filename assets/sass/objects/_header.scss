@@ -17,7 +17,7 @@
     padding: 0 calc(50% - #{$contain / 2}); }
   
   &:after {
-    @include dashes; }
+    @include dashes($image: "dash-neutral.svg"); }
   
   > .icon-search {
     z-index: $z-index-200;
