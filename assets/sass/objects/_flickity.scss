@@ -16,9 +16,12 @@
   position: absolute;
   // Flickity sets this value inline, to have the correct spacing and maintain
   // scrolling going to each edge of the screen this is needed.
-  left: 12px !important;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  left: 6px !important;
+  
+  @include breakpoint($c) {
+    left: 12px !important; } }
 
 /* Draggable */
 .flickity-enabled.is-draggable {
@@ -58,24 +61,21 @@
   
   padding-left: $base-px;
   
-  .flickity-enabled & { 
+  &.flickity-enabled { 
     padding-left: 0; }
 
   // Each card width must be offset by the padding, otherwise it’s too small.
   .card {
     display: inline-block;
     vertical-align: top;
-    padding: 0 $base-px / 2;
-    white-space: normal;
-        
-    @include breakpoint($c) {
-      padding: 0 $base-px; } }
+    padding: 0 $base-px;
+    white-space: normal; }
   
   .card-medium {
-    width: 240px + $base-px + $base-px;
+    width: 240px + $base-px + $base-px + $base-px + $base-px;
     
     @include breakpoint($a) {
-     width: 288px + $base-px + $base-px; }
+     width: 288px + $base-px + $base-px + $base-px + $base-px; }
     
     @include breakpoint($c) {
       width: 378px + $base-px + $base-px; } }

@@ -14,13 +14,18 @@
     padding-left: $line; }
     
   @include breakpoint($c-max) {
+    align-content: center;
+    align-items: center;
     padding: 0 double($line) double($line); }
   
   @include breakpoint($a-max) {
     padding: 0 $line*1.5 double($line); }
   
   p {
-    max-width: 324px; } }
+    max-width: 324px;
+    
+    @include breakpoint($c-max) {
+      max-width: 284px; } } }
 
 .rio {
   min-height: 236px;
