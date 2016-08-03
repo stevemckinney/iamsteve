@@ -31,4 +31,7 @@
   min-height: 236px;
   
   @include breakpoint(max-width 839px) {
-    min-height: 126px; } }
+    min-height: 126px; }
+  
+  @include breakpoint($a-max) {
+    max-width: 168px; } }
