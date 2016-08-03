@@ -15,7 +15,6 @@ pre[class*="language"] {
 
 code[class*="language"],
 pre[class*="language"] {
-  border-radius: $radius;
   max-width: $measure;
   direction: ltr;
   text-align: left;
@@ -32,7 +31,10 @@ pre[class*="language"] {
   line-height: 23px;
   color: $code-white;
   overflow: auto;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+  
+  @include breakpoint($c) {
+    border-radius: $radius; } }
 
 code[class*="language-bash"],
 pre[class*="language-bash"] {
