@@ -11,7 +11,7 @@
 |
 */
 
-$config['app_version'] = "3.3.0";
+$config['app_version'] = "3.4.0";
 $config['install_lock'] = "";
 $config['license_number'] = '';
 $config['debug'] = '1';
@@ -246,7 +246,7 @@ $config['log_date_format'] = 'Y-m-d H:i:s';
 | enabled you MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = '9ac600b457b0a565b58fee75daf06d751c0d084a';
 
 /*
 |--------------------------------------------------------------------------

@@ -160,7 +160,7 @@ $(n).bind("selectstart",function(){return!1}),$(o).bind("selectstart",function()
 	 		 * Inputs:   object:oSettings - dataTables settings object
 			 *           function:fnCallbackDraw - draw function to call on page change
 			 */
-fnUpdate:function(e,a){if(e.aanFeatures.p)for(var t=e.aanFeatures.p,n=0,o=t.length;o>n;n++)0!==t[n].childNodes.length&&(t[n].childNodes[0].className=0===e._iDisplayStart?e.oClasses.sPagePrevDisabled:e.oClasses.sPagePrevEnabled,t[n].childNodes[1].className=e.fnDisplayEnd()==e.fnRecordsDisplay()?e.oClasses.sPageNextDisabled:e.oClasses.sPageNextEnabled)}},/*
+fnUpdate:function(e,a){if(e.aanFeatures.p)for(var t=e.aanFeatures.p,n=0,o=t.length;n<o;n++)0!==t[n].childNodes.length&&(t[n].childNodes[0].className=0===e._iDisplayStart?e.oClasses.sPagePrevDisabled:e.oClasses.sPagePrevEnabled,t[n].childNodes[1].className=e.fnDisplayEnd()==e.fnRecordsDisplay()?e.oClasses.sPageNextDisabled:e.oClasses.sPageNextEnabled)}},/*
 		 * Variable: iFullNumbersShowPages
 		 * Purpose:  Change the number of pages which can be seen
 	 	 * Scope:    jQuery.fn.dataTableExt.oPagination
@@ -189,12 +189,12 @@ $("span",a).bind("mousedown",function(){return!1}).bind("selectstart",function()
 			 */
 fnUpdate:function(e,a){if(e.aanFeatures.p){var t,n,o,s,i=_oExt.oPagination.iFullNumbersShowPages,r=Math.floor(i/2),l=Math.ceil(e.fnRecordsDisplay()/e._iDisplayLength),u=Math.ceil(e._iDisplayStart/e._iDisplayLength)+1,f="",d=e.oClasses;/* Build the dynamic list */
 for(/* Pages calculation */
-i>l?(t=1,n=l):r>=u?(t=1,n=i):u>=l-r?(t=l-i+1,n=l):(t=u-Math.ceil(i/2)+1,n=t+i-1),o=t;n>=o;o++)f+=u!=o?'<span class="'+d.sPageButton+'">'+o+"</span>":'<span class="'+d.sPageButtonActive+'">'+o+"</span>";/* Loop over each instance of the pager */
+l<i?(t=1,n=l):u<=r?(t=1,n=i):u>=l-r?(t=l-i+1,n=l):(t=u-Math.ceil(i/2)+1,n=t+i-1),o=t;o<=n;o++)f+=u!=o?'<span class="'+d.sPageButton+'">'+o+"</span>":'<span class="'+d.sPageButtonActive+'">'+o+"</span>";/* Loop over each instance of the pager */
 var p,g,c,h=e.aanFeatures.p,_=function(){/* Use the information in the element to jump to the required page */
-var t=1*this.innerHTML-1;return e._iDisplayStart=t*e._iDisplayLength,a(e),!1},S=function(){return!1};for(o=0,s=h.length;s>o;o++)0!==h[o].childNodes.length&&(/* Build up the dynamic list forst - html and listeners */
+var t=1*this.innerHTML-1;return e._iDisplayStart=t*e._iDisplayLength,a(e),!1},S=function(){return!1};for(o=0,s=h.length;o<s;o++)0!==h[o].childNodes.length&&(/* Build up the dynamic list forst - html and listeners */
 c=h[o].childNodes[2],c.innerHTML=f,$("span",c).click(_).bind("mousedown",S).bind("selectstart",S),/* Update the 'premanent botton's classes */
-p=h[o].getElementsByTagName("span"),g=[p[0],p[1],p[p.length-2],p[p.length-1]],$(g).removeClass(d.sPageButton+" "+d.sPageButtonActive+" "+d.sPageButtonStaticDisabled),1==u?(g[0].className+=" "+d.sPageButtonStaticDisabled,g[1].className+=" "+d.sPageButtonStaticDisabled):(g[0].className+=" "+d.sPageButton,g[1].className+=" "+d.sPageButton),0===l||u==l||-1==e._iDisplayLength?(g[2].className+=" "+d.sPageButtonStaticDisabled,g[3].className+=" "+d.sPageButtonStaticDisabled):(g[2].className+=" "+d.sPageButton,g[3].className+=" "+d.sPageButton),/* EllisLab edit */
-$(g[0])[4>u?"hide":"show"](),// first 3 pages, no "first" link
+p=h[o].getElementsByTagName("span"),g=[p[0],p[1],p[p.length-2],p[p.length-1]],$(g).removeClass(d.sPageButton+" "+d.sPageButtonActive+" "+d.sPageButtonStaticDisabled),1==u?(g[0].className+=" "+d.sPageButtonStaticDisabled,g[1].className+=" "+d.sPageButtonStaticDisabled):(g[0].className+=" "+d.sPageButton,g[1].className+=" "+d.sPageButton),0===l||u==l||e._iDisplayLength==-1?(g[2].className+=" "+d.sPageButtonStaticDisabled,g[3].className+=" "+d.sPageButtonStaticDisabled):(g[2].className+=" "+d.sPageButton,g[3].className+=" "+d.sPageButton),/* EllisLab edit */
+$(g[0])[u<4?"hide":"show"](),// first 3 pages, no "first" link
 $(g[1])[1==u?"hide":"show"](),// first page, no "previous" link
 $(g[2])[u==l?"hide":"show"](),// last page, no "next" link
 $(g[3])[u>l-3?"hide":"show"]())}}}},/*
@@ -209,10 +209,10 @@ $(g[3])[u>l-3?"hide":"show"]())}}}},/*
 _oExt.oSort={/*
 		 * text sorting
 		 */
-"string-asc":function(e,a){var t=e.toLowerCase(),n=a.toLowerCase();return n>t?-1:t>n?1:0},"string-desc":function(e,a){var t=e.toLowerCase(),n=a.toLowerCase();return n>t?1:t>n?-1:0},/*
+"string-asc":function(e,a){var t=e.toLowerCase(),n=a.toLowerCase();return t<n?-1:t>n?1:0},"string-desc":function(e,a){var t=e.toLowerCase(),n=a.toLowerCase();return t<n?1:t>n?-1:0},/*
 		 * html sorting (ignore html tags)
 		 */
-"html-asc":function(e,a){var t=e.replace(/<.*?>/g,"").toLowerCase(),n=a.replace(/<.*?>/g,"").toLowerCase();return n>t?-1:t>n?1:0},"html-desc":function(e,a){var t=e.replace(/<.*?>/g,"").toLowerCase(),n=a.replace(/<.*?>/g,"").toLowerCase();return n>t?1:t>n?-1:0},/*
+"html-asc":function(e,a){var t=e.replace(/<.*?>/g,"").toLowerCase(),n=a.replace(/<.*?>/g,"").toLowerCase();return t<n?-1:t>n?1:0},"html-desc":function(e,a){var t=e.replace(/<.*?>/g,"").toLowerCase(),n=a.replace(/<.*?>/g,"").toLowerCase();return t<n?1:t>n?-1:0},/*
 		 * date sorting
 		 */
 "date-asc":function(e,a){var t=Date.parse(e),n=Date.parse(a);return isNaN(t)&&(t=Date.parse("01/01/1970 00:00:00")),isNaN(n)&&(n=Date.parse("01/01/1970 00:00:00")),t-n},"date-desc":function(e,a){var t=Date.parse(e),n=Date.parse(a);return isNaN(t)&&(t=Date.parse("01/01/1970 00:00:00")),isNaN(n)&&(n=Date.parse("01/01/1970 00:00:00")),n-t},/*
@@ -237,8 +237,8 @@ _oExt.aTypes=[/*
 		 */
 function(e){/* Sanity check that we are dealing with a string or quick return for a number */
 if("number"==typeof e)return"numeric";if("function"!=typeof e.charAt)return null;var a,t="0123456789-",n="0123456789.",o=!1;if(/* Check for a valid first char (no period and allow negatives) */
-a=e.charAt(0),-1==t.indexOf(a))return null;/* Check all the other characters are valid */
-for(var s=1;s<e.length;s++){if(a=e.charAt(s),-1==n.indexOf(a))return null;/* Only allowed one decimal place... */
+a=e.charAt(0),t.indexOf(a)==-1)return null;/* Check all the other characters are valid */
+for(var s=1;s<e.length;s++){if(a=e.charAt(s),n.indexOf(a)==-1)return null;/* Only allowed one decimal place... */
 if("."==a){if(o)return null;o=!0}}return"numeric"},/*
 		 * Function: -
 		 * Purpose:  Check to see if a string is actually a formatted date
@@ -561,7 +561,7 @@ function _fnLanguageProcess(e,a,t){_fnMap(e.oLanguage,a,"sProcessing"),_fnMap(e.
 function _fnAddColumn(e,a,t){e.aoColumns[e.aoColumns.length++]={sType:null,_bAutoType:!0,bVisible:!0,bSearchable:!0,bSortable:!0,asSorting:["asc","desc"],sSortingClass:e.oClasses.sSortable,sSortingClassJUI:e.oClasses.sSortJUI,sTitle:t?t.innerHTML:"",sName:"",sWidth:null,sClass:null,fnRender:null,bUseRendered:!0,iDataSort:e.aoColumns.length-1,sSortDataType:"std",nTh:t?t:document.createElement("th"),nTf:null};var n=e.aoColumns.length-1,o=e.aoColumns[n];/* User specified column options */
 "undefined"!=typeof a&&null!==a&&("undefined"!=typeof a.sType&&(o.sType=a.sType,o._bAutoType=!1),_fnMap(o,a,"bVisible"),_fnMap(o,a,"bSearchable"),_fnMap(o,a,"bSortable"),_fnMap(o,a,"sTitle"),_fnMap(o,a,"sName"),_fnMap(o,a,"sWidth"),_fnMap(o,a,"sClass"),_fnMap(o,a,"fnRender"),_fnMap(o,a,"bUseRendered"),_fnMap(o,a,"iDataSort"),_fnMap(o,a,"asSorting"),_fnMap(o,a,"sSortDataType")),/* Feature sorting overrides column specific when off */
 e.oFeatures.bSort||(o.bSortable=!1),/* Check that the class assignment is correct for sorting */
-!o.bSortable||-1==$.inArray("asc",o.asSorting)&&-1==$.inArray("desc",o.asSorting)?(o.sSortingClass=e.oClasses.sSortableNone,o.sSortingClassJUI=""):-1!=$.inArray("asc",o.asSorting)&&-1==$.inArray("desc",o.asSorting)?(o.sSortingClass=e.oClasses.sSortableAsc,o.sSortingClassJUI=e.oClasses.sSortJUIAscAllowed):-1==$.inArray("asc",o.asSorting)&&-1!=$.inArray("desc",o.asSorting)&&(o.sSortingClass=e.oClasses.sSortableDesc,o.sSortingClassJUI=e.oClasses.sSortJUIDescAllowed),/* Add a column specific filter */
+!o.bSortable||$.inArray("asc",o.asSorting)==-1&&$.inArray("desc",o.asSorting)==-1?(o.sSortingClass=e.oClasses.sSortableNone,o.sSortingClassJUI=""):$.inArray("asc",o.asSorting)!=-1&&$.inArray("desc",o.asSorting)==-1?(o.sSortingClass=e.oClasses.sSortableAsc,o.sSortingClassJUI=e.oClasses.sSortJUIAscAllowed):$.inArray("asc",o.asSorting)==-1&&$.inArray("desc",o.asSorting)!=-1&&(o.sSortingClass=e.oClasses.sSortableDesc,o.sSortingClassJUI=e.oClasses.sSortJUIDescAllowed),/* Add a column specific filter */
 "undefined"==typeof e.aoPreSearchCols[n]||null===e.aoPreSearchCols[n]?e.aoPreSearchCols[n]={sSearch:"",bEscapeRegex:!0}:"undefined"==typeof e.aoPreSearchCols[n].bEscapeRegex&&(/* Don't require that the user must specify bEscapeRegex */
 e.aoPreSearchCols[n].bEscapeRegex=!0)}/*
 		 * Function: _fnAddData
@@ -588,15 +588,15 @@ function _fnGatherData(e){var a,t,n,o,s,i,r,l,u,f,d,p,g,c;/*
 			 * Add the data object for the whole table - storing the tr node. Note - no point in getting
 			 * DOM based data if we are going to go and replace it with Ajax source data.
 			 */
-if(null===e.sAjaxSource)for(r=e.nTable.getElementsByTagName("tbody")[0].childNodes,a=0,t=r.length;t>a;a++)if("TR"==r[a].nodeName)for(f=e.aoData.length,e.aoData.push({nTr:r[a],_iId:e.iNextId++,_aData:[],_anHidden:[],_sRowStripe:""}),e.aiDisplayMaster.push(f),u=e.aoData[f]._aData,i=r[a].childNodes,s=0,n=0,o=i.length;o>n;n++)"TD"==i[n].nodeName&&(u[s]=i[n].innerHTML,s++);for(/* Gather in the TD elements of the Table - note that this is basically the same as
+if(null===e.sAjaxSource)for(r=e.nTable.getElementsByTagName("tbody")[0].childNodes,a=0,t=r.length;a<t;a++)if("TR"==r[a].nodeName)for(f=e.aoData.length,e.aoData.push({nTr:r[a],_iId:e.iNextId++,_aData:[],_anHidden:[],_sRowStripe:""}),e.aiDisplayMaster.push(f),u=e.aoData[f]._aData,i=r[a].childNodes,s=0,n=0,o=i.length;n<o;n++)"TD"==i[n].nodeName&&(u[s]=i[n].innerHTML,s++);for(/* Gather in the TD elements of the Table - note that this is basically the same as
 			 * fnGetTdNodes, but that function takes account of hidden columns, which we haven't yet
 			 * setup!
 			 */
-r=_fnGetTrNodes(e),i=[],a=0,t=r.length;t>a;a++)for(n=0,o=r[a].childNodes.length;o>n;n++)l=r[a].childNodes[n],"TD"==l.nodeName&&i.push(l);/* Now process by column */
+r=_fnGetTrNodes(e),i=[],a=0,t=r.length;a<t;a++)for(n=0,o=r[a].childNodes.length;n<o;n++)l=r[a].childNodes[n],"TD"==l.nodeName&&i.push(l);/* Now process by column */
 for(/* Sanity check */
-i.length!=r.length*e.aoColumns.length&&alert("DataTables warning: Unexpected number of TD elements. Expected "+r.length*e.aoColumns.length+" and got "+i.length+". DataTables does not support rowspan / colspan in the table body, and there must be one cell for each row/column combination."),g=0,c=e.aoColumns.length;c>g;g++){/* Get the title of the column - unless there is a user set one */
+i.length!=r.length*e.aoColumns.length&&alert("DataTables warning: Unexpected number of TD elements. Expected "+r.length*e.aoColumns.length+" and got "+i.length+". DataTables does not support rowspan / colspan in the table body, and there must be one cell for each row/column combination."),g=0,c=e.aoColumns.length;g<c;g++){/* Get the title of the column - unless there is a user set one */
 null===e.aoColumns[g].sTitle&&(e.aoColumns[g].sTitle=e.aoColumns[g].nTh.innerHTML);var h,_,S,D=e.aoColumns[g]._bAutoType,m="function"==typeof e.aoColumns[g].fnRender,C=null!==e.aoColumns[g].sClass,b=e.aoColumns[g].bVisible;/* A single loop to rule them all (and be more efficient) */
-if(D||m||C||!b)for(d=0,p=e.aoData.length;p>d;d++)h=i[d*c+g],/* Type detection */
+if(D||m||C||!b)for(d=0,p=e.aoData.length;d<p;d++)h=i[d*c+g],/* Type detection */
 D&&"string"!=e.aoColumns[g].sType&&(_=_fnDetectType(e.aoData[d]._aData[g]),null===e.aoColumns[g].sType?e.aoColumns[g].sType=_:e.aoColumns[g].sType!=_&&(/* String is always the 'fallback' option */
 e.aoColumns[g].sType="string")),/* Rendering */
 m&&(S=e.aoColumns[g].fnRender({iDataRow:d,iDataColumn:g,aData:e.aoData[d]._aData,oSettings:e}),h.innerHTML=S,e.aoColumns[g].bUseRendered&&(/* Use the rendered data for filtering/sorting */
@@ -613,16 +613,16 @@ b||(e.aoData[d]._anHidden[g]=h,h.parentNode.removeChild(h))}}/* * * * * * * * * 
 		 */
 function _fnDrawHead(e){var a,t,n,o=e.nTable.getElementsByTagName("thead")[0].getElementsByTagName("th").length,s=0;/* If there is a header in place - then use it - otherwise it's going to get nuked... */
 if(0!==o)/* We've got a thead from the DOM, so remove hidden columns and apply width to vis cols */
-for(a=0,n=e.aoColumns.length;n>a;a++)
+for(a=0,n=e.aoColumns.length;a<n;a++)
 //oSettings.aoColumns[i].nTh = nThs[i];
 t=e.aoColumns[a].nTh,e.aoColumns[a].bVisible?(/* Set width */
 null!==e.aoColumns[a].sWidth&&(t.style.width=e.aoColumns[a].sWidth),/* Set the title of the column if it is user defined (not what was auto detected) */
 e.aoColumns[a].sTitle!=t.innerHTML&&(t.innerHTML=e.aoColumns[a].sTitle)):(t.parentNode.removeChild(t),s++);else{/* We don't have a header in the DOM - so we are going to have to create one */
-var i=document.createElement("tr");for(a=0,n=e.aoColumns.length;n>a;a++)t=e.aoColumns[a].nTh,t.innerHTML=e.aoColumns[a].sTitle,e.aoColumns[a].bVisible&&(null!==e.aoColumns[a].sClass&&(t.className=e.aoColumns[a].sClass),null!==e.aoColumns[a].sWidth&&(t.style.width=e.aoColumns[a].sWidth),i.appendChild(t));$("thead:eq(0)",e.nTable).html("")[0].appendChild(i)}/* Add the extra markup needed by jQuery UI's themes */
-if(e.bJUI)for(a=0,n=e.aoColumns.length;n>a;a++)e.aoColumns[a].nTh.insertBefore(document.createElement("span"),e.aoColumns[a].nTh.firstChild);/* Add sort listener */
+var i=document.createElement("tr");for(a=0,n=e.aoColumns.length;a<n;a++)t=e.aoColumns[a].nTh,t.innerHTML=e.aoColumns[a].sTitle,e.aoColumns[a].bVisible&&(null!==e.aoColumns[a].sClass&&(t.className=e.aoColumns[a].sClass),null!==e.aoColumns[a].sWidth&&(t.style.width=e.aoColumns[a].sWidth),i.appendChild(t));$("thead:eq(0)",e.nTable).html("")[0].appendChild(i)}/* Add the extra markup needed by jQuery UI's themes */
+if(e.bJUI)for(a=0,n=e.aoColumns.length;a<n;a++)e.aoColumns[a].nTh.insertBefore(document.createElement("span"),e.aoColumns[a].nTh.firstChild);/* Add sort listener */
 if(e.oFeatures.bSort){for(a=0;a<e.aoColumns.length;a++)e.aoColumns[a].bSortable!==!1?_fnSortAttachListener(e,e.aoColumns[a].nTh,a):$(e.aoColumns[a].nTh).addClass(e.oClasses.sSortableNone);/* Take the brutal approach to cancelling text selection due to the shift key */
-$("thead:eq(0) th",e.nTable).mousedown(function(e){return e.shiftKey?(this.onselectstart=function(){return!1},!1):void 0})}/* Cache the footer elements */
-var r=e.nTable.getElementsByTagName("tfoot");if(0!==r.length){s=0;var l=r[0].getElementsByTagName("th");for(a=0,n=l.length;n>a;a++)e.aoColumns[a].nTf=l[a-s],e.aoColumns[a].bVisible||(l[a-s].parentNode.removeChild(l[a-s]),s++)}}/*
+$("thead:eq(0) th",e.nTable).mousedown(function(e){if(e.shiftKey)return this.onselectstart=function(){return!1},!1})}/* Cache the footer elements */
+var r=e.nTable.getElementsByTagName("tfoot");if(0!==r.length){s=0;var l=r[0].getElementsByTagName("th");for(a=0,n=l.length;a<n;a++)e.aoColumns[a].nTf=l[a-s],e.aoColumns[a].bVisible||(l[a-s].parentNode.removeChild(l[a-s]),s++)}}/*
 		 * Function: _fnDraw
 		 * Purpose:  Insert the required TR nodes into the table for display
 		 * Returns:  -
@@ -630,10 +630,10 @@ var r=e.nTable.getElementsByTagName("tfoot");if(0!==r.length){s=0;var l=r[0].get
 		 */
 function _fnDraw(e){var a,t,n=[],o=0,s=!1,i=e.asStripClasses.length,r=e.aoOpenRows.length;/* If we are dealing with Ajax - do it here */
 if(!e.oFeatures.bServerSide||_fnAjaxUpdate(e)){if(/* Check and see if we have an initial draw position from state saving */
-"undefined"!=typeof e.iInitDisplayStart&&-1!=e.iInitDisplayStart&&(e._iDisplayStart=e.iInitDisplayStart>=e.fnRecordsDisplay()?0:e.iInitDisplayStart,e.iInitDisplayStart=-1,_fnCalculateEnd(e)),0!==e.aiDisplay.length){var l=e._iDisplayStart,u=e._iDisplayEnd;e.oFeatures.bServerSide&&(l=0,u=e.aoData.length);for(var f=l;u>f;f++){var d=e.aoData[e.aiDisplay[f]],p=d.nTr;/* Remove the old stripping classes and then add the new one */
+"undefined"!=typeof e.iInitDisplayStart&&e.iInitDisplayStart!=-1&&(e._iDisplayStart=e.iInitDisplayStart>=e.fnRecordsDisplay()?0:e.iInitDisplayStart,e.iInitDisplayStart=-1,_fnCalculateEnd(e)),0!==e.aiDisplay.length){var l=e._iDisplayStart,u=e._iDisplayEnd;e.oFeatures.bServerSide&&(l=0,u=e.aoData.length);for(var f=l;f<u;f++){var d=e.aoData[e.aiDisplay[f]],p=d.nTr;/* Remove the old stripping classes and then add the new one */
 if(0!==i){var g=e.asStripClasses[o%i];d._sRowStripe!=g&&($(p).removeClass(d._sRowStripe).addClass(g),d._sRowStripe=g)}/* If there is an open row - and it is attached to this parent - attach it on redraw */
 if(/* Custom row callback function - might want to manipule the row */
-"function"==typeof e.fnRowCallback&&(p=e.fnRowCallback(p,e.aoData[e.aiDisplay[f]]._aData,o,f),p||s||(alert("DataTables warning: A node was not returned by fnRowCallback"),s=!0)),n.push(p),o++,0!==r)for(var c=0;r>c;c++)p==e.aoOpenRows[c].nParent&&n.push(e.aoOpenRows[c].nTr)}}else{/* Table is empty - create a row with an empty message in it */
+"function"==typeof e.fnRowCallback&&(p=e.fnRowCallback(p,e.aoData[e.aiDisplay[f]]._aData,o,f),p||s||(alert("DataTables warning: A node was not returned by fnRowCallback"),s=!0)),n.push(p),o++,0!==r)for(var c=0;c<r;c++)p==e.aoOpenRows[c].nParent&&n.push(e.aoOpenRows[c].nTr)}}else{/* Table is empty - create a row with an empty message in it */
 n[0]=document.createElement("tr"),"undefined"!=typeof e.asStripClasses[0]&&(n[0].className=e.asStripClasses[0]);var h=document.createElement("td");h.setAttribute("valign","top"),h.colSpan=e.aoColumns.length,h.className=e.oClasses.sRowEmpty,h.innerHTML=e.oLanguage.sZeroRecords,n[o].appendChild(h)}/* Callback the header and footer custom funcation if there is one */
 "function"==typeof e.fnHeaderCallback&&e.fnHeaderCallback($("thead:eq(0)>tr",e.nTable)[0],_fnGetDataMaster(e),e._iDisplayStart,e.fnDisplayEnd(),e.aiDisplay),"function"==typeof e.fnFooterCallback&&e.fnFooterCallback($("tfoot:eq(0)>tr",e.nTable)[0],_fnGetDataMaster(e),e._iDisplayStart,e.fnDisplayEnd(),e.aiDisplay);/* 
 			 * Need to remove any old row from the display - note we can't just empty the tbody using
@@ -641,8 +641,8 @@ n[0]=document.createElement("tr"),"undefined"!=typeof e.asStripClasses[0]&&(n[0]
 			 * still exists!) - equally we can't use innerHTML, since IE throws an exception.
 			 */
 var _=e.nTable.getElementsByTagName("tbody");if(_[0]){var S=_[0].childNodes;for(a=S.length-1;a>=0;a--)S[a].parentNode.removeChild(S[a]);/* Put the draw table into the dom */
-for(a=0,t=n.length;t>a;a++)_[0].appendChild(n[a])}/* Call all required callback functions for the end of a draw */
-for(a=0,t=e.aoDrawCallback.length;t>a;a++)e.aoDrawCallback[a].fn(e);/* Draw is complete, sorting and filtering must be as well */
+for(a=0,t=n.length;a<t;a++)_[0].appendChild(n[a])}/* Call all required callback functions for the end of a draw */
+for(a=0,t=e.aoDrawCallback.length;a<t;a++)e.aoDrawCallback[a].fn(e);/* Draw is complete, sorting and filtering must be as well */
 e.bSorted=!1,e.bFiltered=!1,/* Perform certain DOM operations after the table has been drawn for the first time */
 "undefined"==typeof e._bInitComplete&&(e._bInitComplete=!0,/* Set an absolute width for the table such that pagination doesn't
 				 * cause the table to resize
@@ -663,8 +663,8 @@ _fnFilterComplete(e,e.oPreviousSearch):(_fnCalculateEnd(e),_fnDraw(e))}/*
 		 */
 function _fnAjaxUpdate(e){if(e.bAjaxDataGet){_fnProcessingDisplay(e,!0);var a,t=e.aoColumns.length,n=[];/* Filtering */
 if(/* Paging and general */
-e.iServerDraw++,n.push({name:"sEcho",value:e.iServerDraw}),n.push({name:"iColumns",value:t}),n.push({name:"sColumns",value:_fnColumnOrdering(e)}),n.push({name:"iDisplayStart",value:e._iDisplayStart}),n.push({name:"iDisplayLength",value:e.oFeatures.bPaginate!==!1?e._iDisplayLength:-1}),e.oFeatures.bFilter!==!1)for(n.push({name:"sSearch",value:e.oPreviousSearch.sSearch}),n.push({name:"bEscapeRegex",value:e.oPreviousSearch.bEscapeRegex}),a=0;t>a;a++)n.push({name:"sSearch_"+a,value:e.aoPreSearchCols[a].sSearch}),n.push({name:"bEscapeRegex_"+a,value:e.aoPreSearchCols[a].bEscapeRegex}),n.push({name:"bSearchable_"+a,value:e.aoColumns[a].bSearchable});/* Sorting */
-if(e.oFeatures.bSort!==!1){var o=null!==e.aaSortingFixed?e.aaSortingFixed.length:0,s=e.aaSorting.length;for(n.push({name:"iSortingCols",value:o+s}),a=0;o>a;a++)n.push({name:"iSortCol_"+a,value:e.aaSortingFixed[a][0]}),n.push({name:"sSortDir_"+a,value:e.aaSortingFixed[a][1]});for(a=0;s>a;a++)n.push({name:"iSortCol_"+(a+o),value:e.aaSorting[a][0]}),n.push({name:"sSortDir_"+(a+o),value:e.aaSorting[a][1]});for(a=0;t>a;a++)n.push({name:"bSortable_"+a,value:e.aoColumns[a].bSortable})}return e.fnServerData(e.sAjaxSource,n,function(a){_fnAjaxUpdateDraw(e,a)}),!1}return!0}/*
+e.iServerDraw++,n.push({name:"sEcho",value:e.iServerDraw}),n.push({name:"iColumns",value:t}),n.push({name:"sColumns",value:_fnColumnOrdering(e)}),n.push({name:"iDisplayStart",value:e._iDisplayStart}),n.push({name:"iDisplayLength",value:e.oFeatures.bPaginate!==!1?e._iDisplayLength:-1}),e.oFeatures.bFilter!==!1)for(n.push({name:"sSearch",value:e.oPreviousSearch.sSearch}),n.push({name:"bEscapeRegex",value:e.oPreviousSearch.bEscapeRegex}),a=0;a<t;a++)n.push({name:"sSearch_"+a,value:e.aoPreSearchCols[a].sSearch}),n.push({name:"bEscapeRegex_"+a,value:e.aoPreSearchCols[a].bEscapeRegex}),n.push({name:"bSearchable_"+a,value:e.aoColumns[a].bSearchable});/* Sorting */
+if(e.oFeatures.bSort!==!1){var o=null!==e.aaSortingFixed?e.aaSortingFixed.length:0,s=e.aaSorting.length;for(n.push({name:"iSortingCols",value:o+s}),a=0;a<o;a++)n.push({name:"iSortCol_"+a,value:e.aaSortingFixed[a][0]}),n.push({name:"sSortDir_"+a,value:e.aaSortingFixed[a][1]});for(a=0;a<s;a++)n.push({name:"iSortCol_"+(a+o),value:e.aaSorting[a][0]}),n.push({name:"sSortDir_"+(a+o),value:e.aaSorting[a][1]});for(a=0;a<t;a++)n.push({name:"bSortable_"+a,value:e.aoColumns[a].bSortable})}return e.fnServerData(e.sAjaxSource,n,function(a){_fnAjaxUpdateDraw(e,a)}),!1}return!0}/*
 		 * Function: _fnAjaxUpdateDraw
 		 * Purpose:  Data the data from the server (nuking the old) and redraw the table
 		 * Returns:  -
@@ -679,7 +679,7 @@ function _fnAjaxUpdateDraw(e,a){if("undefined"!=typeof a.sEcho){/* Protect again
 				 * very fast interaction, and later queires are completed much faster
 				 */
 if(1*a.sEcho<e.iServerDraw)return;e.iServerDraw=1*a.sEcho}_fnClearTable(e),e._iRecordsTotal=a.iTotalRecords,e._iRecordsDisplay=a.iTotalDisplayRecords;/* Determine if reordering is required */
-var t=_fnColumnOrdering(e),n="undefined"!=typeof a.sColumns&&""!==t&&a.sColumns!=t;if(n)var o=_fnReOrderIndex(e,a.sColumns);for(var s=0,i=a.aaData.length;i>s;s++)if(n){for(var r=[],l=0,u=e.aoColumns.length;u>l;l++)r.push(a.aaData[s][o[l]]);_fnAddData(e,r)}else/* No re-order required, sever got it "right" - just straight add */
+var t=_fnColumnOrdering(e),n="undefined"!=typeof a.sColumns&&""!==t&&a.sColumns!=t;if(n)var o=_fnReOrderIndex(e,a.sColumns);for(var s=0,i=a.aaData.length;s<i;s++)if(n){for(var r=[],l=0,u=e.aoColumns.length;l<u;l++)r.push(a.aaData[s][o[l]]);_fnAddData(e,r)}else/* No re-order required, sever got it "right" - just straight add */
 _fnAddData(e,a.aaData[s]);e.aiDisplay=e.aiDisplayMaster.slice(),e.bAjaxDataGet=!1,_fnDraw(e),e.bAjaxDataGet=!0,_fnProcessingDisplay(e,!1)}/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 		 * Section - Options (features) HTML
 		 */
@@ -711,7 +711,7 @@ s=e.nTable,i=1;else if("i"==r&&e.oFeatures.bInfo)/* Info */
 s=_fnFeatureHtmlInfo(e),i=1;else if("p"==r&&e.oFeatures.bPaginate)/* Pagination */
 s=_fnFeatureHtmlPaginate(e),/* EllisLab edit - I hard coded it
 					*/
-i=0;else if(0!==_oExt.aoFeatures.length)for(var c=_oExt.aoFeatures,h=0,_=c.length;_>h;h++)if(r==c[h].cFeature){s=c[h].fnInit(e),s&&(i=1);break}/* Add to the 2D features array */
+i=0;else if(0!==_oExt.aoFeatures.length)for(var c=_oExt.aoFeatures,h=0,_=c.length;h<_;h++)if(r==c[h].cFeature){s=c[h].fnInit(e),s&&(i=1);break}/* Add to the 2D features array */
 1==i&&("object"!=typeof e.aanFeatures[r]&&(e.aanFeatures[r]=[]),e.aanFeatures[r].push(s),n.appendChild(s))}/* Built our DOM structure - replace the holding div with what we want */
 a.parentNode.replaceChild(t,a)}/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 		 * Section - Feature: Filtering
@@ -722,10 +722,9 @@ a.parentNode.replaceChild(t,a)}/* * * * * * * * * * * * * * * * * * * * * * * * 
 		 * Returns:  node
 		 * Inputs:   object:oSettings - dataTables settings object
 		 */
-function _fnFeatureHtmlFilter(e){var a=document.createElement("div");""!==e.sTableId&&"undefined"==typeof e.aanFeatures.f&&a.setAttribute("id",e.sTableId+"_filter"),a.className=e.oClasses.sFilter;var t=""===e.oLanguage.sSearch?"":" ";a.innerHTML=e.oLanguage.sSearch+t+'<input type="text" />';var n=$("input",a);return n.val(e.oPreviousSearch.sSearch.replace('"',"&quot;")),n.keyup(function(a){for(var t=e.aanFeatures.f,n=0,o=t.length;o>n;n++)t[n]!=this.parentNode&&$("input",t[n]).val(this.value);/* Now do the filter */
+function _fnFeatureHtmlFilter(e){var a=document.createElement("div");""!==e.sTableId&&"undefined"==typeof e.aanFeatures.f&&a.setAttribute("id",e.sTableId+"_filter"),a.className=e.oClasses.sFilter;var t=""===e.oLanguage.sSearch?"":" ";a.innerHTML=e.oLanguage.sSearch+t+'<input type="text" />';var n=$("input",a);return n.val(e.oPreviousSearch.sSearch.replace('"',"&quot;")),n.keyup(function(a){for(var t=e.aanFeatures.f,n=0,o=t.length;n<o;n++)t[n]!=this.parentNode&&$("input",t[n]).val(this.value);/* Now do the filter */
 _fnFilterComplete(e,{sSearch:this.value,bEscapeRegex:e.oPreviousSearch.bEscapeRegex})}),n.keypress(function(e){/* Prevent default */
-/* Prevent default */
-return 13==e.keyCode?!1:void 0}),a}/*
+if(13==e.keyCode)return!1}),a}/*
 		 * Function: _fnFilterComplete
 		 * Purpose:  Filter the table using both the global filter and column based filtering
 		 * Returns:  -
@@ -745,7 +744,7 @@ _fnBuildSearchArray(e,0)}/*
 		 * Returns:  -
 		 * Inputs:   object:oSettings - dataTables settings object
 		 */
-function _fnFilterCustom(e){for(var a=_oExt.afnFiltering,t=0,n=a.length;n>t;t++)for(var o=0,s=0,i=e.aiDisplay.length;i>s;s++){var r=e.aiDisplay[s-o];/* Check if we should use this row based on the filtering function */
+function _fnFilterCustom(e){for(var a=_oExt.afnFiltering,t=0,n=a.length;t<n;t++)for(var o=0,s=0,i=e.aiDisplay.length;s<i;s++){var r=e.aiDisplay[s-o];/* Check if we should use this row based on the filtering function */
 a[t](e,e.aoData[r]._aData,r)||(e.aiDisplay.splice(s-o,1),o++)}}/*
 		 * Function: _fnFilterColumn
 		 * Purpose:  Filter the table on a per-column basis
@@ -765,7 +764,7 @@ function _fnFilterColumn(e,a,t,n){if(""!==a)for(var o=0,s=n?_fnEscapeRegex(a):a,
 		 *           bool:bEscapeRegex - escape regex or not
 		 */
 function _fnFilter(e,a,t,n){var o;/* Check if we are forcing or not - optional parameter */
-("undefined"==typeof t||null===t)&&(t=0),/* Need to take account of custom filtering functions always */
+"undefined"!=typeof t&&null!==t||(t=0),/* Need to take account of custom filtering functions always */
 0!==_oExt.afnFiltering.length&&(t=1);/* Generate the regular expression to use. Something along the lines of:
 			 * ^(?=.*?\bone\b)(?=.*?\btwo\b)(?=.*?\bthree\b).*$
 			 */
@@ -795,7 +794,7 @@ for(o=0;o<e.asDataSearch.length;o++)r.test(e.asDataSearch[o])||(e.aiDisplay.spli
 		 *           int:iMaster - use the master data array - optional
 		 */
 function _fnBuildSearchArray(e,a){/* Clear out the old data */
-e.asDataSearch.splice(0,e.asDataSearch.length);for(var t="undefined"!=typeof a&&1==a?e.aiDisplayMaster:e.aiDisplay,n=0,o=t.length;o>n;n++){e.asDataSearch[n]="";for(var s=0,i=e.aoColumns.length;i>s;s++)if(e.aoColumns[s].bSearchable){var r=e.aoData[t[n]]._aData[s];e.asDataSearch[n]+=_fnDataToSearch(r,e.aoColumns[s].sType)+" "}}}/*
+e.asDataSearch.splice(0,e.asDataSearch.length);for(var t="undefined"!=typeof a&&1==a?e.aiDisplayMaster:e.aiDisplay,n=0,o=t.length;n<o;n++){e.asDataSearch[n]="";for(var s=0,i=e.aoColumns.length;s<i;s++)if(e.aoColumns[s].bSearchable){var r=e.aoData[t[n]]._aData[s];e.asDataSearch[n]+=_fnDataToSearch(r,e.aoColumns[s].sType)+" "}}}/*
 		 * Function: _fnDataToSearch
 		 * Purpose:  Convert raw data into something that the user can search on
 		 * Returns:  string: - search string
@@ -820,7 +819,7 @@ function _fnSort(oSettings,bApplyClasses){var aaSort=[],oSort=_oExt.oSort,aoData
 if(!oSettings.oFeatures.bServerSide&&(0!==oSettings.aaSorting.length||null!==oSettings.aaSortingFixed)){/* If there is a sorting data type, and a fuction belonging to it, then we need to
 				 * get the data from the developer's function and apply it for this column
 				 */
-for(aaSort=null!==oSettings.aaSortingFixed?oSettings.aaSortingFixed.concat(oSettings.aaSorting):oSettings.aaSorting.slice(),i=0;i<aaSort.length;i++){var iColumn=aaSort[i][0],sDataType=oSettings.aoColumns[iColumn].sSortDataType;if("undefined"!=typeof _oExt.afnSortData[sDataType]){var iCorrector=0,aData=_oExt.afnSortData[sDataType](oSettings,iColumn);for(j=0,jLen=aoData.length;jLen>j;j++)null!==aoData[j]&&(aoData[j]._aData[iColumn]=aData[iCorrector],iCorrector++)}}/* DataTables offers two different methods for doing the 2D array sorting over multiple
+for(aaSort=null!==oSettings.aaSortingFixed?oSettings.aaSortingFixed.concat(oSettings.aaSorting):oSettings.aaSorting.slice(),i=0;i<aaSort.length;i++){var iColumn=aaSort[i][0],sDataType=oSettings.aoColumns[iColumn].sSortDataType;if("undefined"!=typeof _oExt.afnSortData[sDataType]){var iCorrector=0,aData=_oExt.afnSortData[sDataType](oSettings,iColumn);for(j=0,jLen=aoData.length;j<jLen;j++)null!==aoData[j]&&(aoData[j]._aData[iColumn]=aData[iCorrector],iCorrector++)}}/* DataTables offers two different methods for doing the 2D array sorting over multiple
 				 * columns. The first is to construct a function dynamically, and then evaluate and run
 				 * the function, while the second has no need for evalulation, but is a little bit slower.
 				 * This is used for environments which do not allow eval() for code execuation such as AIR
@@ -834,7 +833,7 @@ if(window.runtime){/*
 					 *   Two columns (1083 records) -   eval: 55mS   AIR: 66mS
 					 */
 /* Build a cached array so the sort doesn't have to process this stuff on every call */
-var aAirSort=[],iLen=aaSort.length;for(i=0;iLen>i;i++)iDataSort=oSettings.aoColumns[aaSort[i][0]].iDataSort,aAirSort.push([iDataSort,oSettings.aoColumns[iDataSort].sType+"-"+aaSort[i][1]]);oSettings.aiDisplayMaster.sort(function(e,a){for(var t,n=0;iLen>n;n++)if(t=oSort[aAirSort[n][1]](aoData[e]._aData[aAirSort[n][0]],aoData[a]._aData[aAirSort[n][0]]),0!==t)return t;return 0})}else{/* Dynamically created sorting function. Based on the information that we have, we can
+var aAirSort=[],iLen=aaSort.length;for(i=0;i<iLen;i++)iDataSort=oSettings.aoColumns[aaSort[i][0]].iDataSort,aAirSort.push([iDataSort,oSettings.aoColumns[iDataSort].sType+"-"+aaSort[i][1]]);oSettings.aiDisplayMaster.sort(function(e,a){for(var t,n=0;n<iLen;n++)if(t=oSort[aAirSort[n][1]](aoData[e]._aData[aAirSort[n][0]],aoData[a]._aData[aAirSort[n][0]]),0!==t)return t;return 0})}else{/* Dynamically created sorting function. Based on the information that we have, we can
 					 * create a sorting function as if it were specifically written for this sort. Here we
 					 * want to build a function something like (for two column sorting):
 					 *  fnLocalSorting = function(a,b){
@@ -894,9 +893,9 @@ e.oFeatures.bProcessing?(_fnProcessingDisplay(e,!0),setTimeout(function(){o(),e.
 		 * Inputs:   object:oSettings - dataTables settings object
 		 * Notes:    It is safe to call this function when bSort is false
 		 */
-function _fnSortingClasses(e){var a,t,n,o,s,i,r=e.aoColumns.length,l=e.oClasses;for(a=0;r>a;a++)e.aoColumns[a].bSortable&&$(e.aoColumns[a].nTh).removeClass(l.sSortAsc+" "+l.sSortDesc+" "+e.aoColumns[a].sSortingClass);/* Apply the required classes to the header */
+function _fnSortingClasses(e){var a,t,n,o,s,i,r=e.aoColumns.length,l=e.oClasses;for(a=0;a<r;a++)e.aoColumns[a].bSortable&&$(e.aoColumns[a].nTh).removeClass(l.sSortAsc+" "+l.sSortDesc+" "+e.aoColumns[a].sSortingClass);/* Apply the required classes to the header */
 for(s=null!==e.aaSortingFixed?e.aaSortingFixed.concat(e.aaSorting):e.aaSorting.slice(),a=0;a<e.aoColumns.length;a++)if(e.aoColumns[a].bSortable){for(i=e.aoColumns[a].sSortingClass,o=-1,t=0;t<s.length;t++)if(s[t][0]==a){i="asc"==s[t][1]?l.sSortAsc:l.sSortDesc,o=t;break}if($(e.aoColumns[a].nTh).addClass(i),e.bJUI){/* jQuery UI uses extra markup */
-var u=$("span",e.aoColumns[a].nTh);u.removeClass(l.sSortJUIAsc+" "+l.sSortJUIDesc+" "+l.sSortJUI+" "+l.sSortJUIAscAllowed+" "+l.sSortJUIDescAllowed);var f;f=-1==o?e.aoColumns[a].sSortingClassJUI:"asc"==s[o][1]?l.sSortJUIAsc:l.sSortJUIDesc,u.addClass(f)}}else/* No sorting on this column, so add the base class. This will have been assigned by
+var u=$("span",e.aoColumns[a].nTh);u.removeClass(l.sSortJUIAsc+" "+l.sSortJUIDesc+" "+l.sSortJUI+" "+l.sSortJUIAscAllowed+" "+l.sSortJUIDescAllowed);var f;f=o==-1?e.aoColumns[a].sSortingClassJUI:"asc"==s[o][1]?l.sSortJUIAsc:l.sSortJUIDesc,u.addClass(f)}}else/* No sorting on this column, so add the base class. This will have been assigned by
 					 * _fnAddColumn
 					 */
 $(e.aoColumns[a].nTh).addClass(e.aoColumns[a].sSortingClass);if(/* 
@@ -908,8 +907,8 @@ $(e.aoColumns[a].nTh).addClass(e.aoColumns[a].sSortingClass);if(/*
 			 * (on the order of 5 times slower) - hence the direct DOM manipulation here.
 			 */
 i=l.sSortColumn,e.oFeatures.bSort&&e.oFeatures.bSortClasses){var d=_fnGetTdNodes(e);/* Remove the old classes */
-if(d.length>=r)for(a=0;r>a;a++)if(-1!=d[a].className.indexOf(i+"1"))for(t=0,n=d.length/r;n>t;t++)d[r*t+a].className=d[r*t+a].className.replace(" "+i+"1","");else if(-1!=d[a].className.indexOf(i+"2"))for(t=0,n=d.length/r;n>t;t++)d[r*t+a].className=d[r*t+a].className.replace(" "+i+"2","");else if(-1!=d[a].className.indexOf(i+"3"))for(t=0,n=d.length/r;n>t;t++)d[r*t+a].className=d[r*t+a].className.replace(" "+i+"3","");/* Add the new classes to the table */
-var p,g=1;for(a=0;a<s.length;a++){for(p=parseInt(s[a][0],10),t=0,n=d.length/r;n>t;t++)d[r*t+p].className+=" "+i+g;3>g&&g++}}}/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+if(d.length>=r)for(a=0;a<r;a++)if(d[a].className.indexOf(i+"1")!=-1)for(t=0,n=d.length/r;t<n;t++)d[r*t+a].className=d[r*t+a].className.replace(" "+i+"1","");else if(d[a].className.indexOf(i+"2")!=-1)for(t=0,n=d.length/r;t<n;t++)d[r*t+a].className=d[r*t+a].className.replace(" "+i+"2","");else if(d[a].className.indexOf(i+"3")!=-1)for(t=0,n=d.length/r;t<n;t++)d[r*t+a].className=d[r*t+a].className.replace(" "+i+"3","");/* Add the new classes to the table */
+var p,g=1;for(a=0;a<s.length;a++){for(p=parseInt(s[a][0],10),t=0,n=d.length/r;t<n;t++)d[r*t+p].className+=" "+i+g;g<3&&g++}}}/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 		 * Section - Feature: Pagination. Note that most of the paging logic is done in 
 		 * _oExt.oPagination
 		 */
@@ -957,7 +956,7 @@ a.innerHTML=e.oLanguage.sInfoEmpty+e.oLanguage.sInfoPostFix:0===e.fnRecordsDispl
 a.innerHTML=e.oLanguage.sInfoEmpty+" "+e.oLanguage.sInfoFiltered.replace("_MAX_",e.fnRecordsTotal())+e.oLanguage.sInfoPostFix:e.fnRecordsDisplay()==e.fnRecordsTotal()?/* Normal record set */
 a.innerHTML=e.oLanguage.sInfo.replace("_START_",e._iDisplayStart+t).replace("_END_",e.fnDisplayEnd()).replace("_TOTAL_",e.fnRecordsDisplay())+e.oLanguage.sInfoPostFix:/* Record set after filtering */
 a.innerHTML=e.oLanguage.sInfo.replace("_START_",e._iDisplayStart+t).replace("_END_",e.fnDisplayEnd()).replace("_TOTAL_",e.fnRecordsDisplay())+" "+e.oLanguage.sInfoFiltered.replace("_MAX_",e.fnRecordsTotal())+e.oLanguage.sInfoPostFix;/* No point in recalculating for the other info elements, just copy the first one in */
-var n=e.aanFeatures.i;if(n.length>1)for(var o=a.innerHTML,s=1,i=n.length;i>s;s++)n[s].innerHTML=o}}/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+var n=e.aanFeatures.i;if(n.length>1)for(var o=a.innerHTML,s=1,i=n.length;s<i;s++)n[s].innerHTML=o}}/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 		 * Section - Feature: Length change
 		 */
 /*
@@ -971,9 +970,9 @@ var a=""===e.sTableId?"":'name="'+e.sTableId+'_length"',t='<select size="1" '+a+
 			 * Set the length to the current display length - thanks to Andrea Pavlovic for this fix,
 			 * and Stefan Skopnik for fixing the fix!
 			 */
-return""!==e.sTableId&&"undefined"==typeof e.aanFeatures.l&&n.setAttribute("id",e.sTableId+"_length"),n.className=e.oClasses.sLength,n.innerHTML=e.oLanguage.sLengthMenu.replace("_MENU_",t),$('select option[value="'+e._iDisplayLength+'"]',n).attr("selected",!0),$("select",n).change(function(a){for(var t=$(this).val(),n=e.aanFeatures.l,o=0,s=n.length;s>o;o++)n[o]!=this.parentNode&&$("select",n[o]).val(t);/* Redraw the table */
+return""!==e.sTableId&&"undefined"==typeof e.aanFeatures.l&&n.setAttribute("id",e.sTableId+"_length"),n.className=e.oClasses.sLength,n.innerHTML=e.oLanguage.sLengthMenu.replace("_MENU_",t),$('select option[value="'+e._iDisplayLength+'"]',n).attr("selected",!0),$("select",n).change(function(a){for(var t=$(this).val(),n=e.aanFeatures.l,o=0,s=n.length;o<s;o++)n[o]!=this.parentNode&&$("select",n[o]).val(t);/* Redraw the table */
 e._iDisplayLength=parseInt(t,10),_fnCalculateEnd(e),/* If we have space to show extra rows (backing up from the end point - then do so */
-e._iDisplayEnd==e.aiDisplay.length&&(e._iDisplayStart=e._iDisplayEnd-e._iDisplayLength,e._iDisplayStart<0&&(e._iDisplayStart=0)),-1==e._iDisplayLength&&(e._iDisplayStart=0),_fnDraw(e)}),n}/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+e._iDisplayEnd==e.aiDisplay.length&&(e._iDisplayStart=e._iDisplayEnd-e._iDisplayLength,e._iDisplayStart<0&&(e._iDisplayStart=0)),e._iDisplayLength==-1&&(e._iDisplayStart=0),_fnDraw(e)}),n}/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 		 * Section - Feature: Processing incidator
 		 */
 /*
@@ -994,7 +993,7 @@ var a=document.getElementById("filter_ajax_indicator");return a;var a}/*
 		 *   false - don't show
 		 */
 function _fnProcessingDisplay(e,a){if(e.oFeatures.bProcessing)//oSettings.aanFeatures.r;
-for(var t=document.getElementById("filter_ajax_indicator"),n=0,o=t.length;o>n;n++)t[n].style.visibility=a?"visible":"hidden"}/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+for(var t=document.getElementById("filter_ajax_indicator"),n=0,o=t.length;n<o;n++)t[n].style.visibility=a?"visible":"hidden"}/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 		 * Section - Support functions
 		 */
 /*
@@ -1018,7 +1017,7 @@ function _fnColumnIndexToVisible(e,a){for(var t=-1,n=0;n<e.aoColumns.length;n++)
 		 * Inputs:   object:s - dataTables settings object
 		 *           node:n - the TR element to find
 		 */
-function _fnNodeToDataIndex(e,a){for(var t=0,n=e.aoData.length;n>t;t++)if(null!==e.aoData[t]&&e.aoData[t].nTr==a)return t;return null}/*
+function _fnNodeToDataIndex(e,a){for(var t=0,n=e.aoData.length;t<n;t++)if(null!==e.aoData[t]&&e.aoData[t].nTr==a)return t;return null}/*
 		 * Function: _fnVisbleColumns
 		 * Purpose:  Get the number of visible columns
 		 * Returns:  int:i - the number of visible columns
@@ -1033,7 +1032,7 @@ function _fnVisbleColumns(e){for(var a=0,t=0;t<e.aoColumns.length;t++)e.aoColumn
 function _fnCalculateEnd(e){e.oFeatures.bPaginate===!1?e._iDisplayEnd=e.aiDisplay.length:/* Set the end point of the display - based on how many elements there are
 				 * still to display
 				 */
-e._iDisplayStart+e._iDisplayLength>e.aiDisplay.length||-1==e._iDisplayLength?e._iDisplayEnd=e.aiDisplay.length:e._iDisplayEnd=e._iDisplayStart+e._iDisplayLength}/*
+e._iDisplayStart+e._iDisplayLength>e.aiDisplay.length||e._iDisplayLength==-1?e._iDisplayEnd=e.aiDisplay.length:e._iDisplayEnd=e._iDisplayStart+e._iDisplayLength}/*
 		 * Function: _fnConvertToWidth
 		 * Purpose:  Convert a CSS unit width to pixels (e.g. 2em)
 		 * Returns:  int:iWidth - width in pixels
@@ -1048,7 +1047,7 @@ function _fnConvertToWidth(e,a){if(!e||null===e||""===e)return 0;"undefined"==ty
 		 * Inputs:   object:oSettings - dataTables settings object
 		 */
 function _fnCalculateColumnWidths(e){var a,t,n=e.nTable.offsetWidth,o=0,s=0,i=e.aoColumns.length,r=$("thead:eq(0)>th",e.nTable);/* Convert any user input sizes into pixel sizes */
-for(t=0;i>t;t++)e.aoColumns[t].bVisible&&(s++,null!==e.aoColumns[t].sWidth&&(a=_fnConvertToWidth(e.aoColumns[t].sWidth,e.nTable.parentNode),/* Total up the user defined widths for later calculations */
+for(t=0;t<i;t++)e.aoColumns[t].bVisible&&(s++,null!==e.aoColumns[t].sWidth&&(a=_fnConvertToWidth(e.aoColumns[t].sWidth,e.nTable.parentNode),/* Total up the user defined widths for later calculations */
 o+=a,e.aoColumns[t].sWidth=a+"px"));/* If the number of columns in the DOM equals the number that we
 			 * have to process in dataTables, then we can use the offsets that are
 			 * created by the web-browser. No custom sizes can be set in order for
@@ -1061,7 +1060,7 @@ if(i==r.length&&0===o&&s==i)for(t=0;t<e.aoColumns.length;t++)e.aoColumns[t].sWid
 var l=e.nTable.cloneNode(!1);l.setAttribute("id","");var u='<table class="'+l.className+'">',f="<tr>",d="<tr>";/* Construct a tempory table which we will inject (invisibly) into
 				 * the dom - to let the browser do all the hard word
 				 */
-for(t=0;i>t;t++)if(e.aoColumns[t].bVisible)if(f+="<th>"+e.aoColumns[t].sTitle+"</th>",null!==e.aoColumns[t].sWidth){var p="";null!==e.aoColumns[t].sWidth&&(p=' style="width:'+e.aoColumns[t].sWidth+';"'),d+="<td"+p+' tag_index="'+t+'">'+fnGetMaxLenString(e,t)+"</td>"}else d+='<td tag_index="'+t+'">'+fnGetMaxLenString(e,t)+"</td>";f+="</tr>",d+="</tr>",/* Create the tmp table node (thank you jQuery) */
+for(t=0;t<i;t++)if(e.aoColumns[t].bVisible)if(f+="<th>"+e.aoColumns[t].sTitle+"</th>",null!==e.aoColumns[t].sWidth){var p="";null!==e.aoColumns[t].sWidth&&(p=' style="width:'+e.aoColumns[t].sWidth+';"'),d+="<td"+p+' tag_index="'+t+'">'+fnGetMaxLenString(e,t)+"</td>"}else d+='<td tag_index="'+t+'">'+fnGetMaxLenString(e,t)+"</td>";f+="</tr>",d+="</tr>",/* Create the tmp table node (thank you jQuery) */
 l=$(u+f+d+"</table>")[0],l.style.width=n+"px",l.style.visibility="hidden",l.style.position="absolute",/* Try to aviod scroll bar */
 e.nTable.parentNode.appendChild(l);var g,c=$("tr:eq(1)>td",l);/* Gather in the browser calculated widths for the rows */
 for(t=0;t<c.length;t++){g=c[t].getAttribute("tag_index");var h=$("td",l).eq(t).width(),_=e.aoColumns[t].sWidth?e.aoColumns[t].sWidth.slice(0,-2):0;e.aoColumns[g].sWidth=Math.max(h,_)+"px"}e.nTable.parentNode.removeChild(l)}}/*
@@ -1086,7 +1085,7 @@ function _fnArrayCmp(e,a){if(e.length!=a.length)return 1;for(var t=0;t<e.length;
 		 * Notes:    This function makes use of the DataTables plugin objct _oExt 
 		 *   (.aTypes) such that new types can easily be added.
 		 */
-function _fnDetectType(e){for(var a=_oExt.aTypes,t=a.length,n=0;t>n;n++){var o=a[n](e);if(null!==o)return o}return"string"}/*
+function _fnDetectType(e){for(var a=_oExt.aTypes,t=a.length,n=0;n<t;n++){var o=a[n](e);if(null!==o)return o}return"string"}/*
 		 * Function: _fnSettingsFromNode
 		 * Purpose:  Return the settings object for a particular table
 		 * Returns:  object: Settings object - or null if not found
@@ -1098,19 +1097,19 @@ function _fnSettingsFromNode(e){for(var a=0;a<_aoSettings.length;a++)if(_aoSetti
 		 * Returns:  array array:aData - Master data array
 		 * Inputs:   object:oSettings - dataTables settings object
 		 */
-function _fnGetDataMaster(e){for(var a=[],t=e.aoData.length,n=0;t>n;n++)null===e.aoData[n]?a.push(null):a.push(e.aoData[n]._aData);return a}/*
+function _fnGetDataMaster(e){for(var a=[],t=e.aoData.length,n=0;n<t;n++)null===e.aoData[n]?a.push(null):a.push(e.aoData[n]._aData);return a}/*
 		 * Function: _fnGetTrNodes
 		 * Purpose:  Return an array with the TR nodes for the table
 		 * Returns:  array: - TR array
 		 * Inputs:   object:oSettings - dataTables settings object
 		 */
-function _fnGetTrNodes(e){for(var a=[],t=e.aoData.length,n=0;t>n;n++)null===e.aoData[n]?a.push(null):a.push(e.aoData[n].nTr);return a}/*
+function _fnGetTrNodes(e){for(var a=[],t=e.aoData.length,n=0;n<t;n++)null===e.aoData[n]?a.push(null):a.push(e.aoData[n].nTr);return a}/*
 		 * Function: _fnGetTdNodes
 		 * Purpose:  Return an array with the TD nodes for the table
 		 * Returns:  array: - TD array
 		 * Inputs:   object:oSettings - dataTables settings object
 		 */
-function _fnGetTdNodes(e){var a,t,n,o,s,i,r=_fnGetTrNodes(e),l=[],u=[];for(n=0,o=r.length;o>n;n++){for(l=[],s=0,i=r[n].childNodes.length;i>s;s++)a=r[n].childNodes[s],"TD"==a.nodeName&&l.push(a);for(t=0,s=0,i=e.aoColumns.length;i>s;s++)e.aoColumns[s].bVisible?u.push(l[s-t]):(u.push(e.aoData[n]._anHidden[s]),t++)}return u}/*
+function _fnGetTdNodes(e){var a,t,n,o,s,i,r=_fnGetTrNodes(e),l=[],u=[];for(n=0,o=r.length;n<o;n++){for(l=[],s=0,i=r[n].childNodes.length;s<i;s++)a=r[n].childNodes[s],"TD"==a.nodeName&&l.push(a);for(t=0,s=0,i=e.aoColumns.length;s<i;s++)e.aoColumns[s].bVisible?u.push(l[s-t]):(u.push(e.aoData[n]._anHidden[s]),t++)}return u}/*
 		 * Function: _fnEscapeRegex
 		 * Purpose:  scape a string stuch that it can be used in a regular expression
 		 * Returns:  string: - escaped string
@@ -1122,13 +1121,13 @@ function _fnEscapeRegex(e){var a=["/",".","*","+","?","|","(",")","[","]","{","}
 		 * Returns:  array int:aiReturn - index list for reordering
 		 * Inputs:   object:oSettings - dataTables settings object
 		 */
-function _fnReOrderIndex(e,a){for(var t=a.split(","),n=[],o=0,s=e.aoColumns.length;s>o;o++)for(var i=0;s>i;i++)if(e.aoColumns[o].sName==t[i]){n.push(i);break}return n}/*
+function _fnReOrderIndex(e,a){for(var t=a.split(","),n=[],o=0,s=e.aoColumns.length;o<s;o++)for(var i=0;i<s;i++)if(e.aoColumns[o].sName==t[i]){n.push(i);break}return n}/*
 		 * Function: _fnColumnOrdering
 		 * Purpose:  Get the column ordering that DataTables expects
 		 * Returns:  string: - comma separated list of names
 		 * Inputs:   object:oSettings - dataTables settings object
 		 */
-function _fnColumnOrdering(e){for(var a="",t=0,n=e.aoColumns.length;n>t;t++)a+=e.aoColumns[t].sName+",";return a.length==n?"":a.slice(0,-1)}/*
+function _fnColumnOrdering(e){for(var a="",t=0,n=e.aoColumns.length;t<n;t++)a+=e.aoColumns[t].sName+",";return a.length==n?"":a.slice(0,-1)}/*
 		 * Function: _fnClearTable
 		 * Purpose:  Nuke the table
 		 * Returns:  -
@@ -1189,12 +1188,12 @@ function _fnReadCookie(e){for(var a=e+"_"+window.location.pathname.replace(/[\/:
 function _fnGetUniqueThs(e){var a=e.getElementsByTagName("tr");/* Nice simple case */
 if(1==a.length)return a[0].getElementsByTagName("th");/* Otherwise we need to figure out the layout array to get the nodes */
 var t,n,o,s,i,r,l=[],u=[],f=2,d=3,p=4,g=function(e,a,t){for(;"undefined"!=typeof e[a][t];)t++;return t},c=function(e){"undefined"==typeof l[e]&&(l[e]=[])};/* Calculate a layout array */
-for(t=0,s=a.length;s>t;t++){c(t);var h=0,_=[];for(n=0,i=a[t].childNodes.length;i>n;n++)("TD"==a[t].childNodes[n].nodeName||"TH"==a[t].childNodes[n].nodeName)&&_.push(a[t].childNodes[n]);for(n=0,i=_.length;i>n;n++){var S=1*_[n].getAttribute("colspan"),D=1*_[n].getAttribute("rowspan");if(S&&0!==S&&1!==S){for(r=g(l,t,h),o=0;S>o;o++)l[t][r+o]=d;h+=S}else{if(r=g(l,t,h),l[t][r]="TD"==_[n].nodeName?p:_[n],D||0===D||1===D)for(o=1;D>o;o++)c(t+o),l[t+o][r]=f;h++}}}/* Convert the layout array into a node array
+for(t=0,s=a.length;t<s;t++){c(t);var h=0,_=[];for(n=0,i=a[t].childNodes.length;n<i;n++)"TD"!=a[t].childNodes[n].nodeName&&"TH"!=a[t].childNodes[n].nodeName||_.push(a[t].childNodes[n]);for(n=0,i=_.length;n<i;n++){var S=1*_[n].getAttribute("colspan"),D=1*_[n].getAttribute("rowspan");if(S&&0!==S&&1!==S){for(r=g(l,t,h),o=0;o<S;o++)l[t][r+o]=d;h+=S}else{if(r=g(l,t,h),l[t][r]="TD"==_[n].nodeName?p:_[n],D||0===D||1===D)for(o=1;o<D;o++)c(t+o),l[t+o][r]=f;h++}}}/* Convert the layout array into a node array
 			 * Note the use of aLayout[0] in the outloop, we want the outer loop to occur the same
 			 * number of times as there are columns. Unusual having nested loops this way around
 			 * but is what we need here.
 			 */
-for(t=0,s=l[0].length;s>t;t++)for(n=0,i=l.length;i>n;n++)"object"==typeof l[n][t]&&u.push(l[n][t]);return u}/*
+for(t=0,s=l[0].length;t<s;t++)for(n=0,i=l.length;n<i;n++)"object"==typeof l[n][t]&&u.push(l[n][t]);return u}/*
 		 * Function: _fnMap
 		 * Purpose:  See if a property is defined on one object, if so assign it to the other object
 		 * Returns:  - (done by reference)
@@ -1244,7 +1243,7 @@ this.fnSettings=function(e){return _fnSettingsFromNode(this[_oExt.iApiIndex])},/
 		 * Notes:    This function will only check the first three parts of a version string. It is
 		 *   assumed that beta and dev versions will meet the requirements. This might change in future
 		 */
-this.fnVersionCheck=function(e){for(var a=function(e,a){for(;e.length<a;)e+="0";return e},t=_oExt.sVersion.split("."),n=e.split("."),o="",s="",i=0,r=n.length;r>i;i++)o+=a(t[i],3),s+=a(n[i],3);return parseInt(o,10)>=parseInt(s,10)},/*
+this.fnVersionCheck=function(e){for(var a=function(e,a){for(;e.length<a;)e+="0";return e},t=_oExt.sVersion.split("."),n=e.split("."),o="",s="",i=0,r=n.length;i<r;i++)o+=a(t[i],3),s+=a(n[i],3);return parseInt(o,10)>=parseInt(s,10)},/*
 		 * Function: fnSort
 		 * Purpose:  Sort the table by a particular row
 		 * Returns:  -
@@ -1273,7 +1272,7 @@ this.fnSortListener=function(e,a,t){_fnSortAttachListener(_fnSettingsFromNode(th
 		 * Notes:    Thanks to Yekimov Denis for contributing the basis for this function!
 		 */
 this.fnAddData=function(e,a){if(0===e.length)return[];var t,n=[],o=_fnSettingsFromNode(this[_oExt.iApiIndex]);/* Check if we want to add multiple rows or not */
-if("object"==typeof e[0])for(var s=0;s<e.length;s++){if(t=_fnAddData(o,e[s]),-1==t)return n;n.push(t)}else{if(t=_fnAddData(o,e),-1==t)return n;n.push(t)}/* Rebuild the search */
+if("object"==typeof e[0])for(var s=0;s<e.length;s++){if(t=_fnAddData(o,e[s]),t==-1)return n;n.push(t)}else{if(t=_fnAddData(o,e),t==-1)return n;n.push(t)}/* Rebuild the search */
 return o.aiDisplay=o.aiDisplayMaster.slice(),_fnBuildSearchArray(o,1),("undefined"==typeof a||a)&&_fnReDraw(o),n},/*
 		 * Function: fnDeleteRow
 		 * Purpose:  Remove a row for the table
@@ -1320,7 +1319,7 @@ this.fnClose(e);var o=document.createElement("tr"),s=document.createElement("td"
 var i=$("tbody tr",n.nTable);/* No point in storing the row if using server-side processing since the nParent will be
 			 * nuked on a re-draw anyway
 			 */
-return-1!=$.inArray(e,i)&&$(o).insertAfter(e),n.oFeatures.bServerSide||n.aoOpenRows.push({nTr:o,nParent:e}),o},/*
+return $.inArray(e,i)!=-1&&$(o).insertAfter(e),n.oFeatures.bServerSide||n.aoOpenRows.push({nTr:o,nParent:e}),o},/*
 		 * Function: fnClose
 		 * Purpose:  Close a display row
 		 * Returns:  int: 0 (success) or 1 (failed)
@@ -1378,12 +1377,12 @@ return _fnBuildSearchArray(i,1),"undefined"!=typeof n&&n&&_fnReDraw(i),0},/*
 		 *           bool:bShow - show (true) or hide (false) the column
 		 */
 this.fnSetColumnVis=function(e,a){var t,n,o,s,i=_fnSettingsFromNode(this[_oExt.iApiIndex]),r=i.aoColumns.length;/* No point in doing anything if we are requesting what is already true */
-if(i.aoColumns[e].bVisible!=a){var l=$("thead:eq(0)>tr",i.nTable)[0],u=$("tfoot:eq(0)>tr",i.nTable)[0],f=[],d=[];for(t=0;r>t;t++)f.push(i.aoColumns[t].nTh),d.push(i.aoColumns[t].nTf);/* Show the column */
-if(a){var p=0;for(t=0;e>t;t++)i.aoColumns[t].bVisible&&p++;/* Need to decide if we should use appendChild or insertBefore */
-if(p>=_fnVisbleColumns(i))for(l.appendChild(f[e]),u&&u.appendChild(d[e]),t=0,n=i.aoData.length;n>t;t++)o=i.aoData[t]._anHidden[e],i.aoData[t].nTr.appendChild(o);else{/* Which coloumn should we be inserting before? */
-var g;for(t=e;r>t&&(g=_fnColumnIndexToVisible(i,t),null===g);t++);for(l.insertBefore(f[e],l.getElementsByTagName("th")[g]),u&&u.insertBefore(d[e],u.getElementsByTagName("th")[g]),s=_fnGetTdNodes(i),t=0,n=i.aoData.length;n>t;t++)o=i.aoData[t]._anHidden[e],i.aoData[t].nTr.insertBefore(o,$(">td:eq("+g+")",i.aoData[t].nTr)[0])}i.aoColumns[e].bVisible=!0}else{for(/* Remove a column from display */
-l.removeChild(f[e]),u&&u.removeChild(d[e]),s=_fnGetTdNodes(i),t=0,n=i.aoData.length;n>t;t++)o=s[t*i.aoColumns.length+e],i.aoData[t]._anHidden[e]=o,o.parentNode.removeChild(o);i.aoColumns[e].bVisible=!1}/* If there are any 'open' rows, then we need to alter the colspan for this col change */
-for(t=0,n=i.aoOpenRows.length;n>t;t++)i.aoOpenRows[t].nTr.colSpan=_fnVisbleColumns(i);/* Since there is no redraw done here, we need to save the state manually */
+if(i.aoColumns[e].bVisible!=a){var l=$("thead:eq(0)>tr",i.nTable)[0],u=$("tfoot:eq(0)>tr",i.nTable)[0],f=[],d=[];for(t=0;t<r;t++)f.push(i.aoColumns[t].nTh),d.push(i.aoColumns[t].nTf);/* Show the column */
+if(a){var p=0;for(t=0;t<e;t++)i.aoColumns[t].bVisible&&p++;/* Need to decide if we should use appendChild or insertBefore */
+if(p>=_fnVisbleColumns(i))for(l.appendChild(f[e]),u&&u.appendChild(d[e]),t=0,n=i.aoData.length;t<n;t++)o=i.aoData[t]._anHidden[e],i.aoData[t].nTr.appendChild(o);else{/* Which coloumn should we be inserting before? */
+var g;for(t=e;t<r&&(g=_fnColumnIndexToVisible(i,t),null===g);t++);for(l.insertBefore(f[e],l.getElementsByTagName("th")[g]),u&&u.insertBefore(d[e],u.getElementsByTagName("th")[g]),s=_fnGetTdNodes(i),t=0,n=i.aoData.length;t<n;t++)o=i.aoData[t]._anHidden[e],i.aoData[t].nTr.insertBefore(o,$(">td:eq("+g+")",i.aoData[t].nTr)[0])}i.aoColumns[e].bVisible=!0}else{for(/* Remove a column from display */
+l.removeChild(f[e]),u&&u.removeChild(d[e]),s=_fnGetTdNodes(i),t=0,n=i.aoData.length;t<n;t++)o=s[t*i.aoColumns.length+e],i.aoData[t]._anHidden[e]=o,o.parentNode.removeChild(o);i.aoColumns[e].bVisible=!1}/* If there are any 'open' rows, then we need to alter the colspan for this col change */
+for(t=0,n=i.aoOpenRows.length;t<n;t++)i.aoOpenRows[t].nTr.colSpan=_fnVisbleColumns(i);/* Since there is no redraw done here, we need to save the state manually */
 _fnSaveState(i)}},/*
 		 * Function: fnPageChange
 		 * Purpose:  Change the pagination
@@ -1411,7 +1410,7 @@ var _that=this;/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 		 * Section - Constructor
 		 */
 return this.each(function(){var e,a,t,n=0;/* Sanity check that we are not re-initialising a table - if we are, alert an error */
-for(n=0,e=_aoSettings.length;e>n;n++)if(_aoSettings[n].nTable==this)return alert("DataTables warning: Unable to re-initialise DataTable. Please use the API to make any configuration changes required."),_aoSettings[n];/* Make a complete and independent copy of the settings object */
+for(n=0,e=_aoSettings.length;n<e;n++)if(_aoSettings[n].nTable==this)return alert("DataTables warning: Unable to re-initialise DataTable. Please use the API to make any configuration changes required."),_aoSettings[n];/* Make a complete and independent copy of the settings object */
 var o=new classSettings;_aoSettings.push(o);var s=!1,i=!1,r=this.getAttribute("id");null!==r?(o.sTableId=r,o.sInstance=r):o.sInstance=_oExt._oExternConfig.iNextUnique++,/* Set the table node */
 o.nTable=this,/* Bind the API functions to the settings, so we can perform actions whenever oSettings is
 			 * available
@@ -1434,14 +1433,14 @@ o.iInitDisplayStart=oInit.iDisplayStart,o._iDisplayStart=oInit.iDisplayStart),/*
 o.oLanguage.sUrl=oInit.oLanguage.sUrl,$.getJSON(o.oLanguage.sUrl,null,function(e){_fnLanguageProcess(o,e,!0)}),s=!0):_fnLanguageProcess(o,oInit.oLanguage,!1))):/* Create a dummy object for quick manipulation later on. */
 oInit={},/* Add the strip classes now that we know which classes to apply - unless overruled */
 "undefined"==typeof oInit.asStripClasses&&(o.asStripClasses.push(o.oClasses.sStripOdd),o.asStripClasses.push(o.oClasses.sStripEven));/* See if we should load columns automatically or use defined ones - a bit messy this... */
-var l=this.getElementsByTagName("thead"),u=0===l.length?null:_fnGetUniqueThs(l[0]),f="undefined"!=typeof oInit.aoColumns;for(n=0,e=f?oInit.aoColumns.length:u.length;e>n;n++){var d=f?oInit.aoColumns[n]:null,p=u?u[n]:null;/* Check if we have column visibilty state to restore, and also that the length of the 
+var l=this.getElementsByTagName("thead"),u=0===l.length?null:_fnGetUniqueThs(l[0]),f="undefined"!=typeof oInit.aoColumns;for(n=0,e=f?oInit.aoColumns.length:u.length;n<e;n++){var d=f?oInit.aoColumns[n]:null,p=u?u[n]:null;/* Check if we have column visibilty state to restore, and also that the length of the 
 				 * state saved columns matches the currently know number of columns
 				 */
 "undefined"!=typeof oInit.saved_aoColumns&&oInit.saved_aoColumns.length==e&&(null===d&&(d={}),d.bVisible=oInit.saved_aoColumns[n].bVisible),_fnAddColumn(o,d,p)}/* Check the aaSorting array */
-for(n=0,e=o.aaSorting.length;e>n;n++){var g=o.aoColumns[o.aaSorting[n][0]];/* Set the current sorting index based on aoColumns.asSorting */
+for(n=0,e=o.aaSorting.length;n<e;n++){var g=o.aoColumns[o.aaSorting[n][0]];/* Set the current sorting index based on aoColumns.asSorting */
 for(/* Add a default sorting index */
 "undefined"==typeof o.aaSorting[n][2]&&(o.aaSorting[n][2]=0),/* If aaSorting is not defined, then we use the first indicator in asSorting */
-"undefined"==typeof oInit.aaSorting&&"undefined"==typeof o.saved_aaSorting&&(o.aaSorting[n][1]=g.asSorting[0]),a=0,t=g.asSorting.length;t>a;a++)if(o.aaSorting[n][1]==g.asSorting[a]){o.aaSorting[n][2]=a;break}}/* Check if there is data passing into the constructor */
+"undefined"==typeof oInit.aaSorting&&"undefined"==typeof o.saved_aaSorting&&(o.aaSorting[n][1]=g.asSorting[0]),a=0,t=g.asSorting.length;a<t;a++)if(o.aaSorting[n][1]==g.asSorting[a]){o.aaSorting[n][2]=a;break}}/* Check if there is data passing into the constructor */
 if(/* Sanity check that there is a thead and tfoot. If not let's just create them */
 0===this.getElementsByTagName("thead").length&&this.appendChild(document.createElement("thead")),0===this.getElementsByTagName("tbody").length&&this.appendChild(document.createElement("tbody")),i)for(n=0;n<oInit.aaData.length;n++)_fnAddData(o,oInit.aaData[n]);else/* Grab the data from the page */
 _fnGatherData(o);/* Copy the data index array */

@@ -31,7 +31,7 @@ d||(d=n["top"===g?"outerHeight":"outerWidth"]()/3),u&&(c={opacity:1},c[g]=0,
 // then do the "first" animation
 n.css("opacity",0).css(g,w?2*-d:2*d).animate(c,y,l)),
 // start at the smallest distance if we are hiding
-p&&(d/=Math.pow(2,h-1)),c={},c[g]=0,o=0;h>o;o++)f={},f[g]=(w?"-=":"+=")+d,n.animate(f,y,l).animate(c,y,l),d=p?2*d:d/2;
+p&&(d/=Math.pow(2,h-1)),c={},c[g]=0,o=0;o<h;o++)f={},f[g]=(w?"-=":"+=")+d,n.animate(f,y,l).animate(c,y,l),d=p?2*d:d/2;
 // Last Bounce when Hiding
 p&&(f={opacity:0},f[g]=(w?"-=":"+=")+d,n.animate(f,y,l)),n.queue(function(){p&&n.hide(),e.effects.restore(n,a),e.effects.removeWrapper(n),i()}),
 // inject all the animations we just queued to be first in line (after "inprogress")

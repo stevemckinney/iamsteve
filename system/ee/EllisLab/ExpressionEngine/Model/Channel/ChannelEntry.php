@@ -92,9 +92,9 @@ class ChannelEntry extends ContentModel {
 
 	protected static $_validation_rules = array(
 		'author_id'          => 'required|isNatural|validateAuthorId',
-		'channel_id'         => 'required',
+		'channel_id'         => 'required|validateMaxEntries',
 		'ip_address'         => 'ip_address',
-		'title'              => 'required',
+		'title'              => 'required|limitHtml[b,strong,i,em,span,sup,sub,code,ins,del]',
 		'url_title'          => 'required|validateUrlTitle|validateUniqueUrlTitle[channel_id]',
 		'status'             => 'required',
 		'entry_date'         => 'required',
@@ -198,6 +198,30 @@ class ChannelEntry extends ContentModel {
 	}
 
 	/**
+	 * Validate entry count for this channel against channel's
+	 * max_entries setting
+	 */
+	public function validateMaxEntries($key, $value, $params, $rule)
+	{
+		if ($this->Channel->max_entries === '0')
+		{
+			return TRUE;
+		}
+
+		$total_entries = $this->getFrontend()->get('ChannelEntry')
+			->fields('entry_id', 'title')
+			->filter('channel_id', $value)
+			->count();
+
+		if ($total_entries >= $this->Channel->max_entries)
+		{
+			return sprintf(lang('entry_limit_reached_desc'), $this->Channel->max_entries);
+		}
+
+		return TRUE;
+	}
+
+	/**
 	 * Validate the author ID for permissions
 	 */
 	public function validateAuthorId($key, $value, $params, $rule)
@@ -259,7 +283,7 @@ class ChannelEntry extends ContentModel {
 			if (defined('REQ') && REQ == 'CP')
 			{
 				$edit_link = ee('CP/URL')->make('publish/edit/entry/' . $entry->entry_id);
-				return sprintf(lang('url_title_not_unique'), $edit_link, $entry->title);
+				return sprintf(lang('url_title_not_unique'), $edit_link, htmlentities($entry->title, ENT_QUOTES, 'UTF-8'));
 			}
 
 			return lang('url_title_not_unique_frontend');
@@ -272,6 +296,8 @@ class ChannelEntry extends ContentModel {
 	{
 		parent::onAfterSave();
 		$this->Autosaves->delete();
+
+		$this->updateEntryStats();
 
 		// Some Tabs might call ee()->api_channel_fields
 		ee()->load->library('api');
@@ -303,6 +329,11 @@ class ChannelEntry extends ContentModel {
 			ee()->load->remove_package_path($info->getPath());
 		}
 
+		if ($this->versioning_enabled)
+		{
+			$this->saveVersion();
+		}
+
 		// clear caches
 		if (ee()->config->item('new_posts_clear_caches') == 'y')
 		{
@@ -317,7 +348,16 @@ class ChannelEntry extends ContentModel {
 	public function onAfterInsert()
 	{
 		$this->Author->updateAuthorStats();
-		$this->updateEntryStats();
+
+		if ($this->Channel->channel_notify == 'y' && $this->Channel->channel_notify_emails != '')
+		{
+			ee()->load->library('notifications');
+			ee()->notifications->send_admin_notification(
+				$this->Channel->channel_notify_emails,
+				$this->Channel->getId(),
+				$this->getId()
+			);
+		}
 	}
 
 	public function onAfterUpdate($changed)
@@ -382,7 +422,7 @@ class ChannelEntry extends ContentModel {
 		$data = array(
 			'entry_id'     => $this->entry_id,
 			'channel_id'   => $this->channel_id,
-			'author_id'    => $this->author_id,
+			'author_id'    => $this->author_id ?: 1,
 			'version_date' => ee()->localize->now,
 			'version_data' => $this->getValues()
 		);
@@ -416,6 +456,8 @@ class ChannelEntry extends ContentModel {
 		$stats->total_entries = $total_entries;
 		$stats->last_entry_date = $last_entry_date;
 		$stats->save();
+
+		$this->Channel->updateEntryStats();
 	}
 
 	/**
@@ -436,7 +478,10 @@ class ChannelEntry extends ContentModel {
 	{
 		$layout = $layout ?: new Display\DefaultChannelLayout($this->channel_id, $this->entry_id);
 
-		$this->getCustomField('title')->setItem('field_label', $this->Channel->title_field_label);
+		$this->getCustomField('title')->setItem(
+			'field_label',
+			htmlentities($this->Channel->title_field_label, ENT_QUOTES, 'UTF-8')
+		);
 
 		$this->usesCustomFields();
 
@@ -760,25 +805,16 @@ class ChannelEntry extends ContentModel {
 
 				foreach ($cat_groups as $cat_group)
 				{
-					$default_fields['categories[cat_group_id_'.$cat_group->getId().']'] = array(
-						'field_id'				=> 'categories',
-						'group_id'				=> $cat_group->getId(),
-						'field_label'			=> ($cat_groups->count() > 1) ? $cat_group->group_name : lang('categories'),
-						'field_required'		=> 'n',
-						'field_show_fmt'		=> 'n',
-						'field_instructions'	=> lang('categories_desc'),
-						'field_text_direction'	=> 'ltr',
-						'field_type'			=> 'checkboxes',
-						'field_list_items'      => '',
-						'field_maxl'			=> 100,
-						'editable'				=> ee()->session->userdata['can_edit_categories'],
-						'editing'				=> FALSE, // Not currently in editing state
-						'deletable'				=> ee()->session->userdata['can_delete_categories'],
-						'populateCallback'		=> array($this, 'populateCategories'),
-						'manage_toggle_label'	=> lang('manage_categories'),
-						'content_item_label'	=> lang('category')
-					);
-				};
+					$metadata = $cat_group->getFieldMetadata();
+					$metadata['categorized_object'] = $this;
+
+					if ($cat_groups->count() == 1)
+					{
+						$metadata['field_label'] = lang('categories');
+					}
+
+					$default_fields['categories[cat_group_id_'.$cat_group->getId().']'] = $metadata;
+				}
 
 				if ( ! $this->Channel->comment_system_enabled)
 				{
@@ -916,6 +952,7 @@ class ChannelEntry extends ContentModel {
 	public function populateStatus($field)
 	{
 		$statuses = ee('Model')->get('Status')
+			->with('NoAccess')
 			->filter('site_id', ee()->config->item('site_id'))
 			->filter('group_id', $this->Channel->status_group);
 
@@ -931,8 +968,15 @@ class ChannelEntry extends ContentModel {
 			);
 		}
 
+		$member_group_id = ee()->session->userdata('group_id');
+
 		foreach ($all_statuses as $status)
 		{
+			if ($member_group_id != 1 && in_array($member_group_id, $status->NoAccess->pluck('group_id')))
+			{
+				continue;
+			}
+
 			$status_name = ($status->status == 'closed' OR $status->status == 'open') ?  lang($status->status) : $status->status;
 			$status_options[$status->status] = $status_name;
 		}
@@ -940,63 +984,9 @@ class ChannelEntry extends ContentModel {
 		$field->setItem('field_list_items', $status_options);
 	}
 
-	public function populateCategories($field)
-	{
-		$categories = ee('Model')->get('Category')
-			->with(array('Children as C0' => array('Children as C1' => 'Children as C2')))
-			->with('CategoryGroup')
-			->filter('CategoryGroup.group_id', $field->getItem('group_id'))
-			->filter('Category.parent_id', 0)
-			->all();
-
-		// Sorting alphabetically or custom?
-		$sort_column = 'cat_order';
-		if ($categories->count() && $categories->first()->CategoryGroup->sort_order == 'a')
-		{
-			$sort_column = 'cat_name';
-		}
-
-		$category_list = $this->buildCategoryList($categories->sortBy($sort_column), $sort_column);
-		$field->setItem('field_list_items', $category_list);
-
-		$set_categories = $this->Categories->filter('group_id', $field->getItem('group_id'))->pluck('cat_id');
-		$field->setData(implode('|', $set_categories));
-	}
-
-	/**
-	 * Turn the categories collection into a nested array of ids => names
-	 *
-	 * @param	Collection	$categories		Top level categories to construct tree out of
-	 * @param	string		$sort_column	Either 'cat_name' or 'cat_order', sorts the
-	 *	categories by the given column
-	 */
-	protected function buildCategoryList($categories, $sort_column)
-	{
-		$list = array();
-
-		foreach ($categories as $category)
-		{
-			$children = $category->Children->sortBy($sort_column);
-
-			if (count($children))
-			{
-				$list[$category->cat_id] = array(
-					'name' => $category->cat_name,
-					'children' => $this->buildCategoryList($children, $sort_column)
-				);
-
-				continue;
-			}
-
-			$list[$category->cat_id] = $category->cat_name;
-		}
-
-		return $list;
-	}
-
 	public function getAuthorName()
 	{
-		return ($this->author_id) ? $this->Author->getMemberName() : '';
+		return ($this->author_id && $this->Author) ? $this->Author->getMemberName() : '';
 	}
 }
 

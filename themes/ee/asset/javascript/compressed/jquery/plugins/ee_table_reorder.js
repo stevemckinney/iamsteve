@@ -43,9 +43,18 @@ cancel:"td.sort-cancel",// Do not allow sort on this handle
 items:"tr",// Only allow these to be sortable
 sort:EE.sortable_sort_helper,// Custom sort handler
 forcePlaceholderSize:!0,// Custom sort handler
-helper:function(e,t){var r=t.children(),o=t.clone();return o.children().each(function(e){
+helper:function(e,t){var r=t.children(),n=t.clone();
+// Make sure radio buttons retain their state after sort,
+// explanation:
+// Upon finishing the sort, the new row will be put down
+// before the helper is destroyed, so for a brief moment
+// in time, there are multiple sets of radios with the
+// same name, and given the nature of radio buttons, only
+// one can be selected within the same name group, and the
+// helper wins; so, we'll just assign a random name to each 
+return n.find("input[type=radio]:enabled").each(function(){$(this).attr("name",20*Math.random())}),n.children().each(function(e){
 // Set helper cell sizes to match the original sizes
-$(this).width(r.eq(e).width())}),o},
+$(this).width(r.eq(e).width())}),n},
 // Before sort starts
 start:function(t,r){void 0!==e.beforeSort&&e.beforeSort(r.item)},
 // After sort finishes

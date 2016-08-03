@@ -19,7 +19,7 @@ var g=i.target||t.attr("rel");
 // overlay not found. cannot continue
 if(c=g?e(g):t,!c.length)throw"Could not find Overlay: "+g;
 // trigger's click event
-t&&-1==t.index(c)&&t.click(function(e){return s.load(e),e.preventDefault()}),
+t&&t.index(c)==-1&&t.click(function(e){return s.load(e),e.preventDefault()}),
 // API methods  
 e.extend(s,{load:function(t){
 // can be opened only once

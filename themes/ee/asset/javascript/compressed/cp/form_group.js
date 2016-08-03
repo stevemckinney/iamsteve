@@ -37,6 +37,6 @@ t("*[data-group-toggle]").each(function(a,e){if(!t(this).is(":radio")||t(this).i
 // above loop.
 t("*[data-group-toggle]").each(function(a,e){if(!t(this).is(":radio")||t(this).is(":checked")){EE.cp.form_group_toggle(this);t(this).data("groupToggle")}})}),EE.cp.form_group_toggle=function(i){var r=t(i).data("groupToggle"),d=t(i).val();
 // Show the selected group and enable its inputs
-t.each(r,function(i,r){var n=t('*[data-group="'+r+'"]'),s=t('*[data-section-group="'+r+'"]');c[r]=i==d,a(n,o[r]?!1:i==d),e(s,i==d)});
+t.each(r,function(i,r){var n=t('*[data-group="'+r+'"]'),s=t('*[data-section-group="'+r+'"]');c[r]=i==d,a(n,!o[r]&&i==d),e(s,i==d)});
 // The reset the form .last values
 var n=t(i).closest("form");n.find("fieldset.last").removeClass("last"),n.find("h2, .form-ctrls").each(function(){t(this).prevAll("fieldset:visible").first().addClass("last")})}}(jQuery);

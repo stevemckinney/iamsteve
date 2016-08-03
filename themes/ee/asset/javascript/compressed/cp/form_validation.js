@@ -22,7 +22,7 @@ this._textInputSelectors="input[type=text], input[type=number], input[type=passw
 	 */
 bindInputs:function(i){var e=this;t(this._textInputSelectors,i).blur(function(){
 // Unbind keydown validation when the invalid field loses focus
-t(this).off("keydown");var i=t(this);setTimeout(function(){e._sendAjaxRequest(i)},0)}),t("input[type=checkbox], input[type=radio], select",i).change(function(){var i=t(this);setTimeout(function(){e._sendAjaxRequest(i)},0)}),
+t(this).data("validating",!1);var i=t(this);setTimeout(function(){e._sendAjaxRequest(i)},0)}),t("input[type=checkbox], input[type=radio], select",i).change(function(){var i=t(this);setTimeout(function(){e._sendAjaxRequest(i)},0)}),
 // Upon loading the page with invalid fields, bind the text field
 // timer to correct the validation as the user types (for AJAX
 // validation only)
@@ -71,10 +71,11 @@ i.submit(function(s){
 // If the submit was trigger by a button click, disable it to prevent futher clicks
 // Update the button text to the value of its "work-text" data attribute
 // Replace button text with working text and disable the button to prevent further clicks
-return e.size()>0&&(e.addClass("work"),e.each(function(e,a){
+return e.size()>0&&(e.addClass("work"),e.each(function(e,a){if(s.target==a)
+// Our work here is done
 // Some controllers rely on the presence of the submit button in POST, but it won't
 // make it to the controller if it's disabled, so add it back as a hidden input
-return s.target==a?(a.prop("disabled",!0),i.append(t("<input/>",{type:"hidden",name:a.name,value:a.value})),!1):void 0}),""!=e.data("work-text")&&(e.is("input")?e.attr("value",e.data("work-text")):e.is("button")&&e.text(e.data("work-text")))),!0})},/**
+return a.prop("disabled",!0),i.append(t("<input/>",{type:"hidden",name:a.name,value:a.value})),!1}),""!=e.data("work-text")&&(e.is("input")?e.attr("value",e.data("work-text")):e.is("button")&&e.text(e.data("work-text")))),!0})},/**
 	 * Binds forms with a class of 'ajax-validate' to the AJAX
 	 * validation routines
 	 *
@@ -151,9 +152,11 @@ var p=e.attr("name").replace(/\[.+?\]/g,"");void 0!==this._validationCallbacks[p
 	 *
 	 * @param	{jQuery object}	container	jQuery object of field's container
 	 */
-_bindTextFieldTimer:function(i){var e,s=this;
-// Only bind to text fields
-t("input[type=text], input[type=password], input[type=hidden], textarea",i).off("keydown change").on("keydown change",function(){
+_bindTextFieldTimer:function(i){var e,s=this,a=t(this._textInputSelectors,i);
+// Don't double-up on bindings
+a.data("validating")!==!0&&
+// Bind the timer on keydown and change
+a.data("validating",!0).on("keydown change",function(){
 // Reset the timer, no need to validate if user is still typing
 void 0!==e&&clearTimeout(e);var i=t(this);
 // Wait half a second, then clear the timer and send the AJAX request

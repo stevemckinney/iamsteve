@@ -22,7 +22,19 @@
  */
 	define('BASEPATH', SYSPATH.'ee/legacy/');
 
-	require BASEPATH.'config/constants.php';
+	// load user configurable constants
+	$constants = require SYSPATH.'ee/EllisLab/ExpressionEngine/Config/constants.php';
+
+	if (file_exists(SYSPATH.'user/config/constants.php'))
+	{
+		$user_constants = include SYSPATH.'user/config/constants.php';
+		$constants = array_merge($constants, $user_constants);
+	}
+
+	foreach ($constants as $k => $v)
+	{
+		define($k, $v);
+	}
 
 /*
  * ------------------------------------------------------
@@ -34,6 +46,7 @@
 	EllisLab\ExpressionEngine\Core\Autoloader::getInstance()
 		->addPrefix('EllisLab', SYSPATH.'ee/EllisLab/')
 		->addPrefix('Michelf', SYSPATH.'ee/legacy/libraries/typography/Markdown/Michelf/')
+		->addPrefix('Mexitek', SYSPATH.'ee/Mexitek/')
 		->register();
 
 /*

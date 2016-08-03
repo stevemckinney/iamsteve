@@ -82,8 +82,8 @@ class EE_Core {
 		// application constants
 		define('IS_CORE',		FALSE);
 		define('APP_NAME',		'ExpressionEngine'.(IS_CORE ? ' Core' : ''));
-		define('APP_BUILD',		'20160419');
-		define('APP_VER',		'3.3.0');
+		define('APP_BUILD',		'20160726');
+		define('APP_VER',		'3.4.0');
 		define('APP_VER_ID',	'');
 		define('SLASH',			'&#47;');
 		define('LD',			'{');
@@ -94,6 +94,7 @@ class EE_Core {
 		define('NL',			"\n");
 		define('AJAX_REQUEST',	ee()->input->is_ajax_request());
 		define('PASSWORD_MAX_LENGTH', 72);
+		define('DOC_URL',       'https://docs.expressionengine.com/v3/');
 
 		ee()->load->helper('language');
 		ee()->load->helper('string');
@@ -280,7 +281,7 @@ class EE_Core {
 			exit;
 		}
 
-		// Throttle and Blacklist Check
+		// Security Checks: Throttle, Blacklist, File Integrity, and iFraming
 		if (REQ != 'CP')
 		{
 			ee()->load->library('throttling');
@@ -291,6 +292,8 @@ class EE_Core {
 
 			ee()->load->library('file_integrity');
 			ee()->file_integrity->create_bootstrap_checksum();
+
+			$this->setFrameHeaders();
 		}
 
 		ee()->load->library('remember');
@@ -487,13 +490,6 @@ class EE_Core {
 
 		// Laod Menu library
 		ee()->load->library('menu');
-
-		// update documentation URL if site was running the beta and had the old location
-		// @todo remove after 2.1.1's release, move to the update script
-		if (strncmp(ee()->config->item('doc_url'), 'http://expressionengine.com/docs', 32) == 0)
-		{
-			ee()->config->update_site_prefs(array('doc_url' => 'https://ellislab.com/expressionengine/user-guide/'));
-		}
 
 		$this->set_newrelic_transaction(function () use ($get) {
 			$request = $get;
@@ -770,6 +766,34 @@ class EE_Core {
 				ee()->newrelic->set_appname();
 				ee()->newrelic->name_transaction($transaction_name);
 			}
+		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Set iFrame Headers
+	 *
+	 * A security precaution to prevent iFraming of the site to protect
+	 * against clickjacking. By default we use SAMEORIGIN so that iframe
+	 * designs are still possible.
+	 *
+	 * @return	void
+	 */
+	private function setFrameHeaders()
+	{
+		$frame_options = ee()->config->item('x_frame_options');
+		$frame_options = strtoupper($frame_options);
+
+		// if not specified or invalid value, default to SAMEORIGIN
+		if ( ! in_array($frame_options, array('DENY', 'SAMEORIGIN', 'NONE')))
+		{
+			$frame_options = 'SAMEORIGIN';
+		}
+
+		if ($frame_options != 'NONE')
+		{
+			ee()->output->set_header('X-Frame-Options: '.$frame_options);
 		}
 	}
 

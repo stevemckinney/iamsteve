@@ -17,9 +17,9 @@ if(n.browser.msie){
 var o=n(document).height(),e=n(window).height();return[window.innerWidth||// ie7+
 document.documentElement.clientWidth||// ie6  
 document.body.clientWidth,// ie6 quirks mode
-20>o-e?e:o]}
+o-e<20?e:o]}
 // other well behaving browsers
-return[n(window).width(),n(document).height()]}function e(o){return o?o.call(n.mask):void 0}
+return[n(window).width(),n(document).height()]}function e(o){if(o)return o.call(n.mask)}
 // static constructs
 n.tools=n.tools||{version:"1.2.1"};var t;t=n.tools.expose={conf:{maskId:"exposeMask",loadSpeed:"slow",closeSpeed:"fast",closeOnClick:!0,closeOnEsc:!0,
 // css settings

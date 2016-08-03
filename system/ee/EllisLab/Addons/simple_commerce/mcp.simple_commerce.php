@@ -59,8 +59,6 @@ class Simple_commerce_mcp {
 			->withButton(lang('new'), ee('CP/URL')->make('addons/settings/simple_commerce/create-email-template'));
 
 		ee()->view->header = array(
-			'title' => lang('simple_commerce_manager'),
-			'search_button_value' => lang('search_commerce'),
 			'toolbar_items' => array(
 				'settings' => array(
 					'href' => ee('CP/URL')->make('addons/settings/simple_commerce/settings'),
@@ -476,7 +474,7 @@ class Simple_commerce_mcp {
 		}
 
 		$vars['sections'] = $this->itemForm($item);
-		$vars['cp_page_title'] = lang('edit_item');
+		$vars['cp_page_title'] = lang('edit_item').': '.$item->ChannelEntry->title;
 		$vars['base_url'] = ee('CP/URL')->make('addons/settings/simple_commerce/edit-item/'.$item_id);
 		$vars['save_btn_text'] = sprintf(lang('btn_save'), lang('item'));
 		$vars['save_btn_text_working'] = 'btn_saving';
@@ -1033,7 +1031,7 @@ class Simple_commerce_mcp {
 			)
 		));
 
-		$table->setNoResultsText(sprintf(lang('no_found'), lang('no_email_templates')), 'create_new_template', ee('CP/URL')->make('addons/settings/simple_commerce/create-email-template'));
+		$table->setNoResultsText(sprintf(lang('no_found'), lang('no_email_templates')), 'create_email_template', ee('CP/URL')->make('addons/settings/simple_commerce/create-email-template'));
 
 		$sort_map = array(
 			'name' => 'email_name',
@@ -1354,7 +1352,7 @@ class Simple_commerce_mcp {
 					'fields' => array(
 						'sc_public_certificate' => array(
 							'type' => 'text',
-							'value' => (ee()->config->item('sc_public_certificate') === FALSE OR ee()->config->item('sc_public_certificate') == '') ? $base.'public_certificate.pem' : ee()->config->item('sc_public_certificate')
+							'value' => (ee()->config->item('sc_public_certificate') === FALSE OR ee()->config->item('sc_public_certificate') == '') ? $base.'public_certificate.pem' : ee()->config->item('sc_public_certificate', '', TRUE)
 						)
 					)
 				),
@@ -1364,7 +1362,7 @@ class Simple_commerce_mcp {
 					'fields' => array(
 						'sc_private_key' => array(
 							'type' => 'text',
-							'value' => (ee()->config->item('sc_private_key') === FALSE OR ee()->config->item('sc_private_key') == '') ? $base.'private_key.pem' : ee()->config->item('sc_private_key')
+							'value' => (ee()->config->item('sc_private_key') === FALSE OR ee()->config->item('sc_private_key') == '') ? $base.'private_key.pem' : ee()->config->item('sc_private_key', '', TRUE)
 						)
 					)
 				),
@@ -1374,7 +1372,7 @@ class Simple_commerce_mcp {
 					'fields' => array(
 						'sc_paypal_certificate' => array(
 							'type' => 'text',
-							'value' => (ee()->config->item('sc_paypal_certificate') === FALSE OR ee()->config->item('sc_paypal_certificate') == '') ? $base.'paypal_certificate.pem' : ee()->config->item('sc_paypal_certificate')
+							'value' => (ee()->config->item('sc_paypal_certificate') === FALSE OR ee()->config->item('sc_paypal_certificate') == '') ? $base.'paypal_certificate.pem' : ee()->config->item('sc_paypal_certificate', '', TRUE)
 						)
 					)
 				),

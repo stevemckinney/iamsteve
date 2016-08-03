@@ -26,7 +26,7 @@ this._eventHandlers[i][t]=e}};/**
  *
  * @param	{string}	field		Selector of table to instantiate as a Grid
  */
-i.Publish=function(i,e){this.root=t(i),this.blankRow=t("tr.grid-blank-row",this.root),this.emptyField=t("tr.no-results",this.root),this.rowContainer=this.root.children("tbody"),this.settings=void 0!==e?e:EE.grid_field_settings[i.id],this.init(),this.eventHandlers=[]},i.Publish.prototype={init:function(){this._bindSortable(),this._bindAddButton(),this._bindDeleteButton(),this._toggleRowManipulationButtons(),this._fieldDisplay(),
+i.Publish=function(i,e){null!==i&&void 0!==i&&(this.root=t(i),this.blankRow=t("tr.grid-blank-row",this.root),this.emptyField=t("tr.no-results",this.root),this.tableActions=t("tr.tbl-action",this.root),this.rowContainer=this.root.children("tbody"),this.settings=void 0!==e?e:EE.grid_field_settings[i.id],this.init(),this.eventHandlers=[])},i.Publish.prototype={init:function(){this._bindSortable(),this._bindAddButton(),this._bindDeleteButton(),this._toggleRowManipulationButtons(),this._fieldDisplay(),
 // Store the original row count so we can properly increment new
 // row placeholder IDs in _addRow()
 this.original_row_count=this._getRows().size(),
@@ -72,11 +72,11 @@ this.rowContainer.find("td.reorder-col").toggleClass("sort-cancel",1==i)},/**
 	 *
 	 * @return	{int}	Number of rows
 	 */
-_getRows:function(){return this.rowContainer.children("tr").not(this.blankRow.add(this.emptyField))},/**
+_getRows:function(){return this.rowContainer.children("tr").not(this.blankRow.add(this.emptyField).add(this.tableActions))},/**
 	 * Binds click listener to Add button to insert a new row at the bottom
 	 * of the field
 	 */
-_bindAddButton:function(){var t=this;this.root.parents(".grid-publish").find(".toolbar .add a").add(".no-results .btn",this.root).on("click",function(i){i.preventDefault(),t._addRow()})},/**
+_bindAddButton:function(){var t=this;this.root.parents(".grid-publish").find(".toolbar .add a").add(".no-results .btn",this.root).add(".tbl-action .btn.add",this.root).on("click",function(i){i.preventDefault(),t._addRow()})},/**
 	 * Inserts new row at the bottom of our field
 	 */
 _addRow:function(){
@@ -89,13 +89,13 @@ t("> td",el).attr("data-new-row-id","new_row_"+this.original_row_count),
 // Enable inputs
 el.find(":input").removeAttr("disabled"),
 // Append the row to the end of the row container
-this.rowContainer.append(el),
+this.tableActions.length?this.tableActions.before(el):this.rowContainer.append(el),
 // Make sure empty field message is hidden
 this.emptyField.hide(),
 // Hide/show delete buttons depending on minimum row setting
 this._toggleRowManipulationButtons(),
 // Fire 'display' event for the new row
-this._fireEvent("display",el),
+this._fireEvent("display",el),t(this.root).trigger("grid:addRow",el),
 // Bind the new row's inputs to AJAX form validation
 EE.cp&&void 0!==EE.cp.formValidation&&EE.cp.formValidation.bindInputs(el)},/**
 	 * Binds click listener to Delete button in row column to delete the row
@@ -162,7 +162,7 @@ var h=t("<span/>").attr({"data-field":r,"data-columns":s,style:"display: block"}
 // Alert not already there? Add it and add our error message
 if(o.hasClass("alert"))
 // There isn't an error span for this error yet, add it anew
-0==a.size()?t("p",o).append(h):-1==l.indexOf(s)&&a.attr("data-columns",l+s);else{var o=t("<div/>").html(EE.alert.grid_error).contents();o.html("<p>"+h.prop("outerHTML")+"</p>"),o.insertBefore(t("div.grid-wrap"))}}else o.hasClass("alert")&&(
+0==a.size()?t("p",o).append(h):l.indexOf(s)==-1&&a.attr("data-columns",l+s);else{var o=t("<div/>").html(EE.alert.grid_error).contents();o.html("<p>"+h.prop("outerHTML")+"</p>"),o.insertBefore(t("div.grid-wrap"))}}else o.hasClass("alert")&&(
 // If the error exists, we need to remove the column ID of the column
 // that validated successfully for this field, and if the error doesn't
 // exist for any more columns, remove the error entirely

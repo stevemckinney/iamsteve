@@ -47,7 +47,7 @@ i=i||this.active[0],this._eventHandler({target:i,currentTarget:i,preventDefault:
 // click on active header, but not collapsible
 n&&!i.collapsible||
 // allow canceling activation
-this._trigger("beforeActivate",t,d)===!1||(i.active=r?!1:this.headers.index(s),
+this._trigger("beforeActivate",t,d)===!1||(i.active=!r&&this.headers.index(s),
 // when the call to ._toggle() comes after the class changes
 // it causes a very odd bug in IE 8 (see #6720)
 this.active=n?e():s,this._toggle(d),

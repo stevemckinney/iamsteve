@@ -16,7 +16,7 @@ EE.namespace("EE.publish.file_browser"),function(e){
 // @todo rewrite dependencies and remove
 function i(e){var i=!1;
 // [![prompt]!], [![prompt:!:value]!]
-return e?(e=e.toString(),e=e.replace(/\(\!\(([\s\S]*?)\)\!\)/g,function(e,i){var t=i.split("|!|");return altKey===!0?void 0!==t[1]?t[1]:t[0]:void 0===t[1]?"":t[0]}),e=e.replace(/\[\!\[([\s\S]*?)\]\!\]/g,function(e,t){var n=t.split(":!:");return i===!0?!1:(value=prompt(n[0],n[1]?n[1]:""),null===value&&(i=!0),value)})):""}/**
+return e?(e=e.toString(),e=e.replace(/\(\!\(([\s\S]*?)\)\!\)/g,function(e,i){var t=i.split("|!|");return altKey===!0?void 0!==t[1]?t[1]:t[0]:void 0===t[1]?"":t[0]}),e=e.replace(/\[\!\[([\s\S]*?)\]\!\]/g,function(e,t){var n=t.split(":!:");return i!==!0&&(value=prompt(n[0],n[1]?n[1]:""),null===value&&(i=!0),value)})):""}/**
 	 * Changes the hidden inputs, thumbnail and file name when a file is selected
 	 * @private
 	 * @param {Object} file File object with information about the file upload

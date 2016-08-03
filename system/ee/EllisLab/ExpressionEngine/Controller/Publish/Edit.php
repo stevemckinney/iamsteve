@@ -3,6 +3,7 @@
 namespace EllisLab\ExpressionEngine\Controller\Publish;
 
 use EllisLab\ExpressionEngine\Library\CP\Table;
+use Mexitek\PHPColors\Color;
 
 use EllisLab\ExpressionEngine\Controller\Publish\AbstractPublish as AbstractPublishController;
 use EllisLab\ExpressionEngine\Service\Validation\Result as ValidationResult;
@@ -130,6 +131,21 @@ class Edit extends AbstractPublishController {
 		{
 			$channel = ee('Model')->get('Channel', $channel_id)->first();
 			$vars['create_button'] = '<a class="btn tn action" href="'.ee('CP/URL', 'publish/create/' . $channel_id).'">'.sprintf(lang('btn_create_new_entry_in_channel'), $channel->channel_title).'</a>';
+
+			// Have we reached the max entries limit for this channel?
+			if ($channel->max_entries !== '0' && $count >= $channel->max_entries)
+			{
+				// Don't show create button
+				$vars['create_button'] = '';
+
+				$desc_key = ($channel->max_entries === '1')
+					? 'entry_limit_reached_one_desc' : 'entry_limit_reached_desc';
+				ee('CP/Alert')->makeInline()
+					->asWarning()
+					->withTitle(lang('entry_limit_reached'))
+					->addToBody(sprintf(lang($desc_key), $channel->max_entries))
+					->now();
+			}
 		}
 		else
 		{
@@ -146,6 +162,10 @@ class Edit extends AbstractPublishController {
 		$data = array();
 
 		$entry_id = ee()->session->flashdata('entry_id');
+
+		$statuses = ee('Model')->get('Status')
+			->filter('site_id', ee()->config->item('site_id'))
+			->all();
 
 		foreach ($entries->all() as $entry)
 		{
@@ -173,14 +193,13 @@ class Edit extends AbstractPublishController {
 
 			$autosaves = $entry->Autosaves->count();
 
+			// Escape markup in title
+			$title = htmlentities($entry->title, ENT_QUOTES, 'UTF-8');
+
 			if ($can_edit)
 			{
 				$edit_link = ee('CP/URL')->make('publish/edit/entry/' . $entry->entry_id);
-				$title = '<a href="' . $edit_link . '">' . htmlentities($entry->title, ENT_QUOTES, 'UTF-8') . '</a>';
-			}
-			else
-			{
-				$title = htmlentities($entry->title, ENT_QUOTES, 'UTF-8');
+				$title = '<a href="' . $edit_link . '">' . $title . '</a>';
 			}
 
 			if ($autosaves)
@@ -243,11 +262,34 @@ class Edit extends AbstractPublishController {
 
 			$disabled_checkbox = ! $can_delete;
 
+			// Display status highlight if one exists
+			$status = $statuses->filter('group_id', $entry->Channel->status_group)
+				->filter('status', $entry->status)
+				->first();
+
+			if ($status)
+			{
+				$highlight = new Color($status->highlight);
+				$color = ($highlight->isLight())
+					? $highlight->darken(100)
+					: $highlight->lighten(100);
+
+				$status = array(
+					'content'          => $status->status,
+					'color'            => $color,
+					'background-color' => $status->highlight
+				);
+			}
+			else
+			{
+				$status = $entry->status;
+			}
+
 			$column = array(
 				$entry->entry_id,
 				$title,
 				ee()->localize->human_time($entry->entry_date),
-				$entry->status,
+				$status,
 				array('toolbar_items' => $toolbar),
 				array(
 					'name' => 'selection[]',
@@ -330,8 +372,24 @@ class Edit extends AbstractPublishController {
 		ee()->cp->render('publish/edit/index', $vars);
 	}
 
-	public function entry($id, $autosave_id = NULL)
+	public function entry($id = NULL, $autosave_id = NULL)
 	{
+		if ( ! $id)
+		{
+			show_404();
+		}
+
+		// If an entry or channel on a different site is requested, try
+		// to switch sites and reload the publish form
+		$site_id = (int) ee()->input->get_post('site_id');
+		if ($site_id != 0 && $site_id != ee()->config->item('site_id') && empty($_POST))
+		{
+			ee()->cp->switch_site(
+				$site_id,
+				ee('CP/URL')->make('publish/edit/entry/'.$id)
+			);
+		}
+
 		$entry = ee('Model')->get('ChannelEntry', $id)
 			->with('Channel')
 			->filter('site_id', ee()->config->item('site_id'))
@@ -359,7 +417,7 @@ class Edit extends AbstractPublishController {
 			}
 		// -------------------------------------------
 
-		ee()->view->cp_page_title = sprintf(lang('edit_entry_with_title'), $entry->title);
+		ee()->view->cp_page_title = sprintf(lang('edit_entry_with_title'), htmlentities($entry->title, ENT_QUOTES, 'UTF-8'));
 
 		$form_attributes = array(
 			'class' => 'settings ajax-validate',
@@ -439,7 +497,7 @@ class Edit extends AbstractPublishController {
 
 		if ($entry->Channel->CategoryGroups)
 		{
-			$this->addCategoryModals();
+			ee('Category')->addCategoryModals();
 		}
 
 		ee()->cp->render('publish/entry', $vars);

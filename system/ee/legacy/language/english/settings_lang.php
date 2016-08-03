@@ -30,6 +30,8 @@ $lang = array(
 
 'word_censoring' => 'Word Censoring',
 
+'menu_manager' => 'Menu Manager',
+
 'members' => 'Members',
 
 'messages' => 'Messages',
@@ -143,6 +145,14 @@ $lang = array(
 
 'url_path_settings_title' => '<abbr title="Uniform Resource Location">URL</abbr> and Path Settings',
 
+'base_url' => 'Default base URL',
+
+'base_url_desc' => 'Use <code>{base_url}</code> to build URLs in control panel URL fields.',
+
+'base_path' => 'Default base path',
+
+'base_path_desc' => 'Use <code>{base_path}</code> to build paths in control panel path fields.',
+
 'site_index' => 'Website index page',
 
 'site_index_desc' => 'Most commonly <mark>index.php</mark>.',
@@ -247,7 +257,7 @@ $lang = array(
 
 'enable_errors' => 'Enable error reporting?',
 
-'enable_errors_desc' => 'When set to <b>enable</b>, super admins and member groups with permissions will see PHP/MySQL errors when they occur.',
+'enable_errors_desc' => 'When set to <b>enable</b>, super admins will see PHP/MySQL errors when they occur.',
 
 'show_profiler' => 'Enable debugging?',
 
@@ -514,6 +524,46 @@ $lang = array(
 'mbr_notification_emails_desc' => 'Separate multiple Emails with a comma.',
 
 /**
+ * Menu Manager
+ */
+
+'menu_sets' => 'Menu Sets',
+'menu_set' => 'Menu Set',
+'edit_menu_set' => 'Edit Menu Set',
+'create_menu_set' => 'Create Menu Set',
+'menu_set_updated' => 'Menu Set Updated',
+'menu_set_created' => 'Menu Set Created',
+'menu_set_created_desc' => 'The menu set <b>%s</b> has been updated.',
+'menu_set_updated_desc' => 'The menu set <b>%s</b> has been updated.',
+'menu_sets_removed' => 'Menu Sets removed',
+'menu_sets_removed_desc' => '%d menu sets were removed.',
+'no_menu_items' => 'No <b>Menu Items</b> found.',
+'create_menu_item' => 'Create Menu Item',
+'set_name' => 'Name',
+'set_assigned' => 'Assigned',
+'assigned_to' => 'assigned to',
+'set_member_groups' => 'Member group(s)?',
+'set_member_groups_desc' => 'Choose the member group(s) to apply this menu to.',
+'menu_options' => 'Menu Options',
+'menu_items' => 'Menu Items',
+'menu_items_desc' => 'Manage this menu sets contents',
+'menu_type' => 'Type',
+'menu_addon' => 'Add-On',
+'menu_single' => 'Single Link',
+'menu_dropdown' => 'Dropdown',
+'submenu' => 'Submenu',
+'submenu_desc' => 'Links in dropdown',
+'menu_label' => 'Name',
+'menu_label_desc' => 'Link label',
+'menu_url' => '<abbr title="Uniform Resource Locator">URL</abbr>',
+'menu_url_desc' => 'Link <abbr title="Uniform Resource Locator">URL</abbr>',
+'menu_addon' => 'Add-On',
+'menu_addon_desc' => 'Navigation from installed Add-Ons',
+'menu_no_addons' => 'No <b>Add-Ons</b> found.',
+'edit_menu_item' => 'Edit Menu Item',
+'add_menu_item' => 'Add Menu Item',
+
+/**
  * Messages
  */
 
@@ -697,7 +747,7 @@ $lang = array(
 
 'name_of_dictionary_file_desc' => 'Name of your <mark>dictionary</mark> file in your config folder.',
 
-'form_security_settings' => 'Form Security Settings',
+'form_security_settings' => 'Content Submission Settings',
 
 'deny_duplicate_data' => 'Deny duplicate data?',
 
@@ -710,6 +760,10 @@ $lang = array(
 'xss_clean_uploads' => 'Apply <abbr title="Cross Site Scripting">XSS</abbr> filtering?',
 
 'xss_clean_uploads_desc' => 'When set to <b>yes</b>, forms will apply <abbr title="Cross Site Scripting">XSS</abbr> filtering to submissions.',
+
+'enable_rank_denial' => 'Enable Rank Denial to submitted links?',
+
+'enable_rank_denial_desc' => 'When set to <b>enable</b>, all outgoing links are sent to a redirect page. This prevents spammers from <a href="%s" rel="external">gaining page rank</a>.',
 
 /**
  * Access Throttling

@@ -13,9 +13,9 @@
 // Close the modal
 e.modal.find(".m-close").click(),
 // Assign the value {filedir_#}filename.ext
-n.val("{filedir_"+i.upload_location_id+"}"+i.file_name).trigger("change"),i.isImage?(
+n.val("{filedir_"+i.upload_location_id+"}"+i.file_name).trigger("change"),n.siblings("figure").find(".toolbar .txt-only").remove(),i.isImage?(
 // Set the thumbnail
-e.input_img.show(),e.input_img.removeClass("hidden"),e.input_img.attr("src",i.thumb_path),n.siblings("figure").find(".toolbar .txt-only").remove(),n.siblings("figure").removeClass("no-image")):(n.siblings("figure").addClass("no-image"),e.input_img.hide(),n.siblings("figure").find(".toolbar").prepend('<li class="txt-only"><a href="#"><b>'+i.title+"</b></a></li>")),
+e.input_img.show(),e.input_img.removeClass("hidden"),e.input_img.attr("src",i.thumb_path),n.siblings("figure").removeClass("no-image")):(n.siblings("figure").addClass("no-image"),e.input_img.hide(),n.siblings("figure").find(".toolbar").prepend('<li class="txt-only"><a href="#"><b>'+i.title+"</b></a></li>")),
 // Show the figure
 n.siblings("figure").show(),
 // Hide the upload button

@@ -23,7 +23,7 @@ function t(t){var c=t.find("tbody tr").get();
 // bind to table events
 t.data("table_config")&&t.bind("tableupdate",function(){c=t.table("get_current_data").html_rows,t.find("input:checkbox").prop("checked",!1).trigger("change")}),
 // we always need columns ...
-this.getColumn=function(t){return e.map(c,function(c,n){return e(c.cells[t]).has("input[type=checkbox]").size()?c.cells[t]:void 0})}}
+this.getColumn=function(t){return e.map(c,function(c,n){if(e(c.cells[t]).has("input[type=checkbox]").size())return c.cells[t]})}}
 // Handle shift+clicks for multiple checkbox selection
 var c={$table:"",rowCache:"",column:0,tableCells:[],shift:!1,init:function(e,t,c){this.$table=e,this.rowCache=t,this.column=c,this.tableCells=this.rowCache.getColumn(this.column),this.checkboxListen(),this.tableListen(),this.shiftListen()},/**
 			 * Listens for clicks on the checkboxes of the passed in table cells
@@ -43,7 +43,7 @@ shiftListen:function(){var t=this;e(window).bind("keyup keydown",function(e){t.s
 			 * @return {mixed} Either false if there's only one checkbox checked
 			 *                        or the index of the other checked checkbox
 			 */
-checkboxChecked:function(t){if(e(this.tableCells).find("input[type=checkbox]").not(":eq("+t+")").find(":checked").size()>1)return!1;var c=0;return e(this.tableCells).each(function(n,i){return n!==t&&e(this).find("input[type=checkbox]").is(":checked")?(c=n,!1):void 0}),c}};
+checkboxChecked:function(t){if(e(this.tableCells).find("input[type=checkbox]").not(":eq("+t+")").find(":checked").size()>1)return!1;var c=0;return e(this.tableCells).each(function(n,i){if(n!==t&&e(this).find("input[type=checkbox]").is(":checked"))return c=n,!1}),c}};
 // GO GO GO
 // Standard jquery plugin procedure
 // Process all matched tables
@@ -87,4 +87,4 @@ i.delegate("td","click",function(t){var c=this.cellIndex,i=!0;
 // all checked or not
 // set the header checkbox
 // unchecked one, definitely not all checked
-return n.get(c)&&e(t.target).is(":checkbox")?t.target.checked?(e.each(h.getColumn(c),function(){return e(this).find(":checkbox").prop("checked")?void 0:(i=!1,!1)}),void n.each(c,function(t,c){e(this).prop("checked",i).trigger("change")})):(n.each(c,function(t,c){e(this).prop("checked",!1).trigger("change")}),!0):!0})})}}(jQuery);
+return!n.get(c)||!e(t.target).is(":checkbox")||(t.target.checked?(e.each(h.getColumn(c),function(){if(!e(this).find(":checkbox").prop("checked"))return i=!1,!1}),void n.each(c,function(t,c){e(this).prop("checked",i).trigger("change")})):(n.each(c,function(t,c){e(this).prop("checked",!1).trigger("change")}),!0))})})}}(jQuery);

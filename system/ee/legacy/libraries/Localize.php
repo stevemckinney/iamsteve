@@ -141,9 +141,9 @@ class Localize {
 		// These letters following a percent sign we will convert to their
 		// matching PHP date variable value
 		$allowed_date_vars = array(
-			'a', 'A', 'B', 'd', 'D', 'F', 'g', 'G', 'h', 'H', 'i', 'I',
-			'j', 'l', 'L', 'm', 'M', 'n', 'O', 'P', 'Q', 'r', 's', 'S',
-			't', 'T', 'U', 'w', 'W', 'y', 'Y', 'z', 'Z'
+			'a', 'A', 'B', 'c', 'd', 'D', 'e', 'F', 'g', 'G', 'h', 'H', 'i', 'I',
+			'j', 'l', 'L', 'm', 'M', 'n', 'N', 'o', 'O', 'P', 'Q', 'r', 's', 'S',
+			't', 'T', 'u', 'U', 'w', 'W', 'y', 'Y', 'z', 'Z'
 		);
 
 		// These date variables have month or day names and need to be ran
@@ -557,17 +557,9 @@ EOF;
 			return $this->_countries;
 		}
 
-		$countries_path = APPPATH.'config/countries.php';
-
-		if ( ! file_exists($countries_path))
-		{
-			$countries_path = EE_APPPATH.'config/countries.php';
-		}
-
-		if ( ! include($countries_path))
-		{
-			show_error(lang('countryfile_missing'));
-		}
+		$conf = ee()->config->loadFile('countries');
+		$countries = $conf['countries'];
+		$timezones = $conf['timezones'];
 
 		if ($return_timezones)
 		{

@@ -46,7 +46,7 @@ function e(e,a){return t(e).map(function(){return this.elements?t.makeArray(this
  * is a text input. Does not do all html5,
  * but most of what people use.
  */
-function a(t){if(jQuery.nodeName(t,"textarea"))return!0;if(!jQuery.nodeName(t,"input"))return!1;var e=t.type;return e?"text"==e||"password"==e||"search"==e||"url"==e||"email"==e||"tel"==e?!0:!1:!0}/* Helper method to propagate
+function a(t){if(jQuery.nodeName(t,"textarea"))return!0;if(!jQuery.nodeName(t,"input"))return!1;var e=t.type;return!e||("text"==e||"password"==e||"search"==e||"url"==e||"email"==e||"tel"==e)}/* Helper method to propagate
  * the event with a check if data changed
  * and support for delayed firing (copy, paste, etc don't update the value right away)
  */

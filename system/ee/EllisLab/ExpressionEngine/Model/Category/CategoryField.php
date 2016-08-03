@@ -34,6 +34,14 @@ class CategoryField extends FieldModel {
 
 	protected static $_hook_id = 'category_field';
 
+	protected static $_typed_columns = array(
+		'field_ta_rows'        => 'int',
+		'field_maxl'           => 'int',
+		'field_required'       => 'boolString',
+		'field_show_fmt'       => 'boolString',
+		'field_order'          => 'int',
+	);
+
 	protected static $_relationships = array(
 		'CategoryGroup' => array(
 			'type' => 'belongsTo'
@@ -45,9 +53,14 @@ class CategoryField extends FieldModel {
 	);
 
 	protected static $_validation_rules = array(
-		'field_type'  => 'required|enum[text,textarea,select]',
-		'field_label' => 'required|xss|noHtml',
-		'field_name'  => 'required|alphaDash|unique[site_id]'
+		'field_type'     => 'required|enum[text,textarea,select]',
+		'field_label'    => 'required|xss|noHtml',
+		'field_name'     => 'required|alphaDash|unique[site_id]',
+		'field_ta_rows'  => 'integer',
+		'field_maxl'     => 'integer',
+		'field_required' => 'enum[y,n]',
+		'field_show_fmt' => 'enum[y,n]',
+		'field_order'    => 'integer',
 	);
 
 	protected $field_id;
@@ -76,6 +89,11 @@ class CategoryField extends FieldModel {
 		return $values;
 	}
 
+	public function getContentType()
+	{
+		return 'category';
+	}
+
 	/**
 	 * New fields get appended
 	 */
@@ -95,6 +113,19 @@ class CategoryField extends FieldModel {
 				->count();
 			$this->setProperty('field_order', $count + 1);
 		}
+	}
+
+	/**
+	 * Update field formatting on existing categories
+	 *
+	 * @return void
+	 */
+	public function updateFormattingOnExisting()
+	{
+		ee()->db->update(
+			$this->getDataTable(),
+			array('field_ft_'.$this->field_id => $this->field_default_fmt)
+		);
 	}
 
 	public function getStructure()

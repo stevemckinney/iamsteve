@@ -145,8 +145,7 @@ class EE_Messages {
 		$this->title = ee()->lang->line('private_messages');
 		$this->crumb = ee()->lang->line('private_messages');
 
-		$this->images_folder = URL_THEMES.'cp_global_images/';
-
+		$this->images_folder = URL_THEMES.'/asset/img/';
 		$this->single_parts['path']['image_url'] = $this->images_folder;
 
 		/** -----------------------------------
@@ -1231,6 +1230,7 @@ class EE_Messages {
 			$data			= $row;
 			$message_ids[]	= $row['message_id'];
 
+			$data['message_subject'] = htmlentities($data['message_subject'], ENT_QUOTES, 'UTF-8');
 			$data['msg_id']				= ($row['message_read'] == 'n') ? 'u'.$row['msg_id'] : $row['msg_id'];
 			$data['message_date']		= ee()->localize->human_time($data['message_date']);
 			$data['style']				= ($i % 2) ? 'tableCellTwo' : 'tableCellOne';
@@ -1462,7 +1462,7 @@ class EE_Messages {
 			$this->theme_path = ee('Theme')->getPath('member/'.$theme);
 		}
 
-		if ( ! file_exists($this->theme_path.$which.'.html'))
+		if ( ! file_exists($this->theme_path.'/'.$which.'.html'))
 		{
 			$data = array(	'title' 	=> ee()->lang->line('error'),
 							'heading'	=> ee()->lang->line('general_error'),
@@ -1474,7 +1474,7 @@ class EE_Messages {
 			return ee()->output->show_message($data, 0);
 		}
 
-		return $this->MS->_prep_element(trim(file_get_contents($this->theme_path.$which.'.html')));
+		return $this->MS->_prep_element(trim(file_get_contents($this->theme_path.'/'.$which.'.html')));
 	}
 
 
@@ -1555,7 +1555,20 @@ DOH;
 	}
 
 
-
+	/**
+	 * Determines which field to use from a list of valid fields defaults to
+	 * 'recipients'.
+	 *
+	 * @param string $input The requested field
+	 * @param string $default The default value if the $input is invalid
+	 * @return string One of the valid fields
+	 */
+	private function which_field($input, $default = 'recipients')
+	{
+		$valid_fields = array('recipients', 'cc');
+		$default = (in_array($default, $valid_fields)) ? $default : 'recipients';
+		return (in_array($input, $valid_fields)) ? $input : $default;
+	}
 
 
 	/** -----------------------------------
@@ -1568,7 +1581,7 @@ DOH;
 
 		if ($this->allegiance == 'cp')
 		{
-			$which_field = ( ! ee()->input->get_post('field')) ? 'recipients' : ee()->input->get_post('field');
+			$which_field = $this->which_field(ee()->input->get_post('field'));
 		}
 		else
 		{
@@ -1610,7 +1623,7 @@ DOH;
 		$this->title = '';
 		$this->crumb = '';
 
-		$which_field = ( ! ee()->input->get_post('which_field')) ? 'recipients' : ee()->input->get_post('which_field');
+		$which_field = $this->which_field(ee()->input->get_post('which_field'));
 
 		if ($this->allegiance == 'cp')
 		{
@@ -1890,7 +1903,6 @@ DOH;
 
 		$this->single_parts['image']['messages_graph']['width']		= '1';
 		$this->single_parts['image']['messages_graph']['height']	= '11';
-		$this->single_parts['image']['messages_graph']['url']		= $this->images_folder.'bar.gif';
 
 		/** ----------------------
 		/**  Calculate
@@ -2881,7 +2893,7 @@ DOH;
 		// Load the XML Helper
 		ee()->load->helper('xml');
 
-		$this->single_parts['include']['subject']				= $data['subject'];
+		$this->single_parts['include']['subject']				= htmlentities($data['subject'], ENT_QUOTES, 'UTF-8');
 		$this->single_parts['include']['body']					= $data['body'];
 		$this->single_parts['include']['recipients']			= xml_convert($this->convert_recipients($data['recipients'], 'string', 'screen_name'));
 		$this->single_parts['include']['cc']					= ($data['cc'] == '') ? '' : xml_convert($this->convert_recipients($data['cc'], 'string', 'screen_name'));
