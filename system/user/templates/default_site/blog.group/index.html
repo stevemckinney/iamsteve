@@ -5,8 +5,6 @@
 {preload_replace:ch_status="latest|open"}
 {preload_replace:ch_disable="member_data|trackbacks"}
 {preload_replace:ch_limit="12"}
-{preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
-{preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
 
 <div class="row between subheader contain contain-large pb-half pb-d">
   {exp:stash:get_list 
@@ -17,9 +15,9 @@
     parse_conditionals="yes"
   }
     {if previous_page}
-      <a href="{previous_page}" class="neutral-l1 sans link-icon"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> Newer</a>
+      <a href="{previous_page}" class="neutral-l1 sans link-icon"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> <strong>Newer</strong></a>
     {if:else}
-      <span class="neutral-l1 sans link-icon disabled"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> Newer</span>
+      <span class="neutral-l3 sans link-icon disabled"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> <strong>Newer</strong></span>
     {/if}
 
     {if segment_2 == 'category'}
@@ -34,9 +32,9 @@
 
   
     {if next_page}
-      <a href="{next_page}" class="neutral-l1 sans link-icon">Older <span class="icon icon-medium icon-right">{icon_arrow_right}</span></a>
+      <a href="{next_page}" class="neutral-l1 sans link-icon"><strong>Older</strong> <span class="icon icon-medium icon-right">{icon_arrow_right}</span></a>
     {if:else}
-      <span class="neutral-l1 sans link-icon disabled">Older <span class="icon icon-medium icon-right">{icon_arrow_right}</span></span>
+      <span class="neutral-l3 sans link-icon disabled"><strong>Older</strong> <span class="icon icon-medium icon-right">{icon_arrow_right}</span></span>
     {/if}
   {/exp:stash:get_list}
 </div>
@@ -91,7 +89,7 @@
   parse_vars="yes"
   parse_conditionals="yes"
 }
-  <div class="row center pagination" style="margin-bottom: -38px">
+  <div class="row center pagination pagination-offset">
     {if previous_page}
       <a href="{previous_page}" class="paginate paginate-left link-icon"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> Newer</a>
 		{if:else}
