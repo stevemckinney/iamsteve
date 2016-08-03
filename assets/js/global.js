@@ -56,8 +56,8 @@ var iamsteve = (function ()
         notBottom: 'header-not-bottom'
       },
       onUnpin: function()
-      {
-        if ( _isNavVisible(nav) )
+      { 
+        if ( _isNavVisible() )
         {
           this.elem.classList.remove(this.classes.unpinned);
           this.elem.classList.add(this.classes.pinned);
@@ -75,19 +75,18 @@ var iamsteve = (function ()
   }
   
   // Private
-  var _isNavVisible = function(el)
+  var _isNavVisible = function()
   {
-    return ( el.classList.contains('visible') || search.classList.contains('visible') ? true : false );
+    return ( nav.classList.contains('visible') || search.classList.contains('visible') ? true : false );
   }
   
   var _toggleSearch = function( e )
   {     
     this.classList.toggle('active');
     search.classList.toggle('visible');
-    console.log('transition starts');
     
     var field = document.getElementById('keywords');
-
+    
     search.addEventListener('transitionend', function()
     {
       if ( toggle.classList.contains('active') ) 
@@ -98,7 +97,7 @@ var iamsteve = (function ()
       {
         field.focus();
       }
-    });
+    }, true);
     
     if ( toggle.classList.contains('active') ) 
     {
