@@ -24,7 +24,13 @@
       margin-#{$margin}: $m5; }
     
     .m#{$abbr}6 {
-      margin-#{$margin}: $m6; } } }
+      margin-#{$margin}: $m6; }
+    
+    .m#{$abbr}7 {
+      margin-#{$margin}: $m7; }
+      
+    .m#{$abbr}8 {
+      margin-#{$margin}: $m8; } } }
     
 // $b margins
 @if $default-enable-margin {
@@ -49,7 +55,13 @@
         margin-#{$margin}: $m5; }
       
       .m#{$abbr}6-b {
-        margin-#{$margin}: $m6; } } } }
+        margin-#{$margin}: $m6; }
+      
+      .m#{$abbr}7-b {
+        margin-#{$margin}: $m7; }
+      
+      .m#{$abbr}8-b {
+        margin-#{$margin}: $m8; } } } }
 
 // $d margins
 @if $default-enable-margin {
@@ -74,4 +86,10 @@
         margin-#{$margin}: $m5; }
       
       .m#{$abbr}6-d {
-        margin-#{$margin}: $m6; } } } }
+        margin-#{$margin}: $m6; }
+      
+      .m#{$abbr}7-d {
+        margin-#{$margin}: $m7; }
+      
+      .m#{$abbr}8-d {
+        margin-#{$margin}: $m8; } } } }

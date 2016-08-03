@@ -24,7 +24,13 @@
       margin-#{$padding}: $p5; }
     
     .p#{$abbr}6 {
-      margin-#{$padding}: $p6; } } }
+      margin-#{$padding}: $p6; }
+    
+    .p#{$abbr}7 {
+      margin-#{$padding}: $p7; }
+    
+    .p#{$abbr}8 {
+      margin-#{$padding}: $p8; } } }
     
 // $b padding
 @if $default-enable-padding {
@@ -49,7 +55,13 @@
         margin-#{$padding}: $p5; }
       
       .p#{$abbr}6-b {
-        margin-#{$padding}: $p6; } } } }
+        margin-#{$padding}: $p6; }
+
+      .p#{$abbr}7-b {
+        margin-#{$padding}: $p7; }
+      
+      .p#{$abbr}8-b {
+        margin-#{$padding}: $p8; } } } }
 
 // $d padding
 @if $default-enable-padding {
@@ -74,7 +86,13 @@
         margin-#{$padding}: $p5; }
       
       .p#{$abbr}6-d {
-        margin-#{$padding}: $p6; } } } }
+        margin-#{$padding}: $p6; }
+        
+      .p#{$abbr}7-d {
+        margin-#{$padding}: $p7; }
+      
+      .p#{$abbr}8-d {
+        margin-#{$padding}: $p8; } } } }
 
 // Island padding helpers
 // ---------------------------
