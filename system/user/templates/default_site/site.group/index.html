@@ -10,12 +10,12 @@
 
 <div class="row hero contain-large">
   <div class="column introduction">
-    <picture class="rio mb-half">
+    <picture class="rio mb2">
       <source srcset="{site_url}dist/images/rio-badge.svg" media="(min-width: 840px)">
       <source srcset="{site_url}dist/images/rio.svg" media="(max-width: 839px)">
       <img src="{site_url}dist/images/rio.svg">
     </picture>
-    <h1 class="f3 f2-b f1-d mb-half primary">Learn design and code</h1>
+    <h1 class="f3 f2-b f1-d mb2 primary">Learn design and code</h1>
     <p>Hello there, I’m Steve&nbsp;McKinney, a designer who codes. I&nbsp;write regularly, focusing on the process behind that. I&nbsp;cover topics on designing with Adobe Illustrator, CSS and Wordpress.</p>
     <p class="sans"><a href="{path='blog/index'}" class="link neutral">Browse the archive</a></p>
   </div>
@@ -38,13 +38,13 @@
         	{/if}
       	</div>
       	<div class="card-body">
-        	<div class="meta dashes meta-to-calendar mb-half">
+        	<div class="meta dashes meta-to-calendar mb2">
             <time class="calendar" datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
               <span class="month">{entry_date format="%F"}</span>
               <span class="day">{entry_date format="%j"}</span>
             </time>
           </div>
-      		<h2 class="f4 f3-b f2-d mb-half primary"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+      		<h2 class="f4 f3-b f2-d mb2 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
       		{excerpt}
       		{blog_meta}
         </div>
@@ -54,7 +54,7 @@
 </div>
 
 
-<section class="posts pt-double pt-triple-d pb-double pb-triple-d">
+<section class="posts pt6 pt7-d pb6 pb7-d">
   <header class="row row-header contain contain-medium contain-large between">
     <h2 class="f5 f4-b chunky neutral row-title">Previous posts</h2>
     <div class="pagination js-pagination">
@@ -70,7 +70,7 @@
   <div class="scroll">
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="{ch_limit}"}
     	<article data-href="{title_permalink='blog/entry'}" class="card card-medium">
-      	<div class="card-image mb-half">
+      	<div class="card-image mb2">
         	{if thumbnail}
         	  {thumbnail}
         	    {if medium_file_url}
@@ -90,8 +90,8 @@
           {/if}
       	</div>
       	<div class="card-body">
-        	<div class="meta dashes mb-half">{date}</div>
-      		<h3 class="f5 f4-b mb-quarter primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+        	<div class="meta dashes mb2">{date}</div>
+      		<h3 class="f5 f4-b mb1 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
       		{exp:streeng words="44"}{excerpt}{/exp:streeng}
       		{blog_meta}
         </div>
@@ -105,7 +105,7 @@
 </section>
 
 
-<section class="posts pt-double pt-triple-d pb-double pb-triple-d">
+<section class="posts pt6 pt7-d pb6 pb7-d">
   <header class="row row-header contain contain-medium contain-large between">
     <h2 class="f5 f4-b neutral chunky row-title">Popular in design</h2>
     <div class="pagination js-pagination">
@@ -121,7 +121,7 @@
   <div class="scroll">
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="7" orderby="view_count_one" sort="desc"}
     	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
-      	<div class="card-image mb-half">
+      	<div class="card-image mb2">
         	{if thumbnail}
         	  {thumbnail}
         	    {if small_file_url}
@@ -135,15 +135,15 @@
         	{/if}
       	</div>
       	<div class="card-body">
-      		<div class="meta dashes mb-quarter">{date}</div>
-      		<h2 class="f6 f5-b f4-d mb-undo neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+      		<div class="meta dashes mb1">{date}</div>
+      		<h2 class="f6 f5-b f4-d mb0 neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
     		</div>
     	</article>
     {/exp:channel:entries}
   </div>
 </section>
 
-<section class="posts pb-double pb-triple-d">
+<section class="posts pb6 pb7-d">
   <header class="row row-header contain contain-medium contain-large between">
     <h2 class="f5 f4-b neutral chunky row-title">Popular in code</h2>
     <div class="pagination js-pagination">
@@ -159,7 +159,7 @@
   <div class="scroll">
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2" orderby="view_count_one" sort="desc"}
     	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
-      	<div class="card-image mb-half">
+      	<div class="card-image mb2">
         	{if thumbnail}
         	  {thumbnail}
         	    {if small_file_url}
@@ -173,8 +173,8 @@
         	{/if}
       	</div>
       	<div class="card-body">
-        	<div class="meta dashes mb-quarter">{date}</div>
-      		<h2 class="f6 f5-b f4-d mb-undo neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+        	<div class="meta dashes mb1">{date}</div>
+      		<h2 class="f6 f5-b f4-d mb0 neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
     		</div>
     	</article>
     {/exp:channel:entries}

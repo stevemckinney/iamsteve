@@ -8,8 +8,8 @@
 {preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
 {preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
 
-<div class="row subheader center contain contain-medium contain-large pb-half pb-d">
-  <h1 class="f5 f3-b f2-d neutral mb-undo">
+<div class="row subheader center contain contain-medium contain-large pb2 pb4-d">
+  <h1 class="f5 f3-b f2-d neutral mb4">
     {exp:search:search_results channel="{ch}" limit="1" paginate="bottom" status="open|latest" disable="member_data|trackbacks"}
       {if count == 1}
         {exp:search:total_results}{total}{/exp:search:total_results} {if {exp:search:total_results} == 1}result was{if:else}results were{/if} found for {exp:search:keywords}
@@ -18,10 +18,10 @@
   </h1>
 </div>
 
-<div class="row between contain contain-medium contain-large pt pt-double-b pb pb-double-b" id="posts">
+<div class="row between contain contain-medium contain-large pt4 pt6-b pb4 pb6-b" id="posts">
   {exp:search:search_results channel="{ch}" limit="{ch_limit}" status="{ch_status}" disable="{ch_disable}"}
   	<article data-href="{title_permalink='blog/entry'}" class="card card-medium entry">
-    	<div class="card-image mb-half">
+    	<div class="card-image mb2">
       	{if thumbnail}
       	  {thumbnail}
       	    {if medium_file_url}
@@ -41,8 +41,8 @@
         {/if}
     	</div>
     	<div class="card-body">
-      	<div class="meta dashes mb-quarter mb-half-b">{date}</div>
-    		<h3 class="f6 f5-b f4-d mb-undo mb-quarter-b primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+      	<div class="meta dashes mb1 mb2-b">{date}</div>
+    		<h3 class="f6 f5-b f4-d mb0 mb1-b primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
     		{if '{exp:iamsteve:is_mobile}' != 1}
     		  {exp:streeng words="44"}{excerpt}{/exp:streeng}
     		  {meta}

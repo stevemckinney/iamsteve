@@ -21,7 +21,7 @@
 
   {if no_results}{redirect="404"}{/if}
   <span style="display:none">Viewed: {view_count_one}</span>
-  <header class="entry-header contain p-undo-d measure m-center mb-double pt-double">
+  <header class="entry-header contain measure m-center mb6 pt6 p0-d">
     <div class="meta dashes">
       {date}
       {categories channel="blog" style="linear" parent_only="yes" limit="1"}
@@ -29,7 +29,7 @@
       {/categories}
     </div>
     {updated}
-    <h1 class="f2 f1-b headline-d secondary pt-half mb-undo entry-title">{title}</h1>
+    <h1 class="f2 f1-b headline-d secondary pt2 mb0 entry-title">{title}</h1>
   </header>
   <div class="featured-image entry-image" role="presentation" style="background-color: {if image}{background}{if:else}{color}{/if}">
     {if image}
@@ -50,7 +50,7 @@
       {/categories}
     {/if}
   </div>
-  <article role="article" class="entry-content pt pb pt-double-d pb-double-d">
+  <article role="article" class="entry-content pt4 pb4 pt6-d pb6-d">
     {exp:streeng find='\<p><img src="|"><\/p>' replace='<img src="|">' insensitive="yes"}{article}{/exp:streeng}
   </article>
   

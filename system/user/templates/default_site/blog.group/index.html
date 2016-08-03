@@ -8,7 +8,7 @@
 {preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
 {preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
 
-<div class="row between subheader contain contain-medium contain-large pb-half pb-d">
+<div class="row between subheader contain contain-medium contain-large pb2 pb4-d">
   {exp:stash:get_list 
     name="pagination"
     process="end"
@@ -24,11 +24,11 @@
 
     {if segment_2 == 'category'}
     	{exp:channel:category_heading channel='{ch}'}
-    		<h1 class="f4 f3-b f2-d neutral mb-undo">{category_name}</h1>
+    		<h1 class="f4 f3-b f2-d neutral mb0">{category_name}</h1>
     	{/exp:channel:category_heading}
     {if:else}
       {exp:channel:info channel="blog"}
-        <h1 class="f4 f3-b f2-d neutral mb-undo">{channel_title}</h1>
+        <h1 class="f4 f3-b f2-d neutral mb0">{channel_title}</h1>
       {/exp:channel:info}
     {/if}
 
@@ -41,7 +41,7 @@
   {/exp:stash:get_list}
 </div>
 
-<div class="row between contain contain-medium contain-large pt pt-double-b pb pb-double-b" id="posts">
+<div class="row between contain contain-medium contain-large pt4 pt6-b pb4 pb6-b" id="posts">
   {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" paginate="both"}
   	
   	{!-- 404 --}
@@ -52,7 +52,7 @@
   	
   	{!-- Article --}
   	<article data-href="{title_permalink='blog/entry'}" class="card card-medium entry">
-    	<div class="card-image mb-half">
+    	<div class="card-image mb2">
       	{if thumbnail}
       	  {thumbnail}
       	    {if medium_file_url}
@@ -72,8 +72,8 @@
         {/if}
     	</div>
     	<div class="card-body">
-      	<div class="meta dashes mb-quarter mb-half-b">{date}</div>
-    		<h3 class="f6 f5-b f4-d mb-undo mb-quarter-b primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+      	<div class="meta dashes mb1 mb2-b">{date}</div>
+    		<h3 class="f6 f5-b f4-d mb0 mb1-b primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
     		{if '{exp:iamsteve:is_mobile}' != 1}
     		  {exp:streeng words="44"}{excerpt}{/exp:streeng}
     		  {blog_meta}
