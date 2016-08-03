@@ -6,93 +6,93 @@
   
   @each $abbr, $padding in $default-padding-map {
     .p#{$abbr}0 {
-      margin-#{$padding}: $p0; }
+      padding-#{$padding}: $p0; }
       
     .p#{$abbr}1 {
-      margin-#{$padding}: $p1; }
+      padding-#{$padding}: $p1; }
       
     .p#{$abbr}2 {
-      margin-#{$padding}: $p2; }
+      padding-#{$padding}: $p2; }
       
     .p#{$abbr}3 {
-      margin-#{$padding}: $p3; } 
+      padding-#{$padding}: $p3; } 
     
     .p#{$abbr}4 {
-      margin-#{$padding}: $p4; }
+      padding-#{$padding}: $p4; }
     
     .p#{$abbr}5 {
-      margin-#{$padding}: $p5; }
+      padding-#{$padding}: $p5; }
     
     .p#{$abbr}6 {
-      margin-#{$padding}: $p6; }
+      padding-#{$padding}: $p6; }
     
     .p#{$abbr}7 {
-      margin-#{$padding}: $p7; }
+      padding-#{$padding}: $p7; }
     
     .p#{$abbr}8 {
-      margin-#{$padding}: $p8; } } }
+      padding-#{$padding}: $p8; } } }
     
 // $b padding
 @if $default-enable-padding {
   @each $abbr, $padding in $default-padding-map {
     @include breakpoint($b) {
       .p#{$abbr}0-b {
-        margin-#{$padding}: 0; }
+        padding-#{$padding}: 0; }
         
       .p#{$abbr}1-b {
-        margin-#{$padding}: $p1; }
+        padding-#{$padding}: $p1; }
         
       .p#{$abbr}2-b {
-        margin-#{$padding}: $p2; }
+        padding-#{$padding}: $p2; }
         
       .p#{$abbr}3-b {
-        margin-#{$padding}: $p3; } 
+        padding-#{$padding}: $p3; } 
       
       .p#{$abbr}4-b {
-        margin-#{$padding}: $p4; }
+        padding-#{$padding}: $p4; }
       
       .p#{$abbr}5-b {
-        margin-#{$padding}: $p5; }
+        padding-#{$padding}: $p5; }
       
       .p#{$abbr}6-b {
-        margin-#{$padding}: $p6; }
+        padding-#{$padding}: $p6; }
 
       .p#{$abbr}7-b {
-        margin-#{$padding}: $p7; }
+        padding-#{$padding}: $p7; }
       
       .p#{$abbr}8-b {
-        margin-#{$padding}: $p8; } } } }
+        padding-#{$padding}: $p8; } } } }
 
 // $d padding
 @if $default-enable-padding {
   @each $abbr, $padding in $default-padding-map {
     @include breakpoint($d) {          
       .p#{$abbr}0-d {
-        margin-#{$padding}: 0; }
+        padding-#{$padding}: 0; }
         
       .p#{$abbr}1-d {
-        margin-#{$padding}: $p1; }
+        padding-#{$padding}: $p1; }
         
       .p#{$abbr}2-d {
-        margin-#{$padding}: $p2; }
+        padding-#{$padding}: $p2; }
         
       .p#{$abbr}3-d {
-        margin-#{$padding}: $p3; } 
+        padding-#{$padding}: $p3; } 
       
       .p#{$abbr}4-d {
-        margin-#{$padding}: $p4; }
+        padding-#{$padding}: $p4; }
       
       .p#{$abbr}5-d {
-        margin-#{$padding}: $p5; }
+        padding-#{$padding}: $p5; }
       
       .p#{$abbr}6-d {
-        margin-#{$padding}: $p6; }
+        padding-#{$padding}: $p6; }
         
       .p#{$abbr}7-d {
-        margin-#{$padding}: $p7; }
+        padding-#{$padding}: $p7; }
       
       .p#{$abbr}8-d {
-        margin-#{$padding}: $p8; } } } }
+        padding-#{$padding}: $p8; } } } }
 
 // Island padding helpers
 // ---------------------------
