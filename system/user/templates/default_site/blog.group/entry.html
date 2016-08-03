@@ -28,7 +28,12 @@
         <a href="{path='blog/index'}" rel="category tag">{category_name}</a>
       {/categories}
     </div>
-    {updated}
+    <div class="visuallyhidden">
+      <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
+      <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
+        {edit_date format="%Y/%m/%d"}
+      </time>
+    </div>
     <h1 class="f2 f1-b headline-d secondary pt2 mb0 entry-title">{title}</h1>
   </header>
   <div class="featured-image entry-image" role="presentation" style="background-color: {if image}{background}{if:else}{color}{/if}">

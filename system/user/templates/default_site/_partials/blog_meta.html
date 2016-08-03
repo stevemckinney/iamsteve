@@ -7,4 +7,9 @@
     <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium icon-right fill-secondary">{icon_arrow_right}</span></a>
   {/if}
 </div>
-{updated}
+<div class="visuallyhidden">
+  <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
+  <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
+    {edit_date format="%Y/%m/%d"}
+  </time>
+</div>
