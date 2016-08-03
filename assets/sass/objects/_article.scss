@@ -7,14 +7,16 @@
     margin-right: calc(50% - #{$measure / 2}); }
   
   img {
-    border-radius: $radius;
-    max-width: 738px;
     display: block;
     margin-bottom: $line;
     box-shadow:
-      0 1px $alternate-l2,
-      0 0 0 1px $alternate-l3,
-      0 2px 3px $alternate-l3; }
+      0 1px $neutral-l2,
+      0 0 0 1px $neutral-l3,
+      0 2px 3px $neutral-l3;
+      
+    @include breakpoint($c) {
+      max-width: 738px;
+      border-radius: $radius; } }
   
   .wide-image {
     max-width: 100%; }
@@ -36,7 +38,8 @@
     margin-bottom: $line + 3px; }
   
   > *:not(figure), img {
-    margin-left: auto; }
+    @include breakpoint($c) {
+      margin-left: auto; } }
   
   > *:not(figure):not(img) {
     max-width: $measure; }
@@ -90,13 +93,14 @@
   text-align: left; }
 
 .entry-content figcaption {
-  position: absolute;
-  top: 24px;
-  left: 100%;
-  width: 192px;
-  padding: 0 $line;
-  font-style: italic;
-  line-height: 1.333333;
+  @include breakpoint($d) {
+    position: absolute;
+    top: 24px;
+    left: 100%;
+    width: 192px;
+    padding: 0 $line;
+    font-style: italic;
+    line-height: 1.333333; }
     
   &:before {
     content: "";

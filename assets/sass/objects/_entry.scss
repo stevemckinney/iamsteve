@@ -23,32 +23,10 @@
   @include breakpoint(1200px) {
     margin-left: 23.333333%; } }
 
-// Entry summary
-// ---------------------------
-.entry-summary {}
-
 // Entry title
 // ---------------------------
 .entry-title {
   max-width: 684px; }
-
-// Entry meta
-// ---------------------------
-.entry-meta {}
-
-	// Entry meta parts
-	// ---------------------------
-	.entry-date,
-	.published {}
-	
-	.entry-author,
-	.author {}
-
-	.entry-permalink,
-	.permalink {}
-	
-	.entry-category,
-	.category {}
 
 // Entry next
 // ---------------------------
