@@ -59,7 +59,7 @@
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   
-  padding: 0 $base-px;
+  padding: 0 $base-px 0 4px;
   
   &.flickity-enabled { 
     padding: 0; }
