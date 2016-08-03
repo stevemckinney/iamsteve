@@ -1,77 +1,90 @@
 // Padding
 // ---------------------------
 @if $default-enable-padding {
-  .p-undo {
-    padding: 0; }
-    
+  .p0 {
+    padding: $p0; }
+  
   @each $abbr, $padding in $default-padding-map {
-    .p#{$abbr}-undo {
-      padding-#{$padding}: 0; }
-          
-    .p#{$abbr}-quarter {
-      padding-#{$padding}: quarter($baseline); }
+    .p#{$abbr}0 {
+      margin-#{$padding}: $p0; }
       
-    .p#{$abbr}-half {
-      padding-#{$padding}: half($baseline); }
+    .p#{$abbr}1 {
+      margin-#{$padding}: $p1; }
       
-    .p#{$abbr} {
-      padding-#{$padding}: $baseline; } 
+    .p#{$abbr}2 {
+      margin-#{$padding}: $p2; }
+      
+    .p#{$abbr}3 {
+      margin-#{$padding}: $p3; } 
     
-    .p#{$abbr}-double {
-      padding-#{$padding}: double($baseline); }
+    .p#{$abbr}4 {
+      margin-#{$padding}: $p4; }
     
-    .p#{$abbr}-triple {
-      padding-#{$padding}: triple($baseline); }
+    .p#{$abbr}5 {
+      margin-#{$padding}: $p5; }
+    
+    .p#{$abbr}6 {
+      margin-#{$padding}: $p6; } } }
+    
+// $b padding
+@if $default-enable-padding {
+  @each $abbr, $padding in $default-padding-map {
+    @include breakpoint($b) {
+      .p#{$abbr}0-b {
+        margin-#{$padding}: 0; }
+        
+      .p#{$abbr}1-b {
+        margin-#{$padding}: $p1; }
+        
+      .p#{$abbr}2-b {
+        margin-#{$padding}: $p2; }
+        
+      .p#{$abbr}3-b {
+        margin-#{$padding}: $p3; } 
+      
+      .p#{$abbr}4-b {
+        margin-#{$padding}: $p4; }
+      
+      .p#{$abbr}5-b {
+        margin-#{$padding}: $p5; }
+      
+      .p#{$abbr}6-b {
+        margin-#{$padding}: $p6; } } } }
 
-    @if $default-enable-padding-responsive {
-      // $b paddings
-      @include breakpoint($b) {
-        .p#{$abbr}-undo-b {
-          padding-#{$padding}: 0; }
-          
-        .p#{$abbr}-quarter-b {
-          padding-#{$padding}: quarter($baseline); }
-          
-        .p#{$abbr}-half-b {
-          padding-#{$padding}: half($baseline); }
-          
-        .p#{$abbr}-b {
-          padding-#{$padding}: $baseline; } 
+// $d padding
+@if $default-enable-padding {
+  @each $abbr, $padding in $default-padding-map {
+    @include breakpoint($d) {          
+      .p#{$abbr}0-d {
+        margin-#{$padding}: 0; }
         
-        .p#{$abbr}-double-b {
-          padding-#{$padding}: double($baseline); }
+      .p#{$abbr}1-d {
+        margin-#{$padding}: $p1; }
         
-        .p#{$abbr}-triple-b {
-          padding-#{$padding}: triple($baseline); } }
+      .p#{$abbr}2-d {
+        margin-#{$padding}: $p2; }
+        
+      .p#{$abbr}3-d {
+        margin-#{$padding}: $p3; } 
       
-      // $d paddings
-      @include breakpoint($d) {
-        .p#{$abbr}-undo-d {
-          padding-#{$padding}: 0; }
-          
-        .p#{$abbr}-quarter-d {
-          padding-#{$padding}: quarter($baseline); }
-          
-        .p#{$abbr}-half-d {
-          padding-#{$padding}: half($baseline); }
-          
-        .p#{$abbr}-d {
-          padding-#{$padding}: $baseline; } 
-        
-        .p#{$abbr}-double-d {
-          padding-#{$padding}: double($baseline); }
-        
-        .p#{$abbr}-triple-d {
-          padding-#{$padding}: triple($baseline); } } } } }
+      .p#{$abbr}4-d {
+        margin-#{$padding}: $p4; }
+      
+      .p#{$abbr}5-d {
+        margin-#{$padding}: $p5; }
+      
+      .p#{$abbr}6-d {
+        margin-#{$padding}: $p6; } } } }
 
 // Island padding helpers
 // ---------------------------
 $isles: (
-  spit: half($baseline),
-  isle: $baseline,
-  island: double($baseline),
-  country: triple($baseline),
-  continent: quadruple($baseline) );
+  spit: $p1,
+  isle: $p2,
+  island: $p3,
+  country: $p4,
+  continent: $p5,
+  planet: $p6 );
 
 @if $default-enable-isles {
   @each $name, $padding in $isles {
@@ -80,14 +93,4 @@ $isles: (
     
     .#{$name}-v {
       padding-top: $padding;
-      padding-bottom: $padding; }
-    
-    .#{$name}-v-b {
-      @include breakpoint($b) {
-        padding-top: $padding;
-        padding-bottom: $padding; } }
-    
-    .#{$name}-v-d {
-      @include breakpoint($d) {
-        padding-top: $padding;
-        padding-bottom: $padding; } } } }
+      padding-bottom: $padding; } } }

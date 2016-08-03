@@ -25,28 +25,28 @@
 		font-size: $xxsmall-size; }
 
   // Pixel based font sizes
-  .headline { font-size: $text-xxxlarge; }
-  .f1 { font-size: $text-xxlarge; }
-  .f2 { font-size: $text-xlarge; }
-  .f3 { font-size: $text-large; }
-  .f4 { font-size: $text-medium; }
-  .f5 { font-size: $text-small; }
-  .f6 { font-size: $text-xsmall; }
+  .headline { font-size: $headline; }
+  .f1 { font-size: $f1; }
+  .f2 { font-size: $f2; }
+  .f3 { font-size: $f3; }
+  .f4 { font-size: $f4; }
+  .f5 { font-size: $f5; }
+  .f6 { font-size: $f6; }
   
   @include breakpoint($b) {
-    .headline-b { font-size: $text-xxxlarge; }
-    .f1-b { font-size: $text-xxlarge; }
-    .f2-b { font-size: $text-xlarge; }
-    .f3-b { font-size: $text-large; }
-    .f4-b { font-size: $text-medium; }
-    .f5-b { font-size: $text-small; }
-    .f6-b { font-size: $text-xsmall; } }
+    .headline-b { font-size: $headline; }
+    .f1-b { font-size: $f1; }
+    .f2-b { font-size: $f2; }
+    .f3-b { font-size: $f3; }
+    .f4-b { font-size: $f4; }
+    .f5-b { font-size: $f5; }
+    .f6-b { font-size: $f6; } }
   
   @include breakpoint($d) {
-    .headline-d { font-size: $text-xxxlarge; }
-    .f1-d { font-size: $text-xxlarge; }
-    .f2-d { font-size: $text-xlarge; }
-    .f3-d { font-size: $text-large; }
-    .f4-d { font-size: $text-medium; }
-    .f5-d { font-size: $text-small; }
-    .f6-d { font-size: $text-xsmall; } } }
+    .headline-d { font-size: $headline; }
+    .f1-d { font-size: $f1; }
+    .f2-d { font-size: $f2; }
+    .f3-d { font-size: $f3; }
+    .f4-d { font-size: $f4; }
+    .f5-d { font-size: $f5; }
+    .f6-d { font-size: $f6; } } }

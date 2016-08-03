@@ -1,56 +1,77 @@
 // Margin
-// ---------------------------    		
+// ---------------------------
 @if $default-enable-margin {
-  .m-undo {
-    margin: 0; }
+  .m0 {
+    margin: $m0; }
     
   @each $abbr, $margin in $default-margin-map {
-    .m#{$abbr}-undo {
-      margin-#{$margin}: 0; }
+    .m#{$abbr}0 {
+      margin-#{$margin}: $m0; }
       
-    .m#{$abbr}-quarter {
-      margin-#{$margin}: quarter($baseline); }
+    .m#{$abbr}1 {
+      margin-#{$margin}: $m1; }
       
-    .m#{$abbr}-half {
-      margin-#{$margin}: half($baseline); }
+    .m#{$abbr}2 {
+      margin-#{$margin}: $m2; }
       
-    .m#{$abbr} {
-      margin-#{$margin}: $baseline; } 
+    .m#{$abbr}3 {
+      margin-#{$margin}: $m3; } 
     
-    .m#{$abbr}-double {
-      margin-#{$margin}: double($baseline); }
-
-    @if $default-enable-margin-responsive {
-      // $b margins
-      @include breakpoint($b) {
-        .m#{$abbr}-undo-b {
-          margin-#{$margin}: 0; }
-          
-        .m#{$abbr}-quarter-b {
-          margin-#{$margin}: quarter($baseline); }
-          
-        .m#{$abbr}-half-b {
-          margin-#{$margin}: half($baseline); }
-          
-        .m#{$abbr}-b {
-          margin-#{$margin}: $baseline; } 
+    .m#{$abbr}4 {
+      margin-#{$margin}: $m4; }
+    
+    .m#{$abbr}5 {
+      margin-#{$margin}: $m5; }
+    
+    .m#{$abbr}6 {
+      margin-#{$margin}: $m6; } } }
+    
+// $b margins
+@if $default-enable-margin {
+  @each $abbr, $margin in $default-margin-map {
+    @include breakpoint($b) {
+      .m#{$abbr}0-b {
+        margin-#{$margin}: $m0; }
         
-        .m#{$abbr}-double-b {
-          margin-#{$margin}: double($baseline); } }
+      .m#{$abbr}1-b {
+        margin-#{$margin}: $m1; }
+        
+      .m#{$abbr}2-b {
+        margin-#{$margin}: $m2; }
+        
+      .m#{$abbr}3-b {
+        margin-#{$margin}: $m3; } 
       
-      // $d margins
-      @include breakpoint($d) {          
-        .m#{$abbr}-undo-d {
-          margin-#{$margin}: 0; }
-          
-        .m#{$abbr}-quarter-d {
-          margin-#{$margin}: quarter($baseline); }
-          
-        .m#{$abbr}-half-d {
-          margin-#{$margin}: half($baseline); }
-          
-        .m#{$abbr}-d {
-          margin-#{$margin}: $baseline; } 
+      .m#{$abbr}4-b {
+        margin-#{$margin}: $m4; }
+      
+      .m#{$abbr}5-b {
+        margin-#{$margin}: $m5; }
+      
+      .m#{$abbr}6-b {
+        margin-#{$margin}: $m6; } } } }
+
+// $d margins
+@if $default-enable-margin {
+  @each $abbr, $margin in $default-margin-map {
+    @include breakpoint($d) {          
+      .m#{$abbr}0-d {
+        margin-#{$margin}: $m0; }
         
-        .m#{$abbr}-double-d {
-          margin-#{$margin}: double($baseline); } } } } }
+      .m#{$abbr}1-d {
+        margin-#{$margin}: $m1; }
+        
+      .m#{$abbr}2-d {
+        margin-#{$margin}: $m2; }
+        
+      .m#{$abbr}3-d {
+        margin-#{$margin}: $m3; } 
+      
+      .m#{$abbr}4-d {
+        margin-#{$margin}: $m4; }
+      
+      .m#{$abbr}5-d {
+        margin-#{$margin}: $m5; }
+      
+      .m#{$abbr}6-d {
+        margin-#{$margin}: $m6; } } } }
