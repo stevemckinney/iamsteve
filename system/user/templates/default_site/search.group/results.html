@@ -8,7 +8,7 @@
 {preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
 {preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
 
-<div class="row subheader center contain contain-large pb-half pb-d">
+<div class="row subheader center contain contain-medium contain-large pb-half pb-d">
   <h1 class="f5 f3-b f2-d neutral mb-undo">
     {exp:search:search_results channel="{ch}" limit="1" paginate="bottom" status="open|latest" disable="member_data|trackbacks"}
       {if count == 1}
@@ -18,7 +18,7 @@
   </h1>
 </div>
 
-<div class="row between contain contain-large pt pt-double-b pb pb-double-b" id="posts">
+<div class="row between contain contain-medium contain-large pt pt-double-b pb pb-double-b" id="posts">
   {exp:search:search_results channel="{ch}" limit="{ch_limit}" status="{ch_status}" disable="{ch_disable}"}
   	<article data-href="{title_permalink='blog/entry'}" class="card card-medium entry">
     	<div class="card-image mb-half">

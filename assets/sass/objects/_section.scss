@@ -26,8 +26,9 @@
     
 .contain {
   padding-right: 16px;
-  padding-left: 16px;
-    
+  padding-left: 16px; }
+
+.contain-medium {
   @include breakpoint($c) {
     padding-right: $line;
     padding-left: $line; } } 
