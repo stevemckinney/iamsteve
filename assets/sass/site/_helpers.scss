@@ -11,7 +11,7 @@
   span, time {
     background-color: $white; }
     
-  > *:first-child {
+  > *:not(:only-child):first-child {
     padding-right: $base-px / 2; }
   
   > *:not(:only-child):last-child {

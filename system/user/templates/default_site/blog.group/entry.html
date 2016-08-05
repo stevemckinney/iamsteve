@@ -21,7 +21,7 @@
 
   {if no_results}{redirect="404"}{/if}
   <span style="display:none">Viewed: {view_count_one}</span>
-  <header class="entry-header contain measure m-center mb6 pt6 p0-d">
+  <header class="entry-header contain measure m-center mb5 mb6-b pt6 p0-d">
     <div class="meta dashes">
       {date}
       {categories channel="blog" style="linear" parent_only="yes" limit="1"}
@@ -61,7 +61,9 @@
   
 {/exp:channel:entries}
 
-{embed="include/next"}
+<div class="contain">
+  {embed="include/next"}
+</div>
   
 {layout:set name="js"}
   <script src="{global:theme_url}/dist/js/blog.js"></script>

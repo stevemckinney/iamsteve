@@ -21,7 +21,8 @@
 // ---------------------------
 .entry-image {
   @include breakpoint(1200px) {
-    margin-left: 23.333333%; } }
+    // 1680 - 1286 * 100
+    margin-left: 23.452381%; } }
 
 // Entry title
 // ---------------------------

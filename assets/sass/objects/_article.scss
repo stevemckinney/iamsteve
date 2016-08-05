@@ -7,10 +7,7 @@
   img {
     display: block;
     margin-bottom: $line;
-    box-shadow:
-      0 1px $neutral-l3,
-      0 0 0 1px $neutral-l4,
-      0 2px 3px $neutral-l4;
+    box-shadow: 0 2px 4px rgba($neutral, .1);
       
     @include breakpoint($c) {
       max-width: 738px;
@@ -36,15 +33,23 @@
     margin-bottom: $line + 3px; }
   
   > *:not(figure), img {
-    @include breakpoint($c) {
-      margin-left: auto; } }
+    margin-left: auto;
+    
+    @include breakpoint($e-max) {
+      margin-right: auto; } }
   
   > *:not(figure):not(img) {
-    max-width: $measure;
+    max-width: $measure; }
     
+  > *:not(figure):not(img),
+  figcaption {
     @include breakpoint($c-max) {
       padding-left: 16px;
-      padding-right: 16px; } }
+      padding-right: 16px; }
+      
+  li {
+    @include breakpoint($c-max) {
+      margin-left: 20px; } } }
   
   strong {
     font-weight: font-weight(semibold); }
@@ -90,27 +95,34 @@
 // Figures
 // ---------------------------
 .entry-content figure {
-  padding-top: $line;
+  padding-top: $base-px;
   position: relative;
   text-align: left; }
 
 .entry-content figcaption {
-  @include breakpoint($d) {
+  font-style: italic;
+  text-align: left;
+  line-height: 1.333333;
+  max-width: $measure;
+  margin-left: auto;
+  
+  @include breakpoint($site-width) {
     position: absolute;
-    top: 24px;
+    top: $base-px;
     left: 100%;
-    width: 192px;
+    width: 220px;
     padding: 0 $line;
-    font-style: italic;
-    line-height: 1.333333; }
     
-  &:before {
-    content: "";
-    display: block;
-    width: $line*3;
-    height: $base-px;
-    background-color: $secondary;
-    margin-bottom: $base-px; } }
+    &:before {
+      content: "";
+      display: block;
+      width: $line*3;
+      height: $base-px;
+      background-color: $secondary;
+      margin-bottom: $base-px; } }
+  
+  @include breakpoint($c-max) {
+    margin-bottom: $line; } }
 
 // Specific pieces of content
 // ---------------------------

@@ -13,9 +13,11 @@ blockquote {
   clear: both;
   color: $neutral;
   background-color: $tertiary-l2;
-  border-radius: $radius;
   border: 1px dashed $tertiary;
   max-width: $measure;
+  
+  @include breakpoint($b) {
+    border-radius: $radius; }
   
   p {
   	margin: 0; } }

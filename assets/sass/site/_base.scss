@@ -128,6 +128,6 @@ $text-xxxlarge: 48px;
 @include breakpoint-set('base font size', $base-font-size);
 
 // Site width is 1200px, but it requires additional spacing so it works nicely
-$contain: 1182px;
+$contain: 1200px;
 $site-width: $contain + ($line*6);
 $site-width-max: max-width $site-width - $breakpoint-subtract;
