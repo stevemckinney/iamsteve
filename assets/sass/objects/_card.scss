@@ -75,13 +75,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: $serif;
-  font-style: italic;
+  font-family: $sans;
+  font-weight: font-weight(semibold);
   line-height: 1.142857143;
-  font-size: 12px;
+  font-size: 10px;
+  color: $neutral-l2;
   
   @include breakpoint($b) {
-    font-size: 14px; }
+    font-size: 12px; }
   
   a:hover,
   a:focus {

@@ -5,8 +5,14 @@
     @include pin-below; } }
 
 .dashes {
-  background: image-url("dash-neutral-l1.svg") repeat-x center calc(50% + 1px);
+  background: image-url("dash-neutral-l1.svg") repeat-x left calc(50% + 1px);
   
   a, li,
   span, time {
-    background-color: $white; } }
+    background-color: $white; }
+    
+  > *:first-child {
+    padding-right: $base-px / 2; }
+  
+  > *:not(:only-child):last-child {
+    padding-left: $base-px / 2; } }

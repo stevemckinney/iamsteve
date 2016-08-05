@@ -8,7 +8,7 @@
 {preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
 {preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
 
-<div class="row hero contain-large">
+<div class="row hero contain-large mb4-d">
   <div class="column introduction">
     <picture class="rio mb2">
       <source srcset="{site_url}dist/images/rio-badge.svg" media="(min-width: 840px)">
@@ -70,7 +70,7 @@
   <div class="scroll">
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="{ch_limit}"}
     	<article data-href="{title_permalink='blog/entry'}" class="card card-medium">
-      	<div class="card-image mb2">
+      	<div class="card-image mb4">
         	{if thumbnail}
         	  {thumbnail}
         	    {if medium_file_url}
