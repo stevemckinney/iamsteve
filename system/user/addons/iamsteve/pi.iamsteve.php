@@ -156,12 +156,12 @@ class Iamsteve {
     if ( $id )
     {
       $rgb = imagecolorat($id, 2, 2);
-
-      $r = ($rgb >> 16) & 0xFF;
-      $g = ($rgb >> 8) & 0xFF;
-      $b = $rgb & 0xFF;
+      $cols = imagecolorsforindex($id, $rgb);
+      $r = dechex($cols['red']);
+      $g = dechex($cols['green']);
+      $b = dechex($cols['blue']);
     
-      return 'rgb(' . $r . ', ' . $g . ', ' . $b . ')';
+      return '#' . $r . $g . $b;
     }
   }
   
