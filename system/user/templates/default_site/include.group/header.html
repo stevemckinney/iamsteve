@@ -47,12 +47,12 @@
     {head}
     {exp:iamsteve:json_ld}
   </head>
-{if segment_1}
-<body class="page-{segment_1}">
-{if:elseif segment_2 == "entry"}
+{if segment_1 == "blog" AND segment_2 == "entry"}
 <body class="page-entry">
-{if:elseif segment_2 == "blog"}
+{if:elseif segment_1 == "blog" AND segment_2 == ""}
 <body class="page-blog">
+{if:elseif segment_1}
+<body class="page-{segment_1}">
 {if:elseif segment_2}
 <body class="page-{segment_2}">
 {if:else}
