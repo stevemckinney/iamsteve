@@ -1,6 +1,7 @@
 // Subscribe
 // ---------------------------
-.page-blog .subscribe {
+.page-blog .subscribe,
+.page-entry .subscribe {
   position: relative;
   
   &:before {
@@ -8,7 +9,7 @@
   
 .subscribe-image {
   position: absolute;
-  top: 38px;
+  top: 0;
   right: 0;
   max-width: 144px;
   
@@ -18,27 +19,34 @@
     max-width: 192px; }
   
   @include breakpoint($cd) {
-    max-width: 320px; } }
+    max-width: 320px; }
+  
+  @include breakpoint(max-width 359px) {
+    top: $line*1.5; } }
 
 .subscribe-content {
   position: relative;
   
   @include breakpoint($b) {
     padding-right: 192px + $line;
-    max-width: 752px; }
+    max-width: 540px; }
 
+  @include breakpoint($c) {
+    max-width: 752px; }
+  
   @include breakpoint($cd) {
     padding-right: 320px; }
   
   @include breakpoint($b-max) {
     p {
+      text-align: left;
       max-width: calc(100% - #{144px + $line + $line}); } }
       
   @include breakpoint($ab-max) {
     p {
       max-width: calc(100% - #{144px + $base-px}); } }
       
-  @include breakpoint(max-width 359px) {
+  @include breakpoint(max-width 414px) {
     p:last-of-type {
       padding-right: 0;
       max-width: 100%; } } }

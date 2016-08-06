@@ -25,7 +25,7 @@
 		font-size: $xxsmall-size; }
 
   // Pixel based font sizes
-  .headline { font-size: $headline; }
+  .headline { font-size: $headline; letter-spacing: -1px; }
   .f1 { font-size: $f1; }
   .f2 { font-size: $f2; }
   .f3 { font-size: $f3; }
@@ -34,7 +34,7 @@
   .f6 { font-size: $f6; }
   
   @include breakpoint($b) {
-    .headline-b { font-size: $headline; }
+    .headline-b { font-size: $headline; letter-spacing: -1px; }
     .f1-b { font-size: $f1; }
     .f2-b { font-size: $f2; }
     .f3-b { font-size: $f3; }
@@ -43,7 +43,7 @@
     .f6-b { font-size: $f6; } }
   
   @include breakpoint($d) {
-    .headline-d { font-size: $headline; }
+    .headline-d { font-size: $headline; letter-spacing: -1px; }
     .f1-d { font-size: $f1; }
     .f2-d { font-size: $f2; }
     .f3-d { font-size: $f3; }

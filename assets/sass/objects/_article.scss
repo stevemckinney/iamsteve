@@ -7,14 +7,16 @@
   img {
     display: block;
     margin-bottom: $line;
-    box-shadow: 0 2px 4px rgba($neutral, .1);
+    box-shadow:
+      0 0 0 1px rgba($neutral, .05);
       
     @include breakpoint($c) {
       max-width: 738px;
       border-radius: $radius; } }
   
   .wide-image {
-    max-width: 100%; }
+    @include breakpoint(1024px + 48px) {
+      max-width: 1024px; } }
   
   .meta {
     max-width: $measure; } }
@@ -101,17 +103,18 @@
 
 .entry-content figcaption {
   font-style: italic;
-  text-align: left;
   line-height: 1.333333;
+  text-align: center;
   max-width: $measure;
-  margin-left: auto;
+  padding: 0 $line;
   
   @include breakpoint($site-width) {
     position: absolute;
     top: $base-px;
     left: 100%;
     width: 220px;
-    padding: 0 $line;
+    margin-left: auto;
+    text-align: left;
     
     &:before {
       content: "";
@@ -132,7 +135,7 @@
   overflow: hidden;
   min-height: 240px;
   
-  @include breakpoint(1200px) {
+  @include breakpoint($site-width) {
     min-height: 516px;
     border-radius: $radius 0 0 $radius; } }
 
@@ -153,7 +156,7 @@
   @include breakpoint($b) {
     max-height: none; } // reset the height here 492px
   
-  @include breakpoint($c-max) {
+  @include breakpoint($site-width-max) {
     margin: auto; } }
 
 /*
@@ -181,3 +184,28 @@ body:active:after {
 	display: none;
 }
 */
+
+:target:before {
+  content: "";
+  display: inline-block;
+  height: 120px;
+  margin: -120px 0 0; }
+
+// Footnotes
+// ---------------------------
+.footnotes {  
+  p a {
+    text-decoration: none; }
+  
+  li, p {
+    font-size: 14px; }
+  
+  hr {
+    margin-bottom: $line; } }
+
+.footnote-backref {
+  font-weight: font-weight(bold);
+  
+  &:hover,
+  &:focus {
+    color: $primary; } }

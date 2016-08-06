@@ -9,4 +9,7 @@
     flex-basis: 738px; } 
   
   @include breakpoint(($c $site-width-max)) {
-    padding-right: $line; } }
+    padding-right: $line; }
+    
+  @include breakpoint(($b $c-max)) {
+    padding-left: $line; } }

@@ -27,11 +27,15 @@
     @include breakpoint($c-max) {
       max-width: 284px; } } }
 
-.rio {
-  min-height: 236px;
+.rio img {
+  display: block;
   
-  @include breakpoint(max-width 839px) {
-    min-height: 126px; }
+  @include breakpoint($d-max) {
+    max-width: 240px;
+    margin-right: auto; }
+  
+  @include breakpoint($c-max) {
+    margin: auto; }
   
   @include breakpoint($a-max) {
     max-width: 168px; } }
