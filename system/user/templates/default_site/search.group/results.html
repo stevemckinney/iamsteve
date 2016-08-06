@@ -9,7 +9,7 @@
 {preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
 
 <div class="row subheader center contain contain-medium contain-large pb2 pb4-d">
-  <h1 class="f5 f3-b f2-d neutral mb4">
+  <h1 class="f5 f3-b f2-d neutral mb0">
     {exp:search:search_results channel="{ch}" limit="1" paginate="bottom" status="open|latest" disable="member_data|trackbacks"}
       {if count == 1}
         {exp:search:total_results}{total}{/exp:search:total_results} {if {exp:search:total_results} == 1}result was{if:else}results were{/if} found for {exp:search:keywords}
@@ -44,10 +44,10 @@
       	<div class="meta dashes mb1 mb2-b">{date}</div>
     		<h3 class="f6 f5-b f4-d mb0 mb1-b primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
     		{if '{exp:iamsteve:is_mobile}' != 1}
-    		  {exp:streeng words="44"}{excerpt}{/exp:streeng}
-    		  {meta}
+    		  <p>{exp:streeng words="44"}{excerpt}{/exp:streeng}</p>
     		{/if}
+    		{blog_meta}
       </div>
-    </article>
+  	</article>
   {/exp:search:search_results}
 </div>

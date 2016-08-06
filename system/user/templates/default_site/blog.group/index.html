@@ -17,9 +17,9 @@
     parse_conditionals="yes"
   }
     {if previous_page}
-      <a href="{previous_page}" class="neutral-l1 sans link-icon"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> <strong>Newer</strong></a>
+      <a href="{previous_page}" class="neutral-l1 sans link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></a>
     {if:else}
-      <span class="neutral-l3 sans link-icon disabled"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> <strong>Newer</strong></span>
+      <span class="neutral-l3 sans link-icon disabled"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></span>
     {/if}
 
     {if segment_2 == 'category'}
@@ -34,9 +34,9 @@
 
   
     {if next_page}
-      <a href="{next_page}" class="neutral-l1 sans link-icon"><strong>Older</strong> <span class="icon icon-medium icon-right">{icon_arrow_right}</span></a>
+      <a href="{next_page}" class="neutral-l1 sans link-icon"><strong>Older</strong> <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
     {if:else}
-      <span class="neutral-l3 sans link-icon disabled"><strong>Older</strong> <span class="icon icon-medium icon-right">{icon_arrow_right}</span></span>
+      <span class="neutral-l3 sans link-icon disabled"><strong>Older</strong> <span class="icon icon-medium icon-right">{gv_arrow_right}</span></span>
     {/if}
   {/exp:stash:get_list}
 </div>
@@ -76,8 +76,8 @@
     		<h3 class="f6 f5-b f4-d mb0 mb1-b primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
     		{if '{exp:iamsteve:is_mobile}' != 1}
     		  {exp:streeng words="44"}{excerpt}{/exp:streeng}
-    		  {blog_meta}
     		{/if}
+    		{blog_meta}
       </div>
   	</article>
   {/exp:channel:entries}
@@ -93,9 +93,9 @@
 }
   <div class="row center pagination pagination-offset">
     {if previous_page}
-      <a href="{previous_page}" class="paginate paginate-left link-icon"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> Newer</a>
+      <a href="{previous_page}" class="paginate paginate-left link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> Newer</a>
 		{if:else}
-		  <span class="paginate paginate-left disabled link-icon"><span class="icon icon-medium icon-left">{icon_arrow_left}</span> Newer</span>
+		  <span class="paginate paginate-left disabled link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> Newer</span>
 		{/if}
 
 		<div class="paginate paginate-between">
@@ -103,9 +103,9 @@
 		</div>
 		
 		{if next_page}
-			<a href="{next_page}" class="paginate paginate-right link-icon">Older <span class="icon icon-medium icon-right">{icon_arrow_right}</span></a>
+			<a href="{next_page}" class="paginate paginate-right link-icon">Older <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
 		{if:else}
-		  <span class="paginate paginate-right disabled link-icon">Older <span class="icon icon-medium icon-right">{icon_arrow_right}</span></span>
+		  <span class="paginate paginate-right disabled link-icon">Older <span class="icon icon-medium icon-right">{gv_arrow_right}</span></span>
 		{/if} 
   </div>
 {/exp:stash:get_list}
