@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
-  	{!-- Meta --}
+  	{!--
+  	  Meta
+  	  –
+  	  Uses seo lite to manage the majority of titles and descriptions.
+    --}
   	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width">
   	{!-- In loving memory of Albert Phillips --}
@@ -15,12 +19,19 @@
       {exp:seo_lite use_last_segment="yes"}
     {/if}
     
-    {!-- CSS --}
+    {!--
+      CSS 
+    --}
     {exp:minimee:css minify="n"}
       <link rel="stylesheet" href="{site_url}dist/css/global.css">
     {/exp:minimee:css}
     
-    {!-- loadCSS --}
+    {!--
+      loadCSS
+      –
+      Fonts from cloud.typography loaded through here async, helps load times.
+      Also no-js toggle is applied here.
+    --}
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js','js');
       !function(e){"use strict";var n=function(n,t,o){function i(e){return a.body?e():void setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var s=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=s[s.length-1]}var f=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
@@ -28,10 +39,22 @@
       loadCSS('https://cloud.typography.com/7828432/640526/css/fonts.css')
     </script>
     {!-- 
+      Head
+      –
       Generally don’t need to go in here. You can find JSON-LD, and other meta
       that is messy to look at, all the icons, etc.
     --}
     {head}
     {exp:iamsteve:json_ld}
   </head>
-<body{if segment_2} class="page-{segment_2}"{if:elseif segment_1} class="page-{segment_1}"{if:else} class="page-home"{/if}>
+{if segment_1}
+<body class="page-{segment_1}">
+{if:elseif segment_2 == "entry"}
+<body class="page-entry">
+{if:elseif segment_2 == "blog"}
+<body class="page-blog">
+{if:elseif segment_2}
+<body class="page-{segment_2}">
+{if:else}
+<body class="page-home">
+{/if}
