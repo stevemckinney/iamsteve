@@ -23,6 +23,20 @@
     </div>
 		<h2 class="f4 f3-b f2-d mb2 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
 		{excerpt}
-		{blog_meta}
+		<div class="meta dashes">
+      {categories channel="blog" style="linear" parent_only="yes" limit="1"}
+        <a href="{path='blog/index'}" rel="category tag">{category_name}</a>
+      {/categories}
+    
+      {if segment_2 != "entry"}
+        <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium icon-right fill-secondary">{gv_arrow_right}</span></a>
+      {/if}
+    </div>
+    <div class="visuallyhidden">
+      <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
+      <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
+        {edit_date format="%Y/%m/%d"}
+      </time>
+    </div>
   </div>
 </article>
