@@ -74,5 +74,5 @@
     display: none; } }
 
 .logo-text {
-  @include breakpoint($b-max) {
+  @include breakpoint($cd-max) {
     display: none; } }

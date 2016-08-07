@@ -115,7 +115,9 @@
     // Align with logo baseline
     padding: 16px 0 14px;
     background-color: transparent;
-    min-width: 276px;
+    
+    @include breakpoint($cd) {
+      min-width: 276px; }
     
     @include breakpoint($c-max) {
       padding: $base-px; } }

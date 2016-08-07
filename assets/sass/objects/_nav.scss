@@ -26,6 +26,9 @@
     // Align to the logo baseline
     padding: 40px $base-px 38px; }
   
+  @include breakpoint($cd-max) {
+    font-size: $f6; }
+  
   // Items will now be hidden
   // For small screens make the nav text larger and central
   @include breakpoint($c-max) {
