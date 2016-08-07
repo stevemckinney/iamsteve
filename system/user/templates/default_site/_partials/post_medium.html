@@ -19,15 +19,15 @@
     {/if}
 	</a>
 	<div class="card-body">
-  	<div class="meta dashes mb1 mb2-b">
+  	<div class="meta dashes mb2">
     	<time datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
         {entry_date format="%F %j%S %Y"}
       </time>
   	</div>
-		<h3 class="f6 f5-b f4-d mb0 mb1-b primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
-		{if '{exp:iamsteve:is_mobile}' != 1}
-		  {exp:streeng words="44"}{excerpt}{/exp:streeng}
-		{/if}    
+		<h3 class="f6 f5-b f4-d mb1 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+	  
+	  {exp:streeng words="44"}{excerpt}{/exp:streeng}
+	  
     <div class="meta dashes">
       {categories channel="blog" style="linear" parent_only="yes" limit="1"}
         <a href="{path='blog/index'}" rel="category tag">{category_name}</a>
