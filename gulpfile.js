@@ -13,6 +13,7 @@ var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
+var sourcemaps = require('gulp-sourcemaps');
 var reload = browserSync.reload;
 
 var src = {
@@ -43,13 +44,20 @@ var browserSyncOptions = {
 };
 
 // CSS
-gulp.task('sass', function() {
-  return sass(src.scss, { compass: true })
+gulp.task('sass', () =>
+  sass(src.scss, { compass: true })
+    .on('error', sass.logError)
     .pipe(gulp.dest(src.css))
     .pipe(browserSync.reload({
       stream: true
-    }));
-});
+    }))
+);
+
+gulp.task('sass-build', () =>
+  sass(src.scss, { compass: true, style: 'compressed' })
+    .on('error', sass.logError)
+    .pipe(gulp.dest(src.css))
+);
 
 gulp.task('autoprefixer', function() {
   gulp.src(src.css + '/master.css')
@@ -67,25 +75,6 @@ gulp.task('images', function() {
 });
 
 // JavaScript
-/*
-gulp.task('js-all', function() {
-  return gulp.src(src.js)
-    .pipe(order([
-      'assets/js/modernizr.js',
-      'assets/js/fitvids.js',
-      'assets/js/flickity.js',
-      'assets/js/headroom.js',
-      'assets/js/prism.js',
-      'assets/js/global.js'
-    ], { base: './' }))
-    .pipe(concat('all.js'))
-    .pipe(gulp.dest('dist/js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'))
-    .pipe(reload({ stream: true }));
-});
-*/
-
 gulp.task('js-blog', function() {
   return gulp.src([
     path.js + '/fitvids.js',
@@ -141,4 +130,4 @@ gulp.task('serve', ['browser-sync', 'watch'], function() {
 
 
 gulp.task('default', ['serve']);
-gulp.task('build', ['js', 'images', 'autoprefixer']);
+gulp.task('build', ['sass-build', 'autoprefixer']);
