@@ -10,19 +10,6 @@ $buttons: (
 	tertiary: $tertiary
 );
 
-@each $button, $color in $buttons {
-	.button-#{$button} {
-		// background-image: linear-gradient(#fff6e5, #ffe0a1 4px, #ffe0a1 calc(100% - 4px), #f5c676);
-/*
-		background-color: #ffe0a1;
-		box-shadow: 
-		  inset 0 0 0 1px #dba758,
-		  inset 0 2px 1px #fff6e5,
-		  inset 0 3px 4px -1px #fff6e5,
-		  inset 0 -2px 1px #f5c676,
-		  inset 0 -2px 4px -1px #f5c676;
-*/ } }
-
 .button-tertiary {
 	// background-image: linear-gradient(#fff6e5, #ffe0a1 4px, #ffe0a1 calc(100% - 4px), #f5c676);
 	background-color: $tertiary;
