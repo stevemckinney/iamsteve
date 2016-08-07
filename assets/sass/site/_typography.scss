@@ -26,11 +26,9 @@ p {
     
 p, figcaption {
   @supports (-webkit-hyphens: auto) {
-    text-align: justify;
     -webkit-hyphens: auto; }
   
   @supports (hyphens: auto) {
-    text-align: justify;
     hyphens: auto; } }
 
 a {

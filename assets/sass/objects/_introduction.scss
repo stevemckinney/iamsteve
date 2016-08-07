@@ -22,6 +22,7 @@
     padding: 0 $line*1.5 double($line); }
   
   p {
+    text-align: justify;
     max-width: 324px;
     
     @include breakpoint($c-max) {
