@@ -1,13 +1,13 @@
 {exp:channel:entries require_entry="yes" related_categories_mode="yes" custom_fields="yes" limit="1" channel="blog" status="latest|open" global:param_disable_default global:param_cache_param}
   {if "{next:count}" == ""}	
     <article data-href="{title_permalink='blog/entry'}" data-event="Related entry [v6-random]" class="m-center measure pb6">
-  		<h3 class="f1 mb2 dashes"><span>Next to read</span></h3>
-	    <h2 class="headline primary entry-next"><a href="{title_permalink='blog/entry'}">{title}</a><span class="icon icon-small icon-right fill-tertiary">{icon_arrow_right}</span></h2>
+  		<h3 class="f3 f1-d mb2 dashes"><span>Next to read</span></h3>
+	    <h2 class="f1 headline primary entry-next"><a href="{title_permalink='blog/entry'}">{title}</a><span class="icon icon-small icon-right fill-tertiary">{gv_arrow_right}</span></h2>
     </article>
   {if:else}
 		<article data-href="{title_permalink='blog/entry'}" data-event="Related entry [v6-specific]" class="m-center measure pb6">
   		<h3 class="f3 f1-d mb2 dashes"><span>Next to read</span></h3>
-	    <h2 class="f1 headline-d primary entry-next"><a href="{title_permalink='blog/entry'}">{next:title}</a><span class="icon icon-small icon-right fill-tertiary">{icon_arrow_right}</span></h2>
+	    <h2 class="f1 headline-d primary entry-next"><a href="{title_permalink='blog/entry'}">{next:title}</a><span class="icon icon-small icon-right fill-tertiary">{gv_arrow_right}</span></h2>
     </article>
   {/if}
 {/exp:channel:entries}
