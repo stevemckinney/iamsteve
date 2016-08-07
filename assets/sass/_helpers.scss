@@ -5,7 +5,7 @@
 
 // Border radius
 // ---------------------------
-$default-enable-border-radius: false !default;
+$default-enable-border-radius: true !default;
 $default-enable-border-radius-specific: false !default;
 @import "helpers/border-radius";
 
