@@ -4,6 +4,7 @@
   @include breakpoint($b-max) {
     @include pin-below; } }
 
+// Commonly used with .meta
 .dashes {
   background: image-url("dash-neutral-l1.svg") repeat-x left calc(50% + 1px);
   
@@ -16,3 +17,7 @@
   
   > *:not(:only-child):last-child {
     padding-left: $base-px / 2; } }
+
+// Make anything a block level element
+.db {
+  display: block; }

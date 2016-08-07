@@ -5,15 +5,13 @@
 {preload_replace:ch_status="open|latest"}
 {preload_replace:ch_disable="pagination|member_data|trackbacks"}
 {preload_replace:ch_limit="10"}
-{preload_replace:design="design-default-{switch='2|1|3|4'}.svg"}
-{preload_replace:code="code-default-{switch='3|4|2|1'}.svg"}
+{preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
+{preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
 {!--{exp:iamsteve:number from='1' to='4'}--}
 
 <div class="row hero contain-large mb4-d">
   <div class="column introduction">
     <picture class="rio mb2">
-      <source srcset="{site_url}dist/images/rio-badge.svg" media="(min-width: 840px)">
-      <source srcset="{site_url}dist/images/rio.svg" media="(max-width: 839px)">
       <img src="{site_url}dist/images/rio.svg">
     </picture>
     <h1 class="f3 f2-b f1-d mb2 primary">Learn design and code</h1>
@@ -22,34 +20,7 @@
   </div>
   <div class="column featured">
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="1"}
-    	<article data-href="{title_permalink='blog/entry'}" class="card card-large">
-      	<div class="card-image">
-        	{if image}
-        	  {image}
-        	    {if large_file_url}
-        	      <img src="{url:large}" srcset="{url:large-2x} 2x">
-              {if:else}
-                <img src="{url}">
-              {/if}
-            {/image}
-          {if:elseif category == 7}
-        	  <img src="{site_url}dist/images/{design}">
-        	{if:else}
-        	  <img src="{site_url}dist/images/{code}">
-        	{/if}
-      	</div>
-      	<div class="card-body">
-        	<div class="meta dashes meta-to-calendar mb2">
-            <time class="calendar" datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
-              <span class="month">{entry_date format="%F"}</span>
-              <span class="day">{entry_date format="%j"}</span>
-            </time>
-          </div>
-      		<h2 class="f4 f3-b f2-d mb2 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-      		{excerpt}
-      		{blog_meta}
-        </div>
-    	</article>
+    	{post_large}
     {/exp:channel:entries}
   </div>
 </div>
@@ -67,42 +38,14 @@
       </button>
     </div>
   </header>
-
   <div class="scroll">
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="{ch_limit}"}
-    	<article data-href="{title_permalink='blog/entry'}" class="card card-medium">
-      	<div class="card-image mb4">
-        	{if thumbnail}
-        	  {thumbnail}
-        	    {if medium_file_url}
-        	      <img src="{url:medium}" srcset="{url:medium-2x} 2x">
-              {if:else}
-                <img src="{url}">
-              {/if}
-            {/thumbnail}
-          {if:else}
-        	  {categories channel="blog" limit="1"}
-              {if category_id == 7}
-                <img src="{site_url}dist/images/{design}">
-              {if:else}
-                <img src="{site_url}dist/images/{code}">
-              {/if}
-            {/categories}
-          {/if}
-      	</div>
-      	<div class="card-body">
-        	<div class="meta dashes mb2">{date}</div>
-      		<h3 class="f5 f4-b mb1 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
-      		{exp:streeng words="44"}{excerpt}{/exp:streeng}
-      		{blog_meta}
-        </div>
-    	</article>
+    	{post_medium}
     {/exp:channel:entries}
   </div>
 </section>
 
 {embed="include/subscribe" class="row-strong"}
-
 
 <section class="posts pt6 pt7-d pb6 pb7-d">
   <header class="row row-header contain contain-medium contain-large between">
@@ -116,28 +59,9 @@
       </button>
     </div>
   </header>
-  
   <div class="scroll">
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="7" orderby="view_count_one" sort="desc"}
-    	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
-      	<div class="card-image mb2">
-        	{if thumbnail}
-        	  {thumbnail}
-        	    {if small_file_url}
-        	      <img src="{url:small}" srcset="{url:small-2x} 2x">
-              {if:else}
-                <img src="{url}">
-              {/if}
-            {/thumbnail}
-        	{if:else}
-        	  <img src="{site_url}dist/images/{design}">
-        	{/if}
-      	</div>
-      	<div class="card-body">
-      		<div class="meta dashes mb1">{date}</div>
-      		<h2 class="f6 f5-b f4-d mb0 neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-    		</div>
-    	</article>
+    	{post_small}
     {/exp:channel:entries}
   </div>
 </section>
@@ -154,28 +78,9 @@
       </button>
     </div>
   </header>
-  
   <div class="scroll">
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2" orderby="view_count_one" sort="desc"}
-    	<article data-href="{title_permalink='blog/entry'}" class="card card-small">
-      	<div class="card-image mb2">
-        	{if thumbnail}
-        	  {thumbnail}
-        	    {if small_file_url}
-        	      <img src="{url:small}" srcset="{url:small-2x} 2x">
-              {if:else}
-                <img src="{url}">
-              {/if}
-            {/thumbnail}
-        	{if:else}
-        	  <img src="{site_url}dist/images/{code}">
-        	{/if}
-      	</div>
-      	<div class="card-body">
-        	<div class="meta dashes mb1">{date}</div>
-      		<h2 class="f6 f5-b f4-d mb0 neutral-l1"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-    		</div>
-    	</article>
+    	{post_small}
     {/exp:channel:entries}
   </div>
 </section>

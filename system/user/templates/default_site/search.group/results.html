@@ -20,34 +20,6 @@
 
 <div class="row between contain contain-medium contain-large pt4 pt6-b pb4 pb6-b" id="posts">
   {exp:search:search_results channel="{ch}" limit="{ch_limit}" status="{ch_status}" disable="{ch_disable}"}
-  	<article data-href="{title_permalink='blog/entry'}" class="card card-medium entry">
-    	<div class="card-image mb4">
-      	{if thumbnail}
-      	  {thumbnail}
-      	    {if medium_file_url}
-      	      <img src="{url:medium}" srcset="{url:medium-2x} 2x">
-            {if:else}
-              <img src="{url}">
-            {/if}
-          {/thumbnail}
-        {if:else}
-      	  {categories channel="blog" limit="1"}
-            {if category_id == 7}
-              <img src="{site_url}dist/images/{design}">
-            {if:else}
-              <img src="{site_url}dist/images/{code}">
-            {/if}
-          {/categories}
-        {/if}
-    	</div>
-    	<div class="card-body">
-      	<div class="meta dashes mb1 mb2-b">{date}</div>
-    		<h3 class="f6 f5-b f4-d mb0 mb1-b primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
-    		{if '{exp:iamsteve:is_mobile}' != 1}
-    		  <p>{exp:streeng words="44"}{excerpt}{/exp:streeng}</p>
-    		{/if}
-    		{blog_meta}
-      </div>
-  	</article>
+  	{post_medium}
   {/exp:search:search_results}
 </div>
