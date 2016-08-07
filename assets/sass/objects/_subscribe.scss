@@ -18,7 +18,7 @@
     transform: translateY(-50%);
     max-width: 192px; }
   
-  @include breakpoint($cd) {
+  @include breakpoint($c) {
     max-width: 320px; }
   
   @include breakpoint(max-width 359px) {
@@ -28,16 +28,17 @@
   position: relative;
   
   @include breakpoint($b) {
-    padding-right: 192px + $line;
-    max-width: 540px; }
-
-  @include breakpoint($c) {
-    max-width: 752px; }
+    padding-right: 192px + $line; }
   
-  @include breakpoint($cd) {
+  @include breakpoint($c) {
     padding-right: 320px; }
   
+  @include breakpoint($cd) {
+    max-width: 752px; }
+  
   @include breakpoint($b-max) {
+    max-width: 540px;
+    
     p {
       text-align: left;
       max-width: calc(100% - #{144px + $line + $line}); } }

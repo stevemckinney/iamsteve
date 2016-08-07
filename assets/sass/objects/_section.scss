@@ -30,8 +30,8 @@
 
 .contain-medium {
   @include breakpoint($c) {
-    padding-right: $line * 2;
-    padding-left: $line * 2; } } 
+    padding-right: $line;
+    padding-left: $line; } } 
 
 .contain-large {
   @include breakpoint($site-width) {
@@ -72,7 +72,7 @@
 .row-header {
   padding-bottom: $line;
   
-  @include breakpoint($c) {
+  @include breakpoint($d) {
     padding-bottom: double($line); } }
   
 .row-title {

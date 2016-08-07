@@ -42,6 +42,7 @@
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="{ch_limit}"}
     	{post_medium}
     {/exp:channel:entries}
+    <div class="card card-more" role="presentation">&nbsp;</div>
   </div>
 </section>
 
@@ -63,6 +64,11 @@
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="7" orderby="view_count_one" sort="desc"}
     	{post_small}
     {/exp:channel:entries}
+    <div class="card card-medium card-more">
+      <a href="{path='blog/index'}">
+        View more posts
+      </a>
+    </div>
   </div>
 </section>
 

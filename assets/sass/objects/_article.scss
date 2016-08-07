@@ -110,7 +110,7 @@
   
   @include breakpoint($site-width) {
     position: absolute;
-    top: $base-px;
+    bottom: 0;
     left: 100%;
     width: 220px;
     margin-left: auto;

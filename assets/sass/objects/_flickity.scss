@@ -14,11 +14,9 @@
 
 .flickity-slider {
   position: absolute;
-  // Flickity sets this value inline, to have the correct spacing and maintain
-  // scrolling going to each edge of the screen this is needed.
-  width: 100%;
   height: 100%;
   left: 6px !important;
+  right: 0;
   
   @include breakpoint($c) {
     left: 12px !important; } }
