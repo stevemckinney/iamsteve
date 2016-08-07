@@ -141,5 +141,5 @@
 // Specifics
 // ---------------------------
 .hero .card-large {
-  @include breakpoint($c) {
+  @include breakpoint($d) {
     margin-bottom: -$line * 4; } }

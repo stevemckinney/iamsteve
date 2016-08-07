@@ -25,7 +25,7 @@
     text-align: justify;
     max-width: 324px;
     
-    @include breakpoint($c-max) {
+    @include breakpoint($cd-max) {
       max-width: 284px; } } }
 
 .rio img {
@@ -35,6 +35,9 @@
     max-width: 240px;
     margin-right: auto; }
   
+  @include breakpoint($cd-max) {
+    max-width: 196px; }
+    
   @include breakpoint($c-max) {
     margin: auto; }
   
