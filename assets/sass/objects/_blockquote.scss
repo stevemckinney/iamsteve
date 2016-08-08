@@ -1,10 +1,10 @@
 // Blockquote
 // ---------------------------
-$blockquote-font-size: 21px;
+$blockquote-font-size: 18px;
 
 .blockquote,
 blockquote {
-  font: italic #{em($blockquote-font-size)}/#{1.5} $serif;
+  font-style: italic;
   padding: cp($line, $measure);
   margin: $line 0;
   position: relative;
