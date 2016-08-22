@@ -2,19 +2,16 @@
 // ---------------------------
 .footer {
   position: relative;
+  background-color: $alternate-l4;
   align-items: center;
   font-family: $sans;
   font-weight: font-weight(semibold);
   padding-top: $line;
   padding-bottom: $line;
-    
-  @include breakpoint($b) {
-    padding-top: double($line);
-    padding-bottom: double($line); }
-    
+  
   @include breakpoint($d) {
-    padding-top: quadruple($line);
-    padding-bottom: quadruple($line); }
+    padding-top: $line*2;
+    padding-bottom: $line*2; }
   
   @include breakpoint($b-max) {   
     a, p {
@@ -36,12 +33,13 @@
     &:not(:first-child) {
       padding-right: $base-px; } } }
 
+.copyright {
+  white-space: nowrap; }
+
 .logo-footer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: $line; }
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: $m1; }
 
 .logo-footer-small {
   @include breakpoint($b) {
