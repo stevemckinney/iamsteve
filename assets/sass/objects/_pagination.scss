@@ -64,8 +64,13 @@
 
 .pagination-offset {
   position: relative;
-  z-index: 1;
-  margin-bottom: -24px; }
+  z-index: $z-index-3;
+  
+  @include breakpoint($c-max) {
+    margin-bottom: double($line); }
+  
+  @include breakpoint($c) {
+    margin-bottom: -24px; } }
 
 // Pagination state
 // ---------------------------

@@ -19,7 +19,6 @@
   
   @include breakpoint($c) {
     padding: ($line + 4px) $base-px;
-    transition: color .2s;
     font-weight: font-weight(semibold); }
       
   @include breakpoint($cd) {

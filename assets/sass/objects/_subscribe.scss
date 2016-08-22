@@ -26,7 +26,8 @@
 
 .subscribe-content {
   position: relative;
-  
+  padding-right: 144px + $base-px;
+    
   @include breakpoint($b) {
     padding-right: 192px + $line; }
   

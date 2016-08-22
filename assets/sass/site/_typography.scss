@@ -32,10 +32,12 @@ p, figcaption {
     hyphens: auto; } }
 
 a {
-  transition: .2s;
+  transition: .2s color, .2s transform;
+  transform-origin: center center;
   text-decoration: none;
   color: inherit;
-    
+  position: relative;
+  
   // Normalize
   background: transparent; // newer IE versions need this
   
