@@ -34,6 +34,10 @@
 .entry-next {
   display: inline-block;
   
+  &:hover,
+  &:focus { a {
+    color: $secondary; } }
+  
   a {
     background-image: linear-gradient(rgba($tertiary-l2, 0) 70%, $tertiary-l1 70%, $tertiary-l1 88%, rgba($tertiary-l1, 0) 88%); }
   
