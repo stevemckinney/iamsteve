@@ -30,6 +30,7 @@
   position: absolute;
   left: 0;
   right: 0;
+  z-index: $z-index-3;
   
   @if $position == top {
     bottom: calc(100% - 1px); }
