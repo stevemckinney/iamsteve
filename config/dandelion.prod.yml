@@ -7,3 +7,4 @@ exclude:
     - .gitignore
     - node_modules
     - .sass-cache
+    - config
