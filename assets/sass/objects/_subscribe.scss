@@ -13,12 +13,13 @@
   right: 0;
   max-width: 144px;
   
-  @include breakpoint($b) {
-    top: 50%;
-    transform: translateY(-50%);
+  @include breakpoint(414px) {
+    top: -$line;
     max-width: 192px; }
   
-  @include breakpoint($c) {
+  @include breakpoint($d) {
+    top: 50%;
+    transform: translateY(-50%);
     max-width: 320px; }
   
   @include breakpoint(max-width 359px) {
@@ -26,29 +27,31 @@
 
 .subscribe-content {
   position: relative;
-  padding-right: 144px + $base-px;
-    
-  @include breakpoint($b) {
-    padding-right: 192px + $line; }
   
-  @include breakpoint($c) {
-    padding-right: 320px; }
+  @include breakpoint($ab) {
+    max-width: 480px; }
   
-  @include breakpoint($cd) {
+  @include breakpoint($d) {
+    padding-right: 320px;
     max-width: 752px; }
   
-  @include breakpoint($b-max) {
-    max-width: 540px;
+  p {
+    padding-right: 144px + $base-px;
+    padding-bottom: $line;
     
-    p {
-      text-align: left;
-      max-width: calc(100% - #{144px + $line + $line}); } }
+    @include breakpoint(414px) {
+      padding-right: 192px + $base-px; }
+    
+    @include breakpoint(460px) {
+      padding-bottom: $line * 2; }
       
-  @include breakpoint($ab-max) {
-    p {
-      max-width: calc(100% - #{144px + $base-px}); } }
+    @include breakpoint($d) {
+      padding-right: 0;
+      padding-bottom: 0; } }
       
+/*
   @include breakpoint(max-width 414px) {
     p:last-of-type {
       padding-right: 0;
-      max-width: 100%; } } }
+      max-width: 100%; } }
+*/ }
