@@ -171,7 +171,7 @@ if (isset($config))
   $env_config['minimee'] = array(
    'cache_path' => $base_path . '/cache',
    'cache_url' => $base_url . '/cache',
-   'minify_html' => 'yes',
+   'minify_html' => 'yes', // For display: inline-block purposes too
   );
   
   $env_config['stash_file_basepath'] = $base_path . '/system/user/templates/default_site/stash_templates/';

@@ -14,7 +14,7 @@
 $config['app_version'] = "3.4.0";
 $config['install_lock'] = "";
 $config['license_number'] = '';
-$config['debug'] = '1';
+$config['debug'] = 'FALSE';
 $config['cp_url'] = '';
 $config['doc_url'] = 'https://docs.expressionengine.com/v3/';
 $config['is_system_on'] = 'y';
@@ -23,7 +23,7 @@ $config['site_label'] = 'iamsteve';
 $config['cookie_prefix'] = '';
 
 $config['hidden_template_indicator'] = '.';
-$config['cache_driver'] = 'dummy';
+$config['cache_driver'] = 'file';
 $config['database'] = array (
   'expressionengine' => array()
 );
