@@ -46,7 +46,7 @@
   z-index: $z-index-200;
   
   @include breakpoint($c) {
-    padding: $base-px $line;
+    padding: $base-px $line $base-px 0;
     align-content: center;
     align-items: center; }
   

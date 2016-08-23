@@ -12,7 +12,7 @@
   padding-top: double($line);
   padding-bottom: double($line);
   
-  @include breakpoint($b) {
+  @include breakpoint($c) {
     padding-top: quadruple($line);
     padding-bottom: quadruple($line); }
   
@@ -31,7 +31,11 @@
 .contain-medium {
   @include breakpoint($c) {
     padding-right: $line;
-    padding-left: $line; } } 
+    padding-left: $line; }
+  
+  @include breakpoint($d) {
+    padding-right: $line*2;
+    padding-left: $line*2; } } 
 
 .contain-large {
   @include breakpoint($site-width) {

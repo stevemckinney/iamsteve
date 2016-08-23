@@ -54,9 +54,7 @@ $buttons: (
   
   // $c-max styles controlled in _transition.scss
   @include breakpoint($c) {
-    transform: translateY(-50%); }
-  
-  @include breakpoint($site-width) {
+    transform: translateY(-50%);
     padding-right: 0; }
   
   @include breakpoint($b-max) {

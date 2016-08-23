@@ -9,9 +9,6 @@
    
   @include breakpoint($site-width) {
     flex-basis: 398px; }
-  
-  @include breakpoint($site-width-max) {
-    padding-left: $line; }
     
   @include breakpoint($c-max) {
     align-content: center;

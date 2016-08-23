@@ -64,10 +64,27 @@ address { font-style: normal; }
 .link { 
   // A discrete link style
   font-weight: font-weight(semibold);
+  position: relative;
   
-  &:hover,
-  &:focus {
-    box-shadow: inset 0 -2px $secondary-l2, 0 2px $secondary-l2; } }
+  &:after {
+    content: "";
+    position: absolute;
+    transition: .6s ease-out;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(to right, $primary, $tertiary, $secondary);
+    background-size: 600% auto;
+    background-position: -852px 0;
+    background-repeat: no-repeat; }
+  
+  &:hover:after,
+  &:focus:after {
+    background-position: 0 0; }
+  
+  &:active {
+    transform: scale(.9); } }
 
 // Social links
 // ---------------------------

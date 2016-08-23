@@ -33,13 +33,18 @@
 // ---------------------------
 .entry-next {
   display: inline-block;
+  cursor: pointer;
   
   &:hover,
   &:focus { a {
-    color: $secondary; } }
+    color: $secondary; }
+    
+    .icon { 
+      transform: translate3d($base-px, 0, 0); } }
   
   a {
     background-image: linear-gradient(rgba($tertiary-l2, 0) 70%, $tertiary-l1 70%, $tertiary-l1 88%, rgba($tertiary-l1, 0) 88%); }
   
   .icon {
+    position: relative;
     display: inline-block; } }

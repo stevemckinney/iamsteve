@@ -4,11 +4,12 @@
 {preload_replace:ch="blog"}
 {preload_replace:ch_status="open|latest"}
 {preload_replace:ch_disable="pagination|member_data|trackbacks"}
-{preload_replace:ch_limit="10"}
+{preload_replace:ch_limit="8"}
+{preload_replace:ch_limit_large="11"}
 {preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
 {preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
 
-<div class="row hero contain-large mb4-d">
+<div class="row hero contain-medium contain-large mb4-d">
   <div class="column introduction">
     <picture class="rio mb2">
       <img src="{site_url}dist/images/rio.svg">
@@ -32,15 +33,19 @@
         <span class="icon icon-medium">{gv_arrow_left}</span>
       </button>
       <button class="paginate paginate-right">
-        <span class="icon icon-medium">{gv_arrow_right}
+        <span class="icon icon-medium">{gv_arrow_right}</span>
       </button>
     </div>
   </header>
   <div class="scroll">
-    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="{ch_limit}"}
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="{ch_limit_large}"}
     	{post_medium}
     {/exp:channel:entries}
-    <div class="card card-more" role="presentation">&nbsp;</div>
+    <a href="{path='blog/P12'}" class="card card-medium card-more">
+      <h2 class="sans f3 f3-b secondary link-icon m0">
+        View more posts <span class="icon icon-medium icon-right">{gv_arrow_right}</span>
+      </h2>
+    </a>
   </div>
 </section>
 
@@ -62,11 +67,11 @@
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="7" orderby="view_count_one" sort="desc"}
     	{post_small}
     {/exp:channel:entries}
-    <div class="card card-medium card-more">
-      <a href="{path='blog/index'}">
-        View more posts
-      </a>
-    </div>
+    <a href="{path='blog/category/design'}" class="card card-small card-more">
+      <h2 class="sans f3 f4-b secondary link-icon m0">
+        More posts in design <span class="icon icon-medium icon-right">{gv_arrow_right}</span>
+      </h2>
+    </a>
   </div>
 </section>
 
@@ -86,5 +91,10 @@
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2" orderby="view_count_one" sort="desc"}
     	{post_small}
     {/exp:channel:entries}
+    <a href="{path='blog/category/code'}" class="card card-small card-more">
+      <h2 class="sans f3 f4-b secondary link-icon m0">
+        More posts in code <span class="icon icon-medium icon-right">{gv_arrow_right}</span>
+      </h2>
+    </a>
   </div>
 </section>
