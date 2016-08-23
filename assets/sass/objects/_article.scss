@@ -34,16 +34,16 @@
     // 3px aligns back to baseline
     margin-bottom: $line + 3px; }
   
-  > *:not(figure), img {
+  > *:not(figure):not(div), img {
     margin-left: auto;
     
     @include breakpoint($e-max) {
       margin-right: auto; } }
   
-  > *:not(figure):not(img) {
+  > *:not(figure):not(img):not(div) {
     max-width: $measure; }
     
-  > *:not(figure):not(img),
+  > *:not(figure):not(img):not(div),
   figcaption {
     @include breakpoint($c-max) {
       padding-left: 16px;
@@ -89,6 +89,13 @@
   font-size: 21px;
   margin-bottom: 24px; }
 
+// Codepen
+// ---------------------------
+.cp_embed_iframe {
+  @include breakpoint($c) {
+    max-width: 95%;
+    margin-left: 5%; } }
+    
 // Lists
 // ---------------------------
 .entry-content ul {
