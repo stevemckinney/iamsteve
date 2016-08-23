@@ -17,7 +17,7 @@ class Iamsteve {
   private $json_ld_close;
   private $base_url;
   private $site_name;
-
+  
   public function __construct()
   {
     $this->EE = get_instance();
@@ -217,6 +217,17 @@ class Iamsteve {
     }
     
     return $is_mobile;
+  }
+  
+  public function set_cookie($name, $value, $expire)
+  {
+    ee()->load->helper('cookie');
+    
+    set_cookie(
+      $name, 
+      $value,
+      $expire
+    );
   }
 }
 // END CLASS
