@@ -1,0 +1,754 @@
+# Apache Configuration File
+
+# (!) Using `.htaccess` files slows down Apache, therefore, if you have access
+# to the main server config file (usually called `httpd.conf`), you should add
+# this logic there: http://httpd.apache.org/docs/current/howto/htaccess.html.
+
+##
+# Referrer exclusions
+##
+
+# top1-seo-service|top1-seo-service\.com|rankings-analytics\.com|video--production\.com|get-free-traffic|erot\.co|webmonetizer|event-tracking|floating-share-buttons|semalt\.com|buttons-for-website\.com|success-seo\.com|videos-for-your-business\.com|free-share-buttons\.com|guardlink\.org|theguardlan\.com|buy-cheap-online\.com|get-free-traffic-now\.com|torture\.ml|event-tracking\.com)"
+
+# ##############################################################################
+# # CROSS-ORIGIN RESOURCE SHARING (CORS)                                       #
+# ##############################################################################
+
+# ------------------------------------------------------------------------------
+# | Cross-domain AJAX requests                                                 |
+# ------------------------------------------------------------------------------
+
+# Enable cross-origin AJAX requests.
+# http://code.google.com/p/html5security/wiki/CrossOriginRequestSecurity
+# http://enable-cors.org/
+
+<IfModule mod_headers.c>
+	Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# | CORS-enabled images                                                        |
+# ------------------------------------------------------------------------------
+
+# Send the CORS header for images when browsers request it.
+# https://developer.mozilla.org/en/CORS_Enabled_Image
+# http://blog.chromium.org/2011/07/using-cross-domain-images-in-webgl-and.html
+# http://hacks.mozilla.org/2011/11/using-cors-to-load-webgl-textures-from-cross-domain-images/
+
+<IfModule mod_setenvif.c>
+  <IfModule mod_headers.c>
+    <FilesMatch "\.(gif|ico|jpe?g|png|svg|svgz|webp)$">
+        SetEnvIf Origin ":" IS_CORS
+        Header set Access-Control-Allow-Origin "*" env=IS_CORS
+    </FilesMatch>
+  </IfModule>
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# | Web fonts access                                                           |
+# ------------------------------------------------------------------------------
+
+# Allow access from all domains for web fonts
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+
+# ##############################################################################
+# # ERRORS                                                                     #
+# ##############################################################################
+
+# ------------------------------------------------------------------------------
+# | 404 error prevention for non-existing redirected folders                   |
+# ------------------------------------------------------------------------------
+
+# Prevent Apache from returning a 404 error for a rewrite if a directory
+# with the same name does not exist.
+# http://httpd.apache.org/docs/current/content-negotiation.html#multiviews
+# http://www.webmasterworld.com/apache/3808792.htm
+
+Options -MultiViews
+
+# ------------------------------------------------------------------------------
+# | Custom error messages / pages                                              |
+# ------------------------------------------------------------------------------
+
+# You can customize what Apache returns to the client in case of an error (see
+# http://httpd.apache.org/docs/current/mod/core.html#errordocument), e.g.:
+
+ErrorDocument 404 /index.php/site/error
+
+
+# ##############################################################################
+# # INTERNET EXPLORER                                                          #
+# ##############################################################################
+
+# ------------------------------------------------------------------------------
+# | Better website experience                                                  |
+# ------------------------------------------------------------------------------
+
+# Force IE to render pages in the highest available mode in the various
+# cases when it may not: http://hsivonen.iki.fi/doctype/ie-mode.pdf.
+# Use, if installed, Google Chrome Frame.
+
+<IfModule mod_headers.c>
+  Header set X-UA-Compatible "IE=edge,chrome=1"
+  # `mod_headers` can't match based on the content-type, however, we only
+  # want to send this header for HTML pages and not for the other resources
+  <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webapp|webm|webp|woff|xml|xpi)$">
+      Header unset X-UA-Compatible
+  </FilesMatch>
+</IfModule>
+
+# ##############################################################################
+# # MIME TYPES AND ENCODING                                                    #
+# ##############################################################################
+
+# ------------------------------------------------------------------------------
+# | Proper MIME types for all files                                            |
+# ------------------------------------------------------------------------------
+
+<IfModule mod_mime.c>
+
+  # Audio
+    AddType audio/mp4                                   m4a f4a f4b
+    AddType audio/ogg                                   oga ogg
+
+  # JavaScript
+    # Normalize to standard type (it's sniffed in IE anyways):
+    # http://tools.ietf.org/html/rfc4329#section-7.2
+    AddType application/javascript                      js jsonp
+    AddType application/json                            json
+
+  # Video
+    AddType video/mp4                                   mp4 m4v f4v f4p
+    AddType video/ogg                                   ogv
+    AddType video/webm                                  webm
+    AddType video/x-flv                                 flv
+
+  # Web fonts
+    AddType application/font-woff                       woff
+    AddType application/vnd.ms-fontobject               eot
+
+    # Browsers usually ignore the font MIME types and sniff the content,
+    # however, Chrome shows a warning if other MIME types are used for the
+    # following fonts.
+    AddType application/x-font-ttf                      ttc ttf
+    AddType font/opentype                               otf
+
+    # Make SVGZ fonts work on iPad:
+    # https://twitter.com/FontSquirrel/status/14855840545
+    AddType     image/svg+xml                           svg svgz
+    AddEncoding gzip                                    svgz
+
+  # Other
+    AddType application/octet-stream                    safariextz
+    AddType application/x-chrome-extension              crx
+    AddType application/x-opera-extension               oex
+    AddType application/x-shockwave-flash               swf
+    AddType application/x-web-app-manifest+json         webapp
+    AddType application/x-xpinstall                     xpi
+    AddType application/xml                             atom rdf rss xml
+    AddType image/webp                                  webp
+    AddType image/x-icon                                ico
+    AddType text/cache-manifest                         appcache manifest
+    AddType text/vtt                                    vtt
+    AddType text/x-component                            htc
+    AddType text/x-vcard                                vcf
+
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# | UTF-8 encoding                                                             |
+# ------------------------------------------------------------------------------
+
+# Use UTF-8 encoding for anything served as `text/html` or `text/plain`.
+AddDefaultCharset utf-8
+
+# Force UTF-8 for certain file formats.
+<IfModule mod_mime.c>
+  AddCharset utf-8 .atom .css .js .json .rss .vtt .webapp .xml
+</IfModule>
+
+
+# ##############################################################################
+# # URL REWRITES                                                               #
+# ##############################################################################
+
+# ------------------------------------------------------------------------------
+# | Rewrite engine                                                             |
+# ------------------------------------------------------------------------------
+
+# Turning on the rewrite engine and enabling the `FollowSymLinks` option is
+# necessary for the following directives to work.
+
+# If your web host doesn't allow the `FollowSymlinks` option, you may need to
+# comment it out and use `Options +SymLinksIfOwnerMatch` but, be aware of the
+# performance impact: http://httpd.apache.org/docs/current/misc/perf-tuning.html#symlinks
+
+# Also, some cloud hosting services require `RewriteBase` to be set:
+# http://www.rackspace.com/knowledge_center/frequently-asked-question/why-is-mod-rewrite-not-working-on-my-site
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+  # Options +SymLinksIfOwnerMatch
+    RewriteEngine On
+  # RewriteBase /
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# | Suppressing / Forcing the "www." at the beginning of URLs                  |
+# ------------------------------------------------------------------------------
+
+# The same content should never be available under two different URLs especially
+# not with and without "www." at the beginning. This can cause SEO problems
+# (duplicate content), therefore, you should choose one of the alternatives and
+# redirect the other one.
+
+# By default option 1 (no "www.") is activated:
+# http://no-www.org/faq.php?q=class_b
+
+# If you'd prefer to use option 2, just comment out all the lines from option 1
+# and uncomment the ones from option 2.
+
+# IMPORTANT: NEVER USE BOTH RULES AT THE SAME TIME!
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# ##############################################################################
+# # SECURITY                                                                   #
+# ##############################################################################
+
+# ------------------------------------------------------------------------------
+# | Content Security Policy (CSP)                                              |
+# ------------------------------------------------------------------------------
+
+# You can mitigate the risk of cross-site scripting and other content-injection
+# attacks by setting a Content Security Policy which whitelists trusted sources
+# of content for your site.
+
+# The example header below allows ONLY scripts that are loaded from the current
+# site's origin (no inline scripts, no CDN, etc). This almost certainly won't
+# work as-is for your site!
+
+# To get all the details you'll need to craft a reasonable policy for your site,
+# read: http://html5rocks.com/en/tutorials/security/content-security-policy (or
+# see the specification: http://w3.org/TR/CSP).
+
+# <IfModule mod_headers.c>
+#    Header set Content-Security-Policy "script-src 'self'; object-src 'self'"
+#    <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webapp|webm|webp|woff|xml|xpi)$">
+#        Header unset Content-Security-Policy
+#    </FilesMatch>
+# </IfModule>
+
+# ------------------------------------------------------------------------------
+# | File access                                                                |
+# ------------------------------------------------------------------------------
+
+# Block access to directories without a default document.
+# Usually you should leave this uncommented because you shouldn't allow anyone
+# to surf through every directory on your server (which may includes rather
+# private places like the CMS's directories).
+
+<IfModule mod_autoindex.c>
+  Options -Indexes
+</IfModule>
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Block access to hidden files and directories.
+# This includes directories used by version control systems such as Git and SVN.
+
+<IfModule mod_rewrite.c>
+    RewriteCond %{SCRIPT_FILENAME} -d [OR]
+    RewriteCond %{SCRIPT_FILENAME} -f
+    RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Block access to backup and source files.
+# These files may be left by some text editors and can pose a great security
+# danger when anyone has access to them.
+
+<FilesMatch "(^#.*#|\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|sw[op])|~)$">
+  Order allow,deny
+  Deny from all
+  Satisfy All
+</FilesMatch>
+
+# ------------------------------------------------------------------------------
+# | Secure Sockets Layer (SSL)                                                 |
+# ------------------------------------------------------------------------------
+
+# Rewrite secure requests properly to prevent SSL certificate warnings, e.g.:
+# prevent `https://www.example.com` when your certificate only allows
+# `https://secure.example.com`.
+
+<IfModule mod_rewrite.c>
+	#RewriteCond %{SERVER_PORT} !^443
+	#RewriteRule ^ https://iamsteve.me%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Force client-side SSL redirection.
+
+# If a user types "example.com" in his browser, the above rule will redirect him
+# to the secure version of the site. That still leaves a window of opportunity
+# (the initial HTTP connection) for an attacker to downgrade or redirect the
+# request. The following header ensures that browser will ONLY connect to your
+# server via HTTPS, regardless of what the users type in the address bar.
+# http://www.html5rocks.com/en/tutorials/security/transport-layer-security/
+
+<IfModule mod_headers.c>
+	Header set Strict-Transport-Security max-age=16070400;
+</IfModule>
+
+# ##############################################################################
+# # WEB PERFORMANCE                                                            #
+# ##############################################################################
+
+# ------------------------------------------------------------------------------
+# | Compression                                                                |
+# ------------------------------------------------------------------------------
+
+<IfModule mod_deflate.c>
+
+    # Force compression for mangled headers.
+    # http://developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping
+    <IfModule mod_setenvif.c>
+        <IfModule mod_headers.c>
+            SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+            RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+        </IfModule>
+    </IfModule>
+
+    # Compress all output labeled with one of the following MIME-types
+    # (for Apache versions below 2.3.7, you don't need to enable `mod_filter`
+    #  and can remove the `<IfModule mod_filter.c>` and `</IfModule>` lines
+    #  as `AddOutputFilterByType` is still in the core directives).
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE application/atom+xml \
+                                      application/javascript \
+                                      application/json \
+                                      application/rss+xml \
+                                      application/vnd.ms-fontobject \
+                                      application/x-font-ttf \
+                                      application/x-web-app-manifest+json \
+                                      application/xhtml+xml \
+                                      application/xml \
+                                      font/opentype \
+                                      image/svg+xml \
+                                      image/x-icon \
+                                      text/css \
+                                      text/html \
+                                      text/plain \
+                                      text/x-component \
+                                      text/xml
+    </IfModule>
+
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# | ETag removal                                                               |
+# ------------------------------------------------------------------------------
+
+# Since we're sending far-future expires headers (see below), ETags can
+# be removed: http://developer.yahoo.com/performance/rules.html#etags.
+
+# `FileETag None` is not enough for every server.
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+
+FileETag None
+
+# ------------------------------------------------------------------------------
+# | Expires headers (for better cache control)                                 |
+# ------------------------------------------------------------------------------
+
+# The following expires headers are set pretty far in the future. If you don't
+# control versioning with filename-based cache busting, consider lowering the
+# cache time for resources like CSS and JS to something like 1 week.
+
+<IfModule mod_expires.c>
+
+    ExpiresActive on
+    ExpiresDefault                                      "access plus 1 month"
+
+  # CSS
+    ExpiresByType text/css                              "access plus 1 year"
+
+  # Data interchange
+    ExpiresByType application/json                      "access plus 0 seconds"
+    ExpiresByType application/xml                       "access plus 0 seconds"
+    ExpiresByType text/xml                              "access plus 0 seconds"
+
+  # Favicon (cannot be renamed!)
+    ExpiresByType image/x-icon                          "access plus 1 week"
+
+  # HTML components (HTCs)
+    ExpiresByType text/x-component                      "access plus 1 month"
+
+  # HTML
+    ExpiresByType text/html                             "access plus 0 seconds"
+
+  # JavaScript
+    ExpiresByType application/javascript                "access plus 1 year"
+
+  # Manifest files
+    ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
+    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
+
+  # Media
+    ExpiresByType audio/ogg                             "access plus 1 month"
+    ExpiresByType image/gif                             "access plus 1 month"
+    ExpiresByType image/jpeg                            "access plus 1 month"
+    ExpiresByType image/png                             "access plus 1 month"
+    ExpiresByType video/mp4                             "access plus 1 month"
+    ExpiresByType video/ogg                             "access plus 1 month"
+    ExpiresByType video/webm                            "access plus 1 month"
+
+  # Web feeds
+    ExpiresByType application/atom+xml                  "access plus 1 hour"
+    ExpiresByType application/rss+xml                   "access plus 1 hour"
+
+  # Web fonts
+    ExpiresByType application/font-woff                 "access plus 1 month"
+    ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
+    ExpiresByType application/x-font-ttf                "access plus 1 month"
+    ExpiresByType font/opentype                         "access plus 1 month"
+    ExpiresByType image/svg+xml                         "access plus 1 month"
+
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Removes index.php from ExpressionEngine URLs
+  RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+  RewriteCond %{REQUEST_URI} !/system/.* [NC]
+  RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+
+  # Directs all EE web requests through the site index file
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ /index.php/$1 [L]
+</IfModule>
+
+# EE 404 page for missing pages
+ErrorDocument 404 /index.php/site/error
+
+# Simple 404 for missing files
+<FilesMatch "(\.jpe?g|gif|png|bmp|css|js|flv)$">
+  ErrorDocument 404 "File Not Found"
+</FilesMatch>
+
+
+# Referral Spam
+# ----------------------------
+# https://github.com/Stevie-Ray/apache-nginx-referral-spam-blacklist
+# Updated 2016-03-08 14:36:07
+
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*100dollars\-seo\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*best\-seo\-offer\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*best\-seo\-software\.xyz.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*best\-seo\-solution\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*search\-error\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*search\-helper\.ru.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*semalt\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*semaltmedia\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*seo\-platform\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*seo\-smm\.kz.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*seoanalyses\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*seoexperimenty\.ru.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*seokicks\.de.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*seopub\.net.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*success\-seo\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*top1\-seo\-service\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*topseoservices\.co.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*torture\.ml.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*keywords\-monitoring\-your\-success\.com.*$ [NC]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*free\-video\-tool\.com.*$ [NC]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*keywords\-monitoring\-success\.com.*$ [NC]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*fix\-website\-errors\.com.*$ [NC]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*burger\-imperia\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*buttons\-for\-website\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*buttons\-for\-your\-website\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*event\-tracking\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*fast\-wordpress\-start\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*free\-floating\-buttons\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*free\-share\-buttons\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*free\-social\-buttons\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*free\-social\-buttons\.xyz.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*free\-traffic\.xyz.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*fitness\-video\.net.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*pricheski\-video\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*rankscanner\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*ranksignals\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*ranksonic\.info.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*ranksonic\.net.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*ranksonic\.org.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*savetubevideo\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*video\-\-production\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*videos\-for\-your\-business\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*buy\-cheap\-online\.info.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*buy\-forum\.ru.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*get\-free\-social\-traffic\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*get\-free\-traffic\-now\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*get\-your\-social\-buttons\.info.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*share\-buttons\.xyz.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*sharebutton\.net.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*sharebutton\.to.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*simple\-share\-buttons\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*social\-buttons\.com.*$ [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www.)?.*social\-widget\.xyz.*$ [NC,OR]
+
+</IfModule>
+
+<IfModule mod_setenvif.c>
+
+SetEnvIfNoCase Referer 100dollars\-seo\.com spambot=yes
+SetEnvIfNoCase Referer best\-seo\-offer\.com spambot=yes
+SetEnvIfNoCase Referer best\-seo\-software\.xyz spambot=yes
+SetEnvIfNoCase Referer best\-seo\-solution\.com spambot=yes
+SetEnvIfNoCase Referer search\-error\.com spambot=yes
+SetEnvIfNoCase Referer search\-helper\.ru spambot=yes
+SetEnvIfNoCase Referer semalt\.com spambot=yes
+SetEnvIfNoCase Referer semaltmedia\.com spambot=yes
+SetEnvIfNoCase Referer seo\-platform\.com spambot=yes
+SetEnvIfNoCase Referer seo\-smm\.kz spambot=yes
+SetEnvIfNoCase Referer seoanalyses\.com spambot=yes
+SetEnvIfNoCase Referer seoexperimenty\.ru spambot=yes
+SetEnvIfNoCase Referer seokicks\.de spambot=yes
+SetEnvIfNoCase Referer seopub\.net spambot=yes
+SetEnvIfNoCase Referer success\-seo\.com spambot=yes
+SetEnvIfNoCase Referer top1\-seo\-service\.com spambot=yes
+SetEnvIfNoCase Referer topseoservices\.co spambot=yes
+SetEnvIfNoCase Referer torture\.ml spambot=yes
+SetEnvIfNoCase Referer keywords\-monitoring\-your\-success\.com spambot=yes
+SetEnvIfNoCase Referer free\-video\-tool\.com spambot=yes
+SetEnvIfNoCase Referer keywords\-monitoring\-success\.com spambot=yes
+SetEnvIfNoCase Referer fix\-website\-errors\.com spambot=yes
+SetEnvIfNoCase Referer burger\-imperia\.com spambot=yes
+SetEnvIfNoCase Referer buttons\-for\-website\.com spambot=yes
+SetEnvIfNoCase Referer buttons\-for\-your\-website\.com spambot=yes
+SetEnvIfNoCase Referer event\-tracking\.com spambot=yes
+SetEnvIfNoCase Referer fast\-wordpress\-start\.com spambot=yes
+SetEnvIfNoCase Referer free\-floating\-buttons\.com spambot=yes
+SetEnvIfNoCase Referer free\-share\-buttons\.com spambot=yes
+SetEnvIfNoCase Referer free\-social\-buttons\.com spambot=yes
+SetEnvIfNoCase Referer free\-social\-buttons\.xyz spambot=yes
+SetEnvIfNoCase Referer free\-traffic\.xyz spambot=yes
+SetEnvIfNoCase Referer fitness\-video\.net spambot=yes
+SetEnvIfNoCase Referer pricheski\-video\.com spambot=yes
+SetEnvIfNoCase Referer rankscanner\.com spambot=yes
+SetEnvIfNoCase Referer ranksignals\.com spambot=yes
+SetEnvIfNoCase Referer ranksonic\.info spambot=yes
+SetEnvIfNoCase Referer ranksonic\.net spambot=yes
+SetEnvIfNoCase Referer ranksonic\.org spambot=yes
+SetEnvIfNoCase Referer savetubevideo\.com spambot=yes
+SetEnvIfNoCase Referer video\-\-production\.com spambot=yes
+SetEnvIfNoCase Referer videos\-for\-your\-business\.com spambot=yes
+SetEnvIfNoCase Referer buy\-cheap\-online\.info spambot=yes
+SetEnvIfNoCase Referer buy\-forum\.ru spambot=yes
+SetEnvIfNoCase Referer get\-free\-social\-traffic\.com spambot=yes
+SetEnvIfNoCase Referer get\-free\-traffic\-now\.com spambot=yes
+SetEnvIfNoCase Referer get\-your\-social\-buttons\.info spambot=yes
+SetEnvIfNoCase Referer share\-buttons\.xyz spambot=yes
+SetEnvIfNoCase Referer sharebutton\.net spambot=yes
+SetEnvIfNoCase Referer sharebutton\.to spambot=yes
+SetEnvIfNoCase Referer simple\-share\-buttons\.com spambot=yes
+SetEnvIfNoCase Referer social\-buttons\.com spambot=yes
+SetEnvIfNoCase Referer social\-widget\.xyz spambot=yes
+
+</IfModule>
+
+# Apache 2.4
+<IfModule mod_authz_core.c>
+    <RequireAll>
+        Require all granted
+        Require not env spambot
+    </RequireAll>
+</IfModule>
+
+# Redirects
+Redirect 301 /about.php https://iamsteve.me/about
+Redirect 301 /contact.php https://iamsteve.me/contact
+Redirect 301 /blog/page.html https://iamsteve.me/blog
+Redirect 301 /entry/post-about-nothing/ https://iamsteve.me/blog
+Redirect 301 /articles/introductory/ https://iamsteve.me/blog
+Redirect 301 /entry/pro-dev-day/ https://iamsteve.me/blog
+Redirect 301 /entry/hello-world/ https://iamsteve.me/blog
+Redirect 301 /blog/category/technology https://iamsteve.me/blog
+Redirect 301 /blog/category/inspiration https://iamsteve.me/blog
+Redirect 301 /blog/entry/bye_flash https://iamsteve.me/blog
+Redirect 301 /hello-world https://iamsteve.me/blog
+Redirect 301 /blog/entry/pro_dev_day https://iamsteve.me/blog
+Redirect 301 /blog/entry/portfolio_additions https://iamsteve.me/blog
+Redirect 301 /student https://iamsteve.me
+Redirect 301 /studentwebsites https://iamsteve.me/portfolio/view/student_websites
+Redirect 301 /personal https://iamsteve.me
+Redirect 301 /blog/entry/76/using-srcset-with-the-post-thumbnail-in-wordpress https://iamsteve.me/blog/entry/using-srcset-with-the-post-thumbnail-in-wordpress
+Redirect 301 /blog/entry/100/tips-for-sketching-websites https://iamsteve.me/blog/entry/tips-for-sketching-websites
+Redirect 301 /blog/entry/64/object-fit-for-full-viewport-images-with-ease https://iamsteve.me/blog/entry/object-fit-for-full-viewport-images-with-ease
+Redirect 301 /blog/entry/72/horizontal-scrolling-responsive-menu https://iamsteve.me/blog/entry/horizontal-scrolling-responsive-menu
+Redirect 301 /blog/entry/107/colour-series-adding-new-colours-tips https://iamsteve.me/blog/entry/colour-series-adding-new-colours-tips
+Redirect 301 /blog/entry/62/using-browsersync-and-safari-for-testing-your-responsive-website https://iamsteve.me/blog/entry/using-browsersync-and-safari-for-testing-your-responsive-website
+Redirect 301 /blog/entry/83/creating-custom-stroke-width-profiles-in-illustrator https://iamsteve.me/blog/entry/creating-custom-stroke-width-profiles-in-illustrator
+Redirect 301 /blog/entry/54/my_svg_workflow_from_awkward_to_simple https://iamsteve.me/blog/entry/my_svg_workflow_from_awkward_to_simple
+Redirect 301 /blog/entry/79/illustrator-quick-tip-grid-guides https://iamsteve.me/blog/entry/illustrator-quick-tip-grid-guides
+Redirect 301 /blog/entry/80/remove-letter-spacing-from-last-letter https://iamsteve.me/blog/entry/remove-letter-spacing-from-last-letter
+Redirect 301 /blog/entry/50/compass_mixins_you_should_know_about https://iamsteve.me/blog/entry/compass_mixins_you_should_know_about
+Redirect 301 /blog/entry/88/using-flexbox-for-horizontal-scrolling-navigation https://iamsteve.me/blog/entry/using-flexbox-for-horizontal-scrolling-navigation
+Redirect 301 /blog/entry/101/why-you-should-roll-your-own-framework https://iamsteve.me/blog/entry/why-you-should-roll-your-own-framework
+Redirect 301 /blog/entry/53/understanding-sass-default-variables https://iamsteve.me/blog/entry/understanding-sass-default-variables
+Redirect 301 /blog/entry/93/setting-a-cookie-with-wordpress https://iamsteve.me/blog/entry/setting-a-cookie-with-wordpress
+Redirect 301 /blog/entry/70/how-to-choose-a-typeface-for-paragraphs https://iamsteve.me/blog/entry/how-to-choose-a-typeface-for-paragraphs
+Redirect 301 /blog/entry/94/add-critical-css-with-wp-enqueue-scripts https://iamsteve.me/blog/entry/add-critical-css-with-wp-enqueue-scripts
+Redirect 301 /blog/entry/106/colour-series-tweaking-your-palette https://iamsteve.me/blog/entry/colour-series-tweaking-your-palette
+Redirect 301 /blog/entry/56/javascript-without-jquery https://iamsteve.me/blog/entry/javascript-without-jquery
+Redirect 301 /blog/entry/66/adobe-generator-syntax-cheatsheet https://iamsteve.me/blog/entry/adobe-generator-syntax-cheatsheet
+Redirect 301 /ee/index.php/maintenance-week-2 https://iamsteve.me/blog/entry/maintenance-week-2
+Redirect 301 /ee/index.php/redesign https://iamsteve.me/blog/entry/redesign
+Redirect 301 /ee/index.php/unique https://iamsteve.me/blog/entry/unique
+Redirect 301 /entryimages-with-srcset-picture https://iamsteve.me/blog/entry/images-with-srcset-picture
+Redirect 301 /ee/index.php/horizontal-scrolling-responsive-menu https://iamsteve.me/blog/entry/horizontal-scrolling-responsive-menu
+Redirect 301 /blog/2010/06/02/working/ https://iamsteve.me/blog
+Redirect 301 /blog/2010/05 https://iamsteve.me/blog
+Redirect 301 /blog/entry/98/using-grunticon-to-inline-svg https://iamsteve.me/blog/entry/using-grunticon-to-inline-svg
+Redirect 301 /blog/entry/105/colour-series-picking-your-palette https://iamsteve.me/blog/entry/colour-series-picking-your-palette
+Redirect 301 /blog/entry/68/type-scale-line-height-lengths https://iamsteve.me/blog/entry/type-scale-line-height-lengths
+Redirect 301 /blog/entry/59/overcoming-a-couple-of-issues-with-svg-filter-effects https://iamsteve.me/blog/entry/overcoming-a-couple-of-issues-with-svg-filter-effects
+Redirect 301 /blog/entry/77/photoshop-grids-using-guide-layouts https://iamsteve.me/blog/entry/photoshop-grids-using-guide-layouts
+Redirect 301 /blog/entry/71/using-cookies-to-serve-critical-css-for-first-time-visits https://iamsteve.me/blog/entry/using-cookies-to-serve-critical-css-for-first-time-visits
+Redirect 301 /blog/entry/49/using_scale_color_in_sass https://iamsteve.me/blog/entry/using_scale_color_in_sass
+Redirect 301 /blog/entry/67/using-photoshop-linked-smart-objects-for-more-modular-designs https://iamsteve.me/blog/entry/using-photoshop-linked-smart-objects-for-more-modular-designs
+Redirect 301 /blog/entry/74/creating-vintage-filters-with-css-blend-modes https://iamsteve.me/blog/entry/creating-vintage-filters-with-css-blend-modes
+Redirect 301 /blog/entry/57/images-with-srcset-picture https://iamsteve.me/blog/entry/images-with-srcset-picture
+Redirect 301 /blog/entry/92/having-a-central-logo-with-wordpress-menus https://iamsteve.me/blog/entry/having-a-central-logo-with-wordpress-menus
+Redirect 301 /blog/entry/73/flexbox-quick-wins https://iamsteve.me/blog/entry/flexbox-quick-wins
+Redirect 301 "/blog/entry/24/the spec" https://iamsteve.me/blog/entry/inline_block
+Redirect 301 "/blog/entry/24/Inline-block demo" https://iamsteve.me/blog/entry/inline_block
+Redirect 301 /feed https://iamsteve.me/blog/feed
+Redirect 301 /ee/overcoming-a-couple-of-issues-with-svg-filter-effects https://iamsteve.me/blog/entry/overcoming-a-couple-of-issues-with-svg-filter-effects
+Redirect 301 /ee/how-to-choose-a-typeface-for-paragraphs https://iamsteve.me/blog/entry/how-to-choose-a-typeface-for-paragraphs
+Redirect 301 /blog/entry/46/sass_hints_tips https://iamsteve.me/blog/entry/sass_hints_tips
+Redirect 301 /blog/entry/75/sass-map-use-patterns https://iamsteve.me/blog/entry/sass-map-use-patterns
+Redirect 301 /blog/entry/81/using-wordpress-customiser-to-create-editable-regions https://iamsteve.me/blog/entry/using-wordpress-customiser-to-create-editable-regions
+Redirect 301 /blog/entry/24/inline_block https://iamsteve.me/blog/entry/inline_block
+Redirect 301 /blog/entry/96/how-to-consistently-style-form-elements https://iamsteve.me/blog/entry/how-to-consistently-style-form-elements
+Redirect 301 /blog/entry/87/a-guide-to-vertical-rhythm https://iamsteve.me/blog/entry/a-guide-to-vertical-rhythm
+Redirect 301 /blog/entry/53/understanding_compass_default_variables https://iamsteve.me/blog/entry/53/understanding-sass-default-variables
+Redirect 301 /ee/why-you-should-roll-your-own-framework https://iamsteve.me/blog/entry/why-you-should-roll-your-own-framework
+Redirect 301 /ee/horizontal-scrolling-responsive-menu https://iamsteve.me/blog/entry/horizontal-scrolling-responsive-menu
+Redirect 301 /ee/having-a-central-logo-with-wordpress-menus https://iamsteve.me/blog/entry/having-a-central-logo-with-wordpress-menus
+Redirect 301 /blog/entry/48/create_a_sass_button_element_mixin https://iamsteve.me/blog/entry/create_a_sass_button_element_mixin
+Redirect 301 /blog/entry/90/typekit-gems-number-one https://iamsteve.me/blog/entry/typekit-gems-number-one
+Redirect 301 /blog/entry/55/critical-asynchronous-css https://iamsteve.me/blog/entry/critical-asynchronous-css
+Redirect 301 /blog/entry/78/wordpress-custom-fields https://iamsteve.me/blog/entry/wordpress-custom-fields
+Redirect 301 /ee/maintenance-week-2 https://iamsteve.me/blog/entry/maintenance-week-2
+Redirect 301 /blog/entry/55/jonassebastianohlsson.com/criticalpathcssgenerator/ https://iamsteve.me/blog/entry/critical-asynchronous-css
+Redirect 301 /blog/entry/55/jonassebastianohlsson.com/criticalpathcssgenerator https://iamsteve.me/blog/entry/critical-asynchronous-css
+Redirect 301 /ee/photoshop-grids-using-guide-layouts https://iamsteve.me/blog/entry/photoshop-grids-using-guide-layouts
+Redirect 301 /archives/hello-world-2/ https://iamsteve.me/blog
+Redirect 301 /ee/unique https://iamsteve.me/blog/entry/unique
+Redirect 301 /portfolio.php https://iamsteve.me/portfolio
+Redirect 301 /ee/what-ive-learnt-from-6-months-of-writing-weekly https://iamsteve.me/blog/entry/what-ive-learnt-from-6-months-of-writing-weekly
+Redirect 301 /ee/responsive-vertical-rhythm https://iamsteve.me/blog/entry/responsive-vertical-rhythm
+Redirect 301 /ee/colour-series-adding-new-colours-tips https://iamsteve.me/blog/entry/colour-series-adding-new-colours-tips
+Redirect 301 /ee/compass_mixins_you_should_know_about https://iamsteve.me/blog/entry/compass_mixins_you_should_know_about
+Redirect 301 /ee/horizontal-scrolling-toggle https://iamsteve.me/blog/entry/horizontal-scrolling-toggle
+Redirect 301 /blog/entry/understanding_compass_default_variables https://iamsteve.me/blog/entry/understanding-sass-default-variables
+Redirect 301 /blog/entry/updates_and_advice https://iamsteve.me/blog
+Redirect 301 /ee/about_the_redesign_v3 https://iamsteve.me/blog/entry/about_the_redesign_v3
+Redirect 301 /entry/3d-buttons-with-css/ https://iamsteve.me/blog/entry/3d-buttons-with-css
+Redirect 301 /ee/about_version_4 https://iamsteve.me/blog/entry/about_version_4
+Redirect 301 /ee/colour-series-picking-your-palette https://iamsteve.me/blog/entry/colour-series-picking-your-palette
+Redirect 301 /articles/work-to-be-done/ https://iamsteve.me/blog
+Redirect 301 /ee/using_scale_color_in_sass https://iamsteve.me/blog/entry/using_scale_color_in_sass
+Redirect 301 /ee/create_a_sass_button_element_mixin https://iamsteve.me/blog/entry/create_a_sass_button_element_mixin
+Redirect 301 /ee/redesign https://iamsteve.me/blog/entry/redesign
+
+
+Redirect 301 /articles/coming/ https://iamsteve.me/blog
+Redirect 301 /articles/print/ https://iamsteve.me/blog
+Redirect 301 /blog/hello-world/ https://iamsteve.me/blog
+Redirect 301 /blog/entry/3d-buttons-with-css https://iamsteve.me/blog/entry/buttons
+Redirect 301 /blog/entry/long_time_no_blog https://iamsteve.me/blog
+Redirect 301 /site/working https://iamsteve.me
+Redirect 301 /P40 https://iamsteve.me/blog/P40
+Redirect 301 /P48 https://iamsteve.me/blog/P48
+Redirect 301 /P32 https://iamsteve.me/blog/P32
+Redirect 301 /P6 https://iamsteve.me/blog/P6
+Redirect 301 /P24 https://iamsteve.me/blog/P24
+Redirect 301 /P2 https://iamsteve.me/blog/P2
+Redirect 301 /P56 https://iamsteve.me/blog/P56
+Redirect 301 /blog/%E2%80%9C https://iamsteve.me/blog
+Redirect 301 /blog/%E2%80%9C/P16 https://iamsteve.me/blog/P16
+Redirect 301 /blog/feed:/iamsteve.me/blog/feed/P72 https://iamsteve.me/blog/P72
+Redirect 301 /blog/%E2%80%9Chttps:/apple.com%E2%80%9D/P16 https://iamsteve.me/blog/P16
+Redirect 301 /blog/hello-world https://iamsteve.me/blog
+Redirect 301 /blog/entry/inline https://iamsteve.me/blog/entry/inline_block
+Redirect 301 /blogtrackback/ https://iamsteve.me/blog
+Redirect 301 /blogtrackback/P48 https://iamsteve.me/blog/P48
+Redirect 301 /blog/entry/updates https://iamsteve.me/blog
+Redirect 301 /blog/%E2%80%9C/P24 https://iamsteve.me/blog
+Redirect 301 /P10 https://iamsteve.me/blog/P10
+Redirect 301 /P14 https://iamsteve.me/blog/P14
+Redirect 301 /P4 https://iamsteve.me/blog/P4
+Redirect 301 /P18 https://iamsteve.me/blog/P18
+Redirect 301 /P12 https://iamsteve.me/blog/P12
+Redirect 301 /blogP24 https://iamsteve.me/blog/P24
+Redirect 301 /blogP6 https://iamsteve.me/blog/P6
+Redirect 301 /blog/%E2%80%9C/P8 https://iamsteve.me/blog/P8
+Redirect 301 /blog/%E2%80%9Chttp://grovemade.com%E2%80%9D https://iamsteve.me/blog/entry/christmas-gift-guide-2015
+Redirect 301 /blog/%E2%80%9Chttps://amazon.co.uk%E2%80%9D https://iamsteve.me/blog/entry/christmas-gift-guide-2015
+Redirect 301 /blog/entryimages-with-srcset-picture https://iamsteve.me/blog/entry/images-with-srcset-picture
+Redirect 301 /portfolio/view/%3Ca%20href= https://iamsteve.me/portfolio
+
+Redirect 301 /blog/%E2%80%9Chttps:/apple.com%E2%80%9D/P24 https://iamsteve.me/blog/P24
+Redirect 301 /blog/%E2%80%9Chttp:/grovemade.com%E2%80%9D/P56 https://iamsteve.me/blog/
+Redirect 301 /blog/entryimages-with-srcset-picture/ https://iamsteve.me/blog/
+Redirect 301 /blog/%E2%80%9Chttp:/grovemade.com%E2%80%9D/P48 https://iamsteve.me/blog/P48
+Redirect 301 /blog/%E2%80%9C/P72 https://iamsteve.me/blog/P72
+Redirect 301 /blog/%E2%80%9Chttp:/grovemade.com%E2%80%9D/P80 https://iamsteve.me/blog/P80
+Redirect 301 /blog/%E2%80%9C/P48 https://iamsteve.me/blog/P48
+Redirect 301 /blog/%E2%80%9Chttp:/grovemade.com%E2%80%9D/P64 https://iamsteve.me/blog/P64
+Redirect 301 /blog/%E2%80%9C/P40 https://iamsteve.me/blog/P40
+Redirect 301 /blog/%E2%80%9Chttp:/grovemade.com%E2%80%9D/P72 https://iamsteve.me/blog/P72
+Redirect 301 /blog/%E2%80%9Chttps:/apple.com%E2%80%9D/P56 https://iamsteve.me/blog/P56
+Redirect 301 /blog/entryimages-with-srcset-picture/P56 https://iamsteve.me/blog/P56
+Redirect 301 /blog/entryimages-with-srcset-picture/P64 https://iamsteve.me/blog/P64
+Redirect 301 /blog/%E2%80%9Chttp:/grovemade.com%E2%80%9D/P64 https://iamsteve.me/blog/P64
+Redirect 301 /blog/%E2%80%9C/P40 https://iamsteve.me/blog/P40
+Redirect 301 /blog/%E2%80%9C/P32 https://iamsteve.me/blog/P32
+Redirect 301 /blog/entryimages-with-srcset-picture/P48 https://iamsteve.me/blog/P48
+Redirect 301 /blog/%E2%80%9C/P48 https://iamsteve.me/blog/P48
+Redirect 301 /blog/%E2%80%9Chttp:/grovemade.com%E2%80%9D/P40 https://iamsteve.me/blog/P40
+Redirect 301 /blog/%E2%80%9C/P72 https://iamsteve.me/blog/
+Redirect 301 /blog/%E2%80%9C/P80 https://iamsteve.me/blog/P80
+Redirect 301 /blog/%E2%80%9C/P56 https://iamsteve.me/blog/P56
+Redirect 301 /blog/%E2%80%9C/P64 https://iamsteve.me/blog/P64
+Redirect 301 /blog/%E2%80%9C/P80 https://iamsteve.me/blog/P80
+Redirect 301 /blog/%E2%80%9Chttps:/apple.com%E2%80%9D/ https://iamsteve.me/blog/entry/christmas-gift-guide-2015
+Redirect 301 /blog/feed:/iamsteve.me/blog/feed/P64 https://iamsteve.me/blog/P64
+
+# 22/08/16
+Redirect 301 '/blog/entry/using_scale_color_in_sass "Using scale colour in Sass"' https://iamsteve.me/blog/entry/using_scale_color_in_sass
