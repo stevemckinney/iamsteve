@@ -13,7 +13,12 @@
   @include breakpoint($d) {
     padding-top: $line * 5; }
   
-  h1 { 
+  h1 {
+    // Need to set the flex and align text centrally to fix firefox bug
+    // as a pseudo element is used this causes misalignment
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=874718
+    flex: 1;
+    text-align: center;
     line-height: 1; }
   
   &:after {
