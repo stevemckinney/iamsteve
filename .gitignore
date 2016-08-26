@@ -1,5 +1,6 @@
 dist/
 .DS_Store
+assets/images/.DS_Store
 system/config.php
 .sass-cache
 cache/
