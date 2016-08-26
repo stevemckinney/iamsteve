@@ -93,6 +93,7 @@
 // ---------------------------
 .cp_embed_iframe {
   @include breakpoint($c) {
+    border-radius: $radius;
     max-width: 95%;
     margin-left: 5%; } }
     
@@ -114,13 +115,13 @@
   text-align: center;
   max-width: $measure;
   padding: 0 $line;
+  margin-left: auto;
   
   @include breakpoint($site-width) {
     position: absolute;
     bottom: 0;
     left: 100%;
     width: 220px;
-    margin-left: auto;
     text-align: left;
     
     &:before {
