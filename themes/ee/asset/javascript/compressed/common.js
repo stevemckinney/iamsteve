@@ -46,7 +46,7 @@ $(".tbl-wrap").each(function(){
 // determine the width of this tbl-wrap.
 var t=$(this).width(),e=$(this).children("table").width();
 // if tbl-wrap's width less than the table's width,
-e>t&&
+t<e&&
 // pop a pb class on it.
 $(this).addClass("pb")}),
 // =========
@@ -54,16 +54,46 @@ $(this).addClass("pb")}),
 // =========
 // listen for clicks on elements with a class of has-sub
 $("body").on("click",".has-sub",function(){
+// stop THIS from reloading
+// the source window and appending to the URI
+// and stop propagation up to document
 // close OTHER open sub menus
 // when clicking THIS sub menu trigger
 // thanks me :D
 // toggles THIS sub menu
 // thanks pascal
+return $(".open").not(this).removeClass("open").siblings(".sub-menu").hide(),$(this).siblings(".sub-menu").toggle().end().toggleClass("open"),!1}),
+// listen for clicks to the document
+$(document).on("click",function(t){
+// check to see if we are inside a sub-menu or not.
+$(t.target).closest(".sub-menu").length||
+// close OTHER open sub menus
+// when clicking outside ANY sub menu trigger
+// thanks me :D
+$(".open").removeClass("open").siblings(".sub-menu").hide()}),
+// =========
+// sub menus (NEW)
+// =========
+// listen for clicks on elements with a class of has-sub
+$(".nav-has-sub").on("click",function(){
 // stop THIS from reloading
 // the source window and appending to the URI
 // and stop propagation up to document
-// Give filter text boxes focus on open
-return $(".open").not(this).removeClass("open").siblings(".sub-menu").hide(),$(this).siblings(".sub-menu").toggle().end().toggleClass("open"),$(this).siblings(".sub-menu").find("input.autofocus").focus(),!1}),
+// close OTHER open sub menus
+// when clicking THIS sub menu trigger
+// thanks me :D
+// toggles THIS sub menu
+// thanks pascal
+// focus the filter box if one exists
+return $(".nav-open").not(this).removeClass("nav-open").siblings(".nav-sub-menu").hide(),$(this).siblings(".nav-sub-menu").toggle().end().toggleClass("nav-open"),$(this).siblings(".nav-sub-menu").find(".autofocus").focus(),!1}),
+// listen for clicks to the document
+$(document).on("click",function(t){
+// check to see if we are inside a sub-menu or not.
+$(t.target).closest(".nav-sub-menu").length||
+// close OTHER open sub menus
+// when clicking outside ANY sub menu trigger
+// thanks me :D
+$(".nav-open").removeClass("nav-open").siblings(".nav-sub-menu").hide()}),
 // listen for clicks to the document
 $(document).on("click",function(t){
 // check to see if we are inside a sub-menu or not.
@@ -111,12 +141,12 @@ return $(".version-info").hide(),!1}),
 // modal windows -> WIP
 // ====================
 // hide overlay and any modals, so that fadeIn works right
-$(".overlay, .modal-wrap").hide(),
+$(".overlay, .modal-wrap, .modal-form-wrap").hide(),
 // prevent modals from popping when disabled
 $("body").on("click",".disable",function(){
 // stop THIS href from loading
 // in the source window
-return!1}),$("body").on("modal:open",".modal-wrap",function(t){
+return!1}),$("body").on("modal:open",".modal-wrap, .modal-form-wrap",function(t){
 // set the heightIs variable
 // this allows the overlay to be scrolled
 var e=$(document).height();
@@ -128,11 +158,11 @@ $(this).fadeIn("slow"),
 $(this).data("scroll",$(document).scrollTop()),
 // scroll up, if needed, but only do so after a significant
 // portion of the overlay is show so as not to disorient the user
-setTimeout(function(){$(document).scrollTop(0)},100),$(document).one("keydown",function(t){27===t.keyCode&&$(".modal-wrap").trigger("modal:close")})}),$("body").on("modal:close",".modal-wrap",function(t){
+$(this).is(".modal-form-wrap")||setTimeout(function(){$(document).scrollTop(0)},100),$(document).one("keydown",function(t){27===t.keyCode&&$(".modal-wrap, .modal-form-wrap").trigger("modal:close")})}),$("body").on("modal:close",".modal-wrap, .modal-form-wrap",function(t){
 // fade out the overlay
 $(".overlay").fadeOut("slow"),
 // fade out the modal
-$(".modal-wrap").fadeOut("fast"),$(document).scrollTop($(this).data("scroll"))}),
+$(".modal-wrap, .modal-form-wrap").fadeOut("fast"),$(this).is(".modal-form-wrap")||$(document).scrollTop($(this).data("scroll"))}),
 // listen for clicks to elements with a class of m-link
 $("body").on("click",".m-link",function(t){
 // set the modalIs variable
@@ -141,9 +171,9 @@ var e=$(this).attr("rel");$("."+e).trigger("modal:open"),
 // in the source window
 t.preventDefault()}),
 // listen for clicks on the element with a class of overlay
-$("body").on("click",".m-close",function(t){$(this).closest(".modal-wrap").trigger("modal:close"),
+$("body").on("click",".m-close",function(t){$(this).closest(".modal-wrap, .modal-form-wrap").trigger("modal:close"),
 // stop THIS from reloading the source window
-t.preventDefault()}),$("body").on("click",".overlay",function(){$(".modal-wrap").trigger("modal:close")}),
+t.preventDefault()}),$("body").on("click",".overlay",function(){$(".modal-wrap, .modal-form-wrap").trigger("modal:close")}),
 // ==================================
 // highlight checks and radios -> WIP
 // ==================================
@@ -203,4 +233,4 @@ $('output[for="'+e+'"]').html(t)}),
 // ===============================
 // filters custom input submission
 // ===============================
-$('.filters .filter-search input[type="text"]').keypress(function(t){(10==t.which||13==t.which)&&$(this).closest("form").submit()})});
+$('.filters .filter-search input[type="text"]').keypress(function(t){10!=t.which&&13!=t.which||$(this).closest("form").submit()})});

@@ -1,0 +1,27 @@
+// Table
+// ---------------------------
+table {
+  width: 100%;
+  margin: 0 0 $line;
+  padding: 0;
+  font-family: $sans; }
+
+thead tr {
+  border-bottom: 3px solid $neutral-l5; }
+ 
+
+tbody tr:not(:last-child) {
+  border-bottom: 1px solid $neutral-l5; }
+
+th,
+td {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  
+  @include breakpoint($c-max) {
+    padding-left: 16px;
+    padding-right: 16px; } }
+
+th:last-child,
+td:last-child {
+  text-align: right; }

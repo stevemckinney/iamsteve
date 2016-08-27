@@ -163,7 +163,7 @@ _bindSubmitClear:function(){var e=this;this.root.parents("form").on("submit",fun
 _bindSortable:function(){var t,e,i,n,c=this;e=function(t){return+c.defaultList[c._index(t)].find("input:text").val()},i=function(i,n){t=e(n.item)},n=function(e,i){var n,o,s=i.item,r=s.index()+1;r!=t&&(
 // we don't need to process the entire list, only the subset
 // that we disturbed.
-t>r?(o=r,n=s.nextAll().andSelf()):(o=1,// in theory we can start at previous, but then our numbers slowly get bigger
+r<t?(o=r,n=s.nextAll().andSelf()):(o=1,// in theory we can start at previous, but then our numbers slowly get bigger
 n=s.prevAll().andSelf()),n.each(function(){c.defaultList[c._index(this)].find("input:text").val(o++)}))},
 // hookup sortable
 this.active.find("ul").sortable({axis:"y",start:i,update:n})},/**
@@ -221,7 +221,7 @@ this._checkScrollBars()},/**
 		 */
 _scoreString:function(t,e){var i=0,n=1,c=t.length;e=e.toLowerCase(),
 // First letter match is an big plus
-e[0]==t[0]&&(i+=1);for(var o=0;c>o;o++){var s=e.indexOf(t.charAt(o).toLowerCase());switch(s){case-1:return 0;// not found, not our word
+e[0]==t[0]&&(i+=1);for(var o=0;o<c;o++){var s=e.indexOf(t.charAt(o).toLowerCase());switch(s){case-1:return 0;// not found, not our word
 case 0:i+=.6,// first position, good
 o==n&&(// consecutive, better
 i+=.4);break;default:i+=.4/n}n+=s,e=e.substr(s+1)}
@@ -249,7 +249,7 @@ var n=document.createElement("ul");_.each(i,function(t){n.appendChild(e[t][0])})
 // that block the rendering process. Since the user never sees more
 // than ~20 items, we'll do the first 100 immediately and then add
 // the others piecemeal in steps of 100.
-!function r(){t.append(c.slice(s,100+s)),s+=100,o>s&&_.defer(r)}()},/**
+!function r(){t.append(c.slice(s,100+s)),s+=100,s<o&&_.defer(r)}()},/**
 		 * Quick clicking can sometimes lead to double and triple
 		 * click selections. If we think that might have happened
 		 * we'll simply remove them.
@@ -266,4 +266,4 @@ window.getSelection?window.getSelection().removeAllRanges():document.selection&&
 	 * fields and also setup the grid binding for new rows. Otherwise we
 	 * simply bind on the field name we were given.
 	 */
-EE.setup_relationship_field=function(t){var n=document.getElementById("relationship-"+t);return i(n,function(t){return new e(t)})},Grid.bind("relationship","display",function(t){var n=t.find(".relationship");return i(n,function(i){return new e(t,!t.data("row-id"))})})}(jQuery);
+EE.setup_relationship_field=function(t){var n=document.getElementById("relationship-"+t);return i(n,function(t){return new e(t)})},Grid.bind("relationship","display",function(t){var n=t.find(".relationship");return i(n,function(i){return new e(t,(!t.data("row-id")))})})}(jQuery);

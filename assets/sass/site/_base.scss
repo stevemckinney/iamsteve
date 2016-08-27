@@ -1,0 +1,133 @@
+// Override variables from import/_base.scss here
+// General site variables
+// ---------------------------
+
+// Color
+// ---------------------------
+$primary: #eb6e5e !global;
+$primary-d1: #9e3a2c;
+$primary-d2: scale-lightness($primary-d1, -20%);
+$primary-l1: #f59689;
+$primary-l2: #ffe3de;
+$primary-l3: #fff3f0;
+
+$secondary: #31bd93 !global;
+$secondary-d1: scale-lightness($secondary, -20%);
+$secondary-l1: #87d4be;
+$secondary-l1: #b9edd9;
+$secondary-l2: #e1f7ee;
+$secondary-l3: #edf7f3;
+
+$tertiary: #ffe0a1 !global;
+$tertiary-d1: #f5c676;
+$tertiary-d2: #d19954;
+$tertiary-l1: #fff6e5;
+$tertiary-l2: #fffbf2;
+
+$alternate: #1a626e !global;
+$alternate-l1: #56959e;
+$alternate-l2: #bed8d8;
+$alternate-l3: #e9f5f5;
+$alternate-l4: #f7fbfb;
+
+$neutral: #3f3d36;
+$neutral-l1: #696761;
+$neutral-l2: #92918b;
+$neutral-l3: #bcbab6;
+$neutral-l4: #e5e4e0;
+$neutral-l5: #f2f2f0;
+
+$colors: (
+  primary: $primary,
+  primary-d1: $primary-d1,
+  primary-d2: $primary-d2,
+  primary-l1: $primary-l1,
+  primary-l2: $primary-l2,
+  primary-l3: $primary-l3,
+  secondary: $secondary,
+  secondary-d1: $secondary-d1,
+  secondary-l1: $secondary-l1,
+  secondary-l2: $secondary-l2,
+  secondary-l3: $secondary-l3,
+  tertiary: $tertiary,
+  tertiary-d1: $tertiary-d1,
+  tertiary-d2: $tertiary-d2,
+  tertiary-l1: $tertiary-l1,
+  tertiary-l2: $tertiary-l2,
+  neutral: $neutral,
+  neutral-l1: $neutral-l1,
+  neutral-l2: $neutral-l2,
+  neutral-l3: $neutral-l3,
+  neutral-l4: $neutral-l4,
+  alternate: $alternate,
+  alternate-l1: $alternate-l1,
+  alternate-l2: $alternate-l2,
+  alternate-l3: $alternate-l3,
+  alternate-l4: $alternate-l4
+);
+
+$color-palette: (
+  primary: $primary,
+  secondary: $secondary,
+  secondary-d1: $secondary-d1,
+  tertiary: $tertiary,
+  neutral: $neutral,
+  alternate: $alternate
+);
+
+// Brands
+// ---------------------------
+$dribbble: #ea4c89;
+$github: #4183c4;
+$linkedin: #0077b5;
+$twitter: #55acee;
+
+$social: (
+  dribbble: $dribbble,
+  github: $github,
+  linkedin: $linkedin,
+  twitter: $twitter
+);
+
+// Fonts
+// ---------------------------
+$sans: Averta, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !global;
+$serif: Sentinel A, Sentinel B, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !global;
+$heading: $sans !global;
+$body: $serif !global;
+$form: $sans !global;
+$element: $sans !global;
+
+$measure: 640px; // 30.476190476em new: 640px old: 684px;
+$measure-wide: 720px; // 34.285714286em
+$measure-narrow: 480px; // 22.857142857em
+
+$headline: 48px;
+
+// Defaults
+// ---------------------------
+$default-transition-duration: .2s;
+$radius: 6px;
+$text-xxxlarge: 48px;
+
+  // Form defaults
+  // ---------------------------
+  $default-form-focus-color: $alternate-l1;
+  $default-form-color: $alternate-l2;
+  $default-form-background-color: $alternate-l4 $white;
+  $default-placeholder-color: $primary;
+  $default-form-text-color: $neutral;
+  $default-form-shading: false;
+
+  // Element defaults
+  // ---------------------------
+  $default-element-radius: 4px;
+
+// Breakpoints
+// ---------------------------
+@include breakpoint-set('base font size', $base-font-size);
+
+// Site width is 1200px, but it requires additional spacing so it works nicely
+$contain: 1200px;
+$site-width: $contain + ($line*6);
+$site-width-max: max-width $site-width - $breakpoint-subtract;

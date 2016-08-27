@@ -1,0 +1,22 @@
+// Placeholder styles
+// ---------------------------
+@mixin placeholder(
+	$color: $default-placeholder-color,
+	$font-style: $default-placeholder-font-style) {
+	::-webkit-input-placeholder {
+    color: $color;
+    
+    @if $font-style {
+      font-style: $font-style; } }
+      
+	::-moz-placeholder {
+    color: $color;
+    
+    @if $font-style {
+      font-style: $font-style; } }
+      
+	:-ms-input-placeholder {  
+    color: $color;
+    
+    @if $font-style {
+      font-style: $font-style; } } }

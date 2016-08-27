@@ -1,40 +1,11 @@
-<section class="subscribe">
-  <div class="wrapper">
-    {if segment_2 != 'entry'}
-      <h2 role="heading">Don’t miss out!</h2>
-      <p>I write blog posts weekly, that go out every Tuesday. Subscribe if you’d like to receive the highlights and takeaways each week. As a subscriber you’ll immediately receive free design process templates.</p>
-    {if:else}
-      <h2 role="heading">Want to receive more content like this?</h2>
-      <p>I write blog posts weekly, that go out every Tuesday morning (GMT). Subscribe if you’d like to receive the highlights and takeaways each week. <strong>Sign up now and I will send you a free</strong></p>
-    {/if}
-    <div id="mc_embed_signup">
-      <form action="//iamsteve.us2.list-manage.com/subscribe/post?u=792e8cc3e11a22440643ca460&amp;id=8e98b1a910" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-        <div id="mc_embed_signup_scroll">
-          <div class="mc-field-group">
-          	<label for="mce-EMAIL">Email address</label>
-          	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-          </div>
-        	<div id="mce-responses" class="clear">
-        		<div class="response" id="mce-error-response" style="display:none"></div>
-        		<div class="response" id="mce-success-response" style="display:none"></div>
-        	</div>
-          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_792e8cc3e11a22440643ca460_8e98b1a910" tabindex="-1" value=""></div>
-          <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-        </div>
-      </form>
-    </div>
-    <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
-  </div>
-</section>
-<style>
-  .subscribe {
-    background: #1f313e;
-    color: #f4dfab;
-    padding: 1.5em;
-    margin-bottom: 24px;
-  }
-  
-  .subscribe h2 {
-    color: #fff;
-  }
-</style>
+<div class="subscribe-content">
+  <h2 class="f3 f2-b f1-d chunky secondary mb2 mb4-b">Get the articles</h2>
+  <p>Subscribe to the newsletter and you’ll be updated you when new posts go out. I’ll send you the highlights and takeaways that you can read in your own time.</p>
+  <p class="mb2 mb4"><strong>Enter your email you’ll receive design templates and a form UI kit, ready for designs and code.</strong></p>
+  {form_newsletter}
+  <picture class="subscribe-image osc">
+    <source srcset="{site_url}assets/images/osc.svg" media="(min-width: 640px)">
+    <source srcset="{site_url}assets/images/osc-small.svg" media="(max-width: 639px)">
+    <img src="{site_url}assets/images/osc.svg">
+  </picture>
+</div>

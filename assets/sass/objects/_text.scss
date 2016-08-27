@@ -1,0 +1,132 @@
+// Align
+// ---------------------------
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+
+// Case
+// ---------------------------
+.lowercase { text-transform: lowercase; }
+.uppercase { text-transform: uppercase; }
+
+// Type
+// ---------------------------
+.sans { font-family: $sans; }
+.serif { font-family: $serif; }
+	
+// Colour
+// ---------------------------
+$text-color-helpers: (
+	"white": $white,
+	primary: $primary,
+	secondary: $secondary,
+	secondary-l1: $secondary-l1,
+	tertiary: $tertiary,
+	neutral: $neutral,
+	neutral-l1: $neutral-l1,
+	neutral-l2: $neutral-l2,
+	neutral-l3: $neutral-l3,
+	alternate: $alternate
+);
+
+@each $name, $color in $text-color-helpers {
+	.#{$name} { color: $color; } }
+
+// General elements
+// ---------------------------
+address { font-style: normal; }
+
+// Stylistic headings
+// ---------------------------
+.chunky {
+  position: relative;
+  z-index: $z-index-2;
+  
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -1px;
+    left: -3px;
+    background: $secondary-l2;
+    width: 72px;
+    height: 9px;
+    
+    @include breakpoint($b) {
+      width: 96px;
+      height: 12px; } }
+  
+  &.primary:after {
+    background: $tertiary-l2; } }
+
+// Links
+// ---------------------------
+.link { 
+  // A discrete link style
+  font-weight: font-weight(semibold);
+  position: relative;
+  
+  &:after {
+    content: "";
+    position: absolute;
+    transition: .6s ease-out;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(to right, $primary, $tertiary, $secondary);
+    background-size: 600% auto;
+    background-position: -852px 0;
+    background-repeat: no-repeat; }
+  
+  &:hover:after,
+  &:focus:after {
+    background-position: 0 0; }
+  
+  &:active {
+    transform: scale(.9); } }
+
+// Social links
+// ---------------------------
+@each $name, $color in $social {
+	.link-#{$name} { color: $color; } }
+	
+// Links paired with an icon
+// eg: <a class="link-icon"><span class="icon icon-medium"><svg></svg></span></a>
+.link-icon {
+  display: flex;
+  align-items: center;
+  
+  &:not(.disabled):hover .icon-right,
+  &:not(.disabled):focus .icon-right {
+    transform: translate3d($base-px/3, 0, 0); }
+  
+  &:not(.disabled):hover .icon-left,
+  &:not(.disabled):focus .icon-left {
+    transform: translate3d(-#{$base-px/3}, 0, 0); }
+  
+  .icon {
+    position: relative;
+    top: 1px;
+    transition: .2s ease; } }
+
+.link-icon.disabled {
+  cursor: default; }
+
+// Various
+// ---------------------------
+.caption {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .125em; }
+	
+// Text mixins
+// ---------------------------
+@mixin small-caps {
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: em(2px); }
+	
+@mixin with-border {
+	padding-bottom: rhythm(1, $base-px*4);
+	border-bottom: 1px solid $primary; }

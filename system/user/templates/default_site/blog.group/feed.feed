@@ -20,7 +20,7 @@
     <dc:date>{gmt_date format="%Y-%m-%dT%H:%i:%s%Q"}</dc:date>
     <admin:generatorAgent rdf:resource="http://expressionengine.com/" />
     
-{exp:channel:entries channel="{master_channel_name}" limit="80" dynamic_start="yes" disable="member_data|pagination" status="latest|open"}
+{exp:channel:entries channel="{master_channel_name}" limit="999" dynamic_start="yes" disable="member_data|pagination" status="latest|open"}
     <item>
       <title>{exp:xml_encode}{title}{/exp:xml_encode}</title>
       <link>{title_permalink='blog/entry'}</link>

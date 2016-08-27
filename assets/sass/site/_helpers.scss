@@ -1,0 +1,23 @@
+// Misc helpers
+// ---------------------------
+.pin-below-lt-b {
+  @include breakpoint($b-max) {
+    @include pin-below; } }
+
+// Commonly used with .meta
+.dashes {
+  background: image-url("dash-neutral-l1.svg") repeat-x left calc(50% + 1px);
+  
+  a, li,
+  span, time {
+    background-color: $white; }
+    
+  > *:not(.calendar):first-child {
+    padding-right: $base-px / 2; }
+  
+  > *:not(:only-child):last-child {
+    padding-left: $base-px / 2; } }
+
+// Make anything a block level element
+.db {
+  display: block; }

@@ -135,7 +135,7 @@ f("after_upload"),
 // Show/Hide "Edit Image" link based on whether or not it's an image
 e("#edit_image").toggle(t.is_image),"filemanager"==a.type){
 // Create listener for the browse_files button
-e("#file_uploader .button_bar").on("click","#browse_files",function(e){n(),e.preventDefault()});for(var r=["edit_file","edit_image"],d=0,u=r.length;u>d;d++){var _=e(".mainTable tr.new:first td:has(img) a[href*="+r[d]+"]").attr("href");e("#"+r[d],"#file_uploader .button_bar").attr("href",_)}}else"filebrowser"==a.type&&(
+e("#file_uploader .button_bar").on("click","#browse_files",function(e){n(),e.preventDefault()});for(var r=["edit_file","edit_image"],d=0,u=r.length;d<u;d++){var _=e(".mainTable tr.new:first td:has(img) a[href*="+r[d]+"]").attr("href");e("#"+r[d],"#file_uploader .button_bar").attr("href",_)}}else"filebrowser"==a.type&&(
 // Create listener for the choose_file button
 e("#file_uploader .button_bar").on("click","#choose_file",function(e){n(),e.preventDefault()}),
 // Create listener for edit file button

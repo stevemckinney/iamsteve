@@ -235,7 +235,7 @@ clear:function(){return this.size=0,this.cache=[],this.cache_map=[],this},/**
 	 */
 _find:function(t){
 // oh hello there IE
-if(!Array.prototype.indexOf){for(var e=this.cache_map,i=e.length,s=0;i>s;s++)if(e[s]==t)return s;return-1}
+if(!Array.prototype.indexOf){for(var e=this.cache_map,i=e.length,s=0;s<i;s++)if(e[s]==t)return s;return-1}
 // native functions!
 return this.cache_map.indexOf(t)}},i.prototype={/**
 	 * Parse the pagination data

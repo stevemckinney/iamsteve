@@ -1,0 +1,34 @@
+// Form basic styles
+// ---------------------------
+@mixin form-base(
+	$type: $default-form-type,
+	$radius: $default-form-radius,
+	$size: $default-form-size) {
+	
+	@include appearance(none);
+	border: none;
+	font-family: $form;
+	outline: none;
+	max-width: 100%;
+	color: $default-form-text-color;
+	line-height: $default-form-line-height;
+	
+	@if $radius { 
+		border-radius: $radius; }
+		
+	@if $size {
+		padding: $size; } }
+
+// Basic styles for each radio/checkbox
+// Can override the mixin to override extend
+// ---------------------------
+@mixin form-boolean-base {
+	-webkit-appearance: none; // only using webkit as firefox doesn't customise well
+	border: none;
+	@content; }
+	
+// Full width form elements
+// ---------------------------
+%form-block {
+	display: block;
+	width: 100%; }

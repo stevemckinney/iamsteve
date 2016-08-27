@@ -1,0 +1,202 @@
+// Code – prism.js
+// ---------------------------
+$code-black: #152637; // #f5f2f0
+$code-red: #f82939;
+$code-yellow: #fdc347;
+$code-green: #4ae845;
+$code-blue: #727c87;
+$code-magenta: scale-lightness(#6f4ebc, 20%);
+$code-cyan: #64cce3;
+$code-white: #f6f7ee;
+$comment: #838c95;
+
+code {
+  font: 400 em($base-font-size - 2px) $monospace;
+  background: rgba($alternate, .05);
+  border-radius: 2px;
+  padding: em(2px, $base-font-size - 2px) em(4px, $base-font-size - 2px); }
+
+pre {
+  background: $code-black;
+  padding: $line; }
+
+pre code {
+  padding: 0;
+  overflow: auto;
+  direction: ltr;
+  text-align: left;
+  white-space: pre-line;
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  background: none;
+  
+  @include breakpoint($c) {
+    font-size: 18px; } }
+
+.code-tall {
+  display: block;
+  max-height: 548px; }
+
+pre[class*="language"] {
+  margin: $line 0; }
+
+code[class*="language"],
+pre[class*="language"] {
+  max-width: $measure;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  hyphens: none;
+  line-height: 23px;
+  color: $code-white;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  
+  @include breakpoint($c) {
+    border-radius: $radius; } }
+
+code[class*="language-bash"],
+pre[class*="language-bash"] {
+	color: $code-white; }
+
+pre[class*="language"]::-moz-selection, pre[class*="language"] ::-moz-selection,
+code[class*="language"]::-moz-selection, code[class*="language"] ::-moz-selection {
+	text-shadow: none;
+	background: $code-black; }
+
+pre[class*="language"]::selection, pre[class*="language"] ::selection,
+code[class*="language"]::selection, code[class*="language"] ::selection {
+	text-shadow: none;
+	background: $code-black; }
+
+:not(pre) > code[class*="language"],
+pre[class*="language"] {
+	background: $code-black; }
+
+/* Inline code */
+:not(pre) > code[class*="language"] {
+	padding: .1em;
+	border-radius: .3em; }
+	
+// Sizes
+// ---------------------------
+.code-tall {
+  max-height: 432px; }
+
+// Tokens
+// ---------------------------
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: $comment; }
+
+.token.punctuation {
+	color: $code-white; }
+
+.namespace {
+	opacity: .75; }
+
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: $code-magenta; }
+
+.token.property {
+  color: $code-green; }
+
+.token.selector,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: $code-white; }
+
+.token.attr-name {
+  color: $code-green; }
+
+.token.tag,
+.tag > .punctuation {
+  color: $code-red; }
+
+.tag .token.attr-value, .tag .attr-value .punctuation {
+  color: $code-yellow; }
+
+.token.operator,
+.token.entity,
+.token.url,
+.languagecss .token.string,
+.style .token.string {
+	color: $code-yellow;
+	
+	.language-bash & {
+  	color: $code-white; } }
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: $code-red; }
+
+.token.function {
+	color: $code-green; }
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: $code-yellow; }
+
+.token.important,
+.token.bold {
+	font-weight: bold; }
+	
+.token.italic {
+	font-style: italic; }
+
+.token.entity {
+	cursor: help; }
+
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber; }
+
+pre.line-numbers > code {
+	position: relative; }
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid rgba($code-blue, .6);
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none; }
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber; }
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: $code-blue;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right; }

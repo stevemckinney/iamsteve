@@ -1,0 +1,43 @@
+// Navigation
+// ---------------------------
+.nav {
+  display: flex;
+  flex-flow: row wrap;
+  
+  @include breakpoint($c-max) {
+    padding-bottom: 44px; } // offset header/browser chrome/behaviour etc
+  
+  @include breakpoint($c) {
+    flex: 1; } }
+
+.nav-item {
+  font-family: $sans;
+  color: inherit;
+  text-transform: lowercase;
+  padding: $line;
+  line-height: 1;
+  
+  @include breakpoint($c) {
+    padding: ($line + 4px) $base-px;
+    font-weight: font-weight(semibold); }
+      
+  @include breakpoint($cd) {
+    // Align to the logo baseline
+    padding: 40px $base-px 38px; }
+  
+  @include breakpoint($cd-max) {
+    font-size: $f6; }
+  
+  // Items will now be hidden
+  // For small screens make the nav text larger and central
+  @include breakpoint($c-max) {
+    font-size: $text-large;
+    text-align: center; }
+  
+  // Make everything 100% because we’re afforded that space
+  @include breakpoint(($c-max) (orientation portrait)) {
+    flex: 1 1 100%; }
+  
+  // When we’re not afforded vertical space make halves
+  @include breakpoint(($c-max) (orientation landscape)) {
+    flex: 1 1 50%; } }

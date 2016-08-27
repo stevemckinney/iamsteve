@@ -8,7 +8,7 @@ if (isset($field['name']))
 $value = set_value($field_name);
 if ($value == '')
 {
-	$value = isset($field['value']) ? $field['value'] : ee()->config->item($field_name);
+	$value = isset($field['value']) ? $field['value'] : ee()->config->item($field_name, '', TRUE);
 }
 // Escape output
 if (is_string($value))
@@ -30,6 +30,10 @@ if (isset($field['group_toggle']))
 if (isset($field['maxlength']))
 {
 	$attrs .= ' maxlength="'.(int) $field['maxlength'].'"';
+}
+if (isset($field['placeholder']))
+{
+	$attrs .= ' placeholder="'.$field['placeholder'].'"';
 }
 $has_note = isset($field['note']);
 
@@ -126,7 +130,7 @@ case 'checkbox': ?>
 				$disabled = in_array($key, $field['disabled_choices']);
 			}
 		?>
-			<label class="choice block<?php if ($selected):?> chosen<?php endif ?>">
+			<label class="choice block<?php if ($selected):?> chosen<?php endif ?><?php if ($disabled):?> disable<?php endif ?>">
 				<input type="checkbox" name="<?=$field_name?>" value="<?=$key?>"<?php if ($selected):?> checked="checked"<?php endif ?><?php if ($disabled):?> disabled="disabled"<?php endif ?><?=$attrs?>> <?=$label?>
 			</label>
 		<?php endforeach ?>

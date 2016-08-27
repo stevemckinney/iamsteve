@@ -87,7 +87,7 @@ i.Editor=function(e,t){this.$field=e.hide(),this.$editor=this.create(),e.before(
 	 * Special empty entity so that we always have
 	 * paragraph tags to work with.
 	 */
-_emptyChar:String.fromCharCode(8203),_empty:function(){return"<p>"+this._emptyChar+"</p>"},isEmpty:function(){return html=this.$editor.html(),""==html||"\x00"==html||"<br>"==html||"<br/>"==html||"<p></p>"==html||"<p><br></p>"==html||"<p>\x00</p>"==html||html==this._empty()?!0:!1},/**
+_emptyChar:String.fromCharCode(8203),_empty:function(){return"<p>"+this._emptyChar+"</p>"},isEmpty:function(){return html=this.$editor.html(),""==html||"\0"==html||"<br>"==html||"<br/>"==html||"<p></p>"==html||"<p><br></p>"==html||"<p>\0</p>"==html||html==this._empty()},/**
 	 * Create the main editor html
 	 */
 create:function(){return t("<div/>",{"class":i.name+"-editor",data:{wysihat:this,field:this.$field},role:"application",contentEditable:"true",
@@ -139,7 +139,7 @@ t.browser.mozilla&&i.find("p").eq(0).html(""),r.addRange(n))}},i.Editor.construc
  * check if an element is of a valid type.
  */
 // ---------------------------------------------------------------------
-i.Element=function(){function e(e){for(var t=arguments.length,n=!1;0==n&&t-->1;)n=e.is(arguments[t].join(","));return n}
+i.Element=function(){function e(e){for(var t=arguments.length,n=!1;0==n&&t-- >1;)n=e.is(arguments[t].join(","));return n}
 // @todo add tr somewhere
 var t=["blockquote","details","fieldset","figure","td"],n=["article","aside","header","footer","nav","section"],i=["blockquote","details","dl","ol","table","ul"],r=["dd","dt","li","summary","td","th"],o=["address","caption","dd","div","dt","figcaption","figure","h1","h2","h3","h4","h5","h6","hgroup","hr","p","pre","summary","small"],s=["audio","canvas","embed","iframe","img","object","param","source","track","video"],a=["a","abbr","b","br","cite","code","del","dfn","em","i","ins","kbd","mark","span","q","samp","s","strong","sub","sup","time","u","var","wbr"],l=["b","code","del","em","i","ins","kbd","span","s","strong","u","font"],d=["address","blockquote","div","dd","dt","h1","h2","h3","h4","h5","h6","p","pre"],c=["button","datalist","fieldset","form","input","keygen","label","legend","optgroup","option","output","select","textarea"];return{isRoot:function(n){return e(n,t)},isSection:function(t){return e(t,n)},isContainer:function(t){return e(t,i)},isSubContainer:function(t){return e(t,r)},isBlock:function(s){return e(s,t,n,i,r,o)},isHTML4Block:function(t){return e(t,d)},isContentElement:function(t){return e(t,r,o)},isMediaElement:function(t){return e(t,s)},isPhraseElement:function(t){return e(t,a)},isFormatter:function(t){return e(t,l)},isFormComponent:function(t){return e(t,c)},getRoots:function(){return t},getSections:function(e){return n},getContainers:function(){return i},getSubContainers:function(){return r},getBlocks:function(){return t.concat(n,i,r,o)},getHTML4Blocks:function(){return d},getContentElements:function(){return r.concat(o)},getMediaElements:function(){return s},getPhraseElements:function(){return a},getFormatters:function(){return l},getFormComponents:function(){return c}}}(),
 // ---------------------------------------------------------------------
@@ -169,7 +169,7 @@ i.Paster=function(){
 // helper element to do cleanup on
 var n=t('<div id="paster" contentEditable="true"/>').css({width:"100%",height:10,position:"absolute",left:-9999}),r=50,o=200;return{getHandler:function(s){return function(a,l){var d=s.Commands.getRanges(),c=d[0].startContainer,h=0;return n.html("").css("top",t(e).scrollTop()),n.appendTo(e.body),n.focus(),setTimeout(function u(){
 // slow browser? wait a little longer
-if(!n.html()&&(h+=r,o>h))return void setTimeout(u,r);var e=t(c).closest(i.Element.getBlocks().join(","));e.length?s.Formatting.cleanupPaste(n,e.get(0).tagName):s.Formatting.cleanupPaste(n),s.$editor.focus(),s.Commands.restoreRanges(d),
+if(!n.html()&&(h+=r,h<o))return void setTimeout(u,r);var e=t(c).closest(i.Element.getBlocks().join(","));e.length?s.Formatting.cleanupPaste(n,e.get(0).tagName):s.Formatting.cleanupPaste(n),s.$editor.focus(),s.Commands.restoreRanges(d),
 // attempt to clear out the range, this is necessary if they
 // select and paste. The browsers will still report the old contents.
 d[0].deleteContents?d[0].deleteContents():s.Commands.insertHTML(""),s.isEmpty()&&
@@ -195,9 +195,9 @@ var r,o;r=function(){
 // numbers
 for(var e={3:"enter",8:"backspace",9:"tab",13:"enter",16:"shift",17:"ctrl",18:"alt",27:"esc",32:"space",37:"left",38:"up",39:"right",40:"down",46:"delete",91:"mod",92:"mod",93:"mod",
 // argh
-59:";",186:";",187:"=",188:",",189:"-",190:".",191:"/",192:"`",219:"[",220:"\\",221:"]",222:"'",63232:"up",63233:"down",63234:"left",63235:"right",63272:"delete"},t=0;10>t;t++)e[t+48]=String(t);
+59:";",186:";",187:"=",188:",",189:"-",190:".",191:"/",192:"`",219:"[",220:"\\",221:"]",222:"'",63232:"up",63233:"down",63234:"left",63235:"right",63272:"delete"},t=0;t<10;t++)e[t+48]=String(t);
 // letters
-for(var t=65;90>=t;t++)e[t]=String.fromCharCode(t);return e}(),o=function(){
+for(var t=65;t<=90;t++)e[t]=String.fromCharCode(t);return e}(),o=function(){
 // @todo @future would be cool if cmd+s triggered an autosave
 // @todo give addon folks a way to add to these?
 var e=/AppleWebKit/.test(navigator.userAgent)&&/Mobile\/\w+/.test(navigator.userAgent),t=e||/Mac/.test(navigator.platform),n=t?"cmd":"ctrl";return{cut:n+"-x",copy:n+"-c",paste:n+"-v",undo:n+"-z",redo:n+"-shift-z",
@@ -255,7 +255,7 @@ if(this._saveTextState(e),"undo"==e||"redo"==e){var o,s="undo"==e?"hasUndo":"has
 // mark text change
 // setup a finalizer for the event.
 // make sure it can only be run once
-return this.has(e)?(n=this.getState(),i=function(){this.hasRun||(this.hasRun=!0,r.textChange(n),r._saveTextState(e),r.$editor.focus())},void this.run(e,n,t.proxy(i,i))):!0},/**
+return!this.has(e)||(n=this.getState(),i=function(){this.hasRun||(this.hasRun=!0,r.textChange(n),r._saveTextState(e),r.$editor.focus())},void this.run(e,n,t.proxy(i,i)))},/**
 	 * Mark a text change. Takes the
 	 * objects from getState as before
 	 * and after [optional] parameters.
@@ -276,7 +276,7 @@ this.Editor.selectEmptyParagraph(),this.Undo.push(e.html,t.html,e.selection,t.se
 isKeyCombo:function(e,t){var n="",i="",o=e.indexOf("-")>-1;
 // european altGr
 // european altGr
-return t.altGraphKey?!1:(t.metaKey&&(n+="cmd-"),t.altKey&&(n+="alt-"),t.ctrlKey&&(n+="ctrl-"),t.shiftKey&&(n+="shift-"),!o&&e.length>1?n.replace(/-$/,"")==e:(i=r[t.keyCode],i?e.toLowerCase()==(n+i).toLowerCase():!1))},/**
+return!t.altGraphKey&&(t.metaKey&&(n+="cmd-"),t.altKey&&(n+="alt-"),t.ctrlKey&&(n+="ctrl-"),t.shiftKey&&(n+="shift-"),!o&&e.length>1?n.replace(/-$/,"")==e:(i=r[t.keyCode],!!i&&e.toLowerCase()==(n+i).toLowerCase()))},/**
 	 * Check for named events.
 	 *
 	 * @todo list of named events
@@ -289,7 +289,7 @@ isEvent:function(e,t){var n=t.type;
 if(n==e)return!0;
 // key events can look up shortcuts
 // but if it's not a key event, we're done
-if("key"!=n.substr(0,3))return!1;var i=o[e];return i?this.isKeyCombo(i,t):!1},/**
+if("key"!=n.substr(0,3))return!1;var i=o[e];return!!i&&this.isKeyCombo(i,t)},/**
 	 * Get the editor's current state
 	 */
 getState:function(){return{html:this.$editor.html(),selection:this.Selection.get()}},/**
@@ -377,7 +377,7 @@ this.saved.length>this.max_depth&&(this.saved=this.saved.slice(this.saved.length
 	 *
 	 * Takes a string to undo on and returns the new one
 	 */
-undo:function(e){this.index--;for(var t=this.saved[this.index],n=t.changes,i=n.length,r=0;i>r;r++)change=n[r],e=e.substring(0,change[0])+change[1]+e.substring(change[0]+change[2].length);return[e,t.selection[0]]},/**
+undo:function(e){this.index--;for(var t=this.saved[this.index],n=t.changes,i=n.length,r=0;r<i;r++)change=n[r],e=e.substring(0,change[0])+change[1]+e.substring(change[0]+change[2].length);return[e,t.selection[0]]},/**
 	 * Redo the current event stack item
 	 *
 	 * Takes a string to redo on and returns the new one
@@ -402,16 +402,16 @@ _diff:function(e,t){var n,i=e.length,r=t.length,o=0,s=0;
 // easiest case
 if(e==t)return null;
 // trim identical stuff off the beginning
-for(;i>o&&r>o&&e[o]==t[o];)o++;
+for(;o<i&&o<r&&e[o]==t[o];)o++;
 // trim identical stuff off the beginning
-for(;i>s&&r>s&&e[i-s-1]==t[r-s-1];)s++;
+for(;s<i&&s<r&&e[i-s-1]==t[r-s-1];)s++;
 // common case - wrapping / unwrapping
 // It involved walking through the whole thing? We can ignore
 // it the code below will take care of finding the smallest difference.
 // We have something to trim. Do it and recalculate lengths.
 // common case - wrapping / unwrapping
 // always check for shorter in longer
-return o==Math.min(i,r)&&(o=0),s==Math.min(i,r)&&(s=0),(o||s)&&(e=e.substring(o,i-s+1),t=t.substring(o,r-s+1),i=e.length,r=t.length),i!==r&&(n=r>i?t.indexOf(e):e.indexOf(t),n>-1)?r>i?[[o,"",t.substr(0,n)],// wrapping before text
+return o==Math.min(i,r)&&(o=0),s==Math.min(i,r)&&(s=0),(o||s)&&(e=e.substring(o,i-s+1),t=t.substring(o,r-s+1),i=e.length,r=t.length),i!==r&&(n=i<r?t.indexOf(e):e.indexOf(t),n>-1)?i<r?[[o,"",t.substr(0,n)],// wrapping before text
 [o+i,"",t.substr(n+i)]]:[[o,e.substr(0,n),""],// unwrap before
 [o+n+r,e.substr(n+r),""]]:[[o,e,t]]}},i.Undo.constructor=i.Undo,
 // ---------------------------------------------------------------------
@@ -453,7 +453,7 @@ toString:function(e){var t=window.getSelection();return e===n&&(e=t.getRangeAt(0
 	 *
 	 * You probably don't want to touch this :).
 	 */
-_getOffsetNode:function(e,n,r){function o(e){if(e.nodeType==Node.TEXT_NODE||e.nodeType==Node.CDATA_SECTION_NODE)n>0&&(s=e,n-=e.nodeValue.replace(/\n/g,"").length);else for(var t=0,i=e.childNodes.length;n>0&&i>t;++t)o(e.childNodes[t])}var s=e,a=0,l=this.$editor.get(0).lastChild,d=i.Element.getBlocks();if(o(e),0==n){
+_getOffsetNode:function(e,n,r){function o(e){if(e.nodeType==Node.TEXT_NODE||e.nodeType==Node.CDATA_SECTION_NODE)n>0&&(s=e,n-=e.nodeValue.replace(/\n/g,"").length);else for(var t=0,i=e.childNodes.length;n>0&&t<i;++t)o(e.childNodes[t])}var s=e,a=0,l=this.$editor.get(0).lastChild,d=i.Element.getBlocks();if(o(e),0==n){
 // weird case where they try to select a non text node
 // e.g. The beginning of the editor.
 if(s.nodeType!=Node.TEXT_NODE){
@@ -517,7 +517,7 @@ execCommand:function(t,n,i){this.noSpans();try{e.execCommand(t,n,i)}catch(r){ret
 	 * Takes the current selection and checks if it is
 	 * within a selector given as a parameter.
 	 */
-selectionIsWithin:function(e){var n=i.Element.getPhraseElements(),r=!1,o=e.split(","),s=o.length,a=window.getSelection(),l=a.anchorNode,d=a.focusNode;if(l&&l.nodeType&&3==l.nodeType&&""==l.nodeValue&&(l=l.nextSibling),!l)return!1;if(t.browser.mozilla){for(;s--;)if(-1!=t.inArray(o[s],n)){r=!0;break}r&&1==l.nodeType&&-1==t.inArray(l.nodeName.toLowerCase(),n)&&(s=l.firstChild,s&&(""==s.nodeValue&&(s=s.nextSibling),1==s.nodeType&&(l=s)))}for(;l&&d&&1!=l.nodeType&&1!=d.nodeType;)1!=l.nodeType&&(l=l.parentNode),1!=d.nodeType&&(d=d.parentNode);return!(!t(l).closest(e).length&&!t(d).closest(e).length)},getSelectedStyles:function(){var e=window.getSelection(),n=t(e.getNode()),i={};for(var r in this.styleSelectors)i[r]=n.css(this.styleSelectors[r]);return i},replaceElement:function(e,n){if(!e.hasClass(i.name+"-editor")){for(var r=e.get(0),o=t("<"+n+"/>").html(r.innerHTML),s=r.attributes,a=s.length||0;a--;)o.attr(s[a].name,s[a].value);return e.replaceWith(o),o}},/**
+selectionIsWithin:function(e){var n=i.Element.getPhraseElements(),r=!1,o=e.split(","),s=o.length,a=window.getSelection(),l=a.anchorNode,d=a.focusNode;if(l&&l.nodeType&&3==l.nodeType&&""==l.nodeValue&&(l=l.nextSibling),!l)return!1;if(t.browser.mozilla){for(;s--;)if(t.inArray(o[s],n)!=-1){r=!0;break}r&&1==l.nodeType&&t.inArray(l.nodeName.toLowerCase(),n)==-1&&(s=l.firstChild,s&&(""==s.nodeValue&&(s=s.nextSibling),1==s.nodeType&&(l=s)))}for(;l&&d&&1!=l.nodeType&&1!=d.nodeType;)1!=l.nodeType&&(l=l.parentNode),1!=d.nodeType&&(d=d.parentNode);return!(!t(l).closest(e).length&&!t(d).closest(e).length)},getSelectedStyles:function(){var e=window.getSelection(),n=t(e.getNode()),i={};for(var r in this.styleSelectors)i[r]=n.css(this.styleSelectors[r]);return i},replaceElement:function(e,n){if(!e.hasClass(i.name+"-editor")){for(var r=e.get(0),o=t("<"+n+"/>").html(r.innerHTML),s=r.attributes,a=s.length||0;a--;)o.attr(s[a].name,s[a].value);return e.replaceWith(o),o}},/**
 	 * Is a bit of a misnamed method. It really acts more
 	 * like an unwarp. The element is deleted, but the
 	 * contents stay intact!
@@ -558,7 +558,7 @@ unlinkSelection:function(){this.manipulateSelection(function(e){this.getRangeEle
 wrapHTML:function(){var n,i=window.getSelection(),r=i.getRangeAt(0),o=i.getNode(),s=arguments.length;for(r.collapsed&&(r=e.createRange(),r.selectNodeContents(o),i.removeAllRanges(),i.addRange(r)),r=i.getRangeAt(0);s--;)n=t("<"+arguments[s]+"/>"),r.surroundContents(n.get(0))},/**
 	 * Toggle between the editor and the textarea.
 	 */
-toggleHTML:function(e){var t=e.$editor,n=e.$element,i=t.data("field"),r=n.siblings(),o=n.data("text");t.is(":visible")?(n.find("b").text(n.data("toggle-text")),r.parents("ul.toolbar").addClass("disabled"),t.hide(),i.show()):(n.find("b").text(o),r.parents("ul.toolbar").removeClass("disabled"),i.hide(),t.show())},insertHTML:function(n){if(t.browser.msie){var i=e.selection.createRange();i.pasteHTML(n),i.collapse(!1),i.select()}else this.execCommand("insertHTML",!1,n)},quoteSelection:function(){var e=t("<blockquote/>");this.manipulateSelection(function(e,n){var r=n.clone(),o=this.getRangeElements(e,this._blockElements),s=o.length-1,a=t();o.each(function(e){var n,o=t(this),l=!1;i.Element.isSubContainer(o)&&(l=!0),!e&&l&&e==s?(n=t("<p/>").html(o.html()),o.html("").append(n),a=a.add(n)):a=l?a.add(o.closest(i.Element.getContainers().join(","))):a.add(o),e==s&&a.wrapAll(r)})},e)},unquoteSelection:function(){this.manipulateSelection(function(e){this.getRangeElements(e,"blockquote > *").each(function(){var e=this,n=t(e),r=n.closest("blockquote"),o=r.clone().html(""),s=r.children(),a=s.length-1,l=t();n.unwrap("blockquote"),a>0&&s.each(function(n){this!=e&&(l=l.add(this)),(n==a||this==e)&&(l.wrapAll(o.clone()),l=t())}),r=n.parent(),i.Element.isSubContainer(r)&&1==r.children().length&&r.html(n.html())})})}}),/**
+toggleHTML:function(e){var t=e.$editor,n=e.$element,i=t.data("field"),r=n.siblings(),o=n.data("text");t.is(":visible")?(n.find("b").text(n.data("toggle-text")),r.parents("ul.toolbar").addClass("disabled"),t.hide(),i.show()):(n.find("b").text(o),r.parents("ul.toolbar").removeClass("disabled"),i.hide(),t.show())},insertHTML:function(n){if(t.browser.msie){var i=e.selection.createRange();i.pasteHTML(n),i.collapse(!1),i.select()}else this.execCommand("insertHTML",!1,n)},quoteSelection:function(){var e=t("<blockquote/>");this.manipulateSelection(function(e,n){var r=n.clone(),o=this.getRangeElements(e,this._blockElements),s=o.length-1,a=t();o.each(function(e){var n,o=t(this),l=!1;i.Element.isSubContainer(o)&&(l=!0),!e&&l&&e==s?(n=t("<p/>").html(o.html()),o.html("").append(n),a=a.add(n)):a=l?a.add(o.closest(i.Element.getContainers().join(","))):a.add(o),e==s&&a.wrapAll(r)})},e)},unquoteSelection:function(){this.manipulateSelection(function(e){this.getRangeElements(e,"blockquote > *").each(function(){var e=this,n=t(e),r=n.closest("blockquote"),o=r.clone().html(""),s=r.children(),a=s.length-1,l=t();n.unwrap("blockquote"),a>0&&s.each(function(n){this!=e&&(l=l.add(this)),n!=a&&this!=e||(l.wrapAll(o.clone()),l=t())}),r=n.parent(),i.Element.isSubContainer(r)&&1==r.children().length&&r.html(n.html())})})}}),/**
  * A few more make methods that either alias to some
  * larger top level stuff or couldn't quite be auto
  * generated.
@@ -635,7 +635,7 @@ n.find("br").replaceWith("\n"),n.html(function(e,n){// remove comments
 // to paragraphs. This will make weeding out the double newlines
 // easier below. I know it seems silly. By the end of this we're
 // back to input for safari, but normalized for all others.
-return n=t.trim(n),n=n.replace(/<\/p>\s*<p>/g,"\n\n").replace(/^(<p>)+/,"").replace(/(<\/p>)+$/,"").replace(/<!--[^>]*-->/g,""),-1==n.indexOf("\n")?n:(n=n.replace(/\n/,"<p>").replace(/\n/g,"\n</p><p>"),t.trim(n)+"</p>")}),
+return n=t.trim(n),n=n.replace(/<\/p>\s*<p>/g,"\n\n").replace(/^(<p>)+/,"").replace(/(<\/p>)+$/,"").replace(/<!--[^>]*-->/g,""),n.indexOf("\n")==-1?n:(n=n.replace(/\n/,"<p>").replace(/\n/g,"\n</p><p>"),t.trim(n)+"</p>")}),
 // remove needless spans and empty elements
 n.find("span").children(i.Element.getBlocks()).unwrap(),n.find(":empty").remove(),
 // on reinsertion we need to check for identically nested elements
@@ -661,7 +661,7 @@ n.before("\n").find("br").replaceWith("<br>\n")},reBlocks:new RegExp("(</(?:ul|o
 // last block in the .replace(that.reBlocks, '$1\n\n') line.
 // If we don't remove it, then it sticks around and eventually
 // becomes a new paragraph.  Which is just annoying.
-e.html(e.html().trim())},getBrowserMarkupFrom:function(e){var n,i=t("<div>"+e.val()+"</div>");return this.cleanup(i),n=i.html(),(""==n||"<br>"==n||"<br/>"==n)&&i.html("<p>&#x200b;</p>"),i.html()},getApplicationMarkupFrom:function(e){var n,i,r=e.clone();return n=t("<div/>").html(r.html()),i=n.html(),(""==i||"<br>"==i||"<br/>"==i)&&n.html("<p>&#x200b;</p>"),this.cleanup(n),this.format(n),n.html().replace(/<\/?[A-Z]+/g,function(e){return e.toLowerCase()})}};
+e.html(e.html().trim())},getBrowserMarkupFrom:function(e){var n,i=t("<div>"+e.val()+"</div>");return this.cleanup(i),n=i.html(),""!=n&&"<br>"!=n&&"<br/>"!=n||i.html("<p>&#x200b;</p>"),i.html()},getApplicationMarkupFrom:function(e){var n,i,r=e.clone();return n=t("<div/>").html(r.html()),i=n.html(),""!=i&&"<br>"!=i&&"<br/>"!=i||n.html("<p>&#x200b;</p>"),this.cleanup(n),this.format(n),n.html().replace(/<\/?[A-Z]+/g,function(e){return e.toLowerCase()})}};
 // ---------------------------------------------------------------------
 /**
  * Blank Button
@@ -685,11 +685,11 @@ var n=t.data("wysihat");return n.Commands.queryCommandState(e.name)}}return t.no
 // ---------------------------------------------------------------------
 i.Toolbar=function(e,n){this.suspendQueries=!1,this.$editor=e,this.$toolbar=t('<ul class="toolbar rte"></ul>'),e.before(this.$toolbar);
 // add buttons
-var i,r=n.length;for(i=0;r>i;i++)this.addButton(n[i]);
+var i,r=n.length;for(i=0;i<r;i++)this.addButton(n[i]);
 // Add .last to the last "normal" tool (not .rte-elements nor .rte-view)
 this.$toolbar.children(".rte-elements").length?this.$toolbar.children(".rte-elements").prev().addClass("last"):this.$toolbar.children(".rte-view").length?this.$toolbar.children(".rte-view").prev().addClass("last"):this.$toolbar.children("li:last").addClass("last")},i.Toolbar.prototype={addButton:function(e){var n=this.$editor.data("wysihat"),r=i.inherit(a,i._buttons[e]).init(e,n.$editor);t.extend(r,s),
 // Add utility references straight onto the button
-r.Editor=n,r.Event=n.Event,r.Commands=n.Commands,r.Selection=n.Selection,r.setElement(this.createButtonElement(r)),r.Event.add(e,r.getHandler()),this.observeButtonClick(r),this.observeStateChanges(r)},createButtonElement:function(e){var n;if(e.type&&"select"==e.type){var i=e.options,r=i.length,o=0;for(n=t("<select/>");r>o;o++)n.append('<option value="'+i[o][0]+'">'+i[o][1]+"</option>");n.appendTo(this.$toolbar).wrap('<li class="rte-elements"/>')}else n=t('<li><a href=""></a></li>'),n.appendTo(this.$toolbar);return e.cssClass&&n.addClass(e.cssClass),e.title&&n.find("a").attr("title",e.title),n.data("text",e.label),e["toggle-text"]&&n.data("toggle-text",e["toggle-text"]),n},observeButtonClick:function(e){var t=e.type&&"select"==e.type?"change":"click",n=this;e.$element.on(t,function(t){
+r.Editor=n,r.Event=n.Event,r.Commands=n.Commands,r.Selection=n.Selection,r.setElement(this.createButtonElement(r)),r.Event.add(e,r.getHandler()),this.observeButtonClick(r),this.observeStateChanges(r)},createButtonElement:function(e){var n;if(e.type&&"select"==e.type){var i=e.options,r=i.length,o=0;for(n=t("<select/>");o<r;o++)n.append('<option value="'+i[o][0]+'">'+i[o][1]+"</option>");n.appendTo(this.$toolbar).wrap('<li class="rte-elements"/>')}else n=t('<li><a href=""></a></li>'),n.appendTo(this.$toolbar);return e.cssClass&&n.addClass(e.cssClass),e.title&&n.find("a").attr("title",e.title),n.data("text",e.label),e["toggle-text"]&&n.data("toggle-text",e["toggle-text"]),n},observeButtonClick:function(e){var t=e.type&&"select"==e.type?"change":"click",n=this;e.$element.on(t,function(t){
 // IE had trouble doing change handlers
 // as the state check would run too soon
 // and reset the input element, so we suspend
@@ -708,7 +708,7 @@ return i.is(":focus")||i.focus(),e.Event.fire(e.name),n.suspendQueries=!1,!1})},
  * as $('textarea').wysihat(options).
  */
 // ---------------------------------------------------------------------
-jQuery.fn.wysihat=function(e){var t=this.data("wysihat");return t?-1!=jQuery.inArray(e,["Event","Selection","Toolbar","Undo"])?t[e]:t:this.each(function(){t=WysiHat.attach(this,e),$(this).data("wysihat",t)})},
+jQuery.fn.wysihat=function(e){var t=this.data("wysihat");return t?jQuery.inArray(e,["Event","Selection","Toolbar","Undo"])!=-1?t[e]:t:this.each(function(){t=WysiHat.attach(this,e),$(this).data("wysihat",t)})},
 // ---------------------------------------------------------------------
 /**
  * Browser Compat Classes
@@ -862,7 +862,7 @@ insertNode:function(e,n,i){var r=11==e.nodeType?e.firstChild:e;return this.isCha
 splitDataNode:function(e,n){var i=e.cloneNode(!1);return i.deleteData(0,n),e.deleteData(n,e.length-n),t(i).insertAfter(e),i},/**
 		 * Convert a range object back to a textRange
 		 */
-rangeToTextRange:function(t){var n,i;return n=this.createBoundaryTextRange(new r(t.startContainer,t.startOffset),!0),t.collapsed?n:(i=this.createBoundaryTextRange(new r(t.endContainer,t.endOffset),!1),n&&i?(textRange=e.body.createTextRange(),textRange.setEndPoint("StartToStart",n),textRange.setEndPoint("EndToEnd",i),textRange):!1)},/**
+rangeToTextRange:function(t){var n,i;return n=this.createBoundaryTextRange(new r(t.startContainer,t.startOffset),!0),t.collapsed?n:(i=this.createBoundaryTextRange(new r(t.endContainer,t.endOffset),!1),!(!n||!i)&&(textRange=e.body.createTextRange(),textRange.setEndPoint("StartToStart",n),textRange.setEndPoint("EndToEnd",i),textRange))},/**
 		 * IE's textRange.parentElement is buggy, so
 		 * this function does a bit more work to ensure
 		 * consistency.
@@ -902,7 +902,7 @@ this.isAncestorOf(n,s,!0)||(s=n),!s.canHaveHTML)return new r(s.parentNode,this.g
 do s.insertBefore(f,f.previousSibling),a.moveToElementText(f);while((l=a.compareEndPoints(m,t))>0&&f.previousSibling);if(
 // We've now reached or gone past the boundary of the text range we're interested in
 // so have identified the node we want
-u=f.nextSibling,-1==l&&u&&this.isCharacterDataNode(u)){
+u=f.nextSibling,l==-1&&u&&this.isCharacterDataNode(u)){
 // This is a character data node (text, comment, cdata). The working range is collapsed at the start of the
 // node containing the text range's boundary, so we move the end of the working range to the boundary point
 // and measure the length of its text to get the boundary's offset within the node.
@@ -935,7 +935,7 @@ a.setEndPoint(i?"EndToStart":"EndToEnd",t);var p;if(/[\r\n]/.test(u.data)){/*
 					a time to make up for any trailing line breaks not contained in the 'text' property. This has good
 					performance in most situations compared to the previous two methods.
 					*/
-var g=a.duplicate(),v=g.text.replace(/\r\n/g,"\r").length;for(p=g.moveStart("character",v);-1==(l=g.compareEndPoints("StartToEnd",g));)p++,g.moveStart("character",1)}else p=a.text.length;h=new r(u,p)}else
+var g=a.duplicate(),v=g.text.replace(/\r\n/g,"\r").length;for(p=g.moveStart("character",v);(l=g.compareEndPoints("StartToEnd",g))==-1;)p++,g.moveStart("character",1)}else p=a.text.length;h=new r(u,p)}else
 // If the boundary immediately follows a character data node and this is the end boundary, we should favour
 // a position within that, and likewise for a start boundary preceding a character data node
 d=(o||!i)&&f.previousSibling,c=(o||i)&&f.nextSibling,h=c&&this.isCharacterDataNode(c)?new r(c,0):d&&this.isCharacterDataNode(d)?new r(d,d.length):new r(s,this.getNodeIndex(f));
@@ -953,7 +953,7 @@ t.extend(Range.prototype,{/**
 	 */
 equalRange:function(e){
 // if both ranges are collapsed we just need to compare one point
-return e&&e.compareBoundaryPoints?this.collapsed&&e.collapsed?0==this.compareBoundaryPoints(this.START_TO_START,e):0==this.compareBoundaryPoints(this.START_TO_START,e)&&1==this.compareBoundaryPoints(this.START_TO_END,e)&&0==this.compareBoundaryPoints(this.END_TO_END,e)&&-1==this.compareBoundaryPoints(this.END_TO_START,e):!1}}),t.extend(window.Selection.prototype,{/**
+return!(!e||!e.compareBoundaryPoints)&&(this.collapsed&&e.collapsed?0==this.compareBoundaryPoints(this.START_TO_START,e):0==this.compareBoundaryPoints(this.START_TO_START,e)&&1==this.compareBoundaryPoints(this.START_TO_END,e)&&0==this.compareBoundaryPoints(this.END_TO_END,e)&&this.compareBoundaryPoints(this.END_TO_START,e)==-1)}}),t.extend(window.Selection.prototype,{/**
 	 * Get the node that most encompasses the
 	 * entire selection.
 	 */

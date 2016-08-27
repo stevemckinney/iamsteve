@@ -1,0 +1,26 @@
+// Inline block
+// ---------------------------
+@if $default-enable-inline-block-layout {
+	%inline-block {
+		display: inline-block; }
+		
+	%vertical-align-top {
+		@extend %inline-block;
+		vertical-align: top; }
+	
+	%vertical-align-middle {
+		@extend %inline-block;
+		vertical-align: middle; }
+	
+	%vertical-align-bottom {
+		@extend %inline-block;
+		vertical-align: bottom; }
+	
+	.#{$helper-vertical-align-prefix}-top {
+		@extend %vertical-align-top; }
+	
+	.#{$helper-vertical-align-prefix}-middle {
+		@extend %vertical-align-middle; }
+	
+	.#{$helper-vertical-align-prefix}-bottom {
+		@extend %vertical-align-bottom; } }

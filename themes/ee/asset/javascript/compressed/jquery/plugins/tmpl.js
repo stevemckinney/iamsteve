@@ -11,7 +11,7 @@
 // Returns a template item data structure for a new rendered instance of a template (a 'template item').
 // The content field is a hierarchical array of strings and nested items (to be
 // removed and replaced by nodes field of dom elements, once inserted in DOM).
-var r={data:a||0===a||a===!1?a:n?n.data:{},_wrap:n?n._wrap:null,tmpl:null,parent:n||null,nodes:[],calls:c,nest:m,wrap:f,html:s,update:d};
+var r={data:a||0===a||a===!1?a:n?n.data:{},_wrap:n?n._wrap:null,tmpl:null,parent:n||null,nodes:[],calls:c,nest:f,wrap:m,html:s,update:d};
 // Build the hierarchical content to be used during insertion into DOM
 // Keep track of new template item, until it is stored as jQuery Data on DOM element
 return e&&t.extend(r,e,{nodes:[],parent:n}),l&&(r.tmpl=l,r._ctnt=r._ctnt||r.tmpl(t,r),r.key=++k,(j.length?v:g)[k]=r),r}
@@ -35,10 +35,10 @@ var n=document.createElement("div");return n.innerHTML=e,t.makeArray(n.childNode
 function r(e){
 // Use the variable __ to hold a string array while building the compiled template. (See https://github.com/jquery/jquery-tmpl/issues#issue/10).
 // Convert the template into pure JavaScript
-return new Function("jQuery","$item","var $=jQuery,call,__=[],$data=$item.data;with($data){__.push('"+t.trim(e).replace(/([\\'])/g,"\\$1").replace(/[\r\t\n]/g," ").replace(/\$\{([^\}]*)\}/g,"{{= $1}}").replace(/\{\{(\/?)(\w+|.)(?:\(((?:[^\}]|\}(?!\}))*?)?\))?(?:\s+(.*?)?)?(\(((?:[^\}]|\}(?!\}))*?)\))?\s*\}\}/g,function(e,n,l,a,r,p,o){var u,c,m,f=t.tmpl.tag[l];if(!f)throw"Unknown template tag: "+l;
+return new Function("jQuery","$item","var $=jQuery,call,__=[],$data=$item.data;with($data){__.push('"+t.trim(e).replace(/([\\'])/g,"\\$1").replace(/[\r\t\n]/g," ").replace(/\$\{([^\}]*)\}/g,"{{= $1}}").replace(/\{\{(\/?)(\w+|.)(?:\(((?:[^\}]|\}(?!\}))*?)?\))?(?:\s+(.*?)?)?(\(((?:[^\}]|\}(?!\}))*?)\))?\s*\}\}/g,function(e,n,l,a,r,p,o){var u,c,f,m=t.tmpl.tag[l];if(!m)throw"Unknown template tag: "+l;
 // Support for target being things like a.toLowerCase();
 // In that case don't call with template item as 'this' pointer. Just evaluate...
-return u=f._default||[],p&&!/\w$/.test(r)&&(r+=p,p=""),r?(r=i(r),o=o?","+i(o)+")":p?")":"",c=p?r.indexOf(".")>-1?r+i(p):"("+r+").call($item"+o:r,m=p?c:"(typeof("+r+")==='function'?("+r+").call($item):("+r+"))"):m=c=u.$1||"null",a=i(a),"');"+f[n?"close":"open"].split("$notnull_1").join(r?"typeof("+r+")!=='undefined' && ("+r+")!=null":"true").split("$1a").join(m).split("$1").join(c).split("$2").join(a||u.$2||"")+"__.push('"})+"');}return __;")}function p(e,n){
+return u=m._default||[],p&&!/\w$/.test(r)&&(r+=p,p=""),r?(r=i(r),o=o?","+i(o)+")":p?")":"",c=p?r.indexOf(".")>-1?r+i(p):"("+r+").call($item"+o:r,f=p?c:"(typeof("+r+")==='function'?("+r+").call($item):("+r+"))"):f=c=u.$1||"null",a=i(a),"');"+m[n?"close":"open"].split("$notnull_1").join(r?"typeof("+r+")!=='undefined' && ("+r+")!=null":"true").split("$1a").join(f).split("$1").join(c).split("$2").join(a||u.$2||"")+"__.push('"})+"');}return __;")}function p(e,n){
 // Build the wrapped content.
 e._wrap=l(e,!0,
 // Suport imperative scenario in which options.wrapped can be set to a selector or an HTML string.
@@ -65,24 +65,24 @@ r.nodes.push(e),r=r.parent;
 // Delete content built during rendering - reduce API surface area and memory use, and avoid exposing of stale data after rendering...
 delete p._ctnt,delete p._wrap,
 // Store template item as jQuery data on the element
-t.data(e,"tmplItem",p)}}var a,r,p,i,o,u="_"+T,c={};for(p=0,i=e.length;i>p;p++)if(1===(a=e[p]).nodeType){for(r=a.getElementsByTagName("*"),o=r.length-1;o>=0;o--)l(r[o]);l(a)}}
+t.data(e,"tmplItem",p)}}var a,r,p,i,o,u="_"+T,c={};for(p=0,i=e.length;p<i;p++)if(1===(a=e[p]).nodeType){for(r=a.getElementsByTagName("*"),o=r.length-1;o>=0;o--)l(r[o]);l(a)}}
 //---- Helper functions for template item ----
-function c(t,e,n,l){return t?void j.push({_:t,tmpl:e,item:this,data:n,options:l}):j.pop()}function m(e,n,l){
+function c(t,e,n,l){return t?void j.push({_:t,tmpl:e,item:this,data:n,options:l}):j.pop()}function f(e,n,l){
 // nested template, using {{tmpl}} tag
-return t.tmpl(t.template(e),n,l,this)}function f(e,n){
+return t.tmpl(t.template(e),n,l,this)}function m(e,n){
 // nested template, using {{wrap}} tag
 var l=e.options||{};
 // Apply the template, which may incorporate wrapped content,
 return l.wrapped=n,t.tmpl(t.template(e.tmpl),e.data,l,e.item)}function s(e,n){var l=this._wrap;return t.map(t(t.isArray(l)?l.join(""):l).filter(e||"*"),function(t){return n?t.innerText||t.textContent:t.outerHTML||o(t)})}function d(){var e=this.nodes;t.tmpl(null,null,null,this).insertBefore(e[0]),t(e).remove()}var $,_=t.fn.domManip,h="_tmplitem",y=/^[^<]*(<[\w\W]+>)[^>]*$|\{\{\! /,g={},v={},w={key:0,data:{}},k=0,T=0,j=[];
 // Override appendTo etc., in order to provide support for targeting multiple elements. (This code would disappear if integrated in jquery core).
-t.each({appendTo:"append",prependTo:"prepend",insertBefore:"before",insertAfter:"after",replaceAll:"replaceWith"},function(e,n){t.fn[e]=function(l){var a,r,p,i,o=[],u=t(l),c=1===this.length&&this[0].parentNode;if($=g||{},c&&11===c.nodeType&&1===c.childNodes.length&&1===u.length)u[n](this[0]),o=this;else{for(r=0,p=u.length;p>r;r++)T=r,a=(r>0?this.clone(!0):this).get(),t(u[r])[n](a),o=o.concat(a);T=0,o=this.pushStack(o,e,u.selector)}return i=$,$=null,t.tmpl.complete(i),o}}),t.fn.extend({
+t.each({appendTo:"append",prependTo:"prepend",insertBefore:"before",insertAfter:"after",replaceAll:"replaceWith"},function(e,n){t.fn[e]=function(l){var a,r,p,i,o=[],u=t(l),c=1===this.length&&this[0].parentNode;if($=g||{},c&&11===c.nodeType&&1===c.childNodes.length&&1===u.length)u[n](this[0]),o=this;else{for(r=0,p=u.length;r<p;r++)T=r,a=(r>0?this.clone(!0):this).get(),t(u[r])[n](a),o=o.concat(a);T=0,o=this.pushStack(o,e,u.selector)}return i=$,$=null,t.tmpl.complete(i),o}}),t.fn.extend({
 // Use first wrapped element as template markup.
 // Return wrapped set of template items, obtained by rendering template against data.
 tmpl:function(e,n,l){return t.tmpl(this[0],e,n,l)},
 // Find which rendered template item the first wrapped DOM element belongs to
 tmplItem:function(){return t.tmplItem(this[0])},
 // Consider the first wrapped element as a template declaration, and get the compiled template or store it as a named template.
-template:function(e){return t.template(e,this[0])},domManip:function(e,n,l,a){if(e[0]&&t.isArray(e[0])){for(var r,p=t.makeArray(arguments),i=e[0],o=i.length,u=0;o>u&&!(r=t.data(i[u++],"tmplItem")););r&&T&&(p[2]=function(e){
+template:function(e){return t.template(e,this[0])},domManip:function(e,n,l,a){if(e[0]&&t.isArray(e[0])){for(var r,p=t.makeArray(arguments),i=e[0],o=i.length,u=0;u<o&&!(r=t.data(i[u++],"tmplItem")););r&&T&&(p[2]=function(e){
 // Handler called by oldManip when rendered template has been inserted into DOM.
 t.tmpl.afterManip(this,e,l)}),_.apply(this,p)}else _.apply(this,arguments);return T=0,$||t.tmpl.complete(g),this}}),t.extend({
 // Return wrapped set of template items, obtained by rendering template against data.

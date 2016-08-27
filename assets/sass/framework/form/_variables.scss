@@ -1,0 +1,60 @@
+// Default
+// ---------------------------
+$default-form-label-position: top !default;
+$default-form-label-margin: 0 0 em($base-px/2) !default;
+$default-form-label-breakpoint: $b !default;
+$default-form-label-input-width: 66.66667% !default;
+$default-form-state: $default-state !default;
+$default-form-type: text !default;
+
+// Default styling
+// ---------------------------
+$default-form-color: scale-lightness($white, -20%) !default;
+$default-form-text-color: #666 !default;
+$default-form-checked-color: #6ad4b6 !default;
+$default-form-focus-color: $alt !default;
+$default-form-background-color: $white !default;
+$default-form-focus-background-color: $white !default;
+$default-form-radius: $radius !default;
+$default-form-checkbox-radius: $radius !default;
+$default-form-radio-radius: 30em !default;
+$default-form-line-height: normal !default;
+$default-form-shading: true !default;
+
+// Text elements map
+$default-text-elements: (
+	text: text, 
+	textarea: textarea,
+	password: password,
+	search: search,
+	email: email,
+	url: url,
+	number: number,
+	date: date,
+	month: month,
+	week: week,
+	year: year,
+	datetime: datetime,
+	datetime-local: datetime-local
+) !default;
+
+// Defaults for checkbox/radio
+// ---------------------------
+$default-form-boolean-margin: 0 em($base-px/2) 0 0 !default;
+$default-form-radio-size: 16px !default;
+$default-form-radio-width: $default-form-radio-size !default;
+$default-form-radio-height: $default-form-radio-size !default;
+$default-form-radio-radial-gradient-color-stop: 4px !default;
+$default-form-checkbox-background-size: 12px !default;
+
+// Default select images (change colour in svg file)
+// ---------------------------
+$default-form-select-image: image-url("dropdown.svg") no-repeat right 12px center !default;
+
+// Default checkbox images (change colour in svg file)
+// ---------------------------
+$default-form-checkbox-image: image-url("checkbox.svg") center center no-repeat !default;
+
+// Default search images (change colour in svg file)
+// ---------------------------
+$default-form-search-image: image-url("search.svg") center center no-repeat !default;

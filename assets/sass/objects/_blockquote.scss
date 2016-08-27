@@ -1,0 +1,22 @@
+// Blockquote
+// ---------------------------
+$blockquote-font-size: 18px;
+
+.blockquote,
+blockquote {
+  font-style: italic;
+  padding: cp($line, $measure);
+  margin: $line 0;
+  position: relative;
+  width: 100%;
+  clear: both;
+  color: $neutral;
+  background-color: $tertiary-l2;
+  border: 1px dashed $tertiary;
+  max-width: $measure;
+  
+  @include breakpoint($b) {
+    border-radius: $radius; }
+  
+  p {
+  	margin: 0; } }

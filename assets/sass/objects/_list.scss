@@ -1,0 +1,51 @@
+// Unordered & ordered
+// ---------------------------
+ul, ol {
+  padding-left: 0;
+	margin: 0 0 $line 0;
+	
+	ul, ol { 
+		margin: 0 0 0 em(21px, $base-font-size); } }
+
+ul { 
+	list-style: square; }
+
+// Lists
+// ---------------------------
+%list-custom-bullet {
+  li {
+		list-style: none;
+		
+		&:before {
+			content: "";
+			display: inline-block;
+			vertical-align: top;
+			width: 6px;
+			height: 6px;
+			background-color: $secondary;
+			margin: .666em 12px 0 -18px;
+			color: $secondary; } } }
+			
+.list-default {
+  margin-left: 0;
+	padding-left: 0;
+	list-style: none; }
+
+.list-custom-bullet {
+	@extend %list-custom-bullet; }
+
+// Definition
+// ---------------------------
+dl {
+  @include pie-clearfix; }
+  
+dt {
+	float: left;
+	clear: right;
+	font-weight: 700;
+	width: 33.333333%; }
+
+dd {
+	float: right;
+	width: 66.666666%;
+	padding-left: cp(24px, $contain); }

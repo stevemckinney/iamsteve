@@ -1,0 +1,42 @@
+// The introduction area is unique
+// ---------------------------
+.introduction {
+  @include breakpoint($c) {
+    flex-basis: calc(44% - #{$base-px}); }
+    
+  @include breakpoint($d) {
+   flex-basis: calc(37.5% - #{$base-px}); }
+   
+  @include breakpoint($site-width) {
+    flex-basis: 398px; }
+    
+  @include breakpoint($c-max) {
+    align-content: center;
+    align-items: center;
+    padding: 0 double($line) double($line); }
+  
+  @include breakpoint($a-max) {
+    padding: 0 $line*1.5 double($line); }
+  
+  p {
+    text-align: justify;
+    max-width: 324px;
+    
+    @include breakpoint($cd-max) {
+      max-width: 284px; } } }
+
+.rio img {
+  display: block;
+  
+  @include breakpoint($d-max) {
+    max-width: 240px;
+    margin-right: auto; }
+  
+  @include breakpoint($cd-max) {
+    max-width: 196px; }
+    
+  @include breakpoint($c-max) {
+    margin: auto; }
+  
+  @include breakpoint($a-max) {
+    max-width: 168px; } }

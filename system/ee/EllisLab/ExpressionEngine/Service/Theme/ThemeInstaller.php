@@ -34,6 +34,11 @@ class ThemeInstaller {
 	private $site_url;
 
 	/**
+	 * @var string The absolute base path
+	 */
+	private $base_path;
+
+	/**
 	 * @var string The absolute theme path
 	 */
 	private $theme_path;
@@ -67,6 +72,8 @@ class ThemeInstaller {
 	{
 		ee()->load->library('api');
 		ee()->load->library('extensions');
+
+		ee()->remove('functions');
 		ee()->set('functions', new FunctionsStub());
 	}
 
@@ -86,6 +93,15 @@ class ThemeInstaller {
 	public function setThemePath($theme_path)
 	{
 		$this->theme_path = rtrim($theme_path, '/').'/';
+	}
+
+	/**
+	 * Set the theme path, most likely from a constant
+	 * @param string $theme_path The theme path
+	 */
+	public function setBasePath($base_path)
+	{
+		$this->base_path = rtrim($base_path, '/').'/';
 	}
 
 	/**
@@ -356,7 +372,7 @@ class ThemeInstaller {
 	 */
 	private function createUploadDestinations($theme_name, $upload_locations)
 	{
-		$img_url = $this->site_url."themes/ee/site/{$theme_name}/";
+		$img_url = "{base_url}themes/ee/site/{$theme_name}/";
 		$img_path = $this->theme_path."ee/site/{$theme_name}/";
 
 		foreach ($upload_locations as $upload_location_data)
@@ -367,7 +383,7 @@ class ThemeInstaller {
 			$upload_destination->site_id = 1;
 			$upload_destination->name = $upload_location_data->name;
 			$upload_destination->url = $img_url.$upload_location_data->path;
-			$upload_destination->server_path = $path;
+			$upload_destination->server_path = str_replace($this->base_path, '{base_path}', $path);
 			$upload_destination->save();
 
 			$this->model_data['upload_destination'][strtolower($upload_destination->name)] = $upload_destination;

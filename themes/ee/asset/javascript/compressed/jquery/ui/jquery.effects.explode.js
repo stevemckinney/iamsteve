@@ -22,8 +22,8 @@ y=u.show().css("visibility","hidden").offset(),
 // width and height of a piece
 b=Math.ceil(u.outerWidth()/p),w=Math.ceil(u.outerHeight()/l),M=[];
 // clone the element for each row and cell.
-for(f=0;l>f;f++)for(// ===>
-c=y.top+f*w,h=f-(l-1)/2,n=0;p>n;n++)// |||
+for(f=0;f<l;f++)for(// ===>
+c=y.top+f*w,h=f-(l-1)/2,n=0;n<p;n++)// |||
 d=y.left+n*b,a=n-(p-1)/2,
 // Create a clone of the now hidden main element that will be absolute positioned
 // within a wrapper div off the -left and -top equal to size of our pieces

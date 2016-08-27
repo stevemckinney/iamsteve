@@ -1,0 +1,25 @@
+.subheader {
+  position: relative;
+  align-items: center;
+  background-color: $tertiary-l2;
+  padding-top: $line * 2.5;
+  
+  @include breakpoint($c) {
+    padding-top: $line * 3.5; }
+    
+  @include breakpoint($cd) {
+    padding-top: $line * 4.5; }
+  
+  @include breakpoint($d) {
+    padding-top: $line * 5; }
+  
+  h1 {
+    // Need to set the flex and align text centrally to fix firefox bug
+    // as a pseudo element is used this causes misalignment
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=874718
+    flex: 1;
+    text-align: center;
+    line-height: 1; }
+  
+  &:after {
+    @include dashes($image: "dash-neutral.svg"); } }

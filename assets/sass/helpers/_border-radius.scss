@@ -1,0 +1,18 @@
+// Border radius
+// ---------------------------
+// $radius defined in framework/base
+@if $default-enable-border-radius {
+	.circular {
+		border-radius: 100%; }
+	
+	.radius {
+		border-radius: $radius; } }
+
+$default-enable-border-radius-specific: false !default;
+
+@if $default-enable-border-radius-specific {
+	$radii: top-left, top-right, bottom-left, bottom-right;
+	
+	@each $radius in $radii {	
+		.radius-#{$radius} {
+			border-#{$radius}-radius: $radius; } } }

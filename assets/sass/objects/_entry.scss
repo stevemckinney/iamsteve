@@ -1,0 +1,56 @@
+// Entries
+// ---------------------------
+.entries {
+  // Offset .entry
+  margin-bottom: -#{double($line)}; }
+
+// Entry
+// ---------------------------
+.entry {
+  flex-basis: calc(50% - 6px);
+  
+  .page-blog &,
+  .page-search & {
+    margin-bottom: $line; }
+  
+  @include breakpoint($b) {
+    flex-basis: calc(33.333333% - 12px);
+    
+    .page-blog &,
+    .page-search & {
+      margin-bottom: double($line); } }
+  
+  @include breakpoint($e) {
+    flex-basis: 378px; } }
+
+// Entry list image
+// ---------------------------
+.entry-image {
+  @include breakpoint($site-width) {
+    // 1680 - 1286 * 100
+    margin-left: 23.452381%; } }
+
+// Entry title
+// ---------------------------
+.entry-title {
+  max-width: 684px; }
+
+// Entry next
+// ---------------------------
+.entry-next {
+  display: inline-block;
+  cursor: pointer;
+  
+  &:hover,
+  &:focus { a {
+    color: $secondary; }
+    
+    .icon { 
+      transform: translate3d($base-px, 0, 0); } }
+  
+  a {
+    background-image: linear-gradient(rgba($tertiary-l2, 0) 70%, $tertiary-l1 70%, $tertiary-l1 88%, rgba($tertiary-l1, 0) 88%); }
+  
+  .icon {
+    position: relative;
+    display: inline-block; } }

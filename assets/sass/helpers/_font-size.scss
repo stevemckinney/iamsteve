@@ -1,0 +1,52 @@
+// Font sizes
+// ---------------------------
+@if $default-enable-font-size {
+  // ${size}-size defined in framework/base as percentage values
+  // Great for sizing em based elements
+	.xxlarge {
+		font-size: $xxlarge-size; }
+		
+	.xlarge {
+		font-size: $xlarge-size; }
+		
+	.large {
+		font-size: $large-size; }
+	
+	.normal {
+		font-size: $normal-size; }
+		
+	.small {
+		font-size: $small-size; }
+		
+	.xsmall {
+		font-size: $xsmall-size; }
+		
+	.xxsmall {
+		font-size: $xxsmall-size; }
+
+  // Pixel based font sizes
+  .headline { font-size: $headline; letter-spacing: -1px; }
+  .f1 { font-size: $f1; }
+  .f2 { font-size: $f2; }
+  .f3 { font-size: $f3; }
+  .f4 { font-size: $f4; }
+  .f5 { font-size: $f5; }
+  .f6 { font-size: $f6; }
+  
+  @include breakpoint($b) {
+    .headline-b { font-size: $headline; letter-spacing: -1px; }
+    .f1-b { font-size: $f1; }
+    .f2-b { font-size: $f2; }
+    .f3-b { font-size: $f3; }
+    .f4-b { font-size: $f4; }
+    .f5-b { font-size: $f5; }
+    .f6-b { font-size: $f6; } }
+  
+  @include breakpoint($d) {
+    .headline-d { font-size: $headline; letter-spacing: -1px; }
+    .f1-d { font-size: $f1; }
+    .f2-d { font-size: $f2; }
+    .f3-d { font-size: $f3; }
+    .f4-d { font-size: $f4; }
+    .f5-d { font-size: $f5; }
+    .f6-d { font-size: $f6; } } }

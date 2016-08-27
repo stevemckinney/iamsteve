@@ -50,6 +50,7 @@ class EE_Template {
 	public $protect_javascript   = FALSE;		// Protect js blocks from conditional parsing?
 
 	public $group_name           = '';			// Group of template being parsed
+	public $template_group_id    = 0;
 	public $template_name        = '';			// Name of template being parsed
 	public $template_id          = 0;
 
@@ -109,6 +110,7 @@ class EE_Template {
 
 	private $layout_contents      = '';
 	private $user_vars            = array();
+	private $globals_regex;
 
 	// --------------------------------------------------------------------
 
@@ -304,15 +306,16 @@ class EE_Template {
 
 		// Define some path and template related global variables
 		$added_globals = array(
-			'last_segment' => end($seg_array),
-			'current_url' => ee()->functions->fetch_current_uri(),
-			'current_path' => (ee()->uri->uri_string) ? ee()->uri->uri_string : '/',
+			'last_segment'         => end($seg_array),
+			'current_url'          => ee()->functions->fetch_current_uri(),
+			'current_path'         => (ee()->uri->uri_string) ? ee()->uri->uri_string : '/',
 			'current_query_string' => http_build_query($_GET), // GET has been sanitized!
-			'template_name' => $this->template_name,
-			'template_group' => $this->group_name,
-			'template_id' => $this->template_id,
-			'template_type' => $this->embed_type ?: $this->template_type,
-			'is_ajax_request' => AJAX_REQUEST
+			'template_name'        => $this->template_name,
+			'template_group'       => $this->group_name,
+			'template_group_id'    => $this->template_group_id,
+			'template_id'          => $this->template_id,
+			'template_type'        => $this->embed_type ?: $this->template_type,
+			'is_ajax_request'      => AJAX_REQUEST
 		);
 
 		foreach ($this->user_vars as $user_var)
@@ -331,20 +334,27 @@ class EE_Template {
 
 		if (count(ee()->config->_global_vars) > 0)
 		{
-			$this->log_item("Config Assignments & Template Partials:", ee()->config->_global_vars);
+			$this->log_item("Config Assignments & Template Partials");
 
-			foreach (ee()->config->_global_vars as $key => &$val)
+			// Only iterate over the partials present in the template
+			$regex = $this->getGlobalsRegex();
+			if (preg_match_all($regex, $this->template, $result))
 			{
-				// in case any of these variables have EE comments of their own
-				// removing from the value makes snippets more usable in conditionals
-				$val = $this->remove_ee_comments($val);
+				foreach ($result[1] as $variable)
+				{
+					// In case any of these variables have EE comments of their own,
+					// removing from the value makes snippets more usable in conditionals
+					$value = $this->remove_ee_comments(
+						ee()->config->_global_vars[$variable]
+					);
 
-				$replace = $this->wrapInContextAnnotations(
-					$val,
-					'Snippet "'.$key.'"'
-				);
+					$replace = $this->wrapInContextAnnotations(
+						$value,
+						'Snippet "'.$variable.'"'
+					);
 
-				$this->template = str_replace(LD.$key.RD, $replace, $this->template);
+					$this->template = str_replace(LD.$variable.RD, $replace, $this->template);
+				}
 			}
 		}
 
@@ -570,6 +580,31 @@ class EE_Template {
 			$this->final_template = $this->template;
 			$this->_cleanup_layout_tags();
 		}
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Generates the regex needed to grab all global template
+	 * partials/variables present on the page
+	 *
+	 * @return	string	Regex to grab globals
+	 */
+	private function getGlobalsRegex()
+	{
+		if ( ! isset($this->globals_regex))
+		{
+			$global_names = array_keys(ee()->config->_global_vars);
+
+			if (strpos(implode($global_names), '-') !== FALSE)
+			{
+				$global_names = array_map('preg_quote', $global_names);
+			}
+
+			$this->globals_regex = '/'.LD.'('.implode('|', $global_names).')'.RD.'/';
+		}
+
+		return $this->globals_regex;
 	}
 
 	// --------------------------------------------------------------------
@@ -2584,9 +2619,10 @@ class EE_Template {
 		// -------------------------------------------
 
 		// remember what template we're on
-		$this->group_name = $row['group_name'];
-		$this->template_id = $row['template_id'];
-		$this->template_name = $row['template_name'];
+		$this->group_name        = $row['group_name'];
+		$this->template_group_id = $row['group_id'];
+		$this->template_name     = $row['template_name'];
+		$this->template_id       = $row['template_id'];
 
 		return $this->convert_xml_declaration($this->remove_ee_comments($row['template_data']));
 	}
@@ -3056,7 +3092,7 @@ class EE_Template {
 		$str = str_replace(LD.'lang'.RD, ee()->config->item('xml_lang'), $str);
 
 		// {doc_url}
-		$str = str_replace(LD.'doc_url'.RD, ee()->config->item('doc_url'), $str);
+		$str = str_replace(LD.'doc_url'.RD, DOC_URL, $str);
 
 		// {password_max_length}
 		$str = str_replace(LD.'password_max_length'.RD, PASSWORD_MAX_LENGTH, $str);
@@ -3362,12 +3398,7 @@ class EE_Template {
 
 		$time = microtime(TRUE)-$this->start_microtime;
 
-		$memory_usage = '';
-
-		if (function_exists('memory_get_usage'))
-		{
-			$memory_usage = number_format(round(memory_get_usage()/1024/1024, 2),2);
-		}
+		$memory_usage = memory_get_usage();
 
 		$last = end($this->log);
 		$time = number_format($time, 6);
@@ -3378,7 +3409,7 @@ class EE_Template {
 			'time' => $time,
 			'memory' => $memory_usage,
 			'message' => $str,
-			'details' => ($details) ? var_export($details, TRUE) : $details,
+			'details' => ($details) ? htmlspecialchars(var_export($details, TRUE), ENT_QUOTES, 'UTF-8') : $details,
 			'time_gain' => $time_gain,
 			'memory_gain' => $memory_gain
 		);

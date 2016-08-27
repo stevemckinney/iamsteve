@@ -1,0 +1,51 @@
+// Footer
+// ---------------------------
+.footer {
+  position: relative;
+  background-color: $alternate-l4;
+  align-items: center;
+  font-family: $sans;
+  font-weight: font-weight(semibold);
+  padding-top: $line;
+  padding-bottom: $line;
+  
+  @include breakpoint($d) {
+    padding-top: $line*2;
+    padding-bottom: $line*2; }
+  
+  @include breakpoint($b-max) {   
+    a, p {
+      font-size: 10px; }
+    
+  @include breakpoint($aa-max) {
+    flex-flow: row wrap; } } }
+
+.footer nav {
+  display: flex;
+  align-content: center;
+  
+  a { 
+    display: inline-block;
+    
+    &:first-child {
+      order: 100; }
+    
+    &:not(:first-child) {
+      padding-right: $base-px; } } }
+
+.copyright {
+  white-space: nowrap; }
+
+.logo-footer {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: $m1; }
+
+.logo-footer-small {
+  @include breakpoint($b) {
+    display: none; } }
+
+.copyright a,
+.logo-footer-large {
+  @include breakpoint($b-max) {
+    display: none; } }

@@ -24,18 +24,20 @@ g=t.effects.setMode(h,o.mode||"effect"),u=o.restore||"effect"!==g,p=o.scale||"bo
 // Set scaling factor
 f={from:{y:h.from.height/i.height,x:h.from.width/i.width},to:{y:h.to.height/i.height,x:h.to.width/i.width}},
 // Scale the css box
-("box"===p||"both"===p)&&(
+"box"!==p&&"both"!==p||(
 // Vertical props scaling
 f.from.y!==f.to.y&&(x=x.concat(a),h.from=t.effects.setTransition(h,a,f.from.y,h.from),h.to=t.effects.setTransition(h,a,f.to.y,h.to)),
 // Horizontal props scaling
 f.from.x!==f.to.x&&(x=x.concat(m),h.from=t.effects.setTransition(h,m,f.from.x,h.from),h.to=t.effects.setTransition(h,m,f.to.x,h.to))),
 // Scale the content
-("content"===p||"both"===p)&&f.from.y!==f.to.y&&(x=x.concat(d).concat(c),h.from=t.effects.setTransition(h,d,f.from.y,h.from),h.to=t.effects.setTransition(h,d,f.to.y,h.to)),t.effects.save(h,x),h.show(),t.effects.createWrapper(h),h.css("overflow","hidden").css(h.from),
+"content"!==p&&"both"!==p||
+// Vertical props scaling
+f.from.y!==f.to.y&&(x=x.concat(d).concat(c),h.from=t.effects.setTransition(h,d,f.from.y,h.from),h.to=t.effects.setTransition(h,d,f.to.y,h.to)),t.effects.save(h,x),h.show(),t.effects.createWrapper(h),h.css("overflow","hidden").css(h.from),
 // Adjust
 y&&(// Calculate baseline shifts
 r=t.effects.getBaseline(y,i),h.from.top=(i.outerHeight-h.outerHeight())*r.y,h.from.left=(i.outerWidth-h.outerWidth())*r.x,h.to.top=(i.outerHeight-h.to.outerHeight)*r.y,h.to.left=(i.outerWidth-h.to.outerWidth)*r.x),h.css(h.from),// set top & left
 // Animate
-("content"===p||"both"===p)&&(// Scale the children
+"content"!==p&&"both"!==p||(// Scale the children
 // Add margins/font-size
 a=a.concat(["marginTop","marginBottom"]).concat(d),m=m.concat(["marginLeft","marginRight"]),c=n.concat(a).concat(m),h.find("*[width]").each(function(){var e=t(this),i={height:e.height(),width:e.width(),outerHeight:e.outerHeight(),outerWidth:e.outerWidth()};u&&t.effects.save(e,c),e.from={height:i.height*f.from.y,width:i.width*f.from.x,outerHeight:i.outerHeight*f.from.y,outerWidth:i.outerWidth*f.from.x},e.to={height:i.height*f.to.y,width:i.width*f.to.x,outerHeight:i.height*f.to.y,outerWidth:i.width*f.to.x},
 // Vertical props scaling

@@ -1,0 +1,78 @@
+// Header
+// ---------------------------
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  z-index: $z-index-100;
+  will-change: transform;
+  transition: transform .4s ease, box-shadow .4s ease;
+  background-color: $white;
+  box-shadow: 0 1px $white, 0 6px 12px rgba($neutral, .025);
+  
+  @include breakpoint($site-width) {
+    padding: 0 calc(50% - #{$contain / 2}); }
+  
+  &:after {
+    @include dashes($image: "dash-neutral.svg"); }
+  
+  > .icon-search {
+    z-index: $z-index-200;
+    order: -1;
+    
+    @include breakpoint($c) {
+      display: none; } } }
+
+// Headroom
+// ---------------------------
+.header-pinned {
+  transform: translateY(0%); }
+
+.header-unpinned {
+  transform: translateY(-100%); }
+
+// Logo
+// ---------------------------
+.logo {
+  display: flex;
+  white-space: nowrap;
+  padding: $base-px;
+  font: 600 $text-medium $sans;
+  position: relative;
+  z-index: $z-index-200;
+  
+  @include breakpoint($c) {
+    padding: $base-px $line $base-px 0;
+    align-content: center;
+    align-items: center; }
+  
+  @include breakpoint($cd) {
+    font-size: $text-large; }
+  
+  @include breakpoint($site-width) {
+    padding: $line $line*1.5 $line 0; } }
+
+.logo-large,
+.logo-small {
+  display: block; }
+  
+.logo-large {
+  margin-right: $base-px;
+   
+  @include breakpoint($cd-max) {
+    display: none; } }
+
+.logo-small {
+  @include breakpoint($b) {
+    margin-right: half($base-px); }
+  
+  @include breakpoint($cd) {
+    display: none; } }
+
+.logo-text {
+  @include breakpoint($cd-max) {
+    display: none; } }

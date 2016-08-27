@@ -10,6 +10,7 @@ $lang = array(
 // Develop Menu
 //----------------------------
 
+'nav_developer'  => 'Developer',
 'nav_developer_tools'  => 'Developer Tools',
 'channel_manager'  => 'Channel Manager',
 'template_manager' => 'Template Manager',
@@ -129,6 +130,8 @@ $lang = array(
 
 'reveal_sidebar' => 'show sidebar',
 
+'retry' => 'Retry?',
+
 //----------------------------
 // Buttons
 //----------------------------
@@ -172,6 +175,14 @@ $lang = array(
 'member_logged_in' => 'Logged in',
 
 'member_logged_out' => 'Logged out',
+
+'member_changed_password' => 'Changed password for "%s" (%d)',
+
+'member_changed_email' => 'Changed email for "%s" (%d)',
+
+'member_changed_member_group' => 'Changed member group to "%s" for "%s" (%d)',
+
+'member_login_as' => 'Member logged in as "%s" (%d)',
 
 'close' => 'Close',
 
@@ -289,6 +300,7 @@ $lang = array(
 'alphadash_desc' => '<i>No spaces. Underscores and dashes are allowed.</i>',
 'btn_fix_errors' => 'Errors Found',
 'btn_save' => 'Save %s',
+'btn_save_and_close' => 'Save &amp; Close',
 'btn_saving' => 'Saving...',
 'no_found' => 'No <b>%s</b> found.',
 'filters' => 'filters',
@@ -339,6 +351,8 @@ $lang = array(
 'rev_date' => 'Date',
 'rev_author' => 'Author',
 'current' => 'Current',
+'auto_br' => 'Auto line break',
+'xhtml' => 'XHTML',
 
 /**
  * Footer

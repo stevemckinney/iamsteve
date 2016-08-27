@@ -1,0 +1,23 @@
+// Default
+// ---------------------------
+$default-element-color: $default-color !default;
+$default-element-dark-bg: $default-dark-bg !default;
+$default-element-radius: $radius !default;
+$default-element-shading: $default-shading !default;
+$default-element-size: $default-size !default;
+$default-element-hover: true !default;
+$default-element-state: $default-state !default;
+$default-element-base: false !default;
+
+// Default styling
+// ---------------------------
+$default-element-text-shadow: false !default;
+$default-element-font-weight: 700 !default;
+$default-element-line-height: $default-framework-line-height !default;
+$default-element-font-size: false !default;
+$default-element-display: $default-display !default;
+$default-element-yiq-threshold: 200 !default;
+$default-element-yiq-multiplier: 1.25 !default;
+$default-element-border: true !default;
+$default-element-highlight: true !default;
+$default-element-inner-shadow: true !default;

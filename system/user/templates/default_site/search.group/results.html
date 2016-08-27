@@ -1,12 +1,25 @@
-{embed="/include/header" entry_title="{exp:search:total_results}{total}{/exp:search:total_results} results were found for {exp:search:keywords}."}
-<div class="page-content">
-  {exp:search:search_results channel="blog" paginate="bottom" limit="8" status="open|latest" disable="member_data|trackbacks"}
-  	<article role="article">
-  		<h1><a href="{title_permalink='blog/entry'}" title="Read {title} in full.">{title}</a></h1>
-  		<p>{excerpt}</p>
-  		{blog_meta}
-  	</article>
-  	{pagination}
+{layout='layouts/_layout-blog'}
+
+{!-- channel vars (prefix ch_) --}
+{preload_replace:ch="blog"}
+{preload_replace:ch_status="latest|open"}
+{preload_replace:ch_disable="member_data|trackbacks"}
+{preload_replace:ch_limit="1"}
+{preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
+{preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
+
+<div class="row subheader center contain contain-medium contain-large pb2 pb4-d">
+  <h1 class="f5 f3-b f2-d neutral mb0">
+    {exp:search:search_results channel="{ch}" limit="1" paginate="bottom" status="open|latest" disable="member_data|trackbacks"}
+      {if count == 1}
+        {exp:search:total_results}{total}{/exp:search:total_results} {if {exp:search:total_results} == 1}result was{if:else}results were{/if} found for {exp:search:keywords}
+      {/if}
+    {/exp:search:search_results}
+  </h1>
+</div>
+
+<div class="row between contain contain-medium contain-large pt4 pt6-b pb4 pb6-b" id="posts">
+  {exp:search:search_results channel="{ch}" limit="{ch_limit}" status="{ch_status}" disable="{ch_disable}"}
+  	{post_medium}
   {/exp:search:search_results}
 </div>
-{embed="/include/footer"}

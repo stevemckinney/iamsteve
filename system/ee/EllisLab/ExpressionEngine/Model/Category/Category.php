@@ -49,6 +49,15 @@ class Category extends ContentModel {
 				'right' => 'entry_id'
 			)
 		),
+		'Files' => array(
+			'type' => 'hasAndBelongsToMany',
+			'model' => 'File',
+			'pivot' => array(
+				'table' => 'file_categories',
+				'left' => 'cat_id',
+				'right' => 'file_id'
+			)
+		),
 		'Parent' => array(
 			'type' => 'belongsTo',
 			'model' => 'Category',
@@ -118,6 +127,21 @@ class Category extends ContentModel {
 				->count();
 			$this->setProperty('cat_order', $count + 1);
 		}
+	}
+
+	/**
+	 * Converts the fields into facades
+	 *
+	 * We're doing this here to properly set the format on a given field
+	 */
+	protected function addFacade($id, $info, $name_prefix = '')
+	{
+		if (array_key_exists('field_default_fmt', $info))
+		{
+			$info['field_fmt'] = $info['field_default_fmt'];
+		}
+
+		return parent::addFacade($id, $info, $name_prefix);
 	}
 
 }

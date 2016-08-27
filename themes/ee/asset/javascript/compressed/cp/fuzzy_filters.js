@@ -11,7 +11,7 @@ function e(e,i){this.ul=e,this.keep=t();var s=e.find("li");i.keep&&(this.keep=th
  * A helper class to handle moving the .act class up and down through
  * a list that is potentially reordered and has hidden elements.
  */
-function i(t){this.ul=t,this.items=t.find("li"),this.scrollWrap=this.ul.closest(".scroll-wrap"),this.current=-1,this.scrolled=0,this.setLength(this.items)}e.prototype={/**
+function i(t){this.ul=t,this.items=t.find("li"),this.isNav=!!t.closest(".nav-main").length,this.scrollWrap=this.getScrollWrap(),this.scrollOffset=this.isNav?7:4,this.current=-1,this.scrolled=0,this.setLength(this.items)}e.prototype={/**
 	 * Score each item based on search, reorder by scores, and hide
 	 * any with a score of 0
 	 */
@@ -28,15 +28,15 @@ _update:function(){this.ul.empty().append(_.pluck(this.items,"el")),this.ul.appe
 	 */
 _scoreString:function(t,e){var i=0,s=1,n=e.length;t=t.toLowerCase(),
 // First letter match is a big plus
-t[0]==e[0]&&(i+=1);for(var r=0;n>r;r++){var h=t.indexOf(e.charAt(r).toLowerCase());switch(h){case-1:return 0;// not found, not our word
+t[0]==e[0]&&(i+=1);for(var r=0;r<n;r++){var h=t.indexOf(e.charAt(r).toLowerCase());switch(h){case-1:return 0;// not found, not our word
 case 0:i+=.6,// first position, good
 r==s&&(// consecutive, better
 i+=.4);break;default:i+=.4/s}s+=h,t=t.substr(h+1)}
 // Score per letter * letter per item letter looked at
-return i/n*(n/s)}},i.prototype={/**
+return i/n*(n/s)}},i.prototype={getScrollWrap:function(){return this.isNav?this.ul:this.ul.closest(".scroll-wrap")},/**
 	 * Set the focus index
 	 */
-setCurrent:function(t){return this.current=t,this.ul.find("li a.act").removeClass("act"),0>t?void(this.active=null):(this.active=this.ul.find("li a:visible").eq(t),this.active.addClass("act"),void this._updateScroll())},/**
+setCurrent:function(t){return this.current=t,this.ul.find("li a.act").removeClass("act"),t<0?void(this.active=null):(this.active=this.ul.find("li a:visible").eq(t),this.active.addClass("act"),void this._updateScroll())},/**
 	 * Get the focused element
 	 */
 getCurrent:function(){return this.active},/**
@@ -45,7 +45,7 @@ getCurrent:function(){return this.active},/**
 setLength:function(t){this.length=t},/**
 	 * Make sure the active element is visible
 	 */
-_updateScroll:function(){var t=this.current-this.scrolled;t>4?this.scrolled+=t-4:0>=t&&(this.scrolled+=t),this.scrollWrap.scrollTop(this.scrolled*this.active.outerHeight())},/**
+_updateScroll:function(){var t=this.current-this.scrolled;t>this.scrollOffset?this.scrolled+=t-this.scrollOffset:t<=0&&(this.scrolled+=t),this.scrollWrap.scrollTop(this.scrolled*this.active.outerHeight())},/**
 	 * Move the focus down one element if possible
 	 */
 down:function(){this.setCurrent(Math.min(this.length,this.current+1))},/**
@@ -56,8 +56,10 @@ up:function(){this.setCurrent(Math.max(0,this.current-1))}};/**
  * filter lists, fuzzy search through the list and allow the user to
  * arrow through it to select an element.
  */
-var s={enter:13,escape:27,up:38,right:39,down:40};t(".filter input, .filters input[data-fuzzy-filter=true]").each(function(){var n=t(this),r=t(this).closest(".sub-menu").find("ul"),h=r.closest(".scroll-wrap"),c=new i(r),o=new e(r,{keep:".last:has(.add)"});
+var s={enter:13,escape:27,up:38,right:39,down:40};t.fn.fuzzyFilter=function(){return this.each(function(){if(!t(this).data("fuzzyFilterActive")){t(this).data("fuzzyFilterActive",!0);var n=t(this),r=t(this).closest(".sub-menu, .nav-sub-menu").find("ul"),h=new i(r),l=new e(r,{keep:":has(.add, .nav-add)"}),u=h.getScrollWrap();
 // the input gains focus when it becomes visible. at this point
 // we want to make sure that our menu isn't going to shrink horizontally
 // as longer words are filtered out.
-n.on("focus",function(){h.width(h.width())}),n.on("keydown",function(t){switch(c.setLength(o.length),t.keyCode){case s.enter:t.preventDefault(),c.getCurrent()[0].click();break;case s.escape:n.val("");break;case s.up:c.up();break;case s.down:c.down();break;default:return}t.preventDefault()}),n.on("interact",function(){o.filter(n.val()),c.setCurrent(0)})})}(jQuery);
+n.on("focus",function(){u.width(u.width())}),n.on("keydown",function(t){switch(h.setLength(l.length),t.keyCode){case s.enter:t.preventDefault(),h.getCurrent()[0].click();break;case s.escape:n.val("");break;case s.up:h.up();break;case s.down:h.down();break;default:return}t.preventDefault()}),n.on("interact",function(){l.filter(n.val()),h.setCurrent(0)})}})},t.fuzzyFilter=function(){t(".nav-filter input, .filters input[data-fuzzy-filter=true]").fuzzyFilter()},
+// and create the defaults, third parties can call this to "refresh"
+t.fuzzyFilter()}(jQuery);

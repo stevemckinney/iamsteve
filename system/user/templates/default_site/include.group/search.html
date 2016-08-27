@@ -1,5 +1,7 @@
-{exp:search:simple_form channel="blog" search_in="everywhere" no_result_page="search/no_results"}
-	<label for="keywords">Search</label>
-	<input id="keywords" name="keywords" type="search" placeholder="Search here." results="5" autocorrect="off" autocapitalize="off">
-	<input type="submit" value="Search">
+{exp:search:simple_form channel="blog" form_id="search" form_class="form form-search invisible" search_in="blog" no_result_page="search/no_results"}
+  <div class="field field-whole field-search">
+    <label for="keywords" class="visuallyhidden">Search</label>
+    <input class="input input-search" id="keywords" name="keywords" type="search" placeholder="find a post…" autocorrect="off" autocapitalize="off" required>
+    <button type="submit" class="button button-search"><span class="icon icon-medium icon-large-d icon-search">{gv_search}</span></button>
+  </div>
 {/exp:search:simple_form}

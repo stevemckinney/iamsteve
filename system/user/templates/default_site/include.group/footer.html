@@ -1,94 +1,47 @@
-</div>
-{!-- role="main" --}
-
-<aside role="complementary" class="related">
-  {!-- <section style="background: #444; color: #fff; padding: 1.5em;">
-    {if segment_2 == 'entry'}
-      <h3 role="heading">Be notified of new posts</h3>
-      <p>I write blog posts weekly, that go out every Tuesday morning (GMT). Subscribe if you’d like to receive the highlights and takeaways to your inbox each week.</p>
-    {if:else}
-      <h3 role="heading">Want to receive more content like this?</h3>
-      <p>I write blog posts weekly, that go out every Tuesday morning (GMT). Subscribe if you’d like to receive the highlights and takeaways to your inbox each week. <strong>Sign up now and I will send you a free</strong></p>
+    {!-- Footer html found in _layout.html --}
+    {if logged_in}
+      <style>
+        .menu-bar { 
+          position: fixed;
+          display: flex;
+          z-index: 999;
+          bottom: 0; left: 0; right: 0;
+          background: #fff; }
+        .menu-bar a {
+          flex: 1;
+          padding: 0 .75em;
+          border-right: 1px solid #eee;
+          display: inline-block;
+          height: 44px;
+          line-height: 44px;
+          font-size: 12px;
+          font-family: Helvetica;
+          color: #999;
+          text-align: center; }
+        .menu-bar a:last-child {
+          border-right: none; }
+      </style>
+      <div class="menu-bar">
+        {exp:channel:entries channel="blog|portfolio|site|downloads" show_future_entries="yes" limit="1" status="open|latest|draft" disable="member_data|trackbacks|pagination"}
+            <a href="{cp_url}">Control Panel</a><a href="{cp_url}?/cp/utilities/cache">Cache</a>
+            <a href="{cp_url}/cp/content_publish/admin.php?/cp/publish/edit&filter_by_channel=1">Publish</a>
+            {if logged_in_group_id == 1}<a href="{cp_edit_entry_url}">Edit {last_segment}</a>{/if}
+        {/exp:channel:entries} 
+      </div>
     {/if}
-  </section> --}
-  
-	<section class="me vcard author" role="region" aria-labelledby="About me">
-		<h3 role="heading">About me</h3>
-		<p><img src="{global:theme_url}/assets/images/me.jpg" srcset="{global:theme_url}/assets/images/me@2x.jpg 2x" class="photo" alt=“Photo of Steve McKinney”>I’m <span class="fn">Steve McKinney</span>, a <span class="role">web designer</span> living in <span class="adr"><span class="locality">Manchester</span>, <span class="country-name">England</span></span>. I've been designing from young age and doing it ‘in industry’ for the past 4 years. My passion is with design and I learnt to code out of necessity. However, I believe code can give you an advantage, to control your ideas, and communicate them in a whole new way.</p>
-
-    <p>In all tutorials that I write I aim to provide understanding and rationale, as to why something is done a particular way. When designing and writing code, I believe this is crucial to long term understanding. If you have any feedback or need clarification, <a href="{site_url}contact">feel free to contact me</a>.</p>
-	</section>
-	<section class="dribbble" role="region" aria-labelledby="Dribbble shots">
-		<h3 role="heading"><a href="http://dribbble.com/stevemckinney" title="View all my shots on Dribbble">Dribbble shots</a></h3>
-		<p>Loading&hellip;</p>
-	</section>
-</aside>
-
-<footer role="contentinfo">
-	<ul>
-		<li><small>Copyright &copy; <span class="author vcard"><a rel="author" href="http://iamsteve.me" class="url fn">Steve McKinney</a></span> {current_time format="%Y"}</small></li>
-		<li><a href="#" title="Go back to the top of the page" class="top">Top</a></li>
-		<li><a href="feed://iamsteve.me/blog/feed" title="The RSS feed for my blog">RSS</a></li>
-		<li><a href="https://www.digitalocean.com/?refcode=612d37093f16" title="DigitalOcean hosting get 2 months free credit">Host</a></li>
-		<li><a href="http://expressionengine.com/index.php?affiliate=stevemckinney" title="Running on ExpressionEngine">EE</a></li>
-		<li><a href="https://gist.github.com/2767673" title="The cookies used on this site can be found here">Cookies</a></li>
-	</ul>
-	{search}
-</footer>
-{if logged_in}
-  <style>
-    html { margin-top: 44px; }
-    .menu-bar { 
-      position: fixed;
-      z-index: 999;
-      top: 0; left: 0; right: 0;
-      background: #fff; }
-    .menu-bar a { 
-      padding: 0 .75em;
-      border-right: 1px solid #eee;
-      display: inline-block;
-      height: 44px;
-      line-height: 44px;
-      font-size: 12px;
-      font-family: Helvetica;
-      color: #999; }
-  </style>
-  {exp:channel:entries channel="blog|portfolio|site|downloads" show_future_entries="yes" limit="1" status="open|latest|draft" disable="member_data|trackbacks|pagination"}
-    <div class="menu-bar"><a href="{cp_url}">Control Panel</a><a href="{cp_url}?/cp/utilities/cache">Cache</a><a href="{cp_url}/cp/content_publish/admin.php?/cp/publish/edit&filter_by_channel=1">Publish</a>{if logged_in_group_id == 1}
-    <a href="{cp_edit_entry_url}">Edit {last_segment}</a>
-  {/exp:channel:entries}
-{/if} 
-  </div>
-{/if}
-{!-- Javascript --}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-{exp:minimee:js minify="y"}<script src="{global:theme_url}/assets/js/consistent.js"></script>{/exp:minimee:js}
-{if global:env == "prod"}<script>
-	var GoSquared = {};
-  GoSquared.acct = "GSN-610812-E";
-  GoSquared.UserName = "visitor";
-  (function(w){
-    function gs(){
-      w._gstc_lt = +new Date;
-      var d = document, g = d.createElement("script");
-      g.type = "text/javascript";
-      g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
-      var s = d.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(g, s);
-    }
-    w.addEventListener ?
-      w.addEventListener("load", gs, false) :
-      w.attachEvent("onload", gs);
-  })(window);
-  $('.event-download').on('click', function() {_gs('event', $(this).text())});
-  $('[data-event]').on('click', function() {_gs('event', $(this).data('event'))});</script>
-  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M6CQBG"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M6CQBG');</script>
-{/if}
-</body>
+    
+    {!-- Javascript --}
+    {if global:env == "prod"}
+      <script>
+      	var GoSquared = {};
+        GoSquared.acct = "GSN-610812-E";
+        GoSquared.UserName = "visitor";
+        (function(w){function gs(){w._gstc_lt = +new Date;var d = document, g = d.createElement("script");g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";var s = d.getElementsByTagName("script")[0];s.parentNode.insertBefore(g, s);}w.addEventListener ?w.addEventListener("load", gs, false) :w.attachEvent("onload", gs);})(window);
+        $('.event-download').on('click', function() {_gs('event', $(this).text())});
+        $('[data-event]').on('click', function() {_gs('event', $(this).data('event'))});
+      </script>
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M6CQBG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M6CQBG');</script>
+    {/if}
+  </body>
 </html>

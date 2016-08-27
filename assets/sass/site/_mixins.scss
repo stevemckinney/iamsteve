@@ -1,0 +1,39 @@
+// Mixin setup
+// ---------------------------
+@include grid;
+@include placeholder;
+
+
+// Mixin overrides
+// ---------------------------
+
+// Site specific mixins
+// ---------------------------
+
+// Position an element absolutely
+@mixin pin-below {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0; }
+
+@mixin dashes(
+  $position: bottom,
+  $image: "dash-alternate.svg",
+  $height: 4px 
+) {
+  content: "";
+  background-image: image-url(#{$image});
+  background-repeat: repeat-x;
+  background-position: -12px center;
+  height: #{$height};
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: $z-index-2;
+  
+  @if $position == top {
+    bottom: calc(100% - 1px); }
+    
+  @else {
+    top: calc(100% - 1px); } }

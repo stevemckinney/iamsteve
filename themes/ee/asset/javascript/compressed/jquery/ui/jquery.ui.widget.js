@@ -47,7 +47,7 @@ _childConstructors:[]}),a=new i,a.options=t.widget.extend({},a.options),t.each(n
 widgetEventPrefix:o?a.widgetEventPrefix||e:e},u,{constructor:r,namespace:d,widgetName:e,widgetFullName:s}),o?(t.each(o._childConstructors,function(e,i){var n=i.prototype;
 // redefine the child widget using the same prototype that was
 // originally used, but inherit from the new version of the base
-t.widget(n.namespace+"."+n.widgetName,r,i._proto)}),delete o._childConstructors):i._childConstructors.push(r),t.widget.bridge(e,r),r},t.widget.extend=function(e){for(var n,s,o=i.call(arguments,1),r=0,a=o.length;a>r;r++)for(n in o[r])s=o[r][n],o[r].hasOwnProperty(n)&&void 0!==s&&(
+t.widget(n.namespace+"."+n.widgetName,r,i._proto)}),delete o._childConstructors):i._childConstructors.push(r),t.widget.bridge(e,r),r},t.widget.extend=function(e){for(var n,s,o=i.call(arguments,1),r=0,a=o.length;r<a;r++)for(n in o[r])s=o[r][n],o[r].hasOwnProperty(n)&&void 0!==s&&(
 // Clone objects
 t.isPlainObject(s)?e[n]=t.isPlainObject(e[n])?t.widget.extend({},e[n],s):
 // Don't extend strings, arrays, etc. with objects
@@ -78,10 +78,7 @@ n?(i=s=t(i),this.bindings=this.bindings.add(i)):(n=i,i=this.element,s=this.widge
 // allow widgets to customize the disabled handling
 // - disabled as an array instead of boolean
 // - disabled class as method for disabling individual parts
-// allow widgets to customize the disabled handling
-// - disabled as an array instead of boolean
-// - disabled class as method for disabling individual parts
-return e||o.options.disabled!==!0&&!t(this).hasClass("ui-state-disabled")?("string"==typeof r?o[r]:r).apply(o,arguments):void 0}
+if(e||o.options.disabled!==!0&&!t(this).hasClass("ui-state-disabled"))return("string"==typeof r?o[r]:r).apply(o,arguments)}
 // copy the guid so direct unbinding works
 "string"!=typeof r&&(a.guid=r.guid=r.guid||a.guid||t.guid++);var u=n.match(/^([\w:-]*)\s*(.*)$/),d=u[1]+o.eventNamespace,h=u[2];h?s.delegate(h,d,a):i.bind(d,a)})},_off:function(e,i){i=(i||"").split(" ").join(this.eventNamespace+" ")+this.eventNamespace,e.unbind(i).undelegate(i),
 // Clear the stack to avoid memory leaks (#10056)

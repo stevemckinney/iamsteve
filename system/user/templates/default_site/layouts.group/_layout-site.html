@@ -1,0 +1,13 @@
+{layout="layouts/_layout"}
+
+{!-- 404 --}
+{if segment_1 != ''}
+  {redirect="404"}
+{/if}
+
+{layout:contents}
+
+{layout:set name="js"}
+  {layout:js}
+  <script src="{site_url}dist/js/home.js"></script>
+{/layout:set}

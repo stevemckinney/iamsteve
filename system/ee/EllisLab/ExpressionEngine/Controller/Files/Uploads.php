@@ -189,7 +189,7 @@ class Uploads extends AbstractFilesController {
 					'fields' => array(
 						'url' => array(
 							'type' => 'text',
-							'value' => $upload_destination->url ?: 'http://',
+							'value' => $upload_destination->getRawProperty('url') ?: 'http://',
 							'required' => TRUE
 						)
 					)
@@ -200,7 +200,7 @@ class Uploads extends AbstractFilesController {
 					'fields' => array(
 						'server_path' => array(
 							'type' => 'text',
-							'value' => $upload_destination->server_path,
+							'value' => $upload_destination->getRawProperty('server_path'),
 							'required' => TRUE
 						)
 					)
@@ -296,6 +296,7 @@ class Uploads extends AbstractFilesController {
 				'fields' => array(
 					'upload_member_groups' => array(
 						'type' => 'checkbox',
+						'wrap' => TRUE,
 						'choices' => $member_groups,
 						'value' => $allowed_groups
 					)
@@ -326,6 +327,7 @@ class Uploads extends AbstractFilesController {
 			'fields' => array(
 				'cat_group' => array(
 					'type' => 'checkbox',
+					'wrap' => TRUE,
 					'choices' => $cat_group_options,
 					'value' => ($upload_destination) ? explode('|', $upload_destination->cat_group) : array()
 				)
@@ -533,7 +535,7 @@ class Uploads extends AbstractFilesController {
 		$member_groups = array();
 		foreach ($groups as $group)
 		{
-			$member_groups[$group->group_id] = $group->group_title;
+			$member_groups[$group->group_id] = htmlentities($group->group_title, ENT_QUOTES, 'UTF-8');
 		}
 
 		if ( ! empty($_POST))

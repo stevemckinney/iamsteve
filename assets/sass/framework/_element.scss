@@ -1,0 +1,34 @@
+// Shared
+// ---------------------------
+@import "element/color_adjust",
+				"element/variables",
+				"element/shading",
+				"element/base";
+
+// Element — A base, mixin and options
+// Style notices/alerts, buttons, etc 
+// -----------------------------------------
+@mixin element(
+	$color			: $default-element-color,
+	$text-shadow: $default-element-text-shadow,
+	$dark-bg		: $default-element-dark-bg,
+	$shading		: $default-element-shading,
+	$hover			: $default-element-hover,
+	$base 			: $default-element-base
+) {
+	@include element-shading($color, normal, $text-shadow, $shading, $dark-bg);
+	
+	@if $base {
+		// For buttons that require a lot of changes override the base
+		// Otherwise set a base class eg: .button { @extend %element-base-with-mixin; }
+		@include element-base($base...); }
+	
+	// You may need to disable hover states	
+	@if $hover {
+		&:hover,
+		&:focus {
+			@include element-shading($color, hover, $text-shadow, $shading, $dark-bg); }
+				
+		&:active {
+			z-index: 2; // makes button above others in a group
+			@include element-shading($color, active, $text-shadow, $shading, $dark-bg); } } }

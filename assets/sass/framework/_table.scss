@@ -1,0 +1,140 @@
+// Default table vars
+// ---------------------------
+$default-table-main-color: scale-lightness($default-color, 50%) !default;
+$default-table-color: $default-color;
+$default-table-hover: true !default;
+$default-table-width: 100% !default;
+$default-table-cell-padding: $base-px 16px !default;
+$default-table-margin: 0 0 em($line) !default;
+$default-table-striped: true !default;
+$default-table-font-family: $sans !default;
+$default-table-responsive: true !default;
+$default-table-border-width: 1px !default;
+$default-table-th-border-width: 2px !default;
+$default-table-breakpoint: $b !default;
+
+// Table
+// ---------------------------
+@mixin table(
+	$main-color	: $default-table-main-color,
+	$color      : $default-table-color,
+	$hover			: $default-table-hover,
+	$width			: $default-table-width,
+	$margin			: $default-table-margin,
+	$striped		: $default-table-striped,
+	$font-family: $default-table-font-family,
+	$responsive	: $default-table-responsive,
+	$th-border-width: $default-table-th-border-width,
+	$border-width: $default-table-border-width) {
+	
+	& {
+		margin: $margin;
+		padding: 0;
+		font-family: $font-family;
+		
+		@if $width {
+			width: $width; }
+			
+		@if $responsive {
+			@include breakpoint($c, max) {
+				display: block;
+				position: relative;
+				border: 1px solid scale-lightness($main-color, -10%); } } }
+	
+	th,
+	td {
+		padding: $default-table-cell-padding;
+		text-align: left;
+  		border-bottom: $border-width solid $main-color;
+		color: $color; }
+	
+	th {
+		border-width: $th-border-width; }
+		
+	tr {
+		@if $striped {
+			&:nth-child(even) {
+				td, th {
+					background: $main-color;
+					@if if-bright($main-color) == false {
+						color: invert($main-color); } } } }
+		@if $hover {
+			&:hover, &:focus {
+				td {
+					background: $main-color;
+					@if if-bright($main-color) == false {
+						color: invert($main-color); } } } } }
+	
+	@if $responsive {
+		@include breakpoint($default-table-breakpoint, max) {
+			thead {
+				float: left;
+				background: $main-color;
+				border-right: 2px solid $main-color; }
+				
+			td, th {
+				min-height: em($line*2); }
+				
+			tbody {
+				@include nowrap;
+				width: auto;
+				position: relative;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				
+				tr { 
+					display: inline-block;
+					vertical-align: top;
+					margin-right: -4px; } }
+					
+			th,
+			td {
+				border-bottom: 1px solid $main-color; }
+				
+			td:last-child,
+			th:last-child {
+				border-bottom: none; }
+				
+			th,
+			td,
+			tbody,
+			thead,
+			thead tr { 
+				display: block; } } } }
+
+// Table styled
+// ---------------------------
+$default-table-styled-color: $default-color !default;
+$default-table-styled-border-color: rgba($default-table-styled-color, .05) !default;
+$default-table-styled-row-color: $default-table-styled-border-color !default;
+$default-table-styled-width: 100% !default;
+$default-table-styled-size: $default-size !default;
+
+@mixin table-styled(
+	$color: $default-table-styled-color,
+	$border-color: $default-table-styled-border-color,
+	$row-color: $default-table-styled-row-color,
+	$size: $default-table-styled-size,
+	$width: $default-table-styled-width
+) {
+	@if $width {
+		width: $width; }
+		
+	text-align: left;
+	
+	td,
+	th {
+		padding: $size; }
+	
+	td {
+		border-bottom: 1px solid $border-color; }
+	
+	tr {
+		background: $row-color;
+		border: 1px solid $border-color;
+		border-top: none;
+		border-bottom: none; }
+	
+	th {
+		@include element-shading($color, $border: false);
+		border: 1px solid hsl(240, 7%, 40%); } }

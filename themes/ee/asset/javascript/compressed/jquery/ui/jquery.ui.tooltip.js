@@ -21,7 +21,7 @@ return t("<a>").text(i).html()},hide:!0,
 // Disabled elements have inconsistent behavior across browsers (#8661)
 items:"[title]:not([disabled])",position:{my:"left top+15",at:"left bottom",collision:"flipfit flip"},show:!0,tooltipClass:null,track:!1,
 // callbacks
-close:null,open:null},_addDescribedBy:function(i,e){var o=(i.attr("aria-describedby")||"").split(/\s+/);o.push(e),i.data("ui-tooltip-id",e).attr("aria-describedby",t.trim(o.join(" ")))},_removeDescribedBy:function(i){var e=i.data("ui-tooltip-id"),o=(i.attr("aria-describedby")||"").split(/\s+/),n=t.inArray(e,o);-1!==n&&o.splice(n,1),i.removeData("ui-tooltip-id"),o=t.trim(o.join(" ")),o?i.attr("aria-describedby",o):i.removeAttr("aria-describedby")},_create:function(){this._on({mouseover:"open",focusin:"open"}),
+close:null,open:null},_addDescribedBy:function(i,e){var o=(i.attr("aria-describedby")||"").split(/\s+/);o.push(e),i.data("ui-tooltip-id",e).attr("aria-describedby",t.trim(o.join(" ")))},_removeDescribedBy:function(i){var e=i.data("ui-tooltip-id"),o=(i.attr("aria-describedby")||"").split(/\s+/),n=t.inArray(e,o);n!==-1&&o.splice(n,1),i.removeData("ui-tooltip-id"),o=t.trim(o.join(" ")),o?i.attr("aria-describedby",o):i.removeAttr("aria-describedby")},_create:function(){this._on({mouseover:"open",focusin:"open"}),
 // IDs of generated tooltips, needed for destroy
 this.tooltips={},
 // IDs of parent tooltips where we removed the title attribute

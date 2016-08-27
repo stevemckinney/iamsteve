@@ -1,0 +1,55 @@
+@import "variables";
+
+// Form types
+// Individual mixins for specific form elements
+// ---------------------------
+
+// Text
+// Called in _form.scss
+// ---------------------------
+@mixin form-text(
+  $color            : $default-form-color,
+  $focus-color      : $default-form-focus-color,
+  $background-color : $default-form-background-color,
+  $shading          : $default-form-shading
+) {
+  @include form-shading-text($color, $background-color, normal, $shading);
+
+  &:focus {
+    @include form-shading-text($focus-color, $background-color, focus, $shading); } }
+
+// Select
+// Called in _form.scss
+// ---------------------------
+@mixin form-select(
+  $color            : $default-form-color,
+  $focus-color      : $default-form-focus-color,
+  $background-color : $default-form-background-color,
+  $shading          : $default-form-shading
+) { 
+  @include form-shading-select($color, $background-color, normal, $shading);
+
+  &:focus {
+    @include form-shading-select($focus-color, $background-color, focus, $shading); } }
+
+// Checkbox
+// Called in _form.scss
+// ---------------------------
+@mixin form-checkbox(
+  $color            : $default-form-color,
+  $background-color : $default-form-background-color,
+  $shading          : $default-form-shading
+) { 
+  @include form-shading-checkbox($color, $background-color, $shading);
+  border-radius: $default-form-checkbox-radius; }
+
+// Radio
+// Called in _form.scss
+// ---------------------------
+@mixin form-radio(
+  $color            : $default-form-color,
+  $background-color : $default-form-background-color,
+  $shading          : $default-form-shading
+) { 
+  @include form-shading-radio($color, $background-color, $shading);
+  border-radius: $default-form-radio-radius; }

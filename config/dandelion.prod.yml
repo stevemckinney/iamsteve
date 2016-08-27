@@ -1,0 +1,10 @@
+adapter: sftp
+host: 188.166.147.63
+username: steve
+path: apps/iamsteve/public/
+
+exclude:
+    - .gitignore
+    - node_modules
+    - .sass-cache
+    - config

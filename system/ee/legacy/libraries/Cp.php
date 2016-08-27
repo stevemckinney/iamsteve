@@ -64,7 +64,7 @@ class Cp {
 		}
 
 		// Make sure all requests to iframe the CP are denied
-		ee()->output->set_header('X-Frame-Options: SameOrigin');
+		ee()->output->set_header('X-Frame-Options: SAMEORIGIN');
 	}
 
 	// --------------------------------------------------------------------
@@ -182,8 +182,6 @@ class Cp {
 			'plugin'	=> array('ee_interact.event', 'ee_broadcast.event', 'ee_notice', 'ee_txtarea', 'tablesorter', 'ee_toggle_all'),
 			'file'		=> array('json2', 'underscore', 'cp/global_start', 'cp/form_validation', 'cp/sort_helper', 'cp/fuzzy_filters')
 		);
-
-		$js_scripts['plugin'][] = 'ee_navigation';
 
 		$this->add_js_script($js_scripts);
 		$this->_seal_combo_loader();
@@ -712,7 +710,7 @@ class Cp {
 		if ( ! $url)
 		{
 			// We have 2 types of URLs:
-			//   1. index.php?/cp/path/to/controller/with/arugments
+			//   1. index.php?/cp/path/to/controller/with/arguments
 			//   2. index.php?D=cp&C=cp&M=homepage
 			//
 			// In the case of #1 we likely built it with ee('CP/URL')->make() thus

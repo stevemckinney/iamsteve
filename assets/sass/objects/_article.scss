@@ -1,0 +1,219 @@
+// Entry content
+// ---------------------------
+.entry-content {
+  @include breakpoint(1200px) {
+    margin-right: calc(50% - #{$measure / 2}); }
+  
+  img {
+    display: block;
+    margin-bottom: $line;
+    box-shadow:
+      0 0 0 1px rgba($neutral, .05);
+      
+    @include breakpoint($c) {
+      max-width: 738px;
+      border-radius: $radius; } }
+  
+  .wide-image {
+    @include breakpoint(1024px + 48px) {
+      max-width: 1024px; } }
+  
+  .meta {
+    max-width: $measure; } }
+
+// Scoped font sizes/alignment
+// ---------------------------
+.entry-content {      
+  p, li {
+    font-size: 18px;
+    
+    @include breakpoint($b) {
+      font-size: 21px; } }
+  
+  > p {
+    // 3px aligns back to baseline
+    margin-bottom: $line + 3px; }
+  
+  > *:not(figure):not(div), img {
+    margin-left: auto;
+    
+    @include breakpoint($e-max) {
+      margin-right: auto; } }
+  
+  > *:not(figure):not(img):not(div) {
+    max-width: $measure; }
+    
+  > *:not(figure):not(img):not(div),
+  figcaption {
+    @include breakpoint($c-max) {
+      padding-left: 16px;
+      padding-right: 16px; }
+      
+  li {
+    @include breakpoint($c-max) {
+      margin-left: 20px; } } }
+  
+  strong {
+    font-weight: font-weight(semibold); }
+  
+  p a,
+  li a {
+    color: $neutral;
+    text-decoration: underline;
+    text-decoration-color: $neutral; }
+  
+  /* Aligns to 72px */
+  // default line-height: 1.25
+  h2 {
+    font-size: 24px;
+    padding-top: 30px;
+    margin-bottom: 12px; }
+  
+  /* Aligns to 48px */
+  h3 {
+    font-size: 21px;
+    line-height: 1.333333;
+    padding-top: 12px;
+    margin-bottom: 8px; }
+  
+  /* Aligns to 48px */
+  h4, h5, h6 {
+    font-size: 18px;
+    line-height: 1.5;
+    padding-top: 15px;
+    margin-bottom: 6px; } }
+
+.entry-header + p,
+.entry-content > p:first-child {
+  font-size: 24px;
+  font-size: 21px;
+  margin-bottom: 24px; }
+
+// Codepen
+// ---------------------------
+.cp_embed_iframe {
+  @include breakpoint($c) {
+    border-radius: $radius;
+    max-width: 95%;
+    margin-left: 5%; } }
+    
+// Lists
+// ---------------------------
+.entry-content ul {
+  @extend %list-custom-bullet; }
+
+// Figures
+// ---------------------------
+.entry-content figure {
+  padding-top: $base-px;
+  position: relative;
+  text-align: left; }
+
+.entry-content figcaption {
+  font-style: italic;
+  line-height: 1.333333;
+  text-align: center;
+  max-width: $measure;
+  padding: 0 $line;
+  margin-left: auto;
+  
+  @include breakpoint($site-width) {
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    width: 220px;
+    text-align: left;
+    
+    &:before {
+      content: "";
+      display: block;
+      width: $line*3;
+      height: $base-px;
+      background-color: $secondary;
+      margin-bottom: $base-px; } }
+  
+  @include breakpoint($c-max) {
+    margin-bottom: $line; } }
+
+// Specific pieces of content
+// ---------------------------
+.featured-image {
+  margin-top: -5px;
+  padding: $base-px 0;
+  overflow: hidden;
+  min-height: 240px;
+  
+  @include breakpoint($site-width) {
+    min-height: 516px;
+    border-radius: $radius 0 0 $radius; } }
+
+.featured-image img {
+  display: block;
+  max-height: 192px;
+  max-width: 738px;
+  
+  @include breakpoint(360px) {
+    max-height: 192px + 24px; }
+  
+  @include breakpoint(400px) {
+    max-height: 192px + 48px; }
+  
+  @include breakpoint($a) {
+    max-height: 288px; }
+  
+  @include breakpoint($b) {
+    max-height: none; } // reset the height here 492px
+  
+  @include breakpoint($site-width-max) {
+    margin: auto; } }
+
+/*
+body {
+	position: relative;
+}
+
+body:after {
+	position: absolute;
+	width: auto;
+	height: auto;
+	z-index: 9999;
+	content: '';
+	display: block;
+	pointer-events: none;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: url(http://basehold.it/image.php?height=24) repeat top left;
+	opacity: .1;
+}
+
+body:active:after {
+	display: none;
+}
+*/
+
+:target:before {
+  content: "";
+  display: inline-block;
+  height: 120px;
+  margin: -120px 0 0; }
+
+// Footnotes
+// ---------------------------
+.footnotes {  
+  p a {
+    text-decoration: none; }
+  
+  li, p {
+    font-size: 14px; }
+  
+  hr {
+    margin-bottom: $line; } }
+
+.footnote-backref {
+  font-weight: font-weight(bold);
+  
+  &:hover,
+  &:focus {
+    color: $primary; } }

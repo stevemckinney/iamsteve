@@ -1,27 +1,100 @@
-{embed="include/header" title_suffix="iamsteve — design & code blog" hide_site_title="y"}
-{if segment_1 != ''}
-  {redirect="404"}
-{/if}
-<div class="page-header">
-  <h1 class="entry-title h3 screenreader">Learn design & code</h1>
-  <p>Hi there, I’m Steve McKinney, I write weekly on design and code. If you’re like me and enjoy the process of designing and seeing it through to code, I’m sure you’ll find value in the content I provide. I cover topics on Illustrator, CSS and Wordpress.</p>
-  <p><small style="display:block">If you ever have any feedback or things you would like me to write about <a href="https://twitter.com/irsteve">tweet</a> or <a href="{global:theme_url}/contact">contact</a> me.</small></p>
-  </section>
-</div><div class="page-content">
-  {exp:channel:entries channel="blog" limit="10" status="open|latest" disable="pagination|member_data|trackbacks"}
-  	<article data-href="{title_permalink='blog/entry'}" class="entry entry-home">
-  		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-  		<footer class="entry-meta">
-      	<time datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" class="published" data-icon="calendar" pubdate>{entry_date:relative stop="+1 day" format="%j%S %F %Y"}</time><time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated screenreader">{edit_date format="%Y %m %d"}</time>
-      	{categories channel="blog" style="linear" parent_only="yes" limit="1"}<a href="{path='blog/index'}" title="This post is under category:{category_name}." rel="category tag" data-icon="tag">{category_name}</a>{/categories}
-      	 <a href="{title_permalink='blog/entry'}" title="Read {title} in full." class="pull-right" rel="bookmark" data-icon-after="navigateright">Continue reading</a>
-        <span class="screenreader author vcard"><a rel="author" href="http://iamsteve.me" class="url fn">Steve McKinney</a></span>
-  		</footer>
-  	</article>
-  {/exp:channel:entries}
-  <div class="push-bottom">
-    <a href="{global:theme_url}/blog" class="button-link">View archives</a>
+{layout="layouts/_layout-site"}
+
+{!-- channel vars (prefix ch_) --}
+{preload_replace:ch="blog"}
+{preload_replace:ch_status="open|latest"}
+{preload_replace:ch_disable="pagination|member_data|trackbacks"}
+{preload_replace:ch_limit="8"}
+{preload_replace:ch_limit_large="11"}
+{preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
+{preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
+
+<div class="row hero contain-medium contain-large mb4-d">
+  <div class="column introduction">
+    <picture class="rio mb2">
+      <img src="{site_url}dist/images/rio.svg">
+    </picture>
+    <h1 class="f3 f2-b f1-d mb2 primary">Learn design and code</h1>
+    <p>Hello there, I’m Steve&nbsp;McKinney, a designer who codes. I&nbsp;write regularly, focusing on the process behind that. I&nbsp;cover topics on designing with Adobe Illustrator, CSS and Wordpress.</p>
+    <p class="sans"><a href="{path='blog/index'}" class="link neutral">Browse the archive</a></p>
+  </div>
+  <div class="column featured">
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="1"}
+    	{post_large}
+    {/exp:channel:entries}
   </div>
 </div>
 
-{embed="include/footer"}
+<section class="posts pt6 pt7-d pb6 pb7-d">
+  <header class="row row-header contain contain-medium contain-large between">
+    <h2 class="f5 f4-b chunky neutral row-title">Previous posts</h2>
+    <div class="pagination js-pagination">
+      <button class="paginate paginate-left">
+        <span class="icon icon-medium">{gv_arrow_left}</span>
+      </button>
+      <button class="paginate paginate-right">
+        <span class="icon icon-medium">{gv_arrow_right}</span>
+      </button>
+    </div>
+  </header>
+  <div class="scroll">
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="{ch_limit_large}"}
+    	{post_medium}
+    {/exp:channel:entries}
+    <a href="{path='blog/P12'}" class="card card-medium card-more">
+      <h2 class="sans f4 f3-b secondary link-icon m0">
+        View more posts <span class="icon icon-medium icon-right">{gv_arrow_right}</span>
+      </h2>
+    </a>
+  </div>
+</section>
+
+{embed="include/subscribe" class="row-strong"}
+
+<section class="posts pt6 pt8-d pb6 pb8-d">
+  <header class="row row-header contain contain-medium contain-large between">
+    <h2 class="f6 f4-b neutral chunky row-title">Popular in design</h2>
+    <div class="pagination js-pagination">
+      <button class="paginate paginate-left">
+        <span class="icon icon-medium">{gv_arrow_left}</span>
+      </button>
+      <button class="paginate paginate-right">
+        <span class="icon icon-medium">{gv_arrow_right}</span>
+      </button>
+    </div>
+  </header>
+  <div class="scroll">
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="7" orderby="view_count_one" sort="desc"}
+    	{post_small}
+    {/exp:channel:entries}
+    <a href="{path='blog/category/design'}" class="card card-small card-more">
+      <h2 class="sans f6 f4-b secondary link-icon m0">
+        More posts in design <span class="icon icon-medium icon-right">{gv_arrow_right}</span>
+      </h2>
+    </a>
+  </div>
+</section>
+
+<section class="posts pb6 pb8-d">
+  <header class="row row-header contain contain-medium contain-large between">
+    <h2 class="f5 f4-b neutral chunky row-title">Popular in code</h2>
+    <div class="pagination js-pagination">
+      <button class="paginate paginate-left">
+        <span class="icon icon-medium">{gv_arrow_left}</span>
+      </button>
+      <button class="paginate paginate-right">
+        <span class="icon icon-medium">{gv_arrow_right}</span>
+      </button>
+    </div>
+  </header>
+  <div class="scroll">
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2" orderby="view_count_one" sort="desc"}
+    	{post_small}
+    {/exp:channel:entries}
+    <a href="{path='blog/category/code'}" class="card card-small card-more">
+      <h2 class="sans f5 f4-b secondary link-icon m0">
+        More posts in code <span class="icon icon-medium icon-right">{gv_arrow_right}</span>
+      </h2>
+    </a>
+  </div>
+</section>
