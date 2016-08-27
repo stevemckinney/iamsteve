@@ -70,7 +70,8 @@
     white-space: normal; }
     
   .card-more {
-    padding: $line*6 $line*2 $line*2 14px; }
+    min-width: 240px;
+    padding: $line*6 $line $line*2 14px; }
   
   // More sensible way to position when flickity is enabled
   &.flickity-enabled .card-more {
