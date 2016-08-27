@@ -1,11 +1,12 @@
+dist/
 .DS_Store
+assets/images/.DS_Store
 system/config.php
 .sass-cache
 cache/
 cacheee_version/
 assets/cache/
 assets/cachee_version/
-config/
 system/expressionengine/config/database.php
 system/expressionengine/config/config.php
 system/user/logs/*
@@ -25,6 +26,7 @@ images/pm_attachments/
 images/uploads
 uploads
 images/
+!assets/images
 
 # Caches
 sized/
@@ -38,9 +40,12 @@ system/expressionengine/cache
 
 # npm
 npm-debug.log
-node_modules/
-!/node_modules/
-!src/node_modules/
+node_modules
 config_bootstrap.php
 .htaccess
-node_modules
+
+# Config
+config/config.local.php
+config/config.dev.php
+config/config.prod.php
+system/user/config/license.key
