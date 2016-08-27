@@ -68,6 +68,20 @@
     vertical-align: top;
     padding: 0 $base-px;
     white-space: normal; }
+    
+  .card-more {
+    padding: $line*6 $line*2 $line*2 14px; }
+  
+  // More sensible way to position when flickity is enabled
+  &.flickity-enabled .card-more {
+    top: 50%;
+    transform: translateY(-50%);
+    padding-top: $line*2;
+    
+    h2 {
+      justify-content: flex-end;
+      align-content: center;
+      height: 100%; } }
   
   .card-medium {
     width: 240px + $base-px + $base-px + $base-px + $base-px;
