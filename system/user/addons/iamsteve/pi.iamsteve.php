@@ -195,7 +195,7 @@ class Iamsteve {
   }
 
   public function is_mobile()
-  {    
+  {
     if ( empty($_SERVER['HTTP_USER_AGENT']) )
     {
       $is_mobile = false;  
@@ -217,17 +217,6 @@ class Iamsteve {
     }
     
     return $is_mobile;
-  }
-  
-  public function set_cookie($name, $value, $expire)
-  {
-    ee()->load->helper('cookie');
-    
-    set_cookie(
-      $name, 
-      $value,
-      $expire
-    );
   }
 }
 // END CLASS
