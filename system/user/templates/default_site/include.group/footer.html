@@ -37,8 +37,23 @@
         GoSquared.acct = "GSN-610812-E";
         GoSquared.UserName = "visitor";
         (function(w){function gs(){w._gstc_lt = +new Date;var d = document, g = d.createElement("script");g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";var s = d.getElementsByTagName("script")[0];s.parentNode.insertBefore(g, s);}w.addEventListener ?w.addEventListener("load", gs, false) :w.attachEvent("onload", gs);})(window);
-        $('.event-download').on('click', function() {_gs('event', $(this).text())});
-        $('[data-event]').on('click', function() {_gs('event', $(this).data('event'))});
+        //$('.event-download').on('click', function() {_gs('event', $(this).text())});
+        //$('[data-event]').on('click', function() {_gs('event', $(this).data('event'))});
+        
+        var dl = document.querySelectorAll('.event-download');
+        var ev = document.querySelectorAll('[data-event]');
+        
+        for ( var dlc = 0; dlc < dlc.length; dlc++ ) {
+          dl[dlc].addEventListener('click', function() {
+            _gs('event', this.textContent);
+          });
+        }
+        
+        for ( var evc = 0; evc < evc.length; evc++ ) {
+          ev[evc].addEventListener('click', function() {
+            _gs('event', this.dataset.event);
+          });
+        }
       </script>
       <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M6CQBG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M6CQBG');</script>
