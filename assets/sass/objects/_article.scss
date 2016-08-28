@@ -201,7 +201,10 @@ body:active:after {
 
 // Footnotes
 // ---------------------------
-.footnotes {  
+.footnotes {
+  max-width: 640px;
+  margin-left: auto;
+  
   p a {
     text-decoration: none; }
   
