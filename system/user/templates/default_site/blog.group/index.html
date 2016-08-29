@@ -9,36 +9,31 @@
 {preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
 
 <div class="row between subheader contain contain-medium contain-large pb2 pb4-d">
-  {exp:stash:get_list 
-    name="pagination"
-    process="end"
-    parse_tags="yes"
-    parse_vars="yes"
-    parse_conditionals="yes"
-  }
-    {if previous_page}
-      <a href="{previous_page}" class="neutral-l1 sans link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></a>
-    {if:else}
-      <span class="neutral-l3 sans link-icon disabled"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></span>
-    {/if}
-
-    {if segment_2 == 'category'}
-    	{exp:channel:category_heading channel='{ch}'}
-    		<h1 class="f4 f3-b f2-d neutral mb0">{category_name}</h1>
-    	{/exp:channel:category_heading}
-    {if:else}
-      {exp:channel:info channel="blog"}
-        <h1 class="f4 f3-b f2-d neutral mb0">{channel_title}</h1>
-      {/exp:channel:info}
-    {/if}
-
+  {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" paginate="top"}
+    {paginate}
+      {if previous_page}
+        <a href="{auto_path}" class="neutral-l1 sans link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></a>
+      {if:else}
+        <span class="neutral-l3 sans link-icon disabled"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></span>
+      {/if}
   
-    {if next_page}
-      <a href="{next_page}" class="neutral-l1 sans link-icon"><strong>Older</strong> <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
-    {if:else}
-      <span class="neutral-l3 sans link-icon disabled"><strong>Older</strong> <span class="icon icon-medium icon-right">{gv_arrow_right}</span></span>
-    {/if}
-  {/exp:stash:get_list}
+      {if segment_2 == 'category'}
+      	{exp:channel:category_heading channel='{ch}'}
+      		<h1 class="f4 f3-b f2-d neutral mb0">{category_name}</h1>
+      	{/exp:channel:category_heading}
+      {if:else}
+        {exp:channel:info channel="blog"}
+          <h1 class="f4 f3-b f2-d neutral mb0">{channel_title}</h1>
+        {/exp:channel:info}
+      {/if}
+    
+      {if next_page}
+        <a href="{auto_path}" class="neutral-l1 sans link-icon"><strong>Older</strong> <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
+      {if:else}
+        <span class="neutral-l3 sans link-icon disabled"><strong>Older</strong> <span class="icon icon-medium icon-right">{gv_arrow_right}</span></span>
+      {/if}
+    {/paginate}
+  {/exp:channel:entries}
 </div>
 
 <div class="row between contain contain-medium contain-large pt4 pt6-b pb4 pb6-b" id="posts">
