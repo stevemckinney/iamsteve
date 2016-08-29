@@ -14,12 +14,11 @@ class Seo_lite {
 	var $return_data;
 	private $tag_prefix;
 	private static $cache;
-    
-	public function __construct() // backwards compatible __construct() won't work
-	{
-        return $this->perform();
-	}
 
+    public function __construct() {
+        return $this->perform();
+    }
+        
     /**
      * When using SEO Lite as a tag pair, e.g.:
      *
