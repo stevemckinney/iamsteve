@@ -42,39 +42,31 @@
   	{!-- 404 --}
   	{if no_results}{redirect="404"}{/if}
   	
-  	{!-- Pagination stash --}
-  	{pagination}
-  	
   	{!-- Article --}
   	{post_medium}
   {/exp:channel:entries}
 </div>
 
-{!-- Pagination stash is retrieved --}
-{exp:stash:get_list 
-  name="pagination"
-  process="end"
-  parse_tags="yes"
-  parse_vars="yes"
-  parse_conditionals="yes"
-}
-  <div class="row center pagination pagination-offset">
-    {if previous_page}
-      <a href="{previous_page}" class="paginate paginate-left link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> Newer</a>
-		{if:else}
-		  <span class="paginate paginate-left disabled link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> Newer</span>
-		{/if}
-
-		<div class="paginate paginate-between">
-      <span>Page {current_page} of {total_pages}</span>
-		</div>
-		
-		{if next_page}
-			<a href="{next_page}" class="paginate paginate-right link-icon">Older <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
-		{if:else}
-		  <span class="paginate paginate-right disabled link-icon">Older <span class="icon icon-medium icon-right">{gv_arrow_right}</span></span>
-		{/if} 
-  </div>
-{/exp:stash:get_list}
+<div class="row center pagination pagination-offset">
+  {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" paginate="top"}
+    {paginate}
+      {if previous_page}
+        <a href="{auto_path}" class="paginate paginate-left link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> Newer</a>
+  		{if:else}
+  		  <span class="paginate paginate-left disabled link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> Newer</span>
+  		{/if}
+  
+  		<div class="paginate paginate-between">
+        <span>Page {current_page} of {total_pages}</span>
+  		</div>
+  		
+  		{if next_page}
+  			<a href="{auto_path}" class="paginate paginate-right link-icon">Older <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
+  		{if:else}
+  		  <span class="paginate paginate-right disabled link-icon">Older <span class="icon icon-medium icon-right">{gv_arrow_right}</span></span>
+  		{/if}
+		{/paginate}
+  {/exp:channel:entries}
+</div>
 
 {embed="include/subscribe" class="row-normal"}
