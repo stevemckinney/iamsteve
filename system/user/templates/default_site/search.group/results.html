@@ -1,4 +1,6 @@
-{layout='layouts/_layout-blog'}
+{layout="layouts/_layout-blog"}
+
+{layout:set name="title" value="Search"}
 
 {!-- channel vars (prefix ch_) --}
 {preload_replace:ch="blog"}
@@ -12,7 +14,8 @@
   <h1 class="f5 f3-b f2-d neutral mb0">
     {exp:search:search_results channel="{ch}" limit="1" paginate="bottom" status="open|latest" disable="member_data|trackbacks"}
       {if count == 1}
-        {exp:search:total_results}{total}{/exp:search:total_results} {if {exp:search:total_results} == 1}result was{if:else}results were{/if} found for {exp:search:keywords}
+        {exp:search:total_results}{total}{/exp:search:total_results} 
+        {if {exp:search:total_results} == 1}result was{if:else}results were{/if} found for {exp:search:keywords}
       {/if}
     {/exp:search:search_results}
   </h1>

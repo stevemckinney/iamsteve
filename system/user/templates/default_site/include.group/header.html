@@ -9,16 +9,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
   	{!-- In loving memory of Albert Phillips --}
-    {if segment_1 == "about"}
-      {exp:seo_lite default_description="About Steve McKinney a web designer. Information about skills and previous versions of this website."}
-    {if:elseif segment_1 == "contact"}
-      {exp:seo_lite title_override="contact – iamsteve"}
-    {if:elseif segment_1 == ""}
-      <title>iamsteve – design & code blog by Steve McKinney</title>
+    {if segment_1 == ""}
+      {exp:seo_lite title_override="iamsteve – design & code blog by Steve McKinney"}
     {if:else}
-      {exp:seo_lite use_last_segment="yes"}
+      {exp:seo_lite use_last_segment="yes" {if embed:title}default_title="{embed:title}"{/if}}
     {/if}
-    
+
     {!--
       CSS 
     --}
