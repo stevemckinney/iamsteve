@@ -169,9 +169,9 @@ if (isset($config))
 	 * 3rd Party Add-on config items as needed
 	 */
   $env_config['minimee'] = array(
-   'cache_path' => $base_path . '/cache',
-   'cache_url' => $base_url . '/cache',
-   'minify_html' => 'yes', // For display: inline-block purposes too
+    'cache_path' => $base_path . '/cache',
+    'cache_url' => $base_url . '/cache',
+    'minify_html' => 'yes', // For display: inline-block purposes too
   );
   
   $env_config['stash_file_basepath'] = $base_path . '/system/user/templates/default_site/stash_templates/';
