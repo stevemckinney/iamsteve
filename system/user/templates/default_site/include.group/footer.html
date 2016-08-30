@@ -43,14 +43,14 @@
         var dl = document.querySelectorAll('.event-download');
         var ev = document.querySelectorAll('[data-event]');
         
-        for ( var dlc = 0; dlc < dlc.length; dlc++ ) {
+        for ( var dlc = 0; dlc < dl.length; dlc++ ) {
           dl[dlc].addEventListener('click', function() {
             _gs('event', this.textContent);
           });
         }
         
-        for ( var evc = 0; evc < evc.length; evc++ ) {
-          ev[evc].addEventListener('click', function() {
+        for ( var evc = 0; evc < ev.length; evc++ ) {
+          ev[evc].addEventListener('click', function(e) {
             _gs('event', this.dataset.event);
           });
         }
