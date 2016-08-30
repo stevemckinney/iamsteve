@@ -34,7 +34,7 @@
 .field-label {
 	display: block;
 	font-weight: 700;
-	line-height: 2.25; }
+	line-height: 1; }
 
 // Helper
 // ---------------------------
@@ -121,6 +121,9 @@
     
     @include breakpoint($c-max) {
       padding: $base-px; } }
+      
+  textarea {
+    min-height: 168px; }
 	
 	// Select
 	// ---------------------------
