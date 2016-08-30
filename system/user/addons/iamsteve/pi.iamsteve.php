@@ -43,6 +43,30 @@ class Iamsteve {
     $this->json_ld_close = '} </script>';
   }
   
+  public function fixer($theurl='')
+	{
+		if ($theurl == '')
+    {
+      $theurl = ee()->TMPL->tagdata;
+    }
+    
+		$removetrailingslash = ee()->TMPL->fetch_param('removetrailingslash');
+
+		if ($removetrailingslash == 'yes' || $removetrailingslash == 'true')
+		{
+			$patterns = '{\/P0$}';
+		}
+		else
+		{
+			$patterns = '{P0$}';
+		}
+
+		$replacements = '';
+
+		$this->return_data = preg_replace($patterns, $replacements, $theurl);
+		return $this->return_data;
+	}
+  
   public function json_ld()
   { 
     $html = $this->json_ld_person();

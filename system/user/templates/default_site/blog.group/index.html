@@ -12,7 +12,7 @@
   {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" paginate="top"}
     {paginate}
       {if previous_page}
-        <a href="{auto_path}" class="neutral-l1 sans link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></a>
+        <a href="{exp:iamsteve:fixer removetrailingslash='true'}{auto_path}{/exp:iamsteve:fixer}" class="neutral-l1 sans link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></a>
       {if:else}
         <span class="neutral-l3 sans link-icon disabled"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></span>
       {/if}
@@ -61,7 +61,7 @@
   		</div>
   		
   		{if next_page}
-  			<a href="{auto_path}" class="paginate paginate-right link-icon">Older <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
+  			<a href="{exp:iamsteve:fixer removetrailingslash='true'}{auto_path}{/exp:iamsteve:fixer}" class="paginate paginate-right link-icon">Older <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
   		{if:else}
   		  <span class="paginate paginate-right disabled link-icon">Older <span class="icon icon-medium icon-right">{gv_arrow_right}</span></span>
   		{/if}
