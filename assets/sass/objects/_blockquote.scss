@@ -1,22 +1,44 @@
 // Blockquote
 // ---------------------------
-$blockquote-font-size: 18px;
-
 .blockquote,
 blockquote {
+  font-size: 0;
+  position: relative;
   font-style: italic;
-  padding: cp($line, $measure);
-  margin: $line 0;
+  margin: $line*2 0;
+  padding: $line 0;
   position: relative;
   width: 100%;
   clear: both;
   color: $neutral;
-  background-color: $tertiary-l2;
-  border: 1px dashed $tertiary;
   max-width: $measure;
   
-  @include breakpoint($b) {
-    border-radius: $radius; }
+  @include breakpoint(($ab) ($c-max)) {
+    padding-left: 144px + 16px; 
+    padding-right: 16px; }
+    
+  @include breakpoint(($c) ($e-max)) {
+    padding-left: 144px; }
+    
+  @include breakpoint($ab-max) {
+    border-top: 2px dashed $tertiary;
+    border-bottom: 2px dashed $tertiary;
+    background: $tertiary-l2;
+    margin: $line 0;
+    padding-left: 16px;
+    padding-right: 16px; }
   
-  p {
-  	margin: 0; } }
+  @include breakpoint($ab) {
+    background: 
+      image-url("dash-neutral.svg") repeat-x -12px top,
+      image-url("dash-neutral.svg") repeat-x -12px bottom;
+    
+    &:before {
+      content: image-url("signpost.svg");
+      margin-left: (-98px - $line - $line);
+      margin-right: $line*2; }
+    
+    &:before,
+    > * {
+      display: inline-block;
+      vertical-align: middle; } } }

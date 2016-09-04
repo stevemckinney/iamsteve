@@ -2,6 +2,8 @@
 // ---------------------------
 .entry-content {
   @include breakpoint(1200px) {
+    max-width: $contain;
+    margin-left: auto;
     margin-right: calc(50% - #{$measure / 2}); }
   
   img {
@@ -34,16 +36,19 @@
     // 3px aligns back to baseline
     margin-bottom: $line + 3px; }
   
+  // This could be really stupid in the long run
   > *:not(figure):not(div), img {
     margin-left: auto;
     
     @include breakpoint($e-max) {
       margin-right: auto; } }
   
+  // Likewise
   > *:not(figure):not(img):not(div) {
     max-width: $measure; }
-    
-  > *:not(figure):not(img):not(div),
+  
+  // Yep
+  > *:not(figure):not(img):not(div):not(blockquote),
   figcaption {
     @include breakpoint($c-max) {
       padding-left: 16px;
@@ -66,21 +71,21 @@
   // default line-height: 1.25
   h2 {
     font-size: 24px;
-    padding-top: 30px;
+    margin-top: 30px;
     margin-bottom: 12px; }
   
   /* Aligns to 48px */
   h3 {
     font-size: 21px;
     line-height: 1.333333;
-    padding-top: 12px;
+    margin-top: 12px;
     margin-bottom: 8px; }
   
   /* Aligns to 48px */
   h4, h5, h6 {
     font-size: 18px;
     line-height: 1.5;
-    padding-top: 15px;
+    margin-top: 15px;
     margin-bottom: 6px; } }
 
 .entry-header + p,
@@ -92,7 +97,7 @@
 // Codepen
 // ---------------------------
 .cp_embed_iframe {
-  @include breakpoint($c) {
+  @include breakpoint($contain) {
     border-radius: $radius;
     max-width: 95%;
     margin-left: 5%; } }
