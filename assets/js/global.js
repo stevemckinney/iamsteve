@@ -7,7 +7,7 @@ var iamsteve = (function ()
   var search = document.getElementById('search');
   
   // Public
-  var toggler = function ()
+  var toggler = function()
   {    
     toggle.addEventListener( 'click', _toggleNav, false);
     toggle_search.addEventListener( 'click', _toggleSearch, false);
