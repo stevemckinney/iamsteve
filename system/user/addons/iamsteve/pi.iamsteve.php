@@ -101,7 +101,7 @@ class Iamsteve {
         $html .= '"https://instagram.com/stevemckinney",';
         $html .= '"https://uk.linkedin.com/in/steve-mckinney-5b5836102",';
         $html .= '"https://plus.google.com/u/0/114129050502065289651"';
-      $html .= ']';
+      $html .= '],';
       $html .= '"homeLocation": {';
         $html .= '"@type": "City",';
         $html .= '"name" : "Manchester"';
