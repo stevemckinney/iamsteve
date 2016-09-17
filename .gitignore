@@ -49,3 +49,4 @@ config/config.local.php
 config/config.dev.php
 config/config.prod.php
 system/user/config/license.key
+assets/images/.DS_Store
