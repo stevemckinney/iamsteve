@@ -1,20 +1,12 @@
-{embed="/include/header" entry_title="Portfolio"}
-	{exp:channel:entries channel="portfolio" require_entry=“yes" status="Open" category_group="not 18" global:param_disable_all global:param_cache_param fixed_order="26|27|45|44|28|29"}
+{layout="layouts/_layout-blog" title="Portfolio" class="page-offset page-portfolio"}
+
+	{exp:channel:entries channel="portfolio" require_entry="no" limit="1"}
 	
-	{if no_results}{redirect="portfolio"}{/if}
-	
-	<a href="{title_permalink='portfolio/view'}" title="View {title} in full." class="item_{url_title}">
-		<figure>
-			<div class="browser" role="img" aria-label="Small website preview of {title}"></div>
-			<figcaption>
-				<h2>{title}</h2>
-				<p>{exp:streeng words="25" append="&hellip;"}{item_description}{/exp:streeng}</p>
-				<span class="button">View more</span>
-			</figcaption>
-		</figure>
-	</a>
+  	{if no_results}{redirect="portfolio"}{/if}
+	  <div class="row pt8 pb8 row-normal measure m-center text-center">
+  	  <h1 class="f2 m0">My portfolio can be now found at <a href="http://stevemckinney.net" class="primary">stevemckinney.net</a></h1>
+    </div>
 	
 	{/exp:channel:entries}
-  <p><a href="/contact" class="notice-success"><em>Let's work together?</em>Contact me</a></p>
   
 {embed="/include/footer"}
