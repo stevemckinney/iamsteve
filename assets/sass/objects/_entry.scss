@@ -23,7 +23,7 @@
   @include breakpoint($e) {
     flex-basis: 378px; } }
 
-// Entry list image
+// Entry single image
 // ---------------------------
 .entry-image {
   @include breakpoint($site-width) {

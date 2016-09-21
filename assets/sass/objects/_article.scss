@@ -143,12 +143,12 @@
 // Specific pieces of content
 // ---------------------------
 .featured-image {
-  margin-top: -5px;
   padding: $base-px 0;
   overflow: hidden;
   min-height: 240px;
   
   @include breakpoint($site-width) {
+    margin-top: $line*2;
     min-height: 516px;
     border-radius: $radius 0 0 $radius; } }
 

@@ -19,7 +19,7 @@ $default-margin-map: (
   b: bottom,
   l: left 
 ) !default;
-$default-margin-map: ( b: bottom );
+$default-margin-map: ( t: top, b: bottom );
 $default-enable-undo-margin: true !default;
 @import "helpers/margin";
 
