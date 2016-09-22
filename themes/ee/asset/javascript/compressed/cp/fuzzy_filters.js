@@ -26,9 +26,7 @@ reset:function(){_.each(this.items,function(e){t(e.el).toggle(!0)}),this.length=
 _update:function(){this.ul.empty().append(_.pluck(this.items,"el")),this.ul.append(this.keep)},/**
 	 * Rough fuzzy matching scorer
 	 */
-_scoreString:function(t,e){var i=0,s=1,n=e.length;t=t.toLowerCase(),
-// First letter match is a big plus
-t[0]==e[0]&&(i+=1);for(var r=0;r<n;r++){var h=t.indexOf(e.charAt(r).toLowerCase());switch(h){case-1:return 0;// not found, not our word
+_scoreString:function(t,e){var i=0,s=1,n=e.length;t=t.toLowerCase(),t[0]==e[0]&&(i+=1);for(var r=0;n>r;r++){var h=t.indexOf(e.charAt(r).toLowerCase());switch(h){case-1:return 0;// not found, not our word
 case 0:i+=.6,// first position, good
 r==s&&(// consecutive, better
 i+=.4);break;default:i+=.4/s}s+=h,t=t.substr(h+1)}
@@ -36,7 +34,7 @@ i+=.4);break;default:i+=.4/s}s+=h,t=t.substr(h+1)}
 return i/n*(n/s)}},i.prototype={getScrollWrap:function(){return this.isNav?this.ul:this.ul.closest(".scroll-wrap")},/**
 	 * Set the focus index
 	 */
-setCurrent:function(t){return this.current=t,this.ul.find("li a.act").removeClass("act"),t<0?void(this.active=null):(this.active=this.ul.find("li a:visible").eq(t),this.active.addClass("act"),void this._updateScroll())},/**
+setCurrent:function(t){return this.current=t,this.ul.find("li a.act").removeClass("act"),0>t?void(this.active=null):(this.active=this.ul.find("li a:visible").eq(t),this.active.addClass("act"),void this._updateScroll())},/**
 	 * Get the focused element
 	 */
 getCurrent:function(){return this.active},/**
@@ -45,7 +43,7 @@ getCurrent:function(){return this.active},/**
 setLength:function(t){this.length=t},/**
 	 * Make sure the active element is visible
 	 */
-_updateScroll:function(){var t=this.current-this.scrolled;t>this.scrollOffset?this.scrolled+=t-this.scrollOffset:t<=0&&(this.scrolled+=t),this.scrollWrap.scrollTop(this.scrolled*this.active.outerHeight())},/**
+_updateScroll:function(){var t=this.current-this.scrolled;t>this.scrollOffset?this.scrolled+=t-this.scrollOffset:0>=t&&(this.scrolled+=t),this.scrollWrap.scrollTop(this.scrolled*this.active.outerHeight())},/**
 	 * Move the focus down one element if possible
 	 */
 down:function(){this.setCurrent(Math.min(this.length,this.current+1))},/**

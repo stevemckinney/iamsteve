@@ -20,12 +20,12 @@ i.dialog({width:r,height:615,resizable:!1,position:["center","center"],modal:!0,
 // force a trigger check
 t.trigger("interact");e("#dir_choice").val()},close:function(t,r){
 // Clear out keyword filter
-e("#keywords",i).val("")}});var o=e("#file_browser_body").find("table");o.each(function(){if(d=e(this),d.data("table_config"))return!1});var l=d.data("table_config");d.table(l),
+e("#keywords",i).val("")}});var o=e("#file_browser_body").find("table");o.each(function(){return _=e(this),_.data("table_config")?!1:void 0});var l=_.data("table_config");_.table(l),
 // Set directory in case filter happens before input has changed (because the
 // filter is only set on certain interaction events)
 // $table.table('add_filter', { 'dir_choice': $dir_choice.val() });
-d.table("add_filter",t),d.table("add_filter",e("#keywords"));var _=d.table("get_template");thumb_template=e("#thumbTmpl").remove().html(),table_container=d.table("get_container"),thumb_container=e("#file_browser_body"),//$('div').insertBefore($table);
-e("#view_type").change(function(){"thumb"==this.value?(d.detach(),d.table("set_container",thumb_container),d.table("set_template",thumb_template),d.table("add_filter",{per_page:36})):(thumb_container.html(d),d.table("set_container",table_container),d.table("set_template",_),d.table("add_filter",{per_page:15}))}),
+_.table("add_filter",t),_.table("add_filter",e("#keywords"));var d=_.table("get_template");thumb_template=e("#thumbTmpl").remove().html(),table_container=_.table("get_container"),thumb_container=e("#file_browser_body"),//$('div').insertBefore($table);
+e("#view_type").change(function(){"thumb"==this.value?(_.detach(),_.table("set_container",thumb_container),_.table("set_template",thumb_template),_.table("add_filter",{per_page:36})):(thumb_container.html(_),_.table("set_container",table_container),_.table("set_template",d),_.table("add_filter",{per_page:15}))}),
 // Bind the upload submit event
 e("#upload_form",i).submit(e.ee_filebrowser.upload_start),
 // Add the display type as a class to file_browser_body
@@ -34,7 +34,7 @@ e("#file_browser_body",i).addClass(a)}
 /**
 	 * Hides the directory switcher based on settings passed to add_trigger
 	 */
-function r(){"all"!=c[n].directory?(e("#dir_choice",i).val(c[n].directory),e("#dir_choice_form .dir_choice_container",i).hide()):(e("#dir_choice",i).val(),e("#dir_choice_form .dir_choice_container",i).show())}var i,o,n="",a="list",l=0,c={},_="",d=null;/*
+function r(){"all"!=c[n].directory?(e("#dir_choice",i).val(c[n].directory),e("#dir_choice_form .dir_choice_container",i).hide()):(e("#dir_choice",i).val(),e("#dir_choice_form .dir_choice_container",i).show())}var i,o,n="",a="list",l=0,c={},d="",_=null;/*
 	 * Sets up the filebrowser - call this before anything else
 	 *
 	 * @todo make callbacks overridable ($.extend)
@@ -58,7 +58,7 @@ e.ee_filebrowser.reload()},trigger:"#file_browser #upload_form input"})})},
 	 *		directories			 - returns all directories
 	 *		directory_contents	 - returns directory information and files ({url: '', id: '', files: {...}})
 	 */
-e.ee_filebrowser.endpoint_request=function(t,r,i){"undefined"==typeof i&&e.isFunction(r)&&(i=r,r={}),r=e.extend(r,{action:t}),e.ajax({url:EE.BASE+"&"+EE.filebrowser.endpoint_url,type:"GET",dataType:"json",data:r,cache:!1,success:function(e,t,r){return e.error?void(_=e.error):void("function"==typeof i&&i.call(this,e))}})},
+e.ee_filebrowser.endpoint_request=function(t,r,i){"undefined"==typeof i&&e.isFunction(r)&&(i=r,r={}),r=e.extend(r,{action:t}),e.ajax({url:EE.BASE+"&"+EE.filebrowser.endpoint_url,type:"GET",dataType:"json",data:r,cache:!1,success:function(e,t,r){return e.error?void(d=e.error):void("function"==typeof i&&i.call(this,e))}})},
 // --------------------------------------------------------------------
 /*
 	 * Allows you to bind elements that will open the file browser
@@ -72,12 +72,12 @@ e.ee_filebrowser.endpoint_request=function(t,r,i){"undefined"==typeof i&&e.isFun
 	 *		can be set to 'any' or 'image'. Directory can be set to 'all' or
 	 *		a specific directory ID
 	 */
-e.ee_filebrowser.add_trigger=function(t,a,l,d){d?c[a]=l:e.isFunction(a)?(d=a,a="userfile",c[a]={content_type:"any",directory:"all"}):e.isFunction(l)&&(d=l,c[a]={content_type:"any",directory:"all"}),e(t).click(function(){
+e.ee_filebrowser.add_trigger=function(t,a,l,_){_?c[a]=l:e.isFunction(a)?(_=a,a="userfile",c[a]={content_type:"any",directory:"all"}):e.isFunction(l)&&(_=l,c[a]={content_type:"any",directory:"all"}),e(t).click(function(){
 // Check to see if we have any errors from setup
-if(_)return alert(_),!1;var e=this;
+if(d)return alert(d),!1;var e=this;
 // Change the upload field to their preferred name
 // Restrict the upload directory options to the specified directory
-return n=a,r(),i.dialog("open"),o=function(t){d.call(e,t,a)},!1})},
+return n=a,r(),i.dialog("open"),o=function(t){_.call(e,t,a)},!1})},
 // --------------------------------------------------------------------
 /**
 	 * Gets the settings of the currently selected field
@@ -113,4 +113,4 @@ e.ee_filebrowser.reload_directory=function(t){e.ee_filebrowser.reload()},
 /**
 	 * Refreshes the file browser with the newly upload files
 	 */
-e.ee_filebrowser.reload=function(){d&&(d.table("clear_cache"),d.table("refresh"))}}(jQuery);
+e.ee_filebrowser.reload=function(){_&&(_.table("clear_cache"),_.table("refresh"))}}(jQuery);

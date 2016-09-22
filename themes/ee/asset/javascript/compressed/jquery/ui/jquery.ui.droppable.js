@@ -28,7 +28,7 @@ i&&(i.currentItem||i.element)[0]!==this.element[0]&&this.accept.call(this.elemen
 i&&(i.currentItem||i.element)[0]!==this.element[0]&&this.accept.call(this.element[0],i.currentItem||i.element)&&(this.options.hoverClass&&this.element.removeClass(this.options.hoverClass),this._trigger("out",t,this.ui(i)))},_drop:function(t,i){var s=i||e.ui.ddmanager.current,o=!1;
 // Bail if draggable and droppable are same element
 // Bail if draggable and droppable are same element
-return!(!s||(s.currentItem||s.element)[0]===this.element[0])&&(this.element.find(":data(ui-droppable)").not(".ui-draggable-dragging").each(function(){var i=e(this).droppable("instance");if(i.options.greedy&&!i.options.disabled&&i.options.scope===s.options.scope&&i.accept.call(i.element[0],s.currentItem||s.element)&&e.ui.intersect(s,e.extend(i,{offset:i.element.offset()}),i.options.tolerance,t))return o=!0,!1}),!o&&(!!this.accept.call(this.element[0],s.currentItem||s.element)&&(this.options.activeClass&&this.element.removeClass(this.options.activeClass),this.options.hoverClass&&this.element.removeClass(this.options.hoverClass),this._trigger("drop",t,this.ui(s)),this.element)))},ui:function(e){return{draggable:e.currentItem||e.element,helper:e.helper,position:e.position,offset:e.positionAbs}}}),e.ui.intersect=function(){function e(e,t,i){return e>=t&&e<t+i}return function(t,i,s,o){if(!i.offset)return!1;var n=(t.positionAbs||t.position.absolute).left+t.margins.left,r=(t.positionAbs||t.position.absolute).top+t.margins.top,a=n+t.helperProportions.width,l=r+t.helperProportions.height,p=i.offset.left,h=i.offset.top,c=p+i.proportions().width,d=h+i.proportions().height;switch(s){case"fit":return p<=n&&a<=c&&h<=r&&l<=d;case"intersect":// Right Half
+return s&&(s.currentItem||s.element)[0]!==this.element[0]?(this.element.find(":data(ui-droppable)").not(".ui-draggable-dragging").each(function(){var i=e(this).droppable("instance");return i.options.greedy&&!i.options.disabled&&i.options.scope===s.options.scope&&i.accept.call(i.element[0],s.currentItem||s.element)&&e.ui.intersect(s,e.extend(i,{offset:i.element.offset()}),i.options.tolerance,t)?(o=!0,!1):void 0}),o?!1:this.accept.call(this.element[0],s.currentItem||s.element)?(this.options.activeClass&&this.element.removeClass(this.options.activeClass),this.options.hoverClass&&this.element.removeClass(this.options.hoverClass),this._trigger("drop",t,this.ui(s)),this.element):!1):!1},ui:function(e){return{draggable:e.currentItem||e.element,helper:e.helper,position:e.position,offset:e.positionAbs}}}),e.ui.intersect=function(){function e(e,t,i){return e>=t&&t+i>e}return function(t,i,s,o){if(!i.offset)return!1;var n=(t.positionAbs||t.position.absolute).left+t.margins.left,r=(t.positionAbs||t.position.absolute).top+t.margins.top,a=n+t.helperProportions.width,l=r+t.helperProportions.height,p=i.offset.left,h=i.offset.top,c=p+i.proportions().width,d=h+i.proportions().height;switch(s){case"fit":return n>=p&&c>=a&&r>=h&&d>=l;case"intersect":// Right Half
 // Left Half
 // Bottom Half
 return p<n+t.helperProportions.width/2&&a-t.helperProportions.width/2<c&&h<r+t.helperProportions.height/2&&l-t.helperProportions.height/2<d;// Top Half
@@ -36,7 +36,7 @@ case"pointer":return e(o.pageY,h,i.proportions().height)&&e(o.pageX,p,i.proporti
 // Bottom edge touching
 // Left edge touching
 // Right edge touching
-return(r>=h&&r<=d||l>=h&&l<=d||r<h&&l>d)&&(n>=p&&n<=c||a>=p&&a<=c||n<p&&a>c);default:return!1}}}(),e.ui.ddmanager={current:null,droppables:{"default":[]},prepareOffsets:function(t,i){var s,o,n=e.ui.ddmanager.droppables[t.options.scope]||[],r=i?i.type:null,// workaround for #2317
+return(r>=h&&d>=r||l>=h&&d>=l||h>r&&l>d)&&(n>=p&&c>=n||a>=p&&c>=a||p>n&&a>c);default:return!1}}}(),e.ui.ddmanager={current:null,droppables:{"default":[]},prepareOffsets:function(t,i){var s,o,n=e.ui.ddmanager.droppables[t.options.scope]||[],r=i?i.type:null,// workaround for #2317
 a=(t.currentItem||t.element).find(":data(ui-droppable)").addBack();e:for(s=0;s<n.length;s++)
 // No disabled and non-accepted
 if(!(n[s].options.disabled||t&&!n[s].accept.call(n[s].element[0],t.currentItem||t.element))){
@@ -51,9 +51,7 @@ t.element.parentsUntil("body").bind("scroll.droppable",function(){t.options.refr
 // If you have a highly dynamic page, you might try this option. It renders positions every time you move the mouse.
 t.options.refreshPositions&&e.ui.ddmanager.prepareOffsets(t,i),
 // Run through all droppables and check their positions based on specific tolerance options
-e.each(e.ui.ddmanager.droppables[t.options.scope]||[],function(){if(!this.options.disabled&&!this.greedyChild&&this.visible){var s,o,n,r=e.ui.intersect(t,this,this.options.tolerance,i),a=!r&&this.isover?"isout":r&&!this.isover?"isover":null;a&&(this.options.greedy&&(
-// find droppable parents with same scope
-o=this.options.scope,n=this.element.parents(":data(ui-droppable)").filter(function(){return e(this).droppable("instance").options.scope===o}),n.length&&(s=e(n[0]).droppable("instance"),s.greedyChild="isover"===a)),
+e.each(e.ui.ddmanager.droppables[t.options.scope]||[],function(){if(!this.options.disabled&&!this.greedyChild&&this.visible){var s,o,n,r=e.ui.intersect(t,this,this.options.tolerance,i),a=!r&&this.isover?"isout":r&&!this.isover?"isover":null;a&&(this.options.greedy&&(o=this.options.scope,n=this.element.parents(":data(ui-droppable)").filter(function(){return e(this).droppable("instance").options.scope===o}),n.length&&(s=e(n[0]).droppable("instance"),s.greedyChild="isover"===a)),
 // we just moved into a greedy child
 s&&"isover"===a&&(s.isover=!1,s.isout=!0,s._out.call(s,i)),this[a]=!0,this["isout"===a?"isover":"isout"]=!1,this["isover"===a?"_over":"_out"].call(this,i),
 // we just moved out of a greedy child

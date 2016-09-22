@@ -19,7 +19,7 @@ var g=i.target||t.attr("rel");
 // overlay not found. cannot continue
 if(c=g?e(g):t,!c.length)throw"Could not find Overlay: "+g;
 // trigger's click event
-t&&t.index(c)==-1&&t.click(function(e){return s.load(e),e.preventDefault()}),
+t&&-1==t.index(c)&&t.click(function(e){return s.load(e),e.preventDefault()}),
 // API methods  
 e.extend(s,{load:function(t){
 // can be opened only once
@@ -27,13 +27,7 @@ if(s.isOpened())return s;
 // find the effect
 var r=o[i.effect];if(!r)throw'Overlay: cannot find effect : "'+i.effect+'"';if(
 // close other instances?
-i.oneInstance&&e.each(n,function(){this.close(t)}),
-// onBeforeLoad
-t=t||e.Event(),t.type="onBeforeLoad",a.trigger(t),t.isDefaultPrevented())return s;
-// opened
-l=!0,
-// possible mask effect
-d&&e(c).expose(d);
+i.oneInstance&&e.each(n,function(){this.close(t)}),t=t||e.Event(),t.type="onBeforeLoad",a.trigger(t),t.isDefaultPrevented())return s;l=!0,d&&e(c).expose(d);
 // position & dimensions 
 var g=i.top,h=i.left,p=c.outerWidth({margin:!0}),v=c.outerHeight({margin:!0});
 // load effect  		 		
@@ -52,11 +46,7 @@ e.each("onBeforeLoad,onStart,onLoad,onBeforeClose,onClose".split(","),function(t
 // configuration
 e.isFunction(i[n])&&e(s).bind(n,i[n]),
 // API
-s[n]=function(t){return e(s).bind(n,t),s}}),
-// close button
-r=c.find(i.close||".close"),r.length||i.close||(r=e('<a class="close"></a>'),c.prepend(r)),r.click(function(e){s.close(e)}),
-// autoload
-i.load&&s.load()}
+s[n]=function(t){return e(s).bind(n,t),s}}),r=c.find(i.close||".close"),r.length||i.close||(r=e('<a class="close"></a>'),c.prepend(r)),r.click(function(e){s.close(e)}),i.load&&s.load()}
 // static constructs
 e.tools=e.tools||{version:"1.2.3"},e.tools.overlay={addEffect:function(e,t,n){o[e]=[t,n]},conf:{close:null,closeOnClick:!0,closeOnEsc:!0,closeSpeed:"fast",effect:"default",
 // since 1.2. fixed positioning not supported by IE6

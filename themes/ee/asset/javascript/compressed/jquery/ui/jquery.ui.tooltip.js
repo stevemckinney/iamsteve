@@ -21,7 +21,7 @@ return t("<a>").text(i).html()},hide:!0,
 // Disabled elements have inconsistent behavior across browsers (#8661)
 items:"[title]:not([disabled])",position:{my:"left top+15",at:"left bottom",collision:"flipfit flip"},show:!0,tooltipClass:null,track:!1,
 // callbacks
-close:null,open:null},_addDescribedBy:function(i,e){var o=(i.attr("aria-describedby")||"").split(/\s+/);o.push(e),i.data("ui-tooltip-id",e).attr("aria-describedby",t.trim(o.join(" ")))},_removeDescribedBy:function(i){var e=i.data("ui-tooltip-id"),o=(i.attr("aria-describedby")||"").split(/\s+/),n=t.inArray(e,o);n!==-1&&o.splice(n,1),i.removeData("ui-tooltip-id"),o=t.trim(o.join(" ")),o?i.attr("aria-describedby",o):i.removeAttr("aria-describedby")},_create:function(){this._on({mouseover:"open",focusin:"open"}),
+close:null,open:null},_addDescribedBy:function(i,e){var o=(i.attr("aria-describedby")||"").split(/\s+/);o.push(e),i.data("ui-tooltip-id",e).attr("aria-describedby",t.trim(o.join(" ")))},_removeDescribedBy:function(i){var e=i.data("ui-tooltip-id"),o=(i.attr("aria-describedby")||"").split(/\s+/),n=t.inArray(e,o);-1!==n&&o.splice(n,1),i.removeData("ui-tooltip-id"),o=t.trim(o.join(" ")),o?i.attr("aria-describedby",o):i.removeAttr("aria-describedby")},_create:function(){this._on({mouseover:"open",focusin:"open"}),
 // IDs of generated tooltips, needed for destroy
 this.tooltips={},
 // IDs of parent tooltips where we removed the title attribute
@@ -48,10 +48,7 @@ n._delay(function(){
 // object is reused and the type is changed. Therefore, we can't
 // rely on the type being correct after the event finished
 // bubbling, so we set it back to the previous value. (#8740)
-i&&(i.type=s),this._open(i,t,e)})}),void(e&&this._open(i,t,e)))},_open:function(i,e,o){function n(t){p.of=t,l.is(":hidden")||l.position(p)}var s,l,a,r,d,p=t.extend({},this.options.position);if(o){if(
-// Content can be updated multiple times. If the tooltip already
-// exists, then just update the content and bail.
-s=this._find(e))return void s.tooltip.find(".ui-tooltip-content").html(o);
+i&&(i.type=s),this._open(i,t,e)})}),void(e&&this._open(i,t,e)))},_open:function(i,e,o){function n(t){p.of=t,l.is(":hidden")||l.position(p)}var s,l,a,r,d,p=t.extend({},this.options.position);if(o){if(s=this._find(e))return void s.tooltip.find(".ui-tooltip-content").html(o);
 // if we have a title, clear it to prevent the native tooltip
 // we have to check first to avoid defining a title if none exists
 // (we don't want to cause an element to start matching [title])
@@ -74,17 +71,7 @@ this.options.show&&this.options.show.delay&&(r=this.delayedShow=setInterval(func
 // tooltips will handle this in destroy.
 e[0]!==this.element[0]&&(a.remove=function(){this._removeTooltip(l)}),i&&"mouseover"!==i.type||(a.mouseleave="close"),i&&"focusin"!==i.type||(a.focusout="close"),this._on(!0,e,a)}},close:function(i){var e,o=this,n=t(i?i.currentTarget:this.element),s=this._find(n);
 // The tooltip may already be closed
-s&&(e=s.tooltip,
-// disabling closes the tooltip, so we need to track when we're closing
-// to avoid an infinite loop in case the tooltip becomes disabled on close
-s.closing||(
-// Clear the interval for delayed tracking tooltips
-clearInterval(this.delayedShow),
-// only set title if we had one before (see comment in _open())
-// If the title attribute has changed since open(), don't restore
-n.data("ui-tooltip-title")&&!n.attr("title")&&n.attr("title",n.data("ui-tooltip-title")),this._removeDescribedBy(n),s.hiding=!0,e.stop(!0),this._hide(e,this.options.hide,function(){o._removeTooltip(t(this))}),n.removeData("ui-tooltip-open"),this._off(n,"mouseleave focusout keyup"),
-// Remove 'remove' binding only on delegated targets
-n[0]!==this.element[0]&&this._off(n,"remove"),this._off(this.document,"mousemove"),i&&"mouseleave"===i.type&&t.each(this.parents,function(i,e){t(e.element).attr("title",e.title),delete o.parents[i]}),s.closing=!0,this._trigger("close",i,{tooltip:e}),s.hiding||(s.closing=!1)))},_tooltip:function(i){var e=t("<div>").attr("role","tooltip").addClass("ui-tooltip ui-widget ui-corner-all ui-widget-content "+(this.options.tooltipClass||"")),o=e.uniqueId().attr("id");return t("<div>").addClass("ui-tooltip-content").appendTo(e),e.appendTo(this.document[0].body),this.tooltips[o]={element:i,tooltip:e}},_find:function(t){var i=t.data("ui-tooltip-id");return i?this.tooltips[i]:null},_removeTooltip:function(t){t.remove(),delete this.tooltips[t.attr("id")]},_destroy:function(){var i=this;
+s&&(e=s.tooltip,s.closing||(clearInterval(this.delayedShow),n.data("ui-tooltip-title")&&!n.attr("title")&&n.attr("title",n.data("ui-tooltip-title")),this._removeDescribedBy(n),s.hiding=!0,e.stop(!0),this._hide(e,this.options.hide,function(){o._removeTooltip(t(this))}),n.removeData("ui-tooltip-open"),this._off(n,"mouseleave focusout keyup"),n[0]!==this.element[0]&&this._off(n,"remove"),this._off(this.document,"mousemove"),i&&"mouseleave"===i.type&&t.each(this.parents,function(i,e){t(e.element).attr("title",e.title),delete o.parents[i]}),s.closing=!0,this._trigger("close",i,{tooltip:e}),s.hiding||(s.closing=!1)))},_tooltip:function(i){var e=t("<div>").attr("role","tooltip").addClass("ui-tooltip ui-widget ui-corner-all ui-widget-content "+(this.options.tooltipClass||"")),o=e.uniqueId().attr("id");return t("<div>").addClass("ui-tooltip-content").appendTo(e),e.appendTo(this.document[0].body),this.tooltips[o]={element:i,tooltip:e}},_find:function(t){var i=t.data("ui-tooltip-id");return i?this.tooltips[i]:null},_removeTooltip:function(t){t.remove(),delete this.tooltips[t.attr("id")]},_destroy:function(){var i=this;
 // close open tooltips
 t.each(this.tooltips,function(e,o){
 // Delegate to close method to handle common cleanup

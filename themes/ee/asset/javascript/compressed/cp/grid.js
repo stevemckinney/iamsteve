@@ -60,7 +60,7 @@ e.toggle(i>0),i>0?(
 0==n.size()&&t("td.reorder-col",this.root).size()>0&&t("> thead tr",this.root).prepend(t("<th/>",{"class":"first reorder-col"})),0==o.size()&&t("> thead tr",this.root).append(t("<th/>",{"class":"last grid-remove"}))):(n.remove(),o.remove()),""!==this.settings.grid_max_rows&&
 // Show add button if row count is below the max rows setting,
 // and only if there are already other rows present
-e.toggle(i<this.settings.grid_max_rows&&i>0),""!==this.settings.grid_min_rows){var r=this.root.find(".toolbar .remove");
+e.toggle(i<this.settings.grid_max_rows&&i>0),""!==this.settings.grid_min_rows){var r=this.root.find("td:last-child .toolbar .remove");
 // Show delete buttons if the row count is above the min rows setting
 r.toggle(i>this.settings.grid_min_rows)}
 // Do not allow sortable to run when there is only one row, otherwise
@@ -106,7 +106,9 @@ i._fireEvent("remove",row),
 // Remove the row
 row.remove(),i._toggleRowManipulationButtons(),
 // Show our empty field message if we have no rows left
-0==i._getRows().size()&&i.emptyField.show()})},/**
+0==i._getRows().size()&&i.emptyField.show(),
+// Mark entire Grid field as valid if all rows with invalid cells are cleared
+0==t("td.invalid",i.root).size()&&EE.cp&&void 0!==EE.cp.formValidation&&EE.cp.formValidation.markFieldValid(t("input, select, textarea",i.blankRow).eq(0))})},/**
 	 * Called after main initialization to fire the 'display' event
 	 * on pre-exising rows
 	 */
@@ -162,7 +164,7 @@ var h=t("<span/>").attr({"data-field":r,"data-columns":s,style:"display: block"}
 // Alert not already there? Add it and add our error message
 if(o.hasClass("alert"))
 // There isn't an error span for this error yet, add it anew
-0==a.size()?t("p",o).append(h):l.indexOf(s)==-1&&a.attr("data-columns",l+s);else{var o=t("<div/>").html(EE.alert.grid_error).contents();o.html("<p>"+h.prop("outerHTML")+"</p>"),o.insertBefore(t("div.grid-wrap"))}}else o.hasClass("alert")&&(
+0==a.size()?t("p",o).append(h):-1==l.indexOf(s)&&a.attr("data-columns",l+s);else{var o=t("<div/>").html(EE.alert.grid_error).contents();o.html("<p>"+h.prop("outerHTML")+"</p>"),o.insertBefore(t("div.grid-wrap"))}}else o.hasClass("alert")&&(
 // If the error exists, we need to remove the column ID of the column
 // that validated successfully for this field, and if the error doesn't
 // exist for any more columns, remove the error entirely
@@ -229,7 +231,7 @@ n.html(""),n.animate({width:0},200,function(){n.remove(),e._resizeColContainer(!
 	 * shows the delete buttons; otherwise, hides delete buttons if there is
 	 * only one column
 	 */
-_toggleDeleteButtons:function(){var t=this.root.find(".grid-item").size(),i=this.root.find(".grid-tools li.remove");i.toggle(t>1)},/**
+_toggleDeleteButtons:function(){var t=this.root.find(".grid-item").size()>1,i=this.root.find(".grid-tools li.remove"),e=this.root.find(".grid-tools li.add");i.toggle(t),e.toggleClass("last",!t)},/**
 	 * Inserts a new column after a specified element
 	 *
 	 * @param	{jQuery Object}	column		Column to insert
@@ -268,9 +270,7 @@ _bindAutoColName:function(i){i.each(function(i,e){t("input.grid_col_field_label"
 	 *				defaults to blank column
 	 * @return	{jQuery Object}	New column element
 	 */
-_buildNewColumn:function(i){i=void 0==i?this.blankColumn.clone():this._cloneWithFormValues(i),
-// Clear out column name field in new column because it has to be unique
-i.find('input[name$="\\[col_name\\]"]').attr("value","");
+_buildNewColumn:function(i){i=void 0==i?this.blankColumn.clone():this._cloneWithFormValues(i),i.find('input[name$="\\[col_name\\]"]').attr("value","");
 // Need to make sure the new column's field names are unique
 var e="new_"+t(".grid-item",this.root).size(),n=i.data("field-name");
 // Make sure inputs are enabled if creating blank column

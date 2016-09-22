@@ -263,6 +263,10 @@ $lang = array(
 
 'show_profiler_desc' => 'When set to <b>enable</b>, super admins will see benchmark results, all SQL queries, and submitted form data displayed at the bottom of the browser window.',
 
+'enable_devlog_alerts' => 'Enable Developer Log Alerts?',
+
+'enable_devlog_alerts_desc' => 'When set to <b>enable</b>, super admins will see control panel alerts when new <a href="%s">Developer Log</a> items need action. Currently <b>%s item(s)</b> are logged.',
+
 'output_options' => 'Output Options',
 
 'gzip_output' => 'Enable <abbr title="GNU Zip Compression">GZIP</abbr> compression?',
@@ -559,7 +563,7 @@ $lang = array(
 'menu_url_desc' => 'Link <abbr title="Uniform Resource Locator">URL</abbr>',
 'menu_addon' => 'Add-On',
 'menu_addon_desc' => 'Navigation from installed Add-Ons',
-'menu_no_addons' => 'No <b>Add-Ons</b> found.',
+'menu_no_addons' => 'No <b>Add-ons with menus</b> found.',
 'edit_menu_item' => 'Edit Menu Item',
 'add_menu_item' => 'Add Menu Item',
 

@@ -6,7 +6,7 @@
 // Baseline setup
 // --------------
 // Establish the root object, `window` in the browser, or `global` on the server.
-var n=this,t=n._,r={},e=Array.prototype,u=Object.prototype,i=Function.prototype,a=e.push,o=e.slice,c=e.concat,l=u.toString,f=u.hasOwnProperty,s=e.forEach,p=e.map,h=e.reduce,v=e.reduceRight,d=e.filter,y=e.every,g=e.some,m=e.indexOf,b=e.lastIndexOf,x=Array.isArray,_=Object.keys,w=i.bind,j=function(n){return n instanceof j?n:this instanceof j?void(this._wrapped=n):new j(n)};
+var n=this,t=n._,r={},e=Array.prototype,u=Object.prototype,i=Function.prototype,a=e.push,o=e.slice,c=e.concat,l=u.toString,f=u.hasOwnProperty,s=e.forEach,p=e.map,h=e.reduce,v=e.reduceRight,d=e.filter,g=e.every,m=e.some,y=e.indexOf,b=e.lastIndexOf,x=Array.isArray,_=Object.keys,w=i.bind,j=function(n){return n instanceof j?n:this instanceof j?void(this._wrapped=n):new j(n)};
 // Export the Underscore object for **Node.js**, with
 // backwards-compatibility for the old `require()` API. If we're in
 // the browser, add `_` as a global object via a string identifier,
@@ -19,7 +19,7 @@ j.VERSION="1.4.4";
 // The cornerstone, an `each` implementation, aka `forEach`.
 // Handles objects with the built-in `forEach`, arrays, and raw objects.
 // Delegates to **ECMAScript 5**'s native `forEach` if available.
-var A=j.each=j.forEach=function(n,t,e){if(null!=n)if(s&&n.forEach===s)n.forEach(t,e);else if(n.length===+n.length){for(var u=0,i=n.length;u<i;u++)if(t.call(e,n[u],u,n)===r)return}else for(var a in n)if(j.has(n,a)&&t.call(e,n[a],a,n)===r)return};
+var A=j.each=j.forEach=function(n,t,e){if(null!=n)if(s&&n.forEach===s)n.forEach(t,e);else if(n.length===+n.length){for(var u=0,i=n.length;i>u;u++)if(t.call(e,n[u],u,n)===r)return}else for(var a in n)if(j.has(n,a)&&t.call(e,n[a],a,n)===r)return};
 // Return the results of applying the iterator to each element.
 // Delegates to **ECMAScript 5**'s native `map` if available.
 j.map=j.collect=function(n,t,r){var e=[];return null==n?e:p&&n.map===p?n.map(t,r):(A(n,function(n,u,i){e[e.length]=t.call(r,n,u,i)}),e)};var E="Reduce of empty array with no initial value";
@@ -30,7 +30,7 @@ j.reduce=j.foldl=j.inject=function(n,t,r,e){var u=arguments.length>2;if(null==n&
 // Delegates to **ECMAScript 5**'s native `reduceRight` if available.
 j.reduceRight=j.foldr=function(n,t,r,e){var u=arguments.length>2;if(null==n&&(n=[]),v&&n.reduceRight===v)return e&&(t=j.bind(t,e)),u?n.reduceRight(t,r):n.reduceRight(t);var i=n.length;if(i!==+i){var a=j.keys(n);i=a.length}if(A(n,function(o,c,l){c=a?a[--i]:--i,u?r=t.call(e,r,n[c],c,l):(r=n[c],u=!0)}),!u)throw new TypeError(E);return r},
 // Return the first value which passes a truth test. Aliased as `detect`.
-j.find=j.detect=function(n,t,r){var e;return O(n,function(n,u,i){if(t.call(r,n,u,i))return e=n,!0}),e},
+j.find=j.detect=function(n,t,r){var e;return O(n,function(n,u,i){return t.call(r,n,u,i)?(e=n,!0):void 0}),e},
 // Return all the elements that pass a truth test.
 // Delegates to **ECMAScript 5**'s native `filter` if available.
 // Aliased as `select`.
@@ -40,14 +40,14 @@ j.reject=function(n,t,r){return j.filter(n,function(n,e,u){return!t.call(r,n,e,u
 // Determine whether all of the elements match a truth test.
 // Delegates to **ECMAScript 5**'s native `every` if available.
 // Aliased as `all`.
-j.every=j.all=function(n,t,e){t||(t=j.identity);var u=!0;return null==n?u:y&&n.every===y?n.every(t,e):(A(n,function(n,i,a){if(!(u=u&&t.call(e,n,i,a)))return r}),!!u)};
+j.every=j.all=function(n,t,e){t||(t=j.identity);var u=!0;return null==n?u:g&&n.every===g?n.every(t,e):(A(n,function(n,i,a){return(u=u&&t.call(e,n,i,a))?void 0:r}),!!u)};
 // Determine if at least one element in the object matches a truth test.
 // Delegates to **ECMAScript 5**'s native `some` if available.
 // Aliased as `any`.
-var O=j.some=j.any=function(n,t,e){t||(t=j.identity);var u=!1;return null==n?u:g&&n.some===g?n.some(t,e):(A(n,function(n,i,a){if(u||(u=t.call(e,n,i,a)))return r}),!!u)};
+var O=j.some=j.any=function(n,t,e){t||(t=j.identity);var u=!1;return null==n?u:m&&n.some===m?n.some(t,e):(A(n,function(n,i,a){return u||(u=t.call(e,n,i,a))?r:void 0}),!!u)};
 // Determine if the array or object contains a given value (using `===`).
 // Aliased as `include`.
-j.contains=j.include=function(n,t){return null!=n&&(m&&n.indexOf===m?n.indexOf(t)!=-1:O(n,function(n){return n===t}))},
+j.contains=j.include=function(n,t){return null==n?!1:y&&n.indexOf===y?-1!=n.indexOf(t):O(n,function(n){return n===t})},
 // Invoke a method (with arguments) on every item in a collection.
 j.invoke=function(n,t){var r=o.call(arguments,2),e=j.isFunction(t);return j.map(n,function(n){return(e?t:n[t]).apply(n,r)})},
 // Convenience version of a common use case of `map`: fetching a property.
@@ -69,7 +69,7 @@ j.shuffle=function(n){var t,r=0,e=[];return A(n,function(n){t=j.random(r++),e[r-
 // An internal function to generate lookup iterators.
 var k=function(n){return j.isFunction(n)?n:function(t){return t[n]}};
 // Sort the object's values by a criterion produced by an iterator.
-j.sortBy=function(n,t,r){var e=k(t);return j.pluck(j.map(n,function(n,t,u){return{value:n,index:t,criteria:e.call(r,n,t,u)}}).sort(function(n,t){var r=n.criteria,e=t.criteria;if(r!==e){if(r>e||void 0===r)return 1;if(r<e||void 0===e)return-1}return n.index<t.index?-1:1}),"value")};
+j.sortBy=function(n,t,r){var e=k(t);return j.pluck(j.map(n,function(n,t,u){return{value:n,index:t,criteria:e.call(r,n,t,u)}}).sort(function(n,t){var r=n.criteria,e=t.criteria;if(r!==e){if(r>e||void 0===r)return 1;if(e>r||void 0===e)return-1}return n.index<t.index?-1:1}),"value")};
 // An internal function used for aggregate "group by" operations.
 var F=function(n,t,r,e){var u={},i=k(t||j.identity);return A(n,function(t,a){var o=i.call(r,t,a,n);e(u,o,t)}),u};
 // Groups the object's values by a criterion. Pass either a string attribute
@@ -81,7 +81,7 @@ j.groupBy=function(n,t,r){return F(n,t,r,function(n,t,r){(j.has(n,t)?n[t]:n[t]=[
 j.countBy=function(n,t,r){return F(n,t,r,function(n,t){j.has(n,t)||(n[t]=0),n[t]++})},
 // Use a comparator function to figure out the smallest index at which
 // an object should be inserted so as to maintain order. Uses binary search.
-j.sortedIndex=function(n,t,r,e){r=null==r?j.identity:k(r);for(var u=r.call(e,t),i=0,a=n.length;i<a;){var o=i+a>>>1;r.call(e,n[o])<u?i=o+1:a=o}return i},
+j.sortedIndex=function(n,t,r,e){r=null==r?j.identity:k(r);for(var u=r.call(e,t),i=0,a=n.length;a>i;){var o=i+a>>>1;r.call(e,n[o])<u?i=o+1:a=o}return i},
 // Safely convert anything iterable into a real, live array.
 j.toArray=function(n){return n?j.isArray(n)?o.call(n):n.length===+n.length?j.map(n,j.identity):j.values(n):[]},
 // Return the number of elements in an object.
@@ -91,7 +91,7 @@ j.size=function(n){return null==n?0:n.length===+n.length?n.length:j.keys(n).leng
 // Get the first element of an array. Passing **n** will return the first N
 // values in the array. Aliased as `head` and `take`. The **guard** check
 // allows it to work with `_.map`.
-j.first=j.head=j.take=function(n,t,r){if(null!=n)return null==t||r?n[0]:o.call(n,0,t)},
+j.first=j.head=j.take=function(n,t,r){return null==n?void 0:null==t||r?n[0]:o.call(n,0,t)},
 // Returns everything but the last entry of the array. Especially useful on
 // the arguments object. Passing **n** will return all the values in
 // the array, excluding the last N. The **guard** check allows it to work with
@@ -99,7 +99,7 @@ j.first=j.head=j.take=function(n,t,r){if(null!=n)return null==t||r?n[0]:o.call(n
 j.initial=function(n,t,r){return o.call(n,0,n.length-(null==t||r?1:t))},
 // Get the last element of an array. Passing **n** will return the last N
 // values in the array. The **guard** check allows it to work with `_.map`.
-j.last=function(n,t,r){if(null!=n)return null==t||r?n[n.length-1]:o.call(n,Math.max(n.length-t,0))},
+j.last=function(n,t,r){return null==n?void 0:null==t||r?n[n.length-1]:o.call(n,Math.max(n.length-t,0))},
 // Returns everything but the first entry of the array. Aliased as `tail` and `drop`.
 // Especially useful on the arguments object. Passing an **n** will return
 // the rest N values in the array. The **guard**
@@ -128,24 +128,24 @@ j.intersection=function(n){var t=o.call(arguments,1);return j.filter(j.uniq(n),f
 j.difference=function(n){var t=c.apply(e,o.call(arguments,1));return j.filter(n,function(n){return!j.contains(t,n)})},
 // Zip together multiple lists into a single array -- elements that share
 // an index go together.
-j.zip=function(){for(var n=o.call(arguments),t=j.max(j.pluck(n,"length")),r=new Array(t),e=0;e<t;e++)r[e]=j.pluck(n,""+e);return r},
+j.zip=function(){for(var n=o.call(arguments),t=j.max(j.pluck(n,"length")),r=new Array(t),e=0;t>e;e++)r[e]=j.pluck(n,""+e);return r},
 // Converts lists into objects. Pass either a single array of `[key, value]`
 // pairs, or two parallel arrays of the same length -- one of keys, and one of
 // the corresponding values.
-j.object=function(n,t){if(null==n)return{};for(var r={},e=0,u=n.length;e<u;e++)t?r[n[e]]=t[e]:r[n[e][0]]=n[e][1];return r},
+j.object=function(n,t){if(null==n)return{};for(var r={},e=0,u=n.length;u>e;e++)t?r[n[e]]=t[e]:r[n[e][0]]=n[e][1];return r},
 // If the browser doesn't supply us with indexOf (I'm looking at you, **MSIE**),
 // we need this function. Return the position of the first occurrence of an
 // item in an array, or -1 if the item is not included in the array.
 // Delegates to **ECMAScript 5**'s native `indexOf` if available.
 // If the array is large and already in sort order, pass `true`
 // for **isSorted** to use binary search.
-j.indexOf=function(n,t,r){if(null==n)return-1;var e=0,u=n.length;if(r){if("number"!=typeof r)return e=j.sortedIndex(n,t),n[e]===t?e:-1;e=r<0?Math.max(0,u+r):r}if(m&&n.indexOf===m)return n.indexOf(t,r);for(;e<u;e++)if(n[e]===t)return e;return-1},
+j.indexOf=function(n,t,r){if(null==n)return-1;var e=0,u=n.length;if(r){if("number"!=typeof r)return e=j.sortedIndex(n,t),n[e]===t?e:-1;e=0>r?Math.max(0,u+r):r}if(y&&n.indexOf===y)return n.indexOf(t,r);for(;u>e;e++)if(n[e]===t)return e;return-1},
 // Delegates to **ECMAScript 5**'s native `lastIndexOf` if available.
 j.lastIndexOf=function(n,t,r){if(null==n)return-1;var e=null!=r;if(b&&n.lastIndexOf===b)return e?n.lastIndexOf(t,r):n.lastIndexOf(t);for(var u=e?r:n.length;u--;)if(n[u]===t)return u;return-1},
 // Generate an integer Array containing an arithmetic progression. A port of
 // the native Python `range()` function. See
 // [the Python documentation](http://docs.python.org/library/functions.html#range).
-j.range=function(n,t,r){arguments.length<=1&&(t=n||0,n=0),r=arguments[2]||1;for(var e=Math.max(Math.ceil((t-n)/r),0),u=0,i=new Array(e);u<e;)i[u++]=n,n+=r;return i},
+j.range=function(n,t,r){arguments.length<=1&&(t=n||0,n=0),r=arguments[2]||1;for(var e=Math.max(Math.ceil((t-n)/r),0),u=0,i=new Array(e);e>u;)i[u++]=n,n+=r;return i},
 // Function (ahem) Functions
 // ------------------
 // Create a function bound to a given object (assigning `this`, and arguments,
@@ -168,7 +168,7 @@ j.delay=function(n,t){var r=o.call(arguments,2);return setTimeout(function(){ret
 j.defer=function(n){return j.delay.apply(j,[n,1].concat(o.call(arguments,1)))},
 // Returns a function, that, when invoked, will only be triggered at most once
 // during a given window of time.
-j.throttle=function(n,t){var r,e,u,i,a=0,o=function(){a=new Date,u=null,i=n.apply(r,e)};return function(){var c=new Date,l=t-(c-a);return r=this,e=arguments,l<=0?(clearTimeout(u),u=null,a=c,i=n.apply(r,e)):u||(u=setTimeout(o,l)),i}},
+j.throttle=function(n,t){var r,e,u,i,a=0,o=function(){a=new Date,u=null,i=n.apply(r,e)};return function(){var c=new Date,l=t-(c-a);return r=this,e=arguments,0>=l?(clearTimeout(u),u=null,a=c,i=n.apply(r,e)):u||(u=setTimeout(o,l)),i}},
 // Returns a function, that, as long as it continues to be invoked, will not
 // be triggered. The function will be called after it stops being called for
 // N milliseconds. If `immediate` is passed, trigger the function on the
@@ -185,7 +185,7 @@ j.wrap=function(n,t){return function(){var r=[n];return a.apply(r,arguments),t.a
 // consuming the return value of the function that follows.
 j.compose=function(){var n=arguments;return function(){for(var t=arguments,r=n.length-1;r>=0;r--)t=[n[r].apply(this,t)];return t[0]}},
 // Returns a function that will only be executed after being called N times.
-j.after=function(n,t){return n<=0?t():function(){if(--n<1)return t.apply(this,arguments)}},
+j.after=function(n,t){return 0>=n?t():function(){return--n<1?t.apply(this,arguments):void 0}},
 // Object Functions
 // ----------------
 // Retrieve the names of an object's properties.
@@ -248,9 +248,7 @@ if(r[i]==n)return e[i]==t;
 // Add the first object to the stack of traversed objects.
 r.push(n),e.push(t);var a=0,o=!0;
 // Recursively compare objects and arrays.
-if("[object Array]"==u){if(
-// Compare array lengths to determine if a deep comparison is necessary.
-a=n.length,o=a==t.length)
+if("[object Array]"==u){if(a=n.length,o=a==t.length)
 // Deep compare the contents, ignoring non-numeric properties.
 for(;a--&&(o=S(n[a],t[a],r,e)););}else{
 // Objects with different constructors are not equivalent, but `Object`s
@@ -304,7 +302,7 @@ j.noConflict=function(){return n._=t,this},
 // Keep the identity function around for default iterators.
 j.identity=function(n){return n},
 // Run a function **n** times.
-j.times=function(n,t,r){for(var e=Array(n),u=0;u<n;u++)e[u]=t.call(r,u);return e},
+j.times=function(n,t,r){for(var e=Array(n),u=0;n>u;u++)e[u]=t.call(r,u);return e},
 // Return a random integer between min and max (inclusive).
 j.random=function(n,t){return null==t&&(t=n,n=0),n+Math.floor(Math.random()*(t-n+1))};
 // List of HTML entities for escaping.
@@ -315,7 +313,7 @@ var M={escape:new RegExp("["+j.keys(I.escape).join("")+"]","g"),unescape:new Reg
 j.each(["escape","unescape"],function(n){j[n]=function(t){return null==t?"":(""+t).replace(M[n],function(t){return I[n][t]})}}),
 // If the value of the named property is a function then invoke it;
 // otherwise, return it.
-j.result=function(n,t){if(null!=n){var r=n[t];return j.isFunction(r)?r.call(n):r}},
+j.result=function(n,t){if(null==n)return void 0;var r=n[t];return j.isFunction(r)?r.call(n):r},
 // Add your own custom functions to the Underscore object.
 j.mixin=function(n){A(j.functions(n),function(t){var r=j[t]=n[t];j.prototype[t]=function(){var n=[this._wrapped];return a.apply(n,arguments),D.call(this,r.apply(j,n))}})};
 // Generate a unique integer id (unique within the entire client session).
@@ -327,15 +325,13 @@ j.templateSettings={evaluate:/<%([\s\S]+?)%>/g,interpolate:/<%=([\s\S]+?)%>/g,es
 // When customizing `templateSettings`, if you don't want to define an
 // interpolation, evaluation or escaping regex, we need one that is
 // guaranteed not to match.
-var T=/(.)^/,q={"'":"'","\\":"\\","\r":"r","\n":"n","\t":"t","\u2028":"u2028","\u2029":"u2029"},B=/\\|'|\r|\n|\t|\u2028|\u2029/g;
+var T=/(.)^/,q={"'":"'","\\":"\\","\r":"r","\n":"n","	":"t","\u2028":"u2028","\u2029":"u2029"},B=/\\|'|\r|\n|\t|\u2028|\u2029/g;
 // JavaScript micro-templating, similar to John Resig's implementation.
 // Underscore templating handles arbitrary delimiters, preserves whitespace,
 // and correctly escapes quotes within interpolated code.
 j.template=function(n,t,r){var e;r=j.defaults({},r,j.templateSettings);
 // Combine delimiters into one regular expression via alternation.
-var u=new RegExp([(r.escape||T).source,(r.interpolate||T).source,(r.evaluate||T).source].join("|")+"|$","g"),i=0,a="__p+='";n.replace(u,function(t,r,e,u,o){return a+=n.slice(i,o).replace(B,function(n){return"\\"+q[n]}),r&&(a+="'+\n((__t=("+r+"))==null?'':_.escape(__t))+\n'"),e&&(a+="'+\n((__t=("+e+"))==null?'':__t)+\n'"),u&&(a+="';\n"+u+"\n__p+='"),i=o+t.length,t}),a+="';\n",
-// If a variable is not specified, place data values in local scope.
-r.variable||(a="with(obj||{}){\n"+a+"}\n"),a="var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};\n"+a+"return __p;\n";try{e=new Function(r.variable||"obj","_",a)}catch(o){throw o.source=a,o}if(t)return e(t,j);var c=function(n){return e.call(this,n,j)};
+var u=new RegExp([(r.escape||T).source,(r.interpolate||T).source,(r.evaluate||T).source].join("|")+"|$","g"),i=0,a="__p+='";n.replace(u,function(t,r,e,u,o){return a+=n.slice(i,o).replace(B,function(n){return"\\"+q[n]}),r&&(a+="'+\n((__t=("+r+"))==null?'':_.escape(__t))+\n'"),e&&(a+="'+\n((__t=("+e+"))==null?'':__t)+\n'"),u&&(a+="';\n"+u+"\n__p+='"),i=o+t.length,t}),a+="';\n",r.variable||(a="with(obj||{}){\n"+a+"}\n"),a="var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};\n"+a+"return __p;\n";try{e=new Function(r.variable||"obj","_",a)}catch(o){throw o.source=a,o}if(t)return e(t,j);var c=function(n){return e.call(this,n,j)};
 // Provide the compiled function source as a convenience for precompilation.
 return c.source="function("+(r.variable||"obj")+"){\n"+a+"}",c},
 // Add a "chain" function, which will delegate to the wrapper.

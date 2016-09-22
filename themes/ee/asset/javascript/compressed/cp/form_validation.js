@@ -22,7 +22,7 @@ this._textInputSelectors="input[type=text], input[type=number], input[type=passw
 	 */
 bindInputs:function(i){var e=this;t(this._textInputSelectors,i).blur(function(){
 // Unbind keydown validation when the invalid field loses focus
-t(this).data("validating",!1);var i=t(this);setTimeout(function(){e._sendAjaxRequest(i)},0)}),t("input[type=checkbox], input[type=radio], select",i).change(function(){var i=t(this);setTimeout(function(){e._sendAjaxRequest(i)},0)}),
+t(this).data("validating",!1);var i=t(this);setTimeout(function(){e._sendAjaxRequest(i)},0)}),t("input[type=checkbox], input[type=radio], input[type=hidden], select",i).change(function(){var i=t(this);setTimeout(function(){e._sendAjaxRequest(i)},0)}),
 // Upon loading the page with invalid fields, bind the text field
 // timer to correct the validation as the user types (for AJAX
 // validation only)
@@ -71,11 +71,10 @@ i.submit(function(s){
 // If the submit was trigger by a button click, disable it to prevent futher clicks
 // Update the button text to the value of its "work-text" data attribute
 // Replace button text with working text and disable the button to prevent further clicks
-return e.size()>0&&(e.addClass("work"),e.each(function(e,a){if(s.target==a)
-// Our work here is done
+return e.size()>0&&(e.addClass("work"),e.each(function(e,a){return s.target==a?(a.prop("disabled",!0),
 // Some controllers rely on the presence of the submit button in POST, but it won't
 // make it to the controller if it's disabled, so add it back as a hidden input
-return a.prop("disabled",!0),i.append(t("<input/>",{type:"hidden",name:a.name,value:a.value})),!1}),""!=e.data("work-text")&&(e.is("input")?e.attr("value",e.data("work-text")):e.is("button")&&e.text(e.data("work-text")))),!0})},/**
+i.append(t("<input/>",{type:"hidden",name:a.name,value:a.value})),!1):void 0}),""!=e.data("work-text")&&(e.is("input")?e.attr("value",e.data("work-text")):e.is("button")&&e.text(e.data("work-text")))),!0})},/**
 	 * Binds forms with a class of 'ajax-validate' to the AJAX
 	 * validation routines
 	 *
@@ -99,41 +98,53 @@ _errorsExist:function(i){return 0!=t("fieldset.invalid, td.invalid",i).size()},/
 	 */
 _sendAjaxRequest:function(i){if(!this.paused){var e=i.parents("form");
 // Just reset the button for forms that don't validate over AJAX
-if(!e.hasClass("ajax-validate"))return void this._toggleErrorForFields(e,i,"success");var s=this,a=e.attr("action"),n=e.serialize();t.ajax({url:a,data:n+"&ee_fv_field="+i.attr("name"),type:"POST",dataType:"json",success:function(t){s._toggleErrorForFields(e,i,t)}})}},/**
-	 * Shows/hides errors for fields based on result of validation
+if(!e.hasClass("ajax-validate"))return void this._toggleErrorForFields(i,"success");var s=this,a=e.attr("action"),n=e.serialize();t.ajax({url:a,data:n+"&ee_fv_field="+i.attr("name"),type:"POST",dataType:"json",success:function(t){s._toggleErrorForFields(i,t)}})}},/**
+	 * Given a field, marks the field as valid in the UI
 	 *
-	 * @param	{jQuery object}	form	jQuery object of form
-	 * @param	{jQuery object}	field	jQuery object of field validating
-	 * @param	{mixed}			message	Return from AJAX request
+	 * @param	{jQuery object}	field	jQuery object of field
 	 */
-_toggleErrorForFields:function(i,e,s){var a=e.parents("div[class*=setting]").not("div[class=setting-note]"),n=a.parents("fieldset").size()>0?a.parents("fieldset"):a.parent(),r="em.ee-form-error-message",o=!1,d=e.parents(".tab"),l=d.size()>0?d.attr("class").match(/t-\d+/):"",// Grabs the tab identifier (ex: t-2)
-u=t(d).parents(".tab-wrap").find('a[rel="'+l+'"]'),// Tab link
+markFieldValid:function(t){this._toggleErrorForFields(t,"success")},/**
+	 * Given a field, marks the field as invalid in the UI with an error message
+	 *
+	 * @param	{jQuery object}	field	jQuery object of field
+	 * @param	{mixed}			message	Error message to show by invalid field
+	 */
+markFieldInvalid:function(t,i){this._toggleErrorForFields(t,i)},/**
+	 * Does all the UI DOM work necessary to mark a field (in)valid on the screen
+	 *
+	 * @param	{jQuery object}	field	jQuery object of field validating
+	 * @param	{mixed}			message	Return from AJAX request, 'success' marks a field as valid
+	 */
+_toggleErrorForFields:function(i,e){var s=i.parents("form"),a=i.parents("div[class*=setting]").not("div[class=setting-note]"),n=a.parents("fieldset").size()>0?a.parents("fieldset"):a.parent(),r="em.ee-form-error-message",d=!1,o=i.parents(".tab"),l=o.size()>0?o.attr("class").match(/t-\d+/):"",// Grabs the tab identifier (ex: t-2)
+u=t(o).parents(".tab-wrap").find('a[rel="'+l+'"]'),// Tab link
 // See if this tab has its own submit button
-c=d.size()>0&&d.find(".form-ctrls input.btn").size()>0,
+c=o.size()>0&&o.find(".form-ctrls input.btn").size()>0,
 // Finally, grab the button of the current form
-f=c?d.find(".form-ctrls .btn"):i.find(".form-ctrls .btn");
+f=c?o.find(".form-ctrls .btn"):s.find(".form-ctrls .btn");
 // Validation success, return the form to its original, submittable state
 if(
 // If we're in a Grid input, re-assign some things to apply classes
 // and show error messages in the proper places
-n.hasClass("grid-publish")&&(n=n.find("div.setting-txt"),a=e.parents("td"),o=!0),"success"==s)
+n.hasClass("grid-publish")&&(n=n.find("div.setting-txt"),a=i.parents("td"),d=!0),"success"==e)
 // For Grid, we also need to remove the class on the cell and do some
 // special handling of the invalid class on the Grid field label
-o?(a.removeClass("invalid"),
+d?(a.removeClass("invalid"),
 // For Grid, only remove the invalid class from the label if no
 // more errors exist in the Grid
-0==n.parent().find("td.invalid").size()&&n.removeClass("invalid")):n.removeClass("invalid"),a.find("> "+r).remove(),
+0==n.parent().find("td.invalid").size()&&(n.removeClass("invalid"),
+// Remove error message below Grid field
+a.parents("div.setting-field").find("> "+r).remove())):n.removeClass("invalid"),a.find("> "+r).remove(),
 // If no more errors on this tab, remove invalid class from tab
-u.size()>0&&!this._errorsExist(d)&&u.removeClass("invalid"),
+u.size()>0&&!this._errorsExist(o)&&u.removeClass("invalid"),
 // Re-enable submit button only if all errors are gone
-(!this._errorsExist(i)||!this._errorsExist(d)&&c)&&(f.removeClass("disable").removeAttr("disabled"),f.each(function(i,e){e=t(e),e.is("input")?e.attr("value",e.data("submit-text")):e.is("button")&&e.text(e.data("submit-text"))}));else{
+(!this._errorsExist(s)||!this._errorsExist(o)&&c)&&(f.removeClass("disable").removeAttr("disabled"),f.each(function(i,e){e=t(e),e.is("input")?e.attr("value",e.data("submit-text")):e.is("button")&&e.text(e.data("submit-text"))}));else{
 // Bind timer for text fields to validate field while typing
 this._bindTextFieldTimer(a),n.addClass("invalid"),
 // Specify the Grid cell the error is in
-o&&a.addClass("invalid");
+d&&a.addClass("invalid");
 // We'll get HTML back from the validator, create an element
 // out of it
-var v=t("<div/>").html(s.error).contents();
+var v=t("<div/>").html(e.error).contents();
 // Don't double up on error messages
 a.has(r).length&&a.find(r).remove(),a.append(v),
 // Mark tab as invalid
@@ -142,7 +153,7 @@ u.size()>0&&u.addClass("invalid"),
 f.addClass("disable").attr("disabled","disabled"),f.is("input")?f.attr("value",EE.lang.btn_fix_errors):f.is("button")&&f.text(EE.lang.btn_fix_errors)}
 // There may be callbacks for fields that need to do extra processing
 // on validation; check for those and call them
-var p=e.attr("name").replace(/\[.+?\]/g,"");void 0!==this._validationCallbacks[p]&&this._validationCallbacks[p]("success"==s,s.error,e)},/**
+var p=i.attr("name").replace(/\[.+?\]/g,"");void 0!==this._validationCallbacks[p]&&this._validationCallbacks[p]("success"==e,e.error,i)},/**
 	 * When a text field comes back as invalid, we'll bind a timer to it to
 	 * check it's validity every half second after a key press, that way the
 	 * user knows a field is fixed without having to remove focus from the field.

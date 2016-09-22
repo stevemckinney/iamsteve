@@ -20,6 +20,6 @@ for(e.effects.save(n,a),n.show(),e.effects.createWrapper(n),
 // Animation
 m[p]=(h?"-=":"+=")+c,g[p]=(h?"+=":"-=")+2*c,l[p]=(h?"-=":"+=")+2*c,
 // Animate
-n.animate(m,d,t.easing),f=1;f<r;f++)n.animate(g,d,t.easing).animate(l,d,t.easing);n.animate(g,d,t.easing).animate(m,d/2,t.easing).queue(function(){"hide"===o&&n.hide(),e.effects.restore(n,a),e.effects.removeWrapper(n),i()}),
+n.animate(m,d,t.easing),f=1;r>f;f++)n.animate(g,d,t.easing).animate(l,d,t.easing);n.animate(g,d,t.easing).animate(m,d/2,t.easing).queue(function(){"hide"===o&&n.hide(),e.effects.restore(n,a),e.effects.removeWrapper(n),i()}),
 // inject all the animations we just queued to be first in line (after "inprogress")
 y>1&&q.splice.apply(q,[1,0].concat(q.splice(y,u+1))),n.dequeue()}});

@@ -37,7 +37,7 @@ t.preventDefault()}),
 // Search Relationships
 e("div.publish").on("interact",".relate-wrap .relate-actions .relate-search",function(t){var l=e(this).closest(".relate-actions").find(".filters .has-sub .faded").data("channel-id");
 // In Grids, this field got its name reset
-e(this).attr("name").indexOf("search_related")!=-1?e(this).attr("name","search_related"):e(this).attr("name","search"),a(this,l,150)});
+-1!=e(this).attr("name").indexOf("search_related")?e(this).attr("name","search_related"):e(this).attr("name","search"),a(this,l,150)});
 // Sortable!
 var i={axis:"y",cursor:"move",handle:".relate-reorder",items:"label"};e(".w-8.relate-wrap .scroll-wrap").sortable(i),e(".publish form").on("submit",function(a){e(".w-8.relate-wrap .scroll-wrap").each(function(){var a,t=e(this).closest(".relate-wrap").siblings(".relate-wrap").first();
 // Adding a new grid row will enable all the disabled sort fields

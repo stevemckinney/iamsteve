@@ -36,13 +36,7 @@ $(this).removeClass("on"),$(this).addClass("off"),$(".list-reorder",t).clearQueu
 // Category modal
 $("body").on("click","a[rel=modal-checkboxes-edit]",function(t){var a,i=$(this),s=i.attr("rel"),n=$("."+s),o=i.parents("fieldset").find("a.toggle-btn").hasClass("on"),l=$(this).data("groupId");
 // If we're in an editing state, be sure to return to an editing state
-o&&(l+="/editing"),a=EE.category.add.URL.replace("###",l),
-// Clear out modal from last request
-$("div.box",n).html('<p align="center"><a class="btn work" href="">Loading</a></p>'),
-// Are we editing a category? Create a different form URL
-$(this).data("contentId")&&(a=EE.category.edit.URL.replace("###",$(this).data("groupId")+"/"+$(this).data("contentId"))),$.ajax({type:"GET",url:a,dataType:"html",success:function(t){e(n,t,i),
-// Bind ee_url_title for new categories only
-void 0===i.data("contentId")&&$("input[name=cat_name]",n).bind("keyup keydown",function(){$(this).ee_url_title("input[name=cat_url_title]")})}})}),
+o&&(l+="/editing"),a=EE.category.add.URL.replace("###",l),$("div.box",n).html('<p align="center"><a class="btn work" href="">Loading</a></p>'),$(this).data("contentId")&&(a=EE.category.edit.URL.replace("###",$(this).data("groupId")+"/"+$(this).data("contentId"))),$.ajax({type:"GET",url:a,dataType:"html",success:function(t){e(n,t,i),void 0===i.data("contentId")&&$("input[name=cat_name]",n).bind("keyup keydown",function(){$(this).ee_url_title("input[name=cat_url_title]")})}})}),
 // Category deletion
 $("body").on("click","a[rel=modal-checkboxes-confirm-remove]",function(e){var a=$("."+$(this).attr("rel")),i=$(this);
 // Add the name of the category we're deleting to the modal

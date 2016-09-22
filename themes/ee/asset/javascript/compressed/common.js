@@ -46,7 +46,7 @@ $(".tbl-wrap").each(function(){
 // determine the width of this tbl-wrap.
 var t=$(this).width(),e=$(this).children("table").width();
 // if tbl-wrap's width less than the table's width,
-t<e&&
+e>t&&
 // pop a pb class on it.
 $(this).addClass("pb")}),
 // =========
@@ -214,7 +214,7 @@ t.preventDefault()}),
 // publish collapse -> WIP
 // =======================
 // listen for clicks on .sub-arrows
-$(".setting-txt .sub-arrow").on("click",function(){
+$("div.publish form").on("click",".setting-txt .sub-arrow",function(t){
 // toggle the .setting-field and .setting-text
 $(this).parents(".setting-txt").siblings(".setting-field").toggle(),
 // toggle the instructions
@@ -233,4 +233,4 @@ $('output[for="'+e+'"]').html(t)}),
 // ===============================
 // filters custom input submission
 // ===============================
-$('.filters .filter-search input[type="text"]').keypress(function(t){10!=t.which&&13!=t.which||$(this).closest("form").submit()})});
+$('.filters .filter-search input[type="text"]').keypress(function(t){(10==t.which||13==t.which)&&$(this).closest("form").submit()})});

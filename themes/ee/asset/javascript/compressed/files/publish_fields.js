@@ -16,7 +16,7 @@ EE.namespace("EE.publish.file_browser"),function(e){
 // @todo rewrite dependencies and remove
 function i(e){var i=!1;
 // [![prompt]!], [![prompt:!:value]!]
-return e?(e=e.toString(),e=e.replace(/\(\!\(([\s\S]*?)\)\!\)/g,function(e,i){var t=i.split("|!|");return altKey===!0?void 0!==t[1]?t[1]:t[0]:void 0===t[1]?"":t[0]}),e=e.replace(/\[\!\[([\s\S]*?)\]\!\]/g,function(e,t){var n=t.split(":!:");return i!==!0&&(value=prompt(n[0],n[1]?n[1]:""),null===value&&(i=!0),value)})):""}/**
+return e?(e=e.toString(),e=e.replace(/\(\!\(([\s\S]*?)\)\!\)/g,function(e,i){var t=i.split("|!|");return altKey===!0?void 0!==t[1]?t[1]:t[0]:void 0===t[1]?"":t[0]}),e=e.replace(/\[\!\[([\s\S]*?)\]\!\]/g,function(e,t){var n=t.split(":!:");return i===!0?!1:(value=prompt(n[0],n[1]?n[1]:""),null===value&&(i=!0),value)})):""}/**
 	 * Changes the hidden inputs, thumbnail and file name when a file is selected
 	 * @private
 	 * @param {Object} file File object with information about the file upload
@@ -47,11 +47,7 @@ e(this).closest("#markItUpWrite_mode_textarea").length?textareaId="write_mode_te
 // markitup button or another field type.
 // Fact is - markitup is actually pretty crappy for anything that doesn't specifically
 // use markitup. So currently the image button only works correctly on markitup textareas.
-n.is_image?(a=EE.upload_directories[n.upload_location_id].properties,r=EE.upload_directories[n.upload_location_id].pre_format,d=EE.upload_directories[n.upload_location_id].post_format,image_tag=null==button_id?EE.filebrowser.image_tag:EE.filebrowser["image_tag_"+button_id],
-// Include any user additions before or after the image link
-o=image_tag.replace(/src="(.*)\[!\[Link:!:http:\/\/\]!\](.*)"/,'src="$1{filedir_'+n.upload_location_id+"}"+n.file_name+'$2"'),
-// Figure out dimensions
-dimensions="","undefined"!=typeof n.file_hw_original&&""!=n.file_hw_original&&(dimensions=n.file_hw_original.split(" "),dimensions='height="'+dimensions[0]+'" width="'+dimensions[1]+'"'),o=o.replace(/\/?>$/,dimensions+" "+a+" />"),o=r+o+d):(a=EE.upload_directories[n.upload_location_id].file_properties,r=EE.upload_directories[n.upload_location_id].file_pre_format,r+='<a href="{filedir_'+n.upload_location_id+"}"+n.file_name+'" '+a+" >",d="</a>",d+=EE.upload_directories[n.upload_location_id].file_post_format),l.is("textarea")?(l.is(".markItUpEditor")||(l.markItUp(myNobuttonSettings),l.closest(".markItUpContainer").find(".markItUpHeader").hide(),l.focus()),
+n.is_image?(a=EE.upload_directories[n.upload_location_id].properties,r=EE.upload_directories[n.upload_location_id].pre_format,d=EE.upload_directories[n.upload_location_id].post_format,image_tag=null==button_id?EE.filebrowser.image_tag:EE.filebrowser["image_tag_"+button_id],o=image_tag.replace(/src="(.*)\[!\[Link:!:http:\/\/\]!\](.*)"/,'src="$1{filedir_'+n.upload_location_id+"}"+n.file_name+'$2"'),dimensions="","undefined"!=typeof n.file_hw_original&&""!=n.file_hw_original&&(dimensions=n.file_hw_original.split(" "),dimensions='height="'+dimensions[0]+'" width="'+dimensions[1]+'"'),o=o.replace(/\/?>$/,dimensions+" "+a+" />"),o=r+o+d):(a=EE.upload_directories[n.upload_location_id].file_properties,r=EE.upload_directories[n.upload_location_id].file_pre_format,r+='<a href="{filedir_'+n.upload_location_id+"}"+n.file_name+'" '+a+" >",d="</a>",d+=EE.upload_directories[n.upload_location_id].file_post_format),l.is("textarea")?(l.is(".markItUpEditor")||(l.markItUp(myNobuttonSettings),l.closest(".markItUpContainer").find(".markItUpHeader").hide(),l.focus()),
 // Handle images and non-images differently
 n.is_image?e.markItUp({replaceWith:o}):e.markItUp({key:"L",name:"Link",openWith:r,closeWith:d,placeHolder:n.file_name})):l.val(function(e,t){return t+=r+o+d,i(t)})})},/**
 	 * Fire up the file browser for file fields

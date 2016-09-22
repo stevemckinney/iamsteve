@@ -774,27 +774,25 @@ class Cat extends AbstractChannelsController {
 				'parent_id' => array(
 					'type' => 'select',
 					'value' => $category->parent_id,
-					'choices' => $parent_id_options
+					'choices' => $parent_id_options,
+					'encode' => FALSE
 				)
 			)
 		);
 
-		if ( ! AJAX_REQUEST)
+		foreach ($category->getDisplay()->getFields() as $field)
 		{
-			foreach ($category->getDisplay()->getFields() as $field)
-			{
-				$vars['sections']['custom_fields'][] = array(
-					'title' => $field->getLabel(),
-					'desc' => '',
-					'fields' => array(
-						$field->getName() => array(
-							'type' => 'html',
-							'content' => $field->getForm(),
-							'required' => $field->isRequired(),
-						)
+			$vars['sections']['custom_fields'][] = array(
+				'title' => $field->getLabel(),
+				'desc' => '',
+				'fields' => array(
+					$field->getName() => array(
+						'type' => 'html',
+						'content' => $field->getForm(),
+						'required' => $field->isRequired(),
 					)
-				);
-			}
+				)
+			);
 		}
 
 		ee()->view->ajax_validate = TRUE;

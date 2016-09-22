@@ -16,10 +16,9 @@ if(n.browser.msie){
 // if there are no scrollbars then use window.height
 var o=n(document).height(),e=n(window).height();return[window.innerWidth||// ie7+
 document.documentElement.clientWidth||// ie6  
-document.body.clientWidth,// ie6 quirks mode
-o-e<20?e:o]}
+document.body.clientWidth,20>o-e?e:o]}
 // other well behaving browsers
-return[n(window).width(),n(document).height()]}function e(o){if(o)return o.call(n.mask)}
+return[n(window).width(),n(document).height()]}function e(o){return o?o.call(n.mask):void 0}
 // static constructs
 n.tools=n.tools||{version:"1.2.1"};var t;t=n.tools.expose={conf:{maskId:"exposeMask",loadSpeed:"slow",closeSpeed:"fast",closeOnClick:!0,closeOnEsc:!0,
 // css settings
@@ -29,13 +28,7 @@ onLoad:null,onClose:null}};var i,s,c,d,a;n.mask={load:function(r,u){
 // already loaded ?
 if(c)return this;
 // configuration
-"string"==typeof r&&(r={color:r}),
-// use latest config
-r=r||d,d=r=n.extend(n.extend({},t.conf),r),
-// get the mask
-i=n("#"+r.maskId),
-// or create it
-i.length||(i=n("<div/>").attr("id",r.maskId),n("body").append(i));
+"string"==typeof r&&(r={color:r}),r=r||d,d=r=n.extend(n.extend({},t.conf),r),i=n("#"+r.maskId),i.length||(i=n("<div/>").attr("id",r.maskId),n("body").append(i));
 // set position and dimensions 			
 var l=o();i.css({position:"absolute",top:0,left:0,width:l[0],height:l[1],display:"none",opacity:r.startOpacity,zIndex:r.zIndex});
 // background color 

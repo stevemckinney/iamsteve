@@ -163,7 +163,7 @@
 // methods in a closure to avoid creating global variables.
 this.JSON||(this.JSON={}),function(){function f(t){
 // Format integers to have at least two digits.
-return t<10?"0"+t:t}function quote(t){
+return 10>t?"0"+t:t}function quote(t){
 // If the string contains no control characters, no quote characters, and no
 // backslash characters, then we can safely slap some quotes around it.
 // Otherwise we must also replace the offending characters with safe escape
@@ -194,23 +194,18 @@ case"object":
 // so watch out for that case.
 if(!a)return"null";
 // Is the value an array?
-if(
-// Make an array to hold the partial results of stringifying this object value.
-gap+=indent,u=[],"[object Array]"===Object.prototype.toString.apply(a)){for(
-// The value is an array. Stringify every element. Use null as a placeholder
-// for non-JSON values.
-o=a.length,n=0;n<o;n+=1)u[n]=str(n,a)||"null";
+if(gap+=indent,u=[],"[object Array]"===Object.prototype.toString.apply(a)){for(o=a.length,n=0;o>n;n+=1)u[n]=str(n,a)||"null";
 // Join all of the elements together, separated with commas, and wrap them in
 // brackets.
 return f=0===u.length?"[]":gap?"[\n"+gap+u.join(",\n"+gap)+"\n"+i+"]":"["+u.join(",")+"]",gap=i,f}
 // If the replacer is an array, use it to select the members to be stringified.
-if(rep&&"object"==typeof rep)for(o=rep.length,n=0;n<o;n+=1)r=rep[n],"string"==typeof r&&(f=str(r,a),f&&u.push(quote(r)+(gap?": ":":")+f));else
+if(rep&&"object"==typeof rep)for(o=rep.length,n=0;o>n;n+=1)r=rep[n],"string"==typeof r&&(f=str(r,a),f&&u.push(quote(r)+(gap?": ":":")+f));else
 // Otherwise, iterate through all of the keys in the object.
 for(r in a)Object.hasOwnProperty.call(a,r)&&(f=str(r,a),f&&u.push(quote(r)+(gap?": ":":")+f));
 // Join all of the member texts together, separated with commas,
 // and wrap them in braces.
 return f=0===u.length?"{}":gap?"{\n"+gap+u.join(",\n"+gap)+"\n"+i+"}":"{"+u.join(",")+"}",gap=i,f}}"function"!=typeof Date.prototype.toJSON&&(Date.prototype.toJSON=function(t){return isFinite(this.valueOf())?this.getUTCFullYear()+"-"+f(this.getUTCMonth()+1)+"-"+f(this.getUTCDate())+"T"+f(this.getUTCHours())+":"+f(this.getUTCMinutes())+":"+f(this.getUTCSeconds())+"Z":null},String.prototype.toJSON=Number.prototype.toJSON=Boolean.prototype.toJSON=function(t){return this.valueOf()});var cx=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,escapable=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,gap,indent,meta={// table of character substitutions
-"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},rep;
+"\b":"\\b","	":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},rep;
 // If the JSON object does not yet have a stringify method, give it one.
 "function"!=typeof JSON.stringify&&(JSON.stringify=function(t,e,n){
 // The stringify method takes a value and an optional replacer, and an optional
@@ -221,10 +216,7 @@ return f=0===u.length?"{}":gap?"{\n"+gap+u.join(",\n"+gap)+"\n"+i+"}":"{"+u.join
 var r;
 // If the space parameter is a number, make an indent string containing that
 // many spaces.
-if(gap="",indent="","number"==typeof n)for(r=0;r<n;r+=1)indent+=" ";else"string"==typeof n&&(indent=n);if(
-// If there is a replacer, it must be a function or an array.
-// Otherwise, throw an error.
-rep=e,e&&"function"!=typeof e&&("object"!=typeof e||"number"!=typeof e.length))throw new Error("JSON.stringify");
+if(gap="",indent="","number"==typeof n)for(r=0;n>r;r+=1)indent+=" ";else"string"==typeof n&&(indent=n);if(rep=e,e&&"function"!=typeof e&&("object"!=typeof e||"number"!=typeof e.length))throw new Error("JSON.stringify");
 // Make a fake root object containing our value under the key of ''.
 // Return the result of stringifying the value.
 return str("",{"":t})}),
