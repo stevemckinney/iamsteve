@@ -1,5 +1,35 @@
 {layout="layouts/_layout-blog" title="Blog" class="page-blog"}
 
+{!--
+	404 Redirect
+	============
+	This is a listing page, it needs categories and pagination to work, but also needs to redirect if segment_2 is invalid . i.e. http://example.com/blog/nothing
+--}
+{if segment_2}
+	{if segment_2 != 'category' AND segment_2  ~ '/^(?!P\d+).*/'}
+		{redirect='404'}
+	{/if}
+{/if}
+
+{!-- prevents 3rd ++ segments on non category listings --}
+{if segment_3}
+	{if segment_2 != 'category'}
+		{redirect='{segment_1}/{segment_2}'}
+	{/if}
+{/if}
+
+{!-- prevents 4th ++ segments on category listings --}
+{if segment_4}
+	{if segment_4 ~ '/^(?!P\d+).*/'}
+		{redirect='{segment_1}/{segment_2}/{segment_3}'}
+	{/if}
+{/if}
+
+{!-- prevents 5th ++ segments on paginated category listings --}
+{if segment_5}
+	{redirect='{segment_1}/{segment_2}/{segment_3}/{segment_4}'}
+{/if}
+
 {!-- channel vars (prefix ch_) --}
 {preload_replace:ch="blog"}
 {preload_replace:ch_status="latest|open"}
