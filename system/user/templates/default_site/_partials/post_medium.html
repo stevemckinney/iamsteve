@@ -29,7 +29,11 @@
 		{if segment_1 == ""}
   		{exp:streeng words="44"}{excerpt}{/exp:streeng}
 	  {if:elseif '{exp:iamsteve:is_mobile}' != 1}
-		  {exp:streeng words="44"}{excerpt}{/exp:streeng}
+		  {if segment_1 == 'search'}
+		    <p>{exp:streeng words="44"}{excerpt}{/exp:streeng}</p>
+		  {if:else}
+  		  {exp:streeng words="44"}{excerpt}{/exp:streeng}
+		  {/if}
     {/if}
 	  
     <div class="meta dashes">
