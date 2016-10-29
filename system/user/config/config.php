@@ -11,7 +11,7 @@
 |
 */
 
-$config['app_version'] = "3.4.0";
+$config['app_version'] = "3.4.3";
 $config['install_lock'] = "";
 $config['license_number'] = '';
 $config['debug'] = 'FALSE';
@@ -27,8 +27,10 @@ $config['cache_driver'] = 'file';
 $config['database'] = array (
   'expressionengine' => array()
 );
-$config['multiple_sites_enabled'] = 'n';
+$config['multiple_sites_enabled'] = 'n';$config['enable_devlog_alerts'] = 'n';
+
 // END EE config items
+
 
 
 
