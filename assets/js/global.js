@@ -74,6 +74,52 @@ var iamsteve = (function ()
     headroom.init(); 
   }
   
+  // Fontfaceobserver for loading fonts nicely
+  var fonts = function()
+  {
+  	// Optimization for Repeat Views
+  	if( !( 'geolocation' in navigator ) || sessionStorage.avertaOne && sessionStorage.avertaTwo ) {
+  		document.documentElement.className += " fonts-stage-1 fonts-stage-2";
+  		return;
+  	}
+  
+  	var subset = new FontFaceObserver('AvertaSubset');
+  
+  	Promise.all([subset.load()]).then(function ()
+  	{
+  		console.log('stage 1');
+  		document.documentElement.className += " fonts-stage-1";
+  
+  		var regular = new FontFaceObserver('Averta', {
+  			weight: 400
+  		});
+  		var italic = new FontFaceObserver('Averta', {
+  			weight: 600
+  		});
+  		var bold = new FontFaceObserver('Averta', {
+  			weight: 700
+  		});
+  		var light = new FontFaceObserver('Averta', {
+  			weight: 300
+  		});
+  		var semibold = new FontFaceObserver('Averta', {
+  			weight: 400,
+  			style: 'italic'
+  		});
+  		
+  		sessionStorage.avertaOne = true;
+  
+  		Promise.all([regular.load(), italic.load(), bold.load(), light.load(), semibold.load()]).then(function ()
+  		{
+    		console.log('stage 2');
+  			document.documentElement.className += " fonts-stage-2";
+  
+  			// Optimization for Repeat Views
+  			sessionStorage.avertaTwo = true;
+  		});
+  	});
+  }
+    
   // Private
   var _isNavVisible = function()
   {
@@ -177,7 +223,8 @@ var iamsteve = (function ()
   return {
     toggler: toggler(),
     headroom: headroom(),
-    flickity: flickity()
+    flickity: flickity(),
+    fonts: fonts()
   };
 
 })();

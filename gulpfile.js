@@ -89,6 +89,7 @@ gulp.task('js-blog', function() {
 gulp.task('js-iamsteve', function() {
   return gulp.src([
     path.js + '/modernizr.js',
+    path.js + '/fontfaceobserver.js',
     path.js + '/headroom.js',
     path.js + '/global.js'
   ]).pipe(concat('iamsteve.js'))
