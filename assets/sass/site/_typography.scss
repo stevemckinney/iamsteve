@@ -1,12 +1,16 @@
 // Headings
 // ---------------------------
 #{headings()} {
-  font-family: $system;
   color: $neutral;
   text-rendering: optimizeLegibility;
   line-height: 1.25;
   margin-top: 0;
-  font-weight: font-weight(semibold);
+  font-weight: font-weight(semibold); }
+  
+#{headings()},
+.nav-item,
+.sans {
+  font-family: $system;
   
   .fonts-stage-1 & {
     font-family: "AvertaSubset"; }

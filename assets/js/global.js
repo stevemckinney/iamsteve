@@ -78,7 +78,7 @@ var iamsteve = (function ()
   var fonts = function()
   {
   	// Optimization for Repeat Views
-  	if( !( 'geolocation' in navigator ) || sessionStorage.avertaOne && sessionStorage.avertaTwo ) {
+  	if( !( 'geolocation' in navigator ) || sessionStorage.getItem('avertaOne') && sessionStorage.getItem('avertaTwo') ) {
   		document.documentElement.className += " fonts-stage-1 fonts-stage-2";
   		return;
   	}
@@ -87,7 +87,6 @@ var iamsteve = (function ()
   
   	Promise.all([subset.load()]).then(function ()
   	{
-  		console.log('stage 1');
   		document.documentElement.className += " fonts-stage-1";
   
   		var regular = new FontFaceObserver('Averta', {
@@ -107,15 +106,14 @@ var iamsteve = (function ()
   			style: 'italic'
   		});
   		
-  		sessionStorage.avertaOne = true;
+  		sessionStorage.setItem('avertaOne', true);
   
   		Promise.all([regular.load(), italic.load(), bold.load(), light.load(), semibold.load()]).then(function ()
   		{
-    		console.log('stage 2');
   			document.documentElement.className += " fonts-stage-2";
   
   			// Optimization for Repeat Views
-  			sessionStorage.avertaTwo = true;
+  			sessionStorage.setItem('avertaTwo', true);
   		});
   	});
   }
