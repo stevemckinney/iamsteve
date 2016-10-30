@@ -11,7 +11,8 @@
 
 // Type
 // ---------------------------
-.serif { font-family: $serif; }
+.sans { @include fonts("sans"); }
+.serif { @include fonts("serif"); }
 	
 // Colour
 // ---------------------------

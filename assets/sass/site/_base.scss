@@ -91,9 +91,10 @@ $social: (
 
 // Fonts
 // ---------------------------
+$emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-$sans: Averta, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !global;
-$serif: Sentinel A, Sentinel B, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !global;
+$sans: Averta, $emoji !global;
+$serif: Sentinel A, Sentinel B, $emoji !global;
 $heading: $sans !global;
 $body: $serif !global;
 $form: $sans !global;

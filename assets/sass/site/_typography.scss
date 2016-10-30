@@ -1,28 +1,20 @@
 // Headings
 // ---------------------------
 #{headings()} {
+  @include fonts("sans");
   color: $neutral;
   text-rendering: optimizeLegibility;
   line-height: 1.25;
   margin-top: 0;
   font-weight: font-weight(semibold); }
-  
-#{headings()},
-.nav-item,
-.sans {
-  font-family: $system;
-  
-  .fonts-stage-1 & {
-    font-family: "AvertaSubset"; }
-  
-  .fonts-stage-2 & {
-    font-family: $heading; } }
 
 // General
 // ---------------------------
 body {
+  @include fonts("serif");
   color: $neutral-l1;
-  font: 400 100%/1.5 $body; }
+  font-size: 100%;
+  line-height: 1.5; }
 
 p {
   font-size: 14px;
