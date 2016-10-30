@@ -79,7 +79,6 @@ var iamsteve = (function ()
   {
   	// Optimization for Repeat Views
   	if( !( 'geolocation' in navigator ) || sessionStorage.getItem('avertaOne') && sessionStorage.getItem('avertaTwo') ) {
-  		document.documentElement.className += " fonts-stage-1 fonts-stage-2";
   		return;
   	}
   
