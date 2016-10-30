@@ -1,10 +1,10 @@
 // Footer
 // ---------------------------
 .footer {
+  @include fonts("sans");
   position: relative;
   background-color: $alternate-l4;
   align-items: center;
-  font-family: $sans;
   font-weight: font-weight(semibold);
   padding-top: $line;
   padding-bottom: $line;

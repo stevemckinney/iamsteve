@@ -91,10 +91,10 @@
 // Card meta
 // ---------------------------
 .meta {
+  @include fonts("sans");
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: $sans;
   font-weight: font-weight(semibold);
   line-height: 1.142857143;
   font-size: 10px;
