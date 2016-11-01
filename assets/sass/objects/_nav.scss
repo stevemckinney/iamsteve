@@ -5,10 +5,12 @@
   flex-flow: row wrap;
   
   @include breakpoint($c-max) {
-    padding-bottom: 44px; } // offset header/browser chrome/behaviour etc
+    // offset header/browser chrome/behaviour etc
+    padding-bottom: 44px; }
   
   @include breakpoint($c) {
-    flex: 1; } }
+    align-content: center;
+    align-items: center; } }
 
 .nav-item {
   font-family: $sans;
