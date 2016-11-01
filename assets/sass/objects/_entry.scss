@@ -25,10 +25,7 @@
 
 // Entry single image
 // ---------------------------
-.entry-image {
-  @include breakpoint($site-width) {
-    // 1680 - 1286 * 100
-    margin-left: 23.452381%; } }
+.entry-image {}
 
 // Entry title
 // ---------------------------

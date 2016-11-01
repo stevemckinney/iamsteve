@@ -148,12 +148,12 @@
   min-height: 240px;
   
   @include breakpoint($site-width) {
-    margin-top: $line*2;
     min-height: 516px;
     border-radius: $radius 0 0 $radius; } }
 
 .featured-image img {
   display: block;
+  margin: auto;
   max-height: 192px;
   max-width: 738px;
   

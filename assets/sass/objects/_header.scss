@@ -12,6 +12,15 @@
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
   
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0 1px $white, 0 6px 12px rgba($neutral, .025);
+    mix-blend-mode: overlay; }
+  
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); }
   
