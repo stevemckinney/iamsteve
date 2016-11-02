@@ -73,40 +73,6 @@ var iamsteve = (function ()
     
     headroom.init(); 
   }
-  
-  // Fontfaceobserver for loading fonts nicely
-  var fonts = function()
-  {
-  	if( !( 'geolocation' in navigator ) || cookie( "exp_fonts-stage-1" ) && cookie( "exp_fonts-stage-2" ) && cookie( "exp_fonts-stage-3" ) )
-  	{
-    	console.log('cookies are set');
-  		return;
-  	}
-  
-  	var subset = new FontFaceObserver('AvertaSubset');
-  
-  	Promise.all([subset.load()]).then(function ()
-  	{
-  		document.documentElement.className += " fonts-stage-1";
-  		cookie( "exp_fonts-stage-1", true, 365 );
-  
-  		var averta = new FontFaceObserver('Averta');
-  		var sentinelA = new FontFaceObserver('Sentinel A');
-  		var sentinelB = new FontFaceObserver('Sentinel B');
-  
-  		Promise.all([averta.load()]).then(function ()
-  		{
-  			document.documentElement.className += " fonts-stage-2";
-  			cookie( "exp_fonts-stage-2", true, 365 );
-  			
-  			Promise.all([sentinelA.load(), sentinelB.load()]).then(function ()
-    		{
-    			document.documentElement.className += " fonts-stage-3";
-    			cookie( "exp_fonts-stage-3", true, 365 );
-    		});
-  		});
-  	});
-  }
     
   // Private
   var _isNavVisible = function()

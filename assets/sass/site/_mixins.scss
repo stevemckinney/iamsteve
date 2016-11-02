@@ -50,7 +50,4 @@
       font-family: $heading; } }
       
   @else {
-    font-family: serif, $emoji;
-  
-    .fonts-stage-3 & {
-      font-family: $serif; } } }
+    font-family: $serif; } }
