@@ -21,7 +21,7 @@
     
     .card-body {
       border: 2px solid $neutral-l4;
-      border-bottom-color: scale-lightness($neutral-l4, -5%);
+      border-bottom-color: scale-lightness($neutral-l4, -10%);
       border-top: none;
       border-radius: 0 0 $radius $radius;
       box-shadow: inset 0 -6px rgba($neutral-l5, .5);
@@ -114,7 +114,7 @@
     left: double($line); }
 
   .calendar {
-    padding: $base-px $line;
+    padding: $base-px;
     background: #fff;
     border: 2px solid $neutral-l4;
     box-shadow: 0 6px 6px rgba($neutral-l4, .15);
