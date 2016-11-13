@@ -177,8 +177,7 @@ var iamsteve = (function ()
   return {
     toggler: toggler(),
     headroom: headroom(),
-    flickity: flickity(),
-    fonts: fonts()
+    flickity: flickity()
   };
 
 })();
