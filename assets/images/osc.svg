@@ -10,11 +10,11 @@
       }
 
       .c {
-        fill: #30bf96;
+        fill: #27cba4;
       }
 
       .ab, .ae, .aj, .by, .d {
-        stroke: #367a43;
+        stroke: #138466;
       }
 
       .aa, .aj, .aq, .ax, .br, .bx, .by, .cd, .ce, .cf, .cg, .d, .i, .o, .q, .r, .y, .z {

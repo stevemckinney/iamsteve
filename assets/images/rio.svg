@@ -10,11 +10,11 @@
       }
 
       .c {
-        fill: #eb6e5e;
+        fill: #ff7e6d;
       }
 
       .d, .e, .f, .g, .h {
-        stroke: #9e3a2c;
+        stroke: #bf4e45;
       }
 
       .ab, .am, .bk, .bn, .bs, .bw, .bx, .by, .bz, .ca, .cc, .cj, .d, .e, .f, .g, .h, .p, .q, .s, .t, .u {
@@ -30,19 +30,19 @@
       }
 
       .e {
-        stroke-dasharray: 3.91725 7.83451 7.83451 11.75176;
+        stroke-dasharray: 4 8 8 12;
       }
 
       .f {
-        stroke-dasharray: 11.75176 5.87588 3.91725 7.83451 7.83451 11.75176;
+        stroke-dasharray: 12 6 4 8 8 12;
       }
 
       .g {
-        stroke-dasharray: 3.56514 7.13028 7.13028 10.69542;
+        stroke-dasharray: 4 8 8 12;
       }
 
       .h {
-        stroke-dasharray: 10.69542 5.34771 3.56514 7.13028 7.13028 10.69542;
+        stroke-dasharray: 12 6 4 8 8 12;
       }
 
       .i {
