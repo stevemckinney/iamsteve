@@ -89,6 +89,8 @@ gulp.task('js-blog', function() {
 gulp.task('js-iamsteve', function() {
   return gulp.src([
     path.js + '/modernizr.js',
+    path.js + '/cookie.js',
+    path.js + '/fontfaceobserver.js',
     path.js + '/headroom.js',
     path.js + '/global.js'
   ]).pipe(concat('iamsteve.js'))
@@ -100,6 +102,7 @@ gulp.task('js-iamsteve', function() {
 
 gulp.task('js-home', function() {
   return gulp.src([
+    path.js + '/load-svg.js',
     path.js + '/flickity.js'
   ]).pipe(concat('home.js'))
     .pipe(gulp.dest('dist/js'))

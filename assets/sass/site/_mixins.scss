@@ -37,3 +37,14 @@
     
   @else {
     top: calc(100% - 1px); } }
+
+@mixin fonts($type: "sans") {
+  
+  @if $type == "sans" {
+    font-family: $system;
+    
+    .fonts-stage-1 & {
+      font-family: $heading; } }
+      
+  @else {
+    font-family: $serif; } }

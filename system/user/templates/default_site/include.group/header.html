@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+{if '{exp:cookie:get name="fonts-stage-1"}'}
+<html lang="en" class="no-js fonts-stage-1 fonts-stage-2">
+{if:else}
 <html lang="en" class="no-js">
+{/if}
   <head>
     {!--
       Meta
@@ -22,18 +26,6 @@
       <link rel="stylesheet" href="{site_url}dist/css/global.css">
     {/exp:minimee:css}
     
-    {!--
-      loadCSS
-      –
-      Fonts from cloud.typography loaded through here async, helps load times.
-      Also no-js toggle is applied here.
-    --}
-    <script>
-      document.documentElement.className = document.documentElement.className.replace('no-js','js');
-      !function(e){"use strict";var n=function(n,t,o){function i(e){return a.body?e():void setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var s=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=s[s.length-1]}var f=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
-      
-      loadCSS('https://cloud.typography.com/7828432/640526/css/fonts.css')
-    </script>
     {!-- 
       Head
       –

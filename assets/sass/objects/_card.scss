@@ -21,7 +21,7 @@
     
     .card-body {
       border: 2px solid $neutral-l4;
-      border-bottom-color: scale-lightness($neutral-l4, -5%);
+      border-bottom-color: scale-lightness($neutral-l4, -10%);
       border-top: none;
       border-radius: 0 0 $radius $radius;
       box-shadow: inset 0 -6px rgba($neutral-l5, .5);
@@ -67,15 +67,13 @@
     
     &:before,
     &:after {
-      @supports (mix-blend-mode: soft-light) {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        box-shadow: inset 0 0 0 2px rgba($black, .75);
-        mix-blend-mode: soft-light; } } } }
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      box-shadow: inset 0 0 0 2px rgba($alternate, .1); } } }
 
 // Card body
 // ---------------------------
@@ -91,10 +89,10 @@
 // Card meta
 // ---------------------------
 .meta {
+  @include fonts("sans");
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: $sans;
   font-weight: font-weight(semibold);
   line-height: 1.142857143;
   font-size: 10px;
@@ -114,7 +112,7 @@
     left: double($line); }
 
   .calendar {
-    padding: $base-px $line;
+    padding: $base-px;
     background: #fff;
     border: 2px solid $neutral-l4;
     box-shadow: 0 6px 6px rgba($neutral-l4, .15);

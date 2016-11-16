@@ -30,6 +30,17 @@
       </div>
     {/if}
     
+    {!--
+      loadCSS
+      –
+      Fonts from cloud.typography loaded through here async, helps load times.
+      Also no-js toggle is applied here.
+    --}
+    <script>
+      !function(e){"use strict";var n=function(n,t,o){function i(e){return a.body?e():void setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var s=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=s[s.length-1]}var f=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
+      loadCSS('https://cloud.typography.com/7828432/640526/css/fonts.css');
+    </script>
+    
     {!-- Javascript --}
     {if global:env == "prod"}
       <script>
@@ -37,23 +48,6 @@
         GoSquared.acct = "GSN-610812-E";
         GoSquared.UserName = "visitor";
         (function(w){function gs(){w._gstc_lt = +new Date;var d = document, g = d.createElement("script");g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";var s = d.getElementsByTagName("script")[0];s.parentNode.insertBefore(g, s);}w.addEventListener ?w.addEventListener("load", gs, false) :w.attachEvent("onload", gs);})(window);
-        //$('.event-download').on('click', function() {_gs('event', $(this).text())});
-        //$('[data-event]').on('click', function() {_gs('event', $(this).data('event'))});
-        
-        var dl = document.querySelectorAll('.event-download');
-        var ev = document.querySelectorAll('[data-event]');
-        
-        for ( var dlc = 0; dlc < dl.length; dlc++ ) {
-          dl[dlc].addEventListener('click', function() {
-            _gs('event', this.textContent);
-          });
-        }
-        
-        for ( var evc = 0; evc < ev.length; evc++ ) {
-          ev[evc].addEventListener('click', function(e) {
-            _gs('event', this.dataset.event);
-          });
-        }
       </script>
       <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M6CQBG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M6CQBG');</script>

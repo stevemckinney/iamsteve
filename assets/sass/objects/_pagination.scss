@@ -7,12 +7,12 @@
 // Pagination buttons
 // ---------------------------
 .paginate {
+  @include fonts("sans");
   position: relative;
   transition: .2s;
   background-color: $white;
   box-shadow: inset 0 0 0 2px $tertiary-d1;
   color: $tertiary-d1;
-  font-family: $sans;
   font-size: $base-font-size;
   font-weight: font-weight(semibold);
   
