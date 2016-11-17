@@ -48,7 +48,7 @@ address { font-style: normal; }
     z-index: -1;
     bottom: -1px;
     left: -3px;
-    background: $secondary-l2;
+    background: $secondary-l3;
     width: 72px;
     height: 9px;
     
@@ -57,7 +57,7 @@ address { font-style: normal; }
       height: 12px; } }
   
   &.primary:after {
-    background: $tertiary-l2; } }
+    background: $tertiary-l3; } }
 
 // Links
 // ---------------------------

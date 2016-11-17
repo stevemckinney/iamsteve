@@ -4,25 +4,28 @@
 
 // Color
 // ---------------------------
-$primary: #eb6e5e !global;
-$primary-d1: #9e3a2c;
+$primary: #ff7e6d !global;
+$primary-d1: #bf4e45;
 $primary-d2: scale-lightness($primary-d1, -20%);
-$primary-l1: #f59689;
-$primary-l2: #ffe3de;
-$primary-l3: #fff3f0;
+$primary-l1: #ffb1a9;
+$primary-l2: #ffcbc7;
+$primary-l3: #ffe8e6;
+$primary-l4: #fff6f5;
 
-$secondary: #31bd93 !global;
-$secondary-d1: scale-lightness($secondary, -20%);
-$secondary-l1: #87d4be;
-$secondary-l1: #b9edd9;
-$secondary-l2: #e1f7ee;
-$secondary-l3: #edf7f3;
+$secondary: #27cba4 !global;
+$secondary-d1: #138466;
+$secondary-l1: #89e3cd;
+$secondary-l2: #b9eee2;
+$secondary-l3: #d5f5ee;
+$secondary-l4: #eafaf6;
 
-$tertiary: #ffe0a1 !global;
-$tertiary-d1: #f5c676;
-$tertiary-d2: #d19954;
-$tertiary-l1: #fff6e5;
-$tertiary-l2: #fffbf2;
+$tertiary: #ffdb6d !global;
+$tertiary-d1: #dba758;
+$tertiary-d2: scale-lightness($tertiary-d1, -20%);
+$tertiary-l1: #ffe38d;
+$tertiary-l2: #fff3ce;
+$tertiary-l3: #fff8e6;
+$tertiary-l4: #fffbee;
 
 $alternate: #1a626e !global;
 $alternate-l1: #56959e;
@@ -30,12 +33,22 @@ $alternate-l2: #bed8d8;
 $alternate-l3: #e9f5f5;
 $alternate-l4: #f7fbfb;
 
-$neutral: #3f3d36;
-$neutral-l1: #696761;
-$neutral-l2: #92918b;
-$neutral-l3: #bcbab6;
-$neutral-l4: #e5e4e0;
+$warm: #553143;
+$warm-l1: #7f6371;
+$warm-l2: #d2c7cc;
+$warm-l3: #f7f2f5;
+$warm-l4: #fbf9fa;
+
+$neutral: #301d28;
+$neutral-l1: #62535c;
+$neutral-l2: #938a8f;
+$neutral-l3: #c5c0c3;
+$neutral-l4: #e5e5e5;
 $neutral-l5: #f2f2f0;
+$neutral-l6: #eaeaea;
+$neutral-l7: #efefef;
+$neutral-l8: #f4f4f4;
+$neutral-l9: #f9f9f9;
 
 $colors: (
   primary: $primary,
