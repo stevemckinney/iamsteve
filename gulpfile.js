@@ -93,6 +93,7 @@ gulp.task('js-iamsteve', function() {
     path.js + '/fontfaceobserver.js',
     path.js + '/headroom.js',
     path.js + '/lazysizes.js',
+    path.js + '/load-svg.js',
     path.js + '/global.js'
   ]).pipe(concat('iamsteve.js'))
     .pipe(gulp.dest('dist/js'))
@@ -103,7 +104,6 @@ gulp.task('js-iamsteve', function() {
 
 gulp.task('js-home', function() {
   return gulp.src([
-    path.js + '/load-svg.js',
     path.js + '/flickity.js'
   ]).pipe(concat('home.js'))
     .pipe(gulp.dest('dist/js'))
