@@ -2,7 +2,7 @@ var svg = (function ()
 { 
   var rio = function() {
     var rio = new XMLHttpRequest();
-    rio.open('GET', 'dist/images/rio.svg', true);
+    rio.open('GET', document.location.origin + '/dist/images/rio.svg', true);
     rio.send();
     rio.onload = function(e)
     {
@@ -13,7 +13,7 @@ var svg = (function ()
   
   var osc = function() {
     var osc = new XMLHttpRequest();
-    osc.open('GET', 'dist/images/osc.svg', true);
+    osc.open('GET', document.location.origin + '/dist/images/osc.svg', true);
     osc.send();
     osc.onload = function(e)
     {
