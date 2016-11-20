@@ -120,12 +120,24 @@
   border-radius: $radius; } }
 
 .card-medium .card-image {
-  width: 378px;
-  height: 252px; }
+  width: 240px;
+  height: 160px;
+  
+  @include breakpoint($a) {
+    width: 288px;
+    height: 220px; }
+  
+  @include breakpoint($b) {
+    width: 378px;
+    height: 252px; } }
 
 .card-small .card-image {
-  width: 252px;
-  height: 168px; }
+  width: 196px;
+  height: 154px;
+  
+  @include breakpoint($c) {
+    width: 252px;
+    height: 168px; } }
 
 // Card meta
 // ---------------------------
