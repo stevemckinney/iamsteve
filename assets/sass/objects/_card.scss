@@ -125,7 +125,7 @@
   
   @include breakpoint($a) {
     width: 288px;
-    height: 220px; }
+    height: 192px; }
   
   @include breakpoint($b) {
     width: 378px;
@@ -133,7 +133,7 @@
 
 .card-small .card-image {
   width: 196px;
-  height: 154px;
+  height: 130px;
   
   @include breakpoint($c) {
     width: 252px;
