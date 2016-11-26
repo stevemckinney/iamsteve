@@ -21,7 +21,8 @@ var src = {
   css: 'dist/css',
   html: 'system/user/templates/**/*.html',
   js: 'assets/js/**/*.js',
-  images: 'assets/images/**/*'
+  images: 'assets/images/**/*',
+  svg: 'assets/images/**/*.svg'
 };
 
 var path = {
@@ -70,7 +71,20 @@ gulp.task('autoprefixer', function() {
 // Images
 gulp.task('images', function() {
   return gulp.src(src.images)
-    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
+    .pipe(cache(imagemin(
+      { 
+        optimizationLevel: 3,
+        progressive: true,
+        interlaced: true,
+        mergePaths: false
+      }
+    )))
+    .pipe(gulp.dest('dist/images/*.png'));
+});
+
+gulp.task('svg', function() {
+  return gulp.src(src.svg)
+    .pipe(cache(imagemin({ mergePaths: false })))
     .pipe(gulp.dest('dist/images'));
 });
 

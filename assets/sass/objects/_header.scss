@@ -11,9 +11,14 @@
   z-index: $z-index-100;
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
+  background-color: $white;
+  box-shadow: 0 1px $white, 0 6px 12px rgba($neutral, .025);
   
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); }
+  
+  &:after {
+    @include dashes($image: "dash-neutral.svg"); }
   
   > .icon-search {
     z-index: $z-index-200;

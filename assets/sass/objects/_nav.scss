@@ -9,8 +9,7 @@
     padding-bottom: 44px; }
   
   @include breakpoint($c) {
-    align-content: center;
-    align-items: center; } }
+    flex: 1; } }
 
 .nav-item {
   @include fonts("sans");
@@ -43,3 +42,4 @@
   // When we’re not afforded vertical space make halves
   @include breakpoint(($c-max) (orientation landscape)) {
     flex: 1 1 50%; } }
+    

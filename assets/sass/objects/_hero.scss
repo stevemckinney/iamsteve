@@ -1,11 +1,16 @@
 // Main section
 .hero {
-  background: image-url("dash-neutral.svg") repeat-x center bottom;
+  background-color: $primary-l4;
   align-content: center;
   align-items: center;
   padding-top: $line;
-  padding-bottom: double($line);
   justify-content: space-between;
   
   @include breakpoint($d) {
     padding-top: double($line); } }
+    
+.hero-image {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 auto -40px;
+}

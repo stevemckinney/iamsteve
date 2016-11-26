@@ -11,14 +11,17 @@
 
 <div class="row hero contain-medium contain-large mb4-d">
   <div class="column introduction">
-    <h1 class="f3 f2-b f1-d mb2 primary">Learn design and code</h1>
+    <h1 class="f3 f2-b f1-d mb2 primary hero-title">Learn design and code</h1>
     <p>A weekly blog covering design and code. Focusing on designing with Illustrator and writing maintainable CSS.</p>
     <p class="sans"><a href="{path='blog/index'}" class="link neutral">Browse the archive</a></p>
-    <picture>
-      <source srcset="{site_url}dist/images/introduction-320.svg" media="(max-width: 399px)">
-      <source srcset="{site_url}dist/images/introduction-320.svg" media="(min-width: 400px)">
-    </picture>
   </div>
+  <picture class="hero-image">
+    <source srcset="{site_url}dist/images/introduction-320.svg" media="(max-width: 399px)">
+    <source srcset="{site_url}dist/images/introduction-394.svg" media="(min-width: 400px) and (max-width: 733px)">
+    <source srcset="{site_url}dist/images/introduction-734.svg" media="(min-width: 734px) and (max-width: 959px)">
+    <source srcset="{site_url}dist/images/introduction-960.svg" media="(min-width: 960px)">
+    <img>
+  </picture>
 </div>
 
 <section class="posts pt6 pt7-d pb6 pb7-d">
