@@ -101,15 +101,13 @@
     margin-left: -16px;
     width: 32px;
     height: 32px;
-    background-color: $secondary;
-  
     border-radius: 32px;
-    animation: load 1s infinite ease-in-out; } }
+    background-color: $primary;
+    animation: scaleout 1.2s infinite ease-in-out; } }
 
-@keyframes load {
+@keyframes scaleout {
   0% { 
-    transform: scale(0); }
-    
+    transform: scale(0); } 
   100% {
     transform: scale(1);
     opacity: 0; } }
@@ -119,10 +117,12 @@
 .card-medium .card-image { &, img {
   border-radius: $radius; } }
 
+// @todo sizes are off here
 .card-medium .card-image {
   width: 240px;
   height: 160px;
   
+  // @todo sizes are off here
   @include breakpoint($a) {
     width: 288px;
     height: 192px; }
@@ -131,9 +131,10 @@
     width: 378px;
     height: 252px; } }
 
+// @todo sizes are off here
 .card-small .card-image {
-  width: 196px;
-  height: 130px;
+  width: 180px;
+  height: 120px;
   
   @include breakpoint($c) {
     width: 252px;
