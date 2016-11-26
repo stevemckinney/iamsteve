@@ -82,9 +82,63 @@
 
 // Card image
 // ---------------------------
-.card-small .card-image img,
-.card-medium .card-image img {
-  border-radius: $radius; }
+.card-medium .card-image,
+.card-small .card-image {
+  position: relative;
+  background-color: $neutral-l5;
+  
+  img {
+    position: relative;
+    z-index: 2; }
+  
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    background-color: $primary;
+    animation: scaleout 1.2s infinite ease-in-out; } }
+
+@keyframes scaleout {
+  0% { 
+    transform: scale(0); } 
+  100% {
+    transform: scale(1);
+    opacity: 0; } }
+
+
+.card-small .card-image,
+.card-medium .card-image { &, img {
+  border-radius: $radius; } }
+
+// @todo sizes are off here
+.card-medium .card-image {
+  width: 240px;
+  height: 160px;
+  
+  // @todo sizes are off here
+  @include breakpoint($a) {
+    width: 288px;
+    height: 192px; }
+  
+  @include breakpoint($b) {
+    width: 378px;
+    height: 252px; } }
+
+// @todo sizes are off here
+.card-small .card-image {
+  width: 180px;
+  height: 120px;
+  
+  @include breakpoint($c) {
+    width: 252px;
+    height: 168px; } }
 
 // Card meta
 // ---------------------------

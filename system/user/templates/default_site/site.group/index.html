@@ -11,18 +11,13 @@
 
 <div class="row hero contain-medium contain-large mb4-d">
   <div class="column introduction">
-    <picture class="rio mb2" id="rio">
-      <span style="display: block;width: 246px;height: 256px"></span>
-      <noscript><img src="{site_url}dist/images/rio.svg"></noscript>
-    </picture>
     <h1 class="f3 f2-b f1-d mb2 primary">Learn design and code</h1>
-    <p>Hello there, I’m Steve&nbsp;McKinney, a designer who codes. I&nbsp;write regularly, focusing on the process behind that. I&nbsp;cover topics on designing with Adobe Illustrator, CSS and Wordpress.</p>
+    <p>A weekly blog covering design and code. Focusing on designing with Illustrator and writing maintainable CSS.</p>
     <p class="sans"><a href="{path='blog/index'}" class="link neutral">Browse the archive</a></p>
-  </div>
-  <div class="column featured">
-    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="1"}
-    	{post_large}
-    {/exp:channel:entries}
+    <picture>
+      <source srcset="{site_url}dist/images/introduction-320.svg" media="(max-width: 399px)">
+      <source srcset="{site_url}dist/images/introduction-320.svg" media="(min-width: 400px)">
+    </picture>
   </div>
 </div>
 

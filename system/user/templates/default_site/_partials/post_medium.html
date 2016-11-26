@@ -3,17 +3,21 @@
   	{if thumbnail}
   	  {thumbnail}
   	    {if medium_file_url}
-  	      <img src="{url:medium}" srcset="{url:medium-2x} 2x">
+  	      <img data-src="{url:medium}" data-srcset="{url:medium-2x} 2x" class="lazyload">
+  	      <noscript><img src="{url:medium}" srcset="{url:medium-2x} 2x"></noscript>
         {if:else}
-          <img src="{url}">
+          <img data-src="{url}" class="lazyload">
+          <noscript><img src="{url}"></noscript>
         {/if}
       {/thumbnail}
     {if:else}
   	  {categories channel="blog" limit="1"}
         {if category_id == 7}
-          <img src="{site_url}dist/images/{design}">
+          <img data-src="{site_url}dist/images/{design}" class="lazyload">
+          <noscript><img src="{site_url}dist/images/{design}"></noscript>
         {if:else}
-          <img src="{site_url}dist/images/{code}">
+          <img data-src="{site_url}dist/images/{code}" class="lazyload">
+          <noscript><img src="{site_url}dist/images/{code}"></noscript>
         {/if}
       {/categories}
     {/if}
