@@ -19,7 +19,4 @@
     // https://bugzilla.mozilla.org/show_bug.cgi?id=874718
     flex: 1;
     text-align: center;
-    line-height: 1; }
-  
-  &:after {
-    @include dashes($image: "dash-neutral.svg"); } }
+    line-height: 1; } }

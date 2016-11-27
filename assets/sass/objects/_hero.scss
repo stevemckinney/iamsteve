@@ -16,3 +16,11 @@
   
   @include breakpoint(734px) {
     margin-bottom: -40px; } }
+    
+.hero-title {
+  @include breakpoint($d) {
+    @include hide-text;
+    background-image: image-url("lettering.svg");
+    background-repeat: no-repeat;
+    width: 288px;
+    height: 272px; } }

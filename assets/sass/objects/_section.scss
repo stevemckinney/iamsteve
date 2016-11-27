@@ -63,13 +63,7 @@
 .row-strong {
   background-color: $alternate-l4;
   position: relative;
-  color: $alternate;
-  
-  &:before {
-    @include dashes(top); }
-  
-  &:after {
-    @include dashes; } }
+  color: $alternate; }
 
 // Row contents
 // ---------------------------

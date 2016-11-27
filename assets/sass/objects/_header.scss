@@ -17,9 +17,6 @@
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); }
   
-  &:after {
-    @include dashes($image: "dash-neutral.svg"); }
-  
   > .icon-search {
     z-index: $z-index-200;
     order: -1;
