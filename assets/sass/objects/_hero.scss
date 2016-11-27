@@ -12,5 +12,7 @@
 .hero-image {
   display: inline-block;
   vertical-align: middle;
-  margin: 0 auto -40px;
-}
+  margin: 0 auto -28px;
+  
+  @include breakpoint(734px) {
+    margin-bottom: -40px; } }
