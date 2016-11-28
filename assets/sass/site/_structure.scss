@@ -6,10 +6,7 @@ body {
 // Page specific
 // ---------------------------
 .page-offset {
-  padding-top: $line * 2;
-  
-  @include breakpoint($c) {
-    padding-top: $line * 4; } }
+  @include page-offset; }
 
 // Structural elements
 // ---------------------------
