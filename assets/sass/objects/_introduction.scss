@@ -1,26 +1,16 @@
 // The introduction area is unique
 // ---------------------------
 .introduction {
-  @include breakpoint($c) {
-    flex-basis: calc(44% - #{$base-px}); }
-    
   @include breakpoint($d) {
-   flex-basis: calc(37.5% - #{$base-px}); }
-   
-  @include breakpoint($site-width) {
-    flex-basis: 398px; }
+    position: absolute;
+    top: calc(20vh + 48px);
+    left: calc((50% - 600px) + 16px); }
     
-  @include breakpoint($c-max) {
-    align-content: center;
-    align-items: center;
-    padding: 0 double($line) double($line); }
-  
-  @include breakpoint($a-max) {
-    padding: 0 $line*1.5 double($line); }
-  
   p {
-    text-align: justify;
+    text-align: center;
     max-width: 324px;
+    margin-right: auto;
+    margin-left: auto;
     
     @include breakpoint($cd-max) {
       max-width: 284px; } } }

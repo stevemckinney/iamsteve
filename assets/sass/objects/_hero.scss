@@ -5,9 +5,19 @@
   align-items: center;
   padding-top: $line;
   justify-content: space-between;
+  padding-top: 44px + ($line * 2);
+  
+  @include breakpoint($a) {
+    padding-top: 44px + ($line * 3); }
+  
+  @include breakpoint($b) {
+    padding-top: 44px + ($line * 4); }
+  
+  @include breakpoint($b) {
+    padding-top: 96px + ($line * 4); }
   
   @include breakpoint($d) {
-    padding-top: double($line); } }
+    padding-top: calc(20vh + 96px); } }
     
 .hero-image {
   display: inline-block;
