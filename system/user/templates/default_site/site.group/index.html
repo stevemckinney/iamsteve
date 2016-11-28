@@ -1,4 +1,4 @@
-{layout="layouts/_layout-site" class="page-offset page-home"}
+{layout="layouts/_layout-site" class="page-home"}
 
 {!-- channel vars (prefix ch_) --}
 {preload_replace:ch="blog"}
@@ -9,18 +9,18 @@
 {preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
 {preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
 
-<div class="row hero contain-medium contain-large mb4-d">
-  <div class="column introduction">
+<div class="hero contain-medium contain-large text-center mb4-d">
+  <div class="introduction">
     <h1 class="f3 f2-b f1-d mb2 primary hero-title">Learn design and code</h1>
-    <p>A weekly blog covering design and code. Focusing on designing with Illustrator and writing maintainable CSS.</p>
-    <p class="sans"><a href="{path='blog/index'}" class="link neutral">Browse the archive</a></p>
+    <p class="description">A weekly blog covering design and code. Focusing on designing with Illustrator and writing maintainable CSS.</p>
+    <p class="action sans"><a href="{path='blog/index'}" class="link neutral">Browse the archive</a></p>
   </div>
   <picture class="hero-image">
     <source srcset="{site_url}dist/images/introduction-320.svg" media="(max-width: 399px)">
     <source srcset="{site_url}dist/images/introduction-394.svg" media="(min-width: 400px) and (max-width: 733px)">
     <source srcset="{site_url}dist/images/introduction-734.svg" media="(min-width: 734px) and (max-width: 959px)">
     <source srcset="{site_url}dist/images/introduction-960.svg" media="(min-width: 960px)">
-    <img>
+    <img src="{site_url}dist/images/introduction-960.svg">
   </picture>
 </div>
 
