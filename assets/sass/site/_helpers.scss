@@ -21,3 +21,8 @@
 // Make anything a block level element
 .db {
   display: block; }
+
+// Responsive hide class
+.hide-d {
+  @include breakpoint($d) {
+    display: none; } }
