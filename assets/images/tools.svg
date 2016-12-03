@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="322" height="60" viewBox="0 0 322 60">
+  <defs>
+    <style>
+      .a {
+        fill: #ff7e6d;
+        stroke: #bf4e45;
+      }
+
+      .a, .b, .e, .f {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .a, .b, .d, .e, .f {
+        stroke-width: 2px;
+      }
+
+      .b {
+        fill: #ffdb6d;
+      }
+
+      .b, .d, .e, .f {
+        stroke: #8e7c69;
+      }
+
+      .c, .e {
+        fill: #8e7c69;
+      }
+
+      .d, .f {
+        fill: none;
+      }
+
+      .d {
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <title>tools</title>
+  <g>
+    <path class="a" d="M223.52522,23.81853,212.11595,12.40927l6.6554-6.6554L193.1005,1l4.75386,25.67085,6.6554-6.6554L215.919,31.42471a5.37837,5.37837,0,0,0,7.60617,0h0A5.37837,5.37837,0,0,0,223.52522,23.81853Z"/>
+    <g>
+      <polygon class="b" points="96.858 26.282 103.969 33.393 118.902 25.571 126.725 12.06 118.191 3.527 104.68 11.349 96.858 26.282"/>
+      <path class="c" d="M109.67174,17.73521a1.96473,1.96473,0,0,1,2.81669,0,2.059,2.059,0,0,1,0,2.87192,1.96473,1.96473,0,0,1-2.81669,0A2.059,2.059,0,0,1,109.67174,17.73521Z"/>
+      <line class="d" x1="99.70231" y1="30.54895" x2="111.08009" y2="19.17118"/>
+      <rect class="e" x="111.98468" y="7.20429" width="18.10193" height="4.02265" transform="translate(41.96695 -82.88593) rotate(45)"/>
+    </g>
+    <g>
+      <path class="b" d="M9,35V59H33V35Z"/>
+      <rect class="a" x="1" y="26" width="24" height="24"/>
+    </g>
+    <g>
+      <path class="b" d="M297,34V48h16V34Z"/>
+      <line class="f" x1="293" y1="34" x2="289" y2="34"/>
+      <line class="f" x1="321" y1="34" x2="317" y2="34"/>
+      <line class="f" x1="293" y1="48" x2="289" y2="48"/>
+      <line class="f" x1="321" y1="48" x2="317" y2="48"/>
+      <line class="f" x1="297" y1="52" x2="297" y2="56"/>
+      <line class="f" x1="297" y1="26" x2="297" y2="30"/>
+      <line class="f" x1="313" y1="52" x2="313" y2="56"/>
+      <line class="f" x1="313" y1="26" x2="313" y2="30"/>
+    </g>
+  </g>
+</svg>
