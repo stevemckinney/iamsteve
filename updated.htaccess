@@ -10,6 +10,13 @@
 
 # top1-seo-service|top1-seo-service\.com|rankings-analytics\.com|video--production\.com|get-free-traffic|erot\.co|webmonetizer|event-tracking|floating-share-buttons|semalt\.com|buttons-for-website\.com|success-seo\.com|videos-for-your-business\.com|free-share-buttons\.com|guardlink\.org|theguardlan\.com|buy-cheap-online\.com|get-free-traffic-now\.com|torture\.ml|event-tracking\.com)"
 
+<RequireAll>
+Require all granted
+Require not ip 93.103.209.7
+Require not ip 62.210.105.98
+Require not ip 198.23.129.8
+</RequireAll>
+
 # ##############################################################################
 # # CROSS-ORIGIN RESOURCE SHARING (CORS)                                       #
 # ##############################################################################

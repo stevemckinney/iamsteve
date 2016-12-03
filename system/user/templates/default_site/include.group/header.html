@@ -27,6 +27,12 @@
     {/exp:minimee:css}
     <noscript>.no-js img.lazyload { display: none; }</noscript>
     
+    {!--
+      JS
+      No other JavaScript should be found here
+    --}
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+    
     {!-- 
       Head
       –
