@@ -47,9 +47,9 @@
     parse_conditionals="yes"
   }
     {if previous_page}
-      <a href="{previous_page}" class="neutral-l1 sans link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></a>
+      <a href="{previous_page}" class="warm sans link-icon"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></a>
     {if:else}
-      <span class="neutral-l3 sans link-icon disabled"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></span>
+      <span class="primary-l2 sans link-icon disabled"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></span>
     {/if}
 
     {if segment_2 == 'category'}
@@ -64,9 +64,9 @@
 
   
     {if next_page}
-      <a href="{next_page}" class="neutral-l1 sans link-icon"><strong>Older</strong> <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
+      <a href="{next_page}" class="warm sans link-icon"><strong>Older</strong> <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
     {if:else}
-      <span class="neutral-l3 sans link-icon disabled"><strong>Older</strong> <span class="icon icon-medium icon-right">{gv_arrow_right}</span></span>
+      <span class="primary-l2 sans link-icon disabled"><strong>Older</strong> <span class="icon icon-medium icon-right">{gv_arrow_right}</span></span>
     {/if}
   {/exp:stash:get_list}
 </div>

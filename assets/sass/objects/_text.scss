@@ -19,6 +19,7 @@
 $text-color-helpers: (
 	"white": $white,
 	primary: $primary,
+	primary-l2: $primary-l2,
 	secondary: $secondary,
 	secondary-l1: $secondary-l1,
 	tertiary: $tertiary,
@@ -26,7 +27,8 @@ $text-color-helpers: (
 	neutral-l1: $neutral-l1,
 	neutral-l2: $neutral-l2,
 	neutral-l3: $neutral-l3,
-	alternate: $alternate
+	alternate: $alternate,
+	warm: $warm
 );
 
 @each $name, $color in $text-color-helpers {
