@@ -1,6 +1,6 @@
 // Main section
 .hero {
-  background-color: $primary-l4;
+    background-color: $primary-l4;
   align-content: center;
   align-items: center;
   padding-top: $line;
@@ -20,12 +20,15 @@
     padding-top: calc(20vh + 96px); } }
     
 .hero-image {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 auto -28px;
+  display: block;
+  text-align: center;
   
-  @include breakpoint(734px) {
-    margin-bottom: -40px; } }
+  img {
+    display: inline-block;
+    margin: 0 auto -28px;
+    
+    @include breakpoint(734px) {
+      margin-bottom: -48px; } } }
     
 .hero-title {
   @include breakpoint($d) {

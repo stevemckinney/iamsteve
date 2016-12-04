@@ -12,7 +12,6 @@
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
   background-color: $white;
-  box-shadow: 0 1px $white, 0 6px 12px rgba($neutral, .025);
   
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); }
@@ -23,17 +22,6 @@
     
     @include breakpoint($c) {
       display: none; } } }
-
-  .shadow {
-    background-blend-mode: overlay;
-    mix-blend-mode: overlay;
-    position: absolute;
-    top: 96px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    box-shadow: 0 6px 12px #000;
-    background: #000; }
 
 // Headroom
 // ---------------------------

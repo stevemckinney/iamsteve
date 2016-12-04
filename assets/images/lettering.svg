@@ -8,7 +8,7 @@
       }
 
       .a {
-        stroke: #ff7e6d;
+        stroke: #e9f5f5;
       }
 
       .a, .c {
@@ -16,12 +16,12 @@
       }
 
       .b {
-        stroke: #fff5f3;
+        stroke: #fff6f5;
         stroke-width: 12px;
       }
 
       .c {
-        stroke: #27cba4;
+        stroke: #b2a1aa;
       }
     </style>
   </defs>
