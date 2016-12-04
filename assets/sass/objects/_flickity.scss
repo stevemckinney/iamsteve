@@ -58,11 +58,9 @@
   -ms-overflow-style: -ms-autohiding-scrollbar;
   
   padding: 0 $base-px 0 4px;
-  padding-left: calc(50% - 632px);
   
   &.flickity-enabled { 
-    padding: 0;
-    padding-left: calc(50% - 632px); }
+    padding: 0; }
 
   // Each card width must be offset by the padding, otherwise it’s too small.
   .card {
