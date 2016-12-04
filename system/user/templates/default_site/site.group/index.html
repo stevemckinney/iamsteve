@@ -9,7 +9,7 @@
 {preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
 {preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
 
-<div class="hero contain-medium contain-large text-center mb4-d">
+<div class="hero contain-medium contain-large mb4-d">
   <div class="introduction mb4">
     <h1 class="f3 f2-b f1-d mb2 primary hero-title">Learn design and code</h1>
     <p class="hide-d">A weekly blog covering design and code. Focusing on designing with Illustrator and writing maintainable CSS.</p>
@@ -37,7 +37,7 @@
     </div>
   </header>
   <div class="scroll">
-    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" offset="1" limit="{ch_limit_large}"}
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit_large}"}
     	{post_medium}
     {/exp:channel:entries}
     <a href="{path='blog/P12'}" class="card card-medium card-more">
