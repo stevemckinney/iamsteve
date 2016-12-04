@@ -48,15 +48,18 @@ address { font-style: normal; }
     content: "";
     position: absolute;
     z-index: -1;
-    bottom: -1px;
+    bottom: -2px;
     left: -3px;
-    background: $secondary-l3;
+    background: $primary-l4;
     width: 72px;
     height: 9px;
     
     @include breakpoint($b) {
       width: 96px;
       height: 12px; } }
+  
+  &.secondary:after {
+    background: $secondary-l3; }
   
   &.primary:after {
     background: $tertiary-l3; } }
