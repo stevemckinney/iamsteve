@@ -167,10 +167,11 @@ var iamsteve = (function ()
       freeScroll: true,
       prevNextButtons: false,
       pageDots: false,
-      contain: true,
+      contain: false,
       imagesLoaded: true,
       dragThreshold: 24,
-      groupCells: true
+      groupCells: true,
+      percentPosition: false
     });
     
     // Initial state means left should be disabled
