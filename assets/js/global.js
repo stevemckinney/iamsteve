@@ -163,13 +163,14 @@ var iamsteve = (function ()
     
     var flickity = new Flickity( scroll,
     {
-      cellAlign: 'left',
+      cellAlign: 'center',
       freeScroll: true,
       prevNextButtons: false,
       pageDots: false,
       contain: true,
       imagesLoaded: true,
-      dragThreshold: 24
+      dragThreshold: 24,
+      groupCells: true
     });
     
     // Initial state means left should be disabled
