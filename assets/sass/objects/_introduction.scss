@@ -1,13 +1,14 @@
 // The introduction area is unique
 // ---------------------------
 .introduction {
+  text-align: center;
+  
   @include breakpoint($d) {
     position: absolute;
     top: calc(20vh + 48px);
     left: calc((50% - 600px) + 16px); }
     
   p {
-    text-align: center;
     max-width: 324px;
     margin-right: auto;
     margin-left: auto;
