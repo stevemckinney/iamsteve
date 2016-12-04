@@ -24,7 +24,7 @@
       
   @include breakpoint($cd) {
     // Align to the logo baseline
-    padding: 40px 16px 38px; }
+    padding: 40px 12px 38px; }
   
   @include breakpoint($cd-max) {
     font-size: $f6; }

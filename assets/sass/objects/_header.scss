@@ -57,7 +57,7 @@
   display: block; }
   
 .logo-large {
-  margin-right: $base-px;
+  margin-right: half($base-px);
    
   @include breakpoint($cd-max) {
     display: none; } }
