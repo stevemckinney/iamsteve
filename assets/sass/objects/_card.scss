@@ -117,29 +117,6 @@
 .card-medium .card-image { &, img {
   border-radius: $radius; } }
 
-// @todo sizes are off here
-.card-medium .card-image {
-  width: 240px;
-  height: 160px;
-  
-  // @todo sizes are off here
-  @include breakpoint($a) {
-    width: 288px;
-    height: 192px; }
-  
-  @include breakpoint($b) {
-    width: 378px;
-    height: 252px; } }
-
-// @todo sizes are off here
-.card-small .card-image {
-  width: 180px;
-  height: 120px;
-  
-  @include breakpoint($c) {
-    width: 252px;
-    height: 168px; } }
-
 // Card meta
 // ---------------------------
 .meta {
