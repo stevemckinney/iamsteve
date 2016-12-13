@@ -16,7 +16,7 @@
   @include breakpoint($b) {
     padding-top: 96px + ($line * 4); }
   
-  @include breakpoint($d) {
+  @include breakpoint($site-width) {
     padding-top: calc(22.5vh + 96px); } }
     
 .hero-image {
@@ -31,7 +31,7 @@
       margin-bottom: -48px; } } }
     
 .hero-title {
-  @include breakpoint($d) {
+  @include breakpoint($site-width) {
     @include hide-text;
     background-image: image-url("lettering.svg");
     background-repeat: no-repeat;

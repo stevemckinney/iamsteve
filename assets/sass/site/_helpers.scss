@@ -23,6 +23,6 @@
   display: block; }
 
 // Responsive hide class
-.hide-d {
-  @include breakpoint($d) {
+.hide-sw {
+  @include breakpoint($site-width) {
     display: none; } }

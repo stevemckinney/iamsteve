@@ -3,7 +3,7 @@
 .introduction {
   text-align: center;
   
-  @include breakpoint($d) {
+  @include breakpoint($site-width) {
     position: absolute;
     top: calc(20vh + 48px);
     left: calc((50% - 600px) + 16px); }
