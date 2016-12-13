@@ -163,7 +163,7 @@ var iamsteve = (function ()
     
     var flickity = new Flickity( scroll,
     {
-      cellAlign: 'center',
+      cellAlign: 'left',
       freeScroll: true,
       prevNextButtons: false,
       pageDots: false,

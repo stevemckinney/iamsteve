@@ -9,7 +9,7 @@
 {preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
 {preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
 
-<div class="hero contain-medium contain-large mb4-d">
+<div class="hero contain-medium contain-large mb2 mb4-d">
   <div class="introduction mb4">
     <h1 class="f3 f2-b f1-d mb2 primary hero-title">Learn design and code</h1>
     <p class="hide-d">A weekly blog covering design and code. Focusing on designing with Illustrator and writing maintainable CSS.</p>
@@ -37,6 +37,7 @@
     </div>
   </header>
   <div class="scroll">
+    <div class="offsetter" role="presentation"></div>
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit_large}"}
     	{post_medium}
     {/exp:channel:entries}
@@ -50,7 +51,7 @@
 
 {embed="include/subscribe" class="row-strong"}
 
-<section class="posts pt6 pt8-d pb6 pb8-d">
+<section class="posts pt6 pt8-d pb4 pb8-d">
   <header class="row row-header contain contain-medium contain-large between">
     <h2 class="f5 f4-b neutral chunky row-title">Popular in design</h2>
     <div class="pagination js-pagination">
@@ -63,6 +64,7 @@
     </div>
   </header>
   <div class="scroll">
+    <div class="offsetter" role="presentation"></div>
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="7" orderby="view_count_one" sort="desc"}
     	{post_small}
     {/exp:channel:entries}
@@ -74,7 +76,7 @@
   </div>
 </section>
 
-<section class="posts pb6 pb8-d">
+<section class="posts pb4 pb6-d">
   <header class="row row-header contain contain-medium contain-large between">
     <h2 class="f5 f4-b neutral chunky row-title">Popular in code</h2>
     <div class="pagination js-pagination">
@@ -87,6 +89,7 @@
     </div>
   </header>
   <div class="scroll">
+    <div class="offsetter" role="presentation"></div>
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2" orderby="view_count_one" sort="desc"}
     	{post_small}
     {/exp:channel:entries}
