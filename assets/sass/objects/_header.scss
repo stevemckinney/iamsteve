@@ -11,10 +11,12 @@
   z-index: $z-index-100;
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
-  background-color: $white;
   
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); }
+    
+  @include breakpoint($cd-max) {
+    background-color: $white; }
   
   > .icon-search {
     z-index: $z-index-200;
