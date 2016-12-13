@@ -1,5 +1,5 @@
 <article class="card card-medium entry">
-	<a href="{title_permalink='blog/entry'}" class="card-image db mb2 mb4-b">
+	<a href="{title_permalink='blog/entry'}" class="card-image db mb3 mb4-b">
   	{if thumbnail}
   	  {thumbnail}
   	    {if medium_file_url}
@@ -30,9 +30,7 @@
   	</div>
 		<h3 class="f5 f4-b {if '{exp:iamsteve:is_mobile}' != 1}mb1{if:else}mb2{/if} primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
 	  
-		{if segment_1 == ""}
-  		{exp:streeng words="44"}{excerpt}{/exp:streeng}
-	  {if:elseif '{exp:iamsteve:is_mobile}' != 1}
+		{if '{exp:iamsteve:is_mobile}' != 1}
 		  {if segment_1 == 'search'}
 		    <p>{exp:streeng words="44"}{excerpt}{/exp:streeng}</p>
 		  {if:else}
@@ -45,7 +43,7 @@
         <a href="{path='blog/index'}" rel="category tag">{category_name}</a>
       {/categories}
     
-      {if segment_2 != "entry"}
+      {if segment_2 != "entry" && '{exp:iamsteve:is_mobile}' != 1}
         <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium icon-right fill-secondary">{gv_arrow_right}</span></a>
       {/if}
     </div>
