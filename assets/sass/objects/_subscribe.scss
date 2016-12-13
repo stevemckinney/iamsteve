@@ -32,7 +32,7 @@
     padding-right: 320px;
     max-width: 752px; }
   
-  p {
+  p:first-child {
     padding-right: 144px + $base-px;
     padding-bottom: $line;
     
