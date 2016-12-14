@@ -148,7 +148,7 @@
   min-height: 240px;
   
   @include breakpoint($site-width) {
-    min-height: 516px;
+    min-height: 600px;
     border-radius: $radius 0 0 $radius; } }
 
 .featured-image img {
