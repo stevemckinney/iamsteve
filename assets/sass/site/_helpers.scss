@@ -26,3 +26,7 @@
 .hide-sw {
   @include breakpoint($site-width) {
     display: none; } }
+
+// Background
+.bg-white {
+  background-color: $white; }
