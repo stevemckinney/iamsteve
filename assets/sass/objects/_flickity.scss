@@ -52,6 +52,7 @@
 // edge to edge scroll. The addition of 16px compensates for the padding on the
 // sides of each card within the scroll container.
 .offsetter {
+  display: inline-block;
   width: calc(50% - (#{$contain / 2} + 16px)); }
 
 // Scroll
@@ -104,32 +105,3 @@
     
     @include breakpoint($c) {
       width: 268px; } } }
-
-// Lazy loaded images
-// ---
-// Sizes are specific here to make sure flickity calculates the correct height
-// also stopping a lot of jumpiness
-// ---------------------------
-// @todo sizes are off here
-.scroll .card-medium .card-image {
-  max-width: 100%;
-  width: 264px;
-  height: 172px;
-  
-  // @todo sizes are off here
-  @include breakpoint($a) {
-    width: 288px;
-    height: 192px; }
-  
-  @include breakpoint($b) {
-    width: 378px;
-    height: 252px; } }
-
-// @todo sizes are off here
-.scroll .card-small .card-image {
-  width: 180px;
-  height: 120px;
-  
-  @include breakpoint($c) {
-    width: 252px;
-    height: 168px; } }
