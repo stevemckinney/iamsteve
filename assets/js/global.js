@@ -74,6 +74,14 @@ var iamsteve = (function ()
     headroom.init(); 
   }
   
+  var lazy = function()
+  {
+    document.addEventListener('lazyunveilread', function(e)
+    {
+      e.target.parentNode.classList.add('image-loaded');
+    });
+  }
+  
   var fonts = function()
   {
     if ( ! document.documentElement.classList.contains('fonts-stage-1') ) {
@@ -203,7 +211,8 @@ var iamsteve = (function ()
     toggler: toggler(),
     headroom: headroom(),
     flickity: flickity(),
-    fonts: fonts()
+    fonts: fonts(),
+    images: lazy()
   };
 
 })();
