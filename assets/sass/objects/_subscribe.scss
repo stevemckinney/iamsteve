@@ -6,24 +6,28 @@
   
 .subscribe-image {
   position: absolute;
-  top: 0;
+  top: $line*1.5;
   right: 0;
-  max-width: 144px;
-  max-height: 144px;
   
-  @include breakpoint(414px) {
-    top: -$line;
-    max-width: 192px;
-    max-height: 192px; }
+  svg { 
+    max-width: 144px;
+    max-height: 144px; }
+  
+  @include breakpoint(360px) {
+    top: -8px; }
+  
+  @include breakpoint(414px) {     
+    svg {
+      max-width: 184px;
+      max-height: 184px; } }
   
   @include breakpoint($d) {
     top: 50%;
     transform: translateY(-50%);
-    max-width: 320px;
-    max-height: 320px; }
-  
-  @include breakpoint($a-max) {
-    top: $line*1.5; } }
+    
+    svg {
+      max-width: 320px;
+      max-height: 320px; } } }
 
 .subscribe-content {
   position: relative;
@@ -34,6 +38,19 @@
   @include breakpoint($d) {
     padding-right: 320px;
     max-width: 752px; }
+  
+  p {
+    max-width: calc(100% - #{144px + 2px});
+    
+    @include breakpoint(max-width 359px) {
+      &:last-of-type {
+        max-width: 100%; } }
+    
+    @include breakpoint(414px) {
+      max-width: calc(100% - #{184px + 8px}); }
+    
+    @include breakpoint($d) {
+      max-width: 100%; } }
   
   p:first-child {
     padding-right: 144px + $base-px;
@@ -47,17 +64,4 @@
       
     @include breakpoint($d) {
       padding-right: 0;
-      padding-bottom: 0; } }
-      
-  @include breakpoint(max-width 414px) {
-    p {
-      padding-right: calc(100% - #{192px - 16px});
-      max-width: 100%; } }
-  
-  @include breakpoint(max-width 359px) {
-    p {
-      padding-right: calc(100% - #{144px - 16px});
-      max-width: 100%; }
-    
-    p:last-of-type {
-      padding-right: 0; } } }
+      padding-bottom: 0; } } }
