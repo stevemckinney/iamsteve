@@ -9,5 +9,4 @@
  * @since		Version 3.0
  * @filesource
  */
-$(document).ready(function(){$(".sidebar .folder-list .remove a.m-link").click(function(t){var e="."+$(this).attr("rel");$(e+" .checklist").html(""),// Reset it
-$(e+" .checklist").append("<li>"+$(this).data("confirm")+"</li>"),$(e+" input[name='group_name']").val($(this).data("group_name")),t.preventDefault()})});
+$(document).ready(function(){$(".sidebar .folder-list .remove a.m-link").click(function(t){var e="."+$(this).attr("rel");$(e+" .checklist").html(""),$(e+" .checklist").append("<li>"+$(this).data("confirm")+"</li>"),$(e+" input[name='group_name']").val($(this).data("group_name")),t.preventDefault()})});
