@@ -2,9 +2,12 @@
 // ---------------------------
 .form {
 	display: flex;
-	flex-flow: row wrap; }
+	flex-flow: row wrap;
+	width: 100%; }
 
 .form-search {
+  width: auto;
+  
   @include breakpoint($c) {
     align-content: center;
     align-items: center; }
@@ -34,7 +37,8 @@
 .field-label {
 	display: block;
 	font-weight: 700;
-	line-height: 1; }
+	line-height: 1;
+	padding-bottom: $base-px; }
 
 // Helper
 // ---------------------------
@@ -109,7 +113,13 @@
 	// Text
 	// ---------------------------
 	.input-text {
-		@include form; }
+		@include form("text", $neutral-l3, $neutral-l2, $neutral-l9 $white);
+		
+		.row-warm & {
+  		@include form("text", $warm-l2, $warm-l1, $warm-l4 $white); }
+    
+    .row-cool & {
+  		@include form("text", $cool-l2, $cool-l1, $cool-l4 $white); } }
 
   .input-search {
     // Align with logo baseline
