@@ -1,6 +1,16 @@
-{embed="/include/header" entry_title="No results found for {exp:search:keywords}"}
+{layout="layouts/_layout-blog" title="No results found for {exp:search:keywords}" class="page-results"}
 
-  <p>Please try your search again.</p>
-  {search}
+<div class="row subheader center contain contain-medium contain-large pb2 pb4-d">
+  <h1 class="f5 f3-b f2-d warm mb0">
+    No results found for ”{exp:search:keywords}“
+  </h1>
+</div>
+
+<div class="row between contain contain-medium contain-large pt4 pt6-b pb4 pb6-b" id="posts">
+  <div class="measure m-center">
+    <p>Please try your search again. However, if it’s a topic you’d like me to write about, I’d be grateful if you could <a href="{site_url}contact" class="link">contact me</a>. I’ll be able to consider writing about it.</p>
+    {search}
+  </div>
+</div>
 
 {embed="/include/footer"}
