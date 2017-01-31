@@ -1,0 +1,407 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="492" height="336" viewBox="0 0 490.708 336">
+  <defs>
+    <style>
+      .i {
+        clip-path: url(#a);
+      }
+      
+      .r {
+        fill: url(#b);
+      }
+      
+      .ah {
+        clip-path: url(#c);
+      }
+      
+      .as {
+        clip-path: url(#d);
+      }
+    
+      .ay {
+        clip-path: url(#e);
+      }
+
+      .a, .aa, .ab, .ac, .ai, .aj, .ak, .aq, .be, .g, .o, .s, .t, .w, .x, .y {
+        fill: none;
+      }
+    
+      .a, .ad, .ak, .b, .c, .m {
+        stroke: #dba758;
+      }
+    
+      .a, .be, .c, .g, .k, .l, .m, .o, .p, .q, .r, .s, .t, .w, .x {
+        stroke-miterlimit: 10;
+      }
+    
+      .a, .aa, .ab, .ac, .ad, .ae, .ak, .al, .aq, .b, .be, .c, .g, .k, .l, .m, .o, .p, .q, .r, .w, .x, .y {
+        stroke-width: 2px;
+      }
+    
+      .ag, .b, .j {
+        fill: #fff3ce;
+      }
+    
+      .aa, .ab, .ac, .ad, .ae, .ai, .aj, .ak, .al, .b, .o, .y {
+        stroke-linecap: round;
+      }
+    
+      .aa, .ab, .ac, .ad, .ae, .ai, .aj, .ak, .al, .aq, .b, .y {
+        stroke-linejoin: round;
+      }
+    
+      .ad, .ar, .c {
+        fill: #ffdb6d;
+      }
+    
+      .d {
+        fill: #fafafa;
+      }
+    
+      .e {
+        fill: #eaf5f5;
+      }
+    
+      .am, .f, .m {
+        fill: #fff;
+      }
+    
+      .aa, .g, .o {
+        stroke: #c5c0c3;
+      }
+    
+      .h {
+        fill: #f6f5f5;
+      }
+    
+      .ae, .k, .q {
+        fill: #ff7e6d;
+      }
+    
+      .ae, .k {
+        stroke: #bf4e45;
+      }
+    
+      .l {
+        fill: #27cba4;
+        stroke: #138466;
+      }
+    
+      .n {
+        fill: #fffbee;
+      }
+    
+      .av, .p {
+        fill: #7f6371;
+      }
+    
+      .p, .q, .r, .y {
+        stroke: #553143;
+      }
+    
+      .s, .x {
+        stroke: #72586b;
+      }
+    
+      .s, .t {
+        stroke-width: 4px;
+      }
+    
+      .t, .w {
+        stroke: #8c7381;
+      }
+    
+      .u {
+        fill: #8c7381;
+      }
+    
+      .v {
+        fill: #72586b;
+      }
+    
+      .z {
+        fill: #e8e6e7;
+      }
+    
+      .aa, .ab {
+        opacity: 0.6;
+      }
+    
+      .ab {
+        stroke: #fafafa;
+      }
+    
+      .ac {
+        stroke: #938a8f;
+      }
+    
+      .af, .au {
+        fill: #dba758;
+      }
+    
+      .af {
+        opacity: 0.3;
+      }
+    
+      .ag, .am, .ao, .ap, .av, .aw {
+        opacity: 0.4;
+      }
+    
+      .ai {
+        stroke: #fffdf5;
+      }
+    
+      .ai, .aj {
+        stroke-width: 6px;
+      }
+    
+      .aj {
+        stroke: #ffe38d;
+      }
+    
+      .al, .ax {
+        fill: #62535c;
+      }
+    
+      .al {
+        stroke: #62535c;
+      }
+    
+      .an {
+        fill: #fd9387;
+      }
+    
+      .ao, .ba, .bd {
+        fill: #938a8f;
+      }
+    
+      .ap {
+        fill: #bf4e45;
+      }
+    
+      .aq, .be {
+        stroke: #301d28;
+      }
+    
+      .at {
+        fill: #553143;
+      }
+    
+      .au, .ba {
+        opacity: 0.2;
+      }
+    
+      .aw {
+        fill: #301d28;
+      }
+    
+      .ax {
+        opacity: 0.1;
+      }
+    
+      .az {
+        fill: #ecebec;
+      }
+    
+      .bb {
+        fill: #f1f0f1;
+      }
+    
+      .bc {
+        fill: #c5c0c3;
+      }
+    </style>
+    <clipPath id="a">
+      <path class="a" d="M96.708,78h276a6,6,0,0,1,6,6v26a0,0,0,0,1,0,0h-288a0,0,0,0,1,0,0V84A6,6,0,0,1,96.708,78Z"/>
+    </clipPath>
+    <linearGradient id="b" x1="469.708" y1="297.5" x2="475.708" y2="297.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#72586b"/>
+      <stop offset="0.5" stop-color="#7f6371"/>
+      <stop offset="1" stop-color="#72586b"/>
+    </linearGradient>
+    <clipPath id="c">
+      <polygon class="b" points="435.708 327 427.708 304 429.708 302 431.708 304 433.708 302 435.709 304 437.708 302 439.708 304 441.708 302 443.708 304 435.708 327"/>
+    </clipPath>
+    <clipPath id="d">
+      <rect class="c" x="66.708" y="269" width="176" height="32" rx="2" ry="2" transform="translate(309.417 570) rotate(180)"/>
+    </clipPath>
+    <clipPath id="e">
+      <rect class="d" x="19" y="245" width="48" height="80" rx="8" ry="8" transform="translate(328 242) rotate(90)"/>
+    </clipPath>
+  </defs>
+  <g>
+    <path class="e" d="M352.708,300c-42,0-107.981-6-216-6-70,0-72-108-54-156,23.249-62,116-56,116-56l138,2s58,12,58,90S394.708,300,352.708,300Z"/>
+    <g>
+      <path class="f" d="M90.708,110h288a0,0,0,0,1,0,0V280a6,6,0,0,1-6,6h-276a6,6,0,0,1-6-6V110A0,0,0,0,1,90.708,110Z"/>
+      <path class="g" d="M90.708,110h288a0,0,0,0,1,0,0V280a6,6,0,0,1-6,6h-276a6,6,0,0,1-6-6V110A0,0,0,0,1,90.708,110Z"/>
+    </g>
+    <rect class="h" x="237.917" y="226" width="131" height="48" rx="4" ry="4"/>
+    <rect class="h" x="99.917" y="226" width="131" height="48" rx="4" ry="4"/>
+    <g>
+      <g class="i">
+        <path class="j" d="M96.708,78h276a6,6,0,0,1,6,6v26a0,0,0,0,1,0,0h-288a0,0,0,0,1,0,0V84A6,6,0,0,1,96.708,78Z"/>
+        <circle class="k" cx="109.208" cy="94" r="6"/>
+        <circle class="c" cx="127.208" cy="94" r="6"/>
+        <circle class="l" cx="145.208" cy="94" r="6"/>
+        <rect class="m" x="175.208" y="88" width="192" height="12" rx="6" ry="6"/>
+        <rect class="n" x="79.208" y="79" width="302" height="2"/>
+      </g>
+      <path class="a" d="M96.708,78h276a6,6,0,0,1,6,6v26a0,0,0,0,1,0,0h-288a0,0,0,0,1,0,0V84A6,6,0,0,1,96.708,78Z"/>
+    </g>
+    <rect class="h" x="99.917" y="119" width="270" height="28" rx="4" ry="4"/>
+    <line class="o" x1="113.917" y1="133" x2="143.917" y2="133"/>
+    <line class="o" x1="99.917" y1="208" x2="139.917" y2="208"/>
+    <line class="o" x1="99.917" y1="212" x2="125.917" y2="212"/>
+    <line class="o" x1="151.917" y1="208" x2="161.917" y2="208"/>
+    <line class="o" x1="169.917" y1="208" x2="199.917" y2="208"/>
+    <line class="o" x1="169.917" y1="212" x2="185.917" y2="212"/>
+    <line class="o" x1="220.917" y1="208" x2="230.917" y2="208"/>
+    <line class="o" x1="239.417" y1="208" x2="269.417" y2="208"/>
+    <line class="o" x1="239.417" y1="212" x2="255.417" y2="212"/>
+    <line class="o" x1="290.417" y1="208" x2="300.417" y2="208"/>
+    <line class="o" x1="307.917" y1="208" x2="337.917" y2="208"/>
+    <line class="o" x1="307.917" y1="212" x2="323.917" y2="212"/>
+    <line class="o" x1="358.417" y1="208" x2="368.417" y2="208"/>
+    <line class="o" x1="339.916" y1="133" x2="357.917" y2="133"/>
+    <line class="o" x1="315.917" y1="133" x2="327.916" y2="133"/>
+    <line class="o" x1="289.916" y1="133" x2="305.917" y2="133"/>
+    <line class="o" x1="263.917" y1="133" x2="277.916" y2="133"/>
+    <rect class="h" x="99.917" y="154" width="63" height="48" rx="4" ry="4"/>
+    <rect class="h" x="168.917" y="154" width="63" height="48" rx="4" ry="4"/>
+    <rect class="h" x="237.917" y="154" width="63" height="48" rx="4" ry="4"/>
+    <rect class="h" x="306.917" y="154" width="63" height="48" rx="4" ry="4"/>
+    <path class="e" d="M483.9,304.521c-1.634,10.385-9.939,27.374-17.889,12.634s-7.778-88.439-6.871-147.4S462.515,44.333,468,30.785c5.963-14.74,13.914-2.106,15.9,6.317,2.045,8.667,6.811,77.911,6.811,134.763S485.885,291.887,483.9,304.521Z"/>
+    <path class="p" d="M469.708,25h6a3,3,0,0,1,3,3V49a0,0,0,0,1,0,0h-12a0,0,0,0,1,0,0V28A3,3,0,0,1,469.708,25Z"/>
+    <rect class="p" x="463.708" y="99" width="18" height="126" rx="1" ry="1"/>
+    <rect class="p" x="463.708" y="225" width="18" height="54" rx="1" ry="1"/>
+    <path class="q" d="M465.708,49h14a1,1,0,0,1,1,1v3a0,0,0,0,1,0,0h-16a0,0,0,0,1,0,0V50A1,1,0,0,1,465.708,49Z"/>
+    <rect class="p" x="464.708" y="53" width="16" height="46"/>
+    <polygon class="p" points="475.708 288 469.708 288 465.708 279 479.708 279 475.708 288"/>
+    <path class="r" d="M469.708,306V288h6v18a1,1,0,0,1-1,1h-4A1,1,0,0,1,469.708,306Z"/>
+    <line class="s" x1="478.708" y1="101" x2="478.708" y2="223"/>
+    <line class="s" x1="478.708" y1="227" x2="478.708" y2="277"/>
+    <line class="t" x1="466.708" y1="100" x2="466.708" y2="224"/>
+    <line class="t" x1="467.708" y1="54" x2="467.708" y2="97"/>
+    <path class="u" d="M469.708,48h-2V28a2,2,0,0,1,2-2h0Z"/>
+    <path class="v" d="M477.708,48h-2V26h0a2,2,0,0,1,2,2Z"/>
+    <line class="t" x1="466.708" y1="227" x2="466.708" y2="277"/>
+    <line class="s" x1="477.708" y1="54" x2="477.708" y2="96"/>
+    <line class="w" x1="464.708" y1="223" x2="480.708" y2="223"/>
+    <line class="w" x1="465.708" y1="97" x2="479.708" y2="97"/>
+    <line class="w" x1="464.708" y1="277" x2="480.708" y2="277"/>
+    <line class="w" x1="471.708" y1="289" x2="471.708" y2="306"/>
+    <line class="x" x1="464.708" y1="101" x2="480.708" y2="101"/>
+    <line class="x" x1="464.708" y1="227" x2="480.708" y2="227"/>
+    <path class="y" d="M487.708,131l-2,8a2,2,0,0,0,2,2h0a2,2,0,0,0,2-2V67a4,4,0,0,0-4-4h0a4,4,0,0,0-4,4V93"/>
+    <path class="e" d="M443.9,315.462c-1.4,11.6-8.5,30.564-15.305,14.107s-10.566-98.747-9.789-164.578,1.788-143.575,6.477-158.7c11.733-10.114,22.489-8.091,22.528,6.538,1.75,9.677,2.894,91.8,2.894,155.284S445.6,301.355,443.9,315.462Z"/>
+    <rect class="z" x="427.708" y="18" width="16" height="24"/>
+    <line class="aa" x1="428.708" y1="22" x2="442.708" y2="22"/>
+    <line class="aa" x1="428.708" y1="28" x2="442.708" y2="28"/>
+    <line class="ab" x1="428.708" y1="24" x2="442.708" y2="24"/>
+    <line class="ab" x1="428.708" y1="34" x2="442.708" y2="34"/>
+    <line class="ab" x1="428.708" y1="40" x2="442.708" y2="40"/>
+    <line class="ab" x1="428.708" y1="30" x2="442.708" y2="30"/>
+    <line class="aa" x1="428.708" y1="32" x2="442.708" y2="32"/>
+    <line class="aa" x1="428.708" y1="38" x2="442.708" y2="38"/>
+    <rect class="ac" x="427.708" y="18" width="16" height="24"/>
+    <rect class="ad" x="427.708" y="42" width="16" height="262"/>
+    <path class="ae" d="M429.708,4h12a2,2,0,0,1,2,2V18a0,0,0,0,1,0,0h-16a0,0,0,0,1,0,0V6A2,2,0,0,1,429.708,4Z"/>
+    <rect class="af" x="438.708" y="43" width="4" height="261"/>
+    <rect class="ag" x="428.708" y="43" width="4" height="261"/>
+    <g>
+      <polygon class="j" points="435.708 327 427.708 304 429.708 302 431.708 304 433.708 302 435.709 304 437.708 302 439.708 304 441.708 302 443.708 304 435.708 327"/>
+      <g class="ah">
+        <line class="ai" x1="435.708" y1="327" x2="427.708" y2="304"/>
+        <line class="aj" x1="443.708" y1="304" x2="435.708" y2="327"/>
+      </g>
+      <polygon class="ak" points="435.708 327 427.708 304 429.708 302 431.708 304 433.708 302 435.709 304 437.708 302 439.708 304 441.708 302 443.708 304 435.708 327"/>
+    </g>
+    <polygon class="al" points="437.708 321.25 435.708 327 433.708 321.248 437.708 321.25"/>
+    <rect class="am" x="428.708" y="19" width="4" height="22"/>
+    <path class="an" d="M429.708,5h3a0,0,0,0,1,0,0V17a0,0,0,0,1,0,0h-4a0,0,0,0,1,0,0V6A1,1,0,0,1,429.708,5Z"/>
+    <rect class="ao" x="438.708" y="19" width="4" height="22"/>
+    <rect class="ap" x="438.708" y="5" width="4" height="12"/>
+    <path class="aq" d="M230.708,269h10a2,2,0,0,1,2,2v28a2,2,0,0,1-2,2h-10"/>
+    <path class="e" d="M239.5,279H89.03a8,8,0,0,0-7.738-6H10.708a8,8,0,0,0-8,8v32a8,8,0,0,0,8,8H81.292a8,8,0,0,0,8-8v-2H239.5a2,2,0,0,0,2-2V281A2,2,0,0,0,239.5,279Z"/>
+    <g>
+      <rect class="ar" x="66.708" y="269" width="176" height="32" rx="2" ry="2" transform="translate(309.417 570) rotate(180)"/>
+      <g class="as">
+        <g>
+          <g>
+            <line class="ak" x1="200.792" y1="301" x2="200.792" y2="295"/>
+            <line class="ak" x1="232.792" y1="301" x2="232.792" y2="297"/>
+            <line class="ak" x1="224.792" y1="301" x2="224.792" y2="297"/>
+            <line class="ak" x1="208.792" y1="301" x2="208.792" y2="297"/>
+            <line class="ak" x1="216.792" y1="301" x2="216.792" y2="297"/>
+            <line class="ak" x1="160.792" y1="301" x2="160.792" y2="293"/>
+            <line class="ak" x1="192.792" y1="301" x2="192.792" y2="297"/>
+            <line class="ak" x1="184.792" y1="301" x2="184.792" y2="297"/>
+            <line class="ak" x1="168.792" y1="301" x2="168.792" y2="297"/>
+            <line class="ak" x1="176.792" y1="301" x2="176.792" y2="297"/>
+          </g>
+          <g>
+            <line class="ak" x1="120.792" y1="301" x2="120.792" y2="295"/>
+            <line class="ak" x1="152.792" y1="301" x2="152.792" y2="297"/>
+            <line class="ak" x1="144.792" y1="301" x2="144.792" y2="297"/>
+            <line class="ak" x1="128.792" y1="301" x2="128.792" y2="297"/>
+            <line class="ak" x1="136.792" y1="301" x2="136.792" y2="297"/>
+            <line class="ak" x1="80.792" y1="301" x2="80.792" y2="292"/>
+            <line class="ak" x1="112.792" y1="301" x2="112.792" y2="297"/>
+            <line class="ak" x1="104.792" y1="301" x2="104.792" y2="297"/>
+            <line class="ak" x1="88.792" y1="301" x2="88.792" y2="297"/>
+            <line class="ak" x1="96.792" y1="301" x2="96.792" y2="297"/>
+          </g>
+        </g>
+        <rect class="at" x="220.708" y="279" width="32" height="12" transform="translate(521.708 48.292) rotate(90)"/>
+        <g>
+          <g>
+            <line class="ak" x1="200.792" y1="269" x2="200.792" y2="275"/>
+            <line class="ak" x1="224.792" y1="269" x2="224.792" y2="273"/>
+            <line class="ak" x1="208.792" y1="269" x2="208.792" y2="273"/>
+            <line class="ak" x1="216.792" y1="269" x2="216.792" y2="273"/>
+            <line class="ak" x1="160.792" y1="269" x2="160.792" y2="277"/>
+            <line class="ak" x1="192.792" y1="269" x2="192.792" y2="273"/>
+            <line class="ak" x1="184.792" y1="269" x2="184.792" y2="273"/>
+            <line class="ak" x1="168.792" y1="269" x2="168.792" y2="273"/>
+            <line class="ak" x1="176.792" y1="269" x2="176.792" y2="273"/>
+          </g>
+          <g>
+            <line class="ak" x1="120.792" y1="269" x2="120.792" y2="275"/>
+            <line class="ak" x1="152.792" y1="269" x2="152.792" y2="273"/>
+            <line class="ak" x1="144.792" y1="269" x2="144.792" y2="273"/>
+            <line class="ak" x1="128.792" y1="269" x2="128.792" y2="273"/>
+            <line class="ak" x1="136.792" y1="269" x2="136.792" y2="273"/>
+            <line class="ak" x1="80.792" y1="269" x2="80.792" y2="278"/>
+            <line class="ak" x1="112.792" y1="269" x2="112.792" y2="273"/>
+            <line class="ak" x1="104.792" y1="269" x2="104.792" y2="273"/>
+            <line class="ak" x1="88.792" y1="269" x2="88.792" y2="273"/>
+            <line class="ak" x1="96.792" y1="269" x2="96.792" y2="273"/>
+          </g>
+        </g>
+        <rect class="ag" x="70.708" y="270" width="160" height="2"/>
+        <rect class="au" x="62.708" y="298" width="168" height="2"/>
+        <rect class="av" x="230.708" y="270" width="14" height="2"/>
+        <rect class="aw" x="230.708" y="298" width="14" height="2"/>
+      </g>
+      <rect class="a" x="66.708" y="269" width="176" height="32" rx="2" ry="2" transform="translate(309.417 570) rotate(180)"/>
+    </g>
+    <rect class="ax" x="28" y="248" width="40" height="80" rx="8" ry="8" transform="translate(336 240) rotate(90)"/>
+    <g>
+      <rect class="d" x="19" y="245" width="48" height="80" rx="8" ry="8" transform="translate(328 242) rotate(90)"/>
+      <g class="ay">
+        <path class="az" d="M89,301H21a2,2,0,0,1-2-2V271a2,2,0,0,1,2-2H89v-8H3v48H89Z"/>
+        <rect class="ba" y="306" width="96" height="2"/>
+        <rect class="am" y="263" width="96" height="2"/>
+      </g>
+    </g>
+    <g>
+      <path class="bb" d="M60,292a1,1,0,0,1-1-1V279a1,1,0,0,1,1-1H81v14Z"/>
+      <path class="z" d="M80,279v12H60V279H80m2-2H60a2,2,0,0,0-2,2v12a2,2,0,0,0,2,2H82V277Z"/>
+    </g>
+    <g>
+      <path class="bc" d="M76,292a1,1,0,0,1-1-1V279a1,1,0,0,1,1-1h6v14Z"/>
+      <path class="bd" d="M81,279v12H76V279h5m2-2H76a2,2,0,0,0-2,2v12a2,2,0,0,0,2,2h7V277Z"/>
+    </g>
+    <path class="be" d="M230.708,269h10a2,2,0,0,1,2,2v28a2,2,0,0,1-2,2h-10"/>
+    <path class="bd" d="M75,263a6.007,6.007,0,0,1,6,6v32a6.007,6.007,0,0,1-6,6H11a6.007,6.007,0,0,1-6-6V269a6.007,6.007,0,0,1,6-6H75m0-2H11a8,8,0,0,0-8,8v32a8,8,0,0,0,8,8H75a8,8,0,0,0,8-8V269a8,8,0,0,0-8-8Z"/>
+  </g>
+</svg>
