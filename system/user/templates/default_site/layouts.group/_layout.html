@@ -23,25 +23,22 @@
 
 {layout:contents}
 
-<aside class="row row-strong row-padding contain contain-medium contain-large between">
-  <section class="column column-4-b column-4-d mb6 mb0-b">
-    <h2 class="f4 f2-d secondary chunky">About me</h2>
-    <p>I’m Steve McKinney, a web designer in Manchester, England. I’ve been designing from young age and doing it ‘in industry’ for the past 4 years. My passion is with design, but I learnt to code out of necessity. That being said, I enjoy coding.</p>
-    <p class="mb4">In all tutorials that I write I aim to provide understanding and rationale, as to why something is done a particular way. When designing and writing code, I believe this can help long term understanding aside from consistent practice.</p>
-    <hr class="mb4">
-    <p><strong>You can find me elsewhere: <a href="https://dribbble.com/stevemckinney" class="link-dribbble">dribbble</a>, <a href="https://twitter.com/irsteve" class="link-twitter">twitter</a>, <a href="https://github.com/stevemckinney" class="link-github">github</a> and <a href="https://uk.linkedin.com/in/steve-mckinney-5b5836102" class="link-linkedin">linkedin</a>.</strong></p>
+{embed="include/subscribe" class="row-strong"}
+
+<aside class="row row-normal pt8 contain contain-medium contain-large between">
+  <section class="column column-4-b column-3-d mb6 mb0-b">
+    <a href="{site_url}" class="logo-footer mb4 primary">{gv_logo}</a>
+    <p class="mb4">iamsteve is a blog written by Steve McKinney, focusing on design and code. I specialise in visual design and user experience. I started designing websites at a young age and for the past 5 years it’s been a full time career. I write this blog to share all I know and teach along the way.</p>
+    <p><strong>You can find me elsewhere</strong> <br><strong><a href="https://dribbble.com/stevemckinney" class="link-dribbble">dribbble</a>, <a href="https://twitter.com/irsteve" class="link-twitter">twitter</a>, <a href="https://www.behance.net/stevemckinney" class="link-behance">behance</a> and <a href="https://uk.linkedin.com/in/steve-mckinney-5b5836102" class="link-linkedin">linkedin</a>.</strong></p>
   </section>
-  <section class="column column-4-b column-3-d">
-    <h2 class="f4 f2-d secondary chunky">Subscribe</h2>
-    <p>Subscribe to the newsletter and you’ll be updated when new articles are posted. You will receive highlights & takeaways by email to read when you’re ready.</p>
-    {gv_subscribe_download}
-    {form_newsletter}
+  <section class="column column-4-b column-5-d content-end-d" id="rio-osc">
+    {!-- svg is inserted with ajax, in load-svg.js --}
+    <noscript><img src="{site_url}dist/images/rio-osc.svg"></noscript>
   </section>
 </aside>
 
-<footer class="row between primary contain contain-medium contain-large footer">
+<footer class="row between neutral-l2 contain contain-medium contain-large footer">
   <p class="m0 copyright">
-    <a href="{site_url}" class="logo-footer">{gv_logo_small}</a>
     &copy; <a href="{site_url}">{site_name}</a> {current_time format="%Y"}
   </p>
   <nav>
