@@ -63,6 +63,11 @@ $helper-vertical-align-prefix: vertical-align;
 // ---------------------------
 @import "helpers/typography";
 
+// Flexbox
+// ---------------------------
+$default-enable-flexbox: true !default;
+@import "helpers/flexbox";
+
 // Utilities
 // ---------------------------
 @import "helpers/utilities";
