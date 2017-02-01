@@ -1,6 +1,7 @@
 // Forms
 // ---------------------------
 .form {
+  position: relative;
 	display: flex;
 	flex-flow: row wrap; }
 
@@ -18,12 +19,11 @@
   // and offset the input button to the right
   .input {
     @include breakpoint($c) {
-      padding: ($line - 4px) $base-px;
-      padding-right: 84px; } }
+      padding: ($line - 4px) $base-px; } }
   
   .button {
     position: absolute; 
-    top: 6px;
+    bottom: 6px;
     right: 6px;
     
     @include breakpoint($c-max) {
@@ -60,10 +60,36 @@
 
 .field-whole {
 	flex-basis: 100%; }
+
+.field-third {
+	@include breakpoint($c) {
+		flex-basis: 33.333333%;
+		
+		&:nth-of-type(odd) input {
+  		border-radius: $radius 0 0 $radius; }
+    
+    &:nth-of-type(even) input {
+  		border-radius: 0 $radius $radius 0; } } }
+
+.field-two-thirds {
+	@include breakpoint($c) {
+		flex-basis: 66.666666%;
+		
+		&:nth-of-type(odd) input {
+  		border-radius: $radius 0 0 $radius; }
+    
+    &:nth-of-type(even) input {
+  		border-radius: 0 $radius $radius 0; } } }
 	
 .field-half {
 	@include breakpoint($c) {
-		flex-basis: 50%; } }
+		flex-basis: 50%;
+		
+		&:nth-of-type(odd) input {
+  		border-radius: $radius 0 0 $radius; }
+    
+    &:nth-of-type(even) input {
+  		border-radius: 0 $radius $radius 0; } } }
 	
 .field-first {
 	@include breakpoint($c) {
