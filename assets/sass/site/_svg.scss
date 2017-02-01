@@ -7,3 +7,9 @@
 
 .fill-currentcolor {
   fill: currentcolor; }
+
+// When some SVG resizes with the browser it doesn’t always adjust the height.
+// Setting both a max height and height seems to solve this for the most part.
+svg {
+  max-height: 100%;
+  height: auto; }
