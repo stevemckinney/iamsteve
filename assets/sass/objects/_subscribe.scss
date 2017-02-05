@@ -3,31 +3,6 @@
 .page-blog .subscribe,
 .page-entry .subscribe {
   position: relative; }
-  
-.subscribe-image {
-  position: absolute;
-  top: $line*1.5;
-  right: 0;
-  
-  svg { 
-    max-width: 144px;
-    max-height: 144px; }
-  
-  @include breakpoint(360px) {
-    top: -8px; }
-  
-  @include breakpoint(414px) {     
-    svg {
-      max-width: 184px;
-      max-height: 184px; } }
-  
-  @include breakpoint($d) {
-    top: 50%;
-    transform: translateY(-50%);
-    
-    svg {
-      max-width: 320px;
-      max-height: 320px; } } }
 
 .subscribe-content {
   position: relative;
