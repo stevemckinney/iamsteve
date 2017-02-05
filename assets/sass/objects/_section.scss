@@ -49,12 +49,24 @@
   
   & + & {
     border-top: 1px solid $alternate-l3; } }
-
-// Emphasis, more whitespace, background
-.row-strong {
-  background-color: $alternate-l4;
+  
+// Cool
+.row-cool {
+  background-color: $cool-l4;
   position: relative;
   color: $alternate; }
+  
+// Neutral
+.row-neutral {
+  background-color: $neutral-l9;
+  position: relative;
+  color: $neutral; }
+
+// Warm
+.row-warm {
+  background-color: $warm-l4;
+  position: relative;
+  color: $warm; }
 
 // Row contents
 // ---------------------------
