@@ -13,7 +13,7 @@
     padding-top: $line*2;
     padding-bottom: $line*2; }
   
-  @include breakpoint($b-max) {   
+  @include breakpoint($b-max) { 
     a, p {
       font-size: 10px; }
     
@@ -41,11 +41,10 @@
   vertical-align: middle;
   margin-right: $m1; }
 
-.logo-footer-small {
-  @include breakpoint($b) {
-    display: none; } }
-
-.copyright a,
-.logo-footer-large {
+.rio-osc {
   @include breakpoint($b-max) {
-    display: none; } }
+    width: 100%;
+    
+    svg {
+      margin: auto;
+      max-width: 75vw; } } }
