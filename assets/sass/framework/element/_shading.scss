@@ -1,7 +1,5 @@
 // Separate the overall button style
 // ---------------------------
-@import "variables";
-
 @mixin element-shading(
 	$color				: $default-element-color,
 	$state				: $default-element-state,
