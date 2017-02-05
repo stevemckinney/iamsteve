@@ -17,15 +17,25 @@ var svg = (function ()
   
   var subscribe = function()
   {
-    var sub = new XMLHttpRequest();
-    sub.open('GET', document.location.origin + '/dist/images/subscribe.svg', true);
-    sub.send();
-      
-    sub.onload = function(e)
+    if (_room())
     {
-      document.body.insertAdjacentHTML('afterbegin', sub.responseText);
+      var sub = new XMLHttpRequest();
+      sub.open('GET', document.location.origin + '/dist/images/subscribe.svg', true);
+      sub.send();
+        
+      sub.onload = function(e)
+      {
+        document.body.insertAdjacentHTML('afterbegin', sub.responseText);
+      }
     }
   }
+  
+  var _room = function()
+  {
+    if (window.matchMedia("(min-width: 600px)").matches) 
+      return true;
+  }
+  
   return {
     dogs: dogs(),
     sub: subscribe()
