@@ -39,6 +39,12 @@ $warm-l2: #d2c7cc;
 $warm-l3: #f7f2f5;
 $warm-l4: #fbf9fa;
 
+$cool: $alternate;
+$cool-l1: $alternate-l1;
+$cool-l2: $alternate-l2;
+$cool-l3: $alternate-l3;
+$cool-l4: $alternate-l4;
+
 $neutral: #301d28;
 $neutral-l1: #62535c;
 $neutral-l2: #938a8f;
@@ -132,9 +138,9 @@ $text-xxxlarge: 48px;
   $default-form-focus-color: $alternate-l1;
   $default-form-color: $alternate-l2;
   $default-form-background-color: $alternate-l4 $white;
-  $default-placeholder-color: $primary;
+  $default-placeholder-color: $warm-l2;
   $default-form-text-color: $neutral;
-  $default-form-shading: false;
+  $default-form-shading: true;
 
   // Element defaults
   // ---------------------------
