@@ -1,6 +1,7 @@
 // Forms
 // ---------------------------
 .form {
+  position: relative;
 	display: flex;
 	flex-flow: row wrap;
 	width: 100%; }
@@ -21,16 +22,13 @@
   // and offset the input button to the right
   .input {
     @include breakpoint($c) {
-      padding: ($line - 4px) $base-px;
-      padding-right: 84px; } }
+      padding: ($line - 4px) $base-px; } }
   
-  .button {
-    position: absolute; 
-    top: 6px;
-    right: 6px;
-    
-    @include breakpoint($c-max) {
-      padding: half($base-px) $base-px; } } }
+  .form-actions {
+    @include breakpoint($c) {
+      position: absolute; 
+      bottom: 6px;
+      right: 6px; } } }
 
 // Label
 // ---------------------------
@@ -52,6 +50,7 @@
 // Fieldset
 // ---------------------------
 .field {
+  flex-basis: 100%;
   position: relative; }
 
 // Field layouts
@@ -62,12 +61,33 @@
 .field-last .input-text {
 	border-radius: 0 $radius $radius 0; }
 
-.field-whole {
-	flex-basis: 100%; }
+.field-third {
+	flex-basis: 33.333333%;
+	
+	&:nth-of-type(odd) input {
+		border-radius: $radius 0 0 $radius; }
+  
+  &:nth-of-type(even) input {
+		border-radius: 0 $radius $radius 0; } }
+
+.field-two-thirds {
+	flex-basis: 66.666666%;
+	
+	&:nth-of-type(odd) input {
+		border-radius: $radius 0 0 $radius; }
+  
+  &:nth-of-type(even) input {
+		border-radius: 0 $radius $radius 0; } }
 	
 .field-half {
 	@include breakpoint($c) {
-		flex-basis: 50%; } }
+		flex-basis: 50%;
+		
+		&:nth-of-type(odd) input {
+  		border-radius: $radius 0 0 $radius; }
+    
+    &:nth-of-type(even) input {
+  		border-radius: 0 $radius $radius 0; } } }
 	
 .field-first {
 	@include breakpoint($c) {
@@ -85,12 +105,6 @@
 .field-radio {
 	@extend .field-checkbox; }
 
-.field-search { }
-
-.form-actions {
-	clear: both;
-	width: 100%; }
-
 // Grouped fields
 // ---------------------------
 .field-group {
@@ -102,13 +116,12 @@
 // Input
 // ---------------------------
 .input {
-  @include form-base($radius: false, $size: false);
+  @include form-base($radius: false);
   width: 100%; }
 
 .input-text,
 .input-select {
-  border-radius: $radius;
-  padding: $base-px; }
+  border-radius: $radius; }
 	
 	// Text
 	// ---------------------------

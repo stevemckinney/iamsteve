@@ -9,3 +9,8 @@
 /* Measure is limited to ~45 characters */
 .measure-narrow {
   max-width: $measure-wide; }
+
+// Weights
+// ---------------------------
+.bold {
+  font-weight: font-weight(bold); }

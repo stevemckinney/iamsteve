@@ -1,9 +1,7 @@
 // Site objects
 // ---------------------------
 @import "objects/button";
-@import "objects/notice";
 @import "objects/form";
-@import "objects/state";
 @import "objects/header";
 @import "objects/nav";
 @import "objects/footer";
@@ -19,13 +17,15 @@
 @import "objects/article";
 @import "objects/entry";
 @import "objects/page";
+@import "objects/card";
 
 // Optional Imports
 // ---------------------------
+// @import "objects/state";
+@import "objects/notice";
 @import "objects/table";
 @import "objects/text";
 @import "objects/list";
 @import "objects/figure";
 @import "objects/blockquote";
-@import "objects/media";
-@import "objects/card";
+// @import "objects/media";

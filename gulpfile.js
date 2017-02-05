@@ -21,8 +21,8 @@ var src = {
   css: 'dist/css',
   html: 'system/user/templates/**/*.html',
   js: 'assets/js/**/*.js',
-  images: 'assets/images/**/*',
-  svg: 'assets/images/**/*.svg'
+  images: 'assets/images/*.png',
+  svg: 'assets/images/*.svg'
 };
 
 var path = {

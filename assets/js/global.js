@@ -84,7 +84,8 @@ var iamsteve = (function ()
   
   var fonts = function()
   {
-    if ( ! document.documentElement.classList.contains('fonts-stage-1') ) {
+    if ( ! document.documentElement.classList.contains('fonts-stage-1') )
+    {
     	var semibold = new FontFaceObserver('Averta', { weight: 600 });
     
     	Promise.all([semibold.load()]).then(function ()

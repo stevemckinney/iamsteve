@@ -3,65 +3,7 @@
 .page-blog .subscribe,
 .page-entry .subscribe {
   position: relative; }
-  
-.subscribe-image {
-  position: absolute;
-  top: $line*1.5;
-  right: 0;
-  
-  svg { 
-    max-width: 144px;
-    max-height: 144px; }
-  
-  @include breakpoint(360px) {
-    top: -8px; }
-  
-  @include breakpoint(414px) {     
-    svg {
-      max-width: 184px;
-      max-height: 184px; } }
-  
-  @include breakpoint($d) {
-    top: 50%;
-    transform: translateY(-50%);
-    
-    svg {
-      max-width: 320px;
-      max-height: 320px; } } }
 
-.subscribe-content {
-  position: relative;
-  
-  @include breakpoint($ab) {
-    max-width: 480px; }
-  
-  @include breakpoint($d) {
-    padding-right: 320px;
-    max-width: 752px; }
-  
-  p {
-    max-width: calc(100% - #{144px + 2px});
-    
-    @include breakpoint(max-width 359px) {
-      &:last-of-type {
-        max-width: 100%; } }
-    
-    @include breakpoint(414px) {
-      max-width: calc(100% - #{184px + 8px}); }
-    
-    @include breakpoint($d) {
-      max-width: 100%; } }
-  
-  p:first-child {
-    padding-right: 144px + $base-px;
-    padding-bottom: $line;
-    
-    @include breakpoint(414px) {
-      padding-right: 192px + $base-px; }
-    
-    @include breakpoint(460px) {
-      padding-bottom: $line * 2; }
-      
-    @include breakpoint($d) {
-      padding-right: 0;
-      padding-bottom: 0; } } }
+.subscribe-image {
+  @include breakpoint($b-max) {
+    display: none; } }

@@ -1,37 +1,43 @@
 var svg = (function ()
 { 
-  var rio = function() {
-    var img = document.getElementById('rio');
+  var dogs = function() {
+    var img = document.getElementById('rio-osc');
     
     if ( img )
     {
-      var rio = new XMLHttpRequest();
-      rio.open('GET', document.location.origin + '/dist/images/rio.svg', true);
-      rio.send();
-      rio.onload = function(e)
+      var dogs = new XMLHttpRequest();
+      dogs.open('GET', document.location.origin + '/dist/images/rio-osc.svg', true);
+      dogs.send();
+      dogs.onload = function(e)
       {
-        img.innerHTML = rio.responseText;
+        img.innerHTML = dogs.responseText;
       }
     }
   }
   
-  var osc = function() {
-    var img = document.getElementById('osc');
-    
-    if ( img )
+  var subscribe = function()
+  {
+    if (_room())
     {
-      var osc = new XMLHttpRequest();
-      osc.open('GET', document.location.origin + '/dist/images/osc.svg', true);
-      osc.send();
-      osc.onload = function(e)
+      var sub = new XMLHttpRequest();
+      sub.open('GET', document.location.origin + '/dist/images/subscribe.svg', true);
+      sub.send();
+        
+      sub.onload = function(e)
       {
-        img.innerHTML = osc.responseText;
+        document.body.insertAdjacentHTML('afterbegin', sub.responseText);
       }
     }
+  }
+  
+  var _room = function()
+  {
+    if (window.matchMedia("(min-width: 600px)").matches) 
+      return true;
   }
   
   return {
-    rio: rio(),
-    osc: osc()
+    dogs: dogs(),
+    sub: subscribe()
   }
 })();

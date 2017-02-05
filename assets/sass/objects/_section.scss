@@ -41,15 +41,6 @@
   @include breakpoint($site-width) {
     padding-right: calc(50% - #{$contain / 2});
     padding-left: calc(50% - #{$contain / 2}); } }
-    
-.center {
-  justify-content: center; }
-
-.around {
-  justify-content: space-around; }
-
-.between {
-  justify-content: space-between; }
 
 // Row style
 // ---------------------------
