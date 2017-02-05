@@ -19,7 +19,7 @@ $default-margin-map: (
   b: bottom,
   l: left 
 ) !default;
-$default-margin-map: ( t: top, b: bottom );
+$default-margin-map: ( b: bottom );
 $default-enable-undo-margin: true !default;
 @import "helpers/margin";
 
@@ -35,6 +35,11 @@ $default-padding-map: (
 ) !default;
 $default-enable-undo-padding: false !default;
 $default-enable-isles: false !default;
+
+$default-padding-map: (
+  t: top,
+  b: bottom
+);
 @import "helpers/padding";
 
 // Font size
@@ -55,7 +60,7 @@ $default-enable-float: false !default;
 
 // Inline block
 // ---------------------------
-$default-enable-inline-block-layout: true !default;
+$default-enable-inline-block-layout: false !default;
 $helper-vertical-align-prefix: vertical-align;
 @import "helpers/inline-block";
 
