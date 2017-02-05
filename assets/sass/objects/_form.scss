@@ -126,13 +126,7 @@
 	// Text
 	// ---------------------------
 	.input-text {
-		@include form("text", $neutral-l3, $neutral-l2, $neutral-l9 $white);
-		
-		.row-warm & {
-  		@include form("text", $warm-l2, $warm-l1, $warm-l4 $white); }
-    
-    .row-cool & {
-  		@include form("text", $cool-l2, $cool-l1, $cool-l4 $white); } }
+		@include form; }
 
   .input-search {
     // Align with logo baseline
