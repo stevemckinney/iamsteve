@@ -3,9 +3,12 @@
 .form {
   position: relative;
 	display: flex;
-	flex-flow: row wrap; }
+	flex-flow: row wrap;
+	width: 100%; }
 
 .form-search {
+  width: auto;
+  
   @include breakpoint($c) {
     align-content: center;
     align-items: center; }
@@ -32,7 +35,8 @@
 .field-label {
 	display: block;
 	font-weight: 700;
-	line-height: 1; }
+	line-height: 1;
+	padding-bottom: $base-px; }
 
 // Helper
 // ---------------------------
