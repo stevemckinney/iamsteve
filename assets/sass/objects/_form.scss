@@ -21,12 +21,18 @@
   // Input has one off padding, height aims to be 60px at large screens
   // and offset the input button to the right
   .input {
+    position: relative;
+    
+    &:focus {
+      z-index: $z-index-1; }
+      
     @include breakpoint($c) {
       padding: ($line - 4px) $base-px; } }
   
   .form-actions {
     @include breakpoint($c) {
       position: absolute; 
+      z-index: $z-index-2;
       bottom: 6px;
       right: 6px; } } }
 
@@ -126,8 +132,8 @@
 	// Text
 	// ---------------------------
 	.input-text {
-		@include form; }
-
+		@include form($focus-color: $blue); }
+		
   .input-search {
     // Align with logo baseline
     padding: 16px 0 14px;

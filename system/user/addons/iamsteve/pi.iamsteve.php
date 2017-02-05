@@ -224,7 +224,7 @@ class Iamsteve {
 
   public function is_mobile()
   {
-    if ( empty($_SERVER['HTTP_USER_AGENT']) )
+    if ( empty($_SERVER['HTTP_USER_AGENT']) || strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') )
     {
       $is_mobile = false;  
     } 

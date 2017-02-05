@@ -17,8 +17,10 @@ var svg = (function ()
   
   var subscribe = function()
   {
-    if (_room())
-    {
+    var img = document.getElementById('subscribe');
+    
+    if ( _room() && img )
+    { 
       var sub = new XMLHttpRequest();
       sub.open('GET', document.location.origin + '/dist/images/subscribe.svg', true);
       sub.send();
@@ -26,14 +28,17 @@ var svg = (function ()
       sub.onload = function(e)
       {
         document.body.insertAdjacentHTML('afterbegin', sub.responseText);
-      }
+      }      
     }
   }
   
+  // Check to see if the window is wide enough to fit the image
   var _room = function()
   {
-    if (window.matchMedia("(min-width: 600px)").matches) 
+    if ( window.matchMedia('(min-width: 600px)').matches )
+    {
       return true;
+    }
   }
   
   return {

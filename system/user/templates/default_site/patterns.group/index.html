@@ -1,63 +1,25 @@
-{layout="site/_layout"}
+{layout="layouts/_layout" title="Patterns" class="page-patterns"}
 
-<div class="row row-normal">
-  <section class="column">
-    <h1 class="h1 primary">Learn design and code</h1>
-    <p>Hi there, I’m Steve McKinney, I write weekly on design and code. If you’re like me and enjoy the process of designing and seeing it through to code, I’m sure you’ll find value in the content I provide. I cover topics on Illustrator, CSS and Wordpress.</p>
-    <p><a href="{path='blog/index'}" class="link">View archives</a></p>
-  </section>
+{if segment_2 != ''}
+  {redirect="404"}
+{/if}
+
+<div class="row subheader center contain contain-medium contain-large pb2 pb4-d">
+  <h1 class="f4 f3-b f2-d warm mb0">Patterns</h1>
 </div>
 
-<div class="row row-normal">
-  {exp:channel:entries channel="blog" limit="1" status="open|latest" disable="pagination|member_data|trackbacks"}
-  	<article data-href="{title_permalink='blog/entry'}" class="box box-large">
-    	{image}
-    	{date}
-    	<div class="box-body">
-    		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-    		<p>{excerpt}</p>
-    		{blog_meta}
+<div class="row contain contain-medium contain-large pt8 pb8">
+  <div class="column column-8">
+    <h2 class="f4 f2-d secondary">Form</h2>
+    <form class="form">
+      <div class="field field-whole">
+        <label class="field-label sans" for="text">Label</label>
+        <input class="input input-text" type="text" placeholder="Enter some text…">
       </div>
-  	</article>
-  {/exp:channel:entries}
+    </form>
+  </div>
 </div>
 
-<section class="posts">
-  <h2 class="h4 primary chunky">Previous posts</h2>
-  {exp:channel:entries channel="blog" offset="1" limit="9" status="open|latest" disable="pagination|member_data|trackbacks"}
-  	<article data-href="{title_permalink='blog/entry'}" class="box box-regular">
-    	{image}
-  		<h3 class="h3"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
-  		<p>{excerpt}</p>
-  		{blog_meta}
-  	</article>
-  {/exp:channel:entries}
-</section>
-
-<section class="row row-normal row-padding contain contain-medium contain-large center subscribe">
-  {subscribe}
-</section>
-
-<div class="row row-normal">
-  <section class="posts">
-    <header class="row row-header">
-      <h2 class="row-title">Popular in design</h2>
-      <div class="pagination">
-        <span class="page-left"></span>
-        <span class="page-right"></span>
-      </div>
-    </header>
-    
-    <div class="scroll">
-      {exp:channel:entries channel="blog" limit="10" category="7" orderby="view_count_one" sort="desc" status="open|latest" disable="pagination|member_data|trackbacks"}
-      	<article data-href="{title_permalink='blog/entry'}" class="box box-small">
-        	{image}
-      		<h2 class="h2"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
-      		<p>{excerpt}</p>
-      		{date}
-      		{blog_meta}
-      	</article>
-      {/exp:channel:entries}
-    </div>
-  </section>
+<div class="row contain contain-medium contain-large pt8 pb8">
+  <h2 class="f4 f2-d secondary">Button</h2>
 </div>

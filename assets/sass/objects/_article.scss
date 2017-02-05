@@ -67,21 +67,38 @@
     text-decoration: underline;
     text-decoration-color: $neutral; }
   
-  /* Aligns to 72px */
+  #{headings()} {
+    & + img { 
+      margin-top: $line; }
+    
+    a:after {
+      transition: .2s;
+      content: image-url("arrow-right.svg");
+      display: inline-block;
+      margin-left: $base-px;
+      width: 1em;
+      height: 1em;
+      opacity: .4; }
+  
+    a:hover:after, a:focus:after {
+      margin-left: $line;
+      opacity: .8; } }
+  
+  // Aligns to 72px
   // default line-height: 1.25
   h2 {
     font-size: 24px;
     margin-top: 30px;
     margin-bottom: 12px; }
   
-  /* Aligns to 48px */
+  // Aligns to 48px
   h3 {
     font-size: 21px;
     line-height: 1.333333;
     margin-top: 12px;
     margin-bottom: 8px; }
   
-  /* Aligns to 48px */
+  // Aligns to 48px
   h4, h5, h6 {
     font-size: 18px;
     line-height: 1.5;

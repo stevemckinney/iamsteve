@@ -1,5 +1,3 @@
-@import "variables";
-
 // $attribute-states: disabled, readonly;
 // $shaded-states: normal, focus, error, success;
 
@@ -35,7 +33,7 @@
       if($state != focus, inset 0 2px 4px -1px $color, inset 0 2px 4px -1px rgba(desaturate($color, 20%), .6)),
       
       // Make it clearer that the field is focused
-      if($state == focus, 0 0 6px -2px $color, compact(false)),
+      if($state == focus, 0 0 6px -2px rgba($color, .6), compact(false)),
       0 1px 1px rgba($white, .2); }
   @else {
     box-shadow:
