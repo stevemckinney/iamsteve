@@ -42,6 +42,10 @@
   margin-right: $m1; }
 
 .rio-osc {
+  @include breakpoint($b) {
+    svg { 
+      margin-left: auto; } }
+    
   @include breakpoint($b-max) {
     width: 100%;
     
