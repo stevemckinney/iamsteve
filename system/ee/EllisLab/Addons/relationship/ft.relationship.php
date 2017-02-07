@@ -352,12 +352,10 @@ class Relationship_ft extends EE_Fieldtype {
 		ee()->load->library('EntryList');
 		$entries = ee()->entrylist->query($settings, $selected);
 
-		ee()->load->library('encrypt');
-
 		// These settings will be sent to the AJAX endpoint for filtering the
 		// field, encrypt them to prevent monkey business
 		$settings = json_encode($settings);
-		$settings = ee()->encrypt->encode(
+		$settings = ee('Encrypt')->encode(
 			$settings,
 			ee()->db->username.ee()->db->password
 		);
@@ -383,7 +381,7 @@ class Relationship_ft extends EE_Fieldtype {
 			$channels = $this->channels;
 		}
 
-		if (REQ != 'CP' && $this->settings['allow_multiple'] == 0)
+		if (REQ != 'CP')
 		{
 			$options[''] = '--';
 
@@ -392,7 +390,14 @@ class Relationship_ft extends EE_Fieldtype {
 				$options[$entry->entry_id] = $entry->title;
 			}
 
-			return form_dropdown($field_name.'[data][]', $options, current($selected));
+			if ($this->settings['allow_multiple'] == 0)
+			{
+				return form_dropdown($field_name.'[data][]', $options, current($selected));
+			}
+			else
+			{
+				return form_multiselect($field_name.'[data][]', $options, $selected);
+			}
 		}
 
 		ee()->cp->add_js_script(array(

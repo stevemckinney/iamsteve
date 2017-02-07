@@ -559,6 +559,7 @@ class Channel_form_lib
 					}
 					elseif (in_array($key, $this->checkboxes))
 					{
+						$checkbox_fields[] = $key;
 						$this->parse_variables[$key] = ($this->entry($name) == 'y') ? 'checked="checked"' : '';
 					}
 					elseif (property_exists($this->entry, $name) OR $this->entry->hasCustomField($name))
@@ -571,7 +572,6 @@ class Channel_form_lib
 			$this->form_hidden(
 				array(
 				      'entry_id' => $this->entry('entry_id'),
-				      'unique_url_title' => ($this->bool_string(ee()->TMPL->fetch_param('unique_url_title'))) ? '1' : '',
 				      'author_id'=> $this->entry('author_id')
 				)
 			);
@@ -580,7 +580,9 @@ class Channel_form_lib
 		{
 			$this->parse_variables['title']		= $this->channel('default_entry_title');
 			$this->parse_variables['url_title'] = $this->channel('url_title_prefix');
-			$this->parse_variables['allow_comments'] = ($this->channel('deft_comments') == 'n' OR $this->channel('comment_system_enabled') != 'y') ? '' : "checked='checked'";
+			$this->parse_variables['allow_comments'] = ($this->channel('deft_comments') != 'n' OR $this->channel('comment_system_enabled') != 'y') ? '' : "checked='checked'";
+
+			$this->form_hidden('unique_url_title', $this->bool_string(ee()->TMPL->fetch_param('unique_url_title')) ? '1' : '');
 
 			if ($this->datepicker)
 			{
@@ -1470,8 +1472,15 @@ GRID_FALLBACK;
 
 			if (ee()->input->post('unique_url_title', TRUE))
 			{
-				$_POST['url_title'] = uniqid($this->_meta['url_title'] ? $this->_meta['url_title'] : url_title(ee()->input->post('title', TRUE)), TRUE);
-				$this->_meta['url_title'] = uniqid($this->_meta['url_title'] ? $this->_meta['url_title'] : url_title(ee()->input->post('title', TRUE)), TRUE);
+				$_POST['url_title'] = uniqid(
+					$this->_meta['url_title'] ? $this->_meta['url_title'] : url_title(
+						ee()->input->post('title', TRUE),
+						ee()->config->item('word_separator'),
+						TRUE
+					),
+				TRUE);
+
+				$this->_meta['url_title'] = $_POST['url_title'];
 			}
 		}
 
@@ -1485,6 +1494,12 @@ GRID_FALLBACK;
 			{
 				if ( ! isset($_POST[$checkbox]))
 				{
+					if ($checkbox == 'allow_comments')
+					{
+						$_POST[$checkbox] = 'n';
+						continue;
+					}
+
 					$_POST[$checkbox] = '';
 				}
 			}
@@ -1718,7 +1733,10 @@ GRID_FALLBACK;
 
 		if ( ! isset($_POST['url_title']))
 		{
-			$_POST['url_title'] = url_title($_POST['title']);
+			$_POST['url_title'] = url_title(
+						ee()->input->post('title', TRUE),
+						ee()->config->item('word_separator'),
+						TRUE);
 		}
 
 		//temporarily change site_id for cross-site forms
@@ -2604,9 +2622,7 @@ GRID_FALLBACK;
 
 		$meta = serialize($meta);
 
-		ee()->load->library('encrypt');
-
-		return ee()->encrypt->encode($meta, ee()->db->username.ee()->db->password);
+		return ee('Encrypt')->encode($meta, ee()->db->username.ee()->db->password);
 	}
 
 
@@ -2627,8 +2643,7 @@ GRID_FALLBACK;
 			throw new Channel_form_exception(lang('form_decryption_failed'));
 		}
 
-		ee()->load->library('encrypt');
-		$meta = ee()->encrypt->decode($meta, ee()->db->username.ee()->db->password);
+		$meta = ee('Encrypt')->decode($meta, ee()->db->username.ee()->db->password);
 
 		$this->_meta = unserialize($meta);
 
@@ -2754,11 +2769,27 @@ GRID_FALLBACK;
 	public function get_field_options($field_name)
 	{
 		$field = $this->get_field($field_name);
-
 		$options = array();
+
+		$field_data = (is_array($this->entry('field_id_' . $field->field_id)))
+			? $this->entry('field_id_' . $field->field_id) : explode('|', $this->entry('field_id_' . $field->field_id));
 
 		if (in_array($field->field_type, $this->option_fields))
 		{
+			$field_settings = $field->getField()->getItem('field_settings');
+
+			if (isset($field_settings['value_label_pairs']) && ! empty($field_settings['value_label_pairs']))
+			{
+				foreach ($field_settings['value_label_pairs'] as $value => $label)
+				{
+					$options[] = array(
+						'option_value' => $value,
+						'option_name' => $label,
+						'selected' => (in_array($value, $field_data)) ? ' selected="selected"' : '',
+						'checked' => (in_array($value, $field_data)) ? ' checked="checked"' : '',
+					);
+				}
+			}
 			if ($field->field_pre_populate == 'y')
 			{
 				$query = ee()->db->select('field_id_'.$field->field_pre_field_id)
@@ -2792,8 +2823,6 @@ GRID_FALLBACK;
 						continue;
 					}
 
-					$field_data = (is_array($this->entry('field_id_' . $field->field_id))) ? $this->entry('field_id_' . $field->field_id) : explode('|', $this->entry('field_id_' . $field->field_id));
-
 					$options[] = array(
 						'option_value' => $row,
 						'option_name' => $row,
@@ -2811,8 +2840,6 @@ GRID_FALLBACK;
 				{
 					foreach ($field_settings['options'] as $option_value => $option_name)
 					{
-						$field_data = (is_array($this->entry('field_id_' . $field->field_id))) ? $this->entry('field_id_' . $field->field_id) : explode('|', $this->entry('field_id_' . $field->field_id));
-
 						$options[] = array(
 							'option_value' => $option_value,
 							'option_name' => $option_name,
