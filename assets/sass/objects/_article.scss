@@ -113,11 +113,11 @@
 
 // Codepen
 // ---------------------------
-.cp_embed_iframe {
+.cp_embed_wrapper {
   @include breakpoint($contain) {
     border-radius: $radius;
-    max-width: 95%;
-    margin-left: 5%; } }
+    max-width: 640px;
+    margin-left: auto; } }
     
 // Lists
 // ---------------------------
