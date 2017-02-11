@@ -161,10 +161,7 @@
 // ---------------------------
 .featured-image {
   overflow: hidden;
-  min-height: 240px;
-  
-  @include breakpoint($site-width) {
-    min-height: 600px; } }
+  min-height: 240px; }
 
 .featured-image img {
   display: block;
