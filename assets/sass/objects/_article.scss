@@ -160,13 +160,11 @@
 // Specific pieces of content
 // ---------------------------
 .featured-image {
-  padding: $base-px 0;
   overflow: hidden;
   min-height: 240px;
   
   @include breakpoint($site-width) {
-    min-height: 600px;
-    border-radius: $radius 0 0 $radius; } }
+    min-height: 600px; } }
 
 .featured-image img {
   display: block;
