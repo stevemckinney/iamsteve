@@ -496,11 +496,6 @@ hr {
   font-style: normal;
   font-weight: 600;
   src: url("https://iamsteve.me/assets/fonts/averta/avertastd-semibold-webfont.woff2") format("woff2"), url("https://iamsteve.me/assets/fonts/averta/avertastd-semibold-webfont.woff") format("woff"); }
-@font-face {
-  font-family: "Averta";
-  font-style: normal;
-  font-weight: 700;
-  src: url("https://iamsteve.me/assets/fonts/averta/avertastd-bold-webfont.woff2") format("woff2"), url("https://iamsteve.me/assets/fonts/averta/avertastd-bold-webfont.woff") format("woff"); }
 html,
 body,
 #container,
@@ -530,7 +525,7 @@ body,
 .wufoo label.desc, .wufoo legend.desc {
   display: block;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   padding-bottom: 12px; }
 
@@ -619,10 +614,13 @@ body,
     box-shadow: inset 0 1px #0862f8, inset 0 0 0 1px #478afa, inset 0 2px 4px -1px rgba(90, 143, 231, 0.6), 0 0 6px -2px rgba(71, 138, 250, 0.6), 0 1px 1px rgba(255, 255, 255, 0.2); }
 
 .wufoo textarea.textarea {
-  min-height: 240px; }
+  min-height: 192px; }
   
 .wufoo li.error {
   background-color: transparent !important; }
+
+.wufoo li label.desc {
+  color: #62535c !important; }
 
 .wufoo li.error .desc,
 .wufoo li.focused label.desc {
@@ -633,3 +631,5 @@ body,
   line-height: 16px !important;
   font-size: 12px !important;
   color: #ff7e6d !important; }
+  
+#container { padding: 0 12px !important; }
