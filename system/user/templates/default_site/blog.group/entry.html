@@ -41,7 +41,6 @@
       {/categories}
     {/if}
   </div>
-  
   <article role="article" class="entry-content pt4 pb4 pt6-d pb6-d">
     <header class="entry-header pb4 p0-d">
       <div class="meta dashes">
@@ -60,6 +59,16 @@
     </header>
     {exp:streeng find='\<p><img src="|"><\/p>' replace='<img src="|">' insensitive="yes"}{article}{/exp:streeng}
   </article>
+  
+  <aside class="contain">
+    <div class="measure m-center mb8">
+      <h3 class="f4 chunky">Share or save for later</h3>
+      <a href="https://twitter.com/intent/tweet?text={title}&url={current_url}&via=irsteve" class="link link-twitter sans">Twitter</a>
+      <a href="https://www.facebook.com/share.php?u={current_url}" class="link link-facebook sans">Facebook</a>
+      <a href="https://getpocket.com/edit.php?url={current_url}" class="link link-twitter sans">Pocket</a>
+      <a href="https://www.instapaper.com/e2?url={current_url}&title={title}" class="link link-twitter sans">Instapaper</a>
+    </div>
+  </aside>
   
 {/exp:channel:entries}
 
