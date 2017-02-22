@@ -12,68 +12,8 @@
 .card {
   color: $neutral-l1; }
 
-.card-large {
-  background: $white;
-  
-  // Large screen layout
-  @include breakpoint($c) {
-    box-shadow: 0 6px 6px rgba($neutral-l4, .3);
-    
-    .card-body {
-      border: 2px solid $neutral-l4;
-      border-bottom-color: scale-lightness($neutral-l4, -10%);
-      border-top: none;
-      border-radius: 0 0 $radius $radius;
-      box-shadow: inset 0 -6px rgba($neutral-l5, .5);
-      padding: $line; } }
-  
-  @include breakpoint($d) {
-    .card-body {
-      padding: double($line) double($line) (double($line) + 8px) 168px; } }
-  
-  // Small screen layout
-  @include breakpoint(($b $c-max)) {
-    display: flex;
-    flex-flow: row wrap;
-    
-    .card-image {
-      align-self: flex-start; }
-    
-    .card-body,
-    .card-image {
-      flex-basis: 50%; }
-    
-    .card-body {
-      padding: 0 $line; }
-    
-    .card-image img,
-    .card-image:before,
-    .card-image:after {
-      border-radius: $radius; } }
-  
-  @include breakpoint($b-max) {
-    .card-body { 
-      padding: $line $p3 0; } }
-  
-  // Generally shared
-  .card-image {
-    position: relative;
-    
-    @include breakpoint($c) {
-      &:after,
-      &:before,
-      img {
-        border-radius: $radius $radius 0 0; } }
-    
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      box-shadow: inset 0 0 0 2px rgba($alternate, .1); } } }
+.card-image {
+  background-color: $neutral-l5; }
 
 // Card body
 // ---------------------------
@@ -152,7 +92,6 @@
 .card-medium .card-image,
 .card-small .card-image {
   position: relative;
-  background-color: $neutral-l5;
   padding-bottom: 66.5492958%;
   
   img {
@@ -192,9 +131,13 @@
   
 // Lazy loaded specifics
 // ---------------------------
-.image-loaded:before {
-  // Stops the spinner animating in the background
-  display: none; }
+.image-loaded {
+  // Background also causes a little bit of bleed with some images
+  background-color: transparent;
+  
+  &:before {
+    // Stops the spinner animating in the background
+    display: none; } }
 
 .lazyload,
 .lazyloading {
