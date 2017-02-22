@@ -12,7 +12,7 @@
     box-shadow:
       0 0 0 1px rgba($neutral, .05);
       
-    @include breakpoint($c) {
+    @include breakpoint($cd) {
       max-width: 738px;
       border-radius: $radius; } }
   
@@ -50,16 +50,20 @@
   // Yep
   > *:not(figure):not(img):not(div):not(blockquote),
   figcaption {
-    @include breakpoint($c-max) {
+    @include breakpoint($cd-max) {
       padding-left: 16px;
       padding-right: 16px; }
       
   li {
-    @include breakpoint($c-max) {
+    @include breakpoint($cd-max) {
       margin-left: 20px; } } }
   
   strong {
     font-weight: font-weight(semibold); }
+  
+  img {
+    @include breakpoint($cd-max) {
+      width: 100%; } }
   
   p a,
   li a {
@@ -154,8 +158,11 @@
       background-color: $secondary;
       margin-bottom: $base-px; } }
   
-  @include breakpoint($c-max) {
-    margin-bottom: $line; } }
+  @include breakpoint($site-width-max) {
+    margin-bottom: $line; }
+    
+  @include breakpoint($cd-max) {
+    margin-right: auto; } }
 
 // Specific pieces of content
 // ---------------------------
