@@ -12,9 +12,6 @@
 .card {
   color: $neutral-l1; }
 
-.card-image {
-  background-color: $neutral-l5; }
-
 // Card body
 // ---------------------------
 .card-body {
@@ -92,6 +89,8 @@
 .card-medium .card-image,
 .card-small .card-image {
   position: relative;
+  transition: background-color .2s ease-out;
+  background-color: $neutral-l5;
   padding-bottom: 66.5492958%;
   
   img {
@@ -133,7 +132,7 @@
 // ---------------------------
 .image-loaded {
   // Background also causes a little bit of bleed with some images
-  background-color: transparent;
+  box-shadow: inset 0 0 0 1px #fff;
   
   &:before {
     // Stops the spinner animating in the background
