@@ -101,13 +101,19 @@ $github: #4183c4;
 $linkedin: #0077b5;
 $twitter: #55acee;
 $behance: #1769ff;
+$facebook: #3b5998;
+$pocket: #ef4056;
+$instapaper: #000;
 
 $social: (
   dribbble: $dribbble,
   github: $github,
   linkedin: $linkedin,
   twitter: $twitter,
-  behance: $behance
+  behance: $behance,
+  facebook: $facebook,
+  pocket: $pocket,
+  instapaper: $instapaper
 );
 
 // Fonts

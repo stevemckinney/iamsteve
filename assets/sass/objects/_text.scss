@@ -91,6 +91,29 @@ address { font-style: normal; }
   &:active {
     transform: scale(.9); } }
 
+.link-social {
+  text-align: center;
+  font-weight: font-weight(semibold);
+  border: 1px solid $neutral-l4;
+  padding: $base-px 0;
+  
+  &:hover,
+  &:focus {
+    background-color: $neutral-l9; }
+  
+  &:first-of-type {
+    border-radius: $radius 0 0 $radius; }
+  
+  &:nth-of-type(2) {
+    border-left: none; }
+  
+  &:nth-of-type(2),  
+  &:nth-of-type(3) {
+    border-right: none; }
+  
+  &:last-child {
+    border-radius: 0 $radius $radius 0; } }
+
 // Social links
 // ---------------------------
 @each $name, $color in $social {
