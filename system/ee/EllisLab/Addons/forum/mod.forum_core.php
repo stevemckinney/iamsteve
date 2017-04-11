@@ -465,7 +465,7 @@ class Forum_Core extends Forum {
 
 		$cookie = ee()->input->cookie('forum_topics');
 		$length = strlen($cookie);
-		$topics = @unserialize(stripslashes($cookie));
+		$topics = @json_decode(stripslashes($cookie), TRUE);
 
 		if ( ! is_array($topics))
 		{
@@ -2531,7 +2531,7 @@ class Forum_Core extends Forum {
 		if (ee()->session->userdata('member_id') == 0)
 		{
 			$expire = 60*60*24*365;
-			ee()->input->set_cookie('forum_topics', serialize($read_topics), $expire);
+			ee()->input->set_cookie('forum_topics', json_encode($read_topics), $expire);
 		}
 		else
 		{
@@ -6121,7 +6121,7 @@ class Forum_Core extends Forum {
 			if (ee()->session->userdata('member_id') == 0)
 			{
 				$expire = 60*60*24*365;
-				ee()->input->set_cookie('forum_topics', serialize($read_topics), $expire);
+				ee()->input->set_cookie('forum_topics', json_encode($read_topics), $expire);
 			}
 		}
 
@@ -6224,11 +6224,11 @@ class Forum_Core extends Forum {
 		// Fetch forum notification addresses
 		if ($this->current_request == 'newtopic')
 		{
-			$notify_addresses .= ($fdata['forum_notify_emails_topics'] != '') ? ','.$fdata['forum_notify_emails_topics'] : '';
+			$notify_addresses .= ($fdata['forum_notify_emails'] != '') ? ','.$fdata['forum_notify_emails'] : '';
 		}
 		else
 		{
-			$notify_addresses .= ($fdata['forum_notify_emails'] != '') ? ','.$fdata['forum_notify_emails'] : '';
+			$notify_addresses .= ($fdata['forum_notify_emails_topics'] != '') ? ','.$fdata['forum_notify_emails_topics'] : '';
 		}
 
 		// Category Notification Prefs
@@ -6236,9 +6236,19 @@ class Forum_Core extends Forum {
 
 		if (FALSE !== $cmeta)
 		{
-			if ($cmeta[$fdata['forum_parent']]['forum_notify_emails'] != '')
+			if ($this->current_request == 'newtopic')
 			{
-				$notify_addresses .= ','.$cmeta[$fdata['forum_parent']]['forum_notify_emails'];
+				if ($cmeta[$fdata['forum_parent']]['forum_notify_emails'] != '')
+				{
+					$notify_addresses .= ','.$cmeta[$fdata['forum_parent']]['forum_notify_emails'];
+				}
+			}
+			else
+			{
+				if ($cmeta[$fdata['forum_parent']]['forum_notify_emails_topics'] != '')
+				{
+					$notify_addresses .= ','.$cmeta[$fdata['forum_parent']]['forum_notify_emails_topics'];
+				}
 			}
 		}
 
