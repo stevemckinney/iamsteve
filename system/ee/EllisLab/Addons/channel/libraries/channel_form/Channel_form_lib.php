@@ -179,7 +179,9 @@ class Channel_form_lib
 
 		// Get the entry data, if an entry was specified
 		// the entry object will already exist if this is a submission error
-		if ( ! is_object($this->entry))
+		if ( ! is_object($this->entry)
+			|| $this->entry->entry_id != ee()->TMPL->fetch_param('entry_id')
+			|| $this->entry->Channel->getId() != $this->channel->getId())
 		{
 			$this->fetch_entry(
 				ee()->TMPL->fetch_param('entry_id'),
@@ -1472,13 +1474,19 @@ GRID_FALLBACK;
 
 			if (ee()->input->post('unique_url_title', TRUE))
 			{
-				$_POST['url_title'] = uniqid(
-					$this->_meta['url_title'] ? $this->_meta['url_title'] : url_title(
+				$url_title = $this->_meta['url_title'] ?
+					$this->_meta['url_title'] : url_title(
 						ee()->input->post('title', TRUE),
 						ee()->config->item('word_separator'),
 						TRUE
-					),
-				TRUE);
+					);
+
+				// Max URL title length, minus uniqid length, minus separator
+				$url_title = substr($url_title, 0, 200-23-1);
+
+				$separator = (ee()->config->item('word_separator') == 'dash') ? '-' : '_';
+
+				$_POST['url_title'] = uniqid($url_title . $separator, TRUE);
 
 				$this->_meta['url_title'] = $_POST['url_title'];
 			}
@@ -2127,12 +2135,19 @@ GRID_FALLBACK;
 			return;
 		}
 
+		$selected = '';
+
+		if ($this->entry->entry_id OR ! empty($this->channel->deft_category))
+		{
+			$selected = $this->entry->Categories->pluck('cat_id');
+		}
+
 		// Load up the library and figure out what belongs and what's selected
 		ee()->load->library(array('api', 'file_field'));
 		ee()->legacy_api->instantiate('channel_categories');
 		$category_list = ee()->api_channel_categories->category_tree(
 			$this->channel('cat_group'),
-			$this->entry->Categories->pluck('cat_id')
+			$selected
 		);
 
 		$categories = array();
@@ -2622,7 +2637,7 @@ GRID_FALLBACK;
 
 		$meta = serialize($meta);
 
-		return ee('Encrypt')->encode($meta, ee()->db->username.ee()->db->password);
+		return ee('Encrypt')->encode($meta, ee()->config->item('session_crypt_key'));
 	}
 
 
@@ -2643,7 +2658,7 @@ GRID_FALLBACK;
 			throw new Channel_form_exception(lang('form_decryption_failed'));
 		}
 
-		$meta = ee('Encrypt')->decode($meta, ee()->db->username.ee()->db->password);
+		$meta = ee('Encrypt')->decode($meta, ee()->config->item('session_crypt_key'));
 
 		$this->_meta = unserialize($meta);
 
