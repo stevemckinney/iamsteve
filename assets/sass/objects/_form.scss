@@ -1,7 +1,9 @@
 // Forms
 // ---------------------------
+form {
+  position: relative; }
+  
 .form {
-  position: relative;
 	display: flex;
 	flex-flow: row wrap;
 	width: 100%; }
