@@ -23,7 +23,7 @@
   <span style="display:none">Viewed: {view_count_one}</span>
   
   <div class="featured-image entry-image pt6 pt8-d" role="presentation" style="background-color: {if image}{background}{if:else}{color}{/if}">
-    {if osc}
+    {if image}
   	  {image}
   	    {if url:large}
   	      <img src="{url:large}" srcset="{url:medium} 378w, {url:large} 738w, {url:large-2x} 1476w">
