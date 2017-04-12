@@ -11,7 +11,7 @@
 |
 */
 
-$config['app_version'] = "3.5.2";
+$config['app_version'] = "3.5.5";
 $config['install_lock'] = "";
 $config['license_number'] = '';
 $config['debug'] = 'FALSE';
@@ -28,8 +28,10 @@ $config['database'] = array (
   'expressionengine' => array()
 );
 $config['multiple_sites_enabled'] = 'n';$config['enable_devlog_alerts'] = 'n';
+$config['session_crypt_key'] = '58bbd09bcfc3f5479d9d6015e6a8deab6e0bd59e';
 
 // END EE config items
+
 
 
 

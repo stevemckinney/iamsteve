@@ -12,29 +12,32 @@
  * @author     Focus Lab, LLC <dev@focuslabllc.com>
  */
 
-if ( ! defined('ENV'))
+if ( ! defined('ENV') )
 { 
-	switch (strtolower($_SERVER['SERVER_NAME']))
+  $production = 'iamsteve.me';
+  $development = 'dev.iamsteve.me';
+  $local = 'iamsteve.dev';
+  
+	switch ( strtolower( $_SERVER['HTTP_HOST'] ) )
 	{	
-		case 'iamsteve.dev' :
-		case '192.168.1.77' :
+		case $local :
 			define('ENV', 'local');
 			define('ENV_FULL', 'Local');
-			define('SERVER_NAME', 'iamsteve.dev');
+			define('ENV_DOMAIN', $local);
 			define('ENV_DEBUG', true);
 		break;
 
 		case 'dev.iamsteve.me' :
 			define('ENV', 'dev');
 			define('ENV_FULL', 'Development');
-			define('SERVER_NAME', 'dev.iamsteve.me');
+			define('ENV_DOMAIN', $development);
 			define('ENV_DEBUG', FALSE);
 		break;
 
 		case 'iamsteve.me' :
 			define('ENV', 'prod');
 			define('ENV_FULL', 'Production');
-			define('SERVER_NAME', 'iamsteve.me');
+			define('ENV_DOMAIN', $production);
 			define('ENV_DEBUG', FALSE);
 		break;
 	}
