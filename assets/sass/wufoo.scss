@@ -1,0 +1,194 @@
+// Framework required and gems
+// ---------------------------
+@import "compass/support";
+@import "compass/utilities/color";
+@import "compass/typography/text";
+@import "compass/css3/appearance";
+@import "compass/css3/user-interface";
+@import "breakpoint";
+				
+// Framework
+// Don't edit these files, copy mixins and override.
+// ---------------------------
+@import "framework";
+
+// Site base
+// ---------------------------
+@import "site/base";
+// Override existing mixins from framework files, etc. here
+@import "site/mixins";
+@import "site/typography";
+@import "site/structure";
+@import "site/helpers";
+
+$fonts: (
+  light 300 normal,
+  regular 400 normal,
+  regularitalic 400 italic,
+  semibold 600 normal,
+  bold 700 normal
+);
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: woff2 woff) {
+	$src: null;
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+  
+	@each $ext in $exts {
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $ext)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+@each $font in $fonts {
+  @include font-face(Averta, "https://iamsteve.me/assets/fonts/averta/avertastd-#{nth($font, 1)}-webfont", nth($font, 2), nth($font, 3));
+}
+
+// Overrides
+// ---------------------------
+html,
+body,
+#container,
+#logo,
+.wufoo li.focused {
+  background-color: transparent !important; }
+
+#header,
+.req,
+.errorLi {
+  display: none !important; }
+
+.wufoo li {
+  padding: 0 0 $line;
+  margin: 0;
+  clear: both;
+  background-color: transparent;
+  position: relative; }
+    
+// Forms
+// ---------------------------
+.wufoo {
+  font-family: $sans;
+  color: $primary;
+  
+	ul {
+  	display: flex;
+  	flex-flow: column wrap; } }
+
+// Label
+// ---------------------------
+.wufoo label.desc, .wufoo legend.desc {
+	display: block;
+	font-size: $f4;
+	font-weight: 700;
+	line-height: 1;
+	padding-bottom: $base-px; }
+
+// Helper
+// ---------------------------
+.field-hint { font-size: 75%; }
+
+// Legend
+// ---------------------------
+.field-legend {
+	font-weight: font-weight(semibold); }
+
+// Fieldset
+// ---------------------------
+.field {
+  position: relative; }
+
+// Field layouts
+// ---------------------------
+.field-first .input-text {
+	border-radius: $radius 0 0 $radius; }
+	
+.field-last .input-text {
+	border-radius: 0 $radius $radius 0; }
+
+.field-whole {
+	flex-basis: 100%; }
+	
+.field-half {
+	@include breakpoint($c) {
+		flex-basis: 50%; } }
+	
+.field-first {
+	@include breakpoint($c) {
+		padding-right: em($base-px); } }
+
+.field-last {
+	@include breakpoint($c) {
+		padding-left: em($base-px); } }
+
+// Field specifics
+// ---------------------------
+.buttons {
+  padding: 0 !important; }
+
+.btTxt.submit {
+  @include element-base;
+	color: currentcolor;
+	font-size: $f4 !important;
+	
+	background-color: $tertiary;
+	box-shadow: 
+	  inset 0 -1px scale-lightness($tertiary-d2, -20%),
+	  inset 0 1px scale-lightness($tertiary-d2, 20%),
+	  inset 0 0 0 1px $tertiary-d2,
+	  inset 0 2px 1px $tertiary-l2,
+	  inset 0 3px 4px -1px $tertiary-l2,
+	  inset 0 -2px 1px $tertiary-d1,
+	  inset 0 -2px 4px -1px $tertiary-d1,
+	  0 1px 3px $alternate-l2;
+	  
+	  &:hover,
+	  &:focus {
+  	  background-color: scale-lightness($tertiary, 10%);
+    	box-shadow:
+    	  inset 0 -1px scale-lightness($tertiary-d2, -20%),
+    	  inset 0 1px scale-lightness($tertiary-d2, 20%),
+    	  inset 0 0 0 1px $tertiary-d2,
+    	  inset 0 2px 1px scale-lightness($tertiary-l2, 10%),
+    	  inset 0 3px 4px -1px scale-lightness($tertiary-l2, 10%),
+    	  inset 0 -2px 1px scale-lightness($tertiary-d1, 10%),
+    	  inset 0 -2px 4px -1px scale-lightness($tertiary-d1, 10%),
+    	  0 1px 3px $alternate-l2; }
+    	  
+    &:active {
+      background-color: $tertiary;
+    	box-shadow:
+    	  inset 0 1px scale-lightness($tertiary-d2, -20%),
+    	  inset 0 1px scale-lightness($tertiary-d2, 20%),
+    	  inset 0 0 0 1px $tertiary-d2,
+    	  inset 0 2px 1px $tertiary-d1,
+    	  inset 0 2px 4px -1px $tertiary-d1; } }
+		
+// Input
+// ---------------------------
+.wufoo input.text, .wufoo textarea.textarea {
+  @include form-base($radius: false, $size: false);
+  width: 100%; }
+
+.wufoo input.text, .wufoo textarea.textarea,
+.input-select {
+  border-radius: $radius;
+  padding: $base-px; }
+	
+	// Text
+	// ---------------------------
+	.wufoo input.text, .wufoo textarea.textarea {
+		@include form; }
+      
+  .wufoo textarea.textarea {
+    min-height: 240px; }
