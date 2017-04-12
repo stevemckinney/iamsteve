@@ -51,12 +51,12 @@
   > *:not(figure):not(img):not(div):not(blockquote),
   figcaption {
     @include breakpoint($c-max) {
-      padding-left: 16px;
-      padding-right: 16px; }
-      
-  li {
-    @include breakpoint($c-max) {
-      margin-left: 20px; } } }
+      padding-left: $line*2;
+      padding-right: $line*2; }
+    
+    @include breakpoint($b-max) {
+      padding-left: 32px;
+      padding-right: 32px; } }
   
   strong {
     font-weight: font-weight(semibold); }

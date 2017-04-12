@@ -41,7 +41,7 @@
       {/categories}
     {/if}
   </div>
-  <article role="article" class="entry-content pt4 pb4 pt6-d pb6-d">
+  <article role="article" class="entry-content pt6 pb6">
     <header class="entry-header pb4 p0-d">
       <div class="meta dashes">
         {date}
@@ -55,7 +55,7 @@
           {edit_date format="%Y/%m/%d"}
         </time>
       </div>
-      <h1 class="f1 headline-d secondary pt2 mb0 entry-title">{title}</h1>
+      <h1 class="f1 headline-b secondary pt2 mb0 entry-title">{title}</h1>
     </header>
     {exp:streeng find='\<p><img src="|"><\/p>' replace='<img src="|">' insensitive="yes"}{article}{/exp:streeng}
   </article>
