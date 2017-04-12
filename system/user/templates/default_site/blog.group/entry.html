@@ -23,9 +23,9 @@
   <span style="display:none">Viewed: {view_count_one}</span>
   
   <div class="featured-image entry-image pt6 pt8-d" role="presentation" style="background-color: {if image}{background}{if:else}{color}{/if}">
-    {if image}
+    {if osc}
   	  {image}
-  	    {if large_file_url}
+  	    {if url:large}
   	      <img src="{url:large}" srcset="{url:medium} 378w, {url:large} 738w, {url:large-2x} 1476w">
         {if:else}
           <img src="{url}">
@@ -34,9 +34,9 @@
     {if:else}
   	  {categories channel="blog" limit="1"}
         {if category_id == 7}
-          <img src="{site_url}dist/images/{design}">
+          <div class="pt8-d pb8-d"><img src="{site_url}dist/images/{design}"></div>
         {if:else}
-          <img src="{site_url}dist/images/{code}">
+          <div class="pt8-d pb8-d"><img src="{site_url}dist/images/{code}"></div>
         {/if}
       {/categories}
     {/if}
