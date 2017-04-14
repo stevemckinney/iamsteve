@@ -22,23 +22,23 @@
 </header>
 
 <div class="tabbar">
-  <a href="/" title="Back to the homepage" class="logo">
+  <a href="{homepage}" title="Back to the homepage" class="logo">
     {gv_logo_small}
   </a>
-  <a href="{homepage}" class="nav-item{if segment_1 == ""} active{/if}">
-    Home
-  </a>
   <a href="{path='blog'}" class="nav-item{if segment_1 == "blog"} active{/if}">
-    <span class="tabbar-link-text">Archive</span>
+    <span class="icon icon-medium">{gv_blog}</span>
+    <span class="tabbar-link-text">Blog</span>
   </a>
   <a href="{path='about'}" class="nav-item{if segment_1 == "about"} active{/if}">
+    <span class="icon icon-medium">{gv_about}</span>
     <span class="tabbar-link-text">About</span>
   </a>
   <a href="{path='contact'}" class="nav-item{if segment_1 == "contact"} active{/if}">
+    <span class="icon icon-medium">{gv_contact}</span>
     <span class="tabbar-link-text">Contact</span>
   </a>
-  <a href="#search" id="toggle-search">
-    <span class="icon icon-medium icon-toggle icon-search">{gv_search}</span>
+  <a href="#search" id="toggle-search" class="nav-item">
+    <span class="icon icon-medium icon-toggle icon-search">{gv_search_small}</span>
     <span class="tabbar-link-text">Search</span>
   </a>
 </div>
