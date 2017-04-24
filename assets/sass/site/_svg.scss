@@ -6,6 +6,24 @@
 .stroke-currentcolor {
   stroke: currentcolor; }
 
+.fill-none {
+  fill: none; }
+
+// Icon related
+// ---------------------------
+.sw-2 {
+  stroke-width: 2px; }
+
+.sw-3 {
+  stroke-width: 3px; }
+
+.sw-4 {
+  stroke-width: 4px; }
+
+.sl-r {
+  stroke-linecap: round;
+  stroke-linejoin: round; }
+  
 // When some SVG resizes with the browser it doesn’t always adjust the height.
 // Setting both a max height and height seems to solve this for the most part.
 svg {

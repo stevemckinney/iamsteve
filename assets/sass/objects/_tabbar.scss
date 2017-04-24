@@ -1,0 +1,45 @@
+.tabbar {
+  display: none;
+  transition: .2s;
+  
+  @include breakpoint($c-max) {
+    position: fixed;
+    z-index: $z-index-100;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $white;
+    box-shadow: 0 -1px rgba($primary, .1);
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center; } }
+
+.tabbar-logo {
+  padding: $base-px $line;
+  color: $primary; }
+
+.tabbar-item {
+  display: flex;
+  flex: 1 1 20%;
+  align-items: center;
+  align-content: center;
+  flex-flow: column wrap;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  color: $warm-l1;
+  
+  &.active {
+    background-color: $warm-l4; } }
+
+.tabbar-item-text {
+  font-size: 12px;
+  text-transform: lowercase; }
+
+// Headroom
+// ---------------------------
+.tabbar-pinned {
+  transform: translateY(0%); }
+
+.tabbar-unpinned {
+  transform: translateY(100%); }

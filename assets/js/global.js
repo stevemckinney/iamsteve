@@ -1,15 +1,13 @@
 var iamsteve = (function ()
 {
   // Variables
-  var toggle = document.getElementById('toggle');
   var nav = document.getElementById('nav');
   var toggle_search = document.getElementById('toggle-search');
   var search = document.getElementById('search');
   
   // Public
   var toggler = function()
-  {    
-    toggle.addEventListener( 'click', _toggleNav, false);
+  {
     toggle_search.addEventListener( 'click', _toggleSearch, false);
   }
   
@@ -74,6 +72,32 @@ var iamsteve = (function ()
     headroom.init(); 
   }
   
+  var tabbar = function()
+  {
+    var tabbar = document.querySelector('.tabbar');
+    var options =
+    {
+      tolerance:
+      {
+        up: 12,
+        down: 12
+      },
+      classes:
+      {
+        initial: 'tabbar',
+        pinned: 'tabbar-pinned',
+        unpinned: 'tabbar-unpinned',
+        top: 'tabbar-top',
+        notTop: 'tabbar-not-top',
+        bottom: 'tabbar-bottom',
+        notBottom: 'tabbar-not-bottom'
+      }
+    };
+    var tabbar = new Headroom(tabbar, options);
+    
+    tabbar.init(); 
+  }
+  
   var lazy = function()
   {
     document.addEventListener('lazyunveilread', function(e)
@@ -113,7 +137,8 @@ var iamsteve = (function ()
   }
   
   var _toggleSearch = function( e )
-  {     
+  {
+    console.log('toggled');
     this.classList.toggle('active');
     search.classList.toggle('visible');
     
@@ -121,21 +146,8 @@ var iamsteve = (function ()
     
     search.addEventListener('transitionend', function()
     {
-      if ( toggle.classList.contains('active') ) 
-      {
-        field.blur();
-      }
-      else
-      {
-        field.focus();
-      }
+      field.focus();
     }, true);
-    
-    if ( toggle.classList.contains('active') ) 
-    {
-      toggle.classList.remove('active');
-      nav.classList.remove('visible');
-    }
     
     e.preventDefault();
   }

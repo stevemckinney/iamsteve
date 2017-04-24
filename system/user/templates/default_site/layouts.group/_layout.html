@@ -2,44 +2,44 @@
 
 <header class="header contain-medium contain-large primary" id="header">
   <a href="/" title="Back to the homepage" class="logo">
-    <span class="logo-small">{gv_logo_small}</span>
-    <span class="logo-large">{gv_logo}</span>
-    <span class="logo-text">iamsteve</span>
-  </a>
-  <a href="#search" class="icon icon-medium icon-toggle icon-search" id="toggle-search">
-    {gv_search}
-  </a>
-  <a href="#nav" class="icon icon-toggle" id="toggle">
-    <span>Menu</span>
+    {gv_logotype}
   </a>
   <nav id="nav" class="nav invisible">
-    <a href="{homepage}" class="nav-item{if segment_1 == ""} active{/if}">Home</a>
-    <a href="{path='blog'}" class="nav-item{if segment_1 == "blog"} active{/if}">Archive</a>
-    <a href="{path='about'}" class="nav-item{if segment_1 == "about"} active{/if}">About</a>
-    <a href="{path='contact'}" class="nav-item{if segment_1 == "contact"} active{/if}">Contact</a>
+    <a href="{homepage}" class="nav-item{if segment_1 == ""} active{/if}">
+      Home
+    </a>
+    <a href="{path='blog'}" class="nav-item{if segment_1 == "blog"} active{/if}">
+      Blog
+    </a>
+    <a href="{path='about'}" class="nav-item{if segment_1 == "about"} active{/if}">
+      About
+    </a>
+    <a href="{path='contact'}" class="nav-item{if segment_1 == "contact"} active{/if}">
+      Contact
+    </a>
   </nav>
   {embed="include/search"}
 </header>
 
 <div class="tabbar">
-  <a href="{homepage}" title="Back to the homepage" class="logo">
+  <a href="{homepage}" title="Back to the homepage" class="tabbar-logo {if segment_1 == ""} active{/if}">
     {gv_logo_small}
   </a>
-  <a href="{path='blog'}" class="nav-item{if segment_1 == "blog"} active{/if}">
-    <span class="icon icon-medium">{gv_blog}</span>
-    <span class="tabbar-link-text">Blog</span>
+  <a href="{path='blog'}" class="tabbar-item sans bold{if segment_1 == "blog"} active{/if}">
+    <span class="icon">{gv_blog}</span>
+    <span class="tabbar-item-text warm-l2">Blog</span>
   </a>
-  <a href="{path='about'}" class="nav-item{if segment_1 == "about"} active{/if}">
-    <span class="icon icon-medium">{gv_about}</span>
-    <span class="tabbar-link-text">About</span>
+  <a href="{path='about'}" class="tabbar-item sans bold{if segment_1 == "about"} active{/if}">
+    <span class="icon">{gv_about}</span>
+    <span class="tabbar-item-text warm-l2">About</span>
   </a>
-  <a href="{path='contact'}" class="nav-item{if segment_1 == "contact"} active{/if}">
-    <span class="icon icon-medium">{gv_contact}</span>
-    <span class="tabbar-link-text">Contact</span>
+  <a href="{path='contact'}" class="tabbar-item sans bold{if segment_1 == "contact"} active{/if}">
+    <span class="icon">{gv_contact}</span>
+    <span class="tabbar-item-text warm-l2">Contact</span>
   </a>
-  <a href="#search" id="toggle-search" class="nav-item">
-    <span class="icon icon-medium icon-toggle icon-search">{gv_search_small}</span>
-    <span class="tabbar-link-text">Search</span>
+  <a href="#search" id="toggle-search" class="tabbar-item sans bold">
+    <span class="icon icon-search">{gv_search_small}</span>
+    <span class="tabbar-item-text warm-l2">Search</span>
   </a>
 </div>
 

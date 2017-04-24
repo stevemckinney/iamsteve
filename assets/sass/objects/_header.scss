@@ -42,9 +42,7 @@
 // ---------------------------
 .logo {
   display: flex;
-  white-space: nowrap;
   padding: $base-px;
-  font: 600 $text-medium $sans;
   position: relative;
   z-index: $z-index-200;
   
@@ -59,23 +57,7 @@
   @include breakpoint($site-width) {
     padding: $line $line*1.5 $line 0; } }
 
-.logo-large,
-.logo-small {
-  display: block; }
-  
-.logo-large {
-  margin-right: half($base-px);
-   
-  @include breakpoint($cd-max) {
-    display: none; } }
-
-.logo-small {
-  @include breakpoint($b) {
-    margin-right: half($base-px); }
-  
-  @include breakpoint($cd) {
-    display: none; } }
-
-.logo-text {
-  @include breakpoint($cd-max) {
+.header #toggle-search,
+.logo {
+  @include breakpoint($c-max) {
     display: none; } }

@@ -1,24 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <defs>
-    <style>
-      .a, .b {
-        fill: none;
-      }
-
-      .a {
-        stroke: #7f6371;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 2px;
-      }
-    </style>
-  </defs>
-  <title>contact</title>
-  <g>
-    <g>
-      <rect class="a" x="1" y="3" width="14" height="10" rx="1" ry="1"/>
-      <polyline class="a" points="1.516 3.442 8 9 14.663 3.289"/>
-    </g>
-    <rect class="b" width="16" height="16"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="fill-none stroke-currentcolor sw-2">
+  <polyline class="sl-r" points="1 7 8 11 15 7"/>
+  <polyline class="sl-r" points="3 5 1 6.667 1 15 15 15 15 6.667 13 5"/>
+  <polyline class="sl-r" points="3 8 3 1 13 1 13 8"/>
+  <line x1="6" y1="5" x2="10" y2="5"/>
 </svg>

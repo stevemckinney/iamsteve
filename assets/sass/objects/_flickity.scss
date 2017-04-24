@@ -64,7 +64,7 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-  padding: 0 $base-px 0 4px;
+  padding: 0 $base-px 0 0;
   
   &.flickity-enabled {
     padding: 0; }
@@ -77,14 +77,12 @@
     white-space: normal; }
     
   .card-more {
-    height: 100%;
     min-width: 240px;
     padding: $line*6 $line $line*2 14px; }
   
   // More sensible way to position when flickity is enabled
   &.flickity-enabled .card-more {
     top: 50%;
-    transform: translateY(-50%);
     padding-top: $line*2;
     
     h2 {
@@ -95,8 +93,8 @@
   .card-medium {
     width: 240px + $base-px + $base-px + $base-px + $base-px;
     
-    @include breakpoint($a) {
-     width: 288px + $base-px + $base-px + $base-px + $base-px; }
+    @include breakpoint($aa) {
+      width: 288px + $base-px + $base-px + $base-px + $base-px; }
     
     @include breakpoint($c) {
       width: 378px + $base-px + $base-px; } }

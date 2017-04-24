@@ -1,19 +1,14 @@
 // Main section
 .hero {
   background-color: $primary-l4;
-  align-content: center;
-  align-items: center;
-  padding-top: $line;
-  justify-content: space-between;
-  padding-top: 44px + ($line * 2);
-  
-  @include breakpoint($a) {
-    padding-top: 44px + ($line * 3); }
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
   
   @include breakpoint($b) {
     padding-top: 44px + ($line * 4); }
   
-  @include breakpoint($b) {
+  @include breakpoint($c) {
     padding-top: 96px + ($line * 4); }
   
   @include breakpoint($site-width) {
@@ -25,15 +20,22 @@
   
   img {
     display: inline-block;
-    margin: 0 auto -28px;
+    margin: 0 auto -32px;
     
     @include breakpoint(734px) {
       margin-bottom: -48px; } } }
     
 .hero-title {
+  @include hide-text;
+  background-image: image-url("lettering.svg");
+  background-repeat: no-repeat;
+  width: 206px;
+  height: 144px;
+  
+  @include breakpoint($site-width-max) {
+    background-size: contain;
+    margin: auto; }
+    
   @include breakpoint($site-width) {
-    @include hide-text;
-    background-image: image-url("lettering.svg");
-    background-repeat: no-repeat;
     width: 348px;
     height: 250px; } }

@@ -2,6 +2,7 @@
 // ---------------------------
 .introduction {
   text-align: center;
+  padding: $line*2 0;
   
   @include breakpoint($site-width) {
     position: absolute;
