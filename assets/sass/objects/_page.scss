@@ -2,7 +2,7 @@
   position: relative;
   align-items: center;
   background-color: $primary-l4;
-  padding-top: $base-px;
+  padding-top: $p4;
   
   @include breakpoint($c) {
     padding-top: $line * 3.5; }
