@@ -53,7 +53,7 @@
       width: calc(100% - #{$line*4}); }
     
     @include breakpoint($a-max) {
-      width: calc(100% - #{$line*2}); } }
+      width: calc(100% - 32px); } }
   
   // Yep
   > *:not(figure):not(img):not(div):not(blockquote),
