@@ -4,15 +4,11 @@
   text-align: center;
   padding: $line*2 0;
   
-  @include breakpoint($site-width) {
+  @include breakpoint($d) {
     position: absolute;
-    top: calc(20vh + 72px);
-    left: calc(50% - 600px); }
-    
-  p {
-    max-width: 324px;
-    margin-right: auto;
-    margin-left: auto;
-    
-    @include breakpoint($cd-max) {
-      max-width: 284px; } } }
+    top: calc(14vh + 72px);
+    left: $line*2; }
+  
+  @include breakpoint($site-width) {
+    top: calc(14vh + 72px);
+    left: calc(50% - 600px); } }

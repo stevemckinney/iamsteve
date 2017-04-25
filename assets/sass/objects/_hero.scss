@@ -5,13 +5,10 @@
   flex-flow: column wrap;
   justify-content: flex-end;
   
-  @include breakpoint($b) {
-    padding-top: 44px + ($line * 4); }
-  
   @include breakpoint($c) {
-    padding-top: 96px + ($line * 4); }
+    padding-top: 96px; }
   
-  @include breakpoint($site-width) {
+  @include breakpoint($d) {
     padding-top: calc(22.5vh + 96px); } }
     
 .hero-image {
@@ -26,15 +23,13 @@
       margin-bottom: -48px; } } }
     
 .hero-title {
-  @include hide-text;
-  background-image: image-url("lettering.svg");
-  background-repeat: no-repeat;
-  width: 206px;
-  height: 144px;
+  width: 240px;
   
-  @include breakpoint($site-width-max) {
-    background-size: contain;
+  @include breakpoint($d-max) {
     margin: auto; }
+    
+  @include breakpoint($c) {
+   width: 294px; }
     
   @include breakpoint($site-width) {
     width: 348px;
