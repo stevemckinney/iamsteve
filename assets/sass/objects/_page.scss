@@ -5,12 +5,6 @@
   padding-top: $p4;
   
   @include breakpoint($c) {
-    padding-top: $line * 3.5; }
-    
-  @include breakpoint($cd) {
-    padding-top: $line * 4.5; }
-  
-  @include breakpoint($d) {
     padding-top: $line * 5; }
   
   h1 {
