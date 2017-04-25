@@ -12,6 +12,7 @@
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
   background-color: $white;
+  max-height: 96px;
   
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); }
@@ -49,7 +50,16 @@
     align-items: center; }
   
   @include breakpoint($cd) {
-    font-size: $text-large; } }
+    font-size: $text-large; }
+  
+  @include breakpoint($d-max) {
+    svg {
+      max-width: 35px;
+      height: 35px; } }
+  
+  .fill-currentcolor {
+    @include breakpoint($d-max) {
+      display: none; } } }
 
 .header #toggle-search,
 .logo {
