@@ -44,15 +44,12 @@
   z-index: $z-index-200;
   
   @include breakpoint($c) {
-    padding: $base-px $line $base-px 0;
+    padding: $line $line*1.5 $line 0;
     align-content: center;
     align-items: center; }
   
   @include breakpoint($cd) {
-    font-size: $text-large; }
-  
-  @include breakpoint($site-width) {
-    padding: $line $line*1.5 $line 0; } }
+    font-size: $text-large; } }
 
 .header #toggle-search,
 .logo {

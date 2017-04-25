@@ -47,16 +47,33 @@
   > *:not(figure):not(img):not(div) {
     max-width: $measure; }
   
+  // Tables don't like padding
+  > table {
+    @include breakpoint(max-width 639px) {
+      width: calc(100% - #{$line*4}); }
+    
+    @include breakpoint($a-max) {
+      width: calc(100% - #{$line*2}); } }
+  
   // Yep
   > *:not(figure):not(img):not(div):not(blockquote),
   figcaption {
-    @include breakpoint($cd-max) {
-      padding-left: 16px;
-      padding-right: 16px; }
-      
+    @include breakpoint(max-width 639px) {
+      padding-right: $line*2;
+      padding-left: $line*2; }
+
+    @include breakpoint($a-max) {
+      padding-left: $line*1.5;
+      padding-right: $line*1.5; }
+    
+    @include breakpoint($aa-max) {
+      padding-left: $base-px*1.5;
+      padding-right: $base-px*1.5; } }
+  
+  // Space is limited so nudge in the bullets
   li {
-    @include breakpoint($cd-max) {
-      margin-left: 20px; } } }
+    @include breakpoint($aa-max) {
+      margin-left: 20px; } }
   
   strong {
     font-weight: font-weight(semibold); }
@@ -168,7 +185,9 @@
 // ---------------------------
 .featured-image {
   overflow: hidden;
-  min-height: 240px; }
+  display: flex;
+  min-height: 240px;
+  max-height: 648px; }
 
 .featured-image img {
   display: block;
