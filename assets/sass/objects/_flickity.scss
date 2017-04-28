@@ -53,7 +53,18 @@
 // sides of each card within the scroll container.
 .offsetter {
   display: inline-block;
-  width: calc(50% - (#{$contain / 2} + 16px)); }
+  
+  @include breakpoint($c) {
+    width: $line; }
+  
+  @include breakpoint($d) {
+    width: $line*2; }
+  
+  @include breakpoint($e) {
+    width: $line*3; }
+  
+  @include breakpoint($site-width) {
+    width: calc(50% - (#{$contain / 2} + 16px)); } }
 
 // Scroll
 // ---------------------------

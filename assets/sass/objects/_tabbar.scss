@@ -9,22 +9,25 @@
     bottom: 0;
     left: 0;
     background-color: $white;
-    box-shadow: 0 -1px rgba($primary, .1);
+    box-shadow: 0 -1px rgba($warm, .1);
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: center; } }
 
 .tabbar-logo {
-  padding: $base-px $line;
+  padding: $base-px 0;
   color: $primary; }
 
+.tabbar-logo,
 .tabbar-item {
   display: flex;
   flex: 1 1 20%;
   align-items: center;
   align-content: center;
-  flex-flow: column wrap;
+  flex-flow: column wrap; }
+
+.tabbar-item {
   padding-top: 10px;
   padding-bottom: 6px;
   color: $warm-l1;

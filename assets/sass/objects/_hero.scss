@@ -14,16 +14,20 @@
 .hero-image {
   display: block;
   text-align: center;
+  width: 100%;
   
   img {
-    display: inline-block;
+    display: block;
     margin: 0 auto -32px;
     
     @include breakpoint(734px) {
       margin-bottom: -48px; } } }
     
 .hero-title {
-  width: 240px;
+  width: 196px;
+  
+  @include breakpoint($aa) {
+    width: 240px; }
   
   @include breakpoint($d-max) {
     margin: auto; }

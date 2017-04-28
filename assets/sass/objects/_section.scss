@@ -30,8 +30,16 @@
 
 .contain-medium {
   @include breakpoint($c) {
-    padding-right: $line;
-    padding-left: $line; } } 
+    padding-right: $line*2;
+    padding-left: $line*2; }
+  
+  @include breakpoint($d) {
+    padding-right: $line*3;
+    padding-left: $line*3; }
+  
+  @include breakpoint($e) {
+    padding-right: $line*4;
+    padding-left: $line*4; } } 
 
 .contain-large {
   @include breakpoint($site-width) {
