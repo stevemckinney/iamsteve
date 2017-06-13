@@ -43,7 +43,7 @@ class Iamsteve {
     $this->json_ld_close = '} </script>';
   }
   
-  public function fixer($theurl='')
+  public function fixer($theurl = '')
 	{
 		if ($theurl == '')
     {

@@ -288,6 +288,9 @@ class Streeng
 		if ($splits !== false) {
 			$string = count(explode($splits, $string));
 		}
+		
+		// Automatically add an `id` to headings
+		$string = $this->_auto_id_headings($string);
 
 		$this->return_data = $string;
 	}
@@ -417,7 +420,35 @@ class Streeng
 
 		return $truncated;
 	}
-
+  
+  private function _hyphenate_string( $string )
+  {
+    $string = preg_replace("/[^\w]+/", "-", $string);
+    return strtolower($string);
+  }
+  
+  /**
+   * Automatically add IDs to headings such as <h2></h2>
+   */
+  private function _auto_id_headings( $string )
+  {    
+		/**
+     * Automatically add IDs to headings such as <h2></h2>
+     */
+  	$string = preg_replace_callback( '/(\<h[1-6](.*?))\>(.*)(<\/h[1-6]>)/i', function( $matches )
+  	{
+  		if ( ! stripos( $matches[0], 'id=' ) )
+  		{
+  			$matches[0] = $matches[1] . $matches[2] . ' id="' . $this->_hyphenate_string($matches[3]) . '">' . $matches[3] . $matches[4];
+      }
+      
+  		return $matches[0];
+  		
+  	}, $string );
+    
+    return $string;
+  }
+  
 	public static function usage() {
 		return 'See docs and examples at https://github.com/caddis/streeng';
 	}
