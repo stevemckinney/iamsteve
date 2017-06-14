@@ -423,7 +423,7 @@ class Streeng
   
   private function _hyphenate_string( $string )
   {
-    $string = preg_replace("/[^\w]+/", "-", $string);
+    $string = preg_replace("/[^\w]+/", "-", strip_tags($string));
     return strtolower($string);
   }
   
@@ -434,7 +434,7 @@ class Streeng
   {    
 		/**
      * Automatically add IDs to headings such as <h2></h2>
-     */
+     */    
   	$string = preg_replace_callback( '/(\<h[1-6](.*?))\>(.*)(<\/h[1-6]>)/i', function( $matches )
   	{
   		if ( ! stripos( $matches[0], 'id=' ) )

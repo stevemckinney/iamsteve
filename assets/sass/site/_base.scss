@@ -120,7 +120,7 @@ $social: (
 // ---------------------------
 $emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-$sans: Averta, $emoji !global;
+$sans: Averta, $system !global;
 $serif: Sentinel A, Sentinel B, serif, $emoji !global;
 $heading: $sans !global;
 $body: $serif !global;
