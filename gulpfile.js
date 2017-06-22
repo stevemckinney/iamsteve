@@ -92,6 +92,7 @@ gulp.task('svg', function() {
 gulp.task('js-blog', function() {
   return gulp.src([
     path.js + '/fitvids.js',
+    path.js + '/linkjuice.js',
     path.js + '/prism.js'
   ]).pipe(concat('blog.js'))
     .pipe(gulp.dest('dist/js'))

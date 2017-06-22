@@ -12,7 +12,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 48px);
     align-items: center;
     align-content: center; } }
 
@@ -27,7 +27,6 @@
 
 // Transition
 // ---------------------------
-.nav-item,
 .input-search,
 .button-search {
   position: relative;
@@ -39,7 +38,6 @@
     transform: translate3d(0, 33%, 0);
     opacity: 0; } }
     
-.visible .nav-item,
 .visible .input-search {
   @include breakpoint($c-max) {
     opacity: 1;

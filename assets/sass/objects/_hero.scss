@@ -1,39 +1,39 @@
 // Main section
 .hero {
   background-color: $primary-l4;
-  align-content: center;
-  align-items: center;
-  padding-top: $line;
-  justify-content: space-between;
-  padding-top: 44px + ($line * 2);
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
   
-  @include breakpoint($a) {
-    padding-top: 44px + ($line * 3); }
+  @include breakpoint($c) {
+    padding-top: 96px; }
   
-  @include breakpoint($b) {
-    padding-top: 44px + ($line * 4); }
-  
-  @include breakpoint($b) {
-    padding-top: 96px + ($line * 4); }
-  
-  @include breakpoint($site-width) {
+  @include breakpoint($d) {
     padding-top: calc(22.5vh + 96px); } }
     
 .hero-image {
   display: block;
   text-align: center;
+  width: 100%;
   
   img {
-    display: inline-block;
-    margin: 0 auto -28px;
+    display: block;
+    margin: 0 auto -32px;
     
     @include breakpoint(734px) {
       margin-bottom: -48px; } } }
     
 .hero-title {
+  width: 196px;
+  
+  @include breakpoint($aa) {
+    width: 240px; }
+  
+  @include breakpoint($d-max) {
+    margin: auto; }
+    
+  @include breakpoint($c) {
+   width: 294px; }
+    
   @include breakpoint($site-width) {
-    @include hide-text;
-    background-image: image-url("lettering.svg");
-    background-repeat: no-repeat;
-    width: 348px;
-    height: 250px; } }
+    width: 348px; } }

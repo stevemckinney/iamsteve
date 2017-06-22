@@ -12,12 +12,10 @@
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
   background-color: $white;
+  max-height: 96px;
   
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); }
-    
-  @include breakpoint($cd-max) {
-    background-color: $white; }
   
   > .icon-search {
     z-index: $z-index-200;
@@ -42,40 +40,28 @@
 // ---------------------------
 .logo {
   display: flex;
-  white-space: nowrap;
   padding: $base-px;
-  font: 600 $text-medium $sans;
   position: relative;
   z-index: $z-index-200;
   
   @include breakpoint($c) {
-    padding: $base-px $line $base-px 0;
+    padding: $line $line*1.5 $line 0;
     align-content: center;
     align-items: center; }
   
   @include breakpoint($cd) {
     font-size: $text-large; }
   
-  @include breakpoint($site-width) {
-    padding: $line $line*1.5 $line 0; } }
-
-.logo-large,
-.logo-small {
-  display: block; }
+  @include breakpoint($d-max) {
+    svg {
+      max-width: 35px;
+      height: 35px; } }
   
-.logo-large {
-  margin-right: half($base-px);
-   
-  @include breakpoint($cd-max) {
-    display: none; } }
+  .fill-currentcolor {
+    @include breakpoint($d-max) {
+      display: none; } } }
 
-.logo-small {
-  @include breakpoint($b) {
-    margin-right: half($base-px); }
-  
-  @include breakpoint($cd) {
-    display: none; } }
-
-.logo-text {
-  @include breakpoint($cd-max) {
+.header #toggle-search,
+.logo {
+  @include breakpoint($c-max) {
     display: none; } }

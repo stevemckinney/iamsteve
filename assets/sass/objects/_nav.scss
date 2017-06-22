@@ -19,27 +19,8 @@
   line-height: 1;
   
   @include breakpoint($c) {
-    padding: ($line + 4px) $base-px;
-    font-weight: font-weight(semibold); }
-      
-  @include breakpoint($cd) {
     // Align to the logo baseline
-    padding: 40px 12px 38px; }
-  
-  @include breakpoint($cd-max) {
-    font-size: $f6; }
-  
-  // Items will now be hidden
-  // For small screens make the nav text larger and central
-  @include breakpoint($c-max) {
-    font-size: $text-large;
-    text-align: center; }
-  
-  // Make everything 100% because we’re afforded that space
-  @include breakpoint(($c-max) (orientation portrait)) {
-    flex: 1 1 100%; }
-  
-  // When we’re not afforded vertical space make halves
-  @include breakpoint(($c-max) (orientation landscape)) {
-    flex: 1 1 50%; } }
+    padding: 40px 12px 38px;
+    font-size: $f5;
+    font-weight: font-weight(semibold); } }
     

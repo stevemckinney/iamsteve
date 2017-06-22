@@ -28,7 +28,9 @@ $text-color-helpers: (
 	neutral-l2: $neutral-l2,
 	neutral-l3: $neutral-l3,
 	alternate: $alternate,
-	warm: $warm
+	warm: $warm,
+	warm-l1: $warm-l1,
+	warm-l2: $warm-l2
 );
 
 @each $name, $color in $text-color-helpers {
@@ -55,6 +57,7 @@ address { font-style: normal; }
     height: 9px;
     
     @include breakpoint($b) {
+      bottom: -2px;
       width: 96px;
       height: 12px; } }
   

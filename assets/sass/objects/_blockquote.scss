@@ -23,7 +23,7 @@ blockquote {
   @include breakpoint($ab-max) {
     border-top: 2px dashed $tertiary;
     border-bottom: 2px dashed $tertiary;
-    background: $tertiary-l2;
+    background: $tertiary-l4;
     margin: $line 0;
     padding-left: 16px;
     padding-right: 16px; }

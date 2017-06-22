@@ -32,9 +32,14 @@
     @include breakpoint($b) {
       font-size: 21px; } }
   
-  > p {
-    // 3px aligns back to baseline
-    margin-bottom: $line + 3px; }
+  > p,
+  > ul {
+    // 1px aligns back to baseline
+    margin-bottom: $base-px + 1px;
+    
+    // 4px aligns back to baseline
+    @include breakpoint($b) {
+      margin-bottom: $base-px + 4px; } }
   
   // This could be really stupid in the long run
   > *:not(figure):not(div), img {
@@ -47,17 +52,34 @@
   > *:not(figure):not(img):not(div) {
     max-width: $measure; }
   
+  // Tables don't like padding
+  > table {
+    @include breakpoint(max-width 639px) {
+      width: calc(100% - #{$line*4}); }
+    
+    @include breakpoint($a-max) {
+      width: calc(100% - 32px); } }
+  
   // Yep
   > *:not(figure):not(img):not(div):not(blockquote),
   figcaption {
-    @include breakpoint($c-max) {
-      padding-left: $line*2;
-      padding-right: $line*2; }
+    @include breakpoint(max-width 639px) {
+      padding-right: $line*2;
+      padding-left: $line*2; }
+
+    @include breakpoint($a-max) {
+      padding-left: $line*1.5;
+      padding-right: $line*1.5; }
     
-    @include breakpoint($b-max) {
-      padding-left: 32px;
-      padding-right: 32px; } }
-      
+    @include breakpoint($aa-max) {
+      padding-left: $base-px*1.5;
+      padding-right: $base-px*1.5; } }
+  
+  // Space is limited so nudge in the bullets
+  li {
+    @include breakpoint($aa-max) {
+      margin-left: 20px; } }
+  
   strong {
     font-weight: font-weight(semibold); }
   
@@ -71,35 +93,45 @@
     text-decoration: underline;
     text-decoration-color: $neutral; }
   
+  // For .fragment
+  h2 { 
+    position: relative; }
+  
   #{headings()} {
+    transition: .2s ease-out;
+    
     & + img { 
       margin-top: $line; }
     
-    a:after {
-      transition: .2s;
-      content: image-url("arrow-right.svg");
+    a:not(.has-fragment):after {
+      content: "";
       display: inline-block;
-      margin-left: $base-px;
+      position: relative;
+      transition: .2s ease-out;
+      top: $base-px/4;
+      left: $base-px/2;
       width: 1em;
       height: 1em;
-      opacity: .4; }
+      background: image-url("arrow-right.svg") no-repeat center center;
+      opacity: .2; }
   
-    a:hover:after, a:focus:after {
-      margin-left: $line;
+    a:not(.has-fragment):hover:after,
+    a:not(.has-fragment):focus:after {
+      left: $line;
       opacity: .8; } }
   
-  // Aligns to 72px
+  // Aligns to 96px
   // default line-height: 1.25
   h2 {
     font-size: 24px;
-    margin-top: 30px;
+    margin-top: 54px;
     margin-bottom: 12px; }
   
-  // Aligns to 48px
+  // Aligns to 60px
   h3 {
     font-size: 21px;
     line-height: 1.333333;
-    margin-top: 12px;
+    margin-top: 24px;
     margin-bottom: 8px; }
   
   // Aligns to 48px
@@ -108,12 +140,34 @@
     line-height: 1.5;
     margin-top: 15px;
     margin-bottom: 6px; } }
-
-.entry-header + p,
-.entry-content > p:first-child {
-  font-size: 24px;
-  font-size: 21px;
-  margin-bottom: 24px; }
+  
+// Fragment links with 16px icon
+// ---------------------------
+.has-fragment {
+  display: block;
+  
+  @include breakpoint($aa-max) {
+    position: relative;
+    padding-right: 32px; }
+  
+  &:hover,
+  &:focus {
+    &, .fragment { 
+      color: $warm; } } }
+  
+.fragment {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-48%);
+  transition: .2s ease-out;
+  padding: 16px;
+  color: $warm-l2;
+  
+  @include breakpoint($aa) {
+    left: -44px; }
+  
+  @include breakpoint($aa-max) {
+    right: 0; } }
 
 // Codepen
 // ---------------------------
@@ -143,6 +197,9 @@
   padding: 0 $line;
   margin-left: auto;
   
+  p { 
+    font-size: inherit; }
+  
   @include breakpoint($site-width) {
     position: absolute;
     bottom: 0;
@@ -161,14 +218,16 @@
   @include breakpoint($site-width-max) {
     margin-bottom: $line; }
     
-  @include breakpoint($cd-max) {
+  @include breakpoint($e-max) {
     margin-right: auto; } }
 
 // Specific pieces of content
 // ---------------------------
 .featured-image {
   overflow: hidden;
-  min-height: 240px; }
+  display: flex;
+  min-height: 240px;
+  max-height: 648px; }
 
 .featured-image img {
   display: block;

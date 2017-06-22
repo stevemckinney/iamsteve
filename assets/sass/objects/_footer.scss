@@ -17,8 +17,11 @@
     a, p {
       font-size: 10px; }
     
+    .copyright, nav {
+      margin-bottom: $line*4; } }
+    
   @include breakpoint($aa-max) {
-    flex-flow: row wrap; } } }
+    flex-flow: row wrap; } }
 
 .footer nav {
   display: flex;
