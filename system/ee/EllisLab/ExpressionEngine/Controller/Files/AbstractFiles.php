@@ -85,6 +85,7 @@ abstract class AbstractFiles extends CP_Controller {
 		}
 
 		$upload_destinations = ee('Model')->get('UploadDestination')
+			->with('NoAccess')
 			->filter('site_id', ee()->config->item('site_id'))
 			->filter('module_id', 0)
 			->order('name', 'asc');
@@ -96,9 +97,11 @@ abstract class AbstractFiles extends CP_Controller {
 				continue;
 			}
 
-			$item = $list->addItem($destination->name, ee('CP/URL')->make('files/directory/' . $destination->id))
+			$display_name = htmlspecialchars($destination->name, ENT_QUOTES, 'UTF-8');
+
+			$item = $list->addItem($display_name, ee('CP/URL')->make('files/directory/' . $destination->id))
 				->withEditUrl(ee('CP/URL')->make('files/uploads/edit/' . $destination->id))
-				->withRemoveConfirmation(lang('upload_directory') . ': <b>' . $destination->name . '</b>')
+				->withRemoveConfirmation(lang('upload_directory') . ': <b>' . $display_name . '</b>')
 				->identifiedBy($destination->id);
 
 			if ( ! ee()->cp->allowed_group('can_edit_upload_directories'))
@@ -382,6 +385,7 @@ abstract class AbstractFiles extends CP_Controller {
 			->render($base_url);
 
 		$upload_destinations = ee('Model')->get('UploadDestination')
+			->with('NoAccess')
 			->fields('id', 'name')
 			->filter('site_id', ee()->config->item('site_id'))
 			->filter('module_id', 0);
