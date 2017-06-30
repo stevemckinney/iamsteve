@@ -1,11 +1,12 @@
 {
   "env": {
-    "es6": true,
+    "es6": false,
     "browser": true
   },
   "extends": "airbnb/base",
   "rules": {
     "no-unused-vars": 1,
-    "comma-dangle": 0
+    "comma-dangle": 0,
+    "brace-style": ["error", "stroustrup"]
   }
 }
