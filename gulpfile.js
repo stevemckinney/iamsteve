@@ -14,7 +14,10 @@ var cache = require('gulp-cache');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 var sourcemaps = require('gulp-sourcemaps');
+var babel = require('gulp-babel');
 var reload = browserSync.reload;
+const eslint = require('gulp-eslint');
+
 
 var src = {
   scss: 'assets/sass/**/*.scss',
@@ -26,7 +29,8 @@ var src = {
 };
 
 var path = {
-  js: 'assets/js'
+  js: 'assets/js',
+  node_modules: './node_modules'
 };
 
 // browser-sync watched files
@@ -91,13 +95,18 @@ gulp.task('svg', function() {
 // JavaScript
 gulp.task('js-blog', function() {
   return gulp.src([
-    path.js + '/fitvids.js',
-    path.js + '/linkjuice.js',
-    path.js + '/prism.js'
-  ]).pipe(concat('blog.js'))
+    path.node_modules + '/fitvids/fitvids.js',
+    path.node_modules + '/linkjuice/dist/linkjuice.js',
+    path.node_modules + '/prismjs/prism.js'
+  ]).pipe(sourcemaps.init())
+    .pipe(concat('home.js'))
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
+    .pipe(sourcemaps.write('.'))
     .pipe(reload({ stream: true }));
 });
 
@@ -105,26 +114,54 @@ gulp.task('js-iamsteve', function() {
   return gulp.src([
     path.js + '/modernizr.js',
     path.js + '/cookie.js',
-    path.js + '/fontfaceobserver.js',
-    path.js + '/headroom.js',
-    path.js + '/lazysizes.js',
+    path.node_modules + '/fontfaceobserver/fontfaceobserver.js',
+    path.node_modules + '/headroom.js/headroom.js',
+    path.node_modules + '/lazysizes/lazysizes.js',
     path.js + '/load-svg.js',
     path.js + '/global.js'
-  ]).pipe(concat('iamsteve.js'))
+  ]).pipe(sourcemaps.init())
+    .pipe(concat('iamsteve.js'))
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
+    .pipe(sourcemaps.write('.'))
     .pipe(reload({ stream: true }));
 });
 
 gulp.task('js-home', function() {
   return gulp.src([
-    path.js + '/flickity.js'
-  ]).pipe(concat('home.js'))
+    path.node_modules + '/flickity/flickity.pkgd.js'
+  ]).pipe(sourcemaps.init())
+    .pipe(concat('home.js'))
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
+    .pipe(sourcemaps.write('.'))
     .pipe(reload({ stream: true }));
+});
+
+// Linting
+gulp.task('lint', () => {
+  // ESLint ignores files with "node_modules" paths. 
+  // So, it's best to have gulp ignore the directory as well. 
+  // Also, Be sure to return the stream from the task; 
+  // Otherwise, the task may end before the stream has finished. 
+  return gulp.src(['assets/js/*.js','!node_modules/**'])
+    // eslint() attaches the lint output to the "eslint" property 
+    // of the file object so it can be used by other modules. 
+    .pipe(eslint())
+    // eslint.format() outputs the lint results to the console. 
+    // Alternatively use eslint.formatEach() (see Docs). 
+    .pipe(eslint.format())
+    // To have the process exit with an error code (1) on 
+    // lint error, return the stream and pipe to failAfterError last. 
+    .pipe(eslint.failAfterError());
 });
 
 // Watch files
@@ -134,7 +171,7 @@ gulp.task('js', function () {
 
 gulp.task('watch', function () {
   gulp.watch('dist/css/master.css', ['autoprefixer']);
-  gulp.watch(src.js, ['js-iamsteve', 'js-home', 'js-blog']);
+  gulp.watch(src.js, ['js', 'lint']);
 });
 
 gulp.task('browser-sync', function() {
