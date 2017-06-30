@@ -52,18 +52,11 @@ function _setupFlickity( container )
   // Initial state means left should be disabled
   left.classList.add(disabled);
   
-  left.addEventListener( 'click', function()
-  {
-    flickity.previous();
-  });
+  left.addEventListener( 'click', () => flickity.previous());
   
-  right.addEventListener( 'click', function()
-  {
-    flickity.next();
-  });
+  right.addEventListener( 'click', () => flickity.next());
   
-  flickity.on( 'cellSelect', function()
-  { 
+  flickity.on( 'cellSelect', () => { 
     let i = flickity.selectedIndex;
     
     if ( i === flickity.cells.length - 1 ) right.classList.add(disabled);

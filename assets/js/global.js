@@ -1,4 +1,4 @@
-var iamsteve = (function ()
+(function ()
 {
   // Variables
   const nav = document.getElementById('nav');
@@ -90,7 +90,6 @@ var iamsteve = (function ()
   
   var _toggleSearch = function( e )
   {
-    console.log('toggled');
     this.classList.toggle('active');
     search.classList.toggle('visible');
     
@@ -100,20 +99,6 @@ var iamsteve = (function ()
     {
       field.focus();
     }, true);
-    
-    e.preventDefault();
-  }
-  
-  var _toggleNav = function( e )
-  {    
-    this.classList.toggle('active');
-    nav.classList.toggle('visible');
-    
-    if ( toggle_search.classList.contains('active') ) 
-    {
-      toggle_search.classList.remove('active');
-      search.classList.remove('visible');
-    }
     
     e.preventDefault();
   }

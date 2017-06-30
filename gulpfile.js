@@ -97,7 +97,7 @@ gulp.task('js-blog', function() {
   return gulp.src([
     path.node_modules + '/fitvids/fitvids.js',
     path.node_modules + '/linkjuice/dist/linkjuice.js',
-    path.node_modules + '/prismjs/prism.js'
+    path.js + '/prism.js'
   ]).pipe(sourcemaps.init())
     .pipe(concat('home.js'))
     .pipe(babel({
@@ -155,7 +155,13 @@ gulp.task('lint', () => {
   return gulp.src(['assets/js/*.js','!node_modules/**'])
     // eslint() attaches the lint output to the "eslint" property 
     // of the file object so it can be used by other modules. 
-    .pipe(eslint())
+    .pipe(eslint({
+      extends: "airbnb",
+      rules: {
+        "no-unused-vars": 1,
+        "comma-dangle": 0
+      }
+    }))
     // eslint.format() outputs the lint results to the console. 
     // Alternatively use eslint.formatEach() (see Docs). 
     .pipe(eslint.format())
