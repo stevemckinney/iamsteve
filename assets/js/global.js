@@ -2,10 +2,10 @@ import Headroom from 'headroom.js';
 import lazysizes from 'lazysizes';
 import FontFaceObserver from 'fontfaceobserver';
 import './modernizr';
-import './cookie';
 import './load-svg';
+var Cookies = require('js-cookie');
 
-/* global cookie, Promise */
+/* global Promise */
 const iamsteve = (function () {
   // Variables
   const nav = document.getElementById('nav');
@@ -65,7 +65,7 @@ const iamsteve = (function () {
 
       Promise.all([semibold.load()]).then(() => {
         document.documentElement.className += ' fonts-stage-1';
-        cookie('exp_fonts-stage-1', true, 365);
+        Cookies.set('exp_fonts-stage-1', true, { expires: 365 });
 
         const regular = new FontFaceObserver('Averta', { weight: 400 });
         const italic = new FontFaceObserver('Averta', { weight: 300, style: 'italic' });
@@ -73,7 +73,7 @@ const iamsteve = (function () {
 
         Promise.all([regular.load(), italic.load(), light.load()]).then(() => {
           document.documentElement.className += ' fonts-stage-2';
-          cookie('exp_fonts-stage-2', true, 365);
+          Cookies.set('exp_fonts-stage-2', true, { expires: 365 });
         });
       });
     }
