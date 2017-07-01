@@ -13,8 +13,6 @@ const iamsteve = (function () {
   const search = document.getElementById('search');
 
   // Private  
-  const isNavVisible = () => (!!(nav.classList.contains('visible') || search.classList.contains('visible')));
-
   const toggleSearch = function toggleSearch(e) {
     this.classList.toggle('active');
     search.classList.toggle('visible');
@@ -35,15 +33,12 @@ const iamsteve = (function () {
 
   const header = () => {
     const el = document.querySelector('.header');
-    const options =
-    {
-      tolerance:
-      {
+    const options = {
+      tolerance: {
         up: 12,
         down: 12
       },
-      classes:
-      {
+      classes: {
         initial: 'header',
         pinned: 'header-pinned',
         unpinned: 'header-unpinned',
@@ -51,16 +46,6 @@ const iamsteve = (function () {
         notTop: 'header-not-top',
         bottom: 'header-bottom',
         notBottom: 'header-not-bottom'
-      },
-      onUnpin() {
-        if (isNavVisible()) {
-          this.elem.classList.remove(this.classes.unpinned);
-          this.elem.classList.add(this.classes.pinned);
-        }
-        else {
-          this.elem.classList.add(this.classes.unpinned);
-          this.elem.classList.remove(this.classes.pinned);
-        }
       }
     };
     const h = new Headroom(el, options);
