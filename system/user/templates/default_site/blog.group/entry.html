@@ -68,4 +68,18 @@
   
 {layout:set name="js"}
   <script src="{global:theme_url}/dist/js/blog.js" defer></script>
+  <script>
+    /*! linkjuice v1.0.1 | (c) 2016 @toddmotto | https://github.com/toddmotto/linkjuice */
+    !function(e,n){if("function"==typeof define&&define.amd)define(["exports"],n);else if("undefined"!=typeof exports)n(exports);else{var t={exports:{}};n(t.exports),e.linkjuice=t.exports}}(this,function(e){"use strict";Object.defineProperty(e,"__esModule",{value:!0});{var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},t=void 0,o=void 0,r=void 0,i=function(e,n){return'\n    <a class="linkjuice" id="'+e.id+'">\n      <span class="linkjuice-icon">'+n+"</span>"+e.innerHTML+"\n    </a>"},u=function(e){return'<a href="#'+e.id+'">'+e.innerHTML+"</a>"},c=function(e,n){return e.id?(e.innerHTML=n(e,r),void 0):(console.warn("No ID for element",e),void 0)},f=function(e,n,t){for(var o=t;--e>=0;)Array.isArray(o[o.length-1])||o.push([]),o=o[o.length-1];o.push(n)},s=function(e){var n=/^H[1-6]$/,t=[];return e.filter(function(e){return!n.test(e.tagName)}).length>0?(console.warn("Nested table of contents is only possible with regular header tags"),t):(e.forEach(function(e){return f(parseInt(e.tagName.substr(1),10)-1,e,t)}),t)},l=function d(e,n){var t=e.map(function(e){return Array.isArray(e)?d(e,n):"<li>"+n(e)+"</li>"}).join("");return"<ul>"+t+"</ul>"},a=function(e,f){var a=f.contentFn,d=void 0===a?i:a,p=f.icon,y=void 0===p?"#":p,v=f.selectors,m=void 0===v?["h2","h3","h4","h5","h6"]:v,h=f.tableOfContents,b=void 0===h?!1:h;if(t=document.querySelector(e)){if(r=y,o=Array.prototype.slice.call(t.querySelectorAll(m.join(","))),"object"===("undefined"==typeof b?"undefined":n(b))&&null!==b){var g=document.querySelector(b.selector);if(!g)return console.warn("No table of contents element found for the specified selector"),void 0;var S=b.nested===!0?s(o):o,j="function"==typeof b.contentFn?b.contentFn:u;g.innerHTML=l(S,j)}o.map(function(e){return c(e,d)})}};e.init=function(e){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};return a(e,n)}}});
+    
+    linkjuice.init('.entry-content',
+    {
+      selectors: ['h2'],
+      contentFn: function(node)
+      {
+        var icon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><g><rect class="fill-none" width="16" height="16"/><path class="fill-currentcolor" d="M10.12132,5.87868A3.95126,3.95126,0,0,0,9.31374,5.272L8,6.58579a.93749.93749,0,0,0-.14.21342,1.97553,1.97553,0,0,1,.84707.49369,2.002,2.002,0,0,1,0,2.82843L5.87868,12.94975a2,2,0,0,1-2.82843-2.82843l1.0068-1.0068a5.015,5.015,0,0,1-.27777-2.55066L1.636,8.70711A4,4,0,0,0,7.29289,14.364l2.82843-2.82843A4.00458,4.00458,0,0,0,10.12132,5.87868Z"/><path class="fill-currentcolor" d="M6.68626,10.728,8,9.41421a.93749.93749,0,0,0,.14-.21342,1.97553,1.97553,0,0,1-.84707-.49369,2.002,2.002,0,0,1,0-2.82843l2.82843-2.82843a2,2,0,1,1,2.82843,2.82843l-1.0068,1.0068a5.015,5.015,0,0,1,.27777,2.55066L14.364,7.29289A4,4,0,0,0,8.70711,1.636L5.87868,4.46447a4.00458,4.00458,0,0,0,0,5.65685A3.95126,3.95126,0,0,0,6.68626,10.728Z"/></g></svg>';   
+        return '<a href="#' + node.id + '" class="has-fragment"><span class="fragment">' + icon + '</span>' + node.innerHTML + '</a>';
+      }
+    });
+  </script>
 {/layout:set}

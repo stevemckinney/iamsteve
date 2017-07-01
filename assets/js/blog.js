@@ -1,3 +1,2 @@
-import './linkjuice';
-import './prism';
 import 'fitvids';
+import './prism';
