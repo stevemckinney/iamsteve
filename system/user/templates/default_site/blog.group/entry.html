@@ -34,9 +34,9 @@
     {if:else}
   	  {categories channel="blog" limit="1"}
         {if category_id == 7}
-          <div class="pt8-d pb8-d"><img src="{site_url}dist/images/{design}"></div>
+          <div class="flex flex-column center column-8 pt8-d pb8-d"><img src="{global:theme_url}/dist/images/{design}"></div>
         {if:else}
-          <div class="pt8-d pb8-d"><img src="{site_url}dist/images/{code}"></div>
+          <div class="flex flex-column center column-8 pt8-d pb8-d"><img src="{global:theme_url}/dist/images/{code}"></div>
         {/if}
       {/categories}
     {/if}

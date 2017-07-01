@@ -13,11 +13,11 @@
   	{if:else}
   	  {categories channel="blog" limit="1"}
         {if category_id == 7}
-          <img data-src="{site_url}dist/images/{design}" class="lazyload">
-          <noscript><img src="{site_url}dist/images/{design}"></noscript>
+          <img data-src="{global:theme_url}/dist/images/{design}" class="lazyload">
+          <noscript><img src="{global:theme_url}/dist/images/{design}"></noscript>
         {if:else}
-          <img data-src="{site_url}dist/images/{code}" class="lazyload">
-          <noscript><img src="{site_url}dist/images/{code}"></noscript>
+          <img data-src="{global:theme_url}/dist/images/{code}" class="lazyload">
+          <noscript><img src="{global:theme_url}/dist/images/{code}"></noscript>
         {/if}
       {/categories}
   	{/if}
