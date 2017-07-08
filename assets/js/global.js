@@ -3,16 +3,16 @@ import lazysizes from 'lazysizes';
 import FontFaceObserver from 'fontfaceobserver';
 import './modernizr';
 import './load-svg';
-var Cookies = require('js-cookie');
 
-/* global Promise */
-const iamsteve = (function () {
+const Cookies = require('js-cookie');
+
+/* global Promise, lazysizes */
+const iamsteve = (function iamsteve() {
   // Variables
-  const nav = document.getElementById('nav');
-  const toggleSearchEl = document.getElementById('toggle-search');
-  const search = document.getElementById('search');
+  const toggleSearchEl = document.querySelectorAll('.toggle-search');
+  const search = document.querySelector('.form-search');
 
-  // Private  
+  // Private
   const toggleSearch = function toggleSearch(e) {
     this.classList.toggle('active');
     search.classList.toggle('visible');
@@ -27,8 +27,10 @@ const iamsteve = (function () {
   };
 
   // Public
-  const toggler = () => {
-    toggleSearchEl.addEventListener('click', toggleSearch, false);
+  const toggler = function toggler() {
+    for (const toggle of toggleSearchEl) {
+      toggle.addEventListener('click', toggleSearch, false);
+    }
   };
 
   const header = () => {

@@ -14,9 +14,7 @@ var cache = require('gulp-cache');
 var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 var sourcemaps = require('gulp-sourcemaps');
-var babel = require('gulp-babel');
 var reload = browserSync.reload;
-const eslint = require('gulp-eslint');
 
 
 var src = {
@@ -44,7 +42,7 @@ var browserSyncWatchFiles = [
 // browser-sync options
 // see: https://www.browsersync.io/docs/options/
 var browserSyncOptions = {
-  proxy: 'iamsteve.dev',
+  proxy: 'https://iamsteve.dev',
   injectChanges: true
 };
 

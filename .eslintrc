@@ -7,6 +7,12 @@
   "rules": {
     "no-unused-vars": 1,
     "comma-dangle": 0,
-    "brace-style": ["error", "stroustrup"]
+    "brace-style": ["error", "stroustrup"],
+    "eol-last": 1,
+    'no-restricted-syntax': [
+      'error',
+      'LabeledStatement',
+      'WithStatement',
+    ],
   }
 }

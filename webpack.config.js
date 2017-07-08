@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const nodeEnv = process.env.NODE_ENV || 'production';
+const PrettierPlugin = require("prettier-webpack-plugin");
 
 module.exports = {
   devtool: 'source-map',
@@ -13,16 +14,22 @@ module.exports = {
     filename: '[name].js'
   },
   module: {
-    loaders: [
+    rules: [
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         query: {
           presets: ['es2015-native-modules', 'es2015']
         }
       }
-    ]
+    ],
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
