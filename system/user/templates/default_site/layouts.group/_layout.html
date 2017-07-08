@@ -4,24 +4,31 @@
   <a href="/" title="Back to the homepage" class="logo">
     {gv_logotype}
   </a>
-  <nav id="nav" class="nav invisible">
+  <nav id="nav" class="nav flex end">
     <a href="{homepage}" class="nav-item{if segment_1 == ""} active{/if}">
-      Home
+      <span class="icon icon-home">{gv_home}</span>
+      <span class="nav-item-text">Home</span>
     </a>
     <a href="{path='blog'}" class="nav-item{if segment_1 == "blog"} active{/if}">
-      Blog
+      <span class="icon icon-blog">{gv_blog}</span>
+      <span class="nav-item-text">Blog</span>
     </a>
     <a href="{path='about'}" class="nav-item{if segment_1 == "about"} active{/if}">
-      About
+      <span class="icon icon-about">{gv_about}</span>
+      <span class="nav-item-text">About</span>
     </a>
     <a href="{path='contact'}" class="nav-item{if segment_1 == "contact"} active{/if}">
-      Contact
+      <span class="icon icon-contact">{gv_contact}</span>
+      <span class="nav-item-text">Contact</span>
+    </a>
+    <a href="#search" id="toggle-search-nav" class="nav-item toggle-search">
+      <span class="icon icon-search icon-large">{gv_search}</span>
     </a>
   </nav>
   {embed="include/search"}
 </header>
 
-<div class="tabbar">
+<nav class="tabbar">
   <a href="{homepage}" title="Back to the homepage" class="tabbar-logo {if segment_1 == ""} active{/if}">
     {gv_logo_small}
   </a>
@@ -37,11 +44,11 @@
     <span class="icon">{gv_contact}</span>
     <span class="tabbar-item-text warm-l2">Contact</span>
   </a>
-  <a href="#search" id="toggle-search" class="tabbar-item sans bold">
+  <a href="#search" id="toggle-search" class="tabbar-item toggle-search sans bold">
     <span class="icon icon-search">{gv_search_small}</span>
     <span class="tabbar-item-text warm-l2">Search</span>
   </a>
-</div>
+</nav>
 
 {layout:contents}
 
@@ -64,7 +71,7 @@
     &copy; <a href="{site_url}">{site_name}</a> {current_time format="%Y"}
   </p>
   <nav>
-    <a href="#header" class="top">Top</a>
+    <a href="#" class="top">Top</a>
     <a href="https://iamsteve.me/blog/feed" title="Subscribe to the blog RSS feed">RSS</a>
     <a href="https://www.digitalocean.com/?refcode=612d37093f16" title="DigitalOcean hosting get 2 months free credit through referral">Host</a>
     <a href="https://ellislab.com/expressionengine">ExpressionEngine</a>

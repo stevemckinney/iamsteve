@@ -47,18 +47,8 @@ $buttons: (
 // Search
 // ---------------------------
 .button-search {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  background: transparent;
-  
-  // $c-max styles controlled in _transition.scss
-  @include breakpoint($c) {
-    transform: translateY(-50%);
-    padding-right: 0; }
-  
-  @include breakpoint($c-max) {
-    padding: $line*2; }
+  background-color: transparent;
+  padding: $line*2;
   
   &:active {
     svg {

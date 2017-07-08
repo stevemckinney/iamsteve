@@ -8,16 +8,9 @@ form {
 	flex-flow: row wrap;
 	width: 100%; }
 
-.form-search {
-  width: auto;
-  
-  @include breakpoint($c) {
-    align-content: center;
-    align-items: center; }
-  
-  // Hidden from this point
-  @include breakpoint($c-max) {
-    width: 100%; } }
+.form-search {  
+  align-content: center;
+  align-items: center; }
 
 .form-newsletter {  
   // Input has one off padding, height aims to be 60px at large screens
@@ -139,15 +132,8 @@ form {
 		@include form($focus-color: $blue); }
 		
   .input-search {
-    // Align with logo baseline
-    padding: 16px 0 14px;
-    background-color: transparent;
-    
-    @include breakpoint($cd) {
-      min-width: 276px; }
-    
-    @include breakpoint($c-max) {
-      padding: $line*2; } }
+    padding: $line*2;
+    background-color: transparent; }
       
   textarea {
     min-height: 168px; }

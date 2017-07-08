@@ -1,47 +1,45 @@
 // Invisible state
 // ---------------------------
 .invisible {
+  overflow: hidden;
+  transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), max-height .4s .6s ease-out;
+  opacity: 0;
+  max-height: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: $z-index-3;
+  align-items: center;
+  align-content: center;
+  
+  @include breakpoint($c) {
+    height: 100vh; }
   
   @include breakpoint($c-max) {
-    overflow: hidden;
-    transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), max-height .4s .6s ease-out;
-    opacity: 0;
-    max-height: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 48px);
-    align-items: center;
-    align-content: center; } }
+    height: calc(100vh - 48px); } }
 
 // Visible state
 // ---------------------------
 .visible {
-  @include breakpoint($c-max) {
-    opacity: 1;
-    max-height: 100vh;
-    background-color: $white;
-    transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); } }
+  opacity: 1;
+  max-height: 100vh;
+  background-color: $white;
+  transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
 // Transition
 // ---------------------------
 .input-search,
 .button-search {
   position: relative;
-  
-  @include breakpoint($c-max) {
-    transition: 
-      transform .6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      opacity .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: translate3d(0, 33%, 0);
-    opacity: 0; } }
+  transition: 
+    transform .6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translate3d(0, 33%, 0);
+  opacity: 0; }
     
 .visible .input-search {
-  @include breakpoint($c-max) {
-    opacity: 1;
-    transform: translate3d(0, 0, 0); } }
+  opacity: 1;
+  transform: translate3d(0, 0, 0); }
 
 .visible .nav-item {
   @for $i from 1 through 4 {
@@ -49,10 +47,9 @@
       transition-delay: .0s + ( $i / 10 ); } } }
 
 .visible .button-search {
-  @include breakpoint($c-max) {
-    transition-delay: .1s;
-    opacity: 1;
-    transform: translate3d(0, -50%, 0); } }
+  transition-delay: .1s;
+  opacity: 1;
+  transform: translate3d(0, -50%, 0); }
     
 // No JS for later
 // ---------------------------
