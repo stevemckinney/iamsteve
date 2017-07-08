@@ -50,22 +50,22 @@ const loadSVG = (function loadSVG() {
 
   // Public
   const dogs = function dogs() {
-    const img = document.getElementById('rio-osc');
+    const container = document.querySelector('.rio-osc');
 
-    if (img) {
+    if (container) {
       const ajax = new XMLHttpRequest();
       ajax.open('GET', `${document.location.origin}/dist/images/rio-osc.svg`, true);
       ajax.send();
       ajax.onload = function insertImage() {
-        img.innerHTML = dogs.responseText;
+        container.innerHTML = ajax.responseText;
       };
     }
   };
 
   const subscribe = function subscribe() {
-    const img = document.getElementById('subscribe');
+    const container = document.querySelector('.subscribe-image');
 
-    if (img) {
+    if (container) {
       getSubscribeImage();
       window.addEventListener('resize', getSubscribeImage, false);
     }
