@@ -8,17 +8,6 @@ form {
 	flex-flow: row wrap;
 	width: 100%; }
 
-.form-search {
-  width: auto;
-  
-  @include breakpoint($c) {
-    align-content: center;
-    align-items: center; }
-  
-  // Hidden from this point
-  @include breakpoint($c-max) {
-    width: 100%; } }
-
 .form-newsletter {  
   // Input has one off padding, height aims to be 60px at large screens
   // and offset the input button to the right
@@ -136,18 +125,10 @@ form {
 	// Text
 	// ---------------------------
 	.input-text {
-		@include form($focus-color: $blue); }
+		@include form($focus-color: $blue);
 		
-  .input-search {
-    // Align with logo baseline
-    padding: 16px 0 14px;
-    background-color: transparent;
-    
-    @include breakpoint($cd) {
-      min-width: 276px; }
-    
-    @include breakpoint($c-max) {
-      padding: $line*2; } }
+		.form-warm & {
+      @include form(text, $warm-l2, $blue, $warm-l4 $white); } }
       
   textarea {
     min-height: 168px; }

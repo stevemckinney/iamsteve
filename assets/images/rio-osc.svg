@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="288" viewBox="0 0 512 288">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="288" viewBox="0 0 512 288" class="rio-osc-svg">
   <defs>
     <clipPath id="a">
       <path d="M226,278.733c-67,11.023-124,11.023-200,0V39H226Z" style="fill: none"/>

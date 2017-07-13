@@ -35,7 +35,7 @@ $alternate-l4: #f7fbfb;
 
 $warm: #553143;
 $warm-l1: #7f6371;
-$warm-l2: #d2c7cc;
+$warm-l2: #D4CBD0; //#d2c7cc;
 $warm-l3: #f7f2f5;
 $warm-l4: #fbf9fa;
 
@@ -144,7 +144,7 @@ $text-xxxlarge: 48px;
   $default-form-focus-color: $alternate-l1;
   $default-form-color: $alternate-l2;
   $default-form-background-color: $alternate-l4 $white;
-  $default-placeholder-color: $primary;
+  $default-placeholder-color: $warm-l2;
   $default-form-text-color: $neutral;
   $default-form-shading: true;
 

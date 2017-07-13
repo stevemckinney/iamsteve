@@ -1,59 +1,47 @@
-// Invisible state
+// States
 // ---------------------------
-.invisible {
-  z-index: $z-index-3;
-  
-  @include breakpoint($c-max) {
-    overflow: hidden;
-    transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), max-height .4s .6s ease-out;
-    opacity: 0;
-    max-height: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 48px);
-    align-items: center;
-    align-content: center; } }
+$no-output: false;
 
-// Visible state
-// ---------------------------
+.hiding {
+  max-height: 0; }
+
+.showing {
+  max-height: 100vh; }
+
+.invisible {
+  opacity: 0; }
+
 .visible {
-  @include breakpoint($c-max) {
-    opacity: 1;
-    max-height: 100vh;
-    background-color: $white;
-    transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); } }
+  opacity: 1; }
 
 // Transition
 // ---------------------------
 .input-search,
-.button-search {
+.button-search,
+.searched-posts h2,
+.searched-posts a {
   position: relative;
+  transform: translate3d(0, 33%, 0);
+  transition: 
+    transform .6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
   
-  @include breakpoint($c-max) {
-    transition: 
-      transform .6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      opacity .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform: translate3d(0, 33%, 0);
-    opacity: 0; } }
-    
-.visible .input-search {
-  @include breakpoint($c-max) {
+  .showing & {
     opacity: 1;
     transform: translate3d(0, 0, 0); } }
 
-.visible .nav-item {
-  @for $i from 1 through 4 {
-    &:nth-of-type(#{$i}) {
-      transition-delay: .0s + ( $i / 10 ); } } }
+.showing .button-search {
+  transition-delay: .1s; }
+  
+.showing .searched-posts h2 {
+  transition-delay: .1s; }
 
-.visible .button-search {
-  @include breakpoint($c-max) {
-    transition-delay: .1s;
-    opacity: 1;
-    transform: translate3d(0, -50%, 0); } }
-    
+.showing .searched-posts a {
+  @for $i from 1 through 6 {
+    &:nth-of-type(#{$i}) {
+      transition-delay: .1s + ( $i / 10 ); } } }
+
 // No JS for later
 // ---------------------------
 /*

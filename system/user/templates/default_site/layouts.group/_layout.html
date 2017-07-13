@@ -4,24 +4,30 @@
   <a href="/" title="Back to the homepage" class="logo">
     {gv_logotype}
   </a>
-  <nav id="nav" class="nav invisible">
+  <nav id="nav" class="nav flex end">
     <a href="{homepage}" class="nav-item{if segment_1 == ""} active{/if}">
-      Home
+      <span class="icon icon-home">{gv_home}</span>
+      <span class="nav-item-text">Home</span>
     </a>
     <a href="{path='blog'}" class="nav-item{if segment_1 == "blog"} active{/if}">
-      Blog
+      <span class="icon icon-blog">{gv_blog}</span>
+      <span class="nav-item-text">Blog</span>
     </a>
     <a href="{path='about'}" class="nav-item{if segment_1 == "about"} active{/if}">
-      About
+      <span class="icon icon-about">{gv_about}</span>
+      <span class="nav-item-text">About</span>
     </a>
     <a href="{path='contact'}" class="nav-item{if segment_1 == "contact"} active{/if}">
-      Contact
+      <span class="icon icon-contact">{gv_contact}</span>
+      <span class="nav-item-text">Contact</span>
+    </a>
+    <a href="#search" id="toggle-search-nav" class="nav-item toggle-search">
+      <span class="icon icon-search icon-large">{gv_search}</span>
     </a>
   </nav>
-  {embed="include/search"}
 </header>
 
-<div class="tabbar">
+<nav class="tabbar">
   <a href="{homepage}" title="Back to the homepage" class="tabbar-logo {if segment_1 == ""} active{/if}">
     {gv_logo_small}
   </a>
@@ -37,10 +43,29 @@
     <span class="icon">{gv_contact}</span>
     <span class="tabbar-item-text warm-l2">Contact</span>
   </a>
-  <a href="#search" id="toggle-search" class="tabbar-item sans bold">
+  <a href="#search" id="toggle-search" class="tabbar-item toggle-search sans bold">
     <span class="icon icon-search">{gv_search_small}</span>
     <span class="tabbar-item-text warm-l2">Search</span>
   </a>
+</nav>
+
+{!-- channel vars (prefix ch_) --}
+{preload_replace:ch="blog"}
+{preload_replace:ch_status="open|latest"}
+{preload_replace:ch_disable="pagination|member_data|trackbacks"}
+{preload_replace:ch_limit="6"}
+{preload_replace:ch_limit_large="11"}
+{preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
+{preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
+
+<div class="overlay overlay-search flex center hiding invisible">
+  {embed="include/search"}
+  <div class="searched-posts">
+    <h2 class="f4 f3-d mb2 neutral">You may be looking for</h2>
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2|7" orderby="view_count_one" sort="desc"}
+      <a href="{title_permalink='blog/entry'}" class="db pt1 pb1 f6 f4-d">{title}</a>
+    {/exp:channel:entries}
+  </div>
 </div>
 
 {layout:contents}
@@ -55,7 +80,7 @@
   </section>
   <section class="column column-4-b column-5-d rio-osc" id="rio-osc">
     {!-- svg is inserted with ajax, in load-svg.js --}
-    <noscript><img src="{site_url}dist/images/rio-osc.svg"></noscript>
+    <noscript><img src="{global:theme_url}/dist/images/rio-osc.svg"></noscript>
   </section>
 </aside>
 
@@ -64,7 +89,7 @@
     &copy; <a href="{site_url}">{site_name}</a> {current_time format="%Y"}
   </p>
   <nav>
-    <a href="#header" class="top">Top</a>
+    <a href="#" class="top">Top</a>
     <a href="https://iamsteve.me/blog/feed" title="Subscribe to the blog RSS feed">RSS</a>
     <a href="https://www.digitalocean.com/?refcode=612d37093f16" title="DigitalOcean hosting get 2 months free credit through referral">Host</a>
     <a href="https://ellislab.com/expressionengine">ExpressionEngine</a>
@@ -72,6 +97,6 @@
 </footer>
 
 {layout:js}
-<script src="{site_url}dist/js/iamsteve.js" defer></script>
+<script src="{global:theme_url}/dist/js/global.js" defer></script>
 
 {embed="include/footer"}

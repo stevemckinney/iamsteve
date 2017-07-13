@@ -1,50 +1,53 @@
-var iamsteve = (function ()
-{
-  // Variables
-  var nav = document.getElementById('nav');
-  var toggle_search = document.getElementById('toggle-search');
-  var search = document.getElementById('search');
-  
-  // Public
-  var toggler = function()
-  {
-    toggle_search.addEventListener( 'click', _toggleSearch, false);
-  }
-  
-  // Find all rows of posts, loop through them and setup flickity
-  var flickity = function()
-  {
-    var rows = document.querySelectorAll('.posts');
-    var pagination = document.querySelectorAll('.js-pagination');
+import Headroom from 'headroom.js';
+import lazysizes from 'lazysizes';
+import FontFaceObserver from 'fontfaceobserver';
+import './modernizr';
+import './load-svg';
 
-    if ( ! Modernizr.touchevents ) 
-    {
-      for ( var i = 0; i < rows.length; i++ )
-      {
-        _setupFlickity( rows[i] );
-      }
+const Cookies = require('js-cookie');
+
+/* global Promise, lazysizes */
+const iamsteve = (function iamsteve() {
+  // Variables
+  const toggleSearchEl = document.querySelectorAll('.toggle-search');
+  const search = document.querySelector('.overlay-search');
+  const field = document.getElementById('keywords');
+
+  // Private
+  const toggleSearch = function toggleSearch(e) {
+    for (const toggle of toggleSearchEl) {
+      toggle.classList.toggle('active');
     }
-    else
-    {
-      for ( var ii = 0; ii < pagination.length; ii++ ) 
-      {
-        pagination[ii].parentNode.removeChild(pagination[ii]);
-      }
+    
+    search.classList.toggle('hiding');
+    search.classList.toggle('showing');
+    search.classList.toggle('invisible');
+    search.classList.toggle('visible');
+    
+    search.addEventListener('transitionend', () => {
+      field.focus();
+    }, true);
+
+    e.preventDefault();
+  };
+
+  const isSearchVisible = () => search.classList.contains('visible');
+
+  // Public
+  const toggler = function toggler() {
+    for (const toggle of toggleSearchEl) {
+      toggle.addEventListener('click', toggleSearch, false);
     }
-  }
-  
-  var headroom = function()
-  {
-    var header = document.querySelector('.header');
-    var options =
-    {
-      tolerance:
-      {
+  };
+
+  const header = () => {
+    const el = document.querySelector('.header');
+    const options = {
+      tolerance: {
         up: 12,
         down: 12
       },
-      classes:
-      {
+      classes: {
         initial: 'header',
         pinned: 'header-pinned',
         unpinned: 'header-unpinned',
@@ -53,179 +56,52 @@ var iamsteve = (function ()
         bottom: 'header-bottom',
         notBottom: 'header-not-bottom'
       },
-      onUnpin: function()
-      { 
-        if ( _isNavVisible() )
-        {
+      onUnpin() {
+        if (isSearchVisible()) {
           this.elem.classList.remove(this.classes.unpinned);
           this.elem.classList.add(this.classes.pinned);
         }
-        else
-        {
+        else {
           this.elem.classList.add(this.classes.unpinned);
           this.elem.classList.remove(this.classes.pinned);
         }
       }
     };
-    var headroom = new Headroom(header, options);
-    
-    headroom.init(); 
-  }
-  
-  var tabbar = function()
-  {
-    var tabbar = document.querySelector('.tabbar');
-    var options =
-    {
-      tolerance:
-      {
-        up: 12,
-        down: 12
-      },
-      classes:
-      {
-        initial: 'tabbar',
-        pinned: 'tabbar-pinned',
-        unpinned: 'tabbar-unpinned',
-        top: 'tabbar-top',
-        notTop: 'tabbar-not-top',
-        bottom: 'tabbar-bottom',
-        notBottom: 'tabbar-not-bottom'
-      }
-    };
-    var tabbar = new Headroom(tabbar, options);
-    
-    tabbar.init(); 
-  }
-  
-  var lazy = function()
-  {
-    document.addEventListener('lazyunveilread', function(e)
-    {
+    const h = new Headroom(el, options);
+
+    h.init();
+  };
+
+  const lazy = () => {
+    document.addEventListener('lazyunveilread', (e) => {
       e.target.parentNode.classList.add('image-loaded');
     });
-  }
-  
-  var fonts = function()
-  {
-    if ( ! document.documentElement.classList.contains('fonts-stage-1') )
-    {
-    	var semibold = new FontFaceObserver('Averta', { weight: 600 });
-    
-    	Promise.all([semibold.load()]).then(function ()
-    	{
-    		document.documentElement.className += " fonts-stage-1";
-    		cookie( "exp_fonts-stage-1", true, 365 );
-    
-        var regular = new FontFaceObserver('Averta', { weight: 400 });
-        var italic = new FontFaceObserver('Averta', { weight: 300, style: 'italic' });
-        var light = new FontFaceObserver('Averta', { weight: 300 });
-    
-    		Promise.all([regular.load(), italic.load(), light.load()]).then(function ()
-    		{
-    			document.documentElement.className += " fonts-stage-2";
-    			cookie( "exp_fonts-stage-2", true, 365 );
-    		});
-    	});
-  	}
-  }
-    
-  // Private
-  var _isNavVisible = function()
-  {
-    return ( nav.classList.contains('visible') || search.classList.contains('visible') ? true : false );
-  }
-  
-  var _toggleSearch = function( e )
-  {
-    console.log('toggled');
-    this.classList.toggle('active');
-    search.classList.toggle('visible');
-    
-    var field = document.getElementById('keywords');
-    
-    search.addEventListener('transitionend', function()
-    {
-      field.focus();
-    }, true);
-    
-    e.preventDefault();
-  }
-  
-  var _toggleNav = function( e )
-  {    
-    this.classList.toggle('active');
-    nav.classList.toggle('visible');
-    
-    if ( toggle_search.classList.contains('active') ) 
-    {
-      toggle_search.classList.remove('active');
-      search.classList.remove('visible');
+  };
+
+  const fonts = () => {
+    if (!document.documentElement.classList.contains('fonts-stage-1')) {
+      const semibold = new FontFaceObserver('Averta', { weight: 600 });
+
+      Promise.all([semibold.load()]).then(() => {
+        document.documentElement.className += ' fonts-stage-1';
+        Cookies.set('exp_fonts-stage-1', true, { expires: 365 });
+
+        const regular = new FontFaceObserver('Averta', { weight: 400 });
+        const italic = new FontFaceObserver('Averta', { weight: 300, style: 'italic' });
+        const light = new FontFaceObserver('Averta', { weight: 300 });
+
+        Promise.all([regular.load(), italic.load(), light.load()]).then(() => {
+          document.documentElement.className += ' fonts-stage-2';
+          Cookies.set('exp_fonts-stage-2', true, { expires: 365 });
+        });
+      });
     }
-    
-    e.preventDefault();
-  }
-  
-  // With multiple, and having custom pagination, you need to initialise using
-  // the parent as a reference, https://github.com/metafizzy/flickity/issues/319
-  function _setupFlickity( container )
-  {
-    // init flickity
-    var scroll = container.querySelector('.scroll');
-    
-    // Pagination
-    var left = container.querySelector('.paginate-left');
-    var right = container.querySelector('.paginate-right');
-    
-    // Has flickity reached the first or last item?
-    // If so add or remove the relevant class name
-    // reference: https://github.com/metafizzy/flickity/issues/220
-    var disabled = 'disabled';
-    
-    var flickity = new Flickity( scroll,
-    {
-      cellAlign: 'left',
-      freeScroll: true,
-      prevNextButtons: false,
-      pageDots: false,
-      contain: false,
-      imagesLoaded: true,
-      dragThreshold: 24,
-      groupCells: true,
-      percentPosition: false
-    });
-    
-    // Initial state means left should be disabled
-    left.classList.add(disabled);
-    
-    left.addEventListener( 'click', function( e )
-    {
-      flickity.previous();
-    });
-    
-    right.addEventListener( 'click', function( e )
-    {
-      flickity.next();
-    });
-    
-    flickity.on( 'cellSelect', function()
-    { 
-      var i = flickity.selectedIndex;
-      
-      if ( i === flickity.cells.length - 1 ) right.classList.add(disabled);
-      else right.classList.remove(disabled);
-      
-      if ( i === 0 ) left.classList.add(disabled);
-      else left.classList.remove(disabled);
-    });
-  }
-  
+  };
+
   return {
     toggler: toggler(),
-    headroom: headroom(),
-    flickity: flickity(),
+    headroom: header(),
     fonts: fonts(),
     images: lazy()
   };
-
-})();
+}());

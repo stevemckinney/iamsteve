@@ -1,0 +1,13 @@
+{preload_replace:ch="blog"}
+{preload_replace:ch_status="latest|open"}
+{preload_replace:ch_disable="member_data|trackbacks"}
+{preload_replace:ch_limit="999"}
+[
+  {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" backspace="6"}
+  {
+    "title": "{exp:low_replace find="QUOTE|NEWLINE" replace="\QUOTE|SPACE" multiple="yes"}{title}{/exp:low_replace}",
+    "permalink": "{title_permalink='blog/entry'}",
+    "category": "{categories limit="1"}{exp:low_replace find="QUOTE|NEWLINE" replace="\QUOTE|SPACE" multiple="yes"}{category_name}{/exp:low_replace}{/categories}",
+  },
+  {/exp:channel:entries}
+]

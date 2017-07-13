@@ -16,6 +16,7 @@ var browserSync = require('browser-sync').create();
 var sourcemaps = require('gulp-sourcemaps');
 var reload = browserSync.reload;
 
+
 var src = {
   scss: 'assets/sass/**/*.scss',
   css: 'dist/css',
@@ -26,7 +27,8 @@ var src = {
 };
 
 var path = {
-  js: 'assets/js'
+  js: 'assets/js',
+  node_modules: './node_modules'
 };
 
 // browser-sync watched files
@@ -40,7 +42,7 @@ var browserSyncWatchFiles = [
 // browser-sync options
 // see: https://www.browsersync.io/docs/options/
 var browserSyncOptions = {
-  proxy: 'iamsteve.dev',
+  proxy: 'https://iamsteve.dev',
   injectChanges: true
 };
 
@@ -88,53 +90,8 @@ gulp.task('svg', function() {
     .pipe(gulp.dest('dist/images'));
 });
 
-// JavaScript
-gulp.task('js-blog', function() {
-  return gulp.src([
-    path.js + '/fitvids.js',
-    path.js + '/linkjuice.js',
-    path.js + '/prism.js'
-  ]).pipe(concat('blog.js'))
-    .pipe(gulp.dest('dist/js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'))
-    .pipe(reload({ stream: true }));
-});
-
-gulp.task('js-iamsteve', function() {
-  return gulp.src([
-    path.js + '/modernizr.js',
-    path.js + '/cookie.js',
-    path.js + '/fontfaceobserver.js',
-    path.js + '/headroom.js',
-    path.js + '/lazysizes.js',
-    path.js + '/load-svg.js',
-    path.js + '/global.js'
-  ]).pipe(concat('iamsteve.js'))
-    .pipe(gulp.dest('dist/js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'))
-    .pipe(reload({ stream: true }));
-});
-
-gulp.task('js-home', function() {
-  return gulp.src([
-    path.js + '/flickity.js'
-  ]).pipe(concat('home.js'))
-    .pipe(gulp.dest('dist/js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'))
-    .pipe(reload({ stream: true }));
-});
-
-// Watch files
-gulp.task('js', function () {
-  gulp.watch(src.js, ['js-iamsteve', 'js-home', 'js-blog']);
-});
-
 gulp.task('watch', function () {
   gulp.watch('dist/css/master.css', ['autoprefixer']);
-  gulp.watch(src.js, ['js-iamsteve', 'js-home', 'js-blog']);
 });
 
 gulp.task('browser-sync', function() {

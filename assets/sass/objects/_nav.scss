@@ -5,6 +5,8 @@
   flex-flow: row wrap;
   
   @include breakpoint($c-max) {
+    display: none;
+    
     // offset header/browser chrome/behaviour etc
     padding-bottom: 44px; }
   
@@ -18,9 +20,17 @@
   padding: $line;
   line-height: 1;
   
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  
   @include breakpoint($c) {
     // Align to the logo baseline
     padding: 40px 12px 38px;
     font-size: $f5;
     font-weight: font-weight(semibold); } }
     
+.nav-item-text {
+  padding-left: $base-px/2; }
