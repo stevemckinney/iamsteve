@@ -1,0 +1,105 @@
+// Search
+// ---------------------------
+$border-width: 1px;
+
+.form-search {
+  z-index: $z-index-100;
+  align-content: center;
+  align-items: center;
+  
+  @include breakpoint($c) {
+    max-width: $measure-wide; }
+  
+  @include breakpoint($c-max) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0; } }
+
+// Input
+// ---------------------------
+.input-search {
+  @include breakpoint($c-max) {
+    padding: $line 32px ($line + 4px);
+    border-radius: 0;
+    border-top: $border-width solid $warm-l2;
+    border-bottom: $border-width solid $warm-l2; }
+  
+  @include breakpoint($c) {
+    @include form(
+      $type             : $default-form-type,
+      $color            : $warm-l2,
+      $focus-color      : $blue,
+      $background-color	: $warm-l4 $white);
+    padding: 33px $line*2;
+    border-radius: 30em; } }
+
+// Button
+// ---------------------------
+.button-search {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 28px 32px;
+  
+  @include breakpoint($c) {
+    padding: 32px $line*2.5 32px $line*1.25; }
+  
+  &:before {
+    content: "";
+    position: absolute;
+    top: $base-px;
+    right: 100%;
+    bottom: $base-px;
+    width: $border-width;
+    background-color: $warm-l2;
+    
+    @include breakpoint($c) {
+      top: $base-px*1.5;
+      bottom: $base-px*1.5; } }
+  
+  &:active {
+    svg {
+      fill: $primary; } } }
+      
+// Overlay
+// ---------------------------
+.overlay-search {
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: $z-index-3;
+  align-items: center;
+  align-content: center;
+  
+  // Should fade out slightly, then show a reduction in height
+  &.hiding {
+    transition: 
+      max-height 1.2s .2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  
+  // Reverse timing of properties over .hiding
+  &.showing {
+    transition: 
+      max-height .6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      opacity .8s .2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  
+  @include breakpoint($c-max) {
+    height: calc(100vh - 46px);
+    bottom: 46px;
+    flex-flow: column-reverse; }
+  
+  @include breakpoint($c) {
+    height: 100vh;
+    bottom: 0;
+    flex-flow: column;
+    justify-content: center; } }
+
+.searched-posts {
+  width: 100%;
+  padding: $line*2 $line;
+  
+  @include breakpoint($c) {
+    text-align: center; } }

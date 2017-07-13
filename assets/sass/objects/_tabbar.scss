@@ -4,12 +4,12 @@
   
   @include breakpoint($c-max) {
     position: fixed;
-    z-index: $z-index-100;
+    z-index: $z-index-200;
     right: 0;
     bottom: 0;
     left: 0;
     background-color: $white;
-    box-shadow: 0 -1px rgba($warm, .1);
+    box-shadow: 0 -1px rgba($warm, .2);
     display: flex;
     align-items: center;
     align-content: center;

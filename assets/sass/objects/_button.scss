@@ -43,13 +43,3 @@ $buttons: (
     	  inset 0 0 0 1px $tertiary-d2,
     	  inset 0 2px 1px $tertiary-d1,
     	  inset 0 2px 4px -1px $tertiary-d1; } }
-
-// Search
-// ---------------------------
-.button-search {
-  background-color: transparent;
-  padding: $line*2;
-  
-  &:active {
-    svg {
-      fill: $primary; } } }

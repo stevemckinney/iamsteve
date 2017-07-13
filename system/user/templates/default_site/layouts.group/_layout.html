@@ -25,7 +25,6 @@
       <span class="icon icon-search icon-large">{gv_search}</span>
     </a>
   </nav>
-  {embed="include/search"}
 </header>
 
 <nav class="tabbar">
@@ -49,6 +48,25 @@
     <span class="tabbar-item-text warm-l2">Search</span>
   </a>
 </nav>
+
+{!-- channel vars (prefix ch_) --}
+{preload_replace:ch="blog"}
+{preload_replace:ch_status="open|latest"}
+{preload_replace:ch_disable="pagination|member_data|trackbacks"}
+{preload_replace:ch_limit="6"}
+{preload_replace:ch_limit_large="11"}
+{preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
+{preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
+
+<div class="overlay overlay-search flex center hiding invisible">
+  {embed="include/search"}
+  <div class="searched-posts">
+    <h2 class="f4 f3-d mb2 neutral">You may be looking for</h2>
+    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2|7" orderby="view_count_one" sort="desc"}
+      <a href="{title_permalink='blog/entry'}" class="db pt1 pb1 f6 f4-d">{title}</a>
+    {/exp:channel:entries}
+  </div>
+</div>
 
 {layout:contents}
 

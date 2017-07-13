@@ -10,21 +10,28 @@ const Cookies = require('js-cookie');
 const iamsteve = (function iamsteve() {
   // Variables
   const toggleSearchEl = document.querySelectorAll('.toggle-search');
-  const search = document.querySelector('.form-search');
+  const search = document.querySelector('.overlay-search');
+  const field = document.getElementById('keywords');
 
   // Private
   const toggleSearch = function toggleSearch(e) {
-    this.classList.toggle('active');
+    for (const toggle of toggleSearchEl) {
+      toggle.classList.toggle('active');
+    }
+    
+    search.classList.toggle('hiding');
+    search.classList.toggle('showing');
+    search.classList.toggle('invisible');
     search.classList.toggle('visible');
-
-    const field = document.getElementById('keywords');
-
+    
     search.addEventListener('transitionend', () => {
       field.focus();
     }, true);
 
     e.preventDefault();
   };
+
+  const isSearchVisible = () => search.classList.contains('visible');
 
   // Public
   const toggler = function toggler() {
@@ -48,6 +55,16 @@ const iamsteve = (function iamsteve() {
         notTop: 'header-not-top',
         bottom: 'header-bottom',
         notBottom: 'header-not-bottom'
+      },
+      onUnpin() {
+        if (isSearchVisible()) {
+          this.elem.classList.remove(this.classes.unpinned);
+          this.elem.classList.add(this.classes.pinned);
+        }
+        else {
+          this.elem.classList.add(this.classes.unpinned);
+          this.elem.classList.remove(this.classes.pinned);
+        }
       }
     };
     const h = new Headroom(el, options);
