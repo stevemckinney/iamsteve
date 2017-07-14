@@ -38,17 +38,17 @@ const loadSVG = (function loadSVG() {
   };
 
   const getSubscribeImage = debounce(() => {
-    if (room()) {
+    if (room() && loaded === false) {
       const ajax = new XMLHttpRequest();
       ajax.open('GET', `${document.location.origin}/dist/images/subscribe.svg`, true);
       ajax.send();
 
       ajax.onload = function insertImage() {
-        document.body.insertAdjacentHTML('afterbegin', ajax.responseText);
         loaded = true;
+        document.body.insertAdjacentHTML('afterbegin', ajax.responseText);
       };
     }
-  }, 250);
+  }, 1000);
 
   // Public
   const dogs = function dogs() {
@@ -67,7 +67,7 @@ const loadSVG = (function loadSVG() {
   const subscribe = function subscribe() {
     const container = document.querySelector('.subscribe-image');
 
-    if (container && !loaded) {
+    if (container) {
       getSubscribeImage();
       window.addEventListener('resize', getSubscribeImage, false);
     }
