@@ -1,8 +1,9 @@
 /* eslint-disable */
 const loadSVG = (function loadSVG() {
 /* eslint-enable */
-  // Private
+  let loaded = false;
 
+  // Private
   // Returns a function, that, as long as it continues to be invoked, will not
   // be triggered. The function will be called after it stops being called for
   // N milliseconds. If `immediate` is passed, trigger the function on the
@@ -44,6 +45,7 @@ const loadSVG = (function loadSVG() {
 
       ajax.onload = function insertImage() {
         document.body.insertAdjacentHTML('afterbegin', ajax.responseText);
+        loaded = true;
       };
     }
   }, 250);
@@ -65,7 +67,7 @@ const loadSVG = (function loadSVG() {
   const subscribe = function subscribe() {
     const container = document.querySelector('.subscribe-image');
 
-    if (container) {
+    if (container && !loaded) {
       getSubscribeImage();
       window.addEventListener('resize', getSubscribeImage, false);
     }
