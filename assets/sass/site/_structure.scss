@@ -27,4 +27,8 @@ hr {
 // Overlay
 // ---------------------------
 .overlay {
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
   background-color: $warm-l4; }

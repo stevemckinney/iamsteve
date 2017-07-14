@@ -21,11 +21,13 @@ $no-output: false;
 .searched-posts h2,
 .searched-posts a {
   position: relative;
-  transform: translate3d(0, 33%, 0);
   transition: 
     transform .6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     opacity .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  opacity: 0;
+  
+  .hiding & {
+    transform: translate3d(0, 33%, 0);
+    opacity: 0; }
   
   .showing & {
     opacity: 1;

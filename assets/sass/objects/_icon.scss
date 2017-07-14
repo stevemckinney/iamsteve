@@ -31,15 +31,15 @@
   
   .icon-large-b svg {
     width: 1.5em; } }
-  
-@include breakpoint($d) {
-  .icon-small-d svg {
+
+@include breakpoint($c) {
+  .icon-small-c svg {
     width: .75em; }
   
-  .icon-medium-d svg {
+  .icon-medium-c svg {
     width: 1em; }
   
-  .icon-large-d svg {
+  .icon-large-c svg {
     width: 1.5em; } }
     
 .icon-search.active {

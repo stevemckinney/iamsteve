@@ -1,9 +1,8 @@
 // Search
 // ---------------------------
-$border-width: 1px;
+$border-width: 2px;
 
 .form-search {
-  z-index: $z-index-100;
   align-content: center;
   align-items: center;
   
@@ -20,6 +19,7 @@ $border-width: 1px;
 // ---------------------------
 .input-search {
   @include breakpoint($c-max) {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(253, 253, 253, 1) 80%, rgba(253, 253, 253, 1) 94.96%, rgba(246, 245, 246, 1) 100%);
     padding: $line 32px ($line + 4px);
     border-radius: 0;
     border-top: $border-width solid $warm-l2;
@@ -42,10 +42,13 @@ $border-width: 1px;
   top: 0;
   right: 0;
   padding: 28px 32px;
-  
+
   @include breakpoint($c) {
     padding: 32px $line*2.5 32px $line*1.25; }
   
+  &:active {
+    color: $warm; }
+    
   &:before {
     content: "";
     position: absolute;
@@ -57,22 +60,29 @@ $border-width: 1px;
     
     @include breakpoint($c) {
       top: $base-px*1.5;
-      bottom: $base-px*1.5; } }
-  
-  &:active {
-    svg {
-      fill: $primary; } } }
+      bottom: $base-px*1.5; } } }
       
 // Overlay
 // ---------------------------
 .overlay-search {
-  overflow: hidden;
   position: fixed;
   left: 0;
   width: 100%;
   z-index: $z-index-3;
   align-items: center;
   align-content: center;
+  
+  @include breakpoint($c-max) {
+    height: calc(100vh - 46px);
+    bottom: 46px;
+    flex-flow: column-reverse; }
+  
+  @include breakpoint($c) {
+    padding-top: $line * 4;
+    height: 100vh;
+    bottom: 0;
+    flex-flow: column;
+    justify-content: center; }
   
   // Should fade out slightly, then show a reduction in height
   &.hiding {
@@ -84,18 +94,7 @@ $border-width: 1px;
   &.showing {
     transition: 
       max-height .6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      opacity .8s .2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-  
-  @include breakpoint($c-max) {
-    height: calc(100vh - 46px);
-    bottom: 46px;
-    flex-flow: column-reverse; }
-  
-  @include breakpoint($c) {
-    height: 100vh;
-    bottom: 0;
-    flex-flow: column;
-    justify-content: center; } }
+      opacity .8s .2s cubic-bezier(0.175, 0.885, 0.32, 1.275); } }
 
 .searched-posts {
   width: 100%;

@@ -192,3 +192,47 @@ body,
       
   .wufoo textarea.textarea {
     min-height: 240px; }
+
+	// Check/radio
+	// ---------------------------
+	.input-checkbox {
+		@include form(checkbox);
+		width: em($base-font-size);
+		height: em($base-font-size); 
+		position: relative;
+		top: em($base-font-size / 6);
+		margin: $default-form-boolean-margin; }
+	
+	.input-radio {
+		@include form(radio);
+		position: relative;
+		width: $default-form-radio-width;
+		height: $default-form-radio-height;
+		top: em(2px);
+		margin: $default-form-boolean-margin; }
+		
+  #title17 { display: none !important; }
+  
+  .field-checkbox-newsletter.field-checkbox-newsletter {
+    padding-bottom: 0;
+    
+    .choice__qty { display: none !important; }
+    label.choice { 
+      padding: 0;
+      line-height: normal; }
+    
+    &, > * {
+      color: $neutral !important;
+      display: block; }
+      
+    > fieldset > div {
+      position: relative !important;
+      padding-left: 24px; }
+    
+    .field.checkbox {
+      position: absolute;
+      top: 4px;
+      left: 0;
+      margin: 0 !important; } }
+
+#form5 ul label.choice { margin: 0 !important; }

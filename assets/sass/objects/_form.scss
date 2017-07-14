@@ -137,25 +137,7 @@ form {
 	// ---------------------------
 	.input-select {
 		@include form(select); }
-	
-	// Check/radio
-	// ---------------------------
-	.input-checkbox {
-		@include form(checkbox);
-		width: em($base-font-size);
-		height: em($base-font-size); 
-		position: relative;
-		top: em($base-font-size / 6);
-		margin: $default-form-boolean-margin; }
-	
-	.input-radio {
-		@include form(radio);
-		position: relative;
-		width: $default-form-radio-width;
-		height: $default-form-radio-height;
-		top: em(2px);
-		margin: $default-form-boolean-margin; }
 		
 // Wufoo
 // ---------------------------
-.wufoo iframe { margin: 0 -12px; }
+.wufoo iframe {}
