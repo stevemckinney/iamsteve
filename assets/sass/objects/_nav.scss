@@ -26,6 +26,10 @@
   align-content: center;
   align-items: center;
   
+  &:hover,
+  &:focus {
+    transform: scale3d(1.125, 1.125, 1.125); }
+  
   @include breakpoint($c) {
     // Align to the logo baseline
     padding: 40px 12px 38px;

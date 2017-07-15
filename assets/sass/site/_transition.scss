@@ -24,9 +24,11 @@ $no-output: false;
   transition: 
     transform .6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     opacity .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  perspective: 800px;
+  transform-origin: 50% 100%;
   
   .hiding & {
-    transform: translate3d(0, 33%, 0);
+    transform: translate3d(0, 33%, 0) scale3d(.925, .925, .925);
     opacity: 0; }
   
   .showing & {
