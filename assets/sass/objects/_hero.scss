@@ -1,15 +1,36 @@
 // Main section
 .hero {
+  position: relative;
   background-color: $primary-l4;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
   justify-content: flex-end;
+  
+//   display: grid;
+//   grid-template-columns: #{unquote("[col] 1fr [col] 1fr [col] 1fr [col] 1fr")};
+//   grid-template-rows: #{unquote("[row] 1fr [row] 2fr")};
+//   grid-gap: $line;
   
   @include breakpoint($c) {
     padding-top: 96px; }
   
-  @include breakpoint($d) {
+  @include breakpoint($de) {
     padding-top: calc(22.5vh + 96px); } }
+
+.hero-content {
+  text-align: center;
+  padding: $line*2 0;
+  
+  @include breakpoint($e) {
+    left: $line*4; }
+  
+  @include breakpoint($de) {
+    position: absolute;
+    top: calc(14vh + 72px); }
+  
+  @include breakpoint($site-width) {
+    top: calc(14vh + 72px);
+    left: calc(50% - 600px); } }
     
 .hero-image {
   display: block;
@@ -21,7 +42,7 @@
     margin: 0 auto -32px;
     
     @include breakpoint(734px) {
-      margin-bottom: -48px; } } }
+      margin-bottom: -42px; } } }
     
 .hero-title {
   width: 196px;
@@ -29,7 +50,7 @@
   @include breakpoint($aa) {
     width: 240px; }
   
-  @include breakpoint($d-max) {
+  @include breakpoint($de-max) {
     margin: auto; }
     
   @include breakpoint($c) {
