@@ -7,11 +7,7 @@
   position: relative;
   display: flex;
   align-content: center;
-  align-items: center;
-  
-  &,
-  svg {
-    transition: .2s; } }
+  align-items: center; }
 
 .icon-small svg {
   width: .75em; }
