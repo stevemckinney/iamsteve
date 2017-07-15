@@ -19,7 +19,7 @@
 
 .hero-content {
   text-align: center;
-  padding: $line*2 0;
+  padding: $line*2.5 0 $line*1.5;
   
   @include breakpoint($e) {
     left: $line*4; }
