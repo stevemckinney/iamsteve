@@ -66,21 +66,19 @@ $border-width: 2px;
 // ---------------------------
 .overlay-search {
   position: fixed;
+  z-index: $z-index-3;
   left: 0;
   width: 100%;
-  z-index: $z-index-3;
   align-items: center;
   align-content: center;
   
   @include breakpoint($c-max) {
-    height: calc(100vh - 46px);
-    bottom: 46px;
+    height: calc(100% - 46px);
     flex-flow: column-reverse; }
   
   @include breakpoint($c) {
     padding-top: $line * 4;
-    height: 100vh;
-    bottom: 0;
+    height: 100%;
     flex-flow: column;
     justify-content: center; }
   
