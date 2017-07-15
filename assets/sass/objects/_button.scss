@@ -1,8 +1,7 @@
 // Buttons
 // ---------------------------
 .button {
-	@include element-base;
-	color: currentcolor; }
+	@include element-base; }
 
 $buttons: (
 	primary: $primary,
@@ -11,34 +10,22 @@ $buttons: (
 );
 
 .button-tertiary {
-  color: $tertiary-d2;
+  color: $warm;
 	background-color: $tertiary;
+	background-image: linear-gradient(to bottom, scale-lightness($tertiary, 5%), $tertiary);
 	box-shadow: 
 	  inset 0 0 0 2px $tertiary-d1,
-	  0 1px 3px $alternate-l2;
+	  0 1px 3px rgba($alternate-l2, .6);
 	  
 	  &:hover,
 	  &:focus {
-  	  background-color: scale-lightness($tertiary, 10%);
-/*
-    	box-shadow:
-    	  inset 0 -1px scale-lightness($tertiary-d2, -20%),
-    	  inset 0 1px scale-lightness($tertiary-d2, 20%),
-    	  inset 0 0 0 1px $tertiary-d2,
-    	  inset 0 2px 1px scale-lightness($tertiary-l2, 10%),
-    	  inset 0 3px 4px -1px scale-lightness($tertiary-l2, 10%),
-    	  inset 0 -2px 1px scale-lightness($tertiary-d1, 10%),
-    	  inset 0 -2px 4px -1px scale-lightness($tertiary-d1, 10%),
-    	  0 1px 3px $alternate-l2;
-*/ }
+  	  background-color: scale-lightness($tertiary, 15%);
+  	  box-shadow: 
+    	  inset 0 0 0 2px scale-lightness($tertiary-d1, 15%),
+    	  0 1px 3px rgba($alternate-l2, .6); }
     	  
     &:active {
       background-color: $tertiary;
-/*
-    	box-shadow:
-    	  inset 0 1px scale-lightness($tertiary-d2, -20%),
-    	  inset 0 1px scale-lightness($tertiary-d2, 20%),
-    	  inset 0 0 0 1px $tertiary-d2,
-    	  inset 0 2px 1px $tertiary-d1,
-    	  inset 0 2px 4px -1px $tertiary-d1; 
-*/} }
+      box-shadow: 
+    	  inset 0 0 0 2px $tertiary-d1,
+    	  inset 0 1px 3px $tertiary-d1; } }
