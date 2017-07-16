@@ -39,6 +39,20 @@ const iamsteve = (function iamsteve() {
       toggle.addEventListener('click', toggleSearch, false);
     }
   };
+  
+  // Test if service workers are supported
+  const worker = () => {  
+    if ('serviceWorker' in navigator) {
+      // Attempt to register it
+      navigator.serviceWorker.register('/worker.js').then(function() {
+        // Success Message
+        console.log('ServiceWorker succesfully registered');
+      }).catch(function(err) {
+        // Error Message
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    }
+  };
 
   const header = () => {
     const el = document.querySelector('.header');
@@ -102,6 +116,7 @@ const iamsteve = (function iamsteve() {
     toggler: toggler(),
     headroom: header(),
     fonts: fonts(),
-    images: lazy()
+    images: lazy(),
+    worker: worker()
   };
 }());
