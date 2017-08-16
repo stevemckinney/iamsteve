@@ -176,6 +176,10 @@
     border-radius: $radius;
     max-width: 640px;
     margin-left: auto; } }
+
+.cp_embed_wrapper_wide {
+  @include breakpoint($contain) {
+    max-width: 896px; } }
     
 // Lists
 // ---------------------------
