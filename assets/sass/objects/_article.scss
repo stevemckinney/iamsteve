@@ -177,7 +177,7 @@
     max-width: 640px;
     margin-left: auto; } }
 
-.cp_embed_wrapper_wide {
+.codepen-wide .cp_embed_wrapper {
   @include breakpoint($contain) {
     max-width: 896px; } }
     
