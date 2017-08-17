@@ -60,12 +60,14 @@
 
 <div class="overlay overlay-search flex center hiding invisible">
   {embed="include/search"}
-  <div class="searched-posts">
-    <h2 class="f4 f3-c mb2 neutral">You may be looking for</h2>
-    {exp:channel:entries channel="{chs}" status="{chs_status}" disable="{chs_disable}" limit="{chs_limit}" category="2|7" orderby="view_count_one" sort="desc"}
-      <a href="{title_permalink='blog/entry'}" class="db pt1 pb1 f6 f4-d">{title}</a>
-    {/exp:channel:entries}
-  </div>
+  {if segment_2 != "entry"}
+    <div class="searched-posts">
+      <h2 class="f4 f3-c mb2 neutral">You may be looking for</h2>
+      {exp:channel:entries channel="{chs}" status="{chs_status}" disable="{chs_disable}" limit="{chs_limit}" category="2|7" orderby="view_count_one" sort="desc"}
+        <a href="{title_permalink='blog/entry'}" class="db pt1 pb1 f6 f4-d">{title}</a>
+      {/exp:channel:entries}
+    </div>
+  {/if}
 </div>
 
 {layout:contents}
