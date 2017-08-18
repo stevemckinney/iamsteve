@@ -1,0 +1,14 @@
+<section class="row {stash:class} row-padding between items-center contain contain-medium contain-large subscribe" id="subscribe">
+  {if '{exp:iamsteve:is_mobile}' != 1}
+  <div class="column column-4-b mb4 mb0-b subscribe-image">
+    {!-- svg is inserted with ajax, in load-svg.js --}
+    <svg width="488" height="336"><use xlink:href="#subscribe-image"></use></svg>
+    <noscript><img src="{global:theme_url}/dist/images/subscribe.svg"></noscript>
+  </div>
+  {/if}
+  <div class="column column-4-b column-4-d">
+    <h2 class="f3 f2-b f1-d chunky secondary mb2 mb4-b">Save time starting a new design</h2>
+    {gv_subscribe_download}
+    {form_newsletter}
+  </div>
+</section>
