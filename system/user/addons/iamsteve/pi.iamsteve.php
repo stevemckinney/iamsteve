@@ -21,6 +21,7 @@ class Iamsteve {
   public function __construct()
   {
     $this->EE = get_instance();
+    $this->content = ee()->TMPL->tagdata;
     
     // Find the global theme_url variable
     if($this->EE->config->item('global_vars')['global:theme_url'] !== false)
@@ -41,6 +42,30 @@ class Iamsteve {
     // Setup openings tags
     $this->json_ld_open = '<script type="application/ld+json"> {';
     $this->json_ld_close = '} </script>';
+  }
+  
+  public function sentences($count = 3)
+  {
+    $count = (int) ee()->TMPL->fetch_param('sentences', '3');
+    $maxlen = $count;
+    $string = $this->content;
+    $content = $this->content;
+    
+    $dot = ".";
+
+    $position = stripos($content, $dot); //find first dot position
+
+    if($position) { // if there's a dot in our soruce text do
+      $offset = $position + 1; // prepare offset
+      $position2 = stripos ($content, $dot, $offset); // find second dot using offset
+      $offset2 = $position2 + 1; // prepare offset
+      $position3 = stripos ($content, $dot, $offset2); // find second dot using offset
+      $first_two = substr($content, 0, $position2); // put two first sentences under $first_two
+      $first_three = substr($content, 0, $position3); // put two first sentences under $first_two
+
+      if ( $first_three ) return $first_three . '.'; //add a dot
+      elseif ( $first_two ) return $first_two . '.'; //add a dot
+    }
   }
   
   public function fixer($theurl = '')
