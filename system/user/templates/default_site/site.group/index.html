@@ -51,52 +51,29 @@
 
 {embed="include/subscribe" class="row-cool"}
 
-<section class="posts pt6 pt8-d pb6 pb8-d">
-  <header class="row row-header contain contain-medium contain-large between">
-    <h2 class="f5 f4-b neutral chunky row-title">Popular in design</h2>
-    <div class="pagination js-pagination">
-      <button class="paginate paginate-left">
-        <span class="icon icon-medium">{gv_arrow_left}</span>
-      </button>
-      <button class="paginate paginate-right">
-        <span class="icon icon-medium">{gv_arrow_right}</span>
-      </button>
+{exp:channel:categories channel="{ch}" show="7|2" status="{ch_status}" disable="{ch_disable}" style="linear" show_empty="no"}
+  <section class="posts {if {count} == 1} pt6 pt8-d {/if} pb6 pb8-d">
+    <header class="row row-header contain contain-medium contain-large between">
+      <h2 class="f5 f4-b neutral chunky row-title">Popular in {category_url_title}</h2>
+      <div class="pagination js-pagination">
+        <button class="paginate paginate-left">
+          <span class="icon icon-medium">{gv_arrow_left}</span>
+        </button>
+        <button class="paginate paginate-right">
+          <span class="icon icon-medium">{gv_arrow_right}</span>
+        </button>
+      </div>
+    </header>
+    <div class="scroll">
+      <div class="offsetter" role="presentation"></div>
+      {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="{category_id}" orderby="view_count_one" sort="desc" dynamic="no"}
+      	{post_small}
+      {/exp:channel:entries}
+      <a href="{path='blog/category/design'}" class="card card-small card-more">
+        <h2 class="sans f6 f4-b secondary link-icon m0">
+          Explore {category_name} <span class="icon icon-medium icon-right">{gv_arrow_right}</span>
+        </h2>
+      </a>
     </div>
-  </header>
-  <div class="scroll">
-    <div class="offsetter" role="presentation"></div>
-    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="7" orderby="view_count_one" sort="desc"}
-    	{post_small}
-    {/exp:channel:entries}
-    <a href="{path='blog/category/design'}" class="card card-small card-more">
-      <h2 class="sans f6 f4-b secondary link-icon m0">
-        Explore design <span class="icon icon-medium icon-right">{gv_arrow_right}</span>
-      </h2>
-    </a>
-  </div>
-</section>
-
-<section class="posts pb6 pb8-d">
-  <header class="row row-header contain contain-medium contain-large between">
-    <h2 class="f5 f4-b neutral chunky row-title">Popular in code</h2>
-    <div class="pagination js-pagination">
-      <button class="paginate paginate-left">
-        <span class="icon icon-medium">{gv_arrow_left}</span>
-      </button>
-      <button class="paginate paginate-right">
-        <span class="icon icon-medium">{gv_arrow_right}</span>
-      </button>
-    </div>
-  </header>
-  <div class="scroll">
-    <div class="offsetter" role="presentation"></div>
-    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2" orderby="view_count_one" sort="desc"}
-    	{post_small}
-    {/exp:channel:entries}
-    <a href="{path='blog/category/code'}" class="card card-small card-more">
-      <h2 class="sans f6 f4-b secondary link-icon m0">
-        Explore code <span class="icon icon-medium icon-right">{gv_arrow_right}</span>
-      </h2>
-    </a>
-  </div>
-</section>
+  </section>
+{/exp:channel:categories}

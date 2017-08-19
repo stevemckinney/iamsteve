@@ -30,6 +30,29 @@ $config['database'] = array (
 $config['multiple_sites_enabled'] = 'n';$config['enable_devlog_alerts'] = 'n';
 $config['session_crypt_key'] = '58bbd09bcfc3f5479d9d6015e6a8deab6e0bd59e';
 
+$config['stash_file_basepath'] = '../../../stash_templates';
+$config['stash_file_sync'] = FALSE; // set to TRUE to sync stash embed file changes during development
+$config['stash_file_extensions'] = array('html', 'md', 'css', 'js', 'rss', 'xml');
+$config['stash_static_basepath'] = '../../../cache';
+$config['stash_static_url'] = '/cache/'; // should be a relative url
+$config['stash_static_cache_enabled'] = TRUE; // set to TRUE to enable static caching
+$config['stash_static_cache_index'] = TRUE; // set to TRUE to use Stash as an index only when static caching (variable value not saved)
+$config['stash_static_character_blacklist'] = array('{', '}', '<', '>', ':', '"', '\\', '|', '*', '.');
+$config['stash_query_strings'] = FALSE; // set to TRUE to cache query strings when referencing the current uri with @URI
+$config['stash_cookie'] = 'stashid'; // the stash cookie name
+$config['stash_cookie_expire'] = 0; // seconds - 0 means expire at end of session
+$config['stash_cookie_enabled'] = TRUE; // set to FALSE if not using 'user' scope and cache pruning is disabled
+$config['stash_default_scope'] = 'local'; // default variable scope if not specified
+$config['stash_default_refresh'] = 0; // default cache refresh period in minutes
+$config['stash_limit_bots'] = FALSE; // stop database writes by bots to reduce load on busy sites
+$config['stash_bots'] = array('bot', 'crawl', 'spider', 'archive', 'search', 'java', 'yahoo', 'teoma');
+$config['stash_prune_enabled'] = TRUE; // set FALSE if you trigger pruning with a CRON/scheduled task (via Mustash API)
+$config['stash_prune_probability'] = 4;  // % chance that a request initiates cache pruning
+$config['stash_invalidation_period']  = 0;  // duration of cache invalidation in seconds
+$config['stash_parse_if_in']  = FALSE;  // enable parsing of {if var IN (1|2|3)...{/if} style conditionals in Stash templates
+# $config['stash_var_prefix'] = 'preview-'; // apply a prefix to all saved variables, useful for entry previews
+
+
 // END EE config items
 
 

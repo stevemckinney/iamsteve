@@ -50,22 +50,24 @@
 </nav>
 
 {!-- channel vars (prefix ch_) --}
-{preload_replace:ch="blog"}
-{preload_replace:ch_status="open|latest"}
-{preload_replace:ch_disable="pagination|member_data|trackbacks"}
-{preload_replace:ch_limit="6"}
-{preload_replace:ch_limit_large="11"}
+{preload_replace:chs="blog"}
+{preload_replace:chs_status="open|latest"}
+{preload_replace:chs_disable="pagination|member_data|trackbacks"}
+{preload_replace:chs_limit="6"}
+{preload_replace:chs_limit_large="11"}
 {preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
 {preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
 
 <div class="overlay overlay-search flex center hiding invisible">
   {embed="include/search"}
-  <div class="searched-posts">
-    <h2 class="f4 f3-c mb2 neutral">You may be looking for</h2>
-    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="2|7" orderby="view_count_one" sort="desc"}
-      <a href="{title_permalink='blog/entry'}" class="db pt1 pb1 f6 f4-d">{title}</a>
-    {/exp:channel:entries}
-  </div>
+  {if segment_2 != "entry"}
+    <div class="searched-posts">
+      <h2 class="f4 f3-c mb2 neutral">You may be looking for</h2>
+      {exp:channel:entries channel="{chs}" status="{chs_status}" disable="{chs_disable}" limit="{chs_limit}" category="2|7" orderby="view_count_one" sort="desc"}
+        <a href="{title_permalink='blog/entry'}" class="db pt1 pb1 f6 f4-d">{title}</a>
+      {/exp:channel:entries}
+    </div>
+  {/if}
 </div>
 
 {layout:contents}
@@ -75,7 +77,7 @@
 <aside class="row row-normal pt6 pt8-d contain contain-medium contain-large between">
   <section class="column column-4-b column-3-d mb6 mb0-b">
     <a href="{site_url}" class="logo-footer mb4 primary">{gv_logo}</a>
-    <p class="mb4">iamsteve is a blog written by Steve McKinney, focusing on helping you design & code beautiful websites. I specialise in visual design and user experience. I started designing websites at a young age and for the past 5 years it’s been a full time career. I write this blog to share all I know and teach along the way.</p>
+    <p class="mb4">iamsteve is a blog written by Steve McKinney, focusing on helping you design & code beautiful websites. I specialise in visual design and user experience. I believe things can both look good and function well. I’ve been making websites from a young age and in industry for over 6 years. I write this blog to share all I know and teach along the way.</p>
     <p><strong>You can find me elsewhere</strong> <br>{social}</p>
   </section>
   <section class="column column-4-b column-5-d rio-osc" id="rio-osc">
