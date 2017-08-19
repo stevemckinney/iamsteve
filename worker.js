@@ -9,7 +9,7 @@
   var cacheName = 'v3';
   
   // Assets to cache
-  var url = 'https://dev.iamsteve.me';
+  var url = 'https://iamsteve.me';
   var assetsToCache = [url + '/dist/css/global.css', url + '/dist/js/global.js', url + '/dist/js/home.js', url + '/dist/js/blog.js', url + '/dist/js/blog.js', url + '/dist/images/lettering.svg', url + '/dist/images/rio-osc.svg', url + '/assets/fonts/averta/avertastd-semibold-webfont.woff2', url + '/assets/fonts/averta/avertastd-regular-webfont.woff2'];
   
   self.addEventListener('install', function(event) {
