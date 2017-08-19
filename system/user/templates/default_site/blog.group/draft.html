@@ -1,17 +1,64 @@
-{embed="/include/header" entry_title="Blog"}
-<div class="page-content">
-<div class="push-bottom">
-  {exp:channel:entries channel="blog" limit="10" category="2" orderby="view_count_one" sort="desc"}
-    <a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark">{title} viewed {view_count_one} times</a> <br>
-  {/exp:channel:entries} 
+{layout="layouts/_layout-blog" title="Blog" class="page-blog"}
+
+{!--
+	404 Redirect
+	============
+	This is a listing page, it needs categories and pagination to work, but also needs to redirect if segment_2 is invalid . i.e. http://example.com/blog/nothing
+--}
+{if segment_2}
+	{if segment_2 != 'category' AND segment_2  ~ '/^(?!P\d+).*/'}
+		{redirect='404'}
+	{/if}
+{/if}
+
+{!-- prevents 3rd ++ segments on non category listings --}
+{if segment_3}
+	{if segment_2 != 'category'}
+		{redirect='{segment_1}/{segment_2}'}
+	{/if}
+{/if}
+
+{!-- prevents 4th ++ segments on category listings --}
+{if segment_4}
+	{if segment_4 ~ '/^(?!P\d+).*/'}
+		{redirect='{segment_1}/{segment_2}/{segment_3}'}
+	{/if}
+{/if}
+
+{!-- prevents 5th ++ segments on paginated category listings --}
+{if segment_5}
+	{redirect='{segment_1}/{segment_2}/{segment_3}/{segment_4}'}
+{/if}
+
+{!-- channel vars (prefix ch_) --}
+{preload_replace:ch="blog"}
+{preload_replace:ch_status="latest|open"}
+{preload_replace:ch_disable="member_data|trackbacks"}
+{preload_replace:ch_limit="12"}
+{preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
+{preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
+
+<div class="row between subheader contain contain-medium contain-large pb4">
+  <h1 class="f4 f3-b f2-d neutral mb0">Drafts</h1>
 </div>
 
-<div class="push-bottom">
+<div class="row between contain contain-medium contain-large pt4 pt6-b">
+  <div class="column">
+    <h1 class="f4">Popular in design</h1>
   {exp:channel:entries channel="blog" limit="10" category="7" orderby="view_count_one" sort="desc"}
-    <a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark">{title} viewed {view_count_one} times</a> <br>
-  {/exp:channel:entries} 
+    <a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark" class="db">{title} viewed <strong>{view_count_one} times</strong></a>
+  {/exp:channel:entries}
+  </div>
+  <div class="column">
+    <h1 class="f4">Popular in code</h1>
+    {exp:channel:entries channel="blog" limit="10" category="2" orderby="view_count_one" sort="desc"}
+      <a href="{title_permalink='blog/entry'}" title="Read {title} in full." rel="bookmark" class="db">{title} viewed <strong>{view_count_one} times</strong></a>
+    {/exp:channel:entries}
+  </div>
 </div>
 
+
+<div class="contain contain-medium contain-large pt4 pt6-b pb4 pb6-b">
 	<h2>Draft posts</h2>
 	{exp:channel:entries channel="blog" limit="10" status="draft" cache="no" show_future_entries="yes"}
 		<article role="article" class="hentry">
@@ -21,6 +68,4 @@
 		</article>
 		{pagination}
 	{/exp:channel:entries}
-  </div>
 </div>
-{embed="/include/footer"}
