@@ -53,7 +53,7 @@ const home = (function () {
   
   // Find all rows of posts, loop through them and setup flickity
   return {
-    const flickities = () => {
+    var flickities = () => {
       const rows = document.querySelectorAll('.posts');
       const pagination = document.querySelectorAll('.js-pagination');
     
