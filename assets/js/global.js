@@ -10,7 +10,7 @@ const Cookies = require('js-cookie');
 const iamsteve = (function iamsteve() {
   // Variables
   const toggleSearchEl = document.querySelectorAll('.toggle-search');
-  const search = document.querySelector('.overlay-search');
+  const overlay = document.querySelector('.overlay-search');
   const field = document.getElementById('keywords');
 
   // Private
@@ -18,41 +18,46 @@ const iamsteve = (function iamsteve() {
     for (const toggle of toggleSearchEl) {
       toggle.classList.toggle('active');
     }
-    
-    search.classList.toggle('hiding');
-    search.classList.toggle('showing');
-    search.classList.toggle('invisible');
-    search.classList.toggle('visible');
-    
-    search.addEventListener('transitionend', () => {
-      field.focus();
+
+    overlay.classList.toggle('hiding');
+    overlay.classList.toggle('showing');
+
+    overlay.addEventListener('transitionend', () => {
+      // Only focus on the element if it contains the relevant
+      // class name that means it’s actually visible
+      if (overlay.classList.contains('showing')) {
+        field.focus();
+      }
+      else {
+        field.blur();
+      }
     }, true);
 
     e.preventDefault();
-  };
+  }
 
-  const isSearchVisible = () => search.classList.contains('visible');
+  const isSearchVisible = () => overlay.classList.contains('visible');
 
   // Public
   const toggler = function toggler() {
     for (const toggle of toggleSearchEl) {
       toggle.addEventListener('click', toggleSearch, false);
     }
-  };
-  
+  }
+
   // Test if service workers are supported
-  const worker = () => {  
+  const worker = () => {
     if ('serviceWorker' in navigator) {
       // Attempt to register it
-      navigator.serviceWorker.register('/worker.js').then(function() {
+      navigator.serviceWorker.register('/worker.js').then(() => {
         // Success Message
         console.log('ServiceWorker succesfully registered');
-      }).catch(function(err) {
+      }).catch((err) => {
         // Error Message
         console.log('ServiceWorker registration failed: ', err);
       });
     }
-  };
+  }
 
   const header = () => {
     const el = document.querySelector('.header');
@@ -84,13 +89,13 @@ const iamsteve = (function iamsteve() {
     const h = new Headroom(el, options);
 
     h.init();
-  };
+  }
 
   const lazy = () => {
     document.addEventListener('lazyunveilread', (e) => {
       e.target.parentNode.classList.add('image-loaded');
     });
-  };
+  }
 
   const fonts = () => {
     if (!document.documentElement.classList.contains('fonts-stage-1')) {
@@ -110,7 +115,7 @@ const iamsteve = (function iamsteve() {
         });
       });
     }
-  };
+  }
 
   return {
     toggler: toggler(),
@@ -118,5 +123,5 @@ const iamsteve = (function iamsteve() {
     fonts: fonts(),
     images: lazy(),
     worker: worker()
-  };
+  }
 }());

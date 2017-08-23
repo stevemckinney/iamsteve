@@ -2,31 +2,37 @@
 // ---------------------------
 $no-output: false;
 
+// Initial state
 .hiding {
-  max-height: 0; }
+  max-height: 0;
+  opacity: 0;
+  bottom: 0;
+  
+  // This transition happens when the close button is clicked
+  // and should be faster than the .showing state
+  transition:
+    max-height .3s .2s cubic-bezier(0.215, 0.61, 0.355, 1),
+    opacity .6s ease-out; }
 
+// Showing state
 .showing {
-  max-height: 100vh; }
-
-.invisible {
-  opacity: 0; }
-
-.visible {
-  opacity: 1; }
+  max-height: 100vh;
+  bottom: 0;
+  
+  // This happens when the open button is clicked
+  // max-height transition is to appear more subtle
+  transition:
+    max-height .4s .2s cubic-bezier(0.215, 0.61, 0.355, 1),
+    opacity .8s ease-out; }
 
 // Transition
 // ---------------------------
 .input-search,
-.button-search,
-.searched-posts h2,
-.searched-posts a {
+.button-search {
   position: relative;
   transition: 
-    transform .6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    opacity .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transform-origin: 50% 100%;
-  perspective: 800px;
-  will-change: transform, opacity;
+    transform .2s .2s cubic-bezier(0.215, 0.61, 0.355, 1),
+    opacity .2s .2s cubic-bezier(0.215, 0.61, 0.355, 1);
   
   .hiding & {
     transform: translate3d(0, 33%, 0) scale3d(.975, .975, .975);
@@ -35,17 +41,6 @@ $no-output: false;
   .showing & {
     opacity: 1;
     transform: translate3d(0, 0, 0); } }
-
-.showing .button-search {
-  transition-delay: .1s; }
-  
-.showing .searched-posts h2 {
-  transition-delay: .1s; }
-
-.showing .searched-posts a {
-  @for $i from 1 through 6 {
-    &:nth-of-type(#{$i}) {
-      transition-delay: .1s + ( $i / 10 ); } } }
 
 // No JS for later
 // ---------------------------

@@ -7,13 +7,13 @@ $border-width: 2px;
   align-items: center;
   
   @include breakpoint($c) {
-    padding-top: $line * 4;
     max-width: $measure-wide; }
   
   @include breakpoint($c-max) {
     position: absolute;
+    z-index: $z-index-3;
     right: 0;
-    bottom: 0;
+    bottom: 48px;
     left: 0; } }
 
 // Input
@@ -70,33 +70,17 @@ $border-width: 2px;
   z-index: $z-index-3;
   left: 0;
   width: 100%;
+  height: 100%;
   align-items: center;
   align-content: center;
   
-  @include breakpoint($c-max) {
-    height: calc(100% - 46px);
-    flex-flow: column-reverse; }
-  
   @include breakpoint($c) {
-    height: 100%;
     flex-flow: column;
-    justify-content: center; }
-  
-  // Should fade out slightly, then show a reduction in height
-  &.hiding {
-    transition: 
-      max-height 1.2s .2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-  
-  // Reverse timing of properties over .hiding
-  &.showing {
-    transition: 
-      max-height .6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      opacity .8s .2s cubic-bezier(0.175, 0.885, 0.32, 1.275); } }
+    justify-content: center; } }
 
 .searched-posts {
   width: 100%;
-  padding: $line*2 $line;
+  padding: $line*4 $line;
   
   @include breakpoint($c) {
     text-align: center; } }
