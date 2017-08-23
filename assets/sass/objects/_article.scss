@@ -280,7 +280,7 @@ body:active:after {
 }
 */
 
-:target:before {
+[id]:not(#top):target:before {
   content: "";
   display: inline-block;
   height: 120px;
