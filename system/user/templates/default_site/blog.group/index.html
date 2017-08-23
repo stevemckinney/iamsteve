@@ -52,8 +52,8 @@
       <span class="primary-l2 sans link-icon disabled"><span class="icon icon-medium icon-left">{gv_arrow_left}</span> <strong>Newer</strong></span>
     {/if}
 
-    {if segment_2 == 'category'}
-    	{exp:channel:category_heading channel='{ch}'}
+    {if segment_2 == "category"}
+    	{exp:channel:category_heading channel="{ch}" disable="category_fields"}
     		<h1 class="f4 f3-b f2-d neutral mb0">{category_name}</h1>
     	{/exp:channel:category_heading}
     {if:else}

@@ -20,23 +20,23 @@
     <source srcset="{global:theme_url}/dist/images/introduction-394.svg" media="(min-width: 400px) and (max-width: 733px)" sizes="100vw">
     <source srcset="{global:theme_url}/dist/images/introduction-734.svg" media="(min-width: 734px) and (max-width: 1279px)" sizes="100vw">
     <source srcset="{global:theme_url}/dist/images/introduction-960.svg" media="(min-width: 1280px)">
-    <img src="{global:theme_url}/dist/images/introduction-960.svg">
+    <img src="{global:theme_url}/dist/images/introduction-960.svg" alt="An illustration of a desk with a laptop and office supplies on it.">
   </picture>
 </div>
 
-<section class="posts pt6 pt7-d pb6 pb7-d">
+<section class="posts pt6 pt7-d pb6 pb7-d" aria-labelledby="latest-posts-title">
   <header class="row row-header contain contain-medium contain-large between">
-    <h2 class="f5 f4-b chunky neutral row-title">Latest posts</h2>
+    <h2 class="f5 f4-b chunky neutral row-title" id="latest-posts-title">Latest posts</h2>
     <div class="pagination js-pagination">
-      <button class="paginate paginate-left">
+      <button class="paginate paginate-left" aria-controls="latest-posts" aria-label="Previous posts">
         <span class="icon icon-medium">{gv_arrow_left}</span>
       </button>
-      <button class="paginate paginate-right">
+      <button class="paginate paginate-right" aria-controls="latest-posts" aria-label="Next posts">
         <span class="icon icon-medium">{gv_arrow_right}</span>
       </button>
     </div>
   </header>
-  <div class="scroll">
+  <div class="scroll" id="latest-posts">
     <div class="offsetter" role="presentation"></div>
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit_large}"}
     	{post_medium}
@@ -52,19 +52,19 @@
 {embed="include/subscribe" class="row-cool"}
 
 {exp:channel:categories channel="{ch}" show="7|2" status="{ch_status}" disable="{ch_disable}" style="linear" show_empty="no"}
-  <section class="posts {if {count} == 1} pt6 pt8-d {/if} pb6 pb8-d">
+  <section class="posts {if {count} == 1} pt6 pt8-d {/if} pb6 pb8-d" aria-labelledby="{category_url_title}-posts-title">
     <header class="row row-header contain contain-medium contain-large between">
-      <h2 class="f5 f4-b neutral chunky row-title">Popular in {category_url_title}</h2>
+      <h2 class="f5 f4-b neutral chunky row-title" id="{category_url_title}-posts-title">Popular in {category_url_title}</h2>
       <div class="pagination js-pagination">
-        <button class="paginate paginate-left">
+        <button class="paginate paginate-left" aria-controls="{category_url_title}-posts" aria-label="Previous posts">
           <span class="icon icon-medium">{gv_arrow_left}</span>
         </button>
-        <button class="paginate paginate-right">
+        <button class="paginate paginate-right" aria-controls="{category_url_title}-posts" aria-label="Next posts">
           <span class="icon icon-medium">{gv_arrow_right}</span>
         </button>
       </div>
     </header>
-    <div class="scroll">
+    <div class="scroll" id="{category_url_title}-posts">
       <div class="offsetter" role="presentation"></div>
       {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" category="{category_id}" orderby="view_count_one" sort="desc" dynamic="no"}
       	{post_small}
