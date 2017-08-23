@@ -5,7 +5,6 @@
   "scope": "/",
   "display": true,
   "start_url": "./?utm_source=web_app_manifest",
-  "short_name": "iamsteve",
   "theme_color": "#FD7F71",
   "description": "A design and code blog by Steve McKinney.",
   "orientation": "any",
