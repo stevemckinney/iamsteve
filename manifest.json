@@ -1,9 +1,10 @@
 {
   "dir": "ltr",
   "lang": "en",
-  "name": "iamsteve",
+  "name": "iamsteve.me",
+  "short_name": "iamsteve",
   "scope": "/",
-  "display": true,
+  "display": "minimal-ui",
   "start_url": "./?utm_source=web_app_manifest",
   "theme_color": "#FD7F71",
   "description": "A design and code blog by Steve McKinney.",
