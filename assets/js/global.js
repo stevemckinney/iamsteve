@@ -1,4 +1,5 @@
 import Headroom from 'headroom.js';
+/* global lazysizes */
 import lazysizes from 'lazysizes';
 import FontFaceObserver from 'fontfaceobserver';
 import './modernizr';
@@ -6,7 +7,7 @@ import './load-svg';
 
 const Cookies = require('js-cookie');
 
-/* global Promise, lazysizes */
+/* global Promise */
 const iamsteve = (function iamsteve() {
   // Variables
   const toggleSearchEl = document.querySelectorAll('.toggle-search');

@@ -50,7 +50,6 @@ const home = (function home() {
     });
   }
 
-
   // Find all rows of posts, loop through them and setup flickity
   return {
     flickities: () => {
