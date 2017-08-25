@@ -25,22 +25,31 @@ $no-output: false;
     max-height .4s .2s cubic-bezier(0.215, 0.61, 0.355, 1),
     opacity .8s ease-out; }
 
-// Transition
+// Elements state
 // ---------------------------
 .input-search,
 .button-search {
   position: relative;
-  transition: 
-    transform .2s .2s cubic-bezier(0.215, 0.61, 0.355, 1),
-    opacity .2s .2s cubic-bezier(0.215, 0.61, 0.355, 1);
   
   .hiding & {
-    transform: translate3d(0, 33%, 0) scale3d(.975, .975, .975);
     opacity: 0; }
   
   .showing & {
     opacity: 1;
     transform: translate3d(0, 0, 0); } }
+
+.hiding .input-search {
+  transform: translate3d(0, 50%, 0); }
+  
+.hiding .button-search {
+  transform: translate3d(0, 33%, 0); }
+
+// Transitions
+.button-search {
+  transition: .4s .6s ease-out; }
+
+.input-search {
+  transition: .8s .3s ease-out; }
 
 // No JS for later
 // ---------------------------

@@ -18,13 +18,13 @@
     <link rel="manifest" href="{site_url}/manifest.json">
     <meta name="theme-color" content="#543243">
     
-  	{!-- In loving memory of Albert Phillips --}
+  	{!-- SEO lite --}
     {if segment_1 == ""}
       {exp:seo_lite title_override="iamsteve – design & code blog by Steve McKinney"}
     {if:else}
       {exp:seo_lite use_last_segment="yes" {if embed:title}default_title="{embed:title}"{/if}}
     {/if}
-
+    
     {!--
       CSS 
     --}

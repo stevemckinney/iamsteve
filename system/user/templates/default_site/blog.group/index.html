@@ -54,11 +54,11 @@
 
     {if segment_2 == "category"}
     	{exp:channel:category_heading channel="{ch}" disable="category_fields"}
-    		<h1 class="f4 f3-b f2-d neutral mb0">{category_name}</h1>
+    		<h1 class="f4 f3-b f2-d neutral mb0 text-center">{category_name}</h1>
     	{/exp:channel:category_heading}
     {if:else}
       {exp:channel:info channel="blog"}
-        <h1 class="f4 f3-b f2-d neutral mb0">{channel_title}</h1>
+        <h1 class="f4 f3-b f2-d neutral mb0 text-center">{channel_title}</h1>
       {/exp:channel:info}
     {/if}
 
