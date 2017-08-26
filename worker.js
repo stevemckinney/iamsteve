@@ -11,7 +11,6 @@ var assetsToCache = [
   '/dist/js/global.js',
   '/dist/js/home.js',
   '/dist/js/blog.js',
-  '/dist/js/blog.js',
   '/dist/images/lettering.svg',
   '/dist/images/rio-osc.svg',
   '/dist/images/introduction-960.svg',
