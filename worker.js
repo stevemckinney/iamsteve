@@ -3,11 +3,27 @@
 // You have to supply a name for your cache, this will
 // allow us to remove an old one to avoid hitting disk
 // space limits and displaying old resources
-var cacheName = 'v4';
+var cacheName = 'v6';
 
 // Assets to cache
-var url = 'https://iamsteve.me';
-var assetsToCache = [url + '/dist/css/global.css', url + '/dist/js/global.js', url + '/dist/js/home.js', url + '/dist/js/blog.js', url + '/dist/js/blog.js', url + '/dist/images/lettering.svg', url + '/dist/images/rio-osc.svg', url + '/assets/fonts/averta/avertastd-semibold-webfont.woff2', url + '/assets/fonts/averta/avertastd-regular-webfont.woff2'];
+var assetsToCache = [
+  '/dist/css/global.css',
+  '/dist/js/global.js',
+  '/dist/js/home.js',
+  '/dist/js/blog.js',
+  '/dist/js/blog.js',
+  '/dist/images/lettering.svg',
+  '/dist/images/rio-osc.svg',
+  '/dist/images/introduction-960.svg',
+  '/dist/images/introduction-734.svg',
+  '/dist/images/introduction-394.svg',
+  '/dist/images/introduction-320.svg',
+  '/assets/fonts/averta/avertastd-regular-webfont.woff2',
+  '/assets/fonts/averta/avertastd-regularitalic-webfont.woff2',
+  '/assets/fonts/averta/avertastd-semibold-webfont.woff2',
+  '/assets/fonts/averta/avertastd-bold-webfont.woff2',
+  'https://cloud.typography.com/7828432/640526/css/fonts.css'
+];
 
 self.addEventListener('install', function(event) {
   // waitUntil() ensures that the Service Worker will not
@@ -16,9 +32,9 @@ self.addEventListener('install', function(event) {
     // Create cache with the name supplied above and
     // return a promise for it
     caches.open(cacheName).then(function(cache) {
-        // Important to `return` the promise here to have `skipWaiting()`
-        // fire after the cache has been updated.
-        return cache.addAll(assetsToCache);
+      // Important to `return` the promise here to have `skipWaiting()`
+      // fire after the cache has been updated.
+      return cache.addAll(assetsToCache);
     }).then(function() {
       // `skipWaiting()` forces the waiting ServiceWorker to become the
       // active ServiceWorker, triggering the `onactivate` event.
@@ -40,9 +56,9 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
   // Ignore non-get request like when accessing the admin panel
-  if (event.request.method !== 'GET') { return; }
+  if (event.request.method !== 'GET') return;
   // Don't try to handle non-secure assets because fetch will fail
-  if (/http:/.test(event.request.url)) { return; }
+  if (/http:/.test(event.request.url)) return;
 
   // Here's where we cache all the things!
   event.respondWith(
@@ -57,6 +73,14 @@ self.addEventListener('fetch', function(event) {
       }).catch(function() {
         // If there is no internet connection, try to match the request
         // to some of our cached resources
+        var images = document.querySelectorAll('img');
+        
+        images.forEach(function(image) {
+          image.onerror = function() {
+      			this.parentNode.removeChild(this);
+          }
+        });
+
         return cache.match(event.request);
       })
     })
