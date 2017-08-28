@@ -13,6 +13,9 @@ const iamsteve = (function iamsteve() {
   const toggleSearchEl = document.querySelectorAll('.toggle-search');
   const overlay = document.querySelector('.overlay-search');
   const field = document.getElementById('keywords');
+  const currentPath = window.location.pathname;
+  const cacheButton = document.querySelector('.link-offline');
+  const imageArray = document.querySelectorAll('img');
 
   // Private
   const toggleSearch = function toggleSearch(e) {
@@ -57,6 +60,36 @@ const iamsteve = (function iamsteve() {
         // Error Message
         console.log('ServiceWorker registration failed: ', err);
       });
+
+      // Event listener
+      if (cacheButton) {
+        cacheButton.addEventListener('click', (event) => {
+          event.preventDefault();
+          // Build an array of the page-specific resources.
+          const pageResources = [currentPath];
+
+          // Add images to the array
+          for (const image of imageArray) {
+            pageResources.push(image.src);
+          }
+
+          // Open the unique cache for this URL
+          caches.open(`offline-${currentPath}`).then((cache) => {
+            const updateCache = cache.addAll(pageResources);
+
+            // Update UI to indicate success
+            // Or catch any errors if it doesn't succeed
+            updateCache.then(() => {
+              console.log('Article is now available offline.');
+            }).catch(() => {
+              console.log('Article could not be saved offline.');
+            });
+          });
+        });
+      }
+    }
+    else {
+      if (cacheButton) cacheButton.remove();
     }
   }
 
@@ -116,6 +149,28 @@ const iamsteve = (function iamsteve() {
         });
       });
     }
+  }
+  
+  const fader = () => {
+    const links = document.querySelectorAll('a[href]');
+    const body = document.querySelector('body');
+    
+    body.style.transition = 'opacity .4s ease-out';
+    
+    for (const link of links) {
+      
+      link.addEventListener('click', function(event) {
+        const go = this.href;
+        event.preventDefault();
+        
+        body.style.opacity = 0;
+        
+        setTimeout(() => {
+          window.location = go;
+        }, 400);
+      });
+    }
+    
   }
 
   return {
