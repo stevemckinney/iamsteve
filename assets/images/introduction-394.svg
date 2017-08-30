@@ -5,16 +5,16 @@
         fill: #f7f2f5;
       }
 
-      .a, .an, .u, .v, .y, .z {
+      .a, .an, .ar, .u, .v, .y, .z {
         stroke: #7f6371;
       }
 
-      .a, .aa, .ab, .ac, .ae, .al, .am, .an, .ao, .d, .e, .f, .h, .q, .t, .u, .v, .x, .y, .z {
+      .a, .aa, .ab, .ac, .ae, .al, .am, .an, .ao, .ap, .aq, .ar, .as, .at, .d, .e, .f, .h, .q, .t, .u, .v, .x, .y, .z {
         stroke-linecap: round;
         stroke-linejoin: round;
       }
 
-      .a, .aa, .ac, .ae, .d, .e, .f, .h, .o, .p, .q, .u, .v, .y, .z {
+      .a, .aa, .ac, .ae, .ap, .aq, .as, .at, .d, .e, .f, .h, .o, .p, .q, .u, .v, .y, .z {
         stroke-width: 2px;
       }
 
@@ -26,11 +26,11 @@
         fill: #ceb797;
       }
 
-      .ae, .am, .an, .ao, .d, .e, .f, .h, .p, .q, .t, .u, .x {
+      .ae, .am, .an, .ao, .ar, .at, .d, .e, .f, .h, .p, .q, .t, .u, .x {
         fill: none;
       }
 
-      .d, .e, .q {
+      .ap, .d, .e, .q {
         stroke: #8e7c69;
       }
 
@@ -75,7 +75,7 @@
         stroke-width: 8px;
       }
 
-      .ac, .ah, .v {
+      .ac, .ah, .ap, .v {
         fill: #ffdb6d;
       }
 
@@ -111,7 +111,7 @@
         fill: #fff3ce;
       }
 
-      .af {
+      .af, .aq {
         fill: #ff7e6d;
       }
 
@@ -119,7 +119,7 @@
         fill: #bf4e45;
       }
 
-      .ai {
+      .ai, .as {
         fill: #27cba4;
       }
 
@@ -141,6 +141,18 @@
 
       .an {
         stroke-width: 16px;
+      }
+
+      .aq {
+        stroke: #bf4e45;
+      }
+
+      .ar {
+        stroke-width: 3px;
+      }
+
+      .as, .at {
+        stroke: #189675;
       }
     </style>
     <clipPath id="a">
@@ -306,6 +318,24 @@
         <line class="ao" x1="167" y1="236" x2="231" y2="236"/>
       </g>
       <path class="u" d="M18.33333,236H375.66667A5.33333,5.33333,0,0,1,381,241.33333v0A10.66666,10.66666,0,0,1,370.33334,252H23.66666A10.66666,10.66666,0,0,1,13,241.33334v0A5.33333,5.33333,0,0,1,18.33333,236Z"/>
+    </g>
+    <g>
+      <rect class="ap" x="80" y="190" width="6" height="6"/>
+      <rect class="aq" x="76" y="186" width="6" height="6"/>
+    </g>
+    <g>
+      <line class="ar" x1="85.46154" y1="170.19239" x2="79.57692" y2="164.19239"/>
+      <circle class="y" cx="80" cy="165" r="4"/>
+    </g>
+    <circle class="aq" cx="81" cy="143" r="4"/>
+    <rect class="ap" x="76" y="114" width="10" height="8"/>
+    <polygon class="aq" points="86 67.333 76 64 79.333 74 82.667 70.667 86 67.333"/>
+    <g>
+      <g>
+        <polygon class="as" points="79 90 83 90 85 94 81 100 77 94 79 90"/>
+        <rect class="as" x="77" y="88" width="8" height="2"/>
+      </g>
+      <line class="at" x1="81" y1="100" x2="81" y2="94"/>
     </g>
   </g>
 </svg>

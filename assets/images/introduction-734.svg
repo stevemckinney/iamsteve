@@ -5,19 +5,19 @@
         fill: #f7f2f5;
       }
 
-      .a, .aw, .ax, .ba, .bb, .bm {
+      .a, .aw, .ax, .ba, .bb, .bm, .bv {
         stroke: #7f6371;
       }
 
-      .a, .ac, .ai, .aj, .ak, .al, .an, .ao, .ap, .av, .aw, .ax, .az, .ba, .bb, .bc, .bd, .be, .bk, .bl, .bm, .bn, .bt, .c, .j, .k, .q, .t, .u, .v, .x, .z {
+      .a, .ac, .ai, .aj, .ak, .al, .an, .ao, .ap, .av, .aw, .ax, .az, .ba, .bb, .bc, .bd, .be, .bk, .bl, .bm, .bn, .bt, .bu, .bv, .bw, .c, .j, .k, .q, .t, .u, .v, .x, .z {
         stroke-linecap: round;
       }
 
-      .a, .ab, .ac, .ai, .aj, .ak, .al, .an, .ao, .ap, .av, .aw, .ax, .az, .ba, .bb, .bc, .bd, .be, .bk, .bl, .bm, .bn, .bt, .c, .j, .k, .q, .t, .u, .v, .x, .z {
+      .a, .ab, .ac, .ai, .aj, .ak, .al, .an, .ao, .ap, .av, .aw, .ax, .az, .ba, .bb, .bc, .bd, .be, .bk, .bl, .bm, .bn, .bt, .bu, .bv, .bw, .c, .j, .k, .q, .t, .u, .v, .x, .z {
         stroke-linejoin: round;
       }
 
-      .a, .ab, .ac, .ai, .aj, .ak, .al, .an, .ao, .ap, .aw, .ax, .ba, .bb, .bc, .be, .bo, .bp, .bt, .c, .e, .g, .j, .k, .m, .q, .r, .t, .u, .v, .x, .z {
+      .a, .ab, .ac, .ai, .aj, .ak, .al, .an, .ao, .ap, .aw, .ax, .ba, .bb, .bc, .be, .bo, .bp, .bt, .bu, .bw, .c, .e, .g, .j, .k, .m, .q, .r, .t, .u, .v, .x, .z {
         stroke-width: 2px;
       }
 
@@ -29,7 +29,7 @@
         opacity: 0.1;
       }
 
-      .ag, .an, .ao, .ap, .av, .aw, .az, .be, .bl, .bm, .bn, .bp, .bt, .c, .g, .j, .k, .m, .n, .q, .t, .x {
+      .ag, .an, .ao, .ap, .av, .aw, .az, .be, .bl, .bm, .bn, .bp, .bt, .bv, .bw, .c, .g, .j, .k, .m, .n, .q, .t, .x {
         fill: none;
       }
 
@@ -41,7 +41,7 @@
         opacity: 0.2;
       }
 
-      .d {
+      .bu, .d {
         fill: #ff7e6d;
       }
 
@@ -73,7 +73,7 @@
         fill: #ffa69a;
       }
 
-      .ac, .m, .x {
+      .ac, .bu, .m, .x {
         stroke: #bf4e45;
       }
 
@@ -122,7 +122,7 @@
         fill: #27cba4;
       }
 
-      .ak, .al {
+      .ak, .al, .bw {
         stroke: #189675;
       }
 
@@ -208,6 +208,10 @@
 
       .bt {
         stroke: #d85750;
+      }
+
+      .bv {
+        stroke-width: 3px;
       }
     </style>
     <clipPath id="a">
@@ -503,6 +507,24 @@
         <path class="bt" d="M626.809,226.84569H617.0544l-1.5401,4.92014H607l11.03834-30.37643H625.825l10.99526,30.37643h-8.47121Zm-2.09626-6.80273-2.73815-8.77062h-.08573l-2.73815,8.77062Z"/>
         <path class="bt" d="M638.22938,204.29859a4.14994,4.14994,0,0,1,4.40663-4.06415,4.11479,4.11479,0,1,1,0,8.21446A4.16552,4.16552,0,0,1,638.22938,204.29859Zm.55616,6.50333h7.6583v20.96392h-7.6583Z"/>
         <rect class="bt" x="592" y="180.00014" width="72" height="72" rx="4" ry="4"/>
+      </g>
+      <g>
+        <rect class="ai" x="252" y="189.00014" width="6" height="6"/>
+        <rect class="bu" x="248" y="185.00014" width="6" height="6"/>
+      </g>
+      <g>
+        <line class="bv" x1="257.46154" y1="170.19253" x2="251.57692" y2="164.19253"/>
+        <circle class="ba" cx="252" cy="165.00014" r="4"/>
+      </g>
+      <circle class="bu" cx="253" cy="143.00014" r="4"/>
+      <rect class="ai" x="248" y="114.00014" width="10" height="8"/>
+      <polygon class="bu" points="258 66.333 248 63 251.333 73 254.667 69.667 258 66.333"/>
+      <g>
+        <g>
+          <polygon class="ak" points="251 89 255 89 257 93 253 99 249 93 251 89"/>
+          <rect class="ak" x="249" y="87.00014" width="8" height="2"/>
+        </g>
+        <line class="bw" x1="253" y1="99.00014" x2="253" y2="93.00014"/>
       </g>
     </g>
   </g>
