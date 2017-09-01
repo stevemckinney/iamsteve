@@ -35,17 +35,7 @@ ul {
 	@extend %list-custom-bullet; }
 
 // Definition
-// ---------------------------
-dl {
-  @include pie-clearfix; }
-  
+// ---------------------------  
 dt {
-	float: left;
-	clear: right;
-	font-weight: 700;
-	width: 33.333333%; }
-
-dd {
-	float: right;
-	width: 66.666666%;
-	padding-left: cp(24px, $contain); }
+  display: block;
+	font-weight: font-weight(bold); }
