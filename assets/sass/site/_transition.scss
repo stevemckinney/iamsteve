@@ -2,7 +2,7 @@
 // ---------------------------
 $no-output: false;
 
-// Initial state
+// Initial state — and applied when closing too
 .hiding {
   max-height: 0;
   opacity: 0;
@@ -11,10 +11,10 @@ $no-output: false;
   // This transition happens when the close button is clicked
   // and should be faster than the .showing state
   transition:
-    max-height .3s .2s cubic-bezier(0.215, 0.61, 0.355, 1),
-    opacity .6s ease-out; }
+    max-height .2s .6s cubic-bezier(0.215, 0.61, 0.355, 1),
+    opacity .6s .6s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
-// Showing state
+// Showing state — opening up
 .showing {
   max-height: 100vh;
   bottom: 0;
@@ -22,8 +22,8 @@ $no-output: false;
   // This happens when the open button is clicked
   // max-height transition is to appear more subtle
   transition:
-    max-height .4s .2s cubic-bezier(0.215, 0.61, 0.355, 1),
-    opacity .8s ease-out; }
+    max-height .4s cubic-bezier(0.215, 0.61, 0.355, 1),
+    opacity .6s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 // Elements state
 // ---------------------------
@@ -32,24 +32,46 @@ $no-output: false;
   position: relative;
   
   .hiding & {
-    opacity: 0; }
-  
-  .showing & {
-    opacity: 1;
-    transform: translate3d(0, 0, 0); } }
+    opacity: 0; } }
 
 .hiding .input-search {
   transform: translate3d(0, 50%, 0); }
   
 .hiding .button-search {
-  transform: translate3d(0, 33%, 0); }
+  transform: translate3d(0, 25%, 0); }
 
 // Transitions
 .button-search {
-  transition: .4s .6s ease-out; }
+  .hiding & {
+    transition: 
+      opacity .4s ease-out,
+      transform .2s ease-out; }
+    
+  .showing & {
+    transition: 
+      opacity .4s .2s ease-out,
+      transform .2s .2s ease-out; } }
+    
+.button-search:before {
+  .hiding & {
+    opacity: 0;
+    transition: 
+      opacity .2s ease-out; }
+  
+  .showing & {
+    transition: 
+      opacity .6s .6s ease-out; } }
 
 .input-search {
-  transition: .8s .3s ease-out; }
+  .hiding & {
+    transition: 
+      opacity .4s .05s ease-out,
+      transform .2s .05s ease-out; }
+    
+  .showing & {
+    transition: 
+      opacity .4s .2s ease-out,
+      transform .2s .2s ease-out; } }
 
 // No JS for later
 // ---------------------------
@@ -64,3 +86,8 @@ $no-output: false;
   max-height: none;
   position: static }
 */
+
+@keyframes input-up {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); } }
