@@ -1,9 +1,11 @@
-import './modernizr';
-
 const Flickity = require('flickity');
 
-/* global Modernizr */
 const home = (function home() {
+  function isTouchDevice() {
+    // Checks for existence in all browsers and IE 10/11 & Surface
+    return 'ontouchstart' in window || navigator.maxTouchPoints;
+  }
+
   // With multiple, and having custom pagination, you need to initialise using
   // the parent as a reference, https://github.com/metafizzy/flickity/issues/319
   const setupFlickity = (container) => {
@@ -56,14 +58,14 @@ const home = (function home() {
       const rows = document.querySelectorAll('.posts');
       const pagination = document.querySelectorAll('.js-pagination');
 
-      if (!Modernizr.touchevents) {
+      if (!isTouchDevice()) {
         for (let i = 0; i < rows.length; i += 1) {
           setupFlickity(rows[i]);
         }
       }
       else {
-        for (let ii = 0; ii < pagination.length; ii += 1) {
-          pagination[ii].parentNode.removeChild(pagination[ii]);
+        for (const paging of pagination) {
+          paging.parentNode.removeChild(paging);
         }
       }
     }

@@ -40,7 +40,7 @@ const iamsteve = (function iamsteve() {
     e.preventDefault();
   }
 
-  const isSearchVisible = () => overlay.classList.contains('visible');
+  const isSearchVisible = () => overlay.classList.contains('showing');
 
   // Public
   const toggler = function toggler() {
@@ -88,9 +88,7 @@ const iamsteve = (function iamsteve() {
         });
       }
     }
-    else {
-      if (cacheButton) cacheButton.remove();
-    }
+    else if (cacheButton) cacheButton.remove();
   }
 
   const header = () => {
@@ -109,7 +107,7 @@ const iamsteve = (function iamsteve() {
         bottom: 'header-bottom',
         notBottom: 'header-not-bottom'
       },
-      onUnpin() {
+      onUnpin: function onUnpin() {
         if (isSearchVisible()) {
           this.elem.classList.remove(this.classes.unpinned);
           this.elem.classList.add(this.classes.pinned);
@@ -149,28 +147,6 @@ const iamsteve = (function iamsteve() {
         });
       });
     }
-  }
-  
-  const fader = () => {
-    const links = document.querySelectorAll('a[href]');
-    const body = document.querySelector('body');
-    
-    body.style.transition = 'opacity .4s ease-out';
-    
-    for (const link of links) {
-      
-      link.addEventListener('click', function(event) {
-        const go = this.href;
-        event.preventDefault();
-        
-        body.style.opacity = 0;
-        
-        setTimeout(() => {
-          window.location = go;
-        }, 400);
-      });
-    }
-    
   }
 
   return {
