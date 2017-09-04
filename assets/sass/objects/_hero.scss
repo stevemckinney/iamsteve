@@ -10,26 +10,34 @@
 //   grid-template-columns: #{unquote("[col] 1fr [col] 1fr [col] 1fr [col] 1fr")};
 //   grid-template-rows: #{unquote("[row] 1fr [row] 2fr")};
 //   grid-gap: $line;
+  padding-top: $line*2.5;
   
   @include breakpoint($c) {
-    padding-top: 96px; }
+    padding-top: 96px + $line; }
   
-  @include breakpoint($de) {
-    padding-top: calc(22.5vh + 96px); } }
+  @include breakpoint(1060px) {
+    min-height: 538px;
+    padding-top: calc(25vh + 96px); }
+  
+  @include breakpoint(1280px) {
+    padding-top: calc(22.5vh + 96px);
+    min-height: 620px; } }
 
 .hero-content {
   text-align: center;
-  padding: $line*2.5 0 $line*1.5;
   
-  @include breakpoint($e) {
-    left: $line*4; }
+  @include breakpoint(max-width 1059px) {
+    padding-bottom: $line*2; }
+  
+  @include breakpoint(1060px) {
+    position: absolute;
+    top: calc(14vh + 72px + 60px); }
   
   @include breakpoint($de) {
-    position: absolute;
-    top: calc(14vh + 72px); }
+    top: calc(14vh + 72px + 60px);
+    left: $line*4; }
   
   @include breakpoint($site-width) {
-    top: calc(14vh + 72px);
     left: calc(50% - 600px); } }
     
 .hero-image {
@@ -39,21 +47,24 @@
   
   img {
     display: block;
-    margin: 0 auto -32px;
+    margin: 0 auto -28px;
     
     @include breakpoint(734px) {
       margin-bottom: -42px; } } }
     
 .hero-title {
-  width: 196px;
+  width: 176px;
   
   @include breakpoint($aa) {
-    width: 240px; }
+    width: 208px; }
   
   @include breakpoint($de-max) {
     margin: auto; }
     
   @include breakpoint($c) {
+   width: 272px; }
+  
+  @include breakpoint(1280px) {
    width: 294px; }
     
   @include breakpoint($site-width) {

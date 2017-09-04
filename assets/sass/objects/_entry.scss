@@ -10,14 +10,16 @@
   flex-basis: calc(50% - 6px);
   
   .page-blog &,
-  .page-search & {
+  .page-search &,
+  .page-results & {
     margin-bottom: $line; }
   
   @include breakpoint($b) {
     flex-basis: calc(33.333333% - 12px);
     
     .page-blog &,
-    .page-search & {
+    .page-search &,
+    .page-results & {
       margin-bottom: double($line); } }
   
   @include breakpoint($e) {

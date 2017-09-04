@@ -53,13 +53,15 @@ address { font-style: normal; }
     bottom: -2px;
     left: -3px;
     background: $primary-l4;
-    width: 72px;
+    width: 4em;
     height: 9px;
     
     @include breakpoint($b) {
       bottom: -2px;
-      width: 96px;
       height: 12px; } }
+      
+  &[class*="f1"]:after {
+    bottom: 0; }
   
   &.secondary:after {
     background: $secondary-l3; }

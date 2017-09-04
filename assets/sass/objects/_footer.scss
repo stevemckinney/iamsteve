@@ -31,7 +31,16 @@
     display: inline-block;
     
     &:first-child {
-      order: 100; }
+      order: 100;
+      
+      @include breakpoint($b-max) {
+        position: absolute;
+        right: 0;
+        bottom: $line*2;
+        left: 0;
+        font-size: 18px;
+        padding: $line;
+        text-align: center; } }
     
     &:not(:first-child) {
       padding-right: $base-px; } } }

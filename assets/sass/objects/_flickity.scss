@@ -15,7 +15,7 @@
 .flickity-slider {
   position: absolute;
   height: 100%;
-  left: 6px !important;
+  left: 8px !important;
   right: 0;
   
   @include breakpoint($c) {
@@ -75,7 +75,7 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-  padding: 0 $base-px 0 0;
+  padding: 0 $base-px*1.5 0 4px;
   
   &.flickity-enabled {
     padding: 0; }
@@ -84,8 +84,8 @@
   .card {
     display: inline-block;
     vertical-align: top;
-    padding: 0 $base-px;
-    white-space: normal; }
+    white-space: normal;
+    padding: 0 8px; }
     
   .card-more {
     min-width: 240px;
