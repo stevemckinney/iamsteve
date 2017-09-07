@@ -80,9 +80,11 @@ const iamsteve = (function iamsteve() {
             // Update UI to indicate success
             // Or catch any errors if it doesn't succeed
             updateCache.then(() => {
-              console.log('Article is now available offline.');
-            }).catch(() => {
-              console.log('Article could not be saved offline.');
+              cacheButton.textContent = 'Available offline';
+            });
+            
+            updateCache.catch(() => {
+              cacheButton.textContent = 'Couldn’t save — try again';
             });
           });
         });
