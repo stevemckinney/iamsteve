@@ -3,7 +3,7 @@
 // You have to supply a name for your cache, this will
 // allow us to remove an old one to avoid hitting disk
 // space limits and displaying old resources
-var cacheName = 'v6';
+var cacheName = 'v7';
 
 // Assets to cache
 var assetsToCache = [
@@ -21,7 +21,6 @@ var assetsToCache = [
   '/assets/fonts/averta/avertastd-regularitalic-webfont.woff2',
   '/assets/fonts/averta/avertastd-semibold-webfont.woff2',
   '/assets/fonts/averta/avertastd-bold-webfont.woff2',
-  'https://cloud.typography.com/7828432/640526/css/fonts.css'
 ];
 
 self.addEventListener('install', function(event) {
