@@ -54,12 +54,6 @@ form {
 
 // Field layouts
 // ---------------------------
-.field-first .input-text {
-	border-radius: $radius 0 0 $radius; }
-	
-.field-last .input-text {
-	border-radius: 0 $radius $radius 0; }
-
 .field-third {
 	flex-basis: 33.333333%;
 	
@@ -77,67 +71,18 @@ form {
   
   &:nth-of-type(even) input {
 		border-radius: 0 $radius $radius 0; } }
-	
-.field-half {
-	@include breakpoint($c) {
-		flex-basis: 50%;
-		
-		&:nth-of-type(odd) input {
-  		border-radius: $radius 0 0 $radius; }
-    
-    &:nth-of-type(even) input {
-  		border-radius: 0 $radius $radius 0; } } }
-	
-.field-first {
-	@include breakpoint($c) {
-		padding-right: em($base-px); } }
-
-.field-last {
-	@include breakpoint($c) {
-		padding-left: em($base-px); } }
-
-// Field specifics
-// ---------------------------
-.field-checkbox {
-	display: block; }
-	
-.field-radio {
-	@extend .field-checkbox; }
-
-// Grouped fields
-// ---------------------------
-.field-group {
-	display: flex;
-	
-	.field-label {
-		padding: 0 em($base-px); } }
 		
 // Input
 // ---------------------------
 .input {
   @include form-base($radius: false);
   width: 100%; }
-
-.input-text,
-.input-select {
-  border-radius: $radius; }
 	
 	// Text
 	// ---------------------------
 	.input-text {
 		@include form($focus-color: $blue);
+		border-radius: $radius;
 		
 		.form-warm & {
       @include form(text, $warm-l2, $blue, $warm-l4 $white); } }
-      
-  textarea {
-    min-height: 168px; }
-	
-	// Select
-	// ---------------------------
-	.input-select {
-		@include form(select); }
-		
-// Wufoo
-// ---------------------------
-.wufoo iframe {}

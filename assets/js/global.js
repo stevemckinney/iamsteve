@@ -14,7 +14,7 @@ const iamsteve = (function iamsteve() {
   const overlay = document.querySelector('.overlay-search');
   const field = document.getElementById('keywords');
   const currentPath = window.location.pathname;
-  const cacheButton = document.querySelector('.link-offline');
+  const cacheButton = document.querySelector('.button-offline');
   const imageArray = document.querySelectorAll('img');
 
   // Private
@@ -78,11 +78,11 @@ const iamsteve = (function iamsteve() {
             const updateCache = cache.addAll(pageResources);
 
             // Update UI to indicate success
-            // Or catch any errors if it doesn't succeed
             updateCache.then(() => {
               cacheButton.textContent = 'Available offline';
             });
             
+            // Or catch any errors if it doesn't succeed
             updateCache.catch(() => {
               cacheButton.textContent = 'Couldn’t save — try again';
             });
@@ -126,8 +126,9 @@ const iamsteve = (function iamsteve() {
   }
 
   const lazy = () => {
-    document.addEventListener('lazyunveilread', (e) => {
+    document.addEventListener('lazyloaded', (e) => {
       e.target.parentNode.classList.add('image-loaded');
+      e.target.parentNode.classList.remove('loading');
     });
   }
 
@@ -152,10 +153,15 @@ const iamsteve = (function iamsteve() {
   }
 
   return {
-    toggler: toggler(),
-    headroom: header(),
-    fonts: fonts(),
-    images: lazy(),
-    worker: worker()
+    init: function init() {
+      // Initialise everything
+      toggler();
+      header();
+      fonts();
+      lazy();
+      worker();
+    }
   }
 }());
+
+iamsteve.init();

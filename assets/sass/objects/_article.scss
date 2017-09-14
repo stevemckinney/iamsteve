@@ -236,20 +236,23 @@
 .featured-image img {
   display: block;
   margin: auto;
-  max-height: 192px;
+  height: 192px + 24px;
   max-width: 738px;
   
   @include breakpoint(360px) {
-    max-height: 192px + 24px; }
-  
-  @include breakpoint(400px) {
-    max-height: 192px + 48px; }
+    height: 192px + 48px; }
   
   @include breakpoint($a) {
-    max-height: 288px; }
+    height: 288px; }
   
   @include breakpoint($b) {
-    max-height: none; } // reset the height here 492px
+    height: 288px + 96px; }
+  
+  @include breakpoint($c) {
+    height: 288px + 96px + 48px; }
+  
+  @include breakpoint($e) {
+    height: 492px; } // reset the height here 492px
   
   @include breakpoint($site-width-max) {
     margin: auto; } }
