@@ -215,14 +215,6 @@ class Iamsteve {
       $b = dechex($cols['blue']);
     
       return '#' . $r . $g . $b;
-      
-      /*
-      $red = ( ( $cols['red'] >= $cols['green'] ) && ( $cols['red'] >= $cols['blue'] ) ? $cols['red'] . ' theme-red' : false );
-      $green = ( ( $cols['green'] >= $cols['red'] ) && ( $cols['green'] >= $cols['blue'] ) ? $cols['green'] . ' theme-green' : false );
-      $blue = ( ( $cols['blue'] >= $cols['green'] ) && ( $cols['blue'] >= $cols['red'] ) ? $cols['blue'] . ' theme-blue' : false );
-      
-      return $red . ' ' . $green . ' ' . $blue;
-      */
     }
   }
   
