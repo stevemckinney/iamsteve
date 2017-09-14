@@ -81,7 +81,7 @@ const iamsteve = (function iamsteve() {
             updateCache.then(() => {
               cacheButton.textContent = 'Available offline';
             });
-            
+
             // Or catch any errors if it doesn't succeed
             updateCache.catch(() => {
               cacheButton.textContent = 'Couldn’t save — try again';
