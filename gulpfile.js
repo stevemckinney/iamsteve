@@ -42,7 +42,7 @@ var browserSyncWatchFiles = [
 // browser-sync options
 // see: https://www.browsersync.io/docs/options/
 var browserSyncOptions = {
-  proxy: 'https://iamsteve.dev',
+  proxy: 'http://iamsteve.dev',
   injectChanges: true
 };
 
