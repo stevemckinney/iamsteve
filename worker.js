@@ -3,7 +3,7 @@
 // You have to supply a name for your cache, this will
 // allow us to remove an old one to avoid hitting disk
 // space limits and displaying old resources
-var cacheName = 'v7';
+var cacheName = 'v8';
 
 // Assets to cache
 var assetsToCache = [
