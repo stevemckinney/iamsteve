@@ -13,26 +13,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="p:domain_verify" content="eb06e0afbeef975e38f107fa8bcac7b5">
-    
+
     {!-- PWA --}
     <link rel="manifest" href="{site_url}/manifest.json">
     <meta name="theme-color" content="#543243">
-    
+
   	{!-- SEO lite --}
     {if segment_1 == ""}
       {exp:seo_lite title_override="iamsteve – design & code blog by Steve McKinney"}
     {if:else}
       {exp:seo_lite use_last_segment="yes" {if embed:title}default_title="{embed:title}"{/if}}
     {/if}
-    
+
     {!--
-      CSS 
+      CSS
     --}
-    {exp:minimee:css minify="n"}
+    {!--{exp:minimee:css minify="n"}
       <link rel="stylesheet" href="{global:theme_url}/dist/css/global.css">
-    {/exp:minimee:css}
+    {/exp:minimee:css}--}
+    <style>{critical}</style>
     <noscript>.no-js img.lazyload { display: none; }</noscript>
-    
+
     {!--
       JS
     --}
@@ -45,10 +46,11 @@
     --}
     <script>
       !function(e){"use strict";var n=function(n,t,o){function i(e){return a.body?e():void setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var s=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=s[s.length-1]}var f=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
+      loadCSS('{exp:minimee:css minify="n"}{global:theme_url}/dist/css/global.css{/exp:minimee:css}');
       loadCSS('https://cloud.typography.com/7828432/640526/css/fonts.css');
     </script>
-    
-    {!-- 
+
+    {!--
       Head
       –
       Generally don’t need to go in here. You can find JSON-LD, and other meta

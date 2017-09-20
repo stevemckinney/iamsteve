@@ -15,7 +15,7 @@ var concat = require('gulp-concat');
 var browserSync = require('browser-sync').create();
 var sourcemaps = require('gulp-sourcemaps');
 var reload = browserSync.reload;
-
+var critical = require('gulp-penthouse');
 
 var src = {
   scss: 'assets/sass/**/*.scss',
@@ -70,11 +70,28 @@ gulp.task('autoprefixer', function() {
     }));
 });
 
+// Critical CSS
+gulp.task('critical', function () {
+  return gulp.src('./dist/css/global.css')
+    .pipe(critical({
+      out: 'critical.css',
+      url: 'http://iamsteve.dev',
+      width: 1680,
+      height: 1200,
+      strict: true,
+      userAgent: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+    }))
+    .pipe(gulp.dest('./dist/css/'))
+    .pipe(cssnano())
+    .pipe(rename('critical.html'))
+    .pipe(gulp.dest('./system/user/templates/default_site/_partials/'));
+});
+
 // Images
 gulp.task('images', function() {
   return gulp.src(src.images)
     .pipe(cache(imagemin(
-      { 
+      {
         optimizationLevel: 3,
         progressive: true,
         interlaced: true,
