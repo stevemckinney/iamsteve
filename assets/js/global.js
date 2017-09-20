@@ -84,7 +84,7 @@ const iamsteve = (function iamsteve() {
 
             // Or catch any errors if it doesn't succeed
             updateCache.catch(() => {
-              cacheButton.textContent = 'Couldn’t save — try again';
+              cacheButton.textContent = 'Couldn’t save&thinsp;—&thinsp;try again';
             });
           });
         });

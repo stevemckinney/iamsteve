@@ -3,7 +3,7 @@
 // You have to supply a name for your cache, this will
 // allow us to remove an old one to avoid hitting disk
 // space limits and displaying old resources
-var cacheName = 'v8';
+var cacheName = 'v9';
 
 // Assets to cache
 var assetsToCache = [
@@ -72,7 +72,7 @@ self.addEventListener('fetch', function(event) {
         // If there is no internet connection, try to match the request
         // to some of our cached resources
         var images = document.querySelectorAll('img');
-        
+
         images.forEach(function(image) {
           image.onerror = function() {
       			this.parentNode.removeChild(this);
