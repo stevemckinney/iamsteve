@@ -1,6 +1,6 @@
 // Flickity
 // ---------------------------
-.flickity-enabled:focus { 
+.flickity-enabled:focus {
   outline: none; }
 
 .flickity-viewport {
@@ -17,9 +17,9 @@
   height: 100%;
   left: 8px !important;
   right: 0;
-  
+
   @include breakpoint($c) {
-    left: 12px !important; } }
+    left: 0 !important; } }
 
 /* Draggable */
 .flickity-enabled.is-draggable {
@@ -44,7 +44,7 @@
   flex: 1; }
 
 // Flickity requires js obviously so pagination won’t work
-.no-js .posts .pagination { 
+.no-js .posts .pagination {
   display: none; }
 
 // A div is placed within the .scroll container to offset the contents nicely.
@@ -53,16 +53,16 @@
 // sides of each card within the scroll container.
 .offsetter {
   display: inline-block;
-  
+
   @include breakpoint($c) {
-    width: $line; }
-  
+    width: $line + 8px; }
+
   @include breakpoint($d) {
-    width: $line*2; }
-  
+    width: ($line*2) + 6px; }
+
   @include breakpoint($e) {
-    width: $line*3; }
-  
+    width: ($line*3) + 8px; }
+
   @include breakpoint($site-width) {
     width: calc(50% - (#{$contain / 2} + 16px)); } }
 
@@ -76,7 +76,7 @@
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   padding: 0 $base-px*1.5 0 4px;
-  
+
   &.flickity-enabled {
     padding: 0; }
 
@@ -85,33 +85,36 @@
     display: inline-block;
     vertical-align: top;
     white-space: normal;
-    padding: 0 8px; }
-    
+    padding: 0 8px;
+
+    @include breakpoint($c) {
+      padding: 0 $line/1.5; } }
+
   .card-more {
     min-width: 240px;
     padding: $line*6 $line $line*2 14px; }
-  
+
   // More sensible way to position when flickity is enabled
   &.flickity-enabled .card-more {
     top: 50%;
     padding-top: $line*2;
-    
+
     h2 {
       justify-content: flex-end;
       align-content: center;
       height: 100%; } }
-  
+
   .card-medium {
     width: 240px + $base-px + $base-px + $base-px + $base-px;
-    
+
     @include breakpoint($aa) {
       width: 288px + $base-px + $base-px + $base-px + $base-px; }
-    
+
     @include breakpoint($c) {
-      width: 378px + $base-px + $base-px; } }
-  
+      width: 378px + $line + $line; } }
+
   .card-small {
     width: 196px;
-    
+
     @include breakpoint($c) {
-      width: 268px; } } }
+      width: 252px + $line + $line; } } }
