@@ -9,17 +9,11 @@
  *   </div>
  * </div>
  */
-.card {}
-
 // Card body
 // ---------------------------
 .card-body {
   color: $warm-l1;
   position: relative; }
-
-.card-small .card-image,
-.card-medium .card-image { &, img {
-  border-radius: $radius; } }
 
 // Card meta
 // ---------------------------
@@ -31,69 +25,31 @@
   font-weight: font-weight(semibold);
   line-height: 1.142857143;
   font-size: 10px;
-  
+
   @include breakpoint($b) {
     font-size: 12px; }
-  
+
   a {
     color: $warm; }
-  
+
   a:hover,
   a:focus {
     color: $secondary; } }
 
-@include breakpoint($d) {
-  .meta-to-calendar {
-    position: absolute;
-    top: double($line);
-    left: double($line); }
-
-  .calendar {
-    padding: $base-px;
-    background: #fff;
-    border: 2px solid $neutral-l4;
-    box-shadow: 0 6px 6px rgba($neutral-l4, .15);
-    border-radius: $radius;
-    font-family: $sans;
-    font-style: normal;
-    text-align: center;
-    line-height: 1.25;
-    min-width: 96px;
-    
-    &, span {
-      display: block; }
-    
-    span {
-      color: $secondary; } }
-  
-  .day {
-    font-size: 48px;
-    font-weight: font-weight(light); }
-  
-  .month {
-    font-weight: font-weight(bold);
-    text-transform: lowercase; } }
-
-// Specifics
-// ---------------------------
-.hero .card-large {
-  @include breakpoint($d) {
-    margin-bottom: -$line * 4; } }
-    
 // More links
 // ---------------------------
 .card-more h2 {
   justify-content: flex-end;
   text-align: right; }
-  
+
 // Lazy loaded additional styles for 'loading spinner'
 // ---------------------------
-.card-medium .card-image,
-.card-small .card-image {
-  transition: background-color .2s ease-out;
-  background-color: $neutral-l5;
+.card-image {
   padding-bottom: 66.5492958%;
-  
+
+  &, img {
+    border-radius: $radius; }
+
   img {
     position: absolute;
     top: 0;
@@ -101,21 +57,13 @@
     max-width: 100%;
     max-height: 100%;
     z-index: 2; } }
-  
+
 // Lazy loaded specifics
 // ---------------------------
 .image-loaded {
   // Background also causes a little bit of bleed with some images
   box-shadow: inset 0 0 0 1px #fff;
-  
+
   &:before {
     // Stops the spinner animating in the background
     display: none; } }
-
-.lazyload,
-.lazyloading {
-  opacity: 0; }
-  
-.lazyloaded {
-  opacity: 1;
-  transition: opacity .2s; }

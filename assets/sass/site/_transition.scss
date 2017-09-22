@@ -9,7 +9,7 @@ $no-output: false;
   max-height: 0;
   opacity: 0;
   bottom: 0;
-  
+
   // This transition happens when the close button is clicked
   // and should be faster than the .showing state
   transition:
@@ -20,7 +20,7 @@ $no-output: false;
 .showing {
   max-height: 100vh;
   bottom: 0;
-  
+
   // This happens when the open button is clicked
   // max-height transition is to appear more subtle
   transition:
@@ -40,46 +40,46 @@ $no-output: false;
 .input-search,
 .button-search {
   position: relative;
-  
+
   .hiding & {
     opacity: 0; } }
 
 .hiding .input-search {
   transform: translate3d(0, 50%, 0); }
-  
+
 .hiding .button-search {
   transform: translate3d(0, 25%, 0); }
 
 // Transitions
 .button-search {
   .hiding & {
-    transition: 
+    transition:
       opacity .4s ease-out,
       transform .2s ease-out; }
-    
+
   .showing & {
-    transition: 
+    transition:
       opacity .4s .2s ease-out,
       transform .2s .2s ease-out; } }
-    
+
 .button-search:before {
   .hiding & {
     opacity: 0;
-    transition: 
+    transition:
       opacity .2s ease-out; }
-  
+
   .showing & {
-    transition: 
+    transition:
       opacity .6s .6s ease-out; } }
 
 .input-search {
   .hiding & {
-    transition: 
+    transition:
       opacity .4s .05s ease-out,
       transform .2s .05s ease-out; }
-    
+
   .showing & {
-    transition: 
+    transition:
       opacity .4s .2s ease-out,
       transform .2s .2s ease-out; } }
 
@@ -100,16 +100,17 @@ $no-output: false;
 // Loading
 // ---------------------------
 @keyframes scaleout {
-  0% { 
-    transform: scale(0); } 
-    
+  0% {
+    transform: scale(0); }
+
   100% {
     transform: scale(1);
     opacity: 0; } }
-    
+
 .loading {
   position: relative;
-  
+  background-color: $neutral-l5;
+
   &:before {
     content: "";
     position: absolute;
@@ -123,13 +124,19 @@ $no-output: false;
     border-radius: 32px;
     background-color: $warm;
     animation: scaleout 1.2s infinite ease-in-out; } }
-    
+
 // Lazyloaded images
 // ---------------------------
 .lazyload,
-.lazyloading {
+.lazyloading,
+.loading {
 	opacity: 0; }
-	
+
+.card-image,
+.lazyload,
 .lazyloaded {
 	opacity: 1;
-	transition: opacity .3s; }
+	transition: .6s ease-out; }
+
+.loading {
+  transform: translateY(8px); }
