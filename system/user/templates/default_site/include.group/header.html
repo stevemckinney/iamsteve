@@ -28,16 +28,17 @@
     {!--
       CSS
     --}
-    {!--{exp:minimee:css minify="n"}
+    {exp:cookie:set name="css" value="true"}
+    {if '{exp:cookie:get name="css"}'}
       <link rel="stylesheet" href="{global:theme_url}/dist/css/global.css">
-    {/exp:minimee:css}--}
-    <style>{critical}</style>
+    {if:else}
+      <style>{critical}</style>
+    {/if}
     <noscript>.no-js img.lazyload { display: none; }</noscript>
 
     {!--
       JS
     --}
-    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
     {!--
       loadCSS
       –
@@ -45,8 +46,9 @@
       Visually complete suffers, but it‘s a reasonable trade off.
     --}
     <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
       !function(e){"use strict";var n=function(n,t,o){function i(e){return a.body?e():void setTimeout(function(){i(e)})}function r(){l.addEventListener&&l.removeEventListener("load",r),l.media=o||"all"}var d,a=e.document,l=a.createElement("link");if(t)d=t;else{var s=(a.body||a.getElementsByTagName("head")[0]).childNodes;d=s[s.length-1]}var f=a.styleSheets;l.rel="stylesheet",l.href=n,l.media="only x",i(function(){d.parentNode.insertBefore(l,t?d:d.nextSibling)});var u=function(e){for(var n=l.href,t=f.length;t--;)if(f[t].href===n)return e();setTimeout(function(){u(e)})};return l.addEventListener&&l.addEventListener("load",r),l.onloadcssdefined=u,u(r),l};"undefined"!=typeof exports?exports.loadCSS=n:e.loadCSS=n}("undefined"!=typeof global?global:this);
-      loadCSS('{exp:minimee:css minify="n"}{global:theme_url}/dist/css/global.css{/exp:minimee:css}');
+      {if '{exp:cookie:get name="css"}' != true}loadCSS('{exp:minimee:css minify="n"}{global:theme_url}/dist/css/global.css{/exp:minimee:css}');{/if}
       loadCSS('https://cloud.typography.com/7828432/640526/css/fonts.css');
     </script>
 
