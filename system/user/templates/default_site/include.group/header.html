@@ -1,4 +1,3 @@
-{exp:cookie:set name="criticalcss" value="true"}
 <!DOCTYPE html>
 {if '{exp:cookie:get name="fonts-stage-1"}'}
 <html lang="en" class="no-js fonts-stage-1 fonts-stage-2">
@@ -30,9 +29,11 @@
       CSS
     --}
     {preload_replace:css='{exp:minimee:css minify="n" display="url"}{global:theme_url}/dist/css/global.css{/exp:minimee:css}'}
-    <link rel="preload" href="{css}" as="style" onload="this.rel='stylesheet'">
-    {if '{exp:cookie:get name="criticalcss"}' != true}
+    {if '{exp:cookie:get name="css"}'}
+      <link rel="stylesheet" href="{css}">
+    {if:else}
       <style>{critical}</style>
+      <link rel="preload" href="{css}" as="style" onload="this.rel='stylesheet'">
     {/if}
     <noscript>.no-js img.lazyload { display: none; }</noscript>
 

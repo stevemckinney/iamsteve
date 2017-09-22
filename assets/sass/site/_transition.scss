@@ -109,7 +109,7 @@ $no-output: false;
 
 .loading {
   position: relative;
-  background-color: $neutral-l5;
+  background-image: linear-gradient($neutral-l5 75%, $white);
 
   &:before {
     content: "";

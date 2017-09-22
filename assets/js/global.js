@@ -133,6 +133,8 @@ const iamsteve = (function iamsteve() {
   }
 
   const fonts = () => {
+    Cookies.set('exp_css', true, { expires: 365 });
+
     if (!document.documentElement.classList.contains('fonts-stage-1')) {
       const semibold = new FontFaceObserver('Averta', { weight: 600 });
 
