@@ -1,5 +1,7 @@
+{preload_replace:background="{image}{exp:iamsteve:background image='{url}'}{/image}"}
+
 <article class="card card-medium entry">
-	<a href="{title_permalink='blog/entry'}" class="card-image db mb3 mb4-b loading">
+	<a href="{title_permalink='blog/entry'}" class="card-image db mb3 mb4-b loading" style="background-color: {if image}{background}{if:else}{color}{/if}">
   	{if thumbnail}
   	  {thumbnail}
   	    {if medium_file_url}

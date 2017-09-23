@@ -132,10 +132,10 @@ $no-output: false;
 
 .loading,
 .lazyload,
-.lazyloaded {
+.lazyloaded,
+.card-image {
 	opacity: 1;
-	transition: .6s ease-out; }
+	transition: 2s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 .card-image.loading {
-  background-image: linear-gradient($neutral-l5 75%, $white);
   transform: translateY(8px); }
