@@ -7,7 +7,7 @@
   <head>
     {!--
       Meta
-      –
+      -
       Uses seo lite to manage the majority of titles and descriptions.
     --}
     <meta charset="utf-8">
@@ -35,13 +35,14 @@
       <style>{critical}</style>
       <link rel="preload" href="{css}" as="style" onload="this.rel='stylesheet'">
     {/if}
-    <noscript>.no-js img.lazyload { display: none; }</noscript>
+    <noscript><style>.no-js img.lazyload { display: none; }</style></noscript>
 
     {!--
       JS
-      –
+      --
+
       loadCSS
-      –
+      -
       Fonts from cloud.typography loaded through here async, helps load times.
       Visually complete suffers, but it‘s a reasonable trade off.
     --}

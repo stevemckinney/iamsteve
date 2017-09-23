@@ -13,7 +13,12 @@
 // ---------------------------
 .card-body {
   color: $warm-l1;
-  position: relative; }
+  position: relative;
+
+  p,
+  .link-icon {
+    @include breakpoint($b-max) {
+      display: none; } } }
 
 // Card meta
 // ---------------------------
@@ -29,7 +34,7 @@
   @include breakpoint($b) {
     font-size: 12px; }
 
-  a {
+  a, time {
     color: $warm; }
 
   a:hover,
@@ -62,7 +67,8 @@
 // ---------------------------
 .image-loaded {
   // Background also causes a little bit of bleed with some images
-  box-shadow: inset 0 0 0 1px #fff;
+  &:not(.entry-image) {
+    box-shadow: inset 0 0 0 1px #fff; }
 
   &:before {
     // Stops the spinner animating in the background

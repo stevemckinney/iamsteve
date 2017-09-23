@@ -1,6 +1,5 @@
 import Headroom from 'headroom.js';
-/* global lazysizes */
-import lazysizes from 'lazysizes';
+import 'lazysizes';
 import FontFaceObserver from 'fontfaceobserver';
 import './modernizr';
 import './load-svg';

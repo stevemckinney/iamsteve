@@ -109,7 +109,6 @@ $no-output: false;
 
 .loading {
   position: relative;
-  background-image: linear-gradient($neutral-l5 75%, $white);
 
   &:before {
     content: "";
@@ -128,15 +127,15 @@ $no-output: false;
 // Lazyloaded images
 // ---------------------------
 .lazyload,
-.lazyloading,
-.loading {
+.lazyloading {
 	opacity: 0; }
 
-.card-image,
+.loading,
 .lazyload,
 .lazyloaded {
 	opacity: 1;
 	transition: .6s ease-out; }
 
-.loading {
+.card-image.loading {
+  background-image: linear-gradient($neutral-l5 75%, $white);
   transform: translateY(8px); }

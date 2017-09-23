@@ -7,21 +7,25 @@
 // Entry
 // ---------------------------
 .entry {
-  flex-basis: calc(50% - 6px);
-  
-  .page-blog &,
-  .page-search &,
-  .page-results & {
-    margin-bottom: $line; }
-  
-  @include breakpoint($b) {
-    flex-basis: calc(33.333333% - 12px);
-    
+  flex-basis: calc(50% - #{$line/2});
+
+  &:not(:nth-last-of-type(1)),
+  &:not(:nth-last-of-type(2)) {
     .page-blog &,
     .page-search &,
     .page-results & {
       margin-bottom: double($line); } }
-  
+
+  &:nth-last-of-type(1),
+  &:nth-last-of-type(2) {
+    .page-blog &,
+    .page-search &,
+    .page-results & {
+      margin-bottom: $line; } }
+
+  @include breakpoint($b) {
+    flex-basis: calc(33.333333% - 12px); }
+
   @include breakpoint($e) {
     flex-basis: 378px; } }
 
@@ -35,17 +39,17 @@
 .entry-next {
   display: inline-block;
   cursor: pointer;
-  
+
   &:hover,
   &:focus { a {
     color: $secondary; }
-    
-    .icon { 
+
+    .icon {
       transform: translate3d($base-px, 0, 0); } }
-  
+
   a {
     background-image: linear-gradient(rgba($tertiary-l3, 0) 70%, $tertiary-l3 70%, $tertiary-l3 88%, rgba($tertiary-l3, 0) 88%); }
-  
+
   .icon {
     position: relative;
     display: inline-block; } }

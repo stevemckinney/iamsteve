@@ -29,18 +29,20 @@
       </time>
   	</div>
 		<h3 class="f5 f4-b {if '{exp:iamsteve:is_mobile}' != 1}mb1{if:else}mb2{/if} primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
-	  
-	  {if segment_1 == 'search'}
-	    <p>{excerpt}</p>
-	  {if:else}
-      {excerpt}
+
+	  {if '{exp:iamsteve:is_mobile}' != 1}
+  	  {if segment_1 == 'search'}
+  	    <p>{excerpt}</p>
+  	  {if:else}
+        {excerpt}
+  	  {/if}
 	  {/if}
-	  
+
     <div class="meta dashes">
       {categories channel="blog" style="linear" parent_only="yes" limit="1"}
         <a href="{path='blog/index'}" rel="category tag">{category_name}</a>
       {/categories}
-    
+
       {if segment_2 != "entry"}
         <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
       {/if}
