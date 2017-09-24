@@ -5,105 +5,108 @@
     max-width: $contain;
     margin-left: auto;
     margin-right: calc(50% - #{$measure / 2}); }
-  
+
   img {
     display: block;
     margin-bottom: $line;
     box-shadow:
       0 0 0 1px rgba($neutral, .05);
-      
+
     @include breakpoint($cd) {
       max-width: 738px;
       border-radius: $radius; } }
-  
+
   .wide-image {
     @include breakpoint(1024px + 48px) {
       max-width: 1024px; } }
-  
+
   .meta {
     max-width: $measure; } }
 
 // Scoped font sizes/alignment
 // ---------------------------
-.entry-content {      
+.entry-content {
   p, li {
     font-size: 18px;
-    
+
     @include breakpoint($b) {
       font-size: 21px; } }
-  
+
   > p,
   > ul {
     // 1px aligns back to baseline
     margin-bottom: $base-px + 1px;
-    
+
     // 4px aligns back to baseline
     @include breakpoint($b) {
       margin-bottom: $base-px + 4px; } }
-  
+
   // This could be really stupid in the long run
   > *:not(figure):not(div), img {
     margin-left: auto;
-    
+
     @include breakpoint($e-max) {
       margin-right: auto; } }
-  
+
   // Likewise
   > *:not(figure):not(img):not(div) {
-    max-width: $measure; }
-  
+    max-width: $measure + ( $line * 4 ); }
+
   // Tables don't like padding
   > table {
     @include breakpoint(max-width 639px) {
       width: calc(100% - #{$line*4}); }
-    
+
     @include breakpoint($a-max) {
       width: calc(100% - 32px); } }
-  
+
   // Yep
   > *:not(figure):not(img):not(div):not(blockquote),
   figcaption {
-    @include breakpoint(max-width 639px) {
-      padding-right: $line*2;
-      padding-left: $line*2; }
+    padding-right: $line*2;
+    padding-left: $line*2;
 
     @include breakpoint($a-max) {
       padding-left: $line*1.5;
       padding-right: $line*1.5; }
-    
+
     @include breakpoint($aa-max) {
-      padding-left: $base-px*1.5;
-      padding-right: $base-px*1.5; } }
-  
+      padding-left: 16px;
+      padding-right: 16px; } }
+
   // Space is limited so nudge in the bullets
   li {
     @include breakpoint($aa-max) {
       margin-left: 20px; } }
-  
+
   strong {
     font-weight: font-weight(semibold); }
-  
+
   img {
     @include breakpoint($cd-max) {
       width: 100%; } }
-  
+
   p a,
   li a {
     color: $neutral;
     text-decoration: underline;
     text-decoration-color: $neutral; }
-  
+
+  #{headings()},
+  p, ul {
+    & + img,
+    & + .codepen-wide .cp_embed_wrapper,
+    & + .cp_embed_wrapper {
+      margin-top: $line; } }
+
   // For .fragment
-  h2 { 
+  h2 {
     position: relative; }
-  
+
   #{headings()} {
     transition: .2s ease-out;
-    
-    & + img { 
-      margin-top: $line; }
-    
-    a:not(.has-fragment):after {
+
+    a:not(.fragment):after {
       content: "";
       display: inline-block;
       position: relative;
@@ -114,60 +117,57 @@
       height: 1em;
       background: image-url("arrow-right.svg") no-repeat center center;
       opacity: .2; }
-  
-    a:not(.has-fragment):hover:after,
-    a:not(.has-fragment):focus:after {
+
+    a:not(.fragment):hover:after,
+    a:not(.fragment):focus:after {
       left: $line;
       opacity: .8; } }
-  
+
   // Aligns to 96px
   // default line-height: 1.25
   h2 {
     font-size: 24px;
     margin-top: 54px;
     margin-bottom: 12px; }
-  
+
   // Aligns to 60px
   h3 {
     font-size: 21px;
     line-height: 1.333333;
     margin-top: 24px;
     margin-bottom: 8px; }
-  
+
   // Aligns to 48px
   h4, h5, h6 {
     font-size: 18px;
     line-height: 1.5;
     margin-top: 15px;
     margin-bottom: 6px; } }
-  
+
 // Fragment links with 16px icon
 // ---------------------------
-.has-fragment {
-  display: block;
-  
+.fragment {
+  transition: .2s ease-out;
+  color: $warm-l2;
+
   @include breakpoint($aa-max) {
+    float: right;
     position: relative;
-    padding-right: 32px; }
-  
+    top: 4px;
+    margin-left: $base-px; }
+
+  @include breakpoint($aa) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-48%);
+    left: $base-px; }
+
+  @include breakpoint($a) {
+    left: $line; }
+
   &:hover,
   &:focus {
-    &, .fragment { 
-      color: $warm; } } }
-  
-.fragment {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-48%);
-  transition: .2s ease-out;
-  padding: 16px;
-  color: $warm-l2;
-  
-  @include breakpoint($aa) {
-    left: -44px; }
-  
-  @include breakpoint($aa-max) {
-    right: 0; } }
+    color: $warm; } }
 
 // Codepen
 // ---------------------------
@@ -180,7 +180,7 @@
 .codepen-wide .cp_embed_wrapper {
   @include breakpoint($contain) {
     max-width: 896px; } }
-    
+
 // Lists
 // ---------------------------
 .entry-content ul {
@@ -200,17 +200,17 @@
   max-width: $measure;
   padding: 0 $line;
   margin-left: auto;
-  
-  p { 
+
+  p {
     font-size: inherit; }
-  
+
   @include breakpoint($site-width) {
     position: absolute;
     bottom: 0;
     left: 100%;
     width: 220px;
     text-align: left;
-    
+
     &:before {
       content: "";
       display: block;
@@ -218,10 +218,10 @@
       height: $base-px;
       background-color: $secondary;
       margin-bottom: $base-px; } }
-  
+
   @include breakpoint($site-width-max) {
     margin-bottom: $line; }
-    
+
   @include breakpoint($e-max) {
     margin-right: auto; } }
 
@@ -238,22 +238,22 @@
   margin: auto;
   height: 192px + 24px;
   max-width: 738px;
-  
+
   @include breakpoint(360px) {
     height: 192px + 48px; }
-  
+
   @include breakpoint($a) {
     height: 288px; }
-  
+
   @include breakpoint($b) {
     height: 288px + 96px; }
-  
+
   @include breakpoint($c) {
     height: 288px + 96px + 48px; }
-  
+
   @include breakpoint($e) {
     height: 492px; } // reset the height here 492px
-  
+
   @include breakpoint($site-width-max) {
     margin: auto; } }
 
@@ -294,19 +294,19 @@ body:active:after {
 .footnotes {
   max-width: 640px;
   margin-left: auto;
-  
+
   p a {
     text-decoration: none; }
-  
+
   li, p {
     font-size: 14px; }
-  
+
   hr {
     margin-bottom: $line; } }
 
 .footnote-backref {
   font-weight: font-weight(bold);
-  
+
   &:hover,
   &:focus {
     color: $primary; } }

@@ -12,32 +12,40 @@ blockquote {
   clear: both;
   color: $neutral;
   max-width: $measure;
-  
+
   @include breakpoint(($ab) ($c-max)) {
-    padding-left: 144px + 16px; 
+    padding-left: 144px + 16px;
     padding-right: 16px; }
-    
+
   @include breakpoint(($c) ($e-max)) {
     padding-left: 144px; }
-    
+
   @include breakpoint($ab-max) {
     border-top: 2px dashed $tertiary;
     border-bottom: 2px dashed $tertiary;
     background: $tertiary-l4;
     margin: $line 0;
-    padding-left: 16px;
-    padding-right: 16px; }
-  
+    padding-right: $line*2;
+    padding-left: $line*2; }
+
+    @include breakpoint($a-max) {
+      padding-left: $line*1.5;
+      padding-right: $line*1.5; }
+
+    @include breakpoint($aa-max) {
+      padding-left: 16px;
+      padding-right: 16px; }
+
   @include breakpoint($ab) {
-    background: 
+    background:
       image-url("dash-neutral.svg") repeat-x -12px top,
       image-url("dash-neutral.svg") repeat-x -12px bottom;
-    
+
     &:before {
       content: image-url("signpost.svg");
       margin-left: (-98px - $line - $line);
       margin-right: $line*2; }
-    
+
     &:before,
     > * {
       display: inline-block;

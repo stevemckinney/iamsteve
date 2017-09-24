@@ -34,7 +34,7 @@ p, figcaption {
     hyphens: auto; } }
 
 a {
-
+  transition: color .2s, transform .2s;
   transform-origin: center center;
   text-decoration: none;
   color: inherit;
