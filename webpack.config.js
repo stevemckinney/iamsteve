@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const nodeEnv = process.env.NODE_ENV || 'production';
-const PrettierPlugin = require("prettier-webpack-plugin");
 
 module.exports = {
   devtool: 'source-map',
