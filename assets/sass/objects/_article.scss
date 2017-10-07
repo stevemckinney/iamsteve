@@ -4,13 +4,11 @@
   @include breakpoint(1200px) {
     max-width: $contain;
     margin-left: auto;
-    margin-right: calc(50% - #{$measure / 2}); }
+    margin-right: calc(50% - #{($measure + ( $line * 4 ) ) / 2}); }
 
   img {
     display: block;
     margin-bottom: $line;
-    box-shadow:
-      0 0 0 1px rgba($neutral, .05);
 
     @include breakpoint($cd) {
       max-width: 738px;
