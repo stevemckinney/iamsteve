@@ -21,14 +21,19 @@
     "prismjs": "^1.8.1"
   },
   "devDependencies": {
+    "babel-cli": "^7.0.0-beta.2",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^2.0.0-beta.2",
     "babel-preset-es2015-native-modules": "^6.9.4",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-airbnb-base": "^12.0.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0",
     "gulp-cache": "^0.2.10",
     "gulp-compass": "^2.1.0",
     "gulp-concat": "^2.6.1",
@@ -39,7 +44,7 @@
     "gulp-sourcemaps": "^1.12.0",
     "gulp-uglify": "^1.5.4",
     "gulp-watch": "^4.3.11",
-    "prettier-webpack-plugin": "^0.2.2",
+    "prettier": "^1.7.1",
     "webpack": "^3.6.0"
   },
   "scripts": {
