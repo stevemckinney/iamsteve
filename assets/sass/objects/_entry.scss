@@ -51,5 +51,6 @@
     background-image: linear-gradient(rgba($tertiary-l3, 0) 70%, $tertiary-l3 70%, $tertiary-l3 88%, rgba($tertiary-l3, 0) 88%); }
 
   .icon {
+    transition: .4s ease-out;
     position: relative;
     display: inline-block; } }
