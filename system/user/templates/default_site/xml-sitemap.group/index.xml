@@ -34,18 +34,4 @@
       <priority>0.8</priority>
     </url>
   {/exp:channel:entries}
-  
-  {!-- Categories --}
-  {exp:channel:categories
-    disable="category_fields"
-    show_empty="no"
-    style="linear"
-    channel="blog"
-  }
-    <url>
-      <loc>{global:theme_url}/blog/category/{category_url_title}</loc>
-      <changefreq>weekly</changefreq>
-      <priority>0.5</priority>
-    </url>
-  {/exp:channel:categories}
 </urlset>
