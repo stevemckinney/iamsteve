@@ -36,6 +36,10 @@ ul {
 .list-custom-bullet {
 	@extend %list-custom-bullet; }
 
+.list-nudge {
+  @include breakpoint($c-max) {
+    margin-left: 18px; } }
+
 // Definition
 // ---------------------------
 dt {

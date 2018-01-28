@@ -17,14 +17,16 @@ body {
   line-height: 1.5; }
 
 p {
-  font-size: 14px;
   margin: 0 0 $base-px;
 
   &:last-child {
-    margin-bottom: 0; }
+    margin-bottom: 0; } }
+
+p, li {
+  font-size: 14px;
 
   @include breakpoint($c) {
-    font-size: $base-font-size; } }
+    font-size: $base-font-size; }  }
 
 p, figcaption {
   @supports (-webkit-hyphens: auto) {
