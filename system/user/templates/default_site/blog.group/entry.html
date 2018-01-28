@@ -26,7 +26,7 @@
     {if image}
   	  {image}
   	    {if url:large}
-  	      <img data-src="{url:large}" data-srcset="{url:medium} 378w, {url:large} 738w, {url:large-2x} 1476w" class="lazyload">
+  	      <img data-src="{url:large}" data-srcset="{url:medium} {width:medium}w, {url:large} {width:large}w, {url:large-2x} {width:large-2x}w" class="lazyload">
         {if:else}
           <img data-src="{url}" class="lazyload">
         {/if}
