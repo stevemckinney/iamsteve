@@ -48,7 +48,7 @@
 
   // Likewise
   > *:not(figure):not(img):not(div) {
-    max-width: $measure + ( $line * 4 ); }
+    max-width: $measure + ( $line * 4 ) + 2px; }
 
   // Tables don't like padding
   > table {
