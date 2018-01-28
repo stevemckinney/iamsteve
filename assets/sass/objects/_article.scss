@@ -37,7 +37,7 @@
 
     // 4px aligns back to baseline
     @include breakpoint($b) {
-      margin-bottom: $base-px + 4px; } }
+      margin-bottom: $line + 4px; } }
 
   // This could be really stupid in the long run
   > *:not(figure):not(div), img {
@@ -47,7 +47,8 @@
       margin-right: auto; } }
 
   // Likewise
-  > *:not(figure):not(img):not(div) {
+  > *:not(figure):not(img):not(div),
+  > .footnotes {
     max-width: $measure + ( $line * 4 ) + 2px; }
 
   // Tables don't like padding
@@ -60,6 +61,7 @@
 
   // Yep
   > *:not(figure):not(img):not(div),
+  > .footnotes,
   figcaption {
     padding-right: $line*2;
     padding-left: $line*2;
@@ -84,12 +86,21 @@
     @include breakpoint($cd-max) {
       width: 100%; } }
 
+  // Links
   p a,
   li a {
     color: $neutral;
     text-decoration: underline;
     text-decoration-color: $neutral; }
 
+  img {
+    transition: .2s box-shadow; }
+
+  a:hover img,
+  a:focus img {
+    box-shadow: 0 2px 2px rgba($neutral, .2), 0 8px 16px rgba($neutral, .15); }
+
+  // Images following headings, lists and paragraphs
   #{headings()},
   p, ul {
     & + img,
@@ -128,18 +139,18 @@
     margin-top: 54px;
     margin-bottom: 12px; }
 
-  // Aligns to 60px
+  // Aligns to 84px
   h3 {
     font-size: 21px;
     line-height: 1.333333;
-    margin-top: 24px;
+    margin-top: 48px;
     margin-bottom: 8px; }
 
-  // Aligns to 48px
+  // Aligns to 72px
   h4, h5, h6 {
     font-size: 18px;
     line-height: 1.5;
-    margin-top: 15px;
+    margin-top: 39px;
     margin-bottom: 6px; } }
 
 // Fragment links with 16px icon
@@ -172,7 +183,7 @@
 .cp_embed_wrapper {
   @include breakpoint($contain) {
     border-radius: $radius;
-    max-width: 640px;
+    max-width: 738px;
     margin-left: auto; } }
 
 .codepen-wide .cp_embed_wrapper {
@@ -290,7 +301,6 @@ body:active:after {
 // Footnotes
 // ---------------------------
 .footnotes {
-  max-width: 640px;
   margin-left: auto;
 
   p a {
