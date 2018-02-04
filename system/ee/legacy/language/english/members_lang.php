@@ -136,6 +136,8 @@ $lang = array(
 
 'heir_to_members_entries' => 'Some of these members have entries assigned to their accounts. What would you like to do with those entries?',
 
+'heir_required' => 'You must select an account to reassign entries to.',
+
 'include_in_authorlist' => 'Author lists',
 
 'include_in_memberlist' => 'Member lists',
@@ -925,6 +927,14 @@ $lang = array(
 'setting' => 'Setting',
 
 'settings' => 'Settings',
+
+'show_all_banned' => 'All %d banned',
+
+'show_all_member_groups' => 'All %d member groups',
+
+'show_all_members' => 'All %d members',
+
+'show_all_pending' => 'All %d pending',
 
 'template_groups' => 'Template groups',
 
