@@ -2,25 +2,25 @@
 // ---------------------------
 $default-gradient-background-main-color: $tertiary !default;
 $default-gradient-background-content-height: 600px !default;
-$default-gradient-background-shadow: 0 0 3px rgba(scale-lightness($tertiary, -40%), .6) !default;
+$default-gradient-background-shadow: 0 0 3px rgba(scale-color($tertiary, $lightness: -40%), .6) !default;
 $default-gradient-background-context: $default-context !default;
 
 // Faded backgrounds with a shadow
 // ---------------------------
 @mixin gradient-background(
 	$main-color			: $default-gradient-background-main-color,
-	$content-height	: $default-gradient-background-content-height, 
+	$content-height	: $default-gradient-background-content-height,
 	$shadow					: $default-gradient-background-shadow,
 	$context				: $default-gradient-background-context) {
-	
+
 	@if $main-color {
 		@include background(linear-gradient(top, rgba($main-color, 1) 20%, rgba($main-color, 0) 100%)); }
-	
+
 	background-size: 100% em($content-height, $context);
 	background-repeat: no-repeat;
 	position: relative;
 	z-index: 1;
-	
+
 	&:before, &:after {
 		content: "";
 		position: absolute;
@@ -54,18 +54,18 @@ $default-triangle-context: $default-context !default;
 	@include wh(0);
 	display: block;
 	position: absolute; }
-	
+
 @mixin triangle(
 	$position: $default-triangle-position,
 	$color: $default-triangle-color,
 	$size: $default-triangle-size,
 	$context: $default-triangle-context) {
-	
+
 	$halved-size: $size/2;
 	$negative-size: -$halved-size;
-	
+
 	@extend %triangle-base;
-	
+
 	@if $position == top {
 		border: {
 			right: $size solid transparent;
@@ -74,7 +74,7 @@ $default-triangle-context: $default-context !default;
 		bottom: 100%;
 		left: 50%;
 		margin-left: $negative-size; }
-		
+
 	@else if $position == right {
 		border: {
 			top: $size solid transparent;
@@ -83,7 +83,7 @@ $default-triangle-context: $default-context !default;
 		left: 100%;
 		top: 50%;
 		margin-top: $negative-size; }
-		
+
 	@else if $position == bottom {
 		border: {
 			top: $size solid $color;
@@ -92,7 +92,7 @@ $default-triangle-context: $default-context !default;
 		top: 100%;
 		left: 50%;
 		margin-left: $negative-size; }
-		
+
 	@else if $position == left {
 		border: {
 			top: $size solid transparent;

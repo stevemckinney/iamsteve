@@ -5,7 +5,7 @@ $code-red: #f82939;
 $code-yellow: #fdc347;
 $code-green: #4ae845;
 $code-blue: #727c87;
-$code-magenta: scale-lightness(#6f4ebc, 20%);
+$code-magenta: scale-color(#6f4ebc, $lightness: 20%);
 $code-cyan: #64cce3;
 $code-white: #f6f7ee;
 $comment: #838c95;
@@ -30,7 +30,7 @@ pre code {
   -o-tab-size: 2;
   tab-size: 2;
   background: none;
-  
+
   @include breakpoint($c) {
     font-size: 18px; } }
 
@@ -60,7 +60,7 @@ pre[class*="language"] {
   color: $code-white;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  
+
   @include breakpoint($c) {
     border-radius: $radius; } }
 
@@ -86,7 +86,7 @@ pre[class*="language"] {
 :not(pre) > code[class*="language"] {
 	padding: .1em;
 	border-radius: .3em; }
-	
+
 // Sizes
 // ---------------------------
 .code-tall {
@@ -139,7 +139,7 @@ pre[class*="language"] {
 .languagecss .token.string,
 .style .token.string {
 	color: $code-yellow;
-	
+
 	.language-bash & {
   	color: $code-white; } }
 
@@ -159,7 +159,7 @@ pre[class*="language"] {
 .token.important,
 .token.bold {
 	font-weight: bold; }
-	
+
 .token.italic {
 	font-style: italic; }
 

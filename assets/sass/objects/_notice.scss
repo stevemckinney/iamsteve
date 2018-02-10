@@ -4,9 +4,9 @@
 	position: relative;
 	border-radius: $radius;
 	padding: em($line) em($base-px);
-	box-shadow: 0 1px scale-lightness($tertiary-d1, -5%), 0 1px 1px $tertiary-d1;
+	box-shadow: 0 1px scale-color($tertiary-d1, $lightness: -5%), 0 1px 1px $tertiary-d1;
 	background: $white;
-	
+
 	margin: 0 0 em($line); }
 
 // Close
@@ -21,17 +21,17 @@
 	background: none;
 	transition: .2s;
 	opacity: .5;
-	
+
 	&:hover,
 	&:focus {
 		opacity: 1; }
-	
+
 	&:before {
 		@include experimental-value(top, calc(50% - 6px));
 		@include experimental-value(right, calc(50% - 6px));
 		position: absolute;
 		background: image-url("icons_dark.svg") 0 0 no-repeat;
-		
+
 		.no-csscalc & {
 			top: 50%;
 			right: 50%; } } }
@@ -42,13 +42,13 @@
 	content: "";
 	z-index: $z-index-1;
 	background-size: 84px auto; }
-	
+
 // Hidden
 // ---------------------------
 .notice {
 	-webkit-backface-visibility: hidden;
 	transition: .4s; }
-	
+
 .notice-hidden {
 	height: 0;
 	overflow: hidden;
@@ -68,7 +68,7 @@ $notices: (
 	$notice: unquote($notice);
 	$color: map-get(map-get($notices, $notice), color);
 	$icon: map-get(map-get($notices, $notice), icon);
-	
+
 	.notice-#{$notice}-body:before {
 		background-position: unquote($icon); } }
 
@@ -76,7 +76,7 @@ $notices: (
 	margin: 0;
 	color: $primary;
 	font-weight: 400;
-	
+
 	&:before {
 		display: inline-block;
 		margin: em(-6px) em($base-px) 0 em(3px);

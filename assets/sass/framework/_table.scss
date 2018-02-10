@@ -1,6 +1,6 @@
 // Default table vars
 // ---------------------------
-$default-table-main-color: scale-lightness($default-color, 50%) !default;
+$default-table-main-color: scale-color($default-color, $lightness: 50%) !default;
 $default-table-color: $default-color;
 $default-table-hover: true !default;
 $default-table-width: 100% !default;
@@ -26,31 +26,31 @@ $default-table-breakpoint: $b !default;
 	$responsive	: $default-table-responsive,
 	$th-border-width: $default-table-th-border-width,
 	$border-width: $default-table-border-width) {
-	
+
 	& {
 		margin: $margin;
 		padding: 0;
 		font-family: $font-family;
-		
+
 		@if $width {
 			width: $width; }
-			
+
 		@if $responsive {
 			@include breakpoint($c, max) {
 				display: block;
 				position: relative;
-				border: 1px solid scale-lightness($main-color, -10%); } } }
-	
+				border: 1px solid scale-color($main-color, $lightness: -10%); } } }
+
 	th,
 	td {
 		padding: $default-table-cell-padding;
 		text-align: left;
   		border-bottom: $border-width solid $main-color;
 		color: $color; }
-	
+
 	th {
 		border-width: $th-border-width; }
-		
+
 	tr {
 		@if $striped {
 			&:nth-child(even) {
@@ -64,42 +64,42 @@ $default-table-breakpoint: $b !default;
 					background: $main-color;
 					@if if-bright($main-color) == false {
 						color: invert($main-color); } } } } }
-	
+
 	@if $responsive {
 		@include breakpoint($default-table-breakpoint, max) {
 			thead {
 				float: left;
 				background: $main-color;
 				border-right: 2px solid $main-color; }
-				
+
 			td, th {
 				min-height: em($line*2); }
-				
+
 			tbody {
 				@include nowrap;
 				width: auto;
 				position: relative;
 				overflow-x: auto;
 				-webkit-overflow-scrolling: touch;
-				
-				tr { 
+
+				tr {
 					display: inline-block;
 					vertical-align: top;
 					margin-right: -4px; } }
-					
+
 			th,
 			td {
 				border-bottom: 1px solid $main-color; }
-				
+
 			td:last-child,
 			th:last-child {
 				border-bottom: none; }
-				
+
 			th,
 			td,
 			tbody,
 			thead,
-			thead tr { 
+			thead tr {
 				display: block; } } } }
 
 // Table styled
@@ -119,22 +119,22 @@ $default-table-styled-size: $default-size !default;
 ) {
 	@if $width {
 		width: $width; }
-		
+
 	text-align: left;
-	
+
 	td,
 	th {
 		padding: $size; }
-	
+
 	td {
 		border-bottom: 1px solid $border-color; }
-	
+
 	tr {
 		background: $row-color;
 		border: 1px solid $border-color;
 		border-top: none;
 		border-bottom: none; }
-	
+
 	th {
 		@include element-shading($color, $border: false);
 		border: 1px solid hsl(240, 7%, 40%); } }

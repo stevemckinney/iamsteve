@@ -3,7 +3,6 @@ var watch = require('gulp-watch');
 var plumber = require('gulp-plumber');
 var order = require('gulp-order');
 var rename = require('gulp-rename');
-var compass = require('gulp-compass');
 var sass = require('gulp-ruby-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
@@ -23,7 +22,8 @@ var src = {
   html: 'system/user/templates/**/*.html',
   js: 'assets/js/**/*.js',
   images: 'assets/images/*.png',
-  svg: 'assets/images/*.svg'
+  svg: 'assets/images/*.svg',
+  fonts: './assets/fonts/**/*.{ttf,woff,woff2,eot,svg}'
 };
 
 var path = {
@@ -48,7 +48,9 @@ var browserSyncOptions = {
 
 // CSS
 gulp.task('sass', () =>
-  sass(src.scss, { compass: true })
+  sass(src.scss, {
+    compass: false
+  })
     .on('error', sass.logError)
     .pipe(gulp.dest(src.css))
     .pipe(browserSync.reload({
@@ -57,7 +59,7 @@ gulp.task('sass', () =>
 );
 
 gulp.task('sass-build', () =>
-  sass(src.scss, { compass: true, style: 'compressed' })
+  sass(src.scss, { compass: false, style: 'compressed' })
     .on('error', sass.logError)
     .pipe(gulp.dest(src.css))
 );
@@ -85,6 +87,13 @@ gulp.task('critical', function () {
     .pipe(cssnano())
     .pipe(rename('critical.html'))
     .pipe(gulp.dest('./system/user/templates/default_site/_partials/'));
+});
+
+// Copy fonts
+gulp.task('fonts', function() {
+  return gulp
+    .src(src.fonts)
+    .pipe(gulp.dest('./dist/fonts'));
 });
 
 // Images

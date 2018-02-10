@@ -181,9 +181,10 @@
 // Codepen
 // ---------------------------
 .cp_embed_wrapper {
+  max-width: 738px;
+
   @include breakpoint($contain) {
     border-radius: $radius;
-    max-width: 738px;
     margin-left: auto; } }
 
 .codepen-wide .cp_embed_wrapper {
