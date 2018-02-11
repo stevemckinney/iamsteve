@@ -132,4 +132,4 @@ gulp.task('serve', ['browser-sync', 'watch'], function() {
 
 
 gulp.task('default', ['serve']);
-gulp.task('build', ['sass-build', 'autoprefixer']);
+gulp.task('build', ['sass-build', 'autoprefixer', 'critical', 'fonts']);
