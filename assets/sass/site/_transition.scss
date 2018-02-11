@@ -13,8 +13,8 @@ $no-output: false;
   // This transition happens when the close button is clicked
   // and should be faster than the .showing state
   transition:
-    max-height .2s .6s cubic-bezier(0.215, 0.61, 0.355, 1),
-    opacity .6s .6s cubic-bezier(0.215, 0.61, 0.355, 1); }
+    max-height .6s .3s cubic-bezier(0.215, 0.61, 0.355, 1),
+    opacity .6s .3s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 // Showing state — opening up
 .showing {

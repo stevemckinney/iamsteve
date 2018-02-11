@@ -64,7 +64,8 @@ $border-width: 2px;
       bottom: $base-px*1.5; } } }
 
 .input-search:focus + .button-search:before {
-  background-color: $blue; }
+  @include breakpoint($c) {
+    background-color: $blue; } }
 
 // Overlay
 // ---------------------------
