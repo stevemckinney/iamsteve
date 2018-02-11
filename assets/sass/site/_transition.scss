@@ -54,29 +54,30 @@ $no-output: false;
 .button-search {
   .hiding & {
     transition:
-      opacity .4s ease-out,
-      transform .2s ease-out; }
+      opacity .4s .1s ease-out,
+      transform .2s .1s ease-out; }
 
   .showing & {
     transition:
-      opacity .4s .2s ease-out,
-      transform .2s .2s ease-out; } }
+      opacity .4s .5s ease-out,
+      transform .2s .5s ease-out; } }
 
 .button-search:before {
   .hiding & {
+    right: 95%;
     opacity: 0;
-    transition:
-      opacity .2s ease-out; }
+    transition: .1s ease-out; }
 
   .showing & {
     transition:
-      opacity .6s .6s ease-out; } }
+      right .4s .7s ease-out,
+      opacity .4s .8s ease-out; } }
 
 .input-search {
   .hiding & {
     transition:
-      opacity .4s .05s ease-out,
-      transform .2s .05s ease-out; }
+      opacity .4s .2s ease-out,
+      transform .2s .2s ease-out; }
 
   .showing & {
     transition:

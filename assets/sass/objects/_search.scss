@@ -5,10 +5,10 @@ $border-width: 2px;
 .form-search {
   align-content: center;
   align-items: center;
-  
+
   @include breakpoint($c) {
     max-width: $measure-wide; }
-  
+
   @include breakpoint($c-max) {
     position: absolute;
     z-index: $z-index-3;
@@ -25,7 +25,7 @@ $border-width: 2px;
     border-radius: 0;
     border-top: $border-width solid $warm-l2;
     border-bottom: $border-width solid $warm-l2; }
-  
+
   @include breakpoint($c) {
     @include form(
       $type             : $default-form-type,
@@ -45,11 +45,11 @@ $border-width: 2px;
   padding: 28px 32px;
 
   @include breakpoint($c) {
-    padding: 32px $line*2.5 32px $line*1.25; }
-  
+    padding: 30px $line*2.5 34px $line*1.25; }
+
   &:active {
     color: $warm; }
-    
+
   &:before {
     content: "";
     position: absolute;
@@ -58,11 +58,14 @@ $border-width: 2px;
     bottom: $base-px;
     width: $border-width;
     background-color: $warm-l2;
-    
+
     @include breakpoint($c) {
       top: $base-px*1.5;
       bottom: $base-px*1.5; } } }
-      
+
+.input-search:focus + .button-search:before {
+  background-color: $blue; }
+
 // Overlay
 // ---------------------------
 .overlay-search {
@@ -73,7 +76,7 @@ $border-width: 2px;
   height: 100%;
   align-items: center;
   align-content: center;
-  
+
   @include breakpoint($c) {
     flex-flow: column;
     justify-content: center; } }
@@ -81,6 +84,6 @@ $border-width: 2px;
 .searched-posts {
   width: 100%;
   padding: $line*4 $line;
-  
+
   @include breakpoint($c) {
     text-align: center; } }
