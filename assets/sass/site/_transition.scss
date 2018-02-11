@@ -48,14 +48,14 @@ $no-output: false;
   transform: translate3d(0, 50%, 0); }
 
 .hiding .button-search {
-  transform: translate3d(0, 25%, 0); }
+  transform: translate3d(0, 12.5%, 0); }
 
 // Transitions
 .button-search {
   .hiding & {
     transition:
-      opacity .4s .1s ease-out,
-      transform .2s .1s ease-out; }
+      opacity .2s ease-out,
+      transform .2s ease-out; }
 
   .showing & {
     transition:
@@ -66,12 +66,12 @@ $no-output: false;
   .hiding & {
     right: 95%;
     opacity: 0;
-    transition: .1s ease-out; }
+    transition: .2s ease-out; }
 
   .showing & {
     transition:
-      right .4s .7s ease-out,
-      opacity .4s .8s ease-out; } }
+      right .4s .6s ease-out,
+      opacity .4s .6s ease-out; } }
 
 .input-search {
   .hiding & {
