@@ -187,9 +187,14 @@
     border-radius: $radius;
     margin-left: auto; } }
 
-.codepen-wide .cp_embed_wrapper {
-  @include breakpoint($contain) {
-    max-width: 896px; } }
+.codepen-wide {
+  .cp_embed_wrapper {
+    @include breakpoint($site-width-max) {
+      margin-left: auto;
+      margin-right: auto; }
+
+    @include breakpoint($contain) {
+      max-width: 896px; } } }
 
 // Lists
 // ---------------------------
