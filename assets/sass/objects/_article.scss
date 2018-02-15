@@ -87,11 +87,8 @@
       width: 100%; } }
 
   // Links
-  p a,
-  li a {
-    color: $neutral;
-    text-decoration: underline;
-    text-decoration-color: $neutral; }
+  p a {
+    @extend .link; }
 
   img {
     transition: .2s box-shadow; }
@@ -109,10 +106,12 @@
       margin-top: $line; } }
 
   // For .fragment
-  h2 {
+  h2,
+  li a {
     position: relative; }
 
-  #{headings()} {
+  #{headings()},
+  li {
     transition: .2s ease-out;
 
     a:not(.fragment):after {
@@ -120,7 +119,7 @@
       display: inline-block;
       position: relative;
       transition: .2s ease-out;
-      top: $base-px/4;
+      top: .19047619em; // 4px/21px
       left: $base-px/2;
       width: 1em;
       height: 1em;

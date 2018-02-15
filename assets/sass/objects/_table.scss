@@ -8,7 +8,13 @@ table {
 
 thead tr {
   border-bottom: 3px solid $neutral-l5; }
- 
+
+tbody tr {
+  @extend .transition;
+
+  &:hover,
+  &:focus {
+    background-color: rgba($neutral-l5, .4); } }
 
 tbody tr:not(:last-child) {
   border-bottom: 1px solid $neutral-l5; }
@@ -17,7 +23,7 @@ th,
 td {
   padding-top: 3px;
   padding-bottom: 3px;
-  
+
   @include breakpoint($c-max) {
     padding-left: 16px;
     padding-right: 16px; } }
