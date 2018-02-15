@@ -13,7 +13,7 @@
 // ---------------------------
 .sans { @include fonts("sans"); }
 .serif { @include fonts("serif"); }
-	
+
 // Colour
 // ---------------------------
 $text-color-helpers: (
@@ -45,7 +45,7 @@ address { font-style: normal; }
 .chunky {
   position: relative;
   z-index: $z-index-2;
-  
+
   &:after {
     content: "";
     position: absolute;
@@ -55,67 +55,59 @@ address { font-style: normal; }
     background: $primary-l4;
     width: 4em;
     height: 9px;
-    
+
     @include breakpoint($b) {
       bottom: -2px;
       height: 12px; } }
-      
+
   &[class*="f1"]:after {
     bottom: 0; }
-  
+
   &.secondary:after {
     background: $secondary-l3; }
-  
+
   &.primary:after {
     background: $tertiary-l3; } }
 
 // Links
 // ---------------------------
-.link { 
-  // A discrete link style
-  font-weight: font-weight(semibold);
-  position: relative;
-  
-  &:after {
-    content: "";
-    position: absolute;
-    transition: .6s ease-out;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-image: linear-gradient(to right, $primary, $tertiary, $secondary);
-    background-size: 600% auto;
-    background-position: -852px 0;
-    background-repeat: no-repeat; }
-  
-  &:hover:after,
-  &:focus:after {
-    background-position: 0 0; }
-  
-  &:active {
-    transform: scale(.9); } }
+$underline-color: #FF44FF;
+
+.link {
+  transition: background-position 0.15s linear 0.1s, box-shadow 0.15s linear 0s;
+  background-image: linear-gradient(to left, $underline-color 0%, $underline-color 100%);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0 1em;
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to left, $underline-color 0%, $underline-color 100%);
+    background-position: 0 0em;
+    box-shadow: 0.2em 0 0 $underline-color, -0.2em 0 0 $underline-color;
+    transition: background-position 0.1s linear 0s, box-shadow 0.1s linear 0.1s; } }
 
 .link-social {
   text-align: center;
   font-weight: font-weight(semibold);
   border: 1px solid $neutral-l4;
   padding: $base-px 0;
-  
+
   &:hover,
   &:focus {
     background-color: $neutral-l9; }
-  
+
   &:first-of-type {
     border-radius: $radius 0 0 $radius; }
-  
+
   &:nth-of-type(2) {
     border-left: none; }
-  
-  &:nth-of-type(2),  
+
+  &:nth-of-type(2),
   &:nth-of-type(3) {
     border-right: none; }
-  
+
   &:last-child {
     border-radius: 0 $radius $radius 0; } }
 
@@ -123,21 +115,21 @@ address { font-style: normal; }
 // ---------------------------
 @each $name, $color in $social {
 	.link-#{$name} { color: $color; } }
-	
+
 // Links paired with an icon
 // eg: <a class="link-icon"><span class="icon icon-medium"><svg></svg></span></a>
 .link-icon {
   display: flex;
   align-items: center;
-  
+
   &:not(.disabled):hover .icon-right,
   &:not(.disabled):focus .icon-right {
     transform: translate3d($base-px/3, 0, 0); }
-  
+
   &:not(.disabled):hover .icon-left,
   &:not(.disabled):focus .icon-left {
     transform: translate3d(-#{$base-px/3}, 0, 0); }
-  
+
   .icon {
     position: relative;
     top: 1px;
@@ -152,14 +144,14 @@ address { font-style: normal; }
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: .125em; }
-	
+
 // Text mixins
 // ---------------------------
 @mixin small-caps {
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: em(2px); }
-	
+
 @mixin with-border {
 	padding-bottom: rhythm(1, $base-px*4);
 	border-bottom: 1px solid $primary; }
