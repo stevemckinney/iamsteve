@@ -75,18 +75,16 @@ $underline-color: #FF44FF;
 
 .link {
   transition: background-position 0.15s linear 0.1s, box-shadow 0.15s linear 0s;
-  background-image: linear-gradient(to left, $underline-color 0%, $underline-color 100%);
-  background-size: 100%;
+  background-image: linear-gradient(to left, $primary, $tertiary, $secondary);
+  background-size: 400%;
   background-repeat: no-repeat;
   background-position: 0 1em;
   overflow: hidden;
 
   &:hover {
     cursor: pointer;
-    background-image: linear-gradient(to left, $underline-color 0%, $underline-color 100%);
-    background-position: 0 0em;
-    box-shadow: 0.2em 0 0 $underline-color, -0.2em 0 0 $underline-color;
-    transition: background-position 0.1s linear 0s, box-shadow 0.1s linear 0.1s; } }
+    background-image: linear-gradient(to left, $primary, $tertiary, $secondary);
+    background-position: 100% 1em; } }
 
 .link-social {
   text-align: center;
