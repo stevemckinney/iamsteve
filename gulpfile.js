@@ -81,7 +81,11 @@ gulp.task('critical', function () {
       width: 1680,
       height: 1200,
       strict: true,
-      userAgent: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+      minify: true,
+      userAgent: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+      include: [
+        '.headline-b'
+      ]
     }))
     .pipe(gulp.dest('./dist/css/'))
     .pipe(cssnano())
