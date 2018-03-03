@@ -2,16 +2,13 @@
 // ---------------------------
 .entry-content {
   @include breakpoint(1200px) {
-    max-width: $contain;
-    margin-left: auto;
-    margin-right: calc(50% - #{($measure + ( $line * 4 ) ) / 2}); }
+    max-width: $contain; }
 
   img {
     display: block;
     margin-bottom: $line;
 
     @include breakpoint($cd) {
-      max-width: 738px;
       border-radius: $radius; } }
 
   .wide-image {
@@ -38,18 +35,6 @@
     // 4px aligns back to baseline
     @include breakpoint($b) {
       margin-bottom: $line + 4px; } }
-
-  // This could be really stupid in the long run
-  > *:not(figure):not(div), img {
-    margin-left: auto;
-
-    @include breakpoint($e-max) {
-      margin-right: auto; } }
-
-  // Likewise
-  > *:not(figure):not(img):not(div),
-  > .footnotes {
-    max-width: $measure + ( $line * 4 ) + 2px; }
 
   // Tables don't like padding
   > table {

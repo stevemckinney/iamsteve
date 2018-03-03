@@ -9,6 +9,17 @@
 .fill-none {
   fill: none; }
 
+.fill-white {
+  fill: $white; }
+
+// Fill "shade 1"
+.primary .fill-s1 {
+  fill: $primary-l3; }
+
+.neutral .fill-s1 {
+  fill: $neutral-l3; // #eeeaec
+}
+
 // Icon related
 // ---------------------------
 .sw-2 {
@@ -21,12 +32,12 @@
   stroke-width: 4px; }
 
 .sw-6 {
-  stroke-width: 4px; }
+  stroke-width: 6px; }
 
 .sl-r {
   stroke-linecap: round;
   stroke-linejoin: round; }
-  
+
 // When some SVG resizes with the browser it doesn’t always adjust the height.
 // Setting both a max height and height seems to solve this for the most part.
 svg {
