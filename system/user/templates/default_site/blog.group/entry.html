@@ -43,25 +43,31 @@
   </div>
   <article role="article" class="entry-content pt6 pb6">
     <header class="entry-header pb4 p0-d">
-      <div class="meta dashes">
+      <h1 class="f1 headline-b secondary pt2 mb0 entry-title">{title}</h1>
+      <div class="meta">
         {date}
         {categories channel="blog" style="linear" parent_only="yes" limit="1"}
           <a href="{path='blog/index'}" rel="category tag">{category_name}</a>
         {/categories}
+        <button class="button button-offline">
+          <span class="button-text">Save for offline</span>
+          {!--<span class="loading"></span>--}
+        </button>
+        <span>{exp:stash:get name="finished_reading_time"}</span>
+        <div class="visuallyhidden">
+          <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
+          <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
+            {edit_date format="%Y/%m/%d"}
+          </time>
+        </div>
       </div>
-      <div class="visuallyhidden">
-        <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
-        <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
-          {edit_date format="%Y/%m/%d"}
-        </time>
-      </div>
-      <h1 class="f1 headline-b secondary pt2 mb0 entry-title">{title}</h1>
-      <button class="button button-offline">
-        <span class="button-text">Save for offline</span>
-        {!--<span class="loading"></span>--}
-      </button>
     </header>
-    {exp:streeng find='\<p><img src="|"><\/p>' replace='<img src="|">' insensitive="yes"}{article}{/exp:streeng}
+    {exp:reading_time}
+      {exp:stash:set name="content" parse_tags="yes" output="yes"}
+        {finished_reading_time:relative}
+        {exp:streeng find='\<p><img src="|"><\/p>' replace='<img src="|">' insensitive="yes"}{article}{/exp:streeng}
+        {/exp:stash:set}
+    {/exp:reading_time}
   </article>
 
 {/exp:channel:entries}
