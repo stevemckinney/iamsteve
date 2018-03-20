@@ -30,15 +30,13 @@
         {entry_date format="%F %j%S %Y"}
       </time>
   	</div>
-		<h3 class="f5 f4-b {if '{exp:iamsteve:is_mobile}' != 1}mb1{if:else}mb2{/if} primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+		<h3 class="f5 f4-b mb1 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
 
-	  {if '{exp:iamsteve:is_mobile}' != 1}
   	  {if segment_1 == 'search'}
   	    <p>{excerpt}</p>
   	  {if:else}
         {excerpt}
   	  {/if}
-	  {/if}
 
     <div class="meta flex between items-center dashes">
       {categories channel="blog" style="linear" parent_only="yes" limit="1"}
