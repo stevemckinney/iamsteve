@@ -12,16 +12,16 @@
   transition: .2s;
   background-color: $white;
   box-shadow: inset 0 0 0 2px $tertiary;
-  color: scale-lightness($tertiary, -10%);
+  color: scale-color($tertiary, $lightness: -10%);
   font-size: $base-font-size;
   font-weight: font-weight(semibold);
-  
+
   // To avoid double border
   margin-right: -2px;
-  
+
   &:not(.disabled) {
     z-index: 1; }
-  
+
   svg {
     fill: $tertiary; } }
 
@@ -30,12 +30,12 @@
 
 .paginate-right {
   border-radius: 0 20em 20em 0; }
-  
+
 .paginate-left,
 .paginate-right {
   padding: $base-px;
   font-weight: font-weight(semibold);
-  
+
   &:not(.disabled):hover,
   &:not(.disabled):focus {
     z-index: 2;
@@ -43,17 +43,17 @@
 
 .paginate-between {
   padding: 0 $base-px;
-  
+
   a, span {
     position: relative;
     display: inline-block;
     padding: $base-px 0;
     min-width: 32px;
     text-align: center;
-    
+
     &.active {
       color: $primary;
-      
+
       &:before {
         content: "";
         width: $line;
@@ -65,10 +65,10 @@
 .pagination-offset {
   position: relative;
   z-index: $z-index-3;
-  
+
   @include breakpoint($c-max) {
     margin-bottom: double($line); }
-  
+
   @include breakpoint($c) {
     margin-bottom: -24px; } }
 
@@ -78,6 +78,6 @@
   background-color: $tertiary-l4;
   box-shadow: inset 0 0 0 2px $tertiary-l1;
   color: $tertiary-l1;
-  
+
   svg {
     fill: $tertiary-l1; } }

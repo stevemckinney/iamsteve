@@ -82,8 +82,8 @@ class EE_Core {
 		// application constants
 		define('IS_CORE',		FALSE);
 		define('APP_NAME',		'ExpressionEngine'.(IS_CORE ? ' Core' : ''));
-		define('APP_BUILD',		'20170626');
-		define('APP_VER',		'3.5.10');
+		define('APP_BUILD',		'20180124');
+		define('APP_VER',		'3.5.15');
 		define('APP_VER_ID',	'');
 		define('SLASH',			'&#47;');
 		define('LD',			'{');
@@ -95,6 +95,7 @@ class EE_Core {
 		define('AJAX_REQUEST',	ee()->input->is_ajax_request());
 		define('USERNAME_MAX_LENGTH', 75);
 		define('PASSWORD_MAX_LENGTH', 72);
+		define('URL_TITLE_MAX_LENGTH', 200);
 		define('DOC_URL',       'https://docs.expressionengine.com/v3/');
 
 		ee()->load->helper('language');
@@ -480,7 +481,7 @@ class EE_Core {
 		}
 
 		// Load common helper files
-		ee()->load->helper(array('url', 'form', 'quicktab'));
+		ee()->load->helper(array('url', 'form', 'quicktab', 'file'));
 
 		// Certain variables will be included in every page, so we make sure they are set here
 		// Prevents possible PHP errors, if a developer forgets to set it explicitly.

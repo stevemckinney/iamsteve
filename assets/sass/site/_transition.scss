@@ -13,8 +13,8 @@ $no-output: false;
   // This transition happens when the close button is clicked
   // and should be faster than the .showing state
   transition:
-    max-height .2s .6s cubic-bezier(0.215, 0.61, 0.355, 1),
-    opacity .6s .6s cubic-bezier(0.215, 0.61, 0.355, 1); }
+    max-height .6s .3s cubic-bezier(0.215, 0.61, 0.355, 1),
+    opacity .6s .3s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 // Showing state — opening up
 .showing {
@@ -48,35 +48,36 @@ $no-output: false;
   transform: translate3d(0, 50%, 0); }
 
 .hiding .button-search {
-  transform: translate3d(0, 25%, 0); }
+  transform: translate3d(0, 12.5%, 0); }
 
 // Transitions
 .button-search {
   .hiding & {
     transition:
-      opacity .4s ease-out,
+      opacity .2s ease-out,
       transform .2s ease-out; }
 
   .showing & {
     transition:
-      opacity .4s .2s ease-out,
-      transform .2s .2s ease-out; } }
+      opacity .4s .5s ease-out,
+      transform .2s .5s ease-out; } }
 
 .button-search:before {
   .hiding & {
+    right: 95%;
     opacity: 0;
-    transition:
-      opacity .2s ease-out; }
+    transition: .2s ease-out; }
 
   .showing & {
     transition:
-      opacity .6s .6s ease-out; } }
+      right .4s .6s ease-out,
+      opacity .4s .6s ease-out; } }
 
 .input-search {
   .hiding & {
     transition:
-      opacity .4s .05s ease-out,
-      transform .2s .05s ease-out; }
+      opacity .4s .2s ease-out,
+      transform .2s .2s ease-out; }
 
   .showing & {
     transition:
@@ -135,7 +136,9 @@ $no-output: false;
 .lazyloaded,
 .card-image {
 	opacity: 1;
-	transition: 2s cubic-bezier(0.215, 0.61, 0.355, 1); }
+	transition:
+	  transform 2s cubic-bezier(0.215, 0.61, 0.355, 1),
+	  opacity 2s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 .card-image.loading {
   transform: translateY(8px); }

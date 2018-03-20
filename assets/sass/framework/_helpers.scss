@@ -8,7 +8,7 @@
     content: "";
     display: table;
     clear: both; } }
-    
+
 %grid,
 %clear {
 	@include pie-clearfix; }
@@ -16,7 +16,9 @@
 // Resets
 // ---------------------------
 %input-reset {
-	@include appearance(none); }
+  -webkit-appearance: none;
+	-moz-appearance: none;
+  appearance: none; }
 
 // Mixins
 // ---------------------------
@@ -28,14 +30,14 @@
 	$height	: false
 ) {
 	$width: $width;
-	
+
 	@if $height != none {
 		$height: $height; }
 
 	@if $height {
 		width: #{$width};
 		height: #{$height}; }
-		
+
 	@else {
 		width: #{$width};
 		height: #{$width}; } }
@@ -49,10 +51,10 @@
 ) {
 
 	$set-height: if($set-height == true, em($default-set-height), em($set-height, $context));
-		
+
 	height: $set-height;
 	line-height: $set-height;
-	
+
 	@if $padding {
 		padding: $padding; } }
 
@@ -66,7 +68,7 @@
 		otf: "opentype",
 		ttf: "truetype"
 	);
-  
+
 	@each $ext in $exts {
 		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
 		$src: append($src, font-url(quote($path + "." + $ext)) format(quote($format)), comma);

@@ -3,11 +3,11 @@
 ul, ol {
   padding-left: 0;
 	margin: 0 0 $line 0;
-	
-	ul, ol { 
+
+	ul, ol {
 		margin: 0 0 0 em(21px, $base-font-size); } }
 
-ul { 
+ul {
 	list-style: square; }
 
 // Lists
@@ -15,7 +15,7 @@ ul {
 %list-custom-bullet {
   li {
 		list-style: none;
-		
+
 		&:before {
 			content: "";
 			display: inline-block;
@@ -25,17 +25,23 @@ ul {
 			background-color: $secondary;
 			margin: .666em 12px 0 -18px;
 			color: $secondary; } } }
-			
+
 .list-default {
   margin-left: 0;
 	padding-left: 0;
-	list-style: none; }
+
+	li {
+  	list-style: none; } }
 
 .list-custom-bullet {
 	@extend %list-custom-bullet; }
 
+.list-nudge {
+  @include breakpoint($c-max) {
+    margin-left: 18px; } }
+
 // Definition
-// ---------------------------  
+// ---------------------------
 dt {
   display: block;
 	font-weight: font-weight(bold); }

@@ -14,77 +14,77 @@
 	$color: $color;
 	$color-1: nth($color, 1);
 	$color-2: if(length($color) > 1, nth($color, 2), null);
-	
+
 	// YIQ
 	// ---------------------------
 	$yiq-threshold: $default-element-yiq-threshold;
 	$yiq-is-light: yiq-is-light($color-1, $yiq-threshold);
-	
+
 	// Hover
 	// ---------------------------
 	// Hover state should be slightly lighter
 	@if $state == hover {
 		$color-1: scale-color($color-1, $lightness: if($dark-bg, 5%, if(lightness($color-1) > 80%, 20%, 10%)));
-		
+
 		@if $color-2 {
 			$color-2: scale-color($color-2, $lightness: if($dark-bg, 5%, if(lightness($color-2) > 80%, 20%, 10%))); } }
-	
+
 	// Light colors
 	// ---------------------------
-	$light-color: 
-		if($yiq-is-light, scale-lightness($color-1, 40%), 
+	$light-color:
+		if($yiq-is-light, scale-lightness($color-1, 40%),
 			if(lightness($color-1) > 80%, scale-lightness($color-1, 30%), scale-lightness($color-1, 20%)));
 	$highlight-color: scale-lightness(rgba($light-color, .4), 20%);
-	
+
 	// Dark colors
 	// ---------------------------
 	$dark-color: scale-color($color-1, $lightness: -10%);
 	$border-color: if($yiq-is-light, scale-color($color-1, $lightness: -10%), scale-color($color-1, $lightness: -30%));
 	$border-dark-color: scale-lightness(rgba($border-color, .4), -25%);
-	
+
 	// Dark background adjustments
 	// ---------------------------
 	@if $dark-bg {
 		$border-color: scale-lightness($dark-color, -80%);
 		$border-dark-color: scale-lightness($border-color, -10%);
-		
+
 		@if $color-2 {
 			$color-2: scale-lightness($color-2, -5%); } }
-	
+
 	// State
 	// ---------------------------
 	@if $state == (normal or disabled) {
 		color: if($state == disabled, scale-lightness($color-1, -30%), yiq-contrast-color($color-1, scale-lightness($color-1, -40%), $white, $yiq-threshold)); }
-	
+
 	// Background
 	// ---------------------------
 	@if $color-1 and $color-2 {
 		background-image: linear-gradient($color-1, $color-2); }
-		
+
 	@else {
 		background: $color-1; }
-	
+
 	// Shading styles
 	// ---------------------------
 	@if $shading and $state != disabled {
 		$shadow-inner: if($default-element-inner-shadow, inset 0 -1px $border-dark-color, compact(false));
 		$shadow-highlight: if($default-element-highlight, inset 0 1px $highlight-color, compact(false));
 		$shadow: compact($shadow-highlight, $shadow-inner);
-		
-		$shadow-inner-active: 
-			if($default-element-inner-shadow, 
+
+		$shadow-inner-active:
+			if($default-element-inner-shadow,
 				compact(inset 0 1px $border-dark-color, inset 0 2px $border-color), compact(false));
 		$shadow-active: compact(inset 0 if($border, 2px, 1px) 2px $dark-color, $shadow-inner-active);
-		
+
 		box-shadow:
-			if($border, 
-				compact(inset 0 if($state != active, -1px, 1px) $border-dark-color, 
+			if($border,
+				compact(inset 0 if($state != active, -1px, 1px) $border-dark-color,
 				inset 0 0 0 1px $border-color), compact(false)),
 			if($state != active, $shadow, $shadow-active); }
-		
-	@else {		
-		@if $border { 
+
+	@else {
+		@if $border {
 			box-shadow: inset 0 0 0 1px $border-color,
 									if($state != active, compact(false), inset 0 if($border, 2px, 1px) 2px $dark-color); }
-		@else if $border != true and $state == active { 
+		@else if $border != true and $state == active {
 			box-shadow: inset 0 1px 2px $dark-color; } } }

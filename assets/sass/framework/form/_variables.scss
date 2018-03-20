@@ -9,7 +9,7 @@ $default-form-type: text !default;
 
 // Default styling
 // ---------------------------
-$default-form-color: scale-lightness($white, -20%) !default;
+$default-form-color: scale-color($white, $lightness: -20%) !default;
 $default-form-text-color: #666 !default;
 $default-form-checked-color: #6ad4b6 !default;
 $default-form-focus-color: $alt !default;
@@ -23,7 +23,7 @@ $default-form-shading: true !default;
 
 // Text elements map
 $default-text-elements: (
-	text: text, 
+	text: text,
 	textarea: textarea,
 	password: password,
 	search: search,

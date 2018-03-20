@@ -77,6 +77,9 @@
   -ms-overflow-style: -ms-autohiding-scrollbar;
   padding: 0 $base-px*1.5 0 4px;
 
+  &::-webkit-scrollbar {
+    display: none; }
+
   &.flickity-enabled {
     padding: 0; }
 
