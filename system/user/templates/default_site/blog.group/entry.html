@@ -22,7 +22,7 @@
   {if no_results}{redirect="404"}{/if}
   <span style="display:none">Viewed: {view_count_one}</span>
 
-  <div class="pt4 pb4 pt6-b pb6-b pt8-d pb8-d featured-image entry-image loading" role="presentation" style="background-color: {if image}{background}{if:else}{color}{/if}">
+  <div class="featured-image entry-image loading" role="presentation" style="background-color: {if image}{background}{if:else}{color}{/if}">
     {if image}
   	  {image}
   	    {if url:large}
@@ -41,35 +41,42 @@
       {/categories}
     {/if}
   </div>
-  <article role="article" class="entry-content pt6 pb6">
-    <header class="entry-header pb4 p0-d">
-      <h1 class="f1 headline-b secondary pt2 mb0 entry-title">{title}</h1>
-      <div class="meta">
-        {date}
-        {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-          <a href="{path='blog/index'}" rel="category tag">{category_name}</a>
-        {/categories}
-        <button class="button button-offline">
-          <span class="button-text">Save for offline</span>
-          {!--<span class="loading"></span>--}
-        </button>
-        <span>{exp:stash:get name="finished_reading_time"}</span>
-        <div class="visuallyhidden">
-          <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
-          <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
-            {edit_date format="%Y/%m/%d"}
-          </time>
+  {exp:reading_time}
+    <article role="article" class="entry-content pt6 pb6 m-center contain contain-medium contain-large">
+      <header class="entry-header relative pb4 p0-d">
+        <h1 class="f1 headline-b secondary pt2 mb0 entry-title">{title}</h1>
+        <div class="meta warm-l3 off-left">
+          <span class="meta-item mb2 flex items-center">{gv_date}{date}</span>
+          {categories channel="blog" style="linear" parent_only="yes" limit="1"}
+            <a href="{path='blog/index'}" class="meta-item mb2 flex items-center" rel="category tag">
+              {if category_id == "7"}
+                {gv_design}
+              {if:elseif category_id == "2"}
+                {gv_code}
+              {if:else}
+                {gv_category}
+              {/if}
+              {category_name}
+            </a>
+          {/categories}
+          <span class="meta-item mb2 flex items-center">{gv_time}{finished_reading_time:relative}</span>
+          <hr class="mb2">
+          <button class="button button-offline p0 meta-item flex items-center">
+            {gv_save}
+            <span class="button-text">Make available offline</span>
+            {!--<span class="loading"></span><span class="secondary">{gv_saved}</span>--}
+          </button>
+          <div class="visuallyhidden">
+            <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
+            <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
+              {edit_date format="%Y/%m/%d"}
+            </time>
+          </div>
         </div>
-      </div>
-    </header>
-    {exp:reading_time}
-      {exp:stash:set name="content" parse_tags="yes" output="yes"}
-        {finished_reading_time:relative}
-        {exp:streeng find='\<p><img src="|"><\/p>' replace='<img src="|">' insensitive="yes"}{article}{/exp:streeng}
-        {/exp:stash:set}
-    {/exp:reading_time}
-  </article>
-
+      </header>
+      {exp:streeng find='\<p><img src="|"><\/p>' replace='<img src="|">' insensitive="yes"}{article}{/exp:streeng}
+    </article>
+  {/exp:reading_time}
 {/exp:channel:entries}
 
 {embed="include/next"}
