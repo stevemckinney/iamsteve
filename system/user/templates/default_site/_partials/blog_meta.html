@@ -1,15 +1,15 @@
 <div class="meta dashes">
   {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-    <a href="{path='blog/index'}" rel="category tag">{category_name}</a>
+    <a href="{path='blog/index'}" rel="category tag" class="warm">{category_name}</a>
   {/categories}
 
   {if segment_2 != "entry"}
-    <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
+    <a href="{title_permalink='blog/entry'}" rel="bookmark" class="warm secondary-hover link-icon">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
   {/if}
 </div>
 <div class="visuallyhidden">
-  <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
-  <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
+  <a href="{site_url}" class="author vcard url fn warm" rel="author">Steve McKinney</a>
+  <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="warm secondary-hover updated">
     {edit_date format="%Y/%m/%d"}
   </time>
 </div>
