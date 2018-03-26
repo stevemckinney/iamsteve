@@ -184,7 +184,7 @@ class Iamsteve {
 
   public function background($image = '')
   {
-    $image =  urlencode(ee()->TMPL->fetch_param('image'));
+    $image =  ee()->TMPL->fetch_param('image');
 
     switch ( strtolower( pathinfo( $image, PATHINFO_EXTENSION ) ) )
     {
