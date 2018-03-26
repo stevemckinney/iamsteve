@@ -14,6 +14,7 @@ const iamsteve = (function iamsteve() {
   const field = document.getElementById('keywords');
   const currentPath = window.location.pathname;
   const cacheButton = document.querySelector('.button-offline');
+  const cacheButtonText = document.querySelector('.button-text');
   const imageArray = document.querySelectorAll('img');
 
   // Private
@@ -78,12 +79,20 @@ const iamsteve = (function iamsteve() {
 
             // Update UI to indicate success
             updateCache.then(() => {
-              cacheButton.textContent = 'Available offline';
+              cacheButtonText.textContent = 'Available offline';
             });
 
             // Or catch any errors if it doesn't succeed
             updateCache.catch(() => {
-              cacheButton.textContent = 'Couldn’t save. Please try again.';
+              cacheButtonText.textContent = 'Couldn’t save';
+
+              setTimeout(function() {
+                cacheButtonText.textContent = 'Please try again';
+              }, 1000);
+
+              setTimeout(function() {
+                cacheButtonText.textContent = 'Make available offline';
+              }, 2000);
             });
           });
         });
