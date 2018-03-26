@@ -25,8 +25,8 @@
     {/if}
 	</a>
 	<div class="card-body">
-  	<div class="meta dashes mb2">
-    	<time datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
+  	<div class="meta flex between items-center dashes mb2">
+    	<time class="warm secondary-hover" datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
         {entry_date format="%F %j%S %Y"}
       </time>
   	</div>
@@ -38,13 +38,13 @@
         {excerpt}
   	  {/if}
 
-    <div class="meta dashes">
+    <div class="meta flex between items-center dashes">
       {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-        <a href="{path='blog/index'}" rel="category tag">{category_name}</a>
+        <a href="{path='blog/index'}" rel="category tag" class="warm secondary-hover">{category_name}</a>
       {/categories}
 
       {if segment_2 != "entry"}
-        <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
+        <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon warm secondary-hover">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
       {/if}
     </div>
     <div class="visuallyhidden">

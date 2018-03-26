@@ -1,11 +1,6 @@
 // Entry content
 // ---------------------------
 .entry-content {
-  @include breakpoint(1200px) {
-    max-width: $contain;
-    margin-left: auto;
-    margin-right: calc(50% - #{($measure + ( $line * 4 ) ) / 2}); }
-
   img {
     display: block;
     margin-bottom: $line;
@@ -16,10 +11,7 @@
 
   .wide-image {
     @include breakpoint(1024px + 48px) {
-      max-width: 1024px; } }
-
-  .meta {
-    max-width: $measure; } }
+      max-width: 1024px; } } }
 
 // Scoped font sizes/alignment
 // ---------------------------
@@ -42,9 +34,7 @@
   // This could be really stupid in the long run
   > *:not(figure):not(div), img {
     margin-left: auto;
-
-    @include breakpoint($e-max) {
-      margin-right: auto; } }
+    margin-right: auto; }
 
   // Likewise
   > *:not(figure):not(img):not(div),
@@ -221,8 +211,8 @@
   @include breakpoint($site-width) {
     position: absolute;
     bottom: 0;
-    left: 100%;
-    width: 220px;
+    right: 0;
+    width: 246px;
     text-align: left;
 
     &:before {
@@ -241,7 +231,13 @@
 
 // Specific pieces of content
 // ---------------------------
+.page-entry {
+  margin-top: 92px;
+}
 .featured-image {
+  border-radius: $line;
+  max-width: $contain + 48px;
+  margin: auto;
   overflow: hidden;
   display: flex;
   min-height: 240px;
