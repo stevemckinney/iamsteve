@@ -86,11 +86,11 @@ const iamsteve = (function iamsteve() {
             updateCache.catch(() => {
               cacheButtonText.textContent = 'Couldn’t save';
 
-              setTimeout(function() {
+              setTimeout(() => {
                 cacheButtonText.textContent = 'Please try again';
               }, 1000);
 
-              setTimeout(function() {
+              setTimeout(() => {
                 cacheButtonText.textContent = 'Make available offline';
               }, 2000);
             });
