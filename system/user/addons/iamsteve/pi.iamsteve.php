@@ -11,18 +11,18 @@
  * @link        https://github.com/EllisLab/Reading-Time
  */
 class Iamsteve {
-  
+
   public $return_data = '';
   private $json_ld_open;
   private $json_ld_close;
   private $base_url;
   private $site_name;
-  
+
   public function __construct()
   {
     $this->EE = get_instance();
     $this->content = ee()->TMPL->tagdata;
-    
+
     // Find the global theme_url variable
     if($this->EE->config->item('global_vars')['global:theme_url'] !== false)
     {
@@ -32,25 +32,25 @@ class Iamsteve {
     {
       $this->base_url = $this->EE->config->item('base_url');
     }
-    
+
     // Find the site_name
     if($this->EE->config->item('site_name') !== false)
     {
       $this->site_name = $this->EE->config->item('site_name');
     }
-    
+
     // Setup openings tags
     $this->json_ld_open = '<script type="application/ld+json"> {';
     $this->json_ld_close = '} </script>';
   }
-  
+
   public function sentences($count = 3)
   {
     $count = (int) ee()->TMPL->fetch_param('sentences', '3');
     $maxlen = $count;
     $string = $this->content;
     $content = $this->content;
-    
+
     $dot = ".";
 
     $position = stripos($content, $dot); //find first dot position
@@ -67,14 +67,14 @@ class Iamsteve {
       elseif ( $first_two ) return $first_two . '.'; //add a dot
     }
   }
-  
+
   public function fixer($theurl = '')
 	{
 		if ($theurl == '')
     {
       $theurl = ee()->TMPL->tagdata;
     }
-    
+
 		$removetrailingslash = ee()->TMPL->fetch_param('removetrailingslash');
 
 		if ($removetrailingslash == 'yes' || $removetrailingslash == 'true')
@@ -91,16 +91,16 @@ class Iamsteve {
 		$this->return_data = preg_replace($patterns, $replacements, $theurl);
 		return $this->return_data;
 	}
-  
+
   public function json_ld()
-  { 
+  {
     $html = $this->json_ld_person();
     $html .= $this->json_ld_organisation();
     $html .= $this->json_ld_website();
-    
+
     return $html;
   }
-  
+
   public function json_ld_website()
   {
     $html = $this->json_ld_open;
@@ -111,11 +111,11 @@ class Iamsteve {
       $html .= '"url": "' . $this->base_url . '",';
     $html .= $this->json_ld_close;
   }
-  
+
   public function json_ld_person()
   {
     $html = $this->json_ld_open;
-    
+
       $html .= '"@context": "http://schema.org",';
       $html .= '"@type": "Person",';
       $html .= '"name": "Steve McKinney",';
@@ -131,26 +131,26 @@ class Iamsteve {
         $html .= '"@type": "City",';
         $html .= '"name" : "Manchester"';
       $html .= '}';
-      
+
     $html .= $this->json_ld_close;
-    
+
     return $html;
   }
-  
+
   public function json_ld_organisation()
   {
     $html = $this->json_ld_open;
-    
+
       $html .= '"@context": "http://schema.org",';
       $html .= '"@type": "Organization",';
       $html .= '"url": "' . $this->base_url . '",';
       $html .= '"logo": "' . $this->base_url . '/assets/images/iamsteve-logo.png"';
-    
+
     $html .= $this->json_ld_close;
-    
+
     return $html;
   }
-  
+
   public function json_ld_list_item($position, $id, $name)
   {
     $html = '{';
@@ -161,51 +161,51 @@ class Iamsteve {
         $html .= '"name": "' . $name . '"';
       $html .= '}';
     $html .= '}';
-    
+
     return $html;
   }
-  
+
   public function json_ld_breadcrumbs()
   {
     $html = $this->json_ld_open;
-    
+
       $html .= '"@context": "http://schema.org",';
       $html .= '"@type": "BreadcrumbList",';
       $html .= '"itemListElement": [';
-        
+
         $html .= $this->json_ld_list_item('1', $this->base_url, $this->site_name);
-        
+
       $html .= ']';
-        
+
     $html .= $this->json_ld_close;
-    
+
     return $html;
   }
 
   public function background($image = '')
   {
-    $image =  ee()->TMPL->fetch_param('image');
-    
+    $image =  urlencode(ee()->TMPL->fetch_param('image'));
+
     switch ( strtolower( pathinfo( $image, PATHINFO_EXTENSION ) ) )
     {
       case 'jpeg' :
       case 'jpg' :
         $id = imagecreatefromjpeg($image);
       break;
-      
+
       case 'png' :
         $id = imagecreatefrompng($image);
       break;
-      
+
       case 'gif' :
         $id = imagecreatefromgif($image);
       break;
-      
+
       default:
         throw new InvalidArgumentException('File "' . $filename . '" is not valid jpg, png or gif image.');
       break;
     }
-    
+
     if ( $id )
     {
       $rgb = imagecolorat($id, 2, 2);
@@ -213,11 +213,11 @@ class Iamsteve {
       $r = dechex($cols['red']);
       $g = dechex($cols['green']);
       $b = dechex($cols['blue']);
-    
+
       return '#' . $r . $g . $b;
     }
   }
-  
+
   public function number($from = '', $to = '')
   {
     // Parameters
@@ -251,8 +251,8 @@ class Iamsteve {
   {
     if ( empty($_SERVER['HTTP_USER_AGENT']) || strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') )
     {
-      $is_mobile = false;  
-    } 
+      $is_mobile = false;
+    }
     elseif (
          strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false // many mobile devices (all iPhone, iPad, etc.)
       || strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false
@@ -268,7 +268,7 @@ class Iamsteve {
     {
       $is_mobile = false;
     }
-    
+
     return $is_mobile;
   }
 }
