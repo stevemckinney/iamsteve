@@ -218,6 +218,10 @@ class Iamsteve {
     }
   }
 
+  public function themed() {
+    // @todo make a function to determine a post colour theme
+  }
+
   public function number($from = '', $to = '')
   {
     // Parameters
