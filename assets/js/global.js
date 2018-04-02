@@ -17,6 +17,11 @@ const iamsteve = (function iamsteve() {
   const cacheButtonText = document.querySelector('.button-text');
   const imageArray = document.querySelectorAll('img');
 
+  // Text
+  const initialText = 'Save for offline';
+  const failText = 'Couldn’t save';
+  const winText = 'Available offline';
+
   // Private
   const toggleSearch = function toggleSearch(e) {
     for (const toggle of toggleSearchEl) {
@@ -63,6 +68,8 @@ const iamsteve = (function iamsteve() {
 
       // Event listener
       if (cacheButton) {
+        cacheButtonText.textContent = initialText;
+
         cacheButton.addEventListener('click', (event) => {
           event.preventDefault();
           // Build an array of the page-specific resources.
@@ -79,24 +86,25 @@ const iamsteve = (function iamsteve() {
 
             // Update UI to indicate success
             updateCache.then(() => {
-              cacheButtonText.textContent = 'Available offline';
+              cacheButtonText.textContent = winText;
+              cacheButton.classList.add('secondary');
             });
 
             // Or catch any errors if it doesn't succeed
             updateCache.catch(() => {
-              cacheButtonText.textContent = 'Couldn’t save';
+              cacheButtonText.textContent = failText;
 
               setTimeout(() => {
-                cacheButtonText.textContent = 'Please try again';
-              }, 1000);
-
-              setTimeout(() => {
-                cacheButtonText.textContent = 'Make available offline';
+                cacheButtonText.textContent = initialText;
               }, 2000);
             });
           });
         });
       }
+    }
+    else {
+      cacheButton.parentNode.remove();
+
     }
   }
 
