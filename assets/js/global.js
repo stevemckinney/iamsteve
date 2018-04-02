@@ -104,7 +104,6 @@ const iamsteve = (function iamsteve() {
     }
     else {
       cacheButton.parentNode.remove();
-
     }
   }
 
