@@ -31,8 +31,50 @@
   @include breakpoint($b) {
     font-size: 12px; } }
 
-.meta-item svg {
-  margin-right: $base-px; }
+.single-meta {
+  min-width: 192px;
+
+  @include breakpoint(1220px) {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    margin-left: -100%;
+    flex-flow: column wrap; }
+
+  @include breakpoint(max-width 1219px) {
+    width: 100%;
+    margin: $line 0;
+    flex-flow: row wrap;
+    align-content: center;
+    align-items: center;
+    // justify-content: space-between;
+
+    > * {
+      padding-right: $line;
+      flex: 0 0 auto; }
+
+    hr {
+      display: none; } } }
+
+.meta-item {
+  @include breakpoint(max-width 1219px) {
+    border: 1px solid $warm-l3;
+    line-height: normal;
+    width: 50%;
+    border-radius: 0;
+    justify-content: center; }
+
+  svg {
+    @include breakpoint($b-max) {
+      margin-right: $base-px / 2;
+      width: 12px; }
+
+    @include breakpoint($b) {
+      margin-right: $base-px; } } }
+
+.meta-item-last {
+  margin-top: $base-px;
+  background: image-url("dash-neutral-l1.svg") repeat-x left top; }
 
 // More links
 // ---------------------------

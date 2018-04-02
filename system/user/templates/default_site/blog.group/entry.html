@@ -1,4 +1,4 @@
-{layout="layouts/_layout-blog" class="page-entry"}
+{layout="layouts/_layout-blog" class="page-single"}
 
 {!-- channel vars (prefix ch_) --}
 {preload_replace:ch="blog"}
@@ -22,7 +22,7 @@
   {if no_results}{redirect="404"}{/if}
   <span style="display:none">Viewed: {view_count_one}</span>
 
-  <div class="featured-image entry-image loading" role="presentation" style="background-color: {if image}{background}{if:else}{color}{/if}">
+  <div class="pt4 pb4 pt6-b pb6-b pt7-d pb8-d featured-image entry-image loading" role="presentation" style="background-color: {if image}{background}{if:else}{color}{/if}">
     {if image}
   	  {image}
   	    {if url:large}
@@ -42,13 +42,13 @@
     {/if}
   </div>
   {exp:reading_time}
-    <article role="article" class="entry-content pt6 pb6 m-center contain contain-medium contain-large">
+    <article role="article" class="entry-content pt6 pb6">
       <header class="entry-header relative pb4 p0-d">
-        <h1 class="f1 headline-b secondary mb0 entry-title">{title}</h1>
-        <div class="meta flex flex-column-d warm-l3 off-left">
-          <span class="meta-item mb2 flex items-center">{gv_date}{date}</span>
+        <h1 class="f1 headline-b primary mb0 entry-title">{title}</h1>
+        <div class="meta single-meta flex warm-l3">
+          <span class="meta-item pt2 flex items-center">{gv_date}{date}</span>
           {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-            <a href="{path='blog/index'}" class="meta-item mb2 flex items-center" rel="category tag">
+            <a href="{path='blog/index'}" class="meta-item pt2 flex items-center" rel="category tag">
               {if category_id == "7"}
                 {gv_design}
               {if:elseif category_id == "2"}
@@ -59,13 +59,16 @@
               {category_name}
             </a>
           {/categories}
-          <span class="meta-item mb2 flex items-center">{gv_time}{finished_reading_time:relative}</span>
-          <hr class="mb2">
-          <button class="button button-offline p0 meta-item flex items-center">
-            {gv_save}
-            <span class="button-text">Make available offline</span>
-            {!--<span class="loading"></span><span class="secondary">{gv_saved}</span>--}
-          </button>
+          <span class="meta-item pt2 flex items-center">{gv_time}{finished_reading_time:relative}</span>
+
+          <span class="meta-item meta-item-last pt2 pb2 flex items-center">
+            <button class="button button-offline p0 flex">
+              {gv_save}
+              <span class="button-text"></span>
+              {!--<span class="loading"></span><span class="secondary">{gv_saved}</span>--}
+            </button>
+          </span>
+
           <div class="visuallyhidden">
             <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
             <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">

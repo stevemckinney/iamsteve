@@ -4,13 +4,6 @@
   @include breakpoint($b-max) {
     @include pin-below; } }
 
-.off-left {
-  @include breakpoint($d) {
-    position: absolute;
-    top: 0;
-    right: 100%;
-    margin-left: -100%; } }
-
 .relative {
   position: relative; }
 
