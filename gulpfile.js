@@ -84,7 +84,8 @@ gulp.task('critical', function () {
       minify: true,
       userAgent: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
       include: [
-        '.headline-b'
+        '.headline-b',
+        '.primary .fill-s1'
       ]
     }))
     .pipe(gulp.dest('./dist/css/'))
