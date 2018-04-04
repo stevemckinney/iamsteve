@@ -104,9 +104,9 @@ const iamsteve = (function iamsteve() {
       }
     }
     else {
-		// If service worker isn't available we'd like to adjust the layout
-		cacheButton.parentNode.remove();
-		meta.classList.add('.single-meta-sw');
+      // If service worker isn't available we'd like to adjust the layout
+      cacheButton.parentNode.remove();
+      meta.classList.add('.single-meta-sw');
     }
   }
 
