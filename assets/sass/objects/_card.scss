@@ -47,11 +47,11 @@
     flex-flow: row wrap;
     align-content: center;
     align-items: center;
-    // justify-content: space-between;
+    justify-content: space-between;
 
     > * {
       padding-right: $line;
-      flex: 0 0 auto; }
+      flex: 0 0 50%; }
 
     hr {
       display: none; } } }
@@ -73,8 +73,9 @@
       margin-right: $base-px; } } }
 
 .meta-item-last {
-  margin-top: $base-px;
-  background: image-url("dash-neutral-l1.svg") repeat-x left top; }
+  @include breakpoint(1220px) {
+    margin-top: $base-px;
+    background: image-url("dash-neutral-l1.svg") repeat-x left top; } }
 
 // More links
 // ---------------------------
