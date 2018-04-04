@@ -11,7 +11,6 @@
   justify-content: space-between;
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
-  background-color: $white;
   max-height: 96px;
 
   @include breakpoint($c-max) {
