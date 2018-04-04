@@ -16,6 +16,7 @@ const iamsteve = (function iamsteve() {
   const cacheButton = document.querySelector('.button-offline');
   const cacheButtonText = document.querySelector('.button-text');
   const imageArray = document.querySelectorAll('img');
+  const meta = document.querySelector('.single-meta');
 
   // Text
   const initialText = 'Save for offline';
@@ -103,7 +104,9 @@ const iamsteve = (function iamsteve() {
       }
     }
     else {
-      cacheButton.parentNode.remove();
+		// If service worker isn't available we'd like to adjust the layout
+		cacheButton.parentNode.remove();
+		meta.classList.add('.single-meta-sw');
     }
   }
 
