@@ -51,7 +51,7 @@
   },
   "scripts": {
     "build": "webpack --progress --watch",
-    "webpack": "webpack --progress"
+    "webpack": "webpack"
   },
   "repository": {
     "type": "git",

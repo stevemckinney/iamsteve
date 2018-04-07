@@ -24,22 +24,79 @@
 // ---------------------------
 .meta {
   @include fonts("sans");
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   font-weight: font-weight(semibold);
   line-height: 1.142857143;
   font-size: 10px;
 
   @include breakpoint($b) {
-    font-size: 12px; }
+    font-size: 12px; } }
 
-  a, time {
-    color: $warm; }
+.single-meta {
+  min-width: 192px;
 
-  a:hover,
-  a:focus {
-    color: $secondary; } }
+  @include breakpoint(1220px) {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    margin-left: -100%;
+    flex-flow: column wrap; }
+
+  @include breakpoint(max-width 1219px) {
+    width: 100%;
+    margin: $line 0 0;
+    flex-flow: row wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+
+    hr {
+      display: none; } }
+
+  .meta-item {
+    @include breakpoint(1220px) {
+      padding-top: $p2; }
+
+    @include breakpoint(max-width 1219px) {
+      padding: $p2 0;
+      align-items: center;
+      flex: 0 0 50%;
+
+      &:first-child,
+      &:nth-child(2) {
+        border-bottom: 1px solid $warm-l3;
+        margin-bottom: -1px; }
+
+      &:first-child,
+      &:nth-child(3) {
+        justify-content: flex-start; }
+
+      &:nth-child(2),
+      &:nth-child(4) {
+        justify-content: flex-end;
+        margin-left: -1px; }
+
+      &:nth-child(2),
+      &:nth-child(4) {
+        border-left: 1px solid $warm-l3; } } } }
+
+.meta-item {
+  @include breakpoint(max-width 1219px) {
+    line-height: normal;
+    width: 50%;
+    justify-content: center; }
+
+  svg {
+    @include breakpoint($b-max) {
+      margin-right: $base-px / 2;
+      width: 12px; }
+
+    @include breakpoint($b) {
+      margin-right: $base-px; } } }
+
+.meta-item-last {
+  @include breakpoint(1220px) {
+    margin-top: $base-px;
+    background: image-url("dash-neutral-l1.svg") repeat-x left top; } }
 
 // More links
 // ---------------------------

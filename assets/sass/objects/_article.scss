@@ -1,10 +1,22 @@
 // Entry content
 // ---------------------------
 .entry-content {
-  @include breakpoint(1200px) {
-    max-width: $contain;
-    margin-left: auto;
-    margin-right: calc(50% - #{($measure + ( $line * 4 ) ) / 2}); }
+  @include breakpoint($d) {
+    position: relative;
+    margin-top: -$line*2.5;
+    background-color: $white;
+    border-radius: $base-px $base-px 0 0; }
+
+  @include breakpoint($site-width) {
+    margin-left: calc(50% - #{$contain/2});
+    margin-right: calc(50% - #{$contain/2}); }
+
+  img,
+  pre,
+  .cp_embed_wrapper {
+    @include breakpoint($cd) {
+      position: relative;
+      left: -$line*2; } }
 
   img {
     display: block;
@@ -12,14 +24,13 @@
 
     @include breakpoint($cd) {
       max-width: 738px;
-      border-radius: $radius; } }
+      border-radius: $radius;
+      position: relative;
+      left: -$line*2; } }
 
   .wide-image {
     @include breakpoint(1024px + 48px) {
-      max-width: 1024px; } }
-
-  .meta {
-    max-width: $measure; } }
+      max-width: 1024px; } } }
 
 // Scoped font sizes/alignment
 // ---------------------------
@@ -42,17 +53,17 @@
   // This could be really stupid in the long run
   > *:not(figure):not(div), img {
     margin-left: auto;
-
-    @include breakpoint($e-max) {
-      margin-right: auto; } }
+    margin-right: auto; }
 
   // Likewise
-  > *:not(figure):not(img):not(div),
+  > *:not(figure):not(img):not(div):not(table),
   > .footnotes {
     max-width: $measure + ( $line * 4 ) + 2px; }
 
   // Tables don't like padding
   > table {
+    max-width: $measure;
+
     @include breakpoint(max-width 639px) {
       width: calc(100% - #{$line*4}); }
 
@@ -181,17 +192,14 @@
 // ---------------------------
 .cp_embed_wrapper {
   max-width: 738px;
+  margin-left: auto;
+  margin-right: auto;
 
   @include breakpoint($contain) {
-    border-radius: $radius;
-    margin-left: auto; } }
+    border-radius: $radius; } }
 
 .codepen-wide {
   .cp_embed_wrapper {
-    @include breakpoint($site-width-max) {
-      margin-left: auto;
-      margin-right: auto; }
-
     @include breakpoint($contain) {
       max-width: 896px; } } }
 
@@ -212,7 +220,6 @@
   line-height: 1.333333;
   text-align: center;
   max-width: $measure;
-  padding: 0 $line;
   margin-left: auto;
 
   p {
@@ -221,8 +228,8 @@
   @include breakpoint($site-width) {
     position: absolute;
     bottom: 0;
-    left: 100%;
-    width: 220px;
+    right: $line;
+    width: $line*12;
     text-align: left;
 
     &:before {
@@ -236,7 +243,7 @@
   @include breakpoint($site-width-max) {
     margin-bottom: $line; }
 
-  @include breakpoint($e-max) {
+  @include breakpoint($f-max) {
     margin-right: auto; } }
 
 // Specific pieces of content

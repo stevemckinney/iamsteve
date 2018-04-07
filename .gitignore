@@ -3,15 +3,16 @@ dist/
 assets/images/.DS_Store
 system/config.php
 .sass-cache
-cache/
-cacheee_version/
-assets/cache/
-assets/cachee_version/
 system/expressionengine/config/database.php
 system/expressionengine/config/config.php
 system/user/logs/*
 system/ee/installer
 system/ee/installer_*
+
+cache/
+system/user/cache
+!system/user/addons/minimee/libraries/Minify/Cache
+!system/ee/legacy/libraries/Cache
 
 # Images
 assets/images/_blog/*

@@ -1,9 +1,9 @@
-{layout="layouts/_layout-blog" class="page-entry"}
+{layout="layouts/_layout-blog" class="page-single"}
 
 {!-- channel vars (prefix ch_) --}
 {preload_replace:ch="blog"}
 {preload_replace:ch_status="open|latest|draft"}
-{preload_replace:background="{image}{exp:iamsteve:background image='{url}'}{/image}"}
+{preload_replace:background="{image}{exp:iamsteve:background image='{url:large}'}{/image}"}
 {preload_replace:color="{switch='#e9f5f5|#fffbf2|#ffede5|#e1f7ee'}"}
 {preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
 {preload_replace:code="code-default-{switch='1|2|3|4'}.svg"}
@@ -22,7 +22,7 @@
   {if no_results}{redirect="404"}{/if}
   <span style="display:none">Viewed: {view_count_one}</span>
 
-  <div class="pt4 pb4 pt6-b pb6-b pt8-d pb8-d featured-image entry-image loading" role="presentation" style="background-color: {if image}{background}{if:else}{color}{/if}">
+  <div class="pt4 pb4 pt6-b pb6-b pt7-d pb8-d featured-image entry-image loading" role="presentation" style="background-color: {if image}{background}{if:else}{color}{/if}">
     {if image}
   	  {image}
   	    {if url:large}
@@ -41,29 +41,45 @@
       {/categories}
     {/if}
   </div>
-  <article role="article" class="entry-content pt6 pb6">
-    <header class="entry-header pb4 p0-d">
-      <div class="meta dashes">
-        {date}
-        {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-          <a href="{path='blog/index'}" rel="category tag">{category_name}</a>
-        {/categories}
-      </div>
-      <div class="visuallyhidden">
-        <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
-        <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
-          {edit_date format="%Y/%m/%d"}
-        </time>
-      </div>
-      <h1 class="f1 headline-b secondary pt2 mb0 entry-title">{title}</h1>
-      <button class="button button-offline">
-        <span class="button-text">Save for offline</span>
-        {!--<span class="loading"></span>--}
-      </button>
-    </header>
-    {exp:streeng find='\<p><img src="|"><\/p>' replace='<img src="|">' insensitive="yes"}{article}{/exp:streeng}
-  </article>
+  {exp:reading_time}
+    <article role="article" class="entry-content pt6 pb6">
+      <header class="entry-header relative pb4 p0-d">
+        <h1 class="f1 headline-b primary mb0 entry-title">{title}</h1>
+        <div class="meta single-meta flex warm-l3">
+          <span class="meta-item flex items-center">{gv_date}{date}</span>
+          {categories channel="blog" style="linear" parent_only="yes" limit="1"}
+            <a href="{path='blog/index'}" class="meta-item flex items-center" rel="category tag">
+              {if category_id == "7"}
+                {gv_design}
+              {if:elseif category_id == "2"}
+                {gv_code}
+              {if:else}
+                {gv_category}
+              {/if}
+              {category_name}
+            </a>
+          {/categories}
+          <span class="meta-item flex items-center">{gv_time}{finished_reading_time:relative}</span>
 
+          <span class="meta-item meta-item-last flex items-center">
+            <button class="button button-offline p0 flex">
+              {gv_save}
+              <span class="button-text"></span>
+              {!--<span class="loading"></span><span class="secondary">{gv_saved}</span>--}
+            </button>
+          </span>
+
+          <div class="visuallyhidden">
+            <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
+            <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
+              {edit_date format="%Y/%m/%d"}
+            </time>
+          </div>
+        </div>
+      </header>
+      {exp:streeng find='\<p><img src="|"><\/p>' replace='<img src="|">' insensitive="yes"}{article}{/exp:streeng}
+    </article>
+  {/exp:reading_time}
 {/exp:channel:entries}
 
 {embed="include/next"}

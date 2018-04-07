@@ -14,7 +14,14 @@ const iamsteve = (function iamsteve() {
   const field = document.getElementById('keywords');
   const currentPath = window.location.pathname;
   const cacheButton = document.querySelector('.button-offline');
+  const cacheButtonText = document.querySelector('.button-text');
   const imageArray = document.querySelectorAll('img');
+  const meta = document.querySelector('.single-meta');
+
+  // Text
+  const initialText = 'Save for offline';
+  const failText = 'Couldn’t save';
+  const winText = 'Available offline';
 
   // Private
   const toggleSearch = function toggleSearch(e) {
@@ -62,6 +69,8 @@ const iamsteve = (function iamsteve() {
 
       // Event listener
       if (cacheButton) {
+        cacheButtonText.textContent = initialText;
+
         cacheButton.addEventListener('click', (event) => {
           event.preventDefault();
           // Build an array of the page-specific resources.
@@ -78,18 +87,27 @@ const iamsteve = (function iamsteve() {
 
             // Update UI to indicate success
             updateCache.then(() => {
-              cacheButton.textContent = 'Available offline';
+              cacheButtonText.textContent = winText;
+              cacheButton.classList.add('secondary');
             });
 
             // Or catch any errors if it doesn't succeed
             updateCache.catch(() => {
-              cacheButton.textContent = 'Couldn’t save&thinsp;—&thinsp;try again';
+              cacheButtonText.textContent = failText;
+
+              setTimeout(() => {
+                cacheButtonText.textContent = initialText;
+              }, 2000);
             });
           });
         });
       }
     }
-    else if (cacheButton) cacheButton.remove();
+    else {
+      // If service worker isn't available we'd like to adjust the layout
+      cacheButton.parentNode.remove();
+      meta.classList.add('.single-meta-sw');
+    }
   }
 
   const header = () => {

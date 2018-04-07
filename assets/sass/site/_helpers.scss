@@ -4,6 +4,9 @@
   @include breakpoint($b-max) {
     @include pin-below; } }
 
+.relative {
+  position: relative; }
+
 // Commonly used with .meta
 .dashes {
   background: image-url("dash-neutral-l1.svg") repeat-x left calc(50% + 1px);

@@ -11,17 +11,17 @@
   justify-content: space-between;
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease;
-  background-color: $white;
   max-height: 96px;
-  
+  background-color: $white;
+
   @include breakpoint($c-max) {
     display: none; }
-  
+
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); } }
 
 .page-home .header,
-.page-entry .header { 
+.page-single .header {
   background-color: transparent; }
 
 // Headroom
@@ -39,20 +39,20 @@
   padding: $base-px;
   position: relative;
   z-index: $z-index-200;
-  
+
   @include breakpoint($c) {
     padding: $line $line*1.5 $line 0;
     align-content: center;
     align-items: center; }
-  
+
   @include breakpoint($cd) {
     font-size: $text-large; }
-  
+
   @include breakpoint($d-max) {
     svg {
-      max-width: 35px;
-      height: 35px; } }
-  
+      max-width: 36px;
+      height: 36px; } }
+
   .fill-currentcolor {
     @include breakpoint($d-max) {
       display: none; } } }
