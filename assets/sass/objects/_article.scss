@@ -11,7 +11,9 @@
     margin-left: calc(50% - #{$contain/2});
     margin-right: calc(50% - #{$contain/2}); }
 
-  img, pre {
+  img,
+  pre,
+  .cp_embed_wrapper {
     @include breakpoint($cd) {
       position: relative;
       left: -$line*2; } }
@@ -190,16 +192,14 @@
 // ---------------------------
 .cp_embed_wrapper {
   max-width: 738px;
+  margin-left: auto;
+  margin-right: auto;
 
   @include breakpoint($contain) {
-    border-radius: $radius;
-    margin-left: auto; } }
+    border-radius: $radius; } }
 
 .codepen-wide {
   .cp_embed_wrapper {
-    margin-left: auto;
-    margin-right: auto;
-
     @include breakpoint($contain) {
       max-width: 896px; } } }
 
