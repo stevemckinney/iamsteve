@@ -46,9 +46,9 @@
       <header class="entry-header relative pb4 p0-d">
         <h1 class="f1 headline-b primary mb0 entry-title">{title}</h1>
         <div class="meta single-meta flex warm-l3">
-          <span class="meta-item pt2 pb2 pb0-d flex items-center">{gv_date}{date}</span>
+          <span class="meta-item flex items-center">{gv_date}{date}</span>
           {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-            <a href="{path='blog/index'}" class="meta-item pt2 pb2 pb0-d flex items-center" rel="category tag">
+            <a href="{path='blog/index'}" class="meta-item flex items-center" rel="category tag">
               {if category_id == "7"}
                 {gv_design}
               {if:elseif category_id == "2"}
@@ -59,9 +59,9 @@
               {category_name}
             </a>
           {/categories}
-          <span class="meta-item pt2 pb2 pb0-d flex items-center">{gv_time}{finished_reading_time:relative}</span>
+          <span class="meta-item flex items-center">{gv_time}{finished_reading_time:relative}</span>
 
-          <span class="meta-item meta-item-last pt2 pb2 flex items-center">
+          <span class="meta-item meta-item-last flex items-center">
             <button class="button button-offline p0 flex">
               {gv_save}
               <span class="button-text"></span>
