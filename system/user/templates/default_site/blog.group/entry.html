@@ -40,19 +40,15 @@
     {if:else}
   	  {categories channel="blog" limit="1"}
         {if category_id == 7}
-          <div class="flex flex-column center column-8 pt8-d pb8-d">
-            <img data-src="{global:theme_url}/dist/images/{design}" class="lazyload">
-            <noscript>
-            	<img src="{global:theme_url}/dist/images/{design}">
-            </noscript>
-          </div>
+          <img data-src="{global:theme_url}/dist/images/{design}" class="lazyload">
+          <noscript>
+          	<img src="{global:theme_url}/dist/images/{design}">
+          </noscript>
         {if:else}
-          <div class="flex flex-column center column-8 pt8-d pb8-d">
-            <img data-src="{global:theme_url}/dist/images/{code}" class="lazyload">
-            <noscript>
-            	<img src="{global:theme_url}/dist/images/{code}">
-            </noscript>
-          </div>
+          <img data-src="{global:theme_url}/dist/images/{code}" class="lazyload">
+          <noscript>
+          	<img src="{global:theme_url}/dist/images/{code}">
+          </noscript>
         {/if}
       {/categories}
     {/if}
