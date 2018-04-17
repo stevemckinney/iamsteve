@@ -16,9 +16,7 @@
   position: relative;
 
   p,
-  .link-icon {
-    @include breakpoint($b-max) {
-      display: none; } } }
+  .link-icon { } }
 
 // Card meta
 // ---------------------------

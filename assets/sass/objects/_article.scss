@@ -41,6 +41,12 @@
     @include breakpoint($b) {
       font-size: 21px; } }
 
+  p:first-child {
+    font-size: 21px;
+
+    @include breakpoint($b) {
+      font-size: 24px; } }
+
   > p,
   > ul {
     // 1px aligns back to baseline
