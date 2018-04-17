@@ -8,6 +8,8 @@ const Cookies = require('js-cookie');
 
 /* global Promise */
 const iamsteve = (function iamsteve() {
+  const site = {};
+
   // Variables
   const toggleSearchEl = document.querySelectorAll('.toggle-search');
   const overlay = document.querySelector('.overlay-search');
@@ -49,14 +51,14 @@ const iamsteve = (function iamsteve() {
   const isSearchVisible = () => overlay.classList.contains('showing');
 
   // Public
-  const toggler = function toggler() {
+  site.toggler = function toggler() {
     for (const toggle of toggleSearchEl) {
       toggle.addEventListener('click', toggleSearch, false);
     }
   }
 
   // Test if service workers are supported
-  const worker = () => {
+  site.worker = () => {
     if ('serviceWorker' in navigator) {
       // Attempt to register it
       navigator.serviceWorker.register('/worker.js').then(() => {
@@ -110,7 +112,7 @@ const iamsteve = (function iamsteve() {
     }
   }
 
-  const header = () => {
+  site.header = () => {
     const el = document.querySelector('.header');
     const options = {
       tolerance: {
@@ -142,14 +144,15 @@ const iamsteve = (function iamsteve() {
     h.init();
   }
 
-  const lazy = () => {
+  site.lazy = () => {
+    console.log('lazy')
     document.addEventListener('lazyloaded', (e) => {
       e.target.parentNode.classList.add('image-loaded');
       e.target.parentNode.classList.remove('loading');
     });
   }
 
-  const fonts = () => {
+  site.fonts = () => {
     Cookies.set('exp_css', true, { expires: 365 });
 
     if (!document.documentElement.classList.contains('fonts-stage-1')) {
@@ -171,16 +174,5 @@ const iamsteve = (function iamsteve() {
     }
   }
 
-  return {
-    init: function init() {
-      // Initialise everything
-      toggler();
-      header();
-      fonts();
-      lazy();
-      worker();
-    }
-  }
+  return site;
 }());
-
-iamsteve.init();
