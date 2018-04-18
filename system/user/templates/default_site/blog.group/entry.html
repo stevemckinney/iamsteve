@@ -26,17 +26,29 @@
     {if image}
   	  {image}
   	    {if url:large}
-  	      <img data-src="{url:large}" data-srcset="{url:medium} {width:medium}w, {url:large} {width:large}w, {url:large-2x} {width:large-2x}w" class="lazyload">
+  	      <img data-src="{url:large}" data-srcset="{url:medium} 378w, {url:large} 738w, {url:large-2x} 1476w" class="lazyload">
+          <noscript>
+          	<img src="{url:large}" srcset="{url:medium} 378w, {url:large} 738w, {url:large-2x} 1476w">
+          </noscript>
         {if:else}
           <img data-src="{url}" class="lazyload">
+          <noscript>
+          	<img src="{url}">
+          </noscript>
         {/if}
       {/image}
     {if:else}
   	  {categories channel="blog" limit="1"}
         {if category_id == 7}
-          <div class="flex flex-column center column-8 pt8-d pb8-d"><img src="{global:theme_url}/dist/images/{design}"></div>
+          <img data-src="{global:theme_url}/dist/images/{design}" class="lazyload">
+          <noscript>
+          	<img src="{global:theme_url}/dist/images/{design}">
+          </noscript>
         {if:else}
-          <div class="flex flex-column center column-8 pt8-d pb8-d"><img src="{global:theme_url}/dist/images/{code}"></div>
+          <img data-src="{global:theme_url}/dist/images/{code}" class="lazyload">
+          <noscript>
+          	<img src="{global:theme_url}/dist/images/{code}">
+          </noscript>
         {/if}
       {/categories}
     {/if}
@@ -46,9 +58,9 @@
       <header class="entry-header relative pb4 p0-d">
         <h1 class="f1 headline-b primary mb0 entry-title">{title}</h1>
         <div class="meta single-meta flex warm-l3">
-          <span class="meta-item pt2 pb2 pb0-d flex items-center">{gv_date}{date}</span>
+          <span class="meta-item flex items-center">{gv_date}{date}</span>
           {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-            <a href="{path='blog/index'}" class="meta-item pt2 pb2 pb0-d flex items-center" rel="category tag">
+            <a href="{path='blog/index'}" class="meta-item flex items-center" rel="category tag">
               {if category_id == "7"}
                 {gv_design}
               {if:elseif category_id == "2"}
@@ -59,9 +71,9 @@
               {category_name}
             </a>
           {/categories}
-          <span class="meta-item pt2 pb2 pb0-d flex items-center">{gv_time}{finished_reading_time:relative}</span>
+          <span class="meta-item flex items-center">{gv_time}{finished_reading_time:relative}</span>
 
-          <span class="meta-item meta-item-last pt2 pb2 flex items-center">
+          <span class="meta-item meta-item-last flex items-center">
             <button class="button button-offline p0 flex">
               {gv_save}
               <span class="button-text"></span>

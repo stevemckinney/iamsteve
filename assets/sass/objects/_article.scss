@@ -11,6 +11,13 @@
     margin-left: calc(50% - #{$contain/2});
     margin-right: calc(50% - #{$contain/2}); }
 
+  img,
+  pre,
+  .cp_embed_wrapper {
+    @include breakpoint($cd) {
+      position: relative;
+      left: -$line*2; } }
+
   img {
     display: block;
     margin-bottom: $line;
@@ -33,6 +40,12 @@
 
     @include breakpoint($b) {
       font-size: 21px; } }
+
+  p:first-child {
+    font-size: 21px;
+
+    @include breakpoint($b) {
+      font-size: 24px; } }
 
   > p,
   > ul {
@@ -185,16 +198,14 @@
 // ---------------------------
 .cp_embed_wrapper {
   max-width: 738px;
+  margin-left: auto;
+  margin-right: auto;
 
   @include breakpoint($contain) {
-    border-radius: $radius;
-    margin-left: auto; } }
+    border-radius: $radius; } }
 
 .codepen-wide {
   .cp_embed_wrapper {
-    margin-left: auto;
-    margin-right: auto;
-
     @include breakpoint($contain) {
       max-width: 896px; } } }
 
