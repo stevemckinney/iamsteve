@@ -8,12 +8,10 @@ const Cookies = require('js-cookie');
 
 /* global Promise */
 const iamsteve = (function iamsteve() {
-  const site = {};
-
   // Variables
   const toggleSearchEl = document.querySelectorAll('.toggle-search');
   const overlay = document.querySelector('.overlay-search');
-  const field = document.getElementById('keywords');
+  const field = document.getElementById('keycopy');
   const currentPath = window.location.pathname;
   const cacheButton = document.querySelector('.button-offline');
   const cacheButtonText = document.querySelector('.button-text');
@@ -21,10 +19,12 @@ const iamsteve = (function iamsteve() {
   const meta = document.querySelector('.single-meta');
 
   // Text
-  const words = {
-  	swInitial: 'Save for offline',
-  	swFail: 'Couldn’t save',
-  	swWin: 'Available offline';
+  const copy = {
+    worker: {
+      initial: 'Save for offline',
+      fail: 'Couldn’t save',
+      win: 'Available offline'
+    }
   };
 
   // Private
@@ -53,14 +53,14 @@ const iamsteve = (function iamsteve() {
   const isSearchVisible = () => overlay.classList.contains('showing');
 
   // Public
-  site.toggler = function toggler() {
+  const toggler = function toggler() {
     for (const toggle of toggleSearchEl) {
       toggle.addEventListener('click', toggleSearch, false);
     }
   }
 
   // Test if service workers are supported
-  site.worker = () => {
+  const worker = () => {
     if ('serviceWorker' in navigator) {
       // Attempt to register it
       navigator.serviceWorker.register('/worker.js').then(() => {
@@ -73,7 +73,7 @@ const iamsteve = (function iamsteve() {
 
       // Event listener
       if (cacheButton) {
-        cacheButtonText.textContent = initialText;
+        cacheButtonText.textContent = copy.worker.initial;
 
         cacheButton.addEventListener('click', (event) => {
           event.preventDefault();
@@ -91,16 +91,16 @@ const iamsteve = (function iamsteve() {
 
             // Update UI to indicate success
             updateCache.then(() => {
-              cacheButtonText.textContent = words.swWin;
+              cacheButtonText.textContent = copy.worker.win;
               cacheButton.classList.add('secondary');
             });
 
             // Or catch any errors if it doesn't succeed
             updateCache.catch(() => {
-              cacheButtonText.textContent = words.swFail;
+              cacheButtonText.textContent = copy.worker.fail;
 
               setTimeout(() => {
-                cacheButtonText.textContent = words.swInitial;
+                cacheButtonText.textContent = copy.worker.initial;
               }, 2000);
             });
           });
@@ -114,7 +114,7 @@ const iamsteve = (function iamsteve() {
     }
   }
 
-  site.header = () => {
+  const header = () => {
     const el = document.querySelector('.header');
     const options = {
       tolerance: {
@@ -146,14 +146,14 @@ const iamsteve = (function iamsteve() {
     h.init();
   }
 
-  site.lazy = () => {
+  const lazy = () => {
     document.addEventListener('lazyloaded', (e) => {
       e.target.parentNode.classList.add('image-loaded');
       e.target.parentNode.classList.remove('loading');
     });
   }
 
-  site.fonts = () => {
+  const fonts = () => {
     Cookies.set('exp_css', true, { expires: 365 });
 
     if (!document.documentElement.classList.contains('fonts-stage-1')) {
@@ -175,5 +175,16 @@ const iamsteve = (function iamsteve() {
     }
   }
 
-  return site;
+  return {
+    init: function init() {
+      // Initialise everything
+      toggler();
+      header();
+      fonts();
+      lazy();
+      worker();
+    }
+  }
 }());
+
+iamsteve.init();
