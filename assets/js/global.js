@@ -21,9 +21,11 @@ const iamsteve = (function iamsteve() {
   const meta = document.querySelector('.single-meta');
 
   // Text
-  const initialText = 'Save for offline';
-  const failText = 'Couldn’t save';
-  const winText = 'Available offline';
+  const words = {
+  	swInitial: 'Save for offline',
+  	swFail: 'Couldn’t save',
+  	swWin: 'Available offline';
+  };
 
   // Private
   const toggleSearch = function toggleSearch(e) {
@@ -89,16 +91,16 @@ const iamsteve = (function iamsteve() {
 
             // Update UI to indicate success
             updateCache.then(() => {
-              cacheButtonText.textContent = winText;
+              cacheButtonText.textContent = words.swWin;
               cacheButton.classList.add('secondary');
             });
 
             // Or catch any errors if it doesn't succeed
             updateCache.catch(() => {
-              cacheButtonText.textContent = failText;
+              cacheButtonText.textContent = words.swFail;
 
               setTimeout(() => {
-                cacheButtonText.textContent = initialText;
+                cacheButtonText.textContent = words.swInitial;
               }, 2000);
             });
           });
@@ -145,7 +147,6 @@ const iamsteve = (function iamsteve() {
   }
 
   site.lazy = () => {
-    console.log('lazy')
     document.addEventListener('lazyloaded', (e) => {
       e.target.parentNode.classList.add('image-loaded');
       e.target.parentNode.classList.remove('loading');
