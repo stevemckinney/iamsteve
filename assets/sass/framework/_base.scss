@@ -165,7 +165,7 @@ $f-max: 	max-width $f - $breakpoint-subtract !default;
 $retina: min-resolution 1.5dppx !default;
 
 // Used in all helpers and grid to define a consistent output of breakpoints
-$default-breakpoint-map: ( a: $a, c: $c, d: $d ) !default;
+$default-breakpoint-map: ( a: $a, b: $b, d: $d ) !default;
 
 // Font sizes
 // ---------------------------

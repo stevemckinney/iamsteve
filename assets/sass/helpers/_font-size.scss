@@ -27,49 +27,57 @@
 // these are probably preferable to use, over the font sizes above.
 // calc($min-font-size + ($max-font-size - $min-font-size) * (100vw - $min-screen-size) / ($max-screen-size - $min-screen-size) )
 .headline-l {
-  font-size: font-size-lock($f2, $headline, $a, $e);
+  font-size: font-size-lock($f1, $headline, 320px, $e);
+  letter-spacing: -1px;
 
   // Scale proportionately until
   @include breakpoint($e) {
-    font-size: $headline; } }
+    font-size: $headline;
+    letter-spacing: -1.5px; } }
 
 .f1-l {
-  font-size: font-size-lock($f3, $f1, $a, $e);
+  font-size: font-size-lock($f2, $f1, 320px, $e);
+  letter-spacing: -.5px;
 
   // Scale proportionately until
   @include breakpoint($e) {
-    font-size: $f1; } }
+    font-size: $f1;
+    letter-spacing: -1px; } }
 
 .f2-l {
-  font-size: font-size-lock($f4, $f2, $a, $e);
+  font-size: font-size-lock($f3, $f2, 320px, $e);
+  letter-spacing: -.25px;
 
   // Scale proportionately until
   @include breakpoint($e) {
-    font-size: $f2; } }
+    font-size: $f2;
+    letter-spacing: -.5px; } }
 
 .f3-l {
-  font-size: font-size-lock($f5, $f3, $a, $e);
+  font-size: font-size-lock($f4, $f3, 320px, $e);
+  letter-spacing: -.25px;
 
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f3; } }
 
 .f4-l {
-  font-size: font-size-lock($f6, $f4, $a, $e);
+  font-size: font-size-lock($f5, $f4, 320px, $e);
 
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f4; } }
 
 .f5-l {
-  font-size: font-size-lock($f7, $f5, $a, $e);
+  font-size: font-size-lock($f6, $f5, 320px, $e);
+  letter-spacing: -.25px;
 
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f5; } }
 
 .f6-l {
-  font-size: font-size-lock($f8, $f6, $a, $e);
+  font-size: font-size-lock($f7, $f6, 320px, $e);
 
   // Scale proportionately until
   @include breakpoint($e) {
