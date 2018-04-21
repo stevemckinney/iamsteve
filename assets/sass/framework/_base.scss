@@ -1,5 +1,18 @@
 // Default variables override in site/_base.scss
 // ---------------------------
+$default: (
+  sans: sans-serif,
+  serif: serif,
+  color: #7d7e81,
+  baseline: 24px,
+  spacing: 8px,
+  context: 16px,
+  base-font-size: 16px,
+  radius: 4px,
+  display: inline-block,
+  state: normal,
+  transition-duration: .2s
+) !default;
 
 // Site colours
 // ---------------------------
@@ -92,7 +105,7 @@ $default-equal: false !default;
 // How many times larger should the padding-left/right be than padding-top/bottom
 $default-multiplier: 1.5 !default;
 
-// Normal is a good choice, as firefox doesn't 
+// Normal is a good choice, as firefox doesn't
 // allow line-height change on inputs this allows
 // for consistency in everything
 $default-framework-line-height: normal !default;
@@ -137,7 +150,7 @@ $f: 	1440px !default;
 // max-width
 $aa-max:	max-width $aa - $breakpoint-subtract !default;
 $a-max:		max-width $a - $breakpoint-subtract !default;
-$ab-max: 	max-width $ab - $breakpoint-subtract !default; 
+$ab-max: 	max-width $ab - $breakpoint-subtract !default;
 $b-max: 	max-width $b - $breakpoint-subtract !default;
 $bc-max: 	max-width $bc - $breakpoint-subtract !default;
 $c-max: 	max-width $c - $breakpoint-subtract !default;
@@ -150,6 +163,9 @@ $f-max: 	max-width $f - $breakpoint-subtract !default;
 
 // resolution
 $retina: min-resolution 1.5dppx !default;
+
+// Used in all helpers and grid to define a consistent output of breakpoints
+$default-breakpoint-map: ( a: $a, c: $c, d: $d ) !default;
 
 // Font sizes
 // ---------------------------

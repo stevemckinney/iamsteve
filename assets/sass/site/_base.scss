@@ -126,15 +126,33 @@ $heading: $sans !global;
 $body: $serif !global;
 $form: $sans !global;
 $element: $sans !global;
+$ui: $sans !global;
 
 $measure: 640px; // 30.476190476em new: 640px old: 684px;
 $measure-wide: 720px; // 34.285714286em
 $measure-narrow: 480px; // 22.857142857em
 
 $headline: 48px;
+$f7: 14px;
+$f8: 12px;
 
 // Defaults
 // ---------------------------
+$default: (
+  sans: $ui,
+  serif: $serif,
+  color: #7d7e81,
+  baseline: 24px,
+  spacing: 12px,
+  context: 16px,
+  base-font-size: 16px,
+  radius: 4px,
+  display: inline-block,
+  state: normal,
+  transition-duration: .2s
+);
+
+
 $default-transition-duration: .2s;
 $radius: 6px;
 $text-xxxlarge: 48px;

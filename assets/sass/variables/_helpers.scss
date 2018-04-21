@@ -1,0 +1,83 @@
+// Helpers
+// ---------------------------
+$default-enable-clearfix: false !default;
+$default-enable-float: false !default;
+$default-enable-font-size: true !default;
+$default-enable-border-radius: true !default;
+$default-enable-border-radius-specific: true !default;
+$default-enable-margin: true !default;
+$default-enable-margin-responsive: true !default;
+$default-enable-padding: true !default;
+$default-enable-padding-responsive: true !default;
+$default-enable-undo-padding: true !default;
+$default-enable-isles: true !default;
+$default-enable-aspect-ratio: true !default;
+
+// Font size helpers
+// ---------------------------
+$headline: 48px !default;
+$f1: 36px !default;
+$f2: 30px !default;
+$f3: 24px !default;
+$f4: 21px !default;
+$f5: 18px !default;
+$f6: 16px !default;
+$f7: 14px !default;
+$f8: 12px !default;
+
+// Colour
+// ---------------------------
+$color-helpers: (
+	"white": $white,
+	primary: $primary,
+	secondary: $secondary,
+	tertiary: $tertiary,
+	neutral: $neutral
+) !default;
+
+// Margin helpers
+// ---------------------------
+$default-margin-map: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left
+) !default;
+$default-enable-undo-margin: true !default;
+
+$m0: 0 !default;
+$m1: map-get($default, spacing) !default;
+$m2: map-get($default, spacing) * 2 !default;
+$m3: map-get($default, spacing) * 3 !default;
+$m4: map-get($default, spacing) * 4 !default;
+$m5: map-get($default, spacing) * 5 !default;
+$m6: map-get($default, spacing) * 6 !default;
+$m7: map-get($default, spacing) * 7 !default;
+$m8: map-get($default, spacing) * 8 !default;
+$m9: map-get($default, spacing) * 9 !default;
+
+// Padding helpers
+// ---------------------------
+$default-padding-map: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left
+) !default;
+
+$p0: 0 !default;
+$p1: map-get($default, spacing) !default;
+$p2: map-get($default, spacing) * 2 !default;
+$p3: map-get($default, spacing) * 3 !default;
+$p4: map-get($default, spacing) * 4 !default;
+$p5: map-get($default, spacing) * 5 !default;
+$p6: map-get($default, spacing) * 6 !default;
+$p7: map-get($default, spacing) * 7 !default;
+$p8: map-get($default, spacing) * 8 !default;
+$p9: map-get($default, spacing) * 9 !default;
+
+// Measure
+// ---------------------------
+$measure: 30em;
+$measure-narrow: 24em;
+$measure-wide: 44em;

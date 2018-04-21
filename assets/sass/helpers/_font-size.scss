@@ -26,51 +26,51 @@
 // No breakpoints required as it sizes with the window size,
 // these are probably preferable to use, over the font sizes above.
 // calc($min-font-size + ($max-font-size - $min-font-size) * (100vw - $min-screen-size) / ($max-screen-size - $min-screen-size) )
-.headline-l { 
+.headline-l {
   font-size: font-size-lock($f2, $headline, $a, $e);
-  
+
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $headline; } }
-    
-.f1-l { 
+
+.f1-l {
   font-size: font-size-lock($f3, $f1, $a, $e);
-  
+
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f1; } }
-    
-.f2-l { 
+
+.f2-l {
   font-size: font-size-lock($f4, $f2, $a, $e);
-    
+
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f2; } }
-  
+
 .f3-l {
   font-size: font-size-lock($f5, $f3, $a, $e);
-    
+
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f3; } }
-  
+
 .f4-l {
   font-size: font-size-lock($f6, $f4, $a, $e);
-    
+
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f4; } }
-  
+
 .f5-l {
   font-size: font-size-lock($f7, $f5, $a, $e);
-    
+
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f5; } }
-  
+
 .f6-l {
   font-size: font-size-lock($f8, $f6, $a, $e);
-    
+
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f6; } }

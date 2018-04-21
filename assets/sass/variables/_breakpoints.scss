@@ -1,0 +1,38 @@
+// Breakpoints
+// ---------------------------
+@include breakpoint-set('to ems', $base-font-size);
+$breakpoint-subtract: 1px !default;
+
+// min-width
+$aa:	360px !default;
+$a:		480px !default;
+$ab: 	540px !default;
+$b: 	600px !default;
+$bc:	680px !default;
+$c: 	768px !default;
+$cd:	840px !default;
+$d: 	960px !default;
+$de:	1100px !default;
+$e: 	1200px !default;
+$ef:	1300px !default;
+$f: 	1440px !default;
+
+// max-width
+$aa-max:  max-width $aa - $breakpoint-subtract !default;
+$a-max:		max-width $a - $breakpoint-subtract !default;
+$ab-max: 	max-width $ab - $breakpoint-subtract !default;
+$b-max: 	max-width $b - $breakpoint-subtract !default;
+$bc-max: 	max-width $bc - $breakpoint-subtract !default;
+$c-max: 	max-width $c - $breakpoint-subtract !default;
+$cd-max:	max-width $cd - $breakpoint-subtract !default;
+$d-max: 	max-width $d - $breakpoint-subtract !default;
+$de-max: 	max-width $de - $breakpoint-subtract !default;
+$e-max: 	max-width $e - $breakpoint-subtract !default;
+$ef-max: 	max-width $ef - $breakpoint-subtract !default;
+$f-max: 	max-width $f - $breakpoint-subtract !default;
+
+// resolution
+$retina: min-resolution 1.5dppx !default;
+
+// Used in all helpers and grid to define a consistent output of breakpoints
+$default-breakpoint-map: ( a: $a, c: $c, d: $d ) !default;
