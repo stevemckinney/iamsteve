@@ -4,10 +4,10 @@
   @include breakpoint($d) {
     position: relative;
     margin-top: -$line*2.5;
-    background-color: $white;
-    border-radius: $base-px $base-px 0 0; }
+    background-color: $white; }
 
   @include breakpoint($site-width) {
+    border-radius: $base-px $base-px 0 0;
     margin-left: calc(50% - #{$contain/2});
     margin-right: calc(50% - #{$contain/2}); }
 
