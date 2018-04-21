@@ -1,61 +1,76 @@
 // Font sizes
 // ---------------------------
-@if $default-enable-font-size {
-  // ${size}-size defined in framework/base as percentage values
-  // Great for sizing em based elements
-	.xxlarge {
-		font-size: $xxlarge-size; }
-		
-	.xlarge {
-		font-size: $xlarge-size; }
-		
-	.large {
-		font-size: $large-size; }
-	
-	.normal {
-		font-size: $normal-size; }
-		
-	.small {
-		font-size: $small-size; }
-		
-	.xsmall {
-		font-size: $xsmall-size; }
-		
-	.xxsmall {
-		font-size: $xxsmall-size; }
+.headline { font-size: $headline; }
+.f1 { font-size: $f1; }
+.f2 { font-size: $f2; }
+.f3 { font-size: $f3; }
+.f4 { font-size: $f4; }
+.f5 { font-size: $f5; }
+.f6 { font-size: $f6; }
 
-  // Pixel based font sizes
-  .headline { font-size: $headline; letter-spacing: -1px; }
-  .f1 { font-size: $f1; }
-  .f2 { font-size: $f2; }
-  .f3 { font-size: $f3; }
-  .f4 { font-size: $f4; }
-  .f5 { font-size: $f5; }
-  .f6 { font-size: $f6; }
+// Loop through the breakpoint map, assign each breakpoint to the relevant variable
+// eg: $breakpoint-name = 'b' and $breakpoint-width = 480px
+// $default-breakpoint-map can be found in variables/breakpoints
+@each $breakpoint-name, $breakpoint-width in $default-breakpoint-map {
+	@include breakpoint($breakpoint-width) {
+    .headline-#{$breakpoint-name} { font-size: $headline; }
+    .f1-#{$breakpoint-name} { font-size: $f1; }
+    .f2-#{$breakpoint-name} { font-size: $f2; }
+    .f3-#{$breakpoint-name} { font-size: $f3; }
+    .f4-#{$breakpoint-name} { font-size: $f4; }
+    .f5-#{$breakpoint-name} { font-size: $f5; }
+    .f6-#{$breakpoint-name} { font-size: $f6; } } }
+
+// Font size locks
+// ---------------------------
+// No breakpoints required as it sizes with the window size,
+// these are probably preferable to use, over the font sizes above.
+// calc($min-font-size + ($max-font-size - $min-font-size) * (100vw - $min-screen-size) / ($max-screen-size - $min-screen-size) )
+.headline-l { 
+  font-size: font-size-lock($f2, $headline, $a, $e);
   
-  @include breakpoint($b) {
-    .headline-b { font-size: $headline; letter-spacing: -1px; }
-    .f1-b { font-size: $f1; }
-    .f2-b { font-size: $f2; }
-    .f3-b { font-size: $f3; }
-    .f4-b { font-size: $f4; }
-    .f5-b { font-size: $f5; }
-    .f6-b { font-size: $f6; } }
+  // Scale proportionately until
+  @include breakpoint($e) {
+    font-size: $headline; } }
+    
+.f1-l { 
+  font-size: font-size-lock($f3, $f1, $a, $e);
   
-  @include breakpoint($c) {
-    .headline-c { font-size: $headline; letter-spacing: -1px; }
-    .f1-c { font-size: $f1; }
-    .f2-c { font-size: $f2; }
-    .f3-c { font-size: $f3; }
-    .f4-c { font-size: $f4; }
-    .f5-c { font-size: $f5; }
-    .f6-c { font-size: $f6; } }
+  // Scale proportionately until
+  @include breakpoint($e) {
+    font-size: $f1; } }
+    
+.f2-l { 
+  font-size: font-size-lock($f4, $f2, $a, $e);
+    
+  // Scale proportionately until
+  @include breakpoint($e) {
+    font-size: $f2; } }
   
-  @include breakpoint($d) {
-    .headline-d { font-size: $headline; letter-spacing: -1px; }
-    .f1-d { font-size: $f1; }
-    .f2-d { font-size: $f2; }
-    .f3-d { font-size: $f3; }
-    .f4-d { font-size: $f4; }
-    .f5-d { font-size: $f5; }
-    .f6-d { font-size: $f6; } } }
+.f3-l {
+  font-size: font-size-lock($f5, $f3, $a, $e);
+    
+  // Scale proportionately until
+  @include breakpoint($e) {
+    font-size: $f3; } }
+  
+.f4-l {
+  font-size: font-size-lock($f6, $f4, $a, $e);
+    
+  // Scale proportionately until
+  @include breakpoint($e) {
+    font-size: $f4; } }
+  
+.f5-l {
+  font-size: font-size-lock($f7, $f5, $a, $e);
+    
+  // Scale proportionately until
+  @include breakpoint($e) {
+    font-size: $f5; } }
+  
+.f6-l {
+  font-size: font-size-lock($f8, $f6, $a, $e);
+    
+  // Scale proportionately until
+  @include breakpoint($e) {
+    font-size: $f6; } }

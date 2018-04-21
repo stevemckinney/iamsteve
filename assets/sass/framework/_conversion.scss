@@ -32,12 +32,12 @@
 
 // px to em
 // ---------------------------
-@function em($target-px, $context: $default-context) {
+@function em($target-px, $context: map-get($default, context)) {
 	@return ($target-px / $context) * 1em; }
 
 // px to rem
 // ---------------------------
-@function rem($target-px, $context: $default-context) {
+@function rem($target-px, $context: map-get($default, context)) {
 	@return ($target-px / $context) * 1rem; }
 
 // rem conversion
@@ -134,3 +134,15 @@ $yiq-debug: false !default;
 // Returns true if the color greater than 50% saturation
 @function is-saturated($color) {
 	@return (saturation($color) > 50%); }
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1); }
+
+  @return $number; }
+
+@function font-size-lock($min-font-size, $max-font-size, $min-screen-width, $max-screen-width) {
+  @return calc(#{$min-font-size} + ( ( #{strip-unit($max-font-size)} - #{strip-unit($min-font-size)} ) * (100vw - #{$min-screen-width}) / (#{strip-unit($max-screen-width)} - #{strip-unit($min-screen-width)}))); }
