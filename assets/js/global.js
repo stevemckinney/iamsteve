@@ -107,10 +107,11 @@ const iamsteve = (function iamsteve() {
         });
       }
     }
-    else if (('serviceWorker' in navigator) && cacheButton) {
+    else if (!('serviceWorker' in navigator) && cacheButton) {
       // If service worker isn't available we'd like to adjust the layout
+      console.log(cacheButton);
       cacheButton.parentNode.remove();
-      meta.classList.add('.single-meta-sw');
+      meta.classList.add('single-meta-no-sw');
     }
   }
 
