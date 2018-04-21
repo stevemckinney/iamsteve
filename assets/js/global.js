@@ -107,7 +107,7 @@ const iamsteve = (function iamsteve() {
         });
       }
     }
-    else {
+    else if (('serviceWorker' in navigator) && cacheButton) {
       // If service worker isn't available we'd like to adjust the layout
       cacheButton.parentNode.remove();
       meta.classList.add('.single-meta-sw');
