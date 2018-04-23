@@ -36,6 +36,7 @@
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
     "gulp-cache": "^0.2.10",
+    "gulp-check-unused-css": "^2.1.4",
     "gulp-compass": "^2.1.0",
     "gulp-concat": "^2.6.1",
     "gulp-copy": "^1.1.0",

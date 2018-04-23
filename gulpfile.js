@@ -15,6 +15,7 @@ var browserSync = require('browser-sync').create();
 var sourcemaps = require('gulp-sourcemaps');
 var reload = browserSync.reload;
 var critical = require('gulp-penthouse');
+var checkCSS = require('gulp-check-unused-css');
 
 var src = {
   scss: 'assets/sass/**/*.scss',
@@ -72,6 +73,16 @@ gulp.task('autoprefixer', function() {
     }));
 });
 
+gulp.task('purify', function() {
+  return gulp.src('./dist/css/global.css')
+    .pipe(purify(['./dist/js/**/*.js', './system/user/templates/default_site/**/*.html']))
+    .pipe(gulp.dest(src.css));
+});
+
+gulp.task('purify', function() {
+  return gulp.src(['./dist/css/global.css', './system/user/templates/default_site/**/*.html']).pipe(checkCSS());
+});
+
 // Critical CSS
 gulp.task('critical', function () {
   return gulp.src('./dist/css/global.css')
@@ -85,7 +96,8 @@ gulp.task('critical', function () {
       userAgent: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
       include: [
         '.headline-b',
-        '.primary .fill-s1'
+        '.primary .fill-s1',
+        '.primary'
       ]
     }))
     .pipe(gulp.dest('./dist/css/'))
@@ -137,4 +149,4 @@ gulp.task('serve', ['browser-sync', 'watch'], function() {
 
 
 gulp.task('default', ['serve']);
-gulp.task('build', ['sass-build', 'autoprefixer', 'critical', 'fonts']);
+gulp.task('build', ['sass-build', 'autoprefixer', 'critical', 'purify', 'fonts']);
