@@ -1,0 +1,19 @@
+.grid-posts {
+  display: grid;
+  grid-gap: 48px 16px;
+  grid-template-columns: repeat(2, auto);
+
+  @include breakpoint($b) {
+    grid-gap: 48px 24px; }
+
+  @include breakpoint($c) {
+    grid-gap: 48px 32px; }
+
+  @include breakpoint($d) {
+    grid-template-columns: repeat(3, minmax(240px, 378px)); }
+
+  @include breakpoint($e) {
+    grid-gap: 48px; } }
+
+.card {
+  min-height: 100%; }

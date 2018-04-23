@@ -15,8 +15,20 @@
   color: $warm-l1;
   position: relative;
 
-  p,
-  .link-icon { } }
+  @include breakpoint($d-max) {
+    p {
+      position: relative;
+      max-height: 120px;
+      overflow: hidden;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(rgba($white, 0) 0%, $white 100%); } } } }
 
 // Card meta
 // ---------------------------
@@ -98,9 +110,17 @@
 
 // More links
 // ---------------------------
-.card-more h2 {
-  justify-content: flex-end;
-  text-align: right; }
+.card-more {
+  transition: .2s;
+  background-color: $warm-l4;
+
+  &,
+  h2 {
+    height: 100%; }
+
+  &:hover,
+  &:focus {
+    background-color: $warm-l3; } }
 
 // Lazy loaded additional styles for 'loading spinner'
 // ---------------------------

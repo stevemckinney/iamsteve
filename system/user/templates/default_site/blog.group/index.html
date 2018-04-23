@@ -39,7 +39,7 @@
 {preload_replace:code="code-default-{switch='4|3|2|1'}.svg"}
 
 <div class="row between subheader contain contain-medium contain-large pb4">
-  {exp:stash:get_list 
+  {exp:stash:get_list
     name="pagination"
     process="end"
     parse_tags="yes"
@@ -62,7 +62,7 @@
       {/exp:channel:info}
     {/if}
 
-  
+
     {if next_page}
       <a href="{next_page}" class="warm sans link-icon"><strong>Older</strong> <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
     {if:else}
@@ -71,22 +71,22 @@
   {/exp:stash:get_list}
 </div>
 
-<div class="row between contain contain-medium contain-large pt4 pt6-b pb4 pb6-b" id="posts">
+<div class="grid-posts contain contain-medium contain-large pt4 pt6-b pb4 pb6-b" id="posts">
   {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" paginate="both"}
-  	
+
   	{!-- 404 --}
   	{if no_results}{redirect="404"}{/if}
-  	
+
   	{!-- Pagination stash --}
   	{pagination}
-  	
+
   	{!-- Article --}
   	{post_medium}
   {/exp:channel:entries}
 </div>
 
 {!-- Pagination stash is retrieved --}
-{exp:stash:get_list 
+{exp:stash:get_list
   name="pagination"
   process="end"
   parse_tags="yes"
@@ -103,11 +103,11 @@
 		<div class="paginate paginate-between">
       <span>Page {current_page} of {total_pages}</span>
 		</div>
-		
+
 		{if next_page}
 			<a href="{next_page}" class="paginate paginate-right link-icon">Older <span class="icon icon-medium icon-right">{gv_arrow_right}</span></a>
 		{if:else}
 		  <span class="paginate paginate-right disabled link-icon">Older <span class="icon icon-medium icon-right">{gv_arrow_right}</span></span>
-		{/if} 
+		{/if}
   </div>
 {/exp:stash:get_list}

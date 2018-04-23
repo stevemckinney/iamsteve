@@ -45,7 +45,7 @@
     letter-spacing: -1px; } }
 
 .f2-l {
-  font-size: font-size-lock($f3, $f2, 320px, $e);
+  font-size: font-size-lock($f4, $f2, 320px, $e);
   letter-spacing: -.25px;
 
   // Scale proportionately until
@@ -54,7 +54,7 @@
     letter-spacing: -.5px; } }
 
 .f3-l {
-  font-size: font-size-lock($f4, $f3, 320px, $e);
+  font-size: font-size-lock($f5, $f3, 320px, $e);
   letter-spacing: -.25px;
 
   // Scale proportionately until
@@ -62,14 +62,14 @@
     font-size: $f3; } }
 
 .f4-l {
-  font-size: font-size-lock($f5, $f4, 320px, $e);
+  font-size: font-size-lock($f6, $f4, 320px, $e);
 
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f4; } }
 
 .f5-l {
-  font-size: font-size-lock($f6, $f5, 320px, $e);
+  font-size: font-size-lock($f7, $f5, 320px, $e);
   letter-spacing: -.25px;
 
   // Scale proportionately until
@@ -77,7 +77,7 @@
     font-size: $f5; } }
 
 .f6-l {
-  font-size: font-size-lock($f7, $f6, 320px, $e);
+  font-size: font-size-lock($f8, $f6, 320px, $e);
 
   // Scale proportionately until
   @include breakpoint($e) {

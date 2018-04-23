@@ -24,29 +24,15 @@
   </picture>
 </div>
 
-<section class="posts pt7 pb6 pb8-d" aria-labelledby="latest-posts-title">
-  <header class="row row-header contain contain-medium contain-large between">
-    <h2 class="f5 f4-b chunky warm row-title" id="latest-posts-title">Latest posts</h2>
-    <div class="pagination js-pagination">
-      <button class="paginate paginate-left" aria-controls="latest-posts" aria-label="Previous posts">
-        <span class="icon icon-medium">{gv_arrow_left}</span>
-      </button>
-      <button class="paginate paginate-right" aria-controls="latest-posts" aria-label="Next posts">
-        <span class="icon icon-medium">{gv_arrow_right}</span>
-      </button>
-    </div>
-  </header>
-  <div class="scroll" id="latest-posts">
-    <div class="offsetter" role="presentation"></div>
-    {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit_large}"}
-    	{post_medium}
-    {/exp:channel:entries}
-    <a href="{path='blog/P12'}" class="card card-medium card-more">
-      <h2 class="sans f4 f3-b secondary link-icon m0">
-        View more posts <span class="icon icon-medium icon-right">{gv_arrow_right}</span>
-      </h2>
-    </a>
-  </div>
+<section class="grid-posts contain contain-medium contain-large pt7 pb6 pb8-d">
+  {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit_large}"}
+  	{post_medium}
+  {/exp:channel:entries}
+  <a href="{path='blog/P12'}" class="card card-medium card-more radius flex center self-center">
+    <h2 class="sans f2-l warm link-icon center self-center m0">
+      View more posts <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span>
+    </h2>
+  </a>
 </section>
 
 {embed="include/subscribe" class="row-cool"}
