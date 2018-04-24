@@ -18,8 +18,9 @@
   @include breakpoint($d-max) {
     p {
       position: relative;
-      max-height: 120px;
+      max-height: 96px;
       overflow: hidden;
+      font-size: 12px;
 
       &:after {
         content: "";
@@ -28,7 +29,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background-image: linear-gradient(rgba($white, 0) 0%, $white 100%); } } } }
+        background-image: linear-gradient(rgba($white, 0) 60%, rgba($white, 0) 70%, $white 95%); } } } }
 
 // Card meta
 // ---------------------------

@@ -107,15 +107,6 @@
       align-content: center;
       height: 100%; } }
 
-  .card-medium {
-    width: 240px + $base-px + $base-px + $base-px + $base-px;
-
-    @include breakpoint($aa) {
-      width: 288px + $base-px + $base-px + $base-px + $base-px; }
-
-    @include breakpoint($c) {
-      width: 378px + $line + $line; } }
-
   .card-small {
     width: 196px;
 

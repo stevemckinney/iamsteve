@@ -25,30 +25,47 @@
     {/if}
 	</a>
 	<div class="card-body flex flex-column flex-auto">
-  	<div class="meta flex between items-center dashes mb3">
-    	<time class="warm" datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
-        {entry_date format="%F %j%S %Y"}
-      </time>
-  	</div>
-		<h3 class="f2-l mb2 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+		{if '{exp:iamsteve:is_mobile}' != 1}
+		  <div class="meta flex between items-center dashes mb1 mb3-d">
+      	<time class="warm" datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
+          {entry_date format="%F %j%S %Y"}
+        </time>
+    	</div>
+  		<h3 class="f2-l mb2 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+      <div class="flex-auto-d mb3">
+    	  {if segment_1 == 'search'}
+    	    <p>{excerpt}</p>
+    	  {if:else}
+          {excerpt}
+    	  {/if}
+  	  </div>
+      <div class="meta flex between items-center dashes">
+        {categories channel="blog" style="linear" parent_only="yes" limit="1"}
+          <a href="{path='blog/index'}" rel="category tag" class="warm secondary-hover">{category_name}</a>
+        {/categories}
 
-    <div class="flex-auto-d mb3">
-  	  {if segment_1 == 'search'}
-  	    <p>{excerpt}</p>
-  	  {if:else}
-        {excerpt}
-  	  {/if}
-	  </div>
-
-    <div class="meta flex between items-center dashes">
-      {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-        <a href="{path='blog/index'}" rel="category tag" class="warm secondary-hover">{category_name}</a>
-      {/categories}
-
-      {if segment_2 != "entry"}
-        <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon warm secondary-hover">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
-      {/if}
-    </div>
+        <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
+      </div>
+    {if:else}
+      <div class="meta flex between items-center dashes mb1">
+      	<time class="warm" datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
+          {entry_date format="%F %j%S %Y"}
+        </time>
+    	</div>
+  		<h3 class="f3-l mb1 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+      <div class="flex-auto-d mb0">
+    	  {if segment_1 == 'search'}
+    	    <p>{excerpt}</p>
+    	  {if:else}
+          {excerpt}
+    	  {/if}
+  	  </div>
+      <div class="meta flex between items-center dashes">
+        {categories channel="blog" style="linear" parent_only="yes" limit="1"}
+          <a href="{path='blog/index'}" rel="category tag" class="warm secondary-hover">{category_name}</a>
+        {/categories}
+      </div>
+    {/if}
     <div class="visuallyhidden">
       <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
       <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
