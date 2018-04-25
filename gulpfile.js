@@ -98,6 +98,10 @@ gulp.task('critical', function () {
         '.headline-b',
         '.primary .fill-s1',
         '.primary'
+      ],
+      ignore: [
+        '.dashes',
+        '@font-face'
       ]
     }))
     .pipe(gulp.dest('./dist/css/'))
