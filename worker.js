@@ -17,10 +17,10 @@ var assetsToCache = [
   '/dist/images/introduction-734.svg',
   '/dist/images/introduction-394.svg',
   '/dist/images/introduction-320.svg',
-  '/assets/fonts/averta/avertastd-regular-webfont.woff2',
-  '/assets/fonts/averta/avertastd-regularitalic-webfont.woff2',
-  '/assets/fonts/averta/avertastd-semibold-webfont.woff2',
-  '/assets/fonts/averta/avertastd-bold-webfont.woff2',
+  '/dist/fonts/averta/avertastd-regular-webfont.woff2',
+  '/dist/fonts/averta/avertastd-regularitalic-webfont.woff2',
+  '/dist/fonts/averta/avertastd-semibold-webfont.woff2',
+  '/dist/fonts/averta/avertastd-bold-webfont.woff2',
 ];
 
 self.addEventListener('install', function(event) {
