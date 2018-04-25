@@ -17,6 +17,7 @@ const iamsteve = (function iamsteve() {
   const cacheButtonText = document.querySelector('.button-text');
   const imageArray = document.querySelectorAll('img');
   const meta = document.querySelector('.single-meta');
+  const doc = document.documentElement;
 
   // Text
   const copy = {
@@ -156,11 +157,13 @@ const iamsteve = (function iamsteve() {
   const fonts = () => {
     Cookies.set('exp_css', true, { expires: 365 });
 
-    if (!document.documentElement.classList.contains('fonts-stage-1')) {
+    if (!doc.classList.contains('fonts-stage-1')) {
       const semibold = new FontFaceObserver('AvertaW', { weight: 600 });
 
+      console.log(semibold);
+
       Promise.all([semibold.load()]).then(() => {
-        document.documentElement.className += ' fonts-stage-1';
+        doc.className += ' fonts-stage-1';
         Cookies.set('exp_fonts-stage-1', true, { expires: 365 });
 
         const regular = new FontFaceObserver('AvertaW', { weight: 400 });
@@ -168,11 +171,11 @@ const iamsteve = (function iamsteve() {
         const light = new FontFaceObserver('AvertaW', { weight: 300 });
 
         Promise.all([regular.load(), italic.load(), light.load()]).then(() => {
-          document.documentElement.className += ' fonts-stage-2';
+          doc.className += ' fonts-stage-2';
           Cookies.set('exp_fonts-stage-2', true, { expires: 365 });
         });
       }).catch((err) => {
-        console.log(err);
+        doc.className += ' fonts-failed';
       });
     }
   }
