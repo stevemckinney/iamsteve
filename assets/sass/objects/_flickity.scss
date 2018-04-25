@@ -94,17 +94,11 @@
       padding: 0 $line/1.5; } }
 
   .card-more {
-    min-width: 240px;
-    padding: $line*6 $line $line*2 14px; }
+    min-width: 240px; }
 
   // More sensible way to position when flickity is enabled
   &.flickity-enabled .card-more {
-    top: 50%;
-    padding-top: $line*2;
-
     h2 {
-      justify-content: flex-end;
-      align-content: center;
       height: 100%; } }
 
   .card-small {
