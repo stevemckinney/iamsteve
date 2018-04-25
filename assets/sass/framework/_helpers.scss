@@ -61,7 +61,7 @@
 // Font face
 // Modification of: https://gist.github.com/jonathantneal/d0460e5c2d5d7f9bc5e6
 // ---------------------------
-@mixin font-face($name, $path, $weight: null, $style: null, $exts: woff2 woff, $font-display: optional) {
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: woff2 woff) {
 	$src: null;
 
 	$formats: (
@@ -78,7 +78,6 @@
 		font-family: quote($name);
 		font-style: $style;
 		font-weight: $weight;
-		font-display: $font-display;
 		src: $src;
 	}
 }
