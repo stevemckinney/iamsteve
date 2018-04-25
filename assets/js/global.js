@@ -109,7 +109,6 @@ const iamsteve = (function iamsteve() {
     }
     else if (!('serviceWorker' in navigator) && cacheButton) {
       // If service worker isn't available we'd like to adjust the layout
-      console.log(cacheButton);
       cacheButton.parentNode.remove();
       meta.classList.add('single-meta-no-sw');
     }
@@ -158,20 +157,22 @@ const iamsteve = (function iamsteve() {
     Cookies.set('exp_css', true, { expires: 365 });
 
     if (!document.documentElement.classList.contains('fonts-stage-1')) {
-      const semibold = new FontFaceObserver('Averta', { weight: 600 });
+      const semibold = new FontFaceObserver('AvertaW', { weight: 600 });
 
       Promise.all([semibold.load()]).then(() => {
         document.documentElement.className += ' fonts-stage-1';
         Cookies.set('exp_fonts-stage-1', true, { expires: 365 });
 
-        const regular = new FontFaceObserver('Averta', { weight: 400 });
-        const italic = new FontFaceObserver('Averta', { weight: 300, style: 'italic' });
-        const light = new FontFaceObserver('Averta', { weight: 300 });
+        const regular = new FontFaceObserver('AvertaW', { weight: 400 });
+        const italic = new FontFaceObserver('AvertaW', { weight: 300, style: 'italic' });
+        const light = new FontFaceObserver('AvertaW', { weight: 300 });
 
         Promise.all([regular.load(), italic.load(), light.load()]).then(() => {
           document.documentElement.className += ' fonts-stage-2';
           Cookies.set('exp_fonts-stage-2', true, { expires: 365 });
         });
+      }).catch((err) => {
+        console.log(err);
       });
     }
   }
