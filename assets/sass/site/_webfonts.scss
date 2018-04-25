@@ -30,5 +30,5 @@ $fonts: (
 );
 
 @each $font in $fonts {
-  @include font-face(Averta, "averta/avertastd-#{nth($font, 1)}-webfont", nth($font, 2), nth($font, 3));
+  @include font-face(AvertaW, "averta/avertastd-#{nth($font, 1)}-webfont", nth($font, 2), nth($font, 3));
 }
