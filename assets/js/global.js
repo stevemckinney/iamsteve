@@ -160,8 +160,6 @@ const iamsteve = (function iamsteve() {
     if (!doc.classList.contains('fonts-stage-1')) {
       const semibold = new FontFaceObserver('AvertaW', { weight: 600 });
 
-      console.log(semibold);
-
       Promise.all([semibold.load()]).then(() => {
         doc.className += ' fonts-stage-1';
         Cookies.set('exp_fonts-stage-1', true, { expires: 365 });
