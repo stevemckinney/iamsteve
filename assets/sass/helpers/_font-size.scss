@@ -32,12 +32,12 @@
 // calc($min-font-size + ($max-font-size - $min-font-size) * (100vw - $min-screen-size) / ($max-screen-size - $min-screen-size) )
 .headline-l {
   font-size: font-size-lock($f1, $headline, 320px, $e);
-  letter-spacing: -1px;
+  letter-spacing: -.75px;
 
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $headline;
-    letter-spacing: -1.5px; } }
+    letter-spacing: -1px; } }
 
 .f1-l {
   font-size: font-size-lock($f2, $f1, 320px, $e);
@@ -46,7 +46,7 @@
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f1;
-    letter-spacing: -1px; } }
+    letter-spacing: -.75px; } }
 
 .f2-l {
   font-size: font-size-lock($f4, $f2, 320px, $e);
