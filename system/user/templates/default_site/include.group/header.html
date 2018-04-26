@@ -28,7 +28,7 @@
     {!--
       CSS
     --}
-    {preload_replace:css='{exp:minimee:css minify="n" display="url"}{global:theme_url}/dist/css/global.css{/exp:minimee:css}'}
+    {preload_replace:css='{exp:minimee:css minify="n" display="url"}{global:theme_url}/dist/css/global.css?v=4{/exp:minimee:css}'}
     {if '{exp:cookie:get name="css"}'}
       <link rel="stylesheet" href="{css}">
     {if:else}

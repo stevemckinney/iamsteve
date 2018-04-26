@@ -7,6 +7,8 @@
 .f4 { font-size: $f4; }
 .f5 { font-size: $f5; }
 .f6 { font-size: $f6; }
+.f7 { font-size: $f7; }
+.f8 { font-size: $f8; }
 
 // Loop through the breakpoint map, assign each breakpoint to the relevant variable
 // eg: $breakpoint-name = 'b' and $breakpoint-width = 480px
@@ -19,7 +21,9 @@
     .f3-#{$breakpoint-name} { font-size: $f3; }
     .f4-#{$breakpoint-name} { font-size: $f4; }
     .f5-#{$breakpoint-name} { font-size: $f5; }
-    .f6-#{$breakpoint-name} { font-size: $f6; } } }
+    .f6-#{$breakpoint-name} { font-size: $f6; }
+    .f7-#{$breakpoint-name} { font-size: $f7; }
+    .f8-#{$breakpoint-name} { font-size: $f8; } } }
 
 // Font size locks
 // ---------------------------

@@ -1,7 +1,7 @@
 {preload_replace:background="{image}{exp:iamsteve:background image='{url}'}{/image}"}
 
 <article class="card card-medium entry flex flex-column">
-	<a href="{title_permalink='blog/entry'}" class="card-image db mb3 mb4-b loading" style="background-color: {if image}{background}{if:else}{color}{/if}">
+	<a href="{title_permalink='blog/entry'}" class="card-image db mb2 mb4-b loading" style="background-color: {if image}{background}{if:else}{color}{/if}">
   	{if thumbnail}
   	  {thumbnail}
   	    {if medium_file_url}
@@ -26,8 +26,8 @@
 	</a>
 	<div class="card-body flex flex-column flex-auto">
 		{if '{exp:iamsteve:is_mobile}' != 1}
-		  <div class="meta flex between items-center dashes mb2 mb3-d">
-      	<time class="warm" datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
+		  <div class="meta f8-b f7-d flex between items-center dashes mb1 mb2-b mb3-d">
+      	<time class="warm-l1" datetime="{entry_date format='%Y-%m-%dT%H:%i:%s%O'}" pubdate>
           {entry_date format="%F %j%S %Y"}
         </time>
     	</div>
@@ -39,23 +39,23 @@
           {excerpt}
     	  {/if}
   	  </div>
-      <div class="meta flex between items-center dashes">
+      <div class="meta f8-b f7-d flex between items-center dashes">
         {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-          <a href="{path='blog/index'}" rel="category tag" class="warm secondary-hover">{category_name}</a>
+          <a href="{path='blog/index'}" rel="category tag" class="warm-l1 secondary-hover">{category_name}</a>
         {/categories}
 
-        <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon warm">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
+        <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon warm-l1 card-permalink">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
       </div>
     {if:else}
       <div class="meta flex between items-center dashes mb1">
-      	<time class="warm" datetime="{entry_date format='%M-%m-%dT%H:%i:%s%O'}" pubdate>
-          {entry_date format="%F %j%S %Y"}
+      	<time class="warm-l2" datetime="{entry_date format='%M-%m-%dT%H:%i:%s%O'}" pubdate>
+          {entry_date format="%M %j%S %Y"}
         </time>
         {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-          <a href="{path='blog/index'}" rel="category tag" class="warm secondary-hover">{category_name}</a>
+          <a href="{path='blog/index'}" rel="category tag" class="warm-l2 secondary-hover">{category_name}</a>
         {/categories}
     	</div>
-  		<h3 class="f3-l mb1 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+  		<h3 class="f2-l mb1 warm"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
       <div class="flex-auto-d mb0">
     	  {if segment_1 == 'search'}
     	    <p>{excerpt}</p>

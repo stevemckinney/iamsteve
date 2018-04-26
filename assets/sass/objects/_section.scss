@@ -11,19 +11,19 @@
 .row-padding {
   padding-top: double($line);
   padding-bottom: double($line);
-  
+
   @include breakpoint($c) {
     padding-top: quadruple($line);
     padding-bottom: quadruple($line); }
-  
+
   @include breakpoint($d) {
     padding-top: 120px;
     padding-bottom: 120px; }
-  
+
   @include breakpoint($e) {
     padding-top: 132px;
     padding-bottom: 132px; } }
-    
+
 .contain {
   padding-right: 16px;
   padding-left: 16px; }
@@ -32,14 +32,14 @@
   @include breakpoint($c) {
     padding-right: $line*2;
     padding-left: $line*2; }
-  
+
   @include breakpoint($d) {
     padding-right: $line*3;
     padding-left: $line*3; }
-  
+
   @include breakpoint($e) {
     padding-right: $line*4;
-    padding-left: $line*4; } } 
+    padding-left: $line*4; } }
 
 .contain-large {
   @include breakpoint($site-width) {
@@ -50,16 +50,16 @@
 // ---------------------------
 .row-normal {
   background: $white;
-  
+
   & + & {
     border-top: 1px solid $alternate-l3; } }
-  
+
 // Cool
 .row-cool {
   background-color: $cool-l4;
   position: relative;
   color: $alternate; }
-  
+
 // Neutral
 .row-neutral {
   background-color: $neutral-l9;
@@ -76,14 +76,14 @@
 // ---------------------------
 .row-header {
   padding-bottom: $line;
-  
+
   @include breakpoint($d) {
-    padding-bottom: double($line); } }
-  
+    padding-bottom: $line + 8px; } }
+
 .row-title {
   align-self: center;
   margin-bottom: 0; }
-  
+
 // Columns
 // ---------------------------
 .column {
@@ -94,7 +94,7 @@
   .column-#{$i} {
     flex-basis: calc(#{(100% / 8) * $i} - 8px); } }
 
-@for $i from 1 through 8 {    
+@for $i from 1 through 8 {
   .column-#{$i}-b {
     @include breakpoint($b) {
       flex-basis: calc(#{(100% / 8) * $i} - 16px); } } }
@@ -105,11 +105,11 @@
       flex-basis: calc(#{(100% / 8) * $i} - 32px); } } }
 
 // Column alignment
-// ---------------------------      
+// ---------------------------
 .column-center {
   align-items: center;
   align-content: center; }
-  
+
 .column-stretch {
   @include breakpoint($b) {
     align-content: center;
