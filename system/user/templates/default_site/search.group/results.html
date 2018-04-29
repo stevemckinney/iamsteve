@@ -12,14 +12,14 @@
   <h1 class="f5 f3-b f2-d warm mb0 text-center">
     {exp:search:search_results channel="{ch}" limit="1" paginate="bottom" status="open|latest" disable="member_data|trackbacks"}
       {if count == 1}
-        {exp:search:total_results}{total}{/exp:search:total_results} 
+        {exp:search:total_results}{total}{/exp:search:total_results}
         {if {exp:search:total_results} == 1}result was{if:else}results were{/if} found for {exp:search:keywords}
       {/if}
     {/exp:search:search_results}
   </h1>
 </div>
 
-<div class="row between contain contain-medium contain-large pt4 pt6-b pb4 pb6-b" id="posts">
+<div class="grid-posts contain contain-medium contain-large pt7 pb6 pb8-d" id="posts">
   {exp:search:search_results channel="{ch}" limit="{ch_limit}" status="{ch_status}" disable="{ch_disable}"}
   	{post_medium}
   {/exp:search:search_results}
