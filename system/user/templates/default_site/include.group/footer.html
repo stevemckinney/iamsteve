@@ -1,7 +1,7 @@
     {!-- Footer html found in _layout.html --}
     {if logged_in}
       <style>
-        .menu-bar { 
+        .menu-bar {
           position: fixed;
           display: flex;
           z-index: 999;
@@ -26,20 +26,20 @@
             <a href="{cp_url}">Control Panel</a><a href="{cp_url}?/cp/utilities/cache">Cache</a>
             <a href="{cp_url}/cp/content_publish/admin.php?/cp/publish/edit&filter_by_channel=1">Publish</a>
             {if logged_in_group_id == 1}<a href="{cp_edit_entry_url}">Edit {last_segment}</a>{/if}
-        {/exp:channel:entries} 
+        {/exp:channel:entries}
       </div>
     {/if}
-    
+
     {!-- Javascript --}
     {if global:env == "prod"}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-15528222-1"></script>
       <script>
-      	var GoSquared = {};
-        GoSquared.acct = "GSN-610812-E";
-        GoSquared.UserName = "visitor";
-        (function(w){function gs(){w._gstc_lt = +new Date;var d = document, g = d.createElement("script");g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";var s = d.getElementsByTagName("script")[0];s.parentNode.insertBefore(g, s);}w.addEventListener ?w.addEventListener("load", gs, false) :w.attachEvent("onload", gs);})(window);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-15528222-1');
       </script>
-      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-M6CQBG" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M6CQBG');</script>
     {/if}
   </body>
 </html>
