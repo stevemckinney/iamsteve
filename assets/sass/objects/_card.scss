@@ -136,11 +136,7 @@
 // Lazy loaded additional styles for ‘loading spinner’
 // ---------------------------
 .card-image {
-  @include breakpoint($ab-max) {
-    padding-bottom: 75%; }
-
-  @include breakpoint($ab) {
-    padding-bottom: 66.5492958%; }
+  padding-bottom: 66.5492958%;
 
   &, img {
     border-radius: $radius; }
