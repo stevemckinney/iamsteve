@@ -1,9 +1,25 @@
 {layout="layouts/_layout" title="Thank you for subscribing"}
+
+{!-- channel vars (prefix ch_) --}
+{preload_replace:ch="blog"}
+{preload_replace:ch_status="open|latest"}
+{preload_replace:ch_disable="pagination|member_data|trackbacks"}
+{preload_replace:ch_limit="8"}
+{preload_replace:ch_limit_large="3"}
+{preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
+{preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
+
 <div class="row subheader center contain contain-medium contain-large pb4">
   <h1 class="f4 f3-b f2-d warm mb0 text-center">Subscription confirmed</h1>
 </div>
 <div class="contain">
   <div class="measure m-center pt4 pt6-d pb4 pb6-d">
   	<p>Your subscription has been confirmed. If you have any problems feel free to <a href="{site_url}/contact" class="link">contact me</a> or reply to any of the emails you have received.</p>
+  	<section class="grid-thanks pt6">
+      <h2 class="f5 f4-b chunky neutral row-title column-all">Here’s what you can expect</h2>
+      {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit_large}" entry_id="160|164|165"}
+      	{post_small}
+      {/exp:channel:entries}
+    </section>
   </div>
 </div>
