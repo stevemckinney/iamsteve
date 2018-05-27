@@ -51,7 +51,8 @@
 
     @include breakpoint($a) {
       font-size: $f6;
-      padding: 8px 16px;
+      margin: -16px 0;
+      padding: 16px;
 
       &:last-child {
         padding-right: 0; } } } }
