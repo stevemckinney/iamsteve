@@ -1,0 +1,93 @@
+{layout="layouts/_layout" title="Join the list"}
+
+{!-- channel vars (prefix ch_) --}
+{preload_replace:ch="blog"}
+{preload_replace:ch_status="open|latest"}
+{preload_replace:ch_disable="pagination|member_data|trackbacks"}
+{preload_replace:ch_limit="8"}
+{preload_replace:ch_limit_large="3"}
+{preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
+{preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
+
+<div class="row subheader center contain contain-medium contain-large pb4">
+  <h1 class="f4 f3-b f2-d warm mb0 text-center">Join the list</h1>
+</div>
+<div class="contain">
+  <div class="measure m-center pt4 pt6-d pb4 pb6-d">
+    <h2 class="f1-l text-center m-center mb4 primary">Start new designs quicker</h2>
+    <p><strong>It’s my aim to help you be a better designer</strong>. I’ve made you a simple Adobe Illustrator template to manage your colour, grid and guides. So you’ll get to executing your ideas around 20 minutes sooner every time.</p>
+    <p>Join my monthly<em>ish</em> email list and I’ll send you the template and new tutorials to help you design beautiful websites. You can unsubscribe anytime.</p>
+
+    <div id="mlb2-894966" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-894966">
+      <div class="ml-form-align-center">
+        <div class="ml-form-embedWrapper embedForm">
+          <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+            <div class="ml-form-embedContent">
+            </div>
+            <form class="ml-block-form validate end form-warm" action="https://app.mailerlite.com/webforms/submit/v4g1q8" data-code="v4g1q8" method="post" target="_blank">
+              <div class="ml-form-formContent flex flex-wrap flex-row">
+                <div class="field field-text field-third ml-form-fieldRow ml-last-item">
+                  <label for="name" class="sans pb2 field-label">Name</label>
+                  <div class="ml-field-group ml-field-name ml-validate-required">
+                    <input type="text" class="input input-text" name="fields[name]" id="name">
+                  </div>
+                </div>
+                <div class="field field-text field-two-thirds nml ml-form-fieldRow">
+                  <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                    <label for="email" class="sans pb2 field-label">Email</label>
+                    <input type="email" class="input input-text" name="fields[email]" id="email">
+                  </div>
+                </div>
+              </div>
+
+              <div class="ml-form-embedPermissions">
+                <div class="ml-form-embedPermissionsContent default">
+                  <h4>Marketing Permissions</h4>
+                  <p>The information you provide on this form will only be used to provide you with updates and personalised marketing. Your privacy is important to me! Please let me know how you’d like to be contacted:</p>
+                  <div class="ml-form-embedPermissionsOptions">
+                    <div class="ml-form-embedPermissionsOptionsCheckbox">
+                      <label class="form-checkbox">
+                        <input type="checkbox" name="gdpr[]" value="Email" xp-if="gdpr.title" class="input input-checkbox">
+                        <div class="label-description">Email</div>
+                      </label>
+                      {!--<div class="description" xp-if="gdpr.description"></div>--}
+                    </div>
+                  </div>
+                </div>
+                <div class="ml-form-embedMailerLite-GDPR">
+                  <p>I use MailerLite as my marketing automation platform. By clicking below to submit this form, you acknowledge that the information you provide will be transferred to MailerLite for processing in accordance with their <a href="https://www.mailerlite.com/privacy-policy" target="_blank">Privacy Policy</a> and <a href="https://www.mailerlite.com/terms-of-service" target="_blank">Terms of Service</a>.</p>
+                </div>
+              </div>
+              <input type="hidden" name="fields[subfrom]" value="{last_page_visited}">
+              <input type="hidden" name="ml-submit" value="1">
+              <div class="form-actions pt2 text-right ml-form-embedSubmit">
+                <input type="submit" value="Join list" name="subscribe" class="button button-tertiary">
+                <button disabled="disabled" style="display: none;" type="button" class="loading btn btn-block">
+                  <img src="https://static.mailerlite.com/images/rolling.gif" width="20" height="20" style="width: 20px; height: 20px; margin: 0 auto; display: block;" border="0">
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="ml-form-successBody row-success" style="display: none">
+            <div class="ml-form-successContent">
+              <h4>Thank you!</h4>
+              <p>You should receive an email shortly to confirm your subscription.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function ml_webform_success_894966() {
+        try {
+          window.top.location.href = 'https://iamsteve.me/thanks';
+        }
+        catch (e) {
+          window.location.href = 'https://iamsteve.me/thanks';
+        }
+      }
+    </script>
+    <img src="https://track.mailerlite.com/webforms/o/894966/v4g1q8?v03ee2804ef2f008535475a5d62f02f94" width="1" height="1" style="max-width: 1px; max-height: 1px; display: block;" border="0">
+    <script src="https://static.mailerlite.com/js/w/webforms.min.js?v03ee2804ef2f008535475a5d62f02f94" type="text/javascript"></script>
+  </div>
+</div>
