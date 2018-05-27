@@ -35,7 +35,8 @@ $text-color-helpers: (
 );
 
 @each $name, $color in $text-color-helpers {
-	.#{$name} { color: $color; } }
+	.#{$name} { color: $color; }
+	.#{$name}-hover:hover { color: $color; } }
 
 .secondary-hover:hover,
 .secondary-hover:focus {
