@@ -231,7 +231,7 @@
   p {
     font-size: inherit; }
 
-  @include breakpoint($site-width) {
+  @include breakpoint($f) {
     position: absolute;
     bottom: 0;
     right: $line;
