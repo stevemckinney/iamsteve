@@ -2,29 +2,29 @@
 // ---------------------------
 form {
   position: relative; }
-  
+
 .form {
 	display: flex;
 	flex-flow: row wrap;
 	width: 100%; }
 
-.form-newsletter {  
+.form-newsletter {
   // Input has one off padding, height aims to be 60px at large screens
   // and offset the input button to the right
   position: relative;
-  
+
   .input {
     position: relative;
-    
+
     &:focus {
       z-index: $z-index-1; }
-      
+
     @include breakpoint($c) {
       padding: ($line - 4px) $base-px; } }
-  
+
   .form-actions {
     @include breakpoint($c) {
-      position: absolute; 
+      position: absolute;
       z-index: $z-index-2;
       bottom: 6px;
       right: 6px; } } }
@@ -56,33 +56,41 @@ form {
 // ---------------------------
 .field-third {
 	flex-basis: 33.333333%;
-	
+
 	&:nth-of-type(odd) input {
 		border-radius: $radius 0 0 $radius; }
-  
+
   &:nth-of-type(even) input {
 		border-radius: 0 $radius $radius 0; } }
 
 .field-two-thirds {
 	flex-basis: 66.666666%;
-	
+
 	&:nth-of-type(odd) input {
 		border-radius: $radius 0 0 $radius; }
-  
+
   &:nth-of-type(even) input {
 		border-radius: 0 $radius $radius 0; } }
-		
+
 // Input
 // ---------------------------
 .input {
   @include form-base($radius: false);
   width: 100%; }
-	
+
 	// Text
 	// ---------------------------
 	.input-text {
 		@include form($focus-color: $blue);
 		border-radius: $radius;
-		
+
 		.form-warm & {
       @include form(text, $warm-l2, $blue, $warm-l4 $white); } }
+
+  // Check
+  // ---------------------------
+  .input-checkbox {
+  	@include form(checkbox, $warm-l2, $blue, $warm-l4 $white);
+  	vertical-align: middle;
+  	width: $default-form-checkbox-width;
+  	height: $default-form-checkbox-height; }

@@ -11,7 +11,7 @@ const iamsteve = (function iamsteve() {
   // Variables
   const toggleSearchEl = document.querySelectorAll('.toggle-search');
   const overlay = document.querySelector('.overlay-search');
-  const field = document.getElementById('keycopy');
+  const field = document.getElementById('keywords');
   const currentPath = window.location.pathname;
   const cacheButton = document.querySelector('.button-offline');
   const cacheButtonText = document.querySelector('.button-text');

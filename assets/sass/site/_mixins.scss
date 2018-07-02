@@ -28,6 +28,38 @@
     inset 0 0 0 2px $color,
     0 2px 2px rgba($white, .8); }
 
+// Shading for radio
+// Called in _type.scss
+// ---------------------------
+@mixin form-shading-checkbox(
+  $color            : $default-form-color,
+  $background-color : $default-form-background-color,
+  $shading          : $default-form-shading
+) {
+  // If 2 colours are passed make a gradient, otherwise a solid colour
+  $background:
+    if( length($background-color) > 1,
+      linear-gradient(
+        to bottom,
+        scale-color(nth($background-color, 1), $lightness: -10%),
+        nth($background-color, 1) 4px,
+        nth($background-color, 2) 100%
+      ),
+      $background-color
+    );
+  background: $background;
+
+  box-shadow:
+    inset 0 2px scale-color($color, $lightness: -15%),
+    inset 0 0 0 2px $color,
+    if($shading, inset 0 2px 1px $white, compact(false));
+
+  &:checked {
+    @if length($background-color) > 1 {
+      background: $default-form-checkbox-image, $background; }
+    @else {
+      background: $default-form-checkbox-image $background; } } }
+
 
 // Site specific mixins
 // ---------------------------

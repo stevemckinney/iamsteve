@@ -50,12 +50,12 @@
 
 .f2-l {
   font-size: font-size-lock($f4, $f2, 320px, $e);
-  letter-spacing: -.25px;
+  letter-spacing: -.125px;
 
   // Scale proportionately until
   @include breakpoint($e) {
     font-size: $f2;
-    letter-spacing: -.5px; } }
+    letter-spacing: -.25px; } }
 
 .f3-l {
   font-size: font-size-lock($f5, $f3, 320px, $e);

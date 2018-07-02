@@ -1,0 +1,28 @@
+<?php
+
+$lang = array(
+	'ajax' => 'Add Ajax Detect Conditional: {if ajax}, {if not_ajax}',
+	'secure' => 'Add Secure SSL/HTTPS Conditional and Variable: {if secure}, {if not_secure}, {secure_site_url}, {insecure_site_url}',
+	'get' => 'Add GET: {get:your_key}',
+	'get_post' => 'Add GET and POST: {get_post:your_key}',
+	'post' => 'Add POST: {post:your_key}',
+	'cookie' => 'Add Cookies: {cookie:your_key}',
+	'flashdata' => 'Add Session Flashdata: {flashdata:your_key}',
+	'defaults_get' => 'Set default values for {get:your_key} variables:<br><br><code>&nbsp;&nbsp;your_key<br>&nbsp;&nbsp;your_other_key : news</code>',
+	'defaults_get_post' => 'Set default values for {get_post:your_key} variables:<br><br><code>&nbsp;&nbsp;your_key<br>&nbsp;&nbsp;your_other_key : news</code>',
+	'defaults_post' => 'Set default values for {post:your_key} variables:<br><br><code>&nbsp;&nbsp;your_key<br>&nbsp;&nbsp;your_other_key : news</code>',
+	'defaults_cookie' => 'Set default values for {cookie:your_key} variables:<br><br><code>&nbsp;&nbsp;your_key<br>&nbsp;&nbsp;your_other_key : news</code>',
+	'defaults_flashdata' => 'Set default values for {flashdata:your_key} variables:<br><br><code>&nbsp;&nbsp;your_key<br>&nbsp;&nbsp;your_other_key : news</code>',
+	'page_tracker' => 'Add Page Tracker: {last_page_visited}, {last_uri_visited}, {two_pages_ago}, {two_uris_ago}, {three_pages_ago}, {three_uris_ago}, {four_pages_ago}, {four_uris_ago}, {five_pages_ago}, {five_uris_ago}',
+	'reverse_segments' => 'Add Reverse Segments: {rev_segment_1}, {rev_segment_2}, etc.',
+	'segments_from' => 'Add Segments Starting From X: {segments_from_1}, {segments_from_2}, etc.',
+	'paginated' => 'Add Pagination Detect Conditional, Page Offset and Pagination Base URL (the current URL sans pagination segment): {if paginated}, {page_offset}, {pagination_base_url}',
+	'archive' => 'Add Archive Detect Conditional (detects presence of year, month, date in URI): {if archive}, {if yearly_archive}, {if monthly_archive}, {if daily_archive}, {if not_archive}, {if not_yearly_archive}, {if not_monthly_archive}, {if not_daily_archive}',
+	'categorized' => 'Add Category Detect Conditional (detects presence of reserved category word in URI): {if categorized}',
+	'reserved_category_word' => 'Add Reserved Category Word: {reserved_category_word}',
+	'current_url' => 'Add Current URL: {current_url}, {server_name}, {hostname}, {current_url_encoded} {query_string}, {uri_string}, {uri_string_encoded}',
+	'member_variables' => 'Early-parsed Member Variables (for use as tag paramters): {logged_in_member_id}, {logged_in_group_id}, {logged_in_username}, {logged_in_screen_name}, {logged_in_email}',
+	'member_group_conditionals' => 'Early-parsed Member Group Conditionals: {if in_group(1|2|3)}, {if not_in_group(1|2|3)}',
+	'member_id_conditionals' => 'Early-parsed Member ID Conditionals: {if has_member_id(1|2|3)}, {if not_has_member_id(1|2|3)}',
+	'mobile_detect' => 'Early-parsed Mobile Detection Conditionals: {if is_mobile}, {if is_not_mobile}, {if is_tablet}, {if is_not_tablet}, {if is_phone}, {if is_not_phone}',
+);
