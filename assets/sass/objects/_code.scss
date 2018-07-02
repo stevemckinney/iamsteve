@@ -11,10 +11,13 @@ $code-white: #f6f7ee;
 $comment: #838c95;
 
 code {
-  font: 400 em($base-font-size - 2px) $monospace;
   background: rgba($alternate, .05);
   border-radius: 2px;
-  padding: em(2px, $base-font-size - 2px) em(4px, $base-font-size - 2px); }
+  padding: em(2px, $base-font-size - 2px) em(4px, $base-font-size - 2px);
+  font: 400 em($base-font-size - 4px) $monospace;
+  
+  @include breakpoint($ab) {
+  	font-size: em($base-font-size - 2px); } }
 
 pre {
   background: $code-black;
