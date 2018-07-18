@@ -1,27 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Config Class
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Core
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Core, Core. CORE!
  */
 class EE_Core {
 
@@ -82,8 +69,8 @@ class EE_Core {
 		// application constants
 		define('IS_CORE',		FALSE);
 		define('APP_NAME',		'ExpressionEngine'.(IS_CORE ? ' Core' : ''));
-		define('APP_BUILD',		'20180124');
-		define('APP_VER',		'3.5.15');
+		define('APP_BUILD',		'20180703');
+		define('APP_VER',		'4.3.2');
 		define('APP_VER_ID',	'');
 		define('SLASH',			'&#47;');
 		define('LD',			'{');
@@ -95,8 +82,8 @@ class EE_Core {
 		define('AJAX_REQUEST',	ee()->input->is_ajax_request());
 		define('USERNAME_MAX_LENGTH', 75);
 		define('PASSWORD_MAX_LENGTH', 72);
+		define('DOC_URL',       'https://docs.expressionengine.com/v4/');
 		define('URL_TITLE_MAX_LENGTH', 200);
-		define('DOC_URL',       'https://docs.expressionengine.com/v3/');
 
 		ee()->load->helper('language');
 		ee()->load->helper('string');
@@ -240,6 +227,11 @@ class EE_Core {
 
 		define('PATH_MBR_THEMES', PATH_THEMES.'member/');
 		define('PATH_CP_GBL_IMG', URL_THEMES_GLOBAL_ASSET.'img/');
+
+		define('PATH_THEME_TEMPLATES', SYSPATH . 'ee/templates/_themes/');
+		define('PATH_THIRD_THEME_TEMPLATES', SYSPATH . 'user/templates/_themes/');
+
+
 		unset($theme_path);
 
 		// Load the very, very base classes
@@ -247,8 +239,6 @@ class EE_Core {
 		ee()->load->library('extensions');
 		ee()->load->library('api');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Initialize EE
@@ -368,34 +358,40 @@ class EE_Core {
 		// Load up any Snippets
 		if (REQ == 'ACTION' OR REQ == 'PAGE')
 		{
-			$fresh = ee('Model')->make('Snippet')->loadAll();
-
-			if ($fresh->count() > 0)
-			{
-				$snippets = $fresh->getDictionary('snippet_name', 'snippet_contents');
-
-				// Thanks to @litzinger for the code suggestion to parse
-				// global vars in snippets...here we go.
-
-				$var_keys = array();
-
-				foreach (ee()->config->_global_vars as $k => $v)
-				{
-					$var_keys[] = LD.$k.RD;
-				}
-
-				$snippets = str_replace($var_keys, ee()->config->_global_vars, $snippets);
-
-				ee()->config->_global_vars = ee()->config->_global_vars + $snippets;
-
-				unset($snippets);
-				unset($fresh);
-				unset($var_keys);
-			}
+			$this->loadSnippets();
 		}
 	}
 
-	// ------------------------------------------------------------------------
+	/**
+	 * Load Snippets into config's _global_vars
+	 */
+	public function loadSnippets()
+	{
+		$fresh = ee('Model')->make('Snippet')->loadAll();
+
+		if ($fresh->count() > 0)
+		{
+			$snippets = $fresh->getDictionary('snippet_name', 'snippet_contents');
+
+			// Thanks to @litzinger for the code suggestion to parse
+			// global vars in snippets...here we go.
+
+			$var_keys = array();
+
+			foreach (ee()->config->_global_vars as $k => $v)
+			{
+				$var_keys[] = LD.$k.RD;
+			}
+
+			$snippets = str_replace($var_keys, ee()->config->_global_vars, $snippets);
+
+			ee()->config->_global_vars = ee()->config->_global_vars + $snippets;
+
+			unset($snippets);
+			unset($fresh);
+			unset($var_keys);
+		}
+	}
 
 	/**
 	 * Generate Control Panel Request
@@ -447,7 +443,7 @@ class EE_Core {
 		// Fetch control panel language file
 		ee()->lang->loadfile('cp');
 
-		// Prevent CodeIgniter Pseudo Output variables from being parsed
+		// Prevent Pseudo Output variables from being parsed
 		ee()->output->parse_exec_vars = FALSE;
 
 		/** ------------------------------------
@@ -466,7 +462,7 @@ class EE_Core {
 			// has their session Timed out and they are requesting a page?
 			// Grab the URL, base64_encode it and send them to the login screen.
 			$safe_refresh = ee()->cp->get_safe_refresh();
-			$return_url = ($safe_refresh == 'C=homepage') ? '' : AMP.'return='.base64_encode($safe_refresh);
+			$return_url = ($safe_refresh == 'C=homepage') ? '' : AMP.'return='.ee('Encrypt')->encode($safe_refresh);
 
 			ee()->functions->redirect(BASE.AMP.'C=login'.$return_url);
 		}
@@ -501,8 +497,6 @@ class EE_Core {
 		});
 	}
 
-	// ------------------------------------------------------------------------
-
 	/**
 	 * Define the BASE constant
 	 * @return void
@@ -511,8 +505,6 @@ class EE_Core {
 	{
 		define('BASE', SELF.'?S='.ee()->session->session_id().'&amp;D=cp'); // cp url
 	}
-
-	// ------------------------------------------------------------------------
 
 	/**
 	 * Enable Debugging
@@ -526,8 +518,6 @@ class EE_Core {
 		error_reporting(E_ALL);
 		@ini_set('display_errors', 1);
 	}
-
-	// ------------------------------------------------------------------------
 
 	/**
 	 * Generate Page Request
@@ -545,8 +535,6 @@ class EE_Core {
 			$that->set_newrelic_transaction('ACT: '.$class.'::'.$method.'()');
 		});
 	}
-
-	// ------------------------------------------------------------------------
 
 	/**
 	 * Generate Page Request
@@ -682,8 +670,6 @@ class EE_Core {
 		ee()->TMPL->run_template_engine($template_group, $template);
 	}
 
-	// ------------------------------------------------------------------------
-
 	/**
 	 * Garbage Collection
 	 *
@@ -733,8 +719,6 @@ class EE_Core {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Set the New Relic transasction name
 	 * @param String/callable $transaction_name Either a string containing the
@@ -765,8 +749,6 @@ class EE_Core {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Set iFrame Headers
 	 *
@@ -792,8 +774,6 @@ class EE_Core {
 			ee()->output->set_header('X-Frame-Options: '.$frame_options);
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Process Secure Forms

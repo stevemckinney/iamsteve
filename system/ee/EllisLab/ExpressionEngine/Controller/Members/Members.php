@@ -1,8 +1,13 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Members;
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 use CP_Controller;
 use EllisLab\ExpressionEngine\Library\CP;
@@ -13,27 +18,7 @@ use EllisLab\ExpressionEngine\Service\Filter\FilterFactory;
 use EllisLab\ExpressionEngine\Service\CP\Filter\FilterRunner;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Members Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Members Controller
  */
 class Members extends CP_Controller {
 
@@ -97,7 +82,7 @@ class Members extends CP_Controller {
 
 		if (ee()->cp->allowed_group('can_ban_users'))
 		{
-			$list->addItem(lang('manage_bans'), ee('CP/URL')->make('members/bans'));
+			$list->addItem(lang('manage_bans'), ee('CP/URL')->make('members/ban-settings'));
 		}
 
 		if (ee()->cp->allowed_group('can_admin_mbr_groups'))
@@ -139,11 +124,7 @@ class Members extends CP_Controller {
 	 */
 	public function index()
 	{
-		if ( ! ($member_name = $this->input->post('search')) &&
-			 ! ($member_name = $this->input->get('search')))
-		{
-			$member_name = '';
-		}
+		$member_name = $this->input->get_post('filter_by_keyword');
 
 		$table = $this->initializeTable();
 
@@ -187,8 +168,26 @@ class Members extends CP_Controller {
 
 		ee()->javascript->set_global('lang.remove_confirm', lang('members') . ': <b>### ' . lang('members') . '</b>');
 		ee()->cp->add_js_script(array(
-			'file' => array('cp/confirm_remove'),
+			'file' => array('cp/confirm_remove', 'cp/members/members'),
 		));
+
+		$session = ee('Model')->get('Session', ee()->session->userdata('session_id'))->first();
+
+		if ( ! $session->isWithinAuthTimeout())
+		{
+			$data['confirm_remove_secure_form_ctrls'] = [
+				'title' => 'your_password',
+				'desc' => 'your_password_delete_members_desc',
+				'group' => 'verify_password',
+				'fields' => [
+					'verify_password' => [
+						'type'      => 'password',
+						'required'  => TRUE,
+						'maxlength' => PASSWORD_MAX_LENGTH
+					]
+				]
+			];
+		}
 
 		$data['can_delete_members'] = ee()->cp->allowed_group('can_delete_members');
 
@@ -276,12 +275,12 @@ class Members extends CP_Controller {
 
 		// Allow them to tokenize searches
 		// possible tokens: id, member_id, username, screen_name, email
-		$search_terms = $this->_check_search_tokens(ee()->input->get_post('search'));
+		$search_terms = $this->_check_search_tokens(ee()->input->get_post('filter_by_keyword'));
 
 		if ( ! empty($search_terms))
 		{
-			$keywords = ee()->input->get_post('search');
-			$vars['search_terms'] = htmlentities($keywords, ENT_QUOTES, 'UTF-8');
+			$keywords = ee()->input->get_post('filter_by_keyword');
+			$vars['search_terms'] = ee('Format')->make('Text', $keywords)->convertToEntities();
 
 			if ( ! is_array($search_terms))
 			{
@@ -306,6 +305,7 @@ class Members extends CP_Controller {
 		$total = $members->count();
 
 		$filter = ee('CP/Filter')
+				->add('Keyword')
 				->add('Perpage', $total, 'show_all_banned');
 
 		$this->renderFilters($filter);
@@ -330,41 +330,17 @@ class Members extends CP_Controller {
 	}
 
 
-	public function bans()
+	public function banSettings()
 	{
 		if ( ! ee()->cp->allowed_group('can_ban_users'))
 		{
 			show_error(lang('unauthorized_access'), 403);
 		}
 
-		if (ee()->input->post('bulk_action') == 'remove')
-		{
-			// @TODO: refactor the delete method so it doesn't need this property
-			$this->base_url = ee('CP/URL', 'members/bans');
-			$this->delete();
-		}
-
 		$this->generateSidebar('ban');
 
-		$vars = array(
-			'cp_page_title' => lang('banned_members'),
-			'can_delete' => ee()->cp->allowed_group('can_delete_members')
-		);
-
-		$this->base_url = ee('CP/URL', 'members/bans');
+		$this->base_url = ee('CP/URL', 'members/ban-settings');
 		$this->set_view_header($this->base_url);
-
-		$members = ee('Model')->get('Member')
-			->with('MemberGroup')
-			->filter('group_id', 2)
-			->filter('MemberGroup.site_id', ee()->config->item('site_id'));
-
-		$listings = $this->listingsPage($members, $this->base_url, 'no_banned_members_found');
-
-		$vars = array_merge($listings, $vars);
-
-		$this->set_view_header($this->base_url);
-
 
 		$values = array(
 			'banned_ips' => '',
@@ -391,7 +367,7 @@ class Members extends CP_Controller {
 		$vars['form'] = array(
 			'ajax_validate' => TRUE,
 			'base_url'      => $this->base_url,
-			'cp_page_title' => lang('user_banning'),
+			'cp_page_title' => lang('manage_bans'),
 			'save_btn_text' => sprintf(lang('btn_save'), lang('settings')),
 			'save_btn_text_working' => 'btn_saving',
 			'sections' => array(
@@ -533,12 +509,7 @@ class Members extends CP_Controller {
 				->now();
 		}
 
-		ee()->javascript->set_global('lang.remove_confirm', lang('members') . ': <b>### ' . lang('members') . '</b>');
-		ee()->cp->add_js_script(array(
-			'file' => array('cp/confirm_remove'),
-		));
-
-		ee()->cp->render('members/banned', $vars);
+		ee()->cp->render('members/ban_settings', $vars);
 	}
 
 	private function initializeTable($checkboxes = NULL)
@@ -569,6 +540,7 @@ class Members extends CP_Controller {
 			'sort_col' => $sort_col,
 			'sort_dir' => $sort_dir,
 			'limit' => ee()->config->item('memberlist_row_limit'),
+			'search' => ee()->input->get_post('filter_by_keyword'),
 		));
 
 		$table->setNoResultsText('no_members_found');
@@ -754,8 +726,8 @@ class Members extends CP_Controller {
 
 		// Create filter object
 		$group_ids = ee('Model')->get('MemberGroup')
-			// Banned & Pending have their own views
-			->filter('group_id', 'NOT IN', array(2, 4))
+			// Pending has its own view
+			->filter('group_id', 'NOT IN', array(4))
 			->filter('site_id', ee()->config->item('site_id'))
 			->order('group_title', 'asc')
 			->all()
@@ -771,6 +743,7 @@ class Members extends CP_Controller {
 
 		$filters = ee('CP/Filter')
 				->add($group)
+				->add('Keyword')
 				->add('Perpage', $total_rows, 'show_all_members');
 
 		$this->renderFilters($filters);
@@ -866,7 +839,7 @@ class Members extends CP_Controller {
 					'name' => 'selection[]',
 					'value' => $member['member_id'],
 					'data'	=> array(
-						'confirm' => lang('member') . ': <b>' . htmlentities($member['screen_name'], ENT_QUOTES, 'UTF-8') . '</b>'
+						'confirm' => lang('member') . ': <b>' . htmlentities($member['username'], ENT_QUOTES, 'UTF-8') . '</b>'
 					)
 				);
 			}
@@ -1124,8 +1097,6 @@ class Members extends CP_Controller {
 		$this->base_url->addQueryStringVariables($this->params);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Looks through the member search string for search tokens (e.g. id:3
 	 * or username:john)
@@ -1169,8 +1140,6 @@ class Members extends CP_Controller {
 		return $search_string;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Generate post re-assignment view if applicable
 	 *
@@ -1189,26 +1158,63 @@ class Members extends CP_Controller {
 		{
 			$group_ids = ee()->member_model->get_members_group_ids($selected);
 
-			// Find Valid Member Replacements
-			ee()->db->select('member_id, username, screen_name')
-				->from('members')
-				->where_in('group_id', $group_ids)
-				->where_not_in('member_id', $selected)
-				->order_by('screen_name');
-			$heirs = ee()->db->get();
+			$vars['heirs'] = $this->heirFilter($group_ids, $selected);
 
-			foreach ($heirs->result() as $heir)
-			{
-				$name_to_use = ($heir->screen_name != '') ? $heir->screen_name : $heir->username;
-				$vars['heirs'][$heir->member_id] = $name_to_use;
-			}
+			$vars['fields'] = array(
+				'heir' => array(
+					'type' => 'radio',
+					'choices' => $vars['heirs'],
+					'filter_url' => ee('CP/URL')->make(
+						'members/heir-filter',
+						[
+							'group_ids' => implode('|', $group_ids),
+							'selected' => implode('|', $selected)
+						]
+					)->compile(),
+					'no_results' => ['text' => 'no_members_found'],
+					'margin_top' => TRUE,
+					'margin_left' => TRUE
+				)
+			);
 		}
 
 		ee()->view->cp_page_title = lang('delete_member');
 		ee()->cp->render('members/delete_confirm', $vars);
 	}
 
-	// --------------------------------------------------------------------
+	/**
+	 * AJAX endpoint for filtering heir selection
+	 *
+	 * @param array $group_ids Group IDs to search
+	 * @param array $selected Members to exclude from search
+	 * @return array List of members normalized for SelectField
+	 */
+	public function heirFilter($group_ids = NULL, $selected = NULL)
+	{
+		$search_term = ee('Request')->get('search') ?: '';
+		$group_ids = $group_ids ?: explode('|', ee('Request')->get('group_ids'));
+		$selected = $selected ?: explode('|', ee('Request')->get('selected'));
+
+		$members = ee('Model')->get('Member')
+			->fields('screen_name', 'username')
+			->search(
+				['screen_name', 'username', 'email', 'member_id'], $search_term
+			)
+			->filter('group_id', 'IN', $group_ids)
+			->filter('member_id', 'NOT IN', $selected)
+			->order('screen_name')
+			->limit(100)
+			->all();
+
+		$heirs = [];
+		foreach($members as $heir)
+		{
+			$name = ($heir->screen_name != '') ? 'screen_name' : 'username';
+			$heirs[$heir->getId()] = $heir->$name;
+		}
+
+		return ee('View/Helpers')->normalizedChoices($heirs);
+	}
 
 	/**
 	 * Member Delete
@@ -1219,14 +1225,39 @@ class Members extends CP_Controller {
 	 */
 	public function delete()
 	{
-		// Verify the member is allowed to delete
-		if ( ! ee()->cp->allowed_group('can_delete_members'))
+		$member_ids = ee()->input->post('selection', TRUE);
+		$session = ee('Model')->get('Session', ee()->session->userdata('session_id'))
+			->filter('member_id', ee()->session->userdata('member_id'))
+			->first();
+
+		if ( ! $session ||
+			! ee()->cp->allowed_group('can_delete_members') ||
+			! $member_ids)
 		{
 			show_error(lang('unauthorized_access'), 403);
 		}
 
-		//  Fetch member ID numbers and build the query
-		$member_ids = ee()->input->post('selection', TRUE);
+		if ( ! $session->isWithinAuthTimeout())
+		{
+			$validator = ee('Validation')->make();
+			$validator->setRules(array(
+				'verify_password'  => 'required|authenticated'
+			));
+			$password_confirm = $validator->validate($_POST);
+
+			if ($password_confirm->failed())
+			{
+				ee('CP/Alert')->makeInline('view-members')
+					->asIssue()
+					->withTitle(lang('member_delete_problem'))
+					->addToBody(lang('invalid_password'))
+					->defer();
+
+				return ee()->functions->redirect($this->base_url);
+			}
+
+			$session->resetAuthTimeout();
+		}
 
 		if ( ! is_array($member_ids))
 		{
@@ -1280,7 +1311,7 @@ class Members extends CP_Controller {
 		}
 
 		// If we got this far we're clear to delete the members
-		ee('Model')->get('Member')->filter('member_id', 'IN', $member_ids)->delete();
+		ee('Model')->get('Member')->with('MemberGroup')->filter('member_id', 'IN', $member_ids)->delete();
 
 		// Send member deletion notifications
 		$this->_member_delete_notifications($member_ids);
@@ -1294,9 +1325,6 @@ class Members extends CP_Controller {
 		/*
 		/* -------------------------------------------*/
 
-		// Update
-		ee()->stats->update_member_stats();
-
 		$cp_message = (count($member_ids) == 1) ?
 			lang('member_deleted') : lang('members_deleted');
 
@@ -1309,7 +1337,68 @@ class Members extends CP_Controller {
 		ee()->functions->redirect($this->base_url);
 	}
 
-	// --------------------------------------------------------------------
+	/**
+	 * Member Anonymize
+	 */
+	public function anonymize()
+	{
+		$member_id = ee()->input->post('selection', TRUE);
+		$member = ee('Model')->get('Member')
+			->filter('member_id', $member_id)
+			->first();
+
+		$session = ee('Model')->get('Session', ee()->session->userdata('session_id'))
+			->filter('member_id', ee()->session->userdata('member_id'))
+			->first();
+
+		if ( ! $session ||
+			! ee()->cp->allowed_group('can_delete_members') ||
+			! $member)
+		{
+			show_error(lang('unauthorized_access'), 403);
+		}
+
+		$profile_url = ee('CP/URL')->make('members/profile/settings', ['id' => $member_id]);
+
+		if ( ! $session->isWithinAuthTimeout())
+		{
+			$validator = ee('Validation')->make();
+			$validator->setRules(array(
+				'verify_password'  => 'required|authenticated'
+			));
+			$password_confirm = $validator->validate($_POST);
+
+			if ($password_confirm->failed())
+			{
+				ee('CP/Alert')->makeInline('shared-form')
+					->asIssue()
+					->withTitle(lang('member_anonymize_problem'))
+					->addToBody(lang('invalid_password'))
+					->defer();
+
+				return ee()->functions->redirect($profile_url);
+			}
+
+			$session->resetAuthTimeout();
+		}
+
+		if ($member_id == ee()->session->userdata('member_id'))
+		{
+			show_error(lang('can_not_delete_self'));
+		}
+
+		$this->_super_admin_delete_check($member_id);
+
+		$member->anonymize();
+
+		ee('CP/Alert')->makeInline('shared-form')
+			->asSuccess()
+			->withTitle(lang('member_anonymize_success'))
+			->addToBody(lang('member_anonymize_success_desc'))
+			->defer();
+
+		ee()->functions->redirect($profile_url);
+	}
 
 	/**
 	 * Check to see if the members being deleted are super admins. If they are
@@ -1351,8 +1440,6 @@ class Members extends CP_Controller {
 			}
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Send email notifications to email addresses for the respective member
@@ -1422,8 +1509,6 @@ class Members extends CP_Controller {
 			}
 		}
 	}
-
-	// -------------------------------------------------------------------------
 
 	/**
 	 * Set the header for the members section

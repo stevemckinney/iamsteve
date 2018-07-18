@@ -1,4 +1,11 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 use EllisLab\ExpressionEngine\Library;
 use EllisLab\ExpressionEngine\Library\Filesystem;
@@ -8,6 +15,7 @@ use EllisLab\ExpressionEngine\Service\Alert;
 use EllisLab\ExpressionEngine\Service\Category;
 use EllisLab\ExpressionEngine\Service\ChannelSet;
 use EllisLab\ExpressionEngine\Service\Config;
+use EllisLab\ExpressionEngine\Service\Consent;
 use EllisLab\ExpressionEngine\Service\CustomMenu;
 use EllisLab\ExpressionEngine\Service\Database;
 use EllisLab\ExpressionEngine\Service\Encrypt;
@@ -16,7 +24,12 @@ use EllisLab\ExpressionEngine\Service\Event;
 use EllisLab\ExpressionEngine\Service\File;
 use EllisLab\ExpressionEngine\Service\Filter;
 use EllisLab\ExpressionEngine\Service\Formatter;
+use EllisLab\ExpressionEngine\Service\IpAddress;
 use EllisLab\ExpressionEngine\Service\License;
+use EllisLab\ExpressionEngine\Service\LivePreview;
+use EllisLab\ExpressionEngine\Service\Logger;
+use EllisLab\ExpressionEngine\Service\Member;
+use EllisLab\ExpressionEngine\Service\Memory;
 use EllisLab\ExpressionEngine\Service\Modal;
 use EllisLab\ExpressionEngine\Service\Model;
 use EllisLab\ExpressionEngine\Service\Permission;
@@ -25,17 +38,19 @@ use EllisLab\ExpressionEngine\Service\Sidebar;
 use EllisLab\ExpressionEngine\Service\Theme;
 use EllisLab\ExpressionEngine\Service\Thumbnail;
 use EllisLab\ExpressionEngine\Service\URL;
+use EllisLab\ExpressionEngine\Service\Updater;
 use EllisLab\ExpressionEngine\Service\Validation;
+use EllisLab\ExpressionEngine\Service\Template;
 use EllisLab\ExpressionEngine\Service\View;
 use EllisLab\Addons\Spam\Service\Spam;
 use EllisLab\Addons\FilePicker\Service\FilePicker;
 
 // TODO should put the version in here at some point ...
-return array(
+return [
 
 	'author' => 'EllisLab',
 	'name' => 'ExpressionEngine',
-	'description' => 'The worlds most flexible content management system.',
+	'description' => "The world's most flexible content management system.",
 
 	'namespace' => 'EllisLab\ExpressionEngine',
 
@@ -51,14 +66,16 @@ return array(
 			return new CustomMenu\Menu;
 		},
 
-		'CP/EntryListing' => function($ee, $search_value)
+		'CP/EntryListing' => function($ee, $search_value, $search_in = NULL, $include_author_filter = FALSE)
 		{
 			 return new EntryListing\EntryListing(
 				ee()->config->item('site_id'),
 				(ee()->session->userdata['group_id'] == 1),
 				array_keys(ee()->session->userdata['assigned_channels']),
 				ee()->localize->now,
-				$search_value
+				$search_value,
+				$search_in,
+				$include_author_filter
 			);
 		},
 
@@ -136,6 +153,26 @@ return array(
 			return $ee->make('Database')->newQuery();
 		},
 
+		'Database/Backup' => function($ee, $file_path)
+		{
+			$filesystem = $ee->make('Filesystem');
+			$backup_query = $ee->make('Database/Backup/Query');
+
+			return new Database\Backup\Backup($filesystem, $backup_query, $file_path);
+		},
+
+		'Database/Backup/Query' => function($ee)
+		{
+			return new Database\Backup\Query($ee->make('db'));
+		},
+
+		'Database/Restore' => function($ee)
+		{
+			$filesystem = $ee->make('Filesystem');
+
+			return new Database\Backup\Restore($ee->make('db'), $filesystem);
+		},
+
 		'Event' => function($ee)
 		{
 			return new Event\Emitter();
@@ -148,7 +185,23 @@ return array(
 
 		'Format' => function($ee)
 		{
-			return new Formatter\FormatterFactory(ee()->lang);
+			static $format_opts;
+			if ($format_opts === NULL)
+			{
+				$format_opts += (extension_loaded('intl')) ? 0b00000001 : 0;
+			}
+
+			$config_items = [
+				'censor_replacement' => ee()->config->item('censor_replacement'),
+				'censored_words' => ee()->config->item('censored_words'),
+				'foreign_chars' => ee()->config->loadFile('foreign_chars'),
+				'stopwords' => ee()->config->loadFile('stopwords'),
+				'word_separator' => ee()->config->item('word_separator'),
+				'emoji_regex' => EMOJI_REGEX,
+				'emoji_map' => ee()->config->loadFile('emoji'),
+			];
+
+			return new Formatter\FormatterFactory(ee()->lang, ee()->session, $config_items, $format_opts);
 		},
 
 		'Curl' => function($ee)
@@ -159,6 +212,11 @@ return array(
 		'View' => function($ee)
 		{
 			return new View\ViewFactory($ee);
+		},
+
+		'Memory' => function($ee)
+		{
+			return new Memory\Memory();
 		},
 
 		'Model' => function($ee)
@@ -176,7 +234,7 @@ return array(
 
 		'Theme' => function($ee)
 		{
-			return new Theme\Theme(PATH_THEMES, URL_THEMES, PATH_THIRD_THEMES, URL_THIRD_THEMES);
+			return new Theme\Theme(PATH_THEME_TEMPLATES, URL_THEMES, PATH_THIRD_THEME_TEMPLATES, URL_THIRD_THEMES, PATH_THEMES, PATH_THIRD_THEMES);
 		},
 
 		'ThemeInstaller' => function($ee)
@@ -200,12 +258,104 @@ return array(
 			return new Permission\Permission($userdata);
 		},
 
-		'Encrypt' => function($ee)
+		'Updater/Runner' => function($ee)
 		{
-			$key = (ee()->config->item('encryption_key')) ?: ee()->db->username.ee()->db->password;
+			return new Updater\Runner();
+		},
+
+		'Updater/Downloader' => function($ee)
+		{
+			$config = $ee->make('Config')->getFile();
+
+			if ( ! $config->has('site_url'))
+			{
+				$config->set('site_url', ee()->config->item('site_url'));
+			}
+
+			return new Updater\Downloader\Downloader(
+				$ee->make('License')->getEELicense(),
+				$ee->make('Curl'),
+				$ee->make('Filesystem'),
+				$ee->make('Updater/Logger'),
+				$config
+			);
+		},
+
+		'Updater/Preflight' => function($ee)
+		{
+			return new Updater\Downloader\Preflight(
+				$ee->make('Filesystem'),
+				$ee->make('Updater/Logger'),
+				$ee->make('Config')->getFile(),
+				$ee->make('Model')->get('Site')->all()
+			);
+		},
+
+		'Updater/Unpacker' => function($ee)
+		{
+			$filesystem = $ee->make('Filesystem');
+
+			return new Updater\Downloader\Unpacker(
+				$filesystem,
+				new \ZipArchive(),
+				new Updater\Verifier($filesystem),
+				$ee->make('Updater/Logger'),
+				new Updater\RequirementsCheckerLoader($filesystem)
+			);
+		},
+
+		'Updater/Logger' => function($ee)
+		{
+			return new Updater\Logger(
+				PATH_CACHE.'ee_update/update.log',
+				$ee->make('Filesystem'),
+				php_sapi_name() === 'cli'
+			);
+		},
+
+		'Encrypt' => function($ee, $key = NULL)
+		{
+			if (empty($key))
+			{
+				$key = (ee()->config->item('encryption_key')) ?: ee()->db->username.ee()->db->password;
+			}
 
 			return new Encrypt\Encrypt($key);
-		}
+		},
+
+		'LivePreview' => function($ee)
+		{
+			return new LivePreview\LivePreview(ee()->session);
+		},
+
+		'Variables/Parser' => function ($ee)
+		{
+			return new Template\Variables\LegacyParser();
+		},
+
+		'Consent' => function($ee, $member_id = NULL)
+		{
+			$actor_userdata = ee()->session->userdata;
+			if ( ! ee()->session->userdata('member_id'))
+			{
+				$actor_userdata['screen_name'] = lang('anonymous');
+				$actor_userdata['username'] = lang('anonymous');
+			}
+
+			if ( ! $member_id)
+			{
+				$member_id = $actor_userdata['member_id'];
+			}
+
+			return new Consent\Consent(
+				$ee->make('Model'),
+				ee()->input,
+				ee()->session,
+				$member_id,
+				$actor_userdata,
+				ee()->localize->now);
+		},
+
 	),
 
 	'services.singletons' => array(
@@ -225,6 +375,11 @@ return array(
 			return new ChannelSet\Factory(
 				ee()->config->item('site_id')
 			);
+		},
+
+		'CookieRegistry' => function($ee)
+		{
+			return new Consent\CookieRegistry();
 		},
 
 		'CP/Alert' => function($ee)
@@ -292,12 +447,22 @@ return array(
 			return new File\Factory();
 		},
 
+		'IpAddress' => function($ee)
+		{
+			return new IpAddress\Factory();
+		},
+
 		'License' => function($ee)
 		{
 			$default_key_path = SYSPATH.'ee/EllisLab/ExpressionEngine/EllisLab.pub';
 			$default_key = (is_readable($default_key_path)) ? file_get_contents($default_key_path) : '';
 
 			return new License\LicenseFactory($default_key);
+		},
+
+		'Member' => function($ee)
+		{
+			return new Member\Member();
 		},
 
 		'Model/Datastore' => function($ee)
@@ -340,6 +505,11 @@ return array(
 		{
 			return new Validation\Factory();
 		},
+
+		'View/Helpers' => function($ee)
+		{
+			return new View\ViewHelpers();
+		}
 	),
 
 	// models exposed on the model service
@@ -376,7 +546,8 @@ return array(
 			'ResetPassword' => 'Model\Security\ResetPassword',
 
 			// ..\Session
-			// empty
+			'Session' => 'Model\Session\Session',
+			'RememberMe' => 'Model\Session\RememberMe',
 
 			// ..\Site
 			'Site' => 'Model\Site\Site',
@@ -384,7 +555,6 @@ return array(
 
 			// ..\Status
 			'Status' => 'Model\Status\Status',
-			'StatusGroup' => 'Model\Status\StatusGroup',
 
 			// ..\Template
 			'Template' => 'Model\Template\Template',
@@ -403,16 +573,26 @@ return array(
 			'ChannelEntryVersion' => 'Model\Channel\ChannelEntryVersion',
 			'ChannelFormSettings' => 'Model\Channel\ChannelFormSettings',
 			'ChannelLayout' => 'Model\Channel\ChannelLayout',
+			'FieldData' => 'Model\Content\FieldData',
 
 			// ..\Comment
 			'Comment' => 'Model\Comment\Comment',
 			'CommentSubscription' => 'Model\Comment\CommentSubscription',
+
+			// ..\Message
+			'Message' => 'Model\Message\Message',
+			'MessageAttachment' => 'Model\Message\Attachment',
+			'MessageFolder' => 'Model\Message\Folder',
+			'ListedMember' => 'Model\Message\ListedMember',
+			'MessageCopy' => 'Model\Message\Copy',
 
 			// ..\Member
 			'HTMLButton' => 'Model\Member\HTMLButton',
 			'Member' => 'Model\Member\Member',
 			'MemberField' => 'Model\Member\MemberField',
 			'MemberGroup' => 'Model\Member\MemberGroup',
+			'MemberNewsView' => 'Model\Member\NewsView',
+			'OnlineMember' => 'Model\Member\Online',
 
 			// ..\Menu
 			'MenuSet' => 'Model\Menu\MenuSet',
@@ -426,8 +606,36 @@ return array(
 			'EmailTracker' => 'Model\Email\EmailTracker',
 
 			// ..\Revision
-			'RevisionTracker' => 'Model\Revision\RevisionTracker'
-	)
-);
+			'RevisionTracker' => 'Model\Revision\RevisionTracker',
+
+			// ..\Consent
+			'Consent' => 'Model\Consent\Consent',
+			'ConsentAuditLog' => 'Model\Consent\ConsentAuditLog',
+			'ConsentRequest' => 'Model\Consent\ConsentRequest',
+			'ConsentRequestVersion' => 'Model\Consent\ConsentRequestVersion'
+	),
+	'cookies.necessary' => [
+		'cp_last_site_id',
+		'csrf_token',
+		'flash',
+		'last_activity',
+		'last_visit',
+		'remember',
+		'sessionid',
+		'visitor_consents',
+	],
+	'cookies.functionality' => [
+		'anon',
+		'forum_theme',
+		'forum_topics',
+		'my_email',
+		'my_location',
+		'my_name',
+		'my_url',
+		'notify_me',
+		'save_info',
+		'tracker',
+	],
+];
 
 // EOF

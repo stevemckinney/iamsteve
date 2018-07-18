@@ -1,34 +1,19 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Settings;
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 use CP_Controller;
 use EllisLab\ExpressionEngine\Library\CP;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Settings Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Settings Controller
  */
 class Settings extends CP_Controller {
 
@@ -122,6 +107,16 @@ class Settings extends CP_Controller {
 
 			$list->addItem(lang('access_throttling'), ee('CP/URL')->make('settings/throttling'));
 			$list->addItem(lang('captcha'), ee('CP/URL')->make('settings/captcha'));
+
+			if (ee()->cp->allowed_group('can_manage_consents'))
+			{
+				$list->addItem(lang('consent_requests'), ee('CP/URL')->make('settings/consents'));
+			}
+		}
+		elseif (ee()->cp->allowed_group('can_manage_consents'))
+		{
+			$list = $sidebar->addHeader(lang('security_privacy'))->addBasicList();
+			$list->addItem(lang('consent_requests'), ee('CP/URL')->make('settings/consents'));
 		}
 	}
 

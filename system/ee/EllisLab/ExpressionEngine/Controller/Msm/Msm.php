@@ -1,4 +1,11 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Msm;
 
@@ -7,29 +14,11 @@ use EllisLab\ExpressionEngine\Library\CP\Table;
 use EllisLab\ExpressionEngine\Service\Validation\Result as ValidationResult;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Multiple Site Manager Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Multiple Site Manager Controller
  */
 class Msm extends CP_Controller {
+
+	protected $can_add = FALSE;
 
 	/**
 	 * Constructor
@@ -47,22 +36,33 @@ class Msm extends CP_Controller {
 
 		ee()->lang->loadfile('sites');
 
+		$license = ee('License')->getEELicense();
+		$this->can_add = $license->canAddSites(ee('Model')->get('Site')->count());
+
 		$this->stdHeader();
 	}
 
 	protected function stdHeader()
 	{
-		ee()->view->header = array(
+		$header = array(
 			'title' => lang('msm_manager'),
-			'form_url' => ee('CP/URL')->make('msm'),
 			'toolbar_items' => array(
 				'settings' => array(
 					'href' => ee('CP/URL')->make('settings/general'),
 					'title' => lang('settings')
 				)
-			),
-			'search_button_value' => lang('search')
+			)
 		);
+
+		if ($this->can_add)
+		{
+			$header['action_button'] = [
+				'text' => lang('add_site'),
+				'href' => ee('CP/URL')->make('msm/create')
+			];
+		}
+
+		ee()->view->header = $header;
 	}
 
 	public function index()
@@ -80,12 +80,7 @@ class Msm extends CP_Controller {
 
 		$base_url = ee('CP/URL')->make('msm');
 
-		$vars['create_url'] = ee('CP/URL')->make('msm/create');
-
-		$license = ee('License')->getEELicense();
-		$vars['can_add'] = $license->canAddSites(ee('Model')->get('Site')->count());
-
-		if ( ! $vars['can_add'])
+		if ( ! $this->can_add)
 		{
 			ee('CP/Alert')->makeInline('site-limit-reached')
 				->asIssue()
@@ -207,10 +202,7 @@ class Msm extends CP_Controller {
 			show_error(lang('unauthorized_access'), 403);
 		}
 
-		$license = ee('License')->getEELicense();
-		$can_add = $license->canAddSites(ee('Model')->get('Site')->count());
-
-		if ( ! $can_add && ! empty($_POST))
+		if ( ! $this->can_add && ! empty($_POST))
 		{
 			show_error(lang('unauthorized_access'), 403);
 		}
@@ -244,7 +236,18 @@ class Msm extends CP_Controller {
 					->addToBody(sprintf(lang('create_site_success_desc'), $site->site_label))
 					->defer();
 
-				ee()->functions->redirect(ee('CP/URL')->make('msm'));
+				if (ee('Request')->post('submit') == 'save_and_new')
+				{
+					ee()->functions->redirect(ee('CP/URL')->make('msm/create'));
+				}
+				elseif (ee()->input->post('submit') == 'save_and_close')
+				{
+					ee()->functions->redirect(ee('CP/URL')->make('msm'));
+				}
+				else
+				{
+					ee()->functions->redirect(ee('CP/URL')->make('msm/edit/' . $site->getId()));
+				}
 			}
 			else
 			{
@@ -260,12 +263,34 @@ class Msm extends CP_Controller {
 			'ajax_validate' => TRUE,
 			'base_url' => ee('CP/URL')->make('msm/create'),
 			'errors' => $errors,
-			'save_btn_text' => sprintf(lang('btn_save'), lang('site')),
-			'save_btn_text_working' => 'btn_saving',
-			'sections' => $this->getForm($site, $can_add),
+			'buttons' => [
+				[
+					'name' => 'submit',
+					'type' => 'submit',
+					'value' => 'save',
+					'text' => 'save',
+					'working' => 'btn_saving'
+				],
+				[
+					'name' => 'submit',
+					'type' => 'submit',
+					'value' => 'save_and_new',
+					'text' => 'save_and_new',
+					'working' => 'btn_saving'
+				],
+				[
+					'name' => 'submit',
+					'type' => 'submit',
+					'value' => 'save_and_close',
+					'text' => 'save_and_close',
+					'working' => 'btn_saving'
+				]
+
+			],
+			'sections' => $this->getForm($site, $this->can_add),
 		);
 
-		if ( ! $can_add)
+		if ( ! $this->can_add)
 		{
 			$vars['buttons'] = array(
 				array(
@@ -281,7 +306,7 @@ class Msm extends CP_Controller {
 
 		ee()->view->cp_page_title = lang('create_site');
 
-		if ($can_add)
+		if ($this->can_add)
 		{
 			ee()->cp->add_js_script('plugin', 'ee_url_title');
 			ee()->javascript->output('
@@ -331,7 +356,18 @@ class Msm extends CP_Controller {
 
 				ee()->logger->log_action(lang('site_updated') . ': ' . $site->site_label);
 
-				ee()->functions->redirect(ee('CP/URL')->make('msm/edit/' . $site_id));
+				if (ee('Request')->post('submit') == 'save_and_new')
+				{
+					ee()->functions->redirect(ee('CP/URL')->make('msm/create'));
+				}
+				elseif (ee()->input->post('submit') == 'save_and_close')
+				{
+					ee()->functions->redirect(ee('CP/URL')->make('msm'));
+				}
+				else
+				{
+					ee()->functions->redirect(ee('CP/URL')->make('msm/edit/' . $site_id));
+				}
 			}
 			else
 			{
@@ -347,10 +383,37 @@ class Msm extends CP_Controller {
 			'ajax_validate' => TRUE,
 			'base_url' => ee('CP/URL')->make('msm/edit/' . $site_id),
 			'errors' => $errors,
-			'save_btn_text' => sprintf(lang('btn_save'), lang('site')),
-			'save_btn_text_working' => 'btn_saving',
+			'buttons' => [
+				[
+					'name' => 'submit',
+					'type' => 'submit',
+					'value' => 'save',
+					'text' => 'save',
+					'working' => 'btn_saving'
+				],
+				[
+					'name' => 'submit',
+					'type' => 'submit',
+					'value' => 'save_and_new',
+					'text' => 'save_and_new',
+					'working' => 'btn_saving'
+				],
+				[
+					'name' => 'submit',
+					'type' => 'submit',
+					'value' => 'save_and_close',
+					'text' => 'save_and_close',
+					'working' => 'btn_saving'
+				]
+
+			],
 			'sections' => $this->getForm($site, TRUE),
 		);
+
+		if ( ! $this->can_add)
+		{
+			unset($vars['buttons'][1]);
+		}
 
 		ee()->view->cp_page_title = lang('edit_site');
 
@@ -416,11 +479,7 @@ class Msm extends CP_Controller {
 				'desc' => 'site_online_desc',
 				'fields' => array(
 					'is_site_on' => array(
-						'type' => 'inline_radio',
-						'choices' => array(
-							'y' => 'online',
-							'n' => 'offline'
-						),
+						'type' => 'yes_no',
 						'value' => $site->site_system_preferences->is_site_on
 					)
 				)
@@ -516,12 +575,13 @@ class Msm extends CP_Controller {
 
 		$site_names = $sites->pluck('site_label');
 
+		$sites->delete();
+
 		foreach ($site_names as $site_name)
 		{
 			ee()->logger->log_action(lang('site_deleted') . ': ' . $site_name);
 		}
 
-		$sites->delete();
 		ee('CP/Alert')->makeInline('sites')
 			->asSuccess()
 			->withTitle(lang('success'))

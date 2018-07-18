@@ -1,27 +1,14 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// --------------------------------------------------------------------
-
 /**
- * ExpressionEngine Discussion Pages Module
- *
- * @package		ExpressionEngine
- * @subpackage	Modules
- * @category	Modules
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Pages Module Tab
  */
 class Pages_tab {
 
@@ -270,15 +257,14 @@ class Pages_tab {
 	}
 
 	/**
-	 * Saves the page's publish form data. This function is called in the
-	 * ChannelEntry's afterSave() event.
+	 * Prepares the site pages array with the submitted values
 	 *
 	 * @param EllisLab\ExpressionEngine\Model\Channel\ChannelEntry $entry
 	 *  An instance of the ChannelEntry entity.
 	 * @param array $values An associative array of field => value
-	 * @return 	void
+	 * @return	array A multidimensional array of site page data
 	 */
-	public function save($entry, $values)
+	public function prepareSitePagesData($entry, $values)
 	{
 	    $site_id    = ee()->config->item('site_id');
 	    $site_pages = ee()->config->item('site_pages');
@@ -305,13 +291,33 @@ class Pages_tab {
 				{
 					$site_pages[$site_id]['uris'][$entry->entry_id] = '/';
 				}
-
-				ee()->config->set_item('site_pages', $site_pages);
-				$site = ee('Model')->get('Site', $site_id)->first();
-				$site->site_pages = $site_pages;
-				$site->save();
             }
         }
+
+		return $site_pages;
+	}
+
+	/**
+	 * Saves the page's publish form data. This function is called in the
+	 * ChannelEntry's afterSave() event.
+	 *
+	 * @param EllisLab\ExpressionEngine\Model\Channel\ChannelEntry $entry
+	 *  An instance of the ChannelEntry entity.
+	 * @param array $values An associative array of field => value
+	 * @return 	void
+	 */
+	public function save($entry, $values)
+	{
+	    $site_id    = ee()->config->item('site_id');
+	    $site_pages = $this->prepareSitePagesData($entry, $values);
+
+		if ($site_pages !== FALSE)
+		{
+			ee()->config->set_item('site_pages', $site_pages);
+			$site = ee('Model')->get('Site', $site_id)->first();
+			$site->site_pages = $site_pages;
+			$site->save();
+		}
 	}
 
 	/**

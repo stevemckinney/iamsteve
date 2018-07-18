@@ -1,37 +1,26 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Model\Category;
 
 use EllisLab\ExpressionEngine\Model\Content\ContentModel;
 use EllisLab\ExpressionEngine\Model\Content\Display\LayoutInterface;
 use EllisLab\ExpressionEngine\Model\Category\Display\CategoryFieldLayout;
+use EllisLab\ExpressionEngine\Service\Model\Collection;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Category Model
- *
- * @package		ExpressionEngine
- * @subpackage	Category
- * @category	Model
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Category Model
  */
 class Category extends ContentModel {
 
 	protected static $_primary_key = 'cat_id';
+	protected static $_table_name = 'categories';
 	protected static $_gateway_names = array('CategoryGateway', 'CategoryFieldDataGateway');
 
 	protected static $_hook_id = 'category';
@@ -70,6 +59,12 @@ class Category extends ContentModel {
 		)
 	);
 
+	protected static $_field_data = array(
+		'field_model'     => 'CategoryField',
+		'group_column'    => 'group_id',
+		'structure_model' => 'CategoryGroup',
+	);
+
 	protected static $_validation_rules = array(
 		'cat_name'			=> 'required|noHtml|xss',
 		'cat_url_title'		=> 'required|alphaDash|unique[group_id]',
@@ -78,7 +73,8 @@ class Category extends ContentModel {
 	);
 
 	protected static $_events = array(
-		'beforeInsert'
+		'beforeInsert',
+		'beforeDelete'
 	);
 
 	// Properties
@@ -122,10 +118,17 @@ class Category extends ContentModel {
 
 		if (empty($cat_order))
 		{
-			$count = $this->getFrontend()->get('Category')
+			$count = $this->getModelFacade()->get('Category')
 				->filter('group_id', $this->getProperty('group_id'))
 				->count();
 			$this->setProperty('cat_order', $count + 1);
+		}
+
+		$parent_id = $this->getProperty('parent_id');
+
+		if (empty($parent_id))
+		{
+			$this->setProperty('parent_id', 0);
 		}
 	}
 
@@ -144,6 +147,27 @@ class Category extends ContentModel {
 		return parent::addFacade($id, $info, $name_prefix);
 	}
 
+	/**
+	 * Get all nested children for the category, not just top level
+	 *
+	 * @return Collection All category children
+	 */
+	public function getAllChildren()
+	{
+		$children = [];
+
+		if ($this->Children)
+		{
+			$children = $this->Children->asArray();
+
+			foreach ($this->Children as $child)
+			{
+				$children = array_merge($children, $child->getAllChildren()->asArray());
+			}
+		}
+
+		return new Collection($children);
+	}
 }
 
 // EOF

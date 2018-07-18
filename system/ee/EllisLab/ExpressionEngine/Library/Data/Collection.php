@@ -1,4 +1,11 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Library\Data;
 
@@ -9,30 +16,10 @@ use ArrayIterator;
 use IteratorAggregate;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
  * ExpressionEngine Collection
  *
  * A collection is essentially an array of objects. Any calls to the
  * collection will be passed to each of the parent objects.
- *
- * @package		ExpressionEngine
- * @subpackage	Data
- * @category	Library
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
  */
 class Collection implements ArrayAccess, Countable, IteratorAggregate {
 
@@ -255,6 +242,28 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate {
 	public function map(Closure $callback)
 	{
 		return array_map($callback, $this->elements);
+	}
+
+	/**
+	 * Applies the given callback to the collection and returns an array
+	 * of the results.
+	 *
+	 * @param Callable $callback Function to apply
+	 * @return array  results
+	 */
+	public function mapProperty($key, Callable $callback)
+	{
+		return $this->each(function($item) use ($key, $callback)
+		{
+			if (is_array($item))
+			{
+				$item[$key] = $callback($item[$key]);
+			}
+			else
+			{
+				$item->$key = $callback($item->$key);
+			}
+		});
 	}
 
 	/**

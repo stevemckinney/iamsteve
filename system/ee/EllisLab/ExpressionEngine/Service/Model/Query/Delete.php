@@ -1,31 +1,18 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Service\Model\Query;
 
 use EllisLab\ExpressionEngine\Service\Model\Relation\BelongsTo;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Delete Query
- *
- * @package		ExpressionEngine
- * @subpackage	Model
- * @category	Service
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Delete Query
  */
 class Delete extends Query {
 
@@ -136,11 +123,15 @@ class Delete extends Query {
 			$extra_where['site_id'] = array_unique($collection->pluck('site_id'));
 		}
 
+		$class = $to_meta->getClass();
+
+		$class::emitStatic('beforeBulkDelete', $delete_ids);
 		$collection->emit('beforeDelete');
 
 		$this->deleteAsLeaf($to_meta, $delete_ids, $extra_where);
 
 		$collection->emit('afterDelete');
+		$class::emitStatic('afterBulkDelete', $delete_ids);
 
 		return $delete_ids;
 	}

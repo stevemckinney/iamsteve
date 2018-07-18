@@ -1,31 +1,34 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine EllisLab Pings Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * EllisLab Pings
  */
 
 class El_pings {
 
 	protected $ping_result;
+	protected $cache;
+	private $error;
+
+	public function __construct()
+	{
+		// License and version pings should still be cached if caching is disabled
+		if (ee()->config->item('cache_driver') == 'dummy')
+		{
+			$this->cache = ee()->cache->file;
+		}
+		else
+		{
+			$this->cache = ee()->cache;
+		}
+	}
 
 	/**
 	 * Is Registered?
@@ -40,7 +43,7 @@ class El_pings {
 			return FALSE;
 		}
 
-		$cached = ee()->cache->get('software_registration', Cache::GLOBAL_SCOPE);
+		$cached = $this->cache->get('software_registration', Cache::GLOBAL_SCOPE);
 		$exp_response = md5($license->getData('license_number').$license->getData('license_contact'));
 
 		if ( ! $cached OR $cached != $exp_response)
@@ -63,19 +66,19 @@ class El_pings {
 				if ( ! $registration = $this->_do_ping('https://ping.ellislab.com/register.php', $payload))
 				{
 					// save the failed request for a day only
-					ee()->cache->save('software_registration', $exp_response, 60*60*24, Cache::GLOBAL_SCOPE);
+					$this->cache->save('software_registration', $exp_response, 60*60*24, Cache::GLOBAL_SCOPE);
 				}
 				else
 				{
 					if ($registration != $exp_response)
 					{
 						// may have been a server error, save the failed request for a day
-						ee()->cache->save('software_registration', $exp_response, 60*60*24, Cache::GLOBAL_SCOPE);
+						$this->cache->save('software_registration', $exp_response, 60*60*24, Cache::GLOBAL_SCOPE);
 					}
 					else
 					{
 						// keep for two weeks
-						ee()->cache->save('software_registration', $registration, 60*60*24*7*2, Cache::GLOBAL_SCOPE);
+						$this->cache->save('software_registration', $registration, 60*60*24*7*2, Cache::GLOBAL_SCOPE);
 					}
 				}
 			}
@@ -90,48 +93,42 @@ class El_pings {
 		return TRUE;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * EE Version Check function
 	 *
 	 * Checks the current version of ExpressionEngine available from EllisLab
 	 *
-	 * @access	private
-	 * @return	string
+	 * @param boolean $force_update Use the force, update regardless of cache
+	 * @return array
 	 */
-	public function get_version_info()
+	public function get_version_info($force_update = FALSE)
 	{
 		// Attempt to grab the local cached file
-		$cached = ee()->cache->get('current_version', Cache::GLOBAL_SCOPE);
+		$cached = $this->cache->get('current_version', Cache::GLOBAL_SCOPE);
 
-		if ( ! $cached)
+		if ( ! $cached || $force_update)
 		{
-			$version_file = array();
-
-			if ( ! $version_info = $this->_do_ping('https://versions.ellislab.com/versions_ee3.txt'))
+			try
 			{
-				$version_file['error'] = TRUE;
+				$version_file = ee('Curl')->post(
+					'https://update.expressionengine.com',
+					[
+						'action' => 'check_new_version',
+						'license' => ee('License')->getEELicense()->getRawLicense(),
+						'version' => ee()->config->item('app_version'),
+					]
+				)->exec();
+
+				$version_file = json_decode($version_file, TRUE);
 			}
-			else
+			catch (\Exception $e)
 			{
-				$version_info = explode("\n", trim($version_info));
-
-				if (empty($version_info))
-				{
-					$version_file['error'] = TRUE;
-				}
-				else
-				{
-					foreach ($version_info as $version)
-					{
-						$version_file[] = explode('|', $version);
-					}
-				}
+				// don't scare the user with whatever random error, but store it for debugging
+				$version_file = $e->getMessage();
 			}
 
 			// Cache version information for a day
-			ee()->cache->save(
+			$this->cache->save(
 				'current_version',
 				$version_file,
 				60 * 60 * 24,
@@ -143,13 +140,18 @@ class El_pings {
 			$version_file = $cached;
 		}
 
-		// one final check for good measure
-		if ( ! $this->_is_valid_version_file($version_file))
+		if (isset($version_file['error']) && $version_file['error'] == TRUE)
 		{
+			if (isset($version_file['error_msg']))
+			{
+				$this->error = $version_file['error_msg'];
+			}
+
 			return FALSE;
 		}
 
-		if (isset($version_file['error']) && $version_file['error'] == TRUE)
+		// one final check for good measure
+		if ( ! $this->_is_valid_version_file($version_file))
 		{
 			return FALSE;
 		}
@@ -157,7 +159,40 @@ class El_pings {
 		return $version_file;
 	}
 
-	// --------------------------------------------------------------------
+	/**
+	 * Get information about the available upgrade, or FALSE if no upgrade path available
+	 *
+	 * @param boolean $force_update Use the force, update regardless of cache
+	 * @return array or FALSE if no upgrade path available
+	 */
+	public function getUpgradeInfo($force_update = FALSE)
+	{
+		$version_file = $this->get_version_info($force_update);
+
+		$version_info = array(
+			'version' => $version_file['latest_version'],
+			'build' => $version_file['build_date'],
+			'security' => $version_file['severity'] == 'high'
+		);
+
+		// Upgrading form Core to Pro?
+		if (IS_CORE && $version_file['license_type'] == 'pro')
+		{
+			return $version_info;
+		}
+
+		if (version_compare($version_info['version'], ee()->config->item('app_version')) < 1)
+		{
+			return FALSE;
+		}
+
+		return $version_info;
+	}
+
+	public function getError()
+	{
+		return $this->error;
+	}
 
 	/**
 	 * Validate version file
@@ -173,31 +208,21 @@ class El_pings {
 	 */
 	private function _is_valid_version_file($version_file)
 	{
-		if ( ! is_array($version_file))
+		if ( ! is_array($version_file) OR ! isset($version_file['latest_version']))
 		{
 			return FALSE;
 		}
 
-		foreach ($version_file as $version)
+		foreach ($version_file as $val)
 		{
-			if ( ! is_array($version) OR count($version) != 3)
+			if ( ! is_string($val))
 			{
 				return FALSE;
-			}
-
-			foreach ($version as $val)
-			{
-				if ( ! is_string($val))
-				{
-					return FALSE;
-				}
 			}
 		}
 
 		return TRUE;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Do the Ping
@@ -258,8 +283,6 @@ class El_pings {
 
 		return $response;
 	}
-
-	// --------------------------------------------------------------------
 }
 // END CLASS
 

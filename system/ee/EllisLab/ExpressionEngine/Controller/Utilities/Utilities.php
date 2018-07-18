@@ -1,34 +1,19 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Utilities;
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 use CP_Controller;
 use EllisLab\ExpressionEngine\Library\CP;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Utilities Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Utilities Controller
  */
 class Utilities extends CP_Controller {
 
@@ -53,6 +38,9 @@ class Utilities extends CP_Controller {
 		ee()->view->header = array(
 			'title' => lang('system_utilities')
 		);
+
+		// Some garbage collection
+		ExportEmailAddresses::garbageCollect();
 	}
 
 	protected function generateSidebar($active = NULL)
@@ -61,9 +49,13 @@ class Utilities extends CP_Controller {
 
 		if (ee()->cp->allowed_group('can_access_comm'))
 		{
-			$sidebar->addHeader(lang('communicate'), ee('CP/URL')->make('utilities/communicate'))
-			->addBasicList()
-				->addItem(lang('sent'), ee('CP/URL')->make('utilities/communicate/sent'));
+			$left_nav = $sidebar->addHeader(lang('communicate'), ee('CP/URL')->make('utilities/communicate'));
+
+			if (ee()->cp->allowed_group('can_send_cached_email'))
+			{
+				$left_nav->addBasicList()
+					->addItem(lang('sent'), ee('CP/URL')->make('utilities/communicate/sent'));
+			}
 		}
 
 		if (ee()->cp->allowed_group('can_access_translate'))
@@ -99,19 +91,27 @@ class Utilities extends CP_Controller {
 			$sidebar->addHeader(lang('debug_extensions'), ee('CP/URL')->make('utilities/extensions'));
 		}
 
-		if (ee()->cp->allowed_group('can_access_import'))
+		if (ee('Permission')->hasAny('can_access_import', 'can_access_members'))
 		{
-			$import_list = $sidebar->addHeader(lang('import_tools'))
+			$member_tools = $sidebar->addHeader(lang('member_tools'))
 				->addBasicList();
-			$import_list->addItem(lang('file_converter'), ee('CP/URL')->make('utilities/import-converter'));
-			$import_list->addItem(lang('member_import'), ee('CP/URL')->make('utilities/member-import'));
+			if (ee('Permission')->has('can_access_import'))
+			{
+				$member_tools->addItem(lang('file_converter'), ee('CP/URL')->make('utilities/import-converter'));
+				$member_tools->addItem(lang('member_import'), ee('CP/URL')->make('utilities/member-import'));
+			}
+			if (ee('Permission')->has('can_access_members'))
+			{
+				$member_tools->addItem(lang('mass_notification_export'), ee('CP/URL')->make('utilities/export-email-addresses'));
+			}
 		}
 
 		if (ee()->cp->allowed_group('can_access_sql_manager'))
 		{
-			$sidebar->addHeader(lang('sql_manager_abbr'), ee('CP/URL')->make('utilities/sql'))
-			->addBasicList()
-				->addItem(lang('query_form'), ee('CP/URL')->make('utilities/query'));
+			$db_list = $sidebar->addHeader(lang('database'))->addBasicList();
+			$db_list->addItem(lang('backup_utility'), ee('CP/URL')->make('utilities/db-backup'));
+			$db_list->addItem(lang('sql_manager_abbr'), ee('CP/URL')->make('utilities/sql'));
+			$db_list->addItem(lang('query_form'), ee('CP/URL')->make('utilities/query'));
 		}
 
 		if (ee()->cp->allowed_group('can_access_data'))

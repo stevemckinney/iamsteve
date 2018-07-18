@@ -1,33 +1,18 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Members\Profile;
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 use CP_Controller;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Member Profile CP Settings Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Member Profile CP Settings Controller
  */
 class CpSettings extends Profile {
 
@@ -40,6 +25,7 @@ class CpSettings extends Profile {
 	{
 		$field['allowed_channels'] = array();
 		$all_sites_have_channels = TRUE;
+		$assigned_channels = $this->member->MemberGroup->AssignedChannels->pluck('channel_id');
 
 		// If MSM is enabled, let them choose a channel for each site, should they
 		// want to redirect to the publish form on each site
@@ -47,7 +33,6 @@ class CpSettings extends Profile {
 		{
 			$sites = ee('Model')->get('Site')->all();
 			$field['sites'] = $sites->getDictionary('site_id', 'site_label');
-			$assigned_channels = $this->member->MemberGroup->AssignedChannels->pluck('channel_id');
 
 			foreach ($sites as $site)
 			{
@@ -67,20 +52,21 @@ class CpSettings extends Profile {
 		}
 		else
 		{
-			$allowed_channels = ee('Model')->get('Channel')
-				->filter('site_id', ee()->config->item('site_id'));
+			$field['allowed_channels'] = NULL;
 
-			if ( ! empty(ee()->session->userdata['assigned_channels']))
+			if ($assigned_channels)
 			{
-				$allowed_channels->filter('channel_id', 'IN', array_keys(ee()->session->userdata['assigned_channels']));
+				$allowed_channels = ee('Model')->get('Channel')
+					->filter('site_id', ee()->config->item('site_id'));
+				$allowed_channels->filter('channel_id', 'IN', $assigned_channels);
+				$field['allowed_channels'] = $allowed_channels->all()->getDictionary('channel_id', 'channel_title');
 			}
 
-			$field['allowed_channels'] = $allowed_channels->all()->getDictionary('channel_id', 'channel_title');
 
 			if (empty($field['allowed_channels']))
 			{
 				$all_sites_have_channels = FALSE;
-				$field['allowed_channels'][0] = lang('no_channels');
+				$field['allowed_channels'][0] = strip_tags(lang('no_channels'));
 			}
 
 			$site_id = ee()->config->item('site_id');

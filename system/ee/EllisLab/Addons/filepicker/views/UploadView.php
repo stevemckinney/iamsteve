@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" lang="en-us" dir="ltr">
-		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"  name="viewport">
 		<?php if (isset($meta_refresh)): ?>
 		<meta http-equiv='refresh' content='<?=$meta_refresh['rate']?>; url=<?=$meta_refresh['url']?>'>
 		<?php endif;?>
@@ -27,8 +27,7 @@
 		<?=ee()->javascript->inline('var EE = window.parent.EE;');?>
 		<?=ee()->view->script_tag('jquery/jquery.js')?>
 		<?=ee()->view->script_tag('common.js')?>
-		<?=ee()->view->script_tag('jquery/plugins/nestable.js')?>
-		<?=ee()->view->script_tag('cp/categories.js')?>
+		<?=ee()->cp->render_footer_js()?>
 		<script type="text/javascript">
 			$('input.btn').on('click', function(event) {
 				$(this).attr('value', $(this).data('work-text')).addClass('work');

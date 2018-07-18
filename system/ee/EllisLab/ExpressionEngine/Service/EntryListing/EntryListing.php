@@ -1,4 +1,12 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
+
 namespace EllisLab\ExpressionEngine\Service\EntryListing;
 
 use Serializable;
@@ -7,28 +15,14 @@ use InvalidArgumentException;
 use EllisLab\ExpressionEngine\Service\View\View;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Entry Listing Service
- *
- * @package		ExpressionEngine
- * @category	Service
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * CP Entry Listing Service
  */
 class EntryListing {
+
+	/**
+	 * @var Filter $author_filter Author Filter object
+	 */
+	public $author_filter;
 
 	/**
 	 * @var Filter $channel_filter Channel Filter object
@@ -62,9 +56,19 @@ class EntryListing {
 	protected $allowed_channels;
 
 	/**
+	 * @var boolean $include_author_filter Whether this user can edit others' entries
+	 */
+	protected $include_author_filter;
+
+	/**
 	 * @var int $now Timestamp of current time, used to filter entries by date
 	 */
 	protected $now;
+
+	/**
+	 * @var string $search_in What fields to include in the keyword search
+	 */
+	protected $search_in;
 
 	/**
 	 * @var string $search_value Search critera to filter entries by
@@ -94,14 +98,17 @@ class EntryListing {
 	 * @param array $allowed_channels IDs of channels this user is allowed to access
 	 * @param int $now Timestamp of current time, used to filter entries by date
 	 * @param string $search_value Search critera to filter entries by
+	 * @param string $search_in What fields to include in the keyword search
 	 */
-	public function __construct($site_id, $is_admin, $allowed_channels = array(), $now = NULL, $search_value = NULL)
+	public function __construct($site_id, $is_admin, $allowed_channels = array(), $now = NULL, $search_value = NULL, $search_in = NULL, $include_author_filter = FALSE)
 	{
 		$this->site_id = $site_id;
 		$this->is_admin = $is_admin;
 		$this->allowed_channels = $allowed_channels;
 		$this->now = $now;
 		$this->search_value = $search_value;
+		$this->search_in = $search_in;
+		$this->include_author_filter = $include_author_filter;
 
 		$this->setupFilters();
 		$this->setupEntries();
@@ -124,12 +131,39 @@ class EntryListing {
 	 */
 	public function getFilters()
 	{
-		$count = $this->getEntries()->count();
+		$count = $this->getEntryCount();
 
 		// Add this last to get the right $count
 		$this->filters->add('Perpage', $count, 'all_entries');
 
 		return $this->filters;
+	}
+
+	public function getEntryCount()
+	{
+		static $count;
+
+		if (is_null($count))
+		{
+			$count = $this->getEntries()->count();
+		}
+
+		return $count;
+	}
+
+	public function getChannelModelFromFilter()
+	{
+		static $channel = NULL;
+
+		if (is_null($channel)
+			&& $this->channel_filter
+			&& $this->channel_filter->value())
+		{
+			$channel = ee('Model')->get('Channel', $this->channel_filter->value())
+				->first();
+		}
+
+		return $channel;
 	}
 
 	/**
@@ -138,15 +172,9 @@ class EntryListing {
 	 */
 	private function setupFilters()
 	{
-		$channel = NULL;
-
 		$this->channel_filter = $this->createChannelFilter();
 
-		if ($this->channel_filter->value())
-		{
-			$channel = ee('Model')->get('Channel', $this->channel_filter->value())
-				->first();
-		}
+		$channel = $this->getChannelModelFromFilter();
 
 		$this->category_filter = $this->createCategoryFilter($channel);
 		$this->status_filter = $this->createStatusFilter($channel);
@@ -155,7 +183,21 @@ class EntryListing {
 			->add($this->channel_filter)
 			->add($this->category_filter)
 			->add($this->status_filter)
-			->add('Date');
+			->add('Date')
+			->add('Keyword')
+			->add('SearchIn', [
+					'titles' => lang('titles'),
+					'content' => lang('content'),
+					'titles_and_content' => lang('titles_and_content'),
+				],
+				$this->search_in
+			);
+
+			if ($this->include_author_filter)
+			{
+				$this->author_filter = $this->createAuthorFilter($channel);
+				$this->filters->add($this->author_filter);
+			}
 	}
 
 	/**
@@ -166,7 +208,7 @@ class EntryListing {
 	{
 		$entries = ee('Model')->get('ChannelEntry')
 			->with('Channel', 'Author')
-			->fields('entry_id', 'title', 'Author.screen_name', 'Author.username', 'Channel.channel_title', 'Channel.live_look_template', 'Channel.status_group', 'author_id', 'comment_total', 'entry_date', 'status')
+			->fields('entry_id', 'title', 'Author.screen_name', 'Author.username', 'Channel.channel_title', 'Channel.preview_url', 'Channel.status_group', 'author_id', 'comment_total', 'entry_date', 'status')
 			->filter('site_id', $this->site_id);
 
 		// We need to filter by Channel first (if necissary) as that will
@@ -182,8 +224,7 @@ class EntryListing {
 			if ($this->is_admin || in_array($channel_id, $this->allowed_channels))
 			{
 				$entries->filter('channel_id', $channel_id);
-				$channel = ee('Model')->get('Channel', $channel_id)
-					->first();
+				$channel = $this->getChannelModelFromFilter();
 
 				$channel_name = $channel->channel_title;
 			}
@@ -218,33 +259,51 @@ class EntryListing {
 			$entries->filter('status', $this->status_filter->value());
 		}
 
+		if (! empty($this->author_filter) && $this->author_filter->value())
+		{
+			$entries->filter('author_id', $this->author_filter->value());
+		}
+
 		if ( ! empty($this->search_value))
 		{
-			$search_fields = array('title');
-
+			// setup content fields to use in search
+			$content_fields = [];
 			if (isset($channel))
 			{
-				$custom_fields = $channel->CustomFields;
+				$custom_fields = $channel->getAllCustomFields();
 			}
 			else
 			{
-				$channels = $this->getChannels();
-				$field_groups = $channels->pluck('field_group');
+				$custom_fields = array();
 
-				$custom_fields = ee('Model')->get('ChannelField')
-					->fields('field_id')
-					->filter('group_id', 'IN', $field_groups)
-					->all();
+				foreach ($this->getChannels() as $channel)
+				{
+					$custom_fields = array_merge($custom_fields, $channel->getAllCustomFields()->asArray());
+				}
 			}
 
 			foreach ($custom_fields as $cf)
 			{
-				$search_fields[] = 'field_id_'.$cf->getId();
+				$content_fields[] = 'field_id_'.$cf->getId();
+			}
+
+			$search_fields = [];
+
+			switch ($this->search_in)
+			{
+				case 'titles_and_content':
+					$search_fields = array_merge(['title'], $content_fields);
+					break;
+				case 'content':
+					$search_fields = $content_fields;
+					break;
+				case 'titles':
+					$search_fields = ['title'];
+					break;
 			}
 
 			$entries->search($search_fields, $this->search_value);
 		}
-
 
 		$filter_values = $this->filters->values();
 
@@ -264,6 +323,44 @@ class EntryListing {
 		$entries->with('Autosaves', 'Author', 'Channel');
 
 		$this->entries = $entries;
+	}
+
+	/**
+	 * Creates an author filter
+	 */
+	private function createAuthorFilter($channel_id = NULL)
+	{
+		$db = ee('db')->distinct()
+			->select('t.author_id, m.screen_name')
+			->from('channel_titles t')
+			->join('members m', 'm.member_id = t.author_id', 'LEFT')
+			->order_by('screen_name', 'asc');
+
+		if ($channel_id)
+		{
+			$db->where('channel_id', $channel_id->channel_id);
+		}
+
+		$authors_query = $db->get();
+
+		$author_filter_options = [];
+		foreach ($authors_query->result() as $row)
+		{
+			$author_filter_options[$row->author_id] = $row->screen_name;
+		}
+
+		// Put the current user at the top of the author list
+		if (isset($author_filter_options[ee()->session->userdata['member_id']]))
+		{
+			$first[ee()->session->userdata['member_id']] = $author_filter_options[ee()->session->userdata['member_id']];
+			unset($author_filter_options[ee()->session->userdata['member_id']]);
+			$author_filter_options = $first + $author_filter_options;
+		}
+
+		$author_filter = ee('CP/Filter')->make('filter_by_author', 'filter_by_author', $author_filter_options);
+		$author_filter->setPlaceholder(lang('filter_authors'));
+		$author_filter->useListFilter();
+		return $author_filter;
 	}
 
 	/**
@@ -289,7 +386,7 @@ class EntryListing {
 		{
 			$allowed_channel_ids = ($this->is_admin) ? NULL : $this->allowed_channels;
 			$this->channels = ee('Model')->get('Channel', $allowed_channel_ids)
-				->fields('channel_id', 'channel_title', 'field_group')
+				->fields('channel_id', 'channel_title')
 				->filter('site_id', ee()->config->item('site_id'))
 				->order('channel_title', 'asc')
 				->all();
@@ -332,17 +429,18 @@ class EntryListing {
 	 */
 	private function createStatusFilter($channel = NULL)
 	{
-		$statuses = ee('Model')->get('Status')
-			->filter('site_id', ee()->config->item('site_id'));
-
 		if ($channel)
 		{
-			$statuses->filter('group_id', $channel->status_group);
+			$statuses = $channel->Statuses;
+		}
+		else
+		{
+			$statuses = ee('Model')->get('Status')->all();
 		}
 
 		$status_options = array();
 
-		foreach ($statuses->all() as $status)
+		foreach ($statuses as $status)
 		{
 			$status_name = ($status->status == 'closed' OR $status->status == 'open') ?  lang($status->status) : $status->status;
 			$status_options[$status->status] = $status_name;

@@ -1,29 +1,15 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// --------------------------------------------------------------------
-
 /**
- * ExpressionEngine RSS Module
- *
- * @package		ExpressionEngine
- * @subpackage	Modules
- * @category	Modules
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * RSS Module
  */
-
 class Rss {
 
 	protected $_debug = FALSE;
@@ -217,8 +203,6 @@ class Rss {
 		return ee()->TMPL->tagdata;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Setup the meta query
 	 *
@@ -327,8 +311,6 @@ class Rss {
 		return array($query, $last_update, $edit_date, $entry_date);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Feed Variables Query
 	 *
@@ -339,7 +321,7 @@ class Rss {
 	{
 		return ee()->db->select('c.channel_id, c.channel_title, c.channel_url, c.channel_lang,
 									c.channel_description, ct.entry_date, m.email, m.username,
-									m.screen_name, m.url')
+									m.screen_name')
 							->from('channel_titles ct')
 							->join('channels c', 'ct.channel_id = c.channel_id', 'left')
 							->join('members m', 'm.member_id = ct.author_id', 'left')
@@ -347,8 +329,6 @@ class Rss {
 							->where_in('c.site_id', ee()->TMPL->site_ids)
 							->get();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 *  Empty feed handler
@@ -366,7 +346,7 @@ class Rss {
 		{
 			if (stristr($match[1], LD.'if'))
 			{
-				$match[0] = ee()->functions->full_tag($match[0], ee()->TMPL->tagdata, LD.'if', LD.'\/'."if".RD);
+				$match[0] = ee('Variables/Parser')->getFullTag(ee()->TMPL->tagdata, $match[0], LD.'if', LD.'/if'.RD);
 			}
 
 			$empty_feed = substr($match[0], strlen(LD."if empty_feed".RD), -strlen(LD.'/'."if".RD));
@@ -381,8 +361,6 @@ class Rss {
 
 		return $empty_feed;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	  *  Default empty feed

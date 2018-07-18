@@ -1,4 +1,11 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Model\Template;
 
@@ -7,27 +14,7 @@ use EllisLab\ExpressionEngine\Service\Model\FileSyncedModel;
 use EllisLab\ExpressionEngine\Library\Filesystem\Filesystem;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Global Variable Model
- *
- * @package		ExpressionEngine
- * @subpackage	Template
- * @category	Model
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Global Variable Model
  */
 class GlobalVariable extends FileSyncedModel {
 
@@ -161,7 +148,7 @@ class GlobalVariable extends FileSyncedModel {
 
 		if ( ! $site = ee()->session->cache('site/id/' . $this->site_id, 'site'))
 		{
-			$site = $this->getFrontend()->get('Site')
+			$site = $this->getModelFacade()->get('Site')
 				->fields('site_name')
 				->filter('site_id', $this->site_id)
 				->first();
@@ -190,55 +177,116 @@ class GlobalVariable extends FileSyncedModel {
 	 * Load all variabless available on this site, including global variabless and
 	 * any that are currently only available as files.
 	 *
+	 * This method is run from a front-end context, so we are sensitive to having as few and light queries as possible.
+	 *
 	 * @return Collection of variabless
 	 */
 	public function loadAll()
 	{
-		$fs = new Filesystem();
-
 		// load up any variables
 		$variables = $this->getModelFacade()->get('GlobalVariable')
 			->filter('site_id', ee()->config->item('site_id'))
 			->orFilter('site_id', 0)
 			->all();
 
-		$path_site_ids = array(
-			PATH_TMPL.'_global_variables' => 0,
-			PATH_TMPL.ee()->config->item('site_short_name').'/_variables' => ee()->config->item('site_id')
-		);
+		$paths = [
+			0 => PATH_TMPL.'_global_variables',
+			ee()->config->item('site_id') => PATH_TMPL.ee()->config->item('site_short_name').'/_variables',
+		];
 
 		$names = $variables->pluck('variable_name');
 
-		foreach ($path_site_ids as $path => $site_id)
+		foreach ($paths as $site_id => $path)
 		{
-			if ( ! $fs->isDir($path))
+			foreach ($this->getNewVariablesFromFiles($path, $site_id, $names) as $new)
 			{
-				continue;
+				$variables[] = $new;
 			}
+		}
 
-			$files = new FilesystemIterator($path);
+		return $variables;
+	}
 
-			foreach ($files as $item)
+	/**
+	 * Load all variables from the entire installation, including any not yet synced from files.
+	 * Kinda brute force, this should not be something run on every request.
+	 *
+	 * @return object Collection of variables
+	 */
+	public function loadAllInstallWide()
+	{
+		$sites = ee('Model')->get('Site')
+			->fields('site_id', 'site_name')
+			->all();
+
+		// always include the global partials
+		$paths = [0 => PATH_TMPL.'_global_variables'];
+
+		foreach ($sites as $site)
+		{
+			$paths[$site->site_id] = PATH_TMPL.$site->site_name.'/_variables';
+		}
+
+		$variables = $this->getModelFacade()->get('GlobalVariable')->all();
+
+		$site_variables = [];
+		foreach ($variables as $variable)
+		{
+			$site_variables[$variable->site_id][] = $variable->variable_name;
+		}
+
+		foreach ($paths as $site_id => $path)
+		{
+			$existing = ( ! empty($site_variables[$site_id])) ? $site_variables[$site_id] : [];
+			foreach ($this->getNewVariablesFromFiles($path, $site_id, $existing) as $new)
 			{
-				if ($item->isFile() && $item->getExtension() == 'html')
+				$variables[] = $new;
+			}
+		}
+
+		return $variables;
+	}
+
+	/**
+	 * Get (and save) new variables from the file system
+	 *
+	 * @param  string $path Path to load variables from
+	 * @param  int $site_id Site ID
+	 * @param  array $existing Names of existing variables so we don't make duplicates
+	 * @return array All newly created variables
+	 */
+	private function getNewVariablesFromFiles($path, $site_id, $existing)
+	{
+		$fs = new Filesystem;
+		$variables = [];
+
+		if ( ! $fs->isDir($path))
+		{
+			return $variables;
+		}
+
+		$files = new FilesystemIterator($path);
+
+		foreach ($files as $item)
+		{
+			if ($item->isFile() && $item->getExtension() == 'html')
+			{
+				$name = $item->getBasename('.html');
+
+				if ( ! in_array($name, $existing))
 				{
-					$name = $item->getBasename('.html');
+					$contents = file_get_contents($item->getRealPath());
 
-					if ( ! in_array($name, $names))
-					{
-						$contents = file_get_contents($item->getRealPath());
+					$variable = $this->getModelFacade()->make('GlobalVariable', [
+						'site_id' => $site_id,
+						'variable_name' => $name,
+						'variable_data' => $contents
+					]);
 
-						$new_gv = ee('Model')->make('GlobalVariable', array(
-							'site_id' => $site_id,
-							'variable_name' => $name,
-							'variable_data' => $contents
-						));
+					$variable->setModificationTime($item->getMTime());
 
-						$new_gv->setModificationTime($item->getMTime());
-
-						$new_gv->save();
-						$variables[] = $new_gv;
-					}
+					$variable->save();
+					$variables[] = $variable;
 				}
 			}
 		}

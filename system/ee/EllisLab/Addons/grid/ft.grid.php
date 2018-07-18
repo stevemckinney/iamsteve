@@ -1,26 +1,14 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.7
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// --------------------------------------------------------------------
-
 /**
- * ExpressionEngine Grid Fieldtype
- *
- * @package		ExpressionEngine
- * @subpackage	Fieldtypes
- * @category	Fieldtypes
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Grid Fieldtype
  */
 class Grid_ft extends EE_Fieldtype {
 
@@ -31,7 +19,7 @@ class Grid_ft extends EE_Fieldtype {
 
 	var $has_array_data = TRUE;
 
-	private $error_fields = array();
+	private $errors;
 
 	public function __construct()
 	{
@@ -41,21 +29,15 @@ class Grid_ft extends EE_Fieldtype {
 		ee()->load->model('grid_model');
 	}
 
-	// --------------------------------------------------------------------
-
 	public function install()
 	{
 		ee()->grid_model->install();
 	}
 
-	// --------------------------------------------------------------------
-
 	public function uninstall()
 	{
 		ee()->grid_model->uninstall();
 	}
-
-	// --------------------------------------------------------------------
 
 	public function validate($data)
 	{
@@ -63,8 +45,6 @@ class Grid_ft extends EE_Fieldtype {
 
 		return ee()->grid_lib->validate($data);
 	}
-
-	// --------------------------------------------------------------------
 
 	// Actual saving takes place in post_save so we have an entry_id
 	public function save($data)
@@ -76,7 +56,17 @@ class Grid_ft extends EE_Fieldtype {
 
 		ee()->session->set_cache(__CLASS__, $this->name(), $data);
 
-		return ' ';
+		// we save compounded searchable data to the field data table,
+		// real data gets saved to the grid's own table
+		$searchable_data = NULL;
+		if ($this->get_setting('field_search'))
+		{
+			ee()->load->helper('custom_field_helper');
+			$this->_load_grid_lib();
+			$searchable_data = encode_multi_field(ee()->grid_lib->getSearchableData()) ?: NULL;
+		}
+
+		return $searchable_data;
 	}
 
 	public function post_save($data)
@@ -91,8 +81,6 @@ class Grid_ft extends EE_Fieldtype {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	// This fieldtype has been converted, so it accepts all content types
 	public function accepts_content_type($name)
 	{
@@ -105,8 +93,6 @@ class Grid_ft extends EE_Fieldtype {
 	{
 		ee()->grid_model->delete_content_of_type($name);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Called when entries are deleted
@@ -131,7 +117,7 @@ class Grid_ft extends EE_Fieldtype {
 
 			foreach ($rows as $row)
 			{
-				$row_ids[] = $row['row_id'];
+				$row_ids[$row['entry_id']][] = $row['row_id'];
 			}
 		}
 
@@ -140,18 +126,22 @@ class Grid_ft extends EE_Fieldtype {
 		ee()->grid_lib->delete_rows($row_ids);
 	}
 
-	// --------------------------------------------------------------------
-
 	public function display_field($data)
 	{
 		$grid = ee('CP/GridInput', array(
 			'field_name' 	=> $this->name(),
 			'lang_cols' 	=> FALSE,
 			'grid_min_rows' => $this->settings['grid_min_rows'],
-			'grid_max_rows' => $this->settings['grid_max_rows']
+			'grid_max_rows' => $this->settings['grid_max_rows'],
+			'reorder'		=> isset($this->settings['allow_reorder'])
+				? get_bool_from_string($this->settings['allow_reorder'])
+				: TRUE
 		));
 		$grid->loadAssets();
-		$grid->setNoResultsText('no_rows_created', 'add_new_row');
+		$grid->setNoResultsText(
+			lang('no_rows_created') . form_hidden($this->name()),
+			'add_new_row'
+		);
 
 		$this->_load_grid_lib();
 
@@ -161,13 +151,11 @@ class Grid_ft extends EE_Fieldtype {
 		{
 			// channel form is not guaranteed to have this wrapper class,
 			// but the js requires it
-			$field = '<div class="grid-publish">'.$field.'</div>';
+			$field = '<div class="fieldset-faux">'.$field.'</div>';
 		}
 
 		return $field;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Replace Grid template tags
@@ -176,18 +164,32 @@ class Grid_ft extends EE_Fieldtype {
 	{
 		ee()->load->library('grid_parser');
 
+		$fluid_field_data_id = (isset($this->settings['fluid_field_data_id'])) ? $this->settings['fluid_field_data_id'] : 0;
+
 		// not in a channel scope? pre-process may not have been run.
 		if ($this->content_type() != 'channel')
 		{
 			ee()->load->library('api');
 			ee()->legacy_api->instantiate('channel_fields');
-			ee()->grid_parser->grid_field_names[$this->id()] = $this->name();
+			ee()->grid_parser->grid_field_names[$this->id()][$fluid_field_data_id] = $this->name();
 		}
 
-		return ee()->grid_parser->parse($this->row, $this->id(), $params, $tagdata, $this->content_type());
+		// Channel Form can throw us a model object instead of a results row
+		if ($this->row instanceof \EllisLab\ExpressionEngine\Model\Channel\ChannelEntry)
+		{
+			$this->row = $this->row->getModChannelResultsArray();
+		}
+
+		return ee()->grid_parser->parse($this->row, $this->id(), $params, $tagdata, $this->content_type(), $fluid_field_data_id);
 	}
 
-	// --------------------------------------------------------------------
+	/**
+	 * :length modifier
+	 */
+	public function replace_length($data, $params = array(), $tagdata = FALSE)
+	{
+		return $this->replace_total_rows($data, $params, $tagdata);
+	}
 
 	/**
 	 * :total_rows modifier
@@ -207,8 +209,6 @@ class Grid_ft extends EE_Fieldtype {
 		return 0;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * :table modifier
 	 */
@@ -219,8 +219,18 @@ class Grid_ft extends EE_Fieldtype {
 		ee()->load->model('grid_model');
 		ee()->load->helper('array_helper');
 
+		$fluid_field_data_id = (isset($this->settings['fluid_field_data_id'])) ? $this->settings['fluid_field_data_id'] : 0;
+
+		// not in a channel scope? pre-process may not have been run.
+		if ($fluid_field_data_id)
+		{
+			ee()->load->library('api');
+			ee()->legacy_api->instantiate('channel_fields');
+			ee()->grid_parser->grid_field_names[$this->id()][$fluid_field_data_id] = $this->name();
+		}
+
 		$columns = ee()->grid_model->get_columns_for_field($this->id(), $this->content_type());
-		$prefix = ee()->grid_parser->grid_field_names[$this->id()].':';
+		$prefix = ee()->grid_parser->grid_field_names[$this->id()][$fluid_field_data_id].':';
 
 		// Parameters
 		$set_classes = element('set_classes', $params, 'no');
@@ -294,7 +304,8 @@ class Grid_ft extends EE_Fieldtype {
 				$this->id(),
 				$params,
 				$match[1],
-				$this->content_type()
+				$this->content_type(),
+				$fluid_field_data_id
 			);
 
 			// Replace the marker section with the parsed data
@@ -304,8 +315,6 @@ class Grid_ft extends EE_Fieldtype {
 		return $tagdata;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * :sum modifier
 	 */
@@ -313,8 +322,6 @@ class Grid_ft extends EE_Fieldtype {
 	{
 		return $this->_get_column_stats($params, 'sum');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * :average modifier
@@ -324,8 +331,6 @@ class Grid_ft extends EE_Fieldtype {
 		return $this->_get_column_stats($params, 'average');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * :lowest modifier
 	 */
@@ -334,8 +339,6 @@ class Grid_ft extends EE_Fieldtype {
 		return $this->_get_column_stats($params, 'lowest');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * :highest modifier
 	 */
@@ -343,8 +346,6 @@ class Grid_ft extends EE_Fieldtype {
 	{
 		return $this->_get_column_stats($params, 'highest');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Used in the math modifiers to return stats about numeric columns
@@ -410,8 +411,6 @@ class Grid_ft extends EE_Fieldtype {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * :next_row modifier
 	 */
@@ -420,8 +419,6 @@ class Grid_ft extends EE_Fieldtype {
 		return $this->_parse_prev_next_row($params, $tagdata, TRUE);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * :prev_row modifier
 	 */
@@ -429,8 +426,6 @@ class Grid_ft extends EE_Fieldtype {
 	{
 		return $this->_parse_prev_next_row($params, $tagdata);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Handles parsing of :next_row and :prev_row modifiers
@@ -454,8 +449,6 @@ class Grid_ft extends EE_Fieldtype {
 
 		return ee()->grid_parser->parse($this->row, $this->id(), $params, $tagdata, $this->content_type());
 	}
-
-	// --------------------------------------------------------------------
 
 	public function display_settings($data)
 	{
@@ -484,10 +477,7 @@ class Grid_ft extends EE_Fieldtype {
 			foreach ($columns as $field_name => &$column)
 			{
 				$column['col_id'] = $field_name;
-				$column['col_required'] = isset($column['col_required']) ? 'y' : 'n';
-				$column['col_search'] = isset($column['col_search']) ? 'y' : 'n';
-
-				$vars['columns'][] = ee()->grid_lib->get_column_view($column, $this->error_fields);
+				$vars['columns'][] = ee()->grid_lib->get_column_view($column, $this->errors);
 			}
 		}
 		elseif ( ! empty($field_id))
@@ -549,13 +539,22 @@ class Grid_ft extends EE_Fieldtype {
 								'value' => isset($data['grid_max_rows']) ? $data['grid_max_rows'] : ''
 							)
 						)
+					),
+					array(
+						'title' => 'grid_allow_reorder',
+						'fields' => array(
+							'allow_reorder' => array(
+								'type' => 'yes_no',
+								'value' => isset($data['allow_reorder']) ? $data['allow_reorder'] : 'y'
+							)
+						)
 					)
 				)
 			),
 			'grid_fields' => array(
 				'label' => 'grid_fields',
 				'group' => 'grid',
-				'settings' => array($grid_alert, ee()->load->view('settings', $vars, TRUE))
+				'settings' => array($grid_alert, ee('View')->make('grid:settings')->render($vars))
 			)
 		);
 
@@ -563,125 +562,146 @@ class Grid_ft extends EE_Fieldtype {
 		$field_settings = array();
 
 		ee()->cp->add_js_script('plugin', 'ee_url_title');
+		ee()->cp->add_js_script('plugin', 'ui.touch.punch');
 		ee()->cp->add_js_script('ui', 'sortable');
 		ee()->cp->add_js_script('file', 'cp/grid');
 
 		ee()->javascript->output('EE.grid_settings();');
+		ee()->javascript->output('FieldManager.on("fieldModalDisplay", function(modal) {
+			EE.grid_settings();
+		});');
 
 		return $settings;
 	}
 
-	// --------------------------------------------------------------------
-
+	/**
+	 * Called by FieldModel to validate the fieldtype's settings
+	 */
 	public function validate_settings($data)
 	{
-		$validator = ee('Validation')->make(array(
+		$rules = [
 			'grid_min_rows' => 'isNatural',
 			'grid_max_rows' => 'isNaturalNoZero',
-			'grid' => 'validGridSettings'
-		));
+			'fieldtype_errors' => 'ensureNoFieldtypeErrors'
+		];
 
-		$validator->defineRule('validGridSettings', array($this, '_validate_grid'));
+		$grid_settings = ee()->input->post('grid');
+		$col_labels = [];
+		$col_names = [];
 
-		return $validator->validate($data);
-	}
-
-	// -------------------------------------------------------------------
-
-	/**
-	 * Callback for validation service
-	 *
-	 * @return	mixed	Boolean, whether or not the settings passed validation,
-	 *   or string of errors
-	 */
-	public function _validate_grid($key, $value, $params, $rule)
-	{
-		$this->_load_grid_lib();
-
-		$validate = ee()->grid_lib->validate_settings(array('grid' => ee()->input->post('grid')));
-
-		$this->error_fields = array();
-
-		$ajax_field = ee()->input->post('ee_fv_field');
-
-		if ($validate !== TRUE)
+		// Create a flattened version of the grid settings data to pass to the
+		// validator, but also assign rules to the dynamic field names
+		foreach ($grid_settings['cols'] as $column_id => $column)
 		{
-			$errors = array();
+			// We'll look at these later to see if there are any duplicates
+			$col_labels[] = $column['col_label'];
+			$col_names[] = $column['col_name'];
 
-			// Gather error messages and fields with errors so that we can
-			// display the error messages and highlight the fields that
-			// have errors
-			foreach ($validate as $column => $fields)
+			foreach ($column as $field => $value)
 			{
-				foreach ($fields as $field => $error)
-				{
-					$field_name = 'grid[cols]['.$column.']['.$field.']';
+				$field_name = 'grid[cols]['.$column_id.']['.$field.']';
+				$data[$field_name] = $value;
 
-					if (AJAX_REQUEST && $ajax_field && $ajax_field == $field_name)
-					{
-						$rule->stop();
-						return lang($error);
-					}
-
-					if (is_numeric($column))
-					{
-						$column = 'col_id_'.$column;
-					}
-
-					if ( ! isset($errors[$field]))
-					{
-						$errors[$field] = array(
-							'message' => $error,
-							'columns' => array('['.$column.']')
-						);
-					}
-					else
-					{
-						$errors[$field]['columns'][] = '['.$column.']';
-					}
-
-					$this->error_fields[] = $field_name;
+				switch ($field) {
+					case 'col_label':
+						$rules[$field_name] = 'required|validGridColLabel';
+						break;
+					case 'col_name':
+						$rules[$field_name] = 'required|alphaDash|validGridColName';
+						break;
+					case 'col_width':
+						$rules[$field_name] = 'whenPresent|isNatural';
+						break;
+					case 'col_required':
+						$rules[$field_name] = 'enum[y,n]';
+						break;
+					case 'col_search':
+						$rules[$field_name] = 'enum[y,n]';
+						break;
+					default:
+						break;
 				}
 			}
-
-			// If we got here on AJAX validation, return that we passed, because the
-			// single field we're validating must be valid
-			if (AJAX_REQUEST && $ajax_field)
-			{
-				return TRUE;
-			}
-
-			// Make error messages unique and convert to a string to pass
-			// to form validaiton library
-			$this->error_string = '';
-			foreach ($errors as $field => $error)
-			{
-				// Custom span for use with Grid settings validation callbacks
-				$this->error_string .= '<span
-					style="display: block"
-					data-field="['.$field.']"
-					data-columns="'.implode('', $error['columns']).'">'.lang($error['message']).'</span>';
-			}
-
-			$rule->stop();
-			return $this->error_string;
 		}
 
-		return TRUE;
-	}
+		$col_label_count = array_count_values($col_labels);
+		$col_name_count = array_count_values($col_names);
 
-	// --------------------------------------------------------------------
+		$validator = ee('Validation')->make($rules);
+
+		$validator->defineRule(
+			'validGridColLabel',
+			function ($key, $value, $params, $rule) use ($col_label_count)
+		{
+			if ($col_label_count[$value] > 1)
+			{
+				$rule->stop();
+				return lang('grid_duplicate_col_label');
+			}
+
+			return TRUE;
+		});
+
+		$validator->defineRule(
+			'validGridColName',
+			function ($key, $value, $params, $rule) use ($col_name_count)
+		{
+			ee()->load->library('grid_parser');
+			if (in_array($value, ee()->grid_parser->reserved_names))
+			{
+				$rule->stop();
+				return lang('grid_col_name_reserved');
+			}
+
+			if ($col_name_count[$value] > 1)
+			{
+				$rule->stop();
+				return lang('grid_duplicate_col_name');
+			}
+
+			return TRUE;
+		});
+
+		$this->_load_grid_lib();
+		$fieldtype_errors = ee()->grid_lib->validate_settings($grid_settings);
+
+		$validator->defineRule(
+			'ensureNoFieldtypeErrors',
+			function ($key, $value, $params, $rule) use ($fieldtype_errors)
+		{
+			if ( ! empty($fieldtype_errors)) $rule->stop();
+
+			return TRUE;
+		});
+
+		$this->errors = $validator->validate($data);
+
+		// Add any failed rules from fieldtypes as a top-level fields on our
+		// result object so that AJAX validation can pick it up
+		foreach ($fieldtype_errors as $field_name => $error)
+		{
+			foreach ($error->getFailed() as $field => $rules)
+			{
+				$field_name = 'grid[cols]['.$field_name.'][col_settings]['.$field.']';
+				foreach ($rules as $rule)
+				{
+					$this->errors->addFailed($field_name, $rule);
+				}
+			}
+		}
+
+		return $this->errors;
+	}
 
 	public function save_settings($data)
 	{
 		// Make sure grid_min_rows is at least zero
 		return array(
 			'grid_min_rows' => empty($data['grid_min_rows']) ? 0 : $data['grid_min_rows'],
-			'grid_max_rows' => empty($data['grid_max_rows']) ? '' : $data['grid_max_rows']
+			'grid_max_rows' => empty($data['grid_max_rows']) ? '' : $data['grid_max_rows'],
+			'allow_reorder' => empty($data['allow_reorder']) ? 'y' : $data['allow_reorder']
 		);
 	}
-
-	// --------------------------------------------------------------------
 
 	public function post_save_settings($data)
 	{
@@ -698,8 +718,6 @@ class Grid_ft extends EE_Fieldtype {
 		$this->_load_grid_lib();
 		ee()->grid_lib->apply_settings($data);
 	}
-
-	// --------------------------------------------------------------------
 
 	public function settings_modify_column($data)
 	{
@@ -731,8 +749,6 @@ class Grid_ft extends EE_Fieldtype {
 		return array();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Loads Grid library and assigns relevant field information to it
 	 */
@@ -748,9 +764,9 @@ class Grid_ft extends EE_Fieldtype {
 		ee()->grid_lib->field_id = $this->id();
 		ee()->grid_lib->field_name = $this->name();
 		ee()->grid_lib->content_type = $this->content_type();
+		ee()->grid_lib->fluid_field_data_id = (isset($this->settings['fluid_field_data_id'])) ? $this->settings['fluid_field_data_id'] : 0;
+		ee()->grid_lib->in_modal_context = $this->get_setting('in_modal_context');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Update the fieldtype

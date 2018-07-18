@@ -1,4 +1,11 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Service\File;
 
@@ -7,6 +14,9 @@ use EllisLab\ExpressionEngine\Model\Content\FieldFacade;
 use EllisLab\ExpressionEngine\Model\Content\Display\FieldDisplay;
 use EllisLab\ExpressionEngine\Service\Validation\Result as ValidationResult;
 
+/**
+ * File Service Upload
+ */
 class Upload {
 
 	/**
@@ -123,6 +133,7 @@ class Upload {
 			$metadata = $cat_group->getFieldMetadata();
 			$metadata['categorized_object'] = $file;
 			$metadata['field_instructions'] = lang('file_categories_desc');
+			$metadata['editable'] = FALSE;
 
 			if ($cat_groups->count() == 1)
 			{
@@ -146,11 +157,6 @@ class Upload {
 				)
 			);
 
-			if (ee()->cp->allowed_group('can_create_categories'))
-			{
-				$field['example'] = '<a class="btn action submit m-link" rel="modal-checkboxes-edit" data-group-id="'.$cat_group->getId().'" href="#">'.lang('btn_add_category').'</a>';
-			}
-
 			$sections[0][] = $field;
 		}
 
@@ -161,7 +167,6 @@ class Upload {
 		}
 
 		ee('Category')->addCategoryJS();
-		ee('Category')->addCategoryModals();
 
 		return $html;
 	}
@@ -205,7 +210,8 @@ class Upload {
 								'append' => sprintf(lang('append'), $file->file_name),
 								'rename' => 'rename'
 							),
-							'value' => $checked_radio
+							'value' => $checked_radio,
+							'encode' => FALSE,
 						),
 						'rename_custom' => array(
 							'type' => 'text',
@@ -219,7 +225,8 @@ class Upload {
 							'choices' => array(
 								'replace' => 'replace',
 							),
-							'value' => $checked_radio
+							'value' => $checked_radio,
+							'encode' => FALSE,
 						)
 					)
 				)
@@ -462,7 +469,12 @@ class Upload {
 				{
 					$src  = $fd->getAbsolutePath() . $file->file_name;
 					$dest = $fd->getAbsolutePath() . $original->file_name;
-					ee('Filesystem')->copy($src, $dest);
+
+					// non-image files will not have manipulations
+					if (ee('Filesystem')->exists($src))
+					{
+						ee('Filesystem')->copy($src, $dest);
+					}
 				}
 
 				$file->delete();

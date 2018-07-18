@@ -1,4 +1,11 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Design;
 
@@ -9,27 +16,7 @@ use EllisLab\ExpressionEngine\Library\Data\Collection;
 use EllisLab\ExpressionEngine\Controller\Design\AbstractDesign as AbstractDesignController;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Design Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Design Controller
  */
 class Design extends AbstractDesignController {
 
@@ -40,19 +27,12 @@ class Design extends AbstractDesignController {
 
 	public function export()
 	{
-		$templates = ee('Model')->get('Template')
-			->fields('template_id')
-			->filter('site_id', ee()->config->item('site_id'));
-
 		if (ee()->session->userdata['group_id'] != 1)
 		{
-			$templates->filter('group_id', 'IN', array_keys(ee()->session->userdata['assigned_template_groups']));
+			show_error(lang('unauthorized_access'));
 		}
 
-		$template_ids = $templates->all()
-			->pluck('template_id');
-
-		$this->exportTemplates($template_ids);
+		$this->exportTemplates();
 	}
 
 	public function manager($group_name = NULL)
@@ -108,13 +88,14 @@ class Design extends AbstractDesignController {
 			$group = ee('Model')->get('TemplateGroup')
 				->fields('group_id', 'group_name')
 				->filter('group_name', $group_name)
-				->filter('site_id', ee()->config->item('site_id'))
-				->first();
+				->filter('site_id', ee()->config->item('site_id'));
 
 			if ($assigned_groups)
 			{
 				$group->filter('group_id', 'IN', $assigned_groups);
 			}
+
+			$group = $group->first();
 
 			if ( ! $group)
 			{
@@ -142,13 +123,13 @@ class Design extends AbstractDesignController {
 		$this->_sync_from_files();
 
 		$base_url = ee('CP/URL')->make('design/manager/' . $group->group_name);
-    $this->base_url = $base_url;
+	    $this->base_url = $base_url;
 
 		$templates = ee('Model')->get('Template')->filter('group_id', $group->group_id)->filter('site_id', ee()->config->item('site_id'));
 
 		$vars = $this->buildTableFromTemplateQueryBuilder($templates);
 
-		$vars['show_new_template_button'] = ee()->cp->allowed_group('can_create_templates');
+		$vars['show_new_template_button'] = ee()->cp->allowed_group('can_create_new_templates');
 		$vars['show_bulk_delete'] = ee()->cp->allowed_group('can_delete_templates');
 		$vars['group_id'] = $group->group_name;
 
@@ -156,6 +137,7 @@ class Design extends AbstractDesignController {
 		ee()->javascript->set_global('templage_groups_reorder_url', ee('CP/URL')->make('design/reorder-groups')->compile());
 		ee()->javascript->set_global('lang.remove_confirm', lang('template') . ': <b>### ' . lang('templates') . '</b>');
 		ee()->cp->add_js_script(array(
+			'plugin' => 'ui.touch.punch',
 			'file' => array(
 				'cp/confirm_remove',
 				'cp/design/manager'

@@ -4,7 +4,7 @@ $lang = array(
 
 'all_files' => 'All Files',
 
-'append' => 'Append numeral to <em>newer</em> file <i>&mdash; example: %s</i>',
+'append' => 'Append numeral to <strong>newer</strong> file <i>&mdash; example: %s</i>',
 
 'btn_cancel_upload' => 'Cancel Upload',
 
@@ -78,7 +78,7 @@ $lang = array(
 
 'no_upload_destination' => 'No upload destination found',
 
-'not_an_image' => 'Selected filie is not an image',
+'not_an_image' => 'Selected file is not an image',
 
 'pixels' => 'pixels',
 
@@ -86,17 +86,15 @@ $lang = array(
 
 'problem_downloading_files' => 'An error occurred when attempting to download the selected files. Please verify the files exist on the server.',
 
-'rename' => 'Rename <em>newer</em> file',
+'rename' => 'Rename <strong>newer</strong> file',
 
-'replace' => 'Replace <em>older</em> file only <i>&mdash; destructive action</i>',
+'replace' => 'Replace <strong>older</strong> file only <i>&mdash; destructive action</i>',
 
 'replace_no_metadata' => 'Only the file was replaced. The Title, Description, Credit, Location, and Categories were not updated.',
 
 'search_files' => 'Search Files',
 
 'security_failure' => 'The file type you are attempting to upload is not allowed.',
-
-'show' => 'show',
 
 'show_all_files' => 'All %d files',
 
@@ -474,7 +472,7 @@ $lang = array(
 
 'watermark_text_dropshadow_color' => 'Dropshadow color',
 
-'watermark_text_dropshadow_desc' => 'When set to <b>yes</b>, a drop-shadow will be rendered.',
+'watermark_text_dropshadow_desc' => 'When enabled, a drop-shadow will be rendered.',
 
 'watermark_text_dropshadow_distance' => 'Dropshadow distance',
 
@@ -494,7 +492,7 @@ $lang = array(
 
 'watermarks_true_type' => 'Enable True Type?',
 
-'watermarks_true_type_desc' => 'When set to <b>yes</b>, text watermarks will be rendered with True Type.',
+'watermarks_true_type_desc' => 'When enabled, text watermarks will be rendered with True Type.',
 
 
 /* 2.x */
@@ -541,6 +539,10 @@ $lang = array(
 'image_editor' => 'Image Editor',
 
 'kind' => 'Kind',
+
+'image_manip_quality' => 'Quality',
+
+'image_manip_quality_desc' => 'Final quality of image',
 
 'no_upload_dirs' => 'You have no upload directories defined',
 

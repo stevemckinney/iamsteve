@@ -1,29 +1,15 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// --------------------------------------------------------------------
-
 /**
- * Member Management Module
- *
- * @package		ExpressionEngine
- * @subpackage	Modules
- * @category	Modules
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Member Management Settings
  */
-
 class Member_settings extends Member {
 
 
@@ -128,15 +114,14 @@ class Member_settings extends Member {
 		/** ----------------------------------------
 		/**  Fetch the member data
 		/** ----------------------------------------*/
-
+/*
 		$select = 'm.member_id, m.group_id, m.username, m.screen_name, m.email, m.signature,
 					m.avatar_filename, m.avatar_width, m.avatar_height, m.photo_filename,
-					m.photo_width, m.photo_height, m.url, m.location, m.occupation, m.interests,
-					m.icq, m.aol_im, m.yahoo_im, m.msn_im, m.bio, m.join_date, m.last_visit,
+					m.photo_width, m.photo_height, m.join_date, m.last_visit,
 					m.last_activity, m.last_entry_date, m.last_comment_date, m.last_forum_post_date,
 					m.total_entries, m.total_comments, m.total_forum_topics,
 					m.total_forum_posts, m.language, m.timezone,
-					m.bday_d, m.bday_m, m.bday_y, m.accept_user_email, m.accept_messages,
+					m.accept_user_email, m.accept_messages,
 					g.group_title, g.can_send_private_messages';
 
 		ee()->db->select($select);
@@ -144,24 +129,41 @@ class Member_settings extends Member {
 		ee()->db->where('m.member_id', (int)$this->cur_id);
 		ee()->db->where('g.site_id', ee()->config->item('site_id'));
 		ee()->db->where('m.group_id', 'g.group_id', FALSE);
+*/
+
+		// Default Member Data
+		$not_in = array(3, 4);
 
 		if ($this->is_admin == FALSE OR ee()->session->userdata('group_id') != 1)
 		{
-			ee()->db->where('m.group_id !=', 2);
+			$not_in[] = 2;
 		}
 
-		ee()->db->where('m.group_id !=', 3);
-		ee()->db->where('m.group_id !=', 4);
+		ee()->load->model('member_model');
 
-		$query = ee()->db->get();
+		$member = ee('Model')->get('Member', (int)$this->cur_id)
+			->with('MemberGroup')
+			->filter('group_id', 'NOT IN', $not_in)
+			->filter('MemberGroup.site_id', ee()->config->item('site_id'))
+			->first();
 
-		if ($query->num_rows() == 0)
+		if ( ! $member)
 		{
 			return ee()->output->show_user_error('general', array(ee()->lang->line('profile_not_available')));
 		}
 
 		// Fetch the row
-		$row = $query->row_array();
+		$row = array_merge($member->getValues(), $member->MemberGroup->getValues());
+
+		// Use member field names
+		$member_fields = ee('Model')->get('MemberField')
+			->all();
+
+		foreach ($member_fields as $member_field)
+		{
+			$key = 'm_field_id_' . $member_field->m_field_id;
+			$row[$member_field->m_field_name] = array_key_exists($key, $row) ? $row[$key] : '';
+		}
 
 		/** ----------------------------------------
 		/**  Fetch the template
@@ -175,15 +177,7 @@ class Member_settings extends Member {
 
 		if (ee()->config->item('enable_avatars') == 'y' AND $row['avatar_filename']  != '')
 		{
-			$avatar_url = ee()->config->slash_item('avatar_url');
-			$avatar_fs_path = ee()->config->slash_item('avatar_path');
-
-			if (file_exists($avatar_fs_path.'default/'.$row['avatar_filename']))
-			{
-				$avatar_url .= 'default/';
-			}
-
-			$avatar_path	= $avatar_url.$row['avatar_filename'];
+			$avatar_path	= $member->getAvatarUrl();
 			$avatar_width	= $row['avatar_width'] ;
 			$avatar_height	= $row['avatar_height'] ;
 
@@ -380,9 +374,6 @@ class Member_settings extends Member {
 
 		$content = $this->_var_swap($content,
 										array(
-												'aim_console'			=> "onclick=\"window.open('".$this->_member_path('aim_console/'.$this->cur_id)."', '_blank', 'width=240,height=360,scrollbars=yes,resizable=yes,status=yes,screenx=5,screeny=5');\"",
-												'icq_console'			=> "onclick=\"window.open('".$this->_member_path('icq_console/'.$this->cur_id)."', '_blank', 'width=650,height=580,scrollbars=yes,resizable=yes,status=yes,screenx=5,screeny=5');\"",
-												'yahoo_console'			=> "http://edit.yahoo.com/config/send_webmesg?.target=".ee()->functions->encode_ee_tags(htmlentities($row['yahoo_im'], ENT_QUOTES, 'UTF-8'), TRUE) ."&amp;.src=pg",
 												'email_console'			=> "onclick=\"window.open('".$this->_member_path('email_console/'.$this->cur_id)."', '_blank', 'width=650,height=600,scrollbars=yes,resizable=yes,status=yes,screenx=5,screeny=5');\"",
 												'send_private_message'	=> $this->_member_path('messages/pm/'.$this->cur_id),
 												'search_path'			=> $search_path,
@@ -402,11 +393,13 @@ class Member_settings extends Member {
 										);
 
 
-		$vars = ee()->functions->assign_variables($content, '/');
+		$vars = ee('Variables/Parser')->extractVariables($content);
 		$this->var_single	= $vars['var_single'];
 		$this->var_pair		= $vars['var_pair'];
 
 		$this->var_cond = ee()->functions->assign_conditional_variables($content, '/');
+
+
 
 		/** ----------------------------------------
 		/**  Parse conditional pairs
@@ -498,6 +491,10 @@ class Member_settings extends Member {
 			/** ----------------------------------------
 			/**  Format URLs
 			/** ----------------------------------------*/
+// need exception
+/*
+
+
 			if ($key == 'url')
 			{
 				if (strncmp($row['url'], 'http', 4) != 0 && strpos($row['url'], '://') === FALSE)
@@ -505,6 +502,8 @@ class Member_settings extends Member {
 					$row['url'] = "http://".$row['url'] ;
 				}
 			}
+
+*/
 
 			/** ----------------------------------------
 			/**  "last_visit"
@@ -582,45 +581,6 @@ class Member_settings extends Member {
 				$content = $this->_var_swap_single($val, ee()->typography->encode_email($row['email'] ), $content);
 			}
 
-			/** ----------------------
-			/**  {birthday}
-			/** ----------------------*/
-
-			if ($key == "birthday")
-			{
-				$birthday = '';
-
-				if ($row['bday_m']  != '' AND $row['bday_m']  != 0)
-				{
-					$month = (strlen($row['bday_m'] ) == 1) ? '0'.$row['bday_m'] : $row['bday_m'];
-
-					$m = ee()->localize->localize_month($month);
-
-					$birthday .= ee()->lang->line($m['1']);
-
-					if ($row['bday_d'] != '' AND $row['bday_d']  != 0)
-					{
-						$birthday .= ' '.$row['bday_d'] ;
-					}
-				}
-
-				if ($row['bday_y']  != '' AND $row['bday_y']  != 0)
-				{
-					if ($birthday != '')
-					{
-						$birthday .= ', ';
-					}
-
-					$birthday .= $row['bday_y'] ;
-				}
-
-				if ($birthday == '')
-				{
-					$birthday = '';
-				}
-
-				$content = $this->_var_swap_single($val, $birthday, $content);
-			}
 
 			/** ----------------------
 			/**  {timezone}
@@ -642,24 +602,6 @@ class Member_settings extends Member {
 					ee()->localize->format_date($val, NULL, $timezone),
 					$content
 				);
-			}
-
-			/** ----------------------
-			/**  {bio}
-			/** ----------------------*/
-
-			if ($key == 'bio')
-			{
-				$bio = ee()->typography->parse_type($row[$val],
-															 array(
-																		'text_format'	=> 'xhtml',
-																		'html_format'	=> 'safe',
-																		'auto_links'	=> 'y',
-																		'allow_img_url' => 'n'
-																	)
-															);
-
-				$content = $this->_var_swap_single($key, $bio, $content);
 			}
 
 			// Special consideration for {total_forum_replies}, and
@@ -687,44 +629,44 @@ class Member_settings extends Member {
 			}
 		}
 
-
 		/** -------------------------------------
 		/**  Do we have custom fields to show?
 		/** ------------------------------------*/
 		// Grab the data for the particular member
 
-		$sql = "SELECT m_field_id, m_field_name, m_field_label, m_field_description, m_field_fmt FROM  exp_member_fields ";
-
-		if (ee()->session->userdata['group_id'] != 1)
+		if ($member_fields)
 		{
-			$sql .= " WHERE m_field_public = 'y' ";
-		}
-
-		$sql .= " ORDER BY m_field_order";
-
-		$query = ee()->db->query($sql);
-
-		if ($query->num_rows() > 0)
-		{
-			$fnames = array();
-
-			foreach ($query->result_array() as $row)
+			if (ee()->session->userdata['group_id'] != 1)
 			{
-				$fnames[$row['m_field_name']] = $row['m_field_id'];
+				$member_fields = $member_fields->filter(function($field) {
+					return $field->m_field_public == 'y';
+				});
 			}
 
-			$result = ee()->db->query("SELECT * FROM exp_member_data WHERE member_id = '{$this->cur_id}'");
+			$fnames = array();
+
+			$member_field_ids = array();
+
+			foreach ($member_fields as $member_field)
+			{
+				$fnames[$member_field->m_field_name] = array($member_field->m_field_id, $member_field->m_field_fmt, $member_field->m_field_type);
+				$member_field_ids[] = $member_field->m_field_id;
+				$this->member_fields[$member_field->getId()] = $member_field;
+			}
+
+			ee()->load->library('typography');
+			ee()->typography->initialize();
+
+			ee()->load->library('api');
+			ee()->legacy_api->instantiate('channel_fields');
 
 			/** ----------------------------------------
 			/**  Parse conditionals for custom fields
 			/** ----------------------------------------*/
 
-			$result_row = $result->row_array();
-
 			foreach ($this->var_cond as $val)
 			{
 				// Prep the conditional
-
 				$cond = ee()->functions->prep_conditional($val['0']);
 
 				$lcond	= substr($cond, 0, strpos($cond, ' '));
@@ -732,7 +674,9 @@ class Member_settings extends Member {
 
 				if (array_key_exists($val['3'], $fnames))
 				{
-					$lcond = str_replace($val['3'], "\$result_row['m_field_id_".$fnames[$val['3']]."']", $lcond);
+					$m_field_id_name = 'm_field_id_'.$fnames[$val['3']]['0'];
+
+					$lcond = str_replace($val['3'], "\$row['".$m_field_id_name."']", $lcond);
 
 					$cond = $lcond.' '.$rcond;
 
@@ -756,40 +700,34 @@ class Member_settings extends Member {
 			/** ----------------------------------------
 			/**  Parse single variables
 			/** ----------------------------------------*/
-
-			$member_field_ids = array();
-			foreach ($query->result_array() as $row)
-			{
-				$member_field_ids[] = $row['m_field_id'];
-			}
-
-			$this->member_fields = ee('Model')->get('MemberField', $member_field_ids)
-				->all()
-				->indexBy('m_field_id');
-
-			ee()->load->library('api');
-			ee()->legacy_api->instantiate('channel_fields');
-
 			foreach ($this->var_single as $key => $val)
 			{
-				$field = ee()->api_channel_fields->get_single_field($key);
 
-				foreach ($query->result_array() as $row)
+				// Custom member fields
+				$field = ee('Variables/Parser')->parseVariableProperties($key);
+				$fval = $field['field_name'];
+
+				// parse custom member fields
+				if (isset($fnames[$fval]))
 				{
-					if ($row['m_field_name'] == $field['field_name'])
+					if (array_key_exists('m_field_id_'.$fnames[$fval]['0'], $row))
 					{
-						$field_data = (isset($result_row['m_field_id_'.$row['m_field_id']])) ? $result_row['m_field_id_'.$row['m_field_id']] : '';
-
-						$content = $this->parseField(
-							$row['m_field_id'],
+						ee()->TMPL->tagdata = $this->parseField(
+							$fnames[$fval][0],
 							$field,
-							$field_data,
-							$content,
+							$row['m_field_id_'.$fnames[$fval]['0']],
+							ee()->TMPL->tagdata,
 							$this->cur_id,
-							array(
-								'channel_html_formatting' => 'none',
-								'channel_auto_link_urls' => 'n'
-							)
+							array(),
+							$key
+						);
+					}
+					else
+					{
+						ee()->TMPL->tagdata = ee()->TMPL->swap_var_single(
+						$key,
+						'',
+						ee()->TMPL->tagdata
 						);
 					}
 				}
@@ -802,58 +740,57 @@ class Member_settings extends Member {
 			$field_chunk = $this->_load_element('public_custom_profile_fields');
 
 			// Is there a chunk to parse?
-
-			if ($query->num_rows() == 0)
+			if ( ! $member_fields)
 			{
 				$content = str_replace("/{custom_profile_fields}/s", '', $content);
 			}
 			else
 			{
-				ee()->load->library('typography');
-				ee()->typography->initialize();
-
 				$str = '';
 				$var_conds = ee()->functions->assign_conditional_variables($field_chunk);
+				$member_field = '';
 
-				foreach ($query->result_array() as $row)
+				foreach ($member_fields as $member_field)
 				{
 					$temp = $field_chunk;
-
-					$field_data = (isset($result_row['m_field_id_'.$row['m_field_id']])) ? $result_row['m_field_id_'.$row['m_field_id']] : '';
+					$field_row = $member_field->getValues();
 
 					// enables conditionals on these variables
-					$row['field_label'] = $row['m_field_label'];
-					$row['field_description'] = $row['m_field_description'];
-					$row['field_data'] = $field_data;
+					$field_row['field_label'] = $field_row['m_field_label'];
+					$field_row['field_description'] = $field_row['m_field_description'];
 
-					if ($field_data != '')
+					// Custom member fields
+					$field_name = $member_field->m_field_name;
+
+					// We fake the template data and make it simply be the tag
+					$temp_string = LD.$field_row['m_field_name'].RD;
+
+					if (array_key_exists('m_field_id_'.$field_row['m_field_id'], $row))
 					{
-						$field_data = ee()->typography->parse_type($field_data,
-							 array(
-										'text_format'   => $row['m_field_fmt'],
-										'html_format'   => 'safe',
-										'auto_links'    => 'y',
-										'allow_img_url' => 'n'
-									)
-							);
+						// Hard code date field modifier because this doesn't use real variables
+						$params = ($member_field->m_field_type == 'date') ? "%Y %m %d" : '';
+						$field = array(
+							'field_name' => $member_field->m_field_name,
+							'params' => array('format' => $params, 'modifier' => '')
+						);
+
+						$field_data = $this->parseField(
+							$member_field->m_field_id,
+							$field,
+							$row['m_field_id_'.$field_row['m_field_id']],
+							$temp_string,
+							$this->cur_id
+						);
+					}
+					else
+					{
+						$field_data = '';
 					}
 
-					$member_field = $this->member_fields[$row['m_field_id']];
-					$temp_string = LD.$member_field->field_name.RD;
-					$field_data = $this->parseField(
-						$row['m_field_id'],
-						array('field_name' => 'field_data', 'modifier' => ''),
-						$field_data,
-						$temp_string,
-						$this->cur_id,
-						array(
-							'channel_html_formatting' => 'none',
-							'channel_auto_link_urls' => 'n'
-						)
-					);
+					$field_row['field_data'] = $field_data;
 
-					$temp = str_replace('{field_name}', $row['m_field_label'], $temp);
-					$temp = str_replace('{field_description}', $row['m_field_description'], $temp);
+					$temp = str_replace('{field_name}', $member_field->m_field_label, $temp);
+					$temp = str_replace('{field_description}', $member_field->m_field_description, $temp);
 					$temp = str_replace('{field_data}', $field_data, $temp);
 
 					foreach ($var_conds as $val)
@@ -865,9 +802,9 @@ class Member_settings extends Member {
 						$lcond	= substr($cond, 0, strpos($cond, ' '));
 						$rcond	= substr($cond, strpos($cond, ' '));
 
-						if (array_key_exists($val['3'], $row))
+						if (array_key_exists($val['3'], $field_row))
 						{
-							$lcond = str_replace($val['3'], "\$row['".$val['3'] ."']", $lcond);
+							$lcond = str_replace($val['3'], "\$field_row['".$val['3'] ."']", $lcond);
 							$cond = $lcond.' '.$rcond;
 							$cond = str_replace("\|", "|", $cond);
 
@@ -882,16 +819,13 @@ class Member_settings extends Member {
 								$temp = preg_replace("/".LD.$val['0'].RD."(.*?)".LD.'\/if'.RD."/s", "", $temp);
 							}
 						}
-
 					}
 
 					$str .= $temp;
-
 				}
 
 				$content = str_replace("{custom_profile_fields}", $str, $content);
 			}
-
 		}
 		// END  if ($quey->num_rows() > 0)
 
@@ -913,27 +847,16 @@ class Member_settings extends Member {
 		// Load the form helper
 		ee()->load->helper('form');
 
+		// UGH- we need these 3 to get the data js or it throws a Legacy\Facade error
+		ee()->router->set_class('cp');
+		ee()->load->library('cp');
+		ee()->load->library('javascript');
+
 		/** ----------------------------------------
 		/**  Build the custom profile fields
 		/** ----------------------------------------*/
 
 		$tmpl = $this->_load_element('custom_profile_fields');
-
-		/** ----------------------------------------
-		/**  Fetch the data
-		/** ----------------------------------------*/
-
-		$sql = "SELECT * FROM exp_member_data WHERE member_id = '".ee()->session->userdata('member_id')."'";
-
-		$result = ee()->db->query($sql);
-
-		if ($result->num_rows() > 0)
-		{
-			foreach ($result->row_array() as $key => $val)
-			{
-				$$key = $val;
-			}
-		}
 
 		/** ----------------------------------------
 		/**  Fetch the field definitions
@@ -952,13 +875,15 @@ class Member_settings extends Member {
 
 		$query = ee()->db->query($sql);
 
-		$result_row = $result->row_array();
+//		$result_row = $result->row_array()
 
-		$member = ee('Model')->get('Member', ee()->session->userdata('member_id'))->first();
+		$this->member = ee('Model')->get('Member', ee()->session->userdata('member_id'))->first();
+
+		$result_row = $this->member->getValues();
 
 		if ($query->num_rows() > 0)
 		{
-			foreach ($member->getDisplay()->getFields() as $field)
+			foreach ($this->member->getDisplay()->getFields() as $field)
 			{
 				if (ee()->session->userdata['group_id'] != 1 && $field->get('field_public') != 'y')
 				{
@@ -995,7 +920,6 @@ class Member_settings extends Member {
 		/** ----------------------------------------
 		/**  Build the output data
 		/** ----------------------------------------*/
-		$query = ee()->db->query("SELECT bday_y, bday_m, bday_d, url, location, occupation, interests, aol_im, icq, yahoo_im, msn_im, bio FROM exp_members WHERE member_id = '".ee()->session->userdata('member_id')."'");
 
 		return  $this->_var_swap(
 			$this->_load_element('edit_profile_form'),
@@ -1004,19 +928,6 @@ class Member_settings extends Member {
 					array('action' => $this->_member_path('update_profile'))
 				),
 				'path:update_profile'	=> $this->_member_path('update_profile'),
-				'form:birthday_year'	=> $this->_birthday_year($query->row('bday_y') ),
-				'form:birthday_month'	=> $this->_birthday_month($query->row('bday_m') ),
-				'form:birthday_day'		=> $this->_birthday_day($query->row('bday_d') ),
-				'url'					=> ($query->row('url')  == '') ? 'http://' : $this->_form_prep_encoded($query->row('url') ),
-				'location'				=> $this->_form_prep_encoded($query->row('location') ),
-				'occupation'			=> $this->_form_prep_encoded($query->row('occupation') ),
-				'interests'				=> $this->_form_prep_encoded($query->row('interests') ),
-				'aol_im'				=> $this->_form_prep_encoded($query->row('aol_im') ),
-				'icq'					=> $this->_form_prep_encoded($query->row('icq') ),
-				'icq_im'				=> $this->_form_prep_encoded($query->row('icq') ),
-				'yahoo_im'				=> $this->_form_prep_encoded($query->row('yahoo_im') ),
-				'msn_im'				=> $this->_form_prep_encoded($query->row('msn_im') ),
-				'bio'					=> $this->_form_prep_encoded($query->row('bio') ),
 				'custom_profile_fields'	=> $r
 			)
 		);
@@ -1047,24 +958,6 @@ class Member_settings extends Member {
 			return ee()->output->show_user_error('general', array(ee()->lang->line('invalid_action')));
 		}
 
-		// Are any required custom fields empty?
-		ee()->db->select('m_field_id, m_field_label');
-		ee()->db->where('m_field_required = "y"');
-		$query = ee()->db->get('member_fields');
-
-		 $errors = array();
-
-		 if ($query->num_rows() > 0)
-		 {
-			foreach ($query->result_array() as $row)
-			{
-				if (isset($_POST['m_field_id_'.$row['m_field_id']]) AND $_POST['m_field_id_'.$row['m_field_id']] == '')
-				{
-					$errors[] = ee()->lang->line('mbr_custom_field_empty').'&nbsp;'.$row['m_field_label'];
-				}
-			}
-		 }
-
 		/** ----------------------------------------
 		/**  Blacklist/Whitelist Check
 		/** ----------------------------------------*/
@@ -1074,108 +967,64 @@ class Member_settings extends Member {
 			return ee()->output->show_user_error('general', array(ee()->lang->line('not_authorized')));
 		}
 
-		/** -------------------------------------
-		/**  Show errors
-		/** -------------------------------------*/
-		 if (count($errors) > 0)
+
+		ee()->db->select('m_field_id, m_field_label, m_field_type, m_field_name');
+		if (ee()->session->userdata['group_id'] != 1)
+		{
+			ee()->db->where('m_field_public = "y"');
+		}
+
+		$query = ee()->db->get('member_fields');
+
+		 $errors = array();
+
+		$member = ee('Model')->get('Member', ee()->session->userdata('member_id'))->first();
+		//$member->set($data);
+
+		 if ($query->num_rows() > 0)
 		 {
-			return ee()->output->show_user_error('submission', $errors);
-		 }
-
-		/** -------------------------------------
-		/**  Build query
-		/** -------------------------------------*/
-
-		if (isset($_POST['url']) AND $_POST['url'] == 'http://')
-		{
-			$_POST['url'] = '';
-		}
-
-		$fields = array(
-			'bday_y',
-			'bday_m',
-			'bday_d',
-			'url',
-			'location',
-			'occupation',
-			'interests',
-			'aol_im',
-			'icq',
-			'yahoo_im',
-			'msn_im',
-			'bio'
-		);
-
-		$data = array();
-
-		foreach ($fields as $val)
-		{
-			$data[$val] = (isset($_POST[$val])) ? ee('Security/XSS')->clean($_POST[$val]) : '';
-			unset($_POST[$val]);
-		}
-
-		ee()->load->helper('url');
-		$data['url'] = preg_replace('/[\'"]/is', '', $data['url']);
-		$data['url'] = prep_url($data['url']);
-
-		if (is_numeric($data['bday_d']) AND is_numeric($data['bday_m']))
-		{
-			ee()->load->helper('date');
-			$year = ($data['bday_y'] != '') ? $data['bday_y'] : date('Y');
-			$mdays = days_in_month($data['bday_m'], $year);
-
-			if ($data['bday_d'] > $mdays)
+			foreach ($query->result_array() as $row)
 			{
-				$data['bday_d'] = $mdays;
+				$fname = 'm_field_id_'.$row['m_field_id'];
+				$post = ee()->input->post($fname);
+
+				// Handle arrays of checkboxes as a special case;
+				if ($row['m_field_type'] == 'checkbox')
+				{
+					foreach ($row['choices']  as $property => $label)
+					{
+						$member->$fname = in_array($property, $post) ? 'y' : 'n';
+					}
+				}
+				else
+				{
+					if ($post !== FALSE)
+					{
+						// Check with Seth
+						$member->$fname = ee('Security/XSS')->clean($post);
+						//$member->$fname = $post;
+					}
+				}
+
+				// Set custom field format override if available, too
+				$ft_name = 'm_field_ft_'.$row['m_field_id'];
+				if (ee()->input->post($ft_name))
+				{
+					$member->{$ft_name} = ee()->input->post($ft_name);
+				}
 			}
-		}
+		 }
 
 		unset($_POST['HTTP_REFERER']);
 
-		if (count($data) > 0)
+		$result = $member->validate();
+
+		if ($result->failed())
 		{
-			ee()->member_model->update_member(ee()->session->userdata('member_id'), $data);
+			return ee()->output->show_user_error('general', $result->renderErrors());
 		}
 
-		/** -------------------------------------
-		/**  Update the custom fields
-		/** -------------------------------------*/
-
-		$m_data = array();
-
-		if (count($_POST) > 0)
-		{
-			foreach ($_POST as $key => $val)
-			{
-				if (strncmp($key, 'm_field_id_', 11) == 0)
-				{
-					$m_data[$key] = ee('Security/XSS')->clean($val);
-				}
-			}
-
-			if (count($m_data) > 0)
-			{
-				ee()->member_model->update_member_data(ee()->session->userdata('member_id'), $m_data);
-			}
-		}
-
-		/** -------------------------------------
-		/**  Update comments
-		/** -------------------------------------*/
-
-		if ($data['location'] != "" OR $data['url'] != "")
-		{
-			if (ee()->db->table_exists('comments'))
-			{
-				$d = array(
-					'location'	=> $data['location'],
-					'url'		=> $data['url']
-				);
-
-				ee()->db->where('author_id', ee()->session->userdata('member_id'));
-				ee()->db->update('comments', $d);
-			}
-	  	}
+		$member->save();
 
 		/** -------------------------------------
 		/**  Success message
@@ -1188,8 +1037,6 @@ class Member_settings extends Member {
 			)
 		);
 	}
-
-
 
 	/** ----------------------------------------
 	/**  Forum Preferences
@@ -1311,7 +1158,6 @@ class Member_settings extends Member {
 	function update_email()
 	{
 		// Safety.
-
 		if ( ! isset($_POST['email']))
 		{
 			return ee()->output->show_user_error('general', array(ee()->lang->line('invalid_action')));
@@ -1326,69 +1172,47 @@ class Member_settings extends Member {
 			return ee()->output->show_user_error('general', array(ee()->lang->line('not_authorized')));
 		}
 
-		/** -------------------------------------
-		/**  Validate submitted data
-		/** -------------------------------------*/
-		if ( ! class_exists('EE_Validate'))
+		$member = ee('Model')->get('Member', ee()->session->userdata('member_id'))->first();
+
+		if ( ! $member)
 		{
-			require APPPATH.'libraries/Validate.php';
+			return ee()->output->show_user_error('general', array(ee()->lang->line('invalid_action')));
 		}
 
+		// this action requires password confirmation
+		ee()->load->library('auth');
+		$password = ee()->auth->hash_password(ee()->input->post('password'), $member->salt);
 
-		$query = ee()->db->query("SELECT email, password FROM exp_members WHERE member_id = '".ee()->session->userdata('member_id')."'");
-
-		$VAL = new EE_Validate(array(
-			'member_id'    => ee()->session->userdata('member_id'),
-			'val_type'     => 'update', // new or update
-			'fetch_lang'   => TRUE,
-			'require_cpw'  => TRUE,
-			'enable_log'   => FALSE,
-			'email'        => $_POST['email'],
-			'cur_email'    => $query->row('email'),
-			'cur_password' => $_POST['password']
-		));
-
-		$VAL->validate_email();
-
-		if (count($VAL->errors) > 0)
+		if ($password['password'] != $member->password)
 		{
-			return ee()->output->show_user_error('submission', $VAL->errors);
+			return ee()->output->show_user_error('general', array(ee()->lang->line('invalid_password')));
 		}
 
-		/** -------------------------------------
-		/**  Assign the query data
-		/** -------------------------------------*/
+		$member->set([
+			'email'               =>  ee()->input->post('email'),
+			'accept_admin_email'  => (ee()->input->post('accept_admin_email')) ? 'y' : 'n',
+			'accept_user_email'   => (ee()->input->post('accept_user_email'))  ? 'y' : 'n',
+			'notify_by_default'   => (ee()->input->post('notify_by_default'))  ? 'y' : 'n',
+			'notify_of_pm'        => (ee()->input->post('notify_of_pm'))  ? 'y' : 'n',
+			'smart_notifications' => (ee()->input->post('smart_notifications'))  ? 'y' : 'n',
+		]);
 
-		$data = array(
-						'email'					=>  $_POST['email'],
-						'accept_admin_email'	=> (isset($_POST['accept_admin_email'])) ? 'y' : 'n',
-						'accept_user_email'		=> (isset($_POST['accept_user_email']))  ? 'y' : 'n',
-						'notify_by_default'		=> (isset($_POST['notify_by_default']))  ? 'y' : 'n',
-						'notify_of_pm'			=> (isset($_POST['notify_of_pm']))  ? 'y' : 'n',
-						'smart_notifications'	=> (isset($_POST['smart_notifications']))  ? 'y' : 'n'
-					  );
+		$result = $member->validate();
 
-		ee()->db->query(ee()->db->update_string('exp_members', $data, "member_id = '".ee()->session->userdata('member_id')."'"));
-
-		/** -------------------------------------
-		/**  Update comments and log email change
-		/** -------------------------------------*/
-
-		if ($query->row('email')  != $_POST['email'])
+		if ( ! $result->isValid())
 		{
-			ee()->db->query(ee()->db->update_string('exp_comments', array('email' => $_POST['email']), "author_id = '".ee()->session->userdata('member_id')."'"));
+			return ee()->output->show_user_error('submission', $result->getErrors('email'));
 		}
 
-		/** -------------------------------------
-		/**  Success message
-		/** -------------------------------------*/
+		$member->save();
 
+		// success
 		return $this->_var_swap($this->_load_element('success'),
-								array(
-										'lang:heading'	=>	ee()->lang->line('mbr_email_updated'),
-										'lang:message'	=>	ee()->lang->line('mbr_email_has_been_updated')
-									 )
-							);
+			array(
+					'lang:heading'	=>	ee()->lang->line('mbr_email_updated'),
+					'lang:message'	=>	ee()->lang->line('mbr_email_has_been_updated')
+				 )
+		);
 	}
 
 
@@ -1418,156 +1242,86 @@ class Member_settings extends Member {
 		);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Username/Password Update
 	 */
 	function update_userpass()
 	{
-		ee()->load->library('auth');
+		$member = ee('Model')->get('Member', ee()->session->userdata('member_id'))->first();
 
-	  	// Safety. Prevents accessing this function unless
-	  	// the request came from the form submission
-		if ( ! ee()->input->post('current_password'))
+		if ( ! $member)
 		{
-			return ee()->output->show_user_error('general', array(ee()->lang->line('current_password_required')));
+			return ee()->output->show_user_error('general', array(ee()->lang->line('invalid_action')));
 		}
-
-		$query = ee()->db->select('username, screen_name, password')
-							  ->get_where('members', array(
-							  	'member_id'	=> (int) ee()->session->userdata('member_id')
-							  ));
-
-		if ( ! $query->num_rows())
-		{
-			return FALSE;
-		}
-
-		if (ee()->config->item('allow_username_change') != 'y')
-		{
-			$_POST['username'] = $query->row('username');
-		}
-
-		// If the screen name field is empty, we'll assign it
-		// from the username field.
-
-		if ($_POST['screen_name'] == '')
-		{
-			$_POST['screen_name'] = $_POST['username'];
-		}
-
-		if ( ! isset($_POST['username']))
-		{
-			$_POST['username'] = '';
-		}
-
-		// Validate submitted data
-		if ( ! class_exists('EE_Validate'))
-		{
-			require APPPATH.'libraries/Validate.php';
-		}
-
-		$VAL = new EE_Validate(
-								array(
-										'member_id'			=> ee()->session->userdata('member_id'),
-										'val_type'			=> 'update', // new or update
-										'fetch_lang' 		=> TRUE,
-										'require_cpw' 		=> TRUE,
-									 	'enable_log'		=> FALSE,
-										'username'			=> $_POST['username'],
-										'cur_username'		=> $query->row('username') ,
-										'screen_name'		=> $_POST['screen_name'],
-										'cur_screen_name'	=> $query->row('screen_name') ,
-										'password'			=> $_POST['password'],
-									 	'password_confirm'	=> $_POST['password_confirm'],
-									 	'cur_password'		=> $_POST['current_password']
-									 )
-							);
-
-		$VAL->validate_screen_name();
 
 		if (ee()->config->item('allow_username_change') == 'y')
 		{
-			$VAL->validate_username();
+			$member->username = ee()->input->post('username');
 		}
 
-		if ($_POST['password'] != '')
+		// If the screen name field is empty, we'll assign it from the username field.
+		if (ee()->input->post('screen_name') == '')
 		{
-			$VAL->validate_password();
+			$member->screen_name = ee()->input->post('username');
 		}
-
-
-		// Display validation errors if there are any
-		if (count($VAL->errors) > 0)
+		else
 		{
-			return ee()->output->show_user_error('submission', $VAL->errors);
+			$member->screen_name = ee()->input->post('screen_name');
 		}
 
-		// Finally, and most important of all, was their
-		// current password submitted correctly?
-		if ( ! ee()->auth->authenticate_id(
-			(int) ee()->session->userdata('member_id'),
-			ee()->input->post('current_password')))
+		// require authentication to change user/pass
+		$validator = ee('Validation')->make();
+		$validator->setRule('current_password', 'authenticated');
+
+		// set password, and confirmation if needed
+		if (ee()->input->post('password'))
 		{
-			return ee()->output->show_user_error('general', array(ee()->lang->line('current_password_incorrect')));
+			$member->password = ee()->input->post('password');
+			$validator->setRule('password_confirm', 'matches[password]');
 		}
 
-		/** -------------------------------------
-		/**  Update "last post" forum info if needed
-		/** -------------------------------------*/
+		$result = $member->validate();
+		$password_confirm = $validator->validate($_POST);
 
-		if ($query->row('screen_name')  != $_POST['screen_name'] AND ee()->config->item('forum_is_installed') == "y" )
+		// Add password confirmation failure to main result object
+		if ($password_confirm->failed())
 		{
-			ee()->db->query("UPDATE exp_forums SET forum_last_post_author = '".ee()->db->escape_str($_POST['screen_name'])."' WHERE forum_last_post_author_id = '".ee()->session->userdata('member_id')."'");
-			ee()->db->query("UPDATE exp_forum_moderators SET mod_member_name = '".ee()->db->escape_str($_POST['screen_name'])."' WHERE mod_member_id = '".ee()->session->userdata('member_id')."'");
+			$rules = $password_confirm->getFailed();
+			foreach ($rules as $field => $rule)
+			{
+				$result->addFailed($field, $rule[0]);
+			}
 		}
 
-		/** -------------------------------------
-		/**  Assign the query data
-		/** -------------------------------------*/
-		$data['screen_name'] = $_POST['screen_name'];
-
-		if (ee()->config->item('allow_username_change') == 'y')
+		if ( ! $result->isValid())
 		{
-			$data['username'] = $_POST['username'];
+			$errors = [];
+			foreach ($result->getAllErrors() as $error)
+			{
+				$errors = array_merge($errors, array_values($error));
+			}
+
+			return ee()->output->show_user_error('submission', $errors);
 		}
 
-		// Was a password submitted?
-
-		$pw_change = '';
-
-		if ($_POST['password'] != '')
+		// if the password was set, need to hash it before saving and kill all other sessions
+		if (ee()->input->post('password'))
 		{
-			ee()->auth->update_password(ee()->session->userdata('member_id'),
-											 ee()->input->post('password'));
-
-			$pw_change = $this->_var_swap($this->_load_element('password_change_warning'),
-											array('lang:password_change_warning' => ee()->lang->line('password_change_warning'))
-										);
+			$member->hashAndUpdatePassword($member->password);
 		}
 
-		ee()->db->query(ee()->db->update_string('exp_members', $data, "member_id = '".ee()->session->userdata('member_id')."'"));
-
-		/** -------------------------------------
-		/**  Update comments if screen name has changed
-		/** -------------------------------------*/
-		if ($query->row('screen_name')  != $_POST['screen_name'])
-		{
-			ee()->db->query(ee()->db->update_string('exp_comments', array('name' => $_POST['screen_name']), "author_id = '".ee()->session->userdata('member_id')."'"));
-
-			ee()->session->userdata['screen_name'] = stripslashes($_POST['screen_name']);
-		}
+		$member->save();
 
 		/** -------------------------------------
 		/**  Success message
 		/** -------------------------------------*/
+
 		return $this->_var_swap($this->_load_element('success'),
-								array(
-										'lang:heading'	=>	ee()->lang->line('username_and_password'),
-										'lang:message'	=>	ee()->lang->line('mbr_settings_updated').$pw_change
-									 )
-							);
+			[
+				'lang:heading'	=>	ee()->lang->line('username_and_password'),
+				'lang:message'	=>	ee()->lang->line('mbr_settings_updated'),
+			]
+		);
 	}
 
 
@@ -1590,10 +1344,11 @@ class Member_settings extends Member {
 		// the same options
 		ee()->load->model('admin_model');
 		ee()->load->helper('form');
-		$timezone = ee()->session->userdata('timezone');
+		// Have to get tz from database since the config will have replaced null with the site default
+		$member = ee('Model')->get('Member', ee()->session->userdata('member_id'))->fields('timezone')->first();
 
 		$defaults = array(
-			'site_default'    => empty($timezone) ? 'y' : 'n',
+			'site_default'    => empty($member->timezone) ? 'y' : 'n',
 			'date_format'     => ee()->session->userdata('date_format'),
 			'time_format'     => ee()->session->userdata('time_format'),
 			'include_seconds' => ee()->session->userdata('include_seconds')
@@ -1638,9 +1393,9 @@ class Member_settings extends Member {
 
 		$data['language'] = ee()->security->sanitize_filename($_POST['language']);
 
-		foreach (array('timezone', 'date_format', 'time_format', 'include_seconts') as $key)
+		foreach (array('timezone', 'date_format', 'time_format', 'include_seconds') as $key)
 		{
-			if ($_POST['site_default'] == 'y')
+			if (ee()->input->post('site_default') == 'y')
 			{
 				$data[$key] = NULL;
 			}

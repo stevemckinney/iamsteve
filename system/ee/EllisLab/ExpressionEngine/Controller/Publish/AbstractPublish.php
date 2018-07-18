@@ -1,4 +1,11 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Publish;
 
@@ -7,27 +14,7 @@ use EllisLab\ExpressionEngine\Library\CP\Table;
 
 use EllisLab\ExpressionEngine\Model\Channel\ChannelEntry;
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Abstract Publish Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Abstract Publish Controller
  */
 abstract class AbstractPublish extends CP_Controller {
 
@@ -109,6 +96,9 @@ abstract class AbstractPublish extends CP_Controller {
 			'lang.loading'                   => lang('loading'),
 			'publish.autosave.interval'      => (int) $autosave_interval_seconds,
 			'publish.autosave.URL'           => ee('CP/URL')->make('publish/autosave/' . $channel_id . '/' . $entry_id)->compile(),
+			'publish.channel_title'          => ee('Format')->make('Text', $entry->Channel->channel_title)
+				->convertToEntities()
+				->compile(),
 			'publish.default_entry_title'    => $entry->Channel->default_entry_title,
 			'publish.foreignChars'           => $foreign_characters,
 			'publish.urlLength'              => URL_TITLE_MAX_LENGTH,
@@ -227,6 +217,89 @@ abstract class AbstractPublish extends CP_Controller {
 		return ee('View')->make('_shared/table')->render($table->viewData(''));
 	}
 
+	protected function getAutosavesTable($entry, $autosave_id = FALSE)
+	{
+		$table = ee('CP/Table');
+
+		$table->setColumns(
+			array(
+				'rev_id',
+				'rev_date',
+				'rev_author',
+				'manage' => array(
+					'encode' => FALSE
+				)
+			)
+		);
+
+		$data = array();
+		$authors = array();
+		$i = 1;
+
+		foreach ($entry->getAutosaves()->sortBy('edit_date') as $autosave)
+		{
+			if ( ! isset($authors[$autosave->author_id]) && $autosave->Author)
+			{
+				$authors[$autosave->author_id] = $autosave->Author->getMemberName();
+			}
+
+			$toolbar = ee('View')->make('_shared/toolbar')->render(array(
+				'toolbar_items' => array(
+						'txt-only' => array(
+							'href' => $entry->entry_id
+								? ee('CP/URL')->make('publish/edit/entry/' . $entry->entry_id . '/' . $autosave->entry_id)
+								: ee('CP/URL')->make('publish/create/' . $entry->Channel->channel_id . '/' . $autosave->entry_id),
+							'title' => lang('view'),
+							'content' => lang('view')
+						),
+					)
+				)
+			);
+
+			$attrs = ($autosave->getId() == $autosave_id) ? array('class' => 'selected') : array();
+
+			$data[] = array(
+				'attrs'   => $attrs,
+				'columns' => array(
+					$i,
+					ee()->localize->human_time($autosave->edit_date),
+					isset($authors[$autosave->author_id]) ? $authors[$autosave->author_id] : '-',
+					$toolbar
+				)
+			);
+			$i++;
+		}
+
+		if ( ! $entry->isNew())
+		{
+			$attrs = ( ! $autosave_id) ? ['class' => 'selected'] : [];
+
+			if ( ! isset($authors[$entry->author_id]))
+			{
+				$authors[$entry->author_id] = $entry->getAuthorName();
+			}
+
+			// Current
+			$edit_date = ($entry->edit_date)
+				? ee()->localize->human_time($entry->edit_date->format('U'))
+				: NULL;
+
+			$data[] = array(
+				'attrs'   => $attrs,
+				'columns' => array(
+					$i,
+					$edit_date,
+					$authors[$entry->author_id],
+					'<span class="st-open">' . lang('current') . '</span>'
+				)
+			);
+		}
+
+		$table->setData($data);
+
+		return ee('View')->make('_shared/table')->render($table->viewData(''));
+	}
+
 	protected function validateEntry(ChannelEntry $entry, $layout)
 	{
 		if (empty($_POST))
@@ -297,19 +370,63 @@ abstract class AbstractPublish extends CP_Controller {
 
 		ee()->session->set_flashdata('entry_id', $entry->entry_id);
 
-		ee('CP/Alert')->makeInline('entry-form')
-			->asSuccess()
+		$alert = (ee('Request')->get('modal_form') == 'y' && ee('Request')->get('next_entry_id'))
+			? ee('CP/Alert')->makeStandard()
+			: ee('CP/Alert')->makeInline('entry-form');
+
+		$alert->asSuccess()
 			->withTitle(lang($action . '_entry_success'))
 			->addToBody(sprintf(lang($action . '_entry_success_desc'), htmlentities($entry->title, ENT_QUOTES, 'UTF-8')))
 			->defer();
 
-		if (ee()->input->post('submit') == 'finish')
+
+		if (ee('Request')->get('modal_form') == 'y')
 		{
-			ee()->functions->redirect(ee('CP/URL')->make('publish/edit/', array('filter_by_channel' => $entry->channel_id)));
+			$next_entry_id = ee('Request')->get('next_entry_id');
+
+			$result = [
+				'saveId' => $entry->getId(),
+				'item' => [
+					'value' => $entry->getId(),
+					'label' => $entry->title,
+					'instructions' => $entry->Channel->channel_title
+				]
+			];
+
+			if (is_numeric($next_entry_id))
+			{
+				$next_entry = ee('CP/URL')->getCurrentUrl();
+				$next_entry->path = 'publish/edit/entry/' . $next_entry_id;
+				$result += ['redirect' => $next_entry->compile()];
+			}
+
+			return $result;
+		}
+		elseif (ee()->input->post('submit') == 'save')
+		{
+			ee()->functions->redirect(ee('CP/URL')->make('publish/edit/entry/' . $entry->getId()));
+		}
+		elseif (ee()->input->post('submit') == 'save_and_close')
+		{
+			$redirect_url = ee('CP/URL')->make('publish/edit/', array('filter_by_channel' => $entry->channel_id));
+
+			/* -------------------------------------
+			/*  'entry_save_and_close_redirect' hook.
+			/*  - Redirect to a different URL when "Save & Close" is clicked
+			/*  - Added 4.0.0
+			*/
+				if (ee()->extensions->active_hook('entry_save_and_close_redirect'))
+				{
+					$redirect_url = ee()->extensions->call('entry_save_and_close_redirect', $entry);
+				}
+			/*
+			/* -------------------------------------*/
+
+			ee()->functions->redirect($redirect_url);
 		}
 		else
 		{
-			ee()->functions->redirect(ee('CP/URL')->make('publish/edit/entry/' . $entry->entry_id));
+			ee()->functions->redirect(ee('CP/URL')->make('publish/create/' . $entry->channel_id));
 		}
 	}
 
@@ -329,6 +446,84 @@ abstract class AbstractPublish extends CP_Controller {
 		$autosave = ee('Model')->get('ChannelEntryAutosave')
 			->filter('edit_date', '<', $cutoff)
 			->delete();
+	}
+
+	/**
+	 * Get Submit Buttons for Publish Edit Form
+	 * @param  ChannelEntry $entry ChannelEntry model entity
+	 * @return array Submit button array
+	 */
+	protected function getPublishFormButtons(ChannelEntry $entry)
+	{
+		$buttons = [
+			[
+				'name' => 'submit',
+				'type' => 'submit',
+				'value' => 'save',
+				'text' => 'save',
+				'working' => 'btn_saving',
+				// Disable these while JS is still loading key components, re-enabled in publish.js
+				'attrs' => 'disabled="disabled"'
+			],
+			[
+				'name' => 'submit',
+				'type' => 'submit',
+				'value' => 'save_and_new',
+				'text' => 'save_and_new',
+				'working' => 'btn_saving',
+				'attrs' => 'disabled="disabled"'
+			],
+			[
+				'name' => 'submit',
+				'type' => 'submit',
+				'value' => 'save_and_close',
+				'text' => 'save_and_close',
+				'working' => 'btn_saving',
+				'attrs' => 'disabled="disabled"'
+			]
+		];
+
+		// get rid of Save & New button if we've reached the max entries for this channel
+		if ($entry->Channel->maxEntriesLimitReached())
+		{
+			unset($buttons[1]);
+		}
+
+		$has_preview_button  = FALSE;
+		$show_preview_button = FALSE;
+
+		if ($entry->hasLivePreview())
+		{
+			$has_preview_button  = TRUE;
+			$show_preview_button = TRUE;
+		}
+
+		$pages_module = ee('Addon')->get('pages');
+		if ($pages_module && $pages_module->isInstalled())
+		{
+			$has_preview_button = TRUE;
+			if ($entry->hasPageURI())
+			{
+				$show_preview_button = TRUE;
+			}
+		}
+
+		if ($has_preview_button)
+		{
+			$extra_class = ($show_preview_button) ? '' : ' hidden';
+
+			$buttons[] = [
+				'name'    => 'submit',
+				'type'    => 'submit',
+				'value'   => 'preview',
+				'text'    => 'preview',
+				'class'   => 'action js-modal-link--side' . $extra_class,
+				'attrs'   => 'rel="live-preview" disabled="disabled"',
+				'working' => 'btn_previewing'
+			];
+		}
+
+		return $buttons;
 	}
 }
 

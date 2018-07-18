@@ -72,6 +72,8 @@ $lang = array(
 
 'default' => 'default',
 
+'default_404_option' => 'Default 404 Page',
+
 'design' => 'Design',
 
 'duplicate_existing_template' => 'Duplicate existing template?',
@@ -118,23 +120,23 @@ $lang = array(
 
 'enable_caching' => 'Enable Caching?',
 
-'enable_caching_desc' => 'When set to <b>enable</b>, ExpressionEngine will cache this template.',
+'enable_caching_desc' => 'When enabled, ExpressionEngine will cache this template.',
 
 'enable_http_authentication' => 'Enable HTTP Authentication?',
 
-'enable_http_authentication_desc' => 'When set to <b>enable</b>, users with permissions will have to login to view this template.',
+'enable_http_authentication_desc' => 'When enabled, users with permissions will have to login to view this template.',
 
 'enable_partial_on_all_sites' => 'Enable on all sites?',
 
-'enable_partial_on_all_sites_desc' => 'When set to <b>enable</b>, this partial will be available for use in all sites.',
+'enable_partial_on_all_sites_desc' => 'When enabled, this partial will be available for use in all sites.',
 
 'enable_php' => 'Allow PHP?',
 
-'enable_php_desc' => 'Allows the use of standard PHP within this template.',
+'enable_php_desc' => 'When enabled, you can use standard PHP within this template. <a href="'.DOC_URL.'templates/php.html" rel="external">Read about the implications before enabling</a>.',
 
 'enable_template_variable_on_all_sites' => 'Enable on all sites?',
 
-'enable_template_variable_on_all_sites_desc' => 'When set to <b>enable</b>, this variable will be available for use in all sites.',
+'enable_template_variable_on_all_sites_desc' => 'When enabled, this variable will be available for use in all sites.',
 
 'error_cannot_create_zip' => 'Cannot create a .zip file',
 
@@ -164,7 +166,9 @@ $lang = array(
 
 'make_default_group' => 'Make default group?',
 
-'make_default_group_desc' => 'When set to <b>yes</b>, this group will become the default group for this website.',
+'make_default_group_desc' => 'When enabled, this group will become the default group for this website.',
+
+'member_groups' => 'Member Groups',
 
 'messages' => 'Messages',
 
@@ -186,6 +190,8 @@ $lang = array(
 
 'notes' => 'Notes',
 
+'only' => '<strong>only</strong>',
+
 'parse_stage' => 'PHP Parsing Stage',
 
 'parse_stage_desc' => 'When set to <b>output</b>, PHP will be parsed after the template.',
@@ -198,7 +204,7 @@ $lang = array(
 
 'require_all_segments' => 'Require all variables?',
 
-'require_all_segments_desc' => 'When set to <b>yes</b>, all variables must be present in the request <abbr title="Unified Resource Identifier">URI</abbr>.',
+'require_all_segments_desc' => 'When enabled, all variables must be present in the request <abbr title="Unified Resource Identifier">URI</abbr>.',
 
 'reserved_name' => 'The name you have chosen is a reserved word that cannot be used.',
 
@@ -230,11 +236,17 @@ $lang = array(
 
 'template_manager' => 'Template Manager',
 
+'template_member_groups' => 'Allowed member groups',
+
+'template_member_groups_desc' => 'Users in these member groups can create, edit, and/or delete templates in this template group.',
+
 'template_name_taken' => 'The template name you submitted is already taken',
 
 'template_notes' => 'Template Notes',
 
 'template_notes_desc' => 'Use this form field to store notes and information about this template',
+
+'template_path_not_user' => 'Templates not found in themes/user, please see <a href="%s">the documentation</a> for details.',
 
 'template_partial' => 'Template Partial',
 
@@ -304,7 +316,7 @@ $lang = array(
 
 'enable_template' => 'Enable template?',
 
-'enable_template_desc' => 'When set to <b>enable</b>, this template will be used, in place of an auto generated Email in the users language.',
+'enable_template_desc' => 'When enabled, this template will be used, in place of an auto generated Email in the users language.',
 
 'forums' => 'Forums',
 
@@ -438,8 +450,6 @@ $lang = array(
 
 'enable_template_routes_exp' => 'Disabling template routes will remove the route options from the access panel and templates will only be accesible from the default group/template URL.',
 
-'export' => 'Export',
-
 'export_as' => 'Export files as',
 
 'export_group' => 'Export Group',
@@ -535,6 +545,8 @@ $lang = array(
 'no_results' => 'The search term you submitted was not found in any of your templates.',
 
 'no_templates_found' => 'No <b>Templates</b> found.',
+
+'no_user_templates_found' => 'No <b>Templates</b> found. See <a href="%s" title="Documentation" rel="external">documentation</a>.',
 
 'no_templates_selected' => 'No Templates Selected',
 
@@ -736,6 +748,8 @@ $lang = array(
 
 'unable_to_write_files' => 'Unable to write the files to your cache directory',
 
+'breadcrumb' => 'Breadcrumb',
+
 'undersores_allowed' => '(underscores and dashes are allowed)',
 
 'url_manager' => 'Template Route Manager',
@@ -753,6 +767,8 @@ $lang = array(
 'view' => 'View',
 
 'view_rendered_template' => 'View Rendered Template',
+
+'localization_form' => 'Localization Preferences Form',
 
 'webpage' => 'Web Page (HTML)',
 

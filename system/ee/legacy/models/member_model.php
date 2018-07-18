@@ -1,26 +1,14 @@
-<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Member Model
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Model
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Member Model
  */
 class Member_model extends CI_Model {
 
@@ -64,8 +52,6 @@ class Member_model extends CI_Model {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Upload Groups
 	 *
@@ -82,8 +68,6 @@ class Member_model extends CI_Model {
 
 		return $this->db->get();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get Memmbers
@@ -150,8 +134,6 @@ class Member_model extends CI_Model {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 *	Count Members
 	 *
@@ -197,8 +179,6 @@ class Member_model extends CI_Model {
 		return ($members->num_rows() == 0) ? FALSE : $members->row('count');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get All Member Fields
 	 *
@@ -237,8 +217,6 @@ class Member_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Member Data
 	 *
@@ -252,8 +230,6 @@ class Member_model extends CI_Model {
 
 		return $this->db->get();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get Member Data
@@ -275,8 +251,6 @@ class Member_model extends CI_Model {
 		$this->db->where('member_id', (int) $member_id);
 		return $this->db->get('members');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get Member Ignore List
@@ -300,8 +274,6 @@ class Member_model extends CI_Model {
 		return $this->db->get('members');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Member Quicklinks
 	 *
@@ -313,15 +285,15 @@ class Member_model extends CI_Model {
 	 */
 	function get_member_quicklinks($member_id = FALSE)
 	{
-		$query = $this->get_member_data($member_id, array('quick_links'));
+		$quicklinks_query = $this->get_member_data($member_id, array('quick_links'))->row('quick_links');
 
 		$i = 1;
 
 		$quicklinks = array();
 
-		if (count($query->row('quick_links')) != 0 AND $query->row('quick_links') != '')
+		if ( ! empty($quicklinks_query))
 		{
-			foreach (explode("\n", $query->row('quick_links') ) as $row)
+			foreach (explode("\n", $quicklinks_query) as $row)
 			{
 				$x = explode('|', $row);
 
@@ -335,8 +307,6 @@ class Member_model extends CI_Model {
 
 		return $quicklinks;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get Member Emails
@@ -391,8 +361,6 @@ class Member_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Create member
 	 *
@@ -434,9 +402,6 @@ class Member_model extends CI_Model {
 			$this->db->insert('member_data', array('member_id' => $member_id));
 		}
 
-		// Create a record in the member homepage table
-		$this->db->insert('member_homepage', array('member_id' => $member_id));
-
 		// ---------------------------------------------------------------
 		// 'member_create_end' hook.
 		// - Provides an opportunity for extra code to be executed after
@@ -450,8 +415,6 @@ class Member_model extends CI_Model {
 
 		return $member_id;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Update member
@@ -478,16 +441,6 @@ class Member_model extends CI_Model {
 		}
 		//
 		// ---------------------------------------------------------------
-
-		$default_null = array('bday_y',	'bday_m', 'bday_d');
-
-		foreach($default_null as $val)
-		{
-			if (isset($data[$val]) && $data[$val] == '')
-			{
-				$data[$val] = NULL;
-			}
-		}
 
 		if ( ! isset($additional_where[0]))
 		{
@@ -526,8 +479,6 @@ class Member_model extends CI_Model {
 	}
 
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Update Member Group
 	 *
@@ -542,8 +493,6 @@ class Member_model extends CI_Model {
 	{
 		// for later use
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Update member data
@@ -581,8 +530,6 @@ class Member_model extends CI_Model {
 		$this->db->update('member_data', $data);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Delete member
 	 *
@@ -596,12 +543,6 @@ class Member_model extends CI_Model {
 	 */
 	function delete_member($member_ids = array(), $heir_id = NULL)
 	{
-		// Make sure $member_ids is an array
-		if ( ! is_array($member_ids))
-		{
-			$member_ids = array((int) $member_ids);
-		}
-
 		// ---------------------------------------------------------------
 		// 'member_delete' hook.
 		// - Provides an opportunity for extra code to be executed upon
@@ -616,229 +557,11 @@ class Member_model extends CI_Model {
 		//
 		// ---------------------------------------------------------------
 
-		// No member IDs? Bail out
-		if ($member_ids == NULL OR ! count($member_ids))
-		{
-			return FALSE;
-		}
+		ee()->load->library('logger');
+		ee()->logger->deprecated('4.3', "Member Model delete()");
 
-		// ---------------------------------------------------------------
-		// Remove traces of member from base member tables
-		// ---------------------------------------------------------------
-		$tables_fields = array(
-			'members'				=> 'member_id',
-			'member_data'			=> 'member_id',
-			'member_homepage'		=> 'member_id',
-			'message_data'			=> 'sender_id',
-			'message_folders'		=> 'member_id',
-			'message_listed'		=> 'member_id',
-			'message_listed'		=> 'listed_member',
-			'message_copies'		=> 'recipient_id',
-			'remember_me'			=> 'member_id',
-			'sessions'				=> 'member_id'
-		);
-
-		// If comment module is installed
-		if ($this->db->table_exists('comment_subscriptions'))
-		{
-			$tables_fields['comment_subscriptions'] = 'member_id';
-		}
-
-		// Loop through tables array and clear out based on member ID
-		foreach ($tables_fields as $table => $field)
-		{
-			$this->db->where_in($field, $member_ids)->delete($table);
-		}
-
-		// ---------------------------------------------------------------
-		// Delete private messages and update members' unread count
-		// ---------------------------------------------------------------
-
-		// First, we need to get a list of recipient IDs who will be affected
-		// by deleting the members we are deleting so that we can update the
-		// unread PM count for those users only
-		$this->db->select('recipient_id');
-		$this->db->distinct();
-		$this->db->where('message_read', 'n');
-		$this->db->where_in('sender_id', $member_ids);
-		$messages = $this->db->get('message_copies');
-
-		// Now that we know which recipients are affected, we can delete the
-		// member-to-be-deleted's messages...
-		$this->db->where_in('sender_id', $member_ids)->delete('message_copies');
-
-		if ($messages->num_rows())
-		{
-			// Build recipient IDs array
-			foreach ($messages->result_array() as $message)
-			{
-				$recipient_ids[] = $message['recipient_id'];
-			}
-
-			// ...and get the new unread count for the affected users
-			$this->db->select('count(*) as count, recipient_id');
-			$this->db->where('message_read', 'n');
-			$this->db->where_in('recipient_id', $recipient_ids);
-			$this->db->group_by('recipient_id');
-			$unread_messages = $this->db->get('message_copies');
-
-			// Set everyone's unread message count to zero first, because if a user
-			// has zero messages now, they won't have shown up in the above query
-			$this->db->where_in('member_id', $recipient_ids);
-			$this->db->update('members', array('private_messages' => 0));
-
-			// For each user, update their private messages unread count with
-			// what we gathered above
-			foreach ($unread_messages->result_array() as $message)
-			{
-				$this->db->where('member_id', $message['recipient_id']);
-				$this->db->update('members', array('private_messages' => $message['count']));
-			}
-		}
-
-		// ---------------------------------------------------------------
-		// Get member's channel entries, reassign them to the entries heir
-		// or delete them all together if heir isn't specified
-		// ---------------------------------------------------------------
-
-		// Get member's entries
-		$this->db->select('entry_id, channel_id');
-		$this->db->where_in('author_id', $member_ids);
-		$entries = $this->db->get('channel_titles');
-
-		$channel_ids = array();
-
-		if ($entries->num_rows())
-		{
-			// Reassign entries if heir ID is present
-			if ( ! empty($heir_id) && is_numeric($heir_id))
-			{
-				$this->db->where_in('author_id', $member_ids);
-				$this->db->update('channel_titles', array('author_id' => $heir_id));
-
-				$this->update_member_entry_stats($heir_id);
-			}
-			// Otherwise, delete them, likely happens when member deletes own account
-			else
-			{
-				foreach ($entries->result_array() as $entry)
-				{
-					// Entries to delete
-					$entry_ids[] = $entry['entry_id'];
-				}
-
-				ee()->load->library('api');
-				ee()->legacy_api->instantiate('channel_entries');
-				ee()->api_channel_entries->delete_entry($entry_ids);
-			}
-		}
-
-		// ---------------------------------------------------------------
-		// Delete removed members comments and recount entry stats
-		// ---------------------------------------------------------------
-
-		if ($this->db->table_exists('comments'))
-		{
-			$this->db->select('DISTINCT(entry_id), channel_id');
-			$this->db->where_in('author_id', $member_ids);
-			$entries = $this->db->get('comments');
-
-			$entry_ids = array();
-			foreach ($entries->result_array() as $row)
-			{
-				// Entries to update
-				$entry_ids[$row['entry_id']] = $row['entry_id'];
-			}
-
-			// Delete comments
-			$this->db->where_in('author_id', $member_ids)->delete('comments');
-
-			// Update entry comment counts
-			$this->load->model('comment_model');
-			$this->comment_model->recount_entry_comments($entry_ids);
-		}
-
-		// ---------------------------------------------------------------
-		// Forum Clean-Up
-		// ---------------------------------------------------------------
-
-		if ($this->config->item('forum_is_installed') == "y")
-		{
-			// Forum tables to clean up
-			$forum_tables_fields = array(
-				'forum_subscriptions'	=> 'member_id',
-				'forum_pollvotes'		=> 'member_id',
-				'forum_topics'			=> 'author_id',
-				'forum_administrators'	=> 'admin_member_id',
-				'forum_moderators'		=> 'mod_member_id',
-				'forum_polls'			=> 'author_id'
-			);
-
-			// Clean out mentions of member in forum tables
-			foreach ($forum_tables_fields as $table => $field)
-			{
-				$this->db->where_in($field, $member_ids)->delete($table);
-			}
-
-			// Load forum class
-			if ( ! class_exists('Forum'))
-			{
-				require PATH_ADDONS.'forum/mod.forum.php';
-				require PATH_ADDONS.'forum/mod.forum_core.php';
-			}
-
-			$forum_core = new Forum_Core;
-
-			// -----------------------------------------------------------
-			// Grab affected topic IDs before deleting the member so we can
-			// update stats
-			$this->db->select('topic_id');
-			$this->db->distinct();
-			$this->db->where_in('author_id', $member_ids);
-			$topics = $this->db->get('forum_posts');
-
-			// Now delete those posts
-			$this->db->where_in('author_id', $member_ids)->delete('forum_posts');
-
-			// Update topic stats
-			foreach ($topics->result_array() as $row)
-			{
-				$forum_core->_update_topic_stats($row['topic_id']);
-			}
-
-			// -----------------------------------------------------------
-			// Update forum stats
-			$this->db->select('forum_id');
-			$this->db->where('forum_is_cat', 'n');
-			$forums = $this->db->get('exp_forums');
-
-			foreach ($forums->result_array() as $row)
-			{
-				$forum_core->_update_post_stats($row['forum_id']);
-			}
-
-			$forum_core->_update_global_stats();
-
-			// -----------------------------------------------------------
-			// Delete from Online Users
-			$this->db->where_in('member_id', $member_ids)->delete('online_users');
-
-			// -----------------------------------------------------------
-			// Remove attachments
-			$this->db->select('attachment_id, board_id');
-			$this->db->where_in('member_id', $member_ids);
-			$attachments = $this->db->get('forum_attachments');
-
-			foreach ($attachments->result_array() as $attachment)
-			{
-				$forum_core->_remove_attachment($attachment['attachment_id'], $attachment['board_id'], TRUE);
-			}
-		}
-
-		$this->stats->update_member_stats();
+		ee('Model')->get('Member', $member_ids)->delete();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Update entry stats for members, specifically total_entries and last_entry_date
@@ -873,8 +596,6 @@ class Member_model extends CI_Model {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Remove From Author List
 	 *
@@ -896,8 +617,6 @@ class Member_model extends CI_Model {
 		$this->db->update('members');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Update Author List
 	 *
@@ -918,8 +637,6 @@ class Member_model extends CI_Model {
 		$this->db->set('in_authorlist', 'y');
 		$this->db->update('members');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get Author Groups
@@ -949,8 +666,6 @@ class Member_model extends CI_Model {
 
 		return $group_ids;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get Authors
@@ -1000,8 +715,6 @@ class Member_model extends CI_Model {
 
 		return $this->db->get('members');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get Member Groups
@@ -1066,8 +779,6 @@ class Member_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Delete Member Group
 	 *
@@ -1103,8 +814,6 @@ class Member_model extends CI_Model {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Count Members
 	 *
@@ -1118,8 +827,6 @@ class Member_model extends CI_Model {
 		return $this->db->count_all_results('members');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Count Recrods
 	 *
@@ -1131,8 +838,6 @@ class Member_model extends CI_Model {
 	{
 		return $this->db->count_all($table);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Count Member Entries
@@ -1154,8 +859,6 @@ class Member_model extends CI_Model {
 
 		return $this->db->count_all_results();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get Members Group Ids
@@ -1196,8 +899,6 @@ class Member_model extends CI_Model {
 		return $group_ids;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Custom Member Fields
 	 *
@@ -1221,8 +922,6 @@ class Member_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Member By Screen Name
 	 *
@@ -1238,8 +937,6 @@ class Member_model extends CI_Model {
 
 		return $this->db->get();
 	}
-
-	// --------------------------------------------------------------------
 
 	/*
 	 * Get IP Members
@@ -1262,8 +959,6 @@ class Member_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Group Members
 	 *
@@ -1283,8 +978,6 @@ class Member_model extends CI_Model {
 
 		return $this->db->get();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Check Duplicate
@@ -1312,8 +1005,6 @@ class Member_model extends CI_Model {
 			return TRUE;
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get Theme List
@@ -1352,8 +1043,6 @@ class Member_model extends CI_Model {
 		return $themes;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Profile Templates
 	 *
@@ -1379,8 +1068,6 @@ class Member_model extends CI_Model {
 
 		return $themes;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Insert Group Layout
@@ -1454,8 +1141,6 @@ class Member_model extends CI_Model {
 		$this->db->delete('layout_publish');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Group Layout
 	 *
@@ -1476,8 +1161,6 @@ class Member_model extends CI_Model {
 			'member_group' => $member_group
 		));
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get All Group Layouts
@@ -1515,8 +1198,6 @@ class Member_model extends CI_Model {
 		return $returned_data;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Notepad Content
 	 *
@@ -1542,8 +1223,6 @@ class Member_model extends CI_Model {
 
 		return '';
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Can Access Module
@@ -1574,8 +1253,6 @@ class Member_model extends CI_Model {
 		return ($query->num_rows() === 0) ? FALSE : TRUE;
 	}
 
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Set up the search query which is used by get_members and

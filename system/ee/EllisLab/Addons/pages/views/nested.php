@@ -10,23 +10,21 @@
 								<fieldset class="filter-search">
 									<input type="text" value="" placeholder="<?=lang('filter_channels')?>">
 								</fieldset>
-								<div class="scroll-wrap">
-									<ul class="channels-pages-create">
-										<?php
-										$menus = ee()->menu->generate_menu();
-										foreach ($menus['channels']['create'] as $channel_name => $link):
-										?>
-											<li class="search-channel" data-search="<?=strtolower($channel_name)?>"><a href="<?=$link?>"><?=$channel_name?></a></li>
-										<?php endforeach ?>
-									</ul>
-								</div>
+								<ul class="channels-pages-create">
+									<?php
+									$menus = ee()->menu->generate_menu();
+									foreach ($menus['channels']['create'] as $channel_name => $link):
+									?>
+										<li class="search-channel" data-search="<?=strtolower($channel_name)?>"><a href="<?=$link?>"><?=$channel_name?></a></li>
+									<?php endforeach ?>
+								</ul>
 							</div>
 						</li>
 					</ul>
 				</div>
 			</fieldset>
 			<h1><?=lang('all_pages')?></h1>
-			<?=ee('CP/Alert')->getAllInlines()?>
+			<div class="app-notice-wrap"><?=ee('CP/Alert')->getAllInlines()?></div>
 			<div class="tbl-list-wrap">
 				<?php if (count($pages->children()) != 0): ?>
 					<div class="tbl-list-ctrl">

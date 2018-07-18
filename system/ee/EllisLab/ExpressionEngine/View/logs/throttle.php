@@ -3,11 +3,11 @@
 <div class="tbl-ctrls">
 <?=form_open($form_url)?>
 	<h1><?php echo isset($cp_heading) ? $cp_heading : $cp_page_title?></h1>
-	<?=ee('CP/Alert')->getAllInlines()?>
+	<div class="app-notice-wrap"><?=ee('CP/Alert')->getAllInlines()?></div>
 	<?php if (isset($filters)) echo $filters; ?>
 	<section class="item-wrap log">
 		<?php if ($disabled): ?>
-			<p class="no-results"><?=lang('throttling_disabled')?> <a class="btn action" href="<?=ee('CP/URL')->make('settings/throttling')?>"><?=lang('enable_throttling')?></a></p>
+			<p class="no-results"><?=lang('throttling_disabled')?> <a href="<?=ee('CP/URL')->make('settings/throttling')?>"><?=lang('enable_throttling')?></a></p>
 		<?php else: ?>
 			<?php if (count($logs) == 0): ?>
 				<p class="no-results"><?=lang('no_throttling_logs_found')?></p>
@@ -29,7 +29,7 @@
 				<?=$pagination?>
 
 				<fieldset class="tbl-bulk-act">
-				<button class="btn remove m-link" rel="modal-confirm-all"><?=lang('clear_throttle_logs')?></button>
+				<button class="btn action m-link" rel="modal-confirm-all"><?=lang('clear_throttle_logs')?></button>
 				</fieldset>
 			<?php endif; ?>
 		<?php endif; ?>

@@ -20,13 +20,17 @@ $lang = array(
 
 'banned_email' => 'The email address you submitted is banned',
 
+'btn_confirm_and_anonymize' => 'Confirm, and Anonymize',
+
+'btn_confirm_and_anonymize_working' => 'Anonymizing...',
+
 'btn_confirm_and_decline' => 'Confirm, and Decline',
 
-'btn_confirm_and_decline_working' => 'Declineing...',
+'btn_confirm_and_decline_working' => 'Declining...',
 
 'can_attach_in_private_messages' => 'Allow attachments',
 
-'can_attach_in_private_messages_desc' => 'When set to <b>yes</b>, users assigned to this group may attach files to personal messages.',
+'can_attach_in_private_messages_desc' => 'When enabled, users assigned to this group may attach files to personal messages.',
 
 'can_delete_categories' => 'Can delete categories',
 
@@ -38,7 +42,7 @@ $lang = array(
 
 'can_send_private_messages' => 'Access personal messages',
 
-'can_send_private_messages_desc' => 'When set to <b>yes</b>, users assigned to this group may send and receive personal messages.',
+'can_send_private_messages_desc' => 'When enabled, users assigned to this group may send and receive personal messages.',
 
 'channel_entries' => 'Channel Entries',
 
@@ -58,7 +62,7 @@ $lang = array(
 
 'create_member' => 'Create Member',
 
-'create_member_group' => 'Create a Member Group',
+'create_member_group' => 'Create Member Group',
 
 'create_new_member_group' => 'Create a New Member Group',
 
@@ -104,7 +108,7 @@ $lang = array(
 
 'exclude_from_moderation' => 'Bypass moderation',
 
-'exclude_from_moderation_desc' => 'When set to <b>yes</b>, users assigned to this group may comment without being restricted by the default <a href="%s">comment settings</a>.',
+'exclude_from_moderation_desc' => 'When enabled, users assigned to this group may comment without being restricted by the default <a href="%s">comment settings</a>.',
 
 'field_description' => 'Instructions',
 
@@ -144,6 +148,8 @@ $lang = array(
 
 'index' => 'Main Index Page',
 
+'invalid_password' => 'The password you entered was invalid.',
+
 'invalid_path' => 'The path you submitted is not valid.',
 
 'invalid_path_description' => 'The following path you submitted is not valid:',
@@ -166,7 +172,7 @@ $lang = array(
 
 'last_visit' => 'Last Visit',
 
-'lock_description' => 'When set to enable, only Super Admins can add or remove members from this group.',
+'lock_description' => 'When enabled, only Super Admins can add or remove members from this group.',
 
 'locked' => 'Locked',
 
@@ -174,7 +180,7 @@ $lang = array(
 
 'login_as_user' => 'SuperAdmin Logging In as User',
 
-'manage_bans' => 'Manage Bans',
+'manage_bans' => 'Ban Settings',
 
 'maximum_members_reached' => 'You have reached the maximum number of Members allowed.',
 
@@ -192,11 +198,19 @@ $lang = array(
 
 'member_activation_resent_success_desc' => 'An activation email was sent to <b>%s</b>.',
 
+'member_anonymize_problem' => 'There was a problem anonymizing the member.',
+
+'member_anonymize_success' => 'Member Anonymized',
+
+'member_anonymize_success_desc' => 'The member has been anonymized.',
+
 'member_approve' => 'Approve Member',
 
 'member_approved_success' => 'Member Approved',
 
 'member_approved_success_desc' => 'The member <b>%s</b> has been approved.',
+
+'member_assignment_none' => 'None, members in this group will be deleted',
 
 'member_assignment_warning' => 'Members are currently assigned to some of these groups. What member group should they be re-assigned to?',
 
@@ -213,6 +227,8 @@ $lang = array(
 'member_declined_success_desc' => 'The member <b>%s</b> has been declined.',
 
 'member_delete_success' => 'Member Deleted',
+
+'member_delete_problem' => 'There was a problem deleting members.',
 
 'member_deleted' => 'Member Deleted',
 
@@ -239,6 +255,8 @@ $lang = array(
 'member_groups' => 'Member Groups',
 
 'member_groups_removed_desc' => 'Member Group has been deleted successfully.',
+
+'member_groups_remove_problem' => 'There was a problem deleting member groups.',
 
 'member_has_cp_access' => 'Can access the control panel',
 
@@ -322,7 +340,7 @@ $lang = array(
 
 'profile_templates' => 'Member Profile Templates',
 
-'register_member' => 'Register a New Member',
+'register_member' => 'New Member',
 
 'resend' => 'Resend Activation Email',
 
@@ -388,6 +406,12 @@ $lang = array(
 
 'your_password_desc' => 'You <b>must</b> enter your password in order to create a member that has control panel access.',
 
+'your_password_anonymize_members_desc' => 'You <b>must</b> enter your password in order to anomymize members.',
+
+'your_password_delete_members_desc' => 'You <b>must</b> enter your password in order to delete members.',
+
+'your_password_delete_member_groups_desc' => 'You <b>must</b> enter your password in order to delete member groups.',
+
 
 /* Member banning */
 'ban_message' => 'This site is currently unavailable',
@@ -396,7 +420,7 @@ $lang = array(
 
 'ban_options_desc' => 'You can prevent access completely by forwarding them to another website, or show them an unavailable message, or allow them to access the website in view only mode.',
 
-'ban_settings_updated' => 'Banned Settings Updated',
+'ban_settings_updated' => 'Ban Settings updated',
 
 'banned_members' => 'Banned Members',
 
@@ -426,17 +450,15 @@ $lang = array(
 
 
 /* Member group settings */
-'access_privilege_caution' => 'Any setting marked with <span title="excercise caution"></span> should only be granted to people you trust implicitly.',
+'access_privilege_caution' => 'Any setting marked with <span class="icon--caution" title="exercise caution"></span> should only be granted to people you trust implicitly.',
 
 'access_privilege_warning' => '<b>Warning</b>: Please be very careful with the access privileges you grant.',
 
 'access_utilities' => 'Access system utilities',
 
-'access_utilities_desc' => 'When set to <b>yes</b>, users assigned to this group may access the system utilities section.',
+'access_utilities_desc' => 'When enabled, users assigned to this group may access the system utilities section.',
 
 'addon_access' => 'Add-On Access Permissions',
-
-'addons' => 'Add-ons',
 
 'addons_access' => 'Allowed add-on access',
 
@@ -460,25 +482,25 @@ $lang = array(
 
 'can_access_addons' => 'Access add-ons',
 
-'can_access_addons_desc' => 'When set to <b>yes</b>, users assigned to this group may access the add-on manager.',
+'can_access_addons_desc' => 'When enabled, users assigned to this group may access the add-on manager.',
 
-'can_access_communicate' => 'Communicate <i>— Utility</i>',
+'can_access_communicate' => 'Communicate',
 
 'can_access_cp' => 'Access control panel',
 
-'can_access_cp_desc' => 'When set to <b>yes</b>, users assigned to this group may access the control panel.',
+'can_access_cp_desc' => 'When enabled, users assigned to this group may access the control panel.',
 
-'can_access_data' => 'Data Operations<i>— Utility</i>',
+'can_access_data' => 'Data Operations',
 
 'can_access_design' => 'Access template manager',
 
-'can_access_design_desc' => 'When set to <b>yes</b>, users assigned to this group may access the template manager.',
+'can_access_design_desc' => 'When enabled, users assigned to this group may access the template manager.',
 
 'can_access_file_manager' => 'Access file manager',
 
 'can_access_files' => 'File Manager',
 
-'can_access_import' => 'Import <i>— Utility</i>',
+'can_access_import' => 'Import',
 
 'can_access_logs' => 'Logs',
 
@@ -486,37 +508,37 @@ $lang = array(
 
 'can_access_members' => 'Access members',
 
-'can_access_members_desc' => 'When set to <b>yes</b>, users assigned to this group may access the member section of the control panel.',
+'can_access_members_desc' => 'When enabled, users assigned to this group may access the member section of the control panel.',
 
 'can_access_mod' => 'Can access module:',
 
-'can_access_sql' => ' SQL Management <i>— Utility</i>',
+'can_access_sql' => 'SQL Management',
 
 'can_access_sys_prefs' => 'Access settings',
 
-'can_access_sys_prefs_desc' => 'When set to <b>yes</b>, users assigned to this group may access the software settings.',
+'can_access_sys_prefs_desc' => 'When enabled, users assigned to this group may access the software settings.',
 
 'can_access_tg' => 'Can edit templates in this group:',
 
-'can_access_translate' => 'Translation <i>— Utility</i>',
+'can_access_translate' => 'Translation',
 
 'can_access_utilities' => 'Utilities',
 
 'can_admin_addons' => 'Install or remove add-ons',
 
-'can_admin_addons_desc' => 'When set to <b>yes</b>, users assigned to this group may install and remove add-ons.',
+'can_admin_addons_desc' => 'When enabled, users assigned to this group may install and remove add-ons.',
 
 'can_admin_channels' => 'Access channel manager',
 
-'can_admin_channels_desc' => 'When set to <b>yes</b>, users can access the channel manager.',
+'can_admin_channels_desc' => 'When enabled, users can access the channel manager, and optionally channel fields, categories, and statuses.',
 
 'can_admin_design' => 'Global template settings',
 
-'can_admin_design_desc' => 'When set to <b>yes</b>, users assigned to this group may access the global template settings and template routes.',
+'can_admin_design_desc' => 'When enabled, users assigned to this group may access the global template settings and template routes.',
 
 'can_admin_mbr_groups' => 'Access member groups',
 
-'can_admin_mbr_groups_desc' => 'When set to <b>yes</b>, users assigned to this group may access member group settings in the software.',
+'can_admin_mbr_groups_desc' => 'When enabled, users assigned to this group may access member group settings in the software.',
 
 'can_admin_mbr_templates' => 'Can administrate member profile templates',
 
@@ -524,7 +546,7 @@ $lang = array(
 
 'can_admin_templates' => 'Can administrate template groups and templates',
 
-'can_admin_templates_desc' => 'When set to <b>yes</b>, users assigned to this group may manage template groups and templates.',
+'can_admin_templates_desc' => 'When enabled, users assigned to this group may manage template groups and templates.',
 
 'can_admin_upload_prefs' => 'Can administrate file upload preferences',
 
@@ -542,13 +564,13 @@ $lang = array(
 
 'can_delete_self' => 'Delete account',
 
-'can_delete_self_desc' => 'When set to <b>yes</b>, users assigned to this group may delete their own accounts without approval',
+'can_delete_self_desc' => 'When enabled, users assigned to this group may delete their own accounts without approval',
 
 'can_delete_self_entries' => 'Delete own entries',
 
 'can_edit_all_comments' => 'Edit comments by others',
 
-'can_edit_html_buttons' => 'Can edit own <abbr title=\'Hyper-Text Markup Language\'>HTML</abbr> formatting buttons',
+'can_edit_html_buttons' => 'Can edit own HTML formatting buttons',
 
 'can_edit_other_entries' => 'Edit entries, by others',
 
@@ -560,13 +582,13 @@ $lang = array(
 
 'can_post_comments' => 'Submit comments',
 
-'can_post_comments_desc' => 'When set to <b>yes</b>, users assigned to this group may submit comments to the website.',
+'can_post_comments_desc' => 'When enabled, users assigned to this group may submit comments to the website.',
 
 'can_post_in' => 'Can post and edit entries in:',
 
 'can_search' => 'Access search utility',
 
-'can_search_desc' => 'When set to <b>yes</b>, users assigned to this group may use the search functionality of the website.',
+'can_search_desc' => 'When enabled, users assigned to this group may use the search functionality of the website.',
 
 'can_send_cached_email' => 'View/Send cached email',
 
@@ -580,7 +602,7 @@ $lang = array(
 
 'can_view_profiles' => 'Access public profiles',
 
-'can_view_profiles_desc' => 'When set to <b>yes</b>, users assigned to this group may view public profiles of other members.',
+'can_view_profiles_desc' => 'When enabled, users assigned to this group may view public profiles of other members.',
 
 'category_actions' => 'Categories',
 
@@ -636,7 +658,7 @@ $lang = array(
 
 'file_manager' => 'File Manager',
 
-'file_manager_desc' => 'When set to <b>yes</b>, users assigned to this group may access the file manager.',
+'file_manager_desc' => 'When enabled, users assigned to this group may access the file manager.',
 
 'footer_helper_links' => 'Access footer helper links',
 
@@ -652,7 +674,7 @@ $lang = array(
 
 'homepage_news' => 'Show news on CP homepage',
 
-'homepage_news_desc' => 'When set to <b>yes</b>, users assigned to this group will see ExpressionEngine news on the CP homepage.',
+'homepage_news_desc' => 'When enabled, users assigned to this group will see ExpressionEngine news on the CP homepage.',
 
 'include_members_in' => 'Include members in',
 
@@ -708,6 +730,8 @@ $lang = array(
 
 'utilities_section_desc' => 'Users can access all selected sections.',
 
+'utility' => 'Utility',
+
 'warning' => 'WARNING:',
 
 
@@ -722,9 +746,13 @@ $lang = array(
 
 'can_access_addon_settings' => 'Add-ons',
 
+'can_manage_consents' => 'Consent Requests',
+
+'can_manage_consents_desc' => 'When enabled members of this group will be able to manage consent requests.',
+
 'can_access_security_settings' => 'Security &amp; Privacy',
 
-'can_access_security_settings_desc' => 'When set to <b>yes</b> members of this group will be able to access the system security and privacy settings.',
+'can_access_security_settings_desc' => 'When enabled members of this group will be able to access the system security and privacy settings.',
 
 'can_access_site' => 'Can Access Site',
 
@@ -734,9 +762,9 @@ $lang = array(
 
 'can_not_delete_only_member' => 'You cannot delete the only member in the database',
 
-'can_send_bulletins' => 'Access bulletins',
+'can_send_bulletins' => 'Send bulletins',
 
-'can_send_bulletins_desc' => 'When set to <b>yes</b>, users assigned to this group may send and receive bulletins.',
+'can_send_bulletins_desc' => 'When enabled, users assigned to this group may send bulletins.',
 
 'cannot_change_your_group' => 'Super Admins cannot change their member group assignment. Please have another Super Admin reassign you.',
 
@@ -838,6 +866,10 @@ $lang = array(
 
 'email_title' => 'Email Title',
 
+'exclude_from_anonymization' => 'Exclude from Anonymization Actions?',
+
+'exclude_from_anonymization_desc' => 'When enabled, this field will be unaffected by anonymization (right to forget) actions.', // TODO: docs link
+
 'field_created' => 'Field Created',
 
 'field_format' => 'Text Formatting',
@@ -870,11 +902,11 @@ $lang = array(
 
 'is_field_public' => 'Show in profile?',
 
-'is_field_public_cont' => 'When set to <b>yes</b>, this field will be shown in public profiles.',
+'is_field_public_cont' => 'When enabled, this field will be shown in public profiles.',
 
 'is_field_reg' => 'Show in registration?',
 
-'is_field_reg_cont' => 'When set to <b>yes</b>, this field will be shown in registration forms.',
+'is_field_reg_cont' => 'When enabled, this field will be shown in registration forms.',
 
 'm_max_length' => 'Maxlength',
 
@@ -884,7 +916,7 @@ $lang = array(
 
 'member_delete_dont_reassign_entries' => 'Delete the member\'s entries',
 
-'member_delete_reassign_entries' => 'Reassign the member\'s entries to ',
+'member_delete_reassign_entries' => 'Reassign the member\'s entries to:',
 
 'member_search_instructions' => 'Fill out at least one field. You can submit partial or full words.',
 
@@ -941,6 +973,8 @@ $lang = array(
 'template_partials' => 'Template partials',
 
 'template_permissions_desc' => 'Users can perform all the selected actions on all below selected template groups.',
+
+'template_variables' => 'Template variables',
 
 'templates' => 'Templates',
 

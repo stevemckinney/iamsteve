@@ -1,35 +1,22 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Publish;
 
+use EllisLab\ExpressionEngine\Controller\Publish\AbstractPublish as AbstractPublishController;
 use EllisLab\ExpressionEngine\Library\CP\Table;
+use EllisLab\ExpressionEngine\Model\Channel\ChannelEntry as ChannelEntry;
+use EllisLab\ExpressionEngine\Service\Validation\Result as ValidationResult;
 use Mexitek\PHPColors\Color;
 
-use EllisLab\ExpressionEngine\Controller\Publish\AbstractPublish as AbstractPublishController;
-use EllisLab\ExpressionEngine\Service\Validation\Result as ValidationResult;
-
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Publish/Edit Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Publish/Edit Controller
  */
 class Edit extends AbstractPublishController {
 
@@ -61,7 +48,12 @@ class Edit extends AbstractPublishController {
 		$vars = array();
 		$base_url = ee('CP/URL')->make('publish/edit');
 
-		$entry_listing = ee('CP/EntryListing', ee()->input->get_post('search'));
+		$entry_listing = ee('CP/EntryListing',
+			ee()->input->get_post('filter_by_keyword'),
+			ee()->input->get_post('search_in') ?: 'titles',
+			ee()->cp->allowed_group('can_edit_other_entries')
+		);
+
 		$entries = $entry_listing->getEntries();
 		$filters = $entry_listing->getFilters();
 		$channel_id = $entry_listing->channel_filter->value();
@@ -71,15 +63,10 @@ class Edit extends AbstractPublishController {
 			$entries->filter('author_id', ee()->session->userdata('member_id'));
 		}
 
-		$count = $entries->count();
-
-		if ( ! empty(ee()->view->search_value))
-		{
-			$base_url->setQueryStringVariable('search', ee()->view->search_value);
-		}
+		$count = $entry_listing->getEntryCount();
 
 		$vars['filters'] = $filters->render($base_url);
-		$vars['search_value'] = htmlentities(ee()->input->get_post('search'), ENT_QUOTES, 'UTF-8');
+		$vars['search_value'] = htmlentities(ee()->input->get_post('filter_by_keyword'), ENT_QUOTES, 'UTF-8');
 
 		$filter_values = $filters->values();
 		$base_url->addQueryStringVariables($filter_values);
@@ -127,16 +114,16 @@ class Edit extends AbstractPublishController {
 		$table->setColumns($columns);
 		$table->setNoResultsText(lang('no_entries_exist'));
 
+		$show_new_button = TRUE;
 		if ($channel_id)
 		{
-			$channel = ee('Model')->get('Channel', $channel_id)->first();
-			$vars['create_button'] = '<a class="btn tn action" href="'.ee('CP/URL', 'publish/create/' . $channel_id).'">'.sprintf(lang('btn_create_new_entry_in_channel'), $channel->channel_title).'</a>';
+			$channel = $entry_listing->getChannelModelFromFilter();
 
 			// Have we reached the max entries limit for this channel?
-			if ($channel->max_entries != 0 && $count >= $channel->max_entries)
+			if ($channel->maxEntriesLimitReached())
 			{
-				// Don't show create button
-				$vars['create_button'] = '';
+				// Don't show New button
+				$show_new_button = FALSE;
 
 				$desc_key = ($channel->max_entries == 1)
 					? 'entry_limit_reached_one_desc' : 'entry_limit_reached_desc';
@@ -146,10 +133,6 @@ class Edit extends AbstractPublishController {
 					->addToBody(sprintf(lang($desc_key), $channel->max_entries))
 					->now();
 			}
-		}
-		else
-		{
-			$vars['create_button'] = ee('View')->make('publish/partials/create_new_menu')->render(array('button_text' => lang('btn_create_new')));
 		}
 
 		$page = ((int) ee()->input->get('page')) ?: 1;
@@ -163,9 +146,7 @@ class Edit extends AbstractPublishController {
 
 		$entry_id = ee()->session->flashdata('entry_id');
 
-		$statuses = ee('Model')->get('Status')
-			->filter('site_id', ee()->config->item('site_id'))
-			->all();
+		$statuses = ee('Model')->get('Status')->all()->indexBy('status');
 
 		foreach ($entries->all() as $entry)
 		{
@@ -194,12 +175,12 @@ class Edit extends AbstractPublishController {
 			$autosaves = $entry->Autosaves->count();
 
 			// Escape markup in title
-			$title = htmlentities($entry->title, ENT_QUOTES, 'UTF-8');
+			$escaped_title = htmlentities($entry->title, ENT_QUOTES, 'UTF-8');
 
 			if ($can_edit)
 			{
 				$edit_link = ee('CP/URL')->make('publish/edit/entry/' . $entry->entry_id);
-				$title = '<a href="' . $edit_link . '">' . $title . '</a>';
+				$title = '<a href="' . $edit_link . '">' . $escaped_title . '</a>';
 			}
 
 			if ($autosaves)
@@ -227,15 +208,11 @@ class Edit extends AbstractPublishController {
 
 			$toolbar = array();
 
-			$live_look_template = $entry->Channel->LiveLookTemplate;
-
-			if ($live_look_template)
+			if ($entry->hasLivePreview())
 			{
-				$view_url = ee()->functions->create_url($live_look_template->getPath() . '/' . $entry->entry_id);
 				$toolbar['view'] = array(
-					'href' => ee()->cp->masked_url($view_url),
-					'title' => lang('view'),
-					'rel' => 'external'
+					'href' => ee('CP/URL')->make('publish/edit/entry/' . $entry->entry_id, ['preview' => 'y']),
+					'title' => lang('preview'),
 				);
 			}
 
@@ -260,12 +237,10 @@ class Edit extends AbstractPublishController {
 				$can_delete = FALSE;
 			}
 
-			$disabled_checkbox = ! $can_delete;
+			$disabled_checkbox = ! $can_edit && ! $can_delete;
 
 			// Display status highlight if one exists
-			$status = $statuses->filter('group_id', $entry->Channel->status_group)
-				->filter('status', $entry->status)
-				->first();
+			$status = isset($statuses[$entry->status]) ? $statuses[$entry->status] : NULL;
 
 			if ($status)
 			{
@@ -297,7 +272,9 @@ class Edit extends AbstractPublishController {
 					'value' => $entry->entry_id,
 					'disabled' => $disabled_checkbox,
 					'data' => array(
-						'confirm' => lang('entry') . ': <b>' . htmlentities($entry->title, ENT_QUOTES, 'UTF-8') . '</b>'
+						'title' => $escaped_title,
+						'channel-id' => $entry->Channel->getId(),
+						'confirm' => lang('entry') . ': <b>' . $escaped_title . '</b>'
 					)
 				)
 			);
@@ -330,10 +307,20 @@ class Edit extends AbstractPublishController {
 		$vars['table'] = $table->viewData($base_url);
 		$vars['form_url'] = $vars['table']['base_url'];
 
+		$menu = ee()->menu->generate_menu();
+		$choices = [];
+		foreach ($menu['channels']['create'] as $text => $link) {
+			$choices[$link->compile()] = $text;
+		}
+
 		ee()->view->header = array(
 			'title' => lang('entry_manager'),
-			'form_url' => $vars['form_url'],
-			'search_button_value' => lang('btn_search_entries')
+			'action_button' => ee()->cp->allowed_group('can_create_entries') && $show_new_button ? [
+				'text' => $channel_id ? sprintf(lang('btn_create_new_entry_in_channel'), $channel->channel_title) : lang('new'),
+				'href' => ee('CP/URL', 'publish/create/' . $channel_id)->compile(),
+				'filter_placeholder' => lang('filter_channels'),
+				'choices' => $channel_id ? NULL : $choices
+			] : NULL
 		);
 
 		$vars['pagination'] = ee('CP/Pagination', $count)
@@ -341,18 +328,37 @@ class Edit extends AbstractPublishController {
 			->currentPage($page)
 			->render($base_url);
 
-		ee()->javascript->set_global('lang.remove_confirm', lang('entry') . ': <b>### ' . lang('entries') . '</b>');
+		ee()->javascript->set_global([
+			'lang.remove_confirm' => lang('entry') . ': <b>### ' . lang('entries') . '</b>',
+
+			'publishEdit.sequenceEditFormUrl' => ee('CP/URL')->make('publish/edit/entry/###')->compile(),
+			'publishEdit.bulkEditFormUrl' => ee('CP/URL')->make('publish/bulk-edit')->compile(),
+			'publishEdit.addCategoriesFormUrl' => ee('CP/URL')->make('publish/bulk-edit/categories/add')->compile(),
+			'publishEdit.removeCategoriesFormUrl' => ee('CP/URL')->make('publish/bulk-edit/categories/remove')->compile(),
+			'bulkEdit.lang' => [
+				'selectedEntries'       => lang('selected_entries'),
+				'filterSelectedEntries' => lang('filter_selected_entries'),
+				'noEntriesFound'        => sprintf(lang('no_found'), lang('entries')),
+				'showing'               => lang('showing'),
+				'of'                    => lang('of'),
+				'clearAll'              => lang('clear_all'),
+				'removeFromSelection'   => lang('remove_from_selection'),
+			]
+		]);
+
 		ee()->cp->add_js_script(array(
 			'file' => array(
 				'cp/confirm_remove',
-				'cp/publish/entry-list'
+				'cp/publish/entry-list',
+				'components/bulk_edit_entries',
+				'cp/publish/bulk-edit'
 			),
 		));
 
 		ee()->view->cp_page_title = lang('edit_channel_entries');
-		if ( ! empty(ee()->view->search_value))
+		if ( ! empty($filter_values['filter_by_keyword']))
 		{
-			$vars['cp_heading'] = sprintf(lang('search_results_heading'), $count, ee()->view->search_value);
+			$vars['cp_heading'] = sprintf(lang('search_results_heading'), $count, $filter_values['filter_by_keyword']);
 		}
 		else
 		{
@@ -361,6 +367,9 @@ class Edit extends AbstractPublishController {
 				(isset($channel->channel_title)) ? $channel->channel_title : ''
 			);
 		}
+
+		$vars['can_edit'] = ee('Permission')->hasAny('can_edit_self_entries', 'can_edit_other_entries');
+		$vars['can_delete'] = ee('Permission')->hasAny('can_delete_all_entries', 'can_delete_self_entries');
 
 		if (AJAX_REQUEST)
 		{
@@ -380,15 +389,25 @@ class Edit extends AbstractPublishController {
 			show_404();
 		}
 
+		$base_url = ee('CP/URL')->getCurrentUrl();
+
+		// Sequence editing?
+		$sequence_editing = FALSE;
+		if ($entry_ids = ee('Request')->get('entry_ids'))
+		{
+			$sequence_editing = TRUE;
+
+			$index = array_search($id, $entry_ids) + 1;
+			$next_entry_id = isset($entry_ids[$index]) ? $entry_ids[$index] : NULL;
+			$base_url->setQueryStringVariable('next_entry_id', $next_entry_id);
+		}
+
 		// If an entry or channel on a different site is requested, try
 		// to switch sites and reload the publish form
 		$site_id = (int) ee()->input->get_post('site_id');
 		if ($site_id != 0 && $site_id != ee()->config->item('site_id') && empty($_POST))
 		{
-			ee()->cp->switch_site(
-				$site_id,
-				ee('CP/URL')->make('publish/edit/entry/'.$id)
-			);
+			ee()->cp->switch_site($site_id, $base_url);
 		}
 
 		$entry = ee('Model')->get('ChannelEntry', $id)
@@ -423,19 +442,43 @@ class Edit extends AbstractPublishController {
 			}
 		// -------------------------------------------
 
-		ee()->view->cp_page_title = sprintf(lang('edit_entry_with_title'), htmlentities($entry->title, ENT_QUOTES, 'UTF-8'));
+		$entry_title = htmlentities($entry->title, ENT_QUOTES, 'UTF-8');
+		ee()->view->cp_page_title = sprintf(lang('edit_entry_with_title'), $entry_title);
 
 		$form_attributes = array(
-			'class' => 'settings ajax-validate',
+			'class' => 'ajax-validate',
 		);
 
 		$vars = array(
-			'form_url' => ee('CP/URL')->make('publish/edit/entry/' . $id),
+			'form_url' => $base_url,
 			'form_attributes' => $form_attributes,
+			'form_title' => lang('edit_entry'),
 			'errors' => new \EllisLab\ExpressionEngine\Service\Validation\Result,
-			'button_text' => lang('btn_publish'),
-			'extra_publish_controls' => $entry->Channel->extra_publish_controls
+			'autosaves' => $this->getAutosavesTable($entry, $autosave_id),
+			'extra_publish_controls' => $entry->Channel->extra_publish_controls,
+			'buttons' => $this->getPublishFormButtons($entry),
+			'in_modal_context' => $sequence_editing
 		);
+
+		if ($sequence_editing)
+		{
+			$vars['modal_title'] = sprintf('(%d of %d) %s', $index, count($entry_ids), $entry_title);
+			$vars['buttons'] = [[
+				'name' => 'submit',
+				'type' => 'submit',
+				'value' => 'save_and_next',
+				'text' => $index == count($entry_ids) ? 'save_and_close' : 'save_and_next',
+				'working' => 'btn_saving'
+			]];
+		}
+
+		if ($entry->isLivePreviewable())
+		{
+			$modal = ee('View')->make('publish/live-preview-modal')->render([
+				'preview_url' => ee('CP/URL')->make('publish/preview/' . $entry->channel_id . '/' . $entry->entry_id)
+			]);
+			ee('CP/Modal')->addModal('live-preview', $modal);
+		}
 
 		$version_id = ee()->input->get('version');
 
@@ -480,7 +523,7 @@ class Edit extends AbstractPublishController {
 
 			if ($result->isValid())
 			{
-				$this->saveEntryAndRedirect($entry);
+				return $this->saveEntryAndRedirect($entry);
 			}
 		}
 
@@ -501,9 +544,11 @@ class Edit extends AbstractPublishController {
 			ee('CP/URL')->make('publish/edit', array('filter_by_channel' => $entry->channel_id))->compile() => $entry->Channel->channel_title,
 		);
 
-		if ($entry->Channel->CategoryGroups)
+		if (ee('Request')->get('modal_form') == 'y')
 		{
-			ee('Category')->addCategoryModals();
+			$vars['layout']->setIsInModalContext(TRUE);
+			ee()->output->enable_profiler(FALSE);
+			return ee()->view->render('publish/modal-entry', $vars);
 		}
 
 		ee()->cp->render('publish/entry', $vars);

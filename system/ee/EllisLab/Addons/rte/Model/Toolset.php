@@ -1,33 +1,20 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\Addons\Rte\Model;
 
 use EllisLab\ExpressionEngine\Service\Model\Model;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Toolset Model for the Rich Text Editor
+ * Toolset Model for the Rich Text Editor
  *
  * A model representing a user toolset in the Rich Text Editor.
- *
- * @package		ExpressionEngine
- * @subpackage	Rich Text Editor Module
- * @category	Model
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
  */
 class Toolset extends Model {
 
@@ -36,7 +23,14 @@ class Toolset extends Model {
 
 	protected static $_relationships = array(
 		'Member' => array(
-			'type' => 'belongsTo'
+			'type' => 'belongsTo',
+			'model' => 'ee:Member',
+			'weak' => TRUE,
+			'inverse' => array(
+				'name' => 'Toolset',
+				'type' => 'hasMany',
+				'weak' => TRUE
+			)
 		)
 	);
 

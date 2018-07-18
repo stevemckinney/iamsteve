@@ -1,26 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * CodeIgniter
+ * ExpressionEngine (https://expressionengine.com)
  *
- * An open source application development framework for PHP 5.2.4 or newer
- *
- * @package		CodeIgniter
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2016, EllisLab, Inc.
- * @license		http://codeigniter.com/user_guide/license.html
- * @link		http://codeigniter.com
- * @since		Version 1.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * MySQLi Forge Class
- *
- * @category	Database
- * @author		EllisLab Dev Team
- * @link		http://codeigniter.com/user_guide/database/
+ * MySQLi Forge
  */
 class CI_DB_mysqli_forge extends CI_DB_forge {
 
@@ -36,8 +24,6 @@ class CI_DB_mysqli_forge extends CI_DB_forge {
 		return "CREATE DATABASE ".$name;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Drop database
 	 *
@@ -49,8 +35,6 @@ class CI_DB_mysqli_forge extends CI_DB_forge {
 	{
 		return "DROP DATABASE ".$name;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Process Fields
@@ -99,14 +83,32 @@ class CI_DB_mysqli_forge extends CI_DB_forge {
 					$sql .= ' UNSIGNED';
 				}
 
-				if (array_key_exists('DEFAULT', $attributes))
-				{
-					$sql .= ' DEFAULT \''.$attributes['DEFAULT'].'\'';
-				}
-
 				if (array_key_exists('NULL', $attributes))
 				{
 					$sql .= ($attributes['NULL'] === TRUE) ? ' NULL' : ' NOT NULL';
+				}
+
+				if (array_key_exists('DEFAULT', $attributes))
+				{
+					// wrap default in a string with two exceptions
+					if (
+						$attributes['DEFAULT'] == 'CURRENT_TIMESTAMP' &&
+						array_key_exists('TYPE', $attributes) &&
+						in_array($attributes['TYPE'], ['datetime', 'timestamp'])
+					)
+					{
+						$default = 'CURRENT_TIMESTAMP';
+					}
+					elseif ($attributes['DEFAULT'] === NULL)
+					{
+						$default = 'NULL';
+					}
+					else
+					{
+						$default = "'{$attributes['DEFAULT']}'";
+					}
+
+					$sql .= ' DEFAULT '.$default;
 				}
 
 				if (array_key_exists('AUTO_INCREMENT', $attributes) && $attributes['AUTO_INCREMENT'] === TRUE)
@@ -124,8 +126,6 @@ class CI_DB_mysqli_forge extends CI_DB_forge {
 
 		return $sql;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Create Table
@@ -182,8 +182,6 @@ class CI_DB_mysqli_forge extends CI_DB_forge {
 		return $sql;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Drop Table
 	 *
@@ -194,8 +192,6 @@ class CI_DB_mysqli_forge extends CI_DB_forge {
 	{
 		return "DROP TABLE IF EXISTS ".$this->db->escape_identifiers($table);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Alter table query
@@ -229,8 +225,6 @@ class CI_DB_mysqli_forge extends CI_DB_forge {
 
 		return $sql;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Rename a table

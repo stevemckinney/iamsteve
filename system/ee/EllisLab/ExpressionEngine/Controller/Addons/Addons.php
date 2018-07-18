@@ -1,35 +1,20 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Addons;
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 use CP_Controller;
 use Michelf\MarkdownExtra;
 use EllisLab\ExpressionEngine\Library\CP\Table;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Home Page Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Addons Controller
  */
 class Addons extends CP_Controller {
 
@@ -68,9 +53,6 @@ class Addons extends CP_Controller {
 
 		$this->params['perpage'] = $this->perpage; // Set a default
 
-		// Add in any submitted search phrase
-		ee()->view->search_value = htmlentities(ee()->input->get_post('search'), ENT_QUOTES, 'UTF-8');
-
 		$this->base_url = ee('CP/URL')->make('addons');
 
 		ee()->load->library('addons');
@@ -88,8 +70,6 @@ class Addons extends CP_Controller {
 			$this->assigned_modules[] = ee('Model')->get('Module')->filter('module_name', 'Filepicker')->first()->getId();
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Sets up the display filters
@@ -110,7 +90,8 @@ class Addons extends CP_Controller {
 		$status->disableCustomValue();
 
 		$first_filters = ee('CP/Filter')
-			->add($status);
+			->add($status)
+			->add('Keyword')->withName('filter_by_first_keyword');
 
 		// Third Party Add-on Filters
 
@@ -133,7 +114,8 @@ class Addons extends CP_Controller {
 
 		$third_filters = ee('CP/Filter')
 			->add($status)
-			->add($developer);
+			->add($developer)
+				->add('Keyword')->withName('filter_by_third_keyword');
 
 		// When filtering the first party table keep the third party filter values
 		$filter_base_url['first'] = clone $this->base_url;
@@ -168,8 +150,6 @@ class Addons extends CP_Controller {
 		return strtolower(str_replace(' ', '_', $str));
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Index function
 	 *
@@ -202,11 +182,6 @@ class Addons extends CP_Controller {
 				'third' => NULL
 			)
 		);
-
-		if ( ! empty(ee()->view->search_value))
-		{
-			$this->base_url->setQueryStringVariable('search', ee()->view->search_value);
-		}
 
 		$addons = $this->getAllAddons();
 
@@ -249,10 +224,6 @@ class Addons extends CP_Controller {
 		), $developers);
 
 		$return_url = ee('CP/URL')->getCurrentUrl();
-		if (ee()->view->search_value)
-		{
-			$return_url->setQueryStringVariable('search', ee()->view->search_value);
-		}
 
 		foreach (array('first', 'third') as $party)
 		{
@@ -267,6 +238,7 @@ class Addons extends CP_Controller {
 			$config = array(
 				'autosort' => TRUE,
 				'autosearch' => TRUE,
+				'search' => $this->params["filter_by_{$party}_keyword"],
 				'sort_col' => ee()->input->get($party . '_sort_col') ?: NULL,
 				'sort_col_qs_var' => $party . '_sort_col',
 				'sort_dir' => ee()->input->get($party . '_sort_dir') ?: 'asc',
@@ -509,8 +481,6 @@ class Addons extends CP_Controller {
 		return $addons;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Updates an add-on
 	 *
@@ -539,6 +509,8 @@ class Addons extends CP_Controller {
 		{
 			$addon_info = ee('Addon')->get($addon);
 			$party = ($addon_info->getAuthor() == 'EllisLab') ? 'first' : 'third';
+
+			$addon_info->updateConsentRequests();
 
 			$module = $this->getModule($addon);
 			if ( ! empty($module)
@@ -675,8 +647,6 @@ class Addons extends CP_Controller {
 		ee()->functions->redirect($return);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Installs an add-on
 	 *
@@ -703,78 +673,129 @@ class Addons extends CP_Controller {
 			'third' => array()
 		);
 
+		// Preflight for consents
+		$requests = [
+			'first' => [],
+			'third' => []
+		];
+
+		$can_install = TRUE;
+
 		foreach ($addons as $addon)
 		{
 			$info = ee('Addon')->get($addon);
-			ee()->load->add_package_path($info->getPath());
 
 			$party = ($info->getAuthor() == 'EllisLab') ? 'first' : 'third';
 
-			$module = $this->getModule($addon);
-			if ( ! empty($module) && $module['installed'] === FALSE)
-			{
-				$name = $this->installModule($addon);
-				if ($name)
-				{
-					$installed[$party][$addon] = $name;
-				}
-			}
-
-			$fieldtype = $this->getFieldtype($addon);
-			if ( ! empty($fieldtype) && $fieldtype['installed'] === FALSE)
-			{
-				$name = $this->installFieldtype($addon);
-				if ($name && ! isset($installed[$addon]))
-				{
-					$installed[$party][$addon] = $name;
-				}
-			}
-
-			$extension = $this->getExtension($addon);
-			if ( ! empty($extension) && $extension['installed'] === FALSE)
-			{
-				$name = $this->installExtension($addon);
-				if ($name && ! isset($installed[$addon]))
-				{
-					$installed[$party][$addon] = $name;
-				}
-			}
-
-			$plugin = $this->getPlugin($addon);
-			if ( ! empty($plugin) && $plugin['installed'] === FALSE)
-			{
-				$typography = 'n';
-				if ($info->get('plugin.typography'))
-				{
-					$typography = 'y';
-				}
-
-				$model = ee('Model')->make('Plugin');
-				$model->plugin_name = $plugin['name'];
-				$model->plugin_package = $plugin['package'];
-				$model->plugin_version = $info->getVersion();
-				$model->is_typography_related = $typography;
-				$model->save();
-
-				if ( ! isset($installed[$addon]))
-				{
-					$installed[$party][$addon] = $plugin['name'];
-				}
-			}
-
-			ee()->load->remove_package_path($info->getPath());
+			$requests[$party] = array_merge($requests[$party], $info->getInstalledConsentRequests());
 		}
 
 		foreach (array('first', 'third') as $party)
 		{
-			if ( ! empty($installed[$party]))
+			if ( ! empty($requests[$party]))
 			{
+				$can_install = FALSE;
 				$alert = ee('CP/Alert')->makeInline($party . '-party')
-					->asSuccess()
-					->withTitle(lang('addons_installed'))
-					->addToBody(lang('addons_installed_desc'))
-					->addToBody(array_values($installed[$party]))
+					->asIssue()
+					->withTitle(lang('addons_not_installed'))
+					->addToBody(lang('existing_consent_request'))
+					->addToBody($requests[$party])
+					->addToBody(lang('contact_developer'))
 					->defer();
+			}
+		}
+
+		if ($can_install)
+		{
+			foreach ($addons as $addon)
+			{
+				$info = ee('Addon')->get($addon);
+				ee()->load->add_package_path($info->getPath());
+
+				$party = ($info->getAuthor() == 'EllisLab') ? 'first' : 'third';
+
+				try
+				{
+					$info->installConsentRequests();
+				}
+				catch (\Exception $e)
+				{
+					$alert = ee('CP/Alert')->makeInline($party . '-party')
+						->asIssue()
+						->withTitle(lang('addons_not_installed'))
+						->addToBody(lang('existing_consent_request'))
+						->addToBody([$addon])
+						->addToBody(lang('contact_developer'))
+						->defer();
+					break;
+				}
+
+				$module = $this->getModule($addon);
+				if ( ! empty($module) && $module['installed'] === FALSE)
+				{
+					$name = $this->installModule($addon);
+					if ($name)
+					{
+						$installed[$party][$addon] = $name;
+					}
+				}
+
+				$fieldtype = $this->getFieldtype($addon);
+				if ( ! empty($fieldtype) && $fieldtype['installed'] === FALSE)
+				{
+					$name = $this->installFieldtype($addon);
+					if ($name && ! isset($installed[$addon]))
+					{
+						$installed[$party][$addon] = $name;
+					}
+				}
+
+				$extension = $this->getExtension($addon);
+				if ( ! empty($extension) && $extension['installed'] === FALSE)
+				{
+					$name = $this->installExtension($addon);
+					if ($name && ! isset($installed[$addon]))
+					{
+						$installed[$party][$addon] = $name;
+					}
+				}
+
+				$plugin = $this->getPlugin($addon);
+				if ( ! empty($plugin) && $plugin['installed'] === FALSE)
+				{
+					$typography = 'n';
+					if ($info->get('plugin.typography'))
+					{
+						$typography = 'y';
+					}
+
+					$model = ee('Model')->make('Plugin');
+					$model->plugin_name = $plugin['name'];
+					$model->plugin_package = $plugin['package'];
+					$model->plugin_version = $info->getVersion();
+					$model->is_typography_related = $typography;
+					$model->save();
+
+					if ( ! isset($installed[$addon]))
+					{
+						$installed[$party][$addon] = $plugin['name'];
+					}
+				}
+
+				ee()->load->remove_package_path($info->getPath());
+			}
+
+			foreach (array('first', 'third') as $party)
+			{
+				if ( ! empty($installed[$party]))
+				{
+					$alert = ee('CP/Alert')->makeInline($party . '-party')
+						->asSuccess()
+						->withTitle(lang('addons_installed'))
+						->addToBody(lang('addons_installed_desc'))
+						->addToBody(array_values($installed[$party]))
+						->defer();
+				}
 			}
 		}
 
@@ -787,8 +808,6 @@ class Addons extends CP_Controller {
 
 		ee()->functions->redirect($return);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Uninstalls an add-on
@@ -818,6 +837,14 @@ class Addons extends CP_Controller {
 		foreach ($addons as $addon)
 		{
 			$info = ee('Addon')->get($addon);
+
+			$info->removeConsentRequests();
+
+			if (empty($info))
+			{
+				continue;
+			}
+
 			$party = ($info->getAuthor() == 'EllisLab') ? 'first' : 'third';
 
 			$module = $this->getModule($addon);
@@ -888,8 +915,6 @@ class Addons extends CP_Controller {
 
 		ee()->functions->redirect($return);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Display add-on settings
@@ -997,8 +1022,6 @@ class Addons extends CP_Controller {
 
 		ee()->cp->render('addons/settings', $vars);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Display plugin manual/documentation
@@ -1127,8 +1150,6 @@ class Addons extends CP_Controller {
 		ee()->cp->render('addons/manual', $vars);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get data on a module
 	 *
@@ -1207,8 +1228,6 @@ class Addons extends CP_Controller {
 		return $data;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get data on a plugin
 	 *
@@ -1263,8 +1282,6 @@ class Addons extends CP_Controller {
 
 		return $data;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get data on a fieldtype
@@ -1331,8 +1348,6 @@ class Addons extends CP_Controller {
 
 		return $data;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get data on an extension
@@ -1432,8 +1447,6 @@ class Addons extends CP_Controller {
 		return $data;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Installs an extension
 	 *
@@ -1454,8 +1467,6 @@ class Addons extends CP_Controller {
 		return $name;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Uninstalls a an extension
 	 *
@@ -1475,8 +1486,6 @@ class Addons extends CP_Controller {
 
 		return $name;
 	}
-
-	// -------------------------------------------------------------------------
 
 	/**
 	 * Installs a module
@@ -1508,8 +1517,6 @@ class Addons extends CP_Controller {
 		return $name;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Uninstalls a module
 	 *
@@ -1540,8 +1547,6 @@ class Addons extends CP_Controller {
 		return $name;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Installs a fieldtype
 	 *
@@ -1563,8 +1568,6 @@ class Addons extends CP_Controller {
 		return $name;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Uninstalls a fieldtype
 	 *
@@ -1585,8 +1588,6 @@ class Addons extends CP_Controller {
 
 		return $name;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Render module-specific settings
@@ -1763,9 +1764,12 @@ class Addons extends CP_Controller {
 					}
 
 					$element['fields'][$key] = array(
-						'type' => 'select',
+						'type' => 'radio',
 						'value' => $value,
-						'choices' => $choices
+						'choices' => $choices,
+						'no_results' => [
+							'text' => 'no_rows_returned'
+						]
 					);
 					break;
 
@@ -1779,7 +1783,10 @@ class Addons extends CP_Controller {
 					$element['fields'][$key] = array(
 						'type' => 'radio',
 						'value' => $value,
-						'choices' => $choices
+						'choices' => $choices,
+						'no_results' => [
+							'text' => 'no_rows_returned'
+						]
 					);
 					break;
 
@@ -1795,7 +1802,9 @@ class Addons extends CP_Controller {
 						'type' => 'checkbox',
 						'value' => $value,
 						'choices' => $choices,
-						'wrap' => TRUE,
+						'no_results' => [
+							'text' => 'no_rows_returned'
+						]
 					);
 					break;
 

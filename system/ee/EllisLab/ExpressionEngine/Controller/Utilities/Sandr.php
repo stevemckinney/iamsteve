@@ -1,31 +1,16 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Utilities;
 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Search and Replace Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Search and Replace Controller
  */
 class Sandr extends Utilities {
 
@@ -92,8 +77,6 @@ class Sandr extends Utilities {
 		ee()->view->cp_page_title = lang('sandr');
 		ee()->cp->render('utilities/sandr');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Do Search and Replace
@@ -220,18 +203,37 @@ class Sandr extends Utilities {
 
 			$rows += 5;
 		}
-		elseif ($where == 'template_data')
-		{
-			$sql = "UPDATE `exp_templates` SET `$where` = REPLACE(`{$where}`, '{$search}', '{$replace}'), `edit_date` = '".$this->localize->now."'";
-		}
 		elseif (strncmp($where, 'template_', 9) == 0)
 		{
-			$sql = "UPDATE `exp_templates` SET `template_data` = REPLACE(`template_data`, '{$search}', '{$replace}'), edit_date = '".$this->localize->now."'
-					WHERE group_id = '".substr($where,9)."'";
+			// all templates or a specific group?
+			if ($where == 'template_data')
+			{
+				$templates = ee('Model')->get('Template')
+					->search('template_data', $search)
+					->all();
+			}
+			else
+			{
+				$templates = ee('Model')->get('Template')
+					->filter('group_id', substr($where, 9))
+					->search('template_data', $search)
+					->all();
+			}
+
+			foreach ($templates as $template)
+			{
+				$template->template_data = str_ireplace($search, $replace, $template->template_data);
+				$template->edit_date = ee()->localize->now;
+			}
+
+			$templates->save();
+			return $templates->count();
 		}
 		elseif (strncmp($where, 'field_id_', 9) == 0)
 		{
-			$sql = "UPDATE `exp_channel_data` SET `{$where}` = REPLACE(`{$where}`, '{$search}', '{$replace}')";
+			$field_id = str_replace('field_id_', '', $where);
+			$field = ee('Model')->get('ChannelField', $field_id)->first();
+			$sql = "UPDATE `exp_{$field->getDataStorageTable()}` SET `{$where}` = REPLACE(`{$where}`, '{$search}', '{$replace}')";
 		}
 		else
 		{

@@ -1,30 +1,16 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team,
- * 		- Original Development by Barrett Newton -- http://barrettnewton.com
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
-
-// ------------------------------------------------------------------------
 
 require_once PATH_ADDONS.'channel/libraries/channel_form/Channel_form_exception.php';
 
 /**
- * ExpressionEngine Channel From Module Library
- *
- * @package		ExpressionEngine
- * @subpackage	Libraries
- * @category	Modules
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Channel Form Library
  */
 class Channel_form_lib
 {
@@ -101,8 +87,6 @@ class Channel_form_lib
 		ee()->set('channel_form', $this);
 		ee()->lang->loadfile('channel_form');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Creates the entry form
@@ -431,24 +415,20 @@ class Channel_form_lib
 			//parse category menu
 			elseif ($tag_name == 'category_menu')
 			{
-				ee()->load->library('channel_form/channel_form_category_tree');
+				$cats = $this->categories($tagparams);
+				$tree = array();
+				$checkbox_fields[] = 'category';
 
-				if ($this->edit OR ! empty($this->channel->deft_category))
+				foreach($cats as $cat_value)
 				{
-					$tree = ee()->channel_form_category_tree->create(
-						$this->channel('cat_group'), 'edit', '', $this->entry->Categories->pluck('cat_id')
-					);
-				}
-				else
-				{
-					$tree = ee()->channel_form_category_tree->create(
-						$this->channel('cat_group'), '', '', ''
-					);
+					$cat_selected = (in_array($cat_value['category_id'], $this->get_selected_cats())) ? ' selected="selected"' : '';
+					$tree[] = '<option value="'.$cat_value['category_id'].'"'.$cat_selected.'>'.$cat_value['category_name'].'</option>';
 				}
 
 				$this->parse_variables['category_menu'] = array(
-					array('select_options' => implode("\n", $tree->categories()))
+					array('select_options' => implode("\n", $tree))
 				);
+
 			}
 
 			//parse status menu
@@ -568,6 +548,13 @@ class Channel_form_lib
 							}
 
 							$this->parse_variables[$key] = ee()->localize->human_time($date);
+
+							// Default dates need a timestamp variable for the datepicker
+							if (in_array($name, array('entry_date', 'expiration_date', 'comment_expiration_date')))
+							{
+								$timestamp_name = str_replace('date', 'timestamp', $name);
+								$this->parse_variables[$timestamp_name] = $date;
+							}
 						}
 						else
 						{
@@ -597,7 +584,7 @@ class Channel_form_lib
 		{
 			$this->parse_variables['title']		= $this->channel('default_entry_title');
 			$this->parse_variables['url_title'] = $this->channel('url_title_prefix');
-			$this->parse_variables['allow_comments'] = ($this->channel('deft_comments') != 'n' OR $this->channel('comment_system_enabled') != 'y') ? '' : "checked='checked'";
+			$this->parse_variables['allow_comments'] = ($this->channel('deft_comments') == FALSE OR $this->channel('comment_system_enabled') == FALSE) ? '' : "checked='checked'";
 
 			$this->form_hidden('unique_url_title', $this->bool_string(ee()->TMPL->fetch_param('unique_url_title')) ? '1' : '');
 
@@ -606,25 +593,30 @@ class Channel_form_lib
 				if (strpos(ee()->TMPL->tagdata, 'entry_date') !== FALSE)
 				{
 					$this->parse_variables['entry_date'] = ee()->localize->human_time();
+					$this->parse_variables['entry_timestamp'] = ee()->localize->now;
 				}
 
 				if (strpos(ee()->TMPL->tagdata, 'expiration_date') !== FALSE)
 				{
 					$this->parse_variables['expiration_date'] = '';
+					$this->parse_variables['expiration_timestamp'] = '';
 				}
 
 				if (strpos(ee()->TMPL->tagdata, 'comment_expiration_date') !== FALSE)
 				{
 					$comment_expiration_date = '';
+					$comment_expiration_timestamp = '';
 
 					if ($this->channel('comment_expiration') > 0)
 					{
 						$comment_expiration_date = $this->channel('comment_expiration') * (60 * 60 * 24); // days -> seconds
 						$comment_expiration_date = $comment_expiration_date + ee()->localize->now;
+						$comment_expiration_timestamp = $comment_expiration_date;
 						$comment_expiration_date = ee()->localize->human_time($comment_expiration_date);
 					}
 
 					$this->parse_variables['comment_expiration_date'] = $comment_expiration_date;
+					$this->parse_variables['comment_expiration_timestamp'] = $comment_expiration_timestamp;
 				}
 			}
 			else
@@ -632,6 +624,9 @@ class Channel_form_lib
 				$this->parse_variables['entry_date'] = ee()->localize->human_time();
 				$this->parse_variables['expiration_date'] = '';
 				$this->parse_variables['comment_expiration_date'] = '';
+				$this->parse_variables['entry_timestamp'] = ee()->localize->now;
+				$this->parse_variables['expiration_timestamp'] = '';
+				$this->parse_variables['comment_expiration_timestamp'] = '';
 			}
 
 			foreach ($this->custom_fields as $field)
@@ -697,6 +692,15 @@ class Channel_form_lib
 					}
 
 					$this->parse_variables['field:'.$field->field_name] = (array_key_exists($field->field_name, $this->custom_fields)) ? $this->display_field($field->field_name) : '';
+				}
+			}
+
+			// We need to know if allow_comments field is present in order to figure out defaults
+			foreach ($this->checkboxes as $value)
+			{
+				if (isset(ee()->TMPL->var_single[$value]))
+				{
+					$checkbox_fields[] = $value;
 				}
 			}
 		}
@@ -835,8 +839,6 @@ class Channel_form_lib
 
 		return $return;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Build the javascript output
@@ -996,6 +998,10 @@ window.Grid = {
 	bind: function() {
 		EE.grid_cache.push(arguments);
 	}
+};
+
+window.FluidField = {
+	on: function() {}
 };
 GRID_FALLBACK;
 			}
@@ -1163,8 +1169,6 @@ GRID_FALLBACK;
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Create the custom field variables rows
 	 *
@@ -1255,8 +1259,6 @@ GRID_FALLBACK;
 		return $custom_field_variables;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Add global and field errors
 	 *
@@ -1319,8 +1321,6 @@ GRID_FALLBACK;
 
 		return $conditional_errors;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Creates or edits an entry
@@ -1489,12 +1489,8 @@ GRID_FALLBACK;
 
 			if (ee()->input->post('unique_url_title', TRUE))
 			{
-				$url_title = $this->_meta['url_title'] ?
-					$this->_meta['url_title'] : url_title(
-						ee()->input->post('title', TRUE),
-						ee()->config->item('word_separator'),
-						TRUE
-					);
+				$title = ee()->input->post('title', TRUE);
+				$url_title = ($this->_meta['url_title']) ?: ee('Format')->make('Text', $title)->urlSlug();
 
 				// Max URL title length, minus uniqid length, minus separator
 				$url_title = substr($url_title, 0, URL_TITLE_MAX_LENGTH-23-1);
@@ -1526,6 +1522,12 @@ GRID_FALLBACK;
 					$_POST[$checkbox] = '';
 				}
 			}
+		}
+
+		// If allow_comments is NOT included in the form and it's not set by parameter, use the default
+		if ($this->edit != TRUE && ! isset($_POST['allow_comments']) && $this->_meta['allow_comments'] == FALSE)
+		{
+			$_POST['allow_comments'] = ($this->channel('deft_comments') == TRUE && $this->channel('comment_system_enabled') == TRUE) ? 'y' : 'n';
 		}
 
 		$spam_content = "";
@@ -1671,9 +1673,9 @@ GRID_FALLBACK;
 		}
 
 		//don't override status on edit, only on publish
-		if ( ! $this->edit && ! empty($this->settings['default_status'][$this->_meta['site_id']][ee()->input->post('channel_id')]))
+		if ( ! $this->edit && ! empty($this->settings['default_status'][ee()->config->item('site_id')][ee()->input->post('channel_id')]))
 		{
-			$_POST['status'] = $this->settings['default_status'][$this->_meta['site_id']][$this->_meta['channel_id']];
+			$_POST['status'] = $this->settings['default_status'][ee()->config->item('site_id')][$this->_meta['channel_id']];
 		}
 
 		if ( ! $this->edit && is_array($this->_meta['category']))
@@ -1756,10 +1758,7 @@ GRID_FALLBACK;
 
 		if ( ! isset($_POST['url_title']))
 		{
-			$_POST['url_title'] = url_title(
-						ee()->input->post('title', TRUE),
-						ee()->config->item('word_separator'),
-						TRUE);
+			$_POST['url_title'] = ee('Format')->make('Text', ee()->input->post('title', TRUE))->urlSlug()->compile();
 		}
 
 		//temporarily change site_id for cross-site forms
@@ -1772,56 +1771,57 @@ GRID_FALLBACK;
 		$cat_groups = explode('|', $this->entry->Channel->cat_group);
 		if ( ! empty($cat_groups) && isset($_POST['category']))
 		{
-			$_POST['categories'] = array('cat_group_id_'.$cat_groups[0] => $_POST['category']);
+			$_POST['categories'] = array('cat_group_id_'.$cat_groups[0] => (is_array($_POST['category'])) ? $_POST['category'] : [$_POST['category']]);
 		}
 
 		if (in_array($this->channel('channel_id'), $this->member->MemberGroup->AssignedChannels->pluck('channel_id')) OR (int) $this->member->MemberGroup->getId() == 1)
 		{
-			// Lastly we check for spam before inserting the data
-			$is_spam = ee('Spam')->isSpam($spam_content);
+			$entry_data = array_filter(
+				$_POST,
+				function($v) { return ! is_null($v); }
+			);
 
-			if ($is_spam === FALSE)
+			$this->entry->set($entry_data);
+			$this->entry->edit_date = ee()->localize->now;
+
+			if ( ! isset($_POST['category']) OR empty($_POST['category']))
 			{
-				$entry_data = array_filter(
-					$_POST,
-					function($v) { return ! is_null($v); }
-				);
+				$this->entry->Categories = NULL;
+			}
 
-				$this->entry->set($entry_data);
-				$this->entry->edit_date = ee()->localize->now;
+			$result = $this->entry->validate();
 
-				if ( ! isset($_POST['category']) OR empty($_POST['category']))
+			if (empty($this->field_errors) && empty($this->errors) && $result->isValid())
+			{
+				// Lastly we check for spam before saving a new entry
+				if ( ! $this->entry('entry_id'))
 				{
-					$this->entry->Categories = NULL;
-				}
+					// set the real group ID or 3 for guests for spam exemption check
+					// can't trust group_id on the session object due to _member_group_override()
+					$real_group_id = (ee()->session->userdata('member_id')) ? ee()->session->userdata('group_id') : 3;
+					$is_spam = $real_group_id != 1 && ee('Spam')->isSpam($spam_content);
 
-				$result = $this->entry->validate();
-
-				if (empty($this->field_errors) && empty($this->errors) && $result->isValid())
-				{
-					$this->entry->save();
+					if ($is_spam)
+					{
+						ee('Spam')->moderate('channel', $this->entry, $spam_content, $entry_data);
+					}
+					else
+					{
+						$this->entry->save();
+					}
 				}
 				else
 				{
-					$errors = $result->getAllErrors();
-
-					// only show the first error for each field to match CI's old behavior
-					$current_errors = array_map('current', $errors);
-					$this->field_errors = array_merge($this->field_errors, $current_errors);
+					$this->entry->save();
 				}
 			}
 			else
 			{
-				if ($this->entry('entry_id'))
-				{
-					$spam_data = array($_POST, NULL, $this->entry('entry_id'));
-				}
-				else
-				{
-					$spam_data = array($_POST, $this->channel('channel_id'));
-				}
+				$errors = $result->getAllErrors();
 
-				ee('Spam')->moderate(__FILE__, 'api_channel_form_channel_entries', 'save_entry', NULL, $spam_data, $spam_content);
+				// only show the first error for each field to match CI's old behavior
+				$current_errors = array_map('current', $errors);
+				$this->field_errors = array_merge($this->field_errors, $current_errors);
 			}
 		}
 		else
@@ -1971,8 +1971,6 @@ GRID_FALLBACK;
 		ee()->functions->redirect($return);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Converts text-based template parameter to boolean
 	 *
@@ -1994,8 +1992,6 @@ GRID_FALLBACK;
 
 		return $default;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Filters and sorts the categories
@@ -2050,8 +2046,6 @@ GRID_FALLBACK;
 		return array_merge($categories);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Retrieves current channel data
 	 *
@@ -2063,8 +2057,6 @@ GRID_FALLBACK;
 		return $this->channel->getProperty($key);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Clears the library's entry
 	 *
@@ -2074,8 +2066,6 @@ GRID_FALLBACK;
 	{
 		$this->entry = FALSE;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Display a custom field
@@ -2121,8 +2111,6 @@ GRID_FALLBACK;
 		return ee()->api_channel_fields->apply('display_field', array('data' => $this->entry('field_id_'.$field_id)));
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Retrieves current entry data
 	 *
@@ -2138,7 +2126,23 @@ GRID_FALLBACK;
 
 	}
 
-	// --------------------------------------------------------------------
+	/**
+	 * Get selected categories
+	 *
+	 * @return	array
+	 */
+	public function get_selected_cats()
+	{
+		$selected = array();
+
+		if ($this->entry->entry_id OR ! empty($this->channel->deft_category))
+		{
+			$selected = $this->entry->Categories->pluck('cat_id');
+		}
+
+		return $selected;
+	}
+
 
 	/**
 	 * Load categories
@@ -2153,12 +2157,7 @@ GRID_FALLBACK;
 			return;
 		}
 
-		$selected = '';
-
-		if ($this->entry->entry_id OR ! empty($this->channel->deft_category))
-		{
-			$selected = $this->entry->Categories->pluck('cat_id');
-		}
+		$selected = $this->get_selected_cats();
 
 		// Load up the library and figure out what belongs and what's selected
 		ee()->load->library(array('api', 'file_field'));
@@ -2200,8 +2199,6 @@ GRID_FALLBACK;
 		$this->categories = $categories;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Load channel
 	 *
@@ -2221,12 +2218,10 @@ GRID_FALLBACK;
 		if ($channel_id)
 		{
 			$query->filter('channel_id', $channel_id);
-		//	ee()->db->where('exp_channels.channel_id', ee('Security/XSS')->clean($channel_id));
 		}
 		elseif ($channel_name)
 		{
 			$query->filter('channel_name', $channel_name);
-		//	ee()->db->where('exp_channels.channel_name', ee('Security/XSS')->clean($channel_name));
 		}
 		else
 		{
@@ -2237,11 +2232,6 @@ GRID_FALLBACK;
 		$query->filter('Channel.site_id', $this->site_id);
 
 		$channel = $query->first();
-
-		// ee()->db->where('channels.site_id', $this->site_id);
-		// ee()->db->limit(1);
-
-		// $query = ee()->db->get('channels');
 
 		if ( ! isset($channel))
 		{
@@ -2258,8 +2248,6 @@ GRID_FALLBACK;
 		$this->fetch_custom_fields();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Load custom fields
 	 *
@@ -2267,7 +2255,7 @@ GRID_FALLBACK;
 	 */
 	public function fetch_custom_fields()
 	{
-		$fields = $this->channel->getCustomFields();
+		$fields = $this->channel->getAllCustomFields();
 
 		foreach ($fields as $field)
 		{
@@ -2280,8 +2268,6 @@ GRID_FALLBACK;
 			}
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Load entry
@@ -2353,8 +2339,6 @@ GRID_FALLBACK;
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Load logged out member data
 	 *
@@ -2368,9 +2352,14 @@ GRID_FALLBACK;
 			return;
 		}
 
-		if ( ! $logged_out_member_id && $this->channel('channel_id') && ! empty($this->settings['allow_guest_posts'][ee()->config->item('site_id')][$this->channel('channel_id')]) && ! empty($this->settings['default_author'][ee()->config->item('site_id')][$this->channel('channel_id')]))
+		$channel_site_id = (isset($this->_meta['site_id'])) ? $this->_meta['site_id'] : $this->site_id;
+
+
+		if ( ! $logged_out_member_id && $this->channel('channel_id')
+			&& ! empty($this->settings['allow_guest_posts'][$channel_site_id][$this->channel('channel_id')])
+			&& ! empty($this->settings['default_author'][$channel_site_id][$this->channel('channel_id')]))
 		{
-			$logged_out_member_id = $this->settings['default_author'][ee()->config->item('site_id')][$this->channel('channel_id')];
+			$logged_out_member_id = $this->settings['default_author'][$channel_site_id][$this->channel('channel_id')];
 		}
 
 		$logged_out_member_id = $this->sanitize_int($logged_out_member_id);
@@ -2392,8 +2381,6 @@ GRID_FALLBACK;
 			$this->logged_out_group_id = $query->row('group_id');
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Load settings
@@ -2444,8 +2431,6 @@ GRID_FALLBACK;
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Load site
 	 *
@@ -2465,8 +2450,6 @@ GRID_FALLBACK;
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Load statuses
 	 *
@@ -2475,24 +2458,21 @@ GRID_FALLBACK;
 	public function fetch_statuses()
 	{
 		//exit if already loaded, or if there is no status group
-		if ($this->statuses || ! $this->channel('status_group'))
+		if ($this->statuses || ! $this->channel->Statuses->count())
 		{
 			return;
 		}
 
-		ee()->load->model('channel_model');
-
-		$query = ee()->channel_model->get_channel_statuses($this->channel('status_group'));
-
-		$this->statuses = $query->result_array();
-
 		ee()->lang->loadfile('content');
 
-		foreach ($this->statuses as $index => $status)
+		foreach ($this->channel->Statuses as $index => $status)
 		{
-			$this->statuses[$index]['name'] = lang($status['status']);
-			$this->statuses[$index]['selected'] = ($status['status'] == $this->entry('status')) ? ' selected="selected"' : '';
-			$this->statuses[$index]['checked'] = ($status['status'] == $this->entry('status')) ? ' checked="checked"' : '';
+			$this->statuses[$index]['status_id'] = $status->getId();
+			$this->statuses[$index]['status'] = $status->status;
+			$this->statuses[$index]['selected'] = ($status->status == $this->entry('status'))
+				? ' selected="selected"' : '';
+			$this->statuses[$index]['checked'] = ($status->status == $this->entry('status'))
+				? ' checked="checked"' : '';
 		}
 
 		$member_group_id = $this->member->MemberGroup->getId();
@@ -2515,8 +2495,6 @@ GRID_FALLBACK;
 			}
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Add a form attribute to entry form
@@ -2544,8 +2522,6 @@ GRID_FALLBACK;
 
 		$this->_form_attributes[$name] = $value;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Add a hidden field to entry form
@@ -2659,8 +2635,6 @@ GRID_FALLBACK;
 	}
 
 
-	// ------------------------------------------------------------------------
-
 	/**
 	 * get Meta vars
 	 *
@@ -2731,8 +2705,6 @@ GRID_FALLBACK;
 		return $this->custom_fields[$field_name];
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Retrieve field data
 	 * Returns array of all field data if no key specified
@@ -2765,8 +2737,6 @@ GRID_FALLBACK;
 		return array();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Gets the field id of a field
 	 *
@@ -2778,8 +2748,6 @@ GRID_FALLBACK;
 		return $this->get_field_data($field_name, 'field_id');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Gets the field name of a field
 	 *
@@ -2790,8 +2758,6 @@ GRID_FALLBACK;
 	{
 		return (isset($this->custom_field_names[$field_id])) ? $this->custom_field_names[$field_id] : FALSE;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Gets a field's options
@@ -2823,28 +2789,6 @@ GRID_FALLBACK;
 					);
 				}
 			}
-			if ($field->field_pre_populate == 'y')
-			{
-				$query = ee()->db->select('field_id_'.$field->field_pre_field_id)
-						->distinct()
-						->from('channel_data')
-						->where('channel_id', $field->field_pre_channel_id)
-						->where('field_id_'.$field->field_pre_field_id.' !=', '')
-						->get();
-
-				$current = explode('|', $this->entry('field_id_' . $field->field_id));
-
-				foreach ($query->result_array() as $row)
-				{
-					$options[] = array(
-						'option_value' => $row['field_id_'.$field->field_pre_field_id],
-						'option_name' => str_replace(array("\r\n", "\r", "\n", "\t"), ' ' , substr($row['field_id_'.$field->field_pre_field_id], 0, 110)),
-						'selected' => (in_array($row['field_id_'.$field->field_pre_field_id], $current)) ? ' selected="selected"' : '',
-						'checked' => (in_array($row['field_id_'.$field->field_pre_field_id], $current)) ? ' checked="checked"' : '',
-					);
-				}
-			}
-
 			elseif ($field->field_list_items)
 			{
 				foreach (preg_split('/[\r\n]+/', $field->field_list_items) as $row)
@@ -2865,6 +2809,30 @@ GRID_FALLBACK;
 				}
 			}
 
+
+			if ($field->field_pre_populate == 'y')
+			{
+				$pop_entries = ee('Model')->get('ChannelEntry')
+					->fields('field_id_'.$field->field_pre_field_id)
+					->filter('channel_id', $field->field_pre_channel_id)
+					->filter('field_id_'.$field->field_pre_field_id, '!=', '')
+					->all();
+
+				if ($pop_entries && $pop_content = $pop_entries->pluck('field_id_'.$field->field_pre_field_id))
+				{
+					$current = explode('|', $this->entry('field_id_' . $field->field_id));
+
+					foreach ($pop_content as $content)
+					{
+						$options[] = array(
+							'option_value' => $content,
+							'option_name' => str_replace(array("\r\n", "\r", "\n", "\t"), ' ' , substr($content, 0, 110)),
+							'selected' => (in_array($content, $current)) ? ' selected="selected"' : '',
+							'checked' => (in_array($content, $current)) ? ' checked="checked"' : '',
+						);
+					}
+				}
+			}
 			elseif ( ! in_array($field->field_type, $this->native_option_fields))
 			{
 				$field_settings = $field->field_settings;
@@ -3052,8 +3020,6 @@ GRID_FALLBACK;
 		return $options;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Gets a field's settings
 	 *
@@ -3071,8 +3037,6 @@ GRID_FALLBACK;
 		return $field_settings;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Gets the type of a field
 	 *
@@ -3083,8 +3047,6 @@ GRID_FALLBACK;
 	{
 		return $this->get_field_data($field_name, 'field_type');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Initialize the library properties
@@ -3269,8 +3231,6 @@ GRID_FALLBACK;
 	*/
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Replaces a tag
 	 *
@@ -3300,6 +3260,13 @@ GRID_FALLBACK;
 
 		ee()->api_channel_fields->field_type = $this->get_field_type($field_name);
 
+		if ( ! is_object(ee()->api_channel_fields->field_types[ee()->api_channel_fields->field_type]))
+		{
+			ee()->api_channel_fields->include_handler(ee()->api_channel_fields->field_type);
+			$fieldtype = ee()->api_channel_fields->setup_handler(ee()->api_channel_fields->field_type, TRUE);
+			ee()->api_channel_fields->field_types[ee()->api_channel_fields->field_type] = $fieldtype;
+		}
+
 		ee()->api_channel_fields->field_types[ee()->api_channel_fields->field_type]->settings = array_merge($this->get_field_settings($field_name), $this->get_field_data($field_name), ee()->api_channel_fields->get_global_settings(ee()->api_channel_fields->field_type));
 
 		$_GET['entry_id'] = $this->entry('entry_id');
@@ -3313,8 +3280,6 @@ GRID_FALLBACK;
 
 		return ee()->api_channel_fields->apply('replace_tag', array('data' => $data, 'params' => $params, 'tagdata' => $tagdata));
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Clean an ID
@@ -3333,8 +3298,6 @@ GRID_FALLBACK;
 
 		return ($data) ? $data : FALSE;
 	}
-
-	// --------------------------------------------------------------------
 
 	public function send_ajax_response($msg, $error = FALSE)
 	{
@@ -3360,8 +3323,6 @@ GRID_FALLBACK;
 		ee()->output->send_ajax_response($msg, $error);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * swap_conditionals
 	 *
@@ -3379,8 +3340,6 @@ GRID_FALLBACK;
 
 		return $tagdata;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * swap_var_pair
@@ -3427,8 +3386,6 @@ GRID_FALLBACK;
 		return $tagdata;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * unserialize
 	 *
@@ -3447,8 +3404,6 @@ GRID_FALLBACK;
 
 		return (is_array($data)) ? $data : array();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * SAEF URL Title Javascript
@@ -3575,8 +3530,6 @@ SCRIPT;
 		return $ret;
 	}
 
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Assigns proper group id to logged out users

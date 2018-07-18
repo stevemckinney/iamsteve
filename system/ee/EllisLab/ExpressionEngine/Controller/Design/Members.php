@@ -1,33 +1,19 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Design;
 
 use EllisLab\ExpressionEngine\Controller\Design\AbstractDesign as AbstractDesignController;
 use EllisLab\ExpressionEngine\Library\CP\Table;
 
-
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Design\Members Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Design\Members Controller
  */
 class Members extends AbstractDesignController {
 
@@ -50,7 +36,6 @@ class Members extends AbstractDesignController {
 		ee()->lang->loadfile('specialty_tmp');
 
 		$this->template_group_map = array(
-			'aim_console.html' => 'profile',
 			'avatar_folder_list.html' => 'profile',
 			'basic_profile.html' => 'profile',
 			'breadcrumb.html' => 'breadcrumb',
@@ -82,7 +67,6 @@ class Members extends AbstractDesignController {
 			'home_page.html' => 'profile',
 			'html_footer.html' => 'common',
 			'html_header.html' => 'common',
-			'icq_console.html' => 'profile',
 			'localization_form.html' => 'account',
 			'login_form.html' => 'registration',
 			'member_page.html' => 'member',
@@ -131,23 +115,36 @@ class Members extends AbstractDesignController {
 		);
 	}
 
-	public function index($theme = 'default')
+	public function index($theme = NULL)
 	{
-		$path = ee('Theme')->getPath('member/' . ee()->security->sanitize_filename($theme));
+		$base_path = FALSE;
+		$this->load->helper('directory');
+		$files = array();
+		$theme_dirs = ee('Theme')->listUserThemes('member');
 
-		if ( ! is_dir($path))
+		if ($theme_dirs && empty($theme))
 		{
-			show_error(lang('unable_to_find_templates'));
+			$theme = array_keys($theme_dirs)[0];
 		}
 
-		$this->load->helper('directory');
-		$files = directory_map($path, TRUE);
+		if ($theme)
+		{
+			$base_path = ee('Theme')->getUserPath('member/' . ee()->security->sanitize_filename($theme));
 
-		$vars = array();
+			// Check if custom templates are in themes folder instead of system folder
+			if (strpos($base_path, PATH_THIRD_THEMES) !== FALSE)
+			{
+				ee()->load->library('logger');
+				$version_url = ee()->cp->masked_url(DOC_URL.'installation/version_notes_4.2.2.html');
+
+				ee()->logger->developer('As of 4.2.2, member templates should be in folder: system/user/templates/_themes/member/.  <a href="'.$version_url.'">Please see 4.2.2 version notes.</a>', TRUE);
+			}
+		}
 
 		$base_url = ee('CP/URL')->make('design/members/index/' . $theme);
 
 		$table = ee('CP/Table', array('autosort' => TRUE, 'subheadings' => TRUE));
+		$table->setNoResultsText(sprintf(lang('no_user_templates_found'), DOC_URL.'member/index.html#member-profile-templates'));
 		$table->setColumns(
 			array(
 				'template',
@@ -157,45 +154,59 @@ class Members extends AbstractDesignController {
 			)
 		);
 
+		$vars['themes'] = '';
 		$data = array();
-		foreach ($files as $file)
+
+		if ($base_path && is_dir($base_path))
 		{
-			if (strpos($file, '.') === FALSE)
+			$files = (directory_map($base_path, TRUE)) ?: array();
+
+			foreach ($files as $file)
 			{
-				continue;
+				if (strpos($file, '.') === FALSE)
+				{
+					continue;
+				}
+				if ( ! isset($this->template_group_map[$file]))
+				{
+					continue;
+				}
+
+				$human = substr($file, 0, -strlen(strrchr($file, '.')));
+				$edit_url = ee('CP/URL')->make('design/members/edit/' . $theme . '/' . $human);
+
+				$data['profile_' . $this->template_group_map[$file]][] = array(
+					array(
+						'content' => (lang($human) == FALSE) ? $human : lang($human),
+						'href' => $edit_url
+						),
+					array('toolbar_items' => array(
+						'edit' => array(
+							'href' => $edit_url,
+							'title' => lang('edit')
+						),
+					))
+				);
 			}
 
-			$human = substr($file, 0, -strlen(strrchr($file, '.')));
-			$edit_url = ee('CP/URL')->make('design/members/edit/' . $theme . '/' . $human);
+			if ( ! empty($files))
+			{
+				foreach ($theme_dirs as $dir => $name)
+				{
+					$themes[ee('CP/URL')->make('design/members/index/' . $dir)->compile()] = $name;
+				}
 
-			$data['profile_' . $this->template_group_map[$file]][] = array(
-				array(
-					'content' => (lang($human) == FALSE) ? $human : lang($human),
-					'href' => $edit_url
-					),
-				array('toolbar_items' => array(
-					'edit' => array(
-						'href' => $edit_url,
-						'title' => lang('edit')
-					),
-				))
-			);
+				if ($themes)
+				{
+					$vars['themes'] = form_dropdown('theme', $themes, ee('CP/URL')->make('design/members/index/' . $theme));
+				}
+			}
 		}
 
 		$table->setData($data);
 
 		$vars['table'] = $table->viewData($base_url);
 		$vars['form_url'] = $vars['table']['base_url'];
-
-		ee()->load->model('member_model');
-
-		$themes = array();
-		foreach (ee()->member_model->get_profile_templates() as $dir => $name)
-		{
-			$themes[ee('CP/URL')->make('design/members/index/' . $dir)->compile()] = $name;
-		}
-
-		$vars['themes'] = form_dropdown('theme', $themes, ee('CP/URL')->make('design/members/index/' . $theme));
 
 		$this->generateSidebar('members');
 		ee()->view->cp_page_title = lang('template_manager');
@@ -208,7 +219,7 @@ class Members extends AbstractDesignController {
 
 	public function edit($theme, $file)
 	{
-		$path = ee('Theme')->getPath('member/'
+		$path = ee('Theme')->getUserPath('member/'
 			.ee()->security->sanitize_filename($theme)
 			.'/'
 			.ee()->security->sanitize_filename($file . '.html'));
@@ -237,7 +248,7 @@ class Members extends AbstractDesignController {
 				if (ee()->input->post('submit') == 'finish')
 				{
 					$alert->defer();
-					ee()->functions->redirect(ee('CP/URL')->make('design/members'));
+					ee()->functions->redirect(ee('CP/URL')->make('design/members/index/' . $theme));
 				}
 
 				$alert->now();

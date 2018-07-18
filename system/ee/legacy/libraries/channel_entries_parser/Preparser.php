@@ -1,27 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.6
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Channel Pre-Parser
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Core
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Channel Pre-Parser
  */
 class EE_Channel_preparser {
 
@@ -29,7 +16,8 @@ class EE_Channel_preparser {
 	public $singles = array();
 
 	public $subscriber_totals = array();
-	public $modified_conditionals = array();
+	public $field_names = [];
+	public $grid_field_names = [];
 
 	protected $_prefix;
 	protected $_tagdata;
@@ -93,7 +81,8 @@ class EE_Channel_preparser {
 
 		// Get subscriber totals and modified conditionals
 		$this->subscriber_totals	 = $this->_subscriber_totals();
-		$this->modified_conditionals = $this->_find_modified_conditionals();
+		$this->field_names = $this->getFieldNamesInTagdata();
+		$this->grid_field_names = $this->getFieldNamesInTagdata('gfields');
 
 		// Run through component pre_processing steps, skipping any that
 		// were specified as being disabled.
@@ -117,8 +106,6 @@ class EE_Channel_preparser {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Site IDs getter
 	 *
@@ -130,8 +117,6 @@ class EE_Channel_preparser {
 	{
 		return $this->_site_ids;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Entry IDs getter
@@ -145,8 +130,6 @@ class EE_Channel_preparser {
 		return $this->_entry_ids;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Pair tag data getter
 	 *
@@ -158,8 +141,6 @@ class EE_Channel_preparser {
 	{
 		return $this->_pair_data[spl_object_hash($obj)];
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Single tag data getter
@@ -173,8 +154,6 @@ class EE_Channel_preparser {
 		return $this->_single_data[spl_object_hash($obj)];
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Single tag data getter
 	 *
@@ -186,8 +165,6 @@ class EE_Channel_preparser {
 	{
 		return $this->_once_data[spl_object_hash($obj)];
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Single tag data setter
@@ -202,8 +179,6 @@ class EE_Channel_preparser {
 		return $this->_once_data[spl_object_hash($obj)] = $data;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Prefix getter
 	 *
@@ -213,8 +188,6 @@ class EE_Channel_preparser {
 	{
 		return $this->_prefix;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Channel getter
@@ -228,8 +201,6 @@ class EE_Channel_preparser {
 		return $this->_channel;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Parser getter
 	 *
@@ -241,8 +212,6 @@ class EE_Channel_preparser {
 	{
 		return $this->_parser;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Disabled lookup
@@ -257,8 +226,6 @@ class EE_Channel_preparser {
 	{
 		return $this->_disabled[spl_object_hash($obj)];
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Tag lookup
@@ -275,8 +242,6 @@ class EE_Channel_preparser {
 	{
 		return strpos($this->_tagdata, LD.$this->_prefix.$tagname) !== FALSE;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Tag Pair lookup
@@ -302,8 +267,6 @@ class EE_Channel_preparser {
 
 		return $end !== FALSE;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Extract prefixed keys
@@ -334,8 +297,6 @@ class EE_Channel_preparser {
 		return $filtered;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Comment subscriber lookup
 	 *
@@ -360,54 +321,29 @@ class EE_Channel_preparser {
 		return $subscribers;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
-	 * Find modified conditionals
+	 * Get an array of field names that are present in the tagdata
 	 *
-	 * The regular custom field conditional prep does not correctly identify
-	 * custom fields with modifiers in conditionals ie. {if image:small}, so
-	 * we grab those separately.
-	 *
-	 * @return list of modified variables in conditionals
+	 * @return Array Field names
 	 */
-	public function _find_modified_conditionals()
+	protected function getFieldNamesInTagdata($type = 'cfields')
 	{
-		$prefix = $this->_prefix;
-		$unfiltered_all_field_names = array();
 		$all_field_names = array();
+		$present_field_names = array();
 
-		if (strpos($this->_tagdata, LD.'if') === FALSE)
+		foreach($this->channel()->$type as $site_id => $fields)
 		{
-			return array();
+			$all_field_names = array_unique(array_merge($all_field_names, $fields));
 		}
 
-		foreach($this->_channel->cfields as $site_id => $fields)
-		{
-			$unfiltered_all_field_names = array_unique(array_merge($unfiltered_all_field_names, $fields));
-		}
-
-		// Do a rough cut to slim down the number of fields
-		// else the string can be too long for the preg_match_all
-		foreach (array_keys($unfiltered_all_field_names) as $name)
+		foreach (array_keys($all_field_names) as $name)
 		{
 			if (strpos($this->_tagdata, $name) !== FALSE)
 			{
-				$all_field_names[] = $name;
+				$present_field_names[] = $name;
 			}
 		}
 
-		$modified_field_options = $prefix.implode('|'.$prefix, $all_field_names);
-		$modified_conditionals = array();
-
-		if (preg_match_all("/".preg_quote(LD)."((if:(else))*if)\s+(($modified_field_options):(\w+))(.*?)".preg_quote(RD)."/s", $this->_tagdata, $matches))
-		{
-			foreach($matches[5] as $match_key => $field_name)
-			{
-				$modified_conditionals[$field_name][] = $matches[6][$match_key];
-			}
-		}
-
-		return array_map('array_unique', $modified_conditionals);
+		return $present_field_names;
 	}
 }

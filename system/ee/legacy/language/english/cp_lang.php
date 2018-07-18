@@ -27,6 +27,10 @@ $lang = array(
 /* Control Panel */
 'action_can_not_be_undone' => 'THIS ACTION CANNOT BE UNDONE',
 
+'add_new' => 'Add New',
+
+'addons' => 'Add-Ons',
+
 'all' => 'All',
 
 'any' => 'Any',
@@ -35,11 +39,19 @@ $lang = array(
 
 'be_careful' => 'BE CAREFUL!',
 
-'build' => 'build date:',
+'build' => 'Build:',
 
 'captcha_explanation' => 'A CAPTCHA is an image containing a security code that users have to submit. Please consult the user guide for more info.',
 
+'categories' => 'Categories',
+
+'channels' => 'Channels',
+
+'choose_wisely' => 'Choose wisely',
+
 'click_to_edit' => 'Click to Edit',
+
+'close_modal' => 'Close modal',
 
 'consult_user_guide' => 'Consult User Guide',
 
@@ -49,9 +61,15 @@ $lang = array(
 
 'custom_limit' => 'custom limit',
 
+'details' => 'Details',
+
+'do_not_duplicate' => 'Do not duplicate',
+
 'e_no_css' => 'The requested CSS file could not be opened.',
 
 'edit_quicklinks' => 'Edit Quick Links',
+
+'fields' => 'Fields',
 
 'forgot_password' => 'Forgot your password?',
 
@@ -113,6 +131,12 @@ $lang = array(
 
 'rights_reserved' => 'All Rights Reserved',
 
+'running_current' => 'ExpressionEngine is up to date',
+
+'running_current_desc' => 'ExpressionEngine %s is the latest version.',
+
+'searching' => 'Searching',
+
 'session_idle' => 'Idle session detected',
 
 'session_idle_description' => 'You\'ve gone idle, please enter your password to continue.',
@@ -123,9 +147,15 @@ $lang = array(
 
 'submit_email_address' => 'Submit your email address',
 
+'templates' => 'Templates',
+
 'unauthorized' => 'Unauthorized',
 
 'unauthorized_access' => 'You are not authorized to access this page',
+
+'update_check_btn' => 'Check for Update',
+
+'update_btn' => 'Upgrade Now',
 
 'user_account' => 'Member Account',
 
@@ -139,9 +169,19 @@ $lang = array(
 
 'version_identifier' => 'identifier:',
 
+'version_update_available' => 'A newer version of ExpressionEngine is available',
+
+'version_update_inst' => "ExpressionEngine %s is available. <a href='#' data-post-url='%s'>Click here to upgrade</a> or follow the <a href='%s' rel='external'>manual upgrade instructions</a>.",
+
 
 /* Buttons */
 'cancel' => 'Cancel',
+
+'accept' => 'Accept',
+
+'decline' => 'Decline',
+
+'needs_review' => 'Needs Review',
 
 'delete' => 'Delete',
 
@@ -150,6 +190,10 @@ $lang = array(
 'preview' => 'Preview',
 
 'save' => 'Save',
+
+'save_and_new' => 'Save & New',
+
+'save_and_close' => 'Save & Close',
 
 'save_changes' => 'Save changes',
 
@@ -175,11 +219,13 @@ $lang = array(
 
 'ip_address' => 'IP Address',
 
-'member_changed_email' => 'Changed email for "%s" (%d)',
+'member_changed_email' => 'Changed email for "%s" (%d) from "%s" to "%s"',
 
 'member_changed_member_group' => 'Changed member group to "%s" for "%s" (%d)',
 
 'member_changed_password' => 'Changed password for "%s" (%d)',
+
+'member_anonymized_member' => 'Anonymized member with ID: %d',
 
 'member_id' => 'Member ID',
 
@@ -199,11 +245,17 @@ $lang = array(
 
 'channel' => 'Channel',
 
+'check_all' => 'Check All',
+
+'clear_all' => 'Clear All',
+
 'create' => 'Create',
 
 'create_and_edit' => 'Create and Edit',
 
 'custom_date_range' => 'Custom Date Range',
+
+'date_added' => 'Date Added',
 
 'edit' => 'Edit',
 
@@ -212,6 +264,8 @@ $lang = array(
 'entry' => 'Entry',
 
 'limit_by' => 'limit by',
+
+'keyword_search' => 'Keyword Search',
 
 'manage' => 'Manage',
 
@@ -231,7 +285,13 @@ $lang = array(
 
 'recent_entries' => 'Recent Entries',
 
-'select_all' => 'Select All',
+'results' => 'results',
+
+'select_all' => 'select all',
+
+'search_in' => 'Search in',
+
+'show' => 'Show',
 
 'site' => 'Site',
 
@@ -255,6 +315,15 @@ $lang = array(
 
 'with_selected' => 'with selected',
 
+'export' => 'Export',
+
+'btn_exporting' => 'Exporting',
+
+'btn_downloading' => 'Downloading',
+
+'will_be_logged' => 'This action will be logged',
+
+'important' => 'Important!',
 
 /* Sites and Channels */
 'avatar_path' => 'Avatar Path',
@@ -337,7 +406,7 @@ $lang = array(
 
 'missing_license' => 'This copy of ExpressionEngine is <strong>unregistered</strong>. <a href="%s">Please upload your license.</a>',
 
-'missing_pubkey' => 'The ExpressionEngine product is missing data. Pleas visit <a href="%s" rel="external">EllisLab.com</a> and download a fresh copy.',
+'missing_pubkey' => 'The ExpressionEngine product is missing data. Pleas visit <a href="%s" rel="external">expressionengine.com</a> and download a fresh copy.',
 
 'software_unregistered' => 'Software Unregistered',
 
@@ -385,7 +454,11 @@ $lang = array(
 
 'disable' => 'Disable',
 
+'edit' => 'Edit',
+
 'enable' => 'Enable',
+
+'filter_authors' => 'filter authors',
 
 'filter_categories' => 'filter categories',
 
@@ -396,6 +469,8 @@ $lang = array(
 'form_validation_error' => 'There was a problem processing your submission, please check below and fix all errors.',
 
 'image' => 'Image',
+
+'keyword_filter' => 'keywords, hit enter',
 
 'log_out' => 'log out',
 
@@ -471,11 +546,13 @@ $lang = array(
 
 'authenticating' => 'authenticating...',
 
+'checking_for_updates' => 'Checking for updates...',
+
 'download' => 'download',
 
 'installed' => 'Installed',
 
-'latest_version' => 'Latest Version',
+'latest_version' => 'Latest',
 
 'license_no' => 'License #',
 
@@ -487,9 +564,9 @@ $lang = array(
 
 'out_of_date' => 'out of date',
 
-'out_of_date_recommended' => 'Out of date, Recommended upgrade',
+'out_of_date_recommended' => 'Recommended Upgrade',
 
-'out_of_date_upgrade' => 'Out of date, please upgrade',
+'out_of_date_upgrade' => 'New version found',
 
 'owned_by' => 'Owned by',
 
@@ -503,6 +580,10 @@ $lang = array(
 
 'session_timeout' => 'Your administration access session has timed out. Please use the form below to log back into your control panel.',
 
+'up_to_date' => 'Up to date!',
+
+'version' => 'Version',
+
 
 /* confirm removal modal */
 'btn_confirm_and_remove' => 'Confirm, and Remove',
@@ -513,13 +594,17 @@ $lang = array(
 
 'confirm_removal_desc' => 'You are attempting to remove the following items, please confirm this action.',
 
+'btn_confirm_and_save' => 'Confirm, and Save',
+
+'btn_confirm_and_save_working' => 'Saving...',
+
 
 /*confirm show all modal */
 'all_items' => 'All %d items',
 
-'confirm_show_all' => 'Danger, Will Robinson!',
+'confirm_show_all' => 'Confirm Show All',
 
-'confirm_show_all_btn' => 'Damn the torpedoes, full speed ahead!',
+'confirm_show_all_btn' => 'Show All',
 
 'confirm_show_all_desc' => 'Viewing more than %d items at a time may result in reduced performance.',
 

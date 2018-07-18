@@ -1,17 +1,8 @@
 <?php $this->extend('_templates/login'); ?>
 
 <div class="box snap">
-	<h1><?=lang('new_requirements')?> <span class="ico locked"></span></h1>
-	<?php if ($message != ''):?>
-		<div class="alert inline <?=$message_status?>">
-			<p><?php if ($message_status != 'success'): ?><b>!!</b> <?php endif ?><?=$message?></p>
-			<ul>
-				<?php foreach ($required_changes as $text): ?>
-					<li><?=$text?></li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
-	<?php endif;?>
+	<h1><?=lang('new_requirements')?> <span class="ico reset"></span></h1>
+	<?=ee('CP/Alert')->getAllInlines()?>
 
 	<?=form_open(ee('CP/URL')->make('login/update_un_pw'), array(), $hidden)?>
 		<?php if ($new_username_required):?>

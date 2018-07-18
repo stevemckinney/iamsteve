@@ -1,33 +1,18 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Settings;
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 use CP_Controller;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP General Settings Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * General Settings Controller
  */
 class General extends Settings {
 
@@ -72,17 +57,18 @@ class General extends Settings {
 					'desc' => 'site_online_desc',
 					'fields' => array(
 						'is_system_on' => array(
-							'type' => 'inline_radio',
-							'choices' => array(
-								'y' => 'online',
-								'n' => 'offline'
-							)
+							'type' => 'yes_no',
 						)
 					)
 				),
 				array(
 					'title' => 'version_autocheck',
 					'desc' => 'version_autocheck_desc',
+					'button' => array(
+						'text' => 'check_now',
+						'href' => ee('CP/URL', 'settings/general/version-check'),
+						'for' => 'version-check'
+					),
 					'fields' => array(
 						'new_version_check' => array(
 							'type' => 'inline_radio',
@@ -90,13 +76,6 @@ class General extends Settings {
 								'y' => 'auto',
 								'n' => 'manual'
 							)
-						),
-						'action_button' => array(
-							'type' => 'action_button',
-							'text' => 'check_now',
-							'link' => ee('CP/URL', 'settings/general/version-check'),
-							'class' => 'version-check',
-							'save_in_config' => FALSE
 						)
 					)
 				),
@@ -105,11 +84,7 @@ class General extends Settings {
 					'desc' => 'enable_msm_desc',
 					'fields' => array(
 						'multiple_sites_enabled' => array(
-							'type' => 'inline_radio',
-							'choices' => array(
-								'y' => 'enable',
-								'n' => 'disable'
-							)
+							'type' => 'yes_no',
 						)
 					)
 				),
@@ -120,7 +95,7 @@ class General extends Settings {
 					'desc' => 'used_in_cp_only',
 					'fields' => array(
 						'deft_lang' => array(
-							'type' => 'select',
+							'type' => 'radio',
 							'choices' => ee()->lang->language_pack_names(),
 							'value' => ee()->config->item('deft_lang') ?: 'english'
 						)
@@ -142,11 +117,11 @@ class General extends Settings {
 					'desc' => 'used_in_cp_only',
 					'fields' => array(
 						'date_format' => array(
-							'type' => 'select',
+							'type' => 'radio',
 							'choices' => $localization_fields['fields']['date_format']['value']
 						),
 						'time_format' => array(
-							'type' => 'select',
+							'type' => 'radio',
 							'choices' => array(
 								'24' => lang('24_hour'),
 								'12' => lang('12_hour')
@@ -216,8 +191,6 @@ class General extends Settings {
 		ee()->cp->render('settings/form', $vars);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Ensure the short name is valid
 	 * @param  string $short_name Short name for the site
@@ -241,8 +214,6 @@ class General extends Settings {
 
 		return TRUE;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Save the settings from General, but make sure to save site name and label
@@ -271,18 +242,15 @@ class General extends Settings {
 		return parent::saveSettings($sections);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * General Settings
 	 */
 	public function versionCheck()
 	{
 		ee()->load->library('el_pings');
-		$details = ee()->el_pings->get_version_info();
 
 		// Error getting version
-		if ( ! $details)
+		if ( ! ee()->el_pings->get_version_info(TRUE))
 		{
 			ee('CP/Alert')->makeBanner('error-getting-version')
 				->asIssue()
@@ -292,16 +260,24 @@ class General extends Settings {
 		}
 		else
 		{
-			end($details);
-			$latest_version = current($details);
+			$version_info = ee()->el_pings->getUpgradeInfo();
+			$latest_version = $version_info['version'];
 
 			// New version available
-			if ($latest_version[0] > APP_VER)
+			if (version_compare(ee()->config->item('app_version'), $latest_version, '<'))
 			{
-				$download_url = ee()->cp->masked_url('https://expressionengine.com/store/purchases');
+				if (AJAX_REQUEST)
+				{
+					return [
+						'isVitalUpdate' => $version_info['security'],
+						'newVersionMarkup' => ee('View')->make('ee:_shared/_new_version')->render($version_info)
+					];
+				}
+
+				$upgrade_url = ee('CP/URL', 'updater')->compile();
 				$instruct_url = ee()->cp->masked_url(DOC_URL.'installation/update.html');
 
-				$desc = sprintf(lang('version_update_inst'), $latest_version[0], $download_url, $instruct_url);
+				$desc = sprintf(lang('version_update_inst'), $latest_version, $upgrade_url, $instruct_url);
 
 				ee('CP/Alert')->makeBanner('version-update-available')
 					->asWarning()
@@ -312,6 +288,11 @@ class General extends Settings {
 			// Running latest version already
 			else
 			{
+				if (AJAX_REQUEST)
+				{
+					return ['up-to-date'];
+				}
+
 				ee('CP/Alert')->makeBanner('running-current')
 					->asSuccess()
 					->withTitle(lang('running_current'))

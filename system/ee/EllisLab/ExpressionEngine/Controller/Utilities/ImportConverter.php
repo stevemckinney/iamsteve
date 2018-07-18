@@ -1,33 +1,28 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Utilities;
 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Import Converter Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Import Converter Controller
  */
 class ImportConverter extends Utilities {
+
+	private $member_file_name = '';
+	private $cache = '';
+
+	function __construct()
+	{
+		parent::__construct();
+		$this->cache = PATH_CACHE.'import_convert/';
+	}
+
 
 	/**
 	 * Member import file converter
@@ -39,18 +34,30 @@ class ImportConverter extends Utilities {
 			show_error(lang('unauthorized_access'), 403);
 		}
 
+		if ( ! AJAX_REQUEST)
+		{
+			if ( ! ee('Filesystem')->exists($this->cache))
+			{
+				ee('Filesystem')->mkDir($this->cache);
+			}
+			else
+			{
+				ee('Filesystem')->deleteDir($this->cache, TRUE);
+			}
+		}
+
 		ee()->lang->loadfile('member_import');
 
 		$vars['sections'] = array(
 			array(
 				array(
-					'title' => 'file_location',
-					'desc' => 'file_location_desc',
+					'title' => 'member_file',
+					'desc' => sprintf(lang('member_file_desc')),
 					'fields' => array(
-						'member_file' => array(
-							'type' => 'text',
+						'member_file' => [
+							'type' => 'file',
 							'required' => TRUE
-						)
+						],
 					)
 				),
 				array(
@@ -65,9 +72,14 @@ class ImportConverter extends Utilities {
 								'pipe' => lang('pipe_delimit') . ' <i>|</i>',
 								'other' => lang('other_delimit')
 							),
+							'group_toggle' => ['other' => 'other'],
+							'encode' => FALSE,
 							'value' => 'comma'
 						),
-						'delimiter_special' => array('type' => 'text')
+						'delimiter_special' => [
+							'type' => 'text',
+							'group' => 'other'
+						]
 					)
 				),
 				array(
@@ -83,24 +95,24 @@ class ImportConverter extends Utilities {
 		ee()->load->library('form_validation');
 		ee()->form_validation->set_rules(array(
 			array(
-				 'field'   => 'member_file',
-				 'label'   => 'lang:file_location',
-				 'rules'   => 'required|file_exists'
+				'field'   => 'member_file',
+				'label'   => 'lang:member_file',
+				'rules'   => 'callback__file_handler'
 			),
 			array(
-				 'field'   => 'delimiter',
-				 'label'   => 'lang:delimiting_char',
-				 'rules'   => 'required|enum[tab,other,comma,pipe]'
+				'field'   => 'delimiter',
+				'label'   => 'lang:delimiting_char',
+				'rules'   => 'required|enum[tab,other,comma,pipe]'
 			),
 			array(
-				 'field'   => 'delimiter_special',
-				 'label'   => 'lang:delimiting_char',
-				 'rules'   => 'trim|callback__not_alphanu'
+				'field'   => 'delimiter_special',
+				'label'   => 'lang:delimiting_char',
+				'rules'   => 'trim|callback__not_alphanu'
 			),
 			array(
-				 'field'   => 'enclosure',
-				 'label'   => 'lang:enclosing_char',
-				 'rules'   => 'callback__prep_enclosure'
+				'field'   => 'enclosure',
+				'label'   => 'lang:enclosing_char',
+				'rules'   => 'callback__prep_enclosure'
 			),
 		));
 
@@ -118,6 +130,18 @@ class ImportConverter extends Utilities {
 			ee()->view->set_message('issue', lang('file_not_converted'), lang('file_not_converted_desc'));
 		}
 
+		// Check cache folder is writable, no point in filling the form if not
+		if ( ! ee('Filesystem')->isWritable($this->cache))
+		{
+			ee('CP/Alert')->makeInline('shared-form')
+				->asWarning()
+				->cannotClose()
+				->withTitle(lang('import_cache_file_not_writable'))
+				->addToBody(lang('import_cache_file_instructions'))
+				->now();
+		}
+
+		$vars['has_file_input'] = TRUE;
 		ee()->view->ajax_validate = TRUE;
 		ee()->view->cp_page_title = lang('import_converter');
 		ee()->view->base_url = ee('CP/URL')->make('utilities/import-converter');
@@ -125,8 +149,6 @@ class ImportConverter extends Utilities {
 		ee()->view->save_btn_text_working = 'import_convert_btn_saving';
 		ee()->cp->render('settings/form', $vars);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Not Alpha or Numeric
@@ -158,8 +180,6 @@ class ImportConverter extends Utilities {
 		return TRUE;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Prep Enclosure
 	 *
@@ -181,7 +201,51 @@ class ImportConverter extends Utilities {
 		return $enclosure;
 	}
 
-	// --------------------------------------------------------------------
+
+	/**
+	 * Callback that handles file upload
+	 *
+	 *
+	 * @return	bool
+	 */
+
+	public function _file_handler()
+	{
+		if ( ! ee('Filesystem')->isWritable($this->cache))
+		{
+			ee()->form_validation->set_message('_file_handler', lang('import_cache_file_not_writable'));
+			return FALSE;
+		}
+
+		// Required field
+		if ( ! isset($_FILES['member_file']['name']) OR empty($_FILES['member_file']['name']))
+		{
+			ee()->form_validation->set_message('_file_handler', lang('required'));
+			return FALSE;
+		}
+
+		// need to error check
+
+		ee()->load->library('upload');
+		ee()->upload->initialize(array(
+			'allowed_types'	=> '*',
+			'upload_path'	=> $this->cache,
+			'overwrite' => TRUE
+		));
+
+		if ( ! ee()->upload->do_upload('member_file'))
+		{
+			//print_r(ee()->upload->display_errors());
+			ee()->form_validation->set_message('_file_handler', lang('upload_problem'));
+			return FALSE;
+		}
+
+		$data = ee()->upload->data();
+		$this->member_file_name = $data['file_name'];
+
+		return TRUE;
+	}
+
 
 	/**
 	 * For mapping to existing member fields
@@ -206,11 +270,12 @@ class ImportConverter extends Utilities {
 			default:		$delimiter = ",";
 		}
 
-		$member_file = parse_config_variables(ee()->input->post('member_file'));
+
 		$enclosure = ee()->input->post('enclosure') ?: '';
+		$this->member_file_name = ( ! empty($this->member_file_name)) ? $this->member_file_name : ee('Encrypt')->decode(ee()->input->post('member_file'));
 
 		//  Read data file into an array
-		$fields = $this->_datafile_to_array($member_file, $delimiter, $enclosure);
+		$fields = $this->_datafile_to_array($this->cache . '/' .$this->member_file_name, $delimiter, $enclosure);
 
 		if ( ! isset($fields[0]) OR count($fields[0]) < 3)
 		{
@@ -249,7 +314,7 @@ class ImportConverter extends Utilities {
 		$vars['fields'] = $fields;
 
 		$vars['form_hidden'] = array(
-			'member_file'		=> ee()->input->post('member_file'),
+			'member_file'		=> ee('Encrypt')->encode($this->member_file_name),
 			'delimiter'			=> ee()->input->post('delimiter'),
 			'enclosure'			=> $enclosure,
 			'delimiter_special'	=> $delimiter
@@ -261,8 +326,6 @@ class ImportConverter extends Utilities {
 		ee()->cp->set_breadcrumb(ee('CP/URL')->make('utilities/import_converter'), lang('import_converter'));
 		ee()->cp->render('utilities/import/fieldmap', $vars);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Datafile to Array
@@ -291,6 +354,7 @@ class ImportConverter extends Utilities {
 		}
 		else
 		{
+
 			foreach ($contents as $line)
 			{
 				preg_match_all("/".preg_quote($enclosure)."(.*?)".preg_quote($enclosure)."/si", $line, $matches);
@@ -300,8 +364,6 @@ class ImportConverter extends Utilities {
 
 		return $fields;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Pair Fields Form
@@ -361,17 +423,18 @@ class ImportConverter extends Utilities {
 			default:		$delimiter = ",";
 		}
 
-		$member_file = parse_config_variables(ee()->input->post('member_file'));
+
+		$this->member_file_name = ee('Encrypt')->decode(ee()->input->post('member_file'));
 		$enclosure = ee()->input->post('enclosure') ?: '';
 
 		//  Read data file into an array
-		$fields = $this->_datafile_to_array($member_file, $delimiter, $enclosure);
+		$fields = $this->_datafile_to_array($this->cache . '/' .$this->member_file_name, $delimiter, $enclosure);
 
 		$vars['fields'] = $fields;
 		$vars['paired'] = $paired;
 
 		$vars['form_hidden'] = array(
-			'member_file'		=> $member_file,
+			'member_file'		=> ee()->input->post('member_file'),
 			'delimiter'			=> ee()->input->post('delimiter'),
 			'enclosure'			=> $enclosure,
 			'delimiter_special'	=> $delimiter,
@@ -384,8 +447,6 @@ class ImportConverter extends Utilities {
 		ee()->cp->set_breadcrumb(ee('CP/URL')->make('utilities/import_converter'), lang('import_converter'));
 		ee()->cp->render('utilities/import/fieldmap-confirm', $vars);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Create XML File
@@ -414,14 +475,14 @@ class ImportConverter extends Utilities {
 			default:		$delimiter = ",";
 		}
 
-		$member_file = parse_config_variables(ee()->input->post('member_file'));
+		$this->member_file_name = ee('Encrypt')->decode(ee()->input->post('member_file'));
 		$enclosure = ee()->input->post('enclosure') ?: '';
 		$encrypt = ($this->input->post('encrypt') == 'y');
 
 		ee()->load->helper(array('file', 'xml'));
 
 		//  Read file contents
-		$contents = read_file($member_file);
+		$contents = read_file($this->cache . '/' .$this->member_file_name);
 
 		//  Get structure
 		$structure = array();
@@ -468,9 +529,8 @@ class ImportConverter extends Utilities {
 		ee()->view->cp_page_title = lang('xml_code');
 		ee()->cp->set_breadcrumb(ee('CP/URL')->make('utilities/import_converter'), lang('import_converter'));
 		ee()->cp->render('utilities/import/code-output', $vars);
-	}
 
-	// --------------------------------------------------------------------
+	}
 
 	/**
 	 * Downloads generated XML from import converter
@@ -486,8 +546,6 @@ class ImportConverter extends Utilities {
 		);
 		exit;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Unique Required

@@ -1,9 +1,19 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Service\ChannelSet;
 
 use EllisLab\ExpressionEngine\Library\Filesystem\Filesystem;
 
+/**
+ * Channel Set Service: Zip to Set
+ */
 class ZipToSet {
 
 	private $path;
@@ -39,7 +49,7 @@ class ZipToSet {
 			$fs->mkdir(PATH_CACHE.'cset/');
 		}
 
-		$tmp_dir = 'cset/tmp_'.time();
+		$tmp_dir = 'cset/tmp_'.ee('Encrypt')->generateKey();
 		$fs->mkdir(PATH_CACHE.$tmp_dir, FALSE);
 
 		// extract the archive

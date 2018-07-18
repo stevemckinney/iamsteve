@@ -1,8 +1,13 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Members\Profile;
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 use CP_Controller;
 use EllisLab\ExpressionEngine\Library\CP;
@@ -10,27 +15,7 @@ use EllisLab\ExpressionEngine\Library\CP\Table;
 
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Members Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Members Profile Controller
  */
 class Profile extends CP_Controller {
 
@@ -84,7 +69,6 @@ class Profile extends CP_Controller {
 			'title' => sprintf(lang('profile_header'),
 				htmlentities($this->member->username, ENT_QUOTES, 'UTF-8'),
 				htmlentities($this->member->email, ENT_QUOTES, 'UTF-8'),
-				htmlentities($this->member->email, ENT_QUOTES, 'UTF-8'),
 				$this->member->ip_address
 			)
 		);
@@ -118,6 +102,8 @@ class Profile extends CP_Controller {
 		{
 			$list->addItem(lang('date_settings'), ee('CP/URL')->make('members/profile/date', $this->query_string));
 		}
+
+		$list->addItem(lang('consents'), ee('CP/URL')->make('members/profile/consent', $this->query_string));
 
 		$publishing_link = NULL;
 
@@ -177,15 +163,69 @@ class Profile extends CP_Controller {
 
 			if ($this->member->member_id != ee()->session->userdata['member_id'])
 			{
-				$list->addItem(sprintf(lang('email_username'), $this->member->username), ee('CP/URL')->make('utilities/communicate/member/' . $this->member->member_id));
+				if ( ! $this->member->isAnonymized())
+				{
+					$list->addItem(sprintf(lang('email_username'), $this->member->username), ee('CP/URL')->make('utilities/communicate/member/' . $this->member->member_id));
+				}
 
-				if (ee()->session->userdata('group_id') == 1)
+				if (ee()->session->userdata('group_id') == 1 && ! $this->member->isAnonymized())
 				{
 					$list->addItem(sprintf(lang('login_as'), $this->member->username), ee('CP/URL')->make('members/profile/login', $this->query_string));
 				}
 
 				if (ee()->cp->allowed_group('can_delete_members'))
 				{
+					$session = ee('Model')->get('Session', ee()->session->userdata('session_id'))->first();
+
+					if ( ! $this->member->isAnonymized())
+					{
+						$list->addItem(sprintf(lang('anonymize_username'), $this->member->username), ee('CP/URL')->make('members/anonymize', $this->query_string))
+							->asDeleteAction('modal-confirm-anonymize-member');
+
+						$modal_vars = [
+							'name'		=> 'modal-confirm-anonymize-member',
+							'title'		=> sprintf(lang('anonymize_username'), lang('member')),
+							'alert'		=> ee('CP/Alert')
+								->makeInline()
+								->asIssue()
+								->addToBody(lang('anonymize_member_desc'))
+								->render(),
+							'form_url'	=> ee('CP/URL')->make('members/anonymize'),
+							'button' => [
+								'text' => lang('btn_confirm_and_anonymize'),
+								'working' => lang('btn_confirm_and_anonymize_working')
+							],
+							'checklist' => [
+								[
+									'kind' => lang('member'),
+									'desc' => $this->member->username,
+								]
+							],
+							'hidden' => [
+								'bulk_action' => 'anonymize',
+								'selection'   => $this->member->member_id
+							]
+						];
+
+						if ( ! $session->isWithinAuthTimeout())
+						{
+							$modal_vars['secure_form_ctrls'] = [
+								'title' => 'your_password',
+								'desc' => 'your_password_anonymize_members_desc',
+								'group' => 'verify_password',
+								'fields' => [
+									'verify_password' => [
+										'type'      => 'password',
+										'required'  => TRUE,
+										'maxlength' => PASSWORD_MAX_LENGTH
+									]
+								]
+							];
+						}
+
+						ee('CP/Modal')->addModal('anonymize', ee('View')->make('_shared/modal_confirm_remove')->render($modal_vars));
+					}
+
 					$list->addItem(sprintf(lang('delete_username'), $this->member->username), ee('CP/URL')->make('members/delete', $this->query_string))
 						->asDeleteAction('modal-confirm-remove-member');
 
@@ -193,10 +233,14 @@ class Profile extends CP_Controller {
 					$heirs_view = '';
 					if (ee('Model')->get('ChannelEntry')->filter('author_id', $this->member->getId())->count() > 0)
 					{
+						$group_ids = array(1, $this->member->MemberGroup->getId());
+
 						$heirs = ee('Model')->get('Member')
 							->fields('username', 'screen_name')
-							->filter('group_id', 'IN', array(1, $this->member->MemberGroup->getId()))
+							->filter('group_id', 'IN', $group_ids)
 							->filter('member_id', '!=', $this->member->getId())
+							->order('screen_name')
+							->limit(100)
 							->all();
 
 						foreach ($heirs as $heir)
@@ -205,6 +249,23 @@ class Profile extends CP_Controller {
 						}
 
 						$vars['selected'] = array($this->member->getId());
+
+						$vars['fields'] = array(
+							'heir' => array(
+								'type' => 'radio',
+								'choices' => $vars['heirs'],
+								'filter_url' => ee('CP/URL')->make(
+									'members/heir-filter',
+									[
+										'group_ids' => implode('|', $group_ids),
+										'selected' => $this->member->getId()
+									]
+								)->compile(),
+								'no_results' => ['text' => 'no_members_found'],
+								'margin_top' => TRUE,
+								'margin_left' => TRUE
+							)
+						);
 
 						$heirs_view = ee('View')->make('members/delete_confirm')->render($vars);
 					}
@@ -225,6 +286,22 @@ class Profile extends CP_Controller {
 						'ajax_default' => $heirs_view
 					);
 
+					if ( ! $session->isWithinAuthTimeout())
+					{
+						$modal_vars['secure_form_ctrls'] = [
+							'title' => 'your_password',
+							'desc' => 'your_password_delete_members_desc',
+							'group' => 'verify_password',
+							'fields' => [
+								'verify_password' => [
+									'type'      => 'password',
+									'required'  => TRUE,
+									'maxlength' => PASSWORD_MAX_LENGTH
+								]
+							]
+						];
+					}
+
 					ee('CP/Modal')->addModal('member', ee('View')->make('_shared/modal_confirm_remove')->render($modal_vars));
 				}
 			}
@@ -235,8 +312,6 @@ class Profile extends CP_Controller {
 	{
 		ee()->functions->redirect($this->base_url);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Generic method for saving member settings given an expected array
@@ -258,12 +333,6 @@ class Profile extends CP_Controller {
 					{
 						$post = ee()->input->post($field_name);
 
-						// birthday fields must be NULL if blank
-						if (in_array($field_name, array('bday_d', 'bday_m', 'bday_y')))
-						{
-							$post = ($post == '') ? NULL : $post;
-						}
-
 						// Handle arrays of checkboxes as a special case;
 						if ($field['type'] == 'checkbox')
 						{
@@ -280,12 +349,12 @@ class Profile extends CP_Controller {
 							}
 						}
 
-						$name = str_replace('m_field_id_', 'field_ft_', $field_name);
+						$name = str_replace('m_field_id_', 'm_field_ft_', $field_name);
 
 						// Set custom field format override if available, too
 						if (strpos($name, 'field_ft_') !== FALSE && ee()->input->post($name))
 						{
-							$this->member->{"m_$name"} = ee()->input->post($name);
+							$this->member->$name = ee()->input->post($name);
 						}
 					}
 				}

@@ -1,33 +1,20 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\Addons\Forum\Model;
 
 use EllisLab\ExpressionEngine\Service\Model\Model;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Moderator Model for the Forum
+ * Moderator Model for the Forum
  *
  * A model representing a moderator in the Forum.
- *
- * @package		ExpressionEngine
- * @subpackage	Forum Module
- * @category	Model
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
  */
 class Moderator extends Model {
 
@@ -63,7 +50,6 @@ class Moderator extends Model {
 			'model'    => 'ee:Member',
 			'from_key' => 'mod_member_id',
 			'to_key'   => 'member_id',
-			'weak'     => TRUE,
 			'inverse' => array(
 				'name' => 'Moderator',
 				'type' => 'hasMany'
@@ -74,7 +60,6 @@ class Moderator extends Model {
 			'model'    => 'ee:MemberGroup',
 			'from_key' => 'mod_group_id',
 			'to_key'   => 'group_id',
-			'weak'     => TRUE,
 			'inverse' => array(
 				'name' => 'Moderator',
 				'type' => 'hasMany'

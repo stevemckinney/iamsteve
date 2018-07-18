@@ -2,15 +2,8 @@
 
 <div class="tbl-ctrls">
 	<?=form_open($table['base_url'])?>
-		<fieldset class="tbl-search right">
-			<?php if ($can_add): ?>
-			<a class="btn tn action" href="<?=$create_url?>"><?=lang('create_new')?></a>
-			<?php else: ?>
-			<a class="btn tn disable" href="#"><?=lang('site_limit_reached')?></a>
-			<?php endif; ?>
-		</fieldset>
 		<h1><?=$cp_page_title?></h1>
-		<?=ee('CP/Alert')->getAllInlines()?>
+		<div class="app-notice-wrap"><?=ee('CP/Alert')->getAllInlines()?></div>
 		<?php $this->embed('_shared/table', $table); ?>
 		<?=$pagination?>
 		<fieldset class="tbl-bulk-act hidden">

@@ -1,33 +1,20 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\Addons\Forum\Model;
 
 use EllisLab\ExpressionEngine\Service\Model\Model;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Search Model for the Forum
+ * Search Model for the Forum
  *
  * A model representing a search in the Forum.
- *
- * @package		ExpressionEngine
- * @subpackage	Forum Module
- * @category	Model
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
  */
 class Search extends Model {
 
@@ -45,9 +32,8 @@ class Search extends Model {
 			'type' => 'belongsTo'
 		),
 		'Member' => array(
-			'type'  => 'belongsto',
+			'type'  => 'belongsTo',
 			'model' => 'ee:Member',
-			'weak'  => TRUE,
 			'inverse' => array(
 				'name' => 'Search',
 				'type' => 'hasMany'

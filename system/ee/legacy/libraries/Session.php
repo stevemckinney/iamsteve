@@ -1,73 +1,56 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Core Session Class
+ * Core Session
  *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Core
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * ExpressionEngine User Classes (* = current):
+ *
+ *   1. Session*
+ *   2. Authentication
+ *   3. Permissions
+ *
+ * There are three validation types, set in the config file:
+ *
+ *   1. User cookies AND session ID (cs)
+ *
+ * 	This is the most secure way to run a site. A session cookie is set
+ * 	with a random ID, and a browser fingerprint is added to the URL.
+ *
+ * 	The cookie expires when you have been inactive longer than two
+ * 	hours (one hour in the control panel). The fingerprint in the url will be
+ * 	lost when you close the browser.
+ *
+ * 	Using this setting does NOT allow 'stay logged-in' capability, as each
+ * 	session has a finite lifespan.
+ *
+ *   2. Cookies only - (c)
+ *
+ * 	With this validation type, a session ID string is not added to the url.
+ * 	Therefore users can remain permanently logged in if they choose the
+ * 	remember me option. This will set a second cookie that expires in a year.
+ *
+ * 	This setting is obviously less secure because it does not provide a safety
+ * 	net if you share your computer or access your site from a public computer.
+ * 	It relies solely on the session_id/remember_me cookies. You must log out.
+ *
+ *   3. Session ID only (s).
+ *
+ * 	Most compatible as it does not rely on cookies at all. Instead, only the
+ * 	URL query string ID is used.
+ *
+ * 	No stay-logged in capability. The session will expire after one hour of
+ * 	inactivity, so in terms of security, it is preferable to number 2.
+ *
+ * 	NOTE: The control panel and public pages can each have their own
+ * 	      session preference.
  */
-
-// ------------------------------------------------------------------------
-
-/*
-ExpressionEngine User Classes (* = current):
-
-  1. Session*
-  2. Authentication
-  3. Permissions
-
-There are three validation types, set in the config file:
-
-  1. User cookies AND session ID (cs)
-
-	This is the most secure way to run a site. A session cookie is set
-	with a random ID, and a browser fingerprint is added to the URL.
-
-	The cookie expires when you have been inactive longer than two
-	hours (one hour in the control panel). The fingerprint in the url will be
-	lost when you close the browser.
-
-	Using this setting does NOT allow 'stay logged-in' capability, as each
-	session has a finite lifespan.
-
-  2. Cookies only - (c)
-
-	With this validation type, a session ID string is not added to the url.
-	Therefore users can remain permanently logged in if they choose the
-	remember me option. This will set a second cookie that expires in a year.
-
-	This setting is obviously less secure because it does not provide a safety
-	net if you share your computer or access your site from a public computer.
-	It relies solely on the session_id/remember_me cookies. You must log out.
-
-  3. Session ID only (s).
-
-	Most compatible as it does not rely on cookies at all. Instead, only the
-	URL query string ID is used.
-
-	No stay-logged in capability. The session will expire after one hour of
-	inactivity, so in terms of security, it is preferable to number 2.
-
-	NOTE: The control panel and public pages can each have their own
-	      session preference.
-*/
-
 class EE_Session {
 
 	public $user_session_len	= 7200;  // User sessions expire in two hours
@@ -87,6 +70,8 @@ class EE_Session {
 	public $sess_crypt_key		= '';
 
 	public $cookie_ttl			= '';
+	protected $activity_cookie_ttl = 31536000; // Activity cookie expiration:  One year
+
 	public $session_length		= '';
 	public $validation_type  	= '';
 
@@ -204,9 +189,6 @@ class EE_Session {
 			}
 		}
 
-		$this->_prep_flashdata();
-		ee()->remember->refresh();
-
 		// Fetch "tracker" cookie
 		if (REQ != 'CP')
 		{
@@ -238,7 +220,25 @@ class EE_Session {
 		unset($member_exists);
 	}
 
-	// --------------------------------------------------------------------
+	public function setSessionCookies()
+	{
+		ee()->input->set_cookie('last_visit', $this->userdata['last_visit'], $this->activity_cookie_ttl);
+		ee()->input->set_cookie('last_activity', ee()->localize->now, $this->activity_cookie_ttl);
+
+		// Update session ID cookie
+		if ($this->session_exists === TRUE && $this->validation != 's')
+		{
+			ee()->input->set_cookie($this->c_session , $this->userdata['session_id'],  $this->cookie_ttl);
+		}
+
+		if (REQ == 'PAGE')
+		{
+			$this->set_tracker_cookie($this->tracker);
+		}
+
+		$this->_prep_flashdata();
+		ee()->remember->refresh();
+	}
 
 	/**
 	 * Fetch all session data
@@ -249,8 +249,6 @@ class EE_Session {
 	{
 		return $this->userdata;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Check for banned data
@@ -310,8 +308,6 @@ class EE_Session {
 		return FALSE;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Session Cache
 	 *
@@ -327,8 +323,6 @@ class EE_Session {
 		return (isset($this->cache[$class][$key])) ? $this->cache[$class][$key] : $default;
 	}
 
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Check password lockout
@@ -351,8 +345,6 @@ class EE_Session {
 
 		return ($lockout->row('count') >= 4) ? TRUE : FALSE;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Create New Session
@@ -403,15 +395,17 @@ class EE_Session {
 		$this->userdata['fingerprint']	= $this->sdata['fingerprint'];
 		$this->userdata['site_id']		= ee()->config->item('site_id');
 
-		ee()->input->set_cookie($this->c_session, $this->sdata['session_id'], $this->cookie_ttl);
-		ee()->input->set_cookie($this->c_expire, time()+$this->session_length, $this->cookie_ttl);
+		// Set the session cookie, ONLY if this method is not called from the context of the constructor, i.e. a login action
+		if (isset(ee()->session))
+		{
+			ee()->input->set_cookie($this->c_session , $this->userdata['session_id'],  $this->cookie_ttl);
+		}
 
 		ee()->db->query(ee()->db->insert_string('exp_sessions', $this->sdata));
 
+		$this->session_exists = TRUE;
 		return $this->sdata['session_id'];
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Delete old sessions if probability is met
@@ -432,8 +426,6 @@ class EE_Session {
 						 ->delete('sessions');
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Delete old password lockout data
@@ -458,8 +450,6 @@ class EE_Session {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Lock the control panel
 	 *
@@ -478,8 +468,6 @@ class EE_Session {
 			->where('session_id', $this->userdata['session_id'])
 			->update('sessions');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Destroy session. Essentially logging a user off.
@@ -502,12 +490,9 @@ class EE_Session {
 
 		ee()->remember->delete();
 		ee()->input->delete_cookie($this->c_session);
-		ee()->input->delete_cookie($this->c_expire);
 		ee()->input->delete_cookie($this->c_anon);
 		ee()->input->delete_cookie('tracker');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Fetch guest data
@@ -539,11 +524,8 @@ class EE_Session {
 		// It enables us to track "read topics" with users who are not
 		// logged in.
 
-		// Cookie expiration:  One year
-		$expire = (60*60*24*365);
-
 		// Has the user been active before? If not we set the "last_activity" to the current time.
-		$this->sdata['last_activity'] = ( ! ee()->input->cookie('last_activity')) ? ee()->localize->now : ee()->input->cookie('last_activity');
+		$this->sdata['last_activity'] = (int) ( ! ee()->input->cookie('last_activity')) ? ee()->localize->now : ee()->input->cookie('last_activity');
 
 		// Is the "last_visit" cookie set?  If not, we set the last visit
 		// date to ten years ago. This is a kind of funky thing to do but
@@ -552,12 +534,11 @@ class EE_Session {
 		// doesn't hurt anything to set it this way for guests.
 		if ( ! ee()->input->cookie('last_visit'))
 		{
-			$this->userdata['last_visit'] = ee()->localize->now-($expire*10);
-			ee()->input->set_cookie('last_visit', $this->userdata['last_visit'], $expire);
+			$this->userdata['last_visit'] = ee()->localize->now-($this->activity_cookie_ttl*10);
 		}
 		else
 		{
-			$this->userdata['last_visit'] = ee()->input->cookie('last_visit');
+			$this->userdata['last_visit'] = (int) ee()->input->cookie('last_visit');
 		}
 
 		// If the user has been inactive longer than the session length we'll
@@ -566,14 +547,8 @@ class EE_Session {
 		if (($this->sdata['last_activity'] + $this->session_length) < ee()->localize->now)
 		{
 			$this->userdata['last_visit'] = $this->sdata['last_activity'];
-			ee()->input->set_cookie('last_visit', $this->userdata['last_visit'], $expire);
 		}
-
-		// Update the last activity with each page load
-		ee()->input->set_cookie('last_activity', ee()->localize->now, $expire);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Fetch member data
@@ -699,8 +674,6 @@ class EE_Session {
 		return TRUE;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch session data
 	 *
@@ -759,8 +732,6 @@ class EE_Session {
 		return TRUE;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get flashdata by key
 	 *
@@ -772,14 +743,14 @@ class EE_Session {
 		return isset($this->flashdata[$key]) ? $this->flashdata[$key] : FALSE;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Is the nation banned?
 	 */
 	public function nation_ban_check($show_error = TRUE)
 	{
-		if (ee()->config->item('require_ip_for_posting') != 'y' OR ee()->config->item('ip2nation') != 'y')
+		$ip_to_nation = ee('Addon')->get('ip_to_nation');
+
+		if (ee()->config->item('require_ip_for_posting') != 'y' OR ( ! $ip_to_nation OR ! $ip_to_nation->isInstalled()))
 		{
 			return FALSE;
 		}
@@ -822,8 +793,6 @@ class EE_Session {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Save password lockout
 	 */
@@ -843,8 +812,6 @@ class EE_Session {
 
 		ee()->db->insert('password_lockout', $data);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Set Session Cache
@@ -868,8 +835,6 @@ class EE_Session {
 		return $this;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Set flashdata
 	 *
@@ -890,8 +855,6 @@ class EE_Session {
 
 		$this->_set_flash_cookie();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Tracker
@@ -969,15 +932,8 @@ class EE_Session {
 			}
 		}
 
-		if (REQ == 'PAGE')
-		{
-			$this->set_tracker_cookie($tracker);
-		}
-
 		return $tracker;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * This will set the tracker cookie with proper encoding
@@ -1009,8 +965,6 @@ class EE_Session {
 
 
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * This will un-set the most recent URL from the tracker
 	 */
@@ -1024,8 +978,6 @@ class EE_Session {
 		}
 		$this->set_tracker_cookie();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Update Member session
@@ -1055,19 +1007,11 @@ class EE_Session {
 
 		ee()->db->query(ee()->db->update_string('exp_sessions', $this->sdata, "session_id = '".$cur_session_id."'"));
 
-		// Update session ID cookie
-		if ($this->validation != 's')
-		{
-			ee()->input->set_cookie($this->c_session , $this->sdata['session_id'],  $this->cookie_ttl);
-		}
-
 		// We'll unset the "last activity" item from the session data array.
 		// We do this to avoid a conflict with the "last_activity" item in the
 		// userdata array since we'll be merging the two arrays in a later step
 		unset($this->sdata['last_activity']);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Fetch a session item
@@ -1080,8 +1024,6 @@ class EE_Session {
 	{
 		return ( ! isset($this->userdata[$which])) ? $default : $this->userdata[$which];
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Fetch the current session id or fingerprint
@@ -1107,8 +1049,6 @@ class EE_Session {
 		return ($s);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get the currently used language pack. Will return the user's language
 	 * pack if a session exists, otherwise will fall back to the default
@@ -1132,8 +1072,6 @@ class EE_Session {
 
 		return 'english';
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Age flashdata
@@ -1164,7 +1102,25 @@ class EE_Session {
 		$this->_set_flash_cookie();
 	}
 
-	// --------------------------------------------------------------------
+	/**
+	 * Reverse-age flashdata. This is useful when redirecting but knowing we'll
+	 * need to preserve flashdata to the next screen.
+	 */
+	public function benjaminButtonFlashdata()
+	{
+		foreach($this->flashdata as $key => $val)
+		{
+			if (strpos($key, ':new:') === FALSE &&
+				strpos($key, ':old:') === FALSE)
+			{
+				$this->flashdata[':new:'.$key] = $val;
+			}
+
+			unset($this->flashdata[$key]);
+		}
+
+		$this->_set_flash_cookie();
+	}
 
 	/**
 	 * Do ban Check
@@ -1200,8 +1156,6 @@ class EE_Session {
 		return $ban_status;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Perform the big query to grab member data
 	 *
@@ -1231,8 +1185,6 @@ class EE_Session {
 		return ee()->db->get();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Reset session data as GUEST
 	 *
@@ -1252,8 +1204,6 @@ class EE_Session {
 		);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Reset userdata as GUEST
 	 *
@@ -1261,12 +1211,13 @@ class EE_Session {
 	 */
 	protected function _initialize_userdata()
 	{
+		// my_* cookies used by guests in the comment form
 		$this->userdata = array(
-			'username'			=> ee()->input->cookie('my_name'),
+			'username'			=> ee()->input->cookie('my_name', TRUE),
 			'screen_name'		=> '',
-			'email'				=> ee()->input->cookie('my_email'),
-			'url'				=> ee()->input->cookie('my_url'),
-			'location'			=> ee()->input->cookie('my_location'),
+			'email'				=> ee()->input->cookie('my_email', TRUE),
+			'url'				=> ee()->input->cookie('my_url', TRUE),
+			'location'			=> ee()->input->cookie('my_location', TRUE),
 			'language'			=> '',
 			'timezone'			=> ee()->config->item('default_site_timezone'),
 			'date_format'		=> ee()->config->item('date_format') ? ee()->config->item('date_format') : '%n/%j/%Y',
@@ -1279,8 +1230,6 @@ class EE_Session {
 			'ignore_list'		=>  array()
 		);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Prep flashdata
@@ -1303,8 +1252,6 @@ class EE_Session {
 		$this->flashdata = array();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Create a browser fingerprint
 	 *
@@ -1314,8 +1261,6 @@ class EE_Session {
 	{
 		return md5(ee()->input->user_agent().$salt);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Set signed flashdata cookie
@@ -1330,8 +1275,6 @@ class EE_Session {
 			ee()->input->set_cookie('flash' , $payload, 86500);
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Setup Assigned Sites
@@ -1372,8 +1315,6 @@ class EE_Session {
 
 		$this->userdata['assigned_sites'] = $assigned_sites;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Setup CP Channel Privileges
@@ -1419,8 +1360,6 @@ class EE_Session {
 		$this->userdata['assigned_channels'] = $assigned_channels;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Setup Module Privileges
 	 *
@@ -1447,8 +1386,6 @@ class EE_Session {
 		$qry->free_result();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Setup Session Lengths
 	 *
@@ -1458,8 +1395,6 @@ class EE_Session {
 	{
 		return (REQ == 'CP') ? $this->cpan_session_len : $this->user_session_len;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Setup Session Cookie Timeout
@@ -1475,8 +1410,6 @@ class EE_Session {
 
 		return $this->session_length;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Setup Template Privileges

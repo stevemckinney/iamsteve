@@ -1,31 +1,16 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Utilities;
 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Member Import Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Member Import Controller
  */
 class MemberImport extends Utilities {
 
@@ -35,6 +20,16 @@ class MemberImport extends Utilities {
 	protected $default_fields = array();
 	protected $default_custom_fields = array();
 
+	private $xml_file_name = '';
+	private $cache = '';
+
+
+	function __construct()
+	{
+		parent::__construct();
+		$this->cache = PATH_CACHE.'import_convert/';
+	}
+
 	/**
 	 * Member import
 	 */
@@ -43,6 +38,18 @@ class MemberImport extends Utilities {
 		if ( ! ee()->cp->allowed_group('can_access_utilities'))
 		{
 			show_error(lang('unauthorized_access'), 403);
+		}
+
+		if ( ! AJAX_REQUEST)
+		{
+			if ( ! ee('Filesystem')->exists($this->cache))
+			{
+				ee('Filesystem')->mkDir($this->cache);
+			}
+			else
+			{
+				ee('Filesystem')->deleteDir($this->cache, TRUE);
+			}
 		}
 
 		$groups = ee('Model')->get('MemberGroup')->order('group_title', 'asc')->all();
@@ -57,21 +64,28 @@ class MemberImport extends Utilities {
 
 		$vars['sections'] = array(
 			array(
-				array(
-					'title' => 'mbr_xml_file',
-					'desc' => 'mbr_xml_file_location',
-					'fields' => array(
-						'xml_file' => array('type' => 'text', 'required' => TRUE)
+			'member_xml_file' => array(
+				'title' => 'member_xml_file',
+				'desc' => sprintf(lang('member_xml_file_desc')),
+				'fields' => array(
+					'member_xml_file' => [
+						'type' => 'file',
+						'required' => TRUE
+						],
 					)
-				),
+				)
 			),
 			'mbr_import_default_options' => array(
 				array(
 					'title' => 'member_group',
 					'fields' => array(
 						'group_id' => array(
-							'type' => 'select',
-							'choices' => $member_groups
+							'type' => 'radio',
+							'choices' => $member_groups,
+							'required' => TRUE,
+							'no_results' => [
+								'text' => sprintf(lang('no_found'), lang('member_groups'))
+							]
 						)
 					)
 				),
@@ -79,7 +93,7 @@ class MemberImport extends Utilities {
 					'title' => 'mbr_language',
 					'fields' => array(
 						'language' => array(
-							'type' => 'select',
+							'type' => 'radio',
 							'choices' => ee()->lang->language_pack_names(),
 							'value' => ee()->config->item('deft_lang') ?: 'english'
 						)
@@ -99,7 +113,7 @@ class MemberImport extends Utilities {
 					'desc' => 'used_in_cp_only',
 					'fields' => array(
 						'date_format' => array(
-							'type' => 'select',
+							'type' => 'radio',
 							'choices' => array(
 								'%n/%j/%Y' => 'mm/dd/yyyy',
 								'%j/%n/%Y' => 'dd/mm/yyyy',
@@ -108,7 +122,7 @@ class MemberImport extends Utilities {
 							)
 						),
 						'time_format' => array(
-							'type' => 'select',
+							'type' => 'radio',
 							'choices' => array(
 								'24' => lang('24_hour'),
 								'12' => lang('12_hour')
@@ -139,9 +153,14 @@ class MemberImport extends Utilities {
 		ee()->load->library('form_validation');
 		ee()->form_validation->set_rules(array(
 			array(
-				 'field'   => 'xml_file',
-				 'label'   => 'lang:mbr_xml_file',
-				 'rules'   => 'required|file_exists'
+				 'field'   => 'member_xml_file',
+				 'label'   => 'lang:member_xml_file',
+				 'rules'   => 'callback__file_handler'
+			),
+			array(
+				 'field'   => 'group_id',
+				 'label'   => 'lang:member_group',
+				 'rules'   => 'required'
 			),
 			array(
 				 'field'   => 'auto_custom_field',
@@ -166,6 +185,18 @@ class MemberImport extends Utilities {
 			ee()->view->set_message('issue', lang('member_import_error'), lang('member_import_error_desc'));
 		}
 
+		// Check cache folder is writable, no point in filling the form if not
+		if ( ! ee('Filesystem')->isWritable($this->cache))
+		{
+			ee('CP/Alert')->makeInline('shared-form')
+				->asWarning()
+				->cannotClose()
+				->withTitle(lang('import_cache_file_not_writable'))
+				->addToBody(lang('import_cache_file_instructions'))
+				->now();
+		}
+
+		$vars['has_file_input'] = TRUE;
 		ee()->view->base_url = $base_url;
 		ee()->view->ajax_validate = TRUE;
 		ee()->view->cp_page_title = lang('member_import');
@@ -174,7 +205,50 @@ class MemberImport extends Utilities {
 		ee()->cp->render('settings/form', $vars);
 	}
 
-	// --------------------------------------------------------------------
+	/**
+	 * Callback that handles file upload
+	 *
+	 *
+	 * @return	bool
+	 */
+
+	public function _file_handler()
+	{
+		if ( ! ee('Filesystem')->isWritable($this->cache))
+		{
+			ee()->form_validation->set_message('_file_handler', lang('import_cache_file_not_writable'));
+			return FALSE;
+		}
+
+		// Required field
+		if ( ! isset($_FILES['member_xml_file']['name']) OR empty($_FILES['member_xml_file']['name']))
+		{
+			ee()->form_validation->set_message('_file_handler', lang('required'));
+			return FALSE;
+		}
+
+		// OK- xml is not allowed by default, so we need to whitelist it
+		$whitelist_xml = array('text/xml', 'application/xml');
+		ee()->config->set_item('mime_whitelist_additions', $whitelist_xml);
+
+		ee()->load->library('upload');
+		ee()->upload->initialize(array(
+			'allowed_types'	=> 'xml',
+			'upload_path'	=> $this->cache,
+			'overwrite' => TRUE
+		));
+
+		if ( ! ee()->upload->do_upload('member_xml_file'))
+		{
+			ee()->form_validation->set_message('_file_handler', lang('upload_problem'));
+			return FALSE;
+		}
+
+		$data = ee()->upload->data();
+		$this->xml_file_name = $data['file_name'];
+
+		return TRUE;
+	}
 
 	/**
 	 * Confirm Import Member Data from XML
@@ -206,24 +280,26 @@ class MemberImport extends Utilities {
 			$group_name = htmlentities($member_group->group_title, ENT_QUOTES, 'UTF-8');
 		}
 
+		$this->xml_file_name = ( ! empty($this->xml_file_name)) ? $this->xml_file_name : ee('Encrypt')->decode($this->input->post('xml_file_name'));
+
 		$data = array(
-			'xml_file'   		=> parse_config_variables(ee()->input->post('xml_file')),
-			'group_id' 			=> ee()->input->post('group_id'),
-			'language' 			=> (ee()->input->post('language') == lang('none')) ? '' : ee()->input->post('language'),
-			'timezones' 		=> ee()->input->post('timezones'),
-			'date_format' 		=> ee()->input->post('date_format'),
-			'time_format' 		=> ee()->input->post('time_format'),
-			'include_seconds' 	=> ee()->input->post('include_seconds'),
+			'xml_file_name'   		=> ee('Encrypt')->encode($this->xml_file_name),
+			'group_id' 			=> (int) ee()->input->post('group_id'),
+			'language' 			=> (ee()->input->post('language') == lang('none')) ? '' : form_prep(ee()->input->post('language')),
+			'timezones' 		=> form_prep(ee()->input->post('timezones')),
+			'date_format' 		=> form_prep(ee()->input->post('date_format')),
+			'time_format' 		=> form_prep(ee()->input->post('time_format')),
+			'include_seconds' 	=> (ee()->input->post('include_seconds') == 'y') ? 'y' : 'n',
 			'auto_custom_field' => (ee()->input->post('auto_custom_field') == 'y') ? 'y' : 'n'
 		);
 
 		ee()->lang->load('admin');
 		$localization_cfg = ee()->config->get_config_fields('localization_cfg');
-		$added_fields = ee()->input->post('added_fields');
+		$added_fields = form_prep(ee()->input->post('added_fields'));
 
 		$vars = array(
 			'added_fields'		=> $added_fields,
-			'xml_file'   		=> $data['xml_file'],
+			'xml_file_name'   		=> $data['xml_file_name'],
 			'default_group_id'	=> $group_name,
 			'language' 			=> ($data['language'] == '') ? lang('none') : ucfirst($data['language']),
 			'timezones' 		=> $data['timezones'],
@@ -245,7 +321,7 @@ class MemberImport extends Utilities {
 		// Branch off here if we need to create a new custom field
 		if ($data['auto_custom_field'] == 'y' && ee()->input->post('added_fields') === FALSE)
 		{
-			$new_custom_fields = $this->_custom_field_check($data['xml_file']);
+			$new_custom_fields = $this->_custom_field_check($this->cache . '/' .$this->xml_file_name);
 
 			if ($new_custom_fields !== FALSE && count($new_custom_fields) > 0)
 			{
@@ -260,8 +336,6 @@ class MemberImport extends Utilities {
 
 		ee()->cp->render('utilities/member-import/confirm', $vars);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Process XML
@@ -279,11 +353,11 @@ class MemberImport extends Utilities {
 
 		$this->lang->loadfile('member_import');
 
-		$xml_file   = ( ! $this->input->post('xml_file'))  ? '' : parse_config_variables($this->input->post('xml_file'));
+		$this->xml_file_name = ee('Encrypt')->decode(ee()->input->post('xml_file_name'));
 
 		//  Read XML file contents
 		$this->load->helper('file');
-		$contents = read_file($xml_file);
+		$contents = read_file($this->cache . '/' . $this->xml_file_name);
 
 		if ($contents === FALSE)
 		{
@@ -303,24 +377,20 @@ class MemberImport extends Utilities {
 		}
 
 		// Any custom fields exist
-		// TODO: MemberField model isn't ready, using query builder
-		$this->db->select('m_field_name, m_field_id');
-		$m_custom_fields = $this->db->get('member_fields');
 
-		if ($m_custom_fields->num_rows() > 0)
+		$m_custom_fields = ee('Model')->get('MemberField')
+			->fields('m_field_name', 'm_field_id')
+			->all();
+
+		foreach ($m_custom_fields as $row)
 		{
-			$custom_fields = TRUE;
-
-			foreach ($m_custom_fields->result() as $row)
+			if (isset($_POST['map'][$row->m_field_name]))
 			{
-				if (isset($_POST['map'][$row->m_field_name]))
-				{
-					$this->default_custom_fields[$_POST['map'][$row->m_field_name]] = $row->m_field_id;
-				}
-				else
-				{
-					$this->default_custom_fields[$row->m_field_name] = $row->m_field_id;
-				}
+				$this->default_custom_fields[$_POST['map'][$row->m_field_name]] = $row->m_field_id;
+			}
+			else
+			{
+				$this->default_custom_fields[$row->m_field_name] = $row->m_field_id;
 			}
 		}
 
@@ -351,12 +421,15 @@ class MemberImport extends Utilities {
 
 		$msg = lang('import_success_blurb').'<br>'.str_replace('%x', $imports, lang('total_members_imported'));
 
+		if (ee('Filesystem')->exists($this->cache))
+		{
+			ee('Filesystem')->deleteDir($this->cache);
+		}
+
 		ee()->view->set_message('success', lang('import_success'), $msg, TRUE);
 
 		$this->functions->redirect(ee('CP/URL')->make('utilities/member_import'));
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Validate XML for Member Import
@@ -427,36 +500,6 @@ class MemberImport extends Utilities {
 						{
 							$this->members[$i][$tag->tag] = $tag->value;
 						}
-						elseif ($tag->tag == 'birthday')
-						{
-							// We have a special XML format for birthdays that doesn't match the database fields
-							foreach($tag->children as $birthday)
-							{
-									switch ($birthday->tag)
-									{
-										case 'day':
-											$this->members[$i]['bday_d'] = $birthday->value;
-											break;
-										case 'month':
-											$this->members[$i]['bday_m'] = $birthday->value;
-											break;
-										case 'year':
-											$this->members[$i]['bday_y'] = $birthday->value;
-											break;
-										default:
-											$errors[] = array(lang('invalid_tag')." '&lt;".$birthday->tag."&gt;'");
-											break;
-									}
-							}
-
-
-							if ( ! isset($this->members[$i]['bday_d']) || ! isset($this->members[$i]['bday_m']) || ! isset($this->members[$i]['bday_y']))
-							{
-								$errors[] = array(lang('missing_birthday_child'));
-							}
-
-							$this->members[$i][$tag->tag] = $tag->value;
-						}
 						elseif (isset($this->default_custom_fields[$tag->tag]))
 						{
 							$this->members_custom[$i][$tag->tag] = $tag->value;
@@ -510,6 +553,12 @@ class MemberImport extends Utilities {
 									$errors[] = array(str_replace("%x", $tag->value, lang('duplicate_member_id')));
 								}
 								break;
+							case 'avatar_filename':
+									if (strlen($tag->value) > 120)
+									{
+										$errors[] = array(str_replace("%x", $tag->value, lang('invalid_avatar_filename')));
+									}
+									break;
 							case 'password':
 								// We require a type attribute here, as outlined in the docs.
 								// This is a quick error check to ensure its present.
@@ -601,8 +650,6 @@ class MemberImport extends Utilities {
 		return $errors;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Do Import
 	 *
@@ -632,10 +679,11 @@ class MemberImport extends Utilities {
 		$counter = 0;
 		$custom_fields = (count($this->default_custom_fields) > 0) ? TRUE : FALSE;
 
+
 		foreach ($this->members as $count => $member)
 		{
 			$data = array();
-			$dupe = FALSE;
+			$dupe = NULL;
 
 			foreach ($this->default_fields as $key => $val)
 			{
@@ -655,7 +703,7 @@ class MemberImport extends Utilities {
 				{
 					if (isset($this->members_custom[$count][$name]))
 					{
-						$cdata['m_field_id_'.$id] = $this->members_custom[$count][$name];
+						$data['m_field_id_'.$id] = $this->members_custom[$count][$name];
 					}
 				}
 			}
@@ -669,89 +717,37 @@ class MemberImport extends Utilities {
 			/*  before a specified member_id.
 			/* -------------------------------------*/
 
-			if (isset($data['member_id']))
+			if (isset($data['member_id']) && isset($new_ids[$data['member_id']]))
 			{
-				if (isset($new_ids[$data['member_id']]))
-				{
-					/* -------------------------------------
-					/*  Grab the member so we can re-insert it after we
-					/*  take care of this nonsense
-					/* -------------------------------------*/
-					$dupe = TRUE;
+				$member_obj = ee('Model')->get('Member', $data['member_id'])->first();
 
-					if ($custom_fields == TRUE)
-					{
-						$tempcdata = $this->db->get_where('member_data', array('member_id' => $data['member_id']));
-					}
-				}
+				/* -------------------------------------
+				/*  Grab the member so we can re-insert it after we
+				/*  take care of this nonsense
+				/* -------------------------------------*/
+				$dupe = $member_obj->getValues();
+				unset($dupe['member_id']);
+				ee('Model')->make('Member', $dupe)->save();
 			}
-			/* -------------------------------------
-			/*  Shove it in!
-			/*  We are using REPLACE as we want to overwrite existing members if a member id is specified
-			/* -------------------------------------*/
+			else
+			{
+				$member_obj = ee('Model')->make('Member');
+			}
 
-			$this->db->replace('members', $data);
-			$mid = $this->db->insert_id();
+			$member_obj->set($data)->save();
+			$mid = $member_obj->member_id;
 
 			//  Add the member id to the array of imported member id's
 			$new_ids[$mid] = $mid;
 
-			if ($custom_fields == TRUE)
-			{
-				$cdata['member_id'] = $mid;
-			}
-
-			//  Insert the old auto_incremented member, if necessary
-			if ($dupe === TRUE)
-			{
-				unset($tempdata->row['member_id']); // dump the member_id so it can auto_increment a new one
-				$this->db->insert('members', $tempdata->row);
-				$replace_mid = $this->db->insert_id();
-
-				$new_ids[$replace_mid] = '';
-
-				if ($custom_fields == TRUE)
-				{
-					$tempcdata->row['member_id'] = $replace_mid;
-					$this->db->insert('member_data', $tempcdata->row);
-				}
-			}
-
-			if ($custom_fields == TRUE)
-			{
-				$this->db->replace('member_data', $cdata);
-			}
-
 			$counter++;
 		}
-
-		/** -------------------------------------
-		/**  Add records to exp_member_data and exp_member_homepage tables for all imported members
-		/** -------------------------------------*/
-
-		$values = '';
-
-		foreach ($new_ids as $key => $val)
-		{
-			$values .= "('$key'),";
-		}
-
-		$values = substr($values, 0, -1);
-
-		if ($custom_fields == FALSE)
-		{
-			$this->db->query("INSERT INTO exp_member_data (member_id) VALUES ".$values);
-		}
-
-		$this->db->query("INSERT INTO exp_member_homepage (member_id) VALUES ".$values);
 
 		//  Update Statistics
 		$this->stats->update_member_stats();
 
 		return $counter;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Custom Field Check
@@ -819,28 +815,12 @@ class MemberImport extends Utilities {
 						$new_custom_fields['new'][] = $tag->tag;
 						$new_custom_fields['xml_fields'][] = $tag->tag;
 					}
-					elseif (isset($existing_c_fields[$tag->tag]))
-					{
-						while($i < 100)
-						{
-							$i++;
-
-							if ( ! isset($existing_c_fields[$tag->tag.'_'.$i]))
-							{
-								$new_custom_fields['new'][] = $tag->tag.'_'.$i;
-								$new_custom_fields['xml_fields'][] = $tag->tag;
-								break;
-							}
-						}
-					}
 				}
 			}
 		}
 
 		return $new_custom_fields;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * New Custom Fields Form
@@ -862,8 +842,6 @@ class MemberImport extends Utilities {
 		ee()->cp->set_breadcrumb(ee('CP/URL')->make('utilities/member_import'), lang('member_import'));
 		ee()->cp->render('utilities/member-import/custom', $vars);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Create Custom Fields
@@ -899,25 +877,24 @@ class MemberImport extends Utilities {
 
 		foreach ($_POST['create_ids'] as $k => $v)
 		{
-			$data['m_field_name'] 		= $_POST['m_field_name'][$k];
-			$data['m_field_label'] 		= $_POST['m_field_label'][$k];
-			$data['m_field_description']= (isset($_POST['m_field_description'][$k])) ? $_POST['m_field_description'][$k]	: '';
-			$data['m_field_type'] 		= (isset($_POST['m_field_type'][$k])) ? $_POST['m_field_type'][$k] : 'text';
-			$data['m_field_list_items'] = (isset($_POST['m_field_list_items'][$k])) ? $_POST['m_field_list_items'][$k] : '';
-			$data['m_field_ta_rows'] 	= (isset($_POST['m_field_ta_rows'][$k])) ? $_POST['m_field_ta_rows'][$k] : '100';
-			$data['m_field_maxl'] 		= (isset($_POST['m_field_maxl'][$k])) ? $_POST['m_field_maxl'][$k] : '100';
-			$data['m_field_width'] 		= (isset($_POST['m_field_width'][$k])) ? $_POST['m_field_width'][$k] : '100%';
-			$data['m_field_search'] 	= 'y';
-			$data['m_field_required'] 	= (isset($_POST['required'][$k])) ? 'y' : 'n';
-			$data['m_field_public'] 	= (isset($_POST['public'][$k])) ? 'y' : 'n';
-			$data['m_field_reg'] 		= (isset($_POST['reg_form'][$k])) ? 'y' : 'n';
-			$data['m_field_fmt'] 		= (isset($_POST['m_field_fmt'][$k])) ? $_POST['m_field_fmt'][$k] : 'xhtml';
-			$data['m_field_order'] 		= (isset($_POST['m_field_order'][$k])) ? $_POST['m_field_order'][$k] : '';
+			$field = ee('Model')->make('MemberField');
 
-			$this->db->insert('member_fields', $data);
-			$field_id = $this->db->insert_id();
-			$this->db->query('ALTER table exp_member_data add column m_field_id_'.$field_id.' text NULL DEFAULT NULL');
-			$this->db->query('ALTER table exp_member_data add column m_field_ft_'.$field_id.' text NULL DEFAULT NULL');
+			$field->m_field_name        = $_POST['m_field_name'][$k];
+			$field->m_field_label       = $_POST['m_field_label'][$k];
+			$field->m_field_description = (isset($_POST['m_field_description'][$k])) ? $_POST['m_field_description'][$k]	: '';
+			$field->m_field_type        = (isset($_POST['m_field_type'][$k])) ? $_POST['m_field_type'][$k] : 'text';
+			$field->m_field_list_items  = (isset($_POST['m_field_list_items'][$k])) ? $_POST['m_field_list_items'][$k] : '';
+			$field->m_field_ta_rows     = (isset($_POST['m_field_ta_rows'][$k])) ? $_POST['m_field_ta_rows'][$k] : '100';
+			$field->m_field_maxl        = (isset($_POST['m_field_maxl'][$k])) ? $_POST['m_field_maxl'][$k] : '100';
+			$field->m_field_width       = (isset($_POST['m_field_width'][$k])) ? $_POST['m_field_width'][$k] : '100%';
+			$field->m_field_search      = 'y';
+			$field->m_field_required    = (isset($_POST['required'][$k])) ? 'y' : 'n';
+			$field->m_field_public      = (isset($_POST['public'][$k])) ? 'y' : 'n';
+			$field->m_field_reg         = (isset($_POST['reg_form'][$k])) ? 'y' : 'n';
+			$field->m_field_fmt         = (isset($_POST['m_field_fmt'][$k])) ? $_POST['m_field_fmt'][$k] : 'xhtml';
+			$field->m_field_order       = (isset($_POST['m_field_order'][$k])) ? $_POST['m_field_order'][$k] : '';
+
+			$field->save();
 
 			$_POST['added_fields'][$_POST['m_field_name'][$k]] = $_POST['m_field_label'][$k];
 			//$_POST['xml_custom_fields'][$_POST['xml_field_name'][$k]] = $field_id;
@@ -938,8 +915,6 @@ class MemberImport extends Utilities {
 
 		return $this->memberImportConfirm();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Create Custom Field Validation

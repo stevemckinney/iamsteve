@@ -1,35 +1,20 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Members\Profile;
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 use CP_Controller;
 
 use EllisLab\ExpressionEngine\Library\CP\Table;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Member Profile Quicklinks Settings Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Member Profile Quicklinks Settings Controller
  */
 class Quicklinks extends Settings {
 
@@ -101,10 +86,11 @@ class Quicklinks extends Settings {
 			'url'  => ee('CP/URL')->decodeUrl(ee()->input->get('url'))
 		);
 
+		$id = count($this->quicklinks) + 1;
+
 		if ( ! empty($_POST))
 		{
 			$order = count($this->quicklinks) + 1;
-			$id = $order;
 			$this->quicklinks[$order] = array(
 				'title' => ee()->input->post('name'),
 				'link' => ee()->input->post('url'),
@@ -112,7 +98,7 @@ class Quicklinks extends Settings {
 			);
 		}
 
-		$this->form($vars, $values);
+		$this->form($vars, $values, $id);
 	}
 
 	/**
@@ -228,7 +214,7 @@ class Quicklinks extends Settings {
 	 * @access private
 	 * @return void
 	 */
-	private function form($vars, $values = array())
+	private function form($vars, $values = array(), $id)
 	{
 		$name = isset($values['name']) ? $values['name']: '';
 		$url = isset($values['url']) ? $values['url']: '';
@@ -272,7 +258,18 @@ class Quicklinks extends Settings {
 		{
 			if ($this->saveQuicklinks())
 			{
-				ee()->functions->redirect(ee('CP/URL')->make($this->index_url, $this->query_string));
+				if (ee('Request')->post('submit') == 'save_and_new')
+				{
+					ee()->functions->redirect(ee('CP/URL')->make($this->index_url . '/create', $this->query_string));
+				}
+				elseif (ee()->input->post('submit') == 'save_and_close')
+				{
+					ee()->functions->redirect(ee('CP/URL')->make($this->index_url, $this->query_string));
+				}
+				else
+				{
+					ee()->functions->redirect(ee('CP/URL')->make($this->index_url . '/edit/' . $id, $this->query_string));
+				}
 			}
 		}
 		elseif (ee()->form_validation->errors_exist())
@@ -286,8 +283,31 @@ class Quicklinks extends Settings {
 
 		ee()->view->base_url = $this->base_url;
 		ee()->view->ajax_validate = TRUE;
-		ee()->view->save_btn_text = sprintf(lang('btn_save'), lang('quick_link'));
-		ee()->view->save_btn_text_working = 'btn_saving';
+
+		$vars['buttons'] = [
+			[
+				'name' => 'submit',
+				'type' => 'submit',
+				'value' => 'save',
+				'text' => 'save',
+				'working' => 'btn_saving'
+			],
+			[
+				'name' => 'submit',
+				'type' => 'submit',
+				'value' => 'save_and_new',
+				'text' => 'save_and_new',
+				'working' => 'btn_saving'
+			],
+			[
+				'name' => 'submit',
+				'type' => 'submit',
+				'value' => 'save_and_close',
+				'text' => 'save_and_close',
+				'working' => 'btn_saving'
+			]
+		];
+
 		ee()->cp->render('settings/form', $vars);
 	}
 

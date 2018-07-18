@@ -1,9 +1,19 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Model\Content\Display;
 
 use InvalidArgumentException;
 
+/**
+ * Content Layout Display
+ */
 class LayoutDisplay {
 
 	/**
@@ -78,6 +88,20 @@ class LayoutDisplay {
 		}
 
 		return $fields;
+	}
+
+	/**
+	 * Sets a flag to let fieldtypes know whether or not they are in a modal
+	 * view so they can enable/disable certain functionality
+	 *
+	 * @param boolean TRUE if in modal, FALSE if not
+	 */
+	public function setIsInModalContext($in_modal)
+	{
+		foreach ($this->getFields() as $field)
+		{
+			$field->setIsInModalContext($in_modal);
+		}
 	}
 }
 

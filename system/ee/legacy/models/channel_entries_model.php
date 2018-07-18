@@ -1,57 +1,56 @@
-<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Channel Entries Model
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Model
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Channel Entries Model
  */
 class Channel_entries_model extends CI_Model {
 
-
-	// --------------------------------------------------------------------
 
 	/**
 	 *
 	 */
 	public function get_entry_data(array $entries)
 	{
-		$sql = 'SELECT t.entry_id, t.channel_id, t.forum_topic_id, t.author_id, t.ip_address, t.title, t.url_title, t.status, t.view_count_one, t.view_count_two, t.view_count_three, t.view_count_four, t.allow_comments, t.comment_expiration_date, t.sticky, t.entry_date, t.year, t.month, t.day, t.edit_date, t.expiration_date, t.recent_comment_date, t.comment_total, t.site_id as entry_site_id,
-				  w.channel_title, w.channel_name, w.channel_url, w.comment_url, w.comment_moderate, w.channel_html_formatting, w.channel_allow_img_urls, w.channel_auto_link_urls, w.comment_system_enabled,
-				  m.group_id, m.username, m.email, m.url, m.screen_name, m.location, m.occupation, m.interests, m.aol_im, m.yahoo_im, m.msn_im, m.icq, m.signature, m.sig_img_filename, m.sig_img_width, m.sig_img_height, m.avatar_filename, m.avatar_width, m.avatar_height, m.photo_filename, m.photo_width, m.photo_height, m.group_id, m.member_id, m.bday_d, m.bday_m, m.bday_y, m.bio,
-				  md.*,
-				  wd.*
-				FROM exp_channel_titles		AS t
-				LEFT JOIN exp_channels 		AS w  ON t.channel_id = w.channel_id
-				LEFT JOIN exp_channel_data	AS wd ON t.entry_id = wd.entry_id
-				LEFT JOIN exp_members		AS m  ON m.member_id = t.author_id
-				LEFT JOIN exp_member_data	AS md ON md.member_id = m.member_id ';
+		$entry_data = ee('Model')->get('ChannelEntry', $entries)
+			->with('Channel', 'Author')
+			->all()
+			->getModChannelResultsArray();
 
-		$sql .= 'WHERE t.entry_id IN ('.implode(',', $entries).')';
+		if ( ! is_array($entry_data))
+		{
+			$entry_data = array();
+		}
 
-		$query_result = ee()->db->query($sql);
-		$entries = $query_result->result_array();
-		$query_result->free_result();
-		return $entries;
+		if (ee('LivePreview')->hasEntryData())
+		{
+			$data = ee('LivePreview')->getEntryData();
+			$found = FALSE;
+
+			foreach ($entry_data as $i => $datum)
+			{
+				if ($datum['entry_id'] == $data['entry_id'])
+				{
+					$entry_data[$i] = $data;
+					$found = TRUE;
+					break;
+				}
+			}
+
+			if ( ! $found)
+			{
+				$entry_data[] = $data;
+			}
+		}
+
+		return $entry_data;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get Entries
@@ -106,8 +105,6 @@ class Channel_entries_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch the channel data for one entry
 	 *
@@ -155,8 +152,6 @@ class Channel_entries_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get most recent entries
 	 *
@@ -201,8 +196,6 @@ class Channel_entries_model extends CI_Model {
 		$this->db->order_by('entry_date', 'DESC');
 		return $this->db->get();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get recent commented entries
@@ -249,8 +242,6 @@ class Channel_entries_model extends CI_Model {
 		return FALSE;
 	}
 
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Prune Revisions

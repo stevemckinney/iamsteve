@@ -1,33 +1,20 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\Addons\Forum\Model;
 
 use EllisLab\ExpressionEngine\Service\Model\Model;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Poll Model for the Forum
+ * Poll Model for the Forum
  *
  * A model representing a poll in the Forum.
- *
- * @package		ExpressionEngine
- * @subpackage	Forum Module
- * @category	Model
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
  */
 class Poll extends Model {
 
@@ -46,7 +33,6 @@ class Poll extends Model {
 			'type'     => 'belongsTo',
 			'model'    => 'ee:Member',
 			'from_key' => 'author_id',
-			'weak'     => TRUE,
 			'inverse' => array(
 				'name' => 'Poll',
 				'type' => 'hasMany'

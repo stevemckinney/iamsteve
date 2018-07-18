@@ -20,6 +20,10 @@ $lang = array(
 
 'allow_messages' => 'Allow messages from other members',
 
+'anonymize_username' => 'Anonymize %s',
+
+'anonymize_member_desc' => 'You are about to anonymize this member, which means all data considered personally-identifiable information will be cleared out, but the member record will remain. Please confirm this action.',
+
 'aol_im' => 'AOL IM',
 
 'auth_settings' => 'Username & Password',
@@ -34,9 +38,17 @@ $lang = array(
 
 'biography_desc' => 'Your biography.',
 
-'birthday' => 'Birthday',
+'birth_day' => 'Birth day',
 
-'birthday_desc' => 'Your date of birth.',
+'birth_day_desc' => 'Your day of birth.',
+
+'birth_month' => 'Birth month',
+
+'birth_month_desc' => 'Your month of birth.',
+
+'birth_year' => 'Birth year',
+
+'birth_year_desc' => 'Your year of birth.',
 
 'blocked_members' => 'Blocked Members',
 
@@ -83,6 +95,16 @@ $lang = array(
 'choose_theme' => 'Choose Control Panel Theme',
 
 'comment' => 'Comment',
+
+'consent_granted' => 'Consent Granted',
+
+'consent_granted_desc' => 'Your consent was granted for the following requests:',
+
+'consent_withdrawn' => 'Consent Withdrawn',
+
+'consent_withdrawn_desc' => 'Your consent was withdrawn for the following requests:',
+
+'consents' => 'Consents',
 
 'control_panel_settings' => 'CP Customization',
 
@@ -192,7 +214,7 @@ $lang = array(
 
 'include_in_author_list' => 'Include in author list?',
 
-'include_in_author_list_desc' => 'When set to <b>yes</b>, this user will appear in the author listing for channel entries.',
+'include_in_author_list_desc' => 'When enabled, this user will appear in the author listing for channel entries.',
 
 'include_seconds' => 'Show seconds?',
 
@@ -260,6 +282,8 @@ $lang = array(
 
 'member_group_warning' => 'Be very careful assigning this',
 
+'user_ip_address' => 'IP Address',
+
 'member_preferences' => 'Member Preferences',
 
 'member_search_form' => 'Member search form',
@@ -295,6 +319,8 @@ $lang = array(
 'new_tab_title' => 'New Tab Title',
 
 'new_tab_url' => 'New Tab URL',
+
+'no_consents_found' => 'No <b>Consents</b> found.',
 
 'no_blocked_members_found' => 'No <b>Blocked members</b> found.',
 
@@ -370,7 +396,9 @@ $lang = array(
 
 'profile_form' => 'Profile Form',
 
-'profile_header' => '%s Profile<br><i><b>Email</b>: <a href="mailto:%s">%s</a> / <b><abbr title="Internet Protocol">IP</abbr>:</b> <span class="ban-options"><b>%s</b></span></i>',
+'profile_header' => '%s Profile<div class="section-header__subtitle">
+    <b>Email</b>: %s / <b>IP</b>: %s
+</div>',
 
 'profile_updated' => 'Profile Updated',
 
@@ -406,7 +434,7 @@ $lang = array(
 
 'rte_enabled' => 'Enable Rich Text Editor?',
 
-'rte_enabled_desc' => 'When set to <b>enable</b>, the below chosen RTE will appear in publishing forms for this user.',
+'rte_enabled_desc' => 'When enabled, the below chosen RTE will appear in publishing forms for this user.',
 
 'rte_settings' => 'RTE Settings',
 
@@ -448,7 +476,7 @@ $lang = array(
 
 'smart_notifications' => 'Enable smart notifications',
 
-'smart_notifications_desc' => 'When set to <b>enable</b>, smart notifications will be possible.',
+'smart_notifications_desc' => 'When enabled, smart notifications will be possible.',
 
 'subscriptions' => 'Current Subscriptions',
 

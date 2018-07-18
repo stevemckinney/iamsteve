@@ -1,26 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Core Extensions Class
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Core
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Core Extensions
  */
 class EE_Extensions {
 
@@ -48,18 +36,12 @@ class EE_Extensions {
 
 				foreach($query->result_array() as $row)
 				{
-					// There is a possiblity that there will be three extensions for a given
-					// hook and that two of them will call the same class but different methods
-					// while the third will have a priority that places it between those two.
-					// The chance is pretty remote and I cannot think offhand why someone
-					// would do this, but I have learned that our users and developers are
-					// a crazy bunch so I should make shite like this work initially and not
-					// just fix it later.
-
-					// However, it makes no sense for a person to call the same class but different
-					// methods for the same hook at the same priority.  I feel confident in this.
-					// If someone does do this I will just have to point out the fact that they
-					// are a complete nutter.
+					// Calls are unique for class & priority. Multiple extensions may
+					// use the same hook, with their effects interspersed based on priority.
+					// That could even be within a single extension calling different methods
+					// on the same hook, but they must have different priorities.
+					// If the developer has given them identical priorities in the same extension
+					// only the last one in will run.
 
 					// force the classname to conform to standard casing
 					$row['class'] = ucfirst(strtolower($row['class']));
@@ -71,8 +53,6 @@ class EE_Extensions {
 			}
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Universal caller, was used for php 4 compatibility
@@ -86,8 +66,6 @@ class EE_Extensions {
 
 		return call_user_func_array(array($this, 'call'), func_get_args());
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Extension Hook Method
@@ -248,8 +226,6 @@ class EE_Extensions {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Active Hook Info
 	 *
@@ -267,8 +243,6 @@ class EE_Extensions {
 
 		return $this->extensions[$hook];
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Active Hook

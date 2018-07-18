@@ -1,26 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Exceptions Class
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Core
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Exceptions
  */
 class EE_Exceptions {
 
@@ -54,8 +42,6 @@ class EE_Exceptions {
 		log_message('error', 'Severity: '.$error_constant.'  --> '.$message. ' '.$filepath.' '.$line, TRUE);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * 404 Page Not Found Handler
 	 *
@@ -82,8 +68,6 @@ class EE_Exceptions {
 		exit;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Native PHP error handler
 	 *
@@ -99,11 +83,27 @@ class EE_Exceptions {
 
 		list($error_constant, $error_category) = $this->lookupSeverity($severity);
 
-		$filepath = str_replace("\\", "/", $filepath);
-		$filepath = str_replace(SYSPATH, '', $filepath);
+		if (REQ == 'CLI')
+		{
+			stdout('PHP '.$error_category.':', CLI_STDOUT_FAILURE);
+			echo $message . "\n";
+			echo $filepath . ": $line\n\n";
+			return;
+		}
 
-		$message = str_replace("\\", "/", $message);
-		$message = str_replace(SYSPATH, '', $message);
+		$syspath = SYSPATH;
+
+		// normalize for Windows servers
+		if (DIRECTORY_SEPARATOR == '\\')
+		{
+			$syspath = str_replace('\\', '/', $syspath);
+			$filepath = str_replace('\\', '/', $filepath);
+			$message = str_replace('\\', '/', $message);
+		}
+
+		$filepath = str_replace($syspath, '', $filepath);
+		$message = str_replace($syspath, '', $message);
+		$message = htmlentities($message, ENT_QUOTES, 'UTF-8', FALSE);
 
 		if (ob_get_level() > $this->ob_level + 1)
 		{
@@ -118,8 +118,6 @@ class EE_Exceptions {
 		ob_end_clean();
 		echo $buffer;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Has output PHP errors?
@@ -220,13 +218,32 @@ class EE_Exceptions {
 
 		$message = $exception->getMessage();
 
-		// Replace system path
-		$filepath = str_replace("\\", "/", $exception->getFile());
-		$filepath = str_replace(SYSPATH, '', $filepath);
-		$location =  $filepath . ':' . $exception->getLine();
+		$syspath = SYSPATH;
+		$filepath = $exception->getFile();
 
+		// normalize for Windows servers
+		if (DIRECTORY_SEPARATOR == '\\')
+		{
+			$syspath = str_replace('\\', '/', $syspath);
+			$filepath = str_replace('\\', '/', $filepath);
+			$message = str_replace('\\', '/', $message);
+		}
+
+		// Replace system path
+		$filepath = str_replace($syspath, '', $filepath);
+		$message = str_replace($syspath, '', $message);
+
+		$message = htmlentities($message, ENT_QUOTES, 'UTF-8', FALSE);
+
+		// whitelist formatting tags
+		foreach (['i', 'b', 'br'] as $tag)
+		{
+			$message = str_replace(["&lt;{$tag}&gt;", "&lt;/{$tag}&gt;"], ["<{$tag}>", "</{$tag}>"], $message);
+		}
+
+		$location =  $filepath . ':' . $exception->getLine();
 		$trace = explode("\n", $exception->getTraceAsString());
-		$partial_path = substr(SYSPATH, 0, 15);
+		$partial_path = substr($syspath, 0, 15);
 
 		// Replace the system paths in the stack trace
 		foreach ($trace as &$line)
@@ -247,6 +264,7 @@ class EE_Exceptions {
 			}
 
 			$line = str_replace($partial_path, '', $line);
+			$line = htmlentities($line, ENT_QUOTES, 'UTF-8');
 		}
 
 		$debug = DEBUG;
@@ -262,6 +280,18 @@ class EE_Exceptions {
 		{
 			$location_parts = explode(DIRECTORY_SEPARATOR, $location);
 			$location = array_pop($location_parts);
+		}
+
+		if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+			$_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest')
+		{
+			$return = [
+				'messageType' => 'error',
+				'message' => $message,
+				'trace' => $trace
+			];
+			echo json_encode($return);
+			exit;
 		}
 
 		if (ob_get_level() > $this->ob_level + 1)

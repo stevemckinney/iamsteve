@@ -2,17 +2,13 @@
 
 <div class="tbl-ctrls">
 	<?=form_open($form_url)?>
-		<fieldset class="tbl-search right">
-			<input placeholder="<?=lang('type_phrase')?>" type="text" name="search" value="<?=$search_value?>">
-			<input class="btn submit" type="submit" value="<?=lang('btn_search_entries')?>">
-		</fieldset>
 		<h1>
 			<?=$cp_heading?>
 			<ul class="toolbar">
 				<li class="settings"><a href="<?=ee('CP/URL')->make('settings/comments')?>" title="<?=lang('comment_settings')?>"></a></li>
 			</ul>
 		</h1>
-		<?=ee('CP/Alert')->getAllInlines()?>
+		<div class="app-notice-wrap"><?=ee('CP/Alert')->getAllInlines()?></div>
 		<?php if (isset($filters)) echo $filters; ?>
 		<?php $this->embed('_shared/table', $table); ?>
 		<?=$pagination?>

@@ -1,27 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Unicode Database Conversion
- *
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Core
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Unicode Database Conversion
  */
 class Utf8_db_convert {
 
@@ -38,13 +25,11 @@ class Utf8_db_convert {
         ee()->db->query('SET SESSION sql_mode=""');
 	}
 
-	// ------------------------------------------------------------------------
-
 	/**
 	 * Do conversion to Unicode
 	 *
 	 * This method is being abstracted out from the 200 update file.
-	 * CodeIgniter forces UTF-8, but it seems that when a table is created
+	 * The app forces UTF-8, but it seems that when a table is created
 	 * with raw SQL and the db->query() method, it can be created with
 	 * DEFAULT CHARSET=latin1.  So unfortunately, we're kinda doing bits of this
 	 * again, but we can ignore some of the beefier tables, eg: channel(s) as
@@ -52,6 +37,8 @@ class Utf8_db_convert {
 	 *
 	 * Long story short, use this method on an update to ensure that your tables
 	 * will be of UTF-8 Collation, since the MySQL default is latin1
+	 *
+	 * 2017-12-12 NOTE: no longer used, default collation in the app is utf8mb4
 	 *
 	 * @param 	array 		array of tables to convert
 	 * @return 	boolean		TRUE on Success, FALSE on failure

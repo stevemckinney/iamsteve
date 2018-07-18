@@ -1,26 +1,14 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// --------------------------------------------------------------------
-
 /**
- * ExpressionEngine Radio Fieldtype Class
- *
- * @package		ExpressionEngine
- * @subpackage	Fieldtypes
- * @category	Fieldtypes
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Toggle Fieldtype
  */
 class Toggle_ft extends EE_Fieldtype {
 
@@ -51,6 +39,11 @@ class Toggle_ft extends EE_Fieldtype {
 	 */
 	public function validate($data)
 	{
+		if ($this->get_setting('yes_no', FALSE))
+		{
+			return in_array($data, ['y', 'n']);
+		}
+
 		if ($data === FALSE
 			|| $data == ''
 			|| $data == '1'
@@ -66,6 +59,20 @@ class Toggle_ft extends EE_Fieldtype {
 	 * @see EE_Fieldtype::save()
 	 */
 	public function save($data)
+	{
+		if ($this->get_setting('yes_no', FALSE))
+		{
+			return ($data == 'y') ? 'y' : 'n';
+
+		}
+
+		return (int) $data;
+	}
+
+	/**
+	 * :length modifier
+	 */
+	public function replace_length($data, $params = array(), $tagdata = FALSE)
 	{
 		return (int) $data;
 	}
@@ -101,16 +108,11 @@ class Toggle_ft extends EE_Fieldtype {
 
 		if (REQ == 'CP')
 		{
-			ee()->cp->add_js_script(array(
-				'file' => array(
-					'fields/toggle/cp'
-				),
-			));
-
-			return ee('View')->make('toggle:publish')->render(array(
+			return ee('View')->make('ee:_shared/form/fields/toggle')->render(array(
 				'field_name' => $this->field_name,
-				'selected'   => $data,
-				'disabled'   => $this->get_setting('field_disabled')
+				'value'      => $data,
+				'disabled'   => $this->get_setting('field_disabled'),
+				'yes_no'     => $this->get_setting('yes_no', FALSE)
 			));
 		}
 
@@ -221,6 +223,12 @@ class Toggle_ft extends EE_Fieldtype {
 	protected function get_column_type($data, $grid = FALSE)
 	{
 		$id = ($grid) ? 'col_id' : 'field_id';
+
+		if (isset($data['ee_action']) && $data['ee_action'] == 'delete')
+		{
+			return [$id.'_'.$data[$id] => []];
+		}
+
 		$default_value = ($grid) ? $data['field_default_value'] : $data['field_settings']['field_default_value'];
 
 		return array(

@@ -1,27 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.6
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Channel Parser Component (Custom Fields)
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Core
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Channel Parser Component (Custom Fields)
  */
 class EE_Channel_custom_field_parser implements EE_Channel_parser_component {
 
@@ -36,8 +23,6 @@ class EE_Channel_custom_field_parser implements EE_Channel_parser_component {
 		return in_array('custom_fields', $disabled);
 	}
 
-	// ------------------------------------------------------------------------
-
 	/**
 	 * @todo Find all of the tags like the custom date fields?
 	 *
@@ -49,8 +34,6 @@ class EE_Channel_custom_field_parser implements EE_Channel_parser_component {
 	{
 		return ee()->api_channel_fields;
 	}
-
-	// ------------------------------------------------------------------------
 
 	/**
 	 * Replace all of the custom channel fields.
@@ -70,9 +53,11 @@ class EE_Channel_custom_field_parser implements EE_Channel_parser_component {
 		$site_id = $data['site_id'];
 		$cfields = $obj->channel()->cfields;
 		$rfields = $obj->channel()->rfields;
+		$gfields = $obj->channel()->gfields;
 
-		$rfields = isset($rfields[$site_id]) ? $rfields[$site_id] : array();
-		$cfields = isset($cfields[$site_id]) ? $cfields[$site_id] : array();
+		$rfields = isset($rfields[$site_id]) ? $rfields[$site_id] : [];
+		$cfields = isset($cfields[$site_id]) ? $cfields[$site_id] : [];
+		$gfields = isset($gfields[$site_id]) ? $gfields[$site_id] : [];
 
 		$cfields = array_diff_key($cfields, $rfields);
 
@@ -81,14 +66,15 @@ class EE_Channel_custom_field_parser implements EE_Channel_parser_component {
 			return $tagdata;
 		}
 
-		$field = ee()->api_channel_fields->get_single_field($tag, $prefix);
+		$field = ee('Variables/Parser')->parseVariableProperties($tag, $prefix);
 
 		if (isset($cfields[$field['field_name']]))
 		{
 			$entry = '';
 			$field_id = $cfields[$field['field_name']];
 
-			if (isset($data['field_id_'.$field_id]) && $data['field_id_'.$field_id] !== '')
+			if ((isset($data['field_id_'.$field_id]) && $data['field_id_'.$field_id] !== '') OR
+				array_key_exists($field['field_name'], $gfields)) // is a Grid single
 			{
 				$modifier = $field['modifier'];
 
@@ -125,7 +111,7 @@ class EE_Channel_custom_field_parser implements EE_Channel_parser_component {
 							$data,
 							$field['params'],
 							FALSE,
-							$modifier
+							$field['full_modifier']
 						));
 					}
 

@@ -1,31 +1,18 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Model\Session;
 
 use EllisLab\ExpressionEngine\Service\Model\Model;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Session Model
- *
- * @package		ExpressionEngine
- * @subpackage	Session
- * @category	Model
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Session Model
  */
 class Session extends Model {
 
@@ -47,11 +34,26 @@ class Session extends Model {
 	protected $admin_sess;
 	protected $ip_address;
 	protected $user_agent;
+	protected $login_state;
 	protected $fingerprint;
 	protected $sess_start;
+	protected $auth_timeout;
 	protected $last_activity;
 	protected $can_debug;
 
+	/**
+	 * Manage sudo-like timeout for "trust but verify" actions
+	 */
+	const AUTH_TIMEOUT = '+15 minutes';
+	public function resetAuthTimeout()
+	{
+		$this->setProperty('auth_timeout', ee()->localize->string_to_timestamp(self::AUTH_TIMEOUT));
+		$this->save();
+	}
+	public function isWithinAuthTimeout()
+	{
+		return $this->auth_timeout > ee()->localize->now;
+	}
 }
 
 // EOF

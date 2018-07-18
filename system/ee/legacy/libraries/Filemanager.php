@@ -1,29 +1,15 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Filemanager Class
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Filemanager
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Filemanager
  */
-
 class Filemanager {
 
 	var $config;
@@ -56,14 +42,10 @@ class Filemanager {
 		$this->theme_url = ee()->cp->cp_theme_url;
 	}
 
-	// ---------------------------------------------------------------------
-
 	function _set_error($error)
 	{
 		return;
 	}
-
-	// ---------------------------------------------------------------------
 
 	/**
 	 * Cleans the filename to prep it for the system, mostly removing spaces
@@ -135,8 +117,6 @@ class Filemanager {
 		return $path.$filename.$ext;
 	}
 
-	// ---------------------------------------------------------------------
-
 	function set_upload_dir_prefs($dir_id, array $prefs)
 	{
 		$required = array_flip(
@@ -169,8 +149,6 @@ class Filemanager {
 		return $prefs;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get the upload directory preferences for an individual directory
 	 *
@@ -184,53 +162,47 @@ class Filemanager {
 			return $this->_upload_dir_prefs[$dir_id];
 		}
 
-		ee()->load->model(array('file_model', 'file_upload_preferences_model'));
+		$dir = ee('Model')->get('UploadDestination', $dir_id);
 
-		// Figure out if the directory actually exists
-		$prefs = ee()->file_upload_preferences_model->get_file_upload_preferences(
-			'1', // Overriding the group ID to get all IDs
-			$dir_id,
-			$ignore_site_id
-		);
+		if ( ! $ignore_site_id)
+		{
+			$dir->filter('site_id', ee()->config->item('site_id'));
+		}
 
-		if (count($prefs) == 0)
+		if ($dir->count() < 1)
 		{
 			return FALSE;
 		}
 
+		$dir = $dir->first();
+		$prefs = $dir->getValues();
+
 		// Add dimensions to prefs
 		$prefs['dimensions'] = array();
 
-		$qry = ee()->file_model->get_dimensions_by_dir_id($dir_id, TRUE);
-
-		foreach ($qry->result_array() as $row)
+		foreach ($dir->FileDimensions as $dimension)
 		{
-			$prefs['dimensions'][$row['id']] = array(
-				'short_name'	=> $row['short_name'],
-				'width'			=> $row['width'],
-				'height'		=> $row['height'],
-				'watermark_id'	=> $row['watermark_id'],
-				'resize_type'	=> $row['resize_type']
+			$data = array(
+				'short_name'   => $dimension->short_name,
+				'width'        => $dimension->width,
+				'height'       => $dimension->height,
+				'watermark_id' => $dimension->watermark_id,
+				'resize_type'  => $dimension->resize_type,
+				'quality'      => $dimension->quality
 			);
 
 			// Add watermarking prefs
-			foreach ($row as $key => $val)
+			if ($dimension->Watermark)
 			{
-				if (substr($key, 0, 3) == 'wm_')
-				{
-					$prefs['dimensions'][$row['id']][$key] = $val;
-				}
+				$data = array_merge($data, $dimension->Watermark->getValues());
 			}
+
+			$prefs['dimensions'][$dimension->getId()] = $data;
 		}
 
-		$qry->free_result();
-
 		// check keys and cache
-		//return $this->set_upload_dir_prefs($dir_id, $qry->row_array());
 		return $this->set_upload_dir_prefs($dir_id, $prefs);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Checks the uploaded file to make sure it's both allowed and passes
@@ -284,8 +256,6 @@ class Filemanager {
 		return $mime;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Turn XSS cleaning on
 	 */
@@ -294,14 +264,10 @@ class Filemanager {
 		$this->_xss_on = TRUE;
 	}
 
-	// --------------------------------------------------------------------
-
 	public function xss_clean_off()
 	{
 		$this->_xss_on = FALSE;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Checks to see if the image is an editable/resizble image
@@ -329,8 +295,6 @@ class Filemanager {
 	}
 
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Gets Image Height and Width
 	 *
@@ -354,8 +318,6 @@ class Filemanager {
 		return FALSE;
 	}
 
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Save File
@@ -444,8 +406,6 @@ class Filemanager {
 		return $response;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Resizes main image if it exceeds max heightxwidth- adds metadata to file_data array
 	 *
@@ -512,9 +472,13 @@ class Filemanager {
 		unset($prefs['height']);
 
 		// Set required memory
-		if ( ! $this->set_image_memory($file_path))
+		try
 		{
-			log_message('error', 'Insufficient Memory for Thumbnail Creation: '.$file_path);
+			ee('Memory')->setMemoryForImageManipulation($file_path);
+		}
+		catch (\Exception $e)
+		{
+			log_message('error', $e->getMessage().': '.$file_path);
 			return FALSE;
 		}
 
@@ -553,8 +517,6 @@ class Filemanager {
 	}
 
 
-	// ---------------------------------------------------------------------
-
 	/**
 	 * Checks the permissions of the current user and directory
 	 * Returns TRUE if they have access FALSE otherwise
@@ -590,8 +552,6 @@ class Filemanager {
 	}
 
 
-	// ---------------------------------------------------------------------
-
 	/**
 	 * Send save_file response
 	 *
@@ -617,8 +577,6 @@ class Filemanager {
 			$key		=> $message
 		);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Process Request
@@ -672,8 +630,6 @@ class Filemanager {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Initialize
 	 *
@@ -691,8 +647,6 @@ class Filemanager {
 
 		unset($config);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Setup
@@ -857,8 +811,6 @@ class Filemanager {
 		);
 	}
 
-	// --------------------------------------------------------------------
-
 	public function setup_upload()
 	{
 		$base = (defined('BASE')) ? BASE : ee()->functions->fetch_site_index(0,0).QUERY_MARKER;
@@ -871,8 +823,6 @@ class Filemanager {
 			'uploader'	=> ee()->load->ee_view('_shared/file_upload/upload_modal', $vars, TRUE)
 		));
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Directory
@@ -900,8 +850,6 @@ class Filemanager {
 
 		return $return;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Directories
@@ -948,8 +896,6 @@ class Filemanager {
 		return $return;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Directory Contents
 	 *
@@ -989,8 +935,6 @@ class Filemanager {
 		exit;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get the quantities for both files and images within a directory
 	 */
@@ -1013,8 +957,6 @@ class Filemanager {
 		exit;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get the file information for an individual file (by ID)
 	 */
@@ -1034,8 +976,6 @@ class Filemanager {
 		}
 		exit;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Upload File
@@ -1087,94 +1027,29 @@ class Filemanager {
 		return $data;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Set Image Memory for Image Resizing
 	 *
-	 * Sets memory limit for image manipulation
-	 *  See // http://php.net/manual/en/function.imagecreatefromjpeg.php#64155
+	 * Deprecated in 4.1.0
 	 *
-	 * @access	public
-	 * @param	string	file path
-	 * @return	bool	success / failure
+	 * @see EllisLab\ExpressionEngine\Service\Memory\Memory::setMemoryForImageManipulation()
 	 */
 	function set_image_memory($filename)
 	{
-		$k64 = 65536;    // number of bytes in 64K
+		ee()->load->library('logger');
+		ee()->logger->deprecated('4.1.0', "ee('Memory')->setMemoryForImageManipulation()");
 
-  		$image_info = getimagesize($filename);
-
-		// Channel may not be set for pngs - so we default to highest
-		$image_info['channels'] = ( ! isset($image_info['channels'])) ? 4 : $image_info['channels'];
-
-		$memory_needed = round((
-			$image_info[0] * $image_info[1]
-			// bits may not always be present
-			* (isset($image_info['bits']) ? $image_info['bits'] : 8)
-			* $image_info['channels'] / 8
-			+ $k64
-			) * $this->_memory_tweak_factor
-		);
-
-		$memory_setting = ini_get('memory_limit');
-
-		if ($memory_setting === -1)
+		try
 		{
-		    return TRUE;
-		}
-
-		if ( ! $memory_setting)
-		{
-			$memory_setting = '8M';
-		}
-
-		list($current, $unit) = sscanf($memory_setting, "%d %s");
-
-		switch (strtolower($unit))
-		{
-			case 'g':
-				$current *= 1024;
-				// no break
-			case 'm':
-				$current *= 1024;
-				// no break;
-			case 'k':
-				$current *= 1024;
-		}
-
-		if (function_exists('memory_get_usage'))
-		{
-			if ((memory_get_usage() + $memory_needed) > $current)
-			{
-				// There was a bug/behavioural change in PHP 5.2, where numbers over one million get output
-				// into scientific notation.  number_format() ensures this number is an integer
-				// http://bugs.php.net/bug.php?id=43053
-
-				$new_memory = number_format(ceil(memory_get_usage() + $memory_needed + $current), 0, '.', '');
-
-				if ( ! ini_set('memory_limit', $new_memory))
-				{
-					return FALSE;
-				}
-
-				return TRUE;
-			}
-
+			ee('Memory')->setMemoryForImageManipulation($filename);
 			return TRUE;
 		}
-		elseif ($memory_needed < $current)
+		catch (\Exception $e)
 		{
-			// Note- this is not tremendously accurate
-			return TRUE;
+			// legacy behavior, error display and logging is handled by the caller
+			return FALSE;
 		}
-
-		return FALSE;
 	}
-
-
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Create Thumbnails
@@ -1213,9 +1088,13 @@ class Filemanager {
 		}
 
 		// Make sure we have enough memory to process
-		if ( ! $this->set_image_memory($file_path))
+		try
 		{
-			log_message('error', 'Insufficient Memory for Thumbnail Creation: '.$file_path);
+			ee('Memory')->setMemoryForImageManipulation($file_path);
+		}
+		catch (\Exception $e)
+		{
+			log_message('error', $e->getMessage().': '.$file_path);
 			return FALSE;
 		}
 
@@ -1227,6 +1106,7 @@ class Filemanager {
 				'short_name'	=> 'thumbs',
 				'width'			=> 73,
 				'height'		=> 60,
+				'quality'       => 90,
 				'watermark_id'	=> 0,
 				'resize_type'	=> 'crop'
 			);
@@ -1322,6 +1202,7 @@ class Filemanager {
 			$config['library_path']		= $lib_path;
 			$config['width']			= $size['width'];
 			$config['height']			= $size['height'];
+			$config['quality']          = $size['quality'];
 
 			// If the original is smaller than the thumb hxw, we'll make a copy rather than upsize
 			if (($force_master_dim == 'height' && $prefs['height'] < $size['height']) OR
@@ -1435,8 +1316,6 @@ class Filemanager {
 		return TRUE;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Create Watermark
 	 *
@@ -1469,8 +1348,6 @@ class Filemanager {
 	}
 
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Ajax Create Thumbnail
 	 *
@@ -1497,8 +1374,6 @@ class Filemanager {
 			echo rtrim($dir['server_path'], '/').'/'.'_thumbs/'.'thumb_'.$data['name'];
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get's the thumbnail for a particular image in a directory
@@ -1552,8 +1427,6 @@ class Filemanager {
 		return $thumb_info;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Finds Thumbnails
 	 *
@@ -1596,8 +1469,6 @@ class Filemanager {
 		return array_values($files);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * This used to only delete files. We decided we do not like that behavior
 	 * so now it does nothing.
@@ -1610,8 +1481,6 @@ class Filemanager {
 	{
 		return;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * set_image_config
@@ -1693,13 +1562,7 @@ class Filemanager {
 
 		return $config;
 	}
-
-	// --------------------------------------------------------------------
-
-	// --------------------------------------------------------------------
 	//	Default Callbacks
-	// --------------------------------------------------------------------
-
 	/**
 	 * Directories Callback
 	 *
@@ -1729,8 +1592,6 @@ class Filemanager {
 		return $dirs;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Directory Contents Callback
 	 *
@@ -1746,8 +1607,6 @@ class Filemanager {
 		);
 	}
 
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Gets the files for a particular directory
@@ -1822,8 +1681,6 @@ class Filemanager {
 		return $files;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Build a dropdown list of categories
 	 *
@@ -1856,8 +1713,6 @@ class Filemanager {
 	}
 
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Validate Post Data
 	 *
@@ -1874,8 +1729,6 @@ class Filemanager {
 		return $_SERVER['CONTENT_LENGTH'] <= $post_limit;
 	}
 
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get the categories for the directory
@@ -1908,8 +1761,6 @@ class Filemanager {
 		return $categories;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Directory Info Callback
 	 *
@@ -1927,8 +1778,6 @@ class Filemanager {
 			'image_count'	=> ee()->file_model->count_images($dir['id'])
 		);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * File Info Callback
@@ -1951,8 +1800,6 @@ class Filemanager {
 
 		return $file_info;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Upload File Callback
@@ -2013,7 +1860,7 @@ class Filemanager {
 		$config = array(
 			'file_name'		=> $clean_filename,
 			'upload_path'	=> $dir['server_path'],
-			'max_size'		=> round((int)$dir['max_size']*1024, 3)
+			'max_size'		=> round((int)$dir['max_size'], 3)
 		);
 
 		// Restricted upload directory?
@@ -2142,8 +1989,6 @@ class Filemanager {
 		return $file_data;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Sends an upload error and delete's the file based upon
 	 * available information
@@ -2167,8 +2012,6 @@ class Filemanager {
 
 		return array('error' => $error_message);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Overwrite OR Rename Files Manually
@@ -2288,8 +2131,6 @@ class Filemanager {
 		);
     }
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Deletes the old raw files, and the new file's database records
 	 *
@@ -2335,8 +2176,6 @@ class Filemanager {
 		return $existing_file;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Renames a raw file, doesn't touch the database
 	 *
@@ -2377,8 +2216,6 @@ class Filemanager {
 
 		return $upload_directory['server_path'] . $new_file_name;
     }
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Handle the edit actions
@@ -2536,8 +2373,6 @@ class Filemanager {
 		exit($image_name_reference);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch Upload Directories
 	 *
@@ -2555,8 +2390,6 @@ class Filemanager {
 
 		return $this->_directories($params);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 *
@@ -2594,8 +2427,6 @@ class Filemanager {
 
 		return $dirs;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Create a Directory Map
@@ -2664,8 +2495,6 @@ class Filemanager {
 
 		return FALSE;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Download Files.
@@ -2736,8 +2565,6 @@ class Filemanager {
 		return TRUE;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get file info
 	 *
@@ -2755,8 +2582,6 @@ class Filemanager {
 		return ee()->image_lib->get_image_properties($file, TRUE);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Is Image
 	 *
@@ -2771,8 +2596,6 @@ class Filemanager {
 		ee()->load->library('mime_type');
 		return ee()->mime_type->isImage($mime);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Fetch Fontlist
@@ -2806,8 +2629,6 @@ class Filemanager {
 
 		return $font_files;
 	}
-
-	// ------------------------------------------------------------------------
 
 	/**
 	 * image processing
@@ -2932,8 +2753,6 @@ class Filemanager {
 		}
 	}
 
-	// ------------------------------------------------------------------------
-
 	/**
 	 * Image crop
 	 */
@@ -2988,8 +2807,6 @@ class Filemanager {
 		return $response;
 	}
 
-	// ------------------------------------------------------------------------
-
 	/**
 	 * Do image rotation.
 	 */
@@ -3038,8 +2855,6 @@ class Filemanager {
 
 		return $response;
 	}
-
-	// ------------------------------------------------------------------------
 
 	/**
 	 * Do image resizing.
@@ -3099,8 +2914,6 @@ class Filemanager {
 
 		return $response;
 	}
-
-	// ------------------------------------------------------------------------
 }
 
 // END Filemanager class

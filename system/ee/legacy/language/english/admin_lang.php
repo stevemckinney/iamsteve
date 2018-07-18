@@ -478,7 +478,7 @@ $lang = array(
 
 'license_number' => 'License Number',
 
-'license_number_explanation' => 'You can find and manage your software licenses on the EllisLab.com <a href="https://expressionengine.com/store/purchases" rel="external">Manage Purchases</a> page,',
+'license_number_explanation' => 'You can find and manage your software licenses on the expressionengine.com <a href="https://expressionengine.com/store/purchases" rel="external">Manage Purchases</a> page,',
 
 'localization_cfg' => 'Localization Settings',
 
@@ -894,13 +894,9 @@ $lang = array(
 
 'tag_caching' => 'Tag cache files',
 
-'taken_status_group_name' => 'This status group name is already taken.',
-
 'template_cfg' => 'Template Preferences',
 
 'template_updated' => 'Template Updated',
-
-'templates' => 'In ALL Templates',
 
 'theme_folder_path' => 'Theme Folder Path',
 

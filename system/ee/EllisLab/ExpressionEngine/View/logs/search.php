@@ -3,7 +3,7 @@
 <div class="tbl-ctrls">
 <?=form_open($form_url)?>
 	<h1><?php echo isset($cp_heading) ? $cp_heading : $cp_page_title?></h1>
-	<?=ee('CP/Alert')->getAllInlines()?>
+	<div class="app-notice-wrap"><?=ee('CP/Alert')->getAllInlines()?></div>
 	<?php if (isset($filters)) echo $filters; ?>
 	<section class="item-wrap log">
 		<?php if (count($logs) == 0): ?>
@@ -36,7 +36,7 @@
 			<?=$pagination?>
 
 			<fieldset class="tbl-bulk-act">
-				<button class="btn remove m-link" rel="modal-confirm-all"><?=lang('clear_search_logs')?></button>
+				<button class="btn action m-link" rel="modal-confirm-all"><?=lang('clear_search_logs')?></button>
 			</fieldset>
 		<?php endif; ?>
 	</section>

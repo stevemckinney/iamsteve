@@ -1,29 +1,18 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
+
 namespace EllisLab\ExpressionEngine\Service\Encrypt;
 
 use \InvalidArgumentException;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.5.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Encrypt Class
- *
- * @package		ExpressionEngine
- * @category	Service
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Encrypt Service
  */
 class Encrypt {
 
@@ -239,7 +228,7 @@ class Encrypt {
 
 		if ( ! in_array($algo, hash_algos()))
 		{
-			throw new InvalidArgumentException('{$algo} is not a valid hashing algorithm.');
+			throw new InvalidArgumentException("{$algo} is not a valid hashing algorithm.");
 		}
 
 		$key = ($key) ?: $this->default_key;

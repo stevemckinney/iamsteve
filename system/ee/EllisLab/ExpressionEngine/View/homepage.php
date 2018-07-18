@@ -12,9 +12,10 @@
 			</div>
 		</div>
 	</div>
+	<?php $spam_comment_width = ($spam_module_installed) ? '8' : '16';?>
 	<?php if (ee()->config->item('enable_comments') == 'y'): ?>
 	<div class="col-group snap mb">
-		<div class="col w-16 last">
+		<div class="col w-<?=$spam_comment_width?> <?=($spam_module_installed)? '' :'last'?>">
 			<div class="box">
 				<h1><?=lang('comments')?>
 					<?php if ($can_moderate_comments && $can_edit_comments): ?>
@@ -25,26 +26,57 @@
 					<p<?php if ( ! $can_moderate_comments): ?> class="last"<?php endif; ?>>
 						<?=lang('there_were')?> <b><?=$number_of_new_comments?></b>
 						<?php if ($can_edit_comments): ?>
-							<a href="<?=ee('CP/URL', 'publish/comments')?>"><?=lang('new_comments')?></a>
+							<a href="<?=ee('CP/URL')->make('publish/comments', array('filter_by_date' => ee()->localize->now - ee()->session->userdata['last_visit']))?>"><?=lang('new_comments')?></a>
 						<?php else: ?>
 							<?=lang('new_comments') ?>
 						<?php endif; ?>
 						<?=lang('since_last_login')?> (<?=$last_visit?>)
 					</p>
 					<?php if ($can_moderate_comments): ?>
-					<p class="last"><b><?=$number_of_pending_comments?></b> <?=lang('are')?> <a href="<?=ee('CP/URL')->make('publish/comments', array('filter_by_status' => 'p'))?>"><?=lang('awaiting_moderation')?></a><?php if ($spam_module_installed): ?>, <?=lang('and')?> <b><?=$number_of_spam_comments?></b> <?=lang('have_been')?> <a href="<?=ee('CP/URL')->make('publish/comments', array('filter_by_status' => 's'))?>"><?=lang('flagged_as_spam')?></a><?php endif ?>.</p>
+					<p class="last"><b><?=$number_of_pending_comments?></b> <?=lang('are')?> <a href="<?=ee('CP/URL')->make('publish/comments', array('filter_by_status' => 'p'))?>"><?=lang('awaiting_moderation')?></a><?php if ($spam_module_installed): ?>, <?=lang('and')?> <b><?=$number_of_spam_comments?></b> <?=lang('have_been')?> <a href="<?=ee('CP/URL')->make('addons/settings/spam', array('content_type' => 'comment'))?>"><?=lang('flagged_as_spam')?></a><?php endif ?>.</p>
 					<?php endif; ?>
 				</div>
 			</div>
 		</div>
+		<?php if ($spam_module_installed): ?>
+			<div class="col w-8 last">
+				<div class="box">
+					<h1><?=lang('spam')?>
+						<?php if ($can_moderate_spam): ?>
+							<a class="btn action" href="<?=ee('CP/URL', 'addons/settings/spam')?>"><?=lang('review_all')?></a>
+						<?php endif; ?>
+					</h1>
+					<div class="info">
+						<p>
+							<?=lang('there_are')?> <b><?=$number_of_new_spam?></b>
+							<?php if ($can_moderate_spam): ?>
+								<a href="<?=ee('CP/URL')->make('addons/settings/spam')?>"><?=lang('new_spam')?></a>
+							<?php else: ?>
+								<?=lang('new_spam') ?>
+							<?php endif; ?>
+							<?=lang('since_last_login')?> (<?=$last_visit?>)
+						</p>
+
+						<ul class="arrow-list">
+						<?php foreach ($trapped_spam as $trapped): ?>
+							<li><a href="<?=ee('CP/URL')->make('addons/settings/spam', array('content_type' => $trapped->content_type))?>">
+								<b><?=$trapped->total_trapped?></b> <?=lang($trapped->content_type)?> <?=lang('spam')?>
+								</a>
+							</li>
+						<?php endforeach;?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		<?php endif; ?>
 	</div>
 	<?php endif; ?>
 
 	<div class="col-group snap mb">
 		<div class="col w-8">
 			<div class="box">
-				<h1><?=lang('channels')?>
-					<?php if ($can_create_channels): ?>
+				<h1><?=lang('channels'); ?>
+					<?php if ($can_access_channels && $can_create_channels): ?>
 						<a class="btn action" href="<?=ee('CP/URL', 'channels/create')?>"><?=lang('create_new')?></a>
 					<?php endif; ?>
 				</h1>
@@ -58,7 +90,7 @@
 						<li><b><?=$number_of_channels?></b> <?=lang('channels')?></li>
 						<?php endif; ?>
 						<?php if ($can_access_fields): ?>
-						<li><a href="<?=ee('CP/URL', 'channels/fields/groups')?>"><b><?=$number_of_channel_field_groups?></b> <?=lang('field_groups')?></a></li>
+						<li><a href="<?=ee('CP/URL', 'fields')?>"><b><?=$number_of_channel_fields?></b> <?=lang('fields')?></a></li>
 						<?php endif; ?>
 					</ul>
 				</div>
@@ -111,13 +143,11 @@ if ($can_create_channels || count($menu['channels']['create'])): ?>
 							<li>
 								<a class="has-sub" href=""><?=lang('create_new')?></a>
 								<div class="sub-menu">
-									<div class="scroll-wrap">
-										<ul>
-											<?php foreach ($menu['channels']['create'] as $channel_name => $link): ?>
-												<li><a href="<?=$link?>"><?=$channel_name?></a></li>
-											<?php endforeach ?>
-										</ul>
-									</div>
+									<ul>
+										<?php foreach ($menu['channels']['create'] as $channel_name => $link): ?>
+											<li><a href="<?=$link?>"><?=$channel_name?></a></li>
+										<?php endforeach ?>
+									</ul>
 								</div>
 							</li>
 						</ul>

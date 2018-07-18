@@ -1,26 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Category Model
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Model
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Category Model
  */
 class Category_model extends CI_Model {
 
@@ -57,8 +45,6 @@ class Category_model extends CI_Model {
 
 		return $result;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Get category groups
@@ -113,8 +99,6 @@ class Category_model extends CI_Model {
 						->get();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Channel Categories
 	 *
@@ -166,8 +150,6 @@ class Category_model extends CI_Model {
 		return $this->db->get();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Delete Category
 	 *
@@ -209,8 +191,6 @@ class Category_model extends CI_Model {
 		return $group_id;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Category Group Name
 	 *
@@ -233,8 +213,6 @@ class Category_model extends CI_Model {
 		return $this->db->get('category_groups');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Category Parent ID
 	 *
@@ -251,8 +229,6 @@ class Category_model extends CI_Model {
 		return $query->row('parent_id');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Category Label Name
 	 *
@@ -267,8 +243,6 @@ class Category_model extends CI_Model {
 		return $this->db->get('category_fields');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Category Name
 	 *
@@ -281,8 +255,6 @@ class Category_model extends CI_Model {
 		$this->db->where('cat_id', $cat_id);
 		return $this->db->get('categories');
 	}
-
-	// --------------------------------------------------------------------
 
 	public function get_category_id($url_title, $site_ids = array())
 	{
@@ -308,8 +280,6 @@ class Category_model extends CI_Model {
 		return $result->row('cat_id');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Update Category Group
 	 *
@@ -321,8 +291,6 @@ class Category_model extends CI_Model {
 		$this->db->where('group_id', $group_id);
 		$this->db->update('category_groups', $data);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Insert Category Group
@@ -340,8 +308,6 @@ class Category_model extends CI_Model {
 		$this->db->insert('category_groups', $data);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Delete Category Group
 	 *
@@ -350,100 +316,8 @@ class Category_model extends CI_Model {
 	 */
 	function delete_category_group($group_id)
 	{
-		$this->db->select('cat_id');
-		$this->db->where('group_id', $group_id);
-		$query = $this->db->get('categories');
-
-		$cat_ids = array();
-
-		if ($query->num_rows() > 0)
-		{
-			foreach ($query->result() as $row)
-			{
-				$cat_ids[] = $row->cat_id;
-			}
-
-			$this->db->where_in('cat_id', $cat_ids);
-			$this->db->delete('category_posts');
-		}
-
-		// -------------------------------------------
-		// 'category_delete' hook.
-		//
-		if (ee()->extensions->active_hook('category_delete') === TRUE)
-		{
-			ee()->extensions->call('category_delete', $cat_ids);
-		}
-		//
-		// -------------------------------------------
-
-		$this->db->delete('category_groups', array('group_id' => $group_id));
-		$this->db->delete('categories', array('group_id' => $group_id));
-
-		$this->db->select('field_id');
-		$this->db->where('group_id', $group_id);
-		$query = $this->db->get('category_fields');
-
-		if ($query->num_rows() > 0)
-		{
-			// load dbforge for column dropping
-			$this->load->dbforge();
-
-			$field_ids = array();
-
-			foreach ($query->result() as $row)
-			{
-				$field_ids[] = $row->field_id;
-			}
-
-			foreach ($field_ids as $field_id)
-			{
-				$this->dbforge->drop_column('category_field_data', 'field_id_'.$field_id);
-				$this->dbforge->drop_column('category_field_data', 'field_ft_'.$field_id);
-			}
-		}
-
-		$this->db->delete('category_fields', array('group_id' => $group_id));
-		$this->db->delete('category_field_data', array('group_id' => $group_id));
-
-		// grab me some channels
-		$qry = $this->db->select('channel_id, cat_group')
-						->get_where('channels',
-										array(
-											'site_id' => $this->config->item('site_id')
-										)
-									);
-
-		$channels = array();
-
-		foreach ($qry->result() as $row)
-		{
-			$categories = explode('|', $row->cat_group);
-
-			foreach ($categories as $num => $cat_group)
-			{
-				if ($cat_group != $group_id)
-				{
-					$channels[$row->channel_id][] = $cat_group;
-				}
-			}
-
-			if ( ! isset($channels[$row->channel_id]))
-			{
-				$channels[$row->channel_id][] = '';
-			}
-		}
-
-		foreach ($channels as $k => $v)
-		{
-			$this->db->set('cat_group', implode('|', $v))
-					 ->where('channel_id', $k)
-					 ->update('channels');
-
-		}
+		ee('Model')->get('CategoryGroup', $group_id)->delete();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Duplicate Category Name Check
@@ -469,8 +343,6 @@ class Category_model extends CI_Model {
 		return ($count > 0);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Duplicate Category Group Check
 	 *
@@ -494,8 +366,6 @@ class Category_model extends CI_Model {
 		return ($count > 0);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Delete Custom Category Field
 	 *
@@ -509,8 +379,6 @@ class Category_model extends CI_Model {
 		$this->db->query("ALTER TABLE exp_category_field_data DROP COLUMN field_id_{$field_id}");
 		$this->db->query("ALTER TABLE exp_category_field_data DROP COLUMN field_ft_{$field_id}");
 	}
-
-	// --------------------------------------------------------------------
 
 }
 

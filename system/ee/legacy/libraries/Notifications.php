@@ -1,27 +1,14 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Core Notifications Class
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Core
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Core Notifications
  */
 class Notifications {
 
@@ -33,8 +20,6 @@ class Notifications {
 		ee()->load->library('api');
 		ee()->load->library('email');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Send admin notification
@@ -89,21 +74,34 @@ class Notifications {
 			ee()->load->library('email');
 			ee()->load->helper('text_helper');
 
+			$email_msg = entities_to_ascii($email_msg);
+
+			// interim step for a bug fix where this notification was ignoring the mail format preference
+			// This makes this as close to a non-breaking change in the middle of v4 that we can.
+			// v5 can contain a proper change to notification templates that would require some user action when updating.
+			//
+			// To use their mail format setting of HTML, and if their template contains no markup,
+			// we need to preserve linebreaks. If they are already trying to use HTML in it, leave their
+			// template alone, hence the strip_tags() check.
+			if (ee()->config->item('mail_format') == 'html' && $email_msg == strip_tags($email_msg))
+			{
+				$email_msg = str_replace("\n", "<br>\n", $email_msg);
+			}
+
 			foreach (explode(',', $notify_address) as $addy)
 			{
 				ee()->email->EE_initialize();
 				ee()->email->wordwrap = false;
+				ee()->email->mailtype = ee()->config->item('mail_format');
 				ee()->email->from(ee()->config->item('webmaster_email'), ee()->config->item('webmaster_name'));
 				ee()->email->to($addy);
 				ee()->email->reply_to(ee()->config->item('webmaster_email'));
 				ee()->email->subject($email_tit);
-				ee()->email->message(entities_to_ascii($email_msg));
+				ee()->email->message($email_msg);
 				ee()->email->send();
 			}
 		}
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Send checksum notification

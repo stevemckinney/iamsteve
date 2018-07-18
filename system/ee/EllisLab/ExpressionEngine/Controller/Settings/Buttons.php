@@ -1,31 +1,18 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Settings;
 
 use EllisLab\ExpressionEngine\Library\CP\Table;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP HTML Buttons Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * HTML Buttons Controller
  */
 class Buttons extends Settings {
 
@@ -190,6 +177,8 @@ class Buttons extends Settings {
 
 		$vars['cp_page_title'] = lang('create_html_button');
 
+		ee()->cp->set_breadcrumb(ee('CP/URL')->make('settings/buttons'), lang('html_buttons'));
+
 		$this->form($vars, $values);
 	}
 
@@ -209,6 +198,8 @@ class Buttons extends Settings {
 		);
 
 		$this->button = ee('Model')->get('HTMLButton', $id)->first();
+
+		ee()->cp->set_breadcrumb(ee('CP/URL')->make('settings/buttons'), lang('html_buttons'));
 
 		$this->form($vars, $this->button->getValues());
 	}
@@ -363,7 +354,18 @@ class Buttons extends Settings {
 					->addToBody(sprintf(lang($action . '_html_buttons_success_desc'), $this->button->tag_name))
 					->defer();
 
-				ee()->functions->redirect(ee('CP/URL')->make($this->index_url));
+				if (ee('Request')->post('submit') == 'save_and_new')
+				{
+					ee()->functions->redirect(ee('CP/URL')->make($this->index_url . '/create'));
+				}
+				elseif (ee()->input->post('submit') == 'save_and_close')
+				{
+					ee()->functions->redirect(ee('CP/URL')->make($this->index_url));
+				}
+				else
+				{
+					ee()->functions->redirect(ee('CP/URL')->make($this->index_url . '/edit/' . $this->button->getId()));
+				}
 			}
 		}
 		elseif (ee()->form_validation->errors_exist())
@@ -377,8 +379,31 @@ class Buttons extends Settings {
 
 		ee()->view->base_url = $this->base_url;
 		ee()->view->ajax_validate = TRUE;
-		ee()->view->save_btn_text = sprintf(lang('btn_save'), lang('html_button'));
-		ee()->view->save_btn_text_working = 'btn_saving';
+
+		$vars['buttons'] = [
+			[
+				'name' => 'submit',
+				'type' => 'submit',
+				'value' => 'save',
+				'text' => 'save',
+				'working' => 'btn_saving'
+			],
+			[
+				'name' => 'submit',
+				'type' => 'submit',
+				'value' => 'save_and_new',
+				'text' => 'save_and_new',
+				'working' => 'btn_saving'
+			],
+			[
+				'name' => 'submit',
+				'type' => 'submit',
+				'value' => 'save_and_close',
+				'text' => 'save_and_close',
+				'working' => 'btn_saving'
+			]
+		];
+
 		ee()->cp->render('settings/form', $vars);
 	}
 

@@ -1,26 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Login Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Login Controller
  */
 class Login extends CP_Controller {
 
@@ -36,8 +24,6 @@ class Login extends CP_Controller {
 		$this->load->library('auth');
 		$this->lang->loadfile('login');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Main login form
@@ -71,17 +57,21 @@ class Login extends CP_Controller {
 		if (($type = ee()->input->get('after')) && is_dir($installer_dir))
 		{
 			ee()->lang->load('installer', 'english', FALSE, TRUE, $installer_dir);
-			$this->view->message =
-				sprintf(
-					lang("{$type}_success_note"),
-					APP_VER
-				)
-				.BR.
-				sprintf(
-					lang('success_moved'),
-					ee()->config->item('app_version')
-				);
-			$this->view->message_status = 'success';
+
+			ee('CP/Alert')
+				->makeInline()
+				->asSuccess()
+				->addToBody(sprintf(
+						lang("{$type}_success_note"),
+						APP_VER
+					)
+					.BR.
+					sprintf(
+						lang('success_moved'),
+						ee()->config->item('app_version')
+					))
+				->cannotClose()
+				->now();
 		}
 
 		$username = $this->session->flashdata('username');
@@ -95,6 +85,24 @@ class Login extends CP_Controller {
 			$this->view->message = ($this->input->get('auto_expire')) ? lang('session_auto_timeout') : $this->session->flashdata('message');
 		}
 
+		if ($this->input->get('auto_expire'))
+		{
+			ee('CP/Alert')
+				->makeInline()
+				->asIssue()
+				->addToBody(lang('session_auto_timeout'))
+				->now();
+		}
+
+		if ($this->session->flashdata('message'))
+		{
+			ee('CP/Alert')
+				->makeInline()
+				->asIssue()
+				->addToBody($this->session->flashdata('message'))
+				->now();
+		}
+
 		// Normal login button state
 		$this->view->btn_class = 'btn';
 		$this->view->btn_label = lang('login');
@@ -106,15 +114,16 @@ class Login extends CP_Controller {
 			$this->view->btn_class .= ' disable';
 			$this->view->btn_label = lang('locked');
 			$this->view->btn_disabled = 'disabled';
-			$this->view->message = sprintf(
-				lang('password_lockout_in_effect'),
-				ee()->config->item('password_lockout_interval')
-			);
-		}
 
-		if ($this->view->message != '' && ! isset($this->view->message_status))
-		{
-			$this->view->message_status = 'issue';
+			ee('CP/Alert')
+				->makeInline()
+				->asIssue()
+				->addToBody(sprintf(
+					lang('password_lockout_in_effect'),
+					ee()->config->item('password_lockout_interval')
+				))
+				->cannotClose()
+				->now();
 		}
 
 		// Show the site label
@@ -128,7 +137,7 @@ class Login extends CP_Controller {
 
 		if ($this->input->get('BK'))
 		{
-			$this->view->return_path = base64_encode($this->input->get('BK'));
+			$this->view->return_path = ee('Encrypt')->encode($this->input->get('BK'));
 		}
 		else if ($this->input->get('return'))
 		{
@@ -143,8 +152,6 @@ class Login extends CP_Controller {
 
 		$this->view->render('account/login');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Authenticate user
@@ -227,7 +234,7 @@ class Login extends CP_Controller {
 
 		if ($this->input->post('return_path'))
 		{
-			$return_path = base64_decode($this->input->post('return_path'));
+			$return_path = ee('Encrypt')->decode($this->input->post('return_path'));
 
 			if (strpos($return_path, '{') === 0)
 			{
@@ -245,10 +252,16 @@ class Login extends CP_Controller {
 			$return_path = $member->getCPHomepageURL();
 		}
 
+		// If there is a URL= parameter in the return URL folks could end up anywhere
+		// so if we see that we'll ditch everything we were told and just go to `/`
+		if (strpos($return_path, '&URL=') !== FALSE
+			|| strpos($return_path, '?URL=') !== FALSE)
+		{
+			$return_path = ee('CP/URL')->make('/')->compile();
+		}
+
 		$this->functions->redirect($return_path);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Username/password update form
@@ -280,8 +293,6 @@ class Login extends CP_Controller {
 			'required_changes' => array(),
 			'focus_field'   => 'new_username',
 			'cp_page_title'	=> lang('login'),
-			'message'		=> lang('access_notice').'<br>',
-			'message_status' => 'issue',
 			'username'		=> $this->input->post('username'),
 			'new_username_required'	=> FALSE,
 			'new_username'	=> $new_un,
@@ -294,22 +305,34 @@ class Login extends CP_Controller {
 			)
 		);
 
+		$required_changes = [];
 		if ($ulen < $uml)
 		{
 			$data['new_username_required'] = TRUE;
-			$data['required_changes'][] = sprintf(lang('un_len'), $uml);
+			$required_changes[] = sprintf(lang('un_len'), $uml);
 		}
 
 		if ($plen < $pml)
 		{
 			$data['new_password_required'] = TRUE;
-			$data['required_changes'][] = sprintf(lang('pw_len'), $pml);
+			$required_changes[] = sprintf(lang('pw_len'), $pml);
 		}
+
+		$alert = ee('CP/Alert')
+			->makeInline()
+			->asIssue()
+			->addToBody(lang('access_notice'))
+			->cannotClose()
+			->now();
+
+		if ( ! empty($required_changes))
+		{
+			$alert->addToBody($required_changes);
+		}
+
 
 		return ee('View')->make('account/update_un_pw')->render($data);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Update the username/password
@@ -412,8 +435,6 @@ class Login extends CP_Controller {
 		$this->functions->redirect(BASE.AMP.'C=login');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Lock CP
 	 *
@@ -434,8 +455,6 @@ class Login extends CP_Controller {
 			'message' => 'locked'
 		));
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Log-out
@@ -479,8 +498,6 @@ class Login extends CP_Controller {
 		$this->functions->redirect(BASE.AMP.'C=login');
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Forgotten password form
 	 *
@@ -500,18 +517,11 @@ class Login extends CP_Controller {
 		}
 
 		$this->view->email = ( ! $this->input->post('email')) ? '' : $this->input->get_post('email');
-		$this->view->cp_page_title = lang('forgotten_password');
+		$this->view->cp_page_title = lang('new_password');
 		$this->view->focus_field = 'email';
-
-		if ( ! isset($this->view->message))
-		{
-			$this->view->message = '';
-		}
 
 		$this->view->render('account/forgot_password');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Request a forgotten password
@@ -547,8 +557,13 @@ class Login extends CP_Controller {
 		// don't know if an email exists or not
 		if ($query->num_rows() == 0)
 		{
-			$this->view->message = lang('forgotten_email_sent');
-			$this->view->message_status = 'success';
+			ee('CP/Alert')
+				->makeInline()
+				->asSuccess()
+				->addToBody(lang('forgotten_email_sent'))
+				->cannotClose()
+				->now();
+
 			return $this->forgotten_password_form();
 		}
 
@@ -599,19 +614,25 @@ class Login extends CP_Controller {
 
 		if ( ! $this->email->send())
 		{
-			$this->view->message = lang('error_sending_email');
-			$this->view->message_status = 'issue';
+			ee('CP/Alert')
+				->makeInline()
+				->asIssue()
+				->addToBody(lang('error_sending_email'))
+				->cannotClose()
+				->now();
 		}
 		else
 		{
-			$this->view->message = lang('forgotten_email_sent');
-			$this->view->message_status = 'success';
+			ee('CP/Alert')
+				->makeInline()
+				->asSuccess()
+				->addToBody(lang('forgotten_email_sent'))
+				->cannotClose()
+				->now();
 		}
 
 		$this->forgotten_password_form();
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Reset Password
@@ -697,8 +718,13 @@ class Login extends CP_Controller {
 					->or_where('member_id', $member_id)
 					->delete('reset_password');
 
-				$this->view->message = lang('successfully_changed_password');
-				$this->view->message_status = 'success';
+				ee('CP/Alert')
+					->makeInline()
+					->asSuccess()
+					->addToBody(lang('successfully_changed_password'))
+					->cannotClose()
+					->now();
+
 				return $this->index();
 			}
 		}
@@ -713,29 +739,20 @@ class Login extends CP_Controller {
 				/*
 				/* -------------------------------------------*/
 
-		$this->view->messages = array();
+		$alert = ee('CP/Alert')
+			->makeInline()
+			->asIssue()
+			->cannotClose();
 
 		// Show form validation errors
 		if (form_error('password'))
 		{
-			// Regular array appending is throwing an error, so merging
-			$this->view->messages = array_merge(
-				$this->view->messages,
-				array(strip_tags(form_error('password')))
-			);
+			$alert->addToBody(strip_tags(form_error('password')))->now();
 		}
 
 		if (form_error('password_confirm'))
 		{
-			$this->view->messages = array_merge(
-				$this->view->messages,
-				array(strip_tags(form_error('password_confirm')))
-			);
-		}
-
-		if ( ! empty($this->view->messages))
-		{
-			$this->view->message_status = 'issue';
+			$alert->addToBody(strip_tags(form_error('password_confirm')))->now();
 		}
 
 		$this->view->cp_page_title = lang('enter_new_password');
@@ -744,8 +761,6 @@ class Login extends CP_Controller {
 
 		$this->view->render('account/reset_password');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 *  Replace variables
@@ -764,8 +779,6 @@ class Login extends CP_Controller {
 
 		return $str;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 *	Refresh XID
@@ -796,8 +809,6 @@ class Login extends CP_Controller {
 		));
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 *	Return to login
 	 *
@@ -820,11 +831,11 @@ class Login extends CP_Controller {
 		// If we have a return argument, keep it
 		if (ee()->input->post('return_path'))
 		{
-			$redirect .= AMP . 'return=' . ee()->input->post('return_path');
+			$redirect .= AMP . 'return=' . ee('Encrypt')->encode(ee()->input->post('return_path'));
 		}
 		elseif (ee()->input->get('return'))
 		{
-			$redirect .= AMP . 'return=' . ee()->input->get('return');
+			$redirect .= AMP . 'return=' . ee('Encrypt')->encode(ee()->input->get('return'));
 		}
 
 		$this->functions->redirect(BASE.AMP.$redirect);

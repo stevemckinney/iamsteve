@@ -92,6 +92,8 @@ $lang = array(
 
 'info_blurb' => 'In order to use this utility, you must first put the file containing your exported member data on your server, and then submit the location of the file.',
 
+'invalid_avatar_filename' => 'Invalid avatar filename: "%x"',
+
 'invalid_element' => 'Missing or Invalid Element - &lt;member&gt; expected',
 
 'invalid_path' => 'INVALID PATH! File does not exist: ',
@@ -173,6 +175,8 @@ $lang = array(
 'unable_to_parse_xml' => 'Unable to parse XML.',
 
 'unable_to_read_file' => 'Unable to read file.',
+
+'upload_problem' => 'Upload failed',
 
 'value' => 'Value',
 

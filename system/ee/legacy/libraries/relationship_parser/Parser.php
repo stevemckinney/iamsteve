@@ -1,26 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.6
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Relationship Data Parser Class
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Core
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Data Parser
  */
 class EE_Relationship_data_parser {
 
@@ -37,8 +25,6 @@ class EE_Relationship_data_parser {
 		$this->_categories = $categories;
 	}
 
- 	// --------------------------------------------------------------------
-
 	/**
 	 * Entry data accessor.
 	 *
@@ -52,8 +38,6 @@ class EE_Relationship_data_parser {
 		return $this->_entries[$id];
 	}
 
- 	// --------------------------------------------------------------------
-
 	/**
 	 * Category data accessor.
 	 *
@@ -66,8 +50,6 @@ class EE_Relationship_data_parser {
 	{
 		return isset($this->_categories[$id]) ? $this->_categories[$id] : NULL;
 	}
-
- 	// --------------------------------------------------------------------
 
 	/**
 	 * Take the tagdata from a single entry, and the entry's id
@@ -104,8 +86,6 @@ class EE_Relationship_data_parser {
 		return $tagdata;
 	}
 
- 	// --------------------------------------------------------------------
-
 	/**
 	 * Parse an individual tree node. Will loop through each chunk that
 	 * applies to this node and call the channel entries parser on it.
@@ -137,6 +117,14 @@ class EE_Relationship_data_parser {
 			return $this->clear_node_tagdata($node, $tagdata);
 		}
 
+		// {if relationship_field}
+		if ($node->in_cond && ! $node->shortcut)
+		{
+			return ee()->functions->prep_conditionals($tagdata, array(
+				$node->open_tag => count($node->entry_ids())
+			));
+		}
+
 		$tag = preg_quote($node->name(), '/');
 		$open_tag = preg_quote($node->open_tag, '/');
 
@@ -161,7 +149,7 @@ class EE_Relationship_data_parser {
 				// here because the parser only gets one entry for shortcut
 				// pairs. It's also much faster compared to spinning up the
 				// channel entries parser.
-				if ($node->shortcut == 'total_results')
+				if ($node->shortcut == 'total_results' OR $node->shortcut == 'length')
 				{
 					$total_results = count($entry_ids);
 
@@ -237,8 +225,6 @@ class EE_Relationship_data_parser {
 		return $tagdata;
 	}
 
- 	// --------------------------------------------------------------------
-
 	/**
 	 * Call the channel entries parser for this node and its tagchunk.
 	 *
@@ -279,8 +265,6 @@ class EE_Relationship_data_parser {
 		return $this->cleanup_no_results_tag($node, $result);
 	}
 
- 	// --------------------------------------------------------------------
-
 	/**
 	 * Find a node's no_results Tag
 	 *
@@ -312,7 +296,7 @@ class EE_Relationship_data_parser {
 		{
 			if (stristr($match[1], LD.'if'))
 			{
-				$match[0] = ee()->functions->full_tag($match[0], $node_tagdata, LD.'if', LD.'\/'."if".RD);
+				$match[0] = ee('Variables/Parser')->getFullTag($node_tagdata, $match[0], LD.'if', LD.'/if'.RD);
 			}
 
 			if ($whole_tag)
@@ -325,9 +309,6 @@ class EE_Relationship_data_parser {
 
 		return '';
 	}
-
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Deletes the node tags from the given template and replace it with
@@ -365,8 +346,6 @@ class EE_Relationship_data_parser {
 		return $tagdata;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Removes leftover no_results tags from the node's template
 	 * after we've successfully parsed the node.
@@ -388,8 +367,6 @@ class EE_Relationship_data_parser {
 
 		return $tagdata;
 	}
-
- 	// --------------------------------------------------------------------
 
 	/**
 	 * Process the parameters of this tag pair to figure out what data
@@ -515,6 +492,7 @@ class EE_Relationship_data_parser {
 			{
 				$not = FALSE;
 				$cat_match = FALSE;
+				$inclusive_stack = FALSE;
 
 				if (strpos($requested_cats, 'not ') === 0)
 				{
@@ -522,7 +500,12 @@ class EE_Relationship_data_parser {
 					$not = TRUE;
 				}
 
-				if (! isset($categories[$entry_id]))
+				if (strpos($requested_cats, '&') !== FALSE)
+				{
+					$inclusive_stack = TRUE;
+				}
+
+				if ( ! isset($categories[$entry_id]))
 				{
 					// If the entry has no categories and the category parameter
 					// specifies 'not x', include it.
@@ -534,15 +517,20 @@ class EE_Relationship_data_parser {
 					continue;
 				}
 
-				$requested_cats = explode('|', $requested_cats);
+				$requested_cats = ($inclusive_stack) ? explode('&', $requested_cats) : explode('|', $requested_cats);
+				$cat_id_array = array();
 
 				foreach ($categories[$entry_id] as $cat)
 				{
-					if (in_array($cat['cat_id'], $requested_cats))
+					if ($inclusive_stack)
+					{
+						$cat_id_array[] = $cat['cat_id'];
+					}
+					elseif (in_array($cat['cat_id'], $requested_cats))
 					{
 						if ($not)
 						{
-						continue 2;
+							continue 2;
 						}
 
 						$cat_match = TRUE;
@@ -550,6 +538,18 @@ class EE_Relationship_data_parser {
 					elseif ($not)
 					{
 						$cat_match = TRUE;
+					}
+				}
+
+				if ($inclusive_stack)
+				{
+					if ($not)
+					{
+						$cat_match = (array_intersect($cat_id_array, $requested_cats)) ? FALSE : TRUE;
+					}
+					else
+					{
+						$cat_match = (array_diff($requested_cats, $cat_id_array)) ? FALSE : TRUE;
 					}
 				}
 
@@ -593,8 +593,6 @@ class EE_Relationship_data_parser {
 			'categories' => $categories,
 		);
 	}
-
- 	// --------------------------------------------------------------------
 
 	/**
 	 * Utility method to format the category array for processing by the
@@ -644,8 +642,6 @@ class EE_Relationship_data_parser {
 		return $categories;
 	}
 
- 	// --------------------------------------------------------------------
-
 	/**
 	 * Utility method to do the row sorting in PHP.
 	 *
@@ -656,6 +652,11 @@ class EE_Relationship_data_parser {
 	 */
 	public function _apply_sort($node, $entry_ids)
 	{
+		if (empty($entry_ids))
+		{
+			return $entry_ids;
+		}
+
 		$order_by = array_filter(explode('|', $node->param('orderby')));
 		$sort = explode('|', $node->param('sort', 'desc'));
 
@@ -725,5 +726,6 @@ class EE_Relationship_data_parser {
 		return $entry_ids;
 	}
 }
+// END CLASS
 
 // EOF

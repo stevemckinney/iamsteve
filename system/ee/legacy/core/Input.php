@@ -1,26 +1,14 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// ------------------------------------------------------------------------
-
 /**
- * ExpressionEngine Core Input Class
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Core
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Core Input
  */
 class EE_Input {
 
@@ -62,8 +50,6 @@ class EE_Input {
 		$this->_sanitize_globals();
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
  	 * Delete a Cookie
 	 *
@@ -86,8 +72,6 @@ class EE_Input {
 
 		return $this->_set_cookie($data);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Set a Cookie
@@ -120,6 +104,10 @@ class EE_Input {
 	 */
 	public function set_cookie($name = '', $value = '', $expire = '', $domain = '', $path = '/', $prefix = '')
 	{
+		if ( ! $this->cookieIsAllowed($name))
+		{
+			return;
+		}
 
 		$data = array(
 			'name' => $name,
@@ -249,7 +237,46 @@ class EE_Input {
 			$data['path'], $data['domain'], $data['secure_cookie'], $data['httponly']);
 	}
 
-	// --------------------------------------------------------------------
+	/**
+	 * Is the cookie allowed?
+	 *
+	 * @param  string $name Name of the cookie
+	 * @return boolean Whether or not it's allowed to be set
+	 */
+	private function cookieIsAllowed($name)
+	{
+		// only worry about it if consent is required
+		if (bool_config_item('require_cookie_consent') !== TRUE)
+		{
+			return TRUE;
+		}
+
+		// Need a local ref for PHP < 7, can't do ee('CookieRegistry')::CONST
+		$cookie_reg = ee('CookieRegistry');
+
+		// unregistered cookies, pass, but log
+		if ( ! $cookie_reg->isRegistered($name))
+		{
+			ee()->load->library('logger');
+			ee()->logger->developer('A cookie ('.htmlentities($name).') is being sent without being properly registered, and does not meet cookie compliance policies. Register this cookie appropriately in your addon.setup.php file.', TRUE, 604800);
+			return TRUE;
+		}
+
+		switch ($cookie_reg->getType($name))
+		{
+			case $cookie_reg::NECESSARY:
+				return TRUE;
+			case $cookie_reg::FUNCTIONALITY:
+				return ee('Consent')->hasGranted('ee:cookies_functionality');
+			case $cookie_reg::PERFORMANCE:
+				return ee('Consent')->hasGranted('ee:cookies_performance');
+			case $cookie_reg::TARGETING:
+				return ee('Consent')->hasGranted('ee:cookies_targeting');
+		}
+
+		// something bad happened
+		return FALSE;
+	}
 
 	/**
 	 * Fetch from array
@@ -277,8 +304,6 @@ class EE_Input {
 		return $array[$index];
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	* Fetch an item from the GET array
 	*
@@ -291,8 +316,6 @@ class EE_Input {
 	{
 		return $this->_fetch_from_array($_GET, $index, $xss_clean);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	* Fetch an item from the POST array
@@ -307,8 +330,6 @@ class EE_Input {
 		return $this->_fetch_from_array($_POST, $index, $xss_clean);
 	}
 
-
-	// --------------------------------------------------------------------
 
 	/**
 	* Fetch an item from either the GET array or the POST
@@ -331,8 +352,6 @@ class EE_Input {
 	}
 
 
-	// --------------------------------------------------------------------
-
 	/**
 	* Fetch an item from the SERVER array
 	*
@@ -346,8 +365,6 @@ class EE_Input {
 		return $this->_fetch_from_array($_SERVER, $index, $xss_clean);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	* Fetch the IP Address
 	*
@@ -359,6 +376,11 @@ class EE_Input {
 		if ($this->ip_address !== FALSE)
 		{
 			return $this->ip_address;
+		}
+
+		if (REQ == 'CLI')
+		{
+			return '0.0.0.0';
 		}
 
 		$proxy_ips = config_item('proxy_ips');
@@ -404,8 +426,6 @@ class EE_Input {
 
 		return $this->ip_address;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	* Validate IP Address
@@ -458,8 +478,6 @@ class EE_Input {
 		return $this->$func($ip);
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	* Validate IPv4 Address
 	*
@@ -497,8 +515,6 @@ class EE_Input {
 
 		return TRUE;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	* Validate IPv6 Address
@@ -572,8 +588,6 @@ class EE_Input {
 		return $collapsed OR $groups == 1;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Compare an IP versus the current IP
 	 *
@@ -612,8 +626,6 @@ class EE_Input {
 		return TRUE;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	* User Agent
 	*
@@ -632,8 +644,6 @@ class EE_Input {
 		return $this->user_agent;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Fetch an item from the COOKIE array
 	 *
@@ -647,11 +657,9 @@ class EE_Input {
 	function cookie($index = '', $xss_clean = FALSE)
 	{
 		$prefix = ( ! ee()->config->item('cookie_prefix')) ? 'exp_' : ee()->config->item('cookie_prefix').'_';
-
-		return ( ! isset($_COOKIE[$prefix.$index]) ) ? FALSE : stripslashes($_COOKIE[$prefix.$index]);
+		$cookie = $this->_fetch_from_array($_COOKIE, $prefix.$index, $xss_clean);
+		return ($cookie) ? stripslashes($cookie) : FALSE;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Request Headers
@@ -693,8 +701,6 @@ class EE_Input {
 		return $this->headers;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Get Request Header
 	 *
@@ -724,8 +730,6 @@ class EE_Input {
 		return $this->headers[$index];
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Is ajax Request?
 	 *
@@ -737,8 +741,6 @@ class EE_Input {
 	{
 		return ($this->server('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Filter GET Data
@@ -815,8 +817,6 @@ class EE_Input {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Remove session ID from string
 	 *
@@ -830,8 +830,6 @@ class EE_Input {
 	{
 		return preg_replace("#S=.+?/#", "", $str);
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Sanitize Globals
@@ -857,7 +855,7 @@ class EE_Input {
 
 		// It would be "wrong" to unset any of these GLOBALS.
 		$protected = array('_SERVER', '_GET', '_POST', '_FILES', '_REQUEST',
-							'_SESSION', '_ENV', 'GLOBALS', 'HTTP_RAW_POST_DATA',
+							'_SESSION', '_ENV', 'GLOBALS',
 							'system_folder', 'application_folder', 'BM', 'EXT',
 							'CFG', 'URI', 'RTR', 'OUT', 'IN');
 
@@ -944,8 +942,6 @@ class EE_Input {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Clean GET data
 	 *
@@ -981,8 +977,6 @@ class EE_Input {
 		return TRUE;
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	* Clean Keys
 	*
@@ -996,7 +990,7 @@ class EE_Input {
 	*/
 	function _clean_input_keys($str)
 	{
-		if ( ! preg_match("/^[a-z0-9:_\/ -]+$/i", $str))
+		if ( ! preg_match("/^[a-z0-9:_\/ \-".EMOJI_REGEX."]+$/iu", $str))
 		{
 			set_status_header(503);
 			$error = 'Disallowed Key Characters';
@@ -1017,8 +1011,6 @@ class EE_Input {
 
 		return $str;
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	* Clean Input Data

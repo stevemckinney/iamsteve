@@ -1,14 +1,8 @@
 <?php $this->extend('_templates/login'); ?>
 
-<div class="box snap">
-	<h1><?=lang('new_password')?> <span class="ico locked"></span></h1>
-	<?php if ( ! empty($messages)):?>
-		<div class="alert inline <?=$message_status?>">
-			<?php foreach ($messages as $message): ?>
-				<p><?php if ($message_status != 'success'): ?><b>!!</b> <?php endif ?><?=$message?></p>
-			<?php endforeach ?>
-		</div>
-	<?php endif;?>
+<div class="box">
+	<h1><?=lang('reset_password')?><span class="icon-reset"></span></h1>
+	<?=ee('CP/Alert')->getAllInlines()?>
 	<?=form_open(ee('CP/URL')->make('login/reset_password'))?>
 		<fieldset>
 			<?=lang('new_password', 'password')?>

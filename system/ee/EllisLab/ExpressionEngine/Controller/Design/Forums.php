@@ -1,4 +1,11 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Design;
 
@@ -7,27 +14,7 @@ use EllisLab\ExpressionEngine\Library\CP\Table;
 
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Design\Forums Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Design\Forums Controller
  */
 class Forums extends AbstractDesignController {
 
@@ -53,28 +40,36 @@ class Forums extends AbstractDesignController {
 		ee()->lang->loadfile('specialty_tmp');
 	}
 
-	public function index($theme = '')
+	public function index($theme = NULL)
 	{
-		if (empty($theme))
+		$base_path = FALSE;
+		$this->load->helper('directory');
+		$files = array();
+		$theme_dirs = ee('Theme')->listUserThemes('forum');
+
+		if ($theme_dirs && empty($theme))
 		{
-			$theme = $this->getDefaultTheme();
+			$theme = array_keys($theme_dirs)[0];
 		}
 
-		$base_path = ee('Theme')->getPath('forum/' . ee()->security->sanitize_filename($theme));
-
-		if ( ! is_dir($base_path))
+		if ($theme)
 		{
-			show_error(lang('unable_to_find_templates'));
+			$base_path = ee('Theme')->getUserPath('forum/' . ee()->security->sanitize_filename($theme));
+
+			// Check if custom templates are in themes folder instead of system folder
+			if (strpos($base_path, PATH_THIRD_THEMES) !== FALSE)
+			{
+				ee()->load->library('logger');
+				$version_url = ee()->cp->masked_url(DOC_URL.'installation/version_notes_4.2.2.html');
+
+				ee()->logger->developer('As of 4.2.2, forum templates should be in folder: system/user/templates/_themes/forum/.  <a href="'.$version_url.'">Please see 4.2.2 version notes.</a>', TRUE);
+			}
 		}
-
-		ee()->load->helper('directory');
-
-		$vars = array();
 
 		$base_url = ee('CP/URL')->make('design/forums/index/' . $theme);
 
 		$table = ee('CP/Table', array('autosort' => TRUE, 'subheadings' => TRUE));
-		$table->setNoResultsText('no_templates_found');
+		$table->setNoResultsText(sprintf(lang('no_user_templates_found'), DOC_URL.'add-ons/forum/forum_themes.html'));
 		$table->setColumns(
 			array(
 				'template',
@@ -84,38 +79,54 @@ class Forums extends AbstractDesignController {
 			)
 		);
 
+		$vars['themes'] = '';
 		$data = array();
-		foreach (directory_map($base_path) as $dir => $files)
+
+		if ($base_path && is_dir($base_path))
 		{
-			$path = $base_path . '/' . $dir;
+			$dir_map = directory_map($base_path) ?: array();
 
-			if ( ! is_array($files) OR $dir == 'images')
+			foreach ($dir_map as $dir => $files)
 			{
-				continue;
-			}
+				$path = $base_path . '/' . $dir;
 
-			foreach ($files as $file)
-			{
-				if (strpos($file, '.') !== FALSE)
+				if ( ! is_array($files) OR $dir == 'images')
 				{
-					$human = str_replace('_', ' ', substr($file, 0, -strlen(strrchr($file, '.'))));
-					$edit_url = ee('CP/URL')->make('design/forums/edit/' . $theme . '/' . $dir . '/' . $human);
-					$human = ucfirst($human);
-					$data[$dir][] = array(
-						array(
-							'content' => (lang($human) == FALSE) ? $human : lang($human),
-							'href' => $edit_url
-							),
-						array('toolbar_items' => array(
-							'edit' => array(
+					continue;
+				}
+
+				foreach ($files as $file)
+				{
+					if (strpos($file, '.') !== FALSE)
+					{
+						$human = str_replace('_', ' ', substr($file, 0, -strlen(strrchr($file, '.'))));
+						$edit_url = ee('CP/URL')->make('design/forums/edit/' . $theme . '/' . $dir . '/' . $human);
+						$human = ucfirst($human);
+						$data[$dir][] = array(
+							array(
+								'content' => (lang($human) == FALSE) ? $human : lang($human),
+								'href' => $edit_url
+								),
+							array('toolbar_items' => array(
+								'edit' => array(
 								'href' => $edit_url,
 								'title' => lang('edit')
-							),
-						))
-					);
+								),
+							))
+						);
+					}
 				}
 			}
 
+			if ( ! empty($files))
+			{
+				foreach ($theme_dirs as $dir => $name)
+				{
+					$themes[ee('CP/URL')->make('design/forums/index/' . $dir)->compile()] = $name;
+				}
+
+				$vars['themes'] = form_dropdown('theme', $themes, ee('CP/URL')->make('design/forums/index/' . $theme));
+			}
 		}
 
 		$table->setData($data);
@@ -123,61 +134,18 @@ class Forums extends AbstractDesignController {
 		$vars['table'] = $table->viewData($base_url);
 		$vars['form_url'] = $vars['table']['base_url'];
 
-		ee()->load->model('member_model');
-
-		$themes = array();
-		foreach (ee('Theme')->listThemes('forum') as $dir => $name)
-		{
-			$themes[ee('CP/URL')->make('design/forums/index/' . $dir)->compile()] = $name;
-		}
-
-		$vars['themes'] = form_dropdown('theme', $themes, ee('CP/URL')->make('design/forums/index/' . $theme));
-
 		$this->generateSidebar('forums');
 		ee()->view->cp_page_title = lang('template_manager');
 		ee()->view->cp_heading = lang('forum_templates');
 
 		ee()->javascript->change("select[name=\'theme\']", 'window.location.href = $(this).val()');
 
-		ee()->view->cp_breadcrumbs = array(
-			ee('CP/URL')->make('addons/settings/forum')->compile() => lang('forum_manager'),
-		);
-
 		ee()->cp->render('design/forums/index', $vars);
-	}
-
-	private function getDefaultTheme()
-	{
-		$files = ee('Theme')->listThemes('forum');
-
-		if (empty($files))
-		{
-			show_error(lang('unable_to_find_templates'));
-		}
-
-		if (isset($files['default']))
-		{
-			return 'default';
-		}
-		else
-		{
-			$theme_path = ee('Theme')->getPath('forum/');
-
-			foreach (array_keys($files) as $dir)
-			{
-				if (is_dir($theme_path . $dir))
-				{
-					return $dir;
-				}
-			}
-		}
-
-		show_error(lang('unable_to_find_templates'));
 	}
 
 	public function edit($theme, $dir, $file)
 	{
-		$path = ee('Theme')->getPath('forum/'
+		$path = ee('Theme')->getUserPath('forum/'
 			.ee()->security->sanitize_filename($theme)
 			.'/'
 			.ee()->security->sanitize_filename($dir)
@@ -209,7 +177,7 @@ class Forums extends AbstractDesignController {
 				if (ee()->input->post('submit') == 'finish')
 				{
 					$alert->defer();
-					ee()->functions->redirect(ee('CP/URL')->make('design/forums'));
+					ee()->functions->redirect(ee('CP/URL')->make('design/forumsindex/' . $theme));
 				}
 
 				$alert->now();

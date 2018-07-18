@@ -1,32 +1,19 @@
 <?php
-namespace EllisLab\ExpressionEngine\Service\Filter;
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+namespace EllisLab\ExpressionEngine\Service\Filter;
 
 use EllisLab\ExpressionEngine\Library\CP\URL;
 use EllisLab\ExpressionEngine\Service\View\ViewFactory;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine abstract Filter Class
- *
- * @package		ExpressionEngine
- * @category	Service
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * abstract Filter
  */
 abstract class Filter {
 
@@ -89,6 +76,11 @@ abstract class Filter {
 	protected $view = 'filter';
 
 	/**
+	 * @var string Class to apply to parent list element
+	 */
+	public $list_class = '';
+
+	/**
 	 * Determines the value of this filter. If a selected_value was set, that
 	 * is used. Otherwise we'll determine the value by using the POST value, GET
 	 * vale or default value (in that order).
@@ -96,6 +88,30 @@ abstract class Filter {
 	 * @return mixed The value of the filter
 	 */
 	public function value()
+	{
+		if (isset($this->selected_value))
+		{
+			return $this->selected_value;
+		}
+
+		$value = $this->derivedValue();
+
+		if ( ! $this->has_custom_value)
+		{
+			$value = $this->isValid() ? $value : NULL;
+		}
+
+		return is_null($value) ? NULL : htmlentities($value, ENT_NOQUOTES, 'UTF-8');
+	}
+
+	/**
+	 * Determines the value of this filter. If a selected_value was set, that
+	 * is used. Otherwise we'll determine the value by using the POST value, GET
+	 * valeu or default value (in that order).
+	 *
+	 * @return mixed The value of the filter
+	 */
+	protected function derivedValue()
 	{
 		if (isset($this->selected_value))
 		{
@@ -113,7 +129,7 @@ abstract class Filter {
 			$value = $_GET[$this->name];
 		}
 
-		return is_null($value) ? NULL : htmlentities($value, ENT_QUOTES, 'UTF-8');
+		return $value;
 	}
 
 	/**
@@ -133,14 +149,14 @@ abstract class Filter {
 	 */
 	public function isValid()
 	{
-		$value = $this->value();
+		$value = $this->derivedValue();
 
 		if (is_null($value))
 		{
 			return TRUE;
 		}
 
-		return (array_key_exists($this->value(), $this->options));
+		return (array_key_exists($value, $this->options));
 	}
 
 	/**

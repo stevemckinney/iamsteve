@@ -1,10 +1,20 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Core;
 
 use EllisLab\ExpressionEngine\Service\Dependency\ServiceProvider;
 use FilesystemIterator;
 
+/**
+ * Core Application
+ */
 class Application {
 
 	/**
@@ -77,7 +87,7 @@ class Application {
 	{
 		$standard_modules = array(
 			'blacklist', 'email', 'forum', 'ip_to_nation', 'member', 'moblog', 'query',
-			'simple_commerce', 'wiki'
+			'simple_commerce', 'spam', 'wiki'
 		);
 
 		$folders = new FilesystemIterator($path, FilesystemIterator::UNIX_PATHS);

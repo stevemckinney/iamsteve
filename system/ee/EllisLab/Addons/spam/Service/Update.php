@@ -1,37 +1,32 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\Addons\Spam\Service;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
+ * Spam Update
  */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Spam Module
- *
- * @package		ExpressionEngine
- * @subpackage	Extensions
- * @category	Extensions
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
- */
-
 class Update {
 
 	public function download()
 	{
 		$location = 'https://expressionengine.com/asset/file/spam.zip';
-		$compressed = ee('Curl')->get($location)->exec();
+
+		try
+		{
+			$compressed = ee('Curl')->get($location)->exec();
+		}
+		catch (\Exception $e)
+		{
+			// let's just bubble this up
+			throw $e;
+		}
 
 		// Write the training data to a tmp file and return the file name
 

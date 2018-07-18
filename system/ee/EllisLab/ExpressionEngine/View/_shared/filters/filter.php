@@ -1,5 +1,5 @@
 <a class="has-sub" href="" data-filter-label="<?=strtolower(lang($label))?>">
-	<?=lang($label)?>
+	<?=strtolower(lang($label))?>
 	<?php if ($value): ?>
 	<span class="faded">(<?=htmlentities($value, ENT_QUOTES, 'UTF-8')?>)</span>
 	<?php endif; ?>
@@ -13,7 +13,6 @@
 			value="<?=htmlentities($custom_value, ENT_QUOTES, 'UTF-8')?>"
 			placeholder="<?=htmlentities($placeholder, ENT_QUOTES, 'UTF-8')?>"
 			<?php if ($has_list_filter): ?>
-			autofocus="autofocus"
 			data-fuzzy-filter="true"
 			<?php endif; ?>
 		>

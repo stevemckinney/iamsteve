@@ -3,7 +3,7 @@
 	<head>
 		<?=ee()->view->head_title($cp_page_title)?>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" lang="en-us" dir="ltr">
-		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"  name="viewport">
 		<?php if (isset($meta_refresh)): ?>
 		<meta http-equiv='refresh' content='<?=$meta_refresh['rate']?>; url=<?=$meta_refresh['url']?>'>
 		<?php endif;?>
@@ -56,7 +56,6 @@
 					<?php endif ?>
 				</div>
 				<div class="nav-global-user">
-					<a class="nav-logout" href="<?=ee('CP/URL', 'login/logout')?>"><i class="icon-logout"></i><span class="nav-txt-collapse"><?=lang('log_out')?></span></a>
 					<div class="nav-user">
 						<a class="nav-has-sub" href=""><i class="icon-user"></i><span class="nav-txt-collapse"><?=$cp_screen_name?></span></a>
 						<ul class="nav-sub-menu">
@@ -67,6 +66,7 @@
 							<li><a class="nav-add" href="<?=ee('CP/URL')->make('members/profile/quicklinks/create', array('id' => ee()->session->userdata('member_id'), 'url' => ee('CP/URL')->getCurrentUrl()->encode(), 'name' => $cp_page_title))?>"><i class="icon-add"></i><?=lang('new_link')?></a></li>
 						</ul>
 					</div>
+					<a class="nav-logout" href="<?=ee('CP/URL', 'login/logout')?>"><i class="icon-logout"></i><span class="nav-txt-collapse"><?=lang('log_out')?></span></a>
 				</div>
 			</nav>
 		</div>
@@ -152,9 +152,14 @@
 								<a class="nav-has-sub" href=""><?=lang($item->title)?></a>
 								<div class="nav-sub-menu">
 									<?php if ($item->hasFilter()): ?>
-									<form class="nav-filter">
-										<input type="text" value="" placeholder="<?=lang($item->placeholder)?>">
-									</form>
+										<form class="nav-filter">
+											<input type="text" value="" placeholder="<?=lang($item->placeholder)?>">
+
+											<?php if (count($item->getItems()) < 10 && ! empty($item->view_all_link)): ?>
+												<hr>
+												<a class="reset" href="<?=$item->view_all_link?>"><b><?= lang('view_all') ?></b></a>
+											<?php endif; ?>
+										</form>
 									<?php endif; ?>
 									<ul>
 										<?php foreach ($item->getItems() as $sub): ?>

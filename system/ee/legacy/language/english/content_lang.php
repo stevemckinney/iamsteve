@@ -12,7 +12,7 @@ $lang = array(
 
 'allow_comments' => 'Allow comments?',
 
-'allow_comments_desc' => 'When set to <b>yes</b>, members with permissions will be able to post comments to this entry.',
+'allow_comments_desc' => 'When enabled, members with permissions will be able to post comments to this entry.',
 
 'author' => 'Author',
 
@@ -30,9 +30,9 @@ $lang = array(
 
 'btn_create_new' => 'Create New',
 
-'btn_create_new_entry_in_channel' => 'Create New in %s',
+'btn_create_new_entry_in_channel' => 'New in %s',
 
-'btn_edit_comment' => 'Edit Comment',
+'btn_edit_comment' => 'Save',
 
 'btn_publish' => 'Publish',
 
@@ -142,6 +142,8 @@ $lang = array(
 
 'filter_autosaves' => 'filter auto saves',
 
+'filter_by_author' => 'author',
+
 'filter_by_category' => 'category',
 
 'filter_by_channel' => 'channel',
@@ -168,7 +170,7 @@ $lang = array(
 
 'sticky' => 'Make entry sticky?',
 
-'sticky_desc' => 'When set to <b>yes</b>, this entry will be given preference in sorted listings.',
+'sticky_desc' => 'When enabled, this entry will be given preference in sorted listings.',
 
 'url_title' => '<abbr title="Unified Resource Locator">URL</abbr> title',
 
@@ -202,7 +204,7 @@ $lang = array(
 
 'autosave_data_available' => 'auto saved data available',
 
-'autosave_success' => '<b>Auto saved</b> at ',
+'autosave_success' => 'Auto Saved',
 
 'autosave_title' => 'Saved data available',
 
@@ -214,7 +216,13 @@ $lang = array(
 
 'autosaved' => 'Auto saved',
 
-'autosaved_entries' => 'Auto saved Entries',
+'autosaved_entries' => 'Auto-saved Entries',
+
+'autosaved_versions' => 'Auto-saved versions',
+
+'autosaved_versions_desc' => 'Below is a list of auto-saved versions of this entry.',
+
+'autosaves' => 'Auto Saves',
 
 'blockquote' => 'Blockquote',
 
@@ -223,6 +231,8 @@ $lang = array(
 'button_mode' => 'Button Mode:',
 
 'calendar' => 'Calendar',
+
+'cancel_preview' => 'Cancel Preview',
 
 'category' => 'Category',
 
@@ -394,6 +404,8 @@ $lang = array(
 
 'forum_no_forum_title' => 'You must give the forum topic a title.',
 
+'forum_no_forum_id' => 'You must choose a forum.',
+
 'forum_title' => 'Forum Topic Title',
 
 'forum_topic_id' => 'Forum Topic ID',
@@ -473,8 +485,6 @@ $lang = array(
 'line_break' => 'Line Break',
 
 'link' => 'Link',
-
-'live_look' => 'Live Look',
 
 'live_view' => 'Click to View',
 
@@ -598,6 +608,8 @@ $lang = array(
 
 'pre' => 'Pre-formatted',
 
+'preview' => 'Preview',
+
 'preview_entry' => 'Preview Entry',
 
 'preview_layout' => 'Preview Layout',
@@ -620,8 +632,6 @@ $lang = array(
 
 'resize_original' => 'Resize the original image',
 
-'results' => 'results',
-
 'results_per_page' => 'Results Per Page',
 
 'return_to_publish' => 'Return to Publish',
@@ -642,8 +652,6 @@ $lang = array(
 
 'select_action' => 'Select Your Placement Options',
 
-'select_all' => 'Select/Deselect All',
-
 'select_channel_to_edit' => 'Choose a channel to view',
 
 'select_channel_to_post_in' => 'Choose a channel to post in',
@@ -657,6 +665,10 @@ $lang = array(
 'show_toolbar' => 'show toolbar',
 
 'spam' => 'SPAM',
+
+'spam_comments' => 'There are <b>%d comments</b> flagged as potential spam that <a href="%s">need moderation</a>.',
+
+'spam_comments_header' => 'Spam Comments',
 
 'span' => 'Span',
 
@@ -690,13 +702,11 @@ $lang = array(
 
 'title' => 'Title',
 
-'title_and_body' => 'Search titles and entries',
+'titles' => 'Titles',
 
-'title_body_comments' => 'Search titles, entries, and comments',
+'titles_and_content' => 'Titles & Content',
 
 'title_not_unique' => 'An entry already exists with this title. Titles must be unique.',
-
-'title_only' => 'Search titles only',
 
 'today' => 'Today',
 
@@ -713,6 +723,8 @@ $lang = array(
 'unauthorized_to_edit' => 'You are not allowed to edit the entries you selected.',
 
 'unordered_list' => 'Unordered List',
+
+'unpublished' => 'unpublished',
 
 'upload' => 'Upload',
 
@@ -738,7 +750,7 @@ $lang = array(
 
 'versioning_enabled' => 'Enable entry revisions?',
 
-'versioning_enabled_desc' => 'When set to <b>yes</b>, you can store up to %d revisions of this entry.',
+'versioning_enabled_desc' => 'When enabled, you can store up to %d revisions of this entry.',
 
 'view' => 'View',
 
@@ -747,6 +759,8 @@ $lang = array(
 'view_entry' => 'View Entry',
 
 'view_filtered' => 'Return to Filtered Entries',
+
+'view_wider' => 'View Wider',
 
 'warning' => 'Warning',
 
@@ -782,7 +796,11 @@ $lang = array(
 /* Relationships */
 'add_new_html_button' => 'Add New HTML button',
 
-'add_new_row' => 'add new row',
+'add_new_row' => 'Add new row',
+
+'collapse' => 'Collapse',
+
+'creating_new_in_rel' => 'Creating new entry in <b>#to_channel#</b> for a relationship with <b>#from_channel#</b>',
 
 'hide' => 'Hide',
 
@@ -807,8 +825,6 @@ $lang = array(
 'search_available_entries' => 'Search available entries',
 
 'search_related_entries' => 'Search related entries',
-
-'show' => 'Show',
 
 'show_tools' => 'Show Tools',
 
@@ -909,6 +925,50 @@ $lang = array(
 'menu_publish' => 'Publish',
 
 'rel_ft_no_entries' => 'No Entries',
+
+/* Bulk Edit */
+
+'add_categories' => 'Add Categories',
+
+'add_categories_entries' => 'Add categories to %d entries',
+
+'add_editable_fields' => 'Add editable fields',
+
+'add_editable_fields_desc' => 'Chosen fields will be added below, and will be editable for <b>all</b> selected entries.',
+
+'btn_save_all_and_close' => 'Save All & Close',
+
+'editing_entries' => 'Editing %d entries',
+
+'entries_updated' => '%d entries have been updated.',
+
+'filter_selected_entries' => 'Filter selected entries',
+
+'no_cat_groups_in_common' => 'No <b>Category Groups</b> in common.',
+
+'bulk_edit' => 'Bulk Edit',
+
+'bulk_edit_add_categories_notice' => 'Any categories selected will be assigned to the selected entries <b>in addition</b> to the current category selection for those entries.',
+
+'bulk_edit_destructive' => 'This is a destructive and irreversible action.',
+
+'bulk_edit_notice' => 'Any fields submitted will overwrite that field\'s stored content for all selected entries.',
+
+'bulk_edit_remove_categories_notice' => 'Any categories selected will be <b>removed</b> from the selected entries, leaving the entries\' other category assignments intact.',
+
+'remove_categories' => 'Remove Categories',
+
+'remove_categories_entries' => 'Remove categories from %d entries',
+
+'remove_from_selection' => 'Remove from selection',
+
+'save_and_next' => 'Save & Next',
+
+'selected_entries' => 'Selected Entries',
+
+'showing' => 'Showing',
+
+'unauthorized_entry_desc' => 'You do not have permission to edit one of the selected entries.'
 
 );
 

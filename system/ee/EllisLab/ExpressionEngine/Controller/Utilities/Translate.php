@@ -1,35 +1,20 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Controller\Utilities;
-
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 use ZipArchive;
 use EllisLab\ExpressionEngine\Library\CP\Table;
 
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine CP Translate Manager Class
- *
- * @package		ExpressionEngine
- * @subpackage	Control Panel
- * @category	Control Panel
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Translate Manager Controller
  */
 class Translate extends Utilities {
 
@@ -127,8 +112,9 @@ class Translate extends Utilities {
 		$languages = array();
 
 		$language_files = get_filenames($path);
+		$english_files = get_filenames(APPPATH.'language/english/');
 
-		foreach ($language_files as $file)
+		foreach ($english_files as $file)
 		{
 			if ($file == 'email_data.php' OR $file == 'stopwords.php')
 			{
@@ -139,22 +125,27 @@ class Translate extends Utilities {
 			{
 				$name = str_replace('_lang.php', '', $file);
 				$edit_url = ee('CP/URL')->make('utilities/translate/' . $language . '/edit/' . $name);
-				$data[] = array(
-					'filename' => array(
-							'content' => $file,
-							'href' => $edit_url
-						),
-					array('toolbar_items' => array(
-						'edit' => array(
-							'href' => $edit_url,
-							'title' => strtolower(lang('edit'))
+				$data[] = [
+					'attrs' => [
+						'class' => ! in_array($file, $language_files) ? 'missing' : ''
+					],
+					'columns' => array(
+						'filename' => array(
+								'content' => $file,
+								'href' => $edit_url
+							),
+						array('toolbar_items' => array(
+							'edit' => array(
+								'href' => $edit_url,
+								'title' => strtolower(lang('edit'))
+							)
+						)),
+						array(
+							'name' => 'selection[]',
+							'value' => $name
 						)
-					)),
-					array(
-						'name' => 'selection[]',
-						'value' => $name
 					)
-				);
+				];
 			}
 		}
 
@@ -273,7 +264,7 @@ class Translate extends Utilities {
 		$path = $this->getLanguageDirectory($language);
 		$filename =  $file . '_lang.php';
 
-		if ( ! is_readable($path . $filename))
+		if (file_exists($path . $filename) && ! is_readable($path . $filename))
 		{
 			$message = $path . $file . '_lang.php ' . lang('cannot_access') . '.';
 			ee()->view->set_message('issue', $message, '', TRUE);
@@ -287,11 +278,15 @@ class Translate extends Utilities {
 
 		$dest_dir = $this->languages_dir . $language . '/';
 
-		require($path . $filename);
+		$M = [];
+		if (file_exists($path . $filename) && is_readable($path . $filename))
+		{
+			require($path . $filename);
 
-		$M = $lang;
+			$M = $lang;
 
-		unset($lang);
+			unset($lang);
+		}
 
 		if (file_exists($dest_dir . $filename))
 		{
@@ -304,29 +299,35 @@ class Translate extends Utilities {
 
 		$keys = array();
 
+		$english = ee()->lang->load($file, 'english', TRUE);
+
 		ee()->lang->load($file);
-		foreach ($M as $key => $val)
+		$vars['sections'] = [[]];
+		foreach ($english as $key => $val)
 		{
 			if ($key != '')
 			{
-				$trans = ( ! isset($lang[$key])) ? '' : $lang[$key];
-				$keys[$key]['original'] = htmlentities(lang($key), ENT_QUOTES, 'UTF-8');
-				$keys[$key]['trans'] = str_replace("'", "&#39;", $trans);
-				$keys[$key]['type'] = (strlen($val) > 100) ? 'textarea' : 'text';
+				$vars['sections'][0][] = [
+					'title' => ee('Format')->make('Text', $val.' ')->convertToEntities()->compile(),
+					'fields' => [
+						$key => [
+							'type' => (strlen($val) > 100) ? 'textarea' : 'text',
+							'value' => isset($M[$key]) ? $M[$key] : ''
+						]
+					]
+				];
 			}
 		}
-
-		$vars = array(
-			'language'  => $language,
-			'file'		=> $file,
-			'keys'		=> $keys
-		);
 
 		ee()->view->cp_breadcrumbs = array(
 			ee('CP/URL')->make('utilities/translate/' . $language)->compile() => ucfirst($language) . ' ' . lang('language_files')
 		);
 
-		ee()->cp->render('utilities/translate/edit', $vars);
+		$vars['base_url'] = ee('CP/URL')->make('utilities/translate/' . $language . '/save/' . $file);
+		$vars['save_btn_text'] = 'translate_btn';
+		$vars['save_btn_text_working'] = 'btn_saving';
+
+		return ee()->cp->render('settings/form', $vars);
 	}
 
 	private function save($language, $file)
@@ -360,7 +361,11 @@ class Translate extends Utilities {
 
 			if ( ! is_really_writable($dest_loc))
 			{
-				ee()->view->set_message('issue', lang('trans_file_not_writable'), '', TRUE);
+				ee('CP/Alert')->makeInline('shared-form')
+					->asIssue()
+					->withTitle(lang('trans_file_not_writable'))
+					->defer();
+
 				ee()->functions->redirect(ee('CP/URL')->make('utilities/translate/' . $language . '/edit/' . $file));
 			}
 		}
@@ -369,11 +374,19 @@ class Translate extends Utilities {
 
 		if (write_file($dest_loc, $str))
 		{
-			ee()->view->set_message('success', lang('translations_saved'), str_replace('%s', $dest_loc, lang('file_saved')), TRUE);
+			ee('CP/Alert')->makeInline('shared-form')
+				->asSuccess()
+				->withTitle(lang('translations_saved'))
+				->addToBody(sprintf(lang('file_saved'), $dest_loc))
+				->defer();
 		}
 		else
 		{
-			ee()->view->set_message('issue', lang('invalid_path'), $dest_loc, TRUE);
+			ee('CP/Alert')->makeInline('shared-form')
+				->asIssue()
+				->withTitle(lang('invalid_path'))
+				->addToBody($dest_loc)
+				->defer();
 		}
 		ee()->functions->redirect(ee('CP/URL')->make('utilities/translate/' . $language . '/edit/' . $file));
 	}

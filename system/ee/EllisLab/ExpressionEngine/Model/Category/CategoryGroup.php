@@ -1,4 +1,11 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Model\Category;
 
@@ -6,27 +13,7 @@ use EllisLab\ExpressionEngine\Service\Model\Model;
 use EllisLab\ExpressionEngine\Model\Content\StructureModel;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 3.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Category Group Model
- *
- * @package		ExpressionEngine
- * @subpackage	Category
- * @category	Model
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Category Group Model
  */
 class CategoryGroup extends StructureModel {
 
@@ -43,13 +30,19 @@ class CategoryGroup extends StructureModel {
 		'Categories' => array(
 			'type' => 'hasMany',
 			'model' => 'Category'
-		),
-		'Channel' => array(
-			'type' => 'hasMany',
-			'model' => 'Channel',
-			'to_key' => 'cat_group'
-		),
+		)
 	);
+
+	protected static $_validation_rules = array(
+		'group_name'            => 'required|unique[site_id]',
+		'sort_order'            => 'enum[a,c]',
+		'field_html_formatting' => 'enum[all,safe,none]',
+		'exclude_group'         => 'enum[0,1,2]'
+	);
+
+	protected static $_events = [
+		'afterDelete'
+	];
 
 	// Properties
 	protected $group_id;
@@ -61,7 +54,40 @@ class CategoryGroup extends StructureModel {
 	protected $can_edit_categories;
 	protected $can_delete_categories;
 
-	public function getCustomFields()
+	public function onAfterDelete()
+	{
+		// Disassociate this group from channels
+		foreach ($this->Channels as $channel)
+		{
+			$groups = explode('|', $channel->cat_group);
+
+			if (($key = array_search($this->getId(), $groups)) !== FALSE)
+			{
+				unset($groups[$key]);
+				$channel->cat_group = implode('|', $groups);
+				$channel->save();
+			}
+		}
+	}
+
+	public function __get($name)
+	{
+		// Fake the Channel relationship since it's stored weird; old
+		// relationship name was just "Channel"
+		if ($name == 'Channel' || $name == 'Channels')
+		{
+			return ee('Model')->get('Channel')
+				->filter('site_id', ee()->config->item('site_id'))
+				->all()
+				->filter(function($channel) {
+					return in_array($this->getId(), explode('|', $channel->cat_group));
+				});
+		}
+
+		return parent::__get($name);
+	}
+
+	public function getAllCustomFields()
 	{
 		return $this->getCategoryFields();
 	}
@@ -126,6 +152,16 @@ class CategoryGroup extends StructureModel {
 				$deletable = TRUE;
 			}
 
+		$no_results = [
+			'text' => sprintf(lang('no_found'), lang('categories'))
+		];
+
+		if ( ! INSTALLER && ee('Permission')->has('can_create_categories'))
+		{
+			$no_results['link_text'] = 'add_new';
+			$no_results['link_href'] = ee('CP/URL')->make('categories/create/'.$this->getId());
+		}
+
 		$metadata = array(
 			'field_id'				=> 'categories',
 			'group_id'				=> $this->getId(),
@@ -138,11 +174,19 @@ class CategoryGroup extends StructureModel {
 			'field_list_items'      => '',
 			'field_maxl'			=> 100,
 			'editable'				=> $editable,
-			'editing'				=> FALSE, // Not currently in editing state
+			'editing'				=> FALSE,
 			'deletable'				=> $deletable,
 			'populateCallback'		=> array($this, 'populateCategories'),
 			'manage_toggle_label'	=> lang('manage_categories'),
-			'content_item_label'	=> lang('category')
+			'add_btn_label'	        => REQ == 'CP' && ee()->cp->allowed_group('can_create_categories')
+				? lang('add_category')
+				: NULL,
+			'content_item_label'	=> lang('category'),
+			'reorder_ajax_url'		=> ! INSTALLER
+				? ee('CP/URL')->make('categories/reorder/'.$this->getId())->compile()
+				: '',
+			'auto_select_parents'	=> ee()->config->item('auto_assign_cat_parents') == 'y',
+			'no_results'			=> $no_results
 		);
 
 		return $metadata;
@@ -153,7 +197,7 @@ class CategoryGroup extends StructureModel {
 	 */
 	public function populateCategories($field)
 	{
-		$categories = ee('Model')->get('Category')
+		$categories = $this->getModelFacade()->get('Category')
 			->with(array('Children as C0' => array('Children as C1' => 'Children as C2')))
 			->with('CategoryGroup')
 			->filter('CategoryGroup.group_id', $field->getItem('group_id'))
@@ -183,6 +227,26 @@ class CategoryGroup extends StructureModel {
 			$set_categories = $object->Categories->filter('group_id', $field->getItem('group_id'))->pluck('cat_id');
 			$field->setData(implode('|', $set_categories));
 		}
+	}
+
+	/**
+	 * Builds a tree of categories in the current category group for use in a
+	 * SelectField form
+	 *
+	 * @param array Category tree
+	 */
+	public function buildCategoryOptionsTree()
+	{
+		$sort_column = 'cat_order';
+		if ($this->sort_order == 'a')
+		{
+			$sort_column = 'cat_name';
+		}
+
+		return $this->buildCategoryList(
+			$this->Categories->filter('parent_id', 0),
+			$sort_column
+		);
 	}
 
 	/**

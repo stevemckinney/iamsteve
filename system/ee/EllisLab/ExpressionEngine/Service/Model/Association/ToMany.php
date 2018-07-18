@@ -1,10 +1,20 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Service\Model\Association;
 
 use EllisLab\ExpressionEngine\Service\Model\Collection;
 use EllisLab\ExpressionEngine\Service\Model\Model;
 
+/**
+ * Model Service: To Many Association
+ */
 class ToMany extends Association {
 
 	public function fill($related, $_skip_inverse = FALSE)
@@ -52,7 +62,7 @@ class ToMany extends Association {
 
 		if ( ! $this->has($model))
 		{
-			$this->related->add($model);
+			$this->related->add($model, FALSE);
 			parent::ensureExists($model);
 		}
 	}
@@ -76,6 +86,14 @@ class ToMany extends Association {
 		foreach ($this->related as $m)
 		{
 			if ($m === $model)
+			{
+				return TRUE;
+			}
+
+			// Existing models queried independently may fail the above check
+			if ($m->getId() && $model->getId() &&
+				$m->getId() === $model->getId() &&
+				get_class($m) == get_class($model))
 			{
 				return TRUE;
 			}

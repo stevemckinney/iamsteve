@@ -13,4 +13,15 @@ $modal_vars = array(
 
 $modal = $this->make('ee:_shared/modal_confirm_remove')->render($modal_vars);
 ee('CP/Modal')->addModal('remove-entry', $modal);
+
+$modal = $this->make('ee:_shared/modal-bulk-edit')->render([
+	'name' => 'modal-bulk-edit'
+]);
+ee('CP/Modal')->addModal('bulk-edit', $modal);
+
+$modal = ee('View')->make('ee:_shared/modal-form')->render([
+	'name' => 'modal-form',
+	'contents' => ''
+]);
+ee('CP/Modal')->addModal('modal-form', $modal);
 ?>

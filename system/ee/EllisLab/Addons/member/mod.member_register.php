@@ -1,29 +1,15 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 /**
- * ExpressionEngine - by EllisLab
+ * ExpressionEngine (https://expressionengine.com)
  *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.0
- * @filesource
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
  */
 
-// --------------------------------------------------------------------
-
 /**
- * Member Management Module
- *
- * @package		ExpressionEngine
- * @subpackage	Modules
- * @category	Modules
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Member Management Register
  */
-
 class Member_register extends Member {
 
 	var $errors = array();
@@ -94,6 +80,10 @@ class Member_register extends Member {
 			$member_fields = ee('Model')->get('MemberField', $member_field_ids)
 				->all()
 				->indexBy('m_field_id');
+
+			ee()->router->set_class('cp');
+			ee()->load->library('cp');
+			ee()->load->library('javascript');
 
 			foreach ($query->result_array() as $row)
 			{
@@ -212,8 +202,6 @@ class Member_register extends Member {
 		return ee()->functions->form_declaration($data).$reg_form."\n"."</form>";
 	}
 
-	// --------------------------------------------------------------------
-
 	/**
 	 * Register Member
 	 */
@@ -259,7 +247,7 @@ class Member_register extends Member {
 		// Set the default globals
 		$default = array(
 			'username', 'password', 'password_confirm', 'email',
-			'screen_name', 'url', 'location'
+			'screen_name'
 		);
 
 		foreach ($default as $val)
@@ -374,8 +362,6 @@ class Member_register extends Member {
 			'join_date'		=> ee()->localize->now,
 			'email'			=> trim_nbs(ee()->input->post('email')),
 			'screen_name'	=> trim_nbs(ee()->input->post('screen_name')),
-			'url'			=> prep_url(ee()->input->post('url')),
-			'location'		=> ee()->input->post('location'),
 
 			// overridden below if used as optional fields
 			'language'		=> (ee()->config->item('deft_lang')) ?: 'english',
@@ -476,10 +462,7 @@ class Member_register extends Member {
 			return ee()->output->show_user_error('submission', $errors);
 		}
 
-		ee()->load->library('auth');
-		$hashed_password = ee()->auth->hash_password($member->password);
-		$member->password = $hashed_password['password'];
-		$member->salt = $hashed_password['salt'];
+		$member->hashAndUpdatePassword($member->password);
 
 		// Do we require captcha?
 		if (ee('Captcha')->shouldRequireCaptcha())
@@ -628,8 +611,6 @@ class Member_register extends Member {
 		ee()->output->show_message($data);
 	}
 
-	// --------------------------------------------------------------------
-
 	private function _do_form_query()
 	{
 		if (ee()->input->get_post('board_id') !== FALSE &&
@@ -644,8 +625,6 @@ class Member_register extends Member {
 							->where('board_id', 1)
 							->get('forum_boards');
 	}
-
-	// --------------------------------------------------------------------
 
 	/**
 	 * Member Self-Activation

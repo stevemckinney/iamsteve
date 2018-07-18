@@ -1,4 +1,11 @@
 <?php
+/**
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2018, EllisLab, Inc. (https://ellislab.com)
+ * @license   https://expressionengine.com/license
+ */
 
 namespace EllisLab\ExpressionEngine\Library\Mime;
 
@@ -6,27 +13,7 @@ use Exception;
 use InvalidArgumentException;
 
 /**
- * ExpressionEngine - by EllisLab
- *
- * @package		ExpressionEngine
- * @author		EllisLab Dev Team
- * @copyright	Copyright (c) 2003 - 2016, EllisLab, Inc.
- * @license		https://expressionengine.com/license
- * @link		https://ellislab.com
- * @since		Version 2.10.0
- * @filesource
- */
-
-// ------------------------------------------------------------------------
-
-/**
- * ExpressionEngine Mime Class
- *
- * @package		ExpressionEngine
- * @subpackage	Core
- * @category	Core
- * @author		EllisLab Dev Team
- * @link		https://ellislab.com
+ * Mime Type
  */
 class MimeType {
 
@@ -198,8 +185,21 @@ class MimeType {
 
 		// If the reported mime-type is an image we'll do an extra validation
 		// step and try to create an image from the data.
-		$im = @imagecreatefromstring(file_get_contents($path));
-		return $im !== FALSE;
+		try
+		{
+			ee('Memory')->setMemoryForImageManipulation($path, 1.9);
+			$im = @imagecreatefromstring(file_get_contents($path));
+			return $im !== FALSE;
+		}
+		catch (\Exception $e)
+		{
+			if (DEBUG)
+			{
+				show_error($e->getMessage());
+			}
+
+			return FALSE;
+		}
 	}
 
 	/**
