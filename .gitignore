@@ -13,6 +13,7 @@ cache/
 system/user/cache
 !system/user/addons/minimee/libraries/Minify/Cache
 !system/ee/legacy/libraries/Cache
+!system/ee/legacy/libraries/simplepie/SimplePie/Cache
 
 # Images
 assets/images/_blog/*
