@@ -179,3 +179,7 @@ $text-xxxlarge: 48px;
 $contain: 1230px;
 $site-width: $contain + ($line*6);
 $site-width-max: max-width $site-width - $breakpoint-subtract;
+
+$small-outer-gutter: 16px;
+$medium-outer-gutter: 48px;
+$large-outer-gutter: 64px;
