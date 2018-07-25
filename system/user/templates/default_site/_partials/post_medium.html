@@ -48,14 +48,15 @@
       </div>
     {if:else}
       <div class="meta flex between items-center dashes mb1">
-      	<time class="warm-l2" datetime="{entry_date format='%M-%m-%dT%H:%i:%s%O'}" pubdate>
+      	<time class="warm-l1" datetime="{entry_date format='%M-%m-%dT%H:%i:%s%O'}" pubdate>
           {entry_date format="%M %j%S %Y"}
         </time>
         {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-          <a href="{path='blog/index'}" rel="category tag" class="warm-l2 secondary-hover">{category_name}</a>
+          <a href="{path='blog/index'}" rel="category tag" class="warm-l1 secondary-hover">{category_name}</a>
         {/categories}
     	</div>
-  		<h3 class="f2-l mb1 warm"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+  		<h3 class="f6 f5-b f4-d mb0 warm"><a href="{title_permalink='blog/entry'}" class="secondary-hover">{title}</a></h3>
+<!--
       <div class="flex-auto-d mb0">
     	  {if segment_1 == 'search'}
     	    <p>{excerpt}</p>
@@ -63,6 +64,7 @@
           {excerpt}
     	  {/if}
   	  </div>
+-->
     {/if}
     <div class="visuallyhidden">
       <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
