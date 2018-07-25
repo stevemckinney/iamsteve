@@ -18,7 +18,7 @@
   p {
     @include breakpoint($d-max) {
       position: relative;
-      max-height: 96px;
+      max-height: 84px;
       overflow: hidden;
 
       &:after {
@@ -28,7 +28,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background-image: linear-gradient(rgba($white, 0) 50%, rgba($white, 0) 70%, $white 100%); } }
+        background-image: linear-gradient(rgba($white, 0) 10%, rgba($white, 0) 40%, $white 100%); } }
 
     @include breakpoint($b-max) {
       font-size: 12px; } } }
