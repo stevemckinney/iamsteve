@@ -10,6 +10,9 @@ ul, ol {
 ul {
 	list-style: square; }
 
+li {
+  font-size: inherit; }
+
 // Lists
 // ---------------------------
 %list-custom-bullet {
