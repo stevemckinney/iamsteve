@@ -84,7 +84,13 @@ $border-width: 2px;
 
 .searched-posts {
   width: 100%;
-  padding: $line*4 $line;
+  padding: $line*4 $line ($line*4 + 80px);
+  height: 100vh;
+  overflow: auto;
+
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
 
   @include breakpoint($c) {
     text-align: center; } }

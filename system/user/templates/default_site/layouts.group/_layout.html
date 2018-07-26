@@ -49,25 +49,12 @@
   </a>
 </nav>
 
-{!-- channel vars (prefix ch_) --}
-{preload_replace:chs="blog"}
-{preload_replace:chs_status="open|latest"}
-{preload_replace:chs_disable="pagination|member_data|trackbacks"}
-{preload_replace:chs_limit="6"}
-{preload_replace:chs_limit_large="11"}
-{preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
-{preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
-
 <div class="overlay overlay-search flex center hiding" aria-labelledby="toggle-search-nav toggle-search" role="dialog">
   {embed="include/search"}
-  {!-- if segment_2 != "entry"}
-    <div class="searched-posts">
-      <h2 class="f4 f3-c mb2 neutral">You may be looking for</h2>
-      {exp:channel:entries channel="{chs}" status="{chs_status}" disable="{chs_disable}" limit="{chs_limit}" category="2|7" orderby="view_count_one" sort="desc"}
-        <a href="{title_permalink='blog/entry'}" class="db pt1 pb1 f6 f4-d sans">{title}</a>
-      {/exp:channel:entries}
-    </div>
-  {/if --}
+  <div class="searched-posts">
+    <h2 class="f4 f3-c mb2 neutral">You may be looking for</h2>
+    {embed="include/popular"}
+  </div>
 </div>
 
 {layout:contents}
