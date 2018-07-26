@@ -77,19 +77,16 @@ address { font-style: normal; }
 
 // Links
 // ---------------------------
-$underline-color: #FF44FF;
-
 .link {
   transition: background-position 0.15s linear 0.1s, box-shadow 0.15s linear 0s;
-  background-image: linear-gradient(to left, $primary, $tertiary, $secondary);
+  background-image: linear-gradient(to right, $primary, $tertiary, $secondary);
   background-size: 400%;
   background-repeat: no-repeat;
   background-position: 0 1em;
-  overflow: hidden;
+  cursor: pointer;
 
   &:hover {
-    cursor: pointer;
-    background-image: linear-gradient(to left, $primary, $tertiary, $secondary);
+    background-image: linear-gradient(to right, $primary, $tertiary, $secondary);
     background-position: 100% 1em; } }
 
 .link-social {
