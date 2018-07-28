@@ -77,23 +77,25 @@
     flex-flow: column; } }
 
 .searched-posts {
-  overflow: auto;
+  overflow-y: auto;
 
   h2,
   a {
-    opacity: 0;
     transition: .4s .2s;
     position: relative;
-    transform: translate(0%, 100%) matrix(1, 0, 0, 0, 0, 0);
     transform-origin: 100% 50%;
+    opacity: 1;
+    transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0);
+    width: 100%;
+    flex: 0 0 auto;
 
-    .showing & {
-      opacity: 1;
-      transform: translate(0%, 0%) matrix(1, 0, 0, 1, 0, 0); } }
+    .hiding & {
+      opacity: 0;
+      transform: translate(0%, 100%) matrix(1, 0, 0, 0, 0, 0); } }
 
   @include breakpoint($c-max) {
-    padding: $line*4 $line ($line*4 + 80px);
-    height: 100vh; }
+    width: 100%;
+    padding: $line*2 $line*1.5 148px+8px; }
 
   @include breakpoint($c) {
     padding-top: $line*2;

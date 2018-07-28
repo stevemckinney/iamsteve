@@ -84,7 +84,7 @@
 
       &:first-child,
       &:nth-child(2) {
-        border-bottom: 1px solid $warm-l3;
+        border-bottom: $default-border-width solid $warm-l3;
         margin-bottom: -1px; }
 
       &:first-child,
@@ -98,7 +98,7 @@
 
       &:nth-child(2),
       &:nth-child(4) {
-        border-left: 1px solid $warm-l3; } } } }
+        border-left: $default-border-width solid $warm-l3; } } } }
 
 .meta-item {
   @include breakpoint(max-width 1219px) {
