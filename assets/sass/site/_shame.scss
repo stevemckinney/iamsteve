@@ -27,3 +27,13 @@
 
 .column-all {
   grid-column: 1/-1; }
+
+
+// Search page
+.contain-search .form-search {
+  position: static; }
+
+.contain-search .input-search {
+  border-radius: 10em;
+  border-right: $default-border-width solid $warm-l2;
+  border-left: $default-border-width solid $warm-l2; }

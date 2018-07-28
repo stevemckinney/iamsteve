@@ -21,7 +21,7 @@
       <span class="icon icon-contact">{gv_contact}</span>
       <span class="nav-item-text">Contact</span>
     </a>
-    <a href="#search" id="toggle-search-nav" aria-haspopup="true" class="nav-item toggle-search">
+    <a href="{path='search'}" id="toggle-search-nav" aria-haspopup="true" class="nav-item toggle-search">
       <span class="icon icon-search icon-large">{gv_search}</span>
     </a>
   </nav>
@@ -43,7 +43,7 @@
     <span class="icon">{gv_contact}</span>
     <span class="tabbar-item-text warm-l2">Contact</span>
   </a>
-  <a href="#search" id="toggle-search" aria-haspopup="true" class="tabbar-item toggle-search sans bold">
+  <a href="{path='search'}" id="toggle-search" aria-haspopup="true" class="tabbar-item toggle-search sans bold">
     <span class="icon icon-search">{gv_search_small}</span>
     <span class="tabbar-item-text warm-l2">Search</span>
   </a>
@@ -51,8 +51,8 @@
 
 <div class="overlay overlay-search flex center hiding" aria-labelledby="toggle-search-nav toggle-search" role="dialog">
   {embed="include/search"}
-  <div class="searched-posts">
-    <h2 class="f4 f3-c mb2 neutral">You may be looking for</h2>
+  <div class="searched-posts flex flex-column flex-wrap center">
+    <h2 class="f4 f3-c mb2 neutral flex-8">You may be looking for</h2>
     {embed="include/popular"}
   </div>
 </div>

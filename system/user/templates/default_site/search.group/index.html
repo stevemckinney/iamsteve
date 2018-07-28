@@ -2,8 +2,12 @@
 <div class="row subheader center contain contain-medium contain-large pb4">
   <h1 class="f4 f3-b f2-d warm mb0 text-center">Search</h1>
 </div>
-<div class="contain">
+<div class="contain contain-search">
   <div class="measure m-center pt4 pt6-d pb4 pb6-d">
-  	{search}
+  	{embed="include/search"}
+    <div class="flex flex-column flex-wrap center pt4 pt6-d">
+      <h2 class="f4 f3-c mb2 neutral flex-8">You may be looking for</h2>
+      {embed="include/popular"}
+    </div>
   </div>
 </div>
