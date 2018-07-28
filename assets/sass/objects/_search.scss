@@ -55,7 +55,7 @@
     background-color: $warm-l2;
 
     @include breakpoint($c) {
-      top: $base-px*1.5;
+      top: $base-px + 2px;
       bottom: $base-px*1.5; } } }
 
 .input-search:focus + .button-search:before {
