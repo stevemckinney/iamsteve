@@ -34,6 +34,7 @@
   position: static; }
 
 .contain-search .input-search {
-  border-radius: 10em;
-  border-right: $default-border-width solid $warm-l2;
-  border-left: $default-border-width solid $warm-l2; }
+  @include breakpoint($c-max) {
+    border-radius: 10em;
+    border-right: $default-border-width solid $warm-l2;
+    border-left: $default-border-width solid $warm-l2; } }
