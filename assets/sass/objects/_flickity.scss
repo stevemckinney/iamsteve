@@ -85,8 +85,6 @@
 
   // Each card width must be offset by the padding, otherwise it’s too small.
   .card {
-    display: inline-block;
-    vertical-align: top;
     white-space: normal;
     padding: 0 8px;
 
