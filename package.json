@@ -7,7 +7,7 @@
     "browser-sync": "^2.18.13",
     "eslint-config-prettier": "^2.6.0",
     "fitvids": "^2.0.0",
-    "flickity": "^2.0.10",
+    "flickity": "^2.1.2",
     "fontfaceobserver": "^2.0.13",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-imagemin": "^2.4.0",
