@@ -69,6 +69,8 @@
 // Scroll
 // ---------------------------
 .scroll {
+  display: flex;
+  flex-flow: row nowrap;
   position: relative;
   white-space: nowrap;
   overflow: hidden;
@@ -85,6 +87,9 @@
 
   // Each card width must be offset by the padding, otherwise it’s too small.
   .card {
+    flex: 0 0 auto;
+    display: inline-block;
+    vertical-align: top;
     white-space: normal;
     padding: 0 8px;
 
