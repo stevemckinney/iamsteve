@@ -123,15 +123,10 @@
 // ---------------------------
 .card-more {
   transition: .2s;
-  background-color: $warm-l4;
 
   &,
   h2 {
-    height: 100%; }
-
-  &:hover,
-  &:focus {
-    background-color: $warm-l3; } }
+    height: 100%; } }
 
 // Lazy loaded additional styles for ‘loading spinner’
 // ---------------------------
