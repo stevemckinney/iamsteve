@@ -85,7 +85,7 @@
 
   h2,
   a {
-    transition: .4s .2s;
+    transition: opacity .6s, transform .4s .2s;
     position: relative;
     transform-origin: 100% 50%;
     opacity: 1;
@@ -95,7 +95,7 @@
 
     .hiding & {
       opacity: 0;
-      transform: translate(0%, 100%) matrix(1, 0, 0, 0, 0, 0); } }
+      transform: translate(0%, 100%) matrix(1, 0, 0, .5, 0, 0); } }
 
   @include breakpoint($c-max) {
     width: 100%;
