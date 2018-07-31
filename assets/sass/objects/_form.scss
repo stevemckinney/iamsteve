@@ -1,6 +1,8 @@
 // Forms
 // ---------------------------
-form {
+form,
+.field,
+.input {
   position: relative; }
 
 .form {
@@ -37,11 +39,6 @@ form {
 .field-legend {
 	font-weight: font-weight(semibold); }
 
-// Fieldset
-// ---------------------------
-.field {
-  position: relative; }
-
 // Field layouts
 // ---------------------------
 .field-third {
@@ -66,7 +63,6 @@ form {
 // ---------------------------
 .input {
   @include form-base($radius: false);
-  position: relative;
   width: 100%;
 
   &:focus {
