@@ -14,11 +14,6 @@ form {
   position: relative;
 
   .input {
-    position: relative;
-
-    &:focus {
-      z-index: $z-index-1; }
-
     @include breakpoint($c) {
       padding: ($line - 4px) $base-px; } }
 
@@ -49,7 +44,6 @@ form {
 // Fieldset
 // ---------------------------
 .field {
-  flex-basis: 100%;
   position: relative; }
 
 // Field layouts
@@ -76,7 +70,11 @@ form {
 // ---------------------------
 .input {
   @include form-base($radius: false);
-  width: 100%; }
+  position: relative;
+  width: 100%;
+
+  &:focus {
+    z-index: $z-index-1; } }
 
 	// Text
 	// ---------------------------
