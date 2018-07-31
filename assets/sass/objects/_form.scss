@@ -9,10 +9,6 @@ form {
 	width: 100%; }
 
 .form-newsletter {
-  // Input has one off padding, height aims to be 60px at large screens
-  // and offset the input button to the right
-  position: relative;
-
   .input {
     @include breakpoint($c) {
       padding: ($line - 4px) $base-px; } }
