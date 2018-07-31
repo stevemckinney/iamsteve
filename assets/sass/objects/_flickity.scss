@@ -85,7 +85,6 @@
 
   // Each card width must be offset by the padding, otherwise it’s too small.
   .card {
-    flex: 0 0 auto;
     display: inline-block;
     vertical-align: top;
     white-space: normal;
@@ -96,11 +95,6 @@
 
   .card-more {
     min-width: 240px; }
-
-  // More sensible way to position when flickity is enabled
-  &.flickity-enabled .card-more {
-    h2 {
-      height: 100%; } }
 
   .card-small {
     width: 196px;
