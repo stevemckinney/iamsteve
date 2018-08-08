@@ -41,6 +41,9 @@ form,
 
 // Field layouts
 // ---------------------------
+.field {
+  flex-basis: 100%; }
+
 .field-third {
 	flex-basis: 33.333333%;
 
@@ -80,7 +83,10 @@ form,
   // Check
   // ---------------------------
   .input-checkbox {
-  	@include form(checkbox, $warm-l2, $blue, $warm-l4 $white);
-  	vertical-align: middle;
+  	@include form($type: checkbox);
+  	top: -1px;
   	width: $default-form-checkbox-width;
-  	height: $default-form-checkbox-height; }
+  	height: $default-form-checkbox-height;
+
+  	.form-warm & {
+      @include form(checkbox, $warm-l2, $blue, $warm-l4 $white); } }

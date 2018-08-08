@@ -35,6 +35,7 @@
 .button-search {
   background-color: transparent;
   position: absolute;
+  z-index: $z-index-3;
   top: 0;
   right: 0;
   padding: 28px 32px;
