@@ -1,6 +1,6 @@
 {paginate}
   {exp:stash:set_list name="pagination"}
-    
+
     {pagination_links}
       {previous_page}{stash:previous_page}{pagination_url}{/stash:previous_page}{/previous_page}
       {next_page}{stash:next_page}{pagination_url}{/stash:next_page}{/next_page}
@@ -14,30 +14,4 @@
     {/pagination_links}
 
   {/exp:stash:set_list}
-{/paginate}
-
-{paginate}
-  {pagination_links}
-    <ul>
-      {first_page}
-        <li><a href="{pagination_url}" class="page-first">First Page</a></li>
-      {/first_page}
-
-      {previous_page}
-        <li><a href="{pagination_url}" class="page-previous">Previous Page</a></li>
-      {/previous_page}
-
-      {page}
-        <li><a href="{pagination_url}" class="page-{pagination_page_number} {if current_page}active{/if}">{pagination_page_number}</a></li>
-      {/page}
-
-      {next_page}
-        <li><a href="{pagination_url}" class="page-next">Next Page</a></li>
-      {/next_page}
-
-      {last_page}
-        <li><a href="{pagination_url}" class="page-last">Last Page</a></li>
-      {/last_page}
-    </ul>
-  {/pagination_links}
 {/paginate}
