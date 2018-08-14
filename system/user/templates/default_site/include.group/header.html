@@ -18,9 +18,13 @@
     <link rel="manifest" href="{site_url}manifest.json">
     <meta name="theme-color" content="#543243">
 
-  	{!-- SEO lite --}
+    {!-- SEO lite --}
     {if segment_1 == ""}
       {exp:seo_lite title_override="iamsteve – design & code tutorials"}
+    {if:elseif segment_1 == "about"}
+      {exp:seo_lite use_last_segment="yes" default_description="About this website, why it’s about design and code, previous design versions, etc." {if embed:title}default_title="{embed:title}"{/if}}
+    {if:elseif segment_1 == "contact"}
+      {exp:seo_lite use_last_segment="yes" default_description="Ways of contacting me." {if embed:title}default_title="{embed:title}"{/if}}
     {if:else}
       {exp:seo_lite use_last_segment="yes" {if embed:title}default_title="{embed:title}"{/if}}
     {/if}
