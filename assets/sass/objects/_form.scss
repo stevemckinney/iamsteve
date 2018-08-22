@@ -11,10 +11,6 @@ form,
 	width: 100%; }
 
 .form-newsletter {
-  .input {
-    @include breakpoint($c) {
-      padding: ($line - 4px) $base-px; } }
-
   .form-actions {
     @include breakpoint($c) {
       position: absolute;
@@ -68,6 +64,9 @@ form,
   @include form-base($radius: false);
   width: 100%;
 
+  @include breakpoint($c) {
+    padding: ($line - 4px) $base-px; }
+
   &:focus {
     z-index: $z-index-1; } }
 
@@ -84,9 +83,13 @@ form,
   // ---------------------------
   .input-checkbox {
   	@include form($type: checkbox);
-  	top: -1px;
+  	top: -2px;
   	width: $default-form-checkbox-width;
   	height: $default-form-checkbox-height;
+  	vertical-align: middle;
+  	margin-right: $base-px;
+
+  	&:checked ~ * { background: red; }
 
   	.form-warm & {
       @include form(checkbox, $warm-l2, $blue, $warm-l4 $white); } }

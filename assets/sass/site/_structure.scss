@@ -18,7 +18,8 @@ hr {
 
   .footnotes &,
   .page-single &,
-  .row-normal & {
+  .row-normal &,
+  &.divider {
     background: image-url("dash-neutral-l1.svg") -12px center; }
 
   .row-strong & {
