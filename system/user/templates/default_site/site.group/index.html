@@ -53,8 +53,8 @@
 
 <section class="grid-posts contain contain-medium contain-large pt7 pb7">
   <header class="row flex between column-all">
-    <h2 class="f5 f4-b chunky warm row-title" id="latest-posts-title">Latest posts</h2>
-    <a href="{path='blog'}" class="link-icon warm-l1 secondary-hover card-permalink bold sans">
+    <h2 class="f4-l chunky warm row-title" id="latest-posts-title">Latest posts</h2>
+    <a href="{path='blog'}" class="link-icon warm-l1 secondary-hover card-permalink bold sans f4-l">
       All posts <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span>
     </a>
   </header>
@@ -73,7 +73,7 @@
 {exp:channel:categories channel="{ch}" show="7|2" status="{ch_status}" disable="{ch_disable}" style="linear" show_empty="no"}
   <section class="posts {if {count} == 1} pt6 pt8-d {/if} pb6 pb8-d" aria-labelledby="{category_url_title}-posts-title">
     <header class="row row-header contain contain-medium contain-large between">
-      <h2 class="f5 f4-b chunky neutral row-title" id="{category_url_title}-posts-title">Popular in {category_url_title}</h2>
+      <h2 class="f4-l chunky neutral row-title" id="{category_url_title}-posts-title">Popular in {category_url_title}</h2>
       <div class="pagination js-pagination">
         <button class="paginate paginate-left" aria-controls="{category_url_title}-posts" aria-label="Previous posts">
           <span class="icon icon-medium">{gv_arrow_left}</span>
