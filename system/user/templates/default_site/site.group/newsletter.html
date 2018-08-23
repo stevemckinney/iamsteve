@@ -88,30 +88,28 @@
               <hr class="divider mb4">
               <div class="field field-text field-third ml-field-group ml-field-name">
                 <label for="fields[name]" class="sans pb2 field-label warm">First name</label>
-                <input type="text" class="input input-text" data-inputmask="" name="fields[name]">
+                <input type="text" class="input input-text" data-inputmask name="fields[name]">
               </div>
-              <div class="field field-text field-two-thirds nml ml-field-group ml-field-email mb4">
+              <div class="field field-text field-two-thirds nml ml-field-group ml-field-email mb4 pb1">
               	<label for="fields[email]" class="sans pb2 field-label warm">Email</label>
-                <input type="email" class="input input-text" data-inputmask="" name="fields[email]" required>
+                <input type="email" class="input input-text" data-inputmask name="fields[email]" required>
               </div>
               <hr class="divider mb4">
               <div class="ml-form-embedPermissions" style="">
                 <div class="ml-form-embedPermissionsContent horizontal">
-                  <h4 class="mb1 f4-l">Marketing Permissions</h4>
+                  <h4 class="mb2 f4-l">Marketing permissions</h4>
                   <p class="mb4">The information you provide on this form will only be used to provide you with updates and personalised marketing. Choose how you’d like to be contacted:</p>
-                  <hr class="divider mb4">
                   <div class="ml-form-embedPermissionsOptions">
                     <div class="ml-form-embedPermissionsOptionsCheckbox">
-                      <label class="field-label db mb1 sans">
+                      <label class="field-label db mb1 sans warm">
                         <input type="checkbox" name="gdpr[]" value="Email" xp-if="gdpr.title" class="input input-checkbox"><span class="input-description dib">Email</span>
                       </label>
                       {!--<div class="description" xp-if="gdpr.description">We will send you occasional emails about promotions, new products and important updates to keep you in the loop.</div>--}
                     </div>
                   </div>
-                  <hr class="divider mb4">
                 </div>
                 <div class="ml-form-embedMailerLite-GDPR">
-                  <p class="mb4">This website uses MailerLite as the marketing automation platform. By submitting this form, you acknowledge that the information you provide will be transferred to MailerLite for processing in accordance with their <a href="https://www.mailerlite.com/privacy-policy" target="_blank" class="bold secondary-hover">Privacy Policy</a> and <a href="https://www.mailerlite.com/terms-of-service" target="_blank" class="bold secondary-hover">Terms of Service</a>.</p>
+                  <p class="mb2">This website uses MailerLite as the marketing automation platform. By submitting this form, you acknowledge that the information you provide will be transferred to MailerLite for processing in accordance with their <a href="https://www.mailerlite.com/privacy-policy" target="_blank" class="bold secondary-hover">Privacy Policy</a> and <a href="https://www.mailerlite.com/terms-of-service" target="_blank" class="bold secondary-hover">Terms of Service</a>.</p>
                 </div>
               </div>
               <input type="hidden" name="fields[subfrom]" value="{last_page_visited}">
