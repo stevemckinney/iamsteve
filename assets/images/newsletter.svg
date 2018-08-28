@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="fill-none stroke-currentcolor sw-2 sl-r">
-  <rect width="16" height="16"/>
   <polygon class="fill-white" points="15 8 5 14 5 10 8 8 5 6 5 2 15 8"/>
   <line x1="2" y1="2" x2="1" y2="2"/>
   <line x1="2" y1="5" x2="2" y2="5"/>
