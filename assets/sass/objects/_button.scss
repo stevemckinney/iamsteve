@@ -29,5 +29,10 @@ $buttons: (
   	  inset 0 0 0 2px $tertiary-d1,
   	  inset 0 2px 4px $tertiary-d1; } }
 
-.button-offline {
+.button-t {
   background-color: transparent; }
+
+.button.loading {
+  position: absolute;
+  top: 24px;
+  left: calc(100% + 6px); }
