@@ -1,4 +1,4 @@
-<style>
+{!--<style>
   /* LOADER */
 	.ml-form-embedSubmitLoad {
 	  display: inline-block;
@@ -24,7 +24,17 @@
 		transform: rotate(360deg);
 	  }
 	}
-</style>
+  .ml-error .field-label {
+    color: #ff0000 !important;
+  }
+  .ml-error .label-description p {
+    color: #ff0000 !important;
+  }
+  #mlb2-1003594.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p,
+  #mlb2-1003594.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p:first-letter {
+    color: #ff0000 !important;
+  }
+</style>--}
 <div id="mlb2-1003594" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-1003594">
   <div class="ml-form-align-center">
     <div class="ml-form-embedWrapper embedForm">
@@ -32,43 +42,30 @@
         <form class="form form-newsletter validate end ml-block-form ml-block-form" action="https://app.mailerlite.com/webforms/submit/q7h2j4" data-code="q7h2j4" method="post" target="_blank">
           <div class="field field-text field-third ml-field-group ml-field-name">
             <label for="fields[name]" class="sans pb2 field-label">First name</label>
-            <input type="text" class="input input-text" data-inputmask name="fields[name]">
+            <input type="text" class="input input-text form-control" name="fields[name]">
           </div>
-          <div class="field field-text field-two-thirds nml ml-field-group ml-field-email">
+          <div class="field field-text field-two-thirds nml ml-field-group ml-field-email ml-validate-required">
           	<label for="fields[email]" class="sans pb2 field-label">Email</label>
-            <input type="email" class="input input-text" data-inputmask name="fields[email]" required>
+            <input type="email" class="input input-text form-control" name="fields[email]" required>
           </div>
           <input type="hidden" name="fields[marketing_permissions]" value="Email">
           <input type="hidden" name="fields[subfrom]" value="{last_page_visited}">
           <input type="hidden" name="ml-submit" value="1">
           <div class="form-actions pt2 text-right ml-button-horizontal">
             <button type="submit" class="button button-tertiary ml-hide-horizontal flex-auto">Sign me up</button>
-            <button disabled="disabled" style="display: none;" type="button" class="loading btn btn-block">
-              <div class="ml-form-embedSubmitLoad"><div></div><div></div><div></div><div></div></div>
-  					</button>
+            <button disabled="disabled" style="display: none;" type="button" class="button button-t loading btn btn-block"></button>
           </div>
         </form>
       </div>
-      <div class="ml-form-successBody row-success" style="display: none">
+      <div class="ml-form-successBody ml-block-success row-success" style="display: none">
+        <hr class="divider">
         <div class="ml-form-successContent">
-          <h3 class="f2-l">Thank you!</h3>
-          <p class="mb4 f3-l">You’ll receive an email to confirm your subscription almost immediately. If you don’t check your spam folder.</p>
+          <h3 class="f3-l mb2 secondary">Thank you!</h3>
+          <p>You should receive an email to confirm your subscription, almost immediately. If not, check your spam folder.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!--
-<script>
-  function ml_webform_success_1003594() {
-    try {
-      window.top.location.href = 'https://iamsteve.me/confirm';
-    }
-    catch (e) {
-      window.location.href = 'https://iamsteve.me/confirm';
-    }
-  }
-</script>
--->
-<!-- <img src="https://track.mailerlite.com/webforms/o/1003594/q7h2j4?v03ee2804ef2f008535475a5d62f02f94" width="1" height="1" style="max-width: 1px; max-height: 1px; visibility: hidden; padding: 0; margin: 0; display: block;" border="0"> -->
-<script src="https://static.mailerlite.com/js/w/webforms.min.js?v03ee2804ef2f008535475a5d62f02f94" async></script>
+<img src="https://track.mailerlite.com/webforms/o/1003594/q7h2j4?v03ee2804ef2f008535475a5d62f02f94" width="1" height="1" style="max-width: 1px; max-height: 1px; visibility: hidden; padding: 0; margin: 0; display: block;" border="0">
+<script src="https://static.mailerlite.com/js/w/webforms.min.js?v03ee2804ef2f008535475a5d62f02f94"></script>
