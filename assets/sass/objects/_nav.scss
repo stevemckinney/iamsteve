@@ -5,8 +5,6 @@
   flex-flow: row wrap;
 
   @include breakpoint($c-max) {
-    display: none;
-
     // offset header/browser chrome/behaviour etc
     padding-bottom: 44px; }
 

@@ -1,7 +1,6 @@
 // Header
 // ---------------------------
 .header {
-  position: fixed;
   z-index: $z-index-200;
   top: 0;
   left: 0;
@@ -14,15 +13,16 @@
   max-height: 96px;
   background-color: $white;
 
-  @include breakpoint($c-max) {
-    display: none; }
+  @include breakpoint($c) {
+    position: fixed; }
 
   @include breakpoint($site-width) {
     padding: 0 calc(50% - #{$contain / 2}); } }
 
 .page-home .header,
 .page-single .header {
-  background-color: transparent; }
+  @include breakpoint($c) {
+    background-color: transparent; } }
 
 // Headroom
 // ---------------------------
@@ -51,13 +51,16 @@
   @include breakpoint($d-max) {
     svg {
       max-width: 36px;
-      height: 36px; } }
+      height: 36px; } } }
 
-  .fill-currentcolor {
-    @include breakpoint($d-max) {
-      display: none; } } }
+.logo-small {
+  @include breakpoint($c) {
+    display: none; } }
 
-.header #toggle-search,
-.logo {
+.logo-large {
+  @include breakpoint($c-max) {
+    display: none; } }
+
+.header #toggle-search {
   @include breakpoint($c-max) {
     display: none; } }

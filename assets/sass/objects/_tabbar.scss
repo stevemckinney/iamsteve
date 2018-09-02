@@ -1,7 +1,6 @@
 .tabbar {
-  display: none;
   transition: .2s;
-  
+
   @include breakpoint($c-max) {
     position: fixed;
     z-index: $z-index-200;
@@ -28,12 +27,17 @@
   flex-flow: column wrap; }
 
 .tabbar-item {
-  padding-top: 10px;
-  padding-bottom: 6px;
   color: $warm-l1;
-  
+
   &.active {
     background-color: $warm-l4; } }
+
+.tabbar-item-h {
+  padding-top: 10px;
+  padding-bottom: 6px; }
+
+.tabbar-item-v {
+  padding: $line/1.5; }
 
 .tabbar-item-text {
   font-size: 12px;

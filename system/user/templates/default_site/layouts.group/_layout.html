@@ -3,8 +3,13 @@
 <header class="header contain-medium contain-large primary" id="header">
   <a href="/" title="Back to the homepage" class="logo">
     {gv_logotype_filled}
+    {gv_logo_small}
   </a>
-  <nav id="nav" class="nav flex end primary">
+  <a href="{path='newsletter'}" class="tabbar-item tabbar-item-v flex-row hide-c sans bold end{if segment_1 == "newsletter"} active{/if}">
+    <span class="tabbar-item-text warm-l2">Subscribe</span>
+    <span class="icon icon-newsletter warm">{gv_newsletter}</span>
+  </a>
+  <nav id="nav" class="nav hide-lt-c end primary">
     <a href="{homepage}" class="nav-item{if segment_1 == ""} active{/if}">
       <span class="icon icon-home">{gv_home}</span>
       <span class="nav-item-text">Home</span>
@@ -27,23 +32,24 @@
   </nav>
 </header>
 
-<nav class="tabbar warm-l3">
-  <a href="{homepage}" title="Back to the homepage" class="tabbar-logo {if segment_1 == ""} active{/if}">
-    {gv_logo_small}
+<nav class="tabbar hide-c warm-l3">
+  <a href="{homepage}" title="Back to the homepage" class="tabbar-item tabbar-item-h sans bold{if segment_1 == ""} active{/if}">
+    <span class="icon">{gv_home}</span>
+    <span class="tabbar-item-text warm-l2">Home</span>
   </a>
-  <a href="{path='blog'}" class="tabbar-item sans bold{if segment_1 == "blog"} active{/if}">
+  <a href="{path='blog'}" class="tabbar-item tabbar-item-h sans bold{if segment_1 == "blog"} active{/if}">
     <span class="icon">{gv_blog}</span>
     <span class="tabbar-item-text warm-l2">Blog</span>
   </a>
-  <a href="{path='about'}" class="tabbar-item sans bold{if segment_1 == "about"} active{/if}">
+  <a href="{path='about'}" class="tabbar-item tabbar-item-h sans bold{if segment_1 == "about"} active{/if}">
     <span class="icon">{gv_about}</span>
     <span class="tabbar-item-text warm-l2">About</span>
   </a>
-  <a href="{path='contact'}" class="tabbar-item sans bold{if segment_1 == "contact"} active{/if}">
+  <a href="{path='contact'}" class="tabbar-item tabbar-item-h sans bold{if segment_1 == "contact"} active{/if}">
     <span class="icon">{gv_contact}</span>
     <span class="tabbar-item-text warm-l2">Contact</span>
   </a>
-  <a href="{path='search'}" id="toggle-search" aria-haspopup="true" class="tabbar-item toggle-search sans bold">
+  <a href="{path='search'}" id="toggle-search" aria-haspopup="true" class="tabbar-item tabbar-item-h toggle-search sans bold">
     <span class="icon icon-search">{gv_search_small}</span>
     <span class="tabbar-item-text warm-l2">Search</span>
   </a>
