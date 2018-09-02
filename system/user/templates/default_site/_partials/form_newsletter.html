@@ -49,7 +49,7 @@
             <input type="email" class="input input-text form-control" name="fields[email]" required>
           </div>
           <input type="hidden" name="fields[marketing_permissions]" value="Email">
-          <input type="hidden" name="fields[subfrom]" value="{last_page_visited}">
+          <input type="hidden" name="fields[subfrom]" value="{current_url}">
           <input type="hidden" name="ml-submit" value="1">
           <div class="form-actions pt2 text-right ml-button-horizontal">
             <button type="submit" class="button button-tertiary ml-hide-horizontal flex-auto">Sign me up</button>
@@ -59,7 +59,7 @@
       </div>
       <div class="ml-form-successBody ml-block-success row-success" style="display: none">
         <hr class="divider">
-        <div class="ml-form-successContent">
+        <div class="ml-form-successContent pt2">
           <h3 class="f3-l mb2 secondary">Thank you!</h3>
           <p>You should receive an email to confirm your subscription, almost immediately. If not, check your spam folder.</p>
         </div>
