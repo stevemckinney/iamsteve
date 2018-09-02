@@ -33,6 +33,15 @@
   @include breakpoint($site-width) {
     display: none; } }
 
+.hide-c {
+  @include breakpoint($c) {
+    display: none; } }
+
+.hide-lt-c {
+  @include breakpoint($c-max) {
+    display: none; } }
+
+
 // Background
 .bg-white {
   background-color: $white; }
