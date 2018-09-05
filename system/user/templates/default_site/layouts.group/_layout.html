@@ -5,7 +5,7 @@
     {gv_logotype_filled}
     {gv_logo_small}
   </a>
-  <a href="{path='newsletter'}" class="tabbar-item tabbar-item-v flex-row hide-c sans bold end{if segment_1 == "newsletter"} active{/if}">
+  <a href="{path='newsletter'}" class="tabbar-item tabbar-item-v hide-c sans bold end{if segment_1 == "newsletter"} active{/if}">
     <span class="tabbar-item-text warm-l2">Subscribe</span>
     <span class="icon icon-newsletter warm">{gv_newsletter}</span>
   </a>
@@ -32,24 +32,24 @@
   </nav>
 </header>
 
-<nav class="tabbar hide-c warm-l3">
-  <a href="{homepage}" title="Back to the homepage" class="tabbar-item tabbar-item-h sans bold{if segment_1 == ""} active{/if}">
+<nav class="tabbar hide-c">
+  <a href="{homepage}" title="Back to the homepage" class="tabbar-item tabbar-item-h flex-1 sans bold{if segment_1 == ""} active tertiary-dc{if:else} warm-l1{/if}">
     <span class="icon">{gv_home}</span>
     <span class="tabbar-item-text warm-l2">Home</span>
   </a>
-  <a href="{path='blog'}" class="tabbar-item tabbar-item-h sans bold{if segment_1 == "blog"} active{/if}">
+  <a href="{path='blog'}" class="tabbar-item tabbar-item-h flex-1 sans bold{if segment_1 == "blog"} active tertiary-dc{if:else} warm-l1{/if}">
     <span class="icon">{gv_blog}</span>
     <span class="tabbar-item-text warm-l2">Blog</span>
   </a>
-  <a href="{path='about'}" class="tabbar-item tabbar-item-h sans bold{if segment_1 == "about"} active{/if}">
+  <a href="{path='about'}" class="tabbar-item tabbar-item-h flex-1 sans bold{if segment_1 == "about"} active tertiary-dc{if:else} warm-l1{/if}">
     <span class="icon">{gv_about}</span>
     <span class="tabbar-item-text warm-l2">About</span>
   </a>
-  <a href="{path='contact'}" class="tabbar-item tabbar-item-h sans bold{if segment_1 == "contact"} active{/if}">
+  <a href="{path='contact'}" class="tabbar-item tabbar-item-h flex-1 sans bold{if segment_1 == "contact"} active tertiary-dc{if:else} warm-l1{/if}">
     <span class="icon">{gv_contact}</span>
     <span class="tabbar-item-text warm-l2">Contact</span>
   </a>
-  <a href="{path='search'}" id="toggle-search" aria-haspopup="true" class="tabbar-item tabbar-item-h toggle-search sans bold">
+  <a href="{path='search'}" id="toggle-search" aria-haspopup="true" class="tabbar-item tabbar-item-h flex-1 toggle-search warm-l1 sans bold">
     <span class="icon icon-search">{gv_search_small}</span>
     <span class="tabbar-item-text warm-l2">Search</span>
   </a>
@@ -94,6 +94,8 @@
 </footer>
 
 <script src="{global:theme_url}/dist/js/global.js" async></script>
+<img src="https://track.mailerlite.com/webforms/o/1003594/q7h2j4?v03ee2804ef2f008535475a5d62f02f94" width="1" height="1" style="max-width: 1px; max-height: 1px; visibility: hidden; padding: 0; margin: 0; display: block;" border="0">
+<script src="https://static.mailerlite.com/js/w/webforms.min.js?v03ee2804ef2f008535475a5d62f02f94"></script>
 {layout:js}
 
 {embed="include/footer"}
