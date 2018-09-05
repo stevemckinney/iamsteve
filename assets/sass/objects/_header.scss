@@ -13,6 +13,10 @@
   max-height: 96px;
   background-color: $white;
 
+  @include breakpoint($c-max) {
+    box-shadow: 0 1px rgba($primary-d1, .1);
+    position: relative; }
+
   @include breakpoint($c) {
     position: fixed; }
 
@@ -27,10 +31,12 @@
 // Headroom
 // ---------------------------
 .header-pinned {
-  transform: translateY(0%); }
+  @include breakpoint($c) {
+    transform: translateY(0%); } }
 
 .header-unpinned {
-  transform: translateY(-100%); }
+  @include breakpoint($c) {
+    transform: translateY(-100%); } }
 
 // Logo
 // ---------------------------
@@ -51,7 +57,12 @@
   @include breakpoint($d-max) {
     svg {
       max-width: 36px;
-      height: 36px; } } }
+      height: 36px; } }
+
+  @include breakpoint($c-max) {
+    svg {
+      max-width: $line;
+      height: $line; } } }
 
 .logo-small {
   @include breakpoint($c) {

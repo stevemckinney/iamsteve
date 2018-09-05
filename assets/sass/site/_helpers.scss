@@ -41,6 +41,8 @@
   @include breakpoint($c-max) {
     display: none; } }
 
+.flex-1 {
+  flex: 1; }
 
 // Background
 .bg-white {
