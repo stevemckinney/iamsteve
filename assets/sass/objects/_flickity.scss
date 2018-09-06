@@ -76,6 +76,7 @@
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   padding: 0 $base-px*1.5 0 4px;
+  font-size: 0; // Needed for white space when flickity disabled
 
   &::-webkit-scrollbar {
     display: none; }

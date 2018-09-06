@@ -64,12 +64,12 @@
 
 .rio-osc {
   @include breakpoint($b) {
-    svg {
+    svg, img {
       margin-left: auto; } }
 
   @include breakpoint($b-max) {
     width: 100%;
 
-    svg {
+    svg, img {
       margin: auto;
       max-width: 75vw; } } }

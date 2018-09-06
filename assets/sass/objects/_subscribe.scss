@@ -5,5 +5,5 @@
   position: relative; }
 
 .subscribe-image {
-  @include breakpoint($b-max) {
+  @include breakpoint($d-max) {
     display: none; } }
