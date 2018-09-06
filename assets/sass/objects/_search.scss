@@ -8,7 +8,7 @@
     position: absolute;
     z-index: $z-index-3;
     right: 0;
-    bottom: 48px;
+    bottom: 50px;
     left: 0; } }
 
 // Input
@@ -75,7 +75,8 @@
   align-content: center;
 
   @include breakpoint($c-max) {
-    padding-bottom: 84px + 50px; }
+    padding-top: 50px + ($line*2);
+    padding-bottom: 166px; }
 
   @include breakpoint($c) {
     flex-flow: column; } }
@@ -83,6 +84,7 @@
 .searched-posts {
   overflow-y: auto;
   overflow-x: auto;
+  text-align: center;
 
   h2,
   a {
@@ -100,8 +102,7 @@
 
   @include breakpoint($c-max) {
     width: 100%;
-    padding: 0 $line*1.5; }
+    padding: 0 $line/1.5; }
 
   @include breakpoint($c) {
-    padding-top: $line*2;
-    text-align: center; } }
+    padding-top: $line*2; } }
