@@ -101,3 +101,15 @@
 
     @include breakpoint($c) {
       width: 244px; } } }
+
+// Small screen adjustments to improve alignment for the .card-more
+// May or may not break things so this is separate code to be removed easily
+.scroll {
+  @include breakpoint($c-max) {
+    display: flex;
+    flex-flow: row nowrap;
+
+    .card-small {
+      display: flex;
+      flex-flow: column wrap;
+      flex: 0 0 168px; } } }
