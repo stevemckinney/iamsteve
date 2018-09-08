@@ -1,13 +1,9 @@
-{layout="layouts/_layout" title="Thank you for subscribing"}
+{layout="layouts/_layout-no-newsletter" title="Thank you for subscribing"}
 
-{!-- channel vars (prefix ch_) --}
-{preload_replace:ch="blog"}
-{preload_replace:ch_status="open|latest"}
-{preload_replace:ch_disable="pagination|member_data|trackbacks"}
-{preload_replace:ch_limit="8"}
-{preload_replace:ch_limit_large="6"}
-{preload_replace:design="design-default-{switch='3|1|2|4'}.svg"}
-{preload_replace:code="code-default-{switch='1|4|2|3'}.svg"}
+{!-- 404 --}
+{if segment_2 != ''}
+  {redirect="404"}
+{/if}
 
 <div class="row subheader center contain contain-medium contain-large pb4">
   <h1 class="f4 f3-b f2-d warm mb0 text-center">You’re almost there</h1>
