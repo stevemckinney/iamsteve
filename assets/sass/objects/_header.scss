@@ -64,11 +64,11 @@
       max-width: $line;
       height: $line; } } }
 
-.logo-small {
+.logo .logo-small {
   @include breakpoint($c) {
     display: none; } }
 
-.logo-large {
+.logo .logo-large {
   @include breakpoint($c-max) {
     display: none; } }
 
