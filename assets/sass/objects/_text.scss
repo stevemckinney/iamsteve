@@ -78,15 +78,15 @@ address { font-style: normal; }
 // Links
 // ---------------------------
 .link {
-  transition: background-position 0.15s linear 0.1s, box-shadow 0.15s linear 0s;
-  background-image: linear-gradient(to right, $primary, $tertiary, $secondary);
+  transition: background-position .3s linear, box-shadow .15s linear 0s;
+  background-image: linear-gradient(to right, $tertiary, $tertiary, $secondary);
   background-size: 400%;
   background-repeat: no-repeat;
   background-position: 0 1em;
   cursor: pointer;
 
   &:hover {
-    background-image: linear-gradient(to right, $primary, $tertiary, $secondary);
+    background-image: linear-gradient(to right, $tertiary, $secondary, $tertiary);
     background-position: 100% 1em; } }
 
 .link-social {
