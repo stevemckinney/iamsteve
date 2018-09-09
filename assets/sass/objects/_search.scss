@@ -67,23 +67,18 @@
 // ---------------------------
 .overlay-search {
   position: fixed;
-  z-index: $z-index-3;
+  z-index: $z-index-200 - $z-index-1;
   left: 0;
   width: 100%;
   height: 100%;
-  align-items: center;
+  overflow: hidden; // overlay will be clickable even when not visible otherwise
   align-content: center;
-
-  @include breakpoint($c-max) {
-    padding-top: 50px + ($line*2);
-    padding-bottom: 166px; }
 
   @include breakpoint($c) {
     flex-flow: column; } }
 
 .searched-posts {
-  overflow-y: auto;
-  overflow-x: auto;
+  overflow: auto;
   text-align: center;
 
   h2,
@@ -102,7 +97,9 @@
 
   @include breakpoint($c-max) {
     width: 100%;
-    padding: 0 $line/1.5; }
+
+    // 84 + 50 = search + tabbar height = centre
+    padding: 0 $line/1.5 (84px + 50px); }
 
   @include breakpoint($c) {
     padding-top: $line*2; } }
