@@ -1,7 +1,6 @@
 // Header
 // ---------------------------
 .header {
-  z-index: $z-index-100;
   top: 0;
   left: 0;
   right: 0;
@@ -14,10 +13,12 @@
   background-color: $white;
 
   @include breakpoint($c-max) {
+    z-index: $z-index-100;
     box-shadow: 0 1px rgba($primary-d1, .1);
     position: relative; }
 
   @include breakpoint($c) {
+    z-index: $z-index-200;
     position: fixed; }
 
   @include breakpoint($site-width) {
