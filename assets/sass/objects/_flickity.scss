@@ -105,7 +105,7 @@
 
 // Small screen adjustments to improve alignment for the .card-more
 // May or may not break things so this is separate code to be removed easily
-.scroll {
+.scroll:not(.flickity-enabled) {
   @include breakpoint($c-max) {
     display: flex;
     flex-flow: row nowrap;
