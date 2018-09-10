@@ -53,6 +53,7 @@
 // sides of each card within the scroll container.
 .offsetter {
   display: inline-block;
+  flex-shrink: 0;
 
   @include breakpoint($c) {
     width: $line + 8px; }
@@ -75,7 +76,7 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-  padding: 0 $base-px*1.5 0 4px;
+  padding: 0 $base-px*1.5 0 0;
   font-size: 0; // Needed for white space when flickity disabled
 
   &::-webkit-scrollbar {
@@ -106,11 +107,15 @@
 // Small screen adjustments to improve alignment for the .card-more
 // May or may not break things so this is separate code to be removed easily
 .scroll:not(.flickity-enabled) {
-  @include breakpoint($c-max) {
-    display: flex;
-    flex-flow: row nowrap;
+  display: flex;
+  flex-flow: row nowrap;
 
-    .card-small {
-      display: flex;
-      flex-flow: column wrap;
+  .card-small {
+    display: flex;
+    flex-flow: column wrap;
+
+    @include breakpoint($c) {
+      flex: 0 0 244px; }
+
+    @include breakpoint($c-max) {
       flex: 0 0 168px; } } }
