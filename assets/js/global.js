@@ -148,13 +148,9 @@ const iamsteve = (function iamsteve() {
   }
 
   const lazy = () => {
-    document.addEventListener('lazyloaded', (e) => {
-      const event = e;
-
-      event.target.parentNode.classList.add('image-loaded');
-      setTimeout(() => {
-        event.target.parentNode.classList.remove('loading');
-      }, 500);
+    document.addEventListener('lazybeforeunveil', (e) => {
+      e.target.parentNode.classList.add('image-loaded');
+      e.target.parentNode.classList.remove('loading');
     });
   }
 
