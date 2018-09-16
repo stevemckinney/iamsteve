@@ -1,7 +1,6 @@
 import Headroom from 'headroom.js';
 import 'lazysizes';
 import FontFaceObserver from 'fontfaceobserver';
-import './modernizr';
 import './load-svg';
 
 const Cookies = require('js-cookie');
