@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <defs>
     <style>
-      .aa, .bb {
+      .a, .b {
         fill: none;
       }
 
-      .bb {
+      .b {
         stroke: #27cba4;
         stroke-linecap: round;
         stroke-linejoin: round;
@@ -14,6 +14,8 @@
     </style>
   </defs>
   <title>checkbox</title>
-  <rect class="aa" width="16" height="16"/>
-  <polyline class="bb" points="1.5 8 5.5 12 14.5 3"/>
+  <g>
+    <rect class="a" width="16" height="16"/>
+    <polyline class="b" points="3 8 6 11 13 4"/>
+  </g>
 </svg>
