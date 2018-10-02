@@ -30,7 +30,7 @@ const home = (function home() {
         contain: false,
         imagesLoaded: true,
         dragThreshold: 24,
-        groupCells: true,
+        groupCells: 3,
         percentPosition: false
       });
 
