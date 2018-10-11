@@ -24,17 +24,16 @@
     width: calc(50% - (#{$contain / 2} + 16px)); } }
 
 .contain-scroll {
-  padding-left: $line;
-  padding-right: $line;
+  padding-left: $small-outer-gutter;
 
   @include breakpoint($c) {
-    padding-left: $line + 8px; }
+    padding-left: $line; }
 
   @include breakpoint($d) {
-    padding-left: ($line*2) + 6px; }
+    padding-left: ($line*2); }
 
   @include breakpoint($e) {
-    padding-left: ($line*3) + 8px; }
+    padding-left: ($line*3); }
 
   @include breakpoint($site-width) {
     padding-left: calc(50% - (#{$contain / 2})); } }
@@ -60,9 +59,15 @@
     display: none; } }
 
 .scroll-medium {
+  grid-template-columns: repeat(13, 252px);
+
   // 252 -> 378
-  grid-template-columns: repeat(13, 378px); }
+  @include breakpoint($c) {
+    grid-template-columns: repeat(13, 378px); } }
 
 .scroll-small {
+  grid-template-columns: repeat(13, 244px);
+
   // 168 -> 244
-  grid-template-columns: repeat(13, 244px); }
+  @include breakpoint($c) {
+    grid-template-columns: repeat(13, 244px); } }
