@@ -15,11 +15,6 @@
   @include breakpoint($e) {
     grid-gap: 48px; } }
 
-/*
-.card {
-  min-height: 100%; }
-*/
-
 .grid-thanks {
   display: grid;
   grid-gap: 32px 32px;
