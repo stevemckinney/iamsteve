@@ -1,6 +1,5 @@
 import Headroom from 'headroom.js';
 import 'lazysizes';
-import FontFaceObserver from 'fontfaceobserver';
 import './load-svg';
 
 const Cookies = require('js-cookie');
@@ -153,36 +152,11 @@ const iamsteve = (function iamsteve() {
     });
   }
 
-  const fonts = () => {
-    Cookies.set('exp_css', true, { expires: 365 });
-
-    if (!doc.classList.contains('fonts-stage-1')) {
-      const semibold = new FontFaceObserver('AvertaW', { weight: 600 });
-
-      Promise.all([semibold.load()]).then(() => {
-        doc.className += ' fonts-stage-1';
-        Cookies.set('exp_fonts-stage-1', true, { expires: 365 });
-
-        const regular = new FontFaceObserver('AvertaW', { weight: 400 });
-        const italic = new FontFaceObserver('AvertaW', { weight: 300, style: 'italic' });
-        const light = new FontFaceObserver('AvertaW', { weight: 300 });
-
-        Promise.all([regular.load(), italic.load(), light.load()]).then(() => {
-          doc.className += ' fonts-stage-2';
-          Cookies.set('exp_fonts-stage-2', true, { expires: 365 });
-        });
-      }).catch((err) => {
-        doc.className += ' fonts-failed';
-      });
-    }
-  }
-
   return {
     init: function init() {
       // Initialise everything
       toggler();
       header();
-      fonts();
       lazy();
       worker();
     }

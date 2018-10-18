@@ -1,28 +1,8 @@
-// Posts container
+// Scroll padding
 // ---------------------------
-.posts {
-  flex: 1; }
-
-// A div is placed within the .scroll container to offset the contents nicely.
-// Flickity doesn’t play nice when you want to offset things but have a seamless
-// edge to edge scroll. The addition of 16px compensates for the padding on the
-// sides of each card within the scroll container.
-.offsetter {
-  display: inline-block;
-  flex-shrink: 0;
-
-  @include breakpoint($c) {
-    width: $line + 8px; }
-
-  @include breakpoint($d) {
-    width: ($line*2) + 6px; }
-
-  @include breakpoint($e) {
-    width: ($line*3) + 8px; }
-
-  @include breakpoint($site-width) {
-    width: calc(50% - (#{$contain / 2} + 16px)); } }
-
+// Padding starts off at a gutter size, eventually increasing to a point
+// where it restricts the width to a grid, but to still allow the items
+// to scroll off screen rather than cut off
 .contain-scroll {
   padding-left: $small-outer-gutter;
 
@@ -43,8 +23,9 @@
 .scroll {
   display: grid;
   grid-gap: 32px $small-outer-gutter;
-  overflow: hidden;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 
   @include breakpoint($b) {
     grid-gap: 48px 32px; }
