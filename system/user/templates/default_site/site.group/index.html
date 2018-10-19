@@ -27,7 +27,7 @@
 <section class="posts pt7 pb6 pb8-d" aria-labelledby="latest-posts-title">
   <header class="row row-header contain contain-medium contain-large between">
     <h2 class="f5 f4-b chunky warm row-title" id="latest-posts-title">Latest posts</h2>
-    <a href="{path='blog'}" class="link-icon warm secondary-hover card-permalink semibold sans f4-l">
+    <a href="{path='blog'}" class="link-icon warm secondary-hover card-permalink semibold sans f5-l">
       All posts <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span>
     </a>
   </header>
@@ -35,7 +35,9 @@
     {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit_large}"}
     	{post_medium}
     {/exp:channel:entries}
-    <span></span>
+    <a href="{path='blog/P12'}" class="card card-medium card-more transition self-center secondary-hover sans semibold f2-l warm link-icon center">
+      All posts <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span>
+    </a>
   </div>
 </section>
 
@@ -45,7 +47,7 @@
   <section class="posts {if {count} == 1} pt6 pt8-d {/if} pb6 pb8-d" aria-labelledby="{category_url_title}-posts-title">
     <header class="row row-header contain contain-medium contain-large between">
       <h2 class="f4-l chunky neutral row-title" id="{category_url_title}-posts-title">Popular in {category_url_title}</h2>
-      <a href="{path='blog/category/design'}" class="link-icon warm secondary-hover card-permalink semibold sans f4-l">
+      <a href="{path='blog/category/design'}" class="link-icon warm secondary-hover card-permalink semibold sans f5-l">
         Explore {exp:streeng lower="yes"}{category_name}{/exp:streeng} <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span>
       </a>
     </header>
@@ -53,7 +55,10 @@
       {exp:channel:entries channel="{ch}" status="{ch_status}" orderby="view_count_one" disable="{ch_disable}" limit="{ch_limit}" category="{category_id}" sort="desc" dynamic="no"}
       	{post_small}
       {/exp:channel:entries}
-      <span></span>
+      <a href="{path='blog'}" class="card card-small card-more transition flex center self-center secondary-hover sans semibold f5-l warm link-icon center">
+          Explore {exp:streeng lower="yes"}{category_name}{/exp:streeng} <span class="icon icon-medium icon-right secondary mr6">{gv_arrow_right}</span>
+        </h2>
+      </a>
     </div>
   </section>
 {/exp:channel:categories}
