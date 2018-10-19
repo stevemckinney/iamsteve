@@ -23,6 +23,7 @@
 .scroll {
   display: grid;
   grid-gap: 32px $small-outer-gutter;
+  overflow: hidden;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
