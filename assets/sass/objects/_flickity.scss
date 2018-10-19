@@ -1,121 +1,55 @@
-// Flickity
+// Scroll padding
 // ---------------------------
-.flickity-enabled:focus {
-  outline: none; }
-
-.flickity-viewport {
-  position: relative;
-  height: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar; }
-
-.flickity-slider {
-  position: absolute;
-  height: 100%;
-  left: 8px !important;
-  right: 0;
+// Padding starts off at a gutter size, eventually increasing to a point
+// where it restricts the width to a grid, but to still allow the items
+// to scroll off screen rather than cut off
+.contain-scroll {
+  padding-left: $small-outer-gutter;
 
   @include breakpoint($c) {
-    left: 0 !important; } }
-
-/* Draggable */
-.flickity-enabled.is-draggable {
-  -webkit-tap-highlight-color: transparent;
-  tap-highlight-color: transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-
-.flickity-enabled.is-draggable .flickity-viewport {
-  cursor: -webkit-grab;
-  cursor: grab; }
-
-.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
-  cursor: -webkit-grabbing;
-  cursor: grabbing; }
-
-// Posts container
-// ---------------------------
-.posts {
-  flex: 1; }
-
-// Flickity requires js obviously so pagination won’t work
-.no-js .posts .pagination {
-  display: none; }
-
-// A div is placed within the .scroll container to offset the contents nicely.
-// Flickity doesn’t play nice when you want to offset things but have a seamless
-// edge to edge scroll. The addition of 16px compensates for the padding on the
-// sides of each card within the scroll container.
-.offsetter {
-  display: inline-block;
-  flex-shrink: 0;
-
-  @include breakpoint($c) {
-    width: $line + 8px; }
+    padding-left: $line; }
 
   @include breakpoint($d) {
-    width: ($line*2) + 6px; }
+    padding-left: ($line*2); }
 
   @include breakpoint($e) {
-    width: ($line*3) + 8px; }
+    padding-left: ($line*3); }
 
   @include breakpoint($site-width) {
-    width: calc(50% - (#{$contain / 2} + 16px)); } }
+    padding-left: calc(50% - (#{$contain / 2})); } }
 
 // Scroll
 // ---------------------------
 .scroll {
-  position: relative;
-  white-space: nowrap;
+  display: grid;
+  grid-gap: 32px $small-outer-gutter;
   overflow: hidden;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
-  padding: 0 $base-px*1.5 0 8px;
-  font-size: 0; // Needed for white space when flickity disabled
+
+  @include breakpoint($b) {
+    grid-gap: 48px 32px; }
+
+  @include breakpoint($c) {
+    grid-gap: 48px 32px; }
+
+  @include breakpoint($e) {
+    grid-gap: 48px; }
 
   &::-webkit-scrollbar {
-    display: none; }
+    display: none; } }
 
-  &.flickity-enabled {
-    padding: 0; }
+.scroll-medium {
+  grid-template-columns: repeat(13, 252px);
 
-  // Each card width must be offset by the padding, otherwise it’s too small.
-  .card {
-    display: inline-block;
-    vertical-align: top;
-    white-space: normal;
-    padding: 0 8px;
+  // 252 -> 378
+  @include breakpoint($c) {
+    grid-template-columns: repeat(13, 378px); } }
 
-    @include breakpoint($c) {
-      padding: 0 $line/1.5; } }
+.scroll-small {
+  grid-template-columns: repeat(13, 168px);
 
-  .card-more {
-    min-width: 240px; }
-
-  .card-small {
-    width: 196px;
-
-    @include breakpoint($c) {
-      width: 244px; } } }
-
-// Small screen adjustments to improve alignment for the .card-more
-// May or may not break things so this is separate code to be removed easily
-.scroll:not(.flickity-enabled) {
-  display: flex;
-  flex-flow: row nowrap;
-
-  .card-small {
-    display: flex;
-    flex-flow: column wrap;
-
-    @include breakpoint($c) {
-      flex: 0 0 244px; }
-
-    @include breakpoint($c-max) {
-      flex: 0 0 168px; } } }
+  // 168 -> 244
+  @include breakpoint($c) {
+    grid-template-columns: repeat(13, 244px); } }

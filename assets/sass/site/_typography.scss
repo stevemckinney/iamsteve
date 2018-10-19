@@ -36,7 +36,7 @@ p, figcaption {
     hyphens: auto; } }
 
 a, time {
-  transition: color .2s, transform .2s;
+  transition: color .2s, transform .2s, opacity .2s;
   transform-origin: center center;
   text-decoration: none;
   color: inherit;

@@ -8,7 +8,7 @@
   flex-flow: row wrap;
   justify-content: space-between;
   will-change: transform;
-  transition: transform .4s ease, box-shadow .4s ease;
+  transition: transform .4s ease, box-shadow .4s ease, background-color .8s ease;
   max-height: 96px;
   background-color: $white;
 
@@ -28,6 +28,17 @@
 .page-single .header {
   @include breakpoint($c) {
     background-color: transparent; } }
+
+.header.header-not-top {
+  @include breakpoint($c) {
+    .nav-item:not(.toggle-search) {
+      opacity: 0; }
+
+    &:hover, &:focus {
+      background-color: $white;
+
+      .nav-item {
+        opacity: 1; } } } }
 
 // Headroom
 // ---------------------------
