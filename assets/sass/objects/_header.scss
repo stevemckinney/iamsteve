@@ -30,7 +30,7 @@
     background-color: transparent; } }
 
 .header.header-not-top {
-  @include breakpoint($c) {
+  @media (min-width: $c), (hover: hover) {
     .nav-item:not(.toggle-search) {
       opacity: 0; }
 
