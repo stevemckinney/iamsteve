@@ -1,0 +1,9 @@
+/*!
+ * This source file is part of the open source project
+ * ExpressionEngine (https://expressionengine.com)
+ *
+ * @link      https://expressionengine.com/
+ * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
+ */
+!function(e){"use strict";function t(){try{if("localStorage"in window&&null!==window.localStorage)return localStorage.setItem("ee_ping",1),localStorage.removeItem("ee_ping"),!0}catch(e){return!1}}function r(e){var t=e.match(/^\t+/gm),r=e.match(/^[ ]+/gm),i=t?t.length:0,o=r?r.length:0;return!(o>i)}function i(t){var i=t.height(),o=t[0].value,n=r(o),a=CodeMirror.fromTextArea(t[0],{lineWrapping:!0,lineNumbers:!0,autoCloseBrackets:!0,mode:"ee",smartIndent:!1,indentWithTabs:n,lint:EE.codemirror_linter});return e(".CodeMirror").resizable({handles:"s",resize:function(){a.setSize(null,e(this).height()),a.refresh()}}),a.setSize(null,i),a}EE.namespace("EE.design");var o=t()?localStorage:{setItem:function(e,t){var r=new Date;r.setTime(r.getTime()+5e3),document.cookie=e+"="+escape(t)+"; expires="+r.toGMTString()+"; path=/"},removeItem:function(e){document.cookie=e+"=; expires=Thu, 01 Jan 1970 00:00:01 GMT"},getItem:function(e){var t=new RegExp("[,; ]"+e+"=([^\\s,;]*)"),r=" "+document.cookie,i=r.match(t);return i?unescape(i[1]):void 0}};e.fn.toggleCodeMirror=function(){this.each(function(){var t=e(this),r=o.getItem("codemirror.disabled"),n=t.data("codemirror.initialized"),a=t.data("codemirror.editor");!n&&!r||n&&r?(a=i(t),o.removeItem("codemirror.disabled"),t.data("codemirror.editor",a)):n&&(a.toTextArea(),t.data("codemirror.editor",!1),o.setItem("codemirror.disabled",!0)),EE.editor.height&&a.setSize(null,EE.editor.height),t.data("codemirror.initialized",!0)})}}(jQuery);
