@@ -1,6 +1,7 @@
 /* eslint-disable */
 const loadSVG = (function loadSVG() {
 /* eslint-enable */
+  const distPath = `${document.location.origin}/dist/images`;
   let loaded = false;
 
   // Private
@@ -34,13 +35,14 @@ const loadSVG = (function loadSVG() {
     if (window.matchMedia('(min-width: 600px)').matches) {
       return true;
     }
+
     return false;
   };
 
   const getSubscribeImage = debounce(() => {
     if (room() && loaded === false) {
       const ajax = new XMLHttpRequest();
-      ajax.open('GET', `${document.location.origin}/dist/images/subscribe.svg`, true);
+      ajax.open('GET', `${distPath}/subscribe.svg`, true);
       ajax.send();
 
       ajax.onload = function insertImage() {
