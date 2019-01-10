@@ -58,7 +58,7 @@ const loadSVG = (function loadSVG() {
 
     if (container) {
       const ajax = new XMLHttpRequest();
-      ajax.open('GET', `${distPath}/dist/images/rio-osc.svg`, true);
+      ajax.open('GET', `${distPath}/rio-osc.svg`, true);
       ajax.send();
       ajax.onload = function insertImage() {
         container.innerHTML = ajax.responseText;
