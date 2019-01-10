@@ -67,11 +67,13 @@ const loadSVG = (function loadSVG() {
   };
 
   const subscribe = function subscribe() {
-    const container = document.querySelector('.subscribe-image');
+    const container = document.querySelectorAll('.subscribe-image');
 
     if (container) {
-      getSubscribeImage();
-      window.addEventListener('resize', getSubscribeImage, false);
+      for (i = 0; i < container.length; i++) {
+      	getSubscribeImage();
+		window.addEventListener('resize', getSubscribeImage, false);
+	  }
     }
   };
 
