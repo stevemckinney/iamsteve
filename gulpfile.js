@@ -100,8 +100,7 @@ gulp.task('critical', function () {
         '.primary'
       ],
       ignore: [
-        '.dashes',
-        '@font-face'
+        '.dashes'
       ]
     }))
     .pipe(gulp.dest('./dist/css/'))
