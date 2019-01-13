@@ -1,155 +1,214 @@
-var gulp = require('gulp');
-var watch = require('gulp-watch');
-var plumber = require('gulp-plumber');
-var order = require('gulp-order');
-var rename = require('gulp-rename');
-var sass = require('gulp-ruby-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
-var cssnano = require('gulp-cssnano');
-var uglify = require('gulp-uglify');
-var imagemin = require('gulp-imagemin');
-var cache = require('gulp-cache');
-var concat = require('gulp-concat');
-var browserSync = require('browser-sync').create();
-var sourcemaps = require('gulp-sourcemaps');
-var reload = browserSync.reload;
-var critical = require('gulp-penthouse');
-var checkCSS = require('gulp-check-unused-css');
+const {gulp, src, dest, watch, series, parallel} = require('gulp');
+const del = require('del');
+const plumber = require('gulp-plumber');
+const order = require('gulp-order');
+const rename = require('gulp-rename');
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const cssnano = require('gulp-cssnano');
+const sourcemaps = require('gulp-sourcemaps');
+const browserSync = require('browser-sync').create();
+const reload = browserSync.reload;
+const uglify = require('gulp-uglify');
+const imagemin = require('gulp-imagemin');
+const cache = require('gulp-cache');
+const concat = require('gulp-concat');
+const critical = require('critical');
 
-var src = {
-  scss: 'assets/sass/**/*.scss',
-  css: 'dist/css',
-  html: 'system/user/templates/**/*.html',
-  js: 'assets/js/**/*.js',
-  images: 'assets/images/*.png',
-  svg: 'assets/images/*.svg',
-  fonts: './assets/fonts/**/*.{ttf,woff,woff2,eot,svg}'
-};
-
-var path = {
-  js: 'assets/js',
+const path = {
+  input: 'assets/',
+  output: 'dist/',
+  css: {
+    src: 'assets/sass/**/*.{scss,sass}',
+    dist: 'dist/css/'
+  },
+  js: {
+    src: 'assets/js/**/*.js',
+    dist: 'dist/js/'
+  },
+  html: {
+    src: 'system/user/templates/**/*.html'
+  },
+  images: {
+    src: 'assets/images/*.png',
+    dist: 'dist/images/'
+  },
+  svg: {
+    src: 'assets/images/*.svg',
+    dist: 'dist/images/'
+  },
+  fonts: {
+    src: './assets/fonts/**/*.{ttf,woff,woff2,eot,svg}',
+    dist: 'dist/fonts/'
+  },
   node_modules: './node_modules'
-};
+}
 
 // browser-sync watched files
 // automatically reloads the page when files changed
-var browserSyncWatchFiles = [
-  src.css,
-  src.js,
-  src.html
+const browserSyncWatchFiles = [
+  path.css.dist,
+  path.js.src,
+  path.html.src
 ];
 
 // browser-sync options
 // see: https://www.browsersync.io/docs/options/
-var browserSyncOptions = {
+const browserSyncOptions = {
   proxy: 'http://iamsteve.dev',
   injectChanges: true
-};
+}
+
+// BrowserSync
+const reloader = (done) => {
+  browserSync.reload();
+  done();
+}
+
+const serve = (done) => {
+  browserSync.init(browserSyncWatchFiles, browserSyncOptions);
+  done();
+}
+
+/**
+ * Tasks
+ */
+
+// Start fresh and empty the '/dist' folder
+const clean = () => del([path.output]);
 
 // CSS
-gulp.task('sass', () =>
-  sass(src.scss, {
-    compass: false
-  })
-    .on('error', sass.logError)
-    .pipe(gulp.dest(src.css))
-    .pipe(browserSync.reload({
-      stream: true
-    }))
-);
+sass.compiler = require('node-sass');
 
-gulp.task('sass-build', () =>
-  sass(src.scss, { compass: false, style: 'compressed' })
-    .on('error', sass.logError)
-    .pipe(gulp.dest(src.css))
-);
+const css = (done) => {
+	src(path.css.src)
+		.pipe(sass({
+			outputStyle: 'expanded',
+			sourceComments: true
+		}))
+		.pipe(sass().on('error', sass.logError))
+		.pipe(dest(path.css.dist));
 
-gulp.task('autoprefixer', function() {
-  gulp.src(src.css + '/master.css')
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }));
-});
+	done();
+}
 
-gulp.task('purify', function() {
-  return gulp.src('./dist/css/global.css')
-    .pipe(purify(['./dist/js/**/*.js', './system/user/templates/default_site/**/*.html']))
-    .pipe(gulp.dest(src.css));
-});
+const cssBuild = (done) => {
+	src(path.css.src)
+		.pipe(sass({
+			outputStyle: 'compressed',
+			sourceComments: false
+		}))
+		.pipe(sass().on('error', sass.logError))
+		.pipe(dest(path.css.dist))
 
-gulp.task('purify', function() {
-  return gulp.src(['./dist/css/global.css', './system/user/templates/default_site/**/*.html']).pipe(checkCSS());
-});
+	done();
+}
+
+const prefix = (done) => {
+	src(path.css.dist)
+		.pipe(autoprefixer({
+			browsers: ['last 2 version', '> 5%'],
+			cascade: true,
+			remove: true
+		}))
+		.pipe(dest(path.css.dist))
+
+	done();
+}
 
 // Critical CSS
-gulp.task('critical', function () {
-  return gulp.src('./dist/css/global.css')
-    .pipe(critical({
-      out: 'critical.css',
-      url: 'http://iamsteve.dev',
+const criticalCSS = (done) => {
+  critical.generate({
+    inline: false,
+    base: './',
+    src: 'http://iamsteve.dev',
+    css: [`${path.css.dist}/global.css`],
+    dimensions: [{
+      width: 320,
+      height: 480
+    }, {
+      width: 768,
+      height: 1024
+    }, {
       width: 1680,
-      height: 1200,
-      strict: true,
-      minify: true,
-      userAgent: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
-      include: [
-        '.headline-b',
-        '.primary .fill-s1',
-        '.primary'
-      ],
-      ignore: [
-        '.dashes'
-      ]
-    }))
-    .pipe(gulp.dest('./dist/css/'))
-    .pipe(cssnano())
-    .pipe(rename('critical.html'))
-    .pipe(gulp.dest('./system/user/templates/default_site/_partials/'));
-});
+      height: 1200
+    }],
+    dest: './system/user/templates/default_site/_partials/critical.html',
+    minify: true,
+    extract: false,
+    include: [
+      '.headline-b',
+      '.primary .fill-s1',
+      '.primary',
+      '.hiding'
+    ],
+    ignore: {
+      atrule: ['font-face'],
+      rule: ['.dashes']
+    }
+  });
 
-// Copy fonts
-gulp.task('fonts', function() {
-  return gulp
-    .src(src.fonts)
-    .pipe(gulp.dest('./dist/fonts'));
-});
+	done();
+}
+
+// Fonts
+const fonts = (done) => {
+  src(path.fonts.src)
+  .pipe(dest(path.fonts.dist));
+
+	done();
+}
 
 // Images
-gulp.task('images', function() {
-  return gulp.src(src.images)
+const images = (done) => {
+  src(path.images.src)
     .pipe(cache(imagemin(
-      {
-        optimizationLevel: 3,
-        progressive: true,
-        interlaced: true,
-        mergePaths: false
-      }
+      [
+        imagemin.optipng({
+          optimizationLevel: 3,
+          progressive: true,
+          interlaced: true,
+          mergePaths: false
+        })
+      ]
     )))
-    .pipe(gulp.dest('dist/images/*.png'));
-});
+    .pipe(dest(path.images.dist + '*.png'));
+    imagemin.optipng({optimizationLevel: 5}),
+    imagemin.svgo({
+        plugins: [
+            {removeViewBox: true},
+            {cleanupIDs: false}
+        ]
+    })
 
-gulp.task('svg', function() {
-  return gulp.src(src.svg)
-    .pipe(cache(imagemin({ mergePaths: false })))
-    .pipe(gulp.dest('dist/images'));
-});
+  done();
+}
 
-gulp.task('watch', function () {
-  gulp.watch('dist/css/master.css', ['autoprefixer']);
-});
+const svg = (done) => {
+  src(path.svg.src)
+    .pipe(cache(imagemin([ imagemin.svgo({ mergePaths: false }) ])))
+    .pipe(dest(path.svg.dist));
 
-gulp.task('browser-sync', function() {
-  browserSync.init(browserSyncWatchFiles, browserSyncOptions);
-});
+  done();
+}
 
-// Serve, Sass and live reloading
-gulp.task('serve', ['browser-sync', 'watch'], function() {
-  gulp.watch(src.scss, ['sass']);
-  gulp.watch(src.html).on('change', reload);
-});
+// Watch
+const watchFiles = () => {
+  watch(path.css.src, css);
+  watch(path.js.src);
+  watch(path.html.src, series(reloader));
+}
 
+/**
+ * Runnable
+ */
+const watcher = parallel(watchFiles, serve);
+const build = series(cssBuild, prefix, criticalCSS, parallel(fonts, svg, images));
 
-gulp.task('default', ['serve']);
-gulp.task('build', ['sass-build', 'autoprefixer', 'critical', 'purify', 'fonts']);
+exports.watch = watcher;
+exports.build = build;
+exports.clean = series(clean);
+exports.critical = series(criticalCSS);
+exports.fonts = series(fonts);
+exports.autoprefixer = series(prefix);
+exports.imageminify = parallel(images, svg);
