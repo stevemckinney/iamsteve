@@ -47,7 +47,6 @@ const loadSVG = (function loadSVG() {
 
       ajax.onload = function insertImage() {
         loaded = true;
-        console.log(ajax);
         document.body.insertAdjacentHTML('afterbegin', ajax.responseText);
       };
     }
@@ -70,10 +69,8 @@ const loadSVG = (function loadSVG() {
   const subscribe = function subscribe() {
     const images = document.querySelectorAll('.subscribe-image');
 
-    console.log(images);
-
     if (images) {
-      for (let image of images) {
+      for (const image of images) {
         getSubscribeImage();
         window.addEventListener('resize', getSubscribeImage, false);
       }
