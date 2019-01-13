@@ -4,6 +4,8 @@ const plumber = require('gulp-plumber');
 const order = require('gulp-order');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
+const postcss = require('gulp-postcss');
+const purgecss = require('gulp-purgecss');
 const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 const sourcemaps = require('gulp-sourcemaps');
@@ -62,11 +64,13 @@ const browserSyncOptions = {
 // BrowserSync
 const reloader = (done) => {
   browserSync.reload();
+
   done();
 }
 
 const serve = (done) => {
   browserSync.init(browserSyncWatchFiles, browserSyncOptions);
+
   done();
 }
 
@@ -82,11 +86,13 @@ sass.compiler = require('node-sass');
 
 const css = (done) => {
 	src(path.css.src)
+  	.pipe(sourcemaps.init())
 		.pipe(sass({
 			outputStyle: 'expanded',
-			sourceComments: true
+			sourceComments: false
 		}))
 		.pipe(sass().on('error', sass.logError))
+		.pipe(sourcemaps.write('./'))
 		.pipe(dest(path.css.dist));
 
 	done();
@@ -94,11 +100,14 @@ const css = (done) => {
 
 const cssBuild = (done) => {
 	src(path.css.src)
+	  .pipe(sourcemaps.init())
 		.pipe(sass({
 			outputStyle: 'compressed',
 			sourceComments: false
 		}))
 		.pipe(sass().on('error', sass.logError))
+		.pipe(cssnano())
+		.pipe(sourcemaps.write('./'))
 		.pipe(dest(path.css.dist))
 
 	done();
@@ -107,13 +116,27 @@ const cssBuild = (done) => {
 const prefix = (done) => {
 	src(path.css.dist)
 		.pipe(autoprefixer({
-			browsers: ['last 2 version', '> 5%'],
+			browsers: ['last 2 versions'],
 			cascade: true,
 			remove: true
 		}))
 		.pipe(dest(path.css.dist))
 
 	done();
+}
+
+// Clean unused CSS using uncss
+const cleanCSS = (done) => {
+  src(`${path.css.dist}/global.css`)
+    .pipe(
+      purgecss({
+        content: [path.html.src, path.js.src],
+        css: [`${path.css.dist}/global.css`]
+      })
+    )
+    .pipe(dest(path.css.dist))
+
+  done();
 }
 
 // Critical CSS
@@ -173,7 +196,7 @@ const images = (done) => {
       ]
     )))
     .pipe(dest(path.images.dist + '*.png'));
-    imagemin.optipng({optimizationLevel: 5}),
+    imagemin.optipng({ optimizationLevel: 5 }),
     imagemin.svgo({
         plugins: [
             {removeViewBox: true},
@@ -194,21 +217,22 @@ const svg = (done) => {
 
 // Watch
 const watchFiles = () => {
-  watch(path.css.src, css);
+  watch(path.css.src, series(css, cleanCSS));
   watch(path.js.src);
   watch(path.html.src, series(reloader));
+
+  done();
 }
 
 /**
  * Runnable
  */
-const watcher = parallel(watchFiles, serve);
-const build = series(cssBuild, prefix, criticalCSS, parallel(fonts, svg, images));
-
-exports.watch = watcher;
-exports.build = build;
+exports.watch = series(watchFiles);
+exports.build = series(cssBuild, prefix, clean, criticalCSS, parallel(fonts, svg, images));
 exports.clean = series(clean);
 exports.critical = series(criticalCSS);
 exports.fonts = series(fonts);
 exports.autoprefixer = series(prefix);
 exports.imageminify = parallel(images, svg);
+exports.cleaner = parallel(cleanCSS);
+exports.serve = serve;
