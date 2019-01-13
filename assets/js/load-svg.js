@@ -47,6 +47,7 @@ const loadSVG = (function loadSVG() {
 
       ajax.onload = function insertImage() {
         loaded = true;
+        console.log(ajax);
         document.body.insertAdjacentHTML('afterbegin', ajax.responseText);
       };
     }
@@ -67,13 +68,15 @@ const loadSVG = (function loadSVG() {
   };
 
   const subscribe = function subscribe() {
-    const container = document.querySelectorAll('.subscribe-image');
+    const images = document.querySelectorAll('.subscribe-image');
 
-    if (container) {
-      for (i = 0; i < container.length; i++) {
-      	getSubscribeImage();
-		window.addEventListener('resize', getSubscribeImage, false);
-	  }
+    console.log(images);
+
+    if (images) {
+      for (let image of images) {
+        getSubscribeImage();
+        window.addEventListener('resize', getSubscribeImage, false);
+      }
     }
   };
 
