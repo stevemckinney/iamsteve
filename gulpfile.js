@@ -31,7 +31,7 @@ const path = {
   html: {
     src: 'system/user/templates/**/*.html'
   },
-  images: {
+  image: {
     src: 'assets/images/*.png',
     dist: 'dist/images/'
   },
@@ -183,8 +183,8 @@ const fonts = (done) => {
 }
 
 // Images
-const images = (done) => {
-  src(path.images.src)
+const image = (done) => {
+  src(path.image.src)
     .pipe(cache(imagemin(
       [
         imagemin.optipng({
@@ -193,23 +193,24 @@ const images = (done) => {
           interlaced: true,
           mergePaths: false
         })
-      ]
+      ],
     )))
-    .pipe(dest(path.images.dist + '*.png'));
-    imagemin.optipng({ optimizationLevel: 5 }),
-    imagemin.svgo({
-        plugins: [
-            {removeViewBox: true},
-            {cleanupIDs: false}
-        ]
-    })
+    .pipe(dest(path.image.dist));
 
   done();
 }
 
 const svg = (done) => {
   src(path.svg.src)
-    .pipe(cache(imagemin([ imagemin.svgo({ mergePaths: false }) ])))
+    .pipe(imagemin([
+        imagemin.svgo({
+          plugins: [
+            { removeViewBox: false },
+            { cleanupIDs: false },
+            { mergePaths: false }
+          ]
+        })
+      ]))
     .pipe(dest(path.svg.dist));
 
   done();
@@ -228,11 +229,11 @@ const watchFiles = () => {
  * Runnable
  */
 exports.watch = series(watchFiles);
-exports.build = series(cssBuild, prefix, clean, criticalCSS, parallel(fonts, svg, images));
+exports.build = series(cssBuild, prefix, clean, criticalCSS, parallel(fonts, svg, image));
 exports.clean = series(clean);
 exports.critical = series(criticalCSS);
 exports.fonts = series(fonts);
 exports.autoprefixer = series(prefix);
-exports.imageminify = parallel(images, svg);
+exports.imageminify = parallel(image, svg);
 exports.cleaner = parallel(cleanCSS);
 exports.serve = serve;

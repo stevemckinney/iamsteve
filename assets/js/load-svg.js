@@ -69,8 +69,11 @@ const loadSVG = (function loadSVG() {
   const subscribe = function subscribe() {
     const images = document.querySelectorAll('.subscribe-image');
 
+    console.log(images);
+
     if (images) {
       for (const image of images) {
+        console.log(image);
         getSubscribeImage();
         window.addEventListener('resize', getSubscribeImage, false);
       }
