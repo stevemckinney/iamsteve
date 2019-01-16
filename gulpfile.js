@@ -185,7 +185,7 @@ const fonts = (done) => {
 // Images
 const image = (done) => {
   src(path.image.src)
-    .pipe(cache(imagemin(
+    .pipe(imagemin(
       [
         imagemin.optipng({
           optimizationLevel: 3,
@@ -194,7 +194,7 @@ const image = (done) => {
           mergePaths: false
         })
       ],
-    )))
+    ))
     .pipe(dest(path.image.dist));
 
   done();
