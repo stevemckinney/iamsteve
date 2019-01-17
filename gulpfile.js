@@ -217,7 +217,7 @@ const svg = (done) => {
 }
 
 // Watch
-const watchFiles = () => {
+const watchFiles = (done) => {
   watch(path.css.src, series(css, cleanCSS));
   watch(path.js.src);
   watch(path.html.src, series(reloader));
