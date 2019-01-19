@@ -229,7 +229,7 @@ const watchFiles = (done) => {
  * Runnable
  */
 exports.watch = series(watchFiles);
-exports.build = series(cssBuild, prefix, clean, criticalCSS, parallel(fonts, svg, image));
+exports.build = series(cssBuild, prefix, criticalCSS, parallel(fonts, svg, image));
 exports.clean = series(clean);
 exports.critical = series(criticalCSS);
 exports.fonts = series(fonts);

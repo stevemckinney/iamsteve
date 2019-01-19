@@ -1,6 +1,5 @@
 import Headroom from 'headroom.js';
 import 'lazysizes';
-import './load-svg';
 
 const Cookies = require('js-cookie');
 

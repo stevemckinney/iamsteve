@@ -1,8 +1,9 @@
-<section class="row {embed:class} row-padding between items-center contain contain-medium contain-large subscribe" id="subscribe">
+<section class="row {embed:class} row-padding between items-center contain contain-medium contain-large subscribe">
   {if '{exp:iamsteve:is_mobile}' != 1}
   <div class="column column-4-b mb4 mb0-b subscribe-image">
-    {!-- svg is inserted with ajax, in load-svg.js --}
-    <svg width="488" height="336"><use xlink:href="#subscribe-image"></use></svg>
+    <div class="loading">
+      <img data-src="{global:theme_url}/dist/images/subscribe.svg" class="lazyload">
+    </div>
     <noscript><img src="{global:theme_url}/dist/images/subscribe.svg"></noscript>
   </div>
   {/if}
