@@ -38,6 +38,7 @@ class Filepicker_mcp {
 			->with('NoAccess')
 			->filter('site_id', ee()->config->item('site_id'))
 			->filter('module_id', 0)
+			->order('name', 'asc')
 			->all();
 
 		$member_group = ee()->session->userdata['group_id'];
@@ -372,6 +373,7 @@ class Filepicker_mcp {
 		$result['path'] = $file->getAbsoluteURL();
 		$result['thumb_path'] = ee('Thumbnail')->get($file)->url;
 		$result['isImage'] = $file->isImage();
+		$result['isSVG'] = $file->isSVG();
 
 		ee()->output->send_ajax_response($result);
 	}
@@ -487,6 +489,7 @@ class Filepicker_mcp {
 						'title'              => $file->file_name,
 						'file_name'          => $file->file_name,
 						'isImage'            => $file->isImage(),
+						'isSVG'              => $file->isSVG(),
 						'thumb_path'         => $file->getAbsoluteThumbnailURL(),
 						'upload_location_id' => $file->upload_location_id
 					]

@@ -89,7 +89,20 @@ trait ModifiableTrait {
 	 */
 	public function replace_limit($data, $params = array(), $tagdata = FALSE)
 	{
+		if ( ! isset($params['preserve_words']))
+		{
+			$params['preserve_words'] = TRUE;
+		}
+
 		return (string) ee('Format')->make('Text', $data)->limitChars($params);
+	}
+
+	/**
+	 * :number_format modifier
+	 */
+	public function replace_number_format($data, $params = array(), $tagdata = FALSE)
+	{
+		return (string) ee('Format')->make('Number', $data)->number_format($params);
 	}
 
 	/**

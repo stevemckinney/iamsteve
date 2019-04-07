@@ -19,7 +19,9 @@ const critical = require('critical');
 
 const importer = require('node-sass-globbing');
 const glob = require('glob');
+/*
 const gulpicon = require('gulpicon/tasks/gulpicon');
+*/
 
 const path = {
   input: 'assets/',
