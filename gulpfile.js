@@ -17,6 +17,10 @@ const cache = require('gulp-cache');
 const concat = require('gulp-concat');
 const critical = require('critical');
 
+const importer = require('node-sass-globbing');
+const glob = require('glob');
+const gulpicon = require('gulpicon/tasks/gulpicon');
+
 const path = {
   input: 'assets/',
   output: 'dist/',
@@ -98,6 +102,13 @@ const css = (done) => {
 	done();
 }
 
+const sass_config = {
+  importer,
+  includePaths: [
+    './node_modules/breakpoint-sass/stylesheets/'
+  ]
+};
+
 const cssBuild = (done) => {
 	src(path.css.src)
 	  .pipe(sourcemaps.init())
@@ -105,7 +116,7 @@ const cssBuild = (done) => {
 			outputStyle: 'compressed',
 			sourceComments: false
 		}))
-		.pipe(sass().on('error', sass.logError))
+		.pipe(sass(sass_config).on('error', sass.logError))
 		.pipe(cssnano())
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(path.css.dist))
