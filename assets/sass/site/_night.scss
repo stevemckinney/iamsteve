@@ -1,2 +1,8 @@
 // @todo: Night mode
 .night {}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: $black;
+	}
+}
