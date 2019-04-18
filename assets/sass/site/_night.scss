@@ -7,6 +7,7 @@
 	}
 }
 
-html body {
-	background-color: $black;
+body {
+	background-color: $black !important;
+	> & * { color: #ccc !important; }
 }
