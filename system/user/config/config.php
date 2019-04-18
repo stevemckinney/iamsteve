@@ -11,7 +11,7 @@
 |
 */
 
-$config['app_version'] = "4.3.2";
+$config['app_version'] = "5.2.2";
 $config['install_lock'] = "";
 $config['license_number'] = '';
 $config['debug'] = 'FALSE';
@@ -54,8 +54,12 @@ $config['stash_parse_if_in']  = FALSE;  // enable parsing of {if var IN (1|2|3).
 
 $config['require_cookie_consent'] = 'y';
 $config['force_redirect'] = 'n';
+$config['share_analytics'] = 'y';
+$config['show_ee_news'] = 'y';
 
 // END EE config items
+
+
 
 
 
