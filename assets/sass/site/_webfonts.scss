@@ -38,32 +38,32 @@ $fonts: (
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: local("Averta Std"), local("AvertaStd-Light"), font-url("averta/avertastd-light-webfont.woff") format("woff"), font-url("averta/avertastd-light-webfont.woff2") format("woff2"); }
+  src: font-url("averta/avertastd-light-webfont.woff") format("woff"), font-url("averta/avertastd-light-webfont.woff2") format("woff2"); }
 
 @font-face {
   font-family: "Averta";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local("Averta Std"), local("AvertaStd-Regular"), font-url("averta/avertastd-regular-webfont.woff") format("woff"), font-url("averta/avertastd-regular-webfont.woff2") format("woff2"); }
+  src: font-url("averta/avertastd-regular-webfont.woff") format("woff"), font-url("averta/avertastd-regular-webfont.woff2") format("woff2"); }
 
 @font-face {
   font-family: "Averta";
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: local("Averta Std"), local("AvertaStd-RegularItalic"), font-url("averta/avertastd-regularitalic-webfont.woff") format("woff"), font-url("averta/avertastd-regularitalic-webfont.woff2") format("woff2"); }
+  src: font-url("averta/avertastd-regularitalic-webfont.woff") format("woff"), font-url("averta/avertastd-regularitalic-webfont.woff2") format("woff2"); }
 
 @font-face {
   font-family: "Averta";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: local("Averta Std"), local("AvertaStd-Semibold"), font-url("averta/avertastd-semibold-webfont.woff") format("woff"), font-url("averta/avertastd-semibold-webfont.woff2") format("woff2"); }
+  src: font-url("averta/avertastd-semibold-webfont.woff") format("woff"), font-url("averta/avertastd-semibold-webfont.woff2") format("woff2"); }
 
 @font-face {
   font-family: "Averta";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local("Averta Std"), local("AvertaStd-Bold"), font-url("averta/avertastd-bold-webfont.woff") format("woff"), font-url("averta/avertastd-bold-webfont.woff2") format("woff2"); }
+  src: font-url("averta/avertastd-bold-webfont.woff") format("woff"), font-url("averta/avertastd-bold-webfont.woff2") format("woff2"); }

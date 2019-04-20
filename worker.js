@@ -71,14 +71,6 @@ self.addEventListener('fetch', function(event) {
       }).catch(function() {
         // If there is no internet connection, try to match the request
         // to some of our cached resources
-        var images = document.querySelectorAll('img');
-
-        images.forEach(function(image) {
-          image.onerror = function() {
-      			this.parentNode.removeChild(this);
-          }
-        });
-
         return cache.match(event.request);
       })
     })
