@@ -57,61 +57,6 @@ const iamsteve = (function iamsteve() {
     }
   }
 
-  // Test if service workers are supported
-  const worker = () => {
-    if ('serviceWorker' in navigator) {
-      // Attempt to register it
-      navigator.serviceWorker.register('/worker.js').then(() => {
-        // Success Message
-        console.log('ServiceWorker succesfully registered');
-      }).catch((err) => {
-        // Error Message
-        console.log('ServiceWorker registration failed: ', err);
-      });
-
-      // Event listener
-      if (cacheButton) {
-        cacheButtonText.textContent = copy.worker.initial;
-
-        cacheButton.addEventListener('click', (event) => {
-          event.preventDefault();
-          // Build an array of the page-specific resources.
-          const pageResources = [currentPath];
-
-          // Add images to the array
-          for (const image of imageArray) {
-            pageResources.push(image.src);
-          }
-
-          // Open the unique cache for this URL
-          caches.open(`offline-${currentPath}`).then((cache) => {
-            const updateCache = cache.addAll(pageResources);
-
-            // Update UI to indicate success
-            updateCache.then(() => {
-              cacheButtonText.textContent = copy.worker.win;
-              cacheButton.classList.add('secondary');
-            });
-
-            // Or catch any errors if it doesn't succeed
-            updateCache.catch(() => {
-              cacheButtonText.textContent = copy.worker.fail;
-
-              setTimeout(() => {
-                cacheButtonText.textContent = copy.worker.initial;
-              }, 2000);
-            });
-          });
-        });
-      }
-    }
-    else if (!('serviceWorker' in navigator) && cacheButton) {
-      // If service worker isn't available we'd like to adjust the layout
-      cacheButton.parentNode.remove();
-      meta.classList.add('single-meta-no-sw');
-    }
-  }
-
   const header = () => {
     const el = document.querySelector('.header');
     const options = {
