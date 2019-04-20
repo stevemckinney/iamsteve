@@ -5,20 +5,20 @@
   	{if thumbnail}
   	  {thumbnail}
   	    {if medium_file_url}
-  	      <img data-src="{url:medium}" data-srcset="{url:medium-2x} 2x" class="lazyload">
-  	      <noscript><img src="{url:medium}" srcset="{url:medium-2x} 2x"></noscript>
+  	      <img data-src="{url:medium}" data-srcset="{url:medium-2x} 2x" role="presentation" class="lazyload">
+  	      <noscript><img src="{url:medium}" srcset="{url:medium-2x} 2x" role="presentation"></noscript>
         {if:else}
-          <img data-src="{url}" class="lazyload">
-          <noscript><img src="{url}"></noscript>
+          <img data-src="{url}" role="presentation" class="lazyload">
+          <noscript><img src="{url}" role="presentation"></noscript>
         {/if}
       {/thumbnail}
     {if:else}
   	  {categories channel="blog" limit="1"}
         {if category_id == 7}
-          <img data-src="{global:theme_url}/dist/images/{design}" class="lazyload">
-          <noscript><img src="{global:theme_url}/dist/images/{design}"></noscript>
+          <img data-src="{global:theme_url}/dist/images/{design}" role="presentation" class="lazyload">
+          <noscript><img src="{global:theme_url}/dist/images/{design}" role="presentation"></noscript>
         {if:else}
-          <img data-src="{global:theme_url}/dist/images/{code}" class="lazyload">
+          <img data-src="{global:theme_url}/dist/images/{code}" role="presentation" class="lazyload">
           <noscript><img src="{global:theme_url}/dist/images/{code}"></noscript>
         {/if}
       {/categories}
