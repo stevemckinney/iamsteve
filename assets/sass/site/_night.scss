@@ -1,2 +1,40 @@
 // @todo: Night mode
 .night {}
+
+
+body,
+.entry-content,
+.entry-image,
+.footer,
+.subscribe,
+.row-normal {
+  background-color: mix($warm, $black, 20%) !important; }
+
+.entry-image img {
+  mix-blend-mode: overlay; }
+
+.primary .fill-s1 {
+  fill: black;
+}
+
+.fill-white {
+  fill: black;
+}
+
+.warm-l3 {
+  color: $primary !important;
+
+  .fill-s1 {
+    fill: black;
+  }
+}
+
+.entry-content {
+  p, li, a {
+    color: $warm-l1;
+  }
+
+  h2,h3,h4,h5 {
+    color: $primary-l2;
+  }
+}
