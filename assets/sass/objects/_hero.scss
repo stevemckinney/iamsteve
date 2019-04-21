@@ -5,12 +5,8 @@
   display: flex;
   flex-flow: column;
   justify-content: flex-end;
-
-//   display: grid;
-//   grid-template-columns: #{unquote("[col] 1fr [col] 1fr [col] 1fr [col] 1fr")};
-//   grid-template-rows: #{unquote("[row] 1fr [row] 2fr")};
-//   grid-gap: $line;
   padding-top: $line*2.5;
+  min-height: 464px;
 
   @include breakpoint($c) {
     padding-top: 96px + $line; }
