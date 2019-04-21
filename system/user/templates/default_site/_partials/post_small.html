@@ -5,8 +5,8 @@
   	{if thumbnail}
   	  {thumbnail}
   	    {if small_file_url}
-  	      <img data-src="{url:small}" data-srcset="{url:small-2x} 2x" role="presentation" class="lazyload">
-  	      <noscript><img src="{url:small}" srcset="{url:small-2x} 2x" role="presentation"></noscript>
+  	      <img data-src="{url:small}" data-srcset="{url:small-2x} 2x" alt role="presentation" class="lazyload">
+  	      <noscript><img src="{url:small}" srcset="{url:small-2x} 2x" alt role="presentation"></noscript>
         {if:else}
           <img data-src="{url}" class="lazyload">
           <noscript><img src="{url}"></noscript>
@@ -15,11 +15,11 @@
   	{if:else}
   	  {categories channel="blog" limit="1"}
         {if category_id == 7}
-          <img data-src="{global:theme_url}/dist/images/{design}" role="presentation" class="lazyload">
-          <noscript><img src="{global:theme_url}/dist/images/{design}" role="presentation"></noscript>
+          <img data-src="{global:theme_url}/dist/images/{design}" alt role="presentation" class="lazyload">
+          <noscript><img src="{global:theme_url}/dist/images/{design}" alt role="presentation"></noscript>
         {if:else}
-          <img data-src="{global:theme_url}/dist/images/{code}" role="presentation" class="lazyload">
-          <noscript><img src="{global:theme_url}/dist/images/{code}" role="presentation"></noscript>
+          <img data-src="{global:theme_url}/dist/images/{code}" alt role="presentation" class="lazyload">
+          <noscript><img src="{global:theme_url}/dist/images/{code}" alt role="presentation"></noscript>
         {/if}
       {/categories}
   	{/if}
