@@ -1,5 +1,7 @@
 // @todo: Night mode
-.night {}
+@media (prefers-color-scheme: dark) {
+
+}
 
 body,
 .entry-content,

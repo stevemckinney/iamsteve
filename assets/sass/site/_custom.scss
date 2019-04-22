@@ -1,13 +1,25 @@
+// Setup a mixin for containing themed variables
+@mixin theme($theme: day) {
+  // Day
+  @if ($theme = day) {
+
+  }
+
+  // Night
+  @elseif ($theme = night) {
+    --primary: $primary;
+  }
+}
+
 :root {
-  // Colour: primary
-  --primary: #FD7F71;
+  // Remains the same regardless of theme
+  --primary: $primary;
+  --secondary: $secondary;
+  --tertiary: $tertiary;
 
-  // Colour: secondary
-  --secondary: #34CAA4;
+  @include theme(day);
+}
 
-  // Colour: tertiary
-  --teriary: #FEDA75;
-  
-  // Other
-  --black: #000; 
+.night {
+  @include theme(night);
 }
