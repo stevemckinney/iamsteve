@@ -1,3 +1,8 @@
+{exp:cookie:set name="css" value="true" expire="1209600"}
+{!--
+  {exp:cookie:set name="fonts-stage-1" value="true" expire="1209600"}
+  {exp:cookie:set name="fonts-stage-2" value="true" expire="1209600"}
+--}
 <!DOCTYPE html>
 {if '{exp:cookie:get name="fonts-stage-1"}'}
 <html lang="en" class="no-js fonts-stage-1 fonts-stage-2">
@@ -15,6 +20,7 @@
     <meta name="p:domain_verify" content="eb06e0afbeef975e38f107fa8bcac7b5">
 
     {!-- PWA / performance --}
+    <link rel="dns-prefetch" href="https://use.typekit.net">
     <link rel="manifest" href="{site_url}manifest.json">
     <meta name="theme-color" content="#543243">
 

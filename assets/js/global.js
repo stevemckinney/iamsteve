@@ -80,7 +80,12 @@ const iamsteve = (function iamsteve() {
 
           // Add images to the array
           for (const image of imageArray) {
-            pageResources.push(image.src);
+            if (image.hasAttribute('src')) {
+              pageResources.push(image.src);
+            }
+            else {
+              pageResources.push(image.dataset.src);
+            }
           }
 
           // Open the unique cache for this URL
