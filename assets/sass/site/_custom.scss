@@ -1,12 +1,12 @@
 // Setup a mixin for containing themed variables
 @mixin theme($theme: day) {
   // Day
-  @if ($theme = day) {
+  @if $theme == day {
 
   }
 
   // Night
-  @elseif ($theme = night) {
+  @else if $theme == night {
     --primary: $primary;
   }
 }
