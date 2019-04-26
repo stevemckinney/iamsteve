@@ -5,8 +5,7 @@
  *
  * @package             Stash
  * @author              Mark Croxton (mcroxton@hallmark-design.co.uk)
- * @copyright           Copyright (c) 2014 Hallmark Design
- * @license             http://creativecommons.org/licenses/by-nc-sa/3.0/
+ * @copyright           Copyright (c) 2019 Hallmark Design
  * @link                http://hallmark-design.co.uk
  */
 
@@ -803,6 +802,17 @@ class Stash_model extends CI_Model {
 
         // Check the supplied cache path exists
         if ( ! file_exists($path))
+        {
+            return FALSE;
+        }
+
+        // Blacklist of characters we don't want to allow as directory names in the cache
+        $bad = ee()->config->item('stash_static_character_blacklist')     
+                                    ? (array) ee()->config->item('stash_static_character_blacklist') 
+                                    : array(LD, RD, '<', '>', ':', '"', '\\', '|', '*', '.');
+        $new_uri = str_replace($bad, '', $uri);
+
+        if ($uri != $new_uri) 
         {
             return FALSE;
         }

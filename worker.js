@@ -3,7 +3,7 @@
 // You have to supply a name for your cache, this will
 // allow us to remove an old one to avoid hitting disk
 // space limits and displaying old resources
-var cacheName = 'v10';
+var cacheName = 'v3';
 
 // Assets to cache
 var assetsToCache = [
@@ -30,10 +30,10 @@ self.addEventListener('install', function(event) {
     // Create cache with the name supplied above and
     // return a promise for it
     caches.open(cacheName).then(function(cache) {
-      // Important to `return` the promise here to have `skipWaiting()`
-      // fire after the cache has been updated.
-      return cache.addAll(assetsToCache);
-    }).then(function() {
+      Promise.all(
+        assetsToCache.map(function(url) { cache.add(url) })
+      );
+    });.then(function() {
       // `skipWaiting()` forces the waiting ServiceWorker to become the
       // active ServiceWorker, triggering the `onactivate` event.
       // Together with `Clients.claim()` this allows a worker to take effect
@@ -71,14 +71,6 @@ self.addEventListener('fetch', function(event) {
       }).catch(function() {
         // If there is no internet connection, try to match the request
         // to some of our cached resources
-        var images = document.querySelectorAll('img');
-
-        images.forEach(function(image) {
-          image.onerror = function() {
-      			this.parentNode.removeChild(this);
-          }
-        });
-
         return cache.match(event.request);
       })
     })
