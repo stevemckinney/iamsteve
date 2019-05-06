@@ -1,25 +1,73 @@
 // Setup a mixin for containing themed variables
 @mixin theme($theme: day) {
   // Day
-  @if $theme == day {
+  @if $theme == day or $theme == light {
 
   }
 
   // Night
-  @else if $theme == night {
-    --primary: $primary;
-  }
-}
+  @else if $theme == night or $theme == dark {
+    // Primary
+    --primary: #{$primary};
+    --primary-d1: #{$primary-d1};
+    --primary-d2: #{$primary-d2};
+    --primary-l1: #{$primary-l1};
+    --primary-l2: #{$primary-l2};
+    --primary-l3: #{$primary-l3};
+    --primary-l4: #{$primary-d1}; } }
 
 :root {
-  // Remains the same regardless of theme
-  --primary: $primary;
-  --secondary: $secondary;
-  --tertiary: $tertiary;
+  // Primary
+  --primary: #{$primary};
+  --primary-d1: #{$primary-d1};
+  --primary-d2: #{$primary-d2};
+  --primary-l1: #{$primary-l1};
+  --primary-l2: #{$primary-l2};
+  --primary-l3: #{$primary-l3};
+  --primary-l4: #{$primary-l4};
 
-  @include theme(day);
-}
+  // Secondary
+  --secondary: #{$secondary};
+  --secondary-d1: #{$secondary-d1};
+  --secondary-l1: #{$secondary-l1};
+  --secondary-l2: #{$secondary-l2};
+  --secondary-l3: #{$secondary-l3};
+  --secondary-l4: #{$secondary-l4};
 
-.night {
-  @include theme(night);
-}
+  // Tertiary
+  --tertiary: #{$tertiary};
+  --tertiary-d1: #{$tertiary-d1};
+  --tertiary-d2: #{$tertiary-d2};
+  --tertiary-dc: #{$tertiary-dc};
+  --tertiary-l1: #{$tertiary-l1};
+  --tertiary-l2: #{$tertiary-l2};
+  --tertiary-l3: #{$tertiary-l3};
+  --tertiary-l4: #{$tertiary-l4};
+
+  // Alternate: dark blue
+  --alternate: #{$alternate};
+  --alternate-l1: #{$alternate-l1};
+  --alternate-l2: #{$alternate-l2};
+  --alternate-l3: #{$alternate-l3};
+  --alternate-l4: #{$alternate-l4};
+
+  // Warm: dark purple > light purple
+  --warm: #{$warm};
+  --warm-l1: #{$warm-l1};
+  --warm-l2: #{$warm-l2};
+  --warm-l3: #{$warm-l3};
+
+  // Cool: dark blue > light blue
+  --cool: #{$cool};
+  --cool-l1: #{$cool-l1};
+  --cool-l2: #{$cool-l2};
+  --cool-l3: #{$cool-l3};
+  --cool-l4: #{$cool-l4};
+
+  // Neutral: cool purpley greys
+  --neutral: #{$neutral};
+  --neutral-l1: #{$neutral-l1};
+  --neutral-l2: #{$neutral-l2};
+
+  // Misc specifics
+  --background: #{$white}; }
