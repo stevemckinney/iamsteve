@@ -1,65 +1,67 @@
 // @todo: Night mode
 // prefers-color-scheme: dark
-@media (max-width: 9999px) {
-  .page-single {
-    &,
-    .tabbar,
-    .entry-content {
-      background-color: mix($warm, $black, 20%) !important; }
+.page-single {
+&,
+.tabbar,
+.entry-content {
+  background-color: mix($warm, $black, 20%) !important; }
 
 
-    .entry-image,
-    .footer,
-    .row-normal,
-    .subscribe {}
+.entry-image,
+.footer,
+.row-normal,
+.subscribe {}
 
-    .header {
-      @include breakpoint($c-max) {
-        background-color: mix($warm, $black, 20%) !important;
-        box-shadow: 0 1px rgba($warm, .4); } }
+.header {
+  @include breakpoint($c-max) {
+    background-color: mix($warm, $black, 20%) !important;
+    box-shadow: 0 1px rgba($warm, .4); } }
 
-    .tabbar {
-      @include breakpoint($c-max) {
-        background-color: mix($warm, $black, 20%) !important;
-        box-shadow: 0 -1px rgba($warm, .4); } }
+.tabbar {
+  @include breakpoint($c-max) {
+    background-color: mix($warm, $black, 20%) !important;
+    box-shadow: 0 -1px rgba($warm, .4); } }
 
-    .tabbar-item.active:before {
-      background-color: transparent !important; }
+.tabbar-item.active:before {
+  background-color: transparent !important; }
 
-    .primary .fill-s1 {
-      fill: mix($primary-l2, $black, 30%); }
+.primary .fill-s1 {
+  fill: mix($primary-l2, $black, 30%); }
 
-    .fill-white {
-      fill: mix($warm, $black, 10%); }
+.fill-white {
+  fill: mix($warm, $black, 10%); }
 
-    .primary,
-    .icon,
-    .warm-l3,
-    .warm-l2 {
-      color: $primary-l3;
+.primary,
+.icon,
+.warm-l3,
+.warm-l2 {
+  color: $primary-l3;
 
-      .fill-s1 {
-        fill: mix($primary-l2, $black, 30%); }
+  .fill-s1 {
+    fill: mix($primary-l2, $black, 30%); }
 
-      .fill-white {
-        fill: mix($primary-l2, $black, 20%); } }
+  .fill-white {
+    fill: mix($primary-l2, $black, 20%); } }
 
-    .single-meta .meta-item {
-      color: $primary-l2; }
+.single-meta .meta-item {
+  color: $primary-l2; }
 
-    .warm-l3 {
-      color: $warm; }
+.warm-l3 {
+  color: $warm; }
 
-    .single-meta .meta-item {
-      border-color: mix($primary-l2, $black, 20%) !important; }
+.single-meta .meta-item {
+  border-color: mix($primary-l2, $black, 20%) !important; }
 
-    .entry-content {
-      figcaption,
-      p, li, p a {
-        color: mix($primary-l2, $black, 70%); }
+.entry-content {
+	table tr {
+		background-color: mix($warm, $black, 20%);
+	}
+  figcaption,
+  p, li, p a {
+    color: mix($primary-l2, $black, 70%); }
 
-      p a {
-        background-image: linear-gradient(to right, mix($warm, $black, 40%), $warm, $warm); }
+  p a {
+    background-image: linear-gradient(to right, mix($warm, $black, 40%), $warm, $warm); }
 
-      h2, h3, h4, h5 {
-        color: $primary-l3; } } } }
+  h2, h3, h4, h5 {
+    color: $primary-l3; } } }
