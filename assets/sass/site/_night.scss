@@ -54,8 +54,11 @@
 
 .entry-content {
 	table tr {
-		background-color: mix($warm, $black, 20%);
-	}
+		background-color: mix($warm, $black, 20%); }
+
+  table tr:hover {
+    background-color: mix($warm, $black, 30%); }
+
   figcaption,
   p, li, p a {
     color: mix($primary-l2, $black, 70%); }
