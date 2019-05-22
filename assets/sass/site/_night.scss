@@ -4,7 +4,7 @@ $dark-fg-01: mix($primary-l2, $black, 20%);
 $dark-fg-02: mix($primary-l2, $black, 30%);
 $dark-fg-03: mix($primary-l3, $black, 70%);
 
-$dark-bg-01: mix($warm, $black, 20%);
+$dark-bg-01: mix($warm, $black, 30%);
 $dark-bg-02: mix($warm, $black, 10%);
 
 .page-single .entry-next a {
@@ -42,10 +42,11 @@ $dark-bg-02: mix($warm, $black, 10%);
   .fill-white {
     fill: $dark-bg-02; }
 
+  .primary,
   .icon,
   .warm-l3,
   .warm-l2 {
-    color: $secondary;
+    color: $dark-fg-03;
 
     .fill-s1 {
       fill: $dark-fg-02; }
@@ -58,8 +59,8 @@ $dark-bg-02: mix($warm, $black, 10%);
 
   // Meta
   .single-meta .meta-item.meta-item {
-    color: $primary-l2;
-    border-color: rgba($primary-l2, .1); }
+    color: $dark-fg-03;
+    border-color: mix($primary-l2, $dark-bg-01, 5%); }
 
   // Content
   .entry-content {
@@ -93,7 +94,7 @@ $dark-bg-02: mix($warm, $black, 10%);
         background-image: linear-gradient(to right, $warm, $primary, $primary); } }
 
     h2, h3, h4, h5 {
-      color: $primary; } }
+      color: $dark-fg-03; } }
 
     // Next article
     .dashes span {
