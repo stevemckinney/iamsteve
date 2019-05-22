@@ -13,6 +13,11 @@ $dark-bg-02: mix($warm, $black, 10%);
 .page-single {
 
   // Structure
+  &,
+  .tabbar,
+  .entry-content {
+    background-color: $dark-bg-01 !important; }
+
   .header {
     @include breakpoint($c-max) {
       background-color: $dark-bg-01 !important; } }
@@ -24,11 +29,6 @@ $dark-bg-02: mix($warm, $black, 10%);
 
   .tabbar-item.active:before {
     background-color: transparent !important; }
-
-  &,
-  .tabbar,
-  .entry-content {
-    background-color: $dark-bg-01 !important; }
 
   .entry-image,
   .footer,
