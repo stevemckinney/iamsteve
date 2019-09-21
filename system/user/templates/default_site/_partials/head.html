@@ -70,27 +70,26 @@
             "name": "Blog"
           }
         },
-        {exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
-          {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "item": {
-                "@id": "{path='blog/index'}",
-                "name": "{category_name}"
-              }
-            },
-        	{/categories}
-        {/exp:channel:entries}
+      {exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+        {categories channel="blog" style="linear" parent_only="yes" limit="1"}
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@id": "{path='blog/index'}",
+              "name": "{category_name}"
+            }
+          },
+      	{/categories}
         {
           "@type": "ListItem",
           "position": 4,
           "item": {
-            "@id": "{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title_permalink='blog/entry'}{/exp:channel:entries}",
-            "name": "{embed:entry_title}"
+            "@id": "{title_permalink='blog/entry'}",
+            "name": "{title}"
           }
         }
-
+      {/exp:channel:entries}
       {if:elseif segment_2 == "view"}
         {
           "@type": "ListItem",
