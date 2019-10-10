@@ -33,7 +33,7 @@ self.addEventListener('install', function(event) {
       Promise.all(
         assetsToCache.map(function(url) { cache.add(url) })
       );
-    });.then(function() {
+    }).then(function() {
       // `skipWaiting()` forces the waiting ServiceWorker to become the
       // active ServiceWorker, triggering the `onactivate` event.
       // Together with `Clients.claim()` this allows a worker to take effect
