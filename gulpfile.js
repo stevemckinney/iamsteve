@@ -47,38 +47,65 @@ const sourcemaps = require('gulp-sourcemaps');
 
 // CSS
 const sass = require('gulp-sass');
+/*
+const importer = require('node-sass-globbing');
 const prefix = require('autoprefixer');
-const minify = require('cssnano');
+*/
+const cssnano = require('gulp-cssnano');
 
 // SVG
-const svgmin = require('gulp-svgmin');
+// const svgmin = require('gulp-svgmin');
 
 // BrowserSync
-const browserSync = require('browser-sync');
-
+const browserSync = require('browser-sync').create();
 
 /**
- * Gulp Packages
+ * Browsersync
+ * see: https://www.browsersync.io/docs/options/
+ **/
+const browserSyncOptions = {
+  proxy: 'http://iamsteve.dev',
+  injectChanges: true
+}
+
+// BrowserSync
+const reloader = (done) => {
+  browserSync.reload();
+
+  done();
+}
+
+const serve = (done) => {
+  browserSync.init([path.input], browserSyncOptions);
+
+  done();
+}
+
+/**
+ * CSS
  */
-var css = function (done) {
+const sass_config = {
+  outputStyle: 'compressed',
+  sourceComments: false,
+  includePaths: [
+    './node_modules/breakpoint-sass/stylesheets/'
+  ]
+};
+
+const css = (done) => {
 
 	// Make sure this feature is activated before running
 	if (!settings.css) return done();
 
-	// Run tasks on all Sass files
 	return src(path.css.src)
 	  .pipe(sourcemaps.init())
-		.pipe(sass({
-			outputStyle: 'compressed',
-			sourceComments: false
-		}))
 		.pipe(sass(sass_config).on('error', sass.logError))
 		.pipe(cssnano())
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(path.css.dist))
 
 	done();
-};
+}
 
 // Watch
 const watchFiles = (done) => {
@@ -97,3 +124,4 @@ exports.default = series(
 );
 
 exports.watch = series(exports.default);
+exports.serve = series(serve);
