@@ -17,30 +17,27 @@
 // Colour
 // ---------------------------
 $text-color-helpers: (
-	"white": $white,
-	primary: $primary,
-	primary-l2: $primary-l2,
-	secondary: $secondary,
-	secondary-l1: $secondary-l1,
-	tertiary: $tertiary,
-	neutral: $neutral,
-	neutral-l1: $neutral-l1,
-	neutral-l2: $neutral-l2,
-	neutral-l3: $neutral-l3,
-	alternate: $alternate,
-	warm: $warm,
-	warm-l1: $warm-l1,
-	warm-l2: $warm-l2,
-	warm-l3: #bbadb4
+	"white": var(--white),
+	primary: var(--primary),
+	primary-l2: var(--primary-l2),
+	secondary: var(--secondary),
+	secondary-l1: var(--secondary-l1),
+	tertiary: var(--tertiary),
+	neutral: var(--neutral),
+	neutral-l1: var(--neutral-l1),
+	neutral-l2: var(--neutral-l2),
+	neutral-l3: var(--neutral-l3),
+	alternate: var(--alternate),
+	warm: var(--warm),
+	warm-l1: var(--warm-l1),
+	warm-l2: var(--warm-l2),
+	warm-l3: var(--warm-l3),
+	warm-l4: war(--warm-l4)
 );
 
 @each $name, $color in $text-color-helpers {
 	.#{$name} { color: $color; }
 	.#{$name}-hover:hover { color: $color; } }
-
-.secondary-hover:hover,
-.secondary-hover:focus {
-  color: $secondary; }
 
 // General elements
 // ---------------------------
@@ -70,7 +67,10 @@ address { font-style: normal; }
     bottom: 0; }
 
   &.secondary:after {
-    background: $secondary-l3; }
+    background: $secondary-l3;
+
+    @media (prefers-colour-scheme: dark) {
+      background: $secondary-d1; } }
 
   &.primary:after {
     background: $tertiary-l3; } }

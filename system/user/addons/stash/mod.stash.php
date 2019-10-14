@@ -7,8 +7,7 @@ require_once PATH_THIRD . 'stash/config.php';
  *
  * @package             Stash
  * @author              Mark Croxton (mcroxton@hallmark-design.co.uk)
- * @copyright           Copyright (c) 2014 Hallmark Design
- * @license             http://creativecommons.org/licenses/by-nc-sa/3.0/
+ * @copyright           Copyright (c) 2019 Hallmark Design
  * @link                http://hallmark-design.co.uk
  */
 
@@ -285,12 +284,14 @@ class Stash {
         // -------------------------------------
         if (ee()->extensions->active_hook('stash_load_template_class') === TRUE)
         {
-            ee()->TMPL = ee()->extensions->call('stash_load_template_class');
+            ee()->remove('TMPL');
+            ee()->set('TMPL', ee()->extensions->call('stash_load_template_class'));
         } 
         else 
         {
             require_once APPPATH.'libraries/Template.php';
-            ee()->TMPL = new EE_Template();
+            ee()->remove('TMPL');
+            ee()->set('TMPL', new EE_Template());
             ee()->TMPL->modules = array('stash');
         }
     }
@@ -424,7 +425,7 @@ class Stash {
         
         if ( !! $name)
         {
-            if ($context !== NULL && count( explode(':', $name) == 1 ) )
+            if ($context !== NULL && count( explode(':', $name)) == 1 )
             {
                 $name = $context . ':' . $name;
                 ee()->TMPL->tagparams['context'] = NULL;
@@ -723,7 +724,15 @@ class Stash {
                 // this permits dynamic tag pairs, e.g. {stash:{key}}{/stash:{key}} 
                 if ($this->parse_complete)
                 {
-                    $tag_vars = ee()->functions->assign_variables(ee()->TMPL->tagdata);
+                    if (version_compare(APP_VER, '4.0', '>=')) 
+                    { 
+                        $tag_vars = ee('Variables/Parser')->extractVariables(ee()->TMPL->tagdata); 
+                    }
+                    else
+                    {
+                        $tag_vars = ee()->functions->assign_variables(ee()->TMPL->tagdata);
+                    }
+                    
                     $tag_pairs = $tag_vars['var_pair'];
                 }
                 else
@@ -765,7 +774,7 @@ class Stash {
                 self::$bundles[$bundle][$name] = $this->_stash[$name];
             }
 
-            ee()->TMPL->log_item('Stash: SET '. $name . ' to value ' . $this->_stash[$name]);  
+            ee()->TMPL->log_item('Stash: SET '. $name . ' to value: ' . '<textarea rows="6" cols="60" style="width:100%;">' . htmlentities($this->_stash[$name]) . '</textarea>');  
         }
         
         if ($output)
@@ -838,7 +847,7 @@ class Stash {
         $context = ee()->TMPL->fetch_param('context', NULL);
         $global_name = $name;
         
-        if ($context !== NULL && count( explode(':', $name) == 1 ) )
+        if ($context !== NULL && count( explode(':', $name)) == 1 )
         {
             $name = $context . ':' . $name;
             ee()->TMPL->tagparams['context'] = NULL;
@@ -1063,7 +1072,7 @@ class Stash {
             $value = $this->set();  
         }
             
-        ee()->TMPL->log_item('Stash: RETRIEVED '. $name . ' with value ' . $value);
+        ee()->TMPL->log_item('Stash: RETRIEVED '. $name . ' with value: <textarea rows="6" cols="60" style="width:100%;">' . htmlentities($value) . '</textarea>');
         
         // save to bundle
         if ($bundle !== NULL)
@@ -1508,7 +1517,7 @@ class Stash {
         
         if ( !! $name)
         {
-            if ($context !== NULL && count( explode(':', $name) == 1 ) )
+            if ($context !== NULL && count( explode(':', $name)) == 1 )
             {
                 $name = $context . ':' . $name;
             }
@@ -1718,7 +1727,7 @@ class Stash {
         if ( $this->not_empty(ee()->TMPL->tagdata))
         {
             // does the list really exist?
-            if ($context !== NULL && count( explode(':', $name) == 1 ) )
+            if ($context !== NULL && count( explode(':', $name)) == 1 )
             {
                 $name = $context . ':' . $name;
             }
@@ -2239,7 +2248,7 @@ class Stash {
                     
                     // get bundle var
                     $bundle_entry_key = $bundle;
-                    if ($bundle !== NULL && count( explode(':', $bundle) == 1 ) )
+                    if ($bundle !== NULL && count( explode(':', $bundle)) == 1 )
                     {
                         $bundle_entry_key = $context . ':' . $bundle;
                     }
@@ -3169,7 +3178,7 @@ class Stash {
             else
             {
                 // a named variable
-                if ($context !== NULL && count( explode(':', $name) == 1 ))
+                if ($context !== NULL && count( explode(':', $name)) == 1 )
                 {
                     $name = $context . ':' . $name;
                 }
@@ -5098,7 +5107,7 @@ class Stash {
      */ 
     private function _set_stash_cookie($unique_id)
     { 
-        $cookie_data = serialize(array(
+        $cookie_data = json_encode(array(
            'id' => $unique_id,
            'dt' => ee()->localize->now
         ));
@@ -5121,7 +5130,7 @@ class Stash {
      */ 
     private function _get_stash_cookie()
     { 
-        $cookie_data = @unserialize(ee()->input->cookie($this->stash_cookie));
+        $cookie_data = @json_decode(ee()->input->cookie($this->stash_cookie), TRUE);
         
         if ($cookie_data !== FALSE)
         {

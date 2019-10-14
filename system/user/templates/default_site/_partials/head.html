@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+<meta name="robots" content="NOODP">
+
+>>>>>>> development
 {if segment_2 == "category"}
   <meta name="robots" content="noindex, follow">
 {/if}
@@ -32,9 +37,9 @@
           "name": "Home"
         }
       }{if segment_2},{/if}
-      
+
       {!-- Blog categories --}
-      
+
       {if segment_2 == "category"}
         {
           "@type": "ListItem",
@@ -56,9 +61,9 @@
             },
         	{/exp:channel:category_heading}
         {/exp:channel:entries}
-        
+
       {!-- Blog entries --}
-      
+
       {if:elseif segment_2 == "entry"}
         {
           "@type": "ListItem",
@@ -68,27 +73,26 @@
             "name": "Blog"
           }
         },
-        {exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"} 
-          {categories channel="blog" style="linear" parent_only="yes" limit="1"}
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "item": {
-                "@id": "{path='blog/index'}",
-                "name": "{category_name}"
-              }
-            },
-        	{/categories}
-        {/exp:channel:entries}
+      {exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
+        {categories channel="blog" style="linear" parent_only="yes" limit="1"}
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@id": "{path='blog/index'}",
+              "name": "{category_name}"
+            }
+          },
+      	{/categories}
         {
           "@type": "ListItem",
           "position": 4,
           "item": {
-            "@id": "{exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}{title_permalink='blog/entry'}{/exp:channel:entries}",
-            "name": "{embed:entry_title}"
+            "@id": "{title_permalink='blog/entry'}",
+            "name": "{title}"
           }
         }
-      
+      {/exp:channel:entries}
       {if:elseif segment_2 == "view"}
         {
           "@type": "ListItem",
@@ -108,11 +112,11 @@
             }
           }
         {/exp:channel:entries}
-      
+
       {!-- Pages --}
-      
+
       {if:elseif segment_1 != ''}
-        {
+        , {
           "@type": "ListItem",
           "position": 2,
           "item": {
@@ -146,7 +150,7 @@
     {if:else}
       <meta prefix="og:http://ogp.me/ns#" property="og:image" content="{global:theme_url}/assets/images/og.png">
     {/if}
-    
+
     {if image}
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:image" content="{image}">
@@ -201,7 +205,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@irsteve">
   <meta name="twitter:creator" content="@irsteve">
-  <meta name="twitter:description" content="iamsteve is a design & code blog. Learn to design beautiful websites, starting in Illustrator through to code.">
+  <meta name="twitter:description" content="A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS.">
   <meta name="twitter:title" content="iamsteve • design and code">
   <meta name="twitter:url" content="{site_url}">
   <meta name="twitter:image" content="{site_url}assets/images/og.png">
@@ -210,6 +214,6 @@
   <meta prefix="og:http://ogp.me/ns#" property="og:image:height" content="480">
   <meta prefix="og:http://ogp.me/ns#" property="og:url" content="{site_url}">
   <meta property="og:title" content="iamsteve • design and code">
-  <meta property="og:description" content="iamsteve is a design & code blog. Learn to design beautiful websites, starting in Illustrator through to code.">
+  <meta property="og:description" content="A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS.">
 {/if}
 {layout:head}

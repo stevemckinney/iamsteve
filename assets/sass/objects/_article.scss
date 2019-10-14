@@ -118,6 +118,7 @@
   #{headings()},
   p, ul {
     & + img,
+    & + .image-loaded,
     & + .codepen-wide .cp_embed_wrapper,
     & + .cp_embed_wrapper {
       margin-top: $line; } }
@@ -183,8 +184,7 @@
 
   @include breakpoint($aa) {
     position: absolute;
-    top: 50%;
-    transform: translateY(-48%);
+    top: em(4px);
     left: $base-px; }
 
   @include breakpoint($a) {

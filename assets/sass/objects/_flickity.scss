@@ -7,13 +7,13 @@
   padding-left: $small-outer-gutter;
 
   @include breakpoint($c) {
-    padding-left: $line; }
-
-  @include breakpoint($d) {
     padding-left: ($line*2); }
 
-  @include breakpoint($e) {
+  @include breakpoint($d) {
     padding-left: ($line*3); }
+
+  @include breakpoint($e) {
+    padding-left: ($line*4); }
 
   @include breakpoint($site-width) {
     padding-left: calc(50% - (#{$contain / 2})); } }

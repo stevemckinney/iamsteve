@@ -1,7 +1,7 @@
 // Main section
 .hero {
   position: relative;
-  background-color: $primary-l4;
+  background-color: var(--primary-l4);
   display: flex;
   flex-flow: column;
   justify-content: flex-end;
