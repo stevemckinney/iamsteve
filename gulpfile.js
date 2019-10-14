@@ -1,18 +1,9 @@
 /**
- * Settings
- * Turn on/off build features
- */
-
-var settings = {
-  css: true
-};
-
-/**
  * Paths
  */
 const path = {
-  input: 'assets/',
-  output: 'dist/',
+  src: 'assets/',
+  dist: 'dist/',
   css: {
     src: 'assets/sass/**/*.{scss,sass}',
     dist: 'dist/css/'
@@ -43,21 +34,34 @@ const path = {
  * Gulp Packages
  */
 const {gulp, src, dest, watch, series, parallel} = require('gulp');
+const del = require('gulp-del');
 const sourcemaps = require('gulp-sourcemaps');
 
 // CSS
 const sass = require('gulp-sass');
-/*
-const importer = require('node-sass-globbing');
 const prefix = require('autoprefixer');
-*/
 const cssnano = require('gulp-cssnano');
+// const importer = require('node-sass-globbing');
 
 // SVG
-// const svgmin = require('gulp-svgmin');
+const svgmin = require('gulp-svgmin');
 
 // BrowserSync
 const browserSync = require('browser-sync').create();
+
+/**
+ * Start *fresh*
+ */
+var fresh = function (done) {
+	// Clean the dist folder
+	del.sync([
+		paths.dist
+	]);
+
+	// Signal completion
+	return done();
+
+};
 
 /**
  * Browsersync
@@ -76,7 +80,7 @@ const reloader = (done) => {
 }
 
 const serve = (done) => {
-  browserSync.init([path.input], browserSyncOptions);
+  browserSync.init([path.src, path.html.src], browserSyncOptions);
 
   done();
 }
@@ -90,13 +94,9 @@ const sass_config = {
   includePaths: [
     './node_modules/breakpoint-sass/stylesheets/'
   ]
-};
+}
 
 const css = (done) => {
-
-	// Make sure this feature is activated before running
-	if (!settings.css) return done();
-
 	return src(path.css.src)
 	  .pipe(sourcemaps.init())
 		.pipe(sass(sass_config).on('error', sass.logError))
@@ -107,15 +107,64 @@ const css = (done) => {
 	done();
 }
 
-// Watch
-const watchFiles = (done) => {
-  watch(path.input, series(css));
+const prefix = (done) => {
+	src(path.css.dist)
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions'],
+			cascade: true,
+			remove: true
+		}))
+		.pipe(dest(path.css.dist))
+
+	done();
+}
+
+// Critical CSS
+const critical = (done) => {
+  critical.generate({
+    inline: false,
+    base: './',
+    src: 'http://iamsteve.dev',
+    css: [`${path.css.dist}/global.css`],
+    dimensions: [{
+      width: 414,
+      height: 738
+    }, {
+      width: 768,
+      height: 1024
+    }, {
+      width: 1680,
+      height: 1200
+    }],
+    dest: './system/user/templates/default_site/_partials/critical.html',
+    minify: true,
+    extract: false,
+    include: [
+      '.headline-b',
+      '.primary .fill-s1',
+      '.primary',
+      '.hiding'
+    ],
+    ignore: {
+      atrule: ['font-face'],
+      rule: ['.dashes']
+    }
+  });
+
+	done();
+}
+
+/**
+ * Watch
+ */
+const watching = (done) => {
+  watch(paths.src, series(exports.default, reloader));
 
   done();
 }
 
 /**
- * Runnable
+ * Run
  */
 exports.default = series(
 	parallel(
@@ -123,5 +172,10 @@ exports.default = series(
 	)
 );
 
-exports.watch = series(exports.default);
 exports.serve = series(serve);
+
+exports.watch = series(
+  exports.default,
+	serve,
+	watching
+);
