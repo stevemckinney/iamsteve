@@ -52,16 +52,11 @@ const browserSync = require('browser-sync').create();
 /**
  * Start *fresh*
  */
-var fresh = function (done) {
-	// Clean the dist folder
-	del.sync([
-		paths.dist
-	]);
+const fresh = (done) => {
+  del([path.output]);
 
-	// Signal completion
-	return done();
-
-};
+  done();
+}
 
 /**
  * Browsersync
@@ -72,13 +67,14 @@ const browserSyncOptions = {
   injectChanges: true
 }
 
-// BrowserSync
+// Reload
 const reloader = (done) => {
   browserSync.reload();
 
   done();
 }
 
+// Serve
 const serve = (done) => {
   browserSync.init([path.src, path.html.src], browserSyncOptions);
 
@@ -154,6 +150,50 @@ const critical = (done) => {
 	done();
 }
 
+// Fonts
+const fonts = (done) => {
+  src(path.fonts.src)
+  .pipe(dest(path.fonts.dist));
+
+	done();
+}
+
+/**
+ * Images
+ */
+const image = (done) => {
+  src(path.image.src)
+    .pipe(imagemin(
+      [
+        imagemin.optipng({
+          optimizationLevel: 3,
+          progressive: true,
+          interlaced: true,
+          mergePaths: false
+        })
+      ],
+    ))
+    .pipe(dest(path.image.dist));
+
+  done();
+}
+
+const svg = (done) => {
+  src(path.svg.src)
+    .pipe(imagemin([
+        imagemin.svgo({
+          plugins: [
+            { removeViewBox: false },
+            { cleanupIDs: false },
+            { mergePaths: false }
+          ]
+        })
+      ]))
+    .pipe(dest(path.svg.dist));
+
+  done();
+}
+
 /**
  * Watch
  */
@@ -168,9 +208,13 @@ const watching = (done) => {
  */
 exports.default = series(
 	parallel(
-		css
+		css,
+		svg,
+		image
 	)
 );
+
+exports.build = series(exports.default, criticalCSS);
 
 exports.serve = series(serve);
 
