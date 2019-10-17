@@ -34,16 +34,17 @@ const path = {
  * Gulp Packages
  */
 const {gulp, src, dest, watch, series, parallel} = require('gulp');
-const del = require('gulp-del');
+const del = require('del');
 const sourcemaps = require('gulp-sourcemaps');
 
 // CSS
 const sass = require('gulp-sass');
-const prefix = require('autoprefixer');
+const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 // const importer = require('node-sass-globbing');
 
-// SVG
+// Images
+const imagemin = require('gulp-imagemin');
 const svgmin = require('gulp-svgmin');
 
 // BrowserSync
@@ -161,6 +162,7 @@ const fonts = (done) => {
 /**
  * Images
  */
+// @todo: tasks do not work due to some error
 const image = (done) => {
   src(path.image.src)
     .pipe(imagemin(
@@ -198,7 +200,7 @@ const svg = (done) => {
  * Watch
  */
 const watching = (done) => {
-  watch(paths.src, series(exports.default, reloader));
+  watch(path.src, series(exports.default, reloader));
 
   done();
 }
@@ -208,18 +210,16 @@ const watching = (done) => {
  */
 exports.default = series(
 	parallel(
-		css,
-		svg,
-		image
+		css
 	)
 );
 
-exports.build = series(exports.default, criticalCSS);
+exports.build = series(exports.default, critical);
 
 exports.serve = series(serve);
 
 exports.watch = series(
   exports.default,
-	serve,
-	watching
+	watching,
+	serve
 );
