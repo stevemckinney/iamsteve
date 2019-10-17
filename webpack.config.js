@@ -25,7 +25,9 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader",
         query: {
-          presets: ['es2015-native-modules', 'es2015']
+          presets: [
+            ["es2015", { "modules": false }]
+        	]
         }
       }
     ],
