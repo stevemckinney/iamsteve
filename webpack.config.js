@@ -1,3 +1,5 @@
+// Reference article:
+// https://auralinna.blog/post/2018/setting-up-webpack-4-for-a-project
 const webpack = require('webpack');
 const path = require("path");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
