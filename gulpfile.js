@@ -34,16 +34,17 @@ const path = {
  * Gulp Packages
  */
 const {gulp, src, dest, watch, series, parallel} = require('gulp');
-const del = require('gulp-del');
+const del = require('del');
 const sourcemaps = require('gulp-sourcemaps');
 
 // CSS
 const sass = require('gulp-sass');
-const prefix = require('autoprefixer');
+const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 // const importer = require('node-sass-globbing');
 
-// SVG
+// Images
+const imagemin = require('gulp-imagemin');
 const svgmin = require('gulp-svgmin');
 
 // BrowserSync
@@ -52,16 +53,11 @@ const browserSync = require('browser-sync').create();
 /**
  * Start *fresh*
  */
-var fresh = function (done) {
-	// Clean the dist folder
-	del.sync([
-		path.dist
-	]);
+const fresh = (done) => {
+  del([path.output]);
 
-	// Signal completion
-	return done();
-
-};
+  done();
+}
 
 /**
  * Browsersync
@@ -72,13 +68,14 @@ const browserSyncOptions = {
   injectChanges: true
 }
 
-// BrowserSync
+// Reload
 const reloader = (done) => {
   browserSync.reload();
 
   done();
 }
 
+// Serve
 const serve = (done) => {
   browserSync.init([path.src, path.html.src], browserSyncOptions);
 
@@ -154,12 +151,56 @@ const critical = (done) => {
   done();
 }
 
+// Fonts
+const fonts = (done) => {
+  src(path.fonts.src)
+  .pipe(dest(path.fonts.dist));
+
+	done();
+}
+
+/**
+ * Images
+ */
+// @todo: tasks do not work due to some error
+const image = (done) => {
+  src(path.image.src)
+    .pipe(imagemin(
+      [
+        imagemin.optipng({
+          optimizationLevel: 3,
+          progressive: true,
+          interlaced: true,
+          mergePaths: false
+        })
+      ],
+    ))
+    .pipe(dest(path.image.dist));
+
+  done();
+}
+
+const svg = (done) => {
+  src(path.svg.src)
+    .pipe(imagemin([
+        imagemin.svgo({
+          plugins: [
+            { removeViewBox: false },
+            { cleanupIDs: false },
+            { mergePaths: false }
+          ]
+        })
+      ]))
+    .pipe(dest(path.svg.dist));
+
+  done();
+}
+
 /**
  * Watch
  */
 const watching = (done) => {
-  // Watch everything in src, run default & refresh the browser
-  watch(paths.src, series(exports.default, reloader));
+  watch(path.src, series(exports.default, reloader));
 
   done();
 }
@@ -173,10 +214,12 @@ exports.default = series(
 	)
 );
 
+exports.build = series(exports.default, critical);
+
 exports.serve = series(serve);
 
 exports.watch = series(
   exports.default,
-	serve,
-	watching
+	watching,
+	serve
 );
