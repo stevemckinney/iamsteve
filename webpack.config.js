@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+const path = require("path");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const nodeEnv = process.env.NODE_ENV || 'production';
 
 module.exports = {
@@ -23,31 +25,21 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-        query: {
-          presets: [
-            ["es2015", { "modules": false }]
-        	]
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
         }
-      }
-    ],
-    loaders: [
-      {
-        test: /flickity/,
-        loader: 'imports?define=>false&this=>window'
       }
     ]
   },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin()
+    ]
+  },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      output: {
-        comments: false
-      },
-      sourceMap: true
-    }),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
     })
