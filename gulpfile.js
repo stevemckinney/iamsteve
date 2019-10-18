@@ -55,7 +55,7 @@ const browserSync = require('browser-sync').create();
 var fresh = function (done) {
 	// Clean the dist folder
 	del.sync([
-		paths.dist
+		path.dist
 	]);
 
 	// Signal completion
@@ -151,13 +151,14 @@ const critical = (done) => {
     }
   });
 
-	done();
+  done();
 }
 
 /**
  * Watch
  */
 const watching = (done) => {
+  // Watch everything in src, run default & refresh the browser
   watch(paths.src, series(exports.default, reloader));
 
   done();
