@@ -1,7 +1,6 @@
 const Flickity = require('flickity');
 
 const home = (function home() {
-
   function isTouchDevice() {
     // Checks for existence in all browsers and IE 10/11 & Surface
     return 'ontouchstart' in window || navigator.maxTouchPoints;
