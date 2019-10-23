@@ -164,6 +164,7 @@ const fonts = (done) => {
  * Images
  */
 // @todo: tasks do not work due to some error
+/*
 const image = (done) => {
   src(path.image.src)
     .pipe(imagemin(
@@ -196,6 +197,7 @@ const svg = (done) => {
 
   done();
 }
+*/
 
 /**
  * Watch
@@ -211,7 +213,8 @@ const watching = (done) => {
  */
 exports.default = series(
 	parallel(
-		css
+		css,
+		fonts
 	)
 );
 
