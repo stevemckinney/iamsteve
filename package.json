@@ -1,6 +1,6 @@
 {
   "name": "iamsteve",
-  "version": "6.0.0",
+  "version": "6.7.1",
   "description": "Design and code blog",
   "main": "gulpfile.js",
   "dependencies": {
@@ -53,10 +53,12 @@
     "prettier": "^1.7.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.9",
+    "webpack-merge": "^4.2.2"
   },
   "scripts": {
-    "build": "webpack --progress --watch",
+    "dev": "webpack --progress --watch --mode development --config ./build/webpack.prod.config.js",
+    "build": "webpack --mode production --config ./build/webpack.prod.config.js",
     "webpack": "webpack"
   },
   "repository": {

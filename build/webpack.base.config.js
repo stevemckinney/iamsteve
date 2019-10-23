@@ -36,10 +36,16 @@ module.exports = {
       }
     ]
   },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin()
-    ]
+  resolve: {
+    alias: {
+      '@js': path.resolve(__dirname, '../assets/js'),
+      '@': path.resolve(__dirname, '../assets')
+    },
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, '../assets')
+    ],
+    extensions: ['.js'],
   },
   plugins: [
     new webpack.DefinePlugin({
