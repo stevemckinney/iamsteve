@@ -77,6 +77,7 @@ const reloader = (done) => {
 
 // Serve
 const serve = (done) => {
+  // Watch everything in src, run default & refresh the browser
   browserSync.init([path.src, path.html.src], browserSyncOptions);
 
   done();
