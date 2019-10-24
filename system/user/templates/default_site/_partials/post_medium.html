@@ -5,7 +5,7 @@
   	{if thumbnail}
   	  {thumbnail}
   	    {if medium_file_url}
-  	      <img data-src="{url:medium}" data-srcset="{url:medium-2x} 2x" alt role="presentation" class="lazyload">
+  	      <img data-src="{url:medium}" alt data-srcset="{url:medium-2x} 2x" alt role="presentation" class="lazyload">
   	      <noscript><img src="{url:medium}" srcset="{url:medium-2x} 2x" alt role="presentation"></noscript>
         {if:else}
           <img data-src="{url}" alt role="presentation" class="lazyload">
