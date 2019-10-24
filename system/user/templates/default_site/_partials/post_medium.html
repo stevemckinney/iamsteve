@@ -1,11 +1,11 @@
 {preload_replace:background="{image}{exp:iamsteve:background image='{url}'}{/image}"}
 
 <article class="card card-medium entry flex flex-column">
-	<a href="{title_permalink='blog/entry'}" class="card-image db mb2 mb4-b loading" style="background-color: {if image}{background}{if:else}{color}{/if}">
+	<a href="{title_permalink='blog/entry'}" class="card-image db mb2 mb4-b loading" style="background-color: {if image}{background}{if:else}{color}{/if}" aria-label="Read {title}">
   	{if thumbnail}
   	  {thumbnail}
   	    {if medium_file_url}
-  	      <img data-src="{url:medium}" data-srcset="{url:medium-2x} 2x" alt role="presentation" class="lazyload">
+  	      <img data-src="{url:medium}" alt data-srcset="{url:medium-2x} 2x" alt role="presentation" class="lazyload">
   	      <noscript><img src="{url:medium}" srcset="{url:medium-2x} 2x" alt role="presentation"></noscript>
         {if:else}
           <img data-src="{url}" alt role="presentation" class="lazyload">
@@ -66,7 +66,7 @@
   	  </div>
 -->
     {/if}
-    <div class="visuallyhidden">
+    <div class="visuallyhidden" aria-hidden="true">
       <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
       <time datetime="{edit_date format='%Y-%m-%dT%H:%i:%s%O'}" class="updated">
         {edit_date format="%Y/%m/%d"}

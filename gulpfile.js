@@ -1,31 +1,9 @@
-const {gulp, src, dest, watch, series, parallel} = require('gulp');
-const del = require('del');
-const plumber = require('gulp-plumber');
-const order = require('gulp-order');
-const rename = require('gulp-rename');
-const sass = require('gulp-sass');
-const postcss = require('gulp-postcss');
-const purgecss = require('gulp-purgecss');
-const autoprefixer = require('gulp-autoprefixer');
-const cssnano = require('gulp-cssnano');
-const sourcemaps = require('gulp-sourcemaps');
-const browserSync = require('browser-sync').create();
-const reload = browserSync.reload;
-const uglify = require('gulp-uglify');
-const imagemin = require('gulp-imagemin');
-const cache = require('gulp-cache');
-const concat = require('gulp-concat');
-const critical = require('critical');
-
-const importer = require('node-sass-globbing');
-const glob = require('glob');
-/*
-const gulpicon = require('gulpicon/tasks/gulpicon');
-*/
-
+/**
+ * Paths
+ */
 const path = {
-  input: 'assets/',
-  output: 'dist/',
+  src: 'assets/',
+  dist: 'dist/',
   css: {
     src: 'assets/sass/**/*.{scss,sass}',
     dist: 'dist/css/'
@@ -52,72 +30,73 @@ const path = {
   node_modules: './node_modules'
 }
 
-// browser-sync watched files
-// automatically reloads the page when files changed
-const browserSyncWatchFiles = [
-  path.css.dist,
-  path.js.src,
-  path.html.src
-];
+/**
+ * Gulp Packages
+ */
+const {gulp, src, dest, watch, series, parallel} = require('gulp');
+const del = require('del');
+const sourcemaps = require('gulp-sourcemaps');
 
-// browser-sync options
-// see: https://www.browsersync.io/docs/options/
+// CSS
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const cssnano = require('gulp-cssnano');
+// const importer = require('node-sass-globbing');
+
+// Images
+const imagemin = require('gulp-imagemin');
+const svgmin = require('gulp-svgmin');
+
+// BrowserSync
+const browserSync = require('browser-sync').create();
+
+/**
+ * Start *fresh*
+ */
+const fresh = (done) => {
+  del([path.output]);
+
+  done();
+}
+
+/**
+ * Browsersync
+ * see: https://www.browsersync.io/docs/options/
+ **/
 const browserSyncOptions = {
   proxy: 'http://iamsteve.dev',
   injectChanges: true
 }
 
-// BrowserSync
+// Reload
 const reloader = (done) => {
   browserSync.reload();
 
   done();
 }
 
+// Serve
 const serve = (done) => {
-  browserSync.init(browserSyncWatchFiles, browserSyncOptions);
+  // Watch everything in src, run default & refresh the browser
+  browserSync.init([path.src, path.html.src], browserSyncOptions);
 
   done();
 }
 
 /**
- * Tasks
+ * CSS
  */
-
-// Start fresh and empty the '/dist' folder
-const clean = () => del([path.output]);
-
-// CSS
-sass.compiler = require('node-sass');
-
-const css = (done) => {
-	src(path.css.src)
-  	.pipe(sourcemaps.init())
-		.pipe(sass({
-			outputStyle: 'expanded',
-			sourceComments: false
-		}))
-		.pipe(sass().on('error', sass.logError))
-		.pipe(sourcemaps.write('./'))
-		.pipe(dest(path.css.dist));
-
-	done();
-}
-
 const sass_config = {
-  importer,
+  outputStyle: 'compressed',
+  sourceComments: false,
   includePaths: [
     './node_modules/breakpoint-sass/stylesheets/'
   ]
-};
+}
 
-const cssBuild = (done) => {
-	src(path.css.src)
+const css = (done) => {
+	return src(path.css.src)
 	  .pipe(sourcemaps.init())
-		.pipe(sass({
-			outputStyle: 'compressed',
-			sourceComments: false
-		}))
 		.pipe(sass(sass_config).on('error', sass.logError))
 		.pipe(cssnano())
 		.pipe(sourcemaps.write('./'))
@@ -138,30 +117,16 @@ const prefix = (done) => {
 	done();
 }
 
-// Clean unused CSS using uncss
-const cleanCSS = (done) => {
-  src(`${path.css.dist}/global.css`)
-    .pipe(
-      purgecss({
-        content: [path.html.src, path.js.src],
-        css: [`${path.css.dist}/global.css`]
-      })
-    )
-    .pipe(dest(path.css.dist))
-
-  done();
-}
-
 // Critical CSS
-const criticalCSS = (done) => {
+const critical = (done) => {
   critical.generate({
     inline: false,
     base: './',
     src: 'http://iamsteve.dev',
     css: [`${path.css.dist}/global.css`],
     dimensions: [{
-      width: 320,
-      height: 480
+      width: 414,
+      height: 738
     }, {
       width: 768,
       height: 1024
@@ -184,7 +149,7 @@ const criticalCSS = (done) => {
     }
   });
 
-	done();
+  done();
 }
 
 // Fonts
@@ -195,7 +160,11 @@ const fonts = (done) => {
 	done();
 }
 
-// Images
+/**
+ * Images
+ */
+// @todo: tasks do not work due to some error
+/*
 const image = (done) => {
   src(path.image.src)
     .pipe(imagemin(
@@ -228,26 +197,33 @@ const svg = (done) => {
 
   done();
 }
+*/
 
-// Watch
-const watchFiles = (done) => {
-  watch(path.css.src, series(css, cleanCSS));
-  watch(path.js.src);
-  watch(path.html.src, series(reloader));
+/**
+ * Watch
+ */
+const watching = (done) => {
+  watch(path.src, series(exports.default, reloader));
 
   done();
 }
 
 /**
- * Runnable
+ * Run
  */
-exports.watch = series(watchFiles);
-exports.build = series(cssBuild, prefix, criticalCSS, parallel(fonts, svg, image));
-exports.buildCSS = series(cssBuild, prefix, criticalCSS);
-exports.clean = series(clean);
-exports.critical = series(criticalCSS);
-exports.fonts = series(fonts);
-exports.autoprefixer = series(prefix);
-exports.imageminify = parallel(image, svg);
-exports.cleaner = parallel(cleanCSS);
-exports.serve = serve;
+exports.default = series(
+	parallel(
+		css,
+		fonts
+	)
+);
+
+exports.build = series(exports.default, critical);
+
+exports.serve = series(serve);
+
+exports.watch = series(
+  exports.default,
+	watching,
+	serve
+);
