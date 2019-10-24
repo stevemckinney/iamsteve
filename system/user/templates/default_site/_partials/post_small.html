@@ -1,7 +1,7 @@
 {preload_replace:background="{image}{exp:iamsteve:background image='{url}'}{/image}"}
 
 <article class="card card-small">
-	<a href="{title_permalink='blog/entry'}" class="card-image db mb2 loading" style="background-color: {if image}{background}{if:else}{color}{/if}">
+	<a href="{title_permalink='blog/entry'}" class="card-image db mb2 loading" style="background-color: {if image}{background}{if:else}{color}{/if}" aria-label="Read {title}">
   	{if thumbnail}
   	  {thumbnail}
   	    {if small_file_url}
