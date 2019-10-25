@@ -1,7 +1,7 @@
 {embed="include/header" title="{layout:title}" class="{layout:class}"}
 
 <header class="header contain-medium contain-large primary" id="header">
-  <a href="/" title="Back to the homepage" class="logo">
+  <a href="/" title="Back to the homepage" class="logo" tabindex="0">
     {gv_logotype_filled}
     {gv_logo_small}
   </a>
@@ -10,23 +10,24 @@
     <span class="icon icon-newsletter warm">{gv_newsletter}</span>
   </a>
   <nav id="nav" class="nav hide-lt-c end primary">
-    <a href="{homepage}" class="nav-item{if segment_1 == ""} active{/if}">
+    <a href="{homepage}" class="nav-item{if segment_1 == ""} active{/if}" tabindex="0">
       <span class="icon icon-home">{gv_home}</span>
       <span class="nav-item-text">Home</span>
     </a>
-    <a href="{path='blog'}" class="nav-item{if segment_1 == "blog"} active{/if}">
+    <a href="{path='blog'}" class="nav-item{if segment_1 == "blog"} active{/if}" tabindex="0">
       <span class="icon icon-blog">{gv_blog}</span>
       <span class="nav-item-text">Blog</span>
     </a>
-    <a href="{path='about'}" class="nav-item{if segment_1 == "about"} active{/if}">
+    <a href="{path='about'}" class="nav-item{if segment_1 == "about"} active{/if}" tabindex="0">
       <span class="icon icon-about">{gv_about}</span>
       <span class="nav-item-text">About</span>
     </a>
-    <a href="{path='contact'}" class="nav-item{if segment_1 == "contact"} active{/if}">
+    <a href="{path='contact'}" class="nav-item{if segment_1 == "contact"} active{/if}" tabindex="0">
       <span class="icon icon-contact">{gv_contact}</span>
       <span class="nav-item-text">Contact</span>
     </a>
-    <a href="{path='search'}" id="toggle-search-nav" aria-haspopup="true" class="nav-item toggle-search">
+    <a href="{path='search'}" id="toggle-search-nav" aria-haspopup="true" class="nav-item toggle-search" tabindex="0">
+      <span class="visuallyhidden">Search</span>
       <span class="icon icon-search icon-large">{gv_search}</span>
     </a>
   </nav>
@@ -34,23 +35,23 @@
 
 <nav class="tabbar hide-c" aria-hidden="true">
   <a href="{homepage}" title="Back to the homepage" class="tabbar-item tabbar-item-h flex-1 sans semibold{if segment_1 == ""} active tertiary-dc{if:else} warm-l1{/if}">
-    <span class="icon">{gv_home}</span>
+    <span class="icon" role="presentation">{gv_home}</span>
     <span class="tabbar-item-text warm-l2">Home</span>
   </a>
   <a href="{path='blog'}" class="tabbar-item tabbar-item-h flex-1 sans semibold{if segment_1 == "blog"} active tertiary-dc{if:else} warm-l1{/if}">
-    <span class="icon">{gv_blog}</span>
+    <span class="icon" role="presentation">{gv_blog}</span>
     <span class="tabbar-item-text warm-l2">Blog</span>
   </a>
   <a href="{path='about'}" class="tabbar-item tabbar-item-h flex-1 sans semibold{if segment_1 == "about"} active tertiary-dc{if:else} warm-l1{/if}">
-    <span class="icon">{gv_about}</span>
+    <span class="icon" role="presentation">{gv_about}</span>
     <span class="tabbar-item-text warm-l2">About</span>
   </a>
   <a href="{path='contact'}" class="tabbar-item tabbar-item-h flex-1 sans semibold{if segment_1 == "contact"} active tertiary-dc{if:else} warm-l1{/if}">
-    <span class="icon">{gv_contact}</span>
+    <span class="icon" role="presentation">{gv_contact}</span>
     <span class="tabbar-item-text warm-l2">Contact</span>
   </a>
   <a href="{path='search'}" id="toggle-search" aria-haspopup="true" class="tabbar-item tabbar-item-h flex-1 toggle-search warm-l1 sans semibold">
-    <span class="icon icon-search">{gv_search_small}</span>
+    <span class="icon icon-search" role="presentation">{gv_search_small}</span>
     <span class="tabbar-item-text warm-l2">Search</span>
   </a>
 </nav>
