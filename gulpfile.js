@@ -41,6 +41,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
+const critical = require('critical');
 // const importer = require('node-sass-globbing');
 
 // Images
@@ -86,6 +87,8 @@ const serve = (done) => {
 /**
  * CSS
  */
+sass.compiler = require('node-sass');
+
 const sass_config = {
   outputStyle: 'compressed',
   sourceComments: false,
@@ -118,9 +121,8 @@ const prefix = (done) => {
 }
 
 // Critical CSS
-const critical = (done) => {
+const criticalCSS = (done) => {
   critical.generate({
-    inline: false,
     base: './',
     src: 'http://iamsteve.dev',
     css: [`${path.css.dist}/global.css`],
@@ -135,6 +137,7 @@ const critical = (done) => {
       height: 1200
     }],
     dest: './system/user/templates/default_site/_partials/critical.html',
+    inline: false,
     minify: true,
     extract: false,
     include: [
@@ -143,10 +146,10 @@ const critical = (done) => {
       '.primary',
       '.hiding'
     ],
-    ignore: {
-      atrule: ['font-face'],
-      rule: ['.dashes']
-    }
+    ignore: [
+      '@font-face',
+      '.dashes'
+    ]
   });
 
   done();
@@ -218,7 +221,9 @@ exports.default = series(
 	)
 );
 
-exports.build = series(exports.default, critical);
+exports.criticalCSS = series(criticalCSS);
+
+exports.build = series(exports.default, exports.criticalCSS);
 
 exports.serve = series(serve);
 
