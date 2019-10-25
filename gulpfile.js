@@ -167,8 +167,7 @@ const fonts = (done) => {
  * Images
  */
 // @todo: tasks do not work due to some error
-/*
-const image = (done) => {
+const images = (done) => {
   src(path.image.src)
     .pipe(imagemin(
       [
@@ -179,6 +178,9 @@ const image = (done) => {
           mergePaths: false
         })
       ],
+      {
+        verbose: true
+      }
     ))
     .pipe(dest(path.image.dist));
 
@@ -187,7 +189,8 @@ const image = (done) => {
 
 const svg = (done) => {
   src(path.svg.src)
-    .pipe(imagemin([
+    .pipe(imagemin(
+      [
         imagemin.svgo({
           plugins: [
             { removeViewBox: false },
@@ -195,12 +198,15 @@ const svg = (done) => {
             { mergePaths: false }
           ]
         })
-      ]))
+      ],
+      {
+        verbose: true
+      }
+    ))
     .pipe(dest(path.svg.dist));
 
   done();
 }
-*/
 
 /**
  * Watch
@@ -212,20 +218,27 @@ const watching = (done) => {
 }
 
 /**
- * Run
+ * Single tasks
+ */
+exports.criticalCSS = criticalCSS;
+exports.images = images;
+exports.svg = svg;
+exports.serve = serve;
+exports.fonts = fonts;
+
+/**
+ * Multiple tasks
  */
 exports.default = series(
 	parallel(
 		css,
-		fonts
+		fonts,
+		svg,
+		images
 	)
 );
 
-exports.criticalCSS = series(criticalCSS);
-
 exports.build = series(exports.default, exports.criticalCSS);
-
-exports.serve = series(serve);
 
 exports.watch = series(
   exports.default,
