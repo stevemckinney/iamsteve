@@ -52,7 +52,7 @@ $config['stash_invalidation_period']  = 0;  // duration of cache invalidation in
 $config['stash_parse_if_in']  = FALSE;  // enable parsing of {if var IN (1|2|3)...{/if} style conditionals in Stash templates
 # $config['stash_var_prefix'] = 'preview-'; // apply a prefix to all saved variables, useful for entry previews
 
-$config['require_cookie_consent'] = 'y';
+$config['require_cookie_consent'] = 'n';
 $config['force_redirect'] = 'n';
 $config['share_analytics'] = 'y';
 $config['show_ee_news'] = 'y';
