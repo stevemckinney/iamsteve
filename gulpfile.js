@@ -41,6 +41,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
+const critical = require('critical');
 // const importer = require('node-sass-globbing');
 
 // Images
@@ -86,6 +87,8 @@ const serve = (done) => {
 /**
  * CSS
  */
+sass.compiler = require('node-sass');
+
 const sass_config = {
   outputStyle: 'compressed',
   sourceComments: false,
@@ -118,9 +121,8 @@ const prefix = (done) => {
 }
 
 // Critical CSS
-const critical = (done) => {
+const criticalCSS = (done) => {
   critical.generate({
-    inline: false,
     base: './',
     src: 'http://iamsteve.dev',
     css: [`${path.css.dist}/global.css`],
@@ -135,6 +137,7 @@ const critical = (done) => {
       height: 1200
     }],
     dest: './system/user/templates/default_site/_partials/critical.html',
+    inline: false,
     minify: true,
     extract: false,
     include: [
@@ -143,10 +146,10 @@ const critical = (done) => {
       '.primary',
       '.hiding'
     ],
-    ignore: {
-      atrule: ['font-face'],
-      rule: ['.dashes']
-    }
+    ignore: [
+      '@font-face',
+      '.dashes'
+    ]
   });
 
   done();
@@ -164,8 +167,7 @@ const fonts = (done) => {
  * Images
  */
 // @todo: tasks do not work due to some error
-/*
-const image = (done) => {
+const images = (done) => {
   src(path.image.src)
     .pipe(imagemin(
       [
@@ -176,6 +178,9 @@ const image = (done) => {
           mergePaths: false
         })
       ],
+      {
+        verbose: true
+      }
     ))
     .pipe(dest(path.image.dist));
 
@@ -184,7 +189,8 @@ const image = (done) => {
 
 const svg = (done) => {
   src(path.svg.src)
-    .pipe(imagemin([
+    .pipe(imagemin(
+      [
         imagemin.svgo({
           plugins: [
             { removeViewBox: false },
@@ -192,12 +198,15 @@ const svg = (done) => {
             { mergePaths: false }
           ]
         })
-      ]))
+      ],
+      {
+        verbose: true
+      }
+    ))
     .pipe(dest(path.svg.dist));
 
   done();
 }
-*/
 
 /**
  * Watch
@@ -209,18 +218,27 @@ const watching = (done) => {
 }
 
 /**
- * Run
+ * Single tasks
+ */
+exports.criticalCSS = criticalCSS;
+exports.images = images;
+exports.svg = svg;
+exports.serve = serve;
+exports.fonts = fonts;
+
+/**
+ * Multiple tasks
  */
 exports.default = series(
 	parallel(
 		css,
-		fonts
+		fonts,
+		svg,
+		images
 	)
 );
 
-exports.build = series(exports.default, critical);
-
-exports.serve = series(serve);
+exports.build = series(exports.default, exports.criticalCSS);
 
 exports.watch = series(
   exports.default,
