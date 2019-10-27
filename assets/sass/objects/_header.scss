@@ -58,6 +58,10 @@
   position: relative;
   z-index: $z-index-200;
 
+  &:hover,
+  &:focus {
+    transform: scale3d(1.075, 1.075, 1.075); }
+
   @include breakpoint($c) {
     padding: $line $line*1.5 $line 0;
     align-content: center;

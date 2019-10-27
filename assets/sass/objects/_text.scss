@@ -37,7 +37,8 @@ $text-color-helpers: (
 
 @each $name, $color in $text-color-helpers {
 	.#{$name} { color: $color; }
-	.#{$name}-hover:hover { color: $color; } }
+	.#{$name}-hover:hover,
+	.#{$name}-hover:focus { color: $color; } }
 
 // General elements
 // ---------------------------
