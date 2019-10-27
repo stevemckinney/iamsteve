@@ -36,6 +36,7 @@ const path = {
 const {gulp, src, dest, watch, series, parallel} = require('gulp');
 const del = require('del');
 const sourcemaps = require('gulp-sourcemaps');
+const cache = require('gulp-cache');
 
 // CSS
 const sass = require('gulp-sass');
@@ -169,18 +170,20 @@ const fonts = (done) => {
 // @todo: tasks do not work due to some error
 const images = (done) => {
   src(path.image.src)
-    .pipe(imagemin(
-      [
-        imagemin.optipng({
-          optimizationLevel: 3,
-          progressive: true,
-          interlaced: true,
-          mergePaths: false
-        })
-      ],
-      {
-        verbose: true
-      }
+    .pipe(cache(
+      imagemin(
+        [
+          imagemin.optipng({
+            optimizationLevel: 3,
+            progressive: true,
+            interlaced: true,
+            mergePaths: false
+          })
+        ],
+        {
+          verbose: true
+        }
+      )
     ))
     .pipe(dest(path.image.dist));
 
@@ -189,19 +192,21 @@ const images = (done) => {
 
 const svg = (done) => {
   src(path.svg.src)
-    .pipe(imagemin(
-      [
-        imagemin.svgo({
-          plugins: [
-            { removeViewBox: false },
-            { cleanupIDs: false },
-            { mergePaths: false }
-          ]
-        })
-      ],
-      {
-        verbose: true
-      }
+    .pipe(cache(
+      imagemin(
+        [
+          imagemin.svgo({
+            plugins: [
+              { removeViewBox: false },
+              { cleanupIDs: false },
+              { mergePaths: false }
+            ]
+          })
+        ],
+        {
+          verbose: true
+        }
+      )
     ))
     .pipe(dest(path.svg.dist));
 
