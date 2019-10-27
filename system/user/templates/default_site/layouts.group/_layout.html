@@ -1,7 +1,8 @@
 {embed="include/header" title="{layout:title}" class="{layout:class}"}
 
 <header class="header contain-medium contain-large primary" id="header">
-  <a href="/" title="Back to the homepage" class="logo" tabindex="0">
+  <a id="skip-navigation" class="visuallyhidden" href="#content">Skip navigation</a>
+  <a href="/" title="Back to the homepage" class="logo">
     {gv_logotype_filled}
     {gv_logo_small}
   </a>
@@ -64,7 +65,9 @@
   </div>
 </div>
 
-{layout:contents}
+<main id="content">
+  {layout:contents}
+</main>
 
 <aside class="row row-normal pt6 pt8-d contain contain-medium contain-large between items-end">
   <section class="column column-4-b column-3-d mb6 mb0-b">
