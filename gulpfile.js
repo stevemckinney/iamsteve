@@ -225,6 +225,7 @@ const watching = (done) => {
 /**
  * Single tasks
  */
+exports.css = css;
 exports.criticalCSS = criticalCSS;
 exports.images = images;
 exports.svg = svg;
