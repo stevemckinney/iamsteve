@@ -39,13 +39,17 @@
       CSS
     --}
     {preload_replace:css='{exp:minimee:css minify="n" display="url"}{global:theme_url}/dist/css/global.css?v=4{/exp:minimee:css}'}
-    {if '{exp:cookie:get name="css"}'}
-      <link rel="stylesheet" href="{css}">
+    {if global:env == "prod"}
+      {if '{exp:cookie:get name="css"}'}
+        <link rel="stylesheet" href="{css}">
+      {if:else}
+        <style>{critical}</style>
+        <link rel="preload" href="{css}" as="style" onload="this.rel='stylesheet'">
+      {/if}
+      <noscript><style>.no-js img.lazyload { display: none; }</style></noscript>
     {if:else}
-      <style>{critical}</style>
-      <link rel="preload" href="{css}" as="style" onload="this.rel='stylesheet'">
+      <link rel="stylesheet" href="{css}">
     {/if}
-    <noscript><style>.no-js img.lazyload { display: none; }</style></noscript>
 
     {!--
       JS
