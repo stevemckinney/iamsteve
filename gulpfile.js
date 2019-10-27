@@ -102,6 +102,7 @@ const css = (done) => {
 	return src(path.css.src)
 	  .pipe(sourcemaps.init())
 		.pipe(sass(sass_config).on('error', sass.logError))
+		.pipe(browserSync.reload({ stream: true }))
 		.pipe(cssnano())
 		.pipe(sourcemaps.write('./'))
 		.pipe(dest(path.css.dist))
