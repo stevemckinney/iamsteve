@@ -10,15 +10,15 @@
           "name": "Home"
         }
       }{if segment_2},{/if}
-      
+
       {!-- Blog categories --}
-      
+
       {if segment_2 == "category"}
         {
           "@type": "ListItem",
           "position": 2,
           "item": {
-            "@id": "{global:theme_url}/blog",
+            "@id": "{global:theme_url}blog",
             "name": "Blog"
           }
         },
@@ -34,19 +34,19 @@
             },
         	{/exp:channel:category_heading}
         {/exp:channel:entries}
-        
+
       {!-- Blog entries --}
-      
+
       {if:elseif segment_2 == "entry"}
         {
           "@type": "ListItem",
           "position": 2,
           "item": {
-            "@id": "{global:theme_url}/blog",
+            "@id": "{global:theme_url}blog",
             "name": "Blog"
           }
         },
-        {exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"} 
+        {exp:channel:entries channel="blog" limit="1" status="open|latest" disable="member_data|trackbacks|pagination"}
           {categories channel="blog" style="linear" parent_only="yes" limit="1"}
             {
               "@type": "ListItem",
@@ -66,7 +66,7 @@
             "name": "{embed:entry_title}"
           }
         }
-      
+
       {if:elseif segment_2 == "view"}
         {
           "@type": "ListItem",
@@ -86,16 +86,16 @@
             }
           }
         {/exp:channel:entries}
-      
+
       {!-- Pages --}
-      
+
       {if:elseif segment_1 != ''}
         {
           "@type": "ListItem",
           "position": 2,
           "item": {
-            "@id": "{global:theme_url}/{segment_1}",
-            "name": "{embed:entry_title}"
+            "@id": "{global:theme_url}{segment_1}",
+            "name": "{exp:streeng capitalize="yes"}{segment_1}{/exp:streeng}"
           }
         }
       {/if}
