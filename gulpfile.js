@@ -13,7 +13,7 @@ const path = {
     dist: 'dist/js/'
   },
   html: {
-    src: 'system/user/templates/**/*.html'
+    src: './system/user/templates/default_site/**/*.html'
   },
   image: {
     src: 'assets/images/*.png',
@@ -43,7 +43,7 @@ const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 const critical = require('critical');
-// const importer = require('node-sass-globbing');
+const purgecss = require('gulp-purgecss')
 
 // Images
 const imagemin = require('gulp-imagemin');
@@ -120,6 +120,18 @@ const prefix = (done) => {
 		.pipe(dest(path.css.dist))
 
 	done();
+}
+
+const purge = (done) => {
+  src(`${path.css.dist}/global.css`)
+  .pipe(
+    purgecss({
+      content: [path.html.src, path.js.dist]
+    })
+  )
+  .pipe(dest(path.dist.css))
+
+  done();
 }
 
 // Critical CSS
@@ -232,6 +244,7 @@ exports.images = images;
 exports.svg = svg;
 exports.serve = serve;
 exports.fonts = fonts;
+exports.purgecss = purge;
 
 /**
  * Multiple tasks
