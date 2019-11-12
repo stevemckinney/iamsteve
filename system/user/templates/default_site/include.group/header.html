@@ -43,7 +43,11 @@
       {if '{exp:cookie:get name="css"}'}
         <link rel="stylesheet" href="{css}">
       {if:else}
-        <style>{critical}</style>
+        {if segment_2 == "entry"}
+          <style>{critical_article}</style>
+        {if:else}
+          <style>{critical}</style>
+        {/if}
         <link rel="preload" href="{css}" as="style" onload="this.rel='stylesheet'">
       {/if}
       <noscript><style>.no-js img.lazyload { display: none; }</style></noscript>

@@ -135,35 +135,60 @@ const purge = (done) => {
 }
 
 // Critical CSS
+const criticalDimensions = [{
+  width: 414,
+  height: 738
+}, {
+  width: 1024,
+  height: 1024
+}, {
+  width: 1680,
+  height: 1200
+}, {
+  width: 1920,
+  height: 1440
+}];
+
+const criticalIgnore = [
+  '@font-face',
+  '.dashes'
+];
+
+const criticalInclude = [
+  '.headline-l',
+  '.primary .fill-s1',
+  '.primary',
+  '.hiding',
+  '.posts',
+  '.scroll',
+  '.card-medium'
+];
+
 const criticalCSS = (done) => {
   critical.generate({
     base: './',
     src: 'http://iamsteve.dev',
     css: [`${path.css.dist}/global.css`],
-    dimensions: [{
-      width: 414,
-      height: 738
-    }, {
-      width: 768,
-      height: 1024
-    }, {
-      width: 1680,
-      height: 1200
-    }],
+    dimensions: criticalDimensions,
     dest: './system/user/templates/default_site/_partials/critical.html',
     inline: false,
     minify: true,
     extract: false,
-    include: [
-      '.headline-b',
-      '.primary .fill-s1',
-      '.primary',
-      '.hiding'
-    ],
-    ignore: [
-      '@font-face',
-      '.dashes'
-    ]
+    include: criticalInclude,
+    ignore: criticalIgnore
+  });
+
+  critical.generate({
+    base: './',
+    src: 'http://iamsteve.dev/blog/entry/atomic-font-size-management-with-sass',
+    css: [`${path.css.dist}/global.css`],
+    dimensions: criticalDimensions,
+    dest: './system/user/templates/default_site/_partials/critical_article.html',
+    inline: false,
+    minify: true,
+    extract: false,
+    include: criticalInclude,
+    ignore: criticalIgnore
   });
 
   done();
