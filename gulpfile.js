@@ -161,7 +161,8 @@ const criticalInclude = [
   '.hiding',
   '.posts',
   '.scroll',
-  '.card-medium'
+  '.card-medium',
+  '.fragment'
 ];
 
 const criticalCSS = (done) => {
