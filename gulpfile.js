@@ -151,7 +151,16 @@ const criticalDimensions = [{
 
 const criticalIgnore = [
   '@font-face',
-  '.dashes'
+  '.dashes',
+  '.searched-posts',
+  '::-webkit-input-placeholder',
+  '::-moz-placeholder',
+  ':-ms-input-placeholder',
+  'hr',
+  '.chunky',
+  '.link-icon',
+  '.input-search',
+  '.form-search'
 ];
 
 const criticalInclude = [
@@ -165,7 +174,7 @@ const criticalInclude = [
   '.fragment'
 ];
 
-const criticalCSS = (done) => {
+const criticalAll = (done) => {
   critical.generate({
     base: './',
     src: 'http://iamsteve.dev',
@@ -179,6 +188,10 @@ const criticalCSS = (done) => {
     ignore: criticalIgnore
   });
 
+  done();
+}
+
+const criticalArticle = (done) => {
   critical.generate({
     base: './',
     src: 'http://iamsteve.dev/blog/entry/atomic-font-size-management-with-sass',
@@ -265,7 +278,7 @@ const watching = (done) => {
  * Single tasks
  */
 exports.css = css;
-exports.criticalCSS = criticalCSS;
+exports.criticalCSS = parallel(criticalAll, criticalArticle);
 exports.images = images;
 exports.svg = svg;
 exports.serve = serve;
