@@ -9,13 +9,13 @@
   "theme_color": "#FD7F71",
   "description": "A design and code blog by Steve McKinney.",
   "orientation": "any",
-  "background_color": "#543243",
+  "background_color": "#301D28",
   "related_applications": [],
   "prefer_related_applications": false,
   "icons": [
     {
       "src": "https://iamsteve.me/apple-touch-icon.png",
-      "type": "image/ico",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ]
