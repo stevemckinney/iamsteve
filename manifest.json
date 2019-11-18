@@ -4,7 +4,7 @@
   "name": "iamsteve.me",
   "short_name": "iamsteve",
   "scope": "/",
-  "display": "minimal-ui",
+  "display": "standalone",
   "start_url": "./?utm_source=web_app_manifest",
   "theme_color": "#FD7F71",
   "description": "A design and code blog by Steve McKinney.",
@@ -15,6 +15,16 @@
   "icons": [
     {
       "src": "https://iamsteve.me/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "https://iamsteve.me/android.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://iamsteve.me/android-splash.png",
       "type": "image/png",
       "sizes": "512x512"
     }
