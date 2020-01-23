@@ -2,30 +2,30 @@
  * Paths
  */
 const path = {
-  src: 'assets/',
-  dist: 'dist/',
+  src: './assets/',
+  dist: './dist/',
   css: {
-    src: 'assets/sass/**/*.{scss,sass}',
-    dist: 'dist/css/'
+    src: './assets/sass/**/*.{scss,sass}',
+    dist: './dist/css/'
   },
   js: {
-    src: 'assets/js/**/*.js',
-    dist: 'dist/js/'
+    src: './assets/js/**/*.js',
+    dist: './dist/js/'
   },
   html: {
     src: './system/user/templates/default_site/**/*.html'
   },
   image: {
-    src: 'assets/images/*.png',
-    dist: 'dist/images/'
+    src: './assets/images/*.png',
+    dist: './dist/images/'
   },
   svg: {
-    src: 'assets/images/*.svg',
-    dist: 'dist/images/'
+    src: './assets/images/*.svg',
+    dist: './dist/images/'
   },
   fonts: {
     src: './assets/fonts/**/*.{ttf,woff,woff2,eot,svg}',
-    dist: 'dist/fonts/'
+    dist: './dist/fonts/'
   },
   node_modules: './node_modules'
 }
@@ -135,35 +135,74 @@ const purge = (done) => {
 }
 
 // Critical CSS
-const criticalCSS = (done) => {
+const criticalDimensions = [{
+  width: 414,
+  height: 738
+}, {
+  width: 1024,
+  height: 1024
+}, {
+  width: 1680,
+  height: 1200
+}, {
+  width: 1920,
+  height: 1440
+}];
+
+const criticalIgnore = [
+  '@font-face',
+  '.dashes',
+  '.searched-posts',
+  '::-webkit-input-placeholder',
+  '::-moz-placeholder',
+  ':-ms-input-placeholder',
+  'hr',
+  '.chunky',
+  '.link-icon',
+  '.input-search',
+  '.form-search'
+];
+
+const criticalInclude = [
+  '.headline-l',
+  '.primary .fill-s1',
+  '.primary',
+  '.hiding',
+  '.posts',
+  '.scroll',
+  '.card-medium',
+  '.fragment'
+];
+
+const criticalAll = (done) => {
   critical.generate({
     base: './',
     src: 'http://iamsteve.dev',
     css: [`${path.css.dist}/global.css`],
-    dimensions: [{
-      width: 414,
-      height: 738
-    }, {
-      width: 768,
-      height: 1024
-    }, {
-      width: 1680,
-      height: 1200
-    }],
+    dimensions: criticalDimensions,
     dest: './system/user/templates/default_site/_partials/critical.html',
     inline: false,
     minify: true,
     extract: false,
-    include: [
-      '.headline-b',
-      '.primary .fill-s1',
-      '.primary',
-      '.hiding'
-    ],
-    ignore: [
-      '@font-face',
-      '.dashes'
-    ]
+    include: criticalInclude,
+    ignore: criticalIgnore
+  });
+
+  done();
+}
+
+const criticalArticle = (done) => {
+  critical.generate({
+    base: './',
+    src: 'http://iamsteve.dev/blog/entry/atomic-font-size-management-with-sass',
+    css: [`${path.css.dist}/global.css`],
+    dimensions: criticalDimensions,
+    dest: './system/user/templates/default_site/_partials/critical_article.html',
+    inline: false,
+    minify: true,
+    extract: false,
+    include: criticalInclude,
+    ignore: criticalIgnore
   });
 
   done();
@@ -239,7 +278,7 @@ const watching = (done) => {
  * Single tasks
  */
 exports.css = css;
-exports.criticalCSS = criticalCSS;
+exports.criticalCSS = parallel(criticalAll, criticalArticle);
 exports.images = images;
 exports.svg = svg;
 exports.serve = serve;
