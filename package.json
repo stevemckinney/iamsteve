@@ -52,7 +52,7 @@
     "gulp-svgmin": "^2.2.0",
     "gulp-watch": "^5.0.1",
     "node-sass": "^4.13.0",
-    "prettier": "^1.7.1",
+    "prettier": "^2.0.4",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
