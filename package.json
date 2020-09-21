@@ -27,7 +27,7 @@
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
-    "ajv": "^6.10.2",
+    "ajv": "^6.12.5",
     "babel-loader": "^8.0.0-beta.0",
     "babel-preset-es2015-native-modules": "^6.9.4",
     "breakpoint-sass": "^2.7.1",
