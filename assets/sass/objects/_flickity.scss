@@ -27,6 +27,11 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  scroll-snap-type: x mandatory;
+
+  > * {
+    scroll-snap-align: center;
+  }
 
   @include breakpoint($b) {
     grid-gap: 48px 32px; }

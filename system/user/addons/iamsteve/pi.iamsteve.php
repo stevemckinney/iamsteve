@@ -190,15 +190,15 @@ class Iamsteve {
     {
       case 'jpeg' :
       case 'jpg' :
-        $id = imagecreatefromjpeg($image);
+        $id = @imagecreatefromjpeg($image);
       break;
 
       case 'png' :
-        $id = imagecreatefrompng($image);
+        $id = @imagecreatefrompng($image);
       break;
 
       case 'gif' :
-        $id = imagecreatefromgif($image);
+        $id = @imagecreatefromgif($image);
       break;
 
       default:
