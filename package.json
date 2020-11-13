@@ -63,6 +63,7 @@
     "build": "webpack --mode production --config ./build/webpack.prod.config.js",
     "webpack": "webpack"
   },
+  "eslintIgnore": ["assets/js/prism.js"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stevemckinney/iamsteve.git"
