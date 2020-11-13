@@ -8,4 +8,67 @@
  *
  * http://api.jqueryui.com/slide-effect/
  */
-!function(e){"function"==typeof define&&define.amd?define(["jquery","./effect"],e):e(jQuery)}(function(e){return e.effects.effect.slide=function(t,f){var i,o=e(this),n=["position","top","bottom","left","right","width","height"],s=e.effects.setMode(o,t.mode||"show"),r="show"===s,c=t.direction||"left",d="up"===c||"down"===c?"top":"left",u="up"===c||"left"===c,a={};e.effects.save(o,n),o.show(),i=t.distance||o["top"===d?"outerHeight":"outerWidth"](!0),e.effects.createWrapper(o).css({overflow:"hidden"}),r&&o.css(d,u?isNaN(i)?"-"+i:-i:i),a[d]=(r?u?"+=":"-=":u?"-=":"+=")+i,o.animate(a,{queue:!1,duration:t.duration,easing:t.easing,complete:function(){"hide"===s&&o.hide(),e.effects.restore(o,n),e.effects.removeWrapper(o),f()}})}});
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"./effect"
+		], factory );
+	} else {
+
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
+
+return $.effects.effect.slide = function( o, done ) {
+
+	// Create element
+	var el = $( this ),
+		props = [ "position", "top", "bottom", "left", "right", "width", "height" ],
+		mode = $.effects.setMode( el, o.mode || "show" ),
+		show = mode === "show",
+		direction = o.direction || "left",
+		ref = (direction === "up" || direction === "down") ? "top" : "left",
+		positiveMotion = (direction === "up" || direction === "left"),
+		distance,
+		animation = {};
+
+	// Adjust
+	$.effects.save( el, props );
+	el.show();
+	distance = o.distance || el[ ref === "top" ? "outerHeight" : "outerWidth" ]( true );
+
+	$.effects.createWrapper( el ).css({
+		overflow: "hidden"
+	});
+
+	if ( show ) {
+		el.css( ref, positiveMotion ? (isNaN(distance) ? "-" + distance : -distance) : distance );
+	}
+
+	// Animation
+	animation[ ref ] = ( show ?
+		( positiveMotion ? "+=" : "-=") :
+		( positiveMotion ? "-=" : "+=")) +
+		distance;
+
+	// Animate
+	el.animate( animation, {
+		queue: false,
+		duration: o.duration,
+		easing: o.easing,
+		complete: function() {
+			if ( mode === "hide" ) {
+				el.hide();
+			}
+			$.effects.restore( el, props );
+			$.effects.removeWrapper( el );
+			done();
+		}
+	});
+};
+
+}));

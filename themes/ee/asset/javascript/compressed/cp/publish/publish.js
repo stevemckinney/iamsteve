@@ -3,7 +3,278 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-$(document).ready(function(){function e(e,n){var a,o=this,r=arguments,s=function(){i=null,a=e.apply(o,r)};return clearTimeout(i),t&&t.abort(),i=setTimeout(s,n),a}var t,i,n=$("[data-publish] > form");if(1==EE.publish.title_focus&&n.find("input[name=title]").focus(),"new"==EE.publish.which&&n.find("input[name=title]").bind("keyup blur",function(){n.find("input[name=title]").ee_url_title(n.find("input[name=url_title]"))}),EE.publish.smileys===!0&&$("body").on("click",".format-options .toolbar .emoji a",function(e){$(this).parents(".format-options").find(".emoji-wrap").slideToggle("fast"),e.preventDefault()}),EE.publish.autosave&&EE.publish.autosave.interval){var a=!1;n.on("entry:startAutosave",function(){n.trigger("entry:autosave"),a||(a=!0,setTimeout(function(){$.ajax({type:"POST",dataType:"json",url:EE.publish.autosave.URL,data:n.serialize(),success:function(e){var t=$("[data-publish] .form-btns-top h1");t.find(".app-badge").remove(),e.error?console.log(e.error):e.success?t.append(e.success):console.log("Autosave Failed"),a=!1}})},1e3*EE.publish.autosave.interval))});var o=$("textarea, input").not(":password,:checkbox,:radio,:submit,:button,:hidden"),r=$("select, :checkbox, :radio, :file");o.on("keypress change",function(){n.trigger("entry:startAutosave")}),r.on("change",function(){n.trigger("entry:startAutosave")})}var s=function(){var e=$("iframe.live-preview__frame")[0],i=$(e).data("url"),a=$(".live-preview > .app-notice---important");a.removeClass("app-notice---important").addClass("app-notice---loading"),a.find("[data-loading]").removeClass("hidden"),a.find("[data-unpublished]").addClass("hidden"),a.find(".js-preview-wide").addClass("hidden"),t=$.ajax({type:"POST",dataType:"html",url:i,data:n.serialize(),complete:function(i){void 0!==i.responseText&&(e.contentDocument.open(),e.contentDocument.write(i.responseText),e.contentDocument.close(),a.removeClass("app-notice---loading").addClass("app-notice---important"),a.find("[data-loading]").addClass("hidden"),a.find("[data-unpublished]").removeClass("hidden"),a.find(".js-preview-wide").removeClass("hidden")),t=null}})};$(document).on("entry:preview",function(t,i){void 0==i&&(i=0),$(".app-modal--live-preview:visible").length&&e(s,i)}),$("body").on("click",'button[rel="live-preview"]',function(e){var t=$(".app-modal--live-preview .form-standard"),i=$("iframe.live-preview__frame")[0];i.contentDocument.open(),i.contentDocument.write(""),i.contentDocument.close(),s(),t.append($(n)),$(t).on("interact","input, textarea",function(e){$("body").trigger("entry:preview",[225])}),$(t).on("change","input[type=checkbox], input[type=radio], input[type=hidden], select",function(e){$(document).trigger("entry:preview")}),$(t).on("click","a.toggle-btn",function(e){$(document).trigger("entry:preview")}),$('button[rel="live-preview"]').hide(),$(document).trigger("entry:preview-open")}),$(".app-modal--live-preview").on("modal:close",function(e){$("[data-publish]").append($(".app-modal--live-preview .form-standard > form")),$('button[rel="live-preview"]').show(),$(document).trigger("entry:preview-close")}),window.location.search.includes("&preview=y")&&setTimeout(function(){$('button[rel="live-preview"]').click()},100),$(".js-preview-wide").on("click",function(){var e=$(this).text(),t=$(this).attr("data-close"),i=$(this).attr("data-open");$(".live-preview---open").toggleClass("live-preview--wide"),$(this).text(e==t?i:t)});var l=$('button[value="preview"]').hasClass("hidden"),p=function(e){var t=$('input[name="pages__pages_uri"]'),i=$('input[name="pages__pages_template_id"]'),n=$('button[value="preview"]');show=!1,show=""!=t.val()&&(""!=i.val()||"label"==e.target.nodeName.toLowerCase()),show&&n.removeClass("hidden"),!show&&l&&n.addClass("hidden")};$('input[name="pages__pages_uri"]').on("interact",p),$('div[data-input-value="pages__pages_template_id"] .field-inputs label').on("click",p),$("[data-publish] .form-btns button:disabled").removeAttr("disabled")});
+
+$(document).ready(function () {
+
+	var publishForm = $("[data-publish] > form");
+	var ajaxRequest;
+	var debounceTimeout;
+
+	function debounceAjax(func, wait) {
+	    var result;
+
+        var context = this, args = arguments;
+        var later = function() {
+          debounceTimeout = null;
+          result = func.apply(context, args);
+        };
+
+        clearTimeout(debounceTimeout);
+		if (ajaxRequest) ajaxRequest.abort();
+
+		debounceTimeout = setTimeout(later, wait);
+		return result;
+	};
+
+	if (EE.publish.title_focus == true) {
+		publishForm.find("input[name=title]").focus();
+	}
+
+	if (EE.publish.which == 'new') {
+		publishForm.find("input[name=title]").bind("keyup blur", function() {
+			publishForm.find('input[name=title]')
+				.ee_url_title(publishForm.find('input[name=url_title]'));
+		});
+	}
+
+	// Emoji
+	if (EE.publish.smileys === true) {
+		$('body').on('click', '.format-options .toolbar .emoji a', function(e) {
+			$(this).parents('.format-options').find('.emoji-wrap').slideToggle('fast');
+			e.preventDefault();
+		});
+	}
+
+	// Autosaving
+	if (EE.publish.autosave && EE.publish.autosave.interval) {
+		var autosaving = false;
+
+		publishForm.on("entry:startAutosave", function() {
+			publishForm.trigger("entry:autosave");
+
+			if (autosaving) {
+				return;
+			}
+
+			autosaving = true;
+			setTimeout(function() {
+				$.ajax({
+					type: "POST",
+					dataType: 'json',
+					url: EE.publish.autosave.URL,
+					data: publishForm.serialize(),
+					success: function(result) {
+						var publishHeading = $('[data-publish] .form-btns-top h1');
+						publishHeading.find('.app-badge').remove();
+
+						if (result.error) {
+							console.log(result.error);
+						}
+						else if (result.success) {
+							publishHeading.append(result.success);
+						}
+						else {
+							console.log('Autosave Failed');
+						}
+
+						autosaving = false;
+					}
+				});
+			}, 1000 * EE.publish.autosave.interval); // 1000 milliseconds per second
+		});
+
+		// Start autosave when something changes
+		var writeable = $('textarea, input').not(':password,:checkbox,:radio,:submit,:button,:hidden'),
+			changeable = $('select, :checkbox, :radio, :file');
+
+		writeable.on('keypress change', function(){publishForm.trigger("entry:startAutosave")});
+		changeable.on('change', function(){publishForm.trigger("entry:startAutosave")});
+	}
+
+
+	// -------------------------------------------------------------------
+	// Live Preview
+	// -------------------------------------------------------------------
+
+	var fetchPreview = function() {
+		var iframe         = $('iframe.live-preview__frame')[0],
+		    preview_url    = $(iframe).data('url');
+
+		// Show that the preview is refreshing
+		$('.live-preview__preview-loader').addClass('open')
+
+		ajaxRequest = $.ajax({
+			type: "POST",
+			dataType: 'html',
+			url: preview_url,
+			data: publishForm.serialize(),
+			complete: function(xhr) {
+				if (xhr.responseText !== undefined) {
+					iframe.contentDocument.open();
+					iframe.contentDocument.write(xhr.responseText);
+					iframe.contentDocument.close();
+
+					// Hide the refreshing indicator
+					$('.live-preview__preview-loader').removeClass('open')
+				}
+				ajaxRequest = null;
+			},
+		});
+	};
+
+	$(document).on('entry:preview', function (event, wait) {
+		if (wait == undefined) {
+			wait = 0;
+		}
+
+		// Only update the live preview if it's open
+		if ($('.live-preview-container:visible').length) {
+			debounceAjax(fetchPreview, wait);
+		}
+	});
+
+	$('body').on('click', 'button[rel="live-preview-setup"]', function(e) {
+		e.preventDefault()
+
+		$('body').prepend(EE.alert.lp_setup);
+
+		return false;
+	});
+
+	$('body').on('click', 'button[rel="live-preview"]', function(e) {
+		e.preventDefault()
+
+		// Show the live preview modal
+		$('.live-preview-container').show()
+		setTimeout(function () { $('.live-preview').removeClass('live-preview--closed') }, 10);
+
+		var container = $('.live-preview__form-content');
+		var iframe      = $('iframe.live-preview__frame')[0];
+
+		iframe.contentDocument.open();
+		iframe.contentDocument.write('');
+		iframe.contentDocument.close();
+
+		fetchPreview();
+
+		// Hide the save and preview buttons
+		$('.tab-bar__right-buttons', publishForm).hide()
+
+		// Move the publish form into the live preview container
+		container.append($(publishForm));
+
+		$(container).on('interact', 'input, textarea', function(e) {
+			$('body').trigger('entry:preview', [225]);
+		});
+
+		$(container).on('change', 'input[type=checkbox], input[type=radio], input[type=hidden], select', function(e) {
+			$(document).trigger('entry:preview');
+		});
+
+		$(container).on('click', 'button.toggle-btn', function(e) {
+			$(document).trigger('entry:preview');
+		});
+
+		$(document).trigger('entry:preview-open')
+	});
+
+
+	$('.js-live-preview-save-button').on('click', function(e) {
+		$('.js-live-preview-save-button').addClass('button--working');
+		$('.live-preview__form-content form button[value="save"]').click()
+	});
+
+	$('.js-close-live-preview').on('click', function(e) {
+		e.preventDefault()
+
+		// Move the publish form back to the main page from the live preview modal
+		$('[data-publish]').append($('.live-preview__form-content').children());
+
+		// Show the save buttons
+		$('[data-publish] .tab-bar__right-buttons').show()
+
+		$('button[rel="live-preview"]').show();
+		$(document).trigger('entry:preview-close')
+
+		// Hide the live preview modal
+		$('.live-preview').addClass('live-preview--closed')
+		$('.live-preview-container').fadeOut(600)
+	});
+
+	// Open the preview automatically if the url wants us to
+	if (window.location.search.includes('&preview=y')) {
+		setTimeout(function() {
+			$('button[rel="live-preview"]').click();
+		}, 100);
+	}
+
+
+	// -------------------------------------------------------------------
+	// live preview width control
+	// -------------------------------------------------------------------
+
+	function handleDrag(event, eventType, callback) {
+        var doCallback = function (e) {
+            callback(e)
+            e.preventDefault()
+        }
+
+        var moveEventName = eventType == 'mouse' ? 'mousemove' : 'touchmove'
+        var stopEventName = eventType == 'mouse' ? 'mouseup'   : 'touchend'
+
+		window.addEventListener(moveEventName, doCallback)
+
+		$('.live-preview__frame, .live-preview__form').css('pointer-events', 'none')
+
+        window.addEventListener(stopEventName, function finish() {
+            window.removeEventListener(moveEventName, doCallback)
+			window.removeEventListener(stopEventName, finish)
+
+			$('.live-preview__frame, .live-preview__form').css('pointer-events', 'all')
+        })
+
+        doCallback(event)
+	}
+
+	function onHandleDrag(e) {
+		// Get the percentage x position of the mouse
+		var xPos = e.clientX / $(document).width() * 100;
+		// Prevent each side from getting too small
+		xPos = Math.min(Math.max(xPos, 10), 98)
+
+		// Set each sides width
+		$('.live-preview__form').css('flex-basis', xPos + '%')
+		$('.live-preview__preview').css('flex-basis', (100 - xPos) + '%')
+	}
+
+	$(".live-preview__divider").on('mousedown', function(e) { handleDrag(e, 'mouse', onHandleDrag) });
+	$(".live-preview__divider").on('touchstart', function(e) { handleDrag(e, 'touch', onHandleDrag) });
+
+	var previewButtonStartedHidden = $('button[value="preview"]').hasClass('hidden');
+
+	var showPreviewButton = function(e) {
+		var pagesURI      = $('input[name="pages__pages_uri"]'),
+		    pagesTemplate = $('input[name="pages__pages_template_id"]'),
+		    button        = $('button[value="preview"]')
+			show          = false;
+
+		show = (pagesURI.val() != '' && (pagesTemplate.val() != '' || e.target.nodeName.toLowerCase() == 'label'));
+
+		if (show) {
+			button.removeClass('hidden');
+		}
+
+		if ( ! show && previewButtonStartedHidden) {
+			button.addClass('hidden');
+		}
+	};
+
+	$('input[name="pages__pages_uri"]').on('interact', showPreviewButton);
+	$('div[data-input-value="pages__pages_template_id"] .field-inputs label').on('click', showPreviewButton);
+
+	// Everything's probably ready, re-enable publish buttons
+	$('[data-publish] .form-btns button:disabled').removeAttr('disabled');
+});

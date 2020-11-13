@@ -4,7 +4,7 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
 
@@ -40,14 +40,14 @@ class Members {
 		}
 
 		// Load the member model!
-		ee()->load->model('member_model');
+		$member = ee('Model')->get('Member', $id)->first();
 
 		switch ($type)
 		{
 			case 'avatar'	:
 								$edit_image		= 'edit_avatar';
-								$enable_pref	= 'allow_avatar_uploads';
-								$not_enabled	= 'avatars_not_enabled';
+								$enable_pref	= '';
+								$not_enabled	= '';
 								$remove			= 'remove_avatar';
 								$removed		= 'avatar_removed';
 								$updated		= 'avatar_updated';
@@ -75,7 +75,8 @@ class Members {
 
 		if ( ! isset($_POST['remove']))
 		{
-			if (ee()->config->item($enable_pref) == 'n')
+			// Avatars don't have an enabled pref anymore
+			if ($type != 'avatar' AND ee()->config->item($enable_pref) == 'n')
 			{
 				if (REQ == 'CP')
 				{
@@ -89,9 +90,7 @@ class Members {
 		{
 			if ($type == 'avatar')
 			{
-				$query = ee()->member_model->get_member_data($id, array('avatar_filename'));
-
-				if ($query->row('avatar_filename')	== '')
+				if ($member->avatar_filename == '')
 				{
 					if (REQ == 'CP')
 					{
@@ -102,7 +101,8 @@ class Members {
 					return array('redirect', array($edit_image));
 				}
 
-				ee()->member_model->update_member($id, array('avatar_filename' => ''));
+				$member->set(array('avatar_filename' => ''));
+				$member->save();
 
 				if (strncmp($query->row('avatar_filename'), 'default/', 8) !== 0)
 				{
@@ -111,9 +111,7 @@ class Members {
 			}
 			elseif ($type == 'photo')
 			{
-				$query = ee()->member_model->get_member_data($id, array('photo_filename'));
-
-				if ($query->row('photo_filename')  == '')
+				if ($member->photo_filename == '')
 				{
 					if (REQ == 'CP')
 					{
@@ -123,15 +121,14 @@ class Members {
 					return array('redirect', array($edit_image));
 				}
 
-				ee()->member_model->update_member($id, array('photo_filename' => ''));
+				$member->set(array('photo_filename' => ''));
+				$member->save();
 
 				@unlink(ee()->config->slash_item('photo_path').$query->row('photo_filename') );
 			}
 			else
 			{
-				$query = ee()->member_model->get_member_data($id, array('sig_img_filename'));
-
-				if ($query->row('sig_img_filename')	 == '')
+				if ($member->sig_img_filename == '')
 				{
 					if (REQ == 'CP')
 					{
@@ -141,7 +138,8 @@ class Members {
 					return array('redirect', array($edit_image));
 				}
 
-				ee()->member_model->update_member($id, array('sig_img_filename' => ''));
+				$member->set(array('sig_img_filename' => ''));
+				$member->save();
 
 				@unlink(ee()->config->slash_item('sig_img_path').$query->row('sig_img_filename') );
 			}
@@ -161,6 +159,10 @@ class Members {
 								)
 							)
 						);
+			}
+			else if (REQ == 'ACTION')
+			{
+				return true;
 			}
 		}
 
@@ -302,8 +304,7 @@ class Members {
 		// Do they currently have an avatar or photo?
 		if ($type == 'avatar')
 		{
-			$query = ee()->member_model->get_member_data($id, array('avatar_filename'));
-			$old_filename = ($query->row('avatar_filename')	 == '') ? '' : $query->row('avatar_filename') ;
+			$old_filename = $member->avatar_filename;
 
 			if (strpos($old_filename, '/') !== FALSE)
 			{
@@ -313,13 +314,11 @@ class Members {
 		}
 		elseif ($type == 'photo')
 		{
-			$query = ee()->member_model->get_member_data($id, array('photo_filename'));
-			$old_filename = ($query->row('photo_filename')	== '') ? '' : $query->row('photo_filename') ;
+			$old_filename = $member->photo_filename;
 		}
 		else
 		{
-			$query = ee()->member_model->get_member_data($id, array('sig_img_filename'));
-			$old_filename = ($query->row('sig_img_filename')  == '') ? '' : $query->row('sig_img_filename') ;
+			$old_filename = $member->sig_img_filename;
 		}
 
 		// Upload the image
@@ -337,7 +336,7 @@ class Members {
 		}
 		else
 		{
-			$config['xss_clean'] = (ee()->session->userdata('group_id') == 1) ? FALSE : TRUE;
+			$config['xss_clean'] = (ee('Permission')->isSuperAdmin()) ? FALSE : TRUE;
 		}
 
 		ee()->load->library('upload', $config);
@@ -397,7 +396,8 @@ class Members {
 			);
 		}
 
-		ee()->member_model->update_member($id, $data);
+		$member->set($data);
+		$member->save();
 
 		return array('success', $edit_image, $updated);
 	}

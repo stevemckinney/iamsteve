@@ -3,7 +3,301 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-"use strict";function loadSettingsModal(t,e){$("div.box",t).html(e),EE.cp.formValidation.init(t),$("form",t).on("submit",function(){return $.ajax({type:"POST",url:this.action,data:$(this).serialize()+"&save_modal=yes",dataType:"json",success:function(e){"success"==e.messageType?t.trigger("modal:close"):loadSettingsModal(t,e.body)}}),!1})}!function(t){var e=function(e,i){function a(e){t("div.box",n).html("<iframe></iframe>");var i=t("iframe",n);i.css("border","none"),i.css("width","100%");var a=function(){t(i[0].contentWindow).on("unload",function(){i.hide(),t(".box",n).height("auto"),t(n).height("auto")})},s=function(){t.ajax({type:"POST",url:t(i).contents().find("form").attr("action"),data:t(i).contents().find("form").serialize()+"&submit=cancel",async:!1})};i.load(function(e){t(n).off("modal:close",s);var r=t(this).contents().find("body");SelectField.renderFields(r),t(r).find("pre").length&&(r=t(r).find("pre")),r=r.html();try{if(r=JSON.parse(r),r.cancel)return void n.find(".m-close").click();l(r)}catch(e){i.show(),a(),t(this).contents().find('.form-ctrls .btn.draft[value="cancel"]').length>0&&t(n).on("modal:close",s);var o=t(this).contents().find("body").height();t(".box",n).height(o),t(this).height(o)}}),i.attr("src",e),a()}var n=t("."+i.rel),l=function(t){var e={modal:n,input_value:i.input_value,input_name:i.input_name,input_img:i.input_img,source:i.source};i.callback(t,e)};return i.iframe?a(e):(t.get(e,function(t){if(n.find("div.box").html(t),"undefined"!=typeof i.selected){var e=n.find('tbody *[data-id="'+i.selected+'"]');e.addClass("selected"),"A"==e.prop("tagName")?e.parents("td").addClass("selected"):e.parents("tr").addClass("selected")}}),t(".modal-file").off("click",".filepicker-item, tbody > tr:not(.tbl-action)"),t(".modal-file").on("click",".filepicker-item, tbody > tr:not(.tbl-action)",function(e){if(t(e.target).is("a[rel=external]"))return!0;e.stopPropagation();var a=t(this).data("id"),s=t(this).data("url"),r=t(this);r.data("selected",a),n.find("tbody .selected").toggleClass("selected"),i.selected=a,i.source.data("selected",a);var o=t(this);"A"==o.prop("tagName")?o.parents("td").addClass("selected"):o.parents("tr").addClass("selected"),i.ajax===!1?l(t(this)):t.ajax({url:s,success:function(t){l(t)},dataType:"json"})}),t(".modal-file").on("click",'.filters a:not([href=""]), .paginate a:not([href=""]), thead a:not([href=""])',function(e){e.preventDefault();var a=t(this).attr("href");t(this).parents("div.box").load(a),(t(i.source).hasClass("markItUpButton")||t(i.source).hasClass("rte-upload"))&&t('.publish .toolbar.rte li.m-link[rel="modal-file"], .publish .toolbar.html-btns li.m-link[rel="modal-file"]').attr("href",a)}),t(".modal-file").on("submit","form",function(e){var i=t(this).attr("action"),a=t("input[name=search], input[name=perpage]",this);0!=a.size()&&(e.preventDefault(),t(this).parents("div.box").load(i+"&"+a.serialize()))}),void t(".modal-file").on("click",".tbl-action .action",function(e){e.preventDefault(),a(t(this).attr("href"))}))};t.fn.FilePicker=function(i){return this.off("click"),this.each(function(){t(this).data("picker-initialized",!0),t(this).on("click",function(){var a={};for(var n in i)a[n]=i[n];a.url=t(this).attr("href"),a.rel=t(this).attr("rel"),a.source=t(this),a.input_value?a.input_value=t(a.input_value):a.input_value=t('input[name="'+t(this).data("input-value")+'"], textarea[name="'+t(this).data("input-value")+'"]'),a.input_name?a.input_name=t(a.input_name):a.input_name=t("#"+t(this).data("input-name")),a.input_img?a.input_img=t(a.input_img):a.input_img=t("#"+t(this).data("input-image")),"selected"in a||(a.selected=t(this).data("selected")),e(a.url,a)})})},t(document).ready(function(){t(".filepicker").click(function(i){if(!t(this).data("picker-initialized")){var a=(t("."+t(this).attr("rel")),{source:t(this),input_value:t('input[name="'+t(this).data("input-value")+'"], textarea[name="'+t(this).data("input-value")+'"]'),input_name:t("#"+t(this).data("input-name")),input_img:t("#"+t(this).data("input-image")),selected:t(this).data("selected"),url:t(this).attr("href"),rel:t(this).attr("rel")}),n=t(this).data("callback");t(this);"undefined"!=typeof n&&0!==n.length?a.callback=function(t,e){for(var i=[t,e],a=n.split("."),l=a.pop(),s=window,r=0;r<a.length;r++)s=s[a[r]];return s[l].apply(this,i)}:a.callback=function(t,e){e.modal.find(".m-close").click(),e.input_value.val(t.file_id),e.input_name.html(t.file_name),e.input_img.html("<img src='"+t.path+"' />")},e(a.url,a)}})})}(jQuery);
+
+/*jslint browser: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: false, bitwise: true, regexp: false, strict: true, newcap: true, immed: true */
+
+/*global $, jQuery, EE, window, document, console, alert */
+
+"use strict";
+
+(function ($) {
+	var bind_modal = function(url, options) {
+		var modal = $("." + options.rel),
+			callback = function(data) {
+				var picker = {
+					modal: modal,
+					input_value: options.input_value,
+					input_name: options.input_name,
+					input_img: options.input_img,
+					source: options.source
+				};
+				options.callback(data, picker);
+				window.document.dispatchEvent(new CustomEvent('filepicker:pick', { detail: data }));
+			};
+
+		if (options.iframe) {
+			return openInIframe(url)
+		}
+
+		$.get(url, function(data) {
+			modal.find('div.box').html(data);
+
+			if (typeof options.selected != 'undefined') {
+				var selected = modal.find('tbody *[data-id="' + options.selected + '"]');
+				selected.addClass('selected');
+
+				if (selected.prop("tagName") == 'A') {
+					selected.parents('td').addClass('selected');
+				} else {
+					selected.parents('tr').addClass('selected');
+				}
+			}
+		});
+
+		$('.modal-file').off('click', '.filepicker-item, tbody > tr:not(.tbl-action)');
+		$('.modal-file').on('click', '.filepicker-item, tbody > tr:not(.tbl-action)', function(e) {
+
+			if ($(e.target).is('a[rel=external]')) {
+				return true;
+			}
+
+			e.stopPropagation();
+			var id = $(this).data('id'),
+				file_url = $(this).data('url'),
+				current = $(this);
+
+			current.data('selected', id);
+			modal.find('tbody .selected').toggleClass('selected');
+			options.selected = id;
+			options.source.data('selected', id);
+
+			var selected = $(this);
+
+			if (selected.prop("tagName") == 'A') {
+				selected.parents('td').addClass('selected');
+			} else {
+				selected.parents('tr').addClass('selected');
+			}
+
+			if (options.ajax === false) {
+				callback($(this));
+			} else {
+				$.ajax({
+					url: file_url,
+					success: function(data) {
+						callback(data);
+					},
+					dataType: 'json'
+				});
+			}
+		});
+
+		$('.modal-file').on('click', '.filters a:not([href=""]), .filter-bar a:not([href=""]), .paginate a:not([href=""], .pagination a:not([href=""]), thead a:not([href=""])', function(e) {
+			e.preventDefault();
+			var new_url = $(this).attr('href');
+
+			$(this).parents('div.box').load(new_url);
+			if ($(options.source).hasClass('markItUpButton') || $(options.source).hasClass('rte-upload')) {
+				$('.publish .toolbar.rte li.m-link[rel="modal-file"], .publish .toolbar.html-btns li.m-link[rel="modal-file"]').attr('href', new_url);
+			}
+		});
+		// Capture form submission
+		$('.modal-file').on('submit', 'form', function(e) {
+			var url = $(this).attr('action'),
+				payload_elements = $('.filter-bar input', this);
+
+			// Only do this if we're on the file listing screen
+			if (payload_elements.size() == 0) {
+				return;
+			}
+
+			e.preventDefault();
+
+			$(this).parents('div.box').load(url+'&'+payload_elements.serialize());
+		});
+		$('.modal-file').on('click', '.tbl-action .action, .tbl-action a.button', function(e) {
+			e.preventDefault()
+			openInIframe($(this).attr('href'))
+		});
+
+		function openInIframe(url) {
+			$('div.box', modal).html("<iframe></iframe>");
+
+			var theme = $('body').data('theme');
+			var frame = $('iframe', modal);
+			frame.css('border', 'none');
+			frame.css('width', '100%');
+
+			// bind an unload event on the frame that hides it
+			// this prevents a flash of json when uploading
+			var bindFrameUnload = function() {
+				$(frame[0].contentWindow).on('unload', function() {
+					frame.hide();
+					$('.box', modal).height('auto');
+					$(modal).height('auto');
+				});
+			};
+
+			var cancelOnClose = function() {
+				$.ajax({
+					type: "POST",
+					url: $(frame).contents().find('form').attr('action'),
+					data: $(frame).contents().find('form').serialize() + '&submit=cancel',
+					async: false
+				});
+			}
+
+			frame.load(function (e) {
+				
+				$(modal).off('modal:close', cancelOnClose);
+
+				var response = $(this).contents().find('body');
+
+				SelectField.renderFields(response)
+
+				if ($(response).find('pre').length)
+				{
+					response = $(response).find('pre');
+				}
+
+				response = response.html();
+
+				try {
+					response  = JSON.parse(response);
+					if (response.cancel) {
+						modal.find('.m-close').click();
+						return;
+					}
+					callback(response);
+				} catch(e) {
+					$(this).contents().find('body').attr('data-theme', theme);
+					frame.show();
+					bindFrameUnload();
+
+					if ($(this).contents().find('.form-ctrls .button.draft[value="cancel"]').length > 0)
+					{
+						$(modal).on('modal:close', cancelOnClose);
+					}
+
+					var height = this.contentWindow.document.body.scrollHeight;
+					$('.box', modal).height(height);
+					$(this).height(height + 20);
+				}
+			});
+
+			frame.attr('src', url);
+			bindFrameUnload();
+		}
+	};
+
+	$.fn.FilePicker = function(defaults) {
+		this.off('click');
+
+		return this.each(function() {
+			$(this).data('picker-initialized', true);
+
+			$(this).on('click', function(){
+				var options = {};
+
+				// Duplicate the defaults object
+				for (var property in defaults) {
+					options[property] = defaults[property];
+				}
+
+				options.url = $(this).attr('href');
+				options.rel = $(this).attr('rel');
+				options.source = $(this);
+
+				if (options.input_value) {
+					options.input_value = $(options.input_value);
+				} else {
+					options.input_value = $('input[name="' + $(this).data('input-value') + '"], textarea[name="' + $(this).data('input-value') + '"]');
+				}
+
+				if (options.input_name) {
+					options.input_name = $(options.input_name);
+				} else {
+					options.input_name = $('#' + $(this).data('input-name'));
+				}
+
+				if (options.input_img) {
+					options.input_img = $(options.input_img);
+				} else {
+					options.input_img = $('#' + $(this).data('input-image'));
+				}
+
+				if ( ! ('selected' in options)) {
+					options.selected = $(this).data('selected');
+				}
+
+				bind_modal(options.url, options);
+			});
+		});
+	};
+
+	$(document).ready(function () {
+		$('.filepicker').click(function (e) {
+			// Someone already call .FilePicker() on this? Don't
+			// bork their setup
+			if ($(this).data('picker-initialized')) {
+				return;
+			}
+			var modal = $("." + $(this).attr('rel')),
+				options = {
+					"source":      $(this),
+					"input_value": $('input[name="' + $(this).data('input-value') + '"], textarea[name="' + $(this).data('input-value') + '"]'),
+					"input_name":  $('#' + $(this).data('input-name')),
+					"input_img":   $('#' + $(this).data('input-image')),
+					"selected":    $(this).data('selected'),
+					"url":         $(this).attr('href'),
+					"rel":         $(this).attr('rel')
+				},
+				callback_name = $(this).data('callback'),
+				current = $(this);
+
+			if (typeof callback_name != 'undefined' && callback_name.length !== 0)	{
+				options.callback = function(data, picker) {
+					var args = [data, picker],
+						namespaces = callback_name.split("."),
+						func = namespaces.pop(),
+						context = window;
+
+					for (var i = 0; i < namespaces.length; i++) {
+						context = context[namespaces[i]];
+					}
+
+					return context[func].apply(this, args);
+				};
+			} else {
+				options.callback = function(data, picker) {
+					picker.modal.find('.m-close').click();
+					picker.input_value.val(data.file_id);
+					picker.input_name.html(data.file_name);
+					picker.input_img.html("<img src='" + data.path + "' />");
+				};
+			}
+
+			bind_modal(options.url, options);
+		});
+	});
+
+})(jQuery);
+
+function loadSettingsModal(modal, data) {
+	$('div.box', modal).html(data);
+
+	// Bind validation
+	EE.cp.formValidation.init(modal);
+
+	$('form', modal).on('submit', function() {
+		$.ajax({
+			type: 'POST',
+			url: this.action,
+			data: $(this).serialize()+'&save_modal=yes',
+			dataType: 'json',
+
+			success: function(result) {
+				if (result.messageType == 'success') {
+					modal.trigger('modal:close');
+				} else {
+					loadSettingsModal(modal, result.body);
+				}
+			}
+		});
+
+		return false;
+	});
+}

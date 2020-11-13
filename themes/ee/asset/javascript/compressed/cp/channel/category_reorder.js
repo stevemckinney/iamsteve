@@ -3,7 +3,64 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-!function(e){"use strict";e(document).ready(function(){e(".nestable").nestable({listNodeName:"ul",listClass:"tbl-list",itemClass:"tbl-list-item",rootClass:"nestable",dragClass:"drag-tbl-row",handleClass:"reorder",placeElement:e('<li><div class="tbl-row drag-placeholder"><div class="none"></div></div></li>'),expandBtnHTML:"",collapseBtnHTML:"",maxDepth:10}).on("change",function(){e.ajax({url:EE.cat.reorder_url,data:{order:e(".nestable").nestable("serialize")},type:"POST",dataType:"json",error:function(t,l,i){0==e("body > .banner").size()&&e("body").prepend(EE.alert.reorder_ajax_fail)}})}),e(".tbl-list .check-ctrl input").click(function(){e(this).parents(".tbl-list-item").first().find(".tbl-list .check-ctrl input").prop("checked",e(this).is(":checked")).trigger("change"),e(this).is(":checked")||e(this).parents(".tbl-list-item").find("> .tbl-row > .check-ctrl input").prop("checked",!1).trigger("change")})})}(jQuery);
+
+(function($) {
+
+"use strict";
+
+$(document).ready(function() {
+
+	$('.js-nestable-categories').nestable({
+		listNodeName: 'ul',
+		listClass: 'list-group.list-group--nested',
+		itemClass: 'js-nested-item',
+		rootClass: 'js-nestable-categories',
+		dragClass: 'list-group--dragging',
+		handleClass: 'list-item__handle',
+		placeElement: $('<li><div class="tbl-row drag-placeholder"><div class="none"></div></div></li>'),
+		expandBtnHTML: '',
+		collapseBtnHTML: '',
+		maxDepth: 10
+	}).on('change', function() {
+
+		$.ajax({
+			url: EE.cat.reorder_url,
+			data: {'order': $('.js-nestable-categories').nestable('serialize') },
+			type: 'POST',
+			dataType: 'json',
+			error: function(xhr, text, error) {
+				// Let the user know something went wrong
+				if ($('body > .banner').size() == 0) {
+					$('body').prepend(EE.alert.reorder_ajax_fail);
+				}
+			}
+		});
+	});
+
+	// This is probably best in a plugin or common area as
+	// we have more of these; keeping it here for now while
+	// we assess the requirements for new table lists
+	$('.list-group .list-item__checkbox input').click(function(){
+
+		// Check/uncheck the children of this category
+		$(this).parents('.js-nested-item')
+			.first()
+			.find('.list-group .list-item__checkbox input')
+			.prop('checked', $(this).is(':checked'))
+			.trigger('change');
+
+		// If we're unchecking something, make sure all its
+		// parents are also unchecked
+		if ( ! $(this).is(':checked')) {
+			$(this).parents('.js-nested-item')
+				.find('> .tbl-row > .check-ctrl input')
+				.prop('checked', false)
+				.trigger('change');
+		}
+	});
+});
+
+})(jQuery);

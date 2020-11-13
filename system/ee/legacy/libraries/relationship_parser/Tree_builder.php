@@ -4,7 +4,7 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
 
@@ -270,6 +270,12 @@ class EE_relationship_tree_builder {
 			$in_grid = array_key_exists($relationship_prefix, $this->grid_relationship_ids);
 			$in_fluid_field = (bool) ($this->fluid_field_data_id && $this->fluid_field_data_id > 0);
 
+            // We found something in a fluid field that is not a relationship tag, skip it.
+            if ($in_fluid_field && $relationship_prefix == 'content:')
+            {
+                continue;
+            }
+
 			if (($in_grid || $in_fluid_field) && $match[2])
 			{
 				$is_only_relationship = ($match[2][0] != ':');
@@ -313,7 +319,7 @@ class EE_relationship_tree_builder {
 
                 if ( ! array_key_exists($parent_node_name, $open_nodes))
                 {
-                    throw new EE_Relationship_exception("Found <code>{{$tag_name}}</code> relationship, but no parent <code>{{$parent_node_name}}</code> tag pair was found.");
+                   throw new EE_Relationship_exception("Found <code>{{$tag_name}}</code> relationship, but no parent <code>{{$parent_node_name}}</code> tag pair was found.");
                 }
 
 				$parent_node = $open_nodes[$parent_node_name];
@@ -349,9 +355,13 @@ class EE_relationship_tree_builder {
 				'in_cond' => $type == 'conditional' ? TRUE : FALSE
 			));
 
-			if ($is_only_relationship && ! $node->in_cond)
+			// This is needed to tease out modifiers vs opening tags/opening tags with parameters
+			if ($is_only_relationship && ! $node->in_cond && (empty($match[2])) || ! empty($params))
 			{
-				$open_nodes[$tag_name] = $node;
+				if ($node->shortcut != 'entry_ids')
+				{
+					$open_nodes[$tag_name] = $node;
+				}
 			}
 
 			$parent_node->add($node);
@@ -442,9 +452,16 @@ class EE_relationship_tree_builder {
 				{
 					foreach (explode('|', $field_name) as $name)
 					{
-						foreach ($this->relationship_field_ids[$name] as $rel_field_id)
+						if (array_key_exists($name, $this->relationship_field_ids))
 						{
-							$field_ids[] = $rel_field_id;
+							foreach ($this->relationship_field_ids[$name] as $rel_field_id)
+							{
+								$field_ids[] = $rel_field_id;
+							}
+						}
+						if (array_key_exists($name, $this->grid_relationship_ids))
+						{
+							$field_ids[] = $this->grid_relationship_ids[$name];
 						}
 					}
 				}

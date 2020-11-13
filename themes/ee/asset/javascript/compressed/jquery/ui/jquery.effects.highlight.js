@@ -8,4 +8,53 @@
  *
  * http://api.jqueryui.com/highlight-effect/
  */
-!function(e){"function"==typeof define&&define.amd?define(["jquery","./effect"],e):e(jQuery)}(function(e){return e.effects.effect.highlight=function(o,n){var f=e(this),c=["backgroundImage","backgroundColor","opacity"],t=e.effects.setMode(f,o.mode||"show"),i={backgroundColor:f.css("backgroundColor")};"hide"===t&&(i.opacity=0),e.effects.save(f,c),f.show().css({backgroundImage:"none",backgroundColor:o.color||"#ffff99"}).animate(i,{queue:!1,duration:o.duration,easing:o.easing,complete:function(){"hide"===t&&f.hide(),e.effects.restore(f,c),n()}})}});
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"./effect"
+		], factory );
+	} else {
+
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
+
+return $.effects.effect.highlight = function( o, done ) {
+	var elem = $( this ),
+		props = [ "backgroundImage", "backgroundColor", "opacity" ],
+		mode = $.effects.setMode( elem, o.mode || "show" ),
+		animation = {
+			backgroundColor: elem.css( "backgroundColor" )
+		};
+
+	if (mode === "hide") {
+		animation.opacity = 0;
+	}
+
+	$.effects.save( elem, props );
+
+	elem
+		.show()
+		.css({
+			backgroundImage: "none",
+			backgroundColor: o.color || "#ffff99"
+		})
+		.animate( animation, {
+			queue: false,
+			duration: o.duration,
+			easing: o.easing,
+			complete: function() {
+				if ( mode === "hide" ) {
+					elem.hide();
+				}
+				$.effects.restore( elem, props );
+				done();
+			}
+		});
+};
+
+}));

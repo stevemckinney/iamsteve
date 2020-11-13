@@ -3,7 +3,45 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-!function(t){"use strict";t("table").each(function(){var a;t(this).data("table_config")&&(a=t(this).data("table_config"),t.isPlainObject(a)||(a=t.parseJSON(a)),t(this).table(a)),jQuery().toggle_all&&t(this).toggle_all()})}(jQuery);
+
+(function($) {
+
+"use strict";
+
+/**
+ * This file always runs dead last.
+ *
+ * We use it to initialize optional modules
+ * that are loaded by our libraries. For example,
+ * the table library loads up the table plugin in
+ * a datasource is used.
+ *
+ * That plugin is ultimately bound here.
+ */
+
+
+// Apply ee_table and ee_toggle_all to any tables that want it
+$('table').each(function() {
+	var config;
+
+	if ($(this).data('table_config')) {
+		config = $(this).data('table_config');
+
+		if ( ! $.isPlainObject(config))	{
+			config = $.parseJSON(config);
+		}
+
+		$(this).table(config);
+	}
+
+	// Apply ee_toggle_all only if it's loaded
+	if (jQuery().toggle_all)
+	{
+		$(this).toggle_all();
+	}
+});
+
+})(jQuery);

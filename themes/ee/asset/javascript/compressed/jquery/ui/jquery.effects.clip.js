@@ -8,4 +8,70 @@
  *
  * http://api.jqueryui.com/clip-effect/
  */
-!function(e){"function"==typeof define&&define.amd?define(["jquery","./effect"],e):e(jQuery)}(function(e){return e.effects.effect.clip=function(t,i){var f,o,c,n=e(this),s=["position","top","bottom","left","right","height","width"],r=e.effects.setMode(n,t.mode||"hide"),a="show"===r,d=t.direction||"vertical",h="vertical"===d,u=h?"height":"width",p=h?"top":"left",l={};e.effects.save(n,s),n.show(),f=e.effects.createWrapper(n).css({overflow:"hidden"}),o="IMG"===n[0].tagName?f:n,c=o[u](),a&&(o.css(u,0),o.css(p,c/2)),l[u]=a?c:0,l[p]=a?0:c/2,o.animate(l,{queue:!1,duration:t.duration,easing:t.easing,complete:function(){a||n.hide(),e.effects.restore(n,s),e.effects.removeWrapper(n),i()}})}});
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"./effect"
+		], factory );
+	} else {
+
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
+
+return $.effects.effect.clip = function( o, done ) {
+	// Create element
+	var el = $( this ),
+		props = [ "position", "top", "bottom", "left", "right", "height", "width" ],
+		mode = $.effects.setMode( el, o.mode || "hide" ),
+		show = mode === "show",
+		direction = o.direction || "vertical",
+		vert = direction === "vertical",
+		size = vert ? "height" : "width",
+		position = vert ? "top" : "left",
+		animation = {},
+		wrapper, animate, distance;
+
+	// Save & Show
+	$.effects.save( el, props );
+	el.show();
+
+	// Create Wrapper
+	wrapper = $.effects.createWrapper( el ).css({
+		overflow: "hidden"
+	});
+	animate = ( el[0].tagName === "IMG" ) ? wrapper : el;
+	distance = animate[ size ]();
+
+	// Shift
+	if ( show ) {
+		animate.css( size, 0 );
+		animate.css( position, distance / 2 );
+	}
+
+	// Create Animation Object:
+	animation[ size ] = show ? distance : 0;
+	animation[ position ] = show ? 0 : distance / 2;
+
+	// Animate
+	animate.animate( animation, {
+		queue: false,
+		duration: o.duration,
+		easing: o.easing,
+		complete: function() {
+			if ( !show ) {
+				el.hide();
+			}
+			$.effects.restore( el, props );
+			$.effects.removeWrapper( el );
+			done();
+		}
+	});
+
+};
+
+}));

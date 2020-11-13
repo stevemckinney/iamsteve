@@ -1,9 +1,191 @@
-"use strict";function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function _extends(){return _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var i=arguments[t];for(var n in i)Object.prototype.hasOwnProperty.call(i,n)&&(e[n]=i[n])}return e},_extends.apply(this,arguments)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _defineProperties(e,t){for(var i=0;i<t.length;i++){var n=t[i];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}function _createClass(e,t,i){return t&&_defineProperties(e.prototype,t),i&&_defineProperties(e,i),e}function _possibleConstructorReturn(e,t){return!t||"object"!==_typeof(t)&&"function"!=typeof t?_assertThisInitialized(e):t}function _getPrototypeOf(e){return(_getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&_setPrototypeOf(e,t)}function _setPrototypeOf(e,t){return(_setPrototypeOf=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function _assertThisInitialized(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function _defineProperty(e,t,i){return t in e?Object.defineProperty(e,t,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[t]=i,e}/*!
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/*!
  * This source file is part of the open source project
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-function makeFilterableComponent(e){return function(t){function i(e){var t;return _classCallCheck(this,i),t=_possibleConstructorReturn(this,_getPrototypeOf(i).call(this,e)),_defineProperty(_assertThisInitialized(_assertThisInitialized(t)),"itemsChanged",function(e){t.setState({items:e})}),_defineProperty(_assertThisInitialized(_assertThisInitialized(t)),"initialItemsChanged",function(e){t.initialItems=e,!t.ajaxFilter&&t.state.filterValues.search&&(e=t.filterItems(e,t.state.filterValues.search)),t.setState({items:e}),t.props.itemsChanged&&t.props.itemsChanged(e)}),_defineProperty(_assertThisInitialized(_assertThisInitialized(t)),"filterChange",function(e,i){var n=t.state.filterValues;if(n[e]=i,t.setState({filterValues:n}),!t.ajaxFilter&&"search"==e)return void t.itemsChanged(t.filterItems(t.initialItems,i));clearTimeout(t.ajaxTimer),t.ajaxRequest&&t.ajaxRequest.abort();var r=n;r.selected=t.getSelectedValues(t.props.selected),t.setState({loading:!0}),t.ajaxTimer=setTimeout(function(){t.ajaxRequest=t.forceAjaxRefresh(r)},300)}),t.initialItems=SelectList.formatItems(e.items),t.state={items:t.initialItems,initialCount:t.initialItems.length,filterValues:{},loading:!1},t.ajaxFilter=SelectList.countItems(t.initialItems)>=e.limit&&e.filterUrl,t.ajaxTimer=null,t.ajaxRequest=null,t}return _inherits(i,t),_createClass(i,[{key:"filterItems",value:function(e,t){var i=this;return e=e.map(function(e){e=Object.assign({},e),e.children&&(e.children=i.filterItems(e.children,t));var n=e.children&&e.children.length>0,r=String(e.label).toLowerCase().includes(t.toLowerCase());return!(!r&&!n)&&e}),e.filter(function(e){return e})}},{key:"getSelectedValues",value:function(e){var t=[];return e instanceof Array?t=e.map(function(e){return e.value}):e.value&&(t=[e.value]),t.join("|")}},{key:"forceAjaxRefresh",value:function(e){var t=this;return e||(e=this.state.filterValues,e.selected=this.getSelectedValues(this.props.selected)),$.ajax({url:this.props.filterUrl,data:$.param(e),dataType:"json",success:function(e){t.setState({loading:!1}),t.initialItemsChanged(SelectList.formatItems(e))},error:function(){}})}},{key:"render",value:function(){var t=this;return React.createElement(e,_extends({},this.props,{loading:this.state.loading,filterChange:function(e,i){return t.filterChange(e,i)},initialItems:this.initialItems,initialCount:this.state.initialCount,items:this.state.items,itemsChanged:this.initialItemsChanged}))}}]),i}(React.Component)}
+function makeFilterableComponent(WrappedComponent) {
+  var _temp;
+
+  return _temp =
+  /*#__PURE__*/
+  function (_React$Component) {
+    _inherits(_temp, _React$Component);
+
+    function _temp(props) {
+      var _this;
+
+      _classCallCheck(this, _temp);
+
+      _this = _possibleConstructorReturn(this, _getPrototypeOf(_temp).call(this, props));
+
+      _defineProperty(_assertThisInitialized(_this), "itemsChanged", function (items) {
+        _this.setState({
+          items: items
+        });
+      });
+
+      _defineProperty(_assertThisInitialized(_this), "initialItemsChanged", function (items) {
+        _this.initialItems = items;
+
+        if (!_this.ajaxFilter && _this.state.filterValues.search) {
+          items = _this.filterItems(items, _this.state.filterValues.search);
+        }
+
+        _this.setState({
+          items: items
+        });
+
+        if (_this.props.itemsChanged) {
+          _this.props.itemsChanged(items);
+        }
+      });
+
+      _defineProperty(_assertThisInitialized(_this), "filterChange", function (name, value) {
+        var filterState = _this.state.filterValues;
+        filterState[name] = value;
+
+        _this.setState({
+          filterValues: filterState
+        }); // DOM filter
+
+
+        if (!_this.ajaxFilter && name == 'search') {
+          _this.itemsChanged(_this.filterItems(_this.initialItems, value));
+
+          return;
+        } // Debounce AJAX filter
+
+
+        clearTimeout(_this.ajaxTimer);
+        if (_this.ajaxRequest) _this.ajaxRequest.abort();
+        var params = filterState;
+        params.selected = _this.getSelectedValues(_this.props.selected);
+
+        _this.setState({
+          loading: true
+        });
+
+        _this.ajaxTimer = setTimeout(function () {
+          _this.ajaxRequest = _this.forceAjaxRefresh(params);
+        }, 300);
+      });
+
+      _this.initialItems = SelectList.formatItems(props.items);
+      _this.state = {
+        items: _this.initialItems,
+        initialCount: _this.initialItems.length,
+        filterValues: {},
+        loading: false
+      };
+      _this.ajaxFilter = SelectList.countItems(_this.initialItems) >= props.limit && props.filterUrl;
+      _this.ajaxTimer = null;
+      _this.ajaxRequest = null;
+      return _this;
+    }
+
+    _createClass(_temp, [{
+      key: "filterItems",
+      value: function filterItems(items, searchTerm) {
+        var _this2 = this;
+
+        items = items.map(function (item) {
+          // Clone item so we don't modify reference types
+          item = Object.assign({}, item); // If any children contain the search term, we'll keep the parent
+
+          if (item.children) item.children = _this2.filterItems(item.children, searchTerm);
+          var itemFoundInChildren = item.children && item.children.length > 0;
+          var itemFound = String(item.label).toLowerCase().includes(searchTerm.toLowerCase());
+          return itemFound || itemFoundInChildren ? item : false;
+        });
+        return items.filter(function (item) {
+          return item;
+        });
+      }
+    }, {
+      key: "getSelectedValues",
+      value: function getSelectedValues(selected) {
+        var values = [];
+
+        if (selected instanceof Array) {
+          values = selected.map(function (item) {
+            return item.value;
+          });
+        } else if (selected.value) {
+          values = [selected.value];
+        }
+
+        return values.join('|');
+      }
+    }, {
+      key: "forceAjaxRefresh",
+      value: function forceAjaxRefresh(params) {
+        var _this3 = this;
+
+        if (!params) {
+          params = this.state.filterValues;
+          params.selected = this.getSelectedValues(this.props.selected);
+        }
+
+        return $.ajax({
+          url: this.props.filterUrl,
+          data: $.param(params),
+          dataType: 'json',
+          success: function success(data) {
+            _this3.setState({
+              loading: false
+            });
+
+            _this3.initialItemsChanged(SelectList.formatItems(data));
+          },
+          error: function error() {} // Defined to prevent error on .abort above
+
+        });
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this4 = this;
+
+        return React.createElement(WrappedComponent, _extends({}, this.props, {
+          loading: this.state.loading,
+          filterChange: function filterChange(name, value) {
+            return _this4.filterChange(name, value);
+          },
+          initialItems: this.initialItems,
+          initialCount: this.state.initialCount,
+          items: this.state.items,
+          itemsChanged: this.initialItemsChanged
+        }));
+      }
+    }]);
+
+    return _temp;
+  }(React.Component), _temp;
+}

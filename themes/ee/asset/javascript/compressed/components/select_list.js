@@ -1,9 +1,664 @@
-"use strict";function _extends(){return _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},_extends.apply(this,arguments)}function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}function _possibleConstructorReturn(e,t){return!t||"object"!==_typeof(t)&&"function"!=typeof t?_assertThisInitialized(e):t}function _getPrototypeOf(e){return(_getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&_setPrototypeOf(e,t)}function _setPrototypeOf(e,t){return(_setPrototypeOf=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function _assertThisInitialized(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function FieldInputs(e){return e.nested?React.createElement("ul",{className:"field-inputs field-nested"},e.children):React.createElement("div",{className:"field-inputs"},e.children)}/*!
+"use strict";
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/*!
  * This source file is part of the open source project
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-var SelectList=function(e){function t(e){var n;return _classCallCheck(this,t),n=_possibleConstructorReturn(this,_getPrototypeOf(t).call(this,e)),_defineProperty(_assertThisInitialized(_assertThisInitialized(n)),"handleSelect",function(e,t){var r=[],l=e.target.checked,a="--";if(n.props.multi&&t.value!=a)if(l)r=n.props.selected.concat([t]).filter(function(e){return e.value!=a}),n.props.selectionShouldRetainItemOrder&&(r=n.getOrderedSelection(r)),t.parent&&n.props.autoSelectParents&&(r=r.concat(n.diffItems(n.props.selected,n.getFlattenedParentsOfItem(t))));else{var i=[t];t.children&&n.props.autoSelectParents&&(i=i.concat(n.getFlattenedChildrenOfItem(t))),r=n.diffItems(i,n.props.selected)}else r=l?[t]:[];n.props.selectionChanged(r),n.props.groupToggle&&EE.cp.form_group_toggle(e.target)}),_defineProperty(_assertThisInitialized(_assertThisInitialized(n)),"clearSelection",function(e){n.props.selectionChanged([]),e.preventDefault()}),_defineProperty(_assertThisInitialized(_assertThisInitialized(n)),"filterChange",function(e,t){n.props.filterChange(e,t)}),_defineProperty(_assertThisInitialized(_assertThisInitialized(n)),"handleToggleAll",function(e){e?(newlySelected=n.props.items.filter(function(e){return(!n.props.disabledChoices||!n.props.disabledChoices.includes(e.value))&&(found=n.props.selected.find(function(t){return t.value==e.value}),!found)}),n.props.selectionChanged(n.props.selected.concat(newlySelected))):n.props.disabledChoices?n.props.selectionChanged(n.props.selected.filter(function(e){return n.props.disabledChoices.includes(e.value)})):n.props.selectionChanged([])}),n.version=0,n}return _inherits(t,e),_createClass(t,[{key:"componentDidMount",value:function(){this.props.nestableReorder?this.bindNestable():this.props.reorderable&&this.bindSortable()}},{key:"componentDidUpdate",value:function(e,t){(this.props.multi&&e.selected.length!=this.props.selected.length||!this.props.multi&&e.selected!=this.props.selected)&&$(this.input).trigger("change"),this.props.nestableReorder&&this.bindNestable()}},{key:"bindSortable",value:function(){var e=this,t=this.props.nested?".field-nested":".field-inputs";$(t,this.container).sortable({axis:"y",containment:"parent",handle:".icon-reorder",items:this.props.nested?"> li":"label",placeholder:"field-reorder-placeholder",sort:EE.sortable_sort_helper,start:function(e,t){t.helper.addClass("field-reorder-drag")},stop:function(t,n){n.item.removeClass("field-reorder-drag").addClass("field-reorder-drop"),setTimeout(function(){n.item.removeClass("field-reorder-drop")},1e3);var r=function o(e){var t=[];return e.forEach(function(e){var n={id:e.dataset.id},r=$(e).find("> ul > [data-id]");r.size()&&(n.children=o(r.toArray())),t.push(n)}),t},l=n.item.closest(".field-inputs").find("> [data-id]").toArray(),a=e.getItemsHash(e.props.items),i=r(l);e.props.itemsChanged(e.getItemsArrayForNestable(a,i)),e.props.reorderAjaxUrl&&$.ajax({url:e.props.reorderAjaxUrl,data:{order:i},type:"POST",dataType:"json"})}})}},{key:"bindNestable",value:function(){var e=this;$(this.container).nestable({listNodeName:"ul",listClass:"field-nested",itemClass:"nestable-item",rootClass:"field-select",dragClass:"field-inputs.field-reorder-drag",handleClass:"icon-reorder",placeElement:$('<li class="field-reorder-placeholder"></li>'),expandBtnHTML:"",collapseBtnHTML:"",maxDepth:10,constrainToRoot:!0}).on("change",function(t){if($(t.target).data("nestable")){e.version++;var n=e.getItemsHash(e.props.items),r=$(t.target).nestable("serialize");e.props.itemsChanged(e.getItemsArrayForNestable(n,r)),e.props.reorderAjaxUrl&&$.ajax({url:e.props.reorderAjaxUrl,data:{order:r},type:"POST",dataType:"json"})}})}},{key:"getItemsHash",value:function(e){var t=this,n={};return e.forEach(function(e){n[e.value]=e,e.children&&(n=Object.assign(n,t.getItemsHash(e.children)))}),n}},{key:"getItemsArrayForNestable",value:function(e,t,n){var r=this,l=[];return t.forEach(function(t){var a=e[t.id],i=Object.assign({},a);i.parent=n?n:null,i.children=t.children?r.getItemsArrayForNestable(e,t.children,i):null,l.push(i)}),l}},{key:"getOrderedSelection",value:function(e){var t=this;return orderedSelection=[],e.sort(function(e,n){return e=t.props.initialItems.findIndex(function(t){return t.value==e.value}),n=t.props.initialItems.findIndex(function(e){return e.value==n.value}),e<n?-1:1})}},{key:"diffItems",value:function(e,t){var n=e.map(function(e){return e.value});return t.filter(function(e){return n.every(function(t){return t!=e.value})})}},{key:"getFlattenedParentsOfItem",value:function(e){for(var t=[];e.parent;)t.push(e.parent),e=e.parent;return t}},{key:"getFlattenedChildrenOfItem",value:function(e){var t=this,n=[];return e.children.forEach(function(e){n.push(e),e.children&&(n=n.concat(t.getFlattenedChildrenOfItem(e)))}),n}},{key:"getFullItem",value:function(e){var t=this.getItemsHash(this.props.initialItems);return void 0!==t[e.value]?t[e.value]:e}},{key:"render",value:function(){var e=this,n=this.props,r=(n.multi||!n.selectable)&&null!==n.toggleAll;return React.createElement("div",{className:"fields-select"+(t.countItems(n.items)>n.tooManyLimit?" field-resizable":""),ref:function(t){e.container=t},key:this.version},(r||n.tooMany)&&React.createElement(FieldTools,null,n.tooMany&&React.createElement(FilterBar,null,n.filters&&n.filters.map(function(t){return React.createElement(FilterSelect,{key:t.name,name:t.name,keepSelectedState:!0,title:t.title,placeholder:t.placeholder,items:t.items,onSelect:function(n){return e.filterChange(t.name,n)}})}),React.createElement(FilterSearch,{onSearch:function(t){return e.filterChange("search",t.target.value)}})),r&&n.tooMany&&React.createElement("hr",null),r&&React.createElement(FilterToggleAll,{checkAll:n.toggleAll,onToggleAll:function(t){return e.handleToggleAll(t)}})),React.createElement(FieldInputs,{nested:n.nested},!n.loading&&0==n.items.length&&React.createElement(NoResults,{text:n.noResults}),n.loading&&React.createElement(Loading,{text:EE.lang.loading}),!n.loading&&n.items.map(function(t,r){return React.createElement(SelectItem,{key:t.value?t.value:t.section,item:t,name:n.name,selected:n.selected,disabledChoices:n.disabledChoices,multi:n.multi,nested:n.nested,selectable:n.selectable,reorderable:n.reorderable,removable:n.removable&&(!n.unremovableChoices||!n.unremovableChoices.includes(t.value)),editable:n.editable,handleSelect:e.handleSelect,handleRemove:function(e,t){return n.handleRemove(e,t)},groupToggle:n.groupToggle})})),!n.multi&&n.tooMany&&n.selected[0]&&React.createElement(SelectedItem,{item:this.getFullItem(n.selected[0]),clearSelection:this.clearSelection,selectionRemovable:n.selectionRemovable}),n.selectable&&0==n.selected.length&&React.createElement("input",{type:"hidden",name:n.multi?n.name+"[]":n.name,value:"",ref:function(t){e.input=t}}),n.selectable&&n.selected.map(function(t){return React.createElement("input",{type:"hidden",key:t.value,name:n.multi?n.name+"[]":n.name,value:t.value,ref:function(t){e.input=t}})}))}}],[{key:"formatItems",value:function(e,n,r){if(!e)return[];for(var l=[],a=null,i=Object.keys(e),o=0;o<i.length;o++)if(key=i[o],e[key].section)a=e[key].section,l.push({section:a,label:""});else{var s=r?e[key]:key,c={value:e[key].value||""===e[key].value?e[key].value:s,label:void 0!==e[key].label?e[key].label:e[key],instructions:e[key].instructions?e[key].instructions:"",children:null,parent:n?n:null,component:void 0!=e[key].component?e[key].component:null,sectionLabel:a};e[key].children&&(c.children=t.formatItems(e[key].children,c)),l.push(c)}return l}},{key:"countItems",value:function(e){return e.length+e.reduce(function(e,n){return n.children?e+t.countItems(n.children):e},0)}}]),t}(React.Component);_defineProperty(SelectList,"defaultProps",{reorderable:!1,nestableReorder:!1,removable:!1,selectable:!0,tooManyLimit:8,toggleAllLimit:3,selectionRemovable:!1,selectionShouldRetainItemOrder:!0});var SelectItem=function(e){function t(){return _classCallCheck(this,t),_possibleConstructorReturn(this,_getPrototypeOf(t).apply(this,arguments))}return _inherits(t,e),_createClass(t,[{key:"checked",value:function(e){return this.props.selected.find(function(t){return t.value==e})}},{key:"render",value:function(){var e=this.props,n=this.checked(e.item.value),r=e.item.label,l=e.disabledChoices&&e.disabledChoices.includes(e.item.value);if(e.item.section)return React.createElement("div",{className:"field-group-head",key:e.item.section},e.item.section);if(e.item.component){var a="".concat(e.item.component.tag);r=React.createElement(a,{className:e.item.component["class"],style:e.item.component.style},e.item.component.label)}var i=React.createElement("label",{className:n?"act":"","data-id":e.reorderable&&!e.nested?e.item.value:null},e.reorderable&&React.createElement("span",{className:"icon-reorder"}," "),e.selectable&&React.createElement("input",{type:e.multi?"checkbox":"radio",value:e.item.value,onChange:function(t){return e.handleSelect(t,e.item)},checked:n?"checked":"","data-group-toggle":e.groupToggle?JSON.stringify(e.groupToggle):"[]",disabled:l?"disabled":""}),e.editable&&React.createElement("a",{href:"#"},r),!e.editable&&r," ",e.item.instructions&&React.createElement("i",null,e.item.instructions),e.removable&&React.createElement("ul",{className:"toolbar"},React.createElement("li",{className:"remove"},React.createElement("a",{href:"",onClick:function(t){return e.handleRemove(t,e.item)}}))));return e.nested?React.createElement("li",{className:"nestable-item","data-id":e.item.value},i,e.item.children&&React.createElement("ul",{className:"field-nested"},e.item.children.map(function(n,r){return React.createElement(t,_extends({},e,{key:n.value,item:n,handleRemove:function(t,n){return e.handleRemove(t,n)}}))}))):i}}]),t}(React.Component),SelectedItem=function(e){function t(){return _classCallCheck(this,t),_possibleConstructorReturn(this,_getPrototypeOf(t).apply(this,arguments))}return _inherits(t,e),_createClass(t,[{key:"render",value:function(){var e=this.props,t=e.item.label;if(e.item.component){var n="".concat(e.item.component.tag);t=React.createElement(n,{className:e.item.component["class"],style:e.item.component.style},e.item.component.label)}return React.createElement("div",{className:"field-input-selected"},React.createElement("label",null,React.createElement("span",{className:"icon--success"})," ",t,e.selectionRemovable&&React.createElement("ul",{className:"toolbar"},React.createElement("li",{className:"remove"},React.createElement("a",{href:"",onClick:e.clearSelection})))))}}]),t}(React.Component);
+var SelectList =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SelectList, _React$Component);
+
+  function SelectList(props) {
+    var _this;
+
+    _classCallCheck(this, SelectList);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SelectList).call(this, props)); // In the rare case we need to force a full-rerender of the component, we'll
+    // increment this variable which is set as a key on the root element,
+    // telling React to destroy it and start anew
+
+    _defineProperty(_assertThisInitialized(_this), "handleSelect", function (event, item) {
+      var selected = [],
+          checked = event.target.checked,
+          XORvalue = '--';
+
+      if (_this.props.multi && item.value != XORvalue) {
+        if (checked) {
+          selected = _this.props.selected.concat([item]).filter(function (item) {
+            return item.value != XORvalue;
+          }); // uncheck XOR value
+          // Sort selection?
+
+          if (_this.props.selectionShouldRetainItemOrder) {
+            selected = _this.getOrderedSelection(selected);
+          } // Select parents?
+
+
+          if (item.parent && _this.props.autoSelectParents) {
+            selected = selected.concat(_this.diffItems(_this.props.selected, _this.getFlattenedParentsOfItem(item)));
+          }
+
+          if (item.children && _this.props.autoSelectParents) {
+            selected = selected.concat(_this.getFlattenedChildrenOfItem(item));
+          }
+        } else {
+          var deselect = [item];
+
+          if (item.children && _this.props.autoSelectParents) {
+            deselect = deselect.concat(_this.getFlattenedChildrenOfItem(item));
+          }
+
+          selected = _this.diffItems(deselect, _this.props.selected);
+        }
+      } else {
+        selected = checked ? [item] : [];
+      }
+
+      _this.props.selectionChanged(selected);
+
+      if (_this.props.groupToggle) EE.cp.form_group_toggle(event.target);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "clearSelection", function (event) {
+      _this.props.selectionChanged([]);
+
+      event.preventDefault();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "filterChange", function (name, value) {
+      _this.props.filterChange(name, value);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleToggleAll", function (check) {
+      // If checking, merge the newly-selected items on to the existing stack
+      // in case the current view is limited by a filter
+      if (check) {
+        newlySelected = _this.props.items.filter(function (thisItem) {
+          // Do not attempt to select disabled choices
+          if (_this.props.disabledChoices && _this.props.disabledChoices.includes(thisItem.value)) {
+            return false;
+          }
+
+          found = _this.props.selected.find(function (item) {
+            return item.value == thisItem.value;
+          });
+          return !found;
+        });
+        newlySelected.forEach(function (item) {
+          if (item.children && _this.props.autoSelectParents) {
+            newlySelected = newlySelected.concat(_this.getFlattenedChildrenOfItem(item));
+          }
+        });
+
+        _this.props.selected.forEach(function (item) {
+          if (item.children && _this.props.autoSelectParents) {
+            newlySelected = newlySelected.concat(_this.getFlattenedChildrenOfItem(item));
+          }
+        });
+
+        _this.props.selectionChanged(_this.props.selected.concat(newlySelected));
+      } else {
+        // Do not uncheck disabled choices if they are selected
+        if (_this.props.disabledChoices) {
+          _this.props.selectionChanged(_this.props.selected.filter(function (item) {
+            return _this.props.disabledChoices.includes(item.value);
+          }));
+        } else {
+          _this.props.selectionChanged([]);
+        }
+      }
+    });
+
+    _this.version = 0;
+    return _this;
+  }
+
+  _createClass(SelectList, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.nestableReorder) {
+        this.bindNestable();
+      } else if (this.props.reorderable) {
+        this.bindSortable();
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (this.props.multi && prevProps.selected.length != this.props.selected.length || !this.props.multi && prevProps.selected != this.props.selected) {
+        $(this.input).trigger('change');
+      }
+
+      if (this.props.nestableReorder) {
+        this.bindNestable();
+      }
+    }
+  }, {
+    key: "bindSortable",
+    value: function bindSortable() {
+      var _this2 = this;
+
+      var selector = this.props.nested ? '.field-nested' : '.field-inputs';
+      $(selector, this.container).sortable({
+        axis: 'y',
+        containment: 'parent',
+        handle: '.icon-reorder',
+        items: this.props.nested ? '> li' : 'label',
+        placeholder: 'field-reorder-placeholder',
+        sort: EE.sortable_sort_helper,
+        start: function start(event, ui) {
+          ui.helper.addClass('field-reorder-drag');
+        },
+        stop: function stop(event, ui) {
+          ui.item.removeClass('field-reorder-drag').addClass('field-reorder-drop');
+          setTimeout(function () {
+            ui.item.removeClass('field-reorder-drop');
+          }, 1000);
+
+          var getNestedItems = function getNestedItems(nodes) {
+            var serialized = [];
+            nodes.forEach(function (node) {
+              var item = {
+                id: node.dataset.id
+              };
+              var children = $(node).find('> ul > [data-id]');
+
+              if (children.size()) {
+                item['children'] = getNestedItems(children.toArray());
+              }
+
+              serialized.push(item);
+            });
+            return serialized;
+          };
+
+          var items = ui.item.closest('.field-inputs').find('> [data-id]').toArray();
+
+          var itemsHash = _this2.getItemsHash(_this2.props.items);
+
+          var nestedItems = getNestedItems(items);
+
+          _this2.props.itemsChanged(_this2.getItemsArrayForNestable(itemsHash, nestedItems));
+
+          if (_this2.props.reorderAjaxUrl) {
+            $.ajax({
+              url: _this2.props.reorderAjaxUrl,
+              data: {
+                'order': nestedItems
+              },
+              type: 'POST',
+              dataType: 'json'
+            });
+          }
+        }
+      });
+    } // Allows for changing of parents and children, whereas sortable() will only
+    // let you change the order constrained to a level
+
+  }, {
+    key: "bindNestable",
+    value: function bindNestable() {
+      var _this3 = this;
+
+      $(this.container).nestable({
+        listNodeName: 'ul',
+        listClass: 'field-nested',
+        itemClass: 'nestable-item',
+        rootClass: 'field-select',
+        dragClass: 'field-inputs.field-reorder-drag',
+        handleClass: 'icon-reorder',
+        placeElement: $('<li class="field-reorder-placeholder"></li>'),
+        expandBtnHTML: '',
+        collapseBtnHTML: '',
+        maxDepth: 10,
+        constrainToRoot: true
+      }).on('change', function (event) {
+        if (!$(event.target).data("nestable")) return; // React will not be able to handle Nestable changing a node's children,
+        // so force a full re-render if it happens
+
+        _this3.version++;
+
+        var itemsHash = _this3.getItemsHash(_this3.props.items);
+
+        var nestableData = $(event.target).nestable('serialize');
+
+        _this3.props.itemsChanged(_this3.getItemsArrayForNestable(itemsHash, nestableData));
+
+        if (_this3.props.reorderAjaxUrl) {
+          $.ajax({
+            url: _this3.props.reorderAjaxUrl,
+            data: {
+              'order': nestableData
+            },
+            type: 'POST',
+            dataType: 'json'
+          });
+        }
+      });
+    }
+  }, {
+    key: "getItemsHash",
+    value: function getItemsHash(items) {
+      var _this4 = this;
+
+      var itemsHash = {};
+      items.forEach(function (item) {
+        itemsHash[item.value] = item;
+        if (item.children) itemsHash = Object.assign(itemsHash, _this4.getItemsHash(item.children));
+      });
+      return itemsHash;
+    }
+  }, {
+    key: "getItemsArrayForNestable",
+    value: function getItemsArrayForNestable(itemsHash, nestable, parent) {
+      var _this5 = this;
+
+      var items = [];
+      nestable.forEach(function (orderedItem) {
+        var item = itemsHash[orderedItem.id];
+        var newItem = Object.assign({}, item);
+        newItem.parent = parent ? parent : null;
+        newItem.children = orderedItem.children ? _this5.getItemsArrayForNestable(itemsHash, orderedItem.children, newItem) : null;
+        items.push(newItem);
+      });
+      return items;
+    }
+  }, {
+    key: "getOrderedSelection",
+    // Orders the selection array based on the items' order in the list
+    value: function getOrderedSelection(selected) {
+      var _this6 = this;
+
+      orderedSelection = [];
+      return selected.sort(function (a, b) {
+        a = _this6.props.initialItems.findIndex(function (item) {
+          return item.value == a.value;
+        });
+        b = _this6.props.initialItems.findIndex(function (item) {
+          return item.value == b.value;
+        });
+        return a < b ? -1 : 1;
+      });
+    } // Returns all items in items2 that aren't present in items1
+
+  }, {
+    key: "diffItems",
+    value: function diffItems(items1, items2) {
+      var values = items1.map(function (item) {
+        return item.value;
+      });
+      return items2.filter(function (item) {
+        // Would use .includes() here but we can't rely on types being
+        // the same, so we need to do a manual loose type check
+        return values.every(function (value) {
+          return value != item.value;
+        });
+      });
+    }
+  }, {
+    key: "getFlattenedParentsOfItem",
+    value: function getFlattenedParentsOfItem(item) {
+      var items = [];
+
+      while (item.parent) {
+        items.push(item.parent);
+        item = item.parent;
+      }
+
+      return items;
+    }
+  }, {
+    key: "getFlattenedChildrenOfItem",
+    value: function getFlattenedChildrenOfItem(item) {
+      var _this7 = this;
+
+      var items = [];
+      item.children.forEach(function (child) {
+        items.push(child);
+
+        if (child.children) {
+          items = items.concat(_this7.getFlattenedChildrenOfItem(child));
+        }
+      });
+      return items;
+    }
+  }, {
+    key: "getFullItem",
+    // You may have an item without complete metadata (component, parents, etc.),
+    // this can happen with initial selections passed into the component. This function
+    // will try to find the corresponding item in what we have available and return it.
+    // It may not be available though if this list is AJAX-filtered.
+    value: function getFullItem(item) {
+      var itemsHash = this.getItemsHash(this.props.initialItems);
+
+      if (itemsHash[item.value] !== undefined) {
+        return itemsHash[item.value];
+      }
+
+      return item;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this8 = this;
+
+      var props = this.props;
+      var shouldShowToggleAll = (props.multi || !props.selectable) && props.toggleAll !== null;
+      return React.createElement("div", {
+        className: props.tooMany ? ' lots-of-checkboxes' : '',
+        ref: function ref(container) {
+          _this8.container = container;
+        },
+        key: this.version
+      }, props.tooMany && React.createElement("div", {
+        "class": "lots-of-checkboxes__search"
+      }, React.createElement("div", {
+        "class": "lots-of-checkboxes__search-inner"
+      }, props.tooMany && React.createElement("div", {
+        "class": "lots-of-checkboxes__search-input"
+      }, React.createElement(FilterBar, null, props.filters && props.filters.map(function (filter) {
+        return React.createElement(FilterSelect, {
+          key: filter.name,
+          name: filter.name,
+          keepSelectedState: true,
+          title: filter.title,
+          placeholder: filter.placeholder,
+          items: filter.items,
+          onSelect: function onSelect(value) {
+            return _this8.filterChange(filter.name, value);
+          }
+        });
+      }), React.createElement(FilterSearch, {
+        onSearch: function onSearch(e) {
+          return _this8.filterChange('search', e.target.value);
+        }
+      }))), shouldShowToggleAll && props.tooMany && React.createElement(FilterToggleAll, {
+        checkAll: props.toggleAll,
+        onToggleAll: function onToggleAll(check) {
+          return _this8.handleToggleAll(check);
+        }
+      }))), React.createElement(FieldInputs, {
+        nested: props.nested,
+        tooMany: props.tooMany
+      }, !props.loading && props.items.length == 0 && React.createElement(NoResults, {
+        text: props.noResults
+      }), props.loading && React.createElement(Loading, {
+        text: EE.lang.loading
+      }), !props.loading && props.items.map(function (item, index) {
+        return React.createElement(SelectItem, {
+          key: item.value ? item.value : item.section,
+          item: item,
+          name: props.name,
+          selected: props.selected,
+          disabledChoices: props.disabledChoices,
+          multi: props.multi,
+          nested: props.nested,
+          selectable: props.selectable,
+          reorderable: props.reorderable,
+          removable: props.removable && (!props.unremovableChoices || !props.unremovableChoices.includes(item.value)),
+          editable: props.editable,
+          handleSelect: _this8.handleSelect,
+          handleRemove: function handleRemove(e, item) {
+            return props.handleRemove(e, item);
+          },
+          groupToggle: props.groupToggle
+        });
+      })), !props.multi && props.tooMany && props.selected[0] && React.createElement(SelectedItem, {
+        item: this.getFullItem(props.selected[0]),
+        clearSelection: this.clearSelection,
+        selectionRemovable: props.selectionRemovable
+      }), props.selectable && props.selected.length == 0 && React.createElement("input", {
+        type: "hidden",
+        name: props.multi ? props.name + '[]' : props.name,
+        value: "",
+        ref: function ref(input) {
+          _this8.input = input;
+        }
+      }), props.selectable && props.selected.map(function (item) {
+        return React.createElement("input", {
+          type: "hidden",
+          key: item.value,
+          name: props.multi ? props.name + '[]' : props.name,
+          value: item.value,
+          ref: function ref(input) {
+            _this8.input = input;
+          }
+        });
+      }));
+    }
+  }], [{
+    key: "formatItems",
+    value: function formatItems(items, parent, multi) {
+      if (!items) return [];
+      var itemsArray = [];
+      var currentSection = null;
+
+      for (var _i = 0, _Object$keys = Object.keys(items); _i < _Object$keys.length; _i++) {
+        key = _Object$keys[_i];
+
+        if (items[key].section) {
+          currentSection = items[key].section;
+          itemsArray.push({
+            section: currentSection,
+            label: ''
+          });
+        } else {
+          // When formatting selected items lists, selections will likely be a flat
+          // array of values for multi-select
+          var value = multi ? items[key] : key;
+          var newItem = {
+            value: items[key].value || items[key].value === '' ? items[key].value : value,
+            label: items[key].label !== undefined ? items[key].label : items[key],
+            instructions: items[key].instructions ? items[key].instructions : '',
+            children: null,
+            parent: parent ? parent : null,
+            component: items[key].component != undefined ? items[key].component : null,
+            sectionLabel: currentSection
+          };
+
+          if (items[key].children) {
+            newItem.children = SelectList.formatItems(items[key].children, newItem);
+          }
+
+          itemsArray.push(newItem);
+        }
+      }
+
+      return itemsArray;
+    } // Counts items including any nested items to get a total count for the field
+
+  }, {
+    key: "countItems",
+    value: function countItems(items) {
+      return items.length + items.reduce(function (sum, item) {
+        if (item.children) {
+          return sum + SelectList.countItems(item.children);
+        }
+
+        return sum;
+      }, 0);
+    }
+  }]);
+
+  return SelectList;
+}(React.Component);
+
+_defineProperty(SelectList, "defaultProps", {
+  reorderable: false,
+  nestableReorder: false,
+  removable: false,
+  selectable: true,
+  tooManyLimit: 8,
+  toggleAllLimit: 3,
+  selectionRemovable: false,
+  selectionShouldRetainItemOrder: true
+});
+
+function FieldInputs(props) {
+  var divClass = props.tooMany ? ' lots-of-checkboxes__items--too-many' : '';
+
+  if (props.nested) {
+    return React.createElement("ul", {
+      className: 'field-inputs lots-of-checkboxes__items field-nested' + divClass
+    }, props.children);
+  }
+
+  return React.createElement("div", {
+    className: 'field-inputs lots-of-checkboxes__items' + divClass
+  }, props.children);
+}
+
+var SelectItem =
+/*#__PURE__*/
+function (_React$Component2) {
+  _inherits(SelectItem, _React$Component2);
+
+  function SelectItem() {
+    _classCallCheck(this, SelectItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SelectItem).apply(this, arguments));
+  }
+
+  _createClass(SelectItem, [{
+    key: "checked",
+    value: function checked(value) {
+      return this.props.selected.find(function (item) {
+        return item.value == value;
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var props = this.props;
+      var checked = this.checked(props.item.value);
+      var label = props.item.label;
+      var disabled = props.disabledChoices && props.disabledChoices.includes(props.item.value);
+
+      if (props.item.section) {
+        return React.createElement("div", {
+          className: "field-group-head",
+          key: props.item.section
+        }, props.item.section);
+      }
+
+      var listItem = React.createElement("label", {
+        className: 'checkbox-label',
+        "data-id": props.reorderable && !props.nested ? props.item.value : null
+      }, props.selectable && React.createElement("input", {
+        type: props.multi ? "checkbox" : "radio",
+        value: props.item.value,
+        onChange: function onChange(e) {
+          return props.handleSelect(e, props.item);
+        },
+        checked: checked ? 'checked' : '',
+        "data-group-toggle": props.groupToggle ? JSON.stringify(props.groupToggle) : '[]',
+        disabled: disabled ? 'disabled' : ''
+      }), React.createElement("div", {
+        className: "checkbox-label__text"
+      }, props.reorderable && React.createElement("span", {
+        className: "icon-reorder icon-left"
+      }), props.editable && React.createElement("a", {
+        href: "#",
+        "class": "flyout-edit",
+        dangerouslySetInnerHTML: {
+          __html: label
+        }
+      }), !props.editable && React.createElement("div", {
+        dangerouslySetInnerHTML: {
+          __html: label
+        }
+      }), " ", props.item.instructions && React.createElement("span", {
+        className: "meta-info"
+      }, props.item.instructions), props.removable && React.createElement("a", {
+        href: "",
+        className: "button button--small default float-right",
+        onClick: function onClick(e) {
+          return props.handleRemove(e, props.item);
+        }
+      }, React.createElement("i", {
+        "class": "fas fa-fw fa-trash-alt"
+      }))));
+
+      if (props.nested) {
+        return React.createElement("li", {
+          className: "nestable-item",
+          "data-id": props.item.value
+        }, listItem, props.item.children && React.createElement("ul", {
+          className: "field-nested"
+        }, props.item.children.map(function (item, index) {
+          return React.createElement(SelectItem, _extends({}, props, {
+            key: item.value,
+            item: item,
+            handleRemove: function handleRemove(e, item) {
+              return props.handleRemove(e, item);
+            }
+          }));
+        })));
+      }
+
+      return listItem;
+    }
+  }]);
+
+  return SelectItem;
+}(React.Component);
+
+var SelectedItem =
+/*#__PURE__*/
+function (_React$Component3) {
+  _inherits(SelectedItem, _React$Component3);
+
+  function SelectedItem() {
+    _classCallCheck(this, SelectedItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SelectedItem).apply(this, arguments));
+  }
+
+  _createClass(SelectedItem, [{
+    key: "render",
+    value: function render() {
+      var props = this.props;
+      var label = props.item.label;
+      return React.createElement("div", {
+        className: "lots-of-checkboxes__selection"
+      }, React.createElement("i", {
+        className: "fas fa-check-circle"
+      }), " ", label, props.selectionRemovable && React.createElement("a", {
+        className: "button button--default float-right",
+        href: "",
+        onClick: props.clearSelection
+      }, React.createElement("i", {
+        "class": "fas fa-trash-alt"
+      })));
+    }
+  }]);
+
+  return SelectedItem;
+}(React.Component);
