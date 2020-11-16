@@ -20,7 +20,7 @@
     "js-cookie": "^2.1.4",
     "lazysizes": "^5.2.1",
     "linkjuice": "^1.0.1",
-    "natives": "^1.1.4",
+    "natives": "^1.1.6",
     "prismjs": "^1.21.0"
   },
   "devDependencies": {
