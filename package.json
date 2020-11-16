@@ -9,7 +9,7 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-loader": "^3.0.2",
-    "fitvids": "^2.0.0",
+    "fitvids": "^2.1.1",
     "flickity": "^2.2.1",
     "fontfaceobserver": "^2.1.0",
     "gulp-autoprefixer": "^2.3.1",
