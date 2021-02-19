@@ -40,13 +40,15 @@
   display: block;
   text-align: center;
   width: 100%;
+  margin-bottom: -28px;
+
+  @include breakpoint(734px) {
+    margin-bottom: -42px;
+    min-height: 404px; }
 
   img {
     display: block;
-    margin: 0 auto -28px;
-
-    @include breakpoint(734px) {
-      margin-bottom: -42px; } } }
+    margin: 0 auto; } }
 
 .hero-title {
   width: 176px;
