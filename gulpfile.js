@@ -66,8 +66,9 @@ const fresh = (done) => {
  * see: https://www.browsersync.io/docs/options/
  **/
 const browserSyncOptions = {
-  proxy: 'http://iamsteve.dev',
-  injectChanges: true
+  proxy: 'https://iamsteve.test',
+  injectChanges: true,
+  https: true
 }
 
 // Reload
