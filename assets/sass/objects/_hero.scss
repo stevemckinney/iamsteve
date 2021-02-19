@@ -4,6 +4,7 @@
   background-color: $primary-l4;
   display: flex;
   flex-flow: column;
+  align-items: center;
   justify-content: flex-end;
   padding-top: $line*2.5;
   min-height: 464px;
@@ -36,19 +37,34 @@
   @include breakpoint($site-width) {
     left: calc(50% - 600px); } }
 
+.hero-title {
+  @include breakpoint(max-width 1199px) {
+    height: 192px; }
+
+  @include breakpoint(max-width 399px) {
+    height: 148px; } }
+
 .hero-image {
-  display: block;
-  text-align: center;
-  width: 100%;
+  width: 320px;
+  height: 254px;
   margin-bottom: -28px;
 
-  @include breakpoint(734px) {
-    margin-bottom: -42px;
-    min-height: 404px; }
-
-  img {
+  picture {
     display: block;
-    margin: 0 auto; } }
+  }
+
+  @include breakpoint(400px) {
+    width: 394px;
+    height: 296px; }
+
+  @include breakpoint(734px) {
+    width: 734px;
+    height: 312px;
+    margin-bottom: -42px; }
+
+  @include breakpoint(1200px) {
+    width: 960px;
+    height: 404px; } }
 
 .hero-title {
   width: 176px;
