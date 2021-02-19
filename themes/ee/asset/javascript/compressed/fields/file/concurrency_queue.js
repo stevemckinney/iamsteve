@@ -1,8 +1,67 @@
-"use strict";function _classCallCheck(e,n){if(!(e instanceof n))throw new TypeError("Cannot call a class as a function")}function _defineProperties(e,n){for(var t=0;t<n.length;t++){var r=n[t];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function _createClass(e,n,t){return n&&_defineProperties(e.prototype,n),t&&_defineProperties(e,t),e}/**
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/**
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license
  */
-var ConcurrencyQueue=function(){function e(n){var t=n.concurrency;_classCallCheck(this,e),this.concurrency=t,this.queue=[],this.currentlyRunning=0}return _createClass(e,[{key:"enqueue",value:function(e,n){var t=this;e.forEach(function(e){t.queue.push({item:e,factory:n})}),this.start()}},{key:"start",value:function(){for(var e=this;this.currentlyRunning<this.concurrency&&this.queue.length>0;){var n=this.queue.shift(),t=n.item,r=n.factory;this.currentlyRunning++,r(t).then(function(){e.currentlyRunning--,e.start()})["catch"](function(){e.currentlyRunning--,e.start()})}}}]),e}();
+var ConcurrencyQueue =
+/*#__PURE__*/
+function () {
+  function ConcurrencyQueue(_ref) {
+    var concurrency = _ref.concurrency;
+
+    _classCallCheck(this, ConcurrencyQueue);
+
+    this.concurrency = concurrency;
+    this.queue = [];
+    this.currentlyRunning = 0;
+  }
+
+  _createClass(ConcurrencyQueue, [{
+    key: "enqueue",
+    value: function enqueue(items, factory) {
+      var _this = this;
+
+      items.forEach(function (item) {
+        _this.queue.push({
+          item: item,
+          factory: factory
+        });
+      });
+      this.start();
+    }
+  }, {
+    key: "start",
+    value: function start() {
+      var _this2 = this;
+
+      while (this.currentlyRunning < this.concurrency && this.queue.length > 0) {
+        var _this$queue$shift = this.queue.shift(),
+            item = _this$queue$shift.item,
+            factory = _this$queue$shift.factory;
+
+        this.currentlyRunning++;
+        factory(item).then(function () {
+          _this2.currentlyRunning--;
+
+          _this2.start();
+        })["catch"](function () {
+          _this2.currentlyRunning--;
+
+          _this2.start();
+        });
+      }
+    }
+  }]);
+
+  return ConcurrencyQueue;
+}();

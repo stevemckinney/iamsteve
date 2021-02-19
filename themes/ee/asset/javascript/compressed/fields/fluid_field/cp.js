@@ -3,7 +3,127 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-"use strict";!function(e){e(document).ready(function(){e(".fluid-field-templates :input").attr("disabled","disabled"),e(".form-standard > form").on("submit",function(t){e(".fluid-field-templates :input").attr("disabled","disabled")});var t=function(t){var i=e(this).closest(".fluid-wrap"),d=e(this).data("field-name"),n=i.data("field-count"),a=i.find('.fluid-field-templates .fluid-item[data-field-name="'+d+'"]'),r=a.clone();n++,r.html(r.html().replace(RegExp("new_field_[0-9]{1,}","g"),"new_field_"+n)),i.data("field-count",n),r.find(":input").removeAttr("disabled"),e(this).parents(".fluid-item").length?e(this).closest(".fluid-item").after(r):i.find(".js-sorting-container").append(r),e.fuzzyFilter(),EE.cp&&void 0!==EE.cp.formValidation&&EE.cp.formValidation.bindInputs(r),t.preventDefault(),i.find(".open").trigger("click"),FluidField.fireEvent(e(r).data("field-type"),"add",[r]),e(document).trigger("entry:preview")};e(".fluid-wrap").on("click","a[data-field-name]",t),e(".fluid-wrap").on("click","a.fluid-remove",function(t){var i=e(this).closest(".fluid-item");FluidField.fireEvent(e(i).data("field-type"),"remove",i),e(document).trigger("entry:preview"),i.remove(),t.preventDefault()}),e(".js-sorting-container").sortable({axis:"y",containment:"parent",handle:"span.reorder",items:".fluid-item",sort:EE.sortable_sort_helper,start:function(t,i){FluidField.fireEvent(e(i.item).data("field-type"),"beforeSort",e(i.item))},stop:function(t,i){FluidField.fireEvent(e(i.item).data("field-type"),"afterSort",e(i.item)),e(document).trigger("entry:preview")}})})}(jQuery);
+
+"use strict";
+
+(function ($) {
+	$(document).ready(function () {
+		// Disable inputs
+		$('.fluid-field-templates :input').attr('disabled', 'disabled');
+
+		// Disable inputs on submit too, so we don't send them if they showed up late
+		$(".form-standard > form").on('submit', function(e) {
+			$('.fluid-field-templates :input').attr('disabled', 'disabled');
+		});
+
+	    var addField = function(e) {
+			var fluidField   = $(this).closest('.fluid'),
+			    fieldToAdd   = $(this).data('field-name'),
+			    fieldCount   = fluidField.data('field-count'),
+			    fieldToClone = fluidField.find('.fluid-field-templates .fluid__item[data-field-name="' + fieldToAdd + '"]'),
+			    fieldClone   = fieldToClone.clone();
+
+			fieldCount++;
+
+			fieldClone.html(
+				fieldClone.html().replace(
+					RegExp('new_field_[0-9]{1,}', 'g'),
+					'new_field_' + fieldCount
+				)
+			);
+
+			fluidField.data('field-count', fieldCount);
+
+			// Enable inputs
+			fieldClone.find(':input').removeAttr('disabled');
+
+			// Insert it
+			if ( ! $(this).parents('.fluid__item').length) {
+				// The main add button at the bottom was used
+				fluidField.find('.js-sorting-container').append(fieldClone);
+			}
+			else {
+				// The item's add button was used, so place it below itself
+				$(this).closest('.fluid__item').after(fieldClone);
+			}
+
+			$.fuzzyFilter();
+
+			// Bind the new field's inputs to AJAX form validation
+			if (EE.cp && EE.cp.formValidation !== undefined) {
+				EE.cp.formValidation.bindInputs(fieldClone);
+			}
+
+			e.preventDefault();
+			// Hide the add item menu
+			$('.js-dropdown-toggle.dropdown-open').trigger('click');
+
+			FluidField.fireEvent($(fieldClone).data('field-type'), 'add', [fieldClone]);
+			$(document).trigger('entry:preview');
+	    };
+
+		$('.fluid').on('click', 'a[data-field-name]', addField);
+
+		$('.fluid').on('click', 'a.js-fluid-remove', function(e) {
+			var el = $(this).closest('.fluid__item');
+			FluidField.fireEvent($(el).data('field-type'), 'remove', el);
+			$(document).trigger('entry:preview');
+			el.remove();
+			e.preventDefault();
+		});
+
+		// Toggle fluid item
+		$('.fluid').on('click', '.js-toggle-fluid-item', function() {
+			$(this).parents('.fluid__item').toggleClass('fluid__item--collapsed');
+
+			// Hide the dropdown menu
+			$('.js-dropdown-toggle.dropdown-open').trigger('click');
+
+			return false;
+		});
+
+		// Hide all fluid items
+		$('.fluid').on('click', '.js-hide-all-fluid-items', function() {
+			$(this).parents('.fluid').find('.js-sorting-container .fluid__item').addClass('fluid__item--collapsed');
+
+			// Hide the dropdown menu
+			$('.js-dropdown-toggle.dropdown-open').trigger('click');
+
+			return false;
+		});
+
+		// Show all fluid items
+		$('.fluid').on('click', '.js-show-all-fluid-items', function() {
+			$(this).parents('.fluid').find('.js-sorting-container .fluid__item').removeClass('fluid__item--collapsed');
+
+			// Hide the dropdown menu
+			$('.js-dropdown-toggle.dropdown-open').trigger('click');
+
+			return false;
+		});
+
+		// Make the fluid fields sortable
+		$('.js-sorting-container').sortable({
+			containment: false,
+			handle: '.reorder', // Set drag handle to the top box
+			items: '.fluid__item',			// Only allow these to be sortable
+			sort: EE.sortable_sort_helper,	// Custom sort handler
+			cancel: '.no-drag',
+			start: function (event, ui) {
+				$(ui.item).addClass('fluid__item--dragging')
+
+				FluidField.fireEvent($(ui.item).data('field-type'), 'beforeSort', $(ui.item))
+			},
+			stop: function (event, ui) {
+				$(ui.item).removeClass('fluid__item--dragging')
+
+				FluidField.fireEvent($(ui.item).data('field-type'), 'afterSort', $(ui.item))
+
+				$(document).trigger('entry:preview');
+			}
+		});
+	});
+})(jQuery);

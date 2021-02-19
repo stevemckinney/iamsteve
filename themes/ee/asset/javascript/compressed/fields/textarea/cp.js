@@ -3,7 +3,59 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-"use strict";!function(i){i(document).ready(function(){EE.filePickerCallback=function(i,e){var a=e.input_value;if(0==a.size()&&(a=e.source.parents(".markItUpContainer").find("textarea.markItUpEditor")),e.modal.find(".m-close").click(),file_string="{filedir_"+i.upload_location_id+"}"+i.file_name,i.isImage){var t='<img src="'+file_string+'"';t+=' alt=""',i.file_hw_original&&(dimensions=i.file_hw_original.split(" "),t=t+' height="'+dimensions[0]+'" width="'+dimensions[1]+'"'),t+=">",a.insertAtCursor(t)}else a.insertAtCursor('<a href="'+file_string+'">'+i.file_name+"</a>")},setTimeout(function(){i(".textarea-field-filepicker, li.html-upload").FilePicker({callback:EE.filePickerCallback})},1e3),i(".tbl-wrap table").on("grid:addRow",function(e,a){i(a).find(".grid-textarea").each(function(){var e=i(this).find("textarea").attr("name");i(this).find(".textarea-field-filepicker, li.html-upload").attr("data-input-value",e)}),i(a).find(".textarea-field-filepicker, li.html-upload").FilePicker({callback:EE.filePickerCallback})})})}(jQuery);
+
+"use strict";
+
+(function ($) {
+	$(document).ready(function () {
+		EE.filePickerCallback = function(data, references) {
+			var input = references.input_value;
+
+			// May be a markItUp button
+			if (input.size() == 0) {
+				input = references.source.parents('.markItUpContainer').find('textarea.markItUpEditor');
+			}
+
+			// Close the modal
+			references.modal.find('.m-close').click();
+
+			// Assign the value {filedir_#}filename.ext
+			file_string = '{filedir_' + data.upload_location_id + '}' + data.file_name;
+
+			// Output as image tag if image
+			if (data.isImage) {
+				var html = '<img src="' + file_string + '"';
+				html = html + ' alt=""';
+
+				if (data.file_hw_original) {
+					dimensions = data.file_hw_original.split(' ');
+					html = html + ' height="' + dimensions[0] + '" width="' + dimensions[1] + '"';
+				}
+
+				html = html + '>';
+
+				input.insertAtCursor(html);
+			} else {
+				// Output link if non-image
+				input.insertAtCursor('<a href="' + file_string + '">' + data.file_name + '</a>');
+			}
+		};
+
+		// Need to make sure this is loaded after markItUp has added the image button :-/
+		setTimeout(function() {
+			$('.textarea-field-filepicker, li.html-upload').FilePicker({callback: EE.filePickerCallback});
+		}, 1000);
+
+		// Grid added a row? Hook up the new buttons!
+		$('.tbl-wrap table').on('grid:addRow', function(event, el) {
+			$(el).find('.grid-textarea').each(function() {
+				var input_name = $(this).find('textarea').attr('name');
+				$(this).find('.textarea-field-filepicker, li.html-upload').attr('data-input-value', input_name);
+			});
+			$(el).find('.textarea-field-filepicker, li.html-upload').FilePicker({callback: EE.filePickerCallback});
+		});
+	});
+})(jQuery);

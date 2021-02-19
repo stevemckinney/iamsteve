@@ -3,7 +3,38 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-!function(t){"use strict";t(window).bind("onload",function(){t("input.btn").removeClass("work")}),t(document).ready(function(){t("form").submit(function(n){var o=t("input.btn",this);o.addClass("work"),""!=o.data("work-text")&&o.attr("value",o.data("work-text"))})})}(jQuery);
+
+(function($) {
+
+"use strict";
+
+$(window).bind("onload", function() {
+
+	// Reset button state in case user presses the back button
+	// after a form submission
+	$('input.button.button--primary').removeClass('work');
+});
+
+$(document).ready(function() {
+
+	// Bind form submission to update button text
+	$('form').submit(function(event) {
+
+		var $button = $('input.button.button--primary', this);
+
+		// Add "work" class to make the buttons pulsate
+		$button.addClass('work');
+
+		// Update the button text to the value of its "work-text"
+		// data attribute
+		if ($button.data('work-text') != '')
+		{
+			$button.attr('value', $button.data('work-text'));
+		}
+	});
+});
+
+})(jQuery);

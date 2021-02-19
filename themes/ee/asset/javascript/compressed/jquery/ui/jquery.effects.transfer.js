@@ -8,4 +8,50 @@
  *
  * http://api.jqueryui.com/transfer-effect/
  */
-!function(e){"function"==typeof define&&define.amd?define(["jquery","./effect"],e):e(jQuery)}(function(e){return e.effects.effect.transfer=function(t,i){var n=e(this),f=e(t.to),o="fixed"===f.css("position"),s=e("body"),d=o?s.scrollTop():0,r=o?s.scrollLeft():0,c=f.offset(),a={top:c.top-d,left:c.left-r,height:f.innerHeight(),width:f.innerWidth()},l=n.offset(),u=e("<div class='ui-effects-transfer'></div>").appendTo(document.body).addClass(t.className).css({top:l.top-d,left:l.left-r,height:n.innerHeight(),width:n.innerWidth(),position:o?"fixed":"absolute"}).animate(a,t.duration,t.easing,function(){u.remove(),i()})}});
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"./effect"
+		], factory );
+	} else {
+
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
+
+return $.effects.effect.transfer = function( o, done ) {
+	var elem = $( this ),
+		target = $( o.to ),
+		targetFixed = target.css( "position" ) === "fixed",
+		body = $("body"),
+		fixTop = targetFixed ? body.scrollTop() : 0,
+		fixLeft = targetFixed ? body.scrollLeft() : 0,
+		endPosition = target.offset(),
+		animation = {
+			top: endPosition.top - fixTop,
+			left: endPosition.left - fixLeft,
+			height: target.innerHeight(),
+			width: target.innerWidth()
+		},
+		startPosition = elem.offset(),
+		transfer = $( "<div class='ui-effects-transfer'></div>" )
+			.appendTo( document.body )
+			.addClass( o.className )
+			.css({
+				top: startPosition.top - fixTop,
+				left: startPosition.left - fixLeft,
+				height: elem.innerHeight(),
+				width: elem.innerWidth(),
+				position: targetFixed ? "fixed" : "absolute"
+			})
+			.animate( animation, o.duration, o.easing, function() {
+				transfer.remove();
+				done();
+			});
+};
+
+}));

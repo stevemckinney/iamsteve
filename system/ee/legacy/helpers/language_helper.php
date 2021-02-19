@@ -1,11 +1,15 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed.');
+<?php
+
+if (! defined('BASEPATH')) {
+    exit('No direct script access allowed.');
+}
 
 /**
  * This source file is part of the open source project
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
 
@@ -23,12 +27,11 @@
  * @param	string	the id of the form element
  * @return	string
  */
-if ( ! function_exists('lang'))
-{
-	function lang($line, $id = '')
-	{
-		return ee()->lang->line($line, $id);
-	}
+if (! function_exists('lang')) {
+    function lang($line, $id = '')
+    {
+        return ee()->lang->line($line, $id);
+    }
 }
 
 // EOF

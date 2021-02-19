@@ -59,10 +59,13 @@
     "webpack-merge": "^4.2.2"
   },
   "scripts": {
-    "dev": "webpack --progress --watch --mode development --config ./build/webpack.prod.config.js",
-    "build": "webpack --mode production --config ./build/webpack.prod.config.js",
+    "dev": "webpack --progress --watch --mode development --config ./webpack.prod.config.js",
+    "build": "webpack --mode production --config ./webpack.prod.config.js",
     "webpack": "webpack"
   },
+  "eslintIgnore": [
+    "assets/js/prism.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stevemckinney/iamsteve.git"

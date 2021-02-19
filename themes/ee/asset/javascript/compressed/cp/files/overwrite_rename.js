@@ -3,7 +3,38 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-$(document).ready(function(){var n=function(n){var n=n||window.event,o="The file name conflict has not been resolved.";return n&&(n.returnValue=o),o},o=function(n){$.ajax({type:"POST",url:$(".w-12 .box form.settings").attr("action"),data:$(".w-12 .box form.settings").serialize()+"&submit=cancel",async:!1})};$(window).on("beforeunload",n),$(window).on("unload",o),$(".form-standard form").on("submit",function(){$(window).off("beforeunload",n),$(window).off("unload",o)})});
+
+$(document).ready(function () {
+	var confirmUnload = function (e) {
+	    var e = e || window.event;
+		var message = "The file name conflict has not been resolved.";
+
+	    // For IE and Firefox prior to version 4
+	    if (e) {
+	        e.returnValue = message;
+	    }
+
+	    // For Safari
+	    return message;
+	};
+
+	var cleanUp = function (e) {
+		$.ajax({
+			type: "POST",
+			url: $('.w-12 .box form.settings').attr('action'),
+			data: $('.w-12 .box form.settings').serialize() + '&submit=cancel',
+			async: false
+		});
+	};
+
+	$(window).on('beforeunload', confirmUnload);
+	$(window).on('unload', cleanUp);
+
+	$('.form-standard form').on('submit', function() {
+		$(window).off('beforeunload', confirmUnload);
+		$(window).off('unload', cleanUp);
+	});
+});

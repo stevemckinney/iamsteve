@@ -4,18 +4,17 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
 
 /**
  * Template Router pagination Converter
  */
-class EE_Template_router_pagination_converter implements EE_Template_router_converter {
-
-	public function validator()
-	{
-		return "((P|R|N)[0-9]+)";
-	}
-
+class EE_Template_router_pagination_converter implements EE_Template_router_converter
+{
+    public function validator()
+    {
+        return "((P|R|N)[0-9]+)";
+    }
 }

@@ -1,9 +1,149 @@
-"use strict";function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}function _possibleConstructorReturn(e,t){return!t||"object"!==_typeof(t)&&"function"!=typeof t?_assertThisInitialized(e):t}function _assertThisInitialized(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function _getPrototypeOf(e){return(_getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&_setPrototypeOf(e,t)}function _setPrototypeOf(e,t){return(_setPrototypeOf=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function BulkEditEntryItem(e){return React.createElement("li",{"class":"entry-list__item"},React.createElement("h2",null,e.item.label),React.createElement("a",{href:"#",onClick:function(t){return e.handleRemove(e.item)}},React.createElement("span",{"class":"icon--remove"}),e.lang.removeFromSelection))}/*!
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/*!
  * This source file is part of the open source project
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-var BulkEditEntries=function(e){function t(){return _classCallCheck(this,t),_possibleConstructorReturn(this,_getPrototypeOf(t).apply(this,arguments))}return _inherits(t,e),_createClass(t,[{key:"componentDidUpdate",value:function(e,t){e.initialItems.length!=this.props.initialItems.length&&this.props.entriesChanged(this.props.initialItems)}},{key:"handleRemove",value:function(e){this.props.itemsChanged(this.props.initialItems.filter(function(t){return t.value!=e.value}))}},{key:"handleSearch",value:function(e){this.props.filterChange("search",e)}},{key:"render",value:function(){var e=this,t=this.props.items.slice(0,this.props.limit),n=this.props.initialItems.length,r=this.props.lang;return React.createElement("div",null,React.createElement("h2",null,n," ",r.selectedEntries),React.createElement("form",{"class":"field-search add-mrg-top"},React.createElement("input",{type:"text",placeholder:r.filterSelectedEntries,onChange:function(t){return e.handleSearch(t.target.value)}})),React.createElement("ul",{"class":"entry-list"},0==t.length&&React.createElement("li",{"class":"entry-list__item entry-list__item---empty",dangerouslySetInnerHTML:{__html:r.noEntriesFound}}),t.map(function(t){return React.createElement(BulkEditEntryItem,{item:t,handleRemove:function(t){return e.handleRemove(t)},lang:r})})),React.createElement("div",{"class":"entry-list__note"},r.showing," ",t.length," ",r.of," ",n," — ",React.createElement("a",{href:""},React.createElement("span",{"class":"icon--remove"}),r.clearAll)))}}],[{key:"render",value:function(e,t){$("div[data-bulk-edit-entries-react]",e).each(function(){ReactDOM.unmountComponentAtNode(this),ReactDOM.render(React.createElement(FilterableBulkEditEntries,t,null),this)})}}]),t}(React.Component);_defineProperty(BulkEditEntries,"defaultProps",{items:[],limit:50});var FilterableBulkEditEntries=makeFilterableComponent(BulkEditEntries);
+var BulkEditEntries =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(BulkEditEntries, _React$Component);
+
+  function BulkEditEntries() {
+    _classCallCheck(this, BulkEditEntries);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BulkEditEntries).apply(this, arguments));
+  }
+
+  _createClass(BulkEditEntries, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevProps.initialItems.length != this.props.initialItems.length) {
+        this.props.entriesChanged(this.props.initialItems);
+      }
+    }
+  }, {
+    key: "handleRemove",
+    value: function handleRemove(item) {
+      this.props.itemsChanged(this.props.initialItems.filter(function (thisItem) {
+        return thisItem.value != item.value;
+      }));
+    }
+  }, {
+    key: "handleRemoveAll",
+    value: function handleRemoveAll() {
+      this.props.itemsChanged([]);
+    }
+  }, {
+    key: "handleSearch",
+    value: function handleSearch(searchTerm) {
+      this.props.filterChange('search', searchTerm);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      var limitedItems = this.props.items.slice(0, this.props.limit);
+      var totalItems = this.props.initialItems.length;
+      var lang = this.props.lang;
+      return React.createElement("div", null, React.createElement("div", {
+        className: "title-bar"
+      }, React.createElement("h2", {
+        className: "title-bar__title"
+      }, totalItems, " ", lang.selectedEntries)), React.createElement("form", {
+        className: "add-mrg-top"
+      }, React.createElement("input", {
+        type: "text",
+        placeholder: lang.filterSelectedEntries,
+        onChange: function onChange(e) {
+          return _this.handleSearch(e.target.value);
+        }
+      })), React.createElement("ul", {
+        className: "list-group add-mrg-top"
+      }, limitedItems.length == 0 && React.createElement("li", null, React.createElement("div", {
+        className: "no-results",
+        dangerouslySetInnerHTML: {
+          __html: lang.noEntriesFound
+        }
+      })), limitedItems.map(function (item) {
+        return React.createElement(BulkEditEntryItem, {
+          item: item,
+          handleRemove: function handleRemove(item) {
+            return _this.handleRemove(item);
+          },
+          lang: lang
+        });
+      })), React.createElement("div", {
+        className: "meta-info"
+      }, lang.showing, " ", limitedItems.length, " ", lang.of, " ", totalItems, " \u2014 ", React.createElement("a", {
+        href: true,
+        className: "danger-link",
+        onClick: function onClick(e) {
+          return _this.handleRemoveAll();
+        }
+      }, React.createElement("i", {
+        className: "fas fa-sm fa-times"
+      }), " ", lang.clearAll)));
+    }
+  }], [{
+    key: "render",
+    value: function render(context, props) {
+      $('div[data-bulk-edit-entries-react]', context).each(function () {
+        ReactDOM.unmountComponentAtNode(this);
+        ReactDOM.render(React.createElement(FilterableBulkEditEntries, props, null), this);
+      });
+    }
+  }]);
+
+  return BulkEditEntries;
+}(React.Component);
+
+_defineProperty(BulkEditEntries, "defaultProps", {
+  items: [],
+  limit: 50
+});
+
+function BulkEditEntryItem(props) {
+  return React.createElement("li", {
+    className: "list-item"
+  }, React.createElement("div", {
+    className: "list-item__content"
+  }, React.createElement("div", null, props.item.label), React.createElement("div", {
+    className: "list-item__secondary"
+  }, React.createElement("a", {
+    href: "#",
+    className: "danger-link",
+    onClick: function onClick(e) {
+      return props.handleRemove(props.item);
+    }
+  }, React.createElement("i", {
+    className: "fas fa-sm fa-times"
+  }), " ", props.lang.removeFromSelection))));
+}
+
+var FilterableBulkEditEntries = makeFilterableComponent(BulkEditEntries);

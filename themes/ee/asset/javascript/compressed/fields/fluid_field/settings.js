@@ -3,7 +3,42 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-"use strict";!function(e){e(document).ready(function(){e(".modal-remove-field input.btn").on("click",function(t){t.preventDefault(),e(".form-standard form").off("submit"),e("button[type=submit][value=save]").click()}),e(".form-standard form").on("submit",function(t){for(var i,n=EE.fields.fluid_field.fields,o=!1,f=0,d=n.length;f<d;f++)if(i=e('[name="field_channel_fields[]"][value="'+n[f]+'"]'),0==i.size()||"checkbox"==i.attr("type")&&0==i.prop("checked")){o=!0;break}o&&(t.preventDefault(),e(".modal-remove-field input.btn").attr("disabled",!1),e(".modal-remove-field").trigger("modal:open"))})})}(jQuery);
+
+"use strict";
+
+(function ($) {
+	$(document).ready(function () {
+		$('.modal-remove-field .button').on('click', function(e) {
+			e.preventDefault();
+			$('.form-standard form').off('submit');
+
+			// Cannot use .submit() because we have inputs named "submit", see
+			// https://api.jquery.com/submit/
+			$('button[type=submit][value=save]').click();
+		});
+
+		$('.form-standard form').on('submit', function(e) {
+			var existing_fields = EE.fields.fluid_field.fields;
+			var field;
+			var showModal = false;
+
+			for (var i = 0, len = existing_fields.length; i < len; i++) {
+				field = $('[name="field_channel_fields[]"][value="' + existing_fields[i] + '"]');
+				if (field.size() == 0 || // Hidden input from React
+					(field.attr('type') == 'checkbox' && field.prop('checked') == false)) { // Real checkbox
+					showModal = true;
+					break;
+				}
+			}
+
+			if (showModal) {
+				e.preventDefault();
+				$('.modal-remove-field .button').attr('disabled', false);
+				$('.modal-remove-field').trigger('modal:open');
+			}
+		});
+	});
+})(jQuery);

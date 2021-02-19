@@ -8,4 +8,226 @@
  *
  * http://api.jqueryui.com/size-effect/
  */
-!function(t){"function"==typeof define&&define.amd?define(["jquery","./effect"],t):t(jQuery)}(function(t){return t.effects.effect.size=function(o,e){var i,r,f,h=t(this),n=["position","top","bottom","left","right","width","height","overflow","opacity"],s=["position","top","bottom","left","right","overflow","opacity"],c=["width","height","overflow"],d=["fontSize"],a=["borderTopWidth","borderBottomWidth","paddingTop","paddingBottom"],m=["borderLeftWidth","borderRightWidth","paddingLeft","paddingRight"],g=t.effects.setMode(h,o.mode||"effect"),u=o.restore||"effect"!==g,p=o.scale||"both",y=o.origin||["middle","center"],w=h.css("position"),x=u?n:s,l={height:0,width:0,outerHeight:0,outerWidth:0};"show"===g&&h.show(),i={height:h.height(),width:h.width(),outerHeight:h.outerHeight(),outerWidth:h.outerWidth()},"toggle"===o.mode&&"show"===g?(h.from=o.to||l,h.to=o.from||i):(h.from=o.from||("show"===g?l:i),h.to=o.to||("hide"===g?l:i)),f={from:{y:h.from.height/i.height,x:h.from.width/i.width},to:{y:h.to.height/i.height,x:h.to.width/i.width}},"box"!==p&&"both"!==p||(f.from.y!==f.to.y&&(x=x.concat(a),h.from=t.effects.setTransition(h,a,f.from.y,h.from),h.to=t.effects.setTransition(h,a,f.to.y,h.to)),f.from.x!==f.to.x&&(x=x.concat(m),h.from=t.effects.setTransition(h,m,f.from.x,h.from),h.to=t.effects.setTransition(h,m,f.to.x,h.to))),"content"!==p&&"both"!==p||f.from.y!==f.to.y&&(x=x.concat(d).concat(c),h.from=t.effects.setTransition(h,d,f.from.y,h.from),h.to=t.effects.setTransition(h,d,f.to.y,h.to)),t.effects.save(h,x),h.show(),t.effects.createWrapper(h),h.css("overflow","hidden").css(h.from),y&&(r=t.effects.getBaseline(y,i),h.from.top=(i.outerHeight-h.outerHeight())*r.y,h.from.left=(i.outerWidth-h.outerWidth())*r.x,h.to.top=(i.outerHeight-h.to.outerHeight)*r.y,h.to.left=(i.outerWidth-h.to.outerWidth)*r.x),h.css(h.from),"content"!==p&&"both"!==p||(a=a.concat(["marginTop","marginBottom"]).concat(d),m=m.concat(["marginLeft","marginRight"]),c=n.concat(a).concat(m),h.find("*[width]").each(function(){var e=t(this),i={height:e.height(),width:e.width(),outerHeight:e.outerHeight(),outerWidth:e.outerWidth()};u&&t.effects.save(e,c),e.from={height:i.height*f.from.y,width:i.width*f.from.x,outerHeight:i.outerHeight*f.from.y,outerWidth:i.outerWidth*f.from.x},e.to={height:i.height*f.to.y,width:i.width*f.to.x,outerHeight:i.height*f.to.y,outerWidth:i.width*f.to.x},f.from.y!==f.to.y&&(e.from=t.effects.setTransition(e,a,f.from.y,e.from),e.to=t.effects.setTransition(e,a,f.to.y,e.to)),f.from.x!==f.to.x&&(e.from=t.effects.setTransition(e,m,f.from.x,e.from),e.to=t.effects.setTransition(e,m,f.to.x,e.to)),e.css(e.from),e.animate(e.to,o.duration,o.easing,function(){u&&t.effects.restore(e,c)})})),h.animate(h.to,{queue:!1,duration:o.duration,easing:o.easing,complete:function(){0===h.to.opacity&&h.css("opacity",h.from.opacity),"hide"===g&&h.hide(),t.effects.restore(h,x),u||("static"===w?h.css({position:"relative",top:h.to.top,left:h.to.left}):t.each(["top","left"],function(t,o){h.css(o,function(o,e){var i=parseInt(e,10),r=t?h.to.left:h.to.top;return"auto"===e?r+"px":i+r+"px"})})),t.effects.removeWrapper(h),e()}})}});
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"./effect"
+		], factory );
+	} else {
+
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
+
+return $.effects.effect.size = function( o, done ) {
+
+	// Create element
+	var original, baseline, factor,
+		el = $( this ),
+		props0 = [ "position", "top", "bottom", "left", "right", "width", "height", "overflow", "opacity" ],
+
+		// Always restore
+		props1 = [ "position", "top", "bottom", "left", "right", "overflow", "opacity" ],
+
+		// Copy for children
+		props2 = [ "width", "height", "overflow" ],
+		cProps = [ "fontSize" ],
+		vProps = [ "borderTopWidth", "borderBottomWidth", "paddingTop", "paddingBottom" ],
+		hProps = [ "borderLeftWidth", "borderRightWidth", "paddingLeft", "paddingRight" ],
+
+		// Set options
+		mode = $.effects.setMode( el, o.mode || "effect" ),
+		restore = o.restore || mode !== "effect",
+		scale = o.scale || "both",
+		origin = o.origin || [ "middle", "center" ],
+		position = el.css( "position" ),
+		props = restore ? props0 : props1,
+		zero = {
+			height: 0,
+			width: 0,
+			outerHeight: 0,
+			outerWidth: 0
+		};
+
+	if ( mode === "show" ) {
+		el.show();
+	}
+	original = {
+		height: el.height(),
+		width: el.width(),
+		outerHeight: el.outerHeight(),
+		outerWidth: el.outerWidth()
+	};
+
+	if ( o.mode === "toggle" && mode === "show" ) {
+		el.from = o.to || zero;
+		el.to = o.from || original;
+	} else {
+		el.from = o.from || ( mode === "show" ? zero : original );
+		el.to = o.to || ( mode === "hide" ? zero : original );
+	}
+
+	// Set scaling factor
+	factor = {
+		from: {
+			y: el.from.height / original.height,
+			x: el.from.width / original.width
+		},
+		to: {
+			y: el.to.height / original.height,
+			x: el.to.width / original.width
+		}
+	};
+
+	// Scale the css box
+	if ( scale === "box" || scale === "both" ) {
+
+		// Vertical props scaling
+		if ( factor.from.y !== factor.to.y ) {
+			props = props.concat( vProps );
+			el.from = $.effects.setTransition( el, vProps, factor.from.y, el.from );
+			el.to = $.effects.setTransition( el, vProps, factor.to.y, el.to );
+		}
+
+		// Horizontal props scaling
+		if ( factor.from.x !== factor.to.x ) {
+			props = props.concat( hProps );
+			el.from = $.effects.setTransition( el, hProps, factor.from.x, el.from );
+			el.to = $.effects.setTransition( el, hProps, factor.to.x, el.to );
+		}
+	}
+
+	// Scale the content
+	if ( scale === "content" || scale === "both" ) {
+
+		// Vertical props scaling
+		if ( factor.from.y !== factor.to.y ) {
+			props = props.concat( cProps ).concat( props2 );
+			el.from = $.effects.setTransition( el, cProps, factor.from.y, el.from );
+			el.to = $.effects.setTransition( el, cProps, factor.to.y, el.to );
+		}
+	}
+
+	$.effects.save( el, props );
+	el.show();
+	$.effects.createWrapper( el );
+	el.css( "overflow", "hidden" ).css( el.from );
+
+	// Adjust
+	if (origin) { // Calculate baseline shifts
+		baseline = $.effects.getBaseline( origin, original );
+		el.from.top = ( original.outerHeight - el.outerHeight() ) * baseline.y;
+		el.from.left = ( original.outerWidth - el.outerWidth() ) * baseline.x;
+		el.to.top = ( original.outerHeight - el.to.outerHeight ) * baseline.y;
+		el.to.left = ( original.outerWidth - el.to.outerWidth ) * baseline.x;
+	}
+	el.css( el.from ); // set top & left
+
+	// Animate
+	if ( scale === "content" || scale === "both" ) { // Scale the children
+
+		// Add margins/font-size
+		vProps = vProps.concat([ "marginTop", "marginBottom" ]).concat(cProps);
+		hProps = hProps.concat([ "marginLeft", "marginRight" ]);
+		props2 = props0.concat(vProps).concat(hProps);
+
+		el.find( "*[width]" ).each( function() {
+			var child = $( this ),
+				c_original = {
+					height: child.height(),
+					width: child.width(),
+					outerHeight: child.outerHeight(),
+					outerWidth: child.outerWidth()
+				};
+			if (restore) {
+				$.effects.save(child, props2);
+			}
+
+			child.from = {
+				height: c_original.height * factor.from.y,
+				width: c_original.width * factor.from.x,
+				outerHeight: c_original.outerHeight * factor.from.y,
+				outerWidth: c_original.outerWidth * factor.from.x
+			};
+			child.to = {
+				height: c_original.height * factor.to.y,
+				width: c_original.width * factor.to.x,
+				outerHeight: c_original.height * factor.to.y,
+				outerWidth: c_original.width * factor.to.x
+			};
+
+			// Vertical props scaling
+			if ( factor.from.y !== factor.to.y ) {
+				child.from = $.effects.setTransition( child, vProps, factor.from.y, child.from );
+				child.to = $.effects.setTransition( child, vProps, factor.to.y, child.to );
+			}
+
+			// Horizontal props scaling
+			if ( factor.from.x !== factor.to.x ) {
+				child.from = $.effects.setTransition( child, hProps, factor.from.x, child.from );
+				child.to = $.effects.setTransition( child, hProps, factor.to.x, child.to );
+			}
+
+			// Animate children
+			child.css( child.from );
+			child.animate( child.to, o.duration, o.easing, function() {
+
+				// Restore children
+				if ( restore ) {
+					$.effects.restore( child, props2 );
+				}
+			});
+		});
+	}
+
+	// Animate
+	el.animate( el.to, {
+		queue: false,
+		duration: o.duration,
+		easing: o.easing,
+		complete: function() {
+			if ( el.to.opacity === 0 ) {
+				el.css( "opacity", el.from.opacity );
+			}
+			if ( mode === "hide" ) {
+				el.hide();
+			}
+			$.effects.restore( el, props );
+			if ( !restore ) {
+
+				// we need to calculate our new positioning based on the scaling
+				if ( position === "static" ) {
+					el.css({
+						position: "relative",
+						top: el.to.top,
+						left: el.to.left
+					});
+				} else {
+					$.each([ "top", "left" ], function( idx, pos ) {
+						el.css( pos, function( _, str ) {
+							var val = parseInt( str, 10 ),
+								toRef = idx ? el.to.left : el.to.top;
+
+							// if original was "auto", recalculate the new value from wrapper
+							if ( str === "auto" ) {
+								return toRef + "px";
+							}
+
+							return val + toRef + "px";
+						});
+					});
+				}
+			}
+
+			$.effects.removeWrapper( el );
+			done();
+		}
+	});
+
+};
+
+}));

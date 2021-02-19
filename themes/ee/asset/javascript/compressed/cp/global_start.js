@@ -3,7 +3,881 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-!function(e){"use strict";EE.namespace=function(e){var t=e.split("."),n=EE;"EE"===t[0]&&(t=t.slice(1));for(var o=0,i=t.length;o<i;o+=1)"undefined"==typeof n[t[o]]&&(n[t[o]]={}),n=n[t[o]];return n},EE.namespace("EE.cp"),e.ajaxPrefilter(function(t,n,o){var i=EE.CSRF_TOKEN,a=t.type.toUpperCase();_.has(t,"error")||o.fail(function(e,t,n){_.defer(function(){throw n})}),"POST"==a&&t.crossDomain===!1&&o.setRequestHeader("X-CSRF-TOKEN",i);var s={eexid:function(e){e&&EE.cp.setCsrfToken(e)},"csrf-token":function(e){e&&EE.cp.setCsrfToken(e)},"ee-redirect":function(e){window.location=EE.BASE+"&"+e.replace("//","/")},"ee-broadcast":function(t){EE.cp.broadcastEvents[t](),e(window).trigger("broadcast",t)}},r=e.merge(s,n.eeResponseHeaders||{});o.complete(function(e){t.crossDomain===!1&&_.each(r,function(t,n){var o=e.getResponseHeader("X-"+n);o&&t(o)})})}),EE.grid_cache=[],window.Grid={bind:function(){EE.grid_cache.push(arguments)}};window.FluidField={_eventHandlers:[],on:function(e,t,n){void 0==this._eventHandlers[t]&&(this._eventHandlers[t]=[]),this._eventHandlers[t][e]=n},fireEvent:function(e,t,n){void 0!==this._eventHandlers[t]&&void 0!==this._eventHandlers[t][e]&&this._eventHandlers[t][e].apply(this,n)}},window.FieldManager={_eventHandlers:[],on:function(e,t){void 0==this._eventHandlers[e]&&(this._eventHandlers[e]=[]),this._eventHandlers[e].push(t)},fireEvent:function(e,t){for(var n=this._eventHandlers[e]||[],o=0;o<n.length;o++)n[o](t)}};e(document).ready(function(){!1 in document.createElement("input")&&EE.insert_placeholders(),EE.cp.cleanUrls(),EE.cp.bindCpMessageClose(),EE.cp.bindSortableFolderLists(),EE.cp.addLastToChecklists(),EE.cp.bindPostLinks()}),EE.cp.updateCompleted&&(e(".app-about-info").show(),e(".app-about-info__update").hide(),e("html, body").animate({scrollTop:e(".app-about-info").offset().top},500)),EE.cp.bindPostLinks=function(){e("body").on("click","a[data-post-url]",function(t){t.preventDefault();var n=e("<form/>",{action:e(this).data("postUrl"),method:"post"});n.append(e("<input/>",{name:"csrf_token",value:EE.CSRF_TOKEN})),n.appendTo("body").submit()})},EE.cp.addLastToChecklists=function(){e("ul.nested-list li").removeClass("last"),e("ul.nested-list").each(function(){e("li:last-child",this).not("ul.toolbar li").last().addClass("last")})},EE.cp.bindCpMessageClose=function(){e("body").on("click",".js-notice-dismiss",function(t){t.preventDefault(),e(this).closest(".app-notice").remove()});var t=e(".app-notice--alert");t.size()&&setTimeout(function(){t.fadeOut(function(){t.remove()})},2e4)},EE.cp.bindSortableFolderLists=function(){e(".sidebar .folder-list.reorderable").sortable({axis:"y",containment:"parent",handle:"a",cancel:"ul.toolbar",items:"> li",sort:EE.sortable_sort_helper,stop:function(t,n){var o,i=e(this).data("name");if(void 0!==EE.cp.folderList.eventHandlers[i])for(o=0;o<EE.cp.folderList.eventHandlers[i].length;o++)EE.cp.folderList.eventHandlers[i][o](e(this))}})},EE.cp.folderList={eventHandlers:[],onSort:function(e,t){void 0==this.eventHandlers[e]&&(this.eventHandlers[e]=[]),this.eventHandlers[e].push(t)}},EE.cp.setCsrfToken=function(t,n){e('input[name="XID"]').val(t),e('input[name="csrf_token"]').val(t),EE.XID=t,EE.CSRF_TOKEN=t,n||e(window).trigger("broadcast.setCsrfToken",t)},e(window).bind("broadcast.setCsrfToken",function(e,t){EE.cp.setCsrfToken(t,!0)});var t=/[&?](S=[A-Za-z0-9]+)/;EE.cp.setBasePath=function(n,o){var n=n.replace(/&amp;/g,"&"),i=n.match(t)||["",""],a=EE.BASE.match(t)||["",""],s=function(e,t){if(t)return t.replace(a[1],i[1])};e("a").attr("href",s),e("form").attr("action",s),"function"==typeof window.history.pushState&&window.history.replaceState(null,document.title,window.location.href.replace(a[1],i[1])),EE.BASE=n,o||e(window).trigger("broadcast.setBasePath",n)},e(window).bind("broadcast.setBasePath",function(e,t){EE.cp.setBasePath(t,!0)}),e(window).bind("broadcast.setRememberMe",function(e,t){EE.hasRememberMe=t}),EE.cp.refreshSessionData=function(t,n){n&&EE.cp.setBasePath(n),e.getJSON(EE.BASE+"&C=login&M=refresh_csrf_token",function(e){EE.cp.setBasePath(e.base)})};var n=/(.*?)[?](.*?&)?(D=cp(?:&C=[^&]+(?:&M=[^&]+)?)?)(?:&(.+))?$/,o=/&?[DCM]=/g,i=/^&+/,a=/&+$/,s=/(^|&)S=0(&|$)/;EE.cp.cleanUrl=function(e,t){t=t||e,t=t||"",t=t.toString().replace(/^(\S*?)S=(\S+?)&(\S*?)$/g,"$1$3&S=$2");var r=n.exec(t);if(r){var c=r[3].replace(o,"/"),l=r[2]||"",d=r[4]||"",u=r[1]+"?"+c,h=d.replace(s,"")+"&"+l.replace(s,"");return h=h.replace(i,"").replace(a,""),h&&(u+="&"+h),u.replace(a,"")}},EE.cp.cleanUrls=function(){e("a:not([href^=javascript])").attr("href",EE.cp.cleanUrl),e("form").attr("action",EE.cp.cleanUrl)},EE.insert_placeholders=function(){e('input[type="text"]').each(function(){if(this.placeholder){var t=e(this),n=this.placeholder,o=t.css("color");""==t.val()&&t.data("user_data","n"),t.focus(function(){t.css("color",o),t.val()===n&&(t.val(""),t.data("user_data","y"))}).blur(function(){""!==t.val()&&t.val!==n||(t.val(n).css("color","#888"),t.data("user_data","n"))}).trigger("blur")}})},EE.cp.broadcastEvents=function(){var t,n,o=1e3,i=18e5,a=27e5,s=3e6;e(document).ready(function(){t=e("#idle-modal"),n=e(".overlay"),t&&(t.find("form").on("interact",_.throttle(EE.cp.refreshSessionData,6e5)),t.find("form").on("submit",function(){return e.ajax({type:"POST",url:this.action,data:e(this).serialize(),dataType:"json",success:function(t){return"success"!=t.messageType?void alert(t.message):(c.login(),EE.cp.refreshSessionData(null,t.base),void e(window).trigger("broadcast.idleState","login"))},error:function(e){alert(e.message)}}),!1}))});var r={hasFocus:!0,modalActive:!1,pingReceived:!1,lastActive:e.now(),lastRefresh:e.now(),setActiveTime:function(){!this.modalActive&&this.modalThresholdReached()||(this.refreshThresholdReached()&&this.doRefresh(),this.lastActive=e.now())},modalThresholdReached:function(){var t=e.now()-this.lastActive,n=this.hasFocus&&t>i||!this.hasFocus&&t>a;return this.modalActive===!1&&n===!0},refreshThresholdReached:function(){var t=e.now()-this.lastRefresh;return t>s},doRefresh:function(){this.lastRefresh=e.now(),EE.cp.refreshSessionData()},resolve:function(){return EE.hasRememberMe?void(this.refreshThresholdReached()&&this.doRefresh()):(this.modalThresholdReached()?(c.modal(),e(window).trigger("broadcast.idleState","modal"),e.get(EE.BASE+"&C=login&M=lock_cp")):this.hasFocus&&this.pingReceived===!1&&e(window).trigger("broadcast.idleState","active"),void(this.pingReceived=!1))}},c={active:function(){r.setActiveTime()},focus:function(){r.setActiveTime(),r.hasFocus=!0},blur:function(){r.setActiveTime(),r.hasFocus=!1},interact:function(){r.hasFocus&&r.setActiveTime()},modal:function(){!r.modalActive&&t&&(t.trigger("modal:open"),t.on("modal:close",function(e){r.modalActive&&(e.preventDefault(),c.logout())}),r.modalActive=!0),r.setActiveTime()},login:function(){r.modalActive=!1,t.trigger("modal:close"),t.find(":password").val(""),r.setActiveTime()},logout:function(){window.location=EE.BASE+"&C=login&M=logout"}},l={_t:null,init:function(){e(window).trigger("broadcast.setBasePath",EE.BASE),e(window).trigger("broadcast.setCsrfToken",EE.CSRF_TOKEN),e(window).trigger("broadcast.setRememberMe",EE.hasRememberMe),e(window).trigger("broadcast.idleState","login"),this._bindEvents(),this.track()},_bindEvents:function(){var t=e.proxy(this,"track");e(window).on("broadcast.idleState",function(e,n){switch(n){case"active":r.pingReceived=!0,t(n);break;case"modal":case"login":case"logout":c[n]()}}),e(window).bind("blur",_.partial(t,"blur")),e(window).bind("focus",_.partial(t,"focus"));var n="DOMMouseScroll keydown mousedown mousemove mousewheel touchmove touchstart";e(document).on(n.split(" ").join(".idleState "),_.throttle(_.partial(t,"interact"),500)),e(".logOutButton").click(function(){e(window).trigger("broadcast.idleState","modal")})},track:function(t){clearTimeout(this._t),this._t=setTimeout(e.proxy(this,"track"),o),t&&c[t](),r.resolve()}};return l.init(),c}()}(jQuery);
+
+(function($) {
+
+"use strict";
+
+ /**
+  * Namespace function that non-destructively creates "namespace" objects (e.g. EE.publish.example)
+  *
+  * @param {String} namespace_string The namespace string (e.g. EE.publish.example)
+  * @returns The object to create
+  */
+EE.namespace = function(namespace_string) {
+	var parts = namespace_string.split('.'),
+		parent = EE;
+
+	// strip redundant leading global
+	if (parts[0] === "EE") {
+		parts = parts.slice(1);
+	}
+
+	// @todo disallow 'prototype', duh
+	// create a property if it doesn't exist
+	for (var i = 0, max = parts.length; i < max; i += 1) {
+		if (typeof parent[parts[i]] === "undefined") {
+			parent[parts[i]] = {};
+		};
+
+		parent = parent[parts[i]];
+	}
+
+	return parent;
+};
+
+// Create the base cp namespace
+EE.namespace('EE.cp');
+
+/**
+ * Hook into jQuery's ajax functionality to build in handling of our
+ * csrf tokens and custom response headers.
+ *
+ * We also add a custom error handler in case the developer does not specify
+ * one. This prevents silent failure.
+ */
+$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+	var old_token = EE.CSRF_TOKEN,
+		type = options.type.toUpperCase();
+
+	// Throw all errors
+	if ( ! _.has(options, 'error')) {
+		jqXHR.fail(function(xhr, status, error) {
+			_.defer(function() {
+				throw error;
+			});
+		});
+	}
+
+	// Add CSRF TOKEN to EE POST requests
+	if (type == 'POST' && options.crossDomain === false) {
+		jqXHR.setRequestHeader('X-CSRF-TOKEN', old_token);
+	}
+
+	var defaultHeaderResponses = {
+		// Refresh xids (deprecated)
+		'eexid': function(new_xid) {
+			if (new_xid) {
+				EE.cp.setCsrfToken(new_xid);
+			}
+		},
+
+		// Refresh csrf tokens
+		'csrf-token': function(new_token) {
+			if (new_token) {
+				EE.cp.setCsrfToken(new_token);
+			}
+		},
+
+		// Force redirects (e.g. logout)
+		'ee-redirect': function(url) {
+			window.location = EE.BASE + '&' + url.replace('//', '/'); // replace to prevent //example.com
+		},
+
+		// Trigger broadcast events
+		'ee-broadcast': function(event) {
+			EE.cp.broadcastEvents[event]();
+			$(window).trigger('broadcast', event);
+		}
+	};
+
+	// Set EE response header defaults
+	var eeResponseHeaders = $.merge(
+		defaultHeaderResponses,
+		originalOptions.eeResponseHeaders || {}
+	);
+
+	jqXHR.complete(function(xhr) {
+
+		if (options.crossDomain === false) {
+			_.each(eeResponseHeaders, function(callback, name) {
+				var headerValue = xhr.getResponseHeader('X-'+name);
+
+				if (headerValue) {
+					callback(headerValue);
+				}
+			});
+		}
+	});
+});
+
+
+// Grid has become a dependency for a few fieldtypes. However, sometimes it's not
+// on the page or loaded after the fieldtype. So instead of tryin to always load
+// grid or doing weird dependency juggling, we're just going to cache any calls
+// to grid.bind for now. Grid will override this definition and replay them if/when
+// it becomes available on the page. Long term we need a better solution for js
+// dependencies.
+EE.grid_cache = [];
+
+window.Grid = {
+	bind: function() {
+		EE.grid_cache.push(arguments);
+	}
+};
+
+// Handles events for the field manager channel create/edit form
+var FluidField = window.FluidField = {
+
+	_eventHandlers: [],
+
+	/**
+	 * Binds an event
+	 *
+	 * Available events are:
+	 * 'add' - When a field is added
+	 * 'remove' - When a field is removed
+	 * 'beforeSort' - Before sort starts
+	 * 'afterSort' - After sort ends
+	 *
+	 * @param	{string}	fieldtypeName	Class name of fieldtype
+	 * @param	{string}	action	Name of action
+	 * @param	{func}		func	Callback function for event
+	 */
+	on: function(fieldtypeName, action, func) {
+		if (this._eventHandlers[action] == undefined) {
+			this._eventHandlers[action] = []
+		}
+
+		// Each fieldtype gets one method per handler
+		this._eventHandlers[action][fieldtypeName] = func;
+	},
+
+	/**
+	 * Fires an event
+	 *
+	 * @param	{string}	action	Name of action
+	 * @param	{object}	element	Element object to pass along to the callback
+	 */
+	fireEvent: function(fieldtypeName, action, args) {
+		// If no events regsitered, don't bother
+		if (this._eventHandlers[action] === undefined) {
+			return;
+		}
+
+		// If no events regsitered, don't bother
+		if (this._eventHandlers[action][fieldtypeName] === undefined) {
+			return;
+		}
+
+		this._eventHandlers[action][fieldtypeName].apply(this, args);
+	}
+};
+
+// Handles events for the field manager channel create/edit form
+var FieldManager = window.FieldManager = {
+
+	_eventHandlers: [],
+
+	/**
+	 * Binds an event
+	 *
+	 * Available events are:
+	 * 'fieldModalDisplay' - When the new field modal form is displayed
+	 *
+	 * @param	{string}	action	Name of action
+	 * @param	{func}		func	Callback function for event
+	 */
+	on: function(action, func) {
+		if (this._eventHandlers[action] == undefined) {
+			this._eventHandlers[action] = []
+		}
+
+		this._eventHandlers[action].push(func)
+	},
+
+	/**
+	 * Fires an event
+	 *
+	 * @param	{string}	action	Name of action
+	 * @param	{object}	element	Element object to pass along to the callback
+	 */
+	fireEvent: function(action, element) {
+		var handlers = this._eventHandlers[action] || []
+
+		for (var i = 0; i < handlers.length; i++) {
+			handlers[i](element)
+		}
+	}
+};
+
+// Setup Base EE Control Panel
+$(document).ready(function () {
+
+	// call the input placeholder polyfill early so that we don't get
+	// weird flashes of content
+	if ( ! 'placeholder' in document.createElement('input')) {
+		EE.insert_placeholders();
+	}
+
+	EE.cp.cleanUrls();
+	EE.cp.bindCpMessageClose();
+	EE.cp.bindSortableFolderLists();
+	EE.cp.addLastToChecklists();
+	EE.cp.bindPostLinks();
+	EE.cp.validateLicense();
+});
+
+
+/**
+ * Posts the current EE license to the EE main site for validation purposes.
+ */
+EE.cp.validateLicense = function() {
+	if (! EE.cp.lvUrl) {
+		return;
+	}
+
+	$.ajax({
+		type: 'POST',
+		url: EE.cp.lvUrl,
+		dataType: 'json',
+		data: {
+			appVer: EE.cp.appVer,
+			license: EE.cp.licenseKey,
+			addons: JSON.parse(EE.cp.installedAddons),
+			meta: [
+				{
+					site_name: EE.site_name,
+					site_id: EE.site_id,
+					site_url: EE.site_url
+				}
+			]
+		},
+
+		success: function(result) {
+			var validLicense = true;
+
+			switch (result.messageType) {
+				case 'success':
+					break;
+
+				case 'missing_license_key':
+					validLicense = false;
+					break;
+
+				case 'invalid_license_key':
+					validLicense = false;
+					break;
+
+				case 'invalid_domain':
+					validLicense = false;
+					break;
+
+				default:
+					console.log('Unknown Status: ' + result.messageType);
+			}
+
+			var validAddons = true;
+
+			// @todo Clean all this up and extract the styles to the proper location.
+			for (var addon of result.addons) {
+				if (addon.status == 'update_available') {
+					$('div[data-addon="' + addon.slug + '"]').css('overflow', 'hidden').append('<div class="corner-ribbon top-left blue shadow" style="font-size:9px;">Update Available</div>');
+					if (window.location.href.indexOf(addon.slug) !== -1) {
+						$('body.add-on-layout .main-nav__title').css('position', 'relative').append('<a style="display:inline-block;vertical-align:middle;margin-left:15px;border: 2px solid #39d;background-color:#fff;font-weight:bold;color: #39d;padding: 2px 10px 1px 10px;border-radius: 5px;font-size: 12px;vertical-align: middle;" href="https://expressionengine.com/licenses#update-available" target="_blank">Update Available</a>').children('h1').css({ 'display': 'inline-block', 'vertical-align': 'middle' });
+					}
+				} else if (addon.status == 'expired') {
+					$('div[data-addon="' + addon.slug + '"]').css('overflow', 'hidden').append('<div class="corner-ribbon top-left orange shadow">Expired</div>');
+					if (window.location.href.indexOf(addon.slug) !== -1) {
+						$('body.add-on-layout .main-nav__title').css('position', 'relative').append('<a style="display:inline-block;vertical-align:middle;margin-left:15px;background-color:#e82;font-weight:bold;color: #fff;padding: 2px 10px 1px 10px;border-radius: 5px;font-size: 12px;vertical-align: middle;" href="https://expressionengine.com/licenses" target="_blank">License Expired</a>').children('h1').css({ 'display':'inline-block', 'vertical-align':'middle' });
+					}
+				} else if (addon.status == 'invalid') {
+					validAddons = false;
+					$('div[data-addon="' + addon.slug + '"]').css('overflow', 'hidden').append('<div class="corner-ribbon top-left red shadow">Unlicensed</div>'); // "Invalid" status
+					$('.global-alerts').append('<div class="app-notice-license app-notice app-notice--banner app-notice---error" style="display: flex;"><div class="app-notice__tag"><span class="app-notice__icon"></span></div><div class="app-notice__content"><p>Unlicensed Add-on: <b>' + addon.name + '</b> does not have a valid license. <a href="https://expressionengine.com/licenses" target="_blank">More Info</a></p></div><a href="#" class="app-notice__controls js-notice-dismiss"><span class="app-notice__dismiss"></span><span class="hidden">close</span></a></div>');
+				}
+			}
+
+			if (!validLicense && !validAddons) {
+				// console.log('Invalid License and Invalid Add-ons');
+			}
+		},
+
+		error: function(data, textStatus, errorThrown) {
+			console.log('Error Data:', data, data.responseJSON.message, 'textStatus:', textStatus, 'errorThrown:', errorThrown);
+		}
+	});
+}
+
+/**
+ * Finds links with a data-post-url attribute and on click, fires off a POST
+ * request to that URL via a form submission. This is so that certain actions
+ * can have the protection from CSRF but still be regular links in the UI.
+ */
+EE.cp.bindPostLinks = function() {
+	$('body').on('click', 'a[data-post-url]', function(event) {
+		event.preventDefault();
+
+		var form = $('<form/>', {
+			action: $(this).data('postUrl'),
+			method: 'post'
+		});
+		form.append($('<input/>', {
+			name: 'csrf_token',
+			value: EE.CSRF_TOKEN
+		}));
+		form.appendTo('body').submit();
+	});
+}
+
+/**
+ * For nested checklists, the very last item that APPEARS in the list
+ * needs a class of "last".
+ */
+EE.cp.addLastToChecklists = function() {
+	$('ul.nested-list li').removeClass('last');
+
+	$('ul.nested-list').each(function(){
+		$('li:last-child', this).not('ul.toolbar li').last().addClass('last');
+	});
+}
+
+// Close alert modal when close button is clicked
+EE.cp.bindCpMessageClose = function() {
+	$('body').on('click', '.js-notice-dismiss', function(event) {
+		event.preventDefault();
+		$(this).closest('.app-notice').remove();
+	});
+
+	// Clear floating alerts after some time
+	var floatingAlerts = $('.app-notice--alert')
+	if (floatingAlerts.size()) {
+		setTimeout(function() {
+			floatingAlerts.fadeOut(function() {
+				floatingAlerts.remove()
+			})
+		}, 20000)
+	}
+}
+
+// Binds jQuery UI sortable to reorderable folder lists
+EE.cp.bindSortableFolderLists = function() {
+	$('.sidebar .folder-list.reorderable').sortable({
+		axis: 'y',						// Only allow vertical dragging
+		containment: 'parent',			// Contain to parent
+		handle: 'a',					// Set drag handle
+		cancel: 'ul.toolbar',			// Do not allow sort on this handle
+		items: '> .sidebar__link',		// Only allow these to be sortable
+		sort: EE.sortable_sort_helper,	// Custom sort handler
+		// After sort finishes
+		stop: function(event, ui)
+		{
+			var name = $(this).data('name'), i;
+
+			if (EE.cp.folderList.eventHandlers[name] === undefined) {
+				return;
+			}
+
+			// A list may have multiple callbacks, call them all
+			for (i = 0; i < EE.cp.folderList.eventHandlers[name].length; i++) {
+				EE.cp.folderList.eventHandlers[name][i]($(this));
+			}
+		}
+	});
+}
+
+EE.cp.folderList = {
+
+	eventHandlers: [],
+
+	/**
+	 * Binds a callback to the sort event of a folder list
+	 *
+	 * @param	{string}	listName	Unique name of folder list
+	 * @param	{func}		func		Callback function for event
+	 */
+	onSort: function(listName, func) {
+		if (this.eventHandlers[listName] == undefined) {
+			this.eventHandlers[listName] = [];
+		}
+
+		this.eventHandlers[listName].push(func);
+	}
+};
+
+// Simple function to deal with csrf tokens
+EE.cp.setCsrfToken = function(newToken, skipBroadcast /* internal */) {
+	$('input[name="XID"]').val(newToken);
+	$('input[name="csrf_token"]').val(newToken);
+
+	EE.XID = newToken;
+	EE.CSRF_TOKEN = newToken;
+
+	if ( ! skipBroadcast) {
+		$(window.parent).trigger('broadcast.setCsrfToken', newToken);
+	}
+};
+
+$(window).bind('broadcast.setCsrfToken', function(event, data) {
+	EE.cp.setCsrfToken(data, true);
+});
+
+// Simple function to deal with base paths tokens
+var sessionIdRegex = /[&?](S=[A-Za-z0-9]+)/;
+
+EE.cp.setBasePath = function(newBase, skipBroadcast /* internal */) {
+
+	var newBase = newBase.replace(/&amp;/g, '&'),
+		newBaseS = newBase.match(sessionIdRegex) || ['', ''],
+		oldBaseS = EE.BASE.match(sessionIdRegex) || ['', ''];
+
+	var replaceBase = function(i, value) {
+		if (value) {
+			return value.replace(oldBaseS[1], newBaseS[1]);
+		}
+	};
+
+	$('a').attr('href', replaceBase);
+	$('form').attr('action', replaceBase);
+
+	// Since the session id in the current url is no longer correct, a
+	// refresh will end up on the login page. We will replace the current
+	// url to avoid that issue. You still cannot use the back button after
+	// logging back in, but how likely are you to remember what page you
+	// were on before leaving this one open for 20 minutes anyways?
+	if (typeof window.history.pushState == 'function') {
+		window.history.replaceState(
+			null,
+			document.title,
+			window.location.href.replace(oldBaseS[1], newBaseS[1])
+		);
+	}
+
+	// Set it as the new base
+	EE.BASE = newBase;
+
+	if ( ! skipBroadcast) {
+		$(window.parent).trigger('broadcast.setBasePath', newBase);
+	}
+};
+
+$(window).bind('broadcast.setBasePath', function(event, data) {
+	EE.cp.setBasePath(data, true);
+});
+
+$(window).bind('broadcast.setRememberMe', function(event, remember) {
+	EE.hasRememberMe = remember;
+})
+
+EE.cp.refreshSessionData = function(event, base) {
+	if (base) {
+		EE.cp.setBasePath(base);
+	}
+
+	// running the request will return the x-csrf-header, which will trigger
+	// our prefilter. We still need to replace the base though.
+	$.getJSON(EE.BASE + '&C=login&M=refresh_csrf_token', function(result) {
+		EE.cp.setBasePath(result.base);
+	});
+
+};
+
+var urlRegex = /(.*?)[?](.*?&)?(D=cp(?:&C=[^&]+(?:&M=[^&]+)?)?)(?:&(.+))?$/,
+	slashify = /&?[DCM]=/g,
+	lTrimAmp = /^&+/,
+	rTrimAmp = /&+$/,
+	removeEmptySession = /(^|&)S=0(&|$)/;
+
+EE.cp.cleanUrl = function(i, url) {
+	url = url || i; // i exists if coming from jQuery attr callback
+	url = url || '';
+
+	// Move session to the end
+	url = url.toString().replace(/^(\S*?)S=(\S+?)&(\S*?)$/g, "$1$3&S=$2");
+
+	var result = urlRegex.exec(url);
+
+	if ( ! result) {
+		return;
+	}
+
+	// result[1] // index.php
+	// result[2] // S=49204&
+	// result[3] // D=cp&C=foo&M=bar
+	// result[4] // &foobarbaz
+
+	var path   = result[3].replace(slashify, '/'),
+		preQs  = result[2] || '',
+		postQs = result[4] || '',
+		newUrl = result[1] + '?' + path;
+
+	var QS = postQs.replace(removeEmptySession, '') + '&' + preQs.replace(removeEmptySession, '');
+
+	QS = QS.replace(lTrimAmp, '').replace(rTrimAmp, '');
+
+	if (QS) {
+		newUrl += '&' + QS;
+	}
+
+	return newUrl.replace(rTrimAmp, '');
+};
+
+EE.cp.cleanUrls = function() {
+	$('a:not([href^=javascript])').attr('href', EE.cp.cleanUrl);
+	$('form').attr('action', EE.cp.cleanUrl);
+};
+
+
+// Fallback for browsers without placeholder= support
+EE.insert_placeholders = function () {
+
+	$('input[type="text"]').each(function() {
+		if ( ! this.placeholder) {
+			return;
+		}
+
+		var input = $(this),
+			placeholder = this.placeholder,
+			orig_color = input.css('color');
+
+		if (input.val() == '') {
+			input.data('user_data', 'n');
+		}
+
+		input.focus(function () {
+			// Reset color & remove placeholder text
+			input.css('color', orig_color);
+			if (input.val() === placeholder) {
+				input.val('');
+				input.data('user_data', 'y');
+			}
+		})
+		.blur(function () {
+			// If no user content -> add placeholder text and dim
+			if (input.val() === '' || input.val === placeholder) {
+				input.val(placeholder).css('color', '#888');
+				input.data('user_data', 'n');
+			}
+		})
+		.trigger('blur');
+	});
+};
+
+/**
+ * Handle idle / inaction between windows
+ *
+ * This code relies heavily on timing. In order to reduce complexity everything is
+ * handled in steps (ticks) of 1 second. We count for how many ticks we have been
+ * in a given state and act accordingly. This gives us reasonable timing information
+ * without having to set, cancel, and track multiple timeouts.
+ *
+ * The conditions currently are as follows:
+ *
+ * - If an ee tab has focus we call it idle after 30 minutes of no interaction
+ * - If no ee tab has focus, we call it idle after 45 minutes of no activity
+ * - If they work around the modal (inspector), all request will land on the login page.
+ * - Logging out of one tab will show the modal on all other tabs.
+ * - Logging into the modal on one tab, will show it on all other tabs.
+ *
+ * The object returned is one that allows manual triggering of an event. For
+ * example, to force the modal to show you could call:
+ *
+ *     EE.cp.broadcastEvents['modal']();
+ *
+ * This is used by our ajax filter to allow triggering an event with the
+ * X-EE-BROADCAST header
+ *
+ */
+EE.cp.broadcastEvents = (function() {
+
+	// Define our time limits:
+	var TICK_TIME          = 1 * 1000,			// Check state every second
+		FOCUSED_IDLE_LIMIT = 30 * 60 * 1000,	// 30 minutes: time before modal if window focused
+		BLURRED_IDLE_LIMIT = 45 * 60 * 1000,    // 45 minutes: time before modal if no focus
+		REFRESH_TIME_LIMIT = 50 * 60 * 1000,	// 50 minutes: refresh if active or remember me
+		logoutModal,
+		overlay;
+
+	// Setup Base EE Control Panel
+	$(document).ready(function () {
+
+		// Make sure we have our modal available when we need it
+		logoutModal = $('#idle-modal'),
+		overlay		= $('.overlay');
+
+		// May be inside a modal form or elsewhere
+		if ( ! logoutModal) {
+			return;
+		}
+
+		// If the modal hasn't been interacted with in over 10 minutes we'll send a request for
+		// the current csrf token. It can flip on us during long waits due to the session timeout.
+		// If the session times out this will get us a cookie based csrf token, which is what you
+		// would normally log in with, so it's fine.
+		logoutModal.find('form').on('interact', _.throttle(EE.cp.refreshSessionData, 10 * 60 * 1000));
+
+		// Bind on the modal submission
+		logoutModal.find('form').on('submit', function() {
+
+			$.ajax({
+				type: 'POST',
+				url: this.action,
+				data: $(this).serialize(),
+				dataType: 'json',
+
+				success: function(result) {
+					if (result.messageType != 'success') {
+						alert(result.message);
+						return;
+					}
+
+					// Hide the dialog
+					Events.login();
+
+					// Grab the new token
+					EE.cp.refreshSessionData(null, result.base);
+
+					$(window).trigger('broadcast.idleState', 'login');
+				},
+
+				error: function(data) {
+					alert(data.message);
+				}
+			});
+
+			return false;
+		});
+
+	});
+
+	/**
+	 * This object tracks the current state of the page.
+	 *
+	 * The resolve function is called once per tick. The individual events will
+	 * set hasFocus and lastActive time.
+	 */
+	var State = {
+
+		hasFocus: true,
+		modalActive: false,
+		pingReceived: false,
+		lastActive: $.now(),
+		lastRefresh: $.now(),
+
+		setActiveTime: function() {
+			// Before we set someone as not idle we need to check if they've
+			// sneakily been idle for a long time. When you close your laptop
+			// the timer stops. Reopening it hours later creates a race between
+			// the tick timer and the non-idle events. When that happens, you're
+			// way past the threshold and therefore too late.
+			if (this.modalActive || ! this.modalThresholdReached()) {
+
+				// If they're active on the page for an extend period of time
+				// without hitting the backend, we can sometimes run past the
+				// session timeout. To prevent that from happening we'll refresh
+				// their session last activity in the background.
+				if (this.refreshThresholdReached()) {
+					this.doRefresh();
+				}
+
+				this.lastActive = $.now();
+			}
+		},
+
+		modalThresholdReached: function() {
+			var idleTimeDelta = $.now() - this.lastActive,
+				mustShowModal = (this.hasFocus && idleTimeDelta > FOCUSED_IDLE_LIMIT) ||
+								( ! this.hasFocus && idleTimeDelta > BLURRED_IDLE_LIMIT);
+			return (this.modalActive === false && mustShowModal === true);
+		},
+
+		refreshThresholdReached: function() {
+			var refreshTimeDelta = $.now() - this.lastRefresh;
+			return refreshTimeDelta > REFRESH_TIME_LIMIT;
+		},
+
+		doRefresh: function() {
+			this.lastRefresh = $.now();
+			EE.cp.refreshSessionData();
+		},
+
+		resolve: function() {
+
+			if (EE.hasRememberMe) {
+				if (this.refreshThresholdReached()) {
+					this.doRefresh();
+				}
+
+				return;
+			}
+
+			if (this.modalThresholdReached()) {
+				Events.modal();
+				$(window).trigger('broadcast.idleState', 'modal');
+				$.get(EE.BASE + '&C=login&M=lock_cp'); // lock them out of the cp in the background to prevent tampering
+			}
+			else if (this.hasFocus && this.pingReceived === false) {
+				$(window).trigger('broadcast.idleState', 'active');
+			}
+
+			// Reset
+			this.pingReceived = false;
+		}
+	};
+
+	/**
+	 * List of events that might happen during our 15 second interval
+	 */
+	var Events = {
+
+		// received another window's active event, user active
+		active: function() {
+			State.setActiveTime();
+		},
+
+		// user focused, they are active
+		focus: function() {
+			State.setActiveTime();
+			State.hasFocus = true;
+		},
+
+		// user left, they are idle
+		blur: function() {
+			State.setActiveTime();
+			State.hasFocus = false;
+		},
+
+		// user typing / mousing, possibly active
+		interact: function() {
+			if (State.hasFocus) {
+				State.setActiveTime();
+			}
+		},
+
+		// received another window's modal event, open it
+		modal: function() {
+			if ( ! State.modalActive && logoutModal) {
+
+				logoutModal.trigger('modal:open');
+
+				logoutModal.on('modal:close', function(e) {
+					if (State.modalActive)
+					{
+						e.preventDefault();
+						Events.logout(); // prevent tampering. If they close it, they go.
+					}
+				});
+
+				State.modalActive = true;
+			}
+
+			State.setActiveTime();
+		},
+
+		// received another window's login event, check and hide modal
+		login: function() {
+			State.modalActive = false;
+
+			logoutModal.trigger('modal:close');
+
+			logoutModal.find(':password').val('');
+
+			State.setActiveTime();
+		},
+
+		// received another window's logout event, leave page
+		logout: function() {
+			window.location = EE.BASE + '&C=login&M=logout';
+		}
+	};
+
+	/**
+	 * The event tracker spools up all events that happened during this tick
+	 * and replays them when the timer fires.
+	 */
+	var EventTracker = {
+
+		_t: null,
+
+		init: function() {
+			$(window).trigger('broadcast.setBasePath', EE.BASE);
+			$(window).trigger('broadcast.setCsrfToken', EE.CSRF_TOKEN);
+			$(window).trigger('broadcast.setRememberMe', EE.hasRememberMe);
+			$(window).trigger('broadcast.idleState', 'login');
+
+			this._bindEvents();
+			this.track();
+		},
+
+		/**
+		 * Bind our events
+		 *
+		 * We keep track of focus, blur, scrolling, clicking, etc.
+		 * Some broadcast events can be fired immediately as nothing will stop
+		 * them once the tick fires anyways.
+		 * We have an extra throttle on interactions to keep the browser happy
+		 * and not fill up the queue uselessly.
+		 */
+		_bindEvents: function() {
+			var track = $.proxy(this, 'track'),
+				that = this;
+
+			// Bind on the broadcast event
+			$(window).on('broadcast.idleState', function(event, idleState) {
+
+				switch (idleState) {
+					case 'active':
+						State.pingReceived = true;
+						track(idleState);
+						break;
+					case 'modal':
+					case 'login':
+					case 'logout':
+						Events[idleState]();
+						break;
+				}
+			});
+
+			// Bind on window focus and blur
+			$(window).bind('blur', _.partial(track, 'blur'));
+			$(window).bind('focus', _.partial(track, 'focus'));
+
+			// Bind on interactions
+			var interaction = 'DOMMouseScroll keydown mousedown mousemove mousewheel touchmove touchstart';
+			$(document).on(
+				interaction.split(' ').join('.idleState '),     // namespace the events
+				_.throttle(_.partial(track, 'interact'), 500)  // throttle event firing
+			);
+
+			// Clicking the logout button fires "modal" on all the others
+			$('.logOutButton').click(function() {
+				$(window).trigger('broadcast.idleState', 'modal');
+			});
+		},
+
+		/**
+		 * Helper method to record an event
+		 */
+		track: function(name) {
+			clearTimeout(this._t);
+			this._t = setTimeout($.proxy(this, 'track'), TICK_TIME);
+
+			if (name) {
+				Events[name]();
+			}
+
+			State.resolve();
+		}
+	};
+
+	// Go go go!
+	EventTracker.init();
+
+	return Events;
+
+})();
+
+})(jQuery);

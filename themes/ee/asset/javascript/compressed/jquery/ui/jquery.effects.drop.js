@@ -8,4 +8,68 @@
  *
  * http://api.jqueryui.com/drop-effect/
  */
-!function(e){"function"==typeof define&&define.amd?define(["jquery","./effect"],e):e(jQuery)}(function(e){return e.effects.effect.drop=function(t,o){var i,f=e(this),n=["position","top","bottom","left","right","opacity","height","width"],s=e.effects.setMode(f,t.mode||"hide"),c="show"===s,p=t.direction||"left",r="up"===p||"down"===p?"top":"left",d="up"===p||"left"===p?"pos":"neg",a={opacity:c?1:0};e.effects.save(f,n),f.show(),e.effects.createWrapper(f),i=t.distance||f["top"===r?"outerHeight":"outerWidth"](!0)/2,c&&f.css("opacity",0).css(r,"pos"===d?-i:i),a[r]=(c?"pos"===d?"+=":"-=":"pos"===d?"-=":"+=")+i,f.animate(a,{queue:!1,duration:t.duration,easing:t.easing,complete:function(){"hide"===s&&f.hide(),e.effects.restore(f,n),e.effects.removeWrapper(f),o()}})}});
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"./effect"
+		], factory );
+	} else {
+
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
+
+return $.effects.effect.drop = function( o, done ) {
+
+	var el = $( this ),
+		props = [ "position", "top", "bottom", "left", "right", "opacity", "height", "width" ],
+		mode = $.effects.setMode( el, o.mode || "hide" ),
+		show = mode === "show",
+		direction = o.direction || "left",
+		ref = ( direction === "up" || direction === "down" ) ? "top" : "left",
+		motion = ( direction === "up" || direction === "left" ) ? "pos" : "neg",
+		animation = {
+			opacity: show ? 1 : 0
+		},
+		distance;
+
+	// Adjust
+	$.effects.save( el, props );
+	el.show();
+	$.effects.createWrapper( el );
+
+	distance = o.distance || el[ ref === "top" ? "outerHeight" : "outerWidth" ]( true ) / 2;
+
+	if ( show ) {
+		el
+			.css( "opacity", 0 )
+			.css( ref, motion === "pos" ? -distance : distance );
+	}
+
+	// Animation
+	animation[ ref ] = ( show ?
+		( motion === "pos" ? "+=" : "-=" ) :
+		( motion === "pos" ? "-=" : "+=" ) ) +
+		distance;
+
+	// Animate
+	el.animate( animation, {
+		queue: false,
+		duration: o.duration,
+		easing: o.easing,
+		complete: function() {
+			if ( mode === "hide" ) {
+				el.hide();
+			}
+			$.effects.restore( el, props );
+			$.effects.removeWrapper( el );
+			done();
+		}
+	});
+};
+
+}));

@@ -1,14 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Iamsteve plugin class
- *
- * @package     ExpressionEngine
- * @subpackage  Addons
- * @category    Plugin
- * @author      EllisLab Dev Team
- * @copyright   Copyright (c) 2015–2016, EllisLab, Inc.
- * @link        https://github.com/EllisLab/Reading-Time
+ * iamsteve plugin class
  */
 class Iamsteve {
 
