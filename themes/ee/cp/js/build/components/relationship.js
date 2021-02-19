@@ -119,6 +119,7 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.bindSortable();
+      EE.cp.formValidation.bindInputs(ReactDOM.findDOMNode(this).parentNode);
     }
   }, {
     key: "componentDidUpdate",
@@ -126,6 +127,8 @@ function (_React$Component) {
       if (this.state.selected !== prevState.selected) {
         // Refresh the sortable items when the selected items change
         this.bindSortable();
+
+        EE.cp.formValidation._sendAjaxRequest($(ReactDOM.findDOMNode(this).parentNode).find('input[type=hidden]').first());
       }
     }
   }, {
@@ -273,7 +276,7 @@ function (_React$Component) {
         className: "js-dropdown-toggle button button--default"
       }, React.createElement("i", {
         "class": "fas fa-plus icon-left"
-      }), " ", EE.relationship.lang.relateEntry), React.createElement("div", {
+      }), " ", props.button_label ? props.button_label : EE.relationship.lang.relateEntry), React.createElement("div", {
         className: "dropdown js-dropdown-auto-focus-input"
       }, React.createElement("div", {
         className: "dropdown__search d-flex"
@@ -288,7 +291,7 @@ function (_React$Component) {
         "class": "search-input__input input--small",
         onChange: this.handleSearch,
         placeholder: EE.relationship.lang.search
-      }))), React.createElement("div", {
+      }))), props.channels.length > 1 && React.createElement("div", {
         className: "filter-bar__item"
       }, React.createElement(DropDownButton, {
         keepSelectedState: true,

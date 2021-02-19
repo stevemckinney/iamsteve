@@ -1,7 +1,7 @@
 <?php $this->extend('_templates/default-nav', array(), 'outer_box'); ?>
 <div class="panel">
   <div class="panel-body">
-<?=form_open($form_url)?>
+
 <div class="tab-wrap">
 	<div class="app-notice-wrap"><?=ee('CP/Alert')->getAllInlines()?></div>
 
@@ -47,24 +47,24 @@
 </div>
 
 </div>
-<?=form_close()?>
+
 </div>
 </div>
 
 <?php
 
 $modal_vars = array(
-	'name'		=> 'modal-confirm-remove',
-	'form_url'	=> $form_url,
-	'title' => lang('confirm_uninstall'),
-	'alert' => lang('confirm_uninstall_desc'),
-	'button' => [
-		'text' => lang('btn_confirm_and_uninstall'),
-		'working' => lang('btn_confirm_and_uninstall_working')
-	],
-	'hidden'	=> array(
+    'name' => 'modal-confirm-remove',
+    'form_url' => $form_url,
+    'title' => lang('confirm_uninstall'),
+    'alert' => lang('confirm_uninstall_desc'),
+    'button' => [
+        'text' => lang('btn_confirm_and_uninstall'),
+        'working' => lang('btn_confirm_and_uninstall_working')
+    ],
+    'hidden' => array(
 
-	)
+    )
 );
 
 $modal = $this->make('ee:_shared/modal_confirm_delete')->render($modal_vars);

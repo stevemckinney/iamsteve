@@ -376,14 +376,6 @@ class JumpMenu extends AbstractJumpMenu
                 'target' => 'design/email',
                 'permission' => 'can_access_design'
             ),
-            'systemTemplatesMembers' => array(
-                'icon' => 'fa-eye',
-                'command' => 'member_profile_templates',
-                'dynamic' => false,
-                'addon' => false,
-                'target' => 'design/members',
-                'permission' => ['can_access_design', 'can_admin_mbr_templates']
-            ),
 
             //settings
             'systemSettingsGeneral' => array(
@@ -450,7 +442,7 @@ class JumpMenu extends AbstractJumpMenu
                     'fieldset-deft_lang' => array(
                         'trail' => [
                             'settings',
-                             // 'general_settings'
+                            // 'general_settings'
                         ],
                         'command' => 'timezone',
                         'command_title' => 'timezone'
@@ -459,7 +451,7 @@ class JumpMenu extends AbstractJumpMenu
                     'fieldset-date_format-time_format' => array(
                         'trail' => [
                             'settings',
-                             // 'general_settings'
+                            // 'general_settings'
                         ],
                         'command' => 'date_time_fmt',
                         'command_title' => 'date_time_fmt'
@@ -468,7 +460,7 @@ class JumpMenu extends AbstractJumpMenu
                     'fieldset-include_seconds' => array(
                         'trail' => [
                             'settings',
-                             // 'general_settings'
+                            // 'general_settings'
                         ],
                         'command' => 'include_seconds',
                         'command_title' => 'include_seconds'
@@ -545,15 +537,6 @@ class JumpMenu extends AbstractJumpMenu
                         ],
                         'command' => 'themes_path',
                         'command_title' => 'themes_path'
-                    ),
-                    // Member Profile Trigger word
-                    'fieldset-profile_trigger' => array(
-                        'trail' => [
-                            'settings',
-                            // 'url_path_settings'
-                        ],
-                        'command' => 'member_segment_trigger',
-                        'command_title' => 'member_segment_trigger'
                     ),
                     // Category URL Segment
                     'fieldset-reserved_category_word' => array(
@@ -1079,13 +1062,6 @@ class JumpMenu extends AbstractJumpMenu
                         'command' => 'default_primary_role default_primary_role_desc',
                         'command_title' => 'default_primary_role'
                     ),
-                    'fieldset-member_theme' => array(
-                        'trail' => [
-                            'member_settings'
-                        ],
-                        'command' => 'member_theme member_theme_desc',
-                        'command_title' => 'member_theme'
-                    ),
                     'fieldset-member_listing_settings' => array(
                         'trail' => [
                             'member_settings'
@@ -1559,6 +1535,30 @@ class JumpMenu extends AbstractJumpMenu
                 'target' => 'utilities/extensions',
                 'permission' => 'can_access_utilities'
             ),
+            'systemUtilitiesDebugTools' => array(
+                'icon' => 'fa-hammer',
+                'command' => 'system_utilities debug_tools',
+                'dynamic' => false,
+                'addon' => false,
+                'target' => 'utilities/debug-tools',
+                'permission' => 'is_super_admin'
+            ),
+            'systemUtilitiesDebugToolsTags' => array(
+                'icon' => 'fa-hammer',
+                'command' => 'system_utilities debug_tools_debug_tags',
+                'dynamic' => false,
+                'addon' => false,
+                'target' => 'utilities/debug-tools/debug-tags',
+                'permission' => 'is_super_admin'
+            ),
+            'systemUtilitiesDebugToolsFieldtypes' => array(
+                'icon' => 'fa-hammer',
+                'command' => 'system_utilities debug_tools_fieldtypes',
+                'dynamic' => false,
+                'addon' => false,
+                'target' => 'utilities/debug-tools/debug-fieldtypes',
+                'permission' => 'is_super_admin'
+            ),
             'systemUtilitiesFileConverter' => array(
                 'icon' => 'fa-hammer',
                 'command' => 'system_utilities member_tools import_converter',
@@ -1675,7 +1675,6 @@ class JumpMenu extends AbstractJumpMenu
         return ! empty(self::$items);
     }
 
-
     /**
      * Get all items in the menu
      *
@@ -1692,6 +1691,7 @@ class JumpMenu extends AbstractJumpMenu
             return $items;
         }
         $this->primeCache();
+
         return self::$items;
     }
 
@@ -1699,7 +1699,6 @@ class JumpMenu extends AbstractJumpMenu
      * clear all caches
      * for now we're just forcing file driver, but that might change later
      */
-
     public function clearAllCaches()
     {
         ee()->cache->file->delete('/jumpmenu/');
@@ -1713,6 +1712,7 @@ class JumpMenu extends AbstractJumpMenu
         ee()->cache->file->delete('jumpmenu/' . ee()->session->getMember()->getId());
 
         //load language for all the jumps
+        ee()->lang->load('jump_menu');
         ee()->lang->load('settings');
         ee()->lang->load('addons');
         ee()->lang->load('myaccount');
@@ -1726,34 +1726,6 @@ class JumpMenu extends AbstractJumpMenu
         ee()->lang->load('logs');
 
         $items = self::$items;
-
-        //take out anchors and make them separate items
-        foreach ($items[1] as $key => $item) {
-            if (isset($item['anchors'])) {
-                foreach ($item['anchors'] as $achor_key => $anchor) {
-                    $trail = '';
-                    if (isset($anchor['trail'])) {
-                        if (is_array($anchor['trail'])) {
-                            foreach ($anchor['trail'] as $tail) {
-                                $trail .= lang($tail) . ' &raquo; ';
-                            }
-                        } else {
-                            $trail = lang($anchor['trail']) . ' &raquo; ';
-                        }
-                    }
-                    $items[1][$key . '_' . $achor_key] = array(
-                        'icon' => $item['icon'],
-                        'command' => $anchor['command'],
-                        'command_title' => $trail . (isset($anchor['command_title']) ? lang($anchor['command_title']) : lang($anchor['command'])),
-                        'dynamic' => isset($item['dynamic']) ? $item['dynamic'] : false,
-                        'addon' => isset($item['addon']) ? $item['addon'] : false,
-                        'target' => ee('CP/URL')->make($item['target'])->compile() . '#' . $achor_key,
-                        'permission' => isset($item['permission']) ? $item['permission'] : null
-                    );
-                }
-                unset($items[1][$key]['acnchors']);
-            }
-        }
 
         //logs have dynamically build titles
 
@@ -1844,6 +1816,34 @@ class JumpMenu extends AbstractJumpMenu
             );
         }
 
+        // Member Profile Trigger word
+        if (ee('Config')->getFile()->getBoolean('legacy_member_templates')) {
+            $items[1]['systemTemplatesMembers'] = array(
+                'icon' => 'fa-eye',
+                'command' => 'member_profile_templates',
+                'dynamic' => false,
+                'addon' => false,
+                'target' => 'design/members',
+                'permission' => ['can_access_design', 'can_admin_mbr_templates']
+            );
+
+            $items[1]['systemSettingsMembers']['anchors']['fieldset-member_theme'] = array(
+                'trail' => [
+                    'member_settings'
+                ],
+                'command' => 'member_theme member_theme_desc',
+                'command_title' => 'member_theme'
+            );
+
+            $items[1]['systemSettingsUrls']['anchors']['fieldset-profile_trigger'] = array(
+                'trail' => [
+                    'settings',
+                    // 'url_path_settings'
+                ],
+                'command' => 'member_segment_trigger',
+                'command_title' => 'member_segment_trigger'
+            );
+        }
 
         //if this is multi-site install, add links
         if (ee()->config->item('multiple_sites_enabled') === 'y') {
@@ -1871,20 +1871,17 @@ class JumpMenu extends AbstractJumpMenu
 
         //add custom menu links (addons to be included later)
         $menuItems = ee('Model')->get('MenuItem')
-			->fields('MenuItem.*', 'Children.*')
+            ->fields('MenuItem.*', 'Children.*')
             ->with(array('Set' => 'RoleSettings'), 'Children')
             ->filter('type', 'IN', ['link', 'submenu'])
-			->filter('RoleSettings.role_id', ee()->session->userdata('role_id'))
-			->order('MenuItem.sort')
-			->order('Children.sort')
-			->all();
+            ->filter('RoleSettings.role_id', ee()->session->userdata('role_id'))
+            ->order('MenuItem.sort')
+            ->order('Children.sort')
+            ->all();
 
-		foreach ($menuItems as $item)
-		{
-			if ($item->type == 'submenu')
-			{
-				foreach ($item->Children as $child)
-				{
+        foreach ($menuItems as $item) {
+            if ($item->type == 'submenu') {
+                foreach ($item->Children as $child) {
                     $items[1]['custom_' . $child->item_id] = array(
                         'icon' => 'fa-link',
                         'command' => 'menu_manager ' . $child->name,
@@ -1892,10 +1889,8 @@ class JumpMenu extends AbstractJumpMenu
                         'dynamic' => false,
                         'target' => $child->data
                     );
-				}
-			}
-			elseif ($item->parent_id == 0)
-			{
+                }
+            } elseif ($item->parent_id == 0) {
                 $items[1]['custom_' . $item->item_id] = array(
                     'icon' => 'fa-link',
                     'command' => 'menu_manager ' . $item->name,
@@ -1903,8 +1898,8 @@ class JumpMenu extends AbstractJumpMenu
                     'dynamic' => false,
                     'target' => $item->data
                 );
-			}
-		}
+            }
+        }
 
         foreach ($items[1] as $name => $item) {
             if (!ee('Permission')->isSuperAdmin() && !empty($item['permission']) && !ee('Permission')->hasAny($item['permission'])) {
@@ -1948,10 +1943,40 @@ class JumpMenu extends AbstractJumpMenu
             }
         }
 
+        //take out anchors and make them separate items
+        foreach ($items[1] as $key => $item) {
+            if (isset($item['anchors'])) {
+                foreach ($item['anchors'] as $achor_key => $anchor) {
+                    if (empty($anchor)) {
+                        continue;
+                    }
+                    $trail = '';
+                    if (isset($anchor['trail'])) {
+                        if (is_array($anchor['trail'])) {
+                            foreach ($anchor['trail'] as $tail) {
+                                $trail .= lang($tail) . ' &raquo; ';
+                            }
+                        } else {
+                            $trail = lang($anchor['trail']) . ' &raquo; ';
+                        }
+                    }
+                    $items[1][$key . '_' . $achor_key] = array(
+                        'icon' => $item['icon'],
+                        'command' => $anchor['command'],
+                        'command_title' => $trail . (isset($anchor['command_title']) ? lang($anchor['command_title']) : lang($anchor['command'])),
+                        'dynamic' => isset($item['dynamic']) ? $item['dynamic'] : false,
+                        'addon' => isset($item['addon']) ? $item['addon'] : false,
+                        'target' => ee('CP/URL')->make($item['target'])->compile() . '#' . $achor_key,
+                        'permission' => isset($item['permission']) ? $item['permission'] : null
+                    );
+                }
+                unset($items[1][$key]['anchors']);
+            }
+        }
+
         //member quick links
-        $member = ee('Model')->get('Member', ee()->session->userdata('member_id'))->first();
-        if (!empty($member->quick_links)) {
-			foreach (explode("\n", $member->quick_links) as $i=>$row) {
+        if (!empty(ee()->session->getMember()->quick_links)) {
+            foreach (explode("\n", ee()->session->getMember()->quick_links) as $i => $row) {
                 $x = explode('|', $row);
                 $items[1]['quicklink_' . $i] = array(
                     'icon' => 'fa-link',
@@ -1960,7 +1985,7 @@ class JumpMenu extends AbstractJumpMenu
                     'dynamic' => false,
                     'target' => $x[1]
                 );
-			}
+            }
         }
 
         //translate the commands
@@ -1974,7 +1999,6 @@ class JumpMenu extends AbstractJumpMenu
                 $items[1][$index]['command'] = implode(' ', $commands_translated);
             }
         }
-
 
         // Cache our items. We're bypassing the checks for the default
         // cache driver because we want this to be cached and working

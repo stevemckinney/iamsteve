@@ -31,13 +31,15 @@ class Relationship extends React.Component {
 	}
 
 	componentDidMount() {
-		this.bindSortable()
+        this.bindSortable()
+        EE.cp.formValidation.bindInputs(ReactDOM.findDOMNode(this).parentNode);
 	}
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.selected !== prevState.selected) {
             // Refresh the sortable items when the selected items change
             this.bindSortable()
+            EE.cp.formValidation._sendAjaxRequest($(ReactDOM.findDOMNode(this).parentNode).find('input[type=hidden]').first());
         }
     }
 
@@ -215,7 +217,7 @@ class Relationship extends React.Component {
                 }
 
                 <div style={{display: showAddButton ? 'block' : 'none' }}>
-				<button type="button" className="js-dropdown-toggle button button--default"><i class="fas fa-plus icon-left"></i> {EE.relationship.lang.relateEntry}</button>
+                <button type="button" className="js-dropdown-toggle button button--default"><i class="fas fa-plus icon-left"></i> {props.button_label ? props.button_label : EE.relationship.lang.relateEntry}</button>
                     <div className="dropdown js-dropdown-auto-focus-input">
                         <div className="dropdown__search d-flex">
                             <div className="filter-bar flex-grow">
@@ -224,6 +226,7 @@ class Relationship extends React.Component {
                                         <input type="text" class="search-input__input input--small" onChange={this.handleSearch} placeholder={EE.relationship.lang.search} />
                                     </div>
                                 </div>
+                                {props.channels.length > 1 && 
                                 <div className="filter-bar__item">
                                     <DropDownButton
                                         keepSelectedState={true}
@@ -233,6 +236,7 @@ class Relationship extends React.Component {
                                         buttonClass="filter-bar__button"
                                     />
                                 </div>
+                                }
                                 {this.props.can_add_items &&
                                 <div className="filter-bar__item">
                                     {props.channels.length == 1 &&
