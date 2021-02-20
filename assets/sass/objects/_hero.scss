@@ -28,7 +28,7 @@
 
   @include breakpoint(1060px) {
     position: absolute;
-    top: calc(14vh + 72px + 60px); }
+    top: 12vh; }
 
   @include breakpoint($de) {
     top: calc(14vh + 72px + 60px);
@@ -50,8 +50,7 @@
   margin-bottom: -28px;
 
   picture {
-    display: block;
-  }
+    display: block; }
 
   @include breakpoint(400px) {
     width: 394px;
