@@ -1,9 +1,0 @@
-/*!
- * This source file is part of the open source project
- * ExpressionEngine (https://expressionengine.com)
- *
- * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
- * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
- */
-"use strict";!function(i){EE.FileField={pickerCallback:function(i,e){var l=e.input_value,s=e.input_img.closest("figure"),a=e.input_img.closest(".fields-upload-chosen-file").next(".fields-upload-chosen-name");e.modal&&e.modal.find(".m-close").click(),l.val("{filedir_"+i.upload_location_id+"}"+i.file_name).trigger("change").trigger("hasFile",i),s.toggleClass("no-img",!i.isImage),s.toggleClass("is-svg",i.isSVG),s.find("img").toggleClass("hidden",!i.isImage),i.isImage&&e.input_img.attr("src",i.thumb_path),a.html("<p><b>"+i.title+"</b></p>"),l.siblings(".fields-upload-chosen").removeClass("hidden"),l.siblings(".fields-upload-btn").addClass("hidden"),l.siblings("em").remove()},setup:function(e){i(".file-field-filepicker",e).FilePicker({callback:EE.FileField.pickerCallback}),i("li.remove a",e).click(function(e){var l=i(this).closest(".fields-upload-chosen");l.addClass("hidden"),l.siblings("em").remove(),l.siblings('input[type="hidden"]').val("").trigger("change"),l.siblings(".fields-upload-btn").removeClass("hidden"),e.preventDefault()}),FileField.renderFields(e)}},i(document).ready(function(){function e(e){var l=i(".file-field-filepicker",e),s=i('input[type="hidden"]',e),a=s.attr("name").replace(/[\[\]']+/g,"_");l.attr("data-input-value",s.attr("name")),l.attr("data-input-image",a),i(".fields-upload-chosen img",e).attr("id",a)}EE.FileField.setup(),FluidField.on("file","add",function(i){e(i),EE.FileField.setup(i)}),Grid.bind("file","display",function(i){e(i),EE.FileField.setup(i)})})}(jQuery);

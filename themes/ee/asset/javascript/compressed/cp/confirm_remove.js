@@ -3,7 +3,148 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-$(document).ready(function(){$("body").on("click","*[data-conditional-modal]",function(t){var e=$(this).data("conditional-modal"),a=$(this).data("confirm-ajax"),i=$(this).data("confirm-text"),n=$(this).data("confirm-input"),l=$("*[data-"+e+"]").closest("select").get(0),o=$(l.options[l.selectedIndex]);if($(o).data(e)&&$(o).prop($(o).data(e))){t.preventDefault();var r="."+$(o).attr("rel"),c=$(r+", [rel="+$(o).attr("rel")+"]");$(r+" .checklist").html(""),"undefined"!=typeof i&&$(r+" .checklist").append("<li>"+i+"</li>");var d=$(this).parents("form").find("th input:checked, td input:checked, li input:checked");if(d=d.filter(function(t,e){return void 0!==$(e).attr("value")}),"modal-edit"==o.attr("rel")){var s=$.map(d,function(t){return $(t).val()});EE.cp.ModalForm.openForm({url:EE.publishEdit.sequenceEditFormUrl.replace("###",s[0]+"&"+$.param({entry_ids:s})),full:!0,iframe:!0,success:function(){location.reload()},load:function(t){var e=t.find("> iframe").last().contents().find("meta[name=modal-title]").attr("content");EE.cp.ModalForm.setTitle(e)}})}if("modal-bulk-edit"==o.attr("rel"))return EE.cp.BulkEdit.openForm(o.val(),d);d.length<6?d.each(function(){$(r+" .checklist").append("<li>"+$(this).attr("data-confirm")+"</li>")}):$(r+" .checklist").append("<li>"+EE.lang.remove_confirm.replace("###",d.length)+"</li>"),d.each(function(){$(r+" .checklist li:last").append($("<input/>").attr({type:"hidden",name:$(this).attr("name"),value:$(this).val()}))}),"undefined"!=typeof n&&$("input[name='"+n+"']").each(function(){$(r+" .checklist li:last").append($("<input/>").attr({type:"hidden",name:$(this).attr("name"),value:$(this).val()}))}),$(r+" .checklist li:last").addClass("last"),"undefined"!=typeof a&&$.post(a,$(r+" form").serialize(),function(t){$(r+" .ajax").html(t),SelectField.renderFields()}),c.trigger("modal:open")}})}),EE.cp.Modal={openConfirmRemove:function(t,e,a,i){var n=$(".modal-default-confirm-remove"),l=n.find("form"),o=n.find('input[name="content_id"]');$(".checklist",n).html("").append("<li>"+e+"</li>"),$(".form-btns .btn",n).removeClass("work").each(function(t,e){console.log(e),$(e).data("submit-text")&&$(e).attr("value",$(e).data("submit-text"))}),o.val(a),l.attr("action",t),n.trigger("modal:open"),n.find("form").submit(function(){return $.post(this.action,$(this).serialize(),function(t){n.trigger("modal:close"),i(t)}),!1})}};
+
+$(document).ready(function () {
+	$('body').on('click', '*[data-conditional-modal]', function (e) {
+		var data_element = $(this).data('conditional-modal');
+		var ajax_url = $(this).data('confirm-ajax');
+		var confirm_text = $(this).data('confirm-text');
+		var confirm_input = $(this).data('confirm-input');
+		var select = $('*[data-' + data_element + ']').closest('select').get(0)
+		var conditional_element = $(select.options[select.selectedIndex])
+
+		if ($(conditional_element).data(data_element) &&
+			$(conditional_element).prop($(conditional_element).data(data_element))) {
+			e.preventDefault();
+
+			// First adjust the checklist
+			var modalIs = '.' + $(conditional_element).attr('rel');
+			var modal = $(modalIs+', [rel='+$(conditional_element).attr('rel')+']')
+			$(modalIs + " .checklist").html(''); // Reset it
+
+			if (typeof confirm_text != 'undefined') {
+				$(modalIs + " .checklist").append('<li>' + confirm_text + '</li>');
+			}
+
+			var checked = $(this).parents('form').find('th input:checked, td input:checked, li input:checked');
+
+			checked = checked.filter(function(i, el) {
+				return $(el).attr('value') !== undefined;
+			});
+
+			if (conditional_element.attr('rel') == 'modal-edit') {
+				var entryIds = $.map(checked, function(el) {
+					return $(el).val()
+				})
+				EE.cp.ModalForm.openForm({
+					url: EE.publishEdit.sequenceEditFormUrl.replace('###', entryIds[0] + '&' + $.param({ entry_ids: entryIds })),
+					full: true,
+					iframe: true,
+					success: function() {
+						location.reload()
+					},
+					load: function (modal) {
+						var title = modal.find('> iframe').last().contents().find('meta[name=modal-title]').attr('content')
+						EE.cp.ModalForm.setTitle(title)
+					}
+				})
+			}
+
+			if (conditional_element.attr('rel') == 'modal-bulk-edit') {
+				return EE.cp.BulkEdit.openForm(conditional_element.val(), checked)
+			}
+
+			if (checked.length < 6) {
+				checked.each(function() {
+					$(modalIs + " .checklist").append('<li>' + $(this).attr('data-confirm') + '</li>');
+				});
+			} else {
+				$(modalIs + " .checklist").append('<li>' + EE.lang.remove_confirm.replace('###', checked.length) + '</li>');
+			}
+
+			// Add hidden <input> elements
+			checked.each(function() {
+				$(modalIs + " .checklist li:last").append(
+					$('<input/>').attr({
+						type: 'hidden',
+						name: $(this).attr('name'),
+						value: $(this).val()
+					})
+				);
+			});
+
+			if (typeof confirm_input != 'undefined') {
+				$("input[name='" + confirm_input + "']").each(function() {
+					$(modalIs + " .checklist li:last").append(
+						$('<input/>').attr({
+							type: 'hidden',
+							name: $(this).attr('name'),
+							value: $(this).val()
+						})
+					);
+				});
+			}
+
+			$(modalIs + " .checklist li:last").addClass('last');
+
+			if (typeof ajax_url != 'undefined') {
+				$.post(ajax_url, $(modalIs + " form").serialize(), function(data) {
+					$(modalIs + " .ajax").html(data);
+					SelectField.renderFields();
+				});
+			}
+
+			modal.trigger('modal:open')
+		}
+	})
+});
+
+EE.cp.Modal = {
+
+	/**
+	 * Opens the confirm removal modal and does the form and view manipulation
+	 * for the current item being deleted. Only supports one item at the moment.
+	 *
+	 * @param  {string}   actionUrl Form action URL for removal
+	 * @param  {string}   label     Label of item being deleted
+	 * @param  {mixed}    value     Value, typically an ID, of item being deleted
+	 * @param  {Function} callback  Callback on deletion of item
+	 * @return {void}
+	 */
+	openConfirmRemove: function(actionUrl, label, value, callback) {
+		var modal = $('.modal-default-confirm-remove'),
+			form = modal.find('form'),
+			input = modal.find('input[name="content_id"]')
+
+		// Add the name of the item we're deleting to the modal
+		$('.checklist', modal)
+			.html('')
+			.append('<li>' + label + '</li>')
+
+		// Reset buttons back to non-working state
+		$('.form-btns .button', modal)
+			.removeClass('work')
+			.each(function(index, button) {
+				if ($(button).data('submit-text')) {
+					$(button).attr('value', $(button).data('submit-text'))
+				}
+			})
+
+		input.val(value)
+		form.attr('action', actionUrl)
+
+		modal.trigger('modal:open')
+
+		modal.find('form').submit(function() {
+			$.post(this.action, $(this).serialize(), function(result) {
+				modal.trigger('modal:close')
+				callback(result)
+			})
+
+			return false
+		})
+	}
+};

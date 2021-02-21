@@ -16,7 +16,7 @@ if ( ! defined('ENV') )
 {
   $production = 'iamsteve.me';
   $development = 'dev.iamsteve.me';
-  $local = 'iamsteve.dev';
+  $local = 'iamsteve.test';
 
 	switch ( strtolower( $_SERVER['SERVER_NAME'] ) )
 	{

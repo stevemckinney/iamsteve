@@ -3,7 +3,158 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-var Updater={init:function(){this._lastStep=$(".box.updating .updater-step-work").text(),this._updaterInPlace=!1;var e=this;$(".toggle").on("click",function(e){e.preventDefault();var t=$(this).attr("rel");$("."+t).toggle()}),$("a[rel=rollback]").on("click",function(t){t.preventDefault(),e.runStep("rollback")}),$("body").on("click","a[data-post-url]",function(e){e.preventDefault();var t=$("<form/>",{action:$(this).data("postUrl"),method:"post"});t.append($("<input/>",{name:"csrf_token",value:EE.CSRF_TOKEN})),t.appendTo("body").submit()})},runStep:function(e){if(void 0!==e){$(".box.updating").removeClass("hidden"),$(".box.updater-stopped").addClass("hidden");var t=this,a=EE.BASE+"&C=updater&M=run&step="+e;$.ajax({type:"POST",url:a,dataType:"json",headers:{"X-CSRF-TOKEN":EE.CSRF_TOKEN},success:function(e){"success"==e.messageType?void 0!==e.nextStep&&e.nextStep!==!1?(t._updateStatus(e.message),t.runStep(e.nextStep),t._updaterInPlace||"updateFiles"!=e.nextStep||(t._updaterInPlace=!0)):window.location=EE.BASE:t._showError(e)},error:function(e){if(error=e.responseJSON,void 0===error)try{error=JSON.parse(e.responseText)}catch(a){error={messageType:"error",message:e.responseText,trace:[]}}t._showError(error)}})}},_updateStatus:function(e){var t=$(".updater-steps"),a="updater-step-work",s="updater-step-pass",r=$("."+a,t);if(r.text().indexOf(e)===-1&&""!=e){r.removeClass(a).addClass(s).find("span").remove();var n=$("<li/>",{"class":a}).html(e+"<span>...</span>");this._lastStep=e,t.append(n)}},_showError:function(e,t){$(".box.updating").addClass("hidden");var a=$(".box.updater-stopped"),t=this._updaterInPlace?"issue":"warn",s=$(".updater-fade",a),r=$(".updater-stack-trace",a),n=void 0!==e.trace&&e.trace.length>0,o=e.message.replace(/(?:\r\n|\r|\n)/g,"<br />");if(a.addClass(t).removeClass("hidden").find(".alert-notice p").html(o),$("p[class$=-choices]").addClass("hidden"),$("p."+t+"-choices").removeClass("hidden"),n){for(var d=$("<ul/>"),p=0;p<e.trace.length;p++)d.append($("<li/>").text(e.trace[p]));r.append(d)}s.toggleClass("hidden",!n),r.toggleClass("hidden",!n),$(".stopped",a).html(EE.lang.we_stopped_on.replace("%s",this._lastStep))},_showSuccess:function(){$(".box").addClass("hidden"),$(".box.success").removeClass("hidden")}};
+
+var Updater = {
+
+	init: function ()
+	{
+		this._lastStep = $('.updating .updater-step-work').text();
+		this._updaterInPlace = false;
+		var that = this;
+
+		$('.toggle').on('click', function(e) {
+			e.preventDefault();
+			var toggleIs = $(this).attr('rel');
+			$('.'+toggleIs).toggle();
+		});
+
+		$('a[rel=rollback]').on('click', function(e) {
+			e.preventDefault();
+			that.runStep('rollback');
+		});
+
+		$('body').on('click', 'a[data-post-url]', function(event) {
+			event.preventDefault();
+
+			var form = $('<form/>', {
+				action: $(this).data('postUrl'),
+				method: 'post'
+			});
+			form.append($('<input/>', {
+				name: 'csrf_token',
+				value: EE.CSRF_TOKEN
+			}));
+			form.appendTo('body').submit();
+		});
+	},
+
+	runStep: function(step) {
+		if (step === undefined) {
+			return;
+		}
+
+		$('.updating').removeClass('hidden');
+		$('.updater-stopped').addClass('hidden');
+
+		var that = this,
+			action = EE.BASE + '&C=updater&M=run&step='+step;
+
+		$.ajax({
+			type: 'POST',
+			url: action,
+			dataType: 'json',
+			headers: { 'X-CSRF-TOKEN': EE.CSRF_TOKEN },
+			success: function(result) {
+				if (result.messageType == 'success') {
+					if (result.nextStep !== undefined && result.nextStep !== false) {
+						that._updateStatus(result.message);
+						that.runStep(result.nextStep);
+
+						// If the updater is in place, we'll consider all errors 'issues'
+						if ( ! that._updaterInPlace && result.nextStep == 'updateFiles') {
+							that._updaterInPlace = true;
+						}
+					} else {
+						window.location = EE.BASE;
+					}
+				} else {
+					that._showError(result);
+				}
+			},
+			error: function(data) {
+				error = data.responseJSON;
+				if (error === undefined) {
+					try {
+						error = JSON.parse(data.responseText);
+					} catch(err) {
+						error = {
+							messageType: 'error',
+							message: data.responseText,
+							trace: []
+						};
+					}
+				}
+				that._showError(error);
+			}
+		});
+	},
+
+	_updateStatus: function(message) {
+		var progress_list = $('.updater-steps'),
+			work_class = 'updater-step-work',
+			pass_class = 'updater-step-pass',
+			current_item = $('.'+work_class, progress_list);
+
+		// If no message or is blank, don't update
+		if (current_item.text().indexOf(message) !== -1 || message == '') {
+			return;
+		}
+
+		// Mark previous item as finished
+		current_item.removeClass(work_class)
+			.addClass(pass_class)
+			.find('span')
+			.remove();
+
+		// Create new item
+		var new_item = $('<li/>', { class: work_class }).html(message + '<span>...</span>');
+
+		this._lastStep = message;
+
+		progress_list.append(new_item);
+	},
+
+	_showError: function(error, severity) {
+
+		$('.updating').addClass('hidden');
+
+		var issue_box = $('.updater-stopped'),
+			severity = this._updaterInPlace ? 'issue' : 'warn',
+			trace_link = $('.updater-fade', issue_box),
+			trace_container = $('.updater-stack-trace', issue_box),
+			trace_exists = error.trace !== undefined && error.trace.length > 0,
+			message = error.message.replace(/(?:\r\n|\r|\n)/g, '<br />');
+
+		issue_box.addClass(severity)
+			.removeClass('hidden')
+			.find('.alert-notice p')
+			.html(message);
+
+		$('p[class$=-choices]').addClass('hidden');
+		$('p.'+severity+'-choices').removeClass('hidden');
+
+		if (trace_exists) {
+			var list = $('<ul/>');
+			for (var i = 0; i < error.trace.length; i++) {
+				list.append(
+					$('<li/>').html(error.trace[i])
+				);
+			}
+			trace_container.append(list);
+		}
+
+		trace_link.toggleClass('hidden', ! trace_exists);
+		trace_container.toggleClass('hidden', ! trace_exists);
+
+		$('.stopped', issue_box).html(EE.lang.we_stopped_on.replace('%s', this._lastStep));
+	},
+
+	_showSuccess: function() {
+		$('.box').addClass('hidden');
+		$('.panel').addClass('hidden');
+		$('.success').removeClass('hidden');
+	}
+}

@@ -5,11 +5,11 @@
   },
   "extends": "airbnb/base",
   "rules": {
-    "no-unused-vars": 0,
+    "no-unused-vars":  0,
     "no-console": 0,
     "comma-dangle": 0,
     "semi": 0,
-    "padded-blocks": 0,
+    'padded-blocks': ['error', { blocks: 'never', classes: 'never', switches: 'never' }],
     "brace-style": ["error", "stroustrup"],
     "eol-last": 1,
     "no-restricted-syntax": [

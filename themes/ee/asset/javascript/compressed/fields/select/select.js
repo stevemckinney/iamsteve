@@ -1,9 +1,131 @@
-"use strict";function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function _extends(){return _extends=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var i=arguments[t];for(var n in i)Object.prototype.hasOwnProperty.call(i,n)&&(e[n]=i[n])}return e},_extends.apply(this,arguments)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _defineProperties(e,t){for(var i=0;i<t.length;i++){var n=t[i];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}function _createClass(e,t,i){return t&&_defineProperties(e.prototype,t),i&&_defineProperties(e,i),e}function _possibleConstructorReturn(e,t){return!t||"object"!==_typeof(t)&&"function"!=typeof t?_assertThisInitialized(e):t}function _getPrototypeOf(e){return(_getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&_setPrototypeOf(e,t)}function _setPrototypeOf(e,t){return(_setPrototypeOf=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function _assertThisInitialized(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function _defineProperty(e,t,i){return t in e?Object.defineProperty(e,t,{value:i,enumerable:!0,configurable:!0,writable:!0}):e[t]=i,e}/*!
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/*!
  * This source file is part of the open source project
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-var FilterableSelectList=makeFilterableComponent(SelectList),SelectField=function(e){function t(e){var i;return _classCallCheck(this,t),i=_possibleConstructorReturn(this,_getPrototypeOf(t).call(this,e)),_defineProperty(_assertThisInitialized(_assertThisInitialized(i)),"selectionChanged",function(e){i.setState({selected:e})}),_defineProperty(_assertThisInitialized(_assertThisInitialized(i)),"setEditingMode",function(e){i.setState({editing:e})}),_defineProperty(_assertThisInitialized(_assertThisInitialized(i)),"handleRemove",function(e,t){e.preventDefault(),$(e.target).closest("[data-id]").trigger("select:removeItem",[t])}),i.props.items=SelectList.formatItems(e.items),i.state={selected:SelectList.formatItems(e.selected,null,e.multi),editing:e.editing||!1},i}return _inherits(t,e),_createClass(t,[{key:"render",value:function(){var e=this,t=React.createElement(FilterableSelectList,_extends({},this.props,{selected:this.state.selected,selectionChanged:this.selectionChanged,tooMany:SelectList.countItems(this.props.items)>SelectList.defaultProps.tooManyLimit,reorderable:this.props.reorderable||this.state.editing,removable:this.props.removable||this.state.editing,handleRemove:function(t,i){return e.handleRemove(t,i)},editable:this.props.editable||this.state.editing}));return this.props.manageable?React.createElement("div",null,t,this.props.addLabel&&React.createElement("a",{className:"btn action submit",rel:"add_new",href:"#"},this.props.addLabel),React.createElement(ToggleTools,{label:this.props.manageLabel},React.createElement(Toggle,{on:this.props.editing,handleToggle:function(t){return e.setEditingMode(t)}}))):t}}],[{key:"renderFields",value:function(e){$("div[data-select-react]",e).each(function(){var e=JSON.parse(window.atob($(this).data("selectReact")));e.name=$(this).data("inputValue"),ReactDOM.render(React.createElement(t,e,null),this)})}}]),t}(React.Component);$(document).ready(function(){SelectField.renderFields()}),Grid.bind("relationship","displaySettings",SelectField.renderFields),Grid.bind("file","displaySettings",SelectField.renderFields),Grid.bind("checkboxes","display",SelectField.renderFields),FluidField.on("checkboxes","add",SelectField.renderFields),Grid.bind("radio","display",SelectField.renderFields),FluidField.on("radio","add",SelectField.renderFields),Grid.bind("multi_select","display",SelectField.renderFields),FluidField.on("multi_select","add",SelectField.renderFields);
+var FilterableSelectList = makeFilterableComponent(SelectList);
+
+var SelectField =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SelectField, _React$Component);
+
+  function SelectField(props) {
+    var _this;
+
+    _classCallCheck(this, SelectField);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SelectField).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "selectionChanged", function (selected) {
+      _this.setState({
+        selected: selected
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setEditingMode", function (editing) {
+      _this.setState({
+        editing: editing
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleRemove", function (event, item) {
+      event.preventDefault();
+      $(event.target).closest('[data-id]').trigger('select:removeItem', [item]);
+    });
+
+    _this.props.items = SelectList.formatItems(props.items);
+    _this.state = {
+      selected: SelectList.formatItems(props.selected, null, props.multi),
+      editing: props.editing || false
+    };
+    return _this;
+  }
+
+  _createClass(SelectField, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var tooManyLimit = typeof this.props.tooManyLimit !== 'undefined' && this.props.tooManyLimit !== null ? this.props.tooManyLimit : SelectList.defaultProps.tooManyLimit;
+      var selectItem = React.createElement(FilterableSelectList, _extends({}, this.props, {
+        selected: this.state.selected,
+        selectionChanged: this.selectionChanged,
+        tooMany: SelectList.countItems(this.props.items) > tooManyLimit,
+        reorderable: this.props.reorderable || this.state.editing,
+        removable: this.props.removable || this.state.editing,
+        handleRemove: function handleRemove(e, item) {
+          return _this2.handleRemove(e, item);
+        },
+        editable: this.props.editable || this.state.editing
+      }));
+
+      if (this.props.manageable) {
+        return React.createElement("div", null, selectItem, this.props.addLabel && React.createElement("a", {
+          className: "button button--default button--small submit publish__add-category-button",
+          rel: "add_new",
+          href: "#"
+        }, this.props.addLabel), React.createElement(ToggleTools, {
+          label: this.props.manageLabel
+        }, React.createElement(Toggle, {
+          on: this.props.editing,
+          handleToggle: function handleToggle(toggle) {
+            return _this2.setEditingMode(toggle);
+          }
+        })));
+      }
+
+      return selectItem;
+    }
+  }], [{
+    key: "renderFields",
+    value: function renderFields(context) {
+      $('div[data-select-react]', context).each(function () {
+        var props = JSON.parse(window.atob($(this).data('selectReact')));
+        props.name = $(this).data('inputValue');
+        ReactDOM.render(React.createElement(SelectField, props, null), this);
+      });
+    }
+  }]);
+
+  return SelectField;
+}(React.Component);
+
+$(document).ready(function () {
+  SelectField.renderFields();
+});
+Grid.bind('relationship', 'displaySettings', SelectField.renderFields);
+Grid.bind('file', 'displaySettings', SelectField.renderFields);
+Grid.bind('checkboxes', 'display', SelectField.renderFields);
+FluidField.on('checkboxes', 'add', SelectField.renderFields);
+Grid.bind('radio', 'display', SelectField.renderFields);
+FluidField.on('radio', 'add', SelectField.renderFields);
+Grid.bind('multi_select', 'display', SelectField.renderFields);
+FluidField.on('multi_select', 'add', SelectField.renderFields);

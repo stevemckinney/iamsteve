@@ -1,9 +1,208 @@
-"use strict";function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}function _possibleConstructorReturn(e,t){return!t||"object"!==_typeof(t)&&"function"!=typeof t?_assertThisInitialized(e):t}function _getPrototypeOf(e){return(_getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&_setPrototypeOf(e,t)}function _setPrototypeOf(e,t){return(_setPrototypeOf=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function _assertThisInitialized(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function DropdownItem(e){var t=e.item;return t.section?React.createElement("div",{className:"field-group-head"},React.createElement("span",{className:"icon--folder"})," ",t.section):React.createElement("label",{onClick:e.onClick,className:e.selected?"act":""},t.label," ",t.instructions&&React.createElement("i",null,t.instructions))}/*!
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/*!
  * This source file is part of the open source project
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-var Dropdown=function(e){function t(e){var n;return _classCallCheck(this,t),n=_possibleConstructorReturn(this,_getPrototypeOf(t).call(this,e)),_defineProperty(_assertThisInitialized(_assertThisInitialized(n)),"selectionChanged",function(e){n.setState({selected:e,open:!1}),n.props.groupToggle&&EE.cp.form_group_toggle(n.input)}),_defineProperty(_assertThisInitialized(_assertThisInitialized(n)),"toggleOpen",function(){n.setState(function(e,t){return{open:!e.open}})}),n.state={selected:n.getItemForSelectedValue(e.selected),open:!1},n}return _inherits(t,e),_createClass(t,[{key:"componentDidUpdate",value:function(e,t){(!t.selected&&this.state.selected||t.selected&&t.selected.value!=this.state.selected.value)&&(this.props.groupToggle&&EE.cp.form_group_toggle(this.input),$(this.input).trigger("change"))}},{key:"componentDidMount",value:function(){this.props.groupToggle&&EE.cp.form_group_toggle(this.input)}},{key:"getItemForSelectedValue",value:function(e){return this.props.initialItems.find(function(t){return String(t.value)==String(e)})}},{key:"handleSearch",value:function(e){this.props.filterChange("search",e)}},{key:"render",value:function(){var e=this,t=this.props.items.length>this.props.tooMany&&!this.state.loading,n=this.state.selected;return React.createElement("div",{className:"fields-select-drop"+(t?" field-resizable":"")},React.createElement("div",{className:"field-drop-selected"+(this.state.open?" field-open":""),onClick:this.toggleOpen},React.createElement("label",{className:this.state.selected?"act":""},n&&React.createElement("i",null,n.sectionLabel?n.sectionLabel+" / ":"",n.label),!n&&React.createElement("i",null,this.props.emptyText),React.createElement("input",{type:"hidden",ref:function(t){e.input=t},name:this.props.name,value:this.state.selected?this.state.selected.value:"","data-group-toggle":this.props.groupToggle?JSON.stringify(this.props.groupToggle):"[]"}))),React.createElement("div",{className:"field-drop-choices",style:this.state.open?{display:"block"}:{}},this.props.initialCount>this.props.tooMany&&React.createElement(FieldTools,null,React.createElement(FilterBar,null,React.createElement(FilterSearch,{onSearch:function(t){return e.handleSearch(t.target.value)}}))),React.createElement("div",{className:"field-inputs"},0==this.props.items.length&&React.createElement(NoResults,{text:this.props.noResults}),this.state.loading&&React.createElement(Loading,{text:EE.lang.loading}),this.props.items.map(function(t){return React.createElement(DropdownItem,{key:t.value?t.value:t.section,item:t,selected:e.state.selected&&t.value==e.state.selected.value,onClick:function(n){return e.selectionChanged(t)}})}))))}}],[{key:"renderFields",value:function(e){$("div[data-dropdown-react]",e).each(function(){var e=JSON.parse(window.atob($(this).data("dropdownReact")));e.name=$(this).data("inputValue"),$(this).data("initialValue")&&(e.selected=$(this).data("initialValue")),ReactDOM.render(React.createElement(FilterableDropdown,e,null),this)})}}]),t}(React.Component);_defineProperty(Dropdown,"defaultProps",{tooMany:8}),$(document).ready(function(){Dropdown.renderFields(),$(document).on("click",function(e){$(".field-drop-selected.field-open").not($(e.target).parents(".fields-select-drop").find(".field-drop-selected.field-open")).click()})}),Grid.bind("select","display",function(e){Dropdown.renderFields(e)}),FluidField.on("select","add",function(e){Dropdown.renderFields(e)});var FilterableDropdown=makeFilterableComponent(Dropdown);
+var Dropdown =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Dropdown, _React$Component);
+
+  function Dropdown(props) {
+    var _this;
+
+    _classCallCheck(this, Dropdown);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Dropdown).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "selectionChanged", function (selected) {
+      _this.setState({
+        selected: selected,
+        open: false
+      });
+
+      if (_this.props.groupToggle) {
+        EE.cp.form_group_toggle(_this.input);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "toggleOpen", function () {
+      _this.setState(function (prevState, props) {
+        return {
+          open: !prevState.open
+        };
+      });
+    });
+
+    _this.state = {
+      selected: _this.getItemForSelectedValue(props.selected),
+      open: false
+    };
+    return _this;
+  }
+
+  _createClass(Dropdown, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (!prevState.selected && this.state.selected || prevState.selected && prevState.selected.value != this.state.selected.value) {
+        if (this.props.groupToggle) {
+          EE.cp.form_group_toggle(this.input);
+        }
+
+        $(this.input).trigger('change');
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.groupToggle) {
+        EE.cp.form_group_toggle(this.input);
+      }
+    }
+  }, {
+    key: "getItemForSelectedValue",
+    value: function getItemForSelectedValue(value) {
+      return this.props.initialItems.find(function (item) {
+        return String(item.value) == String(value);
+      });
+    }
+  }, {
+    key: "handleSearch",
+    value: function handleSearch(searchTerm) {
+      this.props.filterChange('search', searchTerm);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var tooMany = this.props.items.length > this.props.tooMany && !this.state.loading;
+      var selected = this.state.selected;
+      return React.createElement("div", {
+        className: "select" + (tooMany ? ' select--resizable' : '') + (this.state.open ? ' select--open' : '')
+      }, React.createElement("div", {
+        className: "select__button",
+        onClick: this.toggleOpen
+      }, React.createElement("label", {
+        className: 'select__button-label' + (this.state.selected ? ' act' : '')
+      }, selected && React.createElement("span", null, selected.sectionLabel ? selected.sectionLabel + ' / ' : '', React.createElement("span", {
+        dangerouslySetInnerHTML: {
+          __html: selected.label
+        }
+      })), !selected && React.createElement("i", null, this.props.emptyText), React.createElement("input", {
+        type: "hidden",
+        ref: function ref(input) {
+          _this2.input = input;
+        },
+        name: this.props.name,
+        value: this.state.selected ? this.state.selected.value : '',
+        "data-group-toggle": this.props.groupToggle ? JSON.stringify(this.props.groupToggle) : '[]'
+      }))), React.createElement("div", {
+        className: "select__dropdown"
+      }, this.props.initialCount > this.props.tooMany && React.createElement("div", {
+        className: "select__dropdown-search"
+      }, React.createElement(FieldTools, null, React.createElement(FilterBar, null, React.createElement(FilterSearch, {
+        onSearch: function onSearch(e) {
+          return _this2.handleSearch(e.target.value);
+        }
+      })))), React.createElement("div", {
+        className: "select__dropdown-items"
+      }, this.props.items.length == 0 && React.createElement(NoResults, {
+        text: this.props.noResults
+      }), this.state.loading && React.createElement(Loading, {
+        text: EE.lang.loading
+      }), this.props.items.map(function (item) {
+        return React.createElement(DropdownItem, {
+          key: item.value ? item.value : item.section,
+          item: item,
+          selected: _this2.state.selected && item.value == _this2.state.selected.value,
+          onClick: function onClick(e) {
+            return _this2.selectionChanged(item);
+          }
+        });
+      }))));
+    }
+  }], [{
+    key: "renderFields",
+    value: function renderFields(context) {
+      $('div[data-dropdown-react]', context).each(function () {
+        var props = JSON.parse(window.atob($(this).data('dropdownReact')));
+        props.name = $(this).data('inputValue'); // In the case a Dropdown has been dynamically created, allow an initial
+        // value to be set other than the one in the initial config
+
+        if ($(this).data('initialValue')) {
+          props.selected = $(this).data('initialValue');
+        }
+
+        ReactDOM.render(React.createElement(FilterableDropdown, props, null), this);
+      });
+    }
+  }]);
+
+  return Dropdown;
+}(React.Component);
+
+_defineProperty(Dropdown, "defaultProps", {
+  tooMany: 8
+});
+
+function DropdownItem(props) {
+  var item = props.item;
+
+  if (item.section) {
+    return React.createElement("div", {
+      className: "select__dropdown-item select__dropdown-item--head"
+    }, React.createElement("span", {
+      className: "icon--folder"
+    }), " ", item.section);
+  }
+
+  return React.createElement("div", {
+    onClick: props.onClick,
+    className: 'select__dropdown-item' + (props.selected ? ' select__dropdown-item--selected' : '')
+  }, React.createElement("span", {
+    dangerouslySetInnerHTML: {
+      __html: item.label
+    }
+  }), item.instructions && React.createElement("i", null, item.instructions));
+}
+
+$(document).ready(function () {
+  Dropdown.renderFields(); // Close when clicked elsewhere
+
+  $(document).on('click', function (e) {
+    $('.select.select--open').not($(e.target).closest('.select')).find('.select__button').click();
+  });
+});
+Grid.bind('select', 'display', function (cell) {
+  Dropdown.renderFields(cell);
+});
+FluidField.on('select', 'add', function (field) {
+  Dropdown.renderFields(field);
+});
+var FilterableDropdown = makeFilterableComponent(Dropdown);

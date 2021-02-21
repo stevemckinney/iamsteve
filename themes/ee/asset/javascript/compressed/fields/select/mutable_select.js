@@ -1,9 +1,142 @@
-"use strict";function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _defineProperties(e,t){for(var i=0;i<t.length;i++){var n=t[i];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}function _createClass(e,t,i){return t&&_defineProperties(e.prototype,t),i&&_defineProperties(e,i),e}/*!
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/*!
  * This source file is part of the open source project
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-var MutableSelectField=function(){function e(t,i){_classCallCheck(this,e),this.fieldName=t,this.options=i,this.addButton='a[rel="add_new"]',this.setField(),this.toggleAddButton(),this.bindAdd(),this.bindEdit(),this.bindRemove()}return _createClass(e,[{key:"setField",value:function(){this.field=$('[data-input-value="'+this.fieldName+'"]')}},{key:"toggleAddButton",value:function(){var e=this.field.parent().find(this.addButton);this.field.find(".field-no-results").size()?e.filter(function(e,t){return $(t).hasClass("btn")}).hide():e.show()}},{key:"bindAdd",value:function(){var e=this;this.field.parent().on("click",this.addButton,function(t){t.preventDefault(),e.openForm(e.options.createUrl)})}},{key:"bindEdit",value:function(){var e=this;this.field.parent().on("click","label > a",function(t){t.preventDefault();var i=$(t.target).closest("[data-id]").data("id");e.openForm(e.options.editUrl.replace("###",i))})}},{key:"bindRemove",value:function(){var e=this;this.field.parent().on("select:removeItem","[data-id]",function(t,i){EE.cp.Modal.openConfirmRemove(e.options.removeUrl,i.label,i.value,function(t){return e.handleResponse(t)})})}},{key:"openForm",value:function(e){var t=this;EE.cp.ModalForm.openForm({url:e,createUrl:this.options.createUrl,load:function(e){EE.cp.form_group_toggle(e.find("[data-group-toggle]:input:checked")),SelectField.renderFields(e),Dropdown.renderFields(e),t.options.onFormLoad&&t.options.onFormLoad(e)},success:function(e){return t.handleResponse(e)}})}},{key:"handleResponse",value:function(e){var t=this;if(e.selectList)this.replaceField(e.selectList);else if(this.options.fieldUrl){var i=e.saveId?[e.saveId]:[];$('input[type=checkbox][name="'+this.fieldName+'[]"]:checked, input[type=hidden][name="'+this.fieldName+'[]"]').each(function(){i.push($(this).val())});var n={};n[this.fieldName]=i,$.post(this.options.fieldUrl,n,function(e){t.replaceField(e)})}}},{key:"replaceField",value:function(e){this.field.replaceWith(e),this.setField(),SelectField.renderFields(this.field.parent()),this.toggleAddButton()}}]),e}();
+var MutableSelectField =
+/*#__PURE__*/
+function () {
+  function MutableSelectField(fieldName, options) {
+    _classCallCheck(this, MutableSelectField);
+
+    this.fieldName = fieldName;
+    this.options = options;
+    this.addButton = 'a[rel="add_new"]';
+    this.setField();
+    this.toggleAddButton();
+    this.bindAdd();
+    this.bindEdit();
+    this.bindRemove();
+  }
+
+  _createClass(MutableSelectField, [{
+    key: "setField",
+    value: function setField() {
+      this.field = $('[data-input-value="' + this.fieldName + '"]');
+    } // Don't show blue action button if there are no results
+
+  }, {
+    key: "toggleAddButton",
+    value: function toggleAddButton() {
+      var addButtons = this.field.parent().find(this.addButton);
+
+      if (this.field.find('.field-no-results').size()) {
+        addButtons.filter(function (i, el) {
+          return $(el).hasClass('btn');
+        }).hide();
+      } else {
+        addButtons.show();
+      }
+    }
+  }, {
+    key: "bindAdd",
+    value: function bindAdd() {
+      var _this = this;
+
+      this.field.parent().on('click', this.addButton, function (e) {
+        e.preventDefault();
+
+        _this.openForm(_this.options.createUrl);
+      });
+    }
+  }, {
+    key: "bindEdit",
+    value: function bindEdit() {
+      var _this2 = this;
+
+      this.field.parent().on('click', 'label > a, label a.flyout-edit', function (e) {
+        e.preventDefault();
+        var itemId = $(e.target).closest('[data-id]').data('id');
+
+        _this2.openForm(_this2.options.editUrl.replace('###', itemId));
+      });
+    }
+  }, {
+    key: "bindRemove",
+    value: function bindRemove() {
+      var _this3 = this;
+
+      this.field.parent().on('select:removeItem', '[data-id]', function (e, item) {
+        EE.cp.Modal.openConfirmRemove(_this3.options.removeUrl, item.label, item.value, function (result) {
+          return _this3.handleResponse(result);
+        });
+      });
+    }
+  }, {
+    key: "openForm",
+    value: function openForm(url) {
+      var _this4 = this;
+
+      EE.cp.ModalForm.openForm({
+        url: url,
+        createUrl: this.options.createUrl,
+        load: function load(modal) {
+          EE.cp.form_group_toggle(modal.find('[data-group-toggle]:input:checked'));
+          SelectField.renderFields(modal);
+          Dropdown.renderFields(modal);
+
+          if (_this4.options.onFormLoad) {
+            _this4.options.onFormLoad(modal);
+          }
+        },
+        success: function success(result) {
+          return _this4.handleResponse(result);
+        }
+      });
+    }
+  }, {
+    key: "handleResponse",
+    value: function handleResponse(result) {
+      var _this5 = this;
+
+      // A selectList key should contain the field markup
+      if (result.selectList) {
+        this.replaceField(result.selectList); // Otherwise, we have to fetch the field markup ourselves
+      } else if (this.options.fieldUrl) {
+        var selected = result.saveId ? [result.saveId] : []; // Gather the current field selection so that it may be applied to the
+        // field upon reload. Checkboxes for server-rendered fields, hidden
+        // inputs for the React fields.
+
+        $('input[type=checkbox][name="' + this.fieldName + '[]"]:checked, input[type=hidden][name="' + this.fieldName + '[]"]').each(function () {
+          selected.push($(this).val());
+        });
+        var postdata = {};
+        postdata[this.fieldName] = selected;
+        $.post(this.options.fieldUrl, postdata, function (result) {
+          _this5.replaceField(result);
+        });
+      }
+    }
+  }, {
+    key: "replaceField",
+    value: function replaceField(html) {
+      this.field.replaceWith(html);
+      this.setField();
+      SelectField.renderFields(this.field.parent());
+      this.toggleAddButton();
+    }
+  }]);
+
+  return MutableSelectField;
+}();

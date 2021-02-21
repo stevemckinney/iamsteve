@@ -8,4 +8,79 @@
  *
  * http://api.jqueryui.com/fold-effect/
  */
-!function(e){"function"==typeof define&&define.amd?define(["jquery","./effect"],e):e(jQuery)}(function(e){return e.effects.effect.fold=function(t,i){var h,f,n=e(this),o=["position","top","bottom","left","right","height","width"],s=e.effects.setMode(n,t.mode||"hide"),d="show"===s,r="hide"===s,c=t.size||15,a=/([0-9]+)%/.exec(c),g=!!t.horizFirst,w=d!==g,u=w?["width","height"]:["height","width"],p=t.duration/2,m={},v={};e.effects.save(n,o),n.show(),h=e.effects.createWrapper(n).css({overflow:"hidden"}),f=w?[h.width(),h.height()]:[h.height(),h.width()],a&&(c=parseInt(a[1],10)/100*f[r?0:1]),d&&h.css(g?{height:0,width:c}:{height:c,width:0}),m[u[0]]=d?f[0]:c,v[u[1]]=d?f[1]:0,h.animate(m,p,t.easing).animate(v,p,t.easing,function(){r&&n.hide(),e.effects.restore(n,o),e.effects.removeWrapper(n),i()})}});
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"./effect"
+		], factory );
+	} else {
+
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
+
+return $.effects.effect.fold = function( o, done ) {
+
+	// Create element
+	var el = $( this ),
+		props = [ "position", "top", "bottom", "left", "right", "height", "width" ],
+		mode = $.effects.setMode( el, o.mode || "hide" ),
+		show = mode === "show",
+		hide = mode === "hide",
+		size = o.size || 15,
+		percent = /([0-9]+)%/.exec( size ),
+		horizFirst = !!o.horizFirst,
+		widthFirst = show !== horizFirst,
+		ref = widthFirst ? [ "width", "height" ] : [ "height", "width" ],
+		duration = o.duration / 2,
+		wrapper, distance,
+		animation1 = {},
+		animation2 = {};
+
+	$.effects.save( el, props );
+	el.show();
+
+	// Create Wrapper
+	wrapper = $.effects.createWrapper( el ).css({
+		overflow: "hidden"
+	});
+	distance = widthFirst ?
+		[ wrapper.width(), wrapper.height() ] :
+		[ wrapper.height(), wrapper.width() ];
+
+	if ( percent ) {
+		size = parseInt( percent[ 1 ], 10 ) / 100 * distance[ hide ? 0 : 1 ];
+	}
+	if ( show ) {
+		wrapper.css( horizFirst ? {
+			height: 0,
+			width: size
+		} : {
+			height: size,
+			width: 0
+		});
+	}
+
+	// Animation
+	animation1[ ref[ 0 ] ] = show ? distance[ 0 ] : size;
+	animation2[ ref[ 1 ] ] = show ? distance[ 1 ] : 0;
+
+	// Animate
+	wrapper
+		.animate( animation1, duration, o.easing )
+		.animate( animation2, duration, o.easing, function() {
+			if ( hide ) {
+				el.hide();
+			}
+			$.effects.restore( el, props );
+			$.effects.removeWrapper( el );
+			done();
+		});
+
+};
+
+}));

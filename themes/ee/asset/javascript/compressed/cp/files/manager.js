@@ -3,7 +3,34 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-"use strict";!function(t){t(document).ready(function(){t("table .toolbar .view a").click(function(e){var i=t(this).attr("rel");t.ajax({type:"GET",url:EE.file_view_url.replace("###",t(this).data("file-id")),dataType:"html",success:function(e){t("."+i+" div.box").html(e)}})})})}(jQuery);
+/* This file exposes three callback functions:
+ *
+ * EE.manager.showPrefsRow and EE.manager.hidePrefsRow and
+ * EE.manager.refreshPrefs
+ */
+
+/*jslint browser: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: false, bitwise: true, regexp: false, strict: true, newcap: true, immed: true */
+
+/*global $, jQuery, EE, window, document, console, alert */
+
+"use strict";
+
+(function ($) {
+	$(document).ready(function () {
+		$('a[rel=modal-view-file]').click(function (e) {
+			var modal = $(this).attr('rel');
+			$.ajax({
+				type: "GET",
+				url: EE.file_view_url.replace('###', $(this).data('file-id')),
+				dataType: 'html',
+				success: function (data) {
+					$("." + modal + " div.box").html(data);
+					SelectField.renderFields()
+				}
+			})
+		});
+	});
+})(jQuery);

@@ -6,7 +6,7 @@ return array(
 	'name'        => 'iamsteve',
 	'description' => 'Bits of code to tidy up templates and for access to PHP.',
 	'version'     => '1.0.0',
-	'namespace'   => 'EllisLab\Addons\Iamsteve',
+	'namespace'   => 'ExpressionEngine\Addons\Iamsteve',
 	'settings_exist' => FALSE,
 	'plugin.typography' => FALSE
 );

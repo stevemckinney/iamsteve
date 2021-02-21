@@ -1,8 +1,160 @@
-"use strict";function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function _defineProperties(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function _createClass(e,t,n){return t&&_defineProperties(e.prototype,t),n&&_defineProperties(e,n),e}function _possibleConstructorReturn(e,t){return!t||"object"!==_typeof(t)&&"function"!=typeof t?_assertThisInitialized(e):t}function _getPrototypeOf(e){return(_getPrototypeOf=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function _inherits(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&_setPrototypeOf(e,t)}function _setPrototypeOf(e,t){return(_setPrototypeOf=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function _assertThisInitialized(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}/**
+"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/**
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license
  */
-function FileUploadProgressTable(e){return React.createElement("div",{className:"field-file-upload__table"},React.createElement("div",{className:"tbl-wrap"},React.createElement("table",{className:"tbl-fixed tables--uploads"},React.createElement("tbody",null,React.createElement("tr",null,React.createElement("th",null,EE.lang.file_dnd_file_name),React.createElement("th",null,EE.lang.file_dnd_progress)),e.files.map(function(t){return React.createElement("tr",{key:t.name},React.createElement("td",null,(t.error||t.duplicate)&&React.createElement("span",{className:"icon--issue"}),t.name),React.createElement("td",null,t.error,t.error&&React.createElement("span",null," ",React.createElement("a",{href:"#",onClick:function(n){return e.onFileErrorDismiss(n,t)}},EE.lang.file_dnd_dismiss)),t.duplicate&&React.createElement(ResolveFilenameConflict,{file:t,onResolveConflict:e.onResolveConflict,onFileUploadCancel:function(n){return e.onFileErrorDismiss(n,t)}}),!t.error&&!t.duplicate&&React.createElement("div",{className:"progress-bar"},React.createElement("div",{className:"progress",style:{width:t.progress+"%"}}))))})))))}var ResolveFilenameConflict=function(e){function t(){var e,n;_classCallCheck(this,t);for(var r=arguments.length,o=new Array(r),l=0;l<r;l++)o[l]=arguments[l];return n=_possibleConstructorReturn(this,(e=_getPrototypeOf(t)).call.apply(e,[this].concat(o))),_defineProperty(_assertThisInitialized(_assertThisInitialized(n)),"resolveConflict",function(e,t){e.preventDefault();var r=$(".modal-file");$("div.box",r).html("<iframe></iframe>");var o=$("iframe",r);o.css({border:"none",width:"100%"});var l={file_id:t.fileId,original_name:t.originalFileName},i=EE.dragAndDrop.resolveConflictEndpoint+"&"+$.param(l);o.attr("src",i),r.find("div.box").html(o),o.load(function(){var e=o.contents().find("body").text();try{return e=JSON.parse(e),r.trigger("modal:close"),e.cancel?n.props.onFileUploadCancel(l,t):n.props.onResolveConflict(t,e)}catch(l){var i=o.contents().find("body").height();$(".box",r).height(i),o.height(i)}$(o[0].contentWindow).on("unload",function(){o.hide(),$(".box",r).height("auto"),$(r).height("auto")})})}),n}return _inherits(t,e),_createClass(t,[{key:"render",value:function(){var e=this;return React.createElement("a",{href:"#",className:"m-link",rel:"modal-file",onClick:function(t){return e.resolveConflict(t,e.props.file)}},EE.lang.file_dnd_resolve_conflict)}}]),t}(React.Component);
+function FileUploadProgressTable(props) {
+  return React.createElement("div", {
+    className: "file-field__items list-group"
+  }, props.files.map(function (file) {
+    return React.createElement("div", {
+      key: file.name,
+      className: "list-item"
+    }, React.createElement("div", {
+      className: "list-item__content-left"
+    }, (file.error || file.duplicate) && React.createElement("i", {
+      "class": "fas fa-exclamation-triangle file-field__file-icon file-field__file-icon-warning"
+    }), !file.error && !file.duplicate && React.createElement("i", {
+      "class": "fas fa-file-archive file-field__file-icon"
+    })), React.createElement("div", {
+      className: "list-item__content"
+    }, React.createElement("div", null, file.name, " ", !file.error && !file.duplicate && React.createElement("span", {
+      "class": "float-right meta-info"
+    }, Math.round(file.progress), "% / 100%")), React.createElement("div", {
+      className: "list-item__secondary"
+    }, file.error && React.createElement("span", {
+      className: "error-text"
+    }, file.error), file.duplicate && React.createElement("span", {
+      className: "error-text"
+    }, EE.lang.file_dnd_conflict), !file.error && !file.duplicate && React.createElement("div", {
+      className: "progress-bar"
+    }, React.createElement("div", {
+      className: "progress",
+      style: {
+        width: file.progress + '%'
+      }
+    })))), React.createElement("div", {
+      className: "list-item__content-right"
+    }, file.error && React.createElement("a", {
+      className: "button button--default",
+      href: "#",
+      onClick: function onClick(e) {
+        return props.onFileErrorDismiss(e, file);
+      }
+    }, EE.lang.file_dnd_dismiss), file.duplicate && React.createElement(ResolveFilenameConflict, {
+      file: file,
+      onResolveConflict: props.onResolveConflict,
+      onFileUploadCancel: function onFileUploadCancel(e) {
+        return props.onFileErrorDismiss(e, file);
+      }
+    })));
+  }));
+}
+
+var ResolveFilenameConflict =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ResolveFilenameConflict, _React$Component);
+
+  function ResolveFilenameConflict() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, ResolveFilenameConflict);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ResolveFilenameConflict)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "resolveConflict", function (e, file) {
+      e.preventDefault();
+      var modal = $('.modal-file');
+      $('div.box', modal).html('<iframe></iframe>');
+      var iframe = $('iframe', modal);
+      iframe.css({
+        border: 'none',
+        width: '100%'
+      });
+      var params = {
+        file_id: file.fileId,
+        original_name: file.originalFileName
+      };
+      var url = EE.dragAndDrop.resolveConflictEndpoint + '&' + $.param(params);
+      iframe.attr('src', url);
+      modal.find('div.box').html(iframe);
+      iframe.load(function () {
+        var response = iframe.contents().find('body').text();
+
+        try {
+          response = JSON.parse(response);
+          modal.trigger('modal:close');
+
+          if (response.cancel) {
+            return _this.props.onFileUploadCancel(e, file);
+          }
+
+          return _this.props.onResolveConflict(file, response);
+        } catch (e) {
+          var height = iframe.contents().find('body').height();
+          $('.box', modal).height(height);
+          iframe.height(height);
+        }
+
+        $(iframe[0].contentWindow).on('unload', function () {
+          iframe.hide();
+          $('.box', modal).height('auto');
+          $(modal).height('auto');
+        });
+      });
+    });
+
+    return _this;
+  }
+
+  _createClass(ResolveFilenameConflict, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return React.createElement("a", {
+        href: "#",
+        className: "button button--default m-link",
+        rel: "modal-file",
+        onClick: function onClick(e) {
+          return _this2.resolveConflict(e, _this2.props.file);
+        }
+      }, React.createElement("i", {
+        "class": "fas fa-info-circle icon-left"
+      }), EE.lang.file_dnd_resolve_conflict);
+    }
+  }]);
+
+  return ResolveFilenameConflict;
+}(React.Component);

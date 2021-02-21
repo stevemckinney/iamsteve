@@ -3,7 +3,50 @@
  * ExpressionEngine (https://expressionengine.com)
  *
  * @link      https://expressionengine.com/
- * @copyright Copyright (c) 2003-2019, EllisLab Corp. (https://ellislab.com)
+ * @copyright Copyright (c) 2003-2020, Packet Tide, LLC (https://www.packettide.com)
  * @license   https://expressionengine.com/license Licensed under Apache License, Version 2.0
  */
-!function(t){"use strict";function e(t){return t=t.toString(),t.length<2?"0"+t:t}EE.formatDate=function(n,o){n=n||new Date,o=t.extend({time_format:"12",include_seconds:"n"},o);var u=n.getHours(),r=e(n.getMinutes()),i=e(n.getSeconds()),s=[],a="";return"12"==o.time_format&&(a=u<12?" AM":" PM",u=u%12||12),s.push(u),s.push(r),"y"==o.include_seconds&&s.push(i)," '"+s.join(":")+a+"'"},EE.date_obj_time=EE.formatDate(new Date,EE.date)}(jQuery);
+
+(function($) { "use strict";
+
+	function zeroPad(number) {
+		number = number.toString();
+		if (number.length < 2) {
+			return '0' + number;
+		}
+
+		return number;
+	}
+
+	EE.formatDate = function(date, config) {
+
+		date = date || new Date();
+		config = $.extend({
+			time_format: '12',
+			include_seconds: 'n'
+		}, config);
+
+		var hours = date.getHours(),
+			minutes = zeroPad(date.getMinutes()),
+			seconds = zeroPad(date.getSeconds()),
+			segments = [],
+			suffix = '';
+
+		if (config.time_format == "12") {
+			suffix = (hours < 12) ? ' AM': ' PM';
+			hours = hours % 12 || 12;
+		}
+
+		segments.push(hours);
+		segments.push(minutes);
+
+		if (config.include_seconds == 'y') {
+			segments.push(seconds);
+		}
+
+		return " '" + segments.join(':') + suffix + "'";
+	};
+
+	EE.date_obj_time = EE.formatDate(new Date(), EE.date);
+
+})(jQuery);

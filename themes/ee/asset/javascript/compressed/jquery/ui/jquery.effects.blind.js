@@ -8,4 +8,83 @@
  *
  * http://api.jqueryui.com/blind-effect/
  */
-!function(e){"function"==typeof define&&define.amd?define(["jquery","./effect"],e):e(jQuery)}(function(e){return e.effects.effect.blind=function(t,s){var i,o,f,n=e(this),c=/up|down|vertical/,r=/up|left|vertical|horizontal/,a=["position","top","bottom","left","right","height","width"],p=e.effects.setMode(n,t.mode||"hide"),d=t.direction||"up",u=c.test(d),h=u?"height":"width",l=u?"top":"left",m=r.test(d),v={},w="show"===p;n.parent().is(".ui-effects-wrapper")?e.effects.save(n.parent(),a):e.effects.save(n,a),n.show(),i=e.effects.createWrapper(n).css({overflow:"hidden"}),o=i[h](),f=parseFloat(i.css(l))||0,v[h]=w?o:0,m||(n.css(u?"bottom":"right",0).css(u?"top":"left","auto").css({position:"absolute"}),v[l]=w?f:o+f),w&&(i.css(h,0),m||i.css(l,f+o)),i.animate(v,{duration:t.duration,easing:t.easing,queue:!1,complete:function(){"hide"===p&&n.hide(),e.effects.restore(n,a),e.effects.removeWrapper(n),s()}})}});
+(function( factory ) {
+	if ( typeof define === "function" && define.amd ) {
+
+		// AMD. Register as an anonymous module.
+		define([
+			"jquery",
+			"./effect"
+		], factory );
+	} else {
+
+		// Browser globals
+		factory( jQuery );
+	}
+}(function( $ ) {
+
+return $.effects.effect.blind = function( o, done ) {
+	// Create element
+	var el = $( this ),
+		rvertical = /up|down|vertical/,
+		rpositivemotion = /up|left|vertical|horizontal/,
+		props = [ "position", "top", "bottom", "left", "right", "height", "width" ],
+		mode = $.effects.setMode( el, o.mode || "hide" ),
+		direction = o.direction || "up",
+		vertical = rvertical.test( direction ),
+		ref = vertical ? "height" : "width",
+		ref2 = vertical ? "top" : "left",
+		motion = rpositivemotion.test( direction ),
+		animation = {},
+		show = mode === "show",
+		wrapper, distance, margin;
+
+	// if already wrapped, the wrapper's properties are my property. #6245
+	if ( el.parent().is( ".ui-effects-wrapper" ) ) {
+		$.effects.save( el.parent(), props );
+	} else {
+		$.effects.save( el, props );
+	}
+	el.show();
+	wrapper = $.effects.createWrapper( el ).css({
+		overflow: "hidden"
+	});
+
+	distance = wrapper[ ref ]();
+	margin = parseFloat( wrapper.css( ref2 ) ) || 0;
+
+	animation[ ref ] = show ? distance : 0;
+	if ( !motion ) {
+		el
+			.css( vertical ? "bottom" : "right", 0 )
+			.css( vertical ? "top" : "left", "auto" )
+			.css({ position: "absolute" });
+
+		animation[ ref2 ] = show ? margin : distance + margin;
+	}
+
+	// start at 0 if we are showing
+	if ( show ) {
+		wrapper.css( ref, 0 );
+		if ( !motion ) {
+			wrapper.css( ref2, margin + distance );
+		}
+	}
+
+	// Animate
+	wrapper.animate( animation, {
+		duration: o.duration,
+		easing: o.easing,
+		queue: false,
+		complete: function() {
+			if ( mode === "hide" ) {
+				el.hide();
+			}
+			$.effects.restore( el, props );
+			$.effects.removeWrapper( el );
+			done();
+		}
+	});
+};
+
+}));

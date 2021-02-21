@@ -2,30 +2,30 @@
  * Paths
  */
 const path = {
-  src: 'assets/',
-  dist: 'dist/',
+  src: './assets/',
+  dist: './dist/',
   css: {
-    src: 'assets/sass/**/*.{scss,sass}',
-    dist: 'dist/css/'
+    src: './assets/sass/**/*.{scss,sass}',
+    dist: './dist/css/'
   },
   js: {
-    src: 'assets/js/**/*.js',
-    dist: 'dist/js/'
+    src: './assets/js/**/*.js',
+    dist: './dist/js/'
   },
   html: {
     src: './system/user/templates/default_site/**/*.html'
   },
   image: {
-    src: 'assets/images/*.png',
-    dist: 'dist/images/'
+    src: './assets/images/*.png',
+    dist: './dist/images/'
   },
   svg: {
-    src: 'assets/images/*.svg',
-    dist: 'dist/images/'
+    src: './assets/images/*.svg',
+    dist: './dist/images/'
   },
   fonts: {
     src: './assets/fonts/**/*.{ttf,woff,woff2,eot,svg}',
-    dist: 'dist/fonts/'
+    dist: './dist/fonts/'
   },
   node_modules: './node_modules'
 }
@@ -66,8 +66,9 @@ const fresh = (done) => {
  * see: https://www.browsersync.io/docs/options/
  **/
 const browserSyncOptions = {
-  proxy: 'http://iamsteve.dev',
-  injectChanges: true
+  proxy: 'https://iamsteve.test',
+  injectChanges: true,
+  https: true
 }
 
 // Reload

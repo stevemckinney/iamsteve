@@ -1,17 +1,17 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Exception - ExpressionEngine</title>
+		<title><?=$error_type?> - ExpressionEngine</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" lang="en-us" dir="ltr">
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"  name="viewport">
 		<style>
-			<?php echo file_get_contents(__DIR__.'/eecms-error.min.css'); ?>
+			<?php echo file_get_contents(__DIR__ . '/eecms-error.min.css'); ?>
 		</style>
 	</head>
 	<body>
 		<section class="wrap">
 			<div class="err-wrap error">
-				<h1>Exception Caught</h1>
+				<h1><?=$error_type?> Caught</h1>
 				<h2><?php echo $message ?></h2>
 				<p><?php echo $location ?></p>
 
