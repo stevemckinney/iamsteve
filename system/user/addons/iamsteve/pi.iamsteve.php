@@ -207,11 +207,6 @@ class Iamsteve {
       $g = dechex($cols['green']);
       $b = dechex($cols['blue']);
 
-      $style = 'style="background: white; padding: 3em; width: 100%; clear: both; white-space: pre; font-size:12px; color: #444; position: relative; z-index: 9999;"';
-      echo '<pre ' . $style . '>';
-        print_r($cols);
-      echo '</pre>';
-
       return '#' . $r . $g . $b;
     }
   }
