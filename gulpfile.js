@@ -178,7 +178,7 @@ const criticalInclude = [
 const criticalAll = (done) => {
   critical.generate({
     base: './',
-    src: 'http://iamsteve.dev',
+    src: 'https://iamsteve.test',
     css: [`${path.css.dist}/global.css`],
     dimensions: criticalDimensions,
     dest: './system/user/templates/default_site/_partials/critical.html',
@@ -195,7 +195,7 @@ const criticalAll = (done) => {
 const criticalArticle = (done) => {
   critical.generate({
     base: './',
-    src: 'http://iamsteve.dev/blog/entry/atomic-font-size-management-with-sass',
+    src: 'https://iamsteve.test/blog/entry/atomic-font-size-management-with-sass',
     css: [`${path.css.dist}/global.css`],
     dimensions: criticalDimensions,
     dest: './system/user/templates/default_site/_partials/critical_article.html',
