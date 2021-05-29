@@ -1,0 +1,17 @@
+{exp:channel:entries channel="blog" limit="1" rdf="off"}
+<div style="display:block;white-space:pre">
+---
+title: {title}
+image-large: {if image}{image}{if url:large}{url:large}{/if}{/image}{/if}
+image: {if image}{image}{url}{/image}{/if}
+thumbnail: {thumbnail}{if medium_file_url}{url:medium-2x}{/if}{/thumbnail}
+categories: {categories channel="blog" style="linear" parent_only="yes" limit="1"}{category_name}{/categories}
+excerpt: {excerpt}
+date: {entry_date format="%r"}
+updated: {edit_date}
+status: {status}
+slug: {url_title}
+---
+{article} <!-- end of post -->
+</div>
+{/exp:channel:entries}
