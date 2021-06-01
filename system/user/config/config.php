@@ -23,6 +23,7 @@ $config['database'] = array(
 );
 $config['show_ee_news'] = 'y';
 $config['share_analytics'] = 'y';
+$config['save_tmpl_files'] = 'y';
 
 // Modify everything in the master config
 require $_SERVER['DOCUMENT_ROOT'] . '/config/config.master.php';

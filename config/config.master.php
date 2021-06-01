@@ -84,6 +84,7 @@ if (isset($config))
 	$env_config['prv_msg_upload_path'] = $images_path . '/pm_attachments/';
 	// $env_config['third_party_path']    = $base_path . '/../third_party/';
 
+  $env_config['cp_session_ttl'] = 96000;
 
 	/**
 	 * Custom upload directory paths

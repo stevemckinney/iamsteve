@@ -1,7 +1,8 @@
 .tabbar {
+  padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+
   @include breakpoint($c-max) {
     position: fixed;
-    padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     z-index: $z-index-200;
     right: 0;
     bottom: 0;
