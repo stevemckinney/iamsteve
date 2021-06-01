@@ -45,7 +45,7 @@
     "gulp-copy": "^4.0.1",
     "gulp-cssnano": "^1.1.0",
     "gulp-order": "^1.2.0",
-    "gulp-postcss": "^7.0.1",
+    "gulp-postcss": "^9.0.0",
     "gulp-purgecss": "^1.2.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^1.12.0",
