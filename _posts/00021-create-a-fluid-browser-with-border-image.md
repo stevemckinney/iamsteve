@@ -1,24 +1,28 @@
 ---
-title: "Compass mixins you should know about"
+title: "Create a fluid browser with border-image"
 image:
   large: false
   medium: false
   thumbnail: false
-excerpt: "Compass is a brilliant extension to Sass as we all know. We know the time saving CSS3 related mixins it offers, maybe you don’t know some of the lesser praised mixins/functions that offer a similar convenience. I’m going to run through a few of my favourites that I have come to rely on. Such as clearfix, image-height, image-width and a few text replacement options."
+excerpt: "
+I have been curious to try find a solution to having a fluid browser around portfolio images. I have attempted to find a solution which is as simple as I have been able to find. The overall idea uses :before to apply the browser and border-image, this is purely to offset extra space caused by the widths of the border.
+
+
+"
 meta:
-  description: " Compass mixins and functions you may not be aware of. Helpers for clearfix, text replacement, getting the image height and width and more."
+  description: "Using border image we can use a small image and define slices to make a repeatable area."
 design:
   background: "#e9f5f5"
-categories: "Code"
-date: "2013-01-03T09:13:00+00:00"
-updated: "2016-08-28T12:59:01+00:00"
+categories: "Design"
+date: "2013-03-24T13:38:00+00:00"
+updated: "2021-06-09T06:16:51+00:00"
 author:
   name: "Steve"
   picture: "[replace-me]"
 ogImage:
   url: "/assets/og/cover.jpg"
 status: "open"
-slug: "compass-mixins-you-should-know-about"
+slug: "create-a-fluid-browser-with-border-image"
 ---
 
 I have been recently trying to get a consistent look across my element mixin no matter the colour, without being too inefficient. You could say simply take a base colour, and use darken and lighten on it, to get reasonable variations of the colour, for gradient colour stops. Then throw in some bevels, a border, and you have a nice button.
