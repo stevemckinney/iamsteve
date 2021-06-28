@@ -49,7 +49,7 @@
     "gulp-purgecss": "^1.2.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^1.12.0",
-    "gulp-svgmin": "^2.2.0",
+    "gulp-svgmin": "^4.0.0",
     "gulp-watch": "^5.0.1",
     "node-sass": "^4.14.1",
     "prettier": "^1.7.1",
