@@ -32,7 +32,7 @@ One of the most commonly used functions that I use within Sass is one to calcula
 ```
 
 ## Maps
-Maps are useful for creating key and value pairs. They aren’t immediately clear how you would use them in terms of CSS. They have value for people who extend Sass, but every day use is a little unclear. A couple of use cases I have found that work well are buttons and text colours.
+Maps are useful for creating an key and value pairs. They aren’t immediately clear how you would use them in terms of CSS. They have value for people who extend Sass, but every day use is a little unclear. A couple of use cases I have found that work well are buttons and text colours.
 
 ### Creating a map
 Maps must always be surrounded by parentheses and be comma separated.
