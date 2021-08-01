@@ -35,6 +35,9 @@ p, figcaption {
   @supports (hyphens: auto) {
     hyphens: auto; } }
 
+figure p:empty {
+  display: none; }
+
 a, time {
   transition: color .2s, transform .2s, opacity .2s;
   transform-origin: center center;

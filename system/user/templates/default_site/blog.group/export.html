@@ -10,12 +10,13 @@
 title: "{title}"
 image:
   large: {if image}{image}{if url:large}"{url:large-2x}"{/if}{/image}{if:else}false{/if}
-  medium: {if image}{image}"{url}""{/image}{if:else}false{/if}
-  thumbnail: {if thumbnail}{thumbnail}{if medium_file_url}"{url:medium-2x}"{if:else}{url}{/if}{/thumbnail}{if:else}false{/if}
+  medium: {if image}{image}"{url}"{/image}{if:else}false{/if}
+  thumbnail: {if thumbnail}{thumbnail}{if medium_file_url}"{url:medium-2x}"{if:else}"{url}"{/if}{/thumbnail}{if:else}false{/if}
+excerpt: "{excerpt}"
 meta:
-  description: {exp:seo_lite:pair entry_id="{entry_id}"}{meta_description}{/exp:seo_lite:pair}
+  description: "{exp:seo_lite:pair entry_id="{entry_id}"}{meta_description}{/exp:seo_lite:pair}"
 design:
-  background: {if image}{background}{if:else}{color}{/if}
+  background: "{if image}{background}{if:else}{color}{/if}"
 categories: {categories channel="blog" style="linear" parent_only="yes" limit="1"}"{category_name}"{/categories}
 date: "{entry_date format="%c"}"
 updated: "{edit_date format="%c"}"
