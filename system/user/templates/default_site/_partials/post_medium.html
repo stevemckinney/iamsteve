@@ -1,7 +1,7 @@
 {preload_replace:background="{image}{exp:iamsteve:background image='{url}'}{/image}"}
 
 <article class="card card-medium entry flex flex-column">
-	<a href="{title_permalink='blog/entry'}" class="card-image db mb2 mb4-b loading" style="background-color: {if image}{background}{if:else}{color}{/if}" aria-label="Read {title}">
+	<a href="{title_permalink='blog'}" class="card-image db mb2 mb4-b loading" style="background-color: {if image}{background}{if:else}{color}{/if}" aria-label="Read {title}">
   	{if thumbnail}
   	  {thumbnail}
   	    {if medium_file_url}
@@ -30,7 +30,7 @@
         {entry_date format="%F %j%S %Y"}
       </time>
   	</div>
-		<h3 class="f2-l mb1 mb2-d"><a href="{title_permalink='blog/entry'}" class="primary secondary-hover">{title}</a></h3>
+		<h3 class="f2-l mb1 mb2-d"><a href="{title_permalink='blog'}" class="primary secondary-hover">{title}</a></h3>
     <div class="flex-auto mb2 mb3-d">
   	  {if segment_1 == 'search'}
   	    <p>{excerpt}</p>
@@ -43,7 +43,7 @@
         <a href="{path='blog/index'}" rel="category tag" class="warm secondary-hover">{category_name}</a>
       {/categories}
 
-      <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon warm secondary-hover card-permalink">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
+      <a href="{title_permalink='blog'}" rel="bookmark" class="link-icon warm secondary-hover card-permalink">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
     </div>
     <div class="visuallyhidden" aria-hidden="true" tabindex="-1">
       <a href="{site_url}" class="author vcard url fn" rel="author">Steve McKinney</a>
