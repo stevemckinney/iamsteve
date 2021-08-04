@@ -103,12 +103,14 @@
   </div>
   <div class="column column-3-d">
   	<a class="button button-bmc flex align-center items-center justify-center self-end" target="_blank" href="https://www.buymeacoffee.com/BQoVfY7gc">
-  		<img data-src="{global:theme_url}/dist/images/buy-coffee.svg" alt="Buy me a coffee" class="dib lazyload"> Buy me a coffee
+  		<img src="{global:theme_url}/dist/images/buy-coffee.svg" alt="Buy me a coffee" class="dib" width="24" height="24" loading="lazy"> Buy me a coffee
   	</a>
 	</div>
 </div>
 <style>
-	.button-bmc { background-color: #FF813F; color: white; }
+	.button-bmc { transition: background-color .2s; background-color: #ffdd00; color: #0D0C22; }
+  .button-bmc:hover, .button-bmc:focus { background-color: #f2bc00; }
+  .button-bmc img { margin-right: 4px; }
 </style>
 
 {embed="include/next"}

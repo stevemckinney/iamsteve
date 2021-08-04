@@ -136,7 +136,8 @@
       content: "";
       display: inline-block;
       position: relative;
-      transition: .2s ease-out;
+      will-change: transform, opacity;
+      transition: transform .2s ease-out, opacity .2s ease-out;
       top: .19047619em; // 4px/21px
       left: $base-px/2;
       width: 1em;
@@ -146,7 +147,7 @@
 
     a:not(.fragment):hover:after,
     a:not(.fragment):focus:after {
-      left: $line;
+      transform: translateX($base-px/2);
       opacity: .8; } }
 
   // Aligns to 96px
