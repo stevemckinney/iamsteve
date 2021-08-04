@@ -6,7 +6,7 @@
   {exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" backspace="6"}
   {
     "title": "{exp:low_replace find="QUOTE|NEWLINE" replace="\QUOTE|SPACE" multiple="yes"}{title}{/exp:low_replace}",
-    "permalink": "{title_permalink='blog/entry'}",
+    "permalink": "{title_permalink='blog'}",
     "category": "{categories limit="1"}{exp:low_replace find="QUOTE|NEWLINE" replace="\QUOTE|SPACE" multiple="yes"}{category_name}{/exp:low_replace}{/categories}",
   },
   {/exp:channel:entries}
