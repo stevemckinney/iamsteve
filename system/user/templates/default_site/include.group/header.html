@@ -21,8 +21,14 @@
 
     {!-- PWA / performance --}
     <link rel="dns-prefetch" href="https://use.typekit.net">
-    <link rel="preload" href="{site_url}dist/fonts/averta/avertastd-bold-webfont.woff2" as="font">
-    <link rel="preload" href="{site_url}dist/fonts/averta/avertastd-regularitalic-webfont.woff2" as="font">
+    {if segment_2 == ''}
+      <link rel="preload" href="{site_url}dist/fonts/averta/avertastd-bold-webfont.woff2" as="font">
+      <link rel="preload" href="{site_url}dist/fonts/averta/avertastd-regularitalic-webfont.woff2" as="font">
+    {if:else}
+      <link rel="preload" href="{site_url}dist/fonts/averta/avertastd-bold-webfont.woff2" as="font">
+      <link rel="preload" href="{site_url}dist/fonts/averta/avertastd-semibold-webfont.woff2" as="font">
+      <link rel="preload" href="{site_url}dist/fonts/averta/avertastd-regularitalic-webfont.woff2" as="font">
+    {/if}
     <link rel="manifest" href="{site_url}manifest.json">
     <meta name="theme-color" content="#543243">
 
