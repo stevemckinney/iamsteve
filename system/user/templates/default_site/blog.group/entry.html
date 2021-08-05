@@ -27,7 +27,12 @@
     {if image}
   	  {image}
   	    {if url:large}
-  	      <img data-src="{url:large}" data-srcset="{url:medium} 378w, {url:large} 738w, {url:large-2x} 1476w" alt role="presentation" class="lazyload">
+  	      <img
+            data-src="{url:large}"
+            srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            data-srcset="{url:medium} 378w, {url:large} 738w, {url:large-2x} 1476w" alt role="presentation"
+            class="lazyload"
+            width="738" height="492">
           <noscript>
           	<img src="{url:large}" srcset="{url:medium} 378w, {url:large} 738w, {url:large-2x} 1476w" alt role="presentation">
           </noscript>

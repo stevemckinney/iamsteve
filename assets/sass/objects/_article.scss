@@ -265,6 +265,7 @@
   display: block;
   margin: auto;
   height: 192px + 24px;
+  width: auto;
   max-width: 738px;
 
   @include breakpoint(360px) {
