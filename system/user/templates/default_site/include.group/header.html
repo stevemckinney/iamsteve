@@ -29,6 +29,25 @@
       <link rel="preload" href="{site_url}dist/fonts/averta/avertastd-semibold-webfont.woff2" as="font">
       <link rel="preload" href="{site_url}dist/fonts/averta/avertastd-regularitalic-webfont.woff2" as="font">
     {/if}
+    {exp:channel:entries require_entry="yes" show_future_entries="yes" track_views="one" channel="blog" status="open" global:param_disable_default global:param_cache_param}
+      {if image}
+        {image}
+          {if url:large}
+            <link rel="preload" as="image" href="{url:large}" imagesrcset="{url:large} 1x, {url:large-2x} 2x" />
+          {if:else}
+            <link rel="preload" as="image" href="{url}" />
+          {/if}
+        {/image}
+      {if:else}
+        {categories channel="blog" limit="1"}
+          {if category_id == 7}
+            <link rel="preload" as="image" href="{global:theme_url}/dist/images/{design}" />
+          {if:else}
+            <link rel="preload" as="image" href="{global:theme_url}/dist/images/{code}" />
+          {/if}
+        {/categories}
+      {/if}
+    {/exp:channel:entries}
     <link rel="manifest" href="{site_url}manifest.json">
     <meta name="theme-color" content="#543243">
 
