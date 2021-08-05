@@ -137,7 +137,7 @@ const purge = (done) => {
 
 // Critical CSS
 const criticalDimensions = [{
-  width: 414,
+  width: 320,
   height: 738
 }, {
   width: 1024,
@@ -178,13 +178,12 @@ const criticalInclude = [
 const criticalAll = (done) => {
   critical.generate({
     base: './',
-    src: 'https://iamsteve.test',
+    src: 'https://iamsteve.me',
     css: [`${path.css.dist}/global.css`],
     dimensions: criticalDimensions,
-    dest: './system/user/templates/default_site/_partials/critical.html',
-    inline: false,
-    minify: true,
-    extract: false,
+    target: {
+      css: './system/user/templates/default_site/_partials/critical.html',
+    },
     include: criticalInclude,
     ignore: criticalIgnore
   });
@@ -195,13 +194,12 @@ const criticalAll = (done) => {
 const criticalArticle = (done) => {
   critical.generate({
     base: './',
-    src: 'https://iamsteve.test/blog/entry/atomic-font-size-management-with-sass',
+    src: 'https://iamsteve.me/blog/entry/atomic-font-size-management-with-sass',
     css: [`${path.css.dist}/global.css`],
     dimensions: criticalDimensions,
-    dest: './system/user/templates/default_site/_partials/critical_article.html',
-    inline: false,
-    minify: true,
-    extract: false,
+    target: {
+      css: './system/user/templates/default_site/_partials/critical_article.html',
+    },
     include: criticalInclude,
     ignore: criticalIgnore
   });
