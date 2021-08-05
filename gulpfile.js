@@ -39,7 +39,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const cache = require('gulp-cache');
 
 // CSS
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('node-sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const cssnano = require('gulp-cssnano');
 const critical = require('critical');
@@ -294,7 +294,6 @@ exports.default = series(
 		css,
 		fonts,
 		svg,
-		images
 	)
 );
 

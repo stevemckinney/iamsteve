@@ -1,5 +1,5 @@
 <article class="card card-large">
-	<a href="{title_permalink='blog/entry'}" class="card-image db loading">
+	<a href="{title_permalink='blog'}" class="card-image db loading">
   	{if image}
   	  {image}
   	    {if large_file_url}
@@ -21,7 +21,7 @@
         <span class="day">{entry_date format="%j"}</span>
       </time>
     </div>
-		<h2 class="f4 f3-b f2-d mb2 primary"><a href="{title_permalink='blog/entry'}">{title}</a></h2>
+		<h2 class="f4 f3-b f2-d mb2 primary"><a href="{title_permalink='blog'}">{title}</a></h2>
 		{excerpt}
 		<div class="meta dashes">
       {categories channel="blog" style="linear" parent_only="yes" limit="1"}
@@ -29,7 +29,7 @@
       {/categories}
     
       {if segment_2 != "entry"}
-        <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
+        <a href="{title_permalink='blog'}" rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
       {/if}
     </div>
     <div class="visuallyhidden">

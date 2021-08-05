@@ -1,7 +1,7 @@
 {preload_replace:background="{image}{exp:iamsteve:background image='{url}'}{/image}"}
 
 <article class="card card-small">
-	<a href="{title_permalink='blog/entry'}" class="card-image db mb2 loading" style="background-color: {if image}{background}{if:else}{color}{/if}" aria-label="Read {title}">
+	<a href="{title_permalink='blog'}" class="card-image db mb2 loading" style="background-color: {if image}{background}{if:else}{color}{/if}" aria-label="Read {title}">
   	{if thumbnail}
   	  {thumbnail}
   	    {if small_file_url}
@@ -30,6 +30,6 @@
         {entry_date format="%F %j%S %Y"}
       </time>
   	</div>
-		<h2 class="f6 f5-b f4-d mb0 warm"><a href="{title_permalink='blog/entry'}" class="secondary-hover">{title}</a></h2>
+		<h2 class="f6 f5-b f4-d mb0 warm"><a href="{title_permalink='blog'}" class="secondary-hover">{title}</a></h2>
 	</div>
 </article>

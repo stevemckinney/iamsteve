@@ -10,7 +10,7 @@
     xmlns:content="http://purl.org/rss/1.0/modules/content/">
 
     <channel>
-    
+
     <title>{exp:xml_encode}{site_name}{/exp:xml_encode}</title>
     <link>{site_url}</link>
     <description>{channel_description}</description>
@@ -19,18 +19,18 @@
     <dc:rights>Copyright {gmt_date format="%Y"}</dc:rights>
     <dc:date>{gmt_date format="%Y-%m-%dT%H:%i:%s%Q"}</dc:date>
     <admin:generatorAgent rdf:resource="http://expressionengine.com/" />
-    
+
 {exp:channel:entries channel="{master_channel_name}" limit="999" dynamic_start="yes" disable="member_data|pagination" status="latest|open"}
     <item>
       <title>{exp:xml_encode}{title}{/exp:xml_encode}</title>
-      <link>{title_permalink='blog/entry'}</link>
-      <guid>{title_permalink='blog/entry'}#When:{gmt_entry_date format="%H:%i:%sZ"}</guid>
+      <link>{title_permalink='blog'}</link>
+      <guid>{title_permalink='blog'}#When:{gmt_entry_date format="%H:%i:%sZ"}</guid>
       <description><![CDATA[{exp:markdown}{article}{/exp:markdown}]]></description>
       <dc:subject>{exp:xml_encode}{categories backspace="1"}{category_name}, {/categories}{/exp:xml_encode}</dc:subject>
       <dc:date>{gmt_entry_date format="%Y-%m-%dT%H:%i:%s%Q"}</dc:date>
     </item>
 {/exp:channel:entries}
-    
+
     </channel>
 </rss>
 

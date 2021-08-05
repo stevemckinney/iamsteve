@@ -15,7 +15,7 @@
       {preload_replace:background="{image}{exp:iamsteve:background image='{url}'}{/image}"}
 
       <article class="card card-medium entry" style="max-width: 378px">
-      	<a href="{title_permalink='blog/entry'}" class="card-image db mb3 mb4-b loading" style="background-color: {if image}{background}{if:else}{color}{/if}">
+      	<a href="{title_permalink='blog'}" class="card-image db mb3 mb4-b loading" style="background-color: {if image}{background}{if:else}{color}{/if}">
         	{if thumbnail}
         	  {thumbnail}
         	    {if medium_file_url}
@@ -44,7 +44,7 @@
               {entry_date format="%F %j%S %Y"}
             </time>
         	</div>
-      		<h3 class="f5 f4-b {if '{exp:iamsteve:is_mobile}' != 1}mb1{if:else}mb2{/if} primary"><a href="{title_permalink='blog/entry'}">{title}</a></h3>
+      		<h3 class="f5 f4-b {if '{exp:iamsteve:is_mobile}' != 1}mb1{if:else}mb2{/if} primary"><a href="{title_permalink='blog'}">{title}</a></h3>
 
       	  {if '{exp:iamsteve:is_mobile}' != 1}
         	  {if segment_1 == 'search'}
@@ -60,7 +60,7 @@
             {/categories}
 
             {if segment_2 != "entry"}
-              <a href="{title_permalink='blog/entry'}" rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
+              <a href="{title_permalink='blog'}" rel="bookmark" class="link-icon">Continue reading <span class="icon icon-medium icon-right secondary">{gv_arrow_right}</span></a>
             {/if}
           </div>
           <div class="visuallyhidden">
