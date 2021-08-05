@@ -70,7 +70,7 @@
       {if '{exp:cookie:get name="css"}'}
         <link rel="stylesheet" href="{css}">
       {if:else}
-        {if segment_2 == "entry"}
+        {if segment_1 == "blog" && segment_2}
           <style>{critical_article}</style>
         {if:else}
           <style>{critical}</style>
