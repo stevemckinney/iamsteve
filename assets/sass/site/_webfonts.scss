@@ -33,37 +33,37 @@ $fonts: (
   //@include font-face(Averta, "averta/avertastd-#{nth($font, 1)}-webfont", nth($font, 2), nth($font, 3));
 }
 
-@font-face {
-  font-family: "Averta";
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: font-url("averta/avertastd-light-webfont.woff") format("woff"), font-url("averta/avertastd-light-webfont.woff2") format("woff2"); }
+// @font-face {
+//   font-family: "Averta";
+//   font-style: normal;
+//   font-weight: 300;
+//   font-display: swap;
+//   src: font-url("averta/avertastd-light-webfont.woff2") format("woff2"); }
 
 @font-face {
   font-family: "Averta";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: font-url("averta/avertastd-regular-webfont.woff") format("woff"), font-url("averta/avertastd-regular-webfont.woff2") format("woff2"); }
+  src: font-url("averta/avertastd-regular-webfont.woff2") format("woff2"); }
 
 @font-face {
   font-family: "Averta";
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: font-url("averta/avertastd-regularitalic-webfont.woff") format("woff"), font-url("averta/avertastd-regularitalic-webfont.woff2") format("woff2"); }
+  src: font-url("averta/avertastd-regularitalic-webfont.woff2") format("woff2"); }
 
 @font-face {
   font-family: "Averta";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: font-url("averta/avertastd-semibold-webfont.woff") format("woff"), font-url("averta/avertastd-semibold-webfont.woff2") format("woff2"); }
+  src: font-url("averta/avertastd-semibold-webfont.woff2") format("woff2"); }
 
 @font-face {
   font-family: "Averta";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: font-url("averta/avertastd-bold-webfont.woff") format("woff"), font-url("averta/avertastd-bold-webfont.woff2") format("woff2"); }
+  src: font-url("averta/avertastd-bold-webfont.woff2") format("woff2"); }
