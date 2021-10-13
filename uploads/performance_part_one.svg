@@ -1,0 +1,53 @@
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="1440px" height="480px" viewBox="0 0 1440 480" enable-background="new 0 0 1440 480" xml:space="preserve"
+	>
+<rect fill="#F4F4F4" width="1440" height="480"/>
+<rect x="380" y="142" fill="#B1E5BB" width="360" height="16"/>
+<rect x="558" y="142" fill="#70C17E" width="181" height="16"/>
+<g>
+	<line fill="none" stroke="#E5E5E5" stroke-miterlimit="10" x1="0" y1="121.5" x2="1440" y2="121.5"/>
+	<line fill="none" stroke="#E5E5E5" stroke-miterlimit="10" x1="0" y1="181.5" x2="1440" y2="181.5"/>
+	<line fill="none" stroke="#E5E5E5" stroke-miterlimit="10" x1="0" y1="241.5" x2="1440" y2="241.5"/>
+	<line fill="none" stroke="#E5E5E5" stroke-miterlimit="10" x1="0" y1="301.5" x2="1440" y2="301.5"/>
+	<line fill="none" stroke="#E5E5E5" stroke-miterlimit="10" x1="0" y1="361.5" x2="1440" y2="361.5"/>
+	<line fill="none" stroke="#E5E5E5" stroke-miterlimit="10" x1="0" y1="421.5" x2="1440" y2="421.5"/>
+</g>
+<line fill="none" stroke="#CF4647" stroke-width="4" stroke-miterlimit="10" x1="1182" y1="60" x2="1182" y2="480"/>
+<rect fill="#FFFFFF" width="1440" height="60"/>
+<line fill="none" stroke="#CCCCCC" stroke-width="2" stroke-miterlimit="10" x1="0" y1="59" x2="1440" y2="59"/>
+<rect x="142.5" y="36" fill="#CCCCCC" width="84" height="12"/>
+<rect x="384.5" y="41" fill="#CCCCCC" width="84" height="6"/>
+<rect x="624.5" y="41" fill="#CCCCCC" width="84" height="6"/>
+<line fill="none" stroke="#CCCCCC" stroke-width="2" stroke-miterlimit="10" x1="240" y1="60" x2="240" y2="0"/>
+<line fill="none" stroke="#CCCCCC" stroke-width="2" stroke-miterlimit="10" x1="480" y1="60" x2="480" y2="0"/>
+<line fill="none" stroke="#CCCCCC" stroke-width="2" stroke-miterlimit="10" x1="720" y1="60" x2="720" y2="0"/>
+<line fill="none" stroke="#CCCCCC" stroke-width="2" stroke-miterlimit="10" x1="960" y1="60" x2="960" y2="0"/>
+<line fill="none" stroke="#CCCCCC" stroke-width="2" stroke-miterlimit="10" x1="1200" y1="60" x2="1200" y2="0"/>
+<rect x="862.5" y="41" fill="#CCCCCC" width="84" height="6"/>
+<rect x="1102.5" y="41" fill="#CCCCCC" width="84" height="6"/>
+<rect x="1345" y="41" fill="#CCCCCC" width="84" height="6"/>
+<g>
+	<rect x="20" y="84" fill="#91D2F2" width="422" height="16"/>
+	<rect x="279" y="84" fill="#5CB4EA" width="163" height="16"/>
+</g>
+<rect x="380" y="203" fill="#B1E5BB" width="179" height="16"/>
+<rect x="468" y="203" fill="#70C17E" width="90" height="16"/>
+<g>
+	<rect x="602" y="441" fill="#FFB27D" width="92" height="16"/>
+	<rect x="629" y="441" fill="#EB7B59" width="65" height="16"/>
+</g>
+<g>
+	<rect x="600" y="383" fill="#BA97D1" width="293" height="16"/>
+	<rect x="685" y="383" fill="#8E63A5" width="207" height="16"/>
+</g>
+<g>
+	<rect x="601" y="323" fill="#BA97D1" width="364" height="16"/>
+	<rect x="704" y="323" fill="#8E63A5" width="260" height="16"/>
+</g>
+<g>
+	<rect x="598" y="263" fill="#BA97D1" width="331" height="16"/>
+	<rect x="667" y="263" fill="#8E63A5" width="262" height="16"/>
+</g>
+<line fill="none" stroke="#5CB4EA" stroke-width="4" stroke-miterlimit="10" x1="682" y1="60" x2="682" y2="480"/>
+</svg>

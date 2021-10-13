@@ -1,54 +1,36 @@
-dist/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+public/sitemap.xml
+.vercel
+
+# production
+/build
+*.xml
+# rss feed
+/public/feed.xml 
+
+# misc
 .DS_Store
-assets/images/.DS_Store
-system/config.php
-.sass-cache
-system/expressionengine/config/database.php
-system/expressionengine/config/config.php
-system/user/logs/*
-system/ee/installer
-system/ee/installer_*
 
-cache/
-system/user/cache
-!system/user/addons/minimee/libraries/Minify/Cache
-!system/ee/legacy/libraries/Cache
-!system/ee/legacy/libraries/simplepie/SimplePie/Cache
+# debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Images
-assets/images/_blog/*
-assets/images/
-site/assets/images/_blog/
-images/avatars/
-images/captchas/
-images/smileys/
-images/member_photos/
-images/signature_attachments/
-images/pm_attachments/
-images/uploads
-uploads
-images/
-!assets/images
-
-# Caches
-sized/
-thumbs/
-_thumbs/
-*/expressionengine/cache/*
-system/cache/db_cache
-system/cache/magpie_cache
-system/cache/page_cache
-system/expressionengine/cache
-
-# npm
-npm-debug.log
-node_modules
-config_bootstrap.php
-.htaccess
-
-# Config
-config/config.local.php
-config/config.dev.php
-config/config.prod.php
-system/user/config/license.key
-assets/images/.DS_Store
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
