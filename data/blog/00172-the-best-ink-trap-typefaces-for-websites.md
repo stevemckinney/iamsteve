@@ -1,9 +1,9 @@
 ---
 title: "The best ink trap fonts for websites"
 tags: ["design", "typopgrahy"]
-draft: false
 summary: "A practice to improve web font compatibility in the past was to define your font weights and styles as a new font each time. However, it’s for little gain and increases complexity. It’s easy to end up with unsightly double italics or fuzzy bold weights."
 date: "2021-07-28T10:28:00+00:00"
+status: publish
 ---
 
 If I think back to the first time I saw a typeface with ink traps, it was [Retina](https://frerejones.com/families/retina) by Frere-Jones. I wasn’t immediately fond of the style at first, but trends have a habit of growing on you.
