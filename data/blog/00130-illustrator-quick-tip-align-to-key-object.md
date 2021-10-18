@@ -1,0 +1,36 @@
+---
+title: "Illustrator quick tip: align to key object"
+date: "2016-06-14T06:27:00+00:00"
+lastmod: "2017-02-08T19:40:54+00:00"
+summary: "Aligning to a key object in Illustrator is one of the most useful alignment options. If you’ve ever been frustrated with aligning objects centrally, then everything nudges over a few pixels. This is where align to key object comes in, read on for how to."
+metadesc: How do you align in place, without everything being offset some pixel amount. Illustrator's align to key object solves this."
+theme: "#fefbed"
+tags: ["Design"]
+categories: ["Design"]
+images: ["https://iamsteve.me/uploads/blog/illustrator-tip-featured-image%402x.png"]
+large: "https://iamsteve.me/uploads/blog/illustrator-tip-featured-image%402x.png"
+medium: "https://iamsteve.me/uploads/blog/illustrator-tip-featured-image-medium%402x.png"
+ogImage: "/assets/og/cover.jpg"
+status: "open"
+id: 130
+slug: "illustrator-quick-tip-align-to-key-object"
+---
+
+Aligning to a key object in Illustrator is one of the most useful alignment options. If you’ve ever been frustrated with aligning objects centrally, then everything nudges over a few pixels. This is where align to key object comes in, read on for how to.
+
+## When and why
+The most common use case I can think of is making buttons. You’ve got a rectangle, above that is some text, which you want to align centrally. The rectangle is positioned correctly, your text isn’t. **You use the alignment tools and everything is now off by a few pixels**. This is the perfect use case for align to key object.
+
+## How to
+<img src="/static/images/blog/align-button.gif">
+
+To align to key object you must select two items and then change the ‘Align To’ option to Align to Key Object. **The crucial part is then clicking the item you want to use to for aligning to**.
+
+## Quicker for axis alignment
+
+<figure><img src="/static/images/blog/align-axis.gif"><figcaption>In the making of this post I discovered you could click the key object without having to choose the align to method.</figcaption></figure>
+
+Using align to key object is a quick method for aligning horizontally or vertically. Using the same method it will help save time.
+
+## That’s it
+I do wish there was a way to somehow default this behaviour. Taking the item in the back as the key object, this would work well. Anyway, I felt this was a necessary quick tip to highlight, as I’ve found it valuable.

@@ -1,0 +1,48 @@
+{preload_replace:ch_status="latest|open|draft|closed"}
+{preload_replace:ch_disable="member_data|trackbacks"}
+{preload_replace:ch_limit="1"}
+{preload_replace:background="{image}{exp:iamsteve:background image='{url:large}'}{/image}"}
+{preload_replace:color="{switch='#e9f5f5|#fffbf2|#ffede5|#e1f7ee'}"}
+{preload_replace:design="design-default-{switch='1|2|3|4'}.svg"}
+{preload_replace:code="code-default-{switch='1|2|3|4'}.svg"}
+{exp:channel:entries offset="0" channel="blog" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit}" paginate="both"}
+<pre style="display:block;white-space:pre;margin-bottom: 80px;padding-bottom:80px;border-bottom: 2px solid #eee" class="post">---
+title: "{title}"
+image:
+  image: "{image}"
+  large: {if image}{image}{if url:large}"{url:large-2x}"{/if}{/image}{if:else}false{/if}
+  medium: {if image}{image}"{url}"{/image}{if:else}false{/if}
+  thumbnail: {if thumbnail}{thumbnail}{if medium_file_url}"{url:medium-2x}"{if:else}"{url}"{/if}{/thumbnail}{if:else}false{/if}
+excerpt: "{excerpt}"
+meta:
+  description: "{exp:seo_lite:pair entry_id="{entry_id}"}{meta_description}{/exp:seo_lite:pair}"
+design:
+  background: "{if image}{background}{if:else}{color}{/if}"
+categories: {categories channel="blog" style="linear" parent_only="yes" limit="1"}"{category_name}"{/categories}
+date: "{entry_date format="%c"}"
+updated: "{edit_date format="%c"}"
+author:
+  name: "{author}"
+  picture: "[replace-me]"
+ogImage:
+  url: "/assets/og/cover.jpg"
+status: "{status}"
+slug: "{url_title}"
+---
+</pre>
+{article}
+
+{paginate}
+        {if previous_page}
+            <a href="{auto_path}">Previous Page</a> &nbsp;
+        {/if}
+        {if next_page}
+            <a href="{auto_path}">Next Page</a>
+        {/if}
+    {/paginate}
+
+{paginate}
+  <p style="padding-top: 120px;display:block">Page {current_page} of {total_pages} pages {pagination_links}</p>
+{/paginate}</div>
+{/exp:channel:entries}
+

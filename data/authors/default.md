@@ -1,10 +1,10 @@
 ---
-name: Tails Azimuth
+name: Steve McKinney
 avatar: /static/images/avatar.png
-occupation: Professor of Atmospheric Science
+occupation: Designer
 company: Stanford University
-email: address@yoursite.com
-twitter: https://twitter.com/Twitter
+email: steve@iamsteve.me
+twitter: https://twitter.com/irsteve
 linkedin: https://www.linkedin.com
 github: https://github.com
 ---
