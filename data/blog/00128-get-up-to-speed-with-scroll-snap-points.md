@@ -33,7 +33,7 @@ There are two types of properties that are necessary for scrolling regions, thos
 Part of making this functionality viable means a base level of CSS will be required for the scroll container.
 
 #### Horizontal scroll regions
-```.language-css
+```css
 .scroll-container {
   width: 100vw;
   height: 100vh;
@@ -42,7 +42,7 @@ Part of making this functionality viable means a base level of CSS will be requi
 ```
 
 #### Vertical scroll regions
-```.language-css
+```css
 .scroll-container {
   width: 100vw;
   height: 100vh;
@@ -67,7 +67,7 @@ Another difference is, when something happens to content, such as adding, moving
 ### scroll-snap-points-x and scroll-snap-points-y
 **These properties only work in Safari**, with the `-webkit-` prefix. This allows you to define a distance each scroll should snap to, using the `repeat()` function.
 
-```.language-css
+```css
 .scroll-container {
   scroll-snap-points-x: repeat(100%);
   scroll-snap-points-y: repeat(100%); }
@@ -95,7 +95,7 @@ Finally, this property you can animate, whereas  `scroll-snap-points` can’t. T
 - If you want horizontal scrolling extra properties are required
 - Similarly for vertical, but less is required
 
-```.language-css
+```css
 .scroll-container {
   width: 100vw;
   height: 100vh;
@@ -121,7 +121,7 @@ Currently, there is only one element that will apply to all elements.
 ### scroll-snap-coordinate
 This property can be applied to child elements too, it’s usage is similar to `background-position` and you can also pass multiple coordinates.
 
-```.language-css
+```css
 .scroll-container {
   scroll-snap-coordinate: 0 0, center center; }
 
@@ -146,7 +146,7 @@ Not being able to use them in the browser, means interpreting how they will supp
 ### scroll-snap-padding
 This is a scroll container property. It works similarly to regular padding.
 
-```.language-css
+```css
 .scroll-container {
   scroll-snap-padding: 12px;
   scroll-snap-padding: 12px 0; }
@@ -157,7 +157,7 @@ This is a scroll container property. It works similarly to regular padding.
 ### scroll-snap-margin
 This is a child element property. It works similar to the regular margin.
 
-```.language-css
+```css
 .scroll-container {
   scroll-snap-margin: 12px;
   scroll-snap-margin: 12px 0; }
@@ -168,7 +168,7 @@ This is a child element property. It works similar to the regular margin.
 ### scroll-snap-align
 This property applies to all elements, using values `none`, `start`, `end` and `centre`.
 
-```.language-css
+```css
 .scroll-container {
   scroll-snap-align: centre; }
 ```

@@ -25,14 +25,14 @@ When opting in to margins, any element that we build into a website should have 
 ### Using headings as an example
 We can reset any styles, that won’t be used for the majority of cases.
 
-```.language-css
+```css
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0; }
 ```
 
 Then set up some margin classes for reuse later, naming is your choice.
 
-```.language-css
+```css
 .margin-bottom { 
   margin-bottom: 12px; }
     
@@ -47,7 +47,7 @@ Headings within articles can have different spacing to other elements on a websi
 
 Confining your styles can be a good way to keep predictability. Especially with areas you can’t go in and add classes.
 
-```.language-css
+```css
 .entry-content h1,
 .entry-content h2 {
   margin-bottom: 24px; }
@@ -61,7 +61,7 @@ With `<section>` and `<article>` in particular you’re allowed to use many `<h1
 
 ### Create styles for your headings
 
-```.language-css
+```css
 .h1 { … }
 .h2 { … }
 .h3 { … }
@@ -73,14 +73,14 @@ With `<section>` and `<article>` in particular you’re allowed to use many `<h1
 ### Getting specific
 Again the issue of CMS content, this would be a good use for Sass `@extend`.
 
-```.language-scss
+```sass
 .entry-content h1 {
   @extend .h1; }
 ```
 
 Otherwise you could just add the selector to the rule.
 
-```.language-scss
+```sass
 .h1,
 .entry-content h1 {
   … }

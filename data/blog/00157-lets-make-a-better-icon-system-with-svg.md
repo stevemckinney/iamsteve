@@ -37,7 +37,7 @@ Firstly, what are the benefits of an icon font? Listing them will provide the co
 ### A simple markup and class based structure is key
 This is the most important part. Those who write the code just want to be able to change a class name, get an icon and keep code readable.
 
-```.language-markup
+```markup
 <button type="button" class="btn btn-default btn-lg">
   <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
 </button>
@@ -82,13 +82,13 @@ Using the export method earlier to apply a fill to each icon, it makes it easier
 
 Find each inline style
 
-```.language-markup
+```markup
 style="fill: #1a626e"
 ```
 
 Replace with (or a naming convention you feel appropriate)
 
-```.language-markup
+```markup
 class="fill-currentcolor"
 ```
 
@@ -96,7 +96,7 @@ Depending on which text editor you use this should be possible to do quickly.
 
 Following the find and replace, you will need to add to your CSS:
 
-```.language-css
+```css
 .fill-currentcolor {
   fill: currentcolor; }
 ```
@@ -122,7 +122,7 @@ To keep this option build tool free is the reason I’ve added the script here. 
 ### Add the script and initialise grunticon
 Add the script to your website and additionally the initialisation of grunticon.
 
-```.language-markup
+```markup
 <script src="grunticon.loader.js"></script>
 <script>
   grunticon([
@@ -143,13 +143,13 @@ Using a build tool will make this task easier in the long run. Assuming you’re
 ### Install Gulpicon and glob
 Navigate to where your gulpfile is stored in terminal and install gulpicon.
 
-```.language-bash
+```bash
 cd ~/path/to/the/folder/gulpfile/is
 ```
 
 These are the relevant npm scripts to get Gulpicon working.
 
-```.language-bash
+```bash
 npm install -s gulpicon
 npm install -s glob
 ```
@@ -157,7 +157,7 @@ npm install -s glob
 ### Setup the task in your gulpfile.js
 Adding the following to your gulpfile will make an `icons` task. In the `files` variable you may need to update this for where your SVG files are located.
 
-```.language-javascript
+```javascript
 var gulp = require('gulp');
 var glob = require('glob');
 var gulpicon = require('gulpicon/tasks/gulpicon');
@@ -186,7 +186,7 @@ With your gulpicon settings all done, all that’s left is to run the task.
 ## Using the icons
 To add an icon you add the relevant class, which can be found in the generated CSS file, eg: `icons.data.svg.css`. Adding the attribute `data-grunticon-embed` will allow the SVG to be inserted inline.
 
-```.language-markup
+```markup
 <span class="icon-check" data-grunticon-embed></span>
 ```
 
@@ -195,7 +195,7 @@ This is all you need to add to get an icon to show.
 ## Make it reusable and flexible with colour and sizes
 To make your icon set more effective and more ‘bootstrap’ like you need colours and additional size classes. This is up to your preferences and website colour scheme.
 
-```.language-css
+```css
 .color-red { color: red; }
 .color-blue { color: blue; }
 .color-green { color: blue; }
@@ -203,7 +203,7 @@ To make your icon set more effective and more ‘bootstrap’ like you need colo
 
 Colours don’t need to rely on using `fill`. Due to the class  `fill-currentcolor` applied earlier, they will use the parent colour. 
 
-```.language-css
+```css
 .icon {
   display: inline-block; }
 
@@ -230,7 +230,7 @@ For a nicer page load the parent element needs dimensions. Until the SVG is inse
 ## Usage now looks like this
 Add the relevant class names you desire and you’re good to go.
 
-```.language-markup
+```markup
 <span class="icon icon-check icon-small color-red" data-grunticon-embed></span>
 ```
 

@@ -28,7 +28,7 @@ Living in a jQuery world you don’t tend to worry about browser support, it’s
 ## Adding, removing, toggling and checking for classes
 Javascript has had for a little while had its own way of doing class manipulation, through [classList](http://caniuse.com/#search=classList).
 
-```.language-javascript
+```javascript
 element.classList.add('class-name');
 element.classList.remove('class-name');
 element.classList.toggle('class-name');
@@ -40,7 +40,7 @@ However on seeking some backwards compatibility I discovered [apollo](https://gi
 ## Events
 Events are simple too. The most common use, for me, is toggling navigation. I tend to check for whether it’s a touch enabled device and use a different event listener based on that. The perceived speed improvements through that little change are great.
 
-```.language-javascript
+```javascript
 var icon = document.querySelector('.nav-icon');
 if ( icon.addEventListener ) {
   // Using Modernizr to check for 'touchstart' allows the navigation to open quicker on touch enabled devices
@@ -66,7 +66,7 @@ Occasionally you need the source order with Javascript or insert an element. Thi
 
 One thing to be aware of is, if the element isn’t always on the page you need to check it exists otherwise you will find errors in your console.
 
-```.language-javascript
+```javascript
 var element = document.getElementById('move');
 var child = document.getElementById('child');
 var parent = child.parentNode;
@@ -76,14 +76,14 @@ if ( child ) parent.insertBefore(element, child);
 
 A few times, I found myself needing `insertAfter`. It’s not currently part of Javascript, though quite easy to overcome.
 
-```.language-javascript
+```javascript
 if ( child ) parent.insertBefore(element, child.nextSibling);
 ```
 
 ### A roundabout way to check an element exists
 The hardest part for me was checking for the existence of an element inserted with Javascript. Generally Google wasn’t much help here as everything came up jQuery.
 
-```.language-javascript
+```javascript
  // The element that has had something inserted near it
 var element = document.querySelector('.element');
 

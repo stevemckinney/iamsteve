@@ -1,19 +1,19 @@
 ---
-title: "Visual design tips you can apply immediately"
-date: "2017-07-04T11:51:00+00:00"
-lastmod: "2019-10-04T07:24:49+00:00"
-summary: "Add a little extra polish to any of your designs with these tips."
-metadesc: When designing there are things you can rely upon regardless of the situation. These are things which add extra polish, and are generally hidden to the untrained eye."
-theme: "#fff7e0"
-tags: ["Design"]
+title: "Search overlay with smooth reveal animation"
+date: "2017-08-16T12:15:00+00:00"
+lastmod: "2019-10-04T07:23:53+00:00"
+summary: "An in depth tutorial to add buttery smooth animations to reveal your website search."
+metadesc: How to design and code a search overlay with a smooth reveal effect using CSS transitions and JavaScript."
+theme: "#f7fbfb"
+tags: ["Design", "Code"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/visual-design-tips-featured-image.png"]
-large: "https://iamsteve.me/uploads/blog/visual-design-tips-featured-image.png"
-medium: "https://iamsteve.me/uploads/blog/visual-design-tips-featured-image-medium.png"
+images: ["https://iamsteve.me/uploads/blog/search-reveal-featured-image%402x.png"]
+large: "https://iamsteve.me/uploads/blog/search-reveal-featured-image%402x.png"
+medium: "https://iamsteve.me/uploads/blog/search-reveal-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
-id: 164
-slug: "visual-design-tips-you-can-apply-immediately"
+id: 165
+slug: "search-overlay-with-smooth-reveal-animation"
 ---
 
 A common part of a website is the ability to search. Depending on how important search is to your website can define much of how it looks and how it's prioritised in the design. In this post I want to show you how to create a search which appears with a smooth transition on the click/tap of a button.
@@ -32,12 +32,7 @@ All code and design files can be downloaded for [being part of my list](#subscri
 Here’s the design you’ll be making. It’s quite simple, so I have avoided a walk through as the designs themselves serve as a place to explain.
 
 ### Search overlay
-<div class="article-image">
-<img data-src="/static/images/blog/search-reveal-large.png" data-srcset="/static/images/blog/search-reveal-large.png 832w, /static/images/blog/search-reveal-large@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/search-reveal-large.png" srcset="/static/images/blog/search-reveal-large.png 832w, /static/images/blog/search-reveal-large@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/search-reveal-large@2x.png" width={896} height={504} />
 
 Overall, the design aims to visually grab the attention. It makes use of the screen size available through the large input and icons. I wanted the form to appear ‘clickable’ through having clearly a defined input. As you see some which do away with the defined field approach. 
 
@@ -46,24 +41,14 @@ There are a couple of shadows applied to the search field itself. A smaller shad
 The background has a subtle gradient, the aim is for it to have a sense of depth as it transitions over the existing background.
 
 ### Small screen
-<div class="article-image">
-<img data-src="/static/images/blog/search-reveal-small.png" data-srcset="/static/images/blog/search-reveal-small.png 832w, /static/images/blog/search-reveal-small@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/search-reveal-small.png" srcset="/static/images/blog/search-reveal-small.png 832w, /static/images/blog/search-reveal-small@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/search-reveal-small@2x.png" width={738} height={631} />
 
 For smaller screens, I've opted to move the search to the bottom of the screen. This means it’s easier to reach, as you can focus on the input with JavaScript, but it doesn’t always bring up the keyboard. 
 
 Things are sized more according to the screen size, with the icons and form field. Aside from them, nothing else has changed.
 
 ## Icon setup
-<div class="article-image">
-<img data-src="/static/images/blog/search-reveal-icons.png" data-srcset="/static/images/blog/search-reveal-icons.png 832w, /static/images/blog/search-reveal-icons@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/search-reveal-icons.png" srcset="/static/images/blog/search-reveal-icons.png 832w, /static/images/blog/search-reveal-icons@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/search-reveal-icons@2x.png" width={738} height={492} />
 
 The icons are designed on at 32px x 32px and scaled down to 24px x 24px for the small screen design. [You can download the two icons used](https://www.dropbox.com/s/jgm07uywlt18hbh/design-code-search-overlay-icons.ai?dl=0) for your design.
 
@@ -73,8 +58,8 @@ Let’s get into making this usable, starting with HTML. The summary of the mark
 ### Open button
 The button is an anchor tag, with an SVG inside. This allows us to style and reuse the icon easily. Pasting this code into your editor without CSS will mean the icon will be a black square.
 
-```.language-markup
-<a herf="#link-to-search" class="button button-open">
+```markup
+<a href="#link-to-search" class="button button-open">
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="icon">
     <rect class="fill-none" width="32" height="32"/>
     <path class="fill-currentcolor" d="M29.82861,24.17139,25.56519,19.908A13.0381,13.0381,0,1,0,19.908,25.56525l4.26343,4.26337a4.00026,4.00026,0,0,0,5.65723-5.65723ZM5,14a9,9,0,1,1,9,9A9.00984,9.00984,0,0,1,5,14Z"/>
@@ -89,7 +74,7 @@ The class names `button` and `button-open` will be used for both styling and Jav
 ### Overlay
 The overlay itself is a `<div>` tag round a form. Each element inside the form has an appropriate class to be used for styling. 
 
-```.language-markup
+```markup
 <div class="overlay hiding">
   <!-- Form markup here -->
 </div>
@@ -102,7 +87,7 @@ This approach helps keep our CSS more maintainable. As when you switch class nam
 ### Close button
 Similar to the open button, the icon and class name are different. 
 
-```.language-markup
+```markup
 <button class="button button-close">
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="icon">
     <rect class="fill-none" width="32" height="32"/>
@@ -114,7 +99,7 @@ Similar to the open button, the icon and class name are different.
 ### Search form
 The form markup should be placed inside the overlay `<div>`.
 
-```.language-markup
+```markup
 <form action="#" class="form-search">
   <label for="keywords" class="visuallyhidden">Search</label>
   <input class="input input-search" id="keywords" name="keywords" type="search" placeholder="Find something…" autocorrect="off" autocapitalize="off" required>
@@ -156,7 +141,7 @@ $system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial
 `$base-px` is for spacing, `$breakpoint` and `$breakpoint-max` are for media queries. Then you have several colours and a system font stack. These variables will allow you to tweak things easier.
 
 ### General setup
-```.language-scss
+```sass
 // Basics
 // ----------------------
 body {
@@ -174,7 +159,7 @@ This code is so the open button will align centrally vertically and horizontally
 ### Hiding the label
 A design choice is to hide the label, however, it still serves a purpose to screen readers (albeit proper accessibility isn’t covered here).
 
-```.language-scss
+```sass
 // For hiding the label
 // ----------------------
 .visuallyhidden {
@@ -193,7 +178,7 @@ A design choice is to hide the label, however, it still serves a purpose to scre
 ### SVG colour inheriting styles
 This CSS is important for the SVG icons having the correct colour applied to them. As mentioned earlier there are class names applied to the SVG paths.
 
-```.language-scss
+```sass
 // SVG Helpers
 // ---------------------------
 .fill-currentcolor {
@@ -208,7 +193,7 @@ The `fill` property is an SVG specific property. The default fill on an SVG is b
 ### Icons
 Each icon used is the same size, starting at 24px for smaller screens and then increased to 32px at the `$breakpoint`.
 
-```.language-scss
+```sass
 // Icon
 // ---------------------------
 .icon {
@@ -224,7 +209,7 @@ Each icon used is the same size, starting at 24px for smaller screens and then i
 ### Button and input ‘reset’
 These styles normalise the browser applied styling and give you a consistent starting point. Particularly the `appearance` property, this removes much of the browser default styling.
 
-```.language-scss
+```sass
 // Input/button reset
 // ---------------------------
 .input,
@@ -243,7 +228,7 @@ These styles normalise the browser applied styling and give you a consistent sta
 ### Button `.button`
 This is the reason you apply two class names to each button. For each button I want to ensure a consistent `cursor` and `color`. The `.button` itself and `.icon` within scale up.
 
-```.language-css
+```css
 // Button
 // ---------------------------
 .button {
@@ -266,7 +251,7 @@ The hover state is applying a scale effect to both the button and the icon. With
 ### Button to open `.button-open`
 This is the means for opening the search overlay. In JavaScript shortly you will apply code so when it’s clicked, the overlay opens.
 
-```.language-css
+```css
 .button-open {
   // Display/alignment
   display: flex;
@@ -299,7 +284,7 @@ Along with the icon transition earlier the `box-shadow` is also being made to ap
 ### Button to close  `.button-close`
 The close button is reasonably simple, you’re positioning it to the top right and making sure it the background colour is transparent.
 
-```.language-scss
+```sass
 // Button (close)
 // ---------------------------
 .button-close {
@@ -313,7 +298,7 @@ The close button is reasonably simple, you’re positioning it to the top right 
 ### Form `.form-search`
 The form element itself, serves as a container to limit the width of the input and allows you to align the search button easily.
 
-```.language-scss
+```sass
 .form-search {
   position: relative;
   width: 100%;
@@ -327,7 +312,7 @@ Adding `position: relative` will make sure the button is anchored to the form el
 ### Search input 
 There’s quite a bit of CSS applied to this element, the majority is related to visual style and sizing, rather than alignment.
 
-```.language-scss
+```sass
 // Input
 // ---------------------------
 .input-search {
@@ -362,7 +347,7 @@ I find it easier to use `padding` to apply the size you want over adding a `heig
 ### Overlay
 The overlay is fixed to the viewport and everything again is positioned centrally with flexbox. This is much of the heavy lifting for positioning.
 
-```.language-scss
+```sass
 // Overlay
 // ---------------------------
 .overlay {
@@ -400,7 +385,7 @@ If you followed along with the code as is, you should have what resembles a comp
 ### Hiding
 The initial state the form is hidden. That’s why the `class` on the overlay `<div>` is `class="overlay hiding"`.
 
-```.language-scss
+```sass
 // Initial state
 .hiding {
   max-height: 0;
@@ -442,7 +427,7 @@ The form elements will be positioned centrally, or at the bottom depending on sc
 ### Showing
 When `.button-open` is clicked this class name will be applied to the overlay.
 
-```.language-scss
+```sass
 // Showing state
 .showing {
   max-height: 100vh;
@@ -462,7 +447,7 @@ This is the good thing about removing class names through JavaScript—which wil
 ### Transitioning inner elements
 Finally, once the overlay opens, you want the form elements to transition in slightly later. This gives a more intentional appearance. 
 
-```.language-scss
+```sass
 .button-search {
   transition: .4s .6s ease-out; }
 
@@ -477,7 +462,7 @@ The search input is delayed by `.3` seconds, which is inline with the `max-heigh
 ## JavaScript
 Here’s all the JavaScript to make this function. It’s broken down in to four parts. The variables which select the elements you need throughout. Two functions, the first, for adding focus to the search and the second, which will toggle the visibility. The event listeners to watch for clicks on the buttons.
 
-```{.language-js .code-tall}
+```{ .language-js .code-tall }
 // Keep search toggling out of the global scope
 (function (window, document, undefined) {
   // Variables
@@ -528,7 +513,7 @@ Have a scan over the code and then I’ll cover it in more detail.
 ### Contain everything with an IIFE
 You’re containing all the code required in an ‘IIFE’. This means immediately invoked function expression. Which makes the code only accessible from within this to avoid code conflicting elsewhere.
 
-```.language-js
+```javascript
 // Keep search toggling out of the global scope
 (function (window, document, undefined) {
   // Code here
@@ -540,7 +525,7 @@ You’re containing all the code required in an ‘IIFE’. This means immediate
 ### Variables
 The first step is to assign all the elements, that will have some change happen to them, to variables.
 
-```.language-js
+```javascript
 // Keep search toggling out of the global scope
 (function (window, document, undefined) {
   // Variables
@@ -556,7 +541,7 @@ Both buttons, the overlay and search input are selected. Click event listeners w
 ### Assigning event listeners to the buttons
 Next, you want to assign click event listeners to both of the buttons.
 
-```.language-js
+```javascript
 // Keep search toggling out of the global scope
 (function (window, document, undefined) {
   // Variables
@@ -580,7 +565,7 @@ The third parameter is more for [backwards compatibility](https://stackoverflow.
 ### Writing the ‘toggler’ function
 Now you need to write the `toggler` function. The aim for this is to `toggle` a couple of class names to make the search visible. Once the transitions have completed, it would also be ideal to focus on the search input. So the user can begin typing without any extra interaction.
 
-```.language-js
+```javascript
 // Keep search toggling out of the global scope
 (function (window, document, undefined) {
   // Variables
@@ -623,7 +608,7 @@ It’s important to note the first parameter of `bind` is what you want `this` t
 ### Focusing on the input
 Finally, to complete your code is to add the `focusOn` function. This has one parameter `element`, which when it’s used the `toggler` function is the `search` variable.
 
-```.language-js
+```javascript
 // Keep search toggling out of the global scope
 (function(window, document, undefined) {
   // Variables

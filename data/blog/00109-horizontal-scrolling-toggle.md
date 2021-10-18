@@ -26,7 +26,7 @@ The technique here uses flexbox for adjustments; it allows us very easily to shi
 ## Markup
 The markup requires the elements you want to scroll to have a containing element. Separate from those elements is our title and a `<span>` element purely for toggling. Inside that is an empty span, which we will use JavaScript to calculate and update.
 
-```.language-html
+```markup
 <div class="header">
   <h1>Latest posts</h1>
   <span class="show-all" id="show-all">
@@ -46,7 +46,7 @@ The markup requires the elements you want to scroll to have a containing element
 ## CSS: Container
 This adds flexbox to our container, and the main work here is done with `flex-flow`. Our items mustn’t wrap, then we allow for the element to be scrolled with the additional CSS. The last two lines of CSS are styling preferences you may want to apply too.
 
-```.language-css
+```css
 .items {
   display: flex;
   flex-flow: row nowrap;
@@ -62,7 +62,7 @@ This adds flexbox to our container, and the main work here is done with `flex-fl
 ## CSS: Items
 Aside from your visual styling the layout you need is relatively simple. We want our items when horizontal not to adjust in width so that we get the necessary overflow. This is why `flex-grow` and `flex-shrink` are 0, and `flex-basis` is a pixel width. Additionally, the margin is for spacing. I would have liked to have left this up to space-between, but it wasn't possible. Tweak the width and margin as you see necessary.  
 
-```.language-css
+```css
 .item {
   flex: 0 0 280px;
   margin-right: 24px; }
@@ -71,7 +71,7 @@ Aside from your visual styling the layout you need is relatively simple. We want
 ## CSS: Items columns
 Once we apply the toggled state with JavaScript, we need to adjust the column layout. Changing the `flex-flow` of the container and the necessary `flex` values we can do this. Additionally, for spacing, you may need margin to the bottom of each item, and on the container remove the `padding-right`, so everything lines up accordingly.
 
-```.language-css
+```css
 .items-columns {
   flex-flow: row wrap;
   padding-right: 0; }
@@ -88,7 +88,7 @@ To add the item total, you need to select the item container and count the child
 
 To toggle the layout, you need to listen for clicks on the button and apply a class to the items container. To do this, we assign the button to a variable, then add an event listener. In your function, you toggle class names on both the button and items container.
 
-```.language-javascript
+```javascript
 // Select all items
 var items = document.getElementById('items');
 

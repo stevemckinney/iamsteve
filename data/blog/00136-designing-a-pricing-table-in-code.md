@@ -26,7 +26,7 @@ Work Sans is available for free on [Google Fonts](https://fonts.google.com/speci
 
 Here is the standard way of including the fonts, you may want to use an alternative.
 
-```.language-css
+```css
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,600" rel="stylesheet">
 ```
 
@@ -111,13 +111,13 @@ A quick note on the CSS hereon, all examples exclude prefixes for brevity. The c
 ### The container
 The container mostly exists so the background fills the width of the screen.
 
-```.language-css
+```css
 .container {
   padding: 10% 0;
   background-color: #e1f7ee; }
 ```
 
-```.language-css
+```css
 .boxes {
   display: flex;
   align-items: center;
@@ -128,7 +128,7 @@ The container mostly exists so the background fills the width of the screen.
 ### Initial box styling
 The styling required for each box. Here you can define common things early, that can be inherited through to the other elements, like text alignment and the font.
 
-```.language-css
+```css
 .box {
   position: relative;
   flex: 1;
@@ -149,14 +149,14 @@ The visual styling reflects that in the design, particularly the `box-shadow` it
 ### Specific box styling
 Each box is somewhat unique, as reflected in our HTML with the outer and inner class names.
 
-```.language-css
+```css
 .box-outer {
   padding: 60px 0; }
 ```
 
 The start and end boxes, require the same padding, where the centre box requires more padding to create the size difference.
 
-```.language-css
+```css
 .box-inner {
   padding: 72px 0;
   margin: 0 -12px;
@@ -170,7 +170,7 @@ Finally, the negative margin ensures the overlap is as intended and the `z-index
 ### Title
 Now that the general layout is done, you can move onto the content styles, starting with the title.
 
-```.language-css
+```css
 .title {
   color: #eb6e5e;
   font-size: 36px;
@@ -184,7 +184,7 @@ The font weight is light, which is 300 for this particular typeface.
 ### Price
 The price is broken up into three parts. The background, price value and the billing period.
 
-```.language-css
+```css
 .price {
   padding: 12px;
   background-color: #fff6e5;
@@ -195,7 +195,7 @@ The price is broken up into three parts. The background, price value and the bil
 
 Here you define the style of this area, and then move onto the specific differences for the value and billing period.
 
-```.language-css
+```css
 .price-value {
   font-size: 24px; }
 
@@ -208,7 +208,7 @@ Individually the value is larger than ‘/mo’, which is also small caps.
 ### Features
 The features is broken up into a few areas. The `<ul>`, which some browser defaults need to be undone. The padding adds a good space round the title and button area. 
 
-```.language-css
+```css
 .features {
   margin: 0;
   padding: 24px; }
@@ -231,7 +231,7 @@ Then each item is spaced using `line-height`, you don’t want anything to break
 ### Button
 When styling unless you want them to fill the width of the container, they are best being `inline-block`. 
 
-```.language-css
+```css
 .button {
   display: inline-block;
   background-color: #eb6e5e;
@@ -245,7 +245,7 @@ When styling unless you want them to fill the width of the container, they are b
 
 The `transition` is important for the hover state. The `text-decoration`, makes sure the browser default is removed.
 
-```.language-css
+```css
 .button:hover, .button:focus {
   color: #e1f7ee;
   box-shadow: inset 0 -44px #4db898; }
@@ -253,7 +253,7 @@ The `transition` is important for the hover state. The `text-decoration`, makes 
 
 The transition set earlier means that the shadow appears from the bottom, without that it would look like the background colour changes. It’s important to note the y value of the shadow needs to be the button height.
 
-```.language-css  
+```css  
 .button:active {
   transform: scale(.95455); }
 ```

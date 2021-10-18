@@ -19,7 +19,7 @@ Flexbox is still one of those properties that isn’t quite ready for prime time
 Setting `display: flex` on the container of elements that you would like to have an equal height is the simplest way of using flexbox without issue.
 
 ### HTML
-```.language-markup
+```markup
 <div class="flex">
   <div class="regular-layout-style">
     <p>…</p>
@@ -31,7 +31,7 @@ Setting `display: flex` on the container of elements that you would like to have
 ```
 
 ### CSS
-```.language-css
+```css
 .flex {
   display: flex; }
 ```
@@ -44,7 +44,7 @@ Changing the source order for small screens is handy because you could have elem
 Flexbox can help with this, the reason I mention smaller screens is, it’s much safer to use due to the minor shift going on. You’ll most likely have a single column layout, multiple columns increases the complexity.
 
 ### HTML
-```.language-markup
+```markup
 <div class="flex">
   <img src="http://placehold.it/420x280">
   <h2 class="first">Product title</h2>
@@ -53,7 +53,7 @@ Flexbox can help with this, the reason I mention smaller screens is, it’s much
 ```
 
 ### CSS
-```.language-css
+```css
 .flex {
   display: flex;
   flex-flow: column wrap; }
@@ -69,7 +69,7 @@ Forms can benefit from flexbox, due to the simplicity of creating fluid layouts.
 The problem with doing this through another method, something usually is less than ideal. This could be a button width, leading to padding looking uneven at certain points. The flexbox method allows us not to worry about the button.
 
 #### HTML
-```.language-markup
+```markup
 <form class="flex">
   <label>Email</label>
   <input type="email" class="email">
@@ -78,7 +78,7 @@ The problem with doing this through another method, something usually is less th
 ```
 
 #### CSS
-```.language-css
+```css
 .flex {
   display: flex;
   flex-flow: row wrap;
@@ -95,7 +95,7 @@ label {
 A column based form layout can tend to be tricky, depending on the system you’re dealing with. Fields you would group together by making their width narrower you need space between the fields. Of course this is depending on your overall style.
 
 #### HTML
-```.language-markup
+```markup
 <form class="flex">
   <div class="field-whole">
     <label>Name</label>
@@ -115,7 +115,7 @@ A column based form layout can tend to be tricky, depending on the system you’
 > If you’re using `<fieldset>` to group elements, there is a bug. Using `display: flex` won’t work in the majority of browsers.
 
 #### CSS
-```.language-css
+```css
 .flex {
   display: flex;
   flex-wrap: wrap;

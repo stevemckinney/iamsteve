@@ -32,7 +32,7 @@ If they’re too long your eyes have to work hard to retain the position in read
 ### Trial and error
 It takes a little trial and error to find the balance, I’m setting the following CSS on our `.content`.
 
-```.language-css
+```css
 .content {
   max-width: 27.5em; /* 440/16 */
   margin: auto; }

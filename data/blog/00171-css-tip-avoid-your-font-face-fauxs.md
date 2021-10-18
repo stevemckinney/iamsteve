@@ -20,7 +20,7 @@ Well, when you apply a bold weight or italic style to any font that doesn’t ha
 
 I believe it to be most common when you use a font generator. Generators do this to improve compatibility with older browsers. The generator will separate out each weight and style into it’s own unique font. So you end up with `font-family` rules looking something like the following:
 
-```.language-css
+```css
 h1 { font-family: “Font Name Bold”; }
 h2 { font-family: “Font Name Semibold”; }
 h3 { font-family: “Font Name Italic”; }
@@ -45,7 +45,7 @@ Something doesn’t quite look right, is the general summary of these points. Gi
 ## How to do it the right way™
 If you’re self hosting, the right way to define your `@font-face` rules are by keeping the `font-family` name the same and defining the correct `font-weight` and `font-style`, like so:
 
-```.language-css
+```css
 /* Normal */
 @font-face {
   font-family: "Averta";
@@ -81,7 +81,7 @@ In both of these services it is turned off by default. So, if it does happen to 
 ## What if I have to separate the fonts out
 If you have no choice but to have the fonts separated for browser support and you need to ensure it doesn’t happen, the way you can prevent it isn’t too tricky. It requires `!important` that way it’s difficult to ever override.
 
-```.language-css
+```css
 /* Normal */
 @font-face {
   font-family: "Averta";

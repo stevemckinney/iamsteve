@@ -33,7 +33,7 @@ The `inline-block` approach is quite dependable in that sense. The only issue is
 ## General usage
 Usage is just a matter of changing the display property of the element. A width will be necessary to size your elements appropriately.
 
-```.language-css
+```css
 .inline-block-element {
   display: inline-block; }
 ```
@@ -41,7 +41,7 @@ Usage is just a matter of changing the display property of the element. A width 
 ### Vertical alignment
 The flexibility of this method comes in with `vertical-align`. With this, we can change the how the layout is displayed when items aren’t the same height. A different alignment may be favourable. The are many values, for `vertical-align`. The ones that tend to favour grid layout are `top`, `middle` or `bottom`. [More information can be found on MDN](https://developer.mozilla.org/en/docs/Web/CSS/vertical-align).
 
-```.language-css
+```css
 .inline-block-element {
   display: inline-block;
   vertical-align: top; }
@@ -52,7 +52,7 @@ If your element has enough content to span 100% width, then it will. So if you h
 
 **However, unless your code is minified, the elements will be 50% width, but not side by side**. I’ll explain how to fix that shortly.
 
-```.language-css
+```css
 .inline-block-element {
   display: inline-block;
   vertical-align: top;
@@ -62,7 +62,7 @@ If your element has enough content to span 100% width, then it will. So if you h
 ### Using `inline-block` to align to the left, right or centre
 Another benefit to using this method is alignment tends to come without the issues of floating. You can easily align an element elements to the right or centre by using the relevant `text-align` value. *However, this has to be applied to the parent*, so our markup and CSS would look like the following:
 
-```.language-markup
+```markup
 <div class=“parent”>
   <div class=“inline-block-element”>
     Some content here
@@ -70,7 +70,7 @@ Another benefit to using this method is alignment tends to come without the issu
 </div>
 ```
 
-```.language-css
+```css
 .parent {
   text-align: right; }
 
@@ -83,7 +83,7 @@ Another benefit to using this method is alignment tends to come without the issu
 
 The important thing to note about the CSS is you’ll find text also aligns to the right. So you may need to add `text-align: left` to counter this. I’d recommend setting up reusable class names for each text alignment, so you can apply them as and when.
 
-```.language-css
+```css
 .text-left { text-align: left; }
 .text-center { text-align: center; }
 .text-right { text-align: right; }
@@ -104,7 +104,7 @@ In turn, there are a few ways to deal with white space with `display: inline-blo
 ### Comments/minifying HTML
 If you have the availability of minified HTML always, great you don’t need to worry about this. Although if there is the chance that unmagnified HTML can be introduced at any point you’ll need a solution.
 
-```.language-markup
+```markup
 <div class="inline-block-element">
 </div><div class="inline-block-element">
 </div>
@@ -112,7 +112,7 @@ If you have the availability of minified HTML always, great you don’t need to 
 
 The issue with removing space is it can make our HTML unreadable. So this is where comments can come in. However, it doesn’t really make it that much better.
 
-```.language-markup
+```markup
 <div class="inline-block-element">
 </div><!--
 --><div class="inline-block-element">
@@ -126,7 +126,7 @@ I would strongly recommend against this method. For completeness and as a last r
 
 The fact there is a difference in space width, between browsers, is the major reason to not use this approach. Everything has to be 1px off to accommodate IE. It also means you have to be more vigilant in spotting spacing errors because of it.
 
-```.language-css
+```css
 .inline-block-element {
   margin-right: -4px; }
 ```
@@ -155,7 +155,7 @@ To start a grid it requires a containing element. With the class `grid`. If you 
 
 To create a layout, add an additional `<div>` inside that with the relevant class name. For example, a two column layout at the first breakpoint and 4 column at the medium breakpoint (640px and up).
 
-```.language-markup
+```markup
 <div class="grid grid-with-gutter">
   <div class="grid-cell grid-6 grid-medium-4">
     Content
@@ -175,14 +175,14 @@ To create a layout, add an additional `<div>` inside that with the relevant clas
 ### Usage: Sass
 The grid can be included with the defaults in your Sass by including the grid mixin.
 
-```.language-scss
+```sass
 @include grid;
 ```
 
 #### Overriding through the mixin
 The grid mixin takes 3 parameters. `$grid-columns` which can be any number in reality. `$grid-gutter` a pixel value is recommended. `$grid-map` which is a map for your breakpoints.
 
-```.language-scss
+```sass
 @include grid(
   $grid-columns : $default-grid-columns,
   $grid-gutter : $default-grid-gutter,
@@ -193,7 +193,7 @@ The grid mixin takes 3 parameters. `$grid-columns` which can be any number in re
 #### Modifying breakpoints
 I have set up a bunch of defaults to make it easy to override. So you don’t need to call the mixin with parameters. The first step will be changing or adding breakpoints. This can be done by changing the `$default-grid-map` variable.
 
-```.language-scss
+```sass
 $default-grid-map: ( small: 540px, medium: 720px, large: 1024px );
 ```
 
@@ -202,7 +202,7 @@ Remove `!default` from the variable and set it again with your other variables. 
 #### Other variables to modify
 You can modify the column amount and the gutter, with the following variables. The gutter number is half the value you want it to be overall. 
 
-```.language-scss
+```sass
 $default-grid-columns: 12 !default;
 $default-grid-gutter: 6px !default;
 ```
@@ -210,7 +210,7 @@ $default-grid-gutter: 6px !default;
 #### Example with modifications
 Here is an example of a 6 column grid, with 24px gutter and 4 breakpoints named alphabetically.
 
-```.language-scss
+```sass
 $default-grid-columns: 6;
 $default-grid-gutter: 12px;
 $default-grid-map: ( a: 320px, b: 480px, c: 720px, d: 1080px );

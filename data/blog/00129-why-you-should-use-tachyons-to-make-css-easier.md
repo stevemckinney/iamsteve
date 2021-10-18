@@ -28,7 +28,7 @@ The approach is very easy to customise to your kind of setup. It’s applying th
 ### You may have something that looks like
 So traditionally you may apply some basic styling to your headings and paragraphs, then get more specific as and when.
 
-```.language-css
+```css
 h1, h2, h3, h4, h5, h6 { … }
 h1 { … }
 h2 { … }
@@ -51,7 +51,7 @@ It takes the worry of CSS being off at a certain media query. It’s about havin
 ### Using font sizing as an example
 So let’s get on to the replacement. Within your design you will have a set of font sizes, that follow a type scale or a pattern, gather all these up. Each property is defined in a class.
 
-```.language-css
+```css
 .f1 { font-size: 30px; }
 .f2 { font-size: 24px; }
 .f3 { font-size: 21px; }
@@ -62,7 +62,7 @@ So let’s get on to the replacement. Within your design you will have a set of 
 
 You repeat this process in media queries, except apply a suffix to them. In this example I use `-b` and `-d`. I use these letters, because in Sass, I have variables assigned to each breakpoint, so I know what it’s tied to.
 
-```.language-css
+```css
 @media (min-width: 600px) {
   .f1-b { font-size: 30px; }
   .f2-b { font-size: 24px; }
@@ -85,7 +85,7 @@ Tachyons also has a slightly different breakpoint setup. It uses  ns (not small)
 ### Using the classes
 Now you may wonder what’s the point in defining the same sizes with slightly varied naming, in different media queries. That’s the beauty of this, once you understand you have a lot of control over your design, very quickly.
 
-```.language-markup
+```markup
 <h1 class="f3 f2-b f1-d">My title</h1>
 ```
 
@@ -94,7 +94,7 @@ With the markup you go from font size 3 up to font size 1. This makes it quick t
 ## Misunderstanding the approach
 I did initially misunderstand the approach, I tied it too closely to specific situations.
 
-```.language-css
+```css
 .f1 { font-size: 21px; }
 
 @media (min-width: 600px) {
@@ -111,7 +111,7 @@ That causes the same problems with consistency and maintenance. It’s important
 ## Naming, yes it may be ugly
 After all that, yes, it is considered an ugly approach. So is the repetitive nature of applying font sizes and spacing.
 
-```.language-markup
+```markup
 <h1 class="size-small size-medium-b size-large-d">My title</h1>
 ```
 
@@ -125,7 +125,7 @@ There are so many techniques for writing CSS, they all have similar goals in min
 ## Other examples
 This approach can be used for anything, if you explore the tachyons documentation it will become clear.
 
-```.language-css
+```css
 .mb0 { margin-bottom: 0; } 
 .mb1 { margin-bottom: 6px; }
 .mb2 { margin-bottom: 12px; }
@@ -152,7 +152,7 @@ The naming behind this is the abbreviation of margin bottom. As mentioned earlie
 ## What about areas I can’t control?
 Typically anything that’s managed in a CMS you can’t apply classes to. It doesn’t mean defeat. You have to apply styles more specifically.
 
-```.language-css
+```css
 .cms h1 { font-size: 21px; }
 
 @media (min-width: 600px) { 

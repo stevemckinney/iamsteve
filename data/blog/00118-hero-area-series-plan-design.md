@@ -128,7 +128,7 @@ Press <kbd>t</kbd> and drag out a text layer 2 columns wide and add your title. 
 
 Add another text layer for your description, positioning it similarly.
 
-```.language-markup
+```markup
 Edit live with the Wordpress Customiser
 
 Using the Wordpress Customizer you can make updates to parts of your website with a live preview. This makes it easy to iterate on changes.

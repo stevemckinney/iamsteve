@@ -23,7 +23,7 @@ If you haven't put jQuery on your page, you'll need to. I recommend using [the G
 ## The code
 Here's the full code if you don't want to read an explanation, that's below.
 
-```.language-javascript
+```javascript
 $(function() {
   var pathname = window.location.pathname;
   var getLast = pathname.match(/.*\/(.*)$/)[1];
@@ -49,7 +49,7 @@ This is a new variable called 'getLast' which gets the 'pathname' variable and u
 `var truePath = getLast.replace('.php','');`
 This is a further new variable called 'truePath' which gets the variable 'getLast' and uses `replace()` to look within the 'getLast' variable and seeing if it contains any **.php** and replace it with nothing which is what **''** is for. You can also look for whatever you like, it doesn't need to be a file extension at all.
 
-```.language-javascript
+```javascript
   if(truePath === '') {
     $('body').attr('id', 'index');
   }
@@ -57,7 +57,7 @@ This is a further new variable called 'truePath' which gets the variable 'getLas
 
 This part of the if statement checks the 'truePath' variable to see if it's *exactly* equal to nothing. This is just incase you type in say a url http://site.com. Because `window.location.pathname` will return nothing. So we need a backup for that.
 
-```.language-javascript
+```javascript
 else {
   $('body').attr('id', truePath);
 }

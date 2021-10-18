@@ -28,7 +28,7 @@ Usage is very familiar, it’s similar to media queries and all other conditiona
 ### General
 The general usage is checking for a property and value. It isn’t currently possible from my testing to just check for a property eg: `box-shadow` or `transform`.
 
-```.language-css
+```css
 @supports (display: flex) {
   … }
 ```
@@ -36,7 +36,7 @@ The general usage is checking for a property and value. It isn’t currently pos
 ### Prefixed
 Prefixes are rarely used now. However, you can check for the existence of those.
 
-```.language-css
+```css
 @supports (display: -webkit-flex) {
   … }
 ```
@@ -44,7 +44,7 @@ Prefixes are rarely used now. However, you can check for the existence of those.
 ### Not
 The way to check whether something doesn’t exist is a matter of putting `not` before the condition.
 
-```.language-css
+```css
 @supports not (display: flex) {
   … }
 ```
@@ -54,7 +54,7 @@ This is one I was thinking the behaviour would be similar to programming languag
 
 At one point, Firefox didn’t support the flex-wrap property. This made flexbox not an option in that browser.
 
-```.language-css
+```css
 @supports (display: flex) {
   .supports {
     display: flex; }
@@ -67,7 +67,7 @@ At one point, Firefox didn’t support the flex-wrap property. This made flexbox
 ### Multiple conditions, `or` and `and`
 Multiple conditions can be checked for, this makes `@supports` versatile to many needs. This is an alternative approach to the previous example.
 
-```.language-css
+```css
 @supports (display: flex) and (flex-wrap: wrap) {
   … }
 ```
@@ -75,7 +75,7 @@ Multiple conditions can be checked for, this makes `@supports` versatile to many
 ### Multiple grouped conditions
 If necessary you can make more complex queries. You can group them together with extra brackets.
 
-```.language-css
+```css
 @supports (columns: 1) or ((display: flex) and (flex-wrap: wrap)) {
   … }
 ```
@@ -83,7 +83,7 @@ If necessary you can make more complex queries. You can group them together with
 ### Mixing with media queries
 It’s possible, this is more to cover all bases.
 
-```.language-css
+```css
 @media (min-width: 600px) {
   @supports (mix-blend-mode: overlay) {
     mix-blend-mode: multiply; } }
@@ -100,7 +100,7 @@ Today the usage isn’t too apparent, there are some good uses that I detail. As
 ### Hyphenation
 When you hyphenate a block of text, you’re afforded the ability to justify text. With hyphenation you’re not left with the possibility of awkward rivers. Not many browsers support this, but it’s a simple and convenient way to allow it without awkwardness being forced upon other browsers.
 
-```.language-css
+```css
 @supports (-webkit-hyphens: auto) {
   p { 
     -webkit-hyphens: auto;
@@ -110,7 +110,7 @@ When you hyphenate a block of text, you’re afforded the ability to justify tex
 ### Background blur with backdrop-filter
 As of writing this is only supported in iOS Safari 9 and Safari 9. It’s useful for getting the iOS blur going on with fixed headers. I’ve used it on content regions, with a lower opacity and have retained good legibility. For the non-supporting we can  increase the opacity.
 
-```.language-css
+```css
 @supports (backdrop-filter: blur(12px)) {
   .content {
     background-color: rgba(255, 255, 255, .3);
@@ -126,7 +126,7 @@ CSS blend modes still have fairly low support as of writing. In some cases speci
 
 In this example you check for support for `background-blend-mode: color` and apply that in the feature query. This gives us the look we are after. However if we have text over the image it may not be legible. So for our alternate look, you can position a layer over the image.
 
-```.language-css
+```css
 .image {
   background-image: url(‘my-image.jpg’); }
 
@@ -153,7 +153,7 @@ In this example you check for support for `background-blend-mode: color` and app
 ### Exclude IE 11 from flexbox
 As no version of IE supports `@supports` and from my experience the most buggy implementation of flexbox is in IE 11. We give ourselves peace of mind. It should go without saying, but you rule out other older browsers with this approach too.
 
-```.language-css
+```css
 @supports (display: flex) and (flex-wrap: wrap) {
   … }
 ```

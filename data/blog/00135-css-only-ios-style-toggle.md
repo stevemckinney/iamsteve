@@ -33,7 +33,7 @@ Depending on your stylistic choices it determines how you will setup your markup
 ## Markup
 Knowing that each part of the toggle style needs to change that means these elements will all need to follow the checkbox.
 
-```.language-markup
+```markup
 <label class="label label-toggle" for="night-mode">
   <div class="input-toggle">
     <input class="input-checkbox" id="night-mode" type="checkbox">
@@ -50,7 +50,7 @@ A span for the styling must follow the checkbox, this will become clearer once y
 ## Get some basics in place
 The basics here are what allow you to get the correct positioning, alongside label text and the correct positioning of the checkbox.
 
-```.language-css
+```css
 .input-toggle {
   position: relative;
   display: inline-block;
@@ -59,7 +59,7 @@ The basics here are what allow you to get the correct positioning, alongside lab
 
 Next is to position the checkbox to fill the toggle area, and remove its visibility with opacity. This is the ‘faking’ part.
 
-```.language-css
+```css
 .input-toggle input {
   position: absolute;
   top: 0;
@@ -72,7 +72,7 @@ Next is to position the checkbox to fill the toggle area, and remove its visibil
 ## Toggle background
 For the background it needs to be fixed in width and height. It’s got to contain the area clearly, and invite interaction. As there is going to be a transition in the background, the styles need to be applied to `.input-toggle-handle`.
 
-```.language-css
+```css
 .input-toggle-handle {
   display: block;
   width: 84px;
@@ -92,7 +92,7 @@ All styling here can be tweaked to your own liking, except for the `box-shadow` 
 ## Toggle handle
 As you’ve had to use the class to form the background, now you’re left with using a pseudo element to make the handle.
 
-```.language-css
+```css
 .input-toggle-handle:before {
   content: "";
   position: absolute;
@@ -119,7 +119,7 @@ In the next steps it becomes clearer why the checkbox is positioned the way it i
 ### Reveal the background
 If the input is checked, style the adjacent sibling (~). Essentially the element that follows this one, this is why source order is crucial. 
 
-```.language-css
+```css
 .input-toggle input:checked ~ .input-toggle-handle {
   box-shadow: 
     inset 0 1px rgba(0, 0, 0, 0.15),
@@ -130,7 +130,7 @@ Firstly, some adjustments to the `box-shadow`, this makes for a nice transition 
 
 ### Move the toggle over
 
-```.language-css
+```css
 .input-toggle input:checked ~ .input-toggle-handle:before {
   left: 44px;
   box-shadow: 
@@ -147,7 +147,7 @@ Finally, move the toggle over and adjust the `box-shadow`. The `left` value here
 ## Improving clarity
 Generally with these types of toggles you have to make the shift in state very clear. The position of the toggle and colour certainly indicate this. It’s not ideal to rely only upon colour in your interface, if the action is something critical.
 
-```.language-css
+```css
 .input-toggle:before {
   content: "on";
   left: 0;

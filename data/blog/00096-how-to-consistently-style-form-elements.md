@@ -24,7 +24,7 @@ The first thing you need to do is set up a good base. To freely style your form 
 
 However, there will be some more visual browser defaults that are in place. That is `border`, `box-shadow` and `border-radius`, `background-colour ` and `font-family`. Replacing these with your own preferences, or removing altogether solves that.
 
-```.language-css
+```css
 .input-base {
   appearance: none;
   border: none;
@@ -49,7 +49,7 @@ I'm not a huge fan of setting the height, for a few reasons.
 Edge is all well and good until it concerns select elements, like Firefox. So the same recommendation stands, setting the `height`.
 
 ## Base without `<select>`
-```.language-css
+```css
 .input-base {
   appearance: none;
   border: none;
@@ -62,7 +62,7 @@ Edge is all well and good until it concerns select elements, like Firefox. So th
 ```
 
 ## Base with `<select>`
-```.language-css
+```css
 .input-base {
   appearance: none;
   border: none;

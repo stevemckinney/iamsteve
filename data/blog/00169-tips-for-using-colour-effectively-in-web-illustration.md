@@ -25,12 +25,7 @@ The first thing to cover is choosing your palette. There are two approaches: you
 If you have colours already determined for your website, why not use those as a starting point? Things will immediately feel more at home. 
 
 ### Choose for your website first
-<div class="article-image">
-<img data-src="/static/images/blog/colour-in-illustration-choose-for-website.png" data-srcset="/static/images/blog/colour-in-illustration-choose-for-website.png 832w, /static/images/blog/colour-in-illustration-choose-for-website@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/colour-in-illustration-choose-for-website.png" srcset="/static/images/blog/colour-in-illustration-choose-for-website.png 832w, /static/images/blog/colour-in-illustration-choose-for-website@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/colour-in-illustration-choose-for-website@2x.png" width={738} height={492} />
 
 A website colour palette will be made up of some neutral and some vibrant (or differing) colours, for the various uses throughout a website. These colours will offer a lot of choice for your illustrations too.
 
@@ -39,23 +34,13 @@ So, if you’re struggling initially, this is a good way to spark inspiration an
 ### Let the choices be determined by the type of illustration
 For example, is your illustration more of a scene or character? The differing use case can determine the range of colours you will need.
 
-<div class="article-image">
-<img data-src="/static/images/blog/colour-in-illustration-scenic-illustration.png" data-srcset="/static/images/blog/colour-in-illustration-scenic-illustration.png 832w, /static/images/blog/colour-in-illustration-scenic-illustration@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/colour-in-illustration-scenic-illustration.png" srcset="/static/images/blog/colour-in-illustration-scenic-illustration.png 832w, /static/images/blog/colour-in-illustration-scenic-illustration@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/colour-in-illustration-scenic-illustration@2x.png" width={738} height={492} />
 
 A scenic illustration will need some neutral colours—with varying shades and tones. These are useful for adding detail to the background, so it doesn’t feel overwhelming. If you were to use vibrant and varied colour it would distract from the subject of the illustration.
 
 Your vibrant colours should be used to draw the eye to the main subject of the illustration.
 
-<div class="article-image">
-<img data-src="/static/images/blog/colour-in-illustration-character-illustration.png" data-srcset="/static/images/blog/colour-in-illustration-character-illustration.png 832w, /static/images/blog/colour-in-illustration-character-illustration@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/colour-in-illustration-character-illustration.png" srcset="/static/images/blog/colour-in-illustration-character-illustration.png 832w, /static/images/blog/colour-in-illustration-character-illustration@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/colour-in-illustration-character-illustration@2x.png" width={738} height={492} />
 
 With a character based illustration, you’re going to need colour for smaller areas like eyes, variety for skin tones, and not have to worry as much about the issues of a larger scene.
 
@@ -77,12 +62,7 @@ I covered this to an extent earlier, but use case is important. If your illustra
 The balance of colour on the page is important, if many small images, have many colours, it’s going to feel busy and overwhelming.
 
 <figure>
-<div class="article-image">
-<img data-src="/static/images/blog/colour-in-illustration-website-overview.png" data-srcset="/static/images/blog/colour-in-illustration-website-overview.png 832w, /static/images/blog/colour-in-illustration-website-overview@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/colour-in-illustration-website-overview.png" srcset="/static/images/blog/colour-in-illustration-website-overview.png 832w, /static/images/blog/colour-in-illustration-website-overview@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/colour-in-illustration-website-overview@2x.png" width={738} height={492} />
 <figcaption>By no means perfect, but you can see what I’ve aimed for with this website.</figcaption>
 </figure>
 
@@ -94,10 +74,7 @@ A successful set of illustrations feel harmonious together. Much of this is achi
 This is a step to save you time and help with consistency. Each colour you have make lighter versions of it. You want a reasonably wide variety of them, with plenty of the lightest of colours as the change in lightness is more apparent.
 
 <div class="article-image">
-<img data-src="/static/images/blog/colour-in-illustration-light-tints.png" data-srcset="/static/images/blog/colour-in-illustration-light-tints.png 832w, /static/images/blog/colour-in-illustration-light-tints@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/colour-in-illustration-light-tints.png" srcset="/static/images/blog/colour-in-illustration-light-tints.png 832w, /static/images/blog/colour-in-illustration-light-tints@2x.png 1664w">
-</noscript>
+<Image src="/static/images/blog/colour-in-illustration-light-tints@2x.png" width={738} height={492} />
 </div>
 
 For example, you may increase the lightness by 20%–30% for the first few tints. Then decrease that to 5%, at the very lightest colours it becomes more obvious the difference. 
@@ -108,12 +85,7 @@ It’s much easier to get by on fewer tones and shades. As well, you don’t rea
 You’ll use these if you intend to have outlines as part of your illustration. I recommend two darker colours for borders, one that’s a higher saturation and one that’s a lower saturation. There are different instances where the warmer and cooler colours will be a better fit.
 
 <figure>
-<div class="article-image">
-<img data-src="/static/images/blog/colour-in-illustration-tones-shades.png" data-srcset="/static/images/blog/colour-in-illustration-tones-shades.png 832w, /static/images/blog/colour-in-illustration-tones-shades@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/colour-in-illustration-tones-shades.png" srcset="/static/images/blog/colour-in-illustration-tones-shades.png 832w, /static/images/blog/colour-in-illustration-tones-shades@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/colour-in-illustration-tones-shades@2x.png" width={738} height={492} />
 <figcaption>There are much fewer colours for shading. Higher saturation and lower saturation colours make the difference here.</figcaption>
 </figure>
 
@@ -131,12 +103,7 @@ It makes a subtle but important difference, I’ve spoke about this before in a 
 This can depend on the style you’re going for but the correct stroke colour is important. Make sure it contrasts well, it’s better it’s darker than too light. A stroke which is too light can make things feel off.
 
 <figure>
-<div class="article-image">
-<img data-src="/static/images/blog/colour-in-illustration-stroke-colour.png" data-srcset="/static/images/blog/colour-in-illustration-stroke-colour.png 832w, /static/images/blog/colour-in-illustration-stroke-colour@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/colour-in-illustration-stroke-colour.png" srcset="/static/images/blog/colour-in-illustration-stroke-colour.png 832w, /static/images/blog/colour-in-illustration-stroke-colour@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/colour-in-illustration-stroke-colour@2x.png" width={738} height={492} />
 <figcaption>
 This slightly exaggerated example, shows the difference a border with good contrast makes.
 </figcaption>
@@ -147,12 +114,7 @@ There are other techniques for approaching things like shadows and strokes, but 
 ### Watch out for colour clashes
 Colour clashes is possibly the wrong word here. Anyway, for example, you have lighter colour with a dark border, next to another dark colour, this can cause an awkward look with the colours.
 
-<div class="article-image">
-<img data-src="/static/images/blog/colour-in-illustration-colour-clash.png" data-srcset="/static/images/blog/colour-in-illustration-colour-clash.png 832w, /static/images/blog/colour-in-illustration-colour-clash@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/colour-in-illustration-colour-clash.png" srcset="/static/images/blog/colour-in-illustration-colour-clash.png 832w, /static/images/blog/colour-in-illustration-colour-clash@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/colour-in-illustration-colour-clash@2x.png" width={738} height={492} />
 
 A simple fix can be to change the darkest stroke to be above the lighter stroke, as the image demonstrates.
 
@@ -162,12 +124,7 @@ Here’s a few things where the power and features of illustrator can really hel
 ### Let Illustrator handle your tints, shades & tones
 One thing I really love about Illustrator is the colour guide panel. It’s got a lot of power to help you quickly generate colour palettes with limited fuss. The amount of functionality it has is worth a post on its own, however, I’ll cover some things quickly.
 
-<div class="article-image">
-<img data-src="/static/images/blog/colour-in-illustration-colour-guide-panel.png" data-srcset="/static/images/blog/colour-in-illustration-colour-guide-panel.png 832w, /static/images/blog/colour-in-illustration-colour-guide-panel@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/colour-in-illustration-colour-guide-panel.png" srcset="/static/images/blog/colour-in-illustration-colour-guide-panel.png 832w, /static/images/blog/colour-in-illustration-colour-guide-panel@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/colour-in-illustration-colour-guide-panel@2x.png" width={738} height={492} />
 
 Go to `Window > Colour Guide` in the menu. From here you can choose which types of colours you’d like, from shades to the warmth of colour. You can change this by clicking the little icon to the top right of the panel. 
 
@@ -179,12 +136,7 @@ In the menu you will find `Select > Same`, if you haven’t used this before, I�
 ### Refine or recolour with ‘Recolor Artwork’
 The colour adjustment tools within Illustrator are really powerful, especially ‘Recolor Artwork’. If you’re close to the colour palette you want, but things don’t feel as harmonious as you would like, these tools can really help.
 
-<div class="article-image">
-<img data-src="/static/images/blog/colour-in-illustration-recolour-artwork.png" data-srcset="/static/images/blog/colour-in-illustration-recolour-artwork.png 832w, /static/images/blog/colour-in-illustration-recolour-artwork@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/colour-in-illustration-recolour-artwork.png" srcset="/static/images/blog/colour-in-illustration-recolour-artwork.png 832w, /static/images/blog/colour-in-illustration-recolour-artwork@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/colour-in-illustration-recolour-artwork@2x.png" width={738} height={492} />
 
 Select all of your colours and go to `Edit > Edit Colors > Recolor Artwork`. From here you can adjust each colour individually, and once you click ok it will update all the colours.
 

@@ -26,21 +26,21 @@ This could be a daunting process and hopefully I can guide you through it. Comma
 1. Open up terminal
 2. Paste the following line into terminal and press enter
 
-```.language-bash
+```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
 ### Install webkit2png
 It should only require you to enter the following into a new terminal window:
 
-```.language-bash
+```bash
 brew install webkit2png
 ```
 
 ## Generating screenshots
 To generate the screenshots we need to use the following code.
 
-```.language-bash
+```bash
 array=( 1600 768 320 )
 
 for i in "${array[@]}" do
@@ -51,27 +51,27 @@ done
 ### Command walkthrough
 If you find it difficult to understand the command, I’ll explain what each line does.
 
-```.language-bash
+```bash
 array=( 1600 768 320 )
 ```
 Each value within this array contains the width of the screenshot.
 
-```.language-bash
+```bash
 for i in "${array[@]}" do
 ```
 Start the loop using our array.
 
-```.language-bash
+```bash
 webkit2png -Fs 1 -W $i --filename='screenshot-'$(date +%Y%m%d-%H%M%S) --delay=4 "http://iamsteve.me"
 ```
 -Fs 1 means that we want only a full size screenshot, with a scale of 1. This is important webkit2png will generate 3 types of screenshot by default. Without the scale 1 it can lead to screenshots not being generated at the correct width.
 
-```.language-bash
+```bash
 --filename
 ```
 Generating the screenshots with a name with the date added to it. So it will be unique
 
-```.language-bash
+```bash
 --delay=4
 ```
 Will delay it for 4 seconds, I found on occasion it didn’t load fonts for some websites. It could be a little excessive, so tweak as you need.

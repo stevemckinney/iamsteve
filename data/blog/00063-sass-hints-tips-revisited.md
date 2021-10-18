@@ -18,7 +18,7 @@ One of my most popular posts [Sass hints & tips](http://iamsteve.me/blog/entry/s
 ## Em’s
 One of the most commonly used functions that I use within Sass is one to calculate the em output. The good thing about this function is you don't need to provide a comment of the calculation you were carrying out. As it's all there for you.
 
-```.language-scss
+```sass
 @function em($target-px, $context: 16px) {
   @return ($target-px / $context) * 1em; }
 ```
@@ -29,7 +29,7 @@ Maps are useful for creating an key and value pairs. They aren’t immediately c
 ### Creating a map
 Maps must always be surrounded by parentheses and be comma separated.
 
-```.language-scss
+```sass
 $buttons: (
   primary: $primary,
   secondary: $secondary,
@@ -40,7 +40,7 @@ $buttons: (
 ### Looping through with `@each`
 ‘primary’ is the key, ‘$primary’ is the value. Using this we can use this to loop through our keys and values with `@each`. I’ve named them something I can immediately know what type of content they will output.
 
-```.language-scss
+```sass
 @each $button, $color in $buttons {
   .button-#{$button} {
     background: $color; } }
@@ -49,7 +49,7 @@ $buttons: (
 ## Using & to group selectors
 This functionality can help make your CSS more modular and easier to understand what’s related in a block of code. If you’re a user of microformats this is particularly handy for hentry, or if you use BEM.
 
-```.language-scss
+```sass
 .entry {
   &-title { … }
   &-content { … }
@@ -64,14 +64,14 @@ Since using Sass regularly, I came across limitations of the mixins I made in th
 
 One of the nicer features of breakpoint is its ability to convert all media queries to be em based, should you enable it. This is set through a variable.
 
-```.language-scss
+```sass
 $breakpoint-to-ems: true;
 ```
 
 ### Assigning your media queries to variables
 The most maintainable way for me I have found is to create assign a set of values to variables and then another set with the suffix ‘max’. This way I always know I have min/max width variables. By default breakpoint has min-width enabled.
 
-```.language-scss
+```sass
 $breakpoint-subtract: 1px;
 
 $a: 400px;
@@ -84,7 +84,7 @@ $c-max: max-width $c - $breakpoint-subtract;
 
 This approach has worked very well for me, aside from the naming convention. The principle is max-width breakpoints should always be 1px less than the matching min-width breakpoint. The usage from here is quite simple and easy to remember once you’re familiar with the naming convention.
 
-```.language-scss
+```sass
 .element {
   @include breakpoint($a) {
     … }
@@ -98,11 +98,11 @@ If you’re like me you’ll have a terminal window open compiling your Sass. Oc
 This is where `@debug` comes in for a way to find out the output of your variables. You can use it anywhere in your files to find out the value.
 
 #### Input
-```.language-scss
+```sass
 @debug $a-max;
 ```
 #### Output
-```.language-bash
+```bash
 /Users/Steve/Dropbox/Sites/lily/wp-content/themes/lily/assets/sass/objects/_media.scss:47 DEBUG: max-width 439px
 ```
 

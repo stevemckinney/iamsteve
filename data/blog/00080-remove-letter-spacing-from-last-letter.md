@@ -26,14 +26,14 @@ The top set of text shows you the additional space that is added due to `letter-
 ## The solution
 The solution is just one line of CSS. A `margin-right` equal to the `letter-spacing` you apply.
 
-```.language-css
+```css
 margin-right: -.3em;
 ```
 
 ## Additional tip
 Set up a reusable class for any text that you want to apply `letter-spacing` to in em’s this means you don’t have to recalculate the additional spacing offset and can apply letter-spacing to any size text with it being proportional to that size.
 
-```.language-css
+```css
 .letter-spacing {
   letter-spacing: .3em;
   margin-right: -.3em; }
@@ -48,7 +48,7 @@ To remove the extra underline from text with letter spacing, the solution is not
 ### Method one: cover with a small box
 The first one involves using a pseudo element and positioning a small box so it covers up the excess. The element has background colour that matches the one behind the element.
 
-```.language-scss
+```sass
 .one {
   display: inline-block;
   letter-spacing: 3px;
@@ -69,7 +69,7 @@ The first one involves using a pseudo element and positioning a small box so it 
 To understand how this works, I have a small square that is 1px wider than the letter-spacing. It’s positioned 1px outside of the element. I found that there was a half pixel or so that was still visible when you precisely match the excess.
 
 ### Method two: create your own underline
-```.language-scss
+```sass
 .two {
   display: inline-block;
   letter-spacing: 3px;

@@ -43,7 +43,7 @@ Your HTML may look something like this.
 ### CSS required
 The basic CSS requires the expected `width` and `padding-bottom`. The `height` is for security, in making sure you start from 0.
 
-```.language-css
+```css
 .square {
   width: 25%;
   height: 0;
@@ -76,7 +76,7 @@ Your HTML may look something like this.
 ### CSS required
 Essentially the same aside from our values. Depending on your element, it’s possible the width is redundant if it's a block level element.
 
-```.language-css
+```css
 .square {
   width: 100%;
   height: 0;

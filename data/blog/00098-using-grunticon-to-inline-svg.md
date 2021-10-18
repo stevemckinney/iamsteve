@@ -35,7 +35,7 @@ You may need to tweak these values to suit your needs. Make sure your `dest` is 
 Finally, you pass some options to enable `enhanceSVG`, `compressPNG` and a class prefix. These options make sure everything you need is output.
 
 ### Add to your Gruntfile in your initConfig()
-```.language-javascript
+```javascript
 grunticon: {
   icons: {
     files: [{
@@ -54,12 +54,12 @@ grunticon: {
 ```
 
 ### Add to your default task
-```.language-javascript
+```javascript
 grunt.registerTask('default', 'grunticon:icons');
 ```
 
 ### Load the grunticon task
-```.language-javascript
+```javascript
 grunt.loadNpmTasks('grunt-grunticon');
 ```
 
@@ -72,14 +72,14 @@ At this stage I would recommend removing all fills on simpler SVGs. It adds a le
 I take the approach of applying a class to the `<g>` of paths that have the same fill. I name things very specifically, for example: `fill-currentcolor`. If there is a single path then you can apply it to that.
 
 #### Example: basic SVG
-```.language-markup
+```markup
 <svg>
   <path class="fill-currentcolor" path="…"/>
 </svg>
 ```
 
 #### Example: CSS
-```.language-css
+```css
 .fill-currentcolor {
   fill: currentcolor }
 ```
@@ -87,7 +87,7 @@ I take the approach of applying a class to the `<g>` of paths that have the same
 ### Fill things with currentcolor
 If you intend to use icons, that will always match the colour of the text next to them. I recommend adding a `currentcolor` fill. 
 
-```.language-css
+```css
 .text-with-icon {
   color: #c0ffee; }
   
@@ -112,7 +112,7 @@ As part of the Grunticon process it generates a loader script. My preference is 
 ## Use your icons
 Your icons are ready for use. Each icon can be used by applying a class name to an element. This is the name of the class name Grunticon generates for each SVG. You also need to add the data attribute `data-grunticon-embed`. 
 
-```.language-markup
+```markup
 <a href="#" class="text-with-icon">
   Continue reading
   <span class="icon-arrow-right" data-grunticon-embed></span>

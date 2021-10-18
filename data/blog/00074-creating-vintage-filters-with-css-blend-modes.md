@@ -42,7 +42,7 @@ Blend modes can be applied in two ways, using `background-blend-mode` and `mix-b
 ### HTML  
 I’m working on the basis that we will be applying it over an image. We’ll wrap our image in a `<div>` as it’s not possible to use `:before` and `:after` on `<img>`.
 
-```.language-markup
+```markup
 <div class="blend blend-yellow">
   <img src="…">
 </div>
@@ -51,7 +51,7 @@ I’m working on the basis that we will be applying it over an image. We’ll wr
 ### CSS
 The CSS is fairly simple, just cover the the image with an empty pseudo element.
 
-```.language-css
+```css
 .blend {
   position: relative; }
 

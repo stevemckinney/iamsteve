@@ -21,7 +21,7 @@ There comes a point where you're thinking, the bevel could be less, the shadows 
 It isn't difficult with `scale-color`. You pass your colour and adjust as needed with the `$lightness` and `$saturation` parameters (if need be and there are [more parameters](http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#scale_color-instance_method "Full documentation for scale-color")). 
 
 **For example:**
-```.language-scss
+```sass
 @include background(linear-gradient($color, scale-color($color, $lightness: -20%)));
 ```
 

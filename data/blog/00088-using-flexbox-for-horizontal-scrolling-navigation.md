@@ -32,7 +32,7 @@ The implementation is flexible to work with your layout. Whether you have it pos
 ### CSS: for the container
 Aside from making the element containing your navigation items a flex container, you need to make sure they don't wrap. This is achieved with the `flex-wrap` property. The final necessary property is to allow the container to `overflow`. You can use `scroll` or `auto`, however, I would recommend `auto` as it will only scroll if absolutely necessary.
 
-```.language-css
+```css
 /*
 [1]: Make a flex container so all our items align as necessary
 [2]: Automatic overflow means a scroll bar won’t be present if it isn’t needed
@@ -59,13 +59,13 @@ You can also hide the scrollbar completely by targeting the `::-webkit-scrollbar
 ### CSS: for the items
 Each item needs a `flex-grow` and `flex-shrink` value of `0`. The `flex-basis` property can be a percentage or pixel value if you for some reason need items to be of a specific width.
 
-```.language-css
+```css
 .item {
   flex: 0 0 auto; }
 ```
 
 ### HTML
-```.language-markup
+```markup
 <header class="scroll">
   <a href="http://iamsteve.me">Logo</a>
   <nav>

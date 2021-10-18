@@ -20,7 +20,7 @@ In this post I will show you how to avoid this. It’s similar to the way Wordpr
 ## Set up your cookie
 The first thing we need is to make sure our cookie is setup. I’m assuming here you know how to do this, if not I have wrote about [setting up cookies for Wordpress]({site_url}blog/entry/setting-a-cookie-with-wordpress) in detail.
 
-```.language-php
+```php
 add_action( 'init', 'full_css' );
 
 function full_css()
@@ -35,7 +35,7 @@ It’s possible you’ve already got critical and asynchronous CSS setup, or you
 ### Enqueuing styles
 This function will contain our CSS (and JavaScript, albeit I won’t be discussing it), which are added on the `wp_enqueue_style` hook. **This should be your starting point**. 
 
-```.language-php
+```php
 function iamsteve_scripts()
 {
   wp_enqueue_style(
@@ -56,7 +56,7 @@ Now you have the basis for your styles and scripts. It’s on to the next step o
 ### Basic setup
 Here is your basic setup for checking if the cookie exists.
 
-```.language-php
+```php
 function iamsteve_scripts()
 {
   if ( isset($_COOKIE['full-css']) ) :

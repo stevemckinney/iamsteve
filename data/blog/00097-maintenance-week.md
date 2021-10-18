@@ -52,7 +52,7 @@ I've written twice on this. With two different methods. Recently I found out tha
 
 While there are ways to do it in Firefox and Chrome on Windows it removes scroll functionality altogether.
 
-```.language-css
+```css
   -ms-overflow-style: -ms-autohiding-scrollbar;
 ```
 

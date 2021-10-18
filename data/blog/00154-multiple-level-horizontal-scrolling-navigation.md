@@ -42,7 +42,7 @@ Anyway less of the can’t, you will need to use JavaScript. Which isn’t a hug
 ## HTML setup
 You may have more submenus, but for the sake of brevity I have included the markup here for one. 
 
-```.language-markup
+```markup
 <header>
   <nav class="nav scroll">
     <a href="#" class="logo">Logo</a>
@@ -77,7 +77,7 @@ Each top level navigation item has a `data-id`. This is to reference the actual 
 ## CSS setup
 The CSS required doesn’t need a huge increase to accommodate multiple levels. Each submenu will share the same scroll based CSS. The additions are for active states.
 
-```.language-css
+```css
 .scroll {
   white-space: nowrap;
   overflow-x: auto;
@@ -183,13 +183,13 @@ I’ve only accounted for clicks in this instance, but it should work equally as
 
 You would change the following line from
 
-```.language-javascript
+```javascript
 hasSubmenu[i].addEventListener('click', showSubmenu);
 ```
 
 To the following
 
-```.language-javascript
+```javascript
 hasSubmenu[i].addEventListener('touchstart', showSubmenu);
 ```
 

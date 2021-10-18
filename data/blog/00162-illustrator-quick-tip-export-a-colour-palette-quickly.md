@@ -32,7 +32,7 @@ Next copy each of the objects. This will copy an SVG version of your colour pale
 ## Open your text editor
 It doesn't matter what app you use here you need something to paste in what you've copied.
 
-```.language-markup
+```markup
 <!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In  -->
 <svg version="1.1"
    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
@@ -60,7 +60,7 @@ Yours will resemble something similar to this code.
 ## Grab the CSS
 Copy the code between `<style type="text/css">` and `<style>`. Delete the rest, paste it back in and tidy it up so you have the hex codes left.
 
-```.language-markup
+```markup
 #FF7E6D
 #553143
 #FFDB6D

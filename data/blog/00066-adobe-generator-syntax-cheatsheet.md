@@ -31,7 +31,7 @@ It's necessary to have a space after the dimensions. Don't put a space between t
 The quality can’t have a space between it. Quality can be a number `8` or percentage `80%`. For filetypes like png you can specify png-8, png-32, etc.
 
 ## 1x, 2x and beyond
-```.language-markup
+```markup
 filename.jpg, 200% filename@2x.jpg, 300% filename@3x.jpg
 ```
 
@@ -39,7 +39,7 @@ filename.jpg, 200% filename@2x.jpg, 300% filename@3x.jpg
 This is a comma separated list of values. Using percentage as the size.
 
 ## SVG
-```.language-markup
+```markup
 filename.svg
 ```
 

@@ -42,7 +42,7 @@ The fonts are Raleway and Merriweather from Google Fonts. The weights being used
 
 The following code will be in the HTML you will need next.
 
-```.language-markup
+```markup
 <link href="https://fonts.googleapis.com/css?family=Raleway:900,800,700|Merriweather" rel="stylesheet">
 ```
 
@@ -58,7 +58,7 @@ These colours will later be used as reference in our CSS.
 ## Starting with HTML
 The HTML consists of the basic HTML requirements, CSS, fonts and the markup required for the hero area. Add this to an index.html file.
 
-```.language-markup
+```markup
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +91,7 @@ To start your CSS, make a file named `style.css`. This is already in place using
 ## Beginning CSS with a reset
 It’s always important to start from a fresh without any browser styles that are going to trip us up later. It’s a small reset that takes away much of the default styling and resets to a base level that we build upon later.
 
-```.language-css
+```css
 /* Reset 
  * --------------------------- */
 html { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; box-sizing: border-box; }
@@ -109,7 +109,7 @@ Important things to note are that you’re setting `box-sizing: border-box` ever
 ## Adding a colour reference
 When writing CSS it’s important to have a reference of colours. Add this after your reset. Each colour is here, including the shadow.
 
-```.language-css
+```css
 /* Colour reference
  * --------------------------- */
 .light-blue { color: #c3f2f5; }
@@ -122,7 +122,7 @@ When writing CSS it’s important to have a reference of colours. Add this after
 ## Basic setup
 The first thing that needs doing from here is to add CSS that covers the majority of areas. So this being colour, background colour, font and line height.
 
-```.language-css
+```css
 /* Basic setup 
  * --------------------------- */
 body {
@@ -142,7 +142,7 @@ The background should be `.light-blue`.
 ## Getting the right layout
 Our initial layout is very similar across all screens. Using flexbox you can do much of the heavy lifting and only need to tweak specific content values.
 
-```.language-css
+```css
 /* Hero 
  * --------------------------- */
 .hero {
@@ -158,7 +158,7 @@ The `flex-flow` is for extra security in making sure that the layout will not wr
 ## Content
 The content container doesn’t need massive tweaks. This is a huge benefit of flexbox, initially we start with the content constrained to 192px. This works well to keep the design looking ideal. The initial flex value is fine, so it doesn't need defining, later on you need to adjust `flex`.
 
-```.language-css
+```css
 /* Hero content
  * --------------------------- */
 .hero-content {
@@ -175,7 +175,7 @@ The content container doesn’t need massive tweaks. This is a huge benefit of f
 ## Image
 The other part of the layout is with the image. Usually you would want images to be responsive, however, for this one it’s not ideal.
 
-```.language-css
+```css
 /* Hero image
  * --------------------------- */
 .hero-image {
@@ -203,7 +203,7 @@ Now the initial layout is setup, the content can now be worked on. To start, set
 
 It’s contentious whether to use shorthand properties, but I find it convenient using `font` for particularly unique areas like this hero title. Finally, in Illustrator the tracking, or in case of CSS `letter-spacing` is a similar looking value in em units.
 
-```.language-css
+```css
 /* Hero title
  * --------------------------- */
 .hero-title {
@@ -231,7 +231,7 @@ In each media query, the `font-size` adjustments are based on keeping the lines 
 ## Description
 For the description because of the basic setup you only need to change font sizes and add a margin. However, the size is increased using the title as a guide. It's also worth adding hyphenation because the area is quite small, longer words may cause unevenness in the lines that we can avoid. 
 
-```.language-css
+```css
 /* Hero description
  * --------------------------- */
 .hero-description {
@@ -257,7 +257,7 @@ For the description because of the basic setup you only need to change font size
 ## Button
 The button has quite a few things going on. Firstly getting the sizing correct, using `display: inline-block` and `padding` allows us to get the appropriate dimensions. I’m against setting height and width on buttons, I have found this method is much more reliable. After that, onto implementing the stylistic choices from the design.
 
-```.language-css
+```css
 /* Button
  * --------------------------- */
 .button {

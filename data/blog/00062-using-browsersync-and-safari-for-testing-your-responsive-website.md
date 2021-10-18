@@ -25,7 +25,7 @@ While this isn’t a completely necessary step to this process, it’s a valuabl
 ### Go to your site files
 Firstly open terminal and navigate to your folder which your websites files are contained in. For example
 
-```.language-bash
+```bash
 cd ~/Sites/my-website-folder
 ```
 
@@ -34,7 +34,7 @@ However an easy way to do this is if you’re less comfortable with terminal is 
 ### Get BrowserSync running
 Depending on your setup, you can run the following in terminal.
 
-```.language-bash
+```bash
 browser-sync start --proxy "mysite.dev" --files "css/*.css"
 ```
 

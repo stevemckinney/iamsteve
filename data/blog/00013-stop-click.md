@@ -19,7 +19,7 @@ I was set a task in University to make a website in short. Part of the requireme
 As always make sure you have jQuery in your code by using [Google's hosted version](//developers.google.com/speed/libraries/devguide#jquery "Get jQuery from here").
 
 ## The code
-```.language-javascript
+```javascript
 $(document).ready(function(){
   var page = window.location.href;
   var name = page.replace(/.+[\/]([^\/]+)$/,'$1');
@@ -47,20 +47,20 @@ $(document).ready(function(){
 I'm relatively certain this could be done in fewer lines, but as I'm no jQuery expert, I wasn't able to achieve it in fewer lines. Though this fits my needs perfectly.
 
 ### The variables
-```.language-javascript
+```javascript
 var page = window.location.href;
 ```
 
 This first variable is simple assign the URL of the current page to 'page'
 
-```.language-javascript
+```javascript
 var name = page.replace(/.+[\/]([^\/]+)$/,'$1');
 ```
 
 This is a little trickier to understand, it is a regular expression. In short it replaces the whole of the URL with just the end part, so if we had _http://site.com/path/to/file.php_, we would just have file.php. The longer explanation being; this part of the regular expression `/.+[\/]([^\/]+)$/`. `.+` is looking to match one or more of any characters that match except a newline. `[\/]` matches any instances of \\ or /. `([^\/]+)` is matching any grouped sequences and instances of \\ or / at the beginning of the line and if there are any more preceding the match, match them too. The `$` is to match the end of the line. Finally the `$1` matches the first submatch, basically the end of it eg: "index.php".
 
 ### The if statement
-```.language-javascript
+```javascript
 if ((name === "index.php") || (name == "sitename.com"))  {
   $("#nav .home").addClass("current");
   $("#nav .home").click(function(){return false;});

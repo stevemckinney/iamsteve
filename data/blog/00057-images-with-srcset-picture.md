@@ -28,7 +28,7 @@ The gist of both of those posts is the majority of times you should use `srcset`
 ### A simple retina implementation
 A photo of yourself in the about section of your website is as easy as it gets to implement `srcset`.
 
-```.language-markup
+```markup
 <img src="photo.jpg" srcset="photo@2x.jpg 2x" alt="…">
 ```
 
@@ -41,7 +41,7 @@ The reasons for conflict I have found are for when you have a higher density ver
 
 #### For a case I needed this worked nicely:
 
-```.language-markup
+```markup
 <picture class="featured-image">
   <source srcset="small.jpg 2x">';
   <source srcset="regular.jpg, regular@2x.jpg 2x" media="(min-width: 35.5em)">
@@ -52,7 +52,7 @@ The reasons for conflict I have found are for when you have a higher density ver
 ### A more complex srcset implementation
 This could be considered excessive, but it covers so many screen sizes should you want to have an image that spans the full width of the browser.
 
-```.language-markup
+```markup
 <img src="medium.jpg" srcset="xsmall.jpg 414w, small.jpg 768w, medium.jpg 1032w, large.jpg 1800w, xlarge.jpg 2400w">
 ```
 
@@ -63,7 +63,7 @@ For example if I have a iPad mini (768px width) in portrait small.jpg would be s
 ### A complex picture implementation
 If you have more art directed photos, where you need a specific part of an image to show at a specific screen size. I think `<picture>` is the best way to go. If you leave this down to `srcset` I’ve found that either higher density screens get shown poorer quality images or lower density screens get sent images too large in file size or smaller screens end up with images lacking the focus for the size of screen.
 
-```.language-markup
+```markup
 <picture>
   <source srcset="xsmall.jpg 1x, xsmall@2x.jpg 2x" media="(max-width: 37.4375em)">
   <source srcset="small.jpg 1x, small@2x.jpg 2x" media="(min-width: 37.5em) and (max-width: 64.4375em)">
@@ -82,7 +82,7 @@ It’s not a trivial process to do this through Wordpress currently and it’s c
 ### Add your image sizes
 I added a variety of sizes, trying to be descriptive as possible in what they are. The orientation may not be necessary as the height is flexible but it shows the intention.
 
-```.language-php
+```php
 add_image_size( 'portfolio-large-landscape', 1800, 9999, true );
 add_image_size( 'portfolio-large-landscape-2x', 3600, 9999, true );
 ```

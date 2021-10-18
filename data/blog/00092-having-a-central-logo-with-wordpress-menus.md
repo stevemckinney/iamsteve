@@ -34,7 +34,7 @@ of our logo.
 ### Removing the parent elements from the menu
 By default Wordpress uses an unordered list for `wp_nav_menu` and also contains that in a div. For the setup we require we need to remove both the `<div>` and `<ul>`. Then add the `<ul>` back ourselves.
 
-```.language-php
+```php
 $args = array(
   ‘theme_location’  => ‘navigation’,
   ‘container’       => false,
@@ -52,7 +52,7 @@ The key parts of this are the `container` and `items_wrap` arguments. The `conta
 ## Flexbox layout
 This depends on how many items you have. Ideally you’ll have an even number of menu items, not including the logo. Then you need to adjust the order.
 
-```.language-css
+```css
 .menu-items {
   display: flex; }
 
@@ -71,7 +71,7 @@ It would require more CSS as a result to use `nth-of-type`, and you would have t
 ## Final code with prefixes
 I purposely kept the code above brief, so it was easier to read. I’ve run the original code through [autoprefixer](https://autoprefixer.github.io/), to get more browser support easily.
 
-```.language-css
+```css
 .menu-items {
   display: -webkit-box;
   display: -webkit-flex;

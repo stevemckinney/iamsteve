@@ -52,7 +52,7 @@ These are a few of the reasons you would want to keep it all vector.
 ## Example usage gaussian blur
 The simplest way to use an SVG filter is through a gaussian blur. You place all your filters inside your `<defs>` for reuse later, like so:
 
-```.language-markup
+```markup
 <svg>
   <defs>
     <filter id="blur_20">
@@ -69,7 +69,7 @@ The simplest way to use an SVG filter is through a gaussian blur. You place all 
 ### Gaussian blurs larger than ~12
 I have found that when you have a larger blur the filter gets cut off. The only solution I came across which seemed to work most consistently no matter the size of the blur was to add the following:
 
-```.language-markup
+```markup
 width="150%" height="150%" x="-25%" y="-25%"
 ```
 
@@ -79,7 +79,7 @@ Setting the `x` and `y` attributes to be half of the additional percentage over 
 Another issue I came across in Safari, was the colours of the image seemed to have a much lower saturation than every other browser. I came across the solution to add `color-interpolation-filters="sRGB”`.
 
 ### Your final filter would look like
-```.language-markup
+```markup
 <filter width="150%" height="150%" x="-25%" y="-25%" id="blur_20" color-interpolation-filters="sRGB">
   <feGaussianBlur stdDeviation="20"></feGaussianBlur>
 </filter>

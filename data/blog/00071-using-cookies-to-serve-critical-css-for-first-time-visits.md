@@ -45,7 +45,7 @@ The easiest approach to setting up your cookies is to use the [Filament Group co
 ### Setting a cookie
 Setting a cookie using the utility takes 3 parameters. First the name, a string value, and the amount of days until the cookie expires.
 
-```.language-javascript
+```javascript
 cookie('full-css', true, 7);
 ```
 

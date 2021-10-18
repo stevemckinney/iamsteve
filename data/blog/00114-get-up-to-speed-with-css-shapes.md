@@ -40,7 +40,7 @@ All shape properties throughout this article rely on the use of floats to work. 
 
 It's the property you will use for creating shapes. Through `shape-outside` you define the `basic-shape`, `shape-box` and an `image`. You can’t set these individually currently. Additionally, you have properties `shape-margin` and `shape-image-threshold`.
 
-```.language-css
+```css
 .shape {
   shape-outside: circle(50%) border-box; }
 
@@ -60,7 +60,7 @@ It's the property you will use for creating shapes. Through `shape-outside` you 
 ## shape-box
 This works similarly to properties like `border-box` and `background-clip`.  The values that can be set are `margin-box`, `border-box`, `padding-box`, and `content-box`.
 
-```.language-css
+```css
 .shape {
   shape-outside: circle(50%) border-box; }
 ```
@@ -75,7 +75,7 @@ This works similarly to properties like `border-box` and `background-clip`.  The
 
 It will add a margin to the shape that takes into account all the points and draws it directly outwards from those points. As circles do not have points, it will draw it from the centre. 
 
-```.language-css
+```css
 .shape {
   shape-margin: 12px; }
 ```
@@ -101,13 +101,13 @@ There are four ways you can create a shape.
 A polygon can create the most complex shapes. It requires, at least, three points. Each point requires two numbers.
 
 #### To create a triangle
-```.language-css
+```css
 .triangle {
   shape-outside: polygon(50% 0%, 0% 100%, 100% 100%); }
 ```
 
 #### To create a hexagon
-```.language-css
+```css
 .hexagon {
   shape-outside: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
 ```
@@ -122,7 +122,7 @@ A polygon can create the most complex shapes. It requires, at least, three point
 
 You can base a circle only on the radius. The outermost point will define this. The centre point determines the position. The syntax is similar to that of gradients and background positioning.
 
-```.language-css
+```css
 .circle {
   shape-outside: circle(50%);
   shape-outside: cricle(at right 12px top 25%); }
@@ -138,7 +138,7 @@ You can base a circle only on the radius. The outermost point will define this. 
 
 Inset works by creating a rectangular shape. The values work in a familiar fashion: top, right, bottom and left. There is an optional `border-radius` parameter, which can’t be negative. 
 
-```.language-css
+```css
 .inset {
   shape-outside: inset(5% 10% 20% 10% round 6px); }
 ```
@@ -153,7 +153,7 @@ Inset works by creating a rectangular shape. The values work in a familiar fashi
 
 An ellipse is similar to a circle in the sense you set the position to form the shape from the same way. However to get the ellipse shape two points are passed.
 
-```.language-css
+```css
 .ellipse {
   shape-outside: ellipse(25% 50% at right top); }
 ```
@@ -171,7 +171,7 @@ There are two methods for using an image. One isn’t supported, and the other i
 ### Using a URL
 This method is like any image we would use.
 
-```.language-css
+```css
 .image {
   shape-outside: url(path/to/image.png); }
 ```
@@ -179,7 +179,7 @@ This method is like any image we would use.
 ### Using the image src attribute
 The method uses the reference image src attribute. This will add some convenience, **it's not supported currently**.
 
-```.language-css
+```css
 .image {
   shape-outside: attr(src url); }
 ```
@@ -187,7 +187,7 @@ The method uses the reference image src attribute. This will add some convenienc
 ### shape-image-threshold
 When using an image, you can set the threshold to a value between 0 and 1. If you have a threshold of .5, the shape will form around pixels that are more than 50% opaque. As you would expect this leaves us only using png or gif images. From what referencing <a href="http://caniuse.com/#search=shape">caniuse</a> resources gif isn’t supported, yet.
 
-```.language-css
+```css
 .image {
   shape-image: url(path/to/image.png);
   shape-image-threshold: .5; }

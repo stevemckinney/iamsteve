@@ -17,7 +17,7 @@ When designing a website you can have varied text colours depending on the backg
 
 ## Your CSS may look similar to this
 
-```.language-css
+```css
 .panel h1,
 .panel h2,
 .panel p,
@@ -27,7 +27,7 @@ When designing a website you can have varied text colours depending on the backg
 
 This is quite tedious to do when it happens in a few situations and can be frustrating when you want to differ one colour. However a better way I have found to set this up is:
 
-```.language-css
+```css
 body {
   color: #444; }
     

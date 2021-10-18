@@ -20,7 +20,7 @@ When it comes to Wordpress, it's not as straight forward as using `setcookie` in
 ## Using setcookie() in PHP
 `setcookie` takes up to seven parameters, although we will be using four. These are `name`, `value`, `expire` and `path`, in that order.
 
-```.language-php
+```php
 setcookie('full-css', true, time() + (86400 * 28), '/');
 ```
 
@@ -39,7 +39,7 @@ The [`setcookie`](http://php.net/manual/en/function.setcookie.php) documentation
 ## Using the init hook in Wordpress
 To set a cookie it's done by adding a call to the init hook. This allows the cookie to be set at the very earliest point.
 
-```.language-php
+```php
 add_action( 'init', ‘full_css_cookie' );
 
 function full_css_cookie()
@@ -53,7 +53,7 @@ function full_css_cookie()
 ## Checking the cookie exists
 To check whether a cookie exists we must use `isset`. It checks if the cookie is set and isn’t null.
 
-```.language-php
+```php
 <?php if ( isset($_COOKIE['full-css']) ) : ?>
   …
 <?php else : ?>

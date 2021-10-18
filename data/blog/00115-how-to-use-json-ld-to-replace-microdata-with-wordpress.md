@@ -129,7 +129,7 @@ function json_ld_article()
 ## Logo
 The logo is simple, your site URL and logo. You could build upon this with making it user editable.
 
-```.language-php
+```php
 add_action('wp_head', 'json_ld_logo');
 
 function json_ld_logo()
@@ -154,7 +154,7 @@ function json_ld_logo()
 ## Site links search box
 Allow people to search your website directly from Google. This relies on your search form sending it by GET rather than POST. This is a reason I don’t have it on this website, as search is done by POST.
 
-```.language-javascript
+```javascript
 add_action('wp_head', 'json_ld_search');
 
 function json_ld_search()
@@ -184,7 +184,7 @@ function json_ld_search()
 ## Website name
 The website name is particularly handy, as when Google chooses to you can have it shortened. Which is beneficial due to that space being quite limited. Having your company name with the correct capitalisation can make results appear more favourable.
 
-```.language-php
+```php
 add_action('wp_head', 'json_ld_name');
 
 function json_ld_name()
@@ -210,7 +210,7 @@ function json_ld_name()
 ## Social links
 A source for finding all social profiles. `@type` can be Organisation or Person.
 
-```.language-php
+```php
 add_action('wp_head', 'json_ld_social');
 
 function json_ld_social()

@@ -21,7 +21,7 @@ These functions are commonly used during the loop, because with `the_post()` it 
 > Everywhere `the_post_thumbnail()` is mentioned it can equally be replaced with `echo get_the_post_thumbnail()`. It depends on your preferences.
 
 ### Inside the loop
-```.language-php
+```php
 while ( have_posts() ) : the_post();
 
   the_post_thumbnail();
@@ -32,7 +32,7 @@ endwhile;
 ### Inside a custom post type
 Inside a custom post type is very much like the loop, however, we have to call `the_post()` on the `WP_Query` object.
 
-```.language-php
+```php
 $custom_post_type = new WP_Query( array(
   'post_type'      => 'portfolio',
   'post_status'    => 'publish',
@@ -52,7 +52,7 @@ Sometimes you may want to get the image src to use it for an inline style. You h
 > Everywhere `the_post_thumbnail()` is mentioned it can equally be replaced with `echo get_the_post_thumbnail()`. It depends on your preferences.
 
 ### Inside the loop
-```.language-php
+```php
 while ( have_posts() ) : the_post();
 
   the_post_thumbnail_url();
@@ -63,7 +63,7 @@ endwhile;
 ### Inside custom post type
 Very similar, again, we need to make sure we set up the template tags.
 
-```.language-php
+```php
 $custom_post_type = new WP_Query( array(
   'post_type'      => 'portfolio',
   'post_status'    => 'publish',
@@ -81,7 +81,7 @@ endwhile;
 Setting up the post template tags is much more convenient, however, for completeness you can do it without those. However, it does give you access to a few more attributes this way.
 
 ### The loop
-```.language-php
+```php
 while ( have_posts() ) : the_post();
 
   $image = wp_get_attachment_image_src($post_id);
@@ -93,7 +93,7 @@ endwhile;
 ```
 
 ### Custom post type
-```.language-php
+```php
 $custom_post_type = new WP_Query( array(
   'post_type'      => 'portfolio',
   'post_status'    => 'publish',
@@ -114,7 +114,7 @@ endwhile;
 Outside of a loop we don’t have access to `the_post()`. So using `setup_postdata()` is a close equivalent of doing that. Which gives us access to the template tag functions. You won’t need to do this frequently, but it is handy for certain situations.
 
 ### Custom function for use in single posts
-```.language-php
+```php
 function custom_post_thumbnail()
 {
   global $post;
@@ -127,14 +127,14 @@ function custom_post_thumbnail()
 ### Usage
 It can then be used like any other function in your template, in or out of the loop.
 
-```.language-php
+```php
 custom_post_thumbnail();
 ```
 
 You could also add an action to your template.
 
 #### In single.php or another template
-```.language-php
+```php
 do_action('before_single_post_loop');
 
 while ( have_posts() ) : the_post();
@@ -145,7 +145,7 @@ endwhile;
 ```
 
 #### Addition to custom function
-```.language-php
+```php
 function custom_post_thumbnail()
 {
   global $post;

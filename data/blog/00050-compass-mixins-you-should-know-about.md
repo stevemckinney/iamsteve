@@ -22,7 +22,7 @@ The simplest way to clearfix any element that needs it.
 `@include pie-clearfix;`
 
 ### Output
-```.language-scss
+```sass
 &:after {
   content: "";
   display: table;
@@ -34,11 +34,11 @@ The simplest way to clearfix any element that needs it.
 The simplest way to hide text for text replacement. Also has a direction parameter.
 
 ### Usage
-```.language-scss
+```sass
 @include hide-text(left);
 ```
 ### Output
-```.language-css
+```css
 text-indent: -119988px;
 overflow: hidden;
 text-align: left;
@@ -48,17 +48,17 @@ text-align: left;
 Get the width/height of any image passed to it. This is really helpful when you need an element to match the dimensions of the image. It also allows you to freely change the image dimensions, with only needing to recompile.
 
 ### Usage
-```.language-scss
+```sass
 width: image-width("path/to/image");
 ```
 
 ### Output
-```.language-css
+```css
 width: 500px;
 ```
 
 Another excellent usage for these two functions is with a 2x image mixin which was [posted on the 37signals blog](http://37signals.com/svn/posts/3271-easy-retina-ready-images-using-scss "Easy retina images using SCSS")
-```.language-scss
+```sass
 @mixin image-2x($image) {
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
     background-image: url($image);
@@ -72,12 +72,12 @@ The previous mixin and function are a pretty much a combination of the two in th
 Note: if you don't have the correct `images_dir`, and `relative_assets = true` in your config.rb file, you'll probably run into problems.
 
 ### Usage
-```.language-scss
+```sass
 @include replace-text-with-dimensions("image.png");`
 ```
 
 ### Output
-```.language-css
+```css
 text-indent: -119988px;
 overflow: hidden;
 text-align: left;
@@ -92,12 +92,12 @@ height: 400px;
 I usually have a few consistent styles I want across all headings, h1-h6. A convenient way to have `h1, h2, h3, h4, h5, h6` is using `headings()`.
 
 ### Usage
-```.language-scss
+```sass
 #{headings()} {
   font-weight: 700; }
 ```
 ### Output
-```.language-css
+```css
 h1, h2, h3, h5, h6 {
   font-weight: 700; }
 ```
@@ -105,12 +105,12 @@ h1, h2, h3, h5, h6 {
 ## scale-lightness and scale-saturation
 [My last blog post](http://iamsteve.me/blog/entry/using_scale_color_in_sass "Using scale colour in Sass") was about using `scale-color` over `darken` and `lighten` shortly after that I found that Compass offers a simpler usage of the main things I use `scale-color` for.
 ### Usage
-```.language-scss
+```sass
 color: scale-lightness(#f00, 20%);
 ```
 
 ### Output
-```.language-css
+```css
 color: #ff3333
 ```
 

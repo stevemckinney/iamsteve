@@ -40,13 +40,13 @@ View the compiled CSS if you would like to see how the numbers work out.
 ## Briefly on em units
 I use em’s for the majority of this process. You can do much of the heavy lifting by adjusting the font size **only** on the `body`. Once you get your head around em units they can be very useful.
 
-```.language-markup
+```markup
 target / context = result
 ```
 
 When we say target, that’s the **pixel equivalent** we want to achieve. Context is what the font size is in pixels set on the **parent element**. 12px and 16px are what I will be using on the body. However if you have a heading that has a 24px font size, that would be your context.
 
-```.language-markup
+```markup
 24 / 16 = 1.5
 ```
 
@@ -57,7 +57,7 @@ This is possibly my most used function while writing Sass. I’ve covered briefl
 
 I will follow through using this with any examples within the post.
 
-```.language-scss
+```sass
 @function em($target-px, $context: 12px) {
   @return ($target-px / $context) * 1em; }
 ```
@@ -67,7 +67,7 @@ Getting started, one way you can make this easier for yourself, is to set a vert
 
 You can change it to the em equivalent, if you decide to use a later technique.
 
-```.language-css
+```css
 body {
   background-image: linear-gradient(bottom, #eee 5%, rgba(255, 255, 255, 0) 5%);
   background-size: 100% 12px; }
@@ -78,7 +78,7 @@ body {
 ## Using the body to adjust size based on breakpoint
 The first step is to get our base font sizes setup. This is a convenient way of making font size scalable, on a global level. A font size must be set on the body. You can use percentages, pixels or em’s. It doesn’t tend to be too fussy at this point.
 
-```.language-css
+```css
 body {
   font-size: 12px;
   line-height: 1.5;
@@ -147,7 +147,7 @@ If you’re adjusting font size only on the body, you don’t really need to wor
 
 If you do want to retain your original baseline and font sizes, you will need, to adjust all of the properties, that rely on it.   
 
-```.language-scss
+```sass
 h1 {
   font-size: em(30px);
   line-height: 1.2;

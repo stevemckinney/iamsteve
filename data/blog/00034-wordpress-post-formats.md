@@ -18,7 +18,7 @@ I haven't done much Wordpress development as of late, so I was a bit rusty, last
 ## Set it up
 We need to make sure they're set up, you can include as few or as many as you want, I've included all that Wordpress supports:
 
-```.language-php
+```php
 add_theme_support('post-formats', array('aside', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video', 'audio'));
 ```
 
@@ -27,7 +27,7 @@ Place this code in your `functions.php` file. More information about the types c
 ## Using the post formats
 Detecting a post format is simple, we use `has_post_format('the format')` to give what I ended up with this simplified loop:
 
-```.language-php
+```php
 <?php if (have_posts()) : ?>	
   <?php while (have_posts()) : the_post(); 
     if (has_post_format('aside')) {
@@ -77,7 +77,7 @@ I recommend you get the [post formats plugin](https://github.com/crowdfavorite/w
 ## Using the fields from the plugin
 The plugin adds several fields throughout to each format on adding a post. This is where you will need to make your custom loops, it's not entirely obvious to begin with how to use the fields, take a look through each of the <a href="https://github.com/crowdfavorite/wp-post-formats/tree/develop/views" title="Code required for each post format">files</a> in the plugin views folder. If you include the piece of code that looks like `<?php echo esc_attr(get_post_meta($post->ID, '_format_link_url', true)); ?>` from each one into your own files. This will output the content for you. Here is an example of one of mine for a link post:
 
-```.language-markup
+```markup
 <article role="article" class="link">
   <?php include('post_header.php'); ?>
     <div class="entry">

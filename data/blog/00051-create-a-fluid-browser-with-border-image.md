@@ -22,7 +22,7 @@ Using `border-image` take it's ability to divide an image in 9 slices and repeat
 Using `:before` to offset the `border-width` apply our browser to a `div` using `border-image`. The reason we can't just apply the `border-image` directly to the image itself is because we have to define slices of the image. Those slice dimensions are used in the `border-width`. As the border is part of the box the image it contains ends up being undesirably offset, which is expected. I wasn't able to find anything to get around this.
 
 ### The code
-```.language-scss
+```sass
 .browser {
   position: relative;
   width: 50%;
@@ -47,19 +47,19 @@ Using `:before` to offset the `border-width` apply our browser to a `div` using 
 
 To understand this better the 3 lines of code that really make this work are: 
 
-```.language-scss
+```sass
 padding: 2.25em 0 .5625em;
 ```
 
 This offsets our image top and bottom the height of the url and status bar in the browsers design.
 
-```.language-scss
+```sass
 border-width: 2.25em .5em .5625em 5em;
 ```
 
 This is the size of the border corresponding to the size of each slice of the border image.
 
-```.language-scss
+```sass
 border-image: url(http://iamsteve.me/assets/images/browser.png) 72 16 18 160;
 ```
 

@@ -23,7 +23,7 @@ If you’re new to this style of writing CSS, the principle is generally to do o
 
 In the example of font sizing, we’ll end up with CSS which looks somewhat like the following:
 
-```{.language-css.code-tall}
+```css
 .f1 {
   font-size: 36px; }
 
@@ -53,7 +53,7 @@ In the example of font sizing, we’ll end up with CSS which looks somewhat like
 
 You have multiple class names for applying one property across a set of media queries. The class names inside the media queries have a suffix which identifies them eg: `-a`. You may have more font sizes, you may have more breakpoints. The idea is speed, less repetitive writing of the same CSS and more consistency.
 
-```.language-markup
+```markup
 <h1 class="f3 f2-a f1-d">This is my heading</h1>
 <p class="f6 f5-d">This is my paragraph of text, lorem ipsum dolor sit.</p>
 ```
@@ -73,7 +73,7 @@ Depending on the stage you find yourself at, be it the site is built, ready to b
 ### Add your font sizes to variables
 Next, add each of those font sizes to variables. They will be used within the next steps, it also helps keep things reusable.
 
-```.language-scss
+```sass
 $f1: 36px;
 $f2: 30px;
 $f3: 24px;
@@ -87,7 +87,7 @@ The naming of each variable isn’t make or break. For me `f1` through `f6` work
 ### Set up the initial font sizes
 Next, you need to choose a naming convention and write the CSS for your font sizes. These will be used as the lowest breakpoint, or when you don’t need the font size to change across the board.
 
-```.language-scss
+```sass
 .f1 { font-size: $f1; }
 .f2 { font-size: $f2; }
 .f3 { font-size: $f3; }
@@ -99,7 +99,7 @@ Next, you need to choose a naming convention and write the CSS for your font siz
 ### Setting up a breakpoint map
 Now you need to decide how many breakpoints you want each font size to be applied at. I’m using three in the following example, but it’s entirely up to what your design requires.
 
-```.language-sass
+```sass
 $a: 480px;
 $b: 600px;
 $c: 960px;
@@ -107,11 +107,11 @@ $c: 960px;
 
 Define variables for your widths, like your font sizes. And again, naming isn’t hugely important, but I always recommend something short and memorable.
 
-```.language-sass
+```sass
 $breakpoint-map: (
-  ‘a’: $a,
-  ‘b’: $b,
-  ‘c’: $c
+  'a': $a,
+  'b': $b,
+  'c': $c
 );
 ```
 
@@ -120,7 +120,7 @@ The second step is to set up your breakpoint map. You want the keys (eg: `'a'`) 
 ### Looping through the breakpoint map and assigning font sizes
 The next step is where Sass does all the work for you and you will see the benefits of how quickly it can be adjusted.
 
-```.language-scss
+```sass
 // Loop through the breakpoint map, assign each breakpoint to the relevant variable
 // eg: $breakpoint-name = 'b' and $breakpoint-width = 480px
 @each $breakpoint-name, $breakpoint-width in $breakpoint-map {
@@ -151,7 +151,7 @@ The main benefit of font size locks is having proportional font sizes no matter 
 ### A smart *calc()*ulation
 The linked article does a far better job of explaining the intricacies than I’m able to. Essentially you use `calc()` to have a minimum and maximum font size between two minimum and maximum screen widths.
 
-```.language-css
+```css
 // overview
 calc( min-font-size + ( ( max-font-size - min-font-size ) * ( 100vw - min-screen-width ) / ( max-screen-width - min-screen-width) ) )
 
@@ -164,7 +164,7 @@ I wouldn’t worry about understanding this too much, as the next step is to mak
 ### Put it all in a Sass function
 To save remembering whether part of the calculation should or shouldn’t be a pixel value, you bundle it all together into a Sass function instead.
 
-```.language-scss
+```sass
 @function font-size-lock(
   $min-font-size,
   $max-font-size,
@@ -176,7 +176,7 @@ To save remembering whether part of the calculation should or shouldn’t be a p
 
 There is also the use of a `strip-unit()` function because of the variables you set earlier. They can be used without breaking the calculations.
 
-```.language-scss
+```sass
 @function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
     @return $number / ($number * 0 + 1); }
@@ -187,7 +187,7 @@ There is also the use of a `strip-unit()` function because of the variables you 
 ### Usage
 Drop those functions into your current setup and you’re good to go.
 
-```.language-scss
+```sass
 .f1-l {
   font-size: font-size-lock($f3, $f1, 480px, 1200px); }
 ```
@@ -195,7 +195,7 @@ Drop those functions into your current setup and you’re good to go.
 ### Set a restriction once you go beyond min/max screen size
 Beyond the screen sizes specified, you’ll find the font size will still increase and decrease. So to counter that you need to add a couple of media queries.
 
-```.language-scss
+```sass
 // $f1: 36px;
 // $f3: 24px;
 

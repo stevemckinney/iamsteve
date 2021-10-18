@@ -69,7 +69,7 @@ When it comes to font sizing, **you can use line height and margins, to correct 
 
 I’ve be picked 16px as the font size for body copy. However, to align correctly to the baseline, you need to make up the additional 8px. By having a 24px line height this means it will align to the baseline every other line. Falling nicely on even numbers, to give your base measurements.
 
-```.language-css
+```css
 body {
   font-size: 16px;
   line-height: 24px; }
@@ -78,7 +78,7 @@ body {
 ### Pick a unitless line height
 However I recommend that you **use a unitless value of 1.5** which is essentially `16 × 1.5`. I use 1.5 as it tends to be the most comfortable for a [55-75 character line length](http://iamsteve.me/blog/entry/type-scale-line-height-lengths).
 
-```.language-css
+```css
 body {
   font-size: 16px;
   line-height: 1.5; }
@@ -89,7 +89,7 @@ If you were to use a number like 18px, it’s logical, this falls between 12px a
 
 You could adjust the line height, however, the solution is in the margin we use. Setting a bottom margin to  be enough to add up to the next multiple of our baseline, which is 36px.
 
-```.language-css
+```css
 body {
   font-size: 18px;
   line-height: 1.5; }
@@ -140,7 +140,7 @@ Once we reach a viewport less than 680px we adjust the content. I choose 680px, 
 
 This makes our image 320px in height, which falls within our baseline. At another stage you can adjust things again at around 520px, then adjust the content width to 320px.
 
-```.language-scss
+```sass
 .main-content {
   width: 640px;
 
@@ -154,7 +154,7 @@ This makes our image 320px in height, which falls within our baseline. At anothe
 #### Calculating the image height
 It requires a couple of calculations to find the right image height. You need to know the aspect ratio of the image and divide that by the content width you want.
 
-```.language-markup
+```markup
 image width / image height = aspect ratio
 content-width / aspect ratio = image height
 ```

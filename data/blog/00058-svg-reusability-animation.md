@@ -20,7 +20,7 @@ The great thing about SVG is CSS can modify it. Which allows you to modify the w
 ## Replacing icon fonts and png sprites with SVG
 The main way I would do this is I created an SVG file to contain all of my paths (paths have been excluded for conciseness).
 
-```.language-markup
+```markup
 <svg style="display:none">
   <symbol id="icon-inspiration" viewBox="0 0 12 32">
     <path class="fill-grey" d="…"/>
@@ -46,7 +46,7 @@ This is to make sure it displays correctly. You don’t have use the `viewBox` i
 ## `<use>` your SVG
 Using your SVG sprite in HTML is simple, just add a new SVG element. Except inside this you use the `<use>` element to reference the `id` you gave to your symbols.
 
-```.language-markup
+```markup
 <svg class="icon">
   <use xlink:href="#icon-inspiration"></use>
 </svg>
@@ -57,7 +57,7 @@ Using your SVG sprite in HTML is simple, just add a new SVG element. Except insi
 ## Filling your SVG with CSS
 However we can keep the fills in a more maintainable state by using the class names we applied earlier.
 
-```.language-css
+```css
 .fill-grey {
   fill: grey; }
 ```
@@ -67,7 +67,7 @@ This highlights the limitations of the `<use>` tag. It’s great for reusability
 
 For a simpler use case like one colour icons, taking the SVG we created earlier with a class on each path. Replace the class with `fill="currentcolor"`. This gets around not being able to change the fill in CSS. As a result our CSS must be on the SVG element itself rather than the path.
 
-```.language-css
+```css
 .icon {
   color: grey; }
 
@@ -87,7 +87,7 @@ The aim was to transition from a blank face chart to a filled in face chart. Thi
 One of the things I needed to fill in was the eyebrows. They start off as an outline and finish at a fill with no outline.
 
 #### A concise version of the eyebrow paths
-```.language-css
+```css
 <path id="brow_right" class="brow" fill="transparent" stroke="#4C4B5A" stroke-opacity=".2" d="…"/>
 <path id="brow_left" class="brow" fill="transparent" stroke="#4C4B5A" stroke-opacity=".2" d="…"/>
 ```
@@ -95,7 +95,7 @@ One of the things I needed to fill in was the eyebrows. They start off as an out
 #### The CSS required for animating
 With the CSS we change the stroke to be transparent and fill in the eyebrows with a solid colour.
 
-```.language-css
+```css
     @keyframes brow {
         to {
             fill: #726A62;

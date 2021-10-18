@@ -27,7 +27,7 @@ With touch based devices, as far as I'm aware they don't display scroll bars by 
 ## HTML
 The basis for the HTML is your items need a container, as to which we apply the CSS to stop the elements from breaking into new rows. The contents of your items isn’t a problem.
 
-```.language-html
+```markup
 <div class=“scroll”>
     <a href=“#” class=“item”>Item</a>
   …
@@ -37,7 +37,7 @@ The basis for the HTML is your items need a container, as to which we apply the 
 ## CSS required for scroll region
 The basis for the overall CSS is everything we would need to make the navigation scrollable without JavaScript. You gain the benefit of not having to wait for JavaScript to finish loading. It helps our perceived performance by avoiding the jumpy flash of unstyled content, during the initialisation of JavaScript.
 
-```.language-css
+```css
 .scroll {
   white-space: nowrap;
   overflow-x: scroll;
@@ -91,14 +91,14 @@ Flickity has some default CSS needed to make things work well. [It's available f
 ## JavaScript: add flickity
 To start, you need include flickity in your code, or build process. You can [download it from the website](http://flickity.metafizzy.co/).
 
-```.language-markup
+```markup
 <script src="path/to/flickity.js"></script>
 ```
 
 ## JavaScript: flickity options
 There are quite a few options we need to change to get flickity to behave the way we want. In the flickity set up it recommends using adding `js-flickity` class to your element. That's fine if you want to use data attribute options. **If you add it and change the options within JavaScript things may not work**, from my experiences.
 
-```.language-javascript
+```javascript
 var scroll = document.querySelector('.scroll');
 var flickity = new Flickity( scroll, {
   cellAlign: 'left',
@@ -115,7 +115,7 @@ If you'd like to exclude it for touch devices, it is possible. The reason you wo
 ### With Modernizr
 It’s easiest with Modernizr; I would recommend using a trimmed down version to get the touch support. As it ends up being a small amount of JavaScript. 
 
-```.language-javascript
+```javascript
 // Could also be an older version of modernizr so replace with Modernizr.touch
 if(!Modernizr.touchevents)
 {
@@ -126,7 +126,7 @@ if(!Modernizr.touchevents)
 ### Without Modernizr
 It’s a little trickier, but it does save you having to get Modernizr. I used [this topic as a reference](http://stackoverflow.com/questions/4817029/whats-the-best-way-to-detect-a-touch-screen-device-using-javascript/4819886#4819886).
 
-```.language-javascript
+```javascript
 function is_touch_device()
 {
   // Checks for existence in all browsers and IE 10/11 & Surface
@@ -136,7 +136,7 @@ function is_touch_device()
 
 First we need a way to detect if touch is available. Using [the updated solution in the reference topic](http://stackoverflow.com/questions/4817029/whats-the-best-way-to-detect-a-touch-screen-device-using-javascript/4819886#4819886). Adding this small function, it checks for the existence of a touch event. The condition after the `||` allows us to include IE 10/11 & Surface as touch devices.
 
-```.language-javascript
+```javascript
 if(!is_touch_device())
 {
   // Initialise flickity here
@@ -165,7 +165,7 @@ There are a couple of things to account for. Flickity uses absolute positioning 
 
 #### Original example JavaScript
 
-```.language-javascript
+```javascript
 // Select initial elements
 var all = document.getElementById('show-all');
 var items = document.getElementById('items');
@@ -190,7 +190,7 @@ Similarly to before, we need to initialise flickity. However this time, as we ne
 
 The `isFlickity` variable is for changing value based on the state of flickity. When true flickity is enabled, when false it is disabled.
 
-```.language-javascript
+```javascript
 if (!is_touch_device())
 {
   var options = {
@@ -208,7 +208,7 @@ if (!is_touch_device())
 #### Additions to the click event
 Next is to modify the click event. We add a conditional that checks `isFlickity` is true to destroy it, otherwise initialise. Just below that conditional is redefining `isFlickity` to the opposite of what it is currently. 
 
-```.language-javascript
+```javascript
 all.addEventListener('click', function() {
   this.classList.toggle('active');
   items.classList.toggle('items-columns');
@@ -268,7 +268,7 @@ all.addEventListener('click', function() {
 #### CSS
 You're now going to add to the CSS from earlier. It only requires a few extra lines to make the content work with flickity.
 
-```.language-css
+```css
 .flickity-enabled.items {
   display: block;
   margin: 0 -24px; }

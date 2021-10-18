@@ -1,31 +1,27 @@
 ---
-title: "Search overlay with smooth reveal animation"
-date: "2017-08-16T12:15:00+00:00"
-lastmod: "2019-10-04T07:23:53+00:00"
-summary: "An in depth tutorial to add buttery smooth animations to reveal your website search."
-metadesc: How to design and code a search overlay with a smooth reveal effect using CSS transitions and JavaScript."
-theme: "#f7fbfb"
-tags: ["Design", "Code"]
+title: "Visual design tips you can apply immediately"
+date: "2017-07-04T11:51:00+00:00"
+lastmod: "2019-10-04T07:24:49+00:00"
+summary: "Add a little extra polish to any of your designs with these tips."
+metadesc: When designing there are things you can rely upon regardless of the situation. These are things which add extra polish, and are generally hidden to the untrained eye."
+theme: "#fff7e0"
+tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/search-reveal-featured-image%402x.png"]
-large: "https://iamsteve.me/uploads/blog/search-reveal-featured-image%402x.png"
-medium: "https://iamsteve.me/uploads/blog/search-reveal-featured-image-medium%402x.png"
+images: ["https://iamsteve.me/uploads/blog/visual-design-tips-featured-image.png"]
+large: "https://iamsteve.me/uploads/blog/visual-design-tips-featured-image.png"
+medium: "https://iamsteve.me/uploads/blog/visual-design-tips-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
-id: 165
-slug: "search-overlay-with-smooth-reveal-animation"
+id: 164
+slug: "visual-design-tips-you-can-apply-immediately"
 ---
-
 When designing there are techniques for applying colour, typography, spacing, you can rely upon regardless of the situation. These are things which add extra polish, and are generally hidden to the untrained eye.
 
 ## 1. Shadows respect their surroundings
 One of the most common issues with shadows I see is they don't respect the background they are on.
 
 <figure>
-<img data-src="/static/images/blog/visual-design-tips-shadow-example.png" data-srcset="/static/images/blog/visual-design-tips-shadow-example.png 832w, /static/images/blog/visual-design-tips-shadow-example@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-shadow-example.png" srcset="/static/images/blog/visual-design-tips-shadow-example.png 832w, /static/images/blog/visual-design-tips-shadow-example@2x.png 1664w">
-</noscript>
+<Image src="/static/images/blog/visual-design-tips-shadow-example@2x.png" width={738} height={492} />
 <figcaption>
 The ‘bad’ shadow uses 20% opacity black. The ‘good’ shadow uses #DBA758 at 60% opacity.
 </figcaption>
@@ -39,10 +35,7 @@ This is true of how real shadows behave, they're the absence of light. So while 
 Alternatively, you may find a blend mode more accurate. Using a black shadow with an overlay or soft light blending mode can be equally effective.
 
 <figure>
-<img data-src="/static/images/blog/visual-design-tips-shadow-example-blend-mode.png" data-srcset="/static/images/blog/visual-design-tips-shadow-example-blend-mode.png 832w, /static/images/blog/visual-design-tips-shadow-example-blend-mode@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-shadow-example-blend-mode.png" srcset="/static/images/blog/visual-design-tips-shadow-example-blend-mode.png 832w, /static/images/blog/visual-design-tips-shadow-example-blend-mode@2x.png 1664w">
-</noscript>
+<Image src="/static/images/blog/visual-design-tips-shadow-example-blend-mode@2x.png" width={738} height={492} />
 <figcaption>
 Shadow ‘A’ is a softened shadow using an overlay blend mode. Shadow ‘B’ isn’t softened to demonstrate the colour.
 </figcaption>
@@ -53,12 +46,7 @@ In the example image, the shadows both use black with an overlay blending mode. 
 ## 2. Your shadows shouldn't look like a ‘glow’
 On to another shadow tip, which can be tricky to control, is when the shadow makes the object look like it’s glowing. It commonly happens with dark objects on a light background.
 
-<div>
-<img data-src="/static/images/blog/visual-design-tips-shadow-glow.png" data-srcset="/static/images/blog/visual-design-tips-shadow-glow.png 832w, /static/images/blog/visual-design-tips-shadow-glow@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-shadow-glow.png" srcset="/static/images/blog/visual-design-tips-shadow-glow.png 832w, /static/images/blog/visual-design-tips-shadow-glow@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-shadow-glow@2x.png" width={738} height={492} />
 
 It can take a bit of tweaking but you need two shadows, both of the same colour. You should keep your original shadow, but reduce the opacity and increase the Y axis slightly. **The idea is this shadow should be subtle**.
 
@@ -67,33 +55,18 @@ Next, duplicate the layer to add a second shadow. This shadow is 0 x axis, 1px y
 ## 3. Gradients should feel harmonious
 When you want a light to dark transition of colour in a gradient, usually you'll take your base colour and make it darker. That's fine, but sometimes it can feel off. Why? You may wonder.
 
-<div>
-<img data-src="/static/images/blog/visual-design-tips-gradient-example.png" data-srcset="/static/images/blog/visual-design-tips-gradient-example.png 832w, /static/images/blog/visual-design-tips-gradient-example@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-gradient-example.png" srcset="/static/images/blog/visual-design-tips-gradient-example.png 832w, /static/images/blog/visual-design-tips-gradient-example@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-gradient-example@2x.png" width={738} height={492} />
 
 This is similar to the earlier shadow tip. A gradient applied to an object is adding depth. So similar rules apply, when darkening a colour, don’t only add black. 
 
-<div>
-<img data-src="/static/images/blog/visual-design-tips-gradient-example-colours.png" data-srcset="/static/images/blog/visual-design-tips-gradient-example-colours.png 832w, /static/images/blog/visual-design-tips-gradient-example-colours@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-gradient-example-colours.png" srcset="/static/images/blog/visual-design-tips-gradient-example-colours.png 832w, /static/images/blog/visual-design-tips-gradient-example-colours@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-gradient-example-colours@2x.png" width={738} height={492} />
 
 In the image you can see a breakdown of the colours used. Comparing the examples the differences are more apparent. The good example uses a more saturated red.
 
 ### Use a different hue
 Saturation doesn’t work as well for some colours, in those instances it can work to adjust the hue. Here are a couple of examples using hue adjustment only.
 
-<div>
-<img data-src="/static/images/blog/visual-design-tips-gradient-example-2.png" data-srcset="/static/images/blog/visual-design-tips-gradient-example-2.png 832w, /static/images/blog/visual-design-tips-gradient-example-2@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-gradient-example-2.png" srcset="/static/images/blog/visual-design-tips-gradient-example-2.png 832w, /static/images/blog/visual-design-tips-gradient-example-2@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-gradient-example-2@2x.png" width={738} height={492} />
 
 By adjusting the colour on the hue of the colour, by around 10–20 degrees you perceive the colour as being darker.
 
@@ -101,31 +74,16 @@ By adjusting the colour on the hue of the colour, by around 10–20 degrees you 
 It’s not supported in many apps (aside from InDesign) and CSS (yet). However, it’s an important consideration for improving your reading experience.
 
 ### Bulleted lists
-<div>
-<img data-src="/static/images/blog/visual-design-tips-hanging-bullets.png" data-srcset="/static/images/blog/visual-design-tips-hanging-bullets.png 832w, /static/images/blog/visual-design-tips-hanging-bullets@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-hanging-bullets.png" srcset="/static/images/blog/visual-design-tips-hanging-bullets.png 832w, /static/images/blog/visual-design-tips-hanging-bullets@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-hanging-bullets@2x.png" width={738} height={492} />
 
 When you indent your bullets at the first level you remove the left edge of the content. Your reader will have to adjust to the bullet points then again. It’s important to keep the left side consistent for the best reading experience.
 
 ### Quotes
-<div>
-<img data-src="/static/images/blog/visual-design-tips-hanging-quotes.png" data-srcset="/static/images/blog/visual-design-tips-hanging-quotes.png 832w, /static/images/blog/visual-design-tips-hanging-quotes@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-hanging-quotes.png" srcset="/static/images/blog/visual-design-tips-hanging-quotes.png 832w, /static/images/blog/visual-design-tips-hanging-quotes@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-hanging-quotes@2x.png" width={738} height={492} />
 
 The same applies to pull quotes, as seen in the image. If you’ve ever felt like your text feels off with quotes, this is why. It’s a subtle improvement.
 
-<div>
-<img src="/static/images/blog/visual-design-tips-hanging-website.png" srcset="/static/images/blog/visual-design-tips-hanging-website.png 832w, /static/images/blog/visual-design-tips-hanging-website@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-hanging-website.png" srcset="/static/images/blog/visual-design-tips-hanging-website.png 832w, /static/images/blog/visual-design-tips-hanging-website@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-hanging-website@2x.png" width={738} height={492} />
 
 Of course your style may vary, and you may apply something more stylistic, as shown in the example for the design of this website. 
 
@@ -137,12 +95,7 @@ Typically this is 55-75 characters, it depends on the typeface you use but this 
 ## 6. Balance titles & avoid widows/orphans
 To avoid widows and orphans this means when you have a paragraph or title you avoid short lines of text. In the instance of titles it would be to avoid a single word. It can be difficult to control on a website, but being aware of it helps.
 
-<div>
-<img src="/static/images/blog/visual-design-tips-balance-titles.png" srcset="/static/images/blog/visual-design-tips-balance-titles.png 832w, /static/images/blog/visual-design-tips-balance-titles@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-balance-titles.png" srcset="/static/images/blog/visual-design-tips-balance-titles.png 832w, /static/images/blog/visual-design-tips-balance-titles@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-balance-titles@2x.png" width={738} height={492} />
 
 It’s considered bad in terms of typography, because it looks like there is excess white space. Excess whitespace can interrupt the flow of reading and balance of a particular area of your design. 
 
@@ -151,19 +104,14 @@ When making a website there are a lot of variables to control this (eg: responsi
 
 The title in the example would look like the following:
 
-```.language-markup
+```markup
 Illustrator quick tip: non destructive shape&nbsp;editing
 ```
 
 ## 7. Keep spacing consistent with using multiples
 This is something I'm passionate about, using one multiple as a basis for all spacing. For example, using multiples of 8, this is a good number to use as it will divide/multiply and never hit a decimal placed number.
 
-<div>
-<img src="/static/images/blog/visual-design-tips-consistent-spacing.png" srcset="/static/images/blog/visual-design-tips-consistent-spacing.png 832w, /static/images/blog/visual-design-tips-consistent-spacing@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-consistent-spacing.png" srcset="/static/images/blog/visual-design-tips-consistent-spacing.png 832w, /static/images/blog/visual-design-tips-consistent-spacing@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-consistent-spacing@2x.png" width={738} height={492} />
 
 There are a few good reasons you should be:
 
@@ -181,10 +129,7 @@ A subtle but important aspect of design is ensuring your design  assets remain s
 This is quite the topic in itself, but pixel fitting your icons and logos is an important skill to acquire. It’s essentially hinting them to make sure they appear sharp and retain their original clarity.
 
 <figure>
-<img src="/static/images/blog/visual-design-tips-pixel-fitting.png" srcset="/static/images/blog/visual-design-tips-pixel-fitting.png 832w, /static/images/blog/visual-design-tips-pixel-fitting@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-pixel-fitting.png" srcset="/static/images/blog/visual-design-tips-pixel-fitting.png 832w, /static/images/blog/visual-design-tips-pixel-fitting@2x.png 1664w">
-</noscript>
+<Image src="/static/images/blog/visual-design-tips-pixel-fitting@2x.png" width={738} height={492} />
 <figcaption>Notebook icon from SS Standard</figcaption>
 </figure>
 
@@ -194,10 +139,7 @@ You don’t see it in vector applications, but when you export and view it on sc
 
 ### Making things pixel fitted
 <figure>
-<img src="/static/images/blog/visual-design-tips-pixel-fitting-transform.png" srcset="/static/images/blog/visual-design-tips-pixel-fitting-transform.png 832w, /static/images/blog/visual-design-tips-pixel-fitting-transform@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-pixel-fitting-transform.png" srcset="/static/images/blog/visual-design-tips-pixel-fitting-transform.png 832w, /static/images/blog/visual-design-tips-pixel-fitting-transform@2x.png 1664w">
-</noscript>
+<Image src="/static/images/blog/visual-design-tips-pixel-fitting-transform@2x.png" width={738} height={492} />
 <figcaption>Open the transform panel by going to Window > Transform</figcaption>
 </figure>
 
@@ -213,7 +155,7 @@ Like picking a consistent value to base spacing off; having a type scale is impo
 I pick a scale that has the smaller font sizes you need and shows a clear difference with the larger sizes. As you need a variety at small sizes but more differentiation.
 
 <figure>
-<img src="/static/images/blog/visual-design-tips-type-scale.png" srcset="/static/images/blog/visual-design-tips-type-scale.png 832w, /static/images/blog/visual-design-tips-type-scale@2x.png 1664w">
+<Image src="/static/images/blog/visual-design-tips-type-scale@2x.png" width={738} height={492} />
 <figcaption>Personally, I find a type scale of 1.125 to be ideal.</figcaption>
 </figure>
 
@@ -225,12 +167,7 @@ I recommend using this website to help determine your type scale. You can add mu
 ## 10. Use the correct quotes
 A simple one but using the correct quotes can make things look more elegant aside from being typographically correct. They vary in their look between typefaces, it could even be a factor in why you use that particular typeface.
 
-<div>
-<img src="/static/images/blog/visual-design-tips-curly-quotes.png" srcset="/static/images/blog/visual-design-tips-curly-quotes.png 832w, /static/images/blog/visual-design-tips-curly-quotes@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-curly-quotes.png" srcset="/static/images/blog/visual-design-tips-curly-quotes.png 832w, /static/images/blog/visual-design-tips-curly-quotes@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-curly-quotes@2x.png" width={738} height={492} />
 
 Straight quotes have very few if any uses outside of code. Some applications will automatically convert to them for you like Illustrator, Photoshop and some other text editors like iA Writer. 
 
@@ -248,34 +185,19 @@ It’s not broken, sometimes align tools don’t work in certain areas. The easi
 ### The play icon
 This particular icon is the most common example used when demonstrating optical alignment. As it’s really clear what the issue is.
 
-<div>
-<img src="/static/images/blog/visual-design-tips-optical-play.png" srcset="/static/images/blog/visual-design-tips-optical-play.png 832w, /static/images/blog/visual-design-tips-optical-play@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-optical-play.png" srcset="/static/images/blog/visual-design-tips-optical-play.png 832w, /static/images/blog/visual-design-tips-optical-play@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-optical-play@2x.png" width={738} height={492} />
 
 ### Optical alignment comes in many forms
 I’m only covering this topic briefly, but it applies to typography too. Being aware of when something is mathematically correct, but feels off from an optical view, will allow you to make the subtle tweaks needed.
 
-<div>
-<img src="/static/images/blog/visual-design-tips-optical-more.png" srcset="/static/images/blog/visual-design-tips-optical-more.png 832w, /static/images/blog/visual-design-tips-optical-more@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-optical-more.png" srcset="/static/images/blog/visual-design-tips-optical-more.png 832w, /static/images/blog/visual-design-tips-optical-more@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-optical-more@2x.png" width={738} height={492} />
 
 It’s a subtle, but noticeable difference, to the way things appear when aligned.
 
 ## 12. Make sure your nested corner radius account for the outer radius
 When you have two rounded rectangles nested within each other you need the corner/border radius to feel consistent.
 
-<div>
-<img src="/static/images/blog/visual-design-tips-nested-radius.png" srcset="/static/images/blog/visual-design-tips-nested-radius.png 832w, /static/images/blog/visual-design-tips-nested-radius@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/visual-design-tips-nested-radius.png" srcset="/static/images/blog/visual-design-tips-nested-radius.png 832w, /static/images/blog/visual-design-tips-nested-radius@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/visual-design-tips-nested-radius@2x.png" width={738} height={492} />
 
 There is a fairly simple calculation for this, the `outer radius - the space between = inner radius`. In the example above this would be `40px - 28px = 12px`. There’s [a handy tool to help you calculate this](http://joshnh.com/tools/get-your-nested-border-radii-right.html).
 

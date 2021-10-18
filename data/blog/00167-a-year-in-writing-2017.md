@@ -78,12 +78,7 @@ Over the course of the year I’d made some bigger changes but many small improv
 - Critical CSS
 - Lazy loading images
 
-<div class="article-image">
-<img data-src="/static/images/blog/homepage-change.png" data-srcset="/static/images/blog/homepage-change.jpg 832w, /static/images/blog/homepage-change@2x.png 1664w" class="lazyload wide-image">
-<noscript>
-<img src="/static/images/blog/homepage-change.png" srcset="/static/images/blog/homepage-change.jpg 832w, /static/images/blog/homepage-change@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/homepage-change@2x.png" width={738} height={492} />
 
 There’s quite a change between these two homepages. It seems people resonated more with the full width hero area in terms of design. 
 
@@ -139,12 +134,7 @@ It’s nice to see some of the newer articles I have wrote move into this list i
 
 ### Summary of the year
 <figure>
-<div class="article-image">
-<img data-src="/static/images/blog/summary-2017.png" data-srcset="/static/images/blog/summary-2017.jpg 832w, /static/images/blog/summary-2017@2x.png 1664w" class="lazyload">
-<noscript>
-<img src="/static/images/blog/summary-2017.png" srcset="/static/images/blog/summary-2017.jpg 832w, /static/images/blog/summary-2017@2x.png 1664w">
-</noscript>
-</div>
+<Image src="/static/images/blog/summary-2017@2x.png" width={738} height={492} />
 <figcaption>Sessions: 131.2k, users: 103.8k, page views: 263.9k, pages per session: 2.01, avg. session: 1m 17s.</figcaption>
 </figure>
 

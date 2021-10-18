@@ -21,28 +21,28 @@ In this post I want to reassure you and guide you through the process. Answering
 Navigate to your current website config file. I do this through ssh, it should be be pretty much identical to this for you. You can also do it through FTP.
 
 ### Navigate to your sites-available folder
-```.language-bash
+```bash
 cd /etc/nginx/sites-available
 ```
 
 ### Make a backup
 It’s important to make a backup of your current config should something go wrong. You can either copy the contents and paste it into another file on your computer or use the `cp` command on your server.
 
-```.language-bash
+```bash
 cp mysite.com mysite-backup.com
 ```
 
 > This could be named ‘default’ it depends on how you setup your server originally.
 
 ### Edit your site config file
-```.language-bash
+```bash
 sudo nano mysite.com
 ```
 
 ## Find the server block containing your domain
 Your current setup should look similar to the following.
 
-```.language-bash
+```bash
 server {
   # don’t forget to tell on which port this server listens
   listen [::]:80;
@@ -59,7 +59,7 @@ server {
 ### Now to update it
 Your current `server_name` may be listening for only one domain, the www version. Which is then redirected to the non-www version. To get this to redirect to your new domain, you need to add your old domain, both www, and non-www, to the server name. As well as the www version of your new domain.
 
-```.language-bash
+```bash
 server {
   # don’t forget to tell on which port this server listens
   listen [::]:80;
@@ -80,7 +80,7 @@ Update any other instances of `server_name` throughout your config file that you
 ## Reload nginx
 Finally you need to [reload](http://askubuntu.com/questions/105200/what-is-the-difference-between-service-restart-and-service-reload) nginx.
 
-```.language-bash
+```bash
 sudo service nginx reload
 ```
 ## Test

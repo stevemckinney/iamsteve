@@ -30,7 +30,7 @@ Each customiser field, can require use of 3 methods. Two being required, the oth
 
 To begin to start customising, you need to gain access to the `$wp_customize` object. By creating a function, that is then passed to `customize_register` hook.
 
-```.language-php
+```php
 function iamsteve_customizer( $wp_customize )
 {
   // The rest of your code here
@@ -45,7 +45,7 @@ Then to use each of the customiser methods you must pass them to the `$wp_custom
 ### Section `$wp_customize->add_section( $id, $args )`
 Sections are optional, although recommended, because it will allow you to organise the customiser panel better.
 
-```.language-php
+```php
 $wp_customize->add_section( 'about', array(
   'title' => __('About', 'iamsteve'),
   'priority' => 1,
@@ -59,7 +59,7 @@ The array of arguments you can set a title, priority and optional description. P
 Controls are what get added to the customiser panel to interact with. Here you make the decision, as to what the control will be, eg: text, image, etc. As this post is sticking to text and image, refer to [WP_Customize_Control documentation](https://codex.wordpress.org/Class_Reference/WP_Customize_Control) for more types.
 
 #### Text control
-```.language-php
+```php
 $wp_customize->add_control( 'about_title', array(
   'label'    => __( 'Title', 'iamsteve' ),
   'section'  => 'about',
@@ -69,7 +69,7 @@ $wp_customize->add_control( 'about_title', array(
 ```
 
 #### Image control
-```.language-php
+```php
 $wp_customize->add_control(
   new WP_Customize_Image_Control(
     $wp_customize,
@@ -89,7 +89,7 @@ In the case of an image you will need to use `WP_Customize_Image_Control` class.
 ### Setting `$wp_customize->add_setting( $id, $args )`
 Settings are what save the data in the database. Each setting needs an ID which matches up to the control. In the case of your `about_title` it would need to match this. Settings also allow you to decide how the setting will behave when edited in the customiser panel, with the `transport` argument.
 
-```.language-php
+```php
 $wp_customize->add_setting( 'about_title', array(
   'default' => __('About', 'iamsteve'),
   'transport' => 'postMessage'
@@ -101,7 +101,7 @@ While there are [other parameters](https://codex.wordpress.org/Class_Reference/W
 #### Sanitising data
 Really the only field type we need to sanitise in our setup is the textarea. It’s something to be aware of, that you may need to do this. Using the textarea, for our description, the code would be:
 
-```.language-php
+```php
 $wp_customize->add_setting( 'about_title', array(
   'default' => __('About', 'iamsteve'),
   'transport' => 'postMessage',
@@ -109,7 +109,7 @@ $wp_customize->add_setting( 'about_title', array(
 ));
 ```
 
-```.language-php
+```php
 function customizer_textarea_sanitizer( $text )
 {
   return esc_textarea( $text );
@@ -124,7 +124,7 @@ The part that makes the customiser really shine, we get to see the values update
 #### Create your Javascript file and enqueue
 You may be familiar with how to enqueue Javascript files within Wordpress and this is very similar. Just it uses a different hook. So make a `customizer.js` file and enqueue it with the following code.
 
-```.language-php
+```php
 function customize_preview_js()
 {
   wp_enqueue_script( 'iamsteve_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '1.0', true );
@@ -135,7 +135,7 @@ add_action( 'customize_preview_init', 'customize_preview_js' );
 #### Update text
 There is a good consistency between the Javascript and PHP sides. You pass the ID and a callback function to the wp.customize function. Inside the function we use jQuery to replace the text.
 
-```.language-javascript
+```javascript
 wp.customize( 'about_title', function( value ) {
   value.bind( function( to ) {
     $( '.about-title' ).text( to );
@@ -146,7 +146,7 @@ wp.customize( 'about_title', function( value ) {
 #### Update image
 Updating an image is fairly similar. First you need to check if the image no longer exists. Which covers when you first remove it, to add a new one. Then you show it and update the `src`.
 
-```.language-javascript
+```javascript
 wp.customize( 'about_image', function( value ) {
   value.bind( function( to ) {
     if( to == '' )
@@ -165,14 +165,14 @@ wp.customize( 'about_image', function( value ) {
 ## Adding the template code
 Adding the code to your template is a matter of using `get_theme_mod()`. Which takes two parameters, name and default. Defaults are handy, although if you set a default in your `add_settings()` arguments, this isn’t necessary.
 
-```.language-php
+```php
 echo get_theme_mod('about_title');
 ```
 
 ### Full usage for our about section
 Each type of customiser field, doesn’t require much else outside of using `get_theme_mod()`. Aside from our description, we can use `wpautop()` to add paragraphs.
 
-```.language-php
+```php
 <h1 class=“about-title”><?php echo get_theme_mod( 'about_title' ); ?></h1>
 <img src=“<?php echo get_theme_mod( 'about_image' ); ?>”>
 <div class=“about-description”>
@@ -184,7 +184,7 @@ Each type of customiser field, doesn’t require much else outside of using `get
 From here below I’ve put all the code we will need for completing the your customiser about section.
 
 ### PHP (customizer.php)
-```.language-php
+```php
 function customizer_textarea_sanitizer( $text )
 {
   return esc_textarea( $text );
@@ -277,7 +277,7 @@ add_action( 'customize_register', 'iamsteve_customizer' );
 ```
 
 ### Template code
-```.language-php
+```php
 echo '<h1>' . get_theme_mod( 'about_title' ) . '</h1>';
 echo '<img src=" . get_theme_mod('about_image') . '">';
 echo '<div class="styling-hook">';

@@ -20,7 +20,7 @@ I’m going share with you over the course of this post how to get them set up. 
 ## Introducing the code we’ll be using
 All meta boxes are built with `add_meta_box`, which takes 6 parameters. The approach we will be using will build upon this to add them in a more efficient and customisable manner.
 
-```.language-php
+```php
 add_meta_box( $id, $title, $callback, $screen, $context, $priority, $callback_args );
 ```
 
@@ -213,7 +213,7 @@ The final hooks add your custom CSS, found inside the ‘style’ function. You 
 ## Moving the meta box under the title
 Utilising the ‘advanced’ context, the following code will place them the title. I think this is a good way to utilise the advanced context. You can add this with the rest of your meta box code.
 
-```.language-php
+```php
 add_action('edit_form_after_title', 'advanced_meta_boxes_under_title');
 
 function advanced_meta_boxes_under_title()
@@ -234,7 +234,7 @@ To use the custom fields within your theme, you use the `get_post_meta` function
 - The field key, in our case this would be the field ID in the array `_iamsteve_meta_role`
 - The single parameter, which if set to true will return a single result. Otherwise it will return an array.
 
-```.language-php
+```php
 $role = get_post_meta( get_the_ID(), '_iamsteve_meta_role', true );
 
 if (have_posts()) :

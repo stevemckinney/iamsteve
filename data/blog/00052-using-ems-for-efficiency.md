@@ -18,7 +18,7 @@ There are a lot of CSS frameworks out there that are great, but their biggest fl
 ## What am I getting at here?
 Well using buttons as an example, a typical framework will do something like this:
 
-```.language-css
+```css
 .button {
   font-size: 16px;
   padding: 6px 12px;
@@ -39,7 +39,7 @@ And you'll be expected to do something like `<a href="page.html" class="button b
 ## What I think you should be doing
 This still works without using Sass, and with Sass reduces the need for adding the extra class name entirely.
 
-```.language-scss
+```sass
 %button-base {
   font-size: 1em;
   padding: .75em 1.5em;

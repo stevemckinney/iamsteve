@@ -18,7 +18,7 @@ Sass has a handy feature to create default variables using `!default` in the sam
 ## The example
 Take the example of using the Compass box-shadow mixin, and use it without any defined parameters `@include box-shadow;` and the output is:
 
-```.language-css
+```css
 -webkit-box-shadow: 0px 0px 5px #333333;
 -moz-box-shadow: 0px 0px 5px #333333;
 box-shadow: 0px 0px 5px #333333;
@@ -28,7 +28,7 @@ That's somewhat expected but what if you wanted to change the default shadow to 
 
 Here's how:
 
-```.language-scss
+```sass
 // The default color for box shadows
 $default-box-shadow-color: #333333 !default;
 
@@ -49,7 +49,7 @@ I'm sure many of you will have your own mixins you have created and there will c
 
 Let's take a typical function the em conversion function:
 
-```.language-css
+```css
 @function em($target-px, $context) {
   @return ($target-px / $context) * 1em; }
 ```
@@ -58,7 +58,7 @@ It has 2 parameters the target pixel value and the context. You could immediatel
 
 Great, on a new project you need to make this 14px though. Instead of having to modify the core function why not have a default variable and value and override this default value in our variables file. This is what your setup would look like now:
     
-```.language-css
+```css
 // em function and default value
 $default-context: 16px !default;
 @function em($target-px, $context: $default-context) {

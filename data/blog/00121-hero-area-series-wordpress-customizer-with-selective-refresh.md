@@ -35,7 +35,7 @@ The first steps involve preparing the theme to be used. A Wordpress theme requir
 ### Theme details
 Open `style.css` and add the following before all the CSS that is currently there. Then renaming it to fit your needs.
 
-```.language-css
+```css
 /*
   Theme Name: customizer-hero
   Theme URI: https://iamsteve.me
@@ -69,7 +69,7 @@ For reference this is what your file listing should look like.
 Replace the contents of this file with the following. This makes the template a little Wordpress friendlier.
 
 
-```.language-php
+```php
 <?php
   /**
    * Template Name: Frontpage
@@ -93,7 +93,7 @@ Replace the contents of this file with the following. This makes the template a 
 ### header.php
 Now that you have removed, the necessary parts from `front-page.php`. You need to add it into `header.php` and `footer.php`. The crucial part of this is `wp_head()`, ensuring all necessary CSS files are where they needs to be.
 
-```.language-php
+```php
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -111,7 +111,7 @@ Now that you have removed, the necessary parts from `front-page.php`. You need t
 ### footer.php
 Add the following to `footer.php`. The crucial part of this is `wp_footer()` which ensures all scripts are where they need to be.
 
-```.language-php
+```php
 <?php wp_footer(); ?>
 
 </body>
@@ -121,7 +121,7 @@ Add the following to `footer.php`. The crucial part of this is `wp_footer()` whi
 ## Functions setup
 Now that your theme is setup, open `functions.php` and add the following. The code adds an image size for the hero image, the fonts, CSS, and includes `customizer.php`. The use of these will become clearer later in the post.
 
-```.language-php
+```php
 /**
  * Theme setup
  */
@@ -382,14 +382,14 @@ function hero_image()
 ### Register function
 From lines `13` to `105`, you register all the editable fields. It’s then hooked into `customize_register`.
 
-```.language-php
+```php
 add_action( 'customize_register', array('Hero_Customize', 'register') );
 ```
 
 ### Add the hero section
 A section takes 4 parameters, however, you’re only using two, giving the section a title and a priority. The priority means it should be at the top, as this is the first section on the page it makes sense.
 
-```.language-php
+```php
 $wp_customize->add_section( 'hero', array(
   'title' => 'Hero',
   'priority' => 0
@@ -399,7 +399,7 @@ $wp_customize->add_section( 'hero', array(
 ### Add a text setting 
 The simplest setup for a Customizer field is text. Pass the ID, a unique name and an array of arguments. `default` and `transport` are the ones you will set most frequently.
 
-```.language-php
+```php
 $wp_customize->add_setting( 'hero_title', array(
   'default' => 'Edit live with the Wordpress Customizer',
   'transport' => $transport
@@ -409,7 +409,7 @@ $wp_customize->add_setting( 'hero_title', array(
 ### Add a text control
 For every setting, you need a control. This is what allows you to display it in the Customizer UI. This requires an ID, this doesn’t have to be the same as the setting, however, I see no reason for it to be different.
 
-```.language-php
+```php
 $wp_customize->add_control( 'hero_title', array(
   'label' => 'Title',
   'section' => 'hero',
@@ -427,7 +427,7 @@ Next you will want to define a type, there are a variety of types, `text` being 
 ### Adding a cropped image control
 All controls have settings setup in a similar way, so it’s not worth repeating the `add_setting` functionality. The control is the important part to cover, overall there is some similarities to simpler controls, but they are initialised in a different way due to the additional options they have.
 
-```.language-php
+```php
 $wp_customize->add_control(
   new WP_Customize_Cropped_Image_Control( $wp_customize, 'hero_image', array(
     'label' => 'Image',
@@ -450,7 +450,7 @@ These arguments are fairly descriptive, however, the `context` allows the media 
 ### Colour control
 The colour control works like the cropped image control, in that we have to initialise it in a similar way. The options are easier to set, a `label`, `section` and `settings` ID.
 
-```.language-php
+```php
 $wp_customize->add_control( 
   new WP_Customize_Color_Control( $wp_customize, 'hero_background_color', array(
     'label' => 'Background color',
@@ -462,7 +462,7 @@ $wp_customize->add_control(
 
 Appears simple, however, this is what the functions defined later in the class are for. `output()` and `css()`. Once a colour is passed, `output()` will be run.
 
-```.language-php
+```php
 /**
  * For hooking into `wp_head` mostly to output CSS
  */
@@ -481,7 +481,7 @@ In your case the selector is `.hero`, the property is `background-color` and the
 ## Dropdown pages
 To select a page to link to you need to set up the setting a little differently. Instead of relying on the default type of `theme_mod`, use `option`. It’s a small change, but it means the customizer UI remembers the selected value once saved. 
 
-```.language-php
+```php
 $wp_customize->add_setting( 'hero_page', array(
   'type' => 'option',
   'transport' => 'none'
@@ -490,7 +490,7 @@ $wp_customize->add_setting( 'hero_page', array(
 
 Also for this the `transport` set to `none`, as there is no visual update here, it didn’t feel necessary to cause a delay.
 
-```.language-php
+```php
 $wp_customize->add_control( 'hero_page', array(
   'label' => 'Link to page',
   'section' => 'hero',
@@ -510,7 +510,7 @@ Now for the final part of the code, everything needs to selectively refresh. Thi
 ### Setup
 From around lines `107` to `165` sets up the selective refresh functionality. You work with the fields in a similar way to that when registering them. Again, you hook into `customize_register`  to make it all work.
 
-```.language-php
+```php
 add_action( 'customize_register', array('Hero_Customize', 'refresh') );
 ```
 
@@ -519,7 +519,7 @@ All refreshing is based around adding partials to handle the data, some requirin
 ### Refresh text or textarea
 Text again is the simplest, passing a `selector`, the `settings` ID and `render_callback` which is where the data is pulled from to update the change. This applies to the title, subtitle and button text.
 
-```.language-php
+```php
 $wp_customize->selective_refresh->add_partial('hero_title', array(
   'selector' => '.hero-title',
   'settings' => 'hero_title',
@@ -536,7 +536,7 @@ Using `render_callback` it introduces you to the functions that will need to be 
 ### Refresh the image
 There is one difference for refreshing an image with the render callback for the image, it’s using a function within your class.    This returns the updated image.
 
-```.language-php
+```php
 $wp_customize->selective_refresh->add_partial('hero_image', array(
   'selector' => '.hero-image img',
   'settings' => 'hero_image',
@@ -549,7 +549,7 @@ When you want to refer to a `static` method (function) within the class you have
 ### Refresh the background color
 Again, what I really like about the selective refresh setup is the familiarity it builds. The only differences are the selector and `render_callback`. 
 
-```.language-php
+```php
 $wp_customize->selective_refresh->add_partial('hero_background_color', array(
   'selector' => '#hero-css',
   'settings' => 'hero_background_color',
@@ -566,7 +566,7 @@ Now the functionality is out of the way it’s time to modify the existing HTML.
 
 ### What front-page.php should end up as
 
-```.language-php
+```php
 <?php
   /**
    * Template Name: Frontpage
@@ -618,20 +618,20 @@ Now the functionality is out of the way it’s time to modify the existing HTML.
 ### Basics of getting a field
 Each field by default is a theme mod, which you setup earlier with the settings.
 
-```.language-php
+```php
 echo get_theme_mod('hero_title');
 ```
 
 All but one case uses theme mods, and that’s an option, which we used for the `hero_page`.
 
-```.language-php
+```php
 echo get_option('hero_page');
 ```
 
 ### Check for existence and show field
 Each field needs to be checked it exists, then output the HTML and value.
  
-```.language-php
+```php
 if( $title = get_theme_mod('hero_title') )
 {
   echo '<h1 class="hero-title">' . $title . '</h1>';
@@ -641,7 +641,7 @@ if( $title = get_theme_mod('hero_title') )
 ### Getting a page link
 Some options and theme mods will return a number, which is the ID of what’s being returned. This is really handy, in our case you can use it to get the link.
 
-```.language-php
+```php
 if ( $link = get_option('hero_page') && $text = get_theme_mod('hero_button_text') )
 {
   echo '<p><a href="' . get_permalink($link) . '" class="button">' . $text . '</a></p>';
@@ -653,7 +653,7 @@ You could also use that to get all the information about that page and do away w
 ### Getting the image
 Similarly for an image, it returns an ID, however this has already been handled in `customizer.php`, inside  `Hero_Customize` class you have `hero_image_partial()`. It uses the ID from the theme mod, which allows `wp_get_attachment_image` to return the correct image. Using the hero-image size we defined right at the start.
 
-```.language-php
+```php
 /**
  * Reusable partials
  */
@@ -665,7 +665,7 @@ public static function hero_image_partial()
 
 In the template you don’t really need to know all this, just what the function is doing. So just below the class in `customizer.php` is a helper function.
 
-```.language-php
+```php
 /**
  * Friendlier access for template files
  */
@@ -677,7 +677,7 @@ function hero_image()
 
 Inside your template you check if the image exists, then output it. If there is no image, then make sure the default image does. This is where it will start without any Customizer changes.
 
-```.language-php
+```php
 // Check if the image really exists
 if ( ! empty(hero_image()) && null !== hero_image() )
 {

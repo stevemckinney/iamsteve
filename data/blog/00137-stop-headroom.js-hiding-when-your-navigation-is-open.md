@@ -31,7 +31,7 @@ To solve this you need to stop the navigation hiding, when it’s ‘open’ or 
 ### You may have this currently
 You will have initialised headroom, it may look similar, or you may have passed some options.
 
-```.language-javascript
+```javascript
 var header = document.getElementById('header');
 var headroom = new Headroom(header);
 headroom.init(); 
@@ -40,7 +40,7 @@ headroom.init();
 ### Checking the state
 Firstly, it’s helpful to write a small function to check whether the nav is visible. This will make code more readable amongst the options.
 
-```.language-javascript
+```javascript
 function isNavVisible(nav) {
   return ( nav.classList.contains('visible') ? true : false );
 }
@@ -53,7 +53,7 @@ You can change this visible class to be more in line with your naming convention
 ### Using the onUnpin callback to disable hiding
 If you have your options set up already, then it will be a matter of taking the `onUnpin` callback and adding it to your existing options.
 
-```.language-javascript
+```javascript
 var header = document.getElementById('header');
 var nav = document.getElementById('nav');
 
@@ -79,7 +79,7 @@ If you don’t have options, this essentially passes an extra parameter to the `
 ### How the classes are chosen
 Using `this` gives you access to all the options. Specifically you need to access `elem` and `classes`.
 
-```.language-javascript
+```javascript
 this.elem.classList.remove(this.classes.unpinned);
 ```
 
@@ -93,7 +93,7 @@ This is useful because you may have an override in place for your own class name
 #### Toggling your navigation
 For the sake of completeness and clarity, I’ve included a basic navigation toggle.
 
-```.language-javascript
+```javascript
 var nav = document.querySelector('.nav');
 var navToggle = document.querySelector('.nav-toggle');
 
@@ -107,7 +107,7 @@ This will listen for clicks on `.nav-toggle` and toggle a class on `.nav`.
 ## Final code
 To recap you've got a function to detect visibility of your nav element. That function is used as part of the onunpin callback, where you add and remove class names based upon the state. The class names are found in the classes object. 
 
-```.language-javascript
+```javascript
 function isNavVisible(nav) {
   return ( nav.classList.contains('visible') ? true : false );
 }

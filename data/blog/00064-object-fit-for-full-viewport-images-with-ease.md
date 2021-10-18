@@ -21,7 +21,7 @@ I’m sure you have wanted images to be updateable through your CMS.  You want t
 ## Usage
 `object-fit` has options  `none`, `contain`, `scale-down` and `fill` (which is the initial value). 
 
-```.language-css
+```css
 .fitted-image {
   object-fit: cover; }
 ```
@@ -29,7 +29,7 @@ I’m sure you have wanted images to be updateable through your CMS.  You want t
 ### `object-position`
 If you notice the crop position isn’t ideal for your image, `object-position` can help to fix this. It works in a similar way to background position. The initial value is `50% 50%`.
 
-```.language-css
+```css
 .fit-top-center {
   object-position: top center; }
 ```
@@ -38,7 +38,7 @@ If you notice the crop position isn’t ideal for your image, `object-position` 
 
 To make an image fill the viewport and avoid distortion, we need to use viewport units and `object-fit`.
 
-```.language-css
+```css
 .fitted-image {
   width: 100%;
   height: 100vh;
