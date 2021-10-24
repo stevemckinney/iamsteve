@@ -7,9 +7,9 @@ metadesc: How to make effective tweaks to your colour palette. From checking tex
 theme: "#ffede5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/colour-series-post-images-011.png"]
-large: "https://iamsteve.me/uploads/blog/colour-series-post-images-011.png"
-medium: "https://iamsteve.me/uploads/blog/colour-series-post-images-021.png"
+images: ["/static/images/blog/colour-series-post-images-011.png"]
+large: "/static/images/blog/colour-series-post-images-011.png"
+medium: "/static/images/blog/colour-series-post-images-021.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 106

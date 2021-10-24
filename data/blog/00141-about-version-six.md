@@ -7,9 +7,9 @@ metadesc: About the redesign version six. A brief walk through some of the chang
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/about-v6-featured-image.png"]
-large: "https://iamsteve.me/uploads/blog/about-v6-featured-image.png"
-medium: "https://iamsteve.me/uploads/blog/about-v6-featured-image-medium.png"
+images: ["/static/images/blog/about-v6-featured-image.png"]
+large: "/static/images/blog/about-v6-featured-image.png"
+medium: "/static/images/blog/about-v6-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 141
@@ -29,7 +29,7 @@ The homepage is the area I want to draw more people to. Previously it has been a
 
 The aim has been to make content more discoverable and encourage browsing. From the introduction and latest post, through to the popular posts by category. Over time I want to evolve this further. 
 
-<img src="/static/images/blog/about-v6-home.png" alt="A screenshot of the homepage of this website.">
+<Image src="/static/images/blog/about-v6-home.png" alt="A screenshot of the homepage of this website."  />
 
 ### Illustration
 I’ve gone with a couple of illustrations of my dogs to serve as mascots throughout the homepage. They add to the friendliness I want to bring to the website. They were a big challenge, as I’m not a fantastic illustrator… yet. 
@@ -41,7 +41,7 @@ I have started a newsletter, it’s in the aim of growing and retaining an audie
 
 I have plans for subscribers, and it’s where most of my efforts will go now the redesign is done. 
 
-[You should consider subscribing](http://eepurl.com/Dp-MX). 
+[You should consider subscribing](/newsletter). 
 
 ## Posts
 Posts don’t have a dramatic overhaul in layout. However, I made some observations, that would make for a better reading experience.
@@ -58,9 +58,9 @@ Not very many people browse this website on their phones, 92% is considered desk
 
 Again, the reading experience is something I’m particularly happy with. I believe it’s a huge improvement. As well as just browsing through pages of posts and homepage both flow nicely.
 
-<img src="/static/images/blog/about-v6-small-screen.png" alt="Two screenshots of this website in Mobile Safari">
+<Image src="/static/images/blog/about-v6-small-screen.png" alt="Two screenshots of this website in Mobile Safari"  />
 
-I’m pleased with the way the header area works, from showing the navigation to switching to the search. Although [I’m considering moving to a bottom navigation]({site_url}blog/entry/websites-using-alternatives-to-the-hamburger).
+I’m pleased with the way the header area works, from showing the navigation to switching to the search. Although [I’m considering moving to a bottom navigation](/blog/websites-using-alternatives-to-the-hamburger).
 
 ## Going forward
 The priority going forward will be to add incentive to sign up to the newsletter. Everybody wants you to subscribe to their newsletter. Why would somebody subscribe to mine? 

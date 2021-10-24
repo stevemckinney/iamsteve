@@ -54,7 +54,7 @@ Basecamp recently redesigned their website and Quartz is another I came across.
 
 [<img src="/static/images/blog/bottom-nav-quartz.jpg">](http://qz.com)
 
-Both are great navigation examples. [View all the examples in the post]({site_url}blog/entry/websites-using-alternatives-to-the-hamburger).
+Both are great navigation examples. [View all the examples in the post](/blog/websites-using-alternatives-to-the-hamburger).
 
 ## That’s it
 Next week will be back to the normal schedule. Have a great week.

@@ -7,9 +7,9 @@ metadesc: Using Illustrator’s gridlines and snap to grid you can align things 
 theme: "#fff3f0"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/illustrator-pixel-perfect-featured-image.png"]
-large: "https://iamsteve.me/uploads/blog/illustrator-pixel-perfect-featured-image.png"
-medium: "https://iamsteve.me/uploads/blog/illustrator-pixel-perfect-featured-image-medium.png"
+images: ["/static/images/blog/illustrator-pixel-perfect-featured-image.png"]
+large: "/static/images/blog/illustrator-pixel-perfect-featured-image.png"
+medium: "/static/images/blog/illustrator-pixel-perfect-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 142
@@ -72,4 +72,4 @@ You’ll likely be aware of ‘Snap to Point’ or come across it, I don’t rec
 ## That's it
 If you’re a long time user of both Illustrator and Photoshop, but tend to use one more for designing websites, you’ll probably share similar frustrations to what I have. They’re both great, but they both miss things from each other, that would make life much easier.
 
-From here you can set up a [regular grid using guides]({site_url}blog/entry/illustrator-quick-tip-grid-guides) and then save as a template for future documents.
+From here you can set up a [regular grid using guides](/blog/illustrator-quick-tip-grid-guides) and then save as a template for future documents.

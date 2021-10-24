@@ -7,9 +7,9 @@ metadesc: Finding and settling on a way to use colour within your illustrations 
 theme: "#eafaf6"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/colour-in-illustration-featured-image%402x.png"]
-large: "https://iamsteve.me/uploads/blog/colour-in-illustration-featured-image%402x.png"
-medium: "https://iamsteve.me/uploads/blog/colour-in-illustration-featured-image-medium%402x.png"
+images: ["/static/images/blog/colour-in-illustration-featured-image%402x.png"]
+large: "/static/images/blog/colour-in-illustration-featured-image%402x.png"
+medium: "/static/images/blog/colour-in-illustration-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 169

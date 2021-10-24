@@ -7,9 +7,9 @@ metadesc: How many times do you set a font size? How do you manage consistency? 
 theme: "#f7fbfb"
 tags: ["Code"]
 categories: ["Code"]
-images: ["https://iamsteve.me/uploads/blog/atomic-font-sizes-featured-image%402x.png"]
-large: "https://iamsteve.me/uploads/blog/atomic-font-sizes-featured-image%402x.png"
-medium: "https://iamsteve.me/uploads/blog/atomic-font-sizes-featured-image-medium%402x.png"
+images: ["/static/images/blog/atomic-font-sizes-featured-image%402x.png"]
+large: "/static/images/blog/atomic-font-sizes-featured-image%402x.png"
+medium: "/static/images/blog/atomic-font-sizes-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 170

@@ -7,9 +7,9 @@ metadesc: No JavaScript required, iOS style toggle with CSS. Using the :checked 
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]
-images: ["https://iamsteve.me/uploads/blog/ios-toggle-featured-image-large.png"]
-large: "https://iamsteve.me/uploads/blog/ios-toggle-featured-image-large.png"
-medium: "https://iamsteve.me/uploads/blog/ios-toggle-featured-image-small.png"
+images: ["/static/images/blog/ios-toggle-featured-image-large.png"]
+large: "/static/images/blog/ios-toggle-featured-image-large.png"
+medium: "/static/images/blog/ios-toggle-featured-image-small.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 135

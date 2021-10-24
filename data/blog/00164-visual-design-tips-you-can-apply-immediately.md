@@ -122,7 +122,7 @@ There are a few good reasons you should be:
 - Improves consistency and hierarchy
 - Helps with maintaining a vertical rhythm
 
-> Having your [Illustrator templates setup correctly]({site_url}blog/entry/pixel-perfect-templates-in-illustrator) means this is a breeze to stick with.
+> Having your [Illustrator templates setup correctly](/blog/pixel-perfect-templates-in-illustrator) means this is a breeze to stick with.
 
 ## 8. Make sure icons and logos are pixel fitted
 A subtle but important aspect of design is ensuring your design  assets remain sharp. Sometimes you may feel like something is off with an icon or logo, it most likely it looks ever so slightly blurry. 

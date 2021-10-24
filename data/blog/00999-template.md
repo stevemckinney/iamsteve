@@ -7,9 +7,9 @@ metadesc: A look at type that features prominent cuts or tapering into the type 
 theme: "#eaf5f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/ink-trap-post-image.png"]
-large: "https://iamsteve.me/uploads/blog/ink-trap-post-image.png"
-medium: "https://iamsteve.me/uploads/blog/ink-trap-post-image-medium.png"
+images: ["/static/images/blog/ink-trap-post-image.png"]
+large: "/static/images/blog/ink-trap-post-image.png"
+medium: "/static/images/blog/ink-trap-post-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 172

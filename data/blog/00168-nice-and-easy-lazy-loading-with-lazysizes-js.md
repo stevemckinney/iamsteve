@@ -7,9 +7,9 @@ metadesc: Use lazysizes.js to implement lazy loading. This post shows you how to
 theme: "#fff3f0"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/lazyloading-featured-image.png"]
-large: "https://iamsteve.me/uploads/blog/lazyloading-featured-image.png"
-medium: "https://iamsteve.me/uploads/blog/lazyloading-featured-image-medium.png"
+images: ["/static/images/blog/lazyloading-featured-image.png"]
+large: "/static/images/blog/lazyloading-featured-image.png"
+medium: "/static/images/blog/lazyloading-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 168

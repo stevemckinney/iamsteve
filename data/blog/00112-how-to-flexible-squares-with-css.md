@@ -7,9 +7,9 @@ metadesc: How do you maintain a perfect square shape with a responsive layout? I
 theme: "#fffdf5"
 tags: ["Code", "CSS"]
 categories: ["Code"]
-images: ["https://iamsteve.me/uploads/blog/css-squares-inside-post-image%402x.png"]
-large: "https://iamsteve.me/uploads/blog/css-squares-inside-post-image%402x.png"
-medium: "https://iamsteve.me/uploads/blog/css-squares-featured-image-medium%402x.png"
+images: ["/static/images/blog/css-squares-inside-post-image%402x.png"]
+large: "/static/images/blog/css-squares-inside-post-image%402x.png"
+medium: "/static/images/blog/css-squares-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 112

@@ -43,7 +43,7 @@ It needed a stronger visual element to it. I need to come across as if I know wh
 I want to teach that design should be fun as well as solving problems. 
 
 ## The logo
-I started the process off small with [a new logo]({site_url}blog/entry/iamsteve-a-new-logomark) and tweaks to the website. It had its own set of requirements. It set the ground work for the redesign.
+I started the process off small with [a new logo](/blog/iamsteve-a-new-logomark) and tweaks to the website. It had its own set of requirements. It set the ground work for the redesign.
 
 ## Illustrations
 I have wanted to include a bit of illustration throughout my designs for a long time. For one reason or another I backed out. Usually down to the time and my skill level.
@@ -205,7 +205,7 @@ Another tricky area to achieve balance with and variety. The idea that was promi
 
 I set about creating some rules, eg: type on small screens shouldn’t exceed 24px. I find in the majority of cases that websites overlook typography on the small screen. I didn’t want that to be the case.
   
-During the development I was able to keep this nicely under control with the [Tachyons style of writing CSS]({site_url}blog/entry/why-you-should-use-tachyons-to-make-css-easier). If there is one thing to use this approach for; it’s type sizing.
+During the development I was able to keep this nicely under control with the [Tachyons style of writing CSS](/blog/why-you-should-use-tachyons-to-make-css-easier). If there is one thing to use this approach for; it’s type sizing.
 
 ## Posts
 I wanted to try add some editorial ‘flair’ throughout. It’s hard to be creative with article pages in a sustainable way, so that was something to be wary of along the way.

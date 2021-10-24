@@ -102,7 +102,7 @@ The CSS required doesn’t need a huge increase to accommodate multiple levels. 
 
 This makes it have the ability to be transitioned, but I decided against it. The result is an ugly transition and to improve it, is out of the scope of this post.
 
-> If you would like a more in depth understanding of this approach, [referring to the original horizontal scrolling post is best]({site_url}).
+> If you would like a more in depth understanding of this approach, [referring to the original horizontal scrolling post is best](/blog/horizontal-scrolling-responsive-menu).
 
 ## JS setup
 The most important addition to making this work. Without JavaScript, your top level item will link through. So that should be a suitable alternative.

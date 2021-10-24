@@ -87,16 +87,16 @@ Here are some of the stats from my analytics over the course of the year.
 
 ### Top 10 article
 
-1. [Creating a horizontal scrolling responsive menu]({site_url}blog/entry/horizontal-scrolling-responsive-menu)
-2. [Creating custom stroke width profiles in Illustrator]({site_url}blog/entry/creating-custom-stroke-width-profiles-in-illustrator)
-3. [Using flexbox for horizontal scrolling navigation]({site_url}blog/entry/using-flexbox-for-horizontal-scrolling-navigation)
-4. [Enhancing horizontal scrolling with flickity.js]({site_url}blog/entry/enhancing-horizontal-scrolling-with-flickity-js)
-5. [Flexbox quick wins]({site_url}blog/entry/flexbox-quick-wins)
+1. [Creating a horizontal scrolling responsive menu](/blog/horizontal-scrolling-responsive-menu)
+2. [Creating custom stroke width profiles in Illustrator](/blog/creating-custom-stroke-width-profiles-in-illustrator)
+3. [Using flexbox for horizontal scrolling navigation](/blog/using-flexbox-for-horizontal-scrolling-navigation)
+4. [Enhancing horizontal scrolling with flickity.js](/blog/enhancing-horizontal-scrolling-with-flickity-js)
+5. [Flexbox quick wins](/blog/flexbox-quick-wins)
 6. [Get up to speed with CSS shapes]({site_url}/blog/entry/get-up-to-speed-with-css-shapes)
-7. [A guide to vertical rhythm]({site_url}blog/entry/a-guide-to-vertical-rhythm)
-8. [Using BrowserSync and Safari for testing your responsive website]({site_url}blog/entry/using-browsersync-and-safari-for-testing-your-responsive-website)
-9. [Remove letter-spacing from last letter]({site_url}blog/entry/remove-letter-spacing-from-last-letter)
-10. [Using srcset with the_post_thumbnail() in Wordpress]({site_url}blog/entry/using-srcset-with-the-post-thumbnail-in-wordpress)
+7. [A guide to vertical rhythm](/blog/a-guide-to-vertical-rhythm)
+8. [Using BrowserSync and Safari for testing your responsive website](/blog/using-browsersync-and-safari-for-testing-your-responsive-website)
+9. [Remove letter-spacing from last letter](/blog/remove-letter-spacing-from-last-letter)
+10. [Using srcset with the_post_thumbnail() in Wordpress](/blog/using-srcset-with-the-post-thumbnail-in-wordpress)
 
 ### Visits month by month
 A comparison table of visits in 2016 versus 2015. 
@@ -150,7 +150,7 @@ Many shares happened with the CSS shapes article too.
 Things seemed quieter through July and August, versus last year where there was a significant boost. It is typically holiday season, so that's fine, come September there was a huge spike. It continued through October which was a surprise! 
 
 ### Apple News
-I submitted the blog to Apple News, initially this didn’t really have an effect on traffic. However, once I had posted the case study for [version six]({site_url}blog/entry/my-design-process-v6-case-study), it saw a fair amount of traffic.
+I submitted the blog to Apple News, initially this didn’t really have an effect on traffic. However, once I had posted the case study for [version six](/blog/my-design-process-v6-case-study), it saw a fair amount of traffic.
 
 An observation I made was ‘case study’ type posts saw more visits. Regular posts although with similar content saw much less traffic. I don’t know why this is.
 

@@ -7,9 +7,9 @@ metadesc: Maintenance weeks are where detail website tasks, instead of a regular
 theme: "#f7f2f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/maintenance-week-featured-image%402x.png"]
-large: "https://iamsteve.me/uploads/blog/maintenance-week-featured-image%402x.png"
-medium: "https://iamsteve.me/uploads/blog/maintenance-week-featured-image-medium%402x.png"
+images: ["/static/images/blog/maintenance-week-featured-image%402x.png"]
+large: "/static/images/blog/maintenance-week-featured-image%402x.png"
+medium: "/static/images/blog/maintenance-week-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 145
@@ -23,11 +23,11 @@ So while it’s not a post that directly gives value, it helps me keep on top of
 ## Focusing on the newsletter
 It had become clear I wasn’t getting any closer to completing a download to go with subscribing to the newsletter. I spent this week working on this as much as I could.
 
-<figure><img src="/static/images/blog/maintenance-week-color.png"><figcaption>Colour and icons</figcaption></figure>
-<figure><img src="/static/images/blog/maintenance-week-breakdown.png"><figcaption>Input fields make up the majority of forms, in slightly differing variations</figcaption></figure>
-<figure><img src="/static/images/blog/maintenance-week-state.png"><figcaption>Those fields have an individual state based on validation or focus</figcaption></figure>
-<figure><img src="/static/images/blog/maintenance-week-checkbox.png"><figcaption>Checkbox, radio & switch styles</figcaption></figure>
-<figure><img src="/static/images/blog/maintenance-week-button.png"><figcaption>Buttons with variety</figcaption></figure>
+<figure><Image src="/static/images/blog/maintenance-week-color.png" width={738} height={492} /><figcaption>Colour and icons</figcaption></figure>
+<figure><Image src="/static/images/blog/maintenance-week-breakdown.png" width={738} height={492} /><figcaption>Input fields make up the majority of forms, in slightly differing variations</figcaption></figure>
+<figure><Image src="/static/images/blog/maintenance-week-state.png" width={738} height={492} /><figcaption>Those fields have an individual state based on validation or focus</figcaption></figure>
+<figure><Image src="/static/images/blog/maintenance-week-checkbox.png" width={738} height={492} /><figcaption>Checkbox, radio & switch styles</figcaption></figure>
+<figure><Image src="/static/images/blog/maintenance-week-button.png" width={738} height={492} /><figcaption>Buttons with variety</figcaption></figure>
 
 Working on it infrequently was getting nowhere fast. As a subscriber it’s important that I repay that. So I am working on a form UI kit, it will be both Illustrator ready, and coded up for you to use. It will use much of the experience I’ve had with forms over the years to get a consistent style everywhere.
 

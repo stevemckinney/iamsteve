@@ -7,9 +7,9 @@ metadesc: Using the flex-wrap property to do most of the work we can achieve hor
 theme: "#fff5f3"
 tags: ["Code"]
 categories: ["Code"]
-images: ["https://iamsteve.me/uploads/blog/update-horizontal-flexbox-featured-image%402x.png"]
-large: "https://iamsteve.me/uploads/blog/update-horizontal-flexbox-featured-image%402x.png"
-medium: "https://iamsteve.me/uploads/blog/update-horizontal-flexbox-featured-image-medium%402x.png"
+images: ["/static/images/blog/update-horizontal-flexbox-featured-image%402x.png"]
+large: "/static/images/blog/update-horizontal-flexbox-featured-image%402x.png"
+medium: "/static/images/blog/update-horizontal-flexbox-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 88

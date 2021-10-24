@@ -7,8 +7,8 @@ metadesc: I figured I would write a post about the tools I use. Some will be fam
 theme: "#e9f5f5"
 tags: ["Design", "Code"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/tools-featured-image-01.png"]
-large: "https://iamsteve.me/uploads/blog/tools-featured-image-01.png"ogImage: "/assets/og/cover.jpg"
+images: ["/static/images/blog/tools-featured-image-01.png"]
+large: "/static/images/blog/tools-featured-image-01.png"ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 122
 slug: "tools-i-use"

@@ -7,9 +7,9 @@ metadesc: This post builds upon the previous one in making it editable with Word
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]
-images: ["https://iamsteve.me/uploads/blog/hero-area-post-images-01.png"]
-large: "https://iamsteve.me/uploads/blog/hero-area-post-images-01.png"
-medium: "https://iamsteve.me/uploads/blog/hero-area-post-images-02.png"
+images: ["/static/images/blog/hero-area-post-images-01.png"]
+large: "/static/images/blog/hero-area-post-images-01.png"
+medium: "/static/images/blog/hero-area-post-images-02.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 121

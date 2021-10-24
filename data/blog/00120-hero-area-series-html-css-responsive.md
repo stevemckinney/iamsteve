@@ -7,9 +7,9 @@ metadesc: The second to last post in this series, coding the page. You’re goin
 theme: "#e9f5f5"
 tags: ["Design", "Code"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/hero-area-post-images-01.png"]
-large: "https://iamsteve.me/uploads/blog/hero-area-post-images-01.png"
-medium: "https://iamsteve.me/uploads/blog/hero-area-post-images-02.png"
+images: ["/static/images/blog/hero-area-post-images-01.png"]
+large: "/static/images/blog/hero-area-post-images-01.png"
+medium: "/static/images/blog/hero-area-post-images-02.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 120

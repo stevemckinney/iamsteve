@@ -7,9 +7,9 @@ metadesc: A post that explores the idea of a tab/bottom bar navigation to filter
 theme: "#fff6e5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/shop-tabbar-featured-image.png"]
-large: "https://iamsteve.me/uploads/blog/shop-tabbar-featured-image.png"
-medium: "https://iamsteve.me/uploads/blog/shop-tabbar-featured-image-medium.png"
+images: ["/static/images/blog/shop-tabbar-featured-image.png"]
+large: "/static/images/blog/shop-tabbar-featured-image.png"
+medium: "/static/images/blog/shop-tabbar-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 143
@@ -37,12 +37,12 @@ You're designing a website for a clothing company and at the stage of designing 
 ## Sketching
 With those types in mind and it being a ‘tab bar’ you’ll need to sketch several screens. Icons will be needed to provide a representation of what the filter is, you’ll pair this with text underneath the icon for clarity. 
 
-<img src="/static/images/blog/shop-tabbar-sketch-overview.jpg" srcset="/static/images/blog/shop-tabbar-sketch-overview.jpg 1.5x">
+<Image src="/static/images/blog/shop-tabbar-sketch-overview.jpg" width={738} height={492} />
 
 ### Sketching icons
 The idea with sketching icons is to think of the best representation for that word, which is also the most simplest. Sketch as many ideas as you need to, get all the poor ideas out and see what happens.
 
-<img src="/static/images/blog/shop-tabbar-sketch-focus-icons.jpg" srcset="/static/images/blog/shop-tabbar-sketch-focus-icons.jpg 1.5x">
+<Image src="/static/images/blog/shop-tabbar-sketch-focus-icons.jpg" width={738} height={492} />
 
 Each icon is based upon a 24x24px square. As their creation is somewhat out of the scope of this post, [you can download ones I’ve made](https://www.dropbox.com/s/21r4djfbak0mj27/shop-filter-icons.ai?dl=0).
 
@@ -57,7 +57,7 @@ You’re going to start the process by wireframing everything. This will allow y
 ## Start a new document
 First you need to get the basics in place. You need a document with 5 artboards sized 320x568, based upon the smaller iPhone.
 
-<img src="/static/images/blog/shop-tabbar-new-document.png" srcset="/static/images/blog/shop-tabbar-new-document.png 2x">
+<Image src="/static/images/blog/shop-tabbar-new-document.png" width={738} height={492} />
 
 ### Add a background layer
 Add a new rectangle by pressing <kbd>m</kbd>. Click the artboard and add the dimensions 320x568, so it fills the artboard and add  the fill colour `#f2f2f0`.
@@ -68,7 +68,7 @@ Add a new layer in the layers panel and name it ‘grid’. Copy the background 
 ### Reduce the size
 With the layer still selected, open the transform panel, which can be found in the menu Window > Transform. 
 
-<img src="/static/images/blog/shop-tabbar-grid-transform.png" srcset="/static/images/blog/shop-tabbar-grid-transform.png 2x">
+<Image src="/static/images/blog/shop-tabbar-grid-transform.png" width={738} height={492} />
 
 With a central reference point and constrain proportions unchecked, subtract 48px from the width. The layer should remain selected and be central
 
@@ -76,7 +76,7 @@ With a central reference point and constrain proportions unchecked, subtract 48p
 With the layer still selected, in the menu bar go to Object > Path > Split into Grid.
   
 <figure>
-<img src="/static/images/blog/shop-tabbar-grid-settings.png" srcset="/static/images/blog/shop-tabbar-grid-settings.png 2x">
+<Image src="/static/images/blog/shop-tabbar-grid-settings.png" width={738} height={492} />
 <figcaption>Add two columns with a 12px gutter.</figcaption>
 </figure>
 
@@ -89,7 +89,7 @@ Repeat this process for the other artboards. **Then select all the  grid columns
 ### Add rectangles for header and filters
 Add another two rectangles with the dimensions 320x44, fill them white. Align one to the top and one to bottom of the artboard.
 
-<img src="/static/images/blog/shop-tabbar-progress-1.png" srcset="/static/images/blog/shop-tabbar-progress-1.png 2x">
+<Image src="/static/images/blog/shop-tabbar-progress-1.png" width={738} height={492} />
 
 ## Header
 The wireframe is now coming together. Using the [icons mentioned earlier](https://www.dropbox.com/s/21r4djfbak0mj27/shop-filter-icons.ai?dl=0), copy the search and menu icons and paste them into the main document.
@@ -102,11 +102,11 @@ Next add a logo, which needs to be aligned to the horizontal centre of the heade
 
 ### Align the icons and logo
 
-<img src="/static/images/blog/shop-tabbar-align-panel.png" srcset="/static/images/blog/shop-tabbar-align-panel.png 2x">
+<Image src="/static/images/blog/shop-tabbar-align-panel.png" width={738} height={492} />
 
 Select the header background, the icons and the logo. Then click the header background again, to [align to a key object](). Next, go to Window > Align to open the align panel. 
 
-<figure><img src="/static/images/blog/shop-tabbar-progress-2.png" srcset="/static/images/blog/shop-tabbar-progress-2.png 2x"><figcaption>You should have something which looks similar to this.</figcaption></figure>
+<figure><Image src="/static/images/blog/shop-tabbar-progress-2.png" width={738} height={492} /><figcaption>You should have something which looks similar to this.</figcaption></figure>
 
 ## Add content
 Towards the top, make two text layers. One with ‘Shop’ and the other ‘Browsing 84 styles’. With this the filter has an additional indication to show the page has updated.
@@ -116,7 +116,7 @@ I have made the title have an 18px font size. The styles counter is has a font s
 ### Add products
 Now to add content in the way of products. Using a rectangle as a placeholder image, adding a title and price to make up a product.
 
-<img src="/static/images/blog/shop-tabbar-progress-3.png" srcset="/static/images/blog/shop-tabbar-progress-3.png 2x">
+<Image src="/static/images/blog/shop-tabbar-progress-3.png" width={738} height={492} />
 
 Adding a 130x160 rectangle <kbd>m</kbd> and below a product title and price. Both the title and price have a 12px font size, with the title being bold.
 
@@ -127,7 +127,7 @@ At this stage you’ve made the bulk of the reusable layout. Making it into a sy
 
 Then you need to select all the elements except the bottom rectangle for filters. In the Symbols panel you should see the ‘New Symbol’ icon become active.
 
-<img src="/static/images/blog/shop-tabbar-symbol-content.png" srcset="/static/images/blog/shop-tabbar-symbol-content.png 2x">
+<Image src="/static/images/blog/shop-tabbar-symbol-content.png" width={738} height={492} />
 
 Click the ‘New Symbol’ icon and enter a name. No other options here are really important.
 
@@ -140,7 +140,7 @@ Now that the content is completed you can move on to the navigation.
 Select the bottom rectangle, then in the menu go to Object > Path > Split into Grid.
 
 <figure>
-<img src="/static/images/blog/shop-tabbar-split-navigation.png" srcset="/static/images/blog/shop-tabbar-split-navigation.png 2x">
+<Image src="/static/images/blog/shop-tabbar-split-navigation.png" width={738} height={492} />
 <figcaption>Split the rectangle into 5 columns, this now gives a good basis for aligning text and icons.</figcaption>
 </figure>
 
@@ -154,7 +154,7 @@ Making sure each icon and the text are grouped together <kbd><kbd>cmd</kbd> + <k
 
 Select one rectangle and the grouped text and icon. Then click the rectangle again so that the border is thicker, [aligning to the rectangle as the key object]().
 
-<img src="/static/images/blog/shop-tabbar-align-panel.png" srcset="/static/images/blog/shop-tabbar-align-panel.png 2x">
+<Image src="/static/images/blog/shop-tabbar-align-panel.png" width={738} height={492} />
 
 From earlier you should have the align panel open, if not go to Window > Align. Now vertically and horizontally align the icons.
 
@@ -164,6 +164,6 @@ Then taking care to make sure all the text aligns evenly.
 The final step for this part of the tutorial is to make it into a symbol. Making sure it’s dynamic, this will be particularly useful in the next post.
 
 ## A good point to leave it
-<img src="/static/images/blog/shop-tabbar-progress-4.png" srcset="/static/images/blog/shop-tabbar-progress-4.png 2x">
+<Image src="/static/images/blog/shop-tabbar-progress-4.png" width={738} height={492} />
 
 This is a good point to leave the post, the layout is essentially complete in terms of positioning. In the next post the individual filters will be made.

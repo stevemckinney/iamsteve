@@ -7,8 +7,8 @@ metadesc: How to add flickity.js to already horizontal scrolling areas. Using fl
 theme: "#fffcf4"
 tags: ["Code"]
 categories: ["Code"]
-images: ["https://iamsteve.me/uploads/blog/flickity-navigation.png"]
-large: "https://iamsteve.me/uploads/blog/flickity-navigation.png"ogImage: "/assets/og/cover.jpg"
+images: ["/static/images/blog/flickity-navigation.png"]
+large: "/static/images/blog/flickity-navigation.png"ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 113
 slug: "enhancing-horizontal-scrolling-with-flickity-js"
