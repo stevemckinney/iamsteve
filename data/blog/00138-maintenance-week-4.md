@@ -32,7 +32,7 @@ I spent the majority of this week sifting through posts and styling the various 
 I’m happy with the homepage, but I’m considering a rework of that as the current layout doesn’t adapt too well in the mid size range of screens, but I know I can do better. It’s just trying to think of a better solution.
 
 ## Preparations for the redesign
-I’m hoping to launch the redesign first week of September, which is a good time for me due to having a week off work. This means I’ve begun focusing my efforts much more on the redesign, [as I mentioned a few posts back]({site_url}/blog/entry/redesign-progress-update). It’s difficult to balance and progress suffers on both writing and the redesign.
+I’m hoping to launch the redesign first week of September, which is a good time for me due to having a week off work. This means I’ve begun focusing my efforts much more on the redesign, [as I mentioned a few posts back](/blog/redesign-progress-update). It’s difficult to balance and progress suffers on both writing and the redesign.
 
 I spent some time designing more featured images and tweaking posts. 
 
@@ -43,21 +43,21 @@ I uploaded and enabled the addons here and other things round making sure when I
 
 ### Horizontal scrolling responsive menu
 
-[<img src="/static/images/blog/horizontal-scrolling-responsive-featured-image@2x.png">]({site_url}blog/entry/horizontal-scrolling-responsive-menu)
+[<img src="/static/images/blog/horizontal-scrolling-responsive-featured-image@2x.png">](/blog/horizontal-scrolling-responsive-menu)
 
 ### Custom stroke width profiles in Illustrator
 Along with a couple of images inside that post updated, I have added a featured image too.
 
-[<img src="/static/images/blog/illustrator-stroke-width-featured-image@2x.png">]({site_url}blog/entry/creating-custom-stroke-width-profiles-in-illustrator)
+[<img src="/static/images/blog/illustrator-stroke-width-featured-image@2x.png">](/blog/creating-custom-stroke-width-profiles-in-illustrator)
 
 ### Get up to speed with CSS shapes
 
-[<img src="/static/images/blog/css-shapes-featured-image@2x.png">]({site_url}blog/entry/get-up-to-speed-with-css-shapes)
+[<img src="/static/images/blog/css-shapes-featured-image@2x.png">](/blog/get-up-to-speed-with-css-shapes)
 
 ### A guide to vertical rhythm
 
-[<img src="/static/images/blog/vertical-rhythm-featured-image@2x.png">]({site_url}blog/entry/a-guide-to-vertical-rhythm)
+[<img src="/static/images/blog/vertical-rhythm-featured-image@2x.png">](/blog/a-guide-to-vertical-rhythm)
 
 ### Photoshop generator syntax cheatsheet
 
-[<img src="/static/images/blog/ps-generator-featured-image@2x.png">]({site_url}blog/entry/adobe-generator-syntax-cheatsheet)
+[<img src="/static/images/blog/ps-generator-featured-image@2x.png">](/blog/adobe-generator-syntax-cheatsheet)

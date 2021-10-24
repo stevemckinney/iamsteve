@@ -69,7 +69,7 @@ The button is an anchor tag, with an SVG inside. This allows us to style and reu
 
 The class names `button` and `button-open` will be used for both styling and JavaScript later in the post. The `href` should ideally link to a fallback search page, should JavaScript fail or be disabled.
 
-> You may notice the icon has several class names applied to it. I've detailed my process about [how I use SVG for icons before]({site_url}blog/entry/lets-make-a-better-icon-system-with-svg). 
+> You may notice the icon has several class names applied to it. I've detailed my process about [how I use SVG for icons before](/blog/lets-make-a-better-icon-system-with-svg). 
 
 ### Overlay
 The overlay itself is a `<div>` tag round a form. Each element inside the form has an appropriate class to be used for styling. 

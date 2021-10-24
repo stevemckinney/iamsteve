@@ -92,7 +92,7 @@ Here are some of the stats from my analytics over the course of the year.
 3. [Using flexbox for horizontal scrolling navigation](/blog/using-flexbox-for-horizontal-scrolling-navigation)
 4. [Enhancing horizontal scrolling with flickity.js](/blog/enhancing-horizontal-scrolling-with-flickity-js)
 5. [Flexbox quick wins](/blog/flexbox-quick-wins)
-6. [Get up to speed with CSS shapes]({site_url}/blog/entry/get-up-to-speed-with-css-shapes)
+6. [Get up to speed with CSS shapes](/blog/get-up-to-speed-with-css-shapes)
 7. [A guide to vertical rhythm](/blog/a-guide-to-vertical-rhythm)
 8. [Using BrowserSync and Safari for testing your responsive website](/blog/using-browsersync-and-safari-for-testing-your-responsive-website)
 9. [Remove letter-spacing from last letter](/blog/remove-letter-spacing-from-last-letter)

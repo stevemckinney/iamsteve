@@ -42,7 +42,7 @@ Aligning your strokes to the inside is by far the easiest to manage. It doesn’
 The biggest negative of inside alignment is no stroke caps. If rounded caps and joins are part of your style, you won’t be able to achieve them as easily. You would need to expand the object and do it manually—no thanks.
 
 ### Open paths are only central without a custom stroke width
-If your design style doesn't require stroke caps, you still need to watch out when drawing paths which aren’t closed. It may be tricky to achieve consistency. As they will always align to the centre, you can overcome this by making a [custom stroke width profile]({site_url}blog/entry/creating-custom-stroke-width-profiles-in-illustrator).
+If your design style doesn't require stroke caps, you still need to watch out when drawing paths which aren’t closed. It may be tricky to achieve consistency. As they will always align to the centre, you can overcome this by making a [custom stroke width profile](/blog/creating-custom-stroke-width-profiles-in-illustrator).
 
 ## Outside alignment
 The outside stroke is one of the trickier ones to use and it’s not one I’d personally recommend using unless you’re in a rush. It’s suitable for complex shapes, with intricate areas which you want to retain those details. 
@@ -61,7 +61,7 @@ With the stroke not being accounted for in the dimensions it can make things tri
 <figcaption>The outside alignment corners are rounder than centre alignment corners.</figcaption>
 </figure>
 
-As demonstrated in the image you will see the centre and outside stroke alignments. [Having the correct corner radius](https://iamsteve.me/blog/entry/visual-design-tips-you-can-apply-immediately#12-make-sure-your-nested-corner-radius-account-for-the-outer-radius) can make things feel more intentional.
+As demonstrated in the image you will see the centre and outside stroke alignments. [Having the correct corner radius](/visual-design-tips-you-can-apply-immediately#12-make-sure-your-nested-corner-radius-account-for-the-outer-radius) can make things feel more intentional.
 
 ## Centre alignment
 Finally, with centre it’s the default. As it’s the only available option until a path is closed. I aim to use the majority of the time, though it’s not without its ‘gotchas’.

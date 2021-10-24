@@ -21,20 +21,20 @@ It’s likely you know how to align things in Illustrator, but you can never rem
 ## Highlight your objects
 You have a set of unequally sized objects. Such as navigation items. Select them all.
 
-<img src="/static/images/blog/space-equally-selected.png">
+<Image src="/static/images/blog/space-equally-selected.png" width={738} height={492} />
 
 ## Click any item without holding shift
 
-<img src="/static/images/blog/space-equally-key-highlight.png">
+<Image src="/static/images/blog/space-equally-key-highlight.png" width={738} height={492} />
 
-It doesn’t matter much which item as the items are having space put between them. After clicking, you should see that item highlight in a bolder blue. This chooses a [key object]({site_url}/blog/entry/illustrator-quick-tip-align-to-key-object) and activates more align options.
+It doesn’t matter much which item as the items are having space put between them. After clicking, you should see that item highlight in a bolder blue. This chooses a [key object](/blog/illustrator-quick-tip-align-to-key-object) and activates more align options.
 
-<img src="/static/images/blog/space-equally-align-panel-distribute.png">
+<Image src="/static/images/blog/space-equally-align-panel-distribute.png" width={738} height={492} />
 
 ## Choose how to distribute the space
 You can distribute the space horizontally or vertically, and with any amount of spacing you like. Once you have entered a value to space the items by click the relevant way to distribute space.
 
-<img src="/static/images/blog/align-objects-equally.gif">
+<Image src="/static/images/blog/align-objects-equally.gif" width={738} height={492} />
 
 ## That’s it
 The beauty of this method is you can specify how many pixels you want between your items. Once it becomes second nature to do, you’ll find this method to be the quickest. It's such a common part of every day design, that the time savings will certainly add up!
