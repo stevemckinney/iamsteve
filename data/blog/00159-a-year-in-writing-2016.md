@@ -72,7 +72,7 @@ I didn’t have any make or break goals, it’s more: “if I hit this target, g
 Growing month on month traffic by 10% was a more than ambitious goal. It scales exponentially, it was possible for a few months. The majority came very close with 8-9%.
 
 <figure>
-<img src="/static/images/blog/year-in-writing-2016-yearly-overview.png" srcset="/static/images/blog/year-in-writing-2016-yearly-overview.png 832w, /static/images/blog/year-in-writing-2016-yearly-overview@2x.png 1664w">
+<Image src="/static/images/blog/year-in-writing-2016-yearly-overview@2x.png" width={738} height={492} />
 <figcaption>A graph of month by month views, compared to 2015.</figcaption>
 </figure>
 

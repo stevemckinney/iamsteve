@@ -23,49 +23,49 @@ There are some great websites I came across this month. Ueno have put out some g
 
 ### [Basecamp](https://basecamp.com)
 
-<img src="/static/images/blog/monthly-roundup-02-basecamp.jpg" srcset="/static/images/blog/monthly-roundup-02-basecamp.jpg 832w, /static/images/blog/monthly-roundup-02-basecamp@2x.jpg 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-basecamp@2x.jpg" width={738} height={492} />
 
 I really admire the approach of Basecamp as a company, and I feel like this design reflects them well. They aren’t afraid to do things differently. It’s a pleasant redesign and features a lot of illustration.
 
 ### [Design Inc.](https://www.designinc.com)
 
-<img src="/static/images/blog/monthly-roundup-02-designinc.png" srcset="/static/images/blog/monthly-roundup-02-designinc.png 832w, /static/images/blog/monthly-roundup-02-designinc@2x.png 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-designinc@2x.png" width={738} height={492} />
 
 Design Inc. have been through a few iterations lately. The last version was better visually, but that could only go so far with the amount of services offered. This is a good fit and explains the what Design Inc. is well.
 
 ### [Friends & Fools](http://www.friendsandfools.be)
 
-<img src="/static/images/blog/monthly-roundup-02-friends-fools.jpg" srcset="/static/images/blog/monthly-roundup-02-friends-fools.jpg 832w, /static/images/blog/monthly-roundup-02-friends-fools@2x.jpg 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-friends-fools@2x.jpg" width={738} height={492} />
 
 Big and bold design. There are some nice little details throughout the design and it’s a nice use of big type.
 
 ### [Inturn](http://inturn.co)
 
-<img src="/static/images/blog/monthly-roundup-02-inturn.png" srcset="/static/images/blog/monthly-roundup-02-inturn.png 832w, /static/images/blog/monthly-roundup-02-inturn@2x.png 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-inturn@2x.png" width={738} height={492} />
 
 The animated illustrations help guide you through the page and it helps you to understand the service. However it could be a little more descriptive for the final point, but generally you get it.
 
 ### [Ueno](https://ueno.co/)
 
-<img src="/static/images/blog/monthly-roundup-02-ueno.jpg" srcset="/static/images/blog/monthly-roundup-02-ueno.jpg 832w, /static/images/blog/monthly-roundup-02-ueno@2x.jpg 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-ueno@2x.jpg" width={738} height={492} />
 
 Ueno are a constant source of inspiration and great work. I was curious to see what would come of their rebrand. I like how everything is nice and smooth as you scroll through.
 
 ### [Yoke](http://www.thisisyoke.com/)
 
-<img src="/static/images/blog/monthly-roundup-02-yoke.png" srcset="/static/images/blog/monthly-roundup-02-yoke.png 832w, /static/images/blog/monthly-roundup-02-yoke@2x.png 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-yoke@2x.png" width={738} height={492} />
 
 Quite a minimalist design, but the illustrations add a bit of fun. Following that is a nice grid layout of content. Overall really well designed.
 
 ### [PrescribeWellness](http://www.prescribewellness.com/)
 
-<img src="/static/images/blog/monthly-roundup-02-prescribewellness.jpg" srcset="/static/images/blog/monthly-roundup-02-prescribewellness.jpg 832w, /static/images/blog/monthly-roundup-02-prescribewellness@2x.jpg 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-prescribewellness@2x.jpg" width={738} height={492} />
 
 This certainly isn’t what you would think a healthcare website would look like. Scroll on through and there is smooth animations and little videos in the background. It makes for a surprisingly nice touch.
 
 ### [Toi](http://toi.io/)
 
-<img src="/static/images/blog/monthly-roundup-02-toi.jpg" srcset="/static/images/blog/monthly-roundup-02-toi.jpg 832w, /static/images/blog/monthly-roundup-02-toi@2x.jpg 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-toi@2x.jpg" width={738} height={492} />
 
 The animated image combining real life with a ‘blueprint’ style over the top is really nice touch and adds a sense of uniqueness. It’s persisted throughout the design. Each slide and section throughout is well considered.
 
@@ -75,7 +75,7 @@ Here’s a few apps/tools I found over this month. Most notably Setapp, it seems
 
 ### [Spark for Mac](https://sparkmailapp.com/)
 
-<img src="/static/images/blog/monthly-roundup-02-spark.jpg" srcset="/static/images/blog/monthly-roundup-02-spark.jpg 832w, /static/images/blog/monthly-roundup-02-spark@2x.jpg 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-spark@2x.jpg" width={738} height={492} />
 
 I’ve been using Spark for iOS for quite a while now. It’s been a reasonable replacement for Mailbox, and now it’s out for Mac. I was using Nylas N1 before this. I’m not completely sure it will replace Nylas, but I like I now have a cross platform mail app with snoozing again. 
 
@@ -83,19 +83,19 @@ The main thing is I feel like Spark won’t suddenly disappear.
 
 ### [Setapp](https://setapp.com/)
 
-<img src="/static/images/blog/monthly-roundup-02-setapp.jpg" srcset="/static/images/blog/monthly-roundup-02-setapp.jpg 832w, /static/images/blog/monthly-roundup-02-setapp@2x.jpg 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-setapp@2x.jpg" width={738} height={492} />
 
 Setapp is a competitor to the Mac App Store. “Imagine having select applications, within easy reach whenever you need them. No stores. No ads. Just apps.” Currently in beta, but you can get an invite if you sign up. It aims to be a subscription service of apps. It looks really promising. 
 
 ### [Logo Miner](http://logominer.com/)
 
-<img src="/static/images/blog/monthly-roundup-02-logominer.png" srcset="/static/images/blog/monthly-roundup-02-logominer.png 832w, /static/images/blog/monthly-roundup-02-logominer@2x.png 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-logominer@2x.png" width={738} height={492} />
 
 If you need a logo this is the place to remember. It looks like a great source of logo files. 
 
 ### [Rightlight](http://rightlight.nordwoodthemes.com/)
 
-<img src="/static/images/blog/monthly-roundup-02-rightlight.jpg" srcset="/static/images/blog/monthly-roundup-02-rightlight.jpg 832w, /static/images/blog/monthly-roundup-02-rightlight@2x.jpg 1664w">
+<Image src="/static/images/blog/monthly-roundup-02-rightlight@2x.jpg" width={738} height={492} />
 
 A free stock photography website, another to add to your collection to refer to. There’s some great photos, which I’m sure will be suitable for your projects.
 

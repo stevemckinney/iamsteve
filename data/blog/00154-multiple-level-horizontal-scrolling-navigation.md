@@ -30,7 +30,7 @@ The difficulty with making this function as a multilevel/submenu  is purely base
 ### Overflow means typical methods don’t work
 Rightly so, you keep the related markup together using a list. Then positioning through CSS, means you can’t show the submenu. The overflow ensures it remains hidden.
 
-<img src="/static/images/blog/multilevel-scrolling-bad-example.png" srcset="/static/images/blog/multilevel-scrolling-bad-example.png 2x">
+<Image src="/static/images/blog/multilevel-scrolling-bad-example.png" width={738} height={492} />
 
 As the example shows, the biggest problem is you won’t be able to get the correct width or positioning. *So how is it solved*?
 

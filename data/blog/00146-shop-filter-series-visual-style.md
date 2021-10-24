@@ -32,12 +32,12 @@ If you'd like to download the files to have a look and skip ahead feel free.
 ## Where you’ll be at the end of this post
 At the end of this post the majority of the visual style will be applied, aside from on the filters themselves. 
 
-<img src="/static/images/blog/shop-filter-03-progress-5.png" srcset="/static/images/blog/shop-filter-03-progress-5.png 2x">
+<Image src="/static/images/blog/shop-filter-03-progress-5.png" width={738} height={492} />
 
 ## Colour palette
 Firstly it’s necessary to choose colour palette. This really sets the tone for how things move forward. Choosing this early on is ideal. For this design the intention is to have a luxurious feel.
 
-<img src="/static/images/blog/shop-filter-03-colour-palette.png" srcset="/static/images/blog/shop-filter-03-colour-palette.png 2x">
+<Image src="/static/images/blog/shop-filter-03-colour-palette.png" width={738} height={492} />
 
 | Number | Name | Hex |
 |:-|:-|-:|
@@ -51,7 +51,7 @@ I decided to go for a dark, ‘rose gold/copper’ palette. Keeping it reasonabl
 Things with a dark theme tend to be trickier to design, so this makes for a good challenge. There can be different considerations you need to make throughout.
 
 ### Opening swatches
-<img src="/static/images/blog/shop-filter-03-import-swatches.png" srcset="/static/images/blog/shop-filter-03-import-swatches.png 2x">
+<Image src="/static/images/blog/shop-filter-03-import-swatches.png" width={738} height={492} />
 
 If you downloaded the swatch palette earlier, open the swatches panel by going to Window > Swatches. Then click the little icon at the top right of the panel. In that menu go to ‘Open Swatch Library’, then ‘Other Library’. 
 
@@ -88,7 +88,7 @@ To add to the luxury feel add dividers between each filter.
 - Align centrally
 - Duplicate for the other 3
 
-<img src="/static/images/blog/shop-filter-03-progress-1.png" srcset="/static/images/blog/shop-filter-03-progress-1.png 2x">
+<Image src="/static/images/blog/shop-filter-03-progress-1.png" width={738} height={492} />
 
 ## Header, logo & icons
 Firstly, delete the white and transparent rectangle. This will make editing things easier and clearer.
@@ -98,7 +98,7 @@ Then, similarly to the filter bar, double click to edit the symbol. Make the bac
 ## Content
 Moving on to content, select the background layer and change the colour to number 4.
 
-<img src="/static/images/blog/shop-filter-03-progress-2.png" srcset="/static/images/blog/shop-filter-03-progress-2.png 2x">
+<Image src="/static/images/blog/shop-filter-03-progress-2.png" width={738} height={492} />
 
 ### All text
 Change all the text colour to number 2. 
@@ -106,7 +106,7 @@ Change all the text colour to number 2.
 ### Images
 You can add actual placeholder images or change their background colour to 4. This will make things more realistic or more fitting. 
 
-<img src="/static/images/blog/shop-filter-03-progress-3.png" srcset="/static/images/blog/shop-filter-03-progress-3.png 2x">
+<Image src="/static/images/blog/shop-filter-03-progress-3.png" width={738} height={492} />
 
 
 ## Further building up visual style
@@ -115,26 +115,26 @@ Now you have something that looks complete. However, you can add a little extra 
 ### Add a drop shadow to the filters
 Copy one of the rectangles for a filter background. Paste it in place <kbd>cmd + f</kbd>. Make the width 320px by stretching it to the artboard or using the transform panel.
 
-<img src="/static/images/blog/shop-filter-03-dropshadow-menu.png" srcset="/static/images/blog/shop-filter-03-dropshadow-menu.png 2x">
+<Image src="/static/images/blog/shop-filter-03-dropshadow-menu.png" width={738} height={492} />
 
 Click the ‘fx’ icon and go to Stylize > Drop Shadow. 
 
-<img src="/static/images/blog/shop-filter-03-dropshadow-settings.png" srcset="/static/images/blog/shop-filter-03-dropshadow-settings.png 2x">
+<Image src="/static/images/blog/shop-filter-03-dropshadow-settings.png" width={738} height={492} />
 
 Add a black shadow with the settings 80% opacity 0px X and Y offset, 4px blur.
 
-<img src="/static/images/blog/shop-filter-03-progress-4.png" srcset="/static/images/blog/shop-filter-03-progress-4.png 2x">
+<Image src="/static/images/blog/shop-filter-03-progress-4.png" width={738} height={492} />
 
 Finally, move that layer backwards with <kbd>cmd + [</kbd>.
 
 ### Add a gradient to filters
 Now that the shadow has been added, it causes a bit of an undesirable blended appearance. To account for that you need to add a gradient to each of the rectangles. It’s kind of like a bevel highlight.
 
-<img src="/static/images/blog/shop-filter-03-progress-5.png" srcset="/static/images/blog/shop-filter-03-progress-5.png 2x">
+<Image src="/static/images/blog/shop-filter-03-progress-5.png" width={738} height={492} />
 
 Select each of the individual rectangles, and open the gradient panel, by going to Window > Gradient. Click the gradient in the panel, which should change the fills, to a white to black gradient.
 
-<img src="/static/images/blog/shop-filter-03-filter-gradient.png" srcset="/static/images/blog/shop-filter-03-filter-gradient.png 2x">
+<Image src="/static/images/blog/shop-filter-03-filter-gradient.png" width={738} height={492} />
 
 Using colours 3 and 4 in the two gradient points. The first point at 92.5% and the other at 100% creates a subtle highlight. 
 

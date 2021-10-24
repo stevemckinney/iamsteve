@@ -22,7 +22,7 @@ In Illustrator it seems to be more difficult than it needs to be to export a col
 You may be using swatches already, or have a bunch of shapes which are filled with the colours. If you don’t draw some shapes now with each of your colours.
 
 <figure>
-<img src="/static/images/blog/colour-export-ready.png" srcset="/static/images/blog/colour-export-ready.png 832w, /static/images/blog/colour-export-ready@2x.png 1664w">
+<Image src="/static/images/blog/colour-export-ready@2x.png" width={738} height={492} />
 <figcaption>A simple set of shapes is all that is needed.</figcaption>
 </figure>
 

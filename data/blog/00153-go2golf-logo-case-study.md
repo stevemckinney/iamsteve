@@ -21,7 +21,7 @@ I’ve been working on a recent branding project for a company called Go2Golf. I
 ## Start with requirements
 The requirements for the logo were to be youthful and fresh. As a new company, it’s important to be recognisable too. I wanted the logo to convey golf, but still have a ‘smart’ element to the design.
 
-<img src="/static/images/blog/go2golf-casestudy-logo.png" srcset="/static/images/blog/go2golf-casestudy-logo.png 1x, /static/images/blog/go2golf-casestudy-logo.png 2x">
+<Image src="/static/images/blog/go2golf-casestudy-logo.png" width={738} height={492} />
 
 ## Get an understanding of the industry
 I set out to brush up on a little golf knowledge. As it’s not an area I’m overly familiar with, outside of the basics. 
@@ -33,7 +33,7 @@ It was something to go off. An eagle is certainly recognisable and a strong mark
 ### Take an idea as far as you can
 I worked with other ideas, trying to play into the number two. Ultimately that was trying to force it. The reason I was quite set on this, is down to numbers in logotype specifically, being difficult to work with.
 
-<img src="/static/images/blog/go2golf-casestudy-sketches-1.jpg" srcset="/static/images/blog/go2golf-casestudy-sketches-1.jpg 1x, /static/images/blog/go2golf-casestudy-sketches-1@2x.jpg 2x">
+<Image src="/static/images/blog/go2golf-casestudy-sketches-1@2x.jpg" width={738} height={492} />
 
 As time and ideas went on, aiming for something seemingly obvious. I thought more around Go2Golf is a place for finding golf course *locations*. So combining the ‘location’ symbol with a golf ball and tee. 
 
@@ -43,14 +43,14 @@ It would be easy to go with the magnifying glass metaphor, but that’s not yout
 ## Present your ideas
 From my sketches, I was happy to present my explorations. I explained the strengths and weaknesses of each idea, and why I came to each idea. Some were more suitable than others.
 
-<img src="/static/images/blog/go2golf-casestudy-sketches-2.jpg" srcset="/static/images/blog/go2golf-casestudy-sketches-2.jpg 1x, /static/images/blog/go2golf-casestudy-sketches-2@2x.jpg 2x">
+<Image src="/static/images/blog/go2golf-casestudy-sketches-2@2x.jpg" width={738} height={492} />
 
 Taking the time to explain your thought process with the client early can make the process much easier when presenting a final design. Going forward with the strongest idea, the location pin and tee combination was well received. 
 
 ## Execution
 Usually, I would bring the sketches into Illustrator. However, I didn’t feel it was necessary for this instance. The basic shapes would be built from what’s available in Illustrator’s tools. 
 
-<img src="/static/images/blog/go2golf-casestudy-progress.png" srcset="/static/images/blog/go2golf-casestudy-progress.png 1x, /static/images/blog/go2golf-casestudy-progress.png 2x">
+<Image src="/static/images/blog/go2golf-casestudy-progress.png" width={738} height={492} />
 
 ### Relying too heavily on the sketches
 I used my sketched idea as a direct basis for creating the mark. More often than not this approach works, but this time it didn’t. 

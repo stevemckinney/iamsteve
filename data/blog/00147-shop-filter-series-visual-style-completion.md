@@ -41,7 +41,7 @@ Starting with the filter bar, it was left completed, but without a way to highli
 The first step to this is to use the direct selection tool by pressing <kbd>a</kbd>. 
 
 <figure>
-<img src="/static/images/blog/shop-filter-04-direct-selection.png" srcset="/static/images/blog/shop-filter-04-direct-selection.png 2x">
+<Image src="/static/images/blog/shop-filter-04-direct-selection.png" width={738} height={492} />
 <figcaption>your paths should gain a blue outline when selected.</figcaption>
 </figure>
 
@@ -62,7 +62,7 @@ Similarly to the icon, use the direct selection tool and select the text for eac
 At the start of this series [I made some icons for download](https://www.dropbox.com/s/dvbi1mvp8w9ttsi/shop-tabbar-icons.ai?dl=0). **Using the larger ‘x’ icon or making your own will be necessary for the next step**.
 
 <figure>
-<img src="/static/images/blog/shop-filter-04-progress-1.png" srcset="/static/images/blog/shop-filter-04-progress-1.png 2x">
+<Image src="/static/images/blog/shop-filter-04-progress-1.png" width={738} height={492} />
 <figcaption>Your artboards should resemble the following.</figcaption>
 </figure>
 
@@ -74,7 +74,7 @@ So the first few steps are ones that are pretty consistent across each filter.
 ### Transparent overlay
 The overlay is added to bring focus to the filters and add a layer of depth. It doesn’t currently fit in with the theme.
 
-<img src="/static/images/blog/shop-filter-04-progress-3.png" srcset="/static/images/blog/shop-filter-04-progress-3.png 2x">
+<Image src="/static/images/blog/shop-filter-04-progress-3.png" width={738} height={492} />
 
 **Change the fill to colour 3 and the opacity to 80%**. The reason for the opacity change is to give a hint, as to what’s behind. When the transparency feels off it can make things look ‘muddy’ with the weird contrast it creates.
 
@@ -90,7 +90,7 @@ All the rectangles that have a white fill can be changed to colour 3. Excluding 
 Both of these filters are very similar in style. In these steps you’re going to apply borders between the items, this will make things feel equally spaced and define boundaries.
 
 <figure>
-<img src="/static/images/blog/shop-filter-04-progress-4.png" srcset="/static/images/blog/shop-filter-04-progress-4.png 2x">
+<Image src="/static/images/blog/shop-filter-04-progress-4.png" width={738} height={492} />
 <figcaption>
 A reference for the placement of the dividers.
 </figcaption>
@@ -118,14 +118,14 @@ Select all the size related things and use <kbd>cmd + g</kbd> to group them toge
 ### Fill and stroke
 Highlight one of the rectangles that has a white fill and go to **Select > Same > Fill and Stroke**.
 
-<img src="/static/images/blog/shop-filter-04-progress-5.png" srcset="/static/images/blog/shop-filter-04-progress-5.png 2x">
+<Image src="/static/images/blog/shop-filter-04-progress-5.png" width={738} height={492} />
 
 **Change the stroke to colour 4, and the fill to colour 3**. 
 
 ## Changing the corner radius
 To change the corner radius you need to select the object and press <kbd>a</kbd>. This enables the ability to do that.
 
-<img src="/static/images/blog/shop-filter-04-corner-radius.png" srcset="/static/images/blog/shop-filter-04-corner-radius.png 2x">
+<Image src="/static/images/blog/shop-filter-04-corner-radius.png" width={738} height={492} />
 
 In the toolbar you should see ‘corners’ change the value to 4px.
 
@@ -135,13 +135,13 @@ Again like the type and brand increase the font weight to semibold.
 ## Price
 The price needs to draw most attention to the handles. 
 
-<img src="/static/images/blog/shop-filter-04-progress-6.png" srcset="/static/images/blog/shop-filter-04-progress-6.png 2x">
+<Image src="/static/images/blog/shop-filter-04-progress-6.png" width={738} height={492} />
 
 ### Handle fill & shadow
 Select the handles and fill them with colour 2. 
 
 <figure>
-<img src="/static/images/blog/shop-filter-04-handle-dropshadow.png" srcset="/static/images/blog/shop-filter-04-handle-dropshadow.png 2x">
+<Image src="/static/images/blog/shop-filter-04-handle-dropshadow.png" width={738} height={492} />
 <figcaption>A black shadow with 60% opacity. 0px X offset, 2px Y offset, 2px blur.</figcaption>
 </figure>
 
@@ -156,7 +156,7 @@ Finally, increase the font weight of the price text to semibold.
 ## Colour
 With price complete it moves on to colour, which is quite tricky. The shapes need a little adjustment and the colours need to have a subtlety about them. This is because it can look quite garish otherwise.
 
-<img src="/static/images/blog/shop-filter-04-progress-7.png" srcset="/static/images/blog/shop-filter-04-progress-7.png 2x">
+<Image src="/static/images/blog/shop-filter-04-progress-7.png" width={738} height={492} />
 
 ### Make the text semibold
 Like previous steps each colour name can be made semibold.

@@ -21,7 +21,7 @@ Patterns and textures were popular before flat design came along. As we seek the
 ## Your pattern can be anything 
 A pattern is something that is repetitive, a piece of an image that can repeat over and over. It can be anything, so long as it's seamless. 
 
-<div><img data-src="/static/images/blog/patterns-example.png" data-srcset="/static/images/blog/patterns-example.png 832w, /static/images/blog/patterns-example@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-example.png" srcset="/static/images/blog/patterns-example.png 832w, /static/images/blog/patterns-example@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-example@2x.png" width={738} height={492} />
 
 So if you have a set of icons, or shapes you would like to repeat, it can work. In the example throughout this post I will be using several icons I have made. 
 
@@ -35,14 +35,14 @@ Now you want to turn on snap to pixels, you can find this under `View > Snap to 
 ## Gather your objects
 Next, add each of the objects you want to be part of the pattern to the artboard. 
 
-<div><img data-src="/static/images/blog/patterns-objects.png" data-srcset="/static/images/blog/patterns-objects.png 832w, /static/images/blog/patterns-objects@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-objects.png" srcset="/static/images/blog/patterns-objects.png 832w, /static/images/blog/patterns-objects@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-objects@2x.png" width={738} height={492} />
 
 > Make sure you keep the originals. This will help later with duplicating and positioning.
 
 ## Place centrally working your way outwards 
 The shape should kind of form a diamond. The reason for this will become clearer in the coming steps, but you’ll be adding objects manually to the centre.
 
-<div><img data-src="/static/images/blog/patterns-initial.png" data-srcset="/static/images/blog/patterns-initial.png 832w, /static/images/blog/patterns-initial@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-initial.png" srcset="/static/images/blog/patterns-initial.png 832w, /static/images/blog/patterns-initial@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-initial@2x.png" width={738} height={492} />
 
 You want a pattern to feel completely random, yet consistent at the same time. You create randomness through the objects used and consistency through spacing.
 
@@ -64,11 +64,11 @@ This is where applying a different transform can really help.
 ### Transform each
 If this fits your pattern and look you’re going for transform each is great. To use transform each, select your objects and go to `Object > Transform > Transform Each`.
 
-<div><img data-src="/static/images/blog/patterns-transform-each.png" data-srcset="/static/images/blog/patterns-transform-each.png 832w, /static/images/blog/patterns-transform-each@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-transform-each.png" srcset="/static/images/blog/patterns-transform-each.png 832w, /static/images/blog/patterns-transform-each@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-transform-each@2x.png" width={738} height={492} />
 
 You can randomly change most things in this window. Make sure you check random, and tweak the values a few times as each time is different. You should be able to refine it to suit the pattern best.
 
-<div><img data-src="/static/images/blog/patterns-transform-each-pattern.png" data-srcset="/static/images/blog/patterns-transform-each-pattern.png 832w, /static/images/blog/patterns-transform-each-pattern@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-transform-each-pattern.png" srcset="/static/images/blog/patterns-transform-each-pattern.png 832w, /static/images/blog/patterns-transform-each-pattern@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-transform-each-pattern@2x.png" width={738} height={492} />
 
 As the image shows it works well to add more randomness to your pattern.
 
@@ -82,21 +82,21 @@ The next steps will finalise the pattern and make it be repeatable.
 
 ### Make sure the dimensions are whole numbers
 
-<div><img data-src="/static/images/blog/patterns-half-pixel-dimensions.png" data-srcset="/static/images/blog/patterns-half-pixel-dimensions.png 832w, /static/images/blog/patterns-half-pixel-dimensions@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-half-pixel-dimensions.png" srcset="/static/images/blog/patterns-half-pixel-dimensions.png 832w, /static/images/blog/patterns-half-pixel-dimensions@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-half-pixel-dimensions@2x.png" width={738} height={492} />
 
 This step will generally make your life easier later. As you can see in the image above the dimensions are 376.001px x 411.314px. **It would be nicer if this pattern was 376px by 412px, whole even numbers**.
 
 ### Find the item that’s positioned on a half pixel
 This is a quick method I like to use to make a selection of objects a collectively have a whole pixel value.
 
-<div><img data-src="/static/images/blog/patterns-object-off-pixel.png" data-srcset="/static/images/blog/patterns-object-off-pixel.png 832w, /static/images/blog/patterns-object-off-pixel@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-object-off-pixel.png" srcset="/static/images/blog/patterns-object-off-pixel.png 832w, /static/images/blog/patterns-object-off-pixel@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-object-off-pixel@2x.png" width={738} height={492} />
 
 Look at the width and height of all of them and look for a value, in this instance, around the `.314px` off. If you find that value nudge it to the next pixel value up or down. Then repeat the process to find any others.
 
 ### Change the transform origin and make it a whole pixel
 If I want to nudge an item to the right, I need to make sure the transform origin is also the right.
 
-<div><img data-src="/static/images/blog/patterns-transform-origin.png" data-srcset="/static/images/blog/patterns-transform-origin.png 832w, /static/images/blog/patterns-transform-origin@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-transform-origin.png" srcset="/static/images/blog/patterns-transform-origin.png 832w, /static/images/blog/patterns-transform-origin@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-transform-origin@2x.png" width={738} height={492} />
 
 In the transform panel you can see 9 squares in a grid like appearance. Where you click depends on where you want to move the object. If you wanted the object to be off the half pixel at the bottom, you would change the transform origin to the bottom.
 
@@ -113,7 +113,7 @@ This is the most important step as this sets you up in the right way so the patt
 ### Mask in quarters
 Take the dimensions of all your objects and divide that by two. In the case of this post, it’s 380x412, which makes 190x206.
 
-<div><img data-src="/static/images/blog/patterns-masked-quarters.png" data-srcset="/static/images/blog/patterns-masked-quarters.png 832w, /static/images/blog/patterns-masked-quarters@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-masked-quarters.png" srcset="/static/images/blog/patterns-masked-quarters.png 832w, /static/images/blog/patterns-masked-quarters@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-masked-quarters@2x.png" width={738} height={492} />
 
 1. Draw a rectangle which is those dimensions (in my case 190x206)
 2. Select both the rectangle and the top pattern layer
@@ -127,25 +127,28 @@ Take the dimensions of all your objects and divide that by two. In the case of t
 ### Move each masked quarter to the diagonally opposite corner
 This is what makes the pattern repeatable, as at each of the corners it will join.
 
-<div><img data-src="/static/images/blog/patterns-diagonally-opposite-example.png" data-srcset="/static/images/blog/patterns-diagonally-opposite-example.png 832w, /static/images/blog/patterns-diagonally-opposite-example@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-diagonally-opposite-example.png" srcset="/static/images/blog/patterns-diagonally-opposite-example.png 832w, /static/images/blog/patterns-diagonally-opposite-example@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-diagonally-opposite-example@2x.png" width={738} height={492} />
 
 To do this quickly and accurately use the align panel and make sure you’re aligning to the artboard.
 
-<figure><img data-src="/static/images/blog/patterns-diagonally-opposite-complete.png" data-srcset="/static/images/blog/patterns-diagonally-opposite-complete.png 832w, /static/images/blog/patterns-diagonally-opposite-complete@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-diagonally-opposite-complete.png" srcset="/static/images/blog/patterns-diagonally-opposite-complete.png 832w, /static/images/blog/patterns-diagonally-opposite-complete@2x.png 1664w"></noscript><figcaption>You should end up with the following.</figcaption></figure>
+<figure>
+  <Image src="/static/images/blog/patterns-diagonally-opposite-complete@2x.png" width={738} height={492} />
+  <figcaption>You should end up with the following.</figcaption>
+</figure>
 
 Once you have them aligned correctly, select them and press <kbd><kbd>cmd</kbd> + <kbd>2</kbd></kbd> to lock them. This will ensure you don’t move them later.
 
 ### Fill in the remaining area
 There will be space in the centre, which you can fill in with the elements you used earlier. You don’t have to be too mindful of repetition here, it’s the consistency of spacing.
 
-<div><img data-src="/static/images/blog/patterns-fill-area-incomplete.png" data-srcset="/static/images/blog/patterns-fill-area-incomplete.png 832w, /static/images/blog/patterns-fill-area-incomplete@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-fill-area-incomplete.png" srcset="/static/images/blog/patterns-fill-area-incomplete.png 832w, /static/images/blog/patterns-fill-area-incomplete@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-fill-area-incomplete@2x.png" width={738} height={492} />
 
 Start filling in round the edges working your way in. Once you’ve done this you can make further tweaks.
 
 ## Finalising the pattern
 The final steps will now make the pattern usable. You’ll need to expand and trim the objects that are masked, make it into a swatch and any final adjustments.
 
-<div><img data-src="/static/images/blog/patterns-complete.png" data-srcset="/static/images/blog/patterns-complete.png 832w, /static/images/blog/patterns-complete@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-complete.png" srcset="/static/images/blog/patterns-complete.png 832w, /static/images/blog/patterns-complete@2x.png 1664w"></noscript></div>
+<Image src="/static/images/blog/patterns-complete@2x.png" width={738} height={492} />
 
 ### Expand and trim the excess
 It’s the frustrating thing about masks in Illustrator, when you create a swatch it accounts for the excess masked with empty space.
@@ -173,7 +176,10 @@ Next, fill it with your pattern in the swatches panel. You’re now looking for 
 ### Applying adjustments
 You may have a few changes in mind, open the swatches panel and double click your pattern. You’re now in an isolated view to modify the pattern.
 
-<figure><img data-src="/static/images/blog/patterns-modifying-pattern.png" data-srcset="/static/images/blog/patterns-modifying-pattern.png 832w, /static/images/blog/patterns-modifying-pattern@2x.png 1664w" class="lazyload"><noscript><img src="/static/images/blog/patterns-modifying-pattern.png" srcset="/static/images/blog/patterns-modifying-pattern.png 832w, /static/images/blog/patterns-modifying-pattern@2x.png 1664w"></noscript><figcaption>You will also be presented with a menu. This is quite helpful to see the results of your modifications.</figcaption></figure>
+<figure>
+  <Image src="/static/images/blog/patterns-modifying-pattern@2x.png" width={738} height={492} />
+  <figcaption>You will also be presented with a menu. This is quite helpful to see the results of your modifications.</figcaption>
+</figure>
 
 Once you’re happy with the changes you can exit it by clicking ‘Save a Copy’ or ‘Done’ under the toolbar near the top. If you want to keep track of changes a copy may be beneficial.
 

@@ -54,7 +54,7 @@ I’ve always liked the idea of a ‘mascot’. I’ve started small, but it all
 I wanted to use this opportunity, to try something I don’t do often. I enjoy illustrating, but it isn’t my strongest skill. I reminded myself that it’s the only way to learn.
 
 <figure>
-<img src="/static/images/blog/casestudy-v6-sketches-rio-osc.jpg" srcset="/static/images/blog/casestudy-v6-sketches-rio-osc.jpg 1x, /static/images/blog/casestudy-v6-sketches-rio-osc@2x.jpg 2x">
+<Image src="/static/images/blog/casestudy-v6-sketches-rio-osc@2x.jpg" width={738} height={492} />
 <figcaption>
 Some of the sketches for both illustrations. Illustrator can be very forgiving in the overall outcome.
 </figcaption>
@@ -129,13 +129,13 @@ I had done so many sketches, settling on the idea that the introduction accompan
 Sketching serves as a way to explore themes and ideas that may fit the style of the website.
 
 <figure>
-<img src="/static/images/blog/casestudy-v6-sketches-set-2.jpg" srcset="/static/images/blog/casestudy-v6-sketches-set-2.jpg 1x, /static/images/blog/casestudy-v6-sketches-set-2@2x.jpg 2x">  
+<Image src="/static/images/blog/casestudy-v6-sketches-set-2@2x.jpg" width={738} height={492} />  
 <figcaption>The latest post idea emerging. A split screen with latest post and introduction too.</figcaption>
 </figure>
 
 I progressed through the sketches considering the priority of the content. As mentioned earlier I did debate the value of an introductory area, which I’ve gone for. Along with the latest post it seemed the right thing to do. Following with more recent posts, the newsletter subscription and popular posts.
 
-<img src="/static/images/blog/casestudy-v6-sketches-set-3.jpg" srcset="/static/images/blog/casestudy-v6-sketches-set-3.jpg 1x, /static/images/blog/casestudy-v6-sketches-set-3@2x.jpg 2x">
+<Image src="/static/images/blog/casestudy-v6-sketches-set-3@2x.jpg" width={738} height={492} />
 
 Small screen and post versions were explored too at different stages.
 

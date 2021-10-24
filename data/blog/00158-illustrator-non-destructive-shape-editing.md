@@ -27,22 +27,22 @@ Pathfinder is one of the handiest tools within Illustrator which by default will
 ### Open the pathfinder
 You can do this by finding Window > Pathfinder.
 
-<img src="/static/images/blog/non-destructive-pathfinder.png" srcset="/static/images/blog/non-destructive-pathfinder.png 832w, /static/images/blog/non-destructive-pathfinder@2x.png 1664w">
+<Image src="/static/images/blog/non-destructive-pathfinder@2x.png" width={738} height={492} />
 
 ### Draw your shapes
 Next the best way to demonstrate this is to draw two shapes, overlap them and reduce their opacity.
 
-<img src="/static/images/blog/non-destructive-opacity-shapes.png" srcset="/static/images/blog/non-destructive-opacity-shapes.png 832w, /static/images/blog/non-destructive-opacity-shapes@2x.png 1664w">
+<Image src="/static/images/blog/non-destructive-opacity-shapes@2x.png" width={738} height={492} />
 
 ### Select your shapes and hold alt using a pathfinder option
 **The important part is to hold alt**, it will combine both shapes without destroying their paths.
 
-<img src="/static/images/blog/non-destructive-combined-shapes.png" srcset="/static/images/blog/non-destructive-opacity-shapes.png 832w, /static/images/blog/non-destructive-combined-shapes@2x.png 1664w">
+<Image src="/static/images/blog/non-destructive-combined-shapes@2x.png" width={738} height={492} />
 
 After making using the pathfinder on the shapes, you’re free to change them as you like. 
 
 ### Use the direct selection tool to edit further
-<img src="/static/images/blog/non-destructive-move-shapes.gif">
+<Image src="/static/images/blog/non-destructive-move-shapes.gif" />
 
 To select a shape press <kbd>a</kbd> to use the direct selection tool. You can also double click to isolate them, which can be easier to change the shape.
 
@@ -55,14 +55,14 @@ To be able to change drawing mode you need to select an object, so it can be use
 ### Change to the inside drawing mode
 With the drawing mode, generally you will want to choose inside. This is a quick way to create a clipping mask out of any shape. The benefit is you can draw multiple shapes inside another shape and not worry too much about the remainder.
 
-<img src="/static/images/blog/non-destructive-toolbar.png" srcset="/static/images/blog/non-destructive-toolbar.png 832w, /static/images/blog/non-destructive-toolbar@2x.png 1664w">
+<Image src="/static/images/blog/non-destructive-toolbar@2x.png" width={738} height={492} />
 
 The icon can be found below the fill and stroke options in the toolbar.
 
 ### A dotted border should appear
 This is how you know when a different drawing mode is active. You’re free to draw shapes anywhere, however, parts will not be visible outside of the mask. 
 
-<img src="/static/images/blog/non-destructive-drawing-inside.png" srcset="/static/images/blog/non-destructive-drawing-inside.png 832w, /static/images/blog/non-destructive-drawing-inside@2x.png 1664w">
+<Image src="/static/images/blog/non-destructive-drawing-inside@2x.png" width={738} height={492} />
 
 ### To exit select normal drawing mode
 Once you’re done with drawing inside you can select the normal drawing mode.

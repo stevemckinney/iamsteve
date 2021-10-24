@@ -23,37 +23,37 @@ Here’s eight websites, there’s a lot of illustration and great use of colour
 
 ### [Riyo](http://www.riyo.io/)
 
-<img src="/static/images/blog/websites-monthly-1-riyo.png" srcset="/static/images/blog/websites-monthly-1-riyo.png 1x, /static/images/blog/websites-monthly-1-riyo@2x.png 2x">
+<Image src="/static/images/blog/websites-monthly-1-riyo@2x.png" width={738} height={492} />
 
 The top to bottom use of illustration, calming and soft colours used throughout make this a really nice design. It really builds a level of trust and reassurance. The main colour used is red, most people would get scared off using red, but it shows confidence. 
 
 ### [Nuage](https://www.nuageapp.com)
 
-<img src="/static/images/blog/websites-monthly-1-nuage.png" srcset="/static/images/blog/websites-monthly-1-nuage.png 1x, /static/images/blog/websites-monthly-1-nuage@2x.png 2x">
+<Image src="/static/images/blog/websites-monthly-1-nuage@2x.png" width={738} height={492} />
 
 There is some stunning attention to detail throughout this website. It’s minimalism, done right. Lots of personality throughout. Great use of whitespace and clarity, which really sets itself apart from other domain vendors.
 
 ## [Billdogg](http://billdogg.com)
 
-<img src="/static/images/blog/websites-monthly-1-billdogg.png" srcset="/static/images/blog/websites-monthly-1-billdogg.png 1x, /static/images/blog/websites-monthly-1-billdogg@2x.png 2x">
+<Image src="/static/images/blog/websites-monthly-1-billdogg@2x.png" width={738} height={492} />
 
 Simple straight to the point, and you know what you’re going to get without having to shove a massive image in the background. The colour choice is vibrant but not overwhelming. The illustration style really adds to the page. With little splashes of colour throughout the page it really ties it all together.
 
 ### [Mess Hall](http://mplsmesshall.com/)
 
-<img src="/static/images/blog/websites-monthly-1-messhall.png" srcset="/static/images/blog/websites-monthly-1-messhall.png 1x, /static/images/blog/websites-monthly-1-messhall@2x.png 2x">
+<Image src="/static/images/blog/websites-monthly-1-messhall@2x.png" width={738} height={492} />
 
 I particularly like the full viewport intro screen, that has a nice badge. It’s really well done. Which transitions smoothly into what it’s all about. There are some further nice transitions in the carousel just below.
 
 ### [Tasting Table](https://www.tastingtable.com)
 
-<img src="/static/images/blog/websites-monthly-1-tasting-table.jpg" srcset="/static/images/blog/websites-monthly-1-tasting-table.jpg 1x, /static/images/blog/websites-monthly-1-tasting-table@2x.jpg 2x">
+<Image src="/static/images/blog/websites-monthly-1-tasting-table@2x.jpg" width={738} height={492} />
 
 I really like the way so much information is presented in this website. There’s a variety of ways to browse and scroll through content. It’s engaging and a refreshing design for today’s world.
 
 ### [Waaffle](https://waaffle.com)
 
-<img src="/static/images/blog/websites-monthly-1-waaffle.png" srcset="/static/images/blog/websites-monthly-1-waaffle.png 1x, /static/images/blog/websites-monthly-1-waaffle@2x.png 2x">
+<Image src="/static/images/blog/websites-monthly-1-waaffle@2x.png" width={738} height={492} />
 
 Again another page without having to have a random stock photo as the background. The illustration and animations throughout are superb. I particularly like the logo, which also is used for the loading indicator. 
 
@@ -61,7 +61,7 @@ I really like the use of purple, orange and yellow throughout—a tricky combina
 
 ### [Ambassador Watches](https://primeambassador.com/)
 
-<img src="/static/images/blog/websites-monthly-1-ambassador.jpg" srcset="/static/images/blog/websites-monthly-1-ambassador.jpg 1x, /static/images/blog/websites-monthly-1-ambassador@2x.jpg 2x">
+<Image src="/static/images/blog/websites-monthly-1-ambassador@2x.jpg" width={738} height={492} />
 
 If you’re looking for a way to communicate luxury, look no further. I like how the headings are using small caps, *but genuine small caps*. The website is spot on to match the style of the watches. 
 
@@ -69,7 +69,7 @@ When I first viewed this website and to get through to a watch page, I was surpr
 
 ### [Mylo](http://okmylo.com)
 
-<img src="/static/images/blog/websites-monthly-1-mylo.png" srcset="/static/images/blog/websites-monthly-1-mylo.png 1x, /static/images/blog/websites-monthly-1-mylo@2x.png 2x">
+<Image src="/static/images/blog/websites-monthly-1-mylo@2x.png" width={738} height={492} />
 
 Sometimes I think the huge type thing is overdone, but that’s probably because it’s done poorly. Mylo does it well. You really get a sense that you’ll be getting good fashion choices and what the app is all about. It details and presents the app really well [outside of the stereotypical page](https://twitter.com/jongold/status/694591217523363840), it is possible.
 

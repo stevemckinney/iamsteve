@@ -2,7 +2,7 @@ const siteMetadata = {
   title: 'iamsteve',
   author: 'Steve',
   headerTitle: 'iamsteve',
-  description: 'A ',
+  description: 'Design and code blog',
   language: 'en-gb',
   siteUrl: 'https://iamsteve.me',
   siteRepo: 'https://github.com/stevemckinney/iamsteve',
