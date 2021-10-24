@@ -7,9 +7,9 @@ metadesc: A blog written by Steve McKinney, focused on designing with Illustrato
 theme: "#f7f2f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/maintenance-week-featured-image%402x.png"]
-large: "https://iamsteve.me/uploads/blog/maintenance-week-featured-image%402x.png"
-medium: "https://iamsteve.me/uploads/blog/maintenance-week-featured-image-medium%402x.png"
+images: ["/static/images/blog/maintenance-week-featured-image%402x.png"]
+large: "/static/images/blog/maintenance-week-featured-image%402x.png"
+medium: "/static/images/blog/maintenance-week-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 152

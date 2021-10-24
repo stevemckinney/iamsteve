@@ -7,9 +7,9 @@ metadesc: Sharing some of my thoughts on how I would handle being new to a skill
 theme: "#eaf5f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/overcoming-design-roadblocks-featured-image.png"]
-large: "https://iamsteve.me/uploads/blog/overcoming-design-roadblocks-featured-image.png"
-medium: "https://iamsteve.me/uploads/blog/overcoming-design-roadblocks-featured-image-medium.png"
+images: ["/static/images/blog/overcoming-design-roadblocks-featured-image.png"]
+large: "/static/images/blog/overcoming-design-roadblocks-featured-image.png"
+medium: "/static/images/blog/overcoming-design-roadblocks-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 163

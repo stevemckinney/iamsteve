@@ -7,9 +7,9 @@ metadesc: This is the start of a monthly series of a roundup of well designed we
 theme: "#e6f9f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/monthly-roundup-01featured-image%402x.png"]
-large: "https://iamsteve.me/uploads/blog/monthly-roundup-01featured-image%402x.png"
-medium: "https://iamsteve.me/uploads/blog/monthly-roundup-01featured-image-medium%402x.png"
+images: ["/static/images/blog/monthly-roundup-01featured-image%402x.png"]
+large: "/static/images/blog/monthly-roundup-01featured-image%402x.png"
+medium: "/static/images/blog/monthly-roundup-01featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 151

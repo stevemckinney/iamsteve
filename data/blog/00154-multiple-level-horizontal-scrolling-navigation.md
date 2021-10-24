@@ -7,9 +7,9 @@ metadesc: Adding an extra level to the horizontal scrolling menu, using the same
 theme: "#eaf5f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/multiplelevel-menu-featured-image%402x.png"]
-large: "https://iamsteve.me/uploads/blog/multiplelevel-menu-featured-image%402x.png"
-medium: "https://iamsteve.me/uploads/blog/multiplelevel-menu-featured-image-medium%402x.png"
+images: ["/static/images/blog/multiplelevel-menu-featured-image%402x.png"]
+large: "/static/images/blog/multiplelevel-menu-featured-image%402x.png"
+medium: "/static/images/blog/multiplelevel-menu-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 154

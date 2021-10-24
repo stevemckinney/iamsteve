@@ -7,9 +7,9 @@ metadesc: The redesign of this website has been needed for some time. There is m
 theme: "#ffe3de"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/casestudy-v6-featured-image1.png"]
-large: "https://iamsteve.me/uploads/blog/casestudy-v6-featured-image1.png"
-medium: "https://iamsteve.me/uploads/blog/casestudy-v6-featured-image-medium1.png"
+images: ["/static/images/blog/casestudy-v6-featured-image1.png"]
+large: "/static/images/blog/casestudy-v6-featured-image1.png"
+medium: "/static/images/blog/casestudy-v6-featured-image-medium1.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 149

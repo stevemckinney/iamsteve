@@ -7,9 +7,9 @@ metadesc: In the last post the basis for the visual style was set. In this post 
 theme: "#fff6e5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/shop-tabbar-2-featured-image.png"]
-large: "https://iamsteve.me/uploads/blog/shop-tabbar-2-featured-image.png"
-medium: "https://iamsteve.me/uploads/blog/shop-tabbar-2-featured-image-medium.png"
+images: ["/static/images/blog/shop-tabbar-2-featured-image.png"]
+large: "/static/images/blog/shop-tabbar-2-featured-image.png"
+medium: "/static/images/blog/shop-tabbar-2-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 147

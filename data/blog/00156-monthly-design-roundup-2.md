@@ -7,9 +7,9 @@ metadesc: I roundup some of the best things in design I found over the course of
 theme: "#fff8e2"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/monthly-roundup-02-featured-image%402x.png"]
-large: "https://iamsteve.me/uploads/blog/monthly-roundup-02-featured-image%402x.png"
-medium: "https://iamsteve.me/uploads/blog/monthly-roundup-02-featured-image-medium%402x.png"
+images: ["/static/images/blog/monthly-roundup-02-featured-image%402x.png"]
+large: "/static/images/blog/monthly-roundup-02-featured-image%402x.png"
+medium: "/static/images/blog/monthly-roundup-02-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 156

@@ -7,9 +7,9 @@ metadesc: 2016 was the second year I’ve written a post every week. This post i
 theme: "#eaf5f5"
 tags: ["Website"]
 categories: ["Website"]
-images: ["https://iamsteve.me/uploads/blog/year-in-writing-2016-featured-image%402x.png"]
-large: "https://iamsteve.me/uploads/blog/year-in-writing-2016-featured-image%402x.png"
-medium: "https://iamsteve.me/uploads/blog/year-in-writing-2016-featured-image-medium%402x.png"
+images: ["/static/images/blog/year-in-writing-2016-featured-image%402x.png"]
+large: "/static/images/blog/year-in-writing-2016-featured-image%402x.png"
+medium: "/static/images/blog/year-in-writing-2016-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 159

@@ -7,9 +7,9 @@ metadesc: When designing there are things you can rely upon regardless of the si
 theme: "#fff7e0"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/visual-design-tips-featured-image.png"]
-large: "https://iamsteve.me/uploads/blog/visual-design-tips-featured-image.png"
-medium: "https://iamsteve.me/uploads/blog/visual-design-tips-featured-image-medium.png"
+images: ["/static/images/blog/visual-design-tips-featured-image.png"]
+large: "/static/images/blog/visual-design-tips-featured-image.png"
+medium: "/static/images/blog/visual-design-tips-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 164

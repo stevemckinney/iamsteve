@@ -7,9 +7,9 @@ metadesc: I’ve been working on a recent branding project for a company called 
 theme: "#fff8e2"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/go2golf-casestudy-featured-image1.png"]
-large: "https://iamsteve.me/uploads/blog/go2golf-casestudy-featured-image1.png"
-medium: "https://iamsteve.me/uploads/blog/go2golf-casestudy-featured-image-medium%402x.png"
+images: ["/static/images/blog/go2golf-casestudy-featured-image1.png"]
+large: "/static/images/blog/go2golf-casestudy-featured-image1.png"
+medium: "/static/images/blog/go2golf-casestudy-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 153

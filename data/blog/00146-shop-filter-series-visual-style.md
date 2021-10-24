@@ -7,9 +7,9 @@ metadesc: The content and interface elements required are all there. Further lay
 theme: "#ffe3de"
 tags: ["Design"]
 categories: ["Design"]
-images: ["https://iamsteve.me/uploads/blog/shop-filter-03-updated-featured-image.png"]
-large: "https://iamsteve.me/uploads/blog/shop-filter-03-updated-featured-image.png"
-medium: "https://iamsteve.me/uploads/blog/shop-filter-03-updated-featured-image-medium.png"
+images: ["/static/images/blog/shop-filter-03-updated-featured-image.png"]
+large: "/static/images/blog/shop-filter-03-updated-featured-image.png"
+medium: "/static/images/blog/shop-filter-03-updated-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 146
