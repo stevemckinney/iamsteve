@@ -92,7 +92,7 @@ Using align to key object you can align each row reasonably quickly.
 
 <img src="/static/images/blog/table_align-row.gif">
 
-Using [align to key object]({site_url}blog/entry/illustrator-quick-tip-align-to-key-object) is important because it makes sure nothing nudges out of place by a few pixels.
+Using [align to key object](/blog/illustrator-quick-tip-align-to-key-object) is important because it makes sure nothing nudges out of place by a few pixels.
 
 ### Column alignment
 As mentioned a little earlier I recommend aligning these manually. Changing text alignment where you see fit and that should be it.

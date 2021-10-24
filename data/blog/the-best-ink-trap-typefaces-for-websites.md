@@ -26,7 +26,7 @@ Let’s get into the fonts that have this feature.
 ### [Whyte Inktrap](https://abcdinamo.com/typefaces/whyte)
 <Image src="/static/images/blog/01-whyte@2x.png" width={738} height={492} />
 
-In terms of Ink trap fonts, I feel like Whyte could be the ‘[Circular]({site_url}blog/entry/alternatives-to-circular)’ of this style. The Figma website was the first time I’d come across Whyte and I’ve seen it used a few times elsewhere. 
+In terms of Ink trap fonts, I feel like Whyte could be the ‘[Circular](/blog/alternatives-to-circular)’ of this style. The Figma website was the first time I’d come across Whyte and I’ve seen it used a few times elsewhere. 
 
 It feels futuristic, because of its curves on the ascenders—which goes against the feeling of a traditional grotesque. It surprised me how it remains legible at small sizes—even in the heavier weights—despite the ink traps being as prominent as they are.
 

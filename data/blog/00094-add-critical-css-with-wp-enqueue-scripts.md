@@ -13,12 +13,12 @@ id: 94
 slug: "add-critical-css-with-wp-enqueue-scripts"
 ---
 
-Following on [nicely from the previous post]({site_url}blog/entry/setting-a-cookie-with-wordpress). One of the things with critical path CSS, is you can't use `wp_enqueue_style`. It's not a huge deal, as the easiest way to get around it is by putting it in your `<head>` the regular way. Though when you combine that with cookies and `<noscript>` tags, it can make for quite a messy `<head>`. Particularly for a Wordpress template, [as I have found in the past.]({site_url}blog/entry/using-cookies-to-serve-critical-css-for-first-time-visits).
+Following on [nicely from the previous post](/blog/setting-a-cookie-with-wordpress). One of the things with critical path CSS, is you can't use `wp_enqueue_style`. It's not a huge deal, as the easiest way to get around it is by putting it in your `<head>` the regular way. Though when you combine that with cookies and `<noscript>` tags, it can make for quite a messy `<head>`. Particularly for a Wordpress template, [as I have found in the past.](/blog/using-cookies-to-serve-critical-css-for-first-time-visits).
 
 In this post I will show you how to avoid this. It’s similar to the way Wordpress recommends you queue your scripts and styles.
 
 ## Set up your cookie
-The first thing we need is to make sure our cookie is setup. I’m assuming here you know how to do this, if not I have wrote about [setting up cookies for Wordpress]({site_url}blog/entry/setting-a-cookie-with-wordpress) in detail.
+The first thing we need is to make sure our cookie is setup. I’m assuming here you know how to do this, if not I have wrote about [setting up cookies for Wordpress](/blog/setting-a-cookie-with-wordpress) in detail.
 
 ```php
 add_action( 'init', 'full_css' );

@@ -16,7 +16,7 @@ id: 91
 slug: "responsive-vertical-rhythm"
 ---
 
-I wrote a fairly lengthy post previously on [vertical rhythm]({site_url}blog/entry/a-guide-to-vertical-rhythm). I considered adding a section on how to adjust font sizes whilst maintaining vertical rhythm. However, with the experience of seeing how people struggle with the topic of vertical rhythm, it was best to keep it for a separate post.
+I wrote a fairly lengthy post previously on [vertical rhythm](/blog/a-guide-to-vertical-rhythm). I considered adding a section on how to adjust font sizes whilst maintaining vertical rhythm. However, with the experience of seeing how people struggle with the topic of vertical rhythm, it was best to keep it for a separate post.
 
 I will assume **you do have a grasp** of vertical rhythm, at this point, otherwise some parts may not make sense. In the examples I will be using em units, with Sass. So I assume you will have an understanding of how em units work. However, I will give you a brief overview.
 
@@ -53,7 +53,7 @@ When we say target, that’s the **pixel equivalent** we want to achieve. Contex
 > The easiest way, to keep control of your context, is to apply, font sizes on the element itself. You can apply it on containing/parent elements, but this could lead to some trickier calculations. 
 
 ### Using Sass to do this
-This is possibly my most used function while writing Sass. I’ve covered briefly [the benefits of using Sass for em units]({site_url}blog/entry/sass-hints-tips-revisited). It does a good amount of work for us. It calculates the em value and also gives insight to the original calculation.
+This is possibly my most used function while writing Sass. I’ve covered briefly [the benefits of using Sass for em units](/blog/sass-hints-tips-revisited). It does a good amount of work for us. It calculates the em value and also gives insight to the original calculation.
 
 I will follow through using this with any examples within the post.
 
@@ -94,7 +94,7 @@ I have also set my line height to be 1.5. I know this is going to be good for mo
 > The reason for doing this is the ability to change the font-size in only one place and affect anything that uses an em unit.
 
 ## Choosing font sizes & aligning
-This can be based on a [type scale]({site_url}blog/entry/type-scale-line-height-lengths), your own preferences or to align closely with the baseline. For me it’s down to what’s most comfortable for the screen size.
+This can be based on a [type scale](/blog/type-scale-line-height-lengths), your own preferences or to align closely with the baseline. For me it’s down to what’s most comfortable for the screen size.
 
 ```{.language-scss .code-tall}
 /* Aligns to 60px */
@@ -169,7 +169,7 @@ I avoid rem units because they're fixed to the root element. That takes away, be
 That's not to say it isn't logical to use rem units. There are specific cases, where they are useful. You may want to retain a font size, border radius, or other property. In those cases it’s valuable.
 
 ## Finishing thoughts
-Like I mentioned in the [vertical rhythm]({site_url}blog/entry/a-guide-to-vertical-rhythm) post, it’s a tricky goal to achieve on a perfect basis, where images are concerned. I think taking this approach can really improve your reading experience.
+Like I mentioned in the [vertical rhythm](/blog/a-guide-to-vertical-rhythm) post, it’s a tricky goal to achieve on a perfect basis, where images are concerned. I think taking this approach can really improve your reading experience.
 
 It depends how far you want to go. I have found a combination of using the body adjustments and modifying specific font sizes where they are a little too large, for the screen size, works well. In the future, I imagine, this will become easier, with real variables in CSS.
 

@@ -142,7 +142,7 @@ For the hover state we’re going to draw a new rounded rectangle with a fill us
 Next, fill using colour 6 (#e1f7ee), then drag the rectangle towards a number of choice. It should be covering the number, to stop this use <kbd>cmd</kbd> + <kbd>[</kbd> until it goes behind the number.
 
 #### Aligning to key object
-Then using the [technique to align from the previous post]({site_url}blog/entry/how-to-datepicker-using-illustrator). Select both the hover and background shapes. Then open the align panel, in the menu go to Window > Align.
+Then using the [technique to align from the previous post](/blog/how-to-datepicker-using-illustrator). Select both the hover and background shapes. Then open the align panel, in the menu go to Window > Align.
 
 <img src="/static/images/blog/datepicker_show-options.png">
 

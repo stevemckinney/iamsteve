@@ -37,7 +37,7 @@ I’ve chosen the iPhone 5s resolution size, at 320px wide it gives us a minimum
 ## Add a background layer
 <img src="/static/images/blog/ch-new-layer-rename-lock.gif">
 
-If you’re carrying on [from the previous post]({site_url}blog/entry/hero-area-series-plan-design). You added a ‘small-screen’ layer, add the same blue background as our ‘large-screen’ layer, appropriately sized to the artboard.
+If you’re carrying on [from the previous post](/blog/hero-area-series-plan-design). You added a ‘small-screen’ layer, add the same blue background as our ‘large-screen’ layer, appropriately sized to the artboard.
 
 ## Copy your title, description & button
 In the ‘small-screen’ layer we made earlier, copy the text layers and paste them with the layer selected. Drag them over to the left of the artboard.

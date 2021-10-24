@@ -18,7 +18,7 @@ slug: "illustrator-export-2x-with-a-1x-canvas"
 
 > This method is no longer relevant with Illustrator CC export for screens.
 
-So you use Illustrator for designing websites, and that could be because you’re on a retina screen and Illustrator is vector. So you can design at 1x and it not matter, at least that’s the case for me. However, when it comes to exporting it’s a pain, you can use ‘Save to Web’ and increase the size to 200%, but that’s tedious. You know [how to export SVG]({site_url}blog/entry/three-ways-to-export-svg-in-illustrator), but exporting PNG files is the issue at retina sizes. In this post I will show you how to overcome that.
+So you use Illustrator for designing websites, and that could be because you’re on a retina screen and Illustrator is vector. So you can design at 1x and it not matter, at least that’s the case for me. However, when it comes to exporting it’s a pain, you can use ‘Save to Web’ and increase the size to 200%, but that’s tedious. You know [how to export SVG](/blog/three-ways-to-export-svg-in-illustrator), but exporting PNG files is the issue at retina sizes. In this post I will show you how to overcome that.
 
 Previously covering ways of exporting SVG in Illustrator led me to realise, that it’s actually not readily apparent how to export at 2x or other higher density sizes. If you need to export PNG files it’s not as convenient as Photoshop’s generator functionality. This quick tip will show you how to work around the lack of generator style functionality in Illustrator.
 

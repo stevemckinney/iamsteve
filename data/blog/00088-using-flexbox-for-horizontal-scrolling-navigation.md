@@ -16,7 +16,7 @@ id: 88
 slug: "using-flexbox-for-horizontal-scrolling-navigation"
 ---
 
-This post is a follow up to a different method for [horizontal scrolling navigation]({site_url}blog/entry/horizontal-scrolling-responsive-menu) which used `inline-block`. In this post, I want to cover how flexbox can be used to achieve the same thing and the benefits over the `inline-block` method.
+This post is a follow up to a different method for [horizontal scrolling navigation](/blog/horizontal-scrolling-responsive-menu) which used `inline-block`. In this post, I want to cover how flexbox can be used to achieve the same thing and the benefits over the `inline-block` method.
 
 As a design pattern, it is one that is beginning to be used much more. It's great for touch devices, as horizontal scrolling feels more natural. It's great on a Mac too, with a trackpad or Magic Mouse it's just as easy as vertically scrolling. That's potentially a good chunk of your audience, you can improve the user experience for and utilise space better.
 

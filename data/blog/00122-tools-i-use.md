@@ -48,7 +48,7 @@ Dash offers an easy and convenient way to search documentation for pretty much e
 
 <a href="https://derailer.org/paparazzi/"><img src="/static/images/blog/tools_paparazzi.png"></a>
 
-I used webkit2png for the longest time, I still do because [terminal commands can speed up the screenshot process]({site_url}blog/entry/using-webkit2png-to-generate-responsive-screenshots). However, **Paparazzi! is probably the best screenshot tool out there, that is free**. 
+I used webkit2png for the longest time, I still do because [terminal commands can speed up the screenshot process](/blog/using-webkit2png-to-generate-responsive-screenshots). However, **Paparazzi! is probably the best screenshot tool out there, that is free**. 
 
 It is basically a browser for screenshots, the benefit over browser extensions is the ability to take a whole page screenshot. Whereas screenshot extensions tend to screenshot the viewport and work their way down, which has its downsides. If you’re using a browser extension to do this, **stop, download this and thank me later**.
 

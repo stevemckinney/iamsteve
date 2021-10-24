@@ -13,7 +13,7 @@ id: 136
 slug: "designing-a-pricing-table-in-code"
 ---
 
-Following up from [the design in Illustrator post]({site_url}blog/entry/making-a-pricing-table-in-illustrator), it’s time to code the design. Using flexbox to do the heavy lifting for the layout, the focus can be on matching the design and improving on it through being able to show the button state.
+Following up from [the design in Illustrator post](/blog/making-a-pricing-table-in-illustrator), it’s time to code the design. Using flexbox to do the heavy lifting for the layout, the focus can be on matching the design and improving on it through being able to show the button state.
 
 ## Preview
 It may be better to view a larger version on CodePen.

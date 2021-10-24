@@ -30,22 +30,22 @@ I suggested a pseudo element with a border. However, if you're relying on the be
 
 I've also done the original method I had suggested. As an alternative, as both have advantages and disadvantages.
 
-[See how to remove excess text decoration]({site_url}blog/entry/remove-letter-spacing-from-last-letter)
+[See how to remove excess text decoration](/blog/remove-letter-spacing-from-last-letter)
 
 ## Adobe generator syntax cheatsheet
 I’ve improved the layout of this post, on reflection it was pretty poor. Hopefully, this makes it easier to read.
 
-[See the updated cheatsheet]({site_url}blog/entry/adobe-generator-syntax-cheatsheet)
+[See the updated cheatsheet](/blog/adobe-generator-syntax-cheatsheet)
 
 ## Creating custom stroke width profiles in Illustrator
 I have always wondered how to make a stroke align inside or outside when it's not a closed path. The answer was in this post I had already made. It, like the letter spacing update probably could justify a post on its own.
 
-[See how to align strokes on unclosed paths]({site_url}blog/entry/adobe-generator-syntax-cheatsheet)
+[See how to align strokes on unclosed paths](/blog/adobe-generator-syntax-cheatsheet)
 
 ## Using Sass to create harmonious gradients
 I have made a few grammatical changes. Hopefully, it makes this post easier to understand.
 
-[See how to create harmonious gradients]({site_url}blog/entry/using-sass-to-create-harmonious-gradients)
+[See how to create harmonious gradients](/blog/using-sass-to-create-harmonious-gradients)
 
 ## Horizontal scrolling navigation techniques
 I've written twice on this. With two different methods. Recently I found out that Edge and IE have a way to hide the scroll bar. Which is a great addition to Windows users that use Edge and IE 10 or 11. 
@@ -56,7 +56,7 @@ While there are ways to do it in Firefox and Chrome on Windows it removes scroll
   -ms-overflow-style: -ms-autohiding-scrollbar;
 ```
 
-See how to make horizontal scrolling navigation with [flexbox]({site_url}blog/entry/using-flexbox-for-horizontal-scrolling-navigation) or [display]({site_url}blog/entry/horizontal-scrolling-responsive-menu). 
+See how to make horizontal scrolling navigation with [flexbox](/blog/using-flexbox-for-horizontal-scrolling-navigation) or [display](/blog/horizontal-scrolling-responsive-menu). 
 
 ## That’s it
 Maintenance weeks are something I'm going to do every couple of months or so. I will update posts that could be outdated or have better information, and grammar too.

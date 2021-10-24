@@ -14,7 +14,7 @@ id: 113
 slug: "enhancing-horizontal-scrolling-with-flickity-js"
 ---
 
-I first wrote a tutorial little while back on [horizontal scrolling navigation]({site_url}blog/entry/horizontal-scrolling-responsive-menu), with the intention of accommodating **only** mobile devices. As with every device, I have come across, the usability of horizontal scrolling areas is good.
+I first wrote a tutorial little while back on [horizontal scrolling navigation](/blog/horizontal-scrolling-responsive-menu), with the intention of accommodating **only** mobile devices. As with every device, I have come across, the usability of horizontal scrolling areas is good.
 
 One thing I mentioned within the post was how poor the behaviour is on Windows. The issue with Windows computers is something I wanted to follow up. **Essentially it's a regular carousel**, which I'll be using flickity to add the functionality.
 
@@ -155,7 +155,7 @@ The navigation is reasonably easy. It works from the off. As we’re not using f
 <p data-height="428" data-theme-id="13022" data-slug-hash="BjRPKY" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/BjRPKY/'>Flickity horizontal scrolling navigation</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 ### Content carousel with flickity
-In a post, I wrote previously covering a [scrolling content layout]({site_url}blog/entry/horizontal-scrolling-toggle), in that I used flexbox. Which in this example doesn’t play too well with flickity, this is fine.
+In a post, I wrote previously covering a [scrolling content layout](/blog/horizontal-scrolling-toggle), in that I used flexbox. Which in this example doesn’t play too well with flickity, this is fine.
 
 There are a couple of things to account for. Flickity uses absolute positioning for elements, which our flexbox layout doesn’t like. You need to ‘destroy’ Flickity to continue to allow the toggle functionality to work. After the example, I will show you how to solve these problems.
 

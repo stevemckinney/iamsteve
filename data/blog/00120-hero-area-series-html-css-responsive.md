@@ -135,7 +135,7 @@ body {
 
 This code is somewhat planning for the future, should you build upon this hero area. All body copy should be the `.light-purple` colour, and use Merriweather, with fallbacks to Georgia and serif.
 
-The `line-height` is one that covers the majority of cases. Unitless values are the best choices, because if you set this to a pixel value, in every breakpoint we adjust font size, you would need to adjust `line-height` too. For the description this line-height equates to the 27px in Illustrator. [It’s about finding a balance based on the line length]({site_url}blog/entry/type-scale-line-height-lengths).
+The `line-height` is one that covers the majority of cases. Unitless values are the best choices, because if you set this to a pixel value, in every breakpoint we adjust font size, you would need to adjust `line-height` too. For the description this line-height equates to the 27px in Illustrator. [It’s about finding a balance based on the line length](/blog/type-scale-line-height-lengths).
 
 The background should be `.light-blue`.
 

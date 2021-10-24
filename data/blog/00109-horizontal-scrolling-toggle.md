@@ -18,7 +18,7 @@ I was looking through photos in finder, and I was finding it frustrating to scan
 I’ve never really paid attention to the 'show all' button on the top right. In this case, I clicked it, and it gave me the expected view. I figured this would be a good pattern to replicate.
 
 ## The result
-The technique here uses flexbox for adjustments; it allows us very easily to shift layouts. Equally, it could be done with wider support, but would require more code. I have written about [a technique aimed around navigation using `inline-block` before]({site_url}blog/entry/horizontal-scrolling-responsive-menu).
+The technique here uses flexbox for adjustments; it allows us very easily to shift layouts. Equally, it could be done with wider support, but would require more code. I have written about [a technique aimed around navigation using `inline-block` before](/blog/horizontal-scrolling-responsive-menu).
 
 <p data-height="458" data-theme-id="13022" data-slug-hash="qbOaxp" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/qbOaxp/'>Scrolling carousel toggle</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>

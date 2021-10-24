@@ -24,7 +24,7 @@ Although I’m certainly not the first to use this idea, it has been used in ear
 What made the ‘hamburger’ menu so successful was how discrete and easy it was just to shove away all those items. Which in turn is why it’s was deemed unsuccessful, in terms of engagement. Visibility being the core reason to explore different options, there are other things that would be ideal to avoid.
 
 ### Generally fixed elements because they require two taps
-The way that Mobile Safari on iOS works is terrible for anything fixed towards the bottom of the viewport. Centralising it in the viewport to the left or right can obscure content, which in turn will be equally as annoying. It then comes down to which is more inconvenient for the user; as there are some [good examples for using bottom navigation on a website]({site_url}blog/entry/websites-using-alternatives-to-the-hamburger).
+The way that Mobile Safari on iOS works is terrible for anything fixed towards the bottom of the viewport. Centralising it in the viewport to the left or right can obscure content, which in turn will be equally as annoying. It then comes down to which is more inconvenient for the user; as there are some [good examples for using bottom navigation on a website](/blog/websites-using-alternatives-to-the-hamburger).
 
 ### Anything list like 
 A list like menu can get in the way of the page itself. Although it’s highly accessible from the off, however, I think you can push the more valuable content, you would want the visitor to see initially. Especially on a site where you want the content to be consumed, it could become tedious to scroll past navigation every single you tap a link.
@@ -110,10 +110,10 @@ Once Flickity is implemented, you can retain the `.scroll` CSS and add to that t
 
 As I mentioned earlier, I said to use this cautiously. However, in combination with Flickity you can hide the scrollbar without worry.
 
-> Edit: I have since written a post about [enhancing horizontal scrolling with flickity]({site_url}blog/entry/enhancing-horizontal-scrolling-with-flickity-js). 
+> Edit: I have since written a post about [enhancing horizontal scrolling with flickity](/blog/enhancing-horizontal-scrolling-with-flickity-js). 
 
 ### Using flexbox
-You may also be interested in an [alternative approach with flexbox]({site_url}blog/entry/using-flexbox-for-horizontal-scrolling-navigation). The main differences between using an `inline-block` approach versus a `flex` approach is the code tends to be a little tidier.
+You may also be interested in an [alternative approach with flexbox](/blog/using-flexbox-for-horizontal-scrolling-navigation). The main differences between using an `inline-block` approach versus a `flex` approach is the code tends to be a little tidier.
 
 ## What do you think?
 This is a reasonable way of displaying navigation on the basis of what you have to compete with across devices. Have you used anything like this in recent projects? I'd like to hear on [twitter](http://twitter.com/irsteve). 

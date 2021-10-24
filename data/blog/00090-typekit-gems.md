@@ -13,7 +13,7 @@ id: 90
 slug: "typekit-gems-number-one"
 ---
 
-Here's 4 typefaces from typekit; that you may not have used. These are typefaces I have used in the past and have qualities that I believe make a good choice. Generally they are all [suitable for paragraph text]({site_url}blog/entry/how-to-choose-a-typeface-for-paragraphs). They feature nice italics and a variety of weights. 
+Here's 4 typefaces from typekit; that you may not have used. These are typefaces I have used in the past and have qualities that I believe make a good choice. Generally they are all [suitable for paragraph text](/blog/how-to-choose-a-typeface-for-paragraphs). They feature nice italics and a variety of weights. 
 
 I’m aiming to make this an infrequent series, that I aim to explain the rationale for my choices, rather than just being another ‘listicle’.
 

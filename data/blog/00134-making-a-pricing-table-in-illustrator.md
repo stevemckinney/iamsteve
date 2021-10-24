@@ -46,10 +46,10 @@ To get into more design choices, through the typeface, I’m going to use Work S
 
 <figure><img src="/static/images/blog/pricing-table_example.png"><figcaption>Here’s a quick usage example.</figcaption></figure>
 
-[You can find it on Google Fonts](https://www.google.com/fonts/specimen/Work+Sans), however, [you may like to make your own choice]({site_url}blog/entry/how-to-choose-a-typeface-for-paragraphs).
+[You can find it on Google Fonts](https://www.google.com/fonts/specimen/Work+Sans), however, [you may like to make your own choice](/blog/how-to-choose-a-typeface-for-paragraphs).
 
 ## Choose a colour palette
-If you want to [choose your own palette]({site_url}blog/entry/colour-series-picking-your-palette), I encourage you to, however this is the one I will be using.
+If you want to [choose your own palette](/blog/colour-series-picking-your-palette), I encourage you to, however this is the one I will be using.
 
 <img src="/static/images/blog/pricing-table_colour-palette.png">
 

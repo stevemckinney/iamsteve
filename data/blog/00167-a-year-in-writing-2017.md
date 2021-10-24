@@ -121,14 +121,14 @@ No surprises here, as always Chrome is the runaway leader, with Safari and Firef
 ### Top 10 read articles
 It’s nice to see some of the newer articles I have wrote move into this list in comparison to last year.
 
-1. [Creating a horizontal scrolling responsive menu]({site_url}blog/entry/horizontal-scrolling-responsive-menu)
-2. [Creating custom stroke width profiles in Illustrator]({site_url}blog/entry/creating-custom-stroke-width-profiles-in-illustrator)
+1. [Creating a horizontal scrolling responsive menu](/blog/horizontal-scrolling-responsive-menu)
+2. [Creating custom stroke width profiles in Illustrator](/blog/creating-custom-stroke-width-profiles-in-illustrator)
 3. [Alternatives to Circular](https://iamsteve.me/blog/entry/alternatives-to-circular)
-4. [Using flexbox for horizontal scrolling navigation]({site_url}blog/entry/using-flexbox-for-horizontal-scrolling-navigation)
-5. [Enhancing horizontal scrolling with flickity.js]({site_url}blog/entry/enhancing-horizontal-scrolling-with-flickity-js)
+4. [Using flexbox for horizontal scrolling navigation](/blog/using-flexbox-for-horizontal-scrolling-navigation)
+5. [Enhancing horizontal scrolling with flickity.js](/blog/enhancing-horizontal-scrolling-with-flickity-js)
 6. [Multiple level horizontal scrolling](https://iamsteve.me/blog/entry/multiple-level-horizontal-scrolling-navigation)
 7. [How to use kerning and tracking](https://iamsteve.me/blog/entry/how-to-use-kerning-tracking)
-8. [A guide to vertical rhythm]({site_url}blog/entry/a-guide-to-vertical-rhythm)
+8. [A guide to vertical rhythm](/blog/a-guide-to-vertical-rhythm)
 9. [How to flexible squares with CSS](https://iamsteve.me/blog/entry/how-to-flexible-squares-with-css)
 10. [Websites using alternatives to the hamburger](https://iamsteve.me/blog/entry/websites-using-alternatives-to-the-hamburger)
 

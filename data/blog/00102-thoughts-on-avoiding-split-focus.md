@@ -13,7 +13,7 @@ id: 102
 slug: "thoughts-on-avoiding-split-focus"
 ---
 
-The idea of this post comes from a previous one, ‘[accuracy in wireframes]({site_url}blog/entry/accuracy-in-wireframes)’. I thought more about the topic, which was around trying to decide layout and  adding visual style. Focusing on two very important aspects of making websites leads to difficulties. It was part of a larger problem in my process.
+The idea of this post comes from a previous one, ‘[accuracy in wireframes](/blog/accuracy-in-wireframes)’. I thought more about the topic, which was around trying to decide layout and  adding visual style. Focusing on two very important aspects of making websites leads to difficulties. It was part of a larger problem in my process.
 
 In this post, I want to cover ways, where split focus can creep in, and the purpose of each step, so you can gain an understanding for avoiding split focus. This is based on my process, so yours may differ, but the premise is the same. 
 
@@ -77,7 +77,7 @@ You look at those wireframes and attempt to match the layout in your design. Thr
 **Wireframes should serve as your focus on layout**. It should be getting the best layout for your content so that it makes the most sense. This is why accuracy is so important. Your sketches inform this. The aim is to not think about how it’s going to look visually in the final product, but getting the best layout possible.
 
 ### Where do typefaces come in with wireframes?
-Typefaces should be selected based on their use within the content, having a [good typeface for paragraphs]({site_url}blog/entry/how-to-choose-a-typeface-for-paragraphs) is a must. I consider typefaces part of the layout, as they can vary based on width and weight. 
+Typefaces should be selected based on their use within the content, having a [good typeface for paragraphs](/blog/how-to-choose-a-typeface-for-paragraphs) is a must. I consider typefaces part of the layout, as they can vary based on width and weight. 
 
 If you have an area where it can totally change the look and feel based on what typeface is used, you want to get that right here.
 

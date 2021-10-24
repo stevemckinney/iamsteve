@@ -59,7 +59,7 @@ I spent some time making regular HTML links, then realised how much effort it wa
 ### Sequel Pro tool
 <img src="/static/images/blog/tools_sequel-pro.png">
 
-I missed off Sequel Pro from my tools post. I realised shortly afterwards, I hadn’t added it. [Read the updated article]({site_url}blog/entry/tools-i-use).
+I missed off Sequel Pro from my tools post. I realised shortly afterwards, I hadn’t added it. [Read the updated article](/blog/tools-i-use).
 
 ## That’s it
 Amongst these things progress has slowed getting the redesign done. I have made good progress, much of the homepage is coded, but I need to knuckle down and get a significant amount of posts in the schedule.

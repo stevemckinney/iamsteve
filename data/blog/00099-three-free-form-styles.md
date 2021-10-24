@@ -26,7 +26,7 @@ This is one of the first things; I’ve worked on aside from what’s posts, to 
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Usage
-Each element requires the `.input-base` class. This applies a reset, that [I have wrote about previously]({site_url}blog/entry/how-to-consistently-style-form-elements).
+Each element requires the `.input-base` class. This applies a reset, that [I have wrote about previously](/blog/how-to-consistently-style-form-elements).
 
 ### Text fields (text, email, textarea, etc)
 These require the `.input-text` class. The only difference between these is I’ve applied a `min-height` to the textarea.

@@ -72,7 +72,7 @@ Typeface choices are fairly unrestricted, but for this instance, you’re lookin
 
 I have chosen four colours here. I have chosen a light blue, in a large area this will be bright and welcoming. The second colour is for text, it offers a good legibility against the background blue. Finally, the third colour is for the button, it’s a complementary choice and should draw attention suitably.
 
-> If you’d like to learn more about [choosing colour palettes]({site_url}blog/entry/colour-series-picking-your-palette). [I have written about the techniques I use]({site_url}blog/entry/colour-series-picking-your-palette).
+> If you’d like to learn more about [choosing colour palettes](/blog/colour-series-picking-your-palette). [I have written about the techniques I use](/blog/colour-series-picking-your-palette).
 
 ### Typefaces
 <img src="/static/images/blog/ch-typefaces.png">
@@ -109,7 +109,7 @@ With the guides layer selected, add a rectangle <kbd>m</kbd> that is **1080px** 
 ### Add guides
 With the grid still selected, press <kbd>cmd</kbd> + <kbd>5</kbd>. Now we can toggle this grid. Lock the ‘guides’ layer. You can toggle these guides with <kbd>cmd</kbd> + <kbd>;</kbd>. Make sure these are on throughout.
 
-> I have written about the process of [adding grid guides in Illustrator]({site_url}blog/entry/illustrator-quick-tip-grid-guides). If you need a better reference.
+> I have written about the process of [adding grid guides in Illustrator](/blog/illustrator-quick-tip-grid-guides). If you need a better reference.
 
 ## Fill the artboard
 Now that your document is setup, you need to fill the artboard with the light blue colour. This will be the primary use of this colour. 
@@ -181,11 +181,11 @@ Next is adding the shadow with the colour `#004449` at 20% opacity. Offset X sho
 The shadow is a dark version of the background, with 100% saturation. In most cases I avoid black for shadows, the colour can appear off. Try it out to see the difference.
 
 ## Vertical rhythm
-It’s worth a word on vertical rhythm, as the choices I make tend to be with one in mind. Each element that has a particular size, for example, title, paragraph text and the button, has been chosen in mind of a vertical rhythm. [Vertical rhythm is hard to maintain on the web]({site_url}blog/entry/a-guide-to-vertical-rhythm), but we can, at least, make our choices based on this.
+It’s worth a word on vertical rhythm, as the choices I make tend to be with one in mind. Each element that has a particular size, for example, title, paragraph text and the button, has been chosen in mind of a vertical rhythm. [Vertical rhythm is hard to maintain on the web](/blog/a-guide-to-vertical-rhythm), but we can, at least, make our choices based on this.
 
 The aim is to base everything around 12px. The grid width (1080px) is a multiple of 12, the title is a multiple of 12 and the button height being 48px. 
 
-The only thing that isn't is the text, but that number falls between 12 and 24. [Vertical rhythm is an aid to making good decisions]({site_url}blog/entry/a-guide-to-vertical-rhythm#dontberestrictedbyyourbaseline) and create a pattern with our measurements.
+The only thing that isn't is the text, but that number falls between 12 and 24. [Vertical rhythm is an aid to making good decisions](/blog/a-guide-to-vertical-rhythm#dontberestrictedbyyourbaseline) and create a pattern with our measurements.
 
 ## Aligning text elements
 The positioning is to the left most column of your grid and aligning that to the vertical centre. There are common patterns for how people scan websites, this layout will flow nicely with that in mind, with a typical logo and navigation above.
