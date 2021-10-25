@@ -20,7 +20,7 @@ Following on from the two previous posts which have more practical guidance on m
 
 ## Palette reminder
 <figure>
-<img src="/static/images/blog/colours-original.png">
+<Image src="/static/images/blog/colours-original.png" width={738} height={492} />
 <figcaption>For reference, I’m including the palette as it was from the previous post.</figcaption>
 </figure>
 
@@ -33,21 +33,21 @@ I covered briefly adding a new colour for text on a bright background. Through o
 There are times where new colours are justified. When you need to communicate a certain message to a user, usually there is already a colour associated with that. In these cases, it can be hard to harmonise them with existing choices. The good thing is these colours tend to be used sparingly, but I will show you now.
 
 #### Choosing a new colour
-<img src="/static/images/blog/colours-initial-red.png">
+<Image src="/static/images/blog/colours-initial-red.png" width={738} height={492} />
 
 Taking the example of red, I want to alert the user something is wrong. When I refer to my palette I look at the main purple colour. We have based all our other colours off of this main colour. I take this colour and change the hue to red. This direct switch doesn't work initially.
 
-<img src="/static/images/blog/colours-addition.png">
+<Image src="/static/images/blog/colours-addition.png" width={738} height={492} />
 
 However, if we refer to colour theory, an analogous choice would be more magenta/pink. So the change doesn't have to be huge from our initial choice. It appears to be quite dark, so I've increased saturation and lightness. We have a good match.
 
 ### Tints, shades & tones
-<img src="/static/images/blog/colours-tints-shades.png">
+<Image src="/static/images/blog/colours-tints-shades.png" width={738} height={492} />
 
 Next are tints, shades and tones. A tint is adding white and a shade is adding black. A tone is increasing or decreasing saturation.
 
 <figure>
-<img src="/static/images/blog/colours-illustrator-guide.png">
+<Image src="/static/images/blog/colours-illustrator-guide.png" width={738} height={492} />
 <figcaption>Adobe Illustrator has a colour guide for easy tints & shades.</figcaption>
 </figure>
 
@@ -57,7 +57,7 @@ This is especially true for our more colourful choices. I find on average I need
 
 ## 50% lightness
 <figure>
-<img src="/static/images/blog/colours-grey.png">
+<Image src="/static/images/blog/colours-grey.png" width={738} height={492} />
 <figcaption>An extreme example, but using our colours we have chosen.</figcaption>
 </figure>
 
@@ -66,7 +66,7 @@ Having a colour that's 50% in lightness, it can be a tricky colour to work with.
 In the example, most colours are legible, but it’s hard to achieve a visual hierarchy through colour. Our attention grabbing colours, don’t work as well as they could. For this reason, I try to avoid colours that sit directly in the middle on lightness.
 
 ## Yellow
-<img src="/static/images/blog/colours-yellow.png">
+<Image src="/static/images/blog/colours-yellow.png" width={738} height={492} />
 
 Yellow is a colour that is particularly difficult to work with. To base your palette round yellow, you will have a hard time with tints, shades and complementary colours. Tints tend to need a lot of white to be noticeably different. Shades look like they have been darkened more than they have. Once yellow goes too dark, it doesn’t really look yellow. This is the main issue for me. 
 

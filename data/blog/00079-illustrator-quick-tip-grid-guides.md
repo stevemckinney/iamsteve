@@ -23,7 +23,7 @@ The first step we need is to add a rectangle <kbd>m</kbd>.
 
 ## Split the shape into a grid
 <figure>
-<img src="/static/images/blog/split_grid.png" srcset="/static/images/blog/split_grid.png 1x, /static/images/blog/split_grid.png 2x">
+<Image src="/static/images/blog/split_grid.png" width={738} height={492} />
 <figcaption><p>Object > Path > Split Into Grid</p>
 <p>Choose your options to create a grid suited to your needs.</p></figcaption>
 </figure>
@@ -32,7 +32,7 @@ The first step we need is to add a rectangle <kbd>m</kbd>.
 Currently, the setup doesn’t allow you to hide the grid.
 
 <figure>
-<img src="/static/images/blog/make_guides.png" srcset="/static/images/blog/split_grid.png 1x, /static/images/blog/make_guides.png 2x">
+<Image src="/static/images/blog/make_guides.png" width={738} height={492} />
 <figcaption><p>With your  all your grid selected. Press <kbd>cmd + 5</kbd> or go to View > Guides > Make Guides</p></figcaption>
 </figure>
 

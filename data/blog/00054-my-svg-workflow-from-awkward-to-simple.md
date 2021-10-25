@@ -32,7 +32,7 @@ It's not too much trouble though thankfully if you have a solid shape you have m
 2. Go to file > export > paths to illustrator…
 3. You should see your shape name in the paths dropdown
 
-![Exporting paths in photoshop to illustrator]({site_url}uploads/blog/export_paths.png)
+![Exporting paths in photoshop to illustrator](/static/images/blog/export_paths.png)
 
 4. Click ok and save
 5. Open your path with illustrator
@@ -45,11 +45,11 @@ Alright, so you have your paths in illustrator, either from following the above 
 1. Click the artboard tool or press `shift + o`
 2. Hover over your shape and click the path and it should end up like this
 
-![The artboard is round the icon]({site_url}uploads/blog/svg_artboard.png)
+![The artboard is round the icon](/static/images/blog/svg_artboard.png)
 
 3. Go to file and save, name your file, choose svg as the format and check 'Use Artboards' like this
 
-![Saving an SVG, format SVG, artboards checked]({site_url}uploads/blog/svg_save.png)
+![Saving an SVG, format SVG, artboards checked](/static/images/blog/svg_save.png)
 
 4. Save, generally the options are ok from here, but if you wish to change anything be careful.
 

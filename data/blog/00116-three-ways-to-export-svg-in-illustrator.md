@@ -36,7 +36,7 @@ If you’ve ever been frustrated with the way Illustrator adds extra numbers to 
 ### Assign export to a keyboard shortcut 
 The only issue is it’s not assigned to a keyboard shortcut. The way to set keyboard shortcuts is pressing <kbd>cmd</kbd> + <kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>k</kbd>, or going to Edit > Keyboard Shortcuts in the menu.
 
-<img src="/static/images/blog/keyboard-shortcuts.png">
+<Image src="/static/images/blog/keyboard-shortcuts.png" width={738} height={492} />
 
 You will be presented with this window. Make sure the dropdown menu below the ’Set’ one is on ‘Menu Commands’. Expand file in the command column and find ‘Export’. Next is to click in the shortcut column to begin setting the shortcut.
 
@@ -46,7 +46,7 @@ I recommend setting it to <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>e</kbd>. You 
 Typically this is the way we would save SVG. If you’re on an older version of Illustrator is the method to use. Pressing <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>s</kbd> to open the save window.
 
 <figure>
-<img src="/static/images/blog/save-as-window.png">
+<Image src="/static/images/blog/save-as-window.png" width={738} height={492} />
 <figcaption>As you can see it will prompt you to use export.</figcaption>
 </figure>
 

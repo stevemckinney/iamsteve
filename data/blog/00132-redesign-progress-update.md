@@ -33,11 +33,11 @@ On more recent reflection that design still met criteria of a redesign, but the 
 ### The scrapped design
 I explored several other ideas, within a similar style. Some of these versions at the time were testing my skills of visual design. It was a fun design process.
 
-<figure><img src="/static/images/blog/redesign_iteration-1.png" srcset="/static/images/blog/redesign_iteration-1@2x.png"><figcaption>I wanted to explore different navigation styles. There is also some awkward spacing between the about and dribbble shots.</figcaption></figure>
+<figure><Image src="/static/images/blog/redesign_iteration-1@2x.png" width={738} height={492} /><figcaption>I wanted to explore different navigation styles. There is also some awkward spacing between the about and dribbble shots.</figcaption></figure>
 
-<figure><img src="/static/images/blog/redesign_iteration-2.png" srcset="/static/images/blog/redesign_iteration-2@2x.png"><figcaption>Compacting the layout here was probably the right balance between adventurous and difficulty.</figcaption></figure>
+<figure><Image src="/static/images/blog/redesign_iteration-2@2x.png" width={738} height={492} /><figcaption>Compacting the layout here was probably the right balance between adventurous and difficulty.</figcaption></figure>
 
-<figure><img src="/static/images/blog/redesign_iteration-3.png" srcset="/static/images/blog/redesign_iteration-3@2x.png"><figcaption>I simplified much further, because I kept thinking ‘is it too much?’</figcaption></figure>
+<figure><Image src="/static/images/blog/redesign_iteration-3@2x.png" width={738} height={492} /><figcaption>I simplified much further, because I kept thinking ‘is it too much?’</figcaption></figure>
 
 I tried various routes, and eventually reigned in the approach as I tried to balance the visual design with content and not make it too intense.
 
@@ -52,7 +52,7 @@ Getting into the design, I revisited what I had made previously in making a new 
 ### Reworking an idea further
 Determined to include illustration I went back to the drawing board and changed the idea. I tried to force them to be very closely based on the logo. Which was fine, it worked, but not with the layout. So I made them with a view to fit them in the design.
 
-<figure><img src="/static/images/blog/redesign_mascot-logos.png" srcset="/static/images/blog/redesign_mascot-logos@2x.png"><figcaption>These are the unused Illustrations. I was going for a ‘space’ type theme, it didn’t quite work out.</figcaption></figure>
+<figure><Image src="/static/images/blog/redesign_mascot-logos@2x.png" width={738} height={492} /><figcaption>These are the unused Illustrations. I was going for a ‘space’ type theme, it didn’t quite work out.</figcaption></figure>
 
 The illustrations are an area I spent most time. It’s an area I’m not as confident with, as I’m by no means an illustrator or good at drawing. It’s something I’m working on and I was determined to make it work.
 

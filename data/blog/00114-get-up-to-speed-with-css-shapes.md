@@ -20,23 +20,13 @@ I’ve wanted to explore CSS shapes for a little while now and get a good unders
 
 Currently, we have a reasonable set of flexibility with shapes, and understanding what’s available now will give you a leg up on future additions to CSS shapes.
 
-<div class="article-image">
-<img data-src="/static/images/blog/css-shapes-intro.png" class="lazyload">
-<noscript>
-<img src="/static/images/blog/css-shapes-intro.png">
-</noscript>
-</div>
+<Image src="/static/images/blog/css-shapes-intro.png" width={738} height={492} />
 
 ## Introduction to shape properties
 All shape properties throughout this article rely on the use of floats to work. In future expansion to CSS shapes this won’t be the case, but for now, it’s floats.
 
 ## shape-outside
-<div class="article-image">
-<img data-src="/static/images/blog/css-shapes-initial.jpg" class="lazyload">
-<noscript>
-<img src="/static/images/blog/css-shapes-initial.jpg">
-</noscript>
-</div>
+<Image src="/static/images/blog/css-shapes-initial.jpg" width={738} height={492} />
 
 It's the property you will use for creating shapes. Through `shape-outside` you define the `basic-shape`, `shape-box` and an `image`. You can’t set these individually currently. Additionally, you have properties `shape-margin` and `shape-image-threshold`.
 
@@ -48,12 +38,7 @@ It's the property you will use for creating shapes. Through `shape-outside` you 
   shape-outside: url(path/to/image.png); }
 ```
 ### Clipping the shape
-<div class="article-image">
-<img data-src="/static/images/blog/css-shapes-clip-mask.jpg" class="lazyload">
-<noscript>
-<img src="/static/images/blog/css-shapes-clip-mask.jpg">
-</noscript>
-</div>
+<Image src="/static/images/blog/css-shapes-clip-mask.jpg" width={738} height={492} />
 
 **If you have a square image it will remain square, despite the shape being set**. If you want it to appear that shape, you can use `clip-path`, `border-radius` (if circular), or save the image as the shape you want.
 
@@ -66,12 +51,7 @@ This works similarly to properties like `border-box` and `background-clip`.  The
 ```
 
 ## shape-margin
-<div class="article-image">
-<img data-src="/static/images/blog/css-shapes-shape-margin.jpg" class="lazyload">
-<noscript>
-<img src="/static/images/blog/css-shapes-shape-margin.jpg">
-</noscript>
-</div>
+<Image src="/static/images/blog/css-shapes-shape-margin.jpg" width={738} height={492} />
 
 It will add a margin to the shape that takes into account all the points and draws it directly outwards from those points. As circles do not have points, it will draw it from the centre. 
 
@@ -91,12 +71,7 @@ There are four ways you can create a shape.
 - ellipse
 
 ### Polygon
-<div class="article-image">
-<img data-src="/static/images/blog/css-shapes-hexagon.png" class="lazyload">
-<noscript>
-<img src="/static/images/blog/css-shapes-hexagon.png">
-</noscript>
-</div>
+<Image src="/static/images/blog/css-shapes-hexagon.png" width={738} height={492} />
 
 A polygon can create the most complex shapes. It requires, at least, three points. Each point requires two numbers.
 
@@ -113,12 +88,7 @@ A polygon can create the most complex shapes. It requires, at least, three point
 ```
 
 ### Circle
-<div class="article-image">
-<img data-src="/static/images/blog/css-shapes-circle.png" class="lazyload">
-<noscript>
-<img src="/static/images/blog/css-shapes-circle.png">
-</noscript>
-</div>
+<Image src="/static/images/blog/css-shapes-circle.png" width={738} height={492} />
 
 You can base a circle only on the radius. The outermost point will define this. The centre point determines the position. The syntax is similar to that of gradients and background positioning.
 
@@ -129,12 +99,7 @@ You can base a circle only on the radius. The outermost point will define this. 
 ```
 
 ### Inset
-<div class="article-image">
-<img data-src="/static/images/blog/css-shapes-inset.png" class="lazyload">
-<noscript>
-<img src="/static/images/blog/css-shapes-inset.png">
-</noscript>
-</div>
+<Image src="/static/images/blog/css-shapes-inset.png" width={738} height={492} />
 
 Inset works by creating a rectangular shape. The values work in a familiar fashion: top, right, bottom and left. There is an optional `border-radius` parameter, which can’t be negative. 
 
@@ -144,12 +109,7 @@ Inset works by creating a rectangular shape. The values work in a familiar fashi
 ```
 
 ### Ellipse
-<div class="article-image">
-<img data-src="/static/images/blog/css-shapes-ellipse.png" class="lazyload">
-<noscript>
-<img src="/static/images/blog/css-shapes-ellipse.png">
-</noscript>
-</div>
+<Image src="/static/images/blog/css-shapes-ellipse.png" width={738} height={492} />
 
 An ellipse is similar to a circle in the sense you set the position to form the shape from the same way. However to get the ellipse shape two points are passed.
 
@@ -196,12 +156,7 @@ When using an image, you can set the threshold to a value between 0 and 1. If yo
 If you have a particular part of an image, you want the text to flow around. Take the image and delete the area that isn't the area you want the image to flow round. Once you have done that, make the remaining area black. 
 
 <figure>
-<div class="article-image">
-<img data-src="/static/images/blog/css-shapes-image-mask.gif" class="lazyload">
-<noscript>
-<img src="/static/images/blog/css-shapes-image-mask.gif">
-</noscript>
-</div>
+<Image src="/static/images/blog/css-shapes-image-mask.gif" width={738} height={492} />
 <figcaption>Fill the area you don’t want the text to flow in black. Export the image including the transparent area.</figcaption>
 </figure>
 

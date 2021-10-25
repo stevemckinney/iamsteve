@@ -21,7 +21,7 @@ This is the start of a series where I’m going to take a common design pattern 
 You will plan, design, code and then build upon that with Wordpress to make it editable through the Customizer interface. You'll learn how to use the majority of Wordpress Customizer features and learn how to anticipate changes in a design that allow for some extensive editing. To start the series you’ll be guided through the planning and design phases.
 
 ## What you’re designing
-<img src="/static/images/blog/ch-final-large.png">
+<Image src="/static/images/blog/ch-final-large.png" width={738} height={492} />
 
 ## Don’t want to do the tutorial?
 If you'd like to skip ahead, [download the Illustrator file](https://www.dropbox.com/s/2r51igxo8824ug5/customizer-hero.ai?dl=0){.data-download}.
@@ -45,7 +45,7 @@ We also need to consider different screen sizes, legibility of text on the backg
 ### Sketching
 Sketching is part of any process for me. At this stage, although it may appear a small area, we can explore different layouts for different screen sizes.
 
-<img src="/static/images/blog/ch-sketches.jpg">
+<Image src="/static/images/blog/ch-sketches.jpg" width={738} height={492} />
 
 ### Intentions
 From the sketches, you can see that all of them are quite tall. As mentioned earlier, the aim is to clearly draw attention to this key piece of work.
@@ -63,7 +63,7 @@ The goals for this are to draw attention and appear inviting. So both the colour
 Typeface choices are fairly unrestricted, but for this instance, you’re looking for something to complement the theme. I will be looking for typefaces with plenty of weights and styles.
 
 ### Colour choices
-<img src="/static/images/blog/ch-colour-palette.png">
+<Image src="/static/images/blog/ch-colour-palette.png" width={738} height={492} />
 
 - #c3f2f5 Light blue: primarily a background colour
 - #4e3e68 Dark purple: high contrast for headings
@@ -75,7 +75,7 @@ I have chosen four colours here. I have chosen a light blue, in a large area thi
 > If you’d like to learn more about [choosing colour palettes](/blog/colour-series-picking-your-palette). [I have written about the techniques I use](/blog/colour-series-picking-your-palette).
 
 ### Typefaces
-<img src="/static/images/blog/ch-typefaces.png">
+<Image src="/static/images/blog/ch-typefaces.png" width={738} height={492} />
 
 The choices I have made are Raleway and Merriweather. Raleway will be used for the main heading. There are a few reasons for these choices. Both typefaces have a good variety of styles and weights.
 
@@ -86,12 +86,12 @@ Merriweather complements Raleway well, due to similar x-height and opposing cont
 > Download [Raleway](https://www.google.com/fonts/specimen/Raleway) and [Merriweather](https://www.google.com/fonts/specimen/Merriweather). Add them to a collection on Google Fonts and download.
 
 ## Now to setup our document
-<img src="/static/images/blog/ch-document-setup1.png">
+<Image src="/static/images/blog/ch-document-setup1.png" width={738} height={492} />
 
 Typically I will start a document at 1680px width, the height is more of an estimation. I choose 1680px width as it’s a balance between small and large desktop sizes. It’s worked well for me.
 
 ### Add the needed layers
-<img src="/static/images/blog/ch-new-layer-rename-lock.gif">
+<Image src="/static/images/blog/ch-new-layer-rename-lock.gif" width={738} height={492} />
 
 The image demonstrates adding new layers, renaming and locking them. In the layers panel, we have access to adding, deleting and renaming. To rename double click the layer, alternatively you can double click the small layer image next to the name for more options.
 
@@ -102,7 +102,7 @@ With the guides layer selected, add a rectangle <kbd>m</kbd> that is **1080px** 
 
 ### Choose your grid settings
 <figure>
-<img src="/static/images/blog/ch-split-into-grid.png">
+<Image src="/static/images/blog/ch-split-into-grid.png" width={738} height={492} />
 <figcaption>Go to: Object > Path > Split Into Grid. Add 6 columns. <strong>Make sure not to check add guides here.</strong></figcaption>
 </figure>
 
@@ -115,14 +115,14 @@ With the grid still selected, press <kbd>cmd</kbd> + <kbd>5</kbd>. Now we can to
 Now that your document is setup, you need to fill the artboard with the light blue colour. This will be the primary use of this colour. 
 
 <figure>
-<img src="/static/images/blog/ch-rectangle-dimensions.png">
+<Image src="/static/images/blog/ch-rectangle-dimensions.png" width={738} height={492} />
 <figcaption>Press <kbd>m</kbd> or select the rectangle tool. Click, and then add your dimensions (1680px by 960px).</figcaption>
 </figure>
 
 After that with the rectangle selected, press <kbd>cmd</kbd> + <kbd>2</kbd>. This will lock the layer, it’s handy at this stage because you will avoid selecting it when it’s not necessary.
 
 ## Adding the title & description
-<img src="/static/images/blog/ch-drag-text.gif">
+<Image src="/static/images/blog/ch-drag-text.gif" width={738} height={492} />
 
 Press <kbd>t</kbd> and drag out a text layer 2 columns wide and add your title. Press <kbd>cmd</kbd> + <kbd>return</kbd>, to exit that type layer.
 
@@ -135,7 +135,7 @@ Using the Wordpress Customizer you can make updates to parts of your website wit
 ```
 
 ### Styling the title and description
-<img src="/static/images/blog/ch-type-settings.png">
+<Image src="/static/images/blog/ch-type-settings.png" width={738} height={492} />
 
 |  | Title | Description |
 |--|:-|-:-|
@@ -146,7 +146,7 @@ Using the Wordpress Customizer you can make updates to parts of your website wit
 | Colour | #4e3e68 | #6a6384 |
 
 ### Large titles need balanced lines
-<img src="/static/images/blog/ch-text-balance.png">
+<Image src="/static/images/blog/ch-text-balance.png" width={738} height={492} />
 
 When writing your title specifically in a hero area, there are fewer words per line. You may disregard care for how the line is balanced because there are so few words per line, but it’s equally important.
 
@@ -172,7 +172,7 @@ Next go to Window > Transform, in the transform panel you can adjust the corner 
 
 #### Add the shadow
 <figure>
-<img src="/static/images/blog/ch-add-shadow.png">
+<Image src="/static/images/blog/ch-add-shadow.png" width={738} height={492} />
 <figcaption>To add the following shadow, select your button and go to Effect > Stylize > Drop Shadow</figcaption>
 </figure>
 
@@ -192,7 +192,7 @@ The positioning is to the left most column of your grid and aligning that to the
 
 ### How to align to selection or artboard
 <figure>
-<img src="/static/images/blog/ch-align-text.png">
+<Image src="/static/images/blog/ch-align-text.png" width={738} height={492} />
 <figcaption>
 With your layers selected, in the control bar you can change how alignment is handled.
 </figcaption>
@@ -202,7 +202,7 @@ With your layers selected, in the control bar you can change how alignment is ha
 Select the title, description and button, making sure Align to Selection is enabled. Go to Window > Align, click horizontal align left. Then press <kbd>cmd</kbd> + <kbd>g</kbd>, grouping those layers together.
 
 <figure>
-<img src="/static/images/blog/ch-align-to-artboard.png">
+<Image src="/static/images/blog/ch-align-to-artboard.png" width={738} height={492} />
 <figcaption>Now making sure we align to the artboard. Click the vertical align centre, in the Align window.</figcaption>
 </figure>
 

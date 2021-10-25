@@ -19,13 +19,13 @@ slug: "hero-area-series-designing-for-small-screens"
 The second post in this series the focus switches to small screens. The previous post was primarily on desktop so far, but considerations have been highlighted throughout for smaller screens. I will only cover ‘mobile’ sized resolutions, as for this particular layout you will only need to make minor adjustments for ‘tablet’ sized resolutions.
 
 ## What we’re designing
-<img src="/static/images/blog/ch-final-small.png">
+<Image src="/static/images/blog/ch-final-small.png" width={738} height={492} />
 
 ## Don’t want to do the tutorial?
 If you'd like to skip ahead, [download the completed Illustrator file](https://www.dropbox.com/s/2r51igxo8824ug5/customizer-hero.ai?dl=0){.data-download}.
 
 ## Refresher on the sketches
-<img src="/static/images/blog/ch-sketches.jpg">
+<Image src="/static/images/blog/ch-sketches.jpg" width={738} height={492} />
 
 Referring back to the sketch, the aim is to keep the same kind of layout. It will be tricky to achieve for the 320px to 380px wide screens, you will have to use the space efficiently.
 
@@ -35,7 +35,7 @@ You will want to create a new artboard <kbd>shift</kbd> + <kbd>o</kbd>. Modify t
 I’ve chosen the iPhone 5s resolution size, at 320px wide it gives us a minimum to work with. Like earlier with our main artboard, it’s just an estimation and serves as a guide.
 
 ## Add a background layer
-<img src="/static/images/blog/ch-new-layer-rename-lock.gif">
+<Image src="/static/images/blog/ch-new-layer-rename-lock.gif" width={738} height={492} />
 
 If you’re carrying on [from the previous post](/blog/hero-area-series-plan-design). You added a ‘small-screen’ layer, add the same blue background as our ‘large-screen’ layer, appropriately sized to the artboard.
 
@@ -52,7 +52,7 @@ Change the font size to 12px and the line height to 18px. The width of this text
 Similarly the button needs adjusting, it needs to feel apart of the layout proportionally. The width I ended up with was 108px and 30px height. This should equate padding to around 9px at the top and bottom and 24px left and right. The font size is also adjusted to 12px to match the description.
 
 ### Where you should be
-<img src="/static/images/blog/ch-without-image.png">
+<Image src="/static/images/blog/ch-without-image.png" width={738} height={492} />
 
 We’re aiming for the text and button to occupy just over 50% of the space. For such a narrow screen, it’s important to maintain some kind of line length. The image will occupy enough of the space to be purposeful too.
 
@@ -62,29 +62,29 @@ The image doesn’t seem straight forward, but if you think the whole of the ima
 ### Make a symbol
 Making a symbol allows us to make adjustments to both images from one place, should we need to in future. Go to Window > Symbols, select the image from the larger artboard and drag it into the Symbols panel.
 
-<img src="/static/images/blog/ch-add-symbol.png">
+<Image src="/static/images/blog/ch-add-symbol.png" width={738} height={492} />
 
 You’ll be presented with Symbol Options, give it a name, and change the registration by clicking the top left. Finally, click OK.
 
 ### Adding the symbol
-<img src="/static/images/blog/ch-symbol-panel.png">
+<Image src="/static/images/blog/ch-symbol-panel.png" width={738} height={492} />
 
 With your ‘small-screen’ artboard selected, drag the symbol into your document to your small screen artboard.
 
 ## Masking the artboard
-<img src="/static/images/blog/ch-rough-position.png">
+<Image src="/static/images/blog/ch-rough-position.png" width={738} height={492} />
 
 You’ll have the image roughly positioned. For completeness, we want that to only show. The easiest way to do this is with a mask.
 
 ### Paste the background layer on top
-<img src="/static/images/blog/ch-everything-selected.png">
+<Image src="/static/images/blog/ch-everything-selected.png" width={738} height={492} />
 
 Select the background layer, and paste it in place by pressing <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>. Now select everything on that artboard by clicking and dragging to select.
 
 Finally, press <kbd>cmd</kbd> + <kbd>7</kbd> this makes a mask.
 
 ## What you should end up with
-<img src="/static/images/blog/ch-final-small.png">
+<Image src="/static/images/blog/ch-final-small.png" width={738} height={492} />
 
 As the image demonstrates the Customizer UI is still showing. This is a nice balance of image against text. It won’t always work this favourably, however, if we try, our layouts are much more coherent.
 

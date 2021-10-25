@@ -25,7 +25,7 @@ This was the first site I'd taken a mobile first approach with, and by no means 
 
 ## CSS preprocessors
 
-My other first was this was my first site I used SASS/Compass with. All I can say is I feel it's a godsend, using compass' mixins is such a time saver and allows less room for error. I've heard that it's not all good with CSS preprocessors, such as performance and bloat. I purposely avoid nesting too deep as I hate being too specific and it makes it harder to organise your CSS (Not all my CSS is organised how it should be, but I do fairly well). I've generally focused on performance overall with this website. I'm fairly proud of the speed of most pages, they load under 2 seconds mostly! Back on track, I like how you can avoid adding presentational classes if you need to have something to use elsewhere with `@extend`. I think this is somewhat an Object Oriented CSS approach? I don't have to remember class names, or where I need to apply them. I just extend a bit of code and it has worked well for me in most cases.
+My other first was this was my first site I used Sass/Compass with. All I can say is I feel it's a godsend, using compass' mixins is such a time saver and allows less room for error. I've heard that it's not all good with CSS preprocessors, such as performance and bloat. I purposely avoid nesting too deep as I hate being too specific and it makes it harder to organise your CSS (Not all my CSS is organised how it should be, but I do fairly well). I've generally focused on performance overall with this website. I'm fairly proud of the speed of most pages, they load under 2 seconds mostly! Back on track, I like how you can avoid adding presentational classes if you need to have something to use elsewhere with `@extend`. I think this is somewhat an Object Oriented CSS approach? I don't have to remember class names, or where I need to apply them. I just extend a bit of code and it has worked well for me in most cases.
 
 # Design/content decisions
 
@@ -47,11 +47,11 @@ I also went back to a paged version of my portfolio. As I felt that it's my work
 
 Here are some of the differences between the mobile and desktop versions.
 
-![iPhone view showing the navigation differences](https://iamsteve.test/uploads/blog/Screen_Shot_2011-12-30_at_17.55.56.png)
+![iPhone view showing the navigation differences](/static/images/blog/Screen_Shot_2011-12-30_at_17.55.56.png)
 
 The navigation is positioned at the bottom of the viewport, like all iPhone apps they have their main navigation positioned at the bottom. I followed suit.
 
-![The desktop view resized to a more iPhone like width showing the navigation difference](https://iamsteve.test/uploads/blog/Screen_Shot_2011-12-30_at_17.57.17.png)
+![The desktop view resized to a more iPhone like width showing the navigation difference](/static/images/blog/Screen_Shot_2011-12-30_at_17.57.17.png)
 
 As you can see the difference here the navigation is positioned at the top. This is also the way for iOS versions lower than 5, as fixed positioning isn't the same.
 

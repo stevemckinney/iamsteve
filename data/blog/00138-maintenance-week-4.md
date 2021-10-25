@@ -43,21 +43,21 @@ I uploaded and enabled the addons here and other things round making sure when I
 
 ### Horizontal scrolling responsive menu
 
-[<img src="/static/images/blog/horizontal-scrolling-responsive-featured-image@2x.png">](/blog/horizontal-scrolling-responsive-menu)
+[<Image src="/static/images/blog/horizontal-scrolling-responsive-featured-image@2x.png" width={738} height={492} />](/blog/horizontal-scrolling-responsive-menu)
 
 ### Custom stroke width profiles in Illustrator
 Along with a couple of images inside that post updated, I have added a featured image too.
 
-[<img src="/static/images/blog/illustrator-stroke-width-featured-image@2x.png">](/blog/creating-custom-stroke-width-profiles-in-illustrator)
+[<Image src="/static/images/blog/illustrator-stroke-width-featured-image@2x.png" width={738} height={492} />](/blog/creating-custom-stroke-width-profiles-in-illustrator)
 
 ### Get up to speed with CSS shapes
 
-[<img src="/static/images/blog/css-shapes-featured-image@2x.png">](/blog/get-up-to-speed-with-css-shapes)
+[<Image src="/static/images/blog/css-shapes-featured-image@2x.png" width={738} height={492} />](/blog/get-up-to-speed-with-css-shapes)
 
 ### A guide to vertical rhythm
 
-[<img src="/static/images/blog/vertical-rhythm-featured-image@2x.png">](/blog/a-guide-to-vertical-rhythm)
+[<Image src="/static/images/blog/vertical-rhythm-featured-image@2x.png" width={738} height={492} />](/blog/a-guide-to-vertical-rhythm)
 
 ### Photoshop generator syntax cheatsheet
 
-[<img src="/static/images/blog/ps-generator-featured-image@2x.png">](/blog/adobe-generator-syntax-cheatsheet)
+[<Image src="/static/images/blog/ps-generator-featured-image@2x.png" width={738} height={492} />](/blog/adobe-generator-syntax-cheatsheet)

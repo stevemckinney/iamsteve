@@ -79,7 +79,7 @@ For a simpler use case like one colour icons, taking the SVG we created earlier 
 > How do you handle this? I’d like to hear your tips [@irsteve](http://twitter.com/irsteve)
 
 ## Animating SVG
-For [Lily’s website](http://lilyjavanda.com), I created an illustration of a face chart. They start as a blank canvas for experimenting with looks as a makeup artist. It makes for a fitting way to introduce the website.
+For the website, I created an illustration of a face chart. They start as a blank canvas for experimenting with looks as a makeup artist. It makes for a fitting way to introduce the website.
 
 The aim was to transition from a blank face chart to a filled in face chart. This involved animating fills and strokes. Something that the `<use>` element would make difficult. So you embed the SVG into the page as you would export it.
 

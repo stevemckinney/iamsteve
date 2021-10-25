@@ -52,7 +52,7 @@ introduction
 — description
 — facechart
 
-about lily
+about 
 — image
 — title
 — description
@@ -90,7 +90,7 @@ I can’t see myself ever giving up sketching as a form of getting my ideas down
 Usually I’ll range from 2–4 iterations, in sketch form. They can start smaller and get more detailed, as an idea progresses. I find it quite fun to carry out and it can lead to better layouts overall because you move quickly.
 
 <figure>
-<img src="/static/images/blog/2015-08-25_07.21.3121.jpg" class="wide-image">
+<Image src="/static/images/blog/2015-08-25_07.21.3121.jpg" width={1024} height={768}  class="wide-image" />
 <figcaption>A couple of examples of sketches I’ve done, I’m sure you will have done many times yourself.</figcaption>
 </figure>
 
@@ -108,7 +108,7 @@ I will use my sketches as a guide, that include all of the sections mentioned in
 This is an important part, If you don’t do this already, I recommend you have your choices made early. Part of my process is that I choose them early so that they meet the project goals and what I believe helps in [choosing the right typefaces]().
 
 <figure>
-<img src="/static/images/blog/typefaces-demo.png">
+<Image src="/static/images/blog/typefaces-demo.png" width={738} height={492} />
 <figcaption>This area is quite dependent on the typeface for the layout. The typeface used is quite condensed, using helvetica here at this size would be far wider.</figcaption>
 </figure>
 
@@ -131,7 +131,7 @@ I have done this for a couple of websites recently and have found it to be the r
 The way I like to approach a website now is to build up from a very low fidelity, up to a higher fidelity. With the aim that when I apply the visual style and on to code, I have to make as few decisions as possible.
 
 <figure>
-<img src="/static/images/blog/Screenshot_2015-08-25_07.38.24.jpg">
+<Image src="/static/images/blog/Screenshot_2015-08-25_07.38.24.jpg" width={738} height={492} />
 <figcaption>This is only part of it, but as you can see it’s a detailed wireframe. There is a good amount of work done in this throughout this phase, so it can be built upon later.</figcaption>
 </figure>
 

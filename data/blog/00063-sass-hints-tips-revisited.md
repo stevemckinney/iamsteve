@@ -103,7 +103,7 @@ This is where `@debug` comes in for a way to find out the output of your variabl
 ```
 #### Output
 ```bash
-/Users/Steve/Dropbox/Sites/lily/wp-content/themes/lily/assets/sass/objects/_media.scss:47 DEBUG: max-width 439px
+/Users/Steve/Dropbox/Sites/site-name/wp-content/themes/theme-name/assets/sass/objects/_media.scss:47 DEBUG: max-width 439px
 ```
 
 ## Extensions

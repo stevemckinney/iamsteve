@@ -29,7 +29,7 @@ The gist of both of those posts is the majority of times you should use `srcset`
 A photo of yourself in the about section of your website is as easy as it gets to implement `srcset`.
 
 ```markup
-<img src="photo.jpg" srcset="photo@2x.jpg 2x" alt="…">
+<Image src="photo.jpg" srcset="photo@2x.jpg 2x" alt="…" width={738} height={492} />
 ```
 
 This is great because the browser can decide whether the display is of a higher density or not.

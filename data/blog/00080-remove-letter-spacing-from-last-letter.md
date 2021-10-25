@@ -17,7 +17,7 @@ One of the frustrating things about the letter-spacing property is the addition 
 
 ## The problem
 <figure>
-<img src="/static/images/blog/letter-spacing.png" srcset="/static/images/blog/letter-spacing.png 1x, /static/images/blog/letter-spacing.png 2x">
+<Image src="/static/images/blog/letter-spacing.png" width={738} height={492} />
 <figcaption>
 The top set of text shows you the additional space that is added due to `letter-spacing`. The bottom shows the corrected text with the `margin-right` applied.
 </figcaption>

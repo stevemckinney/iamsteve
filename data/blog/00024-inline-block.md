@@ -23,7 +23,7 @@ The `inline-block` technique is a really handy alternative to a float based layo
 ## Why use inline-block over floats?
 <img data-src="/static/images/blog/inline-block-example.png" class="lazyload">
 <noscript>
-<img src="/static/images/blog/inline-block-example.png">
+<Image src="/static/images/blog/inline-block-example.png" width={738} height={492} />
 </noscript>
 
 It’s easy to say floats were never intended for layout, but that doesn’t stop you from using them. The main benefit to using `inline-block` over floats is your elements don’t require any kind of clearing and the layout doesn't break when you have multiple items of different height. 
@@ -93,7 +93,7 @@ The important thing to note about the CSS is you’ll find text also aligns to t
 <div class="article-image">
 <img data-src="/static/images/blog/inline-block-whitespace.png" class="lazyload">
 <noscript>
-<img src="/static/images/blog/inline-block-whitespace.png">
+<Image src="/static/images/blog/inline-block-whitespace.png" width={738} height={492} />
 </noscript>
 </div>
 

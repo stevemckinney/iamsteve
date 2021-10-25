@@ -140,7 +140,7 @@ function json_ld_logo()
     $html .= '{';
       $html .= '"@context": "http://schema.org",';
       $html .= '"@type": "Person",';
-      $html .= '"name": "Lilybelle",';
+      $html .= '"name": "John Doe",';
       $html .= '"logo": "' . get_template_directory_uri() . '/dist/images/logo.png"';
     $html .= '}';
 

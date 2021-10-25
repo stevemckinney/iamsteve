@@ -24,13 +24,13 @@ So while it’s not a post that directly gives value, it helps me keep on top of
 The main aim of this week was to try get a few featured images out. It’s something I’m going to make more of a consistent thing, when the redesign is complete. Balancing the redesign and writing content, amongst a full time job and life is very tricky. It means it’s necessary, to devote blocks of time, away from writing, so that I can progress.
 
 ### Colour series
-<img src="/static/images/blog/colour-series-post-images-011.png">
+<Image src="/static/images/blog/colour-series-post-images-011.png" width={738} height={492} />
 
 ### Hero area series
-<img src="/static/images/blog/hero-area-post-images-01.png">
+<Image src="/static/images/blog/hero-area-post-images-01.png" width={738} height={492} />
 
 ### How to use swatches in Illustrator
-<img src="/static/images/blog/use-swatches-01.png">
+<Image src="/static/images/blog/use-swatches-01.png" width={738} height={492} />
 
 ### Challenging
 Making featured images is quite challenging. I have focused on doing a quite a few now, during this post and the redesign. Trying to figure out my style and consistency with illustration, is something I’m beginning to nail down.
@@ -57,7 +57,7 @@ I discovered a bug in my particular setup for the way I handle posts in markdown
 I spent some time making regular HTML links, then realised how much effort it was. I needed to find a more convenient fix, which I was able to.
 
 ### Sequel Pro tool
-<img src="/static/images/blog/tools_sequel-pro.png">
+<Image src="/static/images/blog/tools_sequel-pro.png" width={738} height={492} />
 
 I missed off Sequel Pro from my tools post. I realised shortly afterwards, I hadn’t added it. [Read the updated article](/blog/tools-i-use).
 

@@ -34,18 +34,18 @@ These are a few of the reasons you would want to keep it all vector.
 
 ## Using SVG filters in Adobe Illustrator
 <figure>
-<img src="/static/images/blog/svg_filters_img1.png" srcset="/static/images/blog/svg_filters_img1.png 1x, /static/images/blog/svg_filters_img1.png 2x">
+<Image src="/static/images/blog/svg_filters_img1.png" width={738} height={492} />
 <figcaption>In the Illustrator menu **Effect > SVG filters > Apply filter**</figcaption>
 </figure>
 
 ### Creating a filter
 <figure>
-<img src="/static/images/blog/svg_filters_img2.png" srcset="/static/images/blog/svg_filters_img2.png 1x, /static/images/blog/svg_filters_img2.png 2x">
+<Image src="/static/images/blog/svg_filters_img2.png" width={738} height={492} />
 <figcaption>In the same menu, the second icon creates a new filter (the curled page kind of looking one).</figcaption>
 </figure>
 
 <figure>
-<img src="/static/images/blog/svg_filters_img3.png" srcset="/static/images/blog/svg_filters_img3.png 1x, /static/images/blog/svg_filters_img3.png 2x">
+<Image src="/static/images/blog/svg_filters_img3.png" width={738} height={492} />
 <figcaption>You’ll open this window, it’s fairly difficult to somehow know what to type for your filter. You can close that window and choose a filter, then click the fx icon and you’ll be given something you can work with. However, I’ll continue on with a gaussian blur example.</figcaption>
 </figure>
 

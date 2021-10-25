@@ -59,7 +59,7 @@ The next steps are easier to present in a list.
 - In the `inc` folder add `customizer.php`
 
 <figure>
-<img src="/static/images/blog/ch4-file-listing.png">
+<Image src="/static/images/blog/ch4-file-listing.png" width={738} height={492} />
 <figcaption>
 For reference this is what your file listing should look like.
 </figcaption>

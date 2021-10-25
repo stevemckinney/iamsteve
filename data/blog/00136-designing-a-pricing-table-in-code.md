@@ -35,7 +35,7 @@ All items need a containing element `.boxes`, so that you can apply styles to re
 
 Following that ‘package’ should be in it’s own `<div>` with a class `box` and a positional one `box-start`, `box-center`, `box-end`. As each will have a slightly different offset. 
 
-```{.language-markup .code-tall}
+```markup
 <div class="container">
   <div class="boxes">
     <div class="box box-start">
@@ -263,7 +263,7 @@ The active state makes the button smaller, though the scale value may seem a lit
 ## All CSS
 That’s everything to be covered in terms of CSS, here is the full combined CSS, so it’s easier to copy.
 
-```{.language-css .code-tall}
+```css
 /* Container */
 .container {
   padding: 10% 0;

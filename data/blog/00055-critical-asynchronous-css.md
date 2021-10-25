@@ -69,7 +69,7 @@ If you want to reassure yourself, you can use an [online compressor](http://refr
 ### Testing
 When testing it’s best to check in a variety of environments eg: different devices and different connections. My aim was to get the website usable within 3-5 seconds on an edge connection and I used [filament group](http://filamentgroup.com) as a benchmark, their website is speedy. 
 
-I’m not sure if I achieved that, as I didn’t time it. The load time felt much quicker than websites I compared it to and felt comparable to filament group. Though their website has different goals to Lily’s it’s good to have the best to benchmark against.
+I’m not sure if I achieved that, as I didn’t time it. The load time felt much quicker than websites I compared it to and felt comparable to filament group. Though their website has different goals to this portfolio it’s good to have the best to benchmark against.
 
 ### Flash of unstyled content/text
 The content not being styled for a brief amount of time is easy to overcome with inlining your critical CSS. 

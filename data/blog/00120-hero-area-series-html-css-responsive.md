@@ -29,11 +29,11 @@ To export your image, copy and paste it outside of the artboard. This is purely 
 
 Next, select the artboard tool or press <kbd>shift</kbd> + <kbd>o</kbd>. Then click the image, this should draw an artboard to the exact dimensions of the image. This should be the third artboard.
 
-<img src="/static/images/blog/ch-export-artboard-select.png">
+<Image src="/static/images/blog/ch-export-artboard-select.png" width={738} height={492} />
 
 Finally, go to File > Export. You’ll be presented with this window, check Use Artboards and check Range and make that 3. This should be the hero image, if not with the artboard tool selected, you should be able to see, in the top left of each artboard, a number like ’03’. Enter that in the range and click export.
 
-<img src="/static/images/blog/ch-export-settings.png">
+<Image src="/static/images/blog/ch-export-settings.png" width={738} height={492} />
 
 After you’ve clicked export, you will be presented with a window to customise your export. Generally everything that’s there is fine, except make sure ‘Minify’ and ‘Responsive’ are checked.
 

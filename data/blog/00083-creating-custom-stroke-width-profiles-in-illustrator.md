@@ -25,7 +25,7 @@ Select the line tool or press <kbd>\</kbd> and draw out a line of any width.
 <figure>
 <img data-src="/static/images/blog/illustrator-stroke-width-tool@2x1.png" class="lazyload">
 <noscript>
-<img src="/static/images/blog/illustrator-stroke-width-tool@2x1.png">
+<Image src="/static/images/blog/illustrator-stroke-width-tool@2x1.png" width={738} height={492} />
 </noscript>
 <figcaption>
 Press <kbd>shift</kbd> <kbd>w</kbd> or select the width tool.
@@ -41,7 +41,7 @@ With the width tool, there are a few ways, to interact with it, to adjust the wi
 <figure>
 <img data-src="/static/images/blog/illustrator-stroke-width-example@2x.png" class="lazyload">
 <noscript>
-<img src="/static/images/blog/illustrator-stroke-width-example@2x.png">
+<Image src="/static/images/blog/illustrator-stroke-width-example@2x.png" width={738} height={492} />
 </noscript>
 <figcaption>
 Your line should end up something like this.
@@ -54,7 +54,7 @@ Sometimes you may want a smoother line than what the width tool offers from an a
 <div>
 <img data-src="/static/images/blog/width-smoothing.gif" alt="Dragging the width point along to get a smoother line" class="lazyload">
 <noscript>
-<img src="/static/images/blog/width-smoothing.gif" alt="Dragging the width point along to get a smoother line">
+<Image src="/static/images/blog/width-smoothing.gif" alt="Dragging the width point along to get a smoother line" width={738} height={492} />
 </noscript>
 </div>
 
@@ -62,7 +62,7 @@ Sometimes you may want a smoother line than what the width tool offers from an a
 <figure>
 <img data-src="/static/images/blog/width-adding-preset.gif" class="lazyload">
 <noscript>
-<img src="/static/images/blog/width-adding-preset.gif">
+<Image src="/static/images/blog/width-adding-preset.gif" width={738} height={492} />
 </noscript>
 <figcaption>
 Add the width profile to your presets for later reuse.
@@ -77,7 +77,7 @@ You can draw a path and change the variable width, and it appears to go against 
 <figure>
 <img data-src="/static/images/blog/flipping.gif" class="lazyload">
 <noscript>
-<img src="/static/images/blog/flipping.gif">
+<Image src="/static/images/blog/flipping.gif" width={738} height={492} />
 </noscript>
 <figcaption>
 You can flip the variable width profile on either axis.
@@ -93,7 +93,7 @@ Customising can be the tricky part, as the presets can be a little awkward to ad
 <figure>
 <img data-src="/static/images/blog/adjust-existing.gif" class="lazyload">
 <noscript>
-<img src="/static/images/blog/adjust-existing.gif">
+<Image src="/static/images/blog/adjust-existing.gif" width={738} height={492} />
 </noscript>
 <figcaption>
 Choose your existing width profile. Then highlight the points and you can adjust, remove or add more points as necessary.
@@ -108,7 +108,7 @@ I feel like this should be easier, as it wasn’t immediately apparent to me. Th
 
 <img data-src="/static/images/blog/adjust-width-one-side.png" class="lazyload"  alt="Demonstrating adjusting one side of the path with the width tool">
 <noscript>
-<img src="/static/images/blog/adjust-width-one-side.png">
+<Image src="/static/images/blog/adjust-width-one-side.png" width={738} height={492} />
 </noscript>
 
 ### Steps
