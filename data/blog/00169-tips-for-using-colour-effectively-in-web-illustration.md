@@ -136,7 +136,7 @@ In the menu you will find `Select > Same`, if you haven’t used this before, I�
 ### Refine or recolour with ‘Recolor Artwork’
 The colour adjustment tools within Illustrator are really powerful, especially ‘Recolor Artwork’. If you’re close to the colour palette you want, but things don’t feel as harmonious as you would like, these tools can really help.
 
-<Image src="/static/images/blog/colour-in-illustration-recolour-artwork@2x.png" width={738} height={492} />
+<Image src="/static/images/blog/colour-in-illustration-recolour-artwork@2x.png" width={738} height={640} />
 
 Select all of your colours and go to `Edit > Edit Colors > Recolor Artwork`. From here you can adjust each colour individually, and once you click ok it will update all the colours.
 

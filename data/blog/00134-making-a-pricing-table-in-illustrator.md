@@ -16,7 +16,7 @@ slug: "making-a-pricing-table-in-illustrator"
 Pricing tables are reasonably common for various types of services, they serve as a way to give the user an anchor. Generally meaning that you’ll be able to direct the customer into the package the company really wants to sell most of. While this post won’t cover the psychological side of that, it will focus on clarity and visual style. It’s an interesting website element to take a look at, so let’s start.
 
 ## What you’re making and download
-<figure><Image src="/static/images/blog/pricing-table_progress-6.png" class="wide-image" width={1024} height={768} /><figcaption><a href="https://www.dropbox.com/s/a2ukapy2ra9ql84/illustrator-pricing-table-download.ai?dl=0" style="text-decoration:underline">Feel free to download the finished files</a>.</figcaption></figure>
+<figure><Image src="/static/images/blog/pricing-table_progress-6.png" className="wide-image" width={1024} height={768} /><figcaption><a href="https://www.dropbox.com/s/a2ukapy2ra9ql84/illustrator-pricing-table-download.ai?dl=0" style="text-decoration:underline">Feel free to download the finished files</a>.</figcaption></figure>
 
 ## Choose your content
 You may have a real world use, which I would suggest using, but I’m going to use a fictional web hosting service as an example, with developers/designers with the ability to host side projects on different domains.
@@ -64,7 +64,7 @@ If you want to [choose your own palette](/blog/colour-series-picking-your-palett
 ## Position the content
 For this particular element it makes sense to get the rough layout defined by type only. This will allow for the sizes of each of the containing rectangles to be determined easily and changed less. 
 
-<Image src="/static/images/blog/pricing-table_progress-1.png" class="wide-image" width={1024} height={768} />
+<Image src="/static/images/blog/pricing-table_progress-1.png" className="wide-image" width={1024} height={768} />
 
 Start by typing out in separate type layers, spacing the items and groups, in the following order:
 
@@ -113,7 +113,7 @@ Finally, as the text colour won’t be very readable on this background colour c
 ## Check in
 Now that you’ve applied all the text styles, and a background for the buttons you’re not far from complete.
 
-<Image src="/static/images/blog/pricing-table_progress-2.png" class="wide-image" width={1024} height={768} />
+<Image src="/static/images/blog/pricing-table_progress-2.png" className="wide-image" width={1024} height={768} />
 
 ## Making each section clear
 In these next steps you’ll make each section clearer. Firstly, select everything and press <kbd>cmd</kbd> + <kbd>g</kbd> and then open the align panel from Window > Align. Next change ‘Align to:’ to Align to Artboard.
@@ -130,7 +130,7 @@ Now change the background to `#e1f7ee`. With the layer still selected press <kbd
 ### Sectioning
 Find the rounded rectangle tool, then click the artboard and add dimensions 266px width by 516px height with a 4px radius.
 
-<Image src="/static/images/blog/pricing-table_progress-3.png" class="wide-image" width={1024} height={768} />
+<Image src="/static/images/blog/pricing-table_progress-3.png" className="wide-image" width={1024} height={768} />
 
 Once in place, press <kbd>cmd</kbd> + <kbd>[</kbd> until it has gone to the back of the text. 
 
@@ -169,7 +169,7 @@ In the appearance panel, which can be found under Window > Appearance, click the
 Select both of the shadow layers and group them with <kbd>cmd</kbd> + <kbd>g</kbd>.
 
 #### Duplicate
-<Image src="/static/images/blog/pricing-table_progress-5.png" class="wide-image" width={1024} height={768} />
+<Image src="/static/images/blog/pricing-table_progress-5.png" className="wide-image" width={1024} height={768} />
 
 With the group still selected, paste in place <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>. Then nudge across until it lines up nicely at the side. Repeat this process again.
 
@@ -186,7 +186,7 @@ Using <kbd>cmd</kbd> + <kbd>[</kbd>, send the two resized rectangles to the back
 This is [aligning to a key object]({site_url}/blog/entry/illustrator-quick-tip-align-to-key-object), repeat the process for the other side. Then take each side individually and nudge it in 12px.
 
 ## Adding visual separation to the price
-<Image src="/static/images/blog/pricing-table_progress-6.png" class="wide-image" width={1024} height={768} />
+<Image src="/static/images/blog/pricing-table_progress-6.png" className="wide-image" width={1024} height={768} />
 
 After getting this far, there is only improving the visual separation of the price. Add a rectangle that is 266px width by 54px height, with the fill colour `#fff6e5`. Place it roughly behind the price, then using the align to key object technique
 

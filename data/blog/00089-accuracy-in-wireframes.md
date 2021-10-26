@@ -90,7 +90,7 @@ I can’t see myself ever giving up sketching as a form of getting my ideas down
 Usually I’ll range from 2–4 iterations, in sketch form. They can start smaller and get more detailed, as an idea progresses. I find it quite fun to carry out and it can lead to better layouts overall because you move quickly.
 
 <figure>
-<Image src="/static/images/blog/2015-08-25_07.21.3121.jpg" width={1024} height={768}  class="wide-image" />
+<Image src="/static/images/blog/2015-08-25_07.21.3121.jpg" width={1024} height={768}  className="wide-image" />
 <figcaption>A couple of examples of sketches I’ve done, I’m sure you will have done many times yourself.</figcaption>
 </figure>
 

@@ -68,7 +68,7 @@ Finally, you should always test everything is working. The way that I check if a
 In Chrome and Safari you can find cookies under the ‘Resources’ tab.
 
 <figure>
-<img src="/static/images/blog/safari-cookies.png">
+<Image src="/static/images/blog/safari-cookies.png" width={738} height={492} />
 <figcaption>If you need to delete a cookie you can highlight it and press backspace.</figcaption>
 </figure>
 
@@ -76,11 +76,11 @@ In Chrome and Safari you can find cookies under the ‘Resources’ tab.
 In Firefox it’s a little trickier. You need to open developer tools, go into ‘Toolbox Options’ it’s the cog icon third from the right. Then under the heading ‘Default Firefox Developer Tools’ you will find a checkbox for storage. Enable that and the storage tab will be available.
 
 <figure>
-<img src="/static/images/blog/firefox-dev-settings.png">
+<Image src="/static/images/blog/firefox-dev-settings.png" width={738} height={492} />
 <figcaption>Firefox developer tools settings</figcaption>
 </figure>
 
 <figure>
-<img src="/static/images/blog/firefox-cookies.png">
+<Image src="/static/images/blog/firefox-cookies.png" width={738} height={492} />
 <figcaption>Now the storage tab is available, it shares similarities of Safari and Chrome</figcaption>
 </figure>
