@@ -1,10 +1,10 @@
 ---
-title: "The best ink trap fonts for websites"
+title: "The best ink trap typefaces for websites"
 tags: ["design", "typopgrahy"]
 images: ["/static/images/blog/ink-trap-post-image.png"]
 summary: "A practice to improve web font compatibility in the past was to define your font weights and styles as a new font each time. However, it’s for little gain and increases complexity. It’s easy to end up with unsightly double italics or fuzzy bold weights."
 date: "2021-07-28T10:28:00+00:00"
-status: publish
+status: "open"
 ---
 
 If I think back to the first time I saw a typeface with ink traps, it was [Retina](https://frerejones.com/families/retina) by Frere-Jones. I wasn’t immediately fond of the style at first, but trends have a habit of growing on you.
@@ -12,11 +12,11 @@ If I think back to the first time I saw a typeface with ink traps, it was [Retin
 I’ve wanted an opportunity to look at this particular style of type—as I’ve worked on my portfolio and I consider a redesign for this website. Within this post I’m going to detail the things to look for and a bunch of typefaces.
 
 ## What details are you looking for?
-<Image alt="Example / 1476x984" src="/static/images/blog/ink-trap-example-01@2x.png" width={738} height={492} />
+<Image alt="Demonstrating the difference between two fonts with and without ink traps that are more obvious examples" src="/static/images/blog/ink-trap-example-01@2x.png" width={738} height={492} />
 
 The majority in this post will be ‘ink trap’ by definition, but some may use similarly exaggerated forms. As you can see in the example, Averta has a steady tapering towards the joins. Whereas, Whyte has angular notches, which give a sense of the individual letters having part missing.
 
-<Image src="/static/images/blog/ink-trap-example-02@2x.png" width={738} height={492} />
+<Image alt="Demonstrating the difference between two fonts with and without ink traps that are less obvious examples" src="/static/images/blog/ink-trap-example-02@2x.png" width={738} height={492} />
 
 Looking at another less apparent example, with Degular Display the tapering happens far quicker to create a stronger contrast. Unlike Whyte it isn’t as like a ridge, creating a different feel.
 

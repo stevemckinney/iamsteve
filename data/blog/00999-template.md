@@ -11,8 +11,8 @@ images: ["/static/images/blog/ink-trap-post-image.png"]
 large: "/static/images/blog/ink-trap-post-image.png"
 medium: "/static/images/blog/ink-trap-post-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
-status: "open"
-id: 172
+status: "closed"
+id: 173
 slug: "the-best-ink-trap-typefaces-for-websites"
 ---
 
