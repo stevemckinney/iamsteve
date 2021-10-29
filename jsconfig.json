@@ -7,7 +7,7 @@
       "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
       "@/css/*": ["css/*"],
-      "@/images/*": ["public/static/images/*"]
+      "@/images/*": ["/public/static/images/*"]
     }
   }
 }

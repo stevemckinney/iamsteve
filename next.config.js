@@ -30,7 +30,21 @@ module.exports = withBundleAnalyzer({
 
     config.module.rules.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack'],
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            svgoConfig: {
+              plugins: [{
+                prefixIds: {
+                  prefixIds: false,
+                  prefixClassNames: false
+                }
+              }]
+            }
+          }
+        }
+      ],
     })
 
     if (!dev && !isServer) {

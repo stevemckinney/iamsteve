@@ -51,12 +51,12 @@ $default-form-checkbox-background-size: 12px !default;
 
 // Default select images (change colour in svg file)
 // ---------------------------
-$default-form-select-image: image-url("public/static/images/dropdown.svg") no-repeat right 12px center !default;
+$default-form-select-image: url(/public/static/images/dropdown.svg) no-repeat right 12px center !default;
 
 // Default checkbox images (change colour in svg file)
 // ---------------------------
-$default-form-checkbox-image: image-url("public/static/images/checkbox.svg") center center no-repeat !default;
+$default-form-checkbox-image: url(/public/static/images/checkbox.svg) center center no-repeat !default;
 
 // Default search images (change colour in svg file)
 // ---------------------------
-$default-form-search-image: image-url("public/static/images/search.svg") center center no-repeat !default;
+$default-form-search-image: url(/public/static/images/search.svg) center center no-repeat !default;

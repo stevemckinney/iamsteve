@@ -97,11 +97,11 @@
 
 @mixin dashes(
   $position: bottom,
-  $image: "dash-alternate.svg",
+  $image: "/public/static/images/dash-alternate.svg",
   $height: 4px
 ) {
   content: "";
-  background-image: image-url(#{$image});
+  background-image: url(#{$image});
   background-repeat: repeat-x;
   background-position: -12px center;
   height: #{$height};

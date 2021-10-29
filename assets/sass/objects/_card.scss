@@ -96,7 +96,7 @@
 .meta-item-last {
   @include breakpoint(1220px) {
     margin-top: $base-px;
-    background: image-url("public/static/images/dash-neutral-l1.svg") repeat-x left top; } }
+    background: url(/public/static/images/dash-neutral-l1.svg) repeat-x left top; } }
 
 // More links eg: ‘Explore code ->’
 // ---------------------------

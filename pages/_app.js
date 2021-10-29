@@ -1,6 +1,5 @@
-import '@/css/tailwind.css'
-import '@/css/prism.css'
 import '/assets/sass/global.scss'
+import '@/css/prism.css'
 
 import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'
@@ -13,6 +12,7 @@ export default function App({ Component, pageProps }) {
     <ThemeProvider attribute="class">
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <link rel="stylesheet" href="https://use.typekit.net/jqc3tao.css" />
       </Head>
       <Analytics />
       <LayoutWrapper>

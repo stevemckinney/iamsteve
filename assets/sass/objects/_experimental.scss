@@ -58,7 +58,7 @@ $default-flex-grid-map: ( small: $a, medium: $b, large: $c ) !default;
 		&:before {
 			content: "";
 			display: block;
-			background: image-url("dropdown.svg") no-repeat center center;
+			background: url(/public/static/images/dropdown.svg) no-repeat center center;
 			width: em(12px);
 			height: em(6px); } } }
 

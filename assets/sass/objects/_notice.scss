@@ -30,7 +30,7 @@
 		@include experimental-value(top, calc(50% - 6px));
 		@include experimental-value(right, calc(50% - 6px));
 		position: absolute;
-		background: image-url("icons_dark.svg") 0 0 no-repeat;
+		background: url(/public/static/images/icons_dark.svg) 0 0 no-repeat;
 
 		.no-csscalc & {
 			top: 50%;
@@ -80,4 +80,4 @@ $notices: (
 	&:before {
 		display: inline-block;
 		margin: em(-6px) em($base-px) 0 em(3px);
-		background-image: image-url("icons_mixed.svg"); } }
+		background-image: url(/public/static/images/icons_mixed.svg); } }

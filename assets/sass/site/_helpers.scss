@@ -11,7 +11,7 @@
 
 // Commonly used with .meta
 .dashes {
-  background: image-url("public/static/images/dash-neutral-l1.svg") repeat-x left calc(50% + 1px);
+  background: url(/public/static/images/dash-neutral-l1.svg) repeat-x left calc(50% + 1px);
 
   a, li,
   span, time {
