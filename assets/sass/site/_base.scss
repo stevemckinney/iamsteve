@@ -4,7 +4,7 @@
 
 // Color
 // ---------------------------
-$primary: #ff7e6d !global;
+$primary: #ff7e6d;
 $primary-d1: #bf4e45;
 $primary-d2: scale-color($primary-d1, $lightness: -20%);
 $primary-l1: #ffb1a9;
@@ -12,14 +12,14 @@ $primary-l2: #ffcbc7;
 $primary-l3: #ffe8e6;
 $primary-l4: #fff5f3;
 
-$secondary: #27cba4 !global;
+$secondary: #27cba4;
 $secondary-d1: #138466;
 $secondary-l1: #89e3cd;
 $secondary-l2: #b9eee2;
 $secondary-l3: #d5f5ee;
 $secondary-l4: #eafaf6;
 
-$tertiary: #ffdb6d !global;
+$tertiary: #ffdb6d;
 $tertiary-d1: #dba758;
 $tertiary-d2: scale-color($tertiary-d1, $lightness: -20%);
 $tertiary-dc: #8e7c69; // cooler dark $tertiary
@@ -28,7 +28,7 @@ $tertiary-l2: #fff4d1;
 $tertiary-l3: #fff7e0;
 $tertiary-l4: #fffbee;
 
-$alternate: #1a626e !global;
+$alternate: #1a626e;
 $alternate-l1: #56959e;
 $alternate-l2: #bed8d8;
 $alternate-l3: #e9f5f5;
@@ -122,13 +122,13 @@ $social: (
 // ---------------------------
 $emoji: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-$sans: Averta, -apple-system, BlinkMacSystemFont, sans-serif !global;
-$serif: "freight-text-pro", serif, $emoji !global;
-$heading: $sans !global;
-$body: $serif !global;
-$form: $sans !global;
-$element: $sans !global;
-$ui: $sans !global;
+$sans: Averta, -apple-system, BlinkMacSystemFont, sans-serif;
+$serif: "freight-text-pro", serif, $emoji;
+$heading: $sans;
+$body: $serif;
+$form: $sans;
+$element: $sans;
+$ui: $sans;
 
 $measure: 640px; // 30.476190476em new: 640px old: 684px;
 $measure-wide: 720px; // 34.285714286em

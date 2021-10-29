@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Entry content
 // ---------------------------
 .entry-content {
@@ -8,8 +10,8 @@
 
   @include breakpoint($site-width) {
     border-radius: $base-px $base-px 0 0;
-    margin-left: calc(50% - #{$contain/2});
-    margin-right: calc(50% - #{$contain/2}); }
+    margin-left: calc(50% - math.div($contain, 2));
+    margin-right: calc(50% - math.div($contain, 2)); }
 
   img,
   pre,
@@ -139,15 +141,15 @@
       will-change: transform, opacity;
       transition: transform .2s ease-out, opacity .2s ease-out;
       top: .19047619em; // 4px/21px
-      left: $base-px/2;
+      left: math.div($base-px, 2);
       width: 1em;
       height: 1em;
-      background: image-url("arrow-right.svg") no-repeat center center;
+      background: image-url("public/static/images/arrow-right.svg") no-repeat center center;
       opacity: .2; }
 
     a:not(.fragment):hover:after,
     a:not(.fragment):focus:after {
-      transform: translateX($base-px/2);
+      transform: translateX(math.div($base-px, 2));
       opacity: .8; } }
 
   // Aligns to 96px

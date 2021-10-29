@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Conversion mixins/functions
 // ---------------------------
 
@@ -14,17 +16,17 @@
 
 // Half
 @function half($number) {
-  @return $number / 2; }
+  @return math.div($number, 2); }
   
 // Quarter
 @function quarter($number) {
-  @return $number / 4; }
+  @return math.div($number, 4); }
 
 // target / context = result
 // long length version
 // ---------------------------
 @function calc-percent($target, $container: $default-container) {
-	@return ($target / $container) * 100%; }
+	@return math.div($target, $container) * 100%; }
 	
 // shortcut
 @function cp($target, $container: $default-container) {
@@ -33,12 +35,12 @@
 // px to em
 // ---------------------------
 @function em($target-px, $context: map-get($default, context)) {
-	@return ($target-px / $context) * 1em; }
+	@return math.div($target-px, $context) * 1em; }
 
 // px to rem
 // ---------------------------
 @function rem($target-px, $context: map-get($default, context)) {
-	@return ($target-px / $context) * 1rem; }
+	@return math.div($target-px, $context) * 1rem; }
 
 // rem conversion
 // ---------------------------
@@ -49,7 +51,7 @@
 	.no-rem & { #{$property}: $px-values; }
 	// If there is only one (numeric) value, return the property/value line for it.
 	@if type-of($px-values) == "number" {
-		#{$property}: $px-values / $baseline-rem; }
+		#{$property}: math.div($px-values, $baseline-rem); }
 	@else {
 		// Create an empty list that we can dump values into
 		$rem-values: unquote("");
@@ -58,7 +60,7 @@
 			@if $value == 0 {
 				$rem-values: append($rem-values, $value); }
 			@else {
-				$rem-values: append($rem-values, $value / $baseline-rem); } }
+				$rem-values: append($rem-values, math.div($value, $baseline-rem)); } }
 		// Return the property and its list of converted values
 		#{$property}: $rem-values; } }
 
@@ -140,7 +142,7 @@ $yiq-debug: false !default;
 /// @return {Number} - Unitless number
 @function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
-    @return $number / ($number * 0 + 1); }
+    @return math.div($number, ($number * 0 + 1)); }
 
   @return $number; }
 

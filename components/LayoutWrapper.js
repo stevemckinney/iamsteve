@@ -1,53 +1,47 @@
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '@/data/logo.svg'
 import Link from './Link'
 import SectionContainer from './SectionContainer'
 import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 
+// image
+import LogoSmall from '@/images/logo-small.svg'
+import LogoLarge from '@/images/logo-large.svg'
+import Newsletter from '@/images/newsletter.svg'
+
 const LayoutWrapper = ({ children }) => {
   return (
-    <SectionContainer>
-      <div className="flex flex-col justify-between h-screen">
-        <header className="flex items-center justify-between py-10">
-          <div>
-            <Link href="/" aria-label="Tailwind CSS Blog">
-              <div className="flex items-center justify-between">
-                <div className="mr-3">
-                  <Logo />
-                </div>
-                {typeof siteMetadata.headerTitle === 'string' ? (
-                  <div className="hidden h-6 text-2xl font-semibold sm:block">
-                    {siteMetadata.headerTitle}
-                  </div>
-                ) : (
-                  siteMetadata.headerTitle
-                )}
-              </div>
+    <>
+      <header className="header contain-medium contain-large primary" id="header">
+        <a id="skip-navigation" className="visuallyhidden" href="#content">Skip navigation</a>
+        <Link href="/" title="Back to the homepage" className="logo">
+          <LogoLarge />
+          <LogoSmall />
+        </Link>
+        <Link href="{path='newsletter'}" className="tabbar-item tabbar-item-v hide-c sans semibold end">
+          <span class="tabbar-item-text warm-l2">Subscribe</span>
+          <span class="icon icon-nwslttr warm"><Newsletter /></span>
+        </Link>
+        <nav id="nav" className="nav hide-lt-c end primary">
+          {headerNavLinks.map((link) => (
+            <Link
+              key={link.title}
+              href={link.href}
+              className="nav-item"
+            >
+              <span className="icon icon-home"></span>
+              <span className="nav-item-text">{link.title}</span>
             </Link>
-          </div>
-          <div className="flex items-center text-base leading-5">
-            <div className="hidden sm:block">
-              {headerNavLinks.map((link) => (
-                <Link
-                  key={link.title}
-                  href={link.href}
-                  className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-100"
-                >
-                  {link.title}
-                </Link>
-              ))}
-            </div>
-            <ThemeSwitch />
-            <MobileNav />
-          </div>
-        </header>
-        <main className="mb-auto">{children}</main>
-        <Footer />
-      </div>
-    </SectionContainer>
+          ))}
+        </nav>
+        <ThemeSwitch />
+        <MobileNav />
+      </header>
+      <main className="mb-auto">{children}</main>
+      <Footer />
+    </>
   )
 }
 

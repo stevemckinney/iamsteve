@@ -105,7 +105,7 @@ When making a website there are a lot of variables to control this (eg: responsi
 
 The title in the example would look like the following:
 
-```markup
+```
 Illustrator quick tip: non destructive shape&nbsp;editing
 ```
 

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Default variables override in site/_base.scss
 // ---------------------------
 $default: (
@@ -215,9 +217,9 @@ $f6: $text-xsmall !default;
 // Margin helpers
 // ---------------------------
 $m0: 0 !default;
-$m1: $baseline / 4 !default;
-$m2: $baseline / 2 !default;
-$m3: $baseline / 1.5 !default;
+$m1: math.div($baseline, 4) !default;
+$m2: math.div($baseline, 2) !default;
+$m3: math.div($baseline, 1.5) !default;
 $m4: $baseline !default;
 $m5: $baseline * 1.5 !default;
 $m6: $baseline * 2 !default;
@@ -227,9 +229,9 @@ $m8: $baseline * 4 !default;
 // Padding helpers
 // ---------------------------
 $p0: 0 !default;
-$p1: $baseline / 4 !default;
-$p2: $baseline / 2 !default;
-$p3: $baseline / 1.5 !default;
+$p1: math.div($baseline, 4) !default;
+$p2: math.div($baseline, 2) !default;
+$p3: math.div($baseline, 1.5) !default;
 $p4: $baseline !default;
 $p5: $baseline * 1.5 !default;
 $p6: $baseline * 2 !default;

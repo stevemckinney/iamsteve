@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /**
  * Card
  * 3 different sizes, to cover the majority of cases
@@ -85,7 +87,7 @@
 
   svg {
     @include breakpoint($b-max) {
-      margin-right: $base-px / 2;
+      margin-right: math.div($base-px, 2);
       width: 12px; }
 
     @include breakpoint($b) {
@@ -94,7 +96,7 @@
 .meta-item-last {
   @include breakpoint(1220px) {
     margin-top: $base-px;
-    background: image-url("dash-neutral-l1.svg") repeat-x left top; } }
+    background: image-url("public/static/images/dash-neutral-l1.svg") repeat-x left top; } }
 
 // More links eg: ‘Explore code ->’
 // ---------------------------

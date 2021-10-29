@@ -68,7 +68,7 @@ As the images don’t exist on page load, there is no way for the browser to kno
 ### Adjust the markup
 The first step to do this, is to adjust our current markup. The only change is to add a `div` round the image. This is so the image inside has a reference, to be placed and sized correctly. 
 
-```markup
+```markup {1, 3} showLineNumbers
 <div class="image loading">
   <img data-src="image.jpg" data-srcset="image.jpg 1x, image@2x.jpg" class="lazyload">
 </div>
@@ -94,7 +94,7 @@ This calculation is based upon the aspect ratio of the image. To calculate this 
 ### CSS for image sizing
 This is called [the intrinsic ratio method](https://alistapart.com/d/creating-intrinsic-ratios-for-video/example2.html), with a few additional lines of CSS, this sizes your image appropriately. A background gradient has been added to show something will be there.
 
-```css
+```css:image.scss showLineNumbers
 .image {
   position: relative;
   padding-bottom: 66.5492958%;
@@ -116,7 +116,7 @@ Another benefit of lazy loading images is if the visitor doesn’t reach that im
 ### CSS for loading indicator
 The `loading` class will apply the loading indicator and also be used in JavaScript later.
 
-```css
+```css:lazyloading.scss showLineNumbers
 @keyframes scaleout {
   0% {
     transform: scale(0); }
@@ -150,7 +150,7 @@ You’ll also notice `mix-blend-mode`, this will mean that the loading indicator
 ### CSS to fade the image in
 The final step to make it all seamless is to utilise the `lazyload` class. This was added to the `img` tag earlier and gets transformed into `lazyloaded`. You can use this to transition the opacity, or whatever you see fit. 
 
-```css
+```css:lazyloading.scss showLineNumbers
 .lazyload,
 .lazyloading {
   opacity: 0; }
@@ -170,7 +170,7 @@ lazysizes.js has a few events you can utilise to make changes. One of the things
 
 This can be used to stop the loading indicator running in the background. Which I can’t say for certain, but I’m sure it’ll help page performance slightly.
 
-```javascript
+```javascript:lazyloading.js showLineNumbers
 var lazy = function lazy() {
   document.addEventListener('lazyloaded', function (e)  {
     e.target.parentNode.classList.add('image-loaded');
@@ -192,7 +192,7 @@ As mentioned earlier the need for the image to show when JavaScript is disabled.
 
 In your `<head>` you can add some CSS to hide this. It’s the most reliable way to do so.
 
-```markup
+```markup:header.html showLineNumbers
 <noscript>
   <style>
     .image.loading { display: none; }
@@ -205,7 +205,7 @@ With the code in place your design shouldn’t look out of place, for the times 
 ## Flicker of a border around the image
 Occasionally you may see a default browser border, this is because there is no `src` defined in our example.
 
-```markup
+```markup {2} showLineNumbers
 <img 
   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
   data-src="path/to/image.png"

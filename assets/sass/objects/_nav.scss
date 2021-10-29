@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Navigation
 // ---------------------------
 .nav {
@@ -35,7 +37,7 @@
     font-weight: font-weight(semibold); } }
 
 .nav-item-text {
-  padding-left: $base-px/2; }
+  padding-left: math.div($base-px, 2); }
 
 .toggle-search.active {
   color: $warm; }

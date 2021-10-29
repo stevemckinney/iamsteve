@@ -84,7 +84,7 @@ When you add a stroke cap that’s rounded or projecting. It can also affect the
 If centre is the best, how do you size things reliably? The answer is to make a template and use a grid & guides.
 
 ### Enable guides
-<Image src="/static/images/blog/illustrator-stroke-grid-preferences@2x.png" width={738} height={492} />
+<Image src="/static/images/blog/illustrator-stroke-grid-preferences@2x.png" width={896} height={736} />
 
 Go in to the `Illustrator menu > Preferences > Guides & Grid`, to setup your grid. Change ‘gridline every’ to be the size of the object you’re making. Add the same value in subdivisions (or fewer if it suits you better). This way you'll end up with a reliable pixel grid. 
 

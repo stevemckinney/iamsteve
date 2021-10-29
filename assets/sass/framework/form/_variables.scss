@@ -1,7 +1,9 @@
+@use "sass:math";
+
 // Default
 // ---------------------------
 $default-form-label-position: top !default;
-$default-form-label-margin: 0 0 em($base-px/2) !default;
+$default-form-label-margin: 0 0 em(math.div($base-px, 2)) !default;
 $default-form-label-breakpoint: $b !default;
 $default-form-label-input-width: 66.66667% !default;
 $default-form-state: $default-state !default;
@@ -40,7 +42,7 @@ $default-text-elements: (
 
 // Defaults for checkbox/radio
 // ---------------------------
-$default-form-boolean-margin: 0 em($base-px/2) 0 0 !default;
+$default-form-boolean-margin: 0 em(math.div($base-px, 2)) 0 0 !default;
 $default-form-radio-size: 16px !default;
 $default-form-radio-width: $default-form-radio-size !default;
 $default-form-radio-height: $default-form-radio-size !default;
@@ -49,12 +51,12 @@ $default-form-checkbox-background-size: 12px !default;
 
 // Default select images (change colour in svg file)
 // ---------------------------
-$default-form-select-image: image-url("dropdown.svg") no-repeat right 12px center !default;
+$default-form-select-image: image-url("public/static/images/dropdown.svg") no-repeat right 12px center !default;
 
 // Default checkbox images (change colour in svg file)
 // ---------------------------
-$default-form-checkbox-image: image-url("checkbox.svg") center center no-repeat !default;
+$default-form-checkbox-image: image-url("public/static/images/checkbox.svg") center center no-repeat !default;
 
 // Default search images (change colour in svg file)
 // ---------------------------
-$default-form-search-image: image-url("search.svg") center center no-repeat !default;
+$default-form-search-image: image-url("public/static/images/search.svg") center center no-repeat !default;

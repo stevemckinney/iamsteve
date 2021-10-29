@@ -78,7 +78,7 @@ Over the course of the year I’d made some bigger changes but many small improv
 - Critical CSS
 - Lazy loading images
 
-<Image src="/static/images/blog/homepage-change@2x.png" width={738} height={492} />
+<Image src="/static/images/blog/homepage-change@2x.png" width={896} height={420} />
 
 There’s quite a change between these two homepages. It seems people resonated more with the full width hero area in terms of design. 
 

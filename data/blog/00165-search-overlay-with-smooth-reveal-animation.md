@@ -116,11 +116,11 @@ The form markup isn't complex and each individual element has a relevant class n
 
 > You should be able to adjust the form to one that works with your CMS. 
 
-## SCSS: visual style and layout
+## Sass: visual style and layout
 This is where it gets trickier, there's quite a bit to get through for the styling. This bit focuses purely on getting the layout and visual style in place. I’m going to be writing the CSS using Sass, though you can [get the compiled code](https://codepen.io/stevemckinney/pen/bab51a2f0032bd24e33f24b48ca39acb) from the Pen.
 
 ### Variables
-```{.code-tall .language-scss}
+```scss
 // Variables
 $base-px: 8px;
 $breakpoint: 768px;

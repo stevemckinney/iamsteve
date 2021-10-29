@@ -38,11 +38,11 @@ blockquote {
 
   @include breakpoint($ab) {
     background:
-      image-url("dash-neutral.svg") repeat-x -12px top,
-      image-url("dash-neutral.svg") repeat-x -12px bottom;
+      image-url("public/static/images/dash-neutral.svg") repeat-x -12px top,
+      image-url("public/static/images/dash-neutral.svg") repeat-x -12px bottom;
 
     &:before {
-      content: image-url("signpost.svg");
+      content: image-url("public/static/images/signpost.svg");
       margin-left: (-98px - $line - $line);
       margin-right: $line*2; }
 

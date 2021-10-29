@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .tabbar {
   padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 
@@ -38,23 +40,23 @@
   &.active:before {
     top: 6px;
     left: 50%;
-    margin-left: -$line/2; } }
+    margin-left: math.div(-$line, 2); } }
 
 .tabbar-item-v {
   flex-flow: row nowrap;
-  padding: $line/1.5;
+  padding: math.div($line, 1.5);
 
   &.active:before {
     top: 50%;
     right: $base-px;
-    margin-top: -$line/2; } }
+    margin-top: math.div(-$line, 2); } }
 
 .tabbar-item-text {
   font-size: 12px;
   text-transform: lowercase;
 
   .tabbar-item-v & {
-    padding-right: $line/3; } }
+    padding-right: math.div($line, 3); } }
 
 // Headroom
 // ---------------------------

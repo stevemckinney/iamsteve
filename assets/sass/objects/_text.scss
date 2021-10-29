@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // Align
 // ---------------------------
 .text-right { text-align: right; }
@@ -126,11 +128,11 @@ address { font-style: normal; }
 
   &:not(.disabled):hover .icon-right,
   &:not(.disabled):focus .icon-right {
-    transform: translate3d($base-px/3, 0, 0); }
+    transform: translate3d(math.div($base-px, 3), 0, 0); }
 
   &:not(.disabled):hover .icon-left,
   &:not(.disabled):focus .icon-left {
-    transform: translate3d(-#{$base-px/3}, 0, 0); }
+    transform: translate3d(math.div(-$base-px, 3), 0, 0); }
 
   .icon {
     position: relative;
