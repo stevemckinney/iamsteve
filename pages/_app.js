@@ -12,6 +12,30 @@ export default function App({ Component, pageProps }) {
     <ThemeProvider attribute="class">
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <link
+          rel="preload"
+          href="/public/static/fonts/averta/avertastd-regular-webfont.woff2"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/static/fonts/averta/avertastd-regularitalic-webfont.woff2"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/static/fonts/averta/avertastd-semibold-webfont.woff2"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/static/fonts/averta/avertastd-bold-webfont.woff2"
+          as="font"
+          crossOrigin=""
+        />
         <link rel="stylesheet" href="https://use.typekit.net/jqc3tao.css" />
       </Head>
       <Analytics />
