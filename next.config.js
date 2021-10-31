@@ -36,10 +36,7 @@ module.exports = withBundleAnalyzer({
           options: {
             svgoConfig: {
               plugins: [{
-                prefixIds: {
-                  prefixIds: false,
-                  prefixClassNames: false
-                }
+                prefixIds: false
               }]
             }
           }

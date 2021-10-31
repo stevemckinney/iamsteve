@@ -4,12 +4,12 @@ import Link from './Link'
 import SectionContainer from './SectionContainer'
 import Footer from './Footer'
 import Tabbar from './Tabbar'
+import Icon from '@/components/icon'
 // import ThemeSwitch from './ThemeSwitch'
 
 // image
 import Logo from '@/images/logo-small.svg'
 import Logotype from '@/images/logotype-filled.svg'
-import Newsletter from '@/images/newsletter.svg'
 
 const LayoutWrapper = ({ children }) => {
   return (
@@ -22,7 +22,7 @@ const LayoutWrapper = ({ children }) => {
         </Link>
         <Link href="{path='newsletter'}" className="tabbar-item tabbar-item-v hide-c sans semibold end">
           <span className="tabbar-item-text warm-l2">Subscribe</span>
-          <span className="icon icon-nwslttr warm"><Newsletter /></span>
+          <span className="icon icon-nwslttr warm"><Icon kind="newsletter" /></span>
         </Link>
         <nav id="nav" className="nav hide-lt-c end primary">
           {headerNavLinks.map((link) => (
@@ -31,8 +31,10 @@ const LayoutWrapper = ({ children }) => {
               href={link.href}
               className="nav-item"
             >
-              <span className="icon icon-home"></span>
-              <span className="nav-item-text">{link.title}</span>
+              <Icon kind={link.icon} />
+              {link.title !== 'Search' && (
+                <span className="nav-item-text">{link.title}</span>
+              )}
             </Link>
           ))}
         </nav>
