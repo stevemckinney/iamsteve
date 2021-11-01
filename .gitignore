@@ -37,3 +37,5 @@ yarn-error.log*
 
 uploads
 //public/static/images/blog
+.env
+.env.example
