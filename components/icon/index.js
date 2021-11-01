@@ -26,7 +26,7 @@ const components = {
   date: Date,
   design: Design,
   home: Home,
-  newsletter: Newsletter,
+  nwslttr: Newsletter,
   save: Save,
   saved: Saved,
   search: Search,
