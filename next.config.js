@@ -37,7 +37,8 @@ module.exports = withBundleAnalyzer({
             svgoConfig: {
               plugins: [{
                 prefixIds: false,
-                mergePaths: false
+                mergePaths: false,
+                removeViewBox: false
               }]
             }
           }
