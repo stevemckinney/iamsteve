@@ -38,9 +38,7 @@ const Icon = ({ kind }) => {
   const IconSvg = components[kind]
 
   return (
-    <span className={`icon icon-${kind}`}>
-      <IconSvg />
-    </span>
+    <IconSvg />
   )
 }
 

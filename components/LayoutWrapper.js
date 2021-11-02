@@ -33,7 +33,9 @@ const LayoutWrapper = ({ children }) => {
               href={link.href}
               className="nav-item"
             >
-              <Icon kind={link.icon} />
+              <span className={`icon icon-${link.icon}`}>
+                <Icon kind={link.icon} />
+              </span>
               {link.title !== 'Search' && (
                 <span className="nav-item-text">{link.title}</span>
               )}
@@ -41,8 +43,13 @@ const LayoutWrapper = ({ children }) => {
           ))}
         </nav>
       </header>
+      
       <Tabbar />
-      <main id="content">{children}</main>
+      
+      <main id="content">
+        {children}
+      </main>
+      
       <aside className="row row-normal pt6 pt8-d contain contain-medium contain-large between items-end">
         <section className="column column-4-b column-3-d mb6 mb0-b">
           <a href="/" className="logo-footer mb4 primary"><Logo className="logo-small fill-currentcolor" /></a>
