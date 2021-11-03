@@ -12,7 +12,7 @@
   will-change: transform;
   transition: transform .4s ease, box-shadow .4s ease, background-color .8s ease;
   max-height: 96px;
-  background-color: $white;
+  // background-color: $white;
 
   @include breakpoint($c-max) {
     z-index: $z-index-100;
