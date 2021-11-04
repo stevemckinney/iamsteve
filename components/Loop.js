@@ -6,8 +6,14 @@ export async function getStaticProps() {
     return { props: { posts } }
 }
 
-export default function Loop({ posts }) {
+export default function Loop({ posts, amount }) {
     return (
-        {posts}
+        <>
+        const posts = posts.slice(0, {amount}).map((post) => {
+            return (
+                {post}
+            )
+        }
+        </>
     )
 }
