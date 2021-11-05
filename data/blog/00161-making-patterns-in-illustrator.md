@@ -3,7 +3,7 @@ title: "Making patterns in Illustrator"
 date: "2017-04-11T06:30:00+00:00"
 lastmod: "2019-10-04T07:27:49+00:00"
 summary: "Learn how to create, change and duplicate patterns as swatches."
-metadesc: A handy technique for making patterns in Adobe Illustrator. Learn how to create, change and duplicate patterns as swatches."
+metadesc: "A handy technique for making patterns in Adobe Illustrator. Learn how to create, change and duplicate patterns as swatches."
 theme: "#eafaf6"
 tags: ["Design"]
 categories: ["Design"]

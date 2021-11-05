@@ -3,7 +3,7 @@ title: "3D like buttons with CSS"
 date: "2010-09-23T20:50:00+00:00"
 lastmod: "2021-06-02T06:16:28+00:00"
 summary: "In this tutorial I will show you how to make buttons in CSS with a nice 3D like effect. It’s really simple and all it takes is understanding where and when you need box-shadow. It’s all dependent on preference too and how you would like them."
-metadesc: In this tutorial, I will show you how to make buttons in CSS with a 3D like effect."
+metadesc: "In this tutorial, I will show you how to make buttons in CSS with a 3D like effect."
 theme: "#e9f5f5"
 tags: ["Code", "CSS"]
 categories: ["Code"]

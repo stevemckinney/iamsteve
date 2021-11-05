@@ -3,7 +3,7 @@ title: "Illustrator quick tip: grid guides"
 date: "2015-06-16T06:22:00+00:00"
 lastmod: "2017-02-08T19:41:35+00:00"
 summary: "I find myself needing to remember, how do I create a set of grid guides in Illustrator. As I’m a relatively new convert to using Illustrator, well I find myself switching between Illustrator and Photoshop, for much of the work I do. This is a quick tip to show you how to make a grid, for those who just can’t remember, due to it generally being easier to remember in Photoshop. In the post I will cover how to create a simple grid and toggle it’s visibility."
-metadesc: How to add grid guides in Illustrator. Using split into grid and make guides you can make a toggleable grid. It's easy to add a custom grid in Illustrator."
+metadesc: "How to add grid guides in Illustrator. Using split into grid and make guides you can make a toggleable grid. It's easy to add a custom grid in Illustrator."
 theme: "#fefbed"
 tags: ["Design"]
 categories: ["Design"]

@@ -3,7 +3,7 @@ title: "Avoiding split focus will make you a better designer"
 date: "2015-11-24T07:23:00+00:00"
 lastmod: "2016-08-28T10:49:16+00:00"
 summary: "The idea of this post comes from a previous one, ‘accuracy in wireframes’. I thought more about the topic, which was around trying to decide layout and  adding visual style. Focusing on two very important aspects of making websites leads to difficulties. It was part of a larger problem in my process.In this post I want to cover ways, where split focus can creep in, and the purpose of each step, so you can gain understanding for avoiding split focus. This is based on my process, so yours may differ, but the premise is the same."
-metadesc: Sometimes in our design process we can become stuck. The reason for this may be down to focusing on too many things."
+metadesc: "Sometimes in our design process we can become stuck. The reason for this may be down to focusing on too many things."
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design"]

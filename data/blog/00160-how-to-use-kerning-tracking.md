@@ -3,7 +3,7 @@ title: "How to use kerning & tracking"
 date: "2017-03-07T13:25:00+00:00"
 lastmod: "2019-10-04T07:28:23+00:00"
 summary: "Understand the differences between the two, along with how and when to use them."
-metadesc: When using kerning or tracking on your type it can help with legibility or correct the way type looks for a specific situation. It's important to understand the differences and when to use them."
+metadesc: "When using kerning or tracking on your type it can help with legibility or correct the way type looks for a specific situation. It's important to understand the differences and when to use them."
 theme: "#fff3f0"
 tags: ["Design"]
 categories: ["Design"]

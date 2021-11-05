@@ -3,7 +3,7 @@ title: "Patience: a Wordpress tumblog theme"
 date: "2011-12-30T20:41:00+00:00"
 lastmod: "2021-06-04T09:22:39+00:00"
 summary: "I’ve recently released a theme on Superhug which I’ve named “Patience”. It’s my first Wordpress theme that I’ve released in public and hope to release many more."
-metadesc: A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
+metadesc: "A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
 theme: "#e1f7ee"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]

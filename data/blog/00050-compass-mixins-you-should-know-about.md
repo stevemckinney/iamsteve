@@ -3,7 +3,7 @@ title: "Compass mixins you should know about"
 date: "2013-01-03T09:13:00+00:00"
 lastmod: "2016-08-28T12:59:01+00:00"
 summary: "Compass is a brilliant extension to Sass as we all know. We know the time saving CSS3 related mixins it offers, maybe you don’t know some of the lesser praised mixins/functions that offer a similar convenience. I’m going to run through a few of my favourites that I have come to rely on. Such as clearfix, image-height, image-width and a few text replacement options."
-metadesc:  Compass mixins and functions you may not be aware of. Helpers for clearfix, text replacement, getting the image height and width and more."
+metadesc: " Compass mixins and functions you may not be aware of. Helpers for clearfix, text replacement, getting the image height and width and more."
 theme: "#ffede5"
 tags: ["Code", "Sass"]
 categories: ["Code"]

@@ -3,7 +3,7 @@ title: "Sass hints & tips revisited"
 date: "2015-02-24T08:00:00+00:00"
 lastmod: "2021-06-11T07:10:15+00:00"
 summary: "One of my most popular posts Sass hints & tips is a little dated. I was considering just editing the post, but there is still some value in that post. Instead I decided to revisit it through a new post. I will cover a couple of newer additions to Sass that I use and using extensions like Breakpoint for managing media queries in an effective way."
-metadesc: A bunch of Sass hints & tips. How to use maps, @each, uses for &, @extend and media queries."
+metadesc: "A bunch of Sass hints & tips. How to use maps, @each, uses for &, @extend and media queries."
 theme: "#ffede5"
 tags: ["Code"]
 categories: ["Code"]

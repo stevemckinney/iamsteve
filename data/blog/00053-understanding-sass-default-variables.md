@@ -3,7 +3,7 @@ title: "Understanding Sass default variables"
 date: "2013-05-19T10:01:00+00:00"
 lastmod: "2016-09-18T18:40:47+00:00"
 summary: "Sass has a handy feature to create default variables using !default in the same way you would use !important. Why is this handy? Well you can use them to manipulate the default values of a mixin, remove or add certain bits of code based on levels of legacy or experimental support for certain bits of CSS, to name a few."
-metadesc: Sass has a handy feature to create default variables using `!default` in the same way you would use `!important`. It can allow you to override defaults set in Sass extensions or frameworks."
+metadesc: "Sass has a handy feature to create default variables using `!default` in the same way you would use `!important`. It can allow you to override defaults set in Sass extensions or frameworks."
 theme: "#e1f7ee"
 tags: ["Code", "CSS", "Sass"]
 categories: ["Code"]

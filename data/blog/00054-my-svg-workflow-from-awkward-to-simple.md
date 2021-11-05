@@ -3,7 +3,7 @@ title: "My SVG workflow, from awkward to simple"
 date: "2013-09-04T18:44:00+00:00"
 lastmod: "2016-08-28T12:58:22+00:00"
 summary: "Initially I thought it would be quite frustrating to get going with SVG, but after jumping in and seeing where I got it’s quite simple. Much better than exporting 1x and 2x images by far."
-metadesc: The method I use for getting my final SVG's from any situation. I provide a method on how to bring your paths into Illustrator from Photoshop and then export."
+metadesc: "The method I use for getting my final SVG's from any situation. I provide a method on how to bring your paths into Illustrator from Photoshop and then export."
 theme: "#ffede5"
 tags: ["Design", "Code", "CSS", "Sass"]
 categories: ["Design"]

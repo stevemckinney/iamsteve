@@ -3,7 +3,7 @@ title: "A couple of masking techniques in Photoshop"
 date: "2015-07-07T06:38:00+00:00"
 lastmod: "2019-10-01T06:49:55+00:00"
 summary: "I think the variety of masking techniques there are in Photoshop are part of its strongest features. In this post I’ll show you the ones I use most frequently. How to clip images to a shape and how the overlay blending mode can be used as a mask to dodge and burn non-destructively."
-metadesc: A couple of simple techniques for masking. How to do clipping masks and non destructive dodge & burn in Adobe Photoshop."
+metadesc: "A couple of simple techniques for masking. How to do clipping masks and non destructive dodge & burn in Adobe Photoshop."
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design"]

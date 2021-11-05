@@ -3,7 +3,7 @@ title: "Stop a click based on the page"
 date: "2010-10-03T00:45:00+00:00"
 lastmod: "2021-06-02T06:30:57+00:00"
 summary: "I was set a task in University to make a website in short. Part of the requirement was to make each page link, if you are on that page not be clickable. There are a good few advantages to this, mainly, it being required in this case for usability. This can be done with CSS too, but the browser support is limited, as far as I know to Safari, Chrome and Firefox. I could ignore browser support, but this is kind of a key point also within the course that we must accommodate to older browsers."
-metadesc: How to stop clicks on a page navigation link based on the page you're on using jQuery. It's possible to in CSS, this is an alternative approach."
+metadesc: "How to stop clicks on a page navigation link based on the page you're on using jQuery. It's possible to in CSS, this is an alternative approach."
 theme: "#ffede5"
 tags: ["Code", "jQuery"]
 categories: ["Code"]

@@ -3,7 +3,7 @@ title: "Images with srcset & picture"
 date: "2015-01-20T08:00:00+00:00"
 lastmod: "2021-06-10T06:22:53+00:00"
 summary: "Images for me is something I consider the most tricky part of building a website, particularly for a portfolio focused website. It’s important to display these images in the best quality and smallest file size you can."
-metadesc: How to use srcset and picture, with a few use cases for a variety of screen sizes and display densities, 2x and beyond."
+metadesc: "How to use srcset and picture, with a few use cases for a variety of screen sizes and display densities, 2x and beyond."
 theme: "#e1f7ee"
 tags: ["Code"]
 categories: ["Code"]

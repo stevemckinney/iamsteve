@@ -3,7 +3,7 @@ title: "Object fit for full viewport images with ease"
 date: "2015-03-03T08:00:00+00:00"
 lastmod: "2016-08-28T12:52:37+00:00"
 summary: "Discovering this CSS feature will make my life much easier where it concerns the positioning of images. It’s like background-size for background images. It’s easy to use and behaves in a similar way albeit different naming. I’m going to show how object-fit and viewport relative units can allow us, to size inline images, without worrying about distortion."
-metadesc: How to use object-fit to make images using the <img> tag fill the viewport. This method is like background-size but for the img tag."
+metadesc: "How to use object-fit to make images using the <img> tag fill the viewport. This method is like background-size but for the img tag."
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]

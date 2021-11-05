@@ -3,7 +3,7 @@ title: "Shop filter series: visual style"
 date: "2016-10-04T06:30:00+00:00"
 lastmod: "2020-05-12T16:01:28+00:00"
 summary: "The previous post in the series completed the wireframes. They’re a solid basis for adding visual style. The content and interface elements required are all there. Further layout refinements, colour choices, typography and clarity improvements will be made throughout this post."
-metadesc: The content and interface elements required are all there. Further layout refinements, colour choices, typography and clarity improvements will be made throughout this post."
+metadesc: "The content and interface elements required are all there. Further layout refinements, colour choices, typography and clarity improvements will be made throughout this post."
 theme: "#ffe3de"
 tags: ["Design"]
 categories: ["Design"]

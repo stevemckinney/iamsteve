@@ -3,7 +3,7 @@ title: "Using Grunticon to inline SVG"
 date: "2015-10-27T07:34:00+00:00"
 lastmod: "2016-08-28T10:49:57+00:00"
 summary: "Grunticon updated to V2 a while ago now and what came with it was the ability to insert inline SVG. This is great because it can generate the necessary fallbacks and not ruin layout in old browsers with the presence of an <svg> tag. The main benefit of having your SVG inline is it can be easily modified with CSS.All this is done by running a grunt task. However, if you’re not too familiar with using Grunt, or want to avoid build tools altogether, it’s not possible at this stage. I have wrote previously on an alternative approach, however it doesn’t have the inline SVG benefits."
-metadesc: Grunticon updated to V2 a while ago now and what came with it was the ability to insert inline SVG. This post covers how to use it effectively."
+metadesc: "Grunticon updated to V2 a while ago now and what came with it was the ability to insert inline SVG. This post covers how to use it effectively."
 theme: "#e1f7ee"
 tags: ["Code"]
 categories: ["Code"]

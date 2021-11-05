@@ -3,7 +3,7 @@ title: "How to use JSON-LD to replace Microdata with Wordpress"
 date: "2016-03-01T07:30:00+00:00"
 lastmod: "2017-04-10T11:45:12+00:00"
 summary: "Part of the website world is making it more accessible to bots. Be it search, social or a service like Instapaper. The reason we do this is so our content looks more appealing and isn’t left up to them, to scrape text and images they think is best. I’ll be showing you how I have done it recently with JSON-LD."
-metadesc: How to use JSON-LD to add extra information to make your search results appear nicer and more informal."
+metadesc: "How to use JSON-LD to add extra information to make your search results appear nicer and more informal."
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]

@@ -3,7 +3,7 @@ title: "Portfolio additions"
 date: "2010-11-17T22:11:00+00:00"
 lastmod: "2021-06-03T06:07:12+00:00"
 summary: "I’ve added a couple of things to my portfolio as of recent. They’re the “personal website” and my business card, to try show a variation of my skills."
-metadesc: A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
+metadesc: "A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
 theme: "#fffbf2"
 tags: ["Website"]
 categories: ["Website"]

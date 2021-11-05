@@ -3,7 +3,7 @@ title: "Nice and easy lazy loading with lazysizes.js"
 date: "2018-02-11T19:58:00+00:00"
 lastmod: "2019-10-04T07:21:26+00:00"
 summary: "Lazy loading doesn’t have to be difficult, here’s how to add smooth loading images to your website."
-metadesc: Use lazysizes.js to implement lazy loading. This post shows you how to add lazy loading with smooth loading effects that don’t make the page jump about."
+metadesc: "Use lazysizes.js to implement lazy loading. This post shows you how to add lazy loading with smooth loading effects that don’t make the page jump about."
 theme: "#fff3f0"
 tags: ["Design"]
 categories: ["Design"]

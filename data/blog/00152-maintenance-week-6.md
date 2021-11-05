@@ -3,7 +3,7 @@ title: "Maintenance week #6"
 date: "2016-11-15T07:30:00+00:00"
 lastmod: "2018-05-18T06:46:20+00:00"
 summary: "Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies and this type of post details what’s been done."
-metadesc: A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
+metadesc: "A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
 theme: "#f7f2f5"
 tags: ["Design"]
 categories: ["Design"]

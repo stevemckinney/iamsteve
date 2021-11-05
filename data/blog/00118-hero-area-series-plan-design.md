@@ -3,7 +3,7 @@ title: "Hero area series: plan & design"
 date: "2016-03-22T07:30:00+00:00"
 lastmod: "2020-03-24T19:50:21+00:00"
 summary: "This is the start of a series where I’m going to take a common design pattern and go through the process of planning, designing and code. It will follow the process I go through to make websites, but taking a smaller component. The pattern you will focus on within this series is a hero area."
-metadesc: Part one of designing a hero area, the planning and design phase. Choose colours, typefaces and layout."
+metadesc: "Part one of designing a hero area, the planning and design phase. Choose colours, typefaces and layout."
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]

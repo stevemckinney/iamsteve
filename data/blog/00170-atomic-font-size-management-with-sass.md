@@ -3,7 +3,7 @@ title: "‘Atomic’ font size management with Sass"
 date: "2018-06-13T06:27:00+00:00"
 lastmod: "2019-10-10T11:44:17+00:00"
 summary: "In a responsive world, managing font sizes can be tricky. So how can an atomic approach help?"
-metadesc: How many times do you set a font size? How do you manage consistency? An atomic approach can help with both of these issues."
+metadesc: "How many times do you set a font size? How do you manage consistency? An atomic approach can help with both of these issues."
 theme: "#f7fbfb"
 tags: ["Code"]
 categories: ["Code"]

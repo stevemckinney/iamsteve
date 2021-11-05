@@ -3,7 +3,7 @@ title: "Feature detection with CSS using @supports"
 date: "2015-12-08T07:30:00+00:00"
 lastmod: "2016-12-05T21:18:32+00:00"
 summary: "Feature detection is a core part of day to day life as someone who makes websites. It’s one of those features I usually hand off to Modernizr. I recently saw a tweet, which spurred the curiosity to see if we’re ready to use the @supports feature query. Now is definitely a good time to start."
-metadesc: You can now use CSS for feature detection using @supports feature queries. This post shows you how can use it today and replace the likes of Modernizr. "
+metadesc: "You can now use CSS for feature detection using @supports feature queries. This post shows you how can use it today and replace the likes of Modernizr. "
 theme: "#fffbf2"
 tags: ["Code", "CSS"]
 categories: ["Code"]

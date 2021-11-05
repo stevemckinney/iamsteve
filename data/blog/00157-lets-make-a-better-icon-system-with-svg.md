@@ -3,7 +3,7 @@ title: "Let’s make a better icon system with SVG"
 date: "2016-12-20T07:23:00+00:00"
 lastmod: "2020-05-13T09:46:00+00:00"
 summary: "Icon fonts are used for their convenience, which generally can’t be matched by SVG. However, this post aims to guide you through the setup and get to a similar level of convenience."
-metadesc: Make a better icon system with SVG. A guide right through exporting to using the icons and building a system."
+metadesc: "Make a better icon system with SVG. A guide right through exporting to using the icons and building a system."
 theme: "#fff5f3"
 tags: ["Code"]
 categories: ["Code"]

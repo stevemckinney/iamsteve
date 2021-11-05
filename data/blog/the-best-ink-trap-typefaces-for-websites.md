@@ -1,10 +1,19 @@
 ---
 title: "The best ink trap typefaces for websites"
-tags: ["design", "typopgrahy"]
-images: ["/static/images/blog/ink-trap-post-image.png"]
-summary: "A practice to improve web font compatibility in the past was to define your font weights and styles as a new font each time. However, it’s for little gain and increases complexity. It’s easy to end up with unsightly double italics or fuzzy bold weights."
 date: "2021-07-28T10:28:00+00:00"
+lastmod: "2021-07-28T10:28:00+00:00"
+summary: "A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs."
+metadesc: "A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs."
+theme: "#f7fbfb"
+tags: ["design", "typography"]
+categories: ["Design"]
+images: ["/static/images/blog/ink-trap-post-image.png"]
+large: "/static/images/blog/ink-trap-post-image.png"
+medium: "/static/images/blog/ink-trap-post-image-medium.png"
+ogImage: "/assets/og/cover.jpg"
 status: "open"
+id: 172
+slug: "the-best-ink-trap-typefaces-for-websites"
 ---
 
 If I think back to the first time I saw a typeface with ink traps, it was [Retina](https://frerejones.com/families/retina) by Frere-Jones. I wasn’t immediately fond of the style at first, but trends have a habit of growing on you.

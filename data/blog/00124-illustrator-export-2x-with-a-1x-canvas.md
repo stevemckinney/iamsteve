@@ -3,7 +3,7 @@ title: "Illustrator quick tip: export 2x with a 1x canvas"
 date: "2016-05-02T06:30:00+00:00"
 lastmod: "2017-02-08T19:41:08+00:00"
 summary: "So you use Illustrator for designing websites, and that could be because you’re on a retina screen and Illustrator is vector. So you can design at 1x and it not matter, at least that’s the case for me. However, when it comes to exporting it’s a pain, you can use ‘Save to Web’ and increase the size to 200%, but that’s tedious. You know how to export SVG, but exporting PNG files is the issue at retina sizes. In this post I will show you how to overcome that."
-metadesc: In Adobe Illustrator it isn't readily obvious how to export a 1x canvas at 2x. In this quick tip I show you how."
+metadesc: "In Adobe Illustrator it isn't readily obvious how to export a 1x canvas at 2x. In this quick tip I show you how."
 theme: "#fefbed"
 tags: ["Design"]
 categories: ["Design"]

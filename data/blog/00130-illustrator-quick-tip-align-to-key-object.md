@@ -3,7 +3,7 @@ title: "Illustrator quick tip: align to key object"
 date: "2016-06-14T06:27:00+00:00"
 lastmod: "2017-02-08T19:40:54+00:00"
 summary: "Aligning to a key object in Illustrator is one of the most useful alignment options. If you’ve ever been frustrated with aligning objects centrally, then everything nudges over a few pixels. This is where align to key object comes in, read on for how to."
-metadesc: How do you align in place, without everything being offset some pixel amount. Illustrator's align to key object solves this."
+metadesc: "How do you align in place, without everything being offset some pixel amount. Illustrator's align to key object solves this."
 theme: "#fefbed"
 tags: ["Design"]
 categories: ["Design"]

@@ -3,7 +3,7 @@ title: "Add critical CSS with wp_enqueue_scripts"
 date: "2015-09-29T06:40:00+00:00"
 lastmod: "2016-12-02T12:04:11+00:00"
 summary: "Following on nicely from the previous post. One of the things with critical path CSS, is you can’t use wp_enqueue_style. It’s not a huge deal, as the easiest way to get around it is by putting it in your <head> the regular way. Though when you combine that with cookies and <noscript> tags, it can make for quite a messy <head>. Particularly for a Wordpress template, as I have found in the past..In this post I will show you how to avoid this. It’s similar to the way Wordpress recommends you queue your scripts and styles."
-metadesc: With wp_enqueue_scripts we're able to add inline CSS instead of including a file, this means we can add our critical CSS through functions.php."
+metadesc: "With wp_enqueue_scripts we're able to add inline CSS instead of including a file, this means we can add our critical CSS through functions.php."
 theme: "#e1f7ee"
 tags: ["Code"]
 categories: ["Code"]

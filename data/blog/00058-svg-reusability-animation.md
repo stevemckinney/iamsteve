@@ -3,7 +3,7 @@ title: "SVG reusability & animation"
 date: "2015-01-27T08:00:00+00:00"
 lastmod: "2021-06-11T06:05:56+00:00"
 summary: "The great thing about SVG is CSS can modify it. Which allows you to modify the way paths look quite drastically. This is really handy for saving on page weight because you don’t have to load multiple images and it looks like it was meant to happen."
-metadesc: How to animate and change fill colours on inline SVG. Using currentcolor and groups we can animate and manipulate SVG unlike any other image type."
+metadesc: "How to animate and change fill colours on inline SVG. Using currentcolor and groups we can animate and manipulate SVG unlike any other image type."
 theme: "#ffede5"
 tags: ["Code"]
 categories: ["Code"]

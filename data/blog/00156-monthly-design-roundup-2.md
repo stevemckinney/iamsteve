@@ -3,7 +3,7 @@ title: "Monthly design roundup #2"
 date: "2016-12-13T07:30:00+00:00"
 lastmod: "2017-02-08T18:39:56+00:00"
 summary: "The second in a monthly series where I roundup some of the best things in design I found over the course of the previous month. It aims to be a source of website, illustration and branding inspiration, as well as some articles that are a good read."
-metadesc: I roundup some of the best things in design I found over the course of the previous month. It aims to be a source of website, illustration and branding inspiration, as well as some articles that are a good read."
+metadesc: "I roundup some of the best things in design I found over the course of the previous month. It aims to be a source of website, illustration and branding inspiration, as well as some articles that are a good read."
 theme: "#fff8e2"
 tags: ["Design"]
 categories: ["Design"]

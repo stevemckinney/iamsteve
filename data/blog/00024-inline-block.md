@@ -3,7 +3,7 @@ title: "How to use inline-block for layout"
 date: "2016-02-16T07:43:00+00:00"
 lastmod: "2019-11-28T21:02:44+00:00"
 summary: "The inline-block layout technique is a really handy one. It has a few advantages over float based layouts. Float based layouts suffer from needing to be cleared and if height varies it can have undesired effects. With inline-block you don’t need to worry about the height or clearing of elements. However, there are still some things to watch out for, which I will cover in this post. As well as provide a grid setup in Sass for you to use in your projects (should you need one)."
-metadesc: A simple and effective layout technique. Find out how to get rid of the inline-block space and align left, right or to the centre, with ease."
+metadesc: "A simple and effective layout technique. Find out how to get rid of the inline-block space and align left, right or to the centre, with ease."
 theme: "#eafaf6"
 tags: ["Code", "CSS"]
 categories: ["Code"]

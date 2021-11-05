@@ -3,7 +3,7 @@ title: "Redesign progress update"
 date: "2016-06-27T06:27:00+00:00"
 lastmod: "2016-08-28T09:57:12+00:00"
 summary: "One of my aims during redesigning this website is to keep the seamlessness between content output and redesign. It’s not the easiest of tasks, as any time spent writing, is time taken away from the redesign or vice versa."
-metadesc: An update about the progress of the v6 redesign. I show some older iterations of designs and illustration."
+metadesc: "An update about the progress of the v6 redesign. I show some older iterations of designs and illustration."
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]

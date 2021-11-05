@@ -3,7 +3,7 @@ title: "Assignments, dead computer, etc."
 date: "2010-10-22T17:41:00+00:00"
 lastmod: "2021-06-02T06:35:36+00:00"
 summary: "This is the first post in a fair while. Basically I just want to say that I’ll be putting more effort into creating posts fairly soon. The reason I haven’t is I’ve been extremely busy with University. I’ve got a fair few assignments now and I had one to hand in recently (yesterday)."
-metadesc: A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
+metadesc: "A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
 theme: "#fffbf2"
 tags: ["Life"]
 categories: ["Life"]

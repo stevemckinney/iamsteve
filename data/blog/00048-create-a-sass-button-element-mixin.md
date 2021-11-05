@@ -3,7 +3,7 @@ title: "Create a Sass button/element mixin"
 date: "2012-11-03T11:39:00+00:00"
 lastmod: "2016-08-28T12:59:24+00:00"
 summary: "This mixin is one I’ve been using for a few months now to create buttons/anything with a particular style. I call it an element mixin, as it’s not tied to anything. It started off as a plain button mixin, though I found sometimes I just want a button reset (some padding, no border, etc) or no hover/active states. This a very customisable mixin with simple parameters."
-metadesc: Using a mixin we can create a lot of wise assumptions for dealing with the style and colour of buttons. Here's a mixin."
+metadesc: "Using a mixin we can create a lot of wise assumptions for dealing with the style and colour of buttons. Here's a mixin."
 theme: "#e9f5f5"
 tags: ["Code", "Sass"]
 categories: ["Code"]

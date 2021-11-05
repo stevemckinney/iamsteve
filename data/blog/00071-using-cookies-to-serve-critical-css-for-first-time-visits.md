@@ -3,7 +3,7 @@ title: "Using cookies to serve critical CSS for first time visits"
 date: "2015-04-21T06:45:00+00:00"
 lastmod: "2016-08-28T11:00:46+00:00"
 summary: "I wrote about critical path CSS earlier in the year, but didn’t cover using cookies to cover the caching part. So, this post will assume that you’ve previously set up your CSS in a similar manner. If not, I advise you read my post about it.After this post, you’ll be able to setup a cookie, to check if a visitor has the CSS cached and no longer requires the critical path CSS."
-metadesc: How to use cookies to cache your critical CSS. A simple approach involving making your CSS asynchronous, applying a cookie and checking for it."
+metadesc: "How to use cookies to cache your critical CSS. A simple approach involving making your CSS asynchronous, applying a cookie and checking for it."
 theme: "#ffede5"
 tags: ["Code"]
 categories: ["Code"]

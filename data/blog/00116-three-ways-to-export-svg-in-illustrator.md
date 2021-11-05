@@ -3,7 +3,7 @@ title: "3 ways to export SVG in Illustrator"
 date: "2016-03-08T07:30:00+00:00"
 lastmod: "2017-02-08T19:41:21+00:00"
 summary: "Here’s a quick tip of all the ways you can export SVG in Illustrator. Each have their conveniences, advantages and disadvantages. It’s entirely up to you which you use, there isn’t really a bad way."
-metadesc: The different ways you can use Adobe Illustrator to export SVG. Copy and paste, export and save as."
+metadesc: "The different ways you can use Adobe Illustrator to export SVG. Copy and paste, export and save as."
 theme: "#fefbed"
 tags: ["Design"]
 categories: ["Design"]

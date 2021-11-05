@@ -3,7 +3,7 @@ title: "Create a fluid browser with border-image"
 date: "2013-03-24T13:38:00+00:00"
 lastmod: "2021-06-09T06:13:07+00:00"
 summary: "I have been curious to try find a solution to having a fluid browser around portfolio images. I have attempted to find a solution which is as simple as I have been able to find. The overall idea uses :before to apply the browser and border-image, this is purely to offset extra space caused by the widths of the border."
-metadesc: Using border image we can use a small image and define slices to make a repeatable area."
+metadesc: "Using border image we can use a small image and define slices to make a repeatable area."
 theme: "#fffbf2"
 tags: ["Design", "Code", "CSS", "HTML", "Sass"]
 categories: ["Design"]

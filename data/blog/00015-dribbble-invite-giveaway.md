@@ -3,7 +3,7 @@ title: "Dribbble invite giveaway [closed]"
 date: "2010-11-02T00:06:00+00:00"
 lastmod: "2021-06-03T05:50:45+00:00"
 summary: "I have a single Dribbble invite to giveaway. I assume the majority of people who will come to this post will know what Dribbble is but for those who don’t here is a quote from the Dribbble about page."
-metadesc: I have a single Dribbble invite to giveaway. This giveaway is now closed, so no longer are the invites available."
+metadesc: "I have a single Dribbble invite to giveaway. This giveaway is now closed, so no longer are the invites available."
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]

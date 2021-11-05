@@ -3,7 +3,7 @@ title: "Wordpress custom fields"
 date: "2015-06-09T06:41:00+00:00"
 lastmod: "2016-08-28T10:59:28+00:00"
 summary: "I have only recently looked into using the custom meta boxes that come with Wordpress. I’ve been a fan of Advanced Custom Fields for a long time, so it’s something I’ve never had a great urge to use.I’m going share with you over the course of this post how to get them set up. You’ll learn to add them efficiently, how to add custom CSS, change placement to under the title and finally how to use them in your theme."
-metadesc: Learn to add Wordpress Custom Fields efficiently, how to add custom CSS, change placement to under the title and how to use them in your theme."
+metadesc: "Learn to add Wordpress Custom Fields efficiently, how to add custom CSS, change placement to under the title and how to use them in your theme."
 theme: "#e1f7ee"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]

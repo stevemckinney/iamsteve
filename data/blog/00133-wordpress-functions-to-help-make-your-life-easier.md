@@ -3,7 +3,7 @@ title: "Wordpress functions to help make your life easier"
 date: "2016-07-05T06:30:00+00:00"
 lastmod: "2021-10-17T06:52:39+00:00"
 summary: "As part of using Wordpress, and any other part of making a website, for that matter, you acquire reusable parts. As well as discover functions that aren’t shouted about. In this post I’ve shared a few with usage."
-metadesc: A helpful post with useful functions provided by Wordpress for truncation, URL's, how to add excerpts to pages and more."
+metadesc: "A helpful post with useful functions provided by Wordpress for truncation, URL's, how to add excerpts to pages and more."
 theme: "#e1f7ee"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]

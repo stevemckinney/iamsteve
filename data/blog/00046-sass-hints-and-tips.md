@@ -3,7 +3,7 @@ title: "Sass hints & tips"
 date: "2012-03-07T20:23:00+00:00"
 lastmod: "2016-08-28T12:59:47+00:00"
 summary: "Sass/Compass are all the rage lately, well, CSS preprocessors in general. I have been planning to share my knowledge for a while and now feels a good time. This could be a biased approach but I can’t really see a downside to using a preprocessor, when we’re in a world where getting things done quickly is key. So I’m not going to put my pros and cons, just some general thoughts, hints, and tips."
-metadesc: Some tips for beginners using Sass. You'll learn how to use color, mixins and how Sass can help control responsive code."
+metadesc: "Some tips for beginners using Sass. You'll learn how to use color, mixins and how Sass can help control responsive code."
 theme: "#ffede5"
 tags: ["Code", "Sass"]
 categories: ["Code"]

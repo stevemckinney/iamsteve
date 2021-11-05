@@ -3,7 +3,7 @@ title: "Illustrator quick tip: export a colour palette quickly"
 date: "2017-05-09T06:25:00+00:00"
 lastmod: "2019-10-04T07:27:04+00:00"
 summary: "In Illustrator it appears more difficult than it needs to be to export a colour palette to hex values, here’s a quick way."
-metadesc: Using Illustrator there isn't a way to export a colour palette quickly. However, there is a way to do it less tediously than opening and closing the fill window. This post shows you how."
+metadesc: "Using Illustrator there isn't a way to export a colour palette quickly. However, there is a way to do it less tediously than opening and closing the fill window. This post shows you how."
 theme: "#fefbed"
 tags: ["Design"]
 categories: ["Design"]

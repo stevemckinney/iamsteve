@@ -3,7 +3,7 @@ title: "Accuracy in wireframes"
 date: "2015-08-25T06:17:00+00:00"
 lastmod: "2016-08-28T10:54:41+00:00"
 summary: "In this post I’m going to cover a process I’ve brought in for doing wireframes, I’m finding really useful lately. It involves taking back all the visual style and just focusing on the layout of elements — as a result creating accurate wireframes. Then you build up your visual style from there. The problem for me comes from wireframes that have too little detail, being used as the basis for the whole page."
-metadesc: My opinion on why wireframes should be completely accurate to the final design and how it can save you time and frustration."
+metadesc: "My opinion on why wireframes should be completely accurate to the final design and how it can save you time and frustration."
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]

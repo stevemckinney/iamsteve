@@ -3,7 +3,7 @@ title: "Javascript without jQuery"
 date: "2015-01-13T08:00:00+00:00"
 lastmod: "2021-06-10T06:20:47+00:00"
 summary: "This post covers how I used the opportunity to not use jQuery to further my Javascript knowledge, as well as the performance benefits gained from this. I found alternatives to what jQuery offers and it wasn’t completely simple, but hopefully I can show beginners alike how to overcome some of the problems."
-metadesc: Some techniques for getting round the conveniences of jQuery and showing that how easy it is to use vanilla javascript."
+metadesc: "Some techniques for getting round the conveniences of jQuery and showing that how easy it is to use vanilla javascript."
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]

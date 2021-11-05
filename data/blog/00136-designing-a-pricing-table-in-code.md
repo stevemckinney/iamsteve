@@ -3,7 +3,7 @@ title: "Designing a pricing table in code"
 date: "2016-07-26T06:37:00+00:00"
 lastmod: "2016-08-28T09:14:08+00:00"
 summary: "Following up from the design in Illustrator post, it’s time to code the design. Using flexbox to do the heavy lifting for the layout, the focus can be on matching the design and improving on it through being able to show the button state."
-metadesc: Using flexbox to do the heavy lifting for the layout, the focus can be on matching the design and improving on it through being able to show the button state."
+metadesc: "Using flexbox to do the heavy lifting for the layout, the focus can be on matching the design and improving on it through being able to show the button state."
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]

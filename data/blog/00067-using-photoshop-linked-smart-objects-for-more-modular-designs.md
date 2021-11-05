@@ -3,7 +3,7 @@ title: "Using Photoshop linked smart objects for more modular designs"
 date: "2015-03-24T08:00:00+00:00"
 lastmod: "2016-08-28T11:01:32+00:00"
 summary: "This feature was added to Photoshop in the last year or so, as of writing. I aim to show you how it will make your PSDs more manageable. It’s become such a large part of my Photoshop workflow. If you’re not using it, this post will definitely make you want to."
-metadesc: How to use linked smart objects to make your designs more modular and easy to update."
+metadesc: "How to use linked smart objects to make your designs more modular and easy to update."
 theme: "#ffede5"
 tags: ["Design"]
 categories: ["Design"]

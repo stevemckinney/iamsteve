@@ -3,7 +3,7 @@ title: "Using em’s for efficiency"
 date: "2013-04-02T11:55:00+00:00"
 lastmod: "2016-08-28T12:58:40+00:00"
 summary: "There are a lot of CSS frameworks out there that are great, but their biggest flaw to me is their insistence to override styles and not use a relative measurement like em’s to adjust the styles when needed. I realise a lot of the way frameworks are made are to dummy proof them and to provide as much freedom as possible with their use. I still think there is an extent to which it can be done better."
-metadesc: How using em's you can create scalable elements with very little code."
+metadesc: "How using em's you can create scalable elements with very little code."
 theme: "#e9f5f5"
 tags: ["Code", "CSS", "Sass"]
 categories: ["Code"]

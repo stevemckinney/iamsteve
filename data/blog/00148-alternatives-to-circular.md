@@ -3,7 +3,7 @@ title: "Alternatives to Circular"
 date: "2016-10-18T06:30:00+00:00"
 lastmod: "2021-08-04T10:44:26+00:00"
 summary: "Circular is very much in the spotlight at the moment. It has a distinct look to it that so many huge companies are using. From Google to airbnb, it’s everywhere. If you’re looking for alternatives, with different prices and through a different service, this post is for you."
-metadesc: Several alternatives to LL Circular, from myfonts, Typekit and Google Fonts. If you're looking for something cheaper or on a third party service, you will find something here."
+metadesc: "Several alternatives to LL Circular, from myfonts, Typekit and Google Fonts. If you're looking for something cheaper or on a third party service, you will find something here."
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]

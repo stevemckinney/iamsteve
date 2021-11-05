@@ -3,7 +3,7 @@ title: "Responsive vertical rhythm"
 date: "2015-09-08T06:45:00+00:00"
 lastmod: "2017-12-03T13:09:52+00:00"
 summary: "I wrote a fairly lengthy post previously on vertical rhythm. I considered adding a section on how to adjust font sizes whilst maintaining vertical rhythm. However, with the experience of seeing how people struggle with the topic of vertical rhythm, it was best to keep it for a separate post.I will assume you do have a grasp of vertical rhythm, at this point, otherwise some parts may not make sense. In the examples I will be using em units, with Sass. So I assume you will have an understanding of how em units work. However, I will give you a brief overview."
-metadesc: Using em's and changing the font size on the body we can do much of the work for a responsive vertical rhythm"
+metadesc: "Using em's and changing the font size on the body we can do much of the work for a responsive vertical rhythm"
 theme: "#f2f9f9"
 tags: ["Design"]
 categories: ["Design"]

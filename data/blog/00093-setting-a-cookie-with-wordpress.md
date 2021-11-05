@@ -3,7 +3,7 @@ title: "Setting a cookie with Wordpress"
 date: "2015-09-22T06:40:00+00:00"
 lastmod: "2016-08-28T10:51:30+00:00"
 summary: "At one point, I was relying on JavaScript for setting the cookie for my critical path CSS. The issue with that is when JavaScript isn’t available the cookie will not be set. Not a huge deal as the website, would still function.When it comes to Wordpress, it’s not as straight forward as using setcookie in your header.php file or another less than ideal location. In this post I will show you how to set a cookie with Wordpress and use it in your code. The method is very similar to the JavaScript method, with a focus on PHP and Wordpress."
-metadesc: How to set cookies the right way with Wordpress. I show you how to add the action and use it in your theme."
+metadesc: "How to set cookies the right way with Wordpress. I show you how to add the action and use it in your theme."
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]

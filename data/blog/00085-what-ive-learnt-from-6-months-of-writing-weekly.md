@@ -3,7 +3,7 @@ title: "What I’ve learnt from 6 months of writing weekly"
 date: "2015-07-28T06:25:00+00:00"
 lastmod: "2016-08-28T10:55:21+00:00"
 summary: "During the Christmas holidays, I made the decision to write blog posts weekly, at the turn of the year. Knowing that I couldn’t be sure, if I would be able to see through writing, for a whole year. I wrote 4 posts over the course of the Christmas holidays and decided that I would go ahead with it."
-metadesc: I've been writing weekly for six months and here's some of the things I've learnt over that time."
+metadesc: "I've been writing weekly for six months and here's some of the things I've learnt over that time."
 theme: "#e9f5f5"
 tags: ["Website"]
 categories: ["Website"]

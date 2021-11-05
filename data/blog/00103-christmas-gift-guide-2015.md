@@ -3,7 +3,7 @@ title: "Christmas gift guide 2015"
 date: "2015-12-01T07:30:00+00:00"
 lastmod: "2016-08-28T10:49:04+00:00"
 summary: "As it’s the festive time of year, I thought I would add to the lists of gifts that people are writing. Christmas is one of my favourite times of year, not just for the gift giving, but it’s a time to relax and enjoy what surrounds Christmas. Usually there’s a bit of a designer spin on it, which is my aim, but I think they’re suitable for everyone. I own some of these things already, so for what I can I have provided a brief review. There’s a mix of things from notebooks to shoes, with varying price points."
-metadesc: A selection of products that I think would make good gifts for Christmas 2015."
+metadesc: "A selection of products that I think would make good gifts for Christmas 2015."
 theme: "#ffede5"
 tags: ["Website"]
 categories: ["Website"]

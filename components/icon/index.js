@@ -37,9 +37,7 @@ const components = {
 const Icon = ({ kind }) => {
   const IconSvg = components[kind]
 
-  return (
-    <IconSvg />
-  )
+  return <IconSvg />
 }
 
 export default Icon

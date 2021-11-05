@@ -3,7 +3,7 @@ title: "Redirecting an old domain to a new domain with nginx"
 date: "2015-08-04T06:25:00+00:00"
 lastmod: "2016-08-28T10:55:13+00:00"
 summary: "Servers isn’t a topic I thought I would write about, however I had to do something for the first time on nginx. There is plenty of information out there on this topic. As someone who was new to redirecting old and new domains on nginx particularly, the information is making a few assumptions. For me, it wasted much of the time, it took me to do this. As I was second guessing what would happen.In this post I want to reassure you and guide you through the process. Answering the questions, that you may have, for what appears to be a simple looking task."
-metadesc: A reassuring process for how to redirect an old domain to a new domain with nginx. "
+metadesc: "A reassuring process for how to redirect an old domain to a new domain with nginx. "
 theme: "#e1f7ee"
 tags: ["Terminal"]
 categories: ["Terminal"]

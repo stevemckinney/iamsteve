@@ -3,7 +3,7 @@ title: "Designing a pricing table in Illustrator"
 date: "2016-07-12T06:37:00+00:00"
 lastmod: "2016-08-28T09:16:47+00:00"
 summary: "Pricing tables are reasonably common for various types of services, they serve as a way to give the user an anchor. Generally meaning that you’ll be able to direct the customer into the package the company really wants to sell most of. While this post won’t cover the psychological side of that, it will focus on clarity and visual style. It’s an interesting website element to take a look at, so let’s start."
-metadesc: A tutorial on making a stylish pricing table for your product. You'll choose colour, typefaces and design using many of Illustrator's features."
+metadesc: "A tutorial on making a stylish pricing table for your product. You'll choose colour, typefaces and design using many of Illustrator's features."
 theme: "#ffede5"
 tags: ["Design"]
 categories: ["Design"]

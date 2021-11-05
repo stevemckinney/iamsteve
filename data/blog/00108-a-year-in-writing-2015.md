@@ -3,7 +3,7 @@ title: "A year in writing – 2015"
 date: "2016-01-05T07:22:00+00:00"
 lastmod: "2016-12-23T16:50:07+00:00"
 summary: "It’s been a year since I started writing weekly. This is the 52nd post, so it’s fitting to reflect upon the experience of writing over the past year. I hope to inspire you, to take it upon yourself, to write regularly. As I’m certainly not the best writer, but I believe if you’re knowledgeable of a subject, you should be sharing what you know."
-metadesc: It's been a year since I started writing weekly, so I wanted to share some of what I've learnt and some stats."
+metadesc: "It's been a year since I started writing weekly, so I wanted to share some of what I've learnt and some stats."
 theme: "#fffbf2"
 tags: ["Website"]
 categories: ["Website"]

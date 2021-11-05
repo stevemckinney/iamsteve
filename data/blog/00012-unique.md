@@ -3,7 +3,7 @@ title: "Using jQuery to add unique body ID"
 date: "2010-09-24T13:35:00+00:00"
 lastmod: "2021-06-02T06:30:16+00:00"
 summary: "I’m quite a beginner with jQuery, but recently I made a basic free template on my downloads page, and I wanted to actually try put some of my knowledge to use for once. So I made this little jQuery snippet. Say you want to style a page of your website a little differently to the rest of the other pages, be it you want all the h1 headings on the home page to be green and on your about page blue. With these few lines of code you can have an ID added to the body based on the URL’s ending/page name."
-metadesc: A simple technique for using jQuery to add an ID to the body tag based on the page"
+metadesc: "A simple technique for using jQuery to add an ID to the body tag based on the page"
 theme: "#e1f7ee"
 tags: ["Code", "jQuery"]
 categories: ["Code"]

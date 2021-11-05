@@ -3,7 +3,7 @@ title: "Efficient table creation in Illustrator"
 date: "2016-06-21T06:47:00+00:00"
 lastmod: "2016-08-28T09:15:49+00:00"
 summary: "Tables in general are something I naturally avoid doing in design applications, they’re frustrating to make. They are easily to overlook due to this and that they can be quite uncommon in use. Let’s say you wanted to design a table in Illustrator, and you wanted a quick and accurate way to do so. This post will show you how."
-metadesc: Tables overlooked in design due to frustration making them. Let’s say you wanted to design a table in Illustrator, and you wanted a quick and accurate way to do so. This post will show you how."
+metadesc: "Tables overlooked in design due to frustration making them. Let’s say you wanted to design a table in Illustrator, and you wanted a quick and accurate way to do so. This post will show you how."
 theme: "#fffbf2"
 tags: ["Design"]
 categories: ["Design"]

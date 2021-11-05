@@ -3,7 +3,7 @@ title: "Remove letter-spacing from last letter"
 date: "2015-06-23T06:25:00+00:00"
 lastmod: "2016-08-28T10:58:55+00:00"
 summary: "One of the frustrating things about the letter-spacing property is the addition of the letter-spacing you apply to the last letter of the text. This is fine when you have left aligned text, however if you right align or centre the text, you’re left with a little bit of space."
-metadesc: How to remove letter spacing from the last letter and how to hide excess underline from text decoration."
+metadesc: "How to remove letter spacing from the last letter and how to hide excess underline from text decoration."
 theme: "#fffbf2"
 tags: ["Code", "CSS"]
 categories: ["Code"]

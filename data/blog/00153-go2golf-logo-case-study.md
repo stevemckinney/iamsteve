@@ -3,7 +3,7 @@ title: "Go2Golf logo case study"
 date: "2016-11-29T07:30:00+00:00"
 lastmod: "2016-12-05T13:57:34+00:00"
 summary: "I’ve been working on a recent branding project for a company called Go 2 Golf. It will be a website that will help people find golf courses across the UK. The first step for them was to have a logo made, this is the process I went through to make it."
-metadesc: I’ve been working on a recent branding project for a company called Go 2 Golf. It will be a website that will help people find golf courses across the UK."
+metadesc: "I’ve been working on a recent branding project for a company called Go 2 Golf. It will be a website that will help people find golf courses across the UK."
 theme: "#fff8e2"
 tags: ["Design"]
 categories: ["Design"]

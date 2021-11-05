@@ -3,7 +3,7 @@ title: "Visual design tips you can apply immediately"
 date: "2017-07-04T11:51:00+00:00"
 lastmod: "2019-10-04T07:24:49+00:00"
 summary: "Add a little extra polish to any of your designs with these tips."
-metadesc: When designing there are things you can rely upon regardless of the situation. These are things which add extra polish, and are generally hidden to the untrained eye."
+metadesc: "When designing there are things you can rely upon regardless of the situation. These are things which add extra polish, and are generally hidden to the untrained eye."
 theme: "#fff7e0"
 tags: ["Design"]
 categories: ["Design"]

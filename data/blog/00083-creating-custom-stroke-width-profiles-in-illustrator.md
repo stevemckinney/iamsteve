@@ -3,7 +3,7 @@ title: "Creating custom stroke width profiles in Illustrator"
 date: "2015-07-14T06:33:00+00:00"
 lastmod: "2017-08-19T16:22:46+00:00"
 summary: "Illustrator has a fair variety of default width profiles, however you may find yourself wanting to tweak them slightly. In my case I needed to tweak one, for creating some eyelashes. It’s not apparent how to do this. So it makes for a good post to explain for anyone having a similar problem."
-metadesc: How to make your own custom variable width profiles in Illustrator. Handy for adding a stroke to the inside or outside of an unclosed path or hair for brushes."
+metadesc: "How to make your own custom variable width profiles in Illustrator. Handy for adding a stroke to the inside or outside of an unclosed path or hair for brushes."
 theme: "#fff5f3"
 tags: ["Design"]
 categories: ["Design"]

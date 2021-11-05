@@ -3,7 +3,7 @@ title: "How to consistently style form elements"
 date: "2015-10-13T06:29:00+00:00"
 lastmod: "2016-08-28T10:50:39+00:00"
 summary: "One of the trickiest things to deal with cross browser is the styling of form elements. All browsers influence these strictly, but over the years the ‘appearance’ property has been present in WebKit and Blink browsers, and Firefox to help gain some control. More recently it’s been added to Edge. It is a little more to it than just using this property. I’ll explain the advantages and drawbacks to this and how I handle it. The goal of this post is to give you the base for you to apply your visual style on top of. I will be covering text, button and select elements."
-metadesc: Here's a list of tips for styling input, select and submit buttons across Safari, Chrome, Firefox & Edge."
+metadesc: "Here's a list of tips for styling input, select and submit buttons across Safari, Chrome, Firefox & Edge."
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]

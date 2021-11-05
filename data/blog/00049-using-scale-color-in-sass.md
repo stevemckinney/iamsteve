@@ -3,7 +3,7 @@ title: "Using scale-color in Sass"
 date: "2012-11-21T19:45:00+00:00"
 lastmod: "2016-08-28T12:59:09+00:00"
 summary: "I have been recently trying to get a consistent look across my element mixin no matter the colour, without being too inefficient. You could say simply take a base colour, and use darken and lighten on it, to get reasonable variations of the colour, for gradient colour stops. Then throw in some bevels, a border, and you have a nice button."
-metadesc: Don’t use darken or lighten use scale-color! Changing tints and shades will be more predictable, read the post to find out why."
+metadesc: "Don’t use darken or lighten use scale-color! Changing tints and shades will be more predictable, read the post to find out why."
 theme: "#e1f7ee"
 tags: ["Code", "Sass"]
 categories: ["Code"]

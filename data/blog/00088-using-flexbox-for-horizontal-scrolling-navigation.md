@@ -3,7 +3,7 @@ title: "Using flexbox for horizontal scrolling navigation"
 date: "2015-08-18T06:25:00+00:00"
 lastmod: "2019-09-13T13:28:30+00:00"
 summary: "This post is a follow up to a different method for horizontal scrolling navigation which used inline-block. In this post, I want to cover how flexbox can be used to achieve the same thing and the benefits over the inline-block method."
-metadesc: Using the flex-wrap property to do most of the work we can achieve horizontal scrolling layout with flexbox, great for forms of navigation and easy to browse content."
+metadesc: "Using the flex-wrap property to do most of the work we can achieve horizontal scrolling layout with flexbox, great for forms of navigation and easy to browse content."
 theme: "#fff5f3"
 tags: ["Code"]
 categories: ["Code"]

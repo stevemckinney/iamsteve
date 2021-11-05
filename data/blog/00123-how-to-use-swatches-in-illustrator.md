@@ -3,7 +3,7 @@ title: "How to: swatches in Illustrator"
 date: "2016-04-26T06:30:00+00:00"
 lastmod: "2021-06-29T06:39:55+00:00"
 summary: "Swatches in Illustrator isn’t something I have used very often. Partly this has been down to being unsure of the best way, and not trusting that they will remain there. As there are random ones to begin with that you will never use and the process of deleting them seems annoying each time. In this post I’ll show you the best way to clean up existing swatches, add your own and keep them updated."
-metadesc: How to use Adobe Illustrator swatches, update them easily, and have it update across your design by making them global."
+metadesc: "How to use Adobe Illustrator swatches, update them easily, and have it update across your design by making them global."
 theme: "#fff6e5"
 tags: ["Design"]
 categories: ["Design"]

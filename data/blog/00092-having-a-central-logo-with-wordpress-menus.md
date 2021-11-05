@@ -3,7 +3,7 @@ title: "Having a central logo with a Wordpress menu"
 date: "2015-09-15T06:38:00+00:00"
 lastmod: "2016-08-28T10:52:34+00:00"
 summary: "If you’ve ever wanted to place your logo in the centre of your header, between your navigation items, at first it can appear tricky to achieve. You may have been used to an approach that involved setting up, two separate menus, within Wordpress. May you added a link to ‘home’ in between the items in a single menu. Or worse still you used JavaScript to change the position. Each of them have a less than ideal feeling to it. This is where flexbox can really help."
-metadesc: Ever struggled for a clean solution to make your logo central between your navigation items? Here's a solution."
+metadesc: "Ever struggled for a clean solution to make your logo central between your navigation items? Here's a solution."
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]

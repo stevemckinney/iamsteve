@@ -3,7 +3,7 @@ title: "A year in writing — 2017"
 date: "2018-01-28T14:06:00+00:00"
 lastmod: "2019-10-04T07:21:53+00:00"
 summary: "This year I took it at a slower pace with the articles. It was a challenging year, so I was quite surprised to see the website continue to grow."
-metadesc: This year I took it at a slower pace with the articles. It was a challenging year, as I aimed to focus on things outside of writing."
+metadesc: "This year I took it at a slower pace with the articles. It was a challenging year, as I aimed to focus on things outside of writing."
 theme: "#fffbee"
 tags: ["Website"]
 categories: ["Website"]

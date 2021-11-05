@@ -3,7 +3,7 @@ title: "Overcoming design roadblocks"
 date: "2017-06-13T06:30:00+00:00"
 lastmod: "2019-10-04T07:26:29+00:00"
 summary: "It happens, sometimes you can be stuck starting a new design, here’s some tips that aim to help overcome the challenge."
-metadesc: Sharing some of my thoughts on how I would handle being new to a skill and the struggle of getting your ideas to be what you visualise."
+metadesc: "Sharing some of my thoughts on how I would handle being new to a skill and the struggle of getting your ideas to be what you visualise."
 theme: "#eaf5f5"
 tags: ["Design"]
 categories: ["Design"]

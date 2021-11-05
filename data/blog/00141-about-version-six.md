@@ -3,7 +3,7 @@ title: "About version six"
 date: "2016-08-30T06:30:00+00:00"
 lastmod: "2016-08-29T20:44:22+00:00"
 summary: "I’ve finally done the redesign of this website! Version five lived for longer than I ever intended. This post is going to be a shorter summary of the changes. I’ll be posting a full case study over the coming weeks."
-metadesc: About the redesign version six. A brief walk through some of the changes in this version."
+metadesc: "About the redesign version six. A brief walk through some of the changes in this version."
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]

@@ -3,7 +3,7 @@ title: "Manage text colour with ease"
 date: "2015-02-09T08:00:00+00:00"
 lastmod: "2016-08-28T12:53:46+00:00"
 summary: "When designing a website you can have varied text colours depending on the background colour. This can be an area of frustration due to the unknown elements that could potentially be contained within an area. Here’s a simple technique for overcoming that."
-metadesc: How to make text on different backgrounds easily be the colour you require without writing many selectors each time."
+metadesc: "How to make text on different backgrounds easily be the colour you require without writing many selectors each time."
 theme: "#e9f5f5"
 tags: ["Code", "CSS"]
 categories: ["Code"]

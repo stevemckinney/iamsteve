@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="stroke-currentcolor fill-none sw-2 sl-r">
-  <circle class="fill-s1" cx="8" cy="9" r="5.5"/>
-  <line x1="2" y1="3.5" x2="4" y2="1.5"/>
-  <line x1="14" y1="3.5" x2="12" y2="1.5"/>
-  <polyline points="8 7 8 9 10 9"/>
-</svg>

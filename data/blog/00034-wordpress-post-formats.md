@@ -3,7 +3,7 @@ title: "Wordpress post formats"
 date: "2011-12-12T19:53:00+00:00"
 lastmod: "2021-06-03T14:47:26+00:00"
 summary: "I haven’t done much Wordpress development as of late, so I was a bit rusty, last time I used it properly was around the release of 3.0. I decided to try out Wordpress again. I discovered post formats, looked into them, found they were like what Tumblr offers. Though I’d got that wrong they have some constraints, so for the time I’ve been figuring them out and consider this to be one of the best ways to use them."
-metadesc: How you can use Wordpress post formats to make a tumblr style blog and a plugin to enhance the Wordpress interface for them."
+metadesc: "How you can use Wordpress post formats to make a tumblr style blog and a plugin to enhance the Wordpress interface for them."
 theme: "#fffbf2"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]

@@ -3,7 +3,7 @@ title: "11 resources for colour inspiration"
 date: "2016-01-19T07:30:00+00:00"
 lastmod: "2019-04-24T08:31:45+00:00"
 summary: "Following on from the colour series I have a selection of websites that can help inspire your colour palettes. There is a variety between inspiration, resources and tools to pick colours."
-metadesc: 11 resources, tools and guides that will help reinforce your colour knowledge."
+metadesc: "11 resources, tools and guides that will help reinforce your colour knowledge."
 theme: "#fff5f3"
 tags: ["Design"]
 categories: ["Design"]

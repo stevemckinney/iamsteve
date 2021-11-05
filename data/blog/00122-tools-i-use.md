@@ -3,7 +3,7 @@ title: "Tools I use"
 date: "2016-04-19T06:30:00+00:00"
 lastmod: "2016-05-21T13:49:14+00:00"
 summary: "I figured I would write a post about the tools I use. Some will be familiar, but hopefully there are some that are unfamiliar and end up being useful to you."
-metadesc: I figured I would write a post about the tools I use. Some will be familiar, but hopefully there are some that are unfamiliar and end up being useful to you. "
+metadesc: "I figured I would write a post about the tools I use. Some will be familiar, but hopefully there are some that are unfamiliar and end up being useful to you. "
 theme: "#e9f5f5"
 tags: ["Design", "Code"]
 categories: ["Design"]

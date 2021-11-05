@@ -3,7 +3,7 @@ title: "Using Sass to create harmonious gradients"
 date: "2015-07-21T07:00:00+00:00"
 lastmod: "2016-08-28T10:55:32+00:00"
 summary: "One of the best things about Sass, is the ability to adjust colour nicely and be able to apply that, consistently across, many colours.In this post I’m going to demonstrate, as I have in the past with scale-color. How you can create gradients, that look much more harmonious. Instead of the standard, take the colour and darken it. Using adjust-hue and scale-color we can achieve this."
-metadesc: The trouble with darkening your gradients is they can look dirty and feel off, I show you how to avoid that. Using adjust-hue and scale-color in Sass to create harmonious gradients."
+metadesc: "The trouble with darkening your gradients is they can look dirty and feel off, I show you how to avoid that. Using adjust-hue and scale-color in Sass to create harmonious gradients."
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]

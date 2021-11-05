@@ -3,7 +3,7 @@ title: "Maintenance week #1"
 date: "2015-10-20T06:30:00+00:00"
 lastmod: "2017-02-09T07:32:48+00:00"
 summary: "I’ve been thinking about doing this for a little while over the course of posting regularly. I feel it a duty to go back and refine some posts or make additions to them to improve them.So there is no post as such this week. I’ve decided to go back and update some. I’ve listed each of the posts and changes I’ve made for you."
-metadesc: When you have an active blog, this is something you have to do as articles can become out of date or new information becomes available."
+metadesc: "When you have an active blog, this is something you have to do as articles can become out of date or new information becomes available."
 theme: "#f7f2f5"
 tags: ["Website"]
 categories: ["Website"]

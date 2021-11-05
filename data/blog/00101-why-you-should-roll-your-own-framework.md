@@ -3,7 +3,7 @@ title: "Why you should roll your own framework"
 date: "2015-11-17T07:29:00+00:00"
 lastmod: "2016-08-28T10:49:27+00:00"
 summary: "There are many opinions against rolling your own CSS framework. To the extent, it can make you think, let’s get bootstrap (or another) and see what happens.I genuinely believe there is no harm in making your own. I started one a couple of years ago and have just got back to it recently (as I have been focused more on designing lately). It isn’t in too bad shape, but it’s made me evaluate it and begin refining it again. There’s value in creating your own if you use it regularly and keep it up to date."
-metadesc: There is a big no no seen against making your own framework. I believe you should be using your own with CSS."
+metadesc: "There is a big no no seen against making your own framework. I believe you should be using your own with CSS."
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]

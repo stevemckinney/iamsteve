@@ -3,7 +3,7 @@ title: "A year in writing — 2016"
 date: "2017-01-03T07:23:00+00:00"
 lastmod: "2020-05-13T09:51:50+00:00"
 summary: "2016 was the second year I’ve written a post every week. This post is a summary of what’s happened over the year."
-metadesc: 2016 was the second year I’ve written a post every week. This post is a summary of what’s happened over the year and a look back at some of the goals I had."
+metadesc: "2016 was the second year I’ve written a post every week. This post is a summary of what’s happened over the year and a look back at some of the goals I had."
 theme: "#eaf5f5"
 tags: ["Website"]
 categories: ["Website"]

@@ -3,7 +3,7 @@ title: "Illustrator quick tip: evenly distribute objects"
 date: "2016-08-23T06:30:00+00:00"
 lastmod: "2018-09-13T18:56:32+00:00"
 summary: "It’s likely you know how to align things in Illustrator, but you can never remember how to space things equally, so you resort to the tedious way of spacing them individually. If you want to align objects with an equal space between them, this quick tip will show you how."
-metadesc: Using the align to key object method you can distribute space between objects equally. This is by far the quickest method for spacing navigation items, or anything equally in Adobe Illustrator to add a set amount."
+metadesc: "Using the align to key object method you can distribute space between objects equally. This is by far the quickest method for spacing navigation items, or anything equally in Adobe Illustrator to add a set amount."
 theme: "#fefbed"
 tags: ["Design"]
 categories: ["Design"]

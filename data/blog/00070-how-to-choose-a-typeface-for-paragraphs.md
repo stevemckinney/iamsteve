@@ -3,7 +3,7 @@ title: "Typography for beginners: how to choose a typeface for paragraphs"
 date: "2015-04-14T07:00:00+00:00"
 lastmod: "2016-08-28T11:00:54+00:00"
 summary: "In this post I’m going to go through some of the considerations necessary for choosing the right typeface for paragraphs.There are a few factors that come with choosing an appropriate typeface. These are are x-height, contrast, width and context. After reading this post you will gain the understanding necessary to make the right choices to choose legible typefaces."
-metadesc: How to choose a typeface for paragraphs. We’ll explore the choosing a typeface with the right x-height, contrast and width and how to make sure the context is right."
+metadesc: "How to choose a typeface for paragraphs. We’ll explore the choosing a typeface with the right x-height, contrast and width and how to make sure the context is right."
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design"]

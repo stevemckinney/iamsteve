@@ -3,7 +3,7 @@ title: "Creating vintage filters with CSS blend modes"
 date: "2015-05-12T06:00:00+00:00"
 lastmod: "2016-08-28T11:00:12+00:00"
 summary: "With blend modes we can apply a vintage style to any image like we would in Photoshop. Blend modes is something I have been looking forward to coming to CSS for a while and this feels like a fitting way for me to share a deeper look at them. You can test them for yourself with the demo at the bottom."
-metadesc: CSS is now able to use blend modes. Using mix-blend-mode we can add ’vintage’ style effects to images."
+metadesc: "CSS is now able to use blend modes. Using mix-blend-mode we can add ’vintage’ style effects to images."
 theme: "#e1f7ee"
 tags: ["Code"]
 categories: ["Code"]

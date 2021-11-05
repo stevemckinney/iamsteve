@@ -3,7 +3,7 @@ title: "Get up to speed with scroll snap points"
 date: "2016-05-31T06:30:00+00:00"
 lastmod: "2019-05-28T15:25:10+00:00"
 summary: "Scroll snap points is the answer to the need for JavaScript carousels, to an extent. As browsers gain more and more new features in CSS, it’s important to keep up to date with them. As the generalisation is; where you can replace JavaScript with CSS you gain performance improvements. Carousels in my experience are a good chunk of the need for JavaScript on the average website. So I’m very interested at the prospect of using scroll snap points to replace that."
-metadesc: Learn about the scroll snap properties, scroll-snap-type, scroll-snap-points-x scroll-snap-points-y, and scroll-snap-destination. These will be the basics to create a carousel like area with CSS."
+metadesc: "Learn about the scroll snap properties, scroll-snap-type, scroll-snap-points-x scroll-snap-points-y, and scroll-snap-destination. These will be the basics to create a carousel like area with CSS."
 theme: "#e9f5f5"
 tags: ["Code", "CSS"]
 categories: ["Code"]

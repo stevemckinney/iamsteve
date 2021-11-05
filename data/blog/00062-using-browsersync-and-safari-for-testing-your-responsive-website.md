@@ -3,7 +3,7 @@ title: "Using BrowserSync and Safari for testing your responsive website"
 date: "2015-02-17T08:00:00+00:00"
 lastmod: "2021-06-11T07:03:35+00:00"
 summary: "Testing a responsive design on an actual device can be quite annoying when you’re down to the point of refining the design and making it more appropriate to such a small screen. As it’s usually testing and refining the best you can locally, then checking on the device through whatever means you usually do it."
-metadesc: How to use BrowserSync to make testing on devices easy. I cover how to use it with iOS devices, Xcode and Safari."
+metadesc: "How to use BrowserSync to make testing on devices easy. I cover how to use it with iOS devices, Xcode and Safari."
 theme: "#e1f7ee"
 tags: ["Code"]
 categories: ["Code"]

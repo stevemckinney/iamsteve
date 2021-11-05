@@ -3,7 +3,7 @@ title: "Tips for using colour effectively in web illustration"
 date: "2018-05-10T12:22:00+00:00"
 lastmod: "2021-07-13T17:31:38+00:00"
 summary: "Our websites can offer us an important advantage when it comes to choosing colour for illustration—constraint."
-metadesc: Finding and settling on a way to use colour within your illustrations is a fun challenge. Once you do, it becomes much easier going forward to make your illustrations."
+metadesc: "Finding and settling on a way to use colour within your illustrations is a fun challenge. Once you do, it becomes much easier going forward to make your illustrations."
 theme: "#eafaf6"
 tags: ["Design"]
 categories: ["Design"]

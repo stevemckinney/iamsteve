@@ -3,7 +3,7 @@ title: "Illustrator quick tip: workflow enhancing keyboard shortcuts"
 date: "2016-11-01T07:30:00+00:00"
 lastmod: "2017-02-08T19:40:05+00:00"
 summary: "Memorising shortcuts of any application improves efficiency. Now I’m by no means the most efficient person in Illustrator, I’m generally just happy designing. However, there are shortcuts you  absolutely must know, because it saves you tediously clicking through panels and menus."
-metadesc: Memorising shortcuts of any application improves efficiency. Now I’m by no means the most efficient person in Illustrator, I’m generally just happy designing. However, there are shortcuts you  absolutely must know, because it saves you tediously clicking through panels and menus."
+metadesc: "Memorising shortcuts of any application improves efficiency. Now I’m by no means the most efficient person in Illustrator, I’m generally just happy designing. However, there are shortcuts you  absolutely must know, because it saves you tediously clicking through panels and menus."
 theme: "#fefbed"
 tags: ["Design"]
 categories: ["Design"]

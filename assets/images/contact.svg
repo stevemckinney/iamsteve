@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="fill-none stroke-currentcolor sl-r">
-  <polyline class="fill-s1 sw-2" points="2 5.286 1 6 1 15 15 15 15 6 13.999 5.285"/>
-  <polygon class="fill-white" points="14 7 14 3 2 3 2 7 1 7 8 11 15 7 14 7"/>
-  <polyline class="sw-2" points="1 7 8 11 15 7"/>
-  <line class="sw-2" x1="10.79676" y1="2.99769" x2="8" y2="1"/>
-  <line class="sw-2" x1="8" y1="1" x2="5.20058" y2="2.99958"/>
-  <polyline class="sw-2" points="2 7 2 3 14 3 14 7"/>
-</svg>

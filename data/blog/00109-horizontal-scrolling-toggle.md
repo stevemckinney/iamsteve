@@ -3,7 +3,7 @@ title: "Browse content efficiently with toggling horizontal scrolling"
 date: "2016-01-12T07:30:00+00:00"
 lastmod: "2021-06-17T06:24:00+00:00"
 summary: "I was looking through photos in Finder, and I was finding it frustrating to scan many photos quickly. The problem was down to the horizontal scrolling sections; it is quite quick to flick through but it became tedious. I wanted to see more pictures at once, here’s a solution inspired by Finder."
-metadesc: Allow for the best of both worlds with horizontal scrolling and toggle to vertical layout. Using flexbox this makes layouts easy to adjust."
+metadesc: "Allow for the best of both worlds with horizontal scrolling and toggle to vertical layout. Using flexbox this makes layouts easy to adjust."
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]

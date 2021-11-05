@@ -3,7 +3,7 @@ title: "Flexbox quick wins"
 date: "2015-05-05T06:00:00+00:00"
 lastmod: "2016-08-28T11:00:20+00:00"
 summary: "Flexbox is still one of those properties that isn’t quite ready for prime time use. Due to the necessary support of IE 8 and 10. There are some uses of flexbox we can use for ‘free’ without worry of any knock on effects. These are especially handy if we don’t have the time to invest into heavily flexbox based layouts."
-metadesc: Flexbox isn‘t quite ready to have layouts built dedicated with it. There are some uses with flexbox we can apply without worry of what will impact other browsers."
+metadesc: "Flexbox isn‘t quite ready to have layouts built dedicated with it. There are some uses with flexbox we can apply without worry of what will impact other browsers."
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]

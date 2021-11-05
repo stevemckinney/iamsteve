@@ -3,7 +3,7 @@ title: "Hero area series: HTML, CSS & responsive"
 date: "2016-04-05T06:30:00+00:00"
 lastmod: "2016-08-28T09:58:02+00:00"
 summary: "The second to last post in this series, coding the page. You’re going to build the page using flexbox and make it responsive. The method that will be used to make it responsive, is mostly mobile first, but it will be making logical decisions based on where CSS only needs applying. This saves you from having to undo it in another media query."
-metadesc: The second to last post in this series, coding the page. You’re going to build the page using flexbox and make it responsive."
+metadesc: "The second to last post in this series, coding the page. You’re going to build the page using flexbox and make it responsive."
 theme: "#e9f5f5"
 tags: ["Design", "Code"]
 categories: ["Design"]

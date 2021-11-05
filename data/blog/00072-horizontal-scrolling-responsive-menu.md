@@ -3,7 +3,7 @@ title: "Simple horizontal scrolling menu with CSS"
 date: "2015-04-28T07:00:00+00:00"
 lastmod: "2021-08-04T10:48:18+00:00"
 summary: "If you’re looking for an alternative approach to responsive navigation, which doesn’t involve the ‘hamburger’ this may be for you."
-metadesc: How to code your own inherently responsive horizontal scrolling navigation (using only CSS), which responds perfectly to the browser and seamlessly integrates into your design."
+metadesc: "How to code your own inherently responsive horizontal scrolling navigation (using only CSS), which responds perfectly to the browser and seamlessly integrates into your design."
 theme: "#f7fbfb"
 tags: ["Code"]
 categories: ["Code"]

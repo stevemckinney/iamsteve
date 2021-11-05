@@ -3,7 +3,7 @@ title: "Typography for beginners: type scale, line height & lengths"
 date: "2015-03-30T08:00:00+00:00"
 lastmod: "2016-08-28T11:01:24+00:00"
 summary: "Good typography is playing a bigger role in the design of websites nowadays. However when starting out it’s something that is overlooked. Considering the web is all about content, it’s important that we give everyone a good reading experience.I’m starting with a few examples that can really help improve your reading experience. I want to help you understand why these things are important and provide guidance as to why it does work."
-metadesc: How to choose a harmonious type scale and set comfortable line lengths and line height, that scale well with responsive type sizes."
+metadesc: "How to choose a harmonious type scale and set comfortable line lengths and line height, that scale well with responsive type sizes."
 theme: "#fffbf2"
 tags: ["Design"]
 categories: ["Design"]

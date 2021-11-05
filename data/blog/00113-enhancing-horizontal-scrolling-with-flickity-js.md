@@ -3,7 +3,7 @@ title: "Enhancing horizontal scrolling with flickity.js"
 date: "2016-02-09T07:30:00+00:00"
 lastmod: "2018-09-05T11:17:24+00:00"
 summary: "I first wrote a tutorial little while back on horizontal scrolling navigation, with the intention of accommodating only mobile devices. As with every device I have come across, the usability of horizontal scrolling areas is good."
-metadesc: How to add flickity.js to already horizontal scrolling areas. Using flickity we can provide enhancement for Windows users."
+metadesc: "How to add flickity.js to already horizontal scrolling areas. Using flickity we can provide enhancement for Windows users."
 theme: "#fffcf4"
 tags: ["Code"]
 categories: ["Code"]

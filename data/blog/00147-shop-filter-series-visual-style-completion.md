@@ -3,7 +3,7 @@ title: "Shop filter series: visual style completion"
 date: "2016-10-11T06:30:00+00:00"
 lastmod: "2020-05-12T15:58:18+00:00"
 summary: "In the last post the basis for the visual style was set. In this post it will continue with that to complete the filters. There are some challenging areas like colour selection, as it can look overwhelming."
-metadesc: In the last post the basis for the visual style was set. In this post it will continue with that to complete the filters."
+metadesc: "In the last post the basis for the visual style was set. In this post it will continue with that to complete the filters."
 theme: "#fff6e5"
 tags: ["Design"]
 categories: ["Design"]

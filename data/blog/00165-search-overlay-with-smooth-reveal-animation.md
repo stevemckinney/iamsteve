@@ -3,7 +3,7 @@ title: "Search overlay with smooth reveal animation"
 date: "2017-08-16T12:15:00+00:00"
 lastmod: "2019-10-04T07:23:53+00:00"
 summary: "An in depth tutorial to add buttery smooth animations to reveal your website search."
-metadesc: How to design and code a search overlay with a smooth reveal effect using CSS transitions and JavaScript."
+metadesc: "How to design and code a search overlay with a smooth reveal effect using CSS transitions and JavaScript."
 theme: "#f7fbfb"
 tags: ["Design", "Code"]
 categories: ["Design"]

@@ -3,7 +3,7 @@ title: "Maintenance week #4"
 date: "2016-08-09T06:30:00+00:00"
 lastmod: "2017-02-09T07:33:31+00:00"
 summary: "Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies what I will do, and this posts serves as detailing what has been done."
-metadesc: Maintenance weeks are where detail website tasks, instead of a regular post. I spent this week bug fixing and adding some featured images."
+metadesc: "Maintenance weeks are where detail website tasks, instead of a regular post. I spent this week bug fixing and adding some featured images."
 theme: "#f7f2f5"
 tags: ["Website"]
 categories: ["Website"]

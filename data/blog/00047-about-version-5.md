@@ -3,7 +3,7 @@ title: "About version 5"
 date: "2012-11-03T09:16:00+00:00"
 lastmod: "2021-06-08T06:51:09+00:00"
 summary: "Another redesign, another blog post. It’s the majority of what my blog posts are based around. With each version I say I’m going to blog more, but the redesign has never really focused on it. This was one of my main goals, to bring more focus to the blog. Then maybe it would add to making me write more."
-metadesc: Another redesign, another blog post. This is a write up on my decisions behind version 5 of iamsteve."
+metadesc: "Another redesign, another blog post. This is a write up on my decisions behind version 5 of iamsteve."
 theme: "#fffbf2"
 tags: ["Website"]
 categories: ["Website"]

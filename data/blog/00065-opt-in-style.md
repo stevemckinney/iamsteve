@@ -3,7 +3,7 @@ title: "Opt in style"
 date: "2015-03-10T08:00:00+00:00"
 lastmod: "2016-08-28T12:52:19+00:00"
 summary: "This isn’t a new idea, but it’s something I have been thinking about more. The idea is that you don’t add a base level of styles, eg: all headings will have a margin of x amount. This of course doesn’t rule out things like using normalize.css.I mention margin, because, when building a website, it becomes inconsistent in many areas. It happens, we get used to the way the website looks, and notice inconsistencies less.I intend to overcome this by having a set of reusable classes and targeting trickier areas. Nothing groundbreaking, it just helps you to think more about adding styles."
-metadesc: Why not to add a base level of styles that are defaults for the majority of elements."
+metadesc: "Why not to add a base level of styles that are defaults for the majority of elements."
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]

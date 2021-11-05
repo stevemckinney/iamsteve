@@ -3,7 +3,7 @@ title: "Illustrator quick tip: which stroke alignment?"
 date: "2017-09-21T08:00:00+00:00"
 lastmod: "2019-10-04T07:22:23+00:00"
 summary: "There are three types of stroke alignment, so when and where is each useful?"
-metadesc: One of the things you may face with applying a stroke to an object in Illustrator, is which of the three alignments should you use? Each type has its own advantages and disadvantages, which this post will explore."
+metadesc: "One of the things you may face with applying a stroke to an object in Illustrator, is which of the three alignments should you use? Each type has its own advantages and disadvantages, which this post will explore."
 theme: "#fefbed"
 tags: ["Design"]
 categories: ["Design"]

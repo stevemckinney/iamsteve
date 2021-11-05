@@ -3,7 +3,7 @@ title: "Thoughts on my uninstallation of Flash"
 date: "2010-11-06T18:41:00+00:00"
 lastmod: "2021-06-03T05:56:43+00:00"
 summary: "John Gruber posted an article fairly recently about uninstalling Flash, I read it of course and found that it to be a logical thing to do. Now I’m not a big user of Chrome, but I’m more so annoyed by how much Flash can cause crashes in Safari and generally be slow, very slow. Here’s the original article. I was previous a user of Click to Flash a nice alternative to keep the Flash out, but as stated in the article mentioned Flash is still always running in the background."
-metadesc: A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
+metadesc: "A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
 theme: "#e1f7ee"
 tags: ["Technology"]
 categories: ["Technology"]

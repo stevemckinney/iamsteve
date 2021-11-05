@@ -3,7 +3,7 @@ title: "Why you should use tachyons to make CSS easier"
 date: "2016-06-07T06:30:00+00:00"
 lastmod: "2016-08-28T09:17:19+00:00"
 summary: "As I’ve spent time understanding the approach, it really makes sense for most CSS. Particularly spacing and font sizes. In this post I’m going to explain; why you may want to use this approach, and how to adapt it to your style of writing CSS."
-metadesc: Find out how tachyons can help speed up building a website, but most of all keep things expected and consistent."
+metadesc: "Find out how tachyons can help speed up building a website, but most of all keep things expected and consistent."
 theme: "#e1f7ee"
 tags: ["Code", "CSS"]
 categories: ["Code"]

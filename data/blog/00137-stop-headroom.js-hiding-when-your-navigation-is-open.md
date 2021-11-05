@@ -3,7 +3,7 @@ title: "Stop headroom.js hiding when your navigation is open"
 date: "2016-08-02T06:23:00+00:00"
 lastmod: "2020-03-23T17:07:45+00:00"
 summary: "Headroom.js is a popular plugin for providing additional functionality in having a fixed header. It has a lot of additional callbacks and options, to make sure you can cover a variety of situations. One of those things is stopping it from hiding when your navigation is open."
-metadesc: Headroom.js has many options and class names applied based on state, but if you've got a navigation that is opened by a hamburger icon and you scroll it hides."
+metadesc: "Headroom.js has many options and class names applied based on state, but if you've got a navigation that is opened by a hamburger icon and you scroll it hides."
 theme: "#fff5f3"
 tags: ["Code"]
 categories: ["Code"]

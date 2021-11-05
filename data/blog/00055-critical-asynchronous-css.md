@@ -3,7 +3,7 @@ title: "Maintainable critical and asynchronous CSS"
 date: "2015-01-06T08:00:00+00:00"
 lastmod: "2021-06-10T06:13:28+00:00"
 summary: "I’ve spent the best part of my free time for the most recent months, working on a website which I recently completed. This will be the first in a series of posts detailing some of the problems I encountered over the course of making the website. Starting with how I setup critical and asynchronous CSS to be a maintainable part of my workflow."
-metadesc: The method I use for keeping my critical path CSS maintainable and how to load your CSS asynchronously for fast websites."
+metadesc: "The method I use for keeping my critical path CSS maintainable and how to load your CSS asynchronously for fast websites."
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]

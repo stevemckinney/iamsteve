@@ -3,7 +3,7 @@ title: "Websites using alternatives to the ‘hamburger’"
 date: "2016-08-16T06:30:00+00:00"
 lastmod: "2017-10-13T19:12:59+00:00"
 summary: "It’s been proven as apps have shifted away from the ‘hamburger’ navigation, to a bottom bar, engagement and browsing metrics have increased. Over time these findings have an impact on the thought process of those designing websites. In this post I detail a list of websites that are using the tab bar navigation."
-metadesc: A list of website inspiration to move away from the traditional approach of the hamburger menu. Lots of iOS tab bar style examples."
+metadesc: "A list of website inspiration to move away from the traditional approach of the hamburger menu. Lots of iOS tab bar style examples."
 theme: "#edf7f3"
 tags: ["Design"]
 categories: ["Design"]

@@ -3,7 +3,7 @@ title: "CSS only iOS style ‘toggle’"
 date: "2016-07-19T06:30:00+00:00"
 lastmod: "2016-08-28T09:14:48+00:00"
 summary: "Since they appeared in iOS it’s been a trend to recreate these using CSS only. The technique uses the adjacent sibling selector and a hidden checkbox to retain use of the :checked pseudo class. In this post I wanted to take a look at this myself and recreate the toggle style."
-metadesc: No JavaScript required, iOS style toggle with CSS. Using the :checked pseudo class and adjacent sibling selector it makes it possible."
+metadesc: "No JavaScript required, iOS style toggle with CSS. Using the :checked pseudo class and adjacent sibling selector it makes it possible."
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]

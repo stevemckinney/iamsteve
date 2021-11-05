@@ -3,7 +3,7 @@ title: "Hero area series: Wordpress Customizer with selective refresh"
 date: "2016-04-12T16:42:00+00:00"
 lastmod: "2019-08-05T10:11:27+00:00"
 summary: "This post builds upon the previous one in making it editable with Wordpress, using the Customizer API and the newest functionality since 4.5 selective refresh. With this you can make a really smooth and quick editing experience."
-metadesc: This post builds upon the previous one in making it editable with Wordpress, using the Customizer API and selective refresh. Selective refresh makes it super simple and manageable."
+metadesc: "This post builds upon the previous one in making it editable with Wordpress, using the Customizer API and selective refresh. Selective refresh makes it super simple and manageable."
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]

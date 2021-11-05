@@ -3,7 +3,7 @@ title: "You don’t need an extension for Photoshop grids"
 date: "2015-06-02T06:40:00+00:00"
 lastmod: "2016-08-28T10:59:36+00:00"
 summary: "In the October 2014 update, Adobe added a new grid/guide creator and it’s great. It covers the majority of things extensions like GuideGuide do and has a couple of advantages.I’m not sure it’s been given the attention it deserves, a small feature, yet one we will use so often. It’s simple to use and allows you to save (like GuideGuide) and should sync your grid layouts with Creative Cloud."
-metadesc: Adobe have added their own grid layout creator, that doesn’t require an extension like GuidGuide. Here’s how to use it."
+metadesc: "Adobe have added their own grid layout creator, that doesn’t require an extension like GuidGuide. Here’s how to use it."
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]

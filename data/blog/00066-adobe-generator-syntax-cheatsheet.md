@@ -3,7 +3,7 @@ title: "Adobe generator syntax ‘cheatsheet’"
 date: "2015-03-17T08:00:00+00:00"
 lastmod: "2018-06-01T08:49:16+00:00"
 summary: "I’m always looking up the Adobe generator syntax and yet I never bookmark it. I feel like it would be a valuable resource to clearly show. Something I think the Adobe documentation lacks. This could be the reason I haven’t bookmarked it."
-metadesc: A cheatsheet for Adobe’s generator syntax, with examples for common use cases."
+metadesc: "A cheatsheet for Adobe’s generator syntax, with examples for common use cases."
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design"]

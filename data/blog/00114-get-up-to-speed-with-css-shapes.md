@@ -3,7 +3,7 @@ title: "Get up to speed with CSS shapes"
 date: "2016-02-23T07:25:00+00:00"
 lastmod: "2018-01-29T07:56:54+00:00"
 summary: "I’ve wanted to explore CSS shapes for a little while now and get a good understanding for it. Find potential use cases, strengths and weaknesses. In this post I’m going to cover the level one properties. At the time of writing level two is in the editors draft and looks to be bringing much more power to them."
-metadesc: Learn how to use CSS to make shapes like polygon, circle, inset and ellipse using shape-inside. Then use clipping masks to wrap content round the shape with clip-path."
+metadesc: "Learn how to use CSS to make shapes like polygon, circle, inset and ellipse using shape-inside. Then use clipping masks to wrap content round the shape with clip-path."
 theme: "#f2fcfa"
 tags: ["Code", "CSS"]
 categories: ["Code"]

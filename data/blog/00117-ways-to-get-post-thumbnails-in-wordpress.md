@@ -3,7 +3,7 @@ title: "Ways to get post thumbnails in Wordpress"
 date: "2016-03-15T07:30:00+00:00"
 lastmod: "2016-08-28T10:00:53+00:00"
 summary: "With Wordpress there are a lot of ways to the same thing, for good reason, sometimes you can’t do it one way or the other. This can make it tricky to remember how to do it for each instance. At least this is the case for me. I want to use this post to serve as a guide for each method of doing so. I won’t be covering their parameters, just the necessary steps to retrieve an image."
-metadesc: All the ways to output Wordpress post thumbnails. There are many alternating ways from inside a page, to a custom post type and regular post, find how to get the post thumbnail."
+metadesc: "All the ways to output Wordpress post thumbnails. There are many alternating ways from inside a page, to a custom post type and regular post, find how to get the post thumbnail."
 theme: "#e1f7ee"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]

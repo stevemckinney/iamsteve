@@ -3,7 +3,7 @@ title: "Pro Dev Day"
 date: "2010-11-10T20:39:00+00:00"
 lastmod: "2021-06-03T06:04:23+00:00"
 summary: "Today was Pro Dev Day, it’s a few hours of a lot of companies and freelancers willing to talk to students and anyone really about their company. Some have job placements or permanent jobs available for graduates, which is great for someone like me in their final year of University."
-metadesc: A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
+metadesc: "A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
 theme: "#ffede5"
 tags: ["Life"]
 categories: ["Life"]

@@ -3,7 +3,7 @@ title: "Shop filter series: sketching & starting wireframes"
 date: "2016-09-13T06:24:00+00:00"
 lastmod: "2020-05-12T16:05:41+00:00"
 summary: "Filtering is a huge part of online shops, it’s an effective form of navigation. In most cases it’s an area which is overlooked on small screens. I have seen some good implementations and many lack the ease of a larger screen. In this post I want to explore the idea of it being a tab bar, starting with sketching & wireframes."
-metadesc: A post that explores the idea of a tab/bottom bar navigation to filter products in a shop and shows you how to design it"
+metadesc: "A post that explores the idea of a tab/bottom bar navigation to filter products in a shop and shows you how to design it"
 theme: "#fff6e5"
 tags: ["Design"]
 categories: ["Design"]

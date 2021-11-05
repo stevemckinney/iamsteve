@@ -3,7 +3,7 @@ title: "Sass map use patterns"
 date: "2015-05-19T06:39:00+00:00"
 lastmod: "2016-08-28T10:59:58+00:00"
 summary: "Sass maps can provide some powerful functionality to make life easier and less repetitive. I’ll cover briefly how to use them and then detail some of the cases that I use them, as I don’t think the benefits are immediate."
-metadesc: Sass maps can provide some powerful functionality to make life easier and less repetitive. I show how to use examples for making helper classes, looping through maps and getting values."
+metadesc: "Sass maps can provide some powerful functionality to make life easier and less repetitive. I show how to use examples for making helper classes, looping through maps and getting values."
 theme: "#ffede5"
 tags: ["Code"]
 categories: ["Code"]

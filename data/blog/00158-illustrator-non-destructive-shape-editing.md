@@ -3,7 +3,7 @@ title: "Illustrator quick tip: non destructive shape editing"
 date: "2016-12-27T07:30:00+00:00"
 lastmod: "2020-05-13T09:50:10+00:00"
 summary: "You may have two shapes and want to combine them, but still want to refine the overall shape or save it for later. This post shows you two options."
-metadesc: Two methods for keeping your shapes editable when combining them. One method uses pathfinder the other uses drawing modes."
+metadesc: "Two methods for keeping your shapes editable when combining them. One method uses pathfinder the other uses drawing modes."
 theme: "#fefbed"
 tags: ["Design"]
 categories: ["Design"]

@@ -3,7 +3,7 @@ title: "Hero area series: designing for small screens"
 date: "2016-03-29T06:30:00+00:00"
 lastmod: "2020-03-24T19:50:55+00:00"
 summary: "The focus has been very much desktop so far, but considerations have been highlighted throughout for smaller screens. I will only cover ‘mobile’ sized resolutions, as for this particular layout you will only need to make minor adjustments for ‘tablet’ sized resolutions."
-metadesc: Part two of designing a hero area, the smaller screen layout phase. Adapting a layout to smaller screens."
+metadesc: "Part two of designing a hero area, the smaller screen layout phase. Adapting a layout to smaller screens."
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]

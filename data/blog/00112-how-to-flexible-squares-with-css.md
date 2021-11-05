@@ -3,7 +3,7 @@ title: "How to: flexible squares with CSS"
 date: "2016-02-02T07:30:00+00:00"
 lastmod: "2018-01-28T20:21:51+00:00"
 summary: "How do you maintain a perfect square shape with a responsive layout? The solution appears simple; the only issue is your content. Which if you want to maintain a square shape it should be able to accommodate the content. I’ll show you how to do it in with this quick tip."
-metadesc: How do you maintain a perfect square shape with a responsive layout? It's a relatively simple solution using padding."
+metadesc: "How do you maintain a perfect square shape with a responsive layout? It's a relatively simple solution using padding."
 theme: "#fffdf5"
 tags: ["Code", "CSS"]
 categories: ["Code"]

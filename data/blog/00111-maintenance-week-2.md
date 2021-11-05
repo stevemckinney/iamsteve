@@ -3,7 +3,7 @@ title: "Maintenance week #2"
 date: "2016-01-26T07:19:00+00:00"
 lastmod: "2017-02-09T07:33:02+00:00"
 summary: "This week is another maintenance week. The last one I looked at updating some posts. This week has been based around website maintenance. It’s been over the course of more than a week, as there was a lot to do. The interesting things I’ve added are SSL, updated the CMS and tidied up my server."
-metadesc: This week is another maintenance week. The last one I looked at updating some posts. This week has been based around website maintenance.
+metadesc: "This week is another maintenance week. The last one I looked at updating some posts. This week has been based around website maintenance.
 theme: "#f7f2f5"
 tags: ["Website"]
 categories: ["Website"]

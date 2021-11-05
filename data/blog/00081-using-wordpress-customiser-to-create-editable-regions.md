@@ -3,7 +3,7 @@ title: "Using Wordpress customiser to create editable regions"
 date: "2015-06-30T06:40:00+00:00"
 lastmod: "2016-08-28T10:58:06+00:00"
 summary: "The great thing about the Wordpress customiser, is it allows you to make editable regions throughout your website. Without giving you too much control, but allowing that, real time, visual focus.You could have much of the functionality, I will show, within the admin panel. However, being able to make the edits in real time, makes decision making, easier. Particularly, with how your text or images display."
-metadesc: How to use the Wordpress customiser panel. In this post I will show you how to live edit your text and images with jQuery in Wordpress."
+metadesc: "How to use the Wordpress customiser panel. In this post I will show you how to live edit your text and images with jQuery in Wordpress."
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]

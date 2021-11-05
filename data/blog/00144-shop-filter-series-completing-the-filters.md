@@ -3,7 +3,7 @@ title: "Shop filter series: completing the filters"
 date: "2016-09-20T06:30:00+00:00"
 lastmod: "2020-05-12T16:04:18+00:00"
 summary: "Continuing from the last post, which looked at the initial sketching and wireframe. This post will focus on the completion of each of the filters."
-metadesc: Continuing from the last post, which looked at the initial sketching and wireframe. This post will focus on the completion of each of the filters."
+metadesc: "Continuing from the last post, which looked at the initial sketching and wireframe. This post will focus on the completion of each of the filters."
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design"]

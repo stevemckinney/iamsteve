@@ -3,7 +3,7 @@ title: "Colour series: adding new colours & tips"
 date: "2015-12-29T07:30:00+00:00"
 lastmod: "2018-03-08T08:10:54+00:00"
 summary: "Following on from the two previous posts, this post will cover things I have learnt about selecting colours over the years. These tips are the sort that when starting something new, you wish you knew, ahead of time. The majority of these tips will stand true, at least 90% of the time, and help making the right decisions easier."
-metadesc: Tips that I have learnt over the years from making colour palettes. Such as why you should be careful using yellow as your main colour."
+metadesc: "Tips that I have learnt over the years from making colour palettes. Such as why you should be careful using yellow as your main colour."
 theme: "#ffede5"
 tags: ["Design"]
 categories: ["Design"]

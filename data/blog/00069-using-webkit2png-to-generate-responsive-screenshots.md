@@ -3,7 +3,7 @@ title: "Using webkit2png to generate responsive screenshots"
 date: "2015-04-07T07:00:00+00:00"
 lastmod: "2016-08-28T11:01:16+00:00"
 summary: "If you ever have to create screenshots for a website, it can be quite a tedious process. In this post I will show you a way to do it easily with webkit2png. We’ll set up an array, which will generate a full sized screenshot with a unique name from your specified website."
-metadesc: Use webkit2png to generate screenshots, for multiple screen widths. This method makes it much easier and less time consuming, for your responsive website."
+metadesc: "Use webkit2png to generate screenshots, for multiple screen widths. This method makes it much easier and less time consuming, for your responsive website."
 theme: "#e9f5f5"
 tags: ["Terminal"]
 categories: ["Terminal"]

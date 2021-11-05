@@ -3,7 +3,7 @@ title: "Monthly design roundup #1"
 date: "2016-11-08T07:30:00+00:00"
 lastmod: "2019-12-16T07:49:44+00:00"
 summary: "This is the start of a monthly series of a roundup of 8 websites that I have found that are well designed. There is no particular theme, other than inspirational, which I hope you find is the case. I’ve added a few notes around why I believe they’re well designed as well."
-metadesc: This is the start of a monthly series of a roundup of well designed websites, and articles I found helpful. I’ve added a few notes and summary to give my opinion."
+metadesc: "This is the start of a monthly series of a roundup of well designed websites, and articles I found helpful. I’ve added a few notes and summary to give my opinion."
 theme: "#e6f9f5"
 tags: ["Design"]
 categories: ["Design"]

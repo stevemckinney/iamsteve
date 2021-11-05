@@ -3,7 +3,7 @@ title: "iamsteve – a new logomark"
 date: "2015-10-06T06:36:00+00:00"
 lastmod: "2021-06-15T20:09:33+00:00"
 summary: "I have updated my logomark. It’s been around 5 years, since I last made a change relating to my logo. Since then, I have grown as a designer, my aims, goals, and where I am have shifted. I’m going to cover the steps leading up to this. It’s relevant to the process and gives a better of understanding of what’s planned for this website. Then, I will cover the process."
-metadesc: A case study covering the decisions behind my new logomark."
+metadesc: "A case study covering the decisions behind my new logomark."
 theme: "#ffede5"
 tags: ["Design"]
 categories: ["Design"]
