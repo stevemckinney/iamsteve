@@ -25,10 +25,10 @@ export async function getStaticProps({ params }) {
   const prev = allPosts[postIndex + 1] || null
   const next = allPosts[postIndex - 1] || null
   const post = await getFileBySlug('blog', params.slug.join('/'))  
-  const authorList = post.frontMatter.authors || ['default']
+  const authorList = post.frontmatter.authors || ['default']
   const authorPromise = authorList.map(async (author) => {
     const authorResults = await getFileBySlug('authors', [author])
-    return authorResults.frontMatter
+    return authorResults.frontmatter
   })
   const authorDetails = await Promise.all(authorPromise)
 
@@ -40,16 +40,16 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Blog({ post, authorDetails, prev, next }) {
-  const { mdxSource, toc, frontMatter } = post
+  const { mdxSource, toc, frontmatter } = post
 
   return (
     <>
-      {frontMatter.status !== "draft" ? (
+      {frontmatter.status !== "draft" ? (
         <MDXLayoutRenderer
-          layout={frontMatter.layout || DEFAULT_LAYOUT}
+          layout={frontmatter.layout || DEFAULT_LAYOUT}
           toc={toc}
           mdxSource={mdxSource}
-          frontMatter={frontMatter}
+          frontmatter={frontmatter}
           authorDetails={authorDetails}
           prev={prev}
           next={next}

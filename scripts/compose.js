@@ -32,7 +32,7 @@ const genFrontMatter = (answers) => {
   const tags = "'" + tagArray.join("','") + "'"
   const authorArray = answers.authors.length > 0 ? "'" + answers.authors.join("','") + "'" : ''
 
-  let frontMatter = dedent`---
+  let frontmatter = dedent`---
   title: ${answers.title ? answers.title : 'Untitled'}
   date: '${date}'
   tags: [${answers.tags ? tags : ''}]
@@ -43,12 +43,12 @@ const genFrontMatter = (answers) => {
   `
 
   if (answers.authors.length > 0) {
-    frontMatter = frontMatter + '\n' + `authors: [${authorArray}]`
+    frontmatter = frontmatter + '\n' + `authors: [${authorArray}]`
   }
 
-  frontMatter = frontMatter + '\n---'
+  frontmatter = frontmatter + '\n---'
 
-  return frontMatter
+  return frontmatter
 }
 
 inquirer
@@ -100,11 +100,11 @@ inquirer
       .replace(/[^a-zA-Z0-9 ]/g, '')
       .replace(/ /g, '-')
       .replace(/-+/g, '-')
-    const frontMatter = genFrontMatter(answers)
+    const frontmatter = genFrontMatter(answers)
     const filePath = `data/blog/${fileName ? fileName : 'untitled'}.${
       answers.extension ? answers.extension : 'md'
     }`
-    fs.writeFile(filePath, frontMatter, { flag: 'wx' }, (err) => {
+    fs.writeFile(filePath, frontmatter, { flag: 'wx' }, (err) => {
       if (err) {
         throw err
       } else {

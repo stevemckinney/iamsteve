@@ -14,8 +14,8 @@ const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${
 
 const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
-export default function PostLayout({ frontMatter, authorDetails, next, prev, children }) {
-  const { slug, fileName, date, title, tags, status } = frontMatter
+export default function PostLayout({ frontmatter, authorDetails, next, prev, children }) {
+  const { slug, fileName, date, title, tags, status } = frontmatter
   
   useEffect(() => {
     fetch(`/api/views/${slug}`, {
@@ -28,7 +28,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
       <BlogSEO
         url={`${siteMetadata.siteUrl}/blog/${slug}`}
         authorDetails={authorDetails}
-        {...frontMatter}
+        {...frontmatter}
       />
       <ScrollTopAndComment />
       <article className="pt8 mt8">
@@ -95,7 +95,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
               </div>
-              <Comments frontMatter={frontMatter} />
+              <Comments frontmatter={frontmatter} />
             </div>
             <footer className="sticky">
               <div className="text-sm font-medium leading-5 divide-gray-200 xl:divide-y dark:divide-gray-700 xl:col-start-1 xl:row-start-2">
