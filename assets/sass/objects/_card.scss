@@ -107,20 +107,20 @@
 
 // Lazy loaded additional styles for ‘loading spinner’
 // ---------------------------
-.card-image {
-  padding-bottom: 66.5492958%;
-
-  &, img {
-    border-radius: $radius; }
-
-  img {
-    position: absolute;
-    top: 50%;
-  	left: 0;
-    max-width: 100%;
-    max-height: 100%;
-    z-index: 2;
-    transform: translate3d(0, -50%, 0); } }
+// .card-image {
+//   padding-bottom: 66.5492958%;
+// 
+//   &, img {
+//     border-radius: $radius; }
+// 
+//   img {
+//     position: absolute;
+//     top: 50%;
+//   	left: 0;
+//     max-width: 100%;
+//     max-height: 100%;
+//     z-index: 2;
+//     transform: translate3d(0, -50%, 0); } }
 
 // Lazy loaded specifics
 // ---------------------------
