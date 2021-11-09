@@ -1,11 +1,11 @@
-import Link from '@/components/Link'
-import { PageSEO } from '@/components/SEO'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
-import formatDate from '@/lib/utils/formatDate'
+import siteMetadata from '@/data/siteMetadata'
+import { PageSEO } from '@/components/SEO'
 
+import Link from '@/components/Link'
+import Tag from '@/components/Tag'
 import NewsletterForm from '@/components/NewsletterForm'
+import Posts from '@/layouts/Posts'
 
 // images
 import Image from 'next/image'
@@ -15,16 +15,24 @@ import Intro394 from '@/images/introduction-394.svg';
 import Intro734 from '@/images/introduction-734.svg';
 import Intro960 from '@/images/introduction-960.svg';
 
-// post display
-const MAX_DISPLAY = 50
+// pull in the posts
+// import Posts from '@/layouts/Posts'
+import Card from '@/components/card'
+export const POSTS_PER_PAGE = 5
+export const MAX_DISPLAY = 5
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
+  const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE)
+  const pagination = {
+    currentPage: 1,
+    totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
+  }
 
-  return { props: { posts } }
+  return { props: { initialDisplayPosts, posts, pagination } }
 }
 
-export default function Home({ posts }) {
+export default function Home({ initialDisplayPosts, posts, pagination }) {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
@@ -41,6 +49,30 @@ export default function Home({ posts }) {
           <Image src="/static/images/introduction-960.svg" width={960} height={404} className="hero-image-960" />
         </div>
       </div>
+      
+      <Posts title="Popular in design" link="/design">
+        {posts
+          .filter((post) => post.tags.includes('Design'))
+          .map((frontmatter) => {
+            return (
+              <Card kind="medium" frontmatter={frontmatter} key={frontmatter.id} />
+            )
+          })
+          .slice(0, POSTS_PER_PAGE)
+        }
+      </Posts>
+      
+      <Posts title="Popular in code" link="/design">
+        {posts
+          .filter((post) => post.tags.includes('Code'))
+          .map((frontmatter) => {
+            return (
+              <Card kind="medium" frontmatter={frontmatter} key={frontmatter.id} />
+            )
+          })
+          .slice(0, POSTS_PER_PAGE)
+        }
+      </Posts>
       
       {posts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6">
