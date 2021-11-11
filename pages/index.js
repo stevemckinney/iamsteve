@@ -55,9 +55,9 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      <div class="hero contain-medium contain-large mb2 mb4-d">
-        <div class="hero-content">
-          <h1 class="f3 f2-b f1-d mb0 primary hero-title">
+      <div className="hero contain-medium contain-large mb2 mb4-d">
+        <div className="hero-content">
+          <h1 className="f3 f2-b f1-d mb0 primary hero-title">
             <Lettering />
           </h1>
         </div>
