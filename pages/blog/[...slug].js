@@ -24,7 +24,10 @@ export async function getStaticProps({ params }) {
   const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === params.slug.join('/'))
   const prev = allPosts[postIndex + 1] || null
   const next = allPosts[postIndex - 1] || null
-  const post = await getFileBySlug('blog', params.slug.join('/'))  
+  const post = await getFileBySlug('blog', params.slug.join('/'))
+  
+  const filenameSlug = params.slug.join('/')
+  
   const authorList = post.frontmatter.authors || ['default']
   const authorPromise = authorList.map(async (author) => {
     const authorResults = await getFileBySlug('authors', [author])
@@ -36,10 +39,10 @@ export async function getStaticProps({ params }) {
   const rss = generateRss(allPosts)
   fs.writeFileSync('./public/feed.xml', rss)
 
-  return { props: { post, authorDetails, prev, next } }
+  return { props: { post, authorDetails, filenameSlug, prev, next } }
 }
 
-export default function Blog({ post, authorDetails, prev, next }) {
+export default function Blog({ post, authorDetails, filenameSlug, prev, next }) {
   const { mdxSource, toc, frontmatter } = post
 
   return (
