@@ -1,14 +1,19 @@
 import useSWR from 'swr';
 
-const fetcher = async (RequestInfo) => {
-  const Response = await fetch(RequestInfo);
-  return await Response.json();
-};
+export const fetcher = async (RequestInfo) => {
+  const Response = await fetch(RequestInfo)
+  
+  return await Response.json()
+}
 
-const PageViews = ({ slug }) => {
-  const { data } = useSWR(`/api/views/${slug}`, fetcher);
+export const views = ({ slug }) => {
+  const { data } = useSWR(`/api/views/${slug}`, fetcher)
+  
+  return data?.total ? `${data.total}` : `0`
+}
 
-  return <>{data?.total ? `${data.total} views` : `0`}</>;
-};
+export const PageViews = ({ slug }) => {
+  const { data } = useSWR(`/api/views/${slug}`, fetcher)
 
-export default PageViews;
+  return <>{data?.total ? `${data.total} views` : `0`}</>
+}
