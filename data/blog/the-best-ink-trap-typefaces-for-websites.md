@@ -5,7 +5,7 @@ lastmod: "2021-07-28T10:28:00+00:00"
 summary: "A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs."
 metadesc: "A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs."
 theme: "#f7fbfb"
-tags: ["design", "typography"]
+tags: ["Design", "Typography"]
 categories: ["Design"]
 images: ["/static/images/blog/ink-trap-post-image.png"]
 large: "/static/images/blog/ink-trap-post-image.png"
