@@ -13,7 +13,7 @@ medium: "/static/images/blog/update-vertical-rhythm-featured-image-medium%402x.p
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 87
-slug: "a-guide-to-vertical-rhythm"
+fileroot: "a-guide-to-vertical-rhythm"
 ---
 
 Vertical rhythm is the typographic practice, to create a vertical harmony between text, images and so on. On the web it’s quite difficult to achieve. Yet understanding what it is, with the aim to maintain it, you can improve your reading experience. If you’re aware of it, but have struggled to understand vertical rhythm, this post is for you. It will focus more on the why, rather than the how. So you come away with a better understanding.

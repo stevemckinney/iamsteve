@@ -13,7 +13,7 @@ medium: "/static/images/blog/update-horizontal-flexbox-featured-image-medium%402
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 88
-slug: "using-flexbox-for-horizontal-scrolling-navigation"
+fileroot: "using-flexbox-for-horizontal-scrolling-navigation"
 ---
 
 This post is a follow up to a different method for [horizontal scrolling navigation](/blog/horizontal-scrolling-responsive-menu) which used `inline-block`. In this post, I want to cover how flexbox can be used to achieve the same thing and the benefits over the `inline-block` method.

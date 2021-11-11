@@ -13,7 +13,7 @@ medium: "/static/images/blog/shop-filter-03-updated-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 146
-slug: "shop-filter-series-visual-style"
+fileroot: "shop-filter-series-visual-style"
 ---
 
 Last in the series completed the wireframes. Now they're a solid basis for adding visual style. The content and interface elements required are all there. Further layout refinements, colour choices, typography and clarity improvements will be made.

@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 11
-slug: "buttons"
+fileroot: "buttons"
 ---
 
 In this tutorial, I will show you how to make buttons in CSS with a nice 3D like effect. It's really simple and all it takes is understanding where and when you need box-shadow. It's all dependent on preference too and how you would like them.

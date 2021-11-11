@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 117
-slug: "ways-to-get-post-thumbnails-in-wordpress"
+fileroot: "ways-to-get-post-thumbnails-in-wordpress"
 ---
 
 With Wordpress there are a lot of ways to the same thing, for good reason, sometimes you can’t do it one way or the other. This can make it tricky to remember how to do it for each instance. At least this is the case for me. I want to use this post to serve as a guide for each method of doing so. I won’t be covering their parameters, just the necessary steps to retrieve an image.

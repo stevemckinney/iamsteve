@@ -10,7 +10,7 @@ categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
 status: "closed"
 id: 18
-slug: "portfolio_additions"
+fileroot: "portfolio_additions"
 ---
 
 I've added a couple of things to my portfolio as of recent. They're the "personal website" and my business card. Just to try show a variation of my skills. If you would like to view them, see my [portfolio](http://iamsteve.me/portfolio "View my portfolio for the new designs added"). As for the business card, I'll be getting a physical picture of it up ASAP, I can't find my cameras USB cable and an iPhone 3G picture doesn't cut it.

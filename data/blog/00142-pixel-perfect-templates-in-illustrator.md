@@ -13,7 +13,7 @@ medium: "/static/images/blog/illustrator-pixel-perfect-featured-image-medium.png
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 142
-slug: "pixel-perfect-templates-in-illustrator"
+fileroot: "pixel-perfect-templates-in-illustrator"
 ---
 
 Illustrator being a vector application means it can be easy to overlook the export process and making things pixel perfect. It’s easy to do, so you don’t notice it. It’s particularly important that you try to retain this for logos and icons.

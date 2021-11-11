@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 70
-slug: "how-to-choose-a-typeface-for-paragraphs"
+fileroot: "how-to-choose-a-typeface-for-paragraphs"
 ---
 
 In this post I’m going to go through some of the considerations necessary for choosing the right typeface for paragraphs.

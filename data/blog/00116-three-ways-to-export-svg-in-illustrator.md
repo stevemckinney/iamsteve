@@ -13,7 +13,7 @@ medium: "/static/images/blog/illustrator-tip-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 116
-slug: "three-ways-to-export-svg-in-illustrator"
+fileroot: "three-ways-to-export-svg-in-illustrator"
 ---
 
 Here’s a quick tip of all the ways you can export SVG in Illustrator. Each has their conveniences, advantages and disadvantages. It’s entirely up to you which you use, there isn’t really a bad way.

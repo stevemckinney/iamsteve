@@ -13,7 +13,7 @@ medium: "/static/images/blog/headroomjs-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 137
-slug: "stop-headroom.js-hiding-when-your-navigation-is-open"
+fileroot: "stop-headroom.js-hiding-when-your-navigation-is-open"
 ---
 
 Headroom.js is a popular plugin for providing additional functionality in having a fixed header. It has a lot of additional callbacks and options, to make sure you can cover a variety of situations. One of those things is stopping it from hiding when your navigation is open. Which is what this post will cover, as this is something I had to do recently.

@@ -13,7 +13,7 @@ medium: "/static/images/blog/svg-icon-system-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 157
-slug: "lets-make-a-better-icon-system-with-svg"
+fileroot: "lets-make-a-better-icon-system-with-svg"
 ---
 
 Icon fonts are used for their convenience, which generally can’t be matched by SVG. However, they come with a huge performance downside, which SVG doesn’t have. I want to use this post as an opportunity for you to drop icon fonts and start using SVG. This post aims to guide you through the setup and get to a similar level of convenience.

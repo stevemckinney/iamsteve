@@ -13,7 +13,7 @@ medium: "/static/images/blog/illustrator-tip-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 124
-slug: "illustrator-export-2x-with-a-1x-canvas"
+fileroot: "illustrator-export-2x-with-a-1x-canvas"
 ---
 
 > This method is no longer relevant with Illustrator CC export for screens.

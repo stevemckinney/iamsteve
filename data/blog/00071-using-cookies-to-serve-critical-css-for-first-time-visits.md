@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 71
-slug: "using-cookies-to-serve-critical-css-for-first-time-visits"
+fileroot: "using-cookies-to-serve-critical-css-for-first-time-visits"
 ---
 
 I wrote about [critical path CSS](http://iamsteve.me/blog/entry/critical-asynchronous-css) earlier in the year, but didn’t cover using cookies to cover the caching part. So, this post will assume that you’ve previously set up your CSS in a similar manner. If not, I advise you [read my post about it](http://iamsteve.me/blog/entry/critical-asynchronous-css).

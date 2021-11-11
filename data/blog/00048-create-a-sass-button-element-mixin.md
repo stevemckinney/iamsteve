@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 48
-slug: "create_a_sass_button_element_mixin"
+fileroot: "create_a_sass_button_element_mixin"
 ---
 
 This mixin is one I've been using for a few months now to create buttons/anything with a particular style. I call it an element mixin, as it's not tied to anything. It started off as a plain button mixin, though I found sometimes I just want a button reset (some padding, no border, etc) or no hover/active states. This a very customisable mixin with simple parameters.

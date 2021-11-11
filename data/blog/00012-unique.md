@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 12
-slug: "unique"
+fileroot: "unique"
 ---
 
 I'm quite a beginner with jQuery, but recently I made a basic free template on my downloads page, and I wanted to actually try put some of my knowledge to use for once. So I made this little jQuery snippet. Say you want to style a page of your website a little differently to the rest of the other pages, be it you want all the `h1` headings on the home page to be green and on your about page blue. With these few lines of code you can have a class (with modification) or ID added to the body based on the URL's ending/page name.

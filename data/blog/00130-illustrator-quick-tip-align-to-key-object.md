@@ -13,7 +13,7 @@ medium: "/static/images/blog/illustrator-tip-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 130
-slug: "illustrator-quick-tip-align-to-key-object"
+fileroot: "illustrator-quick-tip-align-to-key-object"
 ---
 
 Aligning to a key object in Illustrator is one of the most useful alignment options. If you’ve ever been frustrated with aligning objects centrally, then everything nudges over a few pixels. This is where align to key object comes in, read on for how to.

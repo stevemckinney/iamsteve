@@ -11,7 +11,7 @@ images: ["/static/images/blog/tools-featured-image-01.png"]
 large: "/static/images/blog/tools-featured-image-01.png"ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 122
-slug: "tools-i-use"
+fileroot: "tools-i-use"
 ---
 
 I figured I would write a post about the tools I use. Some will be familiar, but hopefully there are some that are unfamiliar and end up being useful to you. 

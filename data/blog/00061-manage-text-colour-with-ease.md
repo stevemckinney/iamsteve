@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 61
-slug: "manage-text-colour-with-ease"
+fileroot: "manage-text-colour-with-ease"
 ---
 
 When designing a website you can have varied text colours depending on the background colour. This can be an area of frustration due to the unknown elements that could potentially be contained within an area. Here's a simple technique for overcoming that.

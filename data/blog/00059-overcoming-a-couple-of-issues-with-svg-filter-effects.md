@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 59
-slug: "overcoming-a-couple-of-issues-with-svg-filter-effects"
+fileroot: "overcoming-a-couple-of-issues-with-svg-filter-effects"
 ---
 
 Using SVG filter effects wasn’t something I was aware of and they have [good browser support](http://caniuse.com/#search=svg%20filters).

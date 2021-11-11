@@ -10,7 +10,7 @@ categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 9
-slug: "redesign"
+fileroot: "redesign"
 ---
 
 This post is just about some thoughts and processes I make whilst designing a website, but this one is about one for myself. As the saying goes "you are your own worst critic." It certainly stands true for this, many ideas went to waste but I've got something I'm relatively happy with. I hope you enjoy the read. Well where do I start? Like everyone redesigning their own personal website, it takes a lot for you to design something you truly, truly are happy with. While I'm not truly happy with this redesign, I'm happier than the previous version. I think I went through around 10 different designs, while some may have done more. I completed a fair few in full code and the majority of the pages of that design.

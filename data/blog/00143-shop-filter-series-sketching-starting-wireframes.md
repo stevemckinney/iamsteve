@@ -13,7 +13,7 @@ medium: "/static/images/blog/shop-tabbar-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 143
-slug: "shop-filter-series-sketching-starting-wireframes"
+fileroot: "shop-filter-series-sketching-starting-wireframes"
 ---
 
 Filtering is a huge part of online shops, it’s an effective form of navigation. In most cases it’s an area which is overlooked on small screens. I have seen some good implementations and many lack the ease of a larger screen. In this post series I want to explore the idea of it being a tab bar, starting with sketching & wireframes.

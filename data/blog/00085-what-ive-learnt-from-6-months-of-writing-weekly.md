@@ -10,7 +10,7 @@ categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 85
-slug: "what-ive-learnt-from-6-months-of-writing-weekly"
+fileroot: "what-ive-learnt-from-6-months-of-writing-weekly"
 ---
 
 During the Christmas holidays, I made the decision to write blog posts weekly, at the turn of the year. Knowing that I couldn’t be sure, if I would be able to see through writing, for a whole year. I wrote 4 posts over the course of the Christmas holidays and decided that I would go ahead with it.

@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 129
-slug: "why-you-should-use-tachyons-to-make-css-easier"
+fileroot: "why-you-should-use-tachyons-to-make-css-easier"
 ---
 
 I’ve been aware of [tachyons.io](http://tachyons.io) for a while, it was one of those things to get shared on twitter and such. I acknowledged it as an approach to CSS, but never looked into it in detail, until recently. As I’ve spent time understanding the approach, it really makes sense for most CSS. Particularly spacing and font sizes. In this post I’m going to explain; why you may want to use this approach, and how to adapt it to your style of writing CSS.

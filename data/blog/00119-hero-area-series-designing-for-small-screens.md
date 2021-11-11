@@ -13,7 +13,7 @@ medium: "/static/images/blog/hero-area-post-images-02.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 119
-slug: "hero-area-series-designing-for-small-screens"
+fileroot: "hero-area-series-designing-for-small-screens"
 ---
 
 The second post in this series the focus switches to small screens. The previous post was primarily on desktop so far, but considerations have been highlighted throughout for smaller screens. I will only cover ‘mobile’ sized resolutions, as for this particular layout you will only need to make minor adjustments for ‘tablet’ sized resolutions.

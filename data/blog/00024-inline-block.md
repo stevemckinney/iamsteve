@@ -13,7 +13,7 @@ medium: "/static/images/blog/inline-block-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 24
-slug: "inline_block"
+fileroot: "inline_block"
 ---
 
 > I originally published this article on <time>4th September 2011</time>. It has since been completely rewritten to have much more practical application and address the many techniques surrounding it.

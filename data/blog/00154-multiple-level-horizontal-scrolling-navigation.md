@@ -13,7 +13,7 @@ medium: "/static/images/blog/multiplelevel-menu-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 154
-slug: "multiple-level-horizontal-scrolling-navigation"
+fileroot: "multiple-level-horizontal-scrolling-navigation"
 ---
 
 With horizontal scrolling, submenus are quite challenging to make work. Due to the CSS you have to use, a CSS only solution isn’t viable. In this post I show you how to utilise JavaScript.

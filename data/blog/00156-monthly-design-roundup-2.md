@@ -13,7 +13,7 @@ medium: "/static/images/blog/monthly-roundup-02-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 156
-slug: "monthly-design-roundup-2"
+fileroot: "monthly-design-roundup-2"
 ---
 
 The second in a monthly series where I roundup some of the best things in design I found over the course of the previous month. It aims to be a source of website, illustration and branding inspiration, as well as some articles that are a good read.

@@ -13,7 +13,7 @@ medium: "/static/images/blog/casestudy-v6-featured-image-medium1.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 149
-slug: "my-design-process-v6-case-study"
+fileroot: "my-design-process-v6-case-study"
 ---
 
 The redesign of this website has been needed for some time. Overall the website is quite small in terms of templates required. I wanted to put the effort into making the website feel like it is a growing source of content. There is much to cover in this, as I start with the new logo briefly, sketching, wireframes and design.

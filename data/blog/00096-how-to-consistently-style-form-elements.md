@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 96
-slug: "how-to-consistently-style-form-elements"
+fileroot: "how-to-consistently-style-form-elements"
 ---
 
 One of the trickiest things to deal with cross browser is the styling of form elements. All browsers influence these strictly, but over the years the ‘appearance’ property has been present in WebKit and Blink browsers, and Firefox to help gain some control. More recently it's been added to Edge. 

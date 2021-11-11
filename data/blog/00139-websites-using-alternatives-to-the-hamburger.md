@@ -13,7 +13,7 @@ medium: "/static/images/blog/hamburger-alternatives-featured-image-medium1.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 139
-slug: "websites-using-alternatives-to-the-hamburger"
+fileroot: "websites-using-alternatives-to-the-hamburger"
 ---
 
 It’s been proven as apps have shifted away from the ‘hamburger’ navigation, to a bottom bar, engagement and browsing metrics have increased. Over time these findings have an impact on the thought process of those designing websites. So I wanted to explore as an alternative for websites tab bar style navigation. I’ve detailed a list of websites that are using the tab bar navigation.

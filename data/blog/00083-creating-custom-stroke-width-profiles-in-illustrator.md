@@ -13,7 +13,7 @@ medium: "/static/images/blog/update-illustrator-stroke-width-featured-image-medi
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 83
-slug: "creating-custom-stroke-width-profiles-in-illustrator"
+fileroot: "creating-custom-stroke-width-profiles-in-illustrator"
 ---
 
 Illustrator has a fair variety of default width profiles; however you may find yourself wanting to tweak them slightly. In my case, I needed to modify one for creating some eyelashes. It’s not apparent how to do this. So it makes for a good post to explain for anyone having a similar problem.

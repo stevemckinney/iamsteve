@@ -13,7 +13,7 @@ medium: "/static/images/blog/css-shapes-featured-image-medium-v2%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 114
-slug: "get-up-to-speed-with-css-shapes"
+fileroot: "get-up-to-speed-with-css-shapes"
 ---
 
 I’ve wanted to explore CSS shapes for a little while now and get a good understanding of it. Find potential use cases, strengths and weaknesses. In this post, I’m going to cover the level one properties. At the time of writing level two is in the editors draft and looks to be bringing much more power to them.

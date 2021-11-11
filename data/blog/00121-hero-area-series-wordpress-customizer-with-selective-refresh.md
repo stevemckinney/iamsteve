@@ -13,7 +13,7 @@ medium: "/static/images/blog/hero-area-post-images-02.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 121
-slug: "hero-area-series-wordpress-customizer-with-selective-refresh"
+fileroot: "hero-area-series-wordpress-customizer-with-selective-refresh"
 ---
 
 This post builds upon the previous one in making it editable with Wordpress, using the Customizer API and the newest functionality since 4.5 selective refresh. With this you can make a really smooth and quick editing experience. 

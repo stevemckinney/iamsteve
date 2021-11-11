@@ -10,7 +10,7 @@ categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 37
-slug: "about_version_4"
+fileroot: "about_version_4"
 ---
 
 As the title states the obvious, I'm going to run through some of my decisions to redesign. Although I don't feel this design is hugely different from the previous, it's more of a refinement — although it doesn't really look like it — confusing either way... Firstly firsts with this design.

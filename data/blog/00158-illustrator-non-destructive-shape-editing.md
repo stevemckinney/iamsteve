@@ -13,7 +13,7 @@ medium: "/static/images/blog/illustrator-tip-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 158
-slug: "illustrator-non-destructive-shape-editing"
+fileroot: "illustrator-non-destructive-shape-editing"
 ---
 
 Making anything in Illustrator involves using the shape tools more often than not. You combine shapes, using the various methods with pathfinder. You may have two shapes and want to combine them, but still want to refine the overall shape. This post shows you two options.

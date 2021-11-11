@@ -13,7 +13,7 @@ medium: "/static/images/blog/about-v6-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 141
-slug: "about-version-six"
+fileroot: "about-version-six"
 ---
 
 I’ve finally done the redesign of this website! Version five lived for longer than I ever intended. This post is going to be a shorter summary of the changes. I’ll be posting a full case study over the coming weeks.

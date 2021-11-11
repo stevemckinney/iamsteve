@@ -13,7 +13,7 @@ medium: "/static/images/blog/shop-filter-02-updated-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 144
-slug: "shop-filter-series-completing-the-filters"
+fileroot: "shop-filter-series-completing-the-filters"
 ---
 
 Continuing from the last post, which looked at the initial sketching and wireframe. This post will focus on the completion of each of the filters. 

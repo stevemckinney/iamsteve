@@ -13,7 +13,7 @@ medium: "/static/images/blog/ps-generator-featured-image-medium-v2%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 66
-slug: "adobe-generator-syntax-cheatsheet"
+fileroot: "adobe-generator-syntax-cheatsheet"
 ---
 
 I'm always looking up the Adobe generator syntax and yet I never bookmark it. I feel like it would be a valuable resource to clearly show. Something I think the Adobe documentation lacks. This could be the reason I haven't bookmarked it. 

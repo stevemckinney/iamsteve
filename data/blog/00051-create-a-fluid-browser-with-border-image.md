@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 51
-slug: "create_a_fluid_browser_with_border_image"
+fileroot: "create_a_fluid_browser_with_border_image"
 ---
 
 I have been curious to try find a solution to having a fluid browser around portfolio images. I have attempted to find a solution which is as simple as I have been able to find. The overall idea uses `:before` to apply the browser and `border-image`, this is purely to offset extra space caused by the widths of the border.

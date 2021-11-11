@@ -13,7 +13,7 @@ medium: "/static/images/blog/illustrator-tip-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 140
-slug: "illustrator-quick-tip-equally-space-objects"
+fileroot: "illustrator-quick-tip-equally-space-objects"
 ---
 
 It’s likely you know how to align things in Illustrator, but you can never remember how to distribute space between things equally, so you resort to the tedious way of spacing them individually. If you want to align objects with an equal space between them, this quick tip will show you how.

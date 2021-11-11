@@ -10,7 +10,7 @@ categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 22
-slug: "about_the_redesign_v3"
+fileroot: "about_the_redesign_v3"
 ---
 
 Well another redesign, another run through it. V2 lasted I'm guessing around 8 months or so, not bad I guess. I grew bored of it as usual, though requirements of the layout changed in this one and something new is nice. So onto why I went for a redesign.

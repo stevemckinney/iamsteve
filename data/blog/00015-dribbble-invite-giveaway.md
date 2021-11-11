@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 15
-slug: "dribbble_invite_giveaway"
+fileroot: "dribbble_invite_giveaway"
 ---
 
 I have a single Dribbble invite to giveaway. I assume the majority of people who will come to this post will know what Dribbble is but for those who don't here is a quote from the Dribbble about page.

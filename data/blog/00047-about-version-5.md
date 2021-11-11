@@ -10,7 +10,7 @@ categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 47
-slug: "about_version_5"
+fileroot: "about_version_5"
 ---
 
 Another redesign, another blog post. It’s the majority of what my blog posts are based around. With each version I say I'm going to blog more, but the redesign has never really focused on it. This was one of my main goals, to bring more focus to the blog. Then maybe it would add to making me write more.

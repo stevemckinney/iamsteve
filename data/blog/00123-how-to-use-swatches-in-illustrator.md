@@ -13,7 +13,7 @@ medium: "/static/images/blog/use-swatches-02.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 123
-slug: "how-to-use-swatches-in-illustrator"
+fileroot: "how-to-use-swatches-in-illustrator"
 ---
 
 The swatches feature in Illustrator isn’t something I’ve used often. Partly this has been down to being unsure of the best way, and not trusting that they will remain there. As there are random ones to begin with that, you will never use and the process of deleting them seems annoying each time. In this post, I’ll show you the best way to clean up existing swatches, add your own and keep them updated.

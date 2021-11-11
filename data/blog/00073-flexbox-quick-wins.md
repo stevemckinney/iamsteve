@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 73
-slug: "flexbox-quick-wins"
+fileroot: "flexbox-quick-wins"
 ---
 
 Flexbox is still one of those properties that isn’t quite ready for prime time use. Due to the necessary support of [IE 8 and 10](http://caniuse.com/#search=flexbox). There are some uses of flexbox we can use for ‘free’ without worry of any knock on effects. These are especially handy if we don’t have the time to invest into heavily flexbox based layouts. 

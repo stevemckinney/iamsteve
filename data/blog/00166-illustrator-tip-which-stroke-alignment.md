@@ -13,7 +13,7 @@ medium: "/static/images/blog/illustrator-tip-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 166
-slug: "illustrator-tip-which-stroke-alignment"
+fileroot: "illustrator-tip-which-stroke-alignment"
 ---
 
 One of the things you may face with applying a stroke to an object in Illustrator, is which of the three alignments should you use? Each type has its own advantages and disadvantages, which this post will explore.

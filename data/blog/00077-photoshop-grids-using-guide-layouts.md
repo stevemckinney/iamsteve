@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 77
-slug: "photoshop-grids-using-guide-layouts"
+fileroot: "photoshop-grids-using-guide-layouts"
 ---
 
 In the October 2014 update, Adobe added a new grid/guide creator and it’s great. It covers the majority of things extensions like [GuideGuide](http://guideguide.me) do and has a couple of advantages.

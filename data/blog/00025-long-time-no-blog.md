@@ -10,7 +10,7 @@ categories: ["Life"]
 ogImage: "/assets/og/cover.jpg"
 status: "closed"
 id: 25
-slug: "long_time_no_blog"
+fileroot: "long_time_no_blog"
 ---
 
 I guess this is a hello, and one of my infrequent blog posts. As you can see the site is different, it's not fully complete but I felt I should update the whole site. My portfolio and about pages aren't complete, yes I brought the about page back. After my portfolio is complete I shall follow it up with a write up about this design, it's more or a less just a refresh of the old design, a clean up, and needed redesign/realign?

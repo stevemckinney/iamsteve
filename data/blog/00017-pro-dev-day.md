@@ -10,7 +10,7 @@ categories: ["Life"]
 ogImage: "/assets/og/cover.jpg"
 status: "closed"
 id: 17
-slug: "pro_dev_day"
+fileroot: "pro_dev_day"
 ---
 
 Today was Pro Dev Day, it's a few hours of a lot of companies and freelancers willing to talk to students and anyone really about their company. Some have job placements or permanent jobs available for graduates, which is great for someone like me in their final year of University. While that's briefly about what it is here's the website: [http://prodevday.com](http://prodevday.com/ "Pro Dev Day website for full information").

@@ -13,7 +13,7 @@ medium: "/static/images/blog/illustrator-tip-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 162
-slug: "illustrator-quick-tip-export-a-colour-palette-quickly"
+fileroot: "illustrator-quick-tip-export-a-colour-palette-quickly"
 ---
 
 In Illustrator it seems to be more difficult than it needs to be to export a colour palette to hex values. Using swatches gives you access to everything except hex. It’s tedious to go through the usual object, click fill, copy and paste routine. Here’s a way to export your colours quickly.

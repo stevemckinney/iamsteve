@@ -13,7 +13,7 @@ medium: "/static/images/blog/maintenance-week-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 111
-slug: "maintenance-week-2"
+fileroot: "maintenance-week-2"
 ---
 
 This week is another maintenance week. The last one I looked at updating some posts. This week has been based around website maintenance. It's been over the course of more than a week, as there was a lot to do. The interesting things I've added are SSL, updated the CMS and tidied up my server. 

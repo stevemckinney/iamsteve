@@ -13,7 +13,7 @@ medium: "/static/images/blog/alternatives-to-circular-featured-image-medium1.png
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 148
-slug: "alternatives-to-circular"
+fileroot: "alternatives-to-circular"
 ---
 
 Circular is very much in the spotlight at the moment. It has a distinct look to it that so many huge companies are using. From Google to airbnb, it’s everywhere. If you’re looking for alternatives — but similar — with an affordable price point for personal projects, or through a different service, this post is for you.

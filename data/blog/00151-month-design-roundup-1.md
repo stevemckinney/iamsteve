@@ -13,7 +13,7 @@ medium: "/static/images/blog/monthly-roundup-01featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 151
-slug: "month-design-roundup-1"
+fileroot: "month-design-roundup-1"
 ---
 
 This is the start of a monthly series of a roundup of well designed websites, and articles I found helpful. There is no particular theme, other than inspirational, which I hope you find is the case. I’ve added a few notes and summary to give my take.

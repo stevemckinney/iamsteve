@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 55
-slug: "critical-asynchronous-css"
+fileroot: "critical-asynchronous-css"
 ---
 
 I’ve spent the best part of my free time for the most recent months, working on a website which I recently completed. This will be a series of posts detailing some of the problems I encountered over the course of making the website. Starting with how I setup critical and asynchronous CSS to be a maintainable part of my workflow.

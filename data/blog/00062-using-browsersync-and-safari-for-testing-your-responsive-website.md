@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 62
-slug: "using-browsersync-and-safari-for-testing-your-responsive-website"
+fileroot: "using-browsersync-and-safari-for-testing-your-responsive-website"
 ---
 
 Testing a responsive design on an actual device can be quite annoying when you’re down to the point of refining the design and making it more appropriate to such a small screen. As it’s usually testing and refining the best you can locally, then checking on the device through whatever means you usually do it.

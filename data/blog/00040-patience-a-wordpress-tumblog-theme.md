@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "closed"
 id: 40
-slug: "patience_a_wordpress_tumblog_theme"
+fileroot: "patience_a_wordpress_tumblog_theme"
 ---
 
 I've recently released a theme on [Superhug](http://superhug.com) which I've named "Patience". It's my first Wordpress theme that I've released in public and hope to release many more. 

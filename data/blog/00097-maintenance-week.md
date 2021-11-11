@@ -13,7 +13,7 @@ medium: "/static/images/blog/maintenance-week-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 97
-slug: "maintenance-week"
+fileroot: "maintenance-week"
 ---
 
 I've been thinking about doing this for a little while over the course of posting regularly. I feel it a duty to go back and refine some posts or make additions to them to improve them. 

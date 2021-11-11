@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 46
-slug: "sass_hints_tips"
+fileroot: "sass_hints_tips"
 ---
 
 Sass/Compass are all the rage lately, well, CSS preprocessors in general. I have been planning to share my knowledge for a while and now feels a good time. This could be a biased approach but I can't really see a downside to using a preprocessor, when we're in a world where getting things done quickly is key. So I'm not going to put my pros and cons, just some general thoughts, hints, and tips.

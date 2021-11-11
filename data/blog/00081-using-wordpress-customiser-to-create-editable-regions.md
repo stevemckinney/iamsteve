@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 81
-slug: "using-wordpress-customiser-to-create-editable-regions"
+fileroot: "using-wordpress-customiser-to-create-editable-regions"
 ---
 
 The great thing about the Wordprtess customiser, is it allows you to make editable regions throughout your website. Without giving you too much control, but allowing that, real time, visual focus.

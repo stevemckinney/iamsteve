@@ -13,7 +13,7 @@ medium: "/static/images/blog/year-in-writing-2017-featured-image-medium%402x.png
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 167
-slug: "a-year-in-writing-2017"
+fileroot: "a-year-in-writing-2017"
 ---
 
 This year I took it at a slower pace with the articles. It was a challenging year, as I aimed to focus on things outside of writing. I posted very little and stopped towards the end of the year. Aside from the challenges, I was quite surprised to see the website continue to grow.

@@ -10,7 +10,7 @@ categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 108
-slug: "a-year-in-writing-2015"
+fileroot: "a-year-in-writing-2015"
 ---
 
 It’s been a year since I started writing weekly. This is the 52nd post, so it’s fitting to reflect upon the experience of writing over the past year. I hope to inspire you, to take it upon yourself, to write regularly. As I’m certainly not the best writer, but I believe if you’re knowledgeable of a subject, you should be sharing what you know. 

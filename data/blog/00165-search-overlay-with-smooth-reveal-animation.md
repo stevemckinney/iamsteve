@@ -13,7 +13,7 @@ medium: "/static/images/blog/search-reveal-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 165
-slug: "search-overlay-with-smooth-reveal-animation"
+fileroot: "search-overlay-with-smooth-reveal-animation"
 ---
 
 A common part of a website is the ability to search. Depending on how important search is to your website can define much of how it looks and how it's prioritised in the design. In this post I want to show you how to create a search which appears with a smooth transition on the click/tap of a button.

@@ -13,7 +13,7 @@ medium: "/static/images/blog/colour-series-post-images-021.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 105
-slug: "colour-series-picking-your-palette"
+fileroot: "colour-series-picking-your-palette"
 ---
 
 I had a discussion with someone I work with about how to use colour well. It’s a difficult topic to explain, as it all comes naturally to me. However, as we discussed more, I found it easier to communicate the process. I figured it would make a suitable series of posts.

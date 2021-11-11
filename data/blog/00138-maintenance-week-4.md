@@ -13,7 +13,7 @@ medium: "/static/images/blog/maintenance-week-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 138
-slug: "maintenance-week-4"
+fileroot: "maintenance-week-4"
 ---
 
 Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies what I will do, and this posts serves as detailing what has been done. 

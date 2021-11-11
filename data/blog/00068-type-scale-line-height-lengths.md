@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 68
-slug: "type-scale-line-height-lengths"
+fileroot: "type-scale-line-height-lengths"
 ---
 
 As a beginner, with designing websites, one of the things that can be overlooked is creating a great reading experience. All websites are about their content and being able to read that in a comfortable way will make your visitors happy.

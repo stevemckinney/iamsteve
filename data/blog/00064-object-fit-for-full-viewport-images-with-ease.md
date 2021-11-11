@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 64
-slug: "object-fit-for-full-viewport-images-with-ease"
+fileroot: "object-fit-for-full-viewport-images-with-ease"
 ---
 
 This CSS feature will make life much easier where it concerns the size of images. It’s like background-size for background images. It’s easy to use and behaves in a similar way albeit different naming. I’m going to show how `object-fit` and viewport relative units allow, without distortion, sizing inline images, to a more fluid aspect ratio.

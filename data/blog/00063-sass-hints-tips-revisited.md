@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 63
-slug: "sass-hints-tips-revisited"
+fileroot: "sass-hints-tips-revisited"
 ---
 
 One of my most popular posts [Sass hints & tips](http://iamsteve.me/blog/entry/sass_hints_tips) is a little dated. I was considering just editing it, but there is still some value in that post. Instead I decided to revisit it through a new post.

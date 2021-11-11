@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 75
-slug: "sass-map-use-patterns"
+fileroot: "sass-map-use-patterns"
 ---
 
 Sass maps can provide some powerful functionality to make life easier and less repetitive. I’ll cover briefly how to use them and then detail some of the cases that I use them, as I don’t think the benefits are immediate.

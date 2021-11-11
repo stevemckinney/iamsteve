@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "draft"
 id: 171
-slug: "css-tip-avoid-your-font-face-fauxs"
+fileroot: "css-tip-avoid-your-font-face-fauxs"
 ---
 
 A practice to improve web font compatibility in the past was to define your font weights and styles as a new font each time. However, it’s for little gain and increases complexity. It’s easy to end up with unsightly double italics or fuzzy bold weights.

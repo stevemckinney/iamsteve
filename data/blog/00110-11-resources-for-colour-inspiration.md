@@ -13,7 +13,7 @@ medium: "/static/images/blog/colour-inspiration-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 110
-slug: "11-resources-for-colour-inspiration"
+fileroot: "11-resources-for-colour-inspiration"
 ---
 
 Following on from the colour series I have a selection of websites that can help inspire your colour palettes. There is a variety between inspiration, resources and tools to pick colours.

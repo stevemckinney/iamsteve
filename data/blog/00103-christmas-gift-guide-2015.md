@@ -10,7 +10,7 @@ categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 103
-slug: "christmas-gift-guide-2015"
+fileroot: "christmas-gift-guide-2015"
 ---
 
 As it’s the festive time of year, I thought I would add to the lists of gifts that people are writing. Christmas is one of my favourite times of year, not just for the gift giving, but it's a time to relax and enjoy what surrounds Christmas. Usually there’s a bit of a designer spin on it, which is my aim, but I think they’re suitable for everyone. I own some of these things already, so for what I can I have provided a brief review. There’s a mix of things from notebooks to shoes, with varying price points.

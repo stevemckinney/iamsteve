@@ -13,7 +13,7 @@ medium: "/static/images/blog/visual-design-tips-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 164
-slug: "visual-design-tips-you-can-apply-immediately"
+fileroot: "visual-design-tips-you-can-apply-immediately"
 ---
 
 When designing there are techniques for applying colour, typography, spacing, you can rely upon regardless of the situation. These are things which add extra polish, and are generally hidden to the untrained eye.

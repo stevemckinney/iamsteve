@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 93
-slug: "setting-a-cookie-with-wordpress"
+fileroot: "setting-a-cookie-with-wordpress"
 ---
 
 At one point, I was relying on [JavaScript for setting the cookie](http://iamsteve.me/blog/entry/using-cookies-to-serve-critical-css-for-first-time-visits) for my critical path CSS. The issue with that is when JavaScript isn't available the cookie will not be set. Not a huge deal as the website, would still function.

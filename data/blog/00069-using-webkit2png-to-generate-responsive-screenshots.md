@@ -10,7 +10,7 @@ categories: ["Terminal"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 69
-slug: "using-webkit2png-to-generate-responsive-screenshots"
+fileroot: "using-webkit2png-to-generate-responsive-screenshots"
 ---
 
 If you ever have to create screenshots for a website, it can be quite a tedious process. In this post I will show you a way to do it easily with [webkit2png](http://www.paulhammond.org/webkit2png/). We’ll set up an array, which will generate a full sized screenshot with a unique name from your specified website.

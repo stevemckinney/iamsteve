@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 102
-slug: "thoughts-on-avoiding-split-focus"
+fileroot: "thoughts-on-avoiding-split-focus"
 ---
 
 The idea of this post comes from a previous one, ‘[accuracy in wireframes](/blog/accuracy-in-wireframes)’. I thought more about the topic, which was around trying to decide layout and  adding visual style. Focusing on two very important aspects of making websites leads to difficulties. It was part of a larger problem in my process.

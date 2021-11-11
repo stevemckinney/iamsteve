@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 100
-slug: "tips-for-sketching-websites"
+fileroot: "tips-for-sketching-websites"
 ---
 
 I’ve seen tweets, and hear people say “I’m no good at sketching/drawing.” So they don’t bother with doing it. For me not sketching your website before going into a wireframe or design, means you’re missing out!

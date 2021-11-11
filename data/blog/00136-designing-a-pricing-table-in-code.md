@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 136
-slug: "designing-a-pricing-table-in-code"
+fileroot: "designing-a-pricing-table-in-code"
 ---
 
 Following up from [the design in Illustrator post](/blog/making-a-pricing-table-in-illustrator), it’s time to code the design. Using flexbox to do the heavy lifting for the layout, the focus can be on matching the design and improving on it through being able to show the button state.

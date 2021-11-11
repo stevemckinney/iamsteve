@@ -13,7 +13,7 @@ medium: "/static/images/blog/overcoming-design-roadblocks-featured-image-medium.
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 163
-slug: "overcoming-design-roadblocks"
+fileroot: "overcoming-design-roadblocks"
 ---
 
 When starting out on a new project or being newer to design, getting your ideas to be what you visualise can be difficult. Whether you’re new or are aiming to broaden your specialism you’ll find some things more challenging. In this post I’ll share some tips of how I approach these challenges.

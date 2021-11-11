@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 56
-slug: "javascript-without-jquery"
+fileroot: "javascript-without-jquery"
 ---
 
 If you haven’t read the previous post, I have spent the best part of my free time building a portfolio, where I focused on performance. The previous post covered [asynchronous and critical path CSS](http://iamsteve.me/blog/entry/critical-asynchronous-css), this post will focus on Javascript. 

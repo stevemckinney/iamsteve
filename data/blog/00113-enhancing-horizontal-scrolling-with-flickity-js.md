@@ -11,7 +11,7 @@ images: ["/static/images/blog/flickity-navigation.png"]
 large: "/static/images/blog/flickity-navigation.png"ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 113
-slug: "enhancing-horizontal-scrolling-with-flickity-js"
+fileroot: "enhancing-horizontal-scrolling-with-flickity-js"
 ---
 
 I first wrote a tutorial little while back on [horizontal scrolling navigation](/blog/horizontal-scrolling-responsive-menu), with the intention of accommodating **only** mobile devices. As with every device, I have come across, the usability of horizontal scrolling areas is good.

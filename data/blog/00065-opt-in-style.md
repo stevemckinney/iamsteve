@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 65
-slug: "opt-in-style"
+fileroot: "opt-in-style"
 ---
 
 This isn’t a new idea, but it’s something I have been thinking about more. The idea is that you don’t add a base level of styles, eg: all headings will have a margin of x amount. This of course *doesn’t rule out* things like using normalize.css.

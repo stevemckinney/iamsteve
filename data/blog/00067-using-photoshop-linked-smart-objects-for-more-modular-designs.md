@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 67
-slug: "using-photoshop-linked-smart-objects-for-more-modular-designs"
+fileroot: "using-photoshop-linked-smart-objects-for-more-modular-designs"
 ---
 
 This feature was added to Photoshop in the last year or so, as of writing. It's become such a large part of my Photoshop workflow. If you're not using it, I'll show you why you should. 

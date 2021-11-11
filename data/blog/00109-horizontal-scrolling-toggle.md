@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 109
-slug: "horizontal-scrolling-toggle"
+fileroot: "horizontal-scrolling-toggle"
 ---
 
 I was looking through photos in finder, and I was finding it frustrating to scan many photos quickly. The problem was down to the horizontal scrolling sections; it is quite quick to flick through but it became tedious. I wanted to see more pictures at once. 

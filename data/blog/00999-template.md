@@ -13,7 +13,7 @@ medium: "/static/images/blog/ink-trap-post-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "closed"
 id: 173
-slug: "the-best-ink-trap-typefaces-for-websites"
+fileroot: "the-best-ink-trap-typefaces-for-websites"
 ---
 
 # 896px 736px

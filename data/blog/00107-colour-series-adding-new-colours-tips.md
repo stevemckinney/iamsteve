@@ -13,7 +13,7 @@ medium: "/static/images/blog/colour-series-post-images-021.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 107
-slug: "colour-series-adding-new-colours-tips"
+fileroot: "colour-series-adding-new-colours-tips"
 ---
 
 Following on from the two previous posts which have more practical guidance on making a colour palette. This post will cover things I have learnt about selecting colours over the years. These tips are the sort that when starting something new, you wish you knew, ahead of time. The majority of these tips will stand true, at least 90% of the time, and help to make the right decisions. 

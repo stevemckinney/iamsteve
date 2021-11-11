@@ -13,7 +13,7 @@ medium: "/static/images/blog/colour-series-post-images-021.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 106
-slug: "colour-series-tweaking-your-palette"
+fileroot: "colour-series-tweaking-your-palette"
 ---
 
 This is the second part in this colour series. The topic I will cover in this post is tweaking your palette. Following the previous post, you will have selected a 5 colour palette, which should serve for the majority of your use cases. However, at this stage, it won't be perfect. I'll guide you through the process of tweaking your palette. From trying your colours in different combinations, to colour blindness. This post helps to refine your palette.

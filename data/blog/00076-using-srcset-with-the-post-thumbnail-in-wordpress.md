@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 76
-slug: "using-srcset-with-the-post-thumbnail-in-wordpress"
+fileroot: "using-srcset-with-the-post-thumbnail-in-wordpress"
 ---
 
 > If you're looking for an automated way to add srcset to images [Wordpress 4.4](https://codex.wordpress.org/Version_4.4) now supports srcset on generated images. 

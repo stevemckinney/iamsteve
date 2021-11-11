@@ -10,7 +10,7 @@ categories: ["Life"]
 ogImage: "/assets/og/cover.jpg"
 status: "closed"
 id: 23
-slug: "updates_and_advice"
+fileroot: "updates_and_advice"
 ---
 
 ## What's been going on

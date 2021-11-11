@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 99
-slug: "three-free-form-styles"
+fileroot: "three-free-form-styles"
 ---
 
 This is one of the first things; I’ve worked on aside from what’s posts, to give away. It’s quite difficult to figure out what to design to give away, without just adding to the masses of things out there already. I’ve decided to code up some form styles. So you should be able to grab their styles and apply them right away to your forms. There are three variations.

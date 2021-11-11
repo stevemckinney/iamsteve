@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 74
-slug: "creating-vintage-filters-with-css-blend-modes"
+fileroot: "creating-vintage-filters-with-css-blend-modes"
 ---
 
 With blend modes we can apply a vintage style to any image like we would in Photoshop. Blend modes is something I have been looking forward to coming to CSS for a while and this feels like a fitting way for me to share a deeper look at them.

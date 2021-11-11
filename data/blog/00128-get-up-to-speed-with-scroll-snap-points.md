@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 128
-slug: "get-up-to-speed-with-scroll-snap-points"
+fileroot: "get-up-to-speed-with-scroll-snap-points"
 ---
 
 > **This post is out of date**. Scroll snap points has been updated significantly since this post was written. Many of the properties will no longer work, until this post can be updated, I would advise referring to the [official spec](https://drafts.csswg.org/css-scroll-snap-1/).

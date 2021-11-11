@@ -13,7 +13,7 @@ medium: "/static/images/blog/ink-trap-post-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 172
-slug: "the-best-ink-trap-typefaces-for-websites"
+fileroot: "the-best-ink-trap-typefaces-for-websites"
 ---
 
 If I think back to the first time I saw a typeface with ink traps, it was [Retina](https://frerejones.com/families/retina) by Frere-Jones. I wasn’t immediately fond of the style at first, but trends have a habit of growing on you.

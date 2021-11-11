@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 84
-slug: "using-sass-to-create-harmonious-gradients"
+fileroot: "using-sass-to-create-harmonious-gradients"
 ---
 
 One of the best things about Sass is the ability to adjust colour nicely and be able to apply that, consistently across, many colours.

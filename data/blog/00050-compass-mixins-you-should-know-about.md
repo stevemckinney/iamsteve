@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 50
-slug: "compass_mixins_you_should_know_about"
+fileroot: "compass_mixins_you_should_know_about"
 ---
 
 Compass is a brilliant extension to Sass as we all know. We know the time saving CSS3 related mixins it offers, maybe you don't know some of the lesser praised mixins/functions that offer a similar convenience. I'm going to run through a few of my favourites that I have come to rely on.

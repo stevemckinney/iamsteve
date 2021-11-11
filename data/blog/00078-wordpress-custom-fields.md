@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 78
-slug: "wordpress-custom-fields"
+fileroot: "wordpress-custom-fields"
 ---
 
 I have only recently looked into using the custom meta boxes that come with Wordpress. I've been a fan of [Advanced Custom Fields](http://advancedcustomfields.com) for a long time, so it's something I've never had a great urge to use.

@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 131
-slug: "efficient-table-creation-in-illustrator"
+fileroot: "efficient-table-creation-in-illustrator"
 ---
 
 Tables in general are something I naturally avoid doing in design applications, they’re frustrating to make. They are easily to overlook due to this and that they can be quite uncommon in use. Let’s say you wanted to design a table in Illustrator, and you wanted a quick and accurate way to do so. This post will show you how.

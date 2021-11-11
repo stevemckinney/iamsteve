@@ -69,6 +69,29 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         </div>
       </div>
       
+      <Posts title="Latest posts" link="/blog">
+        {posts
+          .filter((post) => post)
+          .map((frontmatter) => {
+            return (
+              <>
+                <div>
+                  {frontmatter.slug}
+                  <Card kind="medium" frontmatter={frontmatter} key={frontmatter.id} />
+                </div>
+              </>
+            )
+          })
+          .slice(0, POSTS_PER_PAGE)
+        }
+      </Posts>
+      
+      {siteMetadata.newsletter.provider !== '' && (
+          <div className="flex items-center justify-center pt-4">
+            <NewsletterForm />
+          </div>
+        )}
+      
       <Posts title="Popular in design" link="/design">
         {posts
           .sort(

@@ -13,7 +13,7 @@ medium: "/static/images/blog/shop-tabbar-2-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 147
-slug: "shop-filter-series-visual-style-completion"
+fileroot: "shop-filter-series-visual-style-completion"
 ---
 
 In the last post the basis for the visual style was set. In this post it will continue with that to complete the filters. There are some challenging areas like colour selection, as it can look overwhelming and how to handle the closing of filters. 

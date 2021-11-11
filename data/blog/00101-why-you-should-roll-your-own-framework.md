@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 101
-slug: "why-you-should-roll-your-own-framework"
+fileroot: "why-you-should-roll-your-own-framework"
 ---
 
 There are many opinions against rolling your own CSS framework. To the extent, it can make you think, let's get bootstrap (or another) and see what happens. 

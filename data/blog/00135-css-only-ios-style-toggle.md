@@ -13,7 +13,7 @@ medium: "/static/images/blog/ios-toggle-featured-image-small.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 135
-slug: "css-only-ios-style-toggle"
+fileroot: "css-only-ios-style-toggle"
 ---
 
 Since they appeared in iOS it’s been a trend to recreate these using CSS only. The technique uses the adjacent sibling selector and a “hidden” checkbox to retain use of the `:checked` pseudo class. In this post I wanted to take a look at this myself and recreate the toggle style.

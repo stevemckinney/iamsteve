@@ -10,7 +10,7 @@ categories: ["Terminal"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 86
-slug: "redirecting-an-old-domain-to-a-new-domain-with-nginx"
+fileroot: "redirecting-an-old-domain-to-a-new-domain-with-nginx"
 ---
 
 Server management isn’t a topic I thought I would write about, however I had to do something for the first time on nginx. There is plenty of information out there on this topic. As someone who was new to redirecting old and new domains on nginx particularly, the information is making a few assumptions. For me, it wasted much of the time, it took me to do this. As I was second guessing what would happen.

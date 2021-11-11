@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 92
-slug: "having-a-central-logo-with-wordpress-menus"
+fileroot: "having-a-central-logo-with-wordpress-menus"
 ---
 
 At first it can appear tricky to achieve. You may have been used to an approach that involved setting up, two separate menus, within Wordpress. May you added a link to ‘home’ in between the items in a single menu. Or worse still you used JavaScript to change the position. Each of them have a less than ideal feeling to it. This is where flexbox can really help.

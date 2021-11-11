@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 98
-slug: "using-grunticon-to-inline-svg"
+fileroot: "using-grunticon-to-inline-svg"
 ---
 
 Grunticon updated to V2 a while ago now and what came with it was the ability to insert inline SVG. This is great because it can generate the necessary fallbacks and not ruin layout in old browsers with the presence of an `<svg>` tag. The added benefit of your SVG being inline is it can be styled simply with CSS. 

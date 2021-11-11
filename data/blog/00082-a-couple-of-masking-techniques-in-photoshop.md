@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 82
-slug: "a-couple-of-masking-techniques-in-photoshop"
+fileroot: "a-couple-of-masking-techniques-in-photoshop"
 ---
 
 ## Clipping mask

@@ -13,7 +13,7 @@ medium: "/static/images/blog/atomic-font-sizes-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 170
-slug: "atomic-font-size-management-with-sass"
+fileroot: "atomic-font-size-management-with-sass"
 ---
 
 Have you found yourself thinking: ‘how many times have I set this font size?’ If so, this post should help. Font size management is challenging, especially with responsive design. However, I’ve been using an ‘atomic’ approach with Sass which has made things easier.

@@ -13,7 +13,7 @@ medium: "/static/images/blog/hero-area-post-images-02.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 118
-slug: "hero-area-series-plan-design"
+fileroot: "hero-area-series-plan-design"
 ---
 
 This is the start of a series where I’m going to take a common design pattern and go through the process of planning, designing and code. It will follow the process I go through to make websites, but taking a smaller component. **The pattern you will focus on within this series is a hero area**. 

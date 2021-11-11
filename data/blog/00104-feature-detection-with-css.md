@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 104
-slug: "feature-detection-with-css"
+fileroot: "feature-detection-with-css"
 ---
 
 Feature detection is a core part of day to day life as someone who makes websites. It's one of those features I usually hand off to Modernizr. I recently saw a tweet, which spurred the curiosity to see if we’re ready to use the `@supports` feature query. Now is definitely a good time to start.

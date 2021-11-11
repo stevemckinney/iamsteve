@@ -13,7 +13,7 @@ medium: "/static/images/blog/lazyloading-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 168
-slug: "nice-and-easy-lazy-loading-with-lazysizes-js"
+fileroot: "nice-and-easy-lazy-loading-with-lazysizes-js"
 ---
 
 Images play a large part in the reason why websites continue to grow in page size. While they don’t affect performance as much as JavaScript, they remain a burden on data and loading times. In this post I want to show you how to add lazy loading images as part of your workflow.

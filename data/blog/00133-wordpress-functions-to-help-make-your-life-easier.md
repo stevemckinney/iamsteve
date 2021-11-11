@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 133
-slug: "wordpress-functions-to-help-make-your-life-easier"
+fileroot: "wordpress-functions-to-help-make-your-life-easier"
 ---
 
 As part of using Wordpress, and any other part of making a website, for that matter, you acquire reusable parts. As well as discover functions that aren’t shouted about. In this post I’ve shared a few with usage.

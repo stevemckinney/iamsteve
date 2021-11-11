@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 80
-slug: "remove-letter-spacing-from-last-letter"
+fileroot: "remove-letter-spacing-from-last-letter"
 ---
 
 One of the frustrating things about the letter-spacing property is the addition of the letter-spacing you apply to the last letter of the text. This is fine when you have left aligned text, however if you right align or centre the text, you’re left with a little bit of space.

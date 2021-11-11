@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 57
-slug: "images-with-srcset-picture"
+fileroot: "images-with-srcset-picture"
 ---
 
 If you haven’t read the previous posts, I have spent the best part of my free time building a portfolio, where I focused on performance. These posts covered [asynchronous and critical path CSS](http://iamsteve.me/blog/entry/critical-asynchronous-css) and [Javascript](http://iamsteve.me/blog/entry/javascript-without-jquery).

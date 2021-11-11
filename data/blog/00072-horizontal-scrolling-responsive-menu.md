@@ -13,7 +13,7 @@ medium: "/static/images/blog/horizontal-scrolling-featured-image-medium%402x.png
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 72
-slug: "horizontal-scrolling-responsive-menu"
+fileroot: "horizontal-scrolling-responsive-menu"
 ---
 
 I’ve been wondering for a while now about an alternative approach to responsive navigation. Something which doesn’t involve the ‘hamburger’ toggle icon. It’s tricky, because we aren’t afforded the same space native apps get.

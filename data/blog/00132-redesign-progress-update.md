@@ -13,7 +13,7 @@ medium: "/static/images/blog/redesign_thumbnail%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 132
-slug: "redesign-progress-update"
+fileroot: "redesign-progress-update"
 ---
 
 One of my aims during redesigning this website is to keep the seamlessness between content output and redesign. It’s not the easiest of tasks, as any time spent writing, is time taken away from the redesign or vice versa.

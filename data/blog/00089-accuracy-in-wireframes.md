@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 89
-slug: "accuracy-in-wireframes"
+fileroot: "accuracy-in-wireframes"
 ---
 
 In this post I’m going to cover a process I’ve brought in for doing wireframes, I’m finding really useful lately. It involves taking back all the visual style and just focusing on the layout of elements — as a result creating accurate wireframes. Then you build up your visual style from there. The problem for me comes from wireframes that have too little detail, being used as the basis for the whole page. 

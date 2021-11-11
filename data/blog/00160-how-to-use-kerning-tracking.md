@@ -13,7 +13,7 @@ medium: "/static/images/blog/kerning-tracking-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 160
-slug: "how-to-use-kerning-tracking"
+fileroot: "how-to-use-kerning-tracking"
 ---
 
 When using kerning or tracking on your type it can help with legibility or correct the way type looks for a specific situation. It's important to understand the differences and when to use them.

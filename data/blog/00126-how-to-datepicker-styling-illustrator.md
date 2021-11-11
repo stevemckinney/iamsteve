@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 126
-slug: "how-to-datepicker-styling-illustrator"
+fileroot: "how-to-datepicker-styling-illustrator"
 ---
 
 Following on from the datepicker post where it was more about getting the basics in place and focusing on some important Illustrator techniques that allow for accuracy and efficiency. This post will focus on guiding you through the process of making the datepicker easy to understand and have better aesthetics.

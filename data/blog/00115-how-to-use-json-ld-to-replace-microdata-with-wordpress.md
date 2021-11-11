@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 115
-slug: "how-to-use-json-ld-to-replace-microdata-with-wordpress"
+fileroot: "how-to-use-json-ld-to-replace-microdata-with-wordpress"
 ---
 
 Part of the website world is making it more accessible to bots. Be it search, social or a service like Instapaper. The reason we do this is so our content looks more appealing and isn't left up to them, to scrape text and images they think is best. I'll be showing you how I have done it recently with JSON-LD. 

@@ -13,7 +13,7 @@ medium: "/static/images/blog/year-in-writing-2016-featured-image-medium%402x.png
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 159
-slug: "a-year-in-writing-2016"
+fileroot: "a-year-in-writing-2016"
 ---
 
 2016 was the second year I’ve written a post every week. This post is a summary of what’s happened over the year and a look back at some of the goals I had.

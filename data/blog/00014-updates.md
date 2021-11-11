@@ -10,7 +10,7 @@ categories: ["Life"]
 ogImage: "/assets/og/cover.jpg"
 status: "closed"
 id: 14
-slug: "updates"
+fileroot: "updates"
 ---
 
 This is the first post in a fair while. Basically I just want to say that I'll be putting more effort into creating posts fairly soon. The reason I haven't is I've been extremely busy with University. I've got a fair few assignments now and I had one to hand in recently (yesterday). If you would like to see the website for my assignment; follow this link: _[removed no longer available]_.

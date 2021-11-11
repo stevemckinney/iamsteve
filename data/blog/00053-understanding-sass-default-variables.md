@@ -10,7 +10,7 @@ categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 53
-slug: "understanding-sass-default-variables"
+fileroot: "understanding-sass-default-variables"
 ---
 
 Sass has a handy feature to create default variables using `!default` in the same way you would use `!important`. Why is this handy? Well you can use them to manipulate the default values of a mixin, remove or add certain bits of code based on levels of legacy or experimental support for certain bits of CSS, to name a few.

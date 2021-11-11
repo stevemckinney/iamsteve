@@ -13,7 +13,7 @@ medium: "/static/images/blog/patterns-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 161
-slug: "making-patterns-in-illustrator"
+fileroot: "making-patterns-in-illustrator"
 ---
 
 Patterns and textures were popular before flat design came along. As we seek the need for creativity in our designs things like patterns reemerge. This post shares what I've learnt and how to make your own. It’s a technique once you remember you’ll be able to make patterns with ease.

@@ -10,7 +10,7 @@ categories: ["Technology"]
 ogImage: "/assets/og/cover.jpg"
 status: "closed"
 id: 16
-slug: "bye_flash"
+fileroot: "bye_flash"
 ---
 
 John Gruber posted an article fairly recently about uninstalling Flash, I read it of course and found that it to be a logical thing to do. Now I'm not a big user of Chrome, but I'm more so annoyed by how much Flash can cause crashes in Safari and generally be slow, very slow. Here's the [original article](http://daringfireball.net/2010/11/flash_free_and_cheating_with_google_chrome "Flash free and cheating with Google Chrome"). I was previous a user of Click to Flash a nice alternative to keep the Flash out, but as stated in the article mentioned Flash is still always running in the background.

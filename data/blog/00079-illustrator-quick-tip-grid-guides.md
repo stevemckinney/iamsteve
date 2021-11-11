@@ -13,7 +13,7 @@ medium: "/static/images/blog/illustrator-tip-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 79
-slug: "illustrator-quick-tip-grid-guides"
+fileroot: "illustrator-quick-tip-grid-guides"
 ---
 
 I find myself needing to remember, how do I create a set of grid guides in Illustrator. As I’m a relatively new convert to using Illustrator, well I find myself switching between Illustrator and Photoshop, for much of the work I do. This is a quick tip to show you how to make a grid, for those who just can’t remember, due to it generally being easier to remember in Photoshop. In the post, I will cover how to create a simple grid and toggle its visibility.

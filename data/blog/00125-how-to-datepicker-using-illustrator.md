@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 126
-slug: "how-to-datepicker-styling-illustrator"
+fileroot: "how-to-datepicker-styling-illustrator"
 ---
 
 In this post I’m going to show you how to make a datepicker efficiently. A reasonably common user interface element, but can be a source of frustration, to make in design applications. Due to the grid, and amount of items in that grid it can be difficult to align everything quickly in an application like Illustrator. 

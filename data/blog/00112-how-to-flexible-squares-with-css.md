@@ -13,7 +13,7 @@ medium: "/static/images/blog/css-squares-featured-image-medium%402x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 112
-slug: "how-to-flexible-squares-with-css"
+fileroot: "how-to-flexible-squares-with-css"
 ---
 
 How do you maintain a perfect square shape with a responsive layout? The solution appears simple; the only issue is your content. Which if you want to maintain a square shape it should be able to accommodate the content. I’ll show you how to do it in with this quick tip.

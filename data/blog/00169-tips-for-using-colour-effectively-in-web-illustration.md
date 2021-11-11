@@ -13,7 +13,7 @@ medium: "/static/images/blog/colour-in-illustration-featured-image-medium%402x.p
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 169
-slug: "tips-for-using-colour-effectively-in-web-illustration"
+fileroot: "tips-for-using-colour-effectively-in-web-illustration"
 ---
 
 Finding and settling on a way to use colour within your illustrations is a fun challenge. Once you do, it becomes much easier going forward to make them. In this post, I’ll share the things I have found worked for me.

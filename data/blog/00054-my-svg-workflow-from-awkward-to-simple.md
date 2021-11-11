@@ -10,7 +10,7 @@ categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 54
-slug: "my_svg_workflow_from_awkward_to_simple"
+fileroot: "my_svg_workflow_from_awkward_to_simple"
 ---
 
 Initially I thought it would be quite frustrating to get going with SVG, but after jumping in and seeing where I got it's quite simple. Much better than exporting 1x and 2x images by far.

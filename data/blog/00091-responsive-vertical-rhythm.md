@@ -13,7 +13,7 @@ medium: "/static/images/blog/responsive-vertical-rhythm-featured-image-medium%40
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 91
-slug: "responsive-vertical-rhythm"
+fileroot: "responsive-vertical-rhythm"
 ---
 
 I wrote a fairly lengthy post previously on [vertical rhythm](/blog/a-guide-to-vertical-rhythm). I considered adding a section on how to adjust font sizes whilst maintaining vertical rhythm. However, with the experience of seeing how people struggle with the topic of vertical rhythm, it was best to keep it for a separate post.

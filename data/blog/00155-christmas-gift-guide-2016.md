@@ -13,7 +13,7 @@ medium: "/static/images/blog/christmas-2016-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 155
-slug: "christmas-gift-guide-2016"
+fileroot: "christmas-gift-guide-2016"
 ---
 
 As it’s the festive time of year, I thought I would add to the lists of gifts that people are writing. December and Christmas in general is one of my favourite times of year. Not just for the gift giving, but it's a time to relax and enjoy what surrounds Christmas. I’ve tried to gather a variety of things  from books, stationery and electronics.
