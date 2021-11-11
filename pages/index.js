@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
 import { PageSEO } from '@/components/SEO'
@@ -21,9 +22,27 @@ import Card from '@/components/card'
 export const POSTS_PER_PAGE = 5
 export const MAX_DISPLAY = 5
 
+// View count
+import PageViews, { views } from '@/components/PageViews';
+
+function removeSlugID(slug) {
+  if (!isNaN(slug.substring(0, 5))) {
+    slug = slug.replace(slug.substring(0, 6), "");
+  }
+  
+  return slug;
+}
+
+function viewsSortDesc(a, b) {
+  if (views(a) > views(b)) return -1
+  if (views(a) < views(b)) return 1
+  return 0
+}
+
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE)
+  
   const pagination = {
     currentPage: 1,
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
@@ -52,10 +71,20 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
       
       <Posts title="Popular in design" link="/design">
         {posts
+          .sort(
+            (a, b) => {
+              console.log(a.slug, b.slug)
+            }
+          )
           .filter((post) => post.tags.includes('Design'))
           .map((frontmatter) => {
             return (
-              <Card kind="medium" frontmatter={frontmatter} key={frontmatter.id} />
+              <>
+                <div>
+                  {frontmatter.slug}
+                  <Card kind="medium" frontmatter={frontmatter} key={frontmatter.id} />
+                </div>
+              </>
             )
           })
           .slice(0, POSTS_PER_PAGE)
@@ -64,10 +93,17 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
       
       <Posts title="Popular in code" link="/design">
         {posts
+          .sort(
+            (a, b) => {
+              console.log(a, b)
+            }
+          )
           .filter((post) => post.tags.includes('Code'))
           .map((frontmatter) => {
             return (
-              <Card kind="medium" frontmatter={frontmatter} key={frontmatter.id} />
+              <>
+                <Card kind="medium" frontmatter={frontmatter} key={frontmatter.id} />
+              </>
             )
           })
           .slice(0, POSTS_PER_PAGE)
