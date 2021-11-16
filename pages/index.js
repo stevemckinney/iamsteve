@@ -5,7 +5,7 @@ import { PageSEO } from '@/components/SEO'
 
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
-import NewsletterForm from '@/components/NewsletterForm'
+import Subscribe from '@/components/Subscribe'
 import Posts from '@/layouts/Posts'
 
 // images
@@ -23,26 +23,18 @@ export const POSTS_PER_PAGE = 5
 export const MAX_DISPLAY = 5
 
 // View count
-import PageViews, { views } from '@/components/PageViews';
-
-function removeSlugID(slug) {
-  if (!isNaN(slug.substring(0, 5))) {
-    slug = slug.replace(slug.substring(0, 6), "");
-  }
-  
-  return slug;
-}
+import { PageViews, views } from '@/components/PageViews';
 
 function viewsSortDesc(a, b) {
-  if (views(a) > views(b)) return -1
-  if (views(a) < views(b)) return 1
+  if (a > b) return -1
+  if (a < b) return 1
   return 0
 }
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE)
-  
+
   const pagination = {
     currentPage: 1,
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
@@ -68,60 +60,10 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           <Image src="/static/images/introduction-960.svg" width={960} height={404} className="hero-image-960" />
         </div>
       </div>
-      
-      <Posts title="Latest posts" link="/blog">
+
+      <Posts title="Latest posts" link="/blog" size="medium">
         {posts
           .filter((post) => post)
-          .map((frontmatter) => {
-            return (
-              <>
-                <div>
-                  {frontmatter.slug}
-                  <Card kind="medium" frontmatter={frontmatter} key={frontmatter.id} />
-                </div>
-              </>
-            )
-          })
-          .slice(0, POSTS_PER_PAGE)
-        }
-      </Posts>
-      
-      {siteMetadata.newsletter.provider !== '' && (
-          <div className="flex items-center justify-center pt-4">
-            <NewsletterForm />
-          </div>
-        )}
-      
-      <Posts title="Popular in design" link="/design">
-        {posts
-          .sort(
-            (a, b) => {
-              console.log(a.slug, b.slug)
-            }
-          )
-          .filter((post) => post.tags.includes('Design'))
-          .map((frontmatter) => {
-            return (
-              <>
-                <div>
-                  {frontmatter.slug}
-                  <Card kind="medium" frontmatter={frontmatter} key={frontmatter.id} />
-                </div>
-              </>
-            )
-          })
-          .slice(0, POSTS_PER_PAGE)
-        }
-      </Posts>
-      
-      <Posts title="Popular in code" link="/design">
-        {posts
-          .sort(
-            (a, b) => {
-              console.log(a, b)
-            }
-          )
-          .filter((post) => post.tags.includes('Code'))
           .map((frontmatter) => {
             return (
               <>
@@ -132,22 +74,53 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           .slice(0, POSTS_PER_PAGE)
         }
       </Posts>
-      
-      {posts.length > MAX_DISPLAY && (
-        <div className="flex justify-end text-base font-medium leading-6">
-          <Link
-            href="/blog"
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label="all posts"
-          >
-            All Posts &rarr;
-          </Link>
-        </div>
-      )}
+
       {siteMetadata.newsletter.provider !== '' && (
-        <div className="flex items-center justify-center pt-4">
-          <NewsletterForm />
-        </div>
+        <Subscribe />
+      )}
+
+      <Posts title="Popular in design" link="/design" text="Explore design" size="small">
+        {posts
+          .filter((post) => post.tags.includes('Design'))
+          .map((frontmatter) => {
+            return (
+              <>
+                <div>
+                  <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
+                </div>
+              </>
+            )
+          })
+          .slice(0, POSTS_PER_PAGE)
+        }
+      </Posts>
+
+      <Posts title="Popular in code" link="/code" text="Explore code" size="small">
+        {!posts && <div>No posts!</div>}
+        {posts
+          .filter((post) => post.tags.includes('Code'))
+          .map((frontmatter) => {
+            return (
+              <>
+                <div>
+                {views(frontmatter.slug)}
+                <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
+                </div>
+              </>
+            )
+          })
+          .sort(
+            (a, b) => {
+              console.log(views(a.slug));
+              return views(a.slug) - views(b.slug)
+            }
+          )
+          .slice(0, POSTS_PER_PAGE)
+        }
+      </Posts>
+
+      {siteMetadata.newsletter.provider !== '' && (
+        <Subscribe />
       )}
     </>
   )

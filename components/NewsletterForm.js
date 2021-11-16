@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 
 import siteMetadata from '@/data/siteMetadata'
 
-const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
+const NewsletterForm = ({ theme = 'form-warm' }) => {
   const inputEl = useRef(null)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
@@ -11,6 +11,8 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
   const subscribe = async (e) => {
     e.preventDefault()
 
+    // https://emailoctopus.com/api/1.5/lists/:listId/contacts
+    // https://emailoctopus.com/api/1.5/lists/76319206-f1ef-11eb-96e5-06b4694bee2a/contacts
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
       body: JSON.stringify({
         email: inputEl.current.value,
@@ -35,41 +37,40 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
   }
 
   return (
-    <div>
-      <div className="pb-1 text-lg font-semibold text-gray-800 dark:text-gray-100">{title}</div>
-      <form className="flex flex-col sm:flex-row" onSubmit={subscribe}>
-        <div>
-          <label className="sr-only" htmlFor="email-input">
-            Email address
-          </label>
-          <input
-            autoComplete="email"
-            className="px-4 rounded-md w-72 dark:bg-black focus:outline-none focus:ring-2 focus:border-transparent focus:ring-primary-600"
-            id="email-input"
-            name="email"
-            placeholder={subscribed ? "You're subscribed !  🎉" : 'Enter your email'}
-            ref={inputEl}
-            required
-            type="email"
-            disabled={subscribed}
-          />
+    <>
+    <div className={theme}>
+      <div id="mlb2-1003594" className="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-1003594">
+        <div className="ml-form-align-center">
+          <div className="ml-form-embedWrapper embedForm">
+            <div className="ml-form-embedBody ml-form-embedBodyHorizontal row-form">
+              <form className="form form-newsletter validate end ml-block-form ml-block-form" action="https://app.mailerlite.com/webforms/submit/q7h2j4" data-code="q7h2j4" method="post" target="_blank">
+                  <div className="field field-text field-third ml-field-group ml-field-name">
+                    <label htmlFor="fields[name]" className="sans pb2 field-label">First name</label>
+                    <input type="text" className="input input-text form-control" name="fields[name]" id="fields[name]" />
+                  </div>
+                  <div className="field field-text field-two-thirds nml ml-field-group ml-field-email ml-validate-required">
+                    <label htmlFor="fields[email]" className="sans pb2 field-label">Email</label>
+                    <input type="email" className="input input-text form-control" name="fields[email]" id="fields[email]" required />
+                  </div>
+                  <input type="hidden" name="fields[marketing_permissions]" value="Email" />
+                  <input type="hidden" name="fields[subfrom]" value="{current_url}" />
+                  <input type="hidden" name="ml-submit" value="1" />
+                  <div className="form-actions pt2 text-right ml-button-horizontal">
+                    <button type="submit" aria-label="Subscribe to the newsletter" className="button button-tertiary ml-hide-horizontal flex-auto">Sign me up</button>
+                    <button disabled="disabled" aria-label="Loading: sending form submission" style={{
+                      display: 'none' }} type="button" className="button button-t loading btn btn-block"></button>
+                  </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div className="flex w-full mt-2 rounded-md shadow-sm sm:mt-0 sm:ml-3">
-          <button
-            className={`py-2 sm:py-0 w-full bg-primary-500 px-4 rounded-md font-medium text-white ${
-              subscribed ? 'cursor-default' : 'hover:bg-primary-700 dark:hover:bg-primary-400'
-            } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 dark:ring-offset-black`}
-            type="submit"
-            disabled={subscribed}
-          >
-            {subscribed ? 'Thank you!' : 'Sign up'}
-          </button>
-        </div>
-      </form>
-      {error && (
-        <div className="pt-2 text-sm text-red-500 w-72 sm:w-96 dark:text-red-400">{message}</div>
-      )}
+      </div>
     </div>
+
+    {error && (
+      <div className="pt-2 text-sm text-red-500 w-72 sm:w-96 dark:text-red-400">{message}</div>
+    )}
+    </>
   )
 }
 
