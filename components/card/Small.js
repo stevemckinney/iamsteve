@@ -2,11 +2,8 @@ import formatDate from '@/lib/utils/formatDate'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Icon from '@/components/icon'
 import Tag from '@/components/Tag'
-
-import Design from '@/images/default/design-default-1.svg'
-import Code from '@/images/default/code-default-1.svg'
+import Placeholder from '@/components/placeholder'
 
 const Small = ({ frontmatter }) => {
   const {
@@ -36,7 +33,11 @@ const Small = ({ frontmatter }) => {
                 </>
               ) : (
                 <>
-                  <p>image</p>
+                  {categories.includes('Design') ? (
+                    <Placeholder kind="Design" />
+                  ) : (
+                    <Placeholder kind="Code" />
+                  )}
                 </>
               )}
             </>
@@ -44,7 +45,7 @@ const Small = ({ frontmatter }) => {
         </Link>
         <div className="card-body">
           <div className="meta f8-d dashes mb1 mb2-b">
-            <time className="warm-l1" datetime="{date}" itemProp="datePublished">
+            <time className="warm-l1" dateTime={date} itemProp="datePublished">
               {formatDate(date)}
             </time>
           </div>
@@ -57,7 +58,7 @@ const Small = ({ frontmatter }) => {
 
           <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
             <a href="{site_url}" className="author vcard url fn" rel="author">Steve McKinney</a>
-            <time datetime="{lastmod}" className="updated">
+            <time dateTime={lastmod} className="updated">
               {formatDate(lastmod)}
             </time>
           </div>

@@ -5,8 +5,7 @@ import Link from 'next/link'
 import Icon from '@/components/icon'
 import Tag from '@/components/Tag'
 
-import Design from '@/images/default/design-default-1.svg'
-import Code from '@/images/default/code-default-1.svg'
+import Placeholder from '@/components/placeholder'
 
 const Medium = ({ frontmatter }) => {
   const { 
@@ -36,7 +35,11 @@ const Medium = ({ frontmatter }) => {
               </>
             ) : (
               <>
-                <p>image</p>
+                {categories.includes('Design') ? (
+                  <Placeholder kind="Design" />
+                ) : (
+                  <Placeholder kind="Code" />
+                )}
               </>
             )}
           </>
@@ -44,7 +47,7 @@ const Medium = ({ frontmatter }) => {
       </Link>
       <div className="card-body flex flex-column flex-auto">
         <div className="meta f8-b f7-d flex between items-center dashes mb1 mb2-b mb3-d">
-          <time className="warm" datetime="{date}" itemProp="datePublished">
+          <time className="warm" dateTime={date} itemProp="datePublished">
             {formatDate(date)}
           </time>
         </div>
@@ -70,7 +73,7 @@ const Medium = ({ frontmatter }) => {
         </div>
         <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
           <a href="{site_url}" className="author vcard url fn" rel="author">Steve McKinney</a>
-          <time datetime="{lastmod}" className="updated">
+          <time dateTime={lastmod} className="updated">
             {formatDate(lastmod)}
           </time>
         </div>
