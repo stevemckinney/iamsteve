@@ -1,37 +1,69 @@
 import formatDate from '@/lib/utils/formatDate'
+import Image from 'next/image'
 import Link from 'next/link'
+
+import Icon from '@/components/icon'
 import Tag from '@/components/Tag'
 
+import Design from '@/images/default/design-default-1.svg'
+import Code from '@/images/default/code-default-1.svg'
+
 const Small = ({ frontmatter }) => {
-  const { slug, date, title, summary, tags, id } = frontmatter
-  
-  return (
-    <article className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
-      <dl>
-        <dt className="sr-only">Published on</dt>
-        <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-          <time dateTime={date}>{formatDate(date)}</time>
-        </dd>
-      </dl>
-      <div className="space-y-3 xl:col-span-3">
-        <div>
-          <h3 className="text-2xl font-bold leading-8 tracking-tight">
-            <Link href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
-              {title}
+  const {
+      slug,
+      date,
+      title,
+      summary,
+      tags,
+      id,
+      theme,
+      categories,
+      images,
+      medium,
+      lastmod
+    } = frontmatter
+
+    const url = `/blog/${slug}`;
+
+    return (
+      <article className="card card-small">
+        <Link href={url}>
+          <a className="card-image mb2 flex radius" style={{ backgroundColor: theme.toString() }}>
+            <>
+              {medium ? (
+                <>
+                  <Image src={medium} className="radius" width={244} height={162} />
+                </>
+              ) : (
+                <>
+                  <p>image</p>
+                </>
+              )}
+            </>
+          </a>
+        </Link>
+        <div className="card-body">
+          <div className="meta f8-d dashes mb1 mb2-b">
+            <time className="warm-l1" datetime="{date}" itemProp="datePublished">
+              {formatDate(date)}
+            </time>
+          </div>
+
+          <h3 className="f6 f5-b f4-d mb0 warm">
+            <Link href={url}>
+              <a className="secondary-hover">{title}</a>
             </Link>
           </h3>
-          <div className="flex flex-wrap">
-            {tags.map((tag) => (
-              <Tag key={tag} text={tag} />
-            ))}
+
+          <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
+            <a href="{site_url}" className="author vcard url fn" rel="author">Steve McKinney</a>
+            <time datetime="{lastmod}" className="updated">
+              {formatDate(lastmod)}
+            </time>
           </div>
         </div>
-        <div className="prose text-gray-500 max-w-none dark:text-gray-400">
-          {summary}
-        </div>
-      </div>
-    </article>
-  )
+      </article>
+    )
 }
 
 export default Small
