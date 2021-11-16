@@ -14,7 +14,7 @@ const Title = ({ title, link, text = 'All posts' }) => {
         <Link href={link}>
           <a className="link-icon warm secondary-hover card-permalink semibold sans f5-l">
             {text}
-            <span class="icon icon-medium icon-right secondary"><Icon kind="right" /></span>
+            <span className="icon icon-medium icon-right secondary"><Icon kind="right" /></span>
           </a>
         </Link>
       )}
