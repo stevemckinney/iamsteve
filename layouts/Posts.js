@@ -1,9 +1,3 @@
-import { useState } from 'react'
-import siteMetadata from '@/data/siteMetadata'
-
-import Card from '@/components/card'
-import Link from '@/components/Link'
-import Pagination from '@/components/Pagination'
 import Title from '@/components/Title'
 
 export default function Posts({ title, link, children, size }) {
