@@ -1,61 +1,62 @@
 import Link from '@/components/Link'
+import Icon from '@/components/icon'
 
 export default function Pagination({ style = 'full', totalPages, currentPage }) {
-  const prevPage = parseInt(currentPage) - 1 > 0
-  const nextPage = parseInt(currentPage) + 1 <= parseInt(totalPages)
+  const newer = parseInt(currentPage) - 1 > 0
+  const older = parseInt(currentPage) + 1 <= parseInt(totalPages)
 
   return (
     <>
       {style === 'full' ? (
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
           <nav className="flex justify-between">
-            {prevPage ? (
-              <Link href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`}>
-                <button rel="previous">Previous</button>
+            {older ? (
+              <Link href={`/blog/page/${currentPage + 1}`}>
+                <a rel="previous" className="warm sans link-icon"><strong>Older</strong></a>
               </Link>
             ) : (
-              <button rel="previous" className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
-                Previous
-              </button>
+              <span className="primary-l2 sans link-icon disabled" disabled={!older}>
+                <strong>Older</strong><span className="icon icon-medium icon-right secondary"><Icon kind="right" /></span>
+              </span>
             )}
             <span>
               {currentPage} of {totalPages}
             </span>
-            {nextPage ? (
-              <Link href={`/blog/page/${currentPage + 1}`}>
-                <button rel="next">Next</button>
+            {newer ? (
+              <Link href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`}>
+                <a rel="next" className="warm sans link-icon"><strong>Next</strong> <span className="icon icon-medium icon-right secondary"><Icon kind="right" /></span></a>
               </Link>
             ) : (
-              <button rel="next" className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
-                Next
-              </button>
+              <span className="primary-l2 sans link-icon disabled" disabled={!newer}>
+                <strong>Newer</strong> <span className="icon icon-medium icon-right"><Icon kind="right" /></span>
+              </span>
             )}
           </nav>
         </div>
       ) : (
         <>
-          {style === 'previous' ? (
+          {style === 'previous' || style === 'older' ? (
             <>
-              {prevPage ? (
-                <Link href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`}>
-                  <button rel="previous">Previous</button>
+              {older ? (
+                <Link href={`/blog/page/${currentPage + 1}`}>
+                  <a rel="previous" className="warm sans link-icon"><strong>Older</strong><span className="icon icon-medium icon-right"><Icon kind="right" /></span></a>
                 </Link>
               ) : (
-                <button rel="previous" className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
-                  Previous
-                </button>
+                <span className="primary-l2 sans link-icon disabled" disabled={!older}>
+                  <strong>Older</strong><span className="icon icon-medium icon-right"><Icon kind="right" /></span>
+                </span>
               )}
             </>
           ) : (
             <>
-              {nextPage ? (
-                <Link href={`/blog/page/${currentPage + 1}`}>
-                  <button rel="next">Next</button>
+              {newer ? (
+                <Link href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`}>
+                  <a rel="next" className="warm sans link-icon"><span className="icon icon-medium icon-left"><Icon kind="left" /></span><strong>Newer</strong></a>
                 </Link>
               ) : (
-                <button rel="next" className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
-                  Next
-                </button>
+                <span className="primary-l2 sans link-icon disabled" disabled={!newer}>
+                  <span className="icon icon-medium icon-left"><Icon kind="left" /></span><strong>Newer</strong>
+                </span>
               )}
             </>
           )}
