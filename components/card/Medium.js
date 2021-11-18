@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import Icon from '@/components/icon'
-import Tag from '@/components/Tag'
+import Category from '@/components/Category'
 
 import Placeholder from '@/components/placeholder'
 
@@ -60,7 +60,13 @@ const Medium = ({ frontmatter }) => {
           {summary}
         </div>
         <div className="meta f8-b f7-d flex between items-center dashes">
-          {categories}
+          {categories && (
+            <>
+              {categories.map((category) => (
+                <Category key={category} text={category} />
+              ))}
+            </>
+          )}
     
           <Link href={url}>
             <a rel="bookmark" className="link-icon warm secondary-hover card-permalink">
