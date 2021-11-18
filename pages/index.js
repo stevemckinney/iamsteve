@@ -85,7 +85,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           .map((frontmatter) => {
             return (
               <>
-                <div>
+                <div key={frontmatter.id}>
                   <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
                 </div>
               </>
@@ -102,7 +102,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           .map((frontmatter) => {
             return (
               <>
-                <div>
+                <div key={frontmatter.id}>
                 {views(frontmatter.slug)}
                 <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
                 </div>
