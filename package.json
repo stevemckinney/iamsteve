@@ -12,7 +12,7 @@
     "fitvids": "^2.0.0",
     "flickity": "^2.1.2",
     "fontfaceobserver": "^2.0.13",
-    "gulp-autoprefixer": "^6.1.0",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-imagemin": "^4.1.0",
     "gulpicon": "^1.2.1",
     "headroom.js": "^0.12.0",
