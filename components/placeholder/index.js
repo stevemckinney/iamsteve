@@ -21,11 +21,9 @@ const PlaceholderCode = [
   CodeYellow
 ]
 
-const rand = PlaceholderCode[Math.floor(Math.random() * PlaceholderCode.length)]
-
-const Placeholder = ({ kind }) => {
-  const PlaceholderDesignSvg = PlaceholderDesign[rand]
-  const PlaceholderCodeSvg = PlaceholderCode[rand]
+function Placeholder(kind) {
+  const PlaceholderDesignSvg = PlaceholderDesign[Math.floor(Math.random() * PlaceholderCode.length)]
+  const PlaceholderCodeSvg = PlaceholderCode[Math.floor(Math.random() * PlaceholderCode.length)]
 
   return ( kind === 'Design' ? <PlaceholderDesignSvg /> : <PlaceholderCodeSvg /> )
 }

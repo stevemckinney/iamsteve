@@ -16,7 +16,6 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
     const searchContent = frontmatter.title + frontmatter.summary + frontmatter.tags.join(' ')
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
-
   // If initialDisplayPosts exist, display it if no searchValue is specified
   const displayPosts =
     initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
@@ -25,9 +24,17 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
     <>
       <div className="divide-y">
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            {title}
-          </h1>
+          <div class="row between subheader contain contain-medium contain-large pb4">
+            {pagination && pagination.totalPages > 1 && !searchValue && (
+              <Pagination style="previous" currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+            )}
+
+            <h1 class="f4 f3-b f2-d neutral mb0 text-center">{title}</h1>
+
+            {pagination && pagination.totalPages > 1 && !searchValue && (
+              <Pagination style="next" currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+            )}
+          </div>
           <div className="relative max-w-lg">
             <input
               aria-label="Search articles"
@@ -59,6 +66,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
           )
         })}
       </div>
+
       {pagination && pagination.totalPages > 1 && !searchValue && (
         <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
       )}
