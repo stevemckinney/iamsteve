@@ -111,7 +111,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           })
           .sort(
             (a, b) => {
-              console.log(views(a.slug));
+              // console.log(views(a.slug));
               return views(a.slug) - views(b.slug)
             }
           )
