@@ -1,13 +1,16 @@
 import Image from 'next/image'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Link from './Link'
+// import ThemeSwitch from './ThemeSwitch'
+
+// components
 import SectionContainer from './SectionContainer'
+import Link from './Link'
+import Subscribe from '@/components/Subscribe'
 import Footer from './Footer'
 import Tabbar from './Tabbar'
 import Icon from '@/components/icon'
 import Social from '@/components/Social'
-// import ThemeSwitch from './ThemeSwitch'
 
 // image
 import Logo from '@/images/logo-small.svg'
@@ -49,6 +52,12 @@ const LayoutWrapper = ({ children }) => {
       <main id="content">
         {children}
       </main>
+      
+      
+      
+            {siteMetadata.newsletter.provider !== '' && (
+              <Subscribe />
+            )}
 
       <aside className="row row-normal pt6 pt8-d contain contain-medium contain-large between items-end">
         <section className="column column-4-b column-3-d mb6 mb0-b">

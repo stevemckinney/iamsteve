@@ -118,10 +118,6 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           .slice(0, POSTS_PER_PAGE)
         }
       </Posts>
-
-      {siteMetadata.newsletter.provider !== '' && (
-        <Subscribe />
-      )}
     </>
   )
 }
