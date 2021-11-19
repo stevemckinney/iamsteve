@@ -8,7 +8,7 @@ import Category from '@/components/Category'
 import Placeholder from '@/components/placeholder'
 
 const Medium = ({ frontmatter }) => {
-  const { 
+  const {
     slug,
     date,
     title,
@@ -19,11 +19,11 @@ const Medium = ({ frontmatter }) => {
     categories,
     images,
     medium,
-    lastmod 
+    lastmod,
   } = frontmatter
-  
+
   const url = `/blog/${slug}`;
-  
+
   return (
     <article className="card card-medium entry flex flex-column">
       <Link href={url}>
@@ -50,6 +50,7 @@ const Medium = ({ frontmatter }) => {
           <time className="warm" dateTime={date} itemProp="datePublished">
             {formatDate(date)}
           </time>
+          {frontmatter.readingTime.text}
         </div>
         <h3 className="f2-l mb1 mb2-d">
           <Link href={url}>
@@ -67,10 +68,9 @@ const Medium = ({ frontmatter }) => {
               ))}
             </>
           )}
-    
           <Link href={url}>
             <a rel="bookmark" className="link-icon warm secondary-hover card-permalink">
-              Continue reading 
+              Continue reading
               <span className="icon icon-medium icon-right secondary">
                 <Icon kind="right" />
               </span>

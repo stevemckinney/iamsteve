@@ -53,11 +53,9 @@ const LayoutWrapper = ({ children }) => {
         {children}
       </main>
       
-      
-      
-            {siteMetadata.newsletter.provider !== '' && (
-              <Subscribe />
-            )}
+      {siteMetadata.newsletter.provider !== '' && (
+        <Subscribe />
+      )}
 
       <aside className="row row-normal pt6 pt8-d contain contain-medium contain-large between items-end">
         <section className="column column-4-b column-3-d mb6 mb0-b">
