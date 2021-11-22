@@ -7,6 +7,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import Subscribe from '@/components/Subscribe'
 import Posts from '@/layouts/Posts'
+import Icon from '@/components/icon'
 
 // images
 import Image from 'next/image'
@@ -24,12 +25,6 @@ export const MAX_DISPLAY = 5
 
 // View count
 import { PageViews, views } from '@/components/PageViews';
-
-function viewsSortDesc(a, b) {
-  if (a > b) return -1
-  if (a < b) return 1
-  return 0
-}
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
@@ -73,50 +68,51 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           })
           .slice(0, POSTS_PER_PAGE)
         }
+        <a href="/blog" class="link-icon warm secondary-hover card-permalink semibold sans center f2-l">
+          All posts <span class="icon icon-medium icon-right secondary mr6"><Icon kind="right" /></span>
+        </a>
       </Posts>
 
       {siteMetadata.newsletter.provider !== '' && (
         <Subscribe />
       )}
 
-      <Posts title="Popular in design" link="/design" text="Explore design" size="small">
+      <Posts title="Popular in design" link="/category/design" text="Explore design" size="small">
         {posts
           .filter((post) => post.tags.includes('Design'))
+          .sort((a, b) => {
+            views(b.slug) - views(a.slug)
+          })
           .map((frontmatter) => {
             return (
-              <>
-                <div key={frontmatter.id}>
-                  <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
-                </div>
-              </>
+              <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
             )
           })
+          .sort((a, b) => views(b.slug) - views(a.slug))
           .slice(0, POSTS_PER_PAGE)
         }
+        <a href="/category/design" class="link-icon warm secondary-hover card-permalink semibold sans center f5-l">
+          Explore design <span class="icon icon-medium icon-right secondary mr6"><Icon kind="right" /></span>
+        </a>
       </Posts>
 
-      <Posts title="Popular in code" link="/code" text="Explore code" size="small">
+      <Posts title="Popular in code" link="/category/code" text="Explore code" size="small">
         {!posts && <div>No posts!</div>}
         {posts
           .filter((post) => post.tags.includes('Code'))
+          .sort((a, b) => {
+            views(b.slug) - views(a.slug)
+          })
           .map((frontmatter) => {
             return (
-              <>
-                <div key={frontmatter.id}>
-                {views(frontmatter.slug)}
-                <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
-                </div>
-              </>
+              <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
             )
           })
-          .sort(
-            (a, b) => {
-              // console.log(views(a.slug));
-              return views(a.slug) - views(b.slug)
-            }
-          )
           .slice(0, POSTS_PER_PAGE)
         }
+        <a href="/category/design" class="link-icon warm secondary-hover card-permalink semibold sans center f5-l">
+          Explore code <span class="icon icon-medium icon-right secondary mr6"><Icon kind="right" /></span>
+        </a>
       </Posts>
     </>
   )
