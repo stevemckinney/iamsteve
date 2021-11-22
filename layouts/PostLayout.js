@@ -61,7 +61,15 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
           {images ? (
             <>
               {images.map((image) => (
-                <Image src={image} className="radius" width={378} height={252} key={image} />
+                <Image
+                  src={image}
+                  className="radius"
+                  alt=""
+                  role="presentation"
+                  width={378}
+                  height={252}
+                  key={image}
+                />
               ))}
             </>
           ) : (
@@ -76,8 +84,8 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
         </>
       </div>
 
-      <article role="article" className="entry-content pt6 pb6">
-        <p className="visuallyhidden">
+      <article className="entry-content pt6 pb6">
+        <p className="">
           Page views: <PageViews slug={slug} />
         </p>
         <header className="entry-header relative pb4 p0-d">

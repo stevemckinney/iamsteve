@@ -54,9 +54,9 @@ const LayoutWrapper = ({ children }) => {
 
       <aside className="row row-normal pt6 pt8-d contain contain-medium contain-large between items-end">
         <section className="column column-4-b column-3-d mb6 mb0-b">
-          <a href="/" className="logo-footer mb4 primary">
+          <Link href="/" title="Back to the homepage" className="logo-footer mb4 primary">
             <Logo className="logo-small fill-currentcolor" />
-          </a>
+          </Link>
           <p className="mb4">
             iamsteve is a blog written by Steve McKinney, focusing on the design and build of
             websites. The aim is to bridge the gap in building your design. It
@@ -72,7 +72,12 @@ const LayoutWrapper = ({ children }) => {
           className="column column-4-b column-5-d rio-osc text-right items-end-b"
           id="rio-osc"
         >
-          <Image src="/static/images/rio-osc.svg" width={512} height={288} />
+          <Image
+            src="/static/images/rio-osc.svg"
+            alt="An illustration of two dogs, a red Border Collie and Jack Russell cross"
+            width={512}
+            height={288}
+          />
         </section>
       </aside>
       <Footer />

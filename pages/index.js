@@ -24,7 +24,7 @@ export const POSTS_PER_PAGE = 5
 export const MAX_DISPLAY = 5
 
 // View count
-import { PageViews, views } from '@/components/PageViews'
+import { PageViews, Views } from '@/components/PageViews'
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
@@ -51,24 +51,31 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         <div className="hero-image">
           <Image
             src="/static/images/introduction-320.svg"
+            alt=""
+            aria-hidden="true"
             width={320}
             height={254}
             className="hero-image-320"
           />
           <Image
             src="/static/images/introduction-394.svg"
+            alt=""
+            aria-hidden="true"
             width={394}
             height={296}
             className="hero-image-394"
           />
           <Image
             src="/static/images/introduction-734.svg"
+            alt=""
+            aria-hidden="true"
             width={734}
             height={312}
             className="hero-image-734"
           />
           <Image
             src="/static/images/introduction-960.svg"
+            alt="An illustration of a desk setup with a computer and various stationery and apps found on it"
             width={960}
             height={404}
             className="hero-image-960"
@@ -87,7 +94,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
             )
           })
           .slice(0, POSTS_PER_PAGE)}
-        <a
+        <Link
           href="/blog"
           className="link-icon warm secondary-hover card-permalink semibold sans center f2-l"
         >
@@ -95,7 +102,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           <span className="icon icon-medium icon-right secondary mr6">
             <Icon kind="right" />
           </span>
-        </a>
+        </Link>
       </Posts>
 
       {siteMetadata.newsletter.provider !== '' && <Subscribe />}
@@ -104,14 +111,14 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         {posts
           .filter((post) => post.tags.includes('Design'))
           .sort((a, b) => {
-            views(b.slug) - views(a.slug)
+            Views(b.slug) - Views(a.slug)
           })
           .map((frontmatter) => {
             return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
           })
-          .sort((a, b) => views(b.slug) - views(a.slug))
+          .sort((a, b) => Views(b.slug) - Views(a.slug))
           .slice(0, POSTS_PER_PAGE)}
-        <a
+        <Link
           href="/category/design"
           className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"
         >
@@ -119,7 +126,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           <span className="icon icon-medium icon-right secondary mr6">
             <Icon kind="right" />
           </span>
-        </a>
+        </Link>
       </Posts>
 
       <Posts title="Popular in code" link="/category/code" text="Explore code" size="small">
@@ -127,13 +134,13 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         {posts
           .filter((post) => post.tags.includes('Code'))
           .sort((a, b) => {
-            views(b.slug) - views(a.slug)
+            Views(b.slug) - Views(a.slug)
           })
           .map((frontmatter) => {
             return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
           })
           .slice(0, POSTS_PER_PAGE)}
-        <a
+        <Link
           href="/category/design"
           className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"
         >
@@ -141,7 +148,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           <span className="icon icon-medium icon-right secondary mr6">
             <Icon kind="right" />
           </span>
-        </a>
+        </Link>
       </Posts>
     </>
   )

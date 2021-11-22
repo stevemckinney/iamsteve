@@ -29,7 +29,14 @@ const Small = ({ frontmatter }) => {
           <>
             {medium ? (
               <>
-                <Image src={medium} className="radius" width={244} height={162} />
+                <Image
+                  src={medium}
+                  className="radius"
+                  alt=""
+                  role="presentation"
+                  width={244}
+                  height={162}
+                />
               </>
             ) : (
               <>

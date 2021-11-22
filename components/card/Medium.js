@@ -34,7 +34,14 @@ const Medium = ({ frontmatter }) => {
           <>
             {medium ? (
               <>
-                <Image src={medium} className="radius" width={378} height={252} />
+                <Image
+                  src={medium}
+                  className="radius"
+                  alt=""
+                  role="presentation"
+                  width={378}
+                  height={252}
+                />
               </>
             ) : (
               <>
