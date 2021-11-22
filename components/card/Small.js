@@ -6,19 +6,8 @@ import Tag from '@/components/Tag'
 import Placeholder from '@/components/placeholder'
 
 const Small = ({ frontmatter }) => {
-  const {
-    slug,
-    date,
-    title,
-    summary,
-    tags,
-    id,
-    theme,
-    categories,
-    images,
-    medium,
-    lastmod,
-  } = frontmatter
+  const { slug, date, title, summary, tags, id, theme, categories, images, medium, lastmod } =
+    frontmatter
 
   const url = `/blog/${slug}`
 
