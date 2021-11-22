@@ -21,12 +21,12 @@ const Pre = (props) => {
   }
 
   return (
-    <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit} className="relative">
+    <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit} className="code-block relative">
       {hovered && (
         <button
           aria-label="Copy code"
           type="button"
-          className={`absolute right-2 top-2 w-8 h-8 p-1 rounded border-2 bg-gray-700 dark:bg-gray-800 ${
+          className={`absolute button button-t button-copy rounded primary ${
             copied
               ? 'focus:outline-none focus:border-green-400 border-green-400'
               : 'border-gray-300'
@@ -38,7 +38,7 @@ const Pre = (props) => {
             viewBox="0 0 24 24"
             stroke="currentColor"
             fill="none"
-            className={copied ? 'text-green-400' : 'text-gray-300'}
+            className={copied ? 'icon icon-medium text-green-400' : 'icon icon-medium text-gray-300'}
           >
             {copied ? (
               <>

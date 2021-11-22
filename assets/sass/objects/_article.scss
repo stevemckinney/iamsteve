@@ -14,7 +14,7 @@
     margin-right: calc(50% - math.div($contain, 2)); }
 
   img,
-  pre,
+  .code-block,
   .cp_embed_wrapper {
     @include breakpoint($cd) {
       position: relative;
@@ -59,12 +59,13 @@
       margin-bottom: $line + 4px; } }
 
   // This could be really stupid in the long run
-  > *:not(figure):not(div), img {
+  // Allow these to expand and fill the container
+  > *:not(figure), img {
     margin-left: auto;
     margin-right: auto; }
 
   // Likewise
-  > *:not(figure):not(img):not(div):not(table),
+  > *:not(figure):not(img):not(table),
   > .footnotes {
     max-width: $measure + ( $line * 4 ) + 2px; }
 
@@ -79,7 +80,7 @@
       width: calc(100% - 32px); } }
 
   // Yep
-  > *:not(figure):not(img):not(div),
+  > *:not(figure):not(img):not(.code-block),
   > .footnotes,
   figcaption {
     padding-right: $line*2;
@@ -257,6 +258,10 @@
 
 // Specific pieces of content
 // ---------------------------
+.code-block pre {
+  @include breakpoint($cd) {
+    border-radius: $radius; } }
+
 .featured-image {
   overflow: hidden;
   display: flex;

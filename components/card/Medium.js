@@ -19,7 +19,7 @@ const Medium = ({ frontmatter }) => {
     categories,
     images,
     medium,
-    lastmod,
+    lastmod
   } = frontmatter
 
   const url = `/blog/${slug}`;
@@ -50,7 +50,6 @@ const Medium = ({ frontmatter }) => {
           <time className="warm" dateTime={date} itemProp="datePublished">
             {formatDate(date)}
           </time>
-          {frontmatter.readingTime.text}
         </div>
         <h3 className="f2-l mb1 mb2-d">
           <Link href={url}>
