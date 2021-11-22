@@ -31,7 +31,7 @@ const components = {
   saved: Saved,
   search: Search,
   searchSmall: SearchSmall,
-  time: Time
+  time: Time,
 }
 
 const Icon = ({ kind }) => {

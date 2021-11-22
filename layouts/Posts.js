@@ -8,9 +8,7 @@ export default function Posts({ title, link, text, children, size }) {
     <>
       <section className="posts pt7 pb6 pb8-d" aria-labelledby={ariaID}>
         <Title title={title} link={link} text={text} id={ariaID} />
-        <div className={`scroll scroll-${size} contain-scroll`}>
-          {children}
-        </div>
+        <div className={`scroll scroll-${size} contain-scroll`}>{children}</div>
       </section>
     </>
   )

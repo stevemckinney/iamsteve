@@ -26,7 +26,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const allPosts = await getAllFilesFrontMatter('blog')
   const filteredPosts = allPosts.filter(
-    (post) => post.status === 'open' && post.categories.map((t) => kebabCase(t)).includes(params.category)
+    (post) =>
+      post.status === 'open' && post.categories.map((t) => kebabCase(t)).includes(params.category)
   )
 
   // rss

@@ -7,8 +7,8 @@ const Category = ({ text, styling = 'warm secondary-hover', icon }) => {
     <Link href={`/category/${kebabCase(text)}`}>
       <a rel="category tag" className={styling}>
         <>
-        {icon && (<Icon kind={text.toLowerCase()} />)}
-        {text.split(' ').join('-')}
+          {icon && <Icon kind={text.toLowerCase()} />}
+          {text.split(' ').join('-')}
         </>
       </a>
     </Link>

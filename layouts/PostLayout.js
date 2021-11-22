@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 
 import siteMetadata from '@/data/siteMetadata'
 import formatDate from '@/lib/utils/formatDate'
 
 import { BlogSEO } from '@/components/SEO'
-import { PageViews } from '@/components/PageViews';
+import { PageViews } from '@/components/PageViews'
 
 import Link from '@/components/Link'
 import Icon from '@/components/icon'
@@ -15,7 +15,6 @@ import Image from '@/components/Image'
 import Category from '@/components/Category'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
 
@@ -35,14 +34,14 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
     images,
     medium,
     lastmod,
-    readingTime
+    readingTime,
   } = frontmatter
 
   useEffect(() => {
     fetch(`/api/views/${slug}`, {
-      method: 'POST'
-    });
-  }, [slug]);
+      method: 'POST',
+    })
+  }, [slug])
 
   return (
     <SectionContainer>
@@ -53,12 +52,16 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
       />
       <ScrollTopAndComment />
 
-      <div className="pt4 pb4 pt6-b pb6-b pt7-d pb8-d featured-image entry-image" role="presentation" style={{ backgroundColor: theme.toString() }}>
+      <div
+        className="pt4 pb4 pt6-b pb6-b pt7-d pb8-d featured-image entry-image"
+        role="presentation"
+        style={{ backgroundColor: theme.toString() }}
+      >
         <>
           {images ? (
             <>
               {images.map((image) => (
-                <Image src={image} className="radius" width={378} height={252} />
+                <Image src={image} className="radius" width={378} height={252} key={image} />
               ))}
             </>
           ) : (
@@ -74,7 +77,9 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
       </div>
 
       <article role="article" className="entry-content pt6 pb6">
-        <p className="visuallyhidden">Page views: <PageViews slug={slug} /></p>
+        <p className="visuallyhidden">
+          Page views: <PageViews slug={slug} />
+        </p>
         <header className="entry-header relative pb4 p0-d">
           <PageTitle>{title}</PageTitle>
 
@@ -86,7 +91,12 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
               </time>
             </span>
             {categories.map((category) => (
-              <Category key={category} text={category} styling="meta-item flex items-center" icon={true} />
+              <Category
+                key={category}
+                text={category}
+                styling="meta-item flex items-center"
+                icon={true}
+              />
             ))}
             <span className="meta-item flex items-center">
               <Icon kind="time" />
@@ -101,7 +111,9 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
             </span>
 
             <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
-              <a href="{site_url}" className="author vcard url fn" rel="author">Steve McKinney</a>
+              <a href="{site_url}" className="author vcard url fn" rel="author">
+                Steve McKinney
+              </a>
               <time dateTime={lastmod} className="updated">
                 {formatDate(lastmod)}
               </time>

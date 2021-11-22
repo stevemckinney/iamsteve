@@ -19,15 +19,18 @@ const Medium = ({ frontmatter }) => {
     categories,
     images,
     medium,
-    lastmod
+    lastmod,
   } = frontmatter
 
-  const url = `/blog/${slug}`;
+  const url = `/blog/${slug}`
 
   return (
     <article className="card card-medium entry flex flex-column">
       <Link href={url}>
-        <a className="card-image flex mb2 mb4-b radius" style={{ backgroundColor: theme.toString() }}>
+        <a
+          className="card-image flex mb2 mb4-b radius"
+          style={{ backgroundColor: theme.toString() }}
+        >
           <>
             {medium ? (
               <>
@@ -56,9 +59,7 @@ const Medium = ({ frontmatter }) => {
             <a className="primary secondary-hover">{title}</a>
           </Link>
         </h3>
-        <div className="flex-auto mb2 mb3-d">
-          {summary}
-        </div>
+        <div className="flex-auto mb2 mb3-d">{summary}</div>
         <div className="meta f8-b f7-d flex between items-center dashes">
           {categories && (
             <>
@@ -77,7 +78,9 @@ const Medium = ({ frontmatter }) => {
           </Link>
         </div>
         <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
-          <a href="{site_url}" className="author vcard url fn" rel="author">Steve McKinney</a>
+          <a href="{site_url}" className="author vcard url fn" rel="author">
+            Steve McKinney
+          </a>
           <time dateTime={lastmod} className="updated">
             {formatDate(lastmod)}
           </time>

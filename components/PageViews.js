@@ -1,4 +1,4 @@
-import useSWR from 'swr';
+import useSWR from 'swr'
 
 export const fetcher = async (RequestInfo) => {
   const Response = await fetch(RequestInfo)

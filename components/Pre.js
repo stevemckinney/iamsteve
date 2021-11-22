@@ -21,7 +21,12 @@ const Pre = (props) => {
   }
 
   return (
-    <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit} className="code-block relative">
+    <div
+      ref={textInput}
+      onMouseEnter={onEnter}
+      onMouseLeave={onExit}
+      className="code-block relative"
+    >
       {hovered && (
         <button
           aria-label="Copy code"
@@ -38,7 +43,9 @@ const Pre = (props) => {
             viewBox="0 0 24 24"
             stroke="currentColor"
             fill="none"
-            className={copied ? 'icon icon-medium text-green-400' : 'icon icon-medium text-gray-300'}
+            className={
+              copied ? 'icon icon-medium text-green-400' : 'icon icon-medium text-gray-300'
+            }
           >
             {copied ? (
               <>

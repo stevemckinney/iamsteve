@@ -4,12 +4,8 @@ import Small from './Small'
 const Card = ({ kind, frontmatter }) => {
   return (
     <>
-      {kind === 'medium' && (
-        <Medium frontmatter={frontmatter} />
-      )}
-      {kind === 'small' && (
-        <Small frontmatter={frontmatter} />
-      )}
+      {kind === 'medium' && <Medium frontmatter={frontmatter} />}
+      {kind === 'small' && <Small frontmatter={frontmatter} />}
     </>
   )
 }

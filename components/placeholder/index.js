@@ -7,25 +7,15 @@ import CodeGreen from '@/images/default/code-default-1.svg'
 import CodeRed from '@/images/default/code-default-1.svg'
 import CodeYellow from '@/images/default/code-default-1.svg'
 
-const PlaceholderDesign = [
-  DesignBlue,
-  DesignRed,
-  DesignGreen,
-  DesignYellow
-]
+const PlaceholderDesign = [DesignBlue, DesignRed, DesignGreen, DesignYellow]
 
-const PlaceholderCode = [
-  CodeBlue,
-  CodeRed,
-  CodeGreen,
-  CodeYellow
-]
+const PlaceholderCode = [CodeBlue, CodeRed, CodeGreen, CodeYellow]
 
 function Placeholder(kind) {
   const PlaceholderDesignSvg = PlaceholderDesign[Math.floor(Math.random() * PlaceholderCode.length)]
   const PlaceholderCodeSvg = PlaceholderCode[Math.floor(Math.random() * PlaceholderCode.length)]
 
-  return ( kind === 'Design' ? <PlaceholderDesignSvg /> : <PlaceholderCodeSvg /> )
+  return kind === 'Design' ? <PlaceholderDesignSvg /> : <PlaceholderCodeSvg />
 }
 
 export default Placeholder

@@ -12,10 +12,10 @@ import Icon from '@/components/icon'
 // images
 import Image from 'next/image'
 import Lettering from '@/images/lettering.svg'
-import Intro320 from '@/images/introduction-320.svg';
-import Intro394 from '@/images/introduction-394.svg';
-import Intro734 from '@/images/introduction-734.svg';
-import Intro960 from '@/images/introduction-960.svg';
+import Intro320 from '@/images/introduction-320.svg'
+import Intro394 from '@/images/introduction-394.svg'
+import Intro734 from '@/images/introduction-734.svg'
+import Intro960 from '@/images/introduction-960.svg'
 
 // pull in the posts
 // import Posts from '@/layouts/Posts'
@@ -24,7 +24,7 @@ export const POSTS_PER_PAGE = 5
 export const MAX_DISPLAY = 5
 
 // View count
-import { PageViews, views } from '@/components/PageViews';
+import { PageViews, views } from '@/components/PageViews'
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
@@ -49,10 +49,30 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           </h1>
         </div>
         <div className="hero-image">
-          <Image src="/static/images/introduction-320.svg" width={320} height={254} className="hero-image-320" />
-          <Image src="/static/images/introduction-394.svg" width={394} height={296} className="hero-image-394" />
-          <Image src="/static/images/introduction-734.svg" width={734} height={312} className="hero-image-734" />
-          <Image src="/static/images/introduction-960.svg" width={960} height={404} className="hero-image-960" />
+          <Image
+            src="/static/images/introduction-320.svg"
+            width={320}
+            height={254}
+            className="hero-image-320"
+          />
+          <Image
+            src="/static/images/introduction-394.svg"
+            width={394}
+            height={296}
+            className="hero-image-394"
+          />
+          <Image
+            src="/static/images/introduction-734.svg"
+            width={734}
+            height={312}
+            className="hero-image-734"
+          />
+          <Image
+            src="/static/images/introduction-960.svg"
+            width={960}
+            height={404}
+            className="hero-image-960"
+          />
         </div>
       </div>
 
@@ -66,16 +86,19 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
               </>
             )
           })
-          .slice(0, POSTS_PER_PAGE)
-        }
-        <a href="/blog" class="link-icon warm secondary-hover card-permalink semibold sans center f2-l">
-          All posts <span class="icon icon-medium icon-right secondary mr6"><Icon kind="right" /></span>
+          .slice(0, POSTS_PER_PAGE)}
+        <a
+          href="/blog"
+          className="link-icon warm secondary-hover card-permalink semibold sans center f2-l"
+        >
+          All posts{' '}
+          <span className="icon icon-medium icon-right secondary mr6">
+            <Icon kind="right" />
+          </span>
         </a>
       </Posts>
 
-      {siteMetadata.newsletter.provider !== '' && (
-        <Subscribe />
-      )}
+      {siteMetadata.newsletter.provider !== '' && <Subscribe />}
 
       <Posts title="Popular in design" link="/category/design" text="Explore design" size="small">
         {posts
@@ -84,15 +107,18 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
             views(b.slug) - views(a.slug)
           })
           .map((frontmatter) => {
-            return (
-              <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
-            )
+            return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
           })
           .sort((a, b) => views(b.slug) - views(a.slug))
-          .slice(0, POSTS_PER_PAGE)
-        }
-        <a href="/category/design" class="link-icon warm secondary-hover card-permalink semibold sans center f5-l">
-          Explore design <span class="icon icon-medium icon-right secondary mr6"><Icon kind="right" /></span>
+          .slice(0, POSTS_PER_PAGE)}
+        <a
+          href="/category/design"
+          className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"
+        >
+          Explore design{' '}
+          <span className="icon icon-medium icon-right secondary mr6">
+            <Icon kind="right" />
+          </span>
         </a>
       </Posts>
 
@@ -104,14 +130,17 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
             views(b.slug) - views(a.slug)
           })
           .map((frontmatter) => {
-            return (
-              <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
-            )
+            return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
           })
-          .slice(0, POSTS_PER_PAGE)
-        }
-        <a href="/category/design" class="link-icon warm secondary-hover card-permalink semibold sans center f5-l">
-          Explore code <span class="icon icon-medium icon-right secondary mr6"><Icon kind="right" /></span>
+          .slice(0, POSTS_PER_PAGE)}
+        <a
+          href="/category/design"
+          className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"
+        >
+          Explore code{' '}
+          <span className="icon icon-medium icon-right secondary mr6">
+            <Icon kind="right" />
+          </span>
         </a>
       </Posts>
     </>
