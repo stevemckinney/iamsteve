@@ -24,7 +24,7 @@ export const POSTS_PER_PAGE = 5
 export const MAX_DISPLAY = 5
 
 // View count
-import { PageViews, Views } from '@/components/PageViews'
+// import { PageViews, Views } from '@/components/PageViews'
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
@@ -110,9 +110,6 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
       <Posts title="Popular in design" link="/category/design" text="Explore design" size="small">
         {posts
           .filter((post) => post.tags.includes('Design'))
-          .sort((a, b) => {
-            Views(b.slug) - Views(a.slug)
-          })
           .map((frontmatter) => {
             return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
           })
@@ -133,9 +130,6 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         {!posts && <div>No posts!</div>}
         {posts
           .filter((post) => post.tags.includes('Code'))
-          .sort((a, b) => {
-            Views(b.slug) - Views(a.slug)
-          })
           .map((frontmatter) => {
             return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
           })
