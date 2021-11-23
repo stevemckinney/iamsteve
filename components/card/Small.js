@@ -10,11 +10,12 @@ const Small = ({ frontmatter }) => {
     frontmatter
 
   const url = `/blog/${slug}`
+  const imageColor = theme ? theme.toString() : `#f00`
 
   return (
     <article className="card card-small">
       <Link href={url}>
-        <a className="card-image mb2 flex radius" style={{ backgroundColor: theme.toString() }}>
+        <a className="card-image mb2 flex radius" style={{ backgroundColor: { imageColor } }}>
           <>
             {medium ? (
               <>
