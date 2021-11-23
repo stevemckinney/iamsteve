@@ -10,7 +10,7 @@ export default function AboutPage() {
       </div>
       <div className="max-w-md">
         <p className="mb-4 text-xl font-bold leading-normal md:text-2xl">
-          Work in progress.
+          Work in progress. <Link href="/">Go back home</Link>.
         </p>
       </div>
     </div>
