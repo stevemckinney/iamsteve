@@ -113,7 +113,6 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           .map((frontmatter) => {
             return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
           })
-          .sort((a, b) => Views(b.slug) - Views(a.slug))
           .slice(0, POSTS_PER_PAGE)}
         <Link
           href="/category/design"
