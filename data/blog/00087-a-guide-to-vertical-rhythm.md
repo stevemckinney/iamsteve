@@ -41,7 +41,7 @@ A vertical rhythm starts from a baseline. It’s the basis for everything from t
 ### What a baseline is
 A baseline in terms of vertical rhythm is essentially a vertical grid, everything must sit between the lines. For type it means the bottoms of letters—not descenders—sitting on the line. It’s easy to relate this to how you would use a horizontal grid. The difference being: a horizontal grid is built on a fixed number of columns, a baseline grows with the page.
 
-<img src="/static/images/blog/vertical-rhythm-show.png" alt="Image demonstrating vertical rhythm">
+<Image src="/static/images/blog/vertical-rhythm-show.png" alt="Image demonstrating vertical rhythm">
 
 Typically, you take a pixel value to base it on. You can use other units such as em, however, for this post I will be sticking with pixels.
 
@@ -49,7 +49,7 @@ Typically, you take a pixel value to base it on. You can use other units such as
 The way items will align to the baseline, is by spanning one or multiple lines. Like you can have items span multiple columns, in a traditional grid.
 
 <figure>
-<img src="/static/images/blog/vertical-rhythm-sizes.png">
+<Image src="/static/images/blog/vertical-rhythm-sizes.png">
 <figcaption>Here’s a demonstration of a couple of text sizes on a 12px baseline. With a line height that is 1.5 times the font size.</figcaption>
 </figure>
 
@@ -93,7 +93,7 @@ You could adjust the line height, however, the solution is in the margin we use.
 body {
   font-size: 18px;
   line-height: 1.5; }
-  
+
 p {
   margin: 0 0 9px; }
 ```
@@ -106,7 +106,7 @@ There are cases you will come across, where it is necessary to adjust the line h
 It’s up to your own judgment, however if you have a heading that is 48px, a line height 1.5 times that will have far too large space between the text.
 
 #### Use incremental line height
-I recommend using line heights that follow increments of .25. The reason for this is because `48 × 1.25` is 60, which falls on our baseline measurement. If we were to deviate from this with 1.333333, it would equal 64, which is still a good number, but increases the difficulty, of aligning, back to our baseline. 
+I recommend using line heights that follow increments of .25. The reason for this is because `48 × 1.25` is 60, which falls on our baseline measurement. If we were to deviate from this with 1.333333, it would equal 64, which is still a good number, but increases the difficulty, of aligning, back to our baseline.
 
 Going up from here to `48 × 1.75`, that equals 84, which also falls on our baseline.
 
@@ -134,9 +134,9 @@ This way you can adjust your content width, at specific break points, and gain s
 
 You should already be maintaining [good line lengths](http://iamsteve.me/blog/entry/type-scale-line-height-lengths#comfortablelinelengths) in your content. So you can adjust this, based on screen width.
 
-For example, if your content width is restricted to 640px, you could make your images 640x480. The 480px height is a multiple of our 12px baseline. 
+For example, if your content width is restricted to 640px, you could make your images 640x480. The 480px height is a multiple of our 12px baseline.
 
-Once we reach a viewport less than 680px we adjust the content. I choose 680px, as it’s not leaving it too late and getting too snug to the viewport width. At this breakpoint you can adjust the content width to 480px. 
+Once we reach a viewport less than 680px we adjust the content. I choose 680px, as it’s not leaving it too late and getting too snug to the viewport width. At this breakpoint you can adjust the content width to 480px.
 
 This makes our image 320px in height, which falls within our baseline. At another stage you can adjust things again at around 520px, then adjust the content width to 320px.
 

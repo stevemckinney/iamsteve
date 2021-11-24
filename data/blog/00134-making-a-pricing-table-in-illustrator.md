@@ -16,7 +16,7 @@ fileroot: "making-a-pricing-table-in-illustrator"
 Pricing tables are reasonably common for various types of services, they serve as a way to give the user an anchor. Generally meaning that you’ll be able to direct the customer into the package the company really wants to sell most of. While this post won’t cover the psychological side of that, it will focus on clarity and visual style. It’s an interesting website element to take a look at, so let’s start.
 
 ## What you’re making and download
-<figure><Image src="/static/images/blog/pricing-table_progress-6.png" className="wide-image" width={1024} height={768} /><figcaption><a href="https://www.dropbox.com/s/a2ukapy2ra9ql84/illustrator-pricing-table-download.ai?dl=0" style="text-decoration:underline">Feel free to download the finished files</a>.</figcaption></figure>
+<figure><Image src="/static/images/blog/pricing-table_progress-6.png" className="wide-image" width={1024} height={768} /><figcaption><a href="https://www.dropbox.com/s/a2ukapy2ra9ql84/illustrator-pricing-table-download.ai?dl=0" style={{textDecoration: 'underline' }}>Feel free to download the finished files</a>.</figcaption></figure>
 
 ## Choose your content
 You may have a real world use, which I would suggest using, but I’m going to use a fictional web hosting service as an example, with developers/designers with the ability to host side projects on different domains.
@@ -39,7 +39,7 @@ A 3 column layout is a must, so that offers an immediate constraint. The decisio
 
 <Image src="/static/images/blog/pricing-table_sketches.jpg" width={738} height={492} />
 
-Initially I tried a couple of smaller sketches, and decided the name being larger is the best route. This is a common practice simply because price is always a hurdle, an important part, but you don’t want to emphasise it too much. The developer plan will have attention drawn to it through a slightly different size. The reason for this is the intention for it to be the most popular package. 
+Initially I tried a couple of smaller sketches, and decided the name being larger is the best route. This is a common practice simply because price is always a hurdle, an important part, but you don’t want to emphasise it too much. The developer plan will have attention drawn to it through a slightly different size. The reason for this is the intention for it to be the most popular package.
 
 ## Choose a typeface
 To get into more design choices, through the typeface, I’m going to use Work Sans. It offers good legibility and has a good options at the bolder and lighter ends of the scale.
@@ -62,7 +62,7 @@ If you want to [choose your own palette](/blog/colour-series-picking-your-palett
 | Light green | #e1f7ee |
 
 ## Position the content
-For this particular element it makes sense to get the rough layout defined by type only. This will allow for the sizes of each of the containing rectangles to be determined easily and changed less. 
+For this particular element it makes sense to get the rough layout defined by type only. This will allow for the sizes of each of the containing rectangles to be determined easily and changed less.
 
 <Image src="/static/images/blog/pricing-table_progress-1.png" className="wide-image" width={1024} height={768} />
 
@@ -84,9 +84,9 @@ The price doesn’t need to be too emphasised, but it allows you the opportunity
 
 <Image src="/static/images/blog/pricing-table_small-caps.png" width={738} height={492} />
 
-For now make the value semibold and increase the size to 24px. Next change the ‘/mo’ to small caps keeping that at a regular weight and increasing the font size to 18px. 
+For now make the value semibold and increase the size to 24px. Next change the ‘/mo’ to small caps keeping that at a regular weight and increasing the font size to 18px.
 
-The small caps in comparison to numbers aren’t very small, hence the choice to decrease the size. 
+The small caps in comparison to numbers aren’t very small, hence the choice to decrease the size.
 
 Finally make change the colour to `#4db898`.
 
@@ -132,7 +132,7 @@ Find the rounded rectangle tool, then click the artboard and add dimensions 266p
 
 <Image src="/static/images/blog/pricing-table_progress-3.png" className="wide-image" width={1024} height={768} />
 
-Once in place, press <kbd>cmd</kbd> + <kbd>[</kbd> until it has gone to the back of the text. 
+Once in place, press <kbd>cmd</kbd> + <kbd>[</kbd> until it has gone to the back of the text.
 
 #### Alignment
 With the shape still selected using the align window from earlier, align it both horizontally and vertically on the artboard.
@@ -142,7 +142,7 @@ Things will be a little out of place with the central column, select everything 
 #### Add a shadow
 <Image src="/static/images/blog/pricing-table_dropshadow-menu.png" width={738} height={492} />
 
-Next with the shape still selected, in the menu go to Effect > Stylize > Drop Shadow. 
+Next with the shape still selected, in the menu go to Effect > Stylize > Drop Shadow.
 
 <Image src="/static/images/blog/pricing-table_dropshadow-settings.png" width={738} height={492} />
 
@@ -174,7 +174,7 @@ Select both of the shadow layers and group them with <kbd>cmd</kbd> + <kbd>g</kb
 With the group still selected, paste in place <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>. Then nudge across until it lines up nicely at the side. Repeat this process again.
 
 #### Resize
-Now you should have two rectangles at either side. Select both of them and subtract 24px from their height. 
+Now you should have two rectangles at either side. Select both of them and subtract 24px from their height.
 
 <Image src="/static/images/blog/pricing-table_transform-reference.png" width={738} height={492} />
 
@@ -191,7 +191,7 @@ This is [aligning to a key object]({site_url}/blog/entry/illustrator-quick-tip-a
 After getting this far, there is only improving the visual separation of the price. Add a rectangle that is 266px width by 54px height, with the fill colour `#fff6e5`. Place it roughly behind the price, then using the align to key object technique
 
 ### Duplicate and align in each section
-Copy, paste in place and then position it with the other price. Repeat this process for the third column and you're done. 
+Copy, paste in place and then position it with the other price. Repeat this process for the third column and you're done.
 
 ## Final thoughts
 There are ways to build upon this add further dimension to buttons and such things. To keep the tutorial shorter I opted against this.

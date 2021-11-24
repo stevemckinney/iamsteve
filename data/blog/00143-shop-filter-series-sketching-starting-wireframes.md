@@ -30,12 +30,12 @@ Feel free to skip this entirely, if you would like to [download the files and ta
 I’ve made a set of icons for this post. If you’d like to follow along [you can download the icons](https://www.dropbox.com/s/21r4djfbak0mj27/shop-filter-icons.ai?dl=0). If you’d like to make your own I cover sketching them briefly within the post.
 
 ### Designing for a clothing company
-You're designing a website for a clothing company and at the stage of designing the small screen version of the shop page. The page where all products are listed, you have a few options to filter down the products. 
+You're designing a website for a clothing company and at the stage of designing the small screen version of the shop page. The page where all products are listed, you have a few options to filter down the products.
 
 **Type, size, brand, price and colour are filters which will allow you to refine your results best**. A convenient way to clear filters needs to be considered also.
 
 ## Sketching
-With those types in mind and it being a ‘tab bar’ you’ll need to sketch several screens. Icons will be needed to provide a representation of what the filter is, you’ll pair this with text underneath the icon for clarity. 
+With those types in mind and it being a ‘tab bar’ you’ll need to sketch several screens. Icons will be needed to provide a representation of what the filter is, you’ll pair this with text underneath the icon for clarity.
 
 <Image src="/static/images/blog/shop-tabbar-sketch-overview.jpg" width={738} height={492} />
 
@@ -66,7 +66,7 @@ Add a new rectangle by pressing <kbd>m</kbd>. Click the artboard and add the dim
 Add a new layer in the layers panel and name it ‘grid’. Copy the background layer, and click the grid layer, so it’s selected. Then press <kbd><kbd>cmd</kbd> + <kbd>f</kbd></kbd>, this will paste it in place.
 
 ### Reduce the size
-With the layer still selected, open the transform panel, which can be found in the menu Window > Transform. 
+With the layer still selected, open the transform panel, which can be found in the menu Window > Transform.
 
 <Image src="/static/images/blog/shop-tabbar-grid-transform.png" width={738} height={492} />
 
@@ -74,15 +74,15 @@ With a central reference point and constrain proportions unchecked, subtract 48p
 
 ### Grid settings
 With the layer still selected, in the menu bar go to Object > Path > Split into Grid.
-  
+
 <figure>
 <Image src="/static/images/blog/shop-tabbar-grid-settings.png" width={738} height={492} />
 <figcaption>Add two columns with a 12px gutter.</figcaption>
 </figure>
 
-Once you have added those settings, click ok. **Copy those layers, then click the artboard next to it and paste in place** <kbd><kbd>cmd</kbd> + <kbd>f</kbd></kbd>. 
+Once you have added those settings, click ok. **Copy those layers, then click the artboard next to it and paste in place** <kbd><kbd>cmd</kbd> + <kbd>f</kbd></kbd>.
 
-<img src="/static/images/blog/shop-tabbar-paste-in-artboards.gif">
+<Image src="/static/images/blog/shop-tabbar-paste-in-artboards.gif" width={738} height={492} />
 
 Repeat this process for the other artboards. **Then select all the  grid columns in each artboard and press** <kbd><kbd>cmd</kbd> + <kbd>5</kbd></kbd>.
 
@@ -104,14 +104,14 @@ Next add a logo, which needs to be aligned to the horizontal centre of the heade
 
 <Image src="/static/images/blog/shop-tabbar-align-panel.png" width={738} height={492} />
 
-Select the header background, the icons and the logo. Then click the header background again, to [align to a key object](). Next, go to Window > Align to open the align panel. 
+Select the header background, the icons and the logo. Then click the header background again, to [align to a key object](). Next, go to Window > Align to open the align panel.
 
 <figure><Image src="/static/images/blog/shop-tabbar-progress-2.png" width={738} height={492} /><figcaption>You should have something which looks similar to this.</figcaption></figure>
 
 ## Add content
 Towards the top, make two text layers. One with ‘Shop’ and the other ‘Browsing 84 styles’. With this the filter has an additional indication to show the page has updated.
 
-I have made the title have an 18px font size. The styles counter is has a font size of 12px.  
+I have made the title have an 18px font size. The styles counter is has a font size of 12px.
 
 ### Add products
 Now to add content in the way of products. Using a rectangle as a placeholder image, adding a title and price to make up a product.
@@ -134,7 +134,7 @@ Click the ‘New Symbol’ icon and enter a name. No other options here are real
 After clicking ok, this will move everything to the top, move it to the back with <kbd><kbd>cmd</kbd> + <kbd>[</kbd></kbd>.
 
 ## Tab bar
-Now that the content is completed you can move on to the navigation. 
+Now that the content is completed you can move on to the navigation.
 
 ### Split the rectangle into 5
 Select the bottom rectangle, then in the menu go to Object > Path > Split into Grid.
@@ -145,12 +145,12 @@ Select the bottom rectangle, then in the menu go to Object > Path > Split into G
 </figure>
 
 ### Icons
-As mentioned earlier in the post I’ve made a set of icons for you to download. Or of course you can use your own. 
+As mentioned earlier in the post I’ve made a set of icons for you to download. Or of course you can use your own.
 
-Place the first 5 icons (including text) into the document nearby the rectangle. It’s not too important where, the alignment process doesn't depend on it. 
+Place the first 5 icons (including text) into the document nearby the rectangle. It’s not too important where, the alignment process doesn't depend on it.
 
 ### Aligning icons
-Making sure each icon and the text are grouped together <kbd><kbd>cmd</kbd> + <kbd>g</kbd></kbd>. 
+Making sure each icon and the text are grouped together <kbd><kbd>cmd</kbd> + <kbd>g</kbd></kbd>.
 
 Select one rectangle and the grouped text and icon. Then click the rectangle again so that the border is thicker, [aligning to the rectangle as the key object]().
 

@@ -22,18 +22,18 @@ At the end of the post you’ll end up with something that looks like this, if y
 The first step is to setup a new document, the size isn’t too important, but I’ve made an 1200⨉800 web artboard.
 
 ## Getting the initial row layout
-The first step is to get the necessary elements in place to begin to build up the table. Select the line tool using <kbd>\</kbd>.
+The first step is to get the necessary elements in place to begin to build up the table. Select the line tool using <kbd>{"\"}</kbd>.
 
 <Image src="/static/images/blog/table_initial-line.png" width={738} height={492} />
 
 Then click the artboard and you’ll be presented with a window. The length should be 840px and the angle should be 0°.
 
 ### Duplicate the line
-The next step is to duplicate the line and paste in place. Copy the line with <kbd>cmd</kbd> + <kbd>c</kbd> then paste in place with <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>. 
+The next step is to duplicate the line and paste in place. Copy the line with <kbd>cmd</kbd> + <kbd>c</kbd> then paste in place with <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>.
 
 <Image src="/static/images/blog/table_y-coordinate.png" width={738} height={492} />
 
-With the line still selected, open Window > Transform. Click to the end of the y coordinate and type '+256' this will add 8 rows worth of space at 32px each to the y coordinate. 
+With the line still selected, open Window > Transform. Click to the end of the y coordinate and type '+256' this will add 8 rows worth of space at 32px each to the y coordinate.
 
 ## Using the blend tool to make additional lines
 <figure>
@@ -68,11 +68,11 @@ Now using ‘Align to Artboard’ click both horizontal and vertical align centr
 
 <figure><Image src="/static/images/blog/table_progress-2.png" width={738} height={492} /><figcaption>You should have something similar to this, a background layer and a blended object.</figcaption></figure>
 
-Next is to select your rectangle then go to Object > Path > Split into Grid. 
+Next is to select your rectangle then go to Object > Path > Split into Grid.
 
 <Image src="/static/images/blog/table_rows.png" width={738} height={492} />
 
-Add 7 to the row count and click ok. The rectangle will be the top most layer, so press <kbd>cmd</kbd> + <kbd>[</kbd> until the rectangle is behind the lines. 
+Add 7 to the row count and click ok. The rectangle will be the top most layer, so press <kbd>cmd</kbd> + <kbd>[</kbd> until the rectangle is behind the lines.
 
 ### Alternating row colour
 I would recommend that you don’t delete rows to get the alternating row colour. This will make alignment trickier later for each row. **Instead, fill them with the main background colour**.

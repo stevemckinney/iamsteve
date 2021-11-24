@@ -29,18 +29,18 @@ However, once you have the document setup correctly in illustrator it's generall
 ### Firstly, decide upon a grid
 This isn’t a traditional columned grid, it’s the overlay that is built into Illustrator.
 
-<img src="/static/images/blog/illustrator-pixel-perfect-gridlines.png" srcset="/static/images/blog/illustrator-pixel-perfect-gridlines.png 2x">
+<Image src="/static/images/blog/illustrator-pixel-perfect-gridlines.png" width={738} height={492} />
 
 Go to Illustrator > Preferences > Guides & Grid. From here set a gridline as a multiple of 16, with the subdivisions to equal a whole number too.
 
 ### Why multiples of 16?
-Icons and screen resolutions typically scale up from values that are multiples of 16. 16, 32, 64, 128 for icons. 1024, 1280, 1680, 1920 for screen resolutions. **I recommend you follow this**. 
+Icons and screen resolutions typically scale up from values that are multiples of 16. 16, 32, 64, 128 for icons. 1024, 1280, 1680, 1920 for screen resolutions. **I recommend you follow this**.
 
 Aside from this you can depend on the number to always be whole when divided by 2.
 
 <figure>
 
-<img src="/static/images/blog/illustrator-pixel-perfect-guides-options.png" srcset="/static/images/blog/illustrator-pixel-perfect-guides-options.png 2x">
+<Image src="/static/images/blog/illustrator-pixel-perfect-guides-options.png" width={738} height={492} />
 
 <figcaption>In this case you will have 4px squares. Change as necessary to get finer control.</figcaption>
 </figure>
@@ -50,9 +50,9 @@ Aside from this you can depend on the number to always be whole when divided by 
 ### Make a new document
 You can make any document size, as long as it falls within your gridline choice. In this instance it’s 16. If your document size follows screen resolution patterns, they will fall within the 16px grid.
 
-<img src="/static/images/blog/illustrator-pixel-perfect-new-document.png" srcset="/static/images/blog/illustrator-pixel-perfect-new-document.png 2x">
+<Image src="/static/images/blog/illustrator-pixel-perfect-new-document.png" width={738} height={492} />
 
-After adding your dimensions, click advanced and check ‘Align New Objects to Pixel Grid’. 
+After adding your dimensions, click advanced and check ‘Align New Objects to Pixel Grid’.
 
 This can be the reason you will have trouble doing this with an existing document. It’s for new objects.
 

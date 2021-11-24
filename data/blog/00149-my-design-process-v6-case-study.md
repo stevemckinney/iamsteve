@@ -28,7 +28,7 @@ I needed to first determine what it was I was looking to improve with the previo
 - Encourage browsing of the website
 
 ### How the goals will be addressed
-Some of these goals were achieved within the redesign. Some I will have to work at long term. 
+Some of these goals were achieved within the redesign. Some I will have to work at long term.
 
 - Improve visual design
 - Introduce more colour
@@ -38,9 +38,9 @@ Some of these goals were achieved within the redesign. Some I will have to work 
 
 Essentially, when I looked at the website, in its current form, it felt embarrassing. Which is a good thing, I designed it 4–5 years ago.
 
-It needed a stronger visual element to it. I need to come across as if I know what I'm talking about, but also be fun, inviting and not too serious. 
+It needed a stronger visual element to it. I need to come across as if I know what I'm talking about, but also be fun, inviting and not too serious.
 
-I want to teach that design should be fun as well as solving problems. 
+I want to teach that design should be fun as well as solving problems.
 
 ## The logo
 I started the process off small with [a new logo](/blog/iamsteve-a-new-logomark) and tweaks to the website. It had its own set of requirements. It set the ground work for the redesign.
@@ -62,7 +62,7 @@ Some of the sketches for both illustrations. Illustrator can be very forgiving i
 
 ### The final illustrations
 
-<img src="/static/images/blog/casestudy-v6-final-illustrations.png" srcset="/static/images/blog/casestudy-v6-final-illustrations.png 2x">
+<Image src="/static/images/blog/casestudy-v6-final-illustrations.png" width={738} height={492} />
 
 I’m really proud of these, it was a lengthy process of iterating on shading, and reshaping, to make them look right. I feel like I have made something good.
 
@@ -74,7 +74,7 @@ To begin with I always start with an initial colour palette that I iterate on du
 The main goal towards usage of colour is to appear confident. When I look at other designers websites I admire, there is always great use of colour within those.
 
 <figure>
-<img src="/static/images/blog/casestudy-v6-red-green.png" srcset="/static/images/blog/casestudy-v6-red-green.png 2x">
+<Image src="/static/images/blog/casestudy-v6-red-green.png" width={738} height={492} />
 <figcaption>
 Red is a confident colour. Green is more neutral, which evens things out.
 </figcaption>
@@ -86,7 +86,7 @@ The relation to that was in the illustrations of the collars on my dogs. Which w
 
 I paired that with yellow, dark purple and dark blue. These additional colours contrast, complement and give me a selection to work with for featured images and text.
 
-<img src="/static/images/blog/casestudy-v6-colour-palette.png" srcset="/static/images/blog/casestudy-v6-colour-palette.png 2x">
+<Image src="/static/images/blog/casestudy-v6-colour-palette.png" width={738} height={492} />
 
 With those colours I broke them down into two complementary palettes that are tied together by a common yellow colour. Of course there are plenty of tints and shades to go along with that to use as and when necessary.
 
@@ -119,17 +119,17 @@ My observations were:
 - Allow for larger images where necessary
 
 ## Sketching
-I had done so many sketches, settling on the idea that the introduction accompanied a latest post. 
+I had done so many sketches, settling on the idea that the introduction accompanied a latest post.
 
 <figure>
-<img src="/static/images/blog/casestudy-v6-sketches-set-1.jpg" src="/static/images/blog/casestudy-v6-sketches-set-1@2x.jpg 2x">
+<Image src="/static/images/blog/casestudy-v6-sketches-set-1.jpg" width={738} height={492} />
 <figcaption>Early sketches kind of had the idea of a space theme.</figcaption>
 </figure>
 
 Sketching serves as a way to explore themes and ideas that may fit the style of the website.
 
 <figure>
-<Image src="/static/images/blog/casestudy-v6-sketches-set-2@2x.jpg" width={738} height={492} />  
+<Image src="/static/images/blog/casestudy-v6-sketches-set-2@2x.jpg" width={738} height={492} />
 <figcaption>The latest post idea emerging. A split screen with latest post and introduction too.</figcaption>
 </figure>
 
@@ -142,11 +142,11 @@ Small screen and post versions were explored too at different stages.
 ## Wireframes, or designs without visual style
 I had a reasonably good idea what I wanted to do from the sketches and planning earlier. The ‘wireframes’ closely matched my sketches, for the layout and visual style to be iterated upon further.
 
-<img src="/static/images/blog/casestudy-v6-wireframe-home.png" srcset="/static/images/blog/casestudy-v6-wireframe-home.png 2x">
+<Image src="/static/images/blog/casestudy-v6-wireframe-home.png" width={738} height={492} />
 
 I used Avant Garde throughout the wireframes. Usually I would decide typefaces early, but it can be expensive mistake if you get it wrong. I picked based upon what I had available to me already, that matched closely to the requirements. It turned out to be a good decision.
 
-<img src="/static/images/blog/casestudy-v6-wireframe-blog.png" srcset="/static/images/blog/casestudy-v6-wireframe-blog.png 2x">
+<Image src="/static/images/blog/casestudy-v6-wireframe-blog.png" width={738} height={492} />
 
 I produced wireframes for only the homepage and blog/category pages.
 
@@ -158,16 +158,16 @@ It was always in my mind for time saving that I focused on the core pages. As a 
 The specifics I wanted within typefaces aside from legibility were to fit in with the friendlier style I wanted.
 
 ### Headings
-I was looking for a sans serif, typeface that was something along the lines of, ITC Avant Garde Gothic, but not as geometric and a little softer. 
+I was looking for a sans serif, typeface that was something along the lines of, ITC Avant Garde Gothic, but not as geometric and a little softer.
 
-<img src="/static/images/blog/casestudy-v6-averta.png" srcset="/static/images/blog/casestudy-v6-averta.png 2x">
+<Image src="/static/images/blog/casestudy-v6-averta.png" width={738} height={492} />
 
 I needed something that would be for the long term. I wanted to look at the choice objectively as possible. I eventually stumbled upon Averta from The Designers Foundry.
 
 It has a nice variety of weights and true italics. This certainly helps longevity. It was extremely affordable and it matched everything I wanted.
 
 ### Paragraphs
-Paragraphs is more flexible in this regard, I had availability through Typekit and Cloud Typography. I ended up with Abril Text and Sentinel, as the choices. 
+Paragraphs is more flexible in this regard, I had availability through Typekit and Cloud Typography. I ended up with Abril Text and Sentinel, as the choices.
 
 They both have a relatively modern style, which pairs well with Averta. They’re both great for reading. The difficulty was choosing between them, they both worked great. In the end I settled with Sentinel.
 
@@ -176,7 +176,7 @@ Cloud Typography has really fine grained control of things like number style and
 ## Design details
 After all the choices made earlier I built up the visual style. I wanted something that was light, inviting and colourful.
 
-The header/navigation area I wanted to keep the overall style quite subtle. The focus would always be on the content. For new visitors, I want them to either read the introduction, or get into the latest article. 
+The header/navigation area I wanted to keep the overall style quite subtle. The focus would always be on the content. For new visitors, I want them to either read the introduction, or get into the latest article.
 
 However, inside the articles it’s nice to have the navigation readily available at all times. It’s a balancing act, that’s why  the scroll to show/hide style has been so popular.
 
@@ -184,7 +184,7 @@ However, inside the articles it’s nice to have the navigation readily availabl
 I wanted to develop a system for featured images that worked well. So when it came to image sizes in different locations I could have featured images generate sharp sized images, from one size.
 
 #### The sizing of images
-This was too idealistic. As illustrations made at small sizes felt weird scaled up to the large size and vice versa. So I settled upon the three you see on the homepage. 
+This was too idealistic. As illustrations made at small sizes felt weird scaled up to the large size and vice versa. So I settled upon the three you see on the homepage.
 
 I decided that they should try to follow screen aspect ratio, which is most commonly 1:1.6, but this felt too tall.
 
@@ -199,12 +199,12 @@ I’ve done a fair amount so far. I’ve done some I’m happy with and others n
 Another tricky area to achieve balance with and variety. The idea that was prominent in my mind was type sizes are a pain to manage responsively.
 
 <figure>
-<img src="/static/images/blog/casestudy-v6-type-sizing.png" srcset="/static/images/blog/casestudy-v6-type-sizing.png 2x">  
+<Image src="/static/images/blog/casestudy-v6-type-sizing.png" width={738} height={492} />
 <figcaption>I use 7 sizes, ranging from 48px to 14px.</figcaption>
 </figure>
 
 I set about creating some rules, eg: type on small screens shouldn’t exceed 24px. I find in the majority of cases that websites overlook typography on the small screen. I didn’t want that to be the case.
-  
+
 During the development I was able to keep this nicely under control with the [Tachyons style of writing CSS](/blog/why-you-should-use-tachyons-to-make-css-easier). If there is one thing to use this approach for; it’s type sizing.
 
 ## Posts
@@ -222,21 +222,21 @@ Another part of the solution was to allow images to be flexible within them. As 
 > I use blockquotes quite frequently, to highlight key areas. I use them to ‘sign post’ things, so I figured why not do that. As you’ll see with this.
 
 ## Archive, categories and search
-The main aim for these pages were to aid browsing. All the styles between them are pretty much like for like. So it builds a familiarity through navigating these pages. I kept it simple, as they aren’t the most visited or used pages.  
+The main aim for these pages were to aid browsing. All the styles between them are pretty much like for like. So it builds a familiarity through navigating these pages. I kept it simple, as they aren’t the most visited or used pages.
 
-I had three decisions. How many posts to display on a single page, the pagination style and the page title. 
+I had three decisions. How many posts to display on a single page, the pagination style and the page title.
 
 The answer to the how many posts to display is as many as you can get away with. I think it’s a fair balance. I wanted the page title to be small and compact.
 
 The pagination at the bottom in particular I had to scale back a little. I initially wanted it to have the page numbers to navigate by. It was to do with the development making things tricky. Something I hope to find a solution for in the future.
 
 ## There’s still a good amount to do
-I’ve still got the about page to do. I’ve come round to the idea of hiring someone to write that for me, so I’m going to leave it until I have the content. 
+I’ve still got the about page to do. I’ve come round to the idea of hiring someone to write that for me, so I’m going to leave it until I have the content.
 
 The contact page, the subscriber download, other improvements that build upon this redesign. It will go on. I’m motivated to get it all done.
 
 ## Final thoughts and reflection
-On reflection I’m happy with the outcome. On the brief time the redesign has been live, I’ve had a positive reaction. So far I’ve noticed positive trends in analytics data, a couple more months and it’s probably worthy of a post. 
+On reflection I’m happy with the outcome. On the brief time the redesign has been live, I’ve had a positive reaction. So far I’ve noticed positive trends in analytics data, a couple more months and it’s probably worthy of a post.
 
 My main intentions were to get something out that was a strong start. As the homepage is a huge area for expansion, I’ve already been working on some improvements.
 

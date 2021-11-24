@@ -25,7 +25,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
       <div className="row between subheader contain contain-medium contain-large pb4">
         {pagination && pagination.totalPages > 1 && !searchValue && (
           <Pagination
-            style="newer"
+            stage="newer"
             currentPage={pagination.currentPage}
             totalPages={pagination.totalPages}
           />
@@ -33,7 +33,7 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
         <h1 className="f4 f3-b f2-d neutral mb0 text-center">{title}</h1>
         {pagination && pagination.totalPages > 1 && !searchValue && (
           <Pagination
-            style="older"
+            stage="older"
             currentPage={pagination.currentPage}
             totalPages={pagination.totalPages}
           />

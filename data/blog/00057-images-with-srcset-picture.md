@@ -92,7 +92,7 @@ add_image_size( 'portfolio-large-landscape-2x', 3600, 9999, true );
 
 After setting up the image sizes I have allowed for the exact image to be uploaded. As each image should be tailored for the size. This isn’t always necessary, so if you only need one image in various sizes, this will not be for you.
 
-<img src="/static/images/blog/Screenshot_2014-12-31_11.55.17.png" alt="The custom fields I have used to allow me to choose the exact image I need for my picture sources">
+<Image src="/static/images/blog/Screenshot_2014-12-31_11.55.17.png" alt="The custom fields I have used to allow me to choose the exact image I need for my picture sources" width={738} height={492} />
 
 > It would make this post insanely long to show exactly how I’ve done it and it’s not code I would consider great as I’m not an expert with PHP. If you’d like to find out more send a tweet to me @irsteve.
 

@@ -18,7 +18,7 @@ Following on from the datepicker post where it was more about getting the basics
 As well as adding the visual style, there will be a few techniques within Illustrator that can make your life easier.
 
 ## Download to carry on
-If you want to catch up [download the wireframe](https://www.dropbox.com/s/smpvf0ffy2yxnrh/datepicker.ai?dl=0){.data-download}.
+If you want to catch up [download the wireframe](https://www.dropbox.com/s/smpvf0ffy2yxnrh/datepicker.ai?dl=0).
 
 ## Picking up from the previous post
 There was very little in the way of visual design done in the previous post, aside from the text. So there are many changes that need to be made to make this easier to understand.
@@ -28,7 +28,7 @@ There was very little in the way of visual design done in the previous post, asi
 ## What you’ll end up with
 <Image src="/static/images/blog/datepicker_completed.png" width={738} height={492} />
 
-If you want skip the post altogether [download the completed file](https://www.dropbox.com/s/b3vt57d5emnm05z/datepicker-completed.ai?dl=0){.data-download}.
+If you want skip the post altogether [download the completed file](https://www.dropbox.com/s/b3vt57d5emnm05z/datepicker-completed.ai?dl=0).
 
 ## Preparing the design
 At the moment the visual hierarchy isn’t clear, this is one of the first things I look to improve, then build upon the style further.

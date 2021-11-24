@@ -22,7 +22,7 @@ The second post in this series the focus switches to small screens. The previous
 <Image src="/static/images/blog/ch-final-small.png" width={738} height={492} />
 
 ## Don’t want to do the tutorial?
-If you'd like to skip ahead, [download the completed Illustrator file](https://www.dropbox.com/s/2r51igxo8824ug5/customizer-hero.ai?dl=0){.data-download}.
+If you'd like to skip ahead, [download the completed Illustrator file](https://www.dropbox.com/s/2r51igxo8824ug5/customizer-hero.ai?dl=0).
 
 ## Refresher on the sketches
 <Image src="/static/images/blog/ch-sketches.jpg" width={738} height={492} />

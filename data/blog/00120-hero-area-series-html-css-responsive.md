@@ -19,7 +19,7 @@ fileroot: "hero-area-series-html-css-responsive"
 The second to last post in this series, coding the page. You’re going to build the page using flexbox and make it responsive. The method that will be used to make it responsive, is mostly mobile first, but it will be making logical decisions based on where CSS only needs applying. This saves you from having to undo it in another media query.
 
 ## Skip ahead if you want
-You can grab all the [HTML, CSS, and images on Github](https://github.com/stevemckinney/customizer-hero-html){.data-download}.
+You can grab all the [HTML, CSS, and images on Github](https://github.com/stevemckinney/customizer-hero-html).
 
 ## Exporting assets & colours
 The first part to beginning to code any website should involve getting all the assets, typefaces and colours gathered. 

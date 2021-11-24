@@ -16,15 +16,15 @@ id: 121
 fileroot: "hero-area-series-wordpress-customizer-with-selective-refresh"
 ---
 
-This post builds upon the previous one in making it editable with Wordpress, using the Customizer API and the newest functionality since 4.5 selective refresh. With this you can make a really smooth and quick editing experience. 
+This post builds upon the previous one in making it editable with Wordpress, using the Customizer API and the newest functionality since 4.5 selective refresh. With this you can make a really smooth and quick editing experience.
 
-The Wordpress Customiser API has been around for a while, and has been improved over the course of its existence. Recently in Wordpress 4.5 selective refresh was introduced. In the aim of making our code less repetitive. 
+The Wordpress Customiser API has been around for a while, and has been improved over the course of its existence. Recently in Wordpress 4.5 selective refresh was introduced. In the aim of making our code less repetitive.
 
 ## Skip ahead
-You can grab all the [necessary files for the theme on Github](https://github.com/stevemckinney/customizer-hero){.data-download}.
+You can grab all the [necessary files for the theme on Github](https://github.com/stevemckinney/customizer-hero).
 
 ## Catch up
-If you’d like to skip all the previous steps and work from the static HTML version, [you can download the files from Github](https://github.com/stevemckinney/customizer-hero-html){.data-download}.
+If you’d like to skip all the previous steps and work from the static HTML version, [you can download the files from Github](https://github.com/stevemckinney/customizer-hero-html).
 
 ## Continuing on with theme setup
 If you’re carrying on from the previous post or have downloaded the files, read on.
@@ -101,7 +101,7 @@ Now that you have removed, the necessary parts from `front-page.php`. You need t
   <meta name="viewport" content="width=device-width">
   <link rel="profile" href="http://gmpg.org/xfn/11">
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-  
+
   <?php wp_head(); ?>
 </head>
 
@@ -164,53 +164,53 @@ It’s a simple class, that I have followed from the [Theme Customizer API docum
  *
  * @link http://codex.wordpress.org/Theme_Customization_API
  */
-class Hero_Customize 
-{ 
+class Hero_Customize
+{
   /**
    * Register all fields necessary for editing the hero area
    */
   public static function register($wp_customize)
-  { 
+  {
     $transport = ( $wp_customize->selective_refresh ? 'postMessage' : 'refresh' );
-    
+
     // Add hero section
     $wp_customize->add_section( 'hero', array(
       'title' => 'Hero',
       'priority' => 0
     ));
-    
+
     // Add setting & control for hero title
     $wp_customize->add_setting( 'hero_title', array(
       'default' => 'Edit live with the Wordpress Customizer',
       'transport' => $transport
     ));
-    
+
     $wp_customize->add_control( 'hero_title', array(
       'label' => 'Title',
       'section' => 'hero',
       'settings' => 'hero_title',
       'type' => 'text'
     ));
-    
+
     // Add setting & control for hero description
     $wp_customize->add_setting( 'hero_description', array(
       'default' => 'Using the Wordpress Customizer you can make updates to parts of your website with a live preview. This makes it easy to iterate on changes.',
       'transport' => $transport
     ));
-    
+
     $wp_customize->add_control( 'hero_description', array(
       'label' => 'Description',
       'section' => 'hero',
       'settings' => 'hero_description',
       'type' => 'textarea'
     ));
-    
+
     // Add setting & control for hero image
     $wp_customize->add_setting( 'hero_image', array(
       'default' => get_template_directory_uri() . '/images/hero-image.svg',
       'transport' => $transport
     ));
-    
+
     $wp_customize->add_control(
       new WP_Customize_Cropped_Image_Control( $wp_customize, 'hero_image', array(
         'label' => 'Image',
@@ -222,21 +222,21 @@ class Hero_Customize
         'height' => 1080
       ) )
     );
-    
+
     // Add setting & control for hero background color
     $wp_customize->add_setting( 'hero_background_color', array(
       'default' => '#c3f2f5',
       'transport' => $transport
     ));
 
-    $wp_customize->add_control( 
+    $wp_customize->add_control(
       new WP_Customize_Color_Control( $wp_customize, 'hero_background_color', array(
         'label' => 'Background color',
         'section' => 'hero',
         'settings' => 'hero_background_color'
-      ) ) 
+      ) )
     );
-    
+
     // Select a page
     $wp_customize->add_setting( 'hero_page', array(
       'type' => 'option',
@@ -249,13 +249,13 @@ class Hero_Customize
       'type' => 'dropdown-pages',
       'settings' => 'hero_page'
     ));
-    
+
     // Add setting & control for button text
     $wp_customize->add_setting( 'hero_button_text', array(
       'default' => 'Find out how',
       'transport' => $transport
     ));
-    
+
     $wp_customize->add_control( 'hero_button_text', array(
       'label' => 'Button text',
       'section' => 'hero',
@@ -263,12 +263,12 @@ class Hero_Customize
       'type' => 'text'
     ));
   }
-  
+
   public function refresh( WP_Customize_Manager $wp_customize )
-  { 
+  {
     // Abort if selective refresh is not available.
     if ( ! isset( $wp_customize->selective_refresh ) ) return;
-    
+
     // Title
     $wp_customize->selective_refresh->add_partial('hero_title', array(
       'selector' => '.hero-title',
@@ -277,7 +277,7 @@ class Hero_Customize
         return get_theme_mod('hero_title');
       }
     ) );
-    
+
     // Description
     $wp_customize->selective_refresh->add_partial('hero_description', array(
       'selector' => '.hero-description',
@@ -286,14 +286,14 @@ class Hero_Customize
         return get_theme_mod('hero_description');
       }
     ) );
-    
+
     // Image
     $wp_customize->selective_refresh->add_partial('hero_image', array(
       'selector' => '.hero-image img',
       'settings' => 'hero_image',
       'render_callback' => self::hero_image_partial()
     ) );
-    
+
     // Background colour
     $wp_customize->selective_refresh->add_partial('hero_background_color', array(
       'selector' => '#hero-css',
@@ -302,7 +302,7 @@ class Hero_Customize
         echo self::css('.hero', 'background-color', 'hero_background_color');
       }
     ) );
-    
+
     // Button text
     $wp_customize->selective_refresh->add_partial('hero_button_text', array(
       'selector' => '.hero .button',
@@ -312,7 +312,7 @@ class Hero_Customize
       }
     ) );
   }
-  
+
   /**
    * For hooking into `wp_head` mostly to output CSS
    */
@@ -326,7 +326,7 @@ class Hero_Customize
   /**
    * This will generate a line of CSS for use in header output. If the setting
    * ($mod_name) has no defined value, the CSS will not be output.
-   * 
+   *
    * @uses get_theme_mod()
    * @param string $selector CSS selector
    * @param string $property The name of the CSS *property* to modify
@@ -350,7 +350,7 @@ class Hero_Customize
       return $return;
     }
   }
-  
+
   /**
    * Reusable partials
    */
@@ -396,7 +396,7 @@ $wp_customize->add_section( 'hero', array(
 ));
 ```
 
-### Add a text setting 
+### Add a text setting
 The simplest setup for a Customizer field is text. Pass the ID, a unique name and an array of arguments. `default` and `transport` are the ones you will set most frequently.
 
 ```php
@@ -420,7 +420,7 @@ $wp_customize->add_control( 'hero_title', array(
 
 The arguments are the most important here, this defines how and where the control shown. `label` is the label of the field, you can complement that with a `description`, although, it’s not required.
 
-`section` relates to the section you setup earlier, in this case `hero`. `settings` is the ID of the one you defined when adding a setting, in this case `hero_title`. 
+`section` relates to the section you setup earlier, in this case `hero`. `settings` is the ID of the one you defined when adding a setting, in this case `hero_title`.
 
 Next you will want to define a type, there are a variety of types, `text` being the default. You can choose from `textarea`, `checkbox`, `radio`, `select` or `dropdown-pages`. If you want to do something fancier, like add an image or colour picker, that requires a different setup, which will be covered shortly.
 
@@ -451,12 +451,12 @@ These arguments are fairly descriptive, however, the `context` allows the media 
 The colour control works like the cropped image control, in that we have to initialise it in a similar way. The options are easier to set, a `label`, `section` and `settings` ID.
 
 ```php
-$wp_customize->add_control( 
+$wp_customize->add_control(
   new WP_Customize_Color_Control( $wp_customize, 'hero_background_color', array(
     'label' => 'Background color',
     'section' => 'hero',
     'settings' => 'hero_background_color'
-  ) ) 
+  ) )
 );
 ```
 
@@ -479,7 +479,7 @@ This refers to the other function `css()`. Which is a reusable function, should 
 In your case the selector is `.hero`, the property is `background-color` and the theme mod is `hero_background_color`.
 
 ## Dropdown pages
-To select a page to link to you need to set up the setting a little differently. Instead of relying on the default type of `theme_mod`, use `option`. It’s a small change, but it means the customizer UI remembers the selected value once saved. 
+To select a page to link to you need to set up the setting a little differently. Instead of relying on the default type of `theme_mod`, use `option`. It’s a small change, but it means the customizer UI remembers the selected value once saved.
 
 ```php
 $wp_customize->add_setting( 'hero_page', array(
@@ -547,7 +547,7 @@ $wp_customize->selective_refresh->add_partial('hero_image', array(
 When you want to refer to a `static` method (function) within the class you have to refer to `self::`. It’s basically saying it’s within this class, as you could have a function named the same outside of the class.
 
 ### Refresh the background color
-Again, what I really like about the selective refresh setup is the familiarity it builds. The only differences are the selector and `render_callback`. 
+Again, what I really like about the selective refresh setup is the familiarity it builds. The only differences are the selector and `render_callback`.
 
 ```php
 $wp_customize->selective_refresh->add_partial('hero_background_color', array(
@@ -576,19 +576,19 @@ Now the functionality is out of the way it’s time to modify the existing HTML.
 
 <div class="hero">
   <div class="hero-content">
-    <?php 
+    <?php
       // Check if the title exists
       if( $title = get_theme_mod('hero_title') )
       {
         echo '<h1 class="hero-title">' . $title . '</h1>';
       }
-      
+
       // Check if the subtitle exists
       if( $subtitle = get_theme_mod('hero_subtitle') )
       {
         echo '<p class="hero-description">' . $subtitle . '</p>';
       }
-      
+
       // Check if the page has been selected and it has text
       // a button without link or text isn&rsquo;t ideal
       if ( $link = get_option('hero_page') &amp;&amp; $text = get_theme_mod('hero_button_text') )
@@ -598,7 +598,7 @@ Now the functionality is out of the way it’s time to modify the existing HTML.
     ?>
   </div>
   <div class="hero-image">
-    <?php 
+    <?php
       // Check if the image really exists
       if ( ! empty(hero_image()) &amp;&amp; null !== hero_image() )
       {
@@ -630,7 +630,7 @@ echo get_option('hero_page');
 
 ### Check for existence and show field
 Each field needs to be checked it exists, then output the HTML and value.
- 
+
 ```php
 if( $title = get_theme_mod('hero_title') )
 {
@@ -648,7 +648,7 @@ if ( $link = get_option('hero_page') && $text = get_theme_mod('hero_button_text'
 }
 ```
 
-You could also use that to get all the information about that page and do away with the need for customising the title and description. 
+You could also use that to get all the information about that page and do away with the need for customising the title and description.
 
 ### Getting the image
 Similarly for an image, it returns an ID, however this has already been handled in `customizer.php`, inside  `Hero_Customize` class you have `hero_image_partial()`. It uses the ID from the theme mod, which allows `wp_get_attachment_image` to return the correct image. Using the hero-image size we defined right at the start.
@@ -691,4 +691,4 @@ else
 ```
 
 ## That’s everything
-I hope you have found value in this series and it’s helped you to learn some new things. Again, [you’re welcome to download the files from Github](https://github.com/stevemckinney/customizer-hero){.data-download}.
+I hope you have found value in this series and it’s helped you to learn some new things. Again, [you’re welcome to download the files from Github](https://github.com/stevemckinney/customizer-hero).

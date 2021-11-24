@@ -24,7 +24,7 @@ You will plan, design, code and then build upon that with Wordpress to make it e
 <Image src="/static/images/blog/ch-final-large.png" width={738} height={492} />
 
 ## Don’t want to do the tutorial?
-If you'd like to skip ahead, [download the Illustrator file](https://www.dropbox.com/s/2r51igxo8824ug5/customizer-hero.ai?dl=0){.data-download}.
+If you'd like to skip ahead, [download the Illustrator file](https://www.dropbox.com/s/2r51igxo8824ug5/customizer-hero.ai?dl=0).
 
 ## Planning
 Firstly, we need to decide what the aim and contents of this area will be. In theory, deciding the contents means we could do the majority of the Customizer functionality and HTML without the design. With this approach, we are thinking of the content first and providing the best solution toward that. 

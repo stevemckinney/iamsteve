@@ -25,14 +25,14 @@ These posts usually serve as a good way to start the year. I aim to reflect upon
 - [Website year in review](#website-year-in-review)
 
 ## 2017 in reflection
-At the start of the year, I posted one final post which saw me complete my goal of posting weekly for two years. I had a break in mind as soon as I’d hit this. I returned with a monthly posting schedule, with the first post after the break coming in March. 
+At the start of the year, I posted one final post which saw me complete my goal of posting weekly for two years. I had a break in mind as soon as I’d hit this. I returned with a monthly posting schedule, with the first post after the break coming in March.
 
 The main reason for this was I couldn’t maintain weekly posting, as I was looking for a new job and building a portfolio.
 
 ### Job hunting is mentally draining & demotivating as a whole
 During the break, I started making my portfolio, which saw a few revisions. I used Adobe Portfolio and aimed to get it done quickly and build up over time.
 
-I was pretty rusty when it came to looking for a job. The last time I had to look I was pretty much just out of university, so the expectations and my situation are vastly different. 
+I was pretty rusty when it came to looking for a job. The last time I had to look I was pretty much just out of university, so the expectations and my situation are vastly different.
 
 The scheduling, secrecy, judgment, etc., that come with it make it one of the most mentally draining things I’ve done for a long time. Trying to figure out whether you’re making the right decision and remaining patient takes a lot of effort.
 
@@ -43,7 +43,7 @@ This year was one I tried to really position myself as only being a designer. It
 
 I originally started designing websites many years ago for fun. I started writing this website for fun and learning too. Over time, I feel like I’ve taken things too seriously—which isn’t me. The pressure I put on myself to be seen as ‘only a designer’ was wrong.
 
-It was part of what had a knock on effect. As well as, things happening in my life and trying to succeed with finding a new job, I lost motivation for *everything*. 
+It was part of what had a knock on effect. As well as, things happening in my life and trying to succeed with finding a new job, I lost motivation for *everything*.
 
 I wasn’t giving myself the necessary rest and looking after myself and personal life. So this is my unsolicited advice to you, there are more important things, look after yourself first.
 
@@ -56,7 +56,7 @@ If I find myself posting regularly again, the content will be mixed between desi
 This was a good year in terms of website visits and newsletter subscribers. Overall, traffic had a couple of spikes, but grew steadily. The same can be said of newsletter subscribers as well.
 
 ### Things of note
-In 2016 I got featured by a couple of prominent people in the industry, and this year was similar but with a couple of prominent websites instead. It’s always a pleasant surprise when it happens and I appreciate it. 
+In 2016 I got featured by a couple of prominent people in the industry, and this year was similar but with a couple of prominent websites instead. It’s always a pleasant surprise when it happens and I appreciate it.
 
 I had the design submitted to [Site Inspire](https://www.siteinspire.com/websites/7248-iamsteve) and [one](https://www.awwwards.com/inspiration/59229dd0e13823488515d459) or [two](https://www.awwwards.com/inspiration/59085f66e1382337ca672908) articles popped up on Awwwards. This all happened between the end of April and early May. Gallery features, tweets and some other social stuff meant a high of nearly 20k sessions for the month of June! I believe at one stage I saw nearly 50 people online.
 
@@ -80,12 +80,12 @@ Over the course of the year I’d made some bigger changes but many small improv
 
 <Image src="/static/images/blog/homepage-change@2x.png" width={896} height={420} />
 
-There’s quite a change between these two homepages. It seems people resonated more with the full width hero area in terms of design. 
+There’s quite a change between these two homepages. It seems people resonated more with the full width hero area in terms of design.
 
 The rest of the changes have been mostly around visual refinement. Adhering to a more rigid grid and alignment throughout. Objectively those changes have made for a nicer flow through out the page. Less of the wide narrow wide narrow layouts.
 
 ### Visits month by month
-A comparison table of visits in 2017, 2016 and 2015. 
+A comparison table of visits in 2017, 2016 and 2015.
 
 | Month | Visits 2017 | Visits 2016 | Visits 2015 |
 |:--|:-:|:--:|--:|

@@ -13,18 +13,18 @@ id: 126
 fileroot: "how-to-datepicker-styling-illustrator"
 ---
 
-In this post I’m going to show you how to make a datepicker efficiently. A reasonably common user interface element, but can be a source of frustration, to make in design applications. Due to the grid, and amount of items in that grid it can be difficult to align everything quickly in an application like Illustrator. 
+In this post I’m going to show you how to make a datepicker efficiently. A reasonably common user interface element, but can be a source of frustration, to make in design applications. Due to the grid, and amount of items in that grid it can be difficult to align everything quickly in an application like Illustrator.
 
 The purpose of this post, is to use it as an opportunity, to show use cases of the split into grid and align tools. If you have ever wondered how to align something in place in Illustrator, read on.
 
 ## Feel free to download the document
-This won’t be focusing on the more visual style and implementing hierarchy, in this post, next week I will cover that. If you would like to skip ahead, [you can download the template](https://www.dropbox.com/s/smpvf0ffy2yxnrh/datepicker.ai?dl=0){.data-download}.
+This won’t be focusing on the more visual style and implementing hierarchy, in this post, next week I will cover that. If you would like to skip ahead, [you can download the template](https://www.dropbox.com/s/smpvf0ffy2yxnrh/datepicker.ai?dl=0).
 
 ## Make a new document
 The first step is to setup a new document, the size isn’t too important, but I’ve made an 800⨉800 web artboard.
 
 ## Make the main rectangle
-**Press <kbd>m</kbd> or select the rectangle tool**. Then click anywhere on the artboard, you will be presented with a window to add dimensions. 
+**Press <kbd>m</kbd> or select the rectangle tool**. Then click anywhere on the artboard, you will be presented with a window to add dimensions.
 
 <Image src="/static/images/blog/datepicker_rectangle-dimensions.png" width={738} height={492} />
 
@@ -44,7 +44,7 @@ This is such a powerful tool within Illustrator and is by far the quickest metho
 
 <Image src="/static/images/blog/datepicker_split-into-grid.png" width={738} height={492} />
 
-As the image demonstrates adding 6 rows and 7 columns allows both the width and height to be 40px. 
+As the image demonstrates adding 6 rows and 7 columns allows both the width and height to be 40px.
 
 ### Maintain the selection
 One thing that happens when you split into grid, is the amount of similar items it creates. So you will want to press <kbd>cmd</kbd> + <kbd>g</kbd>. This makes it easier to move in the future.
@@ -103,7 +103,7 @@ Press <kbd>t</kbd> or select the type tool and add individual type layers for th
 ### Aligning the days
 <Image src="/static/images/blog/datepicker_day-alignment.png" width={738} height={492} />
 
-Now you will want to align each of the days, again the most accurate way to do this would be to align to a key object like earlier. 
+Now you will want to align each of the days, again the most accurate way to do this would be to align to a key object like earlier.
 
 However, this time you will only need to select a day and one of the day number squares directly below it. After that, in the align panel, choose Align to Key Object. Then click your square to make it the key object. Finally to align the day use ‘Align Horizontal Center’.
 
@@ -112,7 +112,7 @@ However, this time you will only need to select a day and one of the day number 
 
 Now to add another rectangle to accommodate the current month and year, select the rectangle tool, click the artboard and add a rectangle with the size 280⨉32. Position this above the days.
 
-Press <kbd>t</kbd> or select the type tool and add the month and year. 
+Press <kbd>t</kbd> or select the type tool and add the month and year.
 
 ## Next and previous months
 With a datepicker, you will need to navigate months, more often than not. So you will need some arrows, which are reasonably easy to make in Illustrator.
@@ -130,7 +130,7 @@ Once you have selected the bottom left reference point your horizontal line shou
 > I use this method because I always find snapping points to be hit and miss. However, you can drag the lines to the correct locations and see how you go, but this technique removes any doubts.
 
 #### Joining and rotating the lines
-Now to make sure both of the lines are part of the same path. Using the direct selection tool (by pressing <kbd>a</kbd>) you can grab both points without selecting the whole path. 
+Now to make sure both of the lines are part of the same path. Using the direct selection tool (by pressing <kbd>a</kbd>) you can grab both points without selecting the whole path.
 
 <Image src="/static/images/blog/datepicker_join-path.png" width={738} height={492} />
 

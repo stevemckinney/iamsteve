@@ -30,15 +30,15 @@ I feel like my aim should be by the end of the year, it’s a slow process. Even
 I want to make it something valuable and a worthwhile download. Whether that be from the structure of the document, to how I've designed the UI kit. 
 
 ## Search results spacing bug fix
-This was a fix I’d put off through stubbornness. I had to make an awkward code change to accommodate the search pages. It’s probably a CMS bug, but I’m not sure. 
+This was a fix I’d put off through stubbornness. I had to make an awkward code change to accommodate the search pages. It’s probably a CMS bug, but I’m not sure.
 
 ## Better font loading with font face observer
 I’d started things off right with the development of this site. The page load times are pretty good. However, I want to improve this further, and fonts are a huge burden on page load.
 
-I've used the [fontfaceobserver](http://fontfaceobserver.com) technique. It makes sure the font is shown when it is downloaded and ready. It is the future for loading of fonts, from what I'm aware. 
+I've used the [fontfaceobserver](http://fontfaceobserver.com) technique. It makes sure the font is shown when it is downloaded and ready. It is the future for loading of fonts, from what I'm aware.
 
 ### Speedtracker to monitor
-Which leads on to [speedtracker](https://stevemckinney.github.io/speedtracker/), which I setup recently. The rendering is certainly an area for improvement. When I was looking at the filmstrip it’s 1.5s before anything is shown. 
+Which leads on to [speedtracker](https://stevemckinney.github.io/speedtracker/), which I setup recently. The rendering is certainly an area for improvement. When I was looking at the filmstrip it’s 1.5s before anything is shown.
 
 Some of that comes from server connection (as it’s testing from the US and the server is UK based) so it would be ideal to get that ~1s and under 1s for UK. Hopefully the font load change improves things. This will help keep track of that.
 
@@ -50,9 +50,9 @@ I’ve used Google’s PageSpeed lazy load module before. While it was as simple
 ## Two more hamburger alternatives
 Basecamp recently redesigned their website and Quartz is another I came across.
 
-[<img src="/static/images/blog/bottom-nav-basecamp.jpg">](https://basecamp.com)
+[<Image src="/static/images/blog/bottom-nav-basecamp.jpg" width={738} height={492} />](https://basecamp.com)
 
-[<img src="/static/images/blog/bottom-nav-quartz.jpg">](http://qz.com)
+[<Image src="/static/images/blog/bottom-nav-quartz.jpg" width={738} height={492} />](http://qz.com)
 
 Both are great navigation examples. [View all the examples in the post](/blog/websites-using-alternatives-to-the-hamburger).
 

@@ -1,13 +1,13 @@
 import Link from '@/components/Link'
 import Icon from '@/components/icon'
 
-export default function Pagination({ style = 'full', totalPages, currentPage }) {
+export default function Pagination({ stage = 'full', totalPages, currentPage }) {
   const newer = parseInt(currentPage) - 1 > 0
   const older = parseInt(currentPage) + 1 <= parseInt(totalPages)
 
   return (
     <>
-      {style === 'full' ? (
+      {stage === 'full' ? (
         <nav className="row center pagination pagination-offset">
           {newer ? (
             <Link href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`}>
@@ -51,7 +51,7 @@ export default function Pagination({ style = 'full', totalPages, currentPage }) 
         </nav>
       ) : (
         <>
-          {style === 'previous' || style === 'older' ? (
+          {stage === 'previous' || stage === 'older' ? (
             <>
               {older ? (
                 <Link href={`/blog/page/${currentPage + 1}`}>
