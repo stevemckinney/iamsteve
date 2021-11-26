@@ -37,11 +37,11 @@ blockquote {
       padding-right: 16px; }
 
   @include breakpoint($ab) {
-    background: url(/public/static/images/dash-neutral.svg) repeat-x -12px top,
-      url(/public/static/images/dash-neutral.svg) repeat-x -12px bottom;
+    background: url(/static/images/dash-neutral.svg) repeat-x -12px top,
+      url(/static/images/dash-neutral.svg) repeat-x -12px bottom;
 
     &:before {
-      content: url(/public/static/images/signpost.svg);
+      content: url(/static/images/signpost.svg);
       margin-left: (-98px - $line - $line);
       margin-right: $line*2; }
 
