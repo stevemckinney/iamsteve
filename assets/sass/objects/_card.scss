@@ -96,7 +96,7 @@
 .meta-item-last {
   @include breakpoint(1220px) {
     margin-top: $base-px;
-    background: url(/public/static/images/dash-neutral-l1.svg) repeat-x left top; } }
+    background: url(/static/images/dash-neutral-l1.svg) repeat-x left top; } }
 
 // More links eg: ‘Explore code ->’
 // ---------------------------
@@ -109,10 +109,10 @@
 // ---------------------------
 // .card-image {
 //   padding-bottom: 66.5492958%;
-// 
+//
 //   &, img {
 //     border-radius: $radius; }
-// 
+//
 //   img {
 //     position: absolute;
 //     top: 50%;
