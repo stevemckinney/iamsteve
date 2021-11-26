@@ -50,7 +50,8 @@
       font-size: 24px; } }
 
   > p,
-  > ul {
+  > ul
+  > .article-image {
     // 1px aligns back to baseline
     margin-bottom: $base-px + 1px;
 
@@ -121,7 +122,7 @@
   #{headings()},
   p, ul {
     & + img,
-    & + .image-loaded,
+    & + .article-image,
     & + .codepen-wide .cp_embed_wrapper,
     & + .cp_embed_wrapper {
       margin-top: $line; } }

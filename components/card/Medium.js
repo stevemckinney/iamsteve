@@ -8,8 +8,19 @@ import Category from '@/components/Category'
 import Placeholder from '@/components/placeholder'
 
 const Medium = ({ frontmatter }) => {
-  const { slug, date, title, summary, tags, id, theme, categories, images, medium, lastmod } =
-    frontmatter
+  const {
+    slug,
+    date,
+    title,
+    summary,
+    tags,
+    id,
+    theme,
+    categories,
+    images,
+    medium,
+    lastmod,
+  } = frontmatter
 
   const url = `/blog/${slug}`
   const imageColor = theme ? theme.toString() : `#f00`

@@ -32,6 +32,9 @@ const components = {
   search: Search,
   searchSmall: SearchSmall,
   time: Time,
+  website: Home,
+  technology: Code,
+  life: Home,
 }
 
 const Icon = ({ kind }) => {
