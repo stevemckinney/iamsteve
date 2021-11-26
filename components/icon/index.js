@@ -35,6 +35,7 @@ const components = {
   website: Home,
   technology: Code,
   life: Home,
+  terminal: Code,
 }
 
 const Icon = ({ kind }) => {
