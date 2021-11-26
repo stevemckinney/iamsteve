@@ -16,6 +16,10 @@ id: 87
 fileroot: "a-guide-to-vertical-rhythm"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 Vertical rhythm is the typographic practice, to create a vertical harmony between text, images and so on. On the web it’s quite difficult to achieve. Yet understanding what it is, with the aim to maintain it, you can improve your reading experience. If you’re aware of it, but have struggled to understand vertical rhythm, this post is for you. It will focus more on the why, rather than the how. So you come away with a better understanding.
 
 ## Highlights & takeaways
@@ -41,7 +45,9 @@ A vertical rhythm starts from a baseline. It’s the basis for everything from t
 ### What a baseline is
 A baseline in terms of vertical rhythm is essentially a vertical grid, everything must sit between the lines. For type it means the bottoms of letters—not descenders—sitting on the line. It’s easy to relate this to how you would use a horizontal grid. The difference being: a horizontal grid is built on a fixed number of columns, a baseline grows with the page.
 
-<Image src="/static/images/blog/vertical-rhythm-show.png" alt="Image demonstrating vertical rhythm">
+<div class="article-image">
+  <Image src="/static/images/blog/vertical-rhythm-show.png" alt="Image demonstrating vertical rhythm" width={738} height={492} />
+</div>
 
 Typically, you take a pixel value to base it on. You can use other units such as em, however, for this post I will be sticking with pixels.
 
@@ -49,7 +55,7 @@ Typically, you take a pixel value to base it on. You can use other units such as
 The way items will align to the baseline, is by spanning one or multiple lines. Like you can have items span multiple columns, in a traditional grid.
 
 <figure>
-<Image src="/static/images/blog/vertical-rhythm-sizes.png">
+<Image src="/static/images/blog/vertical-rhythm-sizes.png" width={738} height={492} />
 <figcaption>Here’s a demonstration of a couple of text sizes on a 12px baseline. With a line height that is 1.5 times the font size.</figcaption>
 </figure>
 
@@ -166,7 +172,6 @@ It takes more effort to maintain, if you’re the sole content creator on the we
 
 ## An example CodePen
 <p data-height="356" data-theme-id="13022" data-slug-hash="QjWowq" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/QjWowq/'>QjWowq</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Finishing
 This is a big topic for me to write about. It’s generally everything I’ve learnt being shared that I know about vertical rhythm. I personally haven’t maintained it on this website and it’s long overdue a redesign. The principles of vertical rhythm are something I try to use through out my designs, and I find it  beneficial.

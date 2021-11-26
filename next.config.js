@@ -6,7 +6,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer({
   sassOptions: {
-    includePaths: [path.join(__dirname, './node_modules/breakpoint-sass/stylesheets/')],
+    includePaths: [
+      path.join(__dirname, './node_modules/breakpoint-sass/stylesheets/'),
+      path.join(__dirname, 'css'),
+    ],
   },
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],

@@ -16,6 +16,10 @@ id: 72
 fileroot: "horizontal-scrolling-responsive-menu"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 I’ve been wondering for a while now about an alternative approach to responsive navigation. Something which doesn’t involve the ‘hamburger’ toggle icon. It’s tricky, because we aren’t afforded the same space native apps get.
 
 Although I’m certainly not the first to use this idea, it has been used in early versions of the Facebook app and it’s being used on some pages on the Apple website. It’s a pattern that could be an ideal replacement for the ‘hamburger’ menu. So in this post the aim is to use only CSS for a horizontal scrolling navigation.
@@ -26,7 +30,7 @@ What made the ‘hamburger’ menu so successful was how discrete and easy it wa
 ### Generally fixed elements because they require two taps
 The way that Mobile Safari on iOS works is terrible for anything fixed towards the bottom of the viewport. Centralising it in the viewport to the left or right can obscure content, which in turn will be equally as annoying. It then comes down to which is more inconvenient for the user; as there are some [good examples for using bottom navigation on a website](/blog/websites-using-alternatives-to-the-hamburger).
 
-### Anything list like 
+### Anything list like
 A list like menu can get in the way of the page itself. Although it’s highly accessible from the off, however, I think you can push the more valuable content, you would want the visitor to see initially. Especially on a site where you want the content to be consumed, it could become tedious to scroll past navigation every single you tap a link.
 
 ### Tap/click to bring you down to a menu
@@ -45,7 +49,7 @@ The two properties that do the work here are `white-space: nowrap` and `overflow
 /*
 [1]: All items a forced onto a single line, causing the overflow when necessary.
 [2]: Automatic overflow means a scroll bar won’t be present if it isn’t needed
-[3]: Make it smooth scrolling on iOS devices before 
+[3]: Make it smooth scrolling on iOS devices before
 [4]: Hide the ugly scrollbars in Edge until the scrollable area is hovered
 [5]: Hide the scroll bar in WebKit browsers
 */
@@ -60,9 +64,9 @@ The two properties that do the work here are `white-space: nowrap` and `overflow
   display: none; }
 ```
 
-It's important to use the `-webkit-overflow-scrolling` as this adds momentum and ease of use to scrolling areas. However, as of [Safari 13 this is the default behaviour](https://developer.apple.com/documentation/safari_release_notes/safari_13_release_notes). Android devices by default are easier to scroll on, so you don’t need to worry here. `-ms-overflow-style: -ms-autohiding-scrollbar` allows users of IE 10, 11 and Edge have a scrollbar to use on hover. 
+It's important to use the `-webkit-overflow-scrolling` as this adds momentum and ease of use to scrolling areas. However, as of [Safari 13 this is the default behaviour](https://developer.apple.com/documentation/safari_release_notes/safari_13_release_notes). Android devices by default are easier to scroll on, so you don’t need to worry here. `-ms-overflow-style: -ms-autohiding-scrollbar` allows users of IE 10, 11 and Edge have a scrollbar to use on hover.
 
-Next, you may want to hide the scrollbar completely. You can do this by targeting the `::-webkit-scrollbar` pseudo element and improve the appearance further for Windows Chrome users. However, from some brief testing on Windows, it can make it trickier to scroll. I believe this can depend on your mouse though. 
+Next, you may want to hide the scrollbar completely. You can do this by targeting the `::-webkit-scrollbar` pseudo element and improve the appearance further for Windows Chrome users. However, from some brief testing on Windows, it can make it trickier to scroll. I believe this can depend on your mouse though.
 
 Finally, you may be wondering about Firefox, it seems there isn’t a way at the time of writing.
 
@@ -83,11 +87,12 @@ Finally, you may be wondering about Firefox, it seems there isn’t a way at the
 > Depending on which area you want to scroll, you can apply the styles to the header or navigation.
 
 ### Use cases
-<div class="codepen-wide"><p data-height="456" data-theme-id="31700" data-slug-hash="yNBNKa" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Horizontal scroll navigation" class="codepen">See the Pen <a href="https://codepen.io/stevemckinney/pen/yNBNKa/">Horizontal scroll navigation</a> by Steve (<a href="https://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script></div>
+<div className="codepen-wide">
+  <p data-height="456" data-theme-id="31700" data-slug-hash="yNBNKa" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Horizontal scroll navigation" className="codepen">See the Pen <a href="https://codepen.io/stevemckinney/pen/yNBNKa/">Horizontal scroll navigation</a> by Steve (<a href="https://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+</div>
 
 ## Make sure you don’t have a width set on the items
-An area that may catch you out with this approach is applying a percentage `width` to the items. If you need to make sure something always has a percentage `width`, try using `min-width` instead. Using a percentage `width` always will be a percentage of the visible area rather than what overflows. 
+An area that may catch you out with this approach is applying a percentage `width` to the items. If you need to make sure something always has a percentage `width`, try using `min-width` instead. Using a percentage `width` always will be a percentage of the visible area rather than what overflows.
 
 ## The downsides
 It’s quite a simple solution in reality, although with every solution there are downsides, I’ve listed the ones I can think of below. I’ve not seen any sources testing a navigation like this, which is why I’m listing areas for concern.
@@ -110,10 +115,10 @@ Once Flickity is implemented, you can retain the `.scroll` CSS and add to that t
 
 As I mentioned earlier, I said to use this cautiously. However, in combination with Flickity you can hide the scrollbar without worry.
 
-> Edit: I have since written a post about [enhancing horizontal scrolling with flickity](/blog/enhancing-horizontal-scrolling-with-flickity-js). 
+> Edit: I have since written a post about [enhancing horizontal scrolling with flickity](/blog/enhancing-horizontal-scrolling-with-flickity-js).
 
 ### Using flexbox
 You may also be interested in an [alternative approach with flexbox](/blog/using-flexbox-for-horizontal-scrolling-navigation). The main differences between using an `inline-block` approach versus a `flex` approach is the code tends to be a little tidier.
 
 ## What do you think?
-This is a reasonable way of displaying navigation on the basis of what you have to compete with across devices. Have you used anything like this in recent projects? I'd like to hear on [twitter](http://twitter.com/irsteve). 
+This is a reasonable way of displaying navigation on the basis of what you have to compete with across devices. Have you used anything like this in recent projects? I'd like to hear on [twitter](http://twitter.com/irsteve).

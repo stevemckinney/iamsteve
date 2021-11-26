@@ -82,7 +82,7 @@
       width: calc(100% - 32px); } }
 
   // Yep
-  > *:not(figure):not(img):not(.code-block),
+  > *:not(figure):not(.article-image):not(img):not(.code-block),
   > .footnotes,
   figcaption {
     padding-right: $line*2;
@@ -121,7 +121,8 @@
 
   // Images following headings, lists and paragraphs
   :is(#{headings()}, p, ul) + :is(img, .article-image, .codepen-wide .cp_embed_wrapper, .cp_embed_wrapper),
-  .article-image + p {
+  .article-image + p,
+  > figure + p {
     margin-top: $line; }
 
   // For .fragment
@@ -219,6 +220,7 @@
 // Figures
 // ---------------------------
 .entry-content figure {
+  display: flex;
   padding-top: $base-px;
   position: relative;
   text-align: left; }
@@ -256,6 +258,18 @@
 
 // Specific pieces of content
 // ---------------------------
+
+// Fix next image for the way images work round here
+.entry-content figure > span {
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  @include breakpoint($cd) {
+    max-width: 738px;
+    border-radius: $radius;
+    position: relative;
+    left: -$line*2; } }
+
 .code-block pre {
   @include breakpoint($cd) {
     border-radius: $radius; } }

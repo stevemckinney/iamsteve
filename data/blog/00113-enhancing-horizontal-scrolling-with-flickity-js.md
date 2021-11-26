@@ -8,11 +8,16 @@ theme: "#fffcf4"
 tags: ["Code"]
 categories: ["Code"]
 images: ["/static/images/blog/flickity-navigation.png"]
-large: "/static/images/blog/flickity-navigation.png"ogImage: "/assets/og/cover.jpg"
+large: "/static/images/blog/flickity-navigation.png"
+ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 113
 fileroot: "enhancing-horizontal-scrolling-with-flickity-js"
 ---
+
+import Script from 'next/script'
+
+<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 I first wrote a tutorial little while back on [horizontal scrolling navigation](/blog/horizontal-scrolling-responsive-menu), with the intention of accommodating **only** mobile devices. As with every device, I have come across, the usability of horizontal scrolling areas is good.
 
@@ -22,7 +27,7 @@ One thing I mentioned within the post was how poor the behaviour is on Windows. 
 [Skip to the examples](#examples).
 
 ## Keep the small screen performance
-With touch based devices, as far as I'm aware they don't display scroll bars by default or impede usability for horizontal scrolling areas. So in the case of navigation, it would be ideal to exclude the flickity functionality for touch devices. Less JavaScript running will keep performance up too. 
+With touch based devices, as far as I'm aware they don't display scroll bars by default or impede usability for horizontal scrolling areas. So in the case of navigation, it would be ideal to exclude the flickity functionality for touch devices. Less JavaScript running will keep performance up too.
 
 ## HTML
 The basis for the HTML is your items need a container, as to which we apply the CSS to stop the elements from breaking into new rows. The contents of your items isn’t a problem.
@@ -53,11 +58,11 @@ We have additional extras in `-ms-overflow-style` to have scrollbars autohide in
 ## CSS required for flickity
 Flickity has some default CSS needed to make things work well. [It's available from the website](http://flickity.metafizzy.co/), however, I've trimmed it down to what's necessary and removed `overflow: hidden` from `.flickity-viewport`. It prevents `box-shadow` from being cut off for a later example.
 
-```{.language-css .code-tall}
+```css
 .flickity-enabled {
   position: relative; }
 
-.flickity-enabled:focus { 
+.flickity-enabled:focus {
   outline: none; }
 
 .flickity-viewport {
@@ -113,7 +118,7 @@ var flickity = new Flickity( scroll, {
 If you'd like to exclude it for touch devices, it is possible. The reason you would want to do this is because the usability and behaviour are good for those devices already. It also excludes the JavaScript from needing to run, so you get the performance gains.
 
 ### With Modernizr
-It’s easiest with Modernizr; I would recommend using a trimmed down version to get the touch support. As it ends up being a small amount of JavaScript. 
+It’s easiest with Modernizr; I would recommend using a trimmed down version to get the touch support. As it ends up being a small amount of JavaScript.
 
 ```javascript
 // Could also be an older version of modernizr so replace with Modernizr.touch
@@ -183,7 +188,7 @@ all.addEventListener('click', function() {
 ```
 
 #### New example with flickity
-You build upon code from before [using the destroy example from the documentation](http://flickity.metafizzy.co/api.html#destroy). 
+You build upon code from before [using the destroy example from the documentation](http://flickity.metafizzy.co/api.html#destroy).
 
 #### The initial setup
 Similarly to before, we need to initialise flickity. However this time, as we need to destroy it to change our layout, we assign our options to a variable, for later reuse.
@@ -206,13 +211,13 @@ if (!is_touch_device())
 ```
 
 #### Additions to the click event
-Next is to modify the click event. We add a conditional that checks `isFlickity` is true to destroy it, otherwise initialise. Just below that conditional is redefining `isFlickity` to the opposite of what it is currently. 
+Next is to modify the click event. We add a conditional that checks `isFlickity` is true to destroy it, otherwise initialise. Just below that conditional is redefining `isFlickity` to the opposite of what it is currently.
 
 ```javascript
 all.addEventListener('click', function() {
   this.classList.toggle('active');
   items.classList.toggle('items-columns');
-  
+
   if (!is_touch_device())
   {
     if (isFlickity) flickity.destroy();
@@ -226,7 +231,7 @@ all.addEventListener('click', function() {
 #### Putting all the JavaScript together
 For easy reference the whole code. You’ll notice that the options and initialisation are in a conditional to check for touch devices. Remove this if you want it everywhere.
 
-```{.language-javascript .code-tall}
+```javascript
 // Select initial elements
 var all = document.getElementById('show-all');
 var items = document.getElementById('items');
@@ -254,7 +259,7 @@ if (!is_touch_device())
 all.addEventListener('click', function() {
   this.classList.toggle('active');
   items.classList.toggle('items-columns');
-  
+
   if (!is_touch_device())
   {
     if (isFlickity) flickity.destroy();
