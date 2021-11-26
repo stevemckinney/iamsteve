@@ -118,7 +118,7 @@ Press <kbd>t</kbd> or select the type tool and add the month and year.
 With a datepicker, you will need to navigate months, more often than not. So you will need some arrows, which are reasonably easy to make in Illustrator.
 
 ### Making an arrow
-Press <kbd>\</kbd> or select the Line Segment Tool. Click on your artboard and set the length to be 12px with a 0° angle. Repeat this process, and make another line that has a 90° angle.
+Press <kbd>\\</kbd> or select the Line Segment Tool. Click on your artboard and set the length to be 12px with a 0° angle. Repeat this process, and make another line that has a 90° angle.
 
 #### Choose a reference point
 Now we need the correct alignment. To do this most accurately, in this particular case you need to select the bottom left reference point. To do this open the transform panel by going to Window > Transform.

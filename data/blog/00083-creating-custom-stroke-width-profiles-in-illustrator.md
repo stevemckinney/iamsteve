@@ -19,14 +19,11 @@ fileroot: "creating-custom-stroke-width-profiles-in-illustrator"
 Illustrator has a fair variety of default width profiles; however you may find yourself wanting to tweak them slightly. In my case, I needed to modify one for creating some eyelashes. It’s not apparent how to do this. So it makes for a good post to explain for anyone having a similar problem.
 
 ## Draw a line
-Select the line tool or press <kbd>\</kbd> and draw out a line of any width.
+Select the line tool or press <kbd>\\</kbd> and draw out a line of any width.
 
 ## Adjust the stroke width
 <figure>
-<img data-src="/static/images/blog/illustrator-stroke-width-tool@2x1.png" class="lazyload">
-<noscript>
 <Image src="/static/images/blog/illustrator-stroke-width-tool@2x1.png" width={738} height={492} />
-</noscript>
 <figcaption>
 Press <kbd>shift</kbd> <kbd>w</kbd> or select the width tool.
 </figcaption>
@@ -39,10 +36,7 @@ With the width tool, there are a few ways, to interact with it, to adjust the wi
 - <kbd>alt</kbd> click and drag, to adjust one side of the path
 
 <figure>
-<img data-src="/static/images/blog/illustrator-stroke-width-example@2x.png" class="lazyload">
-<noscript>
 <Image src="/static/images/blog/illustrator-stroke-width-example@2x.png" width={738} height={492} />
-</noscript>
 <figcaption>
 Your line should end up something like this.
 </figcaption>
@@ -51,19 +45,13 @@ Your line should end up something like this.
 ## Smoothing the line
 Sometimes you may want a smoother line than what the width tool offers from an adjustment. Smoothing can be done by clicking and dragging the original width point you put down.
 
-<div>
-<img data-src="/static/images/blog/width-smoothing.gif" alt="Dragging the width point along to get a smoother line" class="lazyload">
-<noscript>
+<div class="article-image">
 <Image src="/static/images/blog/width-smoothing.gif" alt="Dragging the width point along to get a smoother line" width={738} height={492} />
-</noscript>
 </div>
 
 ## Adding it to your presets
 <figure>
-<img data-src="/static/images/blog/width-adding-preset.gif" class="lazyload">
-<noscript>
 <Image src="/static/images/blog/width-adding-preset.gif" width={738} height={492} />
-</noscript>
 <figcaption>
 Add the width profile to your presets for later reuse.
 </figcaption>
@@ -75,10 +63,7 @@ To add it to your presets, with your stroke selected. You should see the stroke 
 You can draw a path and change the variable width, and it appears to go against the way you want it.
 
 <figure>
-<img data-src="/static/images/blog/flipping.gif" class="lazyload">
-<noscript>
 <Image src="/static/images/blog/flipping.gif" width={738} height={492} />
-</noscript>
 <figcaption>
 You can flip the variable width profile on either axis.
 </figcaption>
@@ -91,10 +76,7 @@ Customising can be the tricky part, as the presets can be a little awkward to ad
 
 ### Highlight the point
 <figure>
-<img data-src="/static/images/blog/adjust-existing.gif" class="lazyload">
-<noscript>
 <Image src="/static/images/blog/adjust-existing.gif" width={738} height={492} />
-</noscript>
 <figcaption>
 Choose your existing width profile. Then highlight the points and you can adjust, remove or add more points as necessary.
 </figcaption>
@@ -104,12 +86,11 @@ Choose your existing width profile. Then highlight the points and you can adjust
 Follow the same process as earlier to save and then you’re able to use it for everything else.
 
 ## Stroke the inside or outside of unclosed paths
-I feel like this should be easier, as it wasn’t immediately apparent to me. The ability to stroke the inside or outside of an unclosed path. The same techniques mentioned in this post is used, to achieve this. 
+I feel like this should be easier, as it wasn’t immediately apparent to me. The ability to stroke the inside or outside of an unclosed path. The same techniques mentioned in this post is used, to achieve this.
 
-<img data-src="/static/images/blog/adjust-width-one-side.png" class="lazyload"  alt="Demonstrating adjusting one side of the path with the width tool">
-<noscript>
-<Image src="/static/images/blog/adjust-width-one-side.png" width={738} height={492} />
-</noscript>
+<div class="article-image">
+  <Image src="/static/images/blog/adjust-width-one-side.png" width={738} height={492} />
+</div>
 
 ### Steps
 - Select the width tool <kbd>shift</kbd> <kbd>w</kbd>
