@@ -7,7 +7,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import Subscribe from '@/components/Subscribe'
 import Posts from '@/layouts/Posts'
-import Icon from '@/components/icon'
+import Icon from '@/components/icon/index.js'
 
 // images
 import Image from 'next/image'

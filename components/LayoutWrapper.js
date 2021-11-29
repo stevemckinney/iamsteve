@@ -9,7 +9,7 @@ import Link from './Link'
 import Subscribe from '@/components/Subscribe'
 import Footer from './Footer'
 import Tabbar from './Tabbar'
-import Icon from '@/components/icon'
+import Icon from '@/components/icon/index.js'
 import Social from '@/components/Social'
 
 // image

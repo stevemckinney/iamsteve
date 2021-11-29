@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import Tag from '@/components/Tag'
-import Placeholder from '@/components/placeholder'
+import Placeholder from '@/components/placeholder/index.js'
 
 const Small = ({ frontmatter }) => {
   const {

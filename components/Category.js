@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import kebabCase from '@/lib/utils/kebabCase'
-import Icon from '@/components/icon'
+import Icon from '@/components/icon/index.js'
 
 const Category = ({ text, styling = 'warm secondary-hover', icon }) => {
   return (

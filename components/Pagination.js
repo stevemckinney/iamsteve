@@ -1,5 +1,5 @@
 import Link from '@/components/Link'
-import Icon from '@/components/icon'
+import Icon from '@/components/icon/index.js'
 
 export default function Pagination({ stage = 'full', totalPages, currentPage }) {
   const newer = parseInt(currentPage) - 1 > 0

@@ -2,10 +2,10 @@ import formatDate from '@/lib/utils/formatDate'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Icon from '@/components/icon'
+import Icon from '@/components/icon/index.js'
 import Category from '@/components/Category'
 
-import Placeholder from '@/components/placeholder'
+import Placeholder from '@/components/placeholder/index.js'
 
 const Medium = ({ frontmatter }) => {
   const {
