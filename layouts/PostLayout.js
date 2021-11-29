@@ -53,7 +53,7 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
       <ScrollTopAndComment />
 
       <div
-        className="pt4 pb4 pt6-b pb6-b pt7-d pb8-d featured-image entry-image"
+        className="pt4 pb4 pt6-b pb6-b pt7-d pb8-d flex center featured-image entry-image"
         role="presentation"
         style={{ backgroundColor: theme.toString() }}
       >
@@ -66,8 +66,8 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
                   className="radius"
                   alt=""
                   role="presentation"
-                  width={378}
-                  height={252}
+                  width={744}
+                  height={492}
                   key={image}
                 />
               ))}
@@ -85,7 +85,7 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
       </div>
 
       <article className="entry-content pt6 pb6">
-        <p className="">
+        <p className="f2-l">
           Page views: <PageViews slug={slug} />
         </p>
         <header className="entry-header relative pb4 p0-d">
