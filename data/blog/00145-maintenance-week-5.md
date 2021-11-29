@@ -23,15 +23,15 @@ So while it’s not a post that directly gives value, it helps me keep on top of
 ## Focusing on the newsletter
 It had become clear I wasn’t getting any closer to completing a download to go with subscribing to the newsletter. I spent this week working on this as much as I could.
 
-<figure><Image src="/static/images/blog/maintenance-week-color.png" width={738} height={492} /><figcaption>Colour and icons</figcaption></figure>
-<figure><Image src="/static/images/blog/maintenance-week-breakdown.png" width={738} height={492} /><figcaption>Input fields make up the majority of forms, in slightly differing variations</figcaption></figure>
-<figure><Image src="/static/images/blog/maintenance-week-state.png" width={738} height={492} /><figcaption>Those fields have an individual state based on validation or focus</figcaption></figure>
-<figure><Image src="/static/images/blog/maintenance-week-checkbox.png" width={738} height={492} /><figcaption>Checkbox, radio & switch styles</figcaption></figure>
-<figure><Image src="/static/images/blog/maintenance-week-button.png" width={738} height={492} /><figcaption>Buttons with variety</figcaption></figure>
+<figure><Image src="/static/images/blog/maintenance-week-color.png" width={738} height={554} /><figcaption>Colour and icons</figcaption></figure>
+<figure><Image src="/static/images/blog/maintenance-week-breakdown.png" width={738} height={554} /><figcaption>Input fields make up the majority of forms, in slightly differing variations</figcaption></figure>
+<figure><Image src="/static/images/blog/maintenance-week-state.png" width={738} height={554} /><figcaption>Those fields have an individual state based on validation or focus</figcaption></figure>
+<figure><Image src="/static/images/blog/maintenance-week-checkbox.png" width={738} height={554} /><figcaption>Checkbox, radio & switch styles</figcaption></figure>
+<figure><Image src="/static/images/blog/maintenance-week-button.png" width={738} height={554} /><figcaption>Buttons with variety</figcaption></figure>
 
 Working on it infrequently was getting nowhere fast. As a subscriber it’s important that I repay that. So I am working on a form UI kit, it will be both Illustrator ready, and coded up for you to use. It will use much of the experience I’ve had with forms over the years to get a consistent style everywhere.
 
-This is something I expect to expand upon over time, so I’m making it part of a git repository to keep track of what changes. 
+This is something I expect to expand upon over time, so I’m making it part of a git repository to keep track of what changes.
 
 ## Small layout change to entries
 I’ve moved the titles below the images, I feel like this is a better balance to the page. I want to adjust the title/image area quite a lot over the coming weeks to try add a more editorial/interesting spin on the layout.

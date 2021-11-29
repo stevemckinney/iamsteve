@@ -16,6 +16,10 @@ id: 165
 fileroot: "search-overlay-with-smooth-reveal-animation"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 A common part of a website is the ability to search. Depending on how important search is to your website can define much of how it looks and how it's prioritised in the design. In this post I want to show you how to create a search which appears with a smooth transition on the click/tap of a button.
 
 ## What you’re making
@@ -24,7 +28,6 @@ If you’d like to grab any of the code and skip the post feel free to browse th
 <div class="codepen-wide">
 <p data-height="520" data-theme-id="23161" data-slug-hash="bab51a2f0032bd24e33f24b48ca39acb" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Search overlay" class="codepen">See the Pen <a href="https://codepen.io/stevemckinney/pen/bab51a2f0032bd24e33f24b48ca39acb/">Search overlay</a> by Steve (<a href="https://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 </div>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 All code and design files can be downloaded for [being part of my list](#subscribe).
 
@@ -32,23 +35,29 @@ All code and design files can be downloaded for [being part of my list](#subscri
 Here’s the design you’ll be making. It’s quite simple, so I have avoided a walk through as the designs themselves serve as a place to explain.
 
 ### Search overlay
-<Image src="/static/images/blog/search-reveal-large@2x.png" width={896} height={504} />
+<div className="article-image">
+  <Image src="/static/images/blog/search-reveal-large@2x.png" width={896} height={504} />
+</div>
 
-Overall, the design aims to visually grab the attention. It makes use of the screen size available through the large input and icons. I wanted the form to appear ‘clickable’ through having clearly a defined input. As you see some which do away with the defined field approach. 
+Overall, the design aims to visually grab the attention. It makes use of the screen size available through the large input and icons. I wanted the form to appear ‘clickable’ through having clearly a defined input. As you see some which do away with the defined field approach.
 
 There are a couple of shadows applied to the search field itself. A smaller shadow to add intensity to the bottom, and another with larger radius to make it feel more realistic. The shadow is a darker version of the background which makes things feel intentional.
 
 The background has a subtle gradient, the aim is for it to have a sense of depth as it transitions over the existing background.
 
 ### Small screen
-<Image src="/static/images/blog/search-reveal-small@2x.png" width={738} height={631} />
+<div className="article-image">
+  <Image src="/static/images/blog/search-reveal-small@2x.png" width={738} height={631} />
+</div>
 
-For smaller screens, I've opted to move the search to the bottom of the screen. This means it’s easier to reach, as you can focus on the input with JavaScript, but it doesn’t always bring up the keyboard. 
+For smaller screens, I've opted to move the search to the bottom of the screen. This means it’s easier to reach, as you can focus on the input with JavaScript, but it doesn’t always bring up the keyboard.
 
 Things are sized more according to the screen size, with the icons and form field. Aside from them, nothing else has changed.
 
 ## Icon setup
-<Image src="/static/images/blog/search-reveal-icons@2x.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/search-reveal-icons@2x.png" width={738} height={492} />
+</div>
 
 The icons are designed on at 32px x 32px and scaled down to 24px x 24px for the small screen design. [You can download the two icons used](https://www.dropbox.com/s/jgm07uywlt18hbh/design-code-search-overlay-icons.ai?dl=0) for your design.
 
@@ -69,10 +78,10 @@ The button is an anchor tag, with an SVG inside. This allows us to style and reu
 
 The class names `button` and `button-open` will be used for both styling and JavaScript later in the post. The `href` should ideally link to a fallback search page, should JavaScript fail or be disabled.
 
-> You may notice the icon has several class names applied to it. I've detailed my process about [how I use SVG for icons before](/blog/lets-make-a-better-icon-system-with-svg). 
+> You may notice the icon has several class names applied to it. I‘ve detailed my process about [how I use SVG for icons before](/blog/lets-make-a-better-icon-system-with-svg).
 
 ### Overlay
-The overlay itself is a `<div>` tag round a form. Each element inside the form has an appropriate class to be used for styling. 
+The overlay itself is a `<div>` tag round a form. Each element inside the form has an appropriate class to be used for styling.
 
 ```markup
 <div class="overlay hiding">
@@ -80,12 +89,12 @@ The overlay itself is a `<div>` tag round a form. Each element inside the form h
 </div>
 ```
 
-You will notice the overlay has two class names. `overlay` and `hiding` all general styling will be applied to `.overlay`. `.hiding` will have styles which hide the element and will be transitioned to `.showing`. 
+You will notice the overlay has two class names. `overlay` and `hiding` all general styling will be applied to `.overlay`. `.hiding` will have styles which hide the element and will be transitioned to `.showing`.
 
 This approach helps keep our CSS more maintainable. As when you switch class names there is less to override.
 
 ### Close button
-Similar to the open button, the icon and class name are different. 
+Similar to the open button, the icon and class name are different.
 
 ```markup
 <button class="button button-close">
@@ -112,9 +121,9 @@ The form markup should be placed inside the overlay `<div>`.
 </form>
 ```
 
-The form markup isn't complex and each individual element has a relevant class name. Which will be used for styling later. The icon is the same one used earlier (ideally the repetition would be avoided). 
+The form markup isn't complex and each individual element has a relevant class name. Which will be used for styling later. The icon is the same one used earlier (ideally the repetition would be avoided).
 
-> You should be able to adjust the form to one that works with your CMS. 
+> You should be able to adjust the form to one that works with your CMS.
 
 ## Sass: visual style and layout
 This is where it gets trickier, there's quite a bit to get through for the styling. This bit focuses purely on getting the layout and visual style in place. I’m going to be writing the CSS using Sass, though you can [get the compiled code](https://codepen.io/stevemckinney/pen/bab51a2f0032bd24e33f24b48ca39acb) from the Pen.
@@ -200,7 +209,7 @@ Each icon used is the same size, starting at 24px for smaller screens and then i
   width: 24px;
   height: 24px;
   transition: .3s ease-out;
-  
+
   @media (min-width: $breakpoint) {
     width: 32px;
     height: 32px; } }
@@ -235,11 +244,11 @@ This is the reason you apply two class names to each button. For each button I w
   cursor: pointer;
   color: $primary;
   transition: .3s ease-out;
-  
+
   &:hover,
-  &:focus { 
+  &:focus {
     transform: scale(1.125);
-    
+
     .icon {
       transform: scale(1.25); } } }
 ```
@@ -258,26 +267,26 @@ This is the means for opening the search overlay. In JavaScript shortly you will
   justify-content: center;
   align-items: center;
   align-content: center;
-  
+
   // Sizing
   width: 96px;
   height: 96px;
   border-radius: 48px;
-  
+
   // Style
   background-color: $white;
   box-shadow:
     0 1px 1px rgba($background-3, .6),
     0 3px 3px rgba($background-3, .4),
     0 8px 16px rgba($background-3, .3);
-  
+
   &:hover,
   &:focus {
     box-shadow:
       0 2px 2px rgba($background-3, .4),
       0 4px 4px rgba($background-3, .3),
       0 12px 32px rgba($background-3, .3); } }
-``` 
+```
 
 Along with the icon transition earlier the `box-shadow` is also being made to appear as if the element is becoming slightly raised. It’s a subtle tweak to show depth.
 
@@ -309,7 +318,7 @@ The form element itself, serves as a container to limit the width of the input a
 
 Adding `position: relative` will make sure the button is anchored to the form element. At smaller screen sizes you want the form to fill the viewport.
 
-### Search input 
+### Search input
 There’s quite a bit of CSS applied to this element, the majority is related to visual style and sizing, rather than alignment.
 
 ```sass
@@ -319,7 +328,7 @@ There’s quite a bit of CSS applied to this element, the majority is related to
   // Sizing
   padding: 26px ($base-px*2) 25px; // 72px height
   width: 100%;
-  
+
   // Style
   font-size: 18px;
   font-weight: 600;
@@ -333,7 +342,7 @@ There’s quite a bit of CSS applied to this element, the majority is related to
   @media (min-width: $breakpoint) {
     // Sizing
     padding: 29px ($base-px*6); // 96px height
-    
+
     // Style
     font-size: 32px;
     border-radius: 30em; } }
@@ -357,17 +366,17 @@ The overlay is fixed to the viewport and everything again is positioned centrall
   justify-content: center;
   align-items: flex-end;
   align-content: flex-end;
-  
+
   // Positioning
   position: fixed;
   z-index: 3;
   left: 0;
   width: 100%;
   height: 100%;
-  
+
   // Style
   background-image: linear-gradient(to top, $background, $background-2);
-  
+
   @media (min-width: $breakpoint) {
     align-items: center;
     align-content: center; } }
@@ -391,25 +400,25 @@ The initial state the form is hidden. That’s why the `class` on the overlay `<
   max-height: 0;
   opacity: 0;
   bottom: 0;
-  
+
   // This transition happens when the close button is clicked
   // and should be faster than the .showing state
   transition:
     max-height .3s .2s cubic-bezier(0.215, 0.61, 0.355, 1),
     opacity .6s ease-out;
-  
+
   // When hiding inner elements should be invisible too
   .button-search,
   .input-search {
     opacity: 0; }
-  
+
   // Offset the button
   .button-search {
     transform: translate3d(0, 33%, 0); }
 
-  // Offset the input more 
+  // Offset the input more
   .input-search {
-    transform: translate3d(0, 50%, 0); } 
+    transform: translate3d(0, 50%, 0); }
 ```
 
 ### Hide the contents
@@ -432,7 +441,7 @@ When `.button-open` is clicked this class name will be applied to the overlay.
 .showing {
   max-height: 100vh;
   top: 0;
-  
+
   // This happens when the open button is clicked
   // max-height transition is to appear more subtle
   transition:
@@ -440,12 +449,12 @@ When `.button-open` is clicked this class name will be applied to the overlay.
     opacity .8s ease-out; }
 ```
 
-With the showing state the `max-height` ensures the height is transitioned and the `top` position ensures the overlay looks like it comes from the top. Working in combination with the hidden state when the showing class is swapped for hiding it will look like it’s going off the bottom of the screen. 
+With the showing state the `max-height` ensures the height is transitioned and the `top` position ensures the overlay looks like it comes from the top. Working in combination with the hidden state when the showing class is swapped for hiding it will look like it’s going off the bottom of the screen.
 
 This is the good thing about removing class names through JavaScript—which will be covered shortly. You also don’t have to write as much CSS. So you don’t need to have `opacity: 1` and you don’t need to change the `transform` on the inner elements. This is because those styles don’t exist once the class name is removed.
 
 ### Transitioning inner elements
-Finally, once the overlay opens, you want the form elements to transition in slightly later. This gives a more intentional appearance. 
+Finally, once the overlay opens, you want the form elements to transition in slightly later. This gives a more intentional appearance.
 
 ```sass
 .button-search {
@@ -455,14 +464,14 @@ Finally, once the overlay opens, you want the form elements to transition in sli
   transition: .8s .3s ease-out; }
 ```
 
-I’ve chosen to make the button have a quicker overall transition, but a longer delay. This gives the search input a chance to appear. 
+I’ve chosen to make the button have a quicker overall transition, but a longer delay. This gives the search input a chance to appear.
 
 The search input is delayed by `.3` seconds, which is inline with the `max-height` transition. The aim is so it begins to happen, as that the `max-height` transition is ending.
 
 ## JavaScript
 Here’s all the JavaScript to make this function. It’s broken down in to four parts. The variables which select the elements you need throughout. Two functions, the first, for adding focus to the search and the second, which will toggle the visibility. The event listeners to watch for clicks on the buttons.
 
-```{ .language-js .code-tall }
+```javascript
 // Keep search toggling out of the global scope
 (function (window, document, undefined) {
   // Variables
@@ -470,7 +479,7 @@ Here’s all the JavaScript to make this function. It’s broken down in to four
   var close = document.querySelector('.button-close');
   var overlay = document.querySelector('.overlay');
   var search = document.querySelector('.input-search');
-  
+
   // Focus on an element
   var focusOn = function(element) {
     // Only focus on the element if it contains the relevant
@@ -484,24 +493,24 @@ Here’s all the JavaScript to make this function. It’s broken down in to four
       element.blur();
     }
   };
-  
+
   // Toggles a set of class names on an element
   var toggler = function() {
     // Add the active class to the element clicked/tapped
     // So if necessary the style can be changed
     this.classList.toggle('active');
-    
+
     // Toggle the classes which set off the transition
     overlay.classList.toggle('hiding');
     overlay.classList.toggle('showing');
-    
+
     // Once the overlay’s transition ends focus the search field
     overlay.addEventListener('transitionend', focusOn.bind(null, search), false);
-    
+
     // Prevent the clicks from navigating away
     return false;
   };
-  
+
   // Add the event listener to the toggle
   open.addEventListener('click', toggler, false);
   close.addEventListener('click', toggler, false);
@@ -549,7 +558,7 @@ Next, you want to assign click event listeners to both of the buttons.
   var close = document.querySelector('.button-close');
   var overlay = document.querySelector('.overlay');
   var field = document.querySelector('.input-search');
-  
+
   // Add the event listener to the toggle
   open.addEventListener('click', toggler, false);
   close.addEventListener('click', toggler, false);
@@ -573,20 +582,20 @@ Now you need to write the `toggler` function. The aim for this is to `toggle` a 
   var close = document.querySelector('.button-close');
   var overlay = document.querySelector('.overlay');
   var search = document.querySelector('.input-search');
-  
+
   // Toggles a set of class names on an element
-  var toggler = function() {    
+  var toggler = function() {
     // Toggle the classes which set off the transition
     overlay.classList.toggle('hiding');
     overlay.classList.toggle('showing');
-    
+
     // Once the overlay’s transition ends focus the search field
     overlay.addEventListener('transitionend', focusOn.bind(null, search), false);
-    
+
     // Prevent the clicks from navigating away
     return false;
   };
-  
+
   // Add the event listener to the toggle
   open.addEventListener('click', toggler, false);
   close.addEventListener('click', toggler, false);
@@ -594,12 +603,12 @@ Now you need to write the `toggler` function. The aim for this is to `toggle` a 
 ```
 
 #### Toggle class names to keep things efficient
-Digging into the function now, the class names that set off the transition are toggled on the `overlay` variable. Clicking the `open` button means `'hiding'` will be removed and `'showing'` will be added. 
+Digging into the function now, the class names that set off the transition are toggled on the `overlay` variable. Clicking the `open` button means `'hiding'` will be removed and `'showing'` will be added.
 
 Alternatively, when `close` is clicked `'showing'` will be removed and `'hiding'` will be added.
 
 #### Arguments are passed using bind
-You’ll notice `bind` following the `focusOn` function in the `transitionend` event listener. 
+You’ll notice `bind` following the `focusOn` function in the `transitionend` event listener.
 
 The reason you use `bind` is to avoid the function being called too early. It’s still the case even when you pass arguments. So if you want to pass arguments, `bind` is one of the best solutions.
 
@@ -616,7 +625,7 @@ Finally, to complete your code is to add the `focusOn` function. This has one pa
   var close = document.querySelector('.button-close');
   var overlay = document.querySelector('.overlay');
   var search = document.querySelector('.input-search');
-  
+
   // Focus on an element
   var focusOn = function(element) {
     // Only focus on the element if it contains the relevant
@@ -629,20 +638,20 @@ Finally, to complete your code is to add the `focusOn` function. This has one pa
       element.blur();
     }
   }
-  
+
   // Toggles a set of class names on an element
   var toggler = function() {
     // Toggle the classes which set off the transition
     overlay.classList.toggle('hiding');
     overlay.classList.toggle('showing');
-    
+
     // Once the overlay’s transition ends focus the search field
     overlay.addEventListener('transitionend', focusOn.bind(null, search), false);
-    
+
     // Prevent the clicks from navigating away
     return false;
   }
-  
+
   // Add the event listener to the toggle
   open.addEventListener('click', toggler, false);
   close.addEventListener('click', toggler, false);
