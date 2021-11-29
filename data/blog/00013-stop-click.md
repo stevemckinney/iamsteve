@@ -16,27 +16,27 @@ fileroot: "stop_click"
 I was set a task in University to make a website in short. Part of the requirement was to make each page link, if you are on that page not be clickable. There are a good few advantages to this, mainly, it being required in this case for usability. This can be done with CSS too, but the browser support is limited, as far as I know to Safari, Chrome and Firefox. I could ignore browser support, but this is kind of a key point also within the course that we must accommodate to older browsers.
 
 ## jQuery
-As always make sure you have jQuery in your code by using [Google's hosted version](//developers.google.com/speed/libraries/devguide#jquery "Get jQuery from here").
+As always make sure you have jQuery in your code by using [Google's hosted version](https://developers.google.com/speed/libraries/devguide#jquery "Get jQuery from here").
 
 ## The code
 ```javascript
 $(document).ready(function(){
   var page = window.location.href;
   var name = page.replace(/.+[\/]([^\/]+)$/,'$1');
-      
+
   if ((name === "index.php") || (name == "sitename.com"))  {
     $("#nav .home").addClass("current");
     $("#nav .home").click(function(){return false;});
   }
-  else if (name === "portfolio.php") {						
+  else if (name === "portfolio.php") {
     $("#nav .portfolio").addClass("current");
     $("#nav .portfolio").click(function(){return false;});
   }
-  else if (name === "blog.php") {						
+  else if (name === "blog.php") {
     $("#nav .blog").addClass("current");
     $("#nav .blog").click(function(){return false;});
   }
-  else {					
+  else {
     $("#contact .contact").addClass("current");
     $("#contact .contact").click(function(){return false;});
   }
@@ -65,15 +65,15 @@ if ((name === "index.php") || (name == "sitename.com"))  {
   $("#nav .home").addClass("current");
   $("#nav .home").click(function(){return false;});
 }
-else if (name === "portfolio.php") {						
+else if (name === "portfolio.php") {
   $("#nav .portfolio").addClass("current");
   $("#nav .portfolio").click(function(){return false;});
 }
-else if (name === "blog.php") {						
+else if (name === "blog.php") {
   $("#nav .blog").addClass("current");
   $("#nav .blog").click(function(){return false;});
 }
-else {					
+else {
   $("#contact .contact").addClass("current");
   $("#contact .contact").click(function(){return false;});
 }
