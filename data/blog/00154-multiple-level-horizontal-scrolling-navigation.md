@@ -16,13 +16,16 @@ id: 154
 fileroot: "multiple-level-horizontal-scrolling-navigation"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 With horizontal scrolling, submenus are quite challenging to make work. Due to the CSS you have to use, a CSS only solution isn’t viable. In this post I show you how to utilise JavaScript.
 
 ## Getting into the example
 Firstly start out with what you’ll end up with at the end of this post. Then onto why this solution was reached.
 
 <p data-height="378" data-theme-id="23161" data-slug-hash="WowBWK" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Horizontal scrolling navigation with submenu" data-preview="true" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/WowBWK/">Horizontal scrolling navigation with submenu</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## It’s tricky
 The difficulty with making this function as a multilevel/submenu  is purely based on how it’s achieved. If you follow the traditional markup pattern it’s not really possible without complex JavaScript.
@@ -30,7 +33,9 @@ The difficulty with making this function as a multilevel/submenu  is purely base
 ### Overflow means typical methods don’t work
 Rightly so, you keep the related markup together using a list. Then positioning through CSS, means you can’t show the submenu. The overflow ensures it remains hidden.
 
-<Image src="/static/images/blog/multilevel-scrolling-bad-example.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/multilevel-scrolling-bad-example.png" width={738} height={492} />
+</div>
 
 As the example shows, the biggest problem is you won’t be able to get the correct width or positioning. *So how is it solved*?
 
@@ -40,7 +45,7 @@ As the example shows, the biggest problem is you won’t be able to get the corr
 Anyway less of the can’t, you will need to use JavaScript. Which isn’t a huge problem, you just need to ensure pages can be navigated to when it’s disabled.
 
 ## HTML setup
-You may have more submenus, but for the sake of brevity I have included the markup here for one. 
+You may have more submenus, but for the sake of brevity I have included the markup here for one.
 
 ```markup
 <header>
@@ -83,7 +88,7 @@ The CSS required doesn’t need a huge increase to accommodate multiple levels. 
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar; }
-  
+
 .nav-item.active {
   color: #fff;
   box-shadow: -1px 0 #727c87, 1px 0 #727c87;
@@ -98,7 +103,7 @@ The CSS required doesn’t need a huge increase to accommodate multiple levels. 
   opacity: 1; }
 ```
 
-`.scroll` controls the scrolling behaviour when needed. `.active` states for both navigation items and submenus. Importantly `.submenu` is hidden through the height. 
+`.scroll` controls the scrolling behaviour when needed. `.active` states for both navigation items and submenus. Importantly `.submenu` is hidden through the height.
 
 This makes it have the ability to be transitioned, but I decided against it. The result is an ugly transition and to improve it, is out of the scope of this post.
 
@@ -107,40 +112,40 @@ This makes it have the ability to be transitioned, but I decided against it. The
 ## JS setup
 The most important addition to making this work. Without JavaScript, your top level item will link through. So that should be a suitable alternative.
 
-```{.language-javascript .code-tall}
+```javascript
 (function (window, document, undefined) {
   'use strict';
-  
+
   // Select nav items that have submenus
   var hasSubmenu = document.querySelectorAll('[data-id]');
   var active = 'active';
   var i = 0;
-  
+
   // Show the submenu by toggling the relevant class names
   function showSubmenu (event) {
     // We lose reference of this when filtering the nav items
     var self = this;
-    
+
     // Select the relevant submenu, by the data-id attribute
     var submenu = document.getElementById(self.dataset.id);
-    
+
     // Probably best to prevent clicks through
     event.preventDefault();
-    
+
     // Referring to the submenu parentNode
     // find all elements that aren't the submenu and remove active class
     var otherSubmenu = Array.prototype.filter.call(
-      submenu.parentNode.children, 
+      submenu.parentNode.children,
       function(child) {
         if ( child !== submenu ) {
           removeChildClass(child);
         }
       });
-    
+
     // Referring to the the nav item parentNode
     // find all elements that aren't the submenu and remove active class
     var otherItem = Array.prototype.filter.call(
-      self.parentNode.children, 
+      self.parentNode.children,
       function(child) {
         if ( child !== self ) {
           removeChildClass(child);
@@ -150,7 +155,7 @@ The most important addition to making this work. Without JavaScript, your top le
     self.classList.toggle(active);
     submenu.classList.toggle(active);
   }
-  
+
   // Remove the active class
   function removeChildClass(el) {
     // Check if it exists, then remove
@@ -158,7 +163,7 @@ The most important addition to making this work. Without JavaScript, your top le
       el.classList.remove(active);
     }
   }
-  
+
   // On clicks show submenus
   for ( i = 0; i < hasSubmenu.length; i++ ) {
     hasSubmenu[i].addEventListener('click', showSubmenu);
@@ -198,6 +203,5 @@ I don’t know a huge amount about accessibility, but from my understanding it i
 
 ## Example
 <p data-height="378" data-theme-id="23161" data-slug-hash="WowBWK" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Horizontal scrolling navigation with submenu" data-preview="true" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/WowBWK/">Horizontal scrolling navigation with submenu</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 That’s everything, it’s possible that you could use a more regular setup and modify the source order with JavaScript. I didn’t want to get into that, but it may be something I revisit in the future.

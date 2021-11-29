@@ -21,15 +21,14 @@
       position: relative;
       left: -$line*2; } }
 
-  img {
+  img,
+  .article-image span[style] {
     display: block;
     margin-bottom: $line;
 
     @include breakpoint($cd) {
       max-width: 738px;
-      border-radius: $radius;
-      position: relative;
-      left: -$line*2; } }
+      border-radius: $radius; } }
 
   .wide-image {
     @include breakpoint(1024px + 48px) {
@@ -108,19 +107,22 @@
       width: 100%; } }
 
   // Links
-  p a {
+  p > a {
     @extend .link; }
 
+  a > span,
   img {
     transition: .2s box-shadow; }
 
+  a:hover span,
+  a:focus span,
   a:hover img,
   a:focus img {
     box-shadow: 0 2px 2px rgba($neutral, .2), 0 8px 16px rgba($neutral, .15); }
 
   // Images following headings, lists and paragraphs
   :is(#{headings()}, p, ul) + :is(img, .article-image, .codepen-wide .cp_embed_wrapper, .cp_embed_wrapper),
-  :is(.article-image) + :is(ol, ul, p),
+  :is(.article-image, .codepen-wide .cp_embed_wrapper, .cp_embed_wrapper) + :is(ol, ul, p),
   > figure + p {
     margin-top: $line; }
 
@@ -231,13 +233,7 @@
 
   @include breakpoint($cd-max) {
     align-items: center;
-    flex-flow: column; }
-
-  // Fix next image for the way images work round here
-  > span {
-    @include breakpoint($cd) {
-      border-radius: $radius;
-      position: relative; } } }
+    flex-flow: column; } }
 
 .entry-content figcaption {
   font-style: italic;
@@ -252,6 +248,7 @@
 
   @include breakpoint($e) {
     text-align: left;
+    max-width: 192px;
 
     &:before {
       content: "";
@@ -301,8 +298,13 @@
   @include breakpoint($site-width-max) {
     margin: auto; } }
 
-.article-image > span {
-  vertical-align: middle; }
+.article-image {
+  span {
+    outline: 1px solid red;
+    vertical-align: middle; }
+
+  > span {
+    vertical-align: middle; } }
 
 
 /*

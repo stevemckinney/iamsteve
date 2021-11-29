@@ -25,7 +25,7 @@ Hopefully you find it handy, if like me you need ideas sometimes.
 ## Tombow ABT dual brush pen — £2.95
 
 <figure>
-<Image src="/static/images/blog/tombow@2x.png" width={738} height={492} />
+<Image src="/static/images/blog/tombow@2x.png" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -40,13 +40,13 @@ It also helps that it comes in huge variety of colours. I like to use a cool gre
 ## DDC: Pretty much everything — £19.99
 
 <figure>
-<Image src="/static/images/blog/ddc@2x.jpg" width={738} height={492} />
+<Image src="/static/images/blog/ddc@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
 </figure>
 
-I’ve been learning much more about branding in recent times and I’ve bought a few books as a result. This being one of them. What made me buy this book was watching Aaron’s Skillshare classes, they are superb. He teaches with personality and enthusiasm, which makes his classes fly by. 
+I’ve been learning much more about branding in recent times and I’ve bought a few books as a result. This being one of them. What made me buy this book was watching Aaron’s Skillshare classes, they are superb. He teaches with personality and enthusiasm, which makes his classes fly by.
 
 I figured it would be true of the book and I wasn’t wrong. The book is inspirational like his classes and it has many great logos in it. Along with some personal stuff and you really get a feel for who Aaron is.
 
@@ -55,7 +55,7 @@ I figured it would be true of the book and I wasn’t wrong. The book is inspira
 ## Logotype mini — £12.95
 
 <figure>
-<Image src="/static/images/blog/logotype@2x.jpg" width={738} height={492} />
+<Image src="/static/images/blog/logotype@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -68,13 +68,13 @@ Similarly to the DDC book, this is another huge source of logos. It has a nice c
 ## Let’s draw: Illustration school — £12.99
 
 <figure>
-<Image src="/static/images/blog/lets-draw@2x.jpg" width={738} height={492} />
+<Image src="/static/images/blog/lets-draw@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
 </figure>
 
-I bought this a few of months ago out of curiosity. I was drawn to the whimsical style. It’s a nice way to approach learning. 
+I bought this a few of months ago out of curiosity. I was drawn to the whimsical style. It’s a nice way to approach learning.
 
 If you’re wanting to be better at drawing or want a good way to practice, this book will be suitable. It’s not just aimed at beginners.
 
@@ -83,13 +83,13 @@ If you’re wanting to be better at drawing or want a good way to practice, this
 ## Apple Watch – from £269
 
 <figure>
-<Image src="/static/images/blog/apple-watch@2x.jpg" width={738} height={492} />
+<Image src="/static/images/blog/apple-watch@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Unsplash
 </figcaption>
 </figure>
 
-I got an Apple Watch last Christmas, and I thought I wouldn’t want one. It’s a handy extension to the phone and has little conveniences. People generally expect you to use it most of the day, which is fair, but it’s the wrong assumption. 
+I got an Apple Watch last Christmas, and I thought I wouldn’t want one. It’s a handy extension to the phone and has little conveniences. People generally expect you to use it most of the day, which is fair, but it’s the wrong assumption.
 
 I definitely don’t, the most useful stuff for me is Apple Pay, passbook, timer, stand reminders and being able to see messages/reply. I have the notifications for only important stuff, that’s a thing that can be abused by apps so easily and is.
 
@@ -98,7 +98,7 @@ I definitely don’t, the most useful stuff for me is Apple Pay, passbook, timer
 ## Native Union Dock for Apple Watch – £50
 
 <figure>
-<Image src="/static/images/blog/watch-dock@2x.jpg" width={738} height={492} />
+<Image src="/static/images/blog/watch-dock@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -112,10 +112,11 @@ As an aside, Native Union make some nice phone docks too.
 [Buy on Amazon](https://www.amazon.co.uk/Native-Union-DOCK-Apple-Watch-Slate/dp/B016CIW2CM?tag=mwgenius-21&SubscriptionId=AKIAID2HUF7VPZYSVYFQ&linkCode=xm2&camp=2025&creative=165953&creativeASIN=B016CIW2CM&ascsubtag=-1&th=1)
 
 ## Skillshare subscription – $96 year
+<div className="article-image">
+  <Image src="/static/images/blog/skillshare@2x.png" width={832} height={626} />
+</div>
 
-<Image src="/static/images/blog/skillshare@2x.png" width={738} height={492} />
-
-A yearly Skillshare subscription is affordable versus other websites. If like me you don’t always have the time to learn on a monthly basis it can become costly. 
+A yearly Skillshare subscription is affordable versus other websites. If like me you don’t always have the time to learn on a monthly basis it can become costly.
 
 Not only because of cost, but I find that Skillshare has more design material. In general design being taught is an area to grow over the coming months and years. If you hunt around you could probably get it cheaper than the $96.
 
@@ -123,7 +124,7 @@ Not only because of cost, but I find that Skillshare has more design material. I
 
 ## Present & Correct stationery
 <figure>
-<Image src="/static/images/blog/present-correct@2x.jpg" width={738} height={492} />
+<Image src="/static/images/blog/present-correct@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Present & Correct
 </figcaption>
@@ -136,7 +137,7 @@ I didn’t pick anything specific from here as it’s too difficult. Everything 
 ## Sandqvist Hege Backpack — €220
 
 <figure>
-<Image src="/static/images/blog/sandqvist@2x.jpg" width={738} height={492} />
+<Image src="/static/images/blog/sandqvist@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Sandqvist
 </figcaption>
@@ -150,7 +151,7 @@ A stylish backpack that’s not too small, but not too large and looks to cater 
 ## Umbra Toto Storage Caddy ~ £30
 
 <figure>
-<Image src="/static/images/blog/umbra-caddy@2x.jpg" width={738} height={492} />
+<Image src="/static/images/blog/umbra-caddy@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -163,7 +164,7 @@ A really neat and tidy desk storage. I really like the compartment that opens.
 ## Ecooe teapot infuser — ~£16
 
 <figure>
-<Image src="/static/images/blog/ecooe@2x.jpg" width={738} height={492} />
+<Image src="/static/images/blog/ecooe@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -176,7 +177,7 @@ I’m more of a tea person over coffee. This looks like a handy way to make loos
 ## Polaroid ZIP mobile printer – £99
 
 <figure>
-<Image src="/static/images/blog/polaroid@2x.jpg" width={738} height={492} />
+<Image src="/static/images/blog/polaroid@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -189,7 +190,7 @@ It seems to be gaining popularity small printers for printing pictures from phon
 ## Fujifilm Instax mini 90 ~£119
 
 <figure>
-<Image src="/static/images/blog/instax@2x.jpg" width={738} height={492} />
+<Image src="/static/images/blog/instax@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -197,4 +198,4 @@ Credit: Amazon
 
 If you still want the polaroid style of camera and have the printing happen as you take the picture, this is a more modern take. There are a few variations, the mini 90 being the upper end. Polaroid do their own version too.
 
-[Buy on Amazon](https://www.amazon.co.uk/Instax-Mini-90-Camera-Shots/dp/B012CDT756/ref=sr_1_5?s=electronics&ie=UTF8&qid=1480931492&sr=1-5&keywords=instax+mini+90)
+[Buy on Amazon](https://www.amazon.co.uk/Instax-Mini-90-Camera-Shots/dp/B012CDT756/ref=sr_1_5?s=electronics&ie=UTF8&qid=1480931626&sr=1-5&keywords=instax+mini+90)

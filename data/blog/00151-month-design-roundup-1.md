@@ -22,54 +22,62 @@ This is the start of a monthly series of a roundup of well designed websites, an
 Here’s eight websites, there’s a lot of illustration and great use of colour throughout this set.
 
 ### [Riyo](http://www.riyo.io/)
+<div className="article-image">
+  <Image src="/static/images/blog/websites-monthly-1-riyo@2x.png" width={832} height={626} />
+</div>
 
-<Image src="/static/images/blog/websites-monthly-1-riyo@2x.png" width={738} height={492} />
-
-The top to bottom use of illustration, calming and soft colours used throughout make this a really nice design. It really builds a level of trust and reassurance. The main colour used is red, most people would get scared off using red, but it shows confidence. 
+The top to bottom use of illustration, calming and soft colours used throughout make this a really nice design. It really builds a level of trust and reassurance. The main colour used is red, most people would get scared off using red, but it shows confidence.
 
 ### [Nuage](https://www.nuageapp.com)
-
-<Image src="/static/images/blog/websites-monthly-1-nuage@2x.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/websites-monthly-1-nuage@2x.png" width={832} height={626} />
+</div>
 
 There is some stunning attention to detail throughout this website. It’s minimalism, done right. Lots of personality throughout. Great use of whitespace and clarity, which really sets itself apart from other domain vendors.
 
 ## [Billdogg](http://billdogg.com)
-
-<Image src="/static/images/blog/websites-monthly-1-billdogg@2x.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/websites-monthly-1-billdogg@2x.png" width={832} height={626} />
+</div>
 
 Simple straight to the point, and you know what you’re going to get without having to shove a massive image in the background. The colour choice is vibrant but not overwhelming. The illustration style really adds to the page. With little splashes of colour throughout the page it really ties it all together.
 
 ### [Mess Hall](http://mplsmesshall.com/)
-
-<Image src="/static/images/blog/websites-monthly-1-messhall@2x.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/websites-monthly-1-messhall@2x.png" width={832} height={626} />
+</div>
 
 I particularly like the full viewport intro screen, that has a nice badge. It’s really well done. Which transitions smoothly into what it’s all about. There are some further nice transitions in the carousel just below.
 
 ### [Tasting Table](https://www.tastingtable.com)
-
-<Image src="/static/images/blog/websites-monthly-1-tasting-table@2x.jpg" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/websites-monthly-1-tasting-table@2x.jpg" width={832} height={626} />
+</div>
 
 I really like the way so much information is presented in this website. There’s a variety of ways to browse and scroll through content. It’s engaging and a refreshing design for today’s world.
 
 ### [Waaffle](https://waaffle.com)
+<div className="article-image">
+  <Image src="/static/images/blog/websites-monthly-1-waaffle@2x.png" width={832} height={626} />
+</div>
 
-<Image src="/static/images/blog/websites-monthly-1-waaffle@2x.png" width={738} height={492} />
-
-Again another page without having to have a random stock photo as the background. The illustration and animations throughout are superb. I particularly like the logo, which also is used for the loading indicator. 
+Again another page without having to have a random stock photo as the background. The illustration and animations throughout are superb. I particularly like the logo, which also is used for the loading indicator.
 
 I really like the use of purple, orange and yellow throughout—a tricky combination to use—which is pulled off nicely.
 
 ### [Ambassador Watches](https://primeambassador.com/)
+<div className="article-image">
+  <Image src="/static/images/blog/websites-monthly-1-ambassador@2x.jpg" width={832} height={626} />
+</div>
 
-<Image src="/static/images/blog/websites-monthly-1-ambassador@2x.jpg" width={738} height={492} />
-
-If you’re looking for a way to communicate luxury, look no further. I like how the headings are using small caps, *but genuine small caps*. The website is spot on to match the style of the watches. 
+If you’re looking for a way to communicate luxury, look no further. I like how the headings are using small caps, *but genuine small caps*. The website is spot on to match the style of the watches.
 
 When I first viewed this website and to get through to a watch page, I was surprised at how little the watches cost. Great design throughout.
 
 ### [Mylo](http://okmylo.com)
-
-<Image src="/static/images/blog/websites-monthly-1-mylo@2x.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/websites-monthly-1-mylo@2x.png" width={832} height={626} />
+</div>
 
 Sometimes I think the huge type thing is overdone, but that’s probably because it’s done poorly. Mylo does it well. You really get a sense that you’ll be getting good fashion choices and what the app is all about. It details and presents the app really well [outside of the stereotypical page](https://twitter.com/jongold/status/694591217523363840), it is possible.
 
@@ -94,6 +102,6 @@ Really Good Emails is a huge source of email knowledge. This is a great article 
 Marketing is something I know is skill I need to learn more about, as a designer it’s important. Without it you don’t sell things. I want to learn, but approach it by not being a forceful annoyance.
 
 ### [Comprehensive guide to font loading](https://www.zachleat.com/web/comprehensive-webfonts/)
-I've been looking into a way to load fonts better. Considering the flash of invisible/unstyled text, but maintaining performance. 
+I've been looking into a way to load fonts better. Considering the flash of invisible/unstyled text, but maintaining performance.
 
 I purposely load the body font asynchronously here as it slows down page load times dramatically. I want to improve this further as the sans serif, albeit less, still slows down things. This guide helps, but I'm still wrapping my head round it!

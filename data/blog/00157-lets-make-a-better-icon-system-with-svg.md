@@ -19,7 +19,7 @@ fileroot: "lets-make-a-better-icon-system-with-svg"
 Icon fonts are used for their convenience, which generally can’t be matched by SVG. However, they come with a huge performance downside, which SVG doesn’t have. I want to use this post as an opportunity for you to drop icon fonts and start using SVG. This post aims to guide you through the setup and get to a similar level of convenience.
 
 ## Icon fonts are just too convenient
-I saw a tweet recently from Brad Frost asking for posts that sold the use of SVG for icons. From my perspective, SVG is part of my workflow. When designing being wary of each asset that needs exporting is part of the job. 
+I saw a tweet recently from Brad Frost asking for posts that sold the use of SVG for icons. From my perspective, SVG is part of my workflow. When designing being wary of each asset that needs exporting is part of the job.
 
 However, there exists the use of dropping in FontAwesome, relevant CSS and off you go. I’ve never really used FontAwesome, but I have used icon fonts and understand the speed and convenience they offer.
 
@@ -54,7 +54,9 @@ I’m going to use SS Standard, which was my go to icon font. **The next steps a
 ### Output all the icons
 Type out each icon, this depends on your icon font or set of icons. Either way, you need to fill a document with each icon.
 
-<Image src="/static/images/blog/svg-vs-icon-fonts-typed-out-icons@2x.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/svg-vs-icon-fonts-typed-out-icons@2x.png" width={738} height={492} />
+</div>
 
 **Change the colour to something that isn’t black**. This ensures on export everything will have a fill applied, for finding and replacing later. Black is the default colour so no fills will be applied.
 
@@ -64,16 +66,22 @@ Select the icons in your type layer and expand them by going to Object > Expand.
 ### Add each icon to the Asset Export panel and name it
 By far the most tedious part, but a necessary step.
 
-<Image src="/static/images/blog/svg-vs-icon-fonts-asset-export@2x.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/svg-vs-icon-fonts-asset-export@2x.png" width={738} height={576} />
+</div>
 
 ### Exporting the icons
 Go to File > Export for Screens.
 
-<Image src="/static/images/blog/svg-vs-icon-fonts-export-for-screens@2x.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/svg-vs-icon-fonts-export-for-screens@2x.png" width={738} height={576} />
+</div>
 
 Click the little cog icon, next to ‘Android’.
 
-<Image src="/static/images/blog/svg-vs-icon-fonts-inline-style@2x.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/svg-vs-icon-fonts-inline-style@2x.png" width={738} height={492} />
+</div>
 
 Click SVG and change the ‘Styling’ option to ‘Inline Style’. This will make it easier to find and replace shortly. Finally, make sure responsive is unchecked, as when the icons are generated the fallback png will be larger.
 
@@ -105,7 +113,9 @@ Following the find and replace, you will need to add to your CSS:
 So now you have all your SVG files prepared, head over to [Grumpicon](http://www.grumpicon.com/).
 
 ### Upload the SVG and download the files
-<Image src="/static/images/blog/svg-vs-icon-fonts-grumpicon@2x.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/svg-vs-icon-fonts-grumpicon@2x.png" width={738} height={492} />
+</div>
 
 After allowing Grumpicon to generate the necessary files, download them and it’s almost ready to go.
 
@@ -190,7 +200,7 @@ To add an icon you add the relevant class, which can be found in the generated C
 <span class="icon-check" data-grunticon-embed></span>
 ```
 
-This is all you need to add to get an icon to show. 
+This is all you need to add to get an icon to show.
 
 ## Make it reusable and flexible with colour and sizes
 To make your icon set more effective and more ‘bootstrap’ like you need colours and additional size classes. This is up to your preferences and website colour scheme.
@@ -201,7 +211,7 @@ To make your icon set more effective and more ‘bootstrap’ like you need colo
 .color-green { color: blue; }
 ```
 
-Colours don’t need to rely on using `fill`. Due to the class  `fill-currentcolor` applied earlier, they will use the parent colour. 
+Colours don’t need to rely on using `fill`. Due to the class  `fill-currentcolor` applied earlier, they will use the parent colour.
 
 ```css
 .icon {
@@ -211,12 +221,12 @@ Colours don’t need to rely on using `fill`. Due to the class  `fill-currentcol
 .icon-small svg {
   width: 16px;
   height: 16px; }
-  
+
 .icon-medium,
 .icon-medium svg {
   width: 32px;
   height: 32px; }
-  
+
 .icon-large,
 .icon-large svg {
   width: 48px;
@@ -225,7 +235,7 @@ Colours don’t need to rely on using `fill`. Due to the class  `fill-currentcol
 
 As mentioned earlier, the width and height dimensions were kept on the SVG. So the parent element of the SVG and the SVG itself both need dimensions adding.
 
-For a nicer page load the parent element needs dimensions. Until the SVG is inserted, it doesn’t know the width or height. 
+For a nicer page load the parent element needs dimensions. Until the SVG is inserted, it doesn’t know the width or height.
 
 ## Usage now looks like this
 Add the relevant class names you desire and you’re good to go.
