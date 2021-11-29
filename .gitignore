@@ -39,3 +39,6 @@ uploads
 //public/static/images/blog
 .env
 .env.example
+
+# Local Netlify folder
+.netlify

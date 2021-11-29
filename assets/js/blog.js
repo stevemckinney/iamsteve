@@ -1,2 +1,0 @@
-import 'fitvids';
-import './prism';

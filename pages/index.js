@@ -89,7 +89,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           .map((frontmatter) => {
             return (
               <>
-                <Card kind="medium" frontmatter={frontmatter} key={frontmatter.id} />
+                <Card kind="medium" frontmatter={frontmatter} key={frontmatter.fileroot} />
               </>
             )
           })
@@ -111,7 +111,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         {posts
           .filter((post) => post.tags.includes('Design'))
           .map((frontmatter) => {
-            return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
+            return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
           })
           .slice(0, POSTS_PER_PAGE)}
         <Link
@@ -128,9 +128,9 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
       <Posts title="Popular in code" link="/category/code" text="Explore code" size="small">
         {!posts && <div>No posts!</div>}
         {posts
-          .filter((post) => post.tags.includes('Code'))
+          .filter((post) => post.tags.includesnp('Code'))
           .map((frontmatter) => {
-            return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
+            return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
           })
           .slice(0, POSTS_PER_PAGE)}
         <Link
