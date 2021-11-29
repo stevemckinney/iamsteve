@@ -5,8 +5,8 @@ lastmod: "2021-06-03T07:39:19+00:00"
 summary: "So since the update I haven’t really posted. The reason being I have had a lot of deadlines to meet and keep up with, particularly the past 2 weeks I’ve had at least 4 university assignments to hand in, as well as a test and 2 presentations. I’m finally coming to an end with it though I have one more assignment to do and hopefully nothing else will pop up in the time. So once this final assignment is done, I’m going to try make an effort to do some more posts and see where it leads me."
 metadesc: "A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
 theme: "#e1f7ee"
-tags: ["Life"]
-categories: ["Life"]
+tags: ["Website"]
+categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
 status: "closed"
 id: 23
