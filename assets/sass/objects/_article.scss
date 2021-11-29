@@ -44,7 +44,7 @@
     @include breakpoint($b) {
       font-size: 21px; } }
 
-  p:first-child {
+  > p:first-child {
     font-size: 21px;
 
     @include breakpoint($b) {
@@ -121,7 +121,7 @@
 
   // Images following headings, lists and paragraphs
   :is(#{headings()}, p, ul) + :is(img, .article-image, .codepen-wide .cp_embed_wrapper, .cp_embed_wrapper),
-  .article-image + p,
+  :is(.article-image) + :is(ol, ul, p),
   > figure + p {
     margin-top: $line; }
 
@@ -276,13 +276,10 @@
 
 .featured-image {
   overflow: hidden;
-  display: flex;
   min-height: 240px;
   max-height: 648px; }
 
 .featured-image img {
-  display: block;
-  margin: auto;
   height: 192px + 24px;
   width: auto;
   max-width: 738px;
