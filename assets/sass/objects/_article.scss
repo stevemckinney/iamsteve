@@ -83,8 +83,7 @@
 
   // Yep
   > *:not(figure):not(.article-image):not(img):not(.code-block),
-  > .footnotes,
-  figcaption {
+  > .footnotes {
     padding-right: $line*2;
     padding-left: $line*2;
 
@@ -221,25 +220,37 @@
 // ---------------------------
 .entry-content figure {
   display: flex;
+  justify-content: center;
+  align-content: center;
   padding-top: $base-px;
   position: relative;
-  text-align: left; }
+  text-align: left;
+
+  @include breakpoint($cd) {
+    align-items: flex-end; }
+
+  @include breakpoint($cd-max) {
+    align-items: center;
+    flex-flow: column; }
+
+  // Fix next image for the way images work round here
+  > span {
+    @include breakpoint($cd) {
+      border-radius: $radius;
+      position: relative; } } }
 
 .entry-content figcaption {
   font-style: italic;
   line-height: 1.333333;
   text-align: center;
   max-width: $measure;
-  margin-left: auto;
+  padding-left: $line;
+  padding-right: $line;
 
   p {
     font-size: inherit; }
 
   @include breakpoint($e) {
-    position: absolute;
-    bottom: 0;
-    right: $line;
-    width: $line*12;
     text-align: left;
 
     &:before {
@@ -250,26 +261,14 @@
       background-color: $secondary;
       margin-bottom: $base-px; } }
 
-  @include breakpoint($site-width-max) {
-    margin-bottom: $line; }
-
-  @include breakpoint($f-max) {
-    margin-right: auto; } }
+  @include breakpoint($cd-max) {
+    width: 100%;
+    padding-left: $base-px;
+    padding-right: $base-px;
+    margin-bottom: $line; } }
 
 // Specific pieces of content
 // ---------------------------
-
-// Fix next image for the way images work round here
-.entry-content figure > span {
-  margin-left: auto !important;
-  margin-right: auto !important;
-
-  @include breakpoint($cd) {
-    max-width: 738px;
-    border-radius: $radius;
-    position: relative;
-    left: -$line*2; } }
-
 .code-block pre {
   @include breakpoint($cd) {
     border-radius: $radius; } }
