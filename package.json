@@ -24,6 +24,7 @@
     "mdx-bundler": "^6.0.1",
     "next": "12.0.3",
     "next-themes": "^0.0.14",
+    "pnpapi": "^0.0.0",
     "postcss": "^8.3.5",
     "preact": "^10.5.13",
     "react": "17.0.2",
@@ -44,7 +45,7 @@
     "unist-util-visit": "^4.0.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^3.9.2",
+    "@netlify/plugin-nextjs": "^4.0.0-beta.11",
     "@next/bundle-analyzer": "12.0.3",
     "@svgr/webpack": "^5.5.0",
     "breakpoint-sass": "^2.7.1",
