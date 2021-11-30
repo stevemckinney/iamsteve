@@ -109,7 +109,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
 
       <Posts title="Popular in design" link="/category/design" text="Explore design" size="small">
         {posts
-          .filter((post) => post.tags.includes('Design'))
+          .filter((post) => post.categories.includes('Design'))
           .map((frontmatter) => {
             return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
           })
@@ -128,7 +128,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
       <Posts title="Popular in code" link="/category/code" text="Explore code" size="small">
         {!posts && <div>No posts!</div>}
         {posts
-          .filter((post) => post.tags.includesnp('Code'))
+          .filter((post) => post.categories.includes('Code'))
           .map((frontmatter) => {
             return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
           })
