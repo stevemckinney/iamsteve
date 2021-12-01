@@ -23,23 +23,25 @@ const Medium = ({ frontmatter }) => {
   } = frontmatter
 
   const url = `/blog/${slug}`
-  const imageColor = theme ? theme.toString() : `#f00`
+  const imageColor = theme ? theme.toString() : '#ccc'
 
   return (
     <article className="card card-medium entry flex flex-column">
       <Link href={url}>
-        <a className="card-image flex mb2 mb4-b radius" style={{ backgroundColor: { imageColor } }}>
+        <a className="card-image flex mb2 mb4-b">
           <>
             {medium ? (
               <>
-                <Image
-                  src={medium}
-                  className="radius"
-                  alt=""
-                  role="presentation"
-                  width={378}
-                  height={252}
-                />
+                <div className="radius flex" style={{ backgroundColor: { imageColor } }}>
+                  <Image
+                    src={medium}
+                    className="radius"
+                    alt=""
+                    role="presentation"
+                    width={378}
+                    height={252}
+                  />
+                </div>
               </>
             ) : (
               <>
