@@ -83,7 +83,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         </div>
       </div>
 
-      <Posts title="Latest posts" link="/blog" size="medium">
+      <Posts title="Latest posts" link="/blog" size="medium" key="latest">
         {posts
           .filter((post) => post)
           .map((frontmatter) => {
@@ -107,7 +107,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
 
       {siteMetadata.newsletter.provider !== '' && <Subscribe />}
 
-      <Posts title="Popular in design" link="/category/design" text="Explore design" size="small">
+      <Posts title="Popular in design" link="/category/design" text="Explore design" size="small" key="design">
         {posts
           .filter((post) => post.categories.includes('Design'))
           .map((frontmatter) => {
@@ -125,7 +125,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         </Link>
       </Posts>
 
-      <Posts title="Popular in code" link="/category/code" text="Explore code" size="small">
+      <Posts title="Popular in code" link="/category/code" text="Explore code" size="small" key="code">
         {!posts && <div>No posts!</div>}
         {posts
           .filter((post) => post.categories.includes('Code'))

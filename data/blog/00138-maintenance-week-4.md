@@ -16,7 +16,7 @@ id: 138
 fileroot: "maintenance-week-4"
 ---
 
-Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies what I will do, and this posts serves as detailing what has been done. 
+Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies what I will do, and this posts serves as detailing what has been done.
 
 So while it’s not a post that directly gives value, it helps me keep on top of the library of content that I am acquiring.
 
@@ -34,30 +34,36 @@ I’m happy with the homepage, but I’m considering a rework of that as the cur
 ## Preparations for the redesign
 I’m hoping to launch the redesign first week of September, which is a good time for me due to having a week off work. This means I’ve begun focusing my efforts much more on the redesign, [as I mentioned a few posts back](/blog/redesign-progress-update). It’s difficult to balance and progress suffers on both writing and the redesign.
 
-I spent some time designing more featured images and tweaking posts. 
+I spent some time designing more featured images and tweaking posts.
 
 ### Preparation
-As I’ve been working on the website I’ve been trying to keep the database in sync locally, as I post and update images. As I have a couple of CMS addons that are not currently on this site, it causes an error every time. 
+As I’ve been working on the website I’ve been trying to keep the database in sync locally, as I post and update images. As I have a couple of CMS addons that are not currently on this site, it causes an error every time.
 
 I uploaded and enabled the addons here and other things round making sure when I put this live there is as few hiccups. Steps like this that don’t affect anything, just mean one less thing to rush and do.
 
 ### Horizontal scrolling responsive menu
-
-[<Image src="/static/images/blog/horizontal-scrolling-responsive-featured-image@2x.png" width={738} height={492} />](/blog/horizontal-scrolling-responsive-menu)
+<div className="article-image">
+  [<Image src="/static/images/blog/horizontal-scrolling-responsive-featured-image@2x.png" width={738} height={492} />](/blog/horizontal-scrolling-responsive-menu)
+</div>
 
 ### Custom stroke width profiles in Illustrator
 Along with a couple of images inside that post updated, I have added a featured image too.
 
-[<Image src="/static/images/blog/illustrator-stroke-width-featured-image@2x.png" width={738} height={492} />](/blog/creating-custom-stroke-width-profiles-in-illustrator)
+<div className="article-image">
+  [<Image src="/static/images/blog/illustrator-stroke-width-featured-image@2x.png" width={738} height={492} />](/blog/creating-custom-stroke-width-profiles-in-illustrator)
+</div>
 
 ### Get up to speed with CSS shapes
-
-[<Image src="/static/images/blog/css-shapes-featured-image@2x.png" width={738} height={492} />](/blog/get-up-to-speed-with-css-shapes)
+<div className="article-image">
+  [<Image src="/static/images/blog/css-shapes-featured-image@2x.png" width={738} height={492} />](/blog/get-up-to-speed-with-css-shapes)
+</div>
 
 ### A guide to vertical rhythm
-
-[<Image src="/static/images/blog/vertical-rhythm-featured-image@2x.png" width={738} height={492} />](/blog/a-guide-to-vertical-rhythm)
+<div className="article-image">
+  [<Image src="/static/images/blog/vertical-rhythm-featured-image@2x.png" width={738} height={492} />](/blog/a-guide-to-vertical-rhythm)
+</div>
 
 ### Photoshop generator syntax cheatsheet
-
-[<Image src="/static/images/blog/ps-generator-featured-image@2x.png" width={738} height={492} />](/blog/adobe-generator-syntax-cheatsheet)
+<div className="article-image">
+  [<Image src="/static/images/blog/ps-generator-featured-image@2x.png" width={738} height={492} />](/blog/adobe-generator-syntax-cheatsheet)
+</div>

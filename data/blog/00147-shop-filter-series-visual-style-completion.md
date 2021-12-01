@@ -16,7 +16,7 @@ id: 147
 fileroot: "shop-filter-series-visual-style-completion"
 ---
 
-In the last post the basis for the visual style was set. In this post it will continue with that to complete the filters. There are some challenging areas like colour selection, as it can look overwhelming and how to handle the closing of filters. 
+In the last post the basis for the visual style was set. In this post it will continue with that to complete the filters. There are some challenging areas like colour selection, as it can look overwhelming and how to handle the closing of filters.
 
 ## Catch up
 To catch up with where this post is, [the files from the previous post are available](https://iamsteve.me/blog/entry/shop-filter-series-visual-style).
@@ -38,35 +38,35 @@ I have numbered colours in the table for easy reference.
 Starting with the filter bar, it was left completed, but without a way to highlight the current filter being open.
 
 ### Hiding the open filter icon in each artboard
-The first step to this is to use the direct selection tool by pressing <kbd>a</kbd>. 
+The first step to this is to use the direct selection tool by pressing <kbd>a</kbd>.
 
 <figure>
 <Image src="/static/images/blog/shop-filter-04-direct-selection.png" width={738} height={492} />
 <figcaption>your paths should gain a blue outline when selected.</figcaption>
 </figure>
 
-Then select the icon path for the current icon. Changing the fill to colour 3, the filter background colour. 
+Then select the icon path for the current icon. Changing the fill to colour 3, the filter background colour.
 
 You’ll notice that by doing this none of the other symbols update. This is because this was made as a dynamic symbol. Which allows the editing of fills.
 
 **Repeat this for the other icons**.
 
 ### Change the text colour
-Similarly to the icon, use the direct selection tool and select the text for each of the open filters. 
+Similarly to the icon, use the direct selection tool and select the text for each of the open filters.
 
 **Change the fill to colour 1**. This is beneficial in the long run, as you may want to tweak things further.
 
-> You may need to expand your text to modify the colour by using either <kbd>cmd + e</kbd> or going to Object > Expand. An unfortunate limitation of dynamic symbols. 
+> You may need to expand your text to modify the colour by using either <kbd>cmd + e</kbd> or going to Object > Expand. An unfortunate limitation of dynamic symbols.
 
 ### Close icon
 At the start of this series [I made some icons for download](https://www.dropbox.com/s/dvbi1mvp8w9ttsi/shop-tabbar-icons.ai?dl=0). **Using the larger ‘x’ icon or making your own will be necessary for the next step**.
 
 <figure>
-<Image src="/static/images/blog/shop-filter-04-progress-1.png" width={738} height={492} />
+<Image src="/static/images/blog/shop-filter-04-progress-1.png" width={738} height={630} />
 <figcaption>Your artboards should resemble the following.</figcaption>
 </figure>
 
-Copy the icon and paste it into the art board and place it above the text replacing where the previous icon was. 
+Copy the icon and paste it into the art board and place it above the text replacing where the previous icon was.
 
 ## Getting into the filters
 So the first few steps are ones that are pretty consistent across each filter.
@@ -74,7 +74,9 @@ So the first few steps are ones that are pretty consistent across each filter.
 ### Transparent overlay
 The overlay is added to bring focus to the filters and add a layer of depth. It doesn’t currently fit in with the theme.
 
-<Image src="/static/images/blog/shop-filter-04-progress-3.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-filter-04-progress-3.png" width={738} height={630} />
+</div>
 
 **Change the fill to colour 3 and the opacity to 80%**. The reason for the opacity change is to give a hint, as to what’s behind. When the transparency feels off it can make things look ‘muddy’ with the weird contrast it creates.
 
@@ -90,14 +92,14 @@ All the rectangles that have a white fill can be changed to colour 3. Excluding 
 Both of these filters are very similar in style. In these steps you’re going to apply borders between the items, this will make things feel equally spaced and define boundaries.
 
 <figure>
-<Image src="/static/images/blog/shop-filter-04-progress-4.png" width={738} height={492} />
+<Image src="/static/images/blog/shop-filter-04-progress-4.png" width={738} height={630} />
 <figcaption>
 A reference for the placement of the dividers.
 </figcaption>
 </figure>
 
 ### Vertical divider
-Firstly draw a vertical line by pressing <kbd>/</kbd>. Then make the line span the height of the types, which is 280px. 
+Firstly draw a vertical line by pressing <kbd>/</kbd>. Then make the line span the height of the types, which is 280px.
 
 **Change the stroke to colour 4 and the thickness to 2px**. You should be able to copy and paste this in place on the brand artboard with <kbd>cmd + f</kbd>.
 
@@ -118,14 +120,18 @@ Select all the size related things and use <kbd>cmd + g</kbd> to group them toge
 ### Fill and stroke
 Highlight one of the rectangles that has a white fill and go to **Select > Same > Fill and Stroke**.
 
-<Image src="/static/images/blog/shop-filter-04-progress-5.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-filter-04-progress-5.png" width={738} height={630} />
+</div>
 
-**Change the stroke to colour 4, and the fill to colour 3**. 
+**Change the stroke to colour 4, and the fill to colour 3**.
 
 ## Changing the corner radius
 To change the corner radius you need to select the object and press <kbd>a</kbd>. This enables the ability to do that.
 
-<Image src="/static/images/blog/shop-filter-04-corner-radius.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-filter-04-corner-radius.png" width={738} height={492} />
+</div>
 
 In the toolbar you should see ‘corners’ change the value to 4px.
 
@@ -133,12 +139,14 @@ In the toolbar you should see ‘corners’ change the value to 4px.
 Again like the type and brand increase the font weight to semibold.
 
 ## Price
-The price needs to draw most attention to the handles. 
+The price needs to draw most attention to the handles.
 
-<Image src="/static/images/blog/shop-filter-04-progress-6.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-filter-04-progress-6.png" width={738} height={630} />
+</div>
 
 ### Handle fill & shadow
-Select the handles and fill them with colour 2. 
+Select the handles and fill them with colour 2.
 
 <figure>
 <Image src="/static/images/blog/shop-filter-04-handle-dropshadow.png" width={738} height={492} />
@@ -156,13 +164,15 @@ Finally, increase the font weight of the price text to semibold.
 ## Colour
 With price complete it moves on to colour, which is quite tricky. The shapes need a little adjustment and the colours need to have a subtlety about them. This is because it can look quite garish otherwise.
 
-<Image src="/static/images/blog/shop-filter-04-progress-7.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-filter-04-progress-7.png" width={738} height={630} />
+</div>
 
 ### Make the text semibold
 Like previous steps each colour name can be made semibold.
 
 ### Resize the rectangles and make circular
-Change the width to 44px, the height is fine. Change the corner radius to 22px. 
+Change the width to 44px, the height is fine. Change the corner radius to 22px.
 
 ### Add a stroke and fill
 Each circle has a 2px border and the relevant fill but at 40% opacity. This gives enough of an indication, without it being overwhelmingly colourful.
@@ -184,7 +194,7 @@ With the dark background colours can be lower in saturation and darker. The back
 | Light blue | #9bb8e8 |
 
 ### Align the text centrally
-As the space has now increased between each item you want to make it feel more intentional. 
+As the space has now increased between each item you want to make it feel more intentional.
 
 **Centralise the text by selecting the circle and text object, then click the circle again**. Then using the align panel horizontally align them.
 

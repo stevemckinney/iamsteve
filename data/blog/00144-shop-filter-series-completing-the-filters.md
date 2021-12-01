@@ -16,10 +16,12 @@ id: 144
 fileroot: "shop-filter-series-completing-the-filters"
 ---
 
-Continuing from the last post, which looked at the initial sketching and wireframe. This post will focus on the completion of each of the filters. 
+Continuing from the last post, which looked at the initial sketching and wireframe. This post will focus on the completion of each of the filters.
 
 ## Catch up
-<Image src="/static/images/blog/shop-tabbar-progress-4.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-progress-4.png" width={720} height={720} />
+</div>
 
 This is where the post was left previously.
 
@@ -31,8 +33,9 @@ There were two file downloads relating to the previous post.
 - [Illustrator file to skip ahead](https://www.dropbox.com/s/vxpksfg4jbuvooh/shop-filter-02.ai?dl=0)
 
 ## Sketch recap
-
-<Image src="/static/images/blog/shop-tabbar-sketch-overview.jpg" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-sketch-overview.jpg" width={738} height={492} />
+</div>
 
 The sketches for each of the filters are what will be referred to as a basis for this.
 
@@ -45,7 +48,9 @@ Position that to the top of the artboard, so the filters are not obscured.
 On top of that draw another rectangle that is 320x236px. Positioning this time flush with the top of the filters so they are not obscured.
 
 ## Add an obvious way to close
-<Image src="/static/images/blog/shop-tabbar-2-progress-1.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-2-progress-1.png" width={738} height={632} />
+</div>
 
 From the icons grab the small close icon. Paste it in the document and add a text layer with the word alongside. Using the content in the background as a guide, position it to the left and above the filters.
 
@@ -55,7 +60,9 @@ Now that all the additional common elements are complete, select the additional 
 ## Type
 The first step for the type section is to use split into grid to help make alignment easier.
 
-<Image src="/static/images/blog/shop-tabbar-2-type-grid.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-2-type-grid.png" width={738} height={492} />
+</div>
 
 2 columns and 4 rows are added **with the row total being increased to 272px**. The reason it’s increased is to allow for affordance. It will overlap the filters, this is handy for now.
 
@@ -90,7 +97,9 @@ Finally select the filters below the types and move them forwards with <kbd>cmd 
 ## Brand
 Brand is similar to types, so delete the white background layer and copy the grouped types. Use <kbd>cmd + f</kbd> to paste in front. Again being at the front now means easier selection.
 
-<Image src="/static/images/blog/shop-tabbar-2-progress-3.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-2-progress-3.png" width={738} height={630} />
+</div>
 
 Rename, and then you should be able to select the filters at the back and move forwards with <kbd>cmd + ]</kbd>.
 
@@ -102,12 +111,14 @@ First you want to draw a rectangle that is 272x44px. Align it to the horizontal 
 
 With the rectangle still selected go to Object > Path > Split into Grid.
 
-<Image src="/static/images/blog/shop-tabbar-2-small-grid.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-2-small-grid.png" width={738} height={492} />
+</div>
 
 Adding 4 columns with an 8px gutter gives you a nice selection and reasonably flexible area to work with.
 
 ### Add a border, fill and duplicate
-Fill them with white and a grey border, to define their bounds. 
+Fill them with white and a grey border, to define their bounds.
 
 - Add a type layer <kbd>t</kbd>
 - Type out the first size ’S’
@@ -118,13 +129,13 @@ Fill them with white and a grey border, to define their bounds.
 ### Repeat this for chest and shoe
 Chest generally follows an inches measurement generally starting from 34 and going up incrementally in 2s. Shoe size, stick with the UK/US style, 6, 7, 8 etc.
 
-- Copy 
+- Copy
 - Paste in place <kbd>cmd + f</kbd>
 - Nudge down to give plenty of space
 - Modify type layers
 
 <figure>
-<Image src="/static/images/blog/shop-tabbar-2-progress-4.png" width={738} height={492} />
+<Image src="/static/images/blog/shop-tabbar-2-progress-4.png" width={738} height={630} />
 <figcaption>Things are a little rough on alignment, but this will be solved in the coming steps.</figcaption>
 </figure>
 
@@ -133,14 +144,18 @@ This has led to a very limited amount of sizes, *that’s fine*. You can see the
 ### Add categorised titles
 Type each title with a 12px font size, this is sufficient to break them up but not outweigh the selection.
 
-<Image src="/static/images/blog/shop-tabbar-2-progress-5.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-2-progress-5.png" width={738} height={630} />
+</div>
 
 Next will be to improve the alignment further.
 
 ### Better alignment
 Building upon the alignment that’s already been done, **open the transform panel under Window > Transform**.
 
-<Image src="/static/images/blog/shop-tabbar-2-transform-example.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-2-transform-example.png" width={738} height={492} />
+</div>
 
 - Select the ‘waist’ title and change Y to 312px
 - Select waist sizes and change Y to 338px
@@ -151,7 +166,9 @@ Building upon the alignment that’s already been done, **open the transform pan
 
 Adjust the navigation placement with <kbd>cmd + [</kbd> or <kbd>cmd + ]</kbd> to bring forwards or backwards as necessary.
 
-<Image src="/static/images/blog/shop-tabbar-2-progress-6.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-2-progress-6.png" width={738} height={630} />
+</div>
 
 After all that alignment, you should have something similar to this.
 
@@ -161,7 +178,9 @@ A range slider tends to be most convenient for choosing price. It’s the most f
 ### Add a rectangle
 Click and hold the rectangle to get the pop out menu. Add a rounded rectangle that is 272x12px, with a 6px radius.
 
-<Image src="/static/images/blog/shop-tabbar-2-align-panel.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-2-align-panel.png" width={738} height={492} />
+</div>
 
 With the rectangle added, align it centrally to the white rectangle.
 
@@ -170,7 +189,9 @@ You need two circles for handles. Add a 24px circle by pressing <kbd>L</kbd>. Gi
 
 Duplicate this circle by copying and pasting in place <kbd>cmd + f</kbd>.
 
-<Image src="/static/images/blog/shop-tabbar-2-progress-7.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-2-progress-7.png" width={738} height={630} />
+</div>
 
 Align both circles centrally with the rounded rectangle, and one at either side.
 
@@ -180,8 +201,9 @@ As the price will go from one to another. Adding a text layer that has ‘£10 t
 Using the eyedropper tool to pick the type style from sizes earlier will help to keep a consistent style.
 
 ### Align range text
-
-<Image src="/static/images/blog/shop-tabbar-2-progress-8.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-2-progress-8.png" width={738} height={630} />
+</div>
 
 Using the align panel to align it centrally, then nudge it up until it sits below the range slider. Not too close though.
 
@@ -199,7 +221,9 @@ Copying ‘waist’, which is one of the size type headings for the basis.
 - Then duplicate those 3 more times
 - Align nicely
 
-<Image src="/static/images/blog/shop-tabbar-2-progress-9.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/shop-tabbar-2-progress-9.png" width={738} height={630} />
+</div>
 
 ## A word on whitespace
 Much of this post has been based around alignment and whitespace. Generally it’s a tricky subject what the correct amount of whitespace is. It comes down to several points:
@@ -216,6 +240,6 @@ Much of this post has been based around alignment and whitespace. Generally it�
 Feel free to download [the completed file](https://www.dropbox.com/s/vxpksfg4jbuvooh/shop-filter-02.ai?dl=0).
 
 ## That’s it for this part
-So now all the filters have been made in wireframe form, you know the layout is pretty accurate now. You can also see how helpful symbols can be for repetition. 
+So now all the filters have been made in wireframe form, you know the layout is pretty accurate now. You can also see how helpful symbols can be for repetition.
 
 There are other areas that symbols could be used certainly, particularly the close button.
