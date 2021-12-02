@@ -13,7 +13,11 @@ id: 96
 fileroot: "how-to-consistently-style-form-elements"
 ---
 
-One of the trickiest things to deal with cross browser is the styling of form elements. All browsers influence these strictly, but over the years the ‘appearance’ property has been present in WebKit and Blink browsers, and Firefox to help gain some control. More recently it's been added to Edge. 
+import Script from 'next/script'
+
+<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
+One of the trickiest things to deal with cross browser is the styling of form elements. All browsers influence these strictly, but over the years the ‘appearance’ property has been present in WebKit and Blink browsers, and Firefox to help gain some control. More recently it's been added to Edge.
 
 It has a little more to it, than just using this property. I’ll explain the advantages and drawbacks to this and how I handle it. The goal of this post is to give you the base for you to apply your visual style on top of. I will be covering text, button and select elements.
 
@@ -39,7 +43,7 @@ Firefox has long been known to be a pain for its default `line-height`. As of Fi
 
 The `line-height` is set to normal by default. I stick with this if I’m not going to be using `<select>` anywhere. If I’m using `<select>`, I will set a `height`, equivalent `line-height` and only apply `padding` to the sides.
 
-I'm not a huge fan of setting the height, for a few reasons. 
+I'm not a huge fan of setting the height, for a few reasons.
 
 - It means you need to change more, to adapt it at a later point
 - You have to introduce another set of CSS for a textarea
@@ -84,6 +88,5 @@ I have seen other approaches for [handling the Firefox issue](http://davidwalsh.
 
 If you view the following pen in Firefox it demonstrates this. I think this approach may vary, and I may explore it further and update this post with a more definitive answer.
 <p data-height="268" data-theme-id="13022" data-slug-hash="vNJLwm" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/vNJLwm/'>vNJLwm</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 Hopefully, this helps with your styling troubles.

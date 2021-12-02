@@ -16,6 +16,10 @@ id: 135
 fileroot: "css-only-ios-style-toggle"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 Since they appeared in iOS it’s been a trend to recreate these using CSS only. The technique uses the adjacent sibling selector and a “hidden” checkbox to retain use of the `:checked` pseudo class. In this post I wanted to take a look at this myself and recreate the toggle style.
 
 ## Skip ahead
@@ -80,7 +84,7 @@ For the background it needs to be fixed in width and height. It’s got to conta
   transition: .4s ease;
   background-image: linear-gradient(#51c2d7, #51dacf);
   border-radius: 10em;
-  box-shadow: 
+  box-shadow:
     inset 0 1px rgba(0, 0, 0, .15),
     inset 0 0 0 1px rgba(0, 0, 0, .15),
     inset 0 1px 2px rgba(0, 0, 0, .15),
@@ -104,7 +108,7 @@ As you’ve had to use the class to form the background, now you’re left with 
   transition: .4s ease;
   border-radius: 10em;
   background: #fff;
-  box-shadow: 
+  box-shadow:
     inset 0 -1px rgba(0, 0, 0, .2),
     inset 0 0 0 1px rgba(0, 0, 0, .15),
     0 1px 2px rgba(0, 0, 0, .1),
@@ -117,11 +121,11 @@ The positioning values are based upon the size of the toggle and what fits best 
 In the next steps it becomes clearer why the checkbox is positioned the way it is. As the only way to change the appearance of the toggle is to use the `:checked` pseudo class.
 
 ### Reveal the background
-If the input is checked, style the adjacent sibling (~). Essentially the element that follows this one, this is why source order is crucial. 
+If the input is checked, style the adjacent sibling (~). Essentially the element that follows this one, this is why source order is crucial.
 
 ```css
 .input-toggle input:checked ~ .input-toggle-handle {
-  box-shadow: 
+  box-shadow:
     inset 0 1px rgba(0, 0, 0, 0.15),
     inset 0 0 0 1px #31a2a8; }
 ```
@@ -133,14 +137,14 @@ Firstly, some adjustments to the `box-shadow`, this makes for a nice transition 
 ```css
 .input-toggle input:checked ~ .input-toggle-handle:before {
   left: 44px;
-  box-shadow: 
+  box-shadow:
     inset 0 -1px rgba(0, 0, 0, 0.2),
     inset 0 0 0 1px #31a2a8,
     0 1px 2px rgba(0, 0, 0, 0.1),
     0 6px 12px rgba(0, 0, 0, 0.1); }
 ```
 
-Finally, move the toggle over and adjust the `box-shadow`. The `left` value here is subject to tweaking, if you change the size of the elements. 
+Finally, move the toggle over and adjust the `box-shadow`. The `left` value here is subject to tweaking, if you change the size of the elements.
 
 > It would be ideal to use pseudo elements on the input itself, but it’s necessary to use `appearance` to be able to. Which works in different ways in different browsers, that makes this approach the most practical.
 
@@ -178,4 +182,3 @@ The `padding`, `font-size` and `color` can be tweaked here.
 Again, here is the complete demo, I recommend forking it on CodePen and having a look around.
 
 <p data-height="368" data-theme-id="23161" data-slug-hash="bZYKYj" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/bZYKYj/">CSS only iOS style toggle</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>

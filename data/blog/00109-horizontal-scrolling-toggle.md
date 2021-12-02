@@ -13,7 +13,11 @@ id: 109
 fileroot: "horizontal-scrolling-toggle"
 ---
 
-I was looking through photos in finder, and I was finding it frustrating to scan many photos quickly. The problem was down to the horizontal scrolling sections; it is quite quick to flick through but it became tedious. I wanted to see more pictures at once. 
+import Script from 'next/script'
+
+<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
+I was looking through photos in finder, and I was finding it frustrating to scan many photos quickly. The problem was down to the horizontal scrolling sections; it is quite quick to flick through but it became tedious. I wanted to see more pictures at once.
 
 I’ve never really paid attention to the 'show all' button on the top right. In this case, I clicked it, and it gave me the expected view. I figured this would be a good pattern to replicate.
 
@@ -21,7 +25,6 @@ I’ve never really paid attention to the 'show all' button on the top right. In
 The technique here uses flexbox for adjustments; it allows us very easily to shift layouts. Equally, it could be done with wider support, but would require more code. I have written about [a technique aimed around navigation using `inline-block` before](/blog/horizontal-scrolling-responsive-menu).
 
 <p data-height="458" data-theme-id="13022" data-slug-hash="qbOaxp" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/qbOaxp/'>Scrolling carousel toggle</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Markup
 The markup requires the elements you want to scroll to have a containing element. Separate from those elements is our title and a `<span>` element purely for toggling. Inside that is an empty span, which we will use JavaScript to calculate and update.
@@ -60,7 +63,7 @@ This adds flexbox to our container, and the main work here is done with `flex-fl
 ```
 
 ## CSS: Items
-Aside from your visual styling the layout you need is relatively simple. We want our items when horizontal not to adjust in width so that we get the necessary overflow. This is why `flex-grow` and `flex-shrink` are 0, and `flex-basis` is a pixel width. Additionally, the margin is for spacing. I would have liked to have left this up to space-between, but it wasn't possible. Tweak the width and margin as you see necessary.  
+Aside from your visual styling the layout you need is relatively simple. We want our items when horizontal not to adjust in width so that we get the necessary overflow. This is why `flex-grow` and `flex-shrink` are 0, and `flex-basis` is a pixel width. Additionally, the margin is for spacing. I would have liked to have left this up to space-between, but it wasn't possible. Tweak the width and margin as you see necessary.
 
 ```css
 .item {
@@ -82,7 +85,7 @@ Once we apply the toggled state with JavaScript, we need to adjust the column la
 ```
 
 ## JavaScript
-The JavaScript is in two parts. Setting the item count (this is optional) and toggling the scrolling. 
+The JavaScript is in two parts. Setting the item count (this is optional) and toggling the scrolling.
 
 To add the item total, you need to select the item container and count the children. Assigning these elements to variables for readability and easy reference. To find the total items, you find the amount of children within the parent. Then add that value and some formatting with `innerText`.
 
@@ -115,9 +118,9 @@ all.addEventListener('click', function() {
 Two use cases that primarily come to mind. Content carousels and navigation.
 
 ### Content carousels
-Think Netflix, they have a huge library of content across many categories. To display all that vertically make discoverability tough. Being able to scroll down and see category titles quickly and have the ability to view all that content quickly too makes Netflix a good way to browse content. 
+Think Netflix, they have a huge library of content across many categories. To display all that vertically make discoverability tough. Being able to scroll down and see category titles quickly and have the ability to view all that content quickly too makes Netflix a good way to browse content.
 
 If the content weren't browsable on both axes, for me to get from ‘Top Picks for Steve’ to ‘Bollywood Films’ would take a very long time. Once I’ve decided a category I want to watch something from; it gets fairly tedious to click through the carousel. **A way of toggling this on a category basis would mean I could see more content in my viewport**.
 
 ### Navigation
-Horizontal scrolling navigation tends to fall when you need a dropdown menu, or if there are a larger amount of items. It could be used here to allow to show the items vertically or in a different layout that may accommodate submenus better. 
+Horizontal scrolling navigation tends to fall when you need a dropdown menu, or if there are a larger amount of items. It could be used here to allow to show the items vertically or in a different layout that may accommodate submenus better.

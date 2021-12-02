@@ -16,6 +16,10 @@ id: 88
 fileroot: "using-flexbox-for-horizontal-scrolling-navigation"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 This post is a follow up to a different method for [horizontal scrolling navigation](/blog/horizontal-scrolling-responsive-menu) which used `inline-block`. In this post, I want to cover how flexbox can be used to achieve the same thing and the benefits over the `inline-block` method.
 
 As a design pattern, it is one that is beginning to be used much more. It's great for touch devices, as horizontal scrolling feels more natural. It's great on a Mac too, with a trackpad or Magic Mouse it's just as easy as vertically scrolling. That's potentially a good chunk of your audience, you can improve the user experience for and utilise space better.
@@ -24,7 +28,6 @@ As a design pattern, it is one that is beginning to be used much more. It's grea
 Have a quick look through the code, then let's get into the explanation.
 
 <p data-height="384" data-theme-id="13022" data-slug-hash="WvWrRX" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/WvWrRX/'>Flexbox horizontal scrolling navigation</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 ## The implementation
 The implementation is flexible to work with your layout. Whether you have it positioned by your logo, or underneath it will be fine. Just apply the styles, to whichever element you prefer.
@@ -52,7 +55,7 @@ Aside from making the element containing your navigation items a flex container,
   display: none; }
 ```
 
-The next set of properties aren't mandatory, but do make the usability nicer, particularly `-webkit-overflow-scrolling`. On iOS devices, this makes scroll areas have momentum and ease of use. Many sites don't seem to use this, so please do! Android devices by default are easier to scroll. 
+The next set of properties aren't mandatory, but do make the usability nicer, particularly `-webkit-overflow-scrolling`. On iOS devices, this makes scroll areas have momentum and ease of use. Many sites don't seem to use this, so please do! Android devices by default are easier to scroll.
 
 You can also hide the scrollbar completely by targeting the `::-webkit-scrollbar` pseudo element and this will improve the appearance for Windows. However, from some brief testing on Windows, it can make it trickier to scroll. Although, it could depend on your mouse, so you may want to use this cautiously. _Sadly with Firefox it seems you're out of luck_.
 

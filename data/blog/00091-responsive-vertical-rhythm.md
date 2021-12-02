@@ -16,6 +16,10 @@ id: 91
 fileroot: "responsive-vertical-rhythm"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 I wrote a fairly lengthy post previously on [vertical rhythm](/blog/a-guide-to-vertical-rhythm). I considered adding a section on how to adjust font sizes whilst maintaining vertical rhythm. However, with the experience of seeing how people struggle with the topic of vertical rhythm, it was best to keep it for a separate post.
 
 I will assume **you do have a grasp** of vertical rhythm, at this point, otherwise some parts may not make sense. In the examples I will be using em units, with Sass. So I assume you will have an understanding of how em units work. However, I will give you a brief overview.
@@ -35,7 +39,6 @@ I will assume **you do have a grasp** of vertical rhythm, at this point, otherwi
 View the compiled CSS if you would like to see how the numbers work out.
 
 <p data-height="368" data-theme-id="13022" data-slug-hash="zvYbgx" data-default-tab="result" data-user="stevemckinney" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/zvYbgx/">zvYbgx</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Briefly on em units
 I use em’s for the majority of this process. You can do much of the heavy lifting by adjusting the font size **only** on the `body`. Once you get your head around em units they can be very useful.
@@ -50,7 +53,7 @@ When we say target, that’s the **pixel equivalent** we want to achieve. Contex
 24 / 16 = 1.5
 ```
 
-> The easiest way, to keep control of your context, is to apply, font sizes on the element itself. You can apply it on containing/parent elements, but this could lead to some trickier calculations. 
+> The easiest way, to keep control of your context, is to apply, font sizes on the element itself. You can apply it on containing/parent elements, but this could lead to some trickier calculations.
 
 ### Using Sass to do this
 This is possibly my most used function while writing Sass. I’ve covered briefly [the benefits of using Sass for em units](/blog/sass-hints-tips-revisited). It does a good amount of work for us. It calculates the em value and also gives insight to the original calculation.
@@ -82,14 +85,14 @@ The first step is to get our base font sizes setup. This is a convenient way of 
 body {
   font-size: 12px;
   line-height: 1.5;
-  
+
   @media (min-width: 520px) {
     font-size: 16px; } }
 ```
 
 I’m starting from the smallest screen and working my way up. Beginning with a base font size of 12px and adjusting that to 16px later on. This means everything is going to be a third larger.
 
-I have also set my line height to be 1.5. I know this is going to be good for most cases. 
+I have also set my line height to be 1.5. I know this is going to be good for most cases.
 
 > The reason for doing this is the ability to change the font-size in only one place and affect anything that uses an em unit.
 
@@ -145,14 +148,14 @@ p {
 ## Adjusting our measurements for breakpoints
 If you’re adjusting font size only on the body, you don’t really need to worry, about it throwing off your baseline. The baseline will, scale proportionally. This is the great thing about that, it’s the smallest amount of code. However you sacrifice a little control over the sizing and preciseness.
 
-If you do want to retain your original baseline and font sizes, you will need, to adjust all of the properties, that rely on it.   
+If you do want to retain your original baseline and font sizes, you will need, to adjust all of the properties, that rely on it.
 
 ```sass
 h1 {
   font-size: em(30px);
   line-height: 1.2;
   margin-bottom: em(24px, 30px);
-  
+
   @media (min-width: 520px) {
     font-size: em(36px, 16px);
     line-height: 1.16666666666;

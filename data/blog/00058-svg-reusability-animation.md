@@ -13,6 +13,10 @@ id: 58
 fileroot: "svg-reusability-animation"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 If you haven’t read the previous posts, I have spent the best part of my free time building a portfolio, where I focused on performance. These posts covered [asynchronous and critical path CSS](http://iamsteve.me/blog/entry/critical-asynchronous-css), [Javascript](http://iamsteve.me/blog/entry/javascript-without-jquery) and [images with srcset & picture](http://iamsteve.me/blog/entry/images-with-srcset-picture).
 
 The great thing about SVG is CSS can modify it. Which allows you to modify the way paths look quite drastically. This is really handy for saving on page weight because you don’t have to load multiple images and it looks like the changes were meant to happen, as it tends to look unnatural when you use a bunch of PNGs.
@@ -31,7 +35,7 @@ The main way I would do this is I created an SVG file to contain all of my paths
 </svg>
 ```
 
-### `style="display:none"` 
+### `style="display:none"`
 This basically makes sure you’re not left with a blank space in your document. An alternative to this could be using [the `.visuallyhidden` technique](http://a11yproject.com/posts/how-to-hide-content/).
 
 ### The `class` attribute
@@ -110,7 +114,6 @@ With the CSS we change the stroke to be transparent and fill in the eyebrows wit
 This was only a brief look into what I have done, it’s like any animation you would do, just there are specific SVG properties you can use. Have a dig through the CSS on CodePen to get a better idea.
 
 <p data-height="480" data-theme-id="13022" data-slug-hash="GgNyBo" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/GgNyBo/'>GgNyBo</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 ## SVG can be accessible too
 If your SVG has more purpose other than decoration you will want to [make it accessible](http://www.sitepoint.com/tips-accessible-svg/). The article by Léonie Watson provides great insight to making them accessible.

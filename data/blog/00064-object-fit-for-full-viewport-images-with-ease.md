@@ -13,13 +13,17 @@ id: 64
 fileroot: "object-fit-for-full-viewport-images-with-ease"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 This CSS feature will make life much easier where it concerns the size of images. It’s like background-size for background images. It’s easy to use and behaves in a similar way albeit different naming. I’m going to show how `object-fit` and viewport relative units allow, without distortion, sizing inline images, to a more fluid aspect ratio.
 
 ## The major use case
 I’m sure you have wanted images to be updateable through your CMS.  You want them to be responsive and fill the container it’s in. As a result you have had to make some kind of sacrifice. `object-fit` solves this.
 
 ## Usage
-`object-fit` has options  `none`, `contain`, `scale-down` and `fill` (which is the initial value). 
+`object-fit` has options  `none`, `contain`, `scale-down` and `fill` (which is the initial value).
 
 ```css
 .fitted-image {
@@ -48,7 +52,6 @@ To make an image fill the viewport and avoid distortion, we need to use viewport
 ### Putting it together
 
 <p data-height="464" data-theme-id="13022" data-slug-hash="NPmgNB" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/NPmgNB/'>NPmgNB</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Browser support
 As of writing the only downsides are IE doesn’t support it and Safari on Mac and iOS don’t support object-position. [Updated support is always available on caniuse](http://caniuse.com/#search=object-fit)

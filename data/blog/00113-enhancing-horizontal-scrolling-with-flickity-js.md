@@ -166,7 +166,6 @@ There are a couple of things to account for. Flickity uses absolute positioning 
 
 #### Demo
 <p data-height="268" data-theme-id="13022" data-slug-hash="KVewMV" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/KVewMV/'>Scrolling carousel toggle with flickity</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 #### Original example JavaScript
 

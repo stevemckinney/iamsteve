@@ -13,6 +13,10 @@ id: 68
 fileroot: "type-scale-line-height-lengths"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 As a beginner, with designing websites, one of the things that can be overlooked is creating a great reading experience. All websites are about their content and being able to read that in a comfortable way will make your visitors happy.
 
 In this post I will cover how to choose a harmonious type scale and set comfortable line lengths and line height, that scale well with responsive type sizes.
@@ -46,10 +50,10 @@ Make your line lengths between 45-75 characters.
 ## Suitable line height
 It’s said that the shorter the line length the smaller the line height and the longer the line length the taller the line height.
 
-Make it too small and you make it difficult to adjust to find the next line and the same can be said for it being too tall. It’s finding what’s comfortable for the eye. 
+Make it too small and you make it difficult to adjust to find the next line and the same can be said for it being too tall. It’s finding what’s comfortable for the eye.
 
 ### Body text
-I have found that setting the line height of body text to be 1.5 times that of the font size. So you would set `line-height: 1.5`. It’s dependent on the typeface; you may need more, or less. I find 1.5 is suitable in the majority of cases. 
+I have found that setting the line height of body text to be 1.5 times that of the font size. So you would set `line-height: 1.5`. It’s dependent on the typeface; you may need more, or less. I find 1.5 is suitable in the majority of cases.
 
 A unit less value is the best to use for line-height. It’s always 1.5 times the value of any font size. This makes our code flexible for adjustments and setting this on `<body>`.
 
@@ -72,7 +76,6 @@ I definitely recommend trialling out the different types and finding one which s
 If we take the principles mentioned throughout the post, we find, from the defaults provided, by the browser, we see a noticeable improvement.
 
 <p data-height="540" data-theme-id="13022" data-slug-hash="NPooLL" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/NPooLL/'>NPooLL</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Finishing thoughts
 As you can see we haven't focused on typeface choices. The improvements made, over the defaults, improve the readability. I want to note that while these guidelines are crucial to creating a good reading experience, it’s important to remember that you shouldn’t take them overboard in achieving perfection with them, across the array of screen sizes we have to deal with.

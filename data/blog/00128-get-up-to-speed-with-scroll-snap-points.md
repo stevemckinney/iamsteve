@@ -13,9 +13,13 @@ id: 128
 fileroot: "get-up-to-speed-with-scroll-snap-points"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 > **This post is out of date**. Scroll snap points has been updated significantly since this post was written. Many of the properties will no longer work, until this post can be updated, I would advise referring to the [official spec](https://drafts.csswg.org/css-scroll-snap-1/).
 
-Scroll snap points is the answer to the need for JavaScript carousels, to an extent. As browsers gain more and more new features in CSS, it’s important to keep up to date with them. As the generalisation is; where you can replace JavaScript with CSS you gain performance improvements. Carousels in my experience are a good chunk of the need for JavaScript on the average website. So I'm very interested at the prospect of using scroll snap points to replace that. 
+Scroll snap points is the answer to the need for JavaScript carousels, to an extent. As browsers gain more and more new features in CSS, it’s important to keep up to date with them. As the generalisation is; where you can replace JavaScript with CSS you gain performance improvements. Carousels in my experience are a good chunk of the need for JavaScript on the average website. So I'm very interested at the prospect of using scroll snap points to replace that.
 
 ## Browser support
 Currently browser support isn't great (as of writing), due to Chrome not supporting scroll snap points altogether. So this cuts out a massive part of anyone’s audience. Always check [caniuse](http://caniuse.com/#feat=css-snappoints) for up to date usage.
@@ -27,7 +31,7 @@ It’s important to note as well Safari is using the `-webkit-` prefix. The prop
 Scroll snap points should behave quite familiarly. If you scroll or swipe an area that has it enabled, it will snap to the next area, that has been specified in CSS.
 
 ## Properties on the scroll container
-There are two types of properties that are necessary for scrolling regions, those on the container and those on the child elements. Some will also have the ability to be used on both the container and child elements. 
+There are two types of properties that are necessary for scrolling regions, those on the container and those on the child elements. Some will also have the ability to be used on both the container and child elements.
 
 ### Basic CSS required
 Part of making this functionality viable means a base level of CSS will be required for the scroll container.
@@ -55,7 +59,7 @@ Defining a `width`, `height` and `overflow` will give you a basic scrolling area
 There are 3 values for the snap type, `none`, `mandatory` and `proximity`. `none` being the more obvious value, in that if there is any snapping, it will be removed. `mandatory` and `proximity` allow for different types of snapping behaviour.
 
 #### Comparisons
-When using the values `mandatory` or `proximity`, I found in Safari it didn’t matter too much, but in Firefox it made a clear difference. 
+When using the values `mandatory` or `proximity`, I found in Safari it didn’t matter too much, but in Firefox it made a clear difference.
 
 `mandatory` definitely had the more expected snapping behaviour, whereas `proximity` felt somewhat broken. `proximity` allows the user to scroll more freely, `mandatory` doesn’t.
 
@@ -84,7 +88,7 @@ So with that in mind, once you scroll it will snap to that point within the elem
 
 <p data-height="300" data-theme-id="23161" data-slug-hash="Yqvweq" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-preview="true" data-editable="true" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/Yqvweq/">scroll snap points #1</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
-I found the behaviour to work strangely, when experimenting with it within Firefox over Safari. If you compare the difference of the demo in either browser, it will become clearer. It feels like you’re forced towards the child elements taking up the whole browser width to work effectively. 
+I found the behaviour to work strangely, when experimenting with it within Firefox over Safari. If you compare the difference of the demo in either browser, it will become clearer. It feels like you’re forced towards the child elements taking up the whole browser width to work effectively.
 
 Finally, this property you can animate, whereas  `scroll-snap-points` can’t. That’s for a separate post to explore this capability.
 
@@ -99,13 +103,13 @@ Finally, this property you can animate, whereas  `scroll-snap-points` can’t. T
 .scroll-container {
   width: 100vw;
   height: 100vh;
-  
+
   /* Not necessary for overflow-y */
   white-space: nowrap;
-  
+
   /* Can be overflow-y */
   overflow-x: auto;
-  
+
   /* Enable scroll snapping */
   scroll-snap-points-x: repeat(100%);
   scroll-snap-points-y: repeat(100%);
@@ -116,7 +120,7 @@ Finally, this property you can animate, whereas  `scroll-snap-points` can’t. T
 There are no supported properties, as of yet that are element only.
 
 ## All elements
-Currently, there is only one element that will apply to all elements. 
+Currently, there is only one element that will apply to all elements.
 
 ### scroll-snap-coordinate
 This property can be applied to child elements too, it’s usage is similar to `background-position` and you can also pass multiple coordinates.
@@ -129,7 +133,7 @@ This property can be applied to child elements too, it’s usage is similar to `
   scroll-snap-coordinate: 240px 240px; }
 ```
 
-To be honest I don’t actually know how this property affected anything. It sounds like the behaviour is similar to `scroll-snap-destination`. With it being able to be applied to child elements, I would have expected it to align to each differently if specified. 
+To be honest I don’t actually know how this property affected anything. It sounds like the behaviour is similar to `scroll-snap-destination`. With it being able to be applied to child elements, I would have expected it to align to each differently if specified.
 
 It feels like this property should clash with `scroll-snap-destination`. I didn’t understand this very well, however it was only mentioned in MDN and supported in Firefox.
 
@@ -178,10 +182,8 @@ This property applies to all elements, using values `none`, `start`, `end` and `
 ## Finishing thoughts
 The difficulty in researching some of this CSS module tells me it’s going to go through some changes. Like the CSS shapes and exclusions modules, it’s just the start. There is plenty of room for expansion. Such as animation and control over how it’s interacted with. Animation appears possible in Firefox and with future properties.
 
-You may be put off using such CSS, but without experimenting and looking at new properties. You’re not able to form an opinion and join in the future of CSS. You can also see the difficulty in interpreting some of these properties, and the behaviour not being what you may expect. This type of feedback is helpful for CSS spec writers. 
+You may be put off using such CSS, but without experimenting and looking at new properties. You’re not able to form an opinion and join in the future of CSS. You can also see the difficulty in interpreting some of these properties, and the behaviour not being what you may expect. This type of feedback is helpful for CSS spec writers.
 
 [^1]: [Scroll snap padding specification](https://www.w3.org/TR/css-snappoints-1/#scroll-snap-padding)
 [^2]: [Scroll snap margin specification](https://www.w3.org/TR/css-snappoints-1/#scroll-snap-margin)
 [^3]: [Scroll snap align specification](https://www.w3.org/TR/css-snappoints-1/#scroll-snap-align)
-
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>

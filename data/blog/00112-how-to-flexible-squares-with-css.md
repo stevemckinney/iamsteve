@@ -16,6 +16,10 @@ id: 112
 fileroot: "how-to-flexible-squares-with-css"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 How do you maintain a perfect square shape with a responsive layout? The solution appears simple; the only issue is your content. Which if you want to maintain a square shape it should be able to accommodate the content. I’ll show you how to do it in with this quick tip.
 
 ## The problem
@@ -90,4 +94,3 @@ An option is to use `calc()` and subtract the border from the `width` and `paddi
 
 ## Again the solution
 <p data-height="370" data-theme-id="13022" data-slug-hash="dGzXwO" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/dGzXwO/'>Flexible squares</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
