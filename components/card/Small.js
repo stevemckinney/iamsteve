@@ -44,9 +44,9 @@ const Small = ({ frontmatter }) => {
             ) : (
               <>
                 {categories.includes('Design') ? (
-                  <Placeholder kind="Design" />
+                  <Placeholder category="Design" kind="post" />
                 ) : (
-                  <Placeholder kind="Code" />
+                  <Placeholder category="Code" kind="post" />
                 )}
               </>
             )}

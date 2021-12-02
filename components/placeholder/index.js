@@ -20,15 +20,17 @@ function getRandomKey(collection) {
   return keys[Math.floor(Math.random() * keys.length)]
 }
 
-function Placeholder(kind) {
+function Placeholder({ category, kind }) {
   // assign the random value to a variable to use later
   // depending on the kind passed to this function
-  let random =
-    kind === 'Design' ? getRandomKey(PlaceholderDesignMap) : getRandomKey(PlaceholderCodeMap)
+  const random =
+    category === 'Design' ? getRandomKey(PlaceholderDesignMap) : getRandomKey(PlaceholderCodeMap)
+
+  const containerClass = kind.toString() === 'hero' ? 'pt4 pb4 pt6-b pb6-b pt7-d pb8-d flex center featured-image entry-image' : 'radius flex'
 
   return (
-    <div className="radius flex" style={{ backgroundColor: random }}>
-      {kind === 'Design' ? (
+    <div className={containerClass} style={{ backgroundColor: random }}>
+      {category === 'Design' ? (
         <Image
           src={PlaceholderDesignMap.get(random)}
           className="radius"

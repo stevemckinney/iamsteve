@@ -52,37 +52,35 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
       />
       <ScrollTopAndComment />
 
-      <div
-        className="pt4 pb4 pt6-b pb6-b pt7-d pb8-d flex center featured-image entry-image"
-        role="presentation"
-        style={{ backgroundColor: theme.toString() }}
-      >
-        <>
-          {images ? (
-            <>
+      <>
+        {images ? (
+          <>
+            <div
+              className={hero}
+              style={{ backgroundColor: theme.toString() }}
+            >
               {images.map((image) => (
                 <Image
                   src={image}
                   className="radius"
                   alt=""
-                  role="presentation"
                   width={744}
                   height={492}
                   key={image}
                 />
               ))}
-            </>
-          ) : (
-            <>
-              {categories.includes('Design') ? (
-                <Placeholder kind="Design" />
-              ) : (
-                <Placeholder kind="Code" />
-              )}
-            </>
-          )}
-        </>
-      </div>
+            </div>
+          </>
+        ) : (
+          <>
+            {categories.includes('Design') ? (
+              <Placeholder category="Design" kind="hero" />
+            ) : (
+              <Placeholder category="Code" kind="hero" />
+            )}
+          </>
+        )}
+      </>
 
       <article className="entry-content pt6 pb6">
         <p className="f2-l">
