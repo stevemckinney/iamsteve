@@ -56,7 +56,7 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
         {images ? (
           <>
             <div
-              className={hero}
+              className="pt4 pb4 pt6-b pb6-b pt7-d pb8-d flex center featured-image entry-image"
               style={{ backgroundColor: theme.toString() }}
             >
               {images.map((image) => (
