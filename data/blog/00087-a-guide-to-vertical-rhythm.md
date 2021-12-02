@@ -37,7 +37,6 @@ Vertical rhythm is the typographic practice, to create a vertical harmony betwee
 
 ### Takeaway example
 <p data-height="356" data-theme-id="13022" data-slug-hash="QjWowq" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/QjWowq/'>QjWowq</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Vertical rhythm
 A vertical rhythm starts from a baseline. It’s the basis for everything from the font sizes, line height and image sizes.
