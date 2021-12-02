@@ -13,13 +13,16 @@ id: 136
 fileroot: "designing-a-pricing-table-in-code"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />
+
 Following up from [the design in Illustrator post](/blog/making-a-pricing-table-in-illustrator), it’s time to code the design. Using flexbox to do the heavy lifting for the layout, the focus can be on matching the design and improving on it through being able to show the button state.
 
 ## Preview
 It may be better to view a larger version on CodePen.
 
-<p data-height="420" data-theme-id="23161" data-slug-hash="rLJNYV" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/rLJNYV/">Pricing table</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+<p data-height="420" data-theme-id="23161" data-slug-hash="rLJNYV" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/rLJNYV/">Pricing table</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
 ## Add the font
 Work Sans is available for free on [Google Fonts](https://fonts.google.com/specimen/Work+Sans?query=work&selection.family=Work+Sans:300,400,600). There are 3 weights being used, light, normal and semi bold.
@@ -33,7 +36,7 @@ Here is the standard way of including the fonts, you may want to use an alternat
 ## Defining markup
 All items need a containing element `.boxes`, so that you can apply styles to restrict the width of the element.
 
-Following that ‘package’ should be in it’s own `<div>` with a class `box` and a positional one `box-start`, `box-center`, `box-end`. As each will have a slightly different offset. 
+Following that ‘package’ should be in it’s own `<div>` with a class `box` and a positional one `box-start`, `box-center`, `box-end`. As each will have a slightly different offset.
 
 ```markup
 <div class="container">
@@ -206,30 +209,30 @@ Here you define the style of this area, and then move onto the specific differen
 Individually the value is larger than ‘/mo’, which is also small caps.
 
 ### Features
-The features is broken up into a few areas. The `<ul>`, which some browser defaults need to be undone. The padding adds a good space round the title and button area. 
+The features is broken up into a few areas. The `<ul>`, which some browser defaults need to be undone. The padding adds a good space round the title and button area.
 
 ```css
 .features {
   margin: 0;
   padding: 24px; }
-  
+
 .features s {
   color: #bed8d8; }
-  
+
 .features li {
   line-height: 2;
   list-style: none; }
-  
+
 .features li:first-child {
   font-weight: 600; }
 ```
 
-Moving on to more of the content, the `s` of `.features s` could be easily considered a mistake, but it’s not we’re making the strikethrough a lighter blue to deemphasise it. 
+Moving on to more of the content, the `s` of `.features s` could be easily considered a mistake, but it’s not we’re making the strikethrough a lighter blue to deemphasise it.
 
 Then each item is spaced using `line-height`, you don’t want anything to break onto a new line so `line-height` is an easy way to get consistent spacing. Finally, the first item is made bold.
 
 ### Button
-When styling unless you want them to fill the width of the container, they are best being `inline-block`. 
+When styling unless you want them to fill the width of the container, they are best being `inline-block`.
 
 ```css
 .button {
@@ -253,7 +256,7 @@ The `transition` is important for the hover state. The `text-decoration`, makes 
 
 The transition set earlier means that the shadow appears from the bottom, without that it would look like the background colour changes. It’s important to note the y value of the shadow needs to be the button height.
 
-```css  
+```css
 .button:active {
   transform: scale(.95455); }
 ```
@@ -290,7 +293,7 @@ That’s everything to be covered in terms of CSS, here is the full combined CSS
 
 .box-outer {
   padding: 60px 0; }
-  
+
 .box-inner {
   padding: 72px 0;
   margin: 0 -12px;
@@ -311,7 +314,7 @@ That’s everything to be covered in terms of CSS, here is the full combined CSS
   color: #4db898;
   font-weight: 600;
   font-size: 18px; }
-  
+
 .price-value {
   font-size: 24px; }
 
@@ -322,14 +325,14 @@ That’s everything to be covered in terms of CSS, here is the full combined CSS
 .features {
   margin: 0;
   padding: 24px; }
-  
+
 .features s {
   color: #bed8d8; }
-  
+
 .features li {
   line-height: 2;
   list-style: none; }
-  
+
 .features li:first-child {
   font-weight: 600; }
 
@@ -354,5 +357,4 @@ That’s everything to be covered in terms of CSS, here is the full combined CSS
 
 ## Codepen preview
 
-<p data-height="420" data-theme-id="23161" data-slug-hash="rLJNYV" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/rLJNYV/">Pricing table</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+<p data-height="420" data-theme-id="23161" data-slug-hash="rLJNYV" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/rLJNYV/">Pricing table</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
