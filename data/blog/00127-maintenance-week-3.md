@@ -16,7 +16,7 @@ id: 127
 fileroot: "maintenance-week-3"
 ---
 
-Maintenance weeks are where I detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies what I will do, and this posts serves as detailing what has been done. 
+Maintenance weeks are where I detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies what I will do, and this posts serves as detailing what has been done.
 
 So while it’s not a post that directly gives value, it helps me keep on top of the library of content that I am acquiring.
 
@@ -24,13 +24,19 @@ So while it’s not a post that directly gives value, it helps me keep on top of
 The main aim of this week was to try get a few featured images out. It’s something I’m going to make more of a consistent thing, when the redesign is complete. Balancing the redesign and writing content, amongst a full time job and life is very tricky. It means it’s necessary, to devote blocks of time, away from writing, so that I can progress.
 
 ### Colour series
-<Image src="/static/images/blog/colour-series-post-images-011.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/colour-series-post-images-011.png" width={738} height={492} />
+</div>
 
 ### Hero area series
-<Image src="/static/images/blog/hero-area-post-images-01.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/hero-area-post-images-01.png" width={738} height={492} />
+</div>
 
 ### How to use swatches in Illustrator
-<Image src="/static/images/blog/use-swatches-01.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/use-swatches-01.png" width={738} height={492} />
+</div>
 
 ### Challenging
 Making featured images is quite challenging. I have focused on doing a quite a few now, during this post and the redesign. Trying to figure out my style and consistency with illustration, is something I’m beginning to nail down.
@@ -41,7 +47,7 @@ The more ways I find to illustrate things, my style is going to become clearer. 
 Outside of the featured images it was useful to do some other site maintenance.
 
 ### Setup for redesign
-In addition to adding featured images, I will have two sets of images for each post. The featured image and a thumbnail, the thumbnails aren’t in use now, but they will once the redesign is complete. So I needed a way to define those ahead of time and begin uploading them now. 
+In addition to adding featured images, I will have two sets of images for each post. The featured image and a thumbnail, the thumbnails aren’t in use now, but they will once the redesign is complete. So I needed a way to define those ahead of time and begin uploading them now.
 
 Time will tell how maintainable this is, but I like to have particular ‘art directed’ control over my images.
 
@@ -57,7 +63,9 @@ I discovered a bug in my particular setup for the way I handle posts in markdown
 I spent some time making regular HTML links, then realised how much effort it was. I needed to find a more convenient fix, which I was able to.
 
 ### Sequel Pro tool
-<Image src="/static/images/blog/tools_sequel-pro.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/tools_sequel-pro.png" width={738} height={492} />
+</div>
 
 I missed off Sequel Pro from my tools post. I realised shortly afterwards, I hadn’t added it. [Read the updated article](/blog/tools-i-use).
 

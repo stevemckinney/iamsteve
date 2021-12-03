@@ -28,7 +28,9 @@ Here’s what will be explained in the coming paragraphs. Feel free to explore t
 <p data-height="368" data-theme-id="23161" data-slug-hash="bZYKYj" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/bZYKYj/">CSS only iOS style toggle</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
 ## Identifying elements in the design
-<Image src="/static/images/blog/ios-toggle-example.png" />
+<div className="article-image">
+  <Image src="/static/images/blog/ios-toggle-example.png" width={738} height={492} />
+</div>
 
 To understand what happens with this toggle, it’s more ‘faking’ the element. It’s still a regular checkbox, but to make the toggle work you need to retain the behaviour.
 

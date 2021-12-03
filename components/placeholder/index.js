@@ -26,7 +26,10 @@ function Placeholder({ category, kind }) {
   const random =
     category === 'Design' ? getRandomKey(PlaceholderDesignMap) : getRandomKey(PlaceholderCodeMap)
 
-  const containerClass = kind.toString() === 'hero' ? 'pt4 pb4 pt6-b pb6-b pt7-d pb8-d flex center featured-image entry-image' : 'radius flex'
+  const containerClass =
+    kind.toString() === 'hero'
+      ? 'pt4 pb4 pt6-b pb6-b pt7-d pb8-d flex center featured-image entry-image'
+      : 'radius flex'
 
   return (
     <div className={containerClass} style={{ backgroundColor: random }}>

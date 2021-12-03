@@ -60,14 +60,7 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
               style={{ backgroundColor: theme.toString() }}
             >
               {images.map((image) => (
-                <Image
-                  src={image}
-                  className="radius"
-                  alt=""
-                  width={744}
-                  height={492}
-                  key={image}
-                />
+                <Image src={image} className="radius" alt="" width={744} height={492} key={image} />
               ))}
             </div>
           </>

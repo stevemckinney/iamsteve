@@ -1,16 +1,16 @@
 ---
-title: "How to: datepicker styling using Illustrator"
-date: "2016-05-17T06:45:00+00:00"
+title: "How to: datepicker using Illustrator"
+date: "2016-05-10T07:45:00+0100"
 lastmod: "2016-08-28T09:18:26+00:00"
-summary: "Following on from the datepicker post where it was more about getting the basics in place and focusing on some important Illustrator techniques that allow for accuracy and efficiency. This post will focus on guiding you through the process of making the datepicker easy to understand and have better aesthetics."
+summary: "In this post I’m going to show you how to make a datepicker efficiently. A reasonably common user interface element, but can be a source of frustration, to make in design applications. Due to the grid, and amount of items in that grid it can be difficult to align everything…"
 metadesc: "Following on from the datepicker post where it was more about getting the basics in place and focusing on some important Illustrator techniques that allow for accuracy and efficiency. "
 theme: "#ffede5"
 tags: ["Design"]
 categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
-id: 126
-fileroot: "how-to-datepicker-styling-illustrator"
+id: 125
+fileroot: "how-to-datepicker-using-illustrator"
 ---
 
 In this post I’m going to show you how to make a datepicker efficiently. A reasonably common user interface element, but can be a source of frustration, to make in design applications. Due to the grid, and amount of items in that grid it can be difficult to align everything quickly in an application like Illustrator.
@@ -36,7 +36,7 @@ The first step is to setup a new document, the size isn’t too important, but I
 Your rectangle may have drawn with a black stroke by default, remove that by pressing <kbd>x</kbd>, this should activate selection of the stroke, then press <kbd>/</kbd>.
 
 <div class="article-image">
-  <Image src="/static/images/blog/datepicker_illustrator-toolbar.png" width={738} height={492} />
+  <Image src="/static/images/blog/datepicker_illustrator-toolbar.png" width={738} height={342} />
 </div>
 
 An alternate method is to double click on the fill and choose a colour, then click the fill and box with the red line through it just below.
@@ -163,7 +163,7 @@ Now to make sure both of the lines are part of the same path. Using the direct s
 Drag and select the corner where both paths meet. Then right click the points that you have selected and select join.
 
 <div class="article-image">
-  <Image src="/static/images/blog/datepicker-rotate.gif" width={738} height={492} />
+  <Image src="/static/images/blog/datepicker-rotate.gif" width={748} height={360} />
 </div>
 
 Now that we have the basic path, it needs rotating. With the path selected, highlight near one the points, and you should see the cursor change. Hold <kbd>shift</kbd>, click and drag until it snaps into the position needed for an arrow.

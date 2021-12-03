@@ -33,11 +33,11 @@ On more recent reflection that design still met criteria of a redesign, but the 
 ### The scrapped design
 I explored several other ideas, within a similar style. Some of these versions at the time were testing my skills of visual design. It was a fun design process.
 
-<figure><Image src="/static/images/blog/redesign_iteration-1@2x.png" width={738} height={492} /><figcaption>I wanted to explore different navigation styles. There is also some awkward spacing between the about and dribbble shots.</figcaption></figure>
+<figure><Image src="/static/images/blog/redesign_iteration-1@2x.png" width={900} height={820} /><figcaption>I wanted to explore different navigation styles. There is also some awkward spacing between the about and dribbble shots.</figcaption></figure>
 
-<figure><Image src="/static/images/blog/redesign_iteration-2@2x.png" width={738} height={492} /><figcaption>Compacting the layout here was probably the right balance between adventurous and difficulty.</figcaption></figure>
+<figure><Image src="/static/images/blog/redesign_iteration-2@2x.png" width={900} height={820} /><figcaption>Compacting the layout here was probably the right balance between adventurous and difficulty.</figcaption></figure>
 
-<figure><Image src="/static/images/blog/redesign_iteration-3@2x.png" width={738} height={492} /><figcaption>I simplified much further, because I kept thinking ‘is it too much?’</figcaption></figure>
+<figure><Image src="/static/images/blog/redesign_iteration-3@2x.png" width={900} height={820} /><figcaption>I simplified much further, because I kept thinking ‘is it too much?’</figcaption></figure>
 
 I tried various routes, and eventually reigned in the approach as I tried to balance the visual design with content and not make it too intense.
 
