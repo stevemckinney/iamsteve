@@ -36,6 +36,7 @@
     "remark-footnotes": "^4.0.0",
     "remark-gfm": "^2.0.0",
     "remark-math": "^5.0.0",
+    "remark-smartypants": "^2.0.0",
     "sass": "^1.43.4",
     "sharp": "^0.28.3",
     "smoothscroll-polyfill": "^0.4.4",
