@@ -22,18 +22,22 @@ The second to last post in this series, coding the page. You’re going to build
 You can grab all the [HTML, CSS, and images on Github](https://github.com/stevemckinney/customizer-hero-html).
 
 ## Exporting assets & colours
-The first part to beginning to code any website should involve getting all the assets, typefaces and colours gathered. 
+The first part to beginning to code any website should involve getting all the assets, typefaces and colours gathered.
 
 ### Image export SVG
-To export your image, copy and paste it outside of the artboard. This is purely to avoid having to change artboard sizes, removing background layers. If you have followed along with using a symbol, any edits will be kept up to date everywhere. 
+To export your image, copy and paste it outside of the artboard. This is purely to avoid having to change artboard sizes, removing background layers. If you have followed along with using a symbol, any edits will be kept up to date everywhere.
 
 Next, select the artboard tool or press <kbd>shift</kbd> + <kbd>o</kbd>. Then click the image, this should draw an artboard to the exact dimensions of the image. This should be the third artboard.
 
-<Image src="/static/images/blog/ch-export-artboard-select.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/ch-export-artboard-select.png" width={780} height={328} />
+</div>
 
 Finally, go to File > Export. You’ll be presented with this window, check Use Artboards and check Range and make that 3. This should be the hero image, if not with the artboard tool selected, you should be able to see, in the top left of each artboard, a number like ’03’. Enter that in the range and click export.
 
-<Image src="/static/images/blog/ch-export-settings.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/ch-export-settings.png" width={640} height={360} />
+</div>
 
 After you’ve clicked export, you will be presented with a window to customise your export. Generally everything that’s there is fine, except make sure ‘Minify’ and ‘Responsive’ are checked.
 
@@ -92,7 +96,7 @@ To start your CSS, make a file named `style.css`. This is already in place using
 It’s always important to start from a fresh without any browser styles that are going to trip us up later. It’s a small reset that takes away much of the default styling and resets to a base level that we build upon later.
 
 ```css
-/* Reset 
+/* Reset
  * --------------------------- */
 html { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; box-sizing: border-box; }
 *, *:before, *:after { box-sizing: inherit; }
@@ -123,7 +127,7 @@ When writing CSS it’s important to have a reference of colours. Add this after
 The first thing that needs doing from here is to add CSS that covers the majority of areas. So this being colour, background colour, font and line height.
 
 ```css
-/* Basic setup 
+/* Basic setup
  * --------------------------- */
 body {
   color: #6a6384;
@@ -143,7 +147,7 @@ The background should be `.light-blue`.
 Our initial layout is very similar across all screens. Using flexbox you can do much of the heavy lifting and only need to tweak specific content values.
 
 ```css
-/* Hero 
+/* Hero
  * --------------------------- */
 .hero {
   display: flex;
@@ -229,7 +233,7 @@ It’s contentious whether to use shorthand properties, but I find it convenient
 In each media query, the `font-size` adjustments are based on keeping the lines as balanced as possible, but still retaining a sense of proportion. The aim is to not have the type feel oversized at very small screen sizes. The decision to bump up the `font-weight` is at a point where it doesn’t impact legibility.
 
 ## Description
-For the description because of the basic setup you only need to change font sizes and add a margin. However, the size is increased using the title as a guide. It's also worth adding hyphenation because the area is quite small, longer words may cause unevenness in the lines that we can avoid. 
+For the description because of the basic setup you only need to change font sizes and add a margin. However, the size is increased using the title as a guide. It's also worth adding hyphenation because the area is quite small, longer words may cause unevenness in the lines that we can avoid.
 
 ```css
 /* Hero description
@@ -290,7 +294,7 @@ The button has quite a few things going on. Firstly getting the sizing correct, 
 
 Using the `font` shorthand again as this is somewhere that I wouldn’t expect too much change aside from sizing. Then set the necessary `color` and `background-color`.
 
-The `box-shadow` is doing two things, adding a border in the `.dark-purple` colour, and adding the shadow actual shadow to the bottom. 
+The `box-shadow` is doing two things, adding a border in the `.dark-purple` colour, and adding the shadow actual shadow to the bottom.
 
 It’s a preference of mine to use `box-shadow` to add the border in the majority of cases. **There are two reasons I do this**; when you have a `border-radius` for example 4px, with a border appears to be more like 6px. Border also affects the dimensions of the button, which is something I like to avoid.
 

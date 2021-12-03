@@ -25,7 +25,7 @@ import Script from 'next/script'
 The `inline-block` technique is a really handy alternative to a float based layouts. It has a few decent advantages, as float based layouts suffer from needing to be cleared and if height varies it can have undesired effects. With `inline-block` you don’t need to worry about the height or clearing of elements. However, there are still some things to watch out for, which I will cover in this post. There’s also a Sass inline-block grid for you to use in your projects (should you need one).
 
 ## Why use inline-block over floats?
-<div className="article-image">
+<div className="article-image flex center">
   <Image src="/static/images/blog/inline-block-example.png" alt="Showing the difference between float and inline block when a floated element has a different height to the other elements" width={640} height={360} className="article-image-next" />
 </div>
 
@@ -93,7 +93,9 @@ The important thing to note about the CSS is you’ll find text also aligns to t
 ```
 
 ## How to deal with spaces
-<Image src="/static/images/blog/inline-block-whitespace.png" width={738} height={492} />
+<div className="article-image flex center">
+  <Image src="/static/images/blog/inline-block-whitespace.png" width={640} height={360} />
+</div>
 
 Elements which are `inline-block` recognise spaces around them, this causes layout to break. In rare cases you may intend to have these spaces, but in this context, your indentation is purely for code formatting.
 

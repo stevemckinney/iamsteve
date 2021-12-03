@@ -157,7 +157,9 @@ I've posted a few examples using horizontal scrolling. I've added flickity to th
 The navigation is reasonably easy. It works from the off. As we’re not using flexbox for layout, using flexbox we may have to adjust more properties. The next example covers that.
 
 #### Demo
-<p data-height="428" data-theme-id="13022" data-slug-hash="BjRPKY" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/BjRPKY/'>Flickity horizontal scrolling navigation</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<div className="codepen-wide">
+  <p data-height="480" data-theme-id="13022" data-slug-hash="BjRPKY" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/BjRPKY/'>Flickity horizontal scrolling navigation</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+</div>
 
 ### Content carousel with flickity
 In a post, I wrote previously covering a [scrolling content layout](/blog/horizontal-scrolling-toggle), in that I used flexbox. Which in this example doesn’t play too well with flickity, this is fine.
@@ -165,7 +167,9 @@ In a post, I wrote previously covering a [scrolling content layout](/blog/horizo
 There are a couple of things to account for. Flickity uses absolute positioning for elements, which our flexbox layout doesn’t like. You need to ‘destroy’ Flickity to continue to allow the toggle functionality to work. After the example, I will show you how to solve these problems.
 
 #### Demo
-<p data-height="268" data-theme-id="13022" data-slug-hash="KVewMV" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/KVewMV/'>Scrolling carousel toggle with flickity</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<div className="codepen-wide">
+  <p data-height="480" data-theme-id="13022" data-slug-hash="KVewMV" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/KVewMV/'>Scrolling carousel toggle with flickity</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+</div>
 
 #### Original example JavaScript
 

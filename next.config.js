@@ -9,6 +9,7 @@ module.exports = withBundleAnalyzer({
     includePaths: [
       path.join(__dirname, './node_modules/breakpoint-sass/stylesheets/'),
       path.join(__dirname, 'css'),
+      path.join(__dirname, 'components'),
     ],
   },
   reactStrictMode: true,

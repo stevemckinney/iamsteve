@@ -66,7 +66,7 @@
     margin-right: auto; }
 
   // Likewise
-  > *:not(figure):not(img):not(table),
+  > *:not(figure):not(img):not(table):not(.codepen-wide):not(.wide-image),
   > .footnotes {
     max-width: $measure + ( $line * 4 ) + 2px; }
 
@@ -145,7 +145,7 @@
       left: math.div($base-px, 2);
       width: 1em;
       height: 1em;
-      background: url(/public/static/images/arrow-right.svg) no-repeat center center;
+      background: url(../../../components/icon/arrow-right.svg) no-repeat center center;
       opacity: .2; }
 
     a:not(.fragment):hover:after,

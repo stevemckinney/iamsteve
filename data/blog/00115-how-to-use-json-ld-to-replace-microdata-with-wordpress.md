@@ -13,7 +13,7 @@ id: 115
 fileroot: "how-to-use-json-ld-to-replace-microdata-with-wordpress"
 ---
 
-Part of the website world is making it more accessible to bots. Be it search, social or a service like Instapaper. The reason we do this is so our content looks more appealing and isn't left up to them, to scrape text and images they think is best. I'll be showing you how I have done it recently with JSON-LD. 
+Part of the website world is making it more accessible to bots. Be it search, social or a service like Instapaper. The reason we do this is so our content looks more appealing and isn't left up to them, to scrape text and images they think is best. I'll be showing you how I have done it recently with JSON-LD.
 
 ## What it is
 Microdata is the relatively commonplace now (at least in Wordpress themes). However, it requires everyone to be onboard. JSON-LD has benefits over Microdata that I find it easier to implement. It doesn't need class names that sometimes can be difficult to know where to apply or mistakenly remove. The benefit of JSON-LD is it allows you to keep it as a reference all in one place.
@@ -23,7 +23,7 @@ Google calls this structured data, helping make your content more machine readab
 JSON-LD itself is a relatively new method of adding this structured data. You have RDFA and Microdata that have existed for much longer, and therefore, are more popular. However, I'm confident the simpler approach JSON-LD offers it will gain popularity.
 
 ## How you implement it
-JSON-LD is placed in your `<head>`, for each type of structured data you place it in a separate `<script>` tag. It's advisable to put them all in a separate function and use the `wp_head` hook to include them. 
+JSON-LD is placed in your `<head>`, for each type of structured data you place it in a separate `<script>` tag. It's advisable to put them all in a separate function and use the `wp_head` hook to include them.
 
 ## What to implement?
 It is up to you. There is a structure for almost everything. The ones I will cover will benefit the majority of websites.
@@ -45,7 +45,7 @@ I would recommend taking the snippets you want and modifying logo URLs and thumb
 ## Blog article
 If you have a blog, this will be useful as you can provide a lot of data. There are some variables defined that will need your customisation. Paying attention to the action, we only want this on single pages, as some of the information won’t be accessible to other pages.
 
-```{.language-php .code-tall}
+```php
 // Initialise this action
 add_action('wp_head', 'json_ld_article');
 

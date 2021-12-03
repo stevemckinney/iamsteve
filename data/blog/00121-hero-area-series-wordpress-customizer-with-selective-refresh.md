@@ -59,7 +59,7 @@ The next steps are easier to present in a list.
 - In the `inc` folder add `customizer.php`
 
 <figure>
-<Image src="/static/images/blog/ch4-file-listing.png" width={738} height={492} />
+<Image src="/static/images/blog/ch4-file-listing.png" width={640} height={360} />
 <figcaption>
 For reference this is what your file listing should look like.
 </figcaption>
@@ -157,7 +157,7 @@ Now open `inc/customizer.php`, drop in the following code. This will make everyt
 
 It’s a simple class, that I have followed from the [Theme Customizer API documentation](https://codex.wordpress.org/Theme_Customization_API). Using this structure you should find it to be more manageable. There are small differences than using a regular function setup, the scope of this post isn’t to go into detail, but rather guide the way to use them.
 
-```{.language-php .code-tall}
+```php
 /**
  * Contains methods for customizing the theme customization screen.
  * Using the example class from with modifications

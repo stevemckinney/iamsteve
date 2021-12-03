@@ -22,11 +22,13 @@ The swatches feature in Illustrator isn’t something I’ve used often. Partly 
 To start you’ll need a new document; the size doesn’t matter too much. As it’s a small part of the overall process, I started with 1280 width and 800 height.
 
 ## Clear the current swatches
-The current swatches are of no use, so to make things tidier delete them. 
+The current swatches are of no use, so to make things tidier delete them.
 
-<Image src="/static/images/blog/use-swatches_select-unused1.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/use-swatches_select-unused1.png" width={738} height={437} />
+</div>
 
-An easy way to do this is by going to Window > Swatches. With the window open, click the top right icon, then select ’Select All Unused’. Finally, click the trash icon, which is at the bottom right of the swatches panel.
+An easy way to do this is by going to Window > Swatches. With the window open, click the top right icon, then select "Select All Unused". Finally, click the trash icon, which is at the bottom right of the swatches panel.
 
 ## Make a colour palette
 Now that the swatch window is empty, it’s up to you to make a colour palette. The best way I find is to draw a set of squares and fill them in. You can make it presentable, as part of a style guide. It doesn’t matter too much, but it may make it feel more permanent.
@@ -34,12 +36,15 @@ Now that the swatch window is empty, it’s up to you to make a colour palette. 
 You can add swatches without the need for doing this. However, it makes the process easier.
 
 ## Saving colours to the swatch palette
-
-<Image src="/static/images/blog/use-swatches_select-new-color-group.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/use-swatches_select-new-color-group.png" width={738} height={437} />
+</div>
 
 To save colours as swatches, the quickest way is to select them all and in the swatches panel options, choose ‘New Color Group’.
 
-<Image src="/static/images/blog/use-swatches_new-color-group.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/use-swatches_new-color-group.png" width={738} height={437} />
+</div>
 
 A window will open to name the colour group and the two options of making the colours global and including swatches for tints. **I recommend making them global, I will explain why shortly**. I named my colour group primary, as I have selected each of the colours that fall under that group. I will repeat this process for each different colour group.
 
@@ -54,8 +59,9 @@ This is handy as, if you colour things with the same colour, then need to change
 To make sure you can reuse the colour palette, you must save it as a regular illustrator file.
 
 ## Make a new document and import
-
-<Image src="/static/images/blog/use-swatches_swatch-libraries-menu1.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/use-swatches_swatch-libraries-menu1.png" width={738} height={437} />
+</div>
 
 To use the colour palette in future documents, you need to import the palette. In the swatch panel, click the bottom left most icon (Swatch Libraries menu) and choose ‘Other Library’.
 
