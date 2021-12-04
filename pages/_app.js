@@ -47,6 +47,7 @@ export default function App({ Component, pageProps }) {
       <LayoutWrapper>
         <Component {...pageProps} />
       </LayoutWrapper>
+      <div id="modal-root"></div>
     </ThemeProvider>
   )
 }

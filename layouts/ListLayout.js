@@ -22,23 +22,25 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
 
   return (
     <>
-      <div className="row between subheader contain contain-medium contain-large pb4">
-        {pagination && pagination.totalPages > 1 && !searchValue && (
-          <Pagination
-            stage="newer"
-            currentPage={pagination.currentPage}
-            totalPages={pagination.totalPages}
-          />
-        )}
-        <h1 className="f4 f3-b f2-d neutral mb0 text-center">{title}</h1>
-        {pagination && pagination.totalPages > 1 && !searchValue && (
-          <Pagination
-            stage="older"
-            currentPage={pagination.currentPage}
-            totalPages={pagination.totalPages}
-          />
-        )}
-      </div>
+      {title && (
+        <div className="row between subheader contain contain-medium contain-large pb4">
+          {pagination && pagination.totalPages > 1 && !searchValue && (
+            <Pagination
+              stage="newer"
+              currentPage={pagination.currentPage}
+              totalPages={pagination.totalPages}
+            />
+          )}
+          <h1 className="f4 f3-b f2-d neutral mb0 text-center">{title}</h1>
+          {pagination && pagination.totalPages > 1 && !searchValue && (
+            <Pagination
+              stage="older"
+              currentPage={pagination.currentPage}
+              totalPages={pagination.totalPages}
+            />
+          )}
+        </div>
+      )}
       <div className="grid-posts contain contain-medium contain-large pt3 pt6-b pb3 pb6-b">
         {!filteredBlogPosts.length && 'No posts found.'}
         {displayPosts.map((frontmatter) => {
