@@ -87,6 +87,6 @@ WebKit and Blink based browsers will handle all form elements much nicer and mor
 I have seen other approaches for [handling the Firefox issue](http://davidwalsh.name/firefox-buttons). This only appears to apply to `type=submit`, so it may be possible to line it up next to a `<select>` by applying additional `padding`.
 
 If you view the following pen in Firefox it demonstrates this. I think this approach may vary, and I may explore it further and update this post with a more definitive answer.
-<p data-height="268" data-theme-id="13022" data-slug-hash="vNJLwm" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/vNJLwm/'>vNJLwm</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="268" data-theme-id="13022" data-slug-hash="vNJLwm" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/vNJLwm/'>vNJLwm</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 Hopefully, this helps with your styling troubles.

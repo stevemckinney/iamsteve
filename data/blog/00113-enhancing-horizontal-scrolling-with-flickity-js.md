@@ -158,7 +158,7 @@ The navigation is reasonably easy. It works from the off. As we’re not using f
 
 #### Demo
 <div className="codepen-wide">
-  <p data-height="480" data-theme-id="13022" data-slug-hash="BjRPKY" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/BjRPKY/'>Flickity horizontal scrolling navigation</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+  <p data-height="480" data-theme-id="13022" data-slug-hash="BjRPKY" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/BjRPKY/'>Flickity horizontal scrolling navigation</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 </div>
 
 ### Content carousel with flickity
@@ -168,7 +168,7 @@ There are a couple of things to account for. Flickity uses absolute positioning 
 
 #### Demo
 <div className="codepen-wide">
-  <p data-height="480" data-theme-id="13022" data-slug-hash="KVewMV" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/KVewMV/'>Scrolling carousel toggle with flickity</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+  <p data-height="480" data-theme-id="13022" data-slug-hash="KVewMV" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/KVewMV/'>Scrolling carousel toggle with flickity</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 </div>
 
 #### Original example JavaScript

@@ -36,7 +36,7 @@ Vertical rhythm is the typographic practice, to create a vertical harmony betwee
 - To get the image to adapt correctly you need the aspect ratio and divide that by the content width to find the ideal height
 
 ### Takeaway example
-<p data-height="356" data-theme-id="13022" data-slug-hash="QjWowq" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/QjWowq/'>QjWowq</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="356" data-theme-id="13022" data-slug-hash="QjWowq" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/QjWowq/'>QjWowq</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 ## Vertical rhythm
 A vertical rhythm starts from a baseline. It’s the basis for everything from the font sizes, line height and image sizes.
@@ -170,7 +170,7 @@ To recap you change your content width based on values that allow the height of 
 It takes more effort to maintain, if you’re the sole content creator on the website, this is something you can control. However this approach may go against the fluidity you want to create with your website. It’s up to you how far you go with images without introducing some kind of JavaScript.
 
 ## An example CodePen
-<p data-height="356" data-theme-id="13022" data-slug-hash="QjWowq" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/QjWowq/'>QjWowq</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="356" data-theme-id="13022" data-slug-hash="QjWowq" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/QjWowq/'>QjWowq</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 ## Finishing
 This is a big topic for me to write about. It’s generally everything I’ve learnt being shared that I know about vertical rhythm. I personally haven’t maintained it on this website and it’s long overdue a redesign. The principles of vertical rhythm are something I try to use through out my designs, and I find it  beneficial.

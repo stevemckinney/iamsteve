@@ -93,4 +93,4 @@ As it’s common practice having `box-sizing` set to `border-box`, adding a bord
 An option is to use `calc()` and subtract the border from the `width` and `padding-bottom`. Using `box-sizing: content-box`, will remove this issue but with that, you create another problem.
 
 ## Again the solution
-<p data-height="370" data-theme-id="13022" data-slug-hash="dGzXwO" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/dGzXwO/'>Flexible squares</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="370" data-theme-id="13022" data-slug-hash="dGzXwO" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/dGzXwO/'>Flexible squares</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>

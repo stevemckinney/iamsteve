@@ -46,7 +46,7 @@ Set up a reusable class for any text that you want to apply `letter-spacing` to 
 ## Removing the excess underline from letter spacing
 To remove the extra underline from text with letter spacing, the solution is not too elegant, nor is the extra underline. So it balances itself out. There are two solutions to this problem, however they’re not perfect. Both involve pseudo elements and a mix of positioning.
 
-<p data-height="268" data-theme-id="13022" data-slug-hash="vNeOjW" data-default-tab="result" data-user="stevemckinney" class='codepen'>See the Pen <a href='http://codepen.io/stevemckinney/pen/vNeOjW/'>vNeOjW</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="268" data-theme-id="13022" data-slug-hash="vNeOjW" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/vNeOjW/'>vNeOjW</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 ### Method one: cover with a small box
 The first one involves using a pseudo element and positioning a small box so it covers up the excess. The element has background colour that matches the one behind the element.
