@@ -33,15 +33,21 @@ export default function Search({ posts, initialDisplayPosts = [], handleClose, s
     initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
 
   useEffect(() => {
-    setIsBrowser(true);
-  }, []);
+    setIsBrowser(true)
+  }, [])
 
   const searchContent = (
     <>
-      <div className={`overlay overlay-search flex items-center center ${show ? 'showing': 'hiding'}`} aria-labelledby="toggle-search-nav toggle-search" role="dialog">
+      <div
+        className={`overlay overlay-search flex items-center center ${show ? 'showing' : 'hiding'}`}
+        aria-labelledby="toggle-search-nav toggle-search"
+        role="dialog"
+      >
         <div className="form form-warm form-search content-center items-center">
           <div className="field field-search m-center">
-            <label htmlFor="keywords" className="visuallyhidden">Search</label>
+            <label htmlFor="keywords" className="visuallyhidden">
+              Search
+            </label>
             <input
               aria-label="Search articles"
               type="text"
@@ -51,13 +57,22 @@ export default function Search({ posts, initialDisplayPosts = [], handleClose, s
               autoCapitalize="off"
               className="input input-search f2"
             />
-            <button type="submit" className="button button-search primary" aria-label="Search"><span className="f2 f3-c icon icon-medium icon-large-c icon-search"><Icon kind="search" /></span></button>
+            <button type="submit" className="button button-search primary" aria-label="Search">
+              <span className="f2 f3-c icon icon-medium icon-large-c icon-search">
+                <Icon kind="search" />
+              </span>
+            </button>
           </div>
         </div>
         <div className="searched-posts">
           <h2 className="f3-l mb1 neutral flex-8">You may be looking for</h2>
           {posts && (
-            <ListLayout posts={posts} title={false} initialDisplayPosts={initialDisplayPosts} pagination={false} />
+            <ListLayout
+              posts={posts}
+              title={false}
+              initialDisplayPosts={initialDisplayPosts}
+              pagination={false}
+            />
           )}
         </div>
       </div>
@@ -65,10 +80,7 @@ export default function Search({ posts, initialDisplayPosts = [], handleClose, s
   )
 
   if (isBrowser) {
-    return ReactDOM.createPortal(
-      searchContent,
-      document.getElementById("modal-root")
-    )
+    return ReactDOM.createPortal(searchContent, document.getElementById('modal-root'))
   } else {
     return null
   }

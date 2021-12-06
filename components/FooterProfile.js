@@ -4,7 +4,7 @@ import Social from '@/components/Social'
 import Logo from '@/images/logo-small.svg'
 
 export default function FooterProfile() {
-  return(
+  return (
     <aside className="row row-normal pt6 pt8-d contain contain-medium contain-large between items-end">
       <section className="column column-4-b column-3-d mb6 mb0-b">
         <Link href="/" title="Back to the homepage" className="logo-footer mb4 primary">
@@ -21,10 +21,7 @@ export default function FooterProfile() {
           <Social />
         </p>
       </section>
-      <section
-        className="column column-4-b column-5-d rio-osc text-right items-end-b"
-        id="rio-osc"
-      >
+      <section className="column column-4-b column-5-d rio-osc text-right items-end-b" id="rio-osc">
         <Image
           src="/static/images/rio-osc.svg"
           alt="An illustration of two dogs, a red Border Collie and Jack Russell cross"

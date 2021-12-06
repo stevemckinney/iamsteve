@@ -87,9 +87,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         {posts
           .filter((post) => post)
           .map((frontmatter) => {
-            return (
-              <Card kind="medium" frontmatter={frontmatter} key={frontmatter.fileroot} />
-            )
+            return <Card kind="medium" frontmatter={frontmatter} key={frontmatter.fileroot} />
           })
           .slice(0, POSTS_PER_PAGE)}
         <Link

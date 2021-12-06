@@ -14,9 +14,9 @@ export default async (req, res) => {
         email_address: email,
         fields: {
           FirstName: name,
-          source: source
+          source: source,
         },
-        status: "SUBSCRIBED"
+        status: 'SUBSCRIBED',
       }),
       headers: {
         'Content-Type': 'application/json',

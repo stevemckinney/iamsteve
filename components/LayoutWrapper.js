@@ -22,8 +22,8 @@ class LayoutWrapper extends React.Component {
   constructor() {
     super()
     this.state = {
-      show: false
-    };
+      show: false,
+    }
     this.toggleModal = this.toggleModal.bind(this)
   }
 
@@ -52,7 +52,11 @@ class LayoutWrapper extends React.Component {
           </Link>
           <nav id="nav" className="nav hide-lt-c end primary">
             {headerNavLinks.map((link) => (
-              <Link key={link.title} href={link.href} className={`nav-item nav-item-${link.title.toLowerCase()}`}>
+              <Link
+                key={link.title}
+                href={link.href}
+                className={`nav-item nav-item-${link.title.toLowerCase()}`}
+              >
                 <span className={`icon icon-${link.icon}`}>
                   <Icon kind={link.icon} />
                 </span>
