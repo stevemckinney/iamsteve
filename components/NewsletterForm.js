@@ -3,7 +3,9 @@ import { useRef, useState } from 'react'
 import siteMetadata from '@/data/siteMetadata'
 
 const NewsletterForm = ({ theme = 'form-warm' }) => {
-  const inputEl = useRef(null)
+  const inputEmail = useRef(null)
+  const inputName = useRef(null)
+  const inputSource = useRef(null)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
@@ -15,7 +17,9 @@ const NewsletterForm = ({ theme = 'form-warm' }) => {
     // https://emailoctopus.com/api/1.5/lists/76319206-f1ef-11eb-96e5-06b4694bee2a/contacts
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
       body: JSON.stringify({
-        email: inputEl.current.value,
+        email: inputEmail.current.value,
+        name: inputName ? inputName.current.value : '',
+        source: inputSource ? inputSource.current.value : '',
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -25,12 +29,14 @@ const NewsletterForm = ({ theme = 'form-warm' }) => {
 
     const { error } = await res.json()
     if (error) {
+      console.log(error)
       setError(true)
       setMessage('Your e-mail address is invalid or you are already subscribed!')
       return
     }
 
-    inputEl.current.value = ''
+    inputEmail.current.value = ''
+    inputName.current.value = ''
     setError(false)
     setSubscribed(true)
     setMessage('Successfully! 🎉 You are now subscribed.')
@@ -39,68 +45,52 @@ const NewsletterForm = ({ theme = 'form-warm' }) => {
   return (
     <>
       <div className={theme}>
-        <div
-          id="mlb2-1003594"
-          className="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-1003594"
-        >
-          <div className="ml-form-align-center">
-            <div className="ml-form-embedWrapper embedForm">
-              <div className="ml-form-embedBody ml-form-embedBodyHorizontal row-form">
-                <form
-                  className="form form-newsletter validate end ml-block-form ml-block-form"
-                  action="https://app.mailerlite.com/webforms/submit/q7h2j4"
-                  data-code="q7h2j4"
-                  method="post"
-                  target="_blank"
-                >
-                  <div className="field field-text field-third ml-field-group ml-field-name">
-                    <label htmlFor="fields[name]" className="sans pb2 field-label">
-                      First name
-                    </label>
-                    <input
-                      type="text"
-                      className="input input-text form-control"
-                      name="fields[name]"
-                      id="fields[name]"
-                    />
-                  </div>
-                  <div className="field field-text field-two-thirds nml ml-field-group ml-field-email ml-validate-required">
-                    <label htmlFor="fields[email]" className="sans pb2 field-label">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      className="input input-text form-control"
-                      name="fields[email]"
-                      id="fields[email]"
-                      required
-                    />
-                  </div>
-                  <input type="hidden" name="fields[marketing_permissions]" value="Email" />
-                  <input type="hidden" name="fields[subfrom]" value="{current_url}" />
-                  <input type="hidden" name="ml-submit" value="1" />
-                  <div className="form-actions pt2 text-right ml-button-horizontal">
-                    <button
-                      type="submit"
-                      aria-label="Subscribe to the newsletter"
-                      className="button button-tertiary ml-hide-horizontal flex-auto"
-                    >
-                      Sign me up
-                    </button>
-                    <button
-                      disabled="disabled"
-                      aria-label="Loading: sending form submission"
-                      style={{
-                        display: 'none',
-                      }}
-                      type="button"
-                      className="button button-t loading btn btn-block"
-                    ></button>
-                  </div>
-                </form>
-              </div>
+        <div className="ml-form-embedBody ml-form-embedBodyHorizontal row-form">
+          <form
+            className="form form-newsletter validate end ml-block-form ml-block-form"
+            onSubmit={subscribe}
+          >
+            <div className="field field-text field-third ml-field-group ml-field-name">
+              <label htmlFor="input-name" className="sans pb2 field-label">
+                First name
+              </label>
+              <input
+                type="text"
+                className="input input-text form-control"
+                name="fields[first_name]"
+                id="input-name"
+                ref={inputName}
+              />
             </div>
-          </div>
+            <div className="field field-text field-two-thirds nml ml-field-group ml-field-email ml-validate-required">
+              <label htmlFor="input-email" className="sans pb2 field-label">
+                Email
+              </label>
+              <input
+                autoComplete="email"
+                className="input input-text form-control"
+                id="input-email"
+                name="email_address"
+                placeholder={subscribed ? "You're subscribed !  🎉" : 'Enter your email'}
+                ref={inputEmail}
+                required
+                type="email"
+                disabled={subscribed}
+              />
+            </div>
+            <input type="hidden" name="fields[marketing_permissions]" value="Email" />
+            <input type="hidden" ref={inputSource} name="fields[source]" value="{current_url}" />
+            <div className="form-actions pt2 text-right">
+              <button
+                type="submit"
+                aria-label="Subscribe to the newsletter"
+                className="button button-tertiary ml-hide-horizontal flex-auto"
+                disabled={subscribed}
+              >
+                {subscribed ? 'Thank you!' : 'Sign me up'}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
 
