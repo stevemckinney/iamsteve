@@ -7,7 +7,7 @@
     "browser-sync": "^2.27.7",
     "eslint-config-airbnb": "^19.0.2",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^2.6.0",
+    "eslint-config-prettier": "^6.15.0",
     "eslint-loader": "^3.0.2",
     "fitvids": "^2.0.0",
     "flickity": "^2.1.2",
