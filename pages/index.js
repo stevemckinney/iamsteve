@@ -88,15 +88,14 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
           .filter((post) => post)
           .map((frontmatter) => {
             return (
-              <>
-                <Card kind="medium" frontmatter={frontmatter} key={frontmatter.fileroot} />
-              </>
+              <Card kind="medium" frontmatter={frontmatter} key={frontmatter.fileroot} />
             )
           })
           .slice(0, POSTS_PER_PAGE)}
         <Link
           href="/blog"
           className="link-icon warm secondary-hover card-permalink semibold sans center f2-l"
+          key="more-posts"
         >
           All posts{' '}
           <span className="icon icon-medium icon-right secondary mr6">
@@ -123,6 +122,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         <Link
           href="/category/design"
           className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"
+          key="more-design"
         >
           Explore design{' '}
           <span className="icon icon-medium icon-right secondary mr6">
@@ -138,7 +138,6 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         size="small"
         key="code"
       >
-        {!posts && <div>No posts!</div>}
         {posts
           .filter((post) => post.categories.includes('Code'))
           .map((frontmatter) => {
@@ -148,6 +147,7 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
         <Link
           href="/category/design"
           className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"
+          key="more-code"
         >
           Explore code{' '}
           <span className="icon icon-medium icon-right secondary mr6">
