@@ -27,7 +27,7 @@ As a design pattern, it is one that is beginning to be used much more. It's grea
 ## Demo
 Have a quick look through the code, then let's get into the explanation.
 
-<p data-height="384" data-theme-id="13022" data-slug-hash="WvWrRX" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/WvWrRX/'>Flexbox horizontal scrolling navigation</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="480" data-theme-id="13022" data-slug-hash="WvWrRX" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/WvWrRX/'>Flexbox horizontal scrolling navigation</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 ## The implementation
 The implementation is flexible to work with your layout. Whether you have it positioned by your logo, or underneath it will be fine. Just apply the styles, to whichever element you prefer.

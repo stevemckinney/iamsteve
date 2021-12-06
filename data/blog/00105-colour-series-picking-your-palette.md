@@ -24,14 +24,16 @@ To start the series, I'm going to run through why colour theory is only a small 
 There are plenty of courses covering colour theory in further detail out there. It’s useful to learn about it, however by following a more precise approach, with examples of how and why along the way, practical and applicable advice can be easily formed. My post aims to cover those angles and ensure you understand why, to guide you through the how.
 
 ### Applying colour theory to the web
-The web is a difficult medium with many variables, in the way of practical colour theory applications. Those restrictions are different to that of print, which is experienced in only one form. The web has much more to contend with. 
+The web is a difficult medium with many variables, in the way of practical colour theory applications. Those restrictions are different to that of print, which is experienced in only one form. The web has much more to contend with.
 
 Colour theory can be useful when used on the web. The most noticeable way is through the harmony you can achieve with colour. Limitations come into the equation when working with visual hierarchy and contrast.
 
 Some of the points I will cover cross over into colour theory, but it’s about understanding what the content and situations the colours need to adapt to. Use colour theory as a reference to good colour combinations, rather than applying them.
 
 ## How many colours should I use?
-<Image src="/static/images/blog/colours-empty.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/colours-empty.png" width={840} height={460} />
+</div>
 
 You need to cover two main angles, your brand/project and readable contrasting colours. You want to get your personality across, whilst there needs to be colours for maintaining readability. A palette must be flexible for a variety of use cases. Bright, light and dark colours are all necessary.
 
@@ -43,35 +45,43 @@ The first colour sets the tone for the whole palette. So it’s important that t
 ### Questions to ask yourself
 - What are your initial thoughts that represent the project best?
 - How would you like to be perceived? eg: Calming, trustworthy, confident, etc.
-- Who are your target audience or most frequent visitors? 
+- Who are your target audience or most frequent visitors?
 - Would they perceive your colour choice the way that you do?
 - Would the primary background colour be dark or light?
 
 #### Initial thoughts
-<Image src="/static/images/blog/colours-initial.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/colours-initial.png" width={840} height={460} />
+</div>
 
 You’ll have immediate ideas for what something means to you.
 These are a good starting point, it gives you something to validate, for the next questions. After all, you could be part of the target audience. Draw upon your experiences of things that are similar to your project. It’s fine if these turn out to be wrong.
 
-If you're unsure of colour perception, do some research. This will help inform your choices better.  
+If you're unsure of colour perception, do some research. This will help inform your choices better.
 
 #### Company/individual, audience & goals
-<Image src="/static/images/blog/colours-one.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/colours-one.png" width={840} height={460} />
+</div>
 
-You will be looking at what message the colours communicate. Think about how the company/individual expects to be perceived. 
+You will be looking at what message the colours communicate. Think about how the company/individual expects to be perceived.
 
 Your goal may be to change the way you’re perceived. Look at the current colours you’re using, find weaknesses and how they can be improved upon.
 
 #### Light or dark background
-<Image src="/static/images/blog/colours-light-dark.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/colours-light-dark.png" width={840} height={460} />
+</div>
 
 From the questions you’ve asked yourself, it should be possible to determine whether the website will have a light or dark theme.
 
 When choosing your colours, if you're going to have a dark background, make sure you choose the colours on a dark background too. It doesn’t have to be the one you will use, but
-it will influence your choices. 
+it will influence your choices.
 
 ## Choosing your second colour
-<Image src="/static/images/blog/colours-two.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/colours-two.png" width={840} height={460} />
+</div>
 
 The second colour is your workhorse, it will be used for the majority of the text on your website. It has to complement your heading colour and contrast with the background it’s set on. This is where we have to consider use cases a variety of use cases, that will inform our third colour too.
 
@@ -85,22 +95,26 @@ Hierarchy is important in design and colour plays a part in that. You can use co
 Using colour effectively for headings, paragraphs and links, can really help aid a good reading experience.
 
 #### Headings & paragraphs
-Your content should have good contrast with the background it’s on, otherwise, it becomes difficult to read. 
+Your content should have good contrast with the background it’s on, otherwise, it becomes difficult to read.
 
 Headings serve as an indication of a new section and aid hierarchy in their own right. Your aim could be to help the scannability of articles. By making headings darker than your paragraphs, you will help the reader who favours scanning.
 
 ### Links
-Links are something that need to be reasonably apparent within a set of text. However, you have the choice of underlining them or having them as a colour that stands out. The problem I face often is: "do links being this colour distract?" It's a balancing act of purpose, a link within an article may be purely for reference, so it doesn't need to stand out too much. 
+Links are something that need to be reasonably apparent within a set of text. However, you have the choice of underlining them or having them as a colour that stands out. The problem I face often is: "do links being this colour distract?" It's a balancing act of purpose, a link within an article may be purely for reference, so it doesn't need to stand out too much.
 
 ## Choosing your third colour
-<Image src="/static/images/blog/colours-three.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/colours-three.png" width={840} height={460} />
+</div>
 
 This isn’t necessarily a new colour, but it’s intention is to be used the same. It’s can be a shade of your second colour, with the purpose of helping visual hierarchy. There are times when the second colour could be too harsh, and the ideal would be to make a lighter version of it. Still providing the contrast needed.
 
 Refer to the use cases of the second colour and tweak this colour by making a lighter, less saturated version.
 
 ## Choosing your fourth colour
-<Image src="/static/images/blog/colours-four.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/colours-four.png" width={840} height={460} />
+</div>
 
 We’ve been through our workhorse colours, the previous three colours will serve you well. However, there is a time where you will need a colour that really separates itself from the pack.
 
@@ -116,11 +130,13 @@ You need to consider how many buttons there are on the page. If the primary acti
 The fourth colour should be used to bring attention to your most important elements. So think carefully about how you use it.
 
 ## Choosing your fifth colour
-<Image src="/static/images/blog/colours-five.png" width={738} height={492} />
+<div className="article-image">
+  <Image src="/static/images/blog/colours-five.png" width={840} height={460} />
+</div>
 
-The fifth colour should be something the majority of your colour choices can be used on. I generally have in mind that this colour will be used for backgrounds, for the majority of cases. 
+The fifth colour should be something the majority of your colour choices can be used on. I generally have in mind that this colour will be used for backgrounds, for the majority of cases.
 
-Depending on the basis of your palette, whether it's for a light or dark background will decide this. In turn, it will be your lightest or darkest colour. 
+Depending on the basis of your palette, whether it's for a light or dark background will decide this. In turn, it will be your lightest or darkest colour.
 
 ## You've chosen your colours
 You should see that you have a balanced colour palette now. This gives us a solid start. However, this won't be perfect, it's rare you will pick a perfect colour palette from the off. At least, that's the case for me.

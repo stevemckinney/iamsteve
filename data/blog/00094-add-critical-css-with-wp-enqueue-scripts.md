@@ -33,7 +33,7 @@ function full_css()
 It’s possible you’ve already got critical and asynchronous CSS setup, or you’re trying this approach for the first time. What we’re aiming for is all of our CSS and JavaScript to be added to the `wp_enqueue_scripts` hook.
 
 ### Enqueuing styles
-This function will contain our CSS (and JavaScript, albeit I won’t be discussing it), which are added on the `wp_enqueue_style` hook. **This should be your starting point**. 
+This function will contain our CSS (and JavaScript, albeit I won’t be discussing it), which are added on the `wp_enqueue_style` hook. **This should be your starting point**.
 
 ```php
 function iamsteve_scripts()
@@ -77,7 +77,7 @@ add_action( 'wp_enqueue_scripts', 'iamsteve_scripts' );
 ### Include critical CSS and load everything else asynchronously
 Here’s where it gets a little messy, but the benefit is this is no longer in your template code.
 
-```{.language-php .code-tall}
+```php
 function iamsteve_scripts()
 {
 

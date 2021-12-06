@@ -21,7 +21,7 @@ Just because you feel like you can’t sketch, doesn’t mean you shouldn’t do
 I’ve covered this in the past, where I've covered my wireframing technique. You need to plan what's going to be on each page that you sketch. So noting the elements that make up each page before sketching, will make sure nothing gets missed. I recommend doing this as detailed as possible.
 
 ### Example for my upcoming redesign
-```{.language-markup .code-tall}
+```html
 - Header
 - - Logo
 - - Navigation
@@ -53,7 +53,7 @@ I’ve covered this in the past, where I've covered my wireframing technique. Yo
 - - Copyright
 - - 3 or 4 links
 ```
-  
+
 ## Sketching doesn’t have to be quick scribbles
 Sketching is quick, but that doesn’t mean to just scribble incomprehensible things. Part of what makes sketching effective is the ease of execution. Doing wireframes through a device, there is a level of accuracy required. The fact we’re sketching affords us speed, so we can take our time. This could be the reason you don’t believe you can sketch well.
 
@@ -63,7 +63,7 @@ Starting small allows you to explore layouts even quicker. It will help you lear
 Once I've memorised the elements I want on the page and the order they're in. They become easier to draw as they're in muscle memory. It's one less thing to think about and you focus on drawing only.
 
 ## Make mistakes
-Most of the time I don’t bother erasing my mistakes it happens, move on to the next sketch. However, if you’re really into this particular sketch, erase the mistake. 
+Most of the time I don’t bother erasing my mistakes it happens, move on to the next sketch. However, if you’re really into this particular sketch, erase the mistake.
 
 You can make mistakes much easier, learn from layouts and find yourself to be more ambitious. In turn, you’ll be happier to leave behind ideas that didn’t work so well.
 
@@ -79,10 +79,10 @@ Add only the details that allow you to identify what it is.
 - Illustrations with a basic idea
 - Images are a box with an x in
 
-Drawing everything as a simple representation will make your sketches more effective. You will make far fewer errors reducing things to a basic form. 
+Drawing everything as a simple representation will make your sketches more effective. You will make far fewer errors reducing things to a basic form.
 
 ### Don’t box yourself in
-The error I've seen and made myself in the past is, estimating the size you want to draw your sketch at, and boxing yourself in. Doing this will lead to you starting more sketches than necessary. Leave this until last if you have to. 
+The error I've seen and made myself in the past is, estimating the size you want to draw your sketch at, and boxing yourself in. Doing this will lead to you starting more sketches than necessary. Leave this until last if you have to.
 
 ## Build it up & choose which works best
 Continue on until you’ve built up a sketch you’re happy with. You’ll find that many ideas are scrappy to begin with and eventually you’ll settle on layouts that are suitable.
@@ -92,7 +92,7 @@ This varies for me sometimes I’ll get the idea in a few sketches, sometimes ma
 ## Sketch larger
 Once you’ve done your small sketches and chosen one. You may find that sketching it a little larger can be helpful. I don’t always do this, but where I may want to refine the layout with a larger drawing can be helpful.
 
-It tends to be only half the width of A4 instead of a quarter of A4. You have to be aware of how long pages can be. 
+It tends to be only half the width of A4 instead of a quarter of A4. You have to be aware of how long pages can be.
 
 It's particularly helpful for where there is intent to display an illustration. As this is very dependent on how the space is occupied. I find being able to rough out the illustration, will give you the best idea in advance before actually creating it.
 
@@ -111,7 +111,7 @@ I recommend using a ‘b’ lead. They are softer and can allow you to draw sket
 It’s important to hold the pencil correctly. This allows you to sketch with the right amount of pressure and draw lines easier. I remember it not feeling the natural way to hold it. Over time, you will find yourself defaulting to it.
 
 <figure>
-<Image src="/static/images/blog/pencil-holding.jpg" width={738} height={492} />
+<Image src="/static/images/blog/pencil-holding.jpg" width={640} height={450} />
 <figcaption>
 Resting the pencil on your middle finger, with support from your index finger and thumb.
 </figcaption>
@@ -120,6 +120,6 @@ Resting the pencil on your middle finger, with support from your index finger an
 The further up the pencil you hold it the lighter you will apply, this is your choice.
 
 ## Sketching is important
-Overall sketching is an important part of the process. I use it to understand and reinforce the goals of a website. It serves as a process that helps ‘print’ it in your mind. Above all, it can help develop ideas. 
+Overall sketching is an important part of the process. I use it to understand and reinforce the goals of a website. It serves as a process that helps ‘print’ it in your mind. Above all, it can help develop ideas.
 
 As such that when I get to the wireframing process I don't have to refer to these sketches very often. I just focus on the laying out of the elements.

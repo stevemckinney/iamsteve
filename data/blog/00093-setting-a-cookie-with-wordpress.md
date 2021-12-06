@@ -35,7 +35,7 @@ The expire parameter, can be any value in seconds. You should set it to be long 
 
 ### Fourth parameter ‘/‘
 The [`setcookie`](http://php.net/manual/en/function.setcookie.php) documentation says the path parameter “If set to '/', the cookie will be available within the entire domain.” By default it’s empty, so we need to set it across the domain.
- 
+
 ## Using the init hook in Wordpress
 To set a cookie it's done by adding a call to the init hook. This allows the cookie to be set at the very earliest point.
 
@@ -48,7 +48,7 @@ function full_css_cookie()
 }
 ```
 
-> In your functions.php, add these lines of code. 
+> In your functions.php, add these lines of code.
 
 ## Checking the cookie exists
 To check whether a cookie exists we must use `isset`. It checks if the cookie is set and isn’t null.
@@ -68,19 +68,21 @@ Finally, you should always test everything is working. The way that I check if a
 In Chrome and Safari you can find cookies under the ‘Resources’ tab.
 
 <figure>
-<Image src="/static/images/blog/safari-cookies.png" width={738} height={492} />
+<Image src="/static/images/blog/safari-cookies.png" width={785} height={492} />
 <figcaption>If you need to delete a cookie you can highlight it and press backspace.</figcaption>
 </figure>
 
 ### In Firefox
 In Firefox it’s a little trickier. You need to open developer tools, go into ‘Toolbox Options’ it’s the cog icon third from the right. Then under the heading ‘Default Firefox Developer Tools’ you will find a checkbox for storage. Enable that and the storage tab will be available.
 
+#### Pop into settings
 <figure>
-<Image src="/static/images/blog/firefox-dev-settings.png" width={738} height={492} />
+<Image src="/static/images/blog/firefox-dev-settings.png" width={785} height={492} />
 <figcaption>Firefox developer tools settings</figcaption>
 </figure>
 
+#### Then into storage to find cookies
 <figure>
-<Image src="/static/images/blog/firefox-cookies.png" width={738} height={492} />
+<Image src="/static/images/blog/firefox-cookies.png" width={785} height={238} />
 <figcaption>Now the storage tab is available, it shares similarities of Safari and Chrome</figcaption>
 </figure>

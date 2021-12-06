@@ -13,7 +13,7 @@ id: 95
 fileroot: "iamsteve-a-new-logomark"
 ---
 
-I have updated my logomark. It's been around 5 years, since I last made a change relating to my logo. Since then, I have grown as a designer, my aims, goals, and where I am have shifted. 
+I have updated my logomark. It's been around 5 years, since I last made a change relating to my logo. Since then, I have grown as a designer, my aims, goals, and where I am have shifted.
 
 I'm going to cover the steps leading up to this. It’s relevant to the process and gives a better of understanding of what’s planned for this website. Then, I will cover the process.
 
@@ -22,7 +22,7 @@ I'm going to cover the steps leading up to this. It’s relevant to the process 
 - I scrapped it, but experience says I should have went ahead with it
 - I decided to use my dog Rio as part of the logo
 - It met my goals of adding personality, reflecting me better and being adaptable
-- Looking back at the logo it was going in the right direction 
+- Looking back at the logo it was going in the right direction
 - There were too many details that weren’t clear enough at small sizes
 - Anticipate the use cases, like any good logo should
 - I’ve made small design tweaks to the website as well as the logomark
@@ -55,7 +55,7 @@ When thinking about the goals I had for a new logomark, some of them were made a
 - Something I could put a fun spin on
 
 ### Personality & me
-The first two goals were most important. I've lost some of the decision making I made in the past, but I knew the right idea was to base it round my dog Rio. 
+The first two goals were most important. I've lost some of the decision making I made in the past, but I knew the right idea was to base it round my dog Rio.
 
 I've heard in the past, your dog is a reflection of you. This helped justify exploring this idea. Looking at similar logo ideas, I noticed outline worked well for particular details. Other styles were more illustrative, while not ideal for every situation, it inspired ways I could do that myself.
 
@@ -67,7 +67,7 @@ The idea I came up with originally was the whole silhouette of Rio. This made se
 I sketched up multiple ideas it, found one I settled on, eventually vectorised it and was quite pleased. I knew something felt off though. I couldn't quite put my finger on it.
 
 <figure>
-<Image src="/static/images/blog/iamsteve_logo_old.png" width={738} height={492} />
+<Image src="/static/images/blog/iamsteve_logo_old.png" width={662} height={320} />
 <figcaption>The logo I created first, nearly 3 years ago. I see so many problems with this now!</figcaption>
 </figure>
 
@@ -83,7 +83,7 @@ One of the things around basing it upon your own pet is, you have lots of pictur
 This was the majority of my research. Although as part of validating my idea, I looked at other logos for inspiration. It’s important to then forget that inspiration. That's the ideal way to handle it, as you can find yourself too influenced.
 
 <figure>
-<Image src="/static/images/blog/iamsteve-sketches-resized.jpg" width={738} height={492} />
+<Image src="/static/images/blog/iamsteve-sketches-resized.jpg" width={700} height={525} />
 <figcaption>
 Here's one page of the sketches I had done.
 </figcaption>
@@ -92,7 +92,7 @@ Here's one page of the sketches I had done.
 I sketched many ideas, exploring different routes and just trying to get a good shape going, but remaining simple.
 
 <figure>
-<Image src="/static/images/blog/iamsteve-final-sketch.jpg" width={738} height={492} />
+<Image src="/static/images/blog/iamsteve-final-sketch.jpg" width={700} height={525} />
 <figcaption>
 The sketch I went on to vectorise.
 </figcaption>
@@ -106,7 +106,7 @@ In that image as well is Oscar. He’s a companion for Rio that will be used in 
 I took a picture of the image and scaled it down to a reasonable size. So the logo could be at the size, I would use it around 48px. You should aim for the middle ground in the size it will be used. This way you make sure, you retain, much of the details of the sketch. You can build upon those details in larger sizes and reduce in smaller.
 
 <figure>
-<Image src="/static/images/blog/iamsteve-initial-logo.png" width={738} height={492} />
+<Image src="/static/images/blog/iamsteve-initial-logo.png" width={662} height={282} />
 <figcaption>
 The blue outline was too large to start from, so I went with the smaller red line.
 </figcaption>
@@ -125,7 +125,7 @@ In the end I fit the sizes to 16, 32, 48, 96 and 128 pixel squares. It’s quite
 All this works towards having a logomark that works at various sizes. You have to get over the loss of detail at smaller sizes. **The importance is to retain sharp shapes**.
 
 <figure>
-<Image src="/static/images/blog/iamsteve-logo-versions.png" width={738} height={492} />
+<Image src="/static/images/blog/iamsteve-logo-versions.png" width={662} height={312} />
 <figcaption>
 Here are all the logomark sizes I've done. You can see the differences between each.
 </figcaption>
