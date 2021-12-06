@@ -21,7 +21,7 @@
     "lazysizes": "^5.3.2",
     "linkjuice": "^1.0.1",
     "natives": "^1.1.4",
-    "prismjs": "^1.8.1"
+    "prismjs": "^1.25.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
