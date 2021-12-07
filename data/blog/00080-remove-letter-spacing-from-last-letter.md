@@ -21,7 +21,7 @@ One of the frustrating things about the letter-spacing property is the addition 
 
 ## The problem
 <figure>
-<Image src="/static/images/blog/letter-spacing.png" width={738} height={492} />
+<Image src="/static/images/blog/letter-spacing.png" width={481} height={481} />
 <figcaption>
 The top set of text shows you the additional space that is added due to `letter-spacing`. The bottom shows the corrected text with the `margin-right` applied.
 </figcaption>
@@ -46,7 +46,7 @@ Set up a reusable class for any text that you want to apply `letter-spacing` to 
 ## Removing the excess underline from letter spacing
 To remove the extra underline from text with letter spacing, the solution is not too elegant, nor is the extra underline. So it balances itself out. There are two solutions to this problem, however they’re not perfect. Both involve pseudo elements and a mix of positioning.
 
-<p data-height="268" data-theme-id="13022" data-slug-hash="vNeOjW" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/vNeOjW/'>vNeOjW</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="380" data-theme-id="13022" data-slug-hash="vNeOjW" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/vNeOjW/'>vNeOjW</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 ### Method one: cover with a small box
 The first one involves using a pseudo element and positioning a small box so it covers up the excess. The element has background colour that matches the one behind the element.

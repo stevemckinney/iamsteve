@@ -18,7 +18,7 @@ Using SVG filter effects wasn’t something I was aware of and they have [good b
 However, they are greatly useful when you’re adding illustration with certain details to your website. Even though I only used the gaussian blur filter, I encountered some problems when using it and I’m sure it will apply to using others.
 
 ## Using SVG filter effects
-The first place I came across SVG filters was in Adobe Illustrator, which makes them quite accessible for ease of use. 
+The first place I came across SVG filters was in Adobe Illustrator, which makes them quite accessible for ease of use.
 
 The easiest way to determine whether you should use one is if you’re going to use one of the Photoshop Effects within illustrator. As these will be saved as an actual image and embedded into your SVG should you want to use it that way.
 
@@ -34,20 +34,23 @@ These are a few of the reasons you would want to keep it all vector.
 
 ## Using SVG filters in Adobe Illustrator
 <figure>
-<Image src="/static/images/blog/svg_filters_img1.png" width={738} height={492} />
+<Image src="/static/images/blog/svg_filters_img1.png" width={802} height={802} />
 <figcaption>In the Illustrator menu **Effect > SVG filters > Apply filter**</figcaption>
 </figure>
 
 ### Creating a filter
 <figure>
-<Image src="/static/images/blog/svg_filters_img2.png" width={738} height={492} />
+<Image src="/static/images/blog/svg_filters_img2.png" width={802} height={802} />
 <figcaption>In the same menu, the second icon creates a new filter (the curled page kind of looking one).</figcaption>
 </figure>
 
+### Editing your filter
 <figure>
-<Image src="/static/images/blog/svg_filters_img3.png" width={738} height={492} />
-<figcaption>You’ll open this window, it’s fairly difficult to somehow know what to type for your filter. You can close that window and choose a filter, then click the fx icon and you’ll be given something you can work with. However, I’ll continue on with a gaussian blur example.</figcaption>
+<Image src="/static/images/blog/svg_filters_img3.png" width={802} height={802} />
+<figcaption>The SVG filter effect editor window</figcaption>
 </figure>
+
+You’ll open this window, it’s fairly difficult to somehow know what to type for your filter. You can close that window and choose a filter, then click the fx icon and you’ll be given something you can work with. However, I’ll continue on with a gaussian blur example.
 
 ## Example usage gaussian blur
 The simplest way to use an SVG filter is through a gaussian blur. You place all your filters inside your `<defs>` for reuse later, like so:
@@ -73,10 +76,10 @@ I have found that when you have a larger blur the filter gets cut off. The only 
 width="150%" height="150%" x="-25%" y="-25%"
 ```
 
-Setting the `x` and `y` attributes to be half of the additional percentage over 100%, seems to offset the filter perfectly. Your mileage may vary with this depending on the size of your blur. 
+Setting the `x` and `y` attributes to be half of the additional percentage over 100%, seems to offset the filter perfectly. Your mileage may vary with this depending on the size of your blur.
 
 ## sRGB
-Another issue I came across in Safari, was the colours of the image seemed to have a much lower saturation than every other browser. I came across the solution to add `color-interpolation-filters="sRGB”`.
+Another issue I came across in Safari, was the colours of the image seemed to have a much lower saturation than every other browser. I came across the solution to add `color-interpolation-filters="sRGB"`.
 
 ### Your final filter would look like
 ```markup

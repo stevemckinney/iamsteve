@@ -24,7 +24,7 @@ In this post I will cover how to choose a harmonious type scale and set comforta
 ## Let’s start with content
 To start we need some content that has variety of headings. Eventually we will build up to having images with captions, pull quotes and so on.
 
-<p data-height="268" data-theme-id="13022" data-slug-hash="azMvbN" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/azMvbN/'>azMvbN</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<p data-height="480" data-theme-id="13022" data-slug-hash="azMvbN" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/azMvbN/'>azMvbN</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 
 ## Comfortable line lengths
 We’ve contained our content in an `<article>`. We can style it with the class name `.content`, but first we need to understand what to constrain the line lengths to.
@@ -81,7 +81,5 @@ If we take the principles mentioned throughout the post, we find, from the defau
 As you can see we haven't focused on typeface choices. The improvements made, over the defaults, improve the readability. I want to note that while these guidelines are crucial to creating a good reading experience, it’s important to remember that you shouldn’t take them overboard in achieving perfection with them, across the array of screen sizes we have to deal with.
 
 You will find that it’s far too hard to maintain and in the end will impact the experience negatively in some cases.
-
-> If you have any feedback or any personal struggles with design related topics, [contact me](http://iamsteve.me/contact) or [send me a tweet](http://twitter.com/irsteve). I’d like to write posts based around those.
 
 [^1]: [Web typography: choose a comfortable measure](http://webtypography.net/2.1.2)

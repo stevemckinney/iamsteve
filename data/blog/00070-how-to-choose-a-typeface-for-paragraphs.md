@@ -21,14 +21,16 @@ There are a few factors, that I consider, with choosing an appropriate typeface.
 The way we determine the x-height of a typeface is the height of the lowercase letters. We want this to be a good height, but not too tall otherwise they could be confused for capital letters.
 
 <figure>
-<Image src="/static/images/blog/x-height-large.png" className="wide-image" width={738} height={492} />
+<Image src="/static/images/blog/x-height-large.png" className="wide-image" width={960} height={560} />
 <figcaption>
 x-height is in the name it’s the height of the letter ‘x’, typically all lowercase letters conform to this. This image shows that Dagny Pro has taller x-height over Brandon Grotesque.
 </figcaption>
 </figure>
 
+Now looking at the typefaces in paragraphs.
+
 <figure>
-<Image src="/static/images/blog/x-height-compare.png" className="wide-image" width={738} height={492} />
+<Image src="/static/images/blog/x-height-compare.png" className="wide-image" width={960} height={232} />
 <figcaption>
 Both typefaces would be suitable for headings. Though Dagny Pro is the better suited for paragraphs.
 </figcaption>
@@ -38,9 +40,9 @@ Both typefaces would be suitable for headings. Though Dagny Pro is the better su
 When referring to contrast, in terms of type design, this is how thick and thin parts of a character are.
 
 <figure>
-<Image src="/static/images/blog/contrast.png" className="wide-image" width={738} height={492} />
+<Image src="/static/images/blog/contrast.png" className="wide-image" width={960} height={560} />
 <figcaption>
-Helvetica and Didot, two very different typefaces. Helvetica has low contrast, Didot has high contrast. 
+Helvetica and Didot, two very different typefaces. Helvetica has low contrast, Didot has high contrast.
 </figcaption>
 </figure>
 

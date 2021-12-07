@@ -14,7 +14,7 @@
     margin-right: calc(50% - math.div($contain, 2)); }
 
   img,
-  .code-block,
+  > .code-block,
   .cp_embed_wrapper
   .article-image {
     @include breakpoint($cd) {

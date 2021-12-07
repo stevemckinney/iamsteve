@@ -46,8 +46,6 @@ Maps also make a great way for managing your website colour palette. It works in
 ## Map functions
 The common  ones I use are `map-get` and `map-has-key`, [the Sass documentation](http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions) details all the available functions.
 
-<div class="p-flex p-flex-gutter">
-<div class="p-one-half" markdown="1">
 ### map-get() input
 ```sass
 .key {
@@ -56,8 +54,7 @@ The common  ones I use are `map-get` and `map-has-key`, [the Sass documentation]
 .another-key {
   content: map-get($map, 'another-key'); }
 ```
-</div>
-<div class="p-one-half" markdown="1">
+
 ### map-get() output
 ```css
 .key {
@@ -66,8 +63,6 @@ The common  ones I use are `map-get` and `map-has-key`, [the Sass documentation]
 .another-key {
   content: 'another-value'; }
 ```
-</div>
-</div>
 
 ### map-has-key()
 It will return true or false, based on the input.

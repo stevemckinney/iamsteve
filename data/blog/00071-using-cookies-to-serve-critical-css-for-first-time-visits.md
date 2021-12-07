@@ -23,7 +23,7 @@ Critical path CSS is important for the first page load. There on it’s not real
 ## Our current setup probably looks like
 I’ve excluded much of the code for brevity. Just highlighting the `<style>`, `<script>` and `<noscript>` tags used.
 
-```{.language-markup .language-javascript}
+```html
 <head>
   <style>
     /* Critical CSS */
@@ -50,20 +50,20 @@ cookie('full-css', true, 7);
 ```
 
 #### The first parameter ‘full-css’
-This can be anything. I’d advise something memorable, if you want to delete a specific cookie later on. 
+This can be anything. I’d advise something memorable, if you want to delete a specific cookie later on.
 
 #### The second parameter ‘true’
 An optional string, can really be anything too. We don’t need to do anything with this, so I have set it to `true`.
 
 #### The third parameter ‘7’
-Number of days. Again, this can be anything you like as long as it’s a number of days. 
+Number of days. Again, this can be anything you like as long as it’s a number of days.
 
 ## Using the cookie to control our code
 We’ve walked through how to set a cookie. Now, we need to check if the ‘full-css’ cookie exists. If it doesn’t, we load inline, our critical path CSS and full CSS in asynchronously. **Not forgetting the `<noscript>` fallback**.  We will break this code down now to fully understand it.
 
 ### Check if the cookie exists
 
-```{.language-php .language-markup}
+```php
 <?php if ( isset($_COOKIE['full-css']) ) : ?>
   <link href="fonts.css" rel="stylesheet">
   <link href="full.css" rel="stylesheet">
@@ -74,7 +74,7 @@ We’ve walked through how to set a cookie. Now, we need to check if the ‘full
 This part checks if the cookie is set. If we don’t check it’s set we could cause some errors.
 
 ### Otherwise include critical & full CSS
-```{.language-php .language-markup}
+```php
 <?php else : ?>
   <style><?php include 'critical.css'; ?></style>
   <script>
@@ -99,7 +99,7 @@ The chunkier part of the code, we’re making sure we include the critical path 
 > If you use Typekit, you will have to use their ‘advanced’ script instead.
 
 ## The final code
-```{.language-markup .language-php .language-javascript}
+```php
 <?php if ( isset($_COOKIE['full-css']) ) : ?>
   <link href="fonts.css" rel="stylesheet">
   <link href="full.css" rel="stylesheet">

@@ -21,15 +21,15 @@ I’m not sure it’s been given the attention it deserves, a small feature, yet
 To create a guide layout it starts with going view in the menu bar, then finding new guide layout towards the bottom. You can preview guides as you go, which is something GuideGuide doesn't do.
 
 <figure>
-<Image src="/static/images/blog/guide-menu.png" width={738} height={492} />
+<Image src="/static/images/blog/guide-menu.png" width={412} height={633} />
 <figcaption>Menu bar > View > New Guide Layout…</figcaption>
 </figure>
 
 ## Saving a guide layout
-Saving a guide layout turns it into a preset like other features do within Adobe applications. You'll also see presets already created and are able to use them. 
+Saving a guide layout turns it into a preset like other features do within Adobe applications. You'll also see presets already created and are able to use them.
 
 <figure>
-<Image src="/static/images/blog/guide-layout.png" width={738} height={492} />
+<Image src="/static/images/blog/guide-layout.png" width={620} height={545} />
 <figcaption>Click the preset menu, to be presented with options to save and use.</figcaption>
 </figure>
 
@@ -37,7 +37,7 @@ Saving a guide layout turns it into a preset like other features do within Adobe
 If you don’t have the Creative Cloud sync enabled, you should enable it. For many reasons,  in this case, for syncing your guides. You can find it in Photoshop preferences, it should fall under the presets option.
 
 <figure>
-<Image src="/static/images/blog/guide-cc.png" width={738} height={492} />
+<Image src="/static/images/blog/guide-cc.png" width={1052} height={692} />
 <figcaption>Photoshop sync settings preference pane.</figcaption>
 </figure>
 

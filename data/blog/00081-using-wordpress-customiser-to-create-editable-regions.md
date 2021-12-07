@@ -191,7 +191,7 @@ function customizer_textarea_sanitizer( $text )
 }
 ```
 
-```{.language-php .code-tall}
+```php
 function iamsteve_customizer( $wp_customize )
 {
   // Section
@@ -248,7 +248,7 @@ add_action( 'customize_register', 'iamsteve_customizer' );
 ```
 
 ### Javascript (customizer.js)
-```{.language-javascript .code-tall}
+```javascript
 ( function( $ ) {
   wp.customize( 'about_title', function( value ) {
     value.bind( function( to ) {

@@ -92,9 +92,11 @@ add_image_size( 'portfolio-large-landscape-2x', 3600, 9999, true );
 
 After setting up the image sizes I have allowed for the exact image to be uploaded. As each image should be tailored for the size. This isn’t always necessary, so if you only need one image in various sizes, this will not be for you.
 
-<Image src="/static/images/blog/Screenshot_2014-12-31_11.55.17.png" alt="The custom fields I have used to allow me to choose the exact image I need for my picture sources" width={738} height={492} />
+<div className="article-image flex center">
+  <Image src="/static/images/blog/Screenshot_2014-12-31_11.55.17.png" alt="The custom fields I have used to allow me to choose the exact image I need for my picture sources" width={887} height={466} />
+</div>
 
-> It would make this post insanely long to show exactly how I’ve done it and it’s not code I would consider great as I’m not an expert with PHP. If you’d like to find out more send a tweet to me @irsteve.
+> It would make this post long to show precisely how I’ve done it. it’s not code I would consider great as I’m not an expert with PHP—but it does a job.
 
 ### CSS-Tricks always has solutions
 [A guest post](http://css-tricks.com/hassle-free-responsive-images-for-wordpress/) on CSS-Tricks has provided a solution for doing it. I personally haven’t used it but it is an option.
