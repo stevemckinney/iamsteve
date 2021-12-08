@@ -19,7 +19,7 @@ export default function Footer() {
         >
           Privacy Policy
         </a>
-        <Link href="/feed" title="Subscribe to the blog RSS feed">
+        <Link href="/feed.xml" title="Subscribe to the blog RSS feed">
           RSS
         </Link>
         <Link href="/about">About</Link>
