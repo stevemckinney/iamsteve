@@ -3,6 +3,7 @@ import { getAllFilesFrontMatter } from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
 import { PageSEO } from '@/components/SEO'
 
+import LayoutWrapperSubtle from '@/components/LayoutWrapperSubtle'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import Subscribe from '@/components/Subscribe'
@@ -38,7 +39,7 @@ export async function getStaticProps() {
   return { props: { initialDisplayPosts, posts, pagination }, revalidate: 120 }
 }
 
-export default function Home({ initialDisplayPosts, posts, pagination }) {
+const Home = ({ initialDisplayPosts, posts, pagination }) => {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
@@ -156,3 +157,13 @@ export default function Home({ initialDisplayPosts, posts, pagination }) {
     </>
   )
 }
+
+Home.getLayout = function getLayout(page) {
+  return (
+    <LayoutWrapperSubtle>
+      {page}
+    </LayoutWrapperSubtle>
+  )
+}
+
+export default Home
