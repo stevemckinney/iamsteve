@@ -10,7 +10,6 @@ import Link from '@/components/Link'
 import Icon from '@/components/icon/index.js'
 import Placeholder from '@/components/placeholder/index.js'
 import PageTitle from '@/components/PageTitle'
-import SectionContainer from '@/components/SectionContainer'
 import Image from '@/components/Image'
 import Category from '@/components/Category'
 import Comments from '@/components/comments'
@@ -20,7 +19,7 @@ const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${
 
 const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
 
-export default function PostLayout({ frontmatter, authorDetails, next, prev, children }) {
+const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
   const {
     slug,
     fileName,
@@ -44,7 +43,7 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
   }, [slug])
 
   return (
-    <SectionContainer>
+    <>
       <BlogSEO
         url={`${siteMetadata.siteUrl}/blog/${slug}`}
         authorDetails={authorDetails}
@@ -176,6 +175,8 @@ export default function PostLayout({ frontmatter, authorDetails, next, prev, chi
           </footer>
         </div>
       </div>
-    </SectionContainer>
+    </>
   )
 }
+
+export default PostLayout
