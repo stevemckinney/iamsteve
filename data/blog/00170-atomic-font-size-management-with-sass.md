@@ -19,7 +19,7 @@ fileroot: "atomic-font-size-management-with-sass"
 Have you found yourself thinking: ‘how many times have I set this font size?’ If so, this post should help. Font size management is challenging, especially with responsive design. However, I’ve been using an ‘atomic’ approach with Sass which has made things easier.
 
 ## A very brief overview of tachyons/atomic CSS
-If you’re new to this style of writing CSS, the principle is generally to do one thing and do it well, and across multiple breakpoints. 
+If you’re new to this style of writing CSS, the principle is generally to do one thing and do it well, and across multiple breakpoints.
 
 In the example of font sizing, we’ll end up with CSS which looks somewhat like the following:
 
@@ -35,18 +35,18 @@ In the example of font sizing, we’ll end up with CSS which looks somewhat like
 @media (min-width: 480px) {
   .f1-a {
     font-size: 36px; }
-  
+
   /* and so on... */
-  
+
   .f6-a {
     font-size: 16px; } }
 
 @media (min-width: 960px) {
   .f1-d {
     font-size: 36px; }
-    
+
   /* and so on... */
-    
+
   .f6-d {
     font-size: 16px; } } }
 ```
@@ -68,7 +68,7 @@ There’s something nice about this approach to your HTML:
 Now, let’s get into the setup with Sass.
 
 ## To begin get your font sizes together
-Depending on the stage you find yourself at, be it the site is built, ready to build or in the design phase. The first step is to gather all the font sizes you currently have. This can also help identify where you may have too many. 
+Depending on the stage you find yourself at, be it the site is built, ready to build or in the design phase. The first step is to gather all the font sizes you currently have. This can also help identify where you may have too many.
 
 ### Add your font sizes to variables
 Next, add each of those font sizes to variables. They will be used within the next steps, it also helps keep things reusable.
@@ -133,7 +133,7 @@ The next step is where Sass does all the work for you and you will see the benef
     .f6-#{$breakpoint-name} { font-size: $f6; } } }
 ```
 
-What’s happening here is the `@each` loop is going through the `$breakpoint-map` and: 
+What’s happening here is the `@each` loop is going through the `$breakpoint-map` and:
 
 1. Assigning each key (eg: `'a'`) to `$breakpoint-name` to every font size class
 2. Assigning each value (eg: `$a`) to `$breakpoint-width` to every media query
@@ -144,7 +144,7 @@ The benefits of this approach versus doing it through manual CSS are fairly clea
 Even if your project doesn’t allow for Sass and you need to generate something quickly you can always use Codepen.
 
 ## Alternative: font size ‘locks’
-This approach gained some popularity a while ago now, but [CSS locks](https://fvsch.com/code/css-locks/) can build upon this style of writing CSS further. 
+This approach gained some popularity a while ago now, but [CSS locks](https://fvsch.com/code/css-locks/) can build upon this style of writing CSS further.
 
 The main benefit of font size locks is having proportional font sizes no matter the screen size.
 
@@ -201,10 +201,10 @@ Beyond the screen sizes specified, you’ll find the font size will still increa
 
 .f1-l {
   font-size: $f3;
-    
+
   @media (min-width: 480px) {
     font-size: font-size-lock($f3, $f1, 480px, 1200px); }
-    
+
   @media (min-width: 1200px) {
     font-size: $f1; } }
 ```
@@ -212,6 +212,6 @@ Beyond the screen sizes specified, you’ll find the font size will still increa
 Now you have your font size starting at 24px, below 480px wide viewports. Then, beyond that it will scale between 24px and 36px, until 1200px. Finally, above 1200px the font size will not go beyond 36px.
 
 ## That’s it
-If you’re like me, the ability to keep track and be able to feel in control of your design implementation is the main reason this approach should grow on you. 
+If you’re like me, the ability to keep track and be able to feel in control of your design implementation is the main reason this approach should grow on you.
 
 Again, if you don’t use Sass or any preprocessor for that matter, you can still benefit, by using something like Codepen. Drop in the code and copy the output and you’re good to go.
