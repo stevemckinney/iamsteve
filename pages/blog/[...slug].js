@@ -3,6 +3,7 @@ import PageTitle from '@/components/PageTitle'
 import generateRss from '@/lib/generate-rss'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
+import LayoutWrapperSubtle from '@/components/LayoutWrapperSubtle'
 
 const DEFAULT_LAYOUT = 'PostLayout'
 
@@ -69,4 +70,8 @@ export default function Blog({ post, authorDetails, filenameSlug, prev, next }) 
       )}
     </>
   )
+}
+
+Blog.getLayout = function getLayout(page) {
+  return <LayoutWrapperSubtle>{page}</LayoutWrapperSubtle>
 }
