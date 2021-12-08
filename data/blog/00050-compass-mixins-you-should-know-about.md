@@ -18,7 +18,7 @@ Compass is a brilliant extension to Sass as we all know. We know the time saving
 ## pie-clearfix
 The simplest way to clearfix any element that needs it.
 
-### Usage 
+### Usage
 `@include pie-clearfix;`
 
 ### Output
@@ -103,7 +103,7 @@ h1, h2, h3, h5, h6 {
 ```
 
 ## scale-lightness and scale-saturation
-[My last blog post](http://iamsteve.me/blog/entry/using_scale_color_in_sass "Using scale colour in Sass") was about using `scale-color` over `darken` and `lighten` shortly after that I found that Compass offers a simpler usage of the main things I use `scale-color` for.
+[My last blog post](/blog/using_scale_color_in_sass "Using scale colour in Sass") was about using `scale-color` over `darken` and `lighten` shortly after that I found that Compass offers a simpler usage of the main things I use `scale-color` for.
 ### Usage
 ```sass
 color: scale-lightness(#f00, 20%);

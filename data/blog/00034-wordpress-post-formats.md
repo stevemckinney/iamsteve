@@ -28,11 +28,11 @@ Place this code in your `functions.php` file. More information about the types c
 Detecting a post format is simple, we use `has_post_format('the format')` to give what I ended up with this simplified loop:
 
 ```php
-<?php if (have_posts()) : ?>	
-  <?php while (have_posts()) : the_post(); 
+<?php if (have_posts()) : ?>
+  <?php while (have_posts()) : the_post();
     if (has_post_format('aside')) {
       get_template_part('loop', 'aside');
-    } 
+    }
     else if(has_post_format('gallery')) {
       get_template_part('loop', 'gallery');
     }
@@ -50,19 +50,19 @@ Detecting a post format is simple, we use `has_post_format('the format')` to giv
     }
     else if(has_post_format('chat')) {
       get_template_part('loop', 'chat');
-    } 
+    }
     else if(has_post_format('image')) {
       get_template_part('loop', 'image');
-    } 
+    }
     else if(has_post_format('link')) {
       get_template_part('loop', 'link');
-    } 
+    }
     else if(has_post_format('gallery')) {
       get_template_part('loop', 'gallery');
     }
     else {
       get_template_part('loop', 'standard');
-    } 
+    }
   ?>
 <?php endwhile; ?>
 ```
@@ -72,7 +72,10 @@ What I'm doing here is using `get_template_part()` to get my custom layout for e
 ## After you've set up the loop
 I recommend you get the [post formats plugin](https://github.com/crowdfavorite/wp-post-formats "Visit the github page to download it"). It adds a nice UI to make it a little more tumblr like. I also recommend that if you change theme and it doesn't support the plugin you install [post formats fallback plugin](https://github.com/crowdfavorite/wp-post-formats-fallback) this will put all the content into the right field.
 
-<figure><Image src="/static/images/blog/post_formats_plugin.png" width={738} height={492} /><figcaption>The UI added with the plugin</figcaption></figure>
+<figure>
+  <Image src="/static/images/blog/post_formats_plugin.png" width={703} height={100} />
+  <figcaption>The UI added with the plugin</figcaption>
+</figure>
 
 ## Using the fields from the plugin
 The plugin adds several fields throughout to each format on adding a post. This is where you will need to make your custom loops, it's not entirely obvious to begin with how to use the fields, take a look through each of the <a href="https://github.com/crowdfavorite/wp-post-formats/tree/develop/views" title="Code required for each post format">files</a> in the plugin views folder. If you include the piece of code that looks like `<?php echo esc_attr(get_post_meta($post->ID, '_format_link_url', true)); ?>` from each one into your own files. This will output the content for you. Here is an example of one of mine for a link post:

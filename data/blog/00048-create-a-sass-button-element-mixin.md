@@ -20,9 +20,9 @@ This mixin is one I've been using for a few months now to create buttons/anythin
 > Note: Some things rely on compass existing, or some variables set such as `$element` for a font family. I've defined them at the top, but you'll probably have your own. The size parameter uses this pixel to em function `@function em($target-px, $context) { @return ($target-px / $context) * 1em; }`.
 
 ## The code and explanation
-The easiest way to get this across is to give the code and follow up with an explanation for my decisions in the way I have done it.
+The easiest way to get this across is to give the code and follow up with an explanation for my decisions in the way I have done it. Head over to the github gist, then let's get into the explanation.
 
-<Script async src="https://gist.github.com/4007030.js" strategy="lazyOnload" />
+<p><a href="https://gist.github.com/4007030.js">View github gist</a></p>
 
 Firstly we have the element base, what every button will contain just separated from the mixin itself.
 

@@ -19,10 +19,22 @@ This post is just about some thoughts and processes I make whilst designing a we
 Well it's a pretty easy to answer that question. I came to this design through chance to an extent. I thought the idea of adding a 3D type depth, was a pretty cool idea. The other challenge I kind of set myself was, being able to do it in as few images as possible and replicating as much in CSS. Which I think I have done very well (just try zooming in and everything apart from the header will remain crisp).
 
 ### Inspiring buttons
-[![3D buttons by Rogie King](/uploads/blog/shot_1278576561.png)](http://dribbble.com/shots/33550-Mad-Elements) [![3D type buttons by Jonatan Flores](/uploads/blog/shot_1278651332.jpg)](http://dribbble.com/shots/33827-Buttons)
+<div className="article-image flex center">
+  <a href="http://dribbble.com/shots/33550-Mad-Elements">
+    <Image src="/static/images/blog/shot_1278576561.png" alt="3D buttons by Rogie King" width={400} height={300} />
+  </a>
+</div>
+
+<div className="article-image flex center">
+  <a href="http://dribbble.com/shots/33827-Buttons">
+    <Image src="/static/images/blog/shot_1278651332.jpg" alt="3D type buttons by Jonatan Flores" width={400} height={300} />
+  </a>
+</div>
 
 ### Inspiring designs
-[![An older design of Made by Elephant](/uploads/blog/15500311949dc17f712a39_l1.png)](http://emberapp.com/samwieck/images/made-by-elephant-we-craft-interfaces/sizes/l)
+<div className="article-image flex center">
+  <Image src="/static/images/blog/15500311949dc17f712a39_l1.png" alt="An older design of Made by Elephant" width={960} height={585} />
+</div>
 
 The vertical navigation and display of the work helped inspire the recent work on the home page.
 
@@ -32,22 +44,36 @@ While I have only noted a few examples, they are the ones that played quite a bi
 ### Sketches
 Albeit poor quality, you will get an understanding as to where I was going!
 
-![The drawings most like this design.](/uploads/blog/photo-5.jpg)
+<div className="article-image flex center">
+  <Image src="/static/images/blog/photo-5.jpg" alt="The drawings most like this design." width={800} height={600} />
+</div>
 
 Firstly, this is what the final sketches look like in my book. The rest below will be of concepts and a couple went further and were almost what I ended up with.
 
-![Sketches of a totally different idea.](/uploads/blog/photo-2-225x300.jpg)
+<div className="article-image flex center">
+  <Image src="/static/images/blog/photo-2-225x300.jpg" alt="Sketches of a totally different idea." width={225} height={300} />
+</div>
 
 This one almost saw the light of day. I coded the majority of the pages.
 
-![A rough idea, which I thought wouldn't work.](/uploads/blog/photo-1-225x300.jpg)
+<div className="article-image flex center">
+  <Image src="/static/images/blog/photo-1-225x300.jpg" alt="A rough idea, which I thought wouldn't work." width={225} height={300} />
+</div>
 
 A rough idea, which I thought wouldn't work.
 
 ### Actual designs
 The two which I was most happy with before hand. Both of these examples are in the browser. So there is a couple of things that are out of place, like the pink line and misplaced footer text. Why didn't I use them? This may be a question of yours but because they weren't as adaptable/easy to work with for being responsive. This one is much easier to make responsive. While it isn't at current it will be at some point. I will follow it up with a blog post when it is.
 
-![One of the ideas that was possible.](/uploads/blog/V2-possiblr1.png) ![One of the ideas that was possible.](/uploads/blog/V2-a-possible-idea2.png)
+#### One iteration
+<div className="article-image flex center">
+  <Image src="/static/images/blog/V2-possiblr1.png" alt="One of the ideas that was possible." width={600} height={800} />
+</div>
+
+#### Another iteration
+<div className="article-image flex center">
+  <Image src="/static/images/blog/V2-a-possible-idea2.png" alt="One of the ideas that was possible." width={600} height={800} />
+</div>
 
 ## Wrapping up
 Well, this turned out to be longer than I'd expected. I had so much to show of how I got to this design you see now and all that I've done leading up to it, the post could easily have been twice the length. Basically I wanted to achieve something that would work responsively (when I've got the correct CSS in place) and a design which could easily adapt from time to time to make easy changes for blog posts.

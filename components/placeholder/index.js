@@ -41,7 +41,7 @@ function Placeholder({ category, kind }) {
   const image = random[1]
   const containerClass =
     kind.toString() === 'hero'
-      ? 'pt4 pb4 pt6-b pb6-b pt7-d pb8-d flex center featured-image entry-image'
+      ? 'pt4 pb4 pt6-b pb6-b pt7-d pb8-d flex center featured-image entry-image is-placeholder'
       : 'radius flex'
 
   return (

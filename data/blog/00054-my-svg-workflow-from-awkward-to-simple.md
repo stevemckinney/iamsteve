@@ -13,6 +13,10 @@ id: 54
 fileroot: "my_svg_workflow_from_awkward_to_simple"
 ---
 
+import Script from 'next/script'
+
+<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
+
 Initially I thought it would be quite frustrating to get going with SVG, but after jumping in and seeing where I got it's quite simple. Much better than exporting 1x and 2x images by far.
 
 ## How to get started
@@ -32,7 +36,9 @@ It's not too much trouble though thankfully if you have a solid shape you have m
 2. Go to file > export > paths to illustrator…
 3. You should see your shape name in the paths dropdown
 
-![Exporting paths in photoshop to illustrator](/static/images/blog/export_paths.png)
+<div className="article-image">
+  <Image src="/static/images/blog/export_paths.png" alt="Exporting paths in photoshop to illustrator" width={526} height={464} />
+</div>
 
 4. Click ok and save
 5. Open your path with illustrator
@@ -45,14 +51,17 @@ Alright, so you have your paths in illustrator, either from following the above 
 1. Click the artboard tool or press `shift + o`
 2. Hover over your shape and click the path and it should end up like this
 
-![The artboard is round the icon](/static/images/blog/svg_artboard.png)
+<div className="article-image">
+  <Image src="/static/images/blog/svg_artboard.png" alt="The artboard is round the icon" width={252} height={226} />
+</div>
 
 3. Go to file and save, name your file, choose svg as the format and check 'Use Artboards' like this
 
-![Saving an SVG, format SVG, artboards checked](/static/images/blog/svg_save.png)
+<div className="article-image">
+  <Image src="/static/images/blog/svg_save.png" alt="Saving an SVG, format SVG, artboards checked" width={712} height={466} />
+</div>
 
 4. Save, generally the options are ok from here, but if you wish to change anything be careful.
-
 
 ## I have my SVG how do I use it
 The final step to getting your SVG on the web. What you need to do is go to [grumpicon](http://grumpicon.com). Drop your SVG in your browser window. It will generate you a bunch of nice files and you're ready to use it on the web.
@@ -64,7 +73,6 @@ For easy changing look for a part like `path%20fill%3D%22%23`. You should have a
 
 ## Try it out here
 <p data-height="268" data-theme-id="0" data-slug-hash="golui" data-user="stevemckinney" data-default-tab="result" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/golui">Using svg for icons</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a></p>
-<script async src="http://codepen.io/assets/embed/ei.js"></script>
 
 ## Finishing
 If you skip out the photoshop the rest is quite simple. The best part is that icon will be easy to reuse with a simple Sass variable change. Unfortunately the png data image would have to be regenerated each time, this depends how crucial this is to your design for browsers that don't support SVG as you may feel it's fine as the initial colour.

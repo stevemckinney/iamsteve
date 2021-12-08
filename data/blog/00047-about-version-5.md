@@ -15,10 +15,10 @@ fileroot: "about_version_5"
 
 Another redesign, another blog post. It’s the majority of what my blog posts are based around. With each version I say I'm going to blog more, but the redesign has never really focused on it. This was one of my main goals, to bring more focus to the blog. Then maybe it would add to making me write more.
 
-The design has a similar basis to the majority of previous versions, especially V4. I'm at a stage where I'm quite happy with the position of content around the site. So things are mostly a visual refresh. 
+The design has a similar basis to the majority of previous versions, especially V4. I'm at a stage where I'm quite happy with the position of content around the site. So things are mostly a visual refresh.
 
 ## My goals
-My goals were fairly simple, I think I’ve achieved a few so far but others are long term. 
+My goals were fairly simple, I think I’ve achieved a few so far but others are long term.
 
 - Bring focus to the blog
 - Reduce emphasis on hiring me, but still be open to it
@@ -34,11 +34,11 @@ The first 3 I’m confident I've met as they were somewhat the simplest. Through
 
 Making the portfolio more mobile friendly is a work in progress still, I'm going to be cropping a few sizes and using picturefill to ensure this is pretty good.
 
-The biggest one to do with the site I feel is to try increase traffic. I'll have to blog more frequently than I do to remotely achieve this. I plan to, I don't want to say I will as I've done it in the past and got nowhere. 
+The biggest one to do with the site I feel is to try increase traffic. I'll have to blog more frequently than I do to remotely achieve this. I plan to, I don't want to say I will as I've done it in the past and got nowhere.
 
 The last few are more personal goals. Thinking about the details, is something I'll get better at with time. It's more of a joint personal and site goal. I felt I've added a lot more focus to this design and getting things right.
 
-Becoming a better designer and adding to the portfolio are fairly obvious. I hope through blogging more this will kind of come with it. 
+Becoming a better designer and adding to the portfolio are fairly obvious. I hope through blogging more this will kind of come with it.
 
 ## Wrap up & design decisions
 Overall I'm pretty happy with this change to my website. I've still got a bit of work to do, I want to add custom page banners. I want to put some real effort into them and try make them great. Also the left over things to do in my portfolio.
@@ -46,7 +46,7 @@ Overall I'm pretty happy with this change to my website. I've still got a bit of
 From the last version of this site I've tried yet again to go mobile first. With better decisions made. I've gone for an off canvas navigation this time:
 
 <figure>
-![](/static/images/blog/v5_nav.png)
+<Image src="/static/images/blog/v5_nav.png" width={381} height={800} />
 <figcaption>I'm using what's becoming the standard three line icon.</figcaption>
 </figure>
 

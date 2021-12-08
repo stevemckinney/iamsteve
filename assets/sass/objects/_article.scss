@@ -220,7 +220,7 @@
 
 // Figures
 // ---------------------------
-.entry-content figure {
+.entry-content > figure {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -235,7 +235,7 @@
     align-items: center;
     flex-flow: column; } }
 
-.entry-content figcaption {
+.entry-content > figure > figcaption {
   font-style: italic;
   line-height: 1.333333;
   text-align: center;
@@ -273,6 +273,10 @@
 .featured-image {
   overflow: hidden;
   min-height: 240px;
+  max-height: 648px; }
+
+.featured-image.is-placeholder {
+  min-height: 60vh;
   max-height: 648px; }
 
 .featured-image img {
