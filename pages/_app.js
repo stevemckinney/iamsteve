@@ -12,22 +12,12 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 const isSocket = process.env.SOCKET
 
 export default function App({ Component, pageProps }) {
+  const getLayout = Component.getLayout || ((page) => <LayoutWrapper>{page}</LayoutWrapper>)
+
   return (
     <ThemeProvider attribute="class">
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <link
-          rel="preload"
-          href="/public/static/fonts/averta/avertastd-regular-webfont.woff2"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/static/fonts/averta/avertastd-regularitalic-webfont.woff2"
-          as="font"
-          crossOrigin=""
-        />
         <link
           rel="preload"
           href="/static/fonts/averta/avertastd-semibold-webfont.woff2"
@@ -44,9 +34,9 @@ export default function App({ Component, pageProps }) {
       </Head>
       {isDevelopment && isSocket && <ClientReload />}
       <Analytics />
-      <LayoutWrapper>
+      {getLayout(
         <Component {...pageProps} />
-      </LayoutWrapper>
+      )}
       <div id="modal-root"></div>
     </ThemeProvider>
   )
