@@ -10,7 +10,11 @@ export default function Pagination({ stage = 'full', totalPages, currentPage }) 
       {stage === 'full' ? (
         <nav className="row center pagination pagination-offset">
           {newer ? (
-            <Link href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`} rel="next" className="paginate paginate-left link-icon">
+            <Link
+              href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`}
+              rel="next"
+              className="paginate paginate-left link-icon"
+            >
               <span className="icon icon-medium icon-left">
                 <Icon kind="left" />
               </span>
@@ -30,7 +34,11 @@ export default function Pagination({ stage = 'full', totalPages, currentPage }) 
             </span>
           </div>
           {older ? (
-            <Link href={`/blog/page/${currentPage + 1}`} rel="previous" className="paginate paginate-right link-icon">
+            <Link
+              href={`/blog/page/${currentPage + 1}`}
+              rel="previous"
+              className="paginate paginate-right link-icon"
+            >
               <strong>Older</strong>
               <span className="icon icon-medium icon-right">
                 <Icon kind="right" />
@@ -50,7 +58,11 @@ export default function Pagination({ stage = 'full', totalPages, currentPage }) 
           {stage === 'previous' || stage === 'older' ? (
             <>
               {older ? (
-                <Link href={`/blog/page/${currentPage + 1}`} rel="previous" className="warm sans link-icon">
+                <Link
+                  href={`/blog/page/${currentPage + 1}`}
+                  rel="previous"
+                  className="warm sans link-icon"
+                >
                   <strong>Older</strong>
                   <span className="icon icon-medium icon-right">
                     <Icon kind="right" />
@@ -68,7 +80,11 @@ export default function Pagination({ stage = 'full', totalPages, currentPage }) 
           ) : (
             <>
               {newer ? (
-                <Link href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`} rel="next" className="warm sans link-icon">
+                <Link
+                  href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`}
+                  rel="next"
+                  className="warm sans link-icon"
+                >
                   <span className="icon icon-medium icon-left">
                     <Icon kind="left" />
                   </span>

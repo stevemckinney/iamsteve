@@ -34,9 +34,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       {isDevelopment && isSocket && <ClientReload />}
       <Analytics />
-      {getLayout(
-        <Component {...pageProps} />
-      )}
+      {getLayout(<Component {...pageProps} />)}
       <div id="modal-root"></div>
     </ThemeProvider>
   )

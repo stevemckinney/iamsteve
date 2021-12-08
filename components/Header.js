@@ -27,7 +27,12 @@ class Header extends React.Component {
   render() {
     return (
       <>
-        <header className={`header contain-medium contain-large primary ${this.props.subtle ? 'header-solid header-transparent-c' : 'header-solid' }`} id="header">
+        <header
+          className={`header contain-medium contain-large primary ${
+            this.props.subtle ? 'header-solid header-transparent-c' : 'header-solid'
+          }`}
+          id="header"
+        >
           <Link href="#content" id="skip-navigation" className="visuallyhidden">
             Skip navigation
           </Link>
