@@ -45,7 +45,7 @@ const Medium = ({ frontmatter }) => {
               </>
             ) : (
               <>
-                {categories.includes('Design') ? (
+                {categories && categories.includes('Design') ? (
                   <Placeholder category="Design" kind="post" />
                 ) : (
                   <Placeholder category="Code" kind="post" />
@@ -70,9 +70,8 @@ const Medium = ({ frontmatter }) => {
         <div className="meta f8-b f7-d flex between items-center dashes">
           {categories && (
             <>
-              {categories.map((category) => (
-                <Category key={category} text={category} />
-              ))}
+              {categories &&
+                categories.map((category) => <Category key={category} text={category} />)}
             </>
           )}
           <Link href={url}>

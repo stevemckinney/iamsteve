@@ -58,14 +58,22 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
               className="pt4 pb4 pt6-b pb6-b pt7-d pb8-d flex center featured-image entry-image"
               style={{ backgroundColor: theme.toString() }}
             >
-              {images.map((image) => (
-                <Image src={image} className="radius" alt="" width={744} height={492} key={image} />
-              ))}
+              {images &&
+                images.map((image) => (
+                  <Image
+                    src={image}
+                    className="radius"
+                    alt=""
+                    width={744}
+                    height={492}
+                    key={image}
+                  />
+                ))}
             </div>
           </>
         ) : (
           <>
-            {categories.includes('Design') ? (
+            {categories && categories.includes('Design') ? (
               <Placeholder category="Design" kind="hero" />
             ) : (
               <Placeholder category="Code" kind="hero" />
@@ -88,14 +96,15 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
                 {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
               </time>
             </span>
-            {categories.map((category) => (
-              <Category
-                key={category}
-                text={category}
-                styling="meta-item flex items-center"
-                icon={true}
-              />
-            ))}
+            {categories &&
+              categories.map((category) => (
+                <Category
+                  key={category}
+                  text={category}
+                  styling="meta-item flex items-center"
+                  icon={true}
+                />
+              ))}
             <span className="meta-item flex items-center">
               <Icon kind="time" />
               {frontmatter.readingTime.text}

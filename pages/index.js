@@ -85,12 +85,14 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
       </div>
 
       <Posts title="Latest posts" link="/blog" size="medium" key="latest">
-        {posts
-          .filter((post) => post)
-          .map((frontmatter) => {
-            return <Card kind="medium" frontmatter={frontmatter} key={frontmatter.fileroot} />
-          })
-          .slice(0, POSTS_PER_PAGE)}
+        {!posts && 'No posts'}
+        {posts &&
+          posts
+            .filter((post) => post)
+            .map((frontmatter) => {
+              return <Card kind="medium" frontmatter={frontmatter} key={frontmatter.fileroot} />
+            })
+            .slice(0, POSTS_PER_PAGE)}
         <Link
           href="/blog"
           className="link-icon warm secondary-hover card-permalink semibold sans center f2-l"
@@ -112,12 +114,14 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
         size="small"
         key="design"
       >
-        {posts
-          .filter((post) => post.categories.includes('Design'))
-          .map((frontmatter) => {
-            return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
-          })
-          .slice(0, POSTS_PER_PAGE)}
+        {!posts && 'No posts'}
+        {posts &&
+          posts
+            .filter((post) => post.categories.includes('Design'))
+            .map((frontmatter) => {
+              return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
+            })
+            .slice(0, POSTS_PER_PAGE)}
         <Link
           href="/category/design"
           className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"
@@ -137,12 +141,14 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
         size="small"
         key="code"
       >
-        {posts
-          .filter((post) => post.categories.includes('Code'))
-          .map((frontmatter) => {
-            return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
-          })
-          .slice(0, POSTS_PER_PAGE)}
+        {!posts && 'No posts'}
+        {posts &&
+          posts
+            .filter((post) => post.categories.includes('Code'))
+            .map((frontmatter) => {
+              return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
+            })
+            .slice(0, POSTS_PER_PAGE)}
         <Link
           href="/category/design"
           className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"
