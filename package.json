@@ -44,7 +44,7 @@
     "unist-util-visit": "^4.0.0"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.0.0-beta.12",
+    "@netlify/plugin-nextjs": "^4.0.0-rc.1",
     "@next/bundle-analyzer": "12.0.3",
     "@svgr/webpack": "^5.5.0",
     "breakpoint-sass": "^2.7.1",
