@@ -12,13 +12,6 @@ export default function Footer() {
         <Link href="#top" className="top">
           Top
         </Link>
-        <a
-          href="https://www.iubenda.com/privacy-policy/12610320"
-          className="iubenda-white iubenda-embed"
-          title="Privacy Policy"
-        >
-          Privacy Policy
-        </a>
         <Link href="/feed.xml" title="Subscribe to the blog RSS feed">
           RSS
         </Link>
