@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from './Link'
 
 export default function About() {
   return (
@@ -6,18 +7,18 @@ export default function About() {
       <div className="row subheader between contain contain-medium contain-large pb4">
         <h1 className="f4 f3-b f2-d warm mb0 text-left">About</h1>
         <nav className="flex-auto flex end sans warm-l1 nav-in-page">
-          <a href="#site" className="warm-hover">
+          <Link href="#site" className="warm-hover">
             Site
-          </a>
-          <a href="#examples" className="warm-hover">
+          </Link>
+          <Link href="#examples" className="warm-hover">
             Examples
-          </a>
-          <a href="#author" className="warm-hover">
+          </Link>
+          <Link href="#author" className="warm-hover">
             Author
-          </a>
-          <a href="#history" className="warm-hover">
+          </Link>
+          <Link href="#history" className="warm-hover">
             History
-          </a>
+          </Link>
         </nav>
       </div>
 
@@ -150,28 +151,32 @@ export default function About() {
 
             <ul className="list-custom-bullet list-nudge f3-l">
               <li>
-                <a href="/blog/creating-custom-stroke-width-profiles-in-illustrator">
+                <Link href="/blog/creating-custom-stroke-width-profiles-in-illustrator">
                   Creating custom stroke width profiles in Illustrator
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/blog/horizontal-scrolling-responsive-menu">
+                <Link href="/blog/horizontal-scrolling-responsive-menu">
                   Creating a horizontal scrolling responsive menu
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/blog/get-up-to-speed-with-css-shapes">Get up to speed with CSS shapes</a>
+                <Link href="/blog/get-up-to-speed-with-css-shapes">
+                  Get up to speed with CSS shapes
+                </Link>
               </li>
               <li>
-                <a href="/blog/how-to-use-kerning-tracking">How to use kerning &amp; tracking</a>
+                <Link href="/blog/how-to-use-kerning-tracking">
+                  How to use kerning &amp; tracking
+                </Link>
               </li>
               <li>
-                <a href="/blog/a-guide-to-vertical-rhythm">A guide to vertical rhythm</a>
+                <Link href="/blog/a-guide-to-vertical-rhythm">A guide to vertical rhythm</Link>
               </li>
               <li>
-                <a href="/blog/search-overlay-with-smooth-reveal-animation">
+                <Link href="/blog/search-overlay-with-smooth-reveal-animation">
                   Search overlay with smooth reveal animation
-                </a>
+                </Link>
               </li>
             </ul>
           </article>
@@ -242,6 +247,7 @@ export default function About() {
                 src="/static/images/blog/about/v1_2x.jpg"
                 width={480}
                 height={400}
+                alt=""
                 className="radius mb2"
               />
               <figcaption>Version one, 2009.</figcaption>
@@ -252,10 +258,11 @@ export default function About() {
                 src="/static/images/blog/about/v2_2x.jpg"
                 width={480}
                 height={400}
+                alt=""
                 className="radius mb2"
               />
               <figcaption>
-                <a href="/blog/redesign">Version two, 2010.</a>
+                <Link href="/blog/redesign">Version two, 2010.</Link>
               </figcaption>
             </figure>
 
@@ -264,22 +271,24 @@ export default function About() {
                 src="/static/images/blog/about/v3_2x.jpg"
                 width={480}
                 height={400}
+                alt=""
                 className="radius mb2"
               />
               <figcaption>
-                <a href="/blog/about_the_redesign_v3">Version three, early 2011.</a>
+                <Link href="/blog/about_the_redesign_v3">Version three, early 2011.</Link>
               </figcaption>
             </figure>
 
             <figure className="old-design mb6">
               <Image
-                src="/static/images/blog/about/v4_2x.jpg"
+                src="/static/images/blog/Linkbout/v4_2x.jpg"
                 width={480}
                 height={400}
+                alt=""
                 className="radius mb2"
               />
               <figcaption>
-                <a href="/blog/about_version_4">Version four, mid 2011.</a>
+                <Link href="/blog/about_version_4">Version four, mid 2011.</Link>
               </figcaption>
             </figure>
 
@@ -288,10 +297,11 @@ export default function About() {
                 src="/static/images/blog/about/iamsteve-v5.png"
                 width={1440}
                 height={1706}
+                alt=""
                 className="radius mb2"
               />
               <figcaption>
-                <a href="/blog/about_version_5">Version five, late 2012.</a>
+                <Link href="/blog/about_version_5">Version five, late 2012.</Link>
               </figcaption>
             </figure>
           </article>

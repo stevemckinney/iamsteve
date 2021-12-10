@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import siteMetadata from '@/data/siteMetadata'
 import NewsletterForm from '@/components/NewsletterForm'
 
 export default function Newsletter() {
@@ -21,9 +22,7 @@ export default function Newsletter() {
             and post files included. You can unsubscribe anytime.
           </p>
 
-          <div className="form-warm">
-            {siteMetadata.newsletter.provider !== '' && <NewsletterForm theme={`form-${theme}`} />}
-          </div>
+          {siteMetadata.newsletter.provider !== '' && <NewsletterForm theme={`form-warm`} />}
         </div>
       </div>
     </>

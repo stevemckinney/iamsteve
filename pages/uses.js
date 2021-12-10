@@ -62,13 +62,12 @@ export default function Contact() {
                 I use the{' '}
                 <a
                   href="https://twitter.com/panic/status/558389225612005376?lang=en-gb"
-                  className="secondary-hover"
-                  className="link"
+                  className="secondary-hover link"
                 >
                   Panic Palette
                 </a>{' '}
                 and zsh (using{' '}
-                <a href="http://ohmyz.sh" className="secondary-hover" className="link">
+                <a href="http://ohmyz.sh" className="secondary-hover link">
                   ohmyzsh
                 </a>
                 ).
