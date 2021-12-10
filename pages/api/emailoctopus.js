@@ -16,7 +16,7 @@ export default async (req, res) => {
           FirstName: name,
           source: source,
         },
-        status: 'SUBSCRIBED',
+        status: 'PENDING',
       }),
       headers: {
         'Content-Type': 'application/json',
