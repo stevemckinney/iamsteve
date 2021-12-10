@@ -36,7 +36,7 @@ export async function getStaticProps() {
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
   }
 
-  return { props: { initialDisplayPosts, posts, pagination }, revalidate: 120 }
+  return { props: { initialDisplayPosts, posts, pagination } }
 }
 
 const Home = ({ initialDisplayPosts, posts, pagination }) => {
@@ -162,6 +162,10 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
       </Posts>
     </>
   )
+}
+
+Home.getLayout = function getLayout(page) {
+  return <LayoutWrapperSubtle>{page}</LayoutWrapperSubtle>
 }
 
 export default Home
