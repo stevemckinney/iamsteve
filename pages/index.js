@@ -164,8 +164,4 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
   )
 }
 
-Home.getLayout = function getLayout(page) {
-  return <LayoutWrapperSubtle>{page}</LayoutWrapperSubtle>
-}
-
 export default Home
