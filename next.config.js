@@ -6,7 +6,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer({
   compress: false,
-  target: 'serverless',
   sassOptions: {
     includePaths: [
       path.join(__dirname, './node_modules/breakpoint-sass/stylesheets/'),
