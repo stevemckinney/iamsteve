@@ -4,6 +4,7 @@ import ArrowRight from './arrow-right.svg'
 import Blog from './blog.svg'
 import Category from './category.svg'
 import Code from './code.svg'
+import Coffee from './buy-coffee.svg'
 import Contact from './contact.svg'
 import Date from './date.svg'
 import Design from './design.svg'
@@ -22,6 +23,7 @@ const components = {
   blog: Blog,
   category: Category,
   code: Code,
+  coffee: Coffee,
   contact: Contact,
   date: Date,
   design: Design,

@@ -117,6 +117,10 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
               </button>
             </span>
 
+            <span className="meta-item meta-item-last flex items-center">
+              <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
+            </span>
+
             <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
               <a href="{site_url}" className="author vcard url fn" rel="author">
                 Steve McKinney
@@ -131,59 +135,25 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
         {children}
       </article>
 
-      <span className="meta-item meta-item-last flex items-center">
-        <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
-      </span>
+      <hr className="mb4 mt4 divider" />
 
-      <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
-        <div
-          className="pb-8 divide-y divide-gray-200 xl:divide-y-0 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6"
-          style={{ gridTemplateRows: 'auto 1fr' }}
-        >
-          <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-3 xl:row-span-2">
-            <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-              <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
-            </div>
-            <Comments frontmatter={frontmatter} />
-          </div>
-          <footer className="sticky">
-            <div className="text-sm font-medium leading-5 divide-gray-200 xl:divide-y dark:divide-gray-700 xl:col-start-1 xl:row-start-2">
-              {(next || prev) && (
-                <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
-                  {prev && (
-                    <div>
-                      <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                        Previous Article
-                      </h2>
-                      <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                        <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
-                      </div>
-                    </div>
-                  )}
-                  {next && (
-                    <div>
-                      <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                        Next Article
-                      </h2>
-                      <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                        <Link href={`/blog/${next.slug}`}>{next.title}</Link>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-            <div className="pt-4 xl:pt-8">
-              <Link
-                href="/blog"
-                className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-              >
-                &larr; Back to the blog
-              </Link>
-            </div>
-          </footer>
+      <div className="support m-center measure-padding pb6 flex flex-wrap align-center items-center between">
+        <div className="column column-5-d mb4 mb0-d">
+          <p>If you found this article useful, why not support the upkeep of this website?</p>
+        </div>
+        <div className="column column-3-d">
+          <a href="https://www.buymeacoffee.com/BQoVfY7gc" className="button button-bmc flex align-center items-center justify-center self-end">
+            <Icon kind="coffee" width="24" height="24" /> Buy me a coffee
+          </a>
         </div>
       </div>
+
+      {(next || prev) && (
+        <article className="m-center measure-padding pb6">
+          <h3 className="f1-l mb2 dashes"><span>Next to read</span></h3>
+          <h2 className="headline-l primary entry-next"><Link href={`/blog/${next.slug}`} data-event="Related entry [v6-specific]">{next.title}</Link><span className="icon icon-small icon-right tertiary"><Icon kind="right" /></span></h2>
+        </article>
+      )}
     </>
   )
 }
