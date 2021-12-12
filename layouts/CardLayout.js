@@ -5,13 +5,12 @@ import siteMetadata from '@/data/siteMetadata'
 import formatDate from '@/lib/utils/formatDate'
 
 // components
-import Icon from '@/components/icon'
 import Card from '@/components/card'
 import Link from '@/components/Link'
 import Pagination from '@/components/Pagination'
 import Tag from '@/components/Tag'
 
-export default function CardLayout({ posts, title, initialDisplayPosts = [], pagination, search }) {
+export default function ListLayout({ posts, title, initialDisplayPosts = [], pagination, search }) {
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((frontmatter) => {
     const searchContent = frontmatter.title + frontmatter.summary + frontmatter.tags.join(' ')
@@ -42,35 +41,10 @@ export default function CardLayout({ posts, title, initialDisplayPosts = [], pag
           )}
         </div>
       )}
-      <div className="contain contain-search pt4 pt6-d pb4 pb6-d flex flex-column flex-wrap center items-center">
-        <div className="form form-warm form-search content-center items-center">
-          <div className="field field-search m-center">
-            <label htmlFor="keywords" className="visuallyhidden">
-              Search
-            </label>
-            <input
-              aria-label="Search articles"
-              type="text"
-              onChange={(e) => setSearchValue(e.target.value)}
-              placeholder="find a post…"
-              autoCorrect="off"
-              autoCapitalize="off"
-              className="input input-search f2"
-            />
-            <button type="submit" className="button button-search primary" aria-label="Search">
-              <span className="f2 f3-c icon icon-medium icon-large-c icon-search">
-                <Icon kind="search" />
-              </span>
-            </button>
-          </div>
-        </div>
+      <div className="grid-posts contain contain-medium contain-large pt3 pt6-b pb3 pb6-b">
         {!filteredBlogPosts.length && 'No posts found.'}
         {displayPosts.map((frontmatter) => {
-          return (
-            <h2>
-              <Link href={frontmatter.url}>{frontmatter.title}</Link>
-            </h2>
-          )
+          return <Card kind="medium" frontmatter={frontmatter} key={frontmatter.id} />
         })}
       </div>
       {pagination && pagination.totalPages > 1 && !searchValue && (

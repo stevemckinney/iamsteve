@@ -1,6 +1,6 @@
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
-import CardLayout from '@/layouts/CardLayout'
+import ListLayout from '@/layouts/ListLayout'
 import { PageSEO } from '@/components/SEO'
 
 export const POSTS_PER_PAGE = 12
@@ -19,12 +19,12 @@ export async function getStaticProps() {
 export default function Blog({ posts, initialDisplayPosts, pagination }) {
   return (
     <>
-      <PageSEO title={`Blog • ${siteMetadata.title}`} description={siteMetadata.description} />
-      <CardLayout
+      <PageSEO title={`Search • ${siteMetadata.title}`} description={siteMetadata.description} />
+      <ListLayout
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
-        title="Blog"
+        title="Search"
       />
     </>
   )

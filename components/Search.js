@@ -6,7 +6,7 @@ import siteMetadata from '@/data/siteMetadata'
 import formatDate from '@/lib/utils/formatDate'
 
 // layouts
-import ListLayout from '@/layouts/ListLayout'
+import CardLayout from '@/layouts/CardLayout'
 
 // components
 import Card from '@/components/card'
@@ -67,7 +67,7 @@ export default function Search({ posts, initialDisplayPosts = [], handleClose, s
         <div className="searched-posts">
           <h2 className="f3-l mb1 neutral flex-8">You may be looking for</h2>
           {posts && (
-            <ListLayout
+            <CardLayout
               posts={posts}
               title={false}
               initialDisplayPosts={initialDisplayPosts}

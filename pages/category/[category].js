@@ -1,6 +1,6 @@
 import { TagSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
-import ListLayout from '@/layouts/ListLayout'
+import CardLayout from '@/layouts/CardLayout'
 import generateRss from '@/lib/generate-rss'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { getAllCategories } from '@/lib/categories'
@@ -48,7 +48,7 @@ export default function Category({ posts, category }) {
         title={`${category} - ${siteMetadata.author}`}
         description={`${category} category - ${siteMetadata.author}`}
       />
-      <ListLayout posts={posts} title={title} />
+      <CardLayout posts={posts} title={title} />
     </>
   )
 }
