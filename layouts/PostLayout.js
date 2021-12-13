@@ -142,18 +142,30 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
           <p>If you found this article useful, why not support the upkeep of this website?</p>
         </div>
         <div className="column column-3-d">
-          <a href="https://www.buymeacoffee.com/BQoVfY7gc" className="button button-bmc flex align-center items-center justify-center self-end">
+          <a
+            href="https://www.buymeacoffee.com/BQoVfY7gc"
+            className="button button-bmc flex align-center items-center justify-center self-end"
+          >
             <Icon kind="coffee" width="24" height="24" /> Buy me a coffee
           </a>
         </div>
       </div>
 
-      {(next || prev) && (
+      {next ? (
         <article className="m-center measure-padding pb6">
-          <h3 className="f1-l mb2 dashes"><span>Next to read</span></h3>
-          <h2 className="headline-l primary entry-next"><Link href={`/blog/${next.slug}`} data-event="Related entry [v6-specific]">{next.title}</Link><span className="icon icon-small icon-right tertiary"><Icon kind="right" /></span></h2>
+          <h3 className="f1-l mb2 dashes">
+            <span>Next to read</span>
+          </h3>
+          <h2 className="headline-l primary entry-next">
+            <Link href={`/blog/${next.slug}`} data-event="Related entry [v6-specific]">
+              {next.title}
+            </Link>
+            <span className="icon icon-small icon-right tertiary">
+              <Icon kind="right" />
+            </span>
+          </h2>
         </article>
-      )}
+      ) : null}
     </>
   )
 }
