@@ -1,7 +1,12 @@
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
-import ListLayout from '@/layouts/ListLayout'
+
+// layouts
+import SearchLayout from '@/layouts/SearchLayout'
+
+// components
 import { PageSEO } from '@/components/SEO'
+import LayoutWrapper from '@/components/LayoutWrapper'
 
 export const POSTS_PER_PAGE = 12
 
@@ -16,16 +21,23 @@ export async function getStaticProps() {
   return { props: { initialDisplayPosts, posts, pagination } }
 }
 
-export default function Blog({ posts, initialDisplayPosts, pagination }) {
+const Search = ({ posts, initialDisplayPosts, pagination }) => {
   return (
     <>
       <PageSEO title={`Search • ${siteMetadata.title}`} description={siteMetadata.description} />
-      <ListLayout
+      <SearchLayout
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
         title="Search"
+        show={true}
       />
     </>
   )
 }
+
+Search.getLayout = function getLayout(page) {
+  return <LayoutWrapper subtle={true}>{page}</LayoutWrapper>
+}
+
+export default Search

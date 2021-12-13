@@ -15,10 +15,6 @@ import Link from '@/components/Link'
 import Pagination from '@/components/Pagination'
 import Tag from '@/components/Tag'
 
-// getallmdx
-// index mdx
-// search mdx
-
 export default function Search({ posts, initialDisplayPosts = [], handleClose, show }) {
   const [isBrowser, setIsBrowser] = useState(false)
   const [searchValue, setSearchValue] = useState('')

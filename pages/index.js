@@ -3,12 +3,15 @@ import { getAllFilesFrontMatter } from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
 import { PageSEO } from '@/components/SEO'
 
-import LayoutWrapperSubtle from '@/components/LayoutWrapperSubtle'
+// components
+import LayoutWrapper from '@/components/LayoutWrapper'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import Subscribe from '@/components/Subscribe'
 import Posts from '@/layouts/Posts'
+import SearchLayout from '@/layouts/SearchLayout'
 import Icon from '@/components/icon/index.js'
+import Search from '@/components/Search'
 
 // images
 import Image from 'next/image'
@@ -165,7 +168,7 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
 }
 
 Home.getLayout = function getLayout(page) {
-  return <LayoutWrapperSubtle>{page}</LayoutWrapperSubtle>
+  return <LayoutWrapper subtle={true}>{page}</LayoutWrapper>
 }
 
 export default Home

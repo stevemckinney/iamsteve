@@ -64,14 +64,17 @@ export default function CardLayout({ posts, title, initialDisplayPosts = [], pag
             </button>
           </div>
         </div>
-        {!filteredBlogPosts.length && 'No posts found.'}
-        {displayPosts.map((frontmatter) => {
-          return (
-            <h2>
-              <Link href={frontmatter.url}>{frontmatter.title}</Link>
-            </h2>
-          )
-        })}
+        <div className="searched-posts">
+          <h2 className="f3-l mb4 neutral flex-8">You may be looking for</h2>
+          {!filteredBlogPosts.length && 'No posts found.'}
+          {displayPosts.map((frontmatter) => {
+            return (
+              <h2>
+                <Link href={frontmatter.url}>{frontmatter.title}</Link>
+              </h2>
+            )
+          })}
+        </div>
       </div>
       {pagination && pagination.totalPages > 1 && !searchValue && (
         <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
