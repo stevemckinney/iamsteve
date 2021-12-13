@@ -42,8 +42,8 @@ export default function CardLayout({ posts, title, initialDisplayPosts = [], pag
           )}
         </div>
       )}
-      <div className="contain contain-search pt4 pt6-d pb4 pb6-d flex flex-column flex-wrap center items-center">
-        <div className="form form-warm form-search content-center items-center">
+      <div className="contain contain-search">
+        <form className="form form-warm form-search content-center items-center">
           <div className="field field-search m-center">
             <label htmlFor="keywords" className="visuallyhidden">
               Search
@@ -63,18 +63,22 @@ export default function CardLayout({ posts, title, initialDisplayPosts = [], pag
               </span>
             </button>
           </div>
-        </div>
-        <div className="searched-posts">
-          <h2 className="f3-l mb4 neutral flex-8">You may be looking for</h2>
-          {!filteredBlogPosts.length && 'No posts found.'}
-          {displayPosts.map((frontmatter) => {
-            return (
-              <h2>
-                <Link href={frontmatter.url}>{frontmatter.title}</Link>
-              </h2>
-            )
-          })}
-        </div>
+        </form>
+        {searchValue && (
+          <div className="searched-posts">
+            <h2 className="f3-l mb4 neutral flex-8">Results for {searchValue}</h2>
+            {!filteredBlogPosts.length && 'No posts found.'}
+            {displayPosts.map((frontmatter) => {
+              return (
+                <div className="card">
+                  <h2 className="f4-l mb4 flex-8 warm transition secondary-hover">
+                    <Link href={frontmatter.slug}>{frontmatter.title}</Link>
+                  </h2>
+                </div>
+              )
+            })}
+          </div>
+        )}
       </div>
       {pagination && pagination.totalPages > 1 && !searchValue && (
         <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />

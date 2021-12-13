@@ -24,7 +24,7 @@ import Intro960 from '@/images/introduction-960.svg'
 // pull in the posts
 // import Posts from '@/layouts/Posts'
 import Card from '@/components/card'
-export const POSTS_PER_PAGE = 5
+export const POSTS_PER_PAGE = 8
 export const MAX_DISPLAY = 5
 
 // View count

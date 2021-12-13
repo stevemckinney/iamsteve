@@ -25,10 +25,7 @@ export default function SearchLayout({ posts, initialDisplayPosts = [], handleCl
 
   return (
     <>
-      <div
-        className={`overlay overlay-search flex items-center ${show ? 'showing' : 'hiding'}`}
-        aria-labelledby="toggle-search-nav toggle-search"
-      >
+      <div className={`overlay overlay-search`}>
         {posts && (
           <ListLayout
             posts={posts}

@@ -73,7 +73,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden; // overlay will be clickable even when not visible otherwise
+  overflow: auto; // overlay will be clickable even when not visible otherwise
   align-content: center;
 
   @include breakpoint($c) {
