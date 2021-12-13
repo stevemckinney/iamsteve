@@ -9,10 +9,10 @@ import FooterProfile from '@/components/FooterProfile'
 import Footer from './Footer'
 import Tabbar from './Tabbar'
 
-const LayoutWrapper = ({ children }) => {
+const LayoutWrapper = ({ children, subtle }) => {
   return (
     <>
-      <Header />
+      <Header subtle={subtle} />
 
       <Tabbar />
 
