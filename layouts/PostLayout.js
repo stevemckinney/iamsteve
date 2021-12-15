@@ -105,13 +105,7 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
             </span>
 
             <span className="meta-item meta-item-last flex items-center">
-              <button className="button button-t button-offline p0 flex">
-                <Icon kind="save" />
-                <span className="button-text">Save for offline</span>
-              </button>
-            </span>
-
-            <span className="meta-item meta-item-last flex items-center">
+              <Icon kind="save" />
               <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
             </span>
 
