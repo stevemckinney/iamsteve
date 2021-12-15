@@ -12,8 +12,6 @@ import Placeholder from '@/components/placeholder/index.js'
 import PageTitle from '@/components/PageTitle'
 import Image from '@/components/Image'
 import Category from '@/components/Category'
-import Comments from '@/components/comments'
-import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
 
@@ -49,7 +47,6 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
         authorDetails={authorDetails}
         {...frontmatter}
       />
-      <ScrollTopAndComment />
 
       <>
         {images ? (
@@ -83,9 +80,6 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
       </>
 
       <article className="entry-content pt6 pb6">
-        <p className="f2-l">
-          Page views: <PageViews slug={slug} />
-        </p>
         <header className="entry-header relative pb4 p0-d">
           <PageTitle>{title}</PageTitle>
 
