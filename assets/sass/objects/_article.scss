@@ -15,6 +15,7 @@
 
   img,
   > .code-block,
+  > .remark-code-title,
   .cp_embed_wrapper
   .article-image {
     @include breakpoint($cd) {
