@@ -15,7 +15,7 @@ class MyDocument extends Document {
           />
           <link rel="shortcut icon" href="/static/favicons/favicon.ico" />
           <link rel="manifest" href="/static/favicons/site.webmanifest" />
-          <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+          <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#ff7e6d" />
           <meta name="msapplication-TileColor" content="#543243" />
           <meta name="theme-color" content="#543243" />
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
