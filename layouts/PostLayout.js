@@ -15,7 +15,7 @@ import Category from '@/components/Category'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
 
-const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+const postDateTemplate = { year: 'numeric', month: 'short', day: 'numeric' }
 
 const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
   const {
