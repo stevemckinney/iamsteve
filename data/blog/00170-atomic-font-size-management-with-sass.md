@@ -151,7 +151,7 @@ The main benefit of font size locks is having proportional font sizes no matter 
 ### A smart *calc()*ulation
 The linked article does a far better job of explaining the intricacies than I’m able to. Essentially you use `calc()` to have a minimum and maximum font size between two minimum and maximum screen widths.
 
-```css
+```sass
 // overview
 calc( min-font-size + ( ( max-font-size - min-font-size ) * ( 100vw - min-screen-width ) / ( max-screen-width - min-screen-width) ) )
 

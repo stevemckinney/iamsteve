@@ -23,14 +23,23 @@ $comment: #838c95;
 
 pre {
   overflow-x: auto;
-  line-height: 1.7142857;
-  margin-top: 1.7142857em;
-  margin-bottom: 1.7142857em;
-  border-radius: .375rem;
-  padding: .8571429em 1.1428571em;
+  line-height: 1.5;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  border-radius: $radius;
   color: #e5e7eb;
   background: $code-black;
   padding: $line; }
+
+:is(p, li) > code {
+  background: rgba($alternate, .1);
+  color: $alternate;
+  border-radius: 2px;
+  padding: em(2px, $base-font-size - 2px) em(4px, $base-font-size - 2px);
+  font: 400 em($base-font-size - 4px) $monospace;
+
+  @include breakpoint($ab) {
+    font-size: em($base-font-size - 2px); } }
 
 // title
 .remark-code-title {
@@ -39,8 +48,10 @@ pre {
   background-color: scale-color($code-black, $lightness: -20%);
   box-shadow: 0 1px scale-color($code-black, $lightness: 5%);
   color: $comment;
-  border-radius: $radius $radius 0 0;
-  font-family: $monospace; }
+  font-family: $monospace;
+
+  @include breakpoint($cd) {
+    border-radius: $radius $radius 0 0; } }
 
 .remark-code-title + div > pre {
   @apply mt-0 rounded-t-none; }
@@ -49,6 +60,8 @@ pre {
 .line-number::before {
   @apply inline-block w-4 mr-4 -ml-2 text-right;
   color: $code-cyan;
+  opacity: .25;
+  margin-right: $line;
   content: attr(line); }
 
 // code
