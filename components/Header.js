@@ -39,7 +39,7 @@ class Header extends React.Component {
           </Link>
           <nav id="nav" className="nav hide-lt-c end primary">
             {headerNavLinks.map((link) => (
-              <>
+              <React.Fragment key={link.title}>
                 {link.title !== 'Search' && (
                   <Link
                     key={link.title}
@@ -52,7 +52,7 @@ class Header extends React.Component {
                     {link.title !== 'Search' && <span className="nav-item-text">{link.title}</span>}
                   </Link>
                 )}
-              </>
+              </React.Fragment>
             ))}
             <Link href="/search" className="nav-item nav-item-search">
               <span className={`icon icon-search`}>

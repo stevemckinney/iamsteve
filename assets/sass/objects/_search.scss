@@ -18,7 +18,7 @@
 .input-search {
   @include breakpoint($c-max) {
     background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(253, 253, 253, 1) 80%, rgba(253, 253, 253, 1) 94.96%, rgba(246, 245, 246, 1) 100%);
-    padding: ($line - 1px) 32px ($line + 3px);
+    padding: $line 32px;
     border-radius: 0;
     border-top: $default-border-width solid $warm-l2;
     border-bottom: $default-border-width solid $warm-l2; }
