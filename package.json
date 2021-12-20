@@ -33,7 +33,7 @@
     "breakpoint-sass": "^2.7.1",
     "critical": "^4.0.1",
     "del": "^3.0.0",
-    "eslint": "^5.5.0",
+    "eslint": "^8.5.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^2.3.1",
