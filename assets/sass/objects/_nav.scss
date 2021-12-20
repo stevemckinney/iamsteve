@@ -46,13 +46,15 @@
   font-weight: font-weight(bold);
 
   a {
-    padding: 8px;
+    padding: 6px 8px;
     font-size: 12px;
+    line-height: 1;
 
     @include breakpoint($a) {
       font-size: $f6;
       margin: -16px 0;
-      padding: 16px;
+      padding: 19px 16px;
+      line-height: 1.28571429;
 
       &:last-child {
         padding-right: 0; } } } }

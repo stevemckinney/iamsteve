@@ -7,6 +7,11 @@ import Category from '@/components/Category'
 
 import Placeholder from '@/components/placeholder/index.js'
 
+// https://gist.github.com/aradnom/06ef051c1c96f10c144d
+function autoParagraph(text, size) {
+  return `<p class="${size}">` + text.split(/\n+/).join(`</p>\n<p>`) + `</p>`
+}
+
 const Medium = ({ frontmatter }) => {
   const {
     slug,
@@ -66,7 +71,10 @@ const Medium = ({ frontmatter }) => {
             <a className="primary secondary-hover">{title}</a>
           </Link>
         </h3>
-        <div className="flex-auto mb2 mb3-d">{summary}</div>
+        <div
+          className="flex-auto mb2 mb3-d"
+          dangerouslySetInnerHTML={{ __html: autoParagraph(summary, 'f8 f6-a f5-b f4-d') }}
+        />
         <div className="meta f8-b f7-d flex between items-center dashes">
           {categories && (
             <>
@@ -75,7 +83,7 @@ const Medium = ({ frontmatter }) => {
             </>
           )}
           <Link href={url}>
-            <a rel="bookmark" className="link-icon warm secondary-hover card-permalink">
+            <a rel="bookmark" className="link-icon warm secondary-hover card-permalink hide-lt-ab">
               Continue reading
               <span className="icon icon-medium icon-right secondary">
                 <Icon kind="right" />

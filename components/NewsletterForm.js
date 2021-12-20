@@ -45,9 +45,25 @@ const NewsletterForm = ({ theme = 'form-warm' }) => {
   return (
     <>
       <div className={theme}>
-        <div className="ml-form-embedBody ml-form-embedBodyHorizontal row-form">
+        <div className="row-form">
+          {subscribed && (
+            <div className={`bg-secondary sans radius white`} style={{
+              marginBottom: "24px",
+              padding: "8px"
+            }}>
+              <p className="m0">Thank you for subscribing, please check your inbox!</p>
+            </div>
+          )}
+          {error && (
+            <div className={`bg-red sans radius white`} style={{
+              marginBottom: "24px",
+              padding: "8px"
+            }}>
+              <p className="m0">{message}</p>
+            </div>
+          )}
           <form
-            className="form form-newsletter validate end ml-block-form ml-block-form"
+            className="form form-newsletter end"
             onSubmit={subscribe}
           >
             <div className="field field-text field-third ml-field-group ml-field-name">
@@ -71,7 +87,6 @@ const NewsletterForm = ({ theme = 'form-warm' }) => {
                 className="input input-text form-control"
                 id="input-email"
                 name="email_address"
-                placeholder={subscribed ? "You're subscribed !  🎉" : 'Enter your email'}
                 ref={inputEmail}
                 required
                 type="email"
@@ -93,10 +108,6 @@ const NewsletterForm = ({ theme = 'form-warm' }) => {
           </form>
         </div>
       </div>
-
-      {error && (
-        <div className="pt-2 text-sm text-red-500 w-72 sm:w-96 dark:text-red-400">{message}</div>
-      )}
     </>
   )
 }

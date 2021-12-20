@@ -17,7 +17,10 @@ export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider attribute="class">
       <Head>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta
+          name="viewport"
+          content="width=device-width, viewport-fit=cover, initial-scale=1, shrink-to-fit=no"
+        />
         <link
           rel="preload"
           href="/static/fonts/averta/avertastd-semibold-webfont.woff2"

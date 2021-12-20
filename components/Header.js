@@ -39,16 +39,20 @@ class Header extends React.Component {
           </Link>
           <nav id="nav" className="nav hide-lt-c end primary">
             {headerNavLinks.map((link) => (
-              <Link
-                key={link.title}
-                href={link.href}
-                className={`nav-item nav-item-${link.title.toLowerCase()}`}
-              >
-                <span className={`icon icon-${link.icon}`}>
-                  <Icon kind={link.icon} />
-                </span>
-                {link.title !== 'Search' && <span className="nav-item-text">{link.title}</span>}
-              </Link>
+              <React.Fragment key={link.title}>
+                {link.title !== 'Search' && (
+                  <Link
+                    key={link.title}
+                    href={link.href}
+                    className={`nav-item nav-item-${link.title.toLowerCase()}`}
+                  >
+                    <span className={`icon icon-${link.icon}`}>
+                      <Icon kind={link.icon} />
+                    </span>
+                    {link.title !== 'Search' && <span className="nav-item-text">{link.title}</span>}
+                  </Link>
+                )}
+              </React.Fragment>
             ))}
             <Link href="/search" className="nav-item nav-item-search">
               <span className={`icon icon-search`}>

@@ -7,7 +7,7 @@ const Tabbar = () => {
   const router = useRouter()
 
   return (
-    <nav className="tabbar hide-c" aria-hidden="true">
+    <nav className="tabbar hide-c">
       {headerNavLinks.map((link) => (
         <Link
           key={link.title}
