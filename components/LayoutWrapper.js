@@ -9,7 +9,7 @@ import FooterProfile from '@/components/FooterProfile'
 import Footer from './Footer'
 import Tabbar from './Tabbar'
 
-const LayoutWrapper = ({ children, subtle }) => {
+const LayoutWrapper = ({ children, subtle, showSubscribe = true }) => {
   return (
     <>
       <Header subtle={subtle} />
@@ -18,7 +18,7 @@ const LayoutWrapper = ({ children, subtle }) => {
 
       <main id="content">{children}</main>
 
-      {siteMetadata.newsletter.provider !== '' && <Subscribe />}
+      {showSubscribe && <>{siteMetadata.newsletter.provider !== '' && <Subscribe />}</>}
 
       <FooterProfile />
       <Footer />

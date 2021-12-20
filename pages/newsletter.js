@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import siteMetadata from '@/data/siteMetadata'
 import NewsletterForm from '@/components/NewsletterForm'
+import LayoutWrapper from '@/components/LayoutWrapper'
 
-export default function Newsletter() {
+const Newsletter = () => {
   return (
     <>
       <div className="row subheader center contain contain-medium contain-large pb4">
@@ -28,3 +29,13 @@ export default function Newsletter() {
     </>
   )
 }
+
+Newsletter.getLayout = function getLayout(page) {
+  return (
+    <LayoutWrapper subtle={false} showSubscribe={false}>
+      {page}
+    </LayoutWrapper>
+  )
+}
+
+export default Newsletter
