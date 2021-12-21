@@ -60,6 +60,7 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
             width={320}
             height={254}
             className="hero-image-320"
+            priority={true}
           />
           <Image
             src="/static/images/introduction-394.svg"
@@ -68,6 +69,7 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
             width={394}
             height={296}
             className="hero-image-394"
+            priority={true}
           />
           <Image
             src="/static/images/introduction-734.svg"
@@ -76,6 +78,7 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
             width={734}
             height={312}
             className="hero-image-734"
+            priority={true}
           />
           <Image
             src="/static/images/introduction-960.svg"
@@ -83,6 +86,7 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
             width={960}
             height={404}
             className="hero-image-960"
+            priority={true}
           />
         </div>
       </div>
