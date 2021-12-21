@@ -8,7 +8,7 @@ theme: "#e1f7ee"
 tags: ["Code", "jQuery"]
 categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
-status: "open"
+status: "closed"
 id: 12
 fileroot: "unique"
 ---

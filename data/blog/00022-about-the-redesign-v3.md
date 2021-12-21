@@ -2,8 +2,8 @@
 title: "About the redesign V3"
 date: "2011-03-07T18:01:00+00:00"
 lastmod: "2021-06-03T06:22:06+00:00"
-summary: "Well another redesign, another run through it. V2 lasted I’m guessing around 8 months or so, not bad I guess. I grew bored of it as usual, though requirements of the layout changed in this one and something new is nice. So onto why I went for a redesign."
-metadesc: "Well another redesign, another run through it. V2 lasted I'm guessing around 8 months or so, not bad I guess."
+summary: "A look at 2011’s redesign. I moved the website from Wordpress to ExpressionEngine."
+metadesc: "A look at 2011’s redesign. I moved the website from Wordpress to ExpressionEngine."
 theme: "#e9f5f5"
 tags: ["Website"]
 categories: ["Website"]
