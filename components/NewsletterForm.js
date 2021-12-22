@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 
 import siteMetadata from '@/data/siteMetadata'
 
@@ -9,17 +10,17 @@ const NewsletterForm = ({ theme = 'form-warm' }) => {
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const router = useRouter()
 
   const subscribe = async (e) => {
     e.preventDefault()
 
     // https://emailoctopus.com/api/1.5/lists/:listId/contacts
-    // https://emailoctopus.com/api/1.5/lists/76319206-f1ef-11eb-96e5-06b4694bee2a/contacts
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
       body: JSON.stringify({
         email: inputEmail.current.value,
         name: inputName ? inputName.current.value : '',
-        source: inputSource ? inputSource.current.value : '',
+        source: router.pathname,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -47,25 +48,28 @@ const NewsletterForm = ({ theme = 'form-warm' }) => {
       <div className={theme}>
         <div className="row-form">
           {subscribed && (
-            <div className={`bg-secondary sans radius white`} style={{
-              marginBottom: "24px",
-              padding: "8px"
-            }}>
+            <div
+              className={`bg-secondary sans radius white`}
+              style={{
+                marginBottom: '24px',
+                padding: '8px',
+              }}
+            >
               <p className="m0">Thank you for subscribing, please check your inbox!</p>
             </div>
           )}
           {error && (
-            <div className={`bg-red sans radius white`} style={{
-              marginBottom: "24px",
-              padding: "8px"
-            }}>
+            <div
+              className={`bg-red sans radius white`}
+              style={{
+                marginBottom: '24px',
+                padding: '8px',
+              }}
+            >
               <p className="m0">{message}</p>
             </div>
           )}
-          <form
-            className="form form-newsletter end"
-            onSubmit={subscribe}
-          >
+          <form className="form form-newsletter end" onSubmit={subscribe}>
             <div className="field field-text field-third ml-field-group ml-field-name">
               <label htmlFor="input-name" className="sans pb2 field-label">
                 First name
@@ -94,7 +98,6 @@ const NewsletterForm = ({ theme = 'form-warm' }) => {
               />
             </div>
             <input type="hidden" name="fields[marketing_permissions]" value="Email" />
-            <input type="hidden" ref={inputSource} name="fields[source]" value="{current_url}" />
             <div className="form-actions pt2 text-right">
               <button
                 type="submit"

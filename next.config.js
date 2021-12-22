@@ -40,11 +40,18 @@ module.exports = withBundleAnalyzer({
           loader: '@svgr/webpack',
           options: {
             svgoConfig: {
-              plugins: [{
-                prefixIds: false,
-                mergePaths: false,
-                removeViewBox: false
-              }]
+              plugins: [
+                {
+                  name: 'preset-default',
+                  params: {
+                    overrides: {
+                      removeViewBox: false,
+                      prefixIds: false,
+                      mergePaths: false,
+                    },
+                  },
+                },
+              ]
             }
           }
         }
