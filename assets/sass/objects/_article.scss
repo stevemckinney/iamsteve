@@ -229,27 +229,31 @@
   position: relative;
   text-align: left;
 
-  @include breakpoint($cd) {
+  @include breakpoint($d) {
     align-items: flex-end; }
 
-  @include breakpoint($cd-max) {
+  @include breakpoint($d-max) {
     align-items: center;
     flex-flow: column; } }
 
 .entry-content > figure > figcaption {
   font-style: italic;
-  line-height: 1.333333;
   text-align: center;
-  max-width: $measure;
+  line-height: 1.333333;
   padding-left: $line;
   padding-right: $line;
+  max-width: $measure;
+  color: $neutral-l2;
 
   p {
     font-size: inherit; }
 
-  @include breakpoint($e) {
-    text-align: left;
+  @include breakpoint($d-max) {
+    padding-top: $base-px; }
+
+  @include breakpoint($d) {
     max-width: 192px;
+    text-align: left;
 
     &:before {
       content: "";
