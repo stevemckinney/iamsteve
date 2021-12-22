@@ -2,7 +2,7 @@
 title: "About version 4"
 date: "2011-12-30T18:41:00+00:00"
 lastmod: "2016-08-28T13:00:17+00:00"
-summary: "As the title states the obvious, I’m going to run through some of my decisions to redesign. Although I don’t feel this design is hugely different from the previous, it’s more of a refinement — although it doesn’t really look like it — confusing either way… Firstly firsts with this design."
+summary: "A look through the design decisions for another of 2011’s redesigns."
 metadesc: "This was the first site I'd taken a mobile first approach with. This is my write up about version 4 of my website."
 theme: "#e9f5f5"
 tags: ["Website"]
