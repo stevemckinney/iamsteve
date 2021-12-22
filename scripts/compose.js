@@ -22,11 +22,7 @@ const getLayouts = () => {
 
 const genFrontMatter = (answers) => {
   let d = new Date()
-  const date = [
-    d.getFullYear(),
-    ('0' + (d.getMonth() + 1)).slice(-2),
-    ('0' + d.getDate()).slice(-2),
-  ].join('-')
+  const date = d.toISOString()
   const tagArray = answers.tags.split(',')
   tagArray.forEach((tag, index) => (tagArray[index] = tag.trim()))
   const tags = "'" + tagArray.join("','") + "'"
@@ -35,11 +31,18 @@ const genFrontMatter = (answers) => {
   let frontmatter = dedent`---
   title: ${answers.title ? answers.title : 'Untitled'}
   date: '${date}'
-  tags: [${answers.tags ? tags : ''}]
-  draft: ${answers.draft === 'yes' ? true : false}
+  lastmod: '${date}'
   summary: ${answers.summary ? answers.summary : ' '}
+  metadesc: ${answers.summary ? answers.summary : ' '}
+  theme: "#e9f5f5"
+  tags: [${answers.tags ? tags : ''}]
+  categories: []
   images: []
+  ogImage: "/assets/og/cover.jpg"
   layout: ${answers.layout}
+  draft: ${answers.status}
+  id: ${answers.id}
+  fileroot: ${answers.title ? answers.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') : 'untitled'}
   `
 
   if (answers.authors.length > 0) {
@@ -56,6 +59,11 @@ inquirer
     {
       name: 'title',
       message: 'Enter post title:',
+      type: 'input',
+    },
+    {
+      name: 'id',
+      message: 'Enter the post ID:',
       type: 'input',
     },
     {
@@ -76,10 +84,10 @@ inquirer
       type: 'input',
     },
     {
-      name: 'draft',
+      name: 'status',
       message: 'Set post as draft?',
       type: 'list',
-      choices: ['yes', 'no'],
+      choices: ['open', 'draft', 'closed'],
     },
     {
       name: 'tags',
