@@ -28,7 +28,7 @@ export const POSTS_PER_PAGE = 8
 export const MAX_DISPLAY = 5
 
 // View count
-// import { PageViews, Views } from '@/components/PageViews'
+import { PageViews, views } from '@/components/PageViews'
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
@@ -43,6 +43,11 @@ export async function getStaticProps() {
 }
 
 const Home = ({ initialDisplayPosts, posts, pagination }) => {
+  // can't figure out how to sort posts, so taking the current order
+  // and will manually update over time
+  const designPosts = [83, 148, 140, 87, 130, 77, 139, 168, 124, 79]
+  const codePosts = [72, 88, 112, 24, 113, 80, 64, 76, 137, 49, 114]
+
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
@@ -125,7 +130,7 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
         {posts &&
           posts
             .filter((post) => post.categories.includes('Design'))
-            .slice(0, POSTS_PER_PAGE)
+            .filter((post) => designPosts.includes(post.id))
             .map((frontmatter) => {
               return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
             })
@@ -150,11 +155,10 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
         key="code"
       >
         {!posts && 'No posts'}
-        {console.log(posts)}
         {posts &&
           posts
             .filter((post) => post.categories.includes('Code'))
-            .slice(0, POSTS_PER_PAGE)
+            .filter((post) => codePosts.includes(post.id))
             .map((frontmatter) => {
               return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
             })
