@@ -37,7 +37,7 @@ const Medium = ({ frontmatter }) => {
           <>
             {medium ? (
               <>
-                <div className="radius flex" style={{ backgroundColor: { imageColor } }}>
+                <div className="radius flex" style={{ backgroundColor: `${imageColor}` }}>
                   <Image
                     src={medium}
                     className="radius"
