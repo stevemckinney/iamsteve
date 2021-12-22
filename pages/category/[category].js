@@ -31,10 +31,12 @@ export async function getStaticProps({ params }) {
   )
 
   // rss
-  const rss = generateRss(filteredPosts, `category/${params.categories}/feed.xml`)
-  const rssPath = path.join(root, 'public', 'category', params.category)
-  fs.mkdirSync(rssPath, { recursive: true })
-  fs.writeFileSync(path.join(rssPath, 'feed.xml'), rss)
+  if (filteredPosts.length > 0) {
+    const rss = generateRss(filteredPosts, `category/${params.categories}/feed.xml`)
+    const rssPath = path.join(root, 'public', 'category', params.category)
+    fs.mkdirSync(rssPath, { recursive: true })
+    fs.writeFileSync(path.join(rssPath, 'feed.xml'), rss)
+  }
 
   return { props: { posts: filteredPosts, category: params.category } }
 }

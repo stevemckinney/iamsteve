@@ -2,6 +2,7 @@ import '/assets/sass/global.scss'
 import '@/css/prism.css'
 
 import { ThemeProvider } from 'next-themes'
+import siteMetadata from '@/data/siteMetadata'
 import Head from 'next/head'
 
 import Analytics from '@/components/analytics'
@@ -15,7 +16,7 @@ export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => <LayoutWrapper>{page}</LayoutWrapper>)
 
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme={siteMetadata.theme}>
       <Head>
         <meta
           name="viewport"
