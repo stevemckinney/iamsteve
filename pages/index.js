@@ -125,10 +125,11 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
         {posts &&
           posts
             .filter((post) => post.categories.includes('Design'))
+            .slice(0, POSTS_PER_PAGE)
             .map((frontmatter) => {
               return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
             })
-            .slice(0, POSTS_PER_PAGE)}
+        }
         <Link
           href="/category/design"
           className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"
@@ -149,13 +150,15 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
         key="code"
       >
         {!posts && 'No posts'}
+        {console.log(posts)}
         {posts &&
           posts
             .filter((post) => post.categories.includes('Code'))
+            .slice(0, POSTS_PER_PAGE)
             .map((frontmatter) => {
               return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
             })
-            .slice(0, POSTS_PER_PAGE)}
+        }
         <Link
           href="/category/design"
           className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"
