@@ -6,10 +6,10 @@ export const fetcher = async (RequestInfo) => {
   return await Response.json()
 }
 
-export const Views = (slug) => {
+export function views(slug) {
   const { data } = useSWR(`/api/views/${slug}`, fetcher)
 
-  return <>{data?.total ? `${data.total} views` : `0 views`}</>
+  return data?.total ? data.total : 0
 }
 
 export const PageViews = ({ slug }) => {
