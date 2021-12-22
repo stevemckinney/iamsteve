@@ -24,6 +24,37 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage }) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={twImage} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'http://schema.org',
+            '@type': 'Person',
+            name: 'Steve McKinney',
+            url: 'https://iamsteve.me',
+            sameAs: [
+              'https://twitter.com/irsteve',
+              'https://instagram.com/stevemckinney',
+              'https://uk.linkedin.com/in/steve-mckinney-5b5836102',
+            ],
+            homeLocation: {
+              '@type': 'City',
+              name: 'Manchester',
+            },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'http://schema.org',
+            '@type': 'Organization',
+            url: 'https://iamsteve.me',
+            logo: 'https://iamsteve.me/assets/images/iamsteve-logo.png',
+          }),
+        }}
+      />
     </Head>
   )
 }
