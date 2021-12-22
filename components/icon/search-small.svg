@@ -1,1 +1,4 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-none stroke-currentcolor sw-2 sl-r"><path d="M11 11L14 14" class="sw-4" /><circle cx="7" cy="7" r="5" class="sw-2 fill-white" /></svg>
+<svg width="16" height="16" viewBox="0 0 16 16" class="fill-none stroke-currentcolor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M11 11L14 14" class="sw-4"/>
+  <circle cx="7" cy="7" r="5" class="fill-white sw-2"/>
+</svg>
