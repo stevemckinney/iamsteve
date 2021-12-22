@@ -117,7 +117,7 @@ A ligature is where two letters form one, they’re not available in every font.
 
 <figure>
 <Image src="/static/images/blog/kerning-tracking-ligatures@2x.png" width={738} height={492} />
-<figcaption>’ffl’, ‘fi’ and ‘Th’ regular and ligature forms. Ligatures really help with kerning consistency.</figcaption>
+<figcaption>‘ffl’, ‘fi’ and ‘Th’ regular and ligature forms. Ligatures really help with kerning consistency.</figcaption>
 </figure>
 
 The combinations in the image, show how the letters combine. It’s quite obvious and if this is new to you, it may appear worse. However, in the context of reading, your eyes only partially take in letterforms, so ligatures help with reading efficiency.
