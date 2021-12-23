@@ -8,6 +8,7 @@
   font-weight: font-weight(semibold);
   padding-top: $line;
   padding-bottom: $line;
+  margin-bottom: $line * 4;
 
   @include breakpoint($d) {
     padding-top: $line*2;
