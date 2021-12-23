@@ -60,7 +60,8 @@
 .bg-secondary {
   background-color: $secondary; }
 
-.bg-error {
+.bg-error,
+.bg-red {
   background-color: $red; }
 
 // Negative margin left to offset form fields
