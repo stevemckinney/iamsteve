@@ -27,48 +27,43 @@ const Pre = (props) => {
       onMouseLeave={onExit}
       className="code-block relative"
     >
-      {hovered && (
-        <button
-          aria-label="Copy code"
-          type="button"
-          className={`absolute button button-t button-copy rounded primary ${
-            copied
-              ? 'focus:outline-none focus:border-green-400 border-green-400'
-              : 'border-gray-300'
-          }`}
-          onClick={onCopy}
+      <button
+        aria-label="Copy code"
+        type="button"
+        className={`absolute button button-t button-copy rounded alternate-l2 ${
+          copied
+            ? 'focus:outline-none focus:border-green-400 border-green-400'
+            : 'border-gray-300'
+        }`}
+        onClick={onCopy}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          stroke="currentColor"
+          fill="none"
+          className={
+            copied ? 'sw-2 secondary' : 'sw-2'
+          }
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            fill="none"
-            className={
-              copied ? 'icon icon-medium text-green-400' : 'icon icon-medium text-gray-300'
-            }
-          >
-            {copied ? (
-              <>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                />
-              </>
-            ) : (
-              <>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                />
-              </>
-            )}
-          </svg>
-        </button>
-      )}
+          {copied ? (
+            <>
+              <rect x="4" y="4" width="16" height="18" rx="1.5"/>
+              <rect x="8" y="4" width="8" height="3" className="fill-currentcolor"/>
+              <path d="M7 14L10 17L17 10"/>
+              <circle cx="12" cy="3" r="2"/>
+            </>
+          ) : (
+            <>
+              <rect x="4" y="4" width="16" height="18" rx="1.5"/>
+              <rect x="8" y="4" width="8" height="3" className="fill-currentcolor"/>
+              <circle cx="12" cy="3" r="2"/>
+            </>
+          )}
+        </svg>
+      </button>
 
       <pre>{props.children}</pre>
     </div>

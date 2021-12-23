@@ -45,13 +45,22 @@ pre {
 .remark-code-title {
   @apply px-5 py-3 text-sm font-bold relative;
   z-index: $z-index-1;
+  line-height: 24px; // match copy icon height
   background-color: scale-color($code-black, $lightness: -20%);
-  box-shadow: 0 1px scale-color($code-black, $lightness: 5%);
   color: $comment;
   font-family: $monospace;
 
   @include breakpoint($cd) {
     border-radius: $radius $radius 0 0; } }
+
+.remark-code-title + .code-block {
+  z-index: $z-index-3; }
+
+.remark-code-title + .code-block pre {
+  box-shadow: inset 0 1px scale-color($code-black, $lightness: 5%); }
+
+.remark-code-title + .code-block > .button-copy {
+  top: -48px; }
 
 .remark-code-title + div > pre {
   @apply mt-0 rounded-t-none; }

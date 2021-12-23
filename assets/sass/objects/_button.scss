@@ -37,8 +37,10 @@ $buttons: (
   top: 24px;
   left: calc(100% + 6px); }
 
-
 .button-copy {
+  @apply px-5 py-3;
   top: 0;
   right: 0;
-}
+  background-color: rgba($black, .01);
+  backdrop-filter: blur(8px);
+  color: $alternate-l1; }

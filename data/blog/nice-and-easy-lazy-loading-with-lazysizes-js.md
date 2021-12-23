@@ -72,7 +72,7 @@ As the images don’t exist on page load, there is no way for the browser to kno
 ### Adjust the markup
 The first step to do this, is to adjust our current markup. The only change is to add a `div` round the image. This is so the image inside has a reference, to be placed and sized correctly.
 
-```markup {1, 3} showLineNumbers
+```markup showLineNumbers
 <div class="image loading">
   <img data-src="image.jpg" data-srcset="image.jpg 1x, image@2x.jpg" class="lazyload">
 </div>
