@@ -117,7 +117,7 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
         </Link>
       </Posts>
 
-      {siteMetadata.newsletter.provider !== '' && <Subscribe />}
+      {siteMetadata.newsletter.provider !== '' && <Subscribe unique="home" />}
 
       <Posts
         title="Popular in design"

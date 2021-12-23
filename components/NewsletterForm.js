@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 
 import siteMetadata from '@/data/siteMetadata'
 
-const NewsletterForm = ({ theme = 'form-warm' }) => {
+const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
   const inputEmail = useRef(null)
   const inputName = useRef(null)
   const inputSource = useRef(null)
@@ -78,7 +78,7 @@ const NewsletterForm = ({ theme = 'form-warm' }) => {
                 type="text"
                 className="input input-text form-control"
                 name="fields[first_name]"
-                id="input-name"
+                id={`input-name-${unique}`}
                 ref={inputName}
               />
             </div>
@@ -89,7 +89,7 @@ const NewsletterForm = ({ theme = 'form-warm' }) => {
               <input
                 autoComplete="email"
                 className="input input-text form-control"
-                id="input-email"
+                id={`input-email-${unique}`}
                 name="email_address"
                 ref={inputEmail}
                 required
