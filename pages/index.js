@@ -129,10 +129,9 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
         {!posts && 'No posts'}
         {posts &&
           posts
-            .filter((post) => post.categories.includes('Design'))
             .filter((post) => designPosts.includes(post.id))
             .map((frontmatter) => {
-              return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
+              return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
             })
         }
         <Link
@@ -157,10 +156,9 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
         {!posts && 'No posts'}
         {posts &&
           posts
-            .filter((post) => post.categories.includes('Code'))
             .filter((post) => codePosts.includes(post.id))
             .map((frontmatter) => {
-              return <Card kind="small" frontmatter={frontmatter} key={frontmatter.fileroot} />
+              return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
             })
         }
         <Link
