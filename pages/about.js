@@ -244,7 +244,7 @@ export default function About() {
 
             <figure className="old-design mb6">
               <Image
-                src="/static/images/blog/about/v1_2x.jpg"
+                src="/static/images/about/v1_2x.jpg"
                 width={480}
                 height={400}
                 alt=""
@@ -255,7 +255,7 @@ export default function About() {
 
             <figure className="old-design mb6">
               <Image
-                src="/static/images/blog/about/v2_2x.jpg"
+                src="/static/images/about/v2_2x.jpg"
                 width={480}
                 height={400}
                 alt=""
@@ -268,7 +268,7 @@ export default function About() {
 
             <figure className="old-design mb6">
               <Image
-                src="/static/images/blog/about/v3_2x.jpg"
+                src="/static/images/about/v3_2x.jpg"
                 width={480}
                 height={400}
                 alt=""
@@ -281,7 +281,7 @@ export default function About() {
 
             <figure className="old-design mb6">
               <Image
-                src="/static/images/blog/Linkbout/v4_2x.jpg"
+                src="/static/images/about/v4_2x.jpg"
                 width={480}
                 height={400}
                 alt=""
@@ -294,7 +294,7 @@ export default function About() {
 
             <figure className="old-design mb6">
               <Image
-                src="/static/images/blog/about/iamsteve-v5.png"
+                src="/static/images/about/iamsteve-v5.png"
                 width={1440}
                 height={1706}
                 alt=""
