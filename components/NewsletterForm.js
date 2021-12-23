@@ -20,7 +20,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
       body: JSON.stringify({
         email: inputEmail.current.value,
         name: inputName ? inputName.current.value : '',
-        source: router.pathname,
+        source: router.asPath,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -80,6 +80,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
                 name="fields[first_name]"
                 id={`input-name-${unique}`}
                 ref={inputName}
+                disabled={subscribed}
               />
             </div>
             <div className="field field-text field-two-thirds nml ml-field-group ml-field-email ml-validate-required">
@@ -87,13 +88,14 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
                 Email
               </label>
               <input
+                type="email"
                 autoComplete="email"
+                autoCapitalize="off"
                 className="input input-text form-control"
                 id={`input-email-${unique}`}
                 name="email_address"
                 ref={inputEmail}
                 required
-                type="email"
                 disabled={subscribed}
               />
             </div>
