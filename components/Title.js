@@ -5,10 +5,10 @@
 import Link from 'next/link'
 import Icon from './icon'
 
-const Title = ({ title, link, text }) => {
+const Title = ({ title, link, text, ariaID }) => {
   return (
     <header className="row row-header contain contain-medium contain-large between">
-      <h2 className="f6 f5-a f4-c chunky neutral row-title" id="latest-posts-title">
+      <h2 className="f6 f5-a f4-c chunky neutral row-title" id={ariaID}>
         {title}
       </h2>
 
