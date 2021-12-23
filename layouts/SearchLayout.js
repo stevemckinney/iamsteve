@@ -25,7 +25,7 @@ export default function SearchLayout({ posts, initialDisplayPosts = [], handleCl
 
   return (
     <>
-      <div className={`overlay overlay-search`}>
+      <div style={{ minHeight: '100vh', backgroundColor: '#f7f2f5' }}>
         {posts && (
           <ListLayout
             posts={posts}
