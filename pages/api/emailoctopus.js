@@ -14,7 +14,7 @@ export default async (req, res) => {
         email_address: email,
         fields: {
           FirstName: name,
-          source: source,
+          Source: source,
         },
         status: 'PENDING',
       }),
