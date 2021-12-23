@@ -26,10 +26,12 @@ pre {
   line-height: 1.5;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
-  border-radius: $radius;
   color: #e5e7eb;
   background: $code-black;
-  padding: $line; }
+  padding: $line;
+
+ @include breakpoint($cd) {
+   border-radius: $radius; } }
 
 :is(p, li) > code {
   background: rgba($alternate, .1);
