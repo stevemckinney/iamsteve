@@ -34,7 +34,7 @@ class Header extends React.Component {
             href="/newsletter"
             className="tabbar-item tabbar-item-v hide-c sans semibold end warm-l1"
           >
-            <span className="tabbar-item-text warm-l2">Subscribe</span>
+            <span className="tabbar-item-text warm-l1">Subscribe</span>
             <Icon kind="nwslttr" />
           </Link>
           <nav id="nav" className="nav hide-lt-c end primary">

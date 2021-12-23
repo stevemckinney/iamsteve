@@ -21,7 +21,7 @@ const Tabbar = () => {
           <span className={`icon icon-${link.icon}`}>
             <Icon kind={link.icon} />
           </span>
-          <span className="tabbar-item-text warm-l2">{link.title}</span>
+          <span className="tabbar-item-text warm-l1">{link.title}</span>
         </Link>
       ))}
     </nav>
