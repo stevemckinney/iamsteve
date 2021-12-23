@@ -43,8 +43,18 @@ fileroot: "visual-design-tips-you-can-apply-immediately"
 ---
 ```
 
+Some of this frontmatter is excessive, but necessary for futureproofing to an extent. The less obvious ones are detailed below:
+
+- `images` is an array and is only the main image and should be `1476x984` @2x which is `738x492` @1x
+- `large` will be for legacy posts only as it won’t be needed
+- `medium` is for images in /blog or the homepage at `756x504` @2x which is `378x252` @1x
+- `ogImage` acts as a placeholder for custom opengraph images and isn’t used currently
+- `status` is a carry over from the previous expressionengine days `open`, `draft` or `closed` are options
+- `id` use the latest post as reference (I wish there was a better way)
+- `fileroot` is a slug and again acts like a placeholder
+
 ### Compose
 
-Run `node ./scripts/compose.js` to bootstrap a new post.
+Run `node ./scripts/compose.js` to begin a new post.
 
-Follow the interactive prompt to generate a post with pre-filled frontmatter.
+This will offer prompts for a few frontmatter and generate dates for you.
