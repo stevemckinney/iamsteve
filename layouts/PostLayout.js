@@ -13,7 +13,7 @@ import PageTitle from '@/components/PageTitle'
 import Image from '@/components/Image'
 import Category from '@/components/Category'
 
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
+const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/main/data/blog/${fileName}`
 
 const postDateTemplate = { year: 'numeric', month: 'short', day: 'numeric' }
 
@@ -64,6 +64,8 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
                     width={744}
                     height={492}
                     key={image}
+                    blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    placeholder="blur"
                   />
                 ))}
             </div>

@@ -45,6 +45,8 @@ const Medium = ({ frontmatter }) => {
                     role="presentation"
                     width={378}
                     height={252}
+                    blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    placeholder="blur"
                   />
                 </div>
               </>
