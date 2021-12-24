@@ -1,6 +1,7 @@
 const WufooForm = require('react-wufoo-embed')
 import Image from 'next/image'
 import Social from '@/components/Social'
+import siteMetadata from '@/data/siteMetadata'
 import { PageSEO } from '@/components/SEO'
 
 export default function Contact() {
