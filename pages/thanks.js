@@ -1,9 +1,20 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { getAllFilesFrontMatter } from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
 import { PageSEO } from '@/components/SEO'
+import Posts from '@/layouts/Posts'
+import Card from '@/components/card'
 
-export default function Thanks() {
+export async function getStaticProps() {
+  const posts = await getAllFilesFrontMatter('blog')
+
+  return { props: { posts } }
+}
+
+export default function Thanks({ posts }) {
+  const expected = [160, 161, 157, 164, 165, 72]
+
   return (
     <>
       <PageSEO title={`Thanks for subscribing • ${siteMetadata.title}`} />
@@ -11,7 +22,9 @@ export default function Thanks() {
         <h1 className="f4 f3-b f2-d warm mb0 text-center">Subscription confirmed</h1>
       </div>
       <div className="contain contain-medium contain-large pt4 pt6-d pb4 pb6-d">
-        <Image src="/static/images/thanks.svg" alt="Thumbs up" className="db m-center mb4" />
+        <div className="flex center mb4">
+          <Image src="/static/images/thanks.svg" width={738} height={616} alt="Thumbs up" />
+        </div>
 
         <p className="f2-l text-center measure m-center">
           Your subscription has been confirmed. If you have any problems{' '}
@@ -21,14 +34,21 @@ export default function Thanks() {
           or reply to any of the emails you receive.
         </p>
 
-        <section className="grid-thanks pt6 m-center">
-          <h2 className="f5 f4-b chunky neutral row-title column-all">
-            Here’s what you can expect
-          </h2>
-          {/*exp:channel:entries channel="{ch}" status="{ch_status}" disable="{ch_disable}" limit="{ch_limit_large}" entry_id="160|161|157|164|165|76" fixed_order="165|160|164|157|161|72"}
-            {post_small}
-          {/exp:channel:entries*/}
-        </section>
+        <Posts
+          title="Here’s what you can expect"
+          link="/blog"
+          text="All posts"
+          size="small"
+          key="posts"
+        >
+          {!posts && 'No posts'}
+          {posts &&
+            posts
+              .filter((post) => expected.includes(post.id))
+              .map((frontmatter) => {
+                return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
+              })}
+        </Posts>
       </div>
     </>
   )
