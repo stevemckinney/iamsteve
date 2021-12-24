@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { PageSEO } from '@/components/SEO'
 
 export default function About() {
   return (
     <>
+      <PageSEO title={`About • ${siteMetadata.title}`} description={siteMetadata.description} />
       <div className="row subheader between contain contain-medium contain-large pb4">
         <h1 className="f4 f3-b f2-d warm mb0 text-left">About</h1>
         <nav className="flex-auto flex end sans warm-l1 nav-in-page">

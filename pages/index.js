@@ -50,7 +50,7 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
 
   return (
     <>
-      <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
+      <PageSEO title={`${siteMetadata.title} • design & code blog`} description={siteMetadata.description} />
       <div className="hero contain-medium contain-large mb2 mb4-d">
         <div className="hero-content">
           <h1 className="f3 f2-b f1-d mb0 primary hero-title">

@@ -1,10 +1,12 @@
 const WufooForm = require('react-wufoo-embed')
 import Image from 'next/image'
 import Social from '@/components/Social'
+import { PageSEO } from '@/components/SEO'
 
 export default function Contact() {
   return (
     <>
+      <PageSEO title={`Contact • ${siteMetadata.title}`} description={siteMetadata.description} />
       <div className="row subheader center contain contain-medium contain-large pb4">
         <h1 className="f2-l warm mb0 text-center">Contact</h1>
       </div>
