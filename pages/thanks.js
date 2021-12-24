@@ -1,9 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import siteMetadata from '@/data/siteMetadata'
+import { PageSEO } from '@/components/SEO'
 
 export default function Thanks() {
   return (
     <>
+      <PageSEO title={`Thanks for subscribing • ${siteMetadata.title}`} />
       <div className="row subheader center contain contain-medium contain-large pb4">
         <h1 className="f4 f3-b f2-d warm mb0 text-center">Subscription confirmed</h1>
       </div>
