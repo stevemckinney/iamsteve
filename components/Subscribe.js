@@ -18,13 +18,10 @@ const Subscribe = ({ title = 'Subscribe to the newsletter', theme = 'cool' }) =>
       <div className="column column-6-b column-4-d">
         <h2 className="f1-l chunky secondary mb2 mb4-b">Get the articles</h2>
         <p className="mb2">
-          <strong>It’s my aim to help you be a better designer</strong>. Join my monthly<em>ish</em>{' '}
-          email list and I’ll send new tutorials to help you design & code beautiful websites.
+          <strong>It’s my aim to help you be a better designer</strong>. Join my monthly<em>ish</em> email list and I’ll send new tutorials to help you design & code beautiful websites. You can unsubscribe anytime.
         </p>
         <p className="mb4">
-          I also do the occasional design critique, which you get access to for being a
-          subscriber—send a design through after subscribing. Also, there’s some older templates and
-          post files included. You can unsubscribe anytime.
+          Also, as a subscriber I can provide critique on your designs—send something through after you confirm your subscription.
         </p>
         <NewsletterForm theme={`form-${theme}`} />
       </div>
