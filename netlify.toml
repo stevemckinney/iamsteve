@@ -2,6 +2,12 @@
   command = "npm run lint && npm run build"
   publish = ".next"
 
+[build.environment]
+[context.production.branch-deploy]
+  command = "mv robots-disallow.txt robots.txt"
+[context.production]
+  command = "mv robots-production.txt robots.txt"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
