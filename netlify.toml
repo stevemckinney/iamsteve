@@ -6,7 +6,22 @@
   package = "@netlify/plugin-nextjs"
 
 [[redirects]]
- from = "/blog/entry/*"
- to = "/blog/:splat"
- status = 301
- force = true
+  from = "/blog/entry/*"
+  to = "/blog/:splat"
+  status = 301
+  force = true
+
+  from = "/rss"
+  to = "/feed.xml"
+  status = 301
+  force = true
+
+  from = "/feed"
+  to = "/feed.xml"
+  status = 301
+  force = true
+
+  from = "/feeds"
+  to = "/feed.xml"
+  status = 301
+  force = true
