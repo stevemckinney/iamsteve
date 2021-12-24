@@ -11,7 +11,14 @@ export default function FourZeroFour() {
       </div>
       <div className="contain">
         <div className="measure m-center pt4 pt6-d pb4 pb6-d">
-          <p>It’s probable you’re here because a redirect went wrong or I guess you’ve made a typo, no problem. If you believe the page <strong>should</strong> be here, please <Link href="/contact" className="link">contact me</Link>.</p>
+          <p>
+            It’s probable you’re here because a redirect went wrong or I guess you’ve made a typo,
+            no problem. If you believe the page <strong>should</strong> be here, please{' '}
+            <Link href="/contact" className="link">
+              contact me
+            </Link>
+            .
+          </p>
         </div>
       </div>
     </>

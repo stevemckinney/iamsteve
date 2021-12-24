@@ -31,9 +31,7 @@ const Pre = (props) => {
         aria-label="Copy code"
         type="button"
         className={`absolute button button-t button-copy rounded alternate-l2 ${
-          copied
-            ? 'focus:outline-none focus:border-green-400 border-green-400'
-            : 'border-gray-300'
+          copied ? 'focus:outline-none focus:border-green-400 border-green-400' : 'border-gray-300'
         }`}
         onClick={onCopy}
       >
@@ -44,22 +42,20 @@ const Pre = (props) => {
           height="24"
           stroke="currentColor"
           fill="none"
-          className={
-            copied ? 'sw-2 secondary' : 'sw-2'
-          }
+          className={copied ? 'sw-2 secondary' : 'sw-2'}
         >
           {copied ? (
             <>
-              <rect x="4" y="4" width="16" height="18" rx="1.5"/>
-              <rect x="8" y="4" width="8" height="3" className="fill-currentcolor"/>
-              <path d="M7 14L10 17L17 10"/>
-              <circle cx="12" cy="3" r="2"/>
+              <rect x="4" y="4" width="16" height="18" rx="1.5" />
+              <rect x="8" y="4" width="8" height="3" className="fill-currentcolor" />
+              <path d="M7 14L10 17L17 10" />
+              <circle cx="12" cy="3" r="2" />
             </>
           ) : (
             <>
-              <rect x="4" y="4" width="16" height="18" rx="1.5"/>
-              <rect x="8" y="4" width="8" height="3" className="fill-currentcolor"/>
-              <circle cx="12" cy="3" r="2"/>
+              <rect x="4" y="4" width="16" height="18" rx="1.5" />
+              <rect x="8" y="4" width="8" height="3" className="fill-currentcolor" />
+              <circle cx="12" cy="3" r="2" />
             </>
           )}
         </svg>

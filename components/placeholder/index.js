@@ -48,11 +48,25 @@ function Placeholder({ category, kind }) {
     <>
       <div className={containerClass} style={{ backgroundColor: color }}>
         {category === 'Design' ? (
-          <Image src={image} className="radius" width={378} height={252} alt="" blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-          placeholder="blur" />
+          <Image
+            src={image}
+            className="radius"
+            width={378}
+            height={252}
+            alt=""
+            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            placeholder="blur"
+          />
         ) : (
-          <Image src={image} className="radius" width={378} height={252} alt="" blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-          placeholder="blur" />
+          <Image
+            src={image}
+            className="radius"
+            width={378}
+            height={252}
+            alt=""
+            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            placeholder="blur"
+          />
         )}
       </div>
     </>

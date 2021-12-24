@@ -42,7 +42,14 @@ const genFrontMatter = (answers) => {
   layout: ${answers.layout}
   draft: ${answers.status}
   id: ${answers.id}
-  fileroot: ${answers.title ? answers.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') : 'untitled'}
+  fileroot: ${
+    answers.title
+      ? answers.title
+          .toLowerCase()
+          .replace(/ /g, '-')
+          .replace(/[^\w-]+/g, '')
+      : 'untitled'
+  }
   `
 
   if (answers.authors.length > 0) {

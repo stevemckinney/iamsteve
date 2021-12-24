@@ -9,6 +9,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import Subscribe from '@/components/Subscribe'
 import Posts from '@/layouts/Posts'
+import Card from '@/components/card'
 import SearchLayout from '@/layouts/SearchLayout'
 import Icon from '@/components/icon/index.js'
 import Search from '@/components/Search'
@@ -23,7 +24,6 @@ import Intro960 from '@/images/introduction-960.svg'
 
 // pull in the posts
 // import Posts from '@/layouts/Posts'
-import Card from '@/components/card'
 export const POSTS_PER_PAGE = 8
 export const MAX_DISPLAY = 5
 
@@ -50,7 +50,10 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
 
   return (
     <>
-      <PageSEO title={`${siteMetadata.title} • design & code blog`} description={siteMetadata.description} />
+      <PageSEO
+        title={`${siteMetadata.title} • design & code blog`}
+        description={siteMetadata.description}
+      />
       <div className="hero contain-medium contain-large mb2 mb4-d">
         <div className="hero-content">
           <h1 className="f3 f2-b f1-d mb0 primary hero-title">
@@ -132,8 +135,7 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
             .filter((post) => designPosts.includes(post.id))
             .map((frontmatter) => {
               return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
-            })
-        }
+            })}
         <Link
           href="/category/design"
           className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"
@@ -159,8 +161,7 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
             .filter((post) => codePosts.includes(post.id))
             .map((frontmatter) => {
               return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
-            })
-        }
+            })}
         <Link
           href="/category/design"
           className="link-icon warm secondary-hover card-permalink semibold sans center f5-l"

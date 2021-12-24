@@ -5,10 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link
-            rel="apple-touch-icon"
-            href="/static/favicons/apple-touch-icon.png"
-          />
+          <link rel="apple-touch-icon" href="/static/favicons/apple-touch-icon.png" />
           <link rel="shortcut icon" href="/static/favicons/favicon.ico" />
           <link rel="manifest" href="/static/favicons/site.webmanifest" />
           <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#ff7e6d" />

@@ -66,7 +66,9 @@ export default function CardLayout({ posts, title, initialDisplayPosts = [], pag
         </form>
         {searchValue && (
           <div className="searched-posts">
-            <h2 className="f3-l mb4 neutral flex-8">Results for <span className="primary">‘{searchValue}‘</span></h2>
+            <h2 className="f3-l mb4 neutral flex-8">
+              Results for <span className="primary">‘{searchValue}‘</span>
+            </h2>
             {!filteredBlogPosts.length && 'No posts found.'}
             {displayPosts.map((frontmatter) => {
               return (
