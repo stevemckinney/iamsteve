@@ -74,7 +74,7 @@ export default function CardLayout({ posts, title, initialDisplayPosts = [], pag
               return (
                 <div className="card" key={frontmatter.id}>
                   <h2 className="f4-l mb4 flex-8 warm transition secondary-hover">
-                    <Link href={frontmatter.slug}>{frontmatter.title}</Link>
+                    <Link href={`/blog/${frontmatter.slug}`}>{frontmatter.title}</Link>
                   </h2>
                 </div>
               )
