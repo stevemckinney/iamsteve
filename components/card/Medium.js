@@ -41,7 +41,6 @@ const Medium = ({ frontmatter }) => {
                   <Image
                     src={medium}
                     className="radius"
-                    alt=""
                     role="presentation"
                     width={378}
                     height={252}
