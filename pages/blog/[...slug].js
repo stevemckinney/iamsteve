@@ -7,6 +7,11 @@ import LayoutWrapper from '@/components/LayoutWrapper'
 
 const DEFAULT_LAYOUT = 'PostLayout'
 
+export const config = {
+  unstable_runtimeJS: false,
+  unstable_JsPreload: false,
+}
+
 export async function getStaticPaths() {
   const posts = getFiles('blog')
 
