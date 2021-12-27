@@ -32,8 +32,8 @@ const Medium = ({ frontmatter }) => {
 
   return (
     <article className="card card-medium entry flex flex-column">
-      <Link href={url}>
-        <a className="card-image flex mb2 mb4-b">
+      <Link href={url} title="">
+        <a className="card-image flex mb2 mb4-b" aria-labelledby={`title-${id}`}>
           <>
             {medium ? (
               <>
@@ -47,6 +47,7 @@ const Medium = ({ frontmatter }) => {
                     height={252}
                     blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                     placeholder="blur"
+                    alt={title}
                   />
                 </div>
               </>
@@ -68,7 +69,7 @@ const Medium = ({ frontmatter }) => {
             {formatDate(date)}
           </time>
         </div>
-        <h3 className="f2-l mb1 mb2-d">
+        <h3 className="f2-l mb1 mb2-d" id={`title-${id}`}>
           <Link href={url}>
             <a className="primary secondary-hover">{title}</a>
           </Link>

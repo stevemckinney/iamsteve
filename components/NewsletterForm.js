@@ -71,7 +71,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
           )}
           <form className="form form-newsletter end" onSubmit={subscribe}>
             <div className="field field-text field-third ml-field-group ml-field-name">
-              <label htmlFor="input-name" className="sans pb2 field-label">
+              <label htmlFor={`input-name-${unique}`} className="sans pb2 field-label">
                 First name
               </label>
               <input
@@ -84,7 +84,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
               />
             </div>
             <div className="field field-text field-two-thirds nml ml-field-group ml-field-email ml-validate-required">
-              <label htmlFor="input-email" className="sans pb2 field-label">
+              <label htmlFor={`input-email-${unique}`} className="sans pb2 field-label">
                 Email
               </label>
               <input
