@@ -94,10 +94,9 @@ const Medium = ({ frontmatter }) => {
           </Link>
         </div>
         <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
-          <a href="{site_url}" className="author vcard url fn" rel="author"  tabIndex="-1">
+          <a href="{site_url}" className="author vcard url fn" rel="author" tabIndex="-1">
             Steve McKinney
-          </a>
-          {" "}
+          </a>{' '}
           <time dateTime={lastmod} className="updated" tabIndex="-1">
             {formatDate(lastmod)}
           </time>
