@@ -212,7 +212,7 @@ Making sure your reference point is in the centre, and constrain width and heigh
 #### Send to back and more alignment
 Using <kbd>cmd</kbd> + <kbd>[</kbd>, send the two resized rectangles to the back. Now at this stage some alignment may be off, select each column and click the rectangle layer. The line should become bolder, now in the align panel use ‘Horizontal Align Center’.
 
-This is [aligning to a key object]({site_url}/blog/entry/illustrator-quick-tip-align-to-key-object), repeat the process for the other side. Then take each side individually and nudge it in 12px.
+This is [aligning to a key object](/blog/illustrator-quick-tip-align-to-key-object), repeat the process for the other side. Then take each side individually and nudge it in 12px.
 
 ## Adding visual separation to the price
 <div className="article-image">

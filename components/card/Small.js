@@ -67,7 +67,7 @@ const Small = ({ frontmatter }) => {
         </h3>
 
         <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
-          <a href="{site_url}" className="author vcard url fn" rel="author">
+          <a href="/about" className="author vcard url fn" rel="author">
             Steve McKinney
           </a>
           <time dateTime={lastmod} className="updated">

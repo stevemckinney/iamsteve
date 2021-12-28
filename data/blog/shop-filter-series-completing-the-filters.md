@@ -84,7 +84,7 @@ Type out 8 types of clothing, using a 16px font size. This will allow good space
 Select a type, then click a rectangle to align it to. Click the rectangle again to use that as the basis to align to.
 
 <figure>
-<Image src="/static/images/blog/shop-tabbar-2-align-panel.png" width={738} height={492} /><figcaption>I have wrote a quick tip on <a href="{site_url}blog/entry/illustrator-quick-tip-align-to-key-object">aligning to key object in Illustrator</a>, if you need extra help.</figcaption>
+<Image src="/static/images/blog/shop-tabbar-2-align-panel.png" width={738} height={492} /><figcaption>I have wrote a quick tip on <Link href="/blog/entry/illustrator-quick-tip-align-to-key-object">aligning to key object in Illustrator</Link>, if you need extra help.</figcaption>
 </figure>
 
 In the Align panel, horizontally and vertically align it.

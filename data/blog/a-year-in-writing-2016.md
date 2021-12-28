@@ -137,7 +137,7 @@ Traffic was up over 200% over the course of the year, a huge increase. This was 
 I have had a lot of success with the horizontal scrolling theme. So I have wrote 4 or so posts in relation, they have also seen a reasonable amount of popularity. 
 
 ### Featured in CSS Layout News
-I was featured in CSS Layout News newsletter back in March for the [CSS shapes article I wrote]({site_url}). That felt like the first kind of recognition. In turn directed a nice amount of traffic. It was picked up by [Stephanie Walter](https://blog.stephaniewalter.fr/en/pixels-of-the-week-march-18-2016/) and [HeyDesigner](http://heydesigner.com/css-shapes/) and a couple of other sites. 
+I was featured in CSS Layout News newsletter back in March for the [CSS shapes article I wrote](/blog/get-up-to-speed-with-css-shapes). That felt like the first kind of recognition. In turn directed a nice amount of traffic. It was picked up by [Stephanie Walter](https://blog.stephaniewalter.fr/en/pixels-of-the-week-march-18-2016/) and [HeyDesigner](http://heydesigner.com/css-shapes/) and a couple of other sites. 
 
 The three sources mentioned were the most significant influence.
 

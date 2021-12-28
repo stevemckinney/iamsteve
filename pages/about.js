@@ -138,7 +138,7 @@ export default function About() {
             <p className="f3 f2-b f4 mb0">
               You may be interested in what the site is built with and the tools I use. You can find
               those on{' '}
-              <a href="{site_url}uses" className="link">
+              <a href="/uses" className="link">
                 the uses page
               </a>
               .

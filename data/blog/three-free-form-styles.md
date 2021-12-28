@@ -46,4 +46,4 @@ These require the `.input-radio` class.
 ### Submit button
 These require the `.button` class.
 
-> If you have any trouble using them, or any suggestions for what would help you, feel free to [contact me]({site_url}contact) or [tweet](https://twitter.com/irsteve).
+> If you have any trouble using them, or any suggestions for what would help you, feel free to [contact me](/contact) or [tweet](https://twitter.com/irsteve).
