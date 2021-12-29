@@ -112,10 +112,10 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
             </span>
 
             <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
-              <Link href="/about" className="author vcard url fn" rel="author">
+              <Link href="/about" className="author vcard url fn" rel="author" tabIndex="-1">
                 Steve McKinney
               </Link>
-              <time dateTime={lastmod} className="updated">
+              <time dateTime={lastmod} className="updated" tabIndex="-1">
                 {formatDate(lastmod)}
               </time>
             </div>
