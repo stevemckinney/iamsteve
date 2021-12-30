@@ -1,7 +1,11 @@
 import Image from 'next/image'
 import NewsletterForm from '@/components/NewsletterForm'
 
-const Subscribe = ({ title = 'Subscribe to the newsletter', theme = 'cool', unique = 'footer' }) => {
+const Subscribe = ({
+  title = 'Subscribe to the newsletter',
+  theme = 'cool',
+  unique = 'footer',
+}) => {
   return (
     <section
       className={`row row-${theme} row-padding between items-center contain contain-medium contain-large subscribe`}
