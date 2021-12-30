@@ -90,7 +90,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
               <input
                 type="email"
                 autoComplete="email"
-                autoCapitalize="off"
+                autoCapitalize="none"
                 className="input input-text form-control"
                 id={`input-email-${unique}`}
                 name="email_address"
