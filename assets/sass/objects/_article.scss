@@ -111,14 +111,14 @@
   p > a {
     @extend .link; }
 
-  a > span,
+  a:not(.fragment) > span,
   img {
     transition: .2s box-shadow; }
 
-  a:hover span,
-  a:focus span,
-  a:hover img,
-  a:focus img {
+  a:not(.fragment):hover span,
+  a:not(.fragment):focus span,
+  a:not(.fragment):hover img,
+  a:not(.fragment):focus img {
     box-shadow: 0 2px 2px rgba($neutral, .2), 0 8px 16px rgba($neutral, .15); }
 
   // Images following headings, lists and paragraphs
@@ -181,6 +181,12 @@
   transition: .2s ease-out;
   color: $warm-l2;
 
+  .icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url(/static/images/link.svg) no-repeat center center; }
+
   @include breakpoint($aa-max) {
     float: right;
     position: relative;
@@ -197,6 +203,7 @@
 
   &:hover,
   &:focus {
+    box-shadow: none;
     color: $warm; } }
 
 // Codepen
