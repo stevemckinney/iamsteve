@@ -39,8 +39,8 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
       method: 'POST',
       headers: {
         'Content-Type': 'text/plain',
-        'Content-Length': `${slug.length.toString()}`
-      }
+        'Content-Length': `${slug.length.toString()}`,
+      },
     })
   }, [slug])
 
