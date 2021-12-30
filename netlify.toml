@@ -9,6 +9,11 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self';"
+
 [[redirects]]
   from = "/blog/inline_block"
   to = "/blog/inline-block"
