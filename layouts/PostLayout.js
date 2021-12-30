@@ -37,9 +37,10 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
   useEffect(() => {
     fetch(`/api/views/${slug}`, {
       method: 'POST',
-      headers: new Headers({
+      headers: {
+        'Content-Type': 'text/plain',
         'Content-Length': `${slug.length.toString()}`
-      })
+      }
     })
   }, [slug])
 
