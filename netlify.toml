@@ -8,7 +8,13 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  
+
+[[redirects]]
+  from = "/blog/inline_block"
+  to = "/blog/inline-block"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/blog/entry/create_a_sass_button_element_mixin"
   to = "/blog/create-a-sass-button-element-mixin"
