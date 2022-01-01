@@ -37,10 +37,6 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
   useEffect(() => {
     fetch(`/api/views/${slug}`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain',
-        'Content-Length': `${slug.length.toString()}`,
-      },
     })
   }, [slug])
 
@@ -116,10 +112,10 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
             </span>
 
             <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
-              <Link href="/about" className="author vcard url fn" rel="author" tabIndex="-1">
+              <a href="{site_url}" className="author vcard url fn" rel="author">
                 Steve McKinney
-              </Link>
-              <time dateTime={lastmod} className="updated" tabIndex="-1">
+              </a>
+              <time dateTime={lastmod} className="updated">
                 {formatDate(lastmod)}
               </time>
             </div>
