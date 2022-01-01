@@ -2,8 +2,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { SupabaseAdmin } from '@/lib/supabase-admin'
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 export default async (NextApiRequest, NextApiResponse) => {
-  if (NextApiRequest.method === 'POST') {
+  if (isProduction && NextApiRequest.method === 'POST') {
     // Call our stored procedure with the page_slug set by the request params slug
     await SupabaseAdmin.rpc('increment_page_view', { page_slug: NextApiRequest.query.slug })
     return NextApiResponse.status(200).json({
@@ -23,6 +25,8 @@ export default async (NextApiRequest, NextApiResponse) => {
       })
     }
   }
+
+  if (!isProduction) return
 
   return NextApiResponse.status(400).json({
     message: 'Unsupported Request',
