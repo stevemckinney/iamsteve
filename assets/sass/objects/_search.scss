@@ -101,7 +101,7 @@
     width: 100%;
 
     // 84 + 50 = search + tabbar height = centre
-    padding: 0 math.div($line, 1.5) (84px + 50px); }
+    padding: $line*2 math.div($line, 1.5) (84px + 50px); }
 
   @include breakpoint($c) {
     padding-top: $line*2; } }
