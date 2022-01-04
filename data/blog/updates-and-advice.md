@@ -8,7 +8,7 @@ theme: "#e1f7ee"
 tags: ["Website"]
 categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
-status: "closed"
+status: "draft"
 id: 23
 fileroot: "updates_and_advice"
 ---
