@@ -8,7 +8,7 @@ theme: "#e1f7ee"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
-status: "closed"
+status: "draft"
 id: 40
 fileroot: "patience_a_wordpress_tumblog_theme"
 ---

@@ -8,7 +8,7 @@ theme: "#e1f7ee"
 tags: ["Website"]
 categories: ["Technology"]
 ogImage: "/assets/og/cover.jpg"
-status: "closed"
+status: "draft"
 id: 16
 fileroot: "bye_flash"
 ---

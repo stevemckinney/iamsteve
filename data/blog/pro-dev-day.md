@@ -8,7 +8,7 @@ theme: "#ffede5"
 tags: ["Website"]
 categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
-status: "closed"
+status: "draft"
 id: 17
 fileroot: "pro_dev_day"
 ---

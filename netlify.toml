@@ -14,6 +14,30 @@
   to = "/blog/inline-block"
   status = 301
   force = true
+  
+[[redirects]]
+  from = "/blog/entry/inline_block"
+  to = "/blog/inline-block"
+  status = 301
+  force = true
+  
+[[redirects]]
+  from = "/blog/using_scale_color_in_sass"
+  to = "/blog/using-scale-color-in-sass"
+  status = 301
+  force = true
+  
+[[redirects]]
+  from = "/blog/entry/using_scale_color_in_sass"
+  to = "/blog/using-scale-color-in-sass"
+  status = 301
+  force = true
+  
+[[redirects]]
+  from = "/blog/create_a_sass_button_element_mixin"
+  to = "/blog/create-a-sass-button-element-mixin"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/blog/entry/create_a_sass_button_element_mixin"
