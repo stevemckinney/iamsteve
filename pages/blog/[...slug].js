@@ -1,3 +1,6 @@
+import DefaultErrorPage from 'next/error'
+import Head from 'next/head'
+
 import fs from 'fs'
 import PageTitle from '@/components/PageTitle'
 import generateRss from '@/lib/generate-rss'
@@ -50,7 +53,7 @@ export default function Blog({ post, authorDetails, filenameSlug, prev, next }) 
 
   return (
     <>
-      {frontmatter.status !== 'draft' ? (
+      {frontmatter.status === 'open' ? (
         <MDXLayoutRenderer
           layout={frontmatter.layout || DEFAULT_LAYOUT}
           toc={toc}
@@ -61,14 +64,12 @@ export default function Blog({ post, authorDetails, filenameSlug, prev, next }) 
           next={next}
         />
       ) : (
-        <div className="mt-24 text-center">
-          <PageTitle>
-            Under Construction{' '}
-            <span role="img" aria-label="roadwork sign">
-              🚧
-            </span>
-          </PageTitle>
-        </div>
+        <>
+          <Head>
+            <meta name="robots" content="noindex" />
+          </Head>
+          <DefaultErrorPage statusCode={404} />
+        </>
       )}
     </>
   )
