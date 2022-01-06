@@ -19,7 +19,7 @@ fileroot: "stop-headroom.js-hiding-when-your-navigation-is-open"
 Headroom.js is a popular plugin for providing additional functionality in having a fixed header. It has a lot of additional callbacks and options, to make sure you can cover a variety of situations. One of those things is stopping it from hiding when your navigation is open. Which is what this post will cover, as this is something I had to do recently.
 
 ## The problem detailed
-You’ve got your header setup and working with headroom.js. Your navigation is revealed by tapping or clicking an icon (be that a hamburger or whatnot). When you scroll the header still hides despite the navigation being visible. 
+You’ve got your header setup and working with headroom.js. Your navigation is revealed by tapping or clicking an icon (be that a hamburger or whatnot). When you scroll the header still hides despite the navigation being visible.
 
 You may even have the navigation cover the whole viewport, but you can still trigger scroll events.
 
@@ -34,7 +34,7 @@ You will have initialised headroom, it may look similar, or you may have passed 
 ```javascript
 var header = document.getElementById('header');
 var headroom = new Headroom(header);
-headroom.init(); 
+headroom.init();
 ```
 
 ### Checking the state
@@ -71,7 +71,7 @@ var options = {
 };
 
 var headroom = new Headroom(header, options);
-headroom.init(); 
+headroom.init();
 ```
 
 If you don’t have options, this essentially passes an extra parameter to the `headroom` variable. Inside the options object, the `onUnpin` callback uses the function from earlier to remove or add a class name using the `classes` object built into headroom.
@@ -105,7 +105,7 @@ navToggle.addEventListener('click', function() {
 This will listen for clicks on `.nav-toggle` and toggle a class on `.nav`.
 
 ## Final code
-To recap you've got a function to detect visibility of your nav element. That function is used as part of the onunpin callback, where you add and remove class names based upon the state. The class names are found in the classes object. 
+To recap you've got a function to detect visibility of your nav element. That function is used as part of the onunpin callback, where you add and remove class names based upon the state. The class names are found in the classes object.
 
 ```javascript
 function isNavVisible(nav) {
@@ -129,5 +129,5 @@ var options = {
 };
 
 var headroom = new Headroom(header, options);
-headroom.init(); 
+headroom.init();
 ```
