@@ -47,8 +47,8 @@ export default function Category({ posts, category }) {
   return (
     <>
       <TagSEO
-        title={`${category} - ${siteMetadata.author}`}
-        description={`${category} category - ${siteMetadata.author}`}
+        title={`${category} • ${siteMetadata.title}`}
+        description={`All posts under the ${category} category`}
       />
       <CardLayout posts={posts} title={title} />
     </>
