@@ -16,6 +16,12 @@
   force = true
 
 [[redirects]]
+  from = "/blog/entry/buttons"
+  to = "/blog/buttons"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blog/my_svg_workflow_from_awkward_to_simple"
   to = "/blog/my-svg-workflow-from-awkward-to-simple"
   status = 301
