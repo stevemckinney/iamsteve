@@ -10,29 +10,53 @@
   package = "@netlify/plugin-nextjs"
 
 [[redirects]]
+  from = "/blog/compass_mixins_you_should_know_about"
+  to = "/blog/compass-mixins-you-should-know-about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/my_svg_workflow_from_awkward_to_simple"
+  to = "/blog/my-svg-workflow-from-awkward-to-simple"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/typekit-gems"
+  to = "/blog/typekit-gems-number-one"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/stop-headroom.js-hiding-when-your-navigation-is-open"
+  to = "/blog/stop-headroom-hiding-when-your-navigation-is-open"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blog/inline_block"
   to = "/blog/inline-block"
   status = 301
   force = true
-  
+
 [[redirects]]
   from = "/blog/entry/inline_block"
   to = "/blog/inline-block"
   status = 301
   force = true
-  
+
 [[redirects]]
   from = "/blog/using_scale_color_in_sass"
   to = "/blog/using-scale-color-in-sass"
   status = 301
   force = true
-  
+
 [[redirects]]
   from = "/blog/entry/using_scale_color_in_sass"
   to = "/blog/using-scale-color-in-sass"
   status = 301
   force = true
-  
+
 [[redirects]]
   from = "/blog/create_a_sass_button_element_mixin"
   to = "/blog/create-a-sass-button-element-mixin"

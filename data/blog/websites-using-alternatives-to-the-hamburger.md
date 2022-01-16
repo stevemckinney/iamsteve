@@ -27,7 +27,7 @@ As phones have got larger and Google has started recommending it for Android, is
 
 ## ysdn2016.com
 <div className="article-image">
-  <a href="(http://ysdn2016.com/">
+  <a href="http://ysdn2016.com/">
     <Image src="/static/images/blog/bottom-nav-ysdn.png" width={960} height={832} />
   </a>
 </div>
@@ -39,7 +39,7 @@ It hides on scroll, so it forces you to scroll up a bit at least to bring it bac
 
 ## pitchfork.com
 <div className="article-image">
-  <a href="(http://pitchfork.com/">
+  <a href="http://pitchfork.com/">
     <Image src="/static/images/blog/bottom-nav-pitchfork.jpg" width={960} height={832} />
   </a>
 </div>
@@ -50,7 +50,7 @@ It also affords them the freedom to have a larger logo—not that I believe you 
 
 ## studiothick.com
 <div className="article-image">
-  <a href="(http://www.studiothick.com/">
+  <a href="http://www.studiothick.com/">
     <Image src="/static/images/blog/bottom-nav-studiothick.jpg" width={960} height={832} />
   </a>
 </div>
@@ -59,7 +59,7 @@ This is a repositioning of essentially what would be a ‘hamburger’ menu with
 
 ## davidhellmann.com
 <div className="article-image">
-  <a href="(https://davidhellmann.com">
+  <a href="https://davidhellmann.com">
     <Image src="/static/images/blog/bottom-nav-david.png" width={960} height={832} />
   </a>
 </div>
@@ -68,7 +68,7 @@ The navigation would feel at home on iOS as much as it does apart of the website
 
 ## joycewang.com
 <div className="article-image">
-  <a href="(http://joycewang.com">
+  <a href="http://joycewang.com">
     <Image src="/static/images/blog/bottom-nav-wang.jpg" width={960} height={832} />
   </a>
 </div>
@@ -77,7 +77,7 @@ Like the Studio Thick navigation, this uses an icon in the lower right avoiding 
 
 ## roscoproduction.com
 <div className="article-image">
-  <a href="(http://roscoproduction.com">
+  <a href="http://roscoproduction.com">
     <Image src="/static/images/blog/bottom-nav-rosco.jpg" width={960} height={832} />
   </a>
 </div>
@@ -86,7 +86,7 @@ This is more of an obscure navigation, but it’s usable with one hand to give y
 
 ## whitehallinteriorsnyc.com
 <div className="article-image">
-  <a href="(http://www.whitehallinteriorsnyc.com">
+  <a href="http://www.whitehallinteriorsnyc.com">
     <Image src="/static/images/blog/bottom-nav-whitehall.jpg" width={960} height={832} />
   </a>
 </div>
@@ -95,7 +95,7 @@ A discrete navigation initially, which hides on scroll down and it reappears whe
 
 ## eventbrite.com
 <div className="article-image">
-  <a href="(https://www.eventbrite.com">
+  <a href="https://www.eventbrite.com">
     <Image src="/static/images/blog/bottom-nav-eventbrite.jpg" width={960} height={832} />
   </a>
 </div>
@@ -106,7 +106,7 @@ For an ecommerce experience this seems like a no brainer, make the checkout step
 
 ## Basecamp
 <div className="article-image">
-  <a href="(https://basecamp.com">
+  <a href="https://basecamp.com">
     <Image src="/static/images/blog/bottom-nav-basecamp.jpg" width={960} height={832} />
   </a>
 </div>
@@ -117,7 +117,7 @@ I'm sure this will emerge as a trend for pages of this type.
 
 ## Quartz
 <div className="article-image">
-  <a href="(http://qz.com">
+  <a href="http://qz.com">
     <Image src="/static/images/blog/bottom-nav-quartz.jpg" width={960} height={832} />
   </a>
 </div>
@@ -129,8 +129,4 @@ Many of the examples work very well, because of the ease that they can be reache
 
 This is definitely more of a reemerging trend, as I remember seeing other websites with it and trialling a bottom navigation in version three of this website. I removed it due to thinking there was potential for tapping the wrong parts of the browser UI. I believe that’s why it hasn’t been used more until now.
 
-<div className="article-image">
-  <a href=": [Obvious Always Wins](http://www.lukew.com/ff/entry.asp?1945">
-    ^1
-  </a>
-</div>
+[^1]: [Obvious Always Wins](http://www.lukew.com/ff/entry.asp?1945)
