@@ -40,7 +40,7 @@
     "remark-math": "^5.1.1",
     "remark-smartypants": "^2.0.0",
     "sass": "^1.44.0",
-    "sharp": "^0.28.3",
+    "sharp": "^0.30.5",
     "smoothscroll-polyfill": "^0.4.4",
     "tailwindcss": "^2.2.2",
     "unist-util-visit": "^4.0.0"
