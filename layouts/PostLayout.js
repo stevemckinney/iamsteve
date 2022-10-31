@@ -112,7 +112,7 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
             </span>
 
             <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
-              <a href="{site_url}" className="author vcard url fn" rel="author">
+              <a href="https://iamsteve.me" className="author vcard url fn" rel="author">
                 Steve McKinney
               </a>
               <time dateTime={lastmod} className="updated">
@@ -129,7 +129,7 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
 
       <div className="support m-center measure-padding pb6 flex flex-wrap align-center items-center between">
         <div className="column column-5-d mb4 mb0-d">
-          <p>If you found this article useful, why not support the upkeep of this website?</p>
+          <p>I’m a tea drinker, but it’s equally appreciated if you found the article useful.</p>
         </div>
         <div className="column column-3-d">
           <a
