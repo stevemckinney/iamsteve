@@ -13,8 +13,6 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 const isSocket = process.env.SOCKET
 
 export default function App({ Component, pageProps }) {
-  const getLayout = Component.getLayout || ((page) => <LayoutWrapper>{page}</LayoutWrapper>)
-
   return (
     <ThemeProvider attribute="class" defaultTheme={siteMetadata.theme}>
       <Head>
@@ -38,7 +36,9 @@ export default function App({ Component, pageProps }) {
       </Head>
       {isDevelopment && isSocket && <ClientReload />}
       <Analytics />
-      {getLayout(<Component {...pageProps} />)}
+      <LayoutWrapper subtle="true">
+        <Component {...pageProps} />
+      </LayoutWrapper>
     </ThemeProvider>
   )
 }
