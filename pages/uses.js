@@ -21,12 +21,11 @@ export default function Contact() {
             <dl className="f4">
               <dt>Figma</dt>
               <dd className="mb2">
-                I use this for the majority of design work. Managing components and libraries,
-                prototyping and sharing is by far the best in my opinion.
+                I use this for the majority of design work. Managing components and libraries, prototyping and sharing is by far the best in my opinion.
               </dd>
               <dt>Illustrator</dt>
               <dd className="mb2">
-                I will always stand by Illustrator. It can’t be beaten for vector editing.
+                Illustrator can’t be beaten for vector editing.
               </dd>
               <dt>Photoshop</dt>
               <dd className="mb2">
@@ -34,8 +33,7 @@ export default function Contact() {
               </dd>
               <dt>xScope</dt>
               <dd className="mb2">
-                So many handy little tools that help designing. Rulers, colour blindness testing,
-                etc. As well as the companion app xScope mirror.
+                So many handy little tools that help designing. Rulers, colour blindness testing, etc. As well as the companion app xScope mirror.
               </dd>
               <dt>Sip</dt>
               <dd className="mb2">
@@ -52,8 +50,7 @@ export default function Contact() {
             <dl className="f4">
               <dt>Nova</dt>
               <dd className="mb2">
-                I write all code in Nova, nothing beats a Panic app for quality. I like vscode but
-                not the clunky side of it.
+                I write all code in Nova, nothing beats a Panic app for quality. I like vscode but not the clunky side of it.
               </dd>
               <dt>Dash</dt>
               <dd className="mb2">
