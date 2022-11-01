@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import siteMetadata from '@/data/siteMetadata'
 import { PageSEO } from '@/components/SEO'
 import NewsletterForm from '@/components/NewsletterForm'
