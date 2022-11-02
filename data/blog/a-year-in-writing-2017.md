@@ -7,9 +7,9 @@ metadesc: "This year I took it at a slower pace with the articles. It was a chal
 theme: "#fffbee"
 tags: ["Website"]
 categories: ["Website"]
-images: ["/static/images/blog/year-in-writing-2017-featured-image%402x.png"]
-large: "/static/images/blog/year-in-writing-2017-featured-image%402x.png"
-medium: "/static/images/blog/year-in-writing-2017-featured-image-medium%402x.png"
+images: ["/static/images/blog/year-in-writing-2017-featured-image@2x.png"]
+large: "/static/images/blog/year-in-writing-2017-featured-image@2x.png"
+medium: "/static/images/blog/year-in-writing-2017-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 167

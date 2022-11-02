@@ -7,9 +7,9 @@ metadesc: "A simple and effective layout technique. Find out how to get rid of t
 theme: "#eafaf6"
 tags: ["Code", "CSS"]
 categories: ["Code"]
-images: ["/static/images/blog/inline-block-featured-image%402x.png"]
-large: "/static/images/blog/inline-block-featured-image%402x.png"
-medium: "/static/images/blog/inline-block-featured-image-medium%402x.png"
+images: ["/static/images/blog/inline-block-featured-image@2x.png"]
+large: "/static/images/blog/inline-block-featured-image@2x.png"
+medium: "/static/images/blog/inline-block-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 24

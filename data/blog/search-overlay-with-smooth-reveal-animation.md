@@ -7,9 +7,9 @@ metadesc: "How to design and code a search overlay with a smooth reveal effect u
 theme: "#f7fbfb"
 tags: ["Design", "Code"]
 categories: ["Design"]
-images: ["/static/images/blog/search-reveal-featured-image%402x.png"]
-large: "/static/images/blog/search-reveal-featured-image%402x.png"
-medium: "/static/images/blog/search-reveal-featured-image-medium%402x.png"
+images: ["/static/images/blog/search-reveal-featured-image@2x.png"]
+large: "/static/images/blog/search-reveal-featured-image@2x.png"
+medium: "/static/images/blog/search-reveal-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 165

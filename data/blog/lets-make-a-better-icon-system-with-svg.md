@@ -7,9 +7,9 @@ metadesc: "Make a better icon system with SVG. A guide right through exporting t
 theme: "#fff5f3"
 tags: ["Code"]
 categories: ["Code"]
-images: ["/static/images/blog/svg-icon-system-featured-image%402x.png"]
-large: "/static/images/blog/svg-icon-system-featured-image%402x.png"
-medium: "/static/images/blog/svg-icon-system-featured-image-medium%402x.png"
+images: ["/static/images/blog/svg-icon-system-featured-image@2x.png"]
+large: "/static/images/blog/svg-icon-system-featured-image@2x.png"
+medium: "/static/images/blog/svg-icon-system-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 157

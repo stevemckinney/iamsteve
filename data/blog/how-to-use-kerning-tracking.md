@@ -7,9 +7,9 @@ metadesc: "When using kerning or tracking on your type it can help with legibili
 theme: "#fff3f0"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/kerning-tracking-featured-image%402x.png"]
-large: "/static/images/blog/kerning-tracking-featured-image%402x.png"
-medium: "/static/images/blog/kerning-tracking-featured-image-medium%402x.png"
+images: ["/static/images/blog/kerning-tracking-featured-image@2x.png"]
+large: "/static/images/blog/kerning-tracking-featured-image@2x.png"
+medium: "/static/images/blog/kerning-tracking-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 160

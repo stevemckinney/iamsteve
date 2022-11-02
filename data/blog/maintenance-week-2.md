@@ -7,9 +7,9 @@ metadesc: "This week is another maintenance week. The last one I looked at updat
 theme: "#f7f2f5"
 tags: ["Website"]
 categories: ["Website"]
-images: ["/static/images/blog/maintenance-week-featured-image%402x.png"]
-large: "/static/images/blog/maintenance-week-featured-image%402x.png"
-medium: "/static/images/blog/maintenance-week-featured-image-medium%402x.png"
+images: ["/static/images/blog/maintenance-week-featured-image@2x.png"]
+large: "/static/images/blog/maintenance-week-featured-image@2x.png"
+medium: "/static/images/blog/maintenance-week-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 111
