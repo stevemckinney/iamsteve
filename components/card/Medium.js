@@ -9,7 +9,7 @@ import Placeholder from '@/components/placeholder/index.js'
 
 // https://gist.github.com/aradnom/06ef051c1c96f10c144d
 function autoParagraph(text, size) {
-  return `<p class="${size}">` + text.split(/\n+/).join(`</p>\n<p>`) + `</p>`
+  return `<p className="${size}">` + text.split(/\n+/).join(`</p>\n<p>`) + `</p>`
 }
 
 const Medium = ({ frontmatter }) => {
