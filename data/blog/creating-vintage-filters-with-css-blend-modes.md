@@ -19,15 +19,15 @@ With blend modes we can apply a vintage style to any image like we would in Phot
 ## Decision making for choosing a filter
 There are many blend modes and some of them serve better for applying the effect we're going for.
 
-<div class="p-flex">
-<div class="p-one-half" markdown="1">
+<div className="flex">
+<div className="p-one-half" markdown="1">
 ### Modes that tend to be best
 - overlay
 - soft-light
 - lighten
 - screen
 </div>
-<div class="p-one-half" markdown="1">
+<div className="p-one-half" markdown="1">
 ### Modes with varying success
 - exclusion
 - multiply

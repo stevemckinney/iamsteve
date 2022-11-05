@@ -26,7 +26,7 @@ The first step is to setup a new document, the size isn’t too important, but I
 ## Make the main rectangle
 **Press <kbd>m</kbd> or select the rectangle tool**. Then click anywhere on the artboard, you will be presented with a window to add dimensions.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_rectangle-dimensions.png" width={738} height={492} />
 </div>
 
@@ -35,7 +35,7 @@ The first step is to setup a new document, the size isn’t too important, but I
 ## Fill the rectangle for visibility
 Your rectangle may have drawn with a black stroke by default, remove that by pressing <kbd>x</kbd>, this should activate selection of the stroke, then press <kbd>/</kbd>.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_illustrator-toolbar.png" width={738} height={342} />
 </div>
 
@@ -46,7 +46,7 @@ This is such a powerful tool within Illustrator and is by far the quickest metho
 
 ### Add 6 rows and 7 columns
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_split-into-grid.png" width={738} height={492} />
 </div>
 
@@ -61,13 +61,13 @@ Then with it still selected, add a stroke. This will add visibility for aligning
 The basis for the view in this date picker is May, with a view into April and June. This step is quite tedious, but the technique for aligning the numbers should be helpful. At this stage the numbers don’t need to be placed accurately.
 
 ### Add text layers and align centre
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_text-center.png" width={738} height={492} />
 </div>
 
 By pressing <kbd>t</kbd> or selecting the type tool, click without dragging and type each number. Once you have added a type layer, open Window > Paragraph. Click ‘Align Centre’ because if any changes to weight or font size are made this should keep them vertically centred.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_day-numbers.png" width={738} height={492} />
 </div>
 
@@ -78,20 +78,20 @@ Fill in the rest of the days from there with 2–31, and finally the last row wi
 ### Aligning the day numbers
 To align each number we’re going to align to key object. This will take some of annoyance out of aligning so many items centrally within boxes.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_show-options.png" width={738} height={492} />
 </div>
 
 Open the align window, by going to the menu Window > Align. Then you need to click the icon in the top right below the double left arrows to expand the window. Once you have revealed the menu, click ‘Show Options’.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_align-key-object.png" width={738} height={492} />
 </div>
 
 **Before you skip ahead**, there is a process to doing this. Instead of individually selecting and aligning each item, if you do it by row then or column, you can drastically reduce the amount of clicking you need to do.
 
 ### Aligning by row
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_align-by-row.png" width={738} height={492} />
 </div>
 
@@ -100,7 +100,7 @@ Select a row of squares and numbers. **With the items selected change align to �
 **Finally, you can ‘Vertical Align Centre’, in the align panel, repeating this process for each row**.
 
 ### Aligning by column
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_align-by-column.png" width={738} height={492} />
 </div>
 
@@ -119,7 +119,7 @@ Press <kbd>m</kbd> to select the rectangle tool, and click the artboard and add 
 Press <kbd>t</kbd> or select the type tool and add individual type layers for the days of the week. **They should also be aligned centrally like the day numbers and placed very close to the right location**.
 
 ### Aligning the days
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_day-alignment.png" width={738} height={492} />
 </div>
 
@@ -128,7 +128,7 @@ Now you will want to align each of the days, again the most accurate way to do t
 However, this time you will only need to select a day and one of the day number squares directly below it. After that, in the align panel, choose Align to Key Object. Then click your square to make it the key object. Finally to align the day use ‘Align Horizontal Center’.
 
 ## Current month and year
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_current-month.png" width={738} height={492} />
 </div>
 
@@ -145,7 +145,7 @@ Press <kbd>\\</kbd> or select the Line Segment Tool. Click on your artboard and 
 #### Choose a reference point
 Now we need the correct alignment. To do this most accurately, in this particular case you need to select the bottom left reference point. To do this open the transform panel by going to Window > Transform.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_reference-point.png" width={738} height={492} />
 </div>
 
@@ -156,13 +156,13 @@ Once you have selected the bottom left reference point your horizontal line shou
 #### Joining and rotating the lines
 Now to make sure both of the lines are part of the same path. Using the direct selection tool (by pressing <kbd>a</kbd>) you can grab both points without selecting the whole path.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_join-path.png" width={738} height={492} />
 </div>
 
 Drag and select the corner where both paths meet. Then right click the points that you have selected and select join.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker-rotate.gif" width={748} height={360} />
 </div>
 
@@ -172,7 +172,7 @@ Now that we have the basic path, it needs rotating. With the path selected, high
 Position the arrow to the left side of the datepicker month. Copy the arrow and paste in place with <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>. With the arrow still selected nudge it over a bit and rotate until it faces the opposite side. Position on the opposite side to the first arrow.
 
 ## Finishing
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/datepicker_final.png" width={738} height={492} />
 </div>
 

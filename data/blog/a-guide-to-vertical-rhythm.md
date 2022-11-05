@@ -41,7 +41,7 @@ A vertical rhythm starts from a baseline. It’s the basis for everything from t
 ### What a baseline is
 A baseline in terms of vertical rhythm is essentially a vertical grid, everything must sit between the lines. For type it means the bottoms of letters—not descenders—sitting on the line. It’s easy to relate this to how you would use a horizontal grid. The difference being: a horizontal grid is built on a fixed number of columns, a baseline grows with the page.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/vertical-rhythm-show.png" alt="Image demonstrating vertical rhythm" width={738} height={492} />
 </div>
 

@@ -45,7 +45,7 @@ Your line should end up something like this.
 ## Smoothing the line
 Sometimes you may want a smoother line than what the width tool offers from an adjustment. Smoothing can be done by clicking and dragging the original width point you put down.
 
-<div class="article-image">
+<div className="article-image">
 <Image src="/static/images/blog/width-smoothing.gif" alt="Dragging the width point along to get a smoother line" width={640} height={420} />
 </div>
 
@@ -88,7 +88,7 @@ Follow the same process as earlier to save and then you’re able to use it for 
 ## Stroke the inside or outside of unclosed paths
 I feel like this should be easier, as it wasn’t immediately apparent to me. The ability to stroke the inside or outside of an unclosed path. The same techniques mentioned in this post is used, to achieve this.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/adjust-width-one-side.png" width={640} height={420} />
 </div>
 
