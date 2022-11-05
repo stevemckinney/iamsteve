@@ -12,8 +12,6 @@ id: 48
 fileroot: "create_a_sass_button_element_mixin"
 ---
 
-import Script from 'next/script'
-
 This mixin is one I've been using for a few months now to create buttons/anything with a particular style. I call it an element mixin, as it's not tied to anything. It started off as a plain button mixin, though I found sometimes I just want a button reset (some padding, no border, etc) or no hover/active states. This a very customisable mixin with simple parameters.
 
 > Note: Some things rely on compass existing, or some variables set such as `$element` for a font family. I've defined them at the top, but you'll probably have your own. The size parameter uses this pixel to em function `@function em($target-px, $context) { @return ($target-px / $context) * 1em; }`.

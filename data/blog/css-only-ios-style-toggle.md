@@ -12,20 +12,17 @@ large: "/static/images/blog/ios-toggle-featured-image-large.png"
 medium: "/static/images/blog/ios-toggle-featured-image-small.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 135
 fileroot: "css-only-ios-style-toggle"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 Since they appeared in iOS it’s been a trend to recreate these using CSS only. The technique uses the adjacent sibling selector and a “hidden” checkbox to retain use of the `:checked` pseudo class. In this post I wanted to take a look at this myself and recreate the toggle style.
 
 ## Skip ahead
 Here’s what will be explained in the coming paragraphs. Feel free to explore the code and skip ahead if necessary.
 
-<p data-height="368" data-theme-id="23161" data-slug-hash="bZYKYj" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/bZYKYj/">CSS only iOS style toggle</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="368" data-theme-id="23161" data-slug-hash="bZYKYj" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/bZYKYj/">CSS only iOS style toggle</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
 ## Identifying elements in the design
 <div className="article-image">
@@ -183,4 +180,4 @@ The `padding`, `font-size` and `color` can be tweaked here.
 ## Demo
 Again, here is the complete demo, I recommend forking it on CodePen and having a look around.
 
-<p data-height="368" data-theme-id="23161" data-slug-hash="bZYKYj" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/bZYKYj/">CSS only iOS style toggle</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="368" data-theme-id="23161" data-slug-hash="bZYKYj" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/bZYKYj/">CSS only iOS style toggle</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>

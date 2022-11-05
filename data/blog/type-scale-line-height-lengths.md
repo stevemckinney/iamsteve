@@ -9,13 +9,10 @@ tags: ["Design"]
 categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 68
 fileroot: "type-scale-line-height-lengths"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 As a beginner, with designing websites, one of the things that can be overlooked is creating a great reading experience. All websites are about their content and being able to read that in a comfortable way will make your visitors happy.
 

@@ -12,13 +12,10 @@ large: "/static/images/blog/update-horizontal-flexbox-featured-image@2x.png"
 medium: "/static/images/blog/update-horizontal-flexbox-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 88
 fileroot: "using-flexbox-for-horizontal-scrolling-navigation"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 This post is a follow up to a different method for [horizontal scrolling navigation](/blog/horizontal-scrolling-responsive-menu) which used `inline-block`. In this post, I want to cover how flexbox can be used to achieve the same thing and the benefits over the `inline-block` method.
 

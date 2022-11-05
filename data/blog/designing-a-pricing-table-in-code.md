@@ -9,13 +9,10 @@ tags: ["Code"]
 categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 136
 fileroot: "designing-a-pricing-table-in-code"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />
 
 Following up from [the design in Illustrator post](/blog/making-a-pricing-table-in-illustrator), it’s time to code the design. Using flexbox to do the heavy lifting for the layout, the focus can be on matching the design and improving on it through being able to show the button state.
 

@@ -12,20 +12,17 @@ large: "/static/images/blog/multiplelevel-menu-featured-image@2x.png"
 medium: "/static/images/blog/multiplelevel-menu-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 154
 fileroot: "multiple-level-horizontal-scrolling-navigation"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 With horizontal scrolling, submenus are quite challenging to make work. Due to the CSS you have to use, a CSS only solution isn’t viable. In this post I show you how to utilise JavaScript.
 
 ## Getting into the example
 Firstly start out with what you’ll end up with at the end of this post. Then onto why this solution was reached.
 
-<p data-height="378" data-theme-id="23161" data-slug-hash="WowBWK" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Horizontal scrolling navigation with submenu" data-preview="true" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/WowBWK/">Horizontal scrolling navigation with submenu</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="378" data-theme-id="23161" data-slug-hash="WowBWK" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Horizontal scrolling navigation with submenu" data-preview="true" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/WowBWK/">Horizontal scrolling navigation with submenu</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
 ## It’s tricky
 The difficulty with making this function as a multilevel/submenu  is purely based on how it’s achieved. If you follow the traditional markup pattern it’s not really possible without complex JavaScript.
@@ -202,6 +199,6 @@ hasSubmenu[i].addEventListener('touchstart', showSubmenu);
 I don’t know a huge amount about accessibility, but from my understanding it is possible using the correct aria attributes. I don’t have enough knowledge to fill the gap accurately.
 
 ## Example
-<p data-height="378" data-theme-id="23161" data-slug-hash="WowBWK" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Horizontal scrolling navigation with submenu" data-preview="true" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/WowBWK/">Horizontal scrolling navigation with submenu</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="378" data-theme-id="23161" data-slug-hash="WowBWK" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Horizontal scrolling navigation with submenu" data-preview="true" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/WowBWK/">Horizontal scrolling navigation with submenu</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
 That’s everything, it’s possible that you could use a more regular setup and modify the source order with JavaScript. I didn’t want to get into that, but it may be something I revisit in the future.

@@ -12,13 +12,10 @@ large: "/static/images/blog/update-vertical-rhythm-featured-image@2x.png"
 medium: "/static/images/blog/update-vertical-rhythm-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 87
 fileroot: "a-guide-to-vertical-rhythm"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 Vertical rhythm is the typographic practice, to create a vertical harmony between text, images and so on. On the web it’s quite difficult to achieve. Yet understanding what it is, with the aim to maintain it, you can improve your reading experience. If you’re aware of it, but have struggled to understand vertical rhythm, this post is for you. It will focus more on the why, rather than the how. So you come away with a better understanding.
 

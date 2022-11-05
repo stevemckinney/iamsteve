@@ -12,13 +12,10 @@ large: "/static/images/blog/responsive-vertical-rhythm-featured-image@2x.png"
 medium: "/static/images/blog/responsive-vertical-rhythm-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 91
 fileroot: "responsive-vertical-rhythm"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 I wrote a fairly lengthy post previously on [vertical rhythm](/blog/a-guide-to-vertical-rhythm). I considered adding a section on how to adjust font sizes whilst maintaining vertical rhythm. However, with the experience of seeing how people struggle with the topic of vertical rhythm, it was best to keep it for a separate post.
 
@@ -38,7 +35,7 @@ I will assume **you do have a grasp** of vertical rhythm, at this point, otherwi
 ### What we end up with
 View the compiled CSS if you would like to see how the numbers work out.
 
-<p data-height="480" data-theme-id="13022" data-slug-hash="zvYbgx" data-default-tab="result" data-user="stevemckinney" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/zvYbgx/">zvYbgx</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="480" data-theme-id="13022" data-slug-hash="zvYbgx" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/zvYbgx/">zvYbgx</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
 ## Briefly on em units
 I use em’s for the majority of this process. You can do much of the heavy lifting by adjusting the font size **only** on the `body`. Once you get your head around em units they can be very useful.

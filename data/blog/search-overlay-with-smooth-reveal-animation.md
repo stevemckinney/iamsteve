@@ -12,13 +12,10 @@ large: "/static/images/blog/search-reveal-featured-image@2x.png"
 medium: "/static/images/blog/search-reveal-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 165
 fileroot: "search-overlay-with-smooth-reveal-animation"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 A common part of a website is the ability to search. Depending on how important search is to your website can define much of how it looks and how it's prioritised in the design. In this post I want to show you how to create a search which appears with a smooth transition on the click/tap of a button.
 
@@ -26,7 +23,7 @@ A common part of a website is the ability to search. Depending on how important 
 If you’d like to grab any of the code and skip the post feel free to browse the CodePen.
 
 <div className="codepen-wide">
-<p data-height="520" data-theme-id="23161" data-slug-hash="bab51a2f0032bd24e33f24b48ca39acb" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Search overlay" class="codepen">See the Pen <a href="https://codepen.io/stevemckinney/pen/bab51a2f0032bd24e33f24b48ca39acb/">Search overlay</a> by Steve (<a href="https://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="520" data-theme-id="23161" data-slug-hash="bab51a2f0032bd24e33f24b48ca39acb" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Search overlay" className="codepen">See the Pen <a href="https://codepen.io/stevemckinney/pen/bab51a2f0032bd24e33f24b48ca39acb/">Search overlay</a> by Steve (<a href="https://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 </div>
 
 All code and design files can be downloaded for [being part of my list](#subscribe).

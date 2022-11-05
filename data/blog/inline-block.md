@@ -12,13 +12,10 @@ large: "/static/images/blog/inline-block-featured-image@2x.png"
 medium: "/static/images/blog/inline-block-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 24
 fileroot: "inline_block"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 > I originally published this article on <time>4th September 2011</time>. It has since been completely rewritten to have much more practical application and address the many techniques surrounding it.
 

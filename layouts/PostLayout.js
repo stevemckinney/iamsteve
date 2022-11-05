@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import Script from 'next/script'
 
 import siteMetadata from '@/data/siteMetadata'
 import formatDate from '@/lib/utils/formatDate'
@@ -16,6 +17,7 @@ import Category from '@/components/Category'
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/main/data/blog/${fileName}`
 
 const postDateTemplate = { year: 'numeric', month: 'short', day: 'numeric' }
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
   const {
@@ -32,13 +34,17 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
     medium,
     lastmod,
     readingTime,
+    codepen,
+    twitter,
   } = frontmatter
 
-  useEffect(() => {
-    fetch(`/api/views/${slug}`, {
-      method: 'POST',
-    })
-  }, [slug])
+  if ( !isDevelopment ) {
+    useEffect(() => {
+      fetch(`/api/views/${slug}`, {
+        method: 'POST',
+      })
+    }, [slug])
+  }
 
   return (
     <>
@@ -156,6 +162,9 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
           </h2>
         </article>
       ) : null}
+
+      {codepen && <Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />}
+      {twitter && <Script async src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />}
     </>
   )
 }

@@ -9,13 +9,10 @@ tags: ["Code"]
 categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 64
 fileroot: "object-fit-for-full-viewport-images-with-ease"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 This CSS feature will make life much easier where it concerns the size of images. It’s like background-size for background images. It’s easy to use and behaves in a similar way albeit different naming. I’m going to show how `object-fit` and viewport relative units allow, without distortion, sizing inline images, to a more fluid aspect ratio.
 

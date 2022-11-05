@@ -12,13 +12,11 @@ large: "/static/images/blog/about-v6-featured-image.png"
 medium: "/static/images/blog/about-v6-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: false
+twitter: true
 id: 141
 fileroot: "about-version-six"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />
 
 I’ve finally done the redesign of this website! Version five lived for longer than I ever intended. This post is going to be a shorter summary of the changes. I’ll be posting a full case study over the coming weeks.
 

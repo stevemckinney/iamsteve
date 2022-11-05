@@ -9,13 +9,10 @@ tags: ["Code"]
 categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 74
 fileroot: "creating-vintage-filters-with-css-blend-modes"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 With blend modes we can apply a vintage style to any image like we would in Photoshop. Blend modes is something I have been looking forward to coming to CSS for a while and this feels like a fitting way for me to share a deeper look at them.
 
@@ -73,7 +70,7 @@ The CSS is fairly simple, just cover the the image with an empty pseudo element.
 ```
 
 ## Try out the demo
-<p data-height="552" data-theme-id="13022" data-slug-hash="gpaXeB" data-default-tab="result" data-user="stevemckinney" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/gpaXeB/">Vintage blend mode creator</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="552" data-theme-id="13022" data-slug-hash="gpaXeB" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/gpaXeB/">Vintage blend mode creator</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
 ## Finishing thoughts and other ideas
 I’ve found this a handy little experiment to create. You can experiment further with using colours `:before` and `:after`. You can create some interesting vintage effects. You could also combine a colour and add textures. They would all work great in combination.

@@ -9,13 +9,10 @@ tags: ["Design", "Code", "CSS", "HTML", "Sass"]
 categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 51
 fileroot: "create_a_fluid_browser_with_border_image"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 I have been curious to try find a solution to having a fluid browser around portfolio images. I have attempted to find a solution which is as simple as I have been able to find. The overall idea uses `:before` to apply the browser and `border-image`, this is purely to offset extra space caused by the widths of the border.
 
@@ -71,7 +68,7 @@ Our border image and with the slices.
 
 
 ## Codepen
-<pre class="codepen" data-height="420" data-type="result" data-href="vuCea" data-user="stevemckinney" data-safe="true"><code></code><a href="http://codepen.io/stevemckinney/pen/vuCea">Check out this Pen!</a></pre>
+<pre className="codepen" data-height="420" data-type="result" data-href="vuCea" data-user="stevemckinney" data-safe="true"><code></code><a href="http://codepen.io/stevemckinney/pen/vuCea">Check out this Pen!</a></pre>
 
 ## Justifications
 Pseudo elements can't be applied to `img` elements so the use of the extra div is necessary.
