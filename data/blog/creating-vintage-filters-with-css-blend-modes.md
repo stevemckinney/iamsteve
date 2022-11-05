@@ -19,7 +19,7 @@ With blend modes we can apply a vintage style to any image like we would in Phot
 ## Decision making for choosing a filter
 There are many blend modes and some of them serve better for applying the effect we're going for.
 
-<div className="flex">
+<div className="flex" style={{"gap" : "32px"}}>
 <div className="p-one-half" markdown="1">
 ### Modes that tend to be best
 - overlay
