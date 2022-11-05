@@ -33,3 +33,6 @@ hr {
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   background-color: $warm-l4; }
+
+// @bug fix https://nextjs.org/docs/api-reference/next/image
+@media not all and (min-resolution:.001dpcm) { img[loading="lazy"] { clip-path: inset(0.5px) } }
