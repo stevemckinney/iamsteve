@@ -71,7 +71,7 @@ abbr[title] {
 b,
 strong {
 	font-weight: font-weight(semibold); }
-	
+
 dfn {
 	font-style: italic; }
 
@@ -103,6 +103,7 @@ pre {
 	-webkit-overflow-scrolling: touch; }
 
 img {
+	height: auto;
   border: 0; }
 
 img,
@@ -125,7 +126,7 @@ textarea {
 	color: inherit;
 	font: inherit;
 	margin: 0; }
-	
+
 button {
 	border: none;
 	overflow: visible; }
@@ -160,7 +161,7 @@ input[type="search"]::-webkit-search-decoration {
 fieldset,
 legend {
 	border: none; }
-	
+
 fieldset {
   margin: 0;
   padding: 0; }
@@ -170,7 +171,7 @@ legend {
   display: table;
   max-width: 100%;
   padding: 0;
-  white-space: normal; }	
+  white-space: normal; }
 
 textarea {
 	overflow: auto; }
@@ -193,9 +194,9 @@ table {
 // the whole rule if they do not understand it
 ::-moz-selection {
 	background: $default-selection-background;
-	color: $default-selection-color; 
+	color: $default-selection-color;
 	text-shadow: none; }
-	
+
 ::selection {
 	background: $default-selection-background;
 	color: $default-selection-color;
