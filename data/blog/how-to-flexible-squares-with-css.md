@@ -7,18 +7,15 @@ metadesc: "How do you maintain a perfect square shape with a responsive layout? 
 theme: "#fffdf5"
 tags: ["Code", "CSS"]
 categories: ["Code"]
-images: ["/static/images/blog/css-squares-inside-post-image%402x.png"]
-large: "/static/images/blog/css-squares-inside-post-image%402x.png"
-medium: "/static/images/blog/css-squares-featured-image-medium%402x.png"
+images: ["/static/images/blog/css-squares-inside-post-image@2x.png"]
+large: "/static/images/blog/css-squares-inside-post-image@2x.png"
+medium: "/static/images/blog/css-squares-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 112
 fileroot: "how-to-flexible-squares-with-css"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 How do you maintain a perfect square shape with a responsive layout? The solution appears simple; the only issue is your content. Which if you want to maintain a square shape it should be able to accommodate the content. I’ll show you how to do it in with this quick tip.
 

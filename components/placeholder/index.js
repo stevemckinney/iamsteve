@@ -1,5 +1,6 @@
-// placholder
+// placeholder
 // assign a matching background colour and image randomly
+import { useState, useEffect } from 'react';
 import Image from 'next/image'
 
 // placeholders
@@ -35,10 +36,8 @@ const randomEntries = function (obj) {
 function Placeholder({ category, kind }) {
   // assign the random value to a variable to use later
   // depending on the kind passed to this function
-  const random =
-    category === 'Design' ? randomEntries(PlaceholderDesign) : randomEntries(PlaceholderCode)
-  const color = random[0]
-  const image = random[1]
+  const [random, setRandom] = useState(category === 'Design' ? randomEntries(PlaceholderDesign) : randomEntries(PlaceholderCode));
+
   const containerClass =
     kind.toString() === 'hero'
       ? 'pt4 pb4 pt6-b pb6-b pt7-d pb8-d flex center featured-image entry-image is-placeholder'
@@ -46,26 +45,28 @@ function Placeholder({ category, kind }) {
 
   return (
     <>
-      <div className={containerClass} style={{ backgroundColor: color }}>
+      <div className={containerClass} style={{ backgroundColor: random[0] }}>
         {category === 'Design' ? (
           <Image
-            src={image}
+            src={random[1]}
             className="radius"
             width={378}
             height={252}
             alt=""
             blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
             placeholder="blur"
+            priority
           />
         ) : (
           <Image
-            src={image}
+            src={random[1]}
             className="radius"
             width={378}
             height={252}
             alt=""
             blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
             placeholder="blur"
+            priority
           />
         )}
       </div>

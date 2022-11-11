@@ -9,13 +9,10 @@ tags: ["Code"]
 categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 96
 fileroot: "how-to-consistently-style-form-elements"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 One of the trickiest things to deal with cross browser is the styling of form elements. All browsers influence these strictly, but over the years the ‘appearance’ property has been present in WebKit and Blink browsers, and Firefox to help gain some control. More recently it's been added to Edge.
 

@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   mode: 'jit',
-  purge: ['./pages/**/*.js', './components/**/*.js', './layouts/**/*.js', './lib/**/*.js'],
+  content: ['./pages/**/*.js', './components/**/*.js', './layouts/**/*.js', './lib/**/*.js'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -21,7 +21,7 @@ module.exports = {
       },
       colors: {
         primary: colors.teal,
-        gray: colors.trueGray,
+        gray: colors.neutral,
       },
       typography: (theme) => ({
         DEFAULT: {

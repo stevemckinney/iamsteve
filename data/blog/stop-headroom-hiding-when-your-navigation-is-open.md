@@ -7,9 +7,9 @@ metadesc: "Headroom.js has many options and class names applied based on state, 
 theme: "#fff5f3"
 tags: ["Code"]
 categories: ["Code"]
-images: ["/static/images/blog/update-headroomjs-featured-image%402x.png"]
-large: "/static/images/blog/update-headroomjs-featured-image%402x.png"
-medium: "/static/images/blog/headroomjs-featured-image-medium%402x.png"
+images: ["/static/images/blog/update-headroomjs-featured-image@2x.png"]
+large: "/static/images/blog/update-headroomjs-featured-image@2x.png"
+medium: "/static/images/blog/headroomjs-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 137

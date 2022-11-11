@@ -9,13 +9,10 @@ tags: ["Code"]
 categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 109
 fileroot: "horizontal-scrolling-toggle"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 I was looking through photos in finder, and I was finding it frustrating to scan many photos quickly. The problem was down to the horizontal scrolling sections; it is quite quick to flick through but it became tedious. I wanted to see more pictures at once.
 

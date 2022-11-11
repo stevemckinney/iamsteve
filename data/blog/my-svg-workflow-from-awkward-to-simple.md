@@ -9,13 +9,10 @@ tags: ["Design", "Code", "CSS", "Sass"]
 categories: ["Design"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 54
 fileroot: "my_svg_workflow_from_awkward_to_simple"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 Initially I thought it would be quite frustrating to get going with SVG, but after jumping in and seeing where I got it's quite simple. Much better than exporting 1x and 2x images by far.
 
@@ -72,7 +69,7 @@ It's entirely up to you what you do from here. I favour using the data images an
 For easy changing look for a part like `path%20fill%3D%22%23`. You should have a 6 character hex code without the # following that. Replace that with your variable wrapped in `#{}`. Now you can change your icon to suit any site 0 hassle!
 
 ## Try it out here
-<p data-height="268" data-theme-id="0" data-slug-hash="golui" data-user="stevemckinney" data-default-tab="result" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/golui">Using svg for icons</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a></p>
+<p data-height="268" data-theme-id="0" data-slug-hash="golui" data-user="stevemckinney" data-default-tab="result" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/golui">Using svg for icons</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a></p>
 
 ## Finishing
 If you skip out the photoshop the rest is quite simple. The best part is that icon will be easy to reuse with a simple Sass variable change. Unfortunately the png data image would have to be regenerated each time, this depends how crucial this is to your design for browsers that don't support SVG as you may feel it's fine as the initial colour.

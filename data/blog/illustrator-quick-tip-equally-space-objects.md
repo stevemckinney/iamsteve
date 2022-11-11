@@ -7,9 +7,9 @@ metadesc: "Using the align to key object method you can distribute space between
 theme: "#fefbed"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/illustrator-tip-featured-image%402x.png"]
-large: "/static/images/blog/illustrator-tip-featured-image%402x.png"
-medium: "/static/images/blog/illustrator-tip-featured-image-medium%402x.png"
+images: ["/static/images/blog/illustrator-tip-featured-image@2x.png"]
+large: "/static/images/blog/illustrator-tip-featured-image@2x.png"
+medium: "/static/images/blog/illustrator-tip-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 140

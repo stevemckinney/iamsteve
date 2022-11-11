@@ -11,13 +11,10 @@ images: ["/static/images/blog/flickity-navigation.png"]
 large: "/static/images/blog/flickity-navigation.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 113
 fileroot: "enhancing-horizontal-scrolling-with-flickity-js"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 I first wrote a tutorial little while back on [horizontal scrolling navigation](/blog/horizontal-scrolling-responsive-menu), with the intention of accommodating **only** mobile devices. As with every device, I have come across, the usability of horizontal scrolling areas is good.
 

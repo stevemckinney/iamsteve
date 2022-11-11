@@ -12,13 +12,11 @@ large: "/static/images/blog/about-v6-featured-image.png"
 medium: "/static/images/blog/about-v6-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: false
+twitter: true
 id: 141
 fileroot: "about-version-six"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />
 
 I’ve finally done the redesign of this website! Version five lived for longer than I ever intended. This post is going to be a shorter summary of the changes. I’ll be posting a full case study over the coming weeks.
 
@@ -77,7 +75,7 @@ Having people subscribe to your newsletter is highly valuable. I wanted somethin
 
 I have a few things design wise I want to improve too. The doubt over the past couple of weeks, was what pushed me to get it live. This tweet by Jason Fried was timely.
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Danger of not shipping as soon as you can - second guessing creeps in. The longer you wait, the more doubt you cultivate…</p>&mdash; Jason Fried (@jasonfried) <a href="https://twitter.com/jasonfried/status/768088758457511936">August 23, 2016</a></blockquote>
+<blockquote className="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Danger of not shipping as soon as you can - second guessing creeps in. The longer you wait, the more doubt you cultivate…</p>&mdash; Jason Fried (@jasonfried) <a href="https://twitter.com/jasonfried/status/768088758457511936">August 23, 2016</a></blockquote>
 
 It’s something to always keep in mind. As I want to improve the homepage further.
 

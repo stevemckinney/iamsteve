@@ -7,9 +7,9 @@ metadesc: "How to make your own custom variable width profiles in Illustrator. H
 theme: "#fff5f3"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/update-illustrator-stroke-width-featured-image%402x.png"]
-large: "/static/images/blog/update-illustrator-stroke-width-featured-image%402x.png"
-medium: "/static/images/blog/update-illustrator-stroke-width-featured-image-medium%402x.png"
+images: ["/static/images/blog/update-illustrator-stroke-width-featured-image@2x.png"]
+large: "/static/images/blog/update-illustrator-stroke-width-featured-image@2x.png"
+medium: "/static/images/blog/update-illustrator-stroke-width-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 83
@@ -45,7 +45,7 @@ Your line should end up something like this.
 ## Smoothing the line
 Sometimes you may want a smoother line than what the width tool offers from an adjustment. Smoothing can be done by clicking and dragging the original width point you put down.
 
-<div class="article-image">
+<div className="article-image">
 <Image src="/static/images/blog/width-smoothing.gif" alt="Dragging the width point along to get a smoother line" width={640} height={420} />
 </div>
 
@@ -88,7 +88,7 @@ Follow the same process as earlier to save and then you’re able to use it for 
 ## Stroke the inside or outside of unclosed paths
 I feel like this should be easier, as it wasn’t immediately apparent to me. The ability to stroke the inside or outside of an unclosed path. The same techniques mentioned in this post is used, to achieve this.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/adjust-width-one-side.png" width={640} height={420} />
 </div>
 
