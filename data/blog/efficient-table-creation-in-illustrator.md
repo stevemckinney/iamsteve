@@ -24,7 +24,7 @@ The first step is to setup a new document, the size isn’t too important, but I
 ## Getting the initial row layout
 The first step is to get the necessary elements in place to begin to build up the table. Select the line tool using <kbd>\\</kbd>.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/table_initial-line.png" width={738} height={492} />
 </div>
 
@@ -33,7 +33,7 @@ Then click the artboard and you’ll be presented with a window. The length shou
 ### Duplicate the line
 The next step is to duplicate the line and paste in place. Copy the line with <kbd>cmd</kbd> + <kbd>c</kbd> then paste in place with <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/table_y-coordinate.png" width={738} height={492} />
 </div>
 
@@ -49,7 +49,7 @@ Select both of your lines, then press <kbd>cmd</kbd> + <kbd>alt</kbd> + <kbd>b</
 
 Next, in the menu go to Object > Blend > Blend Options. This is where you can customise the blend. In spacing select ‘Specified Steps’ and put in 6. Click ‘OK’ and you have the cells.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/table_blend-options.png" width={738} height={492} />
 </div>
 
@@ -59,7 +59,7 @@ Now you’re going to use split into grid to make rows to use for the background
 ### Add a rectangle
 Press <kbd>m</kbd>, click the artboard and add the values 840px by 252px. So that the rows will be covered.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/table_rectangle-rows.png" width={738} height={492} />
 </div>
 
@@ -68,7 +68,7 @@ Next, fill the rectangle with any colour, purely for visibility.
 ### Align the rectangle
 Select both the rectangle and the lines that have been blended. Then open the align panel, which can be found under Window > Align.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/table_align-panel.png" width={738} height={492} />
 </div>
 
@@ -80,7 +80,7 @@ Now using ‘Align to Artboard’ click both horizontal and vertical align centr
 
 Next is to select your rectangle then go to Object > Path > Split into Grid.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/table_rows.png" width={738} height={492} />
 </div>
 
@@ -95,7 +95,7 @@ If you want to apply different stroke widths to change the style, it will be ide
 ## Add some content
 At this stage now is ideal to add content, that way you can determine column length. Then add the vertical lines, if this is your preference. I would recommend a manual approach as column width isn’t easy to determine.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/table_progress-3.png" width={738} height={492} />
 </div>
 
@@ -104,7 +104,7 @@ Once you have your content entered, you can think better about alignment. Everyt
 ### Row alignment
 Using align to key object you can align each row reasonably quickly.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/table_align-row.gif" width={880} height={408} />
 </div>
 
@@ -113,12 +113,12 @@ Using [align to key object](/blog/illustrator-quick-tip-align-to-key-object) is 
 ### Column alignment
 As mentioned a little earlier I recommend aligning these manually. Changing text alignment where you see fit and that should be it.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/table_progress-4.png" width={738} height={492} />
 </div>
 
 ## Define your style
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/table_progress-5.png" width={738} height={492} />
 </div>
 

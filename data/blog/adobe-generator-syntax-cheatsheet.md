@@ -7,25 +7,22 @@ metadesc: "A cheatsheet for Adobe’s generator syntax, with examples for common
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/ps-generator-featured-image-v2%402x.png"]
-large: "/static/images/blog/ps-generator-featured-image-v2%402x.png"
-medium: "/static/images/blog/ps-generator-featured-image-medium-v2%402x.png"
+images: ["/static/images/blog/ps-generator-featured-image-v2@2x.png"]
+large: "/static/images/blog/ps-generator-featured-image-v2@2x.png"
+medium: "/static/images/blog/ps-generator-featured-image-medium-v2@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 66
 fileroot: "adobe-generator-syntax-cheatsheet"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 I'm always looking up the Adobe generator syntax and yet I never bookmark it. I feel like it would be a valuable resource to clearly show. Something I think the Adobe documentation lacks. This could be the reason I haven't bookmarked it.
 
 ## Overview
 Each image is made up of dimensions, filename and quality.
 
-<p data-height="268" data-theme-id="13022" data-slug-hash="raZgNL" data-default-tab="result" data-user="stevemckinney" class="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/raZgNL/">raZgNL</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<p data-height="268" data-theme-id="13022" data-slug-hash="raZgNL" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/raZgNL/">raZgNL</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 
 ### Dimensions
 It's necessary to have a space after the dimensions. Don't put a space between the dimensions where width and height are specified. px is assumed if no measurement is specified. To have the image width or height calculated automatically, use a ‘?’ for the value. Like so `?x1200 name.jpg` or `1200x? name.jpg`.

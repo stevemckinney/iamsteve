@@ -16,7 +16,7 @@ export async function getStaticProps() {
   return { props: { initialDisplayPosts, posts, pagination } }
 }
 
-export default function Blog({ posts, initialDisplayPosts, pagination }) {
+const Blog = ({ posts, initialDisplayPosts, pagination }) => {
   return (
     <>
       <PageSEO title={`Blog • ${siteMetadata.title}`} description={siteMetadata.description} />
@@ -29,3 +29,5 @@ export default function Blog({ posts, initialDisplayPosts, pagination }) {
     </>
   )
 }
+
+export default Blog

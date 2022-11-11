@@ -7,9 +7,9 @@ metadesc: "An update about the progress of the v6 redesign. I show some older it
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/redesign_featured-image%402x.png"]
-large: "/static/images/blog/redesign_featured-image%402x.png"
-medium: "/static/images/blog/redesign_thumbnail%402x.png"
+images: ["/static/images/blog/redesign_featured-image@2x.png"]
+large: "/static/images/blog/redesign_featured-image@2x.png"
+medium: "/static/images/blog/redesign_thumbnail@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 132

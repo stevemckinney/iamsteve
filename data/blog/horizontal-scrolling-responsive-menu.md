@@ -7,18 +7,15 @@ metadesc: "How to code your own inherently responsive horizontal scrolling navig
 theme: "#f7fbfb"
 tags: ["Code"]
 categories: ["Code"]
-images: ["/static/images/blog/horizontal-scrolling-responsive-featured-image-v2%402x.png"]
-large: "/static/images/blog/horizontal-scrolling-responsive-featured-image-v2%402x.png"
-medium: "/static/images/blog/horizontal-scrolling-featured-image-medium%402x.png"
+images: ["/static/images/blog/horizontal-scrolling-responsive-featured-image-v2@2x.png"]
+large: "/static/images/blog/horizontal-scrolling-responsive-featured-image-v2@2x.png"
+medium: "/static/images/blog/horizontal-scrolling-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 72
 fileroot: "horizontal-scrolling-responsive-menu"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 I’ve been wondering for a while now about an alternative approach to responsive navigation. Something which doesn’t involve the ‘hamburger’ toggle icon. It’s tricky, because we aren’t afforded the same space native apps get.
 

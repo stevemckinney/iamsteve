@@ -9,7 +9,7 @@ tags: ["Design"]
 categories: ["Design"]
 images: ["/static/images/blog/go2golf-casestudy-featured-image1.png"]
 large: "/static/images/blog/go2golf-casestudy-featured-image1.png"
-medium: "/static/images/blog/go2golf-casestudy-featured-image-medium%402x.png"
+medium: "/static/images/blog/go2golf-casestudy-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 153

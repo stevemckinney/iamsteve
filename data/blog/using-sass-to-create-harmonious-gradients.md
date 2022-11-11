@@ -9,13 +9,10 @@ tags: ["Code"]
 categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 84
 fileroot: "using-sass-to-create-harmonious-gradients"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 One of the best things about Sass is the ability to adjust colour nicely and be able to apply that, consistently across, many colours.
 

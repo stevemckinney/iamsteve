@@ -7,9 +7,9 @@ metadesc: "Maintenance weeks are where detail website tasks, instead of a regula
 theme: "#f7f2f5"
 tags: ["Website"]
 categories: ["Website"]
-images: ["/static/images/blog/maintenance-week-featured-image%402x.png"]
-large: "/static/images/blog/maintenance-week-featured-image%402x.png"
-medium: "/static/images/blog/maintenance-week-featured-image-medium%402x.png"
+images: ["/static/images/blog/maintenance-week-featured-image@2x.png"]
+large: "/static/images/blog/maintenance-week-featured-image@2x.png"
+medium: "/static/images/blog/maintenance-week-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 138

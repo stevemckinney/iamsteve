@@ -7,18 +7,15 @@ metadesc: "If you've ever struggled with how vertical rhythm is achieved, I will
 theme: "#fffbee"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/update-vertical-rhythm-featured-image%402x.png"]
-large: "/static/images/blog/update-vertical-rhythm-featured-image%402x.png"
-medium: "/static/images/blog/update-vertical-rhythm-featured-image-medium%402x.png"
+images: ["/static/images/blog/update-vertical-rhythm-featured-image@2x.png"]
+large: "/static/images/blog/update-vertical-rhythm-featured-image@2x.png"
+medium: "/static/images/blog/update-vertical-rhythm-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 87
 fileroot: "a-guide-to-vertical-rhythm"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 Vertical rhythm is the typographic practice, to create a vertical harmony between text, images and so on. On the web it’s quite difficult to achieve. Yet understanding what it is, with the aim to maintain it, you can improve your reading experience. If you’re aware of it, but have struggled to understand vertical rhythm, this post is for you. It will focus more on the why, rather than the how. So you come away with a better understanding.
 
@@ -44,7 +41,7 @@ A vertical rhythm starts from a baseline. It’s the basis for everything from t
 ### What a baseline is
 A baseline in terms of vertical rhythm is essentially a vertical grid, everything must sit between the lines. For type it means the bottoms of letters—not descenders—sitting on the line. It’s easy to relate this to how you would use a horizontal grid. The difference being: a horizontal grid is built on a fixed number of columns, a baseline grows with the page.
 
-<div class="article-image">
+<div className="article-image">
   <Image src="/static/images/blog/vertical-rhythm-show.png" alt="Image demonstrating vertical rhythm" width={738} height={492} />
 </div>
 

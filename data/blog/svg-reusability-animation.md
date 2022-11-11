@@ -9,13 +9,10 @@ tags: ["Code"]
 categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
+codepen: true
 id: 58
 fileroot: "svg-reusability-animation"
 ---
-
-import Script from 'next/script'
-
-<Script async src="https://assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />
 
 If you haven’t read the previous posts, I have spent the best part of my free time building a portfolio, where I focused on performance. These posts covered [asynchronous and critical path CSS](http://iamsteve.me/blog/entry/critical-asynchronous-css), [Javascript](http://iamsteve.me/blog/entry/javascript-without-jquery) and [images with srcset & picture](http://iamsteve.me/blog/entry/images-with-srcset-picture).
 

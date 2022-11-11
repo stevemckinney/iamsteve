@@ -25,33 +25,31 @@ const Small = ({ frontmatter }) => {
 
   return (
     <article className="card card-small">
-      <Link href={url}>
-        <a className="card-image mb2 flex radius">
-          <>
-            {medium ? (
-              <>
-                <div className="radius flex" style={{ backgroundColor: `${imageColor}` }}>
-                  <Image
-                    src={medium}
-                    className="radius"
-                    alt=""
-                    role="presentation"
-                    width={244}
-                    height={162}
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                {categories && categories.includes('Design') ? (
-                  <Placeholder category="Design" kind="post" />
-                ) : (
-                  <Placeholder category="Code" kind="post" />
-                )}
-              </>
-            )}
-          </>
-        </a>
+      <Link href={url} className="card-image mb2 flex radius">
+        <>
+          {medium ? (
+            <>
+              <div className="radius flex" style={{ backgroundColor: `${imageColor}` }}>
+                <Image
+                  src={medium}
+                  className="radius"
+                  alt=""
+                  role="presentation"
+                  width={244}
+                  height={162}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              {categories && categories.includes('Design') ? (
+                <Placeholder category="Design" kind="post" />
+              ) : (
+                <Placeholder category="Code" kind="post" />
+              )}
+            </>
+          )}
+        </>
       </Link>
       <div className="card-body">
         <div className="meta f8-d dashes mb1 mb2-b">
@@ -61,8 +59,8 @@ const Small = ({ frontmatter }) => {
         </div>
 
         <h3 className="f6 f5-b f4-d mb0 warm">
-          <Link href={url}>
-            <a className="secondary-hover">{title}</a>
+          <Link href={url} className="secondary-hover">
+            {title}
           </Link>
         </h3>
 
