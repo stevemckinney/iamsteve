@@ -23,21 +23,21 @@ import localFont from '@next/font/local'
 const Averta = localFont({
   src: [
     {
-      path: '@/public/static/fonts/averta/avertastd-regular-webfont.woff2',
-      weight: 400,
+      path: '../public/static/fonts/averta/avertastd-regular-webfont.woff2',
+      weight: '400',
     },
     {
-      path: '@/public/static/fonts/averta/avertastd-regularitalic-webfont.woff2',
+      path: '../public/static/fonts/averta/avertastd-regularitalic-webfont.woff2',
       style: 'italic',
-      weight: 400,
+      weight: '400',
     },
     {
-      path: '@/public/static/fonts/averta/avertastd-semibold-webfont.woff2',
-      weight: 600,
+      path: '../public/static/fonts/averta/avertastd-semibold-webfont.woff2',
+      weight: '600',
     },
     {
-      path: '@/public/static/fonts/averta/avertastd-bold-webfont.woff2',
-      weight: 700,
+      path: '../public/static/fonts/averta/avertastd-bold-webfont.woff2',
+      weight: '700',
     }
   ],
   variable: '--font-heading'
@@ -53,7 +53,6 @@ export default function App({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, viewport-fit=cover, initial-scale=1, shrink-to-fit=no"
         />
-        <link rel="stylesheet" href="https://use.typekit.net/jqc3tao.css" />
       </Head>
       <style jsx global>{`
         :root {
