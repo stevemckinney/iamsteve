@@ -13,7 +13,7 @@
     margin-left: calc(50% - math.div($contain, 2));
     margin-right: calc(50% - math.div($contain, 2)); }
 
-  img,
+  > img,
   > .code-block,
   > .remark-code-title,
   .cp_embed_wrapper
@@ -62,7 +62,7 @@
 
   // This could be really stupid in the long run
   // Allow these to expand and fill the container
-  > *:not(figure), img {
+  > *:not(figure), > img {
     margin-left: auto;
     margin-right: auto; }
 
@@ -239,9 +239,16 @@
   padding-top: $base-px;
   position: relative;
   text-align: left;
+  gap: $line;
+
+  img {
+    margin-bottom: 0; }
 
   @include breakpoint($d) {
     align-items: flex-end; }
+
+  @include breakpoint($e) {
+    padding-left: (192px + 32px); }
 
   @include breakpoint($d-max) {
     align-items: center;
@@ -251,8 +258,6 @@
   font-style: italic;
   text-align: center;
   line-height: 1.333333;
-  padding-left: $line;
-  padding-right: $line;
   max-width: $measure;
   color: $neutral-l2;
 
@@ -260,7 +265,9 @@
     font-size: inherit; }
 
   @include breakpoint($d-max) {
-    padding-top: $base-px; }
+    margin-bottom: $line;
+    padding-left: $line;
+    padding-right: $line; }
 
   @include breakpoint($d) {
     max-width: 192px;
@@ -277,8 +284,7 @@
   @include breakpoint($cd-max) {
     width: 100%;
     padding-left: $base-px;
-    padding-right: $base-px;
-    margin-bottom: $line; } }
+    padding-right: $base-px; } }
 
 // Specific pieces of content
 // ---------------------------
