@@ -38,13 +38,11 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
     twitter,
   } = frontmatter
 
-  if (!isDevelopment) {
-    useEffect(() => {
-      fetch(`/api/views/${slug}`, {
-        method: 'POST',
-      })
-    }, [slug])
-  }
+  useEffect(() => {
+    fetch(`/api/views/${slug}`, {
+      method: 'POST',
+    })
+  }, [slug])
 
   return (
     <>
