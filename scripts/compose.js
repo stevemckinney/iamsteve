@@ -41,6 +41,8 @@ const genFrontMatter = (answers) => {
   ogImage: "/assets/og/cover.jpg"
   layout: ${answers.layout}
   draft: ${answers.status}
+  codepen: false
+  twitter: false
   id: ${answers.id}
   fileroot: ${
     answers.title
