@@ -38,7 +38,7 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
     twitter,
   } = frontmatter
 
-  if ( !isDevelopment ) {
+  if (!isDevelopment) {
     useEffect(() => {
       fetch(`/api/views/${slug}`, {
         method: 'POST',
@@ -164,8 +164,16 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
         </article>
       ) : null}
 
-      {codepen && <Script async src="https://production-assets.codepen.io/assets/embed/ei.js" strategy="lazyOnload" />}
-      {twitter && <Script async src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />}
+      {codepen && (
+        <Script
+          async
+          src="https://production-assets.codepen.io/assets/embed/ei.js"
+          strategy="lazyOnload"
+        />
+      )}
+      {twitter && (
+        <Script async src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />
+      )}
     </>
   )
 }

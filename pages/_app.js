@@ -38,9 +38,9 @@ const Averta = localFont({
     {
       path: '../public/static/fonts/averta/avertastd-bold-webfont.woff2',
       weight: '700',
-    }
+    },
   ],
-  variable: '--font-heading'
+  variable: '--font-heading',
 })
 
 export default function App({ Component, pageProps }) {

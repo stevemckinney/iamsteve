@@ -1,6 +1,6 @@
 // placeholder
 // assign a matching background colour and image randomly
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 // placeholders
@@ -36,7 +36,9 @@ const randomEntries = function (obj) {
 function Placeholder({ category, kind }) {
   // assign the random value to a variable to use later
   // depending on the kind passed to this function
-  const [random, setRandom] = useState(category === 'Design' ? randomEntries(PlaceholderDesign) : randomEntries(PlaceholderCode));
+  const [random, setRandom] = useState(
+    category === 'Design' ? randomEntries(PlaceholderDesign) : randomEntries(PlaceholderCode)
+  )
 
   const containerClass =
     kind.toString() === 'hero'
