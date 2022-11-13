@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <link rel="stylesheet" href="https://use.typekit.net/jqc3tao.css" />
           <link rel="apple-touch-icon" href="/static/favicons/apple-touch-icon.png" />
           <link rel="shortcut icon" href="/static/favicons/favicon.ico" />
           <link rel="manifest" href="/static/favicons/site.webmanifest" />

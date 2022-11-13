@@ -14,7 +14,7 @@ import SearchLayout from '@/layouts/SearchLayout'
 import Icon from '@/components/icon/index.js'
 import Search from '@/components/Search'
 
-import Image from "next/image";
+import Image from 'next/image'
 import Lettering from '@/images/lettering.svg'
 import Intro320 from '@/images/introduction-320.svg'
 import Intro394 from '@/images/introduction-394.svg'

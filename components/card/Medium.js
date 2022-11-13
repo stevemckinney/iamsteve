@@ -13,26 +13,20 @@ function autoParagraph(text, size) {
 }
 
 const Medium = ({ frontmatter }) => {
-  const {
-    slug,
-    date,
-    title,
-    summary,
-    tags,
-    id,
-    theme,
-    categories,
-    images,
-    medium,
-    lastmod,
-  } = frontmatter
+  const { slug, date, title, summary, tags, id, theme, categories, images, medium, lastmod } =
+    frontmatter
 
   const url = `/blog/${slug}`
   const imageColor = theme ? theme.toString() : '#ccc'
 
   return (
     <article className="card card-medium entry flex flex-column">
-      <Link href={url} title="" className="card-image flex mb2 mb4-b" aria-labelledby={`title-${id}`}>
+      <Link
+        href={url}
+        title=""
+        className="card-image flex mb2 mb4-b"
+        aria-labelledby={`title-${id}`}
+      >
         <>
           {medium ? (
             <>
@@ -82,7 +76,11 @@ const Medium = ({ frontmatter }) => {
                 categories.map((category) => <Category key={category} text={category} />)}
             </>
           )}
-          <Link href={url} rel="bookmark" className="link-icon warm secondary-hover card-permalink hide-lt-ab">
+          <Link
+            href={url}
+            rel="bookmark"
+            className="link-icon warm secondary-hover card-permalink hide-lt-ab"
+          >
             Continue reading
             <span className="icon icon-medium icon-right secondary">
               <Icon kind="right" />

@@ -13,7 +13,10 @@ const Title = ({ title, link, text, ariaID }) => {
       </h2>
 
       {link && (
-        <Link href={link} className="link-icon warm secondary-hover card-permalink semibold sans f7 f6-a f5-c">
+        <Link
+          href={link}
+          className="link-icon warm secondary-hover card-permalink semibold sans f7 f6-a f5-c"
+        >
           {text ? text : 'All posts'}
           <span className="icon icon-medium icon-right secondary">
             <Icon kind="right" />
