@@ -29,25 +29,14 @@ At the start of the year, I posted one final post which saw me complete my goal 
 
 The main reason for this was I couldn’t maintain weekly posting, as I was looking for a new job and building a portfolio.
 
-### Job hunting is mentally draining & demotivating as a whole
-During the break, I started making my portfolio, which saw a few revisions. I used Adobe Portfolio and aimed to get it done quickly and build up over time.
-
-I was pretty rusty when it came to looking for a job. The last time I had to look I was pretty much just out of university, so the expectations and my situation are vastly different.
-
-The scheduling, secrecy, judgment, etc., that come with it make it one of the most mentally draining things I’ve done for a long time. Trying to figure out whether you’re making the right decision and remaining patient takes a lot of effort.
-
-I took frequent breaks to try avoid being overwhelmed. I got there in the end, if there’s one thing I’ve learnt this year: I juggled too much and unfortunately I paid the price.
-
 ## Going back to doing things just for fun
-This year was one I tried to really position myself as only being a designer. It put a lot of pressure on myself to make design only posts, I wrote and spoke less about code.
+This year was one I tried to really position myself as only being a designer. It put a lot of pressure on myself to make design only posts, I wrote less about code.
 
 I originally started designing websites many years ago for fun. I started writing this website for fun and learning too. Over time, I feel like I’ve taken things too seriously—which isn’t me. The pressure I put on myself to be seen as ‘only a designer’ was wrong.
 
-It was part of what had a knock on effect. As well as, things happening in my life and trying to succeed with finding a new job, I lost motivation for *everything*.
+It was part of what had a knock on effect. As well as, things happening in my life and trying to succeed with finding a new job, I lost motivation.
 
-I wasn’t giving myself the necessary rest and looking after myself and personal life. So this is my unsolicited advice to you, there are more important things, look after yourself first.
-
-### Finding my motivation again and not over doing it
+### Finding motivation again and not over doing it
 I avoided a lot of topics to keep things design focused. I had planned to change it and go back to an earlier idea of designing and coding. It’s too much work, I was being far too much of a perfectionist.
 
 If I find myself posting regularly again, the content will be mixed between design and code. There’s benefits to each type of post, and it allows me to manage my time better.

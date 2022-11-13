@@ -96,14 +96,7 @@ Exploring the markup further, the name of each package is using a `<h2>` they  t
 ## Colours being used
 For reference here are all the colours used.
 
-| Colour | Hex |
-|:-|:-|
-| Red | #eb6e5e |
-| Light yellow | #fff6e5 |
-| Dark blue | #1a626e |
-| Green | #4db898 |
-| Light green | #e1f7ee |
-| Green (transparent) | rgba(77, 184, 152, 0.4) |
+<table><thead><tr><th align="left">Colour</th><th align="left">Hex</th></tr></thead><tbody><tr><td align="left">Red</td><td align="left">#eb6e5e</td></tr><tr><td align="left">Light yellow</td><td align="left">#fff6e5</td></tr><tr><td align="left">Dark blue</td><td align="left">#1a626e</td></tr><tr><td align="left">Green</td><td align="left">#4db898</td></tr><tr><td align="left">Light green</td><td align="left">#e1f7ee</td></tr><tr><td align="left">Green (transparent)</td><td align="left">rgba(77, 184, 152, 0.4)</td></tr></tbody></table>
 
 ## Starting CSS
 A quick note on the CSS hereon, all examples exclude prefixes for brevity. The codepen example has all necessary prefixes through the use of autoprefixer. It’s debatable whether they are necessary, so that’s up to you.

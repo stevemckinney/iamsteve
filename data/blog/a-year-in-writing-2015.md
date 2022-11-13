@@ -13,20 +13,20 @@ id: 108
 fileroot: "a-year-in-writing-2015"
 ---
 
-It’s been a year since I started writing weekly. This is the 52nd post, so it’s fitting to reflect upon the experience of writing over the past year. I hope to inspire you, to take it upon yourself, to write regularly. As I’m certainly not the best writer, but I believe if you’re knowledgeable of a subject, you should be sharing what you know. 
+It’s been a year since I started writing weekly. This is the 52nd post, so it’s fitting to reflect upon the experience of writing over the past year. I hope to inspire you, to take it upon yourself, to write regularly. As I’m certainly not the best writer, but I believe if you’re knowledgeable of a subject, you should be sharing what you know.
 
 ## Thanks for reading
-Firstly, I would like to thank you for reading and visiting this website. I hope you have found value in the things that I’ve written. 
+Firstly, I would like to thank you for reading and visiting this website. I hope you have found value in the things that I’ve written.
 
 ## Why I started and you should too
-I started because I wanted to see if I could grow an audience but try this time. Through listening to the seanwes podcast (which I highly recommend), Ben and Sean provide much of the motivation I needed. They made me believe I could do it, but they warn it won't be easy. Down to their words of wisdom, I was motivated to write. The messages Sean and Ben consistently mention are simple, it all starts with writing, you have to be consistent and show up every day. 
+I started because I wanted to see if I could grow an audience but try this time. Through listening to the seanwes podcast (which I highly recommend), Ben and Sean provide much of the motivation I needed. They made me believe I could do it, but they warn it won't be easy. Down to their words of wisdom, I was motivated to write. The messages Sean and Ben consistently mention are simple, it all starts with writing, you have to be consistent and show up every day.
 
 While there are signs of my audience growing. I don't expect that to begin to form for at least another year. However, aside from building an audience, I've wanted to improve my communication and writing skills. It's a real challenge to communicate how to do things, in a way that the majority of people can understand. I'm pleased with the progress so far.
 
 ## It’s possible to write every week
-To produce an idea every week can be difficult, especially when you have a full time job and other commitments. It's largely down to how much you learn yourself, but other factors can contribute. It's important you have the motivation to learn and teach. Equally, you need to be doing work that challenges you. 
+To produce an idea every week can be difficult, especially when you have a full time job and other commitments. It's largely down to how much you learn yourself, but other factors can contribute. It's important you have the motivation to learn and teach. Equally, you need to be doing work that challenges you.
 
-Part of this year is to consider where my focus is, however, due to the difficulty some weeks I am hesitant to niche down. You may encounter this struggle as you don’t always have the control over what’s happening in work and life. I do have some tips that help generate topics. Which I'll cover some in more detail.  
+Part of this year is to consider where my focus is, however, due to the difficulty some weeks I am hesitant to niche down. You may encounter this struggle as you don’t always have the control over what’s happening in work and life. I do have some tips that help generate topics. Which I'll cover some in more detail.
 
 - Speak to people interested in learning what you do
 - Spend time generating ideas for posts
@@ -47,26 +47,26 @@ Listening is an important skill. If your posts are about the struggles people ar
 > So feel free to email me if you'd [like to chat about design related things](https://iamsteve.test/contact).
 
 ### Generating ideas for posts
-If you come to a blank page with an idea to write about, you're not in the right frame of mind. Trying to write without a purpose, is attempting to do two important things at once. You should have the idea, to focus purely on the execution. So spend some time thinking about what you've learnt recently and conversations you've had. 
+If you come to a blank page with an idea to write about, you're not in the right frame of mind. Trying to write without a purpose, is attempting to do two important things at once. You should have the idea, to focus purely on the execution. So spend some time thinking about what you've learnt recently and conversations you've had.
 
-Write down the ideas that come to mind, with an outline where you can. Ideas can come at any moment, not only just spending the time to think of them. 
+Write down the ideas that come to mind, with an outline where you can. Ideas can come at any moment, not only just spending the time to think of them.
 
 ### Go for a walk
 Many of my best ideas that I've thought that would make a great post have come from walking, in the shower or doing some task that just allows your mind to wander. As mentioned in the previous paragraph, capture these ideas as soon as you can. Do not rely on your memory!
 
 ### Learning
-Aside from talking to people for ideas. Learning will be the biggest area for your writing. If you don't learn, you will quickly run out of topics. If you have a willingness to learn, the things to write about will always come to you. It's a necessity to have that willingness. 
+Aside from talking to people for ideas. Learning will be the biggest area for your writing. If you don't learn, you will quickly run out of topics. If you have a willingness to learn, the things to write about will always come to you. It's a necessity to have that willingness.
 
-Your perspective is unique, so don't be afraid to share knowledge on topics that someone has covered already. You may be the person that explains it in such a way that helps someone to have an 'aha' moment and get it. I struggle too, but it becomes easier to put aside with time. 
+Your perspective is unique, so don't be afraid to share knowledge on topics that someone has covered already. You may be the person that explains it in such a way that helps someone to have an 'aha' moment and get it. I struggle too, but it becomes easier to put aside with time.
 
-A benefit of writing tutorials, is the need for them to be without error. Otherwise, you'd be guiding people wrongly. This learning or research helps brush up your knowledge and helps you to think differently. 
+A benefit of writing tutorials, is the need for them to be without error. Otherwise, you'd be guiding people wrongly. This learning or research helps brush up your knowledge and helps you to think differently.
 
 That said, when you make an error, it opens a discussion. You can correct any mistakes, and credit the person who helped.
 
-Within web related technologies there is so much to learn. CSS and JavaScript will always gain new features, so you can get a head start by reading the specifications and presenting it in an easy to understand way. 
+Within web related technologies there is so much to learn. CSS and JavaScript will always gain new features, so you can get a head start by reading the specifications and presenting it in an easy to understand way.
 
 ### Not every post has to be the best
-When I say this, I mean you don't have to have the longest, most in depth post written every week. Of course, the post still has to be valuable. Otherwise, it isn't worth wasting yours or the readers time. 
+When I say this, I mean you don't have to have the longest, most in depth post written every week. Of course, the post still has to be valuable. Otherwise, it isn't worth wasting yours or the readers time.
 
 I wrote a quick tip for CSS on removing excess letter spacing. I kept forgetting the technique so it served as a reminder for me. However, I expanded upon it as someone tweeted me with an issue. I've since had someone email with another problem to expand upon in the post. I knew the solution might not cover all bases. I'm happy I wrote it because with the two people that contacted me, they have helped to expand upon that topic.
 
@@ -116,31 +116,12 @@ Of those 52 posts, the most popular was [creating a horizontal scrolling respons
 ### Most notable browser popularity
 In comparison to last year, this isn’t hugely different. Traffic from IE increased 6x. However, that’s still a tiny percentage. Chrome has become more dominant, but that’s not surprising really. Mobile is on the up, also seeing a 6x increase, but still a small percentage.
 
-| Browser | Visits |
-|:-|-:|
-| Chrome | 12498 |
-| Firefox | 2958 |
-| Safari | 1534 |
-| IE | 685 |
-| Mobile Safari | 660 |
-| Opera | 148 |
-| Edge | 25 |
+<table><thead><tr><th align="left">Browser</th><th align="right">Visits</th></tr></thead><tbody><tr><td align="left">Chrome</td><td align="right">12498</td></tr><tr><td align="left">Firefox</td><td align="right">2958</td></tr><tr><td align="left">Safari</td><td align="right">1534</td></tr><tr><td align="left">IE</td><td align="right">685</td></tr><tr><td align="left">Mobile Safari</td><td align="right">660</td></tr><tr><td align="left">Opera</td><td align="right">148</td></tr><tr><td align="left">Edge</td><td align="right">25</td></tr></tbody></table>
 
 ### Top 10 countries
 Last year the US was more of a leader in my audience and had seen slightly less traffic this year. Everyone else has increased. It's nice to see it grow in those areas.
 
-| Country | Visits |
-|:-|-:|
-| United States | 4131 |
-| United Kingdom | 2247 |
-| India | 1039 |
-| Germany | 951 |
-| France | 608 |
-| Canada | 578 |
-| Russia | 567 |
-| Netherlands | 541 |
-| Brazil | 489 |
-| Australia | 484 |
+<table><thead><tr><th align="left">Country</th><th align="right">Visits</th></tr></thead><tbody><tr><td align="left">United States</td><td align="right">4131</td></tr><tr><td align="left">United Kingdom</td><td align="right">2247</td></tr><tr><td align="left">India</td><td align="right">1039</td></tr><tr><td align="left">Germany</td><td align="right">951</td></tr><tr><td align="left">France</td><td align="right">608</td></tr><tr><td align="left">Canada</td><td align="right">578</td></tr><tr><td align="left">Russia</td><td align="right">567</td></tr><tr><td align="left">Netherlands</td><td align="right">541</td></tr><tr><td align="left">Brazil</td><td align="right">489</td></tr><tr><td align="left">Australia</td><td align="right">484</td></tr></tbody></table>
 
 ## On to the next year
 A year ago I thought I would just give it a try unannounced and see how it went. I’m pleased with this start and have a lot to work towards the goals I have set. I have some things to consider regarding how to allow the right balance of focus on a redesign and moving forward producing content at high quality. Thank you for reading again, I wish you success for the coming year and beyond.
