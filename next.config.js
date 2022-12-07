@@ -20,7 +20,8 @@ module.exports = withBundleAnalyzer({
   },
   experimental: { esmExternals: true },
   images: {
-    formats: ['image/avif', 'image/webp']
+    formats: ['image/avif', 'image/webp'],
+    unoptimized: true,
   },
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
