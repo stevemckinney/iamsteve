@@ -17,7 +17,9 @@ id: 165
 fileroot: "search-overlay-with-smooth-reveal-animation"
 ---
 
-A common part of a website is the ability to search. Depending on how important search is to your website can define much of how it looks and how it's prioritised in the design. In this post I want to show you how to create a search which appears with a smooth transition on the click/tap of a button.
+Search is a common function of a website, app, etc. Depending on how important search is to your users can define how it’s prioritised and looks within your design.
+
+In this post, I want to show you how to create a search which appears with a smooth transition on the click or tap of a button.
 
 ## What you’re making
 If you’d like to grab any of the code and skip the post feel free to browse the CodePen.
@@ -75,7 +77,7 @@ The button is an anchor tag, with an SVG inside. This allows us to style and reu
 
 The class names `button` and `button-open` will be used for both styling and JavaScript later in the post. The `href` should ideally link to a fallback search page, should JavaScript fail or be disabled.
 
-> You may notice the icon has several class names applied to it. I‘ve detailed my process about [how I use SVG for icons before](/blog/lets-make-a-better-icon-system-with-svg).
+> You may notice the icon has several class names applied to it. I’ve detailed my process about [how I use SVG for icons before](/blog/lets-make-a-better-icon-system-with-svg).
 
 ### Overlay
 The overlay itself is a `<div>` tag round a form. Each element inside the form has an appropriate class to be used for styling.
