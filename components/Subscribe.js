@@ -26,10 +26,6 @@ const Subscribe = ({
           email list and I’ll send new tutorials to help you design & code beautiful websites. You
           can unsubscribe anytime.
         </p>
-        <p className="mb4">
-          Also, as a subscriber I can provide critique on your designs—send something through after
-          you confirm your subscription.
-        </p>
         <NewsletterForm theme={`form-${theme}`} unique={unique} />
       </div>
     </section>
