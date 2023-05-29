@@ -40,6 +40,7 @@ const Medium = ({ frontmatter }) => {
                   blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                   placeholder="blur"
                   alt={title}
+                  quality={100}
                 />
               </div>
             </>

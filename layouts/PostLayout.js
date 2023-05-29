@@ -64,13 +64,15 @@ const PostLayout = ({ frontmatter, authorDetails, next, prev, children }) => {
                   <Image
                     src={image}
                     className="radius"
-                    alt=""
+                    alt={`Featured image for ${title}`}
+                    role="presentation"
                     width={744}
                     height={492}
                     key={image}
                     blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                     placeholder="blur"
                     priority
+                    quality={100}
                   />
                 ))}
             </div>
