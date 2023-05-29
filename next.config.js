@@ -23,6 +23,33 @@ module.exports = withBundleAnalyzer({
     formats: ['image/avif', 'image/webp'],
     quality: 100,
   },
+  // <meta name="content-security-policy" content="script-src 'self' https://codepen.io 'unsafe-eval'; object-src 'self'; img-src 'self' data:;">
+  async headers() {
+    return [
+        {
+          source: '/(.*)',
+          headers: [
+            {
+              key: 'X-Frame-Options',
+              value: 'DENY',
+            },
+            {
+              key: 'Content-Security-Policy',
+              value:
+                "default-src 'self' 'https://codepen.io'; image-src 'https://codepen.io'; script-src 'self' https://codepen.io; font-src 'self' 'https://codepen.io'",
+            },
+            {
+              key: 'X-Content-Type-Options',
+              value: 'nosniff',
+            },
+            {
+              key: 'Referrer-Policy',
+              value: 'origin-when-cross-origin',
+            },
+          ],
+        },
+      ];
+  },
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
       test: /\.(png|jpe?g|gif|mp4)$/i,
