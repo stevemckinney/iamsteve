@@ -4,6 +4,14 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
+const ContentSecurityPolicy = `
+  default-src 'self';
+  script-src 'self' 'https://codepen.io' 'https://use.typekit.net';
+  child-src 'https://codepen.io';
+  style-src 'self' 'https://codepen.io' 'https://use.typekit.net';
+  font-src 'self' 'https://codepen.io' 'https://use.typekit.net';
+`;
+
 module.exports = withBundleAnalyzer({
   compress: false,
   sassOptions: {
@@ -30,21 +38,8 @@ module.exports = withBundleAnalyzer({
           source: '/(.*)',
           headers: [
             {
-              key: 'X-Frame-Options',
-              value: 'DENY',
-            },
-            {
               key: 'Content-Security-Policy',
-              value:
-                "default-src 'self' 'https://codepen.io' 'https://use.typekit.net'; image-src 'https://codepen.io'; script-src 'self' 'https://codepen.io' 'https://use.typekit.net'; font-src 'self' 'https://codepen.io' 'https://use.typekit.net'",
-            },
-            {
-              key: 'X-Content-Type-Options',
-              value: 'nosniff',
-            },
-            {
-              key: 'Referrer-Policy',
-              value: 'origin-when-cross-origin',
+              value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
             },
           ],
         },
