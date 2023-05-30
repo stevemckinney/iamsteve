@@ -36,7 +36,7 @@ module.exports = withBundleAnalyzer({
             {
               key: 'Content-Security-Policy',
               value:
-                "default-src 'self' 'https://codepen.io'; image-src 'https://codepen.io'; script-src 'self' https://codepen.io; font-src 'self' 'https://codepen.io'",
+                "default-src 'self' 'https://codepen.io'; image-src 'https://codepen.io'; script-src 'self' 'https://codepen.io' 'https://use.typekit.net'; font-src 'self' 'https://codepen.io' 'https://use.typekit.net'",
             },
             {
               key: 'X-Content-Type-Options',
