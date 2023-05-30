@@ -31,20 +31,6 @@ module.exports = withBundleAnalyzer({
     formats: ['image/avif', 'image/webp'],
     quality: 100,
   },
-  // <meta name="content-security-policy" content="script-src 'self' https://codepen.io 'unsafe-eval'; object-src 'self'; img-src 'self' data:;">
-  async headers() {
-    return [
-        {
-          source: '/(.*)',
-          headers: [
-            {
-              key: 'Content-Security-Policy',
-              value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
-            },
-          ],
-        },
-      ];
-  },
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
       test: /\.(png|jpe?g|gif|mp4)$/i,
