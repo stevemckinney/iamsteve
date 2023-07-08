@@ -4,6 +4,9 @@ import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
 
 const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
+
+  console.log('newsletter form')
+
   const inputEmail = useRef(null)
   const inputName = useRef(null)
   const inputSource = useRef(null)
@@ -14,6 +17,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
 
   const subscribe = async (e) => {
     e.preventDefault()
+    console.log('e', e)
 
     // https://emailoctopus.com/api/1.5/lists/:listId/contacts
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
@@ -29,10 +33,13 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
     })
 
     const { error } = await res.json()
+
+    console.log('res', res)
+
     if (error) {
       console.log(error)
       setError(true)
-      setMessage('Your e-mail address is invalid or you are already subscribed!')
+      setMessage(`There was an error subscribing to the list.`)
       return
     }
 
@@ -40,7 +47,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
     inputName.current.value = ''
     setError(false)
     setSubscribed(true)
-    setMessage('Successfully! 🎉 You are now subscribed.')
+    setMessage('Success! 🎉 You are now subscribed.')
   }
 
   return (
