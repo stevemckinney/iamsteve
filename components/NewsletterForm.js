@@ -35,9 +35,10 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
     if (res.status === 500) {
       console.log(error)
       setError(true)
-      setMessage(`There was a problem subscribing to the list. The server cannot be reached to submit your request.`)
-    }
-    else if (error) {
+      setMessage(
+        `The server cannot be reached to submit your request.`
+      )
+    } else if (error) {
       console.log(error)
       setError(true)
       setMessage(`There was an error subscribing to the list.`)
@@ -48,7 +49,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
     inputName.current.value = ''
     setError(false)
     setSubscribed(true)
-    setMessage('Success! 🎉 You are now subscribed.')
+    setMessage('🎉 Thank you for subscribing! Please check your inbox.')
   }
 
   return (
@@ -63,7 +64,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
                 padding: '8px',
               }}
             >
-              <p className="m0">Thank you for subscribing, please check your inbox!</p>
+              <p className="m0">{message}</p>
             </div>
           )}
           {error && (

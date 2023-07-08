@@ -1,28 +1,29 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-  const { email, name, source } = req.body
-
+  const { email } = req.body
   if (!email) {
     return res.status(400).json({ error: 'Email is required' })
   }
 
   try {
+    const API_URL = process.env.EMAILOCTOPUS_API_URL
     const API_KEY = process.env.EMAILOCTOPUS_API_KEY
-    const listID = `76319206-f1ef-11eb-96e5-06b4694bee2a`
-    const route = `https://emailoctopus.com/api/1.6/lists/${listID}/contacts`
+    const LIST_ID = process.env.EMAILOCTOPUS_LIST_ID
 
-    console.log(route)
+    const data = {
+      api_key: API_KEY,
+      email_address: email,
+      fields: {
+        FirstName: name,
+        Source: source,
+      },
+      status: 'PENDING'
+    }
 
-    const response = await fetch(route, {
-      body: JSON.stringify({
-        api_key: API_KEY,
-        email_address: email,
-        fields: {
-          FirstName: name,
-          Source: source,
-        },
-        status: 'PENDING',
-      }),
+    const API_ROUTE = `${API_URL}lists/${LIST_ID}/contacts`
+
+    const response = await fetch(API_ROUTE, {
+      body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
       },
