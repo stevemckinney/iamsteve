@@ -17,7 +17,7 @@ export default async (req, res) => {
         FirstName: name,
         Source: source,
       },
-      status: 'PENDING'
+      status: 'PENDING',
     }
 
     const API_ROUTE = `${API_URL}lists/${LIST_ID}/contacts`

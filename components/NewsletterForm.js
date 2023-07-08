@@ -35,9 +35,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
     if (res.status === 500) {
       console.log(error)
       setError(true)
-      setMessage(
-        `The server cannot be reached to submit your request.`
-      )
+      setMessage(`The server cannot be reached to submit your request.`)
     } else if (error) {
       console.log(error)
       setError(true)
