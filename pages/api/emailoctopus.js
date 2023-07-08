@@ -1,9 +1,6 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req, res) => {
-  console.log('here api');
   const { email, name, source } = req.body
-
-  console.log('req', req.body)
 
   if (!email) {
     return res.status(400).json({ error: 'Email is required' })

@@ -1,12 +1,11 @@
+'use client'
+
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import siteMetadata from '@/data/siteMetadata'
 
 const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
-
-  console.log('newsletter form')
-
   const inputEmail = useRef(null)
   const inputName = useRef(null)
   const inputSource = useRef(null)
