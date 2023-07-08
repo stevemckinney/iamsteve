@@ -11,6 +11,8 @@ export default async (req, res) => {
     const listID = `76319206-f1ef-11eb-96e5-06b4694bee2a`
     const route = `https://emailoctopus.com/api/1.6/lists/${listID}/contacts`
 
+    console.log(route)
+
     const response = await fetch(route, {
       body: JSON.stringify({
         api_key: API_KEY,

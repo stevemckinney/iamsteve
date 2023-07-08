@@ -16,7 +16,6 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
 
   const subscribe = async (e) => {
     e.preventDefault()
-    console.log('e', e)
 
     // https://emailoctopus.com/api/1.5/lists/:listId/contacts
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
@@ -33,9 +32,12 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
 
     const { error } = await res.json()
 
-    console.log('res', res)
-
-    if (error) {
+    if (res.status === 500) {
+      console.log(error)
+      setError(true)
+      setMessage(`There was a problem subscribing to the list. The server cannot be reached to submit your request.`)
+    }
+    else if (error) {
       console.log(error)
       setError(true)
       setMessage(`There was an error subscribing to the list.`)
@@ -105,7 +107,6 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
                 disabled={subscribed}
               />
             </div>
-            <input type="hidden" name="fields[marketing_permissions]" value="Email" />
             <div className="form-actions pt2 text-right">
               <button
                 type="submit"
