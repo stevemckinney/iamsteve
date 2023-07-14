@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
 import { PageSEO } from '@/components/SEO'
+import { SupabaseAdmin } from '@/lib/supabase-admin'
 
 // components
 import LayoutWrapper from '@/components/LayoutWrapper'
@@ -14,6 +15,7 @@ import SearchLayout from '@/layouts/SearchLayout'
 import Icon from '@/components/icon/index.js'
 import Search from '@/components/Search'
 
+// images
 import Image from 'next/image'
 import Lettering from '@/images/lettering.svg'
 import Intro320 from '@/images/introduction-320.svg'
@@ -21,16 +23,28 @@ import Intro394 from '@/images/introduction-394.svg'
 import Intro734 from '@/images/introduction-734.svg'
 import Intro960 from '@/images/introduction-960.svg'
 
+// utils
+import mergeData from '@/lib/utils/mergeData'
+import { PageViews, views } from '@/components/PageViews'
+
 // pull in the posts
 // import Posts from '@/layouts/Posts'
 export const POSTS_PER_PAGE = 8
 export const MAX_DISPLAY = 5
 
-// View count
-import { PageViews, views } from '@/components/PageViews'
-
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
+  const { data: dbPosts } = await SupabaseAdmin.from('pages').select()
+  const content = posts.filter(post => post.status.includes('open')).sort((a, b) =>
+    new Date(b.date) - new Date(a.date)
+  )
+
+  const views = dbPosts?.map(({ id, slug, view_count }) => ({
+    id,
+    slug,
+    view_count
+  }))
+
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE)
 
   const pagination = {
@@ -38,10 +52,12 @@ export async function getStaticProps() {
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
   }
 
-  return { props: { initialDisplayPosts, posts, pagination } }
+  const mergedData = mergeData(posts, views)
+
+  return { props: { initialDisplayPosts, posts, mergedData, pagination } }
 }
 
-const Home = ({ initialDisplayPosts, posts, pagination }) => {
+const Home = ({ initialDisplayPosts, posts, mergedData, pagination }) => {
   // can't figure out how to sort posts, so taking the current order
   // and will manually update over time
   const designPosts = [83, 148, 140, 87, 130, 77, 139, 168, 124, 79]
@@ -127,11 +143,14 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
         text="Explore design"
         size="small"
         key="design"
+        position="top"
       >
-        {!posts && 'No posts'}
-        {posts &&
-          posts
-            .filter((post) => designPosts.includes(post.id))
+        {!mergedData && 'No posts'}
+        {mergedData &&
+          mergedData
+            .filter((post) => post.categories.includes("Design"))
+            .sort((a, b) => b.view_count - a.view_count)
+            .slice(0, POSTS_PER_PAGE)
             .map((frontmatter) => {
               return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
             })}
@@ -153,11 +172,14 @@ const Home = ({ initialDisplayPosts, posts, pagination }) => {
         text="Explore code"
         size="small"
         key="code"
+        position="bottom"
       >
-        {!posts && 'No posts'}
-        {posts &&
-          posts
-            .filter((post) => codePosts.includes(post.id))
+        {!mergedData && 'No posts'}
+        {mergedData &&
+          mergedData
+            .filter((post) => post.categories.includes("Code"))
+            .sort((a, b) => b.view_count - a.view_count)
+            .slice(0, POSTS_PER_PAGE)
             .map((frontmatter) => {
               return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
             })}
