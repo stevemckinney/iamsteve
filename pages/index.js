@@ -24,7 +24,7 @@ import Intro734 from '@/images/introduction-734.svg'
 import Intro960 from '@/images/introduction-960.svg'
 
 // utils
-import mergeData from '@/lib/utils/mergeData'
+import mergeDataByID from '@/lib/utils/mergeData'
 import { PageViews, views } from '@/components/PageViews'
 
 // pull in the posts
@@ -52,7 +52,7 @@ export async function getStaticProps() {
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
   }
 
-  const mergedData = mergeData(posts, views)
+  const mergedData = mergeDataByID(posts, views)
 
   return { props: { initialDisplayPosts, posts, mergedData, pagination } }
 }
