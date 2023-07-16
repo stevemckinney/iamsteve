@@ -35,14 +35,14 @@ export const MAX_DISPLAY = 5
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog')
   const { data: dbPosts } = await SupabaseAdmin.from('pages').select()
-  const content = posts.filter(post => post.status.includes('open')).sort((a, b) =>
-    new Date(b.date) - new Date(a.date)
-  )
+  const content = posts
+    .filter((post) => post.status.includes('open'))
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
 
   const views = dbPosts?.map(({ id, slug, view_count }) => ({
     id,
     slug,
-    view_count
+    view_count,
   }))
 
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE)
@@ -148,7 +148,7 @@ const Home = ({ initialDisplayPosts, posts, mergedData, pagination }) => {
         {!mergedData && 'No posts'}
         {mergedData &&
           mergedData
-            .filter((post) => post.categories.includes("Design"))
+            .filter((post) => post.categories.includes('Design'))
             .sort((a, b) => b.view_count - a.view_count)
             .slice(0, POSTS_PER_PAGE)
             .map((frontmatter) => {
@@ -177,7 +177,7 @@ const Home = ({ initialDisplayPosts, posts, mergedData, pagination }) => {
         {!mergedData && 'No posts'}
         {mergedData &&
           mergedData
-            .filter((post) => post.categories.includes("Code"))
+            .filter((post) => post.categories.includes('Code'))
             .sort((a, b) => b.view_count - a.view_count)
             .slice(0, POSTS_PER_PAGE)
             .map((frontmatter) => {
