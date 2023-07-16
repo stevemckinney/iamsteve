@@ -12,7 +12,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.78",
     "@supabase/auth-helpers-nextjs": "^0.7.2",
     "@supabase/supabase-js": "^2.10.0",
     "@tailwindcss/forms": "^0.5.3",
@@ -47,7 +46,7 @@
     "unist-util-visit": "^4.1.1"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.39.0",
+    "@netlify/plugin-nextjs": "latest",
     "@next/bundle-analyzer": "^13.0.0",
     "@svgr/webpack": "^6.5.1",
     "breakpoint-sass": "^3.0.0",
