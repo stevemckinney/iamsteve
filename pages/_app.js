@@ -13,7 +13,7 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 const isSocket = process.env.SOCKET
 
 // fonts
-import localFont from '@next/font/local'
+import localFont from 'next/font/local'
 
 // Font files can be colocated inside of `pages`
 // avertastd-bold-webfont.woff2

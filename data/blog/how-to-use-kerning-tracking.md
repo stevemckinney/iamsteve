@@ -113,7 +113,7 @@ This is more of a tip. Where you have an uppercase letter like 'T', 'Y' or 'P' y
 This may seem to go against the true bounds of the letterform, however, in the world of type; optical alignment 9 times out of 10 is better.
 
 ### Use ligatures
-A ligature is where two letters form one, they’re not available in every font. They are very handy for creating a better relationship between two letters.
+A ligature is where two or more letters form one. They are very handy for creating a better relationship between two letters. But not every typeface has ligatures.
 
 <figure>
 <Image src="/static/images/blog/kerning-tracking-ligatures@2x.png" width={738} height={492} />
