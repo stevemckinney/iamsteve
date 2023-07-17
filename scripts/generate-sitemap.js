@@ -1,18 +1,18 @@
 const fs = require('fs')
 const globby = require('globby')
 const prettier = require('prettier')
-const siteMetadata = require('../data/siteMetadata')
+const siteMetadata = require('../content/siteMetadata')
 
 ;(async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
   const pages = await globby([
-    'pages/*.js',
-    'data/blog/**/*.mdx',
-    'data/blog/**/*.md',
+    'app/*.js',
+    'content/blog/**/*.mdx',
+    'content/blog/**/*.md',
     'public/tag/**/*.xml',
     'public/category/**/*.xml',
-    '!pages/_*.js',
-    '!pages/api',
+    '!app/_*.js',
+    '!app/api',
   ])
 
   const sitemap = `
@@ -22,7 +22,7 @@ const siteMetadata = require('../data/siteMetadata')
               .map((page) => {
                 const path = page
                   .replace('pages/', '/')
-                  .replace('data/blog', '/blog')
+                  .replace('content/blog', '/blog')
                   .replace('public/', '/')
                   .replace('.js', '')
                   .replace('.mdx', '')

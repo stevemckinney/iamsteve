@@ -7,7 +7,12 @@
       "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
       "@/css/*": ["css/*"],
-      "@/images/*": ["/public/static/images/*"]
+      "@/images/*": ["/public/static/images/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"],
+      "contentlayer/source-files": ["./.contentlayer/source-files"]
     }
-  }
+  },
+  "include": [
+    ".contentlayer/generated"
+  ]
 }
