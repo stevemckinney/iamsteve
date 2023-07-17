@@ -33,7 +33,7 @@ export const MAX_DISPLAY = 5
 
 export async function getStaticProps() {
   const allPosts = await getAllFilesFrontMatter('blog')
-  const posts = allPosts.filter((post) => post.status.includes('open'));
+  const posts = allPosts.filter((post) => post.status.includes('open'))
   const { data: dbPosts } = await SupabaseAdmin.from('pages').select()
 
   const postsByDate = posts
@@ -50,7 +50,9 @@ export async function getStaticProps() {
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
   }
 
-  const mergedData = mergeDataByID(posts, postsWithViews).sort((a, b) => b.view_count - a.view_count).slice(0, 32)
+  const mergedData = mergeDataByID(posts, postsWithViews)
+    .sort((a, b) => b.view_count - a.view_count)
+    .slice(0, 32)
 
   return { props: { postsByDate, mergedData, pagination } }
 }
@@ -172,9 +174,7 @@ const Home = ({ postsByDate, mergedData, pagination }) => {
             .filter((post) => post.categories.includes('Code'))
             .slice(0, POSTS_PER_PAGE)
             .map((frontmatter) => {
-              return (
-                <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
-              )
+              return <Card kind="small" frontmatter={frontmatter} key={frontmatter.id} />
             })}
         <Link
           href="/category/design"
