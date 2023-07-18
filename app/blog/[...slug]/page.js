@@ -24,8 +24,6 @@ export async function generateMetadata({
     return {}
   }
 
-  console.log(post)
-
   return {
     title: post.title,
   }
