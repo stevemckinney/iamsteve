@@ -42,7 +42,7 @@
     "gray-matter": "^4.0.3",
     "husky": "^8.0.3",
     "image-size": "1.0.2",
-    "inquirer": "^9.2.8",
+    "inquirer": "^8.1.1",
     "lint-staged": "^13.2.3",
     "next": "^13.4.10",
     "next-contentlayer": "^0.3.4",

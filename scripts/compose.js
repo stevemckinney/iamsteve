@@ -5,45 +5,39 @@ const dedent = require('dedent')
 
 const root = process.cwd()
 
-const getAuthors = () => {
-  const authorPath = path.join(root, 'data', 'authors')
-  const authorList = fs.readdirSync(authorPath).map((filename) => path.parse(filename).name)
-  return authorList
-}
-
-const getLayouts = () => {
-  const layoutPath = path.join(root, 'layouts')
-  const layoutList = fs
-    .readdirSync(layoutPath)
-    .map((filename) => path.parse(filename).name)
-    .filter((file) => file.toLowerCase().includes('post'))
-  return layoutList
-}
-
 const genFrontMatter = (answers) => {
   let d = new Date()
   const date = d.toISOString()
-  const tagArray = answers.tags.split(',')
-  tagArray.forEach((tag, index) => (tagArray[index] = tag.trim()))
-  const tags = "'" + tagArray.join("','") + "'"
-  const authorArray = answers.authors.length > 0 ? "'" + answers.authors.join("','") + "'" : ''
+
+  var currentPostID;
+
+  fs.readFile('./.current-post-id', function (err, data) {
+    data = data.toString("utf-8");
+    const i = parseInt(data);
+    var l = i;
+    l ++;
+    currentPostID = String(l);
+    fs.writeFile('./.current-post-id', currentPostID, function (err, data) {} );
+  });
+
+  var updatedPostID = fs.readFileSync('./.current-post-id')
 
   let frontmatter = dedent`---
   title: ${answers.title ? answers.title : 'Untitled'}
-  date: '${date}'
-  lastmod: '${date}'
-  summary: ${answers.summary ? answers.summary : ' '}
-  metadesc: ${answers.summary ? answers.summary : ' '}
+  date: "${date}"
+  lastmod: "${date}"
+  summary:
+  metadesc:
   theme: "#e9f5f5"
-  tags: [${answers.tags ? tags : ''}]
+  tags: []
   categories: []
   images: []
   ogImage: "/assets/og/cover.jpg"
-  layout: ${answers.layout}
+  layout: post
   draft: ${answers.status}
   codepen: false
   twitter: false
-  id: ${answers.id}
+  id: ${updatedPostID}
   fileroot: ${
     answers.title
       ? answers.title
@@ -53,10 +47,6 @@ const genFrontMatter = (answers) => {
       : 'untitled'
   }
   `
-
-  if (answers.authors.length > 0) {
-    frontmatter = frontmatter + '\n' + `authors: [${authorArray}]`
-  }
 
   frontmatter = frontmatter + '\n---'
 
@@ -71,44 +61,17 @@ inquirer
       type: 'input',
     },
     {
-      name: 'id',
-      message: 'Enter the post ID:',
-      type: 'input',
-    },
-    {
       name: 'extension',
       message: 'Choose post extension:',
       type: 'list',
       choices: ['mdx', 'md'],
     },
     {
-      name: 'authors',
-      message: 'Choose authors:',
-      type: 'checkbox',
-      choices: getAuthors,
-    },
-    {
-      name: 'summary',
-      message: 'Enter post summary:',
-      type: 'input',
-    },
-    {
       name: 'status',
       message: 'Set post as draft?',
       type: 'list',
       choices: ['open', 'draft', 'closed'],
-    },
-    {
-      name: 'tags',
-      message: 'Any Tags? Separate them with , or leave empty if no tags.',
-      type: 'input',
-    },
-    {
-      name: 'layout',
-      message: 'Select layout',
-      type: 'list',
-      choices: getLayouts,
-    },
+    }
   ])
   .then((answers) => {
     // Remove special characters and replace space with -
@@ -118,7 +81,7 @@ inquirer
       .replace(/ /g, '-')
       .replace(/-+/g, '-')
     const frontmatter = genFrontMatter(answers)
-    const filePath = `data/blog/${fileName ? fileName : 'untitled'}.${
+    const filePath = `content/blog/${fileName ? fileName : 'untitled'}.${
       answers.extension ? answers.extension : 'md'
     }`
     fs.writeFile(filePath, frontmatter, { flag: 'wx' }, (err) => {
