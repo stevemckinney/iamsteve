@@ -6,7 +6,7 @@ import CustomLink from '@/components/Link'
 import TOCInline from '@/components/TOCInline'
 import Pre from '@/components/Pre'
 // import { BlogNewsletterForm } from './NewsletterForm'
-import { useMDXComponent } from "next-contentlayer/hooks"
+import { useMDXComponent } from 'next-contentlayer/hooks'
 
 const components = {
   Image,
