@@ -1,10 +1,13 @@
-import { notFound } from "next/navigation"
-import { allPages } from "contentlayer/generated"
+import { notFound } from 'next/navigation'
+import { allPages } from 'contentlayer/generated'
 
-import { Mdx } from "@/components/mdx-components"
+import { Mdx } from '@/components/mdx-components'
+
+export const dynamic = 'force-static'
+export const revalidate = 86400
 
 async function getPageFromParams(params) {
-  const slug = params?.slug?.join("/")
+  const slug = params?.slug?.join('/')
   const page = allPages.find((page) => page.slugAsParams === slug)
 
   if (!page) {
@@ -14,9 +17,7 @@ async function getPageFromParams(params) {
   return page
 }
 
-export async function generateMetadata({
-  params,
-}) {
+export async function generateMetadata({ params }) {
   const page = await getPageFromParams(params)
 
   if (!page) {
@@ -32,7 +33,7 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   return allPages.map((page) => ({
-    slug: page.slugAsParams.split("/"),
+    slug: page.slugAsParams.split('/'),
   }))
 }
 

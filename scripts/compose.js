@@ -9,16 +9,16 @@ const genFrontMatter = (answers) => {
   let d = new Date()
   const date = d.toISOString()
 
-  var currentPostID;
+  var currentPostID
 
   fs.readFile('./.current-post-id', function (err, data) {
-    data = data.toString("utf-8");
-    const i = parseInt(data);
-    var l = i;
-    l ++;
-    currentPostID = String(l);
-    fs.writeFile('./.current-post-id', currentPostID, function (err, data) {} );
-  });
+    data = data.toString('utf-8')
+    const i = parseInt(data)
+    var l = i
+    l++
+    currentPostID = String(l)
+    fs.writeFile('./.current-post-id', currentPostID, function (err, data) {})
+  })
 
   var updatedPostID = fs.readFileSync('./.current-post-id')
 
@@ -71,7 +71,7 @@ inquirer
       message: 'Set post as draft?',
       type: 'list',
       choices: ['open', 'draft', 'closed'],
-    }
+    },
   ])
   .then((answers) => {
     // Remove special characters and replace space with -

@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "contentlayer dev & next dev",
-    "build": "contentlayer build && next build && node ./scripts/generate-sitemap",
-    "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts"
+    "build": "NODE_OPTIONS=--trace-deprecation contentlayer build && next build && node ./scripts/generate-sitemap",
+    "serve": "next start",
+    "lint": "next lint --fix --dir app --dir components --dir lib --dir scripts"
   },
   "pnpm": {
     "overrides": {
@@ -31,7 +32,7 @@
     "date-fns": "^2.30.0",
     "dedent": "^0.7.0",
     "encoding": "^0.1.13",
-    "esbuild": "^0.18.13",
+    "esbuild": "^0.18.15",
     "eslint": "^8.45.0",
     "eslint-config-next": "^13.4.10",
     "eslint-config-prettier": "^8.8.0",

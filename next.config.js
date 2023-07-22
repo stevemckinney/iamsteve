@@ -4,14 +4,17 @@ const { withContentlayer } = require('next-contentlayer')
 const nextConfig = {
   compress: true,
   swcMinify: true,
-  reactStrictMode: true,
+  reactStrictMode: false,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+  experimental: {
+    serverActions: true,
+  },
   eslint: {
     dirs: ['app', 'components', 'lib', 'scripts'],
   },
   images: {
-    formats: ['image/avif', 'image/webp']
+    formats: ['image/avif', 'image/webp'],
   },
 }
 
-module.exports = withContentlayer(nextConfig);
+module.exports = withContentlayer(nextConfig)
