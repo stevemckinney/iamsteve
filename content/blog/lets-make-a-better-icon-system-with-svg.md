@@ -55,7 +55,7 @@ I’m going to use SS Standard, which was my go to icon font. **The next steps a
 Type out each icon, this depends on your icon font or set of icons. Either way, you need to fill a document with each icon.
 
 <div className="article-image">
-  <Image src="/static/images/blog/svg-vs-icon-fonts-typed-out-icons@2x.png" width={738} height={492} />
+  <Image src="/images/blog/svg-vs-icon-fonts-typed-out-icons@2x.png" width={738} height={492} />
 </div>
 
 **Change the colour to something that isn’t black**. This ensures on export everything will have a fill applied, for finding and replacing later. Black is the default colour so no fills will be applied.
@@ -67,20 +67,20 @@ Select the icons in your type layer and expand them by going to Object > Expand.
 By far the most tedious part, but a necessary step.
 
 <div className="article-image">
-  <Image src="/static/images/blog/svg-vs-icon-fonts-asset-export@2x.png" width={738} height={576} />
+  <Image src="/images/blog/svg-vs-icon-fonts-asset-export@2x.png" width={738} height={576} />
 </div>
 
 ### Exporting the icons
 Go to File > Export for Screens.
 
 <div className="article-image">
-  <Image src="/static/images/blog/svg-vs-icon-fonts-export-for-screens@2x.png" width={738} height={576} />
+  <Image src="/images/blog/svg-vs-icon-fonts-export-for-screens@2x.png" width={738} height={576} />
 </div>
 
 Click the little cog icon, next to ‘Android’.
 
 <div className="article-image">
-  <Image src="/static/images/blog/svg-vs-icon-fonts-inline-style@2x.png" width={738} height={492} />
+  <Image src="/images/blog/svg-vs-icon-fonts-inline-style@2x.png" width={738} height={492} />
 </div>
 
 Click SVG and change the ‘Styling’ option to ‘Inline Style’. This will make it easier to find and replace shortly. Finally, make sure responsive is unchecked, as when the icons are generated the fallback png will be larger.
@@ -114,7 +114,7 @@ So now you have all your SVG files prepared, head over to [Grumpicon](http://www
 
 ### Upload the SVG and download the files
 <div className="article-image">
-  <Image src="/static/images/blog/svg-vs-icon-fonts-grumpicon@2x.png" width={738} height={492} />
+  <Image src="/images/blog/svg-vs-icon-fonts-grumpicon@2x.png" width={738} height={492} />
 </div>
 
 After allowing Grumpicon to generate the necessary files, download them and it’s almost ready to go.

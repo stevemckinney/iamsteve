@@ -16,7 +16,7 @@ fileroot: "making-a-pricing-table-in-illustrator"
 Pricing tables are reasonably common for various types of services, they serve as a way to give the user an anchor. Generally meaning that you’ll be able to direct the customer into the package the company really wants to sell most of. While this post won’t cover the psychological side of that, it will focus on clarity and visual style. It’s an interesting website element to take a look at, so let’s start.
 
 ## What you’re making and download
-<figure><Image src="/static/images/blog/pricing-table_progress-6.png" className="wide-image" width={1024} height={768} /><figcaption><a href="https://www.dropbox.com/s/a2ukapy2ra9ql84/illustrator-pricing-table-download.ai?dl=0" style={{textDecoration: 'underline' }}>Feel free to download the finished files</a>.</figcaption></figure>
+<figure><Image src="/images/blog/pricing-table_progress-6.png" className="wide-image" width={1024} height={768} /><figcaption><a href="https://www.dropbox.com/s/a2ukapy2ra9ql84/illustrator-pricing-table-download.ai?dl=0" style={{textDecoration: 'underline' }}>Feel free to download the finished files</a>.</figcaption></figure>
 
 ## Choose your content
 You may have a real world use, which I would suggest using, but I’m going to use a fictional web hosting service as an example, with developers/designers with the ability to host side projects on different domains.
@@ -38,7 +38,7 @@ I’ve added a line through parts of the service that are not available in other
 A 3 column layout is a must, so that offers an immediate constraint. The decisions to be made are round highlighting the most important features. All the information is important in the table but the deciding factors would likely be based around price and what type of server.
 
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_sketches.jpg" width={738} height={492} />
+  <Image src="/images/blog/pricing-table_sketches.jpg" width={738} height={492} />
 </div>
 
 Initially I tried a couple of smaller sketches, and decided the name being larger is the best route. This is a common practice simply because price is always a hurdle, an important part, but you don’t want to emphasise it too much. The developer plan will have attention drawn to it through a slightly different size. The reason for this is the intention for it to be the most popular package.
@@ -46,7 +46,7 @@ Initially I tried a couple of smaller sketches, and decided the name being large
 ## Choose a typeface
 To get into more design choices, through the typeface, I’m going to use Work Sans. It offers good legibility and has a good options at the bolder and lighter ends of the scale.
 
-<figure><Image src="/static/images/blog/pricing-table_example.png" width={738} height={492} /><figcaption>Here’s a quick usage example.</figcaption></figure>
+<figure><Image src="/images/blog/pricing-table_example.png" width={738} height={492} /><figcaption>Here’s a quick usage example.</figcaption></figure>
 
 [You can find it on Google Fonts](https://www.google.com/fonts/specimen/Work+Sans), however, [you may like to make your own choice](/blog/how-to-choose-a-typeface-for-paragraphs).
 
@@ -54,7 +54,7 @@ To get into more design choices, through the typeface, I’m going to use Work S
 If you want to [choose your own palette](/blog/colour-series-picking-your-palette), I encourage you to, however this is the one I will be using.
 
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_colour-palette.png" width={738} height={492} />
+  <Image src="/images/blog/pricing-table_colour-palette.png" width={738} height={492} />
 </div>
 
 | Colour | Hex |
@@ -70,7 +70,7 @@ For this particular element it makes sense to get the rough layout defined by ty
 
 <div className="article-image">
   <Image
-    src="/static/images/blog/pricing-table_progress-1.png"
+    src="/images/blog/pricing-table_progress-1.png"
     className="wide-image"
     width={1024} height={768} />
 </div>
@@ -92,7 +92,7 @@ For the title of each I have chosen to make them red, as they will be quite rela
 The price doesn’t need to be too emphasised, but it allows you the opportunity to provide some good visual separation, between the title and details.
 
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_small-caps.png" width={738} height={492} />
+  <Image src="/images/blog/pricing-table_small-caps.png" width={738} height={492} />
 </div>
 
 For now make the value semibold and increase the size to 24px. Next change the ‘/mo’ to small caps keeping that at a regular weight and increasing the font size to 18px.
@@ -105,7 +105,7 @@ Finally make change the colour to `#4db898`.
 For the features, the server type is the most important factor. With a little knowledge you can immediately work out the quality you’ll get. So to add emphasis here is ideal, increase the weight to semibold.
 
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_leading.png" width={738} height={492} />
+  <Image src="/images/blog/pricing-table_leading.png" width={738} height={492} />
 </div>
 
 Change the colour to `#1a626e` and increase the leading to 32px. This will give sufficient space between each item.
@@ -117,7 +117,7 @@ The final step for the features is to have a way to show that they’re not incl
 The button text should be semibold and have a red background. Add a rounded rectangle, select it by finding the rectangle in the toolbar. Click and hold to reveal the extra items.
 
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_button-dimensions.png" width={738} height={492} />
+  <Image src="/images/blog/pricing-table_button-dimensions.png" width={738} height={492} />
 </div>
 
 For the ‘Order starter’ dimensions will be 132 width by 42 height. The corner radius will be 4px. Repeat this process for the other buttons, keeping the same height.
@@ -129,14 +129,14 @@ Finally, as the text colour won’t be very readable on this background colour c
 Now that you’ve applied all the text styles, and a background for the buttons you’re not far from complete.
 
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_progress-2.png" className="wide-image" width={1024} height={768} />
+  <Image src="/images/blog/pricing-table_progress-2.png" className="wide-image" width={1024} height={768} />
 </div>
 
 ## Making each section clear
 In these next steps you’ll make each section clearer. Firstly, select everything and press <kbd>cmd</kbd> + <kbd>g</kbd> and then open the align panel from Window > Align. Next change ‘Align to:’ to Align to Artboard.
 
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_align-window.png" width={738} height={492} />
+  <Image src="/images/blog/pricing-table_align-window.png" width={738} height={492} />
 </div>
 
 Align everything to the vertical centre, this sets everything up nicely for later alignment.
@@ -150,7 +150,7 @@ Now change the background to `#e1f7ee`. With the layer still selected press <kbd
 Find the rounded rectangle tool, then click the artboard and add dimensions 266px width by 516px height with a 4px radius.
 
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_progress-3.png" className="wide-image" width={1024} height={768} />
+  <Image src="/images/blog/pricing-table_progress-3.png" className="wide-image" width={1024} height={768} />
 </div>
 
 Once in place, press <kbd>cmd</kbd> + <kbd>[</kbd> until it has gone to the back of the text.
@@ -162,13 +162,13 @@ Things will be a little out of place with the central column, select everything 
 
 #### Add a shadow
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_dropshadow-menu.png" width={738} height={492} />
+  <Image src="/images/blog/pricing-table_dropshadow-menu.png" width={738} height={492} />
 </div>
 
 Next with the shape still selected, in the menu go to Effect > Stylize > Drop Shadow.
 
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_dropshadow-settings.png" width={738} height={492} />
+  <Image src="/images/blog/pricing-table_dropshadow-settings.png" width={738} height={492} />
 </div>
 
 With the drop shadow window open, add the following settings:
@@ -195,7 +195,7 @@ Select both of the shadow layers and group them with <kbd>cmd</kbd> + <kbd>g</kb
 
 #### Duplicate
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_progress-5.png" className="wide-image" width={1024} height={768} />
+  <Image src="/images/blog/pricing-table_progress-5.png" className="wide-image" width={1024} height={768} />
 </div>
 
 With the group still selected, paste in place <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>. Then nudge across until it lines up nicely at the side. Repeat this process again.
@@ -204,7 +204,7 @@ With the group still selected, paste in place <kbd>cmd</kbd> + <kbd>shift</kbd> 
 Now you should have two rectangles at either side. Select both of them and subtract 24px from their height.
 
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_transform-reference.png" width={738} height={492} />
+  <Image src="/images/blog/pricing-table_transform-reference.png" width={738} height={492} />
 </div>
 
 Making sure your reference point is in the centre, and constrain width and height proportions is off.
@@ -216,7 +216,7 @@ This is [aligning to a key object](/blog/illustrator-quick-tip-align-to-key-obje
 
 ## Adding visual separation to the price
 <div className="article-image">
-  <Image src="/static/images/blog/pricing-table_progress-6.png" className="wide-image" width={1024} height={768} />
+  <Image src="/images/blog/pricing-table_progress-6.png" className="wide-image" width={1024} height={768} />
 </div>
 
 After getting this far, there is only improving the visual separation of the price. Add a rectangle that is 266px width by 54px height, with the fill colour `#fff6e5`. Place it roughly behind the price, then using the align to key object technique

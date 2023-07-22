@@ -30,12 +30,12 @@ To export press <kbd>cmd</kbd> + <kbd>alt</kbd> + <kbd>e</kbd> or go to file > e
 ### Use artboards
 You will be presented with a window to choose your file name and location. **Modify this as necessary, then select ’Use Artboards’**.
 
-<Image src="/static/images/blog/export-2x-png-post-image_use-artboards.png" width={738} height={492} />
+<Image src="/images/blog/export-2x-png-post-image_use-artboards.png" width={738} height={492} />
 
 ### Changing the resolution
 **This next step is the most important**, as this is what allows us to export at a different size. The dropdown menu has a few options, **in this case you want to select ‘Other’**.
 
-<Image src="/static/images/blog/export-2x-png-post-image_ppi.png" width={738} height={492} />
+<Image src="/images/blog/export-2x-png-post-image_ppi.png" width={738} height={492} />
 
 In the ppi field add 144. The current resolution is Screen 72 ppi, so with doubling it, this will get you the 2x size. 
 

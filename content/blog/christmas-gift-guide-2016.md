@@ -25,7 +25,7 @@ Hopefully you find it handy, if like me you need ideas sometimes.
 ## Tombow ABT dual brush pen — £2.95
 
 <figure>
-<Image src="/static/images/blog/tombow@2x.png" width={832} height={626} />
+<Image src="/images/blog/tombow@2x.png" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -40,7 +40,7 @@ It also helps that it comes in huge variety of colours. I like to use a cool gre
 ## DDC: Pretty much everything — £19.99
 
 <figure>
-<Image src="/static/images/blog/ddc@2x.jpg" width={832} height={626} />
+<Image src="/images/blog/ddc@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -55,7 +55,7 @@ I figured it would be true of the book and I wasn’t wrong. The book is inspira
 ## Logotype mini — £12.95
 
 <figure>
-<Image src="/static/images/blog/logotype@2x.jpg" width={832} height={626} />
+<Image src="/images/blog/logotype@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -68,7 +68,7 @@ Similarly to the DDC book, this is another huge source of logos. It has a nice c
 ## Let’s draw: Illustration school — £12.99
 
 <figure>
-<Image src="/static/images/blog/lets-draw@2x.jpg" width={832} height={626} />
+<Image src="/images/blog/lets-draw@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -83,7 +83,7 @@ If you’re wanting to be better at drawing or want a good way to practice, this
 ## Apple Watch – from £269
 
 <figure>
-<Image src="/static/images/blog/apple-watch@2x.jpg" width={832} height={626} />
+<Image src="/images/blog/apple-watch@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Unsplash
 </figcaption>
@@ -98,7 +98,7 @@ I definitely don’t, the most useful stuff for me is Apple Pay, passbook, timer
 ## Native Union Dock for Apple Watch – £50
 
 <figure>
-<Image src="/static/images/blog/watch-dock@2x.jpg" width={832} height={626} />
+<Image src="/images/blog/watch-dock@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -113,7 +113,7 @@ As an aside, Native Union make some nice phone docks too.
 
 ## Skillshare subscription – $96 year
 <div className="article-image">
-  <Image src="/static/images/blog/skillshare@2x.png" width={832} height={626} />
+  <Image src="/images/blog/skillshare@2x.png" width={832} height={626} />
 </div>
 
 A yearly Skillshare subscription is affordable versus other websites. If like me you don’t always have the time to learn on a monthly basis it can become costly.
@@ -124,7 +124,7 @@ Not only because of cost, but I find that Skillshare has more design material. I
 
 ## Present & Correct stationery
 <figure>
-<Image src="/static/images/blog/present-correct@2x.jpg" width={832} height={626} />
+<Image src="/images/blog/present-correct@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Present & Correct
 </figcaption>
@@ -137,7 +137,7 @@ I didn’t pick anything specific from here as it’s too difficult. Everything 
 ## Sandqvist Hege Backpack — €220
 
 <figure>
-<Image src="/static/images/blog/sandqvist@2x.jpg" width={832} height={626} />
+<Image src="/images/blog/sandqvist@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Sandqvist
 </figcaption>
@@ -151,7 +151,7 @@ A stylish backpack that’s not too small, but not too large and looks to cater 
 ## Umbra Toto Storage Caddy ~ £30
 
 <figure>
-<Image src="/static/images/blog/umbra-caddy@2x.jpg" width={832} height={626} />
+<Image src="/images/blog/umbra-caddy@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -164,7 +164,7 @@ A really neat and tidy desk storage. I really like the compartment that opens.
 ## Ecooe teapot infuser — ~£16
 
 <figure>
-<Image src="/static/images/blog/ecooe@2x.jpg" width={832} height={626} />
+<Image src="/images/blog/ecooe@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -177,7 +177,7 @@ I’m more of a tea person over coffee. This looks like a handy way to make loos
 ## Polaroid ZIP mobile printer – £99
 
 <figure>
-<Image src="/static/images/blog/polaroid@2x.jpg" width={832} height={626} />
+<Image src="/images/blog/polaroid@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>
@@ -190,7 +190,7 @@ It seems to be gaining popularity small printers for printing pictures from phon
 ## Fujifilm Instax mini 90 ~£119
 
 <figure>
-<Image src="/static/images/blog/instax@2x.jpg" width={832} height={626} />
+<Image src="/images/blog/instax@2x.jpg" width={832} height={626} />
 <figcaption>
 Credit: Amazon
 </figcaption>

@@ -25,17 +25,17 @@ The main aim of this week was to try get a few featured images out. It’s somet
 
 ### Colour series
 <div className="article-image">
-  <Image src="/static/images/blog/colour-series-post-images-011.png" width={738} height={492} />
+  <Image src="/images/blog/colour-series-post-images-011.png" width={738} height={492} />
 </div>
 
 ### Hero area series
 <div className="article-image">
-  <Image src="/static/images/blog/hero-area-post-images-01.png" width={738} height={492} />
+  <Image src="/images/blog/hero-area-post-images-01.png" width={738} height={492} />
 </div>
 
 ### How to use swatches in Illustrator
 <div className="article-image">
-  <Image src="/static/images/blog/use-swatches-01.png" width={738} height={492} />
+  <Image src="/images/blog/use-swatches-01.png" width={738} height={492} />
 </div>
 
 ### Challenging
@@ -64,7 +64,7 @@ I spent some time making regular HTML links, then realised how much effort it wa
 
 ### Sequel Pro tool
 <div className="article-image">
-  <Image src="/static/images/blog/tools_sequel-pro.png" width={738} height={492} />
+  <Image src="/images/blog/tools_sequel-pro.png" width={738} height={492} />
 </div>
 
 I missed off Sequel Pro from my tools post. I realised shortly afterwards, I hadn’t added it. [Read the updated article](/blog/tools-i-use).

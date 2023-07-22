@@ -50,9 +50,9 @@ I’ve used Google’s PageSpeed lazy load module before. While it was as simple
 ## Two more hamburger alternatives
 Basecamp recently redesigned their website and Quartz is another I came across.
 
-[<Image src="/static/images/blog/bottom-nav-basecamp.jpg" width={960} height={832} />](https://basecamp.com)
+[<Image src="/images/blog/bottom-nav-basecamp.jpg" width={960} height={832} />](https://basecamp.com)
 
-[<Image src="/static/images/blog/bottom-nav-quartz.jpg" width={960} height={832} />](http://qz.com)
+[<Image src="/images/blog/bottom-nav-quartz.jpg" width={960} height={832} />](http://qz.com)
 
 Both are great navigation examples. [View all the examples in the post](/blog/websites-using-alternatives-to-the-hamburger).
 

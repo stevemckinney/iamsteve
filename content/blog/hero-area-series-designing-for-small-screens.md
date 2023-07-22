@@ -20,7 +20,7 @@ The second post in this series the focus switches to small screens. The previous
 
 ## What we’re designing
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-final-small.png" width={640} height={568} />
+  <Image src="/images/blog/ch-final-small.png" width={640} height={568} />
 </div>
 
 ## Don’t want to do the tutorial?
@@ -28,7 +28,7 @@ If you'd like to skip ahead, [download the completed Illustrator file](https://w
 
 ## Refresher on the sketches
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-sketches.jpg" width={640} height={710} />
+  <Image src="/images/blog/ch-sketches.jpg" width={640} height={710} />
 </div>
 
 Referring back to the sketch, the aim is to keep the same kind of layout. It will be tricky to achieve for the 320px to 380px wide screens, you will have to use the space efficiently.
@@ -40,7 +40,7 @@ I’ve chosen the iPhone 5s resolution size, at 320px wide it gives us a minimum
 
 ## Add a background layer
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-new-layer-rename-lock.gif" width={640} height={320} />
+  <Image src="/images/blog/ch-new-layer-rename-lock.gif" width={640} height={320} />
 </div>
 
 If you’re carrying on [from the previous post](/blog/hero-area-series-plan-design). You added a ‘small-screen’ layer, add the same blue background as our ‘large-screen’ layer, appropriately sized to the artboard.
@@ -59,7 +59,7 @@ Similarly the button needs adjusting, it needs to feel apart of the layout propo
 
 ### Where you should be
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-without-image.png" width={640} height={568} />
+  <Image src="/images/blog/ch-without-image.png" width={640} height={568} />
 </div>
 
 We’re aiming for the text and button to occupy just over 50% of the space. For such a narrow screen, it’s important to maintain some kind of line length. The image will occupy enough of the space to be purposeful too.
@@ -71,28 +71,28 @@ The image doesn’t seem straight forward, but if you think the whole of the ima
 Making a symbol allows us to make adjustments to both images from one place, should we need to in future. Go to Window > Symbols, select the image from the larger artboard and drag it into the Symbols panel.
 
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-add-symbol.png" width={640} height={420} />
+  <Image src="/images/blog/ch-add-symbol.png" width={640} height={420} />
 </div>
 
 You’ll be presented with Symbol Options, give it a name, and change the registration by clicking the top left. Finally, click OK.
 
 ### Adding the symbol
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-symbol-panel.png" width={640} height={420} />
+  <Image src="/images/blog/ch-symbol-panel.png" width={640} height={420} />
 </div>
 
 With your ‘small-screen’ artboard selected, drag the symbol into your document to your small screen artboard.
 
 ## Masking the artboard
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-rough-position.png" width={640} height={420} />
+  <Image src="/images/blog/ch-rough-position.png" width={640} height={420} />
 </div>
 
 You’ll have the image roughly positioned. For completeness, we want that to only show. The easiest way to do this is with a mask.
 
 ### Paste the background layer on top
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-everything-selected.png" width={640} height={420} />
+  <Image src="/images/blog/ch-everything-selected.png" width={640} height={420} />
 </div>
 
 Select the background layer, and paste it in place by pressing <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>. Now select everything on that artboard by clicking and dragging to select.
@@ -101,7 +101,7 @@ Finally, press <kbd>cmd</kbd> + <kbd>7</kbd> this makes a mask.
 
 ## What you should end up with
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-final-small.png" width={640} height={568} />
+  <Image src="/images/blog/ch-final-small.png" width={640} height={568} />
 </div>
 
 As the image demonstrates the Customizer UI is still showing. This is a nice balance of image against text. It won’t always work this favourably, however, if we try, our layouts are much more coherent.

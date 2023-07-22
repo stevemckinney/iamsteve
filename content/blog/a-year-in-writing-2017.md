@@ -68,7 +68,7 @@ Over the course of the year I’d made some bigger changes but many small improv
 - Lazy loading images
 
 <div className="article-image">
-  <Image src="/static/images/blog/homepage-change@2x.png" width={1024} height={480} />
+  <Image src="/images/blog/homepage-change@2x.png" width={1024} height={480} />
 </div>
 
 There’s quite a change between these two homepages. It seems people resonated more with the full width hero area in terms of design.
@@ -125,7 +125,7 @@ It’s nice to see some of the newer articles I have wrote move into this list i
 
 ### Summary of the year
 <figure>
-<Image src="/static/images/blog/summary-2017@2x.png" width={738} height={492} />
+<Image src="/images/blog/summary-2017@2x.png" width={738} height={492} />
 <figcaption>Sessions: 131.2k, users: 103.8k, page views: 263.9k, pages per session: 2.01, avg. session: 1m 17s.</figcaption>
 </figure>
 

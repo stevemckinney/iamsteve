@@ -23,7 +23,7 @@ export default function FooterProfile() {
       </section>
       <section className="column column-4-b column-5-d rio-osc text-right items-end-b" id="rio-osc">
         <Image
-          src="/static/images/rio-osc.svg"
+          src="/images/rio-osc.svg"
           alt="An illustration of two dogs, a red Border Collie and Jack Russell cross"
           width={512}
           height={288}

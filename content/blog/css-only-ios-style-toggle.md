@@ -26,7 +26,7 @@ Here’s what will be explained in the coming paragraphs. Feel free to explore t
 
 ## Identifying elements in the design
 <div className="article-image">
-  <Image src="/static/images/blog/ios-toggle-example.png" width={738} height={492} />
+  <Image src="/images/blog/ios-toggle-example.png" width={738} height={492} />
 </div>
 
 To understand what happens with this toggle, it’s more ‘faking’ the element. It’s still a regular checkbox, but to make the toggle work you need to retain the behaviour.

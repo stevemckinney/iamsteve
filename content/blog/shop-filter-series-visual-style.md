@@ -33,14 +33,14 @@ If you'd like to download the files to have a look and skip ahead feel free.
 At the end of this post the majority of the visual style will be applied, aside from on the filters themselves.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-filter-03-progress-5.png" width={738} height={630} />
+  <Image src="/images/blog/shop-filter-03-progress-5.png" width={738} height={630} />
 </div>
 
 ## Colour palette
 Firstly it’s necessary to choose colour palette. This really sets the tone for how things move forward. Choosing this early on is ideal. For this design the intention is to have a luxurious feel.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-filter-03-colour-palette.png" width={738} height={492} />
+  <Image src="/images/blog/shop-filter-03-colour-palette.png" width={738} height={492} />
 </div>
 
 | Number | Name | Hex |
@@ -57,7 +57,7 @@ Things with a dark theme tend to be trickier to design, so this makes for a good
 ### Opening swatches
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-filter-03-import-swatches.png" width={738} height={492} />
+  <Image src="/images/blog/shop-filter-03-import-swatches.png" width={738} height={492} />
 </div>
 
 If you downloaded the swatch palette earlier, open the swatches panel by going to Window > Swatches. Then click the little icon at the top right of the panel. In that menu go to ‘Open Swatch Library’, then ‘Other Library’.
@@ -96,7 +96,7 @@ To add to the luxury feel add dividers between each filter.
 - Duplicate for the other 3
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-filter-03-progress-1.png" width={738} height={630} />
+  <Image src="/images/blog/shop-filter-03-progress-1.png" width={738} height={630} />
 </div>
 
 ## Header, logo & icons
@@ -108,7 +108,7 @@ Then, similarly to the filter bar, double click to edit the symbol. Make the bac
 Moving on to content, select the background layer and change the colour to number 4.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-filter-03-progress-2.png" width={738} height={630} />
+  <Image src="/images/blog/shop-filter-03-progress-2.png" width={738} height={630} />
 </div>
 
 ### All text
@@ -118,7 +118,7 @@ Change all the text colour to number 2.
 You can add actual placeholder images or change their background colour to 4. This will make things more realistic or more fitting.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-filter-03-progress-3.png" width={738} height={630} />
+  <Image src="/images/blog/shop-filter-03-progress-3.png" width={738} height={630} />
 </div>
 
 
@@ -129,19 +129,19 @@ Now you have something that looks complete. However, you can add a little extra 
 Copy one of the rectangles for a filter background. Paste it in place <kbd>cmd + f</kbd>. Make the width 320px by stretching it to the artboard or using the transform panel.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-filter-03-dropshadow-menu.png" width={738} height={492} />
+  <Image src="/images/blog/shop-filter-03-dropshadow-menu.png" width={738} height={492} />
 </div>
 
 Click the ‘fx’ icon and go to Stylize > Drop Shadow.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-filter-03-dropshadow-settings.png" width={738} height={492} />
+  <Image src="/images/blog/shop-filter-03-dropshadow-settings.png" width={738} height={492} />
 </div>
 
 Add a black shadow with the settings 80% opacity 0px X and Y offset, 4px blur.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-filter-03-progress-4.png" width={738} height={492} />
+  <Image src="/images/blog/shop-filter-03-progress-4.png" width={738} height={492} />
 </div>
 
 Finally, move that layer backwards with <kbd>cmd + [</kbd>.
@@ -150,13 +150,13 @@ Finally, move that layer backwards with <kbd>cmd + [</kbd>.
 Now that the shadow has been added, it causes a bit of an undesirable blended appearance. To account for that you need to add a gradient to each of the rectangles. It’s kind of like a bevel highlight.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-filter-03-progress-5.png" width={738} height={630} />
+  <Image src="/images/blog/shop-filter-03-progress-5.png" width={738} height={630} />
 </div>
 
 Select each of the individual rectangles, and open the gradient panel, by going to Window > Gradient. Click the gradient in the panel, which should change the fills, to a white to black gradient.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-filter-03-filter-gradient.png" width={738} height={492} />
+  <Image src="/images/blog/shop-filter-03-filter-gradient.png" width={738} height={492} />
 </div>
 
 Using colours 3 and 4 in the two gradient points. The first point at 92.5% and the other at 100% creates a subtle highlight.

@@ -24,12 +24,12 @@ If you want to catch up [download the wireframe](https://www.dropbox.com/s/smpvf
 There was very little in the way of visual design done in the previous post, aside from the text. So there are many changes that need to be made to make this easier to understand.
 
 <div className="article-image">
-  <Image src="/static/images/blog/datepicker_final.png" width={738} height={492} />
+  <Image src="/images/blog/datepicker_final.png" width={738} height={492} />
 </div>
 
 ## What you’ll end up with
 <div className="article-image">
-  <Image src="/static/images/blog/datepicker_completed.png" width={738} height={492} />
+  <Image src="/images/blog/datepicker_completed.png" width={738} height={492} />
 </div>
 
 If you want skip the post altogether [download the completed file](https://www.dropbox.com/s/b3vt57d5emnm05z/datepicker-completed.ai?dl=0).
@@ -50,7 +50,7 @@ These are the following things that will be added or improved:
 I'm going to use a simple colour palette made up of 3 colours with a few tints and shades. A blue, green and white.
 
 <figure>
-<Image src="/static/images/blog/datepicker_palette.png" width={738} height={246} />
+<Image src="/images/blog/datepicker_palette.png" width={738} height={246} />
 <figcaption>
 I have numbered the colours for easier reference.
 1: #0c464c, 2: #1a626e, 3: #adc9c8, 4: #c9d6d6, 5: #87d4be, 6: #e1f7ee, 7; #ffffff.
@@ -74,7 +74,7 @@ It can be frustrating to have to select so many items and try avoid other items.
 First select a square, in which the days and boxes behind the days should be grouped together. Double click the group, this should isolate that area.
 
 <div className="article-image">
-  <Image src="/static/images/blog/datepicker_same-stroke-fill.png" width={738} height={492} />
+  <Image src="/images/blog/datepicker_same-stroke-fill.png" width={738} height={492} />
 </div>
 
 Then in the menu find Select > Same, then choose Fill & Stroke. The relevant items will now be selected.
@@ -92,7 +92,7 @@ Once selected change their fill to colour 3 (#adc9c8). Double click the artboard
 
 ### Where you should be
 <div className="article-image">
-  <Image src="/static/images/blog/datepicker_days-filled.png" width={738} height={492} />
+  <Image src="/images/blog/datepicker_days-filled.png" width={738} height={492} />
 </div>
 
 ## Visually separate the current month area from the dates
@@ -109,7 +109,7 @@ While the arrows were put in place considering size to an extent, their weight i
 Select both arrows and open the stroke panel. In the menu find Window > Stroke, if you don’t have it open already.
 
 <div className="article-image">
-  <Image src="/static/images/blog/datepicker_stroke-updates.png" width={738} height={492} />
+  <Image src="/images/blog/datepicker_stroke-updates.png" width={738} height={492} />
 </div>
 
 Increase the stroke to 2px and change the cap and corner to round.
@@ -118,7 +118,7 @@ Increase the stroke to 2px and change the cap and corner to round.
 Change your selection to only having one arrow. Then open the transform panel, in the menu find Window > Transform.
 
 <div className="article-image">
-  <Image src="/static/images/blog/datepicker_arrow-transform.png" width={738} height={492} />
+  <Image src="/images/blog/datepicker_arrow-transform.png" width={738} height={492} />
 </div>
 
 Change your reference point to the middle and make sure you constrain the proportions. After that reduce the height to 12px.
@@ -129,7 +129,7 @@ Repeat the process for the other arrow. The weight and sizing of the arrows feel
 For this step it will involve applying rounded corners to the necessary corner most objects.
 
 <div className="article-image">
-  <Image src="/static/images/blog/datepicker_round-corners-top.png" width={738} height={492} />
+  <Image src="/images/blog/datepicker_round-corners-top.png" width={738} height={492} />
 </div>
 
 Open the transform panel, with your shape selected and you should see ‘Rectangle Properties’ below the usual options. Individually add 4px (or a radius you prefer) to the top left and right corners.
@@ -137,7 +137,7 @@ Open the transform panel, with your shape selected and you should see ‘Rectang
 Sometimes when selecting an object the options won’t show, I’m not sure why this is. To get around this, you can use the direct selection tool, by pressing <kbd>a</kbd>. Then select an individual point at the corner you want to round.
 
 <figure>
-<Image src="/static/images/blog/datepicker_round-tricky.png" width={738} height={492} />
+<Image src="/images/blog/datepicker_round-tricky.png" width={738} height={492} />
 <figcaption>
 Repeat this for the very last day within the datepicker.
 </figcaption>
@@ -152,7 +152,7 @@ It’s important that when interacting with a datepicker it’s clear what’s s
 For the hover state we’re going to draw a new rounded rectangle with a fill using colour 6 (#e1f7ee). Select the rounded rectangle tool. Which you can get to by clicking and holding the rectangle tool, and a menu should pop out from the toolbar.
 
 <div className="article-image">
-  <Image src="/static/images/blog/datepicker_hover-rectangle.png" width={738} height={492} />
+  <Image src="/images/blog/datepicker_hover-rectangle.png" width={738} height={492} />
 </div>
 
 Next, fill using colour 6 (#e1f7ee), then drag the rectangle towards a number of choice. It should be covering the number, to stop this use <kbd>cmd</kbd> + <kbd>[</kbd> until it goes behind the number.
@@ -161,13 +161,13 @@ Next, fill using colour 6 (#e1f7ee), then drag the rectangle towards a number of
 Then using the [technique to align from the previous post](/blog/how-to-datepicker-using-illustrator). Select both the hover and background shapes. Then open the align panel, in the menu go to Window > Align.
 
 <div className="article-image">
-  <Image src="/static/images/blog/datepicker_show-options.png" width={738} height={492} />
+  <Image src="/images/blog/datepicker_show-options.png" width={738} height={492} />
 </div>
 
 Open the align window, by going to the menu Window > Align. Then you need to click the icon in the top right below the double left arrows to expand the window. Once you have revealed the menu, click ‘Show Options’.
 
 <div className="article-image">
-  <Image src="/static/images/blog/datepicker_align-key-object.png" width={738} height={492} />
+  <Image src="/images/blog/datepicker_align-key-object.png" width={738} height={492} />
 </div>
 
 With both objects selected choose ‘Align to Key Object’, then click the background square. The blue border should get thicker, showing that the key object is selected.
@@ -181,7 +181,7 @@ You can do this by duplicating the original square and following the same alignm
 
 ## That’s it
 <div className="article-image">
-  <Image src="/static/images/blog/datepicker_completed.png" width={738} height={492} />
+  <Image src="/images/blog/datepicker_completed.png" width={738} height={492} />
 </div>
 
 If you’re newer to Illustrator, over the course of these two posts hopefully you have learnt a good few techniques that help make designing a bit more efficient.

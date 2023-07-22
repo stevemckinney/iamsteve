@@ -54,7 +54,7 @@ I’ve always liked the idea of a ‘mascot’. I’ve started small, but it all
 I wanted to use this opportunity, to try something I don’t do often. I enjoy illustrating, but it isn’t my strongest skill. I reminded myself that it’s the only way to learn.
 
 <figure>
-<Image src="/static/images/blog/casestudy-v6-sketches-rio-osc@2x.jpg" width={738} height={1671} />
+<Image src="/images/blog/casestudy-v6-sketches-rio-osc@2x.jpg" width={738} height={1671} />
 <figcaption>
 Some of the sketches for both illustrations. Illustrator can be very forgiving in the overall outcome.
 </figcaption>
@@ -62,7 +62,7 @@ Some of the sketches for both illustrations. Illustrator can be very forgiving i
 
 ### The final illustrations
 <div className="article-image">
-  <Image src="/static/images/blog/casestudy-v6-final-illustrations.png" width={738} height={492} />
+  <Image src="/images/blog/casestudy-v6-final-illustrations.png" width={738} height={492} />
 </div>
 
 I’m really proud of these, it was a lengthy process of iterating on shading, and reshaping, to make them look right. I feel like I have made something good.
@@ -75,7 +75,7 @@ To begin with I always start with an initial colour palette that I iterate on du
 The main goal towards usage of colour is to appear confident. When I look at other designers websites I admire, there is always great use of colour within those.
 
 <figure>
-<Image src="/static/images/blog/casestudy-v6-red-green.png" width={738} height={492} />
+<Image src="/images/blog/casestudy-v6-red-green.png" width={738} height={492} />
 <figcaption>
 Red is a confident colour. Green is more neutral, which evens things out.
 </figcaption>
@@ -88,7 +88,7 @@ The relation to that was in the illustrations of the collars on my dogs. Which w
 I paired that with yellow, dark purple and dark blue. These additional colours contrast, complement and give me a selection to work with for featured images and text.
 
 <div className="article-image">
-  <Image src="/static/images/blog/casestudy-v6-colour-palette.png" width={738} height={492} />
+  <Image src="/images/blog/casestudy-v6-colour-palette.png" width={738} height={492} />
 </div>
 
 With those colours I broke them down into two complementary palettes that are tied together by a common yellow colour. Of course there are plenty of tints and shades to go along with that to use as and when necessary.
@@ -125,21 +125,21 @@ My observations were:
 I had done so many sketches, settling on the idea that the introduction accompanied a latest post.
 
 <figure>
-<Image src="/static/images/blog/casestudy-v6-sketches-set-1.jpg" width={738} height={492} />
+<Image src="/images/blog/casestudy-v6-sketches-set-1.jpg" width={738} height={492} />
 <figcaption>Early sketches kind of had the idea of a space theme.</figcaption>
 </figure>
 
 Sketching serves as a way to explore themes and ideas that may fit the style of the website.
 
 <figure>
-<Image src="/static/images/blog/casestudy-v6-sketches-set-2@2x.jpg" width={738} height={492} />
+<Image src="/images/blog/casestudy-v6-sketches-set-2@2x.jpg" width={738} height={492} />
 <figcaption>The latest post idea emerging. A split screen with latest post and introduction too.</figcaption>
 </figure>
 
 I progressed through the sketches considering the priority of the content. As mentioned earlier I did debate the value of an introductory area, which I’ve gone for. Along with the latest post it seemed the right thing to do. Following with more recent posts, the newsletter subscription and popular posts.
 
 <div className="article-image">
-  <Image src="/static/images/blog/casestudy-v6-sketches-set-3@2x.jpg" width={738} height={492} />
+  <Image src="/images/blog/casestudy-v6-sketches-set-3@2x.jpg" width={738} height={492} />
 </div>
 
 Small screen and post versions were explored too at different stages.
@@ -148,13 +148,13 @@ Small screen and post versions were explored too at different stages.
 I had a reasonably good idea what I wanted to do from the sketches and planning earlier. The ‘wireframes’ closely matched my sketches, for the layout and visual style to be iterated upon further.
 
 <div className="article-image">
-  <Image src="/static/images/blog/casestudy-v6-wireframe-home.png" width={738} height={1438} />
+  <Image src="/images/blog/casestudy-v6-wireframe-home.png" width={738} height={1438} />
 </div>
 
 I used Avant Garde throughout the wireframes. Usually I would decide typefaces early, but it can be expensive mistake if you get it wrong. I picked based upon what I had available to me already, that matched closely to the requirements. It turned out to be a good decision.
 
 <div className="article-image">
-  <Image src="/static/images/blog/casestudy-v6-wireframe-blog.png" width={738} height={1438} />
+  <Image src="/images/blog/casestudy-v6-wireframe-blog.png" width={738} height={1438} />
 </div>
 
 I produced wireframes for only the homepage and blog/category pages.
@@ -170,7 +170,7 @@ The specifics I wanted within typefaces aside from legibility were to fit in wit
 I was looking for a sans serif, typeface that was something along the lines of, ITC Avant Garde Gothic, but not as geometric and a little softer.
 
 <div className="article-image">
-  <Image src="/static/images/blog/casestudy-v6-averta.png" width={738} height={492} />
+  <Image src="/images/blog/casestudy-v6-averta.png" width={738} height={492} />
 </div>
 
 I needed something that would be for the long term. I wanted to look at the choice objectively as possible. I eventually stumbled upon Averta from The Designers Foundry.
@@ -210,7 +210,7 @@ I’ve done a fair amount so far. I’ve done some I’m happy with and others n
 Another tricky area to achieve balance with and variety. The idea that was prominent in my mind was type sizes are a pain to manage responsively.
 
 <figure>
-<Image src="/static/images/blog/casestudy-v6-type-sizing.png" width={738} height={492} />
+<Image src="/images/blog/casestudy-v6-type-sizing.png" width={738} height={492} />
 <figcaption>I use 7 sizes, ranging from 48px to 14px.</figcaption>
 </figure>
 

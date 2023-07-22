@@ -38,14 +38,14 @@ You're designing a website for a clothing company and at the stage of designing 
 With those types in mind and it being a ‘tab bar’ you’ll need to sketch several screens. Icons will be needed to provide a representation of what the filter is, you’ll pair this with text underneath the icon for clarity.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-tabbar-sketch-overview.jpg" width={960} height={864} />
+  <Image src="/images/blog/shop-tabbar-sketch-overview.jpg" width={960} height={864} />
 </div>
 
 ### Sketching icons
 The idea with sketching icons is to think of the best representation for that word, which is also the most simplest. Sketch as many ideas as you need to, get all the poor ideas out and see what happens.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-tabbar-sketch-focus-icons.jpg" width={960} height={576} />
+  <Image src="/images/blog/shop-tabbar-sketch-focus-icons.jpg" width={960} height={576} />
 </div>
 
 Each icon is based upon a 24x24px square. As their creation is somewhat out of the scope of this post, [you can download ones I’ve made](https://www.dropbox.com/s/21r4djfbak0mj27/shop-filter-icons.ai?dl=0).
@@ -62,7 +62,7 @@ You’re going to start the process by wireframing everything. This will allow y
 First you need to get the basics in place. You need a document with 5 artboards sized 320x568, based upon the smaller iPhone.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-tabbar-new-document.png" width={640} height={528} />
+  <Image src="/images/blog/shop-tabbar-new-document.png" width={640} height={528} />
 </div>
 
 ### Add a background layer
@@ -75,7 +75,7 @@ Add a new layer in the layers panel and name it ‘grid’. Copy the background 
 With the layer still selected, open the transform panel, which can be found in the menu Window > Transform.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-tabbar-grid-transform.png" width={640} height={420} />
+  <Image src="/images/blog/shop-tabbar-grid-transform.png" width={640} height={420} />
 </div>
 
 With a central reference point and constrain proportions unchecked, subtract 48px from the width. The layer should remain selected and be central
@@ -84,14 +84,14 @@ With a central reference point and constrain proportions unchecked, subtract 48p
 With the layer still selected, in the menu bar go to Object > Path > Split into Grid.
 
 <figure>
-<Image src="/static/images/blog/shop-tabbar-grid-settings.png" width={640} height={420} />
+<Image src="/images/blog/shop-tabbar-grid-settings.png" width={640} height={420} />
 <figcaption>Add two columns with a 12px gutter.</figcaption>
 </figure>
 
 Once you have added those settings, click ok. **Copy those layers, then click the artboard next to it and paste in place** <kbd><kbd>cmd</kbd> + <kbd>f</kbd></kbd>.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-tabbar-paste-in-artboards.gif" width={748} height={408} />
+  <Image src="/images/blog/shop-tabbar-paste-in-artboards.gif" width={748} height={408} />
 </div>
 
 Repeat this process for the other artboards. **Then select all the  grid columns in each artboard and press** <kbd><kbd>cmd</kbd> + <kbd>5</kbd></kbd>.
@@ -100,7 +100,7 @@ Repeat this process for the other artboards. **Then select all the  grid columns
 Add another two rectangles with the dimensions 320x44, fill them white. Align one to the top and one to bottom of the artboard.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-tabbar-progress-1.png" width={896} height={420} />
+  <Image src="/images/blog/shop-tabbar-progress-1.png" width={896} height={420} />
 </div>
 
 ## Header
@@ -115,12 +115,12 @@ Next add a logo, which needs to be aligned to the horizontal centre of the heade
 ### Align the icons and logo
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-tabbar-align-panel.png" width={640} height={420} />
+  <Image src="/images/blog/shop-tabbar-align-panel.png" width={640} height={420} />
 </div>
 
 Select the header background, the icons and the logo. Then click the header background again, to [align to a key object](). Next, go to Window > Align to open the align panel.
 
-<figure><Image src="/static/images/blog/shop-tabbar-progress-2.png" width={640} height={640} /><figcaption>You should have something which looks similar to this.</figcaption></figure>
+<figure><Image src="/images/blog/shop-tabbar-progress-2.png" width={640} height={640} /><figcaption>You should have something which looks similar to this.</figcaption></figure>
 
 ## Add content
 Towards the top, make two text layers. One with ‘Shop’ and the other ‘Browsing 84 styles’. With this the filter has an additional indication to show the page has updated.
@@ -131,7 +131,7 @@ I have made the title have an 18px font size. The styles counter is has a font s
 Now to add content in the way of products. Using a rectangle as a placeholder image, adding a title and price to make up a product.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-tabbar-progress-3.png" width={640} height={640} />
+  <Image src="/images/blog/shop-tabbar-progress-3.png" width={640} height={640} />
 </div>
 
 Adding a 130x160 rectangle <kbd>m</kbd> and below a product title and price. Both the title and price have a 12px font size, with the title being bold.
@@ -144,7 +144,7 @@ At this stage you’ve made the bulk of the reusable layout. Making it into a sy
 Then you need to select all the elements except the bottom rectangle for filters. In the Symbols panel you should see the ‘New Symbol’ icon become active.
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-tabbar-symbol-content.png" width={640} height={444} />
+  <Image src="/images/blog/shop-tabbar-symbol-content.png" width={640} height={444} />
 </div>
 
 Click the ‘New Symbol’ icon and enter a name. No other options here are really important.
@@ -158,7 +158,7 @@ Now that the content is completed you can move on to the navigation.
 Select the bottom rectangle, then in the menu go to Object > Path > Split into Grid.
 
 <figure>
-<Image src="/static/images/blog/shop-tabbar-split-navigation.png" width={640} height={420} />
+<Image src="/images/blog/shop-tabbar-split-navigation.png" width={640} height={420} />
 <figcaption>Split the rectangle into 5 columns, this now gives a good basis for aligning text and icons.</figcaption>
 </figure>
 
@@ -173,7 +173,7 @@ Making sure each icon and the text are grouped together <kbd><kbd>cmd</kbd> + <k
 Select one rectangle and the grouped text and icon. Then click the rectangle again so that the border is thicker, [aligning to the rectangle as the key object]().
 
 <div className="article-image">
-  <Image src="/static/images/blog/shop-tabbar-align-panel.png" width={640} height={420} />
+  <Image src="/images/blog/shop-tabbar-align-panel.png" width={640} height={420} />
 </div>
 
 From earlier you should have the align panel open, if not go to Window > Align. Now vertically and horizontally align the icons.
@@ -185,7 +185,7 @@ The final step for this part of the tutorial is to make it into a symbol. Making
 
 ## A good point to leave it
 <div className="article-image">
-  <Image src="/static/images/blog/shop-tabbar-progress-4.png" width={640} height={640} />
+  <Image src="/images/blog/shop-tabbar-progress-4.png" width={640} height={640} />
 </div>
 
 This is a good point to leave the post, the layout is essentially complete in terms of positioning. In the next post the individual filters will be made.

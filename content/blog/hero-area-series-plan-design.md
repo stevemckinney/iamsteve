@@ -22,7 +22,7 @@ You will plan, design, code and then build upon that with Wordpress to make it e
 
 ## What you’re designing
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-final-large.png" width={640} height={360} />
+  <Image src="/images/blog/ch-final-large.png" width={640} height={360} />
 </div>
 
 ## Don’t want to do the tutorial?
@@ -48,7 +48,7 @@ We also need to consider different screen sizes, legibility of text on the backg
 Sketching is part of any process for me. At this stage, although it may appear a small area, we can explore different layouts for different screen sizes.
 
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-sketches.jpg" width={640} height={710} />
+  <Image src="/images/blog/ch-sketches.jpg" width={640} height={710} />
 </div>
 
 ### Intentions
@@ -68,7 +68,7 @@ Typeface choices are fairly unrestricted, but for this instance, you’re lookin
 
 ### Colour choices
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-colour-palette.png" width={640} height={360} />
+  <Image src="/images/blog/ch-colour-palette.png" width={640} height={360} />
 </div>
 
 - #c3f2f5 Light blue: primarily a background colour
@@ -82,7 +82,7 @@ I have chosen four colours here. I have chosen a light blue, in a large area thi
 
 ### Typefaces
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-typefaces.png" width={640} height={360} />
+  <Image src="/images/blog/ch-typefaces.png" width={640} height={360} />
 </div>
 
 The choices I have made are Raleway and Merriweather. Raleway will be used for the main heading. There are a few reasons for these choices. Both typefaces have a good variety of styles and weights.
@@ -95,14 +95,14 @@ Merriweather complements Raleway well, due to similar x-height and opposing cont
 
 ## Now to setup our document
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-document-setup1.png" width={640} height={504} />
+  <Image src="/images/blog/ch-document-setup1.png" width={640} height={504} />
 </div>
 
 Typically I will start a document at 1680px width, the height is more of an estimation. I choose 1680px width as it’s a balance between small and large desktop sizes. It’s worked well for me.
 
 ### Add the needed layers
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-new-layer-rename-lock.gif" width={640} height={320} />
+  <Image src="/images/blog/ch-new-layer-rename-lock.gif" width={640} height={320} />
 </div>
 
 The image demonstrates adding new layers, renaming and locking them. In the layers panel, we have access to adding, deleting and renaming. To rename double click the layer, alternatively you can double click the small layer image next to the name for more options.
@@ -114,7 +114,7 @@ With the guides layer selected, add a rectangle <kbd>m</kbd> that is **1080px** 
 
 ### Choose your grid settings
 <figure>
-<Image src="/static/images/blog/ch-split-into-grid.png" width={640} height={360} />
+<Image src="/images/blog/ch-split-into-grid.png" width={640} height={360} />
 <figcaption>Go to: Object > Path > Split Into Grid. Add 6 columns. <strong>Make sure not to check add guides here.</strong></figcaption>
 </figure>
 
@@ -127,7 +127,7 @@ With the grid still selected, press <kbd>cmd</kbd> + <kbd>5</kbd>. Now we can to
 Now that your document is setup, you need to fill the artboard with the light blue colour. This will be the primary use of this colour.
 
 <figure>
-<Image src="/static/images/blog/ch-rectangle-dimensions.png" width={640} height={360} />
+<Image src="/images/blog/ch-rectangle-dimensions.png" width={640} height={360} />
 <figcaption>Press <kbd>m</kbd> or select the rectangle tool. Click, and then add your dimensions (1680px by 960px).</figcaption>
 </figure>
 
@@ -135,7 +135,7 @@ After that with the rectangle selected, press <kbd>cmd</kbd> + <kbd>2</kbd>. Thi
 
 ## Adding the title & description
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-drag-text.gif" width={640} height={360} />
+  <Image src="/images/blog/ch-drag-text.gif" width={640} height={360} />
 </div>
 
 Press <kbd>t</kbd> and drag out a text layer 2 columns wide and add your title. Press <kbd>cmd</kbd> + <kbd>return</kbd>, to exit that type layer.
@@ -150,7 +150,7 @@ Using the Wordpress Customizer you can make updates to parts of your website wit
 
 ### Styling the title and description
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-type-settings.png" width={640} height={360} />
+  <Image src="/images/blog/ch-type-settings.png" width={640} height={360} />
 </div>
 
 |  | Title | Description |
@@ -163,7 +163,7 @@ Using the Wordpress Customizer you can make updates to parts of your website wit
 
 ### Large titles need balanced lines
 <div className="article-image flex center">
-  <Image src="/static/images/blog/ch-text-balance.png" width={640} height={533} />
+  <Image src="/images/blog/ch-text-balance.png" width={640} height={533} />
 </div>
 
 When writing your title specifically in a hero area, there are fewer words per line. You may disregard care for how the line is balanced because there are so few words per line, but it’s equally important.
@@ -190,7 +190,7 @@ Next go to Window > Transform, in the transform panel you can adjust the corner 
 
 #### Add the shadow
 <figure>
-<Image src="/static/images/blog/ch-add-shadow.png" width={640} height={360} />
+<Image src="/images/blog/ch-add-shadow.png" width={640} height={360} />
 <figcaption>To add the following shadow, select your button and go to Effect > Stylize > Drop Shadow</figcaption>
 </figure>
 
@@ -210,7 +210,7 @@ The positioning is to the left most column of your grid and aligning that to the
 
 ### How to align to selection or artboard
 <figure>
-<Image src="/static/images/blog/ch-align-text.png" width={640} height={430} />
+<Image src="/images/blog/ch-align-text.png" width={640} height={430} />
 <figcaption>
 With your layers selected, in the control bar you can change how alignment is handled.
 </figcaption>
@@ -220,7 +220,7 @@ With your layers selected, in the control bar you can change how alignment is ha
 Select the title, description and button, making sure Align to Selection is enabled. Go to Window > Align, click horizontal align left. Then press <kbd>cmd</kbd> + <kbd>g</kbd>, grouping those layers together.
 
 <figure>
-<Image src="/static/images/blog/ch-align-to-artboard.png" width={640} height={430} />
+<Image src="/images/blog/ch-align-to-artboard.png" width={640} height={430} />
 <figcaption>Now making sure we align to the artboard. Click the vertical align centre, in the Align window.</figcaption>
 </figure>
 

@@ -32,7 +32,7 @@ The homepage is the area I want to draw more people to. Previously it has been a
 The aim has been to make content more discoverable and encourage browsing. From the introduction and latest post, through to the popular posts by category. Over time I want to evolve this further.
 
 <div className="article-image">
-  <Image src="/static/images/blog/about-v6-home.png" alt="A screenshot of the homepage of this website."    width={738} height={1618} />
+  <Image src="/images/blog/about-v6-home.png" alt="A screenshot of the homepage of this website."    width={738} height={1618} />
 </div>
 
 ### Illustration
@@ -63,7 +63,7 @@ Not very many people browse this website on their phones, 92% is considered desk
 Again, the reading experience is something I’m particularly happy with. I believe it’s a huge improvement. As well as just browsing through pages of posts and homepage both flow nicely.
 
 <div className="article-image">
-  <Image src="/static/images/blog/about-v6-small-screen.png" alt="Two screenshots of this website in Mobile Safari" width={896} height={736} />
+  <Image src="/images/blog/about-v6-small-screen.png" alt="Two screenshots of this website in Mobile Safari" width={896} height={736} />
 </div>
 
 I’m pleased with the way the header area works, from showing the navigation to switching to the search. Although [I’m considering moving to a bottom navigation](/blog/websites-using-alternatives-to-the-hamburger).

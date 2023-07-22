@@ -45,7 +45,7 @@ It's unlikely remembering position will have any benefit to you where it concern
 
 ### Active navigation items
 <figure>
-<Image src="/static/images/blog/create-layer-comp.png" width={684} height={438} />
+<Image src="/images/blog/create-layer-comp.png" width={684} height={438} />
 <figcaption>
 I like to create an active state for each navigation item and make a layer comp for each. This works well if you use a prototyping service like Invision or Marvel.
 </figcaption>
@@ -54,7 +54,7 @@ I like to create an active state for each navigation item and make a layer comp 
 ### Apply alternate styles through overlays
 
 <figure>
-<Image src="/static/images/blog/layers-with-overlays.png" width={309} height={400} />
+<Image src="/images/blog/layers-with-overlays.png" width={309} height={400} />
 <figcaption>
 The one disappointment I have is layer comps not being able to remember colour changes. So the way I get around this is setting a colour overlay.
 </figcaption>
@@ -64,7 +64,7 @@ The one disappointment I have is layer comps not being able to remember colour c
 Go into your main document with the smart objects in. Select your smart object and in the properties panel. You may need to go to the window menu and activate it.
 
 <figure>
-<Image src="/static/images/blog/properties-comp-chosen.png" width={680} height={448} />
+<Image src="/images/blog/properties-comp-chosen.png" width={680} height={448} />
 <figcaption>
 In the properties panel you will see that it’s a linked smart object. There will be a menu to choose your layer comp. This should be the 'aha' moment for you.
 </figcaption>

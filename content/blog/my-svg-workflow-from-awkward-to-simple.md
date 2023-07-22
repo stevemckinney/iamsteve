@@ -34,7 +34,7 @@ It's not too much trouble though thankfully if you have a solid shape you have m
 3. You should see your shape name in the paths dropdown
 
 <div className="article-image">
-  <Image src="/static/images/blog/export_paths.png" alt="Exporting paths in photoshop to illustrator" width={526} height={464} />
+  <Image src="/images/blog/export_paths.png" alt="Exporting paths in photoshop to illustrator" width={526} height={464} />
 </div>
 
 4. Click ok and save
@@ -49,13 +49,13 @@ Alright, so you have your paths in illustrator, either from following the above 
 2. Hover over your shape and click the path and it should end up like this
 
 <div className="article-image">
-  <Image src="/static/images/blog/svg_artboard.png" alt="The artboard is round the icon" width={252} height={226} />
+  <Image src="/images/blog/svg_artboard.png" alt="The artboard is round the icon" width={252} height={226} />
 </div>
 
 3. Go to file and save, name your file, choose svg as the format and check 'Use Artboards' like this
 
 <div className="article-image">
-  <Image src="/static/images/blog/svg_save.png" alt="Saving an SVG, format SVG, artboards checked" width={712} height={466} />
+  <Image src="/images/blog/svg_save.png" alt="Saving an SVG, format SVG, artboards checked" width={712} height={466} />
 </div>
 
 4. Save, generally the options are ok from here, but if you wish to change anything be careful.

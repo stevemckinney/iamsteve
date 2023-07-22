@@ -18,7 +18,7 @@ I have a single Dribbble invite to giveaway. I assume the majority of people who
 > Dribbble is show and tell for designers, developers and other creatives. Share sneak peeks of your work as “shots” — small screenshots of the designs and applications you’re working on.
 
 <div className="article-image flex center">
-  <Image src="/static/images/blog/giveaway.png" alt="Dribbble invite giveaway decorative image" width={554} height={300} />
+  <Image src="/images/blog/giveaway.png" alt="Dribbble invite giveaway decorative image" width={554} height={300} />
 </div>
 
 So for this contest, like every contest related to Dribbble, comment here linking me to a few of your best work or your portfolio.

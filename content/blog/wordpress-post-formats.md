@@ -73,7 +73,7 @@ What I'm doing here is using `get_template_part()` to get my custom layout for e
 I recommend you get the [post formats plugin](https://github.com/crowdfavorite/wp-post-formats "Visit the github page to download it"). It adds a nice UI to make it a little more tumblr like. I also recommend that if you change theme and it doesn't support the plugin you install [post formats fallback plugin](https://github.com/crowdfavorite/wp-post-formats-fallback) this will put all the content into the right field.
 
 <figure>
-  <Image src="/static/images/blog/post_formats_plugin.png" width={703} height={100} />
+  <Image src="/images/blog/post_formats_plugin.png" width={703} height={100} />
   <figcaption>The UI added with the plugin</figcaption>
 </figure>
 

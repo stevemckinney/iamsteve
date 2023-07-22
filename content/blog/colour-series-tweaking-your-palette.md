@@ -20,7 +20,7 @@ This is the second part in this colour series. The topic I will cover in this po
 
 ## The initial colour palette
 <div className="article-image">
-  <Image src="/static/images/blog/colours-five.png" alt="The colour palette from the previous post" width={840} height={460} />
+  <Image src="/images/blog/colours-five.png" alt="The colour palette from the previous post" width={840} height={460} />
 </div>
 
 Along the course of the previous colour series post I guided you on how to choose a colour palette. At the end of the post, this is the one I was left with.
@@ -30,7 +30,7 @@ The first step is to try the palette in different combinations. As you have sele
 
 ### Combinations of backgrounds
 <figure>
-<Image src="/static/images/blog/colours-harsh.png" width={840} height={460} />
+<Image src="/images/blog/colours-harsh.png" width={840} height={460} />
 <figcaption>Demonstrating how bright colours aren’t very effective near each other</figcaption>
 </figure>
 
@@ -38,14 +38,14 @@ Combining backgrounds is down to putting the colours near each other in large se
 
 #### Fixing colour harshness
 <div className="article-image">
-  <Image src="/static/images/blog/colours-change.png" width={840} height={460} />
+  <Image src="/images/blog/colours-change.png" width={840} height={460} />
 </div>
 
 In the example, I have made the purple slightly more saturated and darker. The green is slightly less saturated and lighter. How I came to this conclusion was both colours were too similar in saturation and lightness. This makes for a good guide when you see colours bleed, it’s likely they will have too similar lightness and saturation.
 
 ### Combinations of text
 <div className="article-image">
-  <Image src="/static/images/blog/colours-text-combinations.png" width={840} height={460} />
+  <Image src="/images/blog/colours-text-combinations.png" width={840} height={460} />
 </div>
 
 After you’ve tested more background combinations, you will have an idea now for text related. Similarly, see what works well and what doesn't. Not every combination has to work for text, but if your main combination isn't as good as it can be you can make the necessary adjustments.
@@ -54,7 +54,7 @@ The main thing you’re looking out for here is to see if your text is always le
 
 #### Making better text combinations
 <div className="article-image">
-  <Image src="/static/images/blog/colours-text-adjust.png" width={840} height={460} />
+  <Image src="/images/blog/colours-text-adjust.png" width={840} height={460} />
 </div>
 
 To make a better text combination it may be down to your background colour, in the first text combination example, I decided that the background was a little too dark for the left. I made it ever so slightly lighter and reduced the saturation.
@@ -63,13 +63,13 @@ Sometimes it can be down to the wrong text colour, in the right example I have c
 
 ## Colour blindness
 <div className="article-image">
-  <Image src="/static/images/blog/colours-colour-blindness.png" width={840} height={460} />
+  <Image src="/images/blog/colours-colour-blindness.png" width={840} height={460} />
 </div>
 
 I’m not an expert on colour blindness, but it’s something you need to be aware of. Photoshop has colour proofing in more recent versions. Alternatively, you can use [Bjango Actions](https://github.com/bjango/Bjango-Actions). This set of actions has one for colour blindness testing. It's slightly more extensive than what photoshop offers too.
 
 <figure>
-<Image src="/static/images/blog/photoshop-proof-setup.png" width={788} height={357} />
+<Image src="/images/blog/photoshop-proof-setup.png" width={788} height={357} />
 <figcaption>
 In Photoshop can change the colour mode by going to Window > Proof Setup > Color Blindness. Then make sure Proof Colours is on <kbd>cmd</kbd> <kbd>y</kbd>
 </figcaption>
@@ -84,7 +84,7 @@ It’s also important you don’t use colour to signify anything that is critica
 
 ## Checking value
 <div className="article-image">
-  <Image src="/static/images/blog/colours-bw.png" width={840} height={460} />
+  <Image src="/images/blog/colours-bw.png" width={840} height={460} />
 </div>
 
 A similarly related way to colour blindness is to check your colour palette based on value. Value refers to the amount white or black is in a colour. This checks if there is enough contrast. If you find that the colours completely blend together, this is a hint to adjust.
@@ -100,7 +100,7 @@ To fix any issues, like colour blindness it's about adjusting the colours. You m
 
 ## To conclude
 <div className="article-image">
-  <Image src="/static/images/blog/colours-primary-adjusted.png" width={840} height={460} />
+  <Image src="/images/blog/colours-primary-adjusted.png" width={840} height={460} />
 </div>
 
 Here are the adjustments to the palette. You have gone through making sure your colours work well for text and background combinations. We have also made sure our colours differ enough in contrast and consider the different types of colour blindness.

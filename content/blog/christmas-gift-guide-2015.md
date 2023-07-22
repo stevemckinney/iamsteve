@@ -19,7 +19,7 @@ I've provided prices alongside them in the currency that the website uses. As ex
 
 ## Baron Fig apprentice – $9
 <figure>
-<Image src="/static/images/blog/baronfig-apprentice.jpg" width={620} height={420} />
+<Image src="/images/blog/baronfig-apprentice.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://www.baronfig.com">Baron Fig</a></figcaption>
 </figure>
 I really like these little notebooks, they’re good quality and fair priced. The problem I have with larger notebooks I feel like I need to do purposeful stuff in them and not ruin them. These stop that and are really convenient.
@@ -28,7 +28,7 @@ Order from: [Baron Fig](http://www.baronfig.com/pages/apprentice)
 
 ## Grovemade keyboard tray – $99
 <figure>
-<Image src="/static/images/blog/grovemade-keyboard-tray.jpg" width={620} height={420} />
+<Image src="/images/blog/grovemade-keyboard-tray.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://grovemade.com">Grovemade</a></figcaption>
 </figure>
 
@@ -38,7 +38,7 @@ Order from: [Grovemade](http://grovemade.com/product/walnut-keyboard-tray/?initi
 
 ## Grovemade wrist pad – $49
 <figure>
-<Image src="/static/images/blog/grovemade-wrist-pad.jpg" width={620} height={420} />
+<Image src="/images/blog/grovemade-wrist-pad.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://grovemade.com">Grovemade</a></figcaption>
 </figure>
 
@@ -48,7 +48,7 @@ Order from: [Grovemade](http://grovemade.com/product/walnut-keyboard-wrist-pad/?
 
 ## Jessica Hische: In Progress ~£18
 <figure>
-<Image src="/static/images/blog/jessica-hische-in-progress.jpg" width={620} height={420} />
+<Image src="/images/blog/jessica-hische-in-progress.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="https://amazon.co.uk">Amazon</a></figcaption>
 </figure>
 
@@ -60,7 +60,7 @@ Order from: [Amazon](http://www.amazon.co.uk/Progress-Lettering-Artists-Sketchbo
 
 ## Apple leather case – £39
 <figure>
-<Image src="/static/images/blog/apple-leather-case.jpg" width={620} height={420} />
+<Image src="/images/blog/apple-leather-case.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="https://apple.com">Apple</a></figcaption>
 </figure>
 The previous couple of cases I have had for my iPhone's have been by Apple. They cost more than most, but the last one I had lasted 2 years (the life of my last phone). They offer better protection than most and are super durable. Being made by Apple they fit the device the best it can. *Don’t confuse this for the silicone case, I can’t vouch for that*.
@@ -69,7 +69,7 @@ Order from: [Apple](https://www.apple.com/uk/shop/product/MKXF2ZM/A/iphone-6s-pl
 
 ## Saki roll pen case – ~$18
 <figure>
-<Image src="/static/images/blog/saki-pen-case.jpg" width={620} height={420} />
+<Image src="/images/blog/saki-pen-case.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://jetpens.com">Jetpens</a></figcaption>
 </figure>
 
@@ -83,7 +83,7 @@ Order from: [Jetpens (US)](http://www.jetpens.com/search?q=saki&v=2) or [Amazon 
 
 ## Uniform Wares M40 – ~£350
 <figure>
-<Image src="/static/images/blog/uniform-wares-m40.jpg" width={620} height={420} />
+<Image src="/images/blog/uniform-wares-m40.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://www.uniformwares.com">Uniform Wares</a></figcaption>
 </figure>
 
@@ -95,7 +95,7 @@ Order from: [Uniform Wares](http://www.uniformwares.com/m40-date-watch-in-pvd-ro
 
 ## Nike Roshe – ~£70
 <figure>
-<Image src="/static/images/blog/nike-roshe.jpg" width={620} height={420} />
+<Image src="/images/blog/nike-roshe.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://nike.com">Nike</a></figcaption>
 </figure>
 These are the comfiest shoes I have ever worn. They come in a few varieties which vary in price.
@@ -104,7 +104,7 @@ Order from: [Nike](http://store.nike.com/gb/en_gb/pd/roshe-one-shoe/pid-10000021
 
 ## Bose In Ear Headphones - £114.95
 <figure>
-<Image src="/static/images/blog/bose-earphones.jpg" width={620} height={420} />
+<Image src="/images/blog/bose-earphones.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://amazon.co.uk">Amazon</a></figcaption>
 </figure>
 
@@ -116,7 +116,7 @@ Order from: [Amazon](http://www.amazon.co.uk/Bose-SoundSport-Headphones-Apple-De
 
 ## Incase EO Travel Backpack – $179.99
 <figure>
-<Image src="/static/images/blog/incase-travel-backpack.jpg" width={738} height={420} />
+<Image src="/images/blog/incase-travel-backpack.jpg" width={738} height={420} />
 <figcaption>Credit: <a href="http://goincase.com">Incase</a></figcaption>
 </figure>
 I have had a few backpacks from incase, I would highly recommend them, along with this one. They wear well and tend to be very durable. The best thing about them is the compartment for your computer. They have all offered good padding and some breathing room for your case, keeping it super secure.

@@ -31,7 +31,7 @@ The difficulty with making this function as a multilevel/submenu  is purely base
 Rightly so, you keep the related markup together using a list. Then positioning through CSS, means you can’t show the submenu. The overflow ensures it remains hidden.
 
 <div className="article-image">
-  <Image src="/static/images/blog/multilevel-scrolling-bad-example.png" width={738} height={492} />
+  <Image src="/images/blog/multilevel-scrolling-bad-example.png" width={738} height={492} />
 </div>
 
 As the example shows, the biggest problem is you won’t be able to get the correct width or positioning. *So how is it solved*?

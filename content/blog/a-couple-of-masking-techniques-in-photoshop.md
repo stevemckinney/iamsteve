@@ -17,7 +17,7 @@ fileroot: "a-couple-of-masking-techniques-in-photoshop"
 A clipping mask is probably my most commonly used mask. It’s great for sizing images accurately, to a shape or making sure other layers are contained within a base layer.
 
 <figure>
-<Image src="/static/images/blog/clipping-mask.gif" width={738} height={454} />
+<Image src="/images/blog/clipping-mask.gif" width={738} height={454} />
 <figcaption>You hold <kbd>alt</kbd> and hover between two layers and click to make a clipping mask. Or the keyboard shortcut <kbd>cmd/ctrl</kbd> <kbd>alt</kbd> <kbd>g</kbd>.</figcaption>
 </figure>
 
@@ -25,7 +25,7 @@ A clipping mask is probably my most commonly used mask. It’s great for sizing 
 Dodge and burn are more useful for photo editing, however as websites feature photos more often than not. This should have its uses for you. Being able to darken/lighten parts of a picture can be handy for overlaying text.
 
 <figure>
-<Image src="/static/images/blog/overlay-burn-dodge.gif" width={738} height={454} />
+<Image src="/images/blog/overlay-burn-dodge.gif" width={738} height={454} />
 <figcaption>Add a layer that’s #808080 (50% grey). Set the blending mode to overlay and do your dodging and burning over it.</figcaption>
 </figure>
 

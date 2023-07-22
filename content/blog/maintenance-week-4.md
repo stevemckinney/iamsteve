@@ -43,27 +43,27 @@ I uploaded and enabled the addons here and other things round making sure when I
 
 ### Horizontal scrolling responsive menu
 <div className="article-image">
-  [<Image src="/static/images/blog/horizontal-scrolling-responsive-featured-image@2x.png" width={738} height={492} />](/blog/horizontal-scrolling-responsive-menu)
+  [<Image src="/images/blog/horizontal-scrolling-responsive-featured-image@2x.png" width={738} height={492} />](/blog/horizontal-scrolling-responsive-menu)
 </div>
 
 ### Custom stroke width profiles in Illustrator
 Along with a couple of images inside that post updated, I have added a featured image too.
 
 <div className="article-image">
-  [<Image src="/static/images/blog/illustrator-stroke-width-featured-image@2x.png" width={738} height={492} />](/blog/creating-custom-stroke-width-profiles-in-illustrator)
+  [<Image src="/images/blog/illustrator-stroke-width-featured-image@2x.png" width={738} height={492} />](/blog/creating-custom-stroke-width-profiles-in-illustrator)
 </div>
 
 ### Get up to speed with CSS shapes
 <div className="article-image">
-  [<Image src="/static/images/blog/css-shapes-featured-image@2x.png" width={738} height={492} />](/blog/get-up-to-speed-with-css-shapes)
+  [<Image src="/images/blog/css-shapes-featured-image@2x.png" width={738} height={492} />](/blog/get-up-to-speed-with-css-shapes)
 </div>
 
 ### A guide to vertical rhythm
 <div className="article-image">
-  [<Image src="/static/images/blog/vertical-rhythm-featured-image@2x.png" width={738} height={492} />](/blog/a-guide-to-vertical-rhythm)
+  [<Image src="/images/blog/vertical-rhythm-featured-image@2x.png" width={738} height={492} />](/blog/a-guide-to-vertical-rhythm)
 </div>
 
 ### Photoshop generator syntax cheatsheet
 <div className="article-image">
-  [<Image src="/static/images/blog/ps-generator-featured-image@2x.png" width={738} height={492} />](/blog/adobe-generator-syntax-cheatsheet)
+  [<Image src="/images/blog/ps-generator-featured-image@2x.png" width={738} height={492} />](/blog/adobe-generator-syntax-cheatsheet)
 </div>

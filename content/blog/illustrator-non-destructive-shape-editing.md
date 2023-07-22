@@ -28,28 +28,28 @@ Pathfinder is one of the handiest tools within Illustrator which by default will
 You can do this by finding Window > Pathfinder.
 
 <div className="article-image">
-  <Image src="/static/images/blog/non-destructive-pathfinder@2x.png" width={738} height={492} />
+  <Image src="/images/blog/non-destructive-pathfinder@2x.png" width={738} height={492} />
 </div>
 
 ### Draw your shapes
 Next the best way to demonstrate this is to draw two shapes, overlap them and reduce their opacity.
 
 <div className="article-image">
-  <Image src="/static/images/blog/non-destructive-opacity-shapes@2x.png" width={738} height={492} />
+  <Image src="/images/blog/non-destructive-opacity-shapes@2x.png" width={738} height={492} />
 </div>
 
 ### Select your shapes and hold alt using a pathfinder option
 **The important part is to hold alt**, it will combine both shapes without destroying their paths.
 
 <div className="article-image">
-  <Image src="/static/images/blog/non-destructive-combined-shapes@2x.png" width={738} height={492} />
+  <Image src="/images/blog/non-destructive-combined-shapes@2x.png" width={738} height={492} />
 </div>
 
 After making using the pathfinder on the shapes, you’re free to change them as you like.
 
 ### Use the direct selection tool to edit further
 <div className="article-image">
-  <Image src="/static/images/blog/non-destructive-move-shapes.gif" width={738} height={492} />
+  <Image src="/images/blog/non-destructive-move-shapes.gif" width={738} height={492} />
 </div>
 
 To select a shape press <kbd>a</kbd> to use the direct selection tool. You can also double click to isolate them, which can be easier to change the shape.
@@ -64,7 +64,7 @@ To be able to change drawing mode you need to select an object, so it can be use
 With the drawing mode, generally you will want to choose inside. This is a quick way to create a clipping mask out of any shape. The benefit is you can draw multiple shapes inside another shape and not worry too much about the remainder.
 
 <div className="article-image">
-  <Image src="/static/images/blog/non-destructive-toolbar@2x.png" width={738} height={492} />
+  <Image src="/images/blog/non-destructive-toolbar@2x.png" width={738} height={492} />
 </div>
 
 The icon can be found below the fill and stroke options in the toolbar.
@@ -73,7 +73,7 @@ The icon can be found below the fill and stroke options in the toolbar.
 This is how you know when a different drawing mode is active. You’re free to draw shapes anywhere, however, parts will not be visible outside of the mask.
 
 <div className="article-image">
-  <Image src="/static/images/blog/non-destructive-drawing-inside@2x.png" width={738} height={492} />
+  <Image src="/images/blog/non-destructive-drawing-inside@2x.png" width={738} height={492} />
 </div>
 
 ### To exit select normal drawing mode

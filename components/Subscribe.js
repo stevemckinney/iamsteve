@@ -12,7 +12,7 @@ const Subscribe = ({
     >
       <div className="column column-4-b mb4 mb0-b subscribe-image">
         <Image
-          src="/static/images/subscribe.svg"
+          src="/images/subscribe.svg"
           alt="true"
           role="presentation"
           width={488}

@@ -93,7 +93,7 @@ add_image_size( 'portfolio-large-landscape-2x', 3600, 9999, true );
 After setting up the image sizes I have allowed for the exact image to be uploaded. As each image should be tailored for the size. This isn’t always necessary, so if you only need one image in various sizes, this will not be for you.
 
 <div className="article-image flex center">
-  <Image src="/static/images/blog/Screenshot_2014-12-31_11.55.17.png" alt="The custom fields I have used to allow me to choose the exact image I need for my picture sources" width={887} height={466} />
+  <Image src="/images/blog/Screenshot_2014-12-31_11.55.17.png" alt="The custom fields I have used to allow me to choose the exact image I need for my picture sources" width={887} height={466} />
 </div>
 
 > It would make this post long to show precisely how I’ve done it. it’s not code I would consider great as I’m not an expert with PHP—but it does a job.

@@ -74,7 +74,7 @@ Our border image and with the slices.
 Pseudo elements can't be applied to `img` elements so the use of the extra div is necessary.
 
 <figure>
-  <Image src="/static/images/blog/Screen_Shot_2013-03-24_at_13.36.28.png" alt="Browser window not fitting the image correctly" width={796} height={572} />
+  <Image src="/images/blog/Screen_Shot_2013-03-24_at_13.36.28.png" alt="Browser window not fitting the image correctly" width={796} height={572} />
   <figcaption>Demonstrates what happens when applying border-image directly to the image</figcaption>
 </figure>
 

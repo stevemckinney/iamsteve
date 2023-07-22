@@ -46,7 +46,7 @@ Overall I'm pretty happy with this change to my website. I've still got a bit of
 From the last version of this site I've tried yet again to go mobile first. With better decisions made. I've gone for an off canvas navigation this time:
 
 <figure>
-<Image src="/static/images/blog/v5_nav.png" width={381} height={800} />
+<Image src="/images/blog/v5_nav.png" width={381} height={800} />
 <figcaption>I'm using what's becoming the standard three line icon.</figcaption>
 </figure>
 

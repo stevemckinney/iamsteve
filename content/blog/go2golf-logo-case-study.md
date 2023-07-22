@@ -22,7 +22,7 @@ I’ve been working on a recent branding project for a company called Go2Golf. I
 The requirements for the logo were to be youthful and fresh. As a new company, it’s important to be recognisable too. I wanted the logo to convey golf, but still have a ‘smart’ element to the design.
 
 <div className="article-image">
-  <Image src="/static/images/blog/go2golf-casestudy-logo.png" width={738} height={492} />
+  <Image src="/images/blog/go2golf-casestudy-logo.png" width={738} height={492} />
 </div>
 
 ## Get an understanding of the industry
@@ -36,7 +36,7 @@ It was something to go off. An eagle is certainly recognisable and a strong mark
 I worked with other ideas, trying to play into the number two. Ultimately that was trying to force it. The reason I was quite set on this, is down to numbers in logotype specifically, being difficult to work with.
 
 <div className="article-image">
-  <Image src="/static/images/blog/go2golf-casestudy-sketches-1@2x.jpg" width={738} height={492} />
+  <Image src="/images/blog/go2golf-casestudy-sketches-1@2x.jpg" width={738} height={492} />
 </div>
 
 As time and ideas went on, aiming for something seemingly obvious. I thought more around Go2Golf is a place for finding golf course *locations*. So combining the ‘location’ symbol with a golf ball and tee.
@@ -48,7 +48,7 @@ It would be easy to go with the magnifying glass metaphor, but that’s not yout
 From my sketches, I was happy to present my explorations. I explained the strengths and weaknesses of each idea, and why I came to each idea. Some were more suitable than others.
 
 <div className="article-image">
-  <Image src="/static/images/blog/go2golf-casestudy-sketches-2@2x.jpg" width={738} height={492} />
+  <Image src="/images/blog/go2golf-casestudy-sketches-2@2x.jpg" width={738} height={492} />
 </div>
 
 Taking the time to explain your thought process with the client early can make the process much easier when presenting a final design. Going forward with the strongest idea, the location pin and tee combination was well received.
@@ -57,7 +57,7 @@ Taking the time to explain your thought process with the client early can make t
 Usually, I would bring the sketches into Illustrator. However, I didn’t feel it was necessary for this instance. The basic shapes would be built from what’s available in Illustrator’s tools.
 
 <div className="article-image">
-  <Image src="/static/images/blog/go2golf-casestudy-progress.png" width={738} height={492} />
+  <Image src="/images/blog/go2golf-casestudy-progress.png" width={738} height={492} />
 </div>
 
 ### Relying too heavily on the sketches

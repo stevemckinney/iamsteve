@@ -22,7 +22,7 @@ When using kerning or tracking on your type it can help with legibility or corre
 Kerning is when you adjust the space between two individual letters. In the world of fonts, it’s the relationship between two letters. Making them feel like they were intentionally placed near each other.
 
 <div className="article-image">
-  <Image src="/static/images/blog/kerning-tracking-kerning-word@2x.png" width={738} height={492} />
+  <Image src="/images/blog/kerning-tracking-kerning-word@2x.png" width={738} height={492} />
 </div>
 
 In the image you’ll see on characters like ‘W’ that the guides go under the letter. This is an important benefit of kerning, which I will cover in more detail later in the post.
@@ -36,7 +36,7 @@ The vast majority of fonts will have their own kerning defined within. Letters w
 It’s not always perfect and it’s generally make or break for having well designed logo. You also have to consider the usage intentions of the typeface, as it may be more suited smaller or larger sizes. So while there is nothing stopping you from using a particular font how you wish, you will likely find undesirable spacing between letters.
 
 <div className="article-image">
-  <Image src="/static/images/blog/kerning-tracking-with-without-kerning@2x.png" width={738} height={492} />
+  <Image src="/images/blog/kerning-tracking-with-without-kerning@2x.png" width={738} height={492} />
 </div>
 
 In the image there are two examples of text. The example without kerning, you can see less desirable distribution of spacing between many of the letters.
@@ -54,7 +54,7 @@ A display typeface will have tighter kerning at smaller sizes, because it compen
 Tracking is similar to kerning in the sense it adjusts the positions of letters. However, tracking adjusts all the spacing between letters by a specified amount. It disregards the relationship between letters.
 
 <figure>
-<Image src="/static/images/blog/kerning-tracking-with-tracking-kerning@2x.png" width={738} height={492} />
+<Image src="/images/blog/kerning-tracking-with-tracking-kerning@2x.png" width={738} height={492} />
 <figcaption>To spot the differences look closely at ‘rt’.</figcaption>
 </figure>
 
@@ -75,7 +75,7 @@ It’s a simple task to carry out in Illustrator, however a bit trickier to mast
 
 ### Kern quickly with arrow keys
 <div className="article-image">
-  <Image src="/static/images/blog/kerning-tracking-kerning.gif" width={738} height={480} />
+  <Image src="/images/blog/kerning-tracking-kerning.gif" width={738} height={480} />
 </div>
 
 1. Press <kbd>t</kbd>
@@ -85,7 +85,7 @@ It’s a simple task to carry out in Illustrator, however a bit trickier to mast
 
 ### Precise kerning with the character panel
 <div className="article-image">
-  <Image src="/static/images/blog/kerning-tracking-kerning@2x.png" width={738} height={492} />
+  <Image src="/images/blog/kerning-tracking-kerning@2x.png" width={738} height={492} />
 </div>
 
 1. Place your cursor between two characters
@@ -107,7 +107,7 @@ This has a similar effect to adding blur. Whilst it's not an accurate representa
 This is more of a tip. Where you have an uppercase letter like 'T', 'Y' or 'P' you're usually better off nudging slightly under the letter.
 
 <div className="article-image">
-  <Image src="/static/images/blog/kerning-tracking-under-capitals@2x.png" width={738} height={492} />
+  <Image src="/images/blog/kerning-tracking-under-capitals@2x.png" width={738} height={492} />
 </div>
 
 This may seem to go against the true bounds of the letterform, however, in the world of type; optical alignment 9 times out of 10 is better.
@@ -116,7 +116,7 @@ This may seem to go against the true bounds of the letterform, however, in the w
 A ligature is where two or more letters form one. They are very handy for creating a better relationship between two letters. But not every typeface has ligatures.
 
 <figure>
-<Image src="/static/images/blog/kerning-tracking-ligatures@2x.png" width={738} height={492} />
+<Image src="/images/blog/kerning-tracking-ligatures@2x.png" width={738} height={492} />
 <figcaption>‘ffl’, ‘fi’ and ‘Th’ regular and ligature forms. Ligatures really help with kerning consistency.</figcaption>
 </figure>
 
@@ -128,7 +128,7 @@ Ligatures improve readability because when you read and scan text you don’t ta
 Tracking requires the tweaking of one option, like kerning but controls all letters. To apply tracking it generally works in increments of 100. However, you can use any number necessary for more precise control.
 
 <div className="article-image">
-  <Image src="/static/images/blog/kerning-tracking-tracking@2x.png" width={738} height={492} />
+  <Image src="/images/blog/kerning-tracking-tracking@2x.png" width={738} height={492} />
 </div>
 
 1. Select your text layer or specific line of text
@@ -142,7 +142,7 @@ There are a few use cases of tracking which are useful out of choosing to do so 
 When using a font size which is large you can increase readability by applying negative tracking.
 
 <figure>
-<Image src="/static/images/blog/kerning-tracking-tracking-titles@2x.png" width={738} height={492} />
+<Image src="/images/blog/kerning-tracking-tracking-titles@2x.png" width={738} height={492} />
 <figcaption>The slight decrease in tracking on large headings can help make it easier to read.</figcaption>
 </figure>
 
@@ -150,7 +150,7 @@ When using a font size which is large you can increase readability by applying n
 When making something all capitals, usually at a small size it is stylistic. However it can usually benefit from a small increase to tracking.
 
 <figure>
-<Image src="/static/images/blog/kerning-tracking-tracking-titles-2@2x.png" width={738} height={492} />
+<Image src="/images/blog/kerning-tracking-tracking-titles-2@2x.png" width={738} height={492} />
 <figcaption>The slight increase in tracking can help make it easier to read.</figcaption>
 </figure>
 

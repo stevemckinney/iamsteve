@@ -111,7 +111,7 @@ I recommend using a ‘b’ lead. They are softer and can allow you to draw sket
 It’s important to hold the pencil correctly. This allows you to sketch with the right amount of pressure and draw lines easier. I remember it not feeling the natural way to hold it. Over time, you will find yourself defaulting to it.
 
 <figure>
-<Image src="/static/images/blog/pencil-holding.jpg" width={640} height={450} />
+<Image src="/images/blog/pencil-holding.jpg" width={640} height={450} />
 <figcaption>
 Resting the pencil on your middle finger, with support from your index finger and thumb.
 </figcaption>

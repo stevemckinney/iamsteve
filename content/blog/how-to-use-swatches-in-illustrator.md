@@ -25,7 +25,7 @@ To start you’ll need a new document; the size doesn’t matter too much. As it
 The current swatches are of no use, so to make things tidier delete them.
 
 <div className="article-image">
-  <Image src="/static/images/blog/use-swatches_select-unused1.png" width={738} height={437} />
+  <Image src="/images/blog/use-swatches_select-unused1.png" width={738} height={437} />
 </div>
 
 An easy way to do this is by going to Window > Swatches. With the window open, click the top right icon, then select "Select All Unused". Finally, click the trash icon, which is at the bottom right of the swatches panel.
@@ -37,13 +37,13 @@ You can add swatches without the need for doing this. However, it makes the proc
 
 ## Saving colours to the swatch palette
 <div className="article-image">
-  <Image src="/static/images/blog/use-swatches_select-new-color-group.png" width={738} height={437} />
+  <Image src="/images/blog/use-swatches_select-new-color-group.png" width={738} height={437} />
 </div>
 
 To save colours as swatches, the quickest way is to select them all and in the swatches panel options, choose ‘New Color Group’.
 
 <div className="article-image">
-  <Image src="/static/images/blog/use-swatches_new-color-group.png" width={738} height={437} />
+  <Image src="/images/blog/use-swatches_new-color-group.png" width={738} height={437} />
 </div>
 
 A window will open to name the colour group and the two options of making the colours global and including swatches for tints. **I recommend making them global, I will explain why shortly**. I named my colour group primary, as I have selected each of the colours that fall under that group. I will repeat this process for each different colour group.
@@ -60,7 +60,7 @@ To make sure you can reuse the colour palette, you must save it as a regular ill
 
 ## Make a new document and import
 <div className="article-image">
-  <Image src="/static/images/blog/use-swatches_swatch-libraries-menu1.png" width={738} height={437} />
+  <Image src="/images/blog/use-swatches_swatch-libraries-menu1.png" width={738} height={437} />
 </div>
 
 To use the colour palette in future documents, you need to import the palette. In the swatch panel, click the bottom left most icon (Swatch Libraries menu) and choose ‘Other Library’.

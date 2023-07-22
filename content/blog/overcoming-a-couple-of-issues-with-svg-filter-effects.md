@@ -34,19 +34,19 @@ These are a few of the reasons you would want to keep it all vector.
 
 ## Using SVG filters in Adobe Illustrator
 <figure>
-<Image src="/static/images/blog/svg_filters_img1.png" width={802} height={802} />
+<Image src="/images/blog/svg_filters_img1.png" width={802} height={802} />
 <figcaption>In the Illustrator menu **Effect > SVG filters > Apply filter**</figcaption>
 </figure>
 
 ### Creating a filter
 <figure>
-<Image src="/static/images/blog/svg_filters_img2.png" width={802} height={802} />
+<Image src="/images/blog/svg_filters_img2.png" width={802} height={802} />
 <figcaption>In the same menu, the second icon creates a new filter (the curled page kind of looking one).</figcaption>
 </figure>
 
 ### Editing your filter
 <figure>
-<Image src="/static/images/blog/svg_filters_img3.png" width={802} height={802} />
+<Image src="/images/blog/svg_filters_img3.png" width={802} height={802} />
 <figcaption>The SVG filter effect editor window</figcaption>
 </figure>
 

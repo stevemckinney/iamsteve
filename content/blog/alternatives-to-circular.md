@@ -22,7 +22,7 @@ Circular is very much in the spotlight at the moment. It has a distinct look to 
 There is reason for its popularity outside of what Google has done for it. It’s a superb typeface that has many aesthetically pleasing features. So, what makes Circular distinctive?
 
 <div className="article-image">
-  <Image src="/static/images/blog/alternatives-to-circular-circular.png" width={738} height={492} />
+  <Image src="/images/blog/alternatives-to-circular-circular.png" width={738} height={492} />
 </div>
 
 - Low contrast
@@ -39,21 +39,21 @@ You could dig for ever on myfonts, there are a variety of price brackets and end
 
 ### [Cera](http://www.myfonts.com/fonts/typemates/cera/)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-cera.png" width={738} height={492} />](http://www.myfonts.com/fonts/typemates/cera/)
+  [<Image src="/images/blog/alternatives-to-circular-cera.png" width={738} height={492} />](http://www.myfonts.com/fonts/typemates/cera/)
 </div>
 
 Possibly the closest match. It has a very similar double storey ‘a’, and similar features in contrast and geometry. However, at the same time ‘a’ having a less round bowl may detract from the similarity.
 
 ### [Campton](http://www.myfonts.com/fonts/rene-bieder/campton/)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-campton.png" width={738} height={492}/>](http://www.myfonts.com/fonts/rene-bieder/campton/)
+  [<Image src="/images/blog/alternatives-to-circular-campton.png" width={738} height={492}/>](http://www.myfonts.com/fonts/rene-bieder/campton/)
 </div>
 
 What makes Campton a good choice is it’s reasonably similar geometry. Though not perfect as you have a single storey ‘a’, and the ‘c’ differs.
 
 ### [FF Mark](http://www.myfonts.com/fonts/fontfont/mark/)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-mark.png" width={738} height={492} />](http://www.myfonts.com/fonts/fontfont/mark/)
+  [<Image src="/images/blog/alternatives-to-circular-mark.png" width={738} height={492} />](http://www.myfonts.com/fonts/fontfont/mark/)
 </div>
 
 FF Mark on its own is popular, it is a similar typeface. It has been used part of many bigger rebrands like mastercard. The weight, width and styles of the letters match closely.
@@ -61,7 +61,7 @@ FF Mark on its own is popular, it is a similar typeface. It has been used part o
 ### [Texta](http://www.myfonts.com/fonts/latinotype/texta/)
 <div className="article-image">
   <a href="http://www.myfonts.com/fonts/latinotype/texta/">
-    <Image src="/static/images/blog/alternatives-to-circular-texta.png" width={738} height={492} />
+    <Image src="/images/blog/alternatives-to-circular-texta.png" width={738} height={492} />
   </a>
 </div>
 
@@ -69,7 +69,7 @@ Texta is a good alternative because of its similar character width, double store
 
 ### [Qanelas Soft](http://www.myfonts.com/fonts/radomir-tinkov/qanelas-soft/)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-quanelas.png" width={738} height={492} />](http://www.myfonts.com/fonts/radomir-tinkov/qanelas-soft/)
+  [<Image src="/images/blog/alternatives-to-circular-quanelas.png" width={738} height={492} />](http://www.myfonts.com/fonts/radomir-tinkov/qanelas-soft/)
 </div>
 
 Qanelas Soft, as it is in the name, is possibly a little too soft to compare with Circular as precise as you would like. What stops me from suggesting [Qanelas](https://www.myfonts.com/fonts/radomir-tinkov/qanelas/) itself is the closer match to Futura or Proxima.
@@ -79,28 +79,28 @@ Some of the matches here aren’t as close as I would like, but they do share so
 
 ### [Cabin](https://fonts.google.com/specimen/Cabin)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-cabin.png" width={738} height={492} />](https://fonts.google.com/specimen/Cabin)
+  [<Image src="/images/blog/alternatives-to-circular-cabin.png" width={738} height={492} />](https://fonts.google.com/specimen/Cabin)
 </div>
 
 It’s a push to recommend Cabin, as the character width is narrower than Circular. However, it has quite a friendly feel to it.
 
 ### [Rubik](https://fonts.google.com/specimen/Rubik)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-rubik.png" width={738} height={492} />](https://fonts.google.com/specimen/Rubik)
+  [<Image src="/images/blog/alternatives-to-circular-rubik.png" width={738} height={492} />](https://fonts.google.com/specimen/Rubik)
 </div>
 
 Rubik is a little bit of a weird example, and admittedly scraping the barrel for alternatives on Google Fonts. However, if you look past the softer edges of the characters and slight squareness, it's a reasonable match.
 
 ### [Montserrat](https://fonts.google.com/specimen/Montserrat)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-montserrat.png" width={738} height={492} />](http://www.myfonts.com/fonts/fontfont/mark/)
+  [<Image src="/images/blog/alternatives-to-circular-montserrat.png" width={738} height={492} />](http://www.myfonts.com/fonts/fontfont/mark/)
 </div>
 
 Personally, this is the closest Google Font you will get to Circular. Montserrat has a good variety of weights, and it matches Circular well in x-height, weight and width.
 
 ### [Work Sans](https://fonts.google.com/specimen/Work+Sans)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-work.png" width={738} height={492} />](http://www.myfonts.com/fonts/fontfont/mark/)
+  [<Image src="/images/blog/alternatives-to-circular-work.png" width={738} height={492} />](http://www.myfonts.com/fonts/fontfont/mark/)
 </div>
 
 Work Sans is another good Google Fonts alternative, however, it is let down by the heavier weights. The contrast is noticeably higher at the heavier weights. It does have a friendly feel to it though.
@@ -110,42 +110,42 @@ A reasonably wide variety can be found on Typekit, with plenty of weights and st
 
 ### [Usual](https://typekit.com/fonts/usual)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-usual.png" width={738} height={492} />](https://typekit.com/fonts/usual)
+  [<Image src="/images/blog/alternatives-to-circular-usual.png" width={738} height={492} />](https://typekit.com/fonts/usual)
 </div>
 
 A better example at lighter weights, like some of the others it loses its resemblance at heavier weights.
 
 ### [Effra](https://typekit.com/fonts/effra)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-effra.png" width={738} height={492} />](https://typekit.com/fonts/effra)
+  [<Image src="/images/blog/alternatives-to-circular-effra.png" width={738} height={492} />](https://typekit.com/fonts/effra)
 </div>
 
 A good example generally, however, it can be let down by the curves on letters like 'q', 'd' and 'g'. If you ignore those and look at the weight of characters and x-height, it shares similarity. Letter shapes like 'c' also share similarity.
 
 ### [Soleil](https://typekit.com/fonts/soleil)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-soleil.png" width={738} height={492} />](https://typekit.com/fonts/soleil)
+  [<Image src="/images/blog/alternatives-to-circular-soleil.png" width={738} height={492} />](https://typekit.com/fonts/soleil)
 </div>
 
 Another good example where the weight and x-height of characters do match quite well. At lighter weights particularly it is a good match, when you get to the heavier weights, the characters are possibly a little narrow.
 
 ### [Gibson](https://typekit.com/fonts/gibson)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-gibson.png" width={738} height={492} />](https://typekit.com/fonts/gibson)
+  [<Image src="/images/blog/alternatives-to-circular-gibson.png" width={738} height={492} />](https://typekit.com/fonts/gibson)
 </div>
 
 Gibson on the face of things is a good match, it’s also a pretty solid alternative to the likes of Gotham.
 
 ### [Europa](https://typekit.com/fonts/europa)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-europa.png" width={738} height={492} />](https://typekit.com/fonts/europa)
+  [<Image src="/images/blog/alternatives-to-circular-europa.png" width={738} height={492} />](https://typekit.com/fonts/europa)
 </div>
 
 Europa is possibly one of the best alternatives you'll find in typekit. It has very similar geometry to Circular, making it a good match with the double storey 'a', single storey 'g'. You also have the 'c' which has a similar opening.
 
 ### [Faricy New](https://typekit.com/fonts/faricy-new)
 <div className="article-image">
-  [<Image src="/static/images/blog/alternatives-to-circular-faricy.png" width={738} height={492} />](https://typekit.com/fonts/faricy-new)
+  [<Image src="/images/blog/alternatives-to-circular-faricy.png" width={738} height={492} />](https://typekit.com/fonts/faricy-new)
 </div>
 
 Faricy New has good geometry on the ‘a’, but potentially lacks the linear contrast that Circular has.

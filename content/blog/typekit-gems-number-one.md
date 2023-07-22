@@ -21,7 +21,7 @@ I’m aiming to make this an infrequent series, that I aim to explain the ration
 Soleil by [TypeTogether](http://www.type-together.com/Soleil), is a geometric sans serif, with a variety of weights and a nice italic. As a result makes it versatile typeface.
 
 <div className="article-image flex center">
-  <Image src="/static/images/blog/soleil.png" width={662} height={360} />
+  <Image src="/images/blog/soleil.png" width={662} height={360} />
 </div>
 
 ### Why and how I’ve used it
@@ -35,7 +35,7 @@ It works really well at smaller sizes and the bolder weights feel just right. Wh
 FF Dagny Pro by [FontFont](https://www.fontfont.com/fonts/dagny) is another versatile sans serif, with a fair variety of weights. Great for body copy, as it’s highly legible. One of the reasons for it’s legibility, is the contrast it has. The balance is just right.
 
 <div className="article-image flex center">
-  <Image src="/static/images/blog/dagny.png" width={662} height={360} />
+  <Image src="/images/blog/dagny.png" width={662} height={360} />
 </div>
 
 ### Why and how I’ve used it
@@ -47,7 +47,7 @@ The attention to detail in the italic, is something I admire. The ‘a’ goes f
 InterFace by [Dalton Maag](https://daltonmaag.com/library/interface) is a sans serif with personality, it’s softer and more humanist. It’s got a larger x-height, and as it’s described “…fractionally raised above the norm allows for a slightly narrowed design.”
 
 <div className="article-image flex center">
-  <Image src="/static/images/blog/interface.png" width={662} height={360} />
+  <Image src="/images/blog/interface.png" width={662} height={360} />
 </div>
 
 ### Why
@@ -57,7 +57,7 @@ I like the friendliness this typeface offers. It works well at small sizes and r
 Another great typeface from [TypeTogether](http://www.type-together.com/Abril). It has other variants such at titling, display and fat face. It’s in the name; that it’s suitable for paragraphs of text. Though it manages to retains the character of the display well.
 
 <div className="article-image flex center">
-  <Image src="/static/images/blog/abril.png" width={662} height={360} />
+  <Image src="/images/blog/abril.png" width={662} height={360} />
 </div>
 
 ### Why and how I’ve used it

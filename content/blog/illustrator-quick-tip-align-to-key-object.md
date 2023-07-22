@@ -23,14 +23,14 @@ The most common use case I can think of is making buttons. You’ve got a rectan
 
 ## How to
 <div className="article-image">
-  <Image src="/static/images/blog/align-button.gif" width={738} height={420} />
+  <Image src="/images/blog/align-button.gif" width={738} height={420} />
 </div>
 
 To align to key object you must select two items and then change the ‘Align To’ option to Align to Key Object. **The crucial part is then clicking the item you want to use to for aligning to**.
 
 ## Quicker for axis alignment
 
-<figure><Image src="/static/images/blog/align-axis.gif" width={738} height={420} /><figcaption>In the making of this post I discovered you could click the key object without having to choose the align to method.</figcaption></figure>
+<figure><Image src="/images/blog/align-axis.gif" width={738} height={420} /><figcaption>In the making of this post I discovered you could click the key object without having to choose the align to method.</figcaption></figure>
 
 Using align to key object is a quick method for aligning horizontally or vertically. Using the same method it will help save time.
 

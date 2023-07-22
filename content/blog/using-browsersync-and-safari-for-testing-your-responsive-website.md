@@ -41,7 +41,7 @@ browser-sync start --proxy "mysite.dev" --files "css/*.css"
 Replace mysite.dev with whatever your site is, it could be localhost, there are [further instructions on the website](http://browsersync.io/).
 
 <figure markdown="1">
-<Image src="/static/images/blog/Screenshot_2015-02-02_08.21.21.png" width={570} height={278} />
+<Image src="/images/blog/Screenshot_2015-02-02_08.21.21.png" width={570} height={278} />
 <figcaption>After running it you’ll be presented with this, then a browser tab should open immediately. That’s great, now to get it onto your iOS device, you will want to enter the external URL into Safari.</figcaption>
 </figure>
 
@@ -59,7 +59,7 @@ It’s the only way I’m aware of (that’s free) that you can connect to your 
 Once you reach this point you should see your device listed under the develop menu.
 
 <figure markdown="1">
-<Image src="/static/images/blog/Screenshot_2015-02-02_10.00.47.png" width={842} height={174} />
+<Image src="/images/blog/Screenshot_2015-02-02_10.00.47.png" width={842} height={174} />
 <figcaption>Choose your device and you should get an inspector window.</figcaption>
 </figure>
 

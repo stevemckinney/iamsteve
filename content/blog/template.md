@@ -12,7 +12,7 @@ large: "/static/images/blog/ink-trap-post-image.png"
 medium: "/static/images/blog/ink-trap-post-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "closed"
-id: 999
+id: 9999
 fileroot: "template"
 ---
 

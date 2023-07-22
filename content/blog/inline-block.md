@@ -23,7 +23,7 @@ The `inline-block` technique is a really handy alternative to a float based layo
 
 ## Why use inline-block over floats?
 <div className="article-image flex center">
-  <Image src="/static/images/blog/inline-block-example.png" alt="Showing the difference between float and inline block when a floated element has a different height to the other elements" width={640} height={360} className="article-image-next" />
+  <Image src="/images/blog/inline-block-example.png" alt="Showing the difference between float and inline block when a floated element has a different height to the other elements" width={640} height={360} className="article-image-next" />
 </div>
 
 It’s easy to say floats were never intended for layout, but that doesn’t stop you from using them. The main benefit to using `inline-block` over floats is your elements don’t require any kind of clearing and the layout doesn't break when you have multiple items of different height.
@@ -91,7 +91,7 @@ The important thing to note about the CSS is you’ll find text also aligns to t
 
 ## How to deal with spaces
 <div className="article-image flex center">
-  <Image src="/static/images/blog/inline-block-whitespace.png" width={640} height={360} />
+  <Image src="/images/blog/inline-block-whitespace.png" width={640} height={360} />
 </div>
 
 Elements which are `inline-block` recognise spaces around them, this causes layout to break. In rare cases you may intend to have these spaces, but in this context, your indentation is purely for code formatting.

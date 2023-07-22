@@ -32,7 +32,7 @@ Some of the points I will cover cross over into colour theory, but it’s about 
 
 ## How many colours should I use?
 <div className="article-image">
-  <Image src="/static/images/blog/colours-empty.png" width={840} height={460} />
+  <Image src="/images/blog/colours-empty.png" width={840} height={460} />
 </div>
 
 You need to cover two main angles, your brand/project and readable contrasting colours. You want to get your personality across, whilst there needs to be colours for maintaining readability. A palette must be flexible for a variety of use cases. Bright, light and dark colours are all necessary.
@@ -51,7 +51,7 @@ The first colour sets the tone for the whole palette. So it’s important that t
 
 #### Initial thoughts
 <div className="article-image">
-  <Image src="/static/images/blog/colours-initial.png" width={840} height={460} />
+  <Image src="/images/blog/colours-initial.png" width={840} height={460} />
 </div>
 
 You’ll have immediate ideas for what something means to you.
@@ -61,7 +61,7 @@ If you're unsure of colour perception, do some research. This will help inform y
 
 #### Company/individual, audience & goals
 <div className="article-image">
-  <Image src="/static/images/blog/colours-one.png" width={840} height={460} />
+  <Image src="/images/blog/colours-one.png" width={840} height={460} />
 </div>
 
 You will be looking at what message the colours communicate. Think about how the company/individual expects to be perceived.
@@ -70,7 +70,7 @@ Your goal may be to change the way you’re perceived. Look at the current colou
 
 #### Light or dark background
 <div className="article-image">
-  <Image src="/static/images/blog/colours-light-dark.png" width={840} height={460} />
+  <Image src="/images/blog/colours-light-dark.png" width={840} height={460} />
 </div>
 
 From the questions you’ve asked yourself, it should be possible to determine whether the website will have a light or dark theme.
@@ -80,7 +80,7 @@ it will influence your choices.
 
 ## Choosing your second colour
 <div className="article-image">
-  <Image src="/static/images/blog/colours-two.png" width={840} height={460} />
+  <Image src="/images/blog/colours-two.png" width={840} height={460} />
 </div>
 
 The second colour is your workhorse, it will be used for the majority of the text on your website. It has to complement your heading colour and contrast with the background it’s set on. This is where we have to consider use cases a variety of use cases, that will inform our third colour too.
@@ -104,7 +104,7 @@ Links are something that need to be reasonably apparent within a set of text. Ho
 
 ## Choosing your third colour
 <div className="article-image">
-  <Image src="/static/images/blog/colours-three.png" width={840} height={460} />
+  <Image src="/images/blog/colours-three.png" width={840} height={460} />
 </div>
 
 This isn’t necessarily a new colour, but it’s intention is to be used the same. It’s can be a shade of your second colour, with the purpose of helping visual hierarchy. There are times when the second colour could be too harsh, and the ideal would be to make a lighter version of it. Still providing the contrast needed.
@@ -113,7 +113,7 @@ Refer to the use cases of the second colour and tweak this colour by making a li
 
 ## Choosing your fourth colour
 <div className="article-image">
-  <Image src="/static/images/blog/colours-four.png" width={840} height={460} />
+  <Image src="/images/blog/colours-four.png" width={840} height={460} />
 </div>
 
 We’ve been through our workhorse colours, the previous three colours will serve you well. However, there is a time where you will need a colour that really separates itself from the pack.
@@ -131,7 +131,7 @@ The fourth colour should be used to bring attention to your most important eleme
 
 ## Choosing your fifth colour
 <div className="article-image">
-  <Image src="/static/images/blog/colours-five.png" width={840} height={460} />
+  <Image src="/images/blog/colours-five.png" width={840} height={460} />
 </div>
 
 The fifth colour should be something the majority of your colour choices can be used on. I generally have in mind that this colour will be used for backgrounds, for the majority of cases.
