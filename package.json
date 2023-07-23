@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "contentlayer dev & next dev",
+    "prebuild": "node prebuild.js",
     "build": "contentlayer build && next build && node ./scripts/generate-sitemap",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
