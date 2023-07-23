@@ -3,10 +3,10 @@ import { NextResponse } from 'next/server'
 
 export const POST = async (req) => {
   console.log('POST')
-  const { email, name, source } = await req.json();
+  const { email, name, source } = await req.json()
 
   if (!email) {
-    new NextResponse(JSON.stringify({ error: 'Email is required' }));
+    new NextResponse(JSON.stringify({ error: 'Email is required' }))
   }
 
   const API_URL = process.env.EMAILOCTOPUS_API_URL
@@ -41,12 +41,9 @@ export const POST = async (req) => {
       body: JSON.stringify(config),
     })
 
-    return new NextResponse(JSON.stringify({ res }));
-  }
-  catch (error) {
-    return new NextResponse(
-      JSON.stringify({ error: JSON.parse(error) })
-    )
+    return new NextResponse(JSON.stringify({ res }))
+  } catch (error) {
+    return new NextResponse(JSON.stringify({ error: JSON.parse(error) }))
   }
 }
 

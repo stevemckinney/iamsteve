@@ -28,12 +28,10 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
     })
 
     if (res.status === 500) {
-      console.log(error)
       setError(true)
       setMessage(`The server cannot be reached to submit your request.`)
       return Promise.reject(`The server cannot be reached to submit your request.`)
     } else if (res.error) {
-      console.log(data.error)
       setError(true)
       setMessage(`There was an error subscribing to the list.`)
       return Promise.reject(`There was an error subscribing to the list.`)
