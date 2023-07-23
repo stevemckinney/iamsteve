@@ -1,9 +1,7 @@
 'use client'
 
+import { NextResponse } from 'next/server'
 import { useRef, useState } from 'react'
-import { useRouter } from 'next/router'
-
-import siteMetadata from '@/data/siteMetadata'
 
 const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
   const inputEmail = useRef(null)
@@ -12,17 +10,16 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
-  const router = useRouter()
 
   const subscribe = async (e) => {
     e.preventDefault()
 
     // https://emailoctopus.com/api/1.5/lists/:listId/contacts
-    const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
+    const res = await fetch(`/api/newsletter`, {
       body: JSON.stringify({
         email: inputEmail.current.value,
         name: inputName ? inputName.current.value : '',
-        source: router.asPath,
+        source: '',
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -30,17 +27,16 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
       method: 'POST',
     })
 
-    const { error } = await res.json()
-
     if (res.status === 500) {
       console.log(error)
       setError(true)
       setMessage(`The server cannot be reached to submit your request.`)
-    } else if (error) {
-      console.log(error)
+      return Promise.reject(`The server cannot be reached to submit your request.`)
+    } else if (res.error) {
+      console.log(data.error)
       setError(true)
       setMessage(`There was an error subscribing to the list.`)
-      return
+      return Promise.reject(`There was an error subscribing to the list.`)
     }
 
     inputEmail.current.value = ''
@@ -62,7 +58,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
                 padding: '8px',
               }}
             >
-              <p className="m0">{message}</p>
+              {message && <p className="m0">{message}</p>}
             </div>
           )}
           {error && (
@@ -73,7 +69,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
                 padding: '8px',
               }}
             >
-              <p className="m0">{message}</p>
+              {message && <p className="m0">{message}</p>}
             </div>
           )}
           <form className="form form-newsletter end" onSubmit={subscribe}>
@@ -83,7 +79,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
               </label>
               <input
                 type="text"
-                className="input input-text form-control"
+                className="form-input px-4 py-3 rounded-lg"
                 name="fields[first_name]"
                 id={`input-name-${unique}`}
                 ref={inputName}
@@ -98,7 +94,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
                 type="email"
                 autoComplete="email"
                 autoCapitalize="none"
-                className="input input-text form-control"
+                className="form-input px-4 py-3 rounded-lg"
                 id={`input-email-${unique}`}
                 name="email_address"
                 ref={inputEmail}

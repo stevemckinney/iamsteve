@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import NewsletterForm from '@/components/NewsletterForm'
+import NewsletterForm from '@/components/newsletter-form'
 
 const Subscribe = ({
   title = 'Subscribe to the newsletter',

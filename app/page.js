@@ -5,6 +5,7 @@ import { allPosts } from 'contentlayer/generated'
 
 import mergeDataByID from '../lib/utils/mergeDataByID'
 import Link from 'next/link'
+import Subscribe from '@/components/subscribe'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400
@@ -48,6 +49,7 @@ export default async function Home() {
 
   return (
     <>
+      <Subscribe />
       <h2 className="text-xl mb-4 mt-8">Latest posts</h2>
 
       <div className="flex flex-col gap-4">
