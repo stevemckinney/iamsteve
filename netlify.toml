@@ -1,9 +1,9 @@
 [build.environment]
 [context.production.branch-deploy]
-  command = "npm run lint && npm run build && mv robots-disallow.txt public/robots.txt"
+  command = "npm run lint && npm run build"
   publish = ".next"
 [context.production]
-  command = "npm run lint && npm run build && mv robots-production.txt public/robots.txt"
+  command = "npm run lint && npm run build"
   publish = ".next"
 
 [[plugins]]
