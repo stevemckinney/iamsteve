@@ -48,11 +48,11 @@ export default async function PostPage({ params }) {
   }
 
   return (
-    <article className="py-6 prose dark:prose-invert">
+    <article className="py-6 prose prose-xl prose-fern dark:prose-invert">
       <h1 className="mb-2">{post.title}</h1>
       <ViewCounter allViews={allViews} slug={post.slugAsParams} trackView />
       {post.summary && (
-        <p className="text-xl mt-0 text-slate-700 dark:text-slate-200">{post.summary}</p>
+        <p className="text-xl mt-0">{post.summary}</p>
       )}
       <hr className="my-4" />
       <Mdx code={post.body.code} />

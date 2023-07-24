@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.prose :where(h1, h2, h3, h4, h5, h6) {
+  font-family: theme('fontFamily.display');
+  letter-spacing: -.0340909091em;
+}
+
+.prose h1 {
+  font-variation-settings: "wdth" 100, "wght" 750;
+}
+
+.prose :where(h2, h3, h4, h5, h6) {
+  font-variation-settings: "wdth" 100, "wght" 700;
+}
