@@ -7,12 +7,18 @@ const siteMetadata = require('../content/siteMetadata')
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
   const pages = await globby([
     'app/*.js',
+    'app/layout.js',
     'content/blog/**/*.mdx',
     'content/blog/**/*.md',
     'public/tag/**/*.xml',
     'public/category/**/*.xml',
     '!app/_*.js',
     '!app/api',
+    '!global.css',
+    '!robots.txt',
+    '!favicon.ico',
+    '!node_modules/**/*',
+    '!public/**/*',
   ])
 
   const sitemap = `
@@ -21,7 +27,8 @@ const siteMetadata = require('../content/siteMetadata')
             ${pages
               .map((page) => {
                 const path = page
-                  .replace('pages/', '/')
+                  .replace('app/page.js', '/')
+                  .replace('content/pages/', '/')
                   .replace('content/blog', '/blog')
                   .replace('public/', '/')
                   .replace('.js', '')
@@ -29,12 +36,21 @@ const siteMetadata = require('../content/siteMetadata')
                   .replace('.md', '')
                   .replace('/feed.xml', '')
                 const route = path === '/index' ? '' : path
-                if (page === `pages/404.js` || page === `pages/blog/[...slug].js`) {
+
+                var stats = fs.statSync(page)
+                var mtime = stats.mtime
+
+                if (
+                  page === `app/404.js` ||
+                  page === `app/blog/[...slug].js` ||
+                  page === `app/[...slug]/page.js`
+                ) {
                   return
                 }
                 return `
                         <url>
                             <loc>${siteMetadata.siteUrl}${route}</loc>
+                            <lastmod>${mtime}</lastmod>
                         </url>
                     `
               })

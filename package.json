@@ -4,25 +4,22 @@
   "private": true,
   "scripts": {
     "dev": "contentlayer dev & next dev",
-    "prebuild": "node prebuild.js",
     "build": "contentlayer build && next build && node ./scripts/generate-sitemap",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir app --dir components --dir lib --dir scripts"
   },
-  "pnpm": {
-    "overrides": {
-      "@opentelemetry/api": "1.4.1",
-      "@opentelemetry/core": "1.13.0",
-      "@opentelemetry/exporter-trace-otlp-grpc": "0.39.1",
-      "@opentelemetry/resources": "1.13.0",
-      "@opentelemetry/sdk-trace-base": "1.13.0",
-      "@opentelemetry/sdk-trace-node": "1.13.0",
-      "@opentelemetry/semantic-conventions": "1.13.0"
-    }
+  "resolutions": {
+    "@opentelemetry/api": "1.4.1",
+    "@opentelemetry/core": "1.13.0",
+    "@opentelemetry/exporter-trace-otlp-grpc": "0.39.1",
+    "@opentelemetry/resources": "1.13.0",
+    "@opentelemetry/sdk-trace-base": "1.13.0",
+    "@opentelemetry/sdk-trace-node": "1.13.0",
+    "@opentelemetry/semantic-conventions": "1.13.0"
   },
   "dependencies": {
-    "@netlify/plugin-nextjs": "latest",
+    "@netlify/plugin-nextjs": "4.39.1",
     "@next/bundle-analyzer": "^13.4.10",
     "@supabase/auth-helpers-nextjs": "^0.7.3",
     "@supabase/supabase-js": "^2.26.0",

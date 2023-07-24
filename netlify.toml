@@ -1,10 +1,5 @@
-[build.environment]
-[context.production.branch-deploy]
-  command = "npm run lint && npm run build"
-  publish = ".next"
-[context.production]
-  command = "npm run lint && npm run build"
-  publish = ".next"
+[build]
+  command = "yarn build"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
@@ -80,16 +75,6 @@
   to = "/blog/:splat"
   status = 301
   force = true
-
-[[redirects]]
-  from = "/robots.txt"
-  to = "/robots.txt"
-  status = 200
-
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
-  status = 200
 
 [[redirects]]
   from = "/rss"
