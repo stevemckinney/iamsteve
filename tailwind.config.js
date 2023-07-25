@@ -16,7 +16,7 @@ module.exports = {
         display: [
           ['roc-grotesk-variable', 'sans-serif', ...defaultTheme.fontFamily.sans],
           {
-            fontVariationSettings: '"wdth" 100, "wght" 750'
+            fontVariationSettings: '"wdth" 100, "wght" 700'
           },
         ],
         mono: [
@@ -26,6 +26,21 @@ module.exports = {
             fontVariationSettings: '"salt" on',
           }
         ]
+      },
+      fontSize: {
+        'headline': ['5.5rem', {
+          lineHeight: '.81818',
+          letterSpacing: '-.03409090909em',
+          fontVariationSettings: '"wdth" 100, "wght" 750',
+        }],
+        'h-64': ['4rem', {
+          lineHeight: '.875',
+          letterSpacing: '-.03125em',
+        }],
+        'h-48': ['3rem', {
+          lineHeight: '.9166667',
+          letterSpacing: '-.03125em',
+        }],
       },
       typography: ({ theme }) => ({
         fern: {
