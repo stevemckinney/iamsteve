@@ -10,7 +10,87 @@ module.exports = {
   ],
 	darkMode: 'class',
 	theme: {
+    borderRadius: {
+      'none': '0',
+      'xs': '.25rem',
+      'sm': '.5rem',
+      DEFAULT: '1rem',
+      'md': '1rem',
+      'lg': '1.5rem',
+      'xl': '2rem',
+      'rounded': '999rem',
+    },
+    fontSize: {
+      '7xl': ['5.5rem', {
+        lineHeight: '.81818',
+        letterSpacing: '-.03409090909em',
+        fontVariationSettings: '"wdth" 100, "wght" 750',
+      }],
+      '6xl': ['4rem', {
+        lineHeight: '.875',
+        letterSpacing: '-.03125em',
+      }],
+      '5xl': ['3rem', {
+        lineHeight: '.9166667',
+        letterSpacing: '-.03125em',
+      }],
+      '4xl': ['2.5rem', {
+        lineHeight: '1.1',
+        letterSpacing: '-.0125em',
+      }],
+      '3xl': ['2rem', {
+        lineHeight: '1.125',
+        letterSpacing: '-.015625em',
+      }],
+      '2xl': ['1.5rem', {
+        lineHeight: '1.5',
+      }],
+      'xl': ['1.3125rem', {
+        lineHeight: '1.5',
+      }],
+      'lg': ['1.125rem', {
+        lineHeight: '1.5',
+      }],
+      'base': ['1rem', {
+        lineHeight: '1.5',
+      }],
+      'sm': ['.875rem', {
+        lineHeight: '1.5',
+      }],
+      'xs': ['.75rem', {
+        lineHeight: '1.5',
+      }],
+      '2xs': ['.625rem', {
+        lineHeight: '1.5',
+      }],
+    },
 		extend: {
+      gridTemplateColumns: {
+        '16': 'repeat(16, minmax(0, 1fr))',
+        'subgrid': 'subgrid',
+      },
+      gridColumn: {
+        'content': 'content-start / content-end',
+        'prose': 'prose-start / prose-end',
+      },
+      gridColumnStart: {
+        'content-start': 'content-start',
+        'prose-start': 'prose-start',
+      },
+      gridColumnEnd: {
+        'content-end': 'content-end',
+        'prose-end': 'prose-end',
+      },
+      lineHeight: {
+        '7xl': '.81818',
+        '6xl': '.875',
+        '5xl': '.9166667',
+        '4xl': '1.1',
+        '3xl': '1.125',
+        '2xl': '1.166667',
+        'xl': '1.23809',
+        'lg': '1.333333',
+      },
       fontFamily: {
         sans: ['gira-sans', 'sans-serif', ...defaultTheme.fontFamily.sans],
         display: [
@@ -27,59 +107,12 @@ module.exports = {
           }
         ]
       },
-      fontSize: {
-        'headline': ['5.5rem', {
-          lineHeight: '.81818',
-          letterSpacing: '-.03409090909em',
-          fontVariationSettings: '"wdth" 100, "wght" 750',
-        }],
-        'h-64': ['4rem', {
-          lineHeight: '.875',
-          letterSpacing: '-.03125em',
-        }],
-        'h-48': ['3rem', {
-          lineHeight: '.9166667',
-          letterSpacing: '-.03125em',
-        }],
+      boxShadow: {
+        reduced: '0px 1px 4px -4px rgba(70, 42, 81, 0.08), 0px 1px 0px 0px rgba(70, 42, 81, 0.06), 0px 0px 1px 0px rgba(70, 42, 81, 0.10)',
+        placed: ' 0px 1px 3px 0px rgba(117, 99, 98, 0.10), 0px 4px 8px 0px rgba(117, 99, 98, 0.05)',
+        picked: '0px 4px 12px -4px rgba(70, 42, 81, 0.08), 0px 1px 0px 0px rgba(70, 42, 81, 0.06), 0px 0px 1px 0px rgba(70, 42, 81, 0.10)',
+        floating: '0px 6px 20px -4px rgba(70, 42, 81, 0.12), 0px 2px 0px 0px rgba(70, 42, 81, 0.06), 0px 0px 1px 0px rgba(70, 42, 81, 0.30)',
       },
-      typography: ({ theme }) => ({
-        fern: {
-          css: {
-            '--tw-prose-body': theme('colors.ui.body'),
-            '--tw-prose-headings': theme('colors.fern.1100'),
-            '--tw-prose-lead': theme('colors.fern[700]'),
-            '--tw-prose-links': theme('colors.fern[900]'),
-            '--tw-prose-bold': theme('colors.fern[900]'),
-            '--tw-prose-counters': theme('colors.fern[600]'),
-            '--tw-prose-bullets': theme('colors.fern[400]'),
-            '--tw-prose-hr': theme('colors.fern[300]'),
-            '--tw-prose-quotes': theme('colors.fern[900]'),
-            '--tw-prose-quote-borders': theme('colors.fern[300]'),
-            '--tw-prose-captions': theme('colors.fern[700]'),
-            '--tw-prose-code': theme('colors.fern[900]'),
-            '--tw-prose-pre-code': theme('colors.fern[100]'),
-            '--tw-prose-pre-bg': theme('colors.fern.1100'),
-            '--tw-prose-th-borders': theme('colors.fern[300]'),
-            '--tw-prose-td-borders': theme('colors.fern[200]'),
-            '--tw-prose-invert-body': theme('colors.fern[200]'),
-            '--tw-prose-invert-headings': theme('colors.white'),
-            '--tw-prose-invert-lead': theme('colors.fern[300]'),
-            '--tw-prose-invert-links': theme('colors.white'),
-            '--tw-prose-invert-bold': theme('colors.white'),
-            '--tw-prose-invert-counters': theme('colors.fern[400]'),
-            '--tw-prose-invert-bullets': theme('colors.fern[600]'),
-            '--tw-prose-invert-hr': theme('colors.fern[700]'),
-            '--tw-prose-invert-quotes': theme('colors.fern[100]'),
-            '--tw-prose-invert-quote-borders': theme('colors.fern[700]'),
-            '--tw-prose-invert-captions': theme('colors.fern[400]'),
-            '--tw-prose-invert-code': theme('colors.white'),
-            '--tw-prose-invert-pre-code': theme('colors.fern[300]'),
-            '--tw-prose-invert-pre-bg': 'rgb(0 0 0 / 50%)',
-            '--tw-prose-invert-th-borders': theme('colors.fern[600]'),
-            '--tw-prose-invert-td-borders': theme('colors.fern[700]'),
-          },
-        },
-      }),
 			colors: {
         ui: {
           'bg-inset': '#ffffff',
@@ -245,5 +278,4 @@ module.exports = {
       }
 		}
 	},
-	plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
-};
+}

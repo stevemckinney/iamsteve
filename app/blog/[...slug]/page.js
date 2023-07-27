@@ -10,6 +10,8 @@ import ViewCounter from '../counter'
 export const dynamic = 'force-static'
 export const revalidate = 86400
 
+import styles from './post.module.css'
+
 async function getPostFromParams(params) {
   const slug = params?.slug?.join('/')
   const post = allPosts.find((post) => post.slugAsParams === slug)
@@ -48,12 +50,10 @@ export default async function PostPage({ params }) {
   }
 
   return (
-    <article className="py-6 prose prose-xl prose-fern dark:prose-invert">
-      <h1 className="mb-2">{post.title}</h1>
+    <article className={`${styles.prose} dark:prose-invert col-prose`}>
+      <h1>{post.title}</h1>
       <ViewCounter allViews={allViews} slug={post.slugAsParams} trackView />
-      {post.summary && (
-        <p className="text-xl mt-0">{post.summary}</p>
-      )}
+      {post.summary && <p>{post.summary}</p>}
       <hr className="my-4" />
       <Mdx code={post.body.code} />
     </article>

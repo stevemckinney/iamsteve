@@ -1,0 +1,78 @@
+.prose {
+  color: theme('colors.fern.1100');
+  font-size: theme('fontSize.xl');
+  line-height: theme('lineHeight.normal');
+
+  img {
+    box-shadow: theme('boxShadow.floating');
+    border-radius: theme('borderRadius.lg');
+  }
+
+  & :where(h1, h2, h3, h4, h5, h6) {
+    font-family: theme('fontFamily.display');
+    letter-spacing: -.0340909091em;
+    text-transform: lowercase;
+    text-wrap: balance;
+  }
+
+  & :where(h2, h3, h4, h5, h6) {
+    font-variation-settings: "wdth" 100, "wght" 700;
+  }
+
+  & h1 {
+    font-size: theme('fontSize.7xl');
+    line-height: theme('lineHeight.7xl');
+    font-variation-settings: "wdth" 100, "wght" 750;
+    margin-block-end: theme('margin.12');
+  }
+
+  & h2 {
+    font-size: theme('fontSize.5xl');
+    line-height: theme('lineHeight.5xl');
+    margin-block-start: theme('margin.12');
+  }
+
+  & h3 {
+    font-size: theme('fontSize.3xl');
+    line-height: theme('lineHeight.3xl');
+    margin-block-start: theme('margin.12');
+  }
+
+  & h4 {
+    font-size: theme('fontSize.2xl');
+    line-height: theme('lineHeight.2xl');
+    margin-block-start: theme('margin.8');
+  }
+
+  & :where(h5, h6) {
+    font-size: theme('fontSize.xl');
+    line-height: theme('lineHeight.xl');
+    margin-block-start: theme('margin.4');
+  }
+
+  & :where(p, ul, ol) {
+    margin-block-start: theme('margin.4');
+  }
+
+  & :where(p, li) {
+    color: theme('colors.ui.body');
+  }
+
+  & li {
+    list-style: square;
+  }
+}
+
+
+/* .prose > * + * {
+//   margin: 0;
+//   --space-start: theme('margin.16');
+//   --space-end: theme('margin.4');
+//   margin-block-start: var(--space-start, 1.5em);
+//   margin-block-end: var(--space-end, 1.5em);
+// } */
+
+/*.prose :where(h1, h2, h3, h4, h5, h6, p, li, a) {
+  text-box-trim: both;
+  text-box-edge: ex alphabetic;
+}*/
