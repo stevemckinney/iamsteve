@@ -1,7 +1,10 @@
-import rehypeAutolinkHeadings from "rehype-autolink-headings"
-import rehypeSlug from "rehype-slug"
 import remarkGfm from "remark-gfm"
 import smartypants from "remark-smartypants"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeSlug from "rehype-slug"
+import rehypeToc from '@jsdevtools/rehype-toc'
+import rehypePrettyCode from 'rehype-pretty-code'
+import { visit } from 'unist-util-visit'
 import { defineDocumentType, makeSource } from "contentlayer/source-files"
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
@@ -31,26 +34,6 @@ export const Page = defineDocumentType(() => ({
   },
   computedFields,
 }))
-
-/*
----
-title: "11 resources for colour inspiration"
-date: "2016-01-19T07:30:00+00:00"
-lastmod: "2019-04-24T08:31:45+00:00"
-summary: "Following on from the colour series I have a selection of websites that can help inspire your colour palettes. There is a variety between inspiration, resources and tools to pick colours."
-metadesc: "11 resources, tools and guides that will help reinforce your colour knowledge."
-theme: "#fff5f3"
-tags: ["Design"]
-categories: ["Design"]
-images: ["/images/blog/colour-inspiration-featured-image@2x.png"]
-large: "/images/blog/colour-inspiration-featured-image@2x.png"
-medium: "/images/blog/colour-inspiration-featured-image-medium@2x.png"
-ogImage: "/assets/og/cover.jpg"
-status: "open"
-id: 110
-fileroot: "11-resources-for-colour-inspiration"
----
-*/
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -140,6 +123,99 @@ export default makeSource({
           },
         },
       ],
+      [rehypeToc, { customizeTOC }],
+      [
+        rehypePrettyCode,
+        {
+          theme: 'css-variables',
+          onVisitLine(node) {
+            // Prevent lines from collapsing in `display: grid` mode, and allow empty
+            // lines to be copy/pasted
+            if (node.children.length === 0) {
+              node.children = [{ type: 'text', value: ' ' }];
+            }
+          },
+          onVisitHighlightedLine(node) {
+            node.properties.className.push('line-highlighted');
+          },
+          onVisitHighlightedWord(node) {
+            node.properties.className = ['word-highlighted'];
+          },
+        },
+      ],
     ],
   },
 })
+
+const customizeTOC = (toc) => {
+  try {
+    const { children } = toc;
+    const childrenOfChildren = children?.[0]?.children;
+    if (!children?.length || !childrenOfChildren?.length) return null;
+  } catch (e) {}
+  return {
+    type: "element",
+    tagName: "div",
+    properties: { className: "toc" },
+    children: [
+      {
+        type: "element",
+        tagName: "p",
+        properties: { className: "title" },
+        children: [
+          {
+            type: "text",
+            value: "Table of Contents",
+          },
+        ],
+      },
+      ...(toc.children || []),
+    ],
+  }
+}
+
+const rehypePrettyCodeOptions = () => {
+  return (tree) => {
+    visit(tree, (node) => {
+      if (node?.type === "element" && node?.tagName === "pre") {
+        const [codeEl] = node.children;
+
+        if (codeEl.tagName !== "code") return;
+
+        node.raw = codeEl.children?.[0].value;
+      }
+    })
+    visit(tree, (node) => {
+      if (node?.type === "element" && node?.tagName === "div") {
+        if (!("data-rehype-pretty-code-fragment" in node.properties)) {
+          return;
+        }
+
+        for (const child of node.children) {
+          if (child.tagName === "pre") {
+            child.properties["raw"] = node.raw;
+          }
+        }
+      }
+    })
+  }
+}
+
+const rehypePrettyCodeTheme = () => {
+  return {
+    theme: 'one-dark-pro',
+    onVisitLine(node) {
+      // Prevent lines from collapsing in `display: grid` mode, and allow empty
+      // lines to be copy/pasted
+      if (node.children.length === 0) {
+        node.children = [{ type: 'text', value: ' ' }];
+      }
+    },
+    onVisitHighlightedLine(node) {
+      node.properties.className.push('line-highlighted');
+    },
+    onVisitHighlightedWord(node) {
+      node.properties.className = ['word-highlighted'];
+    },
+  }
+}

@@ -50,7 +50,7 @@ export default async function PostPage({ params }) {
   }
 
   return (
-    <article className={`${styles.prose} dark:prose-invert col-prose`}>
+    <article className={`${styles.prose} prose dark:prose-invert col-prose`}>
       <h1>{post.title}</h1>
       <ViewCounter allViews={allViews} slug={post.slugAsParams} trackView />
       {post.summary && <p>{post.summary}</p>}
