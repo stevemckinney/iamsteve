@@ -3,8 +3,8 @@ import smartypants from "remark-smartypants"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeSlug from "rehype-slug"
 import rehypeToc from '@jsdevtools/rehype-toc'
-import rehypePrettyCode from 'rehype-pretty-code'
-import { visit } from 'unist-util-visit'
+import rehypeCodeTitles from 'rehype-code-titles'
+import rehypePrism from 'rehype-prism-plus'
 import { defineDocumentType, makeSource } from "contentlayer/source-files"
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
@@ -124,25 +124,8 @@ export default makeSource({
         },
       ],
       [rehypeToc, { customizeTOC }],
-      [
-        rehypePrettyCode,
-        {
-          theme: 'css-variables',
-          onVisitLine(node) {
-            // Prevent lines from collapsing in `display: grid` mode, and allow empty
-            // lines to be copy/pasted
-            if (node.children.length === 0) {
-              node.children = [{ type: 'text', value: ' ' }];
-            }
-          },
-          onVisitHighlightedLine(node) {
-            node.properties.className.push('line-highlighted');
-          },
-          onVisitHighlightedWord(node) {
-            node.properties.className = ['word-highlighted'];
-          },
-        },
-      ],
+      rehypeCodeTitles,
+      rehypePrism,
     ],
   },
 })

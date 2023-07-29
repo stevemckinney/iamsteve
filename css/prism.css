@@ -4,35 +4,173 @@
  * by copying from a prismjs compatible theme:
  * https://github.com/PrismJS/prism-themes
  */
-.code-block {
-  --code-black: #152637;
-  --code-red: #ff4b59;
-  --code-yellow: #fdc347;
-  --code-green: #7de37a;
-  --code-blue: #727c87;
-  --code-magenta: #8965dd;
-  --code-cyan: #64cce3;
-  --code-white: #f6f7ee;
-  --comment: #838c95;
+.prose pre {
+  --code-black: theme('colors.fern.1100');
+  --code-red: theme('colors.rio.200');
+  --code-yellow: theme('colors.dandelion.300');
+  --code-green: theme('colors.grass.300');
+  --code-blue: theme('colors.cornflour.300');
+  --code-magenta: theme('colors.magenta.200');
+  --code-cyan: theme('colors.fern.300');
+  --code-white: theme('colors.fern.100');
+  --code-comment: theme('colors.neutral-03.400');
 }
 
-/* Code block styles */
-.code-highlight {
-  @apply float-left min-w-full;
+/**
+ * Custom theme
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: var(--code-white);
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  tab-size: 2;
+  hyphens: none;
 }
 
-.code-line {
-  @apply block pl-4 pr-4 -mx-4 border-l-4 border-opacity-0;
+/* code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
 }
 
-.code-line.inserted {
-  @apply bg-green-500 bg-opacity-20;
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: var(--code-black);
 }
 
-.code-line.deleted {
-  @apply bg-red-500 bg-opacity-20;
+/* inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
 }
 
-.highlight-line {
-  @apply -mx-4 bg-gray-700 bg-opacity-50 border-l-4 border-primary-500;
+/* css, scss */
+.token.atrule
+.token.rule,
+.token.atrule .token.number,
+.token.atrule .token.unit {
+  color: var(--code-red);
+}
+
+.token.selector {
+  color: var(--code-yellow);
+}
+
+.token.property { color: var(--code-white); }
+
+.token.atrule .token.property { color: var(--code-magenta); }
+
+/* .language-scss .token.variable { color: var(--code-white); } */
+/* .language-scss .code-line:has(.property:first-child) { color: var(--code-red); } */
+.language-scss .code-line:has(.property:first-child) .function { color: var(--code-yellow); }
+
+/* variables */
+.token.variable,
+.language-scss .code-line:has(.selector:first-child) .variable { color: var(--code-magenta); }
+
+/* functions */
+.language-scss .function { color: var(--code-blue); }
+
+/* html */
+.language-markup .token.tag .token.tag,
+.language-markup .token.tag .token.tag .token.punctuation { color: var(--code-magenta); }
+.language-markup .token.attr-name { color: var(--code-white); }
+.language-markup .token.attr-value { color: var(--code-yellow); }
+
+/* comments, punctuation */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata,
+.token.punctuation {
+  color: var(--code-comment);
+}
+
+/* TODO: all below need to be checked */
+.namespace {
+  opacity: .7;
+}
+
+.token.keyword,
+.token.tag {
+  color: var(--code-blue);
+}
+
+.token.class-name {
+  color: var(--code-red);
+}
+
+.token.boolean,
+.token.constant {
+  color: var(--code-yellow);
+}
+
+.token.symbol,
+.token.deleted {
+  color: var(--code-magenta);
+}
+
+.token.number,
+.token.unit {
+  color: var(--code-magenta);
+}
+
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: var(--code-yellow);
+}
+
+.token.operator {
+  color: var(--code-white);
+}
+
+.token.entity {
+  color: var(--code-yellow);
+  cursor: help;
+}
+
+.token.url {
+  color: var(--code-yellow);
+}
+
+.language-css .token.string,
+.style .token.string {
+  color: var(--code-yellow);
+}
+
+.token.atrule,
+.token.attr-value {
+  color: var(--code-yellow);
+}
+
+.token.function {
+  color: var(--code-yellow);
+}
+
+.token.regex {
+  color: var(--code-yellow);
+}
+
+.token.important {
+  color: var(--code-yellow);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
 }

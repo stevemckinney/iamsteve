@@ -44,3 +44,5 @@
 .layout {
   grid-template-columns: var(--grid-16);
 }
+
+@import "../css/prism.css";
