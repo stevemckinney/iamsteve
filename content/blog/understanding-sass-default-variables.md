@@ -28,7 +28,7 @@ That's somewhat expected but what if you wanted to change the default shadow to 
 
 Here's how:
 
-```sass
+```scss
 // The default color for box shadows
 $default-box-shadow-color: #333333 !default;
 

@@ -19,7 +19,7 @@ In this tutorial, I will show you how to make buttons in CSS with a nice 3D like
 We need a button this can be done with either the actual `<button>` or just a plain `<div>`. Though it is possible to use for example a `<section>` it's not very semantic, if you were wondering. Though if you are intending on applying this to a section of content for styling then by all means do so.
 
 I'm going to use a button for this example:
-```.language-markup
+```markup
 <button>Do something!</button>
 ```
 
@@ -28,7 +28,7 @@ Now we have our button, albeit bland. Now we  want to add some styling, you can 
 ## Styling
 Looking at the button now to make it 3D, the main make up of the code is the box-shadow. I've commented the box-shadow area to show which part of the shadow is doing what. Anyway here's my code:
 
-```.language-css
+```css
 button {
   padding: 10px;
   background: #ec6161;
@@ -51,7 +51,7 @@ That's the great thing about box-shadow. You could also add some texture by addi
 ## Final code
 That's the basics above, but you may want to make them feel more button like. This is also just as simple, it requires changing the shadow on the hover and active states slightly. So here's the full code and of course a demo too.
 
-```.language-css
+```css
 button {
    padding: 10px;
    background: #ec6161;

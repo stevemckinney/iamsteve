@@ -142,7 +142,7 @@ Once we reach a viewport less than 680px we adjust the content. I choose 680px, 
 
 This makes our image 320px in height, which falls within our baseline. At another stage you can adjust things again at around 520px, then adjust the content width to 320px.
 
-```sass
+```scss
 .main-content {
   width: 640px;
 

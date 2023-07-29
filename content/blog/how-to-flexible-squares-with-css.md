@@ -28,7 +28,7 @@ To solve this problem we need to use a percentage padding on the bottom. The val
 ### HTML
 Your HTML may look something like this.
 
-```{.language-html .code-tall}
+```markup
 <div class=“row”>
   <div class=“square”>
   </div>
@@ -57,7 +57,7 @@ If your items are within grid layout, understandably so, this affects the paddin
 ### HTML
 Your HTML may look something like this.
 
-```{.language-html .code-tall}
+```markup
 <div class=“grid”>
   <div class=“grid-cell grid-25”>
     <div class=“square”></div>

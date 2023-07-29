@@ -18,7 +18,7 @@ Sass maps can provide some powerful functionality to make life easier and less r
 ## An introduction to maps
 They work in a variety of ways and can be nested. The simplest way to create a map is:
 
-```sass
+```scss
 $map: ( key: value, another-key: another-value )
 ```
 
@@ -27,7 +27,7 @@ They can be quoted or unquoted. It depends on your preferences, however dependin
 ## A simple example, with helpers
 Everyone has a set of helper class names. Some of them follow similar patterns but can added to over time as needed. The use case I’m thinking of is changing the colour of text.
 
-```sass
+```scss
 $colors: (
   primary: #444,
   secondary: #b4da55
@@ -47,7 +47,7 @@ Maps also make a great way for managing your website colour palette. It works in
 The common  ones I use are `map-get` and `map-has-key`, [the Sass documentation](http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions) details all the available functions.
 
 ### map-get() input
-```sass
+```scss
 .key {
   content: map-get($map, 'key'); }
 
@@ -67,7 +67,7 @@ The common  ones I use are `map-get` and `map-has-key`, [the Sass documentation]
 ### map-has-key()
 It will return true or false, based on the input.
 
-```sass
+```scss
 // Using the ternary syntax
 .key {
   content: if(map-has-key($map, 'key'), 'true', 'false'); }
@@ -82,7 +82,7 @@ It will return true or false, based on the input.
 Another use for maps is with font weights. It’s possible you don’t remember which weight name equates to in the 100–900 range. Due to them being different between some fonts. Using a map makes sense, we can also build upon this with a helper function which can return the correct weight.
 
 ### Map
-```sass
+```scss
 $font-weights: (
   hairline: 100,
   extra-light: 200,
@@ -95,7 +95,7 @@ $font-weights: (
   heavy: 900 );
 ```
 ### Function
-```sass
+```scss
 @function font-weight($weight: $default-map-font-weight) {
   @if map-has-key($font-weight, $weight) != true {
     @warn "#{weight} not found"; }
@@ -103,7 +103,7 @@ $font-weights: (
 ```
 
 ### Usage
-```sass
+```scss
 h1 {
   font-weight: font-weight(medium); }
 ```

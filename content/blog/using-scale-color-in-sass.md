@@ -21,7 +21,7 @@ There comes a point where you're thinking, the bevel could be less, the shadows 
 It isn't difficult with `scale-color`. You pass your colour and adjust as needed with the `$lightness` and `$saturation` parameters (if need be and there are [more parameters](http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#scale_color-instance_method "Full documentation for scale-color")).
 
 ### For example
-```sass
+```scss
 @include background(linear-gradient($color, scale-color($color, $lightness: -20%)));
 ```
 
@@ -35,7 +35,7 @@ I have matched the colours best I can to demonstrate from a level point. Other e
   <span className="e1-scale" role="img" aria-label="Using scale-color to demonstrate a red gradient"></span>
   <figcaption>
     A red gradient using `scale-colour`.
-    ```sass
+    ```scss
     @include background(linear-gradient(scale-color(#dd453d, $lightness: 50%), #dd453d, scale-color(#dd453d, $lightness: -50%)));
     ```
   </figcaption>
@@ -44,7 +44,7 @@ I have matched the colours best I can to demonstrate from a level point. Other e
   <span className="e1-darken" role="img" aria-label="Using scale-color to demonstrate a red gradient"></span>
   <figcaption>
     A red gradient using ` darken` and `lighten`.
-    ```sass
+    ```scss
     @include background(linear-gradient(lighten(#dd453d, 22.4%), #dd453d, darken(#dd453d, 28%)));
     ```
   </figcaption>
@@ -61,7 +61,7 @@ As you can see the difference in the values to achieve something that is identic
   <span className="e2-scale" role="img" aria-label="Using scale-color to demonstrate a green gradient"></span>
   <figcaption>
     A green gradient using `scale-colour`.
-    ```sass
+    ```scss
     @include background(linear-gradient(scale-color(#88a23d, $lightness: 50%), #88a23d, scale-color(#88a23d, $lightness: -50%)));
     ```
   </figcaption>
@@ -70,7 +70,7 @@ As you can see the difference in the values to achieve something that is identic
   <span className="e2-darken" role="img" aria-label="Using darken/lighten to demonstrate a red gradient"></span>
   <figcaption>
     A green gradient using `darken` and `lighten`
-    ```sass
+    ```scss
     @include background(linear-gradient(lighten(#88a23d, 22.4%), #88a23d, darken(#88a23d, 28%)));
     ```
   </figcaption>
@@ -84,7 +84,7 @@ As you can see the difference in the values to achieve something that is identic
   <span className="e3-scale" role="img" aria-label="Using scale-color to demonstrate a blue gradient"></span>
   <figcaption>
     A blue gradient using `scale-colour`.
-    ```sass
+    ```scss
 @include background(linear-gradient(scale-color(#3a9ac9, $lightness: 50%), #3a9ac9, scale-color(#3a9ac9, $lightness: -50%)));
 ```
   </figcaption>
@@ -93,7 +93,7 @@ As you can see the difference in the values to achieve something that is identic
   <span className="e3-darken" role="img" aria-label="Using darken/lighten to demonstrate a blue gradient"></span>
   <figcaption>
     A blue gradient using `darken` and `lighten`.
-    ```sass
+    ```scss
     @include background(linear-gradient(lighten(#3a9ac9, 22.4%), #dd453d, darken(#3a9ac9, 28%)));
     ```
   </figcaption>

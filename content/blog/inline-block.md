@@ -171,14 +171,14 @@ To create a layout, add an additional `<div>` inside that with the relevant clas
 ### Usage: Sass
 The grid can be included with the defaults in your Sass by including the grid mixin.
 
-```sass
+```scss
 @include grid;
 ```
 
 #### Overriding through the mixin
 The grid mixin takes 3 parameters. `$grid-columns` which can be any number in reality. `$grid-gutter` a pixel value is recommended. `$grid-map` which is a map for your breakpoints.
 
-```sass
+```scss
 @include grid(
   $grid-columns : $default-grid-columns,
   $grid-gutter : $default-grid-gutter,
@@ -189,7 +189,7 @@ The grid mixin takes 3 parameters. `$grid-columns` which can be any number in re
 #### Modifying breakpoints
 I have set up a bunch of defaults to make it easy to override. So you don’t need to call the mixin with parameters. The first step will be changing or adding breakpoints. This can be done by changing the `$default-grid-map` variable.
 
-```sass
+```scss
 $default-grid-map: ( small: 540px, medium: 720px, large: 1024px );
 ```
 
@@ -198,7 +198,7 @@ Remove `!default` from the variable and set it again with your other variables. 
 #### Other variables to modify
 You can modify the column amount and the gutter, with the following variables. The gutter number is half the value you want it to be overall.
 
-```sass
+```scss
 $default-grid-columns: 12 !default;
 $default-grid-gutter: 6px !default;
 ```
@@ -206,7 +206,7 @@ $default-grid-gutter: 6px !default;
 #### Example with modifications
 Here is an example of a 6 column grid, with 24px gutter and 4 breakpoints named alphabetically.
 
-```sass
+```scss
 $default-grid-columns: 6;
 $default-grid-gutter: 12px;
 $default-grid-map: ( a: 320px, b: 480px, c: 720px, d: 1080px );

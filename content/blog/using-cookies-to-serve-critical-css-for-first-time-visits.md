@@ -23,7 +23,7 @@ Critical path CSS is important for the first page load. There on it’s not real
 ## Our current setup probably looks like
 I’ve excluded much of the code for brevity. Just highlighting the `<style>`, `<script>` and `<noscript>` tags used.
 
-```html
+```markup
 <head>
   <style>
     /* Critical CSS */

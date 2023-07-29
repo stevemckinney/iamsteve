@@ -39,7 +39,7 @@ And you'll be expected to do something like `<a href="page.html" class="button b
 ## What I think you should be doing
 This still works without using Sass, and with Sass reduces the need for adding the extra class name entirely.
 
-```sass
+```scss
 %button-base {
   font-size: 1em;
   padding: .75em 1.5em;

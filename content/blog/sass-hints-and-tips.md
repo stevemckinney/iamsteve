@@ -26,7 +26,7 @@ The obvious examples are colours and fonts. I usually have `$primary` and `$seco
 ### Using complement to build a palette
 A tip for a quick colour palette is to use the Sass complement function. Like so:
 
-```sass
+```scss
 $primary: #f00;
 $secondary: complement($primary);
 ```
@@ -41,7 +41,7 @@ These modes are great when dealing with a big chain of `lighten(darken(saturate(
 ### Time saving mixins
 Mixins can save a lot of time, how many times have you wrote something as simple as `width: 100px; height: 100px` and thought "I wish I could write that quicker". You can with Sass.
 
-```sass
+```scss
 @mixin wh($width: false, $height: false) {
   $width: unquote($width);
   
@@ -59,7 +59,7 @@ Mixins can save a lot of time, how many times have you wrote something as simple
 
 If you find styles being repeated, why not make it a mixin?
 
-```sass
+```scss
 @mixin button {
   border: 1px solid #000;
   background: #222;
@@ -76,7 +76,7 @@ Mixins allow you to not have to litter your code with classes. I think OOCSS is 
 ## Sass helps responsive web design
 In the prerelease versions of Sass only (at the time of writing this post). You can use nested `@media` queries. This saves a lot of time and you can set up a mixin to make this even more efficient.
 
-```sass
+```scss
 @mixin respond-to($media) {
   @if $media == iphone {
     @media only screen and (min-width: 480px) { 
@@ -93,7 +93,7 @@ In the prerelease versions of Sass only (at the time of writing this post). You 
 
 Now we can write things like:
 
-```sass
+```scss
 .container {
   width: 95%;
   

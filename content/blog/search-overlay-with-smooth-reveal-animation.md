@@ -149,7 +149,7 @@ $system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial
 `$base-px` is for spacing, `$breakpoint` and `$breakpoint-max` are for media queries. Then you have several colours and a system font stack. These variables will allow you to tweak things easier.
 
 ### General setup
-```sass
+```scss
 // Basics
 // ----------------------
 body {
@@ -167,7 +167,7 @@ This code is so the open button will align centrally vertically and horizontally
 ### Hiding the label
 A design choice is to hide the label, however, it still serves a purpose to screen readers (albeit proper accessibility isn’t covered here).
 
-```sass
+```scss
 // For hiding the label
 // ----------------------
 .visuallyhidden {
@@ -186,7 +186,7 @@ A design choice is to hide the label, however, it still serves a purpose to scre
 ### SVG colour inheriting styles
 This CSS is important for the SVG icons having the correct colour applied to them. As mentioned earlier there are class names applied to the SVG paths.
 
-```sass
+```scss
 // SVG Helpers
 // ---------------------------
 .fill-currentcolor {
@@ -201,7 +201,7 @@ The `fill` property is an SVG specific property. The default fill on an SVG is b
 ### Icons
 Each icon used is the same size, starting at 24px for smaller screens and then increased to 32px at the `$breakpoint`.
 
-```sass
+```scss
 // Icon
 // ---------------------------
 .icon {
@@ -217,7 +217,7 @@ Each icon used is the same size, starting at 24px for smaller screens and then i
 ### Button and input ‘reset’
 These styles normalise the browser applied styling and give you a consistent starting point. Particularly the `appearance` property, this removes much of the browser default styling.
 
-```sass
+```scss
 // Input/button reset
 // ---------------------------
 .input,
@@ -292,7 +292,7 @@ Along with the icon transition earlier the `box-shadow` is also being made to ap
 ### Button to close  `.button-close`
 The close button is reasonably simple, you’re positioning it to the top right and making sure it the background colour is transparent.
 
-```sass
+```scss
 // Button (close)
 // ---------------------------
 .button-close {
@@ -306,7 +306,7 @@ The close button is reasonably simple, you’re positioning it to the top right 
 ### Form `.form-search`
 The form element itself, serves as a container to limit the width of the input and allows you to align the search button easily.
 
-```sass
+```scss
 .form-search {
   position: relative;
   width: 100%;
@@ -320,7 +320,7 @@ Adding `position: relative` will make sure the button is anchored to the form el
 ### Search input
 There’s quite a bit of CSS applied to this element, the majority is related to visual style and sizing, rather than alignment.
 
-```sass
+```scss
 // Input
 // ---------------------------
 .input-search {
@@ -355,7 +355,7 @@ I find it easier to use `padding` to apply the size you want over adding a `heig
 ### Overlay
 The overlay is fixed to the viewport and everything again is positioned centrally with flexbox. This is much of the heavy lifting for positioning.
 
-```sass
+```scss
 // Overlay
 // ---------------------------
 .overlay {
@@ -393,7 +393,7 @@ If you followed along with the code as is, you should have what resembles a comp
 ### Hiding
 The initial state the form is hidden. That’s why the `class` on the overlay `<div>` is `class="overlay hiding"`.
 
-```sass
+```scss
 // Initial state
 .hiding {
   max-height: 0;
@@ -435,7 +435,7 @@ The form elements will be positioned centrally, or at the bottom depending on sc
 ### Showing
 When `.button-open` is clicked this class name will be applied to the overlay.
 
-```sass
+```scss
 // Showing state
 .showing {
   max-height: 100vh;
@@ -455,7 +455,7 @@ This is the good thing about removing class names through JavaScript—which wil
 ### Transitioning inner elements
 Finally, once the overlay opens, you want the form elements to transition in slightly later. This gives a more intentional appearance.
 
-```sass
+```scss
 .button-search {
   transition: .4s .6s ease-out; }
 

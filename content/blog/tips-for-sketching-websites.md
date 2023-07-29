@@ -21,7 +21,7 @@ Just because you feel like you can’t sketch, doesn’t mean you shouldn’t do
 I’ve covered this in the past, where I've covered my wireframing technique. You need to plan what's going to be on each page that you sketch. So noting the elements that make up each page before sketching, will make sure nothing gets missed. I recommend doing this as detailed as possible.
 
 ### Example for my upcoming redesign
-```html
+```markup
 - Header
 - - Logo
 - - Navigation

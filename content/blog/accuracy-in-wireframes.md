@@ -37,7 +37,7 @@ I think it’s absolutely important that you **identify every section and elemen
 
 This way when you sketch sections and decide the order elements will go, you have no surprises later. How you identify these depends on the goals of the project, questions and so on.
 
-```html
+```markup
 header
 — logo
 — navigation

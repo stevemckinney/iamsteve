@@ -57,7 +57,7 @@ This is possibly my most used function while writing Sass. I’ve covered briefl
 
 I will follow through using this with any examples within the post.
 
-```sass
+```scss
 @function em($target-px, $context: 12px) {
   @return ($target-px / $context) * 1em; }
 ```
@@ -147,7 +147,7 @@ If you’re adjusting font size only on the body, you don’t really need to wor
 
 If you do want to retain your original baseline and font sizes, you will need, to adjust all of the properties, that rely on it.
 
-```sass
+```scss
 h1 {
   font-size: em(30px);
   line-height: 1.2;

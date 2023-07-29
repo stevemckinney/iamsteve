@@ -48,7 +48,7 @@ To remove the extra underline from text with letter spacing, the solution is not
 ### Method one: cover with a small box
 The first one involves using a pseudo element and positioning a small box so it covers up the excess. The element has background colour that matches the one behind the element.
 
-```sass
+```scss
 .one {
   display: inline-block;
   letter-spacing: 3px;
@@ -69,7 +69,7 @@ The first one involves using a pseudo element and positioning a small box so it 
 To understand how this works, I have a small square that is 1px wider than the letter-spacing. It’s positioned 1px outside of the element. I found that there was a half pixel or so that was still visible when you precisely match the excess.
 
 ### Method two: create your own underline
-```sass
+```scss
 .two {
   display: inline-block;
   letter-spacing: 3px;

@@ -73,14 +73,14 @@ With `<section>` and `<article>` in particular you’re allowed to use many `<h1
 ### Getting specific
 Again the issue of CMS content, this would be a good use for Sass `@extend`.
 
-```sass
+```scss
 .entry-content h1 {
   @extend .h1; }
 ```
 
 Otherwise you could just add the selector to the rule.
 
-```sass
+```scss
 .h1,
 .entry-content h1 {
   … }
