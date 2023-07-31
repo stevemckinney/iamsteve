@@ -10,16 +10,17 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 
 import { visit } from 'unist-util-visit'
 
+// .replace(/(blog\/)(?:\d{4}\-)?/, (i, match) => match)
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
     type: "string",
-    resolve: (doc) => '/' + doc._raw.flattenedPath,
+    resolve: (doc) => '/' + doc._raw.flattenedPath.replace(/^(blog\/)(?:\d{4}\-)?/, '$1'),
   },
   slugAsParams: {
     type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/").replace(/^(?:\d\d\d\d\-)?/, ''),
   },
 }
 
