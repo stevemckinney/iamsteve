@@ -45,8 +45,6 @@ export default async function PostPage({ params }) {
   const post = await getPostFromParams(params)
   const allViews = await getAllPageViews()
 
-  console.log(post.slug, post.slugAsParams)
-
   if (!post) {
     notFound()
   }
