@@ -1,17 +1,21 @@
-import remarkGfm from "remark-gfm"
-import smartypants from "remark-smartypants"
-import rehypeAutolinkHeadings from "rehype-autolink-headings"
-import rehypeSlug from "rehype-slug"
+import remarkGfm from 'remark-gfm'
+import smartypants from 'remark-smartypants'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeSlug from 'rehype-slug'
 import rehypeToc from '@jsdevtools/rehype-toc'
-import rehypeCodeTitles from 'rehype-code-titles'
 import rehypePrism from 'rehype-prism-plus'
-import { defineDocumentType, makeSource } from "contentlayer/source-files"
+import remarkRehype from 'remark-rehype';
+import remarkCodeTitles from 'remark-flexible-code-titles';
+import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+
+import { visit } from 'unist-util-visit'
+
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
     type: "string",
-    resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    resolve: (doc) => '/' + doc._raw.flattenedPath,
   },
   slugAsParams: {
     type: "string",
@@ -110,7 +114,25 @@ export default makeSource({
   mdx: {
     remarkPlugins: [
       remarkGfm,
-      smartypants
+      smartypants,
+      [
+        remarkCodeTitles,
+        {
+          titleProperties(language, title) {
+            return {
+              ["data-language"]: language,
+              ["data-title"]: `${title}`,
+            }
+          },
+          containerProperties(language, title) {
+            return {
+              ["data-language"]: language,
+              ["data-title"]: `${title}`,
+            }
+          },
+        },
+      ],
+      remarkRehype,
     ],
     rehypePlugins: [
       rehypeSlug,
@@ -124,8 +146,38 @@ export default makeSource({
         },
       ],
       [rehypeToc, { customizeTOC }],
-      rehypeCodeTitles,
+      () => (tree) => {
+        visit(tree, (node) => {
+          if (node?.type === "element" && node?.tagName === "pre") {
+            const [codeEl] = node.children;
+
+            if (codeEl.tagName !== "code") return;
+
+            node.raw = codeEl.children?.[0].value;
+          }
+        })
+      },
       rehypePrism,
+      () => (tree) => {
+        visit(tree, (node) => {
+          if (node?.type === "element" && node?.tagName === "div") {
+
+            const language = node.properties['data-language']
+            const title = node.properties['data-title']
+
+            if (!("remark-code-container" in node.properties)) {
+              return;
+            }
+
+            for (const child of node.children) {
+              if (child.tagName === "pre") {
+                console.log(child.properties.className.push(language))
+                child.properties["raw"] = node.raw
+              }
+            }
+          }
+        })
+      },
     ],
   },
 })
@@ -154,51 +206,5 @@ const customizeTOC = (toc) => {
       },
       ...(toc.children || []),
     ],
-  }
-}
-
-const rehypePrettyCodeOptions = () => {
-  return (tree) => {
-    visit(tree, (node) => {
-      if (node?.type === "element" && node?.tagName === "pre") {
-        const [codeEl] = node.children;
-
-        if (codeEl.tagName !== "code") return;
-
-        node.raw = codeEl.children?.[0].value;
-      }
-    })
-    visit(tree, (node) => {
-      if (node?.type === "element" && node?.tagName === "div") {
-        if (!("data-rehype-pretty-code-fragment" in node.properties)) {
-          return;
-        }
-
-        for (const child of node.children) {
-          if (child.tagName === "pre") {
-            child.properties["raw"] = node.raw;
-          }
-        }
-      }
-    })
-  }
-}
-
-const rehypePrettyCodeTheme = () => {
-  return {
-    theme: 'one-dark-pro',
-    onVisitLine(node) {
-      // Prevent lines from collapsing in `display: grid` mode, and allow empty
-      // lines to be copy/pasted
-      if (node.children.length === 0) {
-        node.children = [{ type: 'text', value: ' ' }];
-      }
-    },
-    onVisitHighlightedLine(node) {
-      node.properties.className.push('line-highlighted');
-    },
-    onVisitHighlightedWord(node) {
-      node.properties.className = ['word-highlighted'];
-    },
   }
 }

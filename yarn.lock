@@ -2164,7 +2164,7 @@
   resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.2.tgz#b74129719fc8d11c01868010082d483b7545591a"
   integrity sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==
 
-"@types/mdast@^3.0.0":
+"@types/mdast@^3.0.0", "@types/mdast@^3.0.10":
   version "3.0.12"
   resolved "https://registry.yarnpkg.com/@types/mdast/-/mdast-3.0.12.tgz#beeb511b977c875a5b0cc92eab6fcac2f0895514"
   integrity sha512-DT+iNIRNX884cx0/Q1ja7NyUPpZuv0KPyL5rGNxm1WC1OtHstl7n4Jb7nk+xacNShQMbczJjt8uFzznpp6kYBg==
@@ -6810,6 +6810,14 @@ rehype-stringify@^9.0.3:
     "@types/hast" "^2.0.0"
     hast-util-to-html "^8.0.0"
     unified "^10.0.0"
+
+remark-flexible-code-titles@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/remark-flexible-code-titles/-/remark-flexible-code-titles-1.1.3.tgz#9b9e0ae184d28dc5da42fbe0bfe6914851bb3ccc"
+  integrity sha512-S/2ThjghwdGJshfgBUOBsbTU6fqYdJTANwCrCUCvKYHQ3L/3II1swP7+vPSO/01wJi0ifGUgwOCDw8l0aqUnbQ==
+  dependencies:
+    "@types/mdast" "^3.0.10"
+    unist-util-visit "^4.0.0"
 
 remark-frontmatter@^4.0.1:
   version "4.0.1"
