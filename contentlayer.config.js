@@ -10,20 +10,6 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 
 import { visit } from 'unist-util-visit'
 
-// .replace(/(blog\/)(?:\d{4}\-)?/, (i, match) => match)
-
-/** @type {import('contentlayer/source-files').ComputedFields} */
-const computedFields = {
-  slug: {
-    type: "string",
-    resolve: (doc) => '/' + doc._raw.flattenedPath.replace(/^(blog\/)(?:\d{4}\-)?/, '$1'),
-  },
-  slugAsParams: {
-    type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/").replace(/^(?:\d\d\d\d\-)?/, ''),
-  },
-}
-
 export const Page = defineDocumentType(() => ({
   name: "Page",
   filePathPattern: `pages/**/*.md`,
@@ -37,7 +23,16 @@ export const Page = defineDocumentType(() => ({
       type: "string",
     },
   },
-  computedFields,
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => '/' + doc._raw.flattenedPath,
+    },
+    slugAsParams: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    },
+  },
 }))
 
 export const Post = defineDocumentType(() => ({
@@ -106,7 +101,16 @@ export const Post = defineDocumentType(() => ({
       default: 'draft',
     }
   },
-  computedFields,
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => '/' + doc._raw.flattenedPath.replace(/^(blog\/)(?:\d{4}\-)?/, '$1'),
+    },
+    slugAsParams: {
+      type: "string",
+      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/").replace(/^(?:\d\d\d\d\-)?/, ''),
+    },
+  },
 }))
 
 export default makeSource({
