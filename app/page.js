@@ -49,44 +49,46 @@ export default async function Home() {
 
   return (
     <>
-      <Subscribe />
-      <h2 className="text-xl mb-4 mt-8">Latest posts</h2>
-
-      <div className="flex flex-col gap-4">
-        {posts.map((post) => (
-          <article className="p-8 border border-slate-100" key={post._id}>
-            <h3 className="text-lg">
-              <Link href={`${post.slug}`}>{post.title}</Link>
-            </h3>
-            {post.summary && <p>{post.summary}</p>}
-          </article>
-        ))}
-      </div>
-
-      <h2 className="text-xl mb-4 mt-8">Popular in design</h2>
-
-      <div className="flex flex-col gap-4">
-        {design.map((post) => (
-          <article className="p-8 border border-slate-100" key={post._id}>
-            <h3 className="text-lg">
-              <Link href={`${post.slug}`}>{post.title}</Link>
-            </h3>
-            {post.view_count && <p>{post.view_count}</p>}
-          </article>
-        ))}
-      </div>
-
-      <h2 className="text-xl mb-4 mt-8">Popular in code</h2>
-
-      <div className="flex flex-col gap-4">
-        {code.map((post) => (
-          <article className="p-8 border border-slate-100" key={post._id}>
-            <h3 className="text-lg">
-              <Link href={`${post.slug}`}>{post.title}</Link>
-            </h3>
-            {post.view_count && <p>{post.view_count}</p>}
-          </article>
-        ))}
+      <div className="col-prose">
+        <Subscribe />
+        <h2 className="text-xl mb-4 mt-8">Latest posts</h2>
+  
+        <div className="flex flex-col gap-4">
+          {posts.map((post) => (
+            <article className="p-8 border border-slate-100" key={post._id}>
+              <h3 className="text-lg">
+                <Link href={`${post.slug}`}>{post.title}</Link>
+              </h3>
+              {post.summary && <p>{post.summary}</p>}
+            </article>
+          ))}
+        </div>
+  
+        <h2 className="text-xl mb-4 mt-8">Popular in design</h2>
+  
+        <div className="flex flex-col gap-4">
+          {design.map((post) => (
+            <article className="p-8 border border-slate-100" key={post._id}>
+              <h3 className="text-lg">
+                <Link href={`${post.slug}`}>{post.title}</Link>
+              </h3>
+              {post.view_count && <p>{post.view_count}</p>}
+            </article>
+          ))}
+        </div>
+  
+        <h2 className="text-xl mb-4 mt-8">Popular in code</h2>
+  
+        <div className="flex flex-col gap-4">
+          {code.map((post) => (
+            <article className="p-8 border border-slate-100" key={post._id}>
+              <h3 className="text-lg">
+                <Link href={`${post.slug}`}>{post.title}</Link>
+              </h3>
+              {post.view_count && <p>{post.view_count}</p>}
+            </article>
+          ))}
+        </div>
       </div>
     </>
   )
