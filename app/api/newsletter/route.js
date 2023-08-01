@@ -2,7 +2,6 @@
 import { NextResponse } from 'next/server'
 
 export const POST = async (req) => {
-  console.log('POST')
   const { email, name, source } = await req.json()
 
   if (!email) {
@@ -25,13 +24,6 @@ export const POST = async (req) => {
 
   const API_ROUTE = `${API_URL}lists/${LIST_ID}/contacts`
 
-  // const response = await fetch(API_ROUTE, {
-  //   body: JSON.stringify(data),
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   method: 'POST',
-  // })
   try {
     const res = await fetch(API_ROUTE, {
       method: 'POST',

@@ -52,7 +52,7 @@ export default async function Home() {
       <div className="col-prose">
         <Subscribe />
         <h2 className="text-xl mb-4 mt-8">Latest posts</h2>
-  
+
         <div className="flex flex-col gap-4">
           {posts.map((post) => (
             <article className="p-8 border border-slate-100" key={post._id}>
@@ -63,9 +63,9 @@ export default async function Home() {
             </article>
           ))}
         </div>
-  
+
         <h2 className="text-xl mb-4 mt-8">Popular in design</h2>
-  
+
         <div className="flex flex-col gap-4">
           {design.map((post) => (
             <article className="p-8 border border-slate-100" key={post._id}>
@@ -76,9 +76,9 @@ export default async function Home() {
             </article>
           ))}
         </div>
-  
+
         <h2 className="text-xl mb-4 mt-8">Popular in code</h2>
-  
+
         <div className="flex flex-col gap-4">
           {code.map((post) => (
             <article className="p-8 border border-slate-100" key={post._id}>

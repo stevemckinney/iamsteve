@@ -172,7 +172,6 @@ export default makeSource({
 
             for (const child of node.children) {
               if (child.tagName === "pre") {
-                console.log(child.properties.className.push(language))
                 child.properties["raw"] = node.raw
               }
             }
