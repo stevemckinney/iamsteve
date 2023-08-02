@@ -104,11 +104,11 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: "string",
-      resolve: (doc) => '/' + doc._raw.flattenedPath.replace(/^(blog\/)(?:\d{4}\-)?/, '$1'),
+      resolve: (doc) => '/' + doc._raw.flattenedPath,
     },
     slugAsParams: {
       type: "string",
-      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/").replace(/^(?:\d\d\d\d\-)?/, ''),
+      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
     },
   },
 }))
