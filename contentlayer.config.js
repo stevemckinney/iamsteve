@@ -104,11 +104,11 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     slug: {
       type: "string",
-      resolve: (doc) => '/' + doc._raw.flattenedPath,
+      resolve: (doc) => '/' + doc._raw.flattenedPath.replace(/^(blog\/)(?:\d{4}\-)?/, '$1'),
     },
     slugAsParams: {
       type: "string",
-      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/").replace(/^(?:\d\d\d\d\-)?/, ''),
     },
   },
 }))
@@ -151,37 +151,7 @@ export default makeSource({
         },
       ],
       [rehypeToc, { customizeTOC }],
-      () => (tree) => {
-        visit(tree, (node) => {
-          if (node?.type === "element" && node?.tagName === "pre") {
-            const [codeEl] = node.children;
-
-            if (codeEl.tagName !== "code") return;
-
-            node.raw = codeEl.children?.[0].value;
-          }
-        })
-      },
       rehypePrism,
-      () => (tree) => {
-        visit(tree, (node) => {
-          if (node?.type === "element" && node?.tagName === "div") {
-
-            const language = node.properties['data-language']
-            const title = node.properties['data-title']
-
-            if (!("remark-code-container" in node.properties)) {
-              return;
-            }
-
-            for (const child of node.children) {
-              if (child.tagName === "pre") {
-                child.properties["raw"] = node.raw
-              }
-            }
-          }
-        })
-      },
     ],
   },
 })
