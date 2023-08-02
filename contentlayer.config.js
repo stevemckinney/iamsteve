@@ -3,12 +3,12 @@ import smartypants from 'remark-smartypants'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import rehypeToc from '@jsdevtools/rehype-toc'
-import rehypePrism from 'rehype-prism-plus'
-import remarkRehype from 'remark-rehype';
-import remarkCodeTitles from 'remark-flexible-code-titles';
+// import rehypePrism from 'rehype-prism-plus'
+// import remarkRehype from 'remark-rehype';
+// import remarkCodeTitles from 'remark-flexible-code-titles';
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 
-import { visit } from 'unist-util-visit'
+// import { visit } from 'unist-util-visit'
 
 export const Page = defineDocumentType(() => ({
   name: "Page",
@@ -120,24 +120,6 @@ export default makeSource({
     remarkPlugins: [
       remarkGfm,
       smartypants,
-      [
-        remarkCodeTitles,
-        {
-          titleProperties(language, title) {
-            return {
-              ["data-language"]: language,
-              ["data-title"]: `${title}`,
-            }
-          },
-          containerProperties(language, title) {
-            return {
-              ["data-language"]: language,
-              ["data-title"]: `${title}`,
-            }
-          },
-        },
-      ],
-      remarkRehype,
     ],
     rehypePlugins: [
       rehypeSlug,
@@ -151,7 +133,6 @@ export default makeSource({
         },
       ],
       [rehypeToc, { customizeTOC }],
-      rehypePrism,
     ],
   },
 })
