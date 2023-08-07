@@ -150,6 +150,10 @@
     margin-inline-start: calc((theme('margin.2') * -1) - 24px);
     vertical-align: text-top;
   }
+
+  p > a {
+    text-decoration: aliceblue;
+  }
 }
 
 /* .prose > * + * {

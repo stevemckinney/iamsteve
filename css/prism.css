@@ -117,14 +117,22 @@ pre[class*='language-'] {
   color: var(--code-yellow);
 }
 
-.token.property,
 .token.keyword + .token.selector:has(.token.variable),
 .token.keyword {
   color: var(--code-white);
 }
 
+.token.property {
+  color: theme('colors.magenta.100');
+  color: var(--code-cyan);
+}
+
 .token.atrule .token.property {
   color: var(--code-magenta);
+}
+
+.code-line:has(.token.keyword + .token.selector) .token.selector {
+  color: var(--code-green);
 }
 
 /* .language-scss .token.variable { color: var(--code-white); } */

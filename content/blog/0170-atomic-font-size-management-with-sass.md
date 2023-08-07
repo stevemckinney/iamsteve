@@ -112,7 +112,7 @@ $c: 960px;
 
 Define variables for your widths, like your font sizes. And again, naming isn’t hugely important, but I always recommend something short and memorable.
 
-```scss showLineNumbers
+```scss:_font-size.scss showLineNumbers
 $breakpoint-map: (
   'a': $a,
   'b': $b,
@@ -126,7 +126,7 @@ The second step is to set up your breakpoint map. You want the keys (eg: `'a'`) 
 
 The next step is where Sass does all the work for you and you will see the benefits of how quickly it can be adjusted.
 
-```scss:_font-size.scss showLineNumbers
+```scss:_font-size.scss showLineNumbers=7
 // Loop through the breakpoint map, assign each breakpoint to the relevant variable
 // eg: $breakpoint-name = 'b' and $breakpoint-width = 480px
 @each $breakpoint-name, $breakpoint-width in $breakpoint-map {
@@ -136,7 +136,9 @@ The next step is where Sass does all the work for you and you will see the benef
     .f3-#{$breakpoint-name} { font-size: $f3; }
     .f4-#{$breakpoint-name} { font-size: $f4; }
     .f5-#{$breakpoint-name} { font-size: $f5; }
-    .f6-#{$breakpoint-name} { font-size: $f6; } } }
+    .f6-#{$breakpoint-name} { font-size: $f6; }
+  }
+}
 ```
 
 What’s happening here is the `@each` loop is going through the `$breakpoint-map` and:
