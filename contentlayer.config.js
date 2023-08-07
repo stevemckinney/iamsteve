@@ -6,10 +6,8 @@ import rehypeToc from '@jsdevtools/rehype-toc'
 import rehypePrism from 'rehype-prism-plus'
 import remarkRehype from 'remark-rehype'
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
-
-// import { visit } from 'unist-util-visit'
 import remarkCodeTitles from './lib/remark-code-title'
-// import customiseTOC from './lib/customise-toc'
+import customiseTOC from './lib/customise-toc'
 
 export const Page = defineDocumentType(() => ({
   name: 'Page',
@@ -136,6 +134,7 @@ export default makeSource({
           },
         },
       ],
+      [rehypeToc, { customiseTOC }],
       [rehypePrism, { ignoreMissing: true }],
     ],
   },
