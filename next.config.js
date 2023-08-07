@@ -9,6 +9,7 @@ const nextConfig = {
   swcMinify: true,
   reactStrictMode: false,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+  staticPageGenerationTimeout: 120,
   experimental: {
     serverActions: true,
   },
