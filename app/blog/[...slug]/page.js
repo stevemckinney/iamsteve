@@ -10,7 +10,7 @@ import ViewCounter from '../counter'
 export const dynamic = 'force-static'
 export const revalidate = 86400
 
-import styles from './post.module.css'
+import styles from './post.module.scss'
 
 async function getPostFromParams(params) {
   const slug = params?.slug?.join('/')

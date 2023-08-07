@@ -1,0 +1,30 @@
+:root {
+  /**
+   * grid
+   */
+  --grid-container: 1920px;
+  --grid-content: 1344px;
+
+  /* Compensates for additional grid gutters being included */
+  --grid-margin: calc(48px - var(--grid-gutter));
+  --grid-gutter: 32px;
+  --grid-gap: 32px;
+  --spacing: 8px;
+
+  /* autoprefixer: off */
+  --grid: [container-start] var(--grid-margin) repeat(2, 1fr) [prose-start] repeat(6, 1fr)
+    [prose-end] repeat(2, 1fr) var(--grid-margin) [container-end];
+
+  --grid-16: [container-start] var(--grid-margin) repeat(2, minmax(0, 1fr)) [content-start]
+    repeat(2, minmax(0, 1fr)) [prose-start] repeat(8, minmax(0, 1fr)) [prose-end]
+    repeat(2, minmax(0, 1fr)) [content-end] repeat(2, minmax(0, 1fr)) var(--grid-margin)
+    [container-end];
+}
+
+.layout {
+  grid-template-columns: var(--grid);
+
+  @screen xl {
+    grid-template-columns: var(--grid-16);
+  }
+}
