@@ -214,7 +214,23 @@
   */
 
   :global(.toc) {
-    ol, li {
+    .toc-level-1 {
+      --corner-sizing: 8px;
+      position: relative;
+      
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: calc(100% + var(--corner-sizing));
+        bottom: 0;
+        width: var(--corner-sizing);
+        border-radius-bottom-left: var(--corner-sizing);
+        border-left: 2px solid theme('colors.neutral-01.400')
+      }
+    }
+    
+    .toc-level, .toc-item {
       list-style: none;
       margin: 0;
       padding: 0;
@@ -222,7 +238,7 @@
     
     a {
       display: block;
-      padding-block: theme('spacing.4');
+      padding-block: theme('spacing.2');
       color: theme('colors.fern.1100');
       font-family: theme('fontFamily.display');
       font-size: theme('fontSize.base');
