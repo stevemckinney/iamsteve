@@ -205,4 +205,29 @@
     font-size: theme('fontSize.base');
     line-height: 1;
   }
+
+  /*
+    nav.toc
+    ol.toc-level.toc-level-1/2
+    li.toc-item.toc-item-h2/h3
+    a.toc-link.toc-link-h2/h3
+  */
+
+  :global(.toc) {
+    ol, li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    a {
+      display: block;
+      padding-block: theme('spacing.4');
+      color: theme('colors.fern.1100');
+      font-family: theme('fontFamily.display');
+      font-size: theme('fontSize.base');
+      font-variation-settings: "wdth" 100, "wght" 500;
+      text-transform: lowercase;
+    }
+  }
 }
