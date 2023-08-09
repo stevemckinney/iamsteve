@@ -1,11 +1,12 @@
+import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
 import smartypants from 'remark-smartypants'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeSlug from 'rehype-slug'
-import rehypeToc from '@jsdevtools/rehype-toc'
 import rehypePrism from 'rehype-prism-plus'
 import remarkRehype from 'remark-rehype'
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import rehypeSlug from 'rehype-slug'
+import rehypeToc from '@jsdevtools/rehype-toc'
 import remarkCodeTitles from './lib/remark-code-title'
 import customiseTOC from './lib/customise-toc'
 
@@ -101,6 +102,7 @@ export const Post = defineDocumentType(() => ({
     },
   },
   computedFields: {
+    readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
     slug: {
       type: 'string',
       resolve: (doc) => '/' + doc._raw.flattenedPath.replace(/^(blog\/)(?:\d{4}\-)?/, '$1'),
