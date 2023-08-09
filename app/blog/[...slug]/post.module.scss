@@ -214,36 +214,61 @@
   */
 
   :global(.toc) {
-    .toc-level-1 {
-      --corner-sizing: 8px;
-      position: relative;
-      
-      &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: calc(100% + var(--corner-sizing));
-        bottom: 0;
-        width: var(--corner-sizing);
-        border-radius-bottom-left: var(--corner-sizing);
-        border-left: 2px solid theme('colors.neutral-01.400')
-      }
+    --toc-item-border: theme('colors.neutral-01.300');
+  }
+
+  :global(.toc-level-1) {
+    --corner-spacing: 8px;
+    position: relative;
+    padding-left: 1px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 19px;
+      left: 0;
+      bottom: 19px;
+      width: var(--corner-spacing);
+      border-bottom-left-radius: 6px;
+      border-left: 2px solid var(--toc-item-border);
+      border-bottom: 2px solid var(--toc-item-border);
     }
-    
-    .toc-level, .toc-item {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    
-    a {
+  }
+
+  :global(.toc-level),
+  :global(.toc-item) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  :global(.toc-level-2),
+  :global(.toc-level-3) {
+    display: none;
+  }
+
+  :global(.toc-item:not(:last-child) .toc-link:before) {
+    background-color: var(--toc-item-border);
+  }
+
+  :global(.toc-link) {
+    display: flex;
+    flex: 0 0 100%;
+    align-content: center;
+    align-items: center;
+    gap: theme('spacing.2');
+    padding-block: theme('spacing.2');
+    color: theme('colors.fern.1100');
+    font-family: theme('fontFamily.display');
+    font-size: theme('fontSize.base');
+    font-variation-settings: 'wdth' 100, 'wght' 500;
+    text-transform: lowercase;
+
+    &:before {
+      content: '';
       display: block;
-      padding-block: theme('spacing.2');
-      color: theme('colors.fern.1100');
-      font-family: theme('fontFamily.display');
-      font-size: theme('fontSize.base');
-      font-variation-settings: "wdth" 100, "wght" 500;
-      text-transform: lowercase;
+      width: 8px;
+      height: 2px;
     }
   }
 }

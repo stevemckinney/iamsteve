@@ -8,7 +8,7 @@ import remarkRehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import remarkCodeTitles from './lib/remark-code-title'
-import customiseTOC from './lib/customise-toc'
+import customizeTOC from './lib/customise-toc'
 
 export const Page = defineDocumentType(() => ({
   name: 'Page',
@@ -136,7 +136,7 @@ export default makeSource({
           },
         },
       ],
-      [rehypeToc, { customiseTOC }],
+      [rehypeToc, { headings: ['h2', 'h3'], customizeTOC }],
       [rehypePrism, { ignoreMissing: true }],
     ],
   },
