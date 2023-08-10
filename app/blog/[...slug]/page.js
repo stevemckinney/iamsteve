@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import { Mdx } from '@/components/mdx-components'
+import TableOfContents from '@/components/toc'
+import '../../../css/toc.scss'
 
 import getAllPageViews from '../views'
 import ViewCounter from '../counter'
@@ -50,14 +52,15 @@ export default async function PostPage({ params }) {
   }
 
   return (
-    <article className={`${styles.prose} prose dark:prose-invert grid layout`}>
+    <article className={`grid layout gap-x-8 gap-y-0 col-start-1 col-end-[-1]`}>
       <header className="col-prose">
-        <h1>{post.title}</h1>
+        <h1 className="font-display lowercase text-7xl text-fern-1100">{post.title}</h1>
         <ViewCounter allViews={allViews} slug={post.slugAsParams} trackView />
-        {post.summary && <p>{post.summary}</p>}
+        {post.summary && <p className="text-xl text-ui-body">{post.summary}</p>}
       </header>
       <hr className="my-4 col-prose" />
-      <div className="col-prose">
+      <TableOfContents />
+      <div className={`${styles.prose} prose dark:prose-invert col-prose js-toc-content`}>
         <Mdx code={post.body.code} />
       </div>
     </article>

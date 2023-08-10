@@ -4,7 +4,6 @@
   color: theme('colors.fern.1100');
   font-size: theme('fontSize.xl');
   line-height: theme('lineHeight.normal');
-  grid-column: 1 / -1;
 
   > * {
     grid-column: prose-start / prose-end;
@@ -220,88 +219,88 @@
     li.toc-item.toc-item-h2/h3
     a.toc-link.toc-link-h2/h3
   */
-
-  :global(.toc) {
-    --toc-item-border: theme('colors.neutral-01.300');
-    position: sticky;
-    top: 0;
-    grid-column: content-start / 6;
-  }
-
-  :global(.toc-title) {
-    font-size: theme('fontSize.base');
-    line-height: 1.5;
-  }
-
-  :global(.toc-level-1) {
-    --corner-spacing: 8px;
-    position: relative;
-    padding-left: 1px;
-
-    &:before {
-      content: '';
-      position: absolute;
-      top: 19px;
-      left: 0;
-      bottom: 19px;
-      width: var(--corner-spacing);
-      border-bottom-left-radius: 6px;
-      border-left: 2px solid var(--toc-item-border);
-      border-bottom: 2px solid var(--toc-item-border);
-    }
-  }
-
-  :global(.toc-level),
-  :global(.toc-item) {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  :global(.toc-item) {
-    position: relative;
-  }
-
-  :global(.toc-level-2),
-  :global(.toc-level-3) {
-    display: none;
-  }
-
-  :global(.toc-item:not(:last-child) .toc-link:before) {
-    background-color: var(--toc-item-border);
-  }
-
-  :global(.toc-item:first-child .toc-link:after) {
-    content: '';
-    position: absolute;
-    top: calc(50% - 6px);
-    right: calc(100% - 7px);
-    display: block;
-    width: 12px;
-    height: 12px;
-    box-shadow: 0 0 0 2px var(--toc-item-border);
-    background: theme('colors.neutral-03.0');
-    border-radius: 6px;
-  }
-
-  :global(.toc-link) {
-    display: flex;
-    flex: 0 0 100%;
-    align-content: center;
-    align-items: center;
-    gap: theme('spacing.2');
-    padding-block: theme('spacing.2');
-    color: theme('colors.fern.1100');
-    font-family: theme('fontFamily.display');
-    font-size: theme('fontSize.base');
-    font-variation-settings: 'wdth' 100, 'wght' 500;
-    text-transform: lowercase;
-
-    &:before {
-      content: '';
-      display: block;
-      width: 8px;
-      height: 2px;
-    }
-  }
+  //
+  //   :global(.toc) {
+  //     --toc-item-border: theme('colors.neutral-01.300');
+  //     position: sticky;
+  //     top: 0;
+  //     grid-column: content-start / 6;
+  //   }
+  //
+  //   :global(.toc-title) {
+  //     font-size: theme('fontSize.base');
+  //     line-height: 1.5;
+  //   }
+  //
+  //   :global(.toc-level-1) {
+  //     --corner-spacing: 8px;
+  //     position: relative;
+  //     padding-left: 1px;
+  //
+  //     &:before {
+  //       content: '';
+  //       position: absolute;
+  //       top: 19px;
+  //       left: 0;
+  //       bottom: 19px;
+  //       width: var(--corner-spacing);
+  //       border-bottom-left-radius: 6px;
+  //       border-left: 2px solid var(--toc-item-border);
+  //       border-bottom: 2px solid var(--toc-item-border);
+  //     }
+  //   }
+  //
+  //   :global(.toc-level),
+  //   :global(.toc-item) {
+  //     list-style: none;
+  //     margin: 0;
+  //     padding: 0;
+  //   }
+  //
+  //   :global(.toc-item) {
+  //     position: relative;
+  //   }
+  //
+  //   :global(.toc-level-2),
+  //   :global(.toc-level-3) {
+  //     display: none;
+  //   }
+  //
+  //   :global(.toc-item:not(:last-child) .toc-link:before) {
+  //     background-color: var(--toc-item-border);
+  //   }
+  //
+  //   :global(.toc-item:first-child .toc-link:after) {
+  //     content: '';
+  //     position: absolute;
+  //     top: calc(50% - 6px);
+  //     right: calc(100% - 7px);
+  //     display: block;
+  //     width: 12px;
+  //     height: 12px;
+  //     box-shadow: 0 0 0 2px var(--toc-item-border);
+  //     background: theme('colors.neutral-03.0');
+  //     border-radius: 6px;
+  //   }
+  //
+  //   :global(.toc-link) {
+  //     display: flex;
+  //     flex: 0 0 100%;
+  //     align-content: center;
+  //     align-items: center;
+  //     gap: theme('spacing.2');
+  //     padding-block: theme('spacing.2');
+  //     color: theme('colors.fern.1100');
+  //     font-family: theme('fontFamily.display');
+  //     font-size: theme('fontSize.base');
+  //     font-variation-settings: 'wdth' 100, 'wght' 500;
+  //     text-transform: lowercase;
+  //
+  //     &:before {
+  //       content: '';
+  //       display: block;
+  //       width: 8px;
+  //       height: 2px;
+  //     }
+  //   }
 }

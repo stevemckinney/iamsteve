@@ -136,13 +136,6 @@ export default makeSource({
           },
         },
       ],
-      [
-        rehypeToc,
-        {
-          headings: ['h2', 'h3'],
-          customizeTOC,
-        },
-      ],
       [rehypePrism, { ignoreMissing: true }],
     ],
   },
