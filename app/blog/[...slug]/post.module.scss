@@ -4,6 +4,11 @@
   color: theme('colors.fern.1100');
   font-size: theme('fontSize.xl');
   line-height: theme('lineHeight.normal');
+  grid-column: 1 / -1;
+
+  > * {
+    grid-column: prose-start / prose-end;
+  }
 
   img {
     box-shadow: theme('boxShadow.floating');
@@ -45,9 +50,12 @@
 
   :where(h1, h2, h3, h4, h5, h6) {
     font-family: theme('fontFamily.display');
-    letter-spacing: -0.0340909091em;
     text-transform: lowercase;
     text-wrap: balance;
+  }
+
+  :where(h1, h2, h3, h4) {
+    letter-spacing: -0.0340909091em;
   }
 
   :where(h2, h3, h4, h5, h6) {
@@ -215,6 +223,14 @@
 
   :global(.toc) {
     --toc-item-border: theme('colors.neutral-01.300');
+    position: sticky;
+    top: 0;
+    grid-column: content-start / 6;
+  }
+
+  :global(.toc-title) {
+    font-size: theme('fontSize.base');
+    line-height: 1.5;
   }
 
   :global(.toc-level-1) {
@@ -242,6 +258,10 @@
     padding: 0;
   }
 
+  :global(.toc-item) {
+    position: relative;
+  }
+
   :global(.toc-level-2),
   :global(.toc-level-3) {
     display: none;
@@ -249,6 +269,19 @@
 
   :global(.toc-item:not(:last-child) .toc-link:before) {
     background-color: var(--toc-item-border);
+  }
+
+  :global(.toc-item:first-child .toc-link:after) {
+    content: '';
+    position: absolute;
+    top: calc(50% - 6px);
+    right: calc(100% - 7px);
+    display: block;
+    width: 12px;
+    height: 12px;
+    box-shadow: 0 0 0 2px var(--toc-item-border);
+    background: theme('colors.neutral-03.0');
+    border-radius: 6px;
   }
 
   :global(.toc-link) {

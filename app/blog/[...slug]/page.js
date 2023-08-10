@@ -50,12 +50,16 @@ export default async function PostPage({ params }) {
   }
 
   return (
-    <article className={`${styles.prose} prose dark:prose-invert col-prose`}>
-      <h1>{post.title}</h1>
-      <ViewCounter allViews={allViews} slug={post.slugAsParams} trackView />
-      {post.summary && <p>{post.summary}</p>}
-      <hr className="my-4" />
-      <Mdx code={post.body.code} />
+    <article className={`${styles.prose} prose dark:prose-invert grid layout`}>
+      <header className="col-prose">
+        <h1>{post.title}</h1>
+        <ViewCounter allViews={allViews} slug={post.slugAsParams} trackView />
+        {post.summary && <p>{post.summary}</p>}
+      </header>
+      <hr className="my-4 col-prose" />
+      <div className="col-prose">
+        <Mdx code={post.body.code} />
+      </div>
     </article>
   )
 }
