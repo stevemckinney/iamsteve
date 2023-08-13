@@ -1,6 +1,3 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
 const { withContentlayer } = require('next-contentlayer')
 
 /** @type {import('next').NextConfig} */
@@ -21,4 +18,29 @@ const nextConfig = {
   },
 }
 
-module.exports = withBundleAnalyzer(withContentlayer(nextConfig))
+// https://github.com/vercel/next.js/issues/48177
+function withSplitSVGr(config) {
+  return Object.assign({}, config, {
+    webpack(config, options) {
+      config.module.rules.push({
+        test: /\.svg$/i,
+        type: 'asset',
+        resourceQuery: /url/, // *.svg?url
+      })
+
+      config.module.rules.push({
+        test: /\.svg$/i,
+        use: ['@svgr/webpack'],
+        resourceQuery: /svgr/, // *.svg?svgr
+      })
+
+      if (typeof config.webpack === 'function') {
+        return config.webpack(config, options)
+      }
+
+      return config
+    },
+  })
+}
+
+module.exports = withSplitSVGr(withContentlayer(nextConfig))
