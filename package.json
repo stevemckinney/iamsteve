@@ -8,8 +8,8 @@
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir app --dir components --dir lib --dir scripts",
-    "icons-16": "create-react-icons -s 'components/icon/16/**.svg' -d 'components/icon/16' -t 'lib/icon-16.ejs'",
-    "icons-24": "create-react-icons -s 'components/icon/24/**.svg' -d 'components/icon/24' -t 'lib/icon-24.ejs'",
+    "icons-16": "create-react-icons -s 'public/icon/16/**.svg' -d 'components/icon/16' -t 'lib/icon-16.ejs'",
+    "icons-24": "create-react-icons -s 'public/icon/24/**.svg' -d 'components/icon/24' -t 'lib/icon-24.ejs'",
     "icons": "yarn icons-16 && yarn icons-24"
   },
   "browserslist": [
