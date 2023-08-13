@@ -6,7 +6,11 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrism from 'rehype-prism-plus'
 import remarkRehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
+import parse from 'rehype-parse'
+import slug from 'rehype-slug'
+import stringify from 'rehype-stringify'
 import rehypeToc from '@jsdevtools/rehype-toc'
+
 import remarkCodeTitles from './lib/remark-code-title'
 import customizeTOC from './lib/customise-toc'
 
@@ -137,6 +141,7 @@ export default makeSource({
         },
       ],
       [rehypePrism, { ignoreMissing: true }],
+      [rehypeToc, { customizeTOC }],
     ],
   },
 })

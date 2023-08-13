@@ -37,7 +37,7 @@ const getData = cache(async () => {
 
 export default async function Home() {
   const allData = await getData()
-  const posts = allData.postsByDate.slice(0, 8)
+  const posts = allData.postsByDate.slice(0, 32)
   const design = allData.mergedData
     .filter((post) => post.categories.includes('Design'))
     .filter((post) => post.status.includes('open'))
