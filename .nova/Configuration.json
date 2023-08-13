@@ -4,6 +4,6 @@
   "workspace.color" : 6,
   "workspace.name" : "iamsteve.test",
   "workspace.preview_root" : ".",
-  "workspace.preview_type" : "custom",
+  "workspace.preview_server_allow_external" : true,
   "workspace.preview_url" : "https:\/\/iamsteve.test\/"
 }
