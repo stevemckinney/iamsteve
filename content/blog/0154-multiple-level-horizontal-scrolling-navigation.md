@@ -7,9 +7,9 @@ metadesc: "Adding an extra level to the horizontal scrolling menu, using the sam
 theme: "#eaf5f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/multiplelevel-menu-featured-image@2x.png"]
-large: "/static/images/blog/multiplelevel-menu-featured-image@2x.png"
-medium: "/static/images/blog/multiplelevel-menu-featured-image-medium@2x.png"
+images: ["/images/blog/multiplelevel-menu-featured-image@2x.png"]
+large: "/images/blog/multiplelevel-menu-featured-image@2x.png"
+medium: "/images/blog/multiplelevel-menu-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true

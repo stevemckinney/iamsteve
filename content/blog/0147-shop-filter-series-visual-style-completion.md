@@ -7,9 +7,9 @@ metadesc: "In the last post the basis for the visual style was set. In this post
 theme: "#fff6e5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/shop-tabbar-2-featured-image.png"]
-large: "/static/images/blog/shop-tabbar-2-featured-image.png"
-medium: "/static/images/blog/shop-tabbar-2-featured-image-medium.png"
+images: ["/images/blog/shop-tabbar-2-featured-image.png"]
+large: "/images/blog/shop-tabbar-2-featured-image.png"
+medium: "/images/blog/shop-tabbar-2-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 147

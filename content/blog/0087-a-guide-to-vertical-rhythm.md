@@ -7,9 +7,9 @@ metadesc: "If you've ever struggled with how vertical rhythm is achieved, I will
 theme: "#fffbee"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/update-vertical-rhythm-featured-image@2x.png"]
-large: "/static/images/blog/update-vertical-rhythm-featured-image@2x.png"
-medium: "/static/images/blog/update-vertical-rhythm-featured-image-medium@2x.png"
+images: ["/images/blog/update-vertical-rhythm-featured-image@2x.png"]
+large: "/images/blog/update-vertical-rhythm-featured-image@2x.png"
+medium: "/images/blog/update-vertical-rhythm-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true

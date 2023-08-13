@@ -7,9 +7,9 @@ metadesc: "How to use Adobe Illustrator swatches, update them easily, and have i
 theme: "#fff6e5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/use-swatches-01.png"]
-large: "/static/images/blog/use-swatches-01.png"
-medium: "/static/images/blog/use-swatches-02.png"
+images: ["/images/blog/use-swatches-01.png"]
+large: "/images/blog/use-swatches-01.png"
+medium: "/images/blog/use-swatches-02.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 123

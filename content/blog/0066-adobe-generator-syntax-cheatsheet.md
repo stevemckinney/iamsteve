@@ -7,9 +7,9 @@ metadesc: "A cheatsheet for Adobe’s generator syntax, with examples for common
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/ps-generator-featured-image-v2@2x.png"]
-large: "/static/images/blog/ps-generator-featured-image-v2@2x.png"
-medium: "/static/images/blog/ps-generator-featured-image-medium-v2@2x.png"
+images: ["/images/blog/ps-generator-featured-image-v2@2x.png"]
+large: "/images/blog/ps-generator-featured-image-v2@2x.png"
+medium: "/images/blog/ps-generator-featured-image-medium-v2@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true

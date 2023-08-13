@@ -7,8 +7,8 @@ metadesc: "I figured I would write a post about the tools I use. Some will be fa
 theme: "#e9f5f5"
 tags: ["Design", "Code"]
 categories: ["Design"]
-images: ["/static/images/blog/tools-featured-image-01.png"]
-large: "/static/images/blog/tools-featured-image-01.png"
+images: ["/images/blog/tools-featured-image-01.png"]
+large: "/images/blog/tools-featured-image-01.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 122

@@ -7,9 +7,9 @@ metadesc: "2016 was the second year I’ve written a post every week. This post 
 theme: "#eaf5f5"
 tags: ["Website"]
 categories: ["Website"]
-images: ["/static/images/blog/year-in-writing-2016-featured-image@2x.png"]
-large: "/static/images/blog/year-in-writing-2016-featured-image@2x.png"
-medium: "/static/images/blog/year-in-writing-2016-featured-image-medium@2x.png"
+images: ["/images/blog/year-in-writing-2016-featured-image@2x.png"]
+large: "/images/blog/year-in-writing-2016-featured-image@2x.png"
+medium: "/images/blog/year-in-writing-2016-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 159

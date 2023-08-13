@@ -7,9 +7,9 @@ metadesc: "How to code your own inherently responsive horizontal scrolling navig
 theme: "#f7fbfb"
 tags: ["Code"]
 categories: ["Code"]
-images: ["/static/images/blog/horizontal-scrolling-responsive-featured-image-v2@2x.png"]
-large: "/static/images/blog/horizontal-scrolling-responsive-featured-image-v2@2x.png"
-medium: "/static/images/blog/horizontal-scrolling-featured-image-medium@2x.png"
+images: ["/images/blog/horizontal-scrolling-responsive-featured-image-v2@2x.png"]
+large: "/images/blog/horizontal-scrolling-responsive-featured-image-v2@2x.png"
+medium: "/images/blog/horizontal-scrolling-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true

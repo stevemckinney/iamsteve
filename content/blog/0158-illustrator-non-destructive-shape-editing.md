@@ -7,9 +7,9 @@ metadesc: "Two methods for keeping your shapes editable when combining them. One
 theme: "#fefbed"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/illustrator-tip-featured-image@2x.png"]
-large: "/static/images/blog/illustrator-tip-featured-image@2x.png"
-medium: "/static/images/blog/illustrator-tip-featured-image-medium@2x.png"
+images: ["/images/blog/illustrator-tip-featured-image@2x.png"]
+large: "/images/blog/illustrator-tip-featured-image@2x.png"
+medium: "/images/blog/illustrator-tip-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 158

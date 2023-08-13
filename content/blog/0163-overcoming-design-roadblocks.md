@@ -7,9 +7,9 @@ metadesc: "Sharing some of my thoughts on how I would handle being new to a skil
 theme: "#eaf5f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/overcoming-design-roadblocks-featured-image.png"]
-large: "/static/images/blog/overcoming-design-roadblocks-featured-image.png"
-medium: "/static/images/blog/overcoming-design-roadblocks-featured-image-medium.png"
+images: ["/images/blog/overcoming-design-roadblocks-featured-image.png"]
+large: "/images/blog/overcoming-design-roadblocks-featured-image.png"
+medium: "/images/blog/overcoming-design-roadblocks-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 163

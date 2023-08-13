@@ -7,9 +7,9 @@ metadesc: "About the redesign version six. A brief walk through some of the chan
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/about-v6-featured-image.png"]
-large: "/static/images/blog/about-v6-featured-image.png"
-medium: "/static/images/blog/about-v6-featured-image-medium.png"
+images: ["/images/blog/about-v6-featured-image.png"]
+large: "/images/blog/about-v6-featured-image.png"
+medium: "/images/blog/about-v6-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: false

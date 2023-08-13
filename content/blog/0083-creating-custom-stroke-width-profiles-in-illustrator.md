@@ -7,9 +7,9 @@ metadesc: "How to make your own custom variable width profiles in Illustrator. H
 theme: "#fff5f3"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/update-illustrator-stroke-width-featured-image@2x.png"]
-large: "/static/images/blog/update-illustrator-stroke-width-featured-image@2x.png"
-medium: "/static/images/blog/update-illustrator-stroke-width-featured-image-medium@2x.png"
+images: ["/images/blog/update-illustrator-stroke-width-featured-image@2x.png"]
+large: "/images/blog/update-illustrator-stroke-width-featured-image@2x.png"
+medium: "/images/blog/update-illustrator-stroke-width-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 83

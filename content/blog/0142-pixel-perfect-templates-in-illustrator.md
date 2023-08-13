@@ -7,9 +7,9 @@ metadesc: "Using Illustrator’s gridlines and snap to grid you can align things
 theme: "#fff3f0"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/illustrator-pixel-perfect-featured-image.png"]
-large: "/static/images/blog/illustrator-pixel-perfect-featured-image.png"
-medium: "/static/images/blog/illustrator-pixel-perfect-featured-image-medium.png"
+images: ["/images/blog/illustrator-pixel-perfect-featured-image.png"]
+large: "/images/blog/illustrator-pixel-perfect-featured-image.png"
+medium: "/images/blog/illustrator-pixel-perfect-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 142

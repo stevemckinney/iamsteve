@@ -7,9 +7,9 @@ metadesc: "A post that explores the idea of a tab/bottom bar navigation to filte
 theme: "#fff6e5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/shop-tabbar-featured-image.png"]
-large: "/static/images/blog/shop-tabbar-featured-image.png"
-medium: "/static/images/blog/shop-tabbar-featured-image-medium.png"
+images: ["/images/blog/shop-tabbar-featured-image.png"]
+large: "/images/blog/shop-tabbar-featured-image.png"
+medium: "/images/blog/shop-tabbar-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 143

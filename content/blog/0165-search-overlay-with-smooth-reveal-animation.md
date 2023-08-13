@@ -2,14 +2,14 @@
 title: "Search overlay with smooth reveal animation"
 date: "2017-08-16T12:15:00+00:00"
 lastmod: "2019-10-04T07:23:53+00:00"
-summary: "An in depth tutorial to add buttery smooth animations to reveal your website search."
+summary: "A common part of a website is the ability to search. Depending on how important search is to your website can define much of how it looks and how it’s prioritised in the design."
 metadesc: "How to design and code a search overlay with a smooth reveal effect using CSS transitions and JavaScript."
 theme: "#f7fbfb"
 tags: ["Design", "Code"]
 categories: ["Design"]
-images: ["/static/images/blog/search-reveal-featured-image@2x.png"]
-large: "/static/images/blog/search-reveal-featured-image@2x.png"
-medium: "/static/images/blog/search-reveal-featured-image-medium@2x.png"
+images: ["/images/blog/search-reveal-featured-image@2x.png"]
+large: "/images/blog/search-reveal-featured-image@2x.png"
+medium: "/images/blog/search-reveal-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true

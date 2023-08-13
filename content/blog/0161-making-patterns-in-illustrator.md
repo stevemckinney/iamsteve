@@ -7,9 +7,9 @@ metadesc: "A handy technique for making patterns in Adobe Illustrator. Learn how
 theme: "#eafaf6"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/patterns-featured-image@2x.png"]
-large: "/static/images/blog/patterns-featured-image@2x.png"
-medium: "/static/images/blog/patterns-featured-image-medium@2x.png"
+images: ["/images/blog/patterns-featured-image@2x.png"]
+large: "/images/blog/patterns-featured-image@2x.png"
+medium: "/images/blog/patterns-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 161

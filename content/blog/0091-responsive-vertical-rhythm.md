@@ -7,9 +7,9 @@ metadesc: "Using em's and changing the font size on the body we can do much of t
 theme: "#f2f9f9"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/responsive-vertical-rhythm-featured-image@2x.png"]
-large: "/static/images/blog/responsive-vertical-rhythm-featured-image@2x.png"
-medium: "/static/images/blog/responsive-vertical-rhythm-featured-image-medium@2x.png"
+images: ["/images/blog/responsive-vertical-rhythm-featured-image@2x.png"]
+large: "/images/blog/responsive-vertical-rhythm-featured-image@2x.png"
+medium: "/images/blog/responsive-vertical-rhythm-featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true

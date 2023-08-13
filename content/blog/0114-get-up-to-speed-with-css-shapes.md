@@ -7,9 +7,9 @@ metadesc: "Learn how to use CSS to make shapes like polygon, circle, inset and e
 theme: "#f2fcfa"
 tags: ["Code", "CSS"]
 categories: ["Code"]
-images: ["/static/images/blog/update-css-shapes-featured-image@2x.png"]
-large: "/static/images/blog/update-css-shapes-featured-image@2x.png"
-medium: "/static/images/blog/css-shapes-featured-image-medium-v2@2x.png"
+images: ["/images/blog/update-css-shapes-featured-image@2x.png"]
+large: "/images/blog/update-css-shapes-featured-image@2x.png"
+medium: "/images/blog/css-shapes-featured-image-medium-v2@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 114

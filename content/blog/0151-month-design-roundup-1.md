@@ -7,9 +7,9 @@ metadesc: "This is the start of a monthly series of a roundup of well designed w
 theme: "#e6f9f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/monthly-roundup-01featured-image@2x.png"]
-large: "/static/images/blog/monthly-roundup-01featured-image@2x.png"
-medium: "/static/images/blog/monthly-roundup-01featured-image-medium@2x.png"
+images: ["/images/blog/monthly-roundup-01featured-image@2x.png"]
+large: "/images/blog/monthly-roundup-01featured-image@2x.png"
+medium: "/images/blog/monthly-roundup-01featured-image-medium@2x.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 151
@@ -35,7 +35,7 @@ The top to bottom use of illustration, calming and soft colours used throughout 
 
 There is some stunning attention to detail throughout this website. It’s minimalism, done right. Lots of personality throughout. Great use of whitespace and clarity, which really sets itself apart from other domain vendors.
 
-## [Billdogg](http://billdogg.com)
+### [Billdogg](http://billdogg.com)
 <div className="article-image">
   <Image src="/images/blog/websites-monthly-1-billdogg@2x.png" width={832} height={626} />
 </div>

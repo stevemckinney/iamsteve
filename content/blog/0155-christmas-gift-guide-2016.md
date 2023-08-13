@@ -7,9 +7,9 @@ metadesc: "The list is suitable for everyone, but does have that ‘for the desi
 theme: "#eaf5f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/christmas-2016-featured-image.png"]
-large: "/static/images/blog/christmas-2016-featured-image.png"
-medium: "/static/images/blog/christmas-2016-featured-image-medium.png"
+images: ["/images/blog/christmas-2016-featured-image.png"]
+large: "/images/blog/christmas-2016-featured-image.png"
+medium: "/images/blog/christmas-2016-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 155

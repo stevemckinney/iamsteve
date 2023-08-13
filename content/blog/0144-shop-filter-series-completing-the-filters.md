@@ -7,9 +7,9 @@ metadesc: "Continuing from the last post, which looked at the initial sketching 
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/shop-filter-02-updated-featured-image.png"]
-large: "/static/images/blog/shop-filter-02-updated-featured-image.png"
-medium: "/static/images/blog/shop-filter-02-updated-featured-image-medium.png"
+images: ["/images/blog/shop-filter-02-updated-featured-image.png"]
+large: "/images/blog/shop-filter-02-updated-featured-image.png"
+medium: "/images/blog/shop-filter-02-updated-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 144

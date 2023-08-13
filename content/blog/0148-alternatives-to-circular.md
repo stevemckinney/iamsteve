@@ -7,9 +7,9 @@ metadesc: "Several alternatives to LL Circular, from myfonts, Typekit and Google
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/alternatives-to-circular-featured-image1.png"]
-large: "/static/images/blog/alternatives-to-circular-featured-image1.png"
-medium: "/static/images/blog/alternatives-to-circular-featured-image-medium1.png"
+images: ["/images/blog/alternatives-to-circular-featured-image1.png"]
+large: "/images/blog/alternatives-to-circular-featured-image1.png"
+medium: "/images/blog/alternatives-to-circular-featured-image-medium1.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 148

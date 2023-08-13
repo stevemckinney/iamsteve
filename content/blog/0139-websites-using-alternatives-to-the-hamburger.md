@@ -7,9 +7,9 @@ metadesc: "A list of website inspiration to move away from the traditional appro
 theme: "#edf7f3"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/hamburger-alternatives-featured-image1.png"]
-large: "/static/images/blog/hamburger-alternatives-featured-image1.png"
-medium: "/static/images/blog/hamburger-alternatives-featured-image-medium1.png"
+images: ["/images/blog/hamburger-alternatives-featured-image1.png"]
+large: "/images/blog/hamburger-alternatives-featured-image1.png"
+medium: "/images/blog/hamburger-alternatives-featured-image-medium1.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 139
