@@ -96,6 +96,9 @@ module.exports = {
       ],
     },
     extend: {
+      // strokeWidth: {
+      //   4: '4px',
+      // },
       gridTemplateColumns: {
         16: 'repeat(16, minmax(0, 1fr))',
         subgrid: 'subgrid',

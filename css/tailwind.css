@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.task-list-item:before {
-  @apply hidden;
+@layer utilities {
+  .sl-r {
+    stroke-linecap: round;
+  }
+  .sl-s {
+    stroke-linejoin: round;
+    stroke-linecap: square;
+  }
 }
 
 html {
