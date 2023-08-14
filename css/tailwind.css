@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1 {
+    hyphens: auto;
+  }
+
+  /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+  }
+}
+
 @layer utilities {
   .sl-r {
     stroke-linecap: round;
@@ -10,14 +26,13 @@
     stroke-linejoin: round;
     stroke-linecap: square;
   }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
-input:-webkit-autofill,
-input:-webkit-autofill:focus {
-  transition: background-color 600000s 0s, color 600000s 0s;
+  // .font-variation-bold {
+  //   font-variation-settings: 'wdth' 100, 'wght' 700;
+  // }
+  // .font-variation-medium {
+  //   font-variation-settings: 'wdth' 100, 'wght' 800;
+  // }
+  // .font-variation-xbold {
+  //   font-variation-settings: 'wdth' 100, 'wght' 750;
+  // }
 }
