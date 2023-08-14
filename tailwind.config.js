@@ -133,6 +133,12 @@ module.exports = {
             fontVariationSettings: '"wdth" 100, "wght" 700',
           },
         ],
+        ui: [
+          ['roc-grotesk-variable', 'sans-serif', ...defaultTheme.fontFamily.sans],
+          {
+            fontVariationSettings: '"wdth" 100, "wght" 500',
+          },
+        ],
         mono: [
           ['covik-sans-mono', ...defaultTheme.fontFamily.mono],
           {

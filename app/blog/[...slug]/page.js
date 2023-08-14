@@ -61,18 +61,20 @@ export default async function PostPage({ params }) {
         <PageTitle>{post.title}</PageTitle>
         {post.summary && <p className="text-xl text-fern-1100">{post.summary}</p>}
         <ViewCounter allViews={allViews} slug={post.slugAsParams} trackView />
-        <Date dateString={post.date} />
+        <Chip theme="cornflour" iconKind={`calendar`}>
+          <Date dateString={post.date} />
+        </Chip>
         {post.categories &&
-          post.categories.map((category) => (
-            <Chip theme="rio" iconKind={category}>
+          post.categories.map((category, index) => (
+            <Chip theme="rio" iconKind={category} key={index}>
               {category}
             </Chip>
           ))}
       </header>
 
       {post.images &&
-        post.images.map((image) => (
-          <div class={`col-prose ${styles.featured}`}>
+        post.images.map((image, index) => (
+          <div class={`col-prose ${styles.featured}`} key={index}>
             <Image
               src={image}
               className="radius"
