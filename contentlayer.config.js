@@ -1,4 +1,5 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import path from 'path'
 import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
 import smartypants from 'remark-smartypants'
@@ -10,9 +11,12 @@ import parse from 'rehype-parse'
 import slug from 'rehype-slug'
 import stringify from 'rehype-stringify'
 import rehypeToc from '@jsdevtools/rehype-toc'
+import rehypeCitation from 'rehype-citation'
 
 import remarkCodeTitles from './lib/remark-code-title'
 import customizeTOC from './lib/customise-toc'
+
+const root = process.cwd()
 
 export const Page = defineDocumentType(() => ({
   name: 'Page',
@@ -140,6 +144,7 @@ export default makeSource({
           },
         },
       ],
+      [rehypeCitation, { path: path.join(root, 'data') }],
       [rehypePrism, { ignoreMissing: true }],
       [rehypeToc, { customizeTOC }],
     ],
