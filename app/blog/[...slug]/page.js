@@ -56,20 +56,22 @@ export default async function PostPage({ params }) {
   }
 
   return (
-    <article className={`grid layout gap-x-8 gap-y-0 col-start-1 col-end-[-1]`}>
-      <header className="col-prose flex flex-col gap-8">
+    <article className={`grid layout gap-x-8 gap-y-12 col-start-1 col-end-[-1]`}>
+      <header className="col-prose flex flex-col gap-4">
         <PageTitle>{post.title}</PageTitle>
-        {post.summary && <p className="text-xl text-fern-1100">{post.summary}</p>}
-        <ViewCounter allViews={allViews} slug={post.slugAsParams} trackView />
-        <Chip theme="cornflour" iconKind={`calendar`}>
-          <Date dateString={post.date} />
-        </Chip>
-        {post.categories &&
-          post.categories.map((category, index) => (
-            <Chip theme="rio" iconKind={category} key={index}>
-              {category}
-            </Chip>
-          ))}
+        {post.summary && <p className="text-2xl text-fern-1100 mb-4">{post.summary}</p>}
+        <div className="flex flex-row gap-4 items-center">
+          {post.categories &&
+            post.categories.map((category, index) => (
+              <Chip theme="rio" iconKind={category} key={index}>
+                {category}
+              </Chip>
+            ))}
+          <Chip theme="cornflour" iconKind={`calendar`}>
+            <Date dateString={post.date} />
+          </Chip>
+          <ViewCounter allViews={allViews} slug={post.slugAsParams} trackView />
+        </div>
       </header>
 
       {post.images &&

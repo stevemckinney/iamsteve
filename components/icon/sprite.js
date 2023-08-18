@@ -55,7 +55,7 @@ const Sprite = (props) => (
         <g className="pen">
           <path
             d="M16 22H8c0-3-4-7-4-7l8-13 8 13s-4 4-4 7Z"
-            className="fill-none stroke-current stroke-2 sl-r"
+            className="fill-white stroke-current stroke-2 sl-r"
           />
           <path
             d="M16 22H8c0-3-4-7-4-7l8-13 8 13s-4 4-4 7ZM12 2v12"
