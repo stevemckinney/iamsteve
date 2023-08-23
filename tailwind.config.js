@@ -137,6 +137,7 @@ module.exports = {
           ['roc-grotesk-variable', 'sans-serif', ...defaultTheme.fontFamily.sans],
           {
             fontVariationSettings: '"wdth" 100, "wght" 500',
+            textTransform: 'lowercase',
           },
         ],
         mono: [

@@ -5,6 +5,7 @@
       "@/components/*": ["components/*"],
       "@/data/*": ["data/*"],
       "@/layouts/*": ["layouts/*"],
+      "@/content/*": ["content/*"],
       "@/lib/*": ["lib/*"],
       "@/css/*": ["css/*"],
       "@/images/*": ["/public/static/images/*"],
@@ -12,7 +13,5 @@
       "contentlayer/source-files": ["./.contentlayer/source-files"]
     }
   },
-  "include": [
-    ".contentlayer/generated"
-  ]
+  "include": [".contentlayer/generated"]
 }

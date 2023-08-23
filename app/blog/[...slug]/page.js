@@ -1,12 +1,16 @@
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import { Mdx } from '@/components/mdx-components'
+import siteMetadata from '@/content/siteMetadata'
 
 // page components
 import Image from '@/components/image'
+import Card from '@/components/card'
 import Chip from '@/components/chip'
 import PageTitle from '@/components/page-title'
 import Date from '@/components/date'
+import Icon from '@/components/icon'
+import Link from '@/components/link'
 
 import getAllPageViews from '../views'
 import ViewCounter from '../counter'
@@ -56,7 +60,7 @@ export default async function PostPage({ params }) {
   }
 
   return (
-    <article className={`grid layout gap-x-8 gap-y-12 col-start-1 col-end-[-1]`}>
+    <article className={`grid layout gap-x-8 gap-y-12 col-start-1 col-end-[-1] pb-32`}>
       <header className="col-prose flex flex-col gap-4">
         <PageTitle>{post.title}</PageTitle>
         {post.summary && <p className="text-2xl text-fern-1100 mb-4">{post.summary}</p>}
@@ -95,6 +99,36 @@ export default async function PostPage({ params }) {
       >
         <Mdx code={post.body.code} />
       </div>
+      <Support />
+      <aside className={`col-prose`}>
+        <h2 className="text-lg font-display text-fern-1100">Next to read</h2>
+        <NextPost id="97" />
+      </aside>
     </article>
+  )
+}
+
+export async function NextPost({ id }) {
+  const post = allPosts.filter((post) => post.status.includes('open')).find((item) => item.id == id)
+
+  return <p>post: {post && post.title}</p>
+}
+
+export function Support() {
+  return (
+    <aside className="bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row items-center gap-8 justify-between px-8 py-5 col-prose -mx-8">
+      <p className="p-0 m-0 text-base text-ui-body">
+        Enjoying the reading experience? There’s no ads, tracking or cookie banners
+      </p>
+      <Link
+        href={siteMetadata.bmc}
+        className="flex shrink-0 grow-0 flex-row items-center gap-2 text-base font-ui lowercase"
+      >
+        <span className="flex shrink-0 grow-0 items-center justify-center bg-fern-100 rounded w-8 h-8">
+          <Icon kind="bmc" />
+        </span>{' '}
+        Buy me a coffee
+      </Link>
+    </aside>
   )
 }
