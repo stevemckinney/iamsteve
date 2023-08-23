@@ -1,5 +1,5 @@
 import React from 'react'
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/content/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 
 // layouts
