@@ -25,7 +25,7 @@ export default function Chip({ children, theme, iconKind }) {
   }
 
   return (
-    <p className="flex gap-1">
+    <p className="flex gap-1 font-variation-medium">
       <span className={`${iconTheme} rounded w-8 h-8 flex items-center justify-center`}>
         <Icon kind={iconKind} />
       </span>

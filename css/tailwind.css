@@ -18,21 +18,26 @@
   }
 }
 
-@layer utilities {
-  .sl-r {
-    stroke-linecap: round;
-  }
-  .sl-s {
-    stroke-linejoin: round;
-    stroke-linecap: square;
-  }
-  // .font-variation-bold {
-  //   font-variation-settings: 'wdth' 100, 'wght' 700;
-  // }
-  // .font-variation-medium {
-  //   font-variation-settings: 'wdth' 100, 'wght' 800;
-  // }
-  // .font-variation-xbold {
-  //   font-variation-settings: 'wdth' 100, 'wght' 750;
-  // }
+/*@layer utilities {*/
+.sl-r {
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
+
+.sl-s {
+  stroke-linejoin: round;
+  stroke-linecap: square;
+}
+
+.font-variation-medium {
+  font-variation-settings: 'wdth' 100, 'wght' 800;
+}
+
+.font-variation-bold {
+  font-variation-settings: 'wdth' 100, 'wght' 700;
+}
+
+.font-variation-xbold {
+  font-variation-settings: 'wdth' 100, 'wght' 750;
+}
+/*}*/
