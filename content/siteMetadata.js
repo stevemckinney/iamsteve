@@ -2,7 +2,8 @@ const siteMetadata = {
   title: 'iamsteve',
   author: 'Steve',
   headerTitle: 'iamsteve',
-  description: 'iamsteve is a blog written by Steve McKinney, focusing on the design and build of websites. The aim is to bridge the gap in building your design.',
+  description:
+    'iamsteve is a blog written by Steve McKinney, focusing on the design and build of websites. The aim is to bridge the gap in building your design.',
   language: 'en-gb',
   theme: 'light',
   siteUrl: 'https://iamsteve.me',
@@ -16,6 +17,7 @@ const siteMetadata = {
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com',
+  bmc: 'buymeacoffee.com/BQoVfY7gc',
   locale: 'en-GB',
   newsletter: {
     // supports mailchimp, buttondown, convertkit
