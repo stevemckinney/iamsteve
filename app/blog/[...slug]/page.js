@@ -102,7 +102,10 @@ export default async function PostPage({ params }) {
       <Support />
       <aside className={`col-prose`}>
         <h2 className="text-lg font-display text-fern-1100">Next to read</h2>
-        <NextPost id="97" />
+        <div className="flex gap-4">
+          <NextPost id="97" />
+          <NextPost id="120" />
+        </div>
       </aside>
     </article>
   )
@@ -111,7 +114,7 @@ export default async function PostPage({ params }) {
 export async function NextPost({ id }) {
   const post = allPosts.filter((post) => post.status.includes('open')).find((item) => item.id == id)
 
-  return <p>post: {post && post.title}</p>
+  return <Card size="medium" image={false} frontmatter={post} />
 }
 
 export function Support() {

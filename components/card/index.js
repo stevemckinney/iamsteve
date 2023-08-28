@@ -1,11 +1,11 @@
-import Medium from './Medium'
-import Small from './Small'
+import Medium from './medium'
+import Small from './small'
 
-const Card = ({ kind, frontmatter }) => {
+const Card = ({ size, image, frontmatter }) => {
   return (
     <>
-      {kind === 'medium' && <Medium frontmatter={frontmatter} />}
-      {kind === 'small' && <Small frontmatter={frontmatter} />}
+      {size === 'medium' && <Medium image={image} frontmatter={frontmatter} />}
+      {size === 'small' && <Small image={image} frontmatter={frontmatter} />}
     </>
   )
 }
