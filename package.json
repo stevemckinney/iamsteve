@@ -36,6 +36,7 @@
     "@supabase/supabase-js": "^2.26.0",
     "@svgr/webpack": "^8.0.1",
     "@tailwindcss/forms": "latest",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "latest",
     "autoprefixer": "^10.4.14",
     "contentlayer": "^0.3.4",
