@@ -151,15 +151,19 @@ module.exports = {
       boxShadow: {
         reduced:
           '0px 1px 4px -4px rgba(70, 42, 81, 0.08), 0px 1px 0px 0px rgba(70, 42, 81, 0.06), 0px 0px 1px 0px rgba(70, 42, 81, 0.10)',
-        placed: ' 0px 1px 3px 0px rgba(117, 99, 98, 0.10), 0px 4px 8px 0px rgba(117, 99, 98, 0.05)',
-        picked:
-          '0px 4px 12px -4px rgba(70, 42, 81, 0.08), 0px 1px 0px 0px rgba(70, 42, 81, 0.06), 0px 0px 1px 0px rgba(70, 42, 81, 0.10)',
+        placed: '0px 4px 8px -4px rgba(117, 99, 98, 0.08), 0px 1px 3px 0px rgba(117, 99, 98, 0.10)',
+        picked: '0px 8px 12px -4px rgba(70, 42, 81, 0.08), 0px 1px 3px 0px rgba(70, 42, 81, 0.08)',
         floating:
-          '0px 6px 20px -4px rgba(70, 42, 81, 0.12), 0px 2px 0px 0px rgba(70, 42, 81, 0.06), 0px 0px 1px 0px rgba(70, 42, 81, 0.30)',
+          '0px 8px 24px -4px rgba(70, 42, 81, 0.12), 0px 2px 4px 0px rgba(70, 42, 81, 0.08)',
+      },
+      backgroundImage: {
+        'ui-border': `padding-box linear-gradient(white, white),
+        border-box linear-gradient(to bottom, rgba(79, 64, 63, 0.16) 93%, rgba(79, 64, 63, 0.24) 100%)`,
       },
       colors: {
         ui: {
-          'bg-inset': '#ffffff',
+          normal: 'rgba(79, 64, 63, 0.16)',
+          raised: 'rgba(79, 64, 63, 0.24)',
           body: 'rgb(9 46 36 / .65)',
         },
         rio: {
