@@ -38,7 +38,9 @@ const Medium = ({ frontmatter, image }) => {
         </Link>
       )}
       <div className="flex flex-col gap-4 flex-auto">
-        {categories && <>{categories && categories.map((category) => <Chip>{category}</Chip>)}</>}
+        {categories && (
+          <>{categories && categories.map((category) => <Chip key={category}>{category}</Chip>)}</>
+        )}
         <h2 className="font-display text-2xl leading-2xl lowercase m-0 p-0" id={`title-${id}`}>
           <Link href={slug} className="text-fern-1100">
             {title}

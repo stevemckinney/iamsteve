@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Date from '@/components/date'
 
 const Small = ({ frontmatter }) => {
   const { slug, date, title, summary, tags, id, theme, categories, images, medium, lastmod } =
@@ -12,7 +13,7 @@ const Small = ({ frontmatter }) => {
       <div className="card-body">
         <div className="meta f8-d dashes mb1 mb2-b">
           <time className="warm-l1" dateTime={date} itemProp="datePublished">
-            {formatDate(date)}
+            <Date dateString={date} />
           </time>
         </div>
 
@@ -27,7 +28,7 @@ const Small = ({ frontmatter }) => {
             Steve McKinney
           </Link>
           <time dateTime={lastmod} className="updated" tabIndex="-1">
-            {formatDate(lastmod)}
+            <Date dateString={lastmod} />
           </time>
         </div>
       </div>
