@@ -80,7 +80,7 @@ export default async function PostPage({ params }) {
 
       {post.images &&
         post.images.map((image, index) => (
-          <div class={`col-prose ${styles.featured}`} key={index}>
+          <div className={`col-prose ${styles.featured}`} key={index}>
             <Image
               src={image}
               className="radius"
@@ -100,11 +100,13 @@ export default async function PostPage({ params }) {
         <Mdx code={post.body.code} />
       </div>
       <Support />
-      <aside className={`col-prose`}>
-        <h2 className="text-lg font-display text-fern-1100">Next to read</h2>
-        <div className="flex gap-4">
-          <NextPost id="97" />
-          <NextPost id="120" />
+      <aside className={`col-prose flex flex-col gap-4 -mx-8`}>
+        <h2 className="text-2xl font-display leading-none lowercase text-fern-1100 m-0 px-8">
+          Next to read
+        </h2>
+        <div className="grid grid-cols-2 gap-x-8">
+          <NextPost id="169" />
+          <NextPost id="170" />
         </div>
       </aside>
     </article>
@@ -119,13 +121,13 @@ export async function NextPost({ id }) {
 
 export function Support() {
   return (
-    <aside className="bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row items-center gap-8 justify-between px-8 py-5 col-prose -mx-8">
+    <aside className="bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row items-center gap-8 justify-between pl-8 pr-2 py-2 col-prose -mx-8">
       <p className="p-0 m-0 text-base text-ui-body">
         Enjoying the reading experience? There’s no ads, tracking or cookie banners
       </p>
       <Link
         href={siteMetadata.bmc}
-        className="flex shrink-0 grow-0 flex-row items-center gap-2 text-base font-ui lowercase"
+        className="flex shrink-0 grow-0 flex-row rounded-md items-center gap-2 text-base font-ui lowercase pl-2 pr-4 py-3 hover:opacity-70 transition duration-200"
       >
         <span className="flex shrink-0 grow-0 items-center justify-center bg-fern-100 rounded w-8 h-8">
           <Icon kind="bmc" />

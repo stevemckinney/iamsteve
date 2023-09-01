@@ -52,6 +52,20 @@
 }
 
 .bg-ui-border {
+  transition: all 2s ease;
   background: padding-box linear-gradient(white, white),
+    border-box linear-gradient(to bottom, rgba(79, 64, 63, 0.12) 93%, rgba(79, 64, 63, 0.2) 100%);
+}
+
+.bg-ui-border:hover {
+  background: padding-box linear-gradient(white, white),
+    border-box
+      linear-gradient(to bottom, rgba(255, 64, 63, 0.92) 93%, rgba(255, 64, 63, 0.932) 100%);
+}
+
+.bg-ui-border:active {
+  transform: scale(0.99375);
+  background: padding-box
+      linear-gradient(theme('colors.neutral-01.50'), theme('colors.neutral-01.50')),
     border-box linear-gradient(to bottom, rgba(79, 64, 63, 0.16) 93%, rgba(79, 64, 63, 0.24) 100%);
 }
