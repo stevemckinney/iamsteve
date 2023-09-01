@@ -11,6 +11,20 @@ const Sprite = (props) => (
     {...props}
   >
     <defs>
+      <symbol id="logo" viewBox="0 0 32 32" fill="none">
+        <path
+          d="M17.5 30.5C16.65 26.02 17.91 20.71 19.5 18.5C22.47 18.4 25.62 17.68 28.06 15.5C30.04 13.49 30.43 10.58 30.5 8.5L24.5 7.5L22.5 3.5L21.5 4.5L19.5 1.5L17.83 2.41C17.83 2.41 15 0.56 11.5 2.5C8.41 4.37 7 7 7.5 11.5C8 16 5.079 18.921 1.5 22.5C1.5 22.5 7 23 10 24.5C13 26 17.5 30.5 17.5 30.5Z"
+          className="fill-white"
+        />
+        <path
+          d="M17.5 30.5C16.65 26.02 17.91 20.71 19.5 18.5C22.47 18.4 25.62 17.68 28.06 15.5C30.04 13.49 30.43 10.58 30.5 8.5L24.5 7.5L22.5 3.5L21.5 4.5L19.5 1.5L17.83 2.41C17.83 2.41 15 0.56 11.5 2.5C8.40996 4.37 6.72996 7.69 7.49996 11.5C7.99996 13.95 9.75996 16.5 12.5 16.5C16.5 16.5 18.25 12.36 18.5 7.5"
+          className="stroke-current stroke-2 sl-r"
+        />
+        <path
+          d="M1.5 22.5C4.41 20.2 7.87 16.23 7.5 11.5"
+          className="stroke-current stroke-2 sl-r"
+        />
+      </symbol>
       <symbol id="search" viewBox="0 0 24 24">
         <g className="search">
           <path d="m19 19 1 1" className="stroke-current stroke-4 sl-r" />
@@ -48,7 +62,7 @@ const Sprite = (props) => (
             d="M3.993 20A.994.994 0 0 1 3 19V5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v14c0 .552-.442 1-.995 1H3.993Z"
             className="fill-white stroke-current stroke-2 sl-r"
           />
-          <path d="m7 12 2 2-2 2m5 0h3" className="stroke-current stroke-2 sl-r" />
+          <path d="m7 12 2 2-2 2m5 0h3" className="stroke-current stroke-2 fill-none sl-r" />
         </g>
       </symbol>
       <symbol id="pen" viewBox="0 0 24 24">
@@ -100,15 +114,15 @@ const Sprite = (props) => (
         <g className="envelope">
           <path d="m12 2-9 8v11h18V10l-9-8Z" className="fill-white stroke-current stroke-2 sl-r" />
           <path d="M5 4h14v6h2l-9 6-9-6h2V4Z" className="fill-white" />
-          <path d="m3 10 9 6 9-6" className="stroke-current stroke-2 sl-r" />
-          <path d="M19 11V4H5v7" className="stroke-current stroke-2 sl-r" />
+          <path d="m3 10 9 6 9-6" className="fill-white stroke-current stroke-2 sl-r" />
+          <path d="M19 11V4H5v7" className="fill-white stroke-current stroke-2 sl-r" />
         </g>
       </symbol>
       <symbol id="person" viewBox="0 0 24 24">
         <g className="person">
           <path
             d="M14.478 14.186V13.8c1.215-.926 2.012-1.813 2.012-3.6V7.5c0-1.556 0-2.777-.905-3.639C14.84 3.151 13.79 3 12.898 3c-.81 0-.898.836-2.215.836-1.833 0-3.186 1.864-3.186 3.625V10.2c0 1.787.796 2.687 2.012 3.6v.373c-.122 1.556-1.256 1.556-2.823 2.018a18.32 18.32 0 0 0-2.106.759C3.62 17.374 3 18.287 3 19.29V21h18v-1.697c0-1.003-.608-1.916-1.58-2.34a19.11 19.11 0 0 0-2.106-.759c-1.567-.463-2.715-.463-2.836-2.018Z"
-            className="stroke-current stroke-2 sl-r"
+            className="fill-white stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>
@@ -120,15 +134,16 @@ const Sprite = (props) => (
       </symbol>
       <symbol id="airplane" viewBox="0 0 24 24">
         <g className="airplane">
-          <path d="M22 12 8 21v-6l4-3-4-3V3l14 9Z" className="fill-current" />
+          <path className="fill-white" d="M22 12 8 21v-6l4-3-4-3V3l14 9Z" />
           <path
-            d="M22 12 8 21v-6l4-3-4-3V3l14 9Zm-1 0h-9"
-            className="stroke-current stroke-2 sl-r"
+            className="stroke-current fill-white stroke-2 sl-r"
+            d="M22 12 8 21v-6l4-3-4-3V3l14 9Z"
           />
-          <rect width={3} height={2} x={2} y={7} className="stroke-current stroke-2 sl-r" rx={1} />
-          <rect width={6} height={2} x={1} y={11} className="stroke-current stroke-2 sl-r" rx={1} />
-          <rect width={3} height={2} x={2} y={15} className="stroke-current stroke-2 sl-r" rx={1} />
-          <path d="M3 8h1m-1 8h1m-2-4h4" className="stroke-current stroke-2 sl-r" />
+          <path className="stroke-current stroke-2 sl-r" d="M21 12h-9" />
+          <rect width="3" height="2" x="2" y="7" className="fill-current" rx="1" />
+          <rect width="6" height="2" x="1" y="11" className="fill-current" rx="1" />
+          <rect width="3" height="2" x="2" y="15" className="fill-current" rx="1" />
+          <path className="stroke-current stroke-2 sl-r" d="M3 8h1M3 16h1M2 12h4" />
         </g>
       </symbol>
       <symbol id="timer" viewBox="0 0 24 24">

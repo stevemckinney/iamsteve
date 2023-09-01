@@ -3,6 +3,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { allPosts } from 'contentlayer/generated'
 
+import { sortPosts } from '../lib/utils/content'
 import mergeDataByID from '../lib/utils/mergeDataByID'
 import Link from 'next/link'
 import Subscribe from '@/components/subscribe'
@@ -15,9 +16,8 @@ const getData = cache(async () => {
   const supabase = createServerComponentClient({ cookies })
   const { data: dbPosts } = await supabase.from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE).select()
 
-  const postsByDate = allPosts
+  const postsByDate = sortPosts(allPosts)
     .filter((post) => post.status.includes('open'))
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 32)
 
   const postsWithViews = dbPosts?.map(({ id, view_count }) => ({
@@ -37,7 +37,7 @@ const getData = cache(async () => {
 
 export default async function Home() {
   const allData = await getData()
-  const posts = allData.postsByDate.slice(0, 32)
+  const posts = allData.postsByDate.slice(0, 60)
   const design = allData.mergedData
     .filter((post) => post.categories.includes('Design'))
     .filter((post) => post.status.includes('open'))
