@@ -14,7 +14,7 @@ import rehypeToc from '@jsdevtools/rehype-toc'
 import rehypeCitation from 'rehype-citation'
 
 import remarkCodeTitles from './lib/remark-code-title'
-import customizeTOC from './lib/customise-toc'
+// import customizeTOC from './lib/customise-toc'
 
 const root = process.cwd()
 
@@ -146,7 +146,7 @@ export default makeSource({
       ],
       [rehypeCitation, { path: path.join(root, 'data') }],
       [rehypePrism, { ignoreMissing: true }],
-      [rehypeToc, { customizeTOC }],
+      // [rehypeToc, { customizeTOC }],
     ],
   },
 })
