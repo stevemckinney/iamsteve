@@ -1,4 +1,4 @@
-import Link from '@/components/Link'
+import Link from '@/components/link'
 import Icon from '@/components/icon/index.js'
 
 export default function Pagination({ stage = 'full', totalPages, currentPage }) {

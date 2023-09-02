@@ -11,7 +11,7 @@ import CardLayout from '@/layouts/CardLayout'
 // components
 import Card from '@/components/card'
 import Icon from '@/components/icon'
-import Link from '@/components/Link'
+import Link from '@/components/link'
 import Pagination from '@/components/Pagination'
 import Tag from '@/components/Tag'
 

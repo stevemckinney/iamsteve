@@ -1,5 +1,5 @@
 import Icon from './icon'
-import Link from '@/components/Link'
+import Link from '@/components/link'
 
 export default function Chip({ children, theme, iconStart, href }) {
   let iconTheme
