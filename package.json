@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
-    "@netlify/plugin-nextjs": "appdir",
+    "@netlify/plugin-nextjs": "latest",
     "@next/bundle-analyzer": "^13.4.10",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@supabase/auth-helpers-nextjs": "^0.7.3",
