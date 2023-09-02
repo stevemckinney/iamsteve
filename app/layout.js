@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import './global.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ModeToggle } from '@/components/mode-toggle'

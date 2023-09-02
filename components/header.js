@@ -1,7 +1,7 @@
 import siteMetadata from '@/content/siteMetadata'
 
 // components
-import Link from './Link'
+import Link from './link'
 import Icon from '@/components/icon'
 
 // css
