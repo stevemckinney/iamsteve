@@ -204,23 +204,23 @@ const Sprite = (props) => (
         </g>
       </symbol>
       <symbol id="arrow-left" viewBox="0 0 24 24">
-        <g className="arrow / left">
-          <path d="M2 12h20M8 6l-6 6 6 6" className="stroke-current stroke-2 sl-r" />
+        <g className="arrow-left">
+          <path d="M2 12h20M8 6l-6 6 6 6" className="fill-none stroke-current stroke-2 sl-r" />
         </g>
       </symbol>
       <symbol id="arrow-right" viewBox="0 0 24 24">
-        <g className="arrow / right">
-          <path d="M22 12H2m14 6 6-6-6-6" className="stroke-current stroke-2 sl-r" />
+        <g className="arrow-right">
+          <path d="M22 12H2m14 6 6-6-6-6" className="fill-none stroke-current stroke-2 sl-r" />
         </g>
       </symbol>
       <symbol id="arrow-up" viewBox="0 0 24 24">
-        <g className="arrow / up">
-          <path d="M12 2v20m6-14-6-6-6 6" className="stroke-current stroke-2 sl-r" />
+        <g className="arrow-up">
+          <path d="M12 2v20m6-14-6-6-6 6" className="fill-none stroke-current stroke-2 sl-r" />
         </g>
       </symbol>
       <symbol id="arrow-down" viewBox="0 0 24 24">
-        <g className="arrow / down">
-          <path d="M12 22V2M6 16l6 6 6-6" className="stroke-current stroke-2 sl-r" />
+        <g className="arrow-down">
+          <path d="M12 22V2M6 16l6 6 6-6" className="fill-none stroke-current stroke-2 sl-r" />
         </g>
       </symbol>
       <symbol id="settings" viewBox="0 0 24 24">
