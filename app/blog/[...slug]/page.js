@@ -63,7 +63,7 @@ export default async function PostPage({ params }) {
 
   return (
     <article
-      className={`grid grid-area-container grid-cols-subgrid gap-y-12 pb-32 pt-18 frame frame-outset-top`}
+      className={`grid col-container grid-cols-subgrid gap-y-12 pb-32 pt-18 frame frame-outset-top`}
     >
       <Image
         src="/images/illustration/pencil.svg"

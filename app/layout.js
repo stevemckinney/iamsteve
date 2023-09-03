@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="https://use.typekit.net/bvl2qse.css" />
       </head>
       <body
-        className={`antialiased min-h-screen bg-neutral-01-100 dark:bg-slate-950 text-slate-900 dark:text-slate-50`}
+        className={`antialiased min-h-screen bg-neutral-01-100 dark:bg-slate-950 text-slate-900 dark:text-slate-50 overflow-x-hidden`}
       >
         <Sprite />
         <ModeToggle />
