@@ -12,13 +12,13 @@
   --spacing: 8px;
 
   /* autoprefixer: off */
-  --grid: [container-start] var(--grid-margin) repeat(2, 1fr) [prose-start] repeat(6, 1fr)
-    [prose-end] repeat(2, 1fr) var(--grid-margin) [container-end];
+  --grid: [margin-start] var(--grid-margin) [container-start] repeat(2, 1fr) [prose-start]
+    repeat(6, 1fr) [prose-end] repeat(2, 1fr) [container-end] var(--grid-margin) [margin-end];
 
-  --grid-16: [container-start] var(--grid-margin) repeat(2, minmax(0, 1fr)) [content-start]
-    repeat(2, minmax(0, 1fr)) [prose-start] repeat(8, minmax(0, 1fr)) [prose-end]
-    repeat(2, minmax(0, 1fr)) [content-end] repeat(2, minmax(0, 1fr)) var(--grid-margin)
-    [container-end];
+  --grid-16: [margin-start] var(--grid-margin) [container-start] repeat(2, minmax(0, 1fr))
+    [content-start] repeat(2, minmax(0, 1fr)) [prose-start] repeat(8, minmax(0, 1fr)) [prose-end]
+    repeat(2, minmax(0, 1fr)) [content-end] repeat(2, minmax(0, 1fr)) [container-end]
+    var(--grid-margin) [margin-end];
 }
 
 .layout {
@@ -68,4 +68,21 @@
   background: padding-box
       linear-gradient(theme('colors.neutral-01.50'), theme('colors.neutral-01.50')),
     border-box linear-gradient(to bottom, rgba(79, 64, 63, 0.16) 93%, rgba(79, 64, 63, 0.24) 100%);
+}
+
+.grid-area-container {
+  grid-area: container;
+}
+
+.frame {
+  border-style: solid;
+  border-width: 2px;
+  border-image-source: url("data:image/svg+xml,%3Csvg width='154' height='154' viewBox='0 0 154 154' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 113V41C1 18.9086 18.9086 1 41 1H113C135.091 1 153 18.9086 153 41V113C153 135.091 135.091 153 113 153H41C18.9086 153 1 135.091 1 113Z' stroke='%23CBBAB7' stroke-width='2' stroke-linecap='round' stroke-dasharray='2 8'/%3E%3C/svg%3E%0A");
+  border-image-slice: 46.75324675%;
+  border-image-width: 4.5rem;
+  border-image-repeat: repeat;
+}
+
+.frame-outset-top {
+  border-image-outset: 3.375rem 0 0;
 }

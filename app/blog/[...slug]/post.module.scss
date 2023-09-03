@@ -166,7 +166,12 @@
   }
 
   p > a {
-    text-decoration: aliceblue;
+    transition: 0.2s ease-out;
+    border-bottom: 2px solid currentcolor;
+
+    &:hover {
+      color: theme('colors.dandelion.600');
+    }
   }
 }
 

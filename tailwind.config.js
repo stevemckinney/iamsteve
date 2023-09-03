@@ -22,6 +22,7 @@ module.exports = {
           lineHeight: '.81818',
           letterSpacing: '-.03409090909em',
           fontVariationSettings: '"wdth" 100, "wght" 750',
+          fontWeight: '750',
         },
       ],
       '6xl': [
@@ -109,10 +110,14 @@ module.exports = {
       },
       gridColumnStart: {
         'content-start': 'content-start',
+        'content-end': 'content-end',
         'prose-start': 'prose-start',
+        'prose-end': 'prose-end',
       },
       gridColumnEnd: {
+        'content-start': 'content-start',
         'content-end': 'content-end',
+        'prose-start': 'prose-start',
         'prose-end': 'prose-end',
       },
       lineHeight: {
@@ -124,6 +129,9 @@ module.exports = {
         '2xl': '1.166667',
         xl: '1.23809',
         lg: '1.333333',
+      },
+      spacing: {
+        18: '4.5rem',
       },
       fontFamily: {
         sans: ['gira-sans', 'sans-serif', ...defaultTheme.fontFamily.sans],

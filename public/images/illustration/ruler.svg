@@ -1,0 +1,96 @@
+<svg width="594" height="122" viewBox="0 0 594 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="594" height="122" rx="18" fill="#F4D340"/>
+<g stroke="#DD8E00" stroke-width="2" stroke-miterlimit="10">
+<path d="M33 121L33 97"/>
+<path d="M71 121V97"/>
+<path d="M109 121V97"/>
+<path d="M147 121V97"/>
+<path d="M185 121V97"/>
+<path d="M223 121V97"/>
+<path d="M261 121V97"/>
+<path d="M299 121V97"/>
+<path d="M337 121V97"/>
+<path d="M375 121V97"/>
+<path d="M413 121V97"/>
+<path d="M451 121V97"/>
+<path d="M489 121V97"/>
+<path d="M527 121V97"/>
+<path d="M565 121V97"/>
+<path d="M33 121V105"/>
+<path d="M52 121V105"/>
+<path d="M71 121V105"/>
+<path d="M90 121V105"/>
+<path d="M109 121V105"/>
+<path d="M128 121V105"/>
+<path d="M147 121V105"/>
+<path d="M166 121V105"/>
+<path d="M185 121V105"/>
+<path d="M204 121V105"/>
+<path d="M223 121V105"/>
+<path d="M242 121V105"/>
+<path d="M261 121V105"/>
+<path d="M280 121V105"/>
+<path d="M299 121V105"/>
+<path d="M318 121V105"/>
+<path d="M337 121V105"/>
+<path d="M356 121V105"/>
+<path d="M375 121V105"/>
+<path d="M394 121V105"/>
+<path d="M413 121V105"/>
+<path d="M432 121V105"/>
+<path d="M451 121V105"/>
+<path d="M470 121V105"/>
+<path d="M489 121V105"/>
+<path d="M508 121V105"/>
+<path d="M527 121V105"/>
+<path d="M546 121V105"/>
+<path d="M565 121V105"/>
+<path d="M33 1L33 25"/>
+<path d="M71 1V25"/>
+<path d="M109 1V25"/>
+<path d="M147 1V25"/>
+<path d="M185 1V25"/>
+<path d="M223 1V25"/>
+<path d="M261 1V25"/>
+<path d="M299 1V25"/>
+<path d="M337 1V25"/>
+<path d="M375 1V25"/>
+<path d="M413 1V25"/>
+<path d="M451 1V25"/>
+<path d="M489 1V25"/>
+<path d="M527 1V25"/>
+<path d="M565 1V25"/>
+<path d="M33 1V17"/>
+<path d="M52 1V17"/>
+<path d="M71 1V17"/>
+<path d="M90 1V17"/>
+<path d="M109 1V17"/>
+<path d="M128 1V17"/>
+<path d="M147 1V17"/>
+<path d="M166 1V17"/>
+<path d="M185 1V17"/>
+<path d="M204 1V17"/>
+<path d="M223 1V17"/>
+<path d="M242 1V17"/>
+<path d="M261 1V17"/>
+<path d="M280 1V17"/>
+<path d="M299 1V17"/>
+<path d="M318 1V17"/>
+<path d="M337 1V17"/>
+<path d="M356 1V17"/>
+<path d="M375 1V17"/>
+<path d="M394 1V17"/>
+<path d="M413 1V17"/>
+<path d="M432 1V17"/>
+<path d="M451 1V17"/>
+<path d="M470 1V17"/>
+<path d="M489 1V17"/>
+<path d="M508 1V17"/>
+<path d="M527 1V17"/>
+<path d="M546 1V17"/>
+<path d="M565 1V17"/>
+</g>
+<path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M17 121C8.16344 121 1 113.837 1 105L1 101C1 100.323 1.04209 99.6552 1.12379 99C2.10798 106.893 8.84076 113 17 113L578 113C584.874 113 590.735 108.665 593 102.58V105C593 113.837 585.837 121 577 121L17 121Z" fill="#DD8E00"/>
+<path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M17 1C8.16344 1 1 8.16344 1 17L1 21C1 21.6773 1.04209 22.3448 1.12379 23C2.10798 15.1074 8.84076 9 17 9L577 9C585.159 9 591.892 15.1074 592.876 23C592.958 22.3448 593 21.6773 593 21V17C593 8.16344 585.837 1 577 1L17 1Z" fill="#F9EFBD"/>
+<rect x="1" y="1" width="592" height="120" rx="16" stroke="#DD8E00" stroke-width="2"/>
+</svg>

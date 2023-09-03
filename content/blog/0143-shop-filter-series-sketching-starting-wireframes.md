@@ -27,7 +27,7 @@ This is the first part of this post, you’ll follow the design process, from sk
 Feel free to skip this entirely, if you would like to [download the files and take a look](https://www.dropbox.com/s/2jphcoulgviqtox/shop-filter-01.ai?dl=0).
 
 ## Download icons to follow along
-I’ve made a set of icons for this post. If you’d like to follow along [you can download the icons](https://www.dropbox.com/s/21r4djfbak0mj27/shop-filter-icons.ai?dl=0). If you’d like to make your own I cover sketching them briefly within the post.
+I’ve made a set of icons for this post. If you’d like to follow along [you can download the icons](https://www.dropbox.com/s/21r4djfbak0mj27/shop-filter-icons.ai?dl=0). Alternatively you can make your own or use a different icon set.
 
 ### Designing for a clothing company
 You're designing a website for a clothing company and at the stage of designing the small screen version of the shop page. The page where all products are listed, you have a few options to filter down the products.

@@ -11,11 +11,11 @@ export default function Header() {
   const navLink = `flex items-center gap-2 text-xl font-ui lowercase leading-none relative ${styles.link}`
   return (
     <>
-      <header className="grid layout gap-x-8 gap-y-0">
-        <div className="col-content flex items-center justify-between py-12 px-8 -mx-8">
-          <div className="flex-1">
+      <header className="grid layout gap-x-8 gap-y-0 relative z-10">
+        <div className="col-content flex items-center justify-between py-9 px-8 -mx-8 bg-neutral-01-100">
+          <Link href="/" className="flex-1">
             <Icon icon="logo" size={32} />
-          </div>
+          </Link>
           <nav className="flex flex-1 gap-12">
             <Link href="/design" className={`${navLink} ${styles.start}`}>
               <Icon icon="pen" />

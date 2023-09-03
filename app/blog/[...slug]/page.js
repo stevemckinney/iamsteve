@@ -17,9 +17,11 @@ import ViewCounter from '../counter'
 
 // const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/main/data/blog/${fileName}`
 
+// force to revalidate every day
 export const dynamic = 'force-static'
 export const revalidate = 86400
 
+// styling
 import styles from './post.module.scss'
 
 async function getPostFromParams(params) {
@@ -60,8 +62,22 @@ export default async function PostPage({ params }) {
   }
 
   return (
-    <article className={`grid layout gap-x-8 gap-y-12 col-start-1 col-end-[-1] pb-32`}>
-      <header className="col-prose flex flex-col gap-4">
+    <article
+      className={`grid grid-area-container grid-cols-subgrid gap-y-12 pb-32 pt-18 frame frame-outset-top`}
+    >
+      <Image
+        src="/images/illustration/pencil.svg"
+        width={962}
+        height={46}
+        className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+      />
+      <Image
+        src="/images/illustration/ruler.svg"
+        width={594}
+        height={122}
+        className={`col-start-content-end col-end-[-1] max-w-[initial] self-end row-start-1`}
+      />
+      <header className="col-prose flex flex-col gap-4 row-start-1">
         <PageTitle>{post.title}</PageTitle>
         {post.summary && <p className="text-2xl text-fern-1100 mb-4">{post.summary}</p>}
         <div className="flex flex-row gap-4 items-center">
