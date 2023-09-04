@@ -4,16 +4,16 @@ import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
 import smartypants from 'remark-smartypants'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypePrism from 'rehype-prism-plus'
+// import rehypePrism from 'rehype-prism-plus'
 import remarkRehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
 import parse from 'rehype-parse'
 import slug from 'rehype-slug'
 import stringify from 'rehype-stringify'
-import rehypeToc from '@jsdevtools/rehype-toc'
-import rehypeCitation from 'rehype-citation'
+// import rehypeToc from '@jsdevtools/rehype-toc'
+// import rehypeCitation from 'rehype-citation'
 
-import remarkCodeTitles from './lib/remark-code-title'
+// import remarkCodeTitles from './lib/remark-code-title'
 // import customizeTOC from './lib/customise-toc'
 
 const root = process.cwd()
@@ -131,21 +131,21 @@ export default makeSource({
   contentDirPath: './content',
   documentTypes: [Post, Page],
   mdx: {
-    remarkPlugins: [remarkGfm, smartypants, [remarkCodeTitles], remarkRehype],
+    remarkPlugins: [remarkGfm, smartypants, /*[remarkCodeTitles],*/ remarkRehype],
     rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          properties: {
-            className: ['fragment'],
-            ariaHidden: true,
-            tabIndex: -1,
-          },
-        },
-      ],
-      [rehypeCitation, { path: path.join(root, 'data') }],
-      [rehypePrism, { ignoreMissing: true }],
+      // rehypeSlug,
+      // [
+      //   rehypeAutolinkHeadings,
+      //   {
+      //     properties: {
+      //       className: ['fragment'],
+      //       ariaHidden: true,
+      //       tabIndex: -1,
+      //     },
+      //   },
+      // ],
+      // [rehypeCitation, { path: path.join(root, 'data') }],
+      // [rehypePrism, { ignoreMissing: true }],
       // [rehypeToc, { customizeTOC }],
     ],
   },
