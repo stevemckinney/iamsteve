@@ -4,7 +4,7 @@ import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
 import smartypants from 'remark-smartypants'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-// import rehypePrism from 'rehype-prism-plus'
+import rehypePrism from 'rehype-prism-plus'
 import remarkRehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
 import parse from 'rehype-parse'
@@ -145,7 +145,7 @@ export default makeSource({
       //   },
       // ],
       // [rehypeCitation, { path: path.join(root, 'data') }],
-      // [rehypePrism, { ignoreMissing: true }],
+      [rehypePrism, { ignoreMissing: true }],
       // [rehypeToc, { customizeTOC }],
     ],
   },
