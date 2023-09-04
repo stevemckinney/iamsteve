@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-const Icon = ({ icon = 'folder', color = 'text-fern-1100', size = '24' }) => {
+const Icon = ({ icon = 'folder', color = 'text-fern-1100', size = 24 }) => {
   return (
     <>
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className={color}>
@@ -13,7 +13,7 @@ const Icon = ({ icon = 'folder', color = 'text-fern-1100', size = '24' }) => {
 Icon.propTypes = {
   icon: PropTypes.string,
   color: PropTypes.string,
-  size: PropTypes.string,
+  size: PropTypes.number,
 }
 
 export default Icon
