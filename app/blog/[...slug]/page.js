@@ -70,7 +70,7 @@ export default async function PostPage({ params }) {
         width={962}
         height={46}
         className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
-        alt
+        alt=""
         role="presentation"
       />
       <Image
@@ -78,7 +78,7 @@ export default async function PostPage({ params }) {
         width={594}
         height={122}
         className={`col-start-content-end col-end-[-1] max-w-[initial] self-end row-start-1`}
-        alt
+        alt=""
         role="presentation"
       />
       <header className="col-prose flex flex-col gap-4 row-start-1">
