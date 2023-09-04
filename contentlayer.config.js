@@ -13,7 +13,7 @@ import stringify from 'rehype-stringify'
 // import rehypeToc from '@jsdevtools/rehype-toc'
 // import rehypeCitation from 'rehype-citation'
 
-// import remarkCodeTitles from './lib/remark-code-title'
+import remarkCodeTitles from './lib/remark-code-title'
 // import customizeTOC from './lib/customise-toc'
 
 const root = process.cwd()
@@ -131,7 +131,7 @@ export default makeSource({
   contentDirPath: './content',
   documentTypes: [Post, Page],
   mdx: {
-    remarkPlugins: [remarkGfm, smartypants, /*[remarkCodeTitles],*/ remarkRehype],
+    remarkPlugins: [remarkGfm, smartypants, [remarkCodeTitles], remarkRehype],
     rehypePlugins: [
       // rehypeSlug,
       // [
