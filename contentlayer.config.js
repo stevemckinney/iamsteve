@@ -133,17 +133,17 @@ export default makeSource({
   mdx: {
     remarkPlugins: [remarkGfm, smartypants, [remarkCodeTitles], remarkRehype],
     rehypePlugins: [
-      // rehypeSlug,
-      // [
-      //   rehypeAutolinkHeadings,
-      //   {
-      //     properties: {
-      //       className: ['fragment'],
-      //       ariaHidden: true,
-      //       tabIndex: -1,
-      //     },
-      //   },
-      // ],
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          properties: {
+            className: ['fragment'],
+            ariaHidden: true,
+            tabIndex: -1,
+          },
+        },
+      ],
       // [rehypeCitation, { path: path.join(root, 'data') }],
       [rehypePrism, { ignoreMissing: true }],
       // [rehypeToc, { customizeTOC }],
