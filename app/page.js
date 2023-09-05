@@ -96,12 +96,12 @@ export default async function Home() {
           alt=""
           role="presentation"
         />
-        <div className="col-start-5 col-end-13 outline outline-1 row-start-1 row-end-5 self-end flex flex-wrap">
+        <div className="col-start-5 col-end-13 row-start-1 row-end-5 self-end relative">
           <Image
             src="/images/illustration/spot/sharpener.svg"
             width={96}
             height={96}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -109,7 +109,7 @@ export default async function Home() {
             src="/images/illustration/spot/type.svg"
             width={32}
             height={32}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -117,7 +117,7 @@ export default async function Home() {
             src="/images/illustration/spot/pen.svg"
             width={96}
             height={96}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -125,7 +125,7 @@ export default async function Home() {
             src="/images/illustration/spot/terminal.svg"
             width={96}
             height={96}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -133,7 +133,7 @@ export default async function Home() {
             src="/images/illustration/spot/sticky.svg"
             width={96}
             height={96}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -141,7 +141,7 @@ export default async function Home() {
             src="/images/illustration/spot/safari.svg"
             width={96}
             height={96}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute  max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -149,7 +149,7 @@ export default async function Home() {
             src="/images/illustration/spot/star.svg"
             width={96}
             height={96}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -157,7 +157,7 @@ export default async function Home() {
             src="/images/illustration/spot/cursor.svg"
             width={32}
             height={32}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -165,7 +165,7 @@ export default async function Home() {
             src="/images/illustration/spot/colour.svg"
             width={32}
             height={32}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -173,7 +173,7 @@ export default async function Home() {
             src="/images/illustration/spot/component.svg"
             width={32}
             height={32}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -181,7 +181,7 @@ export default async function Home() {
             src="/images/illustration/spot/figma.svg"
             width={96}
             height={96}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -189,7 +189,7 @@ export default async function Home() {
             src="/images/illustration/spot/pencil.svg"
             width={96}
             height={96}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
@@ -197,7 +197,7 @@ export default async function Home() {
             src="/images/illustration/spot/brush.svg"
             width={32}
             height={32}
-            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            className={`absolute max-w-[initial]`}
             alt=""
             role="presentation"
           />
