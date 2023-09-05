@@ -10,6 +10,7 @@ import Link from 'next/link'
 import Icon from '@/components/icon'
 import Subscribe from '@/components/subscribe'
 import Title from '@/components/title'
+import Image from '@/components/image'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400
@@ -52,25 +53,155 @@ export default async function Home() {
 
   return (
     <>
-      <div className="col-container frame frame-outset-top">
-        <h1 className="font-display text-7xl lowercase text-center pt-48 pb-48">
-          Exploring web design craft
-        </h1>
-        <p>Tips and tutorials about the design and build of web interfaces</p>
-        <ul className="flex gap-4">
-          <li>
-            <Link href="/design" className="flex gap-1 font-ui lowercase">
-              <Icon icon="pen" />
-              Explore design
-            </Link>
-          </li>
-          <li>
-            <Link href="/design" className="flex gap-1 font-ui lowercase">
-              <Icon icon="code" />
-              Explore code
-            </Link>
-          </li>
-        </ul>
+      <div className="grid grid-cols-subgrid col-container frame frame-outset-top pt-18 pb-18 gap-y-4">
+        <div className="col-start-6 col-end-12 row-start-1 flex flex-col gap-4">
+          <h1 className="font-display text-7xl col-start-7 col-end-12 font-variation-extrabold lowercase text-center">
+            Exploring web design craft
+          </h1>
+          <p className="text-2xl text-ui-body text-center">
+            Tips and tutorials about the design and build of web interfaces
+          </p>
+          <ul className="flex gap-4 justify-center">
+            <li>
+              <Link href="/design" className="flex gap-2 font-ui lowercase items-center">
+                <span className="p-1 bg-rio-300 rounded-lg">
+                  <Icon icon="pen" />
+                </span>
+                Explore design
+              </Link>
+            </li>
+            <li>
+              <Link href="/design" className="flex gap-2 font-ui lowercase items-center">
+                <span className="p-1 bg-dandelion-300 rounded-lg">
+                  <Icon icon="code" />
+                </span>
+                Explore code
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <Image
+          src="/images/illustration/pencil.svg"
+          width={962}
+          height={46}
+          className={`col-start-1 col-end-6 max-w-[initial] justify-self-end self-start row-start-3`}
+          alt=""
+          role="presentation"
+        />
+        <Image
+          src="/images/illustration/ruler.svg"
+          width={594}
+          height={122}
+          className={`col-start-12 col-end-[-1] max-w-[initial] self-end row-start-2`}
+          alt=""
+          role="presentation"
+        />
+        <div className="col-start-5 col-end-13 outline outline-1 row-start-1 row-end-5 self-end flex flex-wrap">
+          <Image
+            src="/images/illustration/spot/sharpener.svg"
+            width={96}
+            height={96}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/type.svg"
+            width={32}
+            height={32}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/pen.svg"
+            width={96}
+            height={96}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/terminal.svg"
+            width={96}
+            height={96}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/sticky.svg"
+            width={96}
+            height={96}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/safari.svg"
+            width={96}
+            height={96}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/star.svg"
+            width={96}
+            height={96}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/cursor.svg"
+            width={32}
+            height={32}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/colour.svg"
+            width={32}
+            height={32}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/component.svg"
+            width={32}
+            height={32}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/figma.svg"
+            width={96}
+            height={96}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/pencil.svg"
+            width={96}
+            height={96}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+          <Image
+            src="/images/illustration/spot/brush.svg"
+            width={32}
+            height={32}
+            className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+            alt=""
+            role="presentation"
+          />
+        </div>
       </div>
       <div className="grid col-container grid-cols-subgrid frame" id="latest">
         <div className="col-prose">

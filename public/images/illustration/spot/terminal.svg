@@ -1,0 +1,17 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="3" y="7" width="90" height="82" rx="8" fill="#EBFAF5"/>
+<path d="M5 80V81C5 84.3137 7.68629 87 11 87H85C88.3137 87 91 84.3137 91 81V80" stroke="#ABD5C8" stroke-width="2" stroke-miterlimit="10"/>
+<path d="M91 18V15C91 11.6863 88.3137 9 85 9H11C7.68629 9 5 11.6863 5 15V18" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+<rect x="8" y="12" width="80" height="72" rx="3" fill="#114034"/>
+<rect x="8" y="12" width="80" height="72" rx="3" stroke="#092E24" stroke-width="4"/>
+<rect x="3" y="7" width="90" height="82" rx="8" stroke="#1C5344" stroke-width="2"/>
+<path d="M18 66L22 70L18 74" stroke="#EE7244" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27 74H35" stroke="#EE7244" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="26" y="24" width="16" height="2" rx="1" fill="#EBFAF5"/>
+<rect x="18" y="24" width="4" height="2" rx="1" fill="#EE7244"/>
+<rect x="18" y="30" width="8" height="2" rx="1" fill="#EFBE08"/>
+<rect x="30" y="30" width="16" height="2" rx="1" fill="#EE7244"/>
+<rect x="46" y="24" width="2" height="2" rx="1" fill="#EBFAF5"/>
+<rect x="18" y="36" width="4" height="2" rx="1" fill="#EBFAF5"/>
+<rect x="50" y="30" width="2" height="2" rx="1" fill="#EFBE08"/>
+</svg>

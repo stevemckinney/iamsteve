@@ -87,3 +87,11 @@
 .frame-outset-top {
   border-image-outset: 3.375rem 0 0;
 }
+
+.font-variation-bold {
+  font-variation-settings: 'wdth' 100, 'wght' 700;
+}
+
+.font-variation-extrabold {
+  font-variation-settings: 'wdth' 100, 'wght' 750;
+}
