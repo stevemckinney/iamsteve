@@ -21,8 +21,6 @@ module.exports = {
         {
           lineHeight: '.81818',
           letterSpacing: '-.03409090909em',
-          fontVariationSettings: '"wdth" 100, "wght" 750',
-          fontWeight: '750',
         },
       ],
       '6xl': [
@@ -135,12 +133,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['gira-sans', 'sans-serif', ...defaultTheme.fontFamily.sans],
-        display: [
-          ['roc-grotesk-variable', 'sans-serif', ...defaultTheme.fontFamily.sans],
-          {
-            fontVariationSettings: '"wdth" 100, "wght" 700',
-          },
-        ],
+        display: [['roc-grotesk-variable', 'sans-serif', ...defaultTheme.fontFamily.sans]],
         ui: [
           ['roc-grotesk-variable', 'sans-serif', ...defaultTheme.fontFamily.sans],
           {

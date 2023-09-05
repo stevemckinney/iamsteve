@@ -41,7 +41,10 @@ const Medium = ({ frontmatter, image }) => {
         {categories && (
           <>{categories && categories.map((category) => <Chip key={category}>{category}</Chip>)}</>
         )}
-        <h2 className="font-display text-2xl leading-2xl lowercase m-0 p-0" id={`title-${id}`}>
+        <h2
+          className="font-display font-variation-bold text-2xl leading-2xl lowercase m-0 p-0"
+          id={`title-${id}`}
+        >
           <Link href={slug} className="text-fern-1100">
             {title}
           </Link>

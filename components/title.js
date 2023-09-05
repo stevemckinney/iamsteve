@@ -8,7 +8,7 @@ import Icon from './icon'
 const Title = ({ title, link, text, ariaID }) => {
   return (
     <header className="col-start-content col-content-end flex justify-between items-center">
-      <h2 className="font-display text-4xl lowercase" id={ariaID}>
+      <h2 className="font-display text-4xl font-variation-bold lowercase" id={ariaID}>
         {title}
       </h2>
 
