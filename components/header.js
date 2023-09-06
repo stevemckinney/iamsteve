@@ -27,7 +27,7 @@ export default function Header() {
             </Link>
             <Link href="/blog" className={`${navLink} ${styles.start}`}>
               <Icon icon="folder" />
-              Code
+              Archive
             </Link>
             <Link href="/about" className={`${navLink} ${styles.start}`}>
               <Icon icon="person" />
