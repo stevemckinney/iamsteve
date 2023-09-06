@@ -54,12 +54,12 @@ export default async function Home() {
   return (
     <>
       <div className="grid grid-cols-subgrid col-container frame frame-outset-top pt-18 pb-18 gap-y-4">
-        <div className="col-start-6 col-end-12 row-start-1 flex flex-col gap-4">
-          <h1 className="font-display text-7xl col-start-7 col-end-12 font-variation-extrabold lowercase text-center">
+        <div className="col-start-5 col-end-13 row-start-1 flex flex-col gap-4">
+          <h1 className="text-fern-1100 font-display text-7xl col-start-7 col-end-12 font-variation-extrabold lowercase text-center">
             Exploring web design craft
           </h1>
-          <p className="text-2xl text-ui-body text-center">
-            Tips and tutorials about the design and build of web interfaces
+          <p className="text-2xl text-ui-body text-center w-2/4 mx-auto">
+            Tips and tutorials about the design{'\u00A0'}and{'\u00A0'}build of web interfaces
           </p>
           <ul className="flex gap-4 justify-center">
             <li>
@@ -84,7 +84,7 @@ export default async function Home() {
           src="/images/illustration/pencil.svg"
           width={962}
           height={46}
-          className={`col-start-1 col-end-6 max-w-[initial] justify-self-end self-start row-start-3`}
+          className={`col-start-1 col-end-7 max-w-[initial] justify-self-end self-start row-start-3`}
           alt=""
           role="presentation"
         />
@@ -92,11 +92,11 @@ export default async function Home() {
           src="/images/illustration/ruler.svg"
           width={594}
           height={122}
-          className={`col-start-12 col-end-[-1] max-w-[initial] self-end row-start-2`}
+          className={`col-start-11 col-end-[-1] relative left-16 max-w-[initial] self-end row-start-1`}
           alt=""
           role="presentation"
         />
-        <div className="col-start-5 col-end-13 row-start-1 row-end-5 self-end relative">
+        <div className="col-start-6 col-end-12 row-start-2 row-end-5 h-56 self-end relative">
           <Image
             src="/images/illustration/spot/sharpener.svg"
             width={96}
