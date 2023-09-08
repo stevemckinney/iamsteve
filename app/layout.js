@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
         <ModeToggle />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Header />
-          <main className="grid layout gap-x-8 gap-y-0">{children}</main>
+          <main className="grid layout gap-x-8 gap-y-18">{children}</main>
         </ThemeProvider>
       </body>
     </html>

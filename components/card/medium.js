@@ -41,7 +41,7 @@ const MediumImage = ({ ...props }) => {
   }
 }
 
-const Medium = ({ frontmatter, image }) => {
+const Medium = ({ frontmatter, image, className }) => {
   const { slug, date, title, summary, tags, id, theme, categories, images, medium, lastmod } =
     frontmatter
 

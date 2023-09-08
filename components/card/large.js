@@ -11,19 +11,39 @@ function autoParagraph(text, size) {
   return `<p className="${size}">` + text.split(/\n+/).join(`</p>\n<p>`) + `</p>`
 }
 
-const Large = ({ frontmatter, image }) => {
+const LargeImage = ({ ...props }) => {
+  const { image, title, imageColor, categories } = props
+
+  return (
+    <>
+      <Image
+        src={image}
+        className="radius"
+        role="presentation"
+        width={592}
+        height={488}
+        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        placeholder="blur"
+        alt={title}
+        className={`object-contain`}
+      />
+    </>
+  )
+}
+
+const Large = ({ frontmatter, image, className }) => {
   const { slug, date, title, summary, tags, id, theme, categories, images, medium, lastmod } =
     frontmatter
 
   const imageColor = theme ? theme.toString() : '#ccc'
 
   return (
-    <article className="flex flex-col rounded-xl shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden">
+    <article className="flex flex-col rounded-xl shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden self-start">
       {image && (
         <Link
           href={slug}
           title=""
-          className="flex items-center justify-center aspect-[1.2131147541/1]"
+          className={`flex items-center justify-center aspect-[1.2131147541/1] ${className}`}
           style={{ backgroundColor: `${imageColor}` }}
           aria-labelledby={`title-${id}`}
         >
@@ -65,26 +85,6 @@ const Large = ({ frontmatter, image }) => {
         </div>
       </div>
     </article>
-  )
-}
-
-const LargeImage = ({ ...props }) => {
-  const { image, title, imageColor, categories } = props
-
-  return (
-    <>
-      <Image
-        src={image}
-        className="radius"
-        role="presentation"
-        width={592}
-        height={488}
-        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-        placeholder="blur"
-        alt={title}
-        className={`object-contain`}
-      />
-    </>
   )
 }
 

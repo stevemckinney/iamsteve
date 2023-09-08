@@ -7,7 +7,7 @@ import styles from './hero.module.scss'
 export default function Hero() {
   return (
     <div
-      className={`${styles.hero} col-container flex flex-col items-center relative frame frame-outset-top pt-10 pb-18 gap-y-4`}
+      className={`${styles.hero} col-container flex flex-col items-center relative frame frame-outset-top pt-10 pb-[5.5rem] gap-y-4`}
     >
       <h1 className="text-fern-1100 font-display text-7xl col-start-7 col-end-12 font-variation-extrabold lowercase text-center max-w-[13ch]">
         Exploring web design craft

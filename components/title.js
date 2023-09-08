@@ -5,10 +5,12 @@
 import Link from 'next/link'
 import Icon from './icon'
 
-const Title = ({ title, link, text, ariaID }) => {
+const Title = ({ title, link, text, ariaID, className }) => {
   return (
-    <header className="col-content flex justify-between items-center">
-      <h2 className="font-display text-4xl font-variation-bold lowercase" id={ariaID}>
+    <header
+      className={`col-start-content-start col-end-content-end flex justify-between items-center px-8 -mx-8 bg-neutral-01-100 ${className}`}
+    >
+      <h2 className="font-display text-5xl font-variation-bold lowercase" id={ariaID}>
         {title}
       </h2>
 
