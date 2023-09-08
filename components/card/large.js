@@ -11,54 +11,25 @@ function autoParagraph(text, size) {
   return `<p className="${size}">` + text.split(/\n+/).join(`</p>\n<p>`) + `</p>`
 }
 
-const MediumImage = ({ ...props }) => {
-  const { images, title, medium, imageColor, categories } = props
-  {
-    medium ? (
-      <>
-        <div className="flex" style={{ backgroundColor: `${imageColor}` }}>
-          <Image
-            src={medium}
-            className="radius"
-            role="presentation"
-            width={378}
-            height={252}
-            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            placeholder="blur"
-            alt={title}
-          />
-        </div>
-      </>
-    ) : (
-      <>
-        {categories && categories.includes('Design') ? (
-          <Placeholder category="Design" kind="post" />
-        ) : (
-          <Placeholder category="Code" kind="post" />
-        )}
-      </>
-    )
-  }
-}
-
-const Medium = ({ frontmatter, image }) => {
+const Large = ({ frontmatter, image }) => {
   const { slug, date, title, summary, tags, id, theme, categories, images, medium, lastmod } =
     frontmatter
 
   const imageColor = theme ? theme.toString() : '#ccc'
 
   return (
-    <article className="flex flex-col p-8 rounded-xl shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200">
-      {medium && (
+    <article className="flex flex-col rounded-xl shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden">
+      {image && (
         <Link
           href={slug}
           title=""
-          className="card-image flex mb2 mb4-b"
+          className="flex items-center justify-center aspect-[1.2131147541/1]"
+          style={{ backgroundColor: `${imageColor}` }}
           aria-labelledby={`title-${id}`}
         >
           <>
-            <MediumImage
-              medium={medium}
+            <LargeImage
+              image={images[0]}
               imageColor={imageColor}
               categories={categories}
               title={title}
@@ -66,12 +37,12 @@ const Medium = ({ frontmatter, image }) => {
           </>
         </Link>
       )}
-      <div className="flex flex-col gap-4 flex-auto">
+      <div className="flex flex-col gap-4 flex-auto p-12">
         {categories && (
           <>{categories && categories.map((category) => <Chip key={category}>{category}</Chip>)}</>
         )}
         <h2
-          className="font-display font-variation-bold text-2xl leading-2xl lowercase m-0 p-0"
+          className="font-display font-variation-bold text-5xl lowercase m-0 p-0"
           id={`title-${id}`}
         >
           <Link href={slug} className="text-fern-1100">
@@ -97,4 +68,24 @@ const Medium = ({ frontmatter, image }) => {
   )
 }
 
-export default Medium
+const LargeImage = ({ ...props }) => {
+  const { image, title, imageColor, categories } = props
+
+  return (
+    <>
+      <Image
+        src={image}
+        className="radius"
+        role="presentation"
+        width={592}
+        height={488}
+        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        placeholder="blur"
+        alt={title}
+        className={`object-contain`}
+      />
+    </>
+  )
+}
+
+export default Large

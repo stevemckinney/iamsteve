@@ -17,9 +17,3 @@
     transition: background-color 600000s 0s, color 600000s 0s;
   }
 }
-
-@layer utilities {
-  .font-xbold {
-    font-variation-settings: 'wdth' 100, 'wght' 750;
-  }
-}
