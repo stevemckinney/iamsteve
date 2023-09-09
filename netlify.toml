@@ -119,6 +119,61 @@
 
 # There’s no PHP round here anymore
 [[redirects]]
-  from = "/*.php"
+  from = "/wp-login.php"
   to = "/"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "/wp-info.php"
+  to = "/"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "/mailer.php"
+  to = "/"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "/inputs.php"
+  to = "/"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "/404.php"
+  to = "/"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "/403.php"
+  to = "/"
+  force = true
+  status = 301
+  
+[[redirects]]
+  from = "/xmlrpc.php"
+  to = "/"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "/xml.php"
+  to = "/"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "/wp-content/*"
+  to = "/"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "/wp-admin/*"
+  to = "/"
+  force = true
   status = 301
