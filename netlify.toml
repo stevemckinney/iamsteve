@@ -105,3 +105,20 @@
   from = "/feeds"
   to = "/feed.xml"
   status = 301
+
+# Junk redirects
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/static/favicon.ico"
+  status = 301
+
+[[redirects]]
+  from = "/apple-touch-icon-precomposed.png"
+  to = "/static/apple-touch-icon.png"
+  status = 301
+
+# There’s no PHP round here anymore
+[[redirects]]
+  from = "/*.php"
+  to = "/"
+  status = 301
