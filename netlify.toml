@@ -177,6 +177,12 @@
   to = "/"
   force = true
   status = 301
+
+[[redirects]]
+  from = "/wp-includes/*"
+  to = "/"
+  force = true
+  status = 301
   
 [[redirects]]
   from = "/vendor/*"
