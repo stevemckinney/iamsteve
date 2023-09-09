@@ -177,3 +177,16 @@
   to = "/"
   force = true
   status = 301
+  
+[[redirects]]
+  from = "/vendor/*"
+  to = "/"
+  force = true
+  status = 301
+
+
+[[redirects]]
+  from = ".env"
+  to = "/"
+  force = true
+  status = 301
