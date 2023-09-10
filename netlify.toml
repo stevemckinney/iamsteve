@@ -106,7 +106,7 @@
   to = "/feed.xml"
   status = 301
 
-# Junk redirects
+# Old icon urls?
 [[redirects]]
   from = "/favicon.ico"
   to = "/static/favicon.ico"
@@ -117,6 +117,12 @@
   to = "/static/apple-touch-icon.png"
   status = 301
 
+[[redirects]]
+  from = "/android.png"
+  to = "/static/favicon.png"
+  status = 301
+
+# Junk redirects
 # There’s no PHP round here anymore
 [[redirects]]
   from = "/wp-login.php"
