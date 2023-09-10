@@ -183,16 +183,27 @@
   to = "/"
   force = true
   status = 301
-  
+
 [[redirects]]
   from = "/vendor/*"
   to = "/"
   force = true
   status = 301
 
+[[redirects]]
+  from = "/wp-json/*"
+  to = "/"
+  force = true
+  status = 301
 
 [[redirects]]
   from = ".env"
+  to = "/"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "/login.php"
   to = "/"
   force = true
   status = 301
