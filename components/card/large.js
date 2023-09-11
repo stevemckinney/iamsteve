@@ -38,7 +38,7 @@ const Large = ({ frontmatter, image, className }) => {
   const imageColor = theme ? theme.toString() : '#ccc'
 
   return (
-    <article className="flex flex-col rounded-xl shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden self-start">
+    <article className="flex flex-col rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden self-start">
       {image && (
         <Link
           href={slug}
@@ -72,7 +72,7 @@ const Large = ({ frontmatter, image, className }) => {
         <div
           className="flex-auto text-ui-body line-clamp-3"
           dangerouslySetInnerHTML={{
-            __html: autoParagraph(summary, 'text-base font-body'),
+            __html: autoParagraph(summary, 'text-lg font-body'),
           }}
         />
         <div className="sr-only" aria-hidden="true" tabIndex="-1">

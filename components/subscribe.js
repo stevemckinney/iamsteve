@@ -1,32 +1,19 @@
 import Image from 'next/image'
 import NewsletterForm from '@/components/newsletter-form'
 
-const Subscribe = ({
-  title = 'Subscribe to the newsletter',
-  theme = 'cool',
-  unique = 'footer',
-}) => {
+const Subscribe = ({ title = 'Get the articles', className, unique = 'footer' }) => {
   return (
-    <section
-      className={`row row-${theme} row-padding between items-center contain contain-medium contain-large subscribe`}
-    >
-      <div className="column column-4-b mb4 mb0-b subscribe-image">
-        <Image
-          src="/images/subscribe.svg"
-          alt="true"
-          role="presentation"
-          width={488}
-          height={336}
-        />
-      </div>
-      <div className="column column-6-b column-4-d">
-        <h2 className="f1-l chunky secondary mb2 mb4-b">Get the articles</h2>
-        <p className="mb2">
-          <strong>It’s my aim to help you be a better designer</strong>. Join my monthly<em>ish</em>{' '}
-          email list and I’ll send new tutorials to help you design & code beautiful websites. You
-          can unsubscribe anytime.
+    <section className={`${className}`}>
+      <div className="flex flex-col gap-4 w-[40.1315789474%]">
+        <Image src="/images/illustration/spot/envelope.svg" width={96} height={96} />
+        <h2 className="text-4xl font-display font-variation-bold lowercase fern-1100">{title}</h2>
+        <p className="m-0 text-base text-ui-body">
+          Join my email list and I’ll notify you when the latest posts go out—if that’s what you
+          prefer. This happens monthly at most. You can unsubscribe anytime.
         </p>
-        <NewsletterForm theme={`form-${theme}`} unique={unique} />
+      </div>
+      <div className="w-[40.1315789474%]">
+        <NewsletterForm unique={unique} />
       </div>
     </section>
   )

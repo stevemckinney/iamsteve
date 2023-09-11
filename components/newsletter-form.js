@@ -47,52 +47,61 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
   return (
     <>
       <div className={theme}>
-        <div className="row-form">
-          {subscribed && (
-            <div
-              className={`bg-secondary sans radius white`}
-              style={{
-                marginBottom: '24px',
-                padding: '8px',
-              }}
-            >
-              {message && <p className="m0">{message}</p>}
-            </div>
-          )}
-          {error && (
-            <div
-              className={`bg-red sans radius white`}
-              style={{
-                marginBottom: '24px',
-                padding: '8px',
-              }}
-            >
-              {message && <p className="m0">{message}</p>}
-            </div>
-          )}
-          <form className="form form-newsletter end" onSubmit={subscribe}>
-            <div className="field field-text field-third ml-field-group ml-field-name">
-              <label htmlFor={`input-name-${unique}`} className="sans pb2 field-label">
+        {subscribed && (
+          <div
+            className={`bg-secondary sans radius white`}
+            style={{
+              marginBottom: '24px',
+              padding: '8px',
+            }}
+          >
+            {message && <p className="m-0">{message}</p>}
+          </div>
+        )}
+        {error && (
+          <div
+            className={`bg-red sans radius white`}
+            style={{
+              marginBottom: '24px',
+              padding: '8px',
+            }}
+          >
+            {message && <p className="m-0">{message}</p>}
+          </div>
+        )}
+        <form className="flex flex-col gap-4" onSubmit={subscribe}>
+          <div className="flex flow-row gap-4">
+            <div className="flex flex-col w-2/5 gap-2">
+              <label
+                htmlFor={`input-name-${unique}`}
+                className="font-ui text-base lowercase text-fern-1100"
+              >
                 First name
               </label>
+              {/* linear-gradient(180deg, rgba(79, 64, 63, 0.03) 0%, rgba(79, 64, 63, 0.00) 100%), #FFF) */}
               <input
                 type="text"
-                className="form-input px-4 py-3 rounded-lg"
+                placeholder={`What do you go by?`}
+                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30`}
                 name="fields[first_name]"
                 id={`input-name-${unique}`}
                 ref={inputName}
                 disabled={subscribed}
               />
             </div>
-            <div className="field field-text field-two-thirds nml ml-field-group ml-field-email ml-validate-required">
-              <label htmlFor={`input-email-${unique}`} className="sans pb2 field-label">
+            <div className="flex flex-col w-3/5 gap-2">
+              <label
+                htmlFor={`input-email-${unique}`}
+                className="font-ui text-base lowercase text-fern-1100"
+              >
                 Email
               </label>
               <input
                 type="email"
                 autoComplete="email"
                 autoCapitalize="none"
-                className="form-input px-4 py-3 rounded-lg"
+                placeholder={`Your best email address`}
+                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30`}
                 id={`input-email-${unique}`}
                 name="email_address"
                 ref={inputEmail}
@@ -100,18 +109,18 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
                 disabled={subscribed}
               />
             </div>
-            <div className="form-actions pt2 text-right">
-              <button
-                type="submit"
-                aria-label="Subscribe to the newsletter"
-                className="button button-tertiary ml-hide-horizontal flex-auto"
-                disabled={subscribed}
-              >
-                {subscribed ? 'Thank you!' : 'Sign me up'}
-              </button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div className="form-actions pt2 text-right">
+            <button
+              type="submit"
+              aria-label="Subscribe to the newsletter"
+              className="button-dandelion font-ui text-base/snug lowercase text-dandelion-800 bg-dandelion-300 rounded-sm  transition duration-200 shadow-placed hover:shadow-picked px-8 py-3 flex-auto"
+              disabled={subscribed}
+            >
+              {subscribed ? 'Thank you!' : 'Sign me up'}
+            </button>
+          </div>
+        </form>
       </div>
     </>
   )

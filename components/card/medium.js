@@ -48,7 +48,7 @@ const Medium = ({ frontmatter, image, className }) => {
   const imageColor = theme ? theme.toString() : '#ccc'
 
   return (
-    <article className="flex flex-col p-8 rounded-xl shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200">
+    <article className="flex flex-col p-8 rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200">
       {medium && (
         <Link
           href={slug}
@@ -81,7 +81,7 @@ const Medium = ({ frontmatter, image, className }) => {
         <div
           className="flex-auto text-ui-body line-clamp-3"
           dangerouslySetInnerHTML={{
-            __html: autoParagraph(summary, 'text-base font-body'),
+            __html: autoParagraph(summary, 'text-lg font-body'),
           }}
         />
         <div className="sr-only" aria-hidden="true" tabIndex="-1">

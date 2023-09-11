@@ -150,7 +150,7 @@ export function Support() {
         className="flex shrink-0 grow-0 flex-row rounded-md items-center gap-2 text-base font-ui lowercase pl-2 pr-4 py-3 hover:opacity-70 transition duration-200"
       >
         <span className="flex shrink-0 grow-0 items-center justify-center bg-fern-100 rounded w-8 h-8">
-          <Icon kind="bmc" />
+          <Icon icon="bmc" />
         </span>{' '}
         Buy me a coffee
       </Link>

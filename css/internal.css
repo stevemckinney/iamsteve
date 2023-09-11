@@ -19,6 +19,11 @@
     [content-start] repeat(2, minmax(0, 1fr)) [prose-start] repeat(8, minmax(0, 1fr)) [prose-end]
     repeat(2, minmax(0, 1fr)) [content-end] repeat(2, minmax(0, 1fr)) [container-end]
     var(--grid-margin) [margin-end];
+
+  /**
+   * Overridable capability for tailwind
+   */
+  --ui-border-color: rgba(117, 99, 98, 0.14);
 }
 
 .layout {
@@ -84,6 +89,10 @@
   border-image-repeat: round;
 }
 
+.bg-rule {
+  background-image: url('data:image/svg+xml,<svg width="20" height="2" viewBox="0 0 20 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1H19" stroke="%23CBBAB7" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/></svg>');
+}
+
 .frame-outset-top {
   border-image-outset: 3.55rem 0 0;
 }
@@ -100,4 +109,8 @@
   grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
   grid-template-rows: masonry;
   align-tracks: end, start, end, space-between;
+}
+
+.button-dandelion {
+  --ui-border-color: theme(colors.dandelion.600);
 }

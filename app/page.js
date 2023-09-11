@@ -7,7 +7,6 @@ import mergeDataBySlug from '@/lib/utils/mergeDataBySlug'
 
 import Link from 'next/link'
 import Icon from '@/components/icon'
-import Subscribe from '@/components/subscribe'
 import Title from '@/components/title'
 import Image from '@/components/image'
 import Hero from '@/components/hero'
@@ -51,8 +50,6 @@ export default async function Home() {
   const mergedData = allData.mergedData
   const design = allData.design
   const code = allData.code
-
-  console.log(design.slice(0, 4))
 
   return (
     <>
@@ -115,19 +112,9 @@ export default async function Home() {
 
         <div className="grid grid-cols-3 col-content gap-8">
           {code.map((post) => (
-            <div>
-              <Card size="medium" frontmatter={post} image={true} key={post._id} />
-              {post.view_count}
-            </div>
+            <Card size="medium" frontmatter={post} image={true} key={post._id} />
           ))}
         </div>
-      </div>
-
-      <div
-        className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
-        id="sub"
-      >
-        <Subscribe />
       </div>
     </>
   )
