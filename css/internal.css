@@ -12,13 +12,15 @@
   --spacing: 8px;
 
   /* autoprefixer: off */
-  --grid: [margin-start] var(--grid-margin) [container-start] repeat(2, 1fr) [prose-start]
-    repeat(6, 1fr) [prose-end] repeat(2, 1fr) [container-end] var(--grid-margin) [margin-end];
-
-  --grid-16: [margin-start] var(--grid-margin) [container-start] repeat(2, minmax(0, 1fr))
-    [content-start] repeat(2, minmax(0, 1fr)) [prose-start] repeat(8, minmax(0, 1fr)) [prose-end]
-    repeat(2, minmax(0, 1fr)) [content-end] repeat(2, minmax(0, 1fr)) [container-end]
+  --grid: [margin-start] var(--grid-margin) [container-start] repeat(2, 1fr)
+    [prose-start] repeat(6, 1fr) [prose-end] repeat(2, 1fr) [container-end]
     var(--grid-margin) [margin-end];
+
+  --grid-16: [margin-start] var(--grid-margin) [container-start]
+    repeat(2, minmax(0, 1fr)) [content-start] repeat(2, minmax(0, 1fr))
+    [prose-start] repeat(8, minmax(0, 1fr)) [prose-end]
+    repeat(2, minmax(0, 1fr)) [content-end] repeat(2, minmax(0, 1fr))
+    [container-end] var(--grid-margin) [margin-end];
 
   /**
    * Overridable capability for tailwind
@@ -59,20 +61,37 @@
 .bg-ui-border {
   transition: all 2s ease;
   background: padding-box linear-gradient(white, white),
-    border-box linear-gradient(to bottom, rgba(79, 64, 63, 0.12) 93%, rgba(79, 64, 63, 0.2) 100%);
+    border-box
+      linear-gradient(
+        to bottom,
+        rgba(79, 64, 63, 0.12) 93%,
+        rgba(79, 64, 63, 0.2) 100%
+      );
 }
 
 .bg-ui-border:hover {
   background: padding-box linear-gradient(white, white),
     border-box
-      linear-gradient(to bottom, rgba(255, 64, 63, 0.92) 93%, rgba(255, 64, 63, 0.932) 100%);
+      linear-gradient(
+        to bottom,
+        rgba(255, 64, 63, 0.92) 93%,
+        rgba(255, 64, 63, 0.932) 100%
+      );
 }
 
 .bg-ui-border:active {
   transform: scale(0.99375);
   background: padding-box
-      linear-gradient(theme('colors.neutral-01.50'), theme('colors.neutral-01.50')),
-    border-box linear-gradient(to bottom, rgba(79, 64, 63, 0.16) 93%, rgba(79, 64, 63, 0.24) 100%);
+      linear-gradient(
+        theme('colors.neutral-01.50'),
+        theme('colors.neutral-01.50')
+      ),
+    border-box
+      linear-gradient(
+        to bottom,
+        rgba(79, 64, 63, 0.16) 93%,
+        rgba(79, 64, 63, 0.24) 100%
+      );
 }
 
 .col-container {
@@ -111,6 +130,9 @@
   align-tracks: end, start, end, space-between;
 }
 
-.button-dandelion {
-  --ui-border-color: theme(colors.dandelion.600);
+.drop-shadow-placed {
+  filter: drop-shadow(0px 8px 12px rgba(117, 99, 98, 0.12))
+    drop-shadow(0px 1px 0 rgba(117, 99, 98, 0.12))
+    drop-shadow(0px 2px 4px rgba(117, 99, 98, 0.12))
+    drop-shadow(0px 0 1px rgba(117, 99, 98, 0.12));
 }

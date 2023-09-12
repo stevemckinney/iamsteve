@@ -30,7 +30,9 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
     if (res.status === 500) {
       setError(true)
       setMessage(`The server cannot be reached to submit your request.`)
-      return Promise.reject(`The server cannot be reached to submit your request.`)
+      return Promise.reject(
+        `The server cannot be reached to submit your request.`
+      )
     } else if (res.error) {
       setError(true)
       setMessage(`There was an error subscribing to the list.`)
@@ -113,8 +115,8 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
           <div className="form-actions pt2 text-right">
             <button
               type="submit"
-              aria-label="Subscribe to the newsletter"
-              className="button-dandelion font-ui text-base/snug lowercase text-dandelion-800 bg-dandelion-300 rounded-sm  transition duration-200 shadow-placed hover:shadow-picked px-8 py-3 flex-auto"
+              ariaLabel="Subscribe to the newsletter"
+              className="button-dandelion font-ui text-base/snug lowercase text-dandelion-800 text-center bg-dandelion-300 rounded-sm transition duration-200 shadow-placed hover:shadow-picked px-8 py-3 flex-auto [--ui-border-color:theme(colors.dandelion.600)]"
               disabled={subscribed}
             >
               {subscribed ? 'Thank you!' : 'Sign me up'}

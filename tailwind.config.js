@@ -2,7 +2,12 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: ['./app/**/*.js', './components/**/*.js', './layouts/**/*.js', './lib/**/*.js'],
+  content: [
+    './app/**/*.js',
+    './components/**/*.js',
+    './layouts/**/*.js',
+    './lib/**/*.js',
+  ],
   darkMode: 'class',
   theme: {
     borderRadius: {
@@ -141,9 +146,19 @@ module.exports = {
       },
       fontFamily: {
         sans: ['gira-sans', 'sans-serif', ...defaultTheme.fontFamily.sans],
-        display: [['roc-grotesk-variable', 'sans-serif', ...defaultTheme.fontFamily.sans]],
+        display: [
+          [
+            'roc-grotesk-variable',
+            'sans-serif',
+            ...defaultTheme.fontFamily.sans,
+          ],
+        ],
         ui: [
-          ['roc-grotesk-variable', 'sans-serif', ...defaultTheme.fontFamily.sans],
+          [
+            'roc-grotesk-variable',
+            'sans-serif',
+            ...defaultTheme.fontFamily.sans,
+          ],
           {
             fontVariationSettings: '"wdth" 100, "wght" 500',
             textTransform: 'lowercase',
