@@ -68,7 +68,7 @@ const Medium = ({ frontmatter, image, className }) => {
       )}
       <div className="flex flex-col gap-4 flex-auto">
         {categories && (
-          <>{categories && categories.map((category) => <Chip key={category}>{category}</Chip>)}</>
+          <>{categories && categories.map((category) => <Chip key={category} href={category}>{category}</Chip>)}</>
         )}
         <h2
           className="font-display font-variation-bold text-2xl leading-2xl lowercase m-0 p-0"
