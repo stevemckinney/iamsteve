@@ -1,4 +1,4 @@
-import siteMetadata from '@/content/siteMetadata'
+import siteMetadata from '@/content/metadata'
 
 // components
 import Link from './link'
