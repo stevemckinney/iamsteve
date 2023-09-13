@@ -34,25 +34,18 @@ export default function About() {
             </h2>
 
             <p className="mb4 f3-l">
-              I’m Steve McKinney, I write this blog about the design and build of websites. My main
-              aim is to teach you how to implement your designs as you intend. I aim to cover a
-              mixture of how to design websites and building them with maintainable CSS.
+              I’m Steve McKinney, I write this blog about the design and build of websites. It’s a place to explore the craft of web design. From design through to code it’s all part of the design process.
             </p>
+
+            <h3 className="f2-l mb2 pt2">Who is this for?</h3>
+            <p className="mb4 f3-l">Either you’re a developer wanting to improve their visual design skills, or a designer with some coding experience. You’re someone who understands the value of not only good design, but the requirement of making it look visually appealing too. Through sharing what I know and continue to learn, I hope to meet this need.</p>
 
             <p className="mb4 f3-l">
               What drives my writing is hearing things like “you can’t expect your designs to look
               the same as they do in <em>design app</em>”. And while that comes from a good place, I
               find it avoids the visual polish every website needs.
             </p>
-
-            <h3 className="f2-l mb2 pt2">Who is this for?</h3>
-            <p className="mb4 f3-l">
-              Either you’re a developer wanting to improve their visual design skills, or a designer
-              with some coding experience. You’re someone who understands the value of not only good
-              design, but the requirement of making it look visually appealing too. Through sharing
-              what I know and continue to learn, I hope to meet this need.
-            </p>
-
+                
             <h3 className="f2-l mb2 pt2">It started out with writing weekly without an aim</h3>
 
             <p className="mb4 f3-l">
@@ -94,42 +87,15 @@ export default function About() {
               </p>
             </blockquote>
 
-            <h2 className="f2 mb2 pt6">A mixture of practical tutorials and tips</h2>
+            <h2 className="f2 mb2 pt6">Changing aim over the years</h2>
 
-            <p className="mb4 f3-l">
-              I aim to make no assumptions, as you can find yourself wanting the ‘why’. That
-              rationale can help you to understand better and begin to form your own opinions, or
-              provide references to research further. However, with this in mind, I do feel each
-              tutorial is around an intermediate level.
-            </p>
+            <p className="mb4 f3-l">I made a decision to start writing this blog <em>consistently</em> in January 2015. Every week, for two years, a blog post went out. I started out writing about anything I was interested in, as long as it was related to websites.</p>
 
-            <p className="mb4 f3-l">
-              With the vast majority of tutorials focused around Illustrator it obviously means
-              other applications do appear to be excluded. Designs should always be possible to
-              replicate, but this is something I am aware of.
-            </p>
+            <p className="mb4 f3-l">It became clear to me over those two years, there was a lack of content focusing on the visual side of design. It’s tough to teach, that’s why, or maybe that’s just me.</p>
 
-            <p className="mb4 f3-l">
-              Some tutorials will feature CSS (using SCSS), and some will feature JavaScript. There
-              are a mixture of articles from quick tips, to in depth design tutorials.
-            </p>
+            <p className="mb4 f3-l">As a designer, it’s the thing I aspire to be best at. And having this website as a place to explore and challenge myself. Through an approach where I consider the decisions I’m making—some of these are routine but are valuable.</p>
 
-            <p className="mb4 f3-l">
-              The aim is to help improve workflow efficiency and build up visual design skill. Code
-              adds additional justification and is usually the best way to communicate extra
-              details.
-            </p>
-
-            <p className="mb4 f3-l">
-              There’s a lot of decisions that get missed, because they’re routine as a designer. I
-              want to communicate these decisions to both developers and designers to bridge that
-              gap.
-            </p>
-
-            <p className="mb4 f3-l">
-              I&#8217;m certainly still figuring things out, but with a vision in mind I can work
-              towards my goal.
-            </p>
+            <p className="mb4 f3-l">I’ve accepted I’ll always be figuring things out, but with a vision in mind I can work towards my goal.</p>
           </article>
 
           <aside className="blockquote">
@@ -186,48 +152,16 @@ export default function About() {
             <h2 className="f2 mb2 pt6">About me</h2>
 
             <p className="mb4 f3-l">
-              I’m a designer based in Manchester. I specialise in visual design and user experience
-              for websites. I’ve been doing this professionally for over eight years. I’ve worked
-              with a large variety of clients in differing industries. With differing needs, shops,
-              subscriptions, services and marketing.
+              I’m a designer based in Manchester. I specialise in visual design and user experience for websites. I’ve been doing this professionally for over 12 years. I’ve worked with a large variety of clients in differing industries. With differing needs, shops, subscriptions, services and marketing.
             </p>
 
-            <p className="mb4 f3-l">
-              I enjoy being involved along the whole timeline of a project. The earlier the better,
-              I’m someone who likes to get the best understanding possible. This not only helps me
-              provide the best solution and justification for the work but build trust. When a
-              designer isn’t able to build trust with the client, it results in unnecessary
-              revisions and a feeling of not being understood.
-            </p>
+            <p className="mb4 f3-l">I enjoy being involved along the whole timeline of a project. I’m someone who likes to get the best understanding possible and helps influence the solution. It helps build trust and avoids surprises. Looking at design end to end allows for decisions to be made quickly.</p>
 
-            <p className="mb4 f3-l">
-              Personally, I’ve been doing this since I was a kid. In which I’ve always deemed myself
-              a “web designer” but that’s like calling yourself a webmaster these days. I sit
-              somewhere in the middle of being a visual designer and UX designer. Anyway, I’m
-              someone who has always designed websites with the intention of being usable and
-              visually appealing.
-            </p>
+            <p className="mb4 f3-l">Personally, I’ve been making websites from a young age. I learnt to code alongside designing—it was just part of the process. Debates like should designers code weren’t a thing when I was 13.</p>
 
-            <p className="mb4 f3-l">
-              Starting at a young age has given me an advantage, as I learnt to code alongside
-              designing. I saw it as part of the process, should designers code wasn’t a thing when
-              I was 13. I have found there is mixed opinions on my skill from this, I don’t see
-              myself as a “designer who knows a bit of code” or a “front end developer who knows a
-              bit of design”.
-            </p>
+            <p className="mb4 f3-l">As a designer, someone might ask if you have a personal style. I do feel I have a personal style, I enjoy serif typefaces, use of colour, an illustration style that has some depth but is generally flat. However, I will always design for the audience, goals and systems that are already in place.</p>
 
-            <p className="mb4 f3-l">
-              I do have a personal style, however, I will always design for the audience and goals
-              in mind. It’s important the user is put first, as they are the ones who are buying or
-              using your service. I know it’s a balance nonetheless.
-            </p>
-
-            <p className="mb4 f3-l">
-              I enjoy drawing, illustration and hand lettering. I also have a bit of knack for
-              website performance and this website serves as a way I can try out techniques. I’m
-              also a dog lover, if it wasn’t obvious, see the logo, the illustrations in the footer
-              and some article images… everywhere.
-            </p>
+            <p className="mb4 f3-l">I think it’s an enjoyment of creating things on the web. Be it icons, animation, illustration, CSS or JavaScript.</p>
           </article>
 
           <article role="article" className="mb4 mb6-b" id="history">
