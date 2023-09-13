@@ -54,7 +54,7 @@ export default function About() {
 
             <p className="mb4 f3-l">As a designer, it’s the thing I aspire to be best at. And having this website as a place to explore and challenge myself. Through an approach where I consider the decisions I’m making—some of these are routine but are valuable.</p>
 
-            <p className="mb4 f3-l">I’ve accepted I’ll always be figuring things out, but with a vision in mind I can work towards my goal.</p>
+            <p className="mb4 f3-l">Eventually, I stopped posting frequently for various reasons. I’ve accepted I’ll always be figuring things out, but with a vision in mind I can work towards my goal. I hope I’ll post regularly again.</p>
           </article>
 
           <aside className="blockquote">
