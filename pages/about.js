@@ -45,47 +45,6 @@ export default function About() {
               the same as they do in <em>design app</em>”. And while that comes from a good place, I
               find it avoids the visual polish every website needs.
             </p>
-                
-            <h3 className="f2-l mb2 pt2">It started out with writing weekly without an aim</h3>
-
-            <p className="mb4 f3-l">
-              I made the decision to start writing this blog <em>consistently</em> in January 2015.
-              Every week, for two years, a blog post went out. I started out writing about anything
-              I was interested in, as long as it was related to websites.
-            </p>
-
-            <p className="mb4 f3-l">
-              It became clear to me over those two years, there was a lack of content focusing on
-              the visual side of design.
-            </p>
-
-            <h3 className="f2-l mb2 pt2">Focusing on designing &amp; coding beautiful websites</h3>
-
-            <p className="mb4 f3-l">
-              I knew focusing on visual design would be a good start. I begun narrowing down to only
-              designing with Illustrator and launched a redesign of the website. Things improved
-              steadily, but I felt limited and ignoring a part of making websites.
-            </p>
-
-            <p className="mb4 f3-l">
-              The thing being coding, at least the HTML and CSS part. Understanding how to build
-              websites is part of my unique advantage.
-            </p>
-
-            <h3 className="f2-l mb2 pt2">A new goal to be able to work with in depth content</h3>
-
-            <p className="mb4 f3-l">
-              During the last few months of posting weekly, I thought about the focus of the website
-              and taking a break. The realisation of posting weekly, with limited time, meant I
-              couldn’t do certain posts. I wanted to change.
-            </p>
-
-            <blockquote className="mb4">
-              <p className="f3 f2-b f4">
-                My vision for this website is to; teach ‘web’ related design topics. Help you
-                understand why and develop your own rationale.
-              </p>
-            </blockquote>
 
             <h2 className="f2 mb2 pt6">Changing aim over the years</h2>
 
