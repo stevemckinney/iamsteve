@@ -3,7 +3,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { allPosts } from 'contentlayer/generated'
 
-import mergeDataBySlug from '@/lib/utils/mergeDataBySlug'
+import mergeDataBySlug from '@/lib/utils/merge-data-by-slug'
 
 import Link from 'next/link'
 import Icon from '@/components/icon'
@@ -18,7 +18,9 @@ export const revalidate = 86400
 const getData = cache(async () => {
   // Create a Supabase client configured to use cookies
   const supabase = createServerComponentClient({ cookies })
-  const { data: dbPosts } = await supabase.from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE).select()
+  const { data: dbPosts } = await supabase
+    .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
+    .select()
 
   const postsByDate = allPosts
     .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -33,8 +35,12 @@ const getData = cache(async () => {
     .sort((a, b) => b.view_count - a.view_count)
     .filter((post) => post.status.includes('open'))
 
-  const design = mergedData.filter((post) => post.categories.includes('Design')).slice(0, 6)
-  const code = mergedData.filter((post) => post.categories.includes('Code')).slice(0, 6)
+  const design = mergedData
+    .filter((post) => post.categories.includes('Design'))
+    .slice(0, 6)
+  const code = mergedData
+    .filter((post) => post.categories.includes('Code'))
+    .slice(0, 6)
 
   return {
     postsByDate,
@@ -93,7 +99,12 @@ export default async function Home() {
 
         <div className="grid grid-cols-3 col-content gap-8">
           {design.map((post) => (
-            <Card size="medium" frontmatter={post} image={true} key={post._id} />
+            <Card
+              size="medium"
+              frontmatter={post}
+              image={true}
+              key={post._id}
+            />
           ))}
         </div>
       </div>
@@ -112,7 +123,12 @@ export default async function Home() {
 
         <div className="grid grid-cols-3 col-content gap-8">
           {code.map((post) => (
-            <Card size="medium" frontmatter={post} image={true} key={post._id} />
+            <Card
+              size="medium"
+              frontmatter={post}
+              image={true}
+              key={post._id}
+            />
           ))}
         </div>
       </div>

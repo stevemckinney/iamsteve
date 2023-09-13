@@ -17,7 +17,7 @@ const siteMetadata = {
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com',
-  bmc: 'buymeacoffee.com/BQoVfY7gc',
+  bmc: 'https://buymeacoffee.com/BQoVfY7gc',
   locale: 'en-GB',
   newsletter: {
     // supports mailchimp, buttondown, convertkit

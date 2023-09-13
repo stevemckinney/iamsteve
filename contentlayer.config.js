@@ -113,7 +113,8 @@ export const Post = defineDocumentType(() => ({
     readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
     slug: {
       type: 'string',
-      resolve: (doc) => '/' + doc._raw.flattenedPath.replace(/^(blog\/)(?:\d{4}\-)?/, '$1'),
+      resolve: (doc) =>
+        '/' + doc._raw.flattenedPath.replace(/^(blog\/)(?:\d{4}\-)?/, '$1'),
     },
     slugAsParams: {
       type: 'string',

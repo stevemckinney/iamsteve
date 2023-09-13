@@ -1,7 +1,7 @@
 import './global.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ModeToggle } from '@/components/mode-toggle'
-import siteMetadata from '@/content/siteMetadata'
+import siteMetadata from '@/content/metadata'
 
 import Header from '@/components/header'
 import Sprite from '@/components/icon/sprite'

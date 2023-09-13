@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
 
 // utils
-import siteMetadata from '@/content/siteMetadata'
+import siteMetadata from '@/content/metadata'
 import formatDate from '@/lib/utils/formatDate'
 
 // layouts
