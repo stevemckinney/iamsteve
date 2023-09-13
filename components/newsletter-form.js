@@ -30,9 +30,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
     if (res.status === 500) {
       setError(true)
       setMessage(`The server cannot be reached to submit your request.`)
-      return Promise.reject(
-        `The server cannot be reached to submit your request.`
-      )
+      return Promise.reject(`The server cannot be reached to submit your request.`)
     } else if (res.error) {
       setError(true)
       setMessage(`There was an error subscribing to the list.`)
@@ -74,10 +72,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
         <form className="flex flex-col gap-4" onSubmit={subscribe}>
           <div className="flex flow-row gap-4">
             <div className="flex flex-col w-2/5 gap-2">
-              <label
-                htmlFor={`input-name-${unique}`}
-                className="font-ui text-base lowercase text-fern-1100"
-              >
+              <label htmlFor={`input-name-${unique}`} className="font-ui text-base lowercase text-fern-1100">
                 First name
               </label>
               {/* linear-gradient(180deg, rgba(79, 64, 63, 0.03) 0%, rgba(79, 64, 63, 0.00) 100%), #FFF) */}
@@ -92,10 +87,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
               />
             </div>
             <div className="flex flex-col w-3/5 gap-2">
-              <label
-                htmlFor={`input-email-${unique}`}
-                className="font-ui text-base lowercase text-fern-1100"
-              >
+              <label htmlFor={`input-email-${unique}`} className="font-ui text-base lowercase text-fern-1100">
                 Email
               </label>
               <input
@@ -115,7 +107,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
           <div className="form-actions pt2 text-right">
             <button
               type="submit"
-              ariaLabel="Subscribe to the newsletter"
+              aria-label="Subscribe to the newsletter"
               className="button-dandelion font-ui text-base/snug lowercase text-dandelion-800 text-center bg-dandelion-300 rounded-sm transition duration-200 shadow-placed hover:shadow-picked px-8 py-3 flex-auto [--ui-border-color:theme(colors.dandelion.600)]"
               disabled={subscribed}
             >
