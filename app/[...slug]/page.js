@@ -45,10 +45,10 @@ export default async function PagePage({ params }) {
   }
 
   return (
-    <article className="py-6 prose dark:prose-invert">
-      <h1>{page.title}</h1>
-      {page.description && <p className="text-xl">{page.description}</p>}
-      <hr />
+    <article className="col-content pt-12 pb-8 flex flex-col gap-8">
+      <h1 className="text-7xl font-variation-extrabold font-display text-fern-1100">
+        {page.title}
+      </h1>
       <Mdx code={page.body.code} />
     </article>
   )

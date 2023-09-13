@@ -2,6 +2,7 @@
 import { useMemo } from 'react'
 import { getMDXComponent } from 'mdx-bundler/client'
 import Image from '@/components/image'
+import Link from '@/components/link'
 // import Pre from '@/components/Pre'
 // import CustomLink from '@/components/Link'
 // import TOCInline from '@/components/TOCInline'
@@ -10,7 +11,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 
 const components = {
   Image,
-  // a: CustomLink,
+  a: Link,
   // pre: Pre,
   // BlogNewsletterForm: BlogNewsletterForm,
 }
