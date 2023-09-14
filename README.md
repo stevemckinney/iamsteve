@@ -1,4 +1,4 @@
-![iamsteve.me banner](/public/static/images/twitter-card.png)
+![iamsteve.me banner](/public/images/twitter-card.png)
 
 # iamsteve.me design & code blog
 A design and code blog using Next.js. The codebase started from the excellent [tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog).
