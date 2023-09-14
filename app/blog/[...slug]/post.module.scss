@@ -167,7 +167,8 @@
 
   p > a {
     transition: 0.2s ease-out;
-    border-bottom: 2px solid currentcolor;
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
 
     &:hover {
       color: theme('colors.dandelion.600');

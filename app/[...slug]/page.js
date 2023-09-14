@@ -46,9 +46,7 @@ export default async function PagePage({ params }) {
 
   return (
     <article className="col-content pt-12 pb-8 flex flex-col gap-8">
-      <h1 className="text-7xl font-variation-extrabold font-display text-fern-1100">
-        {page.title}
-      </h1>
+      <h1 className="text-7xl font-variation-extrabold font-display text-fern-1100 lowercase">{page.title}</h1>
       <Mdx code={page.body.code} />
     </article>
   )
