@@ -1,5 +1,6 @@
 {
   "mockadillo.npmimports.quote-configuration" : "Single Quote",
+  "prettier.module.path" : "\/Users\/steve\/Sites\/iamsteve\/node_modules\/prettier",
   "workspace.art_style" : 0,
   "workspace.color" : 6,
   "workspace.name" : "iamsteve.test",
