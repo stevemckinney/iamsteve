@@ -47,11 +47,11 @@ I also went back to a paged version of my portfolio. As I felt that it's my work
 
 Here are some of the differences between the mobile and desktop versions.
 
-![iPhone view showing the navigation differences](/static/images/blog/Screen_Shot_2011-12-30_at_17.55.56.png)
+![iPhone view showing the navigation differences](/images/blog/Screen_Shot_2011-12-30_at_17.55.56.png)
 
 The navigation is positioned at the bottom of the viewport, like all iPhone apps they have their main navigation positioned at the bottom. I followed suit.
 
-![The desktop view resized to a more iPhone like width showing the navigation difference](/static/images/blog/Screen_Shot_2011-12-30_at_17.57.17.png)
+![The desktop view resized to a more iPhone like width showing the navigation difference](/images/blog/Screen_Shot_2011-12-30_at_17.57.17.png)
 
 As you can see the difference here the navigation is positioned at the top. This is also the way for iOS versions lower than 5, as fixed positioning isn't the same.
 

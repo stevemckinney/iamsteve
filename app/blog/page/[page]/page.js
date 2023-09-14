@@ -1,6 +1,6 @@
 import { cache } from 'react'
+import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
-
 import { sortPosts } from '@/lib/utils/content'
 
 import Card from '@/components/card'
@@ -18,11 +18,29 @@ const getData = cache(async () => {
   }
 })
 
+export const generateStaticParams = async () => {
+  const allData = await getData()
+  const totalPages = Math.ceil(allData.postsByDate.length / POSTS_PER_PAGE)
+  const paths = Array.from({ length: totalPages }, (_, i) => ({ page: (i + 1).toString() }))
+
+  return paths
+}
+
 export default async function BlogIndex({ params }) {
   const allData = await getData()
   const posts = allData.postsByDate
-  const pageNumber = 1
+  const pageNumber = parseInt(params.page)
   const paginatedPosts = posts.slice(POSTS_PER_PAGE * (pageNumber - 1), POSTS_PER_PAGE * pageNumber)
+
+  console.log(params.page)
+
+  if (!allData) {
+    notFound()
+  }
+
+  if (isNaN(pageNumber)) {
+    notFound()
+  }
 
   const pagination = {
     current: pageNumber,

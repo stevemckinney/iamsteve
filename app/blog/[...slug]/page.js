@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import { Mdx } from '@/components/mdx-components'
-import siteMetadata from '@/content/siteMetadata'
+import siteMetadata from '@/content/metadata'
 
 // page components
 import Image from '@/components/image'
@@ -83,7 +83,9 @@ export default async function PostPage({ params }) {
       />
       <header className="col-prose flex flex-col gap-4 row-start-1">
         <PageTitle>{post.title}</PageTitle>
-        {post.summary && <p className="text-2xl text-fern-1100 mb-4">{post.summary}</p>}
+        {post.summary && (
+          <p className="text-2xl text-fern-1100 mb-4">{post.summary}</p>
+        )}
         <div className="flex flex-row gap-4 items-center">
           {post.categories &&
             post.categories.map((category, index) => (
@@ -121,7 +123,7 @@ export default async function PostPage({ params }) {
       </div>
       <Support />
       <aside className={`col-prose flex flex-col gap-4 -mx-8`}>
-        <h2 className="text-2xl font-display leading-none lowercase text-fern-1100 m-0 px-8">
+        <h2 className="text-2xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 px-8">
           Next to read
         </h2>
         <div className="grid grid-cols-2 gap-x-8">
@@ -134,7 +136,9 @@ export default async function PostPage({ params }) {
 }
 
 export async function NextPost({ id }) {
-  const post = allPosts.filter((post) => post.status.includes('open')).find((item) => item.id == id)
+  const post = allPosts
+    .filter((post) => post.status.includes('open'))
+    .find((item) => item.id == id)
 
   return <Card size="medium" image={false} frontmatter={post} />
 }
@@ -143,7 +147,8 @@ export function Support() {
   return (
     <aside className="bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row items-center gap-8 justify-between pl-8 pr-2 py-2 col-prose -mx-8">
       <p className="p-0 m-0 text-base text-ui-body">
-        Enjoying the reading experience? There’s no ads, tracking or cookie banners
+        Enjoying the reading experience? There’s no ads, tracking or cookie
+        banners
       </p>
       <Link
         href={siteMetadata.bmc}

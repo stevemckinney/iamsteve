@@ -6,17 +6,17 @@ import Image from 'next/image'
 
 // placeholders
 const PlaceholderDesign = {
-  '#e9f5f5': '/static/images/default/design-default-1.svg',
-  '#fff8e2': '/static/images/default/design-default-2.svg',
-  '#ffe5e2': '/static/images/default/design-default-3.svg',
-  '#d5f5ee': '/static/images/default/design-default-4.svg',
+  '#e9f5f5': '/images/default/design-default-1.svg',
+  '#fff8e2': '/images/default/design-default-2.svg',
+  '#ffe5e2': '/images/default/design-default-3.svg',
+  '#d5f5ee': '/images/default/design-default-4.svg',
 }
 
 const PlaceholderCode = {
-  '#e9f5f5': '/static/images/default/code-default-1.svg',
-  '#fff8e2': '/static/images/default/code-default-2.svg',
-  '#ffe5e2': '/static/images/default/code-default-3.svg',
-  '#d5f5ee': '/static/images/default/code-default-4.svg',
+  '#e9f5f5': '/images/default/code-default-1.svg',
+  '#fff8e2': '/images/default/code-default-2.svg',
+  '#ffe5e2': '/images/default/code-default-3.svg',
+  '#d5f5ee': '/images/default/code-default-4.svg',
 }
 
 const randomProperty = function (obj) {

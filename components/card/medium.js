@@ -12,68 +12,52 @@ function autoParagraph(text, size) {
 }
 
 const MediumImage = ({ ...props }) => {
-  const { images, title, medium, imageColor, categories } = props
-  {
-    medium ? (
+  const { image, title, medium, imageColor, categories } = props
+
+  if (image) {
+    // New 384x316
+    // Legacy 378x252
+    return (
       <>
-        <div className="flex" style={{ backgroundColor: `${imageColor}` }}>
-          <Image
-            src={medium}
-            className="radius"
-            role="presentation"
-            width={378}
-            height={252}
-            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            placeholder="blur"
-            alt={title}
-          />
+        <div className="flex self-stretch" style={{ backgroundColor: `${imageColor}` }}>
+          {categories.includes('Design')}
+          <Image src={image} className="object-contain" role="presentation" width={384} height={316} alt={title} />
         </div>
-      </>
-    ) : (
-      <>
-        {categories && categories.includes('Design') ? (
-          <Placeholder category="Design" kind="post" />
-        ) : (
-          <Placeholder category="Code" kind="post" />
-        )}
       </>
     )
   }
+  return <span>Image</span>
+  // return <>{categories && categories.includes('Design') ? <Placeholder category="Design" kind="post" /> : <Placeholder category="Code" kind="post" />}</>
 }
 
 const Medium = ({ frontmatter, image, className }) => {
-  const { slug, date, title, summary, tags, id, theme, categories, images, medium, lastmod } =
-    frontmatter
+  const { slug, date, title, summary, tags, id, theme, categories, images, medium, lastmod } = frontmatter
 
   const imageColor = theme ? theme.toString() : '#ccc'
 
   return (
-    <article className="flex flex-col p-8 rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200">
-      {medium && (
-        <Link
-          href={slug}
-          title=""
-          className="card-image flex mb2 mb4-b"
-          aria-labelledby={`title-${id}`}
-        >
-          <>
-            <MediumImage
-              medium={medium}
-              imageColor={imageColor}
-              categories={categories}
-              title={title}
-            />
-          </>
-        </Link>
+    <article className="flex flex-col rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden">
+      {image && medium && (
+        <>
+          <Link href={slug} title="" className={`flex items-center justify-center aspect-[1.2131147541/1] ${className}`} style={{ backgroundColor: `${imageColor}` }} aria-labelledby={`title-${id}`}>
+            <>
+              <MediumImage image={medium} imageColor={imageColor} categories={categories} title={title} />
+            </>
+          </Link>
+        </>
       )}
-      <div className="flex flex-col gap-4 flex-auto">
+      <div className="flex flex-col gap-4 flex-auto p-8">
         {categories && (
-          <>{categories && categories.map((category) => <Chip key={category} href={category}>{category}</Chip>)}</>
+          <>
+            {categories &&
+              categories.map((category) => (
+                <Chip key={category} href={`/category/${category.toLowerCase()}`}>
+                  {category}
+                </Chip>
+              ))}
+          </>
         )}
-        <h2
-          className="font-display font-variation-bold text-2xl leading-2xl lowercase m-0 p-0"
-          id={`title-${id}`}
-        >
+        <h2 className="font-display font-variation-bold text-2xl leading-2xl lowercase m-0 p-0" id={`title-${id}`}>
           <Link href={slug} className="text-fern-1100">
             {title}
           </Link>
