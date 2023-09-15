@@ -8,11 +8,11 @@ import Pagination from '@/components/pagination'
 
 import categories from '@/content/categories'
 
-const POSTS_PER_PAGE = 9
+const POSTS_PER_PAGE = 12
 
 const getData = cache(async () => {
-  const postsByDate = sortPosts(allPosts).filter(
-    (post) => post.status === 'open'
+  const postsByDate = sortPosts(
+    allPosts.filter((post) => post.status.includes('open'))
   )
 
   return {
@@ -20,7 +20,7 @@ const getData = cache(async () => {
   }
 })
 
-export async function generateStaticParams({ params: { slug } }) {
+export async function generateStaticParams() {
   const allData = await getData()
   const totalPages = Math.ceil(allData.postsByDate.length / POSTS_PER_PAGE)
   const paths = Array.from({ length: totalPages }, (_, i) => ({
@@ -45,20 +45,24 @@ export async function generateMetadata({ params }) {
 export default async function BlogCategory({ params, searchParams }) {
   const data = categories.find((category) => category.slug === params.slug)
 
+  if (!allData) {
+    notFound()
+  }
+
+  if (isNaN(pageNumber)) {
+    notFound()
+  }
+
   const posts = await Promise.all(
     allPosts
-      .filter((post) =>
-        post.categories.includes(
-          data.slug.charAt(0).toUpperCase() + data.slug.slice(1)
-        )
-      )
+      .filter((post) => post.categories.includes(params.slug))
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .map(async (post) => ({
         ...post,
       }))
   )
 
-  const pageNumber = parseInt(params.page)
+  const pageNumber = parseInt(searchParams['page']) || parseInt('1')
   const paginatedPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
@@ -66,14 +70,6 @@ export default async function BlogCategory({ params, searchParams }) {
   const pagination = {
     current: pageNumber,
     total: Math.ceil(posts.length / POSTS_PER_PAGE),
-  }
-
-  if (!data) {
-    notFound()
-  }
-
-  if (isNaN(pageNumber)) {
-    notFound()
   }
 
   return (

@@ -39,4 +39,27 @@ export const POST = async (req) => {
   }
 }
 
-export default POST
+// export async function GET() {
+//   const API_URL = process.env.EMAILOCTOPUS_API_URL
+//   const API_KEY = process.env.EMAILOCTOPUS_API_KEY
+//   const LIST_ID = process.env.EMAILOCTOPUS_LIST_ID
+//
+//   const API_ROUTE = `${API_URL}lists/${LIST_ID}?api_key=${API_KEY}`
+//   //   const res = await fetch(API_ROUTE)
+//   //   const data = await res.json()
+//
+//   try {
+//     const res = await fetch(API_ROUTE, {
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     })
+//
+//     const data = await res.json()
+//
+//     return NextResponse.json({ data })
+//   } catch (error) {
+//     return new NextResponse(JSON.stringify({ error: JSON.parse(error) }))
+//   }
+// }

@@ -137,7 +137,7 @@ export default async function PostPage({ params }) {
 
 export async function NextPost({ id }) {
   const post = allPosts
-    .filter((post) => post.status.includes('open'))
+    .find((post) => post.status === 'open')
     .find((item) => item.id == id)
 
   return <Card size="medium" image={false} frontmatter={post} />

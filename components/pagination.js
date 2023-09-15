@@ -14,26 +14,45 @@ const Pagination = ({ total, current, category }) => {
     <div className="space-y-2 pb-8 pt-6 md:space-y-5">
       <nav className="flex justify-between">
         {!prevPage && (
-          <button className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
-            Previous {current - 1 === 1 ? `/${basePath}/` : `/${basePath}${categoryPath}/page/${current - 1}`}
+          <button
+            className="cursor-auto disabled:opacity-50"
+            disabled={!prevPage}
+          >
+            Previous
           </button>
         )}
         {prevPage && (
-          <Link href={current - 1 === 1 ? `/${basePath}/` : `/${basePath}${categoryPath}/page/${current - 1}`} rel="prev">
-            Previous {current - 1 === 1 ? `/${basePath}/` : `/${basePath}${categoryPath}/page/${current - 1}`}
+          <Link
+            href={
+              current - 1 === 1
+                ? `/${basePath}/`
+                : `/${basePath}${categoryPath}/page/${current - 1}`
+            }
+            rel="prev"
+          >
+            Previous{' '}
+            {current - 1 === 1
+              ? `/${basePath}/`
+              : `/${basePath}${categoryPath}/page/${current - 1}`}
           </Link>
         )}
         <span>
           {current} of {total}
         </span>
         {!nextPage && (
-          <button className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
-            Next {`/${basePath}${categoryPath}/page/${current + 1}`}
+          <button
+            className="cursor-auto disabled:opacity-50"
+            disabled={!nextPage}
+          >
+            Next
           </button>
         )}
         {nextPage && (
-          <Link href={`/${basePath}${categoryPath}/page/${current + 1}`} rel="next">
-            Next {`/${basePath}${categoryPath}/page/${current + 1}`}
+          <Link
+            href={`/${basePath}${categoryPath}/page/${current + 1}`}
+            rel="next"
+          >
+            Next
           </Link>
         )}
       </nav>
