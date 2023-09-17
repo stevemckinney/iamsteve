@@ -1,23 +1,38 @@
 const categories = [
   {
     title: 'Design',
-    slug: 'design',
+    slug: '/category/design',
+    slugAsParams: 'design',
     description: 'Design posts',
+    exclude: false,
   },
   {
     title: 'Code',
-    slug: 'code',
+    slug: '/category/code',
+    slugAsParams: 'code',
     description: 'Code posts',
+    exclude: false,
   },
   {
     title: 'Website',
-    slug: 'website',
+    slug: '/category/website',
+    slugAsParams: 'website',
     description: 'Website posts',
+    exclude: true,
   },
   {
     title: 'Terminal',
-    slug: 'terminal',
+    slug: '/category/terminal',
+    slugAsParams: 'terminal',
     description: 'Terminal posts',
+    exclude: true,
+  },
+  {
+    title: 'Everything',
+    slug: '/blog',
+    slugAsParams: 'blog',
+    description: 'All posts',
+    exclude: false,
   },
 ]
 
