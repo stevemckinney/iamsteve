@@ -88,15 +88,38 @@ export default async function Home() {
         </div>
       </div>
 
-      <Tabs posts={mergedData} />
+      <div
+        className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
+        id="popular-code"
+      >
+        <Title
+          link="/category/design"
+          text="Explore design"
+          ariaID="popular-design"
+          className="-mt-[1.375rem]"
+        >
+          Popular <span className="text-rio-400">design</span>
+        </Title>
+
+        <div className="grid grid-cols-3 col-content gap-8">
+          {design.map((post) => (
+            <Card
+              size="medium"
+              frontmatter={post}
+              image={false}
+              key={post._id}
+            />
+          ))}
+        </div>
+      </div>
 
       <div
         className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
         id="popular-code"
       >
         <Title
-          link="/blog"
-          text="View the archive"
+          link="/category/code"
+          text="Explore code"
           ariaID="popular-code"
           className="-mt-[1.375rem]"
         >
