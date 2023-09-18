@@ -127,8 +127,8 @@ export default async function PostPage({ params }) {
           Next to read
         </h2>
         <div className="grid grid-cols-2 gap-x-8">
-          <NextPost id="169" />
-          <NextPost id="170" />
+          <NextPost id={169} />
+          <NextPost id={170} />
         </div>
       </aside>
     </article>
@@ -137,8 +137,8 @@ export default async function PostPage({ params }) {
 
 export async function NextPost({ id }) {
   const post = allPosts
-    .find((post) => post.status === 'open')
-    .find((item) => item.id == id)
+    .filter((post) => post.status === 'open')
+    .find((item) => item.id === Number(id))
 
   return <Card size="medium" image={false} frontmatter={post} />
 }
