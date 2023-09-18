@@ -1,84 +1,58 @@
-// placeholder
-// assign a matching background colour and image randomly
-'use server'
-
+'use client'
+import { useEffect, useState, useCallback } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 
-// placeholders
-const PlaceholderDesign = {
-  '#e9f5f5': '/images/default/design-default-1.svg',
-  '#fff8e2': '/images/default/design-default-2.svg',
-  '#ffe5e2': '/images/default/design-default-3.svg',
-  '#d5f5ee': '/images/default/design-default-4.svg',
-}
+const PlaceholderDesign = [
+  { color: '#E8DCD9', imageUrl: '/images/default/design-default.svg' },
+  { color: '#D9DFE8', imageUrl: '/images/default/design-default.svg' },
+  { color: '#D9E8E3', imageUrl: '/images/default/design-default.svg' },
+  { color: '#F9EFBD', imageUrl: '/images/default/design-default.svg' },
+  { color: '#F4966B', imageUrl: '/images/default/design-default.svg' },
+  { color: '#8FB6F2', imageUrl: '/images/default/design-default.svg' },
+  { color: '#90CD83', imageUrl: '/images/default/design-default.svg' },
+  { color: '#CDB9F5', imageUrl: '/images/default/design-default.svg' },
+]
 
-const PlaceholderCode = {
-  '#e9f5f5': '/images/default/code-default-1.svg',
-  '#fff8e2': '/images/default/code-default-2.svg',
-  '#ffe5e2': '/images/default/code-default-3.svg',
-  '#d5f5ee': '/images/default/code-default-4.svg',
-}
+const PlaceholderCode = [
+  { color: '#E8DCD9', imageUrl: '/images/default/code-default.svg' },
+  { color: '#D9DFE8', imageUrl: '/images/default/code-default.svg' },
+  { color: '#D9E8E3', imageUrl: '/images/default/code-default.svg' },
+  { color: '#F9EFBD', imageUrl: '/images/default/code-default.svg' },
+  { color: '#F4D340', imageUrl: '/images/default/code-default.svg' },
+  { color: '#8FB6F2', imageUrl: '/images/default/code-default.svg' },
+  { color: '#90CD83', imageUrl: '/images/default/code-default.svg' },
+  { color: '#CDB9F5', imageUrl: '/images/default/code-default.svg' },
+]
 
-const randomProperty = function (obj) {
-  var keys = Object.keys(obj)
-  return obj[keys[(keys.length * Math.random()) << 0]]
-}
+const Placeholder = ({ category, ...props }) => {
+  const [randomImage, setRandomImage] = useState(null)
 
-const randomValues = function (obj) {
-  var vals = Object.values(obj)
-  return obj[vals[(vals.length * Math.random()) << 0]]
-}
+  useEffect(() => {
+    // Add generateRandomImage to the callback params
+    generateRandomImage()
+  }, [category, generateRandomImage])
 
-const randomEntries = function (obj) {
-  var entries = Object.entries(obj)
-  return entries[(entries.length * Math.random()) << 0]
-}
+  const generateRandomImage = useCallback(() => {
+    const images = category === 'Design' ? PlaceholderDesign : PlaceholderCode
+    const randomIndex = Math.floor(Math.random() * images.length)
+    const randomImage = images[randomIndex]
+    setRandomImage(randomImage)
+  }, [category])
 
-function Placeholder({ category, kind }) {
-  // assign the random value to a variable to use later
-  // depending on the kind passed to this function
-  const [random, setRandom] =
-    category === 'Design' ? randomEntries(PlaceholderDesign) : randomEntries(PlaceholderCode)
-
-  const containerClass =
-    kind.toString() === 'hero'
-      ? 'pt4 pb4 pt6-b pb6-b pt7-d pb8-d flex center featured-image entry-image is-placeholder'
-      : 'radius flex'
+  // Fix the error by checking if randomImage is null before accessing the color property.
+  const backgroundColor = randomImage?.color
 
   return (
-    <>
-      <div
-        className={containerClass}
-        style={{ backgroundColor: random[0] }}
-        suppressHydrationWarning
-      >
-        {category === 'Design' ? (
-          <Image
-            src={random[1]}
-            className="radius"
-            width={378}
-            height={252}
-            alt=""
-            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            placeholder="blur"
-            priority
-            suppressHydrationWarning
-          />
-        ) : (
-          <Image
-            src={random[1]}
-            className="radius"
-            width={378}
-            height={252}
-            alt=""
-            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            placeholder="blur"
-            priority
-            suppressHydrationWarning
-          />
-        )}
-      </div>
-    </>
+    <Link {...props} style={{ backgroundColor: backgroundColor }}>
+      <Image
+        src={randomImage?.imageUrl}
+        alt=""
+        width={388}
+        height={316}
+        cacheControl="immutable"
+      />
+    </Link>
   )
 }
 
