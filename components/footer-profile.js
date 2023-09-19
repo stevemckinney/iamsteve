@@ -13,119 +13,211 @@ export default function FooterProfile() {
           Thanks for reading
         </h3>
         <p className="text-ui-body text-base mb-2">
-          Hi, I’m Steve McKinney, I write this publication focusing on the design and build of
-          websites. The aim is to bridge the gap between Figma and building your design.
+          Hi, I’m Steve McKinney, I write this publication focusing on the
+          design and build of websites. The aim is to bridge the gap between
+          Figma and building your design.
         </p>
         <p className="text-ui-body text-base">
-          And explore the craft and technique behind creating websites. It started—and
-          remains—a way to encourage self learning and sharing what I know.
+          And explore the craft and technique behind creating websites. It
+          started—and remains—a way to encourage self learning and sharing what
+          I know.
         </p>
       </div>
 
       <div className="col-start-10 col-span-5 flex flex-row gap-8">
         <div className="list flex-1">
-          <h3 className="font-display font-variation-bold text-xl lowercase">Site</h3>
+          <h3 className="font-display font-variation-bold text-xl lowercase mb-4">
+            Site
+          </h3>
           <ul className="flex flex-col gap-2">
             <li>
               <Link
-                href="/blog"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                href="/"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="folder" /> Archive
+                <Icon
+                  icon="home"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
+              >
+                <Icon
+                  icon="folder"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                Archive
               </Link>
             </li>
             <li>
               <Link
                 href="/design"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="pen" /> Design
+                <Icon
+                  icon="pen"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />{' '}
+                Design
               </Link>
             </li>
-            <li>
+            <li className="border-b border-neutral-02-100 pb-2">
               <Link
                 href="/code"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="code" /> Code
+                <Icon
+                  icon="code"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                Code
               </Link>
             </li>
             <li>
               <Link
                 href="/uses"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="settings" /> Uses
+                <Icon
+                  icon="settings"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                Uses
               </Link>
             </li>
             <li>
               <Link
                 href="/about"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="person" /> About
+                <Icon
+                  icon="person"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                About
               </Link>
             </li>
             <li>
               <Link
                 href="/contact"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="envelope" /> Contact
+                <Icon
+                  icon="envelope"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                Contact
+              </Link>
+            </li>
+            <li className="border-b border-neutral-02-100 pb-2">
+              <Link
+                href="/newsletter"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
+              >
+                <Icon
+                  icon="airplane"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                Newsletter
               </Link>
             </li>
             <li>
               <Link
-                href="/newsletter"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                href="https://v7.iamsteve.me"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="airplane" /> Newsletter
+                <Icon
+                  icon="external"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                Old design (V7)
               </Link>
             </li>
           </ul>
         </div>
 
         <div className="list flex-1">
-          <h3 className="font-display font-variation-bold text-xl lowercase">Elsewhere</h3>
+          <h3 className="font-display font-variation-bold text-xl lowercase mb-4">
+            Elsewhere
+          </h3>
           <ul className="flex flex-col gap-2">
             <li>
               <Link
                 href="x.com/irsteve"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="x" /> x.com
+                <Icon
+                  icon="x"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                x.com
               </Link>
             </li>
             <li>
               <Link
                 href="x.com/irsteve"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="figma" /> Figma
+                <Icon
+                  icon="figma"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                Figma
               </Link>
             </li>
             <li>
               <Link
                 href="x.com/irsteve"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="github" /> Github
+                <Icon
+                  icon="github"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                Github
               </Link>
             </li>
             <li>
               <Link
                 href="x.com/irsteve"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="linkedin" /> Linkedin
+                <Icon
+                  icon="linkedin"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                Linkedin
               </Link>
             </li>
             <li>
               <Link
                 href="x.com/irsteve"
-                className="flex flex-row gap-2 py-1 text-base font-ui text-ui-body lowercase"
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon icon="mastodon" /> Mastodon
+                <Icon
+                  icon="mastodon"
+                  size={16}
+                  className="text-current outline outline-1 outline-red-500"
+                />
+                Mastodon
               </Link>
             </li>
           </ul>
