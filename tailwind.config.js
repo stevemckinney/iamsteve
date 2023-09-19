@@ -24,81 +24,19 @@ module.exports = {
     fontSize: {
       '7xl': [
         '5.5rem',
-        {
-          lineHeight: '.81818',
-          letterSpacing: '-.03409090909em',
-        },
+        { lineHeight: '.81818', letterSpacing: '-.03409090909em' },
       ],
-      '6xl': [
-        '4rem',
-        {
-          lineHeight: '.875',
-          letterSpacing: '-.03125em',
-        },
-      ],
-      '5xl': [
-        '3rem',
-        {
-          lineHeight: '.9166667',
-          letterSpacing: '-.03125em',
-        },
-      ],
-      '4xl': [
-        '2.5rem',
-        {
-          lineHeight: '1.1',
-          letterSpacing: '-.0125em',
-        },
-      ],
-      '3xl': [
-        '2rem',
-        {
-          lineHeight: '1.125',
-          letterSpacing: '-.015625em',
-        },
-      ],
-      '2xl': [
-        '1.5rem',
-        {
-          lineHeight: '1.5',
-        },
-      ],
-      xl: [
-        '1.3125rem',
-        {
-          lineHeight: '1.5',
-        },
-      ],
-      lg: [
-        '1.125rem',
-        {
-          lineHeight: '1.5',
-        },
-      ],
-      base: [
-        '1rem',
-        {
-          lineHeight: '1.5',
-        },
-      ],
-      sm: [
-        '.875rem',
-        {
-          lineHeight: '1.5',
-        },
-      ],
-      xs: [
-        '.75rem',
-        {
-          lineHeight: '1.5',
-        },
-      ],
-      '2xs': [
-        '.625rem',
-        {
-          lineHeight: '1.5',
-        },
-      ],
+      '6xl': ['4rem', { lineHeight: '.875', letterSpacing: '-.03125em' }],
+      '5xl': ['3rem', { lineHeight: '.9166667', letterSpacing: '-.03125em' }],
+      '4xl': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-.0125em' }],
+      '3xl': ['2rem', { lineHeight: '1.125', letterSpacing: '-.015625em' }],
+      '2xl': ['1.5rem', { lineHeight: '1.5' }],
+      xl: ['1.3125rem', { lineHeight: '1.5' }],
+      lg: ['1.125rem', { lineHeight: '1.5' }],
+      base: ['1rem', { lineHeight: '1.5' }],
+      sm: ['.875rem', { lineHeight: '1.5' }],
+      xs: ['.75rem', { lineHeight: '1.5' }],
+      '2xs': ['.625rem', { lineHeight: '1.5' }],
     },
     extend: {
       // strokeWidth: {
