@@ -9,8 +9,9 @@ const Icon = ({ icon = 'folder', className = 'text-fern-1100', size = 24 }) => {
     icon === 'Everything' ||
     icon === 'Archive' ||
     icon === 'All'
-  )
-    icon = 'pen'
+  ) {
+    icon = 'folder'
+  }
 
   return (
     <>
@@ -22,7 +23,7 @@ const Icon = ({ icon = 'folder', className = 'text-fern-1100', size = 24 }) => {
       >
         <use
           className={icon.toLowerCase()}
-          xlinkHref={`#${icon.toLowerCase()}`}
+          xlinkHref={`#${icon.toLowerCase()}-${size}`}
         />
       </svg>
     </>

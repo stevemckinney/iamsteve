@@ -11,7 +11,7 @@ const Sprite = (props) => (
     {...props}
   >
     <defs>
-      <symbol id="logo" viewBox="0 0 32 32" fill="none">
+      <symbol id="logo-32" viewBox="0 0 32 32" fill="none">
         <path
           d="M17.5 30.5C16.65 26.02 17.91 20.71 19.5 18.5C22.47 18.4 25.62 17.68 28.06 15.5C30.04 13.49 30.43 10.58 30.5 8.5L24.5 7.5L22.5 3.5L21.5 4.5L19.5 1.5L17.83 2.41C17.83 2.41 15 0.56 11.5 2.5C8.41 4.37 7 7 7.5 11.5C8 16 5.079 18.921 1.5 22.5C1.5 22.5 7 23 10 24.5C13 26 17.5 30.5 17.5 30.5Z"
           className="fill-white"
@@ -25,7 +25,7 @@ const Sprite = (props) => (
           className="stroke-current stroke-2 sl-r"
         />
       </symbol>
-      <symbol id="search" viewBox="0 0 24 24">
+      <symbol id="search-24" viewBox="0 0 24 24">
         <g className="search">
           <path d="m19 19 1 1" className="stroke-current stroke-4 sl-r" />
           <path d="m17 17 1 1" className="stroke-current stroke-4 sl-s" />
@@ -35,7 +35,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="design" viewBox="0 0 24 24">
+      <symbol id="design-24" viewBox="0 0 24 24">
         <g className="design">
           <path
             d="M4 16c0-4.416 3.584-8 8-8s8 3.584 8 8"
@@ -56,7 +56,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="code" viewBox="0 0 24 24">
+      <symbol id="code-24" viewBox="0 0 24 24">
         <g className="code">
           <path
             d="M3.993 20A.994.994 0 0 1 3 19V5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v14c0 .552-.442 1-.995 1H3.993Z"
@@ -68,7 +68,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="pen" viewBox="0 0 24 24">
+      <symbol id="pen-24" viewBox="0 0 24 24">
         <g className="pen">
           <path
             d="M16 22H8c0-3-4-7-4-7l8-13 8 13s-4 4-4 7Z"
@@ -90,7 +90,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="clipboard" viewBox="0 0 24 24">
+      <symbol id="clipboard-24" viewBox="0 0 24 24">
         <g className="clipboard">
           <rect
             width={16}
@@ -112,7 +112,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="clipboard-success" viewBox="0 0 24 24">
+      <symbol id="clipboard-success-24" viewBox="0 0 24 24">
         <g className="clipboard-success">
           <g className="clipboard">
             <rect
@@ -137,7 +137,7 @@ const Sprite = (props) => (
           </g>
         </g>
       </symbol>
-      <symbol id="envelope" viewBox="0 0 24 24">
+      <symbol id="envelope-24" viewBox="0 0 24 24">
         <g className="envelope">
           <path
             d="m12 2-9 8v11h18V10l-9-8Z"
@@ -154,7 +154,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="person" viewBox="0 0 24 24">
+      <symbol id="person-24" viewBox="0 0 24 24">
         <g className="person">
           <path
             d="M14.478 14.186V13.8c1.215-.926 2.012-1.813 2.012-3.6V7.5c0-1.556 0-2.777-.905-3.639C14.84 3.151 13.79 3 12.898 3c-.81 0-.898.836-2.215.836-1.833 0-3.186 1.864-3.186 3.625V10.2c0 1.787.796 2.687 2.012 3.6v.373c-.122 1.556-1.256 1.556-2.823 2.018a18.32 18.32 0 0 0-2.106.759C3.62 17.374 3 18.287 3 19.29V21h18v-1.697c0-1.003-.608-1.916-1.58-2.34a19.11 19.11 0 0 0-2.106-.759c-1.567-.463-2.715-.463-2.836-2.018Z"
@@ -162,7 +162,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="home" viewBox="0 0 24 24">
+      <symbol id="home-24" viewBox="0 0 24 24">
         <g className="home">
           <path d="m2 12 10-9 10 9m-7 1H9v8h6v-8Z" className="path" />
           <path
@@ -171,7 +171,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="airplane" viewBox="0 0 24 24">
+      <symbol id="airplane-24" viewBox="0 0 24 24">
         <g className="airplane">
           <path className="fill-white" d="M22 12 8 21v-6l4-3-4-3V3l14 9Z" />
           <path
@@ -209,7 +209,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="timer" viewBox="0 0 24 24">
+      <symbol id="timer-24" viewBox="0 0 24 24">
         <g className="timer">
           <path
             d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"
@@ -238,7 +238,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="bee" viewBox="0 0 24 24">
+      <symbol id="bee-24" viewBox="0 0 24 24">
         <g className="bee">
           <path
             d="M10 6c0-3-1-4-4-4m8 4c0-3 1-4 4-4"
@@ -263,7 +263,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="folder" viewBox="0 0 24 24">
+      <symbol id="folder-24" viewBox="0 0 24 24">
         <g className="folder">
           <path
             d="M21 19.003A.997.997 0 0 1 20 20H4a1 1 0 0 1-1-1V5.5A1.5 1.5 0 0 1 4.5 4H7l1 1h11.5c.828 0 1.5.67 1.5 1.498v12.505Z"
@@ -275,7 +275,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="arrow-left" viewBox="0 0 24 24">
+      <symbol id="arrow-left-24" viewBox="0 0 24 24">
         <g className="arrow-left">
           <path
             d="M2 12h20M8 6l-6 6 6 6"
@@ -283,7 +283,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="arrow-right" viewBox="0 0 24 24">
+      <symbol id="arrow-right-24" viewBox="0 0 24 24">
         <g className="arrow-right">
           <path
             d="M22 12H2m14 6 6-6-6-6"
@@ -291,7 +291,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="arrow-up" viewBox="0 0 24 24">
+      <symbol id="arrow-up-24" viewBox="0 0 24 24">
         <g className="arrow-up">
           <path
             d="M12 2v20m6-14-6-6-6 6"
@@ -299,7 +299,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="arrow-down" viewBox="0 0 24 24">
+      <symbol id="arrow-down-24" viewBox="0 0 24 24">
         <g className="arrow-down">
           <path
             d="M12 22V2M6 16l6 6 6-6"
@@ -307,31 +307,31 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="angle-down" viewBox="0 0 24 24" fill="none">
+      <symbol id="angle-down-24" viewBox="0 0 24 24" fill="none">
         <path
           d="M4 9L12 15L20 9"
           className="fill-none stroke-current stroke-2 sl-r"
         />
       </symbol>
-      <symbol id="angle-up" viewBox="0 0 24 24" fill="none">
+      <symbol id="angle-up-24" viewBox="0 0 24 24" fill="none">
         <path
           d="M4 15L12 9L20 15"
           className="fill-none stroke-current stroke-2 sl-r"
         />
       </symbol>
-      <symbol id="angle-left" viewBox="0 0 24 24" fill="none">
+      <symbol id="angle-left-24" viewBox="0 0 24 24" fill="none">
         <path
           d="M15 4L9 12L15 20"
           className="fill-none stroke-current stroke-2 sl-r"
         />
       </symbol>
-      <symbol id="angle-right" viewBox="0 0 24 24" fill="none">
+      <symbol id="angle-right-24" viewBox="0 0 24 24" fill="none">
         <path
           d="M9 4L15 12L9 20"
           className="fill-none stroke-current stroke-2 sl-r"
         />
       </symbol>
-      <symbol id="settings" viewBox="0 0 24 24">
+      <symbol id="settings-24" viewBox="0 0 24 24">
         <g className="settings">
           <path d="M8 9v12" className="stroke-current stroke-2 sl-r" />
           <circle
@@ -349,7 +349,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="external" viewBox="0 0 24 24">
+      <symbol id="external-24" viewBox="0 0 24 24">
         <g className="external">
           <path
             d="M9 15 21 3m-6 0h6v6M9 3H4.5A1.5 1.5 0 0 0 3 4.5v15A1.5 1.5 0 0 0 4.5 21h15a1.5 1.5 0 0 0 1.5-1.5V15"
@@ -357,12 +357,12 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="navigation" viewBox="0 0 24 24">
+      <symbol id="navigation-24" viewBox="0 0 24 24">
         <g className="navigation">
           <path d="M21 5H3m18 14H3" className="stroke-current stroke-2 sl-r" />
         </g>
       </symbol>
-      <symbol id="note" viewBox="0 0 24 24">
+      <symbol id="note-24" viewBox="0 0 24 24">
         <g className="note">
           <path
             d="M5 21a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10.52a1 1 0 0 1 .78.375l3.48 4.351a1 1 0 0 1 .22.625V19a2 2 0 0 1-2 2H5Z"
@@ -374,7 +374,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="link" viewBox="0 0 24 24">
+      <symbol id="link-24" viewBox="0 0 24 24">
         <g className="link">
           <path
             d="m18.364 13.207 1.768-1.768a5 5 0 1 0-7.071-7.07l-2.829 2.828a5 5 0 0 0 0 7.07 6.81 6.81 0 0 0 1.633 1.197m-6.229-3.671L3.868 13.56a5 5 0 0 0 7.071 7.07l2.829-2.828a5 5 0 0 0 0-7.07 6.796 6.796 0 0 0-1.633-1.197"
@@ -382,7 +382,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="frame" viewBox="0 0 24 24">
+      <symbol id="frame-24" viewBox="0 0 24 24">
         <g className="frame">
           <path d="M6 6h12v12H6z" className="fill-white" />
           <path
@@ -391,7 +391,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="cursor" viewBox="0 0 24 24">
+      <symbol id="cursor-24" viewBox="0 0 24 24">
         <g className="cursor">
           <path
             d="m4 4 18 6-9 3-3 9L4 4Z"
@@ -399,7 +399,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="calendar" viewBox="0 0 24 24">
+      <symbol id="calendar-24" viewBox="0 0 24 24">
         <g className="calendar">
           <rect
             width={20}
@@ -523,7 +523,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="copy" viewBox="0 0 24 24">
+      <symbol id="copy-24" viewBox="0 0 24 24">
         <g className="copy">
           <path
             d="M8 9H4.5A1.5 1.5 0 0 0 3 10.5v9A1.5 1.5 0 0 0 4.5 21h10a1.5 1.5 0 0 0 1.5-1.5V15"
@@ -539,7 +539,7 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="bmc" viewBox="0 0 24 24" fill="none">
+      <symbol id="bmc-24" viewBox="0 0 24 24" fill="none">
         <g clipPath="url(#a)">
           <path
             fill="#0D0C22"
@@ -572,7 +572,7 @@ const Sprite = (props) => (
           </clipPath>
         </defs>
       </symbol>
-      <symbol id="figma" fill="none" viewBox="0 0 24 24">
+      <symbol id="figma-16" fill="none" viewBox="0 0 24 24">
         <path
           className="stroke-current"
           strokeWidth="1.5"
@@ -594,7 +594,7 @@ const Sprite = (props) => (
           d="M4.777 19.482c0 2.066 1.7 3.74 3.765 3.74 2.093 0 3.814-1.696 3.814-3.789v-3.692H8.518a3.74 3.74 0 0 0-3.74 3.74ZM12.356 12a3.741 3.741 0 0 0 3.741 3.741h.097a3.74 3.74 0 0 0 0-7.482h-.097A3.74 3.74 0 0 0 12.357 12Z"
         />
       </symbol>
-      <symbol id="github" fill="none" viewBox="0 0 24 24">
+      <symbol id="github-16" fill="none" viewBox="0 0 24 24">
         <g className="fill-current" clipPath="url(#a)">
           <path
             fillRule="evenodd"
@@ -613,10 +613,10 @@ const Sprite = (props) => (
           </clipPath>
         </defs>
       </symbol>
-      <symbol id="linkedin" fill="none" viewBox="0 0 24 24">
+      <symbol id="linkedin-16" fill="none" viewBox="0 0 24 24">
         <g clipPath="url(#a)">
           <path
-            fill="#092E24"
+            className="fill-current"
             d="M22.223 0H1.772C.792 0 0 .773 0 1.73v20.536C0 23.222.792 24 1.772 24h20.451c.98 0 1.777-.778 1.777-1.73V1.73C24 .773 23.203 0 22.223 0ZM7.12 20.452H3.558V8.995H7.12v11.457ZM5.34 7.434a2.064 2.064 0 1 1 0-4.125 2.063 2.063 0 0 1 0 4.125Zm15.112 13.018h-3.558v-5.57c0-1.326-.024-3.037-1.852-3.037-1.851 0-2.133 1.449-2.133 2.944v5.663H9.356V8.995h3.413v1.566h.047c.473-.9 1.636-1.852 3.365-1.852 3.605 0 4.27 2.372 4.27 5.457v6.286Z"
           />
         </g>
@@ -626,17 +626,506 @@ const Sprite = (props) => (
           </clipPath>
         </defs>
       </symbol>
-      <symbol id="mastodon" fill="none" viewBox="0 0 24 24">
+      <symbol id="mastodon-16" fill="none" viewBox="0 0 24 24">
         <path
           className="fill-current"
           d="M21.5 8.395c0-4.556-2.897-5.892-2.897-5.892-2.842-1.345-10.391-1.331-13.206 0 0 0-2.897 1.336-2.897 5.892 0 5.424-.3 12.16 4.802 13.552 1.842.501 3.425.61 4.698.534 2.31-.131 3.606-.848 3.606-.848l-.077-1.73s-1.65.535-3.506.474c-1.838-.066-3.775-.207-4.075-2.532a4.952 4.952 0 0 1-.04-.651c3.892.98 7.212.426 8.126.314 2.551-.314 4.775-1.936 5.057-3.417.445-2.335.409-5.696.409-5.696Zm-3.415 5.869h-2.12V8.911c0-2.33-2.91-2.419-2.91.323v2.93H10.95v-2.93c0-2.742-2.911-2.653-2.911-.323v5.353H5.915c0-5.723-.236-6.933.837-8.203 1.178-1.355 3.63-1.444 4.72.286L12 7.26l.528-.914c1.095-1.74 3.551-1.631 4.72-.286 1.078 1.28.837 2.484.837 8.203Z"
         />
       </symbol>
-      <symbol id="x" viewBox="0 0 24 24" fill="none">
+      <symbol id="x-16" viewBox="0 0 24 24" fill="none">
         <path
           d="M18.244 2.25H21.552L14.325 10.51L22.827 21.75H16.17L10.956 14.933L4.99003 21.75H1.68003L9.41003 12.915L1.25403 2.25H8.08003L12.793 8.481L18.244 2.25ZM17.083 19.77H18.916L7.08403 4.126H5.11703L17.083 19.77Z"
           className="fill-current"
         />
+      </symbol>
+
+      <symbol id="search-16" viewBox="0 0 16 16">
+        <g class="search">
+          <path d="m11 11 2 2" class="fill-none stroke-current stroke-4 sl-r" />
+          <circle
+            cx="7"
+            cy="7"
+            r="5"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="shadow-16" viewBox="0 0 16 16">
+        <g class="shadow">
+          <circle
+            cx="8"
+            cy="6"
+            r="4"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M3.101 12A6.977 6.977 0 0 0 8 14a6.977 6.977 0 0 0 4.899-2"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="settings-16" viewBox="0 0 16 16">
+        <g class="settings">
+          <circle
+            cx="5"
+            cy="4"
+            r="2"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <circle
+            cx="11"
+            cy="12"
+            r="2"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path d="M5 6v9m6-14v9" class="fill-none stroke-current stroke-2" />
+        </g>
+      </symbol>
+      <symbol id="calendar-16" viewBox="0 0 16 16">
+        <g class="calendar">
+          <rect
+            width="12"
+            height="10"
+            x="2"
+            y="3"
+            class="fill-current stroke-current stroke-2 sl-r"
+            rx="1"
+          />
+          <path d="M3 5h10" class="fill-none stroke-current stroke-2 sl-r" />
+          <rect width="10" height="6" x="3" y="6" class="fill-white" rx=".5" />
+        </g>
+      </symbol>
+      <symbol id="timer-16" viewBox="0 0 16 16">
+        <g class="timer">
+          <path
+            d="M8 14.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m2 3.5 2-2m10 2-2-2M8 7v2h2"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="design-16" viewBox="0 0 16 16">
+        <g class="design">
+          <g class="fill-none stroke-current stroke-2 sl-s">
+            <path d="M3 12c0-2.76 2.24-5 5-5s5 2.24 5 5" />
+            <path d="M3 12c0-2.76 2.24-5 5-5s5 2.24 5 5" />
+          </g>
+          <path d="M2 7h12" class="fill-none stroke-current stroke-2 sl-r" />
+          <path
+            d="M9 6H7v2h2V6ZM2 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm12 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
+            class="fill-current stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="download-16" viewBox="0 0 16 16">
+        <g class="download">
+          <path d="M2 15h12" class="fill-none stroke-current stroke-2 sl-r" />
+          <g class="fill-none stroke-current stroke-2 sl-r">
+            <path d="m5 8 3 3 3-3" />
+            <path d="m5 8 3 3 3-3" />
+          </g>
+          <path d="M8 1v9" class="fill-none stroke-current stroke-2 sl-r" />
+        </g>
+      </symbol>
+      <symbol id="code-16" viewBox="0 0 16 16">
+        <g class="code">
+          <rect
+            width="14"
+            height="12"
+            x="1"
+            y="2"
+            class="fill-white stroke-current stroke-2 sl-r"
+            rx="1"
+          />
+          <path
+            d="m5 6 2 2-2 2m4 0h2"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="checkmark-underline-16" viewBox="0 0 16 16">
+        <g class="checkmark-underline">
+          <path
+            d="M2 15h12M3 8l3 3 7-7"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="checkmark-checkmark-16" viewBox="0 0 16 16">
+        <g class="checkmark-checkmark">
+          <path
+            d="m3 8 3 3 7-7"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="folder-16" viewBox="0 0 16 16">
+        <g class="folder">
+          <path
+            d="M15 6H1V3c0-.55.45-1 1-1h5l.67 1H14c.55 0 1 .45 1 1v2ZM1 6h14v7a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="arrow-left-16" viewBox="0 0 16 16">
+        <g class="arrow-left">
+          <path
+            d="M1 8h14M5 4 1 8l4 4"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="arrow-right-16" viewBox="0 0 16 16">
+        <g class="arrow-right">
+          <path
+            d="M15 8H1m10 4 4-4-4-4"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="arrow-up-16" viewBox="0 0 16 16">
+        <g class="arrow-up">
+          <path
+            d="M8 1v14m4-10L8 1 4 5"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="arrow-down-16" viewBox="0 0 16 16">
+        <g class="arrow-down">
+          <path
+            d="M8 15V1M4 11l4 4 4-4"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="airplane-16" viewBox="0 0 16 16">
+        <g class="airplane">
+          <path
+            d="M15 8 5 14v-4l3-2-3-2V2l10 6Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M2 8H1m12 0H8"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+          <circle cx="2" cy="4" r="1" class="fill-current" />
+          <circle cx="2" cy="12" r="1" class="fill-current" />
+        </g>
+      </symbol>
+      <symbol id="envelope-16" viewBox="0 0 16 16">
+        <g class="envelope">
+          <g class="fill-white stroke-current stroke-2 sl-r">
+            <path d="M2 5.29 1 6v9h14V6l-1-.72" />
+            <path d="M2 5.29 1 6v9h14V6l-1-.72" />
+          </g>
+          <path d="M14 7V3H2v4H1l7 4 7-4h-1Z" class="fill-white" />
+          <path
+            d="m1 7 7 4 7-4m-4.2-4L8 1m0 0L5.2 3M2 7V3h12v4"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="person-16" viewBox="0 0 16 16">
+        <g class="person">
+          <path
+            d="M9.84 9.7v-.03c.9-.72 1.49-1.94 1.49-3.33v-2c0-1.21 0-2-.67-2.67C10 1 9.33 1 8.67 1c-.6 0-.66.54-1.64.65-1.37.15-2.36 1.37-2.36 2.74v1.94c0 1.39.59 2.62 1.49 3.33v.03c-.09 1.21-.93 1.21-2.09 1.57-.62.19-1.14.4-1.56.59-.71.33-1.17 1.04-1.17 1.82V14c0 .55.45 1 1 1h11.33c.55 0 1-.45 1-1v-.32c0-.78-.45-1.49-1.17-1.82-.42-.19-.95-.4-1.56-.59-1.16-.36-2.01-.36-2.1-1.57Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="frame-16" viewBox="0 0 16 16">
+        <g class="frame">
+          <path d="M4 4h8v8H4z" class="fill-white" />
+          <path
+            d="M2 4h12M4 2v12m8-12v12M2 12h12"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="autolayout-v-16" viewBox="0 0 16 16">
+        <g class="autolayout-v">
+          <rect
+            width="12"
+            height="4"
+            x="2"
+            y="2"
+            class="fill-white stroke-current stroke-2 sl-r"
+            rx="1"
+          />
+          <rect
+            width="12"
+            height="4"
+            x="2"
+            y="10"
+            class="fill-white stroke-current stroke-2 sl-r"
+            rx="1"
+          />
+        </g>
+      </symbol>
+      <symbol id="autolayout-h-16" viewBox="0 0 16 16">
+        <g class="autolayout-h">
+          <rect
+            width="4"
+            height="12"
+            x="2"
+            y="2"
+            class="fill-white stroke-current stroke-2 sl-r"
+            rx="1"
+          />
+          <rect
+            width="4"
+            height="12"
+            x="10"
+            y="2"
+            class="fill-white stroke-current stroke-2 sl-r"
+            rx="1"
+          />
+        </g>
+      </symbol>
+      <symbol id="component-instance-16" viewBox="0 0 16 16">
+        <g class="component-instance">
+          <path
+            d="M7.293 2.707a1 1 0 0 1 1.414 0l4.586 4.586a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0L2.707 8.707a1 1 0 0 1 0-1.414l4.586-4.586Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="play-16" viewBox="0 0 16 16">
+        <g class="play">
+          <path
+            d="M4 3.766a1 1 0 0 1 1.514-.857l7.057 4.234a1 1 0 0 1 0 1.714l-7.056 4.234A1 1 0 0 1 4 12.234V3.766Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="align-left-16" viewBox="0 0 16 16">
+        <g class="align-left">
+          <path
+            d="M2 2h12M2 6h8m-8 4h6m-6 4h10"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="align-centre-16" viewBox="0 0 16 16">
+        <g class="align-centre">
+          <path
+            d="M2 2h12M2 14h12M4 6h8m-8 4h8"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="align-right-16" viewBox="0 0 16 16">
+        <g class="align-right">
+          <path
+            d="M2 2h12M6 6h8m-6 4h6M4 14h10"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="type-16" viewBox="0 0 16 16">
+        <g class="type">
+          <path
+            d="M4 3h8M8 3v9M3 4h2m8 0h-2"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path d="M7 13h2" class="fill-none stroke-current stroke-2 sl-s" />
+        </g>
+      </symbol>
+      <symbol id="pen-16" viewBox="0 0 16 16">
+        <g class="pen">
+          <path
+            d="M11 15H5c0-3-3-6-3-6l6-8 6 8s-3 3-3 6Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path d="M8 2v7" class="fill-none stroke-current stroke-2 sl-r" />
+          <circle
+            cx="8"
+            cy="9"
+            r="1"
+            class="fill-current stroke-current stroke-1 sl-r"
+          />
+          <path d="M4 15h8" class="fill-none stroke-current stroke-2 sl-s" />
+        </g>
+      </symbol>
+      <symbol id="home-16" viewBox="0 0 16 16">
+        <g class="home">
+          <path d="M15 7 8 1 1 7h1v8h4V9h4v6h4V7h1Z" class="fill-white" />
+          <path
+            d="m1 7 7-6 7 6"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path d="M10 9H6v5h4V9Z" class="fill-white" />
+          <path
+            d="M2 6.33V15h4V9h4v6h4V6.33M6 14h4"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="copy-16" viewBox="0 0 16 16">
+        <g class="copy">
+          <path
+            d="M3 2h10v12H3z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M7 2h2v1H7z"
+            class="fill-none stroke-current stroke-2 sl-s"
+          />
+        </g>
+      </symbol>
+      <symbol id="copy-success-16" viewBox="0 0 16 16">
+        <g class="copy-success">
+          <path d="M3 2h10v12H3z" class="fill-success" />
+          <path
+            d="M7 2h2v1H7z"
+            class="fill-none stroke-current stroke-2 sl-s"
+          />
+          <path
+            d="m6 9 1 1 3-3"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="external-16" viewBox="0 0 16 16">
+        <g class="external">
+          <path
+            d="m6 10 8-8M9 2h5v5M5 2H2v12h12v-3"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="cursor-16" viewBox="0 0 16 16">
+        <g class="cursor">
+          <path
+            d="m3.606 1.988 10.404 6.07-6.069.866-3.468 5.202-.867-12.138Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="rectangle-16" viewBox="0 0 16 16">
+        <g class="rectangle">
+          <rect width="10" height="10" x="3" y="3" class="Rectangle 6" rx="1" />
+        </g>
+      </symbol>
+      <symbol id="components-16" viewBox="0 0 16 16">
+        <g class="components">
+          <path
+            d="M2 2h4v4H2z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <rect
+            width="4"
+            height="4"
+            x="10"
+            y="2"
+            class="fill-white stroke-current stroke-2 sl-r"
+            rx="2"
+          />
+          <rect
+            width="4"
+            height="4"
+            x="2"
+            y="10"
+            class="fill-white stroke-current stroke-2 sl-r"
+            rx="2"
+          />
+          <path
+            d="M10 10h4v4h-4z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="move-16" viewBox="0 0 16 16">
+        <g class="move">
+          <path
+            d="m6 13 2 1 2-1m0-10L8 2 6 3M3 6 2 8l1 2"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path d="M11 8h2" class="fill-none stroke-current stroke-2 sl-r" />
+          <path d="M3 8h2" class="fill-none stroke-current stroke-2 sl-r" />
+          <path d="M8 3v2" class="fill-none stroke-current stroke-2 sl-r" />
+          <path d="M8 11v2" class="fill-none stroke-current stroke-2 sl-r" />
+          <path
+            d="m13 10 1-2-1-2"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="comment-16" viewBox="0 0 16 16">
+        <g class="comment">
+          <path
+            d="M9.5 3H8a6 6 0 0 0-6 6v3.727c0 .87 1.034 1.325 1.676.737l.45-.413A4 4 0 0 1 6.829 12H9.5a4.5 4.5 0 1 0 0-9Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="plus-16" viewBox="0 0 16 16">
+        <g class="plus">
+          <path
+            d="M3 8h10M8 3v10"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="copy-alternate-16" viewBox="0 0 16 16">
+        <g class="copy-alternate">
+          <path
+            d="M5 6H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <rect
+            width="8"
+            height="8"
+            x="6"
+            y="2"
+            class="fill-white stroke-current stroke-2 sl-r"
+            rx="1"
+          />
+        </g>
+      </symbol>
+      <symbol id="angle-right-16" viewBox="0 0 16 16">
+        <g class="angle-right">
+          <path
+            d="m6 3 4 5-4 5"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="angle-left-16" viewBox="0 0 16 16">
+        <g class="angle-left">
+          <path
+            d="M10 3 6 8l4 5"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="angle-down-16" viewBox="0 0 16 16">
+        <g class="angle-down">
+          <path
+            d="m3 6 5 4 5-4"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="angle-up-16" viewBox="0 0 16 16">
+        <g class="angle-up">
+          <path
+            d="m3 10 5-4 5 4"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="external-16" viewBox="0 0 16 16">
+        <g class="external">
+          <path
+            d="m6 10 8-8m-4 0h4v4M6 2H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3"
+            class="path"
+          />
+        </g>
       </symbol>
     </defs>
   </svg>
