@@ -73,9 +73,6 @@ export default async function BlogCategory({ params, searchParams }) {
     total: Math.ceil(posts.length / POSTS_PER_PAGE),
   }
 
-  console.log('category/page.js', data.slug)
-  console.log('category/page.js', pageNumber)
-
   return (
     <div className="grid col-container grid-cols-subgrid gap-y-12 pb-32 pt-18 frame frame-outset-top">
       <PageTitle>{data.title}</PageTitle>

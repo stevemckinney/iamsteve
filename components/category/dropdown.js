@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react'
 import * as RadixDropdownMenu from '@radix-ui/react-dropdown-menu'
-import { AnimatePresence, motion, useAnimationControls } from 'framer-motion'
+// import { AnimatePresence, motion, useAnimationControls } from 'framer-motion'
 
 import Icon from '@/components/icon'
 

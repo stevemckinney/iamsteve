@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react'
 import * as RadixSelect from '@radix-ui/react-select'
-import { AnimatePresence, motion, useAnimationControls } from 'framer-motion'
+// import { AnimatePresence, motion, useAnimationControls } from 'framer-motion'
 
 import Icon from '@/components/icon'
 
