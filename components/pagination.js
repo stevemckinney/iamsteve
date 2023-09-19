@@ -30,10 +30,7 @@ const Pagination = ({ total, current, category }) => {
             }
             rel="prev"
           >
-            Previous{' '}
-            {current - 1 === 1
-              ? `/${basePath}/`
-              : `/${basePath}${categoryPath}/page/${current - 1}`}
+            Previous
           </Link>
         )}
         <span>
