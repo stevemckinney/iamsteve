@@ -1,10 +1,8 @@
 const navigation = [
-  { href: '/', title: 'Home', icon: 'home' },
-  { href: '/category/design', title: 'Blog', icon: 'pen' },
-  { href: '/category/code', title: 'Code', icon: 'folder' },
-  { href: '/about', title: 'About', icon: 'person' },
-  { href: '/contact', title: 'Contact', icon: 'envelope' },
-  { href: '/newsletter', title: 'Subscribe', icon: 'airplane' },
+  { href: '/category/design', title: 'Design', icon: 'pen', size: 24 },
+  { href: '/category/code', title: 'Code', icon: 'folder', size: 24 },
+  { href: '/about', title: 'About', icon: 'person', size: 24 },
+  { href: '/contact', title: 'Contact', icon: 'envelope', size: 24 },
 ]
 
 export default navigation

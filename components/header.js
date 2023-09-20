@@ -20,26 +20,16 @@ export default function Header() {
             <Icon icon="logo" size={32} />
           </Link>
           <nav className="flex flex-1 gap-12">
-            <Link href="/design" className={`${navLink} ${styles.start}`}>
-              <Icon icon="pen" />
-              Design
-            </Link>
-            <Link href="/code" className={`${navLink} ${styles.start}`}>
-              <Icon icon="code" />
-              Code
-            </Link>
-            <Link href="/blog" className={`${navLink} ${styles.start}`}>
-              <Icon icon="folder" />
-              Archive
-            </Link>
-            <Link href="/about" className={`${navLink} ${styles.start}`}>
-              <Icon icon="person" />
-              About
-            </Link>
-            <Link href="/contact" className={`${navLink} ${styles.start}`}>
-              <Icon icon="envelope" />
-              Contact
-            </Link>
+            {navigation.map((link) => (
+              <Link
+                href={link.href}
+                className={`${navLink} ${styles.start}`}
+                key={link.href}
+              >
+                <Icon icon={link.icon} size={link.size} />
+                {link.title}
+              </Link>
+            ))}
           </nav>
           <div className="flex-1 flex justify-end">
             <Link href="/code" className={`${navLink} ${styles.end}`}>

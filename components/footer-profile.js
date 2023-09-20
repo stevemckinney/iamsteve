@@ -35,11 +35,7 @@ export default function FooterProfile() {
                 href="/"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="home"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="home" size={16} className="text-current" />
                 Home
               </Link>
             </li>
@@ -48,11 +44,7 @@ export default function FooterProfile() {
                 href="/blog"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="folder"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="folder" size={16} className="text-current" />
                 Archive
               </Link>
             </li>
@@ -61,12 +53,7 @@ export default function FooterProfile() {
                 href="/design"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="pen"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />{' '}
-                Design
+                <Icon icon="pen" size={16} className="text-current" /> Design
               </Link>
             </li>
             <li className="border-b border-neutral-02-100 pb-2">
@@ -74,11 +61,7 @@ export default function FooterProfile() {
                 href="/code"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="code"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="code" size={16} className="text-current" />
                 Code
               </Link>
             </li>
@@ -87,11 +70,7 @@ export default function FooterProfile() {
                 href="/uses"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="settings"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="settings" size={16} className="text-current" />
                 Uses
               </Link>
             </li>
@@ -100,11 +79,7 @@ export default function FooterProfile() {
                 href="/about"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="person"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="person" size={16} className="text-current" />
                 About
               </Link>
             </li>
@@ -113,11 +88,7 @@ export default function FooterProfile() {
                 href="/contact"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="envelope"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="envelope" size={16} className="text-current" />
                 Contact
               </Link>
             </li>
@@ -126,11 +97,7 @@ export default function FooterProfile() {
                 href="/newsletter"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="airplane"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="airplane" size={16} className="text-current" />
                 Newsletter
               </Link>
             </li>
@@ -139,11 +106,7 @@ export default function FooterProfile() {
                 href="https://v7.iamsteve.me"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="external"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="external" size={16} className="text-current" />
                 Old design (V7)
               </Link>
             </li>
@@ -160,11 +123,7 @@ export default function FooterProfile() {
                 href="x.com/irsteve"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="x"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="x" size={16} className="text-current" />
                 x.com
               </Link>
             </li>
@@ -173,11 +132,7 @@ export default function FooterProfile() {
                 href="x.com/irsteve"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="figma"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="figma" size={16} className="text-current" />
                 Figma
               </Link>
             </li>
@@ -186,11 +141,7 @@ export default function FooterProfile() {
                 href="x.com/irsteve"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="github"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="github" size={16} className="text-current" />
                 Github
               </Link>
             </li>
@@ -199,11 +150,7 @@ export default function FooterProfile() {
                 href="x.com/irsteve"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="linkedin"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="linkedin" size={16} className="text-current" />
                 Linkedin
               </Link>
             </li>
@@ -212,11 +159,7 @@ export default function FooterProfile() {
                 href="x.com/irsteve"
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
               >
-                <Icon
-                  icon="mastodon"
-                  size={16}
-                  className="text-current outline outline-1 outline-red-500"
-                />
+                <Icon icon="mastodon" size={16} className="text-current" />
                 Mastodon
               </Link>
             </li>
