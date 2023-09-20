@@ -4,7 +4,7 @@ date: '2018-06-13T06:27:00+00:00'
 lastmod: '2019-10-10T11:44:17+00:00'
 summary: 'In a responsive world, managing font sizes can be tricky. So how can an atomic approach help?'
 metadesc: 'How many times do you set a font size? How do you manage consistency? An atomic approach can help with both of these issues.'
-theme: '#f7fbfb'
+theme: '#edf5f6'
 tags: ['Code']
 categories: ['Code']
 images: ['/images/blog/atomic-font-sizes-featured-image@2x.png']
@@ -177,9 +177,20 @@ I wouldn’t worry about understanding this too much, as the next step is to mak
 To save remembering whether part of the calculation should or shouldn’t be a pixel value, you bundle it all together into a Sass function instead.
 
 ```scss showLineNumbers
-@function font-size-lock($min-font-size, $max-font-size, $min-screen-width, $max-screen-width) {
+@function font-size-lock(
+  $min-font-size,
+  $max-font-size,
+  $min-screen-width,
+  $max-screen-width
+) {
   @return calc(
-    #{$min-font-size} + ((#{strip-unit($max-font-size)} - #{strip-unit($min-font-size)}) * (100vw - #{$min-screen-width}) / (#{strip-unit($max-screen-width)} - #{strip-unit($min-screen-width)}))
+    #{$min-font-size} +
+      (
+        (#{strip-unit($max-font-size)} - #{strip-unit($min-font-size)}) * (
+            100vw - #{$min-screen-width}
+          ) /
+          (#{strip-unit($max-screen-width)} - #{strip-unit($min-screen-width)})
+      )
   );
 }
 ```
