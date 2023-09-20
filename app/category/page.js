@@ -32,9 +32,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const category = categories.find((category) => category.slug === params.slug)
+
   if (!category) {
     return
   }
+
   return {
     template: '%s • iamsteve',
     title: category.title,
@@ -42,16 +44,8 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function BlogCategory({ params, searchParams }) {
+export default async function Category({ params, searchParams }) {
   const data = categories.find((category) => category.slug === params.slug)
-
-  if (!allData) {
-    notFound()
-  }
-
-  if (isNaN(pageNumber)) {
-    notFound()
-  }
 
   const posts = await Promise.all(
     allPosts
@@ -70,6 +64,14 @@ export default async function BlogCategory({ params, searchParams }) {
   const pagination = {
     current: pageNumber,
     total: Math.ceil(posts.length / POSTS_PER_PAGE),
+  }
+
+  if (!data) {
+    notFound()
+  }
+
+  if (isNaN(pageNumber)) {
+    notFound()
   }
 
   return (

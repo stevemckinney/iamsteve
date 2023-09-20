@@ -8,7 +8,7 @@ import Pagination from '@/components/pagination'
 
 import categories from '@/content/categories'
 
-const POSTS_PER_PAGE = 9
+const POSTS_PER_PAGE = 12
 
 const getData = cache(async () => {
   const postsByDate = sortPosts(allPosts).filter(
@@ -32,9 +32,11 @@ export async function generateStaticParams({ params: { slug } }) {
 
 export async function generateMetadata({ params }) {
   const category = categories.find((category) => category.slug === params.slug)
+
   if (!category) {
     return
   }
+
   return {
     template: '%s • iamsteve',
     title: category.title,
@@ -43,13 +45,15 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogCategory({ params, searchParams }) {
-  const data = categories.find((category) => category.slug === params.slug)
+  const data = categories.find(
+    (category) => category.slugAsParams === params.slug
+  )
 
   const posts = await Promise.all(
     allPosts
       .filter((post) =>
         post.categories.includes(
-          data.slug.charAt(0).toUpperCase() + data.slug.slice(1)
+          params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
         )
       )
       .sort((a, b) => new Date(b.date) - new Date(a.date))

@@ -43,20 +43,18 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogCategory({ params, searchParams }) {
-  const data = categories.find((category) => category.slug === params.slug)
-
-  if (!data) {
-    notFound()
-  }
+  const allData = await getData()
+  const data = categories.find(
+    (category) => category.slugAsParams === params.slug
+  )
 
   const posts = await Promise.all(
     allPosts
       .filter((post) =>
         post.categories.includes(
-          data.slug.charAt(0).toUpperCase() + data.slug.slice(1)
+          params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
         )
       )
-      .filter((post) => post.status === 'open')
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .map(async (post) => ({
         ...post,
@@ -71,6 +69,14 @@ export default async function BlogCategory({ params, searchParams }) {
   const pagination = {
     current: pageNumber,
     total: Math.ceil(posts.length / POSTS_PER_PAGE),
+  }
+
+  if (!data) {
+    notFound()
+  }
+
+  if (isNaN(pageNumber)) {
+    notFound()
   }
 
   return (
