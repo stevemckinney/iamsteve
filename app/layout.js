@@ -15,10 +15,12 @@ export const metadata = {
     default: 'iamsteve • design & code blog',
     template: '%s • iamsteve',
   },
-  description: 'Tips and tutorials about the design and build of web interfaces.',
+  description:
+    'Tips and tutorials about the design and build of web interfaces.',
   openGraph: {
     title: 'iamsteve • design & code blog',
-    description: 'Tips and tutorials about the design and build of web interfaces.',
+    description:
+      'Tips and tutorials about the design and build of web interfaces.',
     url: 'https://iamsteve.me',
     siteName: 'iamsteve',
     locale: 'en_GB',
@@ -54,7 +56,8 @@ export default function RootLayout({ children }) {
             <Link href="#top">Top</Link>
             <Link href="/feed.xml">RSS</Link>
             <p className="text-ui-body">
-              {`©`} <Link href="/">{siteMetadata.title}</Link> {`${new Date().getFullYear()}`}
+              {`©`} <Link href="/">{siteMetadata.title}</Link>{' '}
+              {`${new Date().getFullYear()}`}
             </p>
           </footer>
         </ThemeProvider>

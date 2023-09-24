@@ -6,7 +6,8 @@ export default function Footer() {
   return (
     <footer className="row between neutral-l2 contain contain-medium contain-large footer">
       <p className="m0 copyright">
-        {`©`} <Link href="/">{siteMetadata.title}</Link> {`${new Date().getFullYear()}`}
+        {`©`} <Link href="/">{siteMetadata.title}</Link>{' '}
+        {`${new Date().getFullYear()}`}
       </p>
       <nav>
         <Link href="#top" className="top">
@@ -16,7 +17,10 @@ export default function Footer() {
           RSS
         </Link>
         <Link href="/about">About</Link>
-        <Link href="/uses" title="What the site was built with & software I use">
+        <Link
+          href="/uses"
+          title="What the site was built with & software I use"
+        >
           Uses
         </Link>
       </nav>

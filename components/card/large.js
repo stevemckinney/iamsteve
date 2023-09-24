@@ -8,7 +8,9 @@ import Date from '@/components/date'
 
 // https://gist.github.com/aradnom/06ef051c1c96f10c144d
 function autoParagraph(text, size) {
-  return `<p className="${size}">` + text.split(/\n+/).join(`</p>\n<p>`) + `</p>`
+  return (
+    `<p className="${size}">` + text.split(/\n+/).join(`</p>\n<p>`) + `</p>`
+  )
 }
 
 const LargeImage = ({ ...props }) => {
@@ -18,22 +20,32 @@ const LargeImage = ({ ...props }) => {
     <>
       <Image
         src={image}
-        className="radius"
         role="presentation"
         width={592}
         height={488}
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
         alt={title}
-        className={`object-contain`}
+        className={`radius object-contain`}
       />
     </>
   )
 }
 
 const Large = ({ frontmatter, image, className }) => {
-  const { slug, date, title, summary, tags, id, theme, categories, images, medium, lastmod } =
-    frontmatter
+  const {
+    slug,
+    date,
+    title,
+    summary,
+    tags,
+    id,
+    theme,
+    categories,
+    images,
+    medium,
+    lastmod,
+  } = frontmatter
 
   const imageColor = theme ? theme.toString() : '#ccc'
 
@@ -59,7 +71,12 @@ const Large = ({ frontmatter, image, className }) => {
       )}
       <div className="flex flex-col gap-4 flex-auto p-12">
         {categories && (
-          <>{categories && categories.map((category) => <Chip key={category}>{category}</Chip>)}</>
+          <>
+            {categories &&
+              categories.map((category) => (
+                <Chip key={category}>{category}</Chip>
+              ))}
+          </>
         )}
         <h2
           className="font-display font-variation-bold text-5xl lowercase m-0 p-0"
@@ -76,7 +93,12 @@ const Large = ({ frontmatter, image, className }) => {
           }}
         />
         <div className="sr-only" aria-hidden="true" tabIndex="-1">
-          <Link href="/about" className="author vcard url fn" rel="author" tabIndex="-1">
+          <Link
+            href="/about"
+            className="author vcard url fn"
+            rel="author"
+            tabIndex="-1"
+          >
             Steve McKinney
           </Link>{' '}
           <time dateTime={lastmod} className="updated" tabIndex="-1">
