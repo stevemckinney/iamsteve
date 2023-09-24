@@ -114,7 +114,7 @@ export const Post = defineDocumentType(() => ({
     slug: {
       type: 'string',
       resolve: (doc) =>
-        '/' + doc._raw.flattenedPath.replace(/^(blog\/)(?:\d{4}\-)?/, '$1'),
+        '/' + doc._raw.flattenedPath.replace(/^(blog\/)(?:\d{4}-)?/, '$1'),
     },
     slugAsParams: {
       type: 'string',
@@ -123,7 +123,7 @@ export const Post = defineDocumentType(() => ({
           .split('/')
           .slice(1)
           .join('/')
-          .replace(/^(?:\d\d\d\d\-)?/, ''),
+          .replace(/^(?:\d\d\d\d-)?/, ''),
     },
   },
 }))
