@@ -8,7 +8,7 @@ theme: "#ffede5"
 tags: ["Website"]
 categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
-status: "draft"
+status: "closed"
 id: 25
 fileroot: "long_time_no_blog"
 ---

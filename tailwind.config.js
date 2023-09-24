@@ -117,7 +117,7 @@ module.exports = {
         placed:
           '0px 0px 0px 1px var(--ui-border-color), 0px 6px 12px -4px rgba(117, 99, 98, 0.08), 0px 2px 4px 0px rgba(117, 99, 98, 0.10), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
         picked:
-          '0px 0px 0px 1px var(--ui-border-color), 0px 12px 16px -4px rgba(117, 99, 98, 0.12), 0px 2px 4px 0px rgba(117, 99, 98, 0.12), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
+          '0px 0px 0px 1px var(--ui-border-color-hover), 0px 12px 16px -4px rgba(117, 99, 98, 0.12), 0px 2px 4px 0px rgba(117, 99, 98, 0.12), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
         floating:
           '0px 8px 24px -4px rgba(70, 42, 81, 0.12), 0px 2px 4px 0px rgba(70, 42, 81, 0.08)',
       },

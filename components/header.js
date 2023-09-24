@@ -32,7 +32,7 @@ export default function Header() {
             ))}
           </nav>
           <div className="flex-1 flex justify-end">
-            <Link href="/code" className={`${navLink} ${styles.end}`}>
+            <Link href="/newsletter" className={`${navLink} ${styles.end}`}>
               Subscribe
               <Icon icon="airplane" />
             </Link>
