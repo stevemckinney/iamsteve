@@ -34,11 +34,18 @@ export default function About() {
             </h2>
 
             <p className="mb4 f3-l">
-              I’m Steve McKinney, I write this blog about the design and build of websites. It’s a place to explore the craft of web design. From design through to code it’s all part of the design process.
+              I’m Steve McKinney, I write this blog about the design and build of websites. It’s a
+              place to explore the craft of web design. From design through to code it’s all part of
+              the design process.
             </p>
 
             <h3 className="f2-l mb2 pt2">Who is this for?</h3>
-            <p className="mb4 f3-l">Either you’re a developer wanting to improve their visual design skills, or a designer with some coding experience. You’re someone who understands the value of not only good design, but the requirement of making it look visually appealing too. Through sharing what I know and continue to learn, I hope to meet this need.</p>
+            <p className="mb4 f3-l">
+              Either you’re a developer wanting to improve their visual design skills, or a designer
+              with some coding experience. You’re someone who understands the value of not only good
+              design, but the requirement of making it look visually appealing too. Through sharing
+              what I know and continue to learn, I hope to meet this need.
+            </p>
 
             <p className="mb4 f3-l">
               What drives my writing is hearing things like “you can’t expect your designs to look
@@ -48,13 +55,28 @@ export default function About() {
 
             <h2 className="f2 mb2 pt6">Changing aim over the years</h2>
 
-            <p className="mb4 f3-l">I made a decision to start writing this blog <em>consistently</em> in January 2015. Every week, for two years, a blog post went out. I started out writing about anything I was interested in, as long as it was related to websites.</p>
+            <p className="mb4 f3-l">
+              I made a decision to start writing this blog <em>consistently</em> in January 2015.
+              Every week, for two years, a blog post went out. I started out writing about anything
+              I was interested in, as long as it was related to websites.
+            </p>
 
-            <p className="mb4 f3-l">It became clear to me over those two years, there was a lack of content focusing on the visual side of design. It’s tough to teach, that’s why, or maybe that’s just me.</p>
+            <p className="mb4 f3-l">
+              It became clear to me over those two years, there was a lack of content focusing on
+              the visual side of design. It’s tough to teach, that’s why, or maybe that’s just me.
+            </p>
 
-            <p className="mb4 f3-l">As a designer, it’s the thing I aspire to be best at. And having this website as a place to explore and challenge myself. Through an approach where I consider the decisions I’m making—some of these are routine but are valuable.</p>
+            <p className="mb4 f3-l">
+              As a designer, it’s the thing I aspire to be best at. And having this website as a
+              place to explore and challenge myself. Through an approach where I consider the
+              decisions I’m making—some of these are routine but are valuable.
+            </p>
 
-            <p className="mb4 f3-l">Eventually, I stopped posting frequently for various reasons. I’ve accepted I’ll always be figuring things out, but with a vision in mind I can work towards my goal. I hope I’ll post regularly again.</p>
+            <p className="mb4 f3-l">
+              Eventually, I stopped posting frequently for various reasons. I’ve accepted I’ll
+              always be figuring things out, but with a vision in mind I can work towards my goal. I
+              hope I’ll post regularly again.
+            </p>
           </article>
 
           <aside className="blockquote">
@@ -111,16 +133,36 @@ export default function About() {
             <h2 className="f2 mb2 pt6">About me</h2>
 
             <p className="mb4 f3-l">
-              I’m a designer based in Manchester. I specialise in visual design and user experience for websites. I’ve been doing this professionally for over 12 years. I’ve worked with a large variety of clients in differing industries. With differing needs, shops, subscriptions, services and marketing.
+              I’m a designer based in Manchester. I specialise in visual design and user experience
+              for websites. I’ve been doing this professionally for over 12 years. I’ve worked with
+              a large variety of clients in differing industries. With differing needs, shops,
+              subscriptions, services and marketing.
             </p>
 
-            <p className="mb4 f3-l">I enjoy being involved along the whole timeline of a project. I’m someone who likes to get the best understanding possible and helps influence the solution. It helps build trust and avoids surprises. Looking at design end to end allows for decisions to be made quickly.</p>
+            <p className="mb4 f3-l">
+              I enjoy being involved along the whole timeline of a project. I’m someone who likes to
+              get the best understanding possible and helps influence the solution. It helps build
+              trust and avoids surprises. Looking at design end to end allows for decisions to be
+              made quickly.
+            </p>
 
-            <p className="mb4 f3-l">Personally, I’ve been making websites from a young age. I learnt to code alongside designing—it was just part of the process. Debates like should designers code weren’t a thing when I was 13.</p>
+            <p className="mb4 f3-l">
+              Personally, I’ve been making websites from a young age. I learnt to code alongside
+              designing—it was just part of the process. Debates like should designers code weren’t
+              a thing when I was 13.
+            </p>
 
-            <p className="mb4 f3-l">As a designer, someone might ask if you have a personal style. I do feel I have a personal style, I enjoy serif typefaces, use of colour, an illustration style that has some depth but is generally flat. However, I will always design for the audience, goals and systems that are already in place.</p>
+            <p className="mb4 f3-l">
+              As a designer, someone might ask if you have a personal style. I do feel I have a
+              personal style, I enjoy serif typefaces, use of colour, an illustration style that has
+              some depth but is generally flat. However, I will always design for the audience,
+              goals and systems that are already in place.
+            </p>
 
-            <p className="mb4 f3-l">I think it’s an enjoyment of creating things on the web. Be it icons, animation, illustration, CSS or JavaScript.</p>
+            <p className="mb4 f3-l">
+              I think it’s an enjoyment of creating things on the web. Be it icons, animation,
+              illustration, CSS or JavaScript.
+            </p>
           </article>
 
           <article role="article" className="mb4 mb6-b" id="history">
