@@ -62,8 +62,6 @@ export default async function PostPage({ params }) {
     notFound()
   }
 
-  console.log(post.codepen)
-
   return (
     <>
       <article className={`grid col-container grid-cols-subgrid gap-y-12`}>

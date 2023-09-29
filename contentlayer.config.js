@@ -48,61 +48,22 @@ export const Post = defineDocumentType(() => ({
   filePathPattern: `blog/**/*.md`,
   contentType: 'mdx',
   fields: {
-    title: {
-      type: 'string',
-      required: true,
-    },
-    summary: {
-      type: 'string',
-    },
-    metadesc: {
-      type: 'string',
-    },
-    theme: {
-      type: 'string',
-    },
-    fileroot: {
-      type: 'string',
-    },
-    medium: {
-      type: 'string',
-    },
-    large: {
-      type: 'string',
-    },
-    ogImage: {
-      type: 'string',
-    },
-    images: {
-      type: 'list',
-      of: { type: 'string' },
-    },
-    date: {
-      type: 'date',
-      required: true,
-    },
-    lastmod: {
-      type: 'date',
-      required: true,
-    },
-    tags: {
-      type: 'list',
-      of: { type: 'string' },
-    },
-    categories: {
-      type: 'list',
-      of: { type: 'string' },
-    },
-    codepen: {
-      type: 'boolean',
-    },
-    twitter: {
-      type: 'boolean',
-    },
-    id: {
-      type: 'number',
-      required: true,
-    },
+    title: { type: 'string', required: true },
+    summary: { type: 'string' },
+    metadesc: { type: 'string' },
+    theme: { type: 'string' },
+    fileroot: { type: 'string' },
+    medium: { type: 'string' },
+    large: { type: 'string' },
+    ogImage: { type: 'string' },
+    images: { type: 'list', of: { type: 'string' } },
+    date: { type: 'date', required: true },
+    lastmod: { type: 'date', required: true },
+    tags: { type: 'list', of: { type: 'string' } },
+    categories: { type: 'list', of: { type: 'string' } },
+    codepen: { type: 'boolean' },
+    twitter: { type: 'boolean' },
+    id: { type: 'number', required: true },
     status: {
       type: 'enum',
       options: ['draft', 'open', 'closed'],
