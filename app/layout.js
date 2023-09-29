@@ -38,6 +38,10 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/bvl2qse.css" />
       </head>
+      {/**
+       * No gap-y-18 to create space between the footer because it throws off
+       * the border alignment within the header
+       */}
       <body
         className={`antialiased min-h-screen bg-neutral-01-100 dark:bg-slate-950 text-slate-900 dark:text-slate-50 overflow-x-hidden grid layout gap-x-8`}
       >
@@ -45,9 +49,7 @@ export default function RootLayout({ children }) {
         <ModeToggle />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Header />
-          <main className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end gap-y-18 pb-18">
-            {children}
-          </main>
+          {children}
           <FooterProfile />
           <footer className="col-content flex flex-row gap-8 py-18">
             <p className="flex flex-1 flex-row gap-1">

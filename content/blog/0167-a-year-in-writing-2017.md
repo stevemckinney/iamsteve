@@ -1,19 +1,19 @@
 ---
-title: 'A year in writing — 2017'
-date: '2018-01-28T14:06:00+00:00'
-lastmod: '2019-10-04T07:21:53+00:00'
-summary: 'This year I took it at a slower pace with the articles. It was a year I felt I didn’t focus so much on this website, so I was quite surprised to see the website continue to grow.'
-metadesc: 'This year I took it at a slower pace with the articles. It was a challenging year, as I aimed to focus on things outside of writing.'
-theme: '#fffbee'
-tags: ['Website']
-categories: ['Website']
-images: ['/images/blog/year-in-writing-2017-featured-image@2x.png']
-large: '/images/blog/year-in-writing-2017-featured-image@2x.png'
-medium: '/images/blog/year-in-writing-2017-featured-image-medium@2x.png'
-ogImage: '/assets/og/cover.jpg'
-status: 'open'
+title: "A year in writing — 2017"
+date: "2018-01-28T14:06:00+00:00"
+lastmod: "2019-10-04T07:21:53+00:00"
+summary: "This year I took it at a slower pace with the articles. It was a year I felt I didn’t focus so much on this website, so I was quite surprised to see the website continue to grow."
+metadesc: "This year I took it at a slower pace with the articles. It was a challenging year, as I aimed to focus on things outside of writing."
+theme: "#fffbee"
+tags: ["Website"]
+categories: ["Website"]
+images: ["/images/blog/year-in-writing-2017-featured-image@2x.png"]
+large: "/images/blog/year-in-writing-2017-featured-image@2x.png"
+medium: "/images/blog/year-in-writing-2017-featured-image-medium@2x.png"
+ogImage: "/assets/og/cover.jpg"
+status: "open"
 id: 167
-fileroot: 'a-year-in-writing-2017'
+fileroot: "a-year-in-writing-2017"
 ---
 
 This year I decided to take it at a slower pace with articles. It was a year I felt I didn’t focus so much on this website. I posted a lot less and stopped towards the end of the year. Still, I was quite surprised to see the website continue to grow.

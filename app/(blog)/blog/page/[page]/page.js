@@ -33,7 +33,7 @@ export const generateStaticParams = async () => {
 export default async function BlogIndex({ params }) {
   const allData = await getData()
   const posts = allData.postsByDate
-  const pageNumber = parseInt(params.page)
+  const pageNumber = parseInt(params.page.toString())
   const paginatedPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
@@ -60,18 +60,20 @@ export default async function BlogIndex({ params }) {
         </h1>
         <div className="grid grid-cols-3 col-content gap-8">
           {paginatedPosts.map((post) => (
-            <>
-              <Card
-                size="medium"
-                frontmatter={post}
-                image={true}
-                key={post._id}
-              />
-            </>
+            <Card
+              size="medium"
+              frontmatter={post}
+              image={true}
+              key={post._id}
+            />
           ))}
         </div>
         <div className="col-content">
-          <Pagination total={pagination.total} current={pagination.current} />
+          <Pagination
+            total={pagination.total}
+            current={pagination.current}
+            category={false}
+          />
         </div>
       </div>
     </>

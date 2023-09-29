@@ -37,7 +37,7 @@ function withSplitSVGr(config) {
       if (typeof config.webpack === 'function') {
         return config.webpack(config, options)
       }
-
+      if (options.isServer) config.devtool = 'source-map'
       return config
     },
   })

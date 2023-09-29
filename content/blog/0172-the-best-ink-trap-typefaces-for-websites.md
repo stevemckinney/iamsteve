@@ -6,7 +6,7 @@ summary: "A look at type that features prominent cuts or tapering into the type 
 metadesc: "A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs."
 theme: "#eaf4f6"
 tags: ["Design", "Typography"]
-categories: ["Design"]
+categories: ["Design", "Typography"]
 images: ["/images/blog/ink-trap-post-image.png"]
 large: "/images/blog/ink-trap-post-image.png"
 medium: "/images/blog/ink-trap-post-image-medium.png"

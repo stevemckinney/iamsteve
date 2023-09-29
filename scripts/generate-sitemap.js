@@ -1,7 +1,7 @@
 const fs = require('fs')
 const globby = require('globby')
 const prettier = require('prettier')
-const siteMetadata = require('../content/siteMetadata')
+const siteMetadata = require('../content/metadata')
 
 ;(async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')

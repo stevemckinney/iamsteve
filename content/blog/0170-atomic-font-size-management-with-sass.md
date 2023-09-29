@@ -1,19 +1,19 @@
 ---
-title: '‘Atomic’ font size management with Sass'
-date: '2018-06-13T06:27:00+00:00'
-lastmod: '2019-10-10T11:44:17+00:00'
-summary: 'In a responsive world, managing font sizes can be tricky. So how can an atomic approach help?'
-metadesc: 'How many times do you set a font size? How do you manage consistency? An atomic approach can help with both of these issues.'
-theme: '#edf5f6'
-tags: ['Code']
-categories: ['Code']
-images: ['/images/blog/atomic-font-sizes-featured-image@2x.png']
-large: '/images/blog/atomic-font-sizes-featured-image@2x.png'
-medium: '/images/blog/atomic-font-sizes-featured-image-medium@2x.png'
-ogImage: '/assets/og/cover.jpg'
-status: 'open'
+title: "‘Atomic’ font size management with Sass"
+date: "2018-06-13T06:27:00+00:00"
+lastmod: "2019-10-10T11:44:17+00:00"
+summary: "In a responsive world, managing font sizes can be tricky. So how can an atomic approach help?"
+metadesc: "How many times do you set a font size? How do you manage consistency? An atomic approach can help with both of these issues."
+theme: "#edf5f6"
+tags: ["Code"]
+categories: ["Code", "CSS"]
+images: ["/images/blog/atomic-font-sizes-featured-image@2x.png"]
+large: "/images/blog/atomic-font-sizes-featured-image@2x.png"
+medium: "/images/blog/atomic-font-sizes-featured-image-medium@2x.png"
+ogImage: "/assets/og/cover.jpg"
+status: "open"
 id: 170
-fileroot: 'atomic-font-size-management-with-sass'
+fileroot: "atomic-font-size-management-with-sass"
 ---
 
 Have you found yourself thinking: ‘how many times have I set this font size?’ If so, this post should help. Font size management is challenging, especially with responsive design. However, I’ve been using an ‘atomic’ approach with Sass which has made things easier.

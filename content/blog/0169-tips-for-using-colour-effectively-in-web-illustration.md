@@ -6,7 +6,7 @@ summary: "Our websites can offer us an important advantage when it comes to choo
 metadesc: "Finding and settling on a way to use colour within your illustrations is a fun challenge. Once you do, it becomes much easier going forward to make your illustrations."
 theme: "#eafaf6"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Colour"]
 images: ["/images/blog/colour-in-illustration-featured-image@2x.png"]
 large: "/images/blog/colour-in-illustration-featured-image@2x.png"
 medium: "/images/blog/colour-in-illustration-featured-image-medium@2x.png"

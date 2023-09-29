@@ -2,6 +2,7 @@ import { cache } from 'react'
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import { sortPosts } from '@/lib/utils/content'
+import PageHeader from '@/components/page-header'
 import PageTitle from '@/components/page-title'
 import Card from '@/components/card'
 import Pagination from '@/components/pagination'
@@ -11,14 +12,16 @@ import categories from '@/content/categories'
 const POSTS_PER_PAGE = 12
 
 const getData = cache(async () => {
-  const postsByDate = sortPosts(allPosts)
+  const postsByDate = sortPosts(allPosts).filter(
+    (post) => post.status === 'open'
+  )
 
   return {
     postsByDate,
   }
 })
 
-export async function generateStaticParams() {
+export async function generateStaticParams({ params: { slug } }) {
   const allData = await getData()
   const totalPages = Math.ceil(allData.postsByDate.length / POSTS_PER_PAGE)
   const paths = Array.from({ length: totalPages }, (_, i) => ({
@@ -43,7 +46,6 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogCategory({ params, searchParams }) {
-  const allData = await getData()
   const data = categories.find(
     (category) => category.slugAsParams === params.slug
   )
@@ -61,7 +63,7 @@ export default async function BlogCategory({ params, searchParams }) {
       }))
   )
 
-  const pageNumber = 1
+  const pageNumber = parseInt(params.page)
   const paginatedPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
@@ -81,18 +83,24 @@ export default async function BlogCategory({ params, searchParams }) {
 
   return (
     <div className="grid col-container grid-cols-subgrid gap-y-12 pb-32 pt-18 frame frame-outset-top">
-      <PageTitle>{data.title}</PageTitle>
+      <PageHeader>
+        <PageTitle>{data.title}</PageTitle>
+      </PageHeader>
       <div className="grid grid-cols-3 col-content gap-8">
-        {paginatedPosts.map((post) => (
-          <>
-            <Card
-              size="medium"
-              frontmatter={post}
-              image={true}
-              key={post._id}
-            />
-          </>
-        ))}
+        {paginatedPosts.length > 0 ? (
+          paginatedPosts.map((post) => (
+            <>
+              <Card
+                size="medium"
+                frontmatter={post}
+                image={true}
+                key={post._id}
+              />
+            </>
+          ))
+        ) : (
+          <p>No posts in this category yet.</p>
+        )}
       </div>
       <div className="col-content">
         <Pagination

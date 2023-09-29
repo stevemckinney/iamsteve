@@ -103,14 +103,45 @@ const Medium = ({ frontmatter, image, className }) => {
         {categories && (
           <div className={`flex flex-row gap-4 mb-5 relative z-[2]`}>
             {categories &&
-              categories.map((category) => (
-                <Chip
-                  key={category}
-                  href={`/category/${category.toLowerCase()}`}
-                >
-                  {category}
-                </Chip>
-              ))}
+              categories.slice(0, 1).map((category) => {
+                if (category.toLowerCase() === 'design') {
+                  return (
+                    <>
+                      <Chip
+                        key={category}
+                        href={`/category/${category.toLowerCase()}`}
+                        theme={`rio`}
+                      >
+                        {category}
+                      </Chip>
+                    </>
+                  )
+                } else if (category.toLowerCase() === 'code') {
+                  return (
+                    <>
+                      <Chip
+                        key={category}
+                        href={`/category/${category.toLowerCase()}`}
+                        theme={`dandelion`}
+                      >
+                        {category}
+                      </Chip>
+                    </>
+                  )
+                } else {
+                  return (
+                    <>
+                      <Chip
+                        key={category}
+                        href={`/category/${category.toLowerCase()}`}
+                        theme={`cornflour`}
+                      >
+                        {category}
+                      </Chip>
+                    </>
+                  )
+                }
+              })}
           </div>
         )}
         <h2

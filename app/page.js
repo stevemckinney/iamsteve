@@ -61,82 +61,84 @@ export default async function Home() {
 
   return (
     <>
-      <Hero />
-      <div
-        className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
-        id="latest"
-      >
-        <Title
-          link="/blog"
-          text="View the archive"
-          ariaID="latest"
-          className="-mt-[1.375rem]"
+      <main className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end gap-y-18 pb-18">
+        <Hero />
+        <div
+          className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
+          id="latest"
         >
-          What’s new
-        </Title>
+          <Title
+            link="/blog"
+            text="View the archive"
+            ariaID="latest"
+            className="-mt-[1.375rem]"
+          >
+            What’s new
+          </Title>
 
-        <div className="grid grid-cols-2 col-content gap-8">
-          {posts.map((post) => (
-            <Card
-              size="large"
-              frontmatter={post}
-              image={true}
-              key={post._id}
-              className="col-content-start col-span-6"
-            />
-          ))}
+          <div className="grid grid-cols-2 col-content gap-8">
+            {posts.map((post) => (
+              <Card
+                size="large"
+                frontmatter={post}
+                image={true}
+                key={post._id}
+                className="col-content-start col-span-6"
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div
-        className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
-        id="popular-code"
-      >
-        <Title
-          link="/category/design"
-          text="Explore design"
-          ariaID="popular-design"
-          className="-mt-[1.375rem]"
+        <div
+          className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
+          id="popular-code"
         >
-          Popular <span className="text-rio-400">design</span>
-        </Title>
+          <Title
+            link="/category/design"
+            text="Explore design"
+            ariaID="popular-design"
+            className="-mt-[1.375rem]"
+          >
+            Popular <span className="text-rio-400">design</span>
+          </Title>
 
-        <div className="grid grid-cols-3 col-content gap-8">
-          {design.map((post) => (
-            <Card
-              size="medium"
-              frontmatter={post}
-              image={false}
-              key={post._id}
-            />
-          ))}
+          <div className="grid grid-cols-3 col-content gap-8">
+            {design.map((post) => (
+              <Card
+                size="medium"
+                frontmatter={post}
+                image={false}
+                key={post._id}
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div
-        className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
-        id="popular-code"
-      >
-        <Title
-          link="/category/code"
-          text="Explore code"
-          ariaID="popular-code"
-          className="-mt-[1.375rem]"
+        <div
+          className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
+          id="popular-code"
         >
-          Popular <span className="text-dandelion-400">code</span>
-        </Title>
+          <Title
+            link="/category/code"
+            text="Explore code"
+            ariaID="popular-code"
+            className="-mt-[1.375rem]"
+          >
+            Popular <span className="text-dandelion-400">code</span>
+          </Title>
 
-        <div className="grid grid-cols-3 col-content gap-8">
-          {code.map((post) => (
-            <Card
-              size="medium"
-              frontmatter={post}
-              image={false}
-              key={post._id}
-            />
-          ))}
+          <div className="grid grid-cols-3 col-content gap-8">
+            {code.map((post) => (
+              <Card
+                size="medium"
+                frontmatter={post}
+                image={false}
+                key={post._id}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      </main>
     </>
   )
 }

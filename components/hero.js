@@ -42,7 +42,7 @@ export default function Hero() {
       </ul>
       <div className="w-[798px] h-[276px] relative">
         <Image
-          src="/images/illustration/pencil.svg"
+          src="/images/illustration/pencil-mono.svg"
           width={962}
           height={46}
           className={`max-w-[initial] absolute right-[calc(100%_-_175px)] bottom-[10.125rem] drop-shadow-placed`}
@@ -50,7 +50,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/ruler.svg"
+          src="/images/illustration/ruler-mono.svg"
           width={744}
           height={122}
           className={`max-w-[initial] absolute left-[calc(100%_-_111px)] bottom-[17.5rem] drop-shadow-placed`}
@@ -58,7 +58,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/sharpener.svg"
+          src="/images/illustration/spot-mono/sharpener.svg"
           width={96}
           height={96}
           className={`absolute top-[-4.35rem] left-[3.425rem] rotate-[15deg] max-w-[initial] drop-shadow-placed`}
@@ -66,7 +66,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/type.svg"
+          src="/images/illustration/spot-mono/type.svg"
           width={32}
           height={32}
           className={`absolute max-w-[initial] top-[1.6rem] left-[13.275rem] drop-shadow-placed`}
@@ -74,7 +74,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/pen.svg"
+          src="/images/illustration/spot-mono/pen.svg"
           width={96}
           height={96}
           className={`absolute max-w-[initial] top-[.625rem] left-[21.75rem] drop-shadow-placed`}
@@ -82,7 +82,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/terminal.svg"
+          src="/images/illustration/spot-mono/terminal.svg"
           width={96}
           height={96}
           className={`absolute max-w-[initial] top-[1.875rem] right-[12.525rem] drop-shadow-placed`}
@@ -90,7 +90,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/sticky.svg"
+          src="/images/illustration/spot-mono/sticky.svg"
           width={96}
           height={96}
           className={`absolute max-w-[initial] top-[3.4rem] right-[3.525rem] rotate-[-15deg] drop-shadow-placed`}
@@ -98,7 +98,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/star.svg"
+          src="/images/illustration/spot-mono/star.svg"
           width={96}
           height={96}
           className={`absolute max-w-[initial] bottom-[2.25rem] left-[5.95rem] drop-shadow-placed`}
@@ -106,7 +106,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/safari.svg"
+          src="/images/illustration/spot-mono/safari.svg"
           width={96}
           height={96}
           className={`absolute  max-w-[initial] top-[5.35rem] left-[12.95rem] drop-shadow-placed`}
@@ -114,7 +114,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/cursor.svg"
+          src="/images/illustration/spot-mono/cursor.svg"
           width={32}
           height={32}
           className={`absolute max-w-[initial] bottom-[1.875rem] left-[16.2rem] drop-shadow-placed`}
@@ -122,7 +122,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/colour.svg"
+          src="/images/illustration/spot-mono/colour.svg"
           width={32}
           height={32}
           className={`absolute max-w-[initial] top-[8.625rem] left-[20.825rem] drop-shadow-placed`}
@@ -130,7 +130,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/component.svg"
+          src="/images/illustration/spot-mono/component.svg"
           width={32}
           height={32}
           className={`absolute max-w-[initial] bottom-[4.235rem] right-[15.675rem] drop-shadow-placed`}
@@ -138,7 +138,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/figma.svg"
+          src="/images/illustration/spot-mono/figma.svg"
           width={96}
           height={96}
           className={`absolute max-w-[initial] bottom-[2.125rem] right-[19.05rem] drop-shadow-placed`}
@@ -146,7 +146,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/pencil.svg"
+          src="/images/illustration/spot-mono/pencil.svg"
           width={96}
           height={96}
           className={`absolute max-w-[initial] bottom-[-.625rem] right-[7.45rem] drop-shadow-placed`}
@@ -154,7 +154,7 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot/brush.svg"
+          src="/images/illustration/spot-mono/brush.svg"
           width={32}
           height={32}
           className={`absolute max-w-[initial] bottom-[3.625rem] right-[3rem] drop-shadow-placed`}

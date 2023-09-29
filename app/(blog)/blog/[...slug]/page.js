@@ -63,21 +63,21 @@ export default async function PostPage({ params }) {
 
   return (
     <article
-      className={`grid col-container grid-cols-subgrid gap-y-12 pb-32 pt-18 frame frame-outset-top`}
+      className={`grid col-container grid-cols-subgrid gap-y-12 pb-32 pt-18`}
     >
       <Image
-        src="/images/illustration/pencil.svg"
+        src="/images/illustration/pencil-mono.svg"
         width={962}
         height={46}
-        className={`col-start-1 col-end-content-start max-w-[initial] justify-self-end self-start row-start-1`}
+        className={`col-start-1 col-end-4 max-w-[initial] justify-self-end self-start row-start-1 drop-shadow-placed`}
         alt=""
         role="presentation"
       />
       <Image
-        src="/images/illustration/ruler.svg"
+        src="/images/illustration/ruler-mono.svg"
         width={594}
         height={122}
-        className={`col-start-content-end col-end-[-1] max-w-[initial] self-end row-start-1`}
+        className={`col-start-[14] col-end-[-1] max-w-[initial] self-end row-start-1 drop-shadow-placed`}
         alt=""
         role="presentation"
       />
