@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
+import Script from 'next/script'
 import { Mdx } from '@/components/mdx-components'
 import siteMetadata from '@/content/metadata'
 
@@ -61,77 +62,89 @@ export default async function PostPage({ params }) {
     notFound()
   }
 
-  return (
-    <article
-      className={`grid col-container grid-cols-subgrid gap-y-12 pb-32 pt-18`}
-    >
-      <Image
-        src="/images/illustration/pencil-mono.svg"
-        width={962}
-        height={46}
-        className={`col-start-1 col-end-4 max-w-[initial] justify-self-end self-start row-start-1 drop-shadow-placed`}
-        alt=""
-        role="presentation"
-      />
-      <Image
-        src="/images/illustration/ruler-mono.svg"
-        width={594}
-        height={122}
-        className={`col-start-[14] col-end-[-1] max-w-[initial] self-end row-start-1 drop-shadow-placed`}
-        alt=""
-        role="presentation"
-      />
-      <header className="col-prose flex flex-col gap-4 row-start-1">
-        <PageTitle>{post.title}</PageTitle>
-        {post.summary && (
-          <p className="text-2xl text-fern-1100 mb-4">{post.summary}</p>
-        )}
-        <div className="flex flex-row gap-4 items-center">
-          {post.categories &&
-            post.categories.map((category, index) => (
-              <Chip theme="rio" iconKind={category} key={index}>
-                {category}
-              </Chip>
-            ))}
-          <Chip theme="cornflour" iconKind={`calendar`}>
-            <Date dateString={post.date} />
-          </Chip>
-          <ViewCounter allViews={allViews} slug={post.slugAsParams} trackView />
-        </div>
-      </header>
+  console.log(post.codepen)
 
-      {post.images &&
-        post.images.map((image, index) => (
-          <div className={`col-prose ${styles.featured}`} key={index}>
-            <Image
-              src={image}
-              className="radius"
-              alt=""
-              width={744}
-              height={492}
-              key={image}
-              blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              placeholder="blur"
-              priority
+  return (
+    <>
+      <article className={`grid col-container grid-cols-subgrid gap-y-12`}>
+        <Image
+          src="/images/illustration/pencil-mono.svg"
+          width={962}
+          height={46}
+          className={`col-start-1 col-end-4 max-w-[initial] justify-self-end self-start row-start-1 drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+        <Image
+          src="/images/illustration/ruler-mono.svg"
+          width={594}
+          height={122}
+          className={`col-start-[14] col-end-[-1] max-w-[initial] self-end row-start-1 drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+        <header className="col-prose flex flex-col gap-4 row-start-1">
+          <PageTitle>{post.title}</PageTitle>
+          {post.summary && (
+            <p className="text-2xl text-fern-1100 mb-4">{post.summary}</p>
+          )}
+          <div className="flex flex-row gap-4 items-center">
+            {post.categories &&
+              post.categories.map((category, index) => (
+                <Chip theme="rio" iconKind={category} key={index}>
+                  {category}
+                </Chip>
+              ))}
+            <Chip theme="cornflour" iconKind={`calendar`}>
+              <Date dateString={post.date} />
+            </Chip>
+            <ViewCounter
+              allViews={allViews}
+              slug={post.slugAsParams}
+              trackView
             />
           </div>
-        ))}
-      <div
-        className={`${styles.prose} prose dark:prose-invert grid layout gap-x-8 gap-y-0 col-start-1 col-end-[-1]`}
-      >
-        <Mdx code={post.body.code} />
-      </div>
-      <Support />
-      <aside className={`col-prose flex flex-col gap-4 -mx-8`}>
-        <h2 className="text-2xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 px-8">
-          Next to read
-        </h2>
-        <div className="grid grid-cols-2 gap-x-8">
-          <NextPost id={169} />
-          <NextPost id={170} />
+        </header>
+
+        {post.images &&
+          post.images.map((image, index) => (
+            <div className={`col-prose ${styles.featured}`} key={index}>
+              <Image
+                src={image}
+                className="radius"
+                alt=""
+                width={744}
+                height={492}
+                key={image}
+                blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                placeholder="blur"
+                priority
+              />
+            </div>
+          ))}
+        <div
+          className={`${styles.prose} prose dark:prose-invert grid layout gap-x-8 gap-y-0 col-start-1 col-end-[-1]`}
+        >
+          <Mdx code={post.body.code} />
         </div>
-      </aside>
-    </article>
+        <Support />
+        <aside className={`col-prose flex flex-col gap-4 -mx-8`}>
+          <h2 className="text-2xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 px-8">
+            Next to read
+          </h2>
+          <div className="grid grid-cols-2 gap-x-8">
+            <NextPost id={169} />
+            <NextPost id={170} />
+          </div>
+        </aside>
+      </article>
+      {post.codepen === true && (
+        <Script
+          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          strategy="afterInteractive"
+        />
+      )}
+    </>
   )
 }
 

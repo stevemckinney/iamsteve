@@ -54,7 +54,7 @@ export default async function BlogIndex({ params }) {
 
   return (
     <>
-      <div className="grid col-container grid-cols-subgrid frame frame-outset-top pt-10 pb-[5.5rem] gap-y-8">
+      <div className="grid col-container grid-cols-subgrid frame frame-outset-top pt-10 pb-18 gap-y-8">
         <h1 className="col-content text-7xl font-variation-extrabold font-display text-fern-1100 lowercase">
           Blog
         </h1>
