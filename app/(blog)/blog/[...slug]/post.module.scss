@@ -192,13 +192,21 @@
 */
 
 .prose {
-  :global(.remark-code-container) {
+  :global(.remark-code-container),
+  :global(.cp_embed_wrapper) {
     overflow: auto;
     border-radius: theme('borderRadius.lg');
     background-color: theme('colors.fern.1100');
-    border: 1px solid theme('colors.neutral-03.900');
     margin-inline: -2rem;
     margin-block: theme('margin.8');
+  }
+
+  :global(.remark-code-container) {
+    border: 1px solid theme('colors.neutral-03.900');
+  }
+
+  :global(.cp_embed_wrapper) {
+    box-shadow: theme('boxShadow.floating');
   }
 
   :global(.remark-code-container pre),

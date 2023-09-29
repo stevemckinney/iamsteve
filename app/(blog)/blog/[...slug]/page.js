@@ -106,7 +106,10 @@ export default async function PostPage({ params }) {
 
         {post.images &&
           post.images.map((image, index) => (
-            <div className={`col-prose ${styles.featured}`} key={index}>
+            <div
+              className={`col-prose grid-cols-subgrid ${styles.featured}`}
+              key={index}
+            >
               <Image
                 src={image}
                 className="radius"
