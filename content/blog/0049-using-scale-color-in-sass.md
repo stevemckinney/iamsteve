@@ -104,7 +104,7 @@ As you can see the difference in the values to achieve something that is identic
 ## Finishing comments
 From the examples you'll see their differences along the way from colour to colour. Comparing the examples which aren't using `scale-color` you'll notice while they may look fairly similar there is a slight difference. It becomes more apparent as you use more colours.
 
-<style jsx="true">{`
+{/*<style jsx="true">{`
 .sc-examples { gap: 2.5%; }
 .example-box p:first-child {
   margin-top: 0;
@@ -130,4 +130,4 @@ From the examples you'll see their differences along the way from colour to colo
 .e2-darken { background: linear-gradient(#bcd081, #88a23d, #313a16); }
 .e3-scale { background: linear-gradient(#9dcce4, #3a9ac9, #1c4d66); }
 .e3-darken { background: linear-gradient(#94c8e2, #3a9ac9, #19455b); }
-`}</style>
+`}</style>*/}
