@@ -103,31 +103,3 @@ As you can see the difference in the values to achieve something that is identic
 
 ## Finishing comments
 From the examples you'll see their differences along the way from colour to colour. Comparing the examples which aren't using `scale-color` you'll notice while they may look fairly similar there is a slight difference. It becomes more apparent as you use more colours.
-
-{/*<style jsx="true">{`
-.sc-examples { gap: 2.5%; }
-.example-box p:first-child {
-  margin-top: 0;
-  font-size: 1em; }
-.example-box [role="img"] {
-  border-radius: 8px;
-  display: inline-block;
-  vertical-align: top;
-  width: 100%;
-  height: 200px;
-  margin: 0 0 1.5em; }
-.example-box figcaption,
-.example-box .code-block {
-  position: static;
-  width: 100%; }
-.example-box figcaption {
-  padding: 0; }
-.example-box figcaption:before {
-  display: none; }
-.e1-scale { background: linear-gradient(#eea29e, #dd453d, #781a15); }
-.e1-darken { background: linear-gradient(#eea29e, #dd453d, #761a15); }
-.e2-scale { background: linear-gradient(#c7d897, #88a23d, #44511f); }
-.e2-darken { background: linear-gradient(#bcd081, #88a23d, #313a16); }
-.e3-scale { background: linear-gradient(#9dcce4, #3a9ac9, #1c4d66); }
-.e3-darken { background: linear-gradient(#94c8e2, #3a9ac9, #19455b); }
-`}</style>*/}
