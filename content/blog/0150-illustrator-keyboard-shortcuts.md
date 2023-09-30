@@ -6,7 +6,7 @@ summary: "Memorising shortcuts of any application improves efficiency. Now I’m
 metadesc: "Memorising shortcuts of any application improves efficiency. Now I’m by no means the most efficient person in Illustrator, I’m generally just happy designing. However, there are shortcuts you  absolutely must know, because it saves you tediously clicking through panels and menus."
 theme: "#fefbed"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Quick tip"]
 images: ["/images/blog/illustrator-tip-featured-image@2x.png"]
 large: "/images/blog/illustrator-tip-featured-image@2x.png"
 medium: "/images/blog/illustrator-tip-featured-image-medium@2x.png"

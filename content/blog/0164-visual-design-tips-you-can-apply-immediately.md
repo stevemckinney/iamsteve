@@ -6,7 +6,7 @@ summary: "Add a little extra polish to any of your designs with these tips."
 metadesc: "When designing there are things you can rely upon regardless of the situation. These are things which add extra polish, and are generally hidden to the untrained eye."
 theme: "#fff7e0"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Visual design"]
 images: ["/images/blog/visual-design-tips-featured-image.png"]
 large: "/images/blog/visual-design-tips-featured-image.png"
 medium: "/images/blog/visual-design-tips-featured-image-medium.png"

@@ -6,7 +6,7 @@ summary: "Here’s a quick tip of all the ways you can export SVG in Illustrator
 metadesc: "The different ways you can use Adobe Illustrator to export SVG. Copy and paste, export and save as."
 theme: "#fefbed"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Quick tip"]
 images: ["/images/blog/illustrator-tip-featured-image@2x.png"]
 large: "/images/blog/illustrator-tip-featured-image@2x.png"
 medium: "/images/blog/illustrator-tip-featured-image-medium@2x.png"

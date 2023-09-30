@@ -6,7 +6,7 @@ summary: "It’s likely you know how to align things in Illustrator, but you can
 metadesc: "Using the align to key object method you can distribute space between objects equally. This is by far the quickest method for spacing navigation items, or anything equally in Adobe Illustrator to add a set amount."
 theme: "#fefbed"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Quick tip"]
 images: ["/images/blog/illustrator-tip-featured-image@2x.png"]
 large: "/images/blog/illustrator-tip-featured-image@2x.png"
 medium: "/images/blog/illustrator-tip-featured-image-medium@2x.png"

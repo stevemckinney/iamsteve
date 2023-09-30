@@ -5,7 +5,7 @@ lastmod: "2019-10-10T11:44:17+00:00"
 summary: "In a responsive world, managing font sizes can be tricky. So how can an atomic approach help?"
 metadesc: "How many times do you set a font size? How do you manage consistency? An atomic approach can help with both of these issues."
 theme: "#edf5f6"
-tags: ["Code"]
+tags: ["Code", "CSS"]
 categories: ["Code", "CSS"]
 images: ["/images/blog/atomic-font-sizes-featured-image@2x.png"]
 large: "/images/blog/atomic-font-sizes-featured-image@2x.png"

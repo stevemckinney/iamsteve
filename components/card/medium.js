@@ -101,7 +101,9 @@ const Medium = ({ frontmatter, image, className }) => {
       )}
       <div className="flex flex-col gap-2 flex-auto px-8 pt-8 pb-[1.5625rem]">
         {categories && (
-          <div className={`flex flex-row gap-4 mb-5 relative z-[2]`}>
+          <div
+            className={`flex flex-row gap-4 mb-5 relative z-[2] relative before:content-[''] before:w-8 before:absolute before:top-0 before:right-0 before:bottom-0 before:bg-gradient-to-r before:from-white/0 before:to-white before:z-[3] overflow-x-auto`}
+          >
             {categories.map((category) => (
               <Category key={category}>{category}</Category>
             ))}

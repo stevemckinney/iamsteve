@@ -6,7 +6,7 @@ summary: "You may have two shapes and want to combine them, but still want to re
 metadesc: "Two methods for keeping your shapes editable when combining them. One method uses pathfinder the other uses drawing modes."
 theme: "#fefbed"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Quick tip"]
 images: ["/images/blog/illustrator-tip-featured-image@2x.png"]
 large: "/images/blog/illustrator-tip-featured-image@2x.png"
 medium: "/images/blog/illustrator-tip-featured-image-medium@2x.png"

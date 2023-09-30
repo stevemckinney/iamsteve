@@ -25,6 +25,14 @@ const Sprite = (props) => (
           className="stroke-current stroke-2 sl-r"
         />
       </symbol>
+      <symbol id="play-24" viewBox="0 0 24 24">
+        <g class="play">
+          <path
+            d="M5 3.7a1 1 0 0 1 1.486-.875l14.94 8.3a1 1 0 0 1 0 1.75l-14.94 8.3A1 1 0 0 1 5 20.3V3.7Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="type-24" viewBox="0 0 24 24">
         <g class="type">
           <path d="m12 3 6 13H6l6-13Z" class="fill-white" />

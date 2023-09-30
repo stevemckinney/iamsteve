@@ -1,4 +1,5 @@
 import { cache } from 'react'
+import GithubSlugger from 'github-slugger'
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import { sortPosts } from '@/lib/utils/content'
@@ -44,6 +45,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogCategory({ params, searchParams }) {
+  const slugger = new GithubSlugger()
   const allData = await getData()
   const data = categories.find(
     (category) => category.slugAsParams === params.slug
@@ -55,7 +57,7 @@ export default async function BlogCategory({ params, searchParams }) {
         const categories = post.categories.map((category) => {
           if (typeof category === 'object' && category !== null) {
             return 'website'
-          } else return category.toLowerCase()
+          } else return category.replace(' ', '-').toLowerCase()
         })
         return categories.includes(params.slug.toLowerCase())
       })

@@ -87,7 +87,7 @@ const categories = [
     description: 'Animation posts',
     parent: 'code',
     theme: 'magenta',
-    icon: 'animation',
+    icon: 'play',
     exclude: false,
   },
   {

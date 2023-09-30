@@ -6,7 +6,7 @@ summary: "Aligning to a key object in Illustrator is one of the most useful alig
 metadesc: "How do you align in place, without everything being offset some pixel amount. Illustrator's align to key object solves this."
 theme: "#fefbed"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Quick tip"]
 images: ["/images/blog/illustrator-tip-featured-image@2x.png"]
 large: "/images/blog/illustrator-tip-featured-image@2x.png"
 medium: "/images/blog/illustrator-tip-featured-image-medium@2x.png"

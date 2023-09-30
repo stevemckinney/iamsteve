@@ -6,7 +6,7 @@ summary: "How do you maintain a perfect square shape with a responsive layout? T
 metadesc: "How do you maintain a perfect square shape with a responsive layout? It's a relatively simple solution using padding."
 theme: "#fffdf5"
 tags: ["Code", "CSS"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 images: ["/images/blog/css-squares-inside-post-image@2x.png"]
 large: "/images/blog/css-squares-inside-post-image@2x.png"
 medium: "/images/blog/css-squares-featured-image-medium@2x.png"

@@ -6,7 +6,7 @@ summary: "In Illustrator it appears more difficult than it needs to be to export
 metadesc: "Using Illustrator there isn't a way to export a colour palette quickly. However, there is a way to do it less tediously than opening and closing the fill window. This post shows you how."
 theme: "#fefbed"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Quick tip"]
 images: ["/images/blog/illustrator-tip-featured-image@2x.png"]
 large: "/images/blog/illustrator-tip-featured-image@2x.png"
 medium: "/images/blog/illustrator-tip-featured-image-medium@2x.png"
@@ -69,6 +69,6 @@ Copy the code between `<style type="text/css">` and `<style>`. Delete the rest, 
 ```
 
 ## Each colour should correspond with Illustrator
-The order each colour is should be how you made them in Illustrator. That’s all you need to know, you’ve got your hex codes. 
+The order each colour is should be how you made them in Illustrator. That’s all you need to know, you’ve got your hex codes.
 
 This is something I find less tedious than selecting the object, opening the fill window and pasting the value elsewhere. It’s a technique I consider to be one of those: “why didn’t I think of this sooner”.
