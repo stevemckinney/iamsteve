@@ -1696,7 +1696,7 @@
     "@netlify/esbuild-windows-64" "0.14.39"
     "@netlify/esbuild-windows-arm64" "0.14.39"
 
-"@netlify/functions@^1.4.0":
+"@netlify/functions@^1.6.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@netlify/functions/-/functions-1.6.0.tgz#c373423e6fef0e6f7422ac0345e8bbf2cb692366"
   integrity sha512-6G92AlcpFrQG72XU8YH8pg94eDnq7+Q0YJhb8x4qNpdGsvuzvrfHWBmqFGp/Yshmv4wex9lpsTRZOocdrA2erQ==
@@ -1711,7 +1711,7 @@
     "@netlify/serverless-functions-api" "1.7.3"
     is-promise "^4.0.0"
 
-"@netlify/ipx@^1.4.0":
+"@netlify/ipx@^1.4.3":
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/@netlify/ipx/-/ipx-1.4.4.tgz#b939e18639749f444eac1b88cb2a85790e7d13a1"
   integrity sha512-UM2pFatBDg9ehrUwA/PwpAo/PpF447uXFgKR/2QtqlPriwJlNXJ7sj/YPEblC/8UzNJjhSIv2gA6T9bcVqxe7Q==
@@ -1732,14 +1732,14 @@
   resolved "https://registry.yarnpkg.com/@netlify/node-cookies/-/node-cookies-0.1.0.tgz#dda912ba618527695cf519fafa221c5e6777c612"
   integrity sha512-OAs1xG+FfLX0LoRASpqzVntVV/RpYkgpI0VrUnw2u0Q1qiZUzcPffxRK8HF3gc4GjuhG5ahOEMJ9bswBiZPq0g==
 
-"@netlify/plugin-nextjs@4.36.1":
-  version "4.36.1"
-  resolved "https://registry.yarnpkg.com/@netlify/plugin-nextjs/-/plugin-nextjs-4.36.1.tgz#2bfb1960d377dad6a34bbdab46f9599ec7682520"
-  integrity sha512-e7vmZht8OFWTueiCcMyp//u1sXYjGfjturUlh0wGjynvdFRBpYhJAl85gToRJGTvAthwJNGq9aLcgBuJWRMRIg==
+"@netlify/plugin-nextjs@^4.40.1":
+  version "4.40.1"
+  resolved "https://registry.yarnpkg.com/@netlify/plugin-nextjs/-/plugin-nextjs-4.40.1.tgz#ccb10b08fe9081df29437f709ad4448cae2bd329"
+  integrity sha512-FVXQEzBCymJHu2JYnJs03hUXjJAIAHcLMsrbcrnSjqmib4yF65YZ9yJYmrajV2D6LRqN/TxWhzTEgGr9eYpRHQ==
   dependencies:
     "@netlify/esbuild" "0.14.39"
-    "@netlify/functions" "^1.4.0"
-    "@netlify/ipx" "^1.4.0"
+    "@netlify/functions" "^1.6.0"
+    "@netlify/ipx" "^1.4.3"
     "@vercel/node-bridge" "^2.1.0"
     chalk "^4.1.2"
     chokidar "^3.5.3"
@@ -1754,7 +1754,7 @@
     node-stream-zip "^1.15.0"
     outdent "^0.8.0"
     p-limit "^3.1.0"
-    pathe "^0.2.0"
+    pathe "^0.3.0"
     pretty-bytes "^5.6.0"
     regexp-tree "^0.1.24"
     semver "^7.3.5"
@@ -3736,7 +3736,7 @@ destr@^2.0.0:
   resolved "https://registry.yarnpkg.com/destr/-/destr-2.0.0.tgz#60847d02b211de6e252fc72806f4ec39ec257e7b"
   integrity sha512-FJ9RDpf3GicEBvzI3jxc2XhHzbqD8p4ANw/1kPsFBfTvP1b7Gn/Lg1vO7R9J4IVgoMbyUmFrFGZafJ1hPZpvlg==
 
-detect-libc@^2.0.0, detect-libc@^2.0.1, detect-libc@^2.0.2:
+detect-libc@^2.0.0, detect-libc@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-2.0.2.tgz#8ccf2ba9315350e1241b88d0ac3b0e1fbd99605d"
   integrity sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==
@@ -6724,11 +6724,6 @@ node-abi@^3.3.0:
   dependencies:
     semver "^7.3.5"
 
-node-addon-api@^5.0.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-5.1.0.tgz#49da1ca055e109a23d537e9de43c09cca21eb762"
-  integrity sha512-eh0GgfEkpnoWDq+VY8OyvYhFEzBk6jIYbRKdIlyTiAXIVJ8PyBaKb0rp7oDtoddbdoHWhq8wwr+XZ81F1rpNdA==
-
 node-addon-api@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-6.1.0.tgz#ac8470034e58e67d0c6f1204a18ae6995d9c0d76"
@@ -7082,10 +7077,10 @@ path-type@^4.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
-pathe@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/pathe/-/pathe-0.2.0.tgz#30fd7bbe0a0d91f0e60bae621f5d19e9e225c339"
-  integrity sha512-sTitTPYnn23esFR3RlqYBWn4c45WGeLcsKzQiUpXJAyfcWkolvlYpV8FLo7JishK946oQwMFUCHXQ9AjGPKExw==
+pathe@^0.3.0:
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/pathe/-/pathe-0.3.9.tgz#4baff768f37f03e3d9341502865fb93116f65191"
+  integrity sha512-6Y6s0vT112P3jD8dGfuS6r+lpa0qqNrLyHPOwvXMnyNTQaYiwgau2DP3aNDsR13xqtGj7rrPo+jFUATpU6/s+g==
 
 pathe@^1.1.0, pathe@^1.1.1:
   version "1.1.1"
@@ -7889,7 +7884,7 @@ semver@^6.3.0, semver@^6.3.1:
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.1.tgz#556d2ef8689146e46dcea4bfdd095f3434dffcb4"
   integrity sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==
 
-semver@^7.3.5, semver@^7.3.8, semver@^7.5.4:
+semver@^7.3.5, semver@^7.5.4:
   version "7.5.4"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.4.tgz#483986ec4ed38e1c6c48c34894a9182dbff68a6e"
   integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
@@ -7910,24 +7905,24 @@ set-function-name@^2.0.0, set-function-name@^2.0.1:
     functions-have-names "^1.2.3"
     has-property-descriptors "^1.0.0"
 
-sharp@^0.31.3:
-  version "0.31.3"
-  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.31.3.tgz#60227edc5c2be90e7378a210466c99aefcf32688"
-  integrity sha512-XcR4+FCLBFKw1bdB+GEhnUNXNXvnt0tDo4WsBsraKymuo/IAuPuCBVAL2wIkUw2r/dwFW5Q5+g66Kwl2dgDFVg==
-  dependencies:
-    color "^4.2.3"
-    detect-libc "^2.0.1"
-    node-addon-api "^5.0.0"
-    prebuild-install "^7.1.1"
-    semver "^7.3.8"
-    simple-get "^4.0.1"
-    tar-fs "^2.1.1"
-    tunnel-agent "^0.6.0"
-
 sharp@^0.32.1:
   version "0.32.4"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.32.4.tgz#0354653b7924f2520b2264ac9bcd10a58bf411b6"
   integrity sha512-exUnZewqVZC6UXqXuQ8fyJJv0M968feBi04jb9GcUHrWtkRoAKnbJt8IfwT4NJs7FskArbJ14JAFGVuooszoGg==
+  dependencies:
+    color "^4.2.3"
+    detect-libc "^2.0.2"
+    node-addon-api "^6.1.0"
+    prebuild-install "^7.1.1"
+    semver "^7.5.4"
+    simple-get "^4.0.1"
+    tar-fs "^3.0.4"
+    tunnel-agent "^0.6.0"
+
+sharp@^0.32.6:
+  version "0.32.6"
+  resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.32.6.tgz#6ad30c0b7cd910df65d5f355f774aa4fce45732a"
+  integrity sha512-KyLTWwgcR9Oe4d9HwCwNM2l7+J0dUQwn/yf7S0EnTtb0eVS4RxO0eUSvxPtzT4F3SY+C4K6fqdv/DO27sJ/v/w==
   dependencies:
     color "^4.2.3"
     detect-libc "^2.0.2"
@@ -8356,7 +8351,7 @@ tapable@^2.2.0:
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-2.2.1.tgz#1967a73ef4060a82f12ab96af86d52fdb76eeca0"
   integrity sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==
 
-tar-fs@^2.0.0, tar-fs@^2.1.1:
+tar-fs@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-2.1.1.tgz#489a15ab85f1f0befabb370b7de4f9eb5cbe8784"
   integrity sha512-V0r2Y9scmbDRLCNex/+hYzvp/zyYjvFbHPNgVTKfQvVrb6guiE/fxP+XblDNR011utopbkex2nM4dHNV6GDsng==

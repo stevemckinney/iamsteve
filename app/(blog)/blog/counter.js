@@ -3,7 +3,12 @@
 import { useEffect, useState } from 'react'
 import Increment from './increment'
 
-const ViewCounter = ({ slug, allViews, trackView }) => {
+const ViewCounter = ({
+  slug,
+  allViews,
+  trackView,
+  className = 'text-neutral-600',
+}) => {
   const viewsForSlug = allViews && allViews.find((view) => view.slug === slug)
   const number = new Number(viewsForSlug?.view_count || 0)
 
@@ -17,7 +22,7 @@ const ViewCounter = ({ slug, allViews, trackView }) => {
 
   return (
     <>
-      <p className="text-neutral-600 dark:text-neutral-400">{`${number.toLocaleString()} views`}</p>
+      <p className={`${className}`}>{`${number.toLocaleString()} views`}</p>
     </>
   )
 }

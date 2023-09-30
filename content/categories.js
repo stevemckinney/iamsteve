@@ -5,6 +5,8 @@ const categories = [
     slugAsParams: 'design',
     description: 'Design posts',
     parent: false,
+    theme: 'rio',
+    icon: 'pen',
     exclude: false,
   },
   {
@@ -14,6 +16,8 @@ const categories = [
     description:
       'Short posts covering techniques or features explained briefly',
     parent: 'design',
+    theme: 'dandelion',
+    icon: 'bolt',
     exclude: false,
   },
   {
@@ -22,6 +26,8 @@ const categories = [
     slugAsParams: 'colour',
     description: 'Colour posts',
     parent: 'design',
+    theme: 'magenta',
+    icon: 'palette',
     exclude: false,
   },
   {
@@ -30,6 +36,8 @@ const categories = [
     slugAsParams: 'design-systems',
     description: 'Design systems posts',
     parent: 'design',
+    theme: 'grass',
+    icon: 'component',
     exclude: false,
   },
   {
@@ -37,7 +45,9 @@ const categories = [
     slug: '/category/prototyping',
     slugAsParams: 'prototyping',
     description: 'Prototyping posts',
-    parent: 'design',
+    parent: 'fern',
+    theme: 'neutral-02',
+    icon: 'play',
     exclude: false,
   },
   {
@@ -46,6 +56,8 @@ const categories = [
     slugAsParams: 'visual-design',
     description: 'Visual design posts',
     parent: 'design',
+    theme: 'lavender',
+    icon: 'vector-square',
     exclude: false,
   },
   {
@@ -54,6 +66,8 @@ const categories = [
     slugAsParams: 'typography',
     description: 'Typography posts',
     parent: 'design',
+    theme: 'neutral-02',
+    icon: 'type',
     exclude: false,
   },
   {
@@ -62,6 +76,8 @@ const categories = [
     slugAsParams: 'code',
     description: 'Code posts',
     parent: false,
+    theme: 'dandelion',
+    icon: 'code',
     exclude: false,
   },
   {
@@ -70,6 +86,8 @@ const categories = [
     slugAsParams: 'animation',
     description: 'Animation posts',
     parent: 'code',
+    theme: 'magenta',
+    icon: 'animation',
     exclude: false,
   },
   {
@@ -78,6 +96,8 @@ const categories = [
     slugAsParams: 'css',
     description: 'CSS posts',
     parent: 'code',
+    theme: 'grass',
+    icon: 'css',
     exclude: false,
   },
   {
@@ -86,6 +106,8 @@ const categories = [
     slugAsParams: 'patterns',
     description: 'Patterns posts',
     parent: 'code',
+    theme: 'fern',
+    icon: 'puzzle',
     exclude: false,
   },
   {
@@ -94,6 +116,8 @@ const categories = [
     slugAsParams: 'website',
     description: 'Website posts',
     parent: false,
+    theme: 'cornflour',
+    icon: 'folder',
     exclude: true,
   },
   {
@@ -102,6 +126,8 @@ const categories = [
     slugAsParams: 'terminal',
     description: 'Terminal posts',
     parent: false,
+    theme: 'cornflour',
+    icon: 'code',
     exclude: true,
   },
   {
@@ -110,6 +136,8 @@ const categories = [
     slugAsParams: 'blog',
     description: 'All posts',
     parent: false,
+    theme: 'cornflour',
+    icon: 'folder',
     exclude: false,
   },
 ]

@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
        * the border alignment within the header
        */}
       <body
-        className={`antialiased min-h-screen bg-neutral-01-100 dark:bg-slate-950 text-slate-900 dark:text-slate-50 overflow-x-hidden grid layout gap-x-8`}
+        className={`antialiased min-h-screen bg-neutral-01-100 dark:bg-slate-950 text-slate-900 dark:text-slate-50 overflow-x-hidden grid layout gap-x-8 max-w-[1728px] mx-auto`}
       >
         <Sprite />
         <ModeToggle />

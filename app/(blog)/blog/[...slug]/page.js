@@ -7,6 +7,7 @@ import siteMetadata from '@/content/metadata'
 // page components
 import Image from '@/components/image'
 import Card from '@/components/card'
+import Category from '@/components/category'
 import Chip from '@/components/chip'
 import PageTitle from '@/components/page-title'
 import Date from '@/components/date'
@@ -69,7 +70,7 @@ export default async function PostPage({ params }) {
           src="/images/illustration/pencil-mono.svg"
           width={962}
           height={46}
-          className={`col-start-1 col-end-4 max-w-[initial] justify-self-end self-start row-start-1 drop-shadow-placed`}
+          className={`col-start-1 col-end-4 max-w-[initial] justify-self-end self-start mt-5 row-start-1 drop-shadow-placed`}
           alt=""
           role="presentation"
         />
@@ -88,12 +89,16 @@ export default async function PostPage({ params }) {
           )}
           <div className="flex flex-row gap-4 items-center">
             {post.categories &&
-              post.categories.map((category, index) => (
-                <Chip theme="rio" iconKind={category} key={index}>
-                  {category}
-                </Chip>
-              ))}
-            <Chip theme="cornflour" iconKind={`calendar`}>
+              post.categories.map((category) => {
+                return (
+                  <>
+                    <Category size="large" key={category}>
+                      {category}
+                    </Category>
+                  </>
+                )
+              })}
+            <Chip size="large" theme="cornflour" iconStart={`calendar`}>
               <Date dateString={post.date} />
             </Chip>
             <ViewCounter
@@ -124,7 +129,7 @@ export default async function PostPage({ params }) {
             </div>
           ))}
         <div
-          className={`${styles.prose} prose dark:prose-invert grid layout gap-x-8 gap-y-0 col-start-1 col-end-[-1]`}
+          className={`${styles.prose} prose grid grid-cols-subgrid gap-x-8 gap-y-0 col-prose col-prose`}
         >
           <Mdx code={post.body.code} />
         </div>

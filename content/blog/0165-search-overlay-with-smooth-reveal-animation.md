@@ -6,7 +6,7 @@ summary: "A common part of a website is the ability to search. Depending on how 
 metadesc: "How to design and code a search overlay with a smooth reveal effect using CSS transitions and JavaScript."
 theme: "#f7fbfb"
 tags: ["Design", "Code"]
-categories: ["Design"]
+categories: ["Design", "Code"]
 images: ["/images/blog/search-reveal-featured-image@2x.png"]
 large: "/images/blog/search-reveal-featured-image@2x.png"
 medium: "/images/blog/search-reveal-featured-image-medium@2x.png"

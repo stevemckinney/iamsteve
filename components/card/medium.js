@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import Icon from '@/components/icon'
-import Chip from '@/components/chip'
+import Category from '@/components/category'
 import Placeholder from '@/components/placeholder'
 import Date from '@/components/date'
 
@@ -102,46 +102,9 @@ const Medium = ({ frontmatter, image, className }) => {
       <div className="flex flex-col gap-2 flex-auto px-8 pt-8 pb-[1.5625rem]">
         {categories && (
           <div className={`flex flex-row gap-4 mb-5 relative z-[2]`}>
-            {categories &&
-              categories.slice(0, 1).map((category) => {
-                if (category.toLowerCase() === 'design') {
-                  return (
-                    <>
-                      <Chip
-                        key={category}
-                        href={`/category/${category.toLowerCase()}`}
-                        theme={`rio`}
-                      >
-                        {category}
-                      </Chip>
-                    </>
-                  )
-                } else if (category.toLowerCase() === 'code') {
-                  return (
-                    <>
-                      <Chip
-                        key={category}
-                        href={`/category/${category.toLowerCase()}`}
-                        theme={`dandelion`}
-                      >
-                        {category}
-                      </Chip>
-                    </>
-                  )
-                } else {
-                  return (
-                    <>
-                      <Chip
-                        key={category}
-                        href={`/category/${category.toLowerCase()}`}
-                        theme={`cornflour`}
-                      >
-                        {category}
-                      </Chip>
-                    </>
-                  )
-                }
-              })}
+            {categories.map((category) => (
+              <Category key={category}>{category}</Category>
+            ))}
           </div>
         )}
         <h2

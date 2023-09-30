@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import Icon from '@/components/icon'
-import Chip from '@/components/chip'
+import Category from '@/components/category'
 import Placeholder from '@/components/placeholder'
 import Date from '@/components/date'
 
@@ -26,7 +26,7 @@ const LargeImage = ({ ...props }) => {
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
         alt={title}
-        className={`radius object-contain`}
+        className={`radius object-cover`}
       />
     </>
   )
@@ -47,7 +47,7 @@ const Large = ({ frontmatter, image, className }) => {
     lastmod,
   } = frontmatter
 
-  const imageColor = theme ? theme.toString() : '#ccc'
+  const imageColor = theme ? theme.toString() : '#e8dcd9'
 
   return (
     <article className="flex flex-col rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden self-start">
@@ -71,12 +71,11 @@ const Large = ({ frontmatter, image, className }) => {
       )}
       <div className="flex flex-col gap-4 flex-auto p-12">
         {categories && (
-          <>
-            {categories &&
-              categories.map((category) => (
-                <Chip key={category}>{category}</Chip>
-              ))}
-          </>
+          <div className={`flex flex-row gap-4 mb-5 relative z-[2]`}>
+            {categories.map((category) => (
+              <Category key={category}>{category}</Category>
+            ))}
+          </div>
         )}
         <h2
           className="font-display font-variation-bold text-5xl lowercase m-0 p-0"

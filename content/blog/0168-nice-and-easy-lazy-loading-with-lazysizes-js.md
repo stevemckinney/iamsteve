@@ -6,7 +6,7 @@ summary: "Lazy loading doesn’t have to be difficult, here’s how to add smoot
 metadesc: "Use lazysizes.js to implement lazy loading. This post shows you how to add lazy loading with smooth loading effects that don’t make the page jump about."
 theme: "#fff3f0"
 tags: ["Code"]
-categories: ["Code", "Performance"]
+categories: ["Code", "Patterns"]
 images: ["/images/blog/lazyloading-featured-image.png"]
 large: "/images/blog/lazyloading-featured-image.png"
 medium: "/images/blog/lazyloading-featured-image-medium.png"

@@ -25,6 +25,60 @@ const Sprite = (props) => (
           className="stroke-current stroke-2 sl-r"
         />
       </symbol>
+      <symbol id="type-24" viewBox="0 0 24 24">
+        <g class="type">
+          <path d="m12 3 6 13H6l6-13Z" class="fill-white" />
+          <g class="type-24">
+            <mask
+              id="type-24-mask"
+              width="15"
+              height="21"
+              x="2"
+              y="1"
+              class="t24m"
+              maskUnits="userSpaceOnUse"
+              style={{ maskType: 'alpha' }}
+            >
+              <path d="M2 1h15v21H2z" class="type-24" />
+            </mask>
+            <g mask="url(#type-24-mask)">
+              <path
+                d="m3 23 9-20 9 20"
+                class="fill-none stroke-current stroke-2"
+              />
+              <path d="M6 16h12" class="fill-none stroke-current stroke-2" />
+            </g>
+          </g>
+          <path
+            d="M18 2a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M22 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="bolt-24" viewBox="0 0 24 24">
+        <g className="bolt">
+          <path
+            d="m13 10-1-8-6 12h5l1 8 6-12h-5Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="css-24" viewBox="0 0 24 24">
+        <g class="css">
+          <path
+            d="M6 2h12v6.667L21 12l-3 3.333V22H6v-6.667L3 12l3-3.333V2Z"
+            class="fill-white"
+          />
+          <path
+            d="M9 2H7.417a1.5 1.5 0 0 0-1.5 1.5v4.979a.5.5 0 0 1-.124.33L3.288 11.67a.5.5 0 0 0 0 .658l2.505 2.863a.5.5 0 0 1 .124.33V20.5a1.5 1.5 0 0 0 1.5 1.5H9m6-20h1.583a1.5 1.5 0 0 1 1.5 1.5v4.979a.5.5 0 0 0 .124.33l2.505 2.862a.5.5 0 0 1 0 .658l-2.505 2.863a.5.5 0 0 0-.124.33V20.5a1.5 1.5 0 0 1-1.5 1.5H15"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="search-24" viewBox="0 0 24 24">
         <g className="search">
           <path d="m19 19 1 1" className="stroke-current stroke-4 sl-r" />
@@ -330,6 +384,22 @@ const Sprite = (props) => (
           d="M9 4L15 12L9 20"
           className="fill-none stroke-current stroke-2 sl-r"
         />
+      </symbol>
+      <symbol id="component-24" viewBox="0 0 24 24">
+        <g class="component">
+          <path
+            d="m14.632 12 3.684-3.684L22 12l-3.684 3.684zm-6.316 6.316L12 14.632l3.684 3.684L12 22zm0-12.632L12 2l3.684 3.684L12 9.368zM2 12l3.684-3.684L9.368 12l-3.684 3.684z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="puzzle-24" viewBox="0 0 24 24">
+        <g class="puzzle">
+          <path
+            d="M4 5.5A1.5 1.5 0 0 1 5.5 4h11A1.5 1.5 0 0 1 18 5.5V9s4-2 4 3-4 3-4 3v3.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5V15s4 1.5 4-3-4-3-4-3V5.5Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
       </symbol>
       <symbol id="settings-24" viewBox="0 0 24 24">
         <g className="settings">
@@ -948,18 +1018,6 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="type-16" viewBox="0 0 16 16">
-        <g className="type">
-          <path
-            d="M4 3h8M8 3v9M3 4h2m8 0h-2"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M7 13h2"
-            className="fill-none stroke-current stroke-2 sl-s"
-          />
-        </g>
-      </symbol>
       <symbol id="pen-16" viewBox="0 0 16 16">
         <g className="pen">
           <path
@@ -1046,52 +1104,26 @@ const Sprite = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="components-16" viewBox="0 0 16 16">
-        <g className="components">
+      <symbol id="component-16" viewBox="0 0 16 16">
+        <g class="component">
           <path
-            d="M2 2h4v4H2z"
-            className="fill-white stroke-current stroke-2 sl-r"
-          />
-          <rect
-            width="4"
-            height="4"
-            x="10"
-            y="2"
-            className="fill-white stroke-current stroke-2 sl-r"
-            rx="2"
-          />
-          <rect
-            width="4"
-            height="4"
-            x="2"
-            y="10"
-            className="fill-white stroke-current stroke-2 sl-r"
-            rx="2"
+            d="m5 5 3-3 3 3-3 3z"
+            class="fill-white stroke-current stroke-2 sl-r"
           />
           <path
-            d="M10 10h4v4h-4z"
-            className="fill-white stroke-current stroke-2 sl-r"
+            d="m2 8 3-3 3 3-3 3zm3 3 3-3 3 3-3 3z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m8 8 3-3 3 3-3 3z"
+            class="fill-white stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>
       <symbol id="move-16" viewBox="0 0 16 16">
         <g className="move">
           <path
-            d="m6 13 2 1 2-1m0-10L8 2 6 3M3 6 2 8l1 2"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M11 8h2"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path d="M3 8h2" className="fill-none stroke-current stroke-2 sl-r" />
-          <path d="M8 3v2" className="fill-none stroke-current stroke-2 sl-r" />
-          <path
-            d="M8 11v2"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m13 10 1-2-1-2"
+            d="m6 12 2 2 2-2m0-8L8 2 6 4M4 6 2 8l2 2m6-2h3M3 8h3m2-5v3m0 4v3m4-3 2-2-2-2"
             className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
@@ -1099,7 +1131,7 @@ const Sprite = (props) => (
       <symbol id="comment-16" viewBox="0 0 16 16">
         <g className="comment">
           <path
-            d="M9.5 3H8a6 6 0 0 0-6 6v3.727c0 .87 1.034 1.325 1.676.737l.45-.413A4 4 0 0 1 6.829 12H9.5a4.5 4.5 0 1 0 0-9Z"
+            d="M11 2H5a3 3 0 0 0-3 3v8a1 1 0 0 0 1.6.8l1.333-1a4 4 0 0 1 2.4-.8H11a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3Z"
             className="fill-white stroke-current stroke-2 sl-r"
           />
         </g>
@@ -1165,6 +1197,88 @@ const Sprite = (props) => (
           <path
             d="m6 10 8-8m-4 0h4v4M6 2H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3"
             className="path"
+          />
+        </g>
+      </symbol>
+      <symbol id="vector-square-16" viewBox="0 0 16 16">
+        <g className="vector-square">
+          <path
+            d="M4 13a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v8c0 .552-.444 1-.996 1H4Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M4 2H2v2h2V2Zm0 10H2v2h2v-2ZM14 2h-2v2h2V2Zm0 10h-2v2h2v-2Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="type-16" viewBox="0 0 16 16">
+        <g class="type">
+          <path d="m8 3 1 1v6H5l3-7Z" class="fill-white" />
+          <g class="mask-type-16">
+            <mask
+              id="mask-type-16"
+              width="8"
+              height="14"
+              x="1"
+              y="1"
+              class="a"
+              maskUnits="userSpaceOnUse"
+              style={{ maskType: 'alpha' }}
+            >
+              <path d="M1 1h8v14H1z" class="mask" />
+            </mask>
+            <g mask="url(#mask-type-16)">
+              <path d="M4 11h5" class="fill-none stroke-current stroke-2" />
+              <path
+                d="M2 16 7.76 2 14 16"
+                class="fill-none stroke-current stroke-2 sl-r"
+              />
+            </g>
+          </g>
+          <path
+            d="M11 2h1v12h-1"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M13 2h-1v12h1"
+            class="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="palette-16" viewBox="0 0 16 16">
+        <g className="palette">
+          <path
+            d="M2 8a6 6 0 0 1 12 0v1.547c0 .25-.203.453-.453.453h-2.214c-.736 0-1.333.597-1.333 1.333v2.214c0 .25-.203.453-.453.453H8a6 6 0 0 1-6-6Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
+          <circle cx="8" cy="5" r="1" className="fill-current" />
+          <circle cx="7" cy="10" r="1" className="fill-current" />
+          <circle cx="5" cy="7" r="1" className="fill-current" />
+        </g>
+      </symbol>
+      <symbol id="bolt-16" viewBox="0 0 16 16">
+        <g className="bolt">
+          <path
+            d="M9 6 8 1l-5 9h4l1 5 5-9H9Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="puzzle-16" viewBox="0 0 16 16">
+        <g class="puzzle">
+          <path
+            d="M2 2.5a.5.5 0 0 1 .5-.5h8.889a.5.5 0 0 1 .5.5v2.645c0 .382.424.642.793.544C13.604 5.444 15 5.489 15 8c0 2.512-1.396 2.556-2.318 2.311-.37-.098-.793.162-.793.544V13.5a.5.5 0 0 1-.5.5H2.5a.5.5 0 0 1-.5-.5v-2.732c0-.362.38-.618.734-.55.92.177 2.377.092 2.377-2.218S3.654 5.605 2.734 5.782C2.38 5.85 2 5.594 2 5.232V2.5Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="css-16" viewBox="0 0 16 16">
+        <g class="css">
+          <path d="M4 2h8v4l2 2-2 2v4H4v-4L2 8l2-2V2Z" class="fill-white" />
+          <path
+            d="M6 2h-.5A1.5 1.5 0 0 0 4 3.5v2.293a.5.5 0 0 1-.146.353l-1.5 1.5a.5.5 0 0 0 0 .708l1.5 1.5a.5.5 0 0 1 .146.353V12.5A1.5 1.5 0 0 0 5.5 14H6m4-12h.5A1.5 1.5 0 0 1 12 3.5v2.293a.5.5 0 0 0 .146.353l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 0-.146.353V12.5a1.5 1.5 0 0 1-1.5 1.5H10"
+            class="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>
