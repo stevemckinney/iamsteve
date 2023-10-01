@@ -49,12 +49,12 @@ export default function Chip({
   // neutral-01
   else if (theme === 'neutral-01') {
     iconTheme = `bg-neutral-01-200 group-hover:bg-neutral-01-400 group-hover:transition-all duration-200 group-hover:transition-all duration-200 ease-linear`
-    textTheme = `bg-neutral-01-100/20 text-neutral-01-700 group-hover:bg-neutral-01-100/40 group-hover:text-neutral-01-800 group-hover:transition-all duration-200 ease-linear`
+    textTheme = `bg-neutral-01-100/20 text-neutral-01-700 group-hover:bg-neutral-01-300/40 group-hover:text-neutral-01-800 group-hover:transition-all duration-200 ease-linear`
   }
   // neutral-02
   else if (theme === 'neutral-02') {
-    iconTheme = `bg-neutral-02-200 group-hover:bg-neutral-02-400 group-hover:transition-all duration-200 group-hover:transition-all duration-200 ease-linear`
-    textTheme = `bg-neutral-02-300/20 text-neutral-02-700 group-hover:bg-neutral-02-100/40 group-hover:text-neutral-02-800 group-hover:transition-all duration-200 ease-linear`
+    iconTheme = `bg-neutral-02-200 group-hover:bg-neutral-02-300 group-hover:transition-all duration-200 group-hover:transition-all duration-200 ease-linear`
+    textTheme = `bg-neutral-02-300/20 text-neutral-02-700 group-hover:bg-neutral-02-300/40 group-hover:text-neutral-02-800 group-hover:transition-all duration-200 ease-linear`
   }
   // Date
   else {

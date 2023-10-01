@@ -33,6 +33,7 @@ const Pagination = ({ total, current, category }) => {
           className={`${link} ${linkState}`}
           rel="prev"
         >
+          <Icon icon="angle-left" className="stroke-current" />
           Previous
         </Link>
       )}

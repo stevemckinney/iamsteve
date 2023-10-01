@@ -54,27 +54,20 @@ export default async function BlogIndex({ params }) {
 
   return (
     <>
-      <div className="grid col-container grid-cols-subgrid frame frame-outset-top pt-10 pb-18 gap-y-8">
-        <h1 className="col-content text-7xl font-variation-extrabold font-display text-fern-1100 lowercase">
-          Blog
-        </h1>
-        <div className="grid grid-cols-3 col-content gap-8">
-          {paginatedPosts.map((post) => (
-            <Card
-              size="medium"
-              frontmatter={post}
-              image={true}
-              key={post._id}
-            />
-          ))}
-        </div>
-        <div className="col-content">
-          <Pagination
-            total={pagination.total}
-            current={pagination.current}
-            category={false}
-          />
-        </div>
+      <h1 className="col-content text-7xl font-variation-extrabold font-display text-fern-1100 lowercase">
+        Blog
+      </h1>
+      <div className="grid grid-cols-3 col-content gap-8">
+        {paginatedPosts.map((post) => (
+          <Card size="medium" frontmatter={post} image={true} key={post._id} />
+        ))}
+      </div>
+      <div className="col-content">
+        <Pagination
+          total={pagination.total}
+          current={pagination.current}
+          category={false}
+        />
       </div>
     </>
   )
