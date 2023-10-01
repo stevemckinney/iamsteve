@@ -11,7 +11,7 @@ const siteMetadata = {
   siteLogo: '/images/logo.png',
   image: '/images/avatar.png',
   socialBanner: '/images/twitter-card.png',
-  email: 'steve@iamsteve.me',
+  email: 'hi@iamsteve.me',
   github: 'https://github.com/stevemckinney',
   twitter: 'https://twitter.com/irsteve',
   facebook: 'https://facebook.com',
