@@ -82,7 +82,7 @@ export default async function BlogCategory({ params, searchParams }) {
   }
 
   return (
-    <div className="grid col-container grid-cols-subgrid gap-y-12 pb-32 pt-18 frame frame-outset-top">
+    <>
       <PageHeader>
         <PageTitle>{data.title}</PageTitle>
       </PageHeader>
@@ -109,6 +109,6 @@ export default async function BlogCategory({ params, searchParams }) {
           category={params.slug}
         />
       </div>
-    </div>
+    </>
   )
 }
