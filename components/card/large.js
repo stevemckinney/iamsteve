@@ -26,7 +26,7 @@ const LargeImage = ({ ...props }) => {
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
         alt={title}
-        className={`radius object-cover`}
+        className={`radius`}
       />
     </>
   )
@@ -73,7 +73,9 @@ const Large = ({ frontmatter, image, className }) => {
         {categories && (
           <div className={`flex flex-row gap-4 mb-5 relative z-[2]`}>
             {categories.map((category) => (
-              <Category key={category}>{category}</Category>
+              <Category key={category} size="large">
+                {category}
+              </Category>
             ))}
           </div>
         )}

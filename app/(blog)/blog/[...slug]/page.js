@@ -135,7 +135,7 @@ export default async function PostPage({ params }) {
         </div>
         <Support />
         <aside className={`col-prose flex flex-col gap-4 -mx-8`}>
-          <h2 className="text-2xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 px-8">
+          <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 px-8">
             Next to read
           </h2>
           <div className="grid grid-cols-2 gap-x-8">

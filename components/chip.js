@@ -102,10 +102,10 @@ function ChipIcon({ iconTheme, icon, size }) {
 }
 
 function ChipText({ children, textTheme, size }) {
-  const small = 'px-3 h-6 pt-[2px]'
-  const large = 'px-3 h-8 pt-[2px]'
+  const small = 'px-2 h-6 pt-[2px] text-base'
+  const large = 'px-3 h-8 pt-[2px] text-lg'
   const sizing = size === 'small' ? small : large
-  const theme = `${textTheme} text-lg font-ui lowercase leading-none`
+  const theme = `${textTheme} font-ui lowercase leading-none`
 
   return (
     <span className={`${theme} ${sizing} rounded flex items-center`}>

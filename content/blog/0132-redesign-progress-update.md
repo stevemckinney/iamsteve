@@ -26,7 +26,7 @@ As I haven’t announced in great detail that I’m doing a redesign (why would 
 There is a level of complacency that happens with having a job. You get comfortable and don’t really update your portfolio, which can really leave you lagging behind. As a result of this I eventually removed the portfolio and made some tweaks. They were focused on moving the website in a direction of having an active blog. This made sense, as it was something I proved to myself, that I could do regularly.
 
 ### A new logo then redesign the site
-As mentioned in the [logo redesign post](), the full redesign is something I originally started in around 2013. I made good progress with the design, but the design world shifted to flat and what I made was heavily ‘skeuomorphic’. I was put off by that, I didn’t want to appear outdated. It had a negative effect, I wasn’t motivated to start again. I just couldn’t get behind ‘flat’ and the amount of time it takes to redesign a website in your personal time.
+As mentioned in the [logo redesign post](/blog/iamsteve-a-new-logomark), the full redesign is something I originally started in around 2013. I made good progress with the design, but the design world shifted to flat and what I made was heavily ‘skeuomorphic’. I was put off by that, I didn’t want to appear outdated. It had a negative effect, I wasn’t motivated to start again. I just couldn’t get behind ‘flat’ and the amount of time it takes to redesign a website in your personal time.
 
 On more recent reflection that design still met criteria of a redesign, but the shift in direction means, that much of it in terms of layout, would need to change.
 

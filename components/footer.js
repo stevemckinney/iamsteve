@@ -10,7 +10,7 @@ export default function Footer() {
         {`${new Date().getFullYear()}`}
       </p>
       <nav>
-        <Link href="#top" className="top">
+        <Link href="#top" className="top" title="Go to the header">
           Top
         </Link>
         <Link href="/feed.xml" title="Subscribe to the blog RSS feed">
