@@ -1,12 +1,8 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 import { NextResponse } from 'next/server'
 
-export const POST = async (req) => {
-  const { email, name, source } = await req.json()
-
-  if (!email) {
-    new NextResponse(JSON.stringify({ error: 'Email is required' }))
-  }
+export const GET = async (req) => {
+  const { data } = await req.json()
 
   const API_URL = process.env.EMAILOCTOPUS_API_URL
   const API_KEY = process.env.EMAILOCTOPUS_API_KEY
@@ -14,19 +10,14 @@ export const POST = async (req) => {
 
   const config = {
     api_key: API_KEY,
-    email_address: email,
-    fields: {
-      FirstName: name,
-      Source: source,
-    },
-    status: 'PENDING',
+    limit: 12,
   }
 
-  const API_ROUTE = `${API_URL}lists/${LIST_ID}/contacts`
+  const API_ROUTE = `${API_URL}campaigns`
 
   try {
     const res = await fetch(API_ROUTE, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
