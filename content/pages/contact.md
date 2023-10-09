@@ -17,3 +17,10 @@ If you’re stuck with a post, I’ll be happy to steer you in the right directi
 
 ### There’s something wrong in a post
 Maybe you’ve found an error, typo or can’t access something. Thank you for taking the time to bring it to my attention. I’ll update it.
+
+<Notepad>
+  <Notepad.Header>Contact form</Notepad.Header>
+  <Notepad.Body>
+    <ContactForm />
+  </Notepad.Body>
+</Notepad>

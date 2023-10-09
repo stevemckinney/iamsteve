@@ -7,6 +7,8 @@ import Campaigns from '@/components/campaigns'
 // import Pre from '@/components/Pre'
 // import CustomLink from '@/components/Link'
 // import TOCInline from '@/components/TOCInline'
+import ContactForm from '@/components/contact-form'
+import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
@@ -15,8 +17,8 @@ const components = {
   a: Link,
   Campaigns: Campaigns,
   NewsletterForm: NewsletterForm,
-  // pre: Pre,
-  // BlogNewsletterForm: BlogNewsletterForm,
+  Notepad: Notepad,
+  ContactForm: ContactForm,
 }
 
 export function Mdx({ code }) {
