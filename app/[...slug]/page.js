@@ -45,11 +45,16 @@ export default async function PagePage({ params }) {
   }
 
   return (
-    <article className="col-content pt-12 pb-8 flex flex-col gap-8">
-      <h1 className="text-7xl font-variation-extrabold font-display text-fern-1100 lowercase">
-        {page.title}
-      </h1>
-      <Mdx code={page.body.code} />
+    <article className="grid grid-cols-subgrid col-content pt-12 pb-8 flex flex-col gap-8">
+      <header className="col-start-1 col-end-7">
+        <h1 className="text-7xl font-variation-extrabold font-display text-fern-1100 lowercase">
+          {page.title}
+        </h1>
+        <p className="text-2xl text-ui-body">{page.description}</p>
+      </header>
+      <div className="col-content">
+        <Mdx code={page.body.code} />
+      </div>
     </article>
   )
 }

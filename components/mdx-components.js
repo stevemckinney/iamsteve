@@ -7,13 +7,14 @@ import Campaigns from '@/components/campaigns'
 // import Pre from '@/components/Pre'
 // import CustomLink from '@/components/Link'
 // import TOCInline from '@/components/TOCInline'
-// import { BlogNewsletterForm } from './NewsletterForm'
+import NewsletterForm from '@/components/newsletter-form'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 const components = {
   Image,
   a: Link,
   Campaigns: Campaigns,
+  NewsletterForm: NewsletterForm,
   // pre: Pre,
   // BlogNewsletterForm: BlogNewsletterForm,
 }
