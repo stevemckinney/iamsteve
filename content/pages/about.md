@@ -1,21 +1,19 @@
 ---
 title: About
-description: About page
+description: I’m Steve McKinney, I write this blog about the design and build of websites. I aim to explore the craft behind web design.
 ---
 
 <>
 
-  <nav className="flex flex-row gap-4">
+  <nav className="col-content flex flex-row gap-4">
     <a href="#site" className="font-ui lowercase">Site</a>
     <a href="#examples" className="font-ui lowercase">Examples</a>
     <a href="#author" className="font-ui lowercase">Author</a>
     <a href="#history" className="font-ui lowercase">History</a>
   </nav>
 
-  <article id="site" className="max-w-prose">
-    <p className="text-ui-body mb-4 text-lg">
-      I’m Steve McKinney, I write this blog about the design and build of websites. It’s a place to explore the craft of web design. From design through to code it’s all part of the design process.
-    </p>
+  <article id="site" className="col-content max-w-prose">
+
 
     <h3 className="text-3xl leading-3xl font-display font-variation-bold text-fern-1100 mb-2 pt-2">Who is this for?</h3>
 
@@ -38,11 +36,11 @@ description: About page
 
   </article>
 
-  <aside className="max-w-prose">
+  <aside className="col-content max-w-prose">
     <p className="text-ui-body text-lg">You may be interested in what the site is built with and the tools I use. You can find those on <a href="/uses" className="link">the uses page</a>.</p>
   </aside>
 
-  <article id="examples" className="max-w-prose">
+  <article id="examples" className="col-content max-w-prose">
     <h2 className="text-4xl leading-4xl font-display font-variation-bold text-fern-1100 mb-2 pt-6">Best posts</h2>
 
     <p className="text-ui-body mb-4 text-lg">
@@ -60,7 +58,7 @@ description: About page
 
   </article>
 
-  <article id="author" className="max-w-prose">
+  <article id="author" className="col-content max-w-prose">
     <h2 className="text-4xl leading-4xl font-display font-variation-bold text-fern-1100 mb-2 pt-6">About me</h2>
 
     <p className="text-ui-body mb-4 text-lg">I’m a designer based in Manchester. I specialise in visual design and user experience for websites. I’ve been doing this professionally for over 12 years. I’ve worked with a large variety of clients in differing industries. With differing needs, shops, subscriptions, services and marketing.</p>
@@ -75,7 +73,7 @@ description: About page
 
   </article>
 
-  <article id="history">
+  <article id="history" className="col-content">
     <h2 className="text-4xl leading-4xl font-display font-variation-bold text-fern-1100 mb-2 pt-6">Design history</h2>
     <p className="text-ui-body mb-4 max-w-prose">Here is the design history of this website. Version two onwards I have written about. <a href="http://dribbble.com/stevemckinney/projects/10419-My-site" title="Previous versions of my site taking shape on Dribbble">Dribbble</a> has some iterations of previous designs.</p>
 

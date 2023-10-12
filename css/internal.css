@@ -26,7 +26,9 @@
    * Overridable capability for tailwind
    */
   --ui-border-color: rgba(117, 99, 98, 0.14);
+  --ui-border-color-strong: rgba(117, 99, 98, 0.16);
   --ui-border-color-hover: rgba(117, 99, 98, 0.22);
+  --ui-border-color-strong-hover: rgba(117, 99, 98, 0.24);
 }
 
 .layout {

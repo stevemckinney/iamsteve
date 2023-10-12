@@ -113,13 +113,19 @@ module.exports = {
       },
       boxShadow: {
         reduced:
-          '0px 0px 0px 1px var(--ui-border-color), 0px 2px 4px -4px rgba(117, 99, 98, 0.08), 0px 2px 3px 0px rgba(117, 99, 98, 0.12), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
+          '0px -1px 0px var(--ui-border-color-strong), 0px 0px 0px 1px var(--ui-border-color), 0px 2px 4px -4px rgba(117, 99, 98, 0.08), 0px 2px 3px 0px rgba(117, 99, 98, 0.12), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
         placed:
-          '0px 0px 0px 1px var(--ui-border-color), 0px 6px 12px -4px rgba(117, 99, 98, 0.08), 0px 2px 4px 0px rgba(117, 99, 98, 0.10), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
+          '0px 1px 0px var(--ui-border-color-strong), 0px 0px 0px 1px var(--ui-border-color), 0px 6px 12px -4px rgba(117, 99, 98, 0.08), 0px 2px 4px 0px rgba(117, 99, 98, 0.10), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
         picked:
-          '0px 0px 0px 1px var(--ui-border-color-hover), 0px 12px 16px -4px rgba(117, 99, 98, 0.12), 0px 2px 4px 0px rgba(117, 99, 98, 0.12), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
+          '0px -1px 0px var(--ui-border-color-strong-hover), 0px 0px 0px 1px var(--ui-border-color-hover), 0px 10px 14px rgba(117, 99, 98, 0.12), 0px 2px 4px 0px rgba(117, 99, 98, 0.12), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
         floating:
           '0px 8px 24px -4px rgba(70, 42, 81, 0.12), 0px 2px 4px 0px rgba(70, 42, 81, 0.08)',
+        'dandelion-reduced':
+          '0px -1px 0px var(--ui-border-color-strong), 0px 0px 0px 1px var(--ui-border-color), 0px 2px 4px -4px rgba(117, 99, 98, 0.08), 0px 2px 3px 0px rgba(117, 99, 98, 0.12), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
+        'dandelion-placed':
+          '0px 1px 0px var(--ui-border-color-strong), 0px 0px 0px 1px var(--ui-border-color), inset 0 2px rgb(249 239 189 / .2), inset 0 -3px rgba(203 113 0 / .2), 0px 6px 12px -4px rgba(117, 99, 98, 0.08), 0px 2px 4px 0px rgba(117, 99, 98, 0.10), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
+        'dandelion-picked':
+          '0px -1px 0px var(--ui-border-color-strong-hover), 0px 0px 0px 1px var(--ui-border-color-hover), inset 0 2px rgb(249 239 189 / .2), inset 0 -3px rgba(203 113 0 / .2), 0px 12px 16px -4px rgba(117, 99, 98, 0.12), 0px 2px 4px 0px rgba(117, 99, 98, 0.12), 0px 1px 0px 0px rgba(117, 99, 98, 0.12)',
       },
       colors: {
         ui: {

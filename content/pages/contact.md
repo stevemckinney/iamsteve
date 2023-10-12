@@ -3,24 +3,29 @@ title: Contact
 description: I aim to respond to every email. I especially welcome feedback, ideas and things you’d like critique on. Just not link building.
 ---
 
-## Feedback
-Feedback is always helpful, it will help me to improve. And it also helps me to focus on the right topics. If you have any feedback or suggestions, I’ll be grateful for you taking the time.
+<Content className="col-start-content-start col-span-5 flex flex-col">
 
-## Issues with a post
-If you’re stuck with a post, I’ll be happy to steer you in the right direction. The following may help speed things up:
+  ## Feedback
+  It’s always helpful, it will help me to improve. And it helps me to focus on the right topics. If you have any feedback or suggestions, I’ll be grateful for you taking the time.
 
-- Describe the problem
-- What you’re trying to achieve
-- If it’s code related make a CodePen
-- Provide any links to work so I can see errors
-- Don’t send login details by email
+  ## Issues with a post
+  If you’re stuck with a post, I’ll be happy to steer you in the right direction. The following may help speed things up:
 
-### There’s something wrong in a post
-Maybe you’ve found an error, typo or can’t access something. Thank you for taking the time to bring it to my attention. I’ll update it.
+  - Describe the problem
+  - What you’re trying to achieve
+  - If it’s code related make a CodePen
+  - Provide any links to work so I can see errors
+  - Don’t send login details by email
 
-<Notepad>
+  ### There’s something wrong in a post
+  Maybe you’ve found an error, typo or can’t access something. Thank you for taking the time to bring it to my attention. I’ll update it.
+
+</Content>
+
+<Notepad className="col-start-7 col-end-content-end">
   <Notepad.Header>Contact form</Notepad.Header>
   <Notepad.Body>
+    If there’s anything you’d like to talk to me about you can use the contact form or <a href="mailto:hi@iamsteve.me" className="text-fern-1100 hover:text-dandelion-600 transition duration-200">send an email</a>.
     <ContactForm />
   </Notepad.Body>
 </Notepad>

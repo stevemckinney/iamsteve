@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import { allPages } from 'contentlayer/generated'
 
 import { Mdx } from '@/components/mdx-components'
+import PageHeader from '@/components/page-header'
+import PageTitle from '@/components/page-title'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400
@@ -45,16 +47,12 @@ export default async function PagePage({ params }) {
   }
 
   return (
-    <article className="grid grid-cols-subgrid col-content pt-12 pb-8 flex flex-col gap-8">
-      <header className="col-start-1 col-end-7">
-        <h1 className="text-7xl font-variation-extrabold font-display text-fern-1100 lowercase">
-          {page.title}
-        </h1>
-        <p className="text-2xl text-ui-body">{page.description}</p>
-      </header>
-      <div className="col-content">
-        <Mdx code={page.body.code} />
-      </div>
+    <article className="grid grid-cols-subgrid col-content pt-12 pb-18 gap-18">
+      <PageHeader>
+        <PageTitle>{page.title}</PageTitle>
+        <p className="text-2xl text-ui-body max-w-[34ch]">{page.description}</p>
+      </PageHeader>
+      <Mdx code={page.body.code} />
     </article>
   )
 }
