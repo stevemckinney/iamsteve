@@ -40,9 +40,12 @@ const components = {
       {...props}
     />
   ),
-  p: (props) => <p className="text-ui-body text-lg" {...props} />,
+  p: (props) => <p className="text-ui-body text-lg mb-2" {...props} />,
   ul: (props) => (
-    <ul className="text-ui-body text-lg list-outside list-disc" {...props} />
+    <ul
+      className="text-ui-body text-lg list-outside list-disc mb-2"
+      {...props}
+    />
   ),
 }
 
