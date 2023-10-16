@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import { getMDXComponent } from 'mdx-bundler/client'
 import Image from '@/components/image'
 import Link from '@/components/link'
-import Campaigns from '@/components/campaigns'
+// import Campaigns from '@/components/campaigns'
 // import Pre from '@/components/Pre'
 // import CustomLink from '@/components/Link'
 // import TOCInline from '@/components/TOCInline'
@@ -19,7 +19,7 @@ const Prose = ({ children }) => {
 const components = {
   Image,
   a: (props) => <Link {...props} />,
-  Campaigns: Campaigns,
+  // Campaigns: Campaigns,
   NewsletterForm: NewsletterForm,
   Notepad: Notepad,
   Prose: Prose,

@@ -2,18 +2,9 @@
 import { NextResponse } from 'next/server'
 
 export const GET = async (req) => {
-  const { data } = await req.json()
-
   const API_URL = process.env.EMAILOCTOPUS_API_URL
   const API_KEY = process.env.EMAILOCTOPUS_API_KEY
-  const LIST_ID = process.env.EMAILOCTOPUS_LIST_ID
-
-  const config = {
-    api_key: API_KEY,
-    limit: 12,
-  }
-
-  const API_ROUTE = `${API_URL}campaigns`
+  const API_ROUTE = `${API_URL}campaigns?api_key=${process.env.EMAILOCTOPUS_API_KEY}&limit=12`
 
   try {
     const res = await fetch(API_ROUTE, {
@@ -21,10 +12,10 @@ export const GET = async (req) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(config),
     })
+    const data = await res.json()
 
-    return new NextResponse(JSON.stringify({ res }))
+    return new NextResponse(JSON.stringify(data))
   } catch (error) {
     return new NextResponse(JSON.stringify({ error: JSON.parse(error) }))
   }
