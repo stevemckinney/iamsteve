@@ -20,19 +20,16 @@ const Small = ({ frontmatter }) => {
   const url = `/blog/${slug}`
 
   return (
-    <article className="card card-small">
+    <article className="flex gap-4">
       <div className="card-body">
-        <div className="meta f8-d dashes mb1 mb2-b">
-          <time className="warm-l1" dateTime={date} itemProp="datePublished">
-            <Date dateString={date} />
-          </time>
-        </div>
-
-        <h3 className="f6 f5-b f4-d mb0 warm">
-          <Link href={url} className="secondary-hover">
+        <h3 className="font-display">
+          <Link href={url} className="text-fern-1100 hover:text-dandelion-600 transition duration-200">
             {title}
           </Link>
         </h3>
+        <time className="font-ui text-ui-body" dateTime={date} itemProp="datePublished">
+          <Date dateString={date} />
+        </time>
 
         <div className="visuallyhidden" aria-hidden="true" tabIndex="-1">
           <Link
