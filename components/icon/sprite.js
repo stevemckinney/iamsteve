@@ -1,3 +1,10 @@
+/**
+ * Sprite
+ * - Uses SVG export plugin in Figma to export layer names to class names
+ * - Used in icon component to select correct size icon
+ * - Each icon ID has a size suffix (eg: logo-32, type-16, or type-24)
+ * - Tailwind for styling and some custom for stroke properties (eg: sl-r)
+ */
 const Sprite = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -34,39 +41,36 @@ const Sprite = (props) => (
         </g>
       </symbol>
       <symbol id="type-24" viewBox="0 0 24 24">
-        <g className="type">
-          <path d="m12 3 6 13H6l6-13Z" className="fill-white" />
-          <g className="type-24">
+        <g class="type">
+          <path d="m12 3 3 6.5V16H6l6-13Z" class="fill-white" />
+          <g class="type-24">
             <mask
-              id="type-24-mask"
-              width="15"
+              id="t24a"
+              width="13"
               height="21"
               x="2"
               y="1"
-              className="t24m"
+              class="a"
               maskUnits="userSpaceOnUse"
               style={{ maskType: 'alpha' }}
             >
-              <path d="M2 1h15v21H2z" className="type-24" />
+              <path d="M2 1h13v21H2z" class="type-24" />
             </mask>
-            <g mask="url(#type-24-mask)">
+            <g mask="url(#t24a)">
               <path
-                d="m3 23 9-20 9 20"
-                className="fill-none stroke-current stroke-2 sl-r"
+                d="m3 24 9-20 9 20"
+                class="fill-none stroke-current stroke-2"
               />
-              <path
-                d="M6 16h12"
-                className="fill-none stroke-current stroke-2 sl-r"
-              />
+              <path d="M6 16h12" class="fill-none stroke-current stroke-2" />
             </g>
           </g>
           <path
-            d="M18 2a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2"
-            className="fill-none stroke-current stroke-2 sl-r"
+            d="M16 3h2v18h-2"
+            class="fill-none stroke-current stroke-2 sl-r"
           />
           <path
-            d="M22 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2"
-            className="fill-none stroke-current stroke-2 sl-r"
+            d="M20 3h-2v18h2"
+            class="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>
