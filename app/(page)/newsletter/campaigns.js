@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Date from '@/components/date'
+import Icon from '@/components/icon'
 
 const Campaigns = () => {
   const [campaigns, setCampaigns] = useState([])
@@ -46,8 +47,21 @@ const Campaigns = () => {
           console.log(campaign)
           if (campaign.status !== 'SENT') return
           return (
-            <li className="flex justify-between" key={campaign.id}>
-              {campaign.subject} <Date dateString={campaign.sent_at} />
+            <li key={campaign.id}>
+              <span className="flex justify-between py-4">
+                {campaign.subject}{' '}
+                <span className="flex items-center leading-none gap-4">
+                  <Date
+                    dateString={campaign.sent_at}
+                    className={`font-ui lowercase text-neutral-01-400`}
+                  />
+                  <Icon
+                    icon="arrow-right"
+                    className="text-neutral-01-400"
+                    size={16}
+                  />
+                </span>
+              </span>
             </li>
           )
         })}
