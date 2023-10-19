@@ -42,22 +42,25 @@ const Campaigns = () => {
   // </a>
   if (campaigns.data && campaigns.data.length) {
     return (
-      <ul className="flex flex-col">
+      <ul className="flex flex-col -my-2">
         {campaigns.data.map((campaign) => {
           console.log(campaign)
           if (campaign.status !== 'SENT') return
           return (
-            <li key={campaign.id}>
-              <span className="flex justify-between py-4">
+            <li
+              key={campaign.id}
+              className="[&:not(:first-child)]:border-t [&:not(:first-child)]:border-t-1 [&:not(:first-child)]:border-neutral-01-200"
+            >
+              <span className="flex justify-between py-2 text-lg text-fern-1100">
                 {campaign.subject}{' '}
-                <span className="flex items-center leading-none gap-4">
+                <span className="flex items-center leading-none gap-2 text-base">
                   <Date
                     dateString={campaign.sent_at}
                     className={`font-ui lowercase text-neutral-01-400`}
                   />
                   <Icon
                     icon="arrow-right"
-                    className="text-neutral-01-400"
+                    className="text-neutral-01-400 relative top-[-1px]"
                     size={16}
                   />
                 </span>

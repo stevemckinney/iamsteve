@@ -16,7 +16,7 @@ const NotepadHeader = ({ children }) => {
 
 const NotepadBody = ({ children, className }) => {
   return (
-    <div className="px-10 py-8 shadow-placed rounded-bl-lg rounded-br-lg flex flex-col gap-4 relative z-10">
+    <div className="px-10 py-8 shadow-placed overflow-x-hidden rounded-bl-lg rounded-br-lg flex flex-col gap-4 relative z-10">
       {children}
 
       <svg

@@ -8,9 +8,9 @@ export default function FooterProfile() {
       <Subscribe className="flex justify-between col-start-content-start col-end-content-end items-end" />
       <hr className="col-content bg-rule h-[2px] border-0" />
       <div className="col-start-content-start col-span-5">
-        <Icon icon="logo" className="text-fern-1100 mb-2" size={32} />
-        <h3 className="font-display font-variation-bold text-xl lowercase mb-1">
-          Thanks for reading
+        <h3 className="font-display font-variation-bold text-xl lowercase flex gap-2 mb-1">
+          <Icon icon="logo" className="text-fern-1100 mb-2" size={32} /> About
+          this site
         </h3>
         <p className="text-ui-body text-base mb-2">
           Hi, I’m Steve McKinney, I write this publication focusing on the
