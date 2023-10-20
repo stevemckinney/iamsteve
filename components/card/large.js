@@ -73,7 +73,7 @@ const Large = ({ frontmatter, image, className }) => {
         {categories && (
           <div className={`flex flex-row gap-4 mb-5 relative z-[2]`}>
             {categories.map((category) => (
-              <Category key={category} size="large">
+              <Category key={category} size={24}>
                 {category}
               </Category>
             ))}
