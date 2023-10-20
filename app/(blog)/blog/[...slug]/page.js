@@ -92,13 +92,13 @@ export default async function PostPage({ params }) {
               post.categories.map((category) => {
                 return (
                   <>
-                    <Category size="large" key={category}>
+                    <Category size={24} key={category}>
                       {category}
                     </Category>
                   </>
                 )
               })}
-            <Chip size="large" theme="cornflour" iconStart={`calendar`}>
+            <Chip size={24} theme="cornflour" iconStart={`calendar`}>
               <Date dateString={post.date} />
             </Chip>
             <ViewCounter
