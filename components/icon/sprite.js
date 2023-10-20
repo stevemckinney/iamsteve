@@ -41,36 +41,39 @@ const Sprite = (props) => (
         </g>
       </symbol>
       <symbol id="type-24" viewBox="0 0 24 24">
-        <g class="type">
-          <path d="m12 3 3 6.5V16H6l6-13Z" class="fill-white" />
-          <g class="type-24">
+        <g className="type">
+          <path d="m12 3 3 6.5V16H6l6-13Z" className="fill-white" />
+          <g className="type-24">
             <mask
               id="t24a"
               width="13"
               height="21"
               x="2"
               y="1"
-              class="a"
+              className="a"
               maskUnits="userSpaceOnUse"
               style={{ maskType: 'alpha' }}
             >
-              <path d="M2 1h13v21H2z" class="type-24" />
+              <path d="M2 1h13v21H2z" className="type-24" />
             </mask>
             <g mask="url(#t24a)">
               <path
                 d="m3 24 9-20 9 20"
-                class="fill-none stroke-current stroke-2"
+                className="fill-none stroke-current stroke-2"
               />
-              <path d="M6 16h12" class="fill-none stroke-current stroke-2" />
+              <path
+                d="M6 16h12"
+                className="fill-none stroke-current stroke-2"
+              />
             </g>
           </g>
           <path
             d="M16 3h2v18h-2"
-            class="fill-none stroke-current stroke-2 sl-r"
+            className="fill-none stroke-current stroke-2 sl-r"
           />
           <path
             d="M20 3h-2v18h2"
-            class="fill-none stroke-current stroke-2 sl-r"
+            className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>
@@ -1245,6 +1248,30 @@ const Sprite = (props) => (
           <path
             d="m6 10 8-8m-4 0h4v4M6 2H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3"
             className="path"
+          />
+        </g>
+      </symbol>
+      <symbol id="vector-square-24" viewBox="0 0 24 24">
+        <g class="vector-square">
+          <path
+            d="M6 19a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12c0 .552-.442 1-.994 1H6Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M7 3H3v4h4V3Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M7 17H3v4h4v-4Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M21 3h-4v4h4V3Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M21 17h-4v4h4v-4Z"
+            class="fill-white stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>
