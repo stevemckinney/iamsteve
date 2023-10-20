@@ -2,7 +2,7 @@ import GithubSlugger from 'github-slugger'
 import Chip from '@/components/chip'
 import Categories from '@/content/categories'
 
-const Category = ({ size = 'small', children }) => {
+const Category = ({ size = 16, children }) => {
   const title = Categories.findIndex((category) => category.title === children)
   const slugger = new GithubSlugger()
   const category = Categories[title]
