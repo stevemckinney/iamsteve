@@ -24,7 +24,7 @@ If you’re new to this style of writing CSS, the principle is generally to do o
 
 In the example of font sizing, we’ll end up with CSS which looks somewhat like the following:
 
-```css:example.css showLineNumbers
+```css title="example.css" showLineNumbers
 .f1 {
   font-size: 36px; }
 
@@ -54,7 +54,7 @@ In the example of font sizing, we’ll end up with CSS which looks somewhat like
 
 You have multiple class names for applying one property across a set of media queries. The class names inside the media queries have a suffix which identifies them eg: `-a`. You may have more font sizes, you may have more breakpoints. The idea is speed, less repetitive writing of the same CSS and more consistency.
 
-```markup:example.html showLineNumbers
+```markup title="example.html" showLineNumbers
 <h1 class="f3 f2-a f1-d">This is my heading</h1>
 <p class="f6 f5-d">This is my paragraph of text, lorem ipsum dolor sit.</p>
 ```
@@ -76,7 +76,7 @@ Depending on the stage you find yourself at, be it the site is built, ready to b
 
 Next, add each of those font sizes to variables. They will be used within the next steps, it also helps keep things reusable.
 
-```scss:variables.scss showLineNumbers
+```scss title="variables.scss" showLineNumbers
 $f1: 36px;
 $f2: 30px;
 $f3: 24px;
@@ -91,7 +91,7 @@ The naming of each variable isn’t make or break. For me `f1` through `f6` work
 
 Next, you need to choose a naming convention and write the CSS for your font sizes. These will be used as the lowest breakpoint, or when you don’t need the font size to change across the board.
 
-```scss:typography.scss showLineNumbers
+```scss title="typography.scss" showLineNumbers
 .f1 { font-size: $f1; }
 .f2 { font-size: $f2; }
 .f3 { font-size: $f3; }
@@ -112,7 +112,7 @@ $c: 960px;
 
 Define variables for your widths, like your font sizes. And again, naming isn’t hugely important, but I always recommend something short and memorable.
 
-```scss:_font-size.scss showLineNumbers
+```scss title="_font-size.scss" showLineNumbers
 $breakpoint-map: (
   'a': $a,
   'b': $b,
@@ -126,7 +126,7 @@ The second step is to set up your breakpoint map. You want the keys (eg: `'a'`) 
 
 The next step is where Sass does all the work for you and you will see the benefits of how quickly it can be adjusted.
 
-```scss:_font-size.scss showLineNumbers=7
+```scss title="_font-size.scss" showLineNumbers=7
 // Loop through the breakpoint map, assign each breakpoint to the relevant variable
 // eg: $breakpoint-name = 'b' and $breakpoint-width = 480px
 @each $breakpoint-name, $breakpoint-width in $breakpoint-map {

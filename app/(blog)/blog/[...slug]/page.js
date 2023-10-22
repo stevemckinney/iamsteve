@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import Script from 'next/script'
-import { Mdx } from '@/components/mdx-components'
+import { PostMdx } from '@/components/mdx-components'
 import siteMetadata from '@/content/metadata'
 
 // page components
@@ -131,7 +131,7 @@ export default async function PostPage({ params }) {
         <div
           className={`${styles.prose} prose grid grid-cols-subgrid gap-x-8 gap-y-0 col-prose col-prose`}
         >
-          <Mdx code={post.body.code} />
+          <PostMdx code={post.body.code} />
         </div>
         <Support />
         <aside className={`col-prose flex flex-col gap-4 -mx-8`}>

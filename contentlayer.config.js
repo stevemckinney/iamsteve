@@ -4,15 +4,17 @@ import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
 import smartypants from 'remark-smartypants'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-// import rehypePrism from 'rehype-prism-plus'
 import remarkRehype from 'remark-rehype'
+import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import parse from 'rehype-parse'
 import slug from 'rehype-slug'
 import stringify from 'rehype-stringify'
+
 // import rehypeToc from '@jsdevtools/rehype-toc'
 // import rehypeCitation from 'rehype-citation'
 
+// import rehypePrism from 'rehype-prism-plus'
 // import remarkCodeTitles from './lib/remark-code-title'
 // import customizeTOC from './lib/customise-toc'
 
@@ -107,6 +109,25 @@ export default makeSource({
             className: ['fragment'],
             ariaHidden: true,
             tabIndex: -1,
+          },
+        },
+      ],
+      [
+        rehypePrettyCode,
+        {
+          theme: 'css-variables',
+          onVisitLine(node) {
+            // Prevent lines from collapsing in `display: grid` mode, and allow empty
+            // lines to be copy/pasted
+            if (node.children.length === 0) {
+              node.children = [{ type: 'text', value: ' ' }]
+            }
+          },
+          onVisitHighlightedLine(node) {
+            node.properties.className.push('line-highlighted')
+          },
+          onVisitHighlightedWord(node) {
+            node.properties.className = ['word-highlighted']
           },
         },
       ],

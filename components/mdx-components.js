@@ -49,8 +49,20 @@ const components = {
   ),
 }
 
+const postComponents = {
+  Image,
+  a: (props) => <Link {...props} />,
+  Prose: Prose,
+}
+
 export function Mdx({ code }) {
   const Component = useMDXComponent(code)
 
   return <Component components={components} />
+}
+
+export function PostMdx({ code }) {
+  const Component = useMDXComponent(code)
+
+  return <Component components={postComponents} />
 }

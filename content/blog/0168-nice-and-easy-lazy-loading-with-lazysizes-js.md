@@ -95,7 +95,7 @@ This calculation is based upon the aspect ratio of the image. To calculate this 
 ### CSS for image sizing
 This is called [the intrinsic ratio method](https://alistapart.com/d/creating-intrinsic-ratios-for-video/example2.html), with a few additional lines of CSS, this sizes your image appropriately. A background gradient has been added to show something will be there.
 
-```scss:image.scss showLineNumbers
+```scss title="image.scss" showLineNumbers
 .image {
   position: relative;
   padding-bottom: 66.5492958%;
@@ -117,7 +117,7 @@ Another benefit of lazy loading images is if the visitor doesn’t reach that im
 ### CSS for loading indicator
 The `loading` class will apply the loading indicator and also be used in JavaScript later.
 
-```scss:lazyloading.scss showLineNumbers
+```scss title="lazyloading.scss" showLineNumbers
 @keyframes scaleout {
   0% {
     transform: scale(0); }
@@ -151,7 +151,7 @@ You’ll also notice `mix-blend-mode`, this will mean that the loading indicator
 ### CSS to fade the image in
 The final step to make it all seamless is to utilise the `lazyload` class. This was added to the `img` tag earlier and gets transformed into `lazyloaded`. You can use this to transition the opacity, or whatever you see fit.
 
-```css:lazyloading.scss showLineNumbers
+```css title="lazyloading.scss" showLineNumbers
 .lazyload,
 .lazyloading {
   opacity: 0; }
