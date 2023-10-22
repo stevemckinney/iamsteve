@@ -1252,26 +1252,26 @@ const Sprite = (props) => (
         </g>
       </symbol>
       <symbol id="vector-square-24" viewBox="0 0 24 24">
-        <g class="vector-square">
+        <g className="vector-square">
           <path
             d="M6 19a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12c0 .552-.442 1-.994 1H6Z"
-            class="fill-white stroke-current stroke-2 sl-r"
+            className="fill-white stroke-current stroke-2 sl-r"
           />
           <path
             d="M7 3H3v4h4V3Z"
-            class="fill-white stroke-current stroke-2 sl-r"
+            className="fill-white stroke-current stroke-2 sl-r"
           />
           <path
             d="M7 17H3v4h4v-4Z"
-            class="fill-white stroke-current stroke-2 sl-r"
+            className="fill-white stroke-current stroke-2 sl-r"
           />
           <path
             d="M21 3h-4v4h4V3Z"
-            class="fill-white stroke-current stroke-2 sl-r"
+            className="fill-white stroke-current stroke-2 sl-r"
           />
           <path
             d="M21 17h-4v4h4v-4Z"
-            class="fill-white stroke-current stroke-2 sl-r"
+            className="fill-white stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>
