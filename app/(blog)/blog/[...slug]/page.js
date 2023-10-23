@@ -139,8 +139,16 @@ export default async function PostPage({ params }) {
             Next to read
           </h2>
           <div className="grid grid-cols-2 gap-x-8">
-            <NextPost id={169} />
-            <NextPost id={170} />
+            <Card
+              size="medium"
+              image={false}
+              frontmatter={getRandomItem(allPosts, post.categories[0])}
+            />
+            <Card
+              size="medium"
+              image={false}
+              frontmatter={getRandomItem(allPosts, post.categories[0])}
+            />
           </div>
         </aside>
       </article>
@@ -154,10 +162,20 @@ export default async function PostPage({ params }) {
   )
 }
 
+function getRandomItem(set, category) {
+  const allItems = allPosts.filter(
+    (post) => post.status === 'open' && post.categories.includes(category)
+  )
+  const items = Array.from(allItems)
+  return items[Math.floor(Math.random() * items.length)]
+}
+
 export async function NextPost({ id }) {
   const post = allPosts
     .filter((post) => post.status === 'open')
     .find((item) => item.id === Number(id))
+
+  console.log(getRandomItem(allPosts))
 
   return <Card size="medium" image={false} frontmatter={post} />
 }
