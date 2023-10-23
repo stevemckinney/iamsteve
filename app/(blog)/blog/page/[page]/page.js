@@ -5,6 +5,7 @@ import { sortPosts } from '@/lib/utils/content'
 
 import Card from '@/components/card'
 import Pagination from '@/components/pagination'
+import Image from '@/components/image'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400
@@ -54,6 +55,14 @@ export default async function BlogIndex({ params }) {
 
   return (
     <>
+      <Image
+        src="/images/illustration/pencil-mono.svg"
+        width={962}
+        height={46}
+        className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-2 drop-shadow-placed`}
+        alt=""
+        role="presentation"
+      />
       <h1 className="col-content text-7xl font-variation-extrabold font-display text-fern-1100 lowercase">
         Blog
       </h1>

@@ -9,6 +9,7 @@ import Image from '@/components/image'
 import Card from '@/components/card'
 import Category from '@/components/category'
 import Chip from '@/components/chip'
+import PageHeader from '@/components/page-header'
 import PageTitle from '@/components/page-title'
 import Date from '@/components/date'
 import Icon from '@/components/icon'
@@ -70,7 +71,7 @@ export default async function PostPage({ params }) {
           src="/images/illustration/pencil-mono.svg"
           width={962}
           height={46}
-          className={`col-start-1 col-end-4 max-w-[initial] justify-self-end self-start mt-5 row-start-1 drop-shadow-placed`}
+          className={`col-start-1 col-end-4 max-w-[initial] justify-self-end self-start mt-3 row-start-1 drop-shadow-placed`}
           alt=""
           role="presentation"
         />
