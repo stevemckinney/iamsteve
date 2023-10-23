@@ -5,7 +5,7 @@ description: I aim to respond to every email. I especially welcome feedback, ide
 
 <Content className="col-start-content-start col-span-5 flex flex-col">
 
-  ## Feedback
+  ## Critique
   It’s always helpful, it will help me to improve. And it helps me to focus on the right topics. If you have any feedback or suggestions, I’ll be grateful for you taking the time.
 
   ## Issues with a post
