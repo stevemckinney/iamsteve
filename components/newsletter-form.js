@@ -73,17 +73,19 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
         )}
         <form className="flex flex-col gap-4" onSubmit={subscribe}>
           <div className="flex flow-row gap-4">
-            <div className="flex flex-col w-2/5 gap-2">
+            <div className="flex flex-col w-2/5">
               <label
                 htmlFor={`input-name-${unique}`}
-                className="font-ui text-base lowercase text-fern-1100"
+                className="font-ui text-base lowercase text-fern-1100 leading-none mb-1"
               >
                 First name
               </label>
+              <p className="text-sm text-ui-body opacity-80 leading-none mb-3">
+                What do you go by?
+              </p>
               {/* linear-gradient(180deg, rgba(79, 64, 63, 0.03) 0%, rgba(79, 64, 63, 0.00) 100%), #FFF) */}
               <input
                 type="text"
-                placeholder={`What do you go by?`}
                 className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30`}
                 name="fields[first_name]"
                 id={`input-name-${unique}`}
@@ -91,18 +93,20 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
                 disabled={subscribed}
               />
             </div>
-            <div className="flex flex-col w-3/5 gap-2">
+            <div className="flex flex-col w-3/5">
               <label
                 htmlFor={`input-email-${unique}`}
-                className="font-ui text-base lowercase text-fern-1100"
+                className="font-ui text-base lowercase text-fern-1100 leading-none mb-1"
               >
                 Email
               </label>
+              <p className="text-sm text-ui-body opacity-80 leading-none mb-3">
+                Your best email address
+              </p>
               <input
                 type="email"
                 autoComplete="email"
                 autoCapitalize="none"
-                placeholder={`Your best email address`}
                 className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30`}
                 id={`input-email-${unique}`}
                 name="email_address"

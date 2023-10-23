@@ -83,7 +83,10 @@ const Large = ({ frontmatter, image, className }) => {
           className="font-display font-variation-bold text-5xl lowercase m-0 p-0"
           id={`title-${id}`}
         >
-          <Link href={slug} className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-[1]">
+          <Link
+            href={slug}
+            className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-[1]"
+          >
             {title}
           </Link>
         </h2>
