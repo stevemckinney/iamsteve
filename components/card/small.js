@@ -27,7 +27,7 @@ const Small = ({ frontmatter }) => {
   const url = `/blog/${slug}`
 
   return (
-    <div className="relative flex gap-4 rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition ease-linear duration-200 overflow-hidden p-8">
+    <div className="relative flex gap-4 rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:scale-[.99375] bg-white active:bg-neutral-01-50 bg-clip-padding transition ease-linear duration-200 overflow-hidden p-8">
       {categories && (
         <div className={`flex flex-row gap-4 relative z-[2] overflow-x-auto`}>
           {categories.slice(0, 1).map((category) => {
