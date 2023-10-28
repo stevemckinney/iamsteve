@@ -15,11 +15,11 @@ export default function Header() {
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-10"
         id="top"
       >
-        <div className="col-content flex items-center justify-between py-9 px-8 -mx-8 bg-neutral-01-100">
+        <div className="col-content flex items-center justify-between py-4 md:py-9 md:px-8 md:-mx-8 bg-neutral-01-100">
           <Link href="/" className="flex-1">
             <Icon icon="logo" size={32} />
           </Link>
-          <nav className="flex flex-1 gap-12">
+          <nav className="flex flex-1 gap-12 max-md:fixed left-0 right-0 bottom-0 z-10">
             {navigation.map((link) => (
               <Link
                 href={link.href}
