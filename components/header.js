@@ -8,7 +8,7 @@ import Icon from '@/components/icon'
 import styles from './header.module.scss'
 
 export default function Header() {
-  const navLink = `flex items-center gap-2 text-xl font-ui lowercase leading-none relative ${styles.link}`
+  const navLink = `flex items-center gap-1 md:gap-2 text-xl font-ui lowercase leading-none relative max-md:flex-col ${styles.link}`
   return (
     <>
       <header
