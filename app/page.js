@@ -64,7 +64,7 @@ export default async function Home() {
       <main className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end gap-y-18 pb-18">
         <Hero />
         <div
-          className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
+          className="grid col-container grid-cols-subgrid frame frame-16 md:frame-40 gap-y-8 pb-18 mt-[1.375rem]"
           id="latest"
         >
           <Title
@@ -90,7 +90,7 @@ export default async function Home() {
         </div>
 
         <div
-          className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
+          className="grid col-container grid-cols-subgrid frame frame-16 md:frame-40 gap-y-8 pb-18 mt-[1.375rem]"
           id="popular-code"
         >
           <Title
@@ -115,7 +115,7 @@ export default async function Home() {
         </div>
 
         <div
-          className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[1.375rem]"
+          className="grid col-container grid-cols-subgrid frame frame-16 md:frame-40 gap-y-8 pb-18 mt-[1.375rem]"
           id="popular-code"
         >
           <Title

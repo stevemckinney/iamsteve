@@ -7,7 +7,7 @@ import styles from './hero.module.scss'
 export default function Hero() {
   return (
     <div
-      className={`${styles.hero} col-container flex flex-col items-center relative frame frame-16 md:frame-40 frame md:frame-outset-top pt-12 md:pt-10 md:pb-[5.5rem] gap-y-4`}
+      className={`${styles.hero} col-container flex flex-col items-center relative frame frame-16 md:frame-40 frame md:frame-outset-top py-12 md:pt-10 md:pb-[5.5rem] gap-y-4`}
     >
       <h1 className="text-fern-1100 font-display text-5xl md:text-7xl col-start-7 col-end-12 font-variation-bold md:font-variation-extrabold lowercase text-center max-w-[13ch]">
         Exploring web design craft
@@ -16,14 +16,25 @@ export default function Hero() {
         Tips and tutorials about the design{'\u00A0'}and{'\u00A0'}build of web
         interfaces
       </p>
-      <ul className="inline-flex flex-wrap justify-center gap-4 py-2 max-md:mb-[5.5rem]">
+      <ul className="inline-flex flex-wrap justify-center gap-4 md:py-2 max-md:mb-12">
         <li>
           <Link
             href="/design"
             className="flex gap-2 font-ui md:text-lg lowercase items-center"
           >
-            <span className="p-1 bg-rio-300 rounded-lg">
+            <span
+              className="p-1 bg-rio-300 rounded-lg max-md:hidden"
+              role="presentation"
+              aria-hidden="true"
+            >
               <Icon icon="pen" />
+            </span>
+            <span
+              className="p-1 bg-rio-300 rounded-lg md:hidden"
+              role="presentation"
+              aria-hidden="true"
+            >
+              <Icon icon="pen" size={16} />
             </span>
             Explore design
           </Link>
@@ -33,14 +44,83 @@ export default function Hero() {
             href="/code"
             className="flex gap-2 font-ui md:text-lg lowercase items-center"
           >
-            <span className="p-1 bg-dandelion-300 rounded-lg">
+            <span className="p-1 bg-dandelion-300 rounded-lg max-md:hidden">
               <Icon icon="code" />
+            </span>
+            <span className="p-1 bg-dandelion-300 rounded-lg md:hidden">
+              <Icon icon="code" size={16} />
             </span>
             Explore code
           </Link>
         </li>
       </ul>
-      <div className="flex gap-2 flex-row flex-nowrap max-md:px-18 max-w-full md:relative md:w-[798px] md:h-[276px]">
+      <div className="flex justify-end gap-2 flex-row flex-nowrap max-w-full max-md:px-12 md:hidden">
+        <Image
+          src="/images/illustration/spot-mono/sharpener.svg"
+          width={96}
+          height={96}
+          className={`max-w-[initial] drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+        <Image
+          src="/images/illustration/spot-mono/star.svg"
+          width={96}
+          height={96}
+          className={`max-w-[initial] drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+        <Image
+          src="/images/illustration/spot-mono/sticky.svg"
+          width={96}
+          height={96}
+          className={`max-w-[initial] drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+        <Image
+          src="/images/illustration/spot-mono/safari.svg"
+          width={96}
+          height={96}
+          className={`max-w-[initial] drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+        <Image
+          src="/images/illustration/spot-mono/figma.svg"
+          width={96}
+          height={96}
+          className={`max-w-[initial] drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+        <Image
+          src="/images/illustration/spot-mono/terminal.svg"
+          width={96}
+          height={96}
+          className={`max-w-[initial] drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+        <Image
+          src="/images/illustration/spot-mono/pencil.svg"
+          width={96}
+          height={96}
+          className={`max-w-[initial] drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+        <Image
+          src="/images/illustration/spot-mono/pen.svg"
+          width={96}
+          height={96}
+          className={`max-w-[initial] drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+      </div>
+      <div className="flex gap-2 flex-row flex-nowrap max-md:px-12 max-w-full md:relative md:w-[798px] md:h-[276px]">
         <Image
           src="/images/illustration/pencil-mono.svg"
           width={962}
@@ -158,72 +238,6 @@ export default function Hero() {
           width={32}
           height={32}
           className={`max-md:hidden absolute max-w-[initial] bottom-[3.625rem] right-[3rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
-        />
-      </div>
-      <div className="flex justify-end gap-2 flex-row flex-nowrap max-w-full max-md:px-18 md:hidden">
-        <Image
-          src="/images/illustration/spot-mono/pen.svg"
-          width={96}
-          height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
-        />
-        <Image
-          src="/images/illustration/spot-mono/terminal.svg"
-          width={96}
-          height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
-        />
-        <Image
-          src="/images/illustration/spot-mono/sharpener.svg"
-          width={96}
-          height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
-        />
-        <Image
-          src="/images/illustration/spot-mono/star.svg"
-          width={96}
-          height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
-        />
-        <Image
-          src="/images/illustration/spot-mono/sticky.svg"
-          width={96}
-          height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
-        />
-        <Image
-          src="/images/illustration/spot-mono/safari.svg"
-          width={96}
-          height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
-        />
-        <Image
-          src="/images/illustration/spot-mono/figma.svg"
-          width={96}
-          height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
-        />
-        <Image
-          src="/images/illustration/spot-mono/pencil.svg"
-          width={96}
-          height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
           alt=""
           role="presentation"
         />
