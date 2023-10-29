@@ -7,9 +7,6 @@ const nextConfig = {
   reactStrictMode: false,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   staticPageGenerationTimeout: 120,
-  experimental: {
-    serverActions: true,
-  },
   eslint: {
     dirs: ['app', 'components', 'lib', 'scripts'],
   },
