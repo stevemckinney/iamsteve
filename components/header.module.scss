@@ -1,5 +1,5 @@
-@screen md {
-  .link {
+.link {
+  @screen md {
     &:after {
       content: '';
       display: block;
@@ -14,7 +14,8 @@
       }
 
       @supports (transition: 1s linear(0, 0.5, 1)) {
-        transition: fill 0.4s linear(0, 0.75 50%, 1), opacity 0.4s linear(0, 0.75 50%, 1),
+        transition: fill 0.4s linear(0, 0.75 50%, 1),
+          opacity 0.4s linear(0, 0.75 50%, 1),
           transform 0.6s linear(0, 0.875 50%, 1);
       }
     }
@@ -28,14 +29,26 @@
       top: 100%;
     }
   }
+}
 
-  .start:after {
-    left: calc(24px + theme('padding.2'));
-    right: 0;
-  }
+.start:after {
+  left: calc(24px + theme('padding.2'));
+  right: 0;
+}
 
-  .end:after {
-    left: 0;
-    right: calc(24px + theme('padding.2'));
+.end:after {
+  left: 0;
+  right: calc(24px + theme('padding.2'));
+}
+
+.vertical {
+  @media not all and (min-width: theme('screens.md')) {
+    @supports (padding: max(0px)) {
+      transition: 0.2s;
+      padding-bottom: max(
+        theme('spacing.4'),
+        calc(env(safe-area-inset-bottom) + theme('spacing.2'))
+      );
+    }
   }
 }
