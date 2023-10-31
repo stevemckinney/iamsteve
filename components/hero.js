@@ -44,10 +44,16 @@ export default function Hero() {
             href="/code"
             className="flex gap-2 font-ui md:text-lg lowercase items-center"
           >
-            <span className="p-1 bg-dandelion-300 rounded-lg max-md:hidden">
+            <span
+              className="p-1 bg-dandelion-300 rounded-lg max-md:hidden"
+              aria-hidden="true"
+            >
               <Icon icon="code" />
             </span>
-            <span className="p-1 bg-dandelion-300 rounded-lg md:hidden">
+            <span
+              className="p-1 bg-dandelion-300 rounded-lg md:hidden"
+              aria-hidden="true"
+            >
               <Icon icon="code" size={16} />
             </span>
             Explore code
