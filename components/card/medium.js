@@ -23,7 +23,7 @@ const MediumImage = ({ ...props }) => {
         className="object-contain"
         role="presentation"
         width={384}
-        height={316}
+        height={240}
         alt={title}
       />
     </>
@@ -54,7 +54,7 @@ const Medium = ({ frontmatter, image, className }) => {
           <Link
             href={slug}
             title=""
-            className={`flex items-center justify-center aspect-[1.2151898734/1] ${className}`}
+            className={`flex items-center justify-center aspect-[1.6/1] ${className}`}
             style={{ backgroundColor: `${imageColor}` }}
             aria-labelledby={`title-${id}`}
             tabIndex="0"

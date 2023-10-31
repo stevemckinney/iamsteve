@@ -22,7 +22,7 @@ const LargeImage = ({ ...props }) => {
         src={image}
         role="presentation"
         width={592}
-        height={368}
+        height={384}
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
         alt={title}
@@ -32,7 +32,7 @@ const LargeImage = ({ ...props }) => {
   )
 }
 
-const Large = ({ frontmatter, image, className }) => {
+const Container = ({ frontmatter, image, className }) => {
   const {
     slug,
     date,
@@ -50,7 +50,7 @@ const Large = ({ frontmatter, image, className }) => {
   const imageColor = theme ? theme.toString() : '#e8dcd9'
 
   return (
-    <article className="flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden relative">
+    <article className="@container flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden relative">
       {image && (
         <Link
           href={slug}
@@ -114,4 +114,4 @@ const Large = ({ frontmatter, image, className }) => {
   )
 }
 
-export default Large
+export default Container

@@ -64,7 +64,7 @@ export default async function Home() {
       <main className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end gap-y-18 pb-18">
         <Hero />
         <div
-          className="grid col-container grid-cols-subgrid frame frame-16 md:frame-40 gap-y-8 pb-18 mt-[1.375rem]"
+          className="grid col-container grid-cols-subgrid md:frame md:frame-40 gap-y-4 md:gap-y-8 pb-18 mt-[1.375rem]"
           id="latest"
         >
           <Title
@@ -76,7 +76,7 @@ export default async function Home() {
             What’s new
           </Title>
 
-          <div className="grid grid-cols-2 col-content gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 col-content gap-4 md:gap-8">
             {posts.map((post) => (
               <Card
                 size="large"
