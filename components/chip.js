@@ -30,9 +30,9 @@ export default function Chip({ children, theme, size = 16, iconStart, href }) {
   }
 }
 
-export function ChipIcon({ children, theme, size, className }) {
-  const small = 'w-6 h-6'
-  const large = 'w-8 h-8'
+export function ChipIcon({ children, theme, size, className = 'ci' }) {
+  const small = 'w-6 h-6 flex-[0_0_auto]'
+  const large = 'w-8 h-8 flex-[0_0_auto]'
   const sizing = size === 16 ? small : large
 
   let iconTheme
@@ -87,9 +87,9 @@ export function ChipIcon({ children, theme, size, className }) {
   )
 }
 
-export function ChipText({ children, theme, size, className }) {
-  const small = 'px-2 h-6 pt-[2px] text-base'
-  const large = 'px-3 h-8 pt-[2px] text-lg'
+export function ChipText({ children, theme, size, className = 'ct' }) {
+  const small = 'px-2 h-6 pt-[2px] text-base flex-[0_0_auto]'
+  const large = 'px-3 h-8 pt-[2px] text-lg flex-[0_0_auto]'
   const sizing = size === 16 ? small : large
 
   let textTheme

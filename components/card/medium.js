@@ -82,7 +82,7 @@ const Medium = ({ frontmatter, image, className }) => {
                 kind="post"
                 href={slug}
                 title=""
-                className={`flex items-center justify-center aspect-[1.2131147541/1] ${className}`}
+                className={`flex items-center justify-center aspect-[1.6/1] ${className}`}
                 style={{ backgroundColor: `${imageColor}` }}
                 aria-labelledby={`title-${id}`}
                 tabIndex="0"
@@ -93,7 +93,7 @@ const Medium = ({ frontmatter, image, className }) => {
                 kind="post"
                 href={slug}
                 title=""
-                className={`flex items-center justify-center aspect-[1.2131147541/1] ${className}`}
+                className={`flex items-center justify-center aspect-[1.6/1] ${className}`}
                 style={{ backgroundColor: `${imageColor}` }}
                 aria-labelledby={`title-${id}`}
                 tabIndex="0"
@@ -102,10 +102,10 @@ const Medium = ({ frontmatter, image, className }) => {
           </div>
         </>
       )}
-      <div className="flex flex-col flex-auto relative before:content-[''] before:w-16 before:h-6 before:absolute before:top-8 before:right-0 before:bg-gradient-to-r before:from-white/0 before:to-white before:z-[3] pb-[1.625rem]">
+      <div className="flex flex-col flex-auto relative before:content-[''] before:w-16 before:h-6 before:absolute before:top-8 before:right-0 before:bg-gradient-to-r before:from-white/0 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50 before:z-[3] pb-[1.625rem]">
         {categories && (
           <div
-            className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pt-8 pb-4 px-8`}
+            className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pt-8 pb-3 px-8`}
           >
             {categories.map((category) => (
               <Category key={category} tabIndex="1">
@@ -114,7 +114,7 @@ const Medium = ({ frontmatter, image, className }) => {
             ))}
           </div>
         )}
-        <div className="flex flex-col gap-[.5625rem] px-8 pt-[.8125rem]">
+        <div className="flex flex-col gap-2 px-8 pt-[.8125rem]">
           <h2
             className="font-display font-variation-bold text-2xl leading-2xl lowercase m-0 p-0"
             id={`title-${id}`}

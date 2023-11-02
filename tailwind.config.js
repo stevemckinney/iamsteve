@@ -30,7 +30,7 @@ module.exports = {
       '5xl': ['3rem', { lineHeight: '.9166667', letterSpacing: '-.03125em' }],
       '4xl': ['2.5rem', { lineHeight: '.9', letterSpacing: '-.0125em' }],
       '3xl': ['2rem', { lineHeight: '1', letterSpacing: '-.015625em' }],
-      '2xl': ['1.5rem', { lineHeight: '1.166667' }],
+      '2xl': ['1.5rem', { lineHeight: '1.5' }],
       xl: ['1.3125rem', { lineHeight: '1.5' }],
       lg: ['1.125rem', { lineHeight: '1.5' }],
       base: ['1rem', { lineHeight: '1.5' }],
