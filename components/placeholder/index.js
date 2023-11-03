@@ -45,7 +45,7 @@ const Placeholder = ({ category, ...props }) => {
 
   return (
     <Link {...props} style={{ backgroundColor: backgroundColor }}>
-      <Image src={randomImage?.imageUrl} alt="" width={388} height={316} />
+      <Image src={randomImage?.imageUrl} alt="" width={384} height={240} />
     </Link>
   )
 }
