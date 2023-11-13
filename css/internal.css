@@ -24,8 +24,8 @@
    * --spacing isn't * 3 as the gutter is included.
    * The gutter here is using a gap-x-4 so that plus --spacing is equal to 24px
    */
-  --grid-8: [margin-start] var(--spacing) [container-start content-start
-    prose-start] repeat(8, minmax(0, 1fr)) [prose-end content-end container-end]
+  --grid-6: [margin-start] var(--spacing) [container-start content-start
+    prose-start] repeat(6, minmax(0, 1fr)) [prose-end content-end container-end]
     var(--spacing) [margin-end];
 
   --grid-16: [margin-start] var(--grid-margin) [container-start]
@@ -118,7 +118,7 @@
 }
 
 .layout {
-  grid-template-columns: var(--grid-8);
+  grid-template-columns: var(--grid-6);
 
   @screen md {
     grid-template-columns: var(--grid-16);

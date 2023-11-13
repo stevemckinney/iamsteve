@@ -61,10 +61,10 @@ export default async function Home() {
 
   return (
     <>
-      <main className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end gap-y-18 pb-18">
+      <main className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end gap-y-10 md:gap-y-18 mb-10 md:pb-18">
         <Hero />
         <div
-          className="grid col-container grid-cols-subgrid md:frame md:frame-40 gap-y-4 md:gap-y-8 pb-18 mt-[1.375rem]"
+          className="grid col-container grid-cols-subgrid md:frame md:frame-40 gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
           id="latest"
         >
           <Title
@@ -90,7 +90,7 @@ export default async function Home() {
         </div>
 
         <div
-          className="grid col-container grid-cols-subgrid frame frame-16 md:frame-40 gap-y-8 pb-18 mt-[1.375rem]"
+          className="grid col-container grid-cols-subgrid md:frame md:frame-40 gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
           id="popular-code"
         >
           <Title
@@ -102,7 +102,7 @@ export default async function Home() {
             Popular <span className="text-rio-400">design</span>
           </Title>
 
-          <div className="grid grid-cols-3 col-content gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-content gap-4 md:gap-8">
             {design.map((post) => (
               <Card
                 size="medium"
@@ -115,7 +115,7 @@ export default async function Home() {
         </div>
 
         <div
-          className="grid col-container grid-cols-subgrid frame frame-16 md:frame-40 gap-y-8 pb-18 mt-[1.375rem]"
+          className="grid col-container grid-cols-subgrid md:frame md:frame-40 gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
           id="popular-code"
         >
           <Title
@@ -127,7 +127,7 @@ export default async function Home() {
             Popular <span className="text-dandelion-400">code</span>
           </Title>
 
-          <div className="grid grid-cols-3 col-content gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-content gap-4 md:gap-8">
             {code.map((post) => (
               <Card
                 size="medium"

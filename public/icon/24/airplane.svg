@@ -1,9 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-  <g class="airplane">
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M22 12 8 21v-6l4-3-4-3V3l14 9Zm-1 0h-9" class="stroke-currentcolor"/>
-    <rect width="3" height="2" x="2" y="7" fill="#092E24" class="stroke-currentcolor" rx="1"/>
-    <rect width="6" height="2" x="1" y="11" fill="#092E24" class="stroke-currentcolor" rx="1"/>
-    <rect width="3" height="2" x="2" y="15" fill="#092E24" class="stroke-currentcolor" rx="1"/>
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M3 8h1m-1 8h1m-2-4h4" class="stroke-currentcolor"/>
-  </g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M22 12L8 21V15L12 12L8 9V3L22 12Z" fill="white"/>
+<path d="M22 12L8 21V15L12 12L8 9V3L22 12Z" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 12L12 12" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="2" y="7" width="3" height="2" rx="1" fill="#092E24"/>
+<rect x="1" y="11" width="6" height="2" rx="1" fill="#092E24"/>
+<rect x="2" y="15" width="3" height="2" rx="1" fill="#092E24"/>
+<path d="M3 8H4" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3 16H4" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2 12L6 12" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

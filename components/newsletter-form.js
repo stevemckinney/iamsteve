@@ -71,9 +71,9 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
             {message && <p className="m-0">{message}</p>}
           </div>
         )}
-        <form className="flex flex-col gap-4" onSubmit={subscribe}>
-          <div className="flex flow-row gap-4">
-            <div className="flex flex-col w-2/5">
+        <form className="@container flex flex-col gap-10" onSubmit={subscribe}>
+          <div className="@container flex flex-col @md:flex-row gap-4">
+            <div className="flex flex-col @md:w-2/5">
               <label
                 htmlFor={`input-name-${unique}`}
                 className="font-ui text-base lowercase text-fern-1100 leading-none mb-1"
@@ -93,7 +93,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
                 disabled={subscribed}
               />
             </div>
-            <div className="flex flex-col w-3/5">
+            <div className="flex flex-col @md:w-3/5">
               <label
                 htmlFor={`input-email-${unique}`}
                 className="font-ui text-base lowercase text-fern-1100 leading-none mb-1"
@@ -116,11 +116,14 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
               />
             </div>
           </div>
-          <div className="form-actions pt2 text-right">
+          <div className="flex flex-col flex-col-reverse @md:flex-row gap-4 items-center justify-between">
+            <p className="m-0 p-0 text-fern-600 flex-1 text-center @md:text-left">
+              Join 600+ designers
+            </p>
             <button
               type="submit"
               aria-label="Subscribe to the newsletter"
-              className="button-dandelion font-ui text-base/snug lowercase text-dandelion-800 text-center bg-dandelion-300 active:bg-dandelion-400 rounded-sm transition duration-200 shadow-dandelion-placed hover:shadow-dandelion-picked active:shadow-reduced px-8 py-3 flex-auto [--ui-border-color:theme(colors.dandelion.600)] [--ui-border-color-hover:theme(colors.dandelion.700)]"
+              className="button-dandelion w-full @md:w-[auto] @md:grow-0 font-ui text-base/snug lowercase text-dandelion-800 text-center bg-dandelion-300 active:bg-dandelion-400 rounded-sm transition duration-200 shadow-dandelion-placed hover:shadow-dandelion-picked active:shadow-reduced px-8 py-3 flex-auto [--ui-border-color:theme(colors.dandelion.600)] [--ui-border-color-hover:theme(colors.dandelion.700)]"
               disabled={subscribed}
             >
               Sign me up

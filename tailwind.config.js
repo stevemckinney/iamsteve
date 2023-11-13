@@ -42,6 +42,9 @@ module.exports = {
       // strokeWidth: {
       //   4: '4px',
       // },
+      screens: {
+        xs: '360px',
+      },
       gridTemplateColumns: {
         16: 'repeat(16, minmax(0, 1fr))',
         subgrid: 'subgrid',
