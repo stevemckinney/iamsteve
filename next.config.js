@@ -5,6 +5,9 @@ const nextConfig = {
   compress: true,
   swcMinify: true,
   reactStrictMode: false,
+  experimental: {
+    webpackBuildWorker: true,
+  }, 
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   staticPageGenerationTimeout: 120,
   eslint: {
