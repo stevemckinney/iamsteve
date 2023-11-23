@@ -160,6 +160,14 @@ export default function Hero() {
       </div>
       <div className="flex gap-2 flex-row flex-nowrap max-lg:[grid-column:1/-1] max-lg:px-12 max-w-full lg:relative lg:w-[798px] lg:h-[276px]">
         <Image
+          src="/images/illustration/spot-mono/figma.svg"
+          width={96}
+          height={96}
+          className={`max-w-[initial] lg:hidden drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+        <Image
           src="/images/illustration/pencil-mono.svg"
           width={962}
           height={46}
@@ -184,6 +192,14 @@ export default function Hero() {
           role="presentation"
         />
         <Image
+          src="/images/illustration/spot-mono/terminal.svg"
+          width={96}
+          height={96}
+          className={`lg:absolute max-w-[initial] top-[1.875rem] right-[12.525rem] drop-shadow-placed`}
+          alt=""
+          role="presentation"
+        />
+        <Image
           src="/images/illustration/spot-mono/pen.svg"
           width={96}
           height={96}
@@ -192,10 +208,10 @@ export default function Hero() {
           role="presentation"
         />
         <Image
-          src="/images/illustration/spot-mono/terminal.svg"
+          src="/images/illustration/spot-mono/pencil.svg"
           width={96}
           height={96}
-          className={`lg:absolute max-w-[initial] top-[1.875rem] right-[12.525rem] drop-shadow-placed`}
+          className={`lg:hidden max-w-[initial] drop-shadow-placed`}
           alt=""
           role="presentation"
         />

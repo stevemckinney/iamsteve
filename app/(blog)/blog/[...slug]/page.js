@@ -1,3 +1,7 @@
+/**
+ * Single blog post
+ */
+
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import Script from 'next/script'
@@ -71,7 +75,7 @@ export default async function PostPage({ params }) {
           src="/images/illustration/pencil-mono.svg"
           width={962}
           height={46}
-          className={`col-start-1 col-end-4 max-w-[initial] justify-self-end self-start mt-3 row-start-1 drop-shadow-placed`}
+          className={`max-lg:hidden col-start-1 col-end-4 max-w-[initial] justify-self-end self-start mt-3 row-start-1 drop-shadow-placed`}
           alt=""
           role="presentation"
         />
@@ -79,14 +83,19 @@ export default async function PostPage({ params }) {
           src="/images/illustration/ruler-mono.svg"
           width={594}
           height={122}
-          className={`col-start-[14] col-end-[-1] max-w-[initial] self-end row-start-1 drop-shadow-placed`}
+          className={`max-lg:hidden col-start-[14] col-end-[-1] max-w-[initial] self-end row-start-1 drop-shadow-placed`}
           alt=""
           role="presentation"
         />
         <header className="col-prose flex flex-col gap-4 row-start-1">
-          <PageTitle>{post.title}</PageTitle>
+          <Chip size={24} theme={`cornflour`} iconStart={`calendar`}>
+            <Date dateString={post.date} />
+          </Chip>
+          <PageTitle className="mt-4">{post.title}</PageTitle>
           {post.summary && (
-            <p className="text-2xl text-fern-1100 mb-4">{post.summary}</p>
+            <p className="text-lg lg:text-2xl text-fern-1100 mb-4">
+              {post.summary}
+            </p>
           )}
           <div className="flex flex-row gap-4 items-center">
             {post.categories &&
@@ -99,9 +108,6 @@ export default async function PostPage({ params }) {
                   </>
                 )
               })}
-            <Chip size={24} theme="cornflour" iconStart={`calendar`}>
-              <Date dateString={post.date} />
-            </Chip>
             <ViewCounter
               allViews={allViews}
               slug={post.slugAsParams}

@@ -15,7 +15,7 @@ export default function FooterProfile() {
         <p className="text-ui-body text-base mb-2">
           Hi, I’m Steve McKinney, I write this publication focusing on the
           design and build of websites. The aim is to bridge the gap between
-          Figma and building your design.
+          design tools and building your design.
         </p>
         <p className="text-ui-body text-base">
           And explore the craft and technique behind creating websites. It

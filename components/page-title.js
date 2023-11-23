@@ -4,7 +4,7 @@ export default function PageTitle({
 }) {
   return (
     <h1
-      className={`font-display lowercase text-7xl text-fern-1100 font-variation-extrabold ${className}`}
+      className={`text-fern-1100 font-display text-3xl xs:text-5xl lg:text-7xl font-variation-bold lg:font-variation-extrabold lowercase ${className}`}
     >
       {children}
     </h1>

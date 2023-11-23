@@ -2,8 +2,12 @@
 
 .prose {
   color: theme('colors.fern.1100');
-  font-size: theme('fontSize.xl');
+  font-size: theme('fontSize.base');
   line-height: theme('lineHeight.normal');
+
+  @screen lg {
+    font-size: theme('fontSize.xl');
+  }
 
   /**
    * code theme
@@ -68,7 +72,11 @@
   }
 
   :where(h1, h2, h3, h4) {
-    letter-spacing: -0.0340909091em;
+    letter-spacing: -0.0170454546em;
+
+    @screen lg {
+      letter-spacing: -0.0340909091em;
+    }
   }
 
   :where(h2, h3, h4, h5, h6) {
@@ -76,28 +84,68 @@
   }
 
   h1 {
-    font-size: theme('fontSize.7xl');
-    line-height: theme('lineHeight.7xl');
-    font-variation-settings: 'wdth' 100, 'wght' 750;
     margin-block-end: theme('margin.12');
+    font-size: theme('fontSize.3xl');
+    line-height: theme('lineHeight.3xl');
+
+    @screen xs {
+      font-size: theme('fontSize.5xl');
+      line-height: theme('lineHeight.5xl');
+    }
+
+    @screen lg {
+      font-size: theme('fontSize.7xl');
+      line-height: theme('lineHeight.7xl');
+      font-variation-settings: 'wdth' 100, 'wght' 750;
+    }
   }
 
   h2 {
-    font-size: theme('fontSize.5xl');
-    line-height: theme('lineHeight.5xl');
     margin-block-start: theme('margin.16');
+    font-size: theme('fontSize.xl');
+    line-height: theme('lineHeight.xl');
+
+    @screen xs {
+      font-size: theme('fontSize.3xl');
+      line-height: theme('lineHeight.3xl');
+    }
+
+    @screen lg {
+      font-size: theme('fontSize.5xl');
+      line-height: theme('lineHeight.5xl');
+    }
   }
 
   h3 {
-    font-size: theme('fontSize.3xl');
-    line-height: theme('lineHeight.3xl');
     margin-block-start: theme('margin.12');
+    font-size: theme('fontSize.lg');
+    line-height: theme('lineHeight.lg');
+
+    @screen xs {
+      font-size: theme('fontSize.2xl');
+      line-height: theme('lineHeight.2xl');
+    }
+
+    @screen lg {
+      font-size: theme('fontSize.3xl');
+      line-height: theme('lineHeight.3xl');
+    }
   }
 
   h4 {
-    font-size: theme('fontSize.2xl');
-    line-height: theme('lineHeight.2xl');
     margin-block-start: theme('margin.8');
+    font-size: theme('fontSize.lg');
+    line-height: theme('lineHeight.3xl');
+
+    @screen xs {
+      font-size: theme('fontSize.xl');
+      line-height: theme('lineHeight.lg');
+    }
+
+    @screen lg {
+      font-size: theme('fontSize.2xl');
+      line-height: theme('lineHeight.2xl');
+    }
   }
 
   :where(h5, h6) {
@@ -296,19 +344,27 @@
     margin-right: 2ch;
     text-align: right;
     color: var(--code-comment);
-    opacity: .4;
+    opacity: 0.4;
   }
 
-  :global(code[data-line-numbers-max-digits="2"] > [data-line]::before) {
+  :global(code[data-line-numbers-max-digits='2'] > [data-line]::before) {
     width: 2ch;
   }
 
-  :global(code[data-line-numbers-max-digits="3"] > [data-line]::before) {
+  :global(code[data-line-numbers-max-digits='3'] > [data-line]::before) {
     width: 3ch;
   }
 
-  :global([data-language="css"]) :global(span[style*='--shiki-token-keyword']) + :global([data-language="css"]) :global(span[style*='--shiki-token-text']) + :global([data-language="css"]) :global(span[style*='--shiki-token-constant']),
-  :global([data-language="css"]) :global(span[style*='--shiki-token-constant']) + :global([data-language="css"]) :global(span[style*='--shiki-token-keyword']) {
+  :global([data-language='css'])
+    :global(span[style*='--shiki-token-keyword'])
+    + :global([data-language='css'])
+    :global(span[style*='--shiki-token-text'])
+    + :global([data-language='css'])
+    :global(span[style*='--shiki-token-constant']),
+  :global([data-language='css'])
+    :global(span[style*='--shiki-token-constant'])
+    + :global([data-language='css'])
+    :global(span[style*='--shiki-token-keyword']) {
     color: var(--code-magenta) !important;
   }
 
