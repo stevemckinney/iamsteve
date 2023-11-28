@@ -73,7 +73,7 @@ const Medium = ({ frontmatter, image, className }) => {
       {image && !medium && (
         <>
           <div
-            className="flex self-stretch items-center"
+            className="flex items-center self-stretch"
             style={{ backgroundColor: `${imageColor}` }}
           >
             {categories && categories.includes('Design') ? (
@@ -108,7 +108,7 @@ const Medium = ({ frontmatter, image, className }) => {
             className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pt-8 pb-3 px-8`}
           >
             {categories.map((category) => (
-              <Category key={category} tabIndex="1">
+              <Category size={24} key={category} tabIndex="1">
                 {category}
               </Category>
             ))}
@@ -116,7 +116,7 @@ const Medium = ({ frontmatter, image, className }) => {
         )}
         <div className="flex flex-col gap-2 px-8 pt-[.8125rem]">
           <h2
-            className="font-display font-variation-bold text-2xl leading-2xl lowercase m-0 p-0"
+            className="p-0 m-0 text-3xl leading-none lowercase font-display font-variation-bold"
             id={`title-${id}`}
           >
             <Link

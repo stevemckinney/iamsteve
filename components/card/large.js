@@ -50,7 +50,7 @@ const Large = ({ frontmatter, image, className }) => {
   const imageColor = theme ? theme.toString() : '#e8dcd9'
 
   return (
-    <article className="flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden relative">
+    <article className="relative flex flex-col self-start overflow-hidden transition duration-200 bg-white rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:bg-neutral-01-50 bg-clip-padding">
       {image && (
         <Link
           href={slug}
@@ -82,9 +82,9 @@ const Large = ({ frontmatter, image, className }) => {
             ))}
           </div>
         )}
-        <div className="flex flex-col gap-[.5625rem] px-8 pt-5 md:gap-[1.375rem] md:px-12">
+        <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] md:pt-5 md:gap-[1.375rem] md:px-12">
           <h2
-            className="font-display font-variation-bold hyphens-auto text-xl leading-xl md:text-5xl lowercase m-0 p-0"
+            className="p-0 m-0 text-3xl leading-none lowercase font-display font-variation-bold hyphens-auto md:text-5xl"
             id={`title-${id}`}
           >
             <Link
@@ -95,7 +95,7 @@ const Large = ({ frontmatter, image, className }) => {
             </Link>
           </h2>
           <div
-            className="flex-auto text-ui-body text-lg line-clamp-4 md:line-clamp-3"
+            className="flex-auto text-lg text-ui-body line-clamp-4 md:line-clamp-3"
             dangerouslySetInnerHTML={{
               __html: autoParagraph(summary, 'font-body'),
             }}
