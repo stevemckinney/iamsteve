@@ -141,11 +141,11 @@ export default async function PostPage({ params }) {
           <PostMdx code={post.body.code} />
         </div>
         <Support />
-        <aside className={`col-prose flex flex-col gap-4 -mx-8`}>
-          <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 px-8">
+        <aside className={`col-prose flex flex-col gap-4 md:-mx-8`}>
+          <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 md:px-8">
             Next to read
           </h2>
-          <div className="grid grid-cols-2 gap-x-8">
+          <div className="grid md:grid-cols-2 gap-8">
             <Card
               size="medium"
               image={false}
@@ -189,19 +189,21 @@ export async function NextPost({ id }) {
 
 export function Support() {
   return (
-    <aside className="bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row items-center gap-8 justify-between pl-8 pr-2 py-2 col-prose -mx-8">
+    <aside className="bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-col gap-4 justify-between p-8 col-prose md:-mx-8">
       <p className="p-0 m-0 text-base text-ui-body">
-        Enjoying the reading experience? There’s no ads, tracking or cookie
-        banners
+        <strong className="text-fern-1100 font-bold">
+          Enjoying the reading experience?
+        </strong>{' '}
+        There’s no ads, tracking or cookie banners, so your support is valued
       </p>
       <Link
         href={siteMetadata.bmc}
-        className="flex shrink-0 grow-0 flex-row rounded-md items-center gap-2 text-base font-ui lowercase pl-2 pr-4 py-3 hover:opacity-70 transition duration-200"
+        className="flex shrink-0 grow-0 flex-row rounded-md items-center gap-2 text-base font-ui lowercase hover:opacity-70 transition duration-200"
       >
+        Buy me a coffee
         <span className="flex shrink-0 grow-0 items-center justify-center bg-fern-100 rounded w-8 h-8">
           <Icon icon="bmc" />
-        </span>{' '}
-        Buy me a coffee
+        </span>
       </Link>
     </aside>
   )
