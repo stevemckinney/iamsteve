@@ -25,13 +25,13 @@ export default function Header() {
       >
         <div className="col-content flex items-center align-center justify-between py-4 lg:py-9 lg:px-8 lg:-mx-8 bg-neutral-01-100">
           <Link href="/" className="flex-1" title="iamsteve.me homepage">
-            <Icon icon="logo" role="img" size={32} className="max-lg:hidden" />
+            <Icon icon="logo" role="img" size={32} className="max-xl:hidden" />
             <Icon
               icon="logo"
               role="img"
               aria-hidden="true"
               size={24}
-              className="lg:hidden"
+              className="xl:hidden"
             />
           </Link>
           <nav className={`${nav} ${maxmdNav}`}>

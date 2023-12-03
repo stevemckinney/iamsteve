@@ -1,5 +1,6 @@
 /**
  * Single blog post
+ * See (blog)/layout.js for controlling page frame
  */
 
 import { notFound } from 'next/navigation'

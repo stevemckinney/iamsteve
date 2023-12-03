@@ -28,6 +28,11 @@
     prose-start] repeat(6, minmax(0, 1fr)) [prose-end content-end container-end]
     var(--spacing) [margin-end];
 
+  --grid-12: [margin-start] calc(var(--spacing) * 2) [container-start]
+    minmax(0, 1fr) [content-start prose-start] repeat(10, minmax(0, 1fr))
+    [prose-end content-end] minmax(0, 1fr) [container-end]
+    calc(var(--spacing) * 2) [margin-end];
+
   --grid-16: [margin-start] var(--grid-margin) [container-start]
     repeat(2, minmax(0, 1fr)) [content-start] repeat(2, minmax(0, 1fr))
     [prose-start] repeat(8, minmax(0, 1fr)) [prose-end]
@@ -120,7 +125,11 @@
 .layout {
   grid-template-columns: var(--grid-6);
 
-  @screen md {
+  @screen sm {
+    grid-template-columns: var(--grid-12);
+  }
+
+  @screen lg {
     grid-template-columns: var(--grid-16);
   }
 }
