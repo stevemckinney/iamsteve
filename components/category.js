@@ -1,5 +1,5 @@
 import GithubSlugger from 'github-slugger'
-import Chip from '@/components/chip'
+import Badge from '@/components/badge'
 import Categories from '@/content/categories'
 
 const Category = ({ size = 16, children }) => {
@@ -11,7 +11,7 @@ const Category = ({ size = 16, children }) => {
   const icon = category.icon !== undefined ? category.icon : 'folder'
 
   return (
-    <Chip
+    <Badge
       href={`/category/${slugger.slug(children)}`}
       rel="category tag"
       theme={`${theme}`}
@@ -19,7 +19,7 @@ const Category = ({ size = 16, children }) => {
       size={size}
     >
       {children}
-    </Chip>
+    </Badge>
   )
 }
 

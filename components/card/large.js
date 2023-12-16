@@ -26,7 +26,7 @@ const LargeImage = ({ ...props }) => {
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
         alt={title}
-        className={`radius`}
+        className={`object-fill object-center height-[initial]`}
       />
     </>
   )
@@ -55,11 +55,12 @@ const Large = ({ frontmatter, image, className }) => {
         <Link
           href={slug}
           title=""
-          className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
+          className={`relative flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
           style={{ backgroundColor: `${imageColor}` }}
           aria-labelledby={`title-${id}`}
         >
           <>
+            <div className="absolute inset-0 bg-fade" />
             <LargeImage
               image={images[0]}
               imageColor={imageColor}
@@ -73,7 +74,7 @@ const Large = ({ frontmatter, image, className }) => {
       <div className="flex flex-col flex-auto relative before:content-[''] before:w-16 before:h-6 before:absolute before:top-8 md:before:top-12 before:right-0 before:bg-gradient-to-r before:from-white/0 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50 before:z-[3] pb-8 md:pb-[2.625rem]">
         {categories && (
           <div
-            className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pt-8 pb-4 md:pb-5 px-8 md:px-12 md:pt-12`}
+            className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pb-4 md:pb-5 px-8 md:px-12 pt-[1px]`}
           >
             {categories.map((category) => (
               <Category key={category} size={24} tabIndex="1">

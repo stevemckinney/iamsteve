@@ -79,7 +79,9 @@ Services like Typekit (Adobe Fonts) and cloud.Typography offer this, if you’re
 In both of these services it is turned off by default. So, if it does happen to be on you can disable it.
 
 ## What if I have to separate the fonts out
-If you have no choice but to have the fonts separated for browser support and you need to ensure it doesn’t happen, the way you can prevent it isn’t too tricky. It requires `!important` that way it’s difficult to ever override.
+If you have no choice but to have the fonts separated for browser support and you need to ensure it doesn’t happen, the way you can prevent it isn’t too tricky.
+
+Your type may have to look like the following:
 
 ```css
 /* Normal */
@@ -87,17 +89,21 @@ If you have no choice but to have the fonts separated for browser support and yo
   font-family: "Averta";
   font-style: normal;
   font-weight: 400;
-  src: /* all sources */;
+  src: url(../path/to/normal.woff2) format("woff2"),
+       url(../path/to/normal.woff) format("woff");
 }
 
-/* Italic */
+/* Medium */
 @font-face {
-  font-family: "Averta Italic";
-  font-style: italic;
+  font-family: "Averta Medium";
+  font-style: normal;
   font-weight: 400;
-  src: /* all sources */;
+  src: url(../path/to/medium.woff2) format("woff2"),
+       url(../path/to/medium.woff) format("woff");
 }
 ```
+
+
 
 Sources excluded, as for the only reason you’d want to do this approach is to support IE 8 and that means needing .eot.
 

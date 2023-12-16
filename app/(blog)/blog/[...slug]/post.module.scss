@@ -229,7 +229,7 @@
   }
 
   :global(.fragment .icon:before) {
-    content: url(/images/link-24.svg);
+    content: url(/icon/24/link.svg);
     display: block;
     width: 24px;
     height: 24px;
@@ -249,6 +249,7 @@
 
   :where(h2, h3, h4, h5, h6) {
     &:not(:hover, :focus) :global(.fragment) {
+      transition: opacity 0.2s, transform 0.4s;
       transform: scale3d(0.5, 0.5, 0.5) translate3d(32px, 0, 0);
       opacity: 0;
     }

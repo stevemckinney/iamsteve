@@ -11,9 +11,10 @@ import siteMetadata from '@/content/metadata'
 
 // page components
 import Image from '@/components/image'
+import Placeholder from '@/components/placeholder'
 import Card from '@/components/card'
 import Category from '@/components/category'
-import Chip from '@/components/chip'
+import Badge from '@/components/badge'
 import PageHeader from '@/components/page-header'
 import PageTitle from '@/components/page-title'
 import Date from '@/components/date'
@@ -89,10 +90,19 @@ export default async function PostPage({ params }) {
           role="presentation"
         />
         <header className="col-prose flex flex-col gap-4 row-start-1">
-          <Chip size={24} theme={`cornflour`} iconStart={`calendar`}>
-            <Date dateString={post.date} />
-          </Chip>
-          <PageTitle className="mt-4">{post.title}</PageTitle>
+          <div className="flex justify-between">
+            <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
+              <Date dateString={post.date} />
+            </Badge>
+            <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
+              <ViewCounter
+                allViews={allViews}
+                slug={post.slugAsParams}
+                trackView
+              />
+            </Badge>
+          </div>
+          <PageTitle className="mt-4" id={`title-${post.id}`}>{post.title}</PageTitle>
           {post.summary && (
             <p className="text-lg lg:text-2xl text-fern-1100 mb-4">
               {post.summary}
@@ -109,14 +119,39 @@ export default async function PostPage({ params }) {
                   </>
                 )
               })}
-            <ViewCounter
-              allViews={allViews}
-              slug={post.slugAsParams}
-              trackView
-            />
           </div>
         </header>
-
+        {!post.image && !post.medium && (
+          <>
+            <div
+             className={`col-prose grid-cols-subgrid ${styles.featured}`}
+            >
+              {post.categories && post.categories.includes('Design') ? (
+                <Placeholder
+                  category="Design"
+                  kind="post"
+                  href={post.slug}
+                  title=""
+                  className={`flex items-center justify-center rounded-lg overflow-hidden aspect-[1.6/1]`}
+                  imageClass={`w-full h-full`}
+                  aria-labelledby={`title-${post.id}`}
+                  tabIndex="0"
+                />
+              ) : (
+                <Placeholder
+                  category="Code"
+                  kind="post"
+                  href={post.slug}
+                  title=""
+                  className={`flex items-center justify-center rounded-lg overflow-hidden aspect-[1.6/1]`}
+                  imageClass={`w-full h-full`}
+                  aria-labelledby={`title-${post.id}`}
+                  tabIndex="0"
+                />
+              )}
+            </div>
+          </>
+        )}
         {post.images &&
           post.images.map((image, index) => (
             <div
@@ -183,9 +218,7 @@ export async function NextPost({ id }) {
     .filter((post) => post.status === 'open')
     .find((item) => item.id === Number(id))
 
-  console.log(getRandomItem(allPosts))
-
-  return <Card size="medium" image={false} frontmatter={post} />
+  return <Card size="medium" image={false} frontmatter={post} key={id} />
 }
 
 export function Support() {

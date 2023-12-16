@@ -42,10 +42,12 @@
   /**
    * Overridable capability for tailwind
    */
-  --ui-border-color: rgba(117, 99, 98, 0.14);
-  --ui-border-color-strong: rgba(117, 99, 98, 0.16);
-  --ui-border-color-hover: rgba(117, 99, 98, 0.22);
-  --ui-border-color-strong-hover: rgba(117, 99, 98, 0.24);
+  --ui-border-color: rgba(117, 99, 98, 0.20);
+  --ui-border-color-hover: rgba(117, 99, 98, 0.32);
+  --ui-border-color-strong: rgba(117, 99, 98, 0.2);
+  --ui-border-color-strong-hover: rgba(117, 99, 98, 0.40);
+  --ui-border-color-weak: rgba(249, 243, 241, 0.12);
+  --ui-border-color-weak-hover: rgba(249, 243, 241, 0.24);
 }
 
 @layer utilities {

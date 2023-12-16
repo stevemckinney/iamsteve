@@ -20,7 +20,7 @@ const MediumImage = ({ ...props }) => {
     <>
       <Image
         src={image}
-        className="object-contain"
+        className="aspect-[1.6/1] object-fit rounded-lg"
         role="presentation"
         width={384}
         height={240}

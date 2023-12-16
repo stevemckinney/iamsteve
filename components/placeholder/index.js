@@ -25,7 +25,7 @@ const PlaceholderCode = [
   { color: '#CDB9F5', imageUrl: '/images/default/code-default.svg' },
 ]
 
-const Placeholder = ({ category, ...props }) => {
+const Placeholder = ({ category, imageClass = 'image', ...props }) => {
   const [randomImage, setRandomImage] = useState(null)
 
   const generateRandomImage = useCallback(() => {
@@ -43,11 +43,13 @@ const Placeholder = ({ category, ...props }) => {
     generateRandomImage()
   }, [category, generateRandomImage])
 
-  return (
-    <Link {...props} style={{ backgroundColor: backgroundColor }}>
-      <Image src={randomImage?.imageUrl} alt="" width={384} height={240} />
-    </Link>
-  )
+  if (props.href) {
+    return (
+      <Link {...props} style={{ backgroundColor: backgroundColor }}>
+        <Image src={randomImage?.imageUrl} alt="" width={384} height={240} className={imageClass} />
+      </Link>
+    )
+  }
 }
 
 export default Placeholder
