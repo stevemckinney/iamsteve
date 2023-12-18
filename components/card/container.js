@@ -55,11 +55,12 @@ const Container = ({ frontmatter, image, className }) => {
         <Link
           href={slug}
           title=""
-          className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
+          className={`relative flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
           style={{ backgroundColor: `${imageColor}` }}
           aria-labelledby={`title-${id}`}
         >
           <>
+            <div className="absolute inset-0 bg-fade" />
             <LargeImage
               image={images[0]}
               imageColor={imageColor}
@@ -69,45 +70,49 @@ const Container = ({ frontmatter, image, className }) => {
           </>
         </Link>
       )}
-      <div className="flex flex-col flex-auto p-6 gap-3 md:gap-4 md:p-12">
+      <div className="flex flex-col flex-auto relative before:content-[''] before:w-16 before:h-6 before:absolute before:top-8 md:before:top-12 before:right-0 before:bg-gradient-to-r before:from-white/0 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50 before:z-[3] pb-8 md:pb-[2.625rem]">
         {categories && (
-          <div className={`flex flex-row gap-4 md:mb-5 relative z-[2]`}>
+          <div
+            className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pb-4 @md:pb-5 px-8 @md:px-12 pt-[1px]`}
+          >
             {categories.map((category) => (
-              <Category key={category} size={24}>
+              <Category key={category} size={24} tabIndex="1">
                 {category}
               </Category>
             ))}
           </div>
         )}
-        <h2
-          className="font-display font-variation-bold hyphens-auto text-xl leading-xl md:text-5xl lowercase m-0 p-0"
-          id={`title-${id}`}
-        >
-          <Link
-            href={slug}
-            className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-[1]"
+        <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @md:pt-5 md:gap-[1.375rem] @md:px-12">
+          <h2
+            className="p-0 m-0 text-3xl leading-none lowercase font-display font-variation-bold hyphens-auto @md:text-5xl"
+            id={`title-${id}`}
           >
-            {title}
-          </Link>
-        </h2>
-        <div
-          className="flex-auto text-ui-body line-clamp-4 md:line-clamp-3"
-          dangerouslySetInnerHTML={{
-            __html: autoParagraph(summary, 'text-lg font-body'),
-          }}
-        />
-        <div className="sr-only" aria-hidden="true" tabIndex="-1">
-          <Link
-            href="/about"
-            className="author vcard url fn"
-            rel="author"
-            tabIndex="-1"
-          >
-            Steve McKinney
-          </Link>{' '}
-          <time dateTime={lastmod} className="updated" tabIndex="-1">
-            <Date dateString={lastmod} />
-          </time>
+            <Link
+              href={slug}
+              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-[1]"
+            >
+              {title}
+            </Link>
+          </h2>
+          <div
+            className="flex-auto text-lg text-ui-body line-clamp-4 md:line-clamp-3"
+            dangerouslySetInnerHTML={{
+              __html: autoParagraph(summary, 'font-body'),
+            }}
+          />
+          <div className="sr-only" aria-hidden="true" tabIndex="-1">
+            <Link
+              href="/about"
+              className="author vcard url fn"
+              rel="author"
+              tabIndex="-1"
+            >
+              Steve McKinney
+            </Link>{' '}
+            <time dateTime={lastmod} className="updated" tabIndex="-1">
+              <Date dateString={lastmod} />
+            </time>
+          </div>
         </div>
       </div>
     </article>

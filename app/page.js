@@ -64,7 +64,7 @@ export default async function Home() {
       <main className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end gap-y-10 md:gap-y-18 mb-10 md:pb-18">
         <Hero />
         <div
-          className="grid col-container grid-cols-subgrid md:frame md:frame-40 gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
+          className="grid col-container grid-cols-subgrid md:frame md:frame-16 lg:frame-40 lg:frame-outset-top gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
           id="latest"
         >
           <Title
@@ -79,7 +79,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 col-content gap-4 md:gap-8">
             {posts.map((post) => (
               <Card
-                size="large"
+                size="container"
                 frontmatter={post}
                 image={true}
                 key={post._id}
@@ -90,7 +90,7 @@ export default async function Home() {
         </div>
 
         <div
-          className="grid col-container grid-cols-subgrid md:frame md:frame-40 gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
+          className="grid col-container grid-cols-subgrid md:frame md:frame-16 lg:frame-40 lg:frame-outset-top gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
           id="popular-code"
         >
           <Title
@@ -115,7 +115,7 @@ export default async function Home() {
         </div>
 
         <div
-          className="grid col-container grid-cols-subgrid md:frame md:frame-40 gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
+          className="grid col-container grid-cols-subgrid md:frame md:frame-16 lg:frame-40 lg:frame-outset-top gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
           id="popular-code"
         >
           <Title

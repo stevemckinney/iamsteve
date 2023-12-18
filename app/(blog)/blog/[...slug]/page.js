@@ -90,35 +90,35 @@ export default async function PostPage({ params }) {
           role="presentation"
         />
         <header className="col-prose flex flex-col gap-4 row-start-1">
-          <div className="flex justify-between">
-            <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
-              <Date dateString={post.date} />
-            </Badge>
-            <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
-              <ViewCounter
-                allViews={allViews}
-                slug={post.slugAsParams}
-                trackView
-              />
-            </Badge>
-          </div>
+          <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
+            <Date dateString={post.date} />
+          </Badge>
           <PageTitle className="mt-4" id={`title-${post.id}`}>{post.title}</PageTitle>
           {post.summary && (
             <p className="text-lg lg:text-2xl text-fern-1100 mb-4">
               {post.summary}
             </p>
           )}
-          <div className="flex flex-row gap-4 items-center">
-            {post.categories &&
-              post.categories.map((category) => {
-                return (
-                  <>
-                    <Category size={24} key={category}>
-                      {category}
-                    </Category>
-                  </>
-                )
-              })}
+          <div className="flex justify-between">
+            <div className="flex flex-row gap-4 items-center">
+              {post.categories &&
+                post.categories.map((category) => {
+                  return (
+                    <>
+                      <Category size={24} key={category}>
+                        {category}
+                      </Category>
+                    </>
+                  )
+                })}
+            </div>
+            <Badge size={24} theme={`lavender`} iconStart={`views`}>
+              <ViewCounter
+                allViews={allViews}
+                slug={post.slugAsParams}
+                trackView
+              />
+            </Badge>
           </div>
         </header>
         {!post.image && !post.medium && (
