@@ -9,8 +9,7 @@ tags: []
 categories: []
 images: []
 ogImage: "/assets/og/cover.jpg"
-layout: post
-draft: draft
+status: draft
 codepen: false
 twitter: false
 id: 173

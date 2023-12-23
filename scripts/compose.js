@@ -33,8 +33,7 @@ const genFrontMatter = (answers) => {
   categories: []
   images: []
   ogImage: "/assets/og/cover.jpg"
-  layout: post
-  draft: ${answers.status}
+  status: ${answers.status}
   codepen: false
   twitter: false
   id: ${updatedPostID}
