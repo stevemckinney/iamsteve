@@ -83,6 +83,8 @@ inquirer
       .replace(/ /g, '-')
       .replace(/-+/g, '-')
     const frontmatter = genFrontMatter(answers)
+
+    // 00 will break here at some point, but that's a long while off
     const filePath = `content/blog/${fileName ? '00' + updatedPostID + '-' + fileName : 'untitled'}.${
       answers.extension ? answers.extension : 'md'
     }`
