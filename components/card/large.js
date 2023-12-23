@@ -95,12 +95,14 @@ const Large = ({ frontmatter, image, className }) => {
               {title}
             </Link>
           </h2>
-          <div
-            className="flex-auto text-lg text-ui-body line-clamp-4 md:line-clamp-3"
-            dangerouslySetInnerHTML={{
-              __html: autoParagraph(summary, 'font-body'),
-            }}
-          />
+          {summary &&
+            <div
+              className="flex-auto text-lg text-ui-body line-clamp-4 md:line-clamp-3"
+              dangerouslySetInnerHTML={{
+                __html: autoParagraph(summary, 'font-body'),
+              }}
+            />
+          }
           <div className="sr-only" aria-hidden="true" tabIndex="-1">
             <Link
               href="/about"

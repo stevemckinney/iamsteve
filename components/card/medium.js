@@ -129,12 +129,14 @@ const Medium = ({ frontmatter, image, className }) => {
               {title}
             </Link>
           </h2>
-          <div
-            className="text-ui-body line-clamp-3 break-[none] text-lg hyphens-auto font-body"
-            dangerouslySetInnerHTML={{
-              __html: autoParagraph(summary),
-            }}
-          />
+          {summary &&
+            <div
+              className="text-ui-body line-clamp-3 break-[none] text-lg hyphens-auto font-body"
+              dangerouslySetInnerHTML={{
+                __html: autoParagraph(summary),
+              }}
+            />
+          }
           <div className="sr-only" aria-hidden="true" tabIndex="-1">
             <Link
               href="/about"
