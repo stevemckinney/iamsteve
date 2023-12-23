@@ -74,6 +74,8 @@ inquirer
     },
   ])
   .then((answers) => {
+    var updatedPostID = fs.readFileSync('./.current-post-id')
+
     // Remove special characters and replace space with -
     const fileName = answers.title
       .toLowerCase()
@@ -81,7 +83,7 @@ inquirer
       .replace(/ /g, '-')
       .replace(/-+/g, '-')
     const frontmatter = genFrontMatter(answers)
-    const filePath = `content/blog/${fileName ? fileName : 'untitled'}.${
+    const filePath = `content/blog/${fileName ? '00' + updatedPostID + '-' + fileName : 'untitled'}.${
       answers.extension ? answers.extension : 'md'
     }`
     fs.writeFile(filePath, frontmatter, { flag: 'wx' }, (err) => {
