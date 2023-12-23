@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "contentlayer dev & next dev",
     "sourcemap": "NODE_OPTIONS=--enable-source-maps next build",
-    "build": "NODE_OPTIONS=--max-old-space-size=4096 contentlayer build && next build && node ./scripts/generate-sitemap",
+    "build": "contentlayer build && next build && node ./scripts/generate-sitemap",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir app --dir components --dir lib --dir scripts",
