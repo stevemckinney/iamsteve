@@ -93,7 +93,9 @@ export default async function PostPage({ params }) {
           <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
             <Date dateString={post.date} />
           </Badge>
-          <PageTitle className="mt-4" id={`title-${post.id}`}>{post.title}</PageTitle>
+          <PageTitle className="mt-4" id={`title-${post.id}`}>
+            {post.title}
+          </PageTitle>
           {post.summary && (
             <p className="text-lg lg:text-2xl text-fern-1100 mb-4">
               {post.summary}
@@ -123,9 +125,7 @@ export default async function PostPage({ params }) {
         </header>
         {!post.image && !post.medium && (
           <>
-            <div
-             className={`col-prose grid-cols-subgrid ${styles.featured}`}
-            >
+            <div className={`col-prose grid-cols-subgrid ${styles.featured}`}>
               {post.categories && post.categories.includes('Design') ? (
                 <Placeholder
                   category="Design"

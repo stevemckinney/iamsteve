@@ -708,17 +708,23 @@ const Sprite = (props) => (
       </symbol>
       <symbol id="views-24" viewBox="0 0 24 24">
         <g class="fill-white stroke-current stroke-2 sl-r">
-          <path d="M4 9h4v12H4z"/>
-          <path d="M8 5h4v16H8z"/>
-          <path d="M12 9h4v12h-4z"/>
-          <path d="M16 3h4v18h-4z"/>
+          <path d="M4 9h4v12H4z" />
+          <path d="M8 5h4v16H8z" />
+          <path d="M12 9h4v12h-4z" />
+          <path d="M16 3h4v18h-4z" />
         </g>
       </symbol>
       <symbol id="box-24" viewBox="0 0 24 24">
         <g class="box">
-          <path d="M5.5 20A1.5 1.5 0 0 1 4 18.5V9h16v9.5a1.5 1.5 0 0 1-1.5 1.5h-13Z" class="fill-white stroke-current stroke-2 sl-r"/>
-          <path d="M3 9V6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5V9H3Z" class="fill-white stroke-current stroke-2 sl-r"/>
-          <path d="M9 13h6" class="stroke-current stroke-2"/>
+          <path
+            d="M5.5 20A1.5 1.5 0 0 1 4 18.5V9h16v9.5a1.5 1.5 0 0 1-1.5 1.5h-13Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M3 9V6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5V9H3Z"
+            class="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path d="M9 13h6" class="stroke-current stroke-2" />
         </g>
       </symbol>
       <symbol id="bmc-24" viewBox="0 0 24 24" fill="none">

@@ -46,7 +46,13 @@ const Placeholder = ({ category, imageClass = 'image', ...props }) => {
   if (props.href) {
     return (
       <Link {...props} style={{ backgroundColor: backgroundColor }}>
-        <Image src={randomImage?.imageUrl} alt="" width={384} height={240} className={imageClass} />
+        <Image
+          src={randomImage?.imageUrl}
+          alt=""
+          width={384}
+          height={240}
+          className={imageClass}
+        />
       </Link>
     )
   }

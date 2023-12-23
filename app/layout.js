@@ -56,8 +56,12 @@ export default function RootLayout({ children }) {
               <Icon icon="bee" /> Designed in Manchester using Figma & Next.js
             </p>
             <ul className="flex gap-8">
-              <li><Link href="#top">Top</Link></li>
-              <li><Link href="/feed.xml">RSS</Link></li>
+              <li>
+                <Link href="#top">Top</Link>
+              </li>
+              <li>
+                <Link href="/feed.xml">RSS</Link>
+              </li>
               <li>
                 <p className="text-ui-body">
                   {`©`} <Link href="/">{siteMetadata.title}</Link>{' '}
