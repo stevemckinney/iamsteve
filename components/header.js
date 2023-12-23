@@ -23,7 +23,7 @@ export default function Header() {
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-10"
         id="top"
       >
-        <div className="col-content flex items-center align-center justify-between py-4 lg:py-9 lg:px-8 lg:-mx-8 bg-neutral-01-100">
+        <div className="col-content flex items-center align-center justify-between py-4 px-4 lg:py-9 lg:px-8 lg:-mx-8 bg-neutral-01-100 max-md:-mx-4">
           <Link href="/" className="flex-1" title="iamsteve.me homepage">
             <Icon icon="logo" role="img" size={32} className="max-xl:hidden" />
             <Icon

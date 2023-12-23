@@ -11,6 +11,7 @@ import Title from '@/components/title'
 import Image from '@/components/image'
 import Hero from '@/components/hero'
 import Card from '@/components/card'
+import Frame from '@/components/frame'
 
 import Tabs from '@/components/category/tabs'
 
@@ -63,81 +64,74 @@ export default async function Home() {
     <>
       <main className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end gap-y-10 md:gap-y-18 mb-10 md:pb-18">
         <Hero />
-        <div
-          className="grid col-container grid-cols-subgrid md:frame md:frame-16 lg:frame-40 lg:frame-outset-top gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
-          id="latest"
-        >
+        <Frame id="latest">
           <Title
             link="/blog"
             text="View the archive"
             ariaID="latest"
-            className="-mt-[1.375rem]"
+            className="sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-neutral-01-100 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
           >
             What’s new
           </Title>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 col-content gap-4 md:gap-8">
+          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 px-8 py-12 -my-12">
             {posts.map((post) => (
               <Card
                 size="container"
                 frontmatter={post}
                 image={true}
                 key={post._id}
-                className="col-content-start col-span-6"
+                className="max-md:w-[calc(100vw_-_48px)] max-md:snap-center md:col-span-1"
               />
             ))}
           </div>
-        </div>
+        </Frame>
 
-        <div
-          className="grid col-container grid-cols-subgrid md:frame md:frame-16 lg:frame-40 lg:frame-outset-top gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
-          id="popular-code"
-        >
+        <Frame id="popular-code">
           <Title
             link="/category/design"
             text="Explore design"
             ariaID="popular-design"
-            className="-mt-[1.375rem]"
+            className="sm:px-4 md:px-8 md:-mx-8 sm:bg-neutral-01-100 sm:-mx-4 md:mx-0 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
           >
             Popular <span className="text-rio-400">design</span>
           </Title>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-content gap-4 md:gap-8">
+          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 px-8 py-12 -my-12">
             {design.map((post) => (
               <Card
                 size="medium"
                 frontmatter={post}
                 image={false}
                 key={post._id}
+                className="max-md:w-[calc(100vw_-_48px)] max-md:snap-center md:col-span-1"
               />
             ))}
           </div>
-        </div>
+        </Frame>
 
-        <div
-          className="grid col-container grid-cols-subgrid md:frame md:frame-16 lg:frame-40 lg:frame-outset-top gap-y-4 md:gap-y-8 pb-10 md:pb-18 mt-[1.375rem]"
-          id="popular-code"
-        >
+        <Frame id="popular-code">
           <Title
             link="/category/code"
             text="Explore code"
             ariaID="popular-code"
-            className="-mt-[1.375rem]"
+            className="sm:px-4 md:px-8 md:-mx-8 sm:bg-neutral-01-100 sm:-mx-4 md:mx-0 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
           >
             Popular <span className="text-dandelion-400">code</span>
           </Title>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-content gap-4 md:gap-8">
+          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 px-8 py-12 -my-12">
             {code.map((post) => (
               <Card
                 size="medium"
                 frontmatter={post}
                 image={false}
                 key={post._id}
+                className="max-md:w-[calc(100vw_-_48px)] max-md:snap-center md:col-span-1"
               />
             ))}
           </div>
-        </div>
+        </Frame>
       </main>
     </>
   )

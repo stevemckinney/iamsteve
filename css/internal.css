@@ -73,6 +73,11 @@
     font-variation-settings: 'wdth' 100, 'wght' 750;
   }
 
+  .col-margin {
+    grid-column-start: margin-start;
+    grid-column-end: margin-end;
+  }
+
   .col-container {
     grid-column-start: container-start;
     grid-column-end: container-end;
@@ -117,6 +122,10 @@
     border-image-source: url('/images/rounded-border-16px.svg');
     border-image-slice: 46.75324675%;
     border-image-width: 4.5rem;
+  }
+
+  .frame-outset-top-sm {
+    border-image-outset: 1.875rem 0 0;
   }
 
   .frame-outset-top {

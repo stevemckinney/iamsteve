@@ -48,7 +48,7 @@ const Medium = ({ frontmatter, image, className }) => {
   const imageColor = theme ? theme.toString() : '#ccc'
 
   return (
-    <div className="relative flex flex-col rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:scale-[.99375] bg-white active:bg-neutral-01-50 bg-clip-padding transition ease-linear duration-200 overflow-hidden">
+    <div className={`relative flex flex-col rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:scale-[.99375] bg-white active:bg-neutral-01-50 bg-clip-padding transition ease-linear duration-200 overflow-hidden ${className}`}>
       {image && medium && (
         <>
           <Link

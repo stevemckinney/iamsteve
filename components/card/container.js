@@ -50,12 +50,12 @@ const Container = ({ frontmatter, image, className }) => {
   const imageColor = theme ? theme.toString() : '#e8dcd9'
 
   return (
-    <article className="@container flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden relative">
+    <article className={`@container flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 overflow-hidden relative ${className}`}>
       {image && (
         <Link
           href={slug}
           title=""
-          className={`relative flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
+          className={`relative flex items-center justify-center aspect-[1.6086956522/1]`}
           style={{ backgroundColor: `${imageColor}` }}
           aria-labelledby={`title-${id}`}
         >

@@ -51,16 +51,20 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <FooterProfile />
-          <footer className="col-content flex flex-row gap-8 py-18">
-            <p className="flex flex-1 flex-row gap-1">
+          <footer className="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-40 md:py-18">
+            <p className="flex flex-1 max-md:flex-col max-md:items-center gap-1">
               <Icon icon="bee" /> Designed in Manchester using Figma & Next.js
             </p>
-            <Link href="#top">Top</Link>
-            <Link href="/feed.xml">RSS</Link>
-            <p className="text-ui-body">
-              {`©`} <Link href="/">{siteMetadata.title}</Link>{' '}
-              {`${new Date().getFullYear()}`}
-            </p>
+            <ul className="flex gap-8">
+              <li><Link href="#top">Top</Link></li>
+              <li><Link href="/feed.xml">RSS</Link></li>
+              <li>
+                <p className="text-ui-body">
+                  {`©`} <Link href="/">{siteMetadata.title}</Link>{' '}
+                  {`${new Date().getFullYear()}`}
+                </p>
+              </li>
+            </ul>
           </footer>
         </ThemeProvider>
       </body>

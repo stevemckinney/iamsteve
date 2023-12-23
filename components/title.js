@@ -8,7 +8,7 @@ import Link from 'next/link'
 const Title = ({ children, link, text, ariaID, className }) => {
   return (
     <header
-      className={`col-start-content-start col-end-content-end flex justify-between items-baseline md:items-center md:px-8 md:-mx-8 md:bg-neutral-01-100 ${className}`}
+      className={`col-start-content-start col-end-content-end flex justify-between items-baseline md:items-center ${className}`}
     >
       <h2
         className="font-display text-fern-1100 text-2xl md:text-5xl font-variation-bold lowercase"
