@@ -104,10 +104,10 @@ export default async function PostPage({ params }) {
           <div className="flex justify-between">
             <div className="flex flex-row gap-4 items-center">
               {post.categories &&
-                post.categories.map((category) => {
+                post.categories.map((category, index) => {
                   return (
                     <>
-                      <Category size={24} key={category}>
+                      <Category size={24} key={index}>
                         {category}
                       </Category>
                     </>
@@ -125,7 +125,7 @@ export default async function PostPage({ params }) {
         </header>
         {!post.image && !post.medium && (
           <>
-            <div className={`col-prose grid-cols-subgrid ${styles.featured}`}>
+            <div className={`col-prose grid-cols-subgrid ${styles.featured}`} key="featured-image">
               {post.categories && post.categories.includes('Design') ? (
                 <Placeholder
                   category="Design"

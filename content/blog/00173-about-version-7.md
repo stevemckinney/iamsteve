@@ -5,11 +5,11 @@ lastmod: "2023-12-23T10:11:40.788Z"
 summary:
 metadesc:
 theme: "#e9f5f5"
-tags: []
-categories: []
-images: []
+tags: ["Website"]
+categories: ["Website"]
+images: ["/images/blog/ink-trap-post-image.png"]
 ogImage: "/assets/og/cover.jpg"
-status: draft
+status: open
 codepen: false
 twitter: false
 id: 173

@@ -84,7 +84,7 @@ const Container = ({ frontmatter, image, className }) => {
             ))}
           </div>
         )}
-        <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @md:pt-5 md:gap-[1.375rem] @md:px-12">
+        <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @md:pt-5 @md:gap-3 @md:px-12">
           <h2
             className="p-0 m-0 text-3xl leading-none lowercase font-display font-variation-bold hyphens-auto @md:text-5xl"
             id={`title-${id}`}
@@ -96,12 +96,14 @@ const Container = ({ frontmatter, image, className }) => {
               {title}
             </Link>
           </h2>
-          <div
-            className="flex-auto text-lg text-ui-body line-clamp-4 md:line-clamp-3"
-            dangerouslySetInnerHTML={{
-              __html: autoParagraph(summary, 'font-body'),
-            }}
-          />
+          {summary &&
+            <div
+              className="flex-auto text-lg text-ui-body line-clamp-4 md:line-clamp-3"
+              dangerouslySetInnerHTML={{
+                __html: autoParagraph(summary, 'font-body'),
+              }}
+            />
+          }
           <div className="sr-only" aria-hidden="true" tabIndex="-1">
             <Link
               href="/about"

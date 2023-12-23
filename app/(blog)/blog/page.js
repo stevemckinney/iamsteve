@@ -53,6 +53,7 @@ export default async function BlogIndex({ params }) {
       <div className="grid grid-cols-3 col-content gap-8">
         {paginatedPosts.map((post) => (
           <>
+            <p>{post._id}</p>
             <Card
               size="medium"
               frontmatter={post}

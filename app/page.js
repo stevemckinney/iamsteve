@@ -74,7 +74,7 @@ export default async function Home() {
             What’s new
           </Title>
 
-          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 px-8 py-12 -my-12">
+          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 max-md:px-8 max-md:py-4 max-md:-my-4">
             {posts.map((post) => (
               <Card
                 size="container"
@@ -92,12 +92,12 @@ export default async function Home() {
             link="/category/design"
             text="Explore design"
             ariaID="popular-design"
-            className="sm:px-4 md:px-8 md:-mx-8 sm:bg-neutral-01-100 sm:-mx-4 md:mx-0 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
+            className="sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-neutral-01-100 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
           >
             Popular <span className="text-rio-400">design</span>
           </Title>
 
-          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 px-8 py-12 -my-12">
+          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 max-md:px-8 max-md:py-4 max-md:-my-4">
             {design.map((post) => (
               <Card
                 size="medium"
@@ -115,12 +115,12 @@ export default async function Home() {
             link="/category/code"
             text="Explore code"
             ariaID="popular-code"
-            className="sm:px-4 md:px-8 md:-mx-8 sm:bg-neutral-01-100 sm:-mx-4 md:mx-0 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
+            className="sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-neutral-01-100 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
           >
             Popular <span className="text-dandelion-400">code</span>
           </Title>
 
-          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 px-8 py-12 -my-12">
+          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 max-md:px-8 max-md:py-4 max-md:-my-4">
             {code.map((post) => (
               <Card
                 size="medium"
