@@ -74,14 +74,14 @@ export default async function Home() {
             What’s new
           </Title>
 
-          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 max-md:px-8 max-md:py-8 max-md:-my-8">
+          <div className="grid col-margin sm:col-content gap-4 md:gap-8 max-sm:grid-flow-col max-sm:auto-cols-auto max-sm:overflow-auto max-sm:snap-x max-sm:snap-always max-sm:overscroll-x-contain md:grid-cols-2 max-sm:px-8 max-sm:py-8 max-sm:-my-8">
             {posts.map((post) => (
               <Card
                 size="container"
                 frontmatter={post}
                 image={true}
                 key={post._id}
-                className="max-md:w-[calc(100vw_-_48px)] max-md:snap-center md:col-span-1"
+                className="max-sm:w-[calc(100vw_-_48px)] max-sm:snap-center md:col-span-1"
               />
             ))}
           </div>
@@ -97,14 +97,14 @@ export default async function Home() {
             Popular <span className="text-rio-400">design</span>
           </Title>
 
-          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 max-md:px-8 max-md:py-8 max-md:-my-8">
+          <div className="grid col-margin sm:col-content gap-4 md:gap-8 max-sm:grid-flow-col max-sm:auto-cols-auto max-sm:overflow-auto max-sm:snap-x max-sm:snap-always max-sm:overscroll-x-contain md:grid-cols-2 xl:grid-cols-3 max-sm:px-8 max-sm:py-8 max-sm:-my-8">
             {design.map((post) => (
               <Card
                 size="medium"
                 frontmatter={post}
                 image={false}
                 key={post._id}
-                className="max-md:w-[calc(100vw_-_48px)] max-md:snap-center md:col-span-1"
+                className="max-sm:w-[calc(100vw_-_48px)] max-sm:snap-center md:col-span-1"
               />
             ))}
           </div>
@@ -120,14 +120,14 @@ export default async function Home() {
             Popular <span className="text-dandelion-400">code</span>
           </Title>
 
-          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 max-md:px-8 max-md:py-8 max-md:-my-8">
+          <div className="grid col-margin sm:col-content gap-4 md:gap-8 max-sm:grid-flow-col max-sm:auto-cols-auto max-sm:overflow-auto max-sm:snap-x max-sm:snap-always max-sm:overscroll-x-contain md:grid-cols-2 xl:grid-cols-3 max-sm:px-8 max-sm:py-8 max-sm:-my-8">
             {code.map((post) => (
               <Card
                 size="medium"
                 frontmatter={post}
                 image={false}
                 key={post._id}
-                className="max-md:w-[calc(100vw_-_48px)] max-md:snap-center md:col-span-1"
+                className="max-sm:w-[calc(100vw_-_48px)] max-sm:snap-center md:col-span-1"
               />
             ))}
           </div>

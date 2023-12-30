@@ -7,7 +7,7 @@ import styles from './hero.module.scss'
 export default function Hero() {
   return (
     <div
-      className={`${styles.hero} max-lg:grid max-lg:grid-cols-subgrid col-container place-items-center flex flex-col items-center relative frame frame-16 lg:frame-40 sm:frame-outset-top-sm md:frame-outset-top py-12 lg:pt-10 lg:pb-[5.5rem] gap-y-4 max-lg:px-4`}
+      className={`${styles.hero} max-lg:grid max-lg:grid-cols-subgrid col-container place-items-center flex flex-col items-center relative frame frame-16 lg:frame-40 sm:frame-outset-top-sm lg:frame-outset-top py-12 lg:pt-10 lg:pb-[5.5rem] gap-y-4 max-lg:px-4`}
     >
       <h1 className="max-lg:col-content text-fern-1100 font-display text-3xl xs:text-5xl lg:text-7xl col-start-7 col-end-12 font-variation-bold lg:font-variation-extrabold lowercase text-center max-w-[13ch]">
         Exploring web design craft

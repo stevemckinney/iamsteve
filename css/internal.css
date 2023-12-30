@@ -53,8 +53,9 @@
 
   --shadow-reduced: 0 -1px var(--ui-border-color-weak),
     0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color),
-    0px 4px 4px -4px rgba(117, 99, 98, 0.2),
-    0px 1px 3px 0px rgba(117, 99, 98, 0.2);
+    0px 1px 1px -0.5px var(--ui-border-color),
+    0px 2px 3px -1.5px var(--ui-border-color),
+    0px 3px 4px -2px var(--ui-border-color);
   --shadow-placed: 0 -1px var(--ui-border-color-weak),
     0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color),
     0 1px 1px -0.5px var(--ui-border-color),
@@ -163,7 +164,7 @@
     grid-template-columns: var(--grid-12);
   }
 
-  @screen lg {
+  @screen xl {
     grid-template-columns: var(--grid-16);
   }
 }

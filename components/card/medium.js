@@ -99,7 +99,7 @@ const Medium = ({ frontmatter, image, className }) => {
           </div>
         </>
       )}
-      <div className="flex flex-col flex-auto relative before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-gradient-to-r before:from-white/0 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50 before:z-[3] pb-[1.625rem]">
+      <div className="flex flex-col flex-auto relative before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-gradient-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50/10 active:before:to-neutral-01-50/30 active:before:to-neutral-01-50 active:before:to-neutral-01-50/80 active:before:via-50% before:z-[3] pb-[1.625rem]">
         {categories.length > 0 && (
           <div className={categoryClass}>
             {categories.map((category) => (
