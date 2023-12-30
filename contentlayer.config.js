@@ -96,11 +96,7 @@ export default makeSource({
   contentDirExclude: ['./content/draft'],
   documentTypes: [Post, Page],
   mdx: {
-    remarkPlugins: [
-      remarkGfm,
-      smartypants,
-      [remarkCodeTitles], remarkRehype,
-    ],
+    remarkPlugins: [remarkGfm, smartypants, [remarkCodeTitles], remarkRehype],
     rehypePlugins: [
       rehypeSlug,
       [

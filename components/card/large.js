@@ -43,24 +43,24 @@ const Large = ({ frontmatter, image, className }) => {
     theme,
     categories,
     images,
-    medium,
+    large,
     lastmod,
   } = frontmatter
 
   const imageColor = theme ? theme.toString() : '#e8dcd9'
 
   return (
-    <article className="relative flex flex-col self-start overflow-hidden transition duration-200 bg-white rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:bg-neutral-01-50 bg-clip-padding">
+    <article className="group relative flex flex-col self-start overflow-hidden transition duration-200 bg-white rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:bg-neutral-01-50 bg-clip-padding">
       {image && (
         <Link
           href={slug}
           title=""
-          className={`relative flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
+          className={`relative flex items-center justify-center aspect-[1.6086956522/1] w-full ${className}`}
           style={{ backgroundColor: `${imageColor}` }}
           aria-labelledby={`title-${id}`}
         >
           <>
-            <div className="absolute inset-0 bg-fade" />
+            <div className="absolute inset-0 bg-fade group-active:bg-fade-neutral" />
             <LargeImage
               image={images[0]}
               imageColor={imageColor}
@@ -71,7 +71,7 @@ const Large = ({ frontmatter, image, className }) => {
         </Link>
       )}
       {/* spacing is weirdly distributed in the content to accommodate for scrolling categories */}
-      <div className="flex flex-col flex-auto relative before:content-[''] before:w-16 before:h-6 before:absolute before:top-8 md:before:top-12 before:right-0 before:bg-gradient-to-r before:from-white/0 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50 before:z-[3] pb-8 md:pb-[2.625rem]">
+      <div className="flex flex-col flex-auto relative  before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-gradient-to-r before:from-white/0 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50 before:z-[3] pb-8 md:pb-[2.625rem]">
         {categories && (
           <div
             className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pb-4 md:pb-5 px-8 md:px-12 pt-[1px]`}
@@ -95,14 +95,14 @@ const Large = ({ frontmatter, image, className }) => {
               {title}
             </Link>
           </h2>
-          {summary &&
+          {summary && (
             <div
               className="flex-auto text-lg text-ui-body line-clamp-4 md:line-clamp-3"
               dangerouslySetInnerHTML={{
                 __html: autoParagraph(summary, 'font-body'),
               }}
             />
-          }
+          )}
           <div className="sr-only" aria-hidden="true" tabIndex="-1">
             <Link
               href="/about"

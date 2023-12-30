@@ -1,34 +1,41 @@
 ---
 title: About version 7
-date: "2023-12-23T10:11:40.788Z"
-lastmod: "2023-12-23T10:11:40.788Z"
-summary:
-metadesc:
-theme: "#e9f5f5"
-tags: ["Website"]
-categories: ["Website"]
-images: ["/images/blog/ink-trap-post-image.png"]
-ogImage: "/assets/og/cover.jpg"
-status: open
+date: '2023-12-23T10:11:40.788Z'
+lastmod: '2023-12-23T10:11:40.788Z'
+summary: 'A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs.'
+metadesc: 'A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs.'
+theme: '#e9f5f5'
+tags: ['Website']
+categories: ['Website']
+images: ['/images/blog/ink-trap-post-image.png']
+large: '/images/blog/ink-trap-post-image.png'
+medium: '/images/blog/ink-trap-post-image-medium.png'
+ogImage: '/assets/og/cover.jpg'
+status: 'open'
 codepen: false
 twitter: false
 id: 173
-fileroot: about-version-7
+fileroot: 'about-version-7'
 ---
 
 With this version there was little to no visual change. I say was as, in writing this way beyond the launch of this. The purpose was to move from ExpressionEngine to Next. It was an important change as I felt at the time at a dead end with ExpressionEngine.
 
 ## Why rebuild the website?
+
 I had finally gotten sick of ExpressionEngine and things breaking for no apparent reason. Plug-ins that were relied on were breaking and stopping useful functionality.
 
 ### Moving away from managing your own VPS and awkward deployments
+
 This was another strong driver, I simply didn’t want the server burden being on me anymore. I used DigitalOcean and ServerPilot and this gave peace of mind to a degree.
 
 Not to mention, to get a flawless deployment system, without paying on top of what you’re paying for was to be out of reach for me.
 
 That’s where moving to a host like Netlify was ideal. I’d experienced the ease of deployments with my portfolio—plus there’s a bunch of other benefits.
 
+I’m wary of cost here, as it can easily escalate, but I’ve heard Cloudflare is a good alternative and this is something I may explore.
+
 ### Time to go static
+
 So round mid-2021 (it’s taken a while to write about), I decided it was time to move off. And I decided to go the static route. Theres always been a lot of hype around static site generators, from the original popularity of Jekyll.
 
 I was torn between Gatsby and Next.
@@ -36,6 +43,7 @@ I was torn between Gatsby and Next.
 I had built my portfolio in Gatsby a year earlier, so I felt ok with the React world. Gatsby was a strong choice, I liked the way GraphQL worked to a degree and the community around it seemed to be thriving at the time.
 
 ### Choosing Next
+
 However, I went for Next because on reading it seemed it was better for sites with more pages, such as a blog.
 
 Other than that I didn’t think too much of it.
@@ -49,6 +57,7 @@ It could turn out to be not a great decision. As I see the possibility of moving
 But importantly my content is much more portable.
 
 ## Prepping a URL structure change
+
 One of the things I felt could be a problem was the current URL structure surrounding blog posts. And I didn’t want to have that as a problem on top of moving to Next.js and hosting platform.
 
 The structure was `/blog/entry/[slug]` and moving to `/blog/[slug]`.
@@ -89,9 +98,9 @@ I had to compromise on the search, I wasn’t able to get it to work as an overl
 
 - I found a great starter in https://github.com/timlrx/tailwind-nextjs-starter-blog
 - Rebuilt the design for the most part in components
-    - This wasn’t bad, I didn’t need to throw any of my current Sass away I could include that
+  - This wasn’t bad, I didn’t need to throw any of my current Sass away I could include that
 - Tricky bits were
-    - Making the newsletter work
-    - Tracking post view count
-    - Sorting posts by view count
-    - Search
+  - Making the newsletter work
+  - Tracking post view count
+  - Sorting posts by view count
+  - Search

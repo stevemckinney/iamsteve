@@ -74,7 +74,7 @@ export default async function Home() {
             What’s new
           </Title>
 
-          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 max-md:px-8 max-md:py-4 max-md:-my-4">
+          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 max-md:px-8 max-md:py-8 max-md:-my-8">
             {posts.map((post) => (
               <Card
                 size="container"
@@ -97,7 +97,7 @@ export default async function Home() {
             Popular <span className="text-rio-400">design</span>
           </Title>
 
-          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 max-md:px-8 max-md:py-4 max-md:-my-4">
+          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 max-md:px-8 max-md:py-8 max-md:-my-8">
             {design.map((post) => (
               <Card
                 size="medium"
@@ -120,7 +120,7 @@ export default async function Home() {
             Popular <span className="text-dandelion-400">code</span>
           </Title>
 
-          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 max-md:px-8 max-md:py-4 max-md:-my-4">
+          <div className="grid col-margin md:col-content gap-4 md:gap-8 max-md:grid-flow-col max-md:auto-cols-auto max-md:overflow-auto max-md:snap-x max-md:snap-always max-md:overscroll-x-contain md:grid-cols-2 lg:grid-cols-3 max-md:px-8 max-md:py-8 max-md:-my-8">
             {code.map((post) => (
               <Card
                 size="medium"

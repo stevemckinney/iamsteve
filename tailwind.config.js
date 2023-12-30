@@ -115,16 +115,21 @@ module.exports = {
         ],
       },
       boxShadow: {
-        reduced: '0 -1px var(--ui-border-color-weak), 0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color), 0px 4px 4px -4px rgba(117, 99, 98, 0.2), 0px 1px 3px 0px rgba(117, 99, 98, 0.2)',
-        placed: '0 -1px var(--ui-border-color-weak), 0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color), 0 1px 3px rgba(117, 99, 98, 0.10), 0 4px 10px rgba(117, 99, 98, 0.10)',
-        picked: '0 -1px var(--ui-border-color-weak-hover), 0 1px var(--ui-border-color-strong-hover), 0 0 0 1px var(--ui-border-color-hover), 0 2px 4px rgba(117, 99, 98, 0.16), 0 6px 12px rgba(117, 99, 98, 0.14)',
-        floating: '0 10px 24px -2px rgba(117, 99, 98, 0.12), 0 2px 4px rgba(117, 99, 98, 0.08)',
-        'dandelion-reduced': '0 -1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color), 0 2px 4px -4px rgba(117, 99, 98, 0.10), 0 1px 3px rgba(117, 99, 98, 0.12)',
-        'dandelion-placed': '0 -1px var(--ui-border-color-weak), 0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color), inset 0 2px rgb(249 239 189 / .2), inset 0 -3px rgba(203 113 0 / .2), 0 4px 10px rgba(117, 99, 98, 0.10), 0 1px 3px 0 rgba(117, 99, 98, 0.10)',
-        'dandelion-picked': '0 -1px var(--ui-border-color-weak-hover), 0 1px var(--ui-border-color-strong-hover), 0 0 0 1px var(--ui-border-color-hover), inset 0 2px rgb(249 239 189 / .2), inset 0 -3px rgba(203 113 0 / .2), 0 6px 12px rgba(117, 99, 98, 0.14), 0 2px 4px rgba(117, 99, 98, 0.16)',
+        reduced: 'var(--shadow-reduced)',
+        placed: 'var(--shadow-placed)',
+        picked: 'var(--shadow-picked)',
+        floating: 'var(--shadow-floating)',
+        'dandelion-reduced':
+          '0 -1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color), 0 2px 4px -4px rgba(117, 99, 98, 0.10), 0 1px 3px rgba(117, 99, 98, 0.12)',
+        'dandelion-placed':
+          '0 -1px var(--ui-border-color-weak), 0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color), inset 0 2px rgb(249 239 189 / .2), inset 0 -3px rgba(203 113 0 / .2), 0 4px 10px rgba(117, 99, 98, 0.10), 0 1px 3px 0 rgba(117, 99, 98, 0.10)',
+        'dandelion-picked':
+          '0 -1px var(--ui-border-color-weak-hover), 0 1px var(--ui-border-color-strong-hover), 0 0 0 1px var(--ui-border-color-hover), inset 0 2px rgb(249 239 189 / .2), inset 0 -3px rgba(203 113 0 / .2), 0 6px 12px rgba(117, 99, 98, 0.14), 0 2px 4px rgba(117, 99, 98, 0.16)',
       },
       backgroundImage: {
-        fade: 'linear-gradient(180deg, #FFF -2.7%, rgba(255, 255, 255, 0.00) 16.75%), radial-gradient(95.19% 153.13% at 50% 0%, rgba(255, 255, 255, 0.07) 56.58%, #FFF 80.19%), linear-gradient(180deg, rgba(255, 255, 255, 0.00) 69.27%, rgba(255, 255, 255, 0.01) 72.89%, rgba(255, 255, 255, 0.03) 75.84%, rgba(255, 255, 255, 0.07) 78.22%, rgba(255, 255, 255, 0.12) 80.13%, rgba(255, 255, 255, 0.18) 81.68%, rgba(255, 255, 255, 0.25) 82.96%, rgba(255, 255, 255, 0.33) 84.1%, rgba(255, 255, 255, 0.41) 85.18%, rgba(255, 255, 255, 0.50) 86.31%, rgba(255, 255, 255, 0.59) 87.59%, rgba(255, 255, 255, 0.67) 89.14%, rgba(255, 255, 255, 0.76) 91.05%, rgba(255, 255, 255, 0.85) 93.43%, rgba(255, 255, 255, 0.93) 96.38%, #FFF 100%)',
+        fade: 'radial-gradient(95.19% 153.13% at 50% 0%, rgba(255, 255, 255, 0.07) 56.58%, #FFF 80.19%), linear-gradient(180deg, rgba(255, 255, 255, 0.00) 69.27%, rgba(255, 255, 255, 0.01) 72.89%, rgba(255, 255, 255, 0.03) 75.84%, rgba(255, 255, 255, 0.07) 78.22%, rgba(255, 255, 255, 0.12) 80.13%, rgba(255, 255, 255, 0.18) 81.68%, rgba(255, 255, 255, 0.25) 82.96%, rgba(255, 255, 255, 0.33) 84.1%, rgba(255, 255, 255, 0.41) 85.18%, rgba(255, 255, 255, 0.50) 86.31%, rgba(255, 255, 255, 0.59) 87.59%, rgba(255, 255, 255, 0.67) 89.14%, rgba(255, 255, 255, 0.76) 91.05%, rgba(255, 255, 255, 0.85) 93.43%, rgba(255, 255, 255, 0.93) 96.38%, #FFF 100%)',
+        'fade-neutral':
+          'radial-gradient(95.19% 153.13% at 50% 0%, rgba(252, 249, 248, 0.07) 56.58%, #FCF9F8 80.19%), linear-gradient(180deg, rgba(252, 249, 248, 0.00) 69.27%, rgba(252, 249, 248, 0.01) 72.89%, rgba(252, 249, 248, 0.03) 75.84%, rgba(252, 249, 248, 0.07) 78.22%, rgba(252, 249, 248, 0.12) 80.13%, rgba(252, 249, 248, 0.18) 81.68%, rgba(252, 249, 248, 0.25) 82.96%, rgba(252, 249, 248, 0.33) 84.1%, rgba(252, 249, 248, 0.41) 85.18%, rgba(252, 249, 248, 0.50) 86.31%, rgba(252, 249, 248, 0.59) 87.59%, rgba(252, 249, 248, 0.67) 89.14%, rgba(252, 249, 248, 0.76) 91.05%, rgba(252, 249, 248, 0.85) 93.43%, rgba(252, 249, 248, 0.93) 96.38%, #FCF9F8 100%)',
       },
       colors: {
         ui: {

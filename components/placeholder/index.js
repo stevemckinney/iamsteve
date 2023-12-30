@@ -27,6 +27,7 @@ const PlaceholderCode = [
 
 const Placeholder = ({ category, imageClass = 'image', ...props }) => {
   const [randomImage, setRandomImage] = useState(null)
+  const { width = 384, height = 240 } = props
 
   const generateRandomImage = useCallback(() => {
     const images = category === 'Design' ? PlaceholderDesign : PlaceholderCode
@@ -35,7 +36,7 @@ const Placeholder = ({ category, imageClass = 'image', ...props }) => {
     setRandomImage(randomImage)
   }, [category])
 
-  // Fix the error by checking if randomImage is null before accessing the color property.
+  // Fix the error by checking if randomImage is null before accessing the color property
   const backgroundColor = randomImage?.color
 
   useEffect(() => {
@@ -49,13 +50,23 @@ const Placeholder = ({ category, imageClass = 'image', ...props }) => {
         <Image
           src={randomImage?.imageUrl}
           alt=""
-          width={384}
-          height={240}
+          width={width}
+          height={height}
           className={imageClass}
         />
       </Link>
     )
   }
+
+  return (
+    <Image
+      src={randomImage?.imageUrl}
+      alt=""
+      width={384}
+      height={240}
+      className={imageClass}
+    />
+  )
 }
 
 export default Placeholder

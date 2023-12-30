@@ -57,14 +57,30 @@ export default function RootLayout({ children }) {
             </p>
             <ul className="flex gap-8">
               <li>
-                <Link href="#top">Top</Link>
+                <Link
+                  href="#top"
+                  className="text-fern-1100 hover:text-dandelion-600 transition duration-200"
+                >
+                  Top
+                </Link>
               </li>
               <li>
-                <Link href="/feed.xml">RSS</Link>
+                <Link
+                  href="/feed.xml"
+                  className="text-fern-1100 hover:text-dandelion-600 transition duration-200"
+                >
+                  RSS
+                </Link>
               </li>
               <li>
                 <p className="text-ui-body">
-                  {`©`} <Link href="/">{siteMetadata.title}</Link>{' '}
+                  {`©`}{' '}
+                  <Link
+                    href="/"
+                    className="text-ui-body hover:text-dandelion-600 transition duration-200"
+                  >
+                    {siteMetadata.title}
+                  </Link>{' '}
                   {`${new Date().getFullYear()}`}
                 </p>
               </li>

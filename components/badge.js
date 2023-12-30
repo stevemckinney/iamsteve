@@ -16,7 +16,7 @@ export default function Badge({ children, theme, size = 16, iconStart, href }) {
     )
   } else {
     return (
-      <p className="flex gap-1 font-variation-medium">
+      <p className="flex gap-2 font-variation-medium">
         <Badge.Icon theme={theme} size={size} icon={iconStart} />
         <Badge.Text theme={theme} size={size}>
           {children}
@@ -76,7 +76,7 @@ export function BadgeIcon({ icon, theme, size, className = 'badge' }) {
 
   return (
     <span
-      className={`${sizing} bg-white group-hover:bg-neutral-01-50 shadow-reduced group-hover:shadow-picked rounded-sm flex items-center justify-center transition-all duration-200 ease-linear ${className}`}
+      className={`${sizing} bg-white group-active:bg-neutral-01-50 shadow-reduced group-hover:shadow-picked group-active:shadow-reduced rounded-sm flex items-center justify-center transition-all duration-200 ease-linear ${className}`}
     >
       <Icon className={iconTheme} icon={icon} size={size} />
     </span>

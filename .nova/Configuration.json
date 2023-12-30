@@ -3,6 +3,7 @@
   "apexskier.eslint.config.eslintPath" : "node_modules\/eslint\/bin\/eslint.js",
   "apexskier.eslint.config.fixOnSave" : "Enable",
   "mockadillo.npmimports.quote-configuration" : "Single Quote",
+  "prettier.format-on-save" : "Enable",
   "prettier.module.path" : "\/Users\/steve\/Sites\/iamsteve\/node_modules\/prettier",
   "workspace.art_style" : 0,
   "workspace.color" : 6,

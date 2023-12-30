@@ -93,7 +93,7 @@ export default async function PostPage({ params }) {
           <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
             <Date dateString={post.date} />
           </Badge>
-          <PageTitle className="mt-4" id={`title-${post.id}`}>
+          <PageTitle className="mt-4" key={`title-${post.id}`}>
             {post.title}
           </PageTitle>
           {post.summary && (
@@ -103,7 +103,7 @@ export default async function PostPage({ params }) {
           )}
           <div className="flex justify-between">
             <div className="flex flex-row gap-4 items-center">
-              {post.categories &&
+              {post.categories.length > 0 &&
                 post.categories.map((category, index) => {
                   return (
                     <>
@@ -125,7 +125,10 @@ export default async function PostPage({ params }) {
         </header>
         {!post.image && !post.medium && (
           <>
-            <div className={`col-prose grid-cols-subgrid ${styles.featured}`} key="featured-image">
+            <div
+              className={`col-prose grid-cols-subgrid ${styles.featured}`}
+              key="featured-image"
+            >
               {post.categories && post.categories.includes('Design') ? (
                 <Placeholder
                   category="Design"
@@ -136,6 +139,7 @@ export default async function PostPage({ params }) {
                   imageClass={`w-full h-full`}
                   aria-labelledby={`title-${post.id}`}
                   tabIndex="0"
+                  key={post.slug}
                 />
               ) : (
                 <Placeholder
@@ -147,6 +151,7 @@ export default async function PostPage({ params }) {
                   imageClass={`w-full h-full`}
                   aria-labelledby={`title-${post.id}`}
                   tabIndex="0"
+                  key={post.slug}
                 />
               )}
             </div>

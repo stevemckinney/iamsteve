@@ -8,6 +8,8 @@ theme: "#e9f5f5"
 tags: []
 categories: []
 images: []
+large: "/images/blog/ink-trap-post-image.png"
+medium: "/images/blog/ink-trap-post-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: draft
 codepen: false

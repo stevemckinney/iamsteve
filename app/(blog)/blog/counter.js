@@ -21,9 +21,7 @@ const ViewCounter = ({
   }, [slug, trackView])
 
   return (
-    <>
-      <p className={`${className}`}>{`${number.toLocaleString()} views`}</p>
-    </>
+    <>{`${number.toLocaleString()} views`}</>
   )
 }
 
