@@ -35,7 +35,11 @@
   --shiki-token-link: var(--code-blue);
 
   > * {
-    grid-column: prose-start / prose-end;
+    grid-column: content-start / content-end;
+
+    @screen lg {
+      grid-column: prose-start / prose-end;
+    }
   }
 
   figure :where(figcaption, figcaption p) {
@@ -284,18 +288,28 @@
 .prose {
   :global([data-rehype-pretty-code-fragment]),
   :global(.cp_embed_wrapper) {
-    border-radius: theme('borderRadius.lg');
     background-color: theme('colors.fern.1100');
     margin-inline: -2rem;
-    margin-block: theme('margin.8');
     overflow: hidden;
+
+    @screen md {
+      border-radius: theme('borderRadius.lg');
+    }
+  }
+
+  :global(.cp_embed_wrapper),
+  :global(.remark-code-container) {
+    margin-block: theme('margin.8');
   }
 
   :global([data-rehype-pretty-code-fragment]) {
     border: 1px solid theme('colors.neutral-03.900');
-    border-radius: theme('borderRadius.lg');
     background-color: theme('colors.neutral-03.900');
     border-block-end: 1px solid theme('colors.fern.900');
+
+    @screen md {
+      border-radius: theme('borderRadius.lg');
+    }
   }
 
   :global(.cp_embed_wrapper) {
@@ -483,14 +497,19 @@
 .prose > img,
 .prose figure > img,
 .prose :global(.article-image) > img,
-.featured > img {
+.featured {
   box-shadow: theme('boxShadow.floating');
   position: relative;
   max-width: none;
-  left: -32px;
-  width: calc(100% + 64px);
+  left: -24px;
+  width: calc(100% + 24px);
 
-  @screen lg {
+  @screen sm {
     border-radius: theme('borderRadius.lg');
+  }
+
+  @screen md {
+    left: -32px;
+    width: calc(100% + 64px);
   }
 }

@@ -66,6 +66,8 @@ export default async function PostPage({ params }) {
   const post = await getPostFromParams(params)
   const allViews = await getAllPageViews()
 
+  const imageColor = post.theme ? post.theme.toString() : `#ccc`
+
   if (!post) {
     notFound()
   }
@@ -77,19 +79,19 @@ export default async function PostPage({ params }) {
           src="/images/illustration/pencil-mono.svg"
           width={962}
           height={46}
-          className={`max-lg:hidden col-start-1 col-end-4 max-w-[initial] justify-self-end self-start mt-3 row-start-1 drop-shadow-placed`}
+          className={`max-lg:hidden col-start-1 col-end-prose-start 2xl:col-end-4 max-w-[initial] justify-self-end self-start mt-3 row-start-1 drop-shadow-placed`}
           alt=""
           role="presentation"
         />
         <Image
           src="/images/illustration/ruler-mono.svg"
-          width={594}
+          width={744}
           height={122}
           className={`max-lg:hidden col-start-[14] col-end-[-1] max-w-[initial] self-end row-start-1 drop-shadow-placed`}
           alt=""
           role="presentation"
         />
-        <header className="col-prose flex flex-col gap-4 row-start-1">
+        <header className="col-content lg:col-prose flex flex-col gap-4 row-start-1">
           <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
             <Date dateString={post.date} />
           </Badge>
@@ -101,7 +103,7 @@ export default async function PostPage({ params }) {
               {post.summary}
             </p>
           )}
-          <div className="flex justify-between">
+          <div className="flex flex-wrap gap-y-4 justify-between">
             <div className="flex flex-row gap-4 items-center">
               {post.categories.length > 0 &&
                 post.categories.map((category, index) => {
@@ -123,66 +125,59 @@ export default async function PostPage({ params }) {
             </Badge>
           </div>
         </header>
-        {!post.image && !post.medium && (
+        {!post.large && (
           <>
-            <div
-              className={`col-prose grid-cols-subgrid ${styles.featured}`}
-              key="featured-image"
-            >
-              {post.categories && post.categories.includes('Design') ? (
-                <Placeholder
-                  category="Design"
-                  kind="post"
-                  href={post.slug}
-                  title=""
-                  className={`flex items-center justify-center rounded-lg overflow-hidden aspect-[1.6/1]`}
-                  imageClass={`w-full h-full`}
-                  aria-labelledby={`title-${post.id}`}
-                  tabIndex="0"
-                  key={post.slug}
-                />
-              ) : (
-                <Placeholder
-                  category="Code"
-                  kind="post"
-                  href={post.slug}
-                  title=""
-                  className={`flex items-center justify-center rounded-lg overflow-hidden aspect-[1.6/1]`}
-                  imageClass={`w-full h-full`}
-                  aria-labelledby={`title-${post.id}`}
-                  tabIndex="0"
-                  key={post.slug}
-                />
-              )}
-            </div>
-          </>
-        )}
-        {post.images &&
-          post.images.map((image, index) => (
-            <div
-              className={`col-prose grid-cols-subgrid ${styles.featured}`}
-              key={index}
-            >
-              <Image
-                src={image}
-                className="radius"
-                alt=""
+            {post.categories && post.categories.includes('Design') ? (
+              <Placeholder
+                category="Design"
+                kind="post"
+                alt=" "
+                aria-labelledby={`title-${post.id}`}
+                tabIndex="0"
                 width={744}
                 height={492}
-                key={image}
-                blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                placeholder="blur"
-                priority
+                className={`col-content lg:col-prose grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
               />
-            </div>
-          ))}
+            ) : (
+              <Placeholder
+                category="Code"
+                kind="post"
+                alt=" "
+                aria-labelledby={`title-${post.id}`}
+                tabIndex="0"
+                width={744}
+                height={492}
+                className={`col-content lg:col-prose grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
+              />
+            )}
+          </>
+        )}
+        {post.large && (
+          <div
+            className={`col-content lg:col-prose grid-cols-subgrid flex items-center justify-center ${styles.featured}`}
+            style={{ backgroundColor: `${imageColor}` }}
+          >
+            <Image
+              src={post.large}
+              className="radius"
+              alt=" "
+              width={744}
+              height={492}
+              blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              placeholder="blur"
+              priority
+            />
+          </div>
+        )}
         <div
-          className={`${styles.prose} prose grid grid-cols-subgrid gap-x-8 gap-y-0 col-prose col-prose`}
+          className={`${styles.prose} prose grid grid-cols-subgrid gap-x-8 gap-y-0 col-content lg:col-prose`}
         >
           <PostMdx code={post.body.code} />
         </div>
         <Support />
-        <aside className={`col-prose flex flex-col gap-4 md:-mx-8`}>
+        <aside
+          className={`col-content lg:col-prose flex flex-col gap-4 md:-mx-8`}
+        >
           <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 md:px-8">
             Next to read
           </h2>

@@ -8,7 +8,7 @@ const Subscribe = ({
 }) => {
   return (
     <section className={`${className}`}>
-      <div className="flex flex-col gap-2 lg:gap-4 w-full max-lg:col-end-content-end col-start-content-start col-span-6 xl:col-span-5">
+      <div className="flex flex-col gap-2 lg:gap-4 w-full max-lg:col-end-content-end col-start-content-start col-span-6 2xl:col-span-5">
         <Image
           src="/images/illustration/spot/envelope.svg"
           width={96}
@@ -26,7 +26,7 @@ const Subscribe = ({
           unsubscribe anytime.
         </p>
       </div>
-      <div className="col-content lg:col-start-7 xl:col-start-8 lg:col-end-content-end">
+      <div className="col-content lg:col-start-7 2xl:col-start-8 lg:col-end-content-end">
         <NewsletterForm unique={unique} />
       </div>
     </section>
