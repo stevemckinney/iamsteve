@@ -1,6 +1,7 @@
 /**
  * Single blog post
  * See (blog)/layout.js for controlling page frame
+ * #single #post
  */
 
 import { notFound } from 'next/navigation'
@@ -17,7 +18,7 @@ import Category from '@/components/category'
 import Badge from '@/components/badge'
 import PageHeader from '@/components/page-header'
 import PageTitle from '@/components/page-title'
-import Date from '@/components/date'
+import Date, { postYear } from '@/components/date'
 import Icon from '@/components/icon'
 import Link from '@/components/link'
 
@@ -80,16 +81,16 @@ export default async function PostPage({ params }) {
           width={962}
           height={46}
           className={`max-lg:hidden col-start-1 col-end-prose-start 2xl:col-end-4 max-w-[initial] justify-self-end self-start mt-3 row-start-1 drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/ruler-mono.svg"
           width={744}
           height={122}
           className={`max-lg:hidden col-start-[14] col-end-[-1] max-w-[initial] self-end row-start-1 drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <header className="col-content lg:col-prose flex flex-col gap-4 row-start-1">
           <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
@@ -108,11 +109,9 @@ export default async function PostPage({ params }) {
               {post.categories.length > 0 &&
                 post.categories.map((category, index) => {
                   return (
-                    <>
-                      <Category size={24} key={index}>
-                        {category}
-                      </Category>
-                    </>
+                    <Category size={24} key={index}>
+                      {category}
+                    </Category>
                   )
                 })}
             </div>
@@ -125,28 +124,39 @@ export default async function PostPage({ params }) {
             </Badge>
           </div>
         </header>
+
+        {post.categories.includes('Code') && postYear(post.date) < 2019 && (
+          <div className="col-prose flex gap-1 leading-tight items-center bg-cornflour-200/40 rounded-sm px-2 py-2">
+            <Icon icon="square-info" className="text-cornflour-700" />
+            <p className="p-0 m-0 font-ui lowercase text-cornflour-700">
+              This post was published <Date dateString={post.date} relative />,
+              so the approach may be outdated
+            </p>
+          </div>
+        )}
+
         {!post.large && (
           <>
             {post.categories && post.categories.includes('Design') ? (
               <Placeholder
                 category="Design"
                 kind="post"
-                alt=" "
+                alt={`${post.title} (featured image)`}
                 aria-labelledby={`title-${post.id}`}
                 tabIndex="0"
-                width={744}
-                height={492}
+                width={864}
+                height={540}
                 className={`col-content lg:col-prose grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
               />
             ) : (
               <Placeholder
                 category="Code"
                 kind="post"
-                alt=" "
+                alt={`${post.title} (featured image)`}
                 aria-labelledby={`title-${post.id}`}
                 tabIndex="0"
-                width={744}
-                height={492}
+                width={864}
+                height={540}
                 className={`col-content lg:col-prose grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
               />
             )}
@@ -160,9 +170,9 @@ export default async function PostPage({ params }) {
             <Image
               src={post.large}
               className="radius"
-              alt=" "
-              width={744}
-              height={492}
+              alt={`${post.title} (featured image)`}
+              width={864}
+              height={540}
               blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
               placeholder="blur"
               priority
