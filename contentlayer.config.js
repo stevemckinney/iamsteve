@@ -62,7 +62,7 @@ export const Post = defineDocumentType(() => ({
     date: { type: 'date', required: true },
     lastmod: { type: 'date', required: true },
     tags: { type: 'list', of: { type: 'string' } },
-    categories: { type: 'list', of: { type: 'string' } },
+    categories: { type: 'list', of: { type: 'string' }, required: true },
     codepen: { type: 'boolean' },
     twitter: { type: 'boolean' },
     id: { type: 'number', required: true },
