@@ -11,7 +11,7 @@ images: ['/images/blog/ink-trap-post-image.png']
 large: '/images/blog/ink-trap-post-image.png'
 medium: '/images/blog/ink-trap-post-image-medium.png'
 ogImage: '/assets/og/cover.jpg'
-status: 'open'
+status: 'closed'
 id: 9999
 fileroot: 'template'
 ---

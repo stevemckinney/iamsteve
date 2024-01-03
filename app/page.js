@@ -27,7 +27,7 @@ const getData = cache(async () => {
 
   const postsByDate = allPosts
     .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .filter((post) => post.status.includes('open'))
+    .filter((post) => post.status === 'open')
 
   const postsWithViews = dbPosts?.map(({ slug, view_count }) => ({
     slug,
@@ -36,7 +36,7 @@ const getData = cache(async () => {
 
   const mergedData = mergeDataBySlug(postsWithViews, allPosts)
     .sort((a, b) => b.view_count - a.view_count)
-    .filter((post) => post.status.includes('open'))
+    .filter((post) => post.status === 'open')
 
   const design = mergedData
     .filter((post) => post.categories.includes('Design'))

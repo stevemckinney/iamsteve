@@ -60,13 +60,13 @@ export default async function BlogIndex({ params }) {
         width={962}
         height={46}
         className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-2 drop-shadow-placed`}
-        alt=""
-        role="presentation"
+        alt=" "
+        aria-hidden="true"
       />
       <h1 className="col-content text-7xl font-variation-extrabold font-display text-fern-1100 lowercase">
         Blog
       </h1>
-      <div className="grid grid-cols-3 col-content gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
         {paginatedPosts.map((post) => (
           <Card size="medium" frontmatter={post} image={true} key={post._id} />
         ))}

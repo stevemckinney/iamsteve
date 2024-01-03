@@ -15,9 +15,8 @@ const Subscribe = ({
           height={96}
           className="max-lg:w-[48px] max-lg:h-[48px] drop-shadow-placed"
           alt="Illustration of a sealed envelope"
-          role="presentation"
         />
-        <h2 className="text-2xl lg:text-5xl font-display font-variation-bold lowercase fern-1100">
+        <h2 className="text-2xl lg:text-5xl font-display font-variation-bold lowercase text-fern-1100">
           {title}
         </h2>
         <p className="m-0 text-base text-ui-body">

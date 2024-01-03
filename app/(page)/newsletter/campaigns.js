@@ -44,7 +44,6 @@ const Campaigns = () => {
     return (
       <ul className="flex flex-col -my-2">
         {campaigns.data.map((campaign) => {
-          console.log(campaign)
           if (campaign.status !== 'SENT') return
           return (
             <li

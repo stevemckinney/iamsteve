@@ -1,3 +1,8 @@
+/**
+ * Blog / archive page
+ * See (blog)/layout.js for controlling page frame
+ */
+
 import { cache } from 'react'
 import { allPosts } from 'contentlayer/generated'
 
@@ -15,7 +20,7 @@ const POSTS_PER_PAGE = 12
 
 const getData = cache(async () => {
   const postsByDate = sortPosts(
-    allPosts.filter((post) => post.status.includes('open'))
+    allPosts.filter((post) => post.status === 'open')
   )
 
   return {
@@ -44,22 +49,15 @@ export default async function BlogIndex({ params }) {
         width={962}
         height={46}
         className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed`}
-        alt=""
-        role="presentation"
+        alt=" "
+        aria-hidden="true"
       />
       <PageHeader>
         <PageTitle>Blog</PageTitle>
       </PageHeader>
-      <div className="grid grid-cols-3 col-content gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
         {paginatedPosts.map((post) => (
-          <>
-            <Card
-              size="medium"
-              frontmatter={post}
-              image={true}
-              key={post._id}
-            />
-          </>
+          <Card size="medium" frontmatter={post} image={true} key={post._id} />
         ))}
       </div>
       <div className="col-content">

@@ -64,11 +64,12 @@ const Placeholder = ({ category, imageClass = 'image', ...props }) => {
       style={{ backgroundColor: backgroundColor }}
     >
       <Image
-        {...props}
         src={randomImage?.imageUrl}
+        alt={props.alt}
         width={width}
         height={height}
         className={imageClass}
+        {...props}
       />
     </div>
   )

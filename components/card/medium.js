@@ -17,16 +17,13 @@ const MediumImage = ({ ...props }) => {
   // New 384x316
   // Legacy 378x252
   return (
-    <>
-      <Image
-        src={image}
-        role="presentation"
-        width={384}
-        height={240}
-        alt={title}
-        className={`absolute z-[1] transform -translate-x-1/2 -translate-y-1/2 border top-1/2 left-1/2 border-0`}
-      />
-    </>
+    <Image
+      src={image}
+      width={384}
+      height={240}
+      alt={title}
+      className={`absolute z-[1] transform -translate-x-1/2 -translate-y-1/2 border top-1/2 left-1/2 border-0`}
+    />
   )
 }
 
@@ -66,7 +63,7 @@ const Medium = ({ frontmatter, image, className }) => {
             tabIndex="0"
           >
             <>
-              <div className="absolute z-[2] inset-0 bg-fade group-active:bg-fade-neutral" />
+              <div className="absolute before:transition before:duration-200 before:ease-in z-10 inset-0 bg-fade-sm before:z-[-1] before:absolute before:bg-fade-neutral-sm before:inset-0 before:opacity-0 group-active:before:opacity-100" />
               <MediumImage
                 image={medium}
                 imageColor={imageColor}
@@ -83,13 +80,13 @@ const Medium = ({ frontmatter, image, className }) => {
             className={`flex items-center justify-center aspect-[16/9] w-full relative overflow-hidden`}
             style={{ backgroundColor: `${imageColor}` }}
           >
-            <div className="absolute z-[2] inset-0 bg-fade group-active:bg-fade-neutral" />
+            <div className="absolute before:transition before:duration-200 before:ease-in z-10 inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100" />
             {categories && (
               <Placeholder
                 category={categories.includes('Design') ? 'Design' : 'Code'}
                 kind="post"
                 href={slug}
-                title=""
+                title={title}
                 className={`flex items-center justify-center aspect-[1.6/1]`}
                 style={{ backgroundColor: `${imageColor}` }}
                 aria-labelledby={`title-${id}`}
@@ -99,11 +96,11 @@ const Medium = ({ frontmatter, image, className }) => {
           </div>
         </>
       )}
-      <div className="flex flex-col flex-auto relative before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-gradient-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50/10 active:before:to-neutral-01-50/30 active:before:to-neutral-01-50 active:before:to-neutral-01-50/80 active:before:via-50% before:z-[3] pb-[1.625rem]">
+      <div className="flex flex-col flex-auto relative z-20 before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-gradient-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50/10 active:before:to-neutral-01-50/30 active:before:to-neutral-01-50 active:before:to-neutral-01-50/80 active:before:via-50% before:z-[3] pb-[1.625rem]">
         {categories.length > 0 && (
-          <div className={categoryClass}>
-            {categories.map((category) => (
-              <Category size={24} key={category} tabIndex="1">
+          <div className={categoryClass} key="cats">
+            {categories.map((category, index) => (
+              <Category size={24} key={`${category}${index}`} tabIndex="1">
                 {category}
               </Category>
             ))}

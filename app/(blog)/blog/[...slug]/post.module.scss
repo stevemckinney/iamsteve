@@ -495,14 +495,13 @@
 }
 
 .prose > img,
-.prose figure > img,
-.prose :global(.article-image) > img,
+.prose > figure > img,
+.prose > :global(.article-image) > img,
 .featured {
-  box-shadow: theme('boxShadow.floating');
   position: relative;
   max-width: none;
   left: -24px;
-  width: calc(100% + 24px);
+  width: calc(100% + 48px);
 
   @screen sm {
     border-radius: theme('borderRadius.lg');

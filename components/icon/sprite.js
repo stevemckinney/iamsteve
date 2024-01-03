@@ -727,6 +727,22 @@ const Sprite = (props) => (
           <path d="M9 13h6" className="stroke-current stroke-2" />
         </g>
       </symbol>
+      <symbol id="square-info-24" width="24" height="24" viewBox="0 0 24 24">
+        <g className="square-info">
+          <path
+            d="M3.993 21A.994.994 0 0 1 3 20V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v16c0 .552-.442 1-.995 1H3.993Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path d="M10 11h2v6" className="stroke-current stroke-2 sl-r" />
+          <path d="M10 17h4" className="stroke-current stroke-2 sl-r" />
+          <circle
+            cx="11.5"
+            cy="7.5"
+            r=".5"
+            className="fill-current stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="bmc-24" viewBox="0 0 24 24" fill="none">
         <g clipPath="url(#a)">
           <path
