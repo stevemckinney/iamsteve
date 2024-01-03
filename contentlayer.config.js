@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm'
 import smartypants from 'remark-smartypants'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkRehype from 'remark-rehype'
-// import rehypePrettyCode from 'rehype-pretty-code'
+import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import parse from 'rehype-parse'
 import slug from 'rehype-slug'
@@ -96,11 +96,7 @@ export default makeSource({
   contentDirExclude: ['./content/draft'],
   documentTypes: [Post, Page],
   mdx: {
-    remarkPlugins: [
-      remarkGfm,
-      smartypants,
-      /*[remarkCodeTitles],*/ remarkRehype,
-    ],
+    remarkPlugins: [remarkGfm, smartypants, remarkRehype],
     rehypePlugins: [
       rehypeSlug,
       [
@@ -113,25 +109,25 @@ export default makeSource({
           },
         },
       ],
-      // [
-      //   rehypePrettyCode,
-      //   {
-      //     theme: 'css-variables',
-      //     onVisitLine(node) {
-      //       // Prevent lines from collapsing in `display: grid` mode, and allow empty
-      //       // lines to be copy/pasted
-      //       if (node.children.length === 0) {
-      //         node.children = [{ type: 'text', value: ' ' }]
-      //       }
-      //     },
-      //     onVisitHighlightedLine(node) {
-      //       node.properties.className.push('line-highlighted')
-      //     },
-      //     onVisitHighlightedWord(node) {
-      //       node.properties.className = ['word-highlighted']
-      //     },
-      //   },
-      // ],
+      [
+        rehypePrettyCode,
+        {
+          theme: 'css-variables',
+          onVisitLine(node) {
+            // Prevent lines from collapsing in `display: grid` mode, and allow empty
+            // lines to be copy/pasted
+            if (node.children.length === 0) {
+              node.children = [{ type: 'text', value: ' ' }]
+            }
+          },
+          onVisitHighlightedLine(node) {
+            node.properties.className.push('line-highlighted')
+          },
+          onVisitHighlightedWord(node) {
+            node.properties.className = ['word-highlighted']
+          },
+        },
+      ],
       // [rehypeCitation, { path: path.join(root, 'data') }],
       // [rehypePrism, { ignoreMissing: true }],
       // [rehypeToc, { customizeTOC }],
