@@ -32,6 +32,17 @@ export const metadata = {
   },
 }
 
+const jsonLD = {
+  '@context': 'http://schema.org',
+  Organization: [
+    {
+      '@type': 'Organization',
+      url: `${siteMetadata.siteUrl}`,
+      logo: `${siteMetadata.siteUrl}/images/logo.svg`,
+    },
+  ],
+}
+
 export default function RootLayout({ children }) {
   return (
     <html
@@ -41,6 +52,10 @@ export default function RootLayout({ children }) {
     >
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/bvl2qse.css" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
+        />
       </head>
       {/**
        * No gap-y-18 to create space between the footer because it throws off

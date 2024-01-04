@@ -54,6 +54,25 @@ export async function generateMetadata({ params }) {
 
   return {
     title: post.title,
+    description: post.metadesc,
+    openGraph: {
+      title: post.title,
+      description: post.metadesc,
+      type: 'article',
+      publishedTime: post.date,
+      url: `${post.slug}`,
+      images: [
+        {
+          url: post.ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.metadesc,
+      images: [post.ogImage],
+    },
   }
 }
 
@@ -73,8 +92,14 @@ export default async function PostPage({ params }) {
     notFound()
   }
 
+  const jsonLD = post.structuredData
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
+      />
       <article className={`grid col-container grid-cols-subgrid gap-y-12`}>
         <Image
           src="/images/illustration/pencil-mono.svg"
@@ -164,12 +189,11 @@ export default async function PostPage({ params }) {
         )}
         {post.large && (
           <div
-            className={`col-content lg:col-prose grid-cols-subgrid flex items-center justify-center ${styles.featured}`}
+            className={`col-content lg:col-prose grid-cols-subgrid flex items-center overflow-hidden justify-center ${styles.featured}`}
             style={{ backgroundColor: `${imageColor}` }}
           >
             <Image
               src={post.large}
-              className="radius"
               alt={`${post.title} (featured image)`}
               width={864}
               height={540}

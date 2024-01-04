@@ -1,5 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import path from 'path'
+import siteMetadata from './content/metadata'
+
 import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
 import smartypants from 'remark-smartypants'
@@ -88,8 +90,80 @@ export const Post = defineDocumentType(() => ({
           .join('/')
           .replace(/^(?:\d\d\d\d-)?/, ''),
     },
+    structuredData: {
+      type: 'json',
+      resolve: (doc) => ({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `${siteMetadata.siteUrl}/${doc._raw.flattenedPath.split('/').slice(1).join('/').replace(/^(?:\d\d\d\d-)?/, '')}`
+        },
+        headline: doc.title,
+        datePublished: doc.date,
+        dateModified: doc.lastmod || doc.date,
+        description: doc.summary,
+        image: doc.ogImage ? doc.ogImage : siteMetadata.socialBanner,
+        url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
+        "author": [
+          {
+            "@type": "Person",
+            "name": "Steve McKinney"
+          }
+        ],
+        "publisher": [
+          {
+            "@type": "Organization",
+            "name": "Steve",
+            "logo": {
+              "@type": "ImageObject",
+              "url": `${siteMetadata.siteUrl}/images/logo.svg`
+            }
+          }
+        ],
+      }),
+    },
   },
 }))
+
+const jsonLD = post.structuredData
+jsonLD['author'] = {
+  "@type": "Person",
+  "name": "Steve McKinney"
+}
+
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://iamsteve.me/blog/atomic-font-size-management-with-sass"
+  },
+  "headline": "‘Atomic’ font size management with Sass",
+  "image": [
+    {
+      "@type": "ImageObject",
+      "url": "https://iamsteve.me/static/images/blog/atomic-font-sizes-featured-image@2x.png"
+    }
+  ],
+  "datePublished": "2018-06-13T06:27:00.000Z",
+  "dateModified": "2019-10-10T11:44:17.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Steve McKinney"
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Steve",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://iamsteve.me/static/images/logo.png"
+    }
+  },
+  "description": "In a responsive world, managing font sizes can be tricky. So how can an atomic approach help?"
+}
 
 export default makeSource({
   contentDirPath: './content',
