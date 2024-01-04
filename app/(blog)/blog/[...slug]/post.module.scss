@@ -298,7 +298,8 @@
   }
 
   :global(.cp_embed_wrapper),
-  :global(.remark-code-container) {
+  :global(.remark-code-container),
+  :global([data-rehype-pretty-code-fragment]) {
     margin-block: theme('margin.8');
   }
 
@@ -502,6 +503,7 @@
   max-width: none;
   left: -24px;
   width: calc(100% + 48px);
+  box-shadow: theme('boxShadow.placed');
 
   @screen sm {
     border-radius: theme('borderRadius.lg');
