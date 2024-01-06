@@ -45,11 +45,7 @@ const jsonLD = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className="light overflow-x-hidden"
-      style={{ colorScheme: 'light' }}
-    >
+    <html lang="en" className="light" style={{ colorScheme: 'light' }}>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/bvl2qse.css" />
         <script

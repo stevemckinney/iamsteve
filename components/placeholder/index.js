@@ -25,7 +25,12 @@ const PlaceholderCode = [
   { color: '#CDB9F5', imageUrl: '/images/default/code-default.svg' },
 ]
 
-const Placeholder = ({ category, imageClass = 'image', ...props }) => {
+const Placeholder = ({
+  category,
+  size = 'medium',
+  imageClass = 'image',
+  ...props
+}) => {
   const [randomImage, setRandomImage] = useState(null)
   const { width = 384, height = 240 } = props
 
