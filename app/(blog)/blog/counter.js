@@ -20,9 +20,7 @@ const ViewCounter = ({
     return () => (isIncremented = false)
   }, [slug, trackView])
 
-  return (
-    <>{`${number.toLocaleString()} views`}</>
-  )
+  return <>{`${number.toLocaleString()} views`}</>
 }
 
 export default ViewCounter

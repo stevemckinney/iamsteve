@@ -1,19 +1,19 @@
 ---
-title: "‘Atomic’ font size management with Sass"
-date: "2018-06-13T06:27:00+00:00"
-lastmod: "2019-10-10T11:44:17+00:00"
-summary: "In a responsive world, managing font sizes can be tricky. So how can an atomic approach help?"
-metadesc: "How many times do you set a font size? How do you manage consistency? An atomic approach can help with both of these issues."
-theme: "#edf5f6"
-tags: ["Code", "CSS"]
-categories: ["Code", "CSS"]
-images: ["/images/blog/atomic-font-sizes-featured-image@2x.png"]
-large: "/images/blog/atomic-font-sizes-featured-image@2x.png"
-medium: "/images/blog/atomic-font-sizes-featured-image-medium@2x.png"
-ogImage: "/assets/og/cover.jpg"
-status: "open"
+title: '‘Atomic’ font size management with Sass'
+date: '2018-06-13T06:27:00+00:00'
+lastmod: '2019-10-10T11:44:17+00:00'
+summary: 'In a responsive world, managing font sizes can be tricky. So how can an atomic approach help?'
+metadesc: 'How many times do you set a font size? How do you manage consistency? An atomic approach can help with both of these issues.'
+theme: '#f8fbfc'
+tags: ['Code', 'CSS']
+categories: ['Code', 'CSS']
+images: ['/images/blog/atomic-font-sizes-featured-image@2x.png']
+large: '/images/blog/atomic-font-sizes-featured-image@2x.png'
+medium: '/images/blog/atomic-font-sizes-featured-image-medium@2x.png'
+ogImage: '/assets/og/cover.jpg'
+status: 'open'
 id: 170
-fileroot: "atomic-font-size-management-with-sass"
+fileroot: 'atomic-font-size-management-with-sass'
 ---
 
 Have you found yourself thinking: ‘how many times have I set this font size?’ If so, this post should help. Font size management is challenging, especially with responsive design. However, I’ve been using an ‘atomic’ approach with Sass which has made things easier.
@@ -92,12 +92,24 @@ The naming of each variable isn’t make or break. For me `f1` through `f6` work
 Next, you need to choose a naming convention and write the CSS for your font sizes. These will be used as the lowest breakpoint, or when you don’t need the font size to change across the board.
 
 ```scss title="typography.scss" showLineNumbers
-.f1 { font-size: $f1; }
-.f2 { font-size: $f2; }
-.f3 { font-size: $f3; }
-.f4 { font-size: $f4; }
-.f5 { font-size: $f5; }
-.f6 { font-size: $f6; }
+.f1 {
+  font-size: $f1;
+}
+.f2 {
+  font-size: $f2;
+}
+.f3 {
+  font-size: $f3;
+}
+.f4 {
+  font-size: $f4;
+}
+.f5 {
+  font-size: $f5;
+}
+.f6 {
+  font-size: $f6;
+}
 ```
 
 ### Setting up a breakpoint map
@@ -130,13 +142,25 @@ The next step is where Sass does all the work for you and you will see the benef
 // Loop through the breakpoint map, assign each breakpoint to the relevant variable
 // eg: $breakpoint-name = 'b' and $breakpoint-width = 480px
 @each $breakpoint-name, $breakpoint-width in $breakpoint-map {
-  @media(min-width: $breakpoint-width) {
-    .f1-#{$breakpoint-name} { font-size: $f1; }
-    .f2-#{$breakpoint-name} { font-size: $f2; }
-    .f3-#{$breakpoint-name} { font-size: $f3; }
-    .f4-#{$breakpoint-name} { font-size: $f4; }
-    .f5-#{$breakpoint-name} { font-size: $f5; }
-    .f6-#{$breakpoint-name} { font-size: $f6; }
+  @media (min-width: $breakpoint-width) {
+    .f1-#{$breakpoint-name} {
+      font-size: $f1;
+    }
+    .f2-#{$breakpoint-name} {
+      font-size: $f2;
+    }
+    .f3-#{$breakpoint-name} {
+      font-size: $f3;
+    }
+    .f4-#{$breakpoint-name} {
+      font-size: $f4;
+    }
+    .f5-#{$breakpoint-name} {
+      font-size: $f5;
+    }
+    .f6-#{$breakpoint-name} {
+      font-size: $f6;
+    }
   }
 }
 ```

@@ -32,18 +32,33 @@ export const metadata = {
   },
 }
 
+const jsonLD = {
+  '@context': 'http://schema.org',
+  Organization: [
+    {
+      '@type': 'Organization',
+      url: `${siteMetadata.siteUrl}`,
+      logo: `${siteMetadata.siteUrl}/images/logo.svg`,
+    },
+  ],
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="light" style={{ colorScheme: 'light' }}>
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/bvl2qse.css" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
+        />
       </head>
       {/**
        * No gap-y-18 to create space between the footer because it throws off
        * the border alignment within the header
        */}
       <body
-        className={`antialiased min-h-screen bg-neutral-01-100 dark:bg-slate-950 text-slate-900 dark:text-slate-50 overflow-x-hidden grid layout gap-x-4 md:gap-x-8 max-w-[1728px] mx-auto`}
+        className={`overflow-x-hidden antialiased min-w-screen min-h-screen bg-neutral-01-100 text-fern-1100 grid layout gap-x-4 md:gap-x-8 max-w-[1728px] mx-auto`}
       >
         <Sprite />
         <ModeToggle />

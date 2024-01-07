@@ -4,10 +4,10 @@ import Link from '@/components/link'
 
 export default function FooterProfile() {
   return (
-    <aside className="grid grid-cols-subgrid gap-y-10 lg:gap-y-18 col-start-container-start col-end-container-end rounded-xl bg-white shadow-placed py-12 lg:py-32">
-      <Subscribe className="grid grid-cols-subgrid gap-8 col-start-content-start col-end-content-end xl:items-end max-md:px-8" />
-      <hr className="col-content bg-rule h-[2px] border-0 max-md:mx-8" />
-      <div className="max-lg:col-end-content-end col-start-content-start col-span-5 max-md:px-8">
+    <aside className="grid grid-cols-subgrid gap-y-10 lg:gap-y-18 col-start-container-start col-end-container-end rounded-md lg:rounded-xl bg-white shadow-placed py-12 lg:py-32">
+      <Subscribe className="grid grid-cols-subgrid gap-8 col-content 2xl:items-end max-sm:px-8" />
+      <hr className="col-content bg-rule h-[2px] border-0 max-sm:mx-8" />
+      <div className="max-lg:col-end-content-end col-start-content-start col-span-5 max-sm:px-8">
         <h3 className="font-display font-variation-bold text-xl lowercase flex gap-2 mb-1">
           <Icon icon="logo" className="text-fern-1100 mb-2" size={32} /> About
           this site
@@ -24,7 +24,7 @@ export default function FooterProfile() {
         </p>
       </div>
 
-      <div className="col-content lg:col-start-10 lg:col-span-5 flex flex-col xs:flex-row gap-8 max-md:px-8">
+      <div className="col-content lg:col-start-8 2xl:col-start-10 lg:col-span-5 flex flex-col xs:flex-row gap-8 max-sm:px-8">
         <div className="list flex-1">
           <h3 className="font-display font-variation-bold text-xl lowercase mb-4">
             Site

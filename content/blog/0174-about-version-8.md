@@ -7,7 +7,8 @@ metadesc: A look at type that features prominent cuts or tapering into the type 
 theme: #e9f5f5
 tags: []
 categories: ['Website']
-images: ['/images/blog/ink-trap-post-image.png']
+large:
+medium:
 ogImage: '/assets/og/cover.jpg'
 status: open
 codepen: false

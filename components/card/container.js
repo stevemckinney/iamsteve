@@ -21,7 +21,6 @@ const LargeImage = ({ ...props }) => {
     <>
       <Image
         src={image}
-        role="presentation"
         width={592}
         height={384}
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
@@ -54,7 +53,7 @@ const Container = ({ frontmatter, image, className }) => {
     <article
       className={`@container group flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 ease-in overflow-hidden relative ${className}`}
     >
-      {image && Array.isArray(images) && images.length !== 0 && (
+      {image && large && (
         <Link
           href={slug}
           title=""
@@ -73,12 +72,13 @@ const Container = ({ frontmatter, image, className }) => {
           </>
         </Link>
       )}
-      {image && images.length === 0 && (
+      {image && !large && (
         <>
           <div
-            className="flex items-center self-stretch"
+            className="flex items-center self-stretch relative"
             style={{ backgroundColor: `${imageColor}` }}
           >
+            <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100" />
             {categories && categories.includes('Design') ? (
               <Placeholder
                 category="Design"

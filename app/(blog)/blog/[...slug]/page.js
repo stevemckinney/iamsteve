@@ -1,6 +1,7 @@
 /**
  * Single blog post
  * See (blog)/layout.js for controlling page frame
+ * #single #post
  */
 
 import { notFound } from 'next/navigation'
@@ -17,7 +18,7 @@ import Category from '@/components/category'
 import Badge from '@/components/badge'
 import PageHeader from '@/components/page-header'
 import PageTitle from '@/components/page-title'
-import Date from '@/components/date'
+import Date, { postYear } from '@/components/date'
 import Icon from '@/components/icon'
 import Link from '@/components/link'
 
@@ -53,6 +54,25 @@ export async function generateMetadata({ params }) {
 
   return {
     title: post.title,
+    description: post.metadesc,
+    openGraph: {
+      title: post.title,
+      description: post.metadesc,
+      type: 'article',
+      publishedTime: post.date,
+      url: `${post.slug}`,
+      images: [
+        {
+          url: post.ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.metadesc,
+      images: [post.ogImage],
+    },
   }
 }
 
@@ -66,30 +86,38 @@ export default async function PostPage({ params }) {
   const post = await getPostFromParams(params)
   const allViews = await getAllPageViews()
 
+  const imageColor = post.theme ? post.theme.toString() : `#ccc`
+
   if (!post) {
     notFound()
   }
 
+  const jsonLD = post.structuredData
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
+      />
       <article className={`grid col-container grid-cols-subgrid gap-y-12`}>
         <Image
           src="/images/illustration/pencil-mono.svg"
           width={962}
           height={46}
-          className={`max-lg:hidden col-start-1 col-end-4 max-w-[initial] justify-self-end self-start mt-3 row-start-1 drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          className={`max-lg:hidden col-start-1 col-end-prose-start 2xl:col-end-4 max-w-[initial] justify-self-end self-start mt-3 row-start-1 drop-shadow-placed`}
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/ruler-mono.svg"
-          width={594}
+          width={744}
           height={122}
           className={`max-lg:hidden col-start-[14] col-end-[-1] max-w-[initial] self-end row-start-1 drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
-        <header className="col-prose flex flex-col gap-4 row-start-1">
+        <header className="col-content lg:col-prose flex flex-col gap-4 row-start-1">
           <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
             <Date dateString={post.date} />
           </Badge>
@@ -101,16 +129,14 @@ export default async function PostPage({ params }) {
               {post.summary}
             </p>
           )}
-          <div className="flex justify-between">
+          <div className="flex flex-wrap gap-y-4 justify-between">
             <div className="flex flex-row gap-4 items-center">
               {post.categories.length > 0 &&
                 post.categories.map((category, index) => {
                   return (
-                    <>
-                      <Category size={24} key={index}>
-                        {category}
-                      </Category>
-                    </>
+                    <Category size={24} key={index}>
+                      {category}
+                    </Category>
                   )
                 })}
             </div>
@@ -123,66 +149,69 @@ export default async function PostPage({ params }) {
             </Badge>
           </div>
         </header>
-        {!post.image && !post.medium && (
+
+        {post.categories.includes('Code') && postYear(post.date) < 2019 && (
+          <div className="col-prose flex gap-1 leading-tight items-center bg-cornflour-200/40 rounded-sm px-2 py-2">
+            <Icon icon="square-info" className="text-cornflour-700" />
+            <p className="p-0 m-0 font-ui lowercase text-cornflour-700">
+              This post was published <Date dateString={post.date} relative />,
+              so the approach may be outdated
+            </p>
+          </div>
+        )}
+
+        {!post.large && (
           <>
-            <div
-              className={`col-prose grid-cols-subgrid ${styles.featured}`}
-              key="featured-image"
-            >
-              {post.categories && post.categories.includes('Design') ? (
-                <Placeholder
-                  category="Design"
-                  kind="post"
-                  href={post.slug}
-                  title=""
-                  className={`flex items-center justify-center rounded-lg overflow-hidden aspect-[1.6/1]`}
-                  imageClass={`w-full h-full`}
-                  aria-labelledby={`title-${post.id}`}
-                  tabIndex="0"
-                  key={post.slug}
-                />
-              ) : (
-                <Placeholder
-                  category="Code"
-                  kind="post"
-                  href={post.slug}
-                  title=""
-                  className={`flex items-center justify-center rounded-lg overflow-hidden aspect-[1.6/1]`}
-                  imageClass={`w-full h-full`}
-                  aria-labelledby={`title-${post.id}`}
-                  tabIndex="0"
-                  key={post.slug}
-                />
-              )}
-            </div>
+            {post.categories && post.categories.includes('Design') ? (
+              <Placeholder
+                category="Design"
+                kind="post"
+                alt={`${post.title} (featured image)`}
+                aria-labelledby={`title-${post.id}`}
+                tabIndex="0"
+                width={864}
+                height={540}
+                className={`col-content lg:col-prose grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
+              />
+            ) : (
+              <Placeholder
+                category="Code"
+                kind="post"
+                alt={`${post.title} (featured image)`}
+                aria-labelledby={`title-${post.id}`}
+                tabIndex="0"
+                width={864}
+                height={540}
+                className={`col-content lg:col-prose grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
+              />
+            )}
           </>
         )}
-        {post.images &&
-          post.images.map((image, index) => (
-            <div
-              className={`col-prose grid-cols-subgrid ${styles.featured}`}
-              key={index}
-            >
-              <Image
-                src={image}
-                className="radius"
-                alt=""
-                width={744}
-                height={492}
-                key={image}
-                blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                placeholder="blur"
-                priority
-              />
-            </div>
-          ))}
+        {post.large && (
+          <div
+            className={`col-content lg:col-prose grid-cols-subgrid flex items-center overflow-hidden justify-center ${styles.featured}`}
+            style={{ backgroundColor: `${imageColor}` }}
+          >
+            <Image
+              src={post.large}
+              alt={`${post.title} (featured image)`}
+              width={864}
+              height={540}
+              blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              placeholder="blur"
+              priority
+            />
+          </div>
+        )}
         <div
-          className={`${styles.prose} prose grid grid-cols-subgrid gap-x-8 gap-y-0 col-prose col-prose`}
+          className={`${styles.prose} prose grid grid-cols-subgrid gap-x-8 gap-y-0 col-content lg:col-prose`}
         >
           <PostMdx code={post.body.code} />
         </div>
         <Support />
-        <aside className={`col-prose flex flex-col gap-4 md:-mx-8`}>
+        <aside
+          className={`col-content lg:col-prose flex flex-col gap-4 md:-mx-8`}
+        >
           <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 md:px-8">
             Next to read
           </h2>

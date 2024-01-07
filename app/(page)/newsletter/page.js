@@ -21,8 +21,8 @@ export default async function NewsletterPage({ data, Post }) {
         width={962}
         height={46}
         className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed`}
-        alt=""
-        role="presentation"
+        alt=" "
+        aria-hidden="true"
       />
       <article className="grid grid-cols-subgrid col-content pb-18 gap-18">
         <PageHeader>

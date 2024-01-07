@@ -1,3 +1,9 @@
+/**
+ * Paginated blog category
+ * eg: /category/design/page/2 /category/code/page2
+ * See (blog)/layout.js for controlling page frame
+ */
+
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
@@ -89,23 +95,21 @@ export default async function BlogCategory({ params, searchParams }) {
         width={962}
         height={46}
         className={`max-lg:hidden col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed`}
-        alt=""
-        role="presentation"
+        alt=" "
+        aria-hidden="true"
       />
       <PageHeader>
         <PageTitle>{data.title}</PageTitle>
       </PageHeader>
-      <div className="grid grid-cols-3 col-content gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
         {paginatedPosts.length > 0 ? (
           paginatedPosts.map((post) => (
-            <>
-              <Card
-                size="medium"
-                frontmatter={post}
-                image={true}
-                key={post._id}
-              />
-            </>
+            <Card
+              size="medium"
+              frontmatter={post}
+              image={true}
+              key={post._id}
+            />
           ))
         ) : (
           <p>No posts in this category yet.</p>

@@ -19,19 +19,17 @@ export default function Hero() {
       <ul className="inline-flex flex-wrap justify-center gap-4 max-lg:col-content lg:py-2 max-lg:mb-12">
         <li>
           <Link
-            href="/design"
+            href="/category/design"
             className="flex items-center gap-2 lowercase font-ui lg:text-lg"
           >
             <span
               className="p-1 rounded-lg bg-rio-300 max-lg:hidden"
-              role="presentation"
               aria-hidden="true"
             >
               <Icon icon="pen" />
             </span>
             <span
               className="p-1 rounded-lg bg-rio-300 lg:hidden"
-              role="presentation"
               aria-hidden="true"
             >
               <Icon icon="pen" size={16} />
@@ -41,7 +39,7 @@ export default function Hero() {
         </li>
         <li>
           <Link
-            href="/code"
+            href="/category/code"
             className="flex items-center gap-2 lowercase font-ui lg:text-lg"
           >
             <span
@@ -66,96 +64,96 @@ export default function Hero() {
           width={96}
           height={96}
           className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/star.svg"
           width={96}
           height={96}
           className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/sticky.svg"
           width={96}
           height={96}
           className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/safari.svg"
           width={96}
           height={96}
           className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/figma.svg"
           width={96}
           height={96}
           className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/terminal.svg"
           width={96}
           height={96}
           className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/pencil.svg"
           width={96}
           height={96}
           className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/pen.svg"
           width={96}
           height={96}
           className={`max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/sharpener.svg"
           width={96}
           height={96}
           className={`max-w-[initial] lg:hidden drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/star.svg"
           width={96}
           height={96}
           className={`max-w-[initial] lg:hidden drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/sticky.svg"
           width={96}
           height={96}
           className={`max-w-[initial] lg:hidden drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/safari.svg"
           width={96}
           height={96}
           className={`max-w-[initial] lg:hidden drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
       </div>
       <div className="flex gap-2 flex-row flex-nowrap max-lg:[grid-column:1/-1] max-lg:px-12 max-w-full lg:relative lg:w-[798px] lg:h-[276px]">
@@ -164,168 +162,168 @@ export default function Hero() {
           width={96}
           height={96}
           className={`max-w-[initial] lg:hidden drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/pencil-mono.svg"
           width={962}
           height={46}
           className={`max-lg:hidden max-w-[initial] lg:absolute right-[calc(100%_-_175px)] bottom-[10.125rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/ruler-mono.svg"
           width={744}
           height={122}
           className={`max-lg:hidden max-w-[initial] lg:absolute left-[calc(100%_-_111px)] bottom-[17.5rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/type.svg"
           width={32}
           height={32}
           className={`max-lg:hidden absolute max-w-[initial] top-[1.6rem] left-[13.275rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/terminal.svg"
           width={96}
           height={96}
           className={`lg:absolute max-w-[initial] top-[1.875rem] right-[12.525rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/pen.svg"
           width={96}
           height={96}
           className={`lg:absolute max-w-[initial] top-[.625rem] left-[21.75rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/pencil.svg"
           width={96}
           height={96}
           className={`lg:hidden max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/sharpener.svg"
           width={96}
           height={96}
           className={`lg:absolute top-[-4.35rem] left-[3.425rem] lg:rotate-[15deg] max-w-[initial] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/star.svg"
           width={96}
           height={96}
           className={`lg:absolute max-w-[initial] bottom-[2.25rem] left-[5.95rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/sticky.svg"
           width={96}
           height={96}
           className={`lg:absolute max-w-[initial] top-[3.4rem] right-[3.525rem] lg:rotate-[-15deg] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/safari.svg"
           width={96}
           height={96}
           className={`lg:absolute max-w-[initial] top-[5.35rem] left-[12.95rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/cursor.svg"
           width={32}
           height={32}
           className={`max-lg:hidden absolute max-w-[initial] bottom-[1.875rem] left-[16.2rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/colour.svg"
           width={32}
           height={32}
           className={`max-lg:hidden absolute max-w-[initial] top-[8.625rem] left-[20.825rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/component.svg"
           width={32}
           height={32}
           className={`max-lg:hidden absolute max-w-[initial] bottom-[4.235rem] right-[15.675rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/figma.svg"
           width={96}
           height={96}
           className={`lg:absolute max-w-[initial] bottom-[2.125rem] right-[19.05rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/pencil.svg"
           width={96}
           height={96}
           className={`lg:absolute max-w-[initial] bottom-[-.625rem] right-[7.45rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/brush.svg"
           width={32}
           height={32}
           className={`max-lg:hidden absolute max-w-[initial] bottom-[3.625rem] right-[3rem] drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/sharpener.svg"
           width={96}
           height={96}
           className={`max-w-[initial] lg:hidden drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/star.svg"
           width={96}
           height={96}
           className={`max-w-[initial] lg:hidden drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/sticky.svg"
           width={96}
           height={96}
           className={`max-w-[initial] lg:hidden drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
         <Image
           src="/images/illustration/spot-mono/safari.svg"
           width={96}
           height={96}
           className={`max-w-[initial] lg:hidden drop-shadow-placed`}
-          alt=""
-          role="presentation"
+          alt=" "
+          aria-hidden="true"
         />
       </div>
     </div>

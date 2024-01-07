@@ -20,7 +20,6 @@ const LargeImage = ({ ...props }) => {
     <>
       <Image
         src={image}
-        role="presentation"
         width={592}
         height={368}
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"

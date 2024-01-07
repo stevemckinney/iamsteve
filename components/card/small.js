@@ -36,11 +36,13 @@ const Small = ({ frontmatter }) => {
             )
 
             return (
-              <>
-                <ChipIcon size={24} theme={Categories[current].theme}>
-                  <Icon icon={Categories[current].icon} size={24} />
-                </ChipIcon>
-              </>
+              <ChipIcon
+                size={24}
+                theme={Categories[current].theme}
+                key={category}
+              >
+                <Icon icon={Categories[current].icon} size={24} />
+              </ChipIcon>
             )
           })}
         </div>
