@@ -4,25 +4,25 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const PlaceholderDesign = [
-  { color: '#E8DCD9', imageUrl: '/images/default/design-default.svg' },
-  { color: '#D9DFE8', imageUrl: '/images/default/design-default.svg' },
-  { color: '#D9E8E3', imageUrl: '/images/default/design-default.svg' },
-  { color: '#F9EFBD', imageUrl: '/images/default/design-default.svg' },
-  { color: '#F4966B', imageUrl: '/images/default/design-default.svg' },
-  { color: '#8FB6F2', imageUrl: '/images/default/design-default.svg' },
-  { color: '#90CD83', imageUrl: '/images/default/design-default.svg' },
-  { color: '#CDB9F5', imageUrl: '/images/default/design-default.svg' },
+  { color: '#f4dac8', imageUrl: '/images/default/design-default.svg' },
+  { color: '#f7efc2', imageUrl: '/images/default/design-default.svg' },
+  { color: '#d0e6de', imageUrl: '/images/default/design-default.svg' },
+  { color: '#cfdef6', imageUrl: '/images/default/design-default.svg' },
+  { color: '#e9eec3', imageUrl: '/images/default/design-default.svg' },
+  { color: '#e9eec3', imageUrl: '/images/default/design-default.svg' },
+  { color: '#dfd4f5', imageUrl: '/images/default/design-default.svg' },
+  { color: '#f3dcea', imageUrl: '/images/default/design-default.svg' },
 ]
 
 const PlaceholderCode = [
-  { color: '#E8DCD9', imageUrl: '/images/default/code-default.svg' },
-  { color: '#D9DFE8', imageUrl: '/images/default/code-default.svg' },
-  { color: '#D9E8E3', imageUrl: '/images/default/code-default.svg' },
-  { color: '#F9EFBD', imageUrl: '/images/default/code-default.svg' },
-  { color: '#F4D340', imageUrl: '/images/default/code-default.svg' },
-  { color: '#8FB6F2', imageUrl: '/images/default/code-default.svg' },
-  { color: '#90CD83', imageUrl: '/images/default/code-default.svg' },
-  { color: '#CDB9F5', imageUrl: '/images/default/code-default.svg' },
+  { color: '#f4dac8', imageUrl: '/images/default/code-default.svg' },
+  { color: '#f7efc2', imageUrl: '/images/default/code-default.svg' },
+  { color: '#d0e6de', imageUrl: '/images/default/code-default.svg' },
+  { color: '#cfdef6', imageUrl: '/images/default/code-default.svg' },
+  { color: '#e9eec3', imageUrl: '/images/default/code-default.svg' },
+  { color: '#e9eec3', imageUrl: '/images/default/code-default.svg' },
+  { color: '#dfd4f5', imageUrl: '/images/default/code-default.svg' },
+  { color: '#f3dcea', imageUrl: '/images/default/code-default.svg' },
 ]
 
 const Placeholder = ({

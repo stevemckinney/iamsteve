@@ -63,7 +63,7 @@ const Medium = ({ frontmatter, image, className }) => {
             tabIndex="0"
           >
             <>
-              <div className="absolute before:transition before:duration-200 before:ease-in z-10 inset-0 bg-fade-sm before:z-[-1] before:absolute before:bg-fade-neutral-sm before:inset-0 before:opacity-0 group-active:before:opacity-100" />
+              {/* <div className="absolute before:transition before:duration-200 before:ease-in z-10 inset-0 bg-fade-sm before:z-[-1] before:absolute before:bg-fade-neutral-sm before:inset-0 before:opacity-0 group-active:before:opacity-100" /> */}
               <MediumImage
                 image={medium}
                 imageColor={imageColor}
@@ -80,7 +80,7 @@ const Medium = ({ frontmatter, image, className }) => {
             className={`flex items-center justify-center aspect-[16/9] w-full relative overflow-hidden`}
             style={{ backgroundColor: `${imageColor}` }}
           >
-            <div className="absolute before:transition before:duration-200 before:ease-in z-10 inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100" />
+            {/* <div className="absolute before:transition before:duration-200 before:ease-in z-10 inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100" /> */}
             {categories && (
               <Placeholder
                 category={categories.includes('Design') ? 'Design' : 'Code'}
@@ -96,7 +96,7 @@ const Medium = ({ frontmatter, image, className }) => {
           </div>
         </>
       )}
-      <div className="flex flex-col flex-auto relative z-20 before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-gradient-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50/10 active:before:to-neutral-01-50/30 active:before:to-neutral-01-50 active:before:to-neutral-01-50/80 active:before:via-50% before:z-[3] pb-[1.625rem]">
+      <div className="flex flex-col flex-auto relative z-20 before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-gradient-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50/10 active:before:to-neutral-01-50/30 active:before:to-neutral-01-50 active:before:to-neutral-01-50/80 active:before:via-50% before:z-[3] pb-[1.625rem] pt-8">
         {categories.length > 0 && (
           <div className={categoryClass} key="cats">
             {categories.map((category, index) => (

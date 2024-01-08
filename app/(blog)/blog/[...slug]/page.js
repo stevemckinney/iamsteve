@@ -121,7 +121,11 @@ export default async function PostPage({ params }) {
           <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
             <Date dateString={post.date} />
           </Badge>
-          <PageTitle className="mt-4" key={`title-${post.id}`}>
+          <PageTitle
+            className="mt-4"
+            key={`title-${post.id}`}
+            id={`title-${post.id}`}
+          >
             {post.title}
           </PageTitle>
           {post.summary && (

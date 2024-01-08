@@ -41,8 +41,8 @@ const Large = ({ frontmatter, image, className }) => {
     id,
     theme,
     categories,
-    images,
     large,
+    medium,
     lastmod,
   } = frontmatter
 
@@ -50,24 +50,61 @@ const Large = ({ frontmatter, image, className }) => {
 
   return (
     <article className="group relative flex flex-col self-start overflow-hidden transition duration-200 bg-white rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:bg-neutral-01-50 bg-clip-padding">
-      {image && (
+      {image && large && (
         <Link
           href={slug}
           title=""
-          className={`relative flex items-center justify-center aspect-[1.6086956522/1] w-full ${className}`}
+          className={`relative flex items-center justify-center aspect-[1.6086956522/1]`}
           style={{ backgroundColor: `${imageColor}` }}
           aria-labelledby={`title-${id}`}
         >
           <>
-            <div className="absolute inset-0 bg-fade group-active:bg-fade-neutral" />
+            <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100" />
             <LargeImage
-              image={images[0]}
+              image={large}
               imageColor={imageColor}
               categories={categories}
               title={title}
             />
           </>
         </Link>
+      )}
+      {image && !large && (
+        <>
+          <div
+            className="flex items-center self-stretch relative"
+            style={{ backgroundColor: `${imageColor}` }}
+          >
+            <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100" />
+            {categories && categories.includes('Design') ? (
+              <Placeholder
+                category="Design"
+                kind="post"
+                width={592}
+                height={384}
+                href={slug}
+                title=""
+                className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
+                style={{ backgroundColor: `${imageColor}` }}
+                aria-labelledby={`title-${id}`}
+                tabIndex="0"
+              />
+            ) : (
+              <Placeholder
+                category="Code"
+                kind="post"
+                width={592}
+                height={384}
+                href={slug}
+                title=""
+                className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
+                style={{ backgroundColor: `${imageColor}` }}
+                aria-labelledby={`title-${id}`}
+                tabIndex="0"
+              />
+            )}
+          </div>
+        </>
       )}
       {/* spacing is weirdly distributed in the content to accommodate for scrolling categories */}
       <div className="flex flex-col flex-auto relative before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-gradient-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50/10 active:before:to-neutral-01-50/30 active:before:to-neutral-01-50 active:before:to-neutral-01-50/80 active:before:via-50% before:z-[3] pb-8 md:pb-[2.625rem]">

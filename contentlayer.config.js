@@ -93,11 +93,15 @@ export const Post = defineDocumentType(() => ({
     structuredData: {
       type: 'json',
       resolve: (doc) => ({
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": `${siteMetadata.siteUrl}/${doc._raw.flattenedPath.split('/').slice(1).join('/').replace(/^(?:\d\d\d\d-)?/, '')}`
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `${siteMetadata.siteUrl}/${doc._raw.flattenedPath
+            .split('/')
+            .slice(1)
+            .join('/')
+            .replace(/^(?:\d\d\d\d-)?/, '')}`,
         },
         headline: doc.title,
         datePublished: doc.date,
@@ -105,65 +109,26 @@ export const Post = defineDocumentType(() => ({
         description: doc.summary,
         image: doc.ogImage ? doc.ogImage : siteMetadata.socialBanner,
         url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
-        "author": [
+        author: [
           {
-            "@type": "Person",
-            "name": "Steve McKinney"
-          }
+            '@type': 'Person',
+            name: 'Steve McKinney',
+          },
         ],
-        "publisher": [
+        publisher: [
           {
-            "@type": "Organization",
-            "name": "Steve",
-            "logo": {
-              "@type": "ImageObject",
-              "url": `${siteMetadata.siteUrl}/images/logo.svg`
-            }
-          }
+            '@type': 'Organization',
+            name: 'Steve',
+            logo: {
+              '@type': 'ImageObject',
+              url: `${siteMetadata.siteUrl}/images/logo.svg`,
+            },
+          },
         ],
       }),
     },
   },
 }))
-
-const jsonLD = post.structuredData
-jsonLD['author'] = {
-  "@type": "Person",
-  "name": "Steve McKinney"
-}
-
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://iamsteve.me/blog/atomic-font-size-management-with-sass"
-  },
-  "headline": "‘Atomic’ font size management with Sass",
-  "image": [
-    {
-      "@type": "ImageObject",
-      "url": "https://iamsteve.me/static/images/blog/atomic-font-sizes-featured-image@2x.png"
-    }
-  ],
-  "datePublished": "2018-06-13T06:27:00.000Z",
-  "dateModified": "2019-10-10T11:44:17.000Z",
-  "author": [
-    {
-      "@type": "Person",
-      "name": "Steve McKinney"
-    }
-  ],
-  "publisher": {
-    "@type": "Organization",
-    "name": "Steve",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://iamsteve.me/static/images/logo.png"
-    }
-  },
-  "description": "In a responsive world, managing font sizes can be tricky. So how can an atomic approach help?"
-}
 
 export default makeSource({
   contentDirPath: './content',
