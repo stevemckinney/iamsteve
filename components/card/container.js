@@ -22,7 +22,7 @@ const LargeImage = ({ ...props }) => {
       <Image
         src={image}
         width={592}
-        height={384}
+        height={368}
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
         alt={title}
@@ -51,7 +51,7 @@ const Container = ({ frontmatter, image, className }) => {
 
   return (
     <article
-      className={`@container group flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 bg-clip-padding transition duration-200 ease-in overflow-hidden relative ${className}`}
+      className={`@container group flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative ${className}`}
     >
       {image && large && (
         <Link
@@ -84,11 +84,10 @@ const Container = ({ frontmatter, image, className }) => {
                 category="Design"
                 kind="post"
                 width={592}
-                height={384}
+                height={368}
                 href={slug}
                 title=""
-                className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
-                style={{ backgroundColor: `${imageColor}` }}
+                className={`flex items-center justify-center`}
                 aria-labelledby={`title-${id}`}
                 tabIndex="0"
               />
@@ -97,11 +96,10 @@ const Container = ({ frontmatter, image, className }) => {
                 category="Code"
                 kind="post"
                 width={592}
-                height={384}
+                height={368}
                 href={slug}
                 title=""
-                className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
-                style={{ backgroundColor: `${imageColor}` }}
+                className={`flex items-center justify-center`}
                 aria-labelledby={`title-${id}`}
                 tabIndex="0"
               />
@@ -109,9 +107,11 @@ const Container = ({ frontmatter, image, className }) => {
           </div>
         </>
       )}
-      <div className="flex flex-col flex-auto relative before:w-16 before:h-9 before:absolute before:top-0 before:right-0 before:bg-gradient-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50/10 active:before:to-neutral-01-50/30 active:before:to-neutral-01-50 active:before:to-neutral-01-50/80 active:before:via-50% before:z-[3] pb-8 md:pb-[2.625rem]">
+      <div className="flex flex-col flex-auto relative before:transition before:duration-200 before:ease-in before:w-16 before:h-9 before:absolute before:top-7 @md:before:top-0 before:right-0 before:bg-gradient-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:via-neutral-01-50/10 active:before:via-neutral-01-50/30 active:before:via-neutral-01-50/80 active:before:to-neutral-01-50 before:z-[3] pb-8 @md:pb-[2.625rem]">
         <div
-          className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pb-4 @md:pb-5 px-8 @md:px-12 pt-px -mt-px`}
+          className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pb-4 @md:pb-5 px-8 @md:px-12 ${
+            image ? 'pt-px -mt-px' : 'pt-8'
+          }`}
         >
           {categories &&
             categories.map((category) => (

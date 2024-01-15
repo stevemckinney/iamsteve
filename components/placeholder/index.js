@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import { unstable_getImgProps as getImgProps } from 'next/image'
 
 const PlaceholderDesign = [
   { color: '#f4dac8', imageUrl: '/images/default/design-default.svg' },
@@ -41,6 +41,23 @@ const Placeholder = ({
     setRandomImage(randomImage)
   }, [category])
 
+  const small =
+    category === 'Design'
+      ? `/images/default/design-default.svg`
+      : `/images/default/code-default.svg`
+  const large =
+    category === 'Design'
+      ? `/images/default/design-default-large.svg`
+      : `/images/default/code-default-large.svg`
+
+  const common = { alt: props.alt, width: width, height: height }
+  const {
+    props: { srcSet: smallProps },
+  } = getImgProps({ ...common, src: small })
+  const {
+    props: { srcSet: largeProps, ...rest },
+  } = getImgProps({ ...common, src: large })
+
   // Fix the error by checking if randomImage is null before accessing the color property
   const backgroundColor = randomImage?.color
 
@@ -51,14 +68,12 @@ const Placeholder = ({
 
   if (props.href) {
     return (
-      <Link {...props} style={{ backgroundColor: backgroundColor }}>
-        <Image
-          src={randomImage?.imageUrl}
-          alt={props.alt}
-          width={width}
-          height={height}
-          className={imageClass}
-        />
+      <Link
+        href={props.href}
+        style={{ backgroundColor: backgroundColor }}
+        className={`${props.className}`}
+      >
+        <img srcset={`${small} w380, ${large} w592`} {...rest} />
       </Link>
     )
   }
@@ -68,14 +83,7 @@ const Placeholder = ({
       className={`${props.className}`}
       style={{ backgroundColor: backgroundColor }}
     >
-      <Image
-        src={randomImage?.imageUrl}
-        alt={props.alt}
-        width={width}
-        height={height}
-        className={imageClass}
-        {...props}
-      />
+      <img srcset={`${small} w380, ${large} w592`} {...rest} />
     </div>
   )
 }

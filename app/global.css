@@ -3,3 +3,9 @@
 @tailwind utilities;
 @import '../css/internal.css';
 @import '../css/post.css';
+
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  article img[loading='lazy'] {
+    clip-path: inset(0.6px);
+  }
+}

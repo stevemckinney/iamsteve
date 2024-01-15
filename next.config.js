@@ -7,7 +7,7 @@ const nextConfig = {
   reactStrictMode: false,
   experimental: {
     webpackBuildWorker: true,
-  }, 
+  },
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   staticPageGenerationTimeout: 120,
   eslint: {
@@ -15,6 +15,9 @@ const nextConfig = {
   },
   images: {
     formats: ['image/avif', 'image/webp'],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 }
 

@@ -100,7 +100,7 @@ export default async function Home() {
           <div className="grid col-margin sm:col-content gap-4 md:gap-8 max-sm:grid-flow-col max-sm:auto-cols-auto max-sm:overflow-auto max-sm:snap-x max-sm:snap-always max-sm:overscroll-x-contain md:grid-cols-2 xl:grid-cols-3 max-sm:px-8 max-sm:py-8 max-sm:-my-8">
             {design.map((post) => (
               <Card
-                size="medium"
+                size="container"
                 frontmatter={post}
                 image={false}
                 key={post._id}
@@ -123,7 +123,7 @@ export default async function Home() {
           <div className="grid col-margin sm:col-content gap-4 md:gap-8 max-sm:grid-flow-col max-sm:auto-cols-auto max-sm:overflow-auto max-sm:snap-x max-sm:snap-always max-sm:overscroll-x-contain md:grid-cols-2 xl:grid-cols-3 max-sm:px-8 max-sm:py-8 max-sm:-my-8">
             {code.map((post) => (
               <Card
-                size="medium"
+                size="container"
                 frontmatter={post}
                 image={false}
                 key={post._id}
