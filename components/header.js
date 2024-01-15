@@ -10,7 +10,7 @@ import styles from './header.module.scss'
 
 export default function Header() {
   const nav = `flex flex-1 lg:gap-12`
-  const maxmdNav = `max-lg:px-4 max-lg:bg-white/90 max-lg:shadow-placed max-lg:justify-between max-lg:fixed max-lg:left-0 max-lg:right-0 max-lg:bottom-0 max-lg:z-10 max-lg:backdrop-blur max-lg:backdrop-brightness-100 max-lg:backdrop-saturate-150`
+  const maxmdNav = `max-lg:px-4 max-lg:bg-white/90 max-lg:shadow-placed max-lg:justify-between max-lg:fixed max-lg:left-0 max-lg:right-0 max-lg:bottom-0 max-lg:z-[100] max-lg:backdrop-blur max-lg:backdrop-brightness-100 max-lg:backdrop-saturate-150`
 
   // Some styles exist in the header.module to handle safe-area
   const navLink = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
