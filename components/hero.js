@@ -63,7 +63,7 @@ export default function Hero() {
           src="/images/illustration/spot-mono/sharpener.svg"
           width={96}
           height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
         />
@@ -71,7 +71,7 @@ export default function Hero() {
           src="/images/illustration/spot-mono/star.svg"
           width={96}
           height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
         />
@@ -79,7 +79,7 @@ export default function Hero() {
           src="/images/illustration/spot-mono/sticky.svg"
           width={96}
           height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
         />
@@ -87,7 +87,7 @@ export default function Hero() {
           src="/images/illustration/spot-mono/safari.svg"
           width={96}
           height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
         />
@@ -95,7 +95,7 @@ export default function Hero() {
           src="/images/illustration/spot-mono/figma.svg"
           width={96}
           height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
         />
@@ -103,7 +103,7 @@ export default function Hero() {
           src="/images/illustration/spot-mono/terminal.svg"
           width={96}
           height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
         />
@@ -111,7 +111,7 @@ export default function Hero() {
           src="/images/illustration/spot-mono/pencil.svg"
           width={96}
           height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
         />
@@ -119,7 +119,7 @@ export default function Hero() {
           src="/images/illustration/spot-mono/pen.svg"
           width={96}
           height={96}
-          className={`max-w-[initial] drop-shadow-placed`}
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
         />
@@ -209,7 +209,7 @@ export default function Hero() {
           src="/images/illustration/spot-mono/pencil.svg"
           width={96}
           height={96}
-          className={`lg:hidden max-w-[initial] drop-shadow-placed`}
+          className={`lg:hidden max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
         />
@@ -217,7 +217,7 @@ export default function Hero() {
           src="/images/illustration/spot-mono/sharpener.svg"
           width={96}
           height={96}
-          className={`lg:absolute top-[-4.35rem] left-[3.425rem] lg:rotate-[15deg] max-w-[initial] drop-shadow-placed`}
+          className={`lg:absolute top-[-4.35rem] left-[3.425rem] lg:rotate-[15deg] max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
         />
