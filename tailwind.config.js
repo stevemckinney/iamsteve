@@ -127,7 +127,7 @@ module.exports = {
           '0 -1px var(--ui-border-color-weak-hover), 0 1px var(--ui-border-color-strong-hover), 0 0 0 1px var(--ui-border-color-hover), inset 0 2px rgb(249 239 189 / .2), inset 0 -3px rgba(203 113 0 / .2), 0 6px 12px rgba(117, 99, 98, 0.14), 0 2px 4px rgba(117, 99, 98, 0.16)',
       },
       backgroundImage: {
-        fade: 'linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.6) 4.09%, rgba(255, 255, 255, 0) 11.11%, rgba(255, 255, 255, 0) 25.52%), radial-gradient(163.02% 100% at 50% 0%, rgba(255, 255, 255, 0) 78.71%, #FFFFFF 100%)',
+        fade: 'linear-gradient(180deg, rgba(var(--bg-fade-top), 1) 0%, rgba(var(--bg-fade-top), 0.6) 4.09%, rgba(var(--bg-fade-top),0) 11.11%, rgba(var(--bg-fade-top), 0) 25.52%), radial-gradient(163.02% 100% at 50% 0%, rgba(255, 255, 255, 0) 78.71%, #FFFFFF 100%)',
         'fade-neutral':
           'radial-gradient(95.19% 153.13% at 50% 0%, rgba(252, 249, 248, 0.07) 56.58%, #FCF9F8 80.19%), linear-gradient(180deg, rgba(252, 249, 248, 0.00) 69.27%, rgba(252, 249, 248, 0.01) 72.89%, rgba(252, 249, 248, 0.03) 75.84%, rgba(252, 249, 248, 0.07) 78.22%, rgba(252, 249, 248, 0.12) 80.13%, rgba(252, 249, 248, 0.18) 81.68%, rgba(252, 249, 248, 0.25) 82.96%, rgba(252, 249, 248, 0.33) 84.1%, rgba(252, 249, 248, 0.41) 85.18%, rgba(252, 249, 248, 0.50) 86.31%, rgba(252, 249, 248, 0.59) 87.59%, rgba(252, 249, 248, 0.67) 89.14%, rgba(252, 249, 248, 0.76) 91.05%, rgba(252, 249, 248, 0.85) 93.43%, rgba(252, 249, 248, 0.93) 96.38%, #FCF9F8 100%)',
         'fade-sm':

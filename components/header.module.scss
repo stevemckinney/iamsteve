@@ -42,9 +42,8 @@
 }
 
 .vertical {
-  @media not all and (min-width: theme('screens.md')) {
-    @supports (padding: max(0px)) {
-      transition: 0.2s;
+  @supports (padding: max(0px)) {
+    @media not all and (min-width: theme('screens.md')) {
       padding-bottom: max(
         theme('spacing.4'),
         calc(env(safe-area-inset-bottom) + theme('spacing.2'))

@@ -147,6 +147,12 @@
     border-image-width: 4.5rem;
   }
 
+  .frame-24 {
+    border-image-source: url('/images/rounded-border-24px.svg');
+    border-image-slice: 46.75324675%;
+    border-image-width: 4.5rem;
+  }
+
   .frame-16 {
     border-image-source: url('/images/rounded-border-16px.svg');
     border-image-slice: 46.75324675%;

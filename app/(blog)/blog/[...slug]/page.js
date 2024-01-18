@@ -154,15 +154,18 @@ export default async function PostPage({ params }) {
           </div>
         </header>
 
-        {post.categories.includes('Code') && postYear(post.date) < 2019 && (
-          <div className="col-prose flex gap-1 leading-tight items-center bg-cornflour-200/40 rounded-sm px-2 py-2">
-            <Icon icon="square-info" className="text-cornflour-700" />
+        {/*post.categories.includes('Code') && postYear(post.date) < 2019 && (
+          <div className="col-prose flex gap-2 leading-tight bg-cornflour-200/40 rounded-sm px-2 py-2">
+            <Icon
+              icon="square-info"
+              className="text-cornflour-700 flex-[0_0_auto]"
+            />
             <p className="p-0 m-0 font-ui lowercase text-cornflour-700">
               This post was published <Date dateString={post.date} relative />,
               so the approach may be outdated
             </p>
           </div>
-        )}
+        )*/}
 
         {!post.large && (
           <>

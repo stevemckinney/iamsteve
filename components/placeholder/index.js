@@ -73,7 +73,7 @@ const Placeholder = ({
         style={{ backgroundColor: backgroundColor }}
         className={`${props.className}`}
       >
-        <img srcset={`${small} w380, ${large} w592`} {...rest} />
+        <img srcSet={`${small} w380, ${large} w592`} {...rest} />
       </Link>
     )
   }
@@ -83,7 +83,7 @@ const Placeholder = ({
       className={`${props.className}`}
       style={{ backgroundColor: backgroundColor }}
     >
-      <img srcset={`${small} w380, ${large} w592`} {...rest} />
+      <img srcSet={`${small} w380, ${large} w592`} {...rest} />
     </div>
   )
 }

@@ -4,6 +4,7 @@ import navigation from '@/content/navigation'
 // components
 import Link from './link'
 import Icon from '@/components/icon'
+import { Navigation, Toggle } from '@/components/navigation'
 
 // css
 import styles from './header.module.scss'
@@ -20,7 +21,7 @@ export default function Header() {
   return (
     <>
       <header
-        className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-10"
+        className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-[1]"
         id="top"
       >
         <div className="col-content flex items-center align-center justify-between py-4 px-4 lg:py-9 lg:px-8 lg:-mx-8 bg-neutral-01-100 max-md:-mx-4">
@@ -46,7 +47,7 @@ export default function Header() {
               </Link>
             ))}
           </nav>
-          <div className="flex-1 flex justify-end">
+          <div className="flex-1 flex justify-end max-lg:hidden">
             <Link
               href="/newsletter"
               className={`${navLink} ${mdNavLink} ${styles.end}`}
@@ -55,6 +56,7 @@ export default function Header() {
               <Icon icon="airplane" />
             </Link>
           </div>
+          <Navigation />
         </div>
       </header>
     </>

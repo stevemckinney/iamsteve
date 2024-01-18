@@ -43,9 +43,24 @@ const jsonLD = {
   ],
 }
 
+export const viewport = {
+  themeColor: 'black',
+  'apple-mobile-web-app-status-bar-style': 'black-translucent',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: 1,
+  shrinkToFit: 'no',
+  viewportFit: 'cover',
+}
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="light" style={{ colorScheme: 'light' }}>
+    <html
+      lang="en"
+      className="light overflow-x-hidden"
+      style={{ colorScheme: 'light' }}
+    >
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/bvl2qse.css" />
         <script

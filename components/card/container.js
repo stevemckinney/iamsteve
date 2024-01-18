@@ -14,6 +14,17 @@ function autoParagraph(text, size) {
   )
 }
 
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null
+}
+
 const LargeImage = ({ ...props }) => {
   const { image, title, imageColor, categories } = props
 
@@ -48,6 +59,9 @@ const Container = ({ frontmatter, image, className }) => {
   } = frontmatter
 
   const imageColor = theme ? theme.toString() : '#e8dcd9'
+  const bgFadeTop = `${hexToRgb(imageColor).r},${hexToRgb(imageColor).g},${
+    hexToRgb(imageColor).b
+  }`
 
   return (
     <article
@@ -62,7 +76,10 @@ const Container = ({ frontmatter, image, className }) => {
           aria-labelledby={`title-${id}`}
         >
           <>
-            <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100" />
+            <div
+              className={`absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 before:z-[-1] before:absolute bg-fade before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100`}
+              style={{ '--bg-fade-top': bgFadeTop }}
+            />
             <LargeImage
               image={large}
               imageColor={imageColor}
@@ -130,7 +147,7 @@ const Container = ({ frontmatter, image, className }) => {
           >
             <Link
               href={slug}
-              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-[1]"
+              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @md:before:rounded-lg before:z-[1]"
             >
               {title}
             </Link>
