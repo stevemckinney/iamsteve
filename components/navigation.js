@@ -13,16 +13,16 @@ import Icon from '@/components/icon'
 
 const Toggle = () => {
   return (
-    <div className="toggle relative before:z-[1] before:-inset-10 before:absolute">
+    <div className="relative before:z-[1] before:-inset-10 before:absolute">
       <span className="block w-[24px] h-[24px] relative">
         <span
-          className={`h-[2px] w-[20px] bg-fern-1100 block rounded absolute left-[2px] top-[4px]`}
+          className={`h-[2px] w-[20px] bg-fern-1100 block rounded absolute left-[2px] top-[18px]`}
         ></span>
         <span
-          className={`h-[2px] w-[16px] bg-fern-1100 block rounded absolute left-[2px] top-[11px]`}
+          className={`h-[2px] w-[16px] bg-fern-1100 block rounded absolute left-[4px] top-[11px]`}
         ></span>
         <span
-          className={`h-[2px] w-[20px] bg-fern-1100 block rounded absolute left-[2px] bottom-[4px]`}
+          className={`h-[2px] w-[20px] bg-fern-1100 block rounded absolute left-[2px] bottom-[18px] `}
         ></span>
       </span>
     </div>
@@ -36,14 +36,14 @@ const Navigation = () => {
       <NavigationMenu.List className="flex">
         <NavigationMenu.Item className="flex">
           <NavigationMenu.Trigger
-            className="data-[state=open]"
+            className="toggle-nav"
             // https://github.com/radix-ui/primitives/issues/2043
             onPointerMove={(event) => event.preventDefault()}
             onPointerLeave={(event) => event.preventDefault()}
           >
             <Toggle />
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content className="shadow-placed bg-white/90 [backdrop-filter:blur(6px)] flex flex-col rounded-lg h-[auto] fixed z-[200] bottom-4 left-4 right-4 max-w-md md:left-1/2 md:-translate-x-1/2 p-6 outline-none data-[state=closed]:animate-[dialog-content-hide_200ms] data-[state=open]:animate-[dialog-content-show_200ms]">
+          <NavigationMenu.Content className="nav-content shadow-placed bg-white/90 backdrop-filter backdrop-contrast-200 backdrop-saturate-100 backdrop-blur flex flex-col rounded-lg h-[auto] fixed z-[200] top-[56px] left-2 right-2 max-w-md md:left-1/2 md:-translate-x-1/2 p-6 outline-none data-[state=closed]:animate-[dialog-content-hide_200ms] data-[state=open]:animate-[dialog-content-show_200ms]">
             <ul className="flex flex-col gap-2">
               {navigation.map((link) => {
                 return (
@@ -90,9 +90,7 @@ const Navigation = () => {
         </NavigationMenu.Item>
       </NavigationMenu.List>
 
-      <div className="ViewportPosition">
-        <NavigationMenu.Viewport className="NavigationMenuViewport" />
-      </div>
+      <NavigationMenu.Viewport className="nav-viewport" />
     </NavigationMenu.Root>
   )
 }

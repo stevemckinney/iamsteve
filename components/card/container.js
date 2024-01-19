@@ -95,7 +95,10 @@ const Container = ({ frontmatter, image, className }) => {
             className="flex items-center self-stretch relative"
             style={{ backgroundColor: `${imageColor}` }}
           >
-            <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100" />
+            <div
+              className={`absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 before:z-[-1] before:absolute bg-fade before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100`}
+              style={{ '--bg-fade-top': bgFadeTop }}
+            />
             {categories && categories.includes('Design') ? (
               <Placeholder
                 category="Design"
@@ -103,7 +106,7 @@ const Container = ({ frontmatter, image, className }) => {
                 width={592}
                 height={368}
                 href={slug}
-                title=""
+                alt={title}
                 className={`flex items-center justify-center`}
                 aria-labelledby={`title-${id}`}
                 tabIndex="0"
@@ -115,7 +118,7 @@ const Container = ({ frontmatter, image, className }) => {
                 width={592}
                 height={368}
                 href={slug}
-                title=""
+                alt={title}
                 className={`flex items-center justify-center`}
                 aria-labelledby={`title-${id}`}
                 tabIndex="0"
