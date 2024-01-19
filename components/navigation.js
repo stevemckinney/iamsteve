@@ -32,7 +32,7 @@ const Toggle = () => {
 const Navigation = () => {
   const pathname = usePathname()
   return (
-    <NavigationMenu.Root className="flex lg:hidden">
+    <NavigationMenu.Root className="flex md:hidden">
       <NavigationMenu.List className="flex">
         <NavigationMenu.Item className="flex">
           <NavigationMenu.Trigger
@@ -113,6 +113,8 @@ const ListItem = forwardRef(
     </li>
   )
 )
+
+ListItem.displayName = 'ListItem'
 
 // const Navigation = () => {
 //   const router = useRouter()

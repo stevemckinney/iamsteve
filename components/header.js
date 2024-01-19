@@ -10,13 +10,13 @@ import { Navigation, Toggle } from '@/components/navigation'
 import styles from './header.module.scss'
 
 export default function Header() {
-  const nav = `flex flex-1 lg:gap-12`
-  const maxmdNav = `max-lg:px-4 max-lg:bg-white/90 max-lg:shadow-placed max-lg:justify-between max-lg:fixed max-lg:left-0 max-lg:right-0 max-lg:bottom-0 max-lg:z-[100] max-lg:backdrop-blur max-lg:backdrop-brightness-100 max-lg:backdrop-saturate-150`
+  const nav = `flex flex-1 md:gap-8 lg:gap-12`
+  const tabbarNav = `max-md:px-4 max-md:bg-white/90 max-md:shadow-placed max-md:justify-between max-md:fixed max-md:left-0 max-md:right-0 max-md:bottom-0 max-md:z-[100] max-md:backdrop-blur max-md:backdrop-brightness-100 max-md:backdrop-saturate-150`
 
   // Some styles exist in the header.module to handle safe-area
   const navLink = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
-  const mdNavLink = `lg:gap-2 lg:text-xl`
-  const maxmdNavLink = `max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:pt-2`
+  const horizontalNavLink = `md:gap-2 md:text-base lg:text-xl`
+  const tabbarNavLink = `max-md:flex-col max-md:flex-1 max-md:justify-center max-md:pt-2`
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function Header() {
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-[1]"
         id="top"
       >
-        <div className="col-content flex items-center align-center justify-between py-4 px-4 lg:py-9 lg:px-8 lg:-mx-8 bg-neutral-01-100 max-md:-mx-4">
+        <div className="col-container lg:col-content flex items-center align-center justify-between py-4 px-4 lg:py-6 2xl:py-9 2xl:px-8 2xl:-mx-8 bg-neutral-01-100 max-md:-mx-4">
           <Link href="/" className="flex-1" title="iamsteve.me homepage">
             <Icon icon="logo" role="img" size={32} className="max-xl:hidden" />
             <Icon
@@ -35,11 +35,11 @@ export default function Header() {
               className="xl:hidden"
             />
           </Link>
-          <nav className={`${nav} ${maxmdNav}`}>
+          <nav className={`${nav} ${tabbarNav}`}>
             {navigation.map((link) => (
               <Link
                 href={link.href}
-                className={`${navLink} ${styles.vertical} ${maxmdNavLink} ${mdNavLink} ${styles.start}`}
+                className={`${navLink} ${styles.vertical} ${tabbarNavLink} ${horizontalNavLink} ${styles.start}`}
                 key={link.href}
               >
                 <Icon icon={link.icon} size={link.size} />
@@ -47,12 +47,12 @@ export default function Header() {
               </Link>
             ))}
           </nav>
-          <div className="flex-1 flex justify-end max-lg:hidden">
+          <div className="flex-1 flex justify-end max-md:hidden">
             <Link
               href="/newsletter"
-              className={`${navLink} ${mdNavLink} ${styles.end}`}
+              className={`${navLink} ${horizontalNavLink} ${styles.end}`}
             >
-              Subscribe
+              <span className="max-xl:sr-only">Subscribe</span>
               <Icon icon="airplane" />
             </Link>
           </div>

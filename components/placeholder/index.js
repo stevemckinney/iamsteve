@@ -1,4 +1,5 @@
 'use client'
+
 import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
 import { unstable_getImgProps as getImgProps } from 'next/image'
@@ -73,7 +74,7 @@ const Placeholder = ({
         style={{ backgroundColor: backgroundColor }}
         className={`${props.className}`}
       >
-        <img srcSet={`${small} w380, ${large} w592`} {...rest} />
+        <img srcSet={`${small} w380, ${large} w592`} {...rest} alt={` `} />
       </Link>
     )
   }

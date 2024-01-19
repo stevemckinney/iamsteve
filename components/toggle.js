@@ -10,6 +10,7 @@ import Icon from '@/components/icon'
 
 const Toggle = () => {
   const pathname = usePathname()
+  const router = useRouter()
   let [open, setOpen] = useState(false)
 
   return (
@@ -27,7 +28,6 @@ const Toggle = () => {
       <Modal.Content>
         <nav className="-mt-4">
           {navigation.map((link) => {
-            const router = useRouter()
             return (
               <Link
                 href={link.href}
