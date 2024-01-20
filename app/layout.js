@@ -44,7 +44,7 @@ const jsonLD = {
 }
 
 export const viewport = {
-  themeColor: 'black',
+  themeColor: '#f9f3f1',
   'apple-mobile-web-app-status-bar-style': 'black-translucent',
   width: 'device-width',
   initialScale: 1,
