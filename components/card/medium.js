@@ -72,7 +72,7 @@ const Medium = ({ frontmatter, image, className }) => {
           <Link
             href={slug}
             title=""
-            className={`flex w-full items-center justify-center aspect-[16/9] w-full relative overflow-hidden [mask:radial-gradient(20rem_14rem_at_50%_15%,rgb(255_255_255_/_1)_60%,transparent)]`}
+            className={`flex w-full items-center justify-center aspect-[16/9] w-full relative overflow-hidden [mask:radial-gradient(150%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]`}
             style={{ backgroundColor: `${imageColor}` }}
             aria-labelledby={`title-${id}`}
             tabIndex="0"
@@ -91,7 +91,7 @@ const Medium = ({ frontmatter, image, className }) => {
       {image && !medium && (
         <>
           <div
-            className={`flex items-center justify-center aspect-[16/9] w-full relative overflow-hidden`}
+            className={`flex items-center justify-center aspect-[16/9] w-full relative overflow-hidden [mask:radial-gradient(150%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]`}
             style={{ backgroundColor: `${imageColor}` }}
           >
             {categories && (

@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
-import { getImageProps } from 'next/image'
+import Image from 'next/image'
 
 const PlaceholderDesign = [
   {
@@ -116,14 +116,6 @@ const Placeholder = ({
       ? `/images/default/design-default-large.svg`
       : `/images/default/code-default-large.svg`
 
-  const common = { alt: props.alt, width: width, height: height }
-  const {
-    props: { srcSet: smallProps },
-  } = getImageProps({ ...common, src: small })
-  const {
-    props: { srcSet: largeProps, ...rest },
-  } = getImageProps({ ...common, src: large })
-
   // Fix the error by checking if randomImage is null before accessing the color property
   const backgroundColor = randomImage?.color
 
@@ -139,17 +131,12 @@ const Placeholder = ({
         style={{ backgroundColor: backgroundColor }}
         className={`${props.className} relative`}
       >
-        <div
+        {/* <div
           className={`absolute before:transition before:duration-200 before:ease-in z-[2] inset-0 before:z-[-1] before:absolute bg-fade before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100`}
           style={{ '--bg-fade-top': randomImage?.rgb }}
-        />
-        <img
-          srcSet={`${small} 380w, ${large} 592w`}
-          {...rest}
-          sizes="auto"
-          alt={alt}
-          className={`w-[auto] h-[auto]`}
-        />
+        /> */}
+        <Image src={small} {...props} className="@md:hidden" />
+        <Image src={large} {...props} className="hidden @md:block" />
       </Link>
     )
   }
@@ -159,17 +146,12 @@ const Placeholder = ({
       className={`${props.className}`}
       style={{ backgroundColor: backgroundColor }}
     >
-      <div
+      {/* <div
         className={`absolute before:transition before:duration-200 before:ease-in z-[2] inset-0 before:z-[-1] before:absolute bg-fade before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100`}
         style={{ '--bg-fade-top': '255,255,255' }}
-      />
-      <img
-        srcSet={`${small} 380w, ${large} 592w`}
-        {...rest}
-        sizes="auto"
-        alt={alt}
-        className={`w-[auto] h-[auto]`}
-      />
+      /> */}
+      <Image src={small} {...props} className="@md:hidden" />
+      <Image src={large} {...props} className="hidden @md:block" />
     </div>
   )
 }
