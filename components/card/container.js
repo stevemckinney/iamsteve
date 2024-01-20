@@ -59,6 +59,7 @@ const Container = ({ frontmatter, image, className }) => {
   } = frontmatter
 
   const imageColor = theme ? theme.toString() : '#e8dcd9'
+  const imageClass = `relative flex items-center justify-center [mask:radial-gradient(150%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]`
   const bgFadeTop = `${hexToRgb(imageColor).r},${hexToRgb(imageColor).g},${
     hexToRgb(imageColor).b
   }`
@@ -71,15 +72,11 @@ const Container = ({ frontmatter, image, className }) => {
         <Link
           href={slug}
           title=""
-          className={`relative flex items-center justify-center aspect-[1.6086956522/1]`}
+          className={imageClass}
           style={{ backgroundColor: `${imageColor}` }}
           aria-labelledby={`title-${id}`}
         >
           <>
-            <div
-              className={`absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 before:z-[-1] before:absolute bg-fade before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100`}
-              style={{ '--bg-fade-top': bgFadeTop }}
-            />
             <LargeImage
               image={large}
               imageColor={imageColor}
@@ -92,13 +89,9 @@ const Container = ({ frontmatter, image, className }) => {
       {image && !large && (
         <>
           <div
-            className="flex items-center self-stretch relative"
+            className={imageClass}
             style={{ backgroundColor: `${imageColor}` }}
           >
-            <div
-              className={`absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 before:z-[-1] before:absolute bg-fade before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100`}
-              style={{ '--bg-fade-top': bgFadeTop }}
-            />
             {categories && categories.includes('Design') ? (
               <Placeholder
                 category="Design"
