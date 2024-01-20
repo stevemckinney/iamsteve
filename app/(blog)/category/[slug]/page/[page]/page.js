@@ -105,7 +105,7 @@ export default async function BlogCategory({ params, searchParams }) {
         {paginatedPosts.length > 0 ? (
           paginatedPosts.map((post) => (
             <Card
-              size="medium"
+              size="container"
               frontmatter={post}
               image={true}
               key={post._id}
