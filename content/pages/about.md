@@ -63,13 +63,9 @@ description: I’m Steve McKinney, I write this blog about the design and build 
 
     <p className="text-ui-body mb-4 text-lg">I’m a designer based in Manchester. I specialise in visual design and user experience for websites. I’ve been doing this professionally for over 12 years. I’ve worked with a large variety of clients in differing industries. With differing needs, shops, subscriptions, services and marketing.</p>
 
-    <p className="text-ui-body mb-4 text-lg">I enjoy being involved along the whole timeline of a project. I’m someone who likes to get the best understanding possible and helps influence the solution. It helps build trust and avoids surprises. Looking at design end to end allows for decisions to be made quickly.</p>
+    <p className="text-ui-body mb-4 text-lg">As a designer, someone might ask if you have a personal style. I do feel I have a personal style, I enjoy serif typefaces, use of colour, using illustration over photography. However, I will always design for the audience, goals and systems that are already in place with the brand. It’s good to have constraints.</p>
 
-    <p className="text-ui-body mb-4 text-lg">Personally, I’ve been making websites from a young age. I learnt to code alongside designing—it was just part of the process. Debates like should designers code weren’t a thing when I was 13.</p>
-
-    <p className="text-ui-body mb-4 text-lg">As a designer, someone might ask if you have a personal style. I do feel I have a personal style, I enjoy serif typefaces, use of colour, an illustration style that has some depth but is generally flat. However, I will always design for the audience, goals and systems that are already in place.</p>
-
-    <p className="text-ui-body mb-4 text-lg">I think it’s an enjoyment of creating things on the web. Be it icons, animation, illustration, CSS or JavaScript.</p>
+    <p className="text-ui-body mb-4 text-lg">Generally, I think it’s an enjoyment of creating things on the web. Be it icons, animation, illustration, CSS or JavaScript.</p>
 
   </article>
 
