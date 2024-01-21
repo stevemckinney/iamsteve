@@ -125,91 +125,103 @@
 # Junk redirects
 # There’s no PHP round here anymore
 [[redirects]]
+  from = "/ads.txt"
+  to = "https://google.com"
+  force = true
+  status = 301
+  
+[[redirects]]
+  from = "/admin.php"
+  to = "https://google.com"
+  force = true
+  status = 301
+
+[[redirects]]
   from = "/wp-login.php"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/wp-info.php"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/mailer.php"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/inputs.php"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/404.php"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/403.php"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
   
 [[redirects]]
   from = "/xmlrpc.php"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/xml.php"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/wp-content/*"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/wp-admin/*"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/wp-includes/*"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/vendor/*"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/wp-json/*"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = ".env"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
 
 [[redirects]]
   from = "/login.php"
-  to = "/"
+  to = "https://google.com"
   force = true
   status = 301
