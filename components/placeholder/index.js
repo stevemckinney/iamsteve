@@ -86,6 +86,7 @@ const Placeholder = ({ category, size, imageClass, alt, ...props }) => {
           width={width}
           height={height}
           className="hidden @md:block"
+          aria-hidden={true}
         />
       </Link>
     )

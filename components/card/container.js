@@ -5,7 +5,7 @@ import Icon from '@/components/icon'
 import Badge from '@/components/badge'
 import Category from '@/components/category'
 import Placeholder from '@/components/placeholder'
-import Date from '@/components/date'
+import Date, { postYear } from '@/components/date'
 
 // https://gist.github.com/aradnom/06ef051c1c96f10c144d
 function autoParagraph(text, size) {
@@ -26,18 +26,32 @@ function hexToRgb(hex) {
 }
 
 const LargeImage = ({ ...props }) => {
-  const { image, title, imageColor, categories } = props
+  const { large, medium, title, imageColor, categories, year } = props
+  const oldWidthMedium = 378
+  const oldHeightMedium = 252
+  const oldWidthLarge = 738
+  const oldHeightLarge = 492
 
   return (
     <>
       <Image
-        src={image}
-        width={592}
-        height={368}
+        src={medium}
+        width={year > 2020 ? 384 : oldWidthMedium}
+        height={year > 2020 ? 240 : oldHeightMedium}
+        alt={title}
+        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        placeholder="blur"
+        className="@md:hidden"
+      />
+      <Image
+        src={large}
+        width={year > 2020 ? 592 : oldWidthLarge}
+        height={year > 2020 ? 368 : oldHeightLarge}
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
         alt={title}
-        className={`radius`}
+        aria-hidden={true}
+        className="hidden @md:block"
       />
     </>
   )
@@ -55,6 +69,7 @@ const Container = ({ frontmatter, image, className }) => {
     categories,
     images,
     large,
+    medium,
     lastmod,
   } = frontmatter
 
@@ -78,10 +93,12 @@ const Container = ({ frontmatter, image, className }) => {
         >
           <>
             <LargeImage
-              image={large}
+              large={large}
+              medium={medium}
               imageColor={imageColor}
               categories={categories}
               title={title}
+              year={postYear(date)}
             />
           </>
         </Link>
