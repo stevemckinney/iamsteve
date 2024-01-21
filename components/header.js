@@ -10,7 +10,7 @@ import { Navigation, Toggle } from '@/components/navigation'
 import styles from './header.module.scss'
 
 export default function Header() {
-  const nav = `flex flex-1 md:gap-8 lg:gap-12`
+  const nav = `flex flex-[1_0_auto] md:gap-8 lg:gap-12 justify-center`
   const tabbarNav = `max-md:px-4 max-md:bg-white/90 max-md:shadow-placed max-md:justify-between max-md:fixed max-md:left-0 max-md:right-0 max-md:bottom-0 max-md:z-[100] max-md:backdrop-blur max-md:backdrop-brightness-100 max-md:backdrop-saturate-150`
 
   // Some styles exist in the header.module to handle safe-area
@@ -51,7 +51,7 @@ export default function Header() {
               </Link>
             ))}
           </nav>
-          <div className="flex-1 flex justify-end max-md:hidden">
+          <div className="flex-[1_0_auto] flex justify-end max-md:hidden">
             <Link
               href="/newsletter"
               className={`${navLink} ${horizontalNavLink} ${styles.end}`}
