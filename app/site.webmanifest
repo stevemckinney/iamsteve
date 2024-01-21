@@ -11,5 +11,6 @@
   "theme_color": "#f9f3f1",
   "background_color": "#f9f3f1",
   "display": "minimal-ui",
-  "start_url": "/",
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa"
 }
