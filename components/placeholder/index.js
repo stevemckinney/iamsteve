@@ -135,8 +135,20 @@ const Placeholder = ({
           className={`absolute before:transition before:duration-200 before:ease-in z-[2] inset-0 before:z-[-1] before:absolute bg-fade before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100`}
           style={{ '--bg-fade-top': randomImage?.rgb }}
         /> */}
-        <Image src={small} alt={alt} className="@md:hidden" />
-        <Image src={large} alt={alt} className="hidden @md:block" />
+        <Image
+          src={small}
+          alt={alt}
+          width={width}
+          height={height}
+          className="@md:hidden"
+        />
+        <Image
+          src={large}
+          alt={alt}
+          width={width}
+          height={height}
+          className="hidden @md:block"
+        />
       </Link>
     )
   }
@@ -150,8 +162,20 @@ const Placeholder = ({
         className={`absolute before:transition before:duration-200 before:ease-in z-[2] inset-0 before:z-[-1] before:absolute bg-fade before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100`}
         style={{ '--bg-fade-top': '255,255,255' }}
       /> */}
-      <Image src={small} alt={alt} className="@md:hidden" />
-      <Image src={large} alt={alt} className="hidden @md:block" />
+      <Image
+        src={small}
+        alt={alt}
+        width={width}
+        height={height}
+        className="@md:hidden"
+      />
+      <Image
+        src={large}
+        alt={alt}
+        width={width}
+        height={height}
+        className="hidden @md:block"
+      />
     </div>
   )
 }
