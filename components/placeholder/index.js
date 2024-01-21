@@ -92,7 +92,7 @@ const Placeholder = ({ category, size, imageClass, alt, ...props }) => {
   }
 
   return (
-    <div style={{ backgroundColor: color }}>
+    <div className={`${props.className}`} style={{ backgroundColor: color }}>
       {/* <div
         className={`absolute before:transition before:duration-200 before:ease-in z-[2] inset-0 before:z-[-1] before:absolute bg-fade before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100`}
         style={{ '--bg-fade-top': '255,255,255' }}
