@@ -25,7 +25,11 @@ export default function Header() {
         id="top"
       >
         <div className="col-container lg:col-content flex items-center align-center justify-between py-4 px-4 lg:py-6 2xl:py-9 2xl:px-8 2xl:-mx-8 bg-neutral-01-100 max-md:-mx-4">
-          <Link href="/" className="flex-1" title="iamsteve.me homepage">
+          <Link
+            href="/"
+            className="flex-[1_0_auto]"
+            title="iamsteve.me homepage"
+          >
             <Icon icon="logo" role="img" size={32} className="max-xl:hidden" />
             <Icon
               icon="logo"
