@@ -29,7 +29,7 @@ const Pagination = ({ total, current, category }) => {
         <Link
           href={
             current - 1 === 1
-              ? `/${basePath}/`
+              ? `/${basePath}${categoryPath}`
               : `/${basePath}${categoryPath}/page/${current - 1}`
           }
           className={`${link} ${linkState}`}
