@@ -16,13 +16,13 @@ const Toggle = () => {
     <div className="relative before:z-[1] before:-inset-10 before:absolute">
       <span className="block w-[24px] h-[24px] relative">
         <span
-          className={`h-[2px] w-[20px] bg-fern-1100 block rounded absolute left-[2px] top-[18px]`}
+          className={`h-[2px] w-[20px] bg-fern-1100 block rounded absolute`}
         ></span>
         <span
-          className={`h-[2px] w-[16px] bg-fern-1100 block rounded absolute left-[4px] top-[11px]`}
+          className={`h-[2px] w-[16px] bg-fern-1100 block rounded absolute`}
         ></span>
         <span
-          className={`h-[2px] w-[20px] bg-fern-1100 block rounded absolute left-[2px] bottom-[18px] `}
+          className={`h-[2px] w-[20px] bg-fern-1100 block rounded absolute `}
         ></span>
       </span>
     </div>
@@ -32,9 +32,12 @@ const Toggle = () => {
 const Navigation = () => {
   const pathname = usePathname()
   return (
-    <NavigationMenu.Root className="flex md:hidden">
-      <NavigationMenu.List className="flex">
-        <NavigationMenu.Item className="flex">
+    <NavigationMenu.Root
+      orientation="vertical"
+      className="flex nroot md:hidden"
+    >
+      <NavigationMenu.List className="flex nlist">
+        <NavigationMenu.Item className="flex nitem">
           <NavigationMenu.Trigger
             className="toggle-nav"
             // https://github.com/radix-ui/primitives/issues/2043
@@ -43,7 +46,7 @@ const Navigation = () => {
           >
             <Toggle />
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content className="nav-content shadow-placed bg-white/90 backdrop-filter backdrop-contrast-200 backdrop-saturate-100 backdrop-blur flex flex-col rounded-lg h-[auto] fixed z-[200] top-[56px] left-2 right-2 max-w-md md:left-1/2 md:-translate-x-1/2 p-6 outline-none data-[state=closed]:animate-[dialog-content-hide_200ms] data-[state=open]:animate-[dialog-content-show_200ms]">
+          <NavigationMenu.Content className="nav-content shadow-placed bg-white/90 backdrop-filter backdrop-contrast-200 backdrop-saturate-100 backdrop-blur flex flex-col rounded-lg relative z-[200] md:left-1/2 md:-translate-x-1/2 p-6 outline-none">
             <ul className="flex flex-col gap-2">
               {navigation.map((link) => {
                 return (
@@ -51,7 +54,9 @@ const Navigation = () => {
                     href={link.href}
                     key={link.href}
                     className={`${
-                      pathname === link.href ? 'text-red-500' : 'text-fern-1100'
+                      pathname === link.href
+                        ? 'text-dandelion-500'
+                        : 'text-fern-1100'
                     }`}
                   >
                     <Icon
@@ -59,7 +64,7 @@ const Navigation = () => {
                       size={link.size}
                       className={`${
                         pathname === link.href
-                          ? 'text-red-500'
+                          ? 'text-dandelion-500'
                           : 'text-neutral-03-500'
                       }`}
                     />
@@ -71,7 +76,7 @@ const Navigation = () => {
                 href="/newsletter"
                 className={`${
                   pathname === '/newsletter'
-                    ? 'bg-moss-0 text-red-500'
+                    ? 'bg-dandelion-500/10 text-dandelion-600'
                     : 'bg-moss-200/10 text-moss-600'
                 }`}
               >
@@ -79,7 +84,7 @@ const Navigation = () => {
                   icon="airplane"
                   className={`${
                     pathname === '/newsletter'
-                      ? 'text-red-500'
+                      ? 'text-dandelion-600'
                       : 'text-moss-600'
                   }`}
                 />
@@ -89,15 +94,14 @@ const Navigation = () => {
           </NavigationMenu.Content>
         </NavigationMenu.Item>
       </NavigationMenu.List>
-
-      <NavigationMenu.Viewport className="nav-viewport" />
+      <NavigationMenu.Viewport className="nav-viewport px-4 absolute flex justify-center top-full left-0 right-0" />
     </NavigationMenu.Root>
   )
 }
 
 const ListItem = forwardRef(
   ({ className, children, title, ...props }, forwardedRef) => (
-    <li className="flex shrink-0 basis-full">
+    <li className="flex">
       <NavigationMenu.Link asChild>
         <a
           className={`flex shrink-0 basis-full gap-4 py-2.5 rounded-sm px-4 text-2xl font-ui items-center lowercase ${className}`}

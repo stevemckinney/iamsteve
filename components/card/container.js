@@ -73,8 +73,13 @@ const Container = ({ frontmatter, image, className }) => {
     lastmod,
   } = frontmatter
 
+  // const mask =
+  //   '[mask-image:radial-gradient(100%_150%_at_50%_50%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%),radial-gradient(200%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)][mask-size:100%_100%][mask-position:_0_0,0_0][mask-repeat:repeat]'
+  // radial-gradient(100%_150%_at_50%_30%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)
+  // [mask:radial-gradient(150%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]
+
   const imageColor = theme ? theme.toString() : '#e8dcd9'
-  const imageClass = `relative flex items-center justify-center [mask:radial-gradient(150%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]`
+  const imageClass = `relative flex items-center justify-center [mask:radial-gradient(125%_150%_at_50%_30%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]`
   const bgFadeTop = `${hexToRgb(imageColor).r},${hexToRgb(imageColor).g},${
     hexToRgb(imageColor).b
   }`
@@ -138,9 +143,7 @@ const Container = ({ frontmatter, image, className }) => {
         </>
       )}
       <div
-        className={`flex flex-col flex-auto relative before:transition before:duration-200 before:ease-in before:w-16 before:h-9 before:absolute @md:before:top-0 before:right-0 before:bg-gradient-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:via-neutral-01-50/10 active:before:via-neutral-01-50/30 active:before:via-neutral-01-50/80 active:before:to-neutral-01-50 before:z-[3] pb-8 @md:pb-[2.625rem] ${
-          image ? 'before:top-0' : 'before:top-7'
-        }`}
+        className={`flex flex-col flex-auto relative [mask:linear-gradient(to_right,#fff_75%,#fff_80%,transparent_97.5%)] pb-8 @md:pb-[2.625rem] pt-px -mt-px`}
       >
         <div
           className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pb-4 @md:pb-5 px-8 @md:px-12 ${

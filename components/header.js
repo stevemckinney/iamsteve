@@ -15,7 +15,7 @@ export default function Header() {
 
   // Some styles exist in the header.module to handle safe-area
   const navLink = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
-  const horizontalNavLink = `md:gap-2 md:text-base lg:text-xl`
+  const horizontalNavLink = `md:gap-2 md:text-base lg:text-xl/none lg:py-0.5`
   const tabbarNavLink = `max-md:flex-col max-md:flex-1 max-md:justify-center max-md:pt-2`
 
   return (
@@ -24,10 +24,10 @@ export default function Header() {
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-[1]"
         id="top"
       >
-        <div className="col-container lg:col-content flex items-center align-center justify-between py-4 px-4 lg:py-6 2xl:py-9 2xl:px-8 2xl:-mx-8 bg-neutral-01-100 max-md:-mx-4">
+        <div className="col-container lg:col-content flex items-center align-center py-4 px-4 lg:py-6 2xl:py-9 2xl:px-8 2xl:-mx-8 bg-neutral-01-100 max-md:-mx-4">
           <Link
             href="/"
-            className="flex-[1_0_auto]"
+            className="flex-[1_0_10%]"
             title="iamsteve.me homepage"
           >
             <Icon icon="logo" role="img" size={32} className="max-xl:hidden" />
@@ -51,7 +51,7 @@ export default function Header() {
               </Link>
             ))}
           </nav>
-          <div className="flex-[1_0_auto] flex justify-end max-md:hidden">
+          <div className="flex-[1_0_10%] flex justify-end max-md:hidden">
             <Link
               href="/newsletter"
               className={`${navLink} ${horizontalNavLink} ${styles.end}`}

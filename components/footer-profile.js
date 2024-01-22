@@ -4,7 +4,7 @@ import Link from '@/components/link'
 
 export default function FooterProfile() {
   return (
-    <aside className="grid grid-cols-subgrid gap-y-10 lg:gap-y-18 col-start-container-start col-end-container-end rounded-md lg:rounded-xl bg-white shadow-placed py-12 lg:py-32">
+    <aside className="grid grid-cols-subgrid gap-y-10 lg:gap-y-18 col-start-container-start col-end-container-end rounded-lg lg:rounded-xl bg-white shadow-placed py-12 lg:py-32">
       <Subscribe className="grid grid-cols-subgrid gap-8 col-content 2xl:items-end max-sm:px-8" />
       <hr className="col-content bg-rule h-[2px] border-0 max-sm:mx-8" />
       <div className="max-lg:col-end-content-end col-start-content-start col-span-5 max-sm:px-8">

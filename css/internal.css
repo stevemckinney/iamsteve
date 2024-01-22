@@ -171,7 +171,7 @@
   }
 
   .frame-outset-top-md {
-    border-image-outset: 2.75rem 0 0;
+    border-image-outset: 2.5rem 0 0;
   }
 
   .frame-outset-top {
@@ -197,4 +197,123 @@
   @screen 2xl {
     grid-template-columns: var(--grid-16);
   }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+  to {
+    opacity: 0;
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+}
+
+@keyframes opened-first {
+  from {
+    transform: translate3d(2px, 18px, 0);
+  }
+  50% {
+    transform: translate3d(2px, 11px, 0);
+  }
+  to {
+    transform: translate3d(2px, 11px, 0) rotate(-45deg);
+  }
+}
+
+@keyframes opened-last {
+  from {
+    transform: translate3d(2px, 4px, 0);
+  }
+  50% {
+    transform: translate3d(2px, 11px, 0);
+  }
+  to {
+    transform: translate3d(2px, 11px, 0) rotate(45deg);
+  }
+}
+
+@keyframes closed-first {
+  from {
+    transform: translate3d(2px, 11px, 0) rotate(-45deg);
+  }
+  50% {
+    transform: translate3d(2px, 11px, 0);
+  }
+  to {
+    transform: translate3d(2px, 18px, 0);
+  }
+}
+
+@keyframes closed-last {
+  from {
+    transform: translate3d(2px, 11px, 0) rotate(45deg);
+  }
+  50% {
+    transform: translate3d(2px, 11px, 0);
+  }
+  to {
+    transform: translate3d(2px, 4px, 0);
+  }
+}
+
+.toggle-nav span > span {
+  transition: top 200ms 200ms, bottom 200ms 200ms, transform 200ms;
+  transform-origin: center center;
+}
+
+.toggle-nav span > span:first-child {
+  animation: closed-first 300ms ease-out both;
+  transform: translate3d(2px, 18px, 0);
+}
+
+.toggle-nav span > span:nth-of-type(2) {
+  transform: translate3d(4px, 11px, 0);
+}
+
+.toggle-nav span > span:last-child {
+  animation: closed-last 300ms ease-out both;
+}
+
+.toggle-nav[data-state='open'] span > span {
+  transition: top 200ms, bottom 200ms, transform 200ms 200ms;
+}
+
+.toggle-nav[data-state='open'] span > span:first-child {
+  animation: opened-first 300ms ease-out both;
+}
+
+.toggle-nav[data-state='open'] span > span:nth-of-type(2) {
+  transform: translate3d(4px, 11px, 0) scale3d(0, 0, 0);
+}
+
+.toggle-nav[data-state='open'] span > span:last-child {
+  animation: opened-last 300ms ease-out both;
+}
+
+.nav-content {
+  position: relative;
+  width: 100%;
+  transform-origin: 0 0;
+  height: var(--radix-navigation-menu-viewport-height);
+}
+
+.nav-viewport[data-state='open'] {
+  animation: show 300ms ease-out;
+}
+
+.nav-viewport[data-state='closed'] {
+  animation: hide 300ms ease-in;
 }
