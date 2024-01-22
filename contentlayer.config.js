@@ -7,17 +7,16 @@ import remarkGfm from 'remark-gfm'
 import smartypants from 'remark-smartypants'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkRehype from 'remark-rehype'
-import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import parse from 'rehype-parse'
-import slug from 'rehype-slug'
 import stringify from 'rehype-stringify'
 
+// import rehypePrettyCode from 'rehype-pretty-code'
 // import rehypeToc from '@jsdevtools/rehype-toc'
 // import rehypeCitation from 'rehype-citation'
 
-// import rehypePrism from 'rehype-prism-plus'
-// import remarkCodeTitles from './lib/remark-code-title'
+import rehypePrism from 'rehype-prism-plus'
+import remarkCodeTitles from './lib/remark-code-title'
 // import customizeTOC from './lib/customise-toc'
 
 const root = process.cwd()
@@ -135,7 +134,7 @@ export default makeSource({
   contentDirExclude: ['./content/draft'],
   documentTypes: [Post, Page],
   mdx: {
-    remarkPlugins: [remarkGfm, smartypants, remarkRehype],
+    remarkPlugins: [remarkGfm, remarkCodeTitles, smartypants, remarkRehype],
     rehypePlugins: [
       rehypeSlug,
       [
@@ -148,27 +147,8 @@ export default makeSource({
           },
         },
       ],
-      [
-        rehypePrettyCode,
-        {
-          theme: 'css-variables',
-          onVisitLine(node) {
-            // Prevent lines from collapsing in `display: grid` mode, and allow empty
-            // lines to be copy/pasted
-            if (node.children.length === 0) {
-              node.children = [{ type: 'text', value: ' ' }]
-            }
-          },
-          onVisitHighlightedLine(node) {
-            node.properties.className.push('line-highlighted')
-          },
-          onVisitHighlightedWord(node) {
-            node.properties.className = ['word-highlighted']
-          },
-        },
-      ],
       // [rehypeCitation, { path: path.join(root, 'data') }],
-      // [rehypePrism, { ignoreMissing: true }],
+      [rehypePrism, { ignoreMissing: true }],
       // [rehypeToc, { customizeTOC }],
     ],
   },

@@ -3,3 +3,4 @@
 @tailwind utilities;
 @import '../css/internal.css';
 @import '../css/post.css';
+@import '../css/prism.css';

@@ -514,3 +514,39 @@
     width: calc(100% + 64px);
   }
 }
+
+.prose {
+  :global(.remark-code-container) {
+    overflow: auto;
+    border-radius: theme('borderRadius.lg');
+    background-color: theme('colors.fern.1100');
+    border: 1px solid theme('colors.neutral-03.900');
+    margin-inline: -2rem;
+    margin-block: theme('margin.8');
+  }
+
+  :global(.remark-code-container pre),
+  :global(.remark-code-container code) {
+    display: block;
+  }
+
+  :global(.remark-code-bar) {
+    border-radius: theme('borderRadius.lg') theme('borderRadius.lg') 0 0;
+    box-shadow: inset 0 2px 0 0 rgba(39, 93, 78, 0.6);
+    background-color: theme('colors.neutral-03.900');
+    padding-inline: theme('padding.8');
+    border-block-end: 1px solid theme('colors.fern.900');
+  }
+
+  :global(.remark-code-title) {
+    display: inline-block;
+    background-color: theme('colors.fern.1100');
+    color: theme('colors.fern.200');
+    border-inline: 1px solid theme('colors.fern.900');
+    box-shadow: 0 2px 0 -1px theme('colors.fern.1100');
+    padding-inline: theme('padding.8');
+    padding-block: theme('padding.3');
+    font-size: theme('fontSize.base');
+    line-height: 1;
+  }
+}
