@@ -42,6 +42,7 @@ const LargeImage = ({ ...props }) => {
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
         className="@md:hidden"
+        quality={100}
       />
       <Image
         src={large}
@@ -52,6 +53,7 @@ const LargeImage = ({ ...props }) => {
         alt={title}
         aria-hidden={true}
         className="hidden @md:block"
+        quality={100}
       />
     </>
   )
