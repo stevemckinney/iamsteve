@@ -43,6 +43,7 @@ const LargeImage = ({ ...props }) => {
         placeholder="blur"
         className="@md:hidden"
         quality={100}
+        unoptimized
       />
       <Image
         src={large}
@@ -54,6 +55,7 @@ const LargeImage = ({ ...props }) => {
         aria-hidden={true}
         className="hidden @md:block"
         quality={100}
+        unoptimized
       />
     </>
   )
