@@ -33,52 +33,24 @@ export function BadgeIcon({ icon, theme, size, className = 'badge' }) {
 
   let iconTheme
 
-  // Design
-  if (theme === 'rio') {
-    iconTheme = `text-rio-400`
-  }
-  // Code
-  else if (theme === 'dandelion') {
-    iconTheme = `text-dandelion-500`
-  }
-  // Magenta
-  else if (theme === 'lavender') {
-    iconTheme = `text-lavender-500`
-  }
-  // Magenta
-  else if (theme === 'magenta') {
-    iconTheme = `text-magenta-500`
-  }
-  // Grass
-  else if (theme === 'grass') {
-    iconTheme = `text-grass-500`
-  }
-  // Fern
-  else if (theme === 'fern') {
-    iconTheme = `text-fern-600`
-  }
-  // Moss
-  else if (theme === 'moss') {
-    iconTheme = `text-moss-400`
-  }
-  // neutral-01
-  else if (theme === 'neutral-01') {
-    iconTheme = `text-neutral-01-500`
-  }
-  // neutral-02
-  else if (theme === 'neutral-02') {
-    iconTheme = `text-neutral-02-500`
-  }
-  // Date
-  else {
-    iconTheme = `text-cornflour-600`
+  const colorVariants = {
+    rio: 'text-rio-400',
+    dandelion: 'text-dandelion-500',
+    lavender: 'text-lavender-500',
+    magenta: 'text-magenta-500',
+    grass: 'text-grass-500',
+    fern: 'text-fern-600',
+    moss: 'text-moss-400',
+    'neutral-01': 'text-neutral-01-500',
+    'neutral-02': 'text-neutral-02-500',
+    default: 'text-cornflour-600',
   }
 
   return (
     <span
       className={`${sizing} bg-white group-active:bg-neutral-01-50 shadow-reduced group-hover:shadow-picked group-active:shadow-reduced rounded-sm flex items-center justify-center transition-all duration-200 ease-linear ${className}`}
     >
-      <Icon className={iconTheme} icon={icon} size={size} />
+      <Icon className={colorVariants[theme]} icon={icon} size={size} />
     </span>
   )
 }
