@@ -22,13 +22,11 @@ I had been wanting to redesign for a while—it’s been more than enough time. 
 ## Goals
 There’s always goals when you set out to redesign outside of modernising the design and working towards something fresh.
 
-### More flexibility with images
-In terms of the design itself, I think there was aspects I felt limited with when it came to creating images. I wanted a reinvented colour palette. As I found it a challenge creating images with what I would define a richer feeling colour.
-
-I’m not sure I’ve solved this, but I think it’s in a better place.
-
-### A new colour palette
-As I look back at the design now it feels washed out, but it might be me. Screens have changed, trends have changed, my eyes have adjusted.
+- A new colour palette
+- A richer reading experience
+- Image flexibility
+- Use Next.js app router
+- Embrace Tailwind more
 
 ## Design
 The design itself is a modernised version of what came before it. When I design something for myself or part of my own projects, I want to utilise the skills I have. It’s what makes it enjoyable.
@@ -36,20 +34,21 @@ The design itself is a modernised version of what came before it. When I design 
 I have evolved the design through the typography, illustration, colour and layout.
 
 ### Typography
-I’ve opted to move to two sans serif typefaces. They’re both grotesk’s, so they complement each other. Both are within the trends of where type is at currently.
+I’ve opted to move to two sans serif typefaces. They’re both grotesque’s, so there is sort of a complementary clash with each other. I feel both are within the trends of where type is at currently.
 
-Roc Grotesk has a strong presence, which I use for headings. The variety in widths and weights give a lot of freedom.
+I seem to be very drawn to type trends, the last version I used a typeface that was inline with the Circular/Product Sans popularity of the time.
+
+I chose Roc Grotesk for its strong presence, which I use for headings. I really like the proportions and the variety in widths and weights.
+
+Whereas I’m using Gira Sans for body copy. The slightly larger x-height and more open characters make it a better choice for reading.
 
 ### Colour
-The colour palette is familiar but renewed. I felt the older palette lacked some harmony.
+The colour palette is familiar but renewed. My aim was to pair back the colour and really reserve that for post images and the occasional flourish. I achieve that through introducing more neutral colours and complementary colours that have a stronger contrast (eg: red vs green).
 
-### Working towards a digital garden
-I like the idea of a digital garden. As Maggie Appleton says articles don’t have to be something complete and can evolve. This is true with much of the web, if I look back at everything that exists here, I could rewrite it with more up to date techniques.
+But I still believe there are some things that need tweaking albeit knowing I have made some sensible decisions with the colour palette. Overall, I want the website to less stark and less washed out.
 
-A digital garden promotes more evergreen writing and that’s something I’d like to do.
-
-## Nothing much has changed with the structure
-Overall, throughout the website it remains fairly similar. The homepage has a hero introduction, leading into latest posts and popular posts from the main categories.
+### Slight structural changes
+Overall, throughout the website remains similar.
 
 ## Rebuilding and moving to Next.js app router
 As part of the last version I decided to move to Next.js. This was a learning curve and using the pages router.
