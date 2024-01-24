@@ -12,8 +12,11 @@ import { sortPosts } from '@/lib/utils/content'
 import PageHeader from '@/components/page-header'
 import PageTitle from '@/components/page-title'
 import Image from '@/components/image'
+import Icon from '@/components/icon'
+import Category from '@/components/category'
 import Card from '@/components/card'
 import Pagination from '@/components/pagination'
+import Link from '@/components/link'
 
 import categories from '@/content/categories'
 
@@ -57,6 +60,7 @@ export default async function BlogCategory({ params, searchParams }) {
   const data = categories.find(
     (category) => category.slugAsParams === params.slug
   )
+  const parent = data.parent
 
   const posts = await Promise.all(
     allPosts
@@ -105,6 +109,22 @@ export default async function BlogCategory({ params, searchParams }) {
       />
       <PageHeader>
         <PageTitle>{data.title}</PageTitle>
+        <div>
+          {categories.map((category) => {
+            if (category.parent === false) return
+
+            if (
+              (!parent && data.title.toLowerCase() === category.parent) ||
+              (parent && category.parent === parent)
+            ) {
+              return (
+                <Category key={category.title} size={24}>
+                  {category.title}
+                </Category>
+              )
+            }
+          })}
+        </div>
       </PageHeader>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
         {paginatedPosts.length > 0 ? (
