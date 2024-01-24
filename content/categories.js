@@ -111,6 +111,16 @@ const categories = [
     exclude: false,
   },
   {
+    title: 'Resources',
+    slug: '/category/resources',
+    slugAsParams: 'resources',
+    description: 'Resources posts',
+    parent: 'design',
+    theme: 'fern',
+    icon: 'puzzle',
+    exclude: false,
+  },
+  {
     title: 'Website',
     slug: '/category/website',
     slugAsParams: 'website',
