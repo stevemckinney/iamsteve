@@ -24,7 +24,7 @@ export default function FooterProfile() {
         </p>
       </div>
 
-      <div className="col-content lg:col-start-8 2xl:col-start-10 lg:col-span-5 flex flex-col xs:flex-row gap-8 max-sm:px-8">
+      <div className="col-content lg:col-start-11 2xl:col-start-10 lg:col-span-5 flex flex-col xs:flex-row gap-8 max-sm:px-8">
         <div className="list flex-1">
           <h3 className="font-display font-variation-bold text-xl lowercase mb-4">
             Site
