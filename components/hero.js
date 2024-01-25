@@ -66,6 +66,7 @@ export default function Hero() {
           className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/star.svg"
@@ -74,6 +75,7 @@ export default function Hero() {
           className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/sticky.svg"
@@ -82,6 +84,7 @@ export default function Hero() {
           className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/safari.svg"
@@ -90,6 +93,7 @@ export default function Hero() {
           className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/figma.svg"
@@ -98,6 +102,7 @@ export default function Hero() {
           className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/terminal.svg"
@@ -106,6 +111,7 @@ export default function Hero() {
           className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/pencil.svg"
@@ -114,6 +120,7 @@ export default function Hero() {
           className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/pen.svg"
@@ -122,6 +129,7 @@ export default function Hero() {
           className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/sharpener.svg"
@@ -130,6 +138,7 @@ export default function Hero() {
           className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/star.svg"
@@ -138,6 +147,7 @@ export default function Hero() {
           className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/sticky.svg"
@@ -146,6 +156,7 @@ export default function Hero() {
           className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/safari.svg"
@@ -154,6 +165,7 @@ export default function Hero() {
           className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
       </div>
       <div className="flex gap-2 flex-row flex-nowrap max-lg:[grid-column:1/-1] max-lg:px-12 max-w-full lg:relative lg:w-[798px] lg:h-[276px]">
@@ -164,6 +176,7 @@ export default function Hero() {
           className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/pencil-mono.svg"
@@ -172,6 +185,7 @@ export default function Hero() {
           className={`max-lg:hidden max-w-[initial] lg:absolute right-[calc(100%_-_175px)] bottom-[10.125rem] drop-shadow-placed`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/ruler-mono.svg"
@@ -180,6 +194,7 @@ export default function Hero() {
           className={`max-lg:hidden max-w-[initial] lg:absolute left-[calc(100%_-_111px)] bottom-[17.5rem] drop-shadow-placed`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/type.svg"
@@ -188,6 +203,7 @@ export default function Hero() {
           className={`max-lg:hidden absolute max-w-[initial] top-[1.6rem] left-[13.275rem] drop-shadow-placed`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/terminal.svg"
@@ -196,6 +212,7 @@ export default function Hero() {
           className={`lg:absolute max-w-[initial] top-[1.875rem] right-[12.525rem] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/pen.svg"
@@ -204,6 +221,7 @@ export default function Hero() {
           className={`lg:absolute max-w-[initial] top-[.625rem] left-[21.75rem] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/pencil.svg"
@@ -212,6 +230,7 @@ export default function Hero() {
           className={`lg:hidden max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/sharpener.svg"
@@ -220,6 +239,7 @@ export default function Hero() {
           className={`lg:absolute top-[-4.35rem] left-[3.425rem] lg:rotate-[15deg] max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/star.svg"
@@ -228,6 +248,7 @@ export default function Hero() {
           className={`lg:absolute max-w-[initial] bottom-[2.25rem] left-[5.95rem] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/sticky.svg"
@@ -236,6 +257,7 @@ export default function Hero() {
           className={`lg:absolute max-w-[initial] top-[3.4rem] right-[3.525rem] lg:rotate-[-15deg] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/safari.svg"
@@ -244,6 +266,7 @@ export default function Hero() {
           className={`lg:absolute max-w-[initial] top-[5.35rem] left-[12.95rem] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/cursor.svg"
@@ -252,6 +275,7 @@ export default function Hero() {
           className={`max-lg:hidden absolute max-w-[initial] bottom-[1.875rem] left-[16.2rem] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/colour.svg"
@@ -260,6 +284,7 @@ export default function Hero() {
           className={`max-lg:hidden absolute max-w-[initial] top-[8.625rem] left-[20.825rem] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/component.svg"
@@ -268,6 +293,7 @@ export default function Hero() {
           className={`max-lg:hidden absolute max-w-[initial] bottom-[4.235rem] right-[15.675rem] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/figma.svg"
@@ -276,6 +302,7 @@ export default function Hero() {
           className={`lg:absolute max-w-[initial] bottom-[2.125rem] right-[19.05rem] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/pencil.svg"
@@ -284,6 +311,7 @@ export default function Hero() {
           className={`lg:absolute max-w-[initial] bottom-[-.625rem] right-[7.45rem] drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/brush.svg"
@@ -292,6 +320,7 @@ export default function Hero() {
           className={`max-lg:hidden absolute max-w-[initial] bottom-[3.625rem] right-[3rem] drop-shadow-placed`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/sharpener.svg"
@@ -300,6 +329,7 @@ export default function Hero() {
           className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/star.svg"
@@ -308,6 +338,7 @@ export default function Hero() {
           className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/sticky.svg"
@@ -316,6 +347,7 @@ export default function Hero() {
           className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
         <Image
           src="/images/illustration/spot-mono/safari.svg"
@@ -324,6 +356,7 @@ export default function Hero() {
           className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
           alt=" "
           aria-hidden="true"
+          priority={true}
         />
       </div>
     </div>

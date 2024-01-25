@@ -8,7 +8,7 @@ theme: "#fffbf2"
 tags: ["Website"]
 categories: ["Website"]
 ogImage: "/assets/og/cover.jpg"
-status: "draft"
+status: closed
 id: 14
 fileroot: "updates"
 ---

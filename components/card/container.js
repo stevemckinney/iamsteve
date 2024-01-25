@@ -42,6 +42,8 @@ const LargeImage = ({ ...props }) => {
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
         className="@md:hidden"
+        quality={100}
+        unoptimized
       />
       <Image
         src={large}
@@ -52,6 +54,8 @@ const LargeImage = ({ ...props }) => {
         alt={title}
         aria-hidden={true}
         className="hidden @md:block"
+        quality={100}
+        unoptimized
       />
     </>
   )
@@ -86,7 +90,7 @@ const Container = ({ frontmatter, image, className }) => {
 
   return (
     <article
-      className={`@container group flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative ${className}`}
+      className={`@container group isolate flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative ${className}`}
     >
       {image && large && (
         <Link

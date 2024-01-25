@@ -15,7 +15,7 @@ description: I’m Steve McKinney, I write this blog about the design and build 
   <article id="site" className="col-content max-w-prose">
 
 
-    <h3 className="text-3xl leading-3xl font-display font-variation-bold text-fern-1100 mb-2 pt-2">Who is this for?</h3>
+    <h2 className="text-3xl leading-3xl lowercase font-display font-variation-bold text-fern-1100 mb-2 pt-2">Who is this for?</h2>
 
     <p className="text-ui-body mb-4 text-lg">Either you’re a developer wanting to improve their visual design skills, or a designer with some coding experience. You’re someone who understands the value of not only good design, but the requirement of making it look visually appealing too. Through sharing what I know and continue to learn, I hope to meet this need.</p>
 
@@ -24,7 +24,7 @@ description: I’m Steve McKinney, I write this blog about the design and build 
       the same as they do in <em>design app</em>”. And while that comes from a good place, it’s always struck me as a way to avoid challenges and learning something new.
     </p>
 
-    <h3 className="text-3xl leading-3xl font-display font-variation-bold text-fern-1100 mb-2 pt-2">Changing aim over the years</h3>
+    <h2 className="text-3xl leading-3xl lowercase font-display font-variation-bold text-fern-1100 mb-2 pt-2">Changing aim over the years</h2>
 
     <p className="text-ui-body mb-4 text-lg">I made a decision to start writing this blog <em>consistently</em> in January 2015. Every week, for two years, a blog post went out. I started out writing about anything I was interested in, as long as it was related to websites.</p>
 
@@ -41,7 +41,7 @@ description: I’m Steve McKinney, I write this blog about the design and build 
   </aside>
 
   <article id="examples" className="col-content max-w-prose">
-    <h2 className="text-4xl leading-4xl font-display font-variation-bold text-fern-1100 mb-2 pt-6">Best posts</h2>
+    <h2 className="text-4xl leading-4xl lowercase font-display font-variation-bold text-fern-1100 mb-2 pt-6">Best posts</h2>
 
     <p className="text-ui-body mb-4 text-lg">
       These are a mixture of my most popular posts and what I believe are my best.
@@ -59,9 +59,11 @@ description: I’m Steve McKinney, I write this blog about the design and build 
   </article>
 
   <article id="author" className="col-content max-w-prose">
-    <h2 className="text-4xl leading-4xl font-display font-variation-bold text-fern-1100 mb-2 pt-6">About me</h2>
+    <h2 className="text-4xl leading-4xl lowercase font-display font-variation-bold text-fern-1100 mb-2 pt-6">About me</h2>
 
-    <p className="text-ui-body mb-4 text-lg">I’m a designer based in Manchester. I specialise in visual design and user experience for websites. I’ve been doing this professionally for over 12 years. I’ve worked with a large variety of clients in differing industries. With differing needs, shops, subscriptions, services and marketing.</p>
+    <p className="text-ui-body mb-4 text-lg">I’m a designer for the web based in Manchester. I specialise in visual design and user experience for websites. I enjoy building websites and writing about CSS, outside of just design.</p>
+
+    <p className="text-ui-body mb-4 text-lg">My experience spans agency and in-house, working with a variety of clients in differing industries and differing needs, shops, subscriptions, services and marketing.</p>
 
     <p className="text-ui-body mb-4 text-lg">As a designer, someone might ask if you have a personal style. I do feel I have a personal style, I enjoy serif typefaces, use of colour, using illustration over photography. However, I will always design for the audience, goals and systems that are already in place with the brand. It’s good to have constraints.</p>
 
@@ -70,7 +72,7 @@ description: I’m Steve McKinney, I write this blog about the design and build 
   </article>
 
   <article id="history" className="col-content">
-    <h2 className="text-4xl leading-4xl font-display font-variation-bold text-fern-1100 mb-2 pt-6">Design history</h2>
+    <h2 className="text-4xl leading-4xl lowercase font-display font-variation-bold text-fern-1100 mb-2 pt-6">Design history</h2>
     <p className="text-ui-body mb-4 max-w-prose">Here is the design history of this website. Version two onwards I have written about. <a href="http://dribbble.com/stevemckinney/projects/10419-My-site" title="Previous versions of my site taking shape on Dribbble">Dribbble</a> has some iterations of previous designs.</p>
 
     <figure className="w-full flex flex-col items-center justify-center p-16 gap-4 rounded-lg mb-8 bg-white shadow-placed">
