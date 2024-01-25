@@ -2,8 +2,8 @@
 title: About version 8
 date: 2023-12-23T10:13:38.269Z
 lastmod: 2023-12-23T10:13:38.269Z
-summary: Design and development decisions for the 8th version of this website. New design, using Next.js App Router and Tailwind.
-metadesc: Design and development decisions for the 8th version of this website. New design, using Next.js App Router and Tailwind.
+summary: Design and development decisions for the 8th version of this website. New design, using Next.js App Router and fully in on Tailwind.
+metadesc: Design and development decisions for the 8th version of this website. New design, using Next.js App Router and fully in on Tailwind.
 theme: #e9f5f5
 tags: []
 categories: ['Website']
@@ -34,11 +34,23 @@ The design itself is a modernised version of what came before it. When I design 
 I have evolved the design through the typography, illustration, colour and layout.
 
 ### Typography
-I’ve opted to move to two sans serif typefaces. They’re both grotesque’s, so there is sort of a complementary clash with each other. I feel both are within the trends of where type is at currently.
+I’ve opted to move to two sans serif typefaces. They’re both grotesque’s, so they do complement each other.
 
-I seem to be very drawn to type trends, the last version I used a typeface that was inline with the Circular/Product Sans popularity of the time.
+I feel both are within the trends of where type is at currently. I’m drawn to type trends, the choice does carry how modern a design feels. The last version I used a typeface that was inline with the Circular/Product Sans popularity of the time.
+
+<div className="sandbox">
+  <div className="w-full bg-neutral-01-200 px-[2vmax] py-[10vmax] rounded-lg">
+    <span className="text-fern-1100 font-display lowercase text-[clamp(2.5rem,_1.4565rem_+_5.2174vw,_5.5rem)] block text-center font-variation-extrabold leading-7xl tracking-[-.15rem]">Exploring web design craft</span>
+  </div>
+</div>
 
 I chose Roc Grotesk for its strong presence, which I use for headings. I really like the proportions and the variety in widths and weights.
+
+<div className="sandbox">
+  <div className="w-full bg-neutral-01-200 px-[2vmax] py-[10vmax] rounded-lg">
+    <span className="text-fern-1100 font-body hover:font-display lowercase text-[clamp(2.5rem,_1.4565rem_+_5.2174vw,_5.5rem)] block text-center [font-weight:300] hover:font-normal hover:font-variation-extrabold leading-7xl tracking-[-.3rem] hover:tracking-[-.2rem]">Exploring web design craft</span>
+  </div>
+</div>
 
 Whereas I’m using Gira Sans for body copy. The slightly larger x-height and more open characters make it a better choice for reading.
 

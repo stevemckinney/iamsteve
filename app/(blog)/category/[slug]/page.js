@@ -109,7 +109,7 @@ export default async function BlogCategory({ params, searchParams }) {
       />
       <PageHeader>
         <PageTitle>{data.title}</PageTitle>
-        <div>
+        {/* <div>
           {categories.map((category) => {
             if (category.parent === false) return
 
@@ -124,7 +124,7 @@ export default async function BlogCategory({ params, searchParams }) {
               )
             }
           })}
-        </div>
+        </div> */}
       </PageHeader>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
         {paginatedPosts.length > 0 ? (

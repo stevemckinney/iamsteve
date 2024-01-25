@@ -252,6 +252,14 @@
   }
 
   :where(h2, h3, h4, h5, h6) {
+    > a[rel] {
+      text-decoration: underline;
+
+      &:hover,
+      &:focus {
+        color: theme('colors.dandelion.600');
+      }
+    }
     &:not(:hover, :focus) :global(.fragment) {
       transition: opacity 0.2s, transform 0.4s;
       transform: scale3d(0.5, 0.5, 0.5) translate3d(32px, 0, 0);
@@ -289,18 +297,19 @@
   :global([data-rehype-pretty-code-fragment]),
   :global(.cp_embed_wrapper) {
     background-color: theme('colors.fern.1100');
-    margin-inline: -2rem;
     overflow: hidden;
-
-    @screen md {
-      border-radius: theme('borderRadius.lg');
-    }
   }
 
   :global(.cp_embed_wrapper),
   :global(.remark-code-container),
-  :global([data-rehype-pretty-code-fragment]) {
+  :global([data-rehype-pretty-code-fragment]),
+  > div {
+    margin-inline: -2rem;
     margin-block: theme('margin.8');
+
+    @screen md {
+      border-radius: theme('borderRadius.lg');
+    }
   }
 
   :global([data-rehype-pretty-code-fragment]) {
