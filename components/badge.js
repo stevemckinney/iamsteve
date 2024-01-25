@@ -1,70 +1,85 @@
 import Icon from './icon'
 import Link from '@/components/link'
 
-export default function Badge({ children, theme, size = 16, iconStart, href }) {
+const defaultVariants = {
+  rio: 'text-rio-400',
+  dandelion: 'text-dandelion-500',
+  lavender: 'text-lavender-500',
+  magenta: 'text-magenta-500',
+  grass: 'text-grass-500',
+  fern: 'text-fern-600',
+  moss: 'text-moss-400',
+  'neutral-01': 'text-neutral-01-500',
+  'neutral-02': 'text-neutral-02-500',
+  cornflour: 'text-cornflour-600',
+}
+
+const hoverVariants = {
+  rio: 'hover:text-rio-400',
+  dandelion: 'hover:text-dandelion-500',
+  lavender: 'hover:text-lavender-500',
+  magenta: 'hover:text-magenta-500',
+  grass: 'hover:text-grass-500',
+  fern: 'hover:text-fern-600',
+  moss: 'hover:text-moss-400',
+  'neutral-01': 'hover:text-neutral-01-500',
+  'neutral-02': 'hover:text-neutral-02-500',
+  cornflour: 'hover:text-cornflour-600',
+}
+
+export default function Badge({
+  children,
+  theme = 'cornflour',
+  size = 16,
+  iconStart,
+  href,
+}) {
   if (href) {
     return (
       <Link
         href={href}
-        className="flex flex-[0_0_auto] gap-2 font-variation-medium group transition-all duration-200 ease-linear"
+        className={`flex flex-[0_0_auto] gap-3 font-variation-medium group transition-all duration-200 ease-linear text-fern-1100 ${hoverVariants[theme]}`}
       >
-        <Badge.Icon icon={iconStart} theme={theme} size={size} />
-        <Badge.Text theme={theme} size={size}>
-          {children}
-        </Badge.Text>
+        <Badge.Icon theme={theme} icon={iconStart} size={size} />
+        <Badge.Text size={size}>{children}</Badge.Text>
       </Link>
     )
   } else {
     return (
-      <p className="flex flex-[0_0_auto] gap-2 font-variation-medium">
-        <Badge.Icon theme={theme} size={size} icon={iconStart} />
-        <Badge.Text theme={theme} size={size}>
-          {children}
-        </Badge.Text>
+      <p
+        className={`flex flex-[0_0_auto] gap-2 font-variation-medium text-fern-1100`}
+      >
+        <Badge.Icon size={size} theme={theme} icon={iconStart} />
+        <Badge.Text size={size}>{children}</Badge.Text>
       </p>
     )
   }
 }
 
-export function BadgeIcon({ icon, theme, size, className = 'badge' }) {
+export function BadgeIcon({ icon, size, theme, className = 'badge' }) {
   const small = 'w-6 h-6 flex-[0_0_auto]'
   const large = 'w-8 h-8 flex-[0_0_auto]'
   const sizing = size === 16 ? small : large
 
-  let iconTheme
-
-  const colorVariants = {
-    rio: 'text-rio-400',
-    dandelion: 'text-dandelion-500',
-    lavender: 'text-lavender-500',
-    magenta: 'text-magenta-500',
-    grass: 'text-grass-500',
-    fern: 'text-fern-600',
-    moss: 'text-moss-400',
-    'neutral-01': 'text-neutral-01-500',
-    'neutral-02': 'text-neutral-02-500',
-    default: 'text-cornflour-600',
-  }
-
   return (
     <span
-      className={`${sizing} bg-white group-active:bg-neutral-01-50 shadow-reduced group-hover:shadow-picked group-active:shadow-reduced rounded-sm flex items-center justify-center transition-all duration-200 ease-linear ${className}`}
+      className={`${sizing} bg-white group-active:bg-neutral-01-50 shadow-reduced group-hover:shadow-picked group-active:shadow-reduced rounded-sm flex items-center justify-center transition-all duration-200 ease-linear ${className} ${defaultVariants[theme]}`}
     >
-      <Icon className={colorVariants[theme]} icon={icon} size={size} />
+      <Icon className={`text-current`} icon={icon} size={size} />
     </span>
   )
 }
 
 Badge.Icon = BadgeIcon
 
-export function BadgeText({ children, theme, size, className = 'ct' }) {
+export function BadgeText({ children, size, className = 'ct' }) {
   const small = 'h-6 pt-[2px] text-base flex-[0_0_auto]'
-  const large = 'h-8 pt-[2px] text-lg flex-[0_0_auto]'
+  const large = 'h-8 pt-[2px] text-xl flex-[0_0_auto]'
   const sizing = size === 16 ? small : large
 
   return (
     <span
-      className={`${sizing} transition-all duration-200 ease-linear text-fern-1100 font-ui lowercase leading-none rounded flex items-center ${className}`}
+      className={`${sizing} transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex items-center text-current ${className}`}
     >
       {children}
     </span>
