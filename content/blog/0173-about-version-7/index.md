@@ -2,8 +2,8 @@
 title: About version 7
 date: '2023-12-23T10:11:40.788Z'
 lastmod: '2023-12-23T10:11:40.788Z'
-summary: 'A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs.'
-metadesc: 'A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs.'
+summary: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild.'
+metadesc: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild.'
 theme: '#e9f5f5'
 tags: ['Website']
 categories: ['Website']
@@ -58,9 +58,9 @@ But importantly my content is much more portable.
 
 ## Prepping a URL structure change
 
-One of the things I felt could be a problem was the current URL structure surrounding blog posts. And I didn’t want to have that as a problem on top of moving to Next.js and hosting platform.
+One of the things I felt could be a problem was the current URL structure surrounding blog posts. And I didn’t want to have that as a problem on top of moving to Next.js and a new hosting platform.
 
-The structure was `/blog/entry/[slug]` and moving to `/blog/[slug]`.
+The structure was `/blog/entry/[slug]` and was moving to `/blog/[slug]`.
 
 I was aware this would break links from other websites, for which I setup redirects. And knew by the time I’d finally finish redeveloping the website on Next all the issues will have been ironed out.
 
@@ -80,7 +80,7 @@ By far the most tedious part of this job.
 
 ## Finally getting to the point of code
 
-Everything beyond the point of code was a much nicer in terms of effort required. I did have to compromise in areas, I didn’t want this to take any longer as I want to redesign the website. On top of having to get to grips with Next and how to build a blog website.
+Everything beyond the point of code was a much nicer in terms of effort required. I did have to compromise in areas, I didn’t want this to take any longer as I wanted to redesign the website. On top of having to get to grips with Next and how to build a blog website.
 
 ### Using a starter
 
@@ -110,4 +110,6 @@ But this is something I felt a real achievement in doing the overall behaviour o
 
 I had to compromise on the search, I wasn’t able to get it to work as an overlay anymore. However, I was able to get it to search through the posts and show thanks to the starter.
 
-It offers more of a love search experience which is a win. But not many use search and it still works so I accepted the change.
+It offers more of a live search experience which is a win. But not many use search and it still works so I accepted the change.
+
+But that’s my experience of moving from a database CMS to React framework. 
