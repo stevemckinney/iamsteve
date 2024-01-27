@@ -7,8 +7,8 @@ metadesc: 'How I moved 140 posts from a database CMS to a static site in Next.js
 theme: '#e9f5f5'
 tags: ['Website']
 categories: ['Website']
-large: false
-medium: false
+large: /images/illustration/spot-mono/pencil.svg
+medium: /images/illustration/spot-mono/pencil.svg
 ogImage: '/assets/og/cover.jpg'
 status: open
 codepen: false
