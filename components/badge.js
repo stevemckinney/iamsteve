@@ -74,7 +74,7 @@ Badge.Icon = BadgeIcon
 
 export function BadgeText({ children, size, className = 'ct' }) {
   const small = 'h-6 pt-[2px] text-base flex-[0_0_auto]'
-  const large = 'h-8 pt-[2px] text-xl flex-[0_0_auto]'
+  const large = 'h-8 pt-[2px] text-lg flex-[0_0_auto]'
   const sizing = size === 16 ? small : large
 
   return (
