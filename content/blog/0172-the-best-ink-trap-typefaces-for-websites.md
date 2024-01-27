@@ -7,8 +7,8 @@ metadesc: 'A look at type that features prominent cuts or tapering into the type
 theme: '#F1E8E4'
 tags: ['Design', 'Typography']
 categories: ['Design', 'Typography']
-large: '/images/blog/the-best-ink-trap-typefaces-for-websites-featured-image-large.svg'
-medium: '/images/blog/the-best-ink-trap-typefaces-for-websites-featured-image-medium.svg'
+large: /images/blog/the-best-ink-trap-typefaces-for-websites-featured-image-large.svg
+medium: /images/blog/the-best-ink-trap-typefaces-for-websites-featured-image-medium.svg
 ogImage: '/assets/og/cover.jpg'
 status: 'open'
 codepen: false
