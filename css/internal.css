@@ -270,12 +270,12 @@
 }
 
 .toggle-nav span > span {
-  transition: top 200ms 200ms, bottom 200ms 200ms, transform 200ms;
+  transition: top 200ms 200ms, bottom 200ms 200ms, transform 400ms ease-out;
   transform-origin: center center;
 }
 
 .toggle-nav span > span:first-child {
-  animation: closed-first 300ms ease-out both;
+  animation: closed-first 300ms 50ms ease-out both;
   transform: translate3d(2px, 18px, 0);
 }
 
@@ -288,11 +288,11 @@
 }
 
 .toggle-nav[data-state='open'] span > span {
-  transition: top 200ms, bottom 200ms, transform 200ms 200ms;
+  transition: top 200ms, bottom 200ms, transform 400ms 200ms ease-in;
 }
 
 .toggle-nav[data-state='open'] span > span:first-child {
-  animation: opened-first 300ms ease-out both;
+  animation: opened-first 300ms 50ms ease-out both;
 }
 
 .toggle-nav[data-state='open'] span > span:nth-of-type(2) {
