@@ -16,7 +16,7 @@ export default function Header() {
   // Some styles exist in the header.module to handle safe-area
   const navLink = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
   const horizontalNavLink = `md:gap-2 md:text-base lg:text-xl/none lg:py-0.5`
-  const tabbarNavLink = `max-md:text-[10px] max-md:flex-col max-md:flex-1 max-md:justify-center max-md:pt-2`
+  const tabbarNavLink = `max-md:text-[12px] max-md:flex-col max-md:flex-1 max-md:justify-center max-md:pt-2`
 
   return (
     <>
