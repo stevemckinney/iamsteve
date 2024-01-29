@@ -304,10 +304,10 @@
   :global(.remark-code-container),
   :global([data-rehype-pretty-code-fragment]),
   > div {
-    margin-inline: -2rem;
     margin-block: theme('margin.8');
 
     @screen md {
+      margin-inline: -2rem;
       border-radius: theme('borderRadius.lg');
     }
   }
