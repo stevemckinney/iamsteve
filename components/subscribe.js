@@ -7,27 +7,28 @@ const Subscribe = ({
   unique = 'footer',
 }) => {
   return (
-    <section className={`${className}`}>
-      <div className="flex flex-col gap-2 lg:gap-4 w-full max-lg:col-end-content-end col-start-content-start col-span-6 2xl:col-span-5">
+    <section className={`${className} flex flex-col items-center gap-8`}>
+      <header className={`flex flex-col gap-2 items-center`}>
         <Image
           src="/images/illustration/spot/envelope.svg"
           width={96}
           height={96}
-          className="max-lg:w-[48px] max-lg:h-[48px] drop-shadow-placed"
           alt="Illustration of a sealed envelope"
+          className="mb-2"
         />
-        <h2 className="text-2xl lg:text-5xl font-display font-variation-bold lowercase text-fern-1100">
+        <h2 className="text-3xl sm:text-5xl font-display font-variation-bold lowercase text-fern-1100 text-center">
           {title}
         </h2>
-        <p className="m-0 text-base text-ui-body">
-          Join my email list and I’ll notify you when the latest posts go out—if
-          that’s what you prefer. This happens monthly at most. You can
-          unsubscribe anytime.
+        <p className="m-0 text-base text-ui-body text-balance text-center max-w-[55ch]">
+          Join my email list and I’ll notify you when the latest posts go out.
+          Unsubscribe at anytime.
         </p>
-      </div>
-      <div className="col-content lg:col-start-7 2xl:col-start-8 lg:col-end-content-end">
-        <NewsletterForm unique={unique} />
-      </div>
+      </header>
+      <NewsletterForm unique={unique} />
+      <p className="text-ui-body text-balance text-sm text-center max-w-[55ch]">
+        You will receive two emails to begin with. One to confirm your
+        subscription and then your welcome email—thanks in advance!
+      </p>
     </section>
   )
 }

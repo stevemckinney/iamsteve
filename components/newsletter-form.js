@@ -3,7 +3,7 @@
 import { NextResponse } from 'next/server'
 import { useRef, useState } from 'react'
 
-const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
+const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
   const inputEmail = useRef(null)
   const inputName = useRef(null)
   const inputSource = useRef(null)
@@ -48,7 +48,7 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
 
   return (
     <>
-      <div className={theme}>
+      <div className={`${className}`}>
         {subscribed && (
           <div
             className={`bg-secondary sans radius white`}
@@ -116,14 +116,14 @@ const NewsletterForm = ({ theme = 'form-warm', unique = 'footer' }) => {
               />
             </div>
           </div>
-          <div className="flex flex-col flex-col-reverse @md:flex-row gap-4 items-center justify-between">
-            <p className="m-0 p-0 text-fern-600 flex-1 text-center @md:text-left">
+          <div className="flex flex-col flex-col-reverse @sm:flex-row gap-4 items-center justify-between">
+            <p className="m-0 p-0 text-fern-600 flex-1 text-center @sm:text-left">
               Join 600+ designers
             </p>
             <button
               type="submit"
               aria-label="Subscribe to the newsletter"
-              className="button-dandelion select-none w-full @md:w-[auto] @md:grow-0 font-ui text-base/snug lowercase text-dandelion-800 text-center bg-dandelion-300 active:bg-dandelion-400 rounded-sm transition duration-200 shadow-dandelion-placed hover:shadow-dandelion-picked active:shadow-dandelion-reduced px-8 py-3 flex-auto [--ui-border-color:theme(colors.dandelion.600)] [--ui-border-color-hover:theme(colors.dandelion.700)]"
+              className="button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 font-ui text-base/snug lowercase text-dandelion-800 text-center bg-dandelion-300 active:bg-dandelion-400 rounded-sm transition duration-200 shadow-dandelion-placed hover:shadow-dandelion-picked active:shadow-dandelion-reduced px-8 py-3 flex-auto [--ui-border-color:theme(colors.dandelion.600)] [--ui-border-color-hover:theme(colors.dandelion.700)]"
               disabled={subscribed}
             >
               Sign me up
