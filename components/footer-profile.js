@@ -1,7 +1,7 @@
 import Subscribe from '@/components/subscribe'
 import Icon from '@/components/icon'
 import Link from '@/components/link'
-// <Icon icon="logo" className="text-fern-1100 mb-2" size={32} />
+
 export default function FooterProfile() {
   return (
     <aside className="grid grid-flow-dense grid-cols-2 sm:grid-cols-[repeat(16,_minmax(min-content,_1fr))] grid-rows-[repeat(auto-fill,_minmax(min-content,1fr))] gap-2 col-start-container-start col-end-container-end">

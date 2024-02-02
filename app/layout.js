@@ -11,6 +11,10 @@ import FooterProfile from '@/components/footer-profile'
 
 export const metadata = {
   metadataBase: new URL('https://iamsteve.me'),
+  'apple-mobile-web-app-status-bar-style': 'black-translucent',
+  'apple-mobile-web-app-title': 'iamsteve',
+  'apple-mobile-web-app-capable': 'yes',
+  short_title: 'iamsteve',
   title: {
     default: 'iamsteve • design & code blog',
     template: '%s • iamsteve',
@@ -44,8 +48,7 @@ const jsonLD = {
 }
 
 export const viewport = {
-  themeColor: '#f9f3f1',
-  'apple-mobile-web-app-status-bar-style': 'black-translucent',
+  themeColor: 'rgb(241 232 228)',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
@@ -81,7 +84,7 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <FooterProfile />
-          <footer className="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-40 md:py-18">
+          <footer className="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-18 md:py-18">
             <p className="flex flex-1 max-md:flex-col max-md:items-center gap-1">
               <Icon icon="bee" /> Designed in Manchester using Figma & Next.js
             </p>
@@ -116,6 +119,17 @@ export default function RootLayout({ children }) {
               </li>
             </ul>
           </footer>
+          <div className="col-content pb-24 flex flex-row items-center gap-8">
+            <span
+              className="flex-1 bg-[url(/images/dash.svg)] h-[2px]"
+              aria-hidden="true"
+            />
+            <Icon icon="logo" className="text-fern-1100" size={32} />
+            <span
+              className="flex-1 bg-[url(/images/dash.svg)] h-[2px]"
+              aria-hidden="true"
+            />
+          </div>
         </ThemeProvider>
       </body>
     </html>
