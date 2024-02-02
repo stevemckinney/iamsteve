@@ -41,7 +41,7 @@ const LargeImage = ({ ...props }) => {
         alt={title}
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
-        className="@md:hidden"
+        className="@lg:hidden"
         quality={100}
         unoptimized
       />
@@ -53,7 +53,7 @@ const LargeImage = ({ ...props }) => {
         placeholder="blur"
         alt={title}
         aria-hidden={true}
-        className="hidden @md:block"
+        className="hidden @lg:block"
         quality={100}
         unoptimized
       />
@@ -147,10 +147,10 @@ const Container = ({ frontmatter, image, className }) => {
         </>
       )}
       <div
-        className={`flex flex-col flex-auto relative [mask:linear-gradient(to_right,#fff_75%,#fff_80%,transparent_97.5%)] pb-8 @md:pb-[2.625rem] pt-px -mt-px`}
+        className={`flex flex-col flex-auto relative pb-8 @lg:pb-[2.625rem] pt-px -mt-px`}
       >
         <div
-          className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pb-4 @md:pb-5 px-8 @md:px-12 ${
+          className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pb-4 @lg:pb-5 px-8 @lg:px-12 [mask:linear-gradient(to_right,#fff_75%,#fff_80%,transparent_97.5%)] ${
             image ? 'pt-px -mt-px' : 'pt-8'
           }`}
         >
@@ -164,21 +164,21 @@ const Container = ({ frontmatter, image, className }) => {
             <Date dateString={date} />
           </Badge>
         </div>
-        <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @md:pt-5 @md:gap-3 @md:px-12">
+        <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @lg:pt-5 @lg:gap-3 @lg:px-12">
           <h2
-            className="p-0 m-0 text-3xl leading-none lowercase font-display font-variation-bold hyphens-auto @md:text-5xl"
+            className="p-0 m-0 text-3xl leading-none lowercase font-display font-variation-bold hyphens-auto @lg:text-5xl"
             id={`title-${id}`}
           >
             <Link
               href={slug}
-              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @md:before:rounded-lg before:z-[1]"
+              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @lg:before:rounded-lg before:z-[1]"
             >
               {title}
             </Link>
           </h2>
           {summary && (
             <div
-              className="flex-auto text-lg text-ui-body line-clamp-4 md:line-clamp-3"
+              className="flex-auto text-lg text-ui-body line-clamp-4 @lg:line-clamp-3"
               dangerouslySetInnerHTML={{
                 __html: autoParagraph(summary, 'font-body'),
               }}

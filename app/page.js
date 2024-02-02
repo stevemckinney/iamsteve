@@ -69,7 +69,7 @@ export default async function Home() {
             link="/blog"
             text="View the archive"
             ariaID="latest"
-            className="sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-neutral-01-100 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
+            className="sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-neutral-01-150 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
           >
             What’s new
           </Title>
@@ -92,7 +92,7 @@ export default async function Home() {
             link="/category/design"
             text="Explore design"
             ariaID="popular-design"
-            className="sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-neutral-01-100 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
+            className="sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-neutral-01-150 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
           >
             Popular <span className="text-rio-400">design</span>
           </Title>
@@ -115,7 +115,7 @@ export default async function Home() {
             link="/category/code"
             text="Explore code"
             ariaID="popular-code"
-            className="sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-neutral-01-100 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
+            className="sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-neutral-01-150 sm:-mt-[1.125rem] md:-mt-[1.375rem]"
           >
             Popular <span className="text-dandelion-400">code</span>
           </Title>
