@@ -7,8 +7,8 @@ metadesc: 'How I moved 140 posts from a database CMS to a static site in Next.js
 theme: '#e9f5f5'
 tags: ['Website']
 categories: ['Website']
-large: /images/illustration/spot-mono/pencil.svg
-medium: /images/illustration/spot-mono/pencil.svg
+large:
+medium:
 ogImage: '/assets/og/cover.jpg'
 status: open
 codepen: false
@@ -20,7 +20,7 @@ fileroot: 'about-version-7'
 With this version there was little to no visual change. I say was as, in writing this way beyond the launch of this. The purpose was to move from ExpressionEngine to Next.js. It was an important change as I felt at the time at a dead end with ExpressionEngine.
 
 ## Why rebuild the website?
-I had reached a point where things were breaking and I couldn’t replace those things in ExpressionEngine. 
+I had reached a point where things were breaking and I couldn’t replace those things in ExpressionEngine.
 
 Simple things like RSS and getting structured data to output were no longer working.
 
@@ -51,7 +51,7 @@ It turned out to be a wise decision as Gatsby has lost all of that momentum.
 
 However, I see the possibility of moving to Astro in the future as I will move my portfolio due to what I mentioned earlier about Gatsby.
 
-But importantly my content is much more portable and there’s a great community around Next.js and React in general. 
+But importantly my content is much more portable and there’s a great community around Next.js and React in general.
 
 ## Prepping a URL structure change
 One of the things I felt ~~could~~ would be a problem was the current URL structure surrounding blog posts. And I didn’t want to have that as a problem on top of moving to Next.js and a new hosting platform.
@@ -100,4 +100,4 @@ I had to compromise on the search, I wasn’t able to get it to work as an overl
 
 It offers more of a live search experience which is a win. But not many use search and it still works so I accepted the change.
 
-But that’s my experience of moving from a database CMS to React framework. 
+But that’s my experience of moving from a database CMS to React framework.
