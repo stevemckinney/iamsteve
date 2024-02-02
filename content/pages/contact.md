@@ -3,7 +3,7 @@ title: Contact
 description: I aim to respond to every email. I especially welcome feedback, ideas and things you’d like critique on. Just not link building.
 ---
 
-<Content className="col-start-content-start max-lg:col-end-content-end lg:col-span-5 flex flex-col">
+<Content className="col-start-content-start max-lg:col-end-content-end lg:col-span-5 flex flex-col max-lg:pb-12">
 
   ## Critique
   It’s always helpful, it will help me to improve. And it helps me to focus on the right topics. If you have any feedback or suggestions, I’ll be grateful for you taking the time.

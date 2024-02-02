@@ -30,20 +30,20 @@ const components = {
   Content: (props) => <div {...props} />,
   h2: (props) => (
     <h3
-      className="font-display font-variation-bold text-3xl leading-3xl lowercase mt-4 mb-1"
+      className="font-display font-variation-bold text-2xl lg:text-3xl leading-3xl lowercase mt-4 mb-1"
       {...props}
     />
   ),
   h3: (props) => (
     <h3
-      className="font-display font-variation-bold text-2xl leading-2xl lowercase mt-4 mb-1"
+      className="font-display font-variation-bold text-xl lg:text-2xl leading-2xl lowercase mt-4 mb-1"
       {...props}
     />
   ),
-  p: (props) => <p className="text-ui-body text-lg mb-2" {...props} />,
+  p: (props) => <p className="text-ui-body lg:text-lg mb-2" {...props} />,
   ul: (props) => (
     <ul
-      className="text-ui-body text-lg list-outside list-disc mb-2"
+      className="text-ui-body lg:text-lg list-outside list-disc mb-2"
       {...props}
     />
   ),
