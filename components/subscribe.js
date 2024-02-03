@@ -19,7 +19,7 @@ const Subscribe = ({
         <h2 className="text-3xl sm:text-5xl font-display font-variation-bold lowercase text-fern-1100 text-center">
           {title}
         </h2>
-        <p className="m-0 text-base text-ui-body text-balance text-center max-w-[55ch]">
+        <p className="m-0 text-base text-ui-body text-balance text-center max-w-[40ch]">
           Join the RSS alternative and I’ll notify you when the latest posts go
           out. Unsubscribe at anytime.
         </p>

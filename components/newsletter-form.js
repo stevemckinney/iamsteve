@@ -72,7 +72,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
           </div>
         )}
         <form className="@container flex flex-col gap-10" onSubmit={subscribe}>
-          <div className="@container flex flex-col @xl:flex-row gap-4">
+          <div className="@container flex flex-col @xl:flex-row gap-6">
             <div className="flex flex-col @xl:w-2/5">
               <label
                 htmlFor={`input-name-${unique}`}
