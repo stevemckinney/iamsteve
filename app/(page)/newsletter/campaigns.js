@@ -14,7 +14,7 @@ const Campaigns = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        next: { revalidate: 10 },
+        next: { revalidate: 2592000 },
       })
         .then((res) => res.json())
         .then((campaigns) => {
@@ -26,7 +26,7 @@ const Campaigns = () => {
   }, [])
 
   if (isLoading) return <p>Loading...</p>
-  if (!campaigns) return <p>No profile data</p>
+  if (!campaigns) return <p>There are no previous issues</p>
 
   // https://eocampaign1.com/web-version
   // ?p=bdee1dd4-6b74-11ee-9541-e16c9f4b3cbc
