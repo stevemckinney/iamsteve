@@ -334,3 +334,7 @@
 .nav-viewport[data-state='closed'] {
   animation: hide 300ms ease-in;
 }
+
+.list-categories li:not(:first-child):not(:nth-of-type(2)) {
+  border-top: 1px solid theme('colors.neutral-01.250');
+}

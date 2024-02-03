@@ -9,8 +9,7 @@ import GithubSlugger from 'github-slugger'
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import { sortPosts } from '@/lib/utils/content'
-import PageHeader from '@/components/page-header'
-import PageTitle from '@/components/page-title'
+import { Header, Title, Description } from '@/components/page'
 import Image from '@/components/image'
 import Icon from '@/components/icon'
 import Category from '@/components/category'
@@ -107,25 +106,32 @@ export default async function BlogCategory({ params, searchParams }) {
         alt=" "
         aria-hidden="true"
       />
-      <PageHeader>
-        <PageTitle>{data.title}</PageTitle>
-        {/* <div>
+      <Header>
+        <Title>{data.title}</Title>
+        <Description>{data.description}</Description>
+        <ul className="grid grid-cols-2 gap-x-4 list-categories">
           {categories.map((category) => {
-            if (category.parent === false) return
+            if (category.parent === false || category.exclude === true) return
 
             if (
               (!parent && data.title.toLowerCase() === category.parent) ||
               (parent && category.parent === parent)
             ) {
               return (
-                <Category key={category.title} size={24}>
-                  {category.title}
-                </Category>
+                <li key={category.title}>
+                  <Category
+                    size={24}
+                    badge={false}
+                    className="py-4 text-base md:text-lg text-fern-1100 transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+                  >
+                    {category.title}
+                  </Category>
+                </li>
               )
             }
           })}
-        </div> */}
-      </PageHeader>
+        </ul>
+      </Header>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
         {paginatedPosts.length > 0 ? (
           paginatedPosts.map((post) => (

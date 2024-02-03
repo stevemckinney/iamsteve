@@ -33,12 +33,13 @@ export default function Badge({
   size = 16,
   iconStart,
   href,
+  className = 'badge',
 }) {
   if (href) {
     return (
       <Link
         href={href}
-        className={`flex flex-[0_0_auto] gap-3 font-variation-medium group transition-all duration-200 ease-linear text-fern-1100 ${hoverVariants[theme]}`}
+        className={`flex flex-[0_0_auto] gap-3 font-variation-medium group transition-all duration-200 ease-linear text-fern-1100 ${hoverVariants[theme]} ${className}`}
       >
         <Badge.Icon theme={theme} icon={iconStart} size={size} />
         <Badge.Text size={size}>{children}</Badge.Text>
@@ -47,7 +48,7 @@ export default function Badge({
   } else {
     return (
       <p
-        className={`flex flex-[0_0_auto] gap-2 font-variation-medium text-fern-1100`}
+        className={`flex flex-[0_0_auto] gap-2 font-variation-medium text-fern-1100 ${className}`}
       >
         <Badge.Icon size={size} theme={theme} icon={iconStart} />
         <Badge.Text size={size}>{children}</Badge.Text>
