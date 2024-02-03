@@ -166,7 +166,7 @@ const Container = ({ frontmatter, image, className }) => {
         </div>
         <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @lg/card:pt-5 @lg/card:gap-3 @lg/card:px-12">
           <h2
-            className="p-0 m-0 leading-none lowercase font-display font-variation-bold hyphens-auto text-3xl @lg/card:text-5xl"
+            className="p-0 m-0 leading-none lowercase text-balance font-display font-variation-bold hyphens-auto text-3xl @lg/card:text-5xl"
             id={`title-${id}`}
           >
             <Link
