@@ -63,7 +63,7 @@ export default async function BlogIndex({ params }) {
         alt=" "
         aria-hidden="true"
       />
-      <h1 className="col-content text-7xl font-variation-extrabold font-display text-fern-1100 lowercase">
+      <h1 className="col-content text-3xl xs:text-5xl lg:text-7xl font-variation-extrabold font-display text-fern-1100 lowercase">
         Blog
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
