@@ -85,7 +85,7 @@ export default function RootLayout({ children }) {
           {children}
           <FooterProfile />
           <footer className="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-18 md:py-18">
-            <p className="flex flex-1 max-md:flex-col max-md:items-center gap-1">
+            <p className="flex flex-1 max-md:flex-col max-md:items-center gap-1 text-balance text-center">
               <Icon icon="bee" /> Designed in Manchester using Figma & Next.js
             </p>
             <ul className="flex gap-8">
