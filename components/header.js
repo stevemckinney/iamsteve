@@ -46,11 +46,12 @@ export default function Header() {
           </Link>
           <nav className={`${nav} ${tabbarNav}`}>
             {navigation.map((link) => {
-              if (link.href === '/contact') return
               return (
                 <Link
                   href={link.href}
                   className={`${navLink} ${
+                    link.title === 'Home' ? 'md:hidden' : ''
+                  } ${link.title === 'Contact' ? 'max-md:hidden' : ''} ${
                     styles.vertical
                   } ${tabbarNavLink} ${horizontalNavLink} ${styles.start} ${
                     pathname === link.href ? 'max-md:text-dandelion-500' : ''

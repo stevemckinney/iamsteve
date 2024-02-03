@@ -72,8 +72,8 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
           </div>
         )}
         <form className="@container flex flex-col gap-10" onSubmit={subscribe}>
-          <div className="@container flex flex-col @md:flex-row gap-4">
-            <div className="flex flex-col @md:w-2/5">
+          <div className="@container flex flex-col @xl:flex-row gap-4">
+            <div className="flex flex-col @xl:w-2/5">
               <label
                 htmlFor={`input-name-${unique}`}
                 className="font-ui text-base lowercase text-fern-1100 leading-none mb-1"
@@ -93,7 +93,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
                 disabled={subscribed}
               />
             </div>
-            <div className="flex flex-col @md:w-3/5">
+            <div className="flex flex-col @xl:w-3/5">
               <label
                 htmlFor={`input-email-${unique}`}
                 className="font-ui text-base lowercase text-fern-1100 leading-none mb-1"

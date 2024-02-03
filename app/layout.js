@@ -119,7 +119,7 @@ export default function RootLayout({ children }) {
               </li>
             </ul>
           </footer>
-          <div className="col-content pb-24 flex flex-row items-center gap-8">
+          <div className="col-container relative -top-4 pb-24 flex flex-row items-center gap-8">
             <span
               className="flex-1 bg-[url(/images/dash.svg)] h-[2px]"
               aria-hidden="true"
