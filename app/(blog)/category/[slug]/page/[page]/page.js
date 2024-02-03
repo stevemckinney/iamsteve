@@ -94,7 +94,7 @@ export default async function BlogCategory({ params, searchParams }) {
         src="/images/illustration/pencil-mono.svg"
         width={962}
         height={46}
-        className={`max-lg:hidden col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed`}
+        className={`max-lg:hidden col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-lg:hidden`}
         alt=" "
         aria-hidden="true"
       />
