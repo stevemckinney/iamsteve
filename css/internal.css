@@ -269,8 +269,23 @@
   }
 }
 
+@keyframes opened-middle {
+  to {
+    transform: translate3d(4px, 11px, 0) scale3d(0, 0, 0);
+  }
+}
+
+@keyframes closed-middle {
+  to {
+    transform: translate3d(4px, 11px, 0) scale3d(1, 1, 1);
+  }
+}
+
+.toggle-nav span > span:nth-of-type(2) {
+  animation: closed-middle 300ms ease-out both;
+}
+
 .toggle-nav span > span {
-  transition: top 200ms 200ms, bottom 200ms 200ms, transform 400ms ease-out;
   transform-origin: center center;
 }
 
@@ -280,6 +295,7 @@
 }
 
 .toggle-nav span > span:nth-of-type(2) {
+  animation: closed-middle 200ms ease-out both;
   transform: translate3d(4px, 11px, 0);
 }
 
@@ -296,6 +312,7 @@
 }
 
 .toggle-nav[data-state='open'] span > span:nth-of-type(2) {
+  animation: opened-middle 200ms 120ms ease-out both;
   transform: translate3d(4px, 11px, 0) scale3d(0, 0, 0);
 }
 

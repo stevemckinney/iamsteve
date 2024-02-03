@@ -8,9 +8,9 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#f9f3f1",
-  "background_color": "#f9f3f1",
-  "display": "minimal-ui",
+  "theme_color": "rgb(241 232 228)",
+  "background_color": "rgb(241 232 228)",
+  "display": "standalone",
   "id": "/?source=pwa",
   "start_url": "/?source=pwa"
 }

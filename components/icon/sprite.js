@@ -281,12 +281,14 @@ const Sprite = (props) => (
         </g>
       </symbol>
       <symbol id="home-24" viewBox="0 0 24 24">
-        <g className="home">
-          <path d="m2 12 10-9 10 9m-7 1H9v8h6v-8Z" className="path" />
+        <g class="home fill-none">
+          <path d="m12 3-8 7v11h5v-8h6v8h5V10l-8-7Z" class="fill-white" />
+          <path d="m2 12 10-9 10 9" class="stroke-current stroke-2 sl-s" />
           <path
-            d="M4 11v10h5.333v-7.93h5.334V21H20V11m-10 9h4"
-            className="path"
+            d="M4 11v10h5.333v-7.93h5.334V21H20V11"
+            class="stroke-current stroke-2 sl-r"
           />
+          <path d="M10 20h4" class="stroke-current stroke-2 sl-s" />
         </g>
       </symbol>
       <symbol id="airplane-24" viewBox="0 0 24 24">

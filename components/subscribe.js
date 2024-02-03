@@ -20,8 +20,8 @@ const Subscribe = ({
           {title}
         </h2>
         <p className="m-0 text-base text-ui-body text-balance text-center max-w-[55ch]">
-          Join my email list and I’ll notify you when the latest posts go out.
-          Unsubscribe at anytime.
+          Join the RSS alternative and I’ll notify you when the latest posts go
+          out. Unsubscribe at anytime.
         </p>
       </header>
       <NewsletterForm unique={unique} />
