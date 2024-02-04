@@ -76,7 +76,7 @@ export default function RootLayout({ children }) {
        * the border alignment within the header
        */}
       <body
-        className={`overflow-x-hidden antialiased min-w-screen min-h-screen bg-neutral-01-150 text-fern-1100 grid layout gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto`}
+        className={`max-lg:overflow-x-hidden antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100 grid layout gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto`}
       >
         <Sprite />
         <ModeToggle />
@@ -85,7 +85,7 @@ export default function RootLayout({ children }) {
           {children}
           <FooterProfile />
           <footer className="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-18 md:py-18">
-            <p className="flex flex-1 max-md:flex-col max-md:items-center gap-1">
+            <p className="flex flex-1 max-md:flex-col max-md:items-center gap-1 text-balance text-center">
               <Icon icon="bee" /> Designed in Manchester using Figma & Next.js
             </p>
             <ul className="flex gap-8">
@@ -119,7 +119,7 @@ export default function RootLayout({ children }) {
               </li>
             </ul>
           </footer>
-          <div className="col-content pb-24 flex flex-row items-center gap-8">
+          <div className="col-container relative -top-4 pb-24 flex flex-row items-center gap-8">
             <span
               className="flex-1 bg-[url(/images/dash.svg)] h-[2px]"
               aria-hidden="true"

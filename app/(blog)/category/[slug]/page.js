@@ -9,8 +9,7 @@ import GithubSlugger from 'github-slugger'
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import { sortPosts } from '@/lib/utils/content'
-import PageHeader from '@/components/page-header'
-import PageTitle from '@/components/page-title'
+import { Header, Title, Column, Description } from '@/components/page'
 import Image from '@/components/image'
 import Icon from '@/components/icon'
 import Category from '@/components/category'
@@ -103,29 +102,38 @@ export default async function BlogCategory({ params, searchParams }) {
         src="/images/illustration/pencil-mono.svg"
         width={962}
         height={46}
-        className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-lg:hidden`}
+        className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden`}
         alt=" "
         aria-hidden="true"
       />
-      <PageHeader>
-        <PageTitle>{data.title}</PageTitle>
-        {/* <div>
+      <Header>
+        <Column className="md:col-span-1">
+          <Title>{data.title}</Title>
+          <Description>{data.description}</Description>
+        </Column>
+        <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end list-categories -mb-3">
           {categories.map((category) => {
-            if (category.parent === false) return
+            if (category.parent === false || category.exclude === true) return
 
             if (
               (!parent && data.title.toLowerCase() === category.parent) ||
               (parent && category.parent === parent)
             ) {
               return (
-                <Category key={category.title} size={24}>
-                  {category.title}
-                </Category>
+                <li className="self-end" key={category.title}>
+                  <Category
+                    size={24}
+                    badge={false}
+                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+                  >
+                    {category.title}
+                  </Category>
+                </li>
               )
             }
           })}
-        </div> */}
-      </PageHeader>
+        </ul>
+      </Header>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
         {paginatedPosts.length > 0 ? (
           paginatedPosts.map((post) => (

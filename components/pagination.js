@@ -18,11 +18,11 @@ const Pagination = ({ total, current, category }) => {
   // console.log(pathname, categoryPath)
 
   return (
-    <nav className="flex justify-between items-center -my-2">
+    <nav className="flex justify-between items-center -my-2 relative">
       {!prevPage && (
         <button className={`${linkDisabled}`} disabled={!prevPage}>
           <Icon icon="angle-left" className="stroke-current" />
-          Previous
+          Newer
         </button>
       )}
       {prevPage && (
@@ -36,11 +36,11 @@ const Pagination = ({ total, current, category }) => {
           rel="prev"
         >
           <Icon icon="angle-left" className="stroke-current" />
-          Previous
+          Newer
         </Link>
       )}
       <span
-        className={`text-xl font-ui lowercase text-ui-body flex items-center gap-1 leading-[1.1428571429] py-2`}
+        className={`absolute left-1/2 transform -translate-x-1/2 text-xl font-ui lowercase text-ui-body flex items-center gap-1 leading-[1.1428571429] py-2`}
         style={{
           fontVariantNumeric: 'lining-nums tabular-nums ordinal',
           fontFeatureSettings: "'dlig' on, 'case' on",
@@ -50,7 +50,7 @@ const Pagination = ({ total, current, category }) => {
       </span>
       {!nextPage && (
         <button className={`${linkDisabled}`} disabled={!nextPage}>
-          Next
+          Older
         </button>
       )}
       {nextPage && (
@@ -59,7 +59,7 @@ const Pagination = ({ total, current, category }) => {
           className={`${link} ${linkState}`}
           rel="next"
         >
-          Next
+          Older
           <Icon icon="angle-right" className="stroke-current" />
         </Link>
       )}

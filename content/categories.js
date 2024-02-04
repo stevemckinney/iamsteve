@@ -3,7 +3,8 @@ const categories = [
     title: 'Design',
     slug: '/category/design',
     slugAsParams: 'design',
-    description: 'Design posts',
+    description:
+      'From design system process to speedy quick tips. Explore craft with colour, typography and visual design.',
     parent: false,
     theme: 'rio',
     icon: 'pen',
@@ -14,7 +15,7 @@ const categories = [
     slug: '/category/quick-tip',
     slugAsParams: 'quick-tip',
     description:
-      'Short posts covering techniques or features explained briefly',
+      'Short posts covering a specific technique or feature to help you figure something out and get back to what you’re doing.',
     parent: 'design',
     theme: 'dandelion',
     icon: 'bolt',
@@ -24,17 +25,19 @@ const categories = [
     title: 'Colour',
     slug: '/category/colour',
     slugAsParams: 'colour',
-    description: 'Colour posts',
+    description:
+      'Colour is a fundamental skill within interface design, it’s a balance through brand, emotion, accessibility and usabilility.',
     parent: 'design',
     theme: 'magenta',
     icon: 'palette',
     exclude: false,
   },
   {
-    title: 'Design systems',
-    slug: '/category/design-systems',
-    slugAsParams: 'design-systems',
-    description: 'Design systems posts',
+    title: 'Process',
+    slug: '/category/process',
+    slugAsParams: 'process',
+    description:
+      'The broader topic of design process, from component composition to design and code handover.',
     parent: 'design',
     theme: 'grass',
     icon: 'component',
@@ -54,7 +57,8 @@ const categories = [
     title: 'Visual design',
     slug: '/category/visual-design',
     slugAsParams: 'visual-design',
-    description: 'Visual design posts',
+    description:
+      'Looking at how we design the interfaces we use and a look at the how and why behind visual techniques.',
     parent: 'design',
     theme: 'lavender',
     icon: 'vector-square',
@@ -64,7 +68,8 @@ const categories = [
     title: 'Typography',
     slug: '/category/typography',
     slugAsParams: 'typography',
-    description: 'Typography posts',
+    description:
+      'The latest type trends, alternatives to popular typefaces and typography techniques.',
     parent: 'design',
     theme: 'neutral-02',
     icon: 'type',

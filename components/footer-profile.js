@@ -5,9 +5,9 @@ import Link from '@/components/link'
 export default function FooterProfile() {
   return (
     <aside className="grid grid-flow-dense grid-cols-2 sm:grid-cols-[repeat(16,_minmax(min-content,_1fr))] grid-rows-[repeat(auto-fill,_minmax(min-content,1fr))] gap-2 col-start-container-start col-end-container-end">
-      <Subscribe className="col-span-full lg:col-span-8 xl:col-span-6 row-span-6 rounded-lg lg:rounded-xl bg-white shadow-placed py-12 px-8 sm:px-12 sm:py-12 md:px-[10vmax] xl:px-[4.5rem]" />
+      <Subscribe className="col-span-full lg:col-span-8 xl:col-span-7 row-span-6 rounded-lg lg:rounded-xl bg-white shadow-placed py-12 px-8 sm:px-12 sm:py-12 md:px-[5vmax] xl:px-[4.5rem]" />
 
-      <div className="col-span-full sm:col-span-8 xl:col-span-10 row-span-4 rounded-lg lg:rounded-xl bg-white shadow-placed py-12 px-8 sm:px-12 sm:py-12 xl:px-[4.5rem] flex flex-col justify-end">
+      <div className="col-span-full sm:col-span-8 xl:col-span-9 row-span-4 rounded-lg lg:rounded-xl bg-white shadow-placed py-12 px-8 sm:px-12 sm:py-12 xl:px-[4.5rem] flex flex-col justify-end">
         <h3 className="font-display font-variation-bold text-lg sm:text-3xl lowercase flex gap-2 mb-3">
           About this site
         </h3>
@@ -115,7 +115,7 @@ export default function FooterProfile() {
         </ul>
       </div>
 
-      <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-5 row-span-1 rounded-lg lg:rounded-xl bg-white shadow-placed py-8 sm:p-12 flex items-center justify-center">
+      <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-4 row-span-1 rounded-lg lg:rounded-xl bg-white shadow-placed py-8 sm:p-12 flex items-center justify-center">
         <Link
           href="https://v7.iamsteve.me"
           className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
@@ -125,7 +125,7 @@ export default function FooterProfile() {
         </Link>
       </div>
 
-      <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-5 row-span-1 rounded-lg lg:rounded-xl bg-white shadow-placed py-12 px-8 sm:px-12 sm:py-12 xl:px-[4.5rem] flex flex-col justify-end">
+      <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-4 row-span-1 rounded-lg lg:rounded-xl bg-white shadow-placed py-12 px-8 sm:px-12 sm:py-12 xl:px-[4.5rem] flex flex-col justify-end">
         <h3 className="font-display font-variation-bold text-lg sm:text-3xl lowercase mb-4">
           Elsewhere
         </h3>

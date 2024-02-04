@@ -62,7 +62,7 @@ const Navigation = () => {
                     <Icon
                       icon={link.icon}
                       size={link.size}
-                      className={`${
+                      className={`relative -top-px ${
                         pathname === link.href
                           ? 'text-dandelion-500'
                           : 'text-neutral-03-500'
@@ -76,16 +76,16 @@ const Navigation = () => {
                 href="/newsletter"
                 className={`${
                   pathname === '/newsletter'
-                    ? 'bg-dandelion-500/10 text-dandelion-600'
-                    : 'bg-moss-200/10 text-moss-600'
+                    ? 'text-dandelion-500'
+                    : 'text-fern-1100'
                 }`}
               >
                 <Icon
                   icon="airplane"
-                  className={`${
+                  className={`relative -top-px ${
                     pathname === '/newsletter'
-                      ? 'text-dandelion-600'
-                      : 'text-moss-600'
+                      ? 'text-dandelion-500'
+                      : 'text-neutral-03-500'
                   }`}
                 />
                 Subscribe

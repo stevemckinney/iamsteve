@@ -6,7 +6,7 @@
       position: absolute;
       top: 100%;
       height: 2px;
-      background: theme('colors.fern.1100');
+      background: transparent;
       opacity: 0;
 
       @supports not (transition: 1s linear(0, 0.5, 1)) {
@@ -27,6 +27,7 @@
     &:hover:after {
       opacity: 1;
       top: 100%;
+      background: theme('colors.fern.1100');
     }
   }
 }

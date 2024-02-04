@@ -8,11 +8,14 @@ import { allPosts } from 'contentlayer/generated'
 
 import { sortPosts } from '@/lib/utils/content'
 
-import PageHeader from '@/components/page-header'
-import PageTitle from '@/components/page-title'
+import { Header, Title, Column, Description } from '@/components/page'
 import Card from '@/components/card'
+import Icon from '@/components/icon'
+import Category from '@/components/category'
 import Pagination from '@/components/pagination'
 import Image from '@/components/image'
+
+import categories from '@/content/categories'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400
@@ -48,13 +51,33 @@ export default async function BlogIndex({ params }) {
         src="/images/illustration/pencil-mono.svg"
         width={962}
         height={46}
-        className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-lg:hidden`}
+        className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden`}
         alt=" "
         aria-hidden="true"
       />
-      <PageHeader>
-        <PageTitle>Blog</PageTitle>
-      </PageHeader>
+      <Header>
+        <Column className="md:col-span-1">
+          <Title>Blog</Title>
+          <Description>Description</Description>
+        </Column>
+        <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end list-categories -mb-3">
+          {categories.map((category) => {
+            if (category.title === 'Design' || category.title === 'Code') {
+              return (
+                <li className="self-end" key={category.title}>
+                  <Category
+                    size={24}
+                    badge={false}
+                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+                  >
+                    {category.title}
+                  </Category>
+                </li>
+              )
+            }
+          })}
+        </ul>
+      </Header>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
         {paginatedPosts.map((post) => (
           <Card
