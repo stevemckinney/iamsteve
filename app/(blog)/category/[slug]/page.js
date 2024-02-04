@@ -9,7 +9,7 @@ import GithubSlugger from 'github-slugger'
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import { sortPosts } from '@/lib/utils/content'
-import { Header, Title, Description } from '@/components/page'
+import { Header, Title, Column, Description } from '@/components/page'
 import Image from '@/components/image'
 import Icon from '@/components/icon'
 import Category from '@/components/category'
@@ -107,9 +107,11 @@ export default async function BlogCategory({ params, searchParams }) {
         aria-hidden="true"
       />
       <Header>
-        <Title>{data.title}</Title>
-        <Description>{data.description}</Description>
-        <ul className="grid grid-cols-2 gap-x-4 list-categories">
+        <Column className="col-start-1 col-end-2 pt-4">
+          <Title>{data.title}</Title>
+          <Description>{data.description}</Description>
+        </Column>
+        <ul className="col-start-2 col-span-1 row-span-2 grid grid-cols-2 gap-x-4 list-categories">
           {categories.map((category) => {
             if (category.parent === false || category.exclude === true) return
 

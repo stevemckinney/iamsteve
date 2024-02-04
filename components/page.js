@@ -1,18 +1,17 @@
-function Header({
-  className = 'col-start-content-start col-end-content-end grid-cols-subgrid flex flex-col gap-4',
-  children,
-}) {
-  return <div className={`${className}`}>{children}</div>
+function Header({ className, children }) {
+  return (
+    <div
+      className={`grid grid-flow-dense grid-cols-2 gap-y-4 gap-x-8 col-start-content-start col-end-content-end ${className}`}
+    >
+      {children}
+    </div>
+  )
 }
 
-function Title({
-  className = 'col-start-content-start col-end-content-end',
-  children,
-  ...props
-}) {
+function Title({ className = 't', children, ...props }) {
   return (
     <h1
-      className={`text-fern-1100 font-display text-3xl xs:text-5xl lg:text-7xl font-variation-bold lg:font-variation-extrabold lowercase ${className}`}
+      className={`text-fern-1100 font-display text-3xl xs:text-5xl lg:text-7xl font-variation-bold lg:font-variation-extrabold lowercase self-start min-w-[0] min-h-[0] ${className}`}
       {...props}
     >
       {children}
@@ -20,11 +19,16 @@ function Title({
   )
 }
 
-function Description({
-  className = 'lg:text-2xl text-ui-body max-w-[34ch]',
-  children,
-}) {
-  return <p className={className}>{children}</p>
+function Description({ className = 'd', children }) {
+  return (
+    <p className={`lg:text-2xl text-ui-body max-w-[34ch] ${className}`}>
+      {children}
+    </p>
+  )
 }
 
-export { Header, Title, Description }
+function Column({ className, children }) {
+  return <div className={`flex flex-col gap-4 ${className}`}>{children}</div>
+}
+
+export { Header, Title, Column, Description }
