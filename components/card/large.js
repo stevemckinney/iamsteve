@@ -49,7 +49,7 @@ const Large = ({ frontmatter, image, className }) => {
   const imageColor = theme ? theme.toString() : '#e8dcd9'
 
   return (
-    <article className="group relative flex flex-col self-start overflow-hidden transition duration-200 bg-white rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:bg-neutral-01-50 bg-clip-padding">
+    <article className="group/large relative flex flex-col self-start overflow-hidden transition duration-200 bg-white rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:bg-neutral-01-50 bg-clip-padding">
       {image && large && (
         <Link
           href={slug}
@@ -59,7 +59,7 @@ const Large = ({ frontmatter, image, className }) => {
           aria-labelledby={`title-${id}`}
         >
           <>
-            <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100" />
+            <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active/large:before:opacity-100" />
             <LargeImage
               image={large}
               imageColor={imageColor}
@@ -75,7 +75,7 @@ const Large = ({ frontmatter, image, className }) => {
             className="flex items-center self-stretch relative"
             style={{ backgroundColor: `${imageColor}` }}
           >
-            <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active:before:opacity-100" />
+            <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active/large:before:opacity-100" />
             {categories && categories.includes('Design') ? (
               <Placeholder
                 category="Design"
