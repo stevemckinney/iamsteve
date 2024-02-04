@@ -150,17 +150,30 @@ const Container = ({ frontmatter, image, className }) => {
         className={`flex flex-col flex-auto relative pb-8 @lg/card:pb-[2.625rem] pt-px -mt-px`}
       >
         <div
-          className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pb-4 @lg/card:pb-5 px-8 @lg/card:px-12 [mask:linear-gradient(to_right,#fff_75%,#fff_80%,transparent_97.5%)] ${
+          className={`flex flex-row gap-6 relative z-[2] overflow-x-auto pb-4 @lg/card:pb-5 px-8 @lg/card:px-12 [mask:linear-gradient(to_right,#fff_75%,#fff_80%,transparent_97.5%)] ${
             image ? 'pt-px -mt-px' : 'pt-8'
           }`}
         >
           {categories &&
-            categories.map((category) => (
-              <Category key={category} size={24} tabIndex="1">
-                {category}
-              </Category>
-            ))}
-          <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
+            categories.map((category) => {
+              if (
+                (categories.length > 1 &&
+                  category.toLowerCase() === 'design') ||
+                (categories.length > 1 && category.toLowerCase() === 'code')
+              )
+                return
+              return (
+                <Category key={category} size={24} tabIndex="1">
+                  {category}
+                </Category>
+              )
+            })}
+          <Badge
+            size={24}
+            theme={`cornflour`}
+            iconStart={`calendar`}
+            className="sr-only @lg/card:not-sr-only"
+          >
             <Date dateString={date} />
           </Badge>
         </div>
