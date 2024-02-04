@@ -5,8 +5,8 @@ lastmod: "2018-05-18T06:45:07+00:00"
 summary: "With horizontal scrolling, submenus are quite challenging to make work. Due to the CSS you have to use, a CSS only solution isn’t viable. In this post I show you how to utilise JavaScript."
 metadesc: "Adding an extra level to the horizontal scrolling menu, using the same CSS and linking it up with JavaScript you can have functional submenus that scroll horizontally."
 theme: "#eaf5f5"
-tags: ["Design"]
-categories: ["Design"]
+tags: ["Code"]
+categories: ["Code", "CSS", "Patterns"]
 images: ["/images/blog/multiplelevel-menu-featured-image@2x.png"]
 large: "/images/blog/multiplelevel-menu-featured-image@2x.png"
 medium: "/images/blog/multiplelevel-menu-featured-image-medium@2x.png"

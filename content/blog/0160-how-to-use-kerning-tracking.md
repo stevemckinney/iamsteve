@@ -6,7 +6,7 @@ summary: "Understand the differences between the two, along with how and when to
 metadesc: "When using kerning or tracking on your type it can help with legibility or correct the way type looks for a specific situation. It's important to understand the differences and when to use them."
 theme: "#fff3f0"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Typography"]
 images: ["/images/blog/kerning-tracking-featured-image@2x.png"]
 large: "/images/blog/kerning-tracking-featured-image@2x.png"
 medium: "/images/blog/kerning-tracking-featured-image-medium@2x.png"

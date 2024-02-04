@@ -6,7 +6,7 @@ summary: "It happens, sometimes you can be stuck starting a new design, here’s
 metadesc: "Sharing some of my thoughts on how I would handle being new to a skill and the struggle of getting your ideas to be what you visualise."
 theme: "#eaf5f5"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Process"]
 images: ["/images/blog/overcoming-design-roadblocks-featured-image.png"]
 large: "/images/blog/overcoming-design-roadblocks-featured-image.png"
 medium: "/images/blog/overcoming-design-roadblocks-featured-image-medium.png"

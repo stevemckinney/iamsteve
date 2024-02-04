@@ -5,8 +5,8 @@ lastmod: "2020-05-13T09:50:30+00:00"
 summary: "As it’s the festive time of year, I thought I would add to the lists of gifts that people are writing. December and Christmas in general is one of my favourite times of year."
 metadesc: "The list is suitable for everyone, but does have that ‘for the designer’ edge. There’s a mix of things with varying price points to cover every range."
 theme: "#eaf5f5"
-tags: ["Design"]
-categories: ["Design"]
+tags: ["Website"]
+categories: ["Website"]
 images: ["/images/blog/christmas-2016-featured-image.png"]
 large: "/images/blog/christmas-2016-featured-image.png"
 medium: "/images/blog/christmas-2016-featured-image-medium.png"

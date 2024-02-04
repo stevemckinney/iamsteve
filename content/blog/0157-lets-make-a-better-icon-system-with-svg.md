@@ -6,7 +6,7 @@ summary: "Icon fonts are used for their convenience, which generally can’t be 
 metadesc: "Make a better icon system with SVG. A guide right through exporting to using the icons and building a system."
 theme: "#fff5f3"
 tags: ["Code"]
-categories: ["Code"]
+categories: ["Code", "Patterns"]
 images: ["/images/blog/svg-icon-system-featured-image@2x.png"]
 large: "/images/blog/svg-icon-system-featured-image@2x.png"
 medium: "/images/blog/svg-icon-system-featured-image-medium@2x.png"

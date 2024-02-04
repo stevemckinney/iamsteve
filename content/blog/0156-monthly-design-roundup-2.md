@@ -6,7 +6,7 @@ summary: "The second in a monthly series where I roundup some of the best things
 metadesc: "I roundup some of the best things in design I found over the course of the previous month. It aims to be a source of website, illustration and branding inspiration, as well as some articles that are a good read."
 theme: "#fff8e2"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Resources"]
 images: ["/images/blog/monthly-roundup-02-featured-image@2x.png"]
 large: "/images/blog/monthly-roundup-02-featured-image@2x.png"
 medium: "/images/blog/monthly-roundup-02-featured-image-medium@2x.png"
