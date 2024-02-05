@@ -58,11 +58,19 @@ export default async function BlogIndex({ params }) {
       <Header>
         <Column className="md:col-span-1">
           <Title>Blog</Title>
-          <Description>Description</Description>
+          <Description>
+            Tips and tutorials about the design and build of web interfaces
+          </Description>
         </Column>
-        <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end list-categories -mb-3">
-          {categories.map((category) => {
-            if (category.title === 'Design' || category.title === 'Code') {
+        {categories && (
+          <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end list-categories">
+            {categories.map((category) => {
+              if (
+                category.exclude ||
+                category.title === 'Design' ||
+                category.title === 'Code'
+              )
+                return
               return (
                 <li className="self-end" key={category.title}>
                   <Category
@@ -74,9 +82,9 @@ export default async function BlogIndex({ params }) {
                   </Category>
                 </li>
               )
-            }
-          })}
-        </ul>
+            })}
+          </ul>
+        )}
       </Header>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
         {paginatedPosts.map((post) => (
