@@ -22,13 +22,24 @@ const categories = [
     exclude: false,
   },
   {
+    title: 'Typography',
+    slug: '/category/typography',
+    slugAsParams: 'typography',
+    description:
+      'The latest type trends, alternatives to popular typefaces and typography techniques',
+    parent: 'design',
+    theme: 'neutral-02',
+    icon: 'type',
+    exclude: false,
+  },
+  {
     title: 'Colour',
     slug: '/category/colour',
     slugAsParams: 'colour',
     description:
       'A fundamental skill within design, it’s a balance through brand, emotion, accessibility and usabilility',
     parent: 'design',
-    theme: 'magenta',
+    theme: 'cornflour',
     icon: 'palette',
     exclude: false,
   },
@@ -71,17 +82,6 @@ const categories = [
     parent: 'design',
     theme: 'lavender',
     icon: 'vector-square',
-    exclude: false,
-  },
-  {
-    title: 'Typography',
-    slug: '/category/typography',
-    slugAsParams: 'typography',
-    description:
-      'The latest type trends, alternatives to popular typefaces and typography techniques',
-    parent: 'design',
-    theme: 'neutral-02',
-    icon: 'type',
     exclude: false,
   },
   {
