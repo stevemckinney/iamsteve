@@ -20,6 +20,12 @@ If I think back to the first time I saw a typeface with ink traps, it was [Retin
 
 I’ve wanted an opportunity to look at this particular style of type—as I’ve worked on my portfolio and I consider a redesign for this website. Within this post I’m going to detail the things to look for and a bunch of typefaces.
 
+## contents
+- [Overview](#what-details-are-you-looking-for)
+- [Fonts](#fonts)
+- [Google Fonts](#google-fonts)
+- [What’s the purpose of an ink trap](#whats-the-purpose-of-an-ink-trap)
+
 ## What details are you looking for?
 
 <div className="article-image">
@@ -166,19 +172,54 @@ A typeface with a few unique properties of its own along with the ink traps. The
 
 ## Google Fonts
 
-I’ve always got to include a Google option where I possibly can. But as of writing, it’s hard to come by this trend on Google Fonts and there is the one option.
+The availability of ink trap typefaces on Google Fonts is pretty good. There are a fair few options that compete with premium ink trap typefaces found within this article.
 
-### [Darker Grotesque](https://fonts.google.com/specimen/Darker+Grotesque)
 
+### [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque)
 <div className="article-image">
-  <Image src="/images/blog/14-darker-grotesque@2x.png" width={738} height={492} />
+  <Image src="/images/blog/the-best-ink-trap-typefaces-for-websites-bricolage-grotesque.svg" width={738} height={492} />
 </div>
 
-This appears to be the only example I could find that you could argue features ink traps. Subtle in areas and clearer in others, particularly on lowercase letters. The abrupt curves on ascenders and descenders, make this a unique choice—similar to a few others in this post.
+I’ve seen this used quite a lot, it’s very popular lately and has the strongest ink trap personality of all the Google Font examples. It has a similarity with Whyte Inktrap in terms of the prominent ink traps. But otherwise it has quite a fun look and feel.
 
-Looking towards uppercase letters like ‘A’, ‘M’ and ’N’ you can see where they join it’s angular. There’s a lot of nice details in this typeface.
+### [Spline Sans](https://fonts.google.com/specimen/Darker+Grotesque)
+<div className="article-image">
+  <Image src="/images/blog/the-best-ink-trap-typefaces-for-websites-spline-sans.svg" width={738} height={492} />
+</div>
+This reminds me a lot of Degular, but there are some subtle differences between the two. If you look closely at the 'e' you'll see where the crossbar joins it's completely rounded—a nice detail that’s characterised in other letters too.
 
-Scraping the barrel mentions go to [Karla](https://fonts.google.com/specimen/Karla) and [DM Sans](https://fonts.google.com/specimen/DM+Sans). As I was going to include these with the caveat they aren’t before I stumbled across Darker Grotesque.
+### [Spline Sans Mono](https://fonts.google.com/specimen/Darker+Grotesque)
+<div className="article-image">
+  <Image src="/images/blog/the-best-ink-trap-typefaces-for-websites-spline-sans-mono.svg" width={738} height={492} />
+</div>
+The mono space version of Spline Sans, also a variable typeface.
+
+### [Anek](https://fonts.google.com/specimen/Anek+Latin)
+<div className="article-image">
+  <Image src="/images/blog/the-best-ink-trap-typefaces-for-websites-anek.svg" width={738} height={492} />
+</div>
+
+Anek is a variable typeface, there's a good variety of weights and styles. It feels like a fairly balanced typeface with quite a large x-height that would be good for either headings or paragraphs.
+
+### [Anybody](https://fonts.google.com/specimen/Anybody)
+<div className="article-image">
+  <Image src="/images/blog/the-best-ink-trap-typefaces-for-websites-anybody.svg" width={738} height={492} />
+</div>
+
+A subtle example again particularly in lighter weights. I like the uniqiue ascenders on the lowercase 'y'.
+
+### [DM Sans](https://fonts.google.com/specimen/DM+Sans)
+<div className="article-image">
+  <Image src="/images/blog/the-best-ink-trap-typefaces-for-websites-dm-sans.svg" width={738} height={492} />
+</div>
+
+DM Sans is another example that’s pushing it, but it has a subtle tapering at the joins. I like the flatness of the  double storey 'a'.
+
+### [Pathway Extreme](https://fonts.google.com/specimen/Darker+Grotesque)
+<div className="article-image">
+  <Image src="/images/blog/the-best-ink-trap-typefaces-for-websites-pathway-extreme.svg" width={738} height={492} />
+</div>
+There’s a uniqueness to Pathway Extreme deep angular cuts that differ from typical ink traps. The thinner crossbars add personality if you were to use it as a display choice.
 
 ## What’s the purpose of an ink trap
 
