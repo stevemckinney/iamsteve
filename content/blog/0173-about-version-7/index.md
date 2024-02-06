@@ -17,19 +17,17 @@ id: 173
 fileroot: 'about-version-7'
 ---
 
-With this version there was little to no visual change. I say was as, in writing this way beyond the launch of this. The purpose was to move from ExpressionEngine to Next.js. It was an important change as I felt at the time at a dead end with ExpressionEngine.
+With this version there was little to no visual change. I say was, as this was written way beyond going live. The purpose was to move from ExpressionEngine to Next.js. It was an important change as I felt at the time at a dead end with ExpressionEngine.
 
 ## Why rebuild the website?
 I had reached a point where things were breaking and I couldn’t replace those things in ExpressionEngine.
 
 Simple things like RSS and getting structured data to output were no longer working.
 
-### Moving away from managing your own VPS and awkward deployments
-This was another strong driver, I didn’t want the server burden being on me anymore. I used DigitalOcean and ServerPilot and this gave peace of mind to a degree.
+### I wanted a better deploy system
+This was another strong driver, being able to deploy and have rollbacks, preview branches, etc. for convenience. 
 
-Not to mention, to get a flawless deployment system, without paying on top of what you’re paying for was to be out of reach for me.
-
-That’s where moving to a host like Netlify was ideal. I’d experienced the ease of deployments with my portfolio—plus there’s a bunch of other benefits.
+That’s where moving to a host like Netlify was ideal. I had given this a try with my portfolio. The ease of it all was great. 
 
 I’m wary of cost here, as it can easily escalate, but I’ve heard Cloudflare is a good alternative and this is something I may explore.
 
