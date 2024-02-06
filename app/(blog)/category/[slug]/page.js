@@ -5,13 +5,12 @@
  */
 
 import { cache } from 'react'
-import GithubSlugger from 'github-slugger'
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import { sortPosts } from '@/lib/utils/content'
 import { Header, Title, Column, Description } from '@/components/page'
-import Image from '@/components/image'
 import Icon from '@/components/icon'
+import Image from '@/components/image'
 import Category from '@/components/category'
 import Card from '@/components/card'
 import Pagination from '@/components/pagination'
@@ -54,7 +53,6 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogCategory({ params, searchParams }) {
-  const slugger = new GithubSlugger()
   const allData = await getData()
   const data = categories.find(
     (category) => category.slugAsParams === params.slug
@@ -111,7 +109,7 @@ export default async function BlogCategory({ params, searchParams }) {
           <Title>{data.title}</Title>
           <Description>{data.description}</Description>
         </Column>
-        <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end list-categories -mb-3">
+        <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end list-categories">
           {categories.map((category) => {
             if (category.parent === false || category.exclude === true) return
 

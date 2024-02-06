@@ -8,16 +8,16 @@ theme: "#e1f7ee"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]
 ogImage: "/assets/og/cover.jpg"
-status: "draft"
+status: "closed"
 id: 40
 fileroot: "patience_a_wordpress_tumblog_theme"
 ---
 
-I've recently released a theme on [Superhug](http://superhug.com) which I've named "Patience". It's my first Wordpress theme that I've released in public and hope to release many more. 
+I've recently released a theme on [Superhug](http://superhug.com) which I've named "Patience". It's my first Wordpress theme that I've released in public and hope to release many more.
 
-It's a minimal theme and has an individual layout for each post format to give a bit of a feel for each type of post it is. I think it adds a nice touch, though the rest of the design remains consistent the post formats have their own look. 
+It's a minimal theme and has an individual layout for each post format to give a bit of a feel for each type of post it is. I think it adds a nice touch, though the rest of the design remains consistent the post formats have their own look.
 
-I've included a child theme with a basic stylesheet of the things I generally recommend you change colour wise. Which should make it a breeze for editing. More so if you have experience using SASS/Compass as with the variables, change a couple of them and you have a new colour scheme. 
+I've included a child theme with a basic stylesheet of the things I generally recommend you change colour wise. Which should make it a breeze for editing. More so if you have experience using SASS/Compass as with the variables, change a couple of them and you have a new colour scheme.
 
 I'm looking to improve it over time and try add features/general requests to make it a better theme as time passes. Anyway there's more information on [Superhug](http://superhug.com/designs/patience).
 

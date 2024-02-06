@@ -5,8 +5,8 @@ lastmod: "2017-02-09T07:33:47+00:00"
 summary: "Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies what I will do, and this posts serves as detailing what has been done."
 metadesc: "Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general."
 theme: "#f7f2f5"
-tags: ["Design"]
-categories: ["Design"]
+tags: ["Website"]
+categories: ["Website"]
 images: ["/images/blog/maintenance-week-featured-image@2x.png"]
 large: "/images/blog/maintenance-week-featured-image@2x.png"
 medium: "/images/blog/maintenance-week-featured-image-medium@2x.png"

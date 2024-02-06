@@ -16,6 +16,8 @@ const Category = ({
 
   const theme = category.theme !== undefined ? category.theme : 'cornflour'
   const icon = category.icon !== undefined ? category.icon : 'folder'
+  // const theme = 'dandelion'
+  // const icon = 'folder'
 
   if (badge) {
     return (

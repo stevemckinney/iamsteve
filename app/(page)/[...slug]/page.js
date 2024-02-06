@@ -57,10 +57,10 @@ export default async function PagePage({ params }) {
         alt=" "
         aria-hidden="true"
       />
-      <article className="grid grid-cols-subgrid col-content pb-18 gap-18">
+      <article className="grid grid-cols-subgrid col-container row-start-1 pb-18 gap-18">
         <PageHeader>
           <PageTitle>{page.title}</PageTitle>
-          <p className="lg:text-2xl text-ui-body max-w-[34ch]">
+          <p className="md:text-lg lg:text-xl text-ui-body max-w-[34ch]">
             {page.description}
           </p>
         </PageHeader>

@@ -5,8 +5,8 @@ lastmod: "2018-05-18T06:46:20+00:00"
 summary: "Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies and this type of post details what’s been done."
 metadesc: "A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
 theme: "#f7f2f5"
-tags: ["Design"]
-categories: ["Design"]
+tags: ["Website"]
+categories: ["Website"]
 images: ["/images/blog/maintenance-week-featured-image@2x.png"]
 large: "/images/blog/maintenance-week-featured-image@2x.png"
 medium: "/images/blog/maintenance-week-featured-image-medium@2x.png"

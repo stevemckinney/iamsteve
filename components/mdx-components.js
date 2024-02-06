@@ -47,6 +47,23 @@ const components = {
       {...props}
     />
   ),
+  Gallery: (props) => (
+    <div className="grid col-margin sm:col-content gap-2 grid-flow-col auto-cols-auto overflow-auto snap-x snap-always overscroll-x-contain">
+      {props.children}
+    </div>
+  ),
+  GalleryFigure: (props) => (
+    <figure
+      className={`flex flex-col items-center justify-center p-4 self-start rounded-lg mb-8 bg-white shadow-placed ${props.className}`}
+    >
+      {props.children}
+    </figure>
+  ),
+  GalleryFigcaption: (props) => (
+    <figcaption className="text-ui-body font-body leading-normal p-4 min-w-[320px] [&>*]:underline [&>*]:text-base">
+      {props.children}
+    </figcaption>
+  ),
 }
 
 const postComponents = {
