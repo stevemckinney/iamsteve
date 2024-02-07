@@ -87,7 +87,8 @@ module.exports = {
         18: '4.5rem',
       },
       fontFamily: {
-        sans: ['gira-sans', 'sans-serif', ...defaultTheme.fontFamily.sans],
+        //sans: ['gira-sans', 'sans-serif', ...defaultTheme.fontFamily.sans],
+        sans: [['elza', 'sans-serif', ...defaultTheme.fontFamily.sans]],
         display: [
           [
             'roc-grotesk-variable',
@@ -139,7 +140,7 @@ module.exports = {
         ui: {
           normal: 'rgba(79, 64, 63, 0.16)',
           raised: 'rgba(79, 64, 63, 0.24)',
-          body: 'rgb(9 46 36 / .65)',
+          body: 'rgb(9 46 36 / .8)',
         },
         rio: {
           0: 'rgb(250 239 232)',
