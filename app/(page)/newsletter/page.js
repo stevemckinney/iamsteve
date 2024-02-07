@@ -24,7 +24,7 @@ export default async function NewsletterPage({ data, Post }) {
         alt=" "
         aria-hidden="true"
       />
-      <article className="grid grid-cols-subgrid col-content pb-18 gap-18">
+      <article className="grid grid-cols-subgrid col-content pb-18 gap-y-18">
         <PageHeader>
           <PageTitle>Newsletter</PageTitle>
           {/* <p className="text-2xl text-ui-body max-w-[34ch]">Subscribe</p> */}

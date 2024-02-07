@@ -61,7 +61,7 @@ const LargeImage = ({ ...props }) => {
   )
 }
 
-const Container = ({ frontmatter, image, className }) => {
+const Container = ({ frontmatter, image, className = 'card' }) => {
   const {
     slug,
     date,

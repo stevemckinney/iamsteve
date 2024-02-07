@@ -105,7 +105,7 @@ export default async function PostPage({ params }) {
           src="/images/illustration/pencil-mono.svg"
           width={962}
           height={46}
-          className={`max-lg:hidden col-start-1 col-end-prose-start 2xl:col-end-4 max-w-[initial] justify-self-end self-start mt-3 row-start-1 drop-shadow-placed`}
+          className={`max-lg:hidden col-start-1 col-end-prose-start 2xl:col-end-4 max-w-[initial] justify-self-end self-start row-start-1 drop-shadow-placed`}
           alt=" "
           aria-hidden="true"
         />

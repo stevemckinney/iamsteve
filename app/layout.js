@@ -11,9 +11,6 @@ import FooterProfile from '@/components/footer-profile'
 
 export const metadata = {
   metadataBase: new URL('https://iamsteve.me'),
-  'apple-mobile-web-app-status-bar-style': 'black-translucent',
-  'apple-mobile-web-app-title': 'iamsteve',
-  'apple-mobile-web-app-capable': 'yes',
   short_title: 'iamsteve',
   title: {
     default: 'iamsteve • design & code blog',
@@ -65,6 +62,12 @@ export default function RootLayout({ children }) {
       style={{ colorScheme: 'light' }}
     >
       <head>
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-title" content="iamsteve" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="stylesheet" href="https://use.typekit.net/bvl2qse.css" />
         <script
           type="application/ld+json"
@@ -76,7 +79,7 @@ export default function RootLayout({ children }) {
        * the border alignment within the header
        */}
       <body
-        className={`max-lg:overflow-x-hidden antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100 grid layout gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto`}
+        className={`max-2xl:overflow-x-hidden antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100 grid layout gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto`}
       >
         <Sprite />
         <ModeToggle />

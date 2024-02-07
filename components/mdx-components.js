@@ -48,19 +48,19 @@ const components = {
     />
   ),
   Gallery: (props) => (
-    <div className="grid col-margin sm:col-content gap-2 grid-flow-col auto-cols-auto overflow-auto snap-x snap-always overscroll-x-contain">
+    <div className="grid gap-2 grid-cols-6 grid-flow-dense">
       {props.children}
     </div>
   ),
   GalleryFigure: (props) => (
     <figure
-      className={`flex flex-col items-center justify-center p-4 self-start rounded-lg mb-8 bg-white shadow-placed ${props.className}`}
+      className={`flex flex-col items-center justify-center p-4 self-start rounded-lg bg-white shadow-placed ${props.className}`}
     >
       {props.children}
     </figure>
   ),
   GalleryFigcaption: (props) => (
-    <figcaption className="text-ui-body font-body leading-normal p-4 min-w-[320px] [&>*]:underline [&>*]:text-base">
+    <figcaption className="text-ui-body font-body leading-normal pt-4 pb-2 [&>*]:underline [&>*]:text-base">
       {props.children}
     </figcaption>
   ),

@@ -4,7 +4,6 @@ description: I’m Steve McKinney, I write this blog about the design and build 
 ---
 
 <>
-
   <nav className="col-content flex flex-row gap-4">
     <a href="#site" className="font-ui lowercase">Site</a>
     <a href="#examples" className="font-ui lowercase">Examples</a>
@@ -62,70 +61,96 @@ description: I’m Steve McKinney, I write this blog about the design and build 
   <article id="history" className="col-content">
     ## Design history
     Here is the design history of this website. The first version of this website I started working on in 2009, so you can see how my design sensibility has evolved over the years. Version two onwards I have written about.
+
+    <Gallery>
+      <GalleryFigure className="col-span-2">
+        <Image
+          src="/images/about/v1_2x.jpg"
+          width={480}
+          height={400}
+          alt=""
+          className="rounded-sm mb-2 max-w-full"
+        />
+        <GalleryFigcaption>Version one, 2009.</GalleryFigcaption>
+      </GalleryFigure>
+
+      <GalleryFigure className="col-span-2">
+        <Image
+          src="/images/about/v2_2x.jpg"
+          width={480}
+          height={400}
+          alt=""
+          className="rounded-sm mb-2 max-w-full"
+        />
+        <GalleryFigcaption>
+          [Version two, 2010](/blog/redesign)
+        </GalleryFigcaption>
+      </GalleryFigure>
+
+      <GalleryFigure className="col-span-2">
+        <Image
+          src="/images/about/v3_2x.jpg"
+          width={480}
+          height={400}
+          alt=""
+          className="rounded-sm mb-2 max-w-full"
+        />
+        <GalleryFigcaption>
+          [Version three, early 2011](/blog/about_the_redesign_v3)
+        </GalleryFigcaption>
+      </GalleryFigure>
+
+      <GalleryFigure className="col-span-3">
+        <Image
+          src="/images/about/v4_2x.jpg"
+          width={480}
+          height={400}
+          alt=""
+          className="rounded-sm mb-2 max-w-full"
+        />
+        <GalleryFigcaption>
+          [Version four, mid 2011](/blog/about_version_4)
+        </GalleryFigcaption>
+      </GalleryFigure>
+
+      <GalleryFigure className="col-span-3">
+        <Image
+          src="/images/about/iamsteve-v5.png"
+          width={1440}
+          height={1706}
+          alt=""
+          className="rounded-sm mb-2 max-w-full"
+        />
+        <GalleryFigcaption>
+          [Version five, late 2012](/blog/about_version_5)
+        </GalleryFigcaption>
+      </GalleryFigure>
+      <GalleryFigure className="col-span-3">
+        <Image
+          src="/images/about/iamsteve-v6.jpg"
+          width={1440}
+          height={1706}
+          alt=""
+          className="rounded-sm mb-2 max-w-full"
+        />
+        <GalleryFigcaption>
+          [Version six, late 2016](/blog/about_version_six)
+        </GalleryFigcaption>
+      </GalleryFigure>
+      <GalleryFigure className="col-span-3">
+        <Image
+          src="/images/about/iamsteve-v7.png"
+          width={1440}
+          height={1706}
+          alt=""
+          className="rounded-sm mb-2 max-w-full"
+        />
+        <GalleryFigcaption>
+          - Version seven, updated design in 2017, rebuild 2021
+          - [Write up on moving to Next.js](/blog/about-version-seven)
+          - [Live version](https://v7.iamsteve.me)
+        </GalleryFigcaption>
+      </GalleryFigure>
+    </Gallery>
   </article>
-
-  <Gallery>
-    <GalleryFigure className="col-span-2">
-      <Image
-        src="/images/about/v1_2x.jpg"
-        width={480}
-        height={400}
-        alt=""
-        className="rounded-sm mb-2 max-w-full"
-      />
-      <GalleryFigcaption>Version one, 2009.</GalleryFigcaption>
-    </GalleryFigure>
-
-    <GalleryFigure className="col-span-2">
-      <Image
-        src="/images/about/v2_2x.jpg"
-        width={480}
-        height={400}
-        alt=""
-        className="rounded-sm mb-2 max-w-full"
-      />
-      <GalleryFigcaption>
-        [Version two, 2010](/blog/redesign)
-      </GalleryFigcaption>
-    </GalleryFigure>
-
-    <GalleryFigure className="col-span-2">
-      <Image
-        src="/images/about/v3_2x.jpg"
-        width={480}
-        height={400}
-        alt=""
-        className="rounded-sm mb-2 max-w-full"
-      />
-      <GalleryFigcaption>
-        [Version three, early 2011](/blog/about_the_redesign_v3)
-      </GalleryFigcaption>
-    </GalleryFigure>
-
-    <GalleryFigure className="col-span-2">
-      <Image
-        src="/images/about/v4_2x.jpg"
-        width={480}
-        height={400}
-        alt=""
-        className="rounded-sm mb-2 max-w-full"
-      />
-      <GalleryFigcaption>
-        [Version four, mid 2011](/blog/about_version_4)
-      </GalleryFigcaption>
-    </GalleryFigure>
-
-    <GalleryFigure className="col-span-2">
-      <Image
-        src="/images/about/iamsteve-v5.png"
-        width={1440}
-        height={1706}
-        alt=""
-        className="rounded-sm mb-2 max-w-full"
-      />
-      <GalleryFigcaption>
-        [Version five, late 2012](/blog/about_version_)
-      </GalleryFigcaption>
-    </GalleryFigure>
-  </Gallery>
 </>

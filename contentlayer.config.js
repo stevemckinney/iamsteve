@@ -1,6 +1,7 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import path from 'path'
 import siteMetadata from './content/metadata'
+import categories from './content/categories'
 
 import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
@@ -33,6 +34,9 @@ export const Page = defineDocumentType(() => ({
     description: {
       type: 'string',
     },
+    slot: {
+      type: 'string',
+    },
   },
   computedFields: {
     slug: {
@@ -63,7 +67,14 @@ export const Post = defineDocumentType(() => ({
     date: { type: 'date', required: true },
     lastmod: { type: 'date', required: true },
     tags: { type: 'list', of: { type: 'string' } },
-    categories: { type: 'list', of: { type: 'string' }, required: true },
+    categories: {
+      type: 'list',
+      of: {
+        type: 'enum',
+        options: [categories.map((category) => category.title)],
+      },
+      required: true,
+    },
     codepen: { type: 'boolean' },
     twitter: { type: 'boolean' },
     id: { type: 'number', required: true },

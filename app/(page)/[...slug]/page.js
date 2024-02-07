@@ -31,6 +31,7 @@ export async function generateMetadata({ params }) {
     template: '%s • iamsteve',
     title: page.title,
     description: page.description,
+    slot: page.slot,
   }
 }
 
@@ -57,12 +58,13 @@ export default async function PagePage({ params }) {
         alt=" "
         aria-hidden="true"
       />
-      <article className="grid grid-cols-subgrid col-container row-start-1 pb-18 gap-18">
+      <article className="grid grid-cols-subgrid col-container row-start-1 pb-18 gap-y-18">
         <PageHeader>
           <PageTitle>{page.title}</PageTitle>
           <p className="md:text-lg lg:text-xl text-ui-body max-w-[34ch]">
             {page.description}
           </p>
+          {page.slot}
         </PageHeader>
         <Mdx code={page.body.code} />
       </article>

@@ -1,6 +1,10 @@
 const Notepad = ({ children, className }) => {
   return (
-    <div className={`bg-neutral-01-50 rounded-lg ${className}`}>{children}</div>
+    <div
+      className={`bg-neutral-01-50 rounded-lg isolate relative ${className}`}
+    >
+      {children}
+    </div>
   )
 }
 
@@ -26,6 +30,7 @@ const NotepadBody = ({ children, className }) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="absolute top-0 left-0 right-0 pointer-events-none"
+        aria-hidden="true"
       >
         <path
           d="M45 12L0 9V1H592V5L543 8.5L494 5L396 9L282.5 5.5L211 11L116.5 6L45 12Z"
