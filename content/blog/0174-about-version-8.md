@@ -48,11 +48,11 @@ I chose Roc Grotesk for its strong presence, which I use for headings. I really 
 
 <div className="sandbox">
   <div className="w-full bg-neutral-01-200 px-[2vmax] py-[10vmax] rounded-lg">
-    <span className="text-fern-1100 font-body hover:font-display lowercase text-[clamp(2.5rem,_1.4565rem_+_5.2174vw,_5.5rem)] block text-center [font-weight:300] hover:font-normal hover:font-variation-extrabold leading-7xl tracking-[-.3rem] hover:tracking-[-.2rem]">Exploring web design craft</span>
+    <span className="text-fern-1100 font-body hover:font-display lowercase text-[clamp(2.5rem,_1.4565rem_+_5.2174vw,_5.5rem)] block text-center [font-weight:300] hover:font-normal hover:font-variation-extrabold leading-7xl tracking-[-.3rem] hover:tracking-[-.2rem]">Exploring web design&nbsp;craft</span>
   </div>
 </div>
 
-Whereas I’m using Gira Sans for body copy. The slightly larger x-height and more open characters make it a better choice for reading.
+Whereas I’m using Elza for body copy. The slightly larger x-height and more open characters make it a better choice for reading.
 
 ### Colour
 The colour palette is familiar but renewed. My aim was to pair back the colour and really reserve that for post images and the occasional flourish. I achieve that through introducing more neutral colours and complementary colours that have a stronger contrast (eg: red vs green).

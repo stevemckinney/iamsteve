@@ -2,8 +2,8 @@
 title: About version 7
 date: '2023-12-23T10:11:40.788Z'
 lastmod: '2023-12-23T10:11:40.788Z'
-summary: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild.'
-metadesc: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild.'
+summary: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild and some hindsight into the decision making.'
+metadesc: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild and some hindsight into the decision making.'
 theme: '#e9f5f5'
 tags: ['Website']
 categories: ['Website']
@@ -17,22 +17,22 @@ id: 173
 fileroot: 'about-version-7'
 ---
 
-With this version there was little to no visual change. I say was, as this was written way beyond going live. The purpose was to move from ExpressionEngine to Next.js. It was an important change as I felt at the time at a dead end with ExpressionEngine.
+With this version there was little to no visual change. I say was, as this post was created after going live. The purpose was to move from ExpressionEngine to Next.js. It was an important change as I felt at the time at a dead end with ExpressionEngine.
 
 ## Why rebuild the website?
-I had reached a point where things were breaking and I couldn’t replace those things in ExpressionEngine.
+As I have just mentioned ExpressionEngine was no longer cutting it for me. I had reached a point where things were breaking and I couldn’t replace those things in ExpressionEngine.
 
-Simple things like RSS and getting structured data to output were no longer working.
+The lack of community around ExpressionEngine made things really difficult for me. I rely on a community that shares how to do things or plugins for getting by with a lot of my development work. So even simpler things like RSS and getting structured data to output were no longer working.
 
 ### I wanted a better deploy system
-This was another strong driver, being able to deploy and have rollbacks, preview branches, etc. for convenience. 
+This was another strong driver, being able to deploy and have rollbacks, preview branches, etc. for convenience.
 
-That’s where moving to a host like Netlify was ideal. I had given this a try with my portfolio. The ease of it all was great. 
+That’s where moving to a host like Netlify was ideal. I had given this a try with my portfolio. The ease of it all was great.
 
-I’m wary of cost here, as it can easily escalate, but I’ve heard Cloudflare is a good alternative and this is something I may explore.
+I’m wary of cost here, as it can easily escalate, but for now it’s in line with what I was paying previously. I’ve also seen a lot around Cloudflare being a good alternative and this is something I may explore.
 
 ### Time to go static
-So round mid-2021 (it’s taken a while to write about), I decided it was time to move off. And I decided to go the static route. Theres always been a lot of hype around static site generators, from the original popularity of Jekyll.
+So round mid-2021 (see, it’s taken a while to write about), I decided it was time to get it done. And I decided to go the static route. Theres always been a lot of hype around static site generators, from the original popularity of Jekyll. And I feel I had always avoided it due to having to go all in on the static side, but that’s not the case anymore.
 
 I was torn between Gatsby and Next.
 
@@ -41,17 +41,11 @@ I had built my portfolio in Gatsby a year earlier, so I felt ok with the React w
 ### Choosing Next.js
 However, I went for Next because on reading it seemed it was better for sites with more pages, such as a blog.
 
-Other than that I didn’t think too much of it.
+Other than that I didn’t think too much of it. But thank god I didn’t pick Gatsby. It’s turned out to be a wise decision as Gatsby has lost all of that momentum.
 
-It turned out to be a wise decision as Gatsby has lost all of that momentum.
+But importantly my content is much more portable and there’s a great community around Next.js and React in general. So if it all changes and we’re all building sites on Astro or something else, I know the change won’t be as painful.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/13d4d02a-9cc1-4853-af00-1366f489f4b7/c2ef1e61-5ea6-4bc7-99ab-875d7dc088e5/Untitled.png)
-
-However, I see the possibility of moving to Astro in the future as I will move my portfolio due to what I mentioned earlier about Gatsby.
-
-But importantly my content is much more portable and there’s a great community around Next.js and React in general.
-
-## Prepping a URL structure change
+## Before the build preparing a URL structure change
 One of the things I felt ~~could~~ would be a problem was the current URL structure surrounding blog posts. And I didn’t want to have that as a problem on top of moving to Next.js and a new hosting platform.
 
 The structure was `/blog/entry/[slug]` and was moving to `/blog/[slug]`.
@@ -59,6 +53,16 @@ The structure was `/blog/entry/[slug]` and was moving to `/blog/[slug]`.
 I was aware this would break links from other websites, for which I setup redirects. And knew by the time I’d finally finish redeveloping the website on Next all the issues will have been ironed out.
 
 Eventually, on the move over to Netlify it was easy to switch up and knowing that was done was something I thanked my past self for doing.
+
+All it takes is a few lines of code in `netlify.toml` and using `:splat`
+
+```toml:netlify.toml showLineNumbers
+[[redirects]]
+  from = "/blog/entry/*"
+  to = "/blog/:splat"
+  status = 301
+  force = true
+```
 
 ## Beginning the rebuild
 I knew there was a tedious task ahead getting each post into markdown files. This was not straightforward and had me debate whether it was the right thing to do.
