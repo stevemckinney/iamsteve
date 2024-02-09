@@ -8,8 +8,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "rgb(241 232 228)",
-  "background_color": "rgb(241 232 228)",
+  "theme_color": "rgb(249 243 241)", // lighter: 249 243 241, darker: 241 232 228
+  "background_color": "rgb(249 243 241)",
   "display": "standalone",
   "id": "/?source=pwa",
   "start_url": "/?source=pwa"
