@@ -164,16 +164,28 @@
     margin-block-start: theme('margin.4');
   }
 
+  ul > li {
+    list-style: square;
+    position: relative;
+    top: -2px;
+    font-size: 112.5%;
+  }
+
+  ol > li::marker,
+  ul > li::marker {
+    color: theme('colors.neutral-03.400');
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
   :where(p, li) {
-    color: theme('colors.fern.1000');
+    color: theme('colors.ui.body');
   }
 
   > p + figure {
     margin-block-start: theme('margin.12');
-  }
-
-  li {
-    list-style: square;
   }
 
   p code {
@@ -508,19 +520,6 @@
     width: 3ch;
   }
 
-  :global([data-language='css'])
-    :global(span[style*='--shiki-token-keyword'])
-    + :global([data-language='css'])
-    :global(span[style*='--shiki-token-text'])
-    + :global([data-language='css'])
-    :global(span[style*='--shiki-token-constant']),
-  :global([data-language='css'])
-    :global(span[style*='--shiki-token-constant'])
-    + :global([data-language='css'])
-    :global(span[style*='--shiki-token-keyword']) {
-    color: var(--code-magenta) !important;
-  }
-
   :global(.remark-code-container) {
     overflow: auto;
     background-color: theme('colors.fern.1100');
@@ -551,11 +550,14 @@
   }
 
   :global(.remark-code-bar) {
-    border-radius: theme('borderRadius.lg') theme('borderRadius.lg') 0 0;
     box-shadow: inset 0 2px 0 0 rgba(39, 93, 78, 0.6);
     background-color: theme('colors.neutral-03.900');
     padding-inline: theme('padding.8');
     border-block-end: 1px solid theme('colors.fern.900');
+
+    @screen sm {
+      border-radius: theme('borderRadius.lg') theme('borderRadius.lg') 0 0;
+    }
   }
 
   :global(.remark-code-title) {
@@ -568,5 +570,10 @@
     padding-block: theme('padding.3');
     font-size: theme('fontSize.base');
     line-height: 1;
+  }
+
+  /* tailwind class override */
+  :global(.remark-code-container) :global(.table) {
+    display: unset !important;
   }
 }

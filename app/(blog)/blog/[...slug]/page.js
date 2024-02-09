@@ -117,7 +117,7 @@ export default async function PostPage({ params }) {
           alt=" "
           aria-hidden="true"
         />
-        <header className="col-content lg:col-prose flex flex-col gap-4 row-start-1">
+        <header className="col-content lg:col-prose flex flex-col row-start-1 max-sm:pt-12 gap-y-4">
           <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
             <Date dateString={post.date} />
           </Badge>

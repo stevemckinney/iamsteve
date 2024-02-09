@@ -2,9 +2,9 @@ import { notFound } from 'next/navigation'
 import { allPages } from 'contentlayer/generated'
 
 import { Mdx } from '@/components/mdx-components'
-import PageHeader from '@/components/page-header'
-import PageTitle from '@/components/page-title'
+import { Header, Title, Column, Description } from '@/components/page'
 import Image from '@/components/image'
+import categories from '@/content/categories'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400
@@ -59,13 +59,33 @@ export default async function PagePage({ params }) {
         aria-hidden="true"
       />
       <article className="grid grid-cols-subgrid col-container row-start-1 pb-18 gap-y-18">
-        <PageHeader>
-          <PageTitle>{page.title}</PageTitle>
-          <p className="md:text-lg lg:text-xl text-ui-body max-w-[34ch]">
-            {page.description}
-          </p>
-          {page.slot}
-        </PageHeader>
+        <Header>
+          <Column className="md:col-span-1">
+            <Title>Blog</Title>
+            <Description>
+              Tips and tutorials about the design and build of web interfaces
+            </Description>
+          </Column>
+          {categories && (
+            <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end list-categories -mb-2 lg:-mb-3">
+              {categories.map((category) => {
+                if (category.exclude === true || category.parent === true)
+                  return
+                return (
+                  <li className="self-end" key={category.title}>
+                    <Category
+                      size={24}
+                      badge={false}
+                      className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+                    >
+                      {category.title}
+                    </Category>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
+        </Header>
         <Mdx code={page.body.code} />
       </article>
     </>

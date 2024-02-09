@@ -140,7 +140,7 @@ module.exports = {
         ui: {
           normal: 'rgba(79, 64, 63, 0.16)',
           raised: 'rgba(79, 64, 63, 0.24)',
-          body: 'rgb(9 46 36 / .8)',
+          body: 'rgb(9 46 36 / .7)',
         },
         rio: {
           0: 'rgb(250 239 232)',
