@@ -9,7 +9,7 @@ const nextConfig = {
     webpackBuildWorker: true,
   },
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
-  staticPageGenerationTimeout: 120,
+  // staticPageGenerationTimeout: 120,
   eslint: {
     dirs: ['app', 'components', 'lib', 'scripts'],
   },
