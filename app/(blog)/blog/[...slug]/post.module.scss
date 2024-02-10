@@ -60,7 +60,6 @@
   /* text */
   :where(h2, h3, h4, h5, h6) + :where(p, figure) {
     margin-block-start: theme('margin.2');
-    outline: 1px solid red;
   }
 
   :where(h1, h2, h3, h4, h5, h6) {
@@ -157,8 +156,12 @@
     margin-block-start: theme('margin.4');
   }
 
-  :where(figure, img) + p {
+  :where(.article-image, figure, img) + p {
     margin-block-start: 0;
+  }
+  
+  > p + figure {
+    margin-block-start: theme('margin.12');
   }
 
   ul > li {
@@ -178,10 +181,6 @@
   :where(p, li) {
     color: theme('colors.ui.body');
     text-wrap: pretty;
-  }
-
-  > p + figure {
-    margin-block-start: theme('margin.12');
   }
 
   p code {
