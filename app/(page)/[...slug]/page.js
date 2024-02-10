@@ -63,7 +63,6 @@ export default async function PagePage({ params }) {
           <Column className="md:col-span-1">
             <Title>{page.title}</Title>
             <Description>{page.description}</Description>
-            <PageTitle>{page.title}</PageTitle>
           </Column>
         </Header>
         <Mdx code={page.body.code} />
