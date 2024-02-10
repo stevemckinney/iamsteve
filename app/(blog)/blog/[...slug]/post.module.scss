@@ -67,6 +67,14 @@
     text-transform: lowercase;
     text-wrap: balance;
   }
+  
+  :where(h1, h2, h3, h4, h5, h6, p) {
+    padding-block: theme('padding.4');
+    
+    @screen md {
+      padding-block: 0;
+    }
+  }
 
   :where(h1, h2, h3, h4) {
     letter-spacing: -0.0170454546em;
