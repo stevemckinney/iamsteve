@@ -5,6 +5,7 @@ import { sortPosts } from '@/lib/utils/content'
 
 import { Header, Title, Column, Description } from '@/components/page'
 import Card from '@/components/card'
+import Category from '@/components/category'
 import Pagination from '@/components/pagination'
 import Image from '@/components/image'
 
