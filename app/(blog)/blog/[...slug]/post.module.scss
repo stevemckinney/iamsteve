@@ -67,14 +67,6 @@
     text-transform: lowercase;
     text-wrap: balance;
   }
-  
-  :where(h1, h2, h3, h4, h5, h6, p) {
-    padding-block: theme('padding.4');
-    
-    @screen md {
-      padding-block: 0;
-    }
-  }
 
   :where(h1, h2, h3, h4) {
     letter-spacing: -0.0170454546em;
@@ -167,7 +159,7 @@
   :where(.article-image, figure, img) + p {
     margin-block-start: 0;
   }
-  
+
   > p + figure {
     margin-block-start: theme('margin.12');
   }
@@ -428,10 +420,18 @@
   }
 }
 
+/* page margins */
 .prose {
   --freedom: 0.75rem;
   --flush: 2rem;
-  // padding-inline: var(--freedom);
+
+  :where(h1, h2, h3, h4, h5, h6, p, li) {
+    padding-inline: theme('padding.4');
+
+    @screen md {
+      padding-inline: 0;
+    }
+  }
 }
 
 .prose > img,
@@ -454,12 +454,21 @@
   }
 }
 
-/* code */
+/* code highlighting */
 .prose {
-  :global([data-rehype-pretty-code-fragment]) {
+  :global(.remark-code-container) {
+    display: flex;
+    flex-direction: column;
     background-color: theme('colors.fern.1100');
     overflow: hidden;
+    padding: theme('padding.1');
   }
+
+  // :global(.remark-code-container:has(.language-scss)
+  //     .remark-code-title:before) {
+  //   content: url(/icon/24/css.svg);
+  //   display: block;
+  // }
 
   :global(.remark-code-container),
   :global([data-rehype-pretty-code-fragment]),
@@ -470,20 +479,6 @@
       margin-inline: -2rem;
       border-radius: theme('borderRadius.lg');
     }
-  }
-
-  :global([data-rehype-pretty-code-fragment]) {
-    border: 1px solid theme('colors.neutral-03.900');
-    background-color: theme('colors.neutral-03.900');
-    border-block-end: 1px solid theme('colors.fern.900');
-
-    @screen md {
-      border-radius: theme('borderRadius.lg');
-    }
-  }
-
-  :global(.cp_embed_wrapper) {
-    box-shadow: theme('boxShadow.floating');
   }
 
   :global(pre[data-language]),
@@ -506,49 +501,13 @@
     box-shadow: inset 0 1px 0 0 rgba(39, 93, 78, 0.6);
   }
 
-  :global([data-rehype-pretty-code-title]) {
-    display: inline-block;
-    background-color: theme('colors.fern.1100');
-    color: theme('colors.fern.200');
-    border-inline: 1px solid theme('colors.fern.900');
-    box-shadow: 0 2px 0 -1px theme('colors.fern.1100');
-    padding-inline: theme('padding.8');
-    padding-block: theme('padding.3');
-    margin-inline: theme('padding.8');
-    font-size: theme('fontSize.base');
-    line-height: 1;
-  }
-
-  :global(code[data-language]) {
-    counter-reset: line;
-  }
-
-  :global(code[data-language] > [data-line]) {
-    position: relative;
-  }
-
-  :global(code[data-language] > [data-line]::before) {
-    counter-increment: line;
-    content: counter(line);
-    display: inline-block;
-    width: 1ch;
-    margin-right: 2ch;
-    text-align: right;
-    color: var(--code-comment);
-    opacity: 0.4;
-  }
-
-  :global(code[data-line-numbers-max-digits='2'] > [data-line]::before) {
-    width: 2ch;
-  }
-
-  :global(code[data-line-numbers-max-digits='3'] > [data-line]::before) {
-    width: 3ch;
-  }
-
+  /* todo: overflow scroll contain? */
   :global(.remark-code-container) {
-    overflow: auto;
-    background-color: theme('colors.fern.1100');
+    display: flex;
+    flex-direction: column;
+    gap: theme('gap.1');
+    overflow: hidden;
+    background-color: theme('colors.neutral-03.900');
     border: 1px solid theme('colors.neutral-03.900');
   }
 
@@ -570,32 +529,28 @@
     }
   }
 
-  :global(.remark-code-container pre),
-  :global(.remark-code-container code) {
-    display: block;
-  }
-
   :global(.remark-code-bar) {
-    box-shadow: inset 0 2px 0 0 rgba(39, 93, 78, 0.6);
-    background-color: theme('colors.neutral-03.900');
-    padding-inline: theme('padding.8');
-    border-block-end: 1px solid theme('colors.fern.900');
-
-    @screen sm {
-      border-radius: theme('borderRadius.lg') theme('borderRadius.lg') 0 0;
-    }
+    display: flex;
+    flex: 0 0 auto;
   }
 
   :global(.remark-code-title) {
-    display: inline-block;
     background-color: theme('colors.fern.1100');
     color: theme('colors.fern.200');
-    border-inline: 1px solid theme('colors.fern.900');
-    box-shadow: 0 2px 0 -1px theme('colors.fern.1100');
-    padding-inline: theme('padding.8');
-    padding-block: theme('padding.3');
+    border: 1px solid theme('colors.fern.900');
+    background-color: theme('colors.fern.1100');
+    border-radius: 20px;
+    padding-inline: theme('padding.6');
+    padding-block: theme('padding.2');
     font-size: theme('fontSize.base');
-    line-height: 1;
+    font-family: theme('fontFamily.ui');
+    font-variation-settings: 'wdth' 100, 'wght' 500;
+    line-height: 1.5;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: theme('gap.2');
+    align-self: start;
+    flex: 0 0 max-content;
   }
 
   /* tailwind class override */
