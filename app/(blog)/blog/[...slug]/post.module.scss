@@ -35,33 +35,13 @@
   }
 
   figure :where(figcaption, figcaption p) {
-    margin-block-start: theme('margin.4');
-    margin-block-end: theme('margin.4');
     color: theme('colors.fern.1100');
     font-family: theme('fontFamily.mono');
     font-size: theme('fontSize.base');
     letter-spacing: -0.03em;
   }
 
-  /* legacy posts start */
-  :global(.article-image) {
-    margin-block: theme('margin.8');
-  }
-
-  h2 + :global(.article-image) {
-    margin-block-start: theme('margin.4');
-  }
-
-  h3 + :global(.article-image) {
-    margin-block-start: theme('margin.3');
-  }
-  /* legacy posts end */
-
-  /* text */
-  :where(h2, h3, h4, h5, h6) + :where(p, figure) {
-    margin-block-start: theme('margin.2');
-  }
-
+  /* text: font, letter-spacing definitions */
   :where(h1, h2, h3, h4, h5, h6) {
     font-family: theme('fontFamily.display');
     text-transform: lowercase;
@@ -81,7 +61,6 @@
   }
 
   h1 {
-    margin-block-end: theme('margin.12');
     font-size: theme('fontSize.3xl');
     line-height: theme('lineHeight.3xl');
 
@@ -98,7 +77,6 @@
   }
 
   h2 {
-    margin-block-start: theme('margin.16');
     font-size: theme('fontSize.xl');
     line-height: theme('lineHeight.xl');
 
@@ -114,7 +92,6 @@
   }
 
   h3 {
-    margin-block-start: theme('margin.8');
     font-size: theme('fontSize.lg');
     line-height: theme('lineHeight.lg');
 
@@ -131,7 +108,6 @@
   }
 
   h4 {
-    margin-block-start: theme('margin.8');
     font-size: theme('fontSize.lg');
     line-height: theme('lineHeight.3xl');
 
@@ -149,19 +125,6 @@
   :where(h5, h6) {
     font-size: theme('fontSize.xl');
     line-height: theme('lineHeight.xl');
-    margin-block-start: theme('margin.4');
-  }
-
-  :where(p, ul, ol, .remark-code-container) {
-    margin-block-start: theme('margin.4');
-  }
-
-  :where(.article-image, figure, img) + p {
-    margin-block-start: 0;
-  }
-
-  > p + figure {
-    margin-block-start: theme('margin.12');
   }
 
   ul > li {
@@ -190,7 +153,6 @@
 
   table {
     width: 100%;
-    margin-block: theme('margin.12');
     padding: 0;
   }
 
@@ -420,7 +382,9 @@
   }
 }
 
-/* page margins */
+/**
+ * spacing definitions
+ */
 .prose {
   --freedom: 0.75rem;
   --flush: 2rem;
@@ -431,6 +395,61 @@
     @screen md {
       padding-inline: 0;
     }
+  }
+
+  h2 {
+    margin-block-start: theme('margin.16');
+  }
+
+  h3 {
+    margin-block-start: theme('margin.8');
+  }
+
+  :where(h2, h3, h4, h5, h6) + :where(p, figure) {
+    margin-block-start: theme('margin.2');
+  }
+
+  figure :where(figcaption, figcaption p) {
+    margin-block-start: theme('margin.4');
+    margin-block-end: theme('margin.4');
+  }
+
+  /* legacy posts start */
+  :global(.article-image) {
+    margin-block: theme('margin.8');
+  }
+
+  h2 + :global(.article-image) {
+    margin-block-start: theme('margin.4');
+  }
+
+  h3 + :global(.article-image) {
+    margin-block-start: theme('margin.3');
+  }
+  /* legacy posts end */
+
+  h4 {
+    margin-block-start: theme('margin.8');
+  }
+
+  :where(h5, h6) {
+    margin-block-start: theme('margin.4');
+  }
+
+  :where(p, ul, ol, .remark-code-container) {
+    margin-block-start: theme('margin.4');
+  }
+
+  :where(.article-image, figure, img) + p {
+    margin-block-start: 0;
+  }
+
+  > p + figure {
+    margin-block-start: theme('margin.12');
+  }
+
+  table {
+    margin-block: theme('margin.12');
   }
 }
 

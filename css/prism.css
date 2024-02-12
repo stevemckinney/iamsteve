@@ -15,6 +15,7 @@
   --code-white: theme('colors.fern.100');
   --code-comment: theme('colors.neutral-03.400');
   --offset-spacing: theme('margin.8');
+  isolation: isolate;
 }
 
 /**
