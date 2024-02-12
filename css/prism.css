@@ -36,8 +36,8 @@ pre[class*='language-'] {
 
 /* code blocks */
 pre[class*='language-'] {
-  padding: theme('padding.8') theme('padding.8') theme('padding.8') 0;
   overflow: auto;
+  padding: theme('padding.8');
 }
 
 :not(pre) > code[class*='language-'],
@@ -64,16 +64,8 @@ pre[class*='language-'] {
   display: block;
   box-shadow: inset 4px 0 rgb(0 0 0 / 0); /* Set placeholder for highlight accent border color to transparent */
 
-  &::after {
-    content: '';
-    position: absolute;
-    display: inline-block;
-    top: 0;
-    left: calc(100% + theme('width.16'));
-    width: theme('width.16');
-    height: 1px;
-    pointer-events: none;
-  }
+  padding-inline: theme('padding.8');
+  margin-inline: calc(-1 * theme('margin.8'));
 }
 
 .code-line.inserted {
@@ -93,7 +85,7 @@ pre[class*='language-'] {
 .line-number::before {
   display: inline-block;
   padding: 0 theme('padding.8');
-  margin: 0 calc(-1 * theme('padding.8'));
+  margin: 0 calc(-1 * calc(theme('padding.8') * 2));
   width: calc(2ch + calc(theme('padding.8') * 2));
   margin-right: 3ch;
   text-align: right;
@@ -102,7 +94,7 @@ pre[class*='language-'] {
   position: sticky;
   z-index: 2;
   top: 0;
-  left: 0;
+  left: -32px;
   background-color: theme('colors.fern.1100');
   mask: linear-gradient(to right, #000 66%, transparent);
 }

@@ -386,58 +386,57 @@
  * spacing definitions
  */
 .prose {
-  --freedom: 0.75rem;
-  --flush: 2rem;
+  /* block is proportional based on size */
+  --inline-space: 1rem;
+  --block-space: 2em;
+  --block-space-small: 0.5em;
 
-  :where(h1, h2, h3, h4, h5, h6, p, li) {
-    padding-inline: theme('padding.4');
+  //   :where(h1, h2, h3, h4, h5, h6, p, ol, ul) {
+  //     padding-inline: var(--inline-space);
+  //
+  //     @screen md {
+  //       padding-inline: 0;
+  //     }
+  //   }
 
-    @screen md {
-      padding-inline: 0;
-    }
-  }
-
-  h2 {
-    margin-block-start: theme('margin.16');
-  }
-
-  h3 {
-    margin-block-start: theme('margin.8');
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-block-start: var(--block-space);
   }
 
   :where(h2, h3, h4, h5, h6) + :where(p, figure) {
-    margin-block-start: theme('margin.2');
+    margin-block-start: var(--block-space-small);
   }
 
   figure :where(figcaption, figcaption p) {
-    margin-block-start: theme('margin.4');
-    margin-block-end: theme('margin.4');
+    margin-block: var(--block-space);
+  }
+
+  :global(.remark-code-container),
+  > div {
+    margin-block: var(--block-space);
+
+    & + p {
+      margin-block-start: 0;
+    }
   }
 
   /* legacy posts start */
   :global(.article-image) {
-    margin-block: theme('margin.8');
+    margin-block: var(--block-space);
   }
 
-  h2 + :global(.article-image) {
-    margin-block-start: theme('margin.4');
-  }
-
+  h2 + :global(.article-image),
   h3 + :global(.article-image) {
-    margin-block-start: theme('margin.3');
+    margin-block-start: var(--block-space-small);
   }
   /* legacy posts end */
 
-  h4 {
-    margin-block-start: theme('margin.8');
-  }
-
-  :where(h5, h6) {
-    margin-block-start: theme('margin.4');
-  }
-
-  :where(p, ul, ol, .remark-code-container) {
-    margin-block-start: theme('margin.4');
+  :where(p, ul, ol, .remark-code-container):not(:first-child) {
+    margin-block-start: var(--block-space-small);
   }
 
   :where(.article-image, figure, img) + p {
@@ -473,7 +472,10 @@
   }
 }
 
-/* code highlighting */
+/**
+ * code highlighting blocks
+ * see prism.css for the code highlighting theme
+ */
 .prose {
   :global(.remark-code-container) {
     display: flex;
@@ -490,10 +492,7 @@
   // }
 
   :global(.remark-code-container),
-  :global([data-rehype-pretty-code-fragment]),
   > div {
-    margin-block: theme('margin.8');
-
     @screen md {
       margin-inline: -2rem;
       border-radius: theme('borderRadius.lg');
@@ -515,7 +514,6 @@
 
   :global(pre[data-language]) {
     overflow: auto;
-    margin-top: -1px;
     padding: theme('padding.8');
     box-shadow: inset 0 1px 0 0 rgba(39, 93, 78, 0.6);
   }
@@ -537,7 +535,6 @@
   :global(.remark-code-container),
   :global(.cp_embed_wrapper) {
     margin-inline: -1.5rem;
-    margin-block: theme('margin.8');
 
     @screen sm {
       border-radius: theme('borderRadius.lg');

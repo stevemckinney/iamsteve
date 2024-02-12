@@ -264,8 +264,8 @@ export async function NextPost({ id }) {
 
 export function Support() {
   return (
-    <aside className="bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-col gap-4 justify-between p-8 col-prose md:-mx-8">
-      <p className="p-0 m-0 text-base text-ui-body">
+    <aside className="bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 col-prose md:-mx-8">
+      <p className="p-0 m-0 text-base text-ui-body flex flex-col">
         <strong className="text-fern-1100 font-bold">
           Enjoying the reading experience?
         </strong>{' '}
@@ -273,10 +273,10 @@ export function Support() {
       </p>
       <Link
         href={siteMetadata.bmc}
-        className="flex shrink-0 grow-0 flex-row rounded-md items-center gap-2 text-base font-ui lowercase hover:opacity-70 transition duration-200"
+        className="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase hover:opacity-70 transition duration-200 mt-1 pl-6 pr-5 py-2 bg-white shadow-[0_0_0_1px_theme('colors.neutral-01.200')]"
       >
         Buy me a coffee
-        <span className="flex shrink-0 grow-0 items-center justify-center bg-fern-100 rounded w-8 h-8">
+        <span className="flex shrink-0 grow-0 items-center justify-center">
           <Icon icon="bmc" />
         </span>
       </Link>
