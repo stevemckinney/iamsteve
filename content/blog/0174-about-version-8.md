@@ -92,8 +92,18 @@ I was resigned to using `rehype-pretty-code` but managed to get it all working w
 And personally I find it easier to read when your brackets in html and jsx are the same colour as the tag.
 
 ## Using border-image for nicer borders
+The standard borders available in CSS aren’t desirable visually. You have `dotted`, `dashed` and not a lot else when it comes to controlling border style. 
+
+That’s where `border-image` comes to the rescue. Throughout the homepage and header sections of most pages I use a more visually pleasing border.
+
+In terms of code it’s fairly simply but I don’t think `border-image` is easy to use. The border will break at certain screen widths but for the most part it’s fine. 
 
 ## Container queries to create large and medium sized cards
+This has been a great opportunity to learn how to  use container queries to build some things on this website. 
+
+It took some getting used to, as it’s no longer tied to the window size. I found it’s more getting over your years of being used to using media queries than a bit of new syntax. 
+
+It’s quite pleasing to have one component serve two purposes. If you look at the homepage, there are large cards with images and smaller cards without images. These also differ with font size and spacing. 
 
 ## Grid and sub-grid to manage layout
 
