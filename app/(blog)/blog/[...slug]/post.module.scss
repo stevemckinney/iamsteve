@@ -127,14 +127,17 @@
     line-height: theme('lineHeight.xl');
   }
 
-  ul > li {
-    list-style: square;
+  ul > li::marker {
     font-size: 112.5%;
   }
 
   ol > li::marker,
   ul > li::marker {
     color: theme('colors.neutral-03.400');
+  }
+
+  ul {
+    list-style: square;
   }
 
   ol {
@@ -148,7 +151,11 @@
 
   p code {
     color: theme('colors.dandelion.600');
-    font-size-adjust: ex-height 0.51;
+
+    @supports (font-size-adjust: ex-height 0.51) {
+      font-size-adjust: ex-height 0.51;
+      line-height: 1;
+    }
   }
 
   table {
@@ -399,29 +406,39 @@
   //     }
   //   }
 
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  > * + * {
     margin-block-start: var(--block-space);
+    // outline: 1px solid greenyellow;
   }
 
-  :where(h2, h3, h4, h5, h6) + :where(p, figure) {
-    margin-block-start: var(--block-space-small);
+  :where(h2, h3, h4, h5, h6) + :where(p, ol, ul),
+  :where(p + p, p + ol, p + ul),
+  :where(ul + p, ol + p) {
+    --block-space: var(--block-space-small);
+    // outline: 1px solid pink;
+  }
+
+  :where(> div, .remark-code-container, figure) + :where(p, ol, ul) {
+    --block-space: 4rem;
+    // outline: 1px solid red;
   }
 
   figure :where(figcaption, figcaption p) {
-    margin-block: var(--block-space);
+    padding-block-start: var(--block-space-small);
+    margin-block-end: var(--block-space);
   }
 
-  :global(.remark-code-container),
-  > div {
-    margin-block: var(--block-space);
+  :where(.article-image, figure, img) + p {
+    --block-space: 0;
+  }
 
-    & + p {
-      margin-block-start: 0;
-    }
+  > p + figure {
+    // outline: 2px solid color(display-p3 0.05 0.721 0.921);
+    margin-block-start: theme('margin.12');
+  }
+
+  table {
+    margin-block: theme('margin.12');
   }
 
   /* legacy posts start */
@@ -434,26 +451,11 @@
     margin-block-start: var(--block-space-small);
   }
   /* legacy posts end */
-
-  :where(p, ul, ol, .remark-code-container):not(:first-child) {
-    margin-block-start: var(--block-space-small);
-  }
-
-  :where(.article-image, figure, img) + p {
-    margin-block-start: 0;
-  }
-
-  > p + figure {
-    margin-block-start: theme('margin.12');
-  }
-
-  table {
-    margin-block: theme('margin.12');
-  }
 }
 
 .prose > img,
 .prose > figure > img,
+.prose > figure > :global(.sandbox),
 .prose > :global(.article-image) > img,
 .featured {
   position: relative;
@@ -470,6 +472,10 @@
     left: -2rem;
     width: calc(100% + 4rem);
   }
+}
+
+.prose > figure > :global(.sandbox) {
+  overflow: hidden;
 }
 
 /**
