@@ -83,23 +83,24 @@ I found an [excellent Next.js starter](https://github.com/timlrx/tailwind-nextjs
 ### Making components and keeping CSS as is
 I was able to move all CSS over as a global import and continue with Sass as this had always been.
 
-I begun to break down the previous HTML and begin to create components. A lot of stuff was componentised previously (to a degree) in ExpressionEngine but it needed converting to React code. The component way of working is something I have desired for a while.
+I begun to break down the previous HTML and begin to create components. A lot of stuff was in partials previously in ExpressionEngine but it needed converting to React based components. This way of working is something I have desired for a while.
 
-It was all ready to use and convert to a combination of CSS modules and Tailwind. For me I like the way the components are managed, you keep all the associated style and behaviour close together.
+It was all ready to use and convert to a combination of CSS modules and Tailwind. For me, I like the way the components are managed, you keep all the associated style and behaviour closer together.
 
 ### Failing to sort posts
-The painful parts were sorting the posts on the homepage by view count, I couldn’t figure out a solution to this. I was able to track them without too much trouble. I used Supabase and it was linking the data together that wouldn’t happen for me.
+The painful parts were sorting the posts on the homepage by view count, I couldn’t figure out a solution to this. I was able to track them without too much trouble following an article by [Corey O’Donnell](https://codebycorey.com/blog/page-views-nextjs-supabase). I used Supabase and it was linking the data together that wouldn’t happen for me.
 
 Fortunately for version 8, I was able to get this working.
 
 ### Getting the newsletter to work
-The newsletter subscription was challenging too. I did manage to figure it out and then it broke afterwards around 8 months later and took me a while to realise. Far better developers than I would likely say you need to write tests. Which is something I would like to explore.
+The newsletter subscription was challenging too. I did manage to figure it out and then it broke afterwards around 8 months later and took me a while to realise. Far better developers than I would probably say you need tests or something. Which is something I would like to explore.
 
 But this is something I felt a real achievement in doing the overall behaviour of this is much more seamless and nicer. No third party JavaScript to insert anything. Just post from the page and update the state.
 
 ### Getting something similar to the search overlay
 I had to compromise on the search, I wasn’t able to get it to work as an overlay anymore. However, I was able to get it to search through the posts and show thanks to the starter.
 
-It offers more of a live search experience which is a win. But not many use search and it still works so I accepted the change.
+It offered more of a live search experience which is a win. Not many use search, it worked and I wasn’t willing to put more time in to delay—so I accepted the tradeoff.
 
+## Database to static complete
 But that’s my experience of moving from a database CMS to React framework.
