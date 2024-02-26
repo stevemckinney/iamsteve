@@ -81,9 +81,10 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
   //   '[mask-image:radial-gradient(100%_150%_at_50%_50%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%),radial-gradient(200%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)][mask-size:100%_100%][mask-position:_0_0,0_0][mask-repeat:repeat]'
   // radial-gradient(100%_150%_at_50%_30%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)
   // [mask:radial-gradient(150%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]
+  // [mask:radial-gradient(155%_140%_at_50%_30%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]
 
-  const imageColor = theme ? theme.toString() : '#e8dcd9'
-  const imageClass = `relative flex items-center justify-center [mask:radial-gradient(125%_150%_at_50%_30%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]`
+  const imageColor = theme ? theme.toString() : '#f1e8e4'
+  const imageClass = `relative flex items-center justify-center [mask:radial-gradient(163.02%_100%_at_50%_0%,_#fff_83.77%,_rgba(255,_255,_255,_0.8)_90.28%,_transparent_100%)]`
   const bgFadeTop = `${hexToRgb(imageColor).r},${hexToRgb(imageColor).g},${
     hexToRgb(imageColor).b
   }`

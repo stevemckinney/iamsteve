@@ -53,7 +53,7 @@ const Medium = ({ frontmatter, image, className }) => {
     lastmod,
   } = frontmatter
 
-  const imageColor = theme ? theme.toString() : '#e8dcd9'
+  const imageColor = theme ? theme.toString() : '#f1e8e4'
   const bgFadeTop = `${hexToRgb(imageColor).r},${hexToRgb(imageColor).g},${
     hexToRgb(imageColor).b
   }`

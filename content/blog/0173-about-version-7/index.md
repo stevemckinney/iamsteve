@@ -4,11 +4,11 @@ date: '2023-12-23T10:11:40.788Z'
 lastmod: '2023-12-23T10:11:40.788Z'
 summary: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild and some hindsight into the decision making.'
 metadesc: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild and some hindsight into the decision making.'
-theme: '#e9f5f5'
+theme: '#F1E8E4'
 tags: ['Website']
 categories: ['Website']
-large:
-medium:
+large: /images/blog/about-version-7-featured-image-large.svg
+medium: /images/blog/about-version-7-featured-image-medium.svg
 ogImage: '/assets/og/cover.jpg'
 status: open
 codepen: false
@@ -29,7 +29,12 @@ This was another important thing, being able to deploy and have rollbacks, previ
 
 I’m wary of cost here, as it can easily escalate, but for now it’s in line with what I was paying previously. I’ve also seen a lot around Cloudflare being a good alternative and this is something I may explore.
 
-### Time to go static
+### Being able to use MDX
+If you’re unfamiliar with MDX it allows you to use JSX in your markdown files. So with it you’re able to use components within posts and can make them much more interactive.
+
+For where I use code demos this is really useful. I can keep the code in here for the most part without need for an external service. I intend to do this with simpler examples as I will have greater control over the integration into the article.
+
+### It was time to go static
 So round mid-2021 (see, it’s taken a while to write about), I decided it was time to get it over with if I ever planned to redesign the website. And I decided to go the static route—if you can call Next.js a static site generator.
 
 Theres always been a lot of hype around static site generators, from the original popularity of Jekyll. And I feel I had always avoided it due to having to go all in on the static side, but that’s not the case anymore.

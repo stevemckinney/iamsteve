@@ -8,6 +8,7 @@ import Link from '@/components/link'
 // import CustomLink from '@/components/Link'
 // import TOCInline from '@/components/TOCInline'
 import ContactForm from '@/components/contact-form'
+import Card from '@/components/card'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
 import { useMDXComponent } from 'next-contentlayer/hooks'
@@ -18,6 +19,7 @@ const Prose = ({ children }) => {
 
 const components = {
   Image,
+  Card,
   a: (props) => <Link {...props} />,
   // Campaigns: Campaigns,
   NewsletterForm: NewsletterForm,
