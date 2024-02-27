@@ -45,7 +45,8 @@ async function getPostFromParams(params) {
   return post
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params, searchParams }, parent) {
+  const id = params.id
   const post = await getPostFromParams(params)
 
   if (!post) {
@@ -60,6 +61,8 @@ export async function generateMetadata({ params }) {
       description: post.metadesc,
       type: 'article',
       publishedTime: post.date,
+      modifiedTime: post.lastmod,
+      authors: [siteMetadata.author],
       url: `${post.slug}`,
       images: [
         {

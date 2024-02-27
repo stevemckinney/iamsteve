@@ -107,11 +107,10 @@ export const Post = defineDocumentType(() => ({
         '@type': 'Article',
         mainEntityOfPage: {
           '@type': 'WebPage',
-          '@id': `${siteMetadata.siteUrl}/${doc._raw.flattenedPath
-            .split('/')
-            .slice(1)
-            .join('/')
-            .replace(/^(?:\d\d\d\d-)?/, '')}`,
+          '@id': `${siteMetadata.siteUrl}/${doc._raw.flattenedPath.replace(
+            /^(blog\/)(?:\d{4}-)?/,
+            '$1'
+          )}`,
         },
         headline: doc.title,
         datePublished: doc.date,

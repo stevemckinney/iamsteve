@@ -18,11 +18,28 @@ export const metadata = {
   },
   description:
     'Tips and tutorials about the design and build of web interfaces.',
+  alternates: {
+    canonical: './',
+    types: {
+      'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: 'iamsteve • design & code blog',
     description:
       'Tips and tutorials about the design and build of web interfaces.',
-    url: 'https://iamsteve.me',
+    url: './',
     siteName: 'iamsteve',
     locale: 'en_GB',
     type: 'website',
@@ -40,6 +57,22 @@ const jsonLD = {
       '@type': 'Organization',
       url: `${siteMetadata.siteUrl}`,
       logo: `${siteMetadata.siteUrl}/images/logo.svg`,
+    },
+  ],
+  Person: [
+    {
+      '@type': 'Person',
+      name: 'Steve McKinney',
+      url: 'https://iamsteve.me',
+      sameAs: [
+        'https://twitter.com/irsteve',
+        'https://instagram.com/stevemckinney',
+        'https://uk.linkedin.com/in/steve-mckinney-5b5836102',
+      ],
+      homeLocation: {
+        '@type': 'City',
+        name: 'Manchester',
+      },
     },
   ],
 }
@@ -60,6 +93,7 @@ export default function RootLayout({ children }) {
       lang="en"
       className="light overflow-x-hidden"
       style={{ colorScheme: 'light' }}
+      suppressHydrationWarning
     >
       <head>
         <meta
