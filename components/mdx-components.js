@@ -72,6 +72,19 @@ const postComponents = {
   Image,
   a: (props) => <Link {...props} />,
   Prose: Prose,
+  blockquote: (props) => (
+    <blockquote className={`border-l-2 border-l-cornflour-500 pl-4 -ml-4`}>
+      {props.children}
+    </blockquote>
+  ),
+  Blockquote: (props) => {
+    const { style } = props
+    const styleVariants = {
+      notice: 'border-l-2 border-l-fern-500 pl-4 -ml-4',
+      signpost: '',
+    }
+    return <blockquote className={props.style}>{props.children}</blockquote>
+  },
 }
 
 export function Mdx({ code }) {

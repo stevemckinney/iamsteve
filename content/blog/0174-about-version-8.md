@@ -5,7 +5,7 @@ lastmod: 2023-12-23T10:13:38.269Z
 summary: Design and development decisions for the 8th version of this website. New design, using Next.js App Router and pretty much all in on Tailwind.
 metadesc: Design and development decisions for the 8th version of this website. New design, using Next.js App Router and pretty much all in on Tailwind.
 theme: '#f1e8e4'
-tags: []
+tags: ['Redesign']
 categories: ['Website']
 large: /images/blog/about-version-8-featured-image-large.svg
 medium: /images/blog/about-version-8-featured-image-medium.svg
@@ -106,7 +106,7 @@ You can also make your frontmatter typesafe, which is a nice benefit as I can fo
 
 Otherwise I’m not bothered about types and typescript, it’s too much for me.
 
-> Contentlayer is no longer being maintained, so this is on my list now to remove as a dependency. I am going to replace it with [velite](https://github.com/zce/velite).
+> Contentlayer appears it is no longer being maintained. I intend to replace it with [velite](https://github.com/zce/velite) as this looks like the closest thing to it.
 
 ### Better code highlighting
 Another place I had a load of faff with getting builds to work on Netlify. But I think in the end this was down to the node version I was using on netlify even though I thought I was on a more up to date version.
@@ -159,10 +159,11 @@ I still have some things to learn with grid, but I’m fairly confident with it.
 ## What’s next?
 There’s things I decided not to include for launch and spend more time figuring out how I want to approach them. I’ve a bit of learning to do for some of them, but they are…
 
+- Publish new articles and find some rhythm of what I write about
 - Move from Contentlayer to [Velite](https://github.com/zce/velite)
-- Search
-- Publishing new articles
 - Bug fixes and responsive improvements
 - Links archive
 - Notes section for updates and emerging articles
-- Different homepage structure as I hopefully add more content
+- Different homepage structure as I add more content
+- Post improvements, better layout, content styling, etc.
+- Search
