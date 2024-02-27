@@ -161,7 +161,7 @@ There’s things I decided not to include for launch and spend more time figurin
 
 - Publish new articles and find some rhythm of what I write about
 - Move from Contentlayer to [Velite](https://github.com/zce/velite)
-- Bug fixes and responsive improvements
+- Bug fixes and responsive improvements for less loved pages (eg: contact & about)
 - Links archive
 - Notes section for updates and emerging articles
 - Different homepage structure as I add more content

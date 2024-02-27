@@ -63,7 +63,7 @@ description: I’m Steve McKinney, I write this blog about the design and build 
     Here is the design history of this website. The first version of this website I started working on in 2009, so you can see how my design sensibility has evolved over the years. Version two onwards I have written about.
 
     <Gallery>
-      <GalleryFigure className="col-span-2">
+      <GalleryFigure className="col-span-3">
         <Image
           src="/images/about/v1_2x.jpg"
           width={480}
@@ -74,7 +74,7 @@ description: I’m Steve McKinney, I write this blog about the design and build 
         <GalleryFigcaption>Version one, 2009.</GalleryFigcaption>
       </GalleryFigure>
 
-      <GalleryFigure className="col-span-2">
+      <GalleryFigure className="col-span-3">
         <Image
           src="/images/about/v2_2x.jpg"
           width={480}
@@ -87,7 +87,7 @@ description: I’m Steve McKinney, I write this blog about the design and build 
         </GalleryFigcaption>
       </GalleryFigure>
 
-      <GalleryFigure className="col-span-2">
+      <GalleryFigure className="col-span-3">
         <Image
           src="/images/about/v3_2x.jpg"
           width={480}
@@ -113,7 +113,7 @@ description: I’m Steve McKinney, I write this blog about the design and build 
         </GalleryFigcaption>
       </GalleryFigure>
 
-      <GalleryFigure className="col-span-3">
+      <GalleryFigure className="col-span-full">
         <Image
           src="/images/about/iamsteve-v5.png"
           width={1440}
@@ -125,7 +125,7 @@ description: I’m Steve McKinney, I write this blog about the design and build 
           [Version five, late 2012](/blog/about_version_5)
         </GalleryFigcaption>
       </GalleryFigure>
-      <GalleryFigure className="col-span-3">
+      <GalleryFigure className="col-span-full">
         <Image
           src="/images/about/iamsteve-v6.jpg"
           width={1440}
@@ -137,7 +137,7 @@ description: I’m Steve McKinney, I write this blog about the design and build 
           [Version six, late 2016](/blog/about_version_six)
         </GalleryFigcaption>
       </GalleryFigure>
-      <GalleryFigure className="col-span-3">
+      <GalleryFigure className="col-span-full">
         <Image
           src="/images/about/iamsteve-v7.png"
           width={1440}

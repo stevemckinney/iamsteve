@@ -8,8 +8,8 @@ description: I aim to respond to every email. I especially welcome feedback, ide
   ## Critique
   It’s always helpful, it will help me to improve. And it helps me to focus on the right topics. If you have any feedback or suggestions, I’ll be grateful for you taking the time.
 
-  ## Issues with a post
-  If you’re stuck with a post, I’ll be happy to steer you in the right direction. The following may help speed things up:
+  ## I’m stuck with a post
+  If you’re stuck with a post, I may be able to steer you in the right direction. I can’t solve for every use case, but yours may be a good addition for the post. The following may help speed things up:
 
   - Describe the problem
   - What you’re trying to achieve
@@ -17,7 +17,7 @@ description: I aim to respond to every email. I especially welcome feedback, ide
   - Provide any links to work so I can see errors
   - Don’t send login details by email
 
-  ### There’s something wrong in a post
+  ## There’s something wrong in a post
   Maybe you’ve found an error, typo or can’t access something. Thank you for taking the time to bring it to my attention. I’ll update it.
 
 </Content>
