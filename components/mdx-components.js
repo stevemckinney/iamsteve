@@ -49,6 +49,11 @@ const components = {
       {...props}
     />
   ),
+  blockquote: (props) => (
+    <blockquote className={`border-l-2 border-l-cornflour-500 pl-4 -ml-4`}>
+      {props.children}
+    </blockquote>
+  ),
   Gallery: (props) => (
     <div className="grid gap-2 grid-cols-6 grid-flow-dense">
       {props.children}

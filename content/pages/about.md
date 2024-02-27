@@ -12,6 +12,8 @@ description: I’m Steve McKinney, I write this blog about the design and build 
   </nav>
 
   <article id="site" className="col-content max-w-prose">
+    > This page is a work in progress
+
     ## Who is this for?
     Either you’re a developer wanting to improve their visual design skills, or a designer with some coding experience. You’re someone who understands the value of not only good design, but the requirement of making it look visually appealing too. Through sharing what I know and continue to learn, I hope to meet this need.
 
