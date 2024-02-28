@@ -84,6 +84,13 @@ I have made some sensible decisions with the colour palette—but I know myself 
 ### Slight structural changes
 Overall, throughout the website remains similar. I want to try divide the design and code categories and everything else into the archive.
 
+## Design iteration
+It took a long time I felt for me to reach a point I was happy with the design. 
+
+I had a couple of clear directions and had I not decided to throw everything out I think this version would have been released much sooner. 
+
+> I will follow up with design evolution soon
+
 ## Rebuilding and moving to Next.js app router
 As part of the last version I decided to move to Next.js. This was a learning curve and using the pages router.
 
