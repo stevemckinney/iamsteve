@@ -4,7 +4,7 @@ date: 2023-12-23T10:13:38.269Z
 lastmod: 2023-12-23T10:13:38.269Z
 summary: Design and development decisions for the 8th version of this website. New design, using Next.js App Router and pretty much all in on Tailwind.
 metadesc: Design and development decisions for the 8th version of this website. New design, using Next.js App Router and pretty much all in on Tailwind.
-theme: '#f1e8e4'
+theme: '#f9f3f1'
 tags: ['Redesign']
 categories: ['Website']
 large: /images/blog/about-version-8-featured-image-large.svg
@@ -75,7 +75,7 @@ The colour palette is familiar but renewed. My aim was to pair back the colour a
     <span class="flex-1 h-full bg-fern-1100 flex justify-center items-center rounded-lg shadow-placed"></span>
     <span class="flex-1 h-full bg-ui-body flex justify-center items-center rounded-lg shadow-placed"></span>
     <span class="flex-1 h-full bg-dandelion-200 flex justify-center items-center rounded-lg shadow-placed"></span>
-    <span class="flex-1 h-full bg-neutral-01-100 flex justify-center items-center rounded-lg shadow-placed"></span>
+    <span class="flex-1 h-full bg-neutral-01-150 flex justify-center items-center rounded-lg shadow-placed"></span>
   </div>
 </div>
 

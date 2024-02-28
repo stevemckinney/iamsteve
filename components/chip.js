@@ -124,7 +124,7 @@ export function ChipText({ children, theme, size, className = 'ct' }) {
   }
   // neutral-01
   else if (theme === 'neutral-01') {
-    textTheme = `bg-neutral-01-100/20 text-neutral-01-700 group-hover/chip:bg-neutral-01-300/40 group-hover/chip:text-neutral-01-800`
+    textTheme = `bg-neutral-01-150/20 text-neutral-01-700 group-hover/chip:bg-neutral-01-300/40 group-hover/chip:text-neutral-01-800`
   }
   // neutral-02
   else if (theme === 'neutral-02') {

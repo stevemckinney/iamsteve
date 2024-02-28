@@ -4,7 +4,7 @@ date: '2015-12-15T07:28:00+00:00'
 lastmod: '2018-03-07T13:17:26+00:00'
 summary: 'In this first post, I’m going to run through why colour theory is only a small part of choosing colours. Then you’ll begin to pick your palette. I’ll explain the things, that I consider when choosing a colour palette. This should help to inform your choices.'
 metadesc: 'How to choose an effective colour for your website project. From colours that represent your project to ones that help readability.'
-theme: '#F1E8E4'
+theme: '#f9f3f1'
 tags: ['Design']
 categories: ['Design']
 large: /images/blog/colour-series-featured-image-large.svg

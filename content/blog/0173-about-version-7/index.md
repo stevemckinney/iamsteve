@@ -4,7 +4,7 @@ date: '2023-12-23T10:11:40.788Z'
 lastmod: '2023-12-23T10:11:40.788Z'
 summary: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild and some hindsight into the decision making.'
 metadesc: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild and some hindsight into the decision making.'
-theme: '#F1E8E4'
+theme: '#f9f3f1'
 tags: ['Website']
 categories: ['Website']
 large: /images/blog/about-version-7-featured-image-large.svg

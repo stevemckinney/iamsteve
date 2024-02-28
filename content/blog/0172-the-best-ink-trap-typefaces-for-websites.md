@@ -4,7 +4,7 @@ date: '2021-07-28T10:28:00+00:00'
 lastmod: '2021-07-28T10:28:00+00:00'
 summary: 'A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs.'
 metadesc: 'A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs.'
-theme: '#F1E8E4'
+theme: '#f9f3f1'
 tags: ['Design', 'Typography']
 categories: ['Design', 'Typography']
 large: /images/blog/the-best-ink-trap-typefaces-for-websites-featured-image-large.svg

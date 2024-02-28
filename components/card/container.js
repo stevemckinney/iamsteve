@@ -82,9 +82,11 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
   // radial-gradient(100%_150%_at_50%_30%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)
   // [mask:radial-gradient(150%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]
   // [mask:radial-gradient(155%_140%_at_50%_30%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]
+  // [mask:linear-gradient(to_right,#fff_75%,#fff_80%,transparent_97.5%)]
+  //  [mask:radial-gradient(163.02%_100%_at_50%_0%,_#fff_83.77%,_rgba(255,_255,_255,_0.8)_90.28%,_transparent_100%)]
 
   const imageColor = theme ? theme.toString() : '#f1e8e4'
-  const imageClass = `relative flex items-center justify-center [mask:radial-gradient(163.02%_100%_at_50%_0%,_#fff_83.77%,_rgba(255,_255,_255,_0.8)_90.28%,_transparent_100%)]`
+  const imageClass = `relative flex items-center justify-center`
   const bgFadeTop = `${hexToRgb(imageColor).r},${hexToRgb(imageColor).g},${
     hexToRgb(imageColor).b
   }`
@@ -148,12 +150,10 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
         </>
       )}
       <div
-        className={`flex flex-col flex-auto relative pb-8 @lg/card:pb-[2.625rem] pt-px -mt-px`}
+        className={`flex flex-col flex-auto relative py-8 @lg/card:pb-[2.625rem] @lg/card:pt-12`}
       >
         <div
-          className={`flex flex-row gap-6 relative z-[2] overflow-x-auto pb-4 @lg/card:pb-5 px-8 @lg/card:px-12 [mask:linear-gradient(to_right,#fff_75%,#fff_80%,transparent_97.5%)] ${
-            image ? 'pt-px -mt-px' : 'pt-8'
-          }`}
+          className={`flex flex-row gap-6 relative z-[2] overflow-x-auto pb-4 @lg/card:pb-5 px-8 @lg/card:px-12`}
         >
           {categories &&
             categories.map((category) => {
@@ -178,7 +178,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
             <Date dateString={date} />
           </Badge>
         </div>
-        <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @lg/card:pt-5 @lg/card:gap-3 @lg/card:px-12">
+        <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @lg/card:pt-2 @lg/card:gap-3 @lg/card:px-12">
           <h2
             className="p-0 m-0 leading-none lowercase text-balance font-display font-variation-bold hyphens-auto text-3xl @lg/card:text-5xl"
             id={`title-${id}`}

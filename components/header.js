@@ -29,7 +29,7 @@ export default function Header() {
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-[1]"
         id="top"
       >
-        <div className="col-container lg:col-content flex items-center align-center py-4 px-4 lg:py-6 2xl:py-9 2xl:px-8 2xl:-mx-8 bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-100 max-md:-mx-4">
+        <div className="col-container lg:col-content flex items-center align-center py-4 px-4 lg:py-6 2xl:py-9 2xl:px-8 2xl:-mx-8 bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 max-md:-mx-4">
           <Link
             href="/"
             className="flex-[1_0_10%]"
