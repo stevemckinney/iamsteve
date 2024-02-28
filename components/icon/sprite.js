@@ -14,6 +14,7 @@ const Sprite = (props) => (
       width: 0,
       height: 0,
       overflow: 'hidden',
+      display: 'none',
     }}
     {...props}
   >
