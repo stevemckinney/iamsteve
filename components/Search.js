@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom'
 
 // utils
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/content/metadata'
 import formatDate from '@/lib/utils/formatDate'
 
 // layouts
@@ -11,11 +11,16 @@ import CardLayout from '@/layouts/CardLayout'
 // components
 import Card from '@/components/card'
 import Icon from '@/components/icon'
-import Link from '@/components/Link'
+import Link from '@/components/link'
 import Pagination from '@/components/Pagination'
 import Tag from '@/components/Tag'
 
-export default function Search({ posts, initialDisplayPosts = [], handleClose, show }) {
+export default function Search({
+  posts,
+  initialDisplayPosts = [],
+  handleClose,
+  show,
+}) {
   const [isBrowser, setIsBrowser] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   // const filteredBlogPosts = posts.filter((frontmatter) => {
@@ -26,7 +31,9 @@ export default function Search({ posts, initialDisplayPosts = [], handleClose, s
   const filteredBlogPosts = false
 
   const displayPosts =
-    initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
+    initialDisplayPosts.length > 0 && !searchValue
+      ? initialDisplayPosts
+      : filteredBlogPosts
 
   useEffect(() => {
     setIsBrowser(true)
@@ -35,7 +42,9 @@ export default function Search({ posts, initialDisplayPosts = [], handleClose, s
   const searchContent = (
     <>
       <div
-        className={`overlay overlay-search flex items-center center ${show ? 'showing' : 'hiding'}`}
+        className={`overlay overlay-search flex items-center center ${
+          show ? 'showing' : 'hiding'
+        }`}
         aria-labelledby="toggle-search-nav toggle-search"
         role="dialog"
       >
@@ -53,7 +62,11 @@ export default function Search({ posts, initialDisplayPosts = [], handleClose, s
               autoCapitalize="off"
               className="input input-search f2"
             />
-            <button type="submit" className="button button-search primary" aria-label="Search">
+            <button
+              type="submit"
+              className="button button-search primary"
+              aria-label="Search"
+            >
               <span className="f2 f3-c icon icon-medium icon-large-c icon-search">
                 <Icon kind="search" />
               </span>
@@ -76,7 +89,10 @@ export default function Search({ posts, initialDisplayPosts = [], handleClose, s
   )
 
   if (isBrowser) {
-    return ReactDOM.createPortal(searchContent, document.getElementById('modal-root'))
+    return ReactDOM.createPortal(
+      searchContent,
+      document.getElementById('modal-root')
+    )
   } else {
     return null
   }

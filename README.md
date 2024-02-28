@@ -1,4 +1,4 @@
-![iamsteve.me banner](/public/static/images/twitter-card.png)
+![iamsteve.me banner](/public/images/twitter-card.png)
 
 # iamsteve.me design & code blog
 A design and code blog using Next.js. The codebase started from the excellent [tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog).
@@ -33,9 +33,9 @@ metadesc: "When designing there are things you can rely upon regardless of the s
 theme: "#fff7e0"
 tags: ["Design"]
 categories: ["Design"]
-images: ["/static/images/blog/visual-design-tips-featured-image.png"]
-large: "/static/images/blog/visual-design-tips-featured-image.png"
-medium: "/static/images/blog/visual-design-tips-featured-image-medium.png"
+images: ["/images/blog/visual-design-tips-featured-image.png"]
+large: "/images/blog/visual-design-tips-featured-image.png"
+medium: "/images/blog/visual-design-tips-featured-image-medium.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 164

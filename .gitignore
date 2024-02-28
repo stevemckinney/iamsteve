@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.contentlayer
 
 # testing
 /coverage
@@ -18,7 +19,7 @@ public/sitemap.xml
 /build
 *.xml
 # rss feed
-/public/feed.xml 
+/public/feed.xml
 
 # misc
 .DS_Store
@@ -36,7 +37,7 @@ yarn-error.log*
 .env.production.local
 
 uploads
-//public/static/images/blog
+
 .env
 .env.example
 

@@ -1,7 +1,11 @@
 const Social = () => {
   return (
     <>
-      <a href="https://dribbble.com/stevemckinney" className="link-dribbble" rel="me">
+      <a
+        href="https://dribbble.com/stevemckinney"
+        className="link-dribbble"
+        rel="me"
+      >
         dribbble
       </a>
       {', '}
@@ -9,7 +13,11 @@ const Social = () => {
         twitter
       </a>
       {', '}
-      <a href="https://www.behance.net/stevemckinney" className="link-behance" rel="me">
+      <a
+        href="https://www.behance.net/stevemckinney"
+        className="link-behance"
+        rel="me"
+      >
         behance
       </a>{' '}
       and{' '}

@@ -1,10 +1,10 @@
-[build.environment]
-[context.production.branch-deploy]
-  command = "npm run lint && npm run build && mv robots-disallow.txt public/robots.txt"
-  publish = ".next"
-[context.production]
-  command = "npm run lint && npm run build && mv robots-production.txt public/robots.txt"
-  publish = ".next"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Content-Security-Policy = "default-src 'self'; style-src 'self'; form-action 'self'; script-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'self'"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
@@ -80,16 +80,6 @@
   to = "/blog/:splat"
   status = 301
   force = true
-
-[[redirects]]
-  from = "/robots.txt"
-  to = "/robots.txt"
-  status = 200
-
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
-  status = 200
 
 [[redirects]]
   from = "/rss"
