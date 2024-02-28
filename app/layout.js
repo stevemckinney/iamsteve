@@ -78,7 +78,7 @@ const jsonLD = {
 }
 
 export const viewport = {
-  themeColor: 'rgb(249 243 241)', //'rgb(241 232 228)',
+  themeColor: 'rgb(241 232 228)', //'rgb(241 232 228)',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
