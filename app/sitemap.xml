@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://iamsteve.meapp/layout</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.meapp/not-found</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0008-redesign</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0014-updates</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0015-dribbble-invite-giveaway</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0017-pro-dev-day</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0018-portfolio-additions</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0022-about-the-redesign-v3</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0023-updates-and-advice</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0024-inline-block</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0025-long-time-no-blog</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0029-buttons</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0034-wordpress-post-formats</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0037-about-version-4</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0040-patience-a-wordpress-tumblog-theme</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0046-sass-hints-and-tips</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0047-about-version-5</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0048-create-a-sass-button-element-mixin</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0049-using-scale-color-in-sass</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0050-compass-mixins-you-should-know-about</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0051-create-a-fluid-browser-with-border-image</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0052-using-ems-for-efficiency</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0053-understanding-sass-default-variables</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0054-my-svg-workflow-from-awkward-to-simple</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0055-critical-asynchronous-css</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0056-javascript-without-jquery</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0057-images-with-srcset-picture</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0058-svg-reusability-animation</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0059-overcoming-a-couple-of-issues-with-svg-filter-effects</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0061-manage-text-colour-with-ease</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0062-using-browsersync-and-safari-for-testing-your-responsive-website</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0063-sass-hints-tips-revisited</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0064-object-fit-for-full-viewport-images-with-ease</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0065-opt-in-style</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0066-adobe-generator-syntax-cheatsheet</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0067-using-photoshop-linked-smart-objects-for-more-modular-designs</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0068-type-scale-line-height-lengths</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0069-using-webkit2png-to-generate-responsive-screenshots</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0070-how-to-choose-a-typeface-for-paragraphs</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0071-using-cookies-to-serve-critical-css-for-first-time-visits</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0072-horizontal-scrolling-responsive-menu</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0073-flexbox-quick-wins</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0074-creating-vintage-filters-with-css-blend-modes</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0075-sass-map-use-patterns</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0076-using-srcset-with-the-post-thumbnail-in-wordpress</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0077-photoshop-grids-using-guide-layouts</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0078-wordpress-custom-fields</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0079-illustrator-quick-tip-grid-guides</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0080-remove-letter-spacing-from-last-letter</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0081-using-wordpress-customiser-to-create-editable-regions</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0082-a-couple-of-masking-techniques-in-photoshop</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0083-creating-custom-stroke-width-profiles-in-illustrator</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0084-using-sass-to-create-harmonious-gradients</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0085-what-ive-learnt-from-6-months-of-writing-weekly</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0086-redirecting-an-old-domain-to-a-new-domain-with-nginx</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0087-a-guide-to-vertical-rhythm</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0088-using-flexbox-for-horizontal-scrolling-navigation</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0089-accuracy-in-wireframes</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0090-typekit-gems-number-one</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0091-responsive-vertical-rhythm</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0092-having-a-central-logo-with-wordpress-menus</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0093-setting-a-cookie-with-wordpress</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0094-add-critical-css-with-wp-enqueue-scripts</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0095-iamsteve-a-new-logomark</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0096-how-to-consistently-style-form-elements</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0097-maintenance-week</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0098-using-grunticon-to-inline-svg</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0099-three-free-form-styles</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0100-tips-for-sketching-websites</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0101-why-you-should-roll-your-own-framework</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0102-thoughts-on-avoiding-split-focus</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0103-christmas-gift-guide-2015</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0104-feature-detection-with-css</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0105-colour-series-picking-your-palette</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0106-colour-series-tweaking-your-palette</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0107-colour-series-adding-new-colours-tips</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0108-a-year-in-writing-2015</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0109-horizontal-scrolling-toggle</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0110-11-resources-for-colour-inspiration</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0111-maintenance-week-2</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0112-how-to-flexible-squares-with-css</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0113-enhancing-horizontal-scrolling-with-flickity-js</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0114-get-up-to-speed-with-css-shapes</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0115-how-to-use-json-ld-to-replace-microdata-with-wordpress</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0116-three-ways-to-export-svg-in-illustrator</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0117-ways-to-get-post-thumbnails-in-wordpress</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0118-hero-area-series-plan-design</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0119-hero-area-series-designing-for-small-screens</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0120-hero-area-series-html-css-responsive</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0121-hero-area-series-wordpress-customizer-with-selective-refresh</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0122-tools-i-use</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0123-how-to-use-swatches-in-illustrator</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0124-illustrator-export-2x-with-a-1x-canvas</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0125-how-to-datepicker-using-illustrator</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0126-how-to-datepicker-styling-illustrator</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0127-maintenance-week-3</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0128-get-up-to-speed-with-scroll-snap-points</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0129-why-you-should-use-tachyons-to-make-css-easier</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0130-illustrator-quick-tip-align-to-key-object</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0131-efficient-table-creation-in-illustrator</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0132-redesign-progress-update</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0133-wordpress-functions-to-help-make-your-life-easier</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0134-making-a-pricing-table-in-illustrator</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0135-css-only-ios-style-toggle</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0136-designing-a-pricing-table-in-code</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0137-stop-headroom-hiding-when-your-navigation-is-open</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0138-maintenance-week-4</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0139-websites-using-alternatives-to-the-hamburger</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0140-illustrator-quick-tip-equally-space-objects</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0141-about-version-six</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0142-pixel-perfect-templates-in-illustrator</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0143-shop-filter-series-sketching-starting-wireframes</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0144-shop-filter-series-completing-the-filters</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0145-maintenance-week-5</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0146-shop-filter-series-visual-style</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0147-shop-filter-series-visual-style-completion</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0148-alternatives-to-circular</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0149-my-design-process-v6-case-study</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0150-illustrator-keyboard-shortcuts</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0151-month-design-roundup-1</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0152-maintenance-week-6</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0153-go2golf-logo-case-study</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0154-multiple-level-horizontal-scrolling-navigation</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0155-christmas-gift-guide-2016</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0156-monthly-design-roundup-2</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0157-lets-make-a-better-icon-system-with-svg</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0158-illustrator-non-destructive-shape-editing</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0159-a-year-in-writing-2016</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0160-how-to-use-kerning-tracking</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0161-making-patterns-in-illustrator</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0162-illustrator-quick-tip-export-a-colour-palette-quickly</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0163-overcoming-design-roadblocks</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0164-visual-design-tips-you-can-apply-immediately</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0165-search-overlay-with-smooth-reveal-animation</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0166-illustrator-tip-which-stroke-alignment</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0167-a-year-in-writing-2017</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0168-nice-and-easy-lazy-loading-with-lazysizes-js</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0169-tips-for-using-colour-effectively-in-web-illustration</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0170-atomic-font-size-management-with-sass</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0171-css-tip-avoid-your-font-face-fauxs</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0172-the-best-ink-trap-typefaces-for-websites</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0174-about-version-8</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc
+      >https://iamsteve.me/blog/0175-thinking-in-grid-from-design-to-code</loc
+    >
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/9999-template</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/_00999.template</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+
+  <url>
+    <loc>https://iamsteve.me/blog/0173-about-version-7/index</loc>
+    <lastmod>Wed Feb 28 2024 18:22:12 GMT+0000 (Greenwich Mean Time)</lastmod>
+  </url>
+</urlset>

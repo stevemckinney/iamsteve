@@ -18,6 +18,7 @@ public/sitemap.xml
 # production
 /build
 *.xml
+!app/sitemap.xml
 # rss feed
 /public/feed.xml
 
