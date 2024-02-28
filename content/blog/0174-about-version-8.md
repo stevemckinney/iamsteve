@@ -85,9 +85,9 @@ I have made some sensible decisions with the colour palette—but I know myself 
 Overall, throughout the website remains similar. I want to try divide the design and code categories and everything else into the archive.
 
 ## Design iteration
-It took a long time I felt for me to reach a point I was happy with the design. 
+It took a long time I felt for me to reach a point I was happy with the design.
 
-I had a couple of clear directions and had I not decided to throw everything out I think this version would have been released much sooner. 
+I had a couple of clear directions and had I not decided to throw everything out I think this version would have been released much sooner.
 
 > I will follow up with design evolution soon
 
@@ -99,7 +99,7 @@ However, for this redesign that was flipped on its head with app router. I was e
 I did try to transition to app router from pages but for me it didn’t work and as Vercel are clear this is the way forward I decided to do it from scratch.
 
 ### View counter
-I spent an inordinate amount of time on the view tracking—JavaScript development is not my best skill 😅. I referenced a lot of Lee Robinson’s code as he had one in place, but there was a lot of figuring out required as I was using Supabase over Planetscale.
+I spent an inordinate amount of time on the view tracking—JavaScript development is not my best skill 😅. I referenced a lot of [Lee Robinson’s](https://github.com/leerob/leerob.io) code as he had one in place, but there was a lot of figuring out required as I was using Supabase over Planetscale.
 
 But this was much easier to setup view count sorting on the homepage which I wasn’t able to achieve previously. Swings and roundabouts.
 
@@ -116,11 +116,11 @@ Otherwise I’m not bothered about types and typescript, it’s too much for me.
 > Contentlayer appears it is no longer being maintained. I intend to replace it with [velite](https://github.com/zce/velite) as this looks like the closest thing to it.
 
 ### Better code highlighting
-Another place I had a load of faff with getting builds to work on Netlify. But I think in the end this was down to the node version I was using on netlify even though I thought I was on a more up to date version.
+Another place I had a load of faff with getting builds to work on Netlify. But I think in the end this was down to the node version I was using on Netlify even though I thought I was on a more up to date version.
 
-I was resigned to using `rehype-pretty-code` but managed to get it all working with rehype-prism-plus. Which I was able to get a decent theme going, pretty code is far too limited in code highlighting.
+I was resigned to using `rehype-pretty-code` but managed to get it all working with `rehype-prism-plus`. Which I was able to get a decent theme going, pretty code is far too limited in code highlighting.
 
-And personally I find it easier to read when your brackets in html and jsx are the same colour as the tag.
+And personally I find it easier to read when your brackets in HTML and JSX are the same colour as the tag, which wasn't achievable without using Prism.
 
 ## Using border-image for nicer borders
 The standard borders available in CSS aren’t desirable visually. You have `dotted`, `dashed` and not a lot else when it comes to controlling border style.
@@ -166,6 +166,7 @@ I still have some things to learn with grid, but I’m fairly confident with it.
 ## What’s next?
 There’s things I decided not to include for launch and spend more time figuring out how I want to approach them. I’ve a bit of learning to do for some of them, but they are…
 
+- Categorisation of posts & article cleanup
 - Publish new articles and find some rhythm of what I write about
 - Move from Contentlayer to [Velite](https://github.com/zce/velite)
 - Bug fixes and responsive improvements for less loved pages (eg: contact & about)
