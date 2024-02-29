@@ -245,6 +245,13 @@ export default async function PostPage({ params }) {
           strategy="afterInteractive"
         />
       )}
+      {post.twitter === true && (
+        <Script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          strategy="afterInteractive"
+        />
+      )}
     </>
   )
 }
