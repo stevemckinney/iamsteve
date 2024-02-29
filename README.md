@@ -1,7 +1,7 @@
-![iamsteve.me banner](/public/images/twitter-card.png)
+![iamsteve.me banner](/app/opengraph-image.png)
 
 # iamsteve.me design & code blog
-A design and code blog using Next.js. The codebase started from the excellent [tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog).
+A design and code blog using Next.js with App Router.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/520edf5b-5787-4b69-a2f0-7ae1efdc3df3/deploy-status)](https://app.netlify.com/sites/iamsteve/deploys)
 
@@ -9,9 +9,9 @@ A design and code blog using Next.js. The codebase started from the excellent [t
 First, run the development server:
 
 ```bash
-npm start
+yarn build
 # or
-npm run dev
+yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -19,6 +19,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
 ## Post
+Posts are made up of a bunch of frontmatter, some of it isn’t required, but was more for futureproofing when moving from a database to file based editing.
+
+### To start
+Run `node ./scripts/compose.js` to begin a new post.
+
+This will offer prompts for a few frontmatter and generate dates for you.
 
 ### Frontmatter
 Here's an example of a post's frontmatter:
@@ -45,16 +51,13 @@ fileroot: "visual-design-tips-you-can-apply-immediately"
 
 Some of this frontmatter is excessive, but necessary for futureproofing to an extent. The less obvious ones are detailed below:
 
-- `images` is an array and is only the main image and should be `1476x984` @2x which is `738x492` @1x
-- `large` will be for legacy posts only as it won’t be needed
-- `medium` is for images in /blog or the homepage at `756x504` @2x which is `378x252` @1x
-- `ogImage` acts as a placeholder for custom opengraph images and isn’t used currently
+- `images` isn’t to be used, I had plans to use it as an array but it felt clunky
+- `large` the main image and should be `592x368` in SVG
+- `medium` `384x240` in SVG
+- `ogImage` for custom post opengraph images, not required, but there if needed
 - `status` is a carry over from the previous expressionengine days `open`, `draft` or `closed` are options
-- `id` use the latest post as reference (I wish there was a better way)
-- `fileroot` is a slug and again acts like a placeholder
+- `id` this will be unique and update the `.current-post-id` file with this to keep track, a rudimentary way of keeping track
+- `fileroot` is a slug and again acts like a placeholder, I personally use this to grab the filename without `id` to use for naming images
 
-### Compose
-
-Run `node ./scripts/compose.js` to begin a new post.
-
-This will offer prompts for a few frontmatter and generate dates for you.
+## Credits
+The codebase started from the excellent [tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog) and has since evolved from that.
