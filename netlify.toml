@@ -2,8 +2,20 @@
   package = "@netlify/plugin-nextjs"
 
 [[redirects]]
+  from = "/blog/entry/horizontal‑scrolling‑responsive‑menu"
+  to = "/blog/horizontal-scrolling-responsive-menu"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blog/compass_mixins_you_should_know_about"
   to = "/blog/compass-mixins-you-should-know-about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/downloads"
+  to = "/"
   status = 301
   force = true
 
