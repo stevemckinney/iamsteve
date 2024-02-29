@@ -1,6 +1,6 @@
 {
   "name": "iamsteve",
-  "version": "8.0.0-beta",
+  "version": "8.0.0",
   "private": true,
   "scripts": {
     "dev": "contentlayer dev & next dev",
