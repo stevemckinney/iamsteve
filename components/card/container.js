@@ -25,7 +25,7 @@ function hexToRgb(hex) {
     : null
 }
 
-const LargeImage = ({ ...props }) => {
+const PostImage = ({ ...props }) => {
   const { large, medium, title, imageColor, categories, year } = props
   const oldWidthMedium = 378
   const oldHeightMedium = 252
@@ -95,7 +95,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
     <article
       className={`@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative ${className}`}
     >
-      {image && large && (
+      {image && (large || medium) && (
         <Link
           href={slug}
           title=""
@@ -104,7 +104,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
           aria-labelledby={`title-${id}`}
         >
           <>
-            <LargeImage
+            <PostImage
               large={large}
               medium={medium}
               imageColor={imageColor}
@@ -115,7 +115,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
           </>
         </Link>
       )}
-      {image && !large && (
+      {image && (!large || !medium) && (
         <>
           <div
             className={imageClass}

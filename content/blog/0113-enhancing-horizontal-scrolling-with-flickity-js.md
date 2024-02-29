@@ -7,8 +7,9 @@ metadesc: "How to add flickity.js to already horizontal scrolling areas. Using f
 theme: "#fffcf4"
 tags: ["Code"]
 categories: ["Code"]
-images: ["/images/blog/flickity-navigation.png"]
+images:
 large: "/images/blog/flickity-navigation.png"
+medium: "/images/blog/flickity-navigation.png"
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true
