@@ -1,7 +1,7 @@
 ---
 title: About version 7
-date: '2023-12-23T10:11:40.788Z'
-lastmod: '2023-12-23T10:11:40.788Z'
+date: 2024-02-29T10:13:38.269Z
+lastmod: 2024-02-29T10:13:38.269Z
 summary: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild and some hindsight into the decision making.'
 metadesc: 'How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild and some hindsight into the decision making.'
 theme: '#f9f3f1'

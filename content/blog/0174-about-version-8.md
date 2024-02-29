@@ -1,7 +1,7 @@
 ---
 title: About version 8
-date: 2023-12-23T10:13:38.269Z
-lastmod: 2023-12-23T10:13:38.269Z
+date: 2024-02-29T10:13:38.269Z
+lastmod: 2024-02-29T10:13:38.269Z
 summary: Design and development decisions for the 8th version of this website. New design, using Next.js App Router and pretty much all in on Tailwind.
 metadesc: Design and development decisions for the 8th version of this website. New design, using Next.js App Router and pretty much all in on Tailwind.
 theme: '#f9f3f1'
