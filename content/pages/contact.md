@@ -27,6 +27,6 @@ description: I aim to respond to every email. I especially welcome feedback, ide
   <Notepad.Body>
     If there’s anything you’d like to talk to me about you can use the contact form or <a href="mailto:hi@iamsteve.me" className="text-fern-1100 hover:text-dandelion-600 transition duration-200">send an email</a>.
     <hr className="border-neutral-01-200 mb-3" />
-    <ContactForm />
+    <div className="flex w-full p-12 bg-cornflour-100/20 text-cornflour-600 justify-center rounded-sm">Form currently unavailable.</div>
   </Notepad.Body>
 </Notepad>

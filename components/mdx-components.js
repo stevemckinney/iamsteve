@@ -21,7 +21,7 @@ const components = {
   Image,
   Card,
   Link,
-  a: (props) => <Link {...props} />,
+  a: (props) => <Link {...props} className="underline" />,
   // Campaigns: Campaigns,
   NewsletterForm: NewsletterForm,
   Notepad: Notepad,

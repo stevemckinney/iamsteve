@@ -28,7 +28,12 @@ const Input = forwardRef(function Input(props, forwardedRef) {
 })
 
 const ContactForm = () => (
-  <Form.Root className="w-full grid grid-cols-5 gap-8" data-netlify="true">
+  <Form.Root
+    className="w-full grid grid-cols-5 gap-8"
+    data-netlify="true"
+    action="/success"
+    netlify
+  >
     <Form.Field className="col-span-2 flex flex-col relative" name="name">
       <div className="flex flex-col items-baseline justify-between">
         <Label>Name</Label>
