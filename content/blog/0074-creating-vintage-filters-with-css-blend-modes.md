@@ -6,7 +6,7 @@ summary: "With blend modes we can apply a vintage style to any image like we wou
 metadesc: "CSS is now able to use blend modes. Using mix-blend-mode we can add ’vintage’ style effects to images."
 theme: "#e1f7ee"
 tags: ["Code"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true

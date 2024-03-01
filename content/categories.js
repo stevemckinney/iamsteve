@@ -111,7 +111,7 @@ const categories = [
     slug: '/category/css',
     slugAsParams: 'css',
     description:
-      'All things CSS. Looking at specific properties and techniques, to building components and tailwind',
+      'All things CSS. Looking at specific properties and techniques, to building components and atomic CSS like tailwind',
     parent: 'code',
     theme: 'grass',
     icon: 'css',
@@ -121,7 +121,8 @@ const categories = [
     title: 'Patterns',
     slug: '/category/patterns',
     slugAsParams: 'patterns',
-    description: 'Patterns posts',
+    description:
+      'Quick and easy reusable techniques that you can apply to your projects.',
     parent: 'code',
     theme: 'fern',
     icon: 'puzzle',
@@ -131,7 +132,8 @@ const categories = [
     title: 'JavaScript',
     slug: '/category/javascript',
     slugAsParams: 'javascript',
-    description: 'JavaScript posts',
+    description:
+      'Adding an extra layer of interactivity to build upon foundations of our markup',
     parent: 'code',
     theme: 'magenta',
     icon: 'note',

@@ -6,7 +6,7 @@ summary: "Since they appeared in iOS it’s been a trend to recreate these using
 metadesc: "No JavaScript required, iOS style toggle with CSS. Using the :checked pseudo class and adjacent sibling selector it makes it possible."
 theme: "#e9f5f5"
 tags: ["Code"]
-categories: ["Code"]
+categories: ["Code", "CSS", "Patterns"]
 images: ["/images/blog/ios-toggle-featured-image-large.png"]
 large: "/images/blog/ios-toggle-featured-image-large.png"
 medium: "/images/blog/ios-toggle-featured-image-small.png"
