@@ -95,5 +95,8 @@
     "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
       "prettier --write"
     ]
+  },
+  "devDependencies": {
+    "velite": "^0.1.0-beta.11"
   }
 }

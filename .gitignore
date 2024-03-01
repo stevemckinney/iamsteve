@@ -44,3 +44,5 @@ uploads
 
 # Local Netlify folder
 .netlify
+
+.velite
