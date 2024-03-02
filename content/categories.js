@@ -4,7 +4,7 @@ const categories = [
     slug: '/category/design',
     slugAsParams: 'design',
     description:
-      'From speedy quick tips and resources, to typography and colour techniques. As well as UX and visual design magic',
+      'From speedy workflow based quick tips and resources, practical techniques to create well designed interfaces.',
     parent: false,
     theme: 'rio',
     icon: 'pen',
@@ -47,7 +47,8 @@ const categories = [
     title: 'Resources',
     slug: '/category/resources',
     slugAsParams: 'resources',
-    description: 'Collections of links, inspiration and more',
+    description:
+      'Collections of links or specific articles, to things I wish I had written or designed.',
     parent: 'design',
     theme: 'fern',
     icon: 'settings',
@@ -57,7 +58,8 @@ const categories = [
     title: 'UX design',
     slug: '/category/ux-design',
     slugAsParams: 'ux-design',
-    description: 'Broadly covering all things that affect a users experience',
+    description:
+      'Exploring the principles and practices of usability, and how to apply them to your projects',
     parent: 'design',
     theme: 'grass',
     icon: 'cursor',
@@ -89,7 +91,7 @@ const categories = [
     slug: '/category/code',
     slugAsParams: 'code',
     description:
-      'Exploring CSS and JavaScript with modern techniques. Through building designs I use this to share what I learn',
+      'Exploring CSS, JavaScript and handover techniques. Through building designs I use this to share what I learn',
     parent: false,
     theme: 'dandelion',
     icon: 'code',
@@ -100,7 +102,7 @@ const categories = [
     slug: '/category/animation',
     slugAsParams: 'animation',
     description:
-      'The technical side of animation, from simple CSS transitions through to using libraries like Framer Motion',
+      'Add some motion and interactivity to your interfaces using animation techniques and libraries like Framer Motion.',
     parent: 'code',
     theme: 'magenta',
     icon: 'play',
@@ -111,7 +113,7 @@ const categories = [
     slug: '/category/css',
     slugAsParams: 'css',
     description:
-      'All things CSS. Looking at specific properties and techniques, to building components and atomic CSS like tailwind',
+      'Dive deeper into the powerful and versatile styling language that can transform your interfaces.',
     parent: 'code',
     theme: 'grass',
     icon: 'css',
@@ -122,7 +124,7 @@ const categories = [
     slug: '/category/patterns',
     slugAsParams: 'patterns',
     description:
-      'Quick and easy reusable techniques that you can apply to your projects.',
+      'Reusable techniques that you can apply to your projects that solve common problems and challenges.',
     parent: 'code',
     theme: 'fern',
     icon: 'puzzle',
@@ -133,7 +135,7 @@ const categories = [
     slug: '/category/javascript',
     slugAsParams: 'javascript',
     description:
-      'Adding an extra layer of interactivity to build upon foundations of our markup',
+      'Enhance your interfaces with dynamic and interactive features to build upon the foundations of your markup',
     parent: 'code',
     theme: 'magenta',
     icon: 'note',
@@ -144,7 +146,7 @@ const categories = [
     slug: '/category/website',
     slugAsParams: 'website',
     description:
-      'Posts specific to this website, such as design updates and changes',
+      'Posts specific to this website, such as design maintenance, updates and changes',
     parent: false,
     theme: 'cornflour',
     icon: 'folder',

@@ -540,7 +540,7 @@ const Sprite = (props) => (
           />
           <path
             d="M15 3v5h5M8 13h8m-8 4h8"
-            className="stroke-current stroke-2 sl-r"
+            className="fill-current stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>
