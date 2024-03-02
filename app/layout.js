@@ -113,7 +113,7 @@ export default function RootLayout({ children }) {
        * the border alignment within the header
        */}
       <body
-        className={`max-2xl:overflow-x-hidden antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100 grid layout gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto pt-[env(safe-area-inset-top,0)]`}
+        className={`overflow-x-hidden antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100 grid layout gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto pt-[env(safe-area-inset-top,0)]`}
       >
         <Sprite />
         <ModeToggle />
