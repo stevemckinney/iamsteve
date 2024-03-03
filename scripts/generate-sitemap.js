@@ -7,11 +7,13 @@ const siteMetadata = require('../content/metadata')
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
   const pages = await globby([
     'app/*.js',
-    'app/layout.js',
     'content/blog/**/*.mdx',
     'content/blog/**/*.md',
     'public/tag/**/*.xml',
     'public/category/**/*.xml',
+    '!app/layout.js',
+    '!app/sitemap.js',
+    '!app/not-found.js',
     '!app/_*.js',
     '!app/api',
     '!global.css',
@@ -29,12 +31,14 @@ const siteMetadata = require('../content/metadata')
                 const path = page
                   .replace('app/page.js', '/')
                   .replace('content/pages/', '/')
+                  .replace(/^(content\/blog\/)(?:\d{4}-)?/, '$1')
                   .replace('content/blog', '/blog')
                   .replace('public/', '/')
                   .replace('.js', '')
                   .replace('.mdx', '')
                   .replace('.md', '')
                   .replace('/feed.xml', '')
+                  .replace(/\/index$/, '')
                 const route = path === '/index' ? '' : path
 
                 var stats = fs.statSync(page)
@@ -49,7 +53,10 @@ const siteMetadata = require('../content/metadata')
                 }
                 return `
                         <url>
-                            <loc>${siteMetadata.siteUrl}${route}</loc>
+                            <loc>${siteMetadata.siteUrl}${route.replace(
+                  /^(blog\/)(?:\d{4}-)?/,
+                  '$1'
+                )}</loc>
                             <lastmod>${mtime}</lastmod>
                         </url>
                     `
@@ -64,5 +71,5 @@ const siteMetadata = require('../content/metadata')
   })
 
   // eslint-disable-next-line no-sync
-  fs.writeFileSync('app/sitemap.xml', formatted)
+  fs.writeFileSync('public/sitemap.xml', formatted)
 })()
