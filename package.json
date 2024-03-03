@@ -54,6 +54,7 @@
     "eslint-config-next": "^14.0.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "feed": "^4.2.2",
     "github-slugger": "^2.0.0",
     "globby": "^11.1.0",
     "gray-matter": "^4.0.3",
