@@ -48,7 +48,7 @@ export default function FooterProfile() {
           </li>
           <li>
             <Link
-              href="/design"
+              href="/category/design"
               className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
             >
               <Icon icon="pen" size={16} className="text-current shrink-0" />{' '}
@@ -57,7 +57,7 @@ export default function FooterProfile() {
           </li>
           <li>
             <Link
-              href="/code"
+              href="/category/code"
               className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
             >
               <Icon icon="code" size={16} className="text-current shrink-0" />
