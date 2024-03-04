@@ -132,7 +132,7 @@ export default function FooterProfile() {
         <ul className="flex flex-row flex-wrap gap-x-6 gap-y-2 sm:gap-y-4">
           <li>
             <Link
-              href="x.com/irsteve"
+              href="https://x.com/irsteve"
               className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
             >
               <Icon icon="x" size={16} className="text-current shrink-0" />
@@ -174,6 +174,7 @@ export default function FooterProfile() {
             <Link
               href="https://mastodon.design/@steve"
               className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
+              rel="me"
             >
               <Icon
                 icon="mastodon"
