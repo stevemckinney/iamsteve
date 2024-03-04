@@ -163,7 +163,7 @@ Now to make sure both of the lines are part of the same path. Using the direct s
 Drag and select the corner where both paths meet. Then right click the points that you have selected and select join.
 
 <div className="article-image">
-  <Image src="/images/blog/datepicker-rotate.gif" width={748} height={360} />
+  <Image src="/images/blog/datepicker-rotate.gif" unoptimized={true} width={748} height={360} />
 </div>
 
 Now that we have the basic path, it needs rotating. With the path selected, highlight near one the points, and you should see the cursor change. Hold <kbd>shift</kbd>, click and drag until it snaps into the position needed for an arrow.

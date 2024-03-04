@@ -49,7 +49,7 @@ After making using the pathfinder on the shapes, you’re free to change them as
 
 ### Use the direct selection tool to edit further
 <div className="article-image">
-  <Image src="/images/blog/non-destructive-move-shapes.gif" width={738} height={492} />
+  <Image src="/images/blog/non-destructive-move-shapes.gif" unoptimized={true} width={738} height={492} />
 </div>
 
 To select a shape press <kbd>a</kbd> to use the direct selection tool. You can also double click to isolate them, which can be easier to change the shape.
