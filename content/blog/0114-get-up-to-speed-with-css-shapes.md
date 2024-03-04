@@ -172,7 +172,7 @@ When using an image, you can set the threshold to a value between 0 and 1. If yo
 If you have a particular part of an image, you want the text to flow around. Take the image and delete the area that isn't the area you want the image to flow round. Once you have done that, make the remaining area black.
 
 <figure>
-<Image src="/images/blog/css-shapes-image-mask.gif" width={640} height={360} />
+<Image src="/images/blog/css-shapes-image-mask.gif" unoptimized={true} width={640} height={360} />
 <figcaption>Fill the area you don’t want the text to flow in black. Export the image including the transparent area.</figcaption>
 </figure>
 

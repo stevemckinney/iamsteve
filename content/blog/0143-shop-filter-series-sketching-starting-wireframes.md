@@ -91,7 +91,7 @@ With the layer still selected, in the menu bar go to Object > Path > Split into 
 Once you have added those settings, click ok. **Copy those layers, then click the artboard next to it and paste in place** <kbd><kbd>cmd</kbd> + <kbd>f</kbd></kbd>.
 
 <div className="article-image">
-  <Image src="/images/blog/shop-tabbar-paste-in-artboards.gif" width={748} height={408} />
+  <Image src="/images/blog/shop-tabbar-paste-in-artboards.gif" unoptimized={true} width={748} height={408} />
 </div>
 
 Repeat this process for the other artboards. **Then select all the  grid columns in each artboard and press** <kbd><kbd>cmd</kbd> + <kbd>5</kbd></kbd>.
