@@ -105,3 +105,5 @@ export function PostMdx({ code }) {
 
   return <Component components={postComponents} />
 }
+
+export { postComponents, components }

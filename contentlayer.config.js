@@ -117,7 +117,11 @@ export const Post = defineDocumentType(() => ({
         dateModified: doc.lastmod || doc.date,
         description: doc.summary,
         image: doc.ogImage ? doc.ogImage : siteMetadata.socialBanner,
-        url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
+        url: `${siteMetadata.siteUrl}/blog/${doc._raw.flattenedPath
+          .split('/')
+          .slice(1)
+          .join('/')
+          .replace(/^(?:\d\d\d\d-)?/, '')}`,
         author: [
           {
             '@type': 'Person',
