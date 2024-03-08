@@ -102,7 +102,27 @@ It took a long time I felt for me to reach a point I was happy with the design.
 
 I had a couple of clear directions and had I not decided to throw everything out I think this version would have been released much sooner.
 
-> Iterations will be added shortly…
+<Images>
+  <Image src="/images/blog/about-version-8-early-01@2x.png" width={848} height={2588} className="col-span-6 bg-white rounded-lg" alt="One version of a highly colourful design. The sections are clearly divided throughout from the hero image, post sections and footer." />
+  <Image src="/images/blog/about-version-8-early-02@2x.png" width={848} height={2588} className="bg-white col-span-6 rounded-lg" alt="Another version of a highly colourful design. The sections are clearly divided throughout except for the hero where it feels more blended as part of the page." />
+</Images>
+
+I felt confident in this direction for a while, but the more I looked at it the more I wasn’t happy with it. There was something I couldn’t correct with this and I also feel it would look dated quite quickly.
+
+I liked where I was going with the navigation. And I liked the divided popular in sections, the numbers and chart ranking feel gave something different.
+
+The one thing I feel with the design I have now, is it will hold up better over time. There’s loads of ideas I had and how I wanted to structure the homepage, but they were a bit too ambitious for the time being.
+
+### Early mobile ideas
+<Images align="center">
+  <Image src="/images/blog/about-version-8-mobile-home.svg" width={430} height={1344} className="col-span-6 bg-white rounded-lg" alt=" " />
+  <Image src="/images/blog/about-version-8-mobile-home-02.svg" width={414} height={1344} className="col-span-6 bg-white rounded-lg" alt=" " />
+  <Image src="/images/blog/about-version-8-mobile-article.svg" width={430} height={1344} className="bg-white col-span-6 rounded-lg" alt=" " />
+</Images>
+
+Mobile was where I kicked off the design, I wanted to not leave it as an afterthought even though it’s a small portion of the traffic. It felt easier to approach a redesign from mobile as well.
+
+You can see within these examples some different directions I was thinking of heading.
 
 ## Rebuilding and moving to Next.js app router
 As part of the last version I decided to move to Next.js. This was a learning curve and using the pages router.

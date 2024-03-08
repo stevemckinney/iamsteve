@@ -214,7 +214,7 @@ export default async function PostPage({ params }) {
           </div>
         )}
         <div
-          className={`${styles.prose} prose grid grid-cols-subgrid gap-x-8 gap-y-0 col-content lg:col-prose`}
+          className={`${styles.prose} prose grid grid-cols-subgrid outline-red-500 [grid-column:1/-1] gap-x-8 gap-y-0`}
         >
           <PostMdx code={post.body.code} />
         </div>
