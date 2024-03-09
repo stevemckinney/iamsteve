@@ -114,10 +114,10 @@ I liked where I was going with the navigation. And I liked the divided popular i
 The one thing I feel with the design I have now, is it will hold up better over time. There’s loads of ideas I had and how I wanted to structure the homepage, but they were a bit too ambitious for the time being.
 
 ### Early mobile ideas
-<Images align="center">
-  <Image src="/images/blog/about-version-8-mobile-home.svg" width={430} height={1344} className="col-span-6 bg-white rounded-lg" alt=" " />
-  <Image src="/images/blog/about-version-8-mobile-home-02.svg" width={414} height={1344} className="col-span-6 bg-white rounded-lg" alt=" " />
-  <Image src="/images/blog/about-version-8-mobile-article.svg" width={430} height={1344} className="bg-white col-span-6 rounded-lg" alt=" " />
+<Images>
+  <Image src="/images/blog/about-version-8-mobile-home.svg" width={320} height={1000} className="col-span-6 bg-white rounded-lg" alt=" " />
+  <Image src="/images/blog/about-version-8-mobile-home-02.svg" width={308} height={1000} className="col-span-6 bg-white rounded-lg" alt=" " />
+  <Image src="/images/blog/about-version-8-mobile-article.svg" width={320} height={1000} className="bg-white col-span-6 rounded-lg" alt=" " />
 </Images>
 
 Mobile was where I kicked off the design, I wanted to not leave it as an afterthought even though it’s a small portion of the traffic. It felt easier to approach a redesign from mobile as well.

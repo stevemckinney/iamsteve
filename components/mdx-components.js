@@ -39,10 +39,12 @@ const Images = (props) => {
 
   return (
     <div
-      className={`flex col-container grid-cols-subgrid gap-4 overflow-x-auto snap-center snap-mandatory snap-always py-4 -my-4 prose-exclude images px-12 -mx-6 sm:[mask:linear-gradient(90deg,_transparent_0%,_#000_32px,_#000_calc(100%_-_32px),_transparent_100%)] ${
-        align ? alignments[align] : 'justify-start'
-      }`}
+      className={`flex col-container grid-cols-subgrid gap-4 overflow-x-auto py-4 -my-4 prose-exclude images px-6 sm:px-12 -mx-6 sm:[mask:linear-gradient(90deg,_transparent_0%,_#000_32px,_#000_calc(100%_-_32px),_transparent_100%)]`}
     >
+      <div
+        className="flex-shrink-0 max-sm:hidden sm:basis-1/5"
+        aria-hidden="true"
+      />
       {children}
     </div>
   )
