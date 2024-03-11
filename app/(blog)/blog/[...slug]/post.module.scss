@@ -26,12 +26,16 @@
   --code-white: theme('colors.fern.100');
   --code-comment: theme('colors.neutral-03.400');
 
-  > * {
+  > *:not(:global(.prose-exclude)) {
     grid-column: content-start / content-end;
 
     @screen lg {
       grid-column: prose-start / prose-end;
     }
+  }
+
+  [id] {
+    scroll-margin-top: 2rem;
   }
 
   figure :where(figcaption, figcaption p) {
@@ -411,7 +415,7 @@
     // outline: 1px solid greenyellow;
   }
 
-  :where(h2, h3, h4, h5, h6) + :where(p, ol, ul),
+  :where(h2, h3, h4, h5, h6) + :where(p, ol, ul, div, figure),
   :where(p + p, p + ol, p + ul),
   :where(ul + p, ol + p) {
     --block-space: var(--block-space-small);
@@ -456,17 +460,25 @@
 .prose > img,
 .prose > figure > img,
 .prose > figure > :global(.sandbox),
+.prose > :global(.images) > img,
+.prose > :global(.article-image) > img,
+.featured {
+  box-shadow: theme('boxShadow.placed');
+
+  @screen sm {
+    border-radius: theme('borderRadius.lg');
+  }
+}
+
+.prose > img,
+.prose > figure > img,
+.prose > figure > :global(.sandbox),
 .prose > :global(.article-image) > img,
 .featured {
   position: relative;
   max-width: none;
   left: -1.5rem;
   width: calc(100% + 3rem);
-  box-shadow: theme('boxShadow.placed');
-
-  @screen sm {
-    border-radius: theme('borderRadius.lg');
-  }
 
   @screen md {
     left: -2rem;
@@ -497,8 +509,7 @@
   //   display: block;
   // }
 
-  :global(.remark-code-container),
-  > div {
+  :global(.remark-code-container) {
     @screen md {
       margin-inline: -2rem;
       border-radius: theme('borderRadius.lg');

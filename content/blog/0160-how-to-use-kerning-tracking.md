@@ -75,7 +75,7 @@ It’s a simple task to carry out in Illustrator, however a bit trickier to mast
 
 ### Kern quickly with arrow keys
 <div className="article-image">
-  <Image src="/images/blog/kerning-tracking-kerning.gif" width={738} height={480} />
+  <Image src="/images/blog/kerning-tracking-kerning.gif" unoptimized={true} width={738} height={480} />
 </div>
 
 1. Press <kbd>t</kbd>

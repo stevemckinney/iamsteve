@@ -40,7 +40,7 @@ I’ve chosen the iPhone 5s resolution size, at 320px wide it gives us a minimum
 
 ## Add a background layer
 <div className="article-image flex center">
-  <Image src="/images/blog/ch-new-layer-rename-lock.gif" width={640} height={320} />
+  <Image src="/images/blog/ch-new-layer-rename-lock.gif" unoptimized={true} width={640} height={320} />
 </div>
 
 If you’re carrying on [from the previous post](/blog/hero-area-series-plan-design). You added a ‘small-screen’ layer, add the same blue background as our ‘large-screen’ layer, appropriately sized to the artboard.

@@ -7,6 +7,7 @@ import { cache } from 'react'
 import { allPosts } from 'contentlayer/generated'
 
 import { sortPosts } from '@/lib/utils/content'
+import generateFeed from '@/lib/utils/rss'
 
 import { Header, Title, Column, Description } from '@/components/page'
 import Card from '@/components/card'
@@ -26,8 +27,11 @@ const getData = cache(async () => {
     allPosts.filter((post) => post.status === 'open')
   )
 
+  const feed = await generateFeed()
+
   return {
     postsByDate,
+    feed,
   }
 })
 

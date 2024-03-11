@@ -102,7 +102,7 @@ Typically I will start a document at 1680px width, the height is more of an esti
 
 ### Add the needed layers
 <div className="article-image flex center">
-  <Image src="/images/blog/ch-new-layer-rename-lock.gif" width={640} height={320} />
+  <Image src="/images/blog/ch-new-layer-rename-lock.gif" unoptimized={true} width={640} height={320} />
 </div>
 
 The image demonstrates adding new layers, renaming and locking them. In the layers panel, we have access to adding, deleting and renaming. To rename double click the layer, alternatively you can double click the small layer image next to the name for more options.
@@ -135,7 +135,7 @@ After that with the rectangle selected, press <kbd>cmd</kbd> + <kbd>2</kbd>. Thi
 
 ## Adding the title & description
 <div className="article-image flex center">
-  <Image src="/images/blog/ch-drag-text.gif" width={640} height={360} />
+  <Image src="/images/blog/ch-drag-text.gif" unoptimized={true} width={640} height={360} />
 </div>
 
 Press <kbd>t</kbd> and drag out a text layer 2 columns wide and add your title. Press <kbd>cmd</kbd> + <kbd>return</kbd>, to exit that type layer.

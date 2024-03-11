@@ -46,12 +46,12 @@ Your line should end up something like this.
 Sometimes you may want a smoother line than what the width tool offers from an adjustment. Smoothing can be done by clicking and dragging the original width point you put down.
 
 <div className="article-image">
-<Image src="/images/blog/width-smoothing.gif" alt="Dragging the width point along to get a smoother line" width={640} height={420} />
+<Image src="/images/blog/width-smoothing.gif" unoptimized={true}  alt="Dragging the width point along to get a smoother line" width={640} height={420} />
 </div>
 
 ## Adding it to your presets
 <figure>
-<Image src="/images/blog/width-adding-preset.gif" width={640} height={420} />
+<Image src="/images/blog/width-adding-preset.gif" unoptimized={true} width={640} height={420} />
 <figcaption>
 Add the width profile to your presets for later reuse.
 </figcaption>
@@ -63,7 +63,7 @@ To add it to your presets, with your stroke selected. You should see the stroke 
 You can draw a path and change the variable width, and it appears to go against the way you want it.
 
 <figure>
-<Image src="/images/blog/flipping.gif" width={640} height={420} />
+<Image src="/images/blog/flipping.gif" unoptimized={true} width={640} height={420} />
 <figcaption>
 You can flip the variable width profile on either axis.
 </figcaption>
@@ -76,7 +76,7 @@ Customising can be the tricky part, as the presets can be a little awkward to ad
 
 ### Highlight the point
 <figure>
-<Image src="/images/blog/adjust-existing.gif" width={640} height={420} />
+<Image src="/images/blog/adjust-existing.gif" unoptimized={true} width={640} height={420} />
 <figcaption>
 Choose your existing width profile. Then highlight the points and you can adjust, remove or add more points as necessary.
 </figcaption>

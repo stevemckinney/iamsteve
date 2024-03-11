@@ -17,6 +17,39 @@ const Prose = ({ children }) => {
   return <div className="prose">{children}</div>
 }
 
+const Blockquote = (props) => {
+  const { style } = props
+  const styleVariants = {
+    notice: 'border-l-2 border-l-fern-500 pl-4 -ml-4',
+    signpost: '',
+    afterthought: '',
+  }
+  return (
+    <blockquote className={styleVariants[style]}>{props.children}</blockquote>
+  )
+}
+
+const Images = (props) => {
+  const { children, align } = props
+  const alignments = {
+    center: 'justify-center',
+    left: 'justify-start',
+    right: 'justify-end',
+  }
+
+  return (
+    <div
+      className={`flex col-container grid-cols-subgrid gap-4 overscroll-contain-x overflow-x-auto py-4 -my-4 prose-exclude images px-6 sm:px-12 -mx-6 sm:[mask:linear-gradient(90deg,_transparent_0%,_#000_32px,_#000_calc(100%_-_32px),_transparent_100%)]`}
+    >
+      <div
+        className="flex-shrink-0 max-sm:hidden sm:basis-1/5"
+        aria-hidden="true"
+      />
+      {children}
+    </div>
+  )
+}
+
 const components = {
   Image,
   Card,
@@ -55,6 +88,7 @@ const components = {
       {props.children}
     </blockquote>
   ),
+  Blockquote,
   Gallery: (props) => (
     <div className="grid gap-2 grid-cols-6 grid-flow-dense">
       {props.children}
@@ -84,14 +118,8 @@ const postComponents = {
       {props.children}
     </blockquote>
   ),
-  Blockquote: (props) => {
-    const { style } = props
-    const styleVariants = {
-      notice: 'border-l-2 border-l-fern-500 pl-4 -ml-4',
-      signpost: '',
-    }
-    return <blockquote className={props.style}>{props.children}</blockquote>
-  },
+  Blockquote,
+  Images,
 }
 
 export function Mdx({ code }) {
@@ -105,3 +133,5 @@ export function PostMdx({ code }) {
 
   return <Component components={postComponents} />
 }
+
+export { postComponents, components }

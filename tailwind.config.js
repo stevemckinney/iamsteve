@@ -52,6 +52,7 @@ module.exports = {
       gridColumn: {
         content: 'content-start / content-end',
         prose: 'prose-start / prose-end',
+        margin: 'margin-start / margin-end',
       },
       gridColumnStart: {
         'margin-start': 'margin-start',

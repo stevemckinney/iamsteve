@@ -6,7 +6,7 @@ summary: 'If you’re looking for an alternative approach to responsive navigati
 metadesc: 'How to code your own inherently responsive horizontal scrolling navigation (using only CSS), which responds perfectly to the browser and seamlessly integrates into your design.'
 theme: '#edf5f6'
 tags: ['Code']
-categories: ['Code']
+categories: ['Code', 'CSS', 'Patterns']
 images:
   ['/images/blog/horizontal-scrolling-responsive-featured-image-v2@2x.png']
 large: '/images/blog/horizontal-scrolling-responsive-featured-image-v2@2x.png'

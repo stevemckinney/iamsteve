@@ -105,7 +105,7 @@ Once you have your content entered, you can think better about alignment. Everyt
 Using align to key object you can align each row reasonably quickly.
 
 <div className="article-image">
-  <Image src="/images/blog/table_align-row.gif" width={880} height={408} />
+  <Image src="/images/blog/table_align-row.gif" unoptimized={true} width={880} height={408} />
 </div>
 
 Using [align to key object](/blog/illustrator-quick-tip-align-to-key-object) is important because it makes sure nothing nudges out of place by a few pixels.

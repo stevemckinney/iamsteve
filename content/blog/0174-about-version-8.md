@@ -40,8 +40,8 @@ I feel both are within the trends of where type is at currently. I’m drawn to 
 
 <figure>
   <div className="sandbox">
-    <div className="bg-neutral-01-200 px-[4vmax] py-[10vmax] aspect-[16/10] flex items-center">
-      <span className="text-fern-1100 font-display lowercase text-[clamp(2.5rem,_1.4565rem_+_5.2174vw,_5.5rem)] block text-center font-variation-extrabold leading-7xl tracking-[-.15rem]">Exploring&nbsp;web design&nbsp;craft</span>
+    <div className="bg-neutral-01-100 px-[4vmax] py-[10vmax] aspect-[16/10] flex items-center">
+      <span className="text-fern-1100 font-display lowercase text-[clamp(2.5rem,_1.4565rem_+_5.2174vw,_5.5rem)] block text-center font-variation-extrabold leading-7xl tracking-[-.1rem] lg:tracking-[-.15rem] text-balance">Exploring&nbsp;web design&nbsp;craft</span>
     </div>
   </div>
   <figcaption>Visual representation of the typeface Roc Grotesk</figcaption>
@@ -51,9 +51,9 @@ I chose Roc Grotesk for its strong presence, which I use for headings. I really 
 
 <figure>
   <div className="sandbox">
-    <div className="bg-neutral-01-200 px-[10vmax] py-[10vmax] aspect-[16/10] relative flex items-center justify-center">
+    <div className="bg-neutral-01-100 px-[10vmax] py-[10vmax] aspect-[16/10] relative flex items-center justify-center">
       <div className="w-full flex items-center justify-center">
-        <span className="text-fern-1100 font-body lowercase text-[clamp(1.3125rem,_1.0734rem_+_1.1957vi,_2rem)] leading-tight block text-center [font-weight:300] leading-7xl tracking-[-.05rem]">Tips and tutorials about the design and build of web interfaces</span>
+        <span className="text-fern-1100 font-body lowercase text-[clamp(1.3125rem,_1.0734rem_+_1.1957vi,_2rem)] leading-tight block text-center [font-weight:300] leading-7xl tracking-[-.025rem] lg:tracking-[-.05rem] text-balance">Tips and tutorials about the design and build of web interfaces</span>
       </div>
     </div>
   </div>
@@ -71,15 +71,28 @@ The colour palette is familiar but renewed. My aim was to pair back the colour a
 
 <div className="sandbox">
   <div className="flex items-center justify-center gap-4 aspect-[16/10] drop-shadow-placed">
-    <span class="flex-1 h-full bg-rio-300 flex justify-center items-center rounded-lg shadow-placed"></span>
-    <span class="flex-1 h-full bg-fern-1100 flex justify-center items-center rounded-lg shadow-placed"></span>
-    <span class="flex-1 h-full bg-ui-body flex justify-center items-center rounded-lg shadow-placed"></span>
-    <span class="flex-1 h-full bg-dandelion-200 flex justify-center items-center rounded-lg shadow-placed"></span>
-    <span class="flex-1 h-full bg-neutral-01-150 flex justify-center items-center rounded-lg shadow-placed"></span>
+    <span className="flex-1 h-full bg-rio-300 flex justify-center items-center rounded-lg shadow-placed"></span>
+    <span className="flex-1 h-full bg-fern-1100 flex justify-center items-center rounded-lg shadow-placed"></span>
+    <span className="flex-1 h-full bg-ui-body flex justify-center items-center rounded-lg shadow-placed"></span>
+    <span className="flex-1 h-full bg-dandelion-200 flex justify-center items-center rounded-lg shadow-placed"></span>
+    <span className="flex-1 h-full bg-neutral-01-150 flex justify-center items-center rounded-lg shadow-placed"></span>
   </div>
 </div>
 
 I have made some sensible decisions with the colour palette—but I know myself I will likely change this over time. Overall, I want the website to less stark, less washed out and have more harmony.
+
+### Monochrome or colour?
+I struggled with the amount of colour used throughout the website. It’s probably to do with how much I’ve looked at this design. But I’d like to show what the homepage hero would look like between the monochrome and colour variations.
+
+<figure>
+  <div className="sandbox">
+    <div className="bg-neutral-01-100  relative flex items-center justify-center group">
+      <Image src="/images/blog/about-version-8-hero-mono.svg" width={1216} height={774} className="transition duration-200 ease group-hover:opacity-0" />
+      <Image src="/images/blog/about-version-8-hero-colour.svg" width={1216} height={774} className="transition duration-200 ease absolute inset-0 opacity-0 group-hover:opacity-100" />
+    </div>
+  </div>
+  <figcaption>Starting with the monochrome version of a hero image that contains a heading and various illustrations positioned in such a way. Hovering over the image to see the difference between a colour and monochrome versions.</figcaption>
+</figure>
 
 ### Slight structural changes
 Overall, throughout the website remains similar. I want to try divide the design and code categories and everything else into the archive.
@@ -89,7 +102,27 @@ It took a long time I felt for me to reach a point I was happy with the design.
 
 I had a couple of clear directions and had I not decided to throw everything out I think this version would have been released much sooner.
 
-> I will follow up with design evolution soon
+<Images>
+  <Image src="/images/blog/about-version-8-early-01@2x.png" width={848} height={2588} className="col-span-6 bg-white rounded-lg" alt="One version of a highly colourful design. The sections are clearly divided throughout from the hero image, post sections and footer." />
+  <Image src="/images/blog/about-version-8-early-02@2x.png" width={848} height={2588} className="bg-white col-span-6 rounded-lg" alt="Another version of a highly colourful design. The sections are clearly divided throughout except for the hero where it feels more blended as part of the page." />
+</Images>
+
+I felt confident in this direction for a while, but the more I looked at it the more I wasn’t happy with it. There was something I couldn’t correct with this and I also feel it would look dated quite quickly.
+
+I liked where I was going with the navigation. And I liked the divided popular in sections, the numbers and chart ranking feel gave something different.
+
+The one thing I feel with the design I have now, is it will hold up better over time. There’s loads of ideas I had and how I wanted to structure the homepage, but they were a bit too ambitious for the time being.
+
+### Early mobile ideas
+<Images>
+  <Image src="/images/blog/about-version-8-mobile-home.svg" width={320} height={1000} className="col-span-6 bg-white rounded-lg" alt=" " />
+  <Image src="/images/blog/about-version-8-mobile-home-02.svg" width={308} height={1000} className="col-span-6 bg-white rounded-lg" alt=" " />
+  <Image src="/images/blog/about-version-8-mobile-article.svg" width={320} height={1000} className="bg-white col-span-6 rounded-lg" alt=" " />
+</Images>
+
+Mobile was where I kicked off the design, I wanted to not leave it as an afterthought even though it’s a small portion of the traffic. It felt easier to approach a redesign from mobile as well.
+
+You can see within these examples some different directions I was thinking of heading.
 
 ## Rebuilding and moving to Next.js app router
 As part of the last version I decided to move to Next.js. This was a learning curve and using the pages router.

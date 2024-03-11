@@ -6,7 +6,7 @@ summary: "I first wrote a tutorial little while back on horizontal scrolling nav
 metadesc: "How to add flickity.js to already horizontal scrolling areas. Using flickity we can provide enhancement for Windows users."
 theme: "#fffcf4"
 tags: ["Code"]
-categories: ["Code"]
+categories: ["Code", "JavaScript"]
 images:
 large: "/images/blog/flickity-navigation.png"
 medium: "/images/blog/flickity-navigation.png"

@@ -41,7 +41,7 @@ It doesn’t matter much which item as the items are having space put between th
 You can distribute the space horizontally or vertically, and with any amount of spacing you like. Once you have entered a value to space the items by click the relevant way to distribute space.
 
 <div className="article-image flex center">
-  <Image src="/images/blog/align-objects-equally.gif" width={640} height={420} />
+  <Image src="/images/blog/align-objects-equally.gif" unoptimized={true} width={640} height={420} />
 </div>
 
 ## That’s it

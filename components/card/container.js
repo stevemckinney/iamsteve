@@ -93,7 +93,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
 
   return (
     <article
-      className={`@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative ${className}`}
+      className={`@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative h-full ${className}`}
     >
       {image && (large || medium) && (
         <Link

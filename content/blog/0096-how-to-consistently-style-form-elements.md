@@ -6,7 +6,7 @@ summary: "One of the trickiest things to deal with cross browser is the styling 
 metadesc: "Here's a list of tips for styling input, select and submit buttons across Safari, Chrome, Firefox & Edge."
 theme: "#fffbf2"
 tags: ["Code"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true
