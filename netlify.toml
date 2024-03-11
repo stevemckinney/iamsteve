@@ -8,6 +8,12 @@
   force = true
 
 [[redirects]]
+  from = "/blog/about_version_six"
+  to = "/blog/about-version-six"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blog/compass_mixins_you_should_know_about"
   to = "/blog/compass-mixins-you-should-know-about"
   status = 301
