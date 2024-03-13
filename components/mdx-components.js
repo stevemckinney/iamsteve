@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
-import { useMemo } from 'react'
-import { getMDXComponent } from 'mdx-bundler/client'
+import * as runtime from 'react/jsx-runtime'
+
 import Image from '@/components/image'
 import Link from '@/components/link'
 // import Campaigns from '@/components/campaigns'
@@ -11,7 +11,10 @@ import ContactForm from '@/components/contact-form'
 import Card from '@/components/card'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
-import { useMDXComponent } from 'next-contentlayer/hooks'
+
+import { Header, Title, Column, Description } from '@/components/page'
+import PageHeader from '@/components/page-header'
+import PageTitle from '@/components/page-title'
 
 const Prose = ({ children }) => {
   return <div className="prose">{children}</div>
@@ -50,7 +53,7 @@ const Images = (props) => {
   )
 }
 
-const components = {
+const pageComponents = {
   Image,
   Card,
   Link,
@@ -60,6 +63,12 @@ const components = {
   Notepad: Notepad,
   Prose: Prose,
   ContactForm: ContactForm,
+  Header,
+  Title,
+  Column,
+  Description,
+  PageHeader,
+  PageTitle,
   // wrapper: ({ components, ...rest }) => (
   //   <div className="col-content" {...rest} />
   // ),
@@ -122,16 +131,19 @@ const postComponents = {
   Images,
 }
 
-export function Mdx({ code }) {
-  const Component = useMDXComponent(code)
+const useMDXComponent = (code) => {
+  const fn = new Function(code)
+  return fn({ ...runtime }).default
+}
 
-  return <Component components={components} />
+export function Mdx({ code, components }) {
+  const Component = useMDXComponent(code)
+  return <Component components={{ ...pageComponents, ...components }} />
 }
 
 export function PostMdx({ code }) {
   const Component = useMDXComponent(code)
-
   return <Component components={postComponents} />
 }
 
-export { postComponents, components }
+export { postComponents, pageComponents }

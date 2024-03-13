@@ -17,11 +17,11 @@ description: I’m Steve McKinney, I write this blog about the design and build 
     ## Who is this for?
     Either you’re a developer wanting to improve their visual design skills, or a designer with some coding experience. You’re someone who understands the value of not only good design, but the requirement of making it look visually appealing too. Through sharing what I know and continue to learn, I hope to meet this need.
 
-    A thing that has always driven my writing is hearing things like “you can’t expect your designs to look the same as they do in <em>design app</em>”. And while that comes from a good place, it’s always struck me as a way to avoid challenges and learning something new.
+    A thing that has always driven my writing is hearing things like “you can’t expect your designs to look the same as they do in *design app*”. And while that comes from a good place, it’s always struck me as a way to avoid challenges and learning something new.
 
 
     ## Changing aim over the years
-    I made a decision to start writing this blog <em>consistently</em> in January 2015. Every week, for two years, a blog post went out. I started out writing about anything I was interested in, as long as it was related to websites.
+    I made a decision to start writing this blog *consistently* in January 2015. Every week, for two years, a blog post went out. I started out writing about anything I was interested in, as long as it was related to websites.
 
     It became clear to me over those two years, there was a lack of content focusing on the visual side of design. It’s tough to teach, that’s why, or maybe that’s just me.
 

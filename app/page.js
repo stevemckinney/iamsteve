@@ -1,7 +1,7 @@
 import { cache } from 'react'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import { allPosts } from 'contentlayer/generated'
+import { posts } from '@/.velite'
 
 import mergeDataBySlug from '@/lib/utils/merge-data-by-slug'
 
@@ -25,7 +25,7 @@ const getData = cache(async () => {
     .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
     .select()
 
-  const postsByDate = allPosts
+  const postsByDate = posts
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .filter((post) => post.status === 'open')
 
@@ -34,7 +34,7 @@ const getData = cache(async () => {
     view_count,
   }))
 
-  const mergedData = mergeDataBySlug(postsWithViews, allPosts)
+  const mergedData = mergeDataBySlug(postsWithViews, posts)
     .sort((a, b) => b.view_count - a.view_count)
     .filter((post) => post.status === 'open')
 
@@ -126,7 +126,7 @@ export default async function Home() {
                 size="container"
                 frontmatter={post}
                 image={false}
-                key={post._id}
+                key={post.id}
                 className="max-sm:w-[calc(100vw_-_48px)] max-sm:snap-center md:col-span-1"
               />
             ))}

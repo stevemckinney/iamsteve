@@ -9,9 +9,7 @@
       "@/lib/*": ["lib/*"],
       "@/css/*": ["css/*"],
       "@/images/*": ["/public/images/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"],
-      "contentlayer/source-files": ["./.contentlayer/source-files"]
+      "@/.velite": ["./.velite"]
     }
-  },
-  "include": [".contentlayer/generated"]
+  }
 }

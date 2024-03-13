@@ -6,11 +6,11 @@ import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
 import Card from '@/components/card'
 import Campaigns from './campaigns'
-import { allPosts } from 'contentlayer/generated'
+import { posts } from '@/.velite'
 
 export default async function NewsletterPage({ data, Post }) {
   const includedPosts = [165, 164, 72, 157, 160]
-  const posts = allPosts
+  const posts = posts
     .filter((post) => post.status === 'open')
     .filter((post) => includedPosts.includes(post.id))
 
@@ -35,11 +35,9 @@ export default async function NewsletterPage({ data, Post }) {
               Get the articles
             </h2>
             <div className="bg-white shadow-placed px-10 py-8 rounded-lg flex flex-col gap-4">
-              <p>
-                Join my email list and I’ll notify you when the latest posts go
-                out—if that’s what you prefer. This happens monthly at most. You
-                can unsubscribe anytime.
-              </p>
+              Join my email list and I’ll notify you when the latest posts go
+              out—if that’s what you prefer. This happens monthly at most. You
+              can unsubscribe anytime.
               <NewsletterForm />
             </div>
           </section>
@@ -51,9 +49,7 @@ export default async function NewsletterPage({ data, Post }) {
           </Notepad>
         </div>
         <div className="col-start-content-start col-end-content-end lg:col-start-6 xl:col-start-9 2xl:col-start-8 flex flex-col gap-4">
-          <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0">
-            What you can expect
-          </h2>
+          ## What you can expect
           {posts.map((post) => (
             <Card size="small" frontmatter={post} key={post.id} />
           ))}

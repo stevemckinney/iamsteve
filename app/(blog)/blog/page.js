@@ -4,7 +4,7 @@
  */
 
 import { cache } from 'react'
-import { allPosts } from 'contentlayer/generated'
+import { posts } from '@/.velite'
 
 import { sortPosts } from '@/lib/utils/content'
 import generateFeed from '@/lib/utils/rss'
@@ -23,9 +23,7 @@ export const revalidate = 86400
 const POSTS_PER_PAGE = 12
 
 const getData = cache(async () => {
-  const postsByDate = sortPosts(
-    allPosts.filter((post) => post.status === 'open')
-  )
+  const postsByDate = sortPosts(posts.filter((post) => post.status === 'open'))
 
   const feed = await generateFeed()
 
@@ -35,7 +33,7 @@ const getData = cache(async () => {
   }
 })
 
-export default async function BlogIndex({ params }) {
+export default async function BlogIndex({ params, searchParams }) {
   const allData = await getData()
   const posts = allData.postsByDate
   const pageNumber = 1
@@ -86,13 +84,8 @@ export default async function BlogIndex({ params }) {
         )}
       </Header>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
-        {paginatedPosts.map((post) => (
-          <Card
-            size="container"
-            frontmatter={post}
-            image={true}
-            key={post._id}
-          />
+        {paginatedPosts.map((post, key) => (
+          <Card size="container" frontmatter={post} image={true} key={key} />
         ))}
       </div>
       <div className="col-content">

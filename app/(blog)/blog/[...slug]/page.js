@@ -5,7 +5,7 @@
  */
 
 import { notFound } from 'next/navigation'
-import { allPosts } from 'contentlayer/generated'
+import { posts } from '@/.velite'
 import Script from 'next/script'
 import { PostMdx } from '@/components/mdx-components'
 import siteMetadata from '@/content/metadata'
@@ -36,11 +36,7 @@ import styles from './post.module.scss'
 
 async function getPostFromParams(params) {
   const slug = params?.slug?.join('/')
-  const post = allPosts.find((post) => post.slugAsParams === slug)
-
-  if (!post) {
-    null
-  }
+  const post = posts.find((post) => post.slugAsParams === slug)
 
   return post
 }
@@ -79,8 +75,12 @@ export async function generateMetadata({ params, searchParams }, parent) {
   }
 }
 
+function renderStructuredData(data) {
+  return { __html: data }
+}
+
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
+  return posts.map((post) => ({
     slug: post.slugAsParams.split('/'),
   }))
 }
@@ -89,20 +89,17 @@ export default async function PostPage({ params }) {
   const post = await getPostFromParams(params)
   const allViews = await getAllPageViews()
 
-  const imageColor = post.theme ? post.theme.toString() : `#f1e8e4`
-
-  if (!post) {
+  if (!post || !post.status === 'draft' || !post.status === 'closed') {
     notFound()
   }
 
-  const jsonLD = post.structuredData
+  console.log(post)
+
+  const jsonLD = renderStructuredData(post.structuredData)
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLD} />
       <article className={`grid col-container grid-cols-subgrid gap-y-12`}>
         <Image
           src="/images/illustration/pencil-mono.svg"
@@ -158,17 +155,17 @@ export default async function PostPage({ params }) {
         </header>
 
         {/*post.categories.includes('Code') && postYear(post.date) < 2019 && (
-          <div className="col-prose flex gap-2 leading-tight bg-cornflour-200/40 rounded-sm px-2 py-2">
-            <Icon
-              icon="square-info"
-              className="text-cornflour-700 flex-[0_0_auto]"
-            />
-            <p className="p-0 m-0 font-ui lowercase text-cornflour-700">
-              This post was published <Date dateString={post.date} relative />,
-              so the approach may be outdated
-            </p>
-          </div>
-        )*/}
+            <div className="col-prose flex gap-2 leading-tight bg-cornflour-200/40 rounded-sm px-2 py-2">
+              <Icon
+                icon="square-info"
+                className="text-cornflour-700 flex-[0_0_auto]"
+              />
+              <p className="p-0 m-0 font-ui lowercase text-cornflour-700">
+                This post was published <Date dateString={post.date} relative />,
+                so the approach may be outdated
+              </p>
+            </div>
+          )*/}
 
         {!post.large && (
           <>
@@ -229,12 +226,12 @@ export default async function PostPage({ params }) {
             <Card
               size="medium"
               image={false}
-              frontmatter={getRandomItem(allPosts, post.categories[0])}
+              frontmatter={getRandomItem(posts, post.categories[0])}
             />
             <Card
               size="medium"
               image={false}
-              frontmatter={getRandomItem(allPosts, post.categories[0])}
+              frontmatter={getRandomItem(posts, post.categories[0])}
             />
           </div>
         </aside>
@@ -257,7 +254,7 @@ export default async function PostPage({ params }) {
 }
 
 function getRandomItem(set, category) {
-  const allItems = allPosts.filter(
+  const allItems = posts.filter(
     (post) => post.status === 'open' && post.categories.includes(category)
   )
   const items = Array.from(allItems)
@@ -265,7 +262,7 @@ function getRandomItem(set, category) {
 }
 
 export async function NextPost({ id }) {
-  const post = allPosts
+  const post = posts
     .filter((post) => post.status === 'open')
     .find((item) => item.id === Number(id))
 

@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { allPages } from 'contentlayer/generated'
+import { pages } from '@/.velite'
 
 import { Mdx } from '@/components/mdx-components'
 import { Header, Title, Column, Description } from '@/components/page'
@@ -11,7 +11,7 @@ export const revalidate = 86400
 
 async function getPageFromParams(params) {
   const slug = params?.slug?.join('/')
-  const page = allPages.find((page) => page.slugAsParams === slug)
+  const page = pages.find((page) => page.slugAsParams === slug)
 
   if (!page) {
     null
@@ -31,12 +31,11 @@ export async function generateMetadata({ params }) {
     template: '%s • iamsteve',
     title: page.title,
     description: page.description,
-    slot: page.slot,
   }
 }
 
 export async function generateStaticParams() {
-  return allPages.map((page) => ({
+  return pages.map((page) => ({
     slug: page.slugAsParams.split('/'),
   }))
 }
@@ -65,7 +64,7 @@ export default async function PagePage({ params }) {
             <Description>{page.description}</Description>
           </Column>
         </Header>
-        <Mdx code={page.body.code} />
+        <Mdx code={page.body} />
       </article>
     </>
   )

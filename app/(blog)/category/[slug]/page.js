@@ -6,7 +6,7 @@
 
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
-import { allPosts } from 'contentlayer/generated'
+import { posts } from '@/.velite'
 import { sortPosts } from '@/lib/utils/content'
 import { Header, Title, Column, Description } from '@/components/page'
 import Icon from '@/components/icon'
@@ -21,7 +21,7 @@ import categories from '@/content/categories'
 const POSTS_PER_PAGE = 12
 
 const getData = cache(async () => {
-  const postsByDate = sortPosts(allPosts)
+  const postsByDate = sortPosts(posts)
 
   return {
     postsByDate,
@@ -59,8 +59,8 @@ export default async function BlogCategory({ params, searchParams }) {
   )
   const parent = data.parent
 
-  const posts = await Promise.all(
-    allPosts
+  const allPosts = await Promise.all(
+    posts
       .filter((post) => {
         const categories = post.categories.map((category) => {
           if (typeof category === 'object' && category !== null) {
@@ -77,7 +77,7 @@ export default async function BlogCategory({ params, searchParams }) {
   )
 
   const pageNumber = 1
-  const paginatedPosts = posts.slice(
+  const paginatedPosts = allPosts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
   )

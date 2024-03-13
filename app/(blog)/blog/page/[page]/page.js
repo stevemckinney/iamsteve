@@ -1,6 +1,6 @@
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
-import { allPosts } from 'contentlayer/generated'
+import { posts } from '@/.velite'
 import { sortPosts } from '@/lib/utils/content'
 
 import { Header, Title, Column, Description } from '@/components/page'
@@ -16,9 +16,7 @@ export const revalidate = 86400
 const POSTS_PER_PAGE = 12
 
 const getData = cache(async () => {
-  const postsByDate = sortPosts(allPosts).filter(
-    (post) => post.status === 'open'
-  )
+  const postsByDate = sortPosts(posts).filter((post) => post.status === 'open')
 
   return {
     postsByDate,

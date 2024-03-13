@@ -7,8 +7,8 @@ metadesc: Design and development decisions for the 8th version of this website. 
 theme: '#f9f3f1'
 tags: ['Redesign']
 categories: ['Website']
-large: /images/blog/about-version-8-featured-image-large.svg
-medium: /images/blog/about-version-8-featured-image-medium.svg
+large: /public/images/blog/about-version-8-featured-image-large.svg
+medium: /public/images/blog/about-version-8-featured-image-medium.svg
 ogImage: '/assets/og/cover.jpg'
 status: open
 codepen: false

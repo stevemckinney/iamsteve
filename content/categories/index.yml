@@ -1,5 +1,5 @@
 - title: Design
-  slug: /category/design
+  slug: design
   slugAsParams: design
   description: From speedy quick tips and resources to typography and colour techniques. As well as UX and visual design magic
   parent: false
@@ -8,7 +8,7 @@
   exclude: false
 
 - title: Quick tip
-  slug: /category/quick-tip
+  slug: quick-tip
   slugAsParams: quick-tip
   description: Short posts covering a technique or feature to help you figure something out and get back to designing
   parent: design
@@ -17,7 +17,7 @@
   exclude: false
 
 - title: Typography
-  slug: /category/typography
+  slug: typography
   slugAsParams: typography
   description: The latest type trends alternatives to popular typefaces and typography techniques
   parent: design
@@ -26,7 +26,7 @@
   exclude: false
 
 - title: Colour
-  slug: /category/colour
+  slug: colour
   slugAsParams: colour
   description: A fundamental skill within design it’s a balance through brand emotion accessibility and usabilility
   parent: design
@@ -35,7 +35,7 @@
   exclude: false
 
 - title: Resources
-  slug: /category/resources
+  slug: resources
   slugAsParams: resources
   description: Collections of links inspiration and more
   parent: design
@@ -44,7 +44,7 @@
   exclude: false
 
 - title: UX design
-  slug: /category/ux-design
+  slug: ux-design
   slugAsParams: ux-design
   description: Broadly covering all things that affect a users experience
   parent: design
@@ -53,7 +53,7 @@
   exclude: false
 
 - title: Prototyping
-  slug: /category/prototyping
+  slug: prototyping
   slugAsParams: prototyping
   description: Prototyping posts
   parent: design
@@ -62,7 +62,7 @@
   exclude: true
 
 - title: Visual design
-  slug: /category/visual-design
+  slug: visual-design
   slugAsParams: visual-design
   description: Looking at how we design the interfaces we use and a look at the how and why behind visual techniques
   parent: design
@@ -71,7 +71,7 @@
   exclude: false
 
 - title: Code
-  slug: /category/code
+  slug: code
   slugAsParams: code
   description: Exploring CSS and JavaScript with modern techniques. Through building designs I use this to share what I learn
   parent: false
@@ -80,7 +80,7 @@
   exclude: false
 
 - title: Animation
-  slug: /category/animation
+  slug: animation
   slugAsParams: animation
   description: The technical side of animation from simple CSS transitions through to using libraries like Framer Motion
   parent: code
@@ -89,7 +89,7 @@
   exclude: false
 
 - title: CSS
-  slug: /category/css
+  slug: css
   slugAsParams: css
   description: All things CSS. Looking at specific properties and techniques to building components and tailwind
   parent: code
@@ -98,7 +98,7 @@
   exclude: false
 
 - title: Patterns
-  slug: /category/patterns
+  slug: patterns
   slugAsParams: patterns
   description: Patterns posts
   parent: code
@@ -107,7 +107,7 @@
   exclude: false
 
 - title: JavaScript
-  slug: /category/javascript
+  slug: javascript
   slugAsParams: javascript
   description: JavaScript posts
   parent: code
@@ -116,7 +116,7 @@
   exclude: false
 
 - title: Website
-  slug: /category/website
+  slug: website
   slugAsParams: website
   description: Posts specific to this website such as design updates and changes
   parent: false
@@ -125,19 +125,10 @@
   exclude: true
 
 - title: Terminal
-  slug: /category/terminal
+  slug: terminal
   slugAsParams: terminal
   description: Terminal posts
   parent: false
   theme: cornflour
   icon: code
-  exclude: true
-
-- title: Everything
-  slug: /blog
-  slugAsParams: blog
-  description: All posts
-  parent: false
-  theme: cornflour
-  icon: folder
   exclude: true
