@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .contentlayer
+.velite
 
 # testing
 /coverage
