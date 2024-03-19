@@ -2,6 +2,7 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import path from 'path'
 import siteMetadata from './content/metadata'
 import categories from './content/categories'
+import collections from './content/collections'
 
 import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
@@ -36,6 +37,40 @@ export const Page = defineDocumentType(() => ({
     },
     slot: {
       type: 'string',
+    },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => '/' + doc._raw.flattenedPath,
+    },
+    slugAsParams: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
+    },
+  },
+}))
+
+export const Collection = defineDocumentType(() => ({
+  name: 'Collection',
+  filePathPattern: `collection/**/*.md`,
+  contentType: 'mdx',
+  fields: {
+    title: {
+      type: 'string',
+      required: true,
+    },
+    url: {
+      type: 'string',
+      required: true,
+    },
+    collection: {
+      type: 'list',
+      of: {
+        type: 'enum',
+        options: [collections.map((collection) => collection.title)],
+      },
+      required: true,
     },
   },
   computedFields: {
@@ -146,7 +181,7 @@ export const Post = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: './content',
   contentDirExclude: ['./content/draft'],
-  documentTypes: [Post, Page],
+  documentTypes: [Post, Page, Collection],
   mdx: {
     remarkPlugins: [remarkGfm, remarkCodeTitles, smartypants, remarkRehype],
     rehypePlugins: [
