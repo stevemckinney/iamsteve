@@ -35,7 +35,7 @@ export const Page = defineDocumentType(() => ({
       type: 'string',
     },
     slot: {
-      type: 'string',
+      type: 'mdx',
     },
   },
   computedFields: {

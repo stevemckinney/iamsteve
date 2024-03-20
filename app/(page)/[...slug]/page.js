@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { allPages } from 'contentlayer/generated'
 
-import { Mdx } from '@/components/mdx-components'
+import { MDX } from '@/components/mdx-components'
 import { Header, Title, Column, Description } from '@/components/page'
 import Image from '@/components/image'
 import categories from '@/content/categories'
@@ -31,7 +31,6 @@ export async function generateMetadata({ params }) {
     template: '%s • iamsteve',
     title: page.title,
     description: page.description,
-    slot: page.slot,
   }
 }
 
@@ -43,6 +42,8 @@ export async function generateStaticParams() {
 
 export default async function PagePage({ params }) {
   const page = await getPageFromParams(params)
+
+  console.log(page.slot)
 
   if (!page) {
     notFound()
@@ -64,8 +65,13 @@ export default async function PagePage({ params }) {
             <Title>{page.title}</Title>
             <Description>{page.description}</Description>
           </Column>
+          {page.slot && (
+            <Column className="md:col-span-1 self-end">
+              <MDX code={page.slot.code} />
+            </Column>
+          )}
         </Header>
-        <Mdx code={page.body.code} />
+        <MDX code={page.body.code} />
       </article>
     </>
   )

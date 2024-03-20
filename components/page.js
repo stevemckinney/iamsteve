@@ -22,7 +22,7 @@ function Title({ className = 't', children, ...props }) {
 function Description({ className = 'd', children }) {
   return (
     <p
-      className={`max-sm:text-center md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch] ${className}`}
+      className={`max-sm:text-center md:text-lg lg:text-2xl text-ui-body sm:max-w-[34ch] ${className}`}
     >
       {children}
     </p>
