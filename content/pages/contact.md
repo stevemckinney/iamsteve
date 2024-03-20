@@ -17,7 +17,7 @@ description: I aim to respond to every email. I especially welcome feedback, ide
   - Provide any links to work so I can see errors
   - Don’t send login details by email
 
-  ## There’s something wrong in a post
+  ## Report a broken page
   Maybe you’ve found an error, typo or can’t access something. Thank you for taking the time to bring it to my attention. I’ll update it.
 
 </Content>
@@ -25,7 +25,7 @@ description: I aim to respond to every email. I especially welcome feedback, ide
 <Notepad className="col-start-content-start lg:col-start-7 xl:col-start-9 col-end-content-end">
   <Notepad.Header>Contact form</Notepad.Header>
   <Notepad.Body>
-    If there’s anything you’d like to talk to me about you can use the contact form or <a href="mailto:hi@iamsteve.me" className="text-fern-1100 hover:text-dandelion-600 transition duration-200">send an email</a>.
+    If there’s anything you’d like to talk to me about you can use the contact form or <a href="mailto:hi@iamsteve.me" className="text-fern-1100 underline underline-offset-2 hover:text-dandelion-600 transition duration-200">send an email</a>.
     <hr className="border-neutral-01-200 mb-3" />
     <div className="flex w-full p-12 bg-cornflour-100/20 text-cornflour-600 justify-center rounded-sm">Form currently unavailable.</div>
   </Notepad.Body>
