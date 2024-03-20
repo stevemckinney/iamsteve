@@ -10,7 +10,7 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
 ---
 
 <>
-  <article id="site" className="col-content max-w-[592px] flex flex-col gap-4">
+  <article id="site" className="col-content max-w-[592px] flex flex-col md:gap-4">
     ## About the site
     I registered the domain for this website in 2010 as a 20 year old and started as a portfolio and a bit of a blog as I was nearing the end of my time at university. I had treated it as such, a place to write website updates and the odd tutorial to support with work.
 
@@ -21,12 +21,12 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
     I made a decision in 2015 to try to have a real aim of publishing regularly. It helped me to realise I learn well through writing about topics. It forces you to really absorb a topic. Which leads nicely into who this website is for.
   </article>
 
-  <article className="col-content grid grid-cols-6 gap-8">
-    <section className="col-span-3 flex flex-col gap-4">
+  <article className="col-content grid grid-cols-6 md:gap-8">
+    <section className="col-span-full md:col-span-3 flex flex-col md:gap-4">
     ## What is this site for?
     I aim to focus on the craft of web design. This is a broad topic in itself, which feels challenging to achieve. But going back to my point about learning through writing, I hope to achieve this for you the reader.
     </section>
-    <section className="row-start-2 col-span-2 gap-8">
+    <section className="md:row-start-2 col-span-full md:col-span-2 md:gap-8">
       ### When did this start?
       I made a decision to start writing this blog consistently in January 2015. Every week, for two years, a blog post went out. I started out writing about anything I was interested in, as long as it was related to websites.
 
@@ -34,13 +34,13 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
 
       Eventually, I stopped posting frequently and haven’t quite found that rhythm again. I’ve accepted I’ll always be figuring things out, but with a vision in mind I can work towards that.
     </section>
-    <section className="row-start-2 col-span-2 gap-8">
+    <section className="md:row-start-2 col-span-full md:col-span-2 md:gap-8">
       ### Who is this for?
       I’d like to think if you’ve an interest in designing for the web then hopefully you benefit. Specifically, I feel you’re a developer wanting to improve their visual design skills, or a designer with some coding experience.
 
       You’re someone who understands the value of not only good design, but the skill that goes into making something visually appealing too and want to improve like myself.
     </section>
-    <section className="row-start-2 col-span-2">
+    <section className="md:row-start-2 col-span-full md:col-span-2">
       ### Why do you do this?
       There’s a few reasons why I do this. I want to push against the message of “you can’t expect your designs to look the same as they do in design app”. I know it comes from a good place, but it’s always struck me as a way to avoid challenges.
 
@@ -50,7 +50,7 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
     </section>
   </article>
 
-  <article id="author" className="col-content max-w-[592px] flex flex-col gap-4">
+  <article id="author" className="col-content max-w-[592px] flex flex-col md:gap-4">
     ## About me
     I’ve spent the majority of my 12 plus year career designing and—a good part—building for the web. I specialise in visual design and user experience—doing this across a variety of industries.
 
@@ -64,7 +64,7 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
     </aside>
   </article>
 
-  <article id="examples" className="col-content max-w-prose">
+  <article id="examples" className="col-content max-w-[592px]">
     ## Best posts
     These are a mixture of my most popular posts and what I believe are my best.
 
@@ -79,7 +79,7 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
   </article>
 
   <article id="history" className="col-content grid grid-cols-subgrid">
-    <div className="col-span-6">
+    <div className="col-span-full md:col-span-6">
     ## Design history
     Here is the design history of this website. The first version of this website I started working on in 2009, so you can see how my design sensibility has evolved over the years.
 
@@ -100,7 +100,7 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
     </ul>
     </div>
 
-    <div className={`overflow-hidden image-stack col-span-6 max-w-max self-start shadow-placed rounded-lg grid [&>*]:[grid-area:images]`}>
+    <div className={`overflow-hidden image-stack col-span-full md:col-start-8 md:col-span-5 max-md:mt-12 max-w-max self-start shadow-placed rounded-lg grid [&>*]:[grid-area:images]`}>
       <Image
         src="/images/about/iamsteve-small-v1.jpg"
         width={488}
@@ -154,8 +154,8 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
 
   </article>
 
-  <aside className="col-content max-w-prose">
+  <aside className="col-content max-w-[592px]">
     ## Colophon
-    You may be interested in what the site is built with and the tools I use. You can find those on <a href="/uses" className="link">the uses page</a>.
+    You may be interested in what the site is built with and the tools I use. You can find those on [the uses page](/uses).
   </aside>
 </>
