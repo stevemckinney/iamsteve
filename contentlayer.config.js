@@ -69,8 +69,8 @@ export const Collection = defineDocumentType(() => ({
       of: {
         type: 'enum',
         options: [collections.map((collection) => collection.title)],
+        required: true,
       },
-      required: true,
     },
   },
   computedFields: {
