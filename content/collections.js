@@ -4,6 +4,7 @@ const collections = [
     title: 'Design',
     slug: '/collection/design',
     slugAsParams: 'design',
+    description: 'All design inpsiration',
   },
   {
     id: 2,
