@@ -20,9 +20,46 @@ const getData = cache(async () => {
   }
 })
 
+async function getPageFromParams(params) {
+  const { groupedCollections } = await getData()
+
+  console.log(groupedCollections)
+  const slug = params?.slug?.join('/')
+  const page = groupedCollections.find(
+    (collection) => page.slugAsParams === slug
+  )
+
+  if (!page) {
+    null
+  }
+
+  return page
+}
+
+export async function generateMetadata({ params }) {
+  const page = await getPageFromParams(params)
+
+  if (!page) {
+    return {}
+  }
+
+  return {
+    template: '%s • iamsteve',
+    title: page.title,
+    description: page.description,
+    slot: page.slot,
+  }
+}
+
+export async function generateStaticParams() {
+  return allCollections.map((page) => ({
+    slug: page.slugAsParams.split('/'),
+  }))
+}
+
 async function renderCollections() {
   const { groupedCollections } = await getData()
-  console.log(allCollections)
+
   return (
     <>
       {Object.entries(groupedCollections).map(([collection, items]) => (
@@ -43,6 +80,6 @@ async function renderCollections() {
   )
 }
 
-export default function CollectionsPage() {
+export default function CollectionsCollectionPage() {
   return renderCollections()
 }

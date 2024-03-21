@@ -1,6 +1,6 @@
 ---
-title: Refero
-url: https://refero.design
+title: Maxibestof
+url: https://maxibestof.one
 collection:
   - Inspiration
 type: Collections
