@@ -1,7 +1,0 @@
----
-title: Refero
-url: https://refero.design
-collection:
-  - Inspiration
-type: Collections
----

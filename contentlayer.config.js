@@ -51,9 +51,9 @@ export const Page = defineDocumentType(() => ({
   },
 }))
 
-export const Collection = defineDocumentType(() => ({
-  name: 'Collection',
-  filePathPattern: `collection/**/*.md`,
+export const Collections = defineDocumentType(() => ({
+  name: 'Collections',
+  filePathPattern: `collections/**/*.md`,
   contentType: 'mdx',
   fields: {
     title: {
@@ -64,6 +64,7 @@ export const Collection = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
+    date: { type: 'date', required: true },
     collection: {
       type: 'list',
       of: {
@@ -181,7 +182,7 @@ export const Post = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: './content',
   contentDirExclude: ['./content/draft'],
-  documentTypes: [Post, Page, Collection],
+  documentTypes: [Post, Page, Collections],
   mdx: {
     remarkPlugins: [remarkGfm, remarkCodeTitles, smartypants, remarkRehype],
     rehypePlugins: [

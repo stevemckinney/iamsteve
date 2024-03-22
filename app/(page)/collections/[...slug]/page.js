@@ -1,12 +1,18 @@
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
-import Image from '@/components/image'
-import Card from '@/components/card'
 import { allCollections } from 'contentlayer/generated'
+
+import { Mdx } from '@/components/mdx-components'
+import { Header, Title, Column, Description } from '@/components/page'
+import Image from '@/components/image'
+import collections from '@/content/collections'
+
+export const dynamic = 'force-static'
+export const revalidate = 86400
 
 const getData = cache(async () => {
   const groupedCollections = allCollections.reduce((acc, item) => {
-    item.collections.forEach((collection) => {
+    item.collection.forEach((collection) => {
       if (!acc[collection]) {
         acc[collection] = []
       }
@@ -21,13 +27,8 @@ const getData = cache(async () => {
 })
 
 async function getPageFromParams(params) {
-  const { groupedCollections } = await getData()
-
-  console.log(groupedCollections)
   const slug = params?.slug?.join('/')
-  const page = groupedCollections.find(
-    (collection) => page.slugAsParams === slug
-  )
+  const page = collections.find((page) => page.slugAsParams === slug)
 
   if (!page) {
     null
@@ -47,23 +48,24 @@ export async function generateMetadata({ params }) {
     template: '%s • iamsteve',
     title: page.title,
     description: page.description,
-    slot: page.slot,
   }
 }
 
 export async function generateStaticParams() {
-  return allCollections.map((page) => ({
+  return collections.map((page) => ({
     slug: page.slugAsParams.split('/'),
   }))
 }
 
-async function renderCollections() {
+async function renderCollection(params) {
   const { groupedCollections } = await getData()
+  const slug = params?.slug?.join('/')
 
+  console.log(groupedCollections.hasOwnProperty(slug))
   return (
     <>
       {Object.entries(groupedCollections).map(([collection, items]) => (
-        <div className="flex flex-col gap-2" key={collection}>
+        <div className="w-full flex flex-col gap-2" key={collection}>
           <h2 className="text-xl">{collection}</h2>
           <ul className="flex flex-col gap-4">
             {items.map((item) => (
@@ -80,6 +82,32 @@ async function renderCollections() {
   )
 }
 
-export default function CollectionsCollectionPage() {
-  return renderCollections()
+export default async function CollectionPage({ params }) {
+  const page = await getPageFromParams(params)
+
+  if (!page) {
+    notFound()
+  }
+
+  return (
+    <>
+      <Image
+        src="/images/illustration/pencil-mono.svg"
+        width={962}
+        height={46}
+        className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden`}
+        alt=" "
+        aria-hidden="true"
+      />
+      <article className="grid grid-cols-subgrid col-container row-start-1 pb-18 gap-y-10 lg:gap-y-18">
+        <Header>
+          <Column className="md:col-span-1">
+            <Title>{page.title}</Title>
+            {page.description && <Description>{page.description}</Description>}
+          </Column>
+        </Header>
+        {renderCollection(params)}
+      </article>
+    </>
+  )
 }
