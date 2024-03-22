@@ -57,7 +57,7 @@ async function renderCollections() {
                   >
                     {item.title}
                     <span className="text-fern-1100/20 group-hover:text-fern-1100/40 transition duration-200 linear">
-                      {item.url}
+                      {item.url.replace('https://', '').replace('www.', '')}
                     </span>
                   </a>
                   {isNew && (
