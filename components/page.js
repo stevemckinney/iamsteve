@@ -6,13 +6,13 @@ function Header({
 }
 
 function Title({
-  className = 'text-3xl xs:text-5xl lg:text-7xl',
+  className = 'font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl',
   children,
   ...props
 }) {
   return (
     <h1
-      className={`w-full max-sm:text-center text-fern-1100 font-display font-variation-bold lg:font-variation-extrabold lowercase self-start min-w-[0] min-h-[0] ${className}`}
+      className={`w-full max-sm:text-center text-fern-1100 font-display lowercase self-start min-w-[0] min-h-[0] ${className}`}
       {...props}
     >
       {children}
@@ -30,8 +30,8 @@ function Description({ className = 'd', children }) {
   )
 }
 
-function Column({ className, children }) {
-  return <div className={`flex flex-col gap-4 ${className}`}>{children}</div>
+function Column({ className = 'gap-4', children }) {
+  return <div className={`flex flex-col ${className}`}>{children}</div>
 }
 
 export { Header, Title, Column, Description }

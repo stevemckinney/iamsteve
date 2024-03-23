@@ -117,6 +117,7 @@ module.exports = {
         ],
       },
       boxShadow: {
+        subtle: 'var(--shadow-subtle)',
         reduced: 'var(--shadow-reduced)',
         placed: 'var(--shadow-placed)',
         picked: 'var(--shadow-picked)',

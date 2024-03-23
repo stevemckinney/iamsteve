@@ -63,6 +63,9 @@
   --ui-border-color-weak: rgba(249 243 241 / 0.12);
   --ui-border-color-weak-hover: rgba(249 243 241 / 0.24);
 
+  --shadow-subtle: 0 0 0 1px var(--ui-border-color),
+    0px 1px 1px -0.5px var(--ui-border-color),
+    0px 2px 3px -1.5px var(--ui-border-color);
   --shadow-reduced: 0 -1px var(--ui-border-color-weak),
     0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color),
     0px 1px 1px -0.5px var(--ui-border-color),
