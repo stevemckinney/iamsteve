@@ -13,9 +13,9 @@ id: 171
 fileroot: 'css-tip-avoid-your-font-face-fauxs'
 ---
 
-A practice to improve web font compatibility in the past was to define your font weights and styles as a new font each time. However, it’s for little gain and increases complexity. It’s easy to end up with unsightly double italics or fuzzy bold weights.
+A practice to improve web font compatibility in the past was to define your font weights and styles as a new font each time. However, it’s for little gain and increases complexity nowadays. It’s easy to end up with unsightly double italics or fuzzy bold weights.
 
-As begin to use more and more variable fonts, this will become more of an occurrence as it’s just as easy to end up with the wrong weight.
+As begin to use more and more variable fonts, this will become more of an occurrence as it can be easy to end up with the wrong weight applied.
 
 ## What is faux bold or italic?
 Well, when you apply a bolder weight, italic style or generally any variation to any font that doesn’t have it available in the browser it will emulate it (in most cases).
@@ -36,7 +36,7 @@ h3 {
 }
 ```
 
-This is where an accidental bold (or italic) can trip you up. You have to consider user agent styles and defaults throughout the project. If you don’t, then once `font-family: “Font Name Bold”` is applied, it becomes a bolder weight. Likewise, with italics, you can end up with a poor oblique or double italics.
+This is where an accidental bold (or italic) can trip you up. You have to consider whether user agent styles and defaults throughout the project will have an affect. If you don’t, then once `font-family: “Font Name Bold”` is applied, it becomes a bolder weight. Likewise, with italics, you can end up with a poor oblique or double italics.
 
 On top of that, all of your `<i>`, `<em>`, `<b>`, and `<strong>` rules have to be updated, it’s an all round pain.
 

@@ -62,7 +62,7 @@ export default async function Home() {
 
   return (
     <>
-      <main className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end gap-y-10 md:gap-y-18 md:pb-18">
+      <main className="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18">
         <Hero />
         <Frame id="latest">
           <Title
