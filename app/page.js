@@ -74,7 +74,7 @@ export default async function Home() {
             What’s new
           </Title>
 
-          <div className="grid col-start-margin-start col-end-margin-end sm:col-start-container-start sm:col-end-container-end gap-4 md:gap-8 max-sm:grid-flow-col max-sm:auto-cols-auto max-sm:overflow-auto max-sm:snap-x max-sm:snap-always max-sm:overscroll-x-contain md:grid-cols-2 px-8 sm:px-12 max-sm:py-8 max-sm:-my-8">
+          <div className="grid col-margin sm:col-content gap-4 md:gap-8 max-sm:grid-flow-col max-sm:auto-cols-auto max-sm:overflow-auto max-sm:snap-x max-sm:snap-always max-sm:overscroll-x-contain md:grid-cols-2 max-sm:px-8 max-sm:py-8 max-sm:-my-8">
             {posts.map((post) => (
               <Card
                 size="container"
