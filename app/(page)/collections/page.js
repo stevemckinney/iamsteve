@@ -33,7 +33,7 @@ async function renderCollections() {
 
   return (
     <>
-      {Object.entries(groupedCollections).map(([collection, items]) => (
+      {Object.prototype.entries(groupedCollections).map(([collection, items]) => (
         <div className="flex flex-col gap-4" key={collection}>
           <h2 className="text-xl leading-xl font-display font-variation-bold lowercase">
             {collection}
