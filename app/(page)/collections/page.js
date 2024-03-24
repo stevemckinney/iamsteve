@@ -15,7 +15,7 @@ import collections from '@/content/collections'
 export const metadata = {
   title: 'Collections • iamsteve',
   description:
-    'Curated links to all things design. If you’re looking for inspiration start here.',
+    'Curated links to all things design and development. There’s links to specific articles and websites with further curation.',
 }
 
 const getData = cache(async () => {
@@ -39,51 +39,52 @@ async function Collections() {
 
   return (
     <>
-      {Object.entries(groupedCollections).map(([collection, items]) => (
-        <div
-          className="flex flex-col bg-neutral-01-500/5 px-2 pb-2 rounded-lg"
-          key={collection}
-        >
-          <h2 className="lg:text-xl leading-xl font-ui lowercase py-2 px-4 flex justify-between">
-            {collection}
+      {Object.entries(groupedCollections)
+        .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
+        .map(([collection, items]) => (
+          <div className="flex flex-col gap-4" key={collection}>
+            <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0">
+              {collection}
 
-            <span>{items.length}</span>
-          </h2>
-          <ul className="bg-white rounded-md shadow-subtle overflow-hidden">
-            {items.map((item) => {
-              const [y, m, d] = item.date.split('-').map((n) => parseInt(n, 10))
-              const itemDate = new Date(y, m, d)
-              const isNew = isAfter(itemDate, subWeeks(new Date(), 5))
+              <span className="text-cornflour-600">{items.length}</span>
+            </h2>
+            <ul className="bg-white shadow-placed rounded-lg flex flex-col overflow-hidden">
+              {items.map((item) => {
+                const [y, m, d] = item.date
+                  .split('-')
+                  .map((n) => parseInt(n, 10))
+                const itemDate = new Date(y, m, d)
+                const isNew = isAfter(itemDate, subWeeks(new Date(), 5))
 
-              return (
-                <li
-                  key={item.url}
-                  className="flex items-center border-b last:border-0 border-neutral-01-500/10 leading-loose relative lg:text-lg"
-                >
-                  <a
-                    href={item.url}
-                    className="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 transition duration-200 linear items-center leading-[1.3333333] py-2.5 px-4"
-                    rel="noopener noreferrer"
+                return (
+                  <li
+                    key={item.url}
+                    className="flex items-center border-b last:border-0 border-neutral-01-500/10 leading-loose relative lg:text-lg"
                   >
-                    {item.title}
-                    <span className="text-fern-1100/40 group-hover:text-fern-1100/80 transition duration-200 linear line-clamp-1 leading-loose">
-                      {item.url
-                        .replace('https://', '')
-                        .replace('www.', '')
-                        .replace(/\/$/, '')}
-                    </span>
-                  </a>
-                  {isNew && (
+                    <a
+                      href={item.url}
+                      className="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 transition duration-200 ease-linear items-center leading-[1.3333333] py-2.5 px-4 w-full [mask:linear-gradient(90deg,black_80%,transparent)]"
+                      rel="noopener noreferrer"
+                    >
+                      {item.title}
+                      <span className="text-fern-1100/40 group-hover:text-fern-1100/80 transition duration-200 ease-linear line-clamp-1 leading-loose">
+                        {item.url
+                          .replace('https://', '')
+                          .replace('www.', '')
+                          .replace(/\/$/, '')}
+                      </span>
+                    </a>
+                    {/*isNew && (
                     <span className="flex self-center px-2 py-1 font-ui lowercase bg-fern-200/50 leading-none text-fern-800 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
                       New
                     </span>
-                  )}
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-      ))}
+                  )*/}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        ))}
     </>
   )
 }
@@ -91,28 +92,26 @@ async function Collections() {
 export default async function CollectionsPage({ params }) {
   return (
     <>
-      <Header className="sm:row-start-1 flex flex-col gap-4 md:gap-8 col-start-content-start col-end-content-end sm:col-end-7">
-        <Column className="gap-2">
-          <Title className="font-variation-bold text-5xl">Collections</Title>
-          <Description>
-            Curated links to all things design. If you’re looking for
-            inspiration start here.
-          </Description>
-          <ul className="list-categories">
-            {collections.map((collection) => (
-              <li key={collection.id} className="self-end">
-                <a
-                  href={collection.slug}
-                  className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
-                >
-                  {collection.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </Column>
+      <Header className="flex flex-col gap-2 col-start-content-start col-end-content-end md:col-end-7 sticky top-8 self-start">
+        <Title className="font-variation-bold text-5xl">Collections</Title>
+        <Description>
+          Curated links to all things design. If you’re looking for inspiration
+          start here.
+        </Description>
+        <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 column-categories">
+          {collections.map((collection) => (
+            <li key={collection.id} className="self-end">
+              <a
+                href={collection.slug}
+                className="py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-dandelion-600 transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+              >
+                {collection.title}
+              </a>
+            </li>
+          ))}
+        </ul>
       </Header>
-      <section className="flex flex-col col-start-content-start sm:col-start-8 col-end-content-end sm:row-start-1 lg:pb-18 gap-y-10 lg:gap-y-18">
+      <section className="flex flex-col col-start-content-start md:col-start-8 col-end-content-end gap-y-10">
         <Collections />
       </section>
     </>
