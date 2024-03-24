@@ -117,6 +117,7 @@ module.exports = {
         ],
       },
       boxShadow: {
+        subtle: 'var(--shadow-subtle)',
         reduced: 'var(--shadow-reduced)',
         placed: 'var(--shadow-placed)',
         picked: 'var(--shadow-picked)',
@@ -141,7 +142,7 @@ module.exports = {
         ui: {
           normal: 'rgba(79, 64, 63, 0.16)',
           raised: 'rgba(79, 64, 63, 0.24)',
-          body: 'rgb(9 46 36 / .7)',
+          body: 'rgb(9 46 36 / .8)',
         },
         rio: {
           0: 'rgb(250 239 232)',

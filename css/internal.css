@@ -63,6 +63,9 @@
   --ui-border-color-weak: rgba(249 243 241 / 0.12);
   --ui-border-color-weak-hover: rgba(249 243 241 / 0.24);
 
+  --shadow-subtle: 0 0 0 1px var(--ui-border-color),
+    0px 1px 1px -0.5px var(--ui-border-color),
+    0px 2px 3px -1.5px var(--ui-border-color);
   --shadow-reduced: 0 -1px var(--ui-border-color-weak),
     0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color),
     0px 1px 1px -0.5px var(--ui-border-color),
@@ -337,4 +340,13 @@
 
 .list-categories li:not(:first-child):not(:nth-of-type(2)) {
   border-top: 1px solid theme('colors.neutral-01.250');
+}
+
+.image-stack img {
+  transition: 0.2s;
+}
+
+.image-stack img:hover ~ img,
+.image-stack img:focus ~ img {
+  transform: translate3d(0, 20rem, 0);
 }

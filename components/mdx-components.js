@@ -8,6 +8,8 @@ import Link from '@/components/link'
 // import CustomLink from '@/components/Link'
 // import TOCInline from '@/components/TOCInline'
 import ContactForm from '@/components/contact-form'
+import Icon from '@/components/icon'
+import Social from '@/components/social'
 import Card from '@/components/card'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
@@ -22,7 +24,8 @@ const Blockquote = (props) => {
   const styleVariants = {
     notice: 'border-l-2 border-l-fern-500 pl-4 -ml-4',
     signpost: '',
-    afterthought: '',
+    afterthought:
+      'md:text-lg lg:text-xl border-l border-l-neutral-01-500/20 pl-4 mb-3 text-lg text-ui-body/60 italic',
   }
   return (
     <blockquote className={styleVariants[style]}>{props.children}</blockquote>
@@ -54,32 +57,43 @@ const components = {
   Image,
   Card,
   Link,
-  a: (props) => <Link {...props} className="underline" />,
   // Campaigns: Campaigns,
   NewsletterForm: NewsletterForm,
   Notepad: Notepad,
   Prose: Prose,
   ContactForm: ContactForm,
+  Social,
   // wrapper: ({ components, ...rest }) => (
   //   <div className="col-content" {...rest} />
   // ),
   Content: (props) => <div {...props} />,
   h2: (props) => (
-    <h3
-      className="font-display font-variation-bold text-2xl lg:text-3xl leading-3xl lowercase mt-4 mb-1"
+    <h2
+      className="font-display font-variation-bold text-2xl lg:text-3xl leading-3xl lowercase mt-4 mb-2"
       {...props}
     />
   ),
   h3: (props) => (
     <h3
-      className="font-display font-variation-bold text-xl lg:text-2xl leading-2xl lowercase mt-4 mb-1"
+      className="font-display font-variation-bold text-xl lg:text-2xl leading-2xl lowercase mt-4 mb-1 [column-span:all]"
       {...props}
     />
   ),
-  p: (props) => <p className="text-ui-body lg:text-lg mb-2" {...props} />,
+  a: (props) => (
+    <Link
+      {...props}
+      className="text-fern-1100 md:text-lg lg:text-xl underline underline-offset-2 hover:text-dandelion-600 transition duration-200 ease-linear"
+    />
+  ),
+  p: (props) => (
+    <p
+      className="text-ui-body md:text-lg lg:text-xl mb-3 break-inside-avoid"
+      {...props}
+    />
+  ),
   ul: (props) => (
     <ul
-      className="text-ui-body lg:text-lg list-outside list-[square] [li::marker]-[theme('colors.neutral-03.400')] mb-2"
+      className="text-ui-body md:text-lg lg:text-xl list-outside list-[square] [li::marker]-[theme('colors.neutral-03.400')] mb-3"
       {...props}
     />
   ),
@@ -122,7 +136,7 @@ const postComponents = {
   Images,
 }
 
-export function Mdx({ code }) {
+export function MDX({ code }) {
   const Component = useMDXComponent(code)
 
   return <Component components={components} />

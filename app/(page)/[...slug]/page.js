@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { allPages } from 'contentlayer/generated'
 
-import { Mdx } from '@/components/mdx-components'
+import { MDX } from '@/components/mdx-components'
 import { Header, Title, Column, Description } from '@/components/page'
 import Image from '@/components/image'
 import categories from '@/content/categories'
@@ -31,7 +31,6 @@ export async function generateMetadata({ params }) {
     template: '%s • iamsteve',
     title: page.title,
     description: page.description,
-    slot: page.slot,
   }
 }
 
@@ -58,14 +57,19 @@ export default async function PagePage({ params }) {
         alt=" "
         aria-hidden="true"
       />
-      <article className="grid grid-cols-subgrid col-container row-start-1 pb-18 gap-y-10 lg:gap-y-18">
+      <article className="grid grid-cols-subgrid col-container row-start-1 lg:pb-18 gap-y-10 lg:gap-y-18">
         <Header>
           <Column className="md:col-span-1">
             <Title>{page.title}</Title>
             <Description>{page.description}</Description>
           </Column>
+          {page.slot && (
+            <Column className="md:col-span-1 self-end">
+              <MDX code={page.slot.code} />
+            </Column>
+          )}
         </Header>
-        <Mdx code={page.body.code} />
+        <MDX code={page.body.code} />
       </article>
     </>
   )

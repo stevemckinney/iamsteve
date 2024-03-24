@@ -99,7 +99,7 @@ export default async function CollectionPage({ params }) {
         alt=" "
         aria-hidden="true"
       />
-      <article className="grid grid-cols-subgrid col-container row-start-1 pb-18 gap-y-10 lg:gap-y-18">
+      <article className="grid grid-cols-subgrid col-container row-start-1 lg:pb-18 gap-y-10 lg:gap-y-18">
         <Header>
           <Column className="md:col-span-1">
             <Title>{page.title}</Title>
