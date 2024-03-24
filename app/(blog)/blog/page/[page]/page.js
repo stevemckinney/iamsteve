@@ -75,7 +75,7 @@ export default async function BlogIndex({ params }) {
           </Description>
         </Column>
         {categories && (
-          <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end list-categories -mb-2 lg:-mb-3">
+          <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories -mb-2 lg:-mb-3">
             {categories.map((category) => {
               if (category.exclude === true || category.parent === true) return
               return (

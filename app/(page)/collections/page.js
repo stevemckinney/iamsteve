@@ -34,14 +34,14 @@ const getData = cache(async () => {
   }
 })
 
-async function RenderCollections() {
+async function Collections() {
   const { groupedCollections } = await getData()
 
   return (
     <>
-      {Object.prototype.entries(groupedCollections).map(([collection, items]) => (
+      {Object.entries(groupedCollections).map(([collection, items]) => (
         <div
-          className="flex flex-col bg-neutral-01-500/5 px-2 pb-2 rounded-lg shadow-subtle"
+          className="flex flex-col bg-neutral-01-500/5 px-2 pb-2 rounded-lg"
           key={collection}
         >
           <h2 className="lg:text-xl leading-xl font-ui lowercase py-2 px-4 flex justify-between">
@@ -91,32 +91,29 @@ async function RenderCollections() {
 export default async function CollectionsPage({ params }) {
   return (
     <>
-      <Image
-        src="/images/illustration/pencil-mono.svg"
-        width={962}
-        height={46}
-        className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden`}
-        alt=" "
-        aria-hidden="true"
-      />
-      <Header className="sm:row-start-1 max-sm:frame max-sm:frame-24 flex flex-col gap-4 md:gap-8 col-start-content-start col-end-content-end sm:col-end-6">
+      <Header className="sm:row-start-1 flex flex-col gap-4 md:gap-8 col-start-content-start col-end-content-end sm:col-end-7">
         <Column className="gap-2">
           <Title className="font-variation-bold text-5xl">Collections</Title>
           <Description>
             Curated links to all things design. If you’re looking for
             inspiration start here.
           </Description>
-        </Column>
-        <Column>
-          <ul>
+          <ul className="list-categories">
             {collections.map((collection) => (
-              <li key={collection.id}>{collection.title}</li>
+              <li key={collection.id} className="self-end">
+                <a
+                  href={collection.slug}
+                  className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+                >
+                  {collection.title}
+                </a>
+              </li>
             ))}
           </ul>
         </Column>
       </Header>
-      <section className="flex flex-col col-start-content-start sm:col-start-7 col-end-content-end sm:row-start-1 lg:pb-18 gap-y-10 lg:gap-y-18">
-        <RenderCollections />
+      <section className="flex flex-col col-start-content-start sm:col-start-8 col-end-content-end sm:row-start-1 lg:pb-18 gap-y-10 lg:gap-y-18">
+        <Collections />
       </section>
     </>
   )

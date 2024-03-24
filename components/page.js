@@ -23,15 +23,15 @@ function Title({
 function Description({ className = 'd', children }) {
   return (
     <p
-      className={`max-sm:text-center md:text-lg lg:text-2xl text-ui-body sm:max-w-[34ch] ${className}`}
+      className={`max-sm:text-center md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch] ${className}`}
     >
       {children}
     </p>
   )
 }
 
-function Column({ className = 'gap-4', children }) {
-  return <div className={`flex flex-col ${className}`}>{children}</div>
+function Column({ className, children }) {
+  return <div className={`flex flex-col gap-4 ${className}`}>{children}</div>
 }
 
 export { Header, Title, Column, Description }
