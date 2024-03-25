@@ -6,7 +6,7 @@ summary: "In this post I’m going to go through some of the considerations nece
 metadesc: "How to choose a typeface for paragraphs. We’ll explore the choosing a typeface with the right x-height, contrast and width and how to make sure the context is right."
 theme: "#e1f7ee"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Typography"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 70

@@ -6,7 +6,7 @@ summary: "One of my most popular posts Sass hints & tips is a little dated. I wa
 metadesc: "A bunch of Sass hints & tips. How to use maps, @each, uses for &, @extend and media queries."
 theme: "#ffede5"
 tags: ["Code"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 63
@@ -93,7 +93,7 @@ This approach has worked very well for me, aside from the naming convention. The
 ```
 
 ## Debugging
-If you’re like me you’ll have a terminal window open compiling your Sass. Occasionally you’ll forget the value of a variable or want to know the output of something. 
+If you’re like me you’ll have a terminal window open compiling your Sass. Occasionally you’ll forget the value of a variable or want to know the output of something.
 
 This is where `@debug` comes in for a way to find out the output of your variables. You can use it anywhere in your files to find out the value.
 

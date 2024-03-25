@@ -6,7 +6,7 @@ summary: "There are a lot of units of measurement in CSS. The em is a powerful u
 metadesc: "How using em's you can create scalable elements with very little code."
 theme: "#e9f5f5"
 tags: ["Code", "CSS", "Sass"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 52
@@ -44,7 +44,7 @@ This still works without using Sass, and with Sass reduces the need for adding t
   font-size: 1em;
   padding: .75em 1.5em;
   border-radius: .3125em; }
-  
+
 .button {
   @extend %button-base;
   background: linear-gradient(#eee, #ccc);

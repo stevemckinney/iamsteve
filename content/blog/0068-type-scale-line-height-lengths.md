@@ -6,7 +6,7 @@ summary: "Good typography is playing a bigger role in the design of websites now
 metadesc: "How to choose a harmonious type scale and set comfortable line lengths and line height, that scale well with responsive type sizes."
 theme: "#fffbf2"
 tags: ["Design"]
-categories: ["Design"]
+categories: ["Design", "Typography"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true

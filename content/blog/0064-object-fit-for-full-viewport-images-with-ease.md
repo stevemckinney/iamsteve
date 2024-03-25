@@ -6,7 +6,7 @@ summary: "Discovering this CSS feature will make my life much easier where it co
 metadesc: "How to use object-fit to make images using the <img> tag fill the viewport. This method is like background-size but for the img tag."
 theme: "#fffbf2"
 tags: ["Code"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true

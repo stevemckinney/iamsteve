@@ -6,7 +6,7 @@ summary: "I have been recently trying to get a consistent look across my element
 metadesc: "Don’t use darken or lighten use scale-color! Changing tints and shades will be more predictable, read the post to find out why."
 theme: "#e1f7ee"
 tags: ["Code", "Sass"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 49

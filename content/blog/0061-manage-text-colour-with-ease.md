@@ -6,7 +6,7 @@ summary: "When designing a website you can have varied text colours depending on
 metadesc: "How to make text on different backgrounds easily be the colour you require without writing many selectors each time."
 theme: "#e9f5f5"
 tags: ["Code", "CSS"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 61
@@ -30,10 +30,10 @@ This is quite tedious to do when it happens in a few situations and can be frust
 ```css
 body {
   color: #444; }
-    
+
 h1, h2, h3, h4, h5, h6 {
   color: inherit; }
-    
+
 .panel {
   color: #c0ffee; }
 ```

@@ -6,7 +6,7 @@ summary: "An attempt at adding browser chrome to images without the need for ext
 metadesc: "Using border image we can use a small image and define slices to make a repeatable area."
 theme: "#fffbf2"
 tags: ["Design", "Code", "CSS", "HTML", "Sass"]
-categories: ["Design"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 codepen: true

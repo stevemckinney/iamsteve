@@ -2,11 +2,11 @@
 title: "Opt in style"
 date: "2015-03-10T08:00:00+00:00"
 lastmod: "2016-08-28T12:52:19+00:00"
-summary: "This isn’t a new idea, but it’s something I have been thinking about more. The idea is that you don’t add a base level of styles, eg: all headings will have a margin of x amount. This of course doesn’t rule out things like using normalize.css.I mention margin, because, when building a website, it becomes inconsistent in many areas. It happens, we get used to the way the website looks, and notice inconsistencies less.I intend to overcome this by having a set of reusable classes and targeting trickier areas. Nothing groundbreaking, it just helps you to think more about adding styles."
+summary: "Why not to add a base level of styles that are defaults for the majority of elements."
 metadesc: "Why not to add a base level of styles that are defaults for the majority of elements."
 theme: "#e9f5f5"
 tags: ["Code"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 65
@@ -33,9 +33,9 @@ h1, h2, h3, h4, h5, h6 {
 Then set up some margin classes for reuse later, naming is your choice.
 
 ```css
-.margin-bottom { 
+.margin-bottom {
   margin-bottom: 12px; }
-    
+
 .margin-bottom-large {
   margin-bottom: 24px; }
 ```
@@ -86,7 +86,7 @@ Otherwise you could just add the selector to the rule.
   … }
 ```
 ## Finishing thoughts
-I was against this idea, as I thought more, it made sense. Both of these examples are common occurrences throughout development. More often than not it’s much simpler to just go in and add a class, than write a new set of rules to undo previous styles. 
+I was against this idea, as I thought more, it made sense. Both of these examples are common occurrences throughout development. More often than not it’s much simpler to just go in and add a class, than write a new set of rules to undo previous styles.
 
 ### Mixins
 Mixins are another thing I'm considering for this approach, this could potentially be the best solution. Though as a standard CSS approach applying a class stops the need for writing additional CSS. A combination of both may work.

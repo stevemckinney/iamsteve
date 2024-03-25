@@ -6,7 +6,7 @@ summary: "Sass has a handy feature for setting defaults for mixins and variables
 metadesc: "Sass has a handy feature to create default variables using !default in the same way you would use !important. It can allow you to override defaults set in Sass extensions or frameworks."
 theme: "#e1f7ee"
 tags: ["Code", "CSS", "Sass"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 53
@@ -57,7 +57,7 @@ Let's take a typical function the em conversion function:
 It has 2 parameters the target pixel value and the context. You could immediately make this more efficient by adding a value to the context you use most often. So you define that as `$context: 16px`.
 
 Great, on a new project you need to make this 14px though. Instead of having to modify the core function why not have a default variable and value and override this default value in our variables file. This is what your setup would look like now:
-    
+
 ```css
 // em function and default value
 $default-context: 16px !default;

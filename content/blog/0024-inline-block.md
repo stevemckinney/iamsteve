@@ -6,7 +6,7 @@ summary: "The inline-block method is an effective float based layout alternative
 metadesc: "A simple and effective layout technique. Find out how to get rid of the inline-block space and align left, right or to the centre, with ease."
 theme: "#eafaf6"
 tags: ["Code", "CSS"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 images: ["/images/blog/inline-block-featured-image@2x.png"]
 large: "/images/blog/inline-block-featured-image@2x.png"
 medium: "/images/blog/inline-block-featured-image-medium@2x.png"

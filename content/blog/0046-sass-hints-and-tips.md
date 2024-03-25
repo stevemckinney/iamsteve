@@ -6,7 +6,7 @@ summary: "A selection of tips for those getting started with a Sass."
 metadesc: "Some tips for beginners using Sass. You'll learn how to use color, mixins and how Sass can help control responsive code."
 theme: "#ffede5"
 tags: ["Code", "Sass"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 46
@@ -44,14 +44,14 @@ Mixins can save a lot of time, how many times have you wrote something as simple
 ```scss
 @mixin wh($width: false, $height: false) {
   $width: unquote($width);
-  
-  @if $height != none { 
+
+  @if $height != none {
     $height: unquote($height); }
-  
+
   @if $height != false {
     width: #{$width};
     height: #{$height}; }
-  
+
   @else {
     width: #{$width};
     height: #{$width}; } }
@@ -79,15 +79,15 @@ In the prerelease versions of Sass only (at the time of writing this post). You 
 ```scss
 @mixin respond-to($media) {
   @if $media == iphone {
-    @media only screen and (min-width: 480px) { 
+    @media only screen and (min-width: 480px) {
       @content; } }
-  
+
   @else if $media == ipad {
-    @media only screen and (min-width: 768px) { 
+    @media only screen and (min-width: 768px) {
       @content; } }
-  
+
   @else if $media == desktop {
-    @media only screen and (min-width: 960px) { 
+    @media only screen and (min-width: 960px) {
       @content; } } }
 ```
 
@@ -96,13 +96,13 @@ Now we can write things like:
 ```scss
 .container {
   width: 95%;
-  
-  @include respond-to(iphone) { 
+
+  @include respond-to(iphone) {
     width: 90%; }
-  
-  @include respond-to(ipad) { 
+
+  @include respond-to(ipad) {
     width: 80%; }
-      
+
   @include respond-to(desktop) {
     width: 70%; } }
 ```

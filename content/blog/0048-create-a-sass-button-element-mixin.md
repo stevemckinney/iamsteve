@@ -5,7 +5,7 @@ lastmod: "2016-08-28T12:59:24+00:00"
 summary: "This mixin is one I’ve been using for a few months now to create buttons/anything with a particular style."
 theme: "#e9f5f5"
 tags: ["Code", "Sass"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 48

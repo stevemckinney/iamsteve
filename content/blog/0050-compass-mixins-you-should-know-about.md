@@ -5,7 +5,7 @@ lastmod: "2016-08-28T12:59:01+00:00"
 summary: "I’m going to run through a few of my favourite mixins that I have come to rely on."
 theme: "#ffede5"
 tags: ["Code", "Sass"]
-categories: ["Code"]
+categories: ["Code", "CSS"]
 ogImage: "/assets/og/cover.jpg"
 status: "open"
 id: 50
