@@ -717,6 +717,21 @@ const Sprite = (props) => (
           <path d="M16 3h4v18h-4z" />
         </g>
       </symbol>
+      <symbol id="collections-24" viewBox="0 0 24 24">
+        <g className="fill-white stroke-current stroke-2 sl-r">
+          <circle cx="17.5" cy="17.5" r="3.5" />
+          <path d="M10 14H3v7h7v-7Z" />
+          <path d="M8 10h8l-4-7-4 7Z" />
+        </g>
+      </symbol>
+      <symbol id="collections-16" viewBox="0 0 16 16">
+        <g className="fill-white stroke-current stroke-2 sl-r">
+          <circle cx="5.5" cy="10.5" r="2.5" />
+          <circle cx="10.5" cy="5.5" r="2.5" />
+          <path d="M8 3H3v5h5V3Z" />
+          <path d="M13 8H8v5h5V8Z" />
+        </g>
+      </symbol>
       <symbol id="box-24" viewBox="0 0 24 24">
         <g className="box">
           <path

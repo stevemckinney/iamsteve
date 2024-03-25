@@ -109,7 +109,7 @@ export default async function BlogCategory({ params, searchParams }) {
           <Title>{data.title}</Title>
           <Description>{data.description}</Description>
         </Column>
-        <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end list-categories lg:-mb-3">
+        <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories lg:-mb-3">
           {categories.map((category) => {
             if (category.parent === false || category.exclude === true) return
 
@@ -122,7 +122,7 @@ export default async function BlogCategory({ params, searchParams }) {
                   <Category
                     size={24}
                     badge={false}
-                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-dandelion-600 transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
                   >
                     {category.title}
                   </Category>

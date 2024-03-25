@@ -116,7 +116,7 @@ export default function RootLayout({ children }) {
         className={`antialiased overflow-x-hidden min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100 pt-[env(safe-area-inset-top,0)]`}
       >
         <Sprite />
-        <div className="grid layout gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto">
+        <div className="grid layout gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto items-baseline">
           <ModeToggle />
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <Header />
@@ -130,7 +130,7 @@ export default function RootLayout({ children }) {
                 <li>
                   <Link
                     href="#top"
-                    className="text-fern-1100 hover:text-dandelion-600 transition duration-200"
+                    className="text-fern-1100 hover:text-dandelion-600 transition duration-200 ease-linear"
                   >
                     Top
                   </Link>
@@ -138,7 +138,7 @@ export default function RootLayout({ children }) {
                 <li>
                   <Link
                     href="/feed.xml"
-                    className="text-fern-1100 hover:text-dandelion-600 transition duration-200"
+                    className="text-fern-1100 hover:text-dandelion-600 transition duration-200 ease-linear"
                   >
                     RSS
                   </Link>
@@ -148,7 +148,7 @@ export default function RootLayout({ children }) {
                     {`©`}{' '}
                     <Link
                       href="/"
-                      className="text-ui-body hover:text-dandelion-600 transition duration-200"
+                      className="text-ui-body hover:text-dandelion-600 transition duration-200 ease-linear"
                     >
                       {siteMetadata.title}
                     </Link>{' '}

@@ -43,8 +43,6 @@ export async function generateStaticParams() {
 export default async function PagePage({ params }) {
   const page = await getPageFromParams(params)
 
-  console.log(page.slot)
-
   if (!page) {
     notFound()
   }
