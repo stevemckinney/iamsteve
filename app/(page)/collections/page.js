@@ -101,18 +101,22 @@ export default async function CollectionsPage({ params }) {
           start here.
         </Description>
         <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
-          {collections.map((collection) => {
-            return (
-              <li key={collection.id} className="self-end">
-                <a
-                  href={collection.slug}
-                  className={`py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-dandelion-600 transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current`}
-                >
-                  {collection.title}
-                </a>
-              </li>
+          {collections
+            .sort((a, b) =>
+              a.title < b.title ? -1 : a.title > b.title ? 1 : 0
             )
-          })}
+            .map((collection) => {
+              return (
+                <li key={collection.id} className="self-end">
+                  <a
+                    href={collection.slug}
+                    className={`py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-dandelion-600 transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current`}
+                  >
+                    {collection.title}
+                  </a>
+                </li>
+              )
+            })}
         </ul>
       </Header>
       <section className="flex flex-col col-start-content-start md:col-start-8 col-end-content-end gap-y-10">
