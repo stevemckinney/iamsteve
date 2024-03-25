@@ -74,7 +74,14 @@ async function Collections({ page }) {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-4">
+      <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 pt-2">
+        {page.join('/')}
+
+        <span className="text-cornflour-600">
+          {groupedCollections[collectionKey].length}
+        </span>
+      </h2>
       <ul className="bg-white shadow-placed rounded-lg flex flex-col overflow-hidden">
         {groupedCollections[collectionKey].map((item) => {
           const [y, m, d] = item.date.split('-').map((n) => parseInt(n, 10))
@@ -88,11 +95,11 @@ async function Collections({ page }) {
             >
               <a
                 href={item.url}
-                className="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 transition duration-200 linear items-center leading-[1.3333333] py-2.5 px-4 w-full [mask:linear-gradient(90deg,black_80%,transparent)]"
+                className="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 transition duration-200 linear items-baseline py-2.5 px-4 w-full [mask:linear-gradient(90deg,black_80%,transparent)]"
                 rel="noopener noreferrer"
               >
                 {item.title}
-                <span className="text-fern-1100/40 group-hover:text-fern-1100/80 transition duration-200 linear line-clamp-1 leading-loose">
+                <span className="text-fern-1100/40 group-hover:text-fern-1100/80 transition duration-200 linear line-clamp-1">
                   {item.url
                     .replace('https://', '')
                     .replace('www.', '')
@@ -100,10 +107,10 @@ async function Collections({ page }) {
                 </span>
               </a>
               {/*isNew && (
-                <span className="flex self-center px-2 py-1 font-ui lowercase bg-fern-200/50 leading-none text-fern-800 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
-                  New
-                </span>
-              )*/}
+              <span className="flex self-center px-2 py-1 font-ui lowercase bg-fern-200/50 leading-none text-fern-800 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
+                New
+              </span>
+            )*/}
             </li>
           )
         })}
@@ -130,23 +137,25 @@ export default async function CollectionPage({ params }) {
               Collections
             </Link>
             <span>/</span> */}
-          {params.slug}
+          Collections
         </Title>
         <Description>
           Curated links to all things design. If you’re looking for inspiration
           start here.
         </Description>
-        <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 column-categories">
-          {collections.map((collection) => (
-            <li key={collection.id} className="self-end">
-              <a
-                href={collection.slug}
-                className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
-              >
-                {collection.title}
-              </a>
-            </li>
-          ))}
+        <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
+          {collections.map((collection) => {
+            return (
+              <li key={collection.id} className="self-end">
+                <a
+                  href={collection.slug}
+                  className={`py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-dandelion-600 transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current`}
+                >
+                  {collection.title}
+                </a>
+              </li>
+            )
+          })}
         </ul>
       </Header>
       <section className="flex flex-col col-start-content-start md:col-start-8 col-end-content-end gap-y-10">
