@@ -2,7 +2,7 @@ import Link from '@/components/link'
 
 export default function NotFound() {
   return (
-    <div className="grid grid-cols-subgrid col-container flex flex-col relative frame frame-16 sm:frame-24 lg:frame-40 lg:frame-outset-top-md 2xl:frame-outset-top py-12 lg:pt-10 lg:pb-[5.5rem] gap-y-4 max-lg:px-4 pt-12 pb-16 flex flex-col gap-8 mb-10 md:mb-18">
+    <div className="grid grid-cols-subgrid col-container flex flex-col relative frame frame-24 lg:frame-40 lg:frame-outset-top-md 2xl:frame-outset-top py-12 lg:pt-10 lg:pb-[5.5rem] gap-y-4 max-lg:px-4 pt-12 pb-16 flex flex-col gap-8 mb-10 md:mb-18">
       <h1 className="col-content text-7xl font-variation-extrabold font-display text-fern-1100">
         404
       </h1>
