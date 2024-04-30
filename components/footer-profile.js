@@ -7,20 +7,26 @@ export default function FooterProfile() {
     <aside className="grid grid-flow-dense grid-cols-2 sm:grid-cols-[repeat(16,_minmax(min-content,_1fr))] grid-rows-[repeat(auto-fill,_minmax(min-content,1fr))] gap-px col-start-container-start col-end-container-end shadow-placed rounded-lg lg:rounded-xl overflow-hidden">
       <Subscribe className="col-span-full lg:col-span-8 xl:col-span-7 row-span-10 bg-white py-12 px-8 sm:px-12 sm:py-12 md:px-[5vmax] xl:py-16 xl:px-24" />
 
-      <div className="col-span-full sm:col-span-8 xl:col-span-9 row-span-7 bg-white py-12 px-8 sm:px-12 sm:py-12 xl:px-[4.5rem] flex flex-col justify-end">
+      <div className="col-span-full sm:col-span-8 xl:col-span-9 row-span-7 bg-white py-12 px-8 sm:px-12 sm:py-12 xl:px-[4.5rem] content-end">
         <h3 className="font-display font-variation-bold text-lg sm:text-3xl lowercase flex gap-2 mb-3">
           About this site
         </h3>
-        <p className="text-ui-body text-base mb-2">
-          Hi, I’m Steve McKinney, I write this publication focusing on the
-          design and build of websites. The aim is to bridge the gap between
-          design tools and building your design.
-        </p>
-        <p className="text-ui-body text-base">
-          And explore the craft and technique behind creating websites. It
-          started—and remains—a way to encourage self learning and sharing what
-          I know.
-        </p>
+        <div className="flex flex-row gap-x-6 gap-y-2">
+          <p className="text-ui-body text-base flex-1">
+            Hi, I’m Steve McKinney, I write this small publication focusing on
+            the design and build of websites. The aim is to bridge the gap
+            between your design tool and code. And look at the craft behind
+            creating websites.
+          </p>
+          <p className="text-ui-body text-base flex-1">
+            This is a broad topic in itself, which feels challenging to achieve.
+            But it remains—a way to encourage self learning and sharing what I
+            know…
+            <Link href="/about" className="font-bold">
+              continue reading
+            </Link>
+          </p>
+        </div>
       </div>
 
       <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-5 row-span-3 bg-white py-12 px-8 sm:px-12 sm:py-12 xl:px-[4.5rem] flex flex-col justify-end">
