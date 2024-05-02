@@ -25,7 +25,7 @@ const Button = (props, forwardedRef) => {
     return (
       <a
         rel="noopener noreferrer"
-        href={href}
+        href={props.href}
         className={`${base} ${style}`}
         {...props}
       />
