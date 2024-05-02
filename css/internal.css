@@ -71,16 +71,18 @@
     0px 1px 1px -0.5px var(--ui-border-color),
     0px 2px 3px -1.5px var(--ui-border-color),
     0px 3px 4px -2px var(--ui-border-color);
-  --shadow-placed: 0 -1px var(--ui-border-color-weak),
-    0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color),
-    0 1px 1px -0.5px var(--ui-border-color),
+  --shadow-placed: var(--shadow-placed-border), var(--shadow-placed-depth);
+  --shadow-placed-border: 0 -1px var(--ui-border-color-weak),
+    0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color);
+  --shadow-placed-depth: 0 1px 1px -0.5px var(--ui-border-color),
     0 1px 3px -1.5px var(--ui-border-color),
     0 2px 4px -2px var(--ui-border-color), 0 3px 6px -3px var(--ui-border-color),
     0 3px 6px -3px var(--ui-border-color),
     0 6px 9px -4.5px var(--ui-border-color);
-  --shadow-picked: 0 -1px var(--ui-border-color-weak),
-    0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color-hover),
-    0 1px 1px -0.5px var(--ui-border-color),
+  --shadow-picked: var(--shadow-picked-border), var(--shadow-picked-depth);
+  --shadow-picked-border: 0 -1px var(--ui-border-color-weak),
+    0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color-hover);
+  --shadow-picked-depth: 0 1px 1px -0.5px var(--ui-border-color),
     0 1px 3px -1.5px var(--ui-border-color),
     0 2px 4px -2px var(--ui-border-color), 0 3px 6px -3px var(--ui-border-color),
     0 6px 12px -6px var(--ui-border-color),
@@ -90,6 +92,67 @@
 }
 
 @layer utilities {
+  /*
+  bg-gradient-to-b from-dandelion-300 to-dandelion-400 active:bg-dandelion-400 rounded-sm transition duration-200 shadow-dandelion-placed hover:shadow-dandelion-picked active:shadow-reduced px-8 py-3 flex-auto [--ui-border-color:theme(colors.dandelion.500)] [--ui-border-color-hover:theme(colors.dandelion.700)] border border-transparent */
+
+  .button-dandelion {
+    --ui-border-color: theme(colors.dandelion.500);
+    --ui-border-color-strong: theme(colors.dandelion.700);
+    --gradient-direction: bottom;
+    --bg-gradient-weak: theme('colors.dandelion.300');
+    --bg-gradient-strong: oklch(79.6% 0.187 83);
+
+    position: relative;
+    box-shadow: inset 0 -1px 3px rgb(221 142 0 / 0.8),
+      inset 0 1px 3px rgba(248, 229, 142, 0.5),
+      inset 0 0 0 1px rgba(248, 229, 142, 0.2), var(--shadow-placed-depth);
+    color: theme('colors.dandelion.800');
+    border-radius: theme('borderRadius.sm');
+    padding: theme('padding[3.5]') theme('padding.8');
+
+    background: linear-gradient(
+        to var(--gradient-direction),
+        var(--bg-gradient-weak),
+        var(--bg-gradient-strong)
+      ),
+      var(--bg-gradient-weak) !important;
+  }
+
+  .button-dandelion:hover {
+    --ui-border-color: theme(colors.dandelion.700);
+    --ui-border-color-strong: theme(colors.dandelion.900);
+
+    box-shadow: inset 0 -1px 3px rgb(221 142 0 / 0.8),
+      inset 0 1px 3px rgba(248, 229, 142, 0.5),
+      inset 0 0 0 1px rgba(248, 229, 142, 0.2), var(--shadow-picked-depth);
+  }
+
+  .button-dandelion:active {
+    --ui-border-color: theme(colors.dandelion.600);
+    --ui-border-color-strong: theme(colors.dandelion.800);
+    --gradient-direction: top;
+    --bg-gradient-weak: theme('colors.dandelion.400');
+    --bg-gradient-strong: theme('colors.dandelion.400');
+
+    box-shadow: inset 0 -1px 3px rgb(221 142 0 / 0),
+      inset 0 1px 3px rgba(248, 229, 142, 0),
+      inset 0 0 0 1px rgba(248, 229, 142, 0), var(--shadow-reduced);
+  }
+
+  .button-dandelion:before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 9px;
+    background: border-box
+      linear-gradient(
+        to var(--gradient-direction),
+        var(--ui-border-color) 50%,
+        var(--ui-border-color-strong)
+      );
+    z-index: -1;
+  }
+
   .sl-r {
     stroke-linecap: round;
     stroke-linejoin: round;
