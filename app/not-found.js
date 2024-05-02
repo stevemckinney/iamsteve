@@ -1,4 +1,5 @@
 import Link from '@/components/link'
+import Button from '@/components/button'
 
 export default function NotFound() {
   return (
@@ -15,12 +16,13 @@ export default function NotFound() {
         </Link>
         .
       </p>
-      <Link
+      <Button
         href="/"
-        className="col-content button-dandelion max-w-[max-content] self-start font-ui text-base/snug lowercase text-dandelion-800 text-center bg-dandelion-300 active:bg-dandelion-400 rounded-sm transition duration-200 shadow-dandelion-placed hover:shadow-dandelion-picked active:shadow-dandelion-reduced px-8 py-3 flex-auto [--ui-border-color:theme(colors.dandelion.600)] [--ui-border-color-hover:theme(colors.dandelion.700)]"
+        theme="dandelion"
+        className="col-content max-w-[max-content] self-start flex-auto"
       >
         Back to homepage
-      </Link>
+      </Button>
     </div>
   )
 }

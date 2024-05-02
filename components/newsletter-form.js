@@ -3,6 +3,8 @@
 import { NextResponse } from 'next/server'
 import { useRef, useState } from 'react'
 
+import Button from '@/components/button'
+
 const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
   const inputEmail = useRef(null)
   const inputName = useRef(null)
@@ -43,7 +45,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
     inputName.current.value = ''
     setError(false)
     setSubscribed(true)
-    setMessage('🎉 Thank you for subscribing! Please check your inbox.')
+    setMessage('Thank you for subscribing! Please check your inbox.')
   }
 
   return (
@@ -51,22 +53,14 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
       <div className={`${className}`}>
         {subscribed && (
           <div
-            className={`bg-secondary sans radius white`}
-            style={{
-              marginBottom: '24px',
-              padding: '8px',
-            }}
+            className={`bg-grass-50/40 rounded-sm ring-1 ring-grass-400/40 text-grass-800 px-3 py-2 mb-8`}
           >
-            {message && <p className="m-0">{message}</p>}
+            {message && <p className="m-0 text-sm">{message}</p>}
           </div>
         )}
         {error && (
           <div
-            className={`bg-red sans radius white`}
-            style={{
-              marginBottom: '24px',
-              padding: '8px',
-            }}
+            className={`bg-rio-50/40 rounded-sm ring-1 ring-rio-400/40 text-rio-800 px-3 py-2 mb-8`}
           >
             {message && <p className="m-0">{message}</p>}
           </div>
@@ -120,14 +114,14 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
             <p className="m-0 p-0 text-fern-600 flex-1 text-center @sm:text-left">
               Join 700+ designers
             </p>
-            <button
-              type="submit"
+            <Button
+              theme="dandelion"
               aria-label="Subscribe to the newsletter"
-              className="button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 font-ui text-base/snug lowercase text-dandelion-800 text-center bg-dandelion-300 active:bg-dandelion-400 rounded-sm transition duration-200 shadow-dandelion-placed hover:shadow-dandelion-picked active:shadow-dandelion-reduced px-8 py-3 flex-auto [--ui-border-color:theme(colors.dandelion.600)] [--ui-border-color-hover:theme(colors.dandelion.700)]"
+              className="button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto button-dandelion font-ui text-base/tight lowercase text-center"
               disabled={subscribed}
             >
               Sign me up
-            </button>
+            </Button>
           </div>
         </form>
       </div>
