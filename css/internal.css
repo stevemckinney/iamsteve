@@ -237,11 +237,11 @@
   }
 
   .frame-outset-top-md {
-    border-image-outset: 2.5rem 0 0;
+    border-image-outset: 2.5625rem 0 0;
   }
 
   .frame-outset-top {
-    border-image-outset: 3.55rem 0 0;
+    border-image-outset: 3.375rem 0 0;
   }
 }
 
@@ -348,7 +348,7 @@
 }
 
 .toggle-nav span > span:nth-of-type(2) {
-  animation: closed-middle 300ms ease-out both;
+  animation: closed-middle 200ms ease-out both;
 }
 
 .toggle-nav span > span {
@@ -356,7 +356,7 @@
 }
 
 .toggle-nav span > span:first-child {
-  animation: closed-first 300ms ease-out both;
+  animation: closed-first 200ms ease-out both;
   transform: translate3d(2px, 18px, 0);
 }
 
@@ -366,7 +366,7 @@
 }
 
 .toggle-nav span > span:last-child {
-  animation: closed-last 300ms ease-out both;
+  animation: closed-last 200ms ease-out both;
 }
 
 .toggle-nav[data-state='open'] span > span {
@@ -374,16 +374,16 @@
 }
 
 .toggle-nav[data-state='open'] span > span:first-child {
-  animation: opened-first 300ms ease-out both;
+  animation: opened-first 200ms ease-out both;
 }
 
 .toggle-nav[data-state='open'] span > span:nth-of-type(2) {
-  animation: opened-middle 200ms 120ms ease-out both;
+  animation: opened-middle 200ms 60ms ease-out both;
   transform: translate3d(4px, 11px, 0) scale3d(0, 0, 0);
 }
 
 .toggle-nav[data-state='open'] span > span:last-child {
-  animation: opened-last 300ms ease-out both;
+  animation: opened-last 200ms ease-out both;
 }
 
 .nav-content {
@@ -394,11 +394,13 @@
 }
 
 .nav-viewport[data-state='open'] {
-  animation: show 300ms ease-out;
+  transform-origin: 50% 0;
+  animation: show 200ms ease-out;
 }
 
 .nav-viewport[data-state='closed'] {
-  animation: hide 300ms ease-in;
+  transform-origin: 50% 0;
+  animation: hide 200ms ease-in;
 }
 
 .column-categories li:not(:first-child):not(:nth-of-type(2)) {

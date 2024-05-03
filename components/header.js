@@ -20,7 +20,8 @@ export default function Header() {
 
   // Some styles exist in the header.module to handle safe-area
   const navLink = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
-  const horizontalNavLink = `md:gap-2 md:text-base lg:text-xl/none lg:py-0.5`
+  const compactHorizontalNavLink = `md:bg-neutral-01-500/10 md:rounded-full lg:pl-10 lg:pr-1 md:relative`
+  const horizontalNavLink = `md:gap-2 md:text-base lg:text-lg xl:text-xl/none xl:py-0.5`
   const tabbarNavLink = `max-md:text-[12px] max-md:flex-col max-md:flex-1 max-md:justify-center max-md:pt-2`
 
   return (
@@ -29,7 +30,7 @@ export default function Header() {
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-[1] sticky top-0"
         id="top"
       >
-        <div className="col-container lg:col-content flex items-center align-center py-4 px-4 lg:py-6 2xl:py-9 2xl:px-8 2xl:-mx-8 bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 max-md:-mx-4">
+        <div className="col-container lg:col-content flex items-center align-center py-4 px-4 md:py-[1.625rem] 2xl:py-9 2xl:px-8 2xl:-mx-8 bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 max-md:-mx-4">
           <Link
             href="/"
             className="flex-[1_0_10%]"
