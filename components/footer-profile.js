@@ -22,7 +22,10 @@ export default function FooterProfile() {
             This is a broad topic in itself, which feels challenging to achieve.
             But it remains—a way to encourage self learning and sharing what I
             know…
-            <Link href="/about" className="font-bold">
+            <Link
+              href="/about"
+              className="font-semibold text-fern-1100 hover:text-dandelion-600 transition duration-200 ease"
+            >
               continue reading
             </Link>
           </p>
