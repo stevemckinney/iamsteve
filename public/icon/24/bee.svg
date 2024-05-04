@@ -1,10 +1,12 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10 6C10 3 9 2 6 2" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14 6C14 3 15 2 18 2" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12Z" fill="#092E24" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12 21C15.3137 21 18 18.3137 18 15C18 11.6863 15.3137 9 12 9C8.68629 9 6 11.6863 6 15C6 18.3137 8.68629 21 12 21Z" fill="#F8E58E" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M7 12C10.8713 13.3412 13.0584 13.3254 17 12" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M7 16C10.8713 17.3412 13.0584 17.3254 17 16" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M22 17.6667C22 12.8802 18.1198 9 13.3333 9H12V10.3333C12 15.1198 15.8802 19 20.6667 19C21.403 19 22 18.403 22 17.6667Z" fill="#FAF8EC" stroke="#092E24" stroke-width="2"/>
-<path d="M2 17.6667C2 12.8802 5.8802 9 10.6667 9H12V10.3333C12 15.1198 8.1198 19 3.33333 19C2.59695 19 2 18.403 2 17.6667Z" fill="#FAF8EC" stroke="#092E24" stroke-width="2"/>
+<svg width="24" height="24" viewBox="0 0 24 24">
+  <g stroke-width="2" class="bee">
+    <path d="M10 6c0-3-1-4-4-4" class="stroke-current stroke-2 sl-r"/>
+    <path d="M14 6c0-3 1-4 4-4" class="stroke-current stroke-2 sl-r"/>
+    <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" class="fill-currentcolor stroke-current stroke-2 sl-r"/>
+    <path d="M12 21a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" class="fill-dandelion-100 stroke-current stroke-2 sl-r"/>
+    <path d="M7 12c3.871 1.341 6.058 1.325 10 0" class="path"/>
+    <path d="M7 16c3.871 1.341 6.058 1.325 10 0" class="stroke-current stroke-2 sl-r"/>
+    <path d="M22 17.667A8.667 8.667 0 0 0 13.333 9H12v1.333A8.667 8.667 0 0 0 20.667 19c.736 0 1.333-.597 1.333-1.333Z" class="fill-dandelion-0 stroke-current stroke-2 sl-r"/>
+    <path d="M2 17.667A8.667 8.667 0 0 1 10.667 9H12v1.333A8.667 8.667 0 0 1 3.333 19 1.333 1.333 0 0 1 2 17.667Z" class="fill-dandelion-0 stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

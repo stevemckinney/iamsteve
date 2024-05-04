@@ -1,12 +1,16 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 3L15 9.5V16H6L12 3Z" fill="white"/>
-<mask id="mask0_847_204" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="1" width="13" height="21">
-<rect x="2" y="1" width="13" height="21" fill="#092E24"/>
-</mask>
-<g mask="url(#mask0_847_204)">
-<path d="M3 24L12 4L21 24" stroke="#092E24" stroke-width="2" stroke-linejoin="round"/>
-<path d="M6 16L18 16" stroke="#092E24" stroke-width="2" stroke-linejoin="round"/>
-</g>
-<path d="M16 3H18V21H16" stroke="#092E24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M20 3H18V21H20" stroke="#092E24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24">
+  <g class="type">
+    <path d="m12 3 3 6.5V16H6l6-13Z" class="fill-white"/>
+    <g class="type-24">
+      <mask id="a" width="13" height="21" x="2" y="1" class="a" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+        <path d="M2 1h13v21H2z" class="type-24"/>
+      </mask>
+      <g stroke-linejoin="round" stroke-width="2" mask="url(#a)">
+        <path d="m3 24 9-20 9 20" class="fill-none stroke-current stroke-2"/>
+        <path d="M6 16h12" class="fill-none stroke-current stroke-2"/>
+      </g>
+    </g>
+    <path d="M16 3h2v18h-2" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M20 3h-2v18h2" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

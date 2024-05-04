@@ -1,6 +1,8 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8 9L8 21" stroke="#092E24" stroke-width="2"/>
-<circle cx="8" cy="6" r="3" stroke="#092E24" stroke-width="2"/>
-<path d="M16 3L16 15" stroke="#092E24" stroke-width="2"/>
-<circle cx="16" cy="18" r="3" stroke="#092E24" stroke-width="2"/>
+<svg width="24" height="24" viewBox="0 0 24 24">
+  <g stroke-width="2" class="settings">
+    <path d="M8 9v12" class="stroke-current stroke-2 sl-r"/>
+    <circle cx="8" cy="6" r="3" class="fill-white stroke-current stroke-2 sl-r"/>
+    <path d="M16 3v12" class="stroke-current stroke-2 sl-r"/>
+    <circle cx="16" cy="18" r="3" class="fill-white stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

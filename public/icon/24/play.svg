@@ -1,3 +1,5 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M5 3.69951C5 2.93703 5.81911 2.45506 6.48564 2.82536L21.4265 11.1258C22.1123 11.5068 22.1123 12.4931 21.4265 12.8741L6.48565 21.1746C5.81911 21.5449 5 21.063 5 20.3005L5 3.69951Z" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24">
+  <g class="play">
+    <path d="M5 3.7a1 1 0 0 1 1.486-.875l14.94 8.3a1 1 0 0 1 0 1.75l-14.94 8.3A1 1 0 0 1 5 20.3V3.7Z" class="fill-white stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

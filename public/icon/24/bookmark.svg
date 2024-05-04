@@ -1,0 +1,8 @@
+<svg width="24" height="24" viewBox="0 0 24 24">
+  <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" class="bookmark">
+    <path d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z" class="fill-white stroke-current stroke-2 sl-r"/>
+    <path d="M4 9h10" class="stroke-current stroke-2 sl-r"/>
+    <path d="M18 9h3" class="stroke-current stroke-2 sl-r"/>
+    <path d="M14 4h4v12l-2-2-2 2V4Z" class="stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

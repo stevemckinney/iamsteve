@@ -1,6 +1,8 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="14.6316" y="12" width="5.21032" height="5.21032" transform="rotate(-45 14.6316 12)" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="8.3158" y="18.3158" width="5.21032" height="5.21032" transform="rotate(-45 8.3158 18.3158)" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="8.3158" y="5.68425" width="5.21032" height="5.21032" transform="rotate(-45 8.3158 5.68425)" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="2" y="12" width="5.21032" height="5.21032" transform="rotate(-45 2 12)" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24">
+  <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" class="component">
+    <path d="m14.632 12 3.684-3.684L22 12l-3.684 3.684z" class="fill-white stroke-current stroke-2 sl-r"/>
+    <path d="M8.316 18.316 12 14.632l3.684 3.684L12 22z" class="fill-white stroke-current stroke-2 sl-r"/>
+    <path d="M8.316 5.684 12 2l3.684 3.684L12 9.368z" class="fill-white stroke-current stroke-2 sl-r"/>
+    <path d="m2 12 3.684-3.684L9.368 12l-3.684 3.684z" class="fill-white stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

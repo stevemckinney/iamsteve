@@ -1,0 +1,6 @@
+<svg width="24" height="24" viewBox="0 0 24 24">
+  <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" class="star-square">
+    <path d="M4.5 21A1.5 1.5 0 0 1 3 19.5v-15A1.5 1.5 0 0 1 4.5 3h15A1.5 1.5 0 0 1 21 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-15Z" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M11.784 6.618a.25.25 0 0 1 .432 0l1.676 2.858a.25.25 0 0 0 .162.118l3.236.71a.25.25 0 0 1 .133.41l-2.2 2.478a.25.25 0 0 0-.062.19l.324 3.298a.25.25 0 0 1-.349.253L12.1 15.606a.25.25 0 0 0-.2 0l-3.036 1.327a.25.25 0 0 1-.349-.253l.324-3.298a.25.25 0 0 0-.062-.19l-2.2-2.477a.25.25 0 0 1 .133-.41l3.236-.711a.25.25 0 0 0 .162-.118l1.676-2.858Z" class="fill-white stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

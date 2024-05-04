@@ -1,7 +1,9 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2 12C2 6.47715 6.47715 2 12 2V2C17.5228 2 22 6.47715 22 12V13.3208C22 13.6959 21.6959 14 21.3208 14H16.6667C15.1939 14 14 15.1939 14 16.6667V21.3208C14 21.6959 13.6959 22 13.3208 22H12C6.47715 22 2 17.5228 2 12V12Z" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="12" cy="6" r="1" fill="#092E24" stroke="#092E24"/>
-<circle cx="8" cy="8" r="1" fill="#092E24" stroke="#092E24"/>
-<circle cx="6" cy="12" r="1" fill="#092E24" stroke="#092E24"/>
-<circle cx="8" cy="16" r="1" fill="#092E24" stroke="#092E24"/>
+<svg width="24" height="24" viewBox="0 0 24 24">
+  <g class="palette">
+    <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10v1.32a.68.68 0 0 1-.68.68h-4.653A2.667 2.667 0 0 0 14 16.667v4.654a.68.68 0 0 1-.68.679H12C6.477 22 2 17.523 2 12Z" class="fill-white stroke-current stroke-2 sl-r"/>
+    <circle cx="12" cy="6" r="1" class="fill-current stroke-current stroke-1"/>
+    <circle cx="8" cy="8" r="1" class="fill-current stroke-current stroke-1"/>
+    <circle cx="6" cy="12" r="1" class="fill-current stroke-current stroke-1"/>
+    <circle cx="8" cy="16" r="1" class="fill-current stroke-current stroke-1"/>
+  </g>
 </svg>
