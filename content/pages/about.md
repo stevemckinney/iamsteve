@@ -2,16 +2,34 @@
 title: About
 description: I’m Steve McKinney, I write this blog about the design and build of websites. I aim to explore the craft behind web design.
 slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
-    <a href="#site" className="col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current">Site</a>
-    <a href="#author" className="col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current">Author</a>
-    <a href="#examples" className="border-t border-neutral-500/20 col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current">Best posts</a>
-    <a href="#history" className="border-t border-neutral-500/20 col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current">Design history</a>
+    <a href="#site" className="col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current"><Icon
+      icon="website"
+      size={24}
+      className="text-current shrink-0"
+    /> website</a>
+    <a href="#author" className="col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current"><Icon
+      icon="person"
+      size={24}
+      className="text-current shrink-0"
+    /> Author</a>
+    <a href="#examples" className="border-t border-neutral-500/20 col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current">
+    <Icon
+      icon="bolt"
+      size={24}
+      className="text-current shrink-0"
+    /> Best posts</a>
+    <a href="#history" className="border-t border-neutral-500/20 col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current">
+    <Icon
+      icon="clock-reverse"
+      size={24}
+      className="text-current shrink-0"
+    /> Design history</a>
   </nav>
 ---
 
 <>
   <article id="site" className="col-content max-w-[592px] flex flex-col md:gap-4">
-    ## About the site
+    ## About the website
     I registered the domain for this website in 2010 as a 20 year old and started as a portfolio and a bit of a blog as I was nearing the end of my time at university. I had treated it as such, a place to write website updates and the odd tutorial to support with work.
 
     <Blockquote style="afterthought">In hindsight I’d probably have a different domain name with the focus of the website today. Maybe I’ll do that someday.</Blockquote>

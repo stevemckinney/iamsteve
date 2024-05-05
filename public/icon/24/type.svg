@@ -2,7 +2,7 @@
   <g class="type">
     <path d="m12 3 3 6.5V16H6l6-13Z" class="fill-white"/>
     <g class="type-24">
-      <mask id="a" width="13" height="21" x="2" y="1" class="a" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+      <mask id="a" width="13" height="21" x="2" y="1" class="a" maskUnits="userSpaceOnUse" style={{'mask-type':'alpha'}}>
         <path d="M2 1h13v21H2z" class="type-24"/>
       </mask>
       <g stroke-linejoin="round" stroke-width="2" mask="url(#a)">

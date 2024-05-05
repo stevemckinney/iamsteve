@@ -55,6 +55,7 @@ const Images = (props) => {
 
 const components = {
   Image,
+  Icon,
   Card,
   Link,
   // Campaigns: Campaigns,
@@ -126,6 +127,7 @@ const postComponents = {
   Image,
   a: (props) => <Link {...props} />,
   Link,
+  Icon,
   Prose: Prose,
   blockquote: (props) => (
     <blockquote className={`border-l-2 border-l-cornflour-500 pl-4 -ml-4`}>
