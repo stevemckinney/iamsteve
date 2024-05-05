@@ -7,6 +7,7 @@ import { Header, Title, Column, Description } from '@/components/page'
 import Image from '@/components/image'
 import Link from '@/components/link'
 import collections from '@/content/collections'
+import Icon from '@/components/icon'
 
 import { format, subWeeks, isAfter } from 'date-fns'
 
@@ -155,6 +156,11 @@ export default async function CollectionPage({ params }) {
                     href={collection.slug}
                     className={`py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-dandelion-600 transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current`}
                   >
+                    <Icon
+                      icon={collection.icon}
+                      size={24}
+                      className="text-current shrink-0"
+                    />
                     {collection.title}
                   </a>
                 </li>

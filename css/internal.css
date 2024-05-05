@@ -158,6 +158,10 @@
     stroke-linejoin: round;
   }
 
+  .slj-r {
+    stroke-linejoin: round;
+  }
+
   .sl-s {
     stroke-linejoin: round;
     stroke-linecap: square;

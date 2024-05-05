@@ -9,7 +9,7 @@ export default function FooterProfile() {
 
       <div className="@container/about col-span-full sm:col-span-8 xl:col-span-9 row-span-7 bg-white py-12 px-8 sm:px-12 sm:py-12 xl:px-[4.5rem] content-end">
         <h3 className="font-display font-variation-bold text-lg sm:text-3xl lowercase flex gap-2 mb-3">
-          About this site
+          About the website
         </h3>
         <div className="flex flex-col @md:flex-row gap-x-6 gap-y-2">
           <p className="text-ui-body text-base flex-1">
