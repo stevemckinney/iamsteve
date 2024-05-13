@@ -169,17 +169,17 @@ const Sprite24 = (props) => (
           <path d="M12 9v3l3 3" className="stroke-current stroke-2 sl-r" />
           <g className="fill-current stroke-current stroke-2 sl-r">
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M8.199 4.959a8.023 8.023 0 0 0-3.81 4.572 3 3 0 1 1 3.81-4.572Z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
             <path d="m8.199 4.959.476.88a1 1 0 0 0 .257-1.56l-.733.68Zm-3.81 4.572-.539.843a1 1 0 0 0 1.49-.535l-.952-.308Zm3.334-5.452a9.023 9.023 0 0 0-4.286 5.143l1.903.617a7.023 7.023 0 0 1 3.335-4l-.952-1.76Zm-2.797 4.61A1.998 1.998 0 0 1 4 7H2c0 1.42.74 2.665 1.85 3.374l1.076-1.686ZM4 7a2 2 0 0 1 2-2V3a4 4 0 0 0-4 4h2Zm2-2c.58 0 1.1.245 1.466.64l1.466-1.361A3.992 3.992 0 0 0 6 3v2Z" />
           </g>
           <g className="fill-current stroke-current stroke-2 sl-r">
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M15.801 4.959a8.023 8.023 0 0 1 3.81 4.572 3 3 0 1 0-3.81-4.572Z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             />
             <path d="m15.801 4.959-.476.88a1 1 0 0 1-.256-1.56l.732.68Zm3.81 4.572.539.843a1 1 0 0 1-1.49-.535l.952-.308Zm-3.334-5.452a9.023 9.023 0 0 1 4.286 5.143l-1.903.617a7.023 7.023 0 0 0-3.335-4l.952-1.76Zm2.797 4.609A2 2 0 0 0 20 7h2c0 1.42-.74 2.665-1.85 3.374l-1.076-1.686ZM20 7a2 2 0 0 0-2-2V3a4 4 0 0 1 4 4h-2Zm-2-2c-.58 0-1.1.245-1.466.64l-1.465-1.361A3.992 3.992 0 0 1 18 3v2Z" />
           </g>
@@ -547,7 +547,7 @@ const Sprite24 = (props) => (
               y="1"
               className="a"
               maskUnits="userSpaceOnUse"
-              style={{ 'mask-type': 'alpha' }}
+              style={{ maskType: 'alpha' }}
             >
               <path d="M2 1h13v21H2z" className="type-24" />
             </mask>
@@ -752,30 +752,36 @@ const Sprite24 = (props) => (
         </g>
       </symbol>
       <symbol id="foundry-24" viewBox="0 0 24 24">
-        <g class="foundry">
+        <g className="foundry">
           <path
             d="M3.993 21A.994.994 0 0 1 3 20V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v16c0 .552-.442 1-.995 1H3.993Z"
-            class="fill-white stroke-current stroke-2 sl-r"
+            className="fill-white stroke-current stroke-2 sl-r"
           />
           <path
             d="M8 9V7h8v2"
-            class="fill-none stroke-current stroke-2 slj-r"
+            className="fill-none stroke-current stroke-2 slj-r"
           />
-          <path d="M12 7v9" class="fill-none stroke-current stroke-2 sl-r" />
-          <path d="M11 17h2" class="fill-none stroke-current stroke-2 sl-s" />
+          <path
+            d="M12 7v9"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M11 17h2"
+            className="fill-none stroke-current stroke-2 sl-s"
+          />
         </g>
       </symbol>
       <symbol id="bookmark-24" viewBox="0 0 24 24">
-        <g class="bookmark">
+        <g className="bookmark">
           <path
             d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
-            class="fill-white stroke-current stroke-2 sl-r"
+            className="fill-white stroke-current stroke-2 sl-r"
           />
-          <path d="M4 9h10" class="stroke-current stroke-2 sl-r" />
-          <path d="M18 9h3" class="stroke-current stroke-2 sl-r" />
+          <path d="M4 9h10" className="stroke-current stroke-2 sl-r" />
+          <path d="M18 9h3" className="stroke-current stroke-2 sl-r" />
           <path
             d="M14 4h4v12l-2-2-2 2V4Z"
-            class="fill-white stroke-current stroke-2 sl-r"
+            className="fill-white stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>
@@ -815,14 +821,17 @@ const Sprite24 = (props) => (
         </g>
       </symbol>
       <symbol id="clock-reverse-24" viewBox="0 0 24 24">
-        <g class="clock-reverse">
-          <path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18Z" class="fill-white" />
+        <g className="clock-reverse">
+          <path
+            d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18Z"
+            className="fill-white"
+          />
           <path
             d="M3 9s1.988-2.32 2.727-3.192c.176-.208.382-.436.587-.615C9.1 2.753 13.09 2.237 16.5 4.206a9 9 0 0 1-9 15.588"
-            class="fill-none stroke-current stroke-2 sl-r"
+            className="fill-none stroke-current stroke-2 sl-r"
           />
-          <path d="m15 15-3-3V8" class="stroke-current stroke-2 sl-r" />
-          <path d="M3 5v4h4" class="stroke-current stroke-2 sl-r" />
+          <path d="m15 15-3-3V8" className="stroke-current stroke-2 sl-r" />
+          <path d="M3 5v4h4" className="stroke-current stroke-2 sl-r" />
         </g>
       </symbol>
       <symbol id="bulb-24" viewBox="0 0 24 24">
