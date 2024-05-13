@@ -18,7 +18,7 @@ export default function Hero() {
         <li>
           <Link
             href="/category/design"
-            className="flex items-center gap-2 lowercase font-ui lg:text-lg"
+            className="flex items-center gap-2 lowercase font-ui lg:text-lg transition duration-200 ease-in hover:text-rio-400"
           >
             <span
               className="p-1 rounded-lg bg-rio-300 max-lg:hidden"
@@ -38,7 +38,7 @@ export default function Hero() {
         <li>
           <Link
             href="/category/code"
-            className="flex items-center gap-2 lowercase font-ui lg:text-lg"
+            className="flex items-center gap-2 lowercase font-ui lg:text-lg transition duration-200 ease-in hover:text-dandelion-500"
           >
             <span
               className="p-1 rounded-lg bg-dandelion-300 max-lg:hidden"
