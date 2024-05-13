@@ -160,12 +160,15 @@ export const Post = defineDocumentType(() => ({
           .replace(/^(?:\d\d\d\d-)?/, '')}`,
         author: [
           {
+            '@context': 'https://schema.org',
             '@type': 'Person',
             name: 'Steve McKinney',
+            url: `${siteMetadata.siteUrl}`,
           },
         ],
         publisher: [
           {
+            '@context': 'https://schema.org',
             '@type': 'Organization',
             name: 'Steve',
             logo: {
