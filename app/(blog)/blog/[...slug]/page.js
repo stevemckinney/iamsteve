@@ -89,13 +89,40 @@ export default async function PostPage({ params }) {
   const post = await getPostFromParams(params)
   const allViews = await getAllPageViews()
 
-  const imageColor = post.theme ? post.theme.toString() : `#f1e8e4`
+  const imageColor =
+    post.theme !== undefined ? post.theme.toString() : `#f1e8e4`
 
   if (!post) {
     notFound()
   }
 
-  const jsonLD = post.structuredData
+  const jsonLD = [
+    post.structuredData,
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'iamsteve.me',
+          item: `${siteMetadata.siteUrl}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Blog',
+          item: `${siteMetadata.siteUrl}/blog`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: `${post.title}`,
+          item: `${siteMetadata.siteUrl}/blog/${post.slugAsParams}`,
+        },
+      ],
+    },
+  ]
 
   return (
     <>
