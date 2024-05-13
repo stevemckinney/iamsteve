@@ -39,7 +39,7 @@ export default function Badge({
     return (
       <Link
         href={href}
-        className={`flex flex-[0_0_auto] gap-3 font-variation-medium group/badge transition-all duration-200 ease-linear text-fern-1100 ${hoverVariants[theme]} ${className}`}
+        className={`flex flex-[0_0_auto] gap-3 font-variation-medium group/badge transition-all duration-100 ease-linear text-fern-1100 ${hoverVariants[theme]} ${className}`}
       >
         <Badge.Icon theme={theme} icon={iconStart} size={size} />
         <Badge.Text size={size}>{children}</Badge.Text>
@@ -64,7 +64,7 @@ export function BadgeIcon({ icon, size, theme, className = 'badge' }) {
 
   return (
     <span
-      className={`${sizing} bg-white group-active/badge:bg-neutral-01-50 shadow-reduced group-hover/badge:shadow-picked group-active/badge:shadow-reduced rounded-sm flex items-center justify-center transition-all duration-200 ease-linear ${className} ${defaultVariants[theme]}`}
+      className={`${sizing} bg-white group-active/badge:bg-neutral-01-50 shadow-reduced group-hover/badge:shadow-picked group-active/badge:shadow-reduced rounded-sm flex items-center justify-center transition-all duration-100 ease-linear ${className} ${defaultVariants[theme]}`}
     >
       <Icon className={`text-current`} icon={icon} size={size} />
     </span>
@@ -80,7 +80,7 @@ export function BadgeText({ children, size, className = 'ct' }) {
 
   return (
     <span
-      className={`${sizing} transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex items-center text-current ${className}`}
+      className={`${sizing} transition-all duration-100 ease-linear font-ui lowercase leading-none rounded flex items-center text-current ${className}`}
     >
       {children}
     </span>
