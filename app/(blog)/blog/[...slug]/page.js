@@ -89,8 +89,7 @@ export default async function PostPage({ params }) {
   const post = await getPostFromParams(params)
   const allViews = await getAllPageViews()
 
-  const imageColor =
-    post.theme !== undefined ? post.theme.toString() : `#f1e8e4`
+  const imageColor = `#efe5e0`
 
   if (!post) {
     notFound()
