@@ -292,7 +292,7 @@ const Sprite24 = (props) => (
         </g>
       </symbol>
       <symbol id="note-24" viewBox="0 0 24 24">
-        <g className="note">
+        <g className="note fill-none">
           <path
             d="M5 21a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v11l-6 6H5Z"
             className="fill-white stroke-current stroke-2 sl-r"
