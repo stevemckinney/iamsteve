@@ -13,8 +13,6 @@ import { format, subWeeks, isAfter } from 'date-fns'
 import { allCollections } from 'contentlayer/generated'
 import collections from '@/content/collections'
 
-import { useRouter } from 'next/navigation'
-
 export const metadata = {
   title: 'Collections • iamsteve',
   description:
