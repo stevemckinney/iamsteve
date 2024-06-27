@@ -1,0 +1,15 @@
+ @layer bento-demo {
+  .bento {
+    --color-gunmetal-900: rgb(24 36 37);
+    --color-gunmetal-850: rgb(32 48 50);
+    --color-gunmetal-800: rgb(40 60 62);
+    --color-gunmetal-750: rgb(48 72 75);
+    --color-gunmetal-700: rgb(43 78 81);
+    --color-gunmetal-650: rgb(64 96 100);
+    --color-gunmetal-600: rgb(72 108 112);
+    --color-gunmetal-550: rgb(80 120 124);
+    --color-gunmetal-500: rgb(88 132 137);
+    --color-gunmetal-450: rgb(95 144 149);
+    background-color: var(--color-gunmetal-900, rgb(24 36 37));
+  }
+}

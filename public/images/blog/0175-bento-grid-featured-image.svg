@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="592" height="368" fill="none" viewBox="0 0 592 368">
+  <rect width="420" height="287" x="86" y="40" fill="color(display-p3 .9882 .9765 .9725)" rx="8"/>
+  <rect width="420" height="287" x="86" y="40" stroke="color(display-p3 .6353 .5608 .549)" stroke-width="2" rx="8"/>
+  <g clip-path="url(#a)">
+    <rect width="166" height="134.5" x="92" y="46" fill="color(display-p3 .9569 .5882 .4196)" rx="3"/>
+    <path fill="color(display-p3 .9333 .4471 .2667)" d="M133.739 85.093a1 1 0 0 1 .232-1.051l2.121-2.122a1 1 0 0 1 1.414 0l30.647 30.647a1 1 0 0 1 .195 1.139 5.003 5.003 0 0 0 .978 5.691 5 5 0 0 0 7.071 0 5 5 0 0 0 0-7.071 5.004 5.004 0 0 0-5.692-.978.999.999 0 0 1-1.138-.195L138.92 80.506a1 1 0 0 1 0-1.414l2.122-2.121a.999.999 0 0 1 1.051-.232l55.862 20.506a1 1 0 0 1 .644 1.085l-.001.01-.005.036a32.556 32.556 0 0 0-.091.778 44.148 44.148 0 0 0-.17 2.335c-.093 1.988-.1 4.755.242 7.869.685 6.252 2.762 13.765 8.229 19.231.39.391.39 1.024 0 1.415l-19.799 19.799c-.391.39-1.024.39-1.415 0-5.466-5.467-12.979-7.544-19.231-8.229a51.077 51.077 0 0 0-7.869-.241 43.27 43.27 0 0 0-2.334.169 32.276 32.276 0 0 0-.779.091l-.037.005-.008.001-.001.001a1.002 1.002 0 0 1-1.085-.645l-20.506-55.862Z"/>
+    <path fill="color(display-p3 .9333 .4471 .2667)" fill-rule="evenodd" d="M184.882 153.338a3.001 3.001 0 0 1 0-4.243l21.214-21.213a3 3 0 0 1 4.242 0l8.485 8.486a2.998 2.998 0 0 1 0 4.242l-21.213 21.213a2.998 2.998 0 0 1-4.242 0l-8.486-8.485Z" clip-rule="evenodd"/>
+    <path fill="#fff" fill-rule="evenodd" d="m133.678 78.999 20.506 55.861s19.717-2.91 31.112 8.486l19.799-19.799c-11.395-11.396-8.485-31.113-8.485-31.113l-55.861-20.506-2.122 2.121 30.647 30.647a6 6 0 1 1-2.828 2.829l-30.647-30.648L133.678 79Z" clip-rule="evenodd"/>
+    <path fill="color(display-p3 .9804 .9373 .9098)" d="M154.184 134.86s19.717-2.91 31.112 8.486l19.799-19.799c-11.395-11.396-8.485-31.113-8.485-31.113l-8.485-2.829 2.216 21.425c1.045 10.1-7.461 18.606-17.561 17.561l-21.425-2.216 2.829 8.485Z"/>
+    <path stroke="color(display-p3 .6118 .0863 .0353)" stroke-linejoin="round" stroke-width="2" d="m133.678 78.999 20.506 55.861s19.717-2.91 31.112 8.486l19.799-19.799c-11.395-11.396-8.485-31.113-8.485-31.113l-55.861-20.506-2.122 2.121 30.647 30.647a6 6 0 1 1-2.828 2.829l-30.647-30.648L133.678 79Z"/>
+    <rect width="34" height="16" x="183.175" y="145.467" fill="color(display-p3 .9569 .5882 .4196)" rx="2" transform="rotate(-45 183.175 145.467)"/>
+    <path fill="color(display-p3 .9647 .6745 .5294)" d="m187.418 141.224 1.414-1.414 11.314 11.313-1.414 1.415zm14.142-14.142 1.414-1.414 11.314 11.313-1.414 1.415z"/>
+    <path fill="color(display-p3 .898 .3294 .1686)" d="m183.175 145.467 4.243-4.243 11.313 11.314-4.242 4.243zm19.799-19.799 4.243-4.243 11.313 11.314-4.242 4.243z"/>
+    <rect width="34" height="16" x="183.175" y="145.467" stroke="color(display-p3 .4392 .0392 .0196)" stroke-linejoin="round" stroke-width="2" rx="2" transform="rotate(-45 183.175 145.467)"/>
+    <path fill="color(display-p3 .9333 .4471 .2667)" d="M92 45.5h201v14H113a8 8 0 0 0-8 8V180H92V45.5Z"/>
+  </g>
+  <rect width="166" height="134.5" x="92" y="46" stroke="color(display-p3 .6118 .0863 .0353)" stroke-width="2" rx="3"/>
+  <g clip-path="url(#b)">
+    <rect width="166" height="134.5" x="92" y="186.5" fill="color(display-p3 .9569 .8275 .251)" rx="3"/>
+    <rect width="84" height="84" x="132" y="216.75" fill="color(display-p3 .9373 .7451 .0314)" stroke="color(display-p3 .9373 .7451 .0314)" stroke-width="2" rx="16"/>
+    <rect width="84" height="84" x="133" y="211.75" fill="color(display-p3 .9569 .8275 .251)" stroke="color(display-p3 .8667 .5569 0)" stroke-width="2" rx="16"/>
+    <rect width="84" height="84" x="133" y="211.75" fill="color(display-p3 .9098 .6667 0)" stroke="color(display-p3 .7961 .4431 0)" stroke-width="2" rx="16"/>
+    <rect width="84" height="78" x="133" y="211.75" fill="color(display-p3 .9098 .6667 0)" stroke="color(display-p3 .7961 .4431 0)" stroke-width="2" rx="16"/>
+    <rect width="84" height="72" x="133" y="211.75" fill="color(display-p3 .9569 .8275 .251)" stroke="color(display-p3 .7961 .4431 0)" stroke-width="2" rx="16"/>
+    <g opacity=".4">
+      <path fill="color(display-p3 .7961 .4431 0)" fill-rule="evenodd" d="M190 283.75h11c8.837 0 16-7.163 16-16v-11a9 9 0 0 1-9 9 9 9 0 0 0-9 9 9 9 0 0 1-9 9Z" clip-rule="evenodd"/>
+      <path fill="color(display-p3 .7961 .4431 0)" d="M201 283.25h-11v1h11v-1Zm15.5-15.5c0 8.56-6.94 15.5-15.5 15.5v1c9.113 0 16.5-7.387 16.5-16.5h-1Zm0-11v11h1v-11h-1Zm0 0a8.5 8.5 0 0 1-8.5 8.5v1a9.5 9.5 0 0 0 9.5-9.5h-1Zm-8.5 8.5a9.5 9.5 0 0 0-9.5 9.5h1a8.5 8.5 0 0 1 8.5-8.5v-1Zm-9.5 9.5a8.5 8.5 0 0 1-8.5 8.5v1a9.5 9.5 0 0 0 9.5-9.5h-1Z"/>
+    </g>
+    <path fill="color(display-p3 .9569 .8275 .251)" d="M133 227.75c0-8.837 7.163-16 16-16h52c8.837 0 16 7.163 16 16v24c0 17.673-14.327 32-32 32h-36c-8.837 0-16-7.163-16-16v-40Z"/>
+    <path fill="color(display-p3 .9725 .898 .5569)" stroke="color(display-p3 .7961 .4431 0)" stroke-width="2" d="M133 227.75c0-8.837 7.163-16 16-16h52.571c8.521 0 15.429 6.908 15.429 15.429v29.571a9 9 0 0 1-9 9 9 9 0 0 0-9 9 9 9 0 0 1-9 9h-41c-8.837 0-16-7.163-16-16v-40Z"/>
+    <rect width="84" height="84" x="133" y="211.75" stroke="color(display-p3 .7961 .4431 0)" stroke-width="2" rx="16"/>
+    <path fill="color(display-p3 .9373 .7451 .0314)" d="M92 186h201v14H113a8 8 0 0 0-8 8v112.5H92V186Z"/>
+  </g>
+  <rect width="166" height="134.5" x="92" y="186.5" stroke="color(display-p3 .7961 .4431 0)" stroke-width="2" rx="3"/>
+  <rect width="236" height="275" x="264" y="46" fill="color(display-p3 .7922 .9059 .8706)" rx="3"/>
+  <rect width="236" height="275" x="264" y="46" stroke="color(display-p3 .2196 .4706 .4039)" stroke-width="2" rx="3"/>
+  <g clip-path="url(#c)">
+    <rect width="236" height="275" x="264" y="46" fill="color(display-p3 .7922 .9059 .8706)" rx="3"/>
+    <circle cx="382" cy="192" r="44" fill="color(display-p3 .6706 .8353 .7843)" stroke="color(display-p3 .6706 .8353 .7843)" stroke-width="2"/>
+    <circle cx="382" cy="183.5" r="44" fill="color(display-p3 .7922 .9059 .8706)"/>
+    <circle cx="382" cy="183.5" r="39" stroke="#fff" stroke-miterlimit="10" stroke-width="4"/>
+    <path stroke="color(display-p3 .3725 .6157 .5451)" stroke-miterlimit="10" stroke-width="4" d="M421 183.5a39 39 0 0 0-78 0h78Z"/>
+    <circle cx="382" cy="183.5" r="37" fill="color(display-p3 .0667 .251 .2039)"/>
+    <path stroke="color(display-p3 .9098 .6667 0)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M413 184.5h-6m-3.787 21.627-4.242-4.242M357 184.5h-6m12.615-17.971-4.242-4.242M381 214.5v-6m0-50v-6m-21.627 52.213 4.242-4.243m35.356-35.355 4.242-4.243"/>
+    <path stroke="color(display-p3 .5608 .7608 .702)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m355.153 200 1.732-1m50.23-29 1.732-1m-56.791 23.523 1.932-.517m56.024-15.012 1.932-.517m-59.888 0 1.932.517m56.024 15.012 1.932.517M355.153 169l1.732 1m50.23 29 1.732 1m-19.824 13.444-.517-1.932m-15.012-56.024-.517-1.932m23.523 56.791-1-1.732m-29-50.23-1-1.732m0 53.694 1-1.732m29-50.23 1-1.732m-23.523 56.791.517-1.932m15.012-56.024.517-1.932"/>
+    <path stroke="color(display-p3 .0353 .1804 .1412)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="8" d="m360 208.5 20-20"/>
+    <path stroke="color(display-p3 .0353 .1804 .1412)" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" d="m380 188.5 23-23"/>
+    <path stroke="color(display-p3 .9804 .9373 .9098)" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="6" d="m360 205.5 22-22"/>
+    <path stroke="color(display-p3 .9333 .4471 .2667)" stroke-linecap="round" stroke-linejoin="round" stroke-width="6" d="m382 183.5 22-22"/>
+    <circle cx="382" cy="183.5" r="37" stroke="color(display-p3 .0353 .1804 .1412)" stroke-miterlimit="10" stroke-width="4"/>
+    <circle cx="382" cy="183.5" r="44" stroke="color(display-p3 .1608 .4 .3333)" stroke-width="2"/>
+    <path fill="color(display-p3 .6706 .8353 .7843)" stroke="color(display-p3 .6706 .8353 .7843)" d="M264.5 46H500v12.572H285a8.5 8.5 0 0 0-8.5 8.5V319.5h-12V46Z"/>
+  </g>
+  <rect width="236" height="275" x="264" y="46" stroke="color(display-p3 .2196 .4706 .4039)" stroke-width="2" rx="3"/>
+  <defs>
+    <clipPath id="a">
+      <rect width="166" height="134.5" x="92" y="46" fill="#fff" rx="3"/>
+    </clipPath>
+    <clipPath id="b">
+      <rect width="166" height="134.5" x="92" y="186.5" fill="#fff" rx="3"/>
+    </clipPath>
+    <clipPath id="c">
+      <rect width="236" height="275" x="264" y="46" fill="#fff" rx="3"/>
+    </clipPath>
+  </defs>
+</svg>

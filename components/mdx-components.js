@@ -15,6 +15,9 @@ import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
+// post specific components
+import BentoGridShell from '@/components/posts/0175-bento-grid'
+
 const Prose = ({ children }) => {
   return <div className="prose">{children}</div>
 }
@@ -136,6 +139,21 @@ const postComponents = {
   ),
   Blockquote,
   Images,
+  BentoGridShell,
+  LinkFigma: (props) => (
+    <Link href={props.href} className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto button-dandelion font-ui text-base/tight lowercase text-center`}><Icon icon="figma" size={16} className="text-current shrink-0" /> {props.children}</Link>
+  ),
+  LinkGithub: (props) => (
+    <Link href={props.href} className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto button-dandelion font-ui text-base/tight lowercase text-center`}><Icon icon="github" size={16} className="text-current shrink-0" /> {props.children}</Link>
+  ),
+  Demo: (src, className = `-mx-[1.5rem] col-content h-[50vmax] overflow-hidden`, zoom = `.75`) => {
+    const style = { "--zoom": zoom }
+    return (
+      <div className={`demo sm:rounded-lg overflow-clip ${className}`} style={style}>
+        <iframe src={src.src} className={`origin-top-left w-[calc(1_/_var(--zoom)_*_100%)] h-[calc(1_/_var(--zoom)_*_100%)] transform-gpu scale-[var(--zoom)]`}></iframe>
+      </div>
+    )
+  }
 }
 
 export function MDX({ code }) {
