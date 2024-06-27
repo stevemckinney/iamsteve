@@ -38,6 +38,7 @@ pre[class*='language-'] {
 pre[class*='language-'] {
   overflow: auto;
   padding: theme('padding.8');
+  max-height: 20lh;
 }
 
 :not(pre) > code[class*='language-'],

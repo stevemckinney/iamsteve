@@ -58,7 +58,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
     description: post.metadesc,
     openGraph: {
       title: post.title,
-      description: post.metadesc,
+      description: post.summary,
       type: 'article',
       publishedTime: post.date,
       modifiedTime: post.lastmod,
@@ -73,7 +73,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.metadesc,
+      description: post.summary,
       images: [post.ogImage],
     },
   }
@@ -89,7 +89,7 @@ export default async function PostPage({ params }) {
   const post = await getPostFromParams(params)
   const allViews = await getAllPageViews()
 
-  const imageColor = `#efe5e0`
+  const imageColor = `#fcf9f8`
 
   if (!post) {
     notFound()

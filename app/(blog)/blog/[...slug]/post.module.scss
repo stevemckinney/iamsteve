@@ -462,6 +462,7 @@
 .prose > figure > :global(.sandbox),
 .prose > :global(.images) > img,
 .prose > :global(.article-image) > img,
+.prose .demo,
 .featured {
   box-shadow: theme('boxShadow.placed');
 

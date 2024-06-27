@@ -36,8 +36,8 @@ const PostImage = ({ ...props }) => {
     <>
       <Image
         src={medium}
-        width={year > 2020 ? 384 : oldWidthMedium}
-        height={year > 2020 ? 240 : oldHeightMedium}
+        width={384}
+        height={240}
         alt={title}
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
@@ -180,7 +180,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
         </div>
         <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @lg/card:pt-2 @lg/card:gap-3 @lg/card:px-12">
           <h2
-            className="p-0 m-0 leading-none lowercase text-balance font-display font-variation-bold hyphens-auto text-3xl @lg/card:text-5xl"
+            className="p-0 m-0 leading-none text-balance lowercase font-display font-variation-bold hyphens-auto text-3xl @lg/card:text-5xl"
             id={`title-${id}`}
           >
             <Link
