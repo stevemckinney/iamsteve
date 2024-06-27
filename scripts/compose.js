@@ -28,10 +28,12 @@ const genFrontMatter = (answers) => {
   lastmod: "${date}"
   summary:
   metadesc:
-  theme: "#e9f5f5"
+  theme: "#f1e8e4"
   tags: []
   categories: []
   images: []
+  large: false # /images/blog/${answers.title ? answers.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') : 'untitled'}.svg
+  medium: false # /images/blog/${answers.title ? answers.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') : 'untitled'}.svg
   ogImage: "/assets/og/cover.jpg"
   status: ${answers.status}
   codepen: false
