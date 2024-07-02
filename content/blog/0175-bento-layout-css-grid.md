@@ -1,9 +1,9 @@
 ---
-title: Bento grid with CSS grid
-date: "2024-06-20T14:58:09.706Z"
-lastmod: "2024-06-20T14:58:09.706Z"
-summary: Love bento grids or hate them, they offer a unique layout challenge for CSS. With the use of grid through Tailwind you can create a flexible layout. So, let’s build a bento grid for a fictional app’s feature set.
-metadesc: Build a bento grid using CSS grid queries with Tailwind
+title: Build a bento layout with CSS grid
+date: "2024-07-02T14:58:09.706Z"
+lastmod: "2024-07-02T14:58:09.706Z"
+summary: Bento grids offer a unique layout challenge for CSS. With the use of Tailwind you can create a flexible layout with modern CSS grid and @container queries.
+metadesc: Build a bento grid using CSS grid and @container queries with Tailwind
 theme: "#fcf9f8"
 tags: ['Code', 'Bento']
 categories: ['Code', 'Patterns']
@@ -18,24 +18,27 @@ id: 175
 fileroot: bento-grid-with-css-grid
 ---
 
-There’s a lot of discussion happening around whether masonry is needed in CSS. And this discussion inspired me to create a bento grid using today’s CSS grid. So for this, there’s no need for masonry.
+There’s a lot of discussion happening around whether masonry is needed in CSS. And this discussion brings in things like bento grids. It inspired me to create a bento grid using today’s CSS grid and @container queries.
+
+For this example masonry isn’t required—but it’s something I would like to see part of CSS in whatever way it ends up being.
 
 **This post is broken down into the following sections**:
 
 - The bento design
+- Project files
 - HTML structure
 - How to use CSS grid to create a bento layout
 - Managing content within the grid
 - Using Tailwind to apply the design & responsiveness
 
-> I make the assumption that you’re comfortable setting up Tailwind for your project
+<Blockquote style="notice">I make the assumption that you’re comfortable setting up Tailwind for your project</Blockquote>
 
-## Bento design to build
+## The bento design
 The design showcases a rough idea of an app I wish existed. Each section displays a different feature with larger sections having an illustration of the feature.
 
 <figure className="prose-exclude grid grid-cols-subgrid col-content">
 <Demo src="https://stevemckinney.github.io/bento-grid/option-1.html" />
-<figcaption className="col-prose">A compact grid showing 6 features of a fictional app. Layout will vary based on your device.</figcaption>
+<figcaption className="col-prose">A compact grid showing 6 features of a fictional app. Layout will vary based on your device. Live demo.</figcaption>
 </figure>
 
 ### Considerations
@@ -45,8 +48,8 @@ The design showcases a rough idea of an app I wish existed. Each section display
 - Images will need to retain or change aspect ratio
 - Image masks will need to change with different image crops
 
-## Get the files
-The design is available through Figma’s community and the code is available through Github.
+## Project files
+The design is available through Figma’s community and the code is available through Github. There’s two layout options in both.
 
 <div className={`flex gap-2`}>
   <LinkFigma href="https://www.figma.com/community/file/1386411347459963894/bento-grid">Figma</LinkFigma>
@@ -331,7 +334,7 @@ There’s adjustments that need to be made based on the containers size for imag
 Here the container has further adjustment on column width throughout the standard Tailwind breakpoints.
 
 <figure>
-  <Image src="/images/blog/0175-bento-grid-columns@2x.png" width={864} height={564} alt={true} />
+  <Image src="/images/blog/0175-bento-grid-section-structure.png" width={864} height={564} alt={true} />
   <figcaption>Highlighting how space is applied to each section</figcaption>
 </figure>
 
@@ -368,9 +371,11 @@ Lines 8–10 are ensuring each image is tailored for the container it’s in. Ea
 
 Bear with me, this may seem a little backwards from what you may be used to with responsive design. If these images scale you begin to lose detail—so the aim with `object-fit` is to keep it. And by using `object-position` you can align the image more favourably.
 
+And by setting an `aspect-ratio` on the container it allows more precision for the image size. Managing this with @container queries applies the `aspect-ratio` in a better way than @media queries.
+
 **This does differ for each image. The alignment of each image does change. A freedom we’re allowed in this demo at least.**
 
 ## Finishing up
-Well this post is longer than I had anticipated. There’s a lot to go through to get through with the slight differences between sections—and that’s why I really enjoy using Tailwind. This could be easily created with components in mind, whether that’s using a React framework or Web Components.
+Well this post is longer than I had anticipated—hopefully it’s clear enough to follow. There’s a lot to go through to get through with the slight differences between sections—and that’s why I enjoy using Tailwind. This could be easily created with components in mind, whether that’s using a React framework or Web Components.
 
-I’ve also not covered too much in terms of implementing the visual design here—again due to the length of the post. But both of these things could make follow up posts.
+I’ve also not covered too much in terms of implementing the visual design here—again due to the length of the post.

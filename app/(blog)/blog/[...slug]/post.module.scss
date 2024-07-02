@@ -422,6 +422,10 @@
     // outline: 1px solid pink;
   }
 
+  :where(p, li, figcaption) {
+    text-wrap: pretty;
+  }
+
   :where(> div, .remark-code-container, figure) + :where(p, ol, ul) {
     --block-space: 4rem;
     // outline: 1px solid red;

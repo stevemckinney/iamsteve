@@ -1,7 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="592" height="368" fill="none" viewBox="0 0 592 368">
+  <g opacity=".34">
+    <rect width="438" height="306" x="77" y="46" fill="color(display-p3 .9098 .8627 .851)" rx="20"/>
+    <rect width="438" height="306" x="77" y="46" stroke="color(display-p3 .9098 .8627 .851)" stroke-width="2" rx="20"/>
+  </g>
+  <g opacity=".74">
+    <rect width="422" height="290" x="85" y="46" fill="color(display-p3 .9098 .8627 .851)" rx="12"/>
+    <rect width="422" height="290" x="85" y="46" stroke="color(display-p3 .9098 .8627 .851)" stroke-width="2" rx="12"/>
+  </g>
   <rect width="420" height="287" x="86" y="40" fill="color(display-p3 .9882 .9765 .9725)" rx="8"/>
-  <rect width="420" height="287" x="86" y="40" stroke="color(display-p3 .6353 .5608 .549)" stroke-width="2" rx="8"/>
-  <g clip-path="url(#a)">
+  <rect width="420" height="287" x="86" y="40" stroke="url(#a)" stroke-width="2" rx="8"/>
+  <g clip-path="url(#b)">
     <rect width="166" height="134.5" x="92" y="46" fill="color(display-p3 .9569 .5882 .4196)" rx="3"/>
     <path fill="color(display-p3 .9333 .4471 .2667)" d="M133.739 85.093a1 1 0 0 1 .232-1.051l2.121-2.122a1 1 0 0 1 1.414 0l30.647 30.647a1 1 0 0 1 .195 1.139 5.003 5.003 0 0 0 .978 5.691 5 5 0 0 0 7.071 0 5 5 0 0 0 0-7.071 5.004 5.004 0 0 0-5.692-.978.999.999 0 0 1-1.138-.195L138.92 80.506a1 1 0 0 1 0-1.414l2.122-2.121a.999.999 0 0 1 1.051-.232l55.862 20.506a1 1 0 0 1 .644 1.085l-.001.01-.005.036a32.556 32.556 0 0 0-.091.778 44.148 44.148 0 0 0-.17 2.335c-.093 1.988-.1 4.755.242 7.869.685 6.252 2.762 13.765 8.229 19.231.39.391.39 1.024 0 1.415l-19.799 19.799c-.391.39-1.024.39-1.415 0-5.466-5.467-12.979-7.544-19.231-8.229a51.077 51.077 0 0 0-7.869-.241 43.27 43.27 0 0 0-2.334.169 32.276 32.276 0 0 0-.779.091l-.037.005-.008.001-.001.001a1.002 1.002 0 0 1-1.085-.645l-20.506-55.862Z"/>
     <path fill="color(display-p3 .9333 .4471 .2667)" fill-rule="evenodd" d="M184.882 153.338a3.001 3.001 0 0 1 0-4.243l21.214-21.213a3 3 0 0 1 4.242 0l8.485 8.486a2.998 2.998 0 0 1 0 4.242l-21.213 21.213a2.998 2.998 0 0 1-4.242 0l-8.486-8.485Z" clip-rule="evenodd"/>
@@ -15,7 +23,7 @@
     <path fill="color(display-p3 .9333 .4471 .2667)" d="M92 45.5h201v14H113a8 8 0 0 0-8 8V180H92V45.5Z"/>
   </g>
   <rect width="166" height="134.5" x="92" y="46" stroke="color(display-p3 .6118 .0863 .0353)" stroke-width="2" rx="3"/>
-  <g clip-path="url(#b)">
+  <g clip-path="url(#c)">
     <rect width="166" height="134.5" x="92" y="186.5" fill="color(display-p3 .9569 .8275 .251)" rx="3"/>
     <rect width="84" height="84" x="132" y="216.75" fill="color(display-p3 .9373 .7451 .0314)" stroke="color(display-p3 .9373 .7451 .0314)" stroke-width="2" rx="16"/>
     <rect width="84" height="84" x="133" y="211.75" fill="color(display-p3 .9569 .8275 .251)" stroke="color(display-p3 .8667 .5569 0)" stroke-width="2" rx="16"/>
@@ -34,7 +42,7 @@
   <rect width="166" height="134.5" x="92" y="186.5" stroke="color(display-p3 .7961 .4431 0)" stroke-width="2" rx="3"/>
   <rect width="236" height="275" x="264" y="46" fill="color(display-p3 .7922 .9059 .8706)" rx="3"/>
   <rect width="236" height="275" x="264" y="46" stroke="color(display-p3 .2196 .4706 .4039)" stroke-width="2" rx="3"/>
-  <g clip-path="url(#c)">
+  <g clip-path="url(#d)">
     <rect width="236" height="275" x="264" y="46" fill="color(display-p3 .7922 .9059 .8706)" rx="3"/>
     <circle cx="382" cy="192" r="44" fill="color(display-p3 .6706 .8353 .7843)" stroke="color(display-p3 .6706 .8353 .7843)" stroke-width="2"/>
     <circle cx="382" cy="183.5" r="44" fill="color(display-p3 .7922 .9059 .8706)"/>
@@ -53,14 +61,18 @@
   </g>
   <rect width="236" height="275" x="264" y="46" stroke="color(display-p3 .2196 .4706 .4039)" stroke-width="2" rx="3"/>
   <defs>
-    <clipPath id="a">
+    <clipPath id="b">
       <rect width="166" height="134.5" x="92" y="46" fill="#fff" rx="3"/>
     </clipPath>
-    <clipPath id="b">
+    <clipPath id="c">
       <rect width="166" height="134.5" x="92" y="186.5" fill="#fff" rx="3"/>
     </clipPath>
-    <clipPath id="c">
+    <clipPath id="d">
       <rect width="236" height="275" x="264" y="46" fill="#fff" rx="3"/>
     </clipPath>
+    <linearGradient id="a" x1="296" x2="296" y1="40" y2="327" gradientUnits="userSpaceOnUse">
+      <stop offset=".725" stop-color="color(display-p3 .7961 .7294 .7176)"/>
+      <stop offset="1" stop-color="color(display-p3 .6353 .5608 .549)"/>
+    </linearGradient>
   </defs>
 </svg>
