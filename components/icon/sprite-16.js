@@ -665,7 +665,7 @@ const Sprite16 = (props) => (
               y="1"
               className="a"
               maskUnits="userSpaceOnUse"
-              style={{maskType:'alpha'}}
+              style={{ maskType: 'alpha' }}
             >
               <path d="M1 1h8v14H1z" className="mask" />
             </mask>

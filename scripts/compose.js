@@ -32,8 +32,22 @@ const genFrontMatter = (answers) => {
   tags: []
   categories: []
   images: []
-  large: false # /images/blog/${answers.title ? answers.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') : 'untitled'}.svg
-  medium: false # /images/blog/${answers.title ? answers.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') : 'untitled'}.svg
+  large: false # /images/blog/${
+    answers.title
+      ? answers.title
+          .toLowerCase()
+          .replace(/ /g, '-')
+          .replace(/[^\w-]+/g, '')
+      : 'untitled'
+  }.svg
+  medium: false # /images/blog/${
+    answers.title
+      ? answers.title
+          .toLowerCase()
+          .replace(/ /g, '-')
+          .replace(/[^\w-]+/g, '')
+      : 'untitled'
+  }.svg
   ogImage: "/assets/og/cover.jpg"
   status: ${answers.status}
   codepen: false

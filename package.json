@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "contentlayer dev & next dev",
     "sourcemap": "NODE_OPTIONS=--enable-source-maps next build",
-    "build": "contentlayer build && next build && node ./scripts/generate-sitemap",
+    "build": "contentlayer build && next build",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir app --dir components --dir lib --dir scripts",
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
-    "@netlify/plugin-nextjs": "^4.41.3",
+    "@netlify/plugin-nextjs": "^5.4.0",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@radix-ui/react-dropdown-menu": "^2.0.5",
     "@radix-ui/react-form": "^0.0.3",
