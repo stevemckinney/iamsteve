@@ -5,6 +5,10 @@
   font-size: theme('fontSize.base');
   line-height: theme('lineHeight.normal');
 
+  b, strong {
+    font-weight: 600;
+  }
+
   @screen md {
     font-size: theme('fontSize.lg');
   }
@@ -30,7 +34,7 @@
     grid-column: content-start / content-end;
 
     @screen lg {
-      grid-column: prose-start / prose-end;
+      grid-column: 3 / 10;
     }
   }
 

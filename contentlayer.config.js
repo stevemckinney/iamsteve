@@ -10,16 +10,17 @@ import smartypants from 'remark-smartypants'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkRehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
+import GithubSlugger from "github-slugger"
 import parse from 'rehype-parse'
 import stringify from 'rehype-stringify'
+import { visit } from 'unist-util-visit'
+import { toString } from 'mdast-util-to-string'
 
 // import rehypePrettyCode from 'rehype-pretty-code'
-import rehypeToc from '@jsdevtools/rehype-toc'
 // import rehypeCitation from 'rehype-citation'
 
 import rehypePrism from 'rehype-prism-plus'
 import remarkCodeTitles from './lib/remark-code-title'
-import customizeTOC from './lib/customise-toc'
 
 const root = process.cwd()
 
@@ -121,6 +122,36 @@ export const Post = defineDocumentType(() => ({
     },
   },
   computedFields: {
+    // https://yusuf.fyi/posts/contentlayer-table-of-contents/
+    headings: {
+      type: "json",
+      resolve: async (doc) => {
+        const regXHeader = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+        const slugger = new GithubSlugger()
+        const headings = Array.from(doc.body.raw.matchAll(regXHeader)).map(
+          ({ groups }) => {
+            const flag = groups?.flag;
+            const content = groups?.content;
+
+            // Remove markdown links and HTML tags from the content
+            const cleanContent = content
+              ? content.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Remove markdown links
+                       .replace(/<[^>]+>/g, '') // Remove HTML tags
+              : '';
+
+            return {
+              level: flag?.length == 1 ? "one"
+              : flag?.length == 2 ? "two"
+              : flag?.length == 3 ? "three"
+              : "four",
+              text: cleanContent,
+              slug: cleanContent ? slugger.slug(cleanContent) : undefined
+            };
+          }
+        );
+        return headings;
+      },
+    },
     readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
     slug: {
       type: 'string',
@@ -200,9 +231,7 @@ export default makeSource({
           },
         },
       ],
-      // [rehypeCitation, { path: path.join(root, 'data') }],
       [rehypePrism, { ignoreMissing: true }],
-      [rehypeToc, { customizeTOC }],
     ],
   },
 })

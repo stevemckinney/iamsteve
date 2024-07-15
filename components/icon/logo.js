@@ -92,7 +92,7 @@ const Logo = (props) => (
           d="M4.777 19.482c0 2.066 1.7 3.74 3.765 3.74 2.093 0 3.814-1.696 3.814-3.789v-3.692H8.518a3.74 3.74 0 0 0-3.74 3.74ZM12.356 12a3.741 3.741 0 0 0 3.741 3.741h.097a3.74 3.74 0 0 0 0-7.482h-.097A3.74 3.74 0 0 0 12.357 12Z"
         />
       </symbol>
-      <symbol id="github-16" fill="none" viewBox="0 0 24 24">
+      <symbol id="github-16" fill="fill-current" viewBox="0 0 24 24">
         <g className="fill-current">
           <path
             fillRule="evenodd"

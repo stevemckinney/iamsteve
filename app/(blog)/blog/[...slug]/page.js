@@ -11,6 +11,7 @@ import { PostMdx } from '@/components/mdx-components'
 import siteMetadata from '@/content/metadata'
 
 // page components
+import TableOfContents from '@/components/table-of-contents'
 import Image from '@/components/image'
 import Placeholder from '@/components/placeholder'
 import Card from '@/components/card'
@@ -25,7 +26,7 @@ import Link from '@/components/link'
 import getAllPageViews from '../views'
 import ViewCounter from '../counter'
 
-// const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/main/data/blog/${fileName}`
+const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/main/content/blog/${fileName}`
 
 // force to revalidate every day
 export const dynamic = 'force-static'
@@ -129,27 +130,20 @@ export default async function PostPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
-      <article className={`grid col-container grid-cols-subgrid gap-y-12`}>
-        <Image
-          src="/images/illustration/pencil-mono.svg"
-          width={962}
-          height={46}
-          className={`max-lg:hidden col-start-1 col-end-prose-start 2xl:col-end-4 max-w-[initial] justify-self-end self-start row-start-1 drop-shadow-placed`}
-          alt=" "
-          aria-hidden="true"
-        />
-        <Image
-          src="/images/illustration/ruler-mono.svg"
-          width={744}
-          height={122}
-          className={`max-lg:hidden col-start-[14] col-end-[-1] max-w-[initial] self-end row-start-1 drop-shadow-placed`}
-          alt=" "
-          aria-hidden="true"
-        />
-        <header className="col-content lg:col-prose flex flex-col row-start-1 max-sm:pt-12 gap-y-4">
-          <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
-            <Date dateString={post.date} />
-          </Badge>
+      <article className={`grid col-container grid-cols-subgrid gap-y-12 relative`}>
+        <header className="col-start-3 col-end-10 flex flex-col row-start-1 max-sm:pt-12 gap-y-4">
+          {post.categories.includes('Code') && postYear(post.date) < 2025 && (
+            <div className="col-prose flex gap-2 leading-tight bg-cornflour-200/40 rounded-sm px-2 py-2">
+              <Icon
+                icon="square-info"
+                className="text-cornflour-700 flex-[0_0_auto]"
+              />
+              <p className="p-0 m-0 font-ui lowercase text-cornflour-700">
+                This post was published <Date dateString={post.date} relative />,
+                so the approach may be outdated
+              </p>
+            </div>
+          )}
           <PageTitle
             className="mt-4"
             key={`title-${post.id}`}
@@ -162,108 +156,52 @@ export default async function PostPage({ params }) {
               {post.summary}
             </p>
           )}
-          <div className="flex flex-wrap gap-y-4 justify-between">
-            <div className="flex flex-row gap-4 items-center">
-              {post.categories.length > 0 &&
-                post.categories.map((category, index) => {
-                  return (
-                    <Category size={24} key={index}>
-                      {category}
-                    </Category>
-                  )
-                })}
-            </div>
-            <Badge size={24} theme={`lavender`} iconStart={`views`}>
-              <ViewCounter
-                allViews={allViews}
-                slug={post.slugAsParams}
-                trackView
-              />
-            </Badge>
-          </div>
         </header>
-
-        {/*post.categories.includes('Code') && postYear(post.date) < 2019 && (
-          <div className="col-prose flex gap-2 leading-tight bg-cornflour-200/40 rounded-sm px-2 py-2">
-            <Icon
-              icon="square-info"
-              className="text-cornflour-700 flex-[0_0_auto]"
-            />
-            <p className="p-0 m-0 font-ui lowercase text-cornflour-700">
-              This post was published <Date dateString={post.date} relative />,
-              so the approach may be outdated
-            </p>
-          </div>
-        )*/}
-
-        {!post.large && (
-          <>
-            {post.categories && post.categories.includes('Design') ? (
-              <Placeholder
-                category="Design"
-                kind="post"
-                alt={`${post.title} (featured image)`}
-                aria-labelledby={`title-${post.id}`}
-                tabIndex="0"
-                width={864}
-                height={540}
-                className={`col-content lg:col-prose grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
-              />
-            ) : (
-              <Placeholder
-                category="Code"
-                kind="post"
-                alt={`${post.title} (featured image)`}
-                aria-labelledby={`title-${post.id}`}
-                tabIndex="0"
-                width={864}
-                height={540}
-                className={`col-content lg:col-prose grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
-              />
-            )}
-          </>
-        )}
-        {post.large && (
-          <div
-            className={`col-content lg:col-prose grid-cols-subgrid flex items-center overflow-hidden justify-center ${styles.featured}`}
-            style={{ backgroundColor: `${imageColor}` }}
-          >
-            <Image
-              src={post.large}
-              alt={`${post.title} (featured image)`}
-              width={864}
-              height={540}
-              blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              placeholder="blur"
-              priority
-            />
-          </div>
-        )}
+        <aside aria-label="Meta & table of contents" className="col-start-11 row-start-1 col-span-4 h-[calc(100vh_-_104px)] overflow-y-auto sticky top-24 right-0 flex flex-col gap-16">
+          <section className="flex flex-col gap-4" aria-labelledby="aside-meta">
+            <h2 className="font-semibold" id="aside-meta">Meta</h2>
+            <ul className="flex flex-col gap-4">
+              <li>
+                <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
+                  <Date dateString={post.date} />
+                </Badge>
+              </li>
+              <li>
+                <div className="flex flex-row gap-4 items-center">
+                  {post.categories.length > 0 &&
+                    post.categories.map((category, index) => {
+                      return (
+                        <Category size={24} key={index}>
+                          {category}
+                        </Category>
+                      )
+                    })}
+                </div>
+              </li>
+              <li>
+                <Badge size={24} theme={`lavender`} iconStart={`views`}>
+                  <ViewCounter
+                    allViews={allViews}
+                    slug={post.slugAsParams}
+                    trackView
+                  />
+                </Badge>
+              </li>
+              <li><Badge href={editUrl(post._raw.sourceFileName)} size={16} theme={`text`} iconStart={`github`}>Edit on Github</Badge></li>
+            </ul>
+          </section>
+          <section className="flex flex-col gap-4" aria-labelledby="aside-contents">
+            <h2 className="font-semibold" id="aside-contents">Contents</h2>
+            <TableOfContents headings={post.headings} />
+          </section>
+        </aside>
         <div
-          className={`${styles.prose} prose grid grid-cols-subgrid outline-red-500 [grid-column:1/-1] gap-x-8 gap-y-0`}
+          className={`${styles.prose} prose grid grid-cols-subgrid outline-red-500 [grid-column:1/10] row-start-2 gap-x-8 gap-y-0`}
         >
           <PostMdx code={post.body.code} />
         </div>
         <Support />
-        <aside
-          className={`col-content lg:col-prose flex flex-col gap-4 md:-mx-8`}
-        >
-          <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 md:px-8">
-            Next to read
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card
-              size="medium"
-              image={false}
-              frontmatter={getRandomItem(allPosts, post.categories[0])}
-            />
-            <Card
-              size="medium"
-              image={false}
-              frontmatter={getRandomItem(allPosts, post.categories[0])}
-            />
-          </div>
-        </aside>
+        <NextPosts post={post} />
       </article>
       {post.codepen === true && (
         <Script
@@ -296,6 +234,30 @@ export async function NextPost({ id }) {
     .find((item) => item.id === Number(id))
 
   return <Card size="medium" image={false} frontmatter={post} key={id} />
+}
+
+export function NextPosts({ post }) {
+  return (
+    <aside
+      className={`col-content lg:col-prose flex flex-col gap-4 md:-mx-8`}
+    >
+      <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 md:px-8">
+        Next to read
+      </h2>
+      <div className="grid md:grid-cols-2 gap-8">
+        <Card
+          size="medium"
+          image={false}
+          frontmatter={getRandomItem(allPosts, post.categories[0])}
+        />
+        <Card
+          size="medium"
+          image={false}
+          frontmatter={getRandomItem(allPosts, post.categories[0])}
+        />
+      </div>
+    </aside>
+  )
 }
 
 export function Support() {

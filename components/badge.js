@@ -12,6 +12,7 @@ const defaultVariants = {
   'neutral-01': 'text-neutral-01-500',
   'neutral-02': 'text-neutral-02-500',
   cornflour: 'text-cornflour-600',
+  text: 'text-fern-1100',
 }
 
 const hoverVariants = {
@@ -25,6 +26,7 @@ const hoverVariants = {
   'neutral-01': 'hover:text-neutral-01-500',
   'neutral-02': 'hover:text-neutral-02-500',
   cornflour: 'hover:text-cornflour-600',
+  text: 'hover:text-fern-800',
 }
 
 export default function Badge({
