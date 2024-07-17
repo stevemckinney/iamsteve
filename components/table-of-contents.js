@@ -49,18 +49,18 @@ function TableOfContents({ headings, ...props }) {
     return nestedHeadings;
   };
 
-  const renderHeadings = (headings, className = 'pl-0') => {
+  const renderHeadings = (headings, className = 'pl-0', classChildren = '') => {
     return (
       <ul className={className}>
         {headings.map((heading) => (
-          <li key={heading.slug}>
+          <li key={heading.slug} className={classChildren}>
             <a
               href={`#${heading.slug}`}
-              className={`block font-medium py-1 ${activeId === heading.slug ? 'text-blue-500' : ''}`}
+              className={`block truncate font-medium py-2 ${activeId === heading.slug ? 'text-fern-600' : ''}`}
             >
               {heading.text}
             </a>
-            {heading.children && heading.children.length > 0 && renderHeadings(heading.children, 'pl-4')}
+            {heading.children && heading.children.length > 0 && renderHeadings(heading.children, `mb-4`, `relative pl-6 before:content-[''] before:absolute before:w-4 before:h-6 before:border-l-2 before:border-b-2 before:border-neutral-01-300 last:before:rounded-bl-sm before:left-0 before:top-[-4px]`)}
           </li>
         ))}
       </ul>

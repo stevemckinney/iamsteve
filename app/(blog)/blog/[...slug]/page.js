@@ -130,79 +130,76 @@ export default async function PostPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
-      <article className={`grid col-container grid-cols-subgrid gap-y-12 relative`}>
-        <header className="col-start-3 col-end-10 flex flex-col row-start-1 max-sm:pt-12 gap-y-4">
-          {post.categories.includes('Code') && postYear(post.date) < 2025 && (
-            <div className="col-prose flex gap-2 leading-tight bg-cornflour-200/40 rounded-sm px-2 py-2">
+      <aside aria-label="Meta & table of contents" className="col-start-12 row-start-1 row-span-4 col-span-3 h-[calc(100vh_-_104px)] overflow-y-auto sticky top-0 h-screen right-0 flex flex-col gap-16">
+        <section className="flex flex-col gap-4" aria-labelledby="aside-meta">
+          <h2 className="font-semibold" id="aside-meta">Meta</h2>
+          <ul className="flex flex-col gap-4">
+            <li>
+              <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
+                <Date dateString={post.date} />
+              </Badge>
+            </li>
+            <li>
+              <div className="flex flex-row gap-4 items-center">
+                {post.categories.length > 0 &&
+                  post.categories.map((category, index) => {
+                    return (
+                      <Category size={24} key={index}>
+                        {category}
+                      </Category>
+                    )
+                  })}
+              </div>
+            </li>
+            <li>
+              <Badge size={24} theme={`lavender`} iconStart={`views`}>
+                <ViewCounter
+                  allViews={allViews}
+                  slug={post.slugAsParams}
+                  trackView
+                />
+              </Badge>
+            </li>
+            <li><Badge href={editUrl(post._raw.sourceFileName)} size={24} theme={`text`} iconStart={`github`}>Edit on Github</Badge></li>
+          </ul>
+        </section>
+        <section className="flex flex-col gap-2" aria-labelledby="aside-contents">
+          <h2 className="font-semibold" id="aside-contents">Contents</h2>
+          <TableOfContents headings={post.headings} />
+        </section>
+      </aside>
+      <article className={`grid col-container grid-cols-subgrid row-start-1 row-span-1 relative`}>
+        <header className="col-start-3 col-end-11 flex flex-col max-sm:pt-12 gap-y-4">
+          {post.categories.includes('Code') && postYear(post.date) < 2022 && (
+            <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
               <Icon
                 icon="square-info"
-                className="text-cornflour-700 flex-[0_0_auto]"
+                className="text-cornflour-900 flex-[0_0_auto]"
               />
-              <p className="p-0 m-0 font-ui lowercase text-cornflour-700">
-                This post was published <Date dateString={post.date} relative />,
-                so the approach may be outdated
-              </p>
+              <div className="flex flex-col">
+                <p className="p-0 m-0 font-body text-sm text-cornflour-900"><strong>This post was published <Date dateString={post.date} relative /></strong></p>
+                <p className="p-0 m-0 font-body text-sm text-cornflour-900">
+                  There’s a chance things are out of date or no longer reflect my views today
+                </p>
+              </div>
             </div>
           )}
           <PageTitle
-            className="mt-4"
+            className="mt-4 mb-8"
             key={`title-${post.id}`}
             id={`title-${post.id}`}
           >
             {post.title}
           </PageTitle>
-          {post.summary && (
-            <p className="text-lg lg:text-2xl text-fern-1100 mb-4">
-              {post.summary}
-            </p>
-          )}
         </header>
-        <aside aria-label="Meta & table of contents" className="col-start-11 row-start-1 col-span-4 h-[calc(100vh_-_104px)] overflow-y-auto sticky top-24 right-0 flex flex-col gap-16">
-          <section className="flex flex-col gap-4" aria-labelledby="aside-meta">
-            <h2 className="font-semibold" id="aside-meta">Meta</h2>
-            <ul className="flex flex-col gap-4">
-              <li>
-                <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
-                  <Date dateString={post.date} />
-                </Badge>
-              </li>
-              <li>
-                <div className="flex flex-row gap-4 items-center">
-                  {post.categories.length > 0 &&
-                    post.categories.map((category, index) => {
-                      return (
-                        <Category size={24} key={index}>
-                          {category}
-                        </Category>
-                      )
-                    })}
-                </div>
-              </li>
-              <li>
-                <Badge size={24} theme={`lavender`} iconStart={`views`}>
-                  <ViewCounter
-                    allViews={allViews}
-                    slug={post.slugAsParams}
-                    trackView
-                  />
-                </Badge>
-              </li>
-              <li><Badge href={editUrl(post._raw.sourceFileName)} size={16} theme={`text`} iconStart={`github`}>Edit on Github</Badge></li>
-            </ul>
-          </section>
-          <section className="flex flex-col gap-4" aria-labelledby="aside-contents">
-            <h2 className="font-semibold" id="aside-contents">Contents</h2>
-            <TableOfContents headings={post.headings} />
-          </section>
-        </aside>
         <div
-          className={`${styles.prose} prose grid grid-cols-subgrid outline-red-500 [grid-column:1/10] row-start-2 gap-x-8 gap-y-0`}
+          className={`${styles.prose} prose grid grid-cols-subgrid col-span-10 gap-x-8 gap-y-0`}
         >
           <PostMdx code={post.body.code} />
         </div>
-        <Support />
-        <NextPosts post={post} />
       </article>
+      <Support />
+      <NextPosts post={post} />
       {post.codepen === true && (
         <Script
           src="https://cpwebassets.codepen.io/assets/embed/ei.js"
@@ -239,7 +236,7 @@ export async function NextPost({ id }) {
 export function NextPosts({ post }) {
   return (
     <aside
-      className={`col-content lg:col-prose flex flex-col gap-4 md:-mx-8`}
+      className={`row-span-1 col-content lg:col-start-3 lg:col-span-8 flex flex-col gap-4 md:-mx-8`}
     >
       <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 md:px-8">
         Next to read
@@ -260,9 +257,55 @@ export function NextPosts({ post }) {
   )
 }
 
+export function PostImage({ post }) {
+  {!post.large && (
+    <>
+      {post.categories && post.categories.includes('Design') ? (
+        <Placeholder
+          category="Design"
+          kind="post"
+          alt={`${post.title} (featured image)`}
+          aria-labelledby={`title-${post.id}`}
+          tabIndex="0"
+          width={864}
+          height={540}
+          className={`col-content lg:col-container grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
+        />
+      ) : (
+        <Placeholder
+          category="Code"
+          kind="post"
+          alt={`${post.title} (featured image)`}
+          aria-labelledby={`title-${post.id}`}
+          tabIndex="0"
+          width={864}
+          height={540}
+          className={`col-content lg:col-container grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
+        />
+      )}
+    </>
+  )}
+  {post.large && (
+    <div
+      className={`col-content lg:col-prose grid-cols-subgrid flex items-center overflow-hidden justify-center ${styles.featured}`}
+      style={{ backgroundColor: `${imageColor}` }}
+    >
+      <Image
+        src={post.large}
+        alt={`${post.title} (featured image)`}
+        width={864}
+        height={540}
+        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        placeholder="blur"
+        priority
+      />
+    </div>
+  )}
+}
+
 export function Support() {
   return (
-    <aside className="bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 col-prose md:-mx-8">
+    <aside className="row-span-1 bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 md:-mx-8 col-content lg:col-start-3 col-span-8">
       <p className="p-0 m-0 text-base text-ui-body flex flex-col">
         <strong className="text-fern-1100 font-bold">
           Enjoying the reading experience?

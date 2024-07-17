@@ -22,15 +22,6 @@ There’s a lot of discussion happening around whether masonry is needed in CSS.
 
 For this example masonry isn’t required—but it’s something I would like to see part of CSS in whatever way it ends up being.
 
-**This post is broken down into the following sections**:
-
-- The bento design
-- Project files
-- HTML structure
-- How to use CSS grid to create a bento layout
-- Managing content within the grid
-- Using Tailwind to apply the design & responsiveness
-
 <Blockquote style="notice">I make the assumption that you’re comfortable setting up Tailwind for your project</Blockquote>
 
 ## The bento design
