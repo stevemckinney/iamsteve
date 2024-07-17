@@ -130,7 +130,7 @@ export default async function PostPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
-      <aside aria-label="Meta & table of contents" className="col-start-12 row-start-1 row-span-4 col-span-3 h-[calc(100vh_-_104px)] overflow-y-auto sticky top-0 h-screen right-0 flex flex-col gap-16">
+      <aside aria-label="Meta & table of contents" className="max-lg:col-content lg:col-start-12 lg:row-start-1 lg:row-span-4 lg:col-span-3 lg:h-[calc(100vh_-_104px)] overflow-y-auto lg:sticky top-0 right-0 flex flex-col gap-16">
         <section className="flex flex-col gap-4" aria-labelledby="aside-meta">
           <h2 className="font-semibold" id="aside-meta">Meta</h2>
           <ul className="flex flex-col gap-4">
@@ -163,13 +163,13 @@ export default async function PostPage({ params }) {
             <li><Badge href={editUrl(post._raw.sourceFileName)} size={24} theme={`text`} iconStart={`github`}>Edit on Github</Badge></li>
           </ul>
         </section>
-        <section className="flex flex-col gap-2" aria-labelledby="aside-contents">
+        <section className="flex flex-col gap-2 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0" aria-labelledby="aside-contents">
           <h2 className="font-semibold" id="aside-contents">Contents</h2>
           <TableOfContents headings={post.headings} />
         </section>
       </aside>
-      <article className={`grid col-container grid-cols-subgrid row-start-1 row-span-1 relative`}>
-        <header className="col-start-3 col-end-11 flex flex-col max-sm:pt-12 gap-y-4">
+      <article className={`grid col-container grid-cols-subgrid lg:row-start-1 lg:row-span-1 relative`}>
+        <header className="col-content lg:col-start-3 lg:col-end-11 flex flex-col max-sm:pt-12 gap-y-4">
           {post.categories.includes('Code') && postYear(post.date) < 2022 && (
             <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
               <Icon
