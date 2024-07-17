@@ -1,3 +1,4 @@
+// Homepage
 import { cache } from 'react'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
