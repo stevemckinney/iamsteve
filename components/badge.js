@@ -50,7 +50,7 @@ export default function Badge({
   } else {
     return (
       <p
-        className={`flex flex-[0_0_auto] gap-2 font-variation-medium text-fern-1100 ${className}`}
+        className={`flex flex-[0_0_auto] gap-3 font-variation-medium text-fern-1100 ${className}`}
       >
         <Badge.Icon size={size} theme={theme} icon={iconStart} />
         <Badge.Text size={size}>{children}</Badge.Text>
@@ -76,13 +76,13 @@ export function BadgeIcon({ icon, size, theme, className = 'badge' }) {
 Badge.Icon = BadgeIcon
 
 export function BadgeText({ children, size, className = 'ct' }) {
-  const small = 'h-6 pt-[2px] text-base flex-[0_0_auto]'
-  const large = 'h-8 pt-[2px] text-lg flex-[0_0_auto]'
+  const small = 'h-6 pt-[2px] text-base font-medium flex-[0_0_auto]'
+  const large = 'h-8 pt-[2px] text-base font-medium flex-[0_0_auto]'
   const sizing = size === 16 ? small : large
 
   return (
     <span
-      className={`${sizing} transition-all duration-100 ease-linear font-ui lowercase leading-none rounded flex items-center text-current ${className}`}
+      className={`${sizing} transition-all duration-100 ease-linear font-body leading-none rounded flex items-center text-current ${className}`}
     >
       {children}
     </span>
