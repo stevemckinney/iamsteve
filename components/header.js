@@ -30,7 +30,7 @@ export default function Header() {
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-[2]"
         id="top"
       >
-        <div className="absolute md:max-w-[calc(100%_-_96px)] 2xl:max-w-[1280px] mx-auto h-[2px] z-[1] md:top-[43px] 2xl:top-[50px] right-0 left-0 bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 z-[-1]" aria-hidden="true" />
+        <div className="absolute col-content -mx-8 h-[2px] z-[1] md:top-[38px] 2xl:top-[50px] right-0 left-0 bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 z-[-1]" aria-hidden="true" />
         <div className="col-container lg:col-content flex items-center align-center py-4 px-4 md:py-[1.625rem] 2xl:py-9 2xl:px-8 2xl:-mx-8 max-md:-mx-4">
           <Link
             href="/"
