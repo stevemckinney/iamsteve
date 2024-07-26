@@ -22,6 +22,7 @@ import PageTitle from '@/components/page-title'
 import Date, { postYear } from '@/components/date'
 import Icon from '@/components/icon'
 import Link from '@/components/link'
+import NewsletterForm from '@/components/newsletter-form'
 
 import getAllPageViews from '../views'
 import ViewCounter from '../counter'
@@ -130,44 +131,11 @@ export default async function PostPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
-      <aside aria-label="Meta & table of contents" className="max-lg:col-content lg:col-start-12 lg:row-start-1 lg:row-span-4 lg:col-span-3 lg:h-[calc(100vh_-_104px)] overflow-y-auto lg:sticky top-0 right-0 flex flex-col gap-16">
-        <section className="flex flex-col gap-4" aria-labelledby="aside-meta">
-          <h2 className="font-semibold" id="aside-meta">Meta</h2>
-          <ul className="flex flex-col gap-4">
-            <li>
-              <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
-                <Date dateString={post.date} />
-              </Badge>
-            </li>
-            <li>
-              <div className="flex flex-row gap-4 items-center">
-                {post.categories.length > 0 &&
-                  post.categories.map((category, index) => {
-                    return (
-                      <Category size={24} key={index}>
-                        {category}
-                      </Category>
-                    )
-                  })}
-              </div>
-            </li>
-            <li>
-              <Badge size={24} theme={`lavender`} iconStart={`views`}>
-                <ViewCounter
-                  allViews={allViews}
-                  slug={post.slugAsParams}
-                  trackView
-                />
-              </Badge>
-            </li>
-            <li><Badge href={editUrl(post._raw.sourceFileName)} size={24} theme={`text`} iconStart={`github`}>Edit on Github</Badge></li>
-          </ul>
-        </section>
-        <section className="flex flex-col gap-2 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0" aria-labelledby="aside-contents">
-          <h2 className="font-semibold" id="aside-contents">Contents</h2>
-          <TableOfContents headings={post.headings} />
-        </section>
-      </aside>
+      {/*<details name="toc" aria-hidden="true" className={`lg:row-start-1 col-content sticky top-0`}>
+        <summary className="font-bold" id="aside-contents">Contents</summary>
+        <TableOfContents headings={post.headings} />
+      </details>*/}
+      <Sidebar allViews={allViews} post={post} />
       <article className={`grid col-container grid-cols-subgrid lg:row-start-1 lg:row-span-1 relative`}>
         <header className="col-content lg:col-start-3 lg:col-end-11 flex flex-col max-sm:pt-12 gap-y-4">
           {post.categories.includes('Code') && postYear(post.date) < 2022 && (
@@ -321,6 +289,53 @@ export function Support() {
           <Icon icon="bmc" />
         </span>
       </Link>
+    </aside>
+  )
+}
+
+export function Sidebar({ allViews, post }) {
+  return (
+    <aside aria-label="Meta & table of contents" className="max-lg:col-content lg:col-start-12 lg:row-start-1 lg:row-span-4 lg:col-span-3 lg:h-screen overflow-y-scroll lg:sticky z-10 top-4 -mt-2 right-0 py-4 flex flex-col gap-16 px-6 -mx-6">
+      <section className="flex flex-col gap-4" aria-labelledby="aside-meta">
+        <h2 className="font-bold" id="aside-meta">Meta</h2>
+        <ul className="flex flex-col gap-4">
+          <li>
+            <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
+              <Date dateString={post.date} />
+            </Badge>
+          </li>
+          <li>
+            <div className="flex flex-row gap-4 items-center">
+              {post.categories.length > 0 &&
+                post.categories.map((category, index) => {
+                  return (
+                    <Category size={24} key={index}>
+                      {category}
+                    </Category>
+                  )
+                })}
+            </div>
+          </li>
+          <li>
+            <Badge size={24} theme={`lavender`} iconStart={`views`}>
+              <ViewCounter
+                allViews={allViews}
+                slug={post.slugAsParams}
+                trackView
+              />
+            </Badge>
+          </li>
+          <li><Badge href={editUrl(post._raw.sourceFileName)} size={24} theme={`text`} iconStart={`github`}>Edit on Github</Badge></li>
+        </ul>
+      </section>
+      <section className="flex flex-col gap-2 max-lg:sticky max-lg:top-0 max-lg:left-0 max-lg:right-0" aria-labelledby="aside-contents">
+        <TableOfContents headings={post.headings} />
+      </section>
+      <section className="flex flex-col gap-2 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0" aria-labelledby="aside-subscribe">
+        <h2 className="font-bold" id="aside-subscribe">Subscribe</h2>
+        <p className="mb-4">Get notified you when the latest posts go out. Unsubscribe anytime.</p>
+        <NewsletterForm />
+      </section>
     </aside>
   )
 }

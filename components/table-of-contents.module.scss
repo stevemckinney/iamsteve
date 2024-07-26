@@ -1,0 +1,16 @@
+.collapsible {
+  &[open] summary::marker {
+  }
+
+  summary::marker {
+    display: none;
+  }
+
+  ::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.collapsible[open] summary {
+
+}
