@@ -160,8 +160,8 @@ const postComponents = {
   ),
   Demo: (
     src,
-    className = `-mx-[1.5rem] col-content h-[50vmax] overflow-hidden`,
-    zoom = `.75`
+    className = `-mx-[1.5rem] col-content h-[33vmax] overflow-hidden bg-fern-1100 p-1.5`,
+    zoom = `.5`
   ) => {
     const style = { '--zoom': zoom }
     return (
@@ -171,7 +171,7 @@ const postComponents = {
       >
         <iframe
           src={src.src}
-          className={`origin-top-left w-[calc(1_/_var(--zoom)_*_100%)] h-[calc(1_/_var(--zoom)_*_100%)] transform-gpu scale-[var(--zoom)]`}
+          className={`sm:rounded-[2.35rem] ring ring-1 ring-fern-800 origin-top-left w-[calc(1_/_var(--zoom)_*_100%)] h-[calc(1_/_var(--zoom)_*_100%)] transform-gpu scale-[var(--zoom)]`}
         ></iframe>
       </div>
     )
