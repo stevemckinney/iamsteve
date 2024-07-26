@@ -70,7 +70,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
             <div className="flex flex-col @xl:w-2/5">
               <label
                 htmlFor={`input-name-${unique}`}
-                className="font-ui text-base lowercase text-fern-1100 leading-none mb-1"
+                className="font-sans text-base font-medium lowercase text-fern-1100 leading-none mb-1"
               >
                 First name
               </label>
@@ -90,7 +90,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
             <div className="flex flex-col @xl:w-3/5">
               <label
                 htmlFor={`input-email-${unique}`}
-                className="font-ui text-base lowercase text-fern-1100 leading-none mb-1"
+                className="font-sans text-base font-medium lowercase text-fern-1100 leading-none mb-1"
               >
                 Email
               </label>
