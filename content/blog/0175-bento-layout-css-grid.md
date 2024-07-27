@@ -29,7 +29,7 @@ The design showcases a rough idea of an app I wish existed. Each section display
 
 <figure className="prose-exclude grid grid-cols-subgrid col-content">
 <Demo src="https://stevemckinney.github.io/bento-grid/option-1.html" />
-<figcaption className="col-prose">A compact grid showing 6 features of a fictional app. Layout will vary based on your device. Live demo.</figcaption>
+<figcaption className="col-span-8">A compact grid showing 6 features of a fictional app. Layout will vary based on your device. This is a live demo.</figcaption>
 </figure>
 
 ### Considerations
