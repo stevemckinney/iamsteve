@@ -19,7 +19,14 @@ import Category from '@/components/category'
 import Badge from '@/components/badge'
 import PageHeader from '@/components/page-header'
 import PageTitle from '@/components/page-title'
-import Date, { postYear } from '@/components/date'
+import {
+  format,
+  parseISO,
+  formatDistance,
+  formatRelative,
+  subYears,
+  getYear,
+} from 'date-fns'
 import Icon from '@/components/icon'
 import Link from '@/components/link'
 import NewsletterForm from '@/components/newsletter-form'
@@ -91,6 +98,12 @@ export default async function PostPage({ params }) {
   const post = await getPostFromParams(params)
   const allViews = await getAllPageViews()
 
+  const currentYear = new Date().getFullYear()
+  const postYear = new Date(post.date).getFullYear()
+  const yearsAgo = currentYear - postYear
+
+  const isOldCodePost = post.categories.includes('Code') && yearsAgo > 2
+
   const imageColor = `#fcf9f8`
 
   if (!post) {
@@ -138,14 +151,14 @@ export default async function PostPage({ params }) {
       <Sidebar allViews={allViews} post={post} />
       <article className={`grid col-container grid-cols-subgrid lg:row-start-1 lg:row-span-1 relative`}>
         <header className="col-content lg:col-start-3 lg:col-end-11 flex flex-col max-sm:pt-12 gap-y-4">
-          {post.categories.includes('Code') && postYear(post.date) < 2022 && (
+          {isOldCodePost && (
             <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
               <Icon
                 icon="square-info"
                 className="text-cornflour-900 flex-[0_0_auto]"
               />
               <div className="flex flex-col">
-                <p className="p-0 m-0 font-body text-sm text-cornflour-900"><strong>This post was published <Date dateString={post.date} relative /></strong></p>
+                <p className="p-0 m-0 font-body text-sm text-cornflour-900"><strong>This post was published {yearsAgo} {yearsAgo === 1 ? 'year' : 'years'} ago</strong></p>
                 <p className="p-0 m-0 font-body text-sm text-cornflour-900">
                   There’s a chance things are out of date or no longer reflect my views today
                 </p>
@@ -294,14 +307,18 @@ export function Support() {
 }
 
 export function Sidebar({ allViews, post }) {
+  const date = parseISO(post.date)
+
   return (
-    <aside aria-label="Meta & table of contents" className="max-lg:col-content lg:col-start-12 lg:row-start-1 lg:row-span-4 lg:col-span-3 lg:h-screen overflow-y-scroll lg:sticky z-10 top-4 -mt-2 right-0 py-4 flex flex-col gap-16 px-6 -mx-6">
+    <aside aria-label="Meta & table of contents" className="max-lg:col-content lg:col-start-12 lg:row-start-1 lg:row-span-4 lg:col-span-3 lg:h-screen overflow-y-scroll lg:sticky z-10 top-4 -mt-2 right-0 py-4 flex flex-col gap-12 px-6 -mx-6">
       <section className="flex flex-col gap-4" aria-labelledby="aside-meta">
         <h2 className="font-bold" id="aside-meta">Meta</h2>
         <ul className="flex flex-col gap-4">
           <li>
             <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
-              <Date dateString={post.date} />
+              <time dateTime={post.date} className={`date`}>
+                {format(date, 'do LLL yyyy')}
+              </time>
             </Badge>
           </li>
           <li>

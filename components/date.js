@@ -7,6 +7,7 @@ import {
   getYear,
 } from 'date-fns'
 
+
 export function postYear(dateString) {
   const date = parseISO(dateString)
 
@@ -18,6 +19,7 @@ export default function Date({
   relative = false,
   className = 'date',
 }) {
+  // const currentYear = format(new Date(), 'yyyy')
   const date = parseISO(dateString)
 
   if (relative === true) {
