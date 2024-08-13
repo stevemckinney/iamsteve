@@ -148,9 +148,9 @@ export default async function PostPage({ params }) {
         <summary className="font-bold" id="aside-contents">Contents</summary>
         <TableOfContents headings={post.headings} />
       </details>*/}
-      <Sidebar allViews={allViews} post={post} />
-      <article className={`grid col-container grid-cols-subgrid lg:row-start-1 lg:row-span-1 relative`}>
-        <header className="col-content lg:col-start-3 lg:col-end-11 flex flex-col max-sm:pt-12 gap-y-4">
+      <article className={`grid col-container grid-cols-subgrid relative`}>
+        <Sidebar allViews={allViews} post={post} />
+        <header className="col-content xl:col-start-3 xl:col-end-11 xl:row-start-1 lg:row-span-1 flex flex-col max-sm:pt-12 gap-y-4">
           {isOldCodePost && (
             <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
               <Icon
@@ -177,6 +177,7 @@ export default async function PostPage({ params }) {
           className={`${styles.prose} prose grid grid-cols-subgrid col-span-10 gap-x-8 gap-y-0`}
         >
           <PostMdx code={post.body.code} />
+          <Badge href={editUrl(post._raw.sourceFileName)} size={24} theme={`text`} iconStart={`github`}>Edit on Github</Badge>
         </div>
       </article>
       <Support />
@@ -310,10 +311,10 @@ export function Sidebar({ allViews, post }) {
   const date = parseISO(post.date)
 
   return (
-    <aside aria-label="Meta & table of contents" className="max-lg:col-content lg:col-start-12 lg:row-start-1 lg:row-span-4 lg:col-span-3 lg:h-screen overflow-y-scroll lg:sticky z-10 top-4 -mt-2 right-0 py-4 flex flex-col gap-12 px-6 -mx-6">
+    <aside aria-label="Meta & table of contents" className="max-xl:col-content xl:col-start-12 xl:row-start-1 xl:row-span-5 xl:col-span-3 xl:h-screen overflow-y-scroll xl:sticky z-10 top-0 right-0 flex flex-col gap-12 xl:-mt-10 py-16 px-6 -mx-6 max-xl:row-start-1 [mask-image:linear-gradient(0deg,_transparent_0%,_transparent_1%,_rgba(0,0,0,0.56)_5%,_#000_10%,_#000_18%,_#000_82%,_#000_90%,_rgba(0,0,0,0.56)_95%,_transparent_99%,_transparent_100%)]">
       <section className="flex flex-col gap-4" aria-labelledby="aside-meta">
-        <h2 className="font-bold" id="aside-meta">Meta</h2>
-        <ul className="flex flex-col gap-4">
+        <h2 className="font-bold max-xl:hidden" id="aside-meta">Meta</h2>
+        <ul className="flex flex-row flex-wrap xl:flex-col gap-8 xl:gap-4">
           <li>
             <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
               <time dateTime={post.date} className={`date`}>
@@ -345,10 +346,10 @@ export function Sidebar({ allViews, post }) {
           <li><Badge href={editUrl(post._raw.sourceFileName)} size={24} theme={`text`} iconStart={`github`}>Edit on Github</Badge></li>
         </ul>
       </section>
-      <section className="flex flex-col gap-2 max-lg:sticky max-lg:top-0 max-lg:left-0 max-lg:right-0" aria-labelledby="aside-contents">
+      <section className="max-xl:hidden flex flex-col gap-2 max-xl:sticky max-xl:top-0 max-xl:left-0 max-xl:right-0" aria-labelledby="aside-contents">
         <TableOfContents headings={post.headings} />
       </section>
-      <section className="flex flex-col gap-2 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0" aria-labelledby="aside-subscribe">
+      <section className="flex flex-col gap-2 pb-12 max-xl:fixed max-xl:hidden max-xl:top-0 max-xl:left-0 max-xl:right-0" aria-labelledby="aside-subscribe">
         <h2 className="font-bold" id="aside-subscribe">Subscribe</h2>
         <p className="mb-4">Get notified you when the latest posts go out. Unsubscribe anytime.</p>
         <NewsletterForm />

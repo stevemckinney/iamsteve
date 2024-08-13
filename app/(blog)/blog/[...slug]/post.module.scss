@@ -33,7 +33,7 @@
   > *:not(:global(.prose-exclude)) {
     grid-column: content-start / content-end;
 
-    @screen lg {
+    @screen xl {
       grid-column: 3 / 11;
     }
   }
