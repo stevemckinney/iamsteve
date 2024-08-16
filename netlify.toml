@@ -102,6 +102,11 @@
   status = 301
 
 [[redirects]]
+  from = "/public/feed.xml"
+  to = "/feed.xml"
+  status = 301
+
+[[redirects]]
   from = "/feeds"
   to = "/feed.xml"
   status = 301
