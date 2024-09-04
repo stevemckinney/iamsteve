@@ -104,7 +104,7 @@ export default async function PostPage({ params }) {
 
   const isOldCodePost = post.categories.includes('Code') && yearsAgo > 2
 
-  const imageColor = `#fcf9f8`
+  const date = parseISO(post.date)
 
   if (!post) {
     notFound()
@@ -144,13 +144,11 @@ export default async function PostPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
-      {/*<details name="toc" aria-hidden="true" className={`lg:row-start-1 col-content sticky top-0`}>
-        <summary className="font-bold" id="aside-contents">Contents</summary>
-        <TableOfContents headings={post.headings} />
-      </details>*/}
       <article className={`grid col-container grid-cols-subgrid relative`}>
+        <hr className="col-container md:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <Sidebar allViews={allViews} post={post} />
-        <header className="col-content xl:col-start-3 xl:col-end-11 xl:row-start-1 lg:row-span-1 flex flex-col max-sm:pt-12 gap-y-4">
+        <hr className="col-container md:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <header className="col-container xl:col-start-3 xl:col-end-11 xl:row-start-1 lg:row-span-1 flex flex-col max-sm:pt-12 gap-y-4 mb-12">
           {isOldCodePost && (
             <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
               <Icon
@@ -165,19 +163,49 @@ export default async function PostPage({ params }) {
               </div>
             </div>
           )}
+          <Badge size={16} theme={`text`} iconStart={`calendar`}>
+            <time dateTime={post.date} className={`date`}>
+              {format(date, 'do LLL yyyy')}
+            </time>
+          </Badge>
           <PageTitle
-            className="mt-4 mb-8"
+            className="mt-4"
             key={`title-${post.id}`}
             id={`title-${post.id}`}
           >
             {post.title}
           </PageTitle>
+          {post.summary && (
+            <p className="text-lg text-pretty lg:text-2xl text-fern-1100 mb-2">
+              {post.summary}
+            </p>
+          )}
+          <div className="flex flex-row flex-wrap justify-between gap-6">
+            <div className="flex flex-row gap-4 items-center">
+              {post.categories.length > 0 &&
+                post.categories.map((category, index) => {
+                  return (
+                    <Category size={16} key={index}>
+                      {category}
+                    </Category>
+                  )
+                })}
+            </div>
+            <Badge size={16} theme={`text`} iconStart={`views`}>
+              <ViewCounter
+                allViews={allViews}
+                slug={post.slugAsParams}
+                trackView
+              />
+            </Badge>
+          </div>
         </header>
         <div
-          className={`${styles.prose} prose grid grid-cols-subgrid col-span-10 gap-x-8 gap-y-0`}
+          className={`${styles.prose} prose grid grid-cols-subgrid col-prose xl:col-span-10 gap-x-8 gap-y-0`}
         >
+          <PostImage post={post} />
           <PostMdx code={post.body.code} />
-          <Badge href={editUrl(post._raw.sourceFileName)} size={24} theme={`text`} iconStart={`github`}>Edit on Github</Badge>
+          <Badge href={editUrl(post._raw.sourceFileName)} size={16} theme={`text`} iconStart={`github`}>View on Github</Badge>
         </div>
       </article>
       <Support />
@@ -218,7 +246,7 @@ export async function NextPost({ id }) {
 export function NextPosts({ post }) {
   return (
     <aside
-      className={`row-span-1 col-content lg:col-start-3 lg:col-span-8 flex flex-col gap-4 md:-mx-8`}
+      className={`xl:row-span-1 col-content lg:col-start-3 lg:col-span-8 flex flex-col gap-4 md:-mx-8`}
     >
       <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 md:px-8">
         Next to read
@@ -240,54 +268,60 @@ export function NextPosts({ post }) {
 }
 
 export function PostImage({ post }) {
-  {!post.large && (
+  const imageColor = post.theme ? post.theme : `#fcf9f8`
+
+  return (
     <>
-      {post.categories && post.categories.includes('Design') ? (
-        <Placeholder
-          category="Design"
-          kind="post"
-          alt={`${post.title} (featured image)`}
-          aria-labelledby={`title-${post.id}`}
-          tabIndex="0"
-          width={864}
-          height={540}
-          className={`col-content lg:col-container grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
-        />
-      ) : (
-        <Placeholder
-          category="Code"
-          kind="post"
-          alt={`${post.title} (featured image)`}
-          aria-labelledby={`title-${post.id}`}
-          tabIndex="0"
-          width={864}
-          height={540}
-          className={`col-content lg:col-container grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
-        />
+      {!post.large && (
+        <>
+          {post.categories && post.categories.includes('Design') ? (
+            <Placeholder
+              category="Design"
+              kind="post"
+              alt={`${post.title} (featured image)`}
+              aria-labelledby={`title-${post.id}`}
+              tabIndex="0"
+              width={864}
+              height={540}
+              className={`col-content lg:col-container grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
+            />
+          ) : (
+            <Placeholder
+              category="Code"
+              kind="post"
+              alt={`${post.title} (featured image)`}
+              aria-labelledby={`title-${post.id}`}
+              tabIndex="0"
+              width={864}
+              height={540}
+              className={`col-content lg:col-container grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
+            />
+          )}
+        </>
+      )}
+      {post.large && (
+        <div
+          className={`col-content lg:col-prose grid-cols-subgrid flex items-center overflow-hidden justify-center ${styles.featured}`}
+          style={{ backgroundColor: `${imageColor}` }}
+        >
+          <Image
+            src={post.large}
+            alt={`${post.title} (featured image)`}
+            width={864}
+            height={540}
+            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+            placeholder="blur"
+            priority
+          />
+        </div>
       )}
     </>
-  )}
-  {post.large && (
-    <div
-      className={`col-content lg:col-prose grid-cols-subgrid flex items-center overflow-hidden justify-center ${styles.featured}`}
-      style={{ backgroundColor: `${imageColor}` }}
-    >
-      <Image
-        src={post.large}
-        alt={`${post.title} (featured image)`}
-        width={864}
-        height={540}
-        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-        placeholder="blur"
-        priority
-      />
-    </div>
-  )}
+  )
 }
 
 export function Support() {
   return (
-    <aside className="row-span-1 bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 md:-mx-8 col-content lg:col-start-3 col-span-8">
+    <aside className="xl:row-span-1 bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 md:-mx-8 col-content xl:col-start-3 xl:col-span-8">
       <p className="p-0 m-0 text-base text-ui-body flex flex-col">
         <strong className="text-fern-1100 font-bold">
           Enjoying the reading experience?
@@ -307,47 +341,22 @@ export function Support() {
   )
 }
 
-export function Sidebar({ allViews, post }) {
-  const date = parseISO(post.date)
+// [mask-image:linear-gradient(0deg,_transparent_0%,_transparent_1%,_rgba(0,0,0,0.56)_3%,_#000_6%,_#000_18%,_#000_82%,_#000_90%,_rgba(0,0,0,0.56)_95%,_transparent_99%,_transparent_100%)]
+// max-xl:bg-[url(/images/texture.png)] max-xl:bg-[172px_auto] max-xl:bg-blend-multiply max-xl:bg-neutral-01-150 max-xl:px-6
 
+export function Sidebar({ allViews, post }) {
   return (
-    <aside aria-label="Meta & table of contents" className="max-xl:col-content xl:col-start-12 xl:row-start-1 xl:row-span-5 xl:col-span-3 xl:h-screen overflow-y-scroll xl:sticky z-10 top-0 right-0 flex flex-col gap-12 xl:-mt-10 py-16 px-6 -mx-6 max-xl:row-start-1 [mask-image:linear-gradient(0deg,_transparent_0%,_transparent_1%,_rgba(0,0,0,0.56)_5%,_#000_10%,_#000_18%,_#000_82%,_#000_90%,_rgba(0,0,0,0.56)_95%,_transparent_99%,_transparent_100%)]">
-      <section className="flex flex-col gap-4" aria-labelledby="aside-meta">
-        <h2 className="font-bold max-xl:hidden" id="aside-meta">Meta</h2>
-        <ul className="flex flex-row flex-wrap xl:flex-col gap-8 xl:gap-4">
-          <li>
-            <Badge size={24} theme={`cornflour`} iconStart={`calendar`}>
-              <time dateTime={post.date} className={`date`}>
-                {format(date, 'do LLL yyyy')}
-              </time>
-            </Badge>
-          </li>
-          <li>
-            <div className="flex flex-row gap-4 items-center">
-              {post.categories.length > 0 &&
-                post.categories.map((category, index) => {
-                  return (
-                    <Category size={24} key={index}>
-                      {category}
-                    </Category>
-                  )
-                })}
-            </div>
-          </li>
-          <li>
-            <Badge size={24} theme={`lavender`} iconStart={`views`}>
-              <ViewCounter
-                allViews={allViews}
-                slug={post.slugAsParams}
-                trackView
-              />
-            </Badge>
-          </li>
-          <li><Badge href={editUrl(post._raw.sourceFileName)} size={24} theme={`text`} iconStart={`github`}>Edit on Github</Badge></li>
-        </ul>
-      </section>
-      <section className="max-xl:hidden flex flex-col gap-2 max-xl:sticky max-xl:top-0 max-xl:left-0 max-xl:right-0" aria-labelledby="aside-contents">
-        <TableOfContents headings={post.headings} />
+    <aside aria-label="Table of contents and newsletter subscription form" className="max-xl:col-container xl:col-start-12 xl:row-start-1 xl:row-span-5 xl:col-span-3 xl:h-screen xl:overflow-y-scroll sticky max-xl:data-[state=open]:h-[calc(100dvh_-_128px)] z-10 top-0 bottom-0 xl:right-0 xl:py-12 xl:-mt-12 flex flex-col gap-12 xl:pb-16 xl:px-6 xl:-mx-6">
+      <section className="flex flex-col gap-2 relative" aria-labelledby="aside-contents">
+        {/* mobile contents */}
+        <div className="md:hidden" aria-hidden="true">
+          <TableOfContents headings={post.headings} />
+        </div>
+
+        {/* desktop contents */}
+        <div className="hidden md:block">
+          <TableOfContents headings={post.headings} open />
+        </div>
       </section>
       <section className="flex flex-col gap-2 pb-12 max-xl:fixed max-xl:hidden max-xl:top-0 max-xl:left-0 max-xl:right-0" aria-labelledby="aside-subscribe">
         <h2 className="font-bold" id="aside-subscribe">Subscribe</h2>

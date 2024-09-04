@@ -1,16 +1,15 @@
 .collapsible {
-  &[open] summary::marker {
-  }
-
-  summary::marker {
-    display: none;
-  }
-
-  ::-webkit-details-marker {
-    display: none;
-  }
+  // Add any styles you want for the container
 }
 
-.collapsible[open] summary {
+.tocContent {
+  overflow: hidden;
+}
 
+.open {
+  max-height: none;
+}
+
+.closed {
+  max-height: 0;
 }

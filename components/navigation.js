@@ -1,6 +1,6 @@
 'use client'
 import { useState, forwardRef } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import clsx from 'clsx'
 
@@ -30,7 +30,13 @@ const Toggle = () => {
 }
 
 const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <NavigationMenu.Root
       orientation="vertical"
@@ -40,53 +46,55 @@ const Navigation = () => {
         <NavigationMenu.Item className="flex nitem">
           <NavigationMenu.Trigger
             className="toggle-nav"
-            // https://github.com/radix-ui/primitives/issues/2043
             onPointerMove={(event) => event.preventDefault()}
             onPointerLeave={(event) => event.preventDefault()}
+            onClick={handleToggle}
           >
             <Toggle />
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content className="nav-content shadow-placed bg-white/90 backdrop-filter backdrop-contrast-200 backdrop-saturate-100 backdrop-blur flex flex-col rounded-lg relative z-[200] md:left-1/2 md:-translate-x-1/2 p-6 outline-none">
+          <NavigationMenu.Content
+            className={clsx(
+              "nav-content shadow-placed bg-white/90 backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg relative z-[200] md:left-1/2 md:-translate-x-1/2 p-6 outline-none",
+              "transition-all duration-300 ease-in-out",
+              isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+            )}
+          >
             <ul className="flex flex-col gap-2">
-              {navigation.map((link) => {
-                return (
-                  <ListItem
-                    href={link.href}
-                    key={link.href}
-                    className={`${
-                      pathname === link.href
-                        ? 'text-dandelion-500'
-                        : 'text-fern-1100'
-                    }`}
-                  >
-                    <Icon
-                      icon={link.icon}
-                      size={link.size}
-                      className={`relative -top-px ${
-                        pathname === link.href
-                          ? 'text-dandelion-500'
-                          : 'text-neutral-03-500'
-                      }`}
-                    />
-                    {link.title}
-                  </ListItem>
-                )
-              })}
+              {navigation.map((link, index) => (
+                <ListItem
+                  href={link.href}
+                  key={link.href}
+                  isOpen={isOpen}
+                  index={index}
+                  className={clsx(
+                    pathname === link.href ? 'text-dandelion-500' : 'text-fern-1100'
+                  )}
+                >
+                  <Icon
+                    icon={link.icon}
+                    size={link.size}
+                    className={clsx(
+                      "relative -top-px",
+                      pathname === link.href ? 'text-dandelion-500' : 'text-neutral-03-500'
+                    )}
+                  />
+                  {link.title}
+                </ListItem>
+              ))}
               <ListItem
                 href="/newsletter"
-                className={`${
-                  pathname === '/newsletter'
-                    ? 'text-dandelion-500'
-                    : 'text-fern-1100'
-                }`}
+                isOpen={isOpen}
+                index={navigation.length}
+                className={clsx(
+                  pathname === '/newsletter' ? 'text-dandelion-500' : 'text-fern-1100'
+                )}
               >
                 <Icon
                   icon="airplane"
-                  className={`relative -top-px ${
-                    pathname === '/newsletter'
-                      ? 'text-dandelion-500'
-                      : 'text-neutral-03-500'
-                  }`}
+                  className={clsx(
+                    "relative -top-px",
+                    pathname === '/newsletter' ? 'text-dandelion-500' : 'text-neutral-03-500'
+                  )}
                 />
                 Subscribe
               </ListItem>
@@ -100,15 +108,22 @@ const Navigation = () => {
 }
 
 const ListItem = forwardRef(
-  ({ className, children, title, ...props }, forwardedRef) => (
+  ({ className, children, isOpen, index, ...props }, forwardedRef) => (
     <li className="flex">
       <NavigationMenu.Link asChild>
         <a
-          className={`flex shrink-0 basis-full gap-4 py-2.5 rounded-sm px-4 text-2xl font-ui items-center lowercase ${className}`}
+          className={clsx(
+            "flex shrink-0 basis-full gap-4 py-2.5 rounded-sm px-4 text-2xl font-ui items-center lowercase",
+            "transition-all duration-300 ease-in-out",
+            className
+          )}
+          style={{
+            filter: `blur(${isOpen ? 0 : 8}px)`,
+            transitionDelay: `${isOpen ? index * 50 : 0}ms`,
+          }}
           {...props}
           ref={forwardedRef}
         >
-          {/* <div className="ListItemHeading">{title}</div> */}
           {children}
         </a>
       </NavigationMenu.Link>
@@ -117,55 +132,5 @@ const ListItem = forwardRef(
 )
 
 ListItem.displayName = 'ListItem'
-
-// const Navigation = () => {
-//   const router = useRouter()
-//   {
-//     /* <div className="mx-auto w-14 h-1 flex-shrink-0 rounded-full bg-neutral-01-900/10 mb-[2.25rem]" /> */
-//   }
-//   return (
-//     <NavigationMenu.Root orientation="vertical">
-//       <NavigationMenu.List className="shadow-placed bg-white/90 [backdrop-filter:blur(6px)] flex flex-col rounded-lg h-[auto] mt-24 fixed z-[200] bottom-4 left-4 right-4 max-w-md md:left-1/2 md:-translate-x-1/2 pt-2 outline-none data-[state=closed]:animate-[dialog-content-hide_200ms] data-[state=open]:animate-[dialog-content-show_200ms]">
-//         <NavigationMenu.Item>
-//           {navigation.map((link) => {
-//             return (
-//               <Item href={link.href} key={link.href}>
-//                 <Icon
-//                   icon={link.icon}
-//                   size={link.size}
-//                   className="text-neutral-03-500"
-//                 />
-//                 {link.title}
-//               </Item>
-//             )
-//           })}
-//           <NavigationMenu.Trigger className="NavigationMenuTrigger">
-//             <Toggle />
-//           </NavigationMenu.Trigger>
-//         </NavigationMenu.Item>
-//       </NavigationMenu.List>
-//     </NavigationMenu.Root>
-//   )
-// }
-
-// const Item = ({ href, children, ...props }) => {
-//   const router = useRouter()
-//   const pathname = usePathname()
-//   const isActive = router.asPath === href
-//
-//   return (
-//     <Link href={href} passHref legacyBehavior>
-//       <NavigationMenu.Link
-//         className={`flex gap-6 py-4 px-8 text-2xl font-ui items-center lowercase ${
-//           pathname === href ? 'text-red-500' : 'text-fern-1100'
-//         }`}
-//         active={isActive}
-//         {...props}
-//       >
-//         {children}
-//       </NavigationMenu.Link>
-//     </Link>
-//   )
-// }
 
 export { Navigation }

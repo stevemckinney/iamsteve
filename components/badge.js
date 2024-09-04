@@ -60,13 +60,13 @@ export default function Badge({
 }
 
 export function BadgeIcon({ icon, size, theme, className = 'badge' }) {
-  const small = 'w-6 h-6 flex-[0_0_auto]'
-  const large = 'w-8 h-8 flex-[0_0_auto]'
+  const small = 'w-6 h-6 flex-[0_0_auto] rounded-[.375rem]'
+  const large = 'w-8 h-8 flex-[0_0_auto] rounded-sm'
   const sizing = size === 16 ? small : large
 
   return (
     <span
-      className={`${sizing} bg-white group-active/badge:bg-neutral-01-50 shadow-reduced group-hover/badge:shadow-picked group-active/badge:shadow-reduced rounded-sm flex items-center justify-center transition-all duration-100 ease-linear ${className} ${defaultVariants[theme]}`}
+      className={`${sizing} bg-white group-active/badge:bg-neutral-01-50 shadow-reduced group-hover/badge:shadow-picked group-active/badge:shadow-reduced flex items-center justify-center transition-all duration-100 ease-linear ${className} ${defaultVariants[theme]}`}
     >
       <Icon className={`text-current`} icon={icon} size={size} />
     </span>

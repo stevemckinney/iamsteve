@@ -20,12 +20,6 @@ If I think back to the first time I saw a typeface with ink traps, it was [Retin
 
 I’ve wanted an opportunity to look at this particular style of type—as I’ve worked on my portfolio and I consider a redesign for this website. Within this post I’m going to detail the things to look for and a bunch of typefaces.
 
-## contents
-- [Overview](#what-details-are-you-looking-for)
-- [Fonts](#fonts)
-- [Google Fonts](#google-fonts)
-- [What’s the purpose of an ink trap](#whats-the-purpose-of-an-ink-trap)
-
 ## What details are you looking for?
 
 <div className="article-image">

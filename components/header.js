@@ -27,10 +27,11 @@ export default function Header() {
   return (
     <>
       <header
-        className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-[2]"
+        className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end sticky z-[200]"
         id="top"
       >
         <div className="absolute col-container lg:col-content -mx-8 h-[4px] top-1/2 -translate-y-1/2 right-0 left-0 bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 z-[-1]" aria-hidden="true" />
+        {/*bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150*/}
         <div className="col-container 2xl:col-content flex items-center align-center max-md:justify-between py-4 px-4 md:-mx-4 lg:py-[1.625rem] 2xl:py-9 2xl:px-8 2xl:-mx-8 max-md:-mx-4 max-2xl:gap-8">
           <Link
             href="/"

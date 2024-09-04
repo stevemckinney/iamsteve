@@ -1,76 +1,94 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react'
 import Icon from '@/components/icon'
-import styles from './table-of-contents.module.scss'
 
-function TableOfContents({ headings, ...props }) {
-  let [isOpen, setIsOpen] = useState(false);
-//className={`${styles.collapsible}`}
+function TableOfContents({ headings, open = false, ...props }) {
+  const [isOpen, setIsOpen] = useState(open)
+  const contentRef = useRef(null)
+
+  const toggleOpen = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
-    <details className={`${styles.collapsible}`} name="aside-toc" open>
-      <summary onClick={() => setIsOpen(!isOpen)} className="font-bold cursor-pointer flex flex-row items-center gap-1 pb-1" id="aside-contents">
-        {isOpen && (
-          <Icon icon="angle-right" size={16} className="relative -top-px -ml-5" />
-        )}
-        {!isOpen && (
-          <Icon icon="angle-down" size={16} className="relative -top-px -ml-5" />
-        )}
+    <div className="collapsible max-xl:data-[state=open]:bg-gradient-to-b max-xl:data-[state=open]:from-neutral-01-150 max-xl:data-[state=open]:to-neutral-01-150/0 max-xl:data-[state=open]:[mask-image:linear-gradient(180deg,_#000_0%,_#000_75%,_transparent_90%,_transparent_99%,_transparent_100%)] max-xl:data-[state=open]:backdrop-blur-md max-xl:-mx-6 max-xl:px-6" data-state={isOpen ? 'open' : 'closed'}>
+      <button
+        onClick={toggleOpen}
+        className="text-fern-1100 font-bold cursor-pointer flex flex-row items-center -ml-2 xl:-ml-6 pt-4 pb-3.5 w-full text-left"
+        aria-expanded={isOpen}
+        aria-controls="toc-content"
+      >
+        <span className="flex items-center justify-center w-6 h-6 relative top-[-2px]">
+          <Icon
+            icon={isOpen ? "caret-down" : "caret-right"}
+            size={16}
+            aria-hidden="true"
+          />
+        </span>
         Contents
-      </summary>
-      <TableOfContentsList headings={headings} />
-    </details>
+      </button>
+      <div
+        id="toc-content"
+        ref={contentRef}
+        className="data-[state=open]:h-screen data-[state=closed]:h-0 data-[state=closed]:overflow-hidden"
+        data-state={isOpen ? 'open' : 'closed'}
+        aria-hidden={!isOpen}
+      >
+        <TableOfContentsList headings={headings} />
+      </div>
+    </div>
   )
 }
 
 function TableOfContentsList({ headings, ...props }) {
-  const [activeId, setActiveId] = useState('');
+  const [activeId, setActiveId] = useState('')
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
+            setActiveId(entry.target.id)
           }
-        });
+        })
       },
-      { rootMargin: '0px 0px -20% 0px' }
-    );
+      { rootMargin: '0% 0% -25% 0%' }
+    )
 
     headings.forEach((heading) => {
-      const element = document.getElementById(heading.slug);
+      const element = document.getElementById(heading.slug)
       if (element) {
-        observer.observe(element);
+        observer.observe(element)
       }
-    });
+    })
 
-    return () => observer.disconnect();
-  }, [headings]);
+    return () => observer.disconnect()
+  }, [headings])
 
   const createNestedHeadings = (headings) => {
-    const nestedHeadings = [];
-    const headingStack = [];
+    const nestedHeadings = []
+    const headingStack = []
 
     headings.forEach((heading) => {
-      const { level, text, slug } = heading;
-      const linkMatch = text.match(/\[(.*?)\]\((.*?)\)/);
-      const linkText = linkMatch ? linkMatch[1] : text.replace(/<a.*?>(.*?)<\/a>/, '$1');
-      const linkUrl = linkMatch ? linkMatch[2] : '';
+      const { level, text, slug } = heading
+      const linkMatch = text.match(/\[(.*?)\]\((.*?)\)/)
+      const linkText = linkMatch ? linkMatch[1] : text.replace(/<a.*?>(.*?)<\/a>/, '$1')
+      const linkUrl = linkMatch ? linkMatch[2] : ''
 
       if (level === 'two') {
-        const newHeading = { level, text: linkText, slug, url: linkUrl, children: [] };
-        nestedHeadings.push(newHeading);
-        headingStack.push(newHeading);
+        const newHeading = { level, text: linkText, slug, url: linkUrl, children: [] }
+        nestedHeadings.push(newHeading)
+        headingStack.push(newHeading)
       } else if (level === 'three' && headingStack.length > 0) {
-        headingStack[headingStack.length - 1].children.push({ level, text: linkText, slug, url: linkUrl });
+        headingStack[headingStack.length - 1].children.push({ level, text: linkText, slug, url: linkUrl })
       }
-    });
+    })
 
-    return nestedHeadings;
-  };
+    return nestedHeadings
+  }
 
-  const renderHeadings = (headings, className = 'pb-0', classChildren = 'pb-0') => {
+  const renderHeadings = (headings, className = 'pt-1', classChildren = 'pb-0') => {
     return (
       <ul className={className}>
         {headings.map((heading) => (
@@ -78,6 +96,8 @@ function TableOfContentsList({ headings, ...props }) {
             <a
               href={`#${heading.slug}`}
               className={`block truncate font-medium py-1.5 hover:text-fern-600 hover:translate-x-2 transform-gpu transition-all duration-200 ease ${activeId === heading.slug ? 'text-fern-600' : ''}`}
+              aria-current={activeId === heading.slug ? 'location' : undefined}
+              aria-label={`Go to section: ${heading.text}`}
             >
               {heading.text}
             </a>
@@ -91,18 +111,16 @@ function TableOfContentsList({ headings, ...props }) {
           </li>
         ))}
       </ul>
-    );
-  };
+    )
+  }
 
-  const nestedHeadings = createNestedHeadings(headings);
+  const nestedHeadings = createNestedHeadings(headings)
 
   return (
-    <nav {...props}>
+    <nav aria-labelledby="aside-contents" {...props}>
       {nestedHeadings.length > 0 ? renderHeadings(nestedHeadings) : null}
     </nav>
-  );
+  )
 }
 
-
-
-export default TableOfContents;
+export default TableOfContents
