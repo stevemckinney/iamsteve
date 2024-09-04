@@ -31,7 +31,7 @@ function TableOfContents({ headings, open = false, ...props }) {
       <div
         id="toc-content"
         ref={contentRef}
-        className="data-[state=open]:h-screen data-[state=closed]:h-0 data-[state=closed]:overflow-hidden"
+        className="max-xl:data-[state=open]:h-[calc(100dvh_-_128px)] data-[state=closed]:h-0 data-[state=closed]:overflow-hidden"
         data-state={isOpen ? 'open' : 'closed'}
         aria-hidden={!isOpen}
       >

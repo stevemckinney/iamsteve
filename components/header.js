@@ -47,7 +47,12 @@ export default function Header() {
               className="xl:hidden"
             />
           </Link>
-          <nav className={`${nav} ${tabbarNav}`}>
+          <ul role="list" id="accessibility-links" class="text-center bg-black text-white underline text-2xl sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0">
+            <li><a href="#article">Skip to article</a></li>
+            <li><a href="#content">Skip to main content</a></li>
+            <li><a href="#nav">Skip to nav</a></li>
+          </ul>
+          <nav className={`${nav} ${tabbarNav}`} id="nav">
             {navigation.map((link) => {
               return (
                 <Link

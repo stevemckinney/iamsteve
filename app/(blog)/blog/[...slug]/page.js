@@ -202,6 +202,7 @@ export default async function PostPage({ params }) {
         </header>
         <div
           className={`${styles.prose} prose grid grid-cols-subgrid col-prose xl:col-span-10 gap-x-8 gap-y-0`}
+          id="article"
         >
           <PostImage post={post} />
           <PostMdx code={post.body.code} />
@@ -346,7 +347,7 @@ export function Support() {
 
 export function Sidebar({ allViews, post }) {
   return (
-    <aside aria-label="Table of contents and newsletter subscription form" className="max-xl:col-container xl:col-start-12 xl:row-start-1 xl:row-span-5 xl:col-span-3 xl:h-screen xl:overflow-y-scroll sticky max-xl:data-[state=open]:h-[calc(100dvh_-_128px)] z-10 top-0 bottom-0 xl:right-0 xl:py-12 xl:-mt-12 flex flex-col gap-12 xl:pb-16 xl:px-6 xl:-mx-6">
+    <aside aria-label="Table of contents and newsletter subscription form" className="max-xl:col-container xl:col-start-12 xl:row-start-1 xl:row-span-5 xl:col-span-3 xl:h-screen xl:overflow-y-scroll sticky z-10 top-0 bottom-0 xl:right-0 xl:py-12 xl:-mt-12 flex flex-col gap-12 xl:pb-16 xl:px-6 xl:-mx-6">
       <section className="flex flex-col gap-2 relative" aria-labelledby="aside-contents">
         {/* mobile contents */}
         <div className="md:hidden" aria-hidden="true">

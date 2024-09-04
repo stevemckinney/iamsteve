@@ -64,7 +64,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <main className="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18">
+      <main className="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18" id="content">
         <Frame id="latest">
           <Title
             link="/blog"
