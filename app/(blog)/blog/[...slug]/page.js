@@ -163,7 +163,7 @@ export default async function PostPage({ params }) {
               </div>
             </div>
           )}
-          <Badge size={16} theme={`text`} iconStart={`calendar`}>
+          <Badge size={16} theme={`cornflour`} iconStart={`calendar`}>
             <time dateTime={post.date} className={`date`}>
               {format(date, 'do LLL yyyy')}
             </time>
@@ -191,7 +191,7 @@ export default async function PostPage({ params }) {
                   )
                 })}
             </div>
-            <Badge size={16} theme={`text`} iconStart={`views`}>
+            <Badge size={16} theme={`lavender`} iconStart={`views`}>
               <ViewCounter
                 allViews={allViews}
                 slug={post.slugAsParams}

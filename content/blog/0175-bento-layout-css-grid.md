@@ -27,9 +27,9 @@ For this example masonry isn’t required—but it’s something I would like to
 ## The bento design
 The design showcases a rough idea of an app I wish existed. Each section displays a different feature with larger sections having an illustration of the feature.
 
-<figure className="prose-exclude grid grid-cols-subgrid col-content">
+<figure className="prose-exclude flex flex-col gap-2 col-content">
 <Demo src="https://stevemckinney.github.io/bento-grid/option-1.html" />
-<figcaption className="col-span-8">A compact grid showing 6 features of a fictional app. Layout will vary based on your device. This is a live demo.</figcaption>
+<figcaption>A compact grid showing 6 features of a fictional app. Layout will vary based on your device. This is a live demo.</figcaption>
 </figure>
 
 ### Considerations
