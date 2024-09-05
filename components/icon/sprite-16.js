@@ -423,12 +423,12 @@ const Sprite16 = (props) => (
         </g>
       </symbol>
       <svg id="type-16" viewBox="0 0 16 16">
-        <g class="type">
-          <path d="M3 3h10" class="fill-none stroke-current stroke-2 sl-r"/>
-          <path d="M8 3v9" class="fill-none stroke-current stroke-2 sl-r"/>
-          <path d="M3 3v3" class="fill-none stroke-current stroke-2 sl-r"/>
-          <path d="M13 6V3" class="fill-none stroke-current stroke-2 sl-r"/>
-          <path d="M6 13h4" class="fill-none stroke-current stroke-2 sl-s"/>
+        <g className="type">
+          <path d="M3 3h10" className="fill-none stroke-current stroke-2 sl-r"/>
+          <path d="M8 3v9" className="fill-none stroke-current stroke-2 sl-r"/>
+          <path d="M3 3v3" className="fill-none stroke-current stroke-2 sl-r"/>
+          <path d="M13 6V3" className="fill-none stroke-current stroke-2 sl-r"/>
+          <path d="M6 13h4" className="fill-none stroke-current stroke-2 sl-s"/>
         </g>
       </svg>
       <symbol id="pen-16" viewBox="0 0 16 16">
