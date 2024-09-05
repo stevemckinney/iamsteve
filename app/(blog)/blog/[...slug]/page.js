@@ -145,10 +145,10 @@ export default async function PostPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
       <article className={`grid col-container grid-cols-subgrid relative`}>
-        <hr className="col-container md:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <hr className="col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <Sidebar allViews={allViews} post={post} />
-        <hr className="col-container md:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
-        <header className="col-container xl:col-start-3 xl:col-end-11 xl:row-start-1 lg:row-span-1 flex flex-col max-sm:pt-12 gap-y-4 mb-12">
+        <hr className="col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <header className="col-content lg:col-container lg:col-start-2 lg:col-end-9 xl:col-start-3 xl:col-end-11 lg:row-start-1 lg:row-span-1 flex flex-col max-lg:pt-12 gap-y-4 mb-12">
           {isOldCodePost && (
             <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
               <Icon
@@ -201,7 +201,7 @@ export default async function PostPage({ params }) {
           </div>
         </header>
         <div
-          className={`${styles.prose} prose grid grid-cols-subgrid col-prose xl:col-span-10 gap-x-8 gap-y-0`}
+          className={`${styles.prose} prose grid grid-cols-subgrid col-container lg:col-span-8 xl:col-span-10 gap-x-8 gap-y-0`}
           id="article"
         >
           <PostImage post={post} />
@@ -247,12 +247,12 @@ export async function NextPost({ id }) {
 export function NextPosts({ post }) {
   return (
     <aside
-      className={`xl:row-span-1 col-content lg:col-start-3 lg:col-span-8 flex flex-col gap-4 md:-mx-8`}
+      className={`xl:row-span-1 col-content lg:col-start-3 lg:col-span-8 flex flex-col gap-4 lg:-mx-8`}
     >
-      <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 md:px-8">
+      <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 lg:px-8">
         Next to read
       </h2>
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-2 gap-8">
         <Card
           size="medium"
           image={false}
@@ -322,7 +322,7 @@ export function PostImage({ post }) {
 
 export function Support() {
   return (
-    <aside className="xl:row-span-1 bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 md:-mx-8 col-content xl:col-start-3 xl:col-span-8">
+    <aside className="xl:row-span-1 bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content xl:col-start-3 xl:col-span-8">
       <p className="p-0 m-0 text-base text-ui-body flex flex-col">
         <strong className="text-fern-1100 font-bold">
           Enjoying the reading experience?
@@ -347,19 +347,19 @@ export function Support() {
 
 export function Sidebar({ allViews, post }) {
   return (
-    <aside aria-label="Table of contents and newsletter subscription form" className="max-xl:col-container xl:col-start-12 xl:row-start-1 xl:row-span-5 xl:col-span-3 xl:h-screen xl:overflow-y-scroll sticky z-10 top-0 bottom-0 xl:right-0 xl:py-12 xl:-mt-12 flex flex-col gap-12 xl:pb-16 xl:px-6 xl:-mx-6">
+    <aside aria-label="Table of contents and newsletter subscription form" className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col gap-12 lg:pb-16 lg:px-6 lg:-mx-6">
       <section className="flex flex-col gap-2 relative" aria-labelledby="aside-contents">
         {/* mobile contents */}
-        <div className="md:hidden" aria-hidden="true">
+        <div className="lg:hidden" aria-hidden="true">
           <TableOfContents headings={post.headings} />
         </div>
 
         {/* desktop contents */}
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <TableOfContents headings={post.headings} open />
         </div>
       </section>
-      <section className="flex flex-col gap-2 pb-12 max-xl:fixed max-xl:hidden max-xl:top-0 max-xl:left-0 max-xl:right-0" aria-labelledby="aside-subscribe">
+      <section className="flex flex-col gap-2 pb-12 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0" aria-labelledby="aside-subscribe">
         <h2 className="font-bold" id="aside-subscribe">Subscribe</h2>
         <p className="mb-4">Get notified you when the latest posts go out. Unsubscribe anytime.</p>
         <NewsletterForm />

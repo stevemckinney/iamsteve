@@ -15,14 +15,14 @@ import styles from './header.module.scss'
 
 export default function Header() {
   const pathname = usePathname()
-  const nav = `flex flex-[1_0_auto] md:gap-8 2xl:gap-12 xl:justify-center`
-  const tabbarNav = `max-md:px-4 max-md:bg-white/90 max-md:shadow-placed max-md:justify-between max-md:fixed max-md:left-0 max-md:right-0 max-md:bottom-0 max-md:z-[100] max-md:backdrop-blur max-md:backdrop-brightness-100 max-md:backdrop-saturate-150`
+  const nav = `flex flex-[1_0_auto] lg:gap-8 2xl:gap-12 xl:justify-center`
+  const tabbarNav = `max-lg:px-4 max-lg:bg-white/90 max-lg:shadow-placed max-lg:justify-between max-lg:fixed max-lg:left-0 max-lg:right-0 max-lg:bottom-0 max-lg:z-[100] max-lg:backdrop-blur max-lg:backdrop-brightness-100 max-lg:backdrop-saturate-150`
 
   // Some styles exist in the header.module to handle safe-area
   const navLink = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
-  const compactHorizontalNavLink = `md:bg-neutral-01-500/10 md:rounded-full lg:pl-10 lg:pr-1 md:relative`
-  const horizontalNavLink = `md:gap-2 md:text-base lg:text-xl/none md:py-1 xl:py-0.5`
-  const tabbarNavLink = `max-md:text-[12px] max-md:flex-col max-md:flex-1 max-md:justify-center max-md:pt-2`
+  const compactHorizontalNavLink = `lg:bg-neutral-01-500/10 lg:rounded-full lg:pl-10 lg:pr-1 lg:relative`
+  const horizontalNavLink = `lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5`
+  const tabbarNavLink = `max-lg:text-[12px] max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:pt-2`
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function Header() {
       >
         <div className="absolute col-container lg:col-content -mx-8 h-[4px] top-1/2 -translate-y-1/2 right-0 left-0 bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 z-[-1]" aria-hidden="true" />
         {/*bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150*/}
-        <div className="col-container 2xl:col-content flex items-center align-center max-md:justify-between py-4 px-4 md:-mx-4 lg:py-[1.625rem] 2xl:py-9 2xl:px-8 2xl:-mx-8 max-md:-mx-4 max-2xl:gap-8">
+        <div className="col-container 2xl:col-content flex items-center align-center max-lg:justify-between py-4 px-4 lg:-mx-4 lg:py-[1.625rem] 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 max-2xl:gap-8">
           <Link
             href="/"
             className="flex-[1_0_10%]"
@@ -47,7 +47,7 @@ export default function Header() {
               className="xl:hidden"
             />
           </Link>
-          <ul role="list" id="accessibility-links" class="text-center bg-black text-white underline text-2xl sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0">
+          <ul role="list" id="accessibility-links" className="text-center bg-black text-white underline text-2xl sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0">
             <li><a href="#article">Skip to article</a></li>
             <li><a href="#content">Skip to main content</a></li>
             <li><a href="#nav">Skip to nav</a></li>
@@ -58,11 +58,11 @@ export default function Header() {
                 <Link
                   href={link.href}
                   className={`${navLink} ${
-                    link.title === 'Home' ? 'md:hidden' : ''
-                  } ${link.title === 'Contact' ? 'max-md:hidden' : ''} ${
+                    link.title === 'Home' ? 'lg:hidden' : ''
+                  } ${link.title === 'Contact' ? 'max-lg:hidden' : ''} ${
                     styles.vertical
                   } ${tabbarNavLink} ${horizontalNavLink} ${styles.start} ${
-                    pathname === link.href ? 'max-md:text-dandelion-500' : ''
+                    pathname === link.href ? 'max-lg:text-dandelion-500' : ''
                   }`}
                   key={link.href}
                 >
@@ -81,7 +81,7 @@ export default function Header() {
               )
             })}
           </nav>
-          <div className="flex-[1_0_10%] flex justify-end max-md:hidden">
+          <div className="flex-[1_0_10%] flex justify-end max-lg:hidden">
             <Link
               href="/newsletter"
               className={`${navLink} ${horizontalNavLink} ${styles.end}`}

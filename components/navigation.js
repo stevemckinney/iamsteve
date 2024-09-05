@@ -40,7 +40,7 @@ const Navigation = () => {
   return (
     <NavigationMenu.Root
       orientation="vertical"
-      className="flex nroot md:hidden"
+      className="flex nroot lg:hidden"
     >
       <NavigationMenu.List className="flex nlist">
         <NavigationMenu.Item className="flex nitem">
@@ -54,7 +54,7 @@ const Navigation = () => {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content
             className={clsx(
-              "nav-content shadow-placed bg-white/90 backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg relative z-[200] md:left-1/2 md:-translate-x-1/2 p-6 outline-none",
+              "nav-content shadow-placed bg-white/90 backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg relative z-[200] lg:left-1/2 lg:-translate-x-1/2 p-6 outline-none",
               "transition-all duration-300 ease-in-out",
               isOpen ? "opacity-100 visible" : "opacity-0 invisible"
             )}

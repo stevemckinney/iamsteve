@@ -12,7 +12,7 @@ function TableOfContents({ headings, open = false, ...props }) {
   }
 
   return (
-    <div className="collapsible max-xl:data-[state=open]:bg-gradient-to-b max-xl:data-[state=open]:from-neutral-01-150 max-xl:data-[state=open]:to-neutral-01-150/0 max-xl:data-[state=open]:[mask-image:linear-gradient(180deg,_#000_0%,_#000_75%,_transparent_90%,_transparent_99%,_transparent_100%)] max-xl:data-[state=open]:backdrop-blur-md max-xl:-mx-6 max-xl:px-6" data-state={isOpen ? 'open' : 'closed'}>
+    <div className="collapsible max-lg:data-[state=open]:bg-gradient-to-b max-lg:data-[state=open]:from-neutral-01-150 max-lg:data-[state=open]:to-neutral-01-150/0 max-lg:data-[state=open]:[mask-image:linear-gradient(180deg,_#000_0%,_#000_75%,_transparent_90%,_transparent_99%,_transparent_100%)] max-lg:data-[state=open]:backdrop-blur-md max-lg:-mx-6 max-lg:px-6" data-state={isOpen ? 'open' : 'closed'}>
       <button
         onClick={toggleOpen}
         className="text-fern-1100 font-bold cursor-pointer flex flex-row items-center -ml-2 xl:-ml-6 pt-4 pb-3.5 w-full text-left"
@@ -31,7 +31,7 @@ function TableOfContents({ headings, open = false, ...props }) {
       <div
         id="toc-content"
         ref={contentRef}
-        className="max-xl:data-[state=open]:h-[calc(100dvh_-_128px)] data-[state=closed]:h-0 data-[state=closed]:overflow-hidden"
+        className="max-lg:data-[state=open]:h-[calc(100dvh_-_128px)] data-[state=closed]:h-0 data-[state=closed]:overflow-hidden"
         data-state={isOpen ? 'open' : 'closed'}
         aria-hidden={!isOpen}
       >
