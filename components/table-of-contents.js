@@ -13,7 +13,7 @@ function TableOfContents({ headings, open = false, ...props }) {
 
   return (
     <div
-      className="collapsible isolate max-lg:before:isolate max-lg:data-[state=open]:bg-gradient-to-b max-lg:data-[state=open]:from-neutral-01-150 max-lg:data-[state=open]:to-neutral-01-150/60 max-lg:before:content-[''] max-lg:before:absolute max-lg:before:top-0 max-lg:before:-left-6 max-lg:before:-right-6 max-lg:before:h-[72px] max-lg:before:[mask-image:linear-gradient(180deg,_#000_0%,_#000_50%,_transparent_80%,_transparent_99%,_transparent_100%)] max-lg:before:bg-neutral-01-150/60 max-lg:before:backdrop-blur-md max-lg:before:z-[0] max-lg:data-[state=open]:h-[calc(100dvh_-_96px)] max-lg:data-[state=open]:backdrop-blur-md max-lg:-mx-6 max-lg:px-6"
+      className="collapsible isolate max-lg:before:isolate max-lg:data-[state=open]:bg-gradient-to-b max-lg:data-[state=open]:from-neutral-01-150 max-lg:data-[state=open]:to-neutral-01-150/60 max-lg:before:content-[''] max-lg:before:absolute max-lg:before:top-0 max-lg:before:-left-6 max-lg:before:-right-6 max-lg:before:h-[72px] max-lg:before:[mask-image:linear-gradient(180deg,_#000_0%,_#000_50%,_transparent_80%,_transparent_99%,_transparent_100%)] max-lg:before:bg-neutral-01-150/60 max-lg:before:backdrop-blur-md max-lg:before:z-[0] max-lg:data-[state=open]:h-[100dvh] max-lg:data-[state=open]:overflow-y-auto max-lg:data-[state=open]:backdrop-blur-md max-lg:-mx-6 max-lg:px-6"
       data-state={isOpen ? 'open' : 'closed'}
     >
       <button
