@@ -34,7 +34,8 @@ import NewsletterForm from '@/components/newsletter-form'
 import getAllPageViews from '../views'
 import ViewCounter from '../counter'
 
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/main/content/blog/${fileName}`
+const editUrl = (fileName) =>
+  `${siteMetadata.siteRepo}/blob/main/content/blog/${fileName}`
 
 // force to revalidate every day
 export const dynamic = 'force-static'
@@ -145,9 +146,9 @@ export default async function PostPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
       <article className={`grid col-container grid-cols-subgrid relative`}>
-        <hr className="col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <span className="relative row-span-1 z-[11] col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <Sidebar allViews={allViews} post={post} />
-        <hr className="col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <span className="relative z-[11] col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <header className="col-content lg:col-container lg:col-start-2 lg:col-end-9 xl:col-start-3 xl:col-end-11 lg:row-start-1 lg:row-span-1 flex flex-col max-lg:pt-12 gap-y-4 mb-12">
           {isOldCodePost && (
             <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
@@ -156,9 +157,15 @@ export default async function PostPage({ params }) {
                 className="text-cornflour-900 flex-[0_0_auto]"
               />
               <div className="flex flex-col">
-                <p className="p-0 m-0 font-body text-sm text-cornflour-900"><strong>This post was published {yearsAgo} {yearsAgo === 1 ? 'year' : 'years'} ago</strong></p>
                 <p className="p-0 m-0 font-body text-sm text-cornflour-900">
-                  There’s a chance things are out of date or no longer reflect my views today
+                  <strong>
+                    This post was published {yearsAgo}{' '}
+                    {yearsAgo === 1 ? 'year' : 'years'} ago
+                  </strong>
+                </p>
+                <p className="p-0 m-0 font-body text-sm text-cornflour-900">
+                  There’s a chance things are out of date or no longer reflect
+                  my views today
                 </p>
               </div>
             </div>
@@ -206,7 +213,14 @@ export default async function PostPage({ params }) {
         >
           <PostImage post={post} />
           <PostMdx code={post.body.code} />
-          <Badge href={editUrl(post._raw.sourceFileName)} size={16} theme={`text`} iconStart={`github`}>View on Github</Badge>
+          <Badge
+            href={editUrl(post._raw.sourceFileName)}
+            size={16}
+            theme={`text`}
+            iconStart={`github`}
+          >
+            View on Github
+          </Badge>
         </div>
       </article>
       <Support />
@@ -347,8 +361,14 @@ export function Support() {
 
 export function Sidebar({ allViews, post }) {
   return (
-    <aside aria-label="Table of contents and newsletter subscription form" className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col gap-12 lg:pb-16 lg:px-6 lg:-mx-6">
-      <section className="flex flex-col gap-2 relative" aria-labelledby="aside-contents">
+    <aside
+      aria-label="Table of contents and newsletter subscription form"
+      className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col gap-12 lg:pb-16 lg:px-6 lg:-mx-6 lg:[mask-image:linear-gradient(180deg,transparent,_#000_64px,#000_calc(100%_-_10vh),_transparent)]"
+    >
+      <section
+        className="flex flex-col gap-2 relative"
+        aria-labelledby="aside-contents"
+      >
         {/* mobile contents */}
         <div className="lg:hidden" aria-hidden="true">
           <TableOfContents headings={post.headings} />
@@ -359,9 +379,16 @@ export function Sidebar({ allViews, post }) {
           <TableOfContents headings={post.headings} open />
         </div>
       </section>
-      <section className="flex flex-col gap-2 pb-12 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0" aria-labelledby="aside-subscribe">
-        <h2 className="font-bold" id="aside-subscribe">Subscribe</h2>
-        <p className="mb-4">Get notified you when the latest posts go out. Unsubscribe anytime.</p>
+      <section
+        className="flex flex-col gap-2 pb-12 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0"
+        aria-labelledby="aside-subscribe"
+      >
+        <h2 className="font-bold" id="aside-subscribe">
+          Subscribe
+        </h2>
+        <p className="mb-4">
+          Get notified you when the latest posts go out. Unsubscribe anytime.
+        </p>
         <NewsletterForm />
       </section>
     </aside>
