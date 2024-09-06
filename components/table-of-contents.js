@@ -13,12 +13,12 @@ function TableOfContents({ headings, open = false, ...props }) {
 
   return (
     <div
-      className="collapsible isolate max-lg:before:isolate max-lg:data-[state=open]:bg-gradient-to-b max-lg:data-[state=open]:from-neutral-01-150 max-lg:data-[state=open]:to-neutral-01-150/60 max-lg:before:content-[''] max-lg:before:absolute max-lg:before:top-0 max-lg:before:-left-6 max-lg:before:-right-6 max-lg:before:h-[72px] max-lg:before:[mask-image:linear-gradient(180deg,_#000_0%,_#000_50%,_transparent_80%,_transparent_99%,_transparent_100%)] max-lg:before:bg-neutral-01-150/60 max-lg:before:backdrop-blur-md max-lg:before:z-[0] max-lg:data-[state=open]:h-[100dvh] max-lg:data-[state=open]:overflow-y-auto max-lg:data-[state=open]:backdrop-blur-md max-lg:-mx-6 max-lg:px-6"
+      className="collapsible isolate max-lg:before:isolate max-lg:data-[state=open]:bg-gradient-to-b max-lg:data-[state=open]:from-neutral-01-150 max-lg:data-[state=open]:to-neutral-01-150/60 max-lg:before:content-[''] max-lg:before:absolute max-lg:before:top-0 max-lg:before:-left-6 max-lg:before:-right-6 max-lg:before:h-[72px] max-lg:before:[mask-image:linear-gradient(180deg,_#000_0%,_#000_50%,_transparent_80%,_transparent_99%,_transparent_100%)] max-lg:before:bg-neutral-01-150/60 max-lg:before:backdrop-blur-md max-lg:before:z-[0] max-lg:data-[state=open]:h-[100dvh] max-lg:data-[state=open]:overflow-x-hidden max-lg:data-[state=open]:overflow-y-auto max-lg:data-[state=open]:backdrop-blur-md max-lg:-mx-6 max-lg:px-6"
       data-state={isOpen ? 'open' : 'closed'}
     >
       <button
         onClick={toggleOpen}
-        className="relative z-10 text-fern-1100 font-bold cursor-pointer flex flex-row items-center -ml-2 xl:-ml-6 w-full text-left leading-[3.5rem]"
+        className="sticky top-0 z-10 text-fern-1100 font-bold cursor-pointer flex flex-row items-center -ml-2 xl:-ml-6 w-full text-left leading-[3.5rem]"
         aria-expanded={isOpen}
         aria-controls="toc-content"
       >
@@ -132,7 +132,7 @@ function TableOfContentsList({ headings, ...props }) {
               renderHeadings(
                 heading.children,
                 `pt-1`,
-                `relative pl-6 before:content-[''] before:absolute before:left-0 before:top-[-6px] before:w-4 before:h-6 before:border-l-2 before:border-b-2 before:border-neutral-01-300 last:before:rounded-bl-sm after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-4 after:h-6 after:border-l-2 after:border-neutral-01-300 last:after:hidden hover:before:w-6 before:transition-all before:duration-200 before:ease`
+                `relative pl-6 before:content-[''] before:absolute before:left-0 before:top-[-6px] before:w-4 before:h-6 before:border-l-2 before:border-b-2 before:border-neutral-01-300 last:before:rounded-bl-sm after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-4 after:h-6 after:border-l-2 after:border-neutral-01-600/50 last:after:hidden hover:before:w-6 before:transition-all before:duration-200 before:ease`
               )}
           </li>
         ))}
