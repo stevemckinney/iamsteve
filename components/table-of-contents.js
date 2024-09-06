@@ -132,7 +132,7 @@ function TableOfContentsList({ headings, ...props }) {
               renderHeadings(
                 heading.children,
                 `pt-1`,
-                `relative pl-6 before:content-[''] before:absolute before:left-0 before:top-[-6px] before:w-4 before:h-6 before:border-l-2 before:border-b-2 before:border-neutral-01-300 last:before:rounded-bl-sm after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-4 after:h-6 after:border-l-2 after:border-neutral-01-600/50 last:after:hidden hover:before:w-6 before:transition-all before:duration-200 before:ease`
+                `relative pl-6 before:content-[''] before:absolute before:left-0 before:top-[-6px] before:w-4 before:h-6 before:border-l-2 before:border-b-2 before:border-neutral-01-600/50 last:before:rounded-bl-sm after:content-[''] after:absolute after:left-px after:-bottom-1 after:w-4 after:h-6 after:border-l-2 after:border-neutral-01-600/50 last:after:hidden hover:before:w-6 before:transition-all before:duration-200 before:ease`
               )}
           </li>
         ))}
