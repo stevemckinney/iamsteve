@@ -8,7 +8,10 @@ export default function Hero() {
       className={`mb-10 md:mb-18 max-lg:grid max-lg:grid-cols-subgrid col-start-container-start col-end-container-end place-items-center flex flex-col items-center relative frame frame-24 2xl:frame-40 2xl:frame-outset-top py-12 lg:pt-18 2xl:pt-10 lg:pb-[5.5rem] gap-y-4 max-lg:px-4`}
       aria-labelledby="hero-title"
     >
-      <h1 id="hero-title" className="max-lg:col-content text-fern-1100 font-display text-3xl xs:text-5xl lg:text-7xl col-start-7 col-end-12 font-variation-bold lg:font-variation-extrabold lowercase text-center max-w-[13ch]">
+      <h1
+        id="hero-title"
+        className="max-lg:col-content text-fern-1100 font-display text-3xl xs:text-5xl lg:text-7xl col-start-7 col-end-12 font-variation-bold lg:font-variation-extrabold lowercase text-center max-w-[13ch]"
+      >
         Exploring web design craft
       </h1>
       <p className="max-lg:col-content text-sm xs:text-base lg:text-2xl text-ui-body text-center max-w-[30ch]">

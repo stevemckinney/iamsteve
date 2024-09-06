@@ -30,7 +30,10 @@ export default function Header() {
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end sticky z-[200]"
         id="top"
       >
-        <div className="absolute col-container lg:col-content -mx-8 h-[4px] top-1/2 -translate-y-1/2 right-0 left-0 bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 z-[-1]" aria-hidden="true" />
+        <div
+          className="absolute col-container lg:col-content -mx-8 h-[4px] top-1/2 -translate-y-1/2 right-0 left-0 bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 z-[-1]"
+          aria-hidden="true"
+        />
         {/*bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150*/}
         <div className="col-container 2xl:col-content flex items-center align-center max-lg:justify-between py-4 px-4 lg:-mx-4 lg:py-[1.625rem] 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 max-2xl:gap-8">
           <Link
@@ -47,10 +50,20 @@ export default function Header() {
               className="xl:hidden"
             />
           </Link>
-          <ul role="list" id="accessibility-links" className="text-center bg-black text-white underline text-2xl sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0">
-            <li><a href="#article">Skip to article</a></li>
-            <li><a href="#content">Skip to main content</a></li>
-            <li><a href="#nav">Skip to nav</a></li>
+          <ul
+            role="list"
+            id="accessibility-links"
+            className="text-center bg-black text-white underline text-2xl sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0"
+          >
+            <li>
+              <a href="#article">Skip to article</a>
+            </li>
+            <li>
+              <a href="#content">Skip to main content</a>
+            </li>
+            <li>
+              <a href="#nav">Skip to nav</a>
+            </li>
           </ul>
           <nav className={`${nav} ${tabbarNav}`} id="nav">
             {navigation.map((link) => {

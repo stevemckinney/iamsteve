@@ -54,9 +54,9 @@ const Navigation = () => {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content
             className={clsx(
-              "nav-content shadow-placed bg-white/90 backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg relative z-[200] lg:left-1/2 lg:-translate-x-1/2 p-6 outline-none",
-              "transition-all duration-300 ease-in-out",
-              isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+              'nav-content shadow-placed bg-white/90 backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg relative z-[200] lg:left-1/2 lg:-translate-x-1/2 p-6 outline-none',
+              'transition-all duration-300 ease-in-out',
+              isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
             )}
           >
             <ul className="flex flex-col gap-2">
@@ -67,15 +67,19 @@ const Navigation = () => {
                   isOpen={isOpen}
                   index={index}
                   className={clsx(
-                    pathname === link.href ? 'text-dandelion-500' : 'text-fern-1100'
+                    pathname === link.href
+                      ? 'text-dandelion-500'
+                      : 'text-fern-1100'
                   )}
                 >
                   <Icon
                     icon={link.icon}
                     size={link.size}
                     className={clsx(
-                      "relative -top-px",
-                      pathname === link.href ? 'text-dandelion-500' : 'text-neutral-03-500'
+                      'relative -top-px',
+                      pathname === link.href
+                        ? 'text-dandelion-500'
+                        : 'text-neutral-03-500'
                     )}
                   />
                   {link.title}
@@ -86,14 +90,18 @@ const Navigation = () => {
                 isOpen={isOpen}
                 index={navigation.length}
                 className={clsx(
-                  pathname === '/newsletter' ? 'text-dandelion-500' : 'text-fern-1100'
+                  pathname === '/newsletter'
+                    ? 'text-dandelion-500'
+                    : 'text-fern-1100'
                 )}
               >
                 <Icon
                   icon="airplane"
                   className={clsx(
-                    "relative -top-px",
-                    pathname === '/newsletter' ? 'text-dandelion-500' : 'text-neutral-03-500'
+                    'relative -top-px',
+                    pathname === '/newsletter'
+                      ? 'text-dandelion-500'
+                      : 'text-neutral-03-500'
                   )}
                 />
                 Subscribe
@@ -113,8 +121,8 @@ const ListItem = forwardRef(
       <NavigationMenu.Link asChild>
         <a
           className={clsx(
-            "flex shrink-0 basis-full gap-4 py-2.5 rounded-sm px-4 text-2xl font-ui items-center lowercase",
-            "transition-all duration-300 ease-in-out",
+            'flex shrink-0 basis-full gap-4 py-2.5 rounded-sm px-4 text-2xl font-ui items-center lowercase',
+            'transition-all duration-300 ease-in-out',
             className
           )}
           style={{

@@ -7,7 +7,6 @@ import {
   getYear,
 } from 'date-fns'
 
-
 export function postYear(dateString) {
   const date = parseISO(dateString)
 

@@ -892,22 +892,34 @@ const Sprite24 = (props) => (
       </symbol>
       <symbol id="caret-right-24" viewBox="0 0 24 24">
         <g className="caret-right">
-          <path d="m17 15-5-8-5 8h10Z" className="fill-white stroke-current stroke-2 sl-r"/>
+          <path
+            d="m17 15-5-8-5 8h10Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
       <symbol id="caret-up-24" viewBox="0 0 24 24">
         <g className="caret-up">
-          <path d="m17 15-5-8-5 8h10Z" className="fill-white stroke-current stroke-2 sl-r"/>
+          <path
+            d="m17 15-5-8-5 8h10Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
       <symbol id="caret-left-24" viewBox="0 0 24 24">
         <g className="caret-left">
-          <path d="m15 7-8 5 8 5V7Z" className="fill-white stroke-current stroke-2 sl-r"/>
+          <path
+            d="m15 7-8 5 8 5V7Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
       <symbol id="caret-down-24" viewBox="0 0 24 24">
         <g className="caret-down">
-          <path d="m17 9-5 8-5-8h10Z" className="fill-white stroke-current stroke-2 sl-r"/>
+          <path
+            d="m17 9-5 8-5-8h10Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
     </defs>

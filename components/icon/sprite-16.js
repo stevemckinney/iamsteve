@@ -424,11 +424,20 @@ const Sprite16 = (props) => (
       </symbol>
       <svg id="type-16" viewBox="0 0 16 16">
         <g className="type">
-          <path d="M3 3h10" className="fill-none stroke-current stroke-2 sl-r"/>
-          <path d="M8 3v9" className="fill-none stroke-current stroke-2 sl-r"/>
-          <path d="M3 3v3" className="fill-none stroke-current stroke-2 sl-r"/>
-          <path d="M13 6V3" className="fill-none stroke-current stroke-2 sl-r"/>
-          <path d="M6 13h4" className="fill-none stroke-current stroke-2 sl-s"/>
+          <path
+            d="M3 3h10"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path d="M8 3v9" className="fill-none stroke-current stroke-2 sl-r" />
+          <path d="M3 3v3" className="fill-none stroke-current stroke-2 sl-r" />
+          <path
+            d="M13 6V3"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M6 13h4"
+            className="fill-none stroke-current stroke-2 sl-s"
+          />
         </g>
       </svg>
       <symbol id="pen-16" viewBox="0 0 16 16">
@@ -807,31 +816,51 @@ const Sprite16 = (props) => (
       </symbol>
       <symbol id="caret-right-16" viewBox="0 0 16 16">
         <g className="caret-right">
-          <path d="m6 4 6 4-6 4V4Z" className="fill-white stroke-current stroke-2 sl-r"/>
+          <path
+            d="m6 4 6 4-6 4V4Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
       <symbol id="caret-down-16" viewBox="0 0 16 16">
         <g className="caret-down">
-          <path d="m12 6-4 6-4-6h8Z" className="fill-white stroke-current stroke-2 sl-r"/>
+          <path
+            d="m12 6-4 6-4-6h8Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
         </g>
-
       </symbol>
       <symbol id="caret-up-16" viewBox="0 0 16 16">
         <g className="caret-up">
-          <path d="M12 11 8 5l-4 6h8Z" className="fill-white stroke-current stroke-2 sl-r"/>
+          <path
+            d="M12 11 8 5l-4 6h8Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
       <symbol id="caret-left-16" viewBox="0 0 16 16">
         <g className="caret-left">
-          <path d="M10 4 4 8l6 4V4Z" className="fill-white stroke-current stroke-2 sl-r"/>
+          <path
+            d="M10 4 4 8l6 4V4Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
       <symbol id="views-16" viewBox="0 0 16 16">
         <g className="views">
           <g className="fill-white stroke-current stroke-2 sl-r">
-            <path d="M2 4h4v10H2z" className="fill-white stroke-current stroke-2 sl-r"/>
-            <path d="M6 6h4v8H6z" className="fill-white stroke-current stroke-2 sl-r"/>
-            <path d="M10 2h4v12h-4z" className="fill-white stroke-current stroke-2 sl-r"/>
+            <path
+              d="M2 4h4v10H2z"
+              className="fill-white stroke-current stroke-2 sl-r"
+            />
+            <path
+              d="M6 6h4v8H6z"
+              className="fill-white stroke-current stroke-2 sl-r"
+            />
+            <path
+              d="M10 2h4v12h-4z"
+              className="fill-white stroke-current stroke-2 sl-r"
+            />
           </g>
         </g>
       </symbol>
