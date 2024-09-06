@@ -9,7 +9,16 @@ function TableOfContents({ headings, open = false, ...props }) {
 
   const toggleOpen = () => {
     setIsOpen(!isOpen)
+    // Toggle the class on the body element
+    document.body.classList.toggle('max-lg:overflow-hidden')
   }
+
+  // Ensure the class is removed when the component unmounts
+  useEffect(() => {
+    return () => {
+      document.body.classList.remove('max-lg:overflow-hidden')
+    }
+  }, [])
 
   return (
     <div
