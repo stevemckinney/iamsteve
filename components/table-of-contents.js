@@ -11,23 +11,25 @@ function TableOfContents({ headings, open = false, ...props }) {
     setIsOpen(!isOpen)
     // Toggle the class on the body element
     document.body.classList.toggle('max-lg:overflow-hidden')
+    document.getElementById('nav').classList.toggle('max-lg:translate-y-full')
   }
 
   // Ensure the class is removed when the component unmounts
   useEffect(() => {
     return () => {
       document.body.classList.remove('max-lg:overflow-hidden')
+      document.getElementById('nav').classList.remove('max-lg:translate-y-full')
     }
   }, [])
 
   return (
     <div
-      className="collapsible isolate max-lg:before:isolate max-lg:data-[state=open]:bg-gradient-to-b max-lg:data-[state=open]:from-neutral-01-150 max-lg:data-[state=open]:to-neutral-01-150/60 max-lg:before:content-[''] max-lg:before:absolute max-lg:before:top-0 max-lg:before:-left-6 max-lg:before:-right-6 max-lg:before:h-[72px] max-lg:before:[mask-image:linear-gradient(180deg,_#000_0%,_#000_50%,_transparent_80%,_transparent_99%,_transparent_100%)] max-lg:before:bg-neutral-01-150/60 max-lg:before:backdrop-blur-md max-lg:before:z-[0] max-lg:data-[state=open]:h-[100dvh] max-lg:data-[state=open]:overflow-x-hidden max-lg:data-[state=open]:overflow-y-auto max-lg:data-[state=open]:backdrop-blur-md max-lg:-mx-6 max-lg:px-6"
+      className="max-lg:py-4 collapsible isolate max-lg:before:isolate max-lg:data-[state=open]:bg-neutral-01-150 max-lg:before:content-[''] max-lg:before:absolute max-lg:before:top-0 max-lg:before:-left-6 max-lg:before:-right-6 max-lg:before:h-[72px] max-lg:before:[mask-image:linear-gradient(180deg,_#000_18.75%,rgb(0_0_0_/.99)_30.43%,rgb(0_0_0_/.96)_40.41%,rgb(0_0_0_/.92)_48.89%,rgb(0_0_0_/.86)_56.03%,rgb(0_0_0_/.79)_62.04%,rgb(0_0_0_/.71)_67.09%,rgb(0_0_0_/.63)_71.36%,rgb(0_0_0_/.54)_75.05%,rgb(0_0_0_/.45)_78.34%,rgb(0_0_0_/.36)_81.42%,rgb(0_0_0_/.27)_84.46%,rgb(0_0_0_/.19)_87.65%,rgb(0_0_0_/.12)_91.18%,rgb(0_0_0_/.05)_95.24%,transparent_100%)] max-lg:bg-gradient-to-b max-lg:from-neutral-01-150 max-lg:from-25% max-lg:to-neutral-01-150/0 max-lg:before:backdrop-blur-lg max-lg:before:backdrop-saturate-100 max-lg:before:z-[0] max-lg:data-[state=open]:h-[100dvh] max-lg:data-[state=open]:overflow-x-hidden max-lg:data-[state=open]:overflow-y-auto max-lg:data-[state=open]:backdrop-blur-md max-lg:-mx-6 max-lg:px-6"
       data-state={isOpen ? 'open' : 'closed'}
     >
       <button
         onClick={toggleOpen}
-        className="sticky top-0 z-10 text-fern-1100 font-bold cursor-pointer flex flex-row items-center -ml-2 xl:-ml-6 w-full text-left leading-[3.5rem]"
+        className="sticky top-0 z-10 text-fern-1100 font-bold cursor-pointer flex flex-row items-center -ml-2 xl:-ml-6 w-full text-left"
         aria-expanded={isOpen}
         aria-controls="toc-content"
       >
@@ -141,7 +143,7 @@ function TableOfContentsList({ headings, ...props }) {
               renderHeadings(
                 heading.children,
                 `pt-1`,
-                `relative pl-6 before:content-[''] before:absolute before:left-0 before:top-[-6px] before:w-4 before:h-6 before:border-l-2 before:border-b-2 before:border-neutral-01-600/50 last:before:rounded-bl-sm after:content-[''] after:absolute after:left-px after:-bottom-1 after:w-4 after:h-6 after:border-l-2 after:border-neutral-01-600/50 last:after:hidden hover:before:w-6 before:transition-all before:duration-200 before:ease`
+                `relative pl-6 before:content-[''] before:absolute before:left-0 before:top-[-6px] before:w-4 before:h-6 before:border-l-2 before:border-b-2 before:border-neutral-01-600/30 last:before:rounded-bl-sm after:content-[''] after:absolute after:left-0 after:bottom-[.375rem] after:w-4 after:h-[.75rem] after:border-l-2 after:border-neutral-01-600/30 last:after:hidden hover:before:w-6 before:will-change-auto before:transform-gpu before:transition-all before:duration-200 before:ease`
               )}
           </li>
         ))}
