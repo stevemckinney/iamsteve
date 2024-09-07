@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Icon from '@/components/icon'
 
 function TableOfContents({ headings, open = false, ...props }) {
@@ -49,14 +49,34 @@ function TableOfContents({ headings, open = false, ...props }) {
         data-state={isOpen ? 'open' : 'closed'}
         aria-hidden={!isOpen}
       >
-        <TableOfContentsList headings={headings} />
+        <TableOfContentsList headings={headings} toggleOpen={toggleOpen} />
       </div>
     </div>
   )
 }
 
-function TableOfContentsList({ headings, ...props }) {
+function TableOfContentsList({ headings, toggleOpen, ...props }) {
   const [activeId, setActiveId] = useState('')
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 1023px)')
+
+    const handleMediaQueryChange = (e) => {
+      setIsMobile(e.matches)
+    }
+
+    // Set initial value
+    setIsMobile(mediaQuery.matches)
+
+    // Add listener for subsequent changes
+    mediaQuery.addListener(handleMediaQueryChange)
+
+    // Cleanup
+    return () => {
+      mediaQuery.removeListener(handleMediaQueryChange)
+    }
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -119,6 +139,19 @@ function TableOfContentsList({ headings, ...props }) {
     return nestedHeadings
   }
 
+  const handleLinkClick = useCallback((e, slug) => {
+    if (isMobile) {
+      e.preventDefault()
+      toggleOpen()
+      setTimeout(() => {
+        const element = document.getElementById(slug)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 300)
+    }
+  }, [isMobile, toggleOpen])
+
   const renderHeadings = (
     headings,
     className = 'pt-1',
@@ -135,6 +168,7 @@ function TableOfContentsList({ headings, ...props }) {
               }`}
               aria-current={activeId === heading.slug ? 'location' : undefined}
               aria-label={`Go to section: ${heading.text}`}
+              onClick={(e) => handleLinkClick(e, heading.slug)}
             >
               {heading.text}
             </a>
