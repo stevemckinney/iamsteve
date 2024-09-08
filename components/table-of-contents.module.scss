@@ -1,0 +1,15 @@
+.collapsible {
+  // Add any styles you want for the container
+}
+
+.tocContent {
+  overflow: hidden;
+}
+
+.open {
+  max-height: none;
+}
+
+.closed {
+  max-height: 0;
+}

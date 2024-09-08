@@ -22,23 +22,14 @@ There’s a lot of discussion happening around whether masonry is needed in CSS.
 
 For this example masonry isn’t required—but it’s something I would like to see part of CSS in whatever way it ends up being.
 
-**This post is broken down into the following sections**:
-
-- The bento design
-- Project files
-- HTML structure
-- How to use CSS grid to create a bento layout
-- Managing content within the grid
-- Using Tailwind to apply the design & responsiveness
-
 <Blockquote style="notice">I make the assumption that you’re comfortable setting up Tailwind for your project</Blockquote>
 
 ## The bento design
 The design showcases a rough idea of an app I wish existed. Each section displays a different feature with larger sections having an illustration of the feature.
 
-<figure className="prose-exclude grid grid-cols-subgrid col-content">
+<figure className="prose-exclude flex flex-col gap-2 col-content">
 <Demo src="https://stevemckinney.github.io/bento-grid/option-1.html" />
-<figcaption className="col-prose">A compact grid showing 6 features of a fictional app. Layout will vary based on your device. Live demo.</figcaption>
+<figcaption>A compact grid showing 6 features of a fictional app. Layout will vary based on your device. This is a live demo.</figcaption>
 </figure>
 
 ### Considerations
@@ -191,7 +182,7 @@ To create a bento with CSS grid doesn’t require too much to get going. You cou
 The important bit of CSS here is `grid-auto-flow` aside from defining the 12 column grid itself. This tells the grid algorithm to fill in gaps where possible with smaller grid items.
 
 {/*<figure>
-  <Image src="/images/blog/0175-bento-grid-columns@2x.png" width={864} height={564} alt={true} />
+  <Image src="/images/blog/0175-bento-grid-columns@2x.png" width={864} height={564} alt=" " />
   <figcaption>Grid overlay shows the columns applied to the design</figcaption>
 </figure>*/}
 
@@ -207,7 +198,7 @@ The important bit of CSS here is `grid-auto-flow` aside from defining the 12 col
 Another important part to the design is `grid-auto-rows`. As this affects the two smaller square items they need to occupy an equal amount of rows. Only applying this to larger screens ensures it doesn’t create excess space on smaller screen layouts.
 
 <figure>
-  <Image src="/images/blog/0175-bento-grid-rows@2x.png" width={864} height={564} alt={true} />
+  <Image src="/images/blog/0175-bento-grid-rows@2x.png" width={864} height={564} alt=" " />
   <figcaption>Grid overlay shows the rows applied to the design</figcaption>
 </figure>
 
@@ -334,7 +325,7 @@ There’s adjustments that need to be made based on the containers size for imag
 Here the container has further adjustment on column width throughout the standard Tailwind breakpoints.
 
 <figure>
-  <Image src="/images/blog/0175-bento-grid-section-structure.png" width={864} height={564} alt={true} />
+  <Image src="/images/blog/0175-bento-grid-section-structure.png" width={864} height={564} alt=" " />
   <figcaption>Highlighting how space is applied to each section</figcaption>
 </figure>
 

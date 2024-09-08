@@ -12,6 +12,7 @@ const defaultVariants = {
   'neutral-01': 'text-neutral-01-500',
   'neutral-02': 'text-neutral-02-500',
   cornflour: 'text-cornflour-600',
+  text: 'text-fern-1100',
 }
 
 const hoverVariants = {
@@ -25,6 +26,7 @@ const hoverVariants = {
   'neutral-01': 'hover:text-neutral-01-500',
   'neutral-02': 'hover:text-neutral-02-500',
   cornflour: 'hover:text-cornflour-600',
+  text: 'hover:text-fern-800',
 }
 
 export default function Badge({
@@ -48,7 +50,7 @@ export default function Badge({
   } else {
     return (
       <p
-        className={`flex flex-[0_0_auto] gap-2 font-variation-medium text-fern-1100 ${className}`}
+        className={`flex flex-[0_0_auto] gap-3 font-variation-medium text-fern-1100 ${className}`}
       >
         <Badge.Icon size={size} theme={theme} icon={iconStart} />
         <Badge.Text size={size}>{children}</Badge.Text>
@@ -58,13 +60,13 @@ export default function Badge({
 }
 
 export function BadgeIcon({ icon, size, theme, className = 'badge' }) {
-  const small = 'w-6 h-6 flex-[0_0_auto]'
-  const large = 'w-8 h-8 flex-[0_0_auto]'
+  const small = 'w-6 h-6 flex-[0_0_auto] rounded-[.375rem]'
+  const large = 'w-8 h-8 flex-[0_0_auto] rounded-sm'
   const sizing = size === 16 ? small : large
 
   return (
     <span
-      className={`${sizing} bg-white group-active/badge:bg-neutral-01-50 shadow-reduced group-hover/badge:shadow-picked group-active/badge:shadow-reduced rounded-sm flex items-center justify-center transition-all duration-100 ease-linear ${className} ${defaultVariants[theme]}`}
+      className={`${sizing} bg-white group-active/badge:bg-neutral-01-50 shadow-reduced group-hover/badge:shadow-picked group-active/badge:shadow-reduced flex items-center justify-center transition-all duration-100 ease-linear ${className} ${defaultVariants[theme]}`}
     >
       <Icon className={`text-current`} icon={icon} size={size} />
     </span>
@@ -74,13 +76,13 @@ export function BadgeIcon({ icon, size, theme, className = 'badge' }) {
 Badge.Icon = BadgeIcon
 
 export function BadgeText({ children, size, className = 'ct' }) {
-  const small = 'h-6 pt-[2px] text-base flex-[0_0_auto]'
-  const large = 'h-8 pt-[2px] text-lg flex-[0_0_auto]'
+  const small = 'h-6 pt-[2px] text-base font-medium flex-[0_0_auto]'
+  const large = 'h-8 pt-[2px] text-base font-medium flex-[0_0_auto]'
   const sizing = size === 16 ? small : large
 
   return (
     <span
-      className={`${sizing} transition-all duration-100 ease-linear font-ui lowercase leading-none rounded flex items-center text-current ${className}`}
+      className={`${sizing} transition-all duration-100 ease-linear font-body leading-none rounded flex items-center text-current ${className}`}
     >
       {children}
     </span>

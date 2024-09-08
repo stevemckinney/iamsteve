@@ -1,3 +1,4 @@
+// Homepage
 import { cache } from 'react'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
@@ -62,8 +63,11 @@ export default async function Home() {
 
   return (
     <>
-      <main className="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18">
-        <Hero />
+      <Hero />
+      <main
+        className="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18"
+        id="content"
+      >
         <Frame id="latest">
           <Title
             link="/blog"

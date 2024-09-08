@@ -18,6 +18,7 @@ export default function Date({
   relative = false,
   className = 'date',
 }) {
+  // const currentYear = format(new Date(), 'yyyy')
   const date = parseISO(dateString)
 
   if (relative === true) {

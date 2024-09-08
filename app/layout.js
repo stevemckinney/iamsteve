@@ -93,7 +93,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className="light overflow-x-hidden"
+      className="light"
       style={{ colorScheme: 'light' }}
       suppressHydrationWarning
     >
@@ -115,12 +115,12 @@ export default function RootLayout({ children }) {
        * the border alignment within the header
        */}
       <body
-        className={`antialiased overflow-x-hidden min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100 pt-[env(safe-area-inset-top,0)]`}
+        className={`antialiased overflow-x-clip min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100 pt-[env(safe-area-inset-top,0)]`}
       >
         <Sprite16 />
         <Sprite24 />
         <Logo />
-        <div className="grid layout gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto items-baseline">
+        <div className="grid layout relative gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto items-baseline">
           <ModeToggle />
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <Header />

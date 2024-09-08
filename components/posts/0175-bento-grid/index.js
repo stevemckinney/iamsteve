@@ -5,7 +5,7 @@ export default function BentoGridShell() {
       <div
         className={`${styles.bento} bg-gunmetal-900 aspect-video flex justify-center p-4 lg:p-8`}
       >
-        <div className="w-full min-h-full grid grid-cols-12 grid-flow-dense auto-rows-[minmax(32px,1fr)] gap-4">
+        <div className="w-full min-h-full grid grid-cols-12 grid-flow-dense auto-rows-auto gap-2">
           <section className="col-span-6 row-span-4 gap-2 p-2 bg-[var(--color-gunmetal-850)] ring ring-1 [--tw-ring-color:var(--color-gunmetal-750)] rounded-sm"></section>
           <section className="col-span-6 row-span-4 gap-2 p-2 bg-[var(--color-gunmetal-850)] ring ring-1 [--tw-ring-color:var(--color-gunmetal-750)] rounded-sm"></section>
           <section className="col-span-3 row-span-4 gap-2 p-2 bg-[var(--color-gunmetal-850)] ring ring-1 [--tw-ring-color:var(--color-gunmetal-750)] rounded-sm"></section>
