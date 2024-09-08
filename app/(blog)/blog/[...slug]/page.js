@@ -146,9 +146,9 @@ export default async function PostPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
       <article className={`grid col-container grid-cols-subgrid relative`}>
-        <hr className="relative z-[11] col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <hr className="relative col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <Sidebar allViews={allViews} post={post} />
-        <hr className="relative z-[11] col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <hr className="relative col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <header className="col-content lg:col-container lg:col-start-2 lg:col-end-9 xl:col-start-3 xl:col-end-11 lg:row-start-1 lg:row-span-1 flex flex-col max-lg:pt-12 gap-y-4 mb-12">
           {isOldCodePost && (
             <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
