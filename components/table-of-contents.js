@@ -24,7 +24,7 @@ function TableOfContents({ headings, open = false, ...props }) {
 
   return (
     <div
-      className="collapsible isolate max-lg:before:isolate max-lg:before:content-[''] max-lg:before:absolute max-lg:before:top-0 max-lg:before:-left-6 max-lg:before:-right-6 max-lg:data-[state=closed]:before:h-[64px] max-lg:before:backdrop-blur-lg max-lg:before:backdrop-saturate-100 max-lg:before:z-[0] max-lg:data-[state=open]:overflow-x-hidden max-lg:data-[state=open]:overflow-y-auto max-lg:backdrop-blur-lg max-lg:data-[state=closed]:[mask-image:var(--blur-mask)] max-lg:bg-gradient-to-b max-lg:data-[state=closed]:from-neutral-01-150 max-lg:data-[state=closed]:from-80% max-lg:data-[state=closed]:to-neutral-01-150/0 max-lg:data-[state=open]:bg-neutral-01-150/50 max-lg:-mx-6 max-lg:px-6 max-lg:py-4 max-lg:data-[state=open]:max-h-[100dvh]"
+      className="collapsible isolate max-lg:before:isolate max-lg:before:content-[''] max-lg:before:absolute max-lg:before:top-0 max-lg:before:-left-6 max-lg:before:-right-6 max-lg:data-[state=closed]:before:h-[64px] max-lg:before:backdrop-blur-lg max-lg:before:backdrop-saturate-100 max-lg:before:z-[0] max-lg:data-[state=open]:overflow-x-clip max-lg:data-[state=open]:overflow-y-auto max-lg:backdrop-blur-lg max-lg:data-[state=closed]:[mask-image:var(--blur-mask)] max-lg:bg-gradient-to-b max-lg:data-[state=closed]:from-neutral-01-150 max-lg:data-[state=closed]:from-80% max-lg:data-[state=closed]:to-neutral-01-150/0 max-lg:data-[state=open]:bg-neutral-01-150/50 max-lg:-mx-6 max-lg:px-6 max-lg:py-4 max-lg:data-[state=open]:max-h-[100dvh]"
       data-state={isOpen ? 'open' : 'closed'}
 
       style={{ "--blur-mask": "linear-gradient(180deg, #000 18.75%,rgb(0 0 0 /.99) 30.43%,rgb(0 0 0 /.96) 40.41%,rgb(0 0 0 /.92) 48.89%,rgb(0 0 0 /.86) 56.03%,rgb(0 0 0 /.79) 62.04%,rgb(0 0 0 /.71) 67.09%,rgb(0 0 0 /.63) 71.36%,rgb(0 0 0 /.54) 75.05%,rgb(0 0 0 /.45) 78.34%,rgb(0 0 0 /.36) 81.42%,rgb(0 0 0 /.27) 84.46%,rgb(0 0 0 /.19) 87.65%,rgb(0 0 0 /.12) 91.18%,rgb(0 0 0 /.05) 95.24%,transparent 100%)" }}
@@ -91,7 +91,7 @@ function TableOfContentsList({ headings, toggleOpen, ...props }) {
       },
       {
         root: null,
-        rootMargin: '0% 0% -72.5% 0%',
+        rootMargin: '0% 0% -50% 0%',
         threshold: 0,
       }
     )
