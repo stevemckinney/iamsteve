@@ -9,7 +9,6 @@ function TableOfContents({ headings, open = false, ...props }) {
 
   const toggleOpen = () => {
     setIsOpen(!isOpen)
-    // Toggle the class on the body element
     document.body.classList.toggle('max-lg:overflow-hidden')
     document.getElementById('nav').classList.toggle('max-lg:translate-y-full')
   }
@@ -21,19 +20,22 @@ function TableOfContents({ headings, open = false, ...props }) {
       document.getElementById('nav').classList.remove('max-lg:translate-y-full')
     }
   }, [])
+  // linear-gradient(180deg,_#000_18.75%,rgb(0_0_0_/.99)_30.43%,rgb(0_0_0_/.96)_40.41%,rgb(0_0_0_/.92)_48.89%,rgb(0_0_0_/.86)_56.03%,rgb(0_0_0_/.79)_62.04%,rgb(0_0_0_/.71)_67.09%,rgb(0_0_0_/.63)_71.36%,rgb(0_0_0_/.54)_75.05%,rgb(0_0_0_/.45)_78.34%,rgb(0_0_0_/.36)_81.42%,rgb(0_0_0_/.27)_84.46%,rgb(0_0_0_/.19)_87.65%,rgb(0_0_0_/.12)_91.18%,rgb(0_0_0_/.05)_95.24%,transparent_100%)
 
   return (
     <div
-      className="max-lg:py-4 collapsible isolate max-lg:before:isolate max-lg:data-[state=open]:bg-neutral-01-150 max-lg:before:content-[''] max-lg:before:absolute max-lg:before:top-0 max-lg:before:-left-6 max-lg:before:-right-6 max-lg:before:h-[72px] max-lg:before:[mask-image:linear-gradient(180deg,_#000_18.75%,rgb(0_0_0_/.99)_30.43%,rgb(0_0_0_/.96)_40.41%,rgb(0_0_0_/.92)_48.89%,rgb(0_0_0_/.86)_56.03%,rgb(0_0_0_/.79)_62.04%,rgb(0_0_0_/.71)_67.09%,rgb(0_0_0_/.63)_71.36%,rgb(0_0_0_/.54)_75.05%,rgb(0_0_0_/.45)_78.34%,rgb(0_0_0_/.36)_81.42%,rgb(0_0_0_/.27)_84.46%,rgb(0_0_0_/.19)_87.65%,rgb(0_0_0_/.12)_91.18%,rgb(0_0_0_/.05)_95.24%,transparent_100%)] max-lg:bg-gradient-to-b max-lg:from-neutral-01-150 max-lg:from-25% max-lg:to-neutral-01-150/0 max-lg:before:backdrop-blur-lg max-lg:before:backdrop-saturate-100 max-lg:before:z-[0] max-lg:data-[state=open]:h-[100dvh] max-lg:data-[state=open]:overflow-x-hidden max-lg:data-[state=open]:overflow-y-auto max-lg:data-[state=open]:backdrop-blur-md max-lg:-mx-6 max-lg:px-6"
+      className="collapsible isolate max-lg:before:isolate max-lg:before:content-[''] max-lg:before:absolute max-lg:before:top-0 max-lg:before:-left-6 max-lg:before:-right-6 max-lg:data-[state=closed]:before:h-[64px] max-lg:before:backdrop-blur-lg max-lg:before:backdrop-saturate-100 max-lg:before:z-[0] max-lg:data-[state=open]:overflow-x-hidden max-lg:data-[state=open]:overflow-y-auto max-lg:backdrop-blur-lg max-lg:data-[state=closed]:[mask-image:var(--blur-mask)] max-lg:bg-gradient-to-b max-lg:data-[state=closed]:from-neutral-01-150 max-lg:data-[state=closed]:from-80% max-lg:data-[state=closed]:to-neutral-01-150/0 max-lg:data-[state=open]:bg-neutral-01-150/50 max-lg:-mx-6 max-lg:px-6 max-lg:py-4 max-lg:data-[state=open]:max-h-[100dvh]"
       data-state={isOpen ? 'open' : 'closed'}
+
+      style={{ "--blur-mask": "linear-gradient(180deg, #000 18.75%,rgb(0 0 0 /.99) 30.43%,rgb(0 0 0 /.96) 40.41%,rgb(0 0 0 /.92) 48.89%,rgb(0 0 0 /.86) 56.03%,rgb(0 0 0 /.79) 62.04%,rgb(0 0 0 /.71) 67.09%,rgb(0 0 0 /.63) 71.36%,rgb(0 0 0 /.54) 75.05%,rgb(0 0 0 /.45) 78.34%,rgb(0 0 0 /.36) 81.42%,rgb(0 0 0 /.27) 84.46%,rgb(0 0 0 /.19) 87.65%,rgb(0 0 0 /.12) 91.18%,rgb(0 0 0 /.05) 95.24%,transparent 100%)" }}
     >
       <button
         onClick={toggleOpen}
-        className="sticky top-0 z-10 text-fern-1100 font-bold cursor-pointer flex flex-row items-center -ml-2 xl:-ml-6 w-full text-left"
+        className="sticky top-0 z-10 text-fern-1100 font-bold cursor-pointer flex flex-row items-center w-full text-left"
         aria-expanded={isOpen}
         aria-controls="toc-content"
       >
-        <span className="flex items-center justify-center w-6 h-6 relative top-[-2px]">
+        <span className="-ml-2 flex items-center justify-center w-6 h-6 relative top-[-2px]">
           <Icon
             icon={isOpen ? 'caret-down' : 'caret-right'}
             size={16}
@@ -45,7 +47,7 @@ function TableOfContents({ headings, open = false, ...props }) {
       <div
         id="toc-content"
         ref={contentRef}
-        className="max-lg:data-[state=open]:block data-[state=closed]:hidden data-[state=closed]:overflow-hidden"
+        className="max-lg:data-[state=open]:h-full data-[state=closed]:h-0 data-[state=closed]:overflow-hidden"
         data-state={isOpen ? 'open' : 'closed'}
         aria-hidden={!isOpen}
       >

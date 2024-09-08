@@ -146,9 +146,9 @@ export default async function PostPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
       <article className={`grid col-container grid-cols-subgrid relative`}>
-        <span className="relative row-span-1 z-[11] col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <hr className="relative z-[11] col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <Sidebar allViews={allViews} post={post} />
-        <span className="relative z-[11] col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <hr className="relative z-[11] col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <header className="col-content lg:col-container lg:col-start-2 lg:col-end-9 xl:col-start-3 xl:col-end-11 lg:row-start-1 lg:row-span-1 flex flex-col max-lg:pt-12 gap-y-4 mb-12">
           {isOldCodePost && (
             <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
@@ -363,7 +363,7 @@ export function Sidebar({ allViews, post }) {
   return (
     <aside
       aria-label="Table of contents and newsletter subscription form"
-      className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col gap-12 lg:pb-16 lg:px-6 lg:-mx-6 lg:[mask-image:linear-gradient(180deg,transparent,_#000_64px,#000_calc(100%_-_10vh),_transparent)]"
+      className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col lg:gap-12 lg:pb-16 lg:px-6 lg:-mx-6 lg:[mask-image:linear-gradient(180deg,transparent,_#000_64px,#000_calc(100%_-_10vh),_transparent)]"
     >
       <section
         className="flex flex-col gap-2 relative"
