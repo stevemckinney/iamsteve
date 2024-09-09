@@ -1,41 +1,70 @@
 'use client'
 
-import { forwardRef, useState } from 'react'
+import { useState, useEffect } from 'react'
 import * as Form from '@radix-ui/react-form'
-import Button from '@/components/button'
+import * as Toast from '@radix-ui/react-toast'
+import Icon from '@/components/icon'
 
-const Submit = forwardRef(function Submit(props, forwardedRef) {
-  return <Button {...props} ref={forwardedRef} />
-})
+const RATE_LIMIT_DURATION = 60 * 60 * 1000 // 1 hour in milliseconds
+const MAX_SUBMISSIONS = 5 // Maximum submissions per hour
+const MIN_WORD_COUNT = 8 // Minimum word count for the message
+const FORM_DISABLED = false // Set this to true to disable the form
 
-const Label = forwardRef(function Label(props, forwardedRef) {
-  return (
-    <Form.Label className="font-ui text-base lowercase text-fern-1100 leading-none mb-1">
-      {props.children}
-    </Form.Label>
-  )
-})
+const Label = ({ children, ...props }) => (
+  <Form.Label className="font-ui text-base lowercase text-fern-1100 leading-none mb-1" {...props}>
+    {children}
+  </Form.Label>
+)
 
-const Input = forwardRef(function Input(props, forwardedRef) {
-  return (
+const Input = ({ ...props }) => (
+  <Form.Control asChild>
     <input
       {...props}
-      ref={forwardedRef}
-      className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] data-[invalid=true]:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_#E5542B,_0_0_0_5px_rgb(229_84_43_/_0.08)]`}
+      className="form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] data-[invalid=true]:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_#E5542B,_0_0_0_5px_rgb(229_84_43_/_0.08)]"
     />
-  )
-})
+  </Form.Control>
+)
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
+  const [isRateLimited, setIsRateLimited] = useState(false)
+  const [toastOpen, setToastOpen] = useState(false)
+  const [wordCount, setWordCount] = useState(0)
+
+  useEffect(() => {
+    checkRateLimit()
+  }, [])
+
+  const checkRateLimit = () => {
+    const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]')
+    const now = Date.now()
+    const recentSubmissions = submissions.filter(time => now - time < RATE_LIMIT_DURATION)
+    setIsRateLimited(recentSubmissions.length >= MAX_SUBMISSIONS)
+  }
+
+  const updateRateLimit = () => {
+    const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]')
+    submissions.push(Date.now())
+    localStorage.setItem('formSubmissions', JSON.stringify(submissions))
+    checkRateLimit()
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+    if (isRateLimited) return
+
     setIsSubmitting(true)
     setSubmitStatus(null)
 
     const formData = new FormData(event.target)
+
+    // Check if the honeypot field is filled
+    if (formData.get('title')) {
+      console.log('Bot submission detected')
+      setIsSubmitting(false)
+      return
+    }
 
     try {
       const response = await fetch('/', {
@@ -46,7 +75,10 @@ const ContactForm = () => {
 
       if (response.ok) {
         setSubmitStatus('success')
+        setToastOpen(true)
         event.target.reset()
+        setWordCount(0)
+        updateRateLimit()
       } else {
         setSubmitStatus('error')
       }
@@ -58,8 +90,21 @@ const ContactForm = () => {
     }
   }
 
+  const handleMessageChange = (event) => {
+    const words = event.target.value.trim().split(/\s+/).filter(word => word.length > 0)
+    setWordCount(words.length)
+  }
+
+  if (isRateLimited || FORM_DISABLED) {
+    return (
+      <div className="flex w-full p-12 bg-cornflour-100/20 text-cornflour-600 justify-center rounded-sm">
+        <p className="m-0">Form currently unavailable.</p>
+      </div>
+    )
+  }
+
   return (
-    <>
+    <Toast.Provider swipeDirection="right">
       <Form.Root
         className="w-full grid grid-cols-5 gap-8"
         data-netlify="true"
@@ -68,6 +113,21 @@ const ContactForm = () => {
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="contact" />
+
+        {/* Honeypot field */}
+        <div className="sr-only" aria-hidden="true">
+          <label htmlFor="title">
+            Title
+            <input
+              type="radio"
+              name="title"
+              id="title"
+              tabIndex="-1"
+              className="opacity-0 absolute w-0 h-0"
+            />
+          </label>
+        </div>
+
         <Form.Field className="col-span-2 flex flex-col relative" name="name">
           <div className="flex flex-col items-baseline justify-between">
             <Label>Name</Label>
@@ -75,9 +135,7 @@ const ContactForm = () => {
               What do you go by?
             </p>
           </div>
-          <Form.Control asChild>
-            <Input type="name" required />
-          </Form.Control>
+          <Input type="text" required />
           <Form.Message
             className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
             match="valueMissing"
@@ -85,6 +143,7 @@ const ContactForm = () => {
             Please enter your name
           </Form.Message>
         </Form.Field>
+
         <Form.Field className="col-span-3 flex flex-col relative" name="email">
           <div className="flex flex-col items-baseline justify-between">
             <Label>Email</Label>
@@ -92,9 +151,7 @@ const ContactForm = () => {
               So I can reply to you
             </p>
           </div>
-          <Form.Control asChild>
-            <Input type="email" required />
-          </Form.Control>
+          <Input type="email" required />
           <Form.Message
             className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
             match="valueMissing"
@@ -108,7 +165,8 @@ const ContactForm = () => {
             Please provide a valid email
           </Form.Message>
         </Form.Field>
-        <Form.Field className="col-span-5 flex flex-col relative" name="question">
+
+        <Form.Field className="col-span-5 flex flex-col relative" name="message">
           <div className="flex flex-col items-baseline justify-between">
             <Label>Message</Label>
             <p className="text-sm text-ui-body opacity-80 leading-none mb-3">
@@ -117,34 +175,62 @@ const ContactForm = () => {
           </div>
           <Form.Control asChild>
             <textarea
-              className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 min-h-[11.5rem] focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] data-[invalid=true]:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_#E5542B,_0_0_0_5px_rgb(229_84_43_/_0.08)]`}
+              className="form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 min-h-[11.5rem] focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] data-[invalid=true]:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_#E5542B,_0_0_0_5px_rgb(229_84_43_/_0.08)]"
               required
+              onChange={handleMessageChange}
             />
           </Form.Control>
+          <p className="text-sm text-ui-body opacity-80 leading-none mt-3">
+            Enter at least {MIN_WORD_COUNT} words. Currently used: {wordCount} {wordCount === 1 ? 'word' : 'words'}.
+          </p>
           <Form.Message
             className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
             match="valueMissing"
           >
             Please enter a message
           </Form.Message>
+          <Form.Message
+            className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
+            match={(value) => value.trim().split(/\s+/).length < MIN_WORD_COUNT}
+          >
+            Message must be at least {MIN_WORD_COUNT} words long
+          </Form.Message>
         </Form.Field>
+
         <Form.Submit asChild>
           <button
-            className="button-dandelion select-none self-start min-w-fit font-ui text-base/snug lowercase text-dandelion-800 text-center bg-dandelion-300 active:bg-dandelion-400 rounded-sm transition duration-200 shadow-dandelion-placed hover:shadow-dandelion-picked active:shadow-reduced px-8 py-3 flex-auto [--ui-border-color:theme(colors.dandelion.600)] [--ui-border-color-hover:theme(colors.dandelion.700)]"
-            disabled={isSubmitting}
+            className="button-dandelion self-start min-w-fit font-ui text-base/tight lowercase text-center button-dandelion button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto"
+            disabled={isSubmitting || wordCount < MIN_WORD_COUNT}
           >
             {isSubmitting ? 'Sending...' : 'Send'}
           </button>
         </Form.Submit>
       </Form.Root>
 
-      {submitStatus === 'success' && (
-        <p className="text-green-600 mt-4">Message sent successfully!</p>
-      )}
       {submitStatus === 'error' && (
         <p className="text-red-600 mt-4">Failed to send message. Please try again.</p>
       )}
-    </>
+      <Toast.Root
+        className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4 data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut"
+        open={toastOpen}
+        onOpenChange={setToastOpen}
+      >
+        <Toast.Title className="font-medium">
+          Message sent
+        </Toast.Title>
+        <Toast.Description asChild>
+          <p className="m-0">
+            Your message has been sent successfully!
+          </p>
+        </Toast.Description>
+        <Toast.Action asChild altText="Close toast">
+          <button className="w-6 h-6 flex items-center justify-center absolute top-0 right-0">
+            <Icon icon="close" size={16} />
+          </button>
+        </Toast.Action>
+      </Toast.Root>
+      <Toast.Viewport className="[--viewport-padding:theme('spacing.6')] fixed top-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-4 w-96 max-w-[100vw] list-none z-[300] outline-none" />
+    </Toast.Provider>
   )
 }
 
