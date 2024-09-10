@@ -2,7 +2,7 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import path from 'path'
 import siteMetadata from './content/metadata'
 import categories from './content/categories'
-import collections from './content/collections'
+import { collections, kinds, defaultKind } from './content/collections'
 
 import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
@@ -73,6 +73,12 @@ export const Collections = defineDocumentType(() => ({
         options: [collections.map((collection) => collection.title)],
         required: true,
       },
+    },
+    kind: {
+      type: 'enum',
+      options: kinds.map(kind => kind.id),
+      required: false,
+      default: defaultKind,
     },
   },
   computedFields: {

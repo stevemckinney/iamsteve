@@ -85,4 +85,29 @@ const collections = [
   },
 ]
 
-export default collections
+const defaultKind = 'website'
+
+const kinds = [
+  {
+    id: 'website',
+    title: 'Website',
+    icon: 'globe',
+  },
+  {
+    id: 'article',
+    title: 'Article',
+    icon: 'document',
+  },
+  {
+    id: 'resource',
+    title: 'Resource',
+    icon: 'book',
+  },
+  {
+    id: 'tool',
+    title: 'Tool',
+    icon: 'tool',
+  },
+]
+
+export { collections, kinds, defaultKind }
