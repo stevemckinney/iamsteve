@@ -111,6 +111,7 @@ const ContactForm = () => {
         name="contact"
         method="POST"
         onSubmit={handleSubmit}
+        netlify
       >
         <input type="hidden" name="form-name" value="contact" />
 
