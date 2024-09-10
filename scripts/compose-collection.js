@@ -16,6 +16,7 @@ const genFrontMatter = (answers) => {
   collection:
     ${answers.collection ? `- ${answers.collection}` : ''}
   type: Collections
+  kind: ${answers.kind}
   `
   frontmatter = frontmatter + '\n---'
 
@@ -38,6 +39,13 @@ inquirer
       name: 'collection',
       message: 'Collection:',
       type: 'input',
+    },
+    {
+      name: 'kind',
+      message: 'Kind:',
+      type: 'list',
+      choices: ['website', 'article', 'resource', 'tool'],
+      default: 'website',
     },
     {
       name: 'extension',
