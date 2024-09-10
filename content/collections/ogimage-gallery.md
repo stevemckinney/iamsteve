@@ -5,4 +5,5 @@ date: "2024-03-24T17:29:24.243Z"
 collection:
   - Inspiration
 type: Collections
+kind: website
 ---

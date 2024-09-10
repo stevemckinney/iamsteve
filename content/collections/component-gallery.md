@@ -5,4 +5,5 @@ date: 2024-03-22
 collection:
   - Design Systems
 type: Collections
+kind: website
 ---

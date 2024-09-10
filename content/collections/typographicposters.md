@@ -6,4 +6,5 @@ collection:
   - Inspiration
   - Typography
 type: Collections
+kind: website
 ---

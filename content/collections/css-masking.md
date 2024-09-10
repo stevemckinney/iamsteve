@@ -5,4 +5,5 @@ date: "2024-03-24T19:59:17.226Z"
 collection:
   - CSS
 type: Collections
+kind: website
 ---

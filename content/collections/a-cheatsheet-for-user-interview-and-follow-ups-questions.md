@@ -5,4 +5,5 @@ date: "2024-03-24T20:04:12.000Z"
 collection:
   - UX design
 type: Collections
+kind: resource
 ---

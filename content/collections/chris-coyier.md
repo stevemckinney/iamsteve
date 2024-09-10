@@ -5,4 +5,5 @@ date: "2024-03-24T13:06:58.679Z"
 collection:
   - Favourites
 type: Collections
+kind: website
 ---
