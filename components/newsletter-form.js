@@ -1,26 +1,65 @@
 'use client'
 
-import { NextResponse } from 'next/server'
-import { useRef, useState } from 'react'
-
+import { useRef, useState, useEffect } from 'react'
 import Button from '@/components/button'
 
 const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
   const inputEmail = useRef(null)
   const inputName = useRef(null)
-  const inputSource = useRef(null)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const [subscriberCount, setSubscriberCount] = useState(null)
+  const [emailError, setEmailError] = useState('')
+
+  useEffect(() => {
+    const fetchSubscriberCount = async () => {
+      try {
+        const response = await fetch('/api/newsletter')
+        if (!response.ok) {
+          throw new Error('Failed to fetch subscriber count')
+        }
+        const data = await response.json()
+        if (data.subscriberCount) {
+          setSubscriberCount(data.subscriberCount)
+        }
+      } catch (error) {
+        console.error('Failed to fetch subscriber count:', error)
+        setSubscriberCount(700) // Fallback to the original hardcoded value
+      }
+    }
+
+    fetchSubscriberCount()
+  }, [])
+
+  const validateEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    return re.test(String(email).toLowerCase())
+  }
 
   const subscribe = async (e) => {
     e.preventDefault()
 
-    // https://emailoctopus.com/api/1.5/lists/:listId/contacts
+    const email = inputEmail.current.value
+    const name = inputName.current.value
+
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address')
+      return
+    }
+
+    setEmailError('')
+
+    if (!name.trim()) {
+      setError(true)
+      setMessage('Please enter your name')
+      return
+    }
+
     const res = await fetch(`/api/newsletter`, {
       body: JSON.stringify({
-        email: inputEmail.current.value,
-        name: inputName ? inputName.current.value : '',
+        email,
+        name,
         source: '',
       }),
       headers: {
@@ -29,23 +68,24 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
       method: 'POST',
     })
 
+    const data = await res.json()
+
     if (res.status === 500) {
       setError(true)
       setMessage(`The server cannot be reached to submit your request.`)
-      return Promise.reject(
-        `The server cannot be reached to submit your request.`
-      )
-    } else if (res.error) {
+    } else if (res.status === 400 && data.error === 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS') {
+      setError(true)
+      setMessage(`This email is already subscribed to the newsletter.`)
+    } else if (!res.ok) {
       setError(true)
       setMessage(`There was an error subscribing to the list.`)
-      return Promise.reject(`There was an error subscribing to the list.`)
+    } else {
+      inputEmail.current.value = ''
+      inputName.current.value = ''
+      setError(false)
+      setSubscribed(true)
+      setMessage('Thank you for subscribing! Please check your inbox.')
     }
-
-    inputEmail.current.value = ''
-    inputName.current.value = ''
-    setError(false)
-    setSubscribed(true)
-    setMessage('Thank you for subscribing! Please check your inbox.')
   }
 
   return (
@@ -77,7 +117,6 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
               <p className="text-sm text-ui-body opacity-80 leading-none mb-3">
                 What do you go by?
               </p>
-              {/* linear-gradient(180deg, rgba(79, 64, 63, 0.03) 0%, rgba(79, 64, 63, 0.00) 100%), #FFF) */}
               <input
                 type="text"
                 className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)]`}
@@ -101,18 +140,24 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
                 type="email"
                 autoComplete="email"
                 autoCapitalize="none"
-                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)]`}
+                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] ${
+                  emailError ? 'border-red-500' : ''
+                }`}
                 id={`input-email-${unique}`}
                 name="email_address"
                 ref={inputEmail}
                 required
                 disabled={subscribed}
+                onChange={() => setEmailError('')}
               />
+              {emailError && (
+                <p className="text-red-500 text-sm mt-1">{emailError}</p>
+              )}
             </div>
           </div>
           <div className="flex flex-col flex-col-reverse @sm:flex-row gap-4 items-center justify-between">
             <p className="m-0 p-0 text-fern-600 flex-1 text-center @sm:text-left">
-              Join 700+ designers
+              Join {subscriberCount !== null ? `${subscriberCount.toLocaleString()}+` : '700+'} designers
             </p>
             <Button
               theme="dandelion"
