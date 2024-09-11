@@ -1,26 +1,51 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Increment from './increment'
+import { Increment } from './increment'
 
 const ViewCounter = ({
   slug,
-  allViews,
+  initialViews,
   trackView,
-  className = 'text-neutral-600',
+  className = 'text-fern-1100',
 }) => {
-  const viewsForSlug = allViews && allViews.find((view) => view.slug === slug)
-  const number = new Number(viewsForSlug?.view_count || 0)
+  const [views, setViews] = useState(initialViews)
+  const [isUpdated, setIsUpdated] = useState(false)
 
   useEffect(() => {
-    let isIncremented = true
+    const incrementView = async () => {
+      if (trackView) {
+        const hasViewed = sessionStorage.getItem(`viewed-${slug}`)
+        if (!hasViewed) {
+          try {
+            const updatedViews = await Increment(slug)
+            if (updatedViews !== null && updatedViews > views) {
+              setViews(updatedViews)
+              setIsUpdated(true)
+              setTimeout(() => setIsUpdated(false), 2000)
+              sessionStorage.setItem(`viewed-${slug}`, 'true')
+            }
+          } catch (error) {
+            console.error('Error updating view count:', error)
+          }
+        }
+      }
+    }
 
-    if (trackView & isIncremented) Increment(slug)
+    incrementView()
+  }, [slug, trackView, views])
 
-    return () => (isIncremented = false)
-  }, [slug, trackView])
-
-  return <>{`${number.toLocaleString()} views`}</>
+  return (
+    <span
+      className={`${className} ${
+        isUpdated
+          ? 'text-grass-500 transition-colors duration-1000 ease-out'
+          : ''
+      }`}
+    >
+      {`${views.toLocaleString()} views`}
+    </span>
+  )
 }
 
 export default ViewCounter

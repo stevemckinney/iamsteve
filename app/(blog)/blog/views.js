@@ -4,13 +4,19 @@ import { cache } from 'react'
 import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 
-const getAllPageViews = cache(async () => {
+export const getAllPageViews = cache(async () => {
   const supabase = createServerComponentClient({ cookies })
-  const { data: pages } = await supabase
+  const { data: pages, error } = await supabase
     .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
     .select('slug, view_count')
 
-  return pages
-})
+  if (error) {
+    console.error('Error fetching page views:', error)
+    return {}
+  }
 
-export default getAllPageViews
+  return pages.reduce((acc, page) => {
+    acc[page.slug] = page.view_count
+    return acc
+  }, {})
+})

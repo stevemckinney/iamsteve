@@ -31,7 +31,7 @@ import Icon from '@/components/icon'
 import Link from '@/components/link'
 import NewsletterForm from '@/components/newsletter-form'
 
-import getAllPageViews from '../views'
+import { getAllPageViews } from '../views'
 import ViewCounter from '../counter'
 
 const editUrl = (fileName) =>
@@ -98,6 +98,16 @@ export async function generateStaticParams() {
 export default async function PostPage({ params }) {
   const post = await getPostFromParams(params)
   const allViews = await getAllPageViews()
+
+  console.log('All views:', allViews)
+  console.log('Post slug:', post.slug)
+
+  // Remove the '/blog/' prefix if it exists
+  const cleanSlug = post.slug.replace(/^\/blog\//, '')
+  const initialViews = allViews[cleanSlug] || 0
+
+  console.log('Clean slug:', cleanSlug)
+  console.log('Initial views for', cleanSlug, ':', initialViews)
 
   const currentYear = new Date().getFullYear()
   const postYear = new Date(post.date).getFullYear()
@@ -200,9 +210,9 @@ export default async function PostPage({ params }) {
             </div>
             <Badge size={16} theme={`text`} iconStart={`views`}>
               <ViewCounter
-                allViews={allViews}
-                slug={post.slugAsParams}
-                trackView
+                slug={cleanSlug}
+                initialViews={initialViews}
+                trackView={true}
               />
             </Badge>
           </div>
