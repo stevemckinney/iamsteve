@@ -37,11 +37,15 @@ export default function Badge({
   href,
   className = 'badge',
 }) {
+  const small = 'gap-2'
+  const large = 'gap-3'
+  const sizing = size === 16 ? small : large
+
   if (href) {
     return (
       <Link
         href={href}
-        className={`flex flex-[0_0_auto] gap-3 font-variation-medium group/badge transition-all duration-100 ease-linear text-fern-1100 ${hoverVariants[theme]} ${className}`}
+        className={`flex flex-[0_0_auto] font-variation-medium group/badge transition-all duration-100 ease-linear text-fern-1100 ${sizing} ${hoverVariants[theme]} ${className}`}
       >
         <Badge.Icon theme={theme} icon={iconStart} size={size} />
         <Badge.Text size={size}>{children}</Badge.Text>
@@ -50,7 +54,7 @@ export default function Badge({
   } else {
     return (
       <p
-        className={`flex flex-[0_0_auto] gap-3 font-variation-medium text-fern-1100 ${className}`}
+        className={`flex flex-[0_0_auto] font-variation-medium text-fern-1100 ${sizing} ${className}`}
       >
         <Badge.Icon size={size} theme={theme} icon={iconStart} />
         <Badge.Text size={size}>{children}</Badge.Text>
@@ -82,7 +86,7 @@ export function BadgeText({ children, size, className = 'ct' }) {
 
   return (
     <span
-      className={`${sizing} transition-all duration-100 ease-linear font-body leading-none rounded flex items-center text-current ${className}`}
+      className={`${sizing} transition-all duration-100 ease-linear font-body leading-none rounded flex items-center text-current relative top-px ${className}`}
     >
       {children}
     </span>
