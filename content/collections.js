@@ -83,6 +83,13 @@ const collections = [
     slugAsParams: 'accessibility',
     icon: 'accessibility',
   },
+  {
+    id: 13,
+    title: 'Writing',
+    slug: '/collections/writing',
+    slugAsParams: 'writing',
+    icon: 'bookmark',
+  },
 ]
 
 const defaultKind = 'website'
@@ -91,22 +98,23 @@ const kinds = [
   {
     id: 'website',
     title: 'Website',
-    icon: 'globe',
+    // icon: 'globe',
+    icon: 'folder',
   },
   {
     id: 'article',
     title: 'Article',
-    icon: 'document',
+    icon: 'pen',
   },
   {
     id: 'resource',
     title: 'Resource',
-    icon: 'book',
+    icon: 'bookmark',
   },
   {
     id: 'tool',
     title: 'Tool',
-    icon: 'tool',
+    icon: 'frame',
   },
 ]
 

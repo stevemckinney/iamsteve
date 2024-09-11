@@ -37,14 +37,12 @@ export default function CollectionsList({ groupedCollections }) {
                       >
                         <a
                           href={item.url}
-                          className="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 transition duration-200 linear items-baseline py-2.5 px-4 w-full [mask:linear-gradient(90deg,black_80%,transparent)]"
+                          className="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 transition duration-200 linear items-center py-2.5 px-4 w-full [mask:linear-gradient(90deg,black_80%,transparent)]"
                           rel="noopener noreferrer"
                           target="_blank"
                         >
-                          <span className="flex items-center gap-2">
-                            <Icon icon={kind.icon} size={16} className="text-fern-700 shrink-0" />
-                            {item.title}
-                          </span>
+                          <Icon icon={kind.icon} size={16} className="text-fern-700 shrink-0" />
+                          {item.title}
                           <span className="text-fern-1100/40 group-hover:text-fern-1100/80 transition duration-200 linear line-clamp-1">
                             {item.url
                               .replace('https://', '')
