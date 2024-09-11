@@ -315,8 +315,8 @@ const Sprite16 = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="autolayout / v-16" viewBox="0 0 16 16">
-        <g className="autolayout / v">
+      <symbol id="autolayout-v-16" viewBox="0 0 16 16">
+        <g className="autolayout-v">
           <rect
             width="12"
             height="4"
@@ -335,8 +335,8 @@ const Sprite16 = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="autolayout / h-16" viewBox="0 0 16 16">
-        <g className="autolayout / h">
+      <symbol id="autolayout-h-16" viewBox="0 0 16 16">
+        <g className="autolayout-h">
           <rect
             width="4"
             height="12"
@@ -355,8 +355,8 @@ const Sprite16 = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="component / instance-16" viewBox="0 0 16 16">
-        <g className="component / instance">
+      <symbol id="instance-16" viewBox="0 0 16 16">
+        <g className="instance">
           <path
             d="M7.293 1.636a1 1 0 0 1 1.414 0l5.657 5.657a1 1 0 0 1 0 1.414l-5.657 5.657a1 1 0 0 1-1.414 0L1.636 8.707a1 1 0 0 1 0-1.414l5.657-5.657Z"
             className="fill-white stroke-current stroke-2 sl-r"
