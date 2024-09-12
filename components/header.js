@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <>
       <header
-        className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end sticky z-[200]"
+        className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-10"
         id="top"
       >
         <div
