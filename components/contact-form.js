@@ -62,7 +62,7 @@ const ContactForm = () => {
         netlify="true"
         name="contact-form"
         method="POST"
-        action="/thank-you"
+        action="/success"
       >
         <input type="hidden" name="form-name" value="contact-form" />
 
