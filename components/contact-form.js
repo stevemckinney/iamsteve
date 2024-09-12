@@ -26,14 +26,16 @@ const Input = ({ ...props }) => (
 )
 
 const ContactForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState(null)
   const [isRateLimited, setIsRateLimited] = useState(false)
   const [toastOpen, setToastOpen] = useState(false)
   const [wordCount, setWordCount] = useState(0)
 
   useEffect(() => {
     checkRateLimit()
+    const urlParams = new URLSearchParams(window.location.search)
+    if (urlParams.get('success') === 'true') {
+      setToastOpen(true)
+    }
   }, [])
 
   const checkRateLimit = () => {
@@ -48,46 +50,6 @@ const ContactForm = () => {
     submissions.push(Date.now())
     localStorage.setItem('formSubmissions', JSON.stringify(submissions))
     checkRateLimit()
-  }
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    if (isRateLimited) return
-
-    setIsSubmitting(true)
-    setSubmitStatus(null)
-
-    const formData = new FormData(event.target)
-
-    // Check if the honeypot field is filled
-    if (formData.get('title')) {
-      console.log('Bot submission detected')
-      setIsSubmitting(false)
-      return
-    }
-
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-
-      if (response.ok) {
-        setSubmitStatus('success')
-        setToastOpen(true)
-        event.target.reset()
-        setWordCount(0)
-        updateRateLimit()
-      } else {
-        setSubmitStatus('error')
-      }
-    } catch (error) {
-      console.error('Error:', error)
-      setSubmitStatus('error')
-    } finally {
-      setIsSubmitting(false)
-    }
   }
 
   const handleMessageChange = (event) => {
@@ -108,9 +70,10 @@ const ContactForm = () => {
       <Form.Root
         className="w-full grid grid-cols-5 gap-8"
         data-netlify="true"
+        netlify
         name="contact"
         method="POST"
-        onSubmit={handleSubmit}
+        action="/contact?success=true"
       >
         <input type="hidden" name="form-name" value="contact" />
 
@@ -130,12 +93,12 @@ const ContactForm = () => {
 
         <Form.Field className="col-span-2 flex flex-col relative" name="name">
           <div className="flex flex-col items-baseline justify-between">
-            <Label>Name</Label>
+            <Label htmlFor="name">Name</Label>
             <p className="text-sm text-ui-body opacity-80 leading-none mb-3">
               What do you go by?
             </p>
           </div>
-          <Input type="text" required />
+          <Input type="text" required name="name" id="name" />
           <Form.Message
             className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
             match="valueMissing"
@@ -146,12 +109,12 @@ const ContactForm = () => {
 
         <Form.Field className="col-span-3 flex flex-col relative" name="email">
           <div className="flex flex-col items-baseline justify-between">
-            <Label>Email</Label>
+            <Label htmlFor="email">Email</Label>
             <p className="text-sm text-ui-body opacity-80 leading-none mb-3">
               So I can reply to you
             </p>
           </div>
-          <Input type="email" required />
+          <Input type="email" required name="email" id="email" />
           <Form.Message
             className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
             match="valueMissing"
@@ -168,7 +131,7 @@ const ContactForm = () => {
 
         <Form.Field className="col-span-5 flex flex-col relative" name="message">
           <div className="flex flex-col items-baseline justify-between">
-            <Label>Message</Label>
+            <Label htmlFor="message">Message</Label>
             <p className="text-sm text-ui-body opacity-80 leading-none mb-3">
               How can I help?
             </p>
@@ -177,6 +140,8 @@ const ContactForm = () => {
             <textarea
               className="form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 min-h-[11.5rem] focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] data-[invalid=true]:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_#E5542B,_0_0_0_5px_rgb(229_84_43_/_0.08)]"
               required
+              name="message"
+              id="message"
               onChange={handleMessageChange}
             />
           </Form.Control>
@@ -200,18 +165,15 @@ const ContactForm = () => {
         <Form.Submit asChild>
           <button
             className="button-dandelion self-start min-w-fit font-ui text-base/tight lowercase text-center button-dandelion button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto"
-            disabled={isSubmitting || wordCount < MIN_WORD_COUNT}
+            disabled={wordCount < MIN_WORD_COUNT}
           >
-            {isSubmitting ? 'Sending...' : 'Send'}
+            Send
           </button>
         </Form.Submit>
       </Form.Root>
 
-      {submitStatus === 'error' && (
-        <p className="text-red-600 mt-4">Failed to send message. Please try again.</p>
-      )}
       <Toast.Root
-        className="shadow-placed col-prose flex flex-col gap-3 leading-tight bg-cornflour-0 rounded-md p-4 data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut relative"
+        className="shadow-placed col-prose flex flex-col gap-1 leading-tight bg-cornflour-0 rounded-md p-4 data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut relative"
         open={toastOpen}
         onOpenChange={setToastOpen}
       >
