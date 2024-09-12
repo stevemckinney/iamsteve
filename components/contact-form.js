@@ -211,7 +211,7 @@ const ContactForm = () => {
         <p className="text-red-600 mt-4">Failed to send message. Please try again.</p>
       )}
       <Toast.Root
-        className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4 data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut"
+        className="shadow-placed col-prose flex flex-col gap-3 leading-tight bg-cornflour-0 rounded-md p-4 data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut relative"
         open={toastOpen}
         onOpenChange={setToastOpen}
       >
