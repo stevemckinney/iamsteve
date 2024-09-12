@@ -16,6 +16,15 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  // Add the async rewrites function here
+  async rewrites() {
+    return [
+      {
+        source: '/feed',
+        destination: '/feed.xml',
+      },
+    ]
+  },
 }
 
 module.exports = withContentlayer(nextConfig)

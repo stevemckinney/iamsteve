@@ -1,7 +1,7 @@
 import siteMetadata from '@/content/metadata'
 import { allPosts } from 'contentlayer/generated'
 
-export default async function sitemap() {
+export default async function generateSitemap() {
   let posts = allPosts
     .filter((post) => post.status === 'open')
     .map((post) => ({

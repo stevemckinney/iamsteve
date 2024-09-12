@@ -51,11 +51,7 @@ async function getPostFromParams(params) {
   const post = allPosts.find((post) => post.slugAsParams === slug)
   console.log('Found post:', post ? post.title : 'No post found')
 
-  if (!post) {
-    return null
-  }
-
-  return post
+  return post // This might be null if no post is found
 }
 
 export async function generateMetadata({ params, searchParams }, parent) {
@@ -102,6 +98,12 @@ export default async function PostPage({ params }) {
   console.log('Received params:', params)
   const post = await getPostFromParams(params)
   console.log('Retrieved post:', post ? post.title : 'No post found')
+
+  if (!post) {
+    console.log('Post not found, redirecting to 404')
+    notFound()
+  }
+
   const allViews = await getAllPageViews()
 
   // Remove the '/blog/' prefix if it exists
@@ -115,11 +117,6 @@ export default async function PostPage({ params }) {
   const isOldCodePost = post.categories.includes('Code') && yearsAgo > 2
 
   const date = parseISO(post.date)
-
-  if (!post) {
-    console.log('Post not found, redirecting to 404')
-    notFound()
-  }
 
   const jsonLD = [
     post.structuredData,
