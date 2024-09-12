@@ -45,13 +45,10 @@ export const revalidate = 86400
 import styles from './post.module.scss'
 
 async function getPostFromParams(params) {
-  console.log('Params received:', params)
   const slug = params?.slug?.join('/')
-  console.log('Constructed slug:', slug)
   const post = allPosts.find((post) => post.slugAsParams === slug)
-  console.log('Found post:', post ? post.title : 'No post found')
 
-  return post // This might be null if no post is found
+  return post
 }
 
 export async function generateMetadata({ params, searchParams }, parent) {
@@ -95,9 +92,7 @@ export async function generateStaticParams() {
 }
 
 export default async function PostPage({ params }) {
-  console.log('Received params:', params)
   const post = await getPostFromParams(params)
-  console.log('Retrieved post:', post ? post.title : 'No post found')
 
   if (!post) {
     console.log('Post not found, redirecting to 404')
