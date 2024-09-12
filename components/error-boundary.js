@@ -5,37 +5,42 @@ import React from 'react'
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props)
-
-    // Define a state variable to track whether is an error or not
     this.state = { hasError: false }
   }
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI
 
+  static getDerivedStateFromError(error) {
     return { hasError: true }
   }
+
   componentDidCatch(error, errorInfo) {
-    // You can use your own error logging service here
-    console.log({ error, errorInfo })
+    console.error('ErrorBoundary caught an error:', error, errorInfo)
   }
+
+  resetErrorBoundary = () => {
+    this.setState({ hasError: false })
+  }
+
   render() {
-    // Check if the error is thrown
     if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return (
-        <div>
-          <h2>Oops, there is an error!</h2>
+      return this.props.fallback || (
+        <div
+          role="alert"
+          aria-live="assertive"
+          className="flex flex-col gap-2 py-4 px-6 bg-rio-150"
+        >
+          <h2 className="block font-medium py-1.5 text-center text-fern-1100">
+            {this.props.errorMessage || "Oops, there was an error!"}
+          </h2>
           <button
             type="button"
-            onClick={() => this.setState({ hasError: false })}
+            onClick={this.resetErrorBoundary}
+            className="px-4 py-2 bg-fern-600 text-white rounded hover:bg-fern-700 transition duration-200 ease-in"
           >
             Try again?
           </button>
         </div>
       )
     }
-
-    // Return children components in case of no error
 
     return this.props.children
   }

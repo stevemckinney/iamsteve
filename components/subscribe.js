@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import ErrorBoundary from '@/components/error-boundary'
 import NewsletterForm from '@/components/newsletter-form'
 
 const Subscribe = ({
@@ -24,7 +25,9 @@ const Subscribe = ({
           out. Unsubscribe at anytime.
         </p>
       </header>
-      <NewsletterForm unique={unique} />
+      <ErrorBoundary>
+        <NewsletterForm unique={unique} />
+      </ErrorBoundary>
       <p className="text-ui-body text-balance text-sm text-center max-w-[55ch]">
         You will receive two emails to begin with. One to confirm your
         subscription and then your welcome email—thanks in advance!

@@ -6,6 +6,7 @@ import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
 import Card from '@/components/card'
 import Campaigns from './campaigns'
+import ErrorBoundary from '@/components/error-boundary'
 import { allPosts } from 'contentlayer/generated'
 
 export default async function NewsletterPage({ data, Post }) {
@@ -40,7 +41,9 @@ export default async function NewsletterPage({ data, Post }) {
                 out—if that’s what you prefer. This happens monthly at most. You
                 can unsubscribe anytime.
               </p>
-              <NewsletterForm />
+              <ErrorBoundary>
+                <NewsletterForm />
+              </ErrorBoundary>
             </div>
           </section>
           <Notepad>
