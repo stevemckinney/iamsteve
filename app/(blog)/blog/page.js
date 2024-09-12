@@ -51,14 +51,6 @@ export default async function BlogIndex({ params }) {
 
   return (
     <>
-      <Image
-        src="/images/illustration/pencil-mono.svg"
-        width={962}
-        height={46}
-        className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden`}
-        alt=" "
-        aria-hidden="true"
-      />
       <Header>
         <Column className="md:col-span-1">
           <Title>Blog</Title>
@@ -69,7 +61,7 @@ export default async function BlogIndex({ params }) {
         {categories && (
           <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories -mb-2 lg:-mb-3">
             {categories.map((category) => {
-              if (category.exclude === true || category.parent === true) return
+              if (category.exclude === true || category.parent === true) return null
               return (
                 <li className="self-end" key={category.title}>
                   <Category

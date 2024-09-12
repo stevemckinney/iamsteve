@@ -15,8 +15,6 @@ const Pagination = ({ total, current, category }) => {
   const linkState = `transition duration-200 hover:text-dandelion-600`
   const linkDisabled = `${link} cursor-auto disabled:text-ui-body`
 
-  // console.log(pathname, categoryPath)
-
   return (
     <nav className="flex justify-between items-center -my-2 relative">
       {!prevPage && (
@@ -51,6 +49,7 @@ const Pagination = ({ total, current, category }) => {
       {!nextPage && (
         <button className={`${linkDisabled}`} disabled={!nextPage}>
           Older
+          <Icon icon="angle-right" className="stroke-current" />
         </button>
       )}
       {nextPage && (
