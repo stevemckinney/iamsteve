@@ -45,11 +45,14 @@ export const revalidate = 86400
 import styles from './post.module.scss'
 
 async function getPostFromParams(params) {
+  console.log('Params received:', params)
   const slug = params?.slug?.join('/')
+  console.log('Constructed slug:', slug)
   const post = allPosts.find((post) => post.slugAsParams === slug)
+  console.log('Found post:', post ? post.title : 'No post found')
 
   if (!post) {
-    null
+    return null
   }
 
   return post
@@ -96,7 +99,9 @@ export async function generateStaticParams() {
 }
 
 export default async function PostPage({ params }) {
+  console.log('Received params:', params)
   const post = await getPostFromParams(params)
+  console.log('Retrieved post:', post ? post.title : 'No post found')
   const allViews = await getAllPageViews()
 
   // Remove the '/blog/' prefix if it exists
@@ -112,6 +117,7 @@ export default async function PostPage({ params }) {
   const date = parseISO(post.date)
 
   if (!post) {
+    console.log('Post not found, redirecting to 404')
     notFound()
   }
 
