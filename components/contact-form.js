@@ -11,7 +11,10 @@ const MIN_WORD_COUNT = 8 // Minimum word count for the message
 const FORM_DISABLED = true // Set this to true to disable the form
 
 const Label = ({ children, ...props }) => (
-  <Form.Label className="font-ui text-base lowercase text-fern-1100 leading-none mb-1" {...props}>
+  <Form.Label
+    className="font-ui text-base lowercase text-fern-1100 leading-none mb-1"
+    {...props}
+  >
     {children}
   </Form.Label>
 )
@@ -39,21 +42,30 @@ const ContactForm = () => {
   }, [])
 
   const checkRateLimit = () => {
-    const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]')
+    const submissions = JSON.parse(
+      localStorage.getItem('formSubmissions') || '[]'
+    )
     const now = Date.now()
-    const recentSubmissions = submissions.filter(time => now - time < RATE_LIMIT_DURATION)
+    const recentSubmissions = submissions.filter(
+      (time) => now - time < RATE_LIMIT_DURATION
+    )
     setIsRateLimited(recentSubmissions.length >= MAX_SUBMISSIONS)
   }
 
   const updateRateLimit = () => {
-    const submissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]')
+    const submissions = JSON.parse(
+      localStorage.getItem('formSubmissions') || '[]'
+    )
     submissions.push(Date.now())
     localStorage.setItem('formSubmissions', JSON.stringify(submissions))
     checkRateLimit()
   }
 
   const handleMessageChange = (event) => {
-    const words = event.target.value.trim().split(/\s+/).filter(word => word.length > 0)
+    const words = event.target.value
+      .trim()
+      .split(/\s+/)
+      .filter((word) => word.length > 0)
     setWordCount(words.length)
   }
 
@@ -129,7 +141,10 @@ const ContactForm = () => {
           </Form.Message>
         </Form.Field>
 
-        <Form.Field className="col-span-5 flex flex-col relative" name="message">
+        <Form.Field
+          className="col-span-5 flex flex-col relative"
+          name="message"
+        >
           <div className="flex flex-col items-baseline justify-between">
             <Label htmlFor="message">Message</Label>
             <p className="text-sm text-ui-body opacity-80 leading-none mb-3">
@@ -146,7 +161,8 @@ const ContactForm = () => {
             />
           </Form.Control>
           <p className="text-sm text-ui-body opacity-80 leading-none mt-3">
-            Enter at least {MIN_WORD_COUNT} words. Currently used: {wordCount} {wordCount === 1 ? 'word' : 'words'}.
+            Enter at least {MIN_WORD_COUNT} words. Currently used: {wordCount}{' '}
+            {wordCount === 1 ? 'word' : 'words'}.
           </p>
           <Form.Message
             className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
@@ -177,13 +193,9 @@ const ContactForm = () => {
         open={toastOpen}
         onOpenChange={setToastOpen}
       >
-        <Toast.Title className="font-medium">
-          Message sent
-        </Toast.Title>
+        <Toast.Title className="font-medium">Message sent</Toast.Title>
         <Toast.Description asChild>
-          <p className="m-0">
-            Your message has been sent successfully!
-          </p>
+          <p className="m-0">Your message has been sent successfully!</p>
         </Toast.Description>
         <Toast.Action asChild altText="Close toast">
           <button className="w-6 h-6 flex items-center justify-center absolute top-0 right-0">

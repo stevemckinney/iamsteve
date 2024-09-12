@@ -34,7 +34,6 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
     fetchSubscriberCount()
   }, [])
 
-
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     return re.test(String(email).toLowerCase())
@@ -76,7 +75,10 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
     if (res.status === 500) {
       setError(true)
       setMessage(`The server cannot be reached to submit your request.`)
-    } else if (res.status === 400 && data.error === 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS') {
+    } else if (
+      res.status === 400 &&
+      data.error === 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS'
+    ) {
       setError(true)
       setMessage(`This email is already subscribed to the newsletter.`)
     } else if (!res.ok) {
@@ -160,7 +162,11 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
           </div>
           <div className="flex flex-col flex-col-reverse @sm:flex-row gap-4 items-center justify-between">
             <p className="m-0 p-0 text-fern-600 flex-1 text-center @sm:text-left">
-              Join {subscriberCount !== null ? `${subscriberCount.toLocaleString()}+` : '700+'} designers
+              Join{' '}
+              {subscriberCount !== null
+                ? `${subscriberCount.toLocaleString()}+`
+                : '700+'}{' '}
+              designers
             </p>
             <Button
               theme="dandelion"

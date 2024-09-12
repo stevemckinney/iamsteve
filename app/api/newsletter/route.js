@@ -30,7 +30,11 @@ export const GET = async () => {
   const currentTime = Date.now()
 
   // Check if cache is valid
-  if (cachedSubscriberCount && lastFetchTime && currentTime - lastFetchTime < CACHE_DURATION) {
+  if (
+    cachedSubscriberCount &&
+    lastFetchTime &&
+    currentTime - lastFetchTime < CACHE_DURATION
+  ) {
     return NextResponse.json({ subscriberCount: cachedSubscriberCount })
   }
 
@@ -45,7 +49,10 @@ export const GET = async () => {
     return NextResponse.json({ subscriberCount })
   } catch (error) {
     console.error('Failed to fetch subscriber count:', error)
-    return NextResponse.json({ error: 'Failed to fetch subscriber count' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Failed to fetch subscriber count' },
+      { status: 500 }
+    )
   }
 }
 
@@ -82,9 +89,15 @@ export const POST = async (req) => {
     if (res.ok) {
       return NextResponse.json({ success: true })
     } else if (data.error.code === 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS') {
-      return NextResponse.json({ error: 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS' }, { status: 400 })
+      return NextResponse.json(
+        { error: 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS' },
+        { status: 400 }
+      )
     } else {
-      return NextResponse.json({ error: data.error.message }, { status: res.status })
+      return NextResponse.json(
+        { error: data.error.message },
+        { status: res.status }
+      )
     }
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })

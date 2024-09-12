@@ -8,7 +8,7 @@ export const Increment = cache(async (slug) => {
     process.env.NEXT_PUBLIC_DB_VIEWS_RPC,
     {
       page_slug: slug,
-      table_name: process.env.NEXT_PUBLIC_DB_VIEWS_TABLE
+      table_name: process.env.NEXT_PUBLIC_DB_VIEWS_TABLE,
     }
   )
 
