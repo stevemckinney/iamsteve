@@ -113,33 +113,62 @@ export default async function PostPage({ params }) {
 
   const date = parseISO(post.date)
 
-  const jsonLD = [
-    post.structuredData,
-    {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'iamsteve.me',
-          item: `${siteMetadata.siteUrl}`,
+  const jsonLD = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `${siteMetadata.siteUrl}${post.slug}#article`,
+        isPartOf: {
+          '@id': `${siteMetadata.siteUrl}/#website`
         },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Blog',
-          item: `${siteMetadata.siteUrl}/blog`,
+        author: {
+          '@type': 'Person',
+          name: siteMetadata.author,
+          '@id': `${siteMetadata.siteUrl}/#person`
         },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: `${post.title}`,
-          item: `${siteMetadata.siteUrl}/blog/${post.slugAsParams}`,
+        headline: post.title,
+        datePublished: post.date,
+        dateModified: post.lastmod,
+        description: post.summary,
+        image: {
+          '@type': 'ImageObject',
+          url: post.ogImage
         },
-      ],
-    },
-  ]
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `${siteMetadata.siteUrl}${post.slug}`
+        },
+        publisher: {
+          '@id': `${siteMetadata.siteUrl}/#organization`
+        }
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${siteMetadata.siteUrl}${post.slug}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'iamsteve.me',
+            item: `${siteMetadata.siteUrl}`
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Blog',
+            item: `${siteMetadata.siteUrl}/blog`
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: post.title,
+            item: `${siteMetadata.siteUrl}${post.slug}`
+          }
+        ]
+      }
+    ]
+  }
 
   return (
     <>
@@ -171,7 +200,7 @@ export default async function PostPage({ params }) {
                   </strong>
                 </p>
                 <p className="p-0 m-0 font-body text-sm text-cornflour-900">
-                  There’s a chance things are out of date or no longer reflect
+                  There's a chance things are out of date or no longer reflect
                   my views today
                 </p>
               </div>
@@ -348,7 +377,7 @@ export function Support() {
         <strong className="text-fern-1100 font-bold">
           Enjoying the reading experience?
         </strong>{' '}
-        There’s no ads, tracking or cookie banners, so your support is valued
+        There's no ads, tracking or cookie banners, so your support is valued
       </p>
       <Link
         href={siteMetadata.bmc}
