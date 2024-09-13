@@ -1,7 +1,5 @@
-import { notFound } from 'next/navigation'
 import Image from '@/components/image'
-import PageHeader from '@/components/page-header'
-import PageTitle from '@/components/page-title'
+import { Header, Title } from '@/components/page'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
 import Card from '@/components/card'
@@ -26,10 +24,12 @@ export default async function NewsletterPage({ data, Post }) {
         aria-hidden="true"
       />
       <article className="grid grid-cols-subgrid col-content pb-18 gap-y-18">
-        <PageHeader>
-          <PageTitle>Newsletter</PageTitle>
-          {/* <p className="text-2xl text-ui-body max-w-[34ch]">Subscribe</p> */}
-        </PageHeader>
+        <Header className="col-content">
+          <Title>Newsletter</Title>
+          {/* <p className="text-2xl text-ui-body max-w-[34ch]">
+            Get notified when new articles are published
+          </p> */}
+        </Header>
         <div className="col-start-content-start max-lg:col-end-content-end lg:col-span-5 xl:col-span-7 2xl:col-span-6 flex flex-col gap-8">
           <section className="flex flex-col gap-4">
             <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0">
