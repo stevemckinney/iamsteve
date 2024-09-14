@@ -48,7 +48,12 @@ export default async function Home() {
       <Hero />
       <main className="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18" id="content">
         <Frame id="latest">
-          <LatestPosts posts={postsByDate} />
+          <LatestPosts 
+            posts={postsByDate} 
+            title="What’s new"
+            linkText="View the archive" 
+            linkHref="/blog"
+          />
         </Frame>
 
         <Frame id="popular-design">
