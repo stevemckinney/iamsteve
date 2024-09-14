@@ -30,13 +30,17 @@ const getData = cache(async () => {
   }))
 
   const mergedData = mergeDataBySlug(postsWithViews, allPosts)
-    .sort((a, b) => b.view_count - a.view_count)
     .filter((post) => post.status === 'open')
+    .sort((a, b) => (b.view_count || 0) - (a.view_count || 0))
 
   return {
     postsByDate: postsByDate.slice(0, 4),
-    design: mergedData.filter((post) => post.categories.includes('Design')).slice(0, 6),
-    code: mergedData.filter((post) => post.categories.includes('Code')).slice(0, 6),
+    design: mergedData
+      .filter((post) => post.categories.includes('Design'))
+      .slice(0, 6),
+    code: mergedData
+      .filter((post) => post.categories.includes('Code'))
+      .slice(0, 6),
   }
 })
 
