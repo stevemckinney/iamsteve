@@ -102,26 +102,6 @@ export default async function PostPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
       <header className="col-content lg:col-container lg:col-start-2 lg:col-end-9 xl:col-start-3 xl:col-end-11 lg:row-start-1 lg:row-span-1 flex flex-col max-lg:pt-12 gap-y-4 mb-12">
-        {isOldCodePost && (
-          <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
-            <Icon
-              icon="square-info"
-              className="text-cornflour-900 flex-[0_0_auto]"
-            />
-            <div className="flex flex-col">
-              <p className="p-0 m-0 font-body text-sm text-cornflour-900">
-                <strong>
-                  This post was published {yearsAgo}{' '}
-                  {yearsAgo === 1 ? 'year' : 'years'} ago
-                </strong>
-              </p>
-              <p className="p-0 m-0 font-body text-sm text-cornflour-900">
-                There's a chance things are out of date or no longer reflect my
-                views today
-              </p>
-            </div>
-          </div>
-        )}
         <Badge size={16} theme="text" iconStart="calendar">
           <time dateTime={post.date} className="date">
             {format(date, 'do LLL yyyy')}
@@ -162,6 +142,28 @@ export default async function PostPage({ params }) {
         id="article"
       >
         <PostImage post={post} />
+
+        {isOldCodePost && (
+          <div className="col-content lg:col-container lg:col-start-2 lg:col-end-9 xl:col-start-3 xl:col-end-11 shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
+            <Icon
+              icon="square-info"
+              className="text-cornflour-900 flex-[0_0_auto]"
+            />
+            <div className="flex flex-col">
+              <p className="p-0 m-0 font-body text-sm text-cornflour-900">
+                <strong>
+                  This post was published {yearsAgo}{' '}
+                  {yearsAgo === 1 ? 'year' : 'years'} ago
+                </strong>
+              </p>
+              <p className="p-0 m-0 font-body text-sm text-cornflour-900">
+                There's a chance things are out of date or no longer reflect my
+                views today
+              </p>
+            </div>
+          </div>
+        )}
+
         <PostMdx code={post.body.code} />
         <Badge
           href={editUrl(post._raw.sourceFileName)}
