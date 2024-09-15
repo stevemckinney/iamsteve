@@ -11,7 +11,8 @@ export default async function Sidebar({ params }) {
 
   return (
     <aside
-      aria-label="Table of contents and newsletter subscription form" className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col lg:gap-12 lg:pb-16 lg:px-6 lg:-mx-6 lg:[mask-image:linear-gradient(180deg,transparent,_#000_64px,#000_calc(100%_-_10vh),_transparent)]"
+      aria-label="Table of contents and newsletter subscription form"
+      className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col lg:gap-12 lg:pb-16 lg:px-6 lg:-mx-6 lg:[mask-image:linear-gradient(180deg,transparent,_#000_64px,#000_calc(100%_-_10vh),_transparent)]"
     >
       <section
         className="flex flex-col gap-2 relative"

@@ -4,9 +4,5 @@ import Category from '@/components/category'
 import categories from '@/content/categories'
 
 export default function BlogLayout({ children }) {
-  return (
-    <>
-      {children}
-    </>
-  )
+  return <>{children}</>
 }

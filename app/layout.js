@@ -62,18 +62,19 @@ const jsonLD = {
       url: `${siteMetadata.siteUrl}`,
       logo: {
         '@type': 'ImageObject',
-        url: `${siteMetadata.siteUrl}/images/logo.svg`
-      }
+        url: `${siteMetadata.siteUrl}/images/logo.svg`,
+      },
     },
     {
       '@type': 'WebSite',
       '@id': `${siteMetadata.siteUrl}/#website`,
       url: `${siteMetadata.siteUrl}`,
       name: 'iamsteve',
-      description: 'Tips and tutorials about the design and build of web interfaces.',
+      description:
+        'Tips and tutorials about the design and build of web interfaces.',
       publisher: {
-        '@id': `${siteMetadata.siteUrl}/#organization`
-      }
+        '@id': `${siteMetadata.siteUrl}/#organization`,
+      },
     },
     {
       '@type': 'Person',
@@ -83,18 +84,18 @@ const jsonLD = {
       sameAs: [
         'https://twitter.com/irsteve',
         'https://instagram.com/stevemckinney',
-        'https://uk.linkedin.com/in/steve-mckinney-5b5836102'
+        'https://uk.linkedin.com/in/steve-mckinney-5b5836102',
       ],
       homeLocation: {
         '@type': 'City',
-        name: 'Manchester'
+        name: 'Manchester',
       },
       jobTitle: 'User interface designer',
       worksFor: {
-        '@id': `${siteMetadata.siteUrl}/#organization`
-      }
-    }
-  ]
+        '@id': `${siteMetadata.siteUrl}/#organization`,
+      },
+    },
+  ],
 }
 
 export const viewport = {

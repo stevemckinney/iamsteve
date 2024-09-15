@@ -120,12 +120,12 @@ export default async function PostPage({ params }) {
         '@type': 'Article',
         '@id': `${siteMetadata.siteUrl}${post.slug}#article`,
         isPartOf: {
-          '@id': `${siteMetadata.siteUrl}/#website`
+          '@id': `${siteMetadata.siteUrl}/#website`,
         },
         author: {
           '@type': 'Person',
           name: siteMetadata.author,
-          '@id': `${siteMetadata.siteUrl}/#person`
+          '@id': `${siteMetadata.siteUrl}/#person`,
         },
         headline: post.title,
         datePublished: post.date,
@@ -133,15 +133,15 @@ export default async function PostPage({ params }) {
         description: post.summary,
         image: {
           '@type': 'ImageObject',
-          url: post.ogImage
+          url: post.ogImage,
         },
         mainEntityOfPage: {
           '@type': 'WebPage',
-          '@id': `${siteMetadata.siteUrl}${post.slug}`
+          '@id': `${siteMetadata.siteUrl}${post.slug}`,
         },
         publisher: {
-          '@id': `${siteMetadata.siteUrl}/#organization`
-        }
+          '@id': `${siteMetadata.siteUrl}/#organization`,
+        },
       },
       {
         '@type': 'BreadcrumbList',
@@ -151,23 +151,23 @@ export default async function PostPage({ params }) {
             '@type': 'ListItem',
             position: 1,
             name: 'iamsteve.me',
-            item: `${siteMetadata.siteUrl}`
+            item: `${siteMetadata.siteUrl}`,
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Blog',
-            item: `${siteMetadata.siteUrl}/blog`
+            item: `${siteMetadata.siteUrl}/blog`,
           },
           {
             '@type': 'ListItem',
             position: 3,
             name: post.title,
-            item: `${siteMetadata.siteUrl}${post.slug}`
-          }
-        ]
-      }
-    ]
+            item: `${siteMetadata.siteUrl}${post.slug}`,
+          },
+        ],
+      },
+    ],
   }
 
   return (
@@ -176,7 +176,9 @@ export default async function PostPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
-      <article className={`isolate grid row-start-1 col-container grid-cols-subgrid relative`}>
+      <article
+        className={`isolate grid row-start-1 col-container grid-cols-subgrid relative`}
+      >
         <hr className="absolute z-[11] top-0 left-0 right-0 col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <Sidebar
           allViews={allViews}

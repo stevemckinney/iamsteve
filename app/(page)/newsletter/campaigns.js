@@ -16,26 +16,27 @@ const Campaigns = () => {
             'Content-Type': 'application/json',
           },
           next: { revalidate: 2592000 },
-        });
-        const data = await response.json();
-        setCampaigns(data.data);
-        setLoading(false);
+        })
+        const data = await response.json()
+        setCampaigns(data.data)
+        setLoading(false)
       } catch (error) {
-        console.error('Error fetching campaigns:', error);
-        setLoading(false);
+        console.error('Error fetching campaigns:', error)
+        setLoading(false)
       }
     }
     getCampaigns()
   }, [])
 
   if (isLoading) return <p>Loading...</p>
-  if (!campaigns || campaigns.length === 0) return <p>There are no previous issues</p>
+  if (!campaigns || campaigns.length === 0)
+    return <p>There are no previous issues</p>
 
   return (
     <ul className="flex flex-col -my-2">
       {campaigns.map((campaign) => {
-        if (campaign.status !== 'SENT') return null;
-        
+        if (campaign.status !== 'SENT') return null
+
         return (
           <li
             key={campaign.id}
@@ -56,10 +57,10 @@ const Campaigns = () => {
               </span>
             </div>
           </li>
-        );
+        )
       })}
     </ul>
-  );
+  )
 }
 
 export default Campaigns
