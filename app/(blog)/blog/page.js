@@ -18,6 +18,12 @@ import Image from '@/components/image'
 
 import categories from '@/content/categories'
 
+export const metadata = {
+  title: 'Blog archive',
+  description:
+    'Tips and tutorials about the design and build of web interfaces',
+}
+
 export const dynamic = 'force-static'
 export const revalidate = 86400
 const POSTS_PER_PAGE = 12
@@ -38,7 +44,7 @@ const getData = cache(async () => {
 export default async function BlogIndex({ params }) {
   const allData = await getData()
   const posts = allData.postsByDate
-  const pageNumber = 1
+  const pageNumber = params.page ? parseInt(params.page) : 1
   const paginatedPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
@@ -61,7 +67,8 @@ export default async function BlogIndex({ params }) {
         {categories && (
           <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories -mb-2 lg:-mb-3">
             {categories.map((category) => {
-              if (category.exclude === true || category.parent === true) return null
+              if (category.exclude === true || category.parent === true)
+                return null
               return (
                 <li className="self-end" key={category.title}>
                   <Category
@@ -90,6 +97,22 @@ export default async function BlogIndex({ params }) {
       <div className="col-content">
         <Pagination total={pagination.total} current={pagination.current} />
       </div>
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="RSS Feed"
+        href="/rss.xml"
+      />
     </>
   )
+}
+
+// Add a generateStaticParams function for static generation of paginated pages
+export async function generateStaticParams() {
+  const allData = await getData()
+  const totalPages = Math.ceil(allData.postsByDate.length / POSTS_PER_PAGE)
+
+  return Array.from({ length: totalPages }, (_, i) => ({
+    page: (i + 1).toString(),
+  }))
 }

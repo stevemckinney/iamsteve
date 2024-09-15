@@ -5,6 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-y: initial;
   }
 
   h1 {

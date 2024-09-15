@@ -53,17 +53,32 @@ export const metadata = {
 }
 
 const jsonLD = {
-  '@context': 'http://schema.org',
-  Organization: [
+  '@context': 'https://schema.org',
+  '@graph': [
     {
       '@type': 'Organization',
+      '@id': `${siteMetadata.siteUrl}/#organization`,
+      name: 'iamsteve',
       url: `${siteMetadata.siteUrl}`,
-      logo: `${siteMetadata.siteUrl}/images/logo.svg`,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteMetadata.siteUrl}/images/logo.svg`,
+      },
     },
-  ],
-  Person: [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteMetadata.siteUrl}/#website`,
+      url: `${siteMetadata.siteUrl}`,
+      name: 'iamsteve',
+      description:
+        'Tips and tutorials about the design and build of web interfaces.',
+      publisher: {
+        '@id': `${siteMetadata.siteUrl}/#organization`,
+      },
+    },
     {
       '@type': 'Person',
+      '@id': `${siteMetadata.siteUrl}/#person`,
       name: 'Steve McKinney',
       url: 'https://iamsteve.me',
       sameAs: [
@@ -74,6 +89,10 @@ const jsonLD = {
       homeLocation: {
         '@type': 'City',
         name: 'Manchester',
+      },
+      jobTitle: 'User interface designer',
+      worksFor: {
+        '@id': `${siteMetadata.siteUrl}/#organization`,
       },
     },
   ],
@@ -104,6 +123,8 @@ export default function RootLayout({ children }) {
         />
         <meta name="apple-mobile-web-app-title" content="iamsteve" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-title" content="iamsteve" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <link rel="stylesheet" href="https://use.typekit.net/bvl2qse.css" />
         <script
           type="application/ld+json"

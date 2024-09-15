@@ -12,5 +12,25 @@
   "background_color": "rgb(241 232 228)",
   "display": "standalone",
   "id": "/?source=pwa",
-  "start_url": "/?source=pwa"
+  "start_url": "/?source=pwa",
+  "shortcuts": [
+    {
+      "name": "Design",
+      "short_name": "Design",
+      "description": "View articles about design",
+      "url": "/category/design?source=pwa",
+      "icons": [
+        { "src": "/images/app-design.png", "sizes": "192x192" }
+      ]
+    },
+    {
+      "name": "Code",
+      "short_name": "Code",
+      "description": "View articles about coding",
+      "url": "/category/code?source=pwa",
+      "icons": [
+        { "src": "/images/app-code.png", "sizes": "192x192" }
+      ]
+    }
+  ]
 }

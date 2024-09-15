@@ -49,7 +49,39 @@ function TableOfContents({ headings, open = false, ...props }) {
   return (
     <div
       ref={observerRef}
-      className="collapsible isolate max-lg:before:isolate max-lg:before:content-[''] max-lg:before:absolute max-lg:before:top-0 max-lg:before:-left-6 max-lg:before:-right-6 max-lg:data-[state=closed]:before:h-[64px] max-lg:before:backdrop-blur-lg max-lg:before:backdrop-saturate-100 max-lg:before:z-[0] max-lg:data-[state=open]:overflow-x-clip max-lg:data-[state=open]:overflow-y-auto max-lg:backdrop-blur-lg max-lg:data-[state=closed]:[mask-image:var(--blur-mask)] max-lg:bg-gradient-to-b max-lg:data-[state=closed]:from-neutral-01-150 max-lg:data-[state=closed]:from-80% max-lg:data-[state=closed]:to-neutral-01-150/0 max-lg:data-[state=open]:bg-neutral-01-150/90 max-lg:-mx-6 max-lg:px-6 max-lg:pt-4 max-lg:pb-3.5 max-lg:data-[state=open]:max-h-[100dvh]"
+      className="
+        collapsible
+        isolate
+
+        max-lg:-mx-6 max-lg:px-6 max-lg:pt-4 max-lg:pb-3.5
+
+        max-lg:before:isolate
+        max-lg:before:content-['']
+        max-lg:before:absolute
+        max-lg:before:top-0
+        max-lg:before:bottom-0
+        max-lg:before:-left-6
+        max-lg:before:-right-6
+        max-lg:before:from-neutral-01-150
+        max-lg:before:from-[72px]
+        max-lg:before:to-neutral-01-150/70
+        max-lg:before:z-1
+        before:bg-neutral-01-150
+        before:[mask-image:var(--blur-mask)]
+
+        max-lg:backdrop-blur-lg
+
+        transition
+        duration-200
+        ease
+
+        max-lg:data-[state=open]:overflow-x-clip
+        max-lg:data-[state=open]:overflow-y-auto
+        max-lg:data-[state=open]:bg-gradient-to-b
+        max-lg:data-[state=open]:from-neutral-01-150
+        max-lg:data-[state=open]:from-[32px]
+        max-lg:data-[state=open]:to-neutral-01-150/90
+        max-lg:data-[state=open]:max-h-[100dvh]"
       data-state={isOpen ? 'open' : 'closed'}
       data-sticky={isSticky}
       style={{
@@ -76,7 +108,7 @@ function TableOfContents({ headings, open = false, ...props }) {
       <div
         id="toc-content"
         ref={contentRef}
-        className="max-lg:data-[state=open]:h-full data-[state=closed]:h-0 data-[state=closed]:overflow-hidden"
+        className="data-[state=closed]:[transform:scale3d(0.5,.6,1.7)] data-[state=closed]:[perspective:1000px] data-[state=closed]:opacity-0 origin-top-left transition duration-[.2s] ease-[cubic-bezier(.165,.84,.44,1)] max-lg:data-[state=open]:h-[min-content] data-[state=closed]:h-0 data-[state=closed]:overflow-clip"
         data-state={isOpen ? 'open' : 'closed'}
         aria-hidden={!isOpen}
       >
@@ -188,7 +220,7 @@ function TableOfContentsList({ headings, toggleOpen, ...props }) {
     classChildren = 'pb-0'
   ) => {
     return (
-      <ul className={className}>
+      <ul className={`${className}`}>
         {headings.map((heading) => (
           <li key={heading.slug} className={`group/toc ${classChildren}`}>
             <a
