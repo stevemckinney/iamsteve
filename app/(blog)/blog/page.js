@@ -36,7 +36,7 @@ const getData = cache(async () => {
 
   return {
     postsByDate,
-    feed,
+    //feed,
   }
 })
 
