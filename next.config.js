@@ -5,6 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  revalidate: 3600,
   compress: true,
   swcMinify: true,
   reactStrictMode: false,
@@ -61,10 +62,10 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate, stale-while-revalidate=60',
+            value: 'public, max-age=0, s-maxage=3600, stale-while-revalidate=60',
           },
         ],
-      },
+      }
     ]
   },
 }

@@ -735,9 +735,18 @@ const Sprite24 = (props) => (
       </symbol>
       <svg id="collections-24" viewBox="0 0 24 24">
         <g className="collections">
-          <path d="M8 6H3v15h5V6Z" className="fill-white stroke-current stroke-2 sl-r"/>
-          <path d="m17.812 4.005-4.83 1.294 4.209 15.706 4.83-1.294-4.21-15.706Z" className="fill-white stroke-current stroke-2 sl-r"/>
-          <path d="M13 3H8v18h5V3Z" className="fill-white stroke-current stroke-2 sl-r"/>
+          <path
+            d="M8 6H3v15h5V6Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m17.812 4.005-4.83 1.294 4.209 15.706 4.83-1.294-4.21-15.706Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M13 3H8v18h5V3Z"
+            className="fill-white stroke-current stroke-2 sl-r"
+          />
         </g>
       </svg>
       <symbol id="shapes-24" viewBox="0 0 24 24">

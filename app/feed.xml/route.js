@@ -1,23 +1,10 @@
 import { allPosts } from 'contentlayer/generated'
 import siteMetadata from '@/content/metadata'
 import { marked } from 'marked'
-import { revalidatePath } from 'next/cache'
-import { NextResponse } from 'next/server'
 
-export async function GET(request) {
-  // Check if this is a revalidation request
-  const secret = request.nextUrl.searchParams.get('secret')
-  if (secret) {
-    // This is a revalidation request
-    if (secret !== process.env.REVALIDATION_SECRET) {
-      return NextResponse.json({ message: 'Invalid secret' }, { status: 401 })
-    }
+export const revalidate = 3600
 
-    revalidatePath('/feed.xml')
-    return NextResponse.json({ revalidated: true, now: Date.now() })
-  }
-
-  // If not a revalidation request, generate the feed
+export async function GET() {
   const posts = allPosts
     .filter((post) => post.status === 'open')
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -54,7 +41,6 @@ export async function GET(request) {
   return new Response(feed, {
     headers: {
       'Content-Type': 'application/xml',
-      'Cache-Control': 'public, s-maxage=2592000, stale-while-revalidate=86400',
     },
     status: 200,
   })
@@ -64,13 +50,16 @@ export async function GET(request) {
 function escapeXml(unsafe) {
   return unsafe.replace(/[<>&'"]/g, function (c) {
     switch (c) {
-      case '<': return '&lt;'
-      case '>': return '&gt;'
-      case '&': return '&amp;'
-      case "'": return '&apos;'
-      case '"': return '&quot;'
+      case '<':
+        return '&lt;'
+      case '>':
+        return '&gt;'
+      case '&':
+        return '&amp;'
+      case "'":
+        return '&apos;'
+      case '"':
+        return '&quot;'
     }
   })
 }
-
-export const revalidate = 2592000 // Revalidate every month (30 days)

@@ -27,12 +27,32 @@ const getData = cache(async () => {
 
 export async function generateStaticParams() {
   const allData = await getData()
-  const totalPages = Math.ceil(allData.postsByDate.length / POSTS_PER_PAGE)
-  const paths = Array.from({ length: totalPages }, (_, i) => ({
-    page: (i + 1).toString(),
+  const categoryPaths = categories.map((category) => ({
+    slug: category.slugAsParams,
   }))
 
-  return paths
+  const postsByCategory = categories.map((category) => {
+    const posts = allData.postsByDate.filter((post) =>
+      post.categories
+        .map((c) =>
+          typeof c === 'object' ? 'website' : c.replace(' ', '-').toLowerCase()
+        )
+        .includes(category.slugAsParams.toLowerCase())
+    )
+    return {
+      slug: category.slugAsParams,
+      totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
+    }
+  })
+
+  const paths = postsByCategory.flatMap((category) =>
+    Array.from({ length: category.totalPages }, (_, i) => ({
+      slug: category.slug,
+      page: (i + 1).toString(),
+    }))
+  )
+
+  return [...categoryPaths, ...paths]
 }
 
 export async function generateMetadata({ params }) {
