@@ -4,7 +4,7 @@ import { marked } from 'marked'
 
 export const revalidate = 3600
 
-export async function GET() {
+/*export async function GET() {
   // Generate the feed
   const posts = allPosts
     .filter((post) => post.status === 'open')
@@ -43,7 +43,7 @@ export async function GET() {
     },
     status: 200,
   })
-}
+}*/
 
 // Helper function to escape XML special characters
 function escapeXml(unsafe) {
