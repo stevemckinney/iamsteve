@@ -9,12 +9,9 @@ import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import { sortPosts } from '@/lib/utils/content'
 import { Header, Title, Column, Description } from '@/components/page'
-import Icon from '@/components/icon'
-import Image from '@/components/image'
 import Category from '@/components/category'
 import Card from '@/components/card'
 import Pagination from '@/components/pagination'
-import Link from '@/components/link'
 
 import categories from '@/content/categories'
 

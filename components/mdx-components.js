@@ -124,6 +124,11 @@ const components = {
       {props.children}
     </figcaption>
   ),
+  Sandbox: (props) => (
+    <div className="sandbox">
+      {props.children}
+    </div>
+  )
 }
 
 const postComponents = {

@@ -1,6 +1,46 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# Production context
+[context.production]
+  [[context.production.headers]]
+    for = "/images/*.(svg|jpg|png|webp|avif)"
+    [context.production.headers.values]
+      Cache-Control = "public, max-age=31536000, immutable"
+
+  [[context.production.headers]]
+    for = "/_next/static/*"
+    [context.production.headers.values]
+      Cache-Control = "public, max-age=31536000, immutable"
+
+  [[context.production.headers]]
+    for = "/static/*"
+    [context.production.headers.values]
+      Cache-Control = "public, max-age=31536000, immutable"
+
+  [[context.production.headers]]
+    for = "/*"
+    [context.production.headers.values]
+      Cache-Control = "public, max-age=0, must-revalidate, stale-while-revalidate=60"
+
+# Development context (includes deploy previews and branch deploys)
+[context.deploy-preview]
+  [[context.deploy-preview.headers]]
+    for = "/*"
+    [context.deploy-preview.headers.values]
+      Cache-Control = "public, max-age=0, must-revalidate"
+
+[context.branch-deploy]
+  [[context.branch-deploy.headers]]
+    for = "/*"
+    [context.branch-deploy.headers.values]
+      Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate, stale-while-revalidate=60"
+
 [[redirects]]
   from = "/blog/entry/horizontal‑scrolling‑responsive‑menu"
   to = "/blog/horizontal-scrolling-responsive-menu"
