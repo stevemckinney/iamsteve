@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import Date from '@/components/date'
 import Icon from '@/components/icon'
+export const revalidate = 3600
 
 const Campaigns = () => {
   const [campaigns, setCampaigns] = useState([])

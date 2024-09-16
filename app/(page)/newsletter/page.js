@@ -6,6 +6,7 @@ import Card from '@/components/card'
 import Campaigns from './campaigns'
 import ErrorBoundary from '@/components/error-boundary'
 import { allPosts } from 'contentlayer/generated'
+export const revalidate = 3600
 
 export default async function NewsletterPage({ data, Post }) {
   const includedPosts = [165, 164, 72, 157, 160]

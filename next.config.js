@@ -5,7 +5,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  revalidate: 3600,
   compress: true,
   swcMinify: true,
   reactStrictMode: false,

@@ -18,7 +18,7 @@ import Image from '@/components/image'
 import categories from '@/content/categories'
 
 const POSTS_PER_PAGE = 12
-export const revalidate = 86400
+export const revalidate = 3600
 
 const getData = cache(async () => {
   const postsByDate = sortPosts(allPosts).filter(
