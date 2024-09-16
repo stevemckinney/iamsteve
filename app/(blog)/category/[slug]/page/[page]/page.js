@@ -18,6 +18,7 @@ import Image from '@/components/image'
 import categories from '@/content/categories'
 
 const POSTS_PER_PAGE = 12
+export const revalidate = 3600
 
 const getData = cache(async () => {
   const postsByDate = sortPosts(allPosts).filter(
@@ -29,12 +30,20 @@ const getData = cache(async () => {
   }
 })
 
-export async function generateStaticParams({ params: { slug } }) {
+export async function generateStaticParams() {
   const allData = await getData()
-  const totalPages = Math.ceil(allData.postsByDate.length / POSTS_PER_PAGE)
-  const paths = Array.from({ length: totalPages }, (_, i) => ({
-    page: (i + 1).toString(),
-  }))
+
+  const paths = categories.flatMap((category) => {
+    const categoryPosts = allData.postsByDate.filter((post) =>
+      post.categories.includes(category.title)
+    )
+    const totalPages = Math.ceil(categoryPosts.length / POSTS_PER_PAGE)
+
+    return Array.from({ length: totalPages }, (_, i) => ({
+      slug: category.slugAsParams,
+      page: (i + 1).toString(),
+    }))
+  })
 
   return paths
 }

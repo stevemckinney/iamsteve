@@ -21,7 +21,7 @@
   [[context.production.headers]]
     for = "/*"
     [context.production.headers.values]
-      Cache-Control = "public, max-age=0, must-revalidate, stale-while-revalidate=60"
+      Cache-Control = "public, max-age=0, s-maxage=3600, stale-while-revalidate=60"
 
 # Development context (includes deploy previews and branch deploys)
 [context.deploy-preview]
@@ -39,7 +39,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate, stale-while-revalidate=60"
+    Cache-Control = "public, max-age=0, s-maxage=3600, stale-while-revalidate=60"
 
 [[redirects]]
   from = "/blog/entry/horizontal‑scrolling‑responsive‑menu"

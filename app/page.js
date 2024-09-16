@@ -50,33 +50,36 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <main className="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18" id="content">
+      <main
+        className="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18"
+        id="content"
+      >
         <Frame id="latest">
-          <LatestPosts 
-            posts={postsByDate} 
+          <LatestPosts
+            posts={postsByDate}
             title="What’s new"
-            linkText="View the archive" 
+            linkText="View the archive"
             linkHref="/blog"
           />
         </Frame>
 
         <Frame id="popular-design">
-          <PopularPosts 
-            posts={design} 
-            title="design" 
-            linkText="Explore design" 
-            linkHref="/category/design" 
-            accentColor="text-rio-400" 
+          <PopularPosts
+            posts={design}
+            title="design"
+            linkText="Explore design"
+            linkHref="/category/design"
+            accentColor="text-rio-400"
           />
         </Frame>
 
         <Frame id="popular-code">
-          <PopularPosts 
-            posts={code} 
-            title="code" 
-            linkText="Explore code" 
-            linkHref="/category/code" 
-            accentColor="text-dandelion-400" 
+          <PopularPosts
+            posts={code}
+            title="code"
+            linkText="Explore code"
+            linkHref="/category/code"
+            accentColor="text-dandelion-400"
           />
         </Frame>
       </main>

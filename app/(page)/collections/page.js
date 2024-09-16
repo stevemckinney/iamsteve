@@ -13,6 +13,8 @@ import { format, subWeeks, isAfter } from 'date-fns'
 import { allCollections } from 'contentlayer/generated'
 import collections from '@/content/collections'
 
+export const revalidate = 3600
+
 export const metadata = {
   title: 'Collections • iamsteve',
   description:
