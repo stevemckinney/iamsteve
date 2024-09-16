@@ -5,22 +5,21 @@ import { marked } from 'marked'
 export const revalidate = 3600
 
 export async function GET() {
+  // Generate the feed
   const posts = allPosts
     .filter((post) => post.status === 'open')
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 10) // Get the latest 10 posts
+    .slice(0, 60)
 
   const feed = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>${siteMetadata.title}</title>
+    <title>${siteMetadata.title} • RSS feed</title>
     <link>${siteMetadata.siteUrl}</link>
     <description>${siteMetadata.description}</description>
     <language>${siteMetadata.language}</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="${
-      siteMetadata.siteUrl
-    }/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="${siteMetadata.siteUrl}/feed.xml" rel="self" type="application/rss+xml"/>
     ${posts
       .map(
         (post) => `
