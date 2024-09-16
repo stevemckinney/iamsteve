@@ -2,48 +2,39 @@
   package = "@netlify/plugin-nextjs"
 
 # Production context
-  [context.production]
-    [context.production.headers]
-      # Headers for images
-      [[context.production.headers]]
-        for = "/images/*.(svg|jpg|png|webp|avif)"
-        [context.production.headers.values]
-          Cache-Control = "public, max-age=31536000, immutable"
+[context.production]
+  [[context.production.headers]]
+    for = "/images/*.(svg|jpg|png|webp|avif)"
+    [context.production.headers.values]
+      Cache-Control = "public, max-age=31536000, immutable"
 
-      # Headers for Next.js static files
-      [[context.production.headers]]
-        for = "/_next/static/*"
-        [context.production.headers.values]
-          Cache-Control = "public, max-age=31536000, immutable"
+  [[context.production.headers]]
+    for = "/_next/static/*"
+    [context.production.headers.values]
+      Cache-Control = "public, max-age=31536000, immutable"
 
-      # Headers for static folder
-      [[context.production.headers]]
-        for = "/static/*"
-        [context.production.headers.values]
-          Cache-Control = "public, max-age=31536000, immutable"
+  [[context.production.headers]]
+    for = "/static/*"
+    [context.production.headers.values]
+      Cache-Control = "public, max-age=31536000, immutable"
 
-      # Default headers for other routes
-      [[context.production.headers]]
-        for = "/*"
-        [context.production.headers.values]
-          Cache-Control = "public, max-age=0, must-revalidate, stale-while-revalidate=60"
+  [[context.production.headers]]
+    for = "/*"
+    [context.production.headers.values]
+      Cache-Control = "public, max-age=0, must-revalidate, stale-while-revalidate=60"
 
-  # Development context (includes deploy previews and branch deploys)
-  [context.deploy-preview]
-    [context.deploy-preview.headers]
-      # Headers for all files in development
-      [[context.deploy-preview.headers]]
-        for = "/*"
-        [context.deploy-preview.headers.values]
-          Cache-Control = "public, max-age=0, must-revalidate"
+# Development context (includes deploy previews and branch deploys)
+[context.deploy-preview]
+  [[context.deploy-preview.headers]]
+    for = "/*"
+    [context.deploy-preview.headers.values]
+      Cache-Control = "public, max-age=0, must-revalidate"
 
-  [context.branch-deploy]
-    [context.branch-deploy.headers]
-      # Headers for all files in development
-      [[context.branch-deploy.headers]]
-        for = "/*"
-        [context.branch-deploy.headers.values]
-          Cache-Control = "public, max-age=0, must-revalidate"
+[context.branch-deploy]
+  [[context.branch-deploy.headers]]
+    for = "/*"
+    [context.branch-deploy.headers.values]
+      Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/*"
