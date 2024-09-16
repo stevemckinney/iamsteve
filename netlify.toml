@@ -1,6 +1,26 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+[[headers]]
+  for = "/images/*.(svg|jpg|png|webp|avif)"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate, stale-while-revalidate=60"
+
 [[redirects]]
   from = "/blog/entry/horizontal‑scrolling‑responsive‑menu"
   to = "/blog/horizontal-scrolling-responsive-menu"
