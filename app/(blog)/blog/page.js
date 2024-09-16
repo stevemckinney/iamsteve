@@ -7,7 +7,6 @@ import { cache } from 'react'
 import { allPosts } from 'contentlayer/generated'
 
 import { sortPosts } from '@/lib/utils/content'
-import generateFeed from '@/lib/utils/rss'
 
 import { Header, Title, Column, Description } from '@/components/page'
 import Card from '@/components/card'
