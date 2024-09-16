@@ -781,8 +781,8 @@ const Sprite16 = (props) => (
           />
         </g>
       </symbol>
-      <symbol id="collections-16" viewBox="0 0 16 16">
-        <g className="collections">
+      <symbol id="shapes-16" viewBox="0 0 16 16">
+        <g className="shapes">
           <circle
             cx="4"
             cy="12"
@@ -803,6 +803,13 @@ const Sprite16 = (props) => (
             d="M14 10h-4v4h4v-4Z"
             className="fill-white stroke-current stroke-2 sl-r"
           />
+        </g>
+      </symbol>
+      <symbol id="collections-16" viewBox="0 0 16 16">
+        <g className="collections">
+          <path d="M6 3H3v11h3V3Z" className="fill-white stroke-current stroke-2 sl-r"/>
+          <path d="m11.954 3.011-2.897.777 2.74 10.224 2.897-.777-2.74-10.224Z" className="fill-white stroke-current stroke-2 sl-r"/>
+          <path d="M9 2H6v12h3V2Z" className="fill-white stroke-current stroke-2 sl-r"/>
         </g>
       </symbol>
       <symbol id="note-16" viewBox="0 0 16 16">
