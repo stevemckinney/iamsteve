@@ -96,12 +96,6 @@ export default async function BlogIndex({ params }) {
       <div className="col-content">
         <Pagination total={pagination.total} current={pagination.current} />
       </div>
-      <link
-        rel="alternate"
-        type="application/rss+xml"
-        title="RSS Feed"
-        href="/rss.xml"
-      />
     </>
   )
 }
