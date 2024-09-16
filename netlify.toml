@@ -144,7 +144,7 @@
 [[redirects]]
   from = "/public/feed"
   to = "/feed.xml"
-  status = 
+  status = 301
 
 [[redirects]]
   from = "/feed"
