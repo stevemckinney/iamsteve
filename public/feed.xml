@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>iamsteve • design and code</title>
+        <link>https://iamsteve.me</link>
+        <description>iamsteve is a blog written by Steve McKinney, focusing on the design and build of websites. The aim is to bridge the gap in building your design.</description>
+        <lastBuildDate>Sat, 14 Sep 2024 11:12:48 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>iamsteve.me</generator>
+        <image>
+            <title>iamsteve • design and code</title>
+            <url>https://iamsteve.me/opengraph-image.png</url>
+            <link>https://iamsteve.me</link>
+        </image>
+        <copyright>iamsteve.me 2024</copyright>
+        <item>
+            <title><![CDATA[Build a bento layout with CSS grid]]></title>
+            <link>https://iamsteve.me/blog//blog/bento-layout-css-grid</link>
+            <guid>https://iamsteve.me/blog//blog/bento-layout-css-grid</guid>
+            <pubDate>Tue, 02 Jul 2024 14:58:09 GMT</pubDate>
+            <description><![CDATA[Bento grids offer a unique layout challenge for CSS. With the use of Tailwind you can create a flexible layout with modern CSS grid and @container queries.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[About version 8]]></title>
+            <link>https://iamsteve.me/blog//blog/about-version-8</link>
+            <guid>https://iamsteve.me/blog//blog/about-version-8</guid>
+            <pubDate>Thu, 29 Feb 2024 10:13:38 GMT</pubDate>
+            <description><![CDATA[Design and development decisions for the 8th version of this website. New design, using Next.js App Router and pretty much all in on Tailwind.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[About version 7]]></title>
+            <link>https://iamsteve.me/blog//blog/about-version-7</link>
+            <guid>https://iamsteve.me/blog//blog/about-version-7</guid>
+            <pubDate>Thu, 29 Feb 2024 10:13:38 GMT</pubDate>
+            <description><![CDATA[How I moved 140 posts from a database CMS to a static site in Next.js. No redesign just website rebuild and some hindsight into the decision making.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[The best ink trap typefaces for websites]]></title>
+            <link>https://iamsteve.me/blog//blog/the-best-ink-trap-typefaces-for-websites</link>
+            <guid>https://iamsteve.me/blog//blog/the-best-ink-trap-typefaces-for-websites</guid>
+            <pubDate>Wed, 28 Jul 2021 10:28:00 GMT</pubDate>
+            <description><![CDATA[A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[‘Atomic’ font size management with Sass]]></title>
+            <link>https://iamsteve.me/blog//blog/atomic-font-size-management-with-sass</link>
+            <guid>https://iamsteve.me/blog//blog/atomic-font-size-management-with-sass</guid>
+            <pubDate>Wed, 13 Jun 2018 06:27:00 GMT</pubDate>
+            <description><![CDATA[In a responsive world, managing font sizes can be tricky. So how can an atomic approach help?]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Tips for using colour effectively in web illustration]]></title>
+            <link>https://iamsteve.me/blog//blog/tips-for-using-colour-effectively-in-web-illustration</link>
+            <guid>https://iamsteve.me/blog//blog/tips-for-using-colour-effectively-in-web-illustration</guid>
+            <pubDate>Thu, 10 May 2018 12:22:00 GMT</pubDate>
+            <description><![CDATA[Our websites can offer us an important advantage when it comes to choosing colour for illustration—constraint.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Nice and easy lazy loading with lazysizes.js]]></title>
+            <link>https://iamsteve.me/blog//blog/nice-and-easy-lazy-loading-with-lazysizes-js</link>
+            <guid>https://iamsteve.me/blog//blog/nice-and-easy-lazy-loading-with-lazysizes-js</guid>
+            <pubDate>Sun, 11 Feb 2018 19:58:00 GMT</pubDate>
+            <description><![CDATA[Lazy loading doesn’t have to be difficult, here’s how to add smooth loading images to your website.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[A year in writing — 2017]]></title>
+            <link>https://iamsteve.me/blog//blog/a-year-in-writing-2017</link>
+            <guid>https://iamsteve.me/blog//blog/a-year-in-writing-2017</guid>
+            <pubDate>Sun, 28 Jan 2018 14:06:00 GMT</pubDate>
+            <description><![CDATA[This year I took it at a slower pace with the articles. It was a year I felt I didn’t focus so much on this website, so I was quite surprised to see the website continue to grow.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Illustrator quick tip: which stroke alignment?]]></title>
+            <link>https://iamsteve.me/blog//blog/illustrator-tip-which-stroke-alignment</link>
+            <guid>https://iamsteve.me/blog//blog/illustrator-tip-which-stroke-alignment</guid>
+            <pubDate>Thu, 21 Sep 2017 08:00:00 GMT</pubDate>
+            <description><![CDATA[There are three types of stroke alignment, so when and where is each useful?]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Search overlay with smooth reveal animation]]></title>
+            <link>https://iamsteve.me/blog//blog/search-overlay-with-smooth-reveal-animation</link>
+            <guid>https://iamsteve.me/blog//blog/search-overlay-with-smooth-reveal-animation</guid>
+            <pubDate>Wed, 16 Aug 2017 12:15:00 GMT</pubDate>
+            <description><![CDATA[A common part of a website is the ability to search. Depending on how important search is to your website can define much of how it looks and how it’s prioritised in the design.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Visual design tips you can apply immediately]]></title>
+            <link>https://iamsteve.me/blog//blog/visual-design-tips-you-can-apply-immediately</link>
+            <guid>https://iamsteve.me/blog//blog/visual-design-tips-you-can-apply-immediately</guid>
+            <pubDate>Tue, 04 Jul 2017 11:51:00 GMT</pubDate>
+            <description><![CDATA[Add a little extra polish to any of your designs with these tips.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Overcoming design roadblocks]]></title>
+            <link>https://iamsteve.me/blog//blog/overcoming-design-roadblocks</link>
+            <guid>https://iamsteve.me/blog//blog/overcoming-design-roadblocks</guid>
+            <pubDate>Tue, 13 Jun 2017 06:30:00 GMT</pubDate>
+            <description><![CDATA[It happens, sometimes you can be stuck starting a new design, here’s some tips that aim to help overcome the challenge.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Illustrator quick tip: export a colour palette quickly]]></title>
+            <link>https://iamsteve.me/blog//blog/illustrator-quick-tip-export-a-colour-palette-quickly</link>
+            <guid>https://iamsteve.me/blog//blog/illustrator-quick-tip-export-a-colour-palette-quickly</guid>
+            <pubDate>Tue, 09 May 2017 06:25:00 GMT</pubDate>
+            <description><![CDATA[In Illustrator it appears more difficult than it needs to be to export a colour palette to hex values, here’s a quick way.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Making patterns in Illustrator]]></title>
+            <link>https://iamsteve.me/blog//blog/making-patterns-in-illustrator</link>
+            <guid>https://iamsteve.me/blog//blog/making-patterns-in-illustrator</guid>
+            <pubDate>Tue, 11 Apr 2017 06:30:00 GMT</pubDate>
+            <description><![CDATA[Learn how to create, change and duplicate patterns as swatches.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[How to use kerning & tracking]]></title>
+            <link>https://iamsteve.me/blog//blog/how-to-use-kerning-tracking</link>
+            <guid>https://iamsteve.me/blog//blog/how-to-use-kerning-tracking</guid>
+            <pubDate>Tue, 07 Mar 2017 13:25:00 GMT</pubDate>
+            <description><![CDATA[Understand the differences between the two, along with how and when to use them.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[A year in writing — 2016]]></title>
+            <link>https://iamsteve.me/blog//blog/a-year-in-writing-2016</link>
+            <guid>https://iamsteve.me/blog//blog/a-year-in-writing-2016</guid>
+            <pubDate>Tue, 03 Jan 2017 07:23:00 GMT</pubDate>
+            <description><![CDATA[2016 was the second year I’ve written a post every week. This post is a summary of what’s happened over the year.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Illustrator quick tip: non destructive shape editing]]></title>
+            <link>https://iamsteve.me/blog//blog/illustrator-non-destructive-shape-editing</link>
+            <guid>https://iamsteve.me/blog//blog/illustrator-non-destructive-shape-editing</guid>
+            <pubDate>Tue, 27 Dec 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[You may have two shapes and want to combine them, but still want to refine the overall shape or save it for later. This post shows you two options.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Let’s make a better icon system with SVG]]></title>
+            <link>https://iamsteve.me/blog//blog/lets-make-a-better-icon-system-with-svg</link>
+            <guid>https://iamsteve.me/blog//blog/lets-make-a-better-icon-system-with-svg</guid>
+            <pubDate>Tue, 20 Dec 2016 07:23:00 GMT</pubDate>
+            <description><![CDATA[Icon fonts are used for their convenience, which generally can’t be matched by SVG. However, this post aims to guide you through the setup and get to a similar level of convenience.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Monthly design roundup #2]]></title>
+            <link>https://iamsteve.me/blog//blog/monthly-design-roundup-2</link>
+            <guid>https://iamsteve.me/blog//blog/monthly-design-roundup-2</guid>
+            <pubDate>Tue, 13 Dec 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[The second in a monthly series where I roundup some of the best things in design I found over the course of the previous month. It aims to be a source of website, illustration and branding inspiration, as well as some articles that are a good read.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Christmas gift guide — 2016]]></title>
+            <link>https://iamsteve.me/blog//blog/christmas-gift-guide-2016</link>
+            <guid>https://iamsteve.me/blog//blog/christmas-gift-guide-2016</guid>
+            <pubDate>Tue, 06 Dec 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[As it’s the festive time of year, I thought I would add to the lists of gifts that people are writing. December and Christmas in general is one of my favourite times of year.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Go2Golf logo case study]]></title>
+            <link>https://iamsteve.me/blog//blog/go2golf-logo-case-study</link>
+            <guid>https://iamsteve.me/blog//blog/go2golf-logo-case-study</guid>
+            <pubDate>Tue, 29 Nov 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[I’ve been working on a recent branding project for a company called Go 2 Golf. It will be a website that will help people find golf courses across the UK. The first step for them was to have a logo made, this is the process I went through to make it.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Multiple level horizontal scrolling navigation]]></title>
+            <link>https://iamsteve.me/blog//blog/multiple-level-horizontal-scrolling-navigation</link>
+            <guid>https://iamsteve.me/blog//blog/multiple-level-horizontal-scrolling-navigation</guid>
+            <pubDate>Tue, 22 Nov 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[With horizontal scrolling, submenus are quite challenging to make work. Due to the CSS you have to use, a CSS only solution isn’t viable. In this post I show you how to utilise JavaScript.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Maintenance week #6]]></title>
+            <link>https://iamsteve.me/blog//blog/maintenance-week-6</link>
+            <guid>https://iamsteve.me/blog//blog/maintenance-week-6</guid>
+            <pubDate>Tue, 15 Nov 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies and this type of post details what’s been done.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Monthly design roundup #1]]></title>
+            <link>https://iamsteve.me/blog//blog/month-design-roundup-1</link>
+            <guid>https://iamsteve.me/blog//blog/month-design-roundup-1</guid>
+            <pubDate>Tue, 08 Nov 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[This is the start of a monthly series of a roundup of 8 websites that I have found that are well designed. There is no particular theme, other than inspirational, which I hope you find is the case. I’ve added a few notes around why I believe they’re well designed as well.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Illustrator quick tip: workflow enhancing keyboard shortcuts]]></title>
+            <link>https://iamsteve.me/blog//blog/illustrator-keyboard-shortcuts</link>
+            <guid>https://iamsteve.me/blog//blog/illustrator-keyboard-shortcuts</guid>
+            <pubDate>Tue, 01 Nov 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[Memorising shortcuts of any application improves efficiency. Now I’m by no means the most efficient person in Illustrator, I’m generally just happy designing. However, there are shortcuts you  absolutely must know, because it saves you tediously clicking through panels and menus.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[My design process — v6 case study]]></title>
+            <link>https://iamsteve.me/blog//blog/my-design-process-v6-case-study</link>
+            <guid>https://iamsteve.me/blog//blog/my-design-process-v6-case-study</guid>
+            <pubDate>Tue, 25 Oct 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[The redesign of this website has been needed for some time. Overall the website is quite small in terms of templates required. I wanted to put the effort into making the website feel like it is a growing source of content. There is much to cover in this, as I start with the new logo briefly, sketching, wireframes and design.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Alternatives to Circular]]></title>
+            <link>https://iamsteve.me/blog//blog/alternatives-to-circular</link>
+            <guid>https://iamsteve.me/blog//blog/alternatives-to-circular</guid>
+            <pubDate>Tue, 18 Oct 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[Circular is very much in the spotlight at the moment. It has a distinct look to it that so many huge companies are using. From Google to airbnb, it’s everywhere. If you’re looking for alternatives, with different prices and through a different service, this post is for you.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Shop filter series: visual style completion]]></title>
+            <link>https://iamsteve.me/blog//blog/shop-filter-series-visual-style-completion</link>
+            <guid>https://iamsteve.me/blog//blog/shop-filter-series-visual-style-completion</guid>
+            <pubDate>Tue, 11 Oct 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[In the last post the basis for the visual style was set. In this post it will continue with that to complete the filters. There are some challenging areas like colour selection, as it can look overwhelming.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Shop filter series: visual style]]></title>
+            <link>https://iamsteve.me/blog//blog/shop-filter-series-visual-style</link>
+            <guid>https://iamsteve.me/blog//blog/shop-filter-series-visual-style</guid>
+            <pubDate>Tue, 04 Oct 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[The previous post in the series completed the wireframes. They’re a solid basis for adding visual style. The content and interface elements required are all there. Further layout refinements, colour choices, typography and clarity improvements will be made throughout this post.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Maintenance week #5]]></title>
+            <link>https://iamsteve.me/blog//blog/maintenance-week-5</link>
+            <guid>https://iamsteve.me/blog//blog/maintenance-week-5</guid>
+            <pubDate>Tue, 27 Sep 2016 06:24:00 GMT</pubDate>
+            <description><![CDATA[Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies what I will do, and this posts serves as detailing what has been done.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Shop filter series: completing the filters]]></title>
+            <link>https://iamsteve.me/blog//blog/shop-filter-series-completing-the-filters</link>
+            <guid>https://iamsteve.me/blog//blog/shop-filter-series-completing-the-filters</guid>
+            <pubDate>Tue, 20 Sep 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[Continuing from the last post, which looked at the initial sketching and wireframe. This post will focus on the completion of each of the filters.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Shop filter series: sketching & starting wireframes]]></title>
+            <link>https://iamsteve.me/blog//blog/shop-filter-series-sketching-starting-wireframes</link>
+            <guid>https://iamsteve.me/blog//blog/shop-filter-series-sketching-starting-wireframes</guid>
+            <pubDate>Tue, 13 Sep 2016 06:24:00 GMT</pubDate>
+            <description><![CDATA[Filtering is a huge part of online shops, it’s an effective form of navigation. In most cases it’s an area which is overlooked on small screens. I have seen some good implementations and many lack the ease of a larger screen. In this post I want to explore the idea of it being a tab bar, starting with sketching & wireframes.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Pixel perfect templates in Illustrator]]></title>
+            <link>https://iamsteve.me/blog//blog/pixel-perfect-templates-in-illustrator</link>
+            <guid>https://iamsteve.me/blog//blog/pixel-perfect-templates-in-illustrator</guid>
+            <pubDate>Tue, 06 Sep 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[Illustrator being a vector application means it can be easy to overlook the export process and making things pixel perfect. It’s easy to do, so you don’t notice it. It’s particularly important that you try to retain this for logos and icons.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[About version six]]></title>
+            <link>https://iamsteve.me/blog//blog/about-version-six</link>
+            <guid>https://iamsteve.me/blog//blog/about-version-six</guid>
+            <pubDate>Tue, 30 Aug 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[I’ve finally done the redesign of this website! Version five lived for longer than I ever intended. This post is going to be a shorter summary of the changes. I’ll be posting a full case study over the coming weeks.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Illustrator quick tip: evenly distribute objects]]></title>
+            <link>https://iamsteve.me/blog//blog/illustrator-quick-tip-equally-space-objects</link>
+            <guid>https://iamsteve.me/blog//blog/illustrator-quick-tip-equally-space-objects</guid>
+            <pubDate>Tue, 23 Aug 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[It’s likely you know how to align things in Illustrator, but you can never remember how to space things equally, so you resort to the tedious way of spacing them individually. If you want to align objects with an equal space between them, this quick tip will show you how.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Websites using alternatives to the ‘hamburger’]]></title>
+            <link>https://iamsteve.me/blog//blog/websites-using-alternatives-to-the-hamburger</link>
+            <guid>https://iamsteve.me/blog//blog/websites-using-alternatives-to-the-hamburger</guid>
+            <pubDate>Tue, 16 Aug 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[It’s been proven as apps have shifted away from the ‘hamburger’ navigation, to a bottom bar, engagement and browsing metrics have increased. Over time these findings have an impact on the thought process of those designing websites. In this post I detail a list of websites that are using the tab bar navigation.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Maintenance week #4]]></title>
+            <link>https://iamsteve.me/blog//blog/maintenance-week-4</link>
+            <guid>https://iamsteve.me/blog//blog/maintenance-week-4</guid>
+            <pubDate>Tue, 09 Aug 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies what I will do, and this posts serves as detailing what has been done.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Stop headroom.js hiding when your navigation is open]]></title>
+            <link>https://iamsteve.me/blog//blog/stop-headroom-hiding-when-your-navigation-is-open</link>
+            <guid>https://iamsteve.me/blog//blog/stop-headroom-hiding-when-your-navigation-is-open</guid>
+            <pubDate>Tue, 02 Aug 2016 06:23:00 GMT</pubDate>
+            <description><![CDATA[Headroom.js is a popular plugin for providing additional functionality in having a fixed header. It has a lot of additional callbacks and options, to make sure you can cover a variety of situations. One of those things is stopping it from hiding when your navigation is open.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Designing a pricing table in code]]></title>
+            <link>https://iamsteve.me/blog//blog/designing-a-pricing-table-in-code</link>
+            <guid>https://iamsteve.me/blog//blog/designing-a-pricing-table-in-code</guid>
+            <pubDate>Tue, 26 Jul 2016 06:37:00 GMT</pubDate>
+            <description><![CDATA[Following up from the design in Illustrator post, it’s time to code the design. Using flexbox to do the heavy lifting for the layout, the focus can be on matching the design and improving on it through being able to show the button state.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[CSS only iOS style ‘toggle’]]></title>
+            <link>https://iamsteve.me/blog//blog/css-only-ios-style-toggle</link>
+            <guid>https://iamsteve.me/blog//blog/css-only-ios-style-toggle</guid>
+            <pubDate>Tue, 19 Jul 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[Since they appeared in iOS it’s been a trend to recreate these using CSS only. The technique uses the adjacent sibling selector and a hidden checkbox to retain use of the :checked pseudo class. In this post I wanted to take a look at this myself and recreate the toggle style.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Designing a pricing table in Illustrator]]></title>
+            <link>https://iamsteve.me/blog//blog/making-a-pricing-table-in-illustrator</link>
+            <guid>https://iamsteve.me/blog//blog/making-a-pricing-table-in-illustrator</guid>
+            <pubDate>Tue, 12 Jul 2016 06:37:00 GMT</pubDate>
+            <description><![CDATA[Pricing tables are reasonably common for various types of services, they serve as a way to give the user an anchor. Generally meaning that you’ll be able to direct the customer into the package the company really wants to sell most of. While this post won’t cover the psychological side of that, it will focus on clarity and visual style. It’s an interesting website element to take a look at, so let’s start.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Wordpress functions to help make your life easier]]></title>
+            <link>https://iamsteve.me/blog//blog/wordpress-functions-to-help-make-your-life-easier</link>
+            <guid>https://iamsteve.me/blog//blog/wordpress-functions-to-help-make-your-life-easier</guid>
+            <pubDate>Tue, 05 Jul 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[As part of using Wordpress, and any other part of making a website, for that matter, you acquire reusable parts. As well as discover functions that aren’t shouted about. In this post I’ve shared a few with usage.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Redesign progress update]]></title>
+            <link>https://iamsteve.me/blog//blog/redesign-progress-update</link>
+            <guid>https://iamsteve.me/blog//blog/redesign-progress-update</guid>
+            <pubDate>Mon, 27 Jun 2016 06:27:00 GMT</pubDate>
+            <description><![CDATA[One of my aims during redesigning this website is to keep the seamlessness between content output and redesign. It’s not the easiest of tasks, as any time spent writing, is time taken away from the redesign or vice versa.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Efficient table creation in Illustrator]]></title>
+            <link>https://iamsteve.me/blog//blog/efficient-table-creation-in-illustrator</link>
+            <guid>https://iamsteve.me/blog//blog/efficient-table-creation-in-illustrator</guid>
+            <pubDate>Tue, 21 Jun 2016 06:47:00 GMT</pubDate>
+            <description><![CDATA[Tables in general are something I naturally avoid doing in design applications, they’re frustrating to make. They are easily to overlook due to this and that they can be quite uncommon in use. Let’s say you wanted to design a table in Illustrator, and you wanted a quick and accurate way to do so. This post will show you how.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Illustrator quick tip: align to key object]]></title>
+            <link>https://iamsteve.me/blog//blog/illustrator-quick-tip-align-to-key-object</link>
+            <guid>https://iamsteve.me/blog//blog/illustrator-quick-tip-align-to-key-object</guid>
+            <pubDate>Tue, 14 Jun 2016 06:27:00 GMT</pubDate>
+            <description><![CDATA[Aligning to a key object in Illustrator is one of the most useful alignment options. If you’ve ever been frustrated with aligning objects centrally, then everything nudges over a few pixels. This is where align to key object comes in, read on for how to.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Why you should use tachyons to make CSS easier]]></title>
+            <link>https://iamsteve.me/blog//blog/why-you-should-use-tachyons-to-make-css-easier</link>
+            <guid>https://iamsteve.me/blog//blog/why-you-should-use-tachyons-to-make-css-easier</guid>
+            <pubDate>Tue, 07 Jun 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[As I’ve spent time understanding the approach, it really makes sense for most CSS. Particularly spacing and font sizes. In this post I’m going to explain; why you may want to use this approach, and how to adapt it to your style of writing CSS.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Get up to speed with scroll snap points]]></title>
+            <link>https://iamsteve.me/blog//blog/get-up-to-speed-with-scroll-snap-points</link>
+            <guid>https://iamsteve.me/blog//blog/get-up-to-speed-with-scroll-snap-points</guid>
+            <pubDate>Tue, 31 May 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[Scroll snap points is the answer to the need for JavaScript carousels, to an extent. As browsers gain more and more new features in CSS, it’s important to keep up to date with them. As the generalisation is; where you can replace JavaScript with CSS you gain performance improvements. Carousels in my experience are a good chunk of the need for JavaScript on the average website. So I’m very interested at the prospect of using scroll snap points to replace that.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Maintenance week #3]]></title>
+            <link>https://iamsteve.me/blog//blog/maintenance-week-3</link>
+            <guid>https://iamsteve.me/blog//blog/maintenance-week-3</guid>
+            <pubDate>Tue, 24 May 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies what I will do, and this posts serves as detailing what has been done.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[How to: datepicker styling using Illustrator]]></title>
+            <link>https://iamsteve.me/blog//blog/how-to-datepicker-styling-illustrator</link>
+            <guid>https://iamsteve.me/blog//blog/how-to-datepicker-styling-illustrator</guid>
+            <pubDate>Tue, 17 May 2016 06:45:00 GMT</pubDate>
+            <description><![CDATA[Following on from the datepicker post where it was more about getting the basics in place and focusing on some important Illustrator techniques that allow for accuracy and efficiency. This post will focus on guiding you through the process of making the datepicker easy to understand and have better aesthetics.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[How to: datepicker using Illustrator]]></title>
+            <link>https://iamsteve.me/blog//blog/how-to-datepicker-using-illustrator</link>
+            <guid>https://iamsteve.me/blog//blog/how-to-datepicker-using-illustrator</guid>
+            <pubDate>Tue, 10 May 2016 06:45:00 GMT</pubDate>
+            <description><![CDATA[In this post I’m going to show you how to make a datepicker efficiently. A reasonably common user interface element, but can be a source of frustration, to make in design applications. Due to the grid, and amount of items in that grid it can be difficult to align everything…]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Illustrator quick tip: export 2x with a 1x canvas]]></title>
+            <link>https://iamsteve.me/blog//blog/illustrator-export-2x-with-a-1x-canvas</link>
+            <guid>https://iamsteve.me/blog//blog/illustrator-export-2x-with-a-1x-canvas</guid>
+            <pubDate>Mon, 02 May 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[So you use Illustrator for designing websites, and that could be because you’re on a retina screen and Illustrator is vector. So you can design at 1x and it not matter, at least that’s the case for me. However, when it comes to exporting it’s a pain, you can use ‘Save to Web’ and increase the size to 200%, but that’s tedious. You know how to export SVG, but exporting PNG files is the issue at retina sizes. In this post I will show you how to overcome that.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[How to: swatches in Illustrator]]></title>
+            <link>https://iamsteve.me/blog//blog/how-to-use-swatches-in-illustrator</link>
+            <guid>https://iamsteve.me/blog//blog/how-to-use-swatches-in-illustrator</guid>
+            <pubDate>Tue, 26 Apr 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[Swatches in Illustrator isn’t something I have used very often. Partly this has been down to being unsure of the best way, and not trusting that they will remain there. As there are random ones to begin with that you will never use and the process of deleting them seems annoying each time. In this post I’ll show you the best way to clean up existing swatches, add your own and keep them updated.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Tools I use]]></title>
+            <link>https://iamsteve.me/blog//blog/tools-i-use</link>
+            <guid>https://iamsteve.me/blog//blog/tools-i-use</guid>
+            <pubDate>Tue, 19 Apr 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[I figured I would write a post about the tools I use. Some will be familiar, but hopefully there are some that are unfamiliar and end up being useful to you.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Hero area series: Wordpress Customizer with selective refresh]]></title>
+            <link>https://iamsteve.me/blog//blog/hero-area-series-wordpress-customizer-with-selective-refresh</link>
+            <guid>https://iamsteve.me/blog//blog/hero-area-series-wordpress-customizer-with-selective-refresh</guid>
+            <pubDate>Tue, 12 Apr 2016 16:42:00 GMT</pubDate>
+            <description><![CDATA[This post builds upon the previous one in making it editable with Wordpress, using the Customizer API and the newest functionality since 4.5 selective refresh. With this you can make a really smooth and quick editing experience.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Hero area series: HTML, CSS & responsive]]></title>
+            <link>https://iamsteve.me/blog//blog/hero-area-series-html-css-responsive</link>
+            <guid>https://iamsteve.me/blog//blog/hero-area-series-html-css-responsive</guid>
+            <pubDate>Tue, 05 Apr 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[The second to last post in this series, coding the page. You’re going to build the page using flexbox and make it responsive. The method that will be used to make it responsive, is mostly mobile first, but it will be making logical decisions based on where CSS only needs applying. This saves you from having to undo it in another media query.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Hero area series: designing for small screens]]></title>
+            <link>https://iamsteve.me/blog//blog/hero-area-series-designing-for-small-screens</link>
+            <guid>https://iamsteve.me/blog//blog/hero-area-series-designing-for-small-screens</guid>
+            <pubDate>Tue, 29 Mar 2016 06:30:00 GMT</pubDate>
+            <description><![CDATA[The focus has been very much desktop so far, but considerations have been highlighted throughout for smaller screens. I will only cover ‘mobile’ sized resolutions, as for this particular layout you will only need to make minor adjustments for ‘tablet’ sized resolutions.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Hero area series: plan & design]]></title>
+            <link>https://iamsteve.me/blog//blog/hero-area-series-plan-design</link>
+            <guid>https://iamsteve.me/blog//blog/hero-area-series-plan-design</guid>
+            <pubDate>Tue, 22 Mar 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[This is the start of a series where I’m going to take a common design pattern and go through the process of planning, designing and code. It will follow the process I go through to make websites, but taking a smaller component. The pattern you will focus on within this series is a hero area.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Ways to get post thumbnails in Wordpress]]></title>
+            <link>https://iamsteve.me/blog//blog/ways-to-get-post-thumbnails-in-wordpress</link>
+            <guid>https://iamsteve.me/blog//blog/ways-to-get-post-thumbnails-in-wordpress</guid>
+            <pubDate>Tue, 15 Mar 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[With Wordpress there are a lot of ways to the same thing, for good reason, sometimes you can’t do it one way or the other. This can make it tricky to remember how to do it for each instance. At least this is the case for me. I want to use this post to serve as a guide for each method of doing so. I won’t be covering their parameters, just the necessary steps to retrieve an image.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[3 ways to export SVG in Illustrator]]></title>
+            <link>https://iamsteve.me/blog//blog/three-ways-to-export-svg-in-illustrator</link>
+            <guid>https://iamsteve.me/blog//blog/three-ways-to-export-svg-in-illustrator</guid>
+            <pubDate>Tue, 08 Mar 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[Here’s a quick tip of all the ways you can export SVG in Illustrator. Each have their conveniences, advantages and disadvantages. It’s entirely up to you which you use, there isn’t really a bad way.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[How to use JSON-LD to replace Microdata with Wordpress]]></title>
+            <link>https://iamsteve.me/blog//blog/how-to-use-json-ld-to-replace-microdata-with-wordpress</link>
+            <guid>https://iamsteve.me/blog//blog/how-to-use-json-ld-to-replace-microdata-with-wordpress</guid>
+            <pubDate>Tue, 01 Mar 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[Part of the website world is making it more accessible to bots. Be it search, social or a service like Instapaper. The reason we do this is so our content looks more appealing and isn’t left up to them, to scrape text and images they think is best. I’ll be showing you how I have done it recently with JSON-LD.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Get up to speed with CSS shapes]]></title>
+            <link>https://iamsteve.me/blog//blog/get-up-to-speed-with-css-shapes</link>
+            <guid>https://iamsteve.me/blog//blog/get-up-to-speed-with-css-shapes</guid>
+            <pubDate>Tue, 23 Feb 2016 07:25:00 GMT</pubDate>
+            <description><![CDATA[I’ve wanted to explore CSS shapes for a little while now and get a good understanding for it. Find potential use cases, strengths and weaknesses. In this post I’m going to cover the level one properties. At the time of writing level two is in the editors draft and looks to be bringing much more power to them.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[How to use inline-block for layout]]></title>
+            <link>https://iamsteve.me/blog//blog/inline-block</link>
+            <guid>https://iamsteve.me/blog//blog/inline-block</guid>
+            <pubDate>Tue, 16 Feb 2016 07:43:00 GMT</pubDate>
+            <description><![CDATA[The inline-block method is an effective float based layout alternative. It’s easier to align and removes the need to clear floats.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Enhancing horizontal scrolling with flickity.js]]></title>
+            <link>https://iamsteve.me/blog//blog/enhancing-horizontal-scrolling-with-flickity-js</link>
+            <guid>https://iamsteve.me/blog//blog/enhancing-horizontal-scrolling-with-flickity-js</guid>
+            <pubDate>Tue, 09 Feb 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[I first wrote a tutorial little while back on horizontal scrolling navigation, with the intention of accommodating only mobile devices. As with every device I have come across, the usability of horizontal scrolling areas is good.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[How to: flexible squares with CSS]]></title>
+            <link>https://iamsteve.me/blog//blog/how-to-flexible-squares-with-css</link>
+            <guid>https://iamsteve.me/blog//blog/how-to-flexible-squares-with-css</guid>
+            <pubDate>Tue, 02 Feb 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[How do you maintain a perfect square shape with a responsive layout? The solution appears simple; the only issue is your content. Which if you want to maintain a square shape it should be able to accommodate the content. I’ll show you how to do it in with this quick tip.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Maintenance week #2]]></title>
+            <link>https://iamsteve.me/blog//blog/maintenance-week-2</link>
+            <guid>https://iamsteve.me/blog//blog/maintenance-week-2</guid>
+            <pubDate>Tue, 26 Jan 2016 07:19:00 GMT</pubDate>
+            <description><![CDATA[This week is another maintenance week. The last one I looked at updating some posts. This week has been based around website maintenance. It’s been over the course of more than a week, as there was a lot to do. The interesting things I’ve added are SSL, updated the CMS and tidied up my server.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[11 resources for colour inspiration]]></title>
+            <link>https://iamsteve.me/blog//blog/11-resources-for-colour-inspiration</link>
+            <guid>https://iamsteve.me/blog//blog/11-resources-for-colour-inspiration</guid>
+            <pubDate>Tue, 19 Jan 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[Following on from the colour series I have a selection of websites that can help inspire your colour palettes. There is a variety between inspiration, resources and tools to pick colours.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Browse content efficiently with toggling horizontal scrolling]]></title>
+            <link>https://iamsteve.me/blog//blog/horizontal-scrolling-toggle</link>
+            <guid>https://iamsteve.me/blog//blog/horizontal-scrolling-toggle</guid>
+            <pubDate>Tue, 12 Jan 2016 07:30:00 GMT</pubDate>
+            <description><![CDATA[I was looking through photos in Finder, and I was finding it frustrating to scan many photos quickly. The problem was down to the horizontal scrolling sections; it is quite quick to flick through but it became tedious. I wanted to see more pictures at once, here’s a solution inspired by Finder.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[A year in writing – 2015]]></title>
+            <link>https://iamsteve.me/blog//blog/a-year-in-writing-2015</link>
+            <guid>https://iamsteve.me/blog//blog/a-year-in-writing-2015</guid>
+            <pubDate>Tue, 05 Jan 2016 07:22:00 GMT</pubDate>
+            <description><![CDATA[It’s been a year since I started writing weekly. This is the 52nd post, so it’s fitting to reflect upon the experience of writing over the past year. I hope to inspire you, to take it upon yourself, to write regularly. As I’m certainly not the best writer, but I believe if you’re knowledgeable of a subject, you should be sharing what you know.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Colour series: adding new colours & tips]]></title>
+            <link>https://iamsteve.me/blog//blog/colour-series-adding-new-colours-tips</link>
+            <guid>https://iamsteve.me/blog//blog/colour-series-adding-new-colours-tips</guid>
+            <pubDate>Tue, 29 Dec 2015 07:30:00 GMT</pubDate>
+            <description><![CDATA[Following on from the two previous posts, this post will cover things I have learnt about selecting colours over the years. These tips are the sort that when starting something new, you wish you knew, ahead of time. The majority of these tips will stand true, at least 90% of the time, and help making the right decisions easier.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Colour series: tweaking your palette]]></title>
+            <link>https://iamsteve.me/blog//blog/colour-series-tweaking-your-palette</link>
+            <guid>https://iamsteve.me/blog//blog/colour-series-tweaking-your-palette</guid>
+            <pubDate>Tue, 22 Dec 2015 08:34:00 GMT</pubDate>
+            <description><![CDATA[This is the second part in this colour series. The topic I will cover in this post is tweaking your palette. Following the previous post, you will have selected a 5 colour palette, which should serve for the majority of your use cases. However, at this stage, it won’t be perfect. I’ll guide you through the process of tweaking your palette. From trying your colours in different combinations, to colour blindness. This post helps to refine your palette.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Colour series: picking your palette]]></title>
+            <link>https://iamsteve.me/blog//blog/colour-series-picking-your-palette</link>
+            <guid>https://iamsteve.me/blog//blog/colour-series-picking-your-palette</guid>
+            <pubDate>Tue, 15 Dec 2015 07:28:00 GMT</pubDate>
+            <description><![CDATA[In this first post, I’m going to run through why colour theory is only a small part of choosing colours. Then you’ll begin to pick your palette. I’ll explain the things, that I consider when choosing a colour palette. This should help to inform your choices.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Feature detection with CSS using @supports]]></title>
+            <link>https://iamsteve.me/blog//blog/feature-detection-with-css</link>
+            <guid>https://iamsteve.me/blog//blog/feature-detection-with-css</guid>
+            <pubDate>Tue, 08 Dec 2015 07:30:00 GMT</pubDate>
+            <description><![CDATA[Feature detection is a core part of day to day life as someone who makes websites. It’s one of those features I usually hand off to Modernizr. I recently saw a tweet, which spurred the curiosity to see if we’re ready to use the @supports feature query. Now is definitely a good time to start.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Christmas gift guide 2015]]></title>
+            <link>https://iamsteve.me/blog//blog/christmas-gift-guide-2015</link>
+            <guid>https://iamsteve.me/blog//blog/christmas-gift-guide-2015</guid>
+            <pubDate>Tue, 01 Dec 2015 07:30:00 GMT</pubDate>
+            <description><![CDATA[As it’s the festive time of year, I thought I would add to the lists of gifts that people are writing. Christmas is one of my favourite times of year, not just for the gift giving, but it’s a time to relax and enjoy what surrounds Christmas. Usually there’s a bit of a designer spin on it, which is my aim, but I think they’re suitable for everyone. I own some of these things already, so for what I can I have provided a brief review. There’s a mix of things from notebooks to shoes, with varying price points.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Avoiding split focus will make you a better designer]]></title>
+            <link>https://iamsteve.me/blog//blog/thoughts-on-avoiding-split-focus</link>
+            <guid>https://iamsteve.me/blog//blog/thoughts-on-avoiding-split-focus</guid>
+            <pubDate>Tue, 24 Nov 2015 07:23:00 GMT</pubDate>
+            <description><![CDATA[The idea of this post comes from a previous one, ‘accuracy in wireframes’. I thought more about the topic, which was around trying to decide layout and  adding visual style. Focusing on two very important aspects of making websites leads to difficulties. It was part of a larger problem in my process.In this post I want to cover ways, where split focus can creep in, and the purpose of each step, so you can gain understanding for avoiding split focus. This is based on my process, so yours may differ, but the premise is the same.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Why you should roll your own framework]]></title>
+            <link>https://iamsteve.me/blog//blog/why-you-should-roll-your-own-framework</link>
+            <guid>https://iamsteve.me/blog//blog/why-you-should-roll-your-own-framework</guid>
+            <pubDate>Tue, 17 Nov 2015 07:29:00 GMT</pubDate>
+            <description><![CDATA[There are many opinions against rolling your own CSS framework. To the extent, it can make you think, let’s get bootstrap (or another) and see what happens.I genuinely believe there is no harm in making your own. I started one a couple of years ago and have just got back to it recently (as I have been focused more on designing lately). It isn’t in too bad shape, but it’s made me evaluate it and begin refining it again. There’s value in creating your own if you use it regularly and keep it up to date.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Tips for sketching websites]]></title>
+            <link>https://iamsteve.me/blog//blog/tips-for-sketching-websites</link>
+            <guid>https://iamsteve.me/blog//blog/tips-for-sketching-websites</guid>
+            <pubDate>Tue, 10 Nov 2015 07:29:00 GMT</pubDate>
+            <description><![CDATA[I’ve seen tweets, and hear people say “I’m no good at sketching/drawing.” So they don’t bother with doing it. For me not sketching your website before going into a wireframe or design, means you’re missing out!Just because you feel like you can’t sketch, doesn’t mean you shouldn’t do it. After all, you’re capable of building a website, and at some point in the past you weren’t. In this post, I’ll show you my process and how to sketch websites.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Three free form styles]]></title>
+            <link>https://iamsteve.me/blog//blog/three-free-form-styles</link>
+            <guid>https://iamsteve.me/blog//blog/three-free-form-styles</guid>
+            <pubDate>Tue, 03 Nov 2015 07:34:00 GMT</pubDate>
+            <description><![CDATA[This is one of the first things; I’ve worked on aside from what’s posts, to give away. It’s quite difficult to figure out what to design to give away, without just adding to the masses of things out there already. I’ve decided to code up some form styles. So you should be able to grab their styles and apply them right away to your forms. There are three variations.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Using Grunticon to inline SVG]]></title>
+            <link>https://iamsteve.me/blog//blog/using-grunticon-to-inline-svg</link>
+            <guid>https://iamsteve.me/blog//blog/using-grunticon-to-inline-svg</guid>
+            <pubDate>Tue, 27 Oct 2015 07:34:00 GMT</pubDate>
+            <description><![CDATA[Grunticon updated to V2 a while ago now and what came with it was the ability to insert inline SVG. This is great because it can generate the necessary fallbacks and not ruin layout in old browsers with the presence of an <svg> tag. The main benefit of having your SVG inline is it can be easily modified with CSS.All this is done by running a grunt task. However, if you’re not too familiar with using Grunt, or want to avoid build tools altogether, it’s not possible at this stage. I have wrote previously on an alternative approach, however it doesn’t have the inline SVG benefits.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Maintenance week #1]]></title>
+            <link>https://iamsteve.me/blog//blog/maintenance-week</link>
+            <guid>https://iamsteve.me/blog//blog/maintenance-week</guid>
+            <pubDate>Tue, 20 Oct 2015 06:30:00 GMT</pubDate>
+            <description><![CDATA[I’ve been thinking about doing this for a little while over the course of posting regularly. I feel it a duty to go back and refine some posts or make additions to them to improve them.So there is no post as such this week. I’ve decided to go back and update some. I’ve listed each of the posts and changes I’ve made for you.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[How to consistently style form elements]]></title>
+            <link>https://iamsteve.me/blog//blog/how-to-consistently-style-form-elements</link>
+            <guid>https://iamsteve.me/blog//blog/how-to-consistently-style-form-elements</guid>
+            <pubDate>Tue, 13 Oct 2015 06:29:00 GMT</pubDate>
+            <description><![CDATA[One of the trickiest things to deal with cross browser is the styling of form elements. All browsers influence these strictly, but over the years the ‘appearance’ property has been present in WebKit and Blink browsers, and Firefox to help gain some control. More recently it’s been added to Edge. It is a little more to it than just using this property. I’ll explain the advantages and drawbacks to this and how I handle it. The goal of this post is to give you the base for you to apply your visual style on top of. I will be covering text, button and select elements.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[iamsteve – a new logomark]]></title>
+            <link>https://iamsteve.me/blog//blog/iamsteve-a-new-logomark</link>
+            <guid>https://iamsteve.me/blog//blog/iamsteve-a-new-logomark</guid>
+            <pubDate>Tue, 06 Oct 2015 06:36:00 GMT</pubDate>
+            <description><![CDATA[I have updated my logomark. It’s been around 5 years, since I last made a change relating to my logo. I’m going to cover the steps leading up to this.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Add critical CSS with wp_enqueue_scripts]]></title>
+            <link>https://iamsteve.me/blog//blog/add-critical-css-with-wp-enqueue-scripts</link>
+            <guid>https://iamsteve.me/blog//blog/add-critical-css-with-wp-enqueue-scripts</guid>
+            <pubDate>Tue, 29 Sep 2015 06:40:00 GMT</pubDate>
+            <description><![CDATA[Following on nicely from the previous post. One of the things with critical path CSS, is you can’t use wp_enqueue_style. It’s not a huge deal, as the easiest way to get around it is by putting it in your <head> the regular way. Though when you combine that with cookies and <noscript> tags, it can make for quite a messy <head>. Particularly for a Wordpress template, as I have found in the past..In this post I will show you how to avoid this. It’s similar to the way Wordpress recommends you queue your scripts and styles.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Setting a cookie with Wordpress]]></title>
+            <link>https://iamsteve.me/blog//blog/setting-a-cookie-with-wordpress</link>
+            <guid>https://iamsteve.me/blog//blog/setting-a-cookie-with-wordpress</guid>
+            <pubDate>Tue, 22 Sep 2015 06:40:00 GMT</pubDate>
+            <description><![CDATA[At one point, I was relying on JavaScript for setting the cookie for my critical path CSS. The issue with that is when JavaScript isn’t available the cookie will not be set. Not a huge deal as the website, would still function.When it comes to Wordpress, it’s not as straight forward as using setcookie in your header.php file or another less than ideal location. In this post I will show you how to set a cookie with Wordpress and use it in your code. The method is very similar to the JavaScript method, with a focus on PHP and Wordpress.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Having a central logo with a Wordpress menu]]></title>
+            <link>https://iamsteve.me/blog//blog/having-a-central-logo-with-wordpress-menus</link>
+            <guid>https://iamsteve.me/blog//blog/having-a-central-logo-with-wordpress-menus</guid>
+            <pubDate>Tue, 15 Sep 2015 06:38:00 GMT</pubDate>
+            <description><![CDATA[If you’ve ever wanted to place your logo in the centre of your header, between your navigation items, at first it can appear tricky to achieve. You may have been used to an approach that involved setting up, two separate menus, within Wordpress. May you added a link to ‘home’ in between the items in a single menu. Or worse still you used JavaScript to change the position. Each of them have a less than ideal feeling to it. This is where flexbox can really help.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Responsive vertical rhythm]]></title>
+            <link>https://iamsteve.me/blog//blog/responsive-vertical-rhythm</link>
+            <guid>https://iamsteve.me/blog//blog/responsive-vertical-rhythm</guid>
+            <pubDate>Tue, 08 Sep 2015 06:45:00 GMT</pubDate>
+            <description><![CDATA[I wrote a fairly lengthy post previously on vertical rhythm. I considered adding a section on how to adjust font sizes whilst maintaining vertical rhythm. However, with the experience of seeing how people struggle with the topic of vertical rhythm, it was best to keep it for a separate post.I will assume you do have a grasp of vertical rhythm, at this point, otherwise some parts may not make sense. In the examples I will be using em units, with Sass. So I assume you will have an understanding of how em units work. However, I will give you a brief overview.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Typekit gems]]></title>
+            <link>https://iamsteve.me/blog//blog/typekit-gems-number-one</link>
+            <guid>https://iamsteve.me/blog//blog/typekit-gems-number-one</guid>
+            <pubDate>Tue, 01 Sep 2015 07:31:00 GMT</pubDate>
+            <description><![CDATA[Here’s 4 typefaces from typekit; that you may not have used. These are typefaces I have used in the past and have qualities that I believe make a good choice. Generally they are all suitable for paragraph text. They feature nice italics and a variety of weights. Hopefully through this post you can discover some nice typefaces that you can find appropriate for your designs.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Accuracy in wireframes]]></title>
+            <link>https://iamsteve.me/blog//blog/accuracy-in-wireframes</link>
+            <guid>https://iamsteve.me/blog//blog/accuracy-in-wireframes</guid>
+            <pubDate>Tue, 25 Aug 2015 06:17:00 GMT</pubDate>
+            <description><![CDATA[In this post I’m going to cover a process I’ve brought in for doing wireframes, I’m finding really useful lately. It involves taking back all the visual style and just focusing on the layout of elements — as a result creating accurate wireframes. Then you build up your visual style from there. The problem for me comes from wireframes that have too little detail, being used as the basis for the whole page.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Using flexbox for horizontal scrolling navigation]]></title>
+            <link>https://iamsteve.me/blog//blog/using-flexbox-for-horizontal-scrolling-navigation</link>
+            <guid>https://iamsteve.me/blog//blog/using-flexbox-for-horizontal-scrolling-navigation</guid>
+            <pubDate>Tue, 18 Aug 2015 06:25:00 GMT</pubDate>
+            <description><![CDATA[This post is a follow up to a different method for horizontal scrolling navigation which used inline-block. In this post, I want to cover how flexbox can be used to achieve the same thing and the benefits over the inline-block method.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[A guide to vertical rhythm]]></title>
+            <link>https://iamsteve.me/blog//blog/a-guide-to-vertical-rhythm</link>
+            <guid>https://iamsteve.me/blog//blog/a-guide-to-vertical-rhythm</guid>
+            <pubDate>Tue, 11 Aug 2015 06:41:00 GMT</pubDate>
+            <description><![CDATA[Vertical rhythm is the typographic practice, to create a vertical harmony between text, images and so on. On the web it’s quite difficult to achieve. Yet understanding what it is, with the aim to maintain it, you can improve your reading experience. If you’re aware of it, but have struggled to understand vertical rhythm, this post is for you. It will focus more on the why, rather than the how. So you come away with a better understanding.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Redirecting an old domain to a new domain with nginx]]></title>
+            <link>https://iamsteve.me/blog//blog/redirecting-an-old-domain-to-a-new-domain-with-nginx</link>
+            <guid>https://iamsteve.me/blog//blog/redirecting-an-old-domain-to-a-new-domain-with-nginx</guid>
+            <pubDate>Tue, 04 Aug 2015 06:25:00 GMT</pubDate>
+            <description><![CDATA[Servers isn’t a topic I thought I would write about, however I had to do something for the first time on nginx. There is plenty of information out there on this topic. As someone who was new to redirecting old and new domains on nginx particularly, the information is making a few assumptions. For me, it wasted much of the time, it took me to do this. As I was second guessing what would happen.In this post I want to reassure you and guide you through the process. Answering the questions, that you may have, for what appears to be a simple looking task.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[What I’ve learnt from 6 months of writing weekly]]></title>
+            <link>https://iamsteve.me/blog//blog/what-ive-learnt-from-6-months-of-writing-weekly</link>
+            <guid>https://iamsteve.me/blog//blog/what-ive-learnt-from-6-months-of-writing-weekly</guid>
+            <pubDate>Tue, 28 Jul 2015 06:25:00 GMT</pubDate>
+            <description><![CDATA[During the Christmas holidays, I made the decision to write blog posts weekly, at the turn of the year. Knowing that I couldn’t be sure, if I would be able to see through writing, for a whole year. I wrote 4 posts over the course of the Christmas holidays and decided that I would go ahead with it.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Using Sass to create harmonious gradients]]></title>
+            <link>https://iamsteve.me/blog//blog/using-sass-to-create-harmonious-gradients</link>
+            <guid>https://iamsteve.me/blog//blog/using-sass-to-create-harmonious-gradients</guid>
+            <pubDate>Tue, 21 Jul 2015 07:00:00 GMT</pubDate>
+            <description><![CDATA[One of the best things about Sass, is the ability to adjust colour nicely and be able to apply that, consistently across, many colours.In this post I’m going to demonstrate, as I have in the past with scale-color. How you can create gradients, that look much more harmonious. Instead of the standard, take the colour and darken it. Using adjust-hue and scale-color we can achieve this.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Creating custom stroke width profiles in Illustrator]]></title>
+            <link>https://iamsteve.me/blog//blog/creating-custom-stroke-width-profiles-in-illustrator</link>
+            <guid>https://iamsteve.me/blog//blog/creating-custom-stroke-width-profiles-in-illustrator</guid>
+            <pubDate>Tue, 14 Jul 2015 06:33:00 GMT</pubDate>
+            <description><![CDATA[Illustrator has a fair variety of default width profiles, however you may find yourself wanting to tweak them slightly. In my case I needed to tweak one, for creating some eyelashes. It’s not apparent how to do this. So it makes for a good post to explain for anyone having a similar problem.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[A couple of masking techniques in Photoshop]]></title>
+            <link>https://iamsteve.me/blog//blog/a-couple-of-masking-techniques-in-photoshop</link>
+            <guid>https://iamsteve.me/blog//blog/a-couple-of-masking-techniques-in-photoshop</guid>
+            <pubDate>Tue, 07 Jul 2015 06:38:00 GMT</pubDate>
+            <description><![CDATA[I think the variety of masking techniques there are in Photoshop are part of its strongest features. In this post I’ll show you the ones I use most frequently. How to clip images to a shape and how the overlay blending mode can be used as a mask to dodge and burn non-destructively.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Using Wordpress customiser to create editable regions]]></title>
+            <link>https://iamsteve.me/blog//blog/using-wordpress-customiser-to-create-editable-regions</link>
+            <guid>https://iamsteve.me/blog//blog/using-wordpress-customiser-to-create-editable-regions</guid>
+            <pubDate>Tue, 30 Jun 2015 06:40:00 GMT</pubDate>
+            <description><![CDATA[The great thing about the Wordpress customiser, is it allows you to make editable regions throughout your website. Without giving you too much control, but allowing that, real time, visual focus.You could have much of the functionality, I will show, within the admin panel. However, being able to make the edits in real time, makes decision making, easier. Particularly, with how your text or images display.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Remove letter-spacing from last letter]]></title>
+            <link>https://iamsteve.me/blog//blog/remove-letter-spacing-from-last-letter</link>
+            <guid>https://iamsteve.me/blog//blog/remove-letter-spacing-from-last-letter</guid>
+            <pubDate>Tue, 23 Jun 2015 06:25:00 GMT</pubDate>
+            <description><![CDATA[One of the frustrating things about the letter-spacing property is the addition of the letter-spacing you apply to the last letter of the text. This is fine when you have left aligned text, however if you right align or centre the text, you’re left with a little bit of space.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Illustrator quick tip: grid guides]]></title>
+            <link>https://iamsteve.me/blog//blog/illustrator-quick-tip-grid-guides</link>
+            <guid>https://iamsteve.me/blog//blog/illustrator-quick-tip-grid-guides</guid>
+            <pubDate>Tue, 16 Jun 2015 06:22:00 GMT</pubDate>
+            <description><![CDATA[I find myself needing to remember, how do I create a set of grid guides in Illustrator. As I’m a relatively new convert to using Illustrator, well I find myself switching between Illustrator and Photoshop, for much of the work I do. This is a quick tip to show you how to make a grid, for those who just can’t remember, due to it generally being easier to remember in Photoshop. In the post I will cover how to create a simple grid and toggle it’s visibility.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Wordpress custom fields]]></title>
+            <link>https://iamsteve.me/blog//blog/wordpress-custom-fields</link>
+            <guid>https://iamsteve.me/blog//blog/wordpress-custom-fields</guid>
+            <pubDate>Tue, 09 Jun 2015 06:41:00 GMT</pubDate>
+            <description><![CDATA[I have only recently looked into using the custom meta boxes that come with Wordpress. I’ve been a fan of Advanced Custom Fields for a long time, so it’s something I’ve never had a great urge to use.I’m going share with you over the course of this post how to get them set up. You’ll learn to add them efficiently, how to add custom CSS, change placement to under the title and finally how to use them in your theme.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[You don’t need an extension for Photoshop grids]]></title>
+            <link>https://iamsteve.me/blog//blog/photoshop-grids-using-guide-layouts</link>
+            <guid>https://iamsteve.me/blog//blog/photoshop-grids-using-guide-layouts</guid>
+            <pubDate>Tue, 02 Jun 2015 06:40:00 GMT</pubDate>
+            <description><![CDATA[In the October 2014 update, Adobe added a new grid/guide creator and it’s great. It covers the majority of things extensions like GuideGuide do and has a couple of advantages.I’m not sure it’s been given the attention it deserves, a small feature, yet one we will use so often. It’s simple to use and allows you to save (like GuideGuide) and should sync your grid layouts with Creative Cloud.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Using srcset with the_post_thumbnail() in Wordpress]]></title>
+            <link>https://iamsteve.me/blog//blog/using-srcset-with-the-post-thumbnail-in-wordpress</link>
+            <guid>https://iamsteve.me/blog//blog/using-srcset-with-the-post-thumbnail-in-wordpress</guid>
+            <pubDate>Tue, 26 May 2015 07:02:00 GMT</pubDate>
+            <description><![CDATA[If you use Wordpress, it’s likely you’ll be familiar with the_post_thumbnail() or one of its variants. In this post I want to provide a way of using srcset with your post thumbnails today. The aim will be to create a similar function, that takes the same parameters and except the output will contain the srcset attribute.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Sass map use patterns]]></title>
+            <link>https://iamsteve.me/blog//blog/sass-map-use-patterns</link>
+            <guid>https://iamsteve.me/blog//blog/sass-map-use-patterns</guid>
+            <pubDate>Tue, 19 May 2015 06:39:00 GMT</pubDate>
+            <description><![CDATA[Sass maps can provide some powerful functionality to make life easier and less repetitive. I’ll cover briefly how to use them and then detail some of the cases that I use them, as I don’t think the benefits are immediate.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Creating vintage filters with CSS blend modes]]></title>
+            <link>https://iamsteve.me/blog//blog/creating-vintage-filters-with-css-blend-modes</link>
+            <guid>https://iamsteve.me/blog//blog/creating-vintage-filters-with-css-blend-modes</guid>
+            <pubDate>Tue, 12 May 2015 06:00:00 GMT</pubDate>
+            <description><![CDATA[With blend modes we can apply a vintage style to any image like we would in Photoshop. Blend modes is something I have been looking forward to coming to CSS for a while and this feels like a fitting way for me to share a deeper look at them. You can test them for yourself with the demo at the bottom.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Flexbox quick wins]]></title>
+            <link>https://iamsteve.me/blog//blog/flexbox-quick-wins</link>
+            <guid>https://iamsteve.me/blog//blog/flexbox-quick-wins</guid>
+            <pubDate>Tue, 05 May 2015 06:00:00 GMT</pubDate>
+            <description><![CDATA[Flexbox is still one of those properties that isn’t quite ready for prime time use. Due to the necessary support of IE 8 and 10. There are some uses of flexbox we can use for ‘free’ without worry of any knock on effects. These are especially handy if we don’t have the time to invest into heavily flexbox based layouts.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Simple horizontal scrolling menu with CSS]]></title>
+            <link>https://iamsteve.me/blog//blog/horizontal-scrolling-responsive-menu</link>
+            <guid>https://iamsteve.me/blog//blog/horizontal-scrolling-responsive-menu</guid>
+            <pubDate>Tue, 28 Apr 2015 07:00:00 GMT</pubDate>
+            <description><![CDATA[If you’re looking for an alternative approach to responsive navigation, which doesn’t involve the ‘hamburger’ this may be for you.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Using cookies to serve critical CSS for first time visits]]></title>
+            <link>https://iamsteve.me/blog//blog/using-cookies-to-serve-critical-css-for-first-time-visits</link>
+            <guid>https://iamsteve.me/blog//blog/using-cookies-to-serve-critical-css-for-first-time-visits</guid>
+            <pubDate>Tue, 21 Apr 2015 06:45:00 GMT</pubDate>
+            <description><![CDATA[I wrote about critical path CSS earlier in the year, but didn’t cover using cookies to cover the caching part. So, this post will assume that you’ve previously set up your CSS in a similar manner. If not, I advise you read my post about it.After this post, you’ll be able to setup a cookie, to check if a visitor has the CSS cached and no longer requires the critical path CSS.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Typography for beginners: how to choose a typeface for paragraphs]]></title>
+            <link>https://iamsteve.me/blog//blog/how-to-choose-a-typeface-for-paragraphs</link>
+            <guid>https://iamsteve.me/blog//blog/how-to-choose-a-typeface-for-paragraphs</guid>
+            <pubDate>Tue, 14 Apr 2015 07:00:00 GMT</pubDate>
+            <description><![CDATA[In this post I’m going to go through some of the considerations necessary for choosing the right typeface for paragraphs.There are a few factors that come with choosing an appropriate typeface. These are are x-height, contrast, width and context. After reading this post you will gain the understanding necessary to make the right choices to choose legible typefaces.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Using webkit2png to generate responsive screenshots]]></title>
+            <link>https://iamsteve.me/blog//blog/using-webkit2png-to-generate-responsive-screenshots</link>
+            <guid>https://iamsteve.me/blog//blog/using-webkit2png-to-generate-responsive-screenshots</guid>
+            <pubDate>Tue, 07 Apr 2015 07:00:00 GMT</pubDate>
+            <description><![CDATA[If you ever have to create screenshots for a website, it can be quite a tedious process. In this post I will show you a way to do it easily with webkit2png. We’ll set up an array, which will generate a full sized screenshot with a unique name from your specified website.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Typography for beginners: type scale, line height & lengths]]></title>
+            <link>https://iamsteve.me/blog//blog/type-scale-line-height-lengths</link>
+            <guid>https://iamsteve.me/blog//blog/type-scale-line-height-lengths</guid>
+            <pubDate>Mon, 30 Mar 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[Good typography is playing a bigger role in the design of websites nowadays. However when starting out it’s something that is overlooked. Considering the web is all about content, it’s important that we give everyone a good reading experience.I’m starting with a few examples that can really help improve your reading experience. I want to help you understand why these things are important and provide guidance as to why it does work.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Using Photoshop linked smart objects for more modular designs]]></title>
+            <link>https://iamsteve.me/blog//blog/using-photoshop-linked-smart-objects-for-more-modular-designs</link>
+            <guid>https://iamsteve.me/blog//blog/using-photoshop-linked-smart-objects-for-more-modular-designs</guid>
+            <pubDate>Tue, 24 Mar 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[This feature was added to Photoshop in the last year or so, as of writing. I aim to show you how it will make your PSDs more manageable. It’s become such a large part of my Photoshop workflow. If you’re not using it, this post will definitely make you want to.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Adobe generator syntax ‘cheatsheet’]]></title>
+            <link>https://iamsteve.me/blog//blog/adobe-generator-syntax-cheatsheet</link>
+            <guid>https://iamsteve.me/blog//blog/adobe-generator-syntax-cheatsheet</guid>
+            <pubDate>Tue, 17 Mar 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[I’m always looking up the Adobe generator syntax and yet I never bookmark it. I feel like it would be a valuable resource to clearly show. Something I think the Adobe documentation lacks. This could be the reason I haven’t bookmarked it.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Opt in style]]></title>
+            <link>https://iamsteve.me/blog//blog/opt-in-style</link>
+            <guid>https://iamsteve.me/blog//blog/opt-in-style</guid>
+            <pubDate>Tue, 10 Mar 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[Why not to add a base level of styles that are defaults for the majority of elements.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Object fit for full viewport images with ease]]></title>
+            <link>https://iamsteve.me/blog//blog/object-fit-for-full-viewport-images-with-ease</link>
+            <guid>https://iamsteve.me/blog//blog/object-fit-for-full-viewport-images-with-ease</guid>
+            <pubDate>Tue, 03 Mar 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[Discovering this CSS feature will make my life much easier where it concerns the positioning of images. It’s like background-size for background images. It’s easy to use and behaves in a similar way albeit different naming. I’m going to show how object-fit and viewport relative units can allow us, to size inline images, without worrying about distortion.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Sass hints & tips revisited]]></title>
+            <link>https://iamsteve.me/blog//blog/sass-hints-tips-revisited</link>
+            <guid>https://iamsteve.me/blog//blog/sass-hints-tips-revisited</guid>
+            <pubDate>Tue, 24 Feb 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[One of my most popular posts Sass hints & tips is a little dated. I was considering just editing the post, but there is still some value in that post. Instead I decided to revisit it through a new post. I will cover a couple of newer additions to Sass that I use and using extensions like Breakpoint for managing media queries in an effective way.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Using BrowserSync and Safari for testing your responsive website]]></title>
+            <link>https://iamsteve.me/blog//blog/using-browsersync-and-safari-for-testing-your-responsive-website</link>
+            <guid>https://iamsteve.me/blog//blog/using-browsersync-and-safari-for-testing-your-responsive-website</guid>
+            <pubDate>Tue, 17 Feb 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[Testing a responsive design on an actual device can be quite annoying when you’re down to the point of refining the design and making it more appropriate to such a small screen. As it’s usually testing and refining the best you can locally, then checking on the device through whatever means you usually do it.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Manage text colour with ease]]></title>
+            <link>https://iamsteve.me/blog//blog/manage-text-colour-with-ease</link>
+            <guid>https://iamsteve.me/blog//blog/manage-text-colour-with-ease</guid>
+            <pubDate>Mon, 09 Feb 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[When designing a website you can have varied text colours depending on the background colour. This can be an area of frustration due to the unknown elements that could potentially be contained within an area. Here’s a simple technique for overcoming that.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Overcoming a couple of issues with SVG filter effects]]></title>
+            <link>https://iamsteve.me/blog//blog/overcoming-a-couple-of-issues-with-svg-filter-effects</link>
+            <guid>https://iamsteve.me/blog//blog/overcoming-a-couple-of-issues-with-svg-filter-effects</guid>
+            <pubDate>Tue, 03 Feb 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[Using SVG filter effects wasn’t something I was aware of and they have good browser support.However, they are greatly useful when you’re adding illustration with certain details to your website. Even though I only used the gaussian blur filter, I encountered some problems when using it and I’m sure it will apply to using others.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[SVG reusability & animation]]></title>
+            <link>https://iamsteve.me/blog//blog/svg-reusability-animation</link>
+            <guid>https://iamsteve.me/blog//blog/svg-reusability-animation</guid>
+            <pubDate>Tue, 27 Jan 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[The great thing about SVG is CSS can modify it. Which allows you to modify the way paths look quite drastically. This is really handy for saving on page weight because you don’t have to load multiple images and it looks like it was meant to happen.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Images with srcset & picture]]></title>
+            <link>https://iamsteve.me/blog//blog/images-with-srcset-picture</link>
+            <guid>https://iamsteve.me/blog//blog/images-with-srcset-picture</guid>
+            <pubDate>Tue, 20 Jan 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[Images for me is something I consider the most tricky part of building a website, particularly for a portfolio focused website. It’s important to display these images in the best quality and smallest file size you can.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Javascript without jQuery]]></title>
+            <link>https://iamsteve.me/blog//blog/javascript-without-jquery</link>
+            <guid>https://iamsteve.me/blog//blog/javascript-without-jquery</guid>
+            <pubDate>Tue, 13 Jan 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[This post covers how I used the opportunity to not use jQuery to further my Javascript knowledge, as well as the performance benefits gained from this. I found alternatives to what jQuery offers and it wasn’t completely simple, but hopefully I can show beginners alike how to overcome some of the problems.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Maintainable critical and asynchronous CSS]]></title>
+            <link>https://iamsteve.me/blog//blog/critical-asynchronous-css</link>
+            <guid>https://iamsteve.me/blog//blog/critical-asynchronous-css</guid>
+            <pubDate>Tue, 06 Jan 2015 08:00:00 GMT</pubDate>
+            <description><![CDATA[A look at a website I made. Starting with how I setup critical and asynchronous CSS to be a maintainable part of my workflow.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[My SVG workflow, from awkward to simple]]></title>
+            <link>https://iamsteve.me/blog//blog/my-svg-workflow-from-awkward-to-simple</link>
+            <guid>https://iamsteve.me/blog//blog/my-svg-workflow-from-awkward-to-simple</guid>
+            <pubDate>Wed, 04 Sep 2013 18:44:00 GMT</pubDate>
+            <description><![CDATA[Initially I thought it would be quite frustrating to get going with SVG, but after jumping in and seeing where I got it’s quite simple.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Understanding Sass default variables]]></title>
+            <link>https://iamsteve.me/blog//blog/understanding-sass-default-variables</link>
+            <guid>https://iamsteve.me/blog//blog/understanding-sass-default-variables</guid>
+            <pubDate>Sun, 19 May 2013 10:01:00 GMT</pubDate>
+            <description><![CDATA[Sass has a handy feature for setting defaults for mixins and variables to override easily later. So how do you use it?]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Using em’s for efficiency]]></title>
+            <link>https://iamsteve.me/blog//blog/using-ems-for-efficiency</link>
+            <guid>https://iamsteve.me/blog//blog/using-ems-for-efficiency</guid>
+            <pubDate>Tue, 02 Apr 2013 11:55:00 GMT</pubDate>
+            <description><![CDATA[There are a lot of units of measurement in CSS. The em is a powerful unit you can use to efficiently scale elements.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Create a fluid browser with border-image]]></title>
+            <link>https://iamsteve.me/blog//blog/create-a-fluid-browser-with-border-image</link>
+            <guid>https://iamsteve.me/blog//blog/create-a-fluid-browser-with-border-image</guid>
+            <pubDate>Sun, 24 Mar 2013 13:38:00 GMT</pubDate>
+            <description><![CDATA[An attempt at adding browser chrome to images without the need for extra markup.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Compass mixins you should know about]]></title>
+            <link>https://iamsteve.me/blog//blog/compass-mixins-you-should-know-about</link>
+            <guid>https://iamsteve.me/blog//blog/compass-mixins-you-should-know-about</guid>
+            <pubDate>Thu, 03 Jan 2013 09:13:00 GMT</pubDate>
+            <description><![CDATA[I’m going to run through a few of my favourite mixins that I have come to rely on.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Using scale-color in Sass]]></title>
+            <link>https://iamsteve.me/blog//blog/using-scale-color-in-sass</link>
+            <guid>https://iamsteve.me/blog//blog/using-scale-color-in-sass</guid>
+            <pubDate>Wed, 21 Nov 2012 19:45:00 GMT</pubDate>
+            <description><![CDATA[I have been recently trying to get a consistent look across my element mixin no matter the colour. That’s where scale-color comes in.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Create a Sass button/element mixin]]></title>
+            <link>https://iamsteve.me/blog//blog/create-a-sass-button-element-mixin</link>
+            <guid>https://iamsteve.me/blog//blog/create-a-sass-button-element-mixin</guid>
+            <pubDate>Sat, 03 Nov 2012 11:39:00 GMT</pubDate>
+            <description><![CDATA[This mixin is one I’ve been using for a few months now to create buttons/anything with a particular style.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[About version 5]]></title>
+            <link>https://iamsteve.me/blog//blog/about-version-5</link>
+            <guid>https://iamsteve.me/blog//blog/about-version-5</guid>
+            <pubDate>Sat, 03 Nov 2012 09:16:00 GMT</pubDate>
+            <description><![CDATA[Another redesign, another blog post. It’s the majority of what my blog posts are based around. With each version I say I’m going to blog more, but the redesign has never really focused on it. This was one of my main goals, to bring more focus to the blog. Then maybe it would add to making me write more.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Sass hints & tips]]></title>
+            <link>https://iamsteve.me/blog//blog/sass-hints-and-tips</link>
+            <guid>https://iamsteve.me/blog//blog/sass-hints-and-tips</guid>
+            <pubDate>Wed, 07 Mar 2012 20:23:00 GMT</pubDate>
+            <description><![CDATA[A selection of tips for those getting started with a Sass.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[About version 4]]></title>
+            <link>https://iamsteve.me/blog//blog/about-version-4</link>
+            <guid>https://iamsteve.me/blog//blog/about-version-4</guid>
+            <pubDate>Fri, 30 Dec 2011 18:41:00 GMT</pubDate>
+            <description><![CDATA[A look through the design decisions for another of 2011’s redesigns.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Wordpress post formats]]></title>
+            <link>https://iamsteve.me/blog//blog/wordpress-post-formats</link>
+            <guid>https://iamsteve.me/blog//blog/wordpress-post-formats</guid>
+            <pubDate>Mon, 12 Dec 2011 19:53:00 GMT</pubDate>
+            <description><![CDATA[A handy feature allowing you to differentiate different post types from others without needing a post type.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[About the redesign V3]]></title>
+            <link>https://iamsteve.me/blog//blog/about-the-redesign-v3</link>
+            <guid>https://iamsteve.me/blog//blog/about-the-redesign-v3</guid>
+            <pubDate>Mon, 07 Mar 2011 18:01:00 GMT</pubDate>
+            <description><![CDATA[A look at 2011’s redesign. I moved the website from Wordpress to ExpressionEngine.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Dribbble invite giveaway [closed]]]></title>
+            <link>https://iamsteve.me/blog//blog/dribbble-invite-giveaway</link>
+            <guid>https://iamsteve.me/blog//blog/dribbble-invite-giveaway</guid>
+            <pubDate>Tue, 02 Nov 2010 00:06:00 GMT</pubDate>
+            <description><![CDATA[I have a single Dribbble invite to giveaway. I assume the majority of people who will come to this post will know what Dribbble is but for those who don’t here is a quote from the Dribbble about page.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[About version 2]]></title>
+            <link>https://iamsteve.me/blog//blog/redesign</link>
+            <guid>https://iamsteve.me/blog//blog/redesign</guid>
+            <pubDate>Wed, 20 Oct 2010 17:41:00 GMT</pubDate>
+            <description><![CDATA[A look at some of the design decisions and iterations for version two.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[3D like buttons with CSS]]></title>
+            <link>https://iamsteve.me/blog//blog/buttons</link>
+            <guid>https://iamsteve.me/blog//blog/buttons</guid>
+            <pubDate>Thu, 23 Sep 2010 20:50:00 GMT</pubDate>
+            <description><![CDATA[In this tutorial I will show you how to make buttons in CSS with a nice 3D like effect. It’s really simple and all it takes is understanding where and when you need box-shadow. It’s all dependent on preference too and how you would like them.]]></description>
+        </item>
+    </channel>
+</rss>

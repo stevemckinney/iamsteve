@@ -21,7 +21,7 @@ public/sitemap.xml
 # *.xml
 app/sitemap.xml
 # rss feed
-/public/feed.xml
+#/public/feed.xml
 /public/feed.json
 /public/atom.xml
 /public/sitemap.xml
