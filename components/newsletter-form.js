@@ -14,26 +14,6 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
 
   const roundDownToNearest10 = (num) => Math.floor(num / 10) * 10
 
-  useEffect(() => {
-    const fetchSubscriberCount = async () => {
-      try {
-        const response = await fetch('/api/newsletter')
-        if (!response.ok) {
-          throw new Error('Failed to fetch subscriber count')
-        }
-        const data = await response.json()
-        if (data.subscriberCount) {
-          setSubscriberCount(roundDownToNearest10(data.subscriberCount))
-        }
-      } catch (error) {
-        console.error('Failed to fetch subscriber count:', error)
-        setSubscriberCount(700) // Fallback
-      }
-    }
-
-    fetchSubscriberCount()
-  }, [])
-
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     return re.test(String(email).toLowerCase())
