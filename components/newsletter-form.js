@@ -9,7 +9,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
-  const [subscriberCount, setSubscriberCount] = useState(null)
+  const [subscriberCount, setSubscriberCount] = useState(700)
   const [emailError, setEmailError] = useState('')
 
   const roundDownToNearest10 = (num) => Math.floor(num / 10) * 10
@@ -162,11 +162,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
           </div>
           <div className="flex flex-col flex-col-reverse @sm:flex-row gap-4 items-center justify-between">
             <p className="m-0 p-0 text-fern-600 flex-1 text-center @sm:text-left">
-              Join{' '}
-              {subscriberCount !== null
-                ? `${subscriberCount.toLocaleString()}+`
-                : '700+'}{' '}
-              designers
+              Join {subscriberCount.toLocaleString()}+ designers
             </p>
             <Button
               theme="dandelion"

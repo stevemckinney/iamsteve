@@ -3,7 +3,7 @@
   "version": "8.0.1",
   "private": true,
   "scripts": {
-    "dev": "contentlayer dev & next dev",
+    "dev": "contentlayer dev & NODE_OPTIONS='--inspect' next dev",
     "sourcemap": "NODE_OPTIONS=--enable-source-maps next build",
     "build": "contentlayer build && next build",
     "serve": "next start",
