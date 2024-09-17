@@ -32,11 +32,8 @@ const getData = cache(async () => {
     allPosts.filter((post) => post.status === 'open')
   )
 
-  //const feed = await generateFeed()
-
   return {
     postsByDate,
-    //feed,
   }
 })
 
