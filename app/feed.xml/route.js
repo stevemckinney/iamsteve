@@ -2,9 +2,9 @@ import { allPosts } from 'contentlayer/generated'
 import siteMetadata from '@/content/metadata'
 import { marked } from 'marked'
 
-export const revalidate = 3600
+export const revalidate = 86400 // Revalidate once per day
 
-/*export async function GET() {
+export async function GET() {
   // Generate the feed
   const posts = allPosts
     .filter((post) => post.status === 'open')
@@ -43,7 +43,7 @@ export const revalidate = 3600
     },
     status: 200,
   })
-}*/
+}
 
 // Helper function to escape XML special characters
 function escapeXml(unsafe) {
