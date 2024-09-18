@@ -148,11 +148,6 @@
 
 # Old icon urls?
 [[redirects]]
-  from = "/favicon.ico"
-  to = "/static/favicon.ico"
-  status = 301
-
-[[redirects]]
   from = "/apple-touch-icon-precomposed.png"
   to = "/static/apple-touch-icon.png"
   status = 301
