@@ -9,30 +9,10 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
-  const [subscriberCount, setSubscriberCount] = useState(null)
+  const [subscriberCount, setSubscriberCount] = useState(700)
   const [emailError, setEmailError] = useState('')
 
   const roundDownToNearest10 = (num) => Math.floor(num / 10) * 10
-
-  useEffect(() => {
-    const fetchSubscriberCount = async () => {
-      try {
-        const response = await fetch('/api/newsletter')
-        if (!response.ok) {
-          throw new Error('Failed to fetch subscriber count')
-        }
-        const data = await response.json()
-        if (data.subscriberCount) {
-          setSubscriberCount(roundDownToNearest10(data.subscriberCount))
-        }
-      } catch (error) {
-        console.error('Failed to fetch subscriber count:', error)
-        setSubscriberCount(700) // Fallback
-      }
-    }
-
-    fetchSubscriberCount()
-  }, [])
 
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -162,11 +142,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
           </div>
           <div className="flex flex-col flex-col-reverse @sm:flex-row gap-4 items-center justify-between">
             <p className="m-0 p-0 text-fern-600 flex-1 text-center @sm:text-left">
-              Join{' '}
-              {subscriberCount !== null
-                ? `${subscriberCount.toLocaleString()}+`
-                : '700+'}{' '}
-              designers
+              Join {subscriberCount.toLocaleString()}+ designers
             </p>
             <Button
               theme="dandelion"

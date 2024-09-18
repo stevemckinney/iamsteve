@@ -41,6 +41,11 @@
   [headers.values]
     Cache-Control = "public, max-age=0, s-maxage=3600, stale-while-revalidate=60"
 
+[[headers]]
+  for = "/feed.xml"
+  [headers.values]
+    Cache-Control = "public, s-maxage=3600, stale-while-revalidate=60"
+
 [[redirects]]
   from = "/blog/entry/horizontal‑scrolling‑responsive‑menu"
   to = "/blog/horizontal-scrolling-responsive-menu"
@@ -133,6 +138,11 @@
 
 [[redirects]]
   from = "/rss"
+  to = "/feed.xml"
+  status = 301
+
+[[redirects]]
+  from = "/public/feed"
   to = "/feed.xml"
   status = 301
 
