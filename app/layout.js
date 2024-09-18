@@ -1,4 +1,5 @@
 import './global.css'
+import Script from 'next/script'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ModeToggle } from '@/components/mode-toggle'
 import siteMetadata from '@/content/metadata'
@@ -196,6 +197,7 @@ export default function RootLayout({ children }) {
           </ThemeProvider>
         </div>
       </body>
+      <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
     </html>
   )
 }
