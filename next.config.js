@@ -6,13 +6,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // Content Security Policy
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://scripts.simpleanalyticscdn.com https://static.codepen.io https://use.typekit.net;
-  style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://scripts.simpleanalyticscdn.com https://static.codepen.io https://use.typekit.net https://platform.twitter.com;
+  style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net https://platform.twitter.com;
   img-src * blob: data:;
   media-src 'self';
   connect-src *;
   font-src 'self' https://use.typekit.net https://p.typekit.net;
-  frame-src https://codepen.io;
+  frame-src https://codepen.io https://stevemckinney.github.io https://platform.twitter.com https://syndication.twitter.com https://x.com;
   worker-src 'self' blob:;
 `
 
