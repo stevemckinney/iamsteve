@@ -7,11 +7,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' https://scripts.simpleanalyticscdn.com https://static.codepen.io https://use.typekit.net;
-  style-src 'self' 'unsafe-inline' https://use.typekit.net;
+  style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net;
   img-src * blob: data:;
   media-src 'self';
   connect-src *;
-  font-src 'self' https://use.typekit.net;
+  font-src 'self' https://use.typekit.net https://p.typekit.net;
   frame-src https://codepen.io;
   worker-src 'self' blob:;
 `
