@@ -1,9 +1,3 @@
-export default function BlogPostLayout({
-  children,
-}) {
-  return (
-    <>
-      {children}
-    </>
-  )
+export default function BlogPostLayout({ children }) {
+  return <>{children}</>
 }
