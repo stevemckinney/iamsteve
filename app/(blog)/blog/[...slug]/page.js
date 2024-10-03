@@ -99,11 +99,20 @@ export default async function PostPage({ params }) {
     notFound()
   }
 
-  const allViews = await getAllPageViews()
+  // View counting feature flag
+  const enableViewCounting =
+    process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING === 'true'
+
+  let allViews = {}
+  let initialViews = 0
 
   // Remove the '/blog/' prefix if it exists
   const cleanSlug = post.slug.replace(/^\/blog\//, '')
-  const initialViews = allViews[cleanSlug] || 0
+
+  if (enableViewCounting) {
+    allViews = await getAllPageViews()
+    initialViews = allViews[cleanSlug] || 0
+  }
 
   const currentYear = new Date().getFullYear()
   const postYear = new Date(post.date).getFullYear()
@@ -181,7 +190,6 @@ export default async function PostPage({ params }) {
       >
         <hr className="absolute z-[11] top-0 left-0 right-0 col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <Sidebar
-          allViews={allViews}
           post={post}
           aria-label="Table of contents and newsletter subscription form"
           className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col lg:gap-12 lg:pb-16 lg:px-6 lg:-mx-6 lg:[mask-image:linear-gradient(180deg,transparent,_#000_64px,#000_calc(100%_-_10vh),_transparent)]"
@@ -236,13 +244,15 @@ export default async function PostPage({ params }) {
                   )
                 })}
             </div>
-            <Badge size={16} theme={`text`} iconStart={`views`}>
-              <ViewCounter
-                slug={cleanSlug}
-                initialViews={initialViews}
-                trackView={true}
-              />
-            </Badge>
+            {enableViewCounting && (
+              <Badge size={16} theme={`text`} iconStart={`views`}>
+                <ViewCounter
+                  slug={cleanSlug}
+                  initialViews={initialViews}
+                  trackView={true}
+                />
+              </Badge>
+            )}
           </div>
         </header>
         <div
@@ -397,7 +407,7 @@ export function Support() {
 // [mask-image:linear-gradient(0deg,_transparent_0%,_transparent_1%,_rgba(0,0,0,0.56)_3%,_#000_6%,_#000_18%,_#000_82%,_#000_90%,_rgba(0,0,0,0.56)_95%,_transparent_99%,_transparent_100%)]
 // max-xl:bg-[url(/images/texture.png)] max-xl:bg-[172px_auto] max-xl:bg-blend-multiply max-xl:bg-neutral-01-150 max-xl:px-6
 
-export function Sidebar({ allViews, post, ...props }) {
+export function Sidebar({ post, ...props }) {
   return (
     <aside {...props}>
       <section

@@ -4,6 +4,10 @@ import { cache } from 'react'
 import { SupabaseAdmin } from '@/lib/supabase-admin'
 
 export const Increment = cache(async (slug) => {
+  if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {
+    return null
+  }
+
   const { data, error } = await SupabaseAdmin.rpc(
     process.env.NEXT_PUBLIC_DB_VIEWS_RPC,
     {
