@@ -199,6 +199,11 @@ const nextConfig = {
       },
       // Junk redirects
       {
+        source: '/:path(index.php)',
+        destination: '/',
+        permanent: true,
+      },
+      {
         source: '/:path(ads.txt|admin.php|wp-login.php|wp-info.php|mailer.php|inputs.php|404.php|403.php|xmlrpc.php|xml.php)',
         destination: 'https://google.com',
         permanent: true,
