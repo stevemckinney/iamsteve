@@ -178,8 +178,13 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/favicon.ico',
-        destination: '/static/favicon.ico',
+        source: '/blog/feed',
+        destination: '/feed.xml',
+        permanent: true,
+      },
+      {
+        source: '/static/favicon.ico',
+        destination: '/favicon.ico',
         permanent: true,
       },
       {
