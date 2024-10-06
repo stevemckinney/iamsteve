@@ -204,7 +204,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/:path(ads.txt|admin.php|wp-login.php|wp-info.php|mailer.php|inputs.php|404.php|403.php|xmlrpc.php|xml.php)',
+        source: '/:path(simple.php|wp.php|moon.php|wp-signup.php|ads.txt|admin.php|wp-login.php|wp-info.php|mailer.php|inputs.php|404.php|403.php|xmlrpc.php|xml.php)',
         destination: 'https://google.com',
         permanent: true,
       },
