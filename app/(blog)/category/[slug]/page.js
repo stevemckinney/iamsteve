@@ -16,7 +16,7 @@ import Pagination from '@/components/pagination'
 import categories from '@/content/categories'
 
 const POSTS_PER_PAGE = 12
-export const revalidate = 3600
+export const revalidate = 86400 * 28 // Revalidate once per month
 
 const getData = cache(async () => {
   const postsByDate = sortPosts(allPosts)

@@ -12,7 +12,7 @@ import Icon from '@/components/icon'
 import { format, subWeeks, isAfter } from 'date-fns'
 
 export const dynamic = 'force-static'
-export const revalidate = 86400
+export const revalidate = 86400 * 28 // Revalidate once per month
 
 const getData = cache(async () => {
   const groupedCollections = allCollections.reduce((acc, item) => {
