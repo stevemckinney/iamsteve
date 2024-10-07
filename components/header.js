@@ -67,7 +67,7 @@ export default function Header() {
           </ul>
           <nav className={`${nav} ${tabbarNav}`} id="nav">
             {navigation.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = pathname === link.href
               return (
                 <Link
                   href={link.href}
@@ -96,11 +96,7 @@ export default function Header() {
               className={`${navLink} ${horizontalNavLink} ${styles.end}`}
             >
               <span>Subscribe</span>
-              <Icon
-                icon={`airplane`}
-                size={24}
-                className="text-current"
-              />
+              <Icon icon={`airplane`} size={24} className="text-current" />
             </Link>
           </div>
           <Navigation />
