@@ -136,15 +136,15 @@ const Sprite24 = (props) => (
         </g>
       </symbol>
       <symbol id="home-24" viewBox="0 0 24 24">
-        <g class="home fill-none">
-          <path d="m12 3-8 7v11h5v-8h6v8h5V10l-8-7Z" class="fill-white" />
-          <path d="m2 12 10-9 10 9" class="stroke-current stroke-2 sl-s" />
-          <path d="M15 13H9v7h6v-7Z" class="stroke-current stroke-2 sl-r" />
+        <g className="home fill-none">
+          <path d="m12 3-8 7v11h5v-8h6v8h5V10l-8-7Z" className="fill-white" />
+          <path d="m2 12 10-9 10 9" className="stroke-current stroke-2 sl-s" />
+          <path d="M15 13H9v7h6v-7Z" className="stroke-current stroke-2 sl-r" />
           <path
             d="M4 11v10h5v-7.93h6V21h5V11"
-            class="stroke-current stroke-2 sl-r"
+            className="stroke-current stroke-2 sl-r"
           />
-          <path d="M9 20h6" class="stroke-current stroke-2 sl-s" />
+          <path d="M9 20h6" className="stroke-current stroke-2 sl-s" />
         </g>
       </symbol>
       <symbol id="airplane-24" viewBox="0 0 24 24">
