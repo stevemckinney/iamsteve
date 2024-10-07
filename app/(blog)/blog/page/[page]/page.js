@@ -11,8 +11,8 @@ import Image from '@/components/image'
 
 import categories from '@/content/categories'
 
-export const dynamic = 'force-static'
-export const revalidate = 86400 * 28 // Revalidate once per month
+export const dynamic = 'force-dynamic'
+export const revalidate = false
 const POSTS_PER_PAGE = 12
 
 const getData = cache(async () => {

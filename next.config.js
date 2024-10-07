@@ -55,6 +55,9 @@ const nextConfig = {
   experimental: {
     webpackBuildWorker: true,
   },
+  env: {
+    REVALIDATION_SECRET: process.env.REVALIDATION_SECRET,
+  },
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   staticPageGenerationTimeout: 240,
   eslint: {
