@@ -24,7 +24,7 @@ export const metadata = {
 }
 
 export const dynamic = 'force-static'
-export const revalidate = 86400
+export const revalidate = 86400 * 28 // Revalidate once per month
 const POSTS_PER_PAGE = 12
 
 const getData = cache(async () => {

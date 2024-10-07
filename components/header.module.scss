@@ -46,7 +46,7 @@
   @supports (padding: max(0px)) {
     @media not all and (min-width: theme('screens.lg')) {
       padding-bottom: max(
-        theme('spacing.4'),
+        theme('spacing.2'),
         calc(env(safe-area-inset-bottom) + theme('spacing.2'))
       );
     }

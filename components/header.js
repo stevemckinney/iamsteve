@@ -67,6 +67,7 @@ export default function Header() {
           </ul>
           <nav className={`${nav} ${tabbarNav}`} id="nav">
             {navigation.map((link) => {
+              const isActive = pathname === link.href
               return (
                 <Link
                   href={link.href}
@@ -75,19 +76,14 @@ export default function Header() {
                   } ${link.title === 'Contact' ? 'max-lg:hidden' : ''} ${
                     styles.vertical
                   } ${tabbarNavLink} ${horizontalNavLink} ${styles.start} ${
-                    pathname === link.href ? 'max-lg:text-dandelion-500' : ''
-                  }`}
+                    isActive ? 'max-lg:opacity-100' : 'max-lg:opacity-60'
+                  } ${isActive ? 'max-lg:text-fern-1100' : ''}`}
                   key={link.href}
                 >
                   <Icon
                     icon={link.icon}
                     size={link.size}
-                    className="max-lg:hidden text-current"
-                  />
-                  <Icon
-                    icon={link.icon}
-                    size={16}
-                    className="lg:hidden text-current"
+                    className="text-current"
                   />
                   {link.title}
                 </Link>
@@ -100,16 +96,7 @@ export default function Header() {
               className={`${navLink} ${horizontalNavLink} ${styles.end}`}
             >
               <span>Subscribe</span>
-              <Icon
-                icon={`airplane`}
-                size={24}
-                className="max-lg:hidden text-current"
-              />
-              <Icon
-                icon={`airplane`}
-                size={16}
-                className="lg:hidden text-current"
-              />
+              <Icon icon={`airplane`} size={24} className="text-current" />
             </Link>
           </div>
           <Navigation />

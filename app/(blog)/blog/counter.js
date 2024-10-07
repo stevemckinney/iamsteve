@@ -14,7 +14,10 @@ const ViewCounter = ({
 
   useEffect(() => {
     const incrementView = async () => {
-      if (trackView) {
+      if (
+        trackView &&
+        process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING === 'true'
+      ) {
         const hasViewed = sessionStorage.getItem(`viewed-${slug}`)
         if (!hasViewed) {
           try {
@@ -34,6 +37,10 @@ const ViewCounter = ({
 
     incrementView()
   }, [slug, trackView, views])
+
+  if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {
+    return null
+  }
 
   return (
     <span

@@ -2,7 +2,7 @@ import { allPosts } from 'contentlayer/generated'
 import siteMetadata from '@/content/metadata'
 import { marked } from 'marked'
 
-export const revalidate = 86400 // Revalidate once per day
+export const revalidate = 86400 * 28 // Revalidate once per month
 
 export async function GET() {
   // Generate the feed
@@ -19,7 +19,9 @@ export async function GET() {
     <description>${siteMetadata.description}</description>
     <language>${siteMetadata.language}</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="${siteMetadata.siteUrl}/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="${
+      siteMetadata.siteUrl
+    }/feed.xml" rel="self" type="application/rss+xml"/>
     ${posts
       .map(
         (post) => `
