@@ -39,7 +39,7 @@ const Category = ({
         className={className}
         rel="category tag"
       >
-        <Icon className={`text-current`} icon={category.icon} size={size} />
+        <Icon className={`text-current flex-shrink-0`} icon={category.icon} size={size} />
         {children}
       </Link>
     )
