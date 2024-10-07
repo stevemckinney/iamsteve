@@ -178,8 +178,13 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/favicon.ico',
-        destination: '/static/favicon.ico',
+        source: '/blog/feed',
+        destination: '/feed.xml',
+        permanent: true,
+      },
+      {
+        source: '/static/favicon.ico',
+        destination: '/favicon.ico',
         permanent: true,
       },
       {
@@ -194,7 +199,12 @@ const nextConfig = {
       },
       // Junk redirects
       {
-        source: '/:path(ads.txt|admin.php|wp-login.php|wp-info.php|mailer.php|inputs.php|404.php|403.php|xmlrpc.php|xml.php)',
+        source: '/:path(index.php)',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/:path(simple.php|wp.php|moon.php|wp-signup.php|ads.txt|admin.php|wp-login.php|wp-info.php|mailer.php|inputs.php|404.php|403.php|xmlrpc.php|xml.php)',
         destination: 'https://google.com',
         permanent: true,
       },
