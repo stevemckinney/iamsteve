@@ -48,7 +48,7 @@ const genFrontMatter = (answers) => {
           .replace(/[^\w-]+/g, '')
       : 'untitled'
   }.svg
-  ogImage: "/assets/og/cover.jpg"
+  ogImage: "/opengraph-image.png"
   status: ${answers.status}
   codepen: false
   twitter: false

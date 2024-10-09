@@ -90,7 +90,7 @@ categories: ["Design", "Visual design"]
 images:
 large:
 medium:
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id:
 fileroot:

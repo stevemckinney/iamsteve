@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/shop-tabbar-2-featured-image.png"]
 large: "/images/blog/shop-tabbar-2-featured-image.png"
 medium: "/images/blog/shop-tabbar-2-featured-image-medium.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 147
 fileroot: "shop-filter-series-visual-style-completion"

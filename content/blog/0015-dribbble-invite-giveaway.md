@@ -7,7 +7,7 @@ metadesc: "I have a single Dribbble invite to giveaway. This giveaway is now clo
 theme: "#e9f5f5"
 tags: ["Website"]
 categories: ["Website"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 15
 fileroot: "dribbble_invite_giveaway"

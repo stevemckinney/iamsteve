@@ -7,7 +7,7 @@ metadesc: "The trouble with darkening your gradients is they can look dirty and 
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 84

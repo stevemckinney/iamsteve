@@ -7,7 +7,7 @@ metadesc: "How to choose a harmonious type scale and set comfortable line length
 theme: "#fffbf2"
 tags: ["Design"]
 categories: ["Design", "Typography"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 68

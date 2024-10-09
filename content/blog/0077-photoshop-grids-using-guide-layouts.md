@@ -7,7 +7,7 @@ metadesc: "Adobe have added their own grid layout creator, that doesn’t requir
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 77
 fileroot: "photoshop-grids-using-guide-layouts"

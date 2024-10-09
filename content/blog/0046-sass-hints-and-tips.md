@@ -7,7 +7,7 @@ metadesc: "Some tips for beginners using Sass. You'll learn how to use color, mi
 theme: "#ffede5"
 tags: ["Code", "Sass"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 46
 fileroot: "sass_hints_tips"

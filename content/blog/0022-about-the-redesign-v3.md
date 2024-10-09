@@ -7,7 +7,7 @@ metadesc: "A look at 2011’s redesign. I moved the website from Wordpress to Ex
 theme: "#e9f5f5"
 tags: ["Website"]
 categories: ["Website"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 22
 fileroot: "about_the_redesign_v3"

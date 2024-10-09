@@ -7,7 +7,7 @@ metadesc: "Sometimes in our design process we can become stuck. The reason for t
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 102
 fileroot: "thoughts-on-avoiding-split-focus"

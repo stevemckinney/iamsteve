@@ -7,7 +7,7 @@ metadesc: "It's been a year since I started writing weekly, so I wanted to share
 theme: "#fffbf2"
 tags: ["Website"]
 categories: ["Website"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 108
 fileroot: "a-year-in-writing-2015"

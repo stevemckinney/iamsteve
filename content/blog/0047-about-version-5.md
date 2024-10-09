@@ -7,7 +7,7 @@ metadesc: "Another redesign, another blog post. This is a write up on my decisio
 theme: "#fffbf2"
 tags: ["Website"]
 categories: ["Website"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 47
 fileroot: "about_version_5"

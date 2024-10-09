@@ -7,7 +7,7 @@ metadesc: "With wp_enqueue_scripts we're able to add inline CSS instead of inclu
 theme: "#e1f7ee"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 94
 fileroot: "add-critical-css-with-wp-enqueue-scripts"

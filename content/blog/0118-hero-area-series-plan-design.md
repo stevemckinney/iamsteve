@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/hero-area-post-images-01.png"]
 large: "/images/blog/hero-area-post-images-01.png"
 medium: "/images/blog/hero-area-post-images-02.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 118
 fileroot: "hero-area-series-plan-design"

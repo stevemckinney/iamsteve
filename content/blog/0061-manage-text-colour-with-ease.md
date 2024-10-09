@@ -7,7 +7,7 @@ metadesc: "How to make text on different backgrounds easily be the colour you re
 theme: "#e9f5f5"
 tags: ["Code", "CSS"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 61
 fileroot: "manage-text-colour-with-ease"

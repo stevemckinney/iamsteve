@@ -7,7 +7,7 @@ metadesc: "Using border image we can use a small image and define slices to make
 theme: "#fffbf2"
 tags: ["Design", "Code", "CSS", "HTML", "Sass"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 51

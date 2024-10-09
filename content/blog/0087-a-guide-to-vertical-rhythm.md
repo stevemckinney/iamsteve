@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/update-vertical-rhythm-featured-image@2x.png"]
 large: "/images/blog/update-vertical-rhythm-featured-image@2x.png"
 medium: "/images/blog/update-vertical-rhythm-featured-image-medium@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 87

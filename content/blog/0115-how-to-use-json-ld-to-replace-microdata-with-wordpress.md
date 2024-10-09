@@ -7,7 +7,7 @@ metadesc: "How to use JSON-LD to add extra information to make your search resul
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 115
 fileroot: "how-to-use-json-ld-to-replace-microdata-with-wordpress"

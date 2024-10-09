@@ -7,7 +7,7 @@ metadesc: "The method I use for keeping my critical path CSS maintainable and ho
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 55
 fileroot: "critical-asynchronous-css"

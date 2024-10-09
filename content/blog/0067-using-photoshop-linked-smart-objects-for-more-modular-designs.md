@@ -7,7 +7,7 @@ metadesc: "How to use linked smart objects to make your designs more modular and
 theme: "#ffede5"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 67
 fileroot: "using-photoshop-linked-smart-objects-for-more-modular-designs"

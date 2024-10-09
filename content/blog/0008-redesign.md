@@ -7,7 +7,7 @@ metadesc: "A look at some of the design decisions and iterations for version two
 theme: "#fffbf2"
 tags: ["Website"]
 categories: ["Website"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 8
 fileroot: "redesign"

@@ -7,7 +7,7 @@ metadesc: "How to use object-fit to make images using the <img> tag fill the vie
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 64

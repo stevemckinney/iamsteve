@@ -7,7 +7,7 @@ metadesc: "How you can repurpose the_post_thumbnail() to use srcset today in Wor
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 76
 fileroot: "using-srcset-with-the-post-thumbnail-in-wordpress"

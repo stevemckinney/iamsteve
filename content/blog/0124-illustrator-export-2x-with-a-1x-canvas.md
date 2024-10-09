@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/illustrator-tip-featured-image@2x.png"]
 large: "/images/blog/illustrator-tip-featured-image@2x.png"
 medium: "/images/blog/illustrator-tip-featured-image-medium@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 124
 fileroot: "illustrator-export-2x-with-a-1x-canvas"

@@ -7,7 +7,7 @@ metadesc: "Sass maps can provide some powerful functionality to make life easier
 theme: "#ffede5"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 75
 fileroot: "sass-map-use-patterns"

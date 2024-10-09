@@ -7,7 +7,7 @@ metadesc: "How to use srcset and picture, with a few use cases for a variety of 
 theme: "#e1f7ee"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 57
 fileroot: "images-with-srcset-picture"

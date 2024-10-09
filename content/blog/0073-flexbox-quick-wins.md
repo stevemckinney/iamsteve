@@ -7,7 +7,7 @@ metadesc: "Flexbox isn‘t quite ready to have layouts built dedicated with it. 
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 73
 fileroot: "flexbox-quick-wins"

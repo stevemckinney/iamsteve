@@ -7,7 +7,7 @@ metadesc: "Three different form styles for you to use as you please."
 theme: "#ffede5"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 99

@@ -7,7 +7,7 @@ metadesc: "Grunticon updated to V2 a while ago now and what came with it was the
 theme: "#e1f7ee"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 98
 fileroot: "using-grunticon-to-inline-svg"

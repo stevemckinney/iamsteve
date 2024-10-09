@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/go2golf-casestudy-featured-image1.png"]
 large: "/images/blog/go2golf-casestudy-featured-image1.png"
 medium: "/images/blog/go2golf-casestudy-featured-image-medium@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 153
 fileroot: "go2golf-logo-case-study"

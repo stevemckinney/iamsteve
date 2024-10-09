@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/alternatives-to-circular-featured-image1.png"]
 large: "/images/blog/alternatives-to-circular-featured-image1.png"
 medium: "/images/blog/alternatives-to-circular-featured-image-medium1.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 148
 fileroot: "alternatives-to-circular"

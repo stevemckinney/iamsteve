@@ -7,7 +7,7 @@ metadesc: "All the ways to output Wordpress post thumbnails. There are many alte
 theme: "#e1f7ee"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 117
 fileroot: "ways-to-get-post-thumbnails-in-wordpress"

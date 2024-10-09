@@ -7,7 +7,7 @@ metadesc: "A tutorial on making a stylish pricing table for your product. You'll
 theme: "#ffede5"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 134
 fileroot: "making-a-pricing-table-in-illustrator"

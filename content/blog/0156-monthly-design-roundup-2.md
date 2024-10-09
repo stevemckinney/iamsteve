@@ -10,7 +10,7 @@ categories: ["Design", "Resources"]
 images: ["/images/blog/monthly-roundup-02-featured-image@2x.png"]
 large: "/images/blog/monthly-roundup-02-featured-image@2x.png"
 medium: "/images/blog/monthly-roundup-02-featured-image-medium@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 156
 fileroot: "monthly-design-roundup-2"

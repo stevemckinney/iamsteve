@@ -7,7 +7,7 @@ metadesc: "How to use cookies to cache your critical CSS. A simple approach invo
 theme: "#ffede5"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 71
 fileroot: "using-cookies-to-serve-critical-css-for-first-time-visits"

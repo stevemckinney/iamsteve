@@ -9,7 +9,7 @@ tags: ["Design", "Code"]
 categories: ["Design"]
 images: ["/images/blog/tools-featured-image-01.png"]
 large: "/images/blog/tools-featured-image-01.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 122
 fileroot: "tools-i-use"

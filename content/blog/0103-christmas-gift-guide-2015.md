@@ -7,7 +7,7 @@ metadesc: "A selection of products that I think would make good gifts for Christ
 theme: "#ffede5"
 tags: ["Website"]
 categories: ["Website"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 103
 fileroot: "christmas-gift-guide-2015"

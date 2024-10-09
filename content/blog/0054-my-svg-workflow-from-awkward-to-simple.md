@@ -7,7 +7,7 @@ metadesc: "The method I use for getting my final SVG's from any situation. I pro
 theme: "#ffede5"
 tags: ["Design", "Code", "CSS", "Sass"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 54

@@ -7,7 +7,7 @@ metadesc: "Here's a list of tips for styling input, select and submit buttons ac
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 96

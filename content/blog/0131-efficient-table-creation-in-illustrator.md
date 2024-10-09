@@ -7,7 +7,7 @@ metadesc: "Tables overlooked in design due to frustration making them. Let’s s
 theme: "#fffbf2"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 131
 fileroot: "efficient-table-creation-in-illustrator"

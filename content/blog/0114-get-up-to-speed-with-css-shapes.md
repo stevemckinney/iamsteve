@@ -10,7 +10,7 @@ categories: ["Code"]
 images: ["/images/blog/update-css-shapes-featured-image@2x.png"]
 large: "/images/blog/update-css-shapes-featured-image@2x.png"
 medium: "/images/blog/css-shapes-featured-image-medium-v2@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 114
 fileroot: "get-up-to-speed-with-css-shapes"

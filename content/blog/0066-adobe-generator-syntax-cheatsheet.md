@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/ps-generator-featured-image-v2@2x.png"]
 large: "/images/blog/ps-generator-featured-image-v2@2x.png"
 medium: "/images/blog/ps-generator-featured-image-medium-v2@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 66

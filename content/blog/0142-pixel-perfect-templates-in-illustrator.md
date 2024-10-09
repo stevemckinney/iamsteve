@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/illustrator-pixel-perfect-featured-image.png"]
 large: "/images/blog/illustrator-pixel-perfect-featured-image.png"
 medium: "/images/blog/illustrator-pixel-perfect-featured-image-medium.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 142
 fileroot: "pixel-perfect-templates-in-illustrator"

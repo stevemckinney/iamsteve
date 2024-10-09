@@ -7,7 +7,7 @@ metadesc: "I've been writing weekly for six months and here's some of the things
 theme: "#e9f5f5"
 tags: ["Website"]
 categories: ["Website"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 85
 fileroot: "what-ive-learnt-from-6-months-of-writing-weekly"

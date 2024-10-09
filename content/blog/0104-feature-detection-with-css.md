@@ -7,7 +7,7 @@ metadesc: "You can now use CSS for feature detection using @supports feature que
 theme: "#fffbf2"
 tags: ["Code", "CSS"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 104
 fileroot: "feature-detection-with-css"

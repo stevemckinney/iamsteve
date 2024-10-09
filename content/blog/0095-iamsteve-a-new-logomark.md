@@ -7,7 +7,7 @@ metadesc: "A case study covering the decisions behind my new logomark."
 theme: "#ffede5"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 95
 fileroot: "iamsteve-a-new-logomark"

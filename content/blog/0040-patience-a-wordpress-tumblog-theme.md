@@ -7,7 +7,7 @@ metadesc: "A blog written by Steve McKinney, focused on designing with Illustrat
 theme: "#e1f7ee"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "closed"
 id: 40
 fileroot: "patience_a_wordpress_tumblog_theme"

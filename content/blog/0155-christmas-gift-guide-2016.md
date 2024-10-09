@@ -10,7 +10,7 @@ categories: ["Website"]
 images: ["/images/blog/christmas-2016-featured-image.png"]
 large: "/images/blog/christmas-2016-featured-image.png"
 medium: "/images/blog/christmas-2016-featured-image-medium.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 155
 fileroot: "christmas-gift-guide-2016"

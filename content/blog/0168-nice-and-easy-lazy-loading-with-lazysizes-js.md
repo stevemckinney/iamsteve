@@ -10,7 +10,7 @@ categories: ["Code", "Patterns"]
 images: ["/images/blog/lazyloading-featured-image.png"]
 large: "/images/blog/lazyloading-featured-image.png"
 medium: "/images/blog/lazyloading-featured-image-medium.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 168

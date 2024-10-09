@@ -7,7 +7,7 @@ metadesc: "Some techniques for getting round the conveniences of jQuery and show
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 56
 fileroot: "javascript-without-jquery"

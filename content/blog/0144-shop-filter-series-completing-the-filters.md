@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/shop-filter-02-updated-featured-image.png"]
 large: "/images/blog/shop-filter-02-updated-featured-image.png"
 medium: "/images/blog/shop-filter-02-updated-featured-image-medium.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 144
 fileroot: "shop-filter-series-completing-the-filters"

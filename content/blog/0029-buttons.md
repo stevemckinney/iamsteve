@@ -7,7 +7,7 @@ metadesc: "In this tutorial I will show you how to make buttons in CSS with a ni
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 29
 fileroot: "buttons"
