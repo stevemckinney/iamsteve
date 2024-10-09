@@ -13,7 +13,7 @@ import { format, subWeeks, isAfter } from 'date-fns'
 import { allCollections } from 'contentlayer/generated'
 import collections from '@/content/collections'
 
-export const revalidate = 86400 * 28 // Revalidate once per month
+export const revalidate = false
 
 export const metadata = {
   title: 'Collections • iamsteve',

@@ -197,7 +197,9 @@ export default function RootLayout({ children }) {
           </ThemeProvider>
         </div>
       </body>
-      <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
+      {process.env.NODE_ENV === 'production' && (
+        <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
+      )}
     </html>
   )
 }
