@@ -71,6 +71,10 @@
     0px 1px 1px -0.5px var(--ui-border-color),
     0px 2px 3px -1.5px var(--ui-border-color),
     0px 3px 4px -2px var(--ui-border-color);
+  --shadow-reduced-depth:
+    0px 1px 1px -0.5px var(--ui-border-color),
+    0px 2px 3px -1.5px var(--ui-border-color),
+    0px 3px 4px -2px var(--ui-border-color);
   --shadow-placed: var(--shadow-placed-border), var(--shadow-placed-depth);
   --shadow-placed-border: 0 -1px var(--ui-border-color-weak),
     0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color);
@@ -121,7 +125,7 @@
     --gradient-direction: bottom;
     --bg-gradient-weak: oklch(78% 0.186 80.6 / 0);
     --bg-gradient-strong: oklch(78% 0.186 80.6 / .2);
-
+    border: 1px solid transparent;
     position: relative;
     box-shadow:
       inset 0 -2px 4px -2px oklch(71.7% 0.18 68.6/ 0.8),
@@ -133,12 +137,25 @@
     padding: theme('padding[3.5]') theme('padding.8');
 
     background:
+      padding-box
       linear-gradient(
         to var(--gradient-direction),
         var(--bg-gradient-weak),
         var(--bg-gradient-strong)
       ),
-      theme('colors.dandelion.300');
+      padding-box
+      linear-gradient(
+        to var(--gradient-direction),
+        theme('colors.dandelion.300'),
+        theme('colors.dandelion.300')
+      ),
+      border-box linear-gradient(
+        to var(--gradient-direction),
+        var(--ui-border-color) 50%,
+        var(--ui-border-color-strong)
+      );
+
+    transition: box-shadow .2s ease;
   }
 
   .button-dandelion:hover {
@@ -165,26 +182,12 @@
     --gradient-direction: top;
     --bg-gradient-weak: theme('colors.dandelion.400');
     --bg-gradient-strong: theme('colors.dandelion.400');
-    box-shadow: var(--shadow-reduced);
+    box-shadow: inset 0 1px 3px -1px theme('colors.dandelion.500');
 
     span {
       display: block;
       transform: translate3d(0, 1px, 0);
     }
-  }
-
-  .button-dandelion:before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: 9px;
-    background: border-box
-      linear-gradient(
-        to var(--gradient-direction),
-        var(--ui-border-color) 50%,
-        var(--ui-border-color-strong)
-      );
-    z-index: -1;
   }
 
   .sl-r {
