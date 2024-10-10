@@ -7,7 +7,7 @@ metadesc: "A reassuring process for how to redirect an old domain to a new domai
 theme: "#e1f7ee"
 tags: ["Terminal"]
 categories: ["Terminal"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 86
 fileroot: "redirecting-an-old-domain-to-a-new-domain-with-nginx"

@@ -7,7 +7,7 @@ metadesc: "Don’t use darken or lighten use scale-color! Changing tints and sha
 theme: "#e1f7ee"
 tags: ["Code", "Sass"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 49
 fileroot: "using_scale_color_in_sass"

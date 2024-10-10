@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/casestudy-v6-featured-image1.png"]
 large: "/images/blog/casestudy-v6-featured-image1.png"
 medium: "/images/blog/casestudy-v6-featured-image-medium1.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 149
 fileroot: "my-design-process-v6-case-study"

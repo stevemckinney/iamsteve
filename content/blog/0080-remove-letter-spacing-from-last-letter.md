@@ -7,7 +7,7 @@ metadesc: "How to remove letter spacing from the last letter and how to hide exc
 theme: "#fffbf2"
 tags: ["Code", "CSS"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 80

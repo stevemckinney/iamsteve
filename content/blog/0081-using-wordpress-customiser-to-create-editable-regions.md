@@ -7,7 +7,7 @@ metadesc: "How to use the Wordpress customiser panel. In this post I will show y
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 81
 fileroot: "using-wordpress-customiser-to-create-editable-regions"

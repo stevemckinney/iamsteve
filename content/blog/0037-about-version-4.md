@@ -7,7 +7,7 @@ metadesc: "This was the first site I'd taken a mobile first approach with. This 
 theme: "#e9f5f5"
 tags: ["Website"]
 categories: ["Website"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 37
 fileroot: "about_version_4"

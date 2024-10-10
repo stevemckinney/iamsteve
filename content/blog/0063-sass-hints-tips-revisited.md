@@ -7,7 +7,7 @@ metadesc: "A bunch of Sass hints & tips. How to use maps, @each, uses for &, @ex
 theme: "#ffede5"
 tags: ["Code"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 63
 fileroot: "sass-hints-tips-revisited"

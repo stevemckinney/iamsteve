@@ -7,7 +7,7 @@ metadesc: "There is a big no no seen against making your own framework. I believ
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 101
 fileroot: "why-you-should-roll-your-own-framework"

@@ -7,7 +7,7 @@ metadesc: "Learn to add Wordpress Custom Fields efficiently, how to add custom C
 theme: "#e1f7ee"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 78
 fileroot: "wordpress-custom-fields"

@@ -7,7 +7,7 @@ metadesc: "How to animate and change fill colours on inline SVG. Using currentco
 theme: "#ffede5"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 58

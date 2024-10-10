@@ -7,7 +7,7 @@ metadesc: "Why not to add a base level of styles that are defaults for the major
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 65
 fileroot: "opt-in-style"

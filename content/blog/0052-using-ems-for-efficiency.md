@@ -7,7 +7,7 @@ metadesc: "How using em's you can create scalable elements with very little code
 theme: "#e9f5f5"
 tags: ["Code", "CSS", "Sass"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 52
 fileroot: "using-ems-for-efficiency"

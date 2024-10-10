@@ -7,7 +7,7 @@ metadesc: "A couple of simple techniques for masking. How to do clipping masks a
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 82
 fileroot: "a-couple-of-masking-techniques-in-photoshop"

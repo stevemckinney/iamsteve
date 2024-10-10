@@ -7,7 +7,7 @@ metadesc: "Allow for the best of both worlds with horizontal scrolling and toggl
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 109

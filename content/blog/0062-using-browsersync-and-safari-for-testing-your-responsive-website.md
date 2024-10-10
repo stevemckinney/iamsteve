@@ -7,7 +7,7 @@ metadesc: "How to use BrowserSync to make testing on devices easy. I cover how t
 theme: "#e1f7ee"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 62
 fileroot: "using-browsersync-and-safari-for-testing-your-responsive-website"

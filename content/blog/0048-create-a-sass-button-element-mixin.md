@@ -6,7 +6,7 @@ summary: "This mixin is one I’ve been using for a few months now to create but
 theme: "#e9f5f5"
 tags: ["Code", "Sass"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 48
 fileroot: "create_a_sass_button_element_mixin"

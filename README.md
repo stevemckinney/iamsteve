@@ -42,7 +42,7 @@ categories: ["Design"]
 images: ["/images/blog/visual-design-tips-featured-image.png"]
 large: "/images/blog/visual-design-tips-featured-image.png"
 medium: "/images/blog/visual-design-tips-featured-image-medium.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 164
 fileroot: "visual-design-tips-you-can-apply-immediately"

@@ -7,7 +7,7 @@ metadesc: "Use webkit2png to generate screenshots, for multiple screen widths. T
 theme: "#e9f5f5"
 tags: ["Terminal"]
 categories: ["Terminal"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 69
 fileroot: "using-webkit2png-to-generate-responsive-screenshots"

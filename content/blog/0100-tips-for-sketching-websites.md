@@ -7,7 +7,7 @@ metadesc: "I believe sketching should always be part of your process. It's the q
 theme: "#fffbf2"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 100
 fileroot: "tips-for-sketching-websites"

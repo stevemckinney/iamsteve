@@ -7,7 +7,7 @@ metadesc: "Here's 4 typefaces from typekit; that you may not have used. These ar
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 90
 fileroot: "typekit-gems-number-one"

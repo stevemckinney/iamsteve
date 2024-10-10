@@ -10,7 +10,7 @@ categories: ["Code"]
 images: ["/images/blog/hero-area-post-images-01.png"]
 large: "/images/blog/hero-area-post-images-01.png"
 medium: "/images/blog/hero-area-post-images-02.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 121
 fileroot: "hero-area-series-wordpress-customizer-with-selective-refresh"

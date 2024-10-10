@@ -7,7 +7,7 @@ metadesc: "Learn about the scroll snap properties, scroll-snap-type, scroll-snap
 theme: "#e9f5f5"
 tags: ["Code", "CSS"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 128

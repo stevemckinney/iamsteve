@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/overcoming-design-roadblocks-featured-image.png"]
 large: "/images/blog/overcoming-design-roadblocks-featured-image.png"
 medium: "/images/blog/overcoming-design-roadblocks-featured-image-medium.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 163
 fileroot: "overcoming-design-roadblocks"

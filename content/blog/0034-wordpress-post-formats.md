@@ -7,7 +7,7 @@ metadesc: "How you can use Wordpress post formats to make a tumblr style blog an
 theme: "#fffbf2"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 34
 fileroot: "wordpress_post_formats"

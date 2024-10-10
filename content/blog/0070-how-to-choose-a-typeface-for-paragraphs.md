@@ -7,7 +7,7 @@ metadesc: "How to choose a typeface for paragraphs. We’ll explore the choosing
 theme: "#e1f7ee"
 tags: ["Design"]
 categories: ["Design", "Typography"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 70
 fileroot: "how-to-choose-a-typeface-for-paragraphs"

@@ -7,7 +7,7 @@ metadesc: "Ever struggled for a clean solution to make your logo central between
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 92
 fileroot: "having-a-central-logo-with-wordpress-menus"

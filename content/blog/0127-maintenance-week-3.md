@@ -10,7 +10,7 @@ categories: ["Website"]
 images: ["/images/blog/maintenance-week-featured-image@2x.png"]
 large: "/images/blog/maintenance-week-featured-image@2x.png"
 medium: "/images/blog/maintenance-week-featured-image-medium@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 127
 fileroot: "maintenance-week-3"

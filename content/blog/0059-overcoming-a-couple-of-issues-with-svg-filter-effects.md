@@ -7,7 +7,7 @@ metadesc: "SVG filters are really useful for infinitely scalable effects but the
 theme: "#fffbf2"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 59
 fileroot: "overcoming-a-couple-of-issues-with-svg-filter-effects"

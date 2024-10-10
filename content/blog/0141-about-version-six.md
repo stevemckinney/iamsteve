@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/about-v6-featured-image.png"]
 large: "/images/blog/about-v6-featured-image.png"
 medium: "/images/blog/about-v6-featured-image-medium.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: false
 twitter: true

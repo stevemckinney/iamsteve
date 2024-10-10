@@ -7,7 +7,7 @@ metadesc: "Following on from the datepicker post where it was more about getting
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 126
 fileroot: "how-to-datepicker-styling-illustrator"

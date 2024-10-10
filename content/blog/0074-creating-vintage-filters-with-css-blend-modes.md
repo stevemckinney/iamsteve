@@ -7,7 +7,7 @@ metadesc: "CSS is now able to use blend modes. Using mix-blend-mode we can add â
 theme: "#e1f7ee"
 tags: ["Code"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 74

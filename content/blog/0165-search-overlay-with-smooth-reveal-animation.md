@@ -10,7 +10,7 @@ categories: ["Design", "Code", "Animation"]
 images: ["/images/blog/search-reveal-featured-image@2x.png"]
 large: "/images/blog/search-reveal-featured-image@2x.png"
 medium: "/images/blog/search-reveal-featured-image-medium@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 165

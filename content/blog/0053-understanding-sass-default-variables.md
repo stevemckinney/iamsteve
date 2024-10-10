@@ -7,7 +7,7 @@ metadesc: "Sass has a handy feature to create default variables using !default i
 theme: "#e1f7ee"
 tags: ["Code", "CSS", "Sass"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 53
 fileroot: "understanding-sass-default-variables"

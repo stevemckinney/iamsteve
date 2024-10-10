@@ -7,7 +7,7 @@ metadesc: "How to set cookies the right way with Wordpress. I show you how to ad
 theme: "#e9f5f5"
 tags: ["Code"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 93
 fileroot: "setting-a-cookie-with-wordpress"

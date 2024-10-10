@@ -7,7 +7,7 @@ metadesc: "A blog written by Steve McKinney, focused on designing with Illustrat
 theme: "#ffede5"
 tags: ["Website"]
 categories: ["Website"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "draft"
 id: 17
 fileroot: "pro_dev_day"

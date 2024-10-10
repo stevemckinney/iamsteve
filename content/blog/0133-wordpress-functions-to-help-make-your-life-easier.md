@@ -7,7 +7,7 @@ metadesc: "A helpful post with useful functions provided by Wordpress for trunca
 theme: "#e1f7ee"
 tags: ["Code", "Wordpress"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 133
 fileroot: "wordpress-functions-to-help-make-your-life-easier"

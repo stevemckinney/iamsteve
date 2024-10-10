@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/redesign_featured-image@2x.png"]
 large: "/images/blog/redesign_featured-image@2x.png"
 medium: "/images/blog/redesign_thumbnail@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 132
 fileroot: "redesign-progress-update"

@@ -10,7 +10,7 @@ categories: ["Code", "CSS", "Patterns"]
 images: ["/images/blog/ios-toggle-featured-image-large.png"]
 large: "/images/blog/ios-toggle-featured-image-large.png"
 medium: "/images/blog/ios-toggle-featured-image-small.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 135

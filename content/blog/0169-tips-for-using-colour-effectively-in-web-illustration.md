@@ -10,7 +10,7 @@ categories: ["Design", "Colour"]
 images: ["/images/blog/colour-in-illustration-featured-image@2x.png"]
 large: "/images/blog/colour-in-illustration-featured-image@2x.png"
 medium: "/images/blog/colour-in-illustration-featured-image-medium@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 169
 fileroot: "tips-for-using-colour-effectively-in-web-illustration"

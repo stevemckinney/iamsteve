@@ -7,7 +7,7 @@ metadesc: "My opinion on why wireframes should be completely accurate to the fin
 theme: "#e9f5f5"
 tags: ["Design"]
 categories: ["Design"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 89
 fileroot: "accuracy-in-wireframes"

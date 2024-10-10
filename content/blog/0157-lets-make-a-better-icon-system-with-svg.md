@@ -10,7 +10,7 @@ categories: ["Code", "Patterns"]
 images: ["/images/blog/svg-icon-system-featured-image@2x.png"]
 large: "/images/blog/svg-icon-system-featured-image@2x.png"
 medium: "/images/blog/svg-icon-system-featured-image-medium@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 157
 fileroot: "lets-make-a-better-icon-system-with-svg"

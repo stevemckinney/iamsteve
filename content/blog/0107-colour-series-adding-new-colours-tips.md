@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/colour-series-post-images-011.png"]
 large: "/images/blog/colour-series-post-images-011.png"
 medium: "/images/blog/colour-series-post-images-021.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 107
 fileroot: "colour-series-adding-new-colours-tips"

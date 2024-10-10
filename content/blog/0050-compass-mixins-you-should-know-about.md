@@ -6,7 +6,7 @@ summary: "I’m going to run through a few of my favourite mixins that I have co
 theme: "#ffede5"
 tags: ["Code", "Sass"]
 categories: ["Code", "CSS"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 50
 fileroot: "compass_mixins_you_should_know_about"

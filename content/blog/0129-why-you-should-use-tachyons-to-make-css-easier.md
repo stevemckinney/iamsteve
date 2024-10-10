@@ -7,7 +7,7 @@ metadesc: "Find out how tachyons can help speed up building a website, but most 
 theme: "#e1f7ee"
 tags: ["Code", "CSS"]
 categories: ["Code"]
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 129
 fileroot: "why-you-should-use-tachyons-to-make-css-easier"

@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/use-swatches-01.png"]
 large: "/images/blog/use-swatches-01.png"
 medium: "/images/blog/use-swatches-02.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 123
 fileroot: "how-to-use-swatches-in-illustrator"

@@ -10,7 +10,7 @@ categories: ["Code", "JavaScript"]
 images:
 large: "/images/blog/flickity-navigation.png"
 medium: "/images/blog/flickity-navigation.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 113

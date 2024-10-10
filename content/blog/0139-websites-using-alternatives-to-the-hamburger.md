@@ -10,7 +10,7 @@ categories: ["Design"]
 images: ["/images/blog/hamburger-alternatives-featured-image1.png"]
 large: "/images/blog/hamburger-alternatives-featured-image1.png"
 medium: "/images/blog/hamburger-alternatives-featured-image-medium1.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 id: 139
 fileroot: "websites-using-alternatives-to-the-hamburger"

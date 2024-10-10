@@ -10,7 +10,7 @@ categories: ["Code", "CSS"]
 images: ["/images/blog/inline-block-featured-image@2x.png"]
 large: "/images/blog/inline-block-featured-image@2x.png"
 medium: "/images/blog/inline-block-featured-image-medium@2x.png"
-ogImage: "/assets/og/cover.jpg"
+ogImage: "/opengraph-image.png"
 status: "open"
 codepen: true
 id: 24
