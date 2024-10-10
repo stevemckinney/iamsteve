@@ -144,7 +144,7 @@ const postComponents = {
   LinkFigma: (props) => (
     <Link
       href={props.href}
-      className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto button-dandelion font-ui text-base/tight lowercase text-center`}
+      className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion w-full @sm:w-[auto] @sm:grow-0 flex-auto`}
     >
       <Icon icon="figma" size={16} className="text-current shrink-0" />{' '}
       {props.children}
@@ -153,7 +153,7 @@ const postComponents = {
   LinkGithub: (props) => (
     <Link
       href={props.href}
-      className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto button-dandelion font-ui text-base/tight lowercase text-center`}
+      className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion w-full @sm:w-[auto] @sm:grow-0 flex-auto`}
     >
       <Icon icon="github" size={16} className="text-current shrink-0" />{' '}
       {props.children}

@@ -34,7 +34,7 @@ const Button = (props, forwardedRef) => {
 
   return (
     <button {...props} className={`${base} ${style}`}>
-      {props.children}
+      <span>{props.children}</span>
     </button>
   )
 }
