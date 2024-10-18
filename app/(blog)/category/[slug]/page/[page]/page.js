@@ -48,7 +48,8 @@ export async function generateStaticParams() {
   return paths
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   const category = categories.find((category) => category.slug === params.slug)
 
   if (!category) {
@@ -62,7 +63,9 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function BlogCategory({ params, searchParams }) {
+export default async function BlogCategory(props) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const data = categories.find(
     (category) => category.slugAsParams === params.slug
   )

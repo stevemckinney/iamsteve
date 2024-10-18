@@ -40,59 +40,58 @@ const getData = cache(async () => {
 async function Collections() {
   const { groupedCollections } = await getData()
 
-  return (
-    <>
-      {Object.entries(groupedCollections)
-        .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
-        .map(([collection, items]) => (
-          <div className="flex flex-col gap-4" key={collection}>
-            <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 pt-2">
-              {collection}
+  return (<>
+    {Object.entries(groupedCollections)
+      .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
+      .map(([collection, items]) => (
+        <div className="flex flex-col gap-4" key={collection}>
+          <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 pt-2">
+            {collection}
 
-              <span className="text-cornflour-600">{items.length}</span>
-            </h2>
-            <ul className="bg-white shadow-placed rounded-md flex flex-col overflow-hidden">
-              {items.map((item) => {
-                const [y, m, d] = item.date
-                  .split('-')
-                  .map((n) => parseInt(n, 10))
-                const itemDate = new Date(y, m, d)
-                const isNew = isAfter(itemDate, subWeeks(new Date(), 5))
+            <span className="text-cornflour-600">{items.length}</span>
+          </h2>
+          <ul className="bg-white shadow-placed rounded-md flex flex-col overflow-hidden">
+            {items.map((item) => {
+              const [y, m, d] = item.date
+                .split('-')
+                .map((n) => parseInt(n, 10))
+              const itemDate = new Date(y, m, d)
+              const isNew = isAfter(itemDate, subWeeks(new Date(), 5))
 
-                return (
-                  <li
-                    key={item.url}
-                    className="flex items-center border-b last:border-0 border-neutral-01-500/10 leading-loose relative lg:text-lg"
+              return (
+                (<li
+                  key={item.url}
+                  className="flex items-center border-b last:border-0 border-neutral-01-500/10 leading-loose relative lg:text-lg"
+                >
+                  <a
+                    href={item.url}
+                    className="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 transition duration-200 linear items-baseline py-2.5 px-4 w-full [mask:linear-gradient(90deg,black_80%,transparent)]"
+                    rel="noopener noreferrer"
                   >
-                    <a
-                      href={item.url}
-                      className="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 transition duration-200 linear items-baseline py-2.5 px-4 w-full [mask:linear-gradient(90deg,black_80%,transparent)]"
-                      rel="noopener noreferrer"
-                    >
-                      {item.title}
-                      <span className="text-fern-1100/40 group-hover:text-fern-1100/80 transition duration-200 linear line-clamp-1">
-                        {item.url
-                          .replace('https://', '')
-                          .replace('www.', '')
-                          .replace(/\/$/, '')}
-                      </span>
-                    </a>
-                    {/*isNew && (
-                    <span className="flex self-center px-2 py-1 font-ui lowercase bg-fern-200/50 leading-none text-fern-800 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
-                      New
+                    {item.title}
+                    <span className="text-fern-1100/40 group-hover:text-fern-1100/80 transition duration-200 linear line-clamp-1">
+                      {item.url
+                        .replace('https://', '')
+                        .replace('www.', '')
+                        .replace(/\/$/, '')}
                     </span>
-                  )*/}
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        ))}
-    </>
-  )
+                  </a>
+                  {/*isNew && (
+                  <span className="flex self-center px-2 py-1 font-ui lowercase bg-fern-200/50 leading-none text-fern-800 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
+                    New
+                  </span>
+                )*/}
+                </li>)
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+  </>);
 }
 
-export default async function CollectionsPage({ params }) {
+export default async function CollectionsPage(props) {
+  const params = await props.params;
   return (
     <>
       <Header className="max-sm:frame max-sm:frame-24 max-sm:px-8 max-sm:py-12 flex flex-col gap-2 col-start-content-start col-end-content-end md:col-end-7 sticky top-8 self-start">

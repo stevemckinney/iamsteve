@@ -37,7 +37,8 @@ const getData = cache(async () => {
   }
 })
 
-export default async function BlogIndex({ params }) {
+export default async function BlogIndex(props) {
+  const params = await props.params;
   const allData = await getData()
   const posts = allData.postsByDate
   const pageNumber = params.page ? parseInt(params.page) : 1
