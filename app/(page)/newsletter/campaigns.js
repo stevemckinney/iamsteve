@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Date from '@/components/date'
 import Icon from '@/components/icon'
-export const revalidate = 86400 * 28 // Revalidate once per month
+export const revalidate = 2592000
 
 const Campaigns = () => {
   const [campaigns, setCampaigns] = useState([])

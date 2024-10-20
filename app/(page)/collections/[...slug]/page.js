@@ -12,7 +12,7 @@ import Icon from '@/components/icon'
 import { format, subWeeks, isAfter } from 'date-fns'
 
 export const dynamic = 'force-static'
-export const revalidate = 86400 * 28 // Revalidate once per month
+export const revalidate = 2592000
 
 const getData = cache(async () => {
   const groupedCollections = allCollections.reduce((acc, item) => {
@@ -42,7 +42,7 @@ async function getPageFromParams(params) {
 }
 
 export async function generateMetadata(props) {
-  const params = await props.params;
+  const params = await props.params
   const page = await getPageFromParams(params)
 
   if (!page) {
@@ -76,7 +76,7 @@ async function Collections({ page }) {
   }
 
   return (
-    (<div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
       <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 pt-2">
         {page.join('/')}
 
@@ -91,7 +91,7 @@ async function Collections({ page }) {
           const isNew = isAfter(itemDate, subWeeks(new Date(), 4))
 
           return (
-            (<li
+            <li
               key={item.url}
               className="flex items-center border-b last:border-0 border-neutral-01-500/10 leading-loose relative lg:text-lg"
             >
@@ -113,16 +113,16 @@ async function Collections({ page }) {
                 New
               </span>
             )*/}
-            </li>)
-          );
+            </li>
+          )
         })}
       </ul>
-    </div>)
-  );
+    </div>
+  )
 }
 
 export default async function CollectionPage(props) {
-  const params = await props.params;
+  const params = await props.params
   const page = await getPageFromParams(params)
 
   if (!page) {

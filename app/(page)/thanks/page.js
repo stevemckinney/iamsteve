@@ -8,7 +8,7 @@ import Notepad from '@/components/notepad'
 import Card from '@/components/card'
 import Campaigns from '../newsletter/campaigns'
 import { allPosts } from 'contentlayer/generated'
-export const revalidate = 3600
+export const revalidate = 2592000
 
 export default async function NewsletterPage({ data, Post }) {
   const includedPosts = [160, 161, 157, 164, 165, 72]

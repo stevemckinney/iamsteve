@@ -16,7 +16,7 @@ import Pagination from '@/components/pagination'
 import categories from '@/content/categories'
 
 const POSTS_PER_PAGE = 12
-export const revalidate = 86400 * 28 // Revalidate once per month
+export const revalidate = 2592000
 
 const getData = cache(async () => {
   const postsByDate = sortPosts(allPosts)
@@ -57,7 +57,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props) {
-  const params = await props.params;
+  const params = await props.params
   const category = categories.find((category) => category.slug === params.slug)
 
   if (!category) {
@@ -72,8 +72,8 @@ export async function generateMetadata(props) {
 }
 
 export default async function BlogCategory(props) {
-  const searchParams = await props.searchParams;
-  const params = await props.params;
+  const searchParams = await props.searchParams
+  const params = await props.params
   const allData = await getData()
   const data = categories.find(
     (category) => category.slugAsParams === params.slug

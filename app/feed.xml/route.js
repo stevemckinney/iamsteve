@@ -2,7 +2,7 @@ import { allPosts } from 'contentlayer/generated'
 import siteMetadata from '@/content/metadata'
 import { marked } from 'marked'
 
-export const revalidate = 86400 * 28 // Revalidate once per month
+export const revalidate = 2592000
 
 export async function GET() {
   // Generate the feed
