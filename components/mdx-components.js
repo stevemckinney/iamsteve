@@ -1,19 +1,15 @@
 /* eslint-disable react/display-name */
 import { useMemo } from 'react'
 import { getMDXComponent } from 'mdx-bundler/client'
+import { useMDXComponent } from 'next-contentlayer2/hooks'
 import Image from '@/components/image'
 import Link from '@/components/link'
-// import Campaigns from '@/components/campaigns'
-// import Pre from '@/components/Pre'
-// import CustomLink from '@/components/Link'
-// import TOCInline from '@/components/TOCInline'
 import ContactForm from '@/components/contact-form'
 import Icon from '@/components/icon'
 import Social from '@/components/social'
 import Card from '@/components/card'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
-import { useMDXComponent } from 'next-contentlayer/hooks'
 
 // post specific components
 import BentoGridShell from '@/components/posts/0175-bento-grid'
@@ -128,6 +124,11 @@ const components = {
 }
 
 const postComponents = {
+  h1: (props) => <h1 {...props} className="text-2xl font-bold" />,
+  h2: (props) => <h2 {...props} className="text-xl font-semibold" />,
+  p: (props) => <p {...props} className="mt-2" />,
+  ul: (props) => <ul {...props} className="list-disc pl-5" />,
+  li: (props) => <li {...props} />,
   Image,
   a: (props) => <Link {...props} />,
   Link,
@@ -179,14 +180,47 @@ const postComponents = {
   },
 }
 
+function MDXWrapper({ code }) {
+  const Component = useMDXComponent(code)
+
+  if (!code || !Component) {
+    return <p>No content available.</p>
+  }
+
+  return <Component components={postComponents} />
+}
+
 export function MDX({ code }) {
   const Component = useMDXComponent(code)
 
-  return <Component components={components} />
+  if (!Component) {
+    console.error('Failed to create MDX component')
+    return <p>Failed to load content.</p>
+  }
+
+  try {
+    return <Component components={components} />
+  } catch (error) {
+    console.error('Error rendering MDX:', error)
+    return <p>Failed to render content. Error: {error.message}</p>
+  }
 }
 
 export function PostMdx({ code }) {
+  return <MDXWrapper code={code} />
+}
+
+export function MDXContent({ code }) {
   const Component = useMDXComponent(code)
+
+  console.log('MDX Code:', code);
+  console.log('Component:', Component);
+  console.log('Components:', postComponents);
+
+  if (!Component) {
+    console.error('Failed to create MDX component')
+    return <p>Failed to load content.</p>
+  }
 
   return <Component components={postComponents} />
 }

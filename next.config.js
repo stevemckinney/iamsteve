@@ -1,4 +1,4 @@
-const { withContentlayer } = require('next-contentlayer')
+const { withContentlayer } = require('next-contentlayer2')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -50,10 +50,14 @@ const securityHeaders = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
-  swcMinify: true,
   reactStrictMode: false,
-  experimental: {
-    webpackBuildWorker: true,
+  sassOptions: {
+    logger: {
+      warn: function(message) {
+        if (message.includes('legacy-js-api')) return;
+        console.warn(message);
+      }
+    }
   },
   env: {
     REVALIDATION_SECRET: process.env.REVALIDATION_SECRET,

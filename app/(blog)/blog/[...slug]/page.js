@@ -7,7 +7,7 @@
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import Script from 'next/script'
-import { PostMdx } from '@/components/mdx-components'
+import { PostMdx, MDXContent } from '@/components/mdx-components'
 import siteMetadata from '@/content/metadata'
 
 // page components
@@ -52,8 +52,8 @@ async function getPostFromParams(params) {
 }
 
 export async function generateMetadata(props, parent) {
-  const searchParams = await props.searchParams;
-  const params = await props.params;
+  const searchParams = await props.searchParams
+  const params = await props.params
   const id = params.id
   const post = await getPostFromParams(params)
 
@@ -94,12 +94,17 @@ export async function generateStaticParams() {
 }
 
 export default async function PostPage(props) {
-  const params = await props.params;
+  const params = await props.params
   const post = await getPostFromParams(params)
 
   if (!post) {
     console.log('Post not found, redirecting to 404')
     notFound()
+  }
+
+  if (!post.body || !post.body.code) {
+    console.error('Post body or code is missing:', post)
+    return <div>Error: Post content is unavailable</div>
   }
 
   // View counting feature flag
