@@ -5,7 +5,8 @@
   font-size: theme('fontSize.base');
   line-height: theme('lineHeight.normal');
 
-  b, strong {
+  b,
+  strong {
     font-weight: 600;
   }
 
@@ -20,15 +21,17 @@
   /**
    * code theme
    */
-  --code-black: theme('colors.fern.1100');
-  --code-red: theme('colors.rio.200');
-  --code-yellow: theme('colors.dandelion.300');
-  --code-green: theme('colors.grass.300');
-  --code-blue: theme('colors.cornflour.300');
-  --code-magenta: theme('colors.magenta.200');
-  --code-cyan: theme('colors.fern.300');
-  --code-white: theme('colors.fern.100');
-  --code-comment: theme('colors.neutral-03.400');
+  & {
+    --code-black: theme('colors.fern.1100');
+    --code-red: theme('colors.rio.200');
+    --code-yellow: theme('colors.dandelion.300');
+    --code-green: theme('colors.grass.300');
+    --code-blue: theme('colors.cornflour.300');
+    --code-magenta: theme('colors.magenta.200');
+    --code-cyan: theme('colors.fern.300');
+    --code-white: theme('colors.fern.100');
+    --code-comment: theme('colors.neutral-03.400');
+  }
 
   > *:not(:global(.prose-exclude)) {
     grid-column: content-start / content-end;
@@ -440,7 +443,7 @@
     text-wrap: pretty;
   }
 
-  :where(> div, .remark-code-container, figure) + :where(p, ol, ul) {
+  :where(div, .remark-code-container, figure) + :where(p, ol, ul) {
     --block-space: 4rem;
     // outline: 1px solid red;
   }
