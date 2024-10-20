@@ -3,8 +3,6 @@
 # iamsteve.me design & code blog
 A design and code blog using Next.js with App Router.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/520edf5b-5787-4b69-a2f0-7ae1efdc3df3/deploy-status)](https://app.netlify.com/sites/iamsteve/deploys)
-
 ## Development
 First, run the development server:
 
