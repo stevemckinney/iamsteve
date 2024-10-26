@@ -129,7 +129,7 @@ export default async function CollectionPage({ params }) {
 
   return (
     <>
-      <Header className="max-sm:frame max-sm:frame-24 max-sm:px-8 max-sm:py-12 flex flex-col gap-2 col-start-content-start col-end-content-end md:col-end-7 sticky top-8 self-start">
+      <Header className="max-sm:frame max-sm:frame-24 max-sm:px-8 max-sm:py-12 flex flex-col gap-2 col-start-content-start col-end-content-end md:col-end-7 md:sticky top-8 self-start">
         <Title className="font-variation-bold text-5xl">
           {/* <Link
               href="/collections"
