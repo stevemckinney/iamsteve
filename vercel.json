@@ -1,0 +1,9 @@
+{
+  "build": {
+    "env": {
+      "NODEJS_VERSION": "20.x"
+    }
+  },
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm run build"
+}

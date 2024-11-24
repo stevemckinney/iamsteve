@@ -2,6 +2,10 @@
   "name": "iamsteve",
   "version": "8.1.0",
   "private": true,
+  "packageManager": "pnpm@9.12.1+sha256.91452fdfa46234ae447d46d5c4fc4e7e0a7058f90495c4b6f77f8beebbb154e3",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "contentlayer2 dev & next dev --turbo",
@@ -98,7 +102,6 @@
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@9.12.1+sha256.91452fdfa46234ae447d46d5c4fc4e7e0a7058f90495c4b6f77f8beebbb154e3",
   "devDependencies": {
     "eslint": "^9.15.0"
   }
