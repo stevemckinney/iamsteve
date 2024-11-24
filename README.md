@@ -7,9 +7,9 @@ A design and code blog using Next.js with App Router.
 First, run the development server:
 
 ```bash
-yarn build
+pnpm build
 # or
-yarn dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
