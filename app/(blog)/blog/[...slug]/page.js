@@ -7,7 +7,7 @@
 import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import Script from 'next/script'
-import { PostMdx, MDXContent } from '@/components/mdx-components'
+import { PostMdx } from '@/components/mdx-components'
 import siteMetadata from '@/content/metadata'
 
 // page components

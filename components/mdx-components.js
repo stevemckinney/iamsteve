@@ -1,7 +1,5 @@
 /* eslint-disable react/display-name */
-import { useMemo } from 'react'
-import { getMDXComponent } from 'mdx-bundler/client'
-import { useMDXComponent } from 'next-contentlayer2/hooks'
+'use client'
 import Image from '@/components/image'
 import Link from '@/components/link'
 import ContactForm from '@/components/contact-form'
@@ -10,6 +8,7 @@ import Social from '@/components/social'
 import Card from '@/components/card'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
+import { useMDXComponent } from 'next-contentlayer2/hooks'
 
 // post specific components
 import BentoGridShell from '@/components/posts/0175-bento-grid'
@@ -207,22 +206,19 @@ export function MDX({ code }) {
 }
 
 export function PostMdx({ code }) {
-  return <MDXWrapper code={code} />
-}
-
-export function MDXContent({ code }) {
   const Component = useMDXComponent(code)
-
-  console.log('MDX Code:', code);
-  console.log('Component:', Component);
-  console.log('Components:', postComponents);
 
   if (!Component) {
     console.error('Failed to create MDX component')
     return <p>Failed to load content.</p>
   }
 
-  return <Component components={postComponents} />
+  try {
+    return <Component components={postComponents} />
+  } catch (error) {
+    console.error('Error rendering MDX:', error)
+    return <p>Failed to render content. Error: {error.message}</p>
+  }
 }
 
 export { postComponents, components }
