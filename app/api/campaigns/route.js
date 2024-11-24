@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-anonymous-default-export
+/* eslint import/no-anonymous-default-export: "off" */
 import { NextResponse } from 'next/server'
 
 export const GET = async (req) => {

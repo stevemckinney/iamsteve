@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types'
-
 const Icon = ({ icon = 'folder', className = 'text-fern-1100', size = 24 }) => {
   if (icon === 'design' || icon === 'Design') icon = 'pen'
   if (
@@ -28,12 +26,6 @@ const Icon = ({ icon = 'folder', className = 'text-fern-1100', size = 24 }) => {
       </svg>
     </>
   )
-}
-
-Icon.propTypes = {
-  icon: PropTypes.string,
-  color: PropTypes.string,
-  size: PropTypes.number,
 }
 
 export default Icon

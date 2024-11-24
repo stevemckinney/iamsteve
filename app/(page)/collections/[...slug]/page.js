@@ -12,7 +12,7 @@ import Icon from '@/components/icon'
 import { format, subWeeks, isAfter } from 'date-fns'
 
 export const dynamic = 'force-static'
-export const revalidate = 86400 * 28 // Revalidate once per month
+export const revalidate = 2592000
 
 const getData = cache(async () => {
   const groupedCollections = allCollections.reduce((acc, item) => {
@@ -41,7 +41,8 @@ async function getPageFromParams(params) {
   return page
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params
   const page = await getPageFromParams(params)
 
   if (!page) {
@@ -120,7 +121,8 @@ async function Collections({ page }) {
   )
 }
 
-export default async function CollectionPage({ params }) {
+export default async function CollectionPage(props) {
+  const params = await props.params
   const page = await getPageFromParams(params)
 
   if (!page) {

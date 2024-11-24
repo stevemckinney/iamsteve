@@ -78,10 +78,10 @@ async function Collections() {
                       </span>
                     </a>
                     {/*isNew && (
-                    <span className="flex self-center px-2 py-1 font-ui lowercase bg-fern-200/50 leading-none text-fern-800 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
-                      New
-                    </span>
-                  )*/}
+                  <span className="flex self-center px-2 py-1 font-ui lowercase bg-fern-200/50 leading-none text-fern-800 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
+                    New
+                  </span>
+                )*/}
                   </li>
                 )
               })}
@@ -92,7 +92,8 @@ async function Collections() {
   )
 }
 
-export default async function CollectionsPage({ params }) {
+export default async function CollectionsPage(props) {
+  const params = await props.params
   return (
     <>
       <Header className="max-sm:frame max-sm:frame-24 max-sm:px-8 max-sm:py-12 flex flex-col gap-2 col-start-content-start col-end-content-end md:col-end-7 md:sticky top-8 self-start">

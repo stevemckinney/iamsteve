@@ -51,7 +51,9 @@ async function getPostFromParams(params) {
   return post
 }
 
-export async function generateMetadata({ params, searchParams }, parent) {
+export async function generateMetadata(props, parent) {
+  const searchParams = await props.searchParams
+  const params = await props.params
   const id = params.id
   const post = await getPostFromParams(params)
 
@@ -91,12 +93,18 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function PostPage({ params }) {
+export default async function PostPage(props) {
+  const params = await props.params
   const post = await getPostFromParams(params)
 
   if (!post) {
     console.log('Post not found, redirecting to 404')
     notFound()
+  }
+
+  if (!post.body || !post.body.code) {
+    console.error('Post body or code is missing:', post)
+    return <div>Error: Post content is unavailable</div>
   }
 
   // View counting feature flag

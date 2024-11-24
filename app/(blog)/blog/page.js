@@ -24,7 +24,7 @@ export const metadata = {
 }
 
 export const dynamic = 'force-static'
-export const revalidate = 86400 * 28 // Revalidate once per month
+export const revalidate = 2592000
 const POSTS_PER_PAGE = 12
 
 const getData = cache(async () => {
@@ -37,7 +37,8 @@ const getData = cache(async () => {
   }
 })
 
-export default async function BlogIndex({ params }) {
+export default async function BlogIndex(props) {
+  const params = await props.params
   const allData = await getData()
   const posts = allData.postsByDate
   const pageNumber = params.page ? parseInt(params.page) : 1

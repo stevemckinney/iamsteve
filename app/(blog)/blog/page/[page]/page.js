@@ -35,7 +35,8 @@ export const generateStaticParams = async () => {
   return paths
 }
 
-export default async function BlogIndex({ params }) {
+export default async function BlogIndex(props) {
+  const params = await props.params
   const allData = await getData()
   const posts = allData.postsByDate
   const pageNumber = 1

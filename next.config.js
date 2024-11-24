@@ -1,4 +1,4 @@
-const { withContentlayer } = require('next-contentlayer')
+const { withContentlayer } = require('next-contentlayer2')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -19,7 +19,7 @@ const ContentSecurityPolicy = `
 const securityHeaders = [
   {
     key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
+    value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim(),
   },
   {
     key: 'Referrer-Policy',
@@ -47,13 +47,26 @@ const securityHeaders = [
   },
 ]
 
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+    providerImportSource: '@mdx-js/react',
+  },
+})
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
-  swcMinify: true,
   reactStrictMode: false,
-  experimental: {
-    webpackBuildWorker: true,
+  sassOptions: {
+    logger: {
+      warn: function (message) {
+        if (message.includes('legacy-js-api')) return
+        console.warn(message)
+      },
+    },
   },
   env: {
     REVALIDATION_SECRET: process.env.REVALIDATION_SECRET,
@@ -112,7 +125,8 @@ const nextConfig = {
           },
           {
             key: 'Cache-Control',
-            value: 'public, max-age=86400, s-maxage=2592000, stale-while-revalidate=604800',
+            value:
+              'public, max-age=86400, s-maxage=2592000, stale-while-revalidate=604800',
           },
         ],
       },
@@ -121,11 +135,12 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=0, s-maxage=3600, stale-while-revalidate=60',
+            value:
+              'public, max-age=0, s-maxage=3600, stale-while-revalidate=60',
           },
           ...securityHeaders,
         ],
-      }
+      },
     ]
   },
   async redirects() {
@@ -252,7 +267,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/:path(simple.php|wp.php|moon.php|wp-signup.php|ads.txt|admin.php|wp-login.php|wp-info.php|mailer.php|inputs.php|404.php|403.php|xmlrpc.php|xml.php)',
+        source:
+          '/:path(simple.php|wp.php|moon.php|wp-signup.php|ads.txt|admin.php|wp-login.php|wp-info.php|mailer.php|inputs.php|404.php|403.php|xmlrpc.php|xml.php)',
         destination: 'https://google.com',
         permanent: true,
       },
@@ -276,4 +292,4 @@ const nextConfig = {
 }
 
 // Wrap the config with both withContentlayer and withBundleAnalyzer
-module.exports = withContentlayer(withBundleAnalyzer(nextConfig))
+module.exports = withContentlayer(withMDX(withBundleAnalyzer(nextConfig)))

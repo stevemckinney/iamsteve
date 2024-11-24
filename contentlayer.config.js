@@ -1,4 +1,4 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import path from 'path'
 import siteMetadata from './content/metadata'
 import categories from './content/categories'
@@ -10,7 +10,7 @@ import smartypants from 'remark-smartypants'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import remarkRehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
-import GithubSlugger from "github-slugger"
+import GithubSlugger from 'github-slugger'
 import parse from 'rehype-parse'
 import stringify from 'rehype-stringify'
 import { visit } from 'unist-util-visit'
@@ -124,42 +124,55 @@ export const Post = defineDocumentType(() => ({
   computedFields: {
     // https://yusuf.fyi/posts/contentlayer-table-of-contents/
     headings: {
-      type: "json",
+      type: 'json',
       resolve: async (doc) => {
-        const regXHeader = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+        const regXHeader = /\n(?<flag>#{1,6})\s+(?<content>.+)/g
         const slugger = new GithubSlugger()
         const headings = Array.from(doc.body.raw.matchAll(regXHeader)).map(
           ({ groups }) => {
-            const flag = groups?.flag;
-            const content = groups?.content;
+            const flag = groups?.flag
+            const content = groups?.content
 
             // Remove markdown links and HTML tags from the content
             const cleanContent = content
-              ? content.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Remove markdown links
-                       .replace(/<[^>]+>/g, '') // Remove HTML tags
-              : '';
+              ? content
+                  .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Remove markdown links
+                  .replace(/<[^>]+>/g, '') // Remove HTML tags
+              : ''
 
             return {
-              level: flag?.length == 1 ? "one"
-              : flag?.length == 2 ? "two"
-              : flag?.length == 3 ? "three"
-              : "four",
+              level:
+                flag?.length == 1
+                  ? 'one'
+                  : flag?.length == 2
+                  ? 'two'
+                  : flag?.length == 3
+                  ? 'three'
+                  : 'four',
               text: cleanContent,
-              slug: cleanContent ? slugger.slug(cleanContent) : undefined
-            };
+              slug: cleanContent ? slugger.slug(cleanContent) : undefined,
+            }
           }
-        );
-        return headings;
+        )
+        return headings
       },
     },
     readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
     slug: {
       type: 'string',
-      resolve: (doc) => `/blog/${doc._raw.flattenedPath.split('/').pop().replace(/^\d{4}-/, '')}`,
+      resolve: (doc) =>
+        `/blog/${doc._raw.flattenedPath
+          .split('/')
+          .pop()
+          .replace(/^\d{4}-/, '')}`,
     },
     slugAsParams: {
       type: 'string',
-      resolve: (doc) => doc._raw.flattenedPath.split('/').pop().replace(/^\d{4}-/, ''),
+      resolve: (doc) =>
+        doc._raw.flattenedPath
+          .split('/')
+          .pop()
+          .replace(/^\d{4}-/, ''),
     },
     structuredData: {
       type: 'json',
@@ -212,7 +225,7 @@ export default makeSource({
   contentDirExclude: ['./content/draft'],
   documentTypes: [Post, Page, Collections],
   mdx: {
-    remarkPlugins: [remarkGfm, remarkCodeTitles, smartypants, remarkRehype],
+    remarkPlugins: [remarkGfm, remarkCodeTitles, smartypants],
     rehypePlugins: [
       rehypeSlug,
       [
@@ -227,5 +240,10 @@ export default makeSource({
       ],
       [rehypePrism, { ignoreMissing: true }],
     ],
+    // Add this configuration
+    options: {
+      jsx: true,
+      providerImportSource: '@mdx-js/react',
+    },
   },
 })
