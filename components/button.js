@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
 import NextLink from 'next/link'
 
 const Button = (props, forwardedRef) => {

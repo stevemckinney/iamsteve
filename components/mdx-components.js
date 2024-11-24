@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 'use client'
 import Image from '@/components/image'
 import Link from '@/components/link'

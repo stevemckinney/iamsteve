@@ -11,7 +11,7 @@
     "build": "contentlayer2 build && pnpm lint && next build",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
-    "lint": "next lint --fix --dir app --dir components --dir lib --dir scripts",
+    "lint": "ESLINT_USE_FLAT_CONFIG=true next lint --fix --dir app --dir components --dir lib --dir scripts",
     "icons-16": "create-react-icons -s 'public/icon/16/**.svg' -d 'components/icon/16' -t 'lib/icon-16.ejs'",
     "icons-24": "create-react-icons -s 'public/icon/24/**.svg' -d 'components/icon/24' -t 'lib/icon-24.ejs'",
     "icons": "pnpm icons-16 && pnpm icons-24"
@@ -50,8 +50,6 @@
     "encoding": "^0.1.13",
     "esbuild": "^0.18.20",
     "eslint-config-next": "^14.2.15",
-    "eslint-config-prettier": "^8.10.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "feed": "^4.2.2",
     "github-slugger": "^2.0.0",
     "globby": "^11.1.0",
@@ -64,7 +62,6 @@
     "next-themes": "^0.2.1",
     "postcss": "^8.4.47",
     "postcss-nesting": "^12.1.5",
-    "prettier": "2.7.1",
     "radix-ui": "^1.0.1",
     "react": "19.0.0-rc-b8ae38f8-20241018",
     "react-dom": "19.0.0-rc-b8ae38f8-20241018",
@@ -100,6 +97,17 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^9.15.0"
+    "@eslint/compat": "^1.2.3",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.15.0",
+    "@next/eslint-plugin-next": "^15.0.3",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "prettier": "2.7.1"
   }
 }
