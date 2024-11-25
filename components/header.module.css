@@ -1,5 +1,5 @@
-.link {
-  @media not all and (min-width: var(--breakpoint-lg)) {
+@media not all and (min-width: var(--breakpoint-lg)) {
+  .link {
     &:after {
       content: '';
       display: block;
@@ -42,9 +42,9 @@
   right: calc(24px + var(--padding-2));
 }
 
-.vertical {
-  @supports (padding: max(0px)) {
-    @media not all and (min-width: var(--breakpoint-lg)) {
+@supports (padding: max(0px)) {
+  @media not all and (min-width: var(--breakpoint-lg)) {
+    .vertical {
       padding-bottom: max(
         var(--spacing-2),
         calc(env(safe-area-inset-bottom) + var(--spacing-2))

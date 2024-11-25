@@ -23,7 +23,7 @@ const Input = ({ ...props }) => (
   <Form.Control asChild>
     <input
       {...props}
-      className="form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-linear-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] data-[invalid=true]:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_#E5542B,_0_0_0_5px_rgb(229_84_43_/_0.08)]"
+      className="form-input w-full text-base bg-white shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-linear-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] data-[invalid=true]:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_#E5542B,_0_0_0_5px_rgb(229_84_43_/_0.08)]"
     />
   </Form.Control>
 )
@@ -180,7 +180,7 @@ const ContactForm = () => {
 
         <Form.Submit asChild>
           <button
-            className="button-dandelion self-start min-w-fit font-ui text-base/tight lowercase text-center button-dandelion button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto"
+            className="button-dandelion py-3.5 px-8 self-start min-w-fit font-ui text-base/tight lowercase text-center select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto"
             disabled={wordCount < MIN_WORD_COUNT}
           >
             Send

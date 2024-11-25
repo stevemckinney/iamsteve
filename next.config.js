@@ -5,7 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 // Content Security Policy
 const ContentSecurityPolicy = `
-  default-src 'self';
+  default-src 'self' data:;
   script-src 'self' 'unsafe-eval' 'unsafe-inline' https://scripts.simpleanalyticscdn.com https://static.codepen.io https://use.typekit.net https://platform.twitter.com;
   style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net https://platform.twitter.com;
   img-src * blob: data:;
@@ -14,6 +14,7 @@ const ContentSecurityPolicy = `
   font-src 'self' https://use.typekit.net https://p.typekit.net;
   frame-src https://codepen.io https://stevemckinney.github.io https://platform.twitter.com https://syndication.twitter.com https://x.com;
   worker-src 'self' blob:;
+  object-src 'self' data:;
 `
 
 const securityHeaders = [
@@ -88,13 +89,17 @@ const nextConfig = {
     ]
   },
   async headers() {
-    return [
+    // Base headers that apply to all environments
+    const baseHeaders = [
       {
         source: '/images/:all*(svg|jpg|png|webp|avif)',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value:
+              process.env.NODE_ENV === 'development'
+                ? 'no-store, must-revalidate'
+                : 'public, max-age=31536000, immutable',
           },
         ],
       },
@@ -103,7 +108,10 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value:
+              process.env.NODE_ENV === 'development'
+                ? 'no-store, must-revalidate'
+                : 'public, max-age=31536000, immutable',
           },
         ],
       },
@@ -112,7 +120,10 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value:
+              process.env.NODE_ENV === 'development'
+                ? 'no-store, must-revalidate'
+                : 'public, max-age=31536000, immutable',
           },
         ],
       },
@@ -126,7 +137,9 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value:
-              'public, max-age=86400, s-maxage=2592000, stale-while-revalidate=604800',
+              process.env.NODE_ENV === 'development'
+                ? 'no-store, must-revalidate'
+                : 'public, max-age=86400, s-maxage=2592000, stale-while-revalidate=604800',
           },
         ],
       },
@@ -136,12 +149,74 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value:
-              'public, max-age=0, s-maxage=3600, stale-while-revalidate=60',
+              process.env.NODE_ENV === 'development'
+                ? 'no-store, must-revalidate'
+                : 'public, max-age=0, s-maxage=3600, stale-while-revalidate=60',
           },
           ...securityHeaders,
         ],
       },
     ]
+
+    // Development-specific headers
+    const devHeaders =
+      process.env.NODE_ENV === 'development'
+        ? [
+            {
+              source: '/:path*',
+              headers: [
+                {
+                  key: 'X-Development-Mode',
+                  value: 'true',
+                },
+                {
+                  key: 'Pragma',
+                  value: 'no-cache',
+                },
+                {
+                  key: 'Expires',
+                  value: '0',
+                },
+              ],
+            },
+            {
+              source: '/_next/static/css/:path*',
+              headers: [
+                {
+                  key: 'Cache-Control',
+                  value: 'no-store, must-revalidate',
+                },
+                {
+                  key: 'Pragma',
+                  value: 'no-cache',
+                },
+                {
+                  key: 'Expires',
+                  value: '0',
+                },
+              ],
+            },
+            {
+              source: '/_next/static/media/:path*',
+              headers: [
+                {
+                  key: 'Cache-Control',
+                  value: 'no-store, must-revalidate',
+                },
+                {
+                  key: 'Pragma',
+                  value: 'no-cache',
+                },
+                {
+                  key: 'Expires',
+                  value: '0',
+                },
+              ],
+            },
+          ]
+        : []
+
+    return [...baseHeaders, ...devHeaders]
   },
   async redirects() {
     return [

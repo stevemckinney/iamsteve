@@ -1,5 +1,6 @@
 'use client'
 
+import { useMemo } from 'react'
 import { usePathname } from 'next/navigation'
 
 import siteMetadata from '@/content/metadata'
@@ -23,6 +24,20 @@ export default function Header() {
   const compactHorizontalNavLink = `lg:bg-neutral-01-500/10 lg:rounded-full lg:pl-10 lg:pr-1 lg:relative`
   const horizontalNavLink = `lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5`
   const tabbarNavLink = `max-lg:text-[12px] max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:pt-2`
+
+  const linkClassName = useMemo(() => {
+    return `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
+  }, [])
+
+  const getNavLinkClassName = (link, isActive) => {
+    return `${linkClassName} ${link.title === 'Home' ? 'lg:hidden' : ''} ${
+      link.title === 'Contact' ? 'max-lg:hidden' : ''
+    } ${styles.vertical} ${tabbarNavLink} ${horizontalNavLink} ${
+      styles.start
+    } ${isActive ? 'max-lg:opacity-100' : 'max-lg:opacity-60'} ${
+      isActive ? 'max-lg:text-fern-1100' : ''
+    }`
+  }
 
   return (
     <>
@@ -71,13 +86,7 @@ export default function Header() {
               return (
                 <Link
                   href={link.href}
-                  className={`${navLink} ${
-                    link.title === 'Home' ? 'lg:hidden' : ''
-                  } ${link.title === 'Contact' ? 'max-lg:hidden' : ''} ${
-                    styles.vertical
-                  } ${tabbarNavLink} ${horizontalNavLink} ${styles.start} ${
-                    isActive ? 'max-lg:opacity-100' : 'max-lg:opacity-60'
-                  } ${isActive ? 'max-lg:text-fern-1100' : ''}`}
+                  className={getNavLinkClassName(link, isActive)}
                   key={link.href}
                 >
                   <Icon

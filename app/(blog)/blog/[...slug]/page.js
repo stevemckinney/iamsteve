@@ -264,7 +264,7 @@ export default async function PostPage(props) {
           </div>
         </header>
         <div
-          className={`${styles.prose} prose grid grid-cols-subgrid col-container lg:col-span-8 xl:col-span-10 gap-x-8 gap-y-0`}
+          className={`${styles.prose} prose grid grid-cols-subgrid col-container lg:row-start-2 lg:col-span-8 xl:col-span-10 gap-x-8 gap-y-0`}
           id="article"
         >
           <PostImage post={post} />
