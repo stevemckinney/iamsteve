@@ -41,7 +41,7 @@ const Campaigns = () => {
         return (
           <li
             key={campaign.id}
-            className="[&:not(:first-child)]:border-t [&:not(:first-child)]:border-t-1 [&:not(:first-child)]:border-neutral-01-200"
+            className="not-first:border-t not-first:border-t-1 not-first:border-neutral-01-200"
           >
             <div className="flex justify-between py-2 text-lg text-fern-1100">
               {campaign.subject}{' '}

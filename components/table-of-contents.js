@@ -77,7 +77,7 @@ function TableOfContents({ headings, open = false, ...props }) {
 
         max-lg:data-[state=open]:overflow-x-clip
         max-lg:data-[state=open]:overflow-y-auto
-        max-lg:data-[state=open]:bg-gradient-to-b
+        max-lg:data-[state=open]:bg-linear-to-b
         max-lg:data-[state=open]:from-neutral-01-150
         max-lg:data-[state=open]:from-[32px]
         max-lg:data-[state=open]:to-neutral-01-150/90
@@ -108,7 +108,7 @@ function TableOfContents({ headings, open = false, ...props }) {
       <div
         id="toc-content"
         ref={contentRef}
-        className="data-[state=closed]:[transform:scale3d(0.5,.6,1.7)] data-[state=closed]:[perspective:1000px] data-[state=closed]:opacity-0 origin-top-left transition duration-[.2s] ease-[cubic-bezier(.165,.84,.44,1)] max-lg:data-[state=open]:h-[min-content] data-[state=closed]:h-0 data-[state=closed]:overflow-clip"
+        className="data-[state=closed]:[transform:scale3d(0.5,.6,1.7)] data-[state=closed]:[perspective:1000px] data-[state=closed]:opacity-0 origin-top-left transition duration-[.2s] ease-[cubic-bezier(.165,.84,.44,1)] max-lg:data-[state=open]:h-[min-content] data-[state=closed]:h-0 data-[state=closed]:text-clip"
         data-state={isOpen ? 'open' : 'closed'}
         aria-hidden={!isOpen}
       >

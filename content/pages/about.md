@@ -118,7 +118,7 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
     </ul>
     </div>
 
-    <div className={`overflow-hidden image-stack col-span-full md:col-start-8 md:col-span-5 max-md:mt-12 max-w-max self-start shadow-placed rounded-lg grid [&>*]:[grid-area:images]`}>
+    <div className={`overflow-hidden image-stack col-span-full md:col-start-8 md:col-span-5 max-md:mt-12 max-w-max self-start shadow-placed rounded-lg grid *:[grid-area:images]`}>
       <Image
         src="/images/about/iamsteve-small-v1.jpg"
         width={488}

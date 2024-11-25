@@ -57,7 +57,7 @@ The next set of properties aren't mandatory, but do make the usability nicer, pa
 You can also hide the scrollbar completely by targeting the `::-webkit-scrollbar` pseudo element and this will improve the appearance for Windows. However, from some brief testing on Windows, it can make it trickier to scroll. Although, it could depend on your mouse, so you may want to use this cautiously. _Sadly with Firefox it seems you're out of luck_.
 
 ### CSS: for the items
-Each item needs a `flex-grow` and `flex-shrink` value of `0`. The `flex-basis` property can be a percentage or pixel value if you for some reason need items to be of a specific width.
+Each item needs a `grow` and `shrink` value of `0`. The `flex-basis` property can be a percentage or pixel value if you for some reason need items to be of a specific width.
 
 ```css
 .item {

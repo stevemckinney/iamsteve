@@ -26,7 +26,7 @@ I'm going to use a button for this example:
 Now we have our button, albeit bland. Now we  want to add some styling, you can also add a class of choice, or if you want to have all buttons styled the way we will do so now, then you might just want to target the `button`  element.
 
 ## Styling
-Looking at the button now to make it 3D, the main make up of the code is the box-shadow. I've commented the box-shadow area to show which part of the shadow is doing what. Anyway here's my code:
+Looking at the button now to make it 3D, the main make up of the code is the box-shadow. I've commented the box-shadow area to show which part of the shadow-2xs is doing what. Anyway here's my code:
 
 ```css
 button {
@@ -49,7 +49,7 @@ button {
 That's the great thing about box-shadow. You could also add some texture by adding an image into the background. It's quite versatile in what you may want to do.
 
 ## Final code
-That's the basics above, but you may want to make them feel more button like. This is also just as simple, it requires changing the shadow on the hover and active states slightly. So here's the full code and of course a demo too.
+That's the basics above, but you may want to make them feel more button like. This is also just as simple, it requires changing the shadow-2xs on the hover and active states slightly. So here's the full code and of course a demo too.
 
 ```css
 button {

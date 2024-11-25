@@ -33,7 +33,7 @@ I'll guide you through the intentions of each parameter they're fairly easy to g
 
 `$subtle` if you want a discrete button that comes to life on hover set this to true.
 
-`$shadow` disable this if you want a flatter looking button.
+`$shadow-2xs` disable this if you want a flatter looking button.
 
 `$style` disable this, if you would like a button reset as your starting point. As I've found when making some sites, it wasn't always possible to go with my element style so a quick button base is helpful.
 

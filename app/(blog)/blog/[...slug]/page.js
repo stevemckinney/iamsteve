@@ -42,7 +42,7 @@ export const dynamic = 'force-static'
 export const revalidate = 86400
 
 // styling
-import styles from './post.module.scss'
+import styles from './post.module.css'
 
 async function getPostFromParams(params) {
   const slug = params?.slug?.join('/')
@@ -196,7 +196,7 @@ export default async function PostPage(props) {
       <article
         className={`isolate grid row-start-1 col-container grid-cols-subgrid relative`}
       >
-        <hr className="absolute z-[11] top-0 left-0 right-0 col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <hr className="absolute z-11 top-0 left-0 right-0 col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <Sidebar
           post={post}
           aria-label="Table of contents and newsletter subscription form"
@@ -401,7 +401,7 @@ export function Support() {
       </p>
       <Link
         href={siteMetadata.bmc}
-        className="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase hover:opacity-70 transition duration-200 mt-1 pl-6 pr-5 py-2 bg-white shadow-[0_0_0_1px_theme('colors.neutral-01.200')]"
+        className="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase hover:opacity-70 transition duration-200 mt-1 pl-6 pr-5 py-2 bg-white shadow-[0_0_0_1px_var(--color-neutral-01-200)]"
       >
         Buy me a coffee
         <span className="flex shrink-0 grow-0 items-center justify-center">

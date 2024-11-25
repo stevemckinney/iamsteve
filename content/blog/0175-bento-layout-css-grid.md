@@ -302,14 +302,14 @@ What was `bento-container` earlier now contains all of those same styles within.
 Now to apply all of the style and additional layout adjustments. Highlighted are the lines which affect layout.
 
 ```markup showLineNumbers {1, 2, 8-10}
-<section class="@container/section flex flex-col col-span-full md:col-span-6 xl:row-span-4 gap-2 p-2 bg-gunmetal-850 ring ring-gunmetal-750 rounded-2xl">
+<section class="@container/section flex flex-col col-span-full md:col-span-6 xl:row-span-4 gap-2 p-2 bg-gunmetal-850 ring-3 ring-gunmetal-750 rounded-2xl">
   <div class="p-6 flex flex-1 flex-col gap-4">
     <h3 class="text-cream font-semibold flex flex-col @[17.5rem]:flex-row @[17.5rem]:items-center gap-4 [font-variation-settings:'opsz'_32]">
-      <span class="bg-gunmetal-750 ring ring-gunmetal-650 w-10 h-10 flex flex-[0_0_auto] items-center justify-center rounded-full" aria-hidden="true"><svg class="fill-cream" width="24" height="24"><use href="#automated"></svg></span> Automated versioning with Git
+      <span class="bg-gunmetal-750 ring-3 ring-gunmetal-650 w-10 h-10 flex flex-[0_0_auto] items-center justify-center rounded-full" aria-hidden="true"><svg class="fill-cream" width="24" height="24"><use href="#automated"></svg></span> Automated versioning with Git
     </h3>
     <p class="text-white text-pretty max-w-prose">When you create a new post Bureau automatically creates a branch—keep working on drafts as long as you need. Open a pull request when you’re done and find yourself publishing more than ever.</p>
   </div>
-  <div class="flex justify-center items-end rounded-lg bg-gunmetal-800 ring ring-gunmetal-750 overflow-hidden aspect-[100/66] md:aspect-square xl:aspect-[640/376]">
+  <div class="flex justify-center items-end rounded-lg bg-gunmetal-800 ring-3 ring-gunmetal-750 overflow-hidden aspect-100/66 md:aspect-square xl:aspect-640/376">
     <img srcset="images/git-versioning.png 1x, images/git-versioning@2x.png 2x" class="object-none object-[center_1rem] w-full h-full [mask-image:var(--image-mask-bottom)]" width="468" height="376">
   </div>
 </section>
@@ -319,7 +319,7 @@ Now to apply all of the style and additional layout adjustments. Highlighted are
 There’s adjustments that need to be made based on the containers size for images and titles which will be covered shortly. You can scope this container as well with a `container-name` or use Tailwind’s `/` syntax.
 
 ```markup showLineNumbers
-<section class="@container/section flex flex-col col-span-full md:col-span-6 xl:row-span-4 gap-2 p-2 bg-gunmetal-850 ring ring-gunmetal-750 rounded-2xl">
+<section class="@container/section flex flex-col col-span-full md:col-span-6 xl:row-span-4 gap-2 p-2 bg-gunmetal-850 ring-3 ring-gunmetal-750 rounded-2xl">
 ```
 
 Here the container has further adjustment on column width throughout the standard Tailwind breakpoints.
@@ -345,7 +345,7 @@ Within each of titles there is an a `<span>` with an `<svg>` referencing a sprit
 
 ```markup showLineNumbers=3
 <h3 class="text-cream font-semibold flex flex-col @[17.5rem]:flex-row @[17.5rem]:items-center gap-4 [font-variation-settings:'opsz'_32]">
-  <span class="bg-gunmetal-750 ring ring-gunmetal-650 w-10 h-10 flex flex-[0_0_auto] items-center justify-center rounded-full" aria-hidden="true"><svg class="fill-cream" width="24" height="24"><use href="#automated"></svg></span> Automated versioning with Git
+  <span class="bg-gunmetal-750 ring-3 ring-gunmetal-650 w-10 h-10 flex flex-[0_0_auto] items-center justify-center rounded-full" aria-hidden="true"><svg class="fill-cream" width="24" height="24"><use href="#automated"></svg></span> Automated versioning with Git
 </h3>
 ```
 
@@ -355,8 +355,8 @@ Each title will switch its layout to row when the space available is `17.5rem` o
 Lines 8–10 are ensuring each image is tailored for the container it’s in. Each image uses `object-none` or `object-fit: none` to ensure the image doesn’t scale down.
 
 ```markup showLineNumbers=8
-<div class="flex rounded-lg bg-gunmetal-800 ring ring-gunmetal-750 overflow-hidden aspect-[340/376] @md:aspect-[640/376]">
-  <img srcset="images/git-versioning.png 1x, images/git-versioning@2x.png 2x" class="object-none object-[1rem_1rem] @md:object-[center_1rem] w-full h-full [mask-image:var(--image-mask-bottom)]" width="468" height="376">
+<div class="flex rounded-lg bg-gunmetal-800 ring-3 ring-gunmetal-750 overflow-hidden aspect-340/376 @-md:aspect-640/376">
+  <img srcset="images/git-versioning.png 1x, images/git-versioning@2x.png 2x" class="object-none object-[1rem_1rem] @-md:object-[center_1rem] w-full h-full [mask-image:var(--image-mask-bottom)]" width="468" height="376">
 </div>
 ```
 

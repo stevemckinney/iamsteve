@@ -60,7 +60,7 @@ This adds flexbox to our container, and the main work here is done with `flex-fl
 ```
 
 ## CSS: Items
-Aside from your visual styling the layout you need is relatively simple. We want our items when horizontal not to adjust in width so that we get the necessary overflow. This is why `flex-grow` and `flex-shrink` are 0, and `flex-basis` is a pixel width. Additionally, the margin is for spacing. I would have liked to have left this up to space-between, but it wasn't possible. Tweak the width and margin as you see necessary.
+Aside from your visual styling the layout you need is relatively simple. We want our items when horizontal not to adjust in width so that we get the necessary overflow. This is why `grow` and `shrink` are 0, and `flex-basis` is a pixel width. Additionally, the margin is for spacing. I would have liked to have left this up to space-between, but it wasn't possible. Tweak the width and margin as you see necessary.
 
 ```css
 .item {

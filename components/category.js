@@ -40,7 +40,7 @@ const Category = ({
         rel="category tag"
       >
         <Icon
-          className={`text-current flex-shrink-0`}
+          className={`text-current shrink-0`}
           icon={category.icon}
           size={size}
         />

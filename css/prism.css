@@ -5,15 +5,15 @@
  * https://github.com/PrismJS/prism-themes
  */
 .prose pre {
-  --code-black: theme('colors.fern.1100');
-  --code-red: theme('colors.rio.200');
-  --code-yellow: theme('colors.dandelion.300');
-  --code-green: theme('colors.grass.300');
-  --code-blue: theme('colors.cornflour.300');
-  --code-magenta: theme('colors.magenta.200');
-  --code-cyan: theme('colors.fern.300');
-  --code-white: theme('colors.fern.100');
-  --code-comment: theme('colors.neutral-03.400');
+  --code-black: var(--color-fern-1100);
+  --code-red: var(--color-rio-200);
+  --code-yellow: var(--color-dandelion-300);
+  --code-green: var(--color-grass-300);
+  --code-blue: var(--color-cornflour-300);
+  --code-magenta: var(--color-magenta-200);
+  --code-cyan: var(--color-fern-300);
+  --code-white: var(--color-fern-100);
+  --code-comment: var(--color-neutral-03-400);
   --offset-spacing: theme('margin.8');
   isolation: isolate;
   color-scheme: dark;
@@ -44,7 +44,7 @@ pre[class*='language-'] {
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  border: 1px solid theme('colors.fern.900');
+  border: 1px solid var(--color-fern-900);
   border-radius: 20px;
   background: var(--code-black);
 }
@@ -121,13 +121,13 @@ pre[class*='language-'] {
   width: calc(2ch + calc(theme('padding.8') * 2));
   margin-right: 3ch;
   text-align: right;
-  color: theme('colors.fern.800'); /* Line number color */
+  color: var(--color-fern-800); /* Line number color */
   content: attr(line);
   position: sticky;
   z-index: 2;
   top: 0;
   left: -32px;
-  background-color: theme('colors.fern.1100');
+  background-color: var(--color-fern-1100);
   mask: linear-gradient(to right, #000 66%, transparent);
 }
 
@@ -161,7 +161,7 @@ pre[class*='language-'] {
 }
 
 .token.property {
-  color: theme('colors.magenta.100');
+  color: var(--color-magenta-100);
   color: var(--code-cyan);
 }
 

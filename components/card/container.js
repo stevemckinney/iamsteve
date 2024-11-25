@@ -153,7 +153,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
         className={`flex flex-col flex-auto relative py-8 @lg/card:pb-[2.625rem] @lg/card:pt-12`}
       >
         <div
-          className={`flex flex-row gap-6 relative z-[2] overflow-x-auto pb-4 @lg/card:pb-5 px-8 @lg/card:px-12 pt-px -mt-px`}
+          className={`flex flex-row gap-6 relative z-2 overflow-x-auto pb-4 @lg/card:pb-5 px-8 @lg/card:px-12 pt-px -mt-px`}
         >
           {categories &&
             categories.map((category) => {
@@ -185,7 +185,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
           >
             <Link
               href={slug}
-              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @lg/card:before:rounded-lg before:z-[1]"
+              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @lg/card:before:rounded-lg before:z-1"
             >
               {title}
             </Link>

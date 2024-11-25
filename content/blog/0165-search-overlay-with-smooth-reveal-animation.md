@@ -659,7 +659,7 @@ Finally, to complete your code is to add the `focusOn` function. This has one pa
 
 The first part of the `focusOn` function is the `if` statement. This is looking at the `overlay` to check if it contains a class name. If this is true it will find the `element` and bring focus to it.
 
-In the `else` you can assume that’s when the element is being closed and remove the focus by using `blur()`.
+In the `else` you can assume that’s when the element is being closed and remove the focus by using `blur-xs()`.
 
 > Bringing focus to an element is hit and miss, it serves you well in desktop browsers. However, for mobiles it does focus, but doesn’t always bring up the keyboard. This is fine, but something to be aware of.
 

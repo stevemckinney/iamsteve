@@ -42,7 +42,7 @@ const Images = (props) => {
       className={`flex col-container grid-cols-subgrid gap-4 overscroll-contain-x overflow-x-auto py-4 -my-4 prose-exclude images px-6 sm:px-12 -mx-6 sm:[mask:linear-gradient(90deg,_transparent_0%,_#000_32px,_#000_calc(100%_-_32px),_transparent_100%)]`}
     >
       <div
-        className="flex-shrink-0 max-sm:hidden sm:basis-1/5"
+        className="shrink-0 max-sm:hidden sm:basis-1/5"
         aria-hidden="true"
       />
       {children}
@@ -114,7 +114,7 @@ const components = {
     </figure>
   ),
   GalleryFigcaption: (props) => (
-    <figcaption className="text-ui-body font-body leading-normal pt-4 pb-2 [&>*]:underline [&>*]:text-base">
+    <figcaption className="text-ui-body font-body leading-normal pt-4 pb-2 *:underline *:text-base">
       {props.children}
     </figcaption>
   ),
@@ -166,12 +166,12 @@ const postComponents = {
     const style = { '--zoom': zoom }
     return (
       <div
-        className={`demo sm:rounded-lg overflow-clip ${className}`}
+        className={`demo sm:rounded-lg text-clip ${className}`}
         style={style}
       >
         <iframe
           src={src.src}
-          className={`sm:rounded-[2.35rem] ring ring-1 ring-fern-800 origin-top-left w-[calc(1_/_var(--zoom)_*_100%)] h-[calc(1_/_var(--zoom)_*_100%)] transform-gpu scale-[var(--zoom)]`}
+          className={`sm:rounded-[2.35rem] ring-3 ring-1 ring-fern-800 origin-top-left w-[calc(1_/_var(--zoom)_*_100%)] h-[calc(1_/_var(--zoom)_*_100%)] transform-gpu scale-[var(--zoom)]`}
         ></iframe>
       </div>
     )

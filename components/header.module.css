@@ -1,5 +1,5 @@
 .link {
-  @screen lg {
+  @media not all and (min-width: var(--breakpoint-lg)) {
     &:after {
       content: '';
       display: block;
@@ -27,27 +27,27 @@
     &:hover:after {
       opacity: 1;
       top: 100%;
-      background: theme('colors.fern.1100');
+      background: var(--color-fern-1100);
     }
   }
 }
 
 .start:after {
-  left: calc(24px + theme('padding.2'));
+  left: calc(24px + var(--padding-2));
   right: 0;
 }
 
 .end:after {
   left: 0;
-  right: calc(24px + theme('padding.2'));
+  right: calc(24px + var(--padding-2));
 }
 
 .vertical {
   @supports (padding: max(0px)) {
-    @media not all and (min-width: theme('screens.lg')) {
+    @media not all and (min-width: var(--breakpoint-lg)) {
       padding-bottom: max(
-        theme('spacing.2'),
-        calc(env(safe-area-inset-bottom) + theme('spacing.2'))
+        var(--spacing-2),
+        calc(env(safe-area-inset-bottom) + var(--spacing-2))
       );
     }
   }
