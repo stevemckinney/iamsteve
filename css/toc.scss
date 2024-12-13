@@ -66,7 +66,7 @@
     align-items: center;
     gap: theme('spacing.2');
     padding-block: theme('spacing.2');
-    color: theme('colors.fern.1100');
+    color: var(--color-fern-1100);
     font-family: theme('fontFamily.display');
     font-size: theme('fontSize.base');
     font-variation-settings: 'wdth' 100, 'wght' 500;

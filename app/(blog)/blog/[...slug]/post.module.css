@@ -1,3 +1,4 @@
+@import 'tailwindcss';
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
 @layer post {
@@ -310,7 +311,8 @@
       margin-block-end: var(--block-space);
     }
 
-    & :where(:global(.article-image), figure, img) + p {
+    & :where(:global(.article-image), figure, img) + p,
+    & p + :where(:global(.article-image), figure, img) {
       --block-space: 2rem;
     }
 
@@ -412,5 +414,62 @@
 
   .prose > figure > :global(.sandbox) {
     overflow: hidden;
+  }
+}
+
+.prose {
+  :global(.remark-code-container) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-1);
+    overflow: hidden;
+    background-color: var(--color-neutral-03-900);
+    border: 1px solid var(--color-neutral-03-900);
+  }
+
+  :global(.cp_embed_wrapper) {
+    overflow: hidden;
+  }
+
+  :global(.remark-code-container),
+  :global(.cp_embed_wrapper) {
+    margin-inline: -1.5rem;
+
+    @media (width >= 640px) {
+      border-radius: var(--radius-lg);
+    }
+
+    @media (width >= 768px) {
+      margin-inline: -2rem;
+    }
+  }
+
+  :global(.remark-code-bar) {
+    display: flex;
+    flex: 0 0 auto;
+  }
+
+  :global(.remark-code-title) {
+    background-color: var(--color-fern-1100);
+    color: var(--color-fern-200);
+    border: 1px solid var(--color-fern-900);
+    background-color: var(--color-fern-1100);
+    border-radius: 20px;
+    padding-inline: var(--spacing-6);
+    padding-block: var(--spacing-2);
+    font-size: var(--text-base);
+    font-family: var(--font-ui);
+    font-variation-settings: 'wdth' 100, 'wght' 500;
+    line-height: 1.5;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: var(--gap-2);
+    align-self: start;
+    flex: 0 0 max-content;
+  }
+
+  /* tailwind class override */
+  :global(.remark-code-container) :global(.table) {
+    display: unset !important;
   }
 }
