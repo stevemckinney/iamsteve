@@ -34,7 +34,7 @@ const Social = () => {
         </li>
         <li>
           <Link
-            href="https://www.linkedin.com/in/steve-mckinney-5b5836102/"
+            href="https://www.linkedin.com/in/smcknny/"
             className="flex flex-row items-center gap-2 text-base font-ui lowercase text-fern-1100 hover:text-dandelion-600 transition duration-200"
           >
             <Icon icon="linkedin" size={16} className="text-current shrink-0" />
