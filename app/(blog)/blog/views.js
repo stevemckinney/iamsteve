@@ -2,14 +2,30 @@
 
 import { cache } from 'react'
 import { cookies } from 'next/headers'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createServerClient } from '@supabase/ssr'
 
 export const getAllPageViews = cache(async () => {
   if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {
     return {}
   }
 
-  const supabase = createServerComponentClient({ cookies })
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    {
+      cookies: {
+        getAll() {
+          return cookies().getAll()
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            cookies().set(name, value, { ...options, path: '/' })
+          })
+        },
+      },
+    }
+  )
+
   const { data: pages, error } = await supabase
     .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
     .select('slug, view_count')
