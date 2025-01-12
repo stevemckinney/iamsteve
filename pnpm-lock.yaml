@@ -182,9 +182,6 @@ importers:
       remark-smartypants:
         specifier: ^2.1.0
         version: 2.1.0
-      sass:
-        specifier: ^1.83.1
-        version: 1.83.1
       sharp:
         specifier: ^0.32.6
         version: 0.32.6
@@ -234,6 +231,9 @@ importers:
       prettier:
         specifier: 2.7.1
         version: 2.7.1
+      sass:
+        specifier: ^1.83.1
+        version: 1.83.1
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17

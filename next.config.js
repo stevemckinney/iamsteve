@@ -67,6 +67,8 @@ const nextConfig = {
         console.warn(message)
       },
     },
+    modules: true,
+    includePaths: ['./app'],
   },
   env: {
     REVALIDATION_SECRET: process.env.REVALIDATION_SECRET,
