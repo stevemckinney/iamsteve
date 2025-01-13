@@ -6,7 +6,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // Content Security Policy
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://scripts.simpleanalyticscdn.com https://static.codepen.io https://use.typekit.net https://platform.twitter.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://scripts.simpleanalyticscdn.com https://static.codepen.io https://use.typekit.net https://platform.twitter.com https://vercel.live;
   style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net https://platform.twitter.com;
   img-src * blob: data:;
   media-src 'self';
