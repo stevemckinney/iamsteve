@@ -1,6 +1,6 @@
 // Homepage
 import { cache } from 'react'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { allPosts } from 'contentlayer/generated'
 
@@ -15,7 +15,23 @@ export const dynamic = 'force-static'
 export const revalidate = 86400
 
 const getData = cache(async () => {
-  const supabase = createServerComponentClient({ cookies })
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    {
+      cookies: {
+        getAll() {
+          return cookies().getAll()
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            cookies().set(name, value, { ...options, path: '/' })
+          })
+        },
+      },
+    }
+  )
+
   const { data: dbPosts } = await supabase
     .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
     .select()
@@ -57,7 +73,7 @@ export default async function Home() {
         <Frame id="latest">
           <LatestPosts
             posts={postsByDate}
-            title="What’s new"
+            title="What's new"
             linkText="View the archive"
             linkHref="/blog"
           />
