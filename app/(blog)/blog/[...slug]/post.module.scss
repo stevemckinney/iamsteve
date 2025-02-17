@@ -443,11 +443,6 @@
     text-wrap: pretty;
   }
 
-  :where(div, .remark-code-container, figure) + :where(p, ol, ul) {
-    --block-space: 4rem;
-    // outline: 1px solid red;
-  }
-
   figure :where(figcaption, figcaption p) {
     padding-block-start: var(--block-space-small);
     margin-block-end: var(--block-space);

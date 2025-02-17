@@ -123,7 +123,7 @@ const components = {
 
 const postComponents = {
   h1: (props) => <h1 {...props} className="text-2xl font-bold" />,
-  h2: (props) => <h2 {...props} className="text-xl font-semibold" />,
+  h2: (props) => <h2 {...props} className="text-xl" />,
   p: (props) => <p {...props} className="mt-2" />,
   ul: (props) => <ul {...props} className="list-disc pl-5" />,
   li: (props) => <li {...props} />,
