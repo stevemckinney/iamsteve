@@ -1,0 +1,147 @@
+name: Manage Post IDs
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'content/blog/**'
+
+jobs:
+  update-post-ids:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create post ID management script
+        run: |
+          cat > manage-post-ids.js << 'EOF'
+          const fs = require('fs')
+          const path = require('path')
+
+          function findPostFiles(dir) {
+            let results = []
+            const items = fs.readdirSync(dir)
+
+            items.forEach(item => {
+              const fullPath = path.join(dir, item)
+              const stat = fs.statSync(fullPath)
+
+              if (stat.isDirectory()) {
+                if (item.match(/^\d{4}-/) || fs.existsSync(path.join(fullPath, 'index.md')) || fs.existsSync(path.join(fullPath, 'index.mdx'))) {
+                  const indexFile = fs.existsSync(path.join(fullPath, 'index.mdx'))
+                    ? path.join(fullPath, 'index.mdx')
+                    : path.join(fullPath, 'index.md')
+
+                  if (fs.existsSync(indexFile)) {
+                    results.push(indexFile)
+                  }
+                } else {
+                  results = results.concat(findPostFiles(fullPath))
+                }
+              } else if (item.match(/^\d{4}-.*\.(md|mdx)$/)) {
+                results.push(fullPath)
+              }
+            })
+
+            return results
+          }
+
+          function getPostId(filePath) {
+            const content = fs.readFileSync(filePath, 'utf8')
+            const parentDir = path.dirname(filePath)
+            const parentDirName = path.basename(parentDir)
+            const fileName = path.basename(filePath)
+
+            const idMatch = parentDirName.match(/^(\d{4})-/) || fileName.match(/^(\d{4})-/)
+            const fileId = idMatch ? parseInt(idMatch[1]) : 0
+
+            const frontmatterMatch = content.match(/id:\s*(\d+)/)
+            const frontmatterId = frontmatterMatch ? parseInt(frontmatterMatch[1]) : 0
+
+            return Math.max(fileId, frontmatterId)
+          }
+
+          function updatePostId(filePath, newId) {
+            const paddedId = String(newId).padStart(4, '0')
+            const dir = path.dirname(filePath)
+            const parentDir = path.dirname(dir)
+            const fileName = path.basename(filePath)
+            const dirName = path.basename(dir)
+
+            let content = fs.readFileSync(filePath, 'utf8')
+            content = content.replace(/id:\s*\d+/, `id: ${newId}`)
+
+            if (fileName === 'index.md' || fileName === 'index.mdx') {
+              const newDirName = dirName.replace(/^\d{4}-/, `${paddedId}-`)
+              const newDir = path.join(parentDir, newDirName)
+
+              fs.writeFileSync(filePath, content)
+              fs.renameSync(dir, newDir)
+
+              return path.join(newDir, fileName)
+            } else {
+              const newFileName = fileName.replace(/^\d{4}-/, `${paddedId}-`)
+              const newPath = path.join(dir, newFileName)
+
+              fs.writeFileSync(filePath, content)
+              fs.renameSync(filePath, newPath)
+
+              return newPath
+            }
+          }
+
+          try {
+            const blogDir = path.join(process.cwd(), 'content/blog')
+
+            // Get all posts from main branch
+            const existingPosts = findPostFiles(blogDir)
+            const highestId = Math.max(0, ...existingPosts.map(file => getPostId(file)))
+
+            // Get posts in the PR
+            const prPosts = findPostFiles(blogDir)
+            let nextId = highestId
+            let updatedFiles = false
+
+            // Update IDs of any PR files that conflict with existing IDs
+            prPosts.forEach(filePath => {
+              const currentId = getPostId(filePath)
+              if (currentId <= highestId) {
+                nextId++
+                updatePostId(filePath, nextId)
+                updatedFiles = true
+              }
+            })
+
+            if (updatedFiles) {
+              console.log('::set-output name=files-updated::true')
+            }
+          } catch (error) {
+            console.error('Error:', error)
+            process.exit(1)
+          }
+          EOF
+
+      - name: Run post ID management
+        id: update-ids
+        run: node manage-post-ids.js
+
+      - name: Commit changes if needed
+        if: steps.update-ids.outputs.files-updated == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add content/blog/
+          git commit -m "Update post IDs to resolve conflicts"
+          git push

@@ -5,22 +5,36 @@ const dedent = require('dedent')
 
 const root = process.cwd()
 
+// Function to get the next available post ID
+const getNextPostId = () => {
+  const blogDir = path.join(root, 'content/blog')
+
+  // Get all blog post files
+  const posts = fs.readdirSync(blogDir)
+    .filter(file =>
+      file.match(/^\d{4}-.*\.(md|mdx)$/) &&
+      fs.statSync(path.join(blogDir, file)).isFile()
+    )
+
+  // Find highest ID from both filenames and frontmatter
+  const highestId = posts.reduce((max, file) => {
+    const content = fs.readFileSync(path.join(blogDir, file), 'utf8')
+    const fileId = parseInt(file.substring(0, 4))
+
+    // Extract ID from frontmatter
+    const frontmatterMatch = content.match(/id:\s*(\d+)/)
+    const frontmatterId = frontmatterMatch ? parseInt(frontmatterMatch[1]) : 0
+
+    return Math.max(max, fileId, frontmatterId)
+  }, 0)
+
+  return highestId + 1
+}
+
 const genFrontMatter = (answers) => {
   let d = new Date()
   const date = d.toISOString()
-
-  var currentPostID
-
-  fs.readFile('./.current-post-id', function (err, data) {
-    data = data.toString('utf-8')
-    const i = parseInt(data)
-    var l = i
-    l++
-    currentPostID = String(l)
-    fs.writeFile('./.current-post-id', currentPostID, function (err, data) {})
-  })
-
-  var updatedPostID = fs.readFileSync('./.current-post-id')
+  const nextId = getNextPostId()
 
   let frontmatter = dedent`---
   title: ${answers.title ? answers.title : 'Untitled'}
@@ -52,7 +66,7 @@ const genFrontMatter = (answers) => {
   status: ${answers.status}
   codepen: false
   twitter: false
-  id: ${updatedPostID}
+  id: ${nextId}
   fileroot: ${
     answers.title
       ? answers.title
@@ -65,7 +79,7 @@ const genFrontMatter = (answers) => {
 
   frontmatter = frontmatter + '\n---'
 
-  return frontmatter
+  return { frontmatter, nextId }
 }
 
 inquirer
@@ -89,20 +103,19 @@ inquirer
     },
   ])
   .then((answers) => {
-    var updatedPostID = fs.readFileSync('./.current-post-id')
-
     // Remove special characters and replace space with -
     const fileName = answers.title
       .toLowerCase()
       .replace(/[^a-zA-Z0-9 ]/g, '')
       .replace(/ /g, '-')
       .replace(/-+/g, '-')
-    const frontmatter = genFrontMatter(answers)
 
-    // 00 will break here at some point, but that's a long while off
+    const { frontmatter, nextId } = genFrontMatter(answers)
+
     const filePath = `content/blog/${
-      fileName ? '0' + updatedPostID + '-' + fileName : 'untitled'
+      fileName ? String(nextId).padStart(4, '0') + '-' + fileName : 'untitled'
     }.${answers.extension ? answers.extension : 'md'}`
+
     fs.writeFile(filePath, frontmatter, { flag: 'wx' }, (err) => {
       if (err) {
         throw err
