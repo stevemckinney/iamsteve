@@ -38,15 +38,28 @@ const editUrl = (fileName) =>
   `${siteMetadata.siteRepo}/blob/main/content/blog/${fileName}`
 
 // force to revalidate every day
-export const dynamic = 'force-static'
+export const dynamic = 'force-dynamic'
 export const revalidate = 86400
 
 // styling
 import styles from './post.module.scss'
 
-async function getPostFromParams(params) {
+export async function generateStaticParams() {
+  return allPosts
+    .filter(post => post.status === 'open')
+    .map((post) => ({
+      slug: post.slugAsParams.split('/'),
+    }))
+}
+
+// Update getPostFromParams to include draft posts when needed
+async function getPostFromParams(params, showDrafts = false) {
   const slug = params?.slug?.join('/')
-  const post = allPosts.find((post) => post.slugAsParams === slug)
+  const post = allPosts.find((post) => {
+    const slugMatch = post.slugAsParams === slug
+    const statusMatch = showDrafts ? true : post.status === 'open'
+    return slugMatch && statusMatch
+  })
 
   return post
 }
@@ -54,8 +67,8 @@ async function getPostFromParams(params) {
 export async function generateMetadata(props, parent) {
   const searchParams = await props.searchParams
   const params = await props.params
-  const id = params.id
-  const post = await getPostFromParams(params)
+  const showDrafts = searchParams?.draft === 'true'
+  const post = await getPostFromParams(params, showDrafts)
 
   if (!post) {
     return {}
@@ -87,24 +100,20 @@ export async function generateMetadata(props, parent) {
   }
 }
 
-export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: post.slugAsParams.split('/'),
-  }))
-}
-
 export default async function PostPage(props) {
   const params = await props.params
-  const post = await getPostFromParams(params)
+  const searchParams = await props.searchParams
+  const showDrafts = searchParams?.draft === 'true'
+  const post = await getPostFromParams(params, showDrafts)
 
   if (!post) {
     console.log('Post not found, redirecting to 404')
     notFound()
   }
 
-  if (!post.body || !post.body.code) {
-    console.error('Post body or code is missing:', post)
-    return <div>Error: Post content is unavailable</div>
+  // Check if post is a draft and draft parameter isn't present
+  if (post.status === 'draft' && !showDrafts) {
+    notFound()
   }
 
   // View counting feature flag
@@ -204,6 +213,24 @@ export default async function PostPage(props) {
         />
         <hr className="relative col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <header className="col-content lg:col-container lg:col-start-2 lg:col-end-9 xl:col-start-3 xl:col-end-11 lg:row-start-1 lg:row-span-1 flex flex-col max-lg:pt-12 gap-y-4 mb-12">
+          {showDrafts && (
+            <div className="col-content mb-8">
+              <div className="shadow-placed flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
+                <Icon
+                  icon="square-info"
+                  className="text-cornflour-900 flex-[0_0_auto]"
+                />
+                <div className="flex flex-col">
+                  <p className="p-0 m-0 font-body text-sm text-cornflour-900">
+                    <strong>Viewing draft post</strong>
+                  </p>
+                  <p className="p-0 m-0 font-body text-sm text-cornflour-900">
+                    This post is not publicly visible
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
           {isOldCodePost && (
             <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
               <Icon
