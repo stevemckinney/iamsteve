@@ -4,17 +4,18 @@
   "private": true,
   "packageManager": "pnpm@9.12.1+sha256.91452fdfa46234ae447d46d5c4fc4e7e0a7058f90495c4b6f77f8beebbb154e3",
   "scripts": {
+    "lint": "ESLINT_USE_FLAT_CONFIG=true next lint --fix --dir app --dir components --dir lib --dir scripts",
+    "icons": "pnpm icons-16 && pnpm icons-24",
+    "icons-16": "create-react-icons -s 'public/icon/16/**.svg' -d 'components/icon/16' -t 'lib/icon-16.ejs'",
     "preinstall": "npx only-allow pnpm",
+    "serve": "next start",
     "dev": "NODE_NO_WARNINGS=1 contentlayer2 dev & next dev --turbo",
     "cl": "contentlayer2 build",
-    "sourcemap": "NODE_OPTIONS=--enable-source-maps next build",
-    "build": "contentlayer2 build && pnpm lint && next build",
-    "serve": "next start",
-    "analyze": "cross-env ANALYZE=true next build",
-    "lint": "ESLINT_USE_FLAT_CONFIG=true next lint --fix --dir app --dir components --dir lib --dir scripts",
-    "icons-16": "create-react-icons -s 'public/icon/16/**.svg' -d 'components/icon/16' -t 'lib/icon-16.ejs'",
     "icons-24": "create-react-icons -s 'public/icon/24/**.svg' -d 'components/icon/24' -t 'lib/icon-24.ejs'",
-    "icons": "pnpm icons-16 && pnpm icons-24"
+    "sourcemap": "NODE_OPTIONS=--enable-source-maps next build",
+    "analyze": "cross-env ANALYZE=true next build",
+    "post": "node ./scripts/compose.js",
+    "build": "contentlayer2 build && pnpm lint && next build"
   },
   "browserslist": [
     "> 0.5%",
