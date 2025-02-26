@@ -245,14 +245,14 @@ There is also a performance aspect to it. If you think the browser has to calcul
 
 Before `text-wrap` this is something that would have been not so practical to chase in a lot of situations and you’d have had to approach it manually, which is still valuable to know.
 
-### Manual balancing without <br>
+### Manual balancing without `<br/>`
 Methods for manually balancing titles or keeping word groups together is worth knowing. Sometimes you might find `text-wrap` doesn’t *quite* balance the title the way you want or you need to break a long word.
 
-Don’t reach for `<br>`. Use `<wbr>` or `&nbsp;`.
+Don’t reach for `<br/>`. Use `<wbr/>` or `&nbsp;`.
 
 ```.html
 <h1>Fundamentals of visual&nbsp;design</h1>
-<p>Underlying principles and elements<wbr>that guide effective and visually appealing design.</p>
+<p>Underlying principles and elements<wbr/>that guide effective and visually appealing design.</p>
 ```
 
 ## Hanging lists and punctuation
