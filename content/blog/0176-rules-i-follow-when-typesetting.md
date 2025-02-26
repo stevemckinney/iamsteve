@@ -53,7 +53,18 @@ There’s a few things you can use to determine the line height for your type. I
 
 For example, in a hero title you can afford to be precise with your line height but where components vary with the text within; you may find challenges.
 
-0176-typesetting-line-height-01@2x.png
+<Image src="0176-typesetting-line-height-01.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
+<Image src="0176-typesetting-line-height-02.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
+<Image src="0176-typesetting-line-height-03.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
+<Image src="0176-typesetting-line-height-04.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
+<Image src="0176-typesetting-line-height-05.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
+
+<div className="sandbox">
+  <div className="bg-neutral-01-100  relative flex items-center justify-center group">
+    <Image src="/images/blog/about-version-8-hero-mono.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
+    <Image src="/images/blog/about-version-8-hero-colour.svg" width={800} height={480} className="transition duration-200 ease absolute inset-0 opacity-0 group-hover:opacity-100" />
+  </div>
+</div>
 
 Each of the items listed can impact your choice of line height.  For larger headings, a line height lower or closer to the font size can be ideal. Whereas paragraphs with a good measure can be around a more comfortable 1.5x the font size.
 
@@ -162,7 +173,12 @@ For example
 > Design is not just what it looks like and feels like—design is how it works
 
 ### Keyboard shortcuts
-The em and en dash have keyboard shortcuts to access. Hyphen is obvious… but for en-dashes it is <kbd><kbd>option</kbd><kbd>-</kbd></kbd> and for em-dashes <kbd><kbd>shift</kbd><kbd>option</kbd><kbd>-</kbd></kbd>.
+The em and en dash have keyboard shortcuts to access. Hyphen is obvious… but for en-dashes it is
+
+<Shortcut>option -</Shortcut>
+<Shortcut>option shift -</Shortcut>
+
+<kbd><kbd>option</kbd><kbd>-</kbd></kbd> and for em-dashes <kbd><kbd>shift</kbd><kbd>option</kbd><kbd>-</kbd></kbd>.
 
 ## Use the correct quotes
 I’ve put this before in a previous article, but let’s go over it again. There’s straight quotes and curly quotes. Curly quotes are more complementary with your typeface.
@@ -172,16 +188,16 @@ I’ve put this before in a previous article, but let’s go over it again. Ther
 The best reference for the usage of quotes smartquotesforsmartpeople.com. The shortcuts are fairly simple, but it’s better if you have something to do it automatically for you as it can be easily missed.
 
 **Opening double quote**
-<kbd><kbd>shift</kbd><kbd>option</kbd><kbd>[</kbd></kbd>
+<Shortcut>shift option [</Shortcut>
 
 **Closing double quote**
-<kbd><kbd>shift</kbd><kbd>option</kbd><kbd>]</kbd></kbd>
+<Shortcut>shift option ]</Shortcut>
 
 **Opening single quote**
-<kbd><kbd>option</kbd><kbd>[</kbd></kbd>
+<Shortcut>option [</Shortcut>
 
 **Closing single quote**
-<kbd><kbd>option</kbd><kbd>]</kbd></kbd>
+<Shortcut>option ]</Shortcut>
 
 When dealing with automatic transformation into them. Many apps do this by default. For code, you’ll need to use a library like smartypants.
 
@@ -274,6 +290,6 @@ Taking these rules into account, a balanced approach to typesetting improves bot
 
 Keeping in mind the practicality of doing these things ensures your design is maintainable and not introducing more work. However, I have written similarly before with [visual design tips](/blog/visual-design-tips-you-can-apply-immediately) and these posts seem to go down well.
 
-[^1]: [The Thing With Lead­ing in CSS](https://matthiasott.com/notes/the-thing-with-leading-in-css)
+[^1]: [The Thing With Leading in CSS](https://matthiasott.com/notes/the-thing-with-leading-in-css)
 [^2]: [CSS text-box-trim](https://developer.chrome.com/blog/css-text-box-trim)
-[^2]: [Can I Use hanging-punctuation](https://caniuse.com/?search=hanging)
+[^3]: [Can I Use hanging-punctuation](https://caniuse.com/?search=hanging)
