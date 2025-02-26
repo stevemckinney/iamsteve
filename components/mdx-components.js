@@ -29,6 +29,56 @@ const Blockquote = (props) => {
   )
 }
 
+const Shortcut = ({ children }) => {
+  // Helper function to create aria label from keys
+  const createAriaLabel = (keys) => {
+    if (typeof keys === 'string') return keys;
+    return Array.isArray(keys)
+      ? keys.join(' plus ')
+      : React.Children.toArray(keys).join(' plus ');
+  };
+
+  // If children is a string, wrap it in a single kbd
+  if (typeof children === 'string') {
+    return (
+      <kbd
+        className="px-1.5 py-0.5 text-sm font-mono bg-neutral-100 border border-neutral-200 rounded shadow-sm"
+        aria-label={`Keyboard shortcut: ${children}`}
+        role="text"
+      >
+        {children}
+      </kbd>
+    );
+  }
+
+  // If children is an array (multiple keys), wrap each in kbd and the whole thing in an outer kbd
+  const keys = React.Children.toArray(children);
+  const ariaLabel = `Keyboard shortcut: ${createAriaLabel(keys)}`;
+
+  return (
+    <kbd
+      className="px-1 py-0.5 space-x-1 font-mono"
+      aria-label={ariaLabel}
+      role="text"
+    >
+      {React.Children.map(keys, (child) => {
+        if (typeof child === 'string') {
+          return (
+            <kbd
+              className="px-1.5 py-0.5 text-sm font-mono bg-neutral-100 border border-neutral-200 rounded shadow-sm"
+              aria-hidden="true"
+            >
+              {child}
+            </kbd>
+          );
+        }
+        return child;
+      })}
+    </kbd>
+  );
+};
+
+
 const Images = (props) => {
   const { children, align } = props
   const alignments = {
@@ -129,6 +179,7 @@ const postComponents = {
   li: (props) => <li {...props} />,
   Image,
   a: (props) => <Link {...props} />,
+  Shortcut,
   Link,
   Icon,
   Prose: Prose,
