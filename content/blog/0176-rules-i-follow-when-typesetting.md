@@ -53,25 +53,20 @@ There’s a few things you can use to determine the line height for your type. I
 
 For example, in a hero title you can afford to be precise with your line height but where components vary with the text within; you may find challenges.
 
-<Image src="0176-typesetting-line-height-01.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
-<Image src="0176-typesetting-line-height-02.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
-<Image src="0176-typesetting-line-height-03.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
-<Image src="0176-typesetting-line-height-04.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
-<Image src="0176-typesetting-line-height-05.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
-
-<div className="sandbox">
-  <div className="bg-neutral-01-100  relative flex items-center justify-center group">
-    <Image src="/images/blog/about-version-8-hero-mono.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0" />
-    <Image src="/images/blog/about-version-8-hero-colour.svg" width={800} height={480} className="transition duration-200 ease absolute inset-0 opacity-0 group-hover:opacity-100" />
-  </div>
-</div>
-
 Each of the items listed can impact your choice of line height.  For larger headings, a line height lower or closer to the font size can be ideal. Whereas paragraphs with a good measure can be around a more comfortable 1.5x the font size.
 
 ### Line length
 It’s an important to use the length of your copy to determine your line height. The shorter the line length, the smaller the line height. The longer the line length, the larger the line height.
 
-0176-typesetting-line-height-02@2x.png
+<figure>
+<div className="sandbox">
+  <div className="flex items-center justify-center group grid grid-cols-1 grid-rows-1">
+    <Image src="/images/blog/0176-typesetting-line-height-02.svg" width={800} height={480} className="transition duration-200 ease col-start-1 row-span-1 col-span-1 row-start-1 z-10 relative" alt="" />
+    <Image src="/images/blog/0176-typesetting-line-height-01.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0 col-start-1 row-span-1 col-span-1 row-start-1 z-20 relative" alt="" />
+  </div>
+</div>
+<figcaption>Fig 1: </figcaption>
+</figure>
 
 This works for large and small type, as a readable measure still applies. It’s a fine balance because with shorter line lengths it can easily look like there’s too much space between each line and throw off your composition. But for longer line lengths if it’s too tight it will be difficult to read.
 
@@ -79,7 +74,7 @@ This works for large and small type, as a readable measure still applies. It’s
 These are the important proportions of a typeface to create balance when creating your text composition. Spacing is applied using the ‘box’ of the type across web and some design tools by default—I’ll get into this and `text-box-trim` shortly.
 
 <figure>
-0176-typesetting-line-height-03@2x.png
+<Image src="/images/blog/0176-typesetting-line-height-03.svg" width={800} height={480} alt="" />
 <figcaption>
 
 </figcaption>
@@ -93,7 +88,7 @@ Using a combination of baseline, cap-height and x-height to choose your spacing 
 Half leading[^1] in the browser based world of design means that half of the line height is applied to the top and the bottom of your text box.
 
 <figure>
-0176-typesetting-line-height-04@2x.png
+<Image src="/images/blog/0176-typesetting-line-height-04.svg" width={800} height={480} alt="" />
 <figcaption>
 There are two examples of text here, a large heading and paragraph. Both have different a line height, which means the half leading is different between the two. The heading uses `0.9` and the paragraph uses `1.5`.
 </figcaption>
@@ -102,9 +97,9 @@ There are two examples of text here, a large heading and paragraph. Both have di
 The heading’s box is more flush with the text, as there isn’t anything extra to be applied above and below. And this can change the way your spacing looks if not taken into account.
 
 <figure>
-0176-typesetting-line-height-05@2x.png
+<Image src="/images/blog/0176-typesetting-line-height-05.svg" width={800} height={480} alt="" />
 <figcaption>
-This shows two different sets of spacing applied to the title and description. To the left is the actual spacing required to account for the
+<Fig>4</Fig> Markers comparing applied spacing values against their optical appearance
 </figcaption>
 </figure>
 
@@ -119,6 +114,15 @@ This will be more of a thing of the past in the future, but I am curious to see 
 
 ## Letter spacing or tracking is proportional
 Like line height, I don’t think you can apply a simple percentage rule to any typeface and call it a day for every design you do.
+
+<div className="sandbox">
+  <div className="flex items-center justify-center group grid grid-cols-1 grid-rows-1">
+    <Image src="/images/blog/0176-typesetting-letter-spacing-02.svg" width={800} height={480} className="transition duration-200 ease col-start-1 row-span-1 col-span-1 row-start-1 z-10 relative" alt="" />
+    <Image src="/images/blog/0176-typesetting-letter-spacing-01.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0 col-start-1 row-span-1 col-span-1 row-start-1 z-20 relative" alt="" />
+  </div>
+</div>
+
+<Image src="/images/blog/0176-typesetting-letter-spacing-03.svg" width={800} height={480} alt="" />
 
 It takes a little tweaking depending on the typeface you’re using. Think of a display typeface versus a text typeface. Using them at varying sizes will require different extremes of tracking.
 
