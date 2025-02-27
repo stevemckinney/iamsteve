@@ -1,4 +1,7 @@
 'use client'
+import React, { useState } from 'react'
+import { useMDXComponent } from 'next-contentlayer2/hooks'
+
 import Image from '@/components/image'
 import Link from '@/components/link'
 import ContactForm from '@/components/contact-form'
@@ -7,7 +10,6 @@ import Social from '@/components/social'
 import Card from '@/components/card'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
-import { useMDXComponent } from 'next-contentlayer2/hooks'
 
 // post specific components
 import BentoGridShell from '@/components/posts/0175-bento-grid'
@@ -30,11 +32,52 @@ const Blockquote = (props) => {
 }
 
 const Shortcut = ({ children }) => {
+  const specialKeys = {
+    // Left-aligned keys (items-start justify-end)
+    tab: { symbol: '⇥', label: 'Tab', className: 'min-w-[4rem] items-start justify-end' },
+    shift: { symbol: '⇧', label: 'Shift', className: 'min-w-24 items-start justify-end' },
+    caps: { symbol: '⇪', label: 'Caps lock', className: 'min-w-[4.5rem] items-start justify-end' },
+    esc: { symbol: '⎋', label: 'Esc', className: 'min-w-[3rem] items-start justify-end' },
+
+    // Right-aligned keys with space-between (items-end justify-between)
+    ctrl: { symbol: '⌃', label: 'Control', className: 'min-w-[4rem] items-end justify-between' },
+    control: { symbol: '⌃', label: 'Control', className: 'min-w-[4rem] items-end justify-between' },
+    opt: { symbol: '⌥', label: 'Option', className: 'min-w-[4rem] items-end justify-between' },
+    option: { symbol: '⌥', label: 'Option', className: 'min-w-[4rem] items-end justify-between' },
+    alt: { symbol: '⌥', label: 'Alt', className: 'min-w-[4rem] items-end justify-between' },
+    cmd: { symbol: '⌘', label: 'Command', className: 'min-w-20 items-end justify-between' },
+    command: { symbol: '⌘', label: 'Command', className: 'min-w-20 items-end justify-between' },
+    delete: { symbol: '⌫', label: 'Delete', className: 'min-w-[4rem] items-end justify-between' },
+    backspace: { symbol: '⌫', label: 'Delete', className: 'min-w-[4rem] items-end justify-between' },
+
+    // Other special keys (centered)
+    return: { symbol: '↵', label: 'Return', className: 'min-w-[4rem] items-center justify-center' },
+    enter: { symbol: '↵', label: 'Enter', className: 'min-w-[4rem] items-center justify-center' },
+    space: { symbol: '␣', label: 'Space', className: 'min-w-[4.5rem] items-center justify-center' },
+  }
+
   const createAriaLabel = (keys) => {
     if (typeof keys === 'string') return keys
     return Array.isArray(keys)
       ? keys.join(' plus ')
       : Children.toArray(keys).join(' plus ')
+  }
+
+  const formatKey = (key) => {
+    const lowercaseKey = key.toLowerCase()
+    if (specialKeys[lowercaseKey]) {
+      return {
+        symbol: specialKeys[lowercaseKey].symbol,
+        label: specialKeys[lowercaseKey].label,
+        className: specialKeys[lowercaseKey].className,
+        isSpecial: true
+      }
+    }
+    return {
+      symbol: key,
+      className: 'min-w-[2.25rem] items-center justify-center',
+      isSpecial: false
+    }
   }
 
   const keys = typeof children === 'string'
@@ -45,30 +88,150 @@ const Shortcut = ({ children }) => {
 
   return (
     <kbd
-      className="inline-flex items-center space-x-1"
+      className="flex gap-2"
       aria-label={ariaLabel}
       role="text"
     >
-      {keys.map((key, index) => (
-        <kbd
-          key={index}
-          className="px-1.5 py-0.5 text-sm font-mono bg-neutral-100 border border-neutral-200 rounded shadow-sm"
-          aria-hidden="true"
-        >
-          {key}
-        </kbd>
-      ))}
+      {keys.map((key, index) => {
+        const { symbol, label, className, isSpecial } = formatKey(key)
+        return (
+          <kbd
+            key={index}
+            className={`
+              relative flex flex-col gap-2
+              ${className}
+              px-2 py-2
+              bg-neutral-01-100 shadow-picked rounded-sm
+              text-fern-900
+            `}
+            aria-hidden="true"
+          >
+            <span className="text-2xl leading-none">
+              {symbol}
+            </span>
+            {isSpecial && (
+              <span className="text-xs leading-none font-sans">
+                {label}
+              </span>
+            )}
+          </kbd>
+        )
+      })}
     </kbd>
   )
 }
 
+const ComparisonImages = ({
+  children,
+  description = 'Compare states',
+  options = [
+    { label: 'Before', value: 0 },
+    { label: 'After', value: 1 },
+  ],
+}) => {
+  const [activeIndex, setActiveIndex] = useState(0)
 
-const Images = (props) => {
-  const { children, align } = props
-  const alignments = {
-    center: 'justify-center',
-    left: 'justify-start',
-    right: 'justify-end',
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      const nextIndex = (activeIndex + 1) % options.length
+      setActiveIndex(nextIndex)
+    }
+  }
+
+  // Validate and limit options
+  const validOptions = options.slice(0, 5)
+  const images = React.Children.toArray(children)
+
+  return (
+    <div
+      className="relative bg-fern-900/80 shadow-picked"
+      role="region"
+      aria-label={description}
+    >
+      {/* Segmented control */}
+      <div className="flex justify-center mb-4">
+        <div
+          className="inline-flex rounded-lg bg-neutral-01-100/80 p-1"
+          role="tablist"
+          aria-label="View options"
+        >
+          {validOptions.map((option, index) => (
+            <button
+              key={index}
+              role="tab"
+              aria-selected={activeIndex === index}
+              aria-controls={`view-${index}`}
+              className={`
+                px-4 py-1.5 text-sm font-medium rounded-md
+                transition-all duration-200
+                ${index !== validOptions.length - 1 ? 'mr-1' : ''}
+                ${
+                  activeIndex === index
+                    ? 'bg-white shadow-sm text-neutral-900'
+                    : 'text-neutral-600 hover:text-neutral-900'
+                }
+              `}
+              onClick={() => setActiveIndex(index)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Images container */}
+      <div
+        className="relative rounded-lg overflow-hidden"
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+      >
+        {images.map((image, index) => {
+          const imageProps = image?.props || {}
+          return (
+            <div
+              key={index}
+              id={`view-${index}`}
+              role="tabpanel"
+              aria-labelledby={`button-${index}`}
+              className={`
+                absolute inset-0
+                ${index === 0 ? 'relative' : ''}
+              `}
+            >
+              <Image
+                {...imageProps}
+                alt={
+                  imageProps.alt ||
+                  `${description} - ${validOptions[index]?.label || ''} state`
+                }
+                className="transition-opacity duration-300 ease-in-out"
+                style={{
+                  opacity: activeIndex === index ? 1 : 0,
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
+          )
+        })}
+      </div>
+
+      {/* Screen reader instructions */}
+      <span className="sr-only">
+        Use the segmented control above to switch between views. Currently
+        showing {validOptions[activeIndex]?.label} state.
+      </span>
+    </div>
+  )
+}
+
+const Images = ({ children, align, compare = false, options, ...props }) => {
+  if (compare) {
+    return (
+      <ComparisonImages options={options} {...props}>
+        {children}
+      </ComparisonImages>
+    )
   }
 
   return (

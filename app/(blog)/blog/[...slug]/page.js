@@ -46,7 +46,7 @@ import styles from './post.module.scss'
 
 export async function generateStaticParams() {
   return allPosts
-    .filter(post => post.status === 'open')
+    .filter((post) => post.status === 'open')
     .map((post) => ({
       slug: post.slugAsParams.split('/'),
     }))
