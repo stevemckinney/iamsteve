@@ -11,7 +11,7 @@ images: []
 large: "" # /images/blog/rules-i-follow-when-typesetting.svg
 medium: "" # /images/blog/rules-i-follow-when-typesetting.svg
 ogImage: "/opengraph-image.png"
-status: draft
+status: open
 codepen: false
 twitter: false
 id: 176
@@ -59,14 +59,36 @@ Each of the items listed can impact your choice of line height.  For larger head
 It’s an important to use the length of your copy to determine your line height. The shorter the line length, the smaller the line height. The longer the line length, the larger the line height.
 
 <figure>
+  <Images
+    compare
+    description="Compare typesetting with and without leading"
+    options={[
+      { label: 'Off', value: 0 },
+      { label: 'On', value: 1 }
+    ]}
+  >
+    <Image
+      src="/images/blog/0176-typesetting-line-height-01.svg"
+      width={800}
+      height={480}
+      alt="Text with default leading"
+    />
+    <Image
+      src="/images/blog/0176-typesetting-line-height-02.svg"
+      width={800}
+      height={480}
+      alt="Text with increased leading"
+    />
+  </Images>
+  <figcaption><Fig>1</Fig> A heading and paragraph require different line height due to their line length and size. Toggling between the images shows guides.</figcaption>
+</figure>
+
 <div className="sandbox">
   <div className="flex items-center justify-center group grid grid-cols-1 grid-rows-1">
     <Image src="/images/blog/0176-typesetting-line-height-02.svg" width={800} height={480} className="transition duration-200 ease col-start-1 row-span-1 col-span-1 row-start-1 z-10 relative" alt="" />
     <Image src="/images/blog/0176-typesetting-line-height-01.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0 col-start-1 row-span-1 col-span-1 row-start-1 z-20 relative" alt="" />
   </div>
 </div>
-<figcaption>Fig 1: </figcaption>
-</figure>
 
 This works for large and small type, as a readable measure still applies. It’s a fine balance because with shorter line lengths it can easily look like there’s too much space between each line and throw off your composition. But for longer line lengths if it’s too tight it will be difficult to read.
 
@@ -249,7 +271,7 @@ There is also a performance aspect to it. If you think the browser has to calcul
 
 Before `text-wrap` this is something that would have been not so practical to chase in a lot of situations and you’d have had to approach it manually, which is still valuable to know.
 
-### Manual balancing without `<br/>`
+### Manual balancing
 Methods for manually balancing titles or keeping word groups together is worth knowing. Sometimes you might find `text-wrap` doesn’t *quite* balance the title the way you want or you need to break a long word.
 
 Don’t reach for `<br/>`. Use `<wbr/>` or `&nbsp;`.
