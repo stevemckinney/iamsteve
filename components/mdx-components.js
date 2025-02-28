@@ -34,26 +34,90 @@ const Blockquote = (props) => {
 const Shortcut = ({ children }) => {
   const specialKeys = {
     // Left-aligned keys (items-start justify-end)
-    tab: { symbol: '⇥', label: 'Tab', className: 'min-w-[4rem] items-start justify-end' },
-    shift: { symbol: '⇧', label: 'Shift', className: 'min-w-24 items-start justify-end' },
-    caps: { symbol: '⇪', label: 'Caps lock', className: 'min-w-[4.5rem] items-start justify-end' },
-    esc: { symbol: '⎋', label: 'Esc', className: 'min-w-[3rem] items-start justify-end' },
+    tab: {
+      symbol: '⇥',
+      label: 'Tab',
+      className: 'min-w-[4rem] items-start justify-end',
+    },
+    shift: {
+      symbol: '⇧',
+      label: 'Shift',
+      className: 'min-w-24 items-start justify-end',
+    },
+    caps: {
+      symbol: '⇪',
+      label: 'Caps lock',
+      className: 'min-w-[4.5rem] items-start justify-end',
+    },
+    esc: {
+      symbol: '⎋',
+      label: 'Esc',
+      className: 'min-w-[3rem] items-start justify-end',
+    },
 
     // Right-aligned keys with space-between (items-end justify-between)
-    ctrl: { symbol: '⌃', label: 'Control', className: 'min-w-[4rem] items-end justify-between' },
-    control: { symbol: '⌃', label: 'Control', className: 'min-w-[4rem] items-end justify-between' },
-    opt: { symbol: '⌥', label: 'Option', className: 'min-w-[4rem] items-end justify-between' },
-    option: { symbol: '⌥', label: 'Option', className: 'min-w-[4rem] items-end justify-between' },
-    alt: { symbol: '⌥', label: 'Alt', className: 'min-w-[4rem] items-end justify-between' },
-    cmd: { symbol: '⌘', label: 'Command', className: 'min-w-20 items-end justify-between' },
-    command: { symbol: '⌘', label: 'Command', className: 'min-w-20 items-end justify-between' },
-    delete: { symbol: '⌫', label: 'Delete', className: 'min-w-[4rem] items-end justify-between' },
-    backspace: { symbol: '⌫', label: 'Delete', className: 'min-w-[4rem] items-end justify-between' },
+    ctrl: {
+      symbol: '⌃',
+      label: 'Control',
+      className: 'min-w-[4rem] items-end justify-between',
+    },
+    control: {
+      symbol: '⌃',
+      label: 'Control',
+      className: 'min-w-[4rem] items-end justify-between',
+    },
+    opt: {
+      symbol: '⌥',
+      label: 'Option',
+      className: 'min-w-[4rem] items-end justify-between',
+    },
+    option: {
+      symbol: '⌥',
+      label: 'Option',
+      className: 'min-w-[4rem] items-end justify-between',
+    },
+    alt: {
+      symbol: '⌥',
+      label: 'Alt',
+      className: 'min-w-[4rem] items-end justify-between',
+    },
+    cmd: {
+      symbol: '⌘',
+      label: 'Command',
+      className: 'min-w-20 items-end justify-between',
+    },
+    command: {
+      symbol: '⌘',
+      label: 'Command',
+      className: 'min-w-20 items-end justify-between',
+    },
+    delete: {
+      symbol: '⌫',
+      label: 'Delete',
+      className: 'min-w-[4rem] items-end justify-between',
+    },
+    backspace: {
+      symbol: '⌫',
+      label: 'Delete',
+      className: 'min-w-[4rem] items-end justify-between',
+    },
 
     // Other special keys (centered)
-    return: { symbol: '↵', label: 'Return', className: 'min-w-[4rem] items-center justify-center' },
-    enter: { symbol: '↵', label: 'Enter', className: 'min-w-[4rem] items-center justify-center' },
-    space: { symbol: '␣', label: 'Space', className: 'min-w-[4.5rem] items-center justify-center' },
+    return: {
+      symbol: '↵',
+      label: 'Return',
+      className: 'min-w-[4rem] items-center justify-center',
+    },
+    enter: {
+      symbol: '↵',
+      label: 'Enter',
+      className: 'min-w-[4rem] items-center justify-center',
+    },
+    space: {
+      symbol: '␣',
+      label: 'Space',
+      className: 'min-w-[4.5rem] items-center justify-center',
+    },
   }
 
   const createAriaLabel = (keys) => {
@@ -70,28 +134,25 @@ const Shortcut = ({ children }) => {
         symbol: specialKeys[lowercaseKey].symbol,
         label: specialKeys[lowercaseKey].label,
         className: specialKeys[lowercaseKey].className,
-        isSpecial: true
+        isSpecial: true,
       }
     }
     return {
       symbol: key,
       className: 'min-w-[2.25rem] items-center justify-center',
-      isSpecial: false
+      isSpecial: false,
     }
   }
 
-  const keys = typeof children === 'string'
-    ? children.split(' ')
-    : Children.toArray(children)
+  const keys =
+    typeof children === 'string'
+      ? children.split(' ')
+      : Children.toArray(children)
 
   const ariaLabel = `Keyboard shortcut: ${createAriaLabel(keys)}`
 
   return (
-    <kbd
-      className="flex gap-2"
-      aria-label={ariaLabel}
-      role="text"
-    >
+    <kbd className="flex gap-2" aria-label={ariaLabel} role="text">
       {keys.map((key, index) => {
         const { symbol, label, className, isSpecial } = formatKey(key)
         return (
@@ -106,13 +167,9 @@ const Shortcut = ({ children }) => {
             `}
             aria-hidden="true"
           >
-            <span className="text-2xl leading-none">
-              {symbol}
-            </span>
+            <span className="text-2xl leading-none">{symbol}</span>
             {isSpecial && (
-              <span className="text-xs leading-none font-sans">
-                {label}
-              </span>
+              <span className="text-xs leading-none font-sans">{label}</span>
             )}
           </kbd>
         )
@@ -128,8 +185,11 @@ const ComparisonImages = ({
     { label: 'Before', value: 0 },
     { label: 'After', value: 1 },
   ],
+  contextLabel, // New prop for the context label
 }) => {
-  const [activeIndex, setActiveIndex] = useState(0)
+  // Find default option index or fallback to 0
+  const defaultIndex = options.findIndex((opt) => opt.default) || 0
+  const [activeIndex, setActiveIndex] = useState(defaultIndex)
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -145,14 +205,18 @@ const ComparisonImages = ({
 
   return (
     <div
-      className="relative bg-fern-900/80 shadow-picked"
+      className="flex flex-col gap-1 bg-neutral-01-100/80 shadow-placed p-1 -mx-1 rounded-[28px]"
       role="region"
       aria-label={description}
     >
       {/* Segmented control */}
-      <div className="flex justify-center mb-4">
+      <div className="flex w-full gap-4 p-1 items-center justify-end">
+        {/* Context label */}
+        {contextLabel && (
+          <span className="text-sm text-neutral-01-600 pt-2 pb-1.5">{contextLabel}</span>
+        )}
         <div
-          className="inline-flex rounded-lg bg-neutral-01-100/80 p-1"
+          className="flex items-center justify-end bg-[rgb(31_21_21/.05)] shadow-[inset_0_1px_1px_-.5px_rgb(31_21_21/.08),inset_0_1px_3px_rgb(31_21_21/.08),_0_1px_3px_rgb(252_249_248/1)] rounded-lg"
           role="tablist"
           aria-label="View options"
         >
@@ -163,13 +227,13 @@ const ComparisonImages = ({
               aria-selected={activeIndex === index}
               aria-controls={`view-${index}`}
               className={`
-                px-4 py-1.5 text-sm font-medium rounded-md
-                transition-all duration-200
-                ${index !== validOptions.length - 1 ? 'mr-1' : ''}
+                transition-all duration-200 rounded-lg shadow-[0_0_0_0_rgb(0_0_0/0)] hover:text-fern-1100 active:shadow-reduced active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in
+                text-sm pt-2 pb-1.5 px-2
+                min-w-16
                 ${
                   activeIndex === index
-                    ? 'bg-white shadow-sm text-neutral-900'
-                    : 'text-neutral-600 hover:text-neutral-900'
+                    ? 'bg-white shadow-placed'
+                    : 'text-neutral-01-500'
                 }
               `}
               onClick={() => setActiveIndex(index)}
@@ -179,10 +243,8 @@ const ComparisonImages = ({
           ))}
         </div>
       </div>
-
-      {/* Images container */}
       <div
-        className="relative rounded-lg overflow-hidden"
+        className="rounded-lg overflow-hidden shadow-reduced grid grid-cols-1 grid-rows-1"
         onKeyDown={handleKeyDown}
         tabIndex={0}
       >
@@ -194,10 +256,7 @@ const ComparisonImages = ({
               id={`view-${index}`}
               role="tabpanel"
               aria-labelledby={`button-${index}`}
-              className={`
-                absolute inset-0
-                ${index === 0 ? 'relative' : ''}
-              `}
+              className={`col-start-1 row-start-1`}
             >
               <Image
                 {...imageProps}
@@ -205,7 +264,9 @@ const ComparisonImages = ({
                   imageProps.alt ||
                   `${description} - ${validOptions[index]?.label || ''} state`
                 }
-                className="transition-opacity duration-300 ease-in-out"
+                className={`transition-opacity duration-1000 linear data-[active=true]:delay-0
+                  data-[active=false]:delay-150`}
+                data-active={activeIndex === index}
                 style={{
                   opacity: activeIndex === index ? 1 : 0,
                   objectFit: 'contain',
