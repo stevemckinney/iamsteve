@@ -54,7 +54,7 @@ The feature set is simple in comparison to Google Analytics, but this is true of
 - Email reports
 - Alert when the script is missing
 - Dark and light mode
-- Data import for Google Analyticd
+- Data import for Google Analytics
 
 ### Free tier
 It has to be mentioned it’s free with a month of history, which is great. I would be happy to know the amount of visitors—everything else is a bonus.
