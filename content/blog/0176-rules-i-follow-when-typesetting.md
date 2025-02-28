@@ -11,19 +11,12 @@ images: []
 large: "" # /images/blog/rules-i-follow-when-typesetting.svg
 medium: "" # /images/blog/rules-i-follow-when-typesetting.svg
 ogImage: "/opengraph-image.png"
-status: open
+status: draft
 codepen: false
 twitter: false
 id: 176
 fileroot: rules-i-follow-when-typesetting
 ---
-
-# Rules I follow when typesetting an article
-# Rules I follow when typesetting for the web
-# A quick guide to typesetting for the web
-# Details to think about when typesetting
-# Rules I follow when typesetting an article
-# Rules for line height in UI and web
 
 When writing or typesetting a design, I have things I follow in terms of creating a good flow to the article or balance within a page. However, I always believe in pragmatism with rules like this as there are things out of your control, like screen size, varying content, etc.
 
@@ -55,16 +48,17 @@ For example, in a hero title you can afford to be precise with your line height 
 
 Each of the items listed can impact your choice of line height.  For larger headings, a line height lower or closer to the font size can be ideal. Whereas paragraphs with a good measure can be around a more comfortable 1.5x the font size.
 
-### Line length
+### Line length determines your line height
 It’s an important to use the length of your copy to determine your line height. The shorter the line length, the smaller the line height. The longer the line length, the larger the line height.
 
 <figure>
   <Images
     compare
     description="Compare typesetting with and without leading"
+    contextLabel="Show guides"
     options={[
       { label: 'Off', value: 0 },
-      { label: 'On', value: 1 }
+      { label: 'On', value: 1, default: true }
     ]}
   >
     <Image
@@ -83,13 +77,6 @@ It’s an important to use the length of your copy to determine your line height
   <figcaption><Fig>1</Fig> A heading and paragraph require different line height due to their line length and size. Toggling between the images shows guides.</figcaption>
 </figure>
 
-<div className="sandbox">
-  <div className="flex items-center justify-center group grid grid-cols-1 grid-rows-1">
-    <Image src="/images/blog/0176-typesetting-line-height-02.svg" width={800} height={480} className="transition duration-200 ease col-start-1 row-span-1 col-span-1 row-start-1 z-10 relative" alt="" />
-    <Image src="/images/blog/0176-typesetting-line-height-01.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0 col-start-1 row-span-1 col-span-1 row-start-1 z-20 relative" alt="" />
-  </div>
-</div>
-
 This works for large and small type, as a readable measure still applies. It’s a fine balance because with shorter line lengths it can easily look like there’s too much space between each line and throw off your composition. But for longer line lengths if it’s too tight it will be difficult to read.
 
 ### Using baseline, cap height and x height
@@ -98,7 +85,7 @@ These are the important proportions of a typeface to create balance when creatin
 <figure>
 <Image src="/images/blog/0176-typesetting-line-height-03.svg" width={800} height={480} alt="" />
 <figcaption>
-
+<Fig>2</Fig> A heading and paragraph require different line height due to their line length and size. Toggling between the images shows guides.
 </figcaption>
 </figure>
 
@@ -112,7 +99,7 @@ Half leading[^1] in the browser based world of design means that half of the lin
 <figure>
 <Image src="/images/blog/0176-typesetting-line-height-04.svg" width={800} height={480} alt="" />
 <figcaption>
-There are two examples of text here, a large heading and paragraph. Both have different a line height, which means the half leading is different between the two. The heading uses `0.9` and the paragraph uses `1.5`.
+<Fig>3</Fig> There are two examples of text here, a large heading and paragraph. The heading would use `0.9` and the paragraph would use `1.5` in CSS.
 </figcaption>
 </figure>
 
@@ -121,44 +108,92 @@ The heading’s box is more flush with the text, as there isn’t anything extra
 <figure>
 <Image src="/images/blog/0176-typesetting-line-height-05.svg" width={800} height={480} alt="" />
 <figcaption>
-<Fig>4</Fig> Markers comparing applied spacing values against their optical appearance
+<Fig>4</Fig> Markers comparing applied spacing values against their optical appearance.
 </figcaption>
 </figure>
 
 This used to be more of an issue in the days where you used Photoshop or Illustrator to design. But as Figma is the industry standard, expectations between designers and developers around spacing are more aligned.
 
-### Removing the half leading
-As of writing, the method to remove this through `text-box-trim` is gaining traction in browser support with Safari and Chrome—but it’s not ready.
+#### Levelling it out with `text-box`
+As of writing, the method to remove this through `text-box` trimming is gaining traction in terms of browser support[^3] with Safari and Chrome. It’s not quite ready for day to day, but as more users upgrade this should become more viable.
 
-It’s in Figma and Sketch albeit both have limited control compared to CSS.
+It’s available in Figma and Sketch albeit both have limited control compared to CSS. And I imagine once the usage aligns, they will dictate how it’s used as they don’t have the same extent.
 
-This will be more of a thing of the past in the future, but I am curious to see how `text-box-trim` changes how you design.
+This will be more of a thing of the past in the future[], but I am curious to see how `text-box-trim` changes how you design.
 
 ## Letter spacing or tracking is proportional
 Like line height, I don’t think you can apply a simple percentage rule to any typeface and call it a day for every design you do.
 
-<div className="sandbox">
-  <div className="flex items-center justify-center group grid grid-cols-1 grid-rows-1">
-    <Image src="/images/blog/0176-typesetting-letter-spacing-02.svg" width={800} height={480} className="transition duration-200 ease col-start-1 row-span-1 col-span-1 row-start-1 z-10 relative" alt="" />
-    <Image src="/images/blog/0176-typesetting-letter-spacing-01.svg" width={800} height={480} className="transition duration-200 ease group-hover:opacity-0 col-start-1 row-span-1 col-span-1 row-start-1 z-20 relative" alt="" />
-  </div>
-</div>
-
-<Image src="/images/blog/0176-typesetting-letter-spacing-03.svg" width={800} height={480} alt="" />
+<figure>
+  <Images
+    compare
+    description="Compare typesetting with and without leading"
+    contextLabel="Tracking"
+    options={[
+      { label: 'Off', value: 0 },
+      { label: 'On', value: 1, default: true },
+      { label: 'Both', value: 2 }
+    ]}
+  >
+    <Image
+      src="/images/blog/0176-typesetting-letter-spacing-01.svg"
+      width={800}
+      height={480}
+      alt="Text with default leading"
+    />
+    <Image
+      src="/images/blog/0176-typesetting-letter-spacing-02.svg"
+      width={800}
+      height={480}
+      alt="Text with increased leading"
+    />
+    <Image
+      src="/images/blog/0176-typesetting-letter-spacing-03.svg"
+      width={800}
+      height={480}
+      alt="Text with increased leading"
+    />
+  </Images>
+  <figcaption><Fig>5</Fig> Shows the difference between the heading with tracking on and off. It makes a real difference to the quality of your design.</figcaption>
+</figure>
 
 It takes a little tweaking depending on the typeface you’re using. Think of a display typeface versus a text typeface. Using them at varying sizes will require different extremes of tracking.
 
 ## Everything is sentence case
 Everything, whether that is a heading, button, navigation link or whatever else you can think of. It’s sentence case—no exceptions.
 
-It should go without saying but the only exceptions are names or someting important like ’I’.
+It should go without saying but the only exceptions are names or something important like ’I’.
 
 Sentence case is superior for readability and remembering the system. Is it the first letter or is it a name? Simple. The inconsistency at which people apply title case is enough to oppose it when setting a style guide.
 
 ## Everything is left aligned
 This is something I feel I always contradict myself with. But like any guidance it doesn’t mean there aren’t exceptions—eg: a hero section.
 
-[img]
+<figure>
+  <Images
+    compare
+    description="Compare typesetting with and without leading"
+    contextLabel="Options"
+    options={[
+      { label: '1', value: 0, default: true },
+      { label: '2', value: 1 }
+    ]}
+  >
+    <Image
+      src="/images/blog/0176-typesetting-left-aligned-01.png"
+      width={800}
+      height={480}
+      alt=""
+    />
+    <Image
+      src="/images/blog/0176-typesetting-left-aligned-02.png"
+      width={800}
+      height={480}
+      alt=""
+    />
+  </Images>
+  <figcaption><Fig>5</Fig> Shows the difference between the heading with tracking on and off. It makes a real difference to the quality of your design.</figcaption>
+</figure>
 
 Anyway, for the vast majority of your design it should be aligned to the left (or right if your language is right to left).
 
@@ -201,10 +236,11 @@ For example
 ### Keyboard shortcuts
 The em and en dash have keyboard shortcuts to access. Hyphen is obvious… but for en-dashes it is
 
+**en-dash**
 <Shortcut>option -</Shortcut>
-<Shortcut>option shift -</Shortcut>
 
-<kbd><kbd>option</kbd><kbd>-</kbd></kbd> and for em-dashes <kbd><kbd>shift</kbd><kbd>option</kbd><kbd>-</kbd></kbd>.
+**em-dash**
+<Shortcut>option shift -</Shortcut>
 
 ## Use the correct quotes
 I’ve put this before in a previous article, but let’s go over it again. There’s straight quotes and curly quotes. Curly quotes are more complementary with your typeface.
@@ -307,7 +343,7 @@ It’s a [flexible property](https://developer.mozilla.org/en-US/docs/Web/CSS/ha
 </figcaption>
 </figure>
 
-The browser support is poor as of writing[^3]—but it presents a future with greater control.
+The browser support is poor as of writing[^4]—but it presents a future with greater control.
 
 Although, I like hanging punctuation for the alignment reason, it can be challenging to always achieve it on smaller screens.
 
@@ -318,4 +354,5 @@ Keeping in mind the practicality of doing these things ensures your design is ma
 
 [^1]: [The Thing With Leading in CSS](https://matthiasott.com/notes/the-thing-with-leading-in-css)
 [^2]: [CSS text-box-trim](https://developer.chrome.com/blog/css-text-box-trim)
-[^3]: [Can I Use hanging-punctuation](https://caniuse.com/?search=hanging)
+[^3]: [Can I use text-box](https://caniuse.com/?search=text-box)
+[^4]: [Can I use hanging-punctuation](https://caniuse.com/?search=hanging)
