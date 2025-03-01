@@ -28,11 +28,11 @@ It’s important to aim for the ideal, but not to the detriment of creating some
 4. Everything is left aligned
 5. Use the correct type of dash
 6. Use the correct quotes
-7. When emphasising, highlighting or linking text watch out for punctuation
+7. Hanging lists and punctuation
 8. Avoid sentences or punctuating titles where possible
-9. Use paragraphs to create help rhythm
-10. Avoid orphans and widows
-11. Pragmatically hang lists and punctuation
+9. When emphasising, highlighting or linking text watch out for punctuation
+10. Use paragraphs to create help rhythm
+11. Avoid orphans and widows
 
 ## Line height is proportional
 There’s a few things you can use to determine the line height for your type. It’s a balance between your text looking loose or readable.
@@ -74,7 +74,7 @@ It’s an important to use the length of your copy to determine your line height
       alt="Text with increased leading"
     />
   </Images>
-  <figcaption><Fig>1</Fig> A heading and paragraph require different line height due to their line length and size. Toggling between the images shows guides.</figcaption>
+  <figcaption><p><Fig>1</Fig> A heading and paragraph require different line height due to their line length and size. Toggling between the images shows guides.</p></figcaption>
 </figure>
 
 This works for large and small type, as a readable measure still applies. It’s a fine balance because with shorter line lengths it can easily look like there’s too much space between each line and throw off your composition. But for longer line lengths if it’s too tight it will be difficult to read.
@@ -99,7 +99,7 @@ Half leading[^1] in the browser based world of design means that half of the lin
 <figure>
 <Image src="/images/blog/0176-typesetting-line-height-04.svg" width={800} height={480} alt="" />
 <figcaption>
-<Fig>3</Fig> There are two examples of text here, a large heading and paragraph. The heading would use `0.9` and the paragraph would use `1.5` in CSS.
+<p><Fig>3</Fig> There are two examples of text here, a large heading and paragraph. The heading would use `0.9` and the paragraph would use `1.5` in CSS.</p>
 </figcaption>
 </figure>
 
@@ -108,18 +108,18 @@ The heading’s box is more flush with the text, as there isn’t anything extra
 <figure>
 <Image src="/images/blog/0176-typesetting-line-height-05.svg" width={800} height={480} alt="" />
 <figcaption>
-<Fig>4</Fig> Markers comparing applied spacing values against their optical appearance.
+<p><Fig>4</Fig> Markers comparing applied spacing values against their optical appearance.</p>
 </figcaption>
 </figure>
 
 This used to be more of an issue in the days where you used Photoshop or Illustrator to design. But as Figma is the industry standard, expectations between designers and developers around spacing are more aligned.
 
 #### Levelling it out with `text-box`
-As of writing, the method to remove this through `text-box` trimming is gaining traction in terms of browser support[^3] with Safari and Chrome. It’s not quite ready for day to day, but as more users upgrade this should become more viable.
+As of writing, the method to remove this through `text-box` trimming is gaining traction in terms of browser support[^2] with Safari and Chrome. It’s not quite ready for day to day, but as more users upgrade this should become more viable.
 
 It’s available in Figma and Sketch albeit both have limited control compared to CSS. And I imagine once the usage aligns, they will dictate how it’s used as they don’t have the same extent.
 
-This will be more of a thing of the past in the future[], but I am curious to see how `text-box-trim` changes how you design.
+This will be more of a thing of the past in the future[^3], but I am curious to see how `text-box-trim` changes how you design.
 
 ## Letter spacing or tracking is proportional
 Like line height, I don’t think you can apply a simple percentage rule to any typeface and call it a day for every design you do.
@@ -154,7 +154,7 @@ Like line height, I don’t think you can apply a simple percentage rule to any 
       alt="Text with increased leading"
     />
   </Images>
-  <figcaption><Fig>5</Fig> Shows the difference between the heading with tracking on and off. It makes a real difference to the quality of your design.</figcaption>
+  <figcaption><p><Fig>5</Fig> Shows the difference between the heading with tracking on and off. It makes a real difference to the quality of your design.</p></figcaption>
 </figure>
 
 It takes a little tweaking depending on the typeface you’re using. Think of a display typeface versus a text typeface. Using them at varying sizes will require different extremes of tracking.
@@ -172,7 +172,7 @@ This is something I feel I always contradict myself with. But like any guidance 
 <figure>
   <Images
     compare
-    description="Compare typesetting with and without leading"
+    description="Options of designs with left and centralised alignment of text"
     contextLabel="Options"
     options={[
       { label: '1', value: 0, default: true },
@@ -192,14 +192,12 @@ This is something I feel I always contradict myself with. But like any guidance 
       alt=""
     />
   </Images>
-  <figcaption><Fig>5</Fig> Shows the difference between the heading with tracking on and off. It makes a real difference to the quality of your design.</figcaption>
+  <figcaption><p><Fig>5</Fig> Two options of designs with central and left alignment for comparison.</p></figcaption>
 </figure>
 
-Anyway, for the vast majority of your design it should be aligned to the left (or right if your language is right to left).
+Anyway, for the vast majority of your design it should be aligned to the left (or right if your language is right to left). It means your right side of text has a ragged edge which makes it easy to scan. It’s most true for articles.
 
-It means your right side of text has a ragged edge which makes it easy to scan. Especially for articles.
-
-If your composition works better centrally, it must be a small amount of text. You don’t want to be reading large centralised paragraphs. A sentence at most.
+If your composition works better centrally, it must be a small amount of text. You don’t want to be reading large centralised paragraphs.
 
 ## Use the correct type of dash
 I’d recently heard a pointer for identifying AI copy was the use of the em dash (—). Which feels unfair, but I see it, AI does like to use them. I hope doesn’t lead to a lack of their use—as I like to use them.
@@ -236,10 +234,10 @@ For example
 ### Keyboard shortcuts
 The em and en dash have keyboard shortcuts to access. Hyphen is obvious… but for en-dashes it is
 
-**en-dash**
+#### en-dash
 <Shortcut>option -</Shortcut>
 
-**em-dash**
+#### em-dash
 <Shortcut>option shift -</Shortcut>
 
 ## Use the correct quotes
@@ -249,88 +247,82 @@ I’ve put this before in a previous article, but let’s go over it again. Ther
 
 The best reference for the usage of quotes smartquotesforsmartpeople.com. The shortcuts are fairly simple, but it’s better if you have something to do it automatically for you as it can be easily missed.
 
-**Opening double quote**
+#### Opening double quote
 <Shortcut>shift option [</Shortcut>
 
-**Closing double quote**
+#### Closing double quote
 <Shortcut>shift option ]</Shortcut>
 
-**Opening single quote**
+#### Opening single quote
 <Shortcut>option [</Shortcut>
 
-**Closing single quote**
+#### Closing single quote
 <Shortcut>option ]</Shortcut>
 
 When dealing with automatic transformation into them. Many apps do this by default. For code, you’ll need to use a library like smartypants.
 
-## When emphasising, highlighting or linking text watch out for punctuation
-This is a small detail, but the vast majority of the time and more so with linking you shouldn’t include the full stop.
-
-## Avoid sentences or punctuating titles where possible
-I will try to avoid punctuation in a title because it looks messy. I find it’s difficult to apply with consistency. If one title is punctuated it will stand out more when another isn’t.
-
-### Watch out for full stops in centralised titles
-It’s something that can optically throw off the balance of your heading. It stands out more on mobile due to the narrower width. *Well I am kind of reaching, but it does stand out optically*.
-
-As a separate line it’s similar to the punctuation, but where you have a central title with a full stop at the end the final line will feel off optically.
-
-## Use paragraphs to create help rhythm
-When some things like headings, lists, buttons follow a heading; it can create a sense of awkwardness in an article or design.
-
-Why? For me it’s down to the presence of the thing following the heading. A heading following a heading may not feel right. A button following a heading will likely feel out of place, etc.
-
-[img demo-different-situations]
-
-The spacing flows much better when there is a paragraph to break it up. Your rhythm suffers when there isn’t.
-
-Sometimes you can’t avoid it and it shouldn’t be at the expense of unnatural writing or forcing it but it’s a conscious effort I make.
-
-## Avoid widows
-Widows can create some awkwardness in your design. A widow is a single word or short line of text. So where you have greater control over the flow of text in a component you can try to ensure it doesn’t happen.
-
-### CSS text-wrap can handle it
-Before text-wrap it would be generally pointless to try cover every possible case of a widow in your design. But now with CSS you have two options to control text wrapping.
-
-```.css
-text-wrap: balance
-```
-
-`balance` does exactly that it aims to achieve the most balanced layout. Which is ideal for your headings and this works well the majority of the time.
-
-```.css
-text-wrap: pretty
-```
-
-`pretty` is a bit of a arbitrary word to infer what happens, but it ensures that there isn’t one word left on it’s own. It’s for the use cases where `balance` would be excessive—like lengthier paragraphs.
-
-There is also a performance aspect to it. If you think the browser has to calculate and reflow the text to balance it correctly.
-
-Before `text-wrap` this is something that would have been not so practical to chase in a lot of situations and you’d have had to approach it manually, which is still valuable to know.
-
-### Manual balancing
-Methods for manually balancing titles or keeping word groups together is worth knowing. Sometimes you might find `text-wrap` doesn’t *quite* balance the title the way you want or you need to break a long word.
-
-Don’t reach for `<br/>`. Use `<wbr/>` or `&nbsp;`.
-
-```.html
-<h1>Fundamentals of visual&nbsp;design</h1>
-<p>Underlying principles and elements<wbr/>that guide effective and visually appealing design.</p>
-```
-
 ## Hanging lists and punctuation
-The aim with hanging punctuation is keeping a clear key line. Overall, it keeps a design neat and the rhythm for the eye easy to follow.
+The aim with hanging punctuation is keeping a clear key line. Overall, it helps keep the rhythm for the eye to follow. Depending on your design tool of choice there is varying levels of control and convenience to do this in your design.
 
-0176-typesetting-hanging-01@2x.png
+<figure>
+  <Images
+    compare
+    description="Hanging quote comparison"
+    contextLabel="Hanging punctuation"
+    options={[
+      { label: 'Off', value: 0, default: true },
+      { label: 'On', value: 1 }
+    ]}
+  >
+    <Image
+      src="/images/blog/0176-typesetting-hanging-quote-01.png"
+      width={800}
+      height={480}
+      alt=""
+    />
+    <Image
+      src="/images/blog/0176-typesetting-hanging-quote-02.png"
+      width={800}
+      height={480}
+      alt=""
+    />
+  </Images>
+  <figcaption><p><Fig>12</Fig> Comparing the difference between a body of text with and without hanging quotes.</p></figcaption>
+</figure>
 
-Depending on your design tool of choice, likely Figma, this is possible.
+Across these examples, you can see the difference hanging the quotes makes to the flow of the writing. I like it as a design detail as it gives an opportunity to add a little flair without being disruptive.
 
-0176-typesetting-hanging-02@2x.png
+<figure>
+  <Images
+    compare
+    description="Hanging lists comparison"
+    contextLabel="Hanging punctuation"
+    options={[
+      { label: 'Off', value: 0, default: true },
+      { label: 'On', value: 1 }
+    ]}
+  >
+    <Image
+      src="/images/blog/0176-typesetting-hanging-list-01.png"
+      width={800}
+      height={480}
+      alt=""
+    />
+    <Image
+      src="/images/blog/0176-typesetting-hanging-list-02.png"
+      width={800}
+      height={480}
+      alt=""
+    />
+  </Images>
+  <figcaption><p><Fig>12</Fig> Comparing the difference between a body of text with and without hanging lists.</p></figcaption>
+</figure>
 
 ### With CSS use hanging-punctuation
 To achieve it for all the cases you may require it was a challenge, until `hanging-punctuation` came about.
 
 <figure>
-```.css
+```css
 p {
   hanging-punctuation: none;
   hanging-punctuation: first;
@@ -345,7 +337,163 @@ It’s a [flexible property](https://developer.mozilla.org/en-US/docs/Web/CSS/ha
 
 The browser support is poor as of writing[^4]—but it presents a future with greater control.
 
-Although, I like hanging punctuation for the alignment reason, it can be challenging to always achieve it on smaller screens.
+Although, I like hanging punctuation for the alignment reason, it can be challenging to always achieve it on smaller screens with the more restricted space.
+
+## Avoid sentences or punctuating titles where possible
+I will try to avoid punctuation in a title because it looks messy. I find it’s difficult to apply with consistency. If one title is punctuated it will stand out more when another isn’t.
+
+<figure>
+  <Images
+    compare
+    description="Showing removal of punctuation from the hero"
+    contextLabel="Punctuation"
+    options={[
+      { label: 'Off', value: 0 },
+      { label: 'On', value: 1, default: true }
+    ]}
+  >
+    <Image
+      src="/images/blog/0176-typesetting-punctuation-07.svg"
+      width={800}
+      height={480}
+      alt=""
+    />
+    <Image
+      src="/images/blog/0176-typesetting-punctuation-06.svg"
+      width={800}
+      height={480}
+      alt=""
+    />
+  </Images>
+  <figcaption><p><Fig>7</Fig> Comparing the difference between a mobile hero design with and without punctuation part of the title and description.</p></figcaption>
+</figure>
+
+### Watch out for full stops in centralised titles
+It’s something that can optically throw off the balance of your heading. It stands out more on mobile due to the narrower width. *Well I am kind of reaching, but it does stand out optically*.
+
+<figure>
+  <Images
+    compare
+    description="Showing removal of punctuation from the hero"
+    contextLabel="Punctuation"
+    options={[
+      { label: 'Off', value: 0 },
+      { label: 'On', value: 1, default: true }
+    ]}
+  >
+    <Image
+      src="/images/blog/0176-typesetting-punctuation-04.svg"
+      width={800}
+      height={480}
+      alt=""
+    />
+    <Image
+      src="/images/blog/0176-typesetting-punctuation-03.svg"
+      width={800}
+      height={480}
+      alt=""
+    />
+  </Images>
+  <figcaption><p><Fig>9</Fig> Comparing the difference between a mobile hero design with and without punctuation part of the title and description.</p></figcaption>
+</figure>
+
+On a separate note, it’s similar to hanging punctuation. Where you have a central title with a full stop at the end the final line will feel off optically.
+
+## When emphasising, highlighting or linking text watch out for punctuation
+This is a small detail, but the vast majority of the time and more so with linking you shouldn’t include the full stop.
+
+<figure>
+  <div className="sandbox">
+    <div className="bg-neutral-01-100 px-[4vmax] py-[10vmax] aspect-[16/10] flex items-center">
+      <span className="text-fern-1100 font-display text-[clamp(1rem,_0.6087rem_+_1.7391vw,_2rem)] block text-center font-normal leading-4xl  text-balance tracking-[-.015em]">Old style is a humanist style of <u>serif</u>. The history of <span className="font-variation-bold">this style goes back to 1465</span>.</span>
+    </div>
+  </div>
+  <figcaption><Fig>11</Fig> An example of text using emphasis before the end of a sentence</figcaption>
+</figure>
+
+## Use paragraphs to create help rhythm
+When some things like headings, lists, buttons follow a heading; it can create a sense of awkwardness in an article or design.
+
+<figure>
+<Image
+  src="/images/blog/0176-typesetting-paragraphs-01.png"
+  width={800}
+  height={480}
+  alt=""
+/>
+<figcaption><Fig>12</Fig> yes some things about this image</figcaption>
+</figure>
+
+Why? For me it’s down to the presence of the thing which follows the heading. A heading following a heading may not feel right. A button following a heading will likely feel out of place due to the balance between the elements.
+
+<Image
+  src="/images/blog/0176-typesetting-paragraphs-02.png"
+  width={800}
+  height={480}
+  alt=""
+/>
+
+The spacing flows much better when there is a paragraph to break it up. Your rhythm suffers when there isn’t.
+
+<figure>
+  <Images
+    compare
+    description="Showing addition of a paragraph to the hero design"
+    contextLabel="Paragraph"
+    options={[
+      { label: 'Off', value: 0, default: true },
+      { label: 'On', value: 1 }
+    ]}
+  >
+    <Image
+      src="/images/blog/0176-typesetting-paragraphs-03.svg"
+      width={800}
+      height={480}
+      alt=""
+    />
+    <Image
+      src="/images/blog/0176-typesetting-paragraphs-04.svg"
+      width={800}
+      height={480}
+      alt=""
+    />
+  </Images>
+  <figcaption><p><Fig>9</Fig> Comparing the difference between a mobile hero design with and without punctuation part of the title and description.</p></figcaption>
+</figure>
+
+Sometimes you can’t avoid it and it shouldn’t be at the expense of unnatural writing or forcing it but it’s a conscious effort I make.
+
+## Avoid widows
+Widows can create some awkwardness in your design. A widow is a single word or short line of text. So where you have greater control over the flow of text in a component you can try to ensure it doesn’t happen.
+
+### CSS text-wrap can handle it
+Before `text-wrap` it would be generally pointless to try cover every possible case of a widow in your design. But now with CSS you have two options to control text wrapping.
+
+```css
+text-wrap: balance
+```
+
+`balance` does exactly that it aims to achieve the most balanced layout. Which is ideal for your headings and this works well the majority of the time.
+
+```css
+text-wrap: pretty
+```
+
+`pretty` is a bit of a arbitrary word to decipher what happens, but it ensures that there isn’t one word left on it’s own. It’s for the use cases where `balance` would be excessive—like lengthier paragraphs.
+
+There is also a performance aspect to it. If you think the browser has to calculate and reflow the text to balance it correctly.
+
+Before `text-wrap` this is something that would be less practical to chase in a lot of situations and you’d have had to approach it manually. A method of doing so is still valuable to know.
+
+### Manual balancing
+Methods for manually balancing titles or keeping word groups together is worth knowing. Sometimes you might find `text-wrap` doesn’t *quite* balance the title the way you want or you need to break a long word.
+
+Don’t reach for `<br/>`. Use `<wbr/>` or `&nbsp;`.
+
+```html
+<h1>Fundamentals of visual&nbsp;design</h1>
+<p>Underlying principles and elements<wbr/>that guide effective and visually appealing design.</p>
+```
 
 ## Ending thoughts
 Taking these rules into account, a balanced approach to typesetting improves both readability and visual appeal.  Paying attention to factors like line height, letter spacing, and alignment makes things more intentional and works within the limitations of the typeface.
@@ -353,6 +501,6 @@ Taking these rules into account, a balanced approach to typesetting improves bot
 Keeping in mind the practicality of doing these things ensures your design is maintainable and not introducing more work. However, I have written similarly before with [visual design tips](/blog/visual-design-tips-you-can-apply-immediately) and these posts seem to go down well.
 
 [^1]: [The Thing With Leading in CSS](https://matthiasott.com/notes/the-thing-with-leading-in-css)
-[^2]: [CSS text-box-trim](https://developer.chrome.com/blog/css-text-box-trim)
-[^3]: [Can I use text-box](https://caniuse.com/?search=text-box)
+[^2]: [Can I use text-box](https://caniuse.com/?search=text-box)
+[^3]: [CSS text-box-trim](https://developer.chrome.com/blog/css-text-box-trim)
 [^4]: [Can I use hanging-punctuation](https://caniuse.com/?search=hanging)
