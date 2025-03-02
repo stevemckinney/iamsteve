@@ -109,7 +109,7 @@ And I went to my dashboard and had a site setup within minutes. It’s an unfair
 By default bots and things are excluded, it mentions that 95% of bots should be blocked. You can also enable advanced robot blocking as a paid user and I would assume that would get closer to the 100%.
 
 <Image
-  src="/images/blog/0177-simple-analytics-02.png"
+  src="/images/blog/0177-simple-analytics-04.png"
   width={800}
   height={480}
   alt="Text with default leading"
@@ -125,7 +125,7 @@ You can’t expect total accuracy and no one should with the use of ad blockers.
 These reports depend on whether you choose between weekly and monthly. These give a quick overview which is easy to understand.
 
 <Image
-  src="/images/blog/0177-simple-analytics-03.png"
+  src="/images/blog/0177-simple-analytics-02.png"
   width={800}
   height={480}
   alt="Text with default leading"
@@ -149,32 +149,11 @@ The core selling point of Simple Analytics is the privacy element. To understand
 ## What’s kind of missing
 It’s difficult to critique a free independent service, as it doesn’t have to be free. But there’s a few additions I’d like to see, or maybe I’m missing them.
 
-<Image
-  src="/images/blog/0177-simple-analytics-04.png"
-  width={800}
-  height={480}
-  alt="Text with default leading"
-/>
-
 ### Full referrer
 With referrers it doesn’t really cover the location it comes from exactly. You can see the website, but not the referring page. I imagine this may be a privacy restriction, but I am not sure.
 
-<Image
-  src="/images/blog/0177-simple-analytics-05.png"
-  width={800}
-  height={480}
-  alt="Text with default leading"
-/>
-
 ### Browser version
 As creators of websites the browser split and versions are quite handy to understand your audience and level of browser support you offer. Whilst this isn’t as big of an issue as it was, I think it would be nice to see browser versions.
-
-<Image
-  src="/images/blog/0177-simple-analytics-06.png"
-  width={800}
-  height={480}
-  alt="Text with default leading"
-/>
 
 ### A few more metrics
 It may be missing some of what I would consider simpler metrics, such as exit and bounce.
