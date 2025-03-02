@@ -153,10 +153,14 @@
 
   ul {
     list-style: square;
+    list-style-position: outside;
+    margin-inline-start: -1em;
+    outline: 1px solid red;
   }
 
   ol {
     list-style-type: decimal;
+    list-style-position: outside;
   }
 
   :where(p, li) {
