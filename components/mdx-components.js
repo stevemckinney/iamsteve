@@ -204,7 +204,11 @@ const ComparisonImages = ({
   const images = React.Children.toArray(children)
 
   return (
-    <div className="flex flex-col gap-1 bg-neutral-01-100/80 shadow-placed p-1 -mx-1 rounded-[28px]" role="region" aria-label={description}>
+    <div
+      className="flex flex-col gap-1 bg-neutral-01-100/80 shadow-placed p-1 -mx-1 rounded-[28px]"
+      role="region"
+      aria-label={description}
+    >
       {/* Segmented control */}
       <div className="flex w-full gap-4 p-1 items-center justify-end">
         {/* Context label */}
@@ -398,9 +402,7 @@ const postComponents = {
   Images,
   BentoGridShell,
   Fig: (props) => (
-    <span className="text-fern-600 uppercase">
-      Fig. {props.children}
-    </span>
+    <span className="text-fern-600 uppercase">Fig. {props.children}</span>
   ),
   LinkFigma: (props) => (
     <Link
