@@ -46,7 +46,7 @@ I want to write about my experience adding an analytics script back to this webs
       alt=""
     />
   </Images>
-  <figcaption><p><Fig>1</Fig> A heading and paragraph require different line height due to their line length and size. Toggling between the images shows guides.</p></figcaption>
+  <figcaption><p><Fig>1</Fig> See what Simple Analytics looks like in light and dark theme.</p></figcaption>
 </figure>
 
 ## What prompted the need for analytics
