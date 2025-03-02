@@ -26,7 +26,7 @@ I want to write about my experience adding an analytics script back to this webs
 <figure>
   <Images
     compare
-    description="Compare typesetting with and without leading"
+    description="Simple Analytics light and dark theme"
     contextLabel="Theme"
     options={[
       { label: 'Light', value: 0 },
@@ -34,16 +34,16 @@ I want to write about my experience adding an analytics script back to this webs
     ]}
   >
     <Image
-      src="/images/blog/0177-simple-analytics-05.png"
-      width={800}
-      height={480}
-      alt="Text with default leading"
-    />
-    <Image
       src="/images/blog/0177-simple-analytics-06.png"
       width={800}
       height={480}
-      alt="Text with increased leading"
+      alt=""
+    />
+    <Image
+      src="/images/blog/0177-simple-analytics-05.png"
+      width={800}
+      height={480}
+      alt=""
     />
   </Images>
   <figcaption><p><Fig>1</Fig> A heading and paragraph require different line height due to their line length and size. Toggling between the images shows guides.</p></figcaption>
