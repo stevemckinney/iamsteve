@@ -18,7 +18,7 @@ id: 177
 fileroot: using-analytics-again-with-simple-analytics
 ---
 
-I want to write about my experience adding an analytics script back to this website with Simple Analytics.
+I want to write about my experience adding an analytics script back to this website with [Simple Analytics](https://www.simpleanalytics.com)
 
 ## TLDR
 **I needed to figure out why my usage was going up dramatically on Netlify**. I didn’t want a complex solution, I wanted to get a sense of the number of visits and where if any additional traffic was coming from with a privacy focus. I didn’t want to pay. All which Simple Analytics meets.
@@ -74,7 +74,7 @@ The feature set is simple in comparison to Google Analytics, but this is true of
 - Session length
 - Bots excluded by default
 
-**Free features that are nice**
+**Other nice free features**
 - Manage multiple sites (up to 5)
 - Visibility of your dashboard
 - Email reports
@@ -131,7 +131,7 @@ These reports depend on whether you choose between weekly and monthly. These giv
   alt="Text with default leading"
 />
 
-I can see this weeks traffic versus last weeks and whether there are any new referrers or not.
+I can see this weeks traffic versus last weeks and whether there are any new referrers or not. This is handy when most of the time you’re not going to want to inspect much further than this.
 
 ## Respect for users privacy
 The core selling point of Simple Analytics is the privacy element. To understand what this is as there is a level of configuration, depending on what you value.
@@ -155,10 +155,12 @@ With referrers it doesn’t really cover the location it comes from exactly. You
 ### Browser version
 As creators of websites the browser split and versions are quite handy to understand your audience and level of browser support you offer. Whilst this isn’t as big of an issue as it was, I think it would be nice to see browser versions.
 
+Browser version appears to be exposed within goals, so would be good to see it available within the analytics views.
+
 ### A few more metrics
 It may be missing some of what I would consider simpler metrics, such as exit and bounce.
 
-## to do: Goals
-Goals feels like there has been a little bit more attention paid in terms of getting people started with a goal.
+## Finishing thoughts
+Overall, the service can meet some of the complex needs someone may require with additional things like goals and events. Even AI is available to summarise those and your traffic. But for my use case I need an idea of who is visiting and from where.
 
-On entering the page you have some suggestions based on your audience.
+If this suits your needs too then [Simple Analytics](https://www.simpleanalytics.com) is for you.
