@@ -141,11 +141,6 @@ The core selling point of Simple Analytics is the privacy element. To understand
 - Ability to set your dashboard to public additional transparency
 - Missing script notification
 
-## Everything else
-- In paid plans there is detailed event tracking, I may update this post when I have a paid plan
-- UTM is tracked
-- API access, could be interesting to create a popular posts, view counters and things but this allows you to use the iOS app
-
 ## What’s kind of missing
 It’s difficult to critique a free independent service, as it doesn’t have to be free. But there’s a few additions I’d like to see, or maybe I’m missing them.
 
@@ -161,6 +156,6 @@ Browser version appears to be exposed within goals, so would be good to see it a
 It may be missing some of what I would consider simpler metrics, such as exit and bounce.
 
 ## Finishing thoughts
-Overall, the service can meet some of the complex needs someone may require with additional things like goals and events. Even AI is available to summarise those and your traffic. But for my use case I need an idea of who is visiting and from where.
+Overall, the service can meet some of the complex needs someone may require with features like goals, events and the API. You can depend on UTM to also be tracked. Even AI is available to summarise and give an opinion on your traffic.
 
-If this suits your needs too then [Simple Analytics](https://www.simpleanalytics.com) is for you.
+But for my use case I need an idea of who is visiting and from where. If this suits your needs too then [Simple Analytics](https://www.simpleanalytics.com) is for you.
