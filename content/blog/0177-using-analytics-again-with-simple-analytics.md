@@ -23,6 +23,32 @@ I want to write about my experience adding an analytics script back to this webs
 ## TLDR
 **I needed to figure out why my usage was going up dramatically on Netlify**. I didn’t want a complex solution, I wanted to get a sense of the number of visits and where if any additional traffic was coming from with a privacy focus. I didn’t want to pay. All which Simple Analytics meets.
 
+<figure>
+  <Images
+    compare
+    description=“Compare typesetting with and without leading”
+    contextLabel=“Theme”
+    options={[
+      { label: ‘Light’, value: 0 },
+      { label: ‘Dark’, value: 1, default: true }
+    ]}
+  >
+    <Image
+      src=“/images/blog/0177-simple-analytics-05.png”
+      width={800}
+      height={480}
+      alt=“Text with default leading”
+    />
+    <Image
+      src=“/images/blog/0177-simple-analytics-06.png”
+      width={800}
+      height={480}
+      alt=“Text with increased leading”
+    />
+  </Images>
+  <figcaption><p><Fig>1</Fig> A heading and paragraph require different line height due to their line length and size. Toggling between the images shows guides.</p></figcaption>
+</figure>
+
 ## What prompted the need for analytics
 With the move to Next.js and “serverless” hosting services, there’s always the potential for an increase in your bill.
 
@@ -153,7 +179,7 @@ As creators of websites the browser split and versions are quite handy to unders
 ### A few more metrics
 It may be missing some of what I would consider simpler metrics, such as exit and bounce.
 
-### Goals
+### to do: Goals
 Goals feels like there has been a little bit more attention paid in terms of getting people started with a goal.
 
 On entering the page you have some suggestions based on your audience.
