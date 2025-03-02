@@ -179,7 +179,7 @@ As creators of websites the browser split and versions are quite handy to unders
 ### A few more metrics
 It may be missing some of what I would consider simpler metrics, such as exit and bounce.
 
-### to do: Goals
+## to do: Goals
 Goals feels like there has been a little bit more attention paid in terms of getting people started with a goal.
 
 On entering the page you have some suggestions based on your audience.
