@@ -487,21 +487,21 @@
   }
 }
 
-// .prose > img,
-// .prose > figure > img,
-// .prose > figure > :global(.sandbox),
-// .prose > :global(.article-image) > img,
-// .featured {
-//   position: relative;
-//   max-width: none;
-//   left: -1.5rem;
-//   width: calc(100% + 3rem);
-//
-//   @screen md {
-//     left: -2rem;
-//     width: calc(100% + 4rem);
-//   }
-// }
+.prose > img,
+.prose > figure > img,
+.prose > figure > :global(.sandbox),
+.prose > :global(.article-image) > img,
+.featured {
+  position: relative;
+  max-width: none;
+  left: -1.5rem;
+  width: calc(100% + 3rem);
+
+  @screen md {
+    left: -2rem;
+    width: calc(100% + 4rem);
+  }
+}
 
 .prose :global(figcaption) > :global(p) {
   margin: 0;
