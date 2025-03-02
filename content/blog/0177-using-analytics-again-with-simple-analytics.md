@@ -26,21 +26,21 @@ I want to write about my experience adding an analytics script back to this webs
 <figure>
   <Images
     compare
-    description=“Compare typesetting with and without leading”
-    contextLabel=“Theme”
+    description=“Compare typesetting with and without leading“
+    contextLabel=“Theme“
     options={[
       { label: ‘Light’, value: 0 },
       { label: ‘Dark’, value: 1, default: true }
     ]}
   >
     <Image
-      src=“/images/blog/0177-simple-analytics-05.png”
+      src=“/images/blog/0177-simple-analytics-05.png“
       width={800}
       height={480}
       alt=“Text with default leading”
     />
     <Image
-      src=“/images/blog/0177-simple-analytics-06.png”
+      src=“/images/blog/0177-simple-analytics-06.png“
       width={800}
       height={480}
       alt=“Text with increased leading”
