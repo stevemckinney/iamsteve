@@ -46,7 +46,7 @@
   }
 
   figure :where(figcaption, figcaption p) {
-    color: theme('colors.ui.body');
+    color: oklch(26.8% 0.059 173.5 / .6);
     font-family: theme('fontFamily.mono');
     font-size: theme('fontSize.base');
     letter-spacing: -0.03em;
@@ -58,6 +58,11 @@
     font-family: theme('fontFamily.display');
     text-transform: lowercase;
     text-wrap: balance;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) > code {
+    font-family: theme('fontFamily.display');
+    font-weight: inherit;
   }
 
   :where(h1, h2, h3, h4) {
@@ -151,16 +156,20 @@
     color: theme('colors.neutral-03.400');
   }
 
+  ul, ol {
+    list-style-position: inside;
+
+    @screen sm {
+      margin-inline-start: -1em;
+    }
+  }
+
   ul {
     list-style: square;
-    list-style-position: outside;
-    margin-inline-start: -1em;
-    outline: 1px solid red;
   }
 
   ol {
     list-style-type: decimal;
-    list-style-position: outside;
   }
 
   :where(p, li) {
@@ -437,7 +446,7 @@
     // outline: 1px solid greenyellow;
   }
 
-  :where(h2, h3, h4, h5, h6) + :where(p, ol, ul, div, figure),
+  :where(h2, h3, h4, h5, h6) + :where(p, ol, ul, div, figure, kbd),
   :where(p + p, p + ol, p + ul),
   :where(ul + p, ol + p) {
     --block-space: var(--block-space-small);

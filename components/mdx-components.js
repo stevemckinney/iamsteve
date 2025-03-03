@@ -139,7 +139,7 @@ const Shortcut = ({ children }) => {
     }
     return {
       symbol: key,
-      className: 'min-w-[2.25rem] items-center justify-center',
+      className: 'min-w-[3rem] items-center justify-center',
       isSpecial: false,
     }
   }
@@ -205,7 +205,7 @@ const ComparisonImages = ({
 
   return (
     <div
-      className="flex flex-col gap-1 bg-neutral-01-100/80 shadow-placed p-1 -mx-1 rounded-[28px]"
+      className="flex flex-col gap-1 bg-neutral-01-100/80 shadow-placed p-1 -mx-1 sm:-mx-9 rounded-[28px]"
       role="region"
       aria-label={description}
     >
@@ -267,7 +267,7 @@ const ComparisonImages = ({
                   `${description} - ${validOptions[index]?.label || ''} state`
                 }
                 className={`transition-opacity duration-1000 linear data-[active=true]:delay-0
-                  data-[active=false]:delay-150`}
+                  data-[active=false]:delay-150 w-full`}
                 data-active={activeIndex === index}
                 style={{
                   opacity: activeIndex === index ? 1 : 0,
@@ -374,7 +374,7 @@ const components = {
     </figure>
   ),
   GalleryFigcaption: (props) => (
-    <figcaption className="text-ui-body font-body leading-normal pt-4 pb-2 [&>*]:underline [&>*]:text-base">
+    <figcaption className="text-fern-1100/60 font-body leading-normal pt-4 pb-2 [&>*]:underline [&>*]:text-base">
       {props.children}
     </figcaption>
   ),
@@ -402,7 +402,7 @@ const postComponents = {
   Images,
   BentoGridShell,
   Fig: (props) => (
-    <span className="text-fern-600 uppercase">Fig. {props.children}</span>
+    <span className="text-fern-1100/40 uppercase">Fig. {props.children}</span>
   ),
   LinkFigma: (props) => (
     <Link

@@ -74,7 +74,7 @@ It’s an important to use the length of your copy to determine your line height
       alt="Text with increased leading"
     />
   </Images>
-  <figcaption><p><Fig>1</Fig> A heading and paragraph require different line height due to their line length and size. Toggling between the images shows guides.</p></figcaption>
+  <figcaption><p><Fig>1</Fig> A heading and paragraph require different line height due to their line length and size</p></figcaption>
 </figure>
 
 This works for large and small type, as a readable measure still applies. It’s a fine balance because with shorter line lengths it can easily look like there’s too much space between each line and throw off your composition. But for longer line lengths if it’s too tight it will be difficult to read.
@@ -85,7 +85,7 @@ These are the important proportions of a typeface to create balance when creatin
 <figure>
 <Image src="/images/blog/0176-typesetting-line-height-03.svg" width={800} height={480} alt="" />
 <figcaption>
-<Fig>2</Fig> A heading and paragraph require different line height due to their line length and size. Toggling between the images shows guides.
+<Fig>2</Fig> Shows cap height, x height and baseline and how those affect line height
 </figcaption>
 </figure>
 
@@ -99,20 +99,20 @@ Half leading[^1] in the browser based world of design means that half of the lin
 <figure>
 <Image src="/images/blog/0176-typesetting-line-height-04.svg" width={800} height={480} alt="" />
 <figcaption>
-<p><Fig>3</Fig> There are two examples of text here, a large heading and paragraph. The heading would use `0.9` and the paragraph would use `1.5` in CSS.</p>
+<p><Fig>3</Fig> There are two examples of text here, a heading and paragraph</p>
 </figcaption>
 </figure>
 
-The heading’s box is more flush with the text, as there isn’t anything extra to be applied above and below. And this can change the way your spacing looks if not taken into account.
+The heading’s box is more flush with the text, as there isn’t anything extra to be applied above and below. And this can change the way your spacing looks if not taken into account. The line height of the heading uses `0.9` or `90%` and the line height of the paragraph uses `1.5` or `150%`.
 
 <figure>
 <Image src="/images/blog/0176-typesetting-line-height-05.svg" width={800} height={480} alt="" />
 <figcaption>
-<p><Fig>4</Fig> Markers comparing applied spacing values against their optical appearance.</p>
+<p><Fig>4</Fig> Markers comparing applied spacing values against their optical appearance</p>
 </figcaption>
 </figure>
 
-This used to be more of an issue in the days where you used Photoshop or Illustrator to design. But as Figma is the industry standard, expectations between designers and developers around spacing are more aligned.
+This used to be more of an issue in the days where you used Photoshop or Illustrator to design. But as Figma is now the industry standard, expectations between designers and developers around spacing are more aligned.
 
 #### Levelling it out with `text-box`
 As of writing, the method to remove this through `text-box` trimming is gaining traction in terms of browser support[^2] with Safari and Chrome. It’s not quite ready for day to day, but as more users upgrade this should become more viable.
@@ -154,7 +154,7 @@ Like line height, I don’t think you can apply a simple percentage rule to any 
       alt="Text with increased leading"
     />
   </Images>
-  <figcaption><p><Fig>5</Fig> Shows the difference between the heading with tracking on and off. It makes a real difference to the quality of your design.</p></figcaption>
+  <figcaption><p><Fig>5</Fig> Shows the difference between the heading with tracking on and off</p></figcaption>
 </figure>
 
 It takes a little tweaking depending on the typeface you’re using. Think of a display typeface versus a text typeface. Using them at varying sizes will require different extremes of tracking.
@@ -163,6 +163,16 @@ It takes a little tweaking depending on the typeface you’re using. Think of a 
 Everything, whether that is a heading, button, navigation link or whatever else you can think of. It’s sentence case—no exceptions.
 
 It should go without saying but the only exceptions are names or something important like ’I’.
+
+<figure>
+<Image
+  src="/images/blog/0176-typesetting-sentence-case-01.svg"
+  width={800}
+  height={480}
+  alt=""
+/>
+<figcaption><Fig>6</Fig> Shows an example of a title in title case and in sentence case.</figcaption>
+</figure>
 
 Sentence case is superior for readability and remembering the system. Is it the first letter or is it a name? Simple. The inconsistency at which people apply title case is enough to oppose it when setting a style guide.
 
@@ -192,7 +202,7 @@ This is something I feel I always contradict myself with. But like any guidance 
       alt=""
     />
   </Images>
-  <figcaption><p><Fig>5</Fig> Two options of designs with central and left alignment for comparison.</p></figcaption>
+  <figcaption><p><Fig>7</Fig> Two options of designs with central and left alignment for comparison.</p></figcaption>
 </figure>
 
 Anyway, for the vast majority of your design it should be aligned to the left (or right if your language is right to left). It means your right side of text has a ragged edge which makes it easy to scan. It’s most true for articles.
@@ -201,8 +211,6 @@ If your composition works better centrally, it must be a small amount of text. Y
 
 ## Use the correct type of dash
 I’d recently heard a pointer for identifying AI copy was the use of the em dash (—). Which feels unfair, but I see it, AI does like to use them. I hope doesn’t lead to a lack of their use—as I like to use them.
-
-[0176-typesetting-dash]
 
 I do wonder if this comes from the assumption that the judge of the writing assumes the writer doesn’t know how to use them? Which is where I was going with that. And knowing where to use each dash ensures your writing is typographically correct.
 
@@ -226,13 +234,12 @@ I could be wrong here, but that is my understanding.
 ### Composing sentences with em-dashes
 My stylistic preference, when writing a sentence that contains an em-dash it shouldn’t have spaces before and after it. You can use a `&thinsp;` but otherwise no space is preferred.
 
-For example
 > Design is not just what it looks like and feels like — design is how it works
 
 > Design is not just what it looks like and feels like—design is how it works
 
 ### Keyboard shortcuts
-The em and en dash have keyboard shortcuts to access. Hyphen is obvious… but for en-dashes it is
+The en and em dash have the following keyboard shortcuts to access.
 
 #### en-dash
 <Shortcut>option -</Shortcut>
@@ -408,32 +415,11 @@ This is a small detail, but the vast majority of the time and more so with linki
       <span className="text-fern-1100 font-display text-[clamp(1rem,_0.6087rem_+_1.7391vw,_2rem)] block text-center font-normal leading-4xl  text-balance tracking-[-.015em]">Old style is a humanist style of <u>serif</u>. The history of <span className="font-variation-bold">this style goes back to 1465</span>.</span>
     </div>
   </div>
-  <figcaption><Fig>11</Fig> An example of text using emphasis before the end of a sentence</figcaption>
+  <figcaption><Fig>10</Fig> An example of text using emphasis before the end of a sentence</figcaption>
 </figure>
 
 ## Use paragraphs to create help rhythm
 When some things like headings, lists, buttons follow a heading; it can create a sense of awkwardness in an article or design.
-
-<figure>
-<Image
-  src="/images/blog/0176-typesetting-paragraphs-01.png"
-  width={800}
-  height={480}
-  alt=""
-/>
-<figcaption><Fig>12</Fig> yes some things about this image</figcaption>
-</figure>
-
-Why? For me it’s down to the presence of the thing which follows the heading. A heading following a heading may not feel right. A button following a heading will likely feel out of place due to the balance between the elements.
-
-<Image
-  src="/images/blog/0176-typesetting-paragraphs-02.png"
-  width={800}
-  height={480}
-  alt=""
-/>
-
-The spacing flows much better when there is a paragraph to break it up. Your rhythm suffers when there isn’t.
 
 <figure>
   <Images
@@ -446,20 +432,24 @@ The spacing flows much better when there is a paragraph to break it up. Your rhy
     ]}
   >
     <Image
-      src="/images/blog/0176-typesetting-paragraphs-03.svg"
+      src="/images/blog/0176-typesetting-paragraphs-01.png"
       width={800}
       height={480}
       alt=""
     />
     <Image
-      src="/images/blog/0176-typesetting-paragraphs-04.svg"
+      src="/images/blog/0176-typesetting-paragraphs-02.svg"
       width={800}
       height={480}
       alt=""
     />
   </Images>
-  <figcaption><p><Fig>9</Fig> Comparing the difference between a mobile hero design with and without punctuation part of the title and description.</p></figcaption>
+  <figcaption><Fig>11</Fig> Comparison of two text compositions, heading with button, heading with paragraph and button to show the difference in balance.</figcaption>
 </figure>
+
+Why? For me it’s down to the presence of the thing which follows the heading. A heading following a heading may not feel right. A button following a heading will likely feel out of place due to the balance between the elements.
+
+The spacing flows much better when there is a paragraph to break it up. Your rhythm suffers when there isn’t.
 
 Sometimes you can’t avoid it and it shouldn’t be at the expense of unnatural writing or forcing it but it’s a conscious effort I make.
 
@@ -495,8 +485,10 @@ Don’t reach for `<br/>`. Use `<wbr/>` or `&nbsp;`.
 <p>Underlying principles and elements<wbr/>that guide effective and visually appealing design.</p>
 ```
 
+Using a `&nbsp;` (non-breaking space) will ensure you can keep word pairs together and using `<wbr/>` will only insert a `<br/>` when necessary.
+
 ## Ending thoughts
-Taking these rules into account, a balanced approach to typesetting improves both readability and visual appeal.  Paying attention to factors like line height, letter spacing, and alignment makes things more intentional and works within the limitations of the typeface.
+Taking these rules into account, a balanced approach to typesetting improves both readability and visual appeal.  Paying attention to factors like line height, letter spacing, and alignment makes things more intentional and works within the constraints of the chosen typeface.
 
 Keeping in mind the practicality of doing these things ensures your design is maintainable and not introducing more work. However, I have written similarly before with [visual design tips](/blog/visual-design-tips-you-can-apply-immediately) and these posts seem to go down well.
 
