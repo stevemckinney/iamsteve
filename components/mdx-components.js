@@ -210,7 +210,7 @@ const ComparisonImages = ({
       aria-label={description}
     >
       {/* Segmented control */}
-      <div className="flex w-full gap-4 p-1 items-center justify-end">
+      <div className="flex w-full gap-2 p-1 items-center justify-end">
         {/* Context label */}
         {contextLabel && (
           <span className="text-sm text-neutral-01-600 pt-2 pb-1.5">
@@ -218,7 +218,7 @@ const ComparisonImages = ({
           </span>
         )}
         <div
-          className="flex items-center justify-end bg-[rgb(31_21_21/.05)] shadow-[inset_0_1px_1px_-.5px_rgb(31_21_21/.08),inset_0_1px_3px_rgb(31_21_21/.08),_0_1px_3px_rgb(252_249_248/1)] rounded-lg"
+          className="flex items-center justify-end bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-200 shadow-[inset_0_0_0_1px_rgb(162_143_140/.24),inset_0_1px_1px_-0.5px_rgb(162_143_140/.2),inset_0_1px_3px_-1.5px_rgb(162_143_140/.2),inset_0_2px_4px_-2px_rgb(162_143_140/.2),inset_0_3px_6px_-3px_rgb(162_143_140/.2),0_1px_rgb(252_249_248/1),0_1px_1px_rgb(252_249_248/1)] rounded-[18px]"
           role="tablist"
           aria-label="View options"
         >
@@ -229,9 +229,9 @@ const ComparisonImages = ({
               aria-selected={activeIndex === index}
               aria-controls={`view-${index}`}
               className={`
-                transition-all duration-200 rounded-lg shadow-[0_0_0_0_rgb(0_0_0/0)] hover:text-fern-1100 active:shadow-reduced active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in
+                transition-all duration-200 rounded-[18px] shadow-[0_0_0_0_rgb(0_0_0/0)] hover:text-fern-1100 active:shadow-reduced active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in
                 text-sm pt-2 pb-1.5 px-2
-                min-w-16
+                min-w-14
                 ${
                   activeIndex === index
                     ? 'bg-white shadow-placed'
