@@ -73,7 +73,7 @@ export default async function Home() {
         <Frame id="latest">
           <LatestPosts
             posts={postsByDate}
-            title="What's new"
+            title="What’s new"
             linkText="View the archive"
             linkHref="/blog"
           />
