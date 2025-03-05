@@ -467,7 +467,7 @@
 
   > p + figure {
     // outline: 2px solid color(display-p3 0.05 0.721 0.921);
-    margin-block-start: theme('margin.12');
+    margin-block-start: var(--block-space-small);
   }
 
   table {

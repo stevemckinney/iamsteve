@@ -55,7 +55,6 @@ It’s an important to use the length of your copy to determine your line height
   <Images
     compare
     description="Compare typesetting with and without leading"
-    contextLabel="Show guides"
     options={[
       { label: 'Off', value: 0 },
       { label: 'On', value: 1, default: true }
@@ -63,15 +62,15 @@ It’s an important to use the length of your copy to determine your line height
   >
     <Image
       src="/images/blog/0176-typesetting-line-height-01.svg"
-      width={800}
-      height={480}
-      alt="Text with default leading"
+      width={864}
+      height={540}
+      alt=""
     />
     <Image
       src="/images/blog/0176-typesetting-line-height-02.svg"
-      width={800}
-      height={480}
-      alt="Text with increased leading"
+      width={864}
+      height={540}
+      alt=""
     />
   </Images>
   <figcaption><p><Fig>1</Fig> A heading and paragraph require different line height due to their line length and size</p></figcaption>
@@ -83,7 +82,7 @@ This works for large and small type, as a readable measure still applies. It’s
 These are the important proportions of a typeface to create balance when creating your text composition. Spacing is applied using the ‘box’ of the type across web and some design tools by default—I’ll get into this and `text-box-trim` shortly.
 
 <figure>
-<Image src="/images/blog/0176-typesetting-line-height-03.svg" width={800} height={480} alt="" />
+<Image src="/images/blog/0176-typesetting-line-height-03.svg" width={864} height={540} alt="" />
 <figcaption>
 <Fig>2</Fig> Shows cap height, x height and baseline and how those affect line height
 </figcaption>
@@ -97,7 +96,7 @@ Using a combination of baseline, cap-height and x-height to choose your spacing 
 Half leading[^1] in the browser based world of design means that half of the line height is applied to the top and the bottom of your text box.
 
 <figure>
-<Image src="/images/blog/0176-typesetting-line-height-04.svg" width={800} height={480} alt="" />
+<Image src="/images/blog/0176-typesetting-line-height-04.svg" width={864} height={540} alt="" />
 <figcaption>
 <p><Fig>3</Fig> There are two examples of text here, a heading and paragraph</p>
 </figcaption>
@@ -106,7 +105,7 @@ Half leading[^1] in the browser based world of design means that half of the lin
 The heading’s box is more flush with the text, as there isn’t anything extra to be applied above and below. And this can change the way your spacing looks if not taken into account. The line height of the heading uses `0.9` or `90%` and the line height of the paragraph uses `1.5` or `150%`.
 
 <figure>
-<Image src="/images/blog/0176-typesetting-line-height-05.svg" width={800} height={480} alt="" />
+<Image src="/images/blog/0176-typesetting-line-height-05.svg" width={864} height={540} alt="" />
 <figcaption>
 <p><Fig>4</Fig> Markers comparing applied spacing values against their optical appearance</p>
 </figcaption>
@@ -127,30 +126,29 @@ Like line height, I don’t think you can apply a simple percentage rule to any 
 <figure>
   <Images
     compare
-    description="Compare typesetting with and without leading"
-    contextLabel="Tracking"
+    description="Compare typesetting with and without tracking"
     options={[
-      { label: 'Off', value: 0 },
-      { label: 'On', value: 1, default: true },
-      { label: 'Both', value: 2 }
+      { label: 'Off', value: 0, default: true },
+      { label: 'Tracking', value: 1 },
+      { label: 'Compare', value: 2 }
     ]}
   >
     <Image
       src="/images/blog/0176-typesetting-letter-spacing-01.svg"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt="Text with default leading"
     />
     <Image
       src="/images/blog/0176-typesetting-letter-spacing-02.svg"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt="Text with increased leading"
     />
     <Image
       src="/images/blog/0176-typesetting-letter-spacing-03.svg"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt="Text with increased leading"
     />
   </Images>
@@ -167,8 +165,8 @@ It should go without saying but the only exceptions are names or something impor
 <figure>
 <Image
   src="/images/blog/0176-typesetting-sentence-case-01.svg"
-  width={800}
-  height={480}
+  width={864}
+  height={540}
   alt=""
 />
 <figcaption><Fig>6</Fig> Shows an example of a title in title case and in sentence case.</figcaption>
@@ -183,7 +181,6 @@ This is something I feel I always contradict myself with. But like any guidance 
   <Images
     compare
     description="Options of designs with left and centralised alignment of text"
-    contextLabel="Options"
     options={[
       { label: '1', value: 0, default: true },
       { label: '2', value: 1 }
@@ -191,14 +188,14 @@ This is something I feel I always contradict myself with. But like any guidance 
   >
     <Image
       src="/images/blog/0176-typesetting-left-aligned-01.png"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
     <Image
       src="/images/blog/0176-typesetting-left-aligned-02.png"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
   </Images>
@@ -250,7 +247,15 @@ The en and em dash have the following keyboard shortcuts to access.
 ## Use the correct quotes
 I’ve put this before in a previous article, but let’s go over it again. There’s straight quotes and curly quotes. Curly quotes are more complementary with your typeface.
 
-[0176-typesetting-quotes]
+<figure>
+  <Image
+    src="/images/blog/0176-typesetting-quotes-01.svg"
+    width={864}
+    height={540}
+    alt=""
+  />
+  <figcaption><p><Fig>8</Fig> Left are straight quotes, right are curly quotes</p></figcaption>
+</figure>
 
 The best reference for the usage of quotes smartquotesforsmartpeople.com. The shortcuts are fairly simple, but it’s better if you have something to do it automatically for you as it can be easily missed.
 
@@ -275,7 +280,6 @@ The aim with hanging punctuation is keeping a clear key line. Overall, it helps 
   <Images
     compare
     description="Hanging quote comparison"
-    contextLabel="Hanging punctuation"
     options={[
       { label: 'Off', value: 0, default: true },
       { label: 'On', value: 1 }
@@ -283,18 +287,18 @@ The aim with hanging punctuation is keeping a clear key line. Overall, it helps 
   >
     <Image
       src="/images/blog/0176-typesetting-hanging-quote-01.png"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
     <Image
       src="/images/blog/0176-typesetting-hanging-quote-02.png"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
   </Images>
-  <figcaption><p><Fig>12</Fig> Comparing the difference between a body of text with and without hanging quotes.</p></figcaption>
+  <figcaption><p><Fig>9</Fig> Comparing the difference between a body of text with and without hanging quotes.</p></figcaption>
 </figure>
 
 Across these examples, you can see the difference hanging the quotes makes to the flow of the writing. I like it as a design detail as it gives an opportunity to add a little flair without being disruptive.
@@ -303,7 +307,6 @@ Across these examples, you can see the difference hanging the quotes makes to th
   <Images
     compare
     description="Hanging lists comparison"
-    contextLabel="Hanging punctuation"
     options={[
       { label: 'Off', value: 0, default: true },
       { label: 'On', value: 1 }
@@ -311,25 +314,25 @@ Across these examples, you can see the difference hanging the quotes makes to th
   >
     <Image
       src="/images/blog/0176-typesetting-hanging-list-01.png"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
     <Image
       src="/images/blog/0176-typesetting-hanging-list-02.png"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
   </Images>
-  <figcaption><p><Fig>12</Fig> Comparing the difference between a body of text with and without hanging lists.</p></figcaption>
+  <figcaption><p><Fig>10</Fig> Comparing the difference between a body of text with and without hanging lists.</p></figcaption>
 </figure>
 
 ### With CSS use hanging-punctuation
 To achieve it for all the cases you may require it was a challenge, until `hanging-punctuation` came about.
 
 <figure>
-```css
+```css showLineNumbers title="hanging-punctuation-options.css"
 p {
   hanging-punctuation: none;
   hanging-punctuation: first;
@@ -353,7 +356,6 @@ I will try to avoid punctuation in a title because it looks messy. I find it’s
   <Images
     compare
     description="Showing removal of punctuation from the hero"
-    contextLabel="Punctuation"
     options={[
       { label: 'Off', value: 0 },
       { label: 'On', value: 1, default: true }
@@ -361,18 +363,18 @@ I will try to avoid punctuation in a title because it looks messy. I find it’s
   >
     <Image
       src="/images/blog/0176-typesetting-punctuation-07.svg"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
     <Image
       src="/images/blog/0176-typesetting-punctuation-06.svg"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
   </Images>
-  <figcaption><p><Fig>7</Fig> Comparing the difference between a mobile hero design with and without punctuation part of the title and description.</p></figcaption>
+  <figcaption><p><Fig>11</Fig> Comparing the difference between a mobile hero design with and without punctuation part of the title and description.</p></figcaption>
 </figure>
 
 ### Watch out for full stops in centralised titles
@@ -382,7 +384,6 @@ It’s something that can optically throw off the balance of your heading. It st
   <Images
     compare
     description="Showing removal of punctuation from the hero"
-    contextLabel="Punctuation"
     options={[
       { label: 'Off', value: 0 },
       { label: 'On', value: 1, default: true }
@@ -390,18 +391,18 @@ It’s something that can optically throw off the balance of your heading. It st
   >
     <Image
       src="/images/blog/0176-typesetting-punctuation-04.svg"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
     <Image
       src="/images/blog/0176-typesetting-punctuation-03.svg"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
   </Images>
-  <figcaption><p><Fig>9</Fig> Comparing the difference between a mobile hero design with and without punctuation part of the title and description.</p></figcaption>
+  <figcaption><p><Fig>12</Fig> Comparing the difference between a mobile hero design with and without punctuation part of the title and description.</p></figcaption>
 </figure>
 
 On a separate note, it’s similar to hanging punctuation. Where you have a central title with a full stop at the end the final line will feel off optically.
@@ -415,7 +416,7 @@ This is a small detail, but the vast majority of the time and more so with linki
       <span className="text-fern-1100 font-display text-[clamp(1rem,_0.6087rem_+_1.7391vw,_2rem)] block text-center font-normal leading-4xl  text-balance tracking-[-.015em]">Old style is a humanist style of <u>serif</u>. The history of <span className="font-variation-bold">this style goes back to 1465</span>.</span>
     </div>
   </div>
-  <figcaption><Fig>10</Fig> An example of text using emphasis before the end of a sentence</figcaption>
+  <figcaption><Fig>13</Fig> An example of text using emphasis before the end of a sentence</figcaption>
 </figure>
 
 ## Use paragraphs to create help rhythm
@@ -425,7 +426,6 @@ When some things like headings, lists, buttons follow a heading; it can create a
   <Images
     compare
     description="Showing addition of a paragraph to the hero design"
-    contextLabel="Paragraph"
     options={[
       { label: 'Off', value: 0, default: true },
       { label: 'On', value: 1 }
@@ -433,18 +433,18 @@ When some things like headings, lists, buttons follow a heading; it can create a
   >
     <Image
       src="/images/blog/0176-typesetting-paragraphs-01.png"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
     <Image
       src="/images/blog/0176-typesetting-paragraphs-02.svg"
-      width={800}
-      height={480}
+      width={864}
+      height={540}
       alt=""
     />
   </Images>
-  <figcaption><Fig>11</Fig> Comparison of two text compositions, heading with button, heading with paragraph and button to show the difference in balance.</figcaption>
+  <figcaption><Fig>14</Fig> Comparison of two text compositions, heading with button, heading with paragraph and button to show the difference in balance.</figcaption>
 </figure>
 
 Why? For me it’s down to the presence of the thing which follows the heading. A heading following a heading may not feel right. A button following a heading will likely feel out of place due to the balance between the elements.
