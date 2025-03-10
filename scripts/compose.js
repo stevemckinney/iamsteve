@@ -60,13 +60,13 @@ const genFrontMatter = (answers) => {
   lastmod: "${date}"
   summary:
   metadesc:
-  theme: "#f1e8e4"
+  theme: "#fcf9f8"
   tags: []
   categories: ${JSON.stringify(answers.categories)}
   images: []
-  large: false # /images/blog/${imageBase}.svg
-  medium: false # /images/blog/${imageBase}-medium.svg
-  ogImage: "/opengraph-image.png"
+  large: false # /images/blog/${nextId}-${imageBase}-featured-image.svg
+  medium: false # /images/blog/${nextId}-${imageBase}-featured-image-medium.svg
+  ogImage: "/opengraph-image.png" # /images/blog/${nextId}-${imageBase}-opengraph-image.png
   status: ${answers.status}
   codepen: false
   twitter: false

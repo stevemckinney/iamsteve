@@ -1,17 +1,17 @@
 ---
 title: Rules I follow when typesetting
-date: "2025-02-18T08:37:00.168Z"
-lastmod: "2025-02-18T08:37:00.168Z"
+date: "2025-03-10T08:37:00.168Z"
+lastmod: "2025-03-10T08:37:00.168Z"
 summary: I’ve developed some habits over the years when it comes to the display of text in a design with the aim of readability and aesthetic balance. And it feels like it could be useful to document this.
 metadesc: I’ve developed some habits over the years when it comes to the display of text in a design with the aim of readability and aesthetic balance. And it feels like it could be useful to document this.
-theme: "#f1e8e4"
+theme: "#fcf9f8"
 tags: []
-categories: ["Typography","Design"]
+categories: ["Design", "Typography"]
 images: []
-large: "" # /images/blog/rules-i-follow-when-typesetting.svg
-medium: "" # /images/blog/rules-i-follow-when-typesetting.svg
-ogImage: "/opengraph-image.png"
-status: draft
+large: "/images/blog/0176-typesetting-featured-image.svg"
+medium: "/images/blog/0176-typesetting-featured-image-medium.svg"
+ogImage: "/images/blog/0176-typesetting-opengraph-image.png"
+status: open
 codepen: false
 twitter: false
 id: 176
@@ -29,7 +29,7 @@ It’s important to aim for the ideal, but not to the detriment of creating some
 5. Use the correct type of dash
 6. Use the correct quotes
 7. Hanging lists and punctuation
-8. Avoid sentences or punctuating titles where possible
+8. Avoid punctuating titles where possible
 9. When emphasising, highlighting or linking text watch out for punctuation
 10. Use paragraphs to create help rhythm
 11. Avoid orphans and widows
@@ -129,7 +129,7 @@ Like line height, I don’t think you can apply a simple percentage rule to any 
     description="Compare typesetting with and without tracking"
     options={[
       { label: 'Off', value: 0, default: true },
-      { label: 'Tracking', value: 1 },
+      { label: 'On', value: 1 },
       { label: 'Compare', value: 2 }
     ]}
   >
@@ -349,7 +349,7 @@ The browser support is poor as of writing[^4]—but it presents a future with gr
 
 Although, I like hanging punctuation for the alignment reason, it can be challenging to always achieve it on smaller screens with the more restricted space.
 
-## Avoid sentences or punctuating titles where possible
+## Avoid punctuating titles where possible
 I will try to avoid punctuation in a title because it looks messy. I find it’s difficult to apply with consistency. If one title is punctuated it will stand out more when another isn’t.
 
 <figure>
@@ -425,10 +425,10 @@ When some things like headings, lists, buttons follow a heading; it can create a
 <figure>
   <Images
     compare
-    description="Showing addition of a paragraph to the hero design"
+    description="Showing addition of a paragraph to the design"
     options={[
-      { label: 'Off', value: 0, default: true },
-      { label: 'On', value: 1 }
+      { label: '1', value: 0, default: true },
+      { label: '2', value: 1 }
     ]}
   >
     <Image
@@ -456,6 +456,16 @@ Sometimes you can’t avoid it and it shouldn’t be at the expense of unnatural
 ## Avoid widows
 Widows can create some awkwardness in your design. A widow is a single word or short line of text. So where you have greater control over the flow of text in a component you can try to ensure it doesn’t happen.
 
+<figure>
+  <Image
+    src="/images/blog/0176-typesetting-widows-01.png"
+    width={864}
+    height={540}
+    alt=""
+  />
+  <figcaption><Fig>15</Fig> Comparison of two text compositions with and without a widow.</figcaption>
+</figure>
+
 ### CSS text-wrap can handle it
 Before `text-wrap` it would be generally pointless to try cover every possible case of a widow in your design. But now with CSS you have two options to control text wrapping.
 
@@ -480,7 +490,7 @@ Methods for manually balancing titles or keeping word groups together is worth k
 
 Don’t reach for `<br/>`. Use `<wbr/>` or `&nbsp;`.
 
-```html
+```html title="hero.html" showLineNumbers
 <h1>Fundamentals of visual&nbsp;design</h1>
 <p>Underlying principles and elements<wbr/>that guide effective and visually appealing design.</p>
 ```

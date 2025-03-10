@@ -1,24 +1,24 @@
 ---
 title: Using analytics again with simple analytics
-date: "2025-02-24T18:43:42.460Z"
-lastmod: "2025-02-24T18:43:42.460Z"
+date: "2025-03-10T12:43:42.460Z"
+lastmod: "2025-03-10T12:43:42.460Z"
 summary: I was seeing an increase in my ‘serverless’ usage and it didn’t make sense. So I decided to add Simple Analytics and wanted to share a review of this privacy focused service.
 metadesc: My review of Simple Analytics
-theme: "#f1e8e4"
+theme: "#fcf9f8"
 tags: []
 categories: ["Website"]
 images: []
-large: "" # /images/blog/using-analytics-again-with-simple-analytics.svg
-medium: "" # /images/blog/using-analytics-again-with-simple-analytics-medium.svg
-ogImage: "/opengraph-image.png"
-status: draft
+large: "/images/blog/0177-simple-analytics-featured-image.svg"
+medium: "/images/blog/0177-simple-analytics-featured-image-medium.svg"
+ogImage: "/images/blog/0177-simple-analytics-opengraph-image.png"
+status: open
 codepen: false
 twitter: false
 id: 177
 fileroot: using-analytics-again-with-simple-analytics
 ---
 
-I want to write about my experience adding an analytics script back to this website with [Simple Analytics](https://www.simpleanalytics.com)
+I want to write about my experience adding an analytics script back to this website with [Simple Analytics](https://www.simpleanalytics.com).
 
 ## TLDR
 **I needed to figure out why my usage was going up dramatically on Netlify**. I didn’t want a complex solution, I wanted to get a sense of the number of visits and where if any additional traffic was coming from with a privacy focus. I didn’t want to pay. All which Simple Analytics meets.
@@ -27,7 +27,6 @@ I want to write about my experience adding an analytics script back to this webs
   <Images
     compare
     description="Simple Analytics light and dark theme"
-    contextLabel="Theme"
     options={[
       { label: 'Light', value: 0 },
       { label: 'Dark', value: 1, default: true }
@@ -91,12 +90,16 @@ With simple analytics it’s like other services you drop in a script, get confi
 ### It’s simple to get updates
 I want to view my dashboard and not have to dig and click to get an idea what’s happening. As soon as I go into Simple Analytics I can get an overview of how my site is doing.
 
+<figure>
 <Image
   src="/images/blog/0177-simple-analytics-01.png"
   width={800}
   height={480}
-  alt="Text with default leading"
+  alt=""
 />
+
+<figcaption><Fig>2</Fig> Showing the glanceable data on loading your dashboard</figcaption>
+</figure>
 
 ### Managing multiple sites is easy
 Again, in addition to getting updates I was working on a website for one of my clients and there was no idea of the traffic levels.
@@ -108,12 +111,14 @@ And I went to my dashboard and had a site setup within minutes. It’s an unfair
 ### Data accuracy appears to be good
 By default bots and things are excluded, it mentions that 95% of bots should be blocked. You can also enable advanced robot blocking as a paid user and I would assume that would get closer to the 100%.
 
+<figure>
 <Image
   src="/images/blog/0177-simple-analytics-04.png"
   width={800}
   height={480}
-  alt="Text with default leading"
 />
+<figcaption><Fig>3</Fig> A view of my dashboard showing the data available</figcaption>
+</figure>
 
 My previous experiences here with Google Analytics you have to configure yourself which is a pain. So it’s nice that the majority is covered.
 
@@ -124,12 +129,15 @@ You can’t expect total accuracy and no one should with the use of ad blockers.
 ### Email reports
 These reports depend on whether you choose between weekly and monthly. These give a quick overview which is easy to understand.
 
+<figure>
 <Image
   src="/images/blog/0177-simple-analytics-02.png"
   width={800}
   height={480}
-  alt="Text with default leading"
+  alt=""
 />
+<figcaption><Fig>4</Fig> What you receive by email</figcaption>
+</figure>
 
 I can see this weeks traffic versus last weeks and whether there are any new referrers or not. This is handy when most of the time you’re not going to want to inspect much further than this.
 
