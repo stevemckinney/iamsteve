@@ -10,22 +10,21 @@ const Category = ({
   className = 'category',
   children,
 }) => {
-  const title = Categories.findIndex((category) => category.title === children)
+  // Find the category object directly instead of using findIndex
+  const category = Categories.find((category) => category.title === children)
   const slugger = new GithubSlugger()
-  const category = Categories[title]
 
-  const theme = category.theme !== undefined ? category.theme : 'cornflour'
-  const icon = category.icon !== undefined ? category.icon : 'folder'
-  // const theme = 'dandelion'
-  // const icon = 'folder'
+  // Provide fallbacks if category isn't found
+  const theme = category?.theme || 'cornflour'
+  const icon = category?.icon || 'folder'
 
   if (badge) {
     return (
       <Badge
         href={`/category/${slugger.slug(children)}`}
         rel="category tag"
-        theme={`${theme}`}
-        iconStart={`${icon}`}
+        theme={theme}
+        iconStart={icon}
         size={size}
         className={className}
       >
@@ -41,7 +40,7 @@ const Category = ({
       >
         <Icon
           className={`text-current flex-shrink-0`}
-          icon={category.icon}
+          icon={icon}
           size={size}
         />
         {children}
@@ -51,14 +50,14 @@ const Category = ({
 }
 
 export function CategoryItem({ ...props }) {
-  const title = Categories.findIndex((category) => category.title === children)
-  const slugger = new GithubSlugger()
-  const category = Categories[title]
   const { className, children, size } = props
+  const category = Categories.find((category) => category.title === children)
+  const slugger = new GithubSlugger()
+  const icon = category?.icon || 'folder'
 
   return (
     <Link href={`/category/${slugger.slug(children)}`} className={className}>
-      <Icon className={`text-current`} icon={category.icon} size={size} />
+      <Icon className={`text-current`} icon={icon} size={size} />
       {children}
     </Link>
   )

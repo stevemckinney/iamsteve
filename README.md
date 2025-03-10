@@ -3,7 +3,10 @@
 # iamsteve.me design & code blog
 A design and code blog using Next.js with App Router.
 
-## Development
+## Quick start
+<details>
+<summary>Development setup</summary>
+
 First, run the development server:
 
 ```bash
@@ -15,25 +18,72 @@ pnpm dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+</details>
 
-## Post
-Posts are made up of a bunch of frontmatter, some of it isn’t required, but was more for futureproofing when moving from a database to file based editing.
+## Creating posts
+<details>
+<summary>How to create and manage blog posts</summary>
 
-### To start
-Run `node ./scripts/compose.js` to begin a new post.
-
-This will offer prompts for a few frontmatter and generate dates for you.
-
-### Frontmatter
-Here's an example of a post's frontmatter:
-
+### Starting a new post
+1. Create a new branch:
+```bash
+git checkout -b post/your-post-name
 ```
+
+2. Generate the post:
+```bash
+node ./scripts/compose.js
+```
+
+3. Follow the prompts for:
+   - Post title
+   - File extension (md or mdx)
+   - Post status (open, draft, closed)
+
+### Post structure
+Posts can be created in two formats:
+
+1. Single file:
+```
+content/blog/0177-your-post-title.mdx
+```
+
+2. Directory with index file (for posts with assets):
+```
+content/blog/0177-your-post-title/
+  ├── index.mdx
+  ├── image.png
+  └── other-assets/
+```
+
+### Post id system
+- IDs are automatically managed:
+  - `compose.js` scans existing posts to assign the next available ID
+  - GitHub Actions handle ID conflicts during pull requests
+  - Pre-merge-commit hook ensures ID uniqueness when merging
+
+### Publishing workflow
+1. Create your post on a new branch
+2. Make your changes and commit
+3. Create a pull request
+4. The system will automatically:
+   - Check for ID conflicts
+   - Update IDs if needed
+   - Handle merging safely
+</details>
+
+## Post configuration
+<details>
+<summary>Frontmatter and image requirements</summary>
+
+Example frontmatter:
+```yaml
 ---
 title: "Visual design tips you can apply immediately"
 date: "2017-07-04T11:51:00+00:00"
 lastmod: "2019-10-04T07:24:49+00:00"
 summary: "Add a little extra polish to any of your designs with these tips."
-metadesc: "When designing there are things you can rely upon regardless of the situation. These are things which add extra polish, and are generally hidden to the untrained eye."
+metadesc: "When designing there are things you can rely upon regardless of the situation."
 theme: "#fff7e0"
 tags: ["Design"]
 categories: ["Design"]
@@ -47,15 +97,19 @@ fileroot: "visual-design-tips-you-can-apply-immediately"
 ---
 ```
 
-Some of this frontmatter is excessive, but necessary for futureproofing to an extent. The less obvious ones are detailed below:
-
-- `images` isn’t to be used, I had plans to use it as an array but it felt clunky
-- `large` the main image and should be `592x368` in SVG
-- `medium` `384x240` in SVG
-- `ogImage` for custom post opengraph images, not required, but there if needed
-- `status` is a carry over from the previous expressionengine days `open`, `draft` or `closed` are options
-- `id` this will be unique and update the `.current-post-id` file with this to keep track, a rudimentary way of keeping track
-- `fileroot` is a slug and again acts like a placeholder, I personally use this to grab the filename without `id` to use for naming images
+### Field descriptions
+- `large`: Main image (592x368 SVG)
+- `medium`: Medium image (384x240 SVG)
+- `ogImage`: Custom post opengraph image (optional)
+- `status`: Post status (open, draft, closed)
+- `id`: Unique post identifier (managed automatically)
+- `fileroot`: Slug used for image naming
+- `images`: Legacy field (not in use)
+</details>
 
 ## Credits
+<details>
+<summary>Acknowledgements</summary>
+
 The codebase started from the excellent [tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog) and has since evolved from that.
+</details>
