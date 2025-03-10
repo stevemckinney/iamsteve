@@ -399,7 +399,18 @@ const postComponents = {
   h1: (props) => <h1 {...props} className="text-2xl font-bold" />,
   h2: (props) => <h2 {...props} className="text-xl" />,
   p: (props) => <p {...props} className="mt-2" />,
-  ul: (props) => <ul {...props} className="list-disc pl-5" />,
+  ul: (props) => (
+    <ul
+      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-[square] [li::marker]-[theme('colors.neutral-03.400')] mb-3"
+      {...props}
+    />
+  ),
+  ol: (props) => (
+    <ol
+      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-[decimal] [li::marker]-[theme('colors.neutral-03.400')] mb-3"
+      {...props}
+    />
+  ),
   li: (props) => <li {...props} />,
   Image,
   a: (props) => <Link {...props} />,

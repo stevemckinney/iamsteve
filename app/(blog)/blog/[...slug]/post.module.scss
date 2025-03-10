@@ -151,27 +151,6 @@
     font-size: 112.5%;
   }
 
-  ol > li::marker,
-  ul > li::marker {
-    color: theme('colors.neutral-03.400');
-  }
-
-  ul, ol {
-    list-style-position: inside;
-
-    @screen sm {
-      margin-inline-start: -1em;
-    }
-  }
-
-  ul {
-    list-style: square;
-  }
-
-  ol {
-    list-style-type: decimal;
-  }
-
   :where(p, li) {
     color: theme('colors.ui.body');
     text-wrap: pretty;

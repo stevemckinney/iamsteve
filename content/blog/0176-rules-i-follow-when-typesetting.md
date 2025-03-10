@@ -22,6 +22,7 @@ When writing or typesetting a design, I have things I follow in terms of creatin
 
 It’s important to aim for the ideal, but not to the detriment of creating something unmaintainable.
 
+**Here’s a breakdown**
 1. Line height is proportional to size
 2. Letter spacing or tracking is proportional to size
 3. Everything is sentence case
