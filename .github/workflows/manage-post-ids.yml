@@ -29,21 +29,22 @@ jobs:
           cat > manage-post-ids.js << 'EOF'
           const fs = require('fs')
           const path = require('path')
-
+          const { execSync } = require('child_process')
+          
           function findPostFiles(dir) {
             let results = []
             const items = fs.readdirSync(dir)
-
+          
             items.forEach(item => {
               const fullPath = path.join(dir, item)
               const stat = fs.statSync(fullPath)
-
+          
               if (stat.isDirectory()) {
                 if (item.match(/^\d{4}-/) || fs.existsSync(path.join(fullPath, 'index.md')) || fs.existsSync(path.join(fullPath, 'index.mdx'))) {
                   const indexFile = fs.existsSync(path.join(fullPath, 'index.mdx'))
                     ? path.join(fullPath, 'index.mdx')
                     : path.join(fullPath, 'index.md')
-
+          
                   if (fs.existsSync(indexFile)) {
                     results.push(indexFile)
                   }
@@ -54,78 +55,103 @@ jobs:
                 results.push(fullPath)
               }
             })
-
+          
             return results
           }
-
+          
           function getPostId(filePath) {
             const content = fs.readFileSync(filePath, 'utf8')
             const parentDir = path.dirname(filePath)
             const parentDirName = path.basename(parentDir)
             const fileName = path.basename(filePath)
-
+          
             const idMatch = parentDirName.match(/^(\d{4})-/) || fileName.match(/^(\d{4})-/)
             const fileId = idMatch ? parseInt(idMatch[1]) : 0
-
+          
             const frontmatterMatch = content.match(/id:\s*(\d+)/)
             const frontmatterId = frontmatterMatch ? parseInt(frontmatterMatch[1]) : 0
-
+          
             return Math.max(fileId, frontmatterId)
           }
-
+          
           function updatePostId(filePath, newId) {
             const paddedId = String(newId).padStart(4, '0')
             const dir = path.dirname(filePath)
             const parentDir = path.dirname(dir)
             const fileName = path.basename(filePath)
             const dirName = path.basename(dir)
-
+          
             let content = fs.readFileSync(filePath, 'utf8')
             content = content.replace(/id:\s*\d+/, `id: ${newId}`)
-
+          
             if (fileName === 'index.md' || fileName === 'index.mdx') {
               const newDirName = dirName.replace(/^\d{4}-/, `${paddedId}-`)
               const newDir = path.join(parentDir, newDirName)
-
+          
               fs.writeFileSync(filePath, content)
-              fs.renameSync(dir, newDir)
-
+              if (dirName !== newDirName) {
+                fs.renameSync(dir, newDir)
+              }
+          
               return path.join(newDir, fileName)
             } else {
               const newFileName = fileName.replace(/^\d{4}-/, `${paddedId}-`)
               const newPath = path.join(dir, newFileName)
-
+          
               fs.writeFileSync(filePath, content)
-              fs.renameSync(filePath, newPath)
-
+              if (fileName !== newFileName) {
+                fs.renameSync(filePath, newPath)
+              }
+          
               return newPath
             }
           }
-
+          
           try {
             const blogDir = path.join(process.cwd(), 'content/blog')
-
+            
             // Get all posts from main branch
             const existingPosts = findPostFiles(blogDir)
-            const highestId = Math.max(0, ...existingPosts.map(file => getPostId(file)))
-
-            // Get posts in the PR
-            const prPosts = findPostFiles(blogDir)
+            const existingIds = new Set(existingPosts.map(file => getPostId(file)))
+            const highestId = Math.max(0, ...existingIds)
+            
+            // Get the list of files changed in the PR
+            const changedFiles = execSync('git diff --name-only origin/main...HEAD')
+              .toString()
+              .trim()
+              .split('\n')
+              .filter(file => file.startsWith('content/blog/'))
+            
+            // Only process files that were actually changed in the PR
+            const prPosts = changedFiles
+              .map(file => path.join(process.cwd(), file))
+              .filter(file => fs.existsSync(file))
+            
             let nextId = highestId
             let updatedFiles = false
-
-            // Update IDs of any PR files that conflict with existing IDs
-            prPosts.forEach(filePath => {
-              const currentId = getPostId(filePath)
-              if (currentId <= highestId) {
-                nextId++
-                updatePostId(filePath, nextId)
-                updatedFiles = true
+            
+            // Update IDs only if there's an actual conflict
+            for (const filePath of prPosts) {
+              try {
+                const currentId = getPostId(filePath)
+                
+                // Only update if this ID already exists in main branch
+                if (existingIds.has(currentId) && currentId !== 0) {
+                  console.log(`ID conflict detected for ${filePath} with ID ${currentId}`)
+                  nextId++
+                  const newPath = updatePostId(filePath, nextId)
+                  console.log(`Updated to ID ${nextId}: ${newPath}`)
+                  updatedFiles = true
+                }
+              } catch (err) {
+                console.log(`Error processing ${filePath}: ${err.message}`)
               }
-            })
-
+            }
+            
             if (updatedFiles) {
               console.log('::set-output name=files-updated::true')
+            } else {
+              console.log('No ID conflicts found, no files updated')
             }
           } catch (error) {
             console.error('Error:', error)
