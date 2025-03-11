@@ -116,6 +116,7 @@ By default bots and things are excluded, it mentions that 95% of bots should be 
   src="/images/blog/0177-simple-analytics-04.png"
   width={800}
   height={480}
+  alt=""
 />
 <figcaption><Fig>3</Fig> A view of my dashboard showing the data available</figcaption>
 </figure>
