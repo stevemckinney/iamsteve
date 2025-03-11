@@ -29,6 +29,7 @@ jobs:
           cat > manage-post-ids.js << 'EOF'
           const fs = require('fs')
           const path = require('path')
+          const { execSync } = require('child_process')
 
           function findPostFiles(dir) {
             let results = []
@@ -88,7 +89,9 @@ jobs:
               const newDir = path.join(parentDir, newDirName)
 
               fs.writeFileSync(filePath, content)
-              fs.renameSync(dir, newDir)
+              if (dirName !== newDirName) {
+                fs.renameSync(dir, newDir)
+              }
 
               return path.join(newDir, fileName)
             } else {
@@ -96,7 +99,9 @@ jobs:
               const newPath = path.join(dir, newFileName)
 
               fs.writeFileSync(filePath, content)
-              fs.renameSync(filePath, newPath)
+              if (fileName !== newFileName) {
+                fs.renameSync(filePath, newPath)
+              }
 
               return newPath
             }
@@ -107,25 +112,46 @@ jobs:
 
             // Get all posts from main branch
             const existingPosts = findPostFiles(blogDir)
-            const highestId = Math.max(0, ...existingPosts.map(file => getPostId(file)))
+            const existingIds = new Set(existingPosts.map(file => getPostId(file)))
+            const highestId = Math.max(0, ...existingIds)
 
-            // Get posts in the PR
-            const prPosts = findPostFiles(blogDir)
+            // Get the list of files changed in the PR
+            const changedFiles = execSync('git diff --name-only origin/main...HEAD')
+              .toString()
+              .trim()
+              .split('\n')
+              .filter(file => file.startsWith('content/blog/'))
+
+            // Only process files that were actually changed in the PR
+            const prPosts = changedFiles
+              .map(file => path.join(process.cwd(), file))
+              .filter(file => fs.existsSync(file))
+
             let nextId = highestId
             let updatedFiles = false
 
-            // Update IDs of any PR files that conflict with existing IDs
-            prPosts.forEach(filePath => {
-              const currentId = getPostId(filePath)
-              if (currentId <= highestId) {
-                nextId++
-                updatePostId(filePath, nextId)
-                updatedFiles = true
+            // Update IDs only if there's an actual conflict
+            for (const filePath of prPosts) {
+              try {
+                const currentId = getPostId(filePath)
+
+                // Only update if this ID already exists in main branch
+                if (existingIds.has(currentId) && currentId !== 0) {
+                  console.log(`ID conflict detected for ${filePath} with ID ${currentId}`)
+                  nextId++
+                  const newPath = updatePostId(filePath, nextId)
+                  console.log(`Updated to ID ${nextId}: ${newPath}`)
+                  updatedFiles = true
+                }
+              } catch (err) {
+                console.log(`Error processing ${filePath}: ${err.message}`)
               }
-            })
+            }
 
             if (updatedFiles) {
               console.log('::set-output name=files-updated::true')
+            } else {
+              console.log('No ID conflicts found, no files updated')
             }
           } catch (error) {
             console.error('Error:', error)
