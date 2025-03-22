@@ -77,11 +77,11 @@ async function Collections() {
                           .replace(/\/$/, '')}
                       </span>
                     </a>
-                    {/*isNew && (
-                  <span className="flex self-center px-2 py-1 font-ui lowercase bg-fern-200/50 leading-none text-fern-800 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
-                    New
-                  </span>
-                )*/}
+                    {isNew && (
+                      <span className="flex self-center px-2 py-1 font-sans font-medium lowercase bg-dandelion-100/50 backdrop-blur leading-none text-dandelion-800 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
+                        New
+                      </span>
+                    )}
                   </li>
                 )
               })}

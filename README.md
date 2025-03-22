@@ -51,9 +51,9 @@ content/blog/0177-your-post-title.mdx
 2. Directory with index file (for posts with assets):
 ```
 content/blog/0177-your-post-title/
-  ├── index.mdx
-  ├── image.png
-  └── other-assets/
+  ├─ index.mdx
+  ├─ image.png
+  └─ other-assets/
 ```
 
 ### Post id system
@@ -105,6 +105,79 @@ fileroot: "visual-design-tips-you-can-apply-immediately"
 - `id`: Unique post identifier (managed automatically)
 - `fileroot`: Slug used for image naming
 - `images`: Legacy field (not in use)
+</details>
+
+```markdown
+<details>
+<summary>Collections</summary>
+The collections script helps manage design and development resource links. It supports both individual entries and bulk imports.
+
+### Adding individual collections
+Run the script without arguments for interactive mode:
+
+```bash
+node scripts/compose-collection.js
+```
+
+You'll be prompted for:
+- Title: Name of the resource
+- URL: Web address
+- Collection: Category (e.g., Inspiration, Typography, UX Design)
+- Kind: Type of resource (website, article, resource, or tool)
+- Extension: File format (md or mdx)
+
+Example output:
+```bash
+Title: Awesome Design System
+URL: https://design-system-example.com
+Collection: Inspiration
+Kind: website
+Extension: md
+Collection item generated successfully at content/collections/design-system-example.md
+```
+
+### Bulk import
+To import multiple items, create a JSON file with your collections and pass it to the script:
+
+```bash
+node scripts/compose-collection.js bookmarks.json
+```
+
+JSON file structure:
+```json
+[
+  {
+    "title": "Example Site",
+    "url": "https://example.com",
+    "collection": "Inspiration",
+    "kind": "website",
+    "extension": "md"
+  }
+]
+```
+
+Example output:
+```bash
+Created: example
+Created: another-example
+Import complete: 2 items processed
+```
+
+#### Fields:
+- `title`: Resource name (required)
+- `url`: Web address (required)
+- `collection`: Category name (required)
+- `kind`: Type of resource (optional, defaults to 'website')
+  - Options: website, article, resource, tool
+- `extension`: File format (optional, defaults to 'md')
+  - Options: md, mdx
+
+The script automatically:
+- Generates unique filenames from URLs
+- Prevents duplicate entries
+- Creates properly formatted markdown files
+- Adds timestamps
+
 </details>
 
 ## Credits
