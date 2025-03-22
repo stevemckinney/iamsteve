@@ -113,7 +113,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className="light"
+      className="light overflow-x-clip"
       style={{ colorScheme: 'light' }}
       suppressHydrationWarning
     >
@@ -142,7 +142,7 @@ export default function RootLayout({ children }) {
         <Sprite16 />
         <Sprite24 />
         <Logo />
-        <div className="overflow-x-clip grid layout relative gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto items-baseline">
+        <div className="grid layout relative gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto items-baseline">
           <ModeToggle />
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <Header />

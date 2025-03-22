@@ -78,7 +78,7 @@ async function Collections() {
                       </span>
                     </a>
                     {isNew && (
-                      <span className="flex self-center px-2 py-1 font-sans font-medium lowercase bg-dandelion-100/50 backdrop-blur leading-none text-dandelion-800 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
+                      <span className="flex self-center px-2 pt-1.5 pb-1 text-sm font-sans font-medium lowercase bg-cornflour-100 leading-none text-cornflour-600 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
                         New
                       </span>
                     )}

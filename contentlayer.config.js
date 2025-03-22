@@ -65,7 +65,10 @@ export const Collections = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
-    date: { type: 'date', required: true },
+    date: {
+      type: 'date',
+      required: true
+    },
     collection: {
       type: 'list',
       of: {
@@ -73,6 +76,12 @@ export const Collections = defineDocumentType(() => ({
         options: [collections.map((collection) => collection.title)],
         required: true,
       },
+    },
+    kind: {
+      type: 'enum',
+      options: ['website', 'article', 'resource', 'tool'],
+      default: 'website',
+      required: false,
     },
   },
   computedFields: {
