@@ -107,7 +107,6 @@ fileroot: "visual-design-tips-you-can-apply-immediately"
 - `images`: Legacy field (not in use)
 </details>
 
-```markdown
 <details>
 <summary>Collections</summary>
 The collections script helps manage design and development resource links. It supports both individual entries and bulk imports.
