@@ -48,3 +48,6 @@ uploads
 
 # Local Netlify folder
 .netlify
+
+# Collection import tracking
+.last-collection-import

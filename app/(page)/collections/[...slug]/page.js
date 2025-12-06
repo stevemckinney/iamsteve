@@ -9,7 +9,9 @@ import Link from '@/components/link'
 import collections from '@/content/collections'
 import Icon from '@/components/icon'
 
-import { format, subWeeks, isAfter } from 'date-fns'
+import { format, subWeeks, isAfter, parseISO } from 'date-fns'
+import fs from 'fs'
+import path from 'path'
 
 export const dynamic = 'force-static'
 export const revalidate = 2592000
@@ -25,8 +27,20 @@ const getData = cache(async () => {
     return acc
   }, {})
 
+  // Read last import date
+  let lastImportDate
+  try {
+    const importDatePath = path.join(process.cwd(), '.last-collection-import')
+    const importDateContent = fs.readFileSync(importDatePath, 'utf-8').trim()
+    lastImportDate = parseISO(importDateContent)
+  } catch (error) {
+    // Fall back to 12 weeks if file doesn't exist
+    lastImportDate = subWeeks(new Date(), 12)
+  }
+
   return {
     groupedCollections,
+    lastImportDate,
   }
 })
 
@@ -63,7 +77,7 @@ export async function generateStaticParams() {
 }
 
 async function Collections({ page }) {
-  const { groupedCollections } = await getData()
+  const { groupedCollections, lastImportDate } = await getData()
   const lowercasePage = page.join('/').toLowerCase()
 
   // Check if the current page exists in the groupedCollections object
@@ -75,10 +89,16 @@ async function Collections({ page }) {
     return <div>No collections found for the current page.</div>
   }
 
+  // Get the proper title from collections config
+  const collectionConfig = collections.find(
+    (c) => c.slugAsParams === lowercasePage
+  )
+  const displayTitle = collectionConfig ? collectionConfig.title : collectionKey
+
   return (
     <div className="flex flex-col gap-4">
       <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 pt-2">
-        {page.join('/')}
+        {displayTitle}
 
         <span className="text-cornflour-600">
           {groupedCollections[collectionKey].length}
@@ -88,7 +108,10 @@ async function Collections({ page }) {
         {groupedCollections[collectionKey].map((item) => {
           const [y, m, d] = item.date.split('-').map((n) => parseInt(n, 10))
           const itemDate = new Date(y, m, d)
-          const isNew = isAfter(itemDate, subWeeks(new Date(), 4))
+          // Show "New" if item is after last import date OR within 3 months (whichever is more recent)
+          const threeMonthsAgo = subWeeks(new Date(), 12)
+          const cutoffDate = isAfter(lastImportDate, threeMonthsAgo) ? lastImportDate : threeMonthsAgo
+          const isNew = isAfter(itemDate, cutoffDate)
 
           return (
             <li
@@ -109,7 +132,7 @@ async function Collections({ page }) {
                 </span>
               </a>
               {isNew && (
-                <span className="flex self-center px-2 py-1 font-ui lowercase bg-fern-150/50 leading-none text-fern-800 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
+                <span className="flex self-center px-2 pt-1.5 pb-1 text-sm font-sans font-medium lowercase bg-cornflour-100 leading-none text-cornflour-600 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
                   New
                 </span>
               )}

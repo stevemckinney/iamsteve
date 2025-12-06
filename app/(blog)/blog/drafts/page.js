@@ -25,7 +25,8 @@ const getData = cache(async () => {
 
 export default async function DraftsIndex(props) {
   // Check for draft parameter
-  const showDrafts = props.searchParams?.draft === 'true'
+  const searchParams = await props.searchParams
+  const showDrafts = searchParams?.draft === 'true'
 
   // Redirect to 404 if draft parameter is not present
   if (!showDrafts) {

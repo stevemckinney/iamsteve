@@ -8,7 +8,9 @@ import Chip from '@/components/chip'
 import Card from '@/components/card'
 import Icon from '@/components/icon'
 
-import { format, subWeeks, isAfter } from 'date-fns'
+import { format, subWeeks, isAfter, parseISO } from 'date-fns'
+import fs from 'fs'
+import path from 'path'
 
 import { allCollections } from 'contentlayer/generated'
 import collections from '@/content/collections'
@@ -32,13 +34,25 @@ const getData = cache(async () => {
     return acc
   }, {})
 
+  // Read last import date
+  let lastImportDate
+  try {
+    const importDatePath = path.join(process.cwd(), '.last-collection-import')
+    const importDateContent = fs.readFileSync(importDatePath, 'utf-8').trim()
+    lastImportDate = parseISO(importDateContent)
+  } catch (error) {
+    // Fall back to 12 weeks if file doesn't exist
+    lastImportDate = subWeeks(new Date(), 12)
+  }
+
   return {
     groupedCollections,
+    lastImportDate,
   }
 })
 
 async function Collections() {
-  const { groupedCollections } = await getData()
+  const { groupedCollections, lastImportDate } = await getData()
 
   return (
     <>
@@ -57,7 +71,10 @@ async function Collections() {
                   .split('-')
                   .map((n) => parseInt(n, 10))
                 const itemDate = new Date(y, m, d)
-                const isNew = isAfter(itemDate, subWeeks(new Date(), 5))
+                // Show "New" if item is after last import date OR within 3 months (whichever is more recent)
+                const threeMonthsAgo = subWeeks(new Date(), 12)
+                const cutoffDate = isAfter(lastImportDate, threeMonthsAgo) ? lastImportDate : threeMonthsAgo
+                const isNew = isAfter(itemDate, cutoffDate)
 
                 return (
                   <li
