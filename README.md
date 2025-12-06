@@ -131,6 +131,7 @@ Collection: Inspiration
 Kind: website
 Extension: md
 Collection item generated successfully at content/collections/design-system-example.md
+Updated .last-collection-import to 2025-12-06
 ```
 
 ### Bulk import
@@ -157,23 +158,52 @@ Example output:
 ```bash
 Created: example
 Created: another-example
+
+Updated .last-collection-import to 2025-12-06
+
 Import complete: 2 items processed
 ```
 
 #### Fields:
 - `title`: Resource name (required)
 - `url`: Web address (required)
-- `collection`: Category name (required)
+- `collection`: Category name (required) - case-insensitive, automatically normalized (e.g., "inspiration", "Foundry", "UX design", "ux-design" all work)
 - `kind`: Type of resource (optional, defaults to 'website')
   - Options: website, article, resource, tool
 - `extension`: File format (optional, defaults to 'md')
   - Options: md, mdx
 
+#### Available collections:
+The script automatically normalizes collection names, so you can use any casing:
+
+- **Accessibility** - accessibility standards and guidelines
+- **CSS** - CSS resources and tools
+- **Code** - code tools and libraries
+- **Colour** (or Color) - color theory and tools
+- **Content** - content strategy resources
+- **Favourites** (or Favorites) - personal favorites
+- **Foundry** - type foundries (foundry)
+- **Inspiration** - design inspiration galleries (inspiration, etc.)
+- **Motion** - motion design resources
+- **Publication** - design publications
+- **Resource** - general design resources
+- **Typography** - typography resources that aren't foundries (typography, etc.)
+- **UX design** - UX/UI design resources (ux design, ux-design, uxdesign all work)
+
 The script automatically:
 - Generates unique filenames from URLs
 - Prevents duplicate entries
-- Creates properly formatted markdown files
+- Creates properly formatted markdown files with quoted titles
 - Adds timestamps
+- Updates `.last-collection-import` tracking file
+
+### "New" badge behavior
+Collection items display a "New" badge based on:
+- Items added after the last import date (tracked in `.last-collection-import`)
+- OR items added within the last 3 months (whichever is more recent)
+- The badge automatically disappears on the next import or after 3 months
+
+This ensures newly imported items are highlighted until you perform another import or they become older than 3 months.
 
 </details>
 

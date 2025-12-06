@@ -3,17 +3,50 @@ const path = require('path')
 const inquirer = require('inquirer')
 const dedent = require('dedent')
 
+// Function to normalize collection names to match slugs
+const normalizeCollection = (collection) => {
+  // Map of common collection names to their proper slug format
+  const collectionMap = {
+    'accessibility': 'Accessibility',
+    'css': 'CSS',
+    'code': 'Code',
+    'colour': 'Colour',
+    'color': 'Colour', // Handle US spelling
+    'content': 'Content',
+    'favourites': 'Favourites',
+    'favorites': 'Favourites', // Handle US spelling
+    'foundry': 'Foundry',
+    'inspiration': 'Inspiration',
+    'motion': 'Motion',
+    'publication': 'Publication',
+    'resource': 'Resource',
+    'typography': 'Typography',
+    'ux design': 'ux-design',
+    'ux-design': 'ux-design',
+    'uxdesign': 'ux-design',
+  }
+
+  // Normalize input: lowercase and trim
+  const normalized = collection.toLowerCase().trim()
+
+  // Return mapped value or original if not found
+  return collectionMap[normalized] || collection
+}
+
 // Function to generate frontmatter
 const genFrontMatter = (answers) => {
   let d = new Date()
   const date = d.toISOString()
 
+  // Normalize the collection name
+  const normalizedCollection = normalizeCollection(answers.collection)
+
   let frontmatter = dedent`---
-  title: ${answers.title ? answers.title : 'Untitled'}
+  title: "${answers.title ? answers.title : 'Untitled'}"
   url: ${answers.url}
   date: "${date}"
   collection:
-    ${answers.collection ? `- ${answers.collection}` : ''}
+    ${normalizedCollection ? `- ${normalizedCollection}` : ''}
   type: Collections
   kind: ${answers.kind || 'website'}
   `
@@ -102,6 +135,15 @@ const handleInteractiveInput = async () => {
       throw err
     } else {
       console.log(`Collection item generated successfully at ${filePath}`)
+
+      // Update .last-collection-import file with today's date
+      const today = new Date().toISOString().split('T')[0] // YYYY-MM-DD format
+      try {
+        fs.writeFileSync('.last-collection-import', today)
+        console.log(`Updated .last-collection-import to ${today}`)
+      } catch (err) {
+        console.error(`Error updating .last-collection-import: ${err.message}`)
+      }
     }
   })
 }
@@ -127,6 +169,15 @@ const handleJsonImport = (bookmarksFilePath) => {
         console.error(`Error creating file for ${bookmark.url}: ${err.message}`)
       }
     })
+
+    // Update .last-collection-import file with today's date
+    const today = new Date().toISOString().split('T')[0] // YYYY-MM-DD format
+    try {
+      fs.writeFileSync('.last-collection-import', today)
+      console.log(`\nUpdated .last-collection-import to ${today}`)
+    } catch (err) {
+      console.error(`Error updating .last-collection-import: ${err.message}`)
+    }
 
     console.log(`\nImport complete: ${bookmarks.length} items processed`)
   } catch (error) {
