@@ -64,7 +64,7 @@
     "marked": "^14.1.4",
     "mdast-util-to-string": "^4.0.0",
     "motion": "^12.4.7",
-    "next": "15.1.4",
+    "next": "15.1.9",
     "next-contentlayer2": "^0.5.3",
     "next-themes": "^0.2.1",
     "postcss": "^8.4.49",
