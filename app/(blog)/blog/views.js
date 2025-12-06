@@ -14,12 +14,13 @@ export const getAllPageViews = cache(async () => {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     {
       cookies: {
-        getAll() {
-          return cookies().getAll()
+        async getAll() {
+          return (await cookies()).getAll()
         },
-        setAll(cookiesToSet) {
+        async setAll(cookiesToSet) {
+          const cookieStore = await cookies()
           cookiesToSet.forEach(({ name, value, options }) => {
-            cookies().set(name, value, { ...options, path: '/' })
+            cookieStore.set(name, value, { ...options, path: '/' })
           })
         },
       },

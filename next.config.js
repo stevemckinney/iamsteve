@@ -75,9 +75,6 @@ const nextConfig = {
   },
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   staticPageGenerationTimeout: 240,
-  eslint: {
-    dirs: ['app', 'components', 'lib', 'scripts'],
-  },
   images: {
     loader: 'custom',
     loaderFile: './lib/utils/image-loader.js',
