@@ -141,7 +141,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
             </div>
           </div>
           <div className="flex flex-col flex-col-reverse @sm:flex-row gap-4 items-center justify-between">
-            <p className="m-0 p-0 text-fern-600 flex-1 text-center @sm:text-left">
+            <p className="m-0 p-0 text-fern-700 flex-1 text-center @sm:text-left">
               Join {subscriberCount.toLocaleString()}+ designers
             </p>
             <Button

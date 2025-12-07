@@ -43,22 +43,23 @@
 }
 
 .vertical {
-  @supports (padding: max(0px)) {
-    @media not all and (min-width: theme('screens.lg')) {
-      padding-bottom: max(
-        theme('spacing.2'),
-        calc(env(safe-area-inset-bottom) + theme('spacing.3'))
-      );
-    }
-  }
+  // padding-bottom: theme('spacing.3');
+  // @supports (padding: max(0px)) {
+  //   @media not all and (min-width: theme('screens.lg')) {
+  //     padding-bottom: max(
+  //       theme('spacing.2'),
+  //       calc(env(safe-area-inset-bottom) + theme('spacing.3'))
+  //     );
+  //   }
+  // }
 }
 
 .tabbar {
   @supports (bottom: max(0px)) {
     @media not all and (min-width: theme('screens.lg')) {
       bottom: max(
-        theme('spacing.4'),
-        calc(env(safe-area-inset-bottom) + theme('spacing.4'))
+        theme('spacing.2'),
+        env(safe-area-inset-bottom)
       );
     }
   }
