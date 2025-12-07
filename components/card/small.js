@@ -16,7 +16,7 @@ const Small = ({ frontmatter }) => {
     title,
     summary,
     tags,
-    id,
+    _id,
     theme,
     categories,
     images,
@@ -50,7 +50,7 @@ const Small = ({ frontmatter }) => {
       <div className="flex flex-1 flex-col gap-[.5625rem]">
         <h3
           className="font-display font-variation-bold text-xl leading-xl lowercase m-0 p-0"
-          id={`title-${id}`}
+          id={`title-${_id}`}
         >
           <Link
             href={slug}

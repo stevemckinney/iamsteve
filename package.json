@@ -18,10 +18,9 @@
     "build": "contentlayer2 build && pnpm lint && next build"
   },
   "browserslist": [
-    "> 0.5%",
-    "last 2 versions",
-    "Firefox ESR",
-    "not dead"
+    "> 2%",
+    "not dead",
+    "not op_mini all"
   ],
   "pnpm": {
     "overrides": {
