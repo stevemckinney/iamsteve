@@ -73,7 +73,9 @@ async function Collections() {
                 const itemDate = new Date(y, m, d)
                 // Show "New" if item is after last import date OR within 3 months (whichever is more recent)
                 const threeMonthsAgo = subWeeks(new Date(), 12)
-                const cutoffDate = isAfter(lastImportDate, threeMonthsAgo) ? lastImportDate : threeMonthsAgo
+                const cutoffDate = isAfter(lastImportDate, threeMonthsAgo)
+                  ? lastImportDate
+                  : threeMonthsAgo
                 const isNew = isAfter(itemDate, cutoffDate)
 
                 return (
