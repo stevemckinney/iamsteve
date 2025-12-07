@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="122" fill="none" viewBox="0 0 744 122">
+  <rect width="744" height="122" class="fill-surface" rx="18"/>
+  <path class="fill-lowlight opacity-mid" fill-rule="evenodd" d="M17 121c-8.837 0-16-7.163-16-16v-4c0-.677.042-1.345.124-2 .984 7.893 7.717 14 15.876 14h710c8.159 0 14.892-6.107 15.876-14 .082.655.124 1.323.124 2v4c0 8.837-7.163 16-16 16H17Z" clip-rule="evenodd"/>
+  <path class="fill-foreground opacity-mid" fill-rule="evenodd" d="M17 1C8.163 1 1 8.163 1 17v4c0 .677.042 1.345.124 2C2.108 15.107 8.84 9 17 9h710c8.159 0 14.892 6.107 15.876 14a16.1 16.1 0 0 0 .124-2v-4c0-8.837-7.163-16-16-16H17Z" clip-rule="evenodd"/>
+  <path class="stroke-lowlight" stroke-miterlimit="10" stroke-width="2" d="M33 121V97m38 24V97m38 24V97m38 24V97m38 24V97m38 24V97m38 24V97m38 24V97m38 24V97m38 24V97m38 24V97m38 24V97m38 24V97m38 24V97m38 24V97M52 121v-16m38 16v-16m38 16v-16m38 16v-16m38 16v-16m38 16v-16m38 16v-16m38 16v-16m38 16v-16m38 16v-16m38 16v-16m38 16v-16m38 16v-16m38 16v-16m19 16v-16m0 16V97m38 24V97m38 24V97m38 24V97m38 24V97m-133 24v-16m38 16v-16m38 16v-16m38 16v-16M33 25V1m38 24V1m38 24V1m38 24V1m38 24V1m38 24V1m38 24V1m38 24V1m38 24V1m38 24V1m38 24V1m38 24V1m38 24V1m38 24V1m38 24V1M52 17V1m38 16V1m38 16V1m38 16V1m38 16V1m38 16V1m38 16V1m38 16V1m38 16V1m38 16V1m38 16V1m38 16V1m38 16V1m38 16V1m19 16V1m0 24V1m38 24V1m38 24V1m38 24V1m38 24V1M584 17V1m38 16V1m38 16V1m38 16V1"/>
+  <rect width="742" height="120" x="1" y="1" class="stroke-border" stroke-width="2" rx="16"/>
+</svg>
