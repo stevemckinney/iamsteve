@@ -58,7 +58,7 @@
   @supports (bottom: max(0px)) {
     @media not all and (min-width: theme('screens.lg')) {
       bottom: max(
-        theme('spacing.1'),
+        theme('spacing.2'),
         env(safe-area-inset-bottom)
       );
     }
