@@ -194,6 +194,9 @@ importers:
       swr:
         specifier: ^1.3.0
         version: 1.3.0(react@19.0.0)
+      tailwind-merge:
+        specifier: ^3.4.0
+        version: 3.4.0
       unified:
         specifier: ^11.0.5
         version: 11.0.5
@@ -4905,6 +4908,9 @@ packages:
   sync-fetch@0.4.5:
     resolution: {integrity: sha512-esiWJ7ixSKGpd9DJPBTC4ckChqdOjIwJfYhVHkcQ2Gnm41323p1TRmEI+esTQ9ppD+b5opps2OTEGTCGX5kF+g==}
     engines: {node: '>=14'}
+
+  tailwind-merge@3.4.0:
+    resolution: {integrity: sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g==}
 
   tailwindcss@3.4.18:
     resolution: {integrity: sha512-6A2rnmW5xZMdw11LYjhcI5846rt9pbLSabY5XPxo+XWdxwZaFEn47Go4NzFiHu9sNNmr/kXivP1vStfvMaK1GQ==}
@@ -10726,6 +10732,8 @@ snapshots:
       node-fetch: 2.7.0(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
+
+  tailwind-merge@3.4.0: {}
 
   tailwindcss@3.4.18(yaml@2.8.2):
     dependencies:

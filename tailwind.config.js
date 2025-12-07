@@ -122,6 +122,7 @@ module.exports = {
         placed: 'var(--shadow-placed)',
         picked: 'var(--shadow-picked)',
         floating: 'var(--shadow-floating)',
+        tabbar: '0 0 0 1px oklch(24.3% 0.014 30 / .04), inset 0 0 0 1px oklch(100% 0 0 / .8), 0 1px 3px -1.5px oklch(24.3% 0.014 30 / .04), 0 2px 4px -2px oklch(24.3% 0.014 30 / .04)',
 
         // 0px -1px 3px 0px rgba(221, 142, 0, 0.80) inset, 0px 1px 3px 0px #F4D340 inset, 0px 0px 0px 1px rgba(248, 229, 142, 0.60) inset
         'dandelion-reduced':

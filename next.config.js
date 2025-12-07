@@ -80,6 +80,7 @@ const nextConfig = {
     loaderFile: './lib/utils/image-loader.js',
     deviceSizes: [800, 1200, 1600, 2400],
     imageSizes: [400, 600],
+    qualities: [75, 100],
   },
   async rewrites() {
     return [

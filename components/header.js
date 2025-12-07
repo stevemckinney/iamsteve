@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 
 import siteMetadata from '@/content/metadata'
 import navigation from '@/content/navigation'
+import { cn } from '@/lib/utils'
 
 // components
 import Link from './link'
@@ -15,14 +16,14 @@ import styles from './header.module.scss'
 
 export default function Header() {
   const pathname = usePathname()
-  const nav = `flex flex-[1_0_auto] lg:gap-8 2xl:gap-12 xl:justify-center`
-  const tabbarNav = `max-lg:transition max-lg:transition-all max-lg:duration-200 max-lg:ease-out max-lg:px-4 max-lg:bg-white/90 max-lg:shadow-placed max-lg:justify-between max-lg:fixed max-lg:left-0 max-lg:right-0 max-lg:bottom-0 max-lg:z-[100] max-lg:backdrop-blur max-lg:backdrop-brightness-100 max-lg:backdrop-saturate-150`
+  const nav = 'flex flex-[1_0_auto] lg:gap-8 2xl:gap-12 xl:justify-center max-lg:px-2'
+  const tabbarNav = `max-lg:transition-all max-lg:duration-200 max-lg:ease-out max-lg:px-6 max-lg:bg-white/75 max-lg:shadow-placed max-lg:justify-between max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-[100] max-lg:backdrop-blur max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150 max-lg:gap-6 max-lg:rounded-full ${styles.tabbar}`
 
   // Some styles exist in the header.module to handle safe-area
   const navLink = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
-  const compactHorizontalNavLink = `lg:bg-neutral-01-500/10 lg:rounded-full lg:pl-10 lg:pr-1 lg:relative`
-  const horizontalNavLink = `lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5`
-  const tabbarNavLink = `max-lg:text-[12px] max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:pt-2`
+  const compactHorizontalNavLink = 'lg:bg-neutral-01-500/10 lg:rounded-full lg:pl-10 lg:pr-1 lg:relative'
+  const horizontalNavLink = 'lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5'
+  const tabbarNavLink = 'max-lg:text-[12px] max-lg:font-sans max-lg:font-medium max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:pt-[.625rem] max-lg:px-1'
 
   return (
     <>
@@ -65,20 +66,27 @@ export default function Header() {
               <a href="#nav">Skip to nav</a>
             </li>
           </ul>
-          <nav className={`${nav} ${tabbarNav}`} id="nav">
+          <nav className={cn(nav, tabbarNav)} id="nav" suppressHydrationWarning>
             {navigation.map((link) => {
               const isActive = pathname === link.href
               return (
                 <Link
                   href={link.href}
-                  className={`${navLink} ${
-                    link.title === 'Home' ? 'lg:hidden' : ''
-                  } ${link.title === 'Contact' ? 'max-lg:hidden' : ''} ${
-                    styles.vertical
-                  } ${tabbarNavLink} ${horizontalNavLink} ${styles.start} ${
-                    isActive ? 'max-lg:opacity-100' : 'max-lg:opacity-60'
-                  } ${isActive ? 'max-lg:text-fern-1100' : ''}`}
+                  className={cn(
+                    navLink,
+                    styles.vertical,
+                    tabbarNavLink,
+                    horizontalNavLink,
+                    styles.start,
+                    {
+                      'lg:hidden': link.title === 'Home',
+                      'max-lg:hidden': link.title === 'Contact',
+                      'max-lg:opacity-100 max-lg:text-fern-1100': isActive,
+                      'max-lg:opacity-60': !isActive,
+                    }
+                  )}
                   key={link.href}
+                  suppressHydrationWarning
                 >
                   <Icon
                     icon={link.icon}
@@ -93,7 +101,7 @@ export default function Header() {
           <div className="flex-[1_0_10%] flex justify-end max-lg:hidden">
             <Link
               href="/newsletter"
-              className={`${navLink} ${horizontalNavLink} ${styles.end}`}
+              className={cn(navLink, horizontalNavLink, styles.end)}
             >
               <span>Subscribe</span>
               <Icon icon={`airplane`} size={24} className="text-current" />
