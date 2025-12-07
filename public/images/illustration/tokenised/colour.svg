@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+  <path class="fill-foreground" class="stroke-border" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M28 9H12c-1.7 0-3 1.3-3 3v16c0 1.7 1.3 3 3 3h16c1.7 0 3-1.3 3-3V12c0-1.7-1.3-3-3-3Zm-1 18H13V13h14v14Z"/>
+  <path class="fill-surface" d="M20 23H4c-1.7 0-3-1.3-3-3V4c0-1.7 1.3-3 3-3h16c1.7 0 3 1.3 3 3v16c0 1.7-1.3 3-3 3Z"/>
+  <path class="fill-foreground" d="M20 1H4C2.3 1 1 2.3 1 4v3c0-1.7 1.3-3 3-3h16c1.7 0 3 1.3 3 3V4c0-1.7-1.3-3-3-3Z"/>
+  <path class="fill-lowlight" d="M20 20H4c-1.7 0-3-1.3-3-3v3c0 1.7 1.3 3 3 3h16c1.7 0 3-1.3 3-3v-3c0 1.7-1.3 3-3 3Z"/>
+  <path class="stroke-border" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M20 23H4c-1.7 0-3-1.3-3-3V4c0-1.7 1.3-3 3-3h16c1.7 0 3 1.3 3 3v16c0 1.7-1.3 3-3 3Z"/>
+</svg>
