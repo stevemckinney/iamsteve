@@ -1,6 +1,7 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
+import dynamic from 'next/dynamic'
 
 import Image from '@/components/image'
 import Link from '@/components/link'
@@ -11,8 +12,14 @@ import Card from '@/components/card'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
 
-// post specific components
-import BentoGridShell from '@/components/posts/0175-bento-grid'
+// Dynamically import heavy post-specific components
+const BentoGridShell = dynamic(
+  () => import('@/components/posts/0175-bento-grid'),
+  {
+    loading: () => <div className="animate-pulse bg-neutral-01-100 rounded-lg h-96">Loading...</div>,
+    ssr: true,
+  }
+)
 
 const Prose = ({ children }) => {
   return <div className="prose">{children}</div>
@@ -478,7 +485,8 @@ function MDXWrapper({ code }) {
 }
 
 export function MDX({ code }) {
-  const Component = useMDXComponent(code)
+  // Memoize the MDX component to avoid recreating it on every render
+  const Component = useMemo(() => useMDXComponent(code), [code])
 
   if (!Component) {
     console.error('Failed to create MDX component')
@@ -494,7 +502,8 @@ export function MDX({ code }) {
 }
 
 export function PostMdx({ code }) {
-  const Component = useMDXComponent(code)
+  // Memoize the MDX component to avoid recreating it on every render
+  const Component = useMemo(() => useMDXComponent(code), [code])
 
   if (!Component) {
     console.error('Failed to create MDX component')

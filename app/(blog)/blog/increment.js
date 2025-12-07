@@ -1,9 +1,11 @@
 'use server'
 
-import { cache } from 'react'
 import { SupabaseAdmin } from '@/lib/supabase-admin'
 
-export const Increment = cache(async (slug) => {
+// Use edge runtime for faster response times
+export const runtime = 'edge'
+
+export async function Increment(slug) {
   if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {
     return null
   }
@@ -22,4 +24,4 @@ export const Increment = cache(async (slug) => {
   }
 
   return data
-})
+}
