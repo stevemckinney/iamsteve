@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="97" height="97" fill="none" viewBox="0 0 97 97">
+  <path class="stroke-accent" stroke-linejoin="round" stroke-width="2" d="M16.941 8.788a4 4 0 0 1 4-4h56a4 4 0 0 1 4 4V24.22c0 .377-.051.744-.15 1.107-.739 2.691-3.932 14.955-3.85 25.46.082 10.403 3.453 22.468 4.306 25.356.126.429.187.873.173 1.32l-.358 11.45a4 4 0 0 1-3.998 3.875H20.941a4 4 0 0 1-4-4V77.34c0-.367.049-.724.143-1.079.715-2.668 3.857-14.998 3.857-25.474S17.8 27.982 17.084 25.313a4.138 4.138 0 0 1-.143-1.079V8.788Z"/>
+  <path class="fill-foreground" class="stroke-border" stroke-linejoin="round" stroke-width="2" d="M16.941 8.788a4 4 0 0 1 4-4h56a4 4 0 0 1 4 4V24.22c0 .377-.051.744-.15 1.107-.739 2.691-3.932 14.955-3.85 25.46.082 10.403 3.453 22.468 4.306 25.356.126.429.187.873.173 1.32l-.358 11.45a4 4 0 0 1-3.998 3.875H20.941a4 4 0 0 1-4-4V77.34c0-.367.049-.724.143-1.079.715-2.668 3.857-14.998 3.857-25.474S17.8 27.982 17.084 25.313a4.138 4.138 0 0 1-.143-1.079V8.788Z"/>
+  <path class="fill-surface" d="M32.941 4.788h32v60c0 8.836-7.163 16-16 16-8.836 0-16-7.164-16-16v-60Z"/>
+  <path class="fill-foreground" d="M46.941 4.788h-6v74l6 2v-76Z"/>
+  <path class="fill-lowlight opacity-low" d="M32.941 61.788h32v2c0 8.836-7.163 16-16 16-8.836 0-16-7.164-16-16v-2Z"/>
+  <path class="fill-foreground" d="M54.941 44.788a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/>
+  <path class="stroke-lowlight" stroke-width="2" d="M49.941 39.788h10m-5-5v10m0 0a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/>
+  <path class="fill-foreground" d="m64.941 10.36-24 7.428v-13h24v5.571Z"/>
+  <path class="stroke-border" stroke-linejoin="round" stroke-width="2" d="M32.941 4.788h32v60c0 8.836-7.163 16-16 16-8.836 0-16-7.164-16-16v-60Z"/>
+  <path class="fill-border" fill-rule="evenodd" d="M40.941 4.788h-8v60c0 5.922 3.218 11.093 8 13.86V4.787Z" clip-rule="evenodd"/>
+</svg>
