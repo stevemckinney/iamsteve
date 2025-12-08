@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
 import dynamic from 'next/dynamic'
 
@@ -484,9 +484,9 @@ function MDXWrapper({ code }) {
   return <Component components={postComponents} />
 }
 
-export function MDX({ code }) {
-  // Memoize the MDX component to avoid recreating it on every render
-  const Component = useMemo(() => useMDXComponent(code), [code])
+// Memoize MDX component to prevent unnecessary re-renders
+const MDXComponent = React.memo(function MDXComponent({ code }) {
+  const Component = useMDXComponent(code)
 
   if (!Component) {
     console.error('Failed to create MDX component')
@@ -499,11 +499,15 @@ export function MDX({ code }) {
     console.error('Error rendering MDX:', error)
     return <p>Failed to render content. Error: {error.message}</p>
   }
+})
+
+export function MDX({ code }) {
+  return <MDXComponent code={code} />
 }
 
-export function PostMdx({ code }) {
-  // Memoize the MDX component to avoid recreating it on every render
-  const Component = useMemo(() => useMDXComponent(code), [code])
+// Memoize PostMdx component to prevent unnecessary re-renders
+const PostMdxComponent = React.memo(function PostMdxComponent({ code }) {
+  const Component = useMDXComponent(code)
 
   if (!Component) {
     console.error('Failed to create MDX component')
@@ -516,6 +520,10 @@ export function PostMdx({ code }) {
     console.error('Error rendering MDX:', error)
     return <p>Failed to render content. Error: {error.message}</p>
   }
+})
+
+export function PostMdx({ code }) {
+  return <PostMdxComponent code={code} />
 }
 
 export { postComponents, components }
