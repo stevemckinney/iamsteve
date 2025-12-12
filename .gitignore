@@ -51,3 +51,7 @@ uploads
 
 # Collection import tracking
 .last-collection-import
+
+# Link validation cache
+.link-validation-cache
+.validation-results.json

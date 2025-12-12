@@ -1,0 +1,154 @@
+name: Validate Collection Links
+
+on:
+  pull_request:
+    paths:
+      - 'content/collections/**'
+  workflow_dispatch:
+    inputs:
+      check_all:
+        description: 'Check all collections'
+        type: boolean
+        default: false
+  schedule:
+    - cron: '0 10 * * 1' # Weekly Monday 10am UTC
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed for git diff
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Restore validation cache
+        uses: actions/cache@v4
+        with:
+          path: .link-validation-cache
+          key: link-validation-${{ github.run_id }}
+          restore-keys: link-validation-
+
+      - name: Validate links
+        id: validate
+        run: node scripts/validate-collection-links.js
+        env:
+          CHECK_ALL: ${{ github.event.inputs.check_all || github.event_name == 'schedule' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment PR with results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('.validation-results.json', 'utf8'));
+
+            const comment = `## 🔗 Collection Link Validation
+
+            ${results.summary}
+
+            ${results.details}`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+      - name: Check for existing issue
+        id: existing_issue
+        if: github.event_name == 'schedule'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'collections,maintenance'
+            });
+
+            const existing = issues.data.find(i =>
+              i.title.includes('[Automated]') &&
+              i.title.includes('collection links')
+            );
+
+            return existing ? existing.number : null;
+
+      - name: Update or create issue
+        if: github.event_name == 'schedule' && steps.validate.outputs.broken_count > 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('.validation-results.json', 'utf8'));
+            const issueNumber = ${{ steps.existing_issue.outputs.result }};
+
+            if (issueNumber) {
+              // Update existing issue
+              console.log(`Updating existing issue #${issueNumber}`);
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: results.details
+              });
+
+              // Add comment noting the update
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: `🔄 Updated validation results:\n\n${results.summary}`
+              });
+            } else {
+              // Create new issue
+              console.log('Creating new issue');
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `[Automated] ${results.broken_count} broken collection links found`,
+                body: results.details,
+                labels: ['collections', 'maintenance']
+              });
+            }
+
+      - name: Close issue if all links fixed
+        if: github.event_name == 'schedule' && steps.validate.outputs.broken_count == 0
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = ${{ steps.existing_issue.outputs.result }};
+
+            if (issueNumber) {
+              console.log(`Closing issue #${issueNumber} - all links fixed!`);
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                state: 'closed'
+              });
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: '✅ All broken collection links have been fixed!'
+              });
+            }
