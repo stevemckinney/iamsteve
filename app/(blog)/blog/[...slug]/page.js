@@ -31,14 +31,14 @@ import Icon from '@/components/icon'
 import Link from '@/components/link'
 import NewsletterForm from '@/components/newsletter-form'
 
-import { getAllPageViews } from '../views'
+import { Suspense } from 'react'
+import { getPageView } from '../views'
 import ViewCounter from '../counter'
 
 const editUrl = (fileName) =>
   `${siteMetadata.siteRepo}/blob/main/content/blog/${fileName}`
 
-// force to revalidate every day
-export const dynamic = 'force-dynamic'
+// static generation with ISR revalidation every day
 export const revalidate = 86400
 
 // styling
@@ -120,16 +120,11 @@ export default async function PostPage(props) {
   const enableViewCounting =
     process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING === 'true'
 
-  let allViews = {}
-  let initialViews = 0
-
   // Remove the '/blog/' prefix if it exists
   const cleanSlug = post.slug.replace(/^\/blog\//, '')
 
-  if (enableViewCounting) {
-    allViews = await getAllPageViews()
-    initialViews = allViews[cleanSlug] || 0
-  }
+  // Fetch only the view count for this specific page
+  const initialViews = enableViewCounting ? await getPageView(cleanSlug) : 0
 
   const currentYear = new Date().getFullYear()
   const postYear = new Date(post.date).getFullYear()
@@ -281,11 +276,19 @@ export default async function PostPage(props) {
             </div>
             {enableViewCounting && (
               <Badge size={16} theme={`text`} iconStart={`views`}>
-                <ViewCounter
-                  slug={cleanSlug}
-                  initialViews={initialViews}
-                  trackView={true}
-                />
+                <Suspense
+                  fallback={
+                    <span className="text-fern-1100">
+                      {initialViews.toLocaleString()} views
+                    </span>
+                  }
+                >
+                  <ViewCounter
+                    slug={cleanSlug}
+                    initialViews={initialViews}
+                    trackView={true}
+                  />
+                </Suspense>
               </Badge>
             )}
           </div>
