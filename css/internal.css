@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* TypeKit fallback fonts to prevent layout shift if TypeKit is slow/blocked */
+@font-face {
+  font-family: 'roc-grotesk-variable-fallback';
+  src: local('Arial');
+  size-adjust: 95%;
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'elza-fallback';
+  src: local('Helvetica Neue'), local('Helvetica'), local('Arial');
+  size-adjust: 100%;
+}
+
+/* Apply fallbacks in case TypeKit fails to load */
+.font-display {
+  font-family: roc-grotesk-variable, roc-grotesk-variable-fallback, sans-serif;
+}
+
+.font-sans {
+  font-family: elza, elza-fallback, sans-serif;
+}
+
 :root {
   /**
    * grid

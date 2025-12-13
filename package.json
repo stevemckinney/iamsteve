@@ -2,7 +2,7 @@
   "name": "iamsteve",
   "version": "8.1.4",
   "private": true,
-  "packageManager": "pnpm@9.12.1+sha256.91452fdfa46234ae447d46d5c4fc4e7e0a7058f90495c4b6f77f8beebbb154e3",
+  "packageManager": "pnpm@10.25.0",
   "scripts": {
     "lint": "ESLINT_USE_FLAT_CONFIG=true eslint app components lib --fix",
     "icons": "pnpm icons-16 && pnpm icons-24",
@@ -15,13 +15,14 @@
     "sourcemap": "NODE_OPTIONS=--enable-source-maps next build",
     "analyze": "cross-env ANALYZE=true next build",
     "post": "node ./scripts/compose.js",
-    "build": "contentlayer2 build && pnpm lint && next build"
+    "build": "contentlayer2 build && pnpm lint && next build",
+    "validate:links": "node scripts/validate-collection-links.js",
+    "validate:links:all": "CHECK_ALL=true node scripts/validate-collection-links.js"
   },
   "browserslist": [
-    "> 0.5%",
-    "last 2 versions",
-    "Firefox ESR",
-    "not dead"
+    "> 2%",
+    "not dead",
+    "not op_mini all"
   ],
   "pnpm": {
     "overrides": {
@@ -64,7 +65,7 @@
     "marked": "^14.1.4",
     "mdast-util-to-string": "^4.0.0",
     "motion": "^12.23.25",
-    "next": "16.0.7",
+    "next": "16.0.10",
     "next-contentlayer2": "^0.5.8",
     "next-themes": "^0.2.1",
     "postcss": "^8.5.6",
@@ -107,6 +108,7 @@
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.1",
     "@next/eslint-plugin-next": "^15.5.7",
+    "axios": "^1.13.2",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^8.10.2",
     "eslint-plugin-import": "^2.32.0",
@@ -114,6 +116,7 @@
     "eslint-plugin-prettier": "^4.2.5",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "p-limit": "^7.2.0",
     "prettier": "2.7.1",
     "sass": "^1.94.2",
     "tailwindcss": "^3.4.18"

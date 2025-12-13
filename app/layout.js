@@ -1,5 +1,6 @@
 import './global.css'
 import Script from 'next/script'
+import { Suspense } from 'react'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ModeToggle } from '@/components/mode-toggle'
 import siteMetadata from '@/content/metadata'
@@ -126,7 +127,17 @@ export default function RootLayout({ children }) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-title" content="iamsteve" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <link rel="stylesheet" href="https://use.typekit.net/bvl2qse.css" />
+        <link
+          rel="preconnect"
+          href="https://use.typekit.net"
+          crossOrigin="anonymous"
+        />
+        <link rel="dns-prefetch" href="https://use.typekit.net" />
+        <link
+          rel="stylesheet"
+          href="https://use.typekit.net/bvl2qse.css"
+          precedence="default"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
@@ -147,7 +158,9 @@ export default function RootLayout({ children }) {
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <Header />
             {children}
-            <FooterProfile />
+            <Suspense fallback={<div className="col-start-container-start col-end-container-end h-[600px]" />}>
+              <FooterProfile />
+            </Suspense>
             <footer className="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-18 md:py-18">
               <p className="flex flex-1 max-md:flex-col max-md:items-center gap-1 text-balance text-center">
                 <Icon icon="bee" /> Designed in Manchester using Figma & Next.js

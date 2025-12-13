@@ -46,6 +46,7 @@ const Navigation = () => {
         <NavigationMenu.Item className="flex nitem">
           <NavigationMenu.Trigger
             className="toggle-nav"
+            aria-label="Toggle navigation menu"
             onPointerMove={(event) => event.preventDefault()}
             onPointerLeave={(event) => event.preventDefault()}
             onClick={handleToggle}

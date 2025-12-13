@@ -68,7 +68,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
     title,
     summary,
     tags,
-    id,
+    _id,
     theme,
     categories,
     images,
@@ -101,7 +101,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
           title=""
           className={imageClass}
           style={{ backgroundColor: `${imageColor}` }}
-          aria-labelledby={`title-${id}`}
+          aria-labelledby={`title-${_id}`}
         >
           <>
             <PostImage
@@ -130,7 +130,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
                 href={slug}
                 alt={title}
                 className={`flex items-center justify-center`}
-                aria-labelledby={`title-${id}`}
+                aria-labelledby={`title-${_id}`}
                 tabIndex="0"
               />
             ) : (
@@ -142,7 +142,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
                 href={slug}
                 alt={title}
                 className={`flex items-center justify-center`}
-                aria-labelledby={`title-${id}`}
+                aria-labelledby={`title-${_id}`}
                 tabIndex="0"
               />
             )}
@@ -181,7 +181,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
         <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @lg/card:pt-2 @lg/card:gap-3 @lg/card:px-12">
           <h2
             className="p-0 m-0 leading-none text-balance lowercase font-display font-variation-bold hyphens-auto text-3xl @lg/card:text-5xl"
-            id={`title-${id}`}
+            id={`title-${_id}`}
           >
             <Link
               href={slug}

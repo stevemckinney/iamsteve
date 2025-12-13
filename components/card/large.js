@@ -38,7 +38,7 @@ const Large = ({ frontmatter, image, className }) => {
     title,
     summary,
     tags,
-    id,
+    _id,
     theme,
     categories,
     large,
@@ -56,7 +56,7 @@ const Large = ({ frontmatter, image, className }) => {
           title=""
           className={`relative flex items-center justify-center aspect-[1.6086956522/1]`}
           style={{ backgroundColor: `${imageColor}` }}
-          aria-labelledby={`title-${id}`}
+          aria-labelledby={`title-${_id}`}
         >
           <>
             <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active/large:before:opacity-100" />
@@ -86,7 +86,7 @@ const Large = ({ frontmatter, image, className }) => {
                 title=""
                 className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
                 style={{ backgroundColor: `${imageColor}` }}
-                aria-labelledby={`title-${id}`}
+                aria-labelledby={`title-${_id}`}
                 tabIndex="0"
               />
             ) : (
@@ -99,7 +99,7 @@ const Large = ({ frontmatter, image, className }) => {
                 title=""
                 className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
                 style={{ backgroundColor: `${imageColor}` }}
-                aria-labelledby={`title-${id}`}
+                aria-labelledby={`title-${_id}`}
                 tabIndex="0"
               />
             )}
@@ -122,7 +122,7 @@ const Large = ({ frontmatter, image, className }) => {
         <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] md:pt-5 md:gap-[1.375rem] md:px-12">
           <h2
             className="p-0 m-0 text-3xl leading-none lowercase font-display font-variation-bold hyphens-auto md:text-5xl"
-            id={`title-${id}`}
+            id={`title-${_id}`}
           >
             <Link
               href={slug}
