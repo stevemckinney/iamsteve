@@ -2,7 +2,7 @@
   "name": "iamsteve",
   "version": "8.1.2",
   "private": true,
-  "packageManager": "pnpm@9.12.1+sha256.91452fdfa46234ae447d46d5c4fc4e7e0a7058f90495c4b6f77f8beebbb154e3",
+  "packageManager": "pnpm@10.25.0",
   "scripts": {
     "lint": "ESLINT_USE_FLAT_CONFIG=true eslint app components lib --fix",
     "icons": "pnpm icons-16 && pnpm icons-24",
@@ -65,7 +65,7 @@
     "marked": "^14.1.4",
     "mdast-util-to-string": "^4.0.0",
     "motion": "^12.23.25",
-    "next": "16.0.7",
+    "next": "16.0.10",
     "next-contentlayer2": "^0.5.8",
     "next-themes": "^0.2.1",
     "postcss": "^8.5.6",
