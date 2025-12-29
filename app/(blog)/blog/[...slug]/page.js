@@ -42,7 +42,7 @@ export const dynamic = 'force-dynamic'
 export const revalidate = 86400
 
 // styling
-import styles from './post.module.scss'
+import styles from './post.module.css'
 
 export async function generateStaticParams() {
   return allPosts

@@ -148,7 +148,7 @@ export default function RootLayout({ children }) {
        * the border alignment within the header
        */}
       <body
-        className={`overflow-x-hidden antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100`}
+        className={`antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100`}
       >
         <Sprite16 />
         <Sprite24 />
@@ -158,7 +158,11 @@ export default function RootLayout({ children }) {
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <Header />
             {children}
-            <Suspense fallback={<div className="col-start-container-start col-end-container-end h-[600px]" />}>
+            <Suspense
+              fallback={
+                <div className="col-start-container-start col-end-container-end h-[600px]" />
+              }
+            >
               <FooterProfile />
             </Suspense>
             <footer className="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-18 md:py-18">

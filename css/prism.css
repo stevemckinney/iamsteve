@@ -14,7 +14,7 @@
   --code-cyan: var(--color-fern-300);
   --code-white: var(--color-fern-100);
   --code-comment: var(--color-neutral-03-400);
-  --offset-spacing: theme('margin.8');
+  --offset-spacing: 2rem;
   isolation: isolate;
   color-scheme: dark;
 }
@@ -38,7 +38,7 @@ pre[class*='language-'] {
 /* code blocks */
 pre[class*='language-'] {
   overflow: auto;
-  padding: theme('padding.8');
+  padding: 2rem;
   max-height: 20lh;
 }
 
@@ -65,13 +65,13 @@ pre[class*='language-'] {
   position: relative;
   display: block;
   box-shadow: inset 4px 0 rgb(0 0 0 / 0); /* Set placeholder for highlight accent border color to transparent */
-  padding-inline: theme('padding.8');
-  margin-inline: calc(-1 * theme('margin.8'));
+  padding-inline: 2rem;
+  margin-inline: -2rem;
 }
 
 
 .highlight-line {
-  margin-inline: calc(-1 * theme('padding.8'));
+  margin-inline: -2rem;
 }
 
 .highlight-line,
@@ -116,9 +116,9 @@ pre[class*='language-'] {
 
 .line-number::before {
   display: inline-block;
-  padding: 0 theme('padding.8');
-  margin: 0 calc(-1 * calc(theme('padding.8') * 2));
-  width: calc(2ch + calc(theme('padding.8') * 2));
+  padding: 0 2rem;
+  margin: 0 -4rem;
+  width: calc(2ch + 4rem);
   margin-right: 3ch;
   text-align: right;
   color: var(--color-fern-800); /* Line number color */

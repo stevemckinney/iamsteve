@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/forms';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -578,7 +579,6 @@
     --grid-margin: calc(48px - var(--grid-gutter));
     --grid-gutter: 32px;
     --grid-gap: 32px;
-    /* --spacing: 8px; */
 
     /* autoprefixer: off */
     --grid: [margin-start] var(--grid-margin) [container-start] repeat(2, 1fr)

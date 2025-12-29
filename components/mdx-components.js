@@ -315,10 +315,7 @@ const Images = ({ children, align, compare = false, options, ...props }) => {
     <div
       className={`flex col-container grid-cols-subgrid gap-4 overscroll-contain-x overflow-x-auto py-4 -my-4 prose-exclude images px-6 sm:px-12 -mx-6 sm:[mask:linear-gradient(90deg,transparent_0%,#000_32px,#000_calc(100%-32px),transparent_100%)]`}
     >
-      <div
-        className="shrink-0 max-sm:hidden sm:basis-1/5"
-        aria-hidden="true"
-      />
+      <div className="shrink-0 max-sm:hidden sm:basis-1/5" aria-hidden="true" />
       {children}
     </div>
   )

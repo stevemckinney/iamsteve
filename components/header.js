@@ -12,7 +12,7 @@ import Icon from '@/components/icon'
 import { Navigation, Toggle } from '@/components/navigation'
 
 // css
-import styles from './header.module.scss'
+import styles from './header.module.css'
 
 export default function Header() {
   const pathname = usePathname()
