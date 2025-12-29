@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@config "./../tailwind.config.js";
 
 /* TypeKit fallback fonts to prevent layout shift if TypeKit is slow/blocked */
 @font-face {
