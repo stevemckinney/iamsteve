@@ -86,7 +86,7 @@ function TableOfContents({ headings, open = false, ...props }) {
       data-sticky={isSticky}
       style={{
         '--blur-mask':
-          'linear-gradient(180deg, #000 18%, rgb(0 0 0 /.99) 30%, rgb(0 0 0 /.96) 40%, rgb(0 0 0 /.92) 48%, rgb(0 0 0 /.86) 56%,rgb(0 0 0 /.79) 62%, rgb(0 0 0 /.71) 67%,rgb(0 0 0 /.63) 72%,rgb(0 0 0 /.54) 75.05%, rgb(0 0 0 /.45) 78%, rgb(0 0 0 /.36) 81%,rgb(0 0 0 /.27) 84%, rgb(0 0 0 /.19) 87%, rgb(0 0 0 /.12) 91%, rgb(0 0 0 /.05) 95%,transparent 100%)',
+          'linear-gradient(to bottom, #000 18%, rgb(0 0 0 /.99) 30%, rgb(0 0 0 /.96) 40%, rgb(0 0 0 /.92) 48%, rgb(0 0 0 /.86) 56%,rgb(0 0 0 /.79) 62%, rgb(0 0 0 /.71) 67%,rgb(0 0 0 /.63) 72%,rgb(0 0 0 /.54) 75.05%, rgb(0 0 0 /.45) 78%, rgb(0 0 0 /.36) 81%,rgb(0 0 0 /.27) 84%, rgb(0 0 0 /.19) 87%, rgb(0 0 0 /.12) 91%, rgb(0 0 0 /.05) 95%,transparent 100%)',
       }}
     >
       <button
