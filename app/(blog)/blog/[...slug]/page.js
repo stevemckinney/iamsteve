@@ -205,11 +205,11 @@ export default async function PostPage(props) {
       <article
         className={`isolate grid row-start-1 col-container grid-cols-subgrid relative`}
       >
-        <hr className="absolute z-[11] top-0 left-0 right-0 col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <hr className="absolute z-11 top-0 left-0 right-0 col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <Sidebar
           post={post}
           aria-label="Table of contents and newsletter subscription form"
-          className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col lg:gap-12 lg:pb-16 lg:px-6 lg:-mx-6 lg:[mask-image:linear-gradient(180deg,transparent,_#000_64px,#000_calc(100%_-_10vh),_transparent)]"
+          className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col lg:gap-12 lg:pb-16 lg:px-6 lg:-mx-6 lg:mask-[linear-gradient(180deg,transparent,#000_64px,#000_calc(100%-10vh),transparent)]"
         />
         <hr className="relative col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
         <header className="col-content lg:col-container lg:col-start-2 lg:col-end-9 xl:col-start-3 xl:col-end-11 lg:row-start-1 lg:row-span-1 flex flex-col max-lg:pt-12 gap-y-4 mb-12">
@@ -419,7 +419,7 @@ export function PostImage({ post }) {
 
 export function Support() {
   return (
-    <aside className="xl:row-span-1 bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content xl:col-start-3 xl:col-span-8">
+    <aside className="xl:row-span-1 bg-neutral-01-50 border border border-neutral-01-200 rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content xl:col-start-3 xl:col-span-8">
       <p className="p-0 m-0 text-base text-ui-body flex flex-col">
         <strong className="text-fern-1100 font-bold">
           Enjoying the reading experience?
@@ -428,7 +428,7 @@ export function Support() {
       </p>
       <Link
         href={siteMetadata.bmc}
-        className="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase hover:opacity-70 transition duration-200 mt-1 pl-6 pr-5 py-2 bg-white shadow-[0_0_0_1px_theme('colors.neutral-01.200')]"
+        className="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase hover:opacity-70 transition duration-200 mt-1 pl-6 pr-5 py-2 bg-white shadow-[0_0_0_1px_var(--color-neutral-01-200)]"
       >
         Buy me a coffee
         <span className="flex shrink-0 grow-0 items-center justify-center">
@@ -439,8 +439,8 @@ export function Support() {
   )
 }
 
-// [mask-image:linear-gradient(0deg,_transparent_0%,_transparent_1%,_rgba(0,0,0,0.56)_3%,_#000_6%,_#000_18%,_#000_82%,_#000_90%,_rgba(0,0,0,0.56)_95%,_transparent_99%,_transparent_100%)]
-// max-xl:bg-[url(/images/texture.png)] max-xl:bg-[172px_auto] max-xl:bg-blend-multiply max-xl:bg-neutral-01-150 max-xl:px-6
+// mask-[linear-gradient(0deg,transparent_0%,transparent_1%,rgba(0,0,0,0.56)_3%,#000_6%,#000_18%,#000_82%,#000_90%,rgba(0,0,0,0.56)_95%,transparent_99%,transparent_100%)]
+// max-xl:bg-[url(/images/texture.png)] max-xl:bg-size-[172px_auto] max-xl:bg-blend-multiply max-xl:bg-neutral-01-150 max-xl:px-6
 
 export function Sidebar({ post, ...props }) {
   return (

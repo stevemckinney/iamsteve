@@ -80,10 +80,10 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
   // const mask =
   //   '[mask-image:radial-gradient(100%_150%_at_50%_50%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%),radial-gradient(200%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)][mask-size:100%_100%][mask-position:_0_0,0_0][mask-repeat:repeat]'
   // radial-gradient(100%_150%_at_50%_30%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)
-  // [mask:radial-gradient(150%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]
-  // [mask:radial-gradient(155%_140%_at_50%_30%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]
+  // [mask:radial-gradient(150%_150%_at_50%_25%,#fff_24.1%,rgba(255,255,255,0.56)_41.94%,transparent_48.59%,transparent_100%)]
+  // [mask:radial-gradient(155%_140%_at_50%_30%,#fff_24.1%,rgba(255,255,255,0.56)_41.94%,transparent_48.59%,transparent_100%)]
   // [mask:linear-gradient(to_right,#fff_75%,#fff_80%,transparent_97.5%)]
-  //  [mask:radial-gradient(163.02%_100%_at_50%_0%,_#fff_83.77%,_rgba(255,_255,_255,_0.8)_90.28%,_transparent_100%)]
+  //  [mask:radial-gradient(163.02%_100%_at_50%_0%,#fff_83.77%,rgba(255,255,255,0.8)_90.28%,transparent_100%)]
 
   const imageColor = theme ? theme.toString() : '#f1e8e4'
   const imageClass = `relative flex items-center justify-center`
@@ -150,10 +150,10 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
         </>
       )}
       <div
-        className={`flex flex-col flex-auto relative py-8 @lg/card:pb-[2.625rem] @lg/card:pt-12`}
+        className={`flex flex-col flex-auto relative py-8 @lg/card:pb-10.5 @lg/card:pt-12`}
       >
         <div
-          className={`flex flex-row gap-6 relative z-[2] overflow-x-auto pb-4 @lg/card:pb-5 px-8 @lg/card:px-12 pt-px -mt-px`}
+          className={`flex flex-row gap-6 relative z-2 overflow-x-auto pb-4 @lg/card:pb-5 px-8 @lg/card:px-12 pt-px -mt-px`}
         >
           {categories &&
             categories.map((category) => {
@@ -185,7 +185,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
           >
             <Link
               href={slug}
-              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @lg/card:before:rounded-lg before:z-[1]"
+              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @lg/card:before:rounded-lg before:z-1"
             >
               {title}
             </Link>

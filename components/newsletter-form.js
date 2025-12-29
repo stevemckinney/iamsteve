@@ -104,7 +104,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
               </p>
               <input
                 type="text"
-                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)]`}
+                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_64_63/0.1)] bg-linear-to-b from-[rgb(79_64_63/0.03)] from-0% to-[rgb(79_64_63/0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_127_218),0_0_0_6px_rgb(79_127_218/0.08)]`}
                 name="fields[first_name]"
                 id={`input-name-${unique}`}
                 ref={inputName}
@@ -125,7 +125,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
                 type="email"
                 autoComplete="email"
                 autoCapitalize="none"
-                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] ${
+                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_64_63/0.1)] bg-linear-to-b from-[rgb(79_64_63/0.03)] from-0% to-[rgb(79_64_63/0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_127_218),0_0_0_6px_rgb(79_127_218/0.08)] ${
                   emailError ? 'border-red-500' : ''
                 }`}
                 id={`input-email-${unique}`}
@@ -147,7 +147,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
             <Button
               theme="dandelion"
               aria-label="Subscribe to the newsletter"
-              className="button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto button-dandelion font-ui text-base/tight lowercase text-center"
+              className="button-dandelion select-none w-full @sm:w-auto @sm:grow-0 flex-auto button-dandelion font-ui text-base/tight lowercase text-center"
               disabled={subscribed}
             >
               Sign me up

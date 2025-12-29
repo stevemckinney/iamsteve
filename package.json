@@ -49,7 +49,6 @@
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.19",
-    "autoprefixer": "^10.4.22",
     "clsx": "^2.1.1",
     "contentlayer2": "^0.5.8",
     "date-fns": "^2.30.0",
@@ -108,6 +107,7 @@
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.1",
     "@next/eslint-plugin-next": "^15.5.7",
+    "@tailwindcss/postcss": "^4.1.18",
     "axios": "^1.13.2",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^8.10.2",
@@ -119,6 +119,6 @@
     "p-limit": "^7.2.0",
     "prettier": "2.7.1",
     "sass": "^1.94.2",
-    "tailwindcss": "^3.4.18"
+    "tailwindcss": "^4.1.18"
   }
 }

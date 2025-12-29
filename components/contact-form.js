@@ -23,7 +23,7 @@ const Input = ({ ...props }) => (
   <Form.Control asChild>
     <input
       {...props}
-      className="form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] data-[invalid=true]:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_#E5542B,_0_0_0_5px_rgb(229_84_43_/_0.08)]"
+      className="form-input w-full text-base shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_64_63/0.1)] bg-linear-to-b from-[rgb(79_64_63/0.03)] from-0% to-[rgb(79_64_63/0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_127_218),0_0_0_6px_rgb(79_127_218/0.08)] data-[invalid=true]:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_#E5542B,0_0_0_5px_rgb(229_84_43/0.08)]"
     />
   </Form.Control>
 )
@@ -112,7 +112,7 @@ const ContactForm = () => {
           </div>
           <Input type="text" required name="name" id="name" />
           <Form.Message
-            className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
+            className="font-ui text-xs text-rio-600 absolute left-0 top-full pt-2"
             match="valueMissing"
           >
             Please enter your name
@@ -128,13 +128,13 @@ const ContactForm = () => {
           </div>
           <Input type="email" required name="email" id="email" />
           <Form.Message
-            className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
+            className="font-ui text-xs text-rio-600 absolute left-0 top-full pt-2"
             match="valueMissing"
           >
             Please enter your email
           </Form.Message>
           <Form.Message
-            className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
+            className="font-ui text-xs text-rio-600 absolute left-0 top-full pt-2"
             match="typeMismatch"
           >
             Please provide a valid email
@@ -153,7 +153,7 @@ const ContactForm = () => {
           </div>
           <Form.Control asChild>
             <textarea
-              className="form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 min-h-[11.5rem] focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] data-[invalid=true]:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_#E5542B,_0_0_0_5px_rgb(229_84_43_/_0.08)]"
+              className="form-input w-full text-base shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_64_63/0.1)] bg-linear-to-b from-[rgb(79_64_63/0.03)] from-0% to-[rgb(79_64_63/0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 min-h-46 focus-visible:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_127_218),0_0_0_6px_rgb(79_127_218/0.08)] data-[invalid=true]:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_#E5542B,0_0_0_5px_rgb(229_84_43/0.08)]"
               required
               name="message"
               id="message"
@@ -165,13 +165,13 @@ const ContactForm = () => {
             {wordCount === 1 ? 'word' : 'words'}.
           </p>
           <Form.Message
-            className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
+            className="font-ui text-xs text-rio-600 absolute left-0 top-full pt-2"
             match="valueMissing"
           >
             Please enter a message
           </Form.Message>
           <Form.Message
-            className="font-ui text-xs text-rio-600 absolute left-0 top-[100%] pt-2"
+            className="font-ui text-xs text-rio-600 absolute left-0 top-full pt-2"
             match={(value) => value.trim().split(/\s+/).length < MIN_WORD_COUNT}
           >
             Message must be at least {MIN_WORD_COUNT} words long
@@ -180,7 +180,7 @@ const ContactForm = () => {
 
         <Form.Submit asChild>
           <button
-            className="button-dandelion self-start min-w-fit font-ui text-base/tight lowercase text-center button-dandelion button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto"
+            className="button-dandelion self-start min-w-fit font-ui text-base/tight lowercase text-center button-dandelion button-dandelion select-none w-full @sm:w-auto @sm:grow-0 flex-auto"
             disabled={wordCount < MIN_WORD_COUNT}
           >
             Send
@@ -189,7 +189,7 @@ const ContactForm = () => {
       </Form.Root>
 
       <Toast.Root
-        className="shadow-placed col-prose flex flex-col gap-1 leading-tight bg-cornflour-0 rounded-md p-4 data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut relative"
+        className="shadow-placed col-prose flex flex-col gap-1 leading-tight bg-cornflour-0 rounded-md p-4 data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-(--radix-toast-swipe-move-x) data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut relative"
         open={toastOpen}
         onOpenChange={setToastOpen}
       >
@@ -203,7 +203,7 @@ const ContactForm = () => {
           </button>
         </Toast.Action>
       </Toast.Root>
-      <Toast.Viewport className="[--viewport-padding:theme('spacing.6')] fixed top-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-4 w-96 max-w-[100vw] list-none z-[300] outline-none" />
+      <Toast.Viewport className="[--viewport-padding:--spacing(6)] fixed top-0 right-0 flex flex-col p-(--viewport-padding) gap-4 w-96 max-w-[100vw] list-none z-300 outline-hidden" />
     </Toast.Provider>
   )
 }

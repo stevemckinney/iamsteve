@@ -413,8 +413,8 @@ This is a small detail, but the vast majority of the time and more so with linki
 
 <figure>
   <div className="sandbox">
-    <div className="bg-neutral-01-100 px-[4vmax] py-[10vmax] aspect-[16/10] flex items-center">
-      <span className="text-fern-1100 font-display text-[clamp(1rem,_0.6087rem_+_1.7391vw,_2rem)] block text-center font-normal leading-4xl  text-balance tracking-[-.015em]">Old style is a humanist style of <u>serif</u>. The history of <span className="font-variation-bold">this style goes back to 1465</span>.</span>
+    <div className="bg-neutral-01-100 px-[4vmax] py-[10vmax] aspect-16/10 flex items-center">
+      <span className="text-fern-1100 font-display text-[clamp(1rem,0.6087rem+1.7391vw,2rem)] block text-center font-normal leading-4xl  text-balance tracking-[-.015em]">Old style is a humanist style of <u>serif</u>. The history of <span className="font-variation-bold">this style goes back to 1465</span>.</span>
     </div>
   </div>
   <figcaption><Fig>13</Fig> An example of text using emphasis before the end of a sentence</figcaption>

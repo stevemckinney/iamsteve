@@ -29,7 +29,7 @@ const Small = ({ frontmatter }) => {
   return (
     <div className="relative flex gap-4 rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:scale-[.99375] bg-white active:bg-neutral-01-50 bg-clip-padding transition ease-linear duration-200 overflow-hidden p-8">
       {categories && (
-        <div className={`flex flex-row gap-4 relative z-[2] overflow-x-auto`}>
+        <div className={`flex flex-row gap-4 relative z-2 overflow-x-auto`}>
           {categories.slice(0, 1).map((category) => {
             const current = Categories.findIndex(
               (cat) => cat.title === category
@@ -55,7 +55,7 @@ const Small = ({ frontmatter }) => {
           <Link
             href={slug}
             tabIndex="0"
-            className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-[1]"
+            className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1"
           >
             {title}
           </Link>
@@ -64,7 +64,7 @@ const Small = ({ frontmatter }) => {
           <Icon
             icon="calendar"
             size={16}
-            className="text-fern-1100 relative top-[-1px]"
+            className="text-fern-1100 relative -top-px"
           />
           <Date
             dateString={date}

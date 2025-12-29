@@ -118,7 +118,7 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
     </ul>
     </div>
 
-    <div className={`overflow-hidden image-stack col-span-full md:col-start-8 md:col-span-5 max-md:mt-12 max-w-max self-start shadow-placed rounded-lg grid [&>*]:[grid-area:images]`}>
+    <div className={`overflow-hidden image-stack col-span-full md:col-start-8 md:col-span-5 max-md:mt-12 max-w-max self-start shadow-placed rounded-lg grid *:[grid-area:images]`}>
       <Image
         src="/images/about/iamsteve-small-v1.jpg"
         width={488}
@@ -131,42 +131,42 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
         width={488}
         height={416}
         alt="Version two of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[4rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-16"
       />
       <Image
         src="/images/about/iamsteve-small-v3.jpg"
         width={488}
         height={416}
         alt="Version three of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[8rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-32"
       />
       <Image
         src="/images/about/iamsteve-small-v4.jpg"
         width={488}
         height={416}
         alt="Version four of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[12rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-48"
       />
       <Image
         src="/images/about/iamsteve-small-v5.jpg"
         width={488}
         height={416}
         alt="Version five of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[16rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-64"
       />
       <Image
         src="/images/about/iamsteve-small-v6.jpg"
         width={488}
         height={416}
         alt="Version six of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[20rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-80"
       />
       <Image
         src="/images/about/iamsteve-small-v7.jpg"
         width={488}
         height={416}
         alt="Version seven of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[24rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-96"
       />
     </div>
 

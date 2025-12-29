@@ -34,7 +34,7 @@ const Sprite16 = (props) => (
         </g>
       </symbol>
       <symbol id="shadow-16" viewBox="0 0 16 16">
-        <g className="shadow">
+        <g className="shadow-sm">
           <circle
             cx="8"
             cy="6"

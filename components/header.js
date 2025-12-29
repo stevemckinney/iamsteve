@@ -18,7 +18,7 @@ export default function Header() {
   const pathname = usePathname()
   const nav =
     'flex flex-[1_0_auto] lg:gap-8 2xl:gap-12 xl:justify-center max-lg:px-2'
-  const tabbarNav = `max-lg:transition-all max-lg:duration-200 max-lg:ease-out max-lg:px-8 max-lg:bg-white/75 max-lg:shadow-placed max-lg:justify-between max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-[100] max-lg:backdrop-blur max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150 max-lg:gap-6 max-lg:rounded-full ${styles.tabbar}`
+  const tabbarNav = `max-lg:transition-all max-lg:duration-200 max-lg:ease-out max-lg:px-8 max-lg:bg-white/75 max-lg:shadow-placed max-lg:justify-between max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100 max-lg:backdrop-blur-sm max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150 max-lg:gap-6 max-lg:rounded-full ${styles.tabbar}`
 
   // Some styles exist in the header.module to handle safe-area
   const navLink = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
@@ -35,11 +35,11 @@ export default function Header() {
         id="top"
       >
         <div
-          className="absolute col-container lg:col-content lg:-mx-8 h-[4px] top-1/2 -translate-y-1/2 right-0 left-0 bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 z-[-1]"
+          className="absolute col-container lg:col-content lg:-mx-8 h-[4px] top-1/2 -translate-y-1/2 right-0 left-0 bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150 z-[-1]"
           aria-hidden="true"
         />
-        {/*bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150*/}
-        <div className="col-container 2xl:col-content flex items-center align-center max-lg:justify-between py-4 px-4 lg:-mx-4 lg:py-[1.625rem] 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 max-2xl:gap-8">
+        {/*bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150*/}
+        <div className="col-container 2xl:col-content flex items-center align-center max-lg:justify-between py-4 px-4 lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 max-2xl:gap-8">
           <Link
             href="/"
             className="flex-[1_0_10%]"

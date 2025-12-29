@@ -4,7 +4,7 @@ const Notepad = ({ children, className }) => {
 
 const NotepadHeader = ({ children }) => {
   return (
-    <div className="px-10 pt-[1.75rem] pb-[1.625rem] bg-dandelion-300 shadow-dandelion-placed [--ui-border-color:theme(colors.dandelion.600)] [--ui-border-color-strong:theme(colors.dandelion.700)] rounded-tl-lg rounded-tr-lg relative z-20">
+    <div className="px-10 pt-7 pb-6.5 bg-dandelion-300 shadow-dandelion-placed [--ui-border-color:var(--color-dandelion-600)] [--ui-border-color-strong:var(--color-dandelion-700)] rounded-tl-lg rounded-tr-lg relative z-20">
       <h2 className="font-display leading-xl font-variation-bold text-xl lowercase text-dandelion-800">
         {children}
       </h2>

@@ -37,7 +37,7 @@ const Shortcut = ({ children }) => {
     tab: {
       symbol: '⇥',
       label: 'Tab',
-      className: 'min-w-[4rem] items-start justify-end',
+      className: 'min-w-16 items-start justify-end',
     },
     shift: {
       symbol: '⇧',
@@ -47,39 +47,39 @@ const Shortcut = ({ children }) => {
     caps: {
       symbol: '⇪',
       label: 'Caps lock',
-      className: 'min-w-[4.5rem] items-start justify-end',
+      className: 'min-w-18 items-start justify-end',
     },
     esc: {
       symbol: '⎋',
       label: 'Esc',
-      className: 'min-w-[3rem] items-start justify-end',
+      className: 'min-w-12 items-start justify-end',
     },
 
     // Right-aligned keys with space-between (items-end justify-between)
     ctrl: {
       symbol: '⌃',
       label: 'Control',
-      className: 'min-w-[4rem] items-end justify-between',
+      className: 'min-w-16 items-end justify-between',
     },
     control: {
       symbol: '⌃',
       label: 'Control',
-      className: 'min-w-[4rem] items-end justify-between',
+      className: 'min-w-16 items-end justify-between',
     },
     opt: {
       symbol: '⌥',
       label: 'Option',
-      className: 'min-w-[4rem] items-end justify-between',
+      className: 'min-w-16 items-end justify-between',
     },
     option: {
       symbol: '⌥',
       label: 'Option',
-      className: 'min-w-[4rem] items-end justify-between',
+      className: 'min-w-16 items-end justify-between',
     },
     alt: {
       symbol: '⌥',
       label: 'Alt',
-      className: 'min-w-[4rem] items-end justify-between',
+      className: 'min-w-16 items-end justify-between',
     },
     cmd: {
       symbol: '⌘',
@@ -94,29 +94,29 @@ const Shortcut = ({ children }) => {
     delete: {
       symbol: '⌫',
       label: 'Delete',
-      className: 'min-w-[4rem] items-end justify-between',
+      className: 'min-w-16 items-end justify-between',
     },
     backspace: {
       symbol: '⌫',
       label: 'Delete',
-      className: 'min-w-[4rem] items-end justify-between',
+      className: 'min-w-16 items-end justify-between',
     },
 
     // Other special keys (centered)
     return: {
       symbol: '↵',
       label: 'Return',
-      className: 'min-w-[4rem] items-center justify-center',
+      className: 'min-w-16 items-center justify-center',
     },
     enter: {
       symbol: '↵',
       label: 'Enter',
-      className: 'min-w-[4rem] items-center justify-center',
+      className: 'min-w-16 items-center justify-center',
     },
     space: {
       symbol: '␣',
       label: 'Space',
-      className: 'min-w-[4.5rem] items-center justify-center',
+      className: 'min-w-18 items-center justify-center',
     },
   }
 
@@ -139,7 +139,7 @@ const Shortcut = ({ children }) => {
     }
     return {
       symbol: key,
-      className: 'min-w-[3rem] items-center justify-center',
+      className: 'min-w-12 items-center justify-center',
       isSpecial: false,
     }
   }
@@ -218,7 +218,7 @@ const ComparisonImages = ({
           </span>
         )}
         <div
-          className="flex items-center justify-end bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 shadow-[inset_0_0_0_1px_rgb(162_143_140/.24),inset_0_1px_1px_-0.5px_rgb(162_143_140/.2),inset_0_1px_3px_-1.5px_rgb(162_143_140/.2),inset_0_2px_4px_-2px_rgb(162_143_140/.2),inset_0_3px_6px_-3px_rgb(162_143_140/.2),0_1px_rgb(252_249_248/1),0_1px_1px_rgb(252_249_248/1)] rounded-[10px] p-1"
+          className="flex items-center justify-end bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150 shadow-[inset_0_0_0_1px_rgb(162_143_140/.24),inset_0_1px_1px_-0.5px_rgb(162_143_140/.2),inset_0_1px_3px_-1.5px_rgb(162_143_140/.2),inset_0_2px_4px_-2px_rgb(162_143_140/.2),inset_0_3px_6px_-3px_rgb(162_143_140/.2),0_1px_rgb(252_249_248/1),0_1px_1px_rgb(252_249_248/1)] rounded-[10px] p-1"
           role="tablist"
           aria-label="View options"
         >
@@ -313,10 +313,10 @@ const Images = ({ children, align, compare = false, options, ...props }) => {
 
   return (
     <div
-      className={`flex col-container grid-cols-subgrid gap-4 overscroll-contain-x overflow-x-auto py-4 -my-4 prose-exclude images px-6 sm:px-12 -mx-6 sm:[mask:linear-gradient(90deg,_transparent_0%,_#000_32px,_#000_calc(100%_-_32px),_transparent_100%)]`}
+      className={`flex col-container grid-cols-subgrid gap-4 overscroll-contain-x overflow-x-auto py-4 -my-4 prose-exclude images px-6 sm:px-12 -mx-6 sm:[mask:linear-gradient(90deg,transparent_0%,#000_32px,#000_calc(100%-32px),transparent_100%)]`}
     >
       <div
-        className="flex-shrink-0 max-sm:hidden sm:basis-1/5"
+        className="shrink-0 max-sm:hidden sm:basis-1/5"
         aria-hidden="true"
       />
       {children}
@@ -388,7 +388,7 @@ const components = {
     </figure>
   ),
   GalleryFigcaption: (props) => (
-    <figcaption className="text-fern-1100/60 font-body leading-normal pt-4 pb-2 [&>*]:underline [&>*]:text-base">
+    <figcaption className="text-fern-1100/60 font-body leading-normal pt-4 pb-2 *:underline *:text-base">
       {props.children}
     </figcaption>
   ),
@@ -407,7 +407,7 @@ const postComponents = {
   ),
   ol: (props) => (
     <ol
-      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-[decimal] [li::marker]-[theme('colors.neutral-03.400')] mb-3"
+      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-decimal [li::marker]-[theme('colors.neutral-03.400')] mb-3"
       {...props}
     />
   ),
@@ -432,7 +432,7 @@ const postComponents = {
   LinkFigma: (props) => (
     <Link
       href={props.href}
-      className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion w-full @sm:w-[auto] @sm:grow-0 flex-auto`}
+      className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion w-full @sm:w-auto @sm:grow-0 flex-auto`}
     >
       <Icon icon="figma" size={16} className="text-current shrink-0" />{' '}
       {props.children}
@@ -441,7 +441,7 @@ const postComponents = {
   LinkGithub: (props) => (
     <Link
       href={props.href}
-      className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion w-full @sm:w-[auto] @sm:grow-0 flex-auto`}
+      className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion w-full @sm:w-auto @sm:grow-0 flex-auto`}
     >
       <Icon icon="github" size={16} className="text-current shrink-0" />{' '}
       {props.children}
@@ -449,7 +449,7 @@ const postComponents = {
   ),
   Demo: (
     src,
-    className = `-mx-[1.5rem] col-content h-[33vmax] overflow-hidden bg-fern-1100 p-1.5`,
+    className = `-mx-6 col-content h-[33vmax] overflow-hidden bg-fern-1100 p-1.5`,
     zoom = `.5`
   ) => {
     const style = { '--zoom': zoom }
@@ -460,7 +460,7 @@ const postComponents = {
       >
         <iframe
           src={src.src}
-          className={`sm:rounded-[2.35rem] ring ring-1 ring-fern-800 origin-top-left w-[calc(1_/_var(--zoom)_*_100%)] h-[calc(1_/_var(--zoom)_*_100%)] transform-gpu scale-[var(--zoom)]`}
+          className={`sm:rounded-[2.35rem] ring-3 ring-1 ring-fern-800 origin-top-left w-[calc(1/var(--zoom)*100%)] h-[calc(1/var(--zoom)*100%)] transform-gpu scale-(--zoom)`}
         ></iframe>
       </div>
     )
