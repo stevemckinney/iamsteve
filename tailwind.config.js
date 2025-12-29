@@ -87,35 +87,35 @@ module.exports = {
       spacing: {
         18: '4.5rem',
       },
-      fontFamily: {
-        //sans: ['gira-sans', 'sans-serif', ...defaultTheme.fontFamily.sans],
-        sans: [['elza', 'sans-serif', ...defaultTheme.fontFamily.sans]],
-        display: [
-          [
-            'roc-grotesk-variable',
-            'sans-serif',
-            ...defaultTheme.fontFamily.sans,
-          ],
-        ],
-        ui: [
-          [
-            'roc-grotesk-variable',
-            'sans-serif',
-            ...defaultTheme.fontFamily.sans,
-          ],
-          {
-            fontVariationSettings: '"wdth" 100, "wght" 500',
-            textTransform: 'lowercase',
-          },
-        ],
-        mono: [
-          ['covik-sans-mono', ...defaultTheme.fontFamily.mono],
-          {
-            fontVariantNumeric: 'lining-nums proportional-nums',
-            fontVariationSettings: '"salt" on',
-          },
-        ],
-      },
+      // fontFamily: {
+      //   //sans: ['gira-sans', 'sans-serif', ...defaultTheme.fontFamily.sans],
+      //   sans: [['elza', 'sans-serif', ...defaultTheme.fontFamily.sans]],
+      //   display: [
+      //     [
+      //       'roc-grotesk-variable',
+      //       'sans-serif',
+      //       ...defaultTheme.fontFamily.sans,
+      //     ],
+      //   ],
+      //   ui: [
+      //     [
+      //       'roc-grotesk-variable',
+      //       'sans-serif',
+      //       ...defaultTheme.fontFamily.sans,
+      //     ],
+      //     {
+      //       fontVariationSettings: '"wdth" 100, "wght" 500',
+      //       textTransform: 'lowercase',
+      //     },
+      //   ],
+      //   mono: [
+      //     ['covik-sans-mono', ...defaultTheme.fontFamily.mono],
+      //     {
+      //       fontVariantNumeric: 'lining-nums proportional-nums',
+      //       fontVariationSettings: '"salt" on',
+      //     },
+      //   ],
+      // },
       boxShadow: {
         subtle: 'var(--shadow-subtle)',
         reduced: 'var(--shadow-reduced)',
