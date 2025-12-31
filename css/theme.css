@@ -62,11 +62,11 @@
  * Code blocks stay mostly consistent, slightly adjust for contrast
  */
 @theme {
-  --color-heading: light-dark(var(--color-fern-1100), var(--color-fern-0));
+  --color-heading: light-dark(var(--color-fern-1100), var(--color-neutral-01-150));
   --color-body: light-dark(var(--color-fern-1100), var(--color-fern-0));
   --color-body-80: light-dark(
     oklch(from var(--color-fern-1100) l c h / 0.8),
-    oklch(from var(--color-fern-0) l c h / 0.8)
+    oklch(from var(--color-neutral-01-150) l c h / 0.8)
   );
   --color-text-secondary: light-dark(var(--color-fern-700), var(--color-ui-body));
   --color-text-tertiary: light-dark(var(--color-neutral-01-600), var(--color-neutral-01-500));
@@ -74,10 +74,10 @@
   --color-link: light-dark(var(--color-dandelion-700), var(--color-dandelion-600));
   --color-link-hover: light-dark(var(--color-dandelion-800), var(--color-dandelion-700));
 
-  --color-canvas: light-dark(var(--color-neutral-01-150), var(--color-neutral-03-900));
-  --color-surface: light-dark(rgb(255 255 255), var(--color-neutral-03-800));
-  --color-surface-raised: light-dark(rgb(255 255 255), var(--color-neutral-01-50));
-  --color-surface-pressed: light-dark(var(--color-neutral-01-50), var(--color-neutral-03-900));
+  --color-canvas: light-dark(var(--color-neutral-01-150), var(--color-fern-1300));
+  --color-surface: light-dark(rgb(255 255 255), var(--color-fern-1100));
+  --color-surface-raised: light-dark(var(--color-neutral-01-50), var(--color-fern-1000));
+  --color-surface-pressed: light-dark(var(--color-neutral-01-50), var(--color-fern-1100));
   --color-subtle: light-dark(rgb(252 248 246), var(--color-neutral-01-100));
   --color-overlay: light-dark(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
 
