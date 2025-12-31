@@ -55,7 +55,7 @@ const Small = ({ frontmatter }) => {
           <Link
             href={slug}
             tabIndex="0"
-            className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1"
+            className="text-heading before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1"
           >
             {title}
           </Link>
@@ -64,7 +64,7 @@ const Small = ({ frontmatter }) => {
           <Icon
             icon="calendar"
             size={16}
-            className="text-fern-1100 relative -top-px"
+            className="text-heading relative -top-px"
           />
           <Date
             dateString={date}

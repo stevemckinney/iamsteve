@@ -92,19 +92,14 @@ const Medium = ({ frontmatter, image, className }) => {
         <>
           <div
             className={`flex items-center justify-center aspect-video w-full relative overflow-hidden [mask:radial-gradient(150%_150%_at_50%_25%,#fff_24.1%,rgba(255,255,255,0.56)_41.94%,transparent_48.59%,transparent_100%)]`}
-            style={{ backgroundColor: `${imageColor}` }}
           >
             {categories && (
               <Placeholder
                 category={categories.includes('Design') ? 'Design' : 'Code'}
-                kind="post"
+                slug={slug}
                 href={slug}
-                title={title}
                 alt={title}
                 className={`flex items-center justify-center aspect-[1.6/1]`}
-                style={{ backgroundColor: `${imageColor}` }}
-                aria-labelledby={`title-${_id}`}
-                tabIndex="0"
               />
             )}
           </div>
@@ -128,7 +123,7 @@ const Medium = ({ frontmatter, image, className }) => {
             <Link
               href={slug}
               tabIndex="0"
-              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1"
+              className="text-heading before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1"
             >
               {title}
             </Link>

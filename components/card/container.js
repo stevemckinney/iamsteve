@@ -93,7 +93,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
 
   return (
     <article
-      className={`@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced bg-white active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative h-full ${className}`}
+      className={`@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed dark:shadow-[0_0_0_1px_var(--color-neutral-03-700)] hover:shadow-picked dark:hover:shadow-[0_0_0_1px_var(--color-neutral-03-600)] active:shadow-reduced dark:active:shadow-[0_0_0_1px_var(--color-neutral-03-700)] bg-surface active:bg-surface-pressed active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative h-full ${className}`}
     >
       {image && (large || medium) && (
         <Link
@@ -117,36 +117,27 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
       )}
       {image && (!large || !medium) && (
         <>
-          <div
-            className={imageClass}
-            style={{ backgroundColor: `${imageColor}` }}
-          >
-            {categories && categories.includes('Design') ? (
-              <Placeholder
-                category="Design"
-                kind="post"
-                width={592}
-                height={368}
-                href={slug}
-                alt={title}
-                className={`flex items-center justify-center`}
-                aria-labelledby={`title-${_id}`}
-                tabIndex="0"
-              />
-            ) : (
-              <Placeholder
-                category="Code"
-                kind="post"
-                width={592}
-                height={368}
-                href={slug}
-                alt={title}
-                className={`flex items-center justify-center`}
-                aria-labelledby={`title-${_id}`}
-                tabIndex="0"
-              />
-            )}
-          </div>
+          {categories && categories.includes('Design') ? (
+            <Placeholder
+              category="Design"
+              slug={slug}
+              width={592}
+              height={368}
+              href={slug}
+              alt={title}
+              className={imageClass}
+            />
+          ) : (
+            <Placeholder
+              category="Code"
+              slug={slug}
+              width={592}
+              height={368}
+              href={slug}
+              alt={title}
+              className={imageClass}
+            />
+          )}
         </>
       )}
       <div
@@ -185,7 +176,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
           >
             <Link
               href={slug}
-              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @lg/card:before:rounded-lg before:z-1"
+              className="text-heading before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @lg/card:before:rounded-lg before:z-1"
             >
               {title}
             </Link>

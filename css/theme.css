@@ -2,6 +2,24 @@
 
 :root {
   color-scheme: light dark;
+
+  /**
+   * Placeholder background colors
+   * Defined at :root (not @theme) because they're accessed via inline styles
+   * in the Placeholder component. @theme properties are only available to
+   * Tailwind utility classes, not inline style attributes.
+   * Light mode: -100 level (lighter), Dark mode: -200 level (better contrast)
+   */
+  --placeholder-color-0: light-dark(var(--color-rio-100), var(--color-rio-400));
+  --placeholder-color-1: light-dark(var(--color-dandelion-100), var(--color-dandelion-400));
+  --placeholder-color-2: light-dark(var(--color-lavender-100), var(--color-lavender-400));
+  --placeholder-color-3: light-dark(var(--color-magenta-100), var(--color-magenta-400));
+  --placeholder-color-4: light-dark(var(--color-grass-100), var(--color-grass-400));
+  --placeholder-color-5: light-dark(var(--color-fern-100), var(--color-fern-400));
+  --placeholder-color-6: light-dark(var(--color-moss-100), var(--color-moss-400));
+  --placeholder-color-7: light-dark(var(--color-cornflour-100), var(--color-cornflour-400));
+  --placeholder-color-8: light-dark(var(--color-neutral-01-200), var(--color-neutral-01-400));
+  --placeholder-color-9: light-dark(var(--color-neutral-02-200), var(--color-neutral-02-400));
 }
 
 /**
@@ -88,22 +106,6 @@
   --code-magenta: light-dark(var(--color-magenta-300), var(--color-magenta-200));
   --code-cyan: light-dark(var(--color-fern-400), var(--color-fern-300));
   --code-comment: light-dark(var(--color-neutral-03-500), var(--color-neutral-03-400));
-
-  /**
-   * Placeholder background colors
-   * Used by the Placeholder component for theme-aware backgrounds
-   * Light mode: -100 level (lighter), Dark mode: -200 level (better contrast)
-   */
-  --placeholder-color-0: light-dark(var(--color-rio-100), var(--color-rio-200));
-  --placeholder-color-1: light-dark(var(--color-dandelion-100), var(--color-dandelion-400));
-  --placeholder-color-2: light-dark(var(--color-lavender-100), var(--color-lavender-200));
-  --placeholder-color-3: light-dark(var(--color-magenta-100), var(--color-magenta-200));
-  --placeholder-color-4: light-dark(var(--color-grass-100), var(--color-grass-200));
-  --placeholder-color-5: light-dark(var(--color-fern-100), var(--color-fern-200));
-  --placeholder-color-6: light-dark(var(--color-moss-100), var(--color-moss-200));
-  --placeholder-color-7: light-dark(var(--color-cornflour-100), var(--color-cornflour-200));
-  --placeholder-color-8: light-dark(var(--color-neutral-01-200), var(--color-neutral-01-300));
-  --placeholder-color-9: light-dark(var(--color-neutral-02-200), var(--color-neutral-02-300));
 }
 
 /**

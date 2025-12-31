@@ -70,7 +70,7 @@ export function BadgeIcon({ icon, size, theme, className = 'badge' }) {
 
   return (
     <span
-      className={`${sizing} bg-white group-active/badge:bg-neutral-01-50 shadow-reduced group-hover/badge:shadow-picked group-active/badge:shadow-reduced flex items-center justify-center transition-all duration-100 ease-linear ${className} ${defaultVariants[theme]}`}
+      className={`${sizing} bg-white group-active/badge:bg-canvas shadow-reduced group-hover/badge:shadow-picked dark:hover:shadow-[0_0_0_1px_var(--color-neutral-03-600)] group-active/badge:shadow-reducedcont dark:active:shadow-[0_0_0_1px_var(--color-neutral-03-700)] flex items-center justify-center transition-all duration-100 ease-linear ${className} ${defaultVariants[theme]}`}
     >
       <Icon className={`text-current`} icon={icon} size={size} />
     </span>

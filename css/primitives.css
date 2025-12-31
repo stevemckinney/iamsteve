@@ -224,6 +224,8 @@
   --color-fern-900: oklch(39.6% 0.082 174);
   --color-fern-1000: oklch(33.2% 0.071 174.7);
   --color-fern-1100: oklch(26.8% 0.059 173.5);
+  --color-fern-1200: oklch(22.9% 0.039087 171.7);
+  --color-fern-1300: oklch(20.2% 0.035089 171.8);
 
   --color-cornflour-0: rgb(235 242 250);
   --color-cornflour-100: rgb(203 223 248);

@@ -71,36 +71,27 @@ const Large = ({ frontmatter, image, className }) => {
       )}
       {image && !large && (
         <>
-          <div
-            className="flex items-center self-stretch relative"
-            style={{ backgroundColor: `${imageColor}` }}
-          >
+          <div className="flex items-center self-stretch relative">
             <div className="absolute before:transition before:duration-200 before:ease-in z-1 inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active/large:before:opacity-100" />
             {categories && categories.includes('Design') ? (
               <Placeholder
                 category="Design"
-                kind="post"
+                slug={slug}
                 width={592}
                 height={384}
                 href={slug}
-                title=""
                 className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
-                style={{ backgroundColor: `${imageColor}` }}
-                aria-labelledby={`title-${_id}`}
-                tabIndex="0"
+                alt={title}
               />
             ) : (
               <Placeholder
                 category="Code"
-                kind="post"
+                slug={slug}
                 width={592}
                 height={384}
                 href={slug}
-                title=""
                 className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
-                style={{ backgroundColor: `${imageColor}` }}
-                aria-labelledby={`title-${_id}`}
-                tabIndex="0"
+                alt={title}
               />
             )}
           </div>
@@ -126,7 +117,7 @@ const Large = ({ frontmatter, image, className }) => {
           >
             <Link
               href={slug}
-              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1"
+              className="text-heading before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1"
             >
               {title}
             </Link>
