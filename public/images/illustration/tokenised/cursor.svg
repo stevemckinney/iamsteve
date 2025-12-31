@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
-  <path class="fill-surface" d="m1 1 11 30 5-14 14-6.4L1 1Z"/>
-  <path class="stroke-foreground" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M27.25 11.5 2.875 3.7"/>
-  <path class="fill-lowlight" d="m10.2 27.2 4-11.2c.4-1.2 1.6-2 2.8-2h1c.8 0 1.5.7 1.5 1.5S18.8 17 18 17h-1l-4 11.2c-.3.8-1.1 1.2-1.9.9-.8-.2-1.2-1.1-.9-1.9Z"/>
-  <path class="stroke-border" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="m1 1 11 30 5-14 14-6.4L1 1Z"/>
+  <path fill="light-dark(rgb(249 243 241), rgb(171 213 200))" d="m1 1 11 30 5-14 14-6.4L1 1Z"/>
+  <path stroke="light-dark(#fff, #1a1a1a)" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M27.25 11.5 2.875 3.7"/>
+  <path fill="light-dark(rgb(232 220 217), rgb(118 176 159))" d="m10.2 27.2 4-11.2c.4-1.2 1.6-2 2.8-2h1c.8 0 1.5.7 1.5 1.5S18.8 17 18 17h-1l-4 11.2c-.3.8-1.1 1.2-1.9.9-.8-.2-1.2-1.1-.9-1.9Z"/>
+  <path stroke="light-dark(rgb(162 143 140), rgb(56 120 103))" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="m1 1 11 30 5-14 14-6.4L1 1Z"/>
 </svg>

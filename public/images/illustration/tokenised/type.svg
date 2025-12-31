@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
-  <path class="fill-surface" d="M28 12s-.3-6-8-6v20l4 1v4H8v-5l4-1V6c-7.7 0-8 6-8 6H1V1h30v11h-3Z"/>
-  <path class="fill-foreground" d="M8.4 25.9 12 25c.8-.2 1.6.3 1.8 1.1.2.8-.3 1.6-1.1 1.8l-3.6.9c-.8.2-1.6-.3-1.8-1.1-.2-.8.3-1.6 1.1-1.8ZM20 25l3.7.9c.8.2 1.3 1 1.1 1.8-.2.8-1 1.3-1.8 1.1l-3.7-.9c-.8-.2-1.3-1-1.1-1.8.2-.8 1-1.3 1.8-1.1ZM31 1H1v3h30V1Z"/>
-  <path class="stroke-border" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M28 13s-.3-6-8-6v18l4 1v5H8v-5l4-1V7c-7.7 0-8 6-8 6H1V1h30v12h-3Z"/>
+  <path fill="light-dark(rgb(249 243 241), rgb(171 213 200))" d="M28 12s-.3-6-8-6v20l4 1v4H8v-5l4-1V6c-7.7 0-8 6-8 6H1V1h30v11h-3Z"/>
+  <path fill="light-dark(#fff, #1a1a1a)" d="M8.4 25.9 12 25c.8-.2 1.6.3 1.8 1.1.2.8-.3 1.6-1.1 1.8l-3.6.9c-.8.2-1.6-.3-1.8-1.1-.2-.8.3-1.6 1.1-1.8ZM20 25l3.7.9c.8.2 1.3 1 1.1 1.8-.2.8-1 1.3-1.8 1.1l-3.7-.9c-.8-.2-1.3-1-1.1-1.8.2-.8 1-1.3 1.8-1.1ZM31 1H1v3h30V1Z"/>
+  <path stroke="light-dark(rgb(162 143 140), rgb(56 120 103))" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M28 13s-.3-6-8-6v18l4 1v5H8v-5l4-1V7c-7.7 0-8 6-8 6H1V1h30v12h-3Z"/>
 </svg>
