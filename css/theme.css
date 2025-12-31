@@ -62,11 +62,11 @@
  * Code blocks stay mostly consistent, slightly adjust for contrast
  */
 @theme {
-  --color-heading: light-dark(var(--color-fern-1100), var(--color-neutral-01-150));
+  --color-heading: light-dark(var(--color-fern-1100), var(--color-neutral-01-200));
   --color-body: light-dark(var(--color-fern-1100), var(--color-fern-0));
   --color-body-80: light-dark(
-    oklch(from var(--color-fern-1100) l c h / 0.8),
-    oklch(from var(--color-neutral-01-150) l c h / 0.8)
+    oklch(from var(--color-fern-1100) l c h / .8),
+    oklch(from var(--color-fern-200) l c h / .8)
   );
   --color-text-secondary: light-dark(var(--color-fern-700), var(--color-ui-body));
   --color-text-tertiary: light-dark(var(--color-neutral-01-600), var(--color-neutral-01-500));
