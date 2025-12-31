@@ -5,9 +5,9 @@ import Link from '@/components/link'
 export default function FooterProfile() {
   return (
     <aside className="grid grid-flow-dense grid-cols-2 sm:grid-cols-[repeat(16,minmax(min-content,1fr))] grid-rows-[repeat(auto-fill,minmax(min-content,1fr))] gap-px col-start-container-start col-end-container-end shadow-placed rounded-lg lg:rounded-xl overflow-hidden">
-      <Subscribe className="col-span-full lg:col-span-8 xl:col-span-7 row-span-10 bg-white py-12 px-8 sm:px-12 sm:py-12 md:px-[5vmax] xl:py-16 xl:px-24" />
+      <Subscribe className="col-span-full lg:col-span-8 xl:col-span-7 row-span-10 bg-canvas py-12 px-8 sm:px-12 sm:py-12 md:px-[5vmax] xl:py-16 xl:px-24" />
 
-      <div className="@container/about col-span-full sm:col-span-8 xl:col-span-9 row-span-7 bg-white py-12 px-8 sm:px-12 sm:py-12 xl:px-18 content-end">
+      <div className="@container/about col-span-full sm:col-span-8 xl:col-span-9 row-span-7 bg-canvas py-12 px-8 sm:px-12 sm:py-12 xl:px-18 content-end">
         <h3 className="font-display font-variation-bold text-lg sm:text-3xl lowercase flex gap-2 mb-3">
           About the website
         </h3>
@@ -32,7 +32,7 @@ export default function FooterProfile() {
         </div>
       </div>
 
-      <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-5 row-span-3 bg-white py-12 px-8 sm:px-12 sm:py-12 xl:px-18 flex flex-col justify-end">
+      <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-5 row-span-3 bg-canvas py-12 px-8 sm:px-12 sm:py-12 xl:px-18 flex flex-col justify-end">
         <h3 className="font-display font-variation-bold text-lg sm:text-3xl lowercase mb-4">
           Site
         </h3>
@@ -137,7 +137,7 @@ export default function FooterProfile() {
         </ul>
       </div>
 
-      <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-4 row-span-1 bg-white py-8 sm:p-12 flex items-center justify-center">
+      <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-4 row-span-1 bg-canvas py-8 sm:p-12 flex items-center justify-center">
         <Link
           href="https://v7.iamsteve.me"
           className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
@@ -147,7 +147,7 @@ export default function FooterProfile() {
         </Link>
       </div>
 
-      <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-4 row-span-2 bg-white py-12 px-8 sm:px-12 sm:py-12 xl:px-18 flex flex-col justify-end">
+      <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-4 row-span-2 bg-canvas py-12 px-8 sm:px-12 sm:py-12 xl:px-18 flex flex-col justify-end">
         <h3 className="font-display font-variation-bold text-lg sm:text-3xl lowercase mb-4">
           Elsewhere
         </h3>
