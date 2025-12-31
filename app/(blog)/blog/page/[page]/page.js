@@ -39,7 +39,7 @@ export default async function BlogIndex(props) {
   const params = await props.params
   const allData = await getData()
   const posts = allData.postsByDate
-  const pageNumber = 1
+ const pageNumber = parseInt(params.page) || 1
   const paginatedPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
