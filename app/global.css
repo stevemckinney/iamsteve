@@ -1,3 +1,5 @@
-@import '../css/internal.css';
+@import '../css/primitives.css';
+@import '../css/theme.css';
+@import '../css/utilities.css';
 @import '../css/typography.css';
 @import '../css/prism.css' layer(base);

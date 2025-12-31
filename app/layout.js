@@ -1,8 +1,6 @@
 import './global.css'
 import Script from 'next/script'
 import { Suspense } from 'react'
-import { ThemeProvider } from '@/components/theme-provider'
-import { ModeToggle } from '@/components/mode-toggle'
 import siteMetadata from '@/content/metadata'
 
 import Header from '@/components/header'
@@ -114,9 +112,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className="light overflow-x-clip"
-      style={{ colorScheme: 'light' }}
-      suppressHydrationWarning
+      className="overflow-x-clip"
     >
       <head>
         <meta
@@ -148,16 +144,14 @@ export default function RootLayout({ children }) {
        * the border alignment within the header
        */}
       <body
-        className={`antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100`}
+        className={`antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-canvas text-body`}
       >
         <Sprite16 />
         <Sprite24 />
         <Logo />
         <div className="grid layout relative gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto items-baseline">
-          <ModeToggle />
-          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-            <Header />
-            {children}
+          <Header />
+          {children}
             <Suspense
               fallback={
                 <div className="col-start-container-start col-end-container-end h-[600px]" />
@@ -173,7 +167,7 @@ export default function RootLayout({ children }) {
                 <li>
                   <Link
                     href="#top"
-                    className="text-fern-1100 hover:text-dandelion-600 transition duration-200 ease-linear"
+                    className="text-heading hover:text-dandelion-600 transition duration-200 ease-linear"
                   >
                     Top
                   </Link>
@@ -181,7 +175,7 @@ export default function RootLayout({ children }) {
                 <li>
                   <Link
                     href="/feed.xml"
-                    className="text-fern-1100 hover:text-dandelion-600 transition duration-200 ease-linear"
+                    className="text-heading hover:text-dandelion-600 transition duration-200 ease-linear"
                   >
                     RSS
                   </Link>
@@ -205,13 +199,12 @@ export default function RootLayout({ children }) {
                 className="flex-1 bg-[url(/images/dash.svg)] h-[2px]"
                 aria-hidden="true"
               />
-              <Icon icon="logo" className="text-fern-1100" size={32} />
+              <Icon icon="logo" className="text-heading" size={32} />
               <span
                 className="flex-1 bg-[url(/images/dash.svg)] h-[2px]"
                 aria-hidden="true"
               />
             </div>
-          </ThemeProvider>
         </div>
       </body>
       {process.env.NODE_ENV === 'production' && (

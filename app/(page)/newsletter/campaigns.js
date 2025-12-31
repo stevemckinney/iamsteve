@@ -43,7 +43,7 @@ const Campaigns = () => {
             key={campaign.id}
             className="not-first:border-t not-first:border-t not-first:border-neutral-01-200"
           >
-            <div className="flex justify-between py-2 text-lg text-fern-1100">
+            <div className="flex justify-between py-2 text-lg text-heading">
               {campaign.subject}{' '}
               <span className="flex items-center leading-none gap-2 text-base">
                 <Date

@@ -32,7 +32,7 @@ const Toggle = () => {
               <Link
                 href={link.href}
                 className={`flex gap-6 py-4 px-8 text-2xl font-ui items-center lowercase ${
-                  pathname === link.href ? 'text-red-500' : 'text-fern-1100'
+                  pathname === link.href ? 'text-red-500' : 'text-heading'
                 }`}
                 key={link.href}
                 onClick={() => {
@@ -51,7 +51,7 @@ const Toggle = () => {
           })}
           <Link
             href="/newsletter"
-            className={`flex gap-6 text-fern-1100 py-4 px-8 text-2xl font-ui items-center lowercase`}
+            className={`flex gap-6 text-heading py-4 px-8 text-2xl font-ui items-center lowercase`}
           >
             <Icon icon="airplane" className="text-neutral-03-500" />
             Subscribe

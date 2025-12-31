@@ -213,12 +213,12 @@ const ComparisonImages = ({
       <div className="flex w-full gap-3 p-1 items-center ml-4 relative">
         {/* Context label */}
         {contextLabel && (
-          <span className="text-sm text-fern-1100/60 pt-2 pb-1.5 order-last">
+          <span className="text-sm text-heading/60 pt-2 pb-1.5 order-last">
             {contextLabel}
           </span>
         )}
         <div
-          className="flex items-center justify-end bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150 shadow-[inset_0_0_0_1px_rgb(162_143_140/.24),inset_0_1px_1px_-0.5px_rgb(162_143_140/.2),inset_0_1px_3px_-1.5px_rgb(162_143_140/.2),inset_0_2px_4px_-2px_rgb(162_143_140/.2),inset_0_3px_6px_-3px_rgb(162_143_140/.2),0_1px_rgb(252_249_248/1),0_1px_1px_rgb(252_249_248/1)] rounded-[10px] p-1"
+          className="flex items-center justify-end bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-canvas shadow-[inset_0_0_0_1px_rgb(162_143_140/.24),inset_0_1px_1px_-0.5px_rgb(162_143_140/.2),inset_0_1px_3px_-1.5px_rgb(162_143_140/.2),inset_0_2px_4px_-2px_rgb(162_143_140/.2),inset_0_3px_6px_-3px_rgb(162_143_140/.2),0_1px_rgb(252_249_248/1),0_1px_1px_rgb(252_249_248/1)] rounded-[10px] p-1"
           role="tablist"
           aria-label="View options"
         >
@@ -229,7 +229,7 @@ const ComparisonImages = ({
                 aria-selected={activeIndex === index}
                 aria-controls={`view-${index}`}
                 className={`
-                  transition-all duration-200 rounded-[7px] shadow-[0_0_0_0_rgb(0_0_0/0)] hover:text-fern-1100 active:shadow-reduced active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in
+                  transition-all duration-200 rounded-[7px] shadow-[0_0_0_0_rgb(0_0_0/0)] hover:text-heading active:shadow-reduced active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in
                   text-sm pt-2 pb-1.5 px-4
                   ${
                     activeIndex === index
@@ -351,7 +351,7 @@ const components = {
   a: (props) => (
     <Link
       {...props}
-      className="text-fern-1100 md:text-lg lg:text-xl underline underline-offset-2 hover:text-dandelion-600 transition duration-200 ease-linear"
+      className="text-heading md:text-lg lg:text-xl underline underline-offset-2 hover:text-dandelion-600 transition duration-200 ease-linear"
     />
   ),
   p: (props) => (
@@ -385,7 +385,7 @@ const components = {
     </figure>
   ),
   GalleryFigcaption: (props) => (
-    <figcaption className="text-fern-1100/60 font-body leading-normal pt-4 pb-2 *:underline *:text-base">
+    <figcaption className="text-heading/60 font-body leading-normal pt-4 pb-2 *:underline *:text-base">
       {props.children}
     </figcaption>
   ),
@@ -424,7 +424,7 @@ const postComponents = {
   Images,
   BentoGridShell,
   Fig: (props) => (
-    <span className="text-fern-1100/40 uppercase">Fig. {props.children}</span>
+    <span className="text-heading/40 uppercase">Fig. {props.children}</span>
   ),
   LinkFigma: (props) => (
     <Link

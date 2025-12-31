@@ -71,7 +71,7 @@ export default async function BlogIndex(props) {
                   <Category
                     size={24}
                     badge={false}
-                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-heading transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
                   >
                     {category.title}
                   </Category>

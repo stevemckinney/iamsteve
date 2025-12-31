@@ -17,7 +17,7 @@ const Subscribe = ({
           alt="Illustration of a sealed envelope"
           className="mb-2"
         />
-        <h2 className="text-3xl sm:text-5xl font-display font-variation-bold lowercase text-fern-1100 text-center">
+        <h2 className="text-3xl sm:text-5xl font-display font-variation-bold lowercase text-heading text-center">
           {title}
         </h2>
         <p className="m-0 text-base text-ui-body text-balance text-center max-w-[40ch]">

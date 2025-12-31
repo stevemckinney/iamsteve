@@ -2,31 +2,31 @@ import Icon from './icon'
 import Link from '@/components/link'
 
 const defaultVariants = {
-  rio: 'text-rio-400',
-  dandelion: 'text-dandelion-500',
-  lavender: 'text-lavender-500',
-  magenta: 'text-magenta-500',
-  grass: 'text-grass-500',
-  fern: 'text-fern-600',
-  moss: 'text-moss-400',
-  'neutral-01': 'text-neutral-01-500',
-  'neutral-02': 'text-neutral-02-500',
-  cornflour: 'text-cornflour-600',
-  text: 'text-fern-1100',
+  rio: 'text-[light-dark(var(--color-rio-500),var(--color-rio-400))]',
+  dandelion: 'text-[light-dark(var(--color-dandelion-600),var(--color-dandelion-500))]',
+  lavender: 'text-[light-dark(var(--color-lavender-600),var(--color-lavender-500))]',
+  magenta: 'text-[light-dark(var(--color-magenta-600),var(--color-magenta-500))]',
+  grass: 'text-[light-dark(var(--color-grass-600),var(--color-grass-500))]',
+  fern: 'text-[light-dark(var(--color-fern-700),var(--color-fern-600))]',
+  moss: 'text-[light-dark(var(--color-moss-500),var(--color-moss-400))]',
+  'neutral-01': 'text-[light-dark(var(--color-neutral-01-600),var(--color-neutral-01-500))]',
+  'neutral-02': 'text-[light-dark(var(--color-neutral-02-600),var(--color-neutral-02-500))]',
+  cornflour: 'text-[light-dark(var(--color-cornflour-700),var(--color-cornflour-600))]',
+  text: 'text-[light-dark(var(--color-fern-1100),var(--color-fern-1100))]',
 }
 
 const hoverVariants = {
-  rio: 'hover:text-rio-400',
-  dandelion: 'hover:text-dandelion-500',
-  lavender: 'hover:text-lavender-500',
-  magenta: 'hover:text-magenta-500',
-  grass: 'hover:text-grass-500',
-  fern: 'hover:text-fern-600',
-  moss: 'hover:text-moss-400',
-  'neutral-01': 'hover:text-neutral-01-500',
-  'neutral-02': 'hover:text-neutral-02-500',
-  cornflour: 'hover:text-cornflour-600',
-  text: 'hover:text-fern-800',
+  rio: 'hover:text-[light-dark(var(--color-rio-500),var(--color-rio-400))]',
+  dandelion: 'hover:text-[light-dark(var(--color-dandelion-600),var(--color-dandelion-500))]',
+  lavender: 'hover:text-[light-dark(var(--color-lavender-600),var(--color-lavender-500))]',
+  magenta: 'hover:text-[light-dark(var(--color-magenta-600),var(--color-magenta-500))]',
+  grass: 'hover:text-[light-dark(var(--color-grass-600),var(--color-grass-500))]',
+  fern: 'hover:text-[light-dark(var(--color-fern-700),var(--color-fern-600))]',
+  moss: 'hover:text-[light-dark(var(--color-moss-500),var(--color-moss-400))]',
+  'neutral-01': 'hover:text-[light-dark(var(--color-neutral-01-600),var(--color-neutral-01-500))]',
+  'neutral-02': 'hover:text-[light-dark(var(--color-neutral-02-600),var(--color-neutral-02-500))]',
+  cornflour: 'hover:text-[light-dark(var(--color-cornflour-700),var(--color-cornflour-600))]',
+  text: 'hover:text-[light-dark(var(--color-fern-900),var(--color-fern-800))]',
 }
 
 export default function Badge({
@@ -45,7 +45,7 @@ export default function Badge({
     return (
       <Link
         href={href}
-        className={`flex flex-[0_0_auto] font-variation-medium group/badge transition-all duration-100 ease-linear text-fern-1100 ${sizing} ${hoverVariants[theme]} ${className}`}
+        className={`flex flex-[0_0_auto] font-variation-medium group/badge transition-all duration-100 ease-linear text-heading ${sizing} ${hoverVariants[theme]} ${className}`}
       >
         <Badge.Icon theme={theme} icon={iconStart} size={size} />
         <Badge.Text size={size}>{children}</Badge.Text>
@@ -54,7 +54,7 @@ export default function Badge({
   } else {
     return (
       <p
-        className={`flex flex-[0_0_auto] font-variation-medium text-fern-1100 ${sizing} ${className}`}
+        className={`flex flex-[0_0_auto] font-variation-medium text-heading ${sizing} ${className}`}
       >
         <Badge.Icon size={size} theme={theme} icon={iconStart} />
         <Badge.Text size={size}>{children}</Badge.Text>

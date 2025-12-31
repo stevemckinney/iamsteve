@@ -11,7 +11,7 @@ const Title = ({ children, link, text, ariaID, className }) => {
       className={`col-start-content-start col-end-content-end flex justify-between items-baseline md:items-center ${className}`}
     >
       <h2
-        className="font-display text-fern-1100 text-2xl md:text-5xl font-variation-bold lowercase"
+        className="font-display text-heading text-2xl md:text-5xl font-variation-bold lowercase"
         id={ariaID}
       >
         {children}

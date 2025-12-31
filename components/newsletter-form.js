@@ -95,7 +95,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
             <div className="flex flex-col @xl:w-2/5">
               <label
                 htmlFor={`input-name-${unique}`}
-                className="font-sans text-base font-medium lowercase text-fern-1100 leading-none mb-1"
+                className="font-sans text-base font-medium lowercase text-heading leading-none mb-1"
               >
                 First name
               </label>
@@ -104,7 +104,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
               </p>
               <input
                 type="text"
-                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_64_63/0.1)] bg-linear-to-b from-[rgb(79_64_63/0.03)] from-0% to-[rgb(79_64_63/0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_127_218),0_0_0_6px_rgb(79_127_218/0.08)]`}
+                className={`form-input border-0 w-full text-base shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_64_63/0.1)] bg-linear-to-b from-[rgb(79_64_63/0.03)] from-0% to-[rgb(79_64_63/0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_127_218),0_0_0_6px_rgb(79_127_218/0.08)]`}
                 name="fields[first_name]"
                 id={`input-name-${unique}`}
                 ref={inputName}
@@ -114,7 +114,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
             <div className="flex flex-col @xl:w-3/5">
               <label
                 htmlFor={`input-email-${unique}`}
-                className="font-sans text-base font-medium lowercase text-fern-1100 leading-none mb-1"
+                className="font-sans text-base font-medium lowercase text-heading leading-none mb-1"
               >
                 Email
               </label>
@@ -125,7 +125,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
                 type="email"
                 autoComplete="email"
                 autoCapitalize="none"
-                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_64_63/0.1)] bg-linear-to-b from-[rgb(79_64_63/0.03)] from-0% to-[rgb(79_64_63/0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_127_218),0_0_0_6px_rgb(79_127_218/0.08)] ${
+                className={`form-input border-0 w-full text-base shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_64_63/0.1)] bg-linear-to-b from-[rgb(79_64_63/0.03)] from-0% to-[rgb(79_64_63/0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_127_218),0_0_0_6px_rgb(79_127_218/0.08)] ${
                   emailError ? 'border-red-500' : ''
                 }`}
                 id={`input-email-${unique}`}

@@ -60,7 +60,7 @@ async function Collections() {
         .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
         .map(([collection, items]) => (
           <div className="flex flex-col gap-4" key={collection}>
-            <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 pt-2">
+            <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 pt-2">
               {collection}
 
               <span className="text-cornflour-600">{items.length}</span>
@@ -89,7 +89,7 @@ async function Collections() {
                       rel="noopener noreferrer"
                     >
                       {item.title}
-                      <span className="text-fern-1100/40 group-hover:text-fern-1100/80 transition duration-200 linear line-clamp-1">
+                      <span className="text-heading/40 group-hover:text-heading/80 transition duration-200 linear line-clamp-1">
                         {item.url
                           .replace('https://', '')
                           .replace('www.', '')

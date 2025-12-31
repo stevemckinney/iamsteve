@@ -14,7 +14,7 @@ export default function PopularPosts({
         link={linkHref}
         text={linkText}
         ariaID={`popular-${title.toLowerCase()}`}
-        className="sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-neutral-01-150 sm:bg-[url(/images/texture.png)] sm:bg-size-[172px_auto] sm:bg-blend-multiply sm:-mt-4.5 md:-mt-5.5"
+        className="sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-canvas sm:bg-[url(/images/texture.png)] sm:bg-size-[172px_auto] sm:bg-blend-multiply sm:-mt-4.5 md:-mt-5.5"
       >
         Popular <span className={accentColor}>{title}</span>
       </Title>

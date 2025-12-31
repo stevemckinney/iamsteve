@@ -7,7 +7,7 @@ const ViewCounter = ({
   slug,
   initialViews,
   trackView,
-  className = 'text-fern-1100',
+  className = 'text-heading',
 }) => {
   const [views, setViews] = useState(initialViews)
   const [isUpdated, setIsUpdated] = useState(false)

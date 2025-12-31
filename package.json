@@ -66,7 +66,6 @@
     "motion": "^12.23.25",
     "next": "16.0.10",
     "next-contentlayer2": "^0.5.8",
-    "next-themes": "^0.2.1",
     "postcss": "^8.5.6",
     "postcss-nesting": "^12.1.5",
     "radix-ui": "^1.4.3",

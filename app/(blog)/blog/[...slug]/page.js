@@ -264,7 +264,7 @@ export default async function PostPage(props) {
             {post.title}
           </PageTitle>
           {post.summary && (
-            <p className="text-lg text-pretty lg:text-2xl text-fern-1100 mb-2">
+            <p className="text-lg text-pretty lg:text-2xl text-heading mb-2">
               {post.summary}
             </p>
           )}
@@ -346,7 +346,7 @@ export function NextPosts({ post }) {
     <aside
       className={`xl:row-span-1 col-content lg:col-start-3 lg:col-span-8 flex flex-col gap-4 lg:-mx-8`}
     >
-      <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 lg:px-8">
+      <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 lg:px-8">
         Next to read
       </h2>
       <div className="grid lg:grid-cols-2 gap-8">
@@ -375,10 +375,8 @@ export function PostImage({ post }) {
           {post.categories && post.categories.includes('Design') ? (
             <Placeholder
               category="Design"
-              kind="post"
+              slug={post.slug}
               alt={`${post.title} (featured image)`}
-              aria-labelledby={`title-${post.id}`}
-              tabIndex="0"
               width={864}
               height={540}
               className={`col-content lg:col-container grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
@@ -386,10 +384,8 @@ export function PostImage({ post }) {
           ) : (
             <Placeholder
               category="Code"
-              kind="post"
+              slug={post.slug}
               alt={`${post.title} (featured image)`}
-              aria-labelledby={`title-${post.id}`}
-              tabIndex="0"
               width={864}
               height={540}
               className={`col-content lg:col-container grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
@@ -421,7 +417,7 @@ export function Support() {
   return (
     <aside className="xl:row-span-1 bg-neutral-01-50 border border border-neutral-01-200 rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content xl:col-start-3 xl:col-span-8">
       <p className="p-0 m-0 text-base text-ui-body flex flex-col">
-        <strong className="text-fern-1100 font-bold">
+        <strong className="text-heading font-bold">
           Enjoying the reading experience?
         </strong>{' '}
         There's no ads, tracking or cookie banners, so your support is valued

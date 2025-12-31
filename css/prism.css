@@ -6,17 +6,17 @@
  */
 .prose pre {
   --code-black: var(--color-fern-1100);
-  --code-red: var(--color-rio-200);
-  --code-yellow: var(--color-dandelion-300);
-  --code-green: var(--color-grass-300);
-  --code-blue: var(--color-cornflour-300);
-  --code-magenta: var(--color-magenta-200);
-  --code-cyan: var(--color-fern-300);
+  --code-red: light-dark(var(--color-rio-300), var(--color-rio-200));
+  --code-yellow: light-dark(var(--color-dandelion-400), var(--color-dandelion-300));
+  --code-green: light-dark(var(--color-grass-400), var(--color-grass-300));
+  --code-blue: light-dark(var(--color-cornflour-400), var(--color-cornflour-300));
+  --code-magenta: light-dark(var(--color-magenta-300), var(--color-magenta-200));
+  --code-cyan: light-dark(var(--color-fern-400), var(--color-fern-300));
   --code-white: var(--color-fern-100);
-  --code-comment: var(--color-neutral-03-400);
+  --code-comment: light-dark(var(--color-neutral-03-500), var(--color-neutral-03-400));
   --offset-spacing: 2rem;
   isolation: isolate;
-  color-scheme: dark;
+  color-scheme: dark; /* Keep code blocks dark in both modes */
 }
 
 /**
