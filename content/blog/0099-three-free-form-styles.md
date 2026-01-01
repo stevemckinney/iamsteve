@@ -17,13 +17,13 @@ fileroot: "three-free-form-styles"
 This is one of the first things; I’ve worked on aside from what’s posts, to give away. It’s quite difficult to figure out what to design to give away, without just adding to the masses of things out there already. I’ve decided to code up some form styles. So you should be able to grab their styles and apply them right away to your forms. There are three variations.
 
 ## Style one
-<p data-height="480" data-theme-id="13022" data-slug-hash="LpjoLx" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/LpjoLx/'>Dimensional form style</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<CodePen slug="LpjoLx" title="Dimensional form style" height={480} themeId="13022" />
 
 ## Style two
-<p data-height="480" data-theme-id="13022" data-slug-hash="EVoeaX" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/EVoeaX/'>Flat form style</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<CodePen slug="EVoeaX" title="Flat form style" height={480} themeId="13022" />
 
 ## Style three
-<p data-height="480" data-theme-id="13022" data-slug-hash="xwpmpj" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/xwpmpj/'>Bulky form style</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<CodePen slug="xwpmpj" title="Bulky form style" height={480} themeId="13022" />
 
 ## Usage
 Each element requires the `.input-base` class. This applies a reset, that [I have wrote about previously](/blog/how-to-consistently-style-form-elements).

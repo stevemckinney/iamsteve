@@ -68,7 +68,7 @@ Our border image and with the slices.
 
 
 ## Codepen
-<pre className="codepen" data-height="420" data-type="result" data-href="vuCea" data-user="stevemckinney" data-safe="true"><code></code><a href="http://codepen.io/stevemckinney/pen/vuCea">Check out this Pen!</a></pre>
+<CodePen slug="vuCea" title="Fluid browser with border-image" height={420} />
 
 ## Justifications
 Pseudo elements can't be applied to `img` elements so the use of the extra div is necessary.

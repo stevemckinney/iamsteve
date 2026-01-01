@@ -69,7 +69,7 @@ It's entirely up to you what you do from here. I favour using the data images an
 For easy changing look for a part like `path%20fill%3D%22%23`. You should have a 6 character hex code without the # following that. Replace that with your variable wrapped in `#{}`. Now you can change your icon to suit any site 0 hassle!
 
 ## Try it out here
-<p data-height="268" data-theme-id="0" data-slug-hash="golui" data-user="stevemckinney" data-default-tab="result" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/golui">Using svg for icons</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a></p>
+<CodePen slug="golui" title="Using svg for icons" height={268} themeId="0" />
 
 ## Finishing
 If you skip out the photoshop the rest is quite simple. The best part is that icon will be easy to reuse with a simple Sass variable change. Unfortunately the png data image would have to be regenerated each time, this depends how crucial this is to your design for browsers that don't support SVG as you may feel it's fine as the initial colour.

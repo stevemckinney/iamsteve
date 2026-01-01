@@ -35,7 +35,7 @@ I will assume **you do have a grasp** of vertical rhythm, at this point, otherwi
 ### What we end up with
 View the compiled CSS if you would like to see how the numbers work out.
 
-<p data-height="480" data-theme-id="13022" data-slug-hash="zvYbgx" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/zvYbgx/">zvYbgx</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<CodePen slug="zvYbgx" title="Responsive vertical rhythm" height={480} themeId="13022" />
 
 ## Briefly on em units
 I use em’s for the majority of this process. You can do much of the heavy lifting by adjusting the font size **only** on the `body`. Once you get your head around em units they can be very useful.

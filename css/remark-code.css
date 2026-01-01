@@ -1,6 +1,7 @@
 .prose {
   :global(.remark-code-container),
-  :global(.cp_embed_wrapper) {
+  :global(.codepen),
+  :global(.codepen-wide) {
     overflow: auto;
     border-radius: theme('borderRadius.lg');
     background-color: theme('colors.fern.1100');
@@ -12,7 +13,8 @@
     border: 1px solid theme('colors.neutral-03.900');
   }
 
-  :global(.cp_embed_wrapper) {
+  :global(.codepen),
+  :global(.codepen-wide) {
     box-shadow: theme('boxShadow.floating');
   }
 

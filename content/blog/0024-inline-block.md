@@ -139,7 +139,7 @@ Taking what has been explained in this post. I use Sass to generate my grid. I f
 ### Sass
 You can view the compiled version if you would like to just have the CSS.
 
-<p data-height="352" data-theme-id="31700" data-slug-hash="vLapRz" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Sass inline-block grid" className="codepen">See the Pen <a href="https://codepen.io/stevemckinney/pen/vLapRz/">Sass inline-block grid</a> by Steve (<a href="https://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<CodePen slug="vLapRz" title="Sass inline-block grid" height={352} themeId="31700" />
 
 ### Grid details
 - 12 column

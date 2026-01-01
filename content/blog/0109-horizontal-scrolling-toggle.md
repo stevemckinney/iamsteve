@@ -21,7 +21,7 @@ I’ve never really paid attention to the 'show all' button on the top right. In
 ## The result
 The technique here uses flexbox for adjustments; it allows us very easily to shift layouts. Equally, it could be done with wider support, but would require more code. I have written about [a technique aimed around navigation using `inline-block` before](/blog/horizontal-scrolling-responsive-menu).
 
-<p data-height="480" data-theme-id="13022" data-slug-hash="qbOaxp" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/qbOaxp/'>Scrolling carousel toggle</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<CodePen slug="qbOaxp" title="Scrolling carousel toggle" height={480} themeId="13022" />
 
 ## Markup
 The markup requires the elements you want to scroll to have a containing element. Separate from those elements is our title and a `<span>` element purely for toggling. Inside that is an empty span, which we will use JavaScript to calculate and update.

@@ -19,7 +19,7 @@ Following up from [the design in Illustrator post](/blog/making-a-pricing-table-
 ## Preview
 It may be better to view a larger version on CodePen.
 
-<p data-height="420" data-theme-id="23161" data-slug-hash="rLJNYV" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/rLJNYV/">Pricing table</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<CodePen slug="rLJNYV" title="Pricing table" height={420} themeId="23161" />
 
 ## Add the font
 Work Sans is available for free on [Google Fonts](https://fonts.google.com/specimen/Work+Sans?query=work&selection.family=Work+Sans:300,400,600). There are 3 weights being used, light, normal and semi bold.
@@ -347,4 +347,4 @@ That’s everything to be covered in terms of CSS, here is the full combined CSS
 
 ## Codepen preview
 
-<p data-height="420" data-theme-id="23161" data-slug-hash="rLJNYV" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/rLJNYV/">Pricing table</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<CodePen slug="rLJNYV" title="Pricing table" height={420} themeId="23161" />

@@ -583,12 +583,14 @@
     border: 1px solid theme('colors.neutral-03.900');
   }
 
-  :global(.cp_embed_wrapper) {
+  :global(.codepen-wide),
+  :global(.codepen) {
     overflow: hidden;
   }
 
   :global(.remark-code-container),
-  :global(.cp_embed_wrapper) {
+  :global(.codepen-wide),
+  :global(.codepen) {
     margin-inline: -1.5rem;
 
     @screen sm {

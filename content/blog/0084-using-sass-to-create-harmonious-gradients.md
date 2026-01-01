@@ -27,13 +27,13 @@ While just darkening it isn’t the worst thing and can be the right choice. Thi
 Each of these examples the gradient to the right is the harmonious one. Although I would hope this is obvious!
 
 ### Blue example
-<p data-height="328" data-theme-id="13022" data-slug-hash="oXPLZW" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/oXPLZW/'>oXPLZW</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<CodePen slug="oXPLZW" title="Harmonious gradients - blue" height={328} themeId="13022" />
 
 ### Green example
-<p data-height="328" data-theme-id="13022" data-slug-hash="JdaKWb" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/JdaKWb/'>JdaKWb</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<CodePen slug="JdaKWb" title="Harmonious gradients - green" height={328} themeId="13022" />
 
 ### Red example
-<p data-height="328" data-theme-id="13022" data-slug-hash="EjeyWK" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/EjeyWK/'>EjeyWK</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<CodePen slug="EjeyWK" title="Harmonious gradients - red" height={328} themeId="13022" />
 
 ## Tips
 Here are some of the things I encounter when using this method.

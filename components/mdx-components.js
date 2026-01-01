@@ -11,6 +11,7 @@ import Social from '@/components/social'
 import Card from '@/components/card'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
+import CodePen from '@/components/codepen'
 
 // Dynamically import heavy post-specific components
 const BentoGridShell = dynamic(
@@ -433,6 +434,7 @@ const postComponents = {
   Blockquote,
   Images,
   BentoGridShell,
+  CodePen,
   Fig: (props) => (
     <span className="text-fern-1100/40 uppercase">Fig. {props.children}</span>
   ),
