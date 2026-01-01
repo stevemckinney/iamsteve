@@ -40,16 +40,16 @@ export const POST = async (req) => {
     if (res.ok) {
       console.log('Subscription successful for email:', email)
       return NextResponse.json({ success: true })
-    } else if (data.error.code === 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS') {
+    } else if (data.error?.code === 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS') {
       console.log('Subscription attempt for existing member:', email)
       return NextResponse.json(
         { error: 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS' },
         { status: 400 }
       )
     } else {
-      console.error('Subscription error:', data.error.message)
+      console.error('Subscription error:', data.error?.message || 'Unknown error')
       return NextResponse.json(
-        { error: data.error.message },
+        { error: data.error?.message || 'Subscription failed' },
         { status: res.status }
       )
     }
