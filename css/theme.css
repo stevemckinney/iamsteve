@@ -62,7 +62,7 @@
  * Code blocks stay mostly consistent, slightly adjust for contrast
  */
 @theme {
-  --color-heading: light-dark(var(--color-fern-1100), var(--color-neutral-01-200));
+  --color-heading: light-dark(var(--color-fern-1100), var(--color-fern-0));
   --color-body: light-dark(var(--color-fern-1100), var(--color-fern-0));
   --color-body-80: light-dark(
     oklch(from var(--color-fern-1100) l c h / .8),
@@ -73,11 +73,11 @@
   --color-text-inverse: light-dark(var(--color-fern-1100), var(--color-neutral-01-0));
   --color-link: light-dark(var(--color-dandelion-700), var(--color-dandelion-600));
   --color-link-hover: light-dark(var(--color-dandelion-800), var(--color-dandelion-700));
-
+  /* color-mix(in oklch, var(--color-fern-200), transparent 92%) */
   --color-canvas: light-dark(var(--color-neutral-01-150), var(--color-fern-1300));
-  --color-surface: light-dark(rgb(255 255 255), var(--color-fern-1100));
-  --color-surface-raised: light-dark(var(--color-neutral-01-50), var(--color-fern-1000));
-  --color-surface-pressed: light-dark(var(--color-neutral-01-50), var(--color-fern-1100));
+  --color-surface: light-dark(rgb(255 255 255), color-mix(in oklch, var(--color-fern-1000), transparent 60%));
+  --color-surface-raised: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-1000), transparent 30%));
+  --color-surface-pressed: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-1000), transparent 30%));
   --color-subtle: light-dark(rgb(252 248 246), var(--color-neutral-01-100));
   --color-overlay: light-dark(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
 
@@ -85,7 +85,7 @@
   --color-border-medium: light-dark(var(--color-neutral-01-300), var(--color-neutral-01-400));
   --color-border-strong: light-dark(var(--color-neutral-01-400), var(--color-neutral-01-500));
 
-  --bg-texture-image: light-dark(url(/images/texture.png), url(/images/texture.png));
+  --bg-texture-image: url(/images/texture.png);
   --bg-dash-image: light-dark(url(/images/dash.svg), url(/images/dash.svg));
 
   --color-ui-normal: light-dark(rgba(79, 64, 63, 0.12), rgba(79, 64, 63, 0.16));
@@ -113,7 +113,7 @@
  * Generic fill color for icon components
  */
 .fill-icon {
-  fill: light-dark(var(--color-fern-1100), var(--color-fern-900));
+  fill: light-dark(var(--color-fern-1100), var(--color-fern-1000));
 }
 
 /**
@@ -121,31 +121,31 @@
  * Direct mapping to neutral/fern color scales
  */
 .fill-foreground {
-  fill: light-dark(var(--color-white), var(--color-white));
+  fill: light-dark(var(--color-white), var(--color-fern-0));
 }
 
 .fill-surface {
-  fill: light-dark(var(--color-neutral-01-50), var(--color-fern-0));
+  fill: light-dark(var(--color-neutral-01-50), var(--color-fern-100));
 }
 
 .fill-surface-100 {
-  fill: light-dark(var(--color-neutral-01-100), var(--color-fern-100));
+  fill: light-dark(var(--color-neutral-01-100), var(--color-fern-200));
 }
 
 .fill-surface-150 {
-  fill: light-dark(var(--color-neutral-01-150), var(--color-fern-200));
+  fill: light-dark(var(--color-neutral-01-150), var(--color-fern-300));
 }
 
 .fill-lowlight {
-  fill: light-dark(var(--color-neutral-01-200), var(--color-fern-300));
+  fill: light-dark(var(--color-neutral-01-200), var(--color-fern-400));
 }
 
 .fill-subtle {
-  fill: light-dark(var(--color-neutral-01-250), var(--color-fern-300));
+  fill: light-dark(var(--color-neutral-01-250), var(--color-fern-400));
 }
 
 .fill-muted {
-  fill: light-dark(var(--color-neutral-01-300), var(--color-fern-300));
+  fill: light-dark(var(--color-neutral-01-300), var(--color-fern-600));
 }
 
 .fill-border {
