@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
+import dynamic from 'next/dynamic'
 
 import Image from '@/components/image'
 import Link from '@/components/link'
@@ -11,8 +12,14 @@ import Card from '@/components/card'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
 
-// post specific components
-import BentoGridShell from '@/components/posts/0175-bento-grid'
+// Dynamically import heavy post-specific components
+const BentoGridShell = dynamic(
+  () => import('@/components/posts/0175-bento-grid'),
+  {
+    loading: () => <div className="animate-pulse bg-neutral-01-100 rounded-lg h-96">Loading...</div>,
+    ssr: true,
+  }
+)
 
 const Prose = ({ children }) => {
   return <div className="prose">{children}</div>
@@ -477,7 +484,8 @@ function MDXWrapper({ code }) {
   return <Component components={postComponents} />
 }
 
-export function MDX({ code }) {
+// Memoize MDX component to prevent unnecessary re-renders
+const MDXComponent = React.memo(function MDXComponent({ code }) {
   const Component = useMDXComponent(code)
 
   if (!Component) {
@@ -491,9 +499,14 @@ export function MDX({ code }) {
     console.error('Error rendering MDX:', error)
     return <p>Failed to render content. Error: {error.message}</p>
   }
+})
+
+export function MDX({ code }) {
+  return <MDXComponent code={code} />
 }
 
-export function PostMdx({ code }) {
+// Memoize PostMdx component to prevent unnecessary re-renders
+const PostMdxComponent = React.memo(function PostMdxComponent({ code }) {
   const Component = useMDXComponent(code)
 
   if (!Component) {
@@ -507,6 +520,10 @@ export function PostMdx({ code }) {
     console.error('Error rendering MDX:', error)
     return <p>Failed to render content. Error: {error.message}</p>
   }
+})
+
+export function PostMdx({ code }) {
+  return <PostMdxComponent code={code} />
 }
 
 export { postComponents, components }
