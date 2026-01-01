@@ -72,19 +72,14 @@ export default async function BlogCategory(props) {
 
   const parent = data.parent ? data.parent : false
 
-  const posts = await Promise.all(
-    allPosts
-      .filter((post) => post.status === 'open')
-      .filter((post) =>
-        post.categories.includes(
-          params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
-        )
+  const posts = allPosts
+    .filter((post) => post.status === 'open')
+    .filter((post) =>
+      post.categories.includes(
+        params.slug.charAt(0).toUpperCase() + params.slug.slice(1)
       )
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .map(async (post) => ({
-        ...post,
-      }))
-  )
+    )
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
 
   const pageNumber = parseInt(params.page)
   const paginatedPosts = posts.slice(

@@ -70,7 +70,7 @@ async function Collections() {
                 const [y, m, d] = item.date
                   .split('-')
                   .map((n) => parseInt(n, 10))
-                const itemDate = new Date(y, m, d)
+                const itemDate = new Date(y, m - 1, d)
                 // Show "New" if item is after last import date OR within 3 months (whichever is more recent)
                 const threeMonthsAgo = subWeeks(new Date(), 12)
                 const cutoffDate = isAfter(lastImportDate, threeMonthsAgo)

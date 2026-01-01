@@ -38,38 +38,43 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
       return
     }
 
-    const res = await fetch(`/api/newsletter`, {
-      body: JSON.stringify({
-        email,
-        name,
-        source: '',
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-    })
+    try {
+      const res = await fetch(`/api/newsletter`, {
+        body: JSON.stringify({
+          email,
+          name,
+          source: '',
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+      })
 
-    const data = await res.json()
+      const data = await res.json()
 
-    if (res.status === 500) {
+      if (res.status === 500) {
+        setError(true)
+        setMessage(`The server cannot be reached to submit your request.`)
+      } else if (
+        res.status === 400 &&
+        data.error === 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS'
+      ) {
+        setError(true)
+        setMessage(`This email is already subscribed to the newsletter.`)
+      } else if (!res.ok) {
+        setError(true)
+        setMessage(`There was an error subscribing to the list.`)
+      } else {
+        inputEmail.current.value = ''
+        inputName.current.value = ''
+        setError(false)
+        setSubscribed(true)
+        setMessage('Thank you for subscribing! Please check your inbox.')
+      }
+    } catch (error) {
       setError(true)
-      setMessage(`The server cannot be reached to submit your request.`)
-    } else if (
-      res.status === 400 &&
-      data.error === 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS'
-    ) {
-      setError(true)
-      setMessage(`This email is already subscribed to the newsletter.`)
-    } else if (!res.ok) {
-      setError(true)
-      setMessage(`There was an error subscribing to the list.`)
-    } else {
-      inputEmail.current.value = ''
-      inputName.current.value = ''
-      setError(false)
-      setSubscribed(true)
-      setMessage('Thank you for subscribing! Please check your inbox.')
+      setMessage(`Network error. Please check your connection and try again.`)
     }
   }
 
