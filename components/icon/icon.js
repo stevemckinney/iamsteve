@@ -1,4 +1,12 @@
-const Icon = ({ icon = 'folder', className = 'text-heading', size = 24 }) => {
+import { cn } from '@/lib/utils'
+
+const Icon = ({
+  icon = 'folder',
+  className,
+  variant = 'default', // 'default' | 'header'
+  size = 24,
+  ...props
+}) => {
   if (icon === 'design' || icon === 'Design') icon = 'pen'
   if (
     icon === 'everything' ||
@@ -12,19 +20,19 @@ const Icon = ({ icon = 'folder', className = 'text-heading', size = 24 }) => {
   }
 
   return (
-    <>
-      <svg
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
-        className={className}
-      >
-        <use
-          className={`${icon.toLowerCase()} ${className}`}
-          xlinkHref={`#${icon.toLowerCase()}-${size}`}
-        />
-      </svg>
-    </>
+    <svg
+      width={size}
+      height={size}
+      viewBox={`0 0 ${size} ${size}`}
+      className={cn(
+        'text-heading',
+        variant === 'header' ? 'icon-header' : 'icon',
+        className
+      )}
+      {...props}
+    >
+      <use xlinkHref={`#${icon.toLowerCase()}-${size}`} />
+    </svg>
   )
 }
 

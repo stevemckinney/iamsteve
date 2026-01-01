@@ -112,9 +112,14 @@
  * Icon fill class
  * Generic fill color for icon components
  */
-.fill-icon {
-  fill: light-dark(var(--color-white), color-mix(in oklab, white 90%, currentcolor));
+.icon {
+  --icon-fill: light-dark(var(--color-white), color-mix(in oklab, white 90%, currentcolor));
 }
+
+.icon-header {
+  --icon-fill: light-dark(var(--color-white), var(--color-fern-900));
+}
+
 
 /**
  * Illustration color classes

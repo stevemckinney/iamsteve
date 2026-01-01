@@ -45,13 +45,14 @@ export default function Header() {
             className="flex-[1_0_10%]"
             title="iamsteve.me homepage"
           >
-            <Icon icon="logo" role="img" size={32} className="max-xl:hidden" />
+            <Icon icon="logo" role="img" size={32} className="max-xl:hidden" variant="header" />
             <Icon
               icon="logo"
               role="img"
               aria-hidden="true"
               size={24}
               className="xl:hidden"
+              variant="header"
             />
           </Link>
           <ul
@@ -94,6 +95,7 @@ export default function Header() {
                     icon={link.icon}
                     size={link.size}
                     className="text-current"
+                    variant="header"
                   />
                   {link.title}
                 </Link>
@@ -106,7 +108,7 @@ export default function Header() {
               className={cn(navLink, horizontalNavLink, styles.end)}
             >
               <span>Subscribe</span>
-              <Icon icon={`airplane`} size={24} className="text-current" />
+              <Icon icon={`airplane`} size={24} className="text-current" variant="header" />
             </Link>
           </div>
           <Navigation />
