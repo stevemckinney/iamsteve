@@ -22,7 +22,7 @@ I'm always looking up the Adobe generator syntax and yet I never bookmark it. I 
 ## Overview
 Each image is made up of dimensions, filename and quality.
 
-<p data-height="268" data-theme-id="13022" data-slug-hash="raZgNL" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/raZgNL/">raZgNL</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<CodePen slug="raZgNL" title="Adobe generator syntax" height={268} themeId="13022" />
 
 ### Dimensions
 It's necessary to have a space after the dimensions. Don't put a space between the dimensions where width and height are specified. px is assumed if no measurement is specified. To have the image width or height calculated automatically, use a ‘?’ for the value. Like so `?x1200 name.jpg` or `1200x? name.jpg`.

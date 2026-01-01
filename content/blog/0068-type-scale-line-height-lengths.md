@@ -18,10 +18,10 @@ As a beginner, with designing websites, one of the things that can be overlooked
 
 In this post I will cover how to choose a harmonious type scale and set comfortable line lengths and line height, that scale well with responsive type sizes.
 
-## Let’s start with content
+## Let's start with content
 To start we need some content that has variety of headings. Eventually we will build up to having images with captions, pull quotes and so on.
 
-<p data-height="480" data-theme-id="13022" data-slug-hash="azMvbN" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/azMvbN/'>azMvbN</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<CodePen slug="azMvbN" title="Typography example content" height={480} themeId="13022" />
 
 ## Comfortable line lengths
 We’ve contained our content in an `<article>`. We can style it with the class name `.content`, but first we need to understand what to constrain the line lengths to.
@@ -72,7 +72,7 @@ I definitely recommend trialling out the different types and finding one which s
 ## Putting it all together
 If we take the principles mentioned throughout the post, we find, from the defaults provided, by the browser, we see a noticeable improvement.
 
-<p data-height="540" data-theme-id="13022" data-slug-hash="NPooLL" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/NPooLL/'>NPooLL</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<CodePen slug="NPooLL" title="Typography type scale and line height" height={540} themeId="13022" />
 
 ## Finishing thoughts
 As you can see we haven't focused on typeface choices. The improvements made, over the defaults, improve the readability. I want to note that while these guidelines are crucial to creating a good reading experience, it’s important to remember that you shouldn’t take them overboard in achieving perfection with them, across the array of screen sizes we have to deal with.

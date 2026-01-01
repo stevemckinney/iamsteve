@@ -311,12 +311,6 @@ export default async function PostPage(props) {
       </article>
       <Support />
       <NextPosts post={post} />
-      {post.codepen === true && (
-        <Script
-          src="https://cpwebassets.codepen.io/assets/embed/ei.js"
-          strategy="afterInteractive"
-        />
-      )}
       {post.twitter === true && (
         <Script
           async

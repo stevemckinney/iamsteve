@@ -108,9 +108,9 @@ With the CSS we change the stroke to be transparent and fill in the eyebrows wit
 ```
 
 ### The full animation
-This was only a brief look into what I have done, it’s like any animation you would do, just there are specific SVG properties you can use. Have a dig through the CSS on CodePen to get a better idea.
+This was only a brief look into what I have done, it's like any animation you would do, just there are specific SVG properties you can use. Have a dig through the CSS on CodePen to get a better idea.
 
-<p data-height="480" data-theme-id="13022" data-slug-hash="GgNyBo" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/GgNyBo/'>GgNyBo</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<CodePen slug="GgNyBo" title="Face chart SVG animation" height={480} themeId="13022" />
 
 ## SVG can be accessible too
 If your SVG has more purpose other than decoration you will want to [make it accessible](http://www.sitepoint.com/tips-accessible-svg/). The article by Léonie Watson provides great insight to making them accessible.

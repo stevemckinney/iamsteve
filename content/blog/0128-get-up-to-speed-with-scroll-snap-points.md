@@ -83,7 +83,7 @@ By default the value is `0 0`, it also accepts the same position values you woul
 
 So with that in mind, once you scroll it will snap to that point within the element. If you were to use 200px as a value, it would snap to the element and an additional 200px.
 
-<p data-height="300" data-theme-id="23161" data-slug-hash="Yqvweq" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-preview="true" data-editable="true" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/Yqvweq/">scroll snap points #1</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<CodePen slug="Yqvweq" title="Scroll snap points #1" height={300} themeId="23161" editable={true} />
 
 I found the behaviour to work strangely, when experimenting with it within Firefox over Safari. If you compare the difference of the demo in either browser, it will become clearer. It feels like you’re forced towards the child elements taking up the whole browser width to work effectively.
 
@@ -137,7 +137,7 @@ It feels like this property should clash with `scroll-snap-destination`. I didn�
 ## Final demo
 This ended up being the best kind of layout for the most consistent behaviour across browsers that support this.
 
-<p data-height="300" data-theme-id="23161" data-slug-hash="qNBPpG" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-preview="true" data-editable="true" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/qNBPpG/">scroll snap points #2</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<CodePen slug="qNBPpG" title="Scroll snap points #2" height={300} themeId="23161" editable={true} />
 
 ## Future properties
 The properties hereon are not currently available in any browser, but the intention is they are going to be part of this module. It may change, until the module is final, that’s where I’ll be keeping this up to date.

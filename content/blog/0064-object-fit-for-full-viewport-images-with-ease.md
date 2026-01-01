@@ -48,7 +48,7 @@ To make an image fill the viewport and avoid distortion, we need to use viewport
 
 ### Putting it together
 
-<p data-height="464" data-theme-id="13022" data-slug-hash="NPmgNB" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href='http://codepen.io/stevemckinney/pen/NPmgNB/'>NPmgNB</a> by Steve (<a href='http://codepen.io/stevemckinney'>@stevemckinney</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<CodePen slug="NPmgNB" title="Object fit full viewport images" height={464} themeId="13022" />
 
 ## Browser support
 As of writing the only downsides are IE doesn’t support it and Safari on Mac and iOS don’t support object-position. [Updated support is always available on caniuse](http://caniuse.com/#search=object-fit)

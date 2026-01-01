@@ -70,7 +70,7 @@ The CSS is fairly simple, just cover the the image with an empty pseudo element.
 ```
 
 ## Try out the demo
-<p data-height="552" data-theme-id="13022" data-slug-hash="gpaXeB" data-default-tab="result" data-user="stevemckinney" className="codepen">See the Pen <a href="http://codepen.io/stevemckinney/pen/gpaXeB/">Vintage blend mode creator</a> by Steve (<a href="http://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<CodePen slug="gpaXeB" title="Vintage blend mode creator" height={552} themeId="13022" />
 
 ## Finishing thoughts and other ideas
 I’ve found this a handy little experiment to create. You can experiment further with using colours `:before` and `:after`. You can create some interesting vintage effects. You could also combine a colour and add textures. They would all work great in combination.

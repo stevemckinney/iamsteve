@@ -34,7 +34,7 @@ The fact images don’t affect performance like JavaScript, and aren’t always 
 ### Example
 Each of those things can be compared here, albeit you may need to view the Codepen on a slow connection!
 
-<p data-height="468" data-theme-id="31700" data-slug-hash="b513dec968b7749537ccbb8fd951532d" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-editable="true" data-pen-title="lazy loading images" className="codepen">See the Pen <a href="https://codepen.io/stevemckinney/pen/b513dec968b7749537ccbb8fd951532d/">lazy loading images</a> by Steve (<a href="https://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<CodePen slug="b513dec968b7749537ccbb8fd951532d" title="Lazy loading images" height={468} themeId="31700" editable={true} />
 
 ## Lazy loading with lazysizes.js
 Now to get into how to achieve lazy loading, using lazysizes.js. You’re reasonably spoilt for choice and have a fair amount of libraries to choose from. I chose lazysizes.js for it’s vanilla JavaScript, simplicity, and plugins for extra functionality—like lazy loaded background images. It also has a bunch of events which you will utilise [later in this post](#using-events-in-javascript-to-clean-up-loading).
@@ -219,9 +219,9 @@ However, as recommended as part of the lazysizes.js documentation you can add a 
 ## Other effects
 Here are some other ways of transitioning in the image. Have a look at the code, the CSS used is towards the top.
 
-<p data-height="468" data-theme-id="31700" data-slug-hash="f774865f5cccdd31e4edae1ae74bc40a" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-editable="true" data-pen-title="lazy loading images-02" className="codepen">See the Pen <a href="https://codepen.io/stevemckinney/pen/f774865f5cccdd31e4edae1ae74bc40a/">lazy loading images-02</a> by Steve (<a href="https://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<CodePen slug="f774865f5cccdd31e4edae1ae74bc40a" title="Lazy loading images - other effects" height={468} themeId="31700" editable={true} />
 
-<p data-height="468" data-theme-id="31700" data-slug-hash="KQaEEO" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="lazy loading images effects" className="codepen">See the Pen <a href="https://codepen.io/stevemckinney/pen/KQaEEO/">lazy loading images effects</a> by Steve (<a href="https://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<CodePen slug="KQaEEO" title="Lazy loading images effects" height={468} themeId="31700" />
 
 You may also want to apply the whole effect to the container, so the text transitions in too. The JavaScript would need some slight modifications, but it can somewhat double up as a scroll effects library.
 

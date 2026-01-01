@@ -96,9 +96,7 @@ Finally, you may be wondering about Firefox, it seems there isn’t a way at the
 
 ### Use cases
 
-<div className="codepen-wide">
-  <p data-height="456" data-theme-id="31700" data-slug-hash="yNBNKa" data-default-tab="result" data-user="stevemckinney" data-embed-version="2" data-pen-title="Horizontal scroll navigation" className="codepen">See the Pen <a href="https://codepen.io/stevemckinney/pen/yNBNKa/">Horizontal scroll navigation</a> by Steve (<a href="https://codepen.io/stevemckinney">@stevemckinney</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-</div>
+<CodePen slug="yNBNKa" title="Horizontal scroll navigation" height={456} themeId="31700" />
 
 ## Make sure you don’t have a width set on the items
 
