@@ -93,7 +93,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
 
   return (
     <article
-      className={`@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed dark:shadow-[0_0_0_1px_var(--color-neutral-03-700)] hover:shadow-picked dark:hover:shadow-[0_0_0_1px_var(--color-neutral-03-600)] active:shadow-reduced dark:active:shadow-[0_0_0_1px_var(--color-neutral-03-700)] bg-surface active:bg-surface-pressed active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative h-full ${className}`}
+      className={`@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed dark:shadow-[inset_0_0_0_1px_var(--color-surface)] hover:shadow-picked dark:hover:shadow-[inset_0_0_0_1px_var(--color-surface-raised)] active:shadow-reduced dark:active:shadow-[inset_0_0_0_1px_var(--color-surface-pressed)] bg-surface active:bg-surface-pressed active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative h-full ${className}`}
     >
       {image && (large || medium) && (
         <Link
