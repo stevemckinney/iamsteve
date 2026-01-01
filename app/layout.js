@@ -144,7 +144,7 @@ export default function RootLayout({ children }) {
        * the border alignment within the header
        */}
       <body
-        className={`antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-canvas text-body`}
+        className={`antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-[light-dark(multiply,soft-light)] bg-canvas text-body`}
       >
         <Sprite16 />
         <Sprite24 />
