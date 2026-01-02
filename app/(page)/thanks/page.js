@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { Header, Title, Column, Description } from '@/components/page'
 import Link from '@/components/link'
-import Image from '@/components/image'
+import { PencilMono } from '@/components/illustration'
 import PageHeader from '@/components/page-header'
 import PageTitle from '@/components/page-title'
 import Notepad from '@/components/notepad'
@@ -18,13 +18,10 @@ export default async function NewsletterPage({ data, Post }) {
 
   return (
     <>
-      <Image
-        src="/images/illustration/pencil-mono.svg"
+      <PencilMono
         width={962}
         height={46}
         className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden`}
-        alt=" "
-        aria-hidden="true"
       />
       <Header>
         <Column className="md:col-span-1">

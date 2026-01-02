@@ -132,7 +132,7 @@ export function BadgeIcon({ icon, size, theme, className }) {
         className
       )}
     >
-      <Icon className="text-current" icon={icon} size={size} />
+      <Icon className="text-current" icon={icon} size={size} variant="default" />
     </span>
   )
 }

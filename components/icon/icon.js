@@ -1,23 +1,28 @@
 import { cn } from '@/lib/utils'
 
+const folderIcons = new Set(['everything', 'archive', 'all', 'folder'])
+const penIcons = new Set(['design', 'pen'])
+
+const variantClasses = {
+  default: 'icon',
+  header: 'icon-header',
+  'on-light': 'icon-on-light',
+}
+
 const Icon = ({
   icon = 'folder',
   className,
-  variant = 'default', // 'default' | 'header'
+  variant = 'default',
   size = 24,
   ...props
 }) => {
-  if (icon === 'design' || icon === 'Design') icon = 'pen'
-  if (
-    icon === 'everything' ||
-    icon === 'archive' ||
-    icon === 'all' ||
-    icon === 'Everything' ||
-    icon === 'Archive' ||
-    icon === 'All'
-  ) {
-    icon = 'folder'
-  }
+  const normalisedIcon = icon.toLowerCase()
+
+  const resolvedIcon = folderIcons.has(normalisedIcon)
+    ? 'folder'
+    : penIcons.has(normalisedIcon)
+      ? 'pen'
+      : normalisedIcon
 
   return (
     <svg
@@ -26,12 +31,12 @@ const Icon = ({
       viewBox={`0 0 ${size} ${size}`}
       className={cn(
         'text-heading',
-        variant === 'header' ? 'icon-header' : 'icon',
+        variantClasses[variant] || 'icon',
         className
       )}
       {...props}
     >
-      <use xlinkHref={`#${icon.toLowerCase()}-${size}`} />
+      <use xlinkHref={`#${resolvedIcon}-${size}`} />
     </svg>
   )
 }

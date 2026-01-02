@@ -42,16 +42,16 @@ export default function Hero() {
             className="flex items-center gap-2 lowercase font-ui lg:text-lg transition duration-200 ease-in hover:text-rio-400"
           >
             <span
-              className="p-1 rounded-lg bg-rio-300 max-lg:hidden"
+              className="p-1 rounded-lg bg-[light-dark(var(--color-rio-300),var(--color-rio-300))] max-lg:hidden"
               aria-hidden="true"
             >
-              <Icon icon="pen" />
+              <Icon icon="pen" variant="on-light" className="dark:text-fern-1100" />
             </span>
             <span
-              className="p-1 rounded-lg bg-rio-300 lg:hidden"
+              className="p-1 rounded-lg bg-[light-dark(var(--color-rio-300),var(--color-rio-300))] lg:hidden"
               aria-hidden="true"
             >
-              <Icon icon="pen" size={16} />
+              <Icon icon="pen" size={16} variant="on-light" className="dark:text-fern-1100" />
             </span>
             Explore design
           </Link>
@@ -62,16 +62,16 @@ export default function Hero() {
             className="flex items-center gap-2 lowercase font-ui lg:text-lg transition duration-200 ease-in hover:text-dandelion-500"
           >
             <span
-              className="p-1 rounded-lg bg-dandelion-300 max-lg:hidden"
+              className="p-1 rounded-lg bg-[light-dark(var(--color-dandelion-300),var(--color-dandelion-200))] max-lg:hidden"
               aria-hidden="true"
             >
-              <Icon icon="code" />
+              <Icon icon="code" variant="on-light" className="dark:text-fern-1100" />
             </span>
             <span
-              className="p-1 rounded-lg bg-dandelion-300 lg:hidden"
+              className="p-1 rounded-lg bg-[light-dark(var(--color-dandelion-300),var(--color-dandelion-200))] lg:hidden"
               aria-hidden="true"
             >
-              <Icon icon="code" size={16} />
+              <Icon icon="code" size={16} variant="on-light" className="dark:text-fern-1100" />
             </span>
             Explore code
           </Link>

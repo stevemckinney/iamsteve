@@ -214,6 +214,7 @@ export default async function PostPage(props) {
                 <Icon
                   icon="square-info"
                   className="text-cornflour-900 flex-[0_0_auto]"
+                  variant="default"
                 />
                 <div className="flex flex-col">
                   <p className="p-0 m-0 font-body text-sm text-cornflour-900">
@@ -246,7 +247,7 @@ export default async function PostPage(props) {
               </div>
             </div>
           )}
-          <Badge size={16} theme={`text`} iconStart={`calendar`}>
+          <Badge size={16} theme={`cornflour`} iconStart={`calendar`}>
             <time dateTime={post.date} className={`date`}>
               {format(date, 'do LLL yyyy')}
             </time>
