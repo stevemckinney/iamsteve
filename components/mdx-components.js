@@ -213,7 +213,7 @@ const ComparisonImages = ({
 
   return (
     <div
-      className="flex flex-col gap-1 bg-neutral-01-100/80 shadow-placed p-1 -mx-1 sm:-mx-9 rounded-[28px]"
+      className="flex flex-col gap-1 bg-neutral-01-100/80 dark:bg-surface shadow-placed dark:shadow-[inset_0_0_0_1px_var(--color-surface)] p-1 -mx-1 sm:-mx-9 rounded-[28px]"
       role="region"
       aria-label={description}
     >
@@ -226,7 +226,7 @@ const ComparisonImages = ({
           </span>
         )}
         <div
-          className="flex items-center justify-end bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-canvas shadow-[inset_0_0_0_1px_rgb(162_143_140/.24),inset_0_1px_1px_-0.5px_rgb(162_143_140/.2),inset_0_1px_3px_-1.5px_rgb(162_143_140/.2),inset_0_2px_4px_-2px_rgb(162_143_140/.2),inset_0_3px_6px_-3px_rgb(162_143_140/.2),0_1px_rgb(252_249_248/1),0_1px_1px_rgb(252_249_248/1)] rounded-[10px] p-1"
+          className="flex gap-px items-center justify-end bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-canvas shadow-[inset_0_0_0_1px_rgb(162_143_140/.24),_inset_0_1px_1px_-0.5px_rgb(162_143_140/.2),_inset_0_1px_3px_-1.5px_rgb(162_143_140/.2),_inset_0_2px_4px_-2px_rgb(162_143_140/.2),_inset_0_3px_6px_-3px_rgb(162_143_140/.2),_0_1px_rgb(252_249_248/1),_0_1px_1px_rgb(252_249_248/1)] dark:shadow-[inset_0_0_0_1px_var(--color-surface-raised)] rounded-[10px] p-1"
           role="tablist"
           aria-label="View options"
         >
@@ -237,12 +237,12 @@ const ComparisonImages = ({
                 aria-selected={activeIndex === index}
                 aria-controls={`view-${index}`}
                 className={`
-                  transition-all duration-200 rounded-[7px] shadow-[0_0_0_0_rgb(0_0_0/0)] hover:text-heading active:shadow-reduced active:bg-neutral-01-50 active:scale-[.99375] bg-clip-padding transition duration-200 ease-in
-                  text-sm pt-2 pb-1.5 px-4
+                  transition-all duration-200 rounded-[7px] shadow-[0_0_0_0_rgb(0_0_0/0)] hover:text-heading active:shadow-[0_0_0_0_rgb(0_0_0/0)] active:bg-[light-dark(var(--color-neutral-01-200),var(--color-fern-1300))] active:scale-[.99375] bg-clip-padding transition duration-200 ease-in
+                  text-sm pt-2 pb-1.5 px-4 text-ui-body
                   ${
                     activeIndex === index
-                      ? 'bg-white shadow-placed'
-                      : 'text-ui-body'
+                      ? 'bg-surface shadow-placed dark:shadow-[inset_0_0_0_1px_var(--color-surface-raised)]'
+                      : ''
                   }
                 `}
                 onClick={() => setActiveIndex(index)}
@@ -268,7 +268,7 @@ const ComparisonImages = ({
         </div>
       </div>
       <div
-        className="rounded-lg overflow-hidden grid grid-cols-1 grid-rows-1 before:content-[''] before:rounded-lg before:mix-blend-soft-light before:shadow-[inset_0_0_0_1px_black] before:z-10 before:col-start-1 before:row-start-1 after:content-[''] after:rounded-lg after:mix-blend-soft-light after:shadow-[inset_0_0_0_1px_black] after:z-10 after:col-start-1 after:row-start-1 after:opacity-50"
+        className="rounded-lg overflow-hidden grid grid-cols-1 grid-rows-1 before:content-[''] before:rounded-lg before:mix-blend-soft-light before:shadow-[inset_0_0_0_1px_black]  before:z-10 before:col-start-1 before:row-start-1 after:content-[''] after:rounded-lg after:mix-blend-soft-light after:shadow-[inset_0_0_0_1px_black] after:z-10 after:col-start-1 after:row-start-1 after:opacity-50"
         onKeyDown={handleKeyDown}
         tabIndex={0}
       >
@@ -466,7 +466,7 @@ const postComponents = {
       >
         <iframe
           src={src.src}
-          className={`sm:rounded-[2.35rem] ring-3 ring-1 ring-fern-800 origin-top-left w-[calc(1/var(--zoom)*100%)] h-[calc(1/var(--zoom)*100%)] transform-gpu scale-(--zoom)`}
+          className={`sm:rounded-[2.35rem] ring ring-fern-800 origin-top-left w-[calc(1/var(--zoom)*100%)] h-[calc(1/var(--zoom)*100%)] transform-gpu scale-(--zoom)`}
         ></iframe>
       </div>
     )

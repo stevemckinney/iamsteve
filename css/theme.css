@@ -120,6 +120,10 @@
   --icon-fill: light-dark(var(--color-white), var(--color-fern-900));
 }
 
+.icon-on-light {
+  --icon-fill: var(--color-white);
+}
+
 
 /**
  * Illustration color classes

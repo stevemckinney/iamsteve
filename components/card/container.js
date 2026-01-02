@@ -100,7 +100,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
           href={slug}
           title=""
           className={imageClass}
-          style={{ backgroundColor: `light-dark(${imageColor}, color-mix(in oklch, ${imageColor}, var(--color-fern-1100) 0%))` }}
+          style={{ backgroundColor: `${imageColor}` }}
           aria-labelledby={`title-${_id}`}
         >
           <>
