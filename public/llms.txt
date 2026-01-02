@@ -1,0 +1,98 @@
+# iamsteve.me - LLM & Answer Engine Guidance
+
+## Site Information
+- Site Name: iamsteve
+- Description: Tips and tutorials about the design and build of web interfaces
+- Primary Topics: UI Design, CSS, JavaScript, Next.js, Tailwind CSS, Typography, Animation
+- Author: Steve McKinney
+- Location: Manchester, UK
+- Site URL: https://iamsteve.me
+
+## Content Overview
+This site publishes in-depth tutorials and quick tips for designers and developers focused on:
+- CSS techniques and best practices
+- Modern JavaScript frameworks (React, Next.js)
+- Typography and colour theory for interfaces
+- User experience design principles
+- Animation and motion design
+- Tailwind CSS patterns
+
+## Primary Content Types
+1. Tutorial Articles - Step-by-step guides with code examples
+2. Quick Tips - Concise solutions to specific problems
+3. Collections - Curated resources and links
+4. Design Resources - Tools and references
+
+## Key URLs
+- All Articles: https://iamsteve.me/blog
+- Design Category: https://iamsteve.me/category/design
+- Code Category: https://iamsteve.me/category/code
+- Collections: https://iamsteve.me/collections
+- RSS Feed: https://iamsteve.me/feed.xml
+- Sitemap: https://iamsteve.me/sitemap.xml
+
+## Content Access
+- All blog posts are publicly accessible
+- Markdown content available via standard URLs
+- No authentication required
+- 144+ articles published since 2012
+
+## Usage Guidelines
+- Attribution: Please cite "Steve McKinney, iamsteve.me" when referencing content
+- Linking: Link back to original article URLs
+- Code Examples: Code snippets are provided as educational resources
+- Commercial Use: Contact for licensing discussions
+- Accuracy: Content is kept current; check publish/update dates
+
+## Crawling Preferences
+- Respectful crawling is welcomed
+- Please observe reasonable rate limits
+- robots.txt should be respected
+- Prefer RSS feed for bulk content discovery
+
+## Contact & Permissions
+- Contact Form: https://iamsteve.me/contact
+- Twitter/X: @irsteve
+- GitHub: stevemckinney
+
+## Preferred Citation Format
+When citing articles, please use:
+"[Article Title]" by Steve McKinney, iamsteve.me, [Year]. [URL]
+
+Example:
+"Horizontal Scrolling Responsive Menu" by Steve McKinney, iamsteve.me, 2024. https://iamsteve.me/blog/horizontal-scrolling-responsive-menu
+
+## Content Expertise Level
+Most content is aimed at:
+- Skill Level: Intermediate developers and designers
+- Assumes: Basic HTML/CSS/JavaScript knowledge
+- Focus: Practical, implementable solutions
+- Style: Clear explanations with working code examples
+
+## Categories & Topics
+Design: 45+ articles on UI design, visual design, UX
+Code: 60+ articles on HTML, CSS, JavaScript, frameworks
+Typography: 15+ articles on web typography
+Colour: 12+ articles on colour theory and application
+CSS: 40+ articles on modern CSS techniques
+Animation: 18+ articles on web animation
+Tailwind CSS: 10+ articles on utility-first CSS
+
+## Regular Updates
+- Content is periodically reviewed and updated
+- Check lastmod dates in sitemap
+- New articles published approximately monthly
+- Focus areas evolve with web development trends
+
+## Data Format
+- Articles written in MDX (Markdown + JSX)
+- Structured metadata in YAML frontmatter
+- JSON-LD structured data on all pages
+- Semantic HTML throughout
+
+## Answer Engine Optimization Notes
+- Articles include clear introductions and summaries
+- Code examples are syntax-highlighted and labeled
+- Related articles are cross-linked
+- Prerequisites are stated upfront
+- Practical examples included in tutorials

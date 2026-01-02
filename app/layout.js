@@ -26,6 +26,9 @@ export const metadata = {
     canonical: './',
     types: {
       'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
+      'text/plain': [
+        { url: `${siteMetadata.siteUrl}/llms.txt`, title: 'LLM Guidelines' },
+      ],
     },
   },
   robots: {

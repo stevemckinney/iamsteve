@@ -1,4 +1,31 @@
 User-agent: *
 Allow: /
 
+# AI/LLM Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://iamsteve.me/sitemap.xml
+
+# LLM & Answer Engine Resources
+# llms.txt: https://iamsteve.me/llms.txt
+# Content Index: https://iamsteve.me/api/llm-index
+# Markdown API: https://iamsteve.me/api/content/[...slug]
