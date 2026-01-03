@@ -39,7 +39,14 @@ export default async function BlogIndex(props) {
   const params = await props.params
   const allData = await getData()
   const posts = allData.postsByDate
- const pageNumber = parseInt(params.page) || 1
+  const pageNumber = parseInt(params.page) || 1
+
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
+
+  if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
+    notFound()
+  }
+
   const paginatedPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
@@ -47,7 +54,7 @@ export default async function BlogIndex(props) {
 
   const pagination = {
     current: pageNumber,
-    total: Math.ceil(posts.length / POSTS_PER_PAGE),
+    total: totalPages,
   }
 
   return (
