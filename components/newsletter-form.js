@@ -1,34 +1,19 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import Button from '@/components/button'
 
-const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
+const NewsletterForm = ({
+  className = 'w-full',
+  unique = 'footer',
+  initialCount = 700,
+}) => {
   const inputEmail = useRef(null)
   const inputName = useRef(null)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
-  const [subscriberCount, setSubscriberCount] = useState(700)
   const [emailError, setEmailError] = useState('')
-
-  const roundDownToNearest10 = (num) => Math.floor(num / 10) * 10
-
-  useEffect(() => {
-    const fetchSubscriberCount = async () => {
-      try {
-        const res = await fetch('/api/newsletter/count')
-        const data = await res.json()
-        if (data.count) {
-          setSubscriberCount(roundDownToNearest10(data.count))
-        }
-      } catch (error) {
-        // Keep default fallback value of 700 on error
-      }
-    }
-
-    fetchSubscriberCount()
-  }, [])
 
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -163,7 +148,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
           </div>
           <div className="flex flex-col flex-col-reverse @sm:flex-row gap-4 items-center justify-between">
             <p className="m-0 p-0 text-fern-700 flex-1 text-center @sm:text-left">
-              Join {subscriberCount.toLocaleString()}+ designers
+              Join {initialCount.toLocaleString()}+ designers
             </p>
             <Button
               theme="dandelion"

@@ -11,8 +11,8 @@ export const GET = async () => {
       headers: {
         'Content-Type': 'application/json',
       },
-      // Cache for 1 hour to avoid hitting rate limits
-      next: { revalidate: 3600 },
+      // Cache for 24 hours to avoid hitting rate limits
+      next: { revalidate: 86400 },
     })
 
     const data = await res.json()
@@ -26,7 +26,7 @@ export const GET = async () => {
         {
           status: 200,
           headers: {
-            'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=7200',
+            'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=172800',
           },
         }
       )
