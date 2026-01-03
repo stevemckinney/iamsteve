@@ -14,6 +14,22 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
 
   const roundDownToNearest10 = (num) => Math.floor(num / 10) * 10
 
+  useEffect(() => {
+    const fetchSubscriberCount = async () => {
+      try {
+        const res = await fetch('/api/newsletter/count')
+        const data = await res.json()
+        if (data.count) {
+          setSubscriberCount(roundDownToNearest10(data.count))
+        }
+      } catch (error) {
+        // Keep default fallback value of 700 on error
+      }
+    }
+
+    fetchSubscriberCount()
+  }, [])
+
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     return re.test(String(email).toLowerCase())
@@ -152,7 +168,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
             <Button
               theme="dandelion"
               aria-label="Subscribe to the newsletter"
-              className="button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto button-dandelion font-ui text-base/tight lowercase text-center"
+              className="select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto font-ui text-base/tight lowercase text-center"
               disabled={subscribed}
             >
               Sign me up

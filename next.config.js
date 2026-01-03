@@ -74,7 +74,7 @@ const nextConfig = {
     REVALIDATION_SECRET: process.env.REVALIDATION_SECRET,
   },
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
-  staticPageGenerationTimeout: 240,
+  staticPageGenerationTimeout: 90,
   images: {
     loader: 'custom',
     loaderFile: './lib/utils/image-loader.js',

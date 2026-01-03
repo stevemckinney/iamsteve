@@ -1,0 +1,47 @@
+import { NextResponse } from 'next/server'
+
+const API_URL = process.env.EMAILOCTOPUS_API_URL
+const API_KEY = process.env.EMAILOCTOPUS_API_KEY
+const LIST_ID = process.env.EMAILOCTOPUS_LIST_ID
+
+export const GET = async () => {
+  try {
+    const res = await fetch(`${API_URL}lists/${LIST_ID}?api_key=${API_KEY}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // Cache for 1 hour to avoid hitting rate limits
+      next: { revalidate: 3600 },
+    })
+
+    const data = await res.json()
+
+    if (res.ok) {
+      // EmailOctopus returns counts object with subscribed, unsubscribed, and pending
+      const subscriberCount = data.counts?.subscribed || 700
+
+      return NextResponse.json(
+        { count: subscriberCount },
+        {
+          status: 200,
+          headers: {
+            'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=7200',
+          },
+        }
+      )
+    } else {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Failed to fetch subscriber count:', data.error?.message)
+      }
+      // Return fallback count on error
+      return NextResponse.json({ count: 700 }, { status: 200 })
+    }
+  } catch (error) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('Subscriber count error:', error.message)
+    }
+    // Return fallback count on error
+    return NextResponse.json({ count: 700 }, { status: 200 })
+  }
+}

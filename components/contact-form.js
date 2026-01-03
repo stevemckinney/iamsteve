@@ -94,7 +94,7 @@ const ContactForm = () => {
           <label htmlFor="title">
             Title
             <input
-              type="radio"
+              type="text"
               name="title"
               id="title"
               tabIndex="-1"
