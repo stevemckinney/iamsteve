@@ -170,9 +170,9 @@ export const Post = defineDocumentType(() => ({
     readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
     rssBody: {
       type: 'string',
-      resolve: async (doc) => {
+      resolve: (doc) => {
         try {
-          return await compileMdxForRssWithMarked(doc.body.raw)
+          return compileMdxForRssWithMarked(doc.body.raw)
         } catch (error) {
           console.error(`Error compiling RSS body for ${doc._raw.flattenedPath}:`, error)
           return doc.body.raw

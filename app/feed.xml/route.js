@@ -30,7 +30,7 @@ export async function GET() {
       <guid isPermaLink="true">${siteMetadata.siteUrl}${post.slug}</guid>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <description>${escapeXml(post.summary)}</description>
-      <content:encoded><![CDATA[${post.body.rssBody}]]></content:encoded>
+      <content:encoded><![CDATA[${post.rssBody}]]></content:encoded>
     </item>
     `
       )
