@@ -1,18 +1,19 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import Button from '@/components/button'
 
-const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
+const NewsletterForm = ({
+  className = 'w-full',
+  unique = 'footer',
+  initialCount = 700,
+}) => {
   const inputEmail = useRef(null)
   const inputName = useRef(null)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
-  const [subscriberCount, setSubscriberCount] = useState(700)
   const [emailError, setEmailError] = useState('')
-
-  const roundDownToNearest10 = (num) => Math.floor(num / 10) * 10
 
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
@@ -147,12 +148,12 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
           </div>
           <div className="flex flex-col flex-col-reverse @sm:flex-row gap-4 items-center justify-between">
             <p className="m-0 p-0 text-fern-700 flex-1 text-center @sm:text-left">
-              Join {subscriberCount.toLocaleString()}+ designers
+              Join {initialCount.toLocaleString()}+ designers
             </p>
             <Button
               theme="dandelion"
               aria-label="Subscribe to the newsletter"
-              className="button-dandelion select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto button-dandelion font-ui text-base/tight lowercase text-center"
+              className="select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto font-ui text-base/tight lowercase text-center"
               disabled={subscribed}
             >
               Sign me up

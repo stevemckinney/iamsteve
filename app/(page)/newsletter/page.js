@@ -1,7 +1,7 @@
 import Image from '@/components/image'
 import { Header, Title } from '@/components/page'
 import Notepad from '@/components/notepad'
-import NewsletterForm from '@/components/newsletter-form'
+import Newsletter from '@/components/newsletter'
 import Card from '@/components/card'
 import Campaigns from './campaigns'
 import ErrorBoundary from '@/components/error-boundary'
@@ -43,7 +43,7 @@ export default async function NewsletterPage({ data, Post }) {
                 can unsubscribe anytime.
               </p>
               <ErrorBoundary>
-                <NewsletterForm />
+                <Newsletter />
               </ErrorBoundary>
             </div>
           </section>
