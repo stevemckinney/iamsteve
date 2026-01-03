@@ -96,16 +96,6 @@
   --color-rio-hover: light-dark(var(--color-rio-500), var(--color-rio-400));
   --color-dandelion: light-dark(var(--color-dandelion-400), var(--color-dandelion-300));
   --color-dandelion-hover: light-dark(var(--color-dandelion-500), var(--color-dandelion-400));
-
-  --code-black: var(--color-fern-1100);
-  --code-white: var(--color-fern-100);
-  --code-red: light-dark(var(--color-rio-300), var(--color-rio-200));
-  --code-yellow: light-dark(var(--color-dandelion-400), var(--color-dandelion-300));
-  --code-green: light-dark(var(--color-grass-400), var(--color-grass-300));
-  --code-blue: light-dark(var(--color-cornflour-400), var(--color-cornflour-300));
-  --code-magenta: light-dark(var(--color-magenta-300), var(--color-magenta-200));
-  --code-cyan: light-dark(var(--color-fern-400), var(--color-fern-300));
-  --code-comment: light-dark(var(--color-neutral-03-500), var(--color-neutral-03-400));
 }
 
 /**

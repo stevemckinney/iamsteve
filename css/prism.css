@@ -5,18 +5,19 @@
  * https://github.com/PrismJS/prism-themes
  */
 .prose pre {
-  --code-black: var(--color-fern-1100);
-  --code-red: light-dark(var(--color-rio-300), var(--color-rio-200));
-  --code-yellow: light-dark(var(--color-dandelion-400), var(--color-dandelion-300));
-  --code-green: light-dark(var(--color-grass-400), var(--color-grass-300));
-  --code-blue: light-dark(var(--color-cornflour-400), var(--color-cornflour-300));
-  --code-magenta: light-dark(var(--color-magenta-300), var(--color-magenta-200));
-  --code-cyan: light-dark(var(--color-fern-400), var(--color-fern-300));
-  --code-white: var(--color-fern-100);
-  --code-comment: light-dark(var(--color-neutral-03-500), var(--color-neutral-03-400));
+  --code-black: light-dark(var(--color-fern-900), var(--color-fern-1100));
+  --code-white: var(--color-neutral-01-50);
+  --code-red: light-dark(var(--color-rio-500), var(--color-rio-200));
+  --code-yellow: light-dark(var(--color-dandelion-500), var(--color-dandelion-300));
+  --code-green: light-dark(var(--color-grass-500), var(--color-grass-300));
+  --code-blue: light-dark(var(--color-cornflour-500), var(--color-cornflour-300));
+  --code-magenta: light-dark(var(--color-magenta-500), var(--color-magenta-200));
+  --code-cyan: light-dark(var(--color-fern-500), var(--color-fern-300));
+  --code-comment: light-dark(var(--color-neutral-02-400), var(--color-neutral-03-400));
+
+  --code-lavender: var(--color-lavender-700);
   --offset-spacing: 2rem;
   isolation: isolate;
-  color-scheme: dark; /* Keep code blocks dark in both modes */
 }
 
 /**
@@ -24,7 +25,6 @@
  */
 code[class*='language-'],
 pre[class*='language-'] {
-  color: var(--code-white);
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -44,9 +44,10 @@ pre[class*='language-'] {
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  border: 1px solid var(--color-fern-900);
+  color: light-dark(var(--code-black), var(--code-white));
+  border: 1px solid var(--color-surface-raised);
+  background: light-dark(var(--code-white), var(--code-black));
   border-radius: 20px;
-  background: var(--code-black);
 }
 
 /* inline code */
@@ -76,8 +77,8 @@ pre[class*='language-'] {
 
 .highlight-line,
 .highlight-line.line-number:before {
-  background-color: oklch(32.7% 0.108727 258.5);
-  color: oklch(83.3% 0.077752 252.1);
+  background-color: light-dark(var(--color-cornflour-0), oklch(32.7% 0.108727 258.5));
+  color: light-dark(var(--color-cornflour-500), oklch(83.3% 0.077752 252.1));
 }
 
 .token.prefix.deleted,
@@ -121,13 +122,13 @@ pre[class*='language-'] {
   width: calc(2ch + 4rem);
   margin-right: 3ch;
   text-align: right;
-  color: var(--color-fern-800); /* Line number color */
+  color: light-dark(var(--color-neutral-01-400), var(--color-fern-800)); /* Line number color */
   content: attr(line);
   position: sticky;
   z-index: 2;
   top: 0;
   left: -32px;
-  background-color: var(--color-fern-1100);
+  background-color: light-dark(var(--color-neutral-01-50), var(--color-fern-1100));
   mask: linear-gradient(to right, #000 66%, transparent);
 }
 
@@ -155,14 +156,8 @@ pre[class*='language-'] {
   color: var(--code-yellow);
 }
 
-.token.keyword + .token.selector:has(.token.variable),
-.token.keyword {
-  color: var(--code-white);
-}
-
 .token.property {
-  color: var(--color-magenta-100);
-  color: var(--code-cyan);
+  color: light-dark(var(--color-neutral-02-400), var(--code-cyan));
 }
 
 .token.atrule .token.property {
@@ -182,12 +177,17 @@ pre[class*='language-'] {
 /* variables */
 .token.variable,
 .language-scss .code-line:has(.selector:first-child) .variable {
-  color: var(--code-magenta);
+  color: light-dark(var(--code-black), var(--code-magenta));
+}
+
+.token.keyword + .token.selector:has(.token.variable),
+.token.keyword {
+  color: light-dark(var(--code-lavender), var(--code-white));
 }
 
 .token.atrule > .token.variable,
 .token.keyword + .token.selector > .token.variable {
-  color: var(--code-white);
+  color: light-dark(var(--code-lavender), var(--code-white));
 }
 
 /* functions */
@@ -207,7 +207,7 @@ pre[class*='language-'] {
   color: var(--code-magenta);
 }
 .language-markup .token.attr-name {
-  color: var(--code-white);
+  color: light-dark(var(--code-neutral-02-400), var(--code-white));
 }
 .language-markup .token.attr-value {
   color: var(--code-yellow);
@@ -257,7 +257,7 @@ pre[class*='language-'] {
 }
 
 .token.operator {
-  color: var(--code-white);
+  color: light-dark(var(--code-black), var(--code-white));
 }
 
 .token.entity {
@@ -280,7 +280,11 @@ pre[class*='language-'] {
 }
 
 .token.function {
-  color: var(--code-yellow);
+  color: light-dark(var(--code-black), var(--code-yellow));
+}
+
+.token.method.function {
+  color: light-dark(var(--code-lavender), var(--code-yellow));
 }
 
 .token.regex {
