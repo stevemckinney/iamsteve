@@ -252,8 +252,210 @@ Low - requires significant refactoring, investigate when security review is need
 
 ---
 
+## Issue 10: Migrate contact form to Cloudflare Email Workers
+
+**Labels:** `enhancement`, `migration`, `cloudflare`
+
+### Problem
+Contact form currently disabled (`FORM_DISABLED = true` in `components/contact-form.js:11`) due to Netlify Forms dependency. Site has moved to Next.js and needs a new email solution.
+
+### Current state
+- Form uses Netlify Forms (`data-netlify="true"`)
+- Has good spam prevention (honeypot, rate limiting, minimum word count)
+- Uses Radix UI Form and Toast components
+
+### Impact
+- Contact form is unavailable to users
+- Cannot receive contact submissions
+
+### Solution
+Migrate to Cloudflare Email Workers:
+1. Set up Cloudflare Email Routing (free, domain already on Cloudflare DNS)
+2. Create Cloudflare Worker to handle form submissions
+3. Add Cloudflare Turnstile for spam prevention (free, privacy-friendly)
+4. Update `components/contact-form.js` to POST to Worker endpoint
+5. Keep existing rate limiting and honeypot as defence-in-depth
+
+### Files affected
+- `components/contact-form.js`
+- New: Cloudflare Worker for email handling
+
+### Benefits
+- Free solution (Workers free tier: 100k requests/day)
+- No external service costs
+- Better spam prevention with Turnstile
+- Faster response times (edge deployment)
+
+### Priority
+Medium &ndash; restores user-facing functionality
+
+---
+
+## Issue 11: Migrate view tracking from Supabase to Cloudflare D1
+
+**Labels:** `enhancement`, `migration`, `cloudflare`, `performance`
+
+### Problem
+Currently using Supabase for simple view counting feature. Opportunity to reduce dependencies and costs by migrating to Cloudflare D1.
+
+### Current state
+- Supabase database with single table: `page_views` (slug, view_count)
+- One RPC function for atomic increments
+- Server actions for reading/incrementing view counts
+- Minimal usage: ~2 SELECT queries + 1 RPC per blog page view
+
+### Impact
+- External dependency on Supabase
+- Additional service costs
+- More complex setup than needed
+
+### Solution
+Migrate to Cloudflare D1 (SQLite database):
+
+**Database schema:**
+```sql
+CREATE TABLE page_views (
+  slug TEXT PRIMARY KEY,
+  view_count INTEGER DEFAULT 0
+);
+```
+
+**Migration steps:**
+1. Create D1 database via Cloudflare dashboard
+2. Export data from Supabase (simple CSV or SQL dump)
+3. Import to D1
+4. Create D1 client wrapper (replace Supabase client)
+5. Update `app/(blog)/blog/views.js` and `app/(blog)/blog/increment.js`
+6. Test thoroughly before switching
+7. Remove Supabase dependencies from `package.json`
+
+### Files affected
+- `lib/supabase.js` → replace with D1 client
+- `lib/supabase-admin.js` → remove
+- `app/(blog)/blog/views.js` → update queries
+- `app/(blog)/blog/increment.js` → update to use D1
+- `app/page.js` → verify cached view counts work
+- `package.json` → remove `@supabase/ssr` and `@supabase/supabase-js`
+
+### Benefits
+- Free tier: 100k reads/day, 50k writes/day (plenty for this use case)
+- Global replication automatically
+- Simpler codebase (direct SQL vs Supabase SDK)
+- One less external service to manage
+- Lower latency (edge deployment)
+
+### Data volume
+Estimated <1000 rows (one per blog post), minimal writes, mostly reads
+
+### Priority
+Low &ndash; nice-to-have optimization, current solution works
+
+---
+
+## Issue 12: Evaluate Astro migration (long-term)
+
+**Labels:** `investigation`, `migration`, `performance`, `architecture`
+
+### Context
+Long-term consideration to migrate from Next.js to Astro for better Cloudflare Pages compatibility and improved performance.
+
+### Current challenges with Next.js on Cloudflare
+- Limited Next.js support on Cloudflare Pages (edge runtime only)
+- No Node.js runtime support (sharp image optimization won't work)
+- Some middleware and dynamic API limitations
+- Next.js heavily optimized for Vercel, not Cloudflare
+
+### Benefits of Astro migration
+- First-class Cloudflare Pages support
+- Native D1 integration
+- Simpler, faster builds
+- Better performance (less JavaScript shipped)
+- Content Collections work similarly to Contentlayer
+- Can use React islands selectively if needed
+- Drop ~200KB of React + Radix dependencies
+
+### Migration estimate
+**Reusable (90%):**
+- MDX content files (Contentlayer → Astro Content Collections)
+- Tailwind styles
+- Most component logic
+
+**Needs rewriting:**
+- React components → Astro components
+- Radix UI → Native HTML or lightweight alternatives
+- Some build configuration
+
+### Files affected
+Essentially entire codebase, but content is preserved
+
+### Recommended approach
+1. Wait until ready to fully commit to Cloudflare
+2. Complete Issues #10 and #11 first (contact form + D1 migration)
+3. Evaluate Astro with small prototype
+4. Migrate incrementally or do full rewrite
+
+### Alternative
+Stay on Next.js + Vercel, use Cloudflare only for email/database/CDN (hybrid approach)
+
+### Priority
+Very low &ndash; future consideration, no immediate need
+
+---
+
+## Issue 13: Remove Radix UI dependencies (if migrating to Astro)
+
+**Labels:** `enhancement`, `dependencies`, `migration`
+
+### Context
+If migrating to Astro (see Issue #12), consider removing Radix UI dependencies in favour of simpler alternatives.
+
+### Current Radix UI usage
+- `@radix-ui/react-form` &ndash; Contact form (`components/contact-form.js`)
+- `@radix-ui/react-toast` &ndash; Success notifications (`components/contact-form.js`)
+- `@radix-ui/react-navigation-menu` &ndash; Main navigation (`components/navigation.js`)
+- `@radix-ui/react-dialog` &ndash; Modal (`components/modal.js`)
+- `@radix-ui/react-select` &ndash; Category dropdown (`components/category/select.js`)
+
+**Already commented out:**
+- `@radix-ui/react-dropdown-menu`
+- Duplicate select usage
+
+### Impact
+Current bundle includes ~200KB of React + Radix for relatively simple interactions
+
+### Alternatives for Astro
+**Option 1: Native HTML + CSS (recommended)**
+- Native `<form>` validation (already doing most of this)
+- Native `<dialog>` element for modals
+- Native `<select>` for dropdowns
+- Lightweight toast library like `sonner` (2KB, framework-agnostic)
+- CSS-based navigation dropdown
+
+**Option 2: Web components**
+- Shoelace (framework-agnostic web components)
+- DaisyUI (Tailwind-based components)
+
+**Option 3: Keep React islands**
+- Use React components selectively in Astro
+- Defeats the "reduce dependencies" goal
+
+### Benefits
+- Significantly smaller bundle size
+- Simpler codebase
+- No React dependency needed
+- Faster page loads
+
+### Prerequisites
+- Astro migration (Issue #12) must be in progress or completed
+
+### Priority
+Very low &ndash; only relevant if migrating to Astro
+
+---
+
 ## Notes
 
 - Issues are ordered by priority (medium → low)
 - TypeScript migration was intentionally excluded per maintainer preference
 - All critical bugs were fixed in PR #[number]
+- Issues #10-13 are long-term Cloudflare migration planning items
