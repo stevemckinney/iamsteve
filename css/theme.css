@@ -62,11 +62,11 @@
  * Code blocks stay mostly consistent, slightly adjust for contrast
  */
 @theme {
-  --color-heading: light-dark(var(--color-fern-1100), var(--color-fern-0));
-  --color-body: light-dark(var(--color-fern-1100), var(--color-fern-0));
+  --color-heading: light-dark(var(--color-fern-1100), var(--color-fern-100));
+  --color-body: light-dark(var(--color-fern-1100), var(--color-fern-300));
   --color-body-80: light-dark(
     oklch(from var(--color-fern-1100) l c h / .8),
-    oklch(from var(--color-fern-200) l c h / .8)
+    oklch(from var(--color-fern-300) l c h / .8)
   );
   --color-text-secondary: light-dark(var(--color-fern-700), var(--color-ui-body));
   --color-text-tertiary: light-dark(var(--color-neutral-01-600), var(--color-neutral-01-500));
@@ -75,7 +75,10 @@
   --color-link-hover: light-dark(var(--color-dandelion-800), var(--color-dandelion-700));
   /* color-mix(in oklch, var(--color-fern-200), transparent 92%) */
   --color-canvas: light-dark(var(--color-neutral-01-150), var(--color-fern-1300));
-  --color-surface: light-dark(rgb(255 255 255), color-mix(in oklch, var(--color-fern-1000), transparent 60%));
+  --color-surface: light-dark(rgb(255 255 255), color-mix(in oklch, var(--color-fern-1100), transparent 70%));
+  --color-surface-02: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-900), transparent 60%));
+  --color-surface-03: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-900), transparent 50%));
+  --color-surface-04: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-900), transparent 10%));
   --color-surface-raised: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-900), transparent 30%));
   --color-surface-pressed: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-1000), transparent 80%));
   --color-subtle: light-dark(rgb(252 248 246), var(--color-neutral-01-100));
@@ -91,6 +94,8 @@
   --color-ui-normal: light-dark(rgba(79, 64, 63, 0.12), rgba(79, 64, 63, 0.16));
   --color-ui-raised: light-dark(rgba(79, 64, 63, 0.18), rgba(79, 64, 63, 0.24));
   --color-ui-body: var(--color-body-80);
+
+  --color-input: light-dark(var(--color-white), var(--color-fern-1000));
 
   --color-rio: light-dark(var(--color-rio-400), var(--color-rio-300));
   --color-rio-hover: light-dark(var(--color-rio-500), var(--color-rio-400));

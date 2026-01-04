@@ -33,7 +33,7 @@ export default async function NewsletterPage({ data, Post }) {
             <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0">
               Get the articles
             </h2>
-            <div className="bg-white shadow-placed px-10 py-8 rounded-lg flex flex-col gap-4">
+            <div className="bg-surface shadow-placed px-10 py-8 rounded-lg flex flex-col gap-4">
               <p>
                 Join my email list and I’ll notify you when the latest posts go
                 out—if that’s what you prefer. This happens monthly at most. You

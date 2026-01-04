@@ -14,7 +14,7 @@ const Selector = ({ categories }) => {
       </Select.Trigger>
 
       <Select.Portal>
-        <Select.Content className="bg-white dark:bg-gray-800 p-2 rounded-lg shadow-lg">
+        <Select.Content className="bg-surface dark:bg-gray-800 p-2 rounded-lg shadow-lg">
           <Select.ScrollUpButton />
           <Select.Viewport>
             <Select.Item>

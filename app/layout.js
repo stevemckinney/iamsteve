@@ -112,7 +112,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className="overflow-x-clip"
+      className="overflow-x-hidden lg:overflow-x-clip"
     >
       <head>
         <meta
@@ -142,9 +142,10 @@ export default function RootLayout({ children }) {
       {/**
        * No gap-y-18 to create space between the footer because it throws off
        * the border alignment within the header
+       * bg-[light-dark(url(/images/texture.png),url(/images/texture-dark.png))]
        */}
       <body
-        className={`antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-[light-dark(multiply,soft-light)] bg-canvas text-body`}
+        className={`antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge  bg-canvas text-body`}
       >
         <Sprite16 />
         <Sprite24 />

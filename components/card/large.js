@@ -49,7 +49,7 @@ const Large = ({ frontmatter, image, className }) => {
   const imageColor = theme ? theme.toString() : '#e8dcd9'
 
   return (
-    <article className="group/large relative flex flex-col self-start overflow-hidden transition duration-200 bg-white rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:bg-neutral-01-50 bg-clip-padding">
+    <article className="group/large relative flex flex-col self-start overflow-hidden transition duration-200 bg-surface rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:bg-neutral-01-50 bg-clip-padding">
       {image && large && (
         <Link
           href={slug}

@@ -4,6 +4,12 @@
  * by copying from a prismjs compatible theme:
  * https://github.com/PrismJS/prism-themes
  */
+
+@layer prism-base, prism-shared, prism-css, prism-html, prism-javascript;
+
+/**
+ * Base configuration
+ */
 .prose pre {
   --code-black: light-dark(var(--color-fern-900), var(--color-fern-1100));
   --code-white: var(--color-neutral-01-50);
@@ -21,7 +27,7 @@
 }
 
 /**
- * basics
+ * Basic formatting
  */
 code[class*='language-'],
 pre[class*='language-'] {
@@ -56,7 +62,7 @@ pre[class*='language-'] {
 }
 
 /**
- * line numbers
+ * Line numbers
  */
 .code-highlight {
   min-width: 100%;
@@ -65,11 +71,10 @@ pre[class*='language-'] {
 .code-line {
   position: relative;
   display: block;
-  box-shadow: inset 4px 0 rgb(0 0 0 / 0) ; /* Set placeholder for highlight accent border color to transparent */
+  box-shadow: inset 4px 0 rgb(0 0 0 / 0); /* Set placeholder for highlight accent border color to transparent */
   padding-inline: 2rem;
   margin-inline: -2rem;
 }
-
 
 .highlight-line {
   margin-inline: -2rem;
@@ -81,6 +86,9 @@ pre[class*='language-'] {
   color: light-dark(var(--color-cornflour-500), oklch(83.3% 0.077752 252.1));
 }
 
+/**
+ * Diff styling
+ */
 .token.prefix.deleted,
 .token.prefix.inserted {
   inline-size: 2ch;
@@ -122,7 +130,7 @@ pre[class*='language-'] {
   width: calc(2ch + 4rem);
   margin-right: 3ch;
   text-align: right;
-  color: light-dark(var(--color-neutral-01-400), var(--color-fern-800)); /* Line number color */
+  color: light-dark(var(--color-neutral-01-400), var(--color-fern-800));
   content: attr(line);
   position: sticky;
   z-index: 2;
@@ -137,169 +145,257 @@ pre[class*='language-'] {
   z-index: 1;
 }
 
-/**
- * theme
- **/
+@layer prism-shared {
+  /**
+   * Shared tokens across all languages
+   */
 
-/* css, scss */
-.token.atrule .token.rule,
-.token.atrule .token.number,
-.token.atrule .token.unit {
-  color: var(--code-red);
-}
+  /* Comments */
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: var(--code-comment);
+  }
 
-.token.selector {
-  color: var(--code-yellow);
-}
+  /* Punctuation */
+  .token.punctuation {
+    color: var(--code-comment);
+  }
 
-.token.selector .token.variable {
-  color: var(--code-yellow);
-}
+  /* Strings & Characters */
+  .token.string,
+  .token.char {
+    color: var(--code-yellow);
+  }
 
-.token.property {
-  color: light-dark(var(--color-neutral-02-400), var(--code-cyan));
-}
+  /* Numbers & Units */
+  .token.number,
+  .token.unit {
+    color: var(--code-magenta);
+  }
 
-.token.atrule .token.property {
-  color: var(--code-magenta);
-}
+  /* Booleans & Constants */
+  .token.boolean,
+  .token.constant {
+    color: var(--code-yellow);
+  }
 
-.code-line:has(.token.keyword + .token.selector) .token.selector {
-  color: var(--code-green);
-}
+  /* Keywords */
+  .token.keyword {
+    color: light-dark(var(--code-lavender), var(--code-white));
+  }
 
-/* .language-scss .token.variable { color: var(--code-white); } */
-/* .language-scss .code-line:has(.property:first-child) { color: var(--code-red); } */
-.language-scss .code-line:has(.property:first-child) .function {
-  color: var(--code-yellow);
-}
+  /* Operators */
+  .token.operator {
+    color: light-dark(var(--code-black), var(--code-white));
+  }
 
-/* variables */
-.token.variable,
-.language-scss .code-line:has(.selector:first-child) .variable {
-  color: light-dark(var(--code-black), var(--code-magenta));
-}
+  /* Functions */
+  .token.function {
+    color: light-dark(var(--code-black), var(--code-yellow));
+  }
 
-.token.keyword + .token.selector:has(.token.variable),
-.token.keyword {
-  color: light-dark(var(--code-lavender), var(--code-white));
-}
+  /* Variables */
+  .token.variable {
+    color: light-dark(var(--code-black), var(--code-magenta));
+  }
 
-.token.atrule > .token.variable,
-.token.keyword + .token.selector > .token.variable {
-  color: light-dark(var(--code-lavender), var(--code-white));
-}
+  /* Classes */
+  .token.class-name {
+    color: var(--code-red);
+  }
 
-/* functions */
-.language-scss .function {
-  color: var(--code-blue);
-}
+  /* Symbols */
+  .token.symbol {
+    color: var(--code-magenta);
+  }
 
-.code-line:has(.function, .punctuation, .operator) .operator {
-  color: var(--code-green);
-}
+  /* Built-in */
+  .token.builtin {
+    color: var(--code-yellow);
+  }
 
-/* html */
-.language-markup .token.tag .token.tag,
-.language-markup .token.tag .token.tag .token.punctuation,
-.language-markup .token.tag + .token.punctuation,
-.language-markup .token.attr-value + .token.punctuation {
-  color: var(--code-magenta);
-}
-.language-markup .token.attr-name {
-  color: light-dark(var(--code-neutral-02-400), var(--code-white));
-}
-.language-markup .token.attr-value {
-  color: var(--code-yellow);
-}
+  /* Entities & URLs */
+  .token.entity {
+    color: var(--code-yellow);
+    cursor: help;
+  }
 
-/* comments, punctuation */
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata,
-.token.punctuation {
-  color: var(--code-comment);
-}
+  .token.url {
+    color: var(--code-yellow);
+  }
 
-/* TODO: all below need to be checked */
-.namespace {
-  opacity: 0.7;
-}
+  /* Regex */
+  .token.regex {
+    color: var(--code-yellow);
+  }
 
-.token.tag {
-  color: var(--code-blue);
-}
+  /* Important */
+  .token.important {
+    color: var(--code-yellow);
+  }
 
-.token.class-name {
-  color: var(--code-red);
-}
+  /* Text formatting */
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
 
-.token.boolean,
-.token.constant {
-  color: var(--code-yellow);
-}
+  .token.italic {
+    font-style: italic;
+  }
 
-.token.symbol {
-  color: var(--code-magenta);
-}
+  /* Namespace */
+  .namespace {
+    opacity: 0.7;
+  }
 
-.token.number,
-.token.unit {
-  color: var(--code-magenta);
-}
-
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin {
-  color: var(--code-yellow);
+  /* Tags (generic) */
+  .token.tag {
+    color: var(--code-blue);
+  }
 }
 
-.token.operator {
-  color: light-dark(var(--code-black), var(--code-white));
+@layer prism-css {
+  /**
+   * CSS & SCSS specific tokens
+   */
+
+  /* Selectors */
+  .token.selector {
+    color: var(--code-yellow);
+  }
+
+  .token.selector .token.variable {
+    color: var(--code-yellow);
+  }
+
+  .code-line:has(.token.keyword + .token.selector) .token.selector {
+    color: var(--code-green);
+  }
+
+  /* Properties */
+  .token.property {
+    color: light-dark(var(--color-neutral-02-400), var(--code-cyan));
+  }
+
+  /* At-rules */
+  .token.atrule .token.rule,
+  .token.atrule .token.number,
+  .token.atrule .token.unit {
+    color: var(--code-red);
+  }
+
+  .token.atrule .token.property {
+    color: var(--code-magenta);
+  }
+
+  .token.atrule {
+    color: var(--code-yellow);
+  }
+
+  .token.atrule > .token.variable,
+  .token.keyword + .token.selector > .token.variable {
+    color: light-dark(var(--code-lavender), var(--code-white));
+  }
+
+  /* SCSS specific */
+  .language-scss .code-line:has(.property:first-child) .function {
+    color: var(--code-yellow);
+  }
+
+  .language-scss .code-line:has(.selector:first-child) .variable {
+    color: light-dark(var(--code-black), var(--code-magenta));
+  }
+
+  .language-scss .function {
+    color: var(--code-blue);
+  }
+
+  .code-line:has(.function, .punctuation, .operator) .operator {
+    color: var(--code-green);
+  }
+
+  /* CSS strings */
+  .language-css .token.string,
+  .style .token.string {
+    color: var(--code-yellow);
+  }
+
+  /* Attribute values */
+  .token.attr-value {
+    color: var(--code-yellow);
+  }
 }
 
-.token.entity {
-  color: var(--code-yellow);
-  cursor: help;
+@layer prism-html {
+  /**
+   * HTML & Markup specific tokens
+   */
+
+  /* Tags */
+  .language-markup .token.tag .token.tag,
+  .language-markup .token.tag .token.tag .token.punctuation,
+  .language-markup .token.tag + .token.punctuation,
+  .language-markup .token.attr-value + .token.punctuation {
+    color: var(--code-magenta);
+  }
+
+  /* Attributes */
+  .language-markup .token.attr-name {
+    color: light-dark(var(--code-neutral-02-400), var(--code-white));
+  }
+
+  .token.attr-name {
+    color: var(--code-yellow);
+  }
+
+  /* Attribute values */
+  .language-markup .token.attr-value {
+    color: var(--code-yellow);
+  }
 }
 
-.token.url {
-  color: var(--code-yellow);
-}
+@layer prism-javascript {
+  /**
+   * JavaScript specific tokens
+   */
 
-.language-css .token.string,
-.style .token.string {
-  color: var(--code-yellow);
-}
+  /* Keywords */
+  .token.keyword + .token.selector:has(.token.variable) {
+    color: light-dark(var(--code-lavender), var(--code-white));
+  }
 
-.token.atrule,
-.token.attr-value {
-  color: var(--code-yellow);
-}
+  /* Functions & Methods */
+  .token.method.function {
+    color: light-dark(var(--code-lavender), var(--code-yellow));
+  }
 
-.token.function {
-  color: light-dark(var(--code-black), var(--code-yellow));
-}
+  .token.function-variable {
+    /* TODO: Define specific color scheme */
+    /* Currently inherits from .token.function */
+  }
 
-.token.method.function {
-  color: light-dark(var(--code-lavender), var(--code-yellow));
-}
+  .token.method.function.property-access {
+    /* TODO: Define specific color scheme */
+    /* Currently inherits .token.method.function */
+  }
 
-.token.regex {
-  color: var(--code-yellow);
-}
+  /* Variables */
+  .token.dom.variable {
+    /* TODO: Define specific color scheme */
+    /* Currently inherits .token.variable */
+  }
 
-.token.important {
-  color: var(--code-yellow);
-}
+  .token.parameter {
+    /* TODO: Define specific color scheme */
+    /* Currently unstyled - needs definition */
+  }
 
-.token.important,
-.token.bold {
-  font-weight: bold;
-}
-
-.token.italic {
-  font-style: italic;
+  /* Property access */
+  .token.property-access {
+    /* TODO: Define specific color scheme */
+    /* Currently unstyled - needs definition */
+  }
 }

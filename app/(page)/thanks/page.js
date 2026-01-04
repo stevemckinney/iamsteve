@@ -36,7 +36,7 @@ export default async function NewsletterPage({ data, Post }) {
               <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0">
                 You’ll receive a follow up email
               </h2>
-              <div className="bg-white shadow-placed px-10 py-8 rounded-lg flex flex-col gap-4">
+              <div className="bg-surface shadow-placed px-10 py-8 rounded-lg flex flex-col gap-4">
                 <p>
                   Your subscription has been confirmed. There will be a follow
                   up email to your confirmation email welcoming you to the

@@ -387,7 +387,7 @@ const components = {
   ),
   GalleryFigure: (props) => (
     <figure
-      className={`flex flex-col items-center justify-center p-4 self-start rounded-lg bg-white shadow-placed ${props.className}`}
+      className={`flex flex-col items-center justify-center p-4 self-start rounded-lg bg-surface shadow-placed ${props.className}`}
     >
       {props.children}
     </figure>

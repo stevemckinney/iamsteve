@@ -21,17 +21,17 @@
   0 1px oklch(57% 0.164 53.2 / 1),
   0 0 0 1px oklch(64.5% 0.176 58.1 / 1),
   */
-  --ui-border-color: var(--color-dandelion-500);
-  --ui-border-color-weak: var(--color-dandelion-400);
-  --ui-border-color-strong: var(--color-dandelion-700);
+  --ui-border-color: light-dark(var(--color-dandelion-500), var(--color-dandelion-200));
+  --ui-border-color-weak: light-dark(var(--color-dandelion-400), var(--color-dandelion-200));
+  --ui-border-color-strong: light-dark(var(--color-dandelion-700), var(--color-dandelion-200));
   --gradient-direction: bottom;
   --bg-gradient-weak: oklch(78% 0.186 80.6 / 0);
   --bg-gradient-strong: oklch(78% 0.186 80.6 / 0.2);
   border: 1px solid transparent;
   position: relative;
   box-shadow:
-    inset 0 -2px 4px -2px oklch(71.7% 0.18 68.6/ 0.8),
-    inset 0 0 0 1px oklch(87.1% 0.184 95 / 0.6),
+    inset 0 -2px 4px -2px light-dark(oklch(71.7% 0.18 68.6 / 0.8), oklch(71.7% 0.18 68.6 / 0)),
+    inset 0 0 light-dark(0, 3px) 1px light-dark(oklch(87.1% 0.184 95 / 0.6), var(--color-dandelion-400)),
     inset 0 1px 3px oklch(87.1% 0.184 95 / 0.5),
     var(--shadow-placed-depth);
   color: var(--color-dandelion-800);
@@ -61,8 +61,8 @@
   transition: box-shadow 0.2s ease;
 
   &:hover {
-    --ui-border-color: var(--color-dandelion-600);
-    --ui-border-color-strong: var(--color-dandelion-800);
+    --ui-border-color: light-dark(var(--color-dandelion-600), var(--color-dandelion-100));
+    --ui-border-color-strong: light-dark(var(--color-dandelion-800), var(--color-dandelion-100));
     --bg-gradient-weak: oklch(78% 0.186 80.6 / 0.2);
     --bg-gradient-strong: oklch(78% 0.186 80.6 / 0.4);
 
@@ -72,19 +72,19 @@
 
     box-shadow:
       inset 0 -2px 4px -2px oklch(71.7% 0.18 68.6/ 0.8),
-      inset 0 0 0 1px oklch(87.1% 0.184 95 / 0.6),
+      inset 0 0 0 1px light-dark(oklch(87.1% 0.184 95 / 0.6), var(--color-dandelion-300)),
       inset 0 1px 3px oklch(87.1% 0.184 95 / 0.5),
       var(--shadow-picked-depth);
   }
 
   &:active {
     --ui-border-color-weak: var(--color-dandelion-600);
-    --ui-border-color: var(--color-dandelion-600);
-    --ui-border-color-strong: var(--color-dandelion-700);
+    --ui-border-color: light-dark(var(--color-dandelion-600), var(--color-dandelion-300));
+    --ui-border-color-strong: light-dark(var(--color-dandelion-700), var(--color-dandelion-400));
     --gradient-direction: top;
     --bg-gradient-weak: var(--color-dandelion-400);
     --bg-gradient-strong: var(--color-dandelion-400);
-    box-shadow: inset 0 1px 3px -1px var(--color-dandelion-500);
+    box-shadow: inset 0 1px 3px -1px light-dark(var(--color-dandelion-500), var(--color-dandelion-500));
 
     span {
       display: block;
@@ -257,7 +257,7 @@
       repeat(2, minmax(0, 1fr)) [content-end] repeat(2, minmax(0, 1fr))
       [container-end] var(--grid-margin) [margin-end];
 
-    /**
+  /**
    * Overridable capability for tailwind
    */
     --ui-border-opacity-weak: 0.08;
@@ -283,7 +283,7 @@
       0px 1px 1px -0.5px var(--ui-border-color),
       0px 2px 3px -1.5px var(--ui-border-color),
       0px 3px 4px -2px var(--ui-border-color);
-    --shadow-placed: var(--shadow-placed-border), var(--shadow-placed-depth);
+
     --shadow-placed-border:
       0 -1px var(--ui-border-color-weak), 0 1px var(--ui-border-color-strong),
       0 0 0 1px var(--ui-border-color);
@@ -294,7 +294,9 @@
       0 3px 6px -3px var(--ui-border-color),
       0 3px 6px -3px var(--ui-border-color),
       0 6px 9px -4.5px var(--ui-border-color);
-    --shadow-picked: var(--shadow-picked-border), var(--shadow-picked-depth);
+    --shadow-placed-light: var(--shadow-placed-border), var(--shadow-placed-depth);
+    --shadow-placed: light-dark(var(--shadow-placed-light), inset 0 0 0 1px var(--color-surface-02));
+
     --shadow-picked-border:
       0 -1px var(--ui-border-color-weak), 0 1px var(--ui-border-color-strong),
       0 0 0 1px var(--ui-border-color-hover);
@@ -305,6 +307,9 @@
       0 3px 6px -3px var(--ui-border-color),
       0 6px 12px -6px var(--ui-border-color),
       0 12px 18px -9px var(--ui-border-color);
+    --shadow-picked-light: var(--shadow-picked-border), var(--shadow-picked-depth);
+    --shadow-picked: light-dark(var(--shadow-picked-light), inset 0 0 0 1px var(--color-surface-raised));
+
     --shadow-floating:
       0 10px 24px -2px rgba(117, 99, 98, 0.12),
       0 2px 4px rgba(117, 99, 98, 0.08);

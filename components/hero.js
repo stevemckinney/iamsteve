@@ -39,7 +39,7 @@ export default function Hero() {
         <li>
           <Link
             href="/category/design"
-            className="flex items-center gap-2 lowercase font-ui lg:text-lg transition duration-200 ease-in hover:text-rio-400"
+            className="flex items-center gap-2 lowercase font-ui lg:text-lg transition duration-200 ease-in hover:text-rio"
           >
             <span
               className="p-1 rounded-lg bg-[light-dark(var(--color-rio-300),var(--color-rio-300))] max-lg:hidden"
@@ -48,7 +48,7 @@ export default function Hero() {
               <Icon icon="pen" variant="on-light" className="dark:text-fern-1100" />
             </span>
             <span
-              className="p-1 rounded-lg bg-[light-dark(var(--color-rio-300),var(--color-rio-300))] lg:hidden"
+              className="p-1 rounded-lg bg-rio lg:hidden"
               aria-hidden="true"
             >
               <Icon icon="pen" size={16} variant="on-light" className="dark:text-fern-1100" />
@@ -59,10 +59,10 @@ export default function Hero() {
         <li>
           <Link
             href="/category/code"
-            className="flex items-center gap-2 lowercase font-ui lg:text-lg transition duration-200 ease-in hover:text-dandelion-500"
+            className="flex items-center gap-2 lowercase font-ui lg:text-lg transition duration-200 ease-in hover:text-dandelion"
           >
             <span
-              className="p-1 rounded-lg bg-[light-dark(var(--color-dandelion-300),var(--color-dandelion-200))] max-lg:hidden"
+              className="p-1 rounded-lg bg-dandelion max-lg:hidden"
               aria-hidden="true"
             >
               <Icon icon="code" variant="on-light" className="dark:text-fern-1100" />

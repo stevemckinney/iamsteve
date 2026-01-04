@@ -422,7 +422,7 @@ export function Support() {
       </p>
       <Link
         href={siteMetadata.bmc}
-        className="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase hover:opacity-70 transition duration-200 mt-1 pl-6 pr-5 py-2 bg-white shadow-[0_0_0_1px_var(--color-neutral-01-200)]"
+        className="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase hover:opacity-70 transition duration-200 mt-1 pl-6 pr-5 py-2 bg-surface shadow-[0_0_0_1px_var(--color-neutral-01-200)]"
       >
         Buy me a coffee
         <span className="flex shrink-0 grow-0 items-center justify-center">

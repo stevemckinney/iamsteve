@@ -65,7 +65,7 @@ async function Collections() {
 
               <span className="text-cornflour-600">{items.length}</span>
             </h2>
-            <ul className="bg-white shadow-placed rounded-md flex flex-col overflow-hidden">
+            <ul className="bg-surface shadow-placed rounded-md flex flex-col overflow-hidden">
               {items.map((item) => {
                 const [y, m, d] = item.date
                   .split('-')
@@ -136,7 +136,7 @@ export default async function CollectionsPage(props) {
                     <Icon
                       icon={collection.icon}
                       size={24}
-                      className="text-current shrink-0"
+                      variant="header"
                     />
                     {collection.title}
                   </a>

@@ -45,17 +45,17 @@ const darkBgVariants = {
 }
 
 const darkRingVariants = {
-  rio: 'dark:ring-1 dark:ring-rio-200',
-  dandelion: 'dark:ring-1 dark:ring-dandelion-100',
-  lavender: 'dark:ring-1 dark:ring-lavender-200',
-  magenta: 'dark:ring-1 dark:ring-magenta-200',
-  grass: 'dark:ring-1 dark:ring-grass-200',
-  fern: 'dark:ring-1 dark:ring-fern-200',
-  moss: 'dark:ring-1 dark:ring-moss-200',
-  'neutral-01': 'dark:ring-1 dark:ring-neutral-01-200',
-  'neutral-02': 'dark:ring-1 dark:ring-neutral-02-200',
-  cornflour: 'dark:ring-1 dark:ring-cornflour-200',
-  text: 'dark:ring-1 dark:ring-fern-200',
+  rio: 'dark:ring-1 dark:ring-rio-300',
+  dandelion: 'dark:ring-1 dark:ring-dandelion-200',
+  lavender: 'dark:ring-1 dark:ring-lavender-300',
+  magenta: 'dark:ring-1 dark:ring-magenta-300',
+  grass: 'dark:ring-1 dark:ring-grass-300',
+  fern: 'dark:ring-1 dark:ring-fern-300',
+  moss: 'dark:ring-1 dark:ring-moss-300',
+  'neutral-01': 'dark:ring-1 dark:ring-neutral-01-300',
+  'neutral-02': 'dark:ring-1 dark:ring-neutral-02-300',
+  cornflour: 'dark:ring-1 dark:ring-cornflour-300',
+  text: 'dark:ring-1 dark:ring-fern-300',
 }
 
 const darkRingHoverVariants = {
@@ -116,7 +116,7 @@ export function BadgeIcon({ icon, size, theme, className }) {
   return (
     <span
       className={cn(
-        'flex-[0_0_auto] bg-white',
+        'flex-[0_0_auto] bg-surface',
         darkBgVariants[theme],
         darkRingVariants[theme],
         darkRingHoverVariants[theme],

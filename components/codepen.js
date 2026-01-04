@@ -1,3 +1,5 @@
+import { cn } from '@/lib/utils'
+
 /**
  * CodePen Embed Component
  *
@@ -34,7 +36,7 @@ export default function CodePen({
   if (editable) embedUrl.searchParams.set('editable', 'true')
 
   return (
-    <div className={`codepen-wide ${className}`}>
+    <div className={cn('codepen-wide', className)}>
       <iframe
         height={height}
         style={{ width: '100%' }}

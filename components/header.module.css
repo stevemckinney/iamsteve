@@ -27,7 +27,7 @@
     &:hover:after {
       opacity: 1;
       top: 100%;
-      background: var(--color-fern-1100);
+      background: var(--color-body);
     }
   }
 }

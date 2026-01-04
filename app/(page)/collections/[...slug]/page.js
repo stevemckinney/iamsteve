@@ -104,7 +104,7 @@ async function Collections({ page }) {
           {groupedCollections[collectionKey].length}
         </span>
       </h2>
-      <ul className="bg-white shadow-placed rounded-lg flex flex-col overflow-hidden">
+      <ul className="bg-surface shadow-placed rounded-lg flex flex-col overflow-hidden">
         {groupedCollections[collectionKey].map((item) => {
           const [y, m, d] = item.date.split('-').map((n) => parseInt(n, 10))
           const itemDate = new Date(y, m, d)
@@ -186,7 +186,7 @@ export default async function CollectionPage(props) {
                     <Icon
                       icon={collection.icon}
                       size={24}
-                      className="text-current shrink-0"
+                      variant="header"
                     />
                     {collection.title}
                   </a>

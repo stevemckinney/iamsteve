@@ -93,7 +93,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
 
   return (
     <article
-      className={`@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed dark:shadow-[inset_0_0_0_1px_var(--color-surface)] hover:shadow-picked dark:hover:shadow-[inset_0_0_0_1px_var(--color-surface-raised)] active:shadow-reduced dark:active:shadow-[inset_0_0_0_1px_var(--color-surface-pressed)] bg-surface active:bg-surface-pressed active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative h-full ${className}`}
+      className={`@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced dark:active:shadow-[inset_0_0_0_1px_var(--color-surface-02)] bg-surface active:bg-surface-pressed active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative h-full ${className}`}
     >
       {image && (large || medium) && (
         <Link
@@ -176,7 +176,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
           >
             <Link
               href={slug}
-              className="text-heading before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @lg/card:before:rounded-lg before:z-1"
+              className="text-heading group-hover/card:text-[light-dark(var(--color-fern-800),var(--color-white))] transition duration-200 ease-out before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @lg/card:before:rounded-lg before:z-1"
             >
               {title}
             </Link>

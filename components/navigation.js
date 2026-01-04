@@ -55,7 +55,7 @@ const Navigation = () => {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content
             className={clsx(
-              'nav-content shadow-placed bg-white/90 backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg relative z-200 lg:left-1/2 lg:-translate-x-1/2 p-6 outline-hidden',
+              'nav-content shadow-placed bg-surface/90 backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg relative z-200 lg:left-1/2 lg:-translate-x-1/2 p-6 outline-hidden',
               'transition-all duration-300 ease-in-out',
               isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
             )}
