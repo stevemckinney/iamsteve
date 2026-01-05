@@ -3,3 +3,20 @@
 @import '../css/utilities.css';
 @import '../css/typography.css';
 @import '../css/prism.css' layer(base);
+
+:focus {
+  outline: none;
+}
+
+:not(input):focus-visible {
+  --outline-color: var(--color-cornflour-400);
+  outline: 2px solid var(--outline-color);
+  outline-offset: 6px;
+  border-radius: minmax(6px, calc(inherit + 6px));
+}
+
+@media (prefers-color-scheme: dark) {
+  :not(input):focus-visible {
+    --outline-color: var(--color-cornflour-700);
+  }
+}

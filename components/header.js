@@ -16,6 +16,8 @@ import styles from './header.module.css'
 
 export default function Header() {
   const pathname = usePathname()
+  const isArticlePage = pathname.startsWith('/blog/') && pathname !== '/blog'
+
   const nav =
     'flex flex-[1_0_auto] lg:gap-8 2xl:gap-12 xl:justify-center max-lg:px-2'
   const tabbarNav = `max-lg:transition-all max-lg:duration-200 max-lg:ease-out max-lg:px-8 max-lg:bg-[light-dark(rgb(255_255_255/.75),rgb(0_0_0/.75))] max-lg:shadow-placed max-lg:justify-between max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100 max-lg:backdrop-blur-sm max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150 max-lg:gap-6 max-lg:rounded-full ${styles.tabbar}`
@@ -30,6 +32,35 @@ export default function Header() {
 
   return (
     <>
+      <ul
+        role="list"
+        id="accessibility-links"
+        className={cn(
+          'sr-only focus-within:not-sr-only',
+          'focus-within:fixed focus-within:top-2 focus-within:left-2 focus-within:z-[1000]',
+          'focus-within:bg-fern-1200 focus-within:text-fern-100',
+          'focus-within:p-8 focus-within:flex focus-within:flex-col focus-within:gap-2 rounded-md'
+        )}
+      >
+        {isArticlePage && (
+          <li>
+            <a href="#article" className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]">
+              Skip to article
+            </a>
+          </li>
+        )}
+        <li>
+          <a href="#content" className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]">
+            Skip to main content
+          </a>
+        </li>
+        <li>
+          <a href="#nav" className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]">
+            Skip to nav
+          </a>
+        </li>
+      </ul>
+
       <header
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-10"
         id="top"
@@ -55,21 +86,6 @@ export default function Header() {
               variant="header"
             />
           </Link>
-          <ul
-            role="list"
-            id="accessibility-links"
-            className="text-center bg-black text-white underline text-2xl sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0"
-          >
-            <li>
-              <a href="#article">Skip to article</a>
-            </li>
-            <li>
-              <a href="#content">Skip to main content</a>
-            </li>
-            <li>
-              <a href="#nav">Skip to nav</a>
-            </li>
-          </ul>
           <nav className={cn(nav, tabbarNav)} id="nav" suppressHydrationWarning>
             {navigation.map((link) => {
               const isActive = pathname === link.href

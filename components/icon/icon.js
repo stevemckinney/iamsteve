@@ -7,6 +7,7 @@ const variantClasses = {
   default: 'icon',
   header: 'icon-header',
   'on-light': 'icon-on-light',
+  none: '',
 }
 
 const Icon = ({
@@ -24,15 +25,17 @@ const Icon = ({
       ? 'pen'
       : normalisedIcon
 
+  const variantClass = variantClasses[variant] || 'icon'
+
   return (
     <svg
       width={size}
       height={size}
       viewBox={`0 0 ${size} ${size}`}
       className={cn(
-        'text-heading',
         'shrink-0',
-        variantClasses[variant] || 'icon',
+        variant === 'none' ? 'text-current' : 'text-heading',
+        variantClass,
         className
       )}
       {...props}

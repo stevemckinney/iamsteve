@@ -24,42 +24,6 @@
 
 /**
  * Theme
- *
- * Utilising light-dark to create tokens for theming. No theme is
- * programatically set, this is purely system based.
- *
- * Text colors:
- * - --color-body: Primary body text
- * - --color-body-80: Body text with 80% opacity
- * - --color-text-secondary: Secondary text
- * - --color-text-tertiary: Tertiary/muted text
- * - --color-text-inverse: Inverse text for dark backgrounds
- * - --color-link: Link color
- * - --color-link-hover: Link hover state
- *
- * Background colors:
- * - --color-canvas: Base page background
- * - --color-surface: Surface/card background
- * - --color-surface-raised: Elevated surface
- * - --color-subtle: Subtle background
- * - --color-overlay: Overlay background
- *
- * Border colors:
- * - --color-border-subtle: Subtle borders
- * - --color-border-medium: Medium emphasis borders
- * - --color-border-strong: Strong emphasis borders
- *
- * UI state colors:
- * - --color-ui-normal: Normal state overlays
- * - --color-ui-raised: Raised/elevated overlays
- * - --color-ui-body: Secondary body text
- *
- * Category/branded colors:
- * - --color-rio: Design category (one shade darker in light mode)
- * - --color-dandelion: Code category (one shade darker in light mode)
- *
- * Code syntax colors:
- * Code blocks stay mostly consistent, slightly adjust for contrast
  */
 @theme {
   --color-heading: light-dark(var(--color-fern-1100), var(--color-fern-100));
@@ -68,12 +32,14 @@
     oklch(from var(--color-fern-1100) l c h / .8),
     oklch(from var(--color-fern-300) l c h / .8)
   );
+  --color-link: light-dark(var(--color-dandelion-700), var(--color-dandelion-600));
+  --color-link-hover: light-dark(var(--color-dandelion-800), var(--color-dandelion-300));
+
   --color-text-secondary: light-dark(var(--color-fern-700), var(--color-ui-body));
   --color-text-tertiary: light-dark(var(--color-neutral-01-600), var(--color-neutral-01-500));
   --color-text-inverse: light-dark(var(--color-fern-1100), var(--color-neutral-01-0));
-  --color-link: light-dark(var(--color-dandelion-700), var(--color-dandelion-600));
-  --color-link-hover: light-dark(var(--color-dandelion-800), var(--color-dandelion-700));
-  /* color-mix(in oklch, var(--color-fern-200), transparent 92%) */
+
+  /* surfaces, eg: cards, badges, etc. */
   --color-canvas: light-dark(var(--color-neutral-01-150), var(--color-fern-1300));
   --color-surface: light-dark(rgb(255 255 255), color-mix(in oklch, var(--color-fern-1100), transparent 70%));
   --color-surface-02: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-900), transparent 60%));
@@ -81,6 +47,8 @@
   --color-surface-04: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-900), transparent 10%));
   --color-surface-raised: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-900), transparent 30%));
   --color-surface-pressed: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-1000), transparent 80%));
+
+  /* definitions in progress */
   --color-subtle: light-dark(rgb(252 248 246), var(--color-neutral-01-100));
   --color-overlay: light-dark(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
 
@@ -95,8 +63,10 @@
   --color-ui-raised: light-dark(rgba(79, 64, 63, 0.18), rgba(79, 64, 63, 0.24));
   --color-ui-body: var(--color-body-80);
 
-  --color-input: light-dark(var(--color-white), var(--color-fern-1000));
+  /* form */
+  --color-input: light-dark(var(--color-white), color-mix(in oklch, var(--color-fern-1000), transparent 80%));
 
+  /* themed elements, eg: (hero.js links) */
   --color-rio: light-dark(var(--color-rio-400), var(--color-rio-300));
   --color-rio-hover: light-dark(var(--color-rio-500), var(--color-rio-400));
   --color-dandelion: light-dark(var(--color-dandelion-400), var(--color-dandelion-300));
@@ -112,7 +82,7 @@
 }
 
 .icon-header {
-  --icon-fill: light-dark(var(--color-white), var(--color-fern-900));
+  --icon-fill: light-dark(var(--color-white), var(--color-fern-1300));
 }
 
 .icon-on-light {
