@@ -34,7 +34,7 @@ const Icon = ({
       viewBox={`0 0 ${size} ${size}`}
       className={cn(
         'shrink-0',
-        variant === 'none' ? 'text-current' : 'text-heading',
+        'text-current',
         variantClass,
         className
       )}

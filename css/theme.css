@@ -32,6 +32,10 @@
     oklch(from var(--color-fern-1100) l c h / .8),
     oklch(from var(--color-fern-300) l c h / .8)
   );
+  --color-body-60: light-dark(
+    oklch(from var(--color-fern-1100) l c h / .6),
+    oklch(from var(--color-fern-300) l c h / .6)
+  );
   --color-link: light-dark(var(--color-dandelion-700), var(--color-dandelion-600));
   --color-link-hover: light-dark(var(--color-dandelion-800), var(--color-dandelion-300));
 
@@ -49,10 +53,11 @@
   --color-surface-pressed: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-1000), transparent 80%));
 
   /* definitions in progress */
-  --color-subtle: light-dark(rgb(252 248 246), var(--color-neutral-01-100));
+  --color-subtle: light-dark(var(--color-neutral-01-250), oklch(from var(--color-fern-300) l c h / .12));
   --color-overlay: light-dark(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
 
-  --color-border-subtle: light-dark(var(--color-neutral-01-200), var(--color-neutral-01-250));
+  --color-table: light-dark(var(--color-neutral-01-150), oklch(from var(--color-fern-300) l c h / .12));
+  --color-table-darker: light-dark(var(--color-neutral-01-200), oklch(from var(--color-fern-300) l c h / .24));
   --color-border-medium: light-dark(var(--color-neutral-01-300), var(--color-neutral-01-400));
   --color-border-strong: light-dark(var(--color-neutral-01-400), var(--color-neutral-01-500));
 

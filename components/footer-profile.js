@@ -24,7 +24,7 @@ export default function FooterProfile() {
             know…
             <Link
               href="/about"
-              className="font-semibold text-heading hover:text-dandelion-600 transition duration-200 ease"
+              className="font-semibold text-link hover:text-link-hover transition duration-200 ease"
             >
               continue reading
             </Link>
@@ -40,81 +40,81 @@ export default function FooterProfile() {
           <li>
             <Link
               href="/"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="home" size={16} variant="none" />
+              <Icon icon="home" size={16} variant="header" />
               Home
             </Link>
           </li>
           <li>
             <Link
               href="/blog"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="folder" size={16} variant="none" />
+              <Icon icon="folder" size={16} variant="header" />
               Archive
             </Link>
           </li>
           <li>
             <Link
               href="/category/design"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="pen" size={16} variant="none" />
+              <Icon icon="pen" size={16} variant="header" />
               Design
             </Link>
           </li>
           <li>
             <Link
               href="/category/code"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="code" size={16} variant="none" />
+              <Icon icon="code" size={16} variant="header" />
               Code
             </Link>
           </li>
           <li>
             <Link
               href="/collections"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="collections" size={16} variant="none" />
+              <Icon icon="collections" size={16} variant="header" />
               Collections
             </Link>
           </li>
           <li>
             <Link
               href="/uses"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="settings" size={16} variant="none" />
+              <Icon icon="settings" size={16} variant="header" />
               Uses
             </Link>
           </li>
           <li>
             <Link
               href="/about"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="person" size={16} variant="none" />
+              <Icon icon="person" size={16} variant="header" />
               About
             </Link>
           </li>
           <li>
             <Link
               href="/contact"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="envelope" size={16} variant="none" />
+              <Icon icon="envelope" size={16} variant="header" />
               Contact
             </Link>
           </li>
           <li>
             <Link
               href="/newsletter"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="airplane" size={16} variant="none" />
+              <Icon icon="airplane" size={16} variant="none" style={{'--icon-fill': 'transparent'}} />
               Newsletter
             </Link>
           </li>
@@ -124,7 +124,7 @@ export default function FooterProfile() {
       <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-4 row-span-1 bg-surface py-8 sm:p-12 flex items-center justify-center dark:shadow-[-1px_1px_var(--color-surface-02)]">
         <Link
           href="https://v7.iamsteve.me"
-          className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+          className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
         >
           Old design
           <Icon icon="external" size={16} />
@@ -139,46 +139,46 @@ export default function FooterProfile() {
           <li>
             <Link
               href="https://x.com/irsteve"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="x" size={16} variant="none" />
+              <Icon icon="x" size={16} variant="header" />
               x.com
             </Link>
           </li>
           <li>
             <Link
               href="https://www.figma.com/@stevemckinney"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="figma" size={16} variant="none" />
+              <Icon icon="figma" size={16} variant="header" />
               Figma
             </Link>
           </li>
           <li>
             <Link
               href="https://github.com/stevemckinney"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="github" size={16} variant="none" />
+              <Icon icon="github" size={16} variant="header" />
               Github
             </Link>
           </li>
           <li>
             <Link
               href="https://www.linkedin.com/in/steve-mckinney-5b5836102/"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="linkedin" size={16} variant="none" />
+              <Icon icon="linkedin" size={16} variant="header" />
               Linkedin
             </Link>
           </li>
           <li>
             <Link
               href="https://mastodon.design/@steve"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-heading hover:text-dandelion-600 transition duration-200"
+              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
               rel="me"
             >
-              <Icon icon="mastodon" size={16} variant="none" />
+              <Icon icon="mastodon" size={16} variant="header" />
               Mastodon
             </Link>
           </li>

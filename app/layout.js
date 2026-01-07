@@ -162,7 +162,7 @@ export default function RootLayout({ children }) {
             </Suspense>
             <footer className="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-18 md:py-18">
               <p className="flex flex-1 max-md:flex-col max-md:items-center gap-1 text-balance text-center">
-                <Icon icon="bee" /> Designed in Manchester using Figma & Next.js
+                <Icon icon="bee" variant="header" /> Designed in Manchester using Figma & Next.js
               </p>
               <ul className="flex gap-8">
                 <li>
@@ -197,12 +197,12 @@ export default function RootLayout({ children }) {
             </footer>
             <div className="col-container relative -top-4 pb-24 flex flex-row items-center gap-8">
               <span
-                className="flex-1 bg-[url(/images/dash.svg)] h-[2px]"
+                className="flex-1 bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] h-[2px]"
                 aria-hidden="true"
               />
-              <Icon icon="logo" className="text-heading" size={32} />
+              <Icon icon="logo" className="text-heading" variant="header" size={32} />
               <span
-                className="flex-1 bg-[url(/images/dash.svg)] h-[2px]"
+                className="flex-1 bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] h-[2px]"
                 aria-hidden="true"
               />
             </div>

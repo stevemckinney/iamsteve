@@ -34,7 +34,7 @@
   }
 
   & figure :where(figcaption, figcaption p) {
-    color: oklch(26.8% 0.059 173.5 / .6);
+    color: var(--color-body-60);
     font-family: var(--font-mono);
     font-size: var(--text-base);
     letter-spacing: -0.03em;
@@ -145,7 +145,7 @@
   }
 
   & p code {
-    color: var(--color-dandelion-600);
+    color: light-dark(var(--color-dandelion-600), var(--color-dandelion-300));
 
     @supports (font-size-adjust: ex-height 0.51) {
       font-size-adjust: ex-height 0.51;
@@ -159,19 +159,19 @@
   }
 
   & thead tr {
-    border-bottom: 3px solid var(--color-neutral-01-150);
+    border-bottom: 3px solid var(--color-table);
   }
 
   & tbody tr {
     transition: 0.2s;
     &:hover,
     &:focus {
-      background-color: var(--color-neutral-01-150);
+      background-color: var(--color-table);
     }
   }
 
   & tbody tr:not(:last-child) {
-    border-bottom: 1px solid var(--color-neutral-01-200);
+    border-bottom: 1px solid var(--color-table-darker);
   }
 
   & th,
@@ -241,8 +241,8 @@
 
       &:hover,
       &:focus {
-        color: var(--color-dandelion-600);
-        text-decoration-color: var(--color-dandelion-600);
+        color: var(--color-link-hover);
+        text-decoration-color: var(--color-link-hover);
       }
     }
 
@@ -263,8 +263,7 @@
     text-decoration-thickness: .5px;
 
     &:hover {
-      border-radius: .125rem;
-      background-color: rgb(162 143 140 / .2);
+      color: var(--color-link-hover);
       text-decoration-color: transparent;
     }
   }

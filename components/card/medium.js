@@ -105,7 +105,7 @@ const Medium = ({ frontmatter, image, className }) => {
           </div>
         </>
       )}
-      <div className="flex flex-col flex-auto relative z-1 before:transition before:duration-200 before:ease-in before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-linear-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:via-neutral-01-50/10 active:before:via-neutral-01-50/30 active:before:via-neutral-01-50/80 active:before:to-neutral-01-50 active:before:via-50% active:before:via-80% before:z-3 pb-6.5">
+      <div className="flex flex-col flex-auto relative z-1 pb-6.5 [mask:linear-gradient(to_right,#fff_0%,#fff_calc(100%_-_64px),rgba(255,255,255,0.8)_calc(100%_-_48px),rgba(255,255,255,0.3)_calc(100%_-_24px),transparent_100%)]">
         {categories.length > 0 && (
           <div className={categoryClass} key="cats">
             {categories.map((category, index) => (

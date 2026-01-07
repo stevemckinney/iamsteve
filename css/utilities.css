@@ -475,11 +475,11 @@
 }
 
 .column-categories li:not(:first-child):not(:nth-of-type(2)) {
-  border-top: 1px solid var(--color-neutral-01-250);
+  border-top: 1px solid var(--color-subtle);
 }
 
 .list-categories li:not(:first-child) {
-  border-top: 1px solid var(--color-neutral-01-250);
+  border-top: 1px solid var(--color-subtle);
 }
 
 .image-stack img {
