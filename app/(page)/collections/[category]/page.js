@@ -87,7 +87,7 @@ export default async function CategoryPage(props) {
   const items = groupedCollections[categoryKey] || []
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen flex-col col-start-container-start col-end-container-end -mx-8 sm:-mx-12 2xl:-mx-20">
       {/* Header with breadcrumb */}
       <header className="flex items-center border-b border-neutral-01-500/10 px-6 py-4 gap-2 text-sm text-fern-1100/60">
         <a href="/collections" className="hover:text-fern-1100 transition">

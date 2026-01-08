@@ -33,7 +33,7 @@ export default async function CollectionsPage() {
   const { groupedCollections } = await getData()
 
   return (
-    <div className="flex h-screen flex-col">
+    <div className="flex h-screen flex-col col-start-container-start col-end-container-end -mx-8 sm:-mx-12 2xl:-mx-20">
       {/* Header */}
       <header className="flex items-center justify-between border-b border-neutral-01-500/10 px-6 py-4">
         <h1 className="text-lg font-medium text-fern-1100 lowercase">
