@@ -158,7 +158,11 @@ export default function RootLayout({ children }) {
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <Header />
             {children}
-            <Suspense fallback={<div className="col-start-container-start col-end-container-end h-[600px]" />}>
+            <Suspense
+              fallback={
+                <div className="col-start-container-start col-end-container-end h-[600px]" />
+              }
+            >
               <FooterProfile />
             </Suspense>
             <footer className="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-18 md:py-18">

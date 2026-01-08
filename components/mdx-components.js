@@ -17,7 +17,11 @@ import CodePen from '@/components/codepen'
 const BentoGridShell = dynamic(
   () => import('@/components/posts/0175-bento-grid'),
   {
-    loading: () => <div className="animate-pulse bg-neutral-01-100 rounded-lg h-96">Loading...</div>,
+    loading: () => (
+      <div className="animate-pulse bg-neutral-01-100 rounded-lg h-96">
+        Loading...
+      </div>
+    ),
     ssr: true,
   }
 )

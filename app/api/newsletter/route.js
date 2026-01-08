@@ -43,7 +43,10 @@ export const POST = async (req) => {
       )
     } else {
       if (process.env.NODE_ENV !== 'production') {
-        console.error('Subscription error:', data.error?.message || 'Unknown error')
+        console.error(
+          'Subscription error:',
+          data.error?.message || 'Unknown error'
+        )
       }
       return NextResponse.json(
         { error: data.error?.message || 'Subscription failed' },
