@@ -273,7 +273,8 @@
       0 0 0 1px var(--ui-border-color),
       0px 1px 1px -0.5px var(--ui-border-color),
       0px 2px 3px -1.5px var(--ui-border-color);
-    --shadow-reduced:
+
+    --shadow-reduced-border:
       0 -1px var(--ui-border-color-weak), 0 1px var(--ui-border-color-strong),
       0 0 0 1px var(--ui-border-color),
       0px 1px 1px -0.5px var(--ui-border-color),
@@ -283,6 +284,8 @@
       0px 1px 1px -0.5px var(--ui-border-color),
       0px 2px 3px -1.5px var(--ui-border-color),
       0px 3px 4px -2px var(--ui-border-color);
+    --shadow-reduced-light: var(--shadow-reduced-border), var(--shadow-reduced-depth);
+    --shadow-reduced: light-dark(var(--shadow-reduced-light), inset 0 0 0 1px var(--color-surface-02));
 
     --shadow-placed-border:
       0 -1px var(--ui-border-color-weak), 0 1px var(--ui-border-color-strong),

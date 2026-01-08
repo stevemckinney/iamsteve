@@ -413,7 +413,7 @@ export function PostImage({ post }) {
 
 export function Support() {
   return (
-    <aside className="xl:row-span-1 bg-surface shadow-[0_0_0_1px_var(--color-surface-02)] rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content xl:col-start-3 xl:col-span-8">
+    <aside className="xl:row-span-1 bg-surface-02 dark:bg-surface shadow-[0_0_0_1px_var(--color-white)] dark:shadow-[0_0_0_1px_var(--color-surface-02)] rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content xl:col-start-3 xl:col-span-8">
       <p className="p-0 m-0 text-base text-ui-body flex flex-col">
         <strong className="text-heading font-bold">
           Enjoying the reading experience?
@@ -422,7 +422,7 @@ export function Support() {
       </p>
       <Link
         href={siteMetadata.bmc}
-        className="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase hover:opacity-70 transition duration-200 mt-1 pl-6 pr-5 py-2 bg-surface shadow-[0_0_0_1px_red]"
+        className="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase transition duration-200 mt-1 pl-6 pr-5 py-2 bg-surface shadow-reduced hover:opacity-70"
       >
         Buy me a coffee
         <span className="flex shrink-0 grow-0 items-center justify-center">

@@ -65,7 +65,7 @@ const Medium = ({ frontmatter, image, className }) => {
 
   return (
     <div
-      className={`group/medium isolate relative flex flex-col rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:scale-[.99375] bg-surface active:bg-neutral-01-50 bg-clip-padding transition ease-linear duration-200 overflow-hidden ${className}`}
+      className={`group/medium isolate relative flex flex-col rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:scale-[.99375] bg-surface active:bg-surface-pressed bg-clip-padding transition ease-linear duration-200 overflow-hidden ${className}`}
     >
       {image && medium && (
         <>
@@ -109,9 +109,11 @@ const Medium = ({ frontmatter, image, className }) => {
         {categories.length > 0 && (
           <div className={categoryClass} key="cats">
             {categories.map((category, index) => (
+              <>
               <Category size={24} key={`${category}${index}`} tabIndex="1">
                 {category}
               </Category>
+              </>
             ))}
           </div>
         )}
