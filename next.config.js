@@ -290,6 +290,19 @@ const nextConfig = {
         destination: 'https://google.com',
         permanent: true,
       },
+      // Collections backward compatibility
+      // Redirect old /collections/[category] to /collections/website/[category]
+      {
+        source: '/collections/:category(accessibility|css|code|colour|favourites|foundry|inspiration|motion|publication|resource|typography|ux-design)',
+        destination: '/collections/website/:category',
+        permanent: false,
+      },
+      // Redirect old /collections/[category]/[slug] to /collections/website/[category]/[slug]
+      {
+        source: '/collections/:category(accessibility|css|code|colour|favourites|foundry|inspiration|motion|publication|resource|typography|ux-design)/:slug',
+        destination: '/collections/website/:category/:slug',
+        permanent: false,
+      },
     ]
   },
 }

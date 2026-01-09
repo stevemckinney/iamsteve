@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { getFaviconPath } from '@/lib/favicons'
 
 function ChevronRight({ className }) {
   return (
@@ -31,8 +33,13 @@ export function ColumnItem({
   showExternal,
   externalUrl,
   badge,
+  faviconUrl,
 }) {
   const [isHovered, setIsHovered] = useState(false)
+  const [faviconError, setFaviconError] = useState(false)
+
+  const faviconPath = faviconUrl ? getFaviconPath(faviconUrl) : null
+  const showFavicon = faviconPath && !faviconError && showExternal
 
   const className = `group flex w-full items-center justify-between rounded px-3 py-2 text-left text-sm transition-colors duration-200 ease-linear lowercase ${
     isSelected
@@ -43,7 +50,18 @@ export function ColumnItem({
   const content = (
     <>
       <span className="flex items-center gap-2 truncate">
-        {icon}
+        {showFavicon ? (
+          <Image
+            src={faviconPath}
+            alt=""
+            width={16}
+            height={16}
+            className="shrink-0"
+            onError={() => setFaviconError(true)}
+          />
+        ) : (
+          icon
+        )}
         <span className="truncate">{label}</span>
       </span>
       <span className="flex items-center gap-2">

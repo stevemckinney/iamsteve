@@ -5,7 +5,6 @@ import { Column } from '@/components/collections/column'
 import { ColumnItem } from '@/components/collections/column-item'
 
 import { allCollections } from 'contentlayer/generated'
-import collections from '@/content/collections'
 
 export const revalidate = false
 
@@ -15,25 +14,45 @@ export const metadata = {
     "Curated links to all things design and development. There's links to specific articles and websites with further curation.",
 }
 
+// Kind types in display order
+const kinds = [
+  { id: 'website', title: 'Website', icon: 'globe' },
+  { id: 'article', title: 'Article', icon: 'publication' },
+  { id: 'tool', title: 'Tool', icon: 'code' },
+  { id: 'resource', title: 'Resource', icon: 'bookmark' },
+]
+
 const getData = cache(async () => {
-  const groupedCollections = allCollections.reduce((acc, item) => {
+  // Group by kind → category
+  const groupedByKind = allCollections.reduce((acc, item) => {
+    // Get kind from item (defaults to 'website' via contentlayer schema)
+    const kind = item.kind || 'website'
+
+    if (!acc[kind]) {
+      acc[kind] = {}
+    }
+
+    // Then group by category within kind
     item.collection.forEach((collection) => {
-      if (!acc[collection]) {
-        acc[collection] = []
+      const normalizedKey = collection.toLowerCase().replace(/\s+/g, '-')
+
+      if (!acc[kind][normalizedKey]) {
+        acc[kind][normalizedKey] = []
       }
-      acc[collection].push(item)
+      acc[kind][normalizedKey].push(item)
     })
+
     return acc
   }, {})
 
-  return { groupedCollections }
+  return { groupedByKind }
 })
 
 export default async function CollectionsPage() {
-  const { groupedCollections } = await getData()
+  const { groupedByKind } = await getData()
 
   return (
-    <div className="flex h-screen flex-col col-start-container-start col-end-container-end -mx-8 sm:-mx-12 2xl:-mx-20">
+    <div className="flex h-screen flex-col col-start-container-start col-end-container-end">
       {/* Header */}
       <header className="flex items-center justify-between border-b border-neutral-01-500/10 px-6 py-4">
         <h1 className="text-lg font-medium text-fern-1100 lowercase">
@@ -43,32 +62,29 @@ export default async function CollectionsPage() {
 
       {/* Column Browser */}
       <ColumnBrowser>
-        {/* Categories Column */}
-        <Column title="Categories">
-          {collections
-            .sort((a, b) =>
-              a.title < b.title ? -1 : a.title > b.title ? 1 : 0
+        {/* Kind Column */}
+        <Column title="Kind">
+          {kinds.map((kind) => {
+            // Count total items for this kind across all categories
+            const categories = groupedByKind[kind.id] || {}
+            const count = Object.values(categories).reduce(
+              (sum, items) => sum + items.length,
+              0
             )
-            .map((collection) => {
-              const count =
-                groupedCollections[collection.slugAsParams]?.length || 0
-              return (
-                <ColumnItem
-                  key={collection.id}
-                  icon={
-                    <Icon
-                      icon={collection.icon}
-                      size={16}
-                      className="text-current"
-                    />
-                  }
-                  label={collection.title}
-                  count={count}
-                  hasChildren
-                  href={collection.slug}
-                />
-              )
-            })}
+
+            return (
+              <ColumnItem
+                key={kind.id}
+                icon={
+                  <Icon icon={kind.icon} size={16} className="text-current" />
+                }
+                label={kind.title}
+                count={count}
+                hasChildren
+                href={`/collections/${kind.id}`}
+              />
+            )
+          })}
         </Column>
       </ColumnBrowser>
     </div>

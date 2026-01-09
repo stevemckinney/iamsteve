@@ -14,18 +14,32 @@ import { ColumnItem } from '@/components/collections/column-item'
 export const dynamic = 'force-static'
 export const revalidate = 2592000
 
+// Kind types in display order
+const kinds = [
+  { id: 'website', title: 'Website', icon: 'globe' },
+  { id: 'article', title: 'Article', icon: 'publication' },
+  { id: 'tool', title: 'Tool', icon: 'code' },
+  { id: 'resource', title: 'Resource', icon: 'bookmark' },
+]
+
 const getData = cache(async () => {
-  const groupedCollections = allCollections.reduce((acc, item) => {
+  // Group by kind → category
+  const groupedByKind = allCollections.reduce((acc, item) => {
+    const kind = item.kind || 'website'
+
+    if (!acc[kind]) {
+      acc[kind] = {}
+    }
+
     item.collection.forEach((collection) => {
-      // Normalize the collection name to match slugAsParams format
-      // Convert to lowercase and replace spaces with hyphens
       const normalizedKey = collection.toLowerCase().replace(/\s+/g, '-')
 
-      if (!acc[normalizedKey]) {
-        acc[normalizedKey] = []
+      if (!acc[kind][normalizedKey]) {
+        acc[kind][normalizedKey] = []
       }
-      acc[normalizedKey].push(item)
+      acc[kind][normalizedKey].push(item)
     })
+
     return acc
   }, {})
 
@@ -41,54 +55,62 @@ const getData = cache(async () => {
   }
 
   return {
-    groupedCollections,
+    groupedByKind,
     lastImportDate,
   }
 })
 
+function getKindFromParams(params) {
+  const kindId = params?.kind
+  return kinds.find((k) => k.id === kindId) || null
+}
+
 function getCategoryFromParams(params) {
   const category = params?.category
-  const page = collections.find((page) => page.slugAsParams === category)
-
-  if (!page) {
-    return null
-  }
-
-  return page
+  return collections.find((c) => c.slugAsParams === category) || null
 }
 
 export async function generateMetadata(props) {
   const params = await props.params
-  const page = getCategoryFromParams(params)
+  const kind = getKindFromParams(params)
+  const category = getCategoryFromParams(params)
 
-  if (!page) {
+  if (!kind || !category) {
     return {}
   }
 
   return {
-    template: '%s • iamsteve',
-    title: page.title,
-    description: page.description,
+    title: `${category.title} ${kind.title} • Collections • iamsteve`,
+    description: `Browse ${kind.title.toLowerCase()} in ${category.title}`,
   }
 }
 
 export async function generateStaticParams() {
-  return collections.map((page) => ({
-    category: page.slugAsParams,
-  }))
+  const params = []
+
+  kinds.forEach((kind) => {
+    collections.forEach((category) => {
+      params.push({
+        kind: kind.id,
+        category: category.slugAsParams,
+      })
+    })
+  })
+
+  return params
 }
 
 export default async function CategoryPage(props) {
   const params = await props.params
-  const page = getCategoryFromParams(params)
+  const kind = getKindFromParams(params)
+  const category = getCategoryFromParams(params)
 
-  if (!page) {
+  if (!kind || !category) {
     notFound()
   }
 
-  const { groupedCollections, lastImportDate } = await getData()
-  const categoryKey = page.slugAsParams
-  const items = groupedCollections[categoryKey] || []
+  const { groupedByKind, lastImportDate } = await getData()
+  const items = groupedByKind[kind.id]?.[category.slugAsParams] || []
 
   return (
     <div className="flex h-screen flex-col col-start-container-start col-end-container-end">
@@ -98,43 +120,69 @@ export default async function CategoryPage(props) {
           Collections
         </a>
         <span>/</span>
-        <span className="text-fern-1100 lowercase">{page.title}</span>
+        <a
+          href={`/collections/${kind.id}`}
+          className="hover:text-fern-1100 transition lowercase"
+        >
+          {kind.title}
+        </a>
+        <span>/</span>
+        <span className="text-fern-1100 lowercase">{category.title}</span>
       </header>
 
       {/* Column Browser */}
       <ColumnBrowser>
+        {/* Kind Column */}
+        <Column title="Kind">
+          {kinds.map((k) => {
+            const kindCategories = groupedByKind[k.id] || {}
+            const count = Object.values(kindCategories).reduce(
+              (sum, items) => sum + items.length,
+              0
+            )
+            const isSelected = k.id === kind.id
+
+            return (
+              <ColumnItem
+                key={k.id}
+                icon={<Icon icon={k.icon} size={16} className="text-current" />}
+                label={k.title}
+                count={count}
+                hasChildren
+                isSelected={isSelected}
+                href={`/collections/${k.id}`}
+              />
+            )
+          })}
+        </Column>
+
         {/* Categories Column */}
         <Column title="Categories">
           {collections
-            .sort((a, b) =>
-              a.title < b.title ? -1 : a.title > b.title ? 1 : 0
-            )
-            .map((collection) => {
+            .sort((a, b) => (a.title < b.title ? -1 : a.title > b.title ? 1 : 0))
+            .map((c) => {
               const count =
-                groupedCollections[collection.slugAsParams]?.length || 0
-              const isSelected = collection.slugAsParams === categoryKey
+                groupedByKind[kind.id]?.[c.slugAsParams]?.length || 0
+              const isSelected = c.slugAsParams === category.slugAsParams
+
               return (
                 <ColumnItem
-                  key={collection.id}
+                  key={c.id}
                   icon={
-                    <Icon
-                      icon={collection.icon}
-                      size={16}
-                      className="text-current"
-                    />
+                    <Icon icon={c.icon} size={16} className="text-current" />
                   }
-                  label={collection.title}
+                  label={c.title}
                   count={count}
                   hasChildren
                   isSelected={isSelected}
-                  href={collection.slug}
+                  href={`/collections/${kind.id}/${c.slugAsParams}`}
                 />
               )
             })}
         </Column>
 
         {/* Links Column */}
-        <Column title={page.title} count={items.length}>
+        <Column title={category.title} count={items.length}>
           {items.map((item) => {
             const [y, m, d] = item.date.split('-').map((n) => parseInt(n, 10))
             const itemDate = new Date(y, m - 1, d)
@@ -144,14 +192,13 @@ export default async function CategoryPage(props) {
               : threeMonthsAgo
             const isNew = isAfter(itemDate, cutoffDate)
 
-            // Create URL-safe slug from title
             const itemSlug = item._raw.sourceFileName.replace('.md', '')
 
             return (
               <ColumnItem
                 key={item.url}
                 label={item.title}
-                href={`/collections/${categoryKey}/${itemSlug}`}
+                href={`/collections/${kind.id}/${category.slugAsParams}/${itemSlug}`}
                 showExternal
                 externalUrl={item.url}
                 faviconUrl={item.url}
