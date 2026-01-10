@@ -69,7 +69,7 @@ const Navigation = () => {
                   index={index}
                   className={clsx(
                     pathname === link.href
-                      ? 'text-dandelion-500'
+                      ? 'text-dandelion-500 dark:text-dandelion-300'
                       : 'text-emphasis'
                   )}
                 >
