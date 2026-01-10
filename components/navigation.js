@@ -16,13 +16,13 @@ const Toggle = () => {
     <div className="relative before:z-1 before:-inset-10 before:absolute">
       <span className="block w-[24px] h-[24px] relative">
         <span
-          className={`h-[2px] w-[20px] bg-fern-1100 block rounded absolute`}
+          className={`h-[2px] w-[20px] bg-ui-body block rounded absolute`}
         ></span>
         <span
-          className={`h-[2px] w-[16px] bg-fern-1100 block rounded absolute`}
+          className={`h-[2px] w-[16px] bg-ui-body block rounded absolute`}
         ></span>
         <span
-          className={`h-[2px] w-[20px] bg-fern-1100 block rounded absolute `}
+          className={`h-[2px] w-[20px] bg-ui-body block rounded absolute `}
         ></span>
       </span>
     </div>
@@ -55,7 +55,7 @@ const Navigation = () => {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content
             className={clsx(
-              'nav-content shadow-placed bg-surface/90 backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg relative z-200 lg:left-1/2 lg:-translate-x-1/2 p-6 outline-hidden',
+              'nav-content shadow-placed bg-[light-dark(rgb(255_255_255/.90),color-mix(in_oklab,var(--color-fern-1200),transparent_20%))] backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg relative z-200 lg:left-1/2 lg:-translate-x-1/2 p-6 outline-hidden',
               'transition-all duration-300 ease-in-out',
               isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
             )}
@@ -79,9 +79,10 @@ const Navigation = () => {
                     className={clsx(
                       'relative -top-px',
                       pathname === link.href
-                        ? 'text-dandelion-500'
-                        : 'text-neutral-03-500'
+                        ? 'text-dandelion-500 dark:text-dandelion-300'
+                        : 'text-neutral-03-500 dark:text-fern-500'
                     )}
+                    variant="header"
                   />
                   {link.title}
                 </ListItem>
@@ -92,7 +93,7 @@ const Navigation = () => {
                 index={navigation.length}
                 className={clsx(
                   pathname === '/newsletter'
-                    ? 'text-dandelion-500'
+                    ? 'text-dandelion-500 dark:text-dandelion-300'
                     : 'text-emphasis'
                 )}
               >
@@ -101,9 +102,10 @@ const Navigation = () => {
                   className={clsx(
                     'relative -top-px',
                     pathname === '/newsletter'
-                      ? 'text-dandelion-500'
-                      : 'text-neutral-03-500'
+                      ? 'text-dandelion-500 dark:text-dandelion-300'
+                      : 'text-neutral-03-500 dark:text-fern-500'
                   )}
+                  variant="header"
                 />
                 Subscribe
               </ListItem>
