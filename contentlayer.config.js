@@ -83,6 +83,16 @@ export const Collections = defineDocumentType(() => ({
       default: 'website',
       required: false,
     },
+    tags: {
+      type: 'list',
+      of: { type: 'string' },
+      required: false,
+    },
+    pricing: {
+      type: 'enum',
+      options: ['free', 'accessible', 'premium'],
+      required: false,
+    },
   },
   computedFields: {
     slug: {

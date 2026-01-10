@@ -12,6 +12,12 @@ const collections = [
     slug: '/collections/typography',
     slugAsParams: 'typography',
     icon: 'type',
+    subdivideBy: 'kind',
+    subdivisions: [
+      { value: 'article', label: 'Articles' },
+      { value: 'tool', label: 'Tools' },
+      { value: 'website', label: 'Websites' },
+    ],
   },
   {
     id: 3,
@@ -54,6 +60,12 @@ const collections = [
     slug: '/collections/foundry',
     slugAsParams: 'foundry',
     icon: 'foundry',
+    subdivideBy: 'pricing',
+    subdivisions: [
+      { value: 'accessible', label: 'Accessible' },
+      { value: 'free', label: 'Free' },
+      { value: 'premium', label: 'Premium' },
+    ],
   },
   {
     id: 9,

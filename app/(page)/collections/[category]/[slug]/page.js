@@ -14,7 +14,7 @@ import { ColumnItem } from '@/components/collections/column-item'
 export const dynamic = 'force-static'
 export const revalidate = 2592000
 
-const getData = cache(async () => {
+const getData = cache(async (categorySlug = null) => {
   const groupedCollections = allCollections.reduce((acc, item) => {
     item.collection.forEach((collection) => {
       // Normalize the collection name to match slugAsParams format
@@ -38,6 +38,34 @@ const getData = cache(async () => {
   } catch (error) {
     // Fall back to 12 weeks if file doesn't exist
     lastImportDate = subWeeks(new Date(), 12)
+  }
+
+  // If specific category requested, subdivide it
+  if (categorySlug) {
+    const categoryConfig = collections.find(
+      (c) => c.slugAsParams === categorySlug
+    )
+
+    if (categoryConfig?.subdivideBy) {
+      const items = groupedCollections[categorySlug] || []
+      const subdivisions = {}
+
+      // Group items by subdivision field
+      categoryConfig.subdivisions.forEach((sub) => {
+        subdivisions[sub.label] = items.filter(
+          (item) => item[categoryConfig.subdivideBy] === sub.value
+        )
+      })
+
+      // Add "Other" for unmatched items
+      const matchedItems = Object.values(subdivisions).flat()
+      const otherItems = items.filter((item) => !matchedItems.includes(item))
+      if (otherItems.length > 0) {
+        subdivisions['Other'] = otherItems
+      }
+
+      return { groupedCollections, subdivisions, lastImportDate }
+    }
   }
 
   return {
@@ -105,9 +133,52 @@ export default async function LinkPreviewPage(props) {
     notFound()
   }
 
-  const { groupedCollections, lastImportDate } = await getData()
+  const { groupedCollections, subdivisions, lastImportDate } = await getData(
+    page.slugAsParams
+  )
   const categoryKey = page.slugAsParams
   const items = groupedCollections[categoryKey] || []
+
+  // Helper function to render an item
+  const renderItem = (linkItem) => {
+    const [y, m, d] = linkItem.date.split('-').map((n) => parseInt(n, 10))
+    const itemDate = new Date(y, m - 1, d)
+    const threeMonthsAgo = subWeeks(new Date(), 12)
+    const cutoffDate = isAfter(lastImportDate, threeMonthsAgo)
+      ? lastImportDate
+      : threeMonthsAgo
+    const isNew = isAfter(itemDate, cutoffDate)
+
+    const itemSlug = linkItem._raw.sourceFileName.replace('.md', '')
+    const isSelected = itemSlug === params.slug
+
+    return (
+      <ColumnItem
+        key={linkItem.url}
+        label={linkItem.title}
+        href={`/collections/${categoryKey}/${itemSlug}`}
+        showExternal
+        externalUrl={linkItem.url}
+        faviconUrl={linkItem.url}
+        isSelected={isSelected}
+        badge={
+          isNew ? (
+            <span className="px-2 pt-1.5 pb-1 text-xs font-sans font-medium lowercase bg-cornflour-100 leading-none text-cornflour-600 rounded-sm">
+              New
+            </span>
+          ) : null
+        }
+      />
+    )
+  }
+
+  // Prepare subdivided items if subdivisions exist
+  const subdividedItems = subdivisions
+    ? Object.entries(subdivisions).reduce((acc, [label, subItems]) => {
+        acc[label] = subItems.map(renderItem)
+        return acc
+      }, {})
+    : null
 
   return (
     <div className="flex h-screen flex-col col-start-container-start col-end-container-end">
@@ -160,40 +231,12 @@ export default async function LinkPreviewPage(props) {
         </Column>
 
         {/* Links Column */}
-        <Column title={page.title} count={items.length}>
-          {items.map((linkItem) => {
-            const [y, m, d] = linkItem.date
-              .split('-')
-              .map((n) => parseInt(n, 10))
-            const itemDate = new Date(y, m - 1, d)
-            const threeMonthsAgo = subWeeks(new Date(), 12)
-            const cutoffDate = isAfter(lastImportDate, threeMonthsAgo)
-              ? lastImportDate
-              : threeMonthsAgo
-            const isNew = isAfter(itemDate, cutoffDate)
-
-            const itemSlug = linkItem._raw.sourceFileName.replace('.md', '')
-            const isSelected = itemSlug === params.slug
-
-            return (
-              <ColumnItem
-                key={linkItem.url}
-                label={linkItem.title}
-                href={`/collections/${categoryKey}/${itemSlug}`}
-                showExternal
-                externalUrl={linkItem.url}
-                faviconUrl={linkItem.url}
-                isSelected={isSelected}
-                badge={
-                  isNew ? (
-                    <span className="px-2 pt-1.5 pb-1 text-xs font-sans font-medium lowercase bg-cornflour-100 leading-none text-cornflour-600 rounded-sm">
-                      New
-                    </span>
-                  ) : null
-                }
-              />
-            )
-          })}
+        <Column
+          title={page.title}
+          count={items.length}
+          subdivisions={subdividedItems}
+        >
+          {!subdivisions && items.map(renderItem)}
         </Column>
 
         {/* Preview Column */}

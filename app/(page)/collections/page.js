@@ -5,6 +5,7 @@ import { Column } from '@/components/collections/column'
 import { ColumnItem } from '@/components/collections/column-item'
 
 import { allCollections } from 'contentlayer/generated'
+import collections from '@/content/collections'
 
 export const revalidate = false
 
@@ -14,42 +15,26 @@ export const metadata = {
     "Curated links to all things design and development. There's links to specific articles and websites with further curation.",
 }
 
-// Kind types in display order
-const kinds = [
-  { id: 'website', title: 'Website', icon: 'globe' },
-  { id: 'article', title: 'Article', icon: 'publication' },
-  { id: 'tool', title: 'Tool', icon: 'code' },
-  { id: 'resource', title: 'Resource', icon: 'bookmark' },
-]
-
 const getData = cache(async () => {
-  // Group by kind → category
-  const groupedByKind = allCollections.reduce((acc, item) => {
-    // Get kind from item (defaults to 'website' via contentlayer schema)
-    const kind = item.kind || 'website'
-
-    if (!acc[kind]) {
-      acc[kind] = {}
-    }
-
-    // Then group by category within kind
+  // Group by category
+  const groupedByCategory = allCollections.reduce((acc, item) => {
     item.collection.forEach((collection) => {
       const normalizedKey = collection.toLowerCase().replace(/\s+/g, '-')
 
-      if (!acc[kind][normalizedKey]) {
-        acc[kind][normalizedKey] = []
+      if (!acc[normalizedKey]) {
+        acc[normalizedKey] = []
       }
-      acc[kind][normalizedKey].push(item)
+      acc[normalizedKey].push(item)
     })
 
     return acc
   }, {})
 
-  return { groupedByKind }
+  return { groupedByCategory }
 })
 
 export default async function CollectionsPage() {
-  const { groupedByKind } = await getData()
+  const { groupedByCategory } = await getData()
 
   return (
     <div className="flex h-screen flex-col col-start-container-start col-end-container-end">
@@ -62,29 +47,33 @@ export default async function CollectionsPage() {
 
       {/* Column Browser */}
       <ColumnBrowser>
-        {/* Kind Column */}
-        <Column title="Kind">
-          {kinds.map((kind) => {
-            // Count total items for this kind across all categories
-            const categories = groupedByKind[kind.id] || {}
-            const count = Object.values(categories).reduce(
-              (sum, items) => sum + items.length,
-              0
+        {/* Categories Column */}
+        <Column title="Categories">
+          {collections
+            .sort((a, b) =>
+              a.title < b.title ? -1 : a.title > b.title ? 1 : 0
             )
+            .map((category) => {
+              const count =
+                groupedByCategory[category.slugAsParams]?.length || 0
 
-            return (
-              <ColumnItem
-                key={kind.id}
-                icon={
-                  <Icon icon={kind.icon} size={16} className="text-current" />
-                }
-                label={kind.title}
-                count={count}
-                hasChildren
-                href={`/collections/${kind.id}`}
-              />
-            )
-          })}
+              return (
+                <ColumnItem
+                  key={category.id}
+                  icon={
+                    <Icon
+                      icon={category.icon}
+                      size={16}
+                      className="text-current"
+                    />
+                  }
+                  label={category.title}
+                  count={count}
+                  hasChildren
+                  href={`/collections/${category.slugAsParams}`}
+                />
+              )
+            })}
         </Column>
       </ColumnBrowser>
     </div>
