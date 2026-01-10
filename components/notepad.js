@@ -4,7 +4,7 @@ const Notepad = ({ children, className }) => {
 
 const NotepadHeader = ({ children }) => {
   return (
-    <div className="px-10 pt-7 pb-6.5 bg-dandelion-300 shadow-dandelion-placed [--ui-border-color:var(--color-dandelion-600)] [--ui-border-color-strong:var(--color-dandelion-700)] rounded-tl-lg rounded-tr-lg relative z-20">
+    <div className="px-10 pt-7 pb-6.5 bg-dandelion-300 shadow-dandelion-placed [--ui-border-color:light-dark(var(--color-dandelion-600),var(--color-dandelion-200))] [--ui-border-color-strong:light-dark(var(--color-dandelion-700),var(--color-dandelion-200))] rounded-tl-lg rounded-tr-lg relative z-20">
       <h2 className="font-display leading-xl font-variation-bold text-xl lowercase text-dandelion-800">
         {children}
       </h2>
@@ -14,7 +14,7 @@ const NotepadHeader = ({ children }) => {
 
 const NotepadBody = ({ children, className }) => {
   return (
-    <div className="bg-neutral-01-50 px-10 py-8 shadow-placed overflow-x-hidden rounded-bl-lg rounded-br-lg flex flex-col gap-4 relative z-10">
+    <div className="bg-neutral-01-50 dark:bg-surface px-10 py-8 shadow-placed overflow-x-hidden rounded-bl-lg rounded-br-lg flex flex-col gap-4 relative z-10">
       {children}
 
       <svg
@@ -23,7 +23,7 @@ const NotepadBody = ({ children, className }) => {
         viewBox="0 0 592 12"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute top-0 left-0 right-0 pointer-events-none"
+        className="absolute top-0 left-0 right-0 pointer-events-none dark:hidden"
         aria-hidden="true"
       >
         <path

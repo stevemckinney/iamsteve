@@ -26,6 +26,7 @@
  * Theme
  */
 @theme {
+  /* general content */
   --color-heading: light-dark(var(--color-fern-1100), var(--color-fern-100));
   --color-body: light-dark(var(--color-fern-1100), var(--color-fern-300));
   --color-body-80: light-dark(
@@ -36,6 +37,9 @@
     oklch(from var(--color-fern-1100) l c h / .6),
     oklch(from var(--color-fern-300) l c h / .6)
   );
+
+  /* all other content */
+  --color-emphasis: light-dark(var(--color-fern-1100), var(--color-fern-100));
   --color-link: light-dark(var(--color-dandelion-700), var(--color-dandelion-600));
   --color-link-hover: light-dark(var(--color-dandelion-800), var(--color-dandelion-300));
 

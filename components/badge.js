@@ -86,7 +86,7 @@ export default function Badge({
         href={href}
         className={cn(
           'flex flex-[0_0_auto] font-variation-medium group/badge',
-          'transition-all duration-100 ease-linear text-heading',
+          'transition-all duration-100 ease-linear text-emphasis',
           size === 16 ? 'gap-2' : 'gap-3',
           hoverVariants[theme],
           className
@@ -101,7 +101,7 @@ export default function Badge({
   return (
     <p
       className={cn(
-        'flex flex-[0_0_auto] font-variation-medium text-heading',
+        'flex flex-[0_0_auto] font-variation-medium text-emphasis',
         size === 16 ? 'gap-2' : 'gap-3',
         className
       )}

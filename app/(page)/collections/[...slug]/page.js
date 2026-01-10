@@ -126,7 +126,7 @@ async function Collections({ page }) {
                 rel="noopener noreferrer"
               >
                 {item.title}
-                <span className="text-heading/40 group-hover:text-heading/80 transition duration-200 linear line-clamp-1">
+                <span className="text-emphasis/40 group-hover:text-emphasis/80 transition duration-200 linear line-clamp-1">
                   {item.url
                     .replace('https://', '')
                     .replace('www.', '')

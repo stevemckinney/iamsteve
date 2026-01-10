@@ -91,7 +91,7 @@ function TableOfContents({ headings, open = false, ...props }) {
     >
       <button
         onClick={toggleOpen}
-        className="max-lg:sticky top-0 z-10 text-heading font-bold cursor-pointer flex flex-row items-center w-full text-left"
+        className="max-lg:sticky top-0 z-10 text-emphasis font-bold cursor-pointer flex flex-row items-center w-full text-left"
         aria-expanded={isOpen}
         aria-controls="toc-content"
         data-sticky={isSticky}

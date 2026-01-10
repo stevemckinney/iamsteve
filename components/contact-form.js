@@ -12,7 +12,7 @@ const FORM_DISABLED = true // Set this to true to disable the form
 
 const Label = ({ children, ...props }) => (
   <Form.Label
-    className="font-ui text-base lowercase text-heading leading-none mb-1"
+    className="font-ui text-base lowercase text-emphasis leading-none mb-1"
     {...props}
   >
     {children}

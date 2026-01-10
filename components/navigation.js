@@ -70,7 +70,7 @@ const Navigation = () => {
                   className={clsx(
                     pathname === link.href
                       ? 'text-dandelion-500'
-                      : 'text-heading'
+                      : 'text-emphasis'
                   )}
                 >
                   <Icon
@@ -93,7 +93,7 @@ const Navigation = () => {
                 className={clsx(
                   pathname === '/newsletter'
                     ? 'text-dandelion-500'
-                    : 'text-heading'
+                    : 'text-emphasis'
                 )}
               >
                 <Icon

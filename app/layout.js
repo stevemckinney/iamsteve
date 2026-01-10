@@ -168,7 +168,7 @@ export default function RootLayout({ children }) {
                 <li>
                   <Link
                     href="#top"
-                    className="text-heading hover:text-dandelion-600 transition duration-200 ease-linear"
+                    className="text-emphasis hover:text-link-hover transition duration-200 ease-linear"
                   >
                     Top
                   </Link>
@@ -176,7 +176,7 @@ export default function RootLayout({ children }) {
                 <li>
                   <Link
                     href="/feed.xml"
-                    className="text-heading hover:text-dandelion-600 transition duration-200 ease-linear"
+                    className="text-emphasis hover:text-link-hover transition duration-200 ease-linear"
                   >
                     RSS
                   </Link>
@@ -186,7 +186,7 @@ export default function RootLayout({ children }) {
                     {`©`}{' '}
                     <Link
                       href="/"
-                      className="text-ui-body hover:text-dandelion-600 transition duration-200 ease-linear"
+                      className="text-ui-body hover:text-link-hover transition duration-200 ease-linear"
                     >
                       {siteMetadata.title}
                     </Link>{' '}
@@ -200,7 +200,7 @@ export default function RootLayout({ children }) {
                 className="flex-1 bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] h-[2px]"
                 aria-hidden="true"
               />
-              <Icon icon="logo" className="text-heading" variant="header" size={32} />
+              <Icon icon="logo" className="text-emphasis" variant="header" size={32} />
               <span
                 className="flex-1 bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] h-[2px]"
                 aria-hidden="true"

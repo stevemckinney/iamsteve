@@ -260,7 +260,7 @@ export default async function PostPage(props) {
             {post.title}
           </PageTitle>
           {post.summary && (
-            <p className="text-lg text-pretty lg:text-2xl text-heading mb-2">
+            <p className="text-lg text-pretty lg:text-2xl text-emphasis mb-2">
               {post.summary}
             </p>
           )}
@@ -279,7 +279,7 @@ export default async function PostPage(props) {
               <Badge size={16} theme={`text`} iconStart={`views`}>
                 <Suspense
                   fallback={
-                    <span className="text-fern-1100">
+                    <span className="text-emphasis">
                       {initialViews.toLocaleString()} views
                     </span>
                   }

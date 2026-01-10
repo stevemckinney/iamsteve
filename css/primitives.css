@@ -93,15 +93,18 @@
     inset 0 0 0 1px oklch(100% 0 0 / 0.8),
     0 1px 3px -1.5px oklch(24.3% 0.014 30 / 0.04),
     0 2px 4px -2px oklch(24.3% 0.014 30 / 0.04);
+
   --shadow-dandelion-reduced:
     0 -1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color),
     0 2px 4px -4px rgb(117 99 98 / 0.1), 0 1px 3px rgb(117 99 98 / 0.12);
+
   --shadow-dandelion-placed:
     0 -1px var(--ui-border-color-weak), 0 1px var(--ui-border-color-strong),
     0 0 0 1px var(--ui-border-color), inset 0 1px 3px rgb(244 211 64 / 1),
     inset 0 -1px 3px rgb(221 142 0 / 0.6),
     inset 0 0 0 1px rgb(248 229 142 / 0.6), 0 4px 10px rgb(117 99 98 / 0.1),
     0 1px 3px 0 rgb(117 99 98 / 0.1);
+
   --shadow-dandelion-picked:
     0 -1px var(--ui-border-color-weak-hover),
     0 1px var(--ui-border-color-strong-hover),

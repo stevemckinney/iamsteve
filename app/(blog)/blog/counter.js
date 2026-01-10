@@ -7,7 +7,7 @@ const ViewCounter = ({
   slug,
   initialViews,
   trackView,
-  className = 'text-heading',
+  className = 'text-emphasis',
 }) => {
   const [views, setViews] = useState(initialViews)
   const [isUpdated, setIsUpdated] = useState(false)
@@ -46,7 +46,7 @@ const ViewCounter = ({
     <span
       className={`${className} ${
         isUpdated
-          ? 'text-grass-500 transition-colors duration-1000 ease-out'
+          ? 'text-grass-500 dark:text-grass-300 transition-colors duration-1000 ease-out'
           : ''
       }`}
     >

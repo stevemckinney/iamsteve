@@ -156,7 +156,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
                   'text-base',
                   'font-medium',
                   'lowercase',
-                  'text-heading',
+                  'text-emphasis',
                   'leading-none',
                   'mb-1'
                 )}
@@ -191,7 +191,7 @@ const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
                   'text-base',
                   'font-medium',
                   'lowercase',
-                  'text-heading',
+                  'text-emphasis',
                   'leading-none',
                   'mb-1'
                 )}

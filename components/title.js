@@ -20,7 +20,7 @@ const Title = ({ children, link, text, ariaID, className }) => {
       {link && (
         <Link
           href={link}
-          className="flex gap-1 text-base md:text-xl font-ui lowercase transition duration-200 hover:text-dandelion-600"
+          className="flex gap-1 text-base md:text-xl font-ui lowercase transition duration-200 hover:text-link-hover"
         >
           {text ? text : 'All posts'}
           {/* <Icon icon="arrow-right" /> */}
