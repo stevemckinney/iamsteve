@@ -8,7 +8,7 @@ export default function FooterProfile() {
       <Subscribe className="col-span-full lg:col-span-8 xl:col-span-7 row-span-10 bg-surface py-12 px-8 sm:px-12 sm:py-12 md:px-[5vmax] xl:py-16 xl:px-24" />
 
       <div className="@container/about col-span-full sm:col-span-8 xl:col-span-9 row-span-7 bg-surface py-12 px-8 sm:px-12 sm:py-12 xl:px-18 content-end dark:shadow-[-1px_1px_0_0_var(--color-surface-02)]">
-        <h3 className="font-display font-variation-bold text-lg sm:text-3xl lowercase flex gap-2 mb-3">
+        <h3 className="text-heading font-display font-variation-bold text-lg sm:text-3xl lowercase flex gap-2 mb-3">
           About the website
         </h3>
         <div className="flex flex-col @md:flex-row gap-x-6 gap-y-2">
@@ -33,7 +33,7 @@ export default function FooterProfile() {
       </div>
 
       <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-5 row-span-3 bg-surface py-12 px-8 sm:px-12 sm:py-12 xl:px-18 flex flex-col justify-end dark:shadow-[-1px_0_0_0_var(--color-surface-02)]">
-        <h3 className="font-display font-variation-bold text-lg sm:text-3xl lowercase mb-4">
+        <h3 className="text-heading font-display font-variation-bold text-lg sm:text-3xl lowercase mb-4">
           Site
         </h3>
         <ul className="flex flex-row flex-wrap gap-x-6 gap-y-2 sm:gap-y-4">
@@ -132,7 +132,7 @@ export default function FooterProfile() {
       </div>
 
       <div className="col-span-1 sm:col-span-8 lg:col-span-4 xl:col-span-4 row-span-2 bg-surface py-12 px-8 sm:px-12 sm:py-12 xl:px-18 flex flex-col justify-end dark:shadow-[-1px_0_var(--color-surface-02)]">
-        <h3 className="font-display font-variation-bold text-lg sm:text-3xl lowercase mb-4">
+        <h3 className="text-heading font-display font-variation-bold text-lg sm:text-3xl lowercase mb-4">
           Elsewhere
         </h3>
         <ul className="flex flex-row flex-wrap gap-x-6 gap-y-2 sm:gap-y-4">
