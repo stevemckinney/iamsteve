@@ -27,7 +27,11 @@
   "pnpm": {
     "overrides": {
       "whatwg-url": "13.0.0"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "contentlayer2",
+      "esbuild"
+    ]
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
