@@ -457,7 +457,7 @@ export function Sidebar({ post, ...props }) {
         className="flex flex-col gap-2 pb-12 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0"
         aria-labelledby="aside-subscribe"
       >
-        <h2 className="font-bold" id="aside-subscribe">
+        <h2 className="font-bold text-heading" id="aside-subscribe">
           Subscribe
         </h2>
         <p className="mb-4">

@@ -298,7 +298,7 @@
       0 3px 6px -3px var(--ui-border-color),
       0 6px 9px -4.5px var(--ui-border-color);
     --shadow-placed-light: var(--shadow-placed-border), var(--shadow-placed-depth);
-    --shadow-placed: light-dark(var(--shadow-placed-light), inset 0 0 0 1px var(--color-surface-02));
+    --shadow-placed: light-dark(var(--shadow-placed-light), 0 0 0 1px var(--color-surface-02));
 
     --shadow-picked-border:
       0 -1px var(--ui-border-color-weak), 0 1px var(--ui-border-color-strong),

@@ -217,7 +217,7 @@ const ComparisonImages = ({
 
   return (
     <div
-      className="flex flex-col gap-1 bg-neutral-01-100/80 dark:bg-surface shadow-placed dark:shadow-[inset_0_0_0_1px_var(--color-surface)] p-1 -mx-1 sm:-mx-9 rounded-[28px]"
+      className="flex flex-col gap-1 bg-neutral-01-100/80 dark:bg-surface shadow-placed dark:shadow-[inset_0_0_0_1px_var(--color-surface-02)] p-1 -mx-1 sm:-mx-9 rounded-[28px]"
       role="region"
       aria-label={description}
     >

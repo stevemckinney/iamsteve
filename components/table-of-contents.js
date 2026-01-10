@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
 
 function useIntersectionObserver(options) {
@@ -49,39 +50,17 @@ function TableOfContents({ headings, open = false, ...props }) {
   return (
     <div
       ref={observerRef}
-      className="
-        collapsible
-        isolate
-
-        max-lg:-mx-6 max-lg:px-6 max-lg:pt-4 max-lg:pb-3.5
-
-        max-lg:before:isolate
-        max-lg:before:content-['']
-        max-lg:before:absolute
-        max-lg:before:top-0
-        max-lg:before:bottom-0
-        max-lg:before:-left-6
-        max-lg:before:-right-6
-        max-lg:before:from-neutral-01-150
-        max-lg:before:from-[72px]
-        max-lg:before:to-neutral-01-150/70
-        max-lg:before:z-1
-        before:bg-canvas
-        before:mask-(--blur-mask)
-
-        max-lg:backdrop-blur-lg
-
-        transition
-        duration-200
-        ease
-
-        max-lg:data-[state=open]:overflow-x-clip
-        max-lg:data-[state=open]:overflow-y-auto
-        max-lg:data-[state=open]:bg-linear-to-b
-        max-lg:data-[state=open]:from-neutral-01-150
-        max-lg:data-[state=open]:from-[32px]
-        max-lg:data-[state=open]:to-neutral-01-150/90
-        max-lg:data-[state=open]:max-h-dvh"
+      className={cn(
+        'collapsible isolate',
+        'max-lg:-mx-6 max-lg:px-6 max-lg:pt-4 max-lg:pb-3.5',
+        'max-lg:before:isolate max-lg:before:content-[""] max-lg:before:absolute max-lg:before:top-0 max-lg:before:bottom-0 max-lg:before:-left-6 max-lg:before:-right-6',
+        'max-lg:before:from-neutral-01-150 max-lg:before:from-[72px] max-lg:before:to-neutral-01-150/70 max-lg:before:z-1',
+        'before:bg-canvas before:mask-(--blur-mask)',
+        'max-lg:backdrop-blur-lg',
+        'transition duration-200 ease',
+        'max-lg:data-[state=open]:overflow-x-clip max-lg:data-[state=open]:overflow-y-auto',
+        'max-lg:data-[state=open]:bg-linear-to-b max-lg:data-[state=open]:from-neutral-01-150 max-lg:data-[state=open]:from-[32px] max-lg:data-[state=open]:to-neutral-01-150/90 max-lg:data-[state=open]:max-h-dvh'
+      )}
       data-state={isOpen ? 'open' : 'closed'}
       data-sticky={isSticky}
       style={{
@@ -91,16 +70,25 @@ function TableOfContents({ headings, open = false, ...props }) {
     >
       <button
         onClick={toggleOpen}
-        className="max-lg:sticky top-0 z-10 text-emphasis font-bold cursor-pointer flex flex-row items-center w-full text-left"
+        className={cn(
+          'max-lg:sticky top-0 z-10',
+          'text-heading text-emphasis font-bold cursor-pointer',
+          'flex flex-row items-center w-full text-left'
+        )}
         aria-expanded={isOpen}
         aria-controls="toc-content"
         data-sticky={isSticky}
       >
-        <span className="-ml-2 lg:-ml-6 flex items-center justify-center w-6 h-6 relative left top-[-2px]">
+        <span
+          className={cn(
+            '-ml-2 lg:-ml-6 flex items-center justify-center w-6 h-6 relative left top-[-2px]'
+          )}
+        >
           <Icon
             icon={isOpen ? 'caret-down' : 'caret-right'}
             size={16}
             aria-hidden="true"
+            variant="header"
           />
         </span>
         Contents
@@ -108,7 +96,11 @@ function TableOfContents({ headings, open = false, ...props }) {
       <div
         id="toc-content"
         ref={contentRef}
-        className="data-[state=closed]:transform-[scale3d(0.5,.6,1.7)] data-[state=closed]:perspective-[1000px] data-[state=closed]:opacity-0 origin-top-left transition duration-200 ease-[cubic-bezier(.165,.84,.44,1)] max-lg:data-[state=open]:h-min data-[state=closed]:h-0 data-[state=closed]:overflow-clip"
+        className={cn(
+          'data-[state=closed]:transform-[scale3d(0.5,.6,1.7)] data-[state=closed]:perspective-[1000px] data-[state=closed]:opacity-0 origin-top-left',
+          'transition duration-200 ease-[cubic-bezier(.165,.84,.44,1)]',
+          'max-lg:data-[state=open]:h-min data-[state=closed]:h-0 data-[state=closed]:overflow-clip'
+        )}
         data-state={isOpen ? 'open' : 'closed'}
         aria-hidden={!isOpen}
       >
@@ -220,14 +212,15 @@ function TableOfContentsList({ headings, toggleOpen, ...props }) {
     classChildren = 'pb-0'
   ) => {
     return (
-      <ul className={`${className}`}>
+      <ul className={cn(className)}>
         {headings.map((heading) => (
-          <li key={heading.slug} className={`group/toc ${classChildren}`}>
+          <li key={heading.slug} className={cn('group/toc', classChildren)}>
             <a
               href={`#${heading.slug}`}
-              className={`block truncate font-medium py-1.5 hover:text-fern-600 hover:translate-x-2 transform-gpu transition-all duration-200 ease ${
-                activeId === heading.slug ? 'text-fern-600' : ''
-              }`}
+              className={cn(
+                'block truncate font-medium py-1.5 hover:text-fern-600 dark:hover:text-dandelion-300 hover:translate-x-2 transform-gpu transition-all duration-200 ease',
+                activeId === heading.slug && 'text-fern-600 dark:text-fern-200'
+              )}
               aria-current={activeId === heading.slug ? 'location' : undefined}
               aria-label={`Go to section: ${heading.text}`}
               onClick={(e) => handleLinkClick(e, heading.slug)}
@@ -238,8 +231,16 @@ function TableOfContentsList({ headings, toggleOpen, ...props }) {
               heading.children.length > 0 &&
               renderHeadings(
                 heading.children,
-                `pt-1`,
-                `relative pl-6 before:content-[''] before:absolute before:left-0 before:top-[-6px] before:w-4 before:h-6 before:border-l-2 before:border-b-2 before:border-neutral-01-600/30 last:before:rounded-bl-sm after:content-[''] after:absolute after:left-0 after:bottom-[.375rem] after:w-4 after:h-[.75rem] after:border-l-2 after:border-neutral-01-600/30 last:after:hidden hover:before:w-6 before:will-change-auto before:transform-gpu before:transition-all before:duration-200 before:ease`
+                'pt-1',
+                cn(
+                  'relative pl-6',
+                  'before:content-[""] before:absolute before:left-0 before:top-[-6px] before:w-4 before:h-6',
+                  'before:border-l-2 before:border-b-2 before:border-neutral-01-600/30 dark:before:border-fern-400/12',
+                  'last:before:rounded-bl-sm',
+                  'after:content-[""] after:absolute after:left-0 after:bottom-[.375rem] after:w-4 after:h-[.75rem]',
+                  'after:border-l-2 after:border-neutral-01-600/30 dark:after:border-fern-400/12 last:after:hidden',
+                  'hover:before:w-6 before:will-change-auto before:transform-gpu before:transition-all before:duration-200 before:ease'
+                )
               )}
           </li>
         ))}
