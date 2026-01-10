@@ -41,7 +41,7 @@ const PostImage = ({ ...props }) => {
         alt={title}
         blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         placeholder="blur"
-        className="@lg/card:hidden"
+        className="@lg/card:hidden w-full"
         quality={100}
         unoptimized
       />
@@ -53,7 +53,7 @@ const PostImage = ({ ...props }) => {
         placeholder="blur"
         alt={title}
         aria-hidden={true}
-        className="hidden @lg/card:block"
+        className="hidden @lg/card:block w-full"
         quality={100}
         unoptimized
       />
