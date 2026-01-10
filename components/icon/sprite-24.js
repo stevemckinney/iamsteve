@@ -116,7 +116,10 @@ const Sprite24 = ({ ...props }) => (
             d="m12 2-9 8v11h18V10l-9-8Z"
             className={`fill-(--icon-fill) stroke-current stroke-2 sl-r`}
           />
-          <path d="M5 4h14v6h2l-9 6-9-6h2V4Z" className={`fill-(--icon-fill)`} />
+          <path
+            d="M5 4h14v6h2l-9 6-9-6h2V4Z"
+            className={`fill-(--icon-fill)`}
+          />
           <path
             d="m3 10 9 6 9-6"
             className="fill-none stroke-current stroke-2 sl-r"
@@ -137,7 +140,10 @@ const Sprite24 = ({ ...props }) => (
       </symbol>
       <symbol id="home-24" viewBox="0 0 24 24">
         <g className="home fill-none">
-          <path d="m12 3-8 7v11h5v-8h6v8h5V10l-8-7Z" className={`fill-(--icon-fill)`} />
+          <path
+            d="m12 3-8 7v11h5v-8h6v8h5V10l-8-7Z"
+            className={`fill-(--icon-fill)`}
+          />
           <path d="m2 12 10-9 10 9" className="stroke-current stroke-2 sl-s" />
           <path d="M15 13H9v7h6v-7Z" className="stroke-current stroke-2 sl-r" />
           <path

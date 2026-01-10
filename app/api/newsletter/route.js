@@ -47,7 +47,10 @@ export const POST = async (req) => {
         { status: 400 }
       )
     } else {
-      console.error('Subscription error:', data.error?.message || 'Unknown error')
+      console.error(
+        'Subscription error:',
+        data.error?.message || 'Unknown error'
+      )
       return NextResponse.json(
         { error: data.error?.message || 'Subscription failed' },
         { status: res.status }

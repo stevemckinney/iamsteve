@@ -44,18 +44,27 @@ export default function Header() {
       >
         {isArticlePage && (
           <li>
-            <a href="#article" className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]">
+            <a
+              href="#article"
+              className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]"
+            >
               Skip to article
             </a>
           </li>
         )}
         <li>
-          <a href="#content" className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]">
+          <a
+            href="#content"
+            className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]"
+          >
             Skip to main content
           </a>
         </li>
         <li>
-          <a href="#nav" className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]">
+          <a
+            href="#nav"
+            className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]"
+          >
             Skip to nav
           </a>
         </li>
@@ -76,7 +85,13 @@ export default function Header() {
             className="flex-[1_0_10%]"
             title="iamsteve.me homepage"
           >
-            <Icon icon="logo" role="img" size={32} className="max-xl:hidden" variant="header" />
+            <Icon
+              icon="logo"
+              role="img"
+              size={32}
+              className="max-xl:hidden"
+              variant="header"
+            />
             <Icon
               icon="logo"
               role="img"
@@ -124,7 +139,12 @@ export default function Header() {
               className={cn(navLink, horizontalNavLink, styles.end)}
             >
               <span>Subscribe</span>
-              <Icon icon={`airplane`} size={24} className="text-current" variant="header" />
+              <Icon
+                icon={`airplane`}
+                size={24}
+                className="text-current"
+                variant="header"
+              />
             </Link>
           </div>
           <Navigation />

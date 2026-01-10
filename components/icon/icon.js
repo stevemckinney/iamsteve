@@ -22,8 +22,8 @@ const Icon = ({
   const resolvedIcon = folderIcons.has(normalisedIcon)
     ? 'folder'
     : penIcons.has(normalisedIcon)
-      ? 'pen'
-      : normalisedIcon
+    ? 'pen'
+    : normalisedIcon
 
   const variantClass = variantClasses[variant] || 'icon'
 
@@ -32,12 +32,7 @@ const Icon = ({
       width={size}
       height={size}
       viewBox={`0 0 ${size} ${size}`}
-      className={cn(
-        'shrink-0',
-        'text-current',
-        variantClass,
-        className
-      )}
+      className={cn('shrink-0', 'text-current', variantClass, className)}
       {...props}
     >
       <use xlinkHref={`#${resolvedIcon}-${size}`} />

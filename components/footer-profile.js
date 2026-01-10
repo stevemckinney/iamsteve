@@ -114,7 +114,12 @@ export default function FooterProfile() {
               href="/newsletter"
               className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="airplane" size={16} variant="none" style={{'--icon-fill': 'transparent'}} />
+              <Icon
+                icon="airplane"
+                size={16}
+                variant="none"
+                style={{ '--icon-fill': 'transparent' }}
+              />
               Newsletter
             </Link>
           </li>

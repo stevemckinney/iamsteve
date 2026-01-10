@@ -41,7 +41,12 @@ const Small = ({ frontmatter }) => {
                 theme={Categories[current].theme}
                 key={category}
               >
-                <Icon icon={Categories[current].icon} size={24} variant="on-light" className="dark:text-fern-1100" />
+                <Icon
+                  icon={Categories[current].icon}
+                  size={24}
+                  variant="on-light"
+                  className="dark:text-fern-1100"
+                />
               </ChipIcon>
             )
           })}

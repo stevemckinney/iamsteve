@@ -49,7 +49,10 @@ const Pagination = ({ total, current, category }) => {
       {!nextPage && (
         <button className={`${linkDisabled}`} disabled={!nextPage}>
           Older
-          <Icon icon="angle-right" className="stroke-current relative -top-px" />
+          <Icon
+            icon="angle-right"
+            className="stroke-current relative -top-px"
+          />
         </button>
       )}
       {nextPage && (
@@ -59,7 +62,10 @@ const Pagination = ({ total, current, category }) => {
           rel="next"
         >
           Older
-          <Icon icon="angle-right" className="stroke-current relative -top-px" />
+          <Icon
+            icon="angle-right"
+            className="stroke-current relative -top-px"
+          />
         </Link>
       )}
     </nav>

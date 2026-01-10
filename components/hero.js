@@ -45,13 +45,22 @@ export default function Hero() {
               className="p-1 rounded-lg bg-[light-dark(var(--color-rio-300),var(--color-rio-300))] max-lg:hidden"
               aria-hidden="true"
             >
-              <Icon icon="pen" variant="on-light" className="dark:text-fern-1100" />
+              <Icon
+                icon="pen"
+                variant="on-light"
+                className="dark:text-fern-1100"
+              />
             </span>
             <span
               className="p-1 rounded-lg bg-rio lg:hidden"
               aria-hidden="true"
             >
-              <Icon icon="pen" size={16} variant="on-light" className="dark:text-fern-1100" />
+              <Icon
+                icon="pen"
+                size={16}
+                variant="on-light"
+                className="dark:text-fern-1100"
+              />
             </span>
             Explore design
           </Link>
@@ -65,54 +74,141 @@ export default function Hero() {
               className="p-1 rounded-lg bg-dandelion max-lg:hidden"
               aria-hidden="true"
             >
-              <Icon icon="code" variant="on-light" className="dark:text-fern-1100" />
+              <Icon
+                icon="code"
+                variant="on-light"
+                className="dark:text-fern-1100"
+              />
             </span>
             <span
               className="p-1 rounded-lg bg-[light-dark(var(--color-dandelion-300),var(--color-dandelion-200))] lg:hidden"
               aria-hidden="true"
             >
-              <Icon icon="code" size={16} variant="on-light" className="dark:text-fern-1100" />
+              <Icon
+                icon="code"
+                size={16}
+                variant="on-light"
+                className="dark:text-fern-1100"
+              />
             </span>
             Explore code
           </Link>
         </li>
       </ul>
       <div className="flex flex-row justify-end max-w-full gap-2 max-lg:col-span-full flex-nowrap max-lg:px-12 lg:hidden">
-        <Sharpener className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`} />
-        <Star className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`} />
-        <Sticky className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`} />
-        <Safari className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`} />
-        <Figma className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`} />
-        <Terminal className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`} />
-        <Pencil className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`} />
+        <Sharpener
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Star
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Sticky
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Safari
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Figma
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Terminal
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Pencil
+          className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
+        />
         <Pen className={`max-w-[initial] drop-shadow-placed flex-[0_0_auto]`} />
-        <Sharpener className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`} />
-        <Star className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`} />
-        <Sticky className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`} />
-        <Safari className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`} />
+        <Sharpener
+          className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Star
+          className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Sticky
+          className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Safari
+          className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
+        />
       </div>
       <div className="flex gap-2 flex-row flex-nowrap max-lg:col-span-full max-lg:px-12 max-w-full lg:relative lg:w-[798px] lg:h-[276px]">
-        <Figma className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`} />
-        <PencilMono width={962} height={46} className={`max-lg:hidden max-w-[initial] lg:absolute right-[calc(100%-175px)] bottom-40.5 drop-shadow-placed`} />
-        <RulerMono width={744} height={122} className={`max-lg:hidden max-w-[initial] lg:absolute left-[calc(100%-111px)] bottom-70 drop-shadow-placed`} />
-        <Type width={32} height={32} className={`max-lg:hidden absolute max-w-[initial] top-[1.6rem] left-[13.275rem] drop-shadow-placed`} />
-        <Terminal className={`lg:absolute max-w-[initial] top-7.5 right-[12.525rem] drop-shadow-placed flex-[0_0_auto]`} />
-        <Pen className={`lg:absolute max-w-[initial] top-[.625rem] left-87 drop-shadow-placed flex-[0_0_auto]`} />
-        <Pencil className={`lg:hidden max-w-[initial] drop-shadow-placed flex-[0_0_auto]`} />
-        <Sharpener className={`lg:absolute top-[-4.35rem] left-[3.425rem] lg:rotate-15 max-w-[initial] drop-shadow-placed flex-[0_0_auto]`} />
-        <Star className={`lg:absolute max-w-[initial] bottom-9 left-[5.95rem] drop-shadow-placed flex-[0_0_auto]`} />
-        <Sticky className={`lg:absolute max-w-[initial] top-[3.4rem] right-[3.525rem] lg:rotate-[-15deg] drop-shadow-placed flex-[0_0_auto]`} />
-        <Safari className={`lg:absolute max-w-[initial] top-[5.35rem] left-[12.95rem] drop-shadow-placed flex-[0_0_auto]`} />
-        <Cursor width={32} height={32} className={`max-lg:hidden absolute max-w-[initial] bottom-7.5 left-[16.2rem] drop-shadow-placed flex-[0_0_auto]`} />
-        <Colour width={32} height={32} className={`max-lg:hidden absolute max-w-[initial] top-34.5 left-[20.825rem] drop-shadow-placed flex-[0_0_auto]`} />
-        <Component width={32} height={32} className={`max-lg:hidden absolute max-w-[initial] bottom-[4.235rem] right-[15.675rem] drop-shadow-placed flex-[0_0_auto]`} />
-        <Figma className={`lg:absolute max-w-[initial] bottom-8.5 right-[19.05rem] drop-shadow-placed flex-[0_0_auto]`} />
-        <Pencil className={`lg:absolute max-w-[initial] bottom-[-.625rem] right-[7.45rem] drop-shadow-placed flex-[0_0_auto]`} />
-        <Brush width={32} height={32} className={`max-lg:hidden absolute max-w-[initial] bottom-14.5 right-12 drop-shadow-placed`} />
-        <Sharpener className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`} />
-        <Star className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`} />
-        <Sticky className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`} />
-        <Safari className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`} />
+        <Figma
+          className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <PencilMono
+          width={962}
+          height={46}
+          className={`max-lg:hidden max-w-[initial] lg:absolute right-[calc(100%-175px)] bottom-40.5 drop-shadow-placed`}
+        />
+        <RulerMono
+          width={744}
+          height={122}
+          className={`max-lg:hidden max-w-[initial] lg:absolute left-[calc(100%-111px)] bottom-70 drop-shadow-placed`}
+        />
+        <Type
+          width={32}
+          height={32}
+          className={`max-lg:hidden absolute max-w-[initial] top-[1.6rem] left-[13.275rem] drop-shadow-placed`}
+        />
+        <Terminal
+          className={`lg:absolute max-w-[initial] top-7.5 right-[12.525rem] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Pen
+          className={`lg:absolute max-w-[initial] top-[.625rem] left-87 drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Pencil
+          className={`lg:hidden max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Sharpener
+          className={`lg:absolute top-[-4.35rem] left-[3.425rem] lg:rotate-15 max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Star
+          className={`lg:absolute max-w-[initial] bottom-9 left-[5.95rem] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Sticky
+          className={`lg:absolute max-w-[initial] top-[3.4rem] right-[3.525rem] lg:rotate-[-15deg] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Safari
+          className={`lg:absolute max-w-[initial] top-[5.35rem] left-[12.95rem] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Cursor
+          width={32}
+          height={32}
+          className={`max-lg:hidden absolute max-w-[initial] bottom-7.5 left-[16.2rem] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Colour
+          width={32}
+          height={32}
+          className={`max-lg:hidden absolute max-w-[initial] top-34.5 left-[20.825rem] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Component
+          width={32}
+          height={32}
+          className={`max-lg:hidden absolute max-w-[initial] bottom-[4.235rem] right-[15.675rem] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Figma
+          className={`lg:absolute max-w-[initial] bottom-8.5 right-[19.05rem] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Pencil
+          className={`lg:absolute max-w-[initial] bottom-[-.625rem] right-[7.45rem] drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Brush
+          width={32}
+          height={32}
+          className={`max-lg:hidden absolute max-w-[initial] bottom-14.5 right-12 drop-shadow-placed`}
+        />
+        <Sharpener
+          className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Star
+          className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Sticky
+          className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
+        />
+        <Safari
+          className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
+        />
       </div>
     </section>
   )

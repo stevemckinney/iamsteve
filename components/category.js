@@ -38,7 +38,12 @@ const Category = ({
         className={className}
         rel="category tag"
       >
-        <Icon className={`text-current shrink-0`} icon={icon} size={size} variant="header" />
+        <Icon
+          className={`text-current shrink-0`}
+          icon={icon}
+          size={size}
+          variant="header"
+        />
         {children}
       </Link>
     )
@@ -53,7 +58,12 @@ export function CategoryItem({ ...props }) {
 
   return (
     <Link href={`/category/${slugger.slug(children)}`} className={className}>
-      <Icon className={`text-current`} icon={icon} size={size} variant="header" />
+      <Icon
+        className={`text-current`}
+        icon={icon}
+        size={size}
+        variant="header"
+      />
       {children}
     </Link>
   )
