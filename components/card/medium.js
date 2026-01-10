@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import React from 'react'
 import Link from 'next/link'
 
 import Icon from '@/components/icon'
@@ -109,11 +110,11 @@ const Medium = ({ frontmatter, image, className }) => {
         {categories.length > 0 && (
           <div className={categoryClass} key="cats">
             {categories.map((category, index) => (
-              <>
-              <Category size={24} key={`${category}${index}`} tabIndex="1">
-                {category}
-              </Category>
-              </>
+              <React.Fragment key={`${category}${index}`}>
+                <Category size={24} tabIndex="1">
+                  {category}
+                </Category>
+              </React.Fragment>
             ))}
           </div>
         )}
