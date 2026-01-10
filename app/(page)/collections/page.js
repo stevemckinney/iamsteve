@@ -85,7 +85,7 @@ async function Collections() {
                   >
                     <a
                       href={item.url}
-                      className="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 transition duration-200 linear items-baseline py-2.5 px-4 w-full [mask:linear-gradient(90deg,black_80%,transparent)]"
+                      className="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 dark:hover:bg-surface-02/20 transition duration-200 linear items-baseline py-2.5 px-4 w-full [mask:linear-gradient(90deg,black_80%,transparent)]"
                       rel="noopener noreferrer"
                     >
                       {item.title}
@@ -131,7 +131,7 @@ export default async function CollectionsPage(props) {
                 <li key={collection.id} className="self-end">
                   <a
                     href={collection.slug}
-                    className={`py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-dandelion-600 transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current`}
+                    className={`py-2 md:py-3 text-base md:text-lg lg:text-xl text-current hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center`}
                   >
                     <Icon
                       icon={collection.icon}
