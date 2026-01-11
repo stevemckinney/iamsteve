@@ -1,6 +1,9 @@
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
 .prose {
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
   color: var(--color-body);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
