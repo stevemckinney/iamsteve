@@ -16,13 +16,13 @@ const Toggle = () => {
     <div className="relative before:z-1 before:-inset-10 before:absolute">
       <span className="block w-[24px] h-[24px] relative">
         <span
-          className={`h-[2px] w-[20px] bg-ui-body block rounded absolute`}
+          className={`h-[2px] w-[20px] bg-emphasis block rounded absolute`}
         ></span>
         <span
-          className={`h-[2px] w-[16px] bg-ui-body block rounded absolute`}
+          className={`h-[2px] w-[16px] bg-emphasis block rounded absolute`}
         ></span>
         <span
-          className={`h-[2px] w-[20px] bg-ui-body block rounded absolute `}
+          className={`h-[2px] w-[20px] bg-emphasis block rounded absolute `}
         ></span>
       </span>
     </div>

@@ -1,133 +1,188 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
 
-function useIntersectionObserver(options) {
-  const [isIntersecting, setIsIntersecting] = useState(true)
-  const targetRef = useRef(null)
-
-  useEffect(() => {
-    const currentTarget = targetRef.current // Capture the current value
-
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsIntersecting(entry.isIntersecting)
-    }, options)
-
-    if (currentTarget) {
-      observer.observe(currentTarget)
-    }
-
-    return () => {
-      if (currentTarget) {
-        observer.unobserve(currentTarget)
-      }
-    }
-  }, [options])
-
-  return [targetRef, !isIntersecting]
-}
-
 function TableOfContents({ headings, open = false, ...props }) {
   const [isOpen, setIsOpen] = useState(open)
+  const [isSticky, setIsSticky] = useState(false)
   const contentRef = useRef(null)
-  const [observerRef, isSticky] = useIntersectionObserver({ threshold: 1 })
+  const wrapperRef = useRef(null)
+  const initialTopRef = useRef(null)
 
-  const toggleOpen = () => {
-    setIsOpen(!isOpen)
+  // Track scroll position to determine sticky state
+  useEffect(() => {
+    const wrapper = wrapperRef.current
+    if (!wrapper) return
+
+    // Capture the initial top position once
+    if (initialTopRef.current === null) {
+      initialTopRef.current = wrapper.getBoundingClientRect().top + window.scrollY
+    }
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const shouldBeSticky = scrollY >= initialTopRef.current
+      setIsSticky(shouldBeSticky)
+    }
+
+    // Check initial state
+    handleScroll()
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const toggleOpen = useCallback(() => {
+    setIsOpen(prev => !prev)
     document.body.classList.toggle('max-lg:overflow-hidden')
-    document.getElementById('nav').classList.toggle('max-lg:translate-y-full')
-  }
+    document.getElementById('nav')?.classList.toggle('tabbar-hidden')
+  }, [])
 
   useEffect(() => {
     return () => {
       document.body.classList.remove('max-lg:overflow-hidden')
-      document.getElementById('nav').classList.remove('max-lg:translate-y-full')
+      document.getElementById('nav')?.classList.remove('tabbar-hidden')
     }
   }, [])
 
   return (
     <div
-      ref={observerRef}
-      className={cn(
-        'collapsible isolate',
-        'max-lg:-mx-6 max-lg:px-6 max-lg:pt-4 max-lg:pb-3.5',
-        'max-lg:before:isolate max-lg:before:content-[""] max-lg:before:absolute max-lg:before:top-0 max-lg:before:bottom-0 max-lg:before:-left-6 max-lg:before:-right-6',
-        'max-lg:before:from-neutral-01-150 max-lg:before:from-[72px] max-lg:before:to-neutral-01-150/70 max-lg:before:z-1',
-        'before:bg-canvas before:mask-(--blur-mask)',
-        'max-lg:backdrop-blur-lg',
-        'transition duration-200 ease',
-        'max-lg:data-[state=open]:overflow-x-clip max-lg:data-[state=open]:overflow-y-auto',
-        'max-lg:data-[state=open]:bg-linear-to-b max-lg:data-[state=open]:from-neutral-01-150 max-lg:data-[state=open]:from-[32px] max-lg:data-[state=open]:to-neutral-01-150/90 max-lg:data-[state=open]:max-h-dvh'
-      )}
-      data-state={isOpen ? 'open' : 'closed'}
+      ref={wrapperRef}
+      className="max-lg:data-[sticky=true]:h-[54px]"
       data-sticky={isSticky}
-      style={{
-        '--blur-mask':
-          'linear-gradient(to bottom, #000 18%, rgb(0 0 0 /.99) 30%, rgb(0 0 0 /.96) 40%, rgb(0 0 0 /.92) 48%, rgb(0 0 0 /.86) 56%,rgb(0 0 0 /.79) 62%, rgb(0 0 0 /.71) 67%,rgb(0 0 0 /.63) 72%,rgb(0 0 0 /.54) 75.05%, rgb(0 0 0 /.45) 78%, rgb(0 0 0 /.36) 81%,rgb(0 0 0 /.27) 84%, rgb(0 0 0 /.19) 87%, rgb(0 0 0 /.12) 91%, rgb(0 0 0 /.05) 95%,transparent 100%)',
-      }}
     >
-      <button
-        onClick={toggleOpen}
-        className={cn(
-          'max-lg:sticky top-0 z-10',
-          'text-heading text-emphasis font-bold cursor-pointer',
-          'flex flex-row items-center w-full text-left'
-        )}
-        aria-expanded={isOpen}
-        aria-controls="toc-content"
-        data-sticky={isSticky}
-      >
-        <span
-          className={cn(
-            '-ml-2 lg:-ml-6 flex items-center justify-center w-6 h-6 relative left top-[-2px]'
-          )}
-        >
-          <Icon
-            icon={isOpen ? 'caret-down' : 'caret-right'}
-            size={16}
-            aria-hidden="true"
-            variant="header"
-          />
-        </span>
-        Contents
-      </button>
       <div
-        id="toc-content"
-        ref={contentRef}
         className={cn(
-          'data-[state=closed]:transform-[scale3d(0.5,.6,1.7)] data-[state=closed]:perspective-[1000px] data-[state=closed]:opacity-0 origin-top-left',
-          'transition duration-200 ease-[cubic-bezier(.165,.84,.44,1)]',
-          'max-lg:data-[state=open]:h-min data-[state=closed]:h-0 data-[state=closed]:overflow-clip'
+          // Base
+          'collapsible isolate overscroll-contain [scroll-padding:2em]',
+
+          // Layout
+          'max-lg:px-6 max-lg:pt-4 max-lg:pb-3.5',
+          'max-lg:data-[sticky=false]:-mx-6',
+          'max-lg:data-[sticky=true]:px-5',
+
+          // Positioning
+          'max-lg:data-[sticky=false]:relative',
+          'max-lg:data-[sticky=true]:fixed max-lg:data-[sticky=true]:top-0 max-lg:data-[sticky=true]:left-0 max-lg:data-[sticky=true]:right-0 max-lg:data-[sticky=true]:z-50',
+
+          // When open AND sticky, full screen
+          'max-lg:data-[sticky=true]:data-[state=open]:inset-0',
+
+          // Background/effects
+          'before:bg-canvas before:mask-(--blur-mask)',
+          'max-lg:data-[sticky=true]:backdrop-blur-lg max-lg:data-[state=open]:backdrop-blur-lg',
+          'max-lg:data-[sticky=true]:dark:bg-fern-1200/90 max-lg:data-[sticky=true]:bg-white/90',
+          'max-lg:data-[state=open]:dark:bg-fern-1200/90 max-lg:data-[state=open]:bg-white/90',
+          'max-lg:data-[sticky=true]:shadow-placed max-lg:data-[state=open]:shadow-placed',
+
+          // Transitions
+          'transition duration-200 ease',
+
+          // State: open
+          'max-lg:data-[state=open]:overflow-x-clip max-lg:data-[state=open]:overflow-y-auto',
+          'max-lg:data-[state=open]:max-h-dvh max-lg:data-[state=open]:h-dvh',
         )}
         data-state={isOpen ? 'open' : 'closed'}
-        aria-hidden={!isOpen}
+        data-sticky={isSticky}
+        style={{
+          '--blur-mask':
+            'linear-gradient(to top, #000 18%, rgb(0 0 0 /.99) 30%, rgb(0 0 0 /.96) 40%, rgb(0 0 0 /.92) 48%, rgb(0 0 0 /.86) 56%, rgb(0 0 0 /.79) 62%, rgb(0 0 0 /.71) 67%, rgb(0 0 0 /.63) 72%,rgb(0 0 0 /.54) 75.05%, rgb(0 0 0 /.45) 78%, rgb(0 0 0 /.36) 81%, rgb(0 0 0 /.27) 84%, rgb(0 0 0 /.19) 87%, rgb(0 0 0 /.12) 91%, rgb(0 0 0 /.05) 95%, transparent 100%)',
+        }}
       >
-        <TableOfContentsList headings={headings} toggleOpen={toggleOpen} />
+        <button
+          onClick={toggleOpen}
+          className={cn(
+            'max-lg:sticky top-0 z-10',
+            'text-emphasis font-bold cursor-pointer',
+            'flex flex-row items-center w-full text-left'
+          )}
+          aria-expanded={isOpen}
+          aria-controls="toc-content"
+        >
+          <span className="-ml-2 lg:-ml-6 flex items-center justify-center w-6 h-6 relative top-[-2px]">
+            <Icon
+              icon={isOpen ? 'caret-down' : 'caret-right'}
+              size={16}
+              aria-hidden="true"
+              variant="header"
+              className="relative top-px"
+            />
+          </span>
+          Contents
+        </button>
+        <div
+          id="toc-content"
+          ref={contentRef}
+          className={cn(
+            'data-[state=closed]:transform-[scale3d(0.5,.6,1.7)] data-[state=closed]:perspective-[1000px] data-[state=closed]:opacity-0 origin-top-left',
+            'transition duration-200 ease-[cubic-bezier(.165,.84,.44,1)]',
+            'max-lg:data-[state=open]:h-min data-[state=closed]:h-0 data-[state=closed]:overflow-clip'
+          )}
+          data-state={isOpen ? 'open' : 'closed'}
+          aria-hidden={!isOpen}
+        >
+          <TableOfContentsList headings={headings} toggleOpen={toggleOpen} />
+        </div>
       </div>
     </div>
   )
 }
 
-function TableOfContentsList({ headings, toggleOpen, ...props }) {
-  const [activeId, setActiveId] = useState('')
-  const [isMobile, setIsMobile] = useState(false)
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(false)
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 1023px)')
+    const mediaQuery = window.matchMedia(query)
+    setMatches(mediaQuery.matches)
 
-    const handleMediaQueryChange = (e) => {
-      setIsMobile(e.matches)
+    const handler = (e) => setMatches(e.matches)
+    mediaQuery.addEventListener('change', handler)
+    return () => mediaQuery.removeEventListener('change', handler)
+  }, [query])
+
+  return matches
+}
+
+function createNestedHeadings(headings) {
+  const nestedHeadings = []
+  const headingStack = []
+
+  headings.forEach((heading) => {
+    const { level, text, slug } = heading
+    const linkMatch = text.match(/\[(.*?)\]\((.*?)\)/)
+    const linkText = linkMatch
+      ? linkMatch[1]
+      : text.replace(/<a.*?>(.*?)<\/a>/, '$1')
+    const linkUrl = linkMatch ? linkMatch[2] : ''
+
+    if (level === 'two') {
+      const newHeading = {
+        level,
+        text: linkText,
+        slug,
+        url: linkUrl,
+        children: [],
+      }
+      nestedHeadings.push(newHeading)
+      headingStack.push(newHeading)
+    } else if (level === 'three' && headingStack.length > 0) {
+      headingStack[headingStack.length - 1].children.push({
+        level,
+        text: linkText,
+        slug,
+        url: linkUrl,
+      })
     }
+  })
 
-    setIsMobile(mediaQuery.matches)
-    mediaQuery.addListener(handleMediaQueryChange)
+  return nestedHeadings
+}
 
-    return () => {
-      mediaQuery.removeListener(handleMediaQueryChange)
-    }
-  }, [])
+function TableOfContentsList({ headings, toggleOpen, ...props }) {
+  const [activeId, setActiveId] = useState('')
+  const isMobile = useMediaQuery('(max-width: 1023px)')
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -154,41 +209,6 @@ function TableOfContentsList({ headings, toggleOpen, ...props }) {
 
     return () => observer.disconnect()
   }, [headings])
-
-  const createNestedHeadings = (headings) => {
-    const nestedHeadings = []
-    const headingStack = []
-
-    headings.forEach((heading) => {
-      const { level, text, slug } = heading
-      const linkMatch = text.match(/\[(.*?)\]\((.*?)\)/)
-      const linkText = linkMatch
-        ? linkMatch[1]
-        : text.replace(/<a.*?>(.*?)<\/a>/, '$1')
-      const linkUrl = linkMatch ? linkMatch[2] : ''
-
-      if (level === 'two') {
-        const newHeading = {
-          level,
-          text: linkText,
-          slug,
-          url: linkUrl,
-          children: [],
-        }
-        nestedHeadings.push(newHeading)
-        headingStack.push(newHeading)
-      } else if (level === 'three' && headingStack.length > 0) {
-        headingStack[headingStack.length - 1].children.push({
-          level,
-          text: linkText,
-          slug,
-          url: linkUrl,
-        })
-      }
-    })
-
-    return nestedHeadings
-  }
 
   const handleLinkClick = useCallback(
     (e, slug) => {
@@ -248,7 +268,10 @@ function TableOfContentsList({ headings, toggleOpen, ...props }) {
     )
   }
 
-  const nestedHeadings = createNestedHeadings(headings)
+  const nestedHeadings = useMemo(
+    () => createNestedHeadings(headings),
+    [headings]
+  )
 
   return (
     <nav aria-labelledby="aside-contents" {...props}>
