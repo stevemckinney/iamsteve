@@ -55,19 +55,21 @@ function TableOfContents({ headings, open = false, ...props }) {
     >
       <div
         className={cn(
-          // Base
           'collapsible isolate overscroll-contain [scroll-padding:4rem]',
-
-          // Layout
-          'max-lg:-mx-6 max-lg:px-6 max-lg:pt-4 max-lg:pb-3.5',
+          'max-lg:z-250',
+          'transition duration-200 ease',
+          'max-lg:data-[sticky=false]:-mx-6 max-lg:px-6 max-lg:pt-4 max-lg:pb-3.5',
+          'max-lg:overflow-x-clip max-lg:overflow-y-auto',
+          'max-lg:data-[sticky=true]:px-5',
           // 'max-lg:data-[sticky=true]:px-5',
 
-          // Positioning
           'max-lg:data-[sticky=false]:relative',
-          'max-lg:data-[sticky=true]:fixed max-lg:data-[sticky=true]:top-0 max-lg:data-[sticky=true]:left-0 max-lg:data-[sticky=true]:right-0 max-lg:data-[sticky=true]:z-250',
+          'max-lg:data-[sticky=true]:fixed',
+          'max-lg:data-[sticky=true]:top-0 max-lg:data-[sticky=true]:left-0 max-lg:data-[sticky=true]:right-0',
 
-          // When open AND sticky, full screen
+          // Sticky + open
           'max-lg:data-[sticky=true]:data-[state=open]:inset-0',
+          'max-lg:data-[state=open]:max-h-dvh max-lg:data-[state=open]:h-dvh',
 
           // Background/effects
           'before:bg-canvas before:mask-(--blur-mask)',
@@ -75,13 +77,6 @@ function TableOfContents({ headings, open = false, ...props }) {
           'max-lg:data-[sticky=true]:bg-white/80 max-lg:data-[sticky=true]:dark:bg-fern-1200/90',
           'max-lg:data-[sticky=true]:shadow-reduced',
           'max-lg:will-change-transform',
-
-          // Transitions
-          'transition duration-200 ease',
-
-          // State: open
-          'max-lg:data-[state=open]:overflow-x-clip max-lg:data-[state=open]:overflow-y-auto',
-          'max-lg:data-[state=open]:max-h-dvh max-lg:data-[state=open]:h-dvh',
         )}
         data-state={isOpen ? 'open' : 'closed'}
         data-sticky={isSticky}

@@ -53,7 +53,10 @@ pre[class*='language-'] {
   color: light-dark(var(--code-black), var(--code-white));
   border: 1px solid var(--color-surface-raised);
   background: light-dark(var(--code-white), var(--code-black));
-  border-radius: 20px;
+
+  @media (width >= 640px) {
+    border-radius: 20px;
+  }
 }
 
 /* inline code */

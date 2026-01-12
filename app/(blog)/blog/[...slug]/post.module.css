@@ -417,15 +417,20 @@
 
   & :global(.remark-code-container),
   & :global(.cp_embed_wrapper) {
-    margin-inline: -1.5rem;
+    margin-inline: -2.25rem;
 
     @media (width >= 640px) {
       border-radius: var(--radius-lg);
     }
+  }
 
-    @media (width >= 768px) {
-      margin-inline: -2rem;
-    }
+  :global(.remark-code-container) {
+    overflow: auto;
+  }
+
+  :global(.codepen),
+  :global(.codepen-wide) {
+    box-shadow: var(--shadow-placed);
   }
 
   & :global(.remark-code-bar) {
@@ -454,21 +459,5 @@
   /* tailwind class override */
   & :global(.remark-code-container) :global(.table) {
     display: unset !important;
-  }
-}
-
-.prose {
-  :global(.remark-code-container),
-  :global(.codepen),
-  :global(.codepen-wide) {
-    overflow: auto;
-    border-radius: var(--radius-lg);
-    margin-inline: -2rem;
-    margin-block: calc(var(--spacing) * 8);
-  }
-
-  :global(.codepen),
-  :global(.codepen-wide) {
-    box-shadow: var(--shadow-placed);
   }
 }
