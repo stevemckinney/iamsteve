@@ -69,7 +69,7 @@ export default async function DraftsIndex(props) {
               >
                 <Link
                   href={`${post.slug}?draft=true`}
-                  className="text-fern-1100 hover:text-fern-900 transition-colors no-underline"
+                  className="text-heading hover:text-fern-900 transition-colors no-underline"
                 >
                   <span className="font-mono text-sm text-neutral-01-600">
                     {String(post.id).padStart(4, '0')}

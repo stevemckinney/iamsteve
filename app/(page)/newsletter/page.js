@@ -1,4 +1,4 @@
-import Image from '@/components/image'
+import { PencilMono } from '@/components/illustration'
 import { Header, Title } from '@/components/page'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
@@ -16,13 +16,10 @@ export default async function NewsletterPage({ data, Post }) {
 
   return (
     <>
-      <Image
-        src="/images/illustration/pencil-mono.svg"
+      <PencilMono
         width={962}
         height={46}
         className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden`}
-        alt=" "
-        aria-hidden="true"
       />
       <article className="grid grid-cols-subgrid col-content pb-18 gap-y-18">
         <Header className="col-content">
@@ -33,10 +30,10 @@ export default async function NewsletterPage({ data, Post }) {
         </Header>
         <div className="col-start-content-start max-lg:col-end-content-end lg:col-span-5 xl:col-span-7 2xl:col-span-6 flex flex-col gap-8">
           <section className="flex flex-col gap-4">
-            <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0">
+            <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0">
               Get the articles
             </h2>
-            <div className="bg-white shadow-placed px-10 py-8 rounded-lg flex flex-col gap-4">
+            <div className="bg-surface shadow-placed px-10 py-8 rounded-lg flex flex-col gap-4">
               <p>
                 Join my email list and I’ll notify you when the latest posts go
                 out—if that’s what you prefer. This happens monthly at most. You
@@ -55,7 +52,7 @@ export default async function NewsletterPage({ data, Post }) {
           </Notepad>
         </div>
         <div className="col-start-content-start col-end-content-end lg:col-start-6 xl:col-start-9 2xl:col-start-8 flex flex-col gap-4">
-          <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0">
+          <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0">
             What you can expect
           </h2>
           {posts.map((post) => (

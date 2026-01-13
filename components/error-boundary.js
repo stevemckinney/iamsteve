@@ -31,7 +31,7 @@ class ErrorBoundary extends React.Component {
             aria-live="assertive"
             className="flex flex-col gap-2 py-4 px-6 bg-rio-150"
           >
-            <h2 className="block font-medium py-1.5 text-center text-fern-1100">
+            <h2 className="block font-medium py-1.5 text-center text-heading">
               {this.props.errorMessage || 'Oops, there was an error!'}
             </h2>
             <button

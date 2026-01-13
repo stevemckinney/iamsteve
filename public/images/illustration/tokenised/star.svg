@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" fill="none" viewBox="0 0 96 96">
-  <path class="fill-surface" d="m48 6 12.237 29.53L92 38.084 67.8 58.891 75.194 90 48 73.33 20.806 90 28.2 58.891 4 38.085l31.763-2.556L48 6Z"/>
-  <path class="fill-lowlight" d="M92 38.085 67.8 58.891 75.194 90 48 73.33 20.806 90 28.2 58.89 4 38.085 48 56.5l44-18.415Z"/>
-  <path class="stroke-foreground" stroke-width="2" d="M48 6v50"/>
-  <path class="stroke-highlight" stroke-width="2" d="M48 56 22 88m26-32 26 32"/>
-  <path class="stroke-foreground" stroke-width="2" d="M92 38.085 67.8 58.891l7.394 31.11L48 73.328 20.806 90 28.2 58.891 4 38.085 48 56.5l44-18.415Z"/>
-  <path class="stroke-border" stroke-width="2" d="m48 6 12.237 29.53L92 38.084 67.8 58.891 75.194 90 48 73.33 20.806 90 28.2 58.891 4 38.085l31.763-2.556L48 6Z"/>
+  <path fill="light-dark(rgb(249 243 241), rgb(171 213 200))" d="m48 6 12.237 29.53L92 38.084 67.8 58.891 75.194 90 48 73.33 20.806 90 28.2 58.891 4 38.085l31.763-2.556L48 6Z"/>
+  <path fill="light-dark(rgb(232 220 217), rgb(118 176 159))" d="M92 38.085 67.8 58.891 75.194 90 48 73.33 20.806 90 28.2 58.89 4 38.085 48 56.5l44-18.415Z"/>
+  <path stroke="light-dark(#fff, #1a1a1a)" stroke-width="2" d="M48 6v50"/>
+  <path stroke="light-dark(rgb(252 249 248), rgb(202 231 222))" stroke-width="2" d="M48 56 22 88m26-32 26 32"/>
+  <path stroke="light-dark(#fff, #1a1a1a)" stroke-width="2" d="M92 38.085 67.8 58.891l7.394 31.11L48 73.328 20.806 90 28.2 58.891 4 38.085 48 56.5l44-18.415Z"/>
+  <path stroke="light-dark(rgb(162 143 140), rgb(56 120 103))" stroke-width="2" d="m48 6 12.237 29.53L92 38.084 67.8 58.891 75.194 90 48 73.33 20.806 90 28.2 58.891 4 38.085l31.763-2.556L48 6Z"/>
 </svg>

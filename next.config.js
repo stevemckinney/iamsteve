@@ -91,60 +91,74 @@ const nextConfig = {
     ]
   },
   async headers() {
-    return [
-      {
-        source: '/images/:all*(svg|jpg|png|webp|avif)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/_next/static/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/static/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/feed.xml',
-        headers: [
-          {
-            key: 'Content-Type',
-            value: 'application/xml',
-          },
-          {
-            key: 'Cache-Control',
-            value:
-              'public, max-age=86400, s-maxage=2592000, stale-while-revalidate=604800',
-          },
-        ],
-      },
+    const isProduction = process.env.NODE_ENV === 'production'
+
+    // Base headers for all environments
+    const baseHeaders = [
       {
         source: '/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value:
-              'public, max-age=0, s-maxage=3600, stale-while-revalidate=60',
-          },
-          ...securityHeaders,
-        ],
+        headers: [...securityHeaders],
       },
     ]
+
+    // Caching headers only for production
+    const cachingHeaders = isProduction
+      ? [
+          {
+            source: '/images/:all*(svg|jpg|png|webp|avif)',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'public, max-age=31536000, immutable',
+              },
+            ],
+          },
+          {
+            source: '/_next/static/:path*',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'public, max-age=31536000, immutable',
+              },
+            ],
+          },
+          {
+            source: '/static/:path*',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'public, max-age=31536000, immutable',
+              },
+            ],
+          },
+          {
+            source: '/feed.xml',
+            headers: [
+              {
+                key: 'Content-Type',
+                value: 'application/xml',
+              },
+              {
+                key: 'Cache-Control',
+                value:
+                  'public, max-age=86400, s-maxage=2592000, stale-while-revalidate=604800',
+              },
+            ],
+          },
+          {
+            source: '/:path*',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value:
+                  'public, max-age=0, s-maxage=3600, stale-while-revalidate=60',
+              },
+            ],
+          },
+        ]
+      : []
+
+    return [...cachingHeaders, ...baseHeaders]
   },
   async redirects() {
     return [

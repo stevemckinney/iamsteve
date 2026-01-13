@@ -29,9 +29,9 @@ const Campaigns = () => {
     getCampaigns()
   }, [])
 
-  if (isLoading) return <p>Loading...</p>
+  if (isLoading) return <p className="text-lg">Loading...</p>
   if (!campaigns || campaigns.length === 0)
-    return <p>There are no previous issues</p>
+    return <p className="text-lg">There are no previous issues</p>
 
   return (
     <ul className="flex flex-col -my-2">
@@ -41,18 +41,18 @@ const Campaigns = () => {
         return (
           <li
             key={campaign.id}
-            className="[&:not(:first-child)]:border-t [&:not(:first-child)]:border-t-1 [&:not(:first-child)]:border-neutral-01-200"
+            className="not-first:border-t not-first:border-t not-first:border-neutral-01-200"
           >
-            <div className="flex justify-between py-2 text-lg text-fern-1100">
+            <div className="flex justify-between py-2 text-lg text-emphasis">
               {campaign.subject}{' '}
               <span className="flex items-center leading-none gap-2 text-base">
                 <Date
                   dateString={campaign.sent_at}
-                  className={`font-ui lowercase text-neutral-01-400`}
+                  className={`font-ui lowercase text-neutral-01-400 dark:text-fern-400`}
                 />
                 <Icon
                   icon="arrow-right"
-                  className="text-neutral-01-400 relative top-[-1px]"
+                  className="text-neutral-01-400 dark:text-fern-400 relative -top-px"
                   size={16}
                 />
               </span>

@@ -19,14 +19,14 @@ const Tabs = ({ posts }) => {
 
   return (
     <div
-      className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-[2.25rem]"
+      className="grid col-container grid-cols-subgrid frame gap-y-8 pb-18 mt-9"
       id="popular-design"
     >
       <Title
         link="/blog"
         text="View the archive"
         ariaID="popular-design"
-        className="-mt-[2.25rem]"
+        className="-mt-9"
       >
         Popular
         <Dropdown>

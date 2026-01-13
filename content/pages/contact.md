@@ -25,7 +25,7 @@ description: I aim to respond to every email. I especially welcome feedback, ide
 <Notepad className="col-start-content-start lg:col-start-7 xl:col-start-9 col-end-content-end">
   <Notepad.Header>Contact form</Notepad.Header>
   <Notepad.Body>
-    If there’s anything you’d like to talk to me about you can use the contact form or <a href="mailto:hi@iamsteve.me" className="text-fern-1100 underline underline-offset-2 hover:text-dandelion-600 transition duration-200 ease-linear">send an email</a>.
+    If there’s anything you’d like to talk to me about you can use the contact form or <a href="mailto:hi@iamsteve.me" className="text-emphasis underline underline-offset-2 hover:text-link-hover transition duration-200 ease-linear">send an email</a>.
     <hr className="border-neutral-01-500/20 mb-4" />
     <ContactForm />
   </Notepad.Body>

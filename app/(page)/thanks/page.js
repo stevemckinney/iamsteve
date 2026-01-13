@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { Header, Title, Column, Description } from '@/components/page'
 import Link from '@/components/link'
-import Image from '@/components/image'
+import { PencilMono } from '@/components/illustration'
 import PageHeader from '@/components/page-header'
 import PageTitle from '@/components/page-title'
 import Notepad from '@/components/notepad'
@@ -18,13 +18,10 @@ export default async function NewsletterPage({ data, Post }) {
 
   return (
     <>
-      <Image
-        src="/images/illustration/pencil-mono.svg"
+      <PencilMono
         width={962}
         height={46}
         className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden`}
-        alt=" "
-        aria-hidden="true"
       />
       <Header>
         <Column className="md:col-span-1">
@@ -36,10 +33,10 @@ export default async function NewsletterPage({ data, Post }) {
         <div className="col-start-content-start max-lg:col-end-content-end lg:col-span-5 xl:col-span-7 2xl:col-span-6">
           <div className="sticky top-8 flex flex-col gap-8">
             <section className="flex flex-col gap-4">
-              <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0">
+              <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0">
                 You’ll receive a follow up email
               </h2>
-              <div className="bg-white shadow-placed px-10 py-8 rounded-lg flex flex-col gap-4">
+              <div className="bg-surface shadow-placed px-10 py-8 rounded-lg flex flex-col gap-4">
                 <p>
                   Your subscription has been confirmed. There will be a follow
                   up email to your confirmation email welcoming you to the
@@ -60,7 +57,7 @@ export default async function NewsletterPage({ data, Post }) {
           </div>
         </div>
         <div className="col-start-content-start col-end-content-end lg:col-start-6 xl:col-start-9 2xl:col-start-8 flex flex-col gap-4">
-          <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0">
+          <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0">
             What you can expect
           </h2>
           {posts.map((post) => (

@@ -40,8 +40,8 @@ I feel both are within the trends of where type is at currently. I’m drawn to 
 
 <figure>
   <div className="sandbox">
-    <div className="bg-neutral-01-100 px-[4vmax] py-[10vmax] aspect-[16/10] flex items-center">
-      <span className="text-fern-1100 font-display lowercase text-[clamp(2.5rem,_1.4565rem_+_5.2174vw,_5.5rem)] block text-center font-variation-extrabold leading-7xl tracking-[-.1rem] lg:tracking-[-.15rem] text-balance">Exploring&nbsp;web design&nbsp;craft</span>
+    <div className="bg-neutral-01-100 px-[4vmax] py-[10vmax] aspect-16/10 flex items-center">
+      <span className="text-fern-1100 font-display lowercase text-[clamp(2.5rem,1.4565rem+5.2174vw,5.5rem)] block text-center font-variation-extrabold leading-7xl tracking-[-.1rem] lg:tracking-[-.15rem] text-balance">Exploring&nbsp;web design&nbsp;craft</span>
     </div>
   </div>
   <figcaption>Visual representation of the typeface Roc Grotesk</figcaption>
@@ -51,9 +51,9 @@ I chose Roc Grotesk for its strong presence, which I use for headings. I really 
 
 <figure>
   <div className="sandbox">
-    <div className="bg-neutral-01-100 px-[10vmax] py-[10vmax] aspect-[16/10] relative flex items-center justify-center">
+    <div className="bg-neutral-01-100 px-[10vmax] py-[10vmax] aspect-16/10 relative flex items-center justify-center">
       <div className="w-full flex items-center justify-center">
-        <span className="text-fern-1100 font-body lowercase text-[clamp(1.3125rem,_1.0734rem_+_1.1957vi,_2rem)] leading-tight block text-center [font-weight:300] leading-7xl tracking-[-.025rem] lg:tracking-[-.05rem] text-balance">Tips and tutorials about the design and build of web interfaces</span>
+        <span className="text-fern-1100 font-body lowercase text-[clamp(1.3125rem,1.0734rem+1.1957vi,2rem)] leading-tight block text-center font-light leading-7xl tracking-[-.025rem] lg:tracking-[-.05rem] text-balance">Tips and tutorials about the design and build of web interfaces</span>
       </div>
     </div>
   </div>
@@ -70,7 +70,7 @@ Whereas I’m using Elza for body copy, which is a better choice for reading, fo
 The colour palette is familiar but renewed. My aim was to pair back the colour and really reserve that for post images and the occasional flourish. I achieve that through introducing more neutral colours and complementary colours that have a stronger contrast (eg: red vs green).
 
 <div className="sandbox">
-  <div className="flex items-center justify-center gap-4 aspect-[16/10] drop-shadow-placed">
+  <div className="flex items-center justify-center gap-4 aspect-16/10 drop-shadow-placed">
     <span className="flex-1 h-full bg-rio-300 flex justify-center items-center rounded-lg shadow-placed"></span>
     <span className="flex-1 h-full bg-fern-1100 flex justify-center items-center rounded-lg shadow-placed"></span>
     <span className="flex-1 h-full bg-ui-body flex justify-center items-center rounded-lg shadow-placed"></span>

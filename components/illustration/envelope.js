@@ -1,0 +1,67 @@
+export default function Envelope({
+  width = 96,
+  height = 96,
+  className = '',
+  ...props
+}) {
+  return (
+    <svg
+      width={width}
+      height={height}
+      fill="none"
+      viewBox="0 0 96 96"
+      className={className}
+      aria-hidden="true"
+      {...props}
+    >
+      <rect
+        x="4"
+        y="16"
+        width="88"
+        height="64"
+        rx="8"
+        className="fill-surface-100"
+      />
+      <path
+        d="M5 76L36.8202 44.9198C43.0367 38.8479 52.9633 38.8479 59.1798 44.9198L91 76L89.3431 77.6569C87.8429 79.1571 85.808 80 83.6863 80H12.8063C10.9897 80 9.22719 79.3818 7.80869 78.247L5 76Z"
+        className="fill-subtle"
+      />
+      <path
+        d="M10 80H86.5L90.375 77.5L48 40L5.625 77.5L10 80Z"
+        className="fill-surface"
+      />
+      <path
+        d="M88.3906 18.2209L60.219 51.5459C53.8274 59.1066 42.1726 59.1066 35.781 51.5459L7.62366 18.2377"
+        className="stroke-subtle"
+        strokeWidth="8"
+      />
+      <path
+        d="M6.625 78L42.6275 45.3693C45.6762 42.6061 50.3238 42.6061 53.3725 45.3693L89.375 78"
+        className="stroke-muted"
+        strokeWidth="2"
+      />
+      <path
+        d="M11 16H85.5L89.375 18.5L59.8376 50.9823C53.4896 57.9631 42.5104 57.9631 36.1624 50.9823L6.625 18.5L11 16Z"
+        className="fill-foreground"
+      />
+      <path
+        d="M86.1426 16.0547L68.6875 35.25L56.8782 48.2367C52.1172 53.4723 43.8828 53.4723 39.1218 48.2367L9.85742 16.0547H86.1426Z"
+        className="fill-foreground"
+      />
+      <path
+        d="M6.625 18.5L36.1624 50.9823C42.5104 57.9631 53.4896 57.9631 59.8376 50.9823L89.375 18.5"
+        className="stroke-border"
+        strokeWidth="2"
+      />
+      <rect
+        x="4"
+        y="16"
+        width="88"
+        height="64"
+        rx="8"
+        className="stroke-border"
+        strokeWidth="2"
+      />
+    </svg>
+  )
+}

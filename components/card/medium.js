@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import React from 'react'
 import Link from 'next/link'
 
 import Icon from '@/components/icon'
@@ -33,7 +34,7 @@ const MediumImage = ({ ...props }) => {
       width={384}
       height={240}
       alt={title}
-      className={`absolute z-[1] transform -translate-x-1/2 -translate-y-1/2 border top-1/2 left-1/2 border-0`}
+      className={`absolute z-1 transform -translate-x-1/2 -translate-y-1/2 border top-1/2 left-1/2 border-0`}
     />
   )
 }
@@ -58,21 +59,21 @@ const Medium = ({ frontmatter, image, className }) => {
     hexToRgb(imageColor).b
   }`
 
-  const categoryStyle = `flex flex-row gap-4 relative z-[2] overflow-x-auto pb-3 px-8`
+  const categoryStyle = `flex flex-row gap-4 relative z-2 overflow-x-auto pb-3 px-8`
   const categoryClass = image
     ? `${categoryStyle} pt-px -mt-px`
     : `${categoryStyle} pt-8`
 
   return (
     <div
-      className={`group/medium isolate relative flex flex-col rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:scale-[.99375] bg-white active:bg-neutral-01-50 bg-clip-padding transition ease-linear duration-200 overflow-hidden ${className}`}
+      className={`group/medium isolate relative flex flex-col rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:scale-[.99375] bg-surface active:bg-surface-pressed bg-clip-padding transition ease-linear duration-200 overflow-hidden ${className}`}
     >
       {image && medium && (
         <>
           <Link
             href={slug}
             title=""
-            className={`flex w-full items-center justify-center aspect-[16/9] w-full relative overflow-hidden [mask:radial-gradient(150%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]`}
+            className={`flex w-full items-center justify-center aspect-video w-full relative overflow-hidden [mask:radial-gradient(150%_150%_at_50%_25%,#fff_24.1%,rgba(255,255,255,0.56)_41.94%,transparent_48.59%,transparent_100%)]`}
             style={{ backgroundColor: `${imageColor}` }}
             aria-labelledby={`title-${_id}`}
             tabIndex="0"
@@ -91,32 +92,29 @@ const Medium = ({ frontmatter, image, className }) => {
       {image && !medium && (
         <>
           <div
-            className={`flex items-center justify-center aspect-[16/9] w-full relative overflow-hidden [mask:radial-gradient(150%_150%_at_50%_25%,_#fff_24.1%,_rgba(255,255,255,0.56)_41.94%,_transparent_48.59%,_transparent_100%)]`}
-            style={{ backgroundColor: `${imageColor}` }}
+            className={`flex items-center justify-center aspect-video w-full relative overflow-hidden [mask:radial-gradient(150%_150%_at_50%_25%,#fff_24.1%,rgba(255,255,255,0.56)_41.94%,transparent_48.59%,transparent_100%)]`}
           >
             {categories && (
               <Placeholder
                 category={categories.includes('Design') ? 'Design' : 'Code'}
-                kind="post"
+                slug={slug}
                 href={slug}
-                title={title}
                 alt={title}
                 className={`flex items-center justify-center aspect-[1.6/1]`}
-                style={{ backgroundColor: `${imageColor}` }}
-                aria-labelledby={`title-${_id}`}
-                tabIndex="0"
               />
             )}
           </div>
         </>
       )}
-      <div className="flex flex-col flex-auto relative z-1 before:transition before:duration-200 before:ease-in before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-gradient-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:via-neutral-01-50/10 active:before:via-neutral-01-50/30 active:before:via-neutral-01-50/80 active:before:to-neutral-01-50 active:before:via-50% active:before:via-80% before:z-[3] pb-[1.625rem]">
+      <div className="flex flex-col flex-auto relative z-1 pb-6.5 [mask:linear-gradient(to_right,#fff_0%,#fff_calc(100%_-_64px),rgba(255,255,255,0.8)_calc(100%_-_48px),rgba(255,255,255,0.3)_calc(100%_-_24px),transparent_100%)]">
         {categories.length > 0 && (
           <div className={categoryClass} key="cats">
             {categories.map((category, index) => (
-              <Category size={24} key={`${category}${index}`} tabIndex="1">
-                {category}
-              </Category>
+              <React.Fragment key={`${category}${index}`}>
+                <Category size={24} tabIndex="1">
+                  {category}
+                </Category>
+              </React.Fragment>
             ))}
           </div>
         )}
@@ -128,7 +126,7 @@ const Medium = ({ frontmatter, image, className }) => {
             <Link
               href={slug}
               tabIndex="0"
-              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-[1]"
+              className="text-heading before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1"
             >
               {title}
             </Link>

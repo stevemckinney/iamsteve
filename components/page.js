@@ -12,7 +12,7 @@ function Title({
 }) {
   return (
     <h1
-      className={`w-full max-sm:text-center text-fern-1100 font-display lowercase self-start min-w-[0] min-h-[0] ${className}`}
+      className={`w-full max-sm:text-center text-heading font-display lowercase self-start min-w-0 min-h-0 ${className}`}
       {...props}
     >
       {children}

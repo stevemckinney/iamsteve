@@ -38,7 +38,7 @@
 //
 //   return (
 //     <RadixDropdownMenu.Trigger
-//       className={`transition duration-200 cursor-default select-none rounded text-2xl focus-visible:outline-none data-[state=open]:[background-color:color-mix(in_oklab,currentcolor,transparent_90%)] ${theme} flex gap-2 px-3 font-[inherit] [font-size:inherit] [letter-spacing:inherit] [text-transform:inherit] items-center hover:[background-color:color-mix(in_oklab,currentcolor,transparent_95%)]`}
+//       className={`transition duration-200 cursor-default select-none rounded text-2xl focus-visible:outline-hidden data-[state=open]:bg-[color-mix(in_oklab,currentcolor,transparent_90%)] ${theme} flex gap-2 px-3 font-[inherit] [font-size:inherit] tracking-[inherit] [text-transform:inherit] items-center hover:bg-[color-mix(in_oklab,currentcolor,transparent_95%)]`}
 //     >
 //       {children}
 //       <Icon icon="angle-down" className={`text-inherit`} size={32} />
@@ -72,7 +72,7 @@
 //           <RadixDropdownMenu.Portal forceMount>
 //             <RadixDropdownMenu.Content
 //               align="start"
-//               className="overflow-hidden rounded bg-neutral-01-700 p-1 text-left border-1 border-neutral-01-900 shadow-floating"
+//               className="overflow-hidden rounded bg-neutral-01-700 p-1 text-left border border-neutral-01-900 shadow-floating"
 //               asChild
 //             >
 //               <motion.div
@@ -119,7 +119,7 @@
 //         await closeMenu()
 //         onSelect()
 //       }}
-//       className="w-60 text-xl font-ui lowercase select-none rounded-[.75rem] pl-5 pr-6 py-3 text-neutral-01-50 data-[highlighted]:bg-neutral-01-600 data-[highlighted]:text-white data-[highlighted]:focus:outline-none data-[highlighted]:hover:shadow-[inset_0_1px_rgb(117_99_98_/_.5),_0_0_0_1px_#1F1515] data-[highlighted]:active:shadow-[inset_0_1px_3px_rgb(0_0_0/_.25),_0_0_0_1px_#1F1515]"
+//       className="w-60 text-xl font-ui lowercase select-none rounded-[.75rem] pl-5 pr-6 py-3 text-neutral-01-50 data-highlighted:bg-neutral-01-600 data-highlighted:text-white data-highlighted:focus:outline-hidden data-highlighted:hover:shadow-[inset_0_1px_rgb(117_99_98/.5),0_0_0_1px_#1F1515] data-highlighted:active:shadow-[inset_0_1px_3px_rgb(0_0_0/_.25),0_0_0_1px_#1F1515]"
 //       asChild
 //     >
 //       <motion.div

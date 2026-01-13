@@ -2,27 +2,31 @@
 title: About
 description: I’m Steve McKinney, I write this blog about the design and build of websites. I aim to explore the craft behind web design.
 slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
-    <a href="#site" className="col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current"><Icon
+    <a href="#site" className="col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-emphasis hover:text-link-hover transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current"><Icon
       icon="website"
       size={24}
       className="text-current shrink-0"
+      variant="header"
     /> website</a>
-    <a href="#author" className="col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current"><Icon
+    <a href="#author" className="col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-emphasis hover:text-link-hover transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current"><Icon
       icon="person"
       size={24}
       className="text-current shrink-0"
+      variant="header"
     /> Author</a>
-    <a href="#examples" className="border-t border-neutral-500/20 col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current">
+    <a href="#examples" className="border-t border-neutral-500/20 col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-emphasis hover:text-link-hover transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current">
     <Icon
       icon="bolt"
       size={24}
       className="text-current shrink-0"
+      variant="header"
     /> Best posts</a>
-    <a href="#history" className="border-t border-neutral-500/20 col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 hover:text-dandelion-600 transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current">
+    <a href="#history" className="border-t border-neutral-500/20 col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-emphasis hover:text-link-hover transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current">
     <Icon
       icon="clock-reverse"
       size={24}
       className="text-current shrink-0"
+      variant="header"
     /> Design history</a>
   </nav>
 ---
@@ -87,12 +91,12 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
     These are a mixture of my most popular posts and what I believe are my best.
 
     <ul className="list-outside list-disc">
-      <li key="01" className="text-lg text-ui-body"><a className="underline underline-offset-4 hover:text-dandelion-600 transition duration-200" href="/blog/creating-custom-stroke-width-profiles-in-illustrator">Creating custom stroke width profiles in Illustrator</a></li>
-      <li key="02" className="text-lg text-ui-body"><a className="underline underline-offset-4 hover:text-dandelion-600 transition duration-200" href="/blog/horizontal-scrolling-responsive-menu">Creating a horizontal scrolling responsive menu</a></li>
-      <li key="03" className="text-lg text-ui-body"><a className="underline underline-offset-4 hover:text-dandelion-600 transition duration-200" href="/blog/get-up-to-speed-with-css-shapes">Get up to speed with CSS shapes</a></li>
-      <li key="04" className="text-lg text-ui-body"><a className="underline underline-offset-4 hover:text-dandelion-600 transition duration-200" href="/blog/how-to-use-kerning-tracking">How to use kerning &amp; tracking</a></li>
-      <li key="05" className="text-lg text-ui-body"><a className="underline underline-offset-4 hover:text-dandelion-600 transition duration-200" href="/blog/a-guide-to-vertical-rhythm">A guide to vertical rhythm</a></li>
-      <li key="06" className="text-lg text-ui-body"><a className="underline underline-offset-4 hover:text-dandelion-600 transition duration-200" href="/blog/search-overlay-with-smooth-reveal-animation">Search overlay with smooth reveal animation</a></li>
+      <li key="01" className="text-ui-body md:text-lg lg:text-xl"><a className="underline underline-offset-4 hover:text-link-hover transition duration-200" href="/blog/creating-custom-stroke-width-profiles-in-illustrator">Creating custom stroke width profiles in Illustrator</a></li>
+      <li key="02" className="text-ui-body md:text-lg lg:text-xl"><a className="underline underline-offset-4 hover:text-link-hover transition duration-200" href="/blog/horizontal-scrolling-responsive-menu">Creating a horizontal scrolling responsive menu</a></li>
+      <li key="03" className="text-ui-body md:text-lg lg:text-xl"><a className="underline underline-offset-4 hover:text-link-hover transition duration-200" href="/blog/get-up-to-speed-with-css-shapes">Get up to speed with CSS shapes</a></li>
+      <li key="04" className="text-ui-body md:text-lg lg:text-xl"><a className="underline underline-offset-4 hover:text-link-hover transition duration-200" href="/blog/how-to-use-kerning-tracking">How to use kerning &amp; tracking</a></li>
+      <li key="05" className="text-ui-body md:text-lg lg:text-xl"><a className="underline underline-offset-4 hover:text-link-hover transition duration-200" href="/blog/a-guide-to-vertical-rhythm">A guide to vertical rhythm</a></li>
+      <li key="06" className="text-ui-body md:text-lg lg:text-xl"><a className="underline underline-offset-4 hover:text-link-hover transition duration-200" href="/blog/search-overlay-with-smooth-reveal-animation">Search overlay with smooth reveal animation</a></li>
     </ul>
   </article>
 
@@ -118,7 +122,7 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
     </ul>
     </div>
 
-    <div className={`overflow-hidden image-stack col-span-full md:col-start-8 md:col-span-5 max-md:mt-12 max-w-max self-start shadow-placed rounded-lg grid [&>*]:[grid-area:images]`}>
+    <div className={`overflow-hidden image-stack col-span-full md:col-start-8 md:col-span-5 max-md:mt-12 max-w-max self-start shadow-placed rounded-lg grid *:[grid-area:images]`}>
       <Image
         src="/images/about/iamsteve-small-v1.jpg"
         width={488}
@@ -131,42 +135,42 @@ slot: <nav className="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
         width={488}
         height={416}
         alt="Version two of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[4rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-16"
       />
       <Image
         src="/images/about/iamsteve-small-v3.jpg"
         width={488}
         height={416}
         alt="Version three of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[8rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-32"
       />
       <Image
         src="/images/about/iamsteve-small-v4.jpg"
         width={488}
         height={416}
         alt="Version four of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[12rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-48"
       />
       <Image
         src="/images/about/iamsteve-small-v5.jpg"
         width={488}
         height={416}
         alt="Version five of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[16rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-64"
       />
       <Image
         src="/images/about/iamsteve-small-v6.jpg"
         width={488}
         height={416}
         alt="Version six of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[20rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-80"
       />
       <Image
         src="/images/about/iamsteve-small-v7.jpg"
         width={488}
         height={416}
         alt="Version seven of this website’s design"
-        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-[24rem]"
+        className="rounded-lg max-w-full grid-row-1 shadow-placed mt-96"
       />
     </div>
 

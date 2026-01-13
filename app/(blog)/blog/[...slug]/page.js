@@ -42,7 +42,7 @@ const editUrl = (fileName) =>
 export const revalidate = 86400
 
 // styling
-import styles from './post.module.scss'
+import styles from './post.module.css'
 
 export async function generateStaticParams() {
   return allPosts
@@ -200,13 +200,13 @@ export default async function PostPage(props) {
       <article
         className={`isolate grid row-start-1 col-container grid-cols-subgrid relative`}
       >
-        <hr className="absolute z-[11] top-0 left-0 right-0 col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <hr className="absolute z-11 top-0 left-0 right-0 col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] border-none" />
         <Sidebar
           post={post}
           aria-label="Table of contents and newsletter subscription form"
-          className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col lg:gap-12 lg:pb-16 lg:px-6 lg:-mx-6 lg:[mask-image:linear-gradient(180deg,transparent,_#000_64px,#000_calc(100%_-_10vh),_transparent)]"
+          className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col lg:gap-12 lg:pb-16 lg:px-6 lg:-mx-6 lg:mask-[linear-gradient(180deg,transparent,#000_64px,#000_calc(100%-10vh),transparent)]"
         />
-        <hr className="relative col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] border-none" />
+        <hr className="relative col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] border-none" />
         <header className="col-content lg:col-container lg:col-start-2 lg:col-end-9 xl:col-start-3 xl:col-end-11 lg:row-start-1 lg:row-span-1 flex flex-col max-lg:pt-12 gap-y-4 mb-12">
           {showDrafts && (
             <div className="col-content mb-8">
@@ -214,6 +214,7 @@ export default async function PostPage(props) {
                 <Icon
                   icon="square-info"
                   className="text-cornflour-900 flex-[0_0_auto]"
+                  variant="default"
                 />
                 <div className="flex flex-col">
                   <p className="p-0 m-0 font-body text-sm text-cornflour-900">
@@ -227,26 +228,26 @@ export default async function PostPage(props) {
             </div>
           )}
           {isOldCodePost && (
-            <div className="shadow-placed col-prose flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
+            <div className="shadow-placed dark:shadow-[0_0_0_1px_color-mix(in_oklch,var(--color-cornflour-900),transparent_50%)] col-prose flex gap-3 leading-tight bg-cornflour-0 dark:bg-cornflour-900/30 rounded-md p-4">
               <Icon
                 icon="square-info"
-                className="text-cornflour-900 flex-[0_0_auto]"
+                className="text-cornflour-900 dark:text-cornflour-400 flex-[0_0_auto]"
+                variant="header"
               />
               <div className="flex flex-col">
-                <p className="p-0 m-0 font-body text-sm text-cornflour-900">
+                <p className="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-300">
                   <strong>
                     This post was published {yearsAgo}{' '}
                     {yearsAgo === 1 ? 'year' : 'years'} ago
                   </strong>
                 </p>
-                <p className="p-0 m-0 font-body text-sm text-cornflour-900">
-                  There's a chance things are out of date or no longer reflect
-                  my views today
+                <p className="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-300/80">
+                  There’s a chance things are out of date or no longer reflect my views today
                 </p>
               </div>
             </div>
           )}
-          <Badge size={16} theme={`text`} iconStart={`calendar`}>
+          <Badge size={16} theme={`cornflour`} iconStart={`calendar`}>
             <time dateTime={post.date} className={`date`}>
               {format(date, 'do LLL yyyy')}
             </time>
@@ -259,7 +260,7 @@ export default async function PostPage(props) {
             {post.title}
           </PageTitle>
           {post.summary && (
-            <p className="text-lg text-pretty lg:text-2xl text-fern-1100 mb-2">
+            <p className="text-lg text-pretty lg:text-2xl text-emphasis mb-2">
               {post.summary}
             </p>
           )}
@@ -278,7 +279,7 @@ export default async function PostPage(props) {
               <Badge size={16} theme={`text`} iconStart={`views`}>
                 <Suspense
                   fallback={
-                    <span className="text-fern-1100">
+                    <span className="text-emphasis">
                       {initialViews.toLocaleString()} views
                     </span>
                   }
@@ -343,7 +344,7 @@ export function NextPosts({ post }) {
     <aside
       className={`xl:row-span-1 col-content lg:col-start-3 lg:col-span-8 flex flex-col gap-4 lg:-mx-8`}
     >
-      <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-fern-1100 m-0 lg:px-8">
+      <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 lg:px-8">
         Next to read
       </h2>
       <div className="grid lg:grid-cols-2 gap-8">
@@ -372,10 +373,8 @@ export function PostImage({ post }) {
           {post.categories && post.categories.includes('Design') ? (
             <Placeholder
               category="Design"
-              kind="post"
+              slug={post.slug}
               alt={`${post.title} (featured image)`}
-              aria-labelledby={`title-${post.id}`}
-              tabIndex="0"
               width={864}
               height={540}
               className={`col-content lg:col-container grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
@@ -383,10 +382,8 @@ export function PostImage({ post }) {
           ) : (
             <Placeholder
               category="Code"
-              kind="post"
+              slug={post.slug}
               alt={`${post.title} (featured image)`}
-              aria-labelledby={`title-${post.id}`}
-              tabIndex="0"
               width={864}
               height={540}
               className={`col-content lg:col-container grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`}
@@ -416,16 +413,16 @@ export function PostImage({ post }) {
 
 export function Support() {
   return (
-    <aside className="xl:row-span-1 bg-neutral-01-50 border border-1 border-neutral-01-200 rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content xl:col-start-3 xl:col-span-8">
+    <aside className="xl:row-span-1 bg-surface-02 dark:bg-surface shadow-[0_0_0_1px_var(--color-white)] dark:shadow-[0_0_0_1px_var(--color-surface-02)] rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content xl:col-start-3 xl:col-span-8">
       <p className="p-0 m-0 text-base text-ui-body flex flex-col">
-        <strong className="text-fern-1100 font-bold">
+        <strong className="text-heading font-bold">
           Enjoying the reading experience?
         </strong>{' '}
         There's no ads, tracking or cookie banners, so your support is valued
       </p>
       <Link
         href={siteMetadata.bmc}
-        className="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase hover:opacity-70 transition duration-200 mt-1 pl-6 pr-5 py-2 bg-white shadow-[0_0_0_1px_theme('colors.neutral-01.200')]"
+        className="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase transition duration-200 mt-1 pl-6 pr-5 py-2 bg-surface shadow-reduced hover:opacity-70"
       >
         Buy me a coffee
         <span className="flex shrink-0 grow-0 items-center justify-center">
@@ -436,8 +433,8 @@ export function Support() {
   )
 }
 
-// [mask-image:linear-gradient(0deg,_transparent_0%,_transparent_1%,_rgba(0,0,0,0.56)_3%,_#000_6%,_#000_18%,_#000_82%,_#000_90%,_rgba(0,0,0,0.56)_95%,_transparent_99%,_transparent_100%)]
-// max-xl:bg-[url(/images/texture.png)] max-xl:bg-[172px_auto] max-xl:bg-blend-multiply max-xl:bg-neutral-01-150 max-xl:px-6
+// mask-[linear-gradient(0deg,transparent_0%,transparent_1%,rgba(0,0,0,0.56)_3%,#000_6%,#000_18%,#000_82%,#000_90%,rgba(0,0,0,0.56)_95%,transparent_99%,transparent_100%)]
+// max-xl:bg-[url(/images/texture.png)] max-xl:bg-size-[172px_auto] max-xl:bg-blend-multiply max-xl:bg-neutral-01-150 max-xl:px-6
 
 export function Sidebar({ post, ...props }) {
   return (
@@ -460,7 +457,7 @@ export function Sidebar({ post, ...props }) {
         className="flex flex-col gap-2 pb-12 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0"
         aria-labelledby="aside-subscribe"
       >
-        <h2 className="font-bold" id="aside-subscribe">
+        <h2 className="font-bold text-heading" id="aside-subscribe">
           Subscribe
         </h2>
         <p className="mb-4">

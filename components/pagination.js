@@ -12,14 +12,14 @@ const Pagination = ({ total, current, category }) => {
   const categoryPath = category ? `/${category}` : ''
 
   const link = `flex items-center gap-1 text-xl font-ui lowercase leading-[1.1428571429] py-2`
-  const linkState = `transition duration-200 hover:text-dandelion-600`
-  const linkDisabled = `${link} cursor-auto disabled:text-ui-body`
+  const linkState = `transition duration-200 hover:text-link-hover`
+  const linkDisabled = `${link} cursor-not-allowed disabled:text-ui-body/70`
 
   return (
     <nav className="flex justify-between items-center -my-2 relative">
       {!prevPage && (
         <button className={`${linkDisabled}`} disabled={!prevPage}>
-          <Icon icon="angle-left" className="stroke-current" />
+          <Icon icon="angle-left" className="stroke-current relative -top-px" />
           Newer
         </button>
       )}
@@ -33,7 +33,7 @@ const Pagination = ({ total, current, category }) => {
           className={`${link} ${linkState}`}
           rel="prev"
         >
-          <Icon icon="angle-left" className="stroke-current" />
+          <Icon icon="angle-left" className="stroke-current relative -top-px" />
           Newer
         </Link>
       )}
@@ -49,7 +49,10 @@ const Pagination = ({ total, current, category }) => {
       {!nextPage && (
         <button className={`${linkDisabled}`} disabled={!nextPage}>
           Older
-          <Icon icon="angle-right" className="stroke-current" />
+          <Icon
+            icon="angle-right"
+            className="stroke-current relative -top-px"
+          />
         </button>
       )}
       {nextPage && (
@@ -59,7 +62,10 @@ const Pagination = ({ total, current, category }) => {
           rel="next"
         >
           Older
-          <Icon icon="angle-right" className="stroke-current" />
+          <Icon
+            icon="angle-right"
+            className="stroke-current relative -top-px"
+          />
         </Link>
       )}
     </nav>
