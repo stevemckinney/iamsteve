@@ -68,11 +68,10 @@ const ContactForm = () => {
       .filter((word) => word.length > 0)
     setWordCount(words.length)
   }
-
   if (isRateLimited || FORM_DISABLED) {
     return (
-      <div className="flex w-full p-12 bg-cornflour-100/20 text-cornflour-600 justify-center rounded-sm">
-        <p className="m-0">Form currently unavailable.</p>
+      <div className="flex w-full p-12 shadow-placed dark:shadow-[0_0_0_1px_color-mix(in_oklch,var(--color-cornflour-900),transparent_50%)] col-prose flex gap-3 leading-tight bg-cornflour-0 dark:bg-cornflour-900/30 rounded-md p-4 justify-center rounded-sm">
+        <p className="m-0 text-cornflour-900 dark:text-cornflour-300/80">Form currently unavailable.</p>
       </div>
     )
   }
