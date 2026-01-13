@@ -142,7 +142,7 @@ export default function RootLayout({ children }) {
        * bg-[light-dark(url(/images/texture.png),url(/images/texture-dark.png))]
        */}
       <body
-        className={`antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge  bg-canvas text-body`}
+        className={`antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas text-body overflow-x-hidden lg:overflow-x-clip`}
       >
         <Sprite16 />
         <Sprite24 />
