@@ -109,49 +109,60 @@ jobs:
           
           try {
             const blogDir = path.join(process.cwd(), 'content/blog')
-            
-            // Get all posts from main branch
-            const existingPosts = findPostFiles(blogDir)
-            const existingIds = new Set(existingPosts.map(file => getPostId(file)))
-            const highestId = Math.max(0, ...existingIds)
-            
-            // Get the list of files changed in the PR
-            const changedFiles = execSync('git diff --name-only origin/main...HEAD')
+            const currentIdFile = path.join(process.cwd(), '.current-post-id')
+
+            // Get next ID from .current-post-id file
+            let nextId = 0
+            if (fs.existsSync(currentIdFile)) {
+              const idContent = fs.readFileSync(currentIdFile, 'utf8').trim()
+              nextId = parseInt(idContent) || 0
+              console.log(`Starting from ID ${nextId + 1} (from .current-post-id)`)
+            } else {
+              // Fallback: find highest ID if .current-post-id doesn't exist
+              const existingPosts = findPostFiles(blogDir)
+              const existingIds = existingPosts.map(file => getPostId(file))
+              nextId = Math.max(0, ...existingIds)
+              console.log(`No .current-post-id found, starting from highest ID ${nextId + 1}`)
+            }
+
+            // Get only NEW files added in the PR (not modified files)
+            const newFiles = execSync('git diff --diff-filter=A --name-only origin/main...HEAD')
               .toString()
               .trim()
               .split('\n')
               .filter(file => file.startsWith('content/blog/'))
-            
-            // Only process files that were actually changed in the PR
-            const prPosts = changedFiles
+
+            if (newFiles.length === 0 || (newFiles.length === 1 && newFiles[0] === '')) {
+              console.log('No new blog posts found in this PR')
+              return
+            }
+
+            // Process only new blog post files
+            const newPosts = newFiles
               .map(file => path.join(process.cwd(), file))
               .filter(file => fs.existsSync(file))
-            
-            let nextId = highestId
+
             let updatedFiles = false
-            
-            // Update IDs only if there's an actual conflict
-            for (const filePath of prPosts) {
+
+            // Assign IDs to new posts
+            for (const filePath of newPosts) {
               try {
-                const currentId = getPostId(filePath)
-                
-                // Only update if this ID already exists in main branch
-                if (existingIds.has(currentId) && currentId !== 0) {
-                  console.log(`ID conflict detected for ${filePath} with ID ${currentId}`)
-                  nextId++
-                  const newPath = updatePostId(filePath, nextId)
-                  console.log(`Updated to ID ${nextId}: ${newPath}`)
-                  updatedFiles = true
-                }
+                nextId++
+                const newPath = updatePostId(filePath, nextId)
+                console.log(`Assigned ID ${nextId} to new post: ${newPath}`)
+                updatedFiles = true
               } catch (err) {
                 console.log(`Error processing ${filePath}: ${err.message}`)
               }
             }
-            
+
             if (updatedFiles) {
+              // Update .current-post-id with the next available ID
+              fs.writeFileSync(currentIdFile, String(nextId))
+              console.log(`Updated .current-post-id to ${nextId}`)
               console.log('::set-output name=files-updated::true')
             } else {
-              console.log('No ID conflicts found, no files updated')
+              console.log('No new posts processed')
             }
           } catch (error) {
             console.error('Error:', error)
@@ -168,6 +179,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add content/blog/
-          git commit -m "Update post IDs to resolve conflicts"
+          git add content/blog/ .current-post-id
+          git commit -m "Assign IDs to new blog posts"
           git push
