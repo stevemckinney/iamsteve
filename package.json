@@ -1,6 +1,6 @@
 {
   "name": "iamsteve",
-  "version": "8.1.8",
+  "version": "8.1.13",
   "private": true,
   "packageManager": "pnpm@10.25.0",
   "scripts": {
@@ -58,7 +58,7 @@
     "date-fns": "^2.30.0",
     "dedent": "^0.7.0",
     "encoding": "^0.1.13",
-    "esbuild": "^0.18.20",
+    "esbuild": "^0.25.0",
     "eslint-config-next": "^14.2.33",
     "feed": "^4.2.2",
     "github-slugger": "^2.0.0",

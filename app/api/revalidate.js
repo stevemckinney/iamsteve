@@ -6,21 +6,26 @@ export async function POST(request) {
   const path = searchParams.get('path')
 
   if (secret !== process.env.REVALIDATION_SECRET) {
-    console.error('Invalid secret attempt')
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('Invalid secret attempt')
+    }
     return new Response('Invalid secret', { status: 401 })
   }
 
   if (!path) {
-    console.error('No path specified for revalidation')
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('No path specified for revalidation')
+    }
     return new Response('Path is required', { status: 400 })
   }
 
   try {
     await revalidatePath(path)
-    console.log(`Successfully revalidated: ${path}`)
     return new Response('Revalidated', { status: 200 })
   } catch (error) {
-    console.error('Revalidation error:', error)
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('Revalidation error:', error)
+    }
     return new Response('Revalidation failed', { status: 500 })
   }
 }

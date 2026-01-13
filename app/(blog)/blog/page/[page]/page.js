@@ -40,6 +40,13 @@ export default async function BlogIndex(props) {
   const allData = await getData()
   const posts = allData.postsByDate
   const pageNumber = parseInt(params.page) || 1
+
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
+
+  if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
+    notFound()
+  }
+
   const paginatedPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
@@ -47,7 +54,7 @@ export default async function BlogIndex(props) {
 
   const pagination = {
     current: pageNumber,
-    total: Math.ceil(posts.length / POSTS_PER_PAGE),
+    total: totalPages,
   }
 
   return (
@@ -69,7 +76,7 @@ export default async function BlogIndex(props) {
                   <Category
                     size={24}
                     badge={false}
-                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-emphasis hover:text-link-hover transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-fern-1100 transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
                   >
                     {category.title}
                   </Category>

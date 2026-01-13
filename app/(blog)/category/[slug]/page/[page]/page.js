@@ -82,21 +82,23 @@ export default async function BlogCategory(props) {
     .sort((a, b) => new Date(b.date) - new Date(a.date))
 
   const pageNumber = parseInt(params.page)
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
+
+  if (!data) {
+    notFound()
+  }
+
+  if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > totalPages) {
+    notFound()
+  }
+
   const paginatedPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
   )
   const pagination = {
     current: pageNumber,
-    total: Math.ceil(posts.length / POSTS_PER_PAGE),
-  }
-
-  if (!data) {
-    notFound()
-  }
-
-  if (isNaN(pageNumber)) {
-    notFound()
+    total: totalPages,
   }
 
   return (
