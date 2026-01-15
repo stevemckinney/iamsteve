@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/settings.schema.json",
+  "environmentVariables": {
+    "INSIDE_CLAUDE_CODE": "1"
+  },
+  "hooks": {
+    "PreToolUse": {
+      "Edit": [
+        {
+          "command": ".claude/hooks/prevent-main-edits.sh",
+          "timeoutMs": 5000
+        }
+      ],
+      "Write": [
+        {
+          "command": ".claude/hooks/prevent-main-edits.sh",
+          "timeoutMs": 5000
+        }
+      ]
+    },
+    "PostToolUse": {
+      "Edit": [
+        {
+          "command": ".claude/hooks/format-after-edit.sh",
+          "timeoutMs": 30000
+        }
+      ],
+      "Write": [
+        {
+          "command": ".claude/hooks/format-after-edit.sh",
+          "timeoutMs": 30000
+        }
+      ]
+    }
+  }
+}
