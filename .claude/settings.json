@@ -23,11 +23,19 @@
         {
           "command": ".claude/hooks/format-after-edit.sh",
           "timeoutMs": 30000
+        },
+        {
+          "command": ".claude/hooks/eslint-after-edit.sh",
+          "timeoutMs": 30000
         }
       ],
       "Write": [
         {
           "command": ".claude/hooks/format-after-edit.sh",
+          "timeoutMs": 30000
+        },
+        {
+          "command": ".claude/hooks/eslint-after-edit.sh",
           "timeoutMs": 30000
         }
       ]
