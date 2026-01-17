@@ -122,7 +122,7 @@ export default async function BlogCategory(props) {
           <Title>{data.title}</Title>
           <Description>{data.description}</Description>
         </Column>
-        <ul className="md:col-span-1 grid grid-cols-2 gap-x-4 md:gap-x-8 self-end column-categories lg:-mb-3">
+        <ul className="md:col-span-1 grid grid-cols-2 gap-x-4 md:gap-x-8 self-end column-categories lg:-mb-2">
           {categories.map((category) => {
             if (category.parent === false || category.exclude === true) return
 

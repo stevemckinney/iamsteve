@@ -45,6 +45,9 @@
 
   --breakpoint-xs: 360px;
 
+  --spacing-2: 0.5rem;
+  --spacing-2\.5: 0.625rem;
+
   --grid-template-columns-16: repeat(16, minmax(0, 1fr));
   --grid-template-columns-subgrid: subgrid;
 
