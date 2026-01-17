@@ -242,7 +242,8 @@ export default async function PostPage(props) {
                   </strong>
                 </p>
                 <p className="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-300/80">
-                  There’s a chance things are out of date or no longer reflect my views today
+                  There’s a chance things are out of date or no longer reflect
+                  my views today
                 </p>
               </div>
             </div>

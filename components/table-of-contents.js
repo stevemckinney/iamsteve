@@ -18,7 +18,8 @@ function TableOfContents({ headings, open = false, ...props }) {
 
     // Capture the initial top position once
     if (initialTopRef.current === null) {
-      initialTopRef.current = wrapper.getBoundingClientRect().top + window.scrollY
+      initialTopRef.current =
+        wrapper.getBoundingClientRect().top + window.scrollY
     }
 
     const handleScroll = () => {
@@ -35,7 +36,7 @@ function TableOfContents({ headings, open = false, ...props }) {
   }, [])
 
   const toggleOpen = useCallback(() => {
-    setIsOpen(prev => !prev)
+    setIsOpen((prev) => !prev)
     document.body.classList.toggle('max-lg:overflow-hidden')
     document.getElementById('nav')?.classList.toggle('tabbar-hidden')
   }, [])
@@ -76,7 +77,7 @@ function TableOfContents({ headings, open = false, ...props }) {
           'max-lg:data-[sticky=true]:backdrop-blur-md',
           'max-lg:data-[sticky=true]:bg-white/80 max-lg:data-[sticky=true]:dark:bg-fern-1200/90',
           'max-lg:data-[sticky=true]:shadow-reduced',
-          'max-lg:will-change-transform',
+          'max-lg:will-change-transform'
         )}
         data-state={isOpen ? 'open' : 'closed'}
         data-sticky={isSticky}

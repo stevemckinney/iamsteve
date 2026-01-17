@@ -116,7 +116,8 @@ export default function Header() {
                       'lg:hidden': link.title === 'Home',
                       'max-lg:hidden': link.title === 'Contact',
                       'max-lg:text-emphasis': isActive,
-                      'max-lg:text-fern-700 dark:max-lg:text-fern-400': !isActive,
+                      'max-lg:text-fern-700 dark:max-lg:text-fern-400':
+                        !isActive,
                     }
                   )}
                   key={link.href}
