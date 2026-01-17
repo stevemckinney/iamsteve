@@ -1,6 +1,5 @@
 import { allPosts } from 'contentlayer/generated'
 import siteMetadata from '@/content/metadata'
-import { marked } from 'marked'
 
 export const revalidate = 2592000
 
@@ -31,7 +30,7 @@ export async function GET() {
       <guid isPermaLink="true">${siteMetadata.siteUrl}${post.slug}</guid>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <description>${escapeXml(post.summary)}</description>
-      <content:encoded><![CDATA[${marked(post.body.raw)}]]></content:encoded>
+      <content:encoded><![CDATA[${post.rssBody}]]></content:encoded>
     </item>
     `
       )

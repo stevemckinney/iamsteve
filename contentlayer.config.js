@@ -15,6 +15,7 @@ import parse from 'rehype-parse'
 import stringify from 'rehype-stringify'
 import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
+import { compileMdxForRssWithMarked } from './lib/compile-mdx-for-rss.js'
 
 // import rehypePrettyCode from 'rehype-pretty-code'
 // import rehypeCitation from 'rehype-citation'
@@ -167,6 +168,17 @@ export const Post = defineDocumentType(() => ({
       },
     },
     readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
+    rssBody: {
+      type: 'string',
+      resolve: (doc) => {
+        try {
+          return compileMdxForRssWithMarked(doc.body.raw)
+        } catch (error) {
+          console.error(`Error compiling RSS body for ${doc._raw.flattenedPath}:`, error)
+          return doc.body.raw
+        }
+      },
+    },
     slug: {
       type: 'string',
       resolve: (doc) =>
