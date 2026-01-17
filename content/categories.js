@@ -91,7 +91,7 @@ const categories = [
     slug: '/category/code',
     slugAsParams: 'code',
     description:
-      'Exploring CSS, JavaScript and handover techniques. Through building designs I use this to share what I learn',
+      'Building interfaces with CSS and JavaScript, from implementation details to development workflows.',
     parent: false,
     theme: 'dandelion',
     icon: 'code',

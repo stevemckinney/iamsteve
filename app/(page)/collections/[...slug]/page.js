@@ -168,8 +168,7 @@ export default async function CollectionPage(props) {
           Collections
         </Title>
         <Description>
-          Curated links to all things design. If you’re looking for inspiration
-          start here.
+          Curated design resources organised by topic, from typography and color to tools and techniques.
         </Description>
         <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
           {collections
