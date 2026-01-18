@@ -84,13 +84,16 @@ const jsonLD = {
       sameAs: [
         'https://twitter.com/irsteve',
         'https://instagram.com/stevemckinney',
-        'https://uk.linkedin.com/in/steve-mckinney-5b5836102',
+        'https://www.linkedin.com/in/smcknny/',
       ],
       homeLocation: {
         '@type': 'City',
         name: 'Manchester',
       },
       jobTitle: 'User interface designer',
+      knowsAbout: [
+        'Web Design', 'Visual Design', 'UI Design', 'Typography', 'CSS'
+      ],
       worksFor: {
         '@id': `${siteMetadata.siteUrl}/#organization`,
       },

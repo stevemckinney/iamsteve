@@ -3,7 +3,7 @@ import Button from '@/components/button'
 
 export default function NotFound() {
   return (
-    <div className="grid grid-cols-subgrid col-container flex flex-col relative frame frame-24 2xl:frame-40 lg:frame-outset-top-md 2xl:frame-outset-top py-12 2xl:pt-10 lg:pb-22 gap-y-4 max-lg:px-4 pt-12 pb-16 flex flex-col gap-8 mb-10 md:mb-18">
+    <div className="grid grid-cols-subgrid col-container flex flex-col relative gap-8">
       <h1 className="col-content text-7xl font-variation-extrabold font-display text-heading">
         404
       </h1>

@@ -77,6 +77,9 @@ export async function generateMetadata(props, parent) {
   return {
     title: post.title,
     description: post.metadesc,
+    alternates: {
+      canonical: post.slug,
+    },
     openGraph: {
       title: post.title,
       description: post.summary,
@@ -138,7 +141,7 @@ export default async function PostPage(props) {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Article',
+        '@type': 'BlogPosting',
         '@id': `${siteMetadata.siteUrl}${post.slug}#article`,
         isPartOf: {
           '@id': `${siteMetadata.siteUrl}/#website`,
@@ -152,9 +155,14 @@ export default async function PostPage(props) {
         datePublished: post.date,
         dateModified: post.lastmod,
         description: post.summary,
+        wordCount: post.body.raw.split(/\s+/).length,
+        keywords: post.tags?.join(', '),
+        articleSection: post.categories[0],
         image: {
           '@type': 'ImageObject',
           url: post.ogImage,
+          width: 1200,
+          height: 630,
         },
         mainEntityOfPage: {
           '@type': 'WebPage',
