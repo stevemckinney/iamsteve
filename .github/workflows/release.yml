@@ -32,19 +32,63 @@ jobs:
           CURRENT_VERSION=$(node -p "require('./package.json').version")
           echo "version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
 
-      - name: Bump patch version
+      - name: Determine version bump type
+        id: bump_type
+        run: |
+          # Get the merge commit message (includes branch name for PR merges)
+          MERGE_MSG=$(git log -1 --pretty=%B)
+
+          # Get all commit messages since last tag (for squash merges)
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -n "$LAST_TAG" ]; then
+            COMMIT_MSGS=$(git log ${LAST_TAG}..HEAD --pretty=%B)
+          else
+            COMMIT_MSGS=$(git log -10 --pretty=%B)
+          fi
+
+          # Combine both for checking
+          ALL_MSGS="$MERGE_MSG $COMMIT_MSGS"
+
+          echo "Checking messages for version bump type..."
+          echo "$ALL_MSGS"
+
+          # Check for breaking changes (major)
+          if echo "$ALL_MSGS" | grep -qiE "(breaking|major/|BREAKING CHANGE)"; then
+            echo "type=major" >> $GITHUB_OUTPUT
+            echo "Detected: MAJOR bump"
+          # Check for features (minor)
+          elif echo "$ALL_MSGS" | grep -qiE "(feat/|feature/|feat:|feat\()"; then
+            echo "type=minor" >> $GITHUB_OUTPUT
+            echo "Detected: MINOR bump"
+          # Default to patch
+          else
+            echo "type=patch" >> $GITHUB_OUTPUT
+            echo "Detected: PATCH bump"
+          fi
+      - name: Bump version
         id: bump_version
         run: |
-          # Split version into parts
           IFS='.' read -r MAJOR MINOR PATCH <<< "${{ steps.current_version.outputs.version }}"
 
-          # Increment patch version
-          NEW_PATCH=$((PATCH + 1))
-          NEW_VERSION="${MAJOR}.${MINOR}.${NEW_PATCH}"
+          BUMP_TYPE="${{ steps.bump_type.outputs.type }}"
 
+          # Calculate new version based on bump type
+          case "$BUMP_TYPE" in
+            major)
+              NEW_VERSION="$((MAJOR + 1)).0.0"
+              ;;
+            minor)
+              NEW_VERSION="${MAJOR}.$((MINOR + 1)).0"
+              ;;
+            *)
+              NEW_VERSION="${MAJOR}.${MINOR}.$((PATCH + 1))"
+              ;;
+          esac
+
+          echo "Current version: ${{ steps.current_version.outputs.version }}"
+          echo "Bump type: $BUMP_TYPE"
+          echo "New version: $NEW_VERSION"
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-
-          # Update package.json
           npm version $NEW_VERSION --no-git-tag-version
 
       - name: Commit version bump

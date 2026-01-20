@@ -1,6 +1,29 @@
-@import '../css/internal.css';
-@import '../css/post.css';
-@import '../css/prism.css';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import '../css/primitives.css';
+@import '../css/theme.css';
+@import '../css/utilities.css';
+@import '../css/typography.css';
+@import '../css/prism.css' layer(base);
+
+:focus {
+  outline: none;
+}
+
+:not(input):focus-visible {
+  --outline-color: var(--color-cornflour-400);
+  outline: 2px solid var(--outline-color);
+  outline-offset: 6px;
+  border-radius: minmax(6px, calc(inherit + 6px));
+}
+
+@media (prefers-color-scheme: dark) {
+  :not(input):focus-visible {
+    --outline-color: var(--color-cornflour-700);
+  }
+}
+
+.tabbar-hidden {
+  @media not all and (min-width: 1024px) {
+    transform: translateY(calc(100% + 0.5rem));
+    transition: transform 0.2s ease;
+  }
+}

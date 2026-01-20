@@ -1,6 +1,7 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
+import { cn } from '@/lib/utils'
 import Button from '@/components/button'
 
 const NewsletterForm = ({
@@ -79,61 +80,141 @@ const NewsletterForm = ({
     }
   }
 
+  const inputClasses = cn(
+    'form-input',
+    'border-0',
+    'w-full',
+    'text-base',
+    'bg-linear-to-b',
+    'from-[rgb(79_64_63/0.03)]',
+    'from-0%',
+    'to-[rgb(79_64_63/0)]',
+    'to-100%',
+    'px-4',
+    'py-3',
+    'rounded-sm',
+    'placeholder-fern-1100/30',
+    'shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_64_63/0.1)]',
+    'dark:shadow-[inset_0_0_0_1px_var(--color-surface-02)]',
+    'focus-visible:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_127_218),0_0_0_6px_rgb(79_127_218/0.08)]',
+    'dark:focus-visible:shadow-[0_-1px_var(--color-cornflour-600),0_0_0_6px_color-mix(in_srgb,_var(--color-cornflour-600),transparent_80%)]',
+    'bg-input'
+  )
+
   return (
     <>
-      <div className={`${className}`}>
+      <div className={className}>
         {subscribed && (
           <div
-            className={`bg-grass-50/40 rounded-sm ring-1 ring-grass-400/40 text-grass-800 px-3 py-2 mb-8`}
+            className={cn(
+              'bg-grass-50/40',
+              'rounded-sm',
+              'ring-1',
+              'ring-grass-400/40',
+              'text-grass-800',
+              'px-3',
+              'py-2',
+              'mb-8'
+            )}
           >
             {message && <p className="m-0 text-sm">{message}</p>}
           </div>
         )}
         {error && (
           <div
-            className={`bg-rio-50/40 rounded-sm ring-1 ring-rio-400/40 text-rio-800 px-3 py-2 mb-8`}
+            className={cn(
+              'bg-rio-50/40',
+              'rounded-sm',
+              'ring-1',
+              'ring-rio-400/40',
+              'text-rio-800',
+              'px-3',
+              'py-2',
+              'mb-8'
+            )}
           >
             {message && <p className="m-0">{message}</p>}
           </div>
         )}
-        <form className="@container flex flex-col gap-10" onSubmit={subscribe}>
-          <div className="@container flex flex-col @xl:flex-row gap-6">
-            <div className="flex flex-col @xl:w-2/5">
+        <form
+          className={cn('@container', 'flex', 'flex-col', 'gap-10')}
+          onSubmit={subscribe}
+        >
+          <div
+            className={cn(
+              '@container',
+              'flex',
+              'flex-col',
+              '@xl:flex-row',
+              'gap-6'
+            )}
+          >
+            <div className={cn('flex', 'flex-col', '@xl:w-2/5')}>
               <label
                 htmlFor={`input-name-${unique}`}
-                className="font-sans text-base font-medium lowercase text-fern-1100 leading-none mb-1"
+                className={cn(
+                  'font-sans',
+                  'text-base',
+                  'font-medium',
+                  'lowercase',
+                  'text-emphasis',
+                  'leading-none',
+                  'mb-1'
+                )}
               >
                 First name
               </label>
-              <p className="text-sm text-ui-body opacity-80 leading-none mb-3">
+              <p
+                className={cn(
+                  'text-sm',
+                  'text-ui-body',
+                  'opacity-80',
+                  'leading-none',
+                  'mb-3'
+                )}
+              >
                 What do you go by?
               </p>
               <input
                 type="text"
-                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)]`}
+                className={inputClasses}
                 name="fields[first_name]"
                 id={`input-name-${unique}`}
                 ref={inputName}
                 disabled={subscribed}
               />
             </div>
-            <div className="flex flex-col @xl:w-3/5">
+            <div className={cn('flex', 'flex-col', '@xl:w-3/5')}>
               <label
                 htmlFor={`input-email-${unique}`}
-                className="font-sans text-base font-medium lowercase text-fern-1100 leading-none mb-1"
+                className={cn(
+                  'font-sans',
+                  'text-base',
+                  'font-medium',
+                  'lowercase',
+                  'text-emphasis',
+                  'leading-none',
+                  'mb-1'
+                )}
               >
                 Email
               </label>
-              <p className="text-sm text-ui-body opacity-80 leading-none mb-3">
+              <p
+                className={cn(
+                  'text-sm',
+                  'text-ui-body',
+                  'opacity-80',
+                  'leading-none',
+                  'mb-3'
+                )}
+              >
                 Your best email address
               </p>
               <input
                 type="email"
                 autoComplete="email"
                 autoCapitalize="none"
-                className={`form-input w-full text-base shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_64_63_/_0.1)] bg-gradient-to-b from-[rgb(79_64_63_/_0.03)] from-0% to-[rgb(79_64_63_/_0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63_/_0.2),_0_0_0_1px_rgb(79_127_218),_0_0_0_6px_rgb(79_127_218_/_0.08)] ${
-                  emailError ? 'border-red-500' : ''
-                }`}
+                className={cn(inputClasses, emailError && 'border-red-500')}
                 id={`input-email-${unique}`}
                 name="email_address"
                 ref={inputEmail}
@@ -142,18 +223,50 @@ const NewsletterForm = ({
                 onChange={() => setEmailError('')}
               />
               {emailError && (
-                <p className="text-red-500 text-sm mt-1">{emailError}</p>
+                <p className={cn('text-red-500', 'text-sm', 'mt-1')}>
+                  {emailError}
+                </p>
               )}
             </div>
           </div>
-          <div className="flex flex-col flex-col-reverse @sm:flex-row gap-4 items-center justify-between">
-            <p className="m-0 p-0 text-fern-700 flex-1 text-center @sm:text-left">
-              Join {initialCount.toLocaleString()}+ designers
+          <div
+            className={cn(
+              'flex',
+              'flex-col',
+              'flex-col-reverse',
+              '@sm:flex-row',
+              'gap-4',
+              'items-center',
+              'justify-between'
+            )}
+          >
+            <p
+              className={cn(
+                'm-0',
+                'p-0',
+                'text-fern-700',
+                'flex-1',
+                'text-center',
+                '@sm:text-left'
+              )}
+            >
+              Join {subscriberCount.toLocaleString()}+ designers
             </p>
             <Button
               theme="dandelion"
               aria-label="Subscribe to the newsletter"
-              className="select-none w-full @sm:w-[auto] @sm:grow-0 flex-auto font-ui text-base/tight lowercase text-center"
+              className={cn(
+                'button-dandelion',
+                'select-none',
+                'w-full',
+                '@sm:w-auto',
+                '@sm:grow-0',
+                'flex-auto',
+                'font-ui',
+                'text-base/tight',
+                'lowercase',
+                'text-center'
+              )}
               disabled={subscribed}
             >
               Sign me up

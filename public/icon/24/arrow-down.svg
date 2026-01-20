@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" class="arrow-down">
+<svg viewBox="0 0 24 24">
+  <g class="arrow-down">
     <path d="M12 22V2" class="stroke-current stroke-2 sl-r"/>
     <path d="m6 16 6 6 6-6" class="stroke-current stroke-2 sl-r"/>
   </g>

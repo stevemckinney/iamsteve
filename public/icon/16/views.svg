@@ -1,0 +1,9 @@
+<svg viewBox="0 0 16 16">
+  <g class="views">
+    <g class="fill-(--icon-fill) stroke-current stroke-2 sl-r">
+      <path d="M2 4h4v10H2z" class="fill-white stroke-current stroke-2 sl-r"/>
+      <path d="M6 6h4v8H6z" class="fill-white stroke-current stroke-2 sl-r"/>
+      <path d="M10 2h4v12h-4z" class="fill-white stroke-current stroke-2 sl-r"/>
+    </g>
+  </g>
+</svg>

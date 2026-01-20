@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" class="collections">
-    <circle cx="17.5" cy="17.5" r="3.5" class="fill-white stroke-current stroke-2 sl-r"/>
-    <path d="M10 14H3v7h7v-7Z" class="fill-white stroke-current stroke-2 sl-r"/>
-    <path d="M8 10h8l-4-7-4 7Z" class="fill-white stroke-current stroke-2 sl-r"/>
+<svg viewBox="0 0 24 24">
+  <g class="collections">
+    <path d="M8 6H3v15h5V6Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="m17.812 4.005-4.83 1.294 4.209 15.706 4.83-1.294-4.21-15.706Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M13 3H8v18h5V3Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
   </g>
 </svg>

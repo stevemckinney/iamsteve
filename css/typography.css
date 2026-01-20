@@ -1,0 +1,29 @@
+/**
+ * Typography
+ *
+ * Font families that require additional CSS properties beyond what can be
+ * defined in @theme. These extend the basic font utilities that Tailwind v4
+ * automatically generates from @theme variables.
+ */
+
+/**
+ * font-ui - Display font with specific variation settings and lowercase
+ * Extends font-display with custom width/weight and text transformation
+ */
+@utility font-ui {
+  font-family: var(--font-display);
+  font-variation-settings: 'wdth' 100, 'wght' 500;
+  text-transform: lowercase;
+}
+
+/**
+ * Mono font variant configuration
+ * Note: Use this as a @layer to extend the base font-mono utility
+ * rather than replacing it entirely
+ */
+@layer utilities {
+  .font-mono {
+    font-variant-numeric: lining-nums proportional-nums;
+    font-variation-settings: 'salt' on;
+  }
+}

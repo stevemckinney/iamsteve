@@ -1,0 +1,5 @@
+<svg viewBox="0 0 16 16">
+  <g class="caret-right">
+    <path d="m6 4 6 4-6 4V4Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

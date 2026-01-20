@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { Envelope } from '@/components/illustration'
 import ErrorBoundary from '@/components/error-boundary'
 import Newsletter from '@/components/newsletter'
 
@@ -10,14 +10,8 @@ const Subscribe = ({
   return (
     <section className={`${className} flex flex-col items-center gap-8`}>
       <header className={`flex flex-col gap-2 items-center`}>
-        <Image
-          src="/images/illustration/spot/envelope.svg"
-          width={96}
-          height={96}
-          alt="Illustration of a sealed envelope"
-          className="mb-2"
-        />
-        <h2 className="text-3xl sm:text-5xl font-display font-variation-bold lowercase text-fern-1100 text-center">
+        <Envelope width={96} height={96} className="mb-2" />
+        <h2 className="text-3xl sm:text-5xl font-display font-variation-bold lowercase text-heading text-center">
           {title}
         </h2>
         <p className="m-0 text-base text-ui-body text-balance text-center max-w-[40ch]">

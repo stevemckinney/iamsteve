@@ -1,8 +1,6 @@
 import './global.css'
 import Script from 'next/script'
 import { Suspense } from 'react'
-import { ThemeProvider } from '@/components/theme-provider'
-import { ModeToggle } from '@/components/mode-toggle'
 import siteMetadata from '@/content/metadata'
 
 import Header from '@/components/header'
@@ -86,13 +84,20 @@ const jsonLD = {
       sameAs: [
         'https://twitter.com/irsteve',
         'https://instagram.com/stevemckinney',
-        'https://uk.linkedin.com/in/steve-mckinney-5b5836102',
+        'https://www.linkedin.com/in/smcknny/',
       ],
       homeLocation: {
         '@type': 'City',
         name: 'Manchester',
       },
       jobTitle: 'User interface designer',
+      knowsAbout: [
+        'Web Design',
+        'Visual Design',
+        'UI Design',
+        'Typography',
+        'CSS',
+      ],
       worksFor: {
         '@id': `${siteMetadata.siteUrl}/#organization`,
       },
@@ -112,12 +117,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className="light overflow-x-clip"
-      style={{ colorScheme: 'light' }}
-      suppressHydrationWarning
-    >
+    <html lang="en" className="overflow-x-hidden lg:overflow-x-clip">
       <head>
         <meta
           name="apple-mobile-web-app-status-bar-style"
@@ -146,68 +146,76 @@ export default function RootLayout({ children }) {
       {/**
        * No gap-y-18 to create space between the footer because it throws off
        * the border alignment within the header
+       * bg-[light-dark(url(/images/texture.png),url(/images/texture-dark.png))]
        */}
       <body
-        className={`overflow-x-hidden antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] bg-[172px_auto] bg-blend-multiply bg-neutral-01-150 text-fern-1100`}
+        className={`antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas text-body overflow-x-hidden lg:overflow-x-clip`}
       >
         <Sprite16 />
         <Sprite24 />
         <Logo />
         <div className="grid layout relative gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto items-baseline">
-          <ModeToggle />
-          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-            <Header />
-            {children}
-            <Suspense fallback={<div className="col-start-container-start col-end-container-end h-[600px]" />}>
-              <FooterProfile />
-            </Suspense>
-            <footer className="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-18 md:py-18">
-              <p className="flex flex-1 max-md:flex-col max-md:items-center gap-1 text-balance text-center">
-                <Icon icon="bee" /> Designed in Manchester using Figma & Next.js
-              </p>
-              <ul className="flex gap-8">
-                <li>
+          <Header />
+          {children}
+          <Suspense
+            fallback={
+              <div className="col-start-container-start col-end-container-end h-[600px]" />
+            }
+          >
+            <FooterProfile />
+          </Suspense>
+          <footer className="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-18 md:py-18">
+            <p className="flex flex-1 max-md:flex-col max-md:items-center gap-1 text-balance text-center">
+              <Icon icon="bee" variant="header" /> Designed in Manchester using
+              Figma & Next.js
+            </p>
+            <ul className="flex gap-8">
+              <li>
+                <Link
+                  href="#top"
+                  className="text-emphasis hover:text-link-hover transition duration-200 ease-linear"
+                >
+                  Top
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/feed.xml"
+                  className="text-emphasis hover:text-link-hover transition duration-200 ease-linear"
+                >
+                  RSS
+                </Link>
+              </li>
+              <li>
+                <p className="text-ui-body">
+                  {`©`}{' '}
                   <Link
-                    href="#top"
-                    className="text-fern-1100 hover:text-dandelion-600 transition duration-200 ease-linear"
+                    href="/"
+                    className="text-ui-body hover:text-link-hover transition duration-200 ease-linear"
                   >
-                    Top
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/feed.xml"
-                    className="text-fern-1100 hover:text-dandelion-600 transition duration-200 ease-linear"
-                  >
-                    RSS
-                  </Link>
-                </li>
-                <li>
-                  <p className="text-ui-body">
-                    {`©`}{' '}
-                    <Link
-                      href="/"
-                      className="text-ui-body hover:text-dandelion-600 transition duration-200 ease-linear"
-                    >
-                      {siteMetadata.title}
-                    </Link>{' '}
-                    {`${new Date().getFullYear()}`}
-                  </p>
-                </li>
-              </ul>
-            </footer>
-            <div className="col-container relative -top-4 pb-24 flex flex-row items-center gap-8">
-              <span
-                className="flex-1 bg-[url(/images/dash.svg)] h-[2px]"
-                aria-hidden="true"
-              />
-              <Icon icon="logo" className="text-fern-1100" size={32} />
-              <span
-                className="flex-1 bg-[url(/images/dash.svg)] h-[2px]"
-                aria-hidden="true"
-              />
-            </div>
-          </ThemeProvider>
+                    {siteMetadata.title}
+                  </Link>{' '}
+                  {`${new Date().getFullYear()}`}
+                </p>
+              </li>
+            </ul>
+          </footer>
+          <div className="col-container relative -top-4 pb-24 flex flex-row items-center gap-8">
+            <span
+              className="flex-1 bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] h-[2px]"
+              aria-hidden="true"
+            />
+            <Icon
+              icon="logo"
+              className="text-emphasis"
+              variant="header"
+              size={32}
+            />
+            <span
+              className="flex-1 bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] h-[2px]"
+              aria-hidden="true"
+            />
+          </div>
         </div>
       </body>
       {process.env.NODE_ENV === 'production' && (

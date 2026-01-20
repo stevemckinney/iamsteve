@@ -1,12 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="97" height="97" fill="none" viewBox="0 0 97 97">
-  <rect width="84" height="84" x="6.788" y="6.788" class="fill-lowlight" class="stroke-border" stroke-width="2" rx="16"/>
-  <rect width="84" height="78" x="6.788" y="6.788" class="fill-lowlight" class="stroke-border" stroke-width="2" rx="16"/>
-  <rect width="84" height="72" x="6.788" y="6.788" class="fill-lowlight" class="stroke-border" stroke-width="2" rx="16"/>
-  <g class="opacity-mid">
-    <path class="fill-border" fill-rule="evenodd" d="M63.788 78.788h11c8.836 0 16-7.164 16-16v-11a9 9 0 0 1-9 9 9 9 0 0 0-9 9 9 9 0 0 1-9 9Z" clip-rule="evenodd"/>
-    <path class="fill-border" d="M74.788 78.788v.5-.5Zm0-.5h-11v1h11v-1Zm15.5-15.5c0 8.56-6.94 15.5-15.5 15.5v1c9.112 0 16.5-7.388 16.5-16.5h-1Zm0-11v11h1v-11h-1Zm0 0a8.5 8.5 0 0 1-8.5 8.5v1a9.5 9.5 0 0 0 9.5-9.5h-1Zm-8.5 8.5a9.5 9.5 0 0 0-9.5 9.5h1a8.5 8.5 0 0 1 8.5-8.5v-1Zm-9.5 9.5a8.5 8.5 0 0 1-8.5 8.5v1a9.5 9.5 0 0 0 9.5-9.5h-1Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" fill="none" viewBox="0 0 96 96">
+  <rect width="84" height="84" x="6" y="6" fill="light-dark(rgb(252 249 248), rgb(202 231 222))" stroke="light-dark(rgb(252 249 248), rgb(202 231 222))" stroke-width="2" rx="16"/>
+  <rect width="84" height="84" x="6" y="6" fill="light-dark(rgb(232 220 217), rgb(118 176 159))" stroke="light-dark(rgb(252 249 248), rgb(202 231 222))" stroke-width="2" rx="16"/>
+  <rect width="84" height="78" x="6" y="6" fill="light-dark(rgb(232 220 217), rgb(118 176 159))" stroke="light-dark(rgb(162 143 140), rgb(56 120 103))" stroke-width="2" rx="16"/>
+  <rect width="84" height="72" x="6" y="6" fill="light-dark(rgb(232 220 217), rgb(118 176 159))" stroke="light-dark(rgb(162 143 140), rgb(56 120 103))" stroke-width="2" rx="16"/>
+  <g opacity=".4">
+    <path fill="light-dark(rgb(162 143 140), rgb(56 120 103))" fill-rule="evenodd" d="M63 78h11c8.837 0 16-7.163 16-16V51a9 9 0 0 1-9 9 9 9 0 0 0-9 9 9 9 0 0 1-9 9Z" clip-rule="evenodd"/>
+    <path fill="light-dark(rgb(162 143 140), rgb(56 120 103))" d="M74 78v.5-.5Zm0-.5H63v1h11v-1ZM89.5 62c0 8.56-6.94 15.5-15.5 15.5v1c9.113 0 16.5-7.387 16.5-16.5h-1Zm0-11v11h1V51h-1Zm0 0a8.5 8.5 0 0 1-8.5 8.5v1a9.5 9.5 0 0 0 9.5-9.5h-1ZM81 59.5a9.5 9.5 0 0 0-9.5 9.5h1a8.5 8.5 0 0 1 8.5-8.5v-1ZM71.5 69a8.5 8.5 0 0 1-8.5 8.5v1a9.5 9.5 0 0 0 9.5-9.5h-1Z"/>
   </g>
-  <path class="fill-lowlight" d="M6.788 22.788c0-8.837 7.163-16 16-16h52c8.836 0 16 7.163 16 16v24c0 17.673-14.327 32-32 32h-36c-8.837 0-16-7.164-16-16v-40Z"/>
-  <path class="fill-foreground" class="stroke-border" stroke-width="2" d="M6.788 22.788c0-8.837 7.163-16 16-16h52.571c8.521 0 15.429 6.907 15.429 15.428v29.572a9 9 0 0 1-9 9 9 9 0 0 0-9 9 9 9 0 0 1-9 9h-41c-8.837 0-16-7.164-16-16v-40Z"/>
-  <rect width="84" height="84" x="6.788" y="6.788" class="stroke-border" stroke-width="2" rx="16"/>
+  <path fill="light-dark(rgb(232 220 217), rgb(118 176 159))" d="M6 22c0-8.837 7.163-16 16-16h52c8.837 0 16 7.163 16 16v24c0 17.673-14.327 32-32 32H22c-8.837 0-16-7.163-16-16V22Z"/>
+  <path fill="light-dark(#fff, #1a1a1a)" stroke="light-dark(rgb(162 143 140), rgb(56 120 103))" stroke-width="2" d="M6 22c0-8.837 7.163-16 16-16h52.571C83.092 6 90 12.908 90 21.429V51a9 9 0 0 1-9 9 9 9 0 0 0-9 9 9 9 0 0 1-9 9H22c-8.837 0-16-7.163-16-16V22Z"/>
+  <rect width="84" height="84" x="6" y="6" stroke="light-dark(rgb(162 143 140), rgb(56 120 103))" stroke-width="2" rx="16"/>
 </svg>

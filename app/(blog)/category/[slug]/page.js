@@ -122,7 +122,7 @@ export default async function BlogCategory(props) {
           <Title>{data.title}</Title>
           <Description>{data.description}</Description>
         </Column>
-        <ul className="md:col-span-1 grid grid-cols-2 gap-x-4 md:gap-x-8 self-end column-categories lg:-mb-3">
+        <ul className="md:col-span-1 grid grid-cols-2 gap-x-4 md:gap-x-8 self-end column-categories lg:-mb-2">
           {categories.map((category) => {
             if (category.parent === false || category.exclude === true) return
 
@@ -135,7 +135,7 @@ export default async function BlogCategory(props) {
                   <Category
                     size={24}
                     badge={false}
-                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-dandelion-600 transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
                   >
                     {category.title}
                   </Category>

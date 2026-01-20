@@ -1,3 +1,5 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3.60584 1.98793L14.0103 8.05717L7.94101 8.9242L4.47287 14.1264L3.60584 1.98793Z" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<svg viewBox="0 0 16 16">
+  <g class="cursor">
+    <path d="m3.606 1.988 10.404 6.07-6.069.866-3.468 5.202-.867-12.138Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

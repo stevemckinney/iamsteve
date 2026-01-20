@@ -1,0 +1,6 @@
+<svg viewBox="0 0 16 16">
+  <g class="collections">
+    <path d="M7 3H3v11h4V3Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M10.864 3 7 4.035 9.686 14.06l3.864-1.035L10.864 3Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

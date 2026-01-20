@@ -49,7 +49,7 @@ const Large = ({ frontmatter, image, className }) => {
   const imageColor = theme ? theme.toString() : '#e8dcd9'
 
   return (
-    <article className="group/large relative flex flex-col self-start overflow-hidden transition duration-200 bg-white rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:bg-neutral-01-50 bg-clip-padding">
+    <article className="group/large relative flex flex-col self-start overflow-hidden transition duration-200 bg-surface rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:bg-neutral-01-50 bg-clip-padding">
       {image && large && (
         <Link
           href={slug}
@@ -59,7 +59,7 @@ const Large = ({ frontmatter, image, className }) => {
           aria-labelledby={`title-${_id}`}
         >
           <>
-            <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active/large:before:opacity-100" />
+            <div className="absolute before:transition before:duration-200 before:ease-in z-1 inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active/large:before:opacity-100" />
             <LargeImage
               image={large}
               imageColor={imageColor}
@@ -71,46 +71,37 @@ const Large = ({ frontmatter, image, className }) => {
       )}
       {image && !large && (
         <>
-          <div
-            className="flex items-center self-stretch relative"
-            style={{ backgroundColor: `${imageColor}` }}
-          >
-            <div className="absolute before:transition before:duration-200 before:ease-in z-[1] inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active/large:before:opacity-100" />
+          <div className="flex items-center self-stretch relative">
+            <div className="absolute before:transition before:duration-200 before:ease-in z-1 inset-0 bg-fade before:z-[-1] before:absolute before:bg-fade-neutral before:inset-0 before:opacity-0 group-active/large:before:opacity-100" />
             {categories && categories.includes('Design') ? (
               <Placeholder
                 category="Design"
-                kind="post"
+                slug={slug}
                 width={592}
                 height={384}
                 href={slug}
-                title=""
                 className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
-                style={{ backgroundColor: `${imageColor}` }}
-                aria-labelledby={`title-${_id}`}
-                tabIndex="0"
+                alt={title}
               />
             ) : (
               <Placeholder
                 category="Code"
-                kind="post"
+                slug={slug}
                 width={592}
                 height={384}
                 href={slug}
-                title=""
                 className={`flex items-center justify-center aspect-[1.6086956522/1] ${className}`}
-                style={{ backgroundColor: `${imageColor}` }}
-                aria-labelledby={`title-${_id}`}
-                tabIndex="0"
+                alt={title}
               />
             )}
           </div>
         </>
       )}
       {/* spacing is weirdly distributed in the content to accommodate for scrolling categories */}
-      <div className="flex flex-col flex-auto relative before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-gradient-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50/10 active:before:to-neutral-01-50/30 active:before:to-neutral-01-50 active:before:to-neutral-01-50/80 active:before:via-50% before:z-[3] pb-8 md:pb-[2.625rem]">
+      <div className="flex flex-col flex-auto relative before:w-16 before:h-9 before:absolute before:top-7 before:right-0 before:bg-linear-to-r before:from-white/0 before:via-white/10 before:via-white/30 before:via-white/80 before:to-white active:before:from-neutral-01-50/0 active:before:to-neutral-01-50/10 active:before:to-neutral-01-50/30 active:before:to-neutral-01-50 active:before:to-neutral-01-50/80 active:before:via-50% before:z-3 pb-8 md:pb-10.5">
         {categories && (
           <div
-            className={`flex flex-row gap-4 relative z-[2] overflow-x-auto pb-4 md:pb-5 px-8 md:px-12 pt-[1px]`}
+            className={`flex flex-row gap-4 relative z-2 overflow-x-auto pb-4 md:pb-5 px-8 md:px-12 pt-px`}
           >
             {categories.map((category) => (
               <Category key={category} size={24} tabIndex="1">
@@ -119,14 +110,14 @@ const Large = ({ frontmatter, image, className }) => {
             ))}
           </div>
         )}
-        <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] md:pt-5 md:gap-[1.375rem] md:px-12">
+        <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] md:pt-5 md:gap-5.5 md:px-12">
           <h2
             className="p-0 m-0 text-3xl leading-none lowercase font-display font-variation-bold hyphens-auto md:text-5xl"
             id={`title-${_id}`}
           >
             <Link
               href={slug}
-              className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-[1]"
+              className="text-heading before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1"
             >
               {title}
             </Link>

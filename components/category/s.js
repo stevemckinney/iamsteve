@@ -42,7 +42,7 @@
 //
 //   return (
 //     <RadixSelect.Trigger
-//       className={`cursor-default select-none rounded text-2xl focus-visible:outline-none data-[state=open]:[background-color:color-mix(in_oklab,currentcolor,transparent_90%)] ${theme} flex gap-2 px-3 font-[inherit] [font-size:inherit] [letter-spacing:inherit] [text-transform:inherit] items-center hover:[background-color:color-mix(in_oklab,currentcolor,transparent_95%)]`}
+//       className={`cursor-default select-none rounded text-2xl focus-visible:outline-hidden data-[state=open]:bg-[color-mix(in_oklab,currentcolor,transparent_90%)] ${theme} flex gap-2 px-3 font-[inherit] [font-size:inherit] tracking-[inherit] [text-transform:inherit] items-center hover:bg-[color-mix(in_oklab,currentcolor,transparent_95%)]`}
 //     >
 //       {children}
 //       <Icon icon="angle-down" className={`text-inherit`} size={32} />
@@ -76,7 +76,7 @@
 //           <RadixSelect.Portal forceMount>
 //             <RadixSelect.Content
 //               align="start"
-//               className="mt-1 overflow-hidden rounded bg-white/75 p-2 text-left shadow backdrop-blur"
+//               className="mt-1 overflow-hidden rounded bg-white/75 p-2 text-left shadow-sm backdrop-blur-sm"
 //               asChild
 //             >
 //               <motion.div
@@ -130,7 +130,7 @@
 //         await closeMenu()
 //         onSelect()
 //       }}
-//       className="w-40 select-none rounded px-2 py-1.5 text-gray-700 data-[highlighted]:bg-sky-400 data-[highlighted]:text-white data-[highlighted]:focus:outline-none"
+//       className="w-40 select-none rounded px-2 py-1.5 text-gray-700 data-highlighted:bg-sky-400 data-highlighted:text-white data-highlighted:focus:outline-hidden"
 //       asChild
 //     >
 //       <motion.div animate={controls}>{children}</motion.div>

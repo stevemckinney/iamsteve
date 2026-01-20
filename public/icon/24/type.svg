@@ -1,15 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24">
   <g class="type">
-    <path d="m12 3 3 6.5V16H6l6-13Z" class="fill-white"/>
-    <g class="type-24">
-      <mask id="a" width="13" height="21" x="2" y="1" class="a" maskUnits="userSpaceOnUse" style={{'mask-type':'alpha'}}>
-        <path d="M2 1h13v21H2z" class="type-24"/>
-      </mask>
-      <g stroke-linejoin="round" stroke-width="2" mask="url(#a)">
-        <path d="m3 24 9-20 9 20" class="fill-none stroke-current stroke-2"/>
-        <path d="M6 16h12" class="fill-none stroke-current stroke-2"/>
-      </g>
-    </g>
+    <path d="m12 3 3 6.5V16H6l6-13Z" class="fill-(--icon-fill)"/>
+    <path d="M12 2a1 1 0 0 1 .912.59L15 7.23v4.873l-3-6.666L4.547 22H2.354l8.734-19.41A1 1 0 0 1 12 2Z" class="fill-current"/>
+    <path d="M6 16h9" class="fill-none stroke-current stroke-2 sl-r"/>
     <path d="M16 3h2v18h-2" class="fill-none stroke-current stroke-2 sl-r"/>
     <path d="M20 3h-2v18h2" class="fill-none stroke-current stroke-2 sl-r"/>
   </g>

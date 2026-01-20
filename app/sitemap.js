@@ -23,5 +23,10 @@ export default async function generateSitemap() {
     lastModified: new Date().toISOString().split('T')[0],
   }))
 
-  return [...routes, ...posts]
+  let categories = ['design', 'code', 'typography'].map((cat) => ({
+    url: `${siteMetadata.siteUrl}/category/${cat}`,
+    lastModified: new Date().toISOString().split('T')[0],
+  }))
+
+  return [...routes, ...categories, ...posts]
 }

@@ -1,4 +1,6 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M5 6H3C2.44772 6 2 6.44772 2 7V13C2 13.5523 2.44772 14 3 14H9C9.55228 14 10 13.5523 10 13V10" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="6" y="2" width="8" height="8" rx="1" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<svg viewBox="0 0 16 16">
+  <g class="copy-alternate">
+    <path d="M5 6H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3" class="fill-none stroke-current stroke-2 sl-r"/>
+    <rect width="8" height="8" x="6" y="2" class="fill-(--icon-fill) stroke-current stroke-2 sl-r" rx="1"/>
+  </g>
 </svg>

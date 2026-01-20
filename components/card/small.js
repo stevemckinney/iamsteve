@@ -27,9 +27,9 @@ const Small = ({ frontmatter }) => {
   const url = `/blog/${slug}`
 
   return (
-    <div className="relative flex gap-4 rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:scale-[.99375] bg-white active:bg-neutral-01-50 bg-clip-padding transition ease-linear duration-200 overflow-hidden p-8">
+    <div className="relative flex gap-4 rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced dark:active:shadow-[inset_0_0_0_1px_var(--color-surface-02)] bg-surface active:bg-surface-pressed active:scale-[.99375] bg-clip-padding transition ease-linear duration-200 overflow-hidden p-8">
       {categories && (
-        <div className={`flex flex-row gap-4 relative z-[2] overflow-x-auto`}>
+        <div className={`flex flex-row gap-4 relative z-2 overflow-x-auto`}>
           {categories.slice(0, 1).map((category) => {
             const current = Categories.findIndex(
               (cat) => cat.title === category
@@ -41,7 +41,12 @@ const Small = ({ frontmatter }) => {
                 theme={Categories[current].theme}
                 key={category}
               >
-                <Icon icon={Categories[current].icon} size={24} />
+                <Icon
+                  icon={Categories[current].icon}
+                  size={24}
+                  variant="on-light"
+                  className="dark:text-fern-1100"
+                />
               </ChipIcon>
             )
           })}
@@ -55,7 +60,7 @@ const Small = ({ frontmatter }) => {
           <Link
             href={slug}
             tabIndex="0"
-            className="text-fern-1100 before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-[1]"
+            className="text-heading before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1"
           >
             {title}
           </Link>
@@ -64,7 +69,8 @@ const Small = ({ frontmatter }) => {
           <Icon
             icon="calendar"
             size={16}
-            className="text-fern-1100 relative top-[-1px]"
+            className="text-ui-body relative -top-px"
+            variant="header"
           />
           <Date
             dateString={date}

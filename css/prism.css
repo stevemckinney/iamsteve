@@ -4,27 +4,33 @@
  * by copying from a prismjs compatible theme:
  * https://github.com/PrismJS/prism-themes
  */
+
+@layer prism-base, prism-shared, prism-css, prism-html, prism-javascript;
+
+/**
+ * Base configuration
+ */
 .prose pre {
-  --code-black: theme('colors.fern.1100');
-  --code-red: theme('colors.rio.200');
-  --code-yellow: theme('colors.dandelion.300');
-  --code-green: theme('colors.grass.300');
-  --code-blue: theme('colors.cornflour.300');
-  --code-magenta: theme('colors.magenta.200');
-  --code-cyan: theme('colors.fern.300');
-  --code-white: theme('colors.fern.100');
-  --code-comment: theme('colors.neutral-03.400');
-  --offset-spacing: theme('margin.8');
+  --code-black: light-dark(var(--color-fern-900), var(--color-fern-1100));
+  --code-white: var(--color-neutral-01-50);
+  --code-red: light-dark(var(--color-rio-500), var(--color-rio-200));
+  --code-yellow: light-dark(var(--color-dandelion-500), var(--color-dandelion-300));
+  --code-green: light-dark(var(--color-grass-500), var(--color-grass-300));
+  --code-blue: light-dark(var(--color-cornflour-500), var(--color-cornflour-300));
+  --code-magenta: light-dark(var(--color-magenta-500), var(--color-magenta-200));
+  --code-cyan: light-dark(var(--color-fern-500), var(--color-fern-300));
+  --code-comment: light-dark(var(--color-neutral-02-400), var(--color-neutral-03-400));
+
+  --code-lavender: var(--color-lavender-700);
+  --offset-spacing: 2rem;
   isolation: isolate;
-  color-scheme: dark;
 }
 
 /**
- * basics
+ * Basic formatting
  */
 code[class*='language-'],
 pre[class*='language-'] {
-  color: var(--code-white);
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -38,15 +44,19 @@ pre[class*='language-'] {
 /* code blocks */
 pre[class*='language-'] {
   overflow: auto;
-  padding: theme('padding.8');
+  padding: 2rem;
   max-height: 20lh;
 }
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  border: 1px solid theme('colors.fern.900');
-  border-radius: 20px;
-  background: var(--code-black);
+  color: light-dark(var(--code-black), var(--code-white));
+  border: 1px solid var(--color-surface-raised);
+  background: light-dark(var(--code-white), var(--code-black));
+
+  @media (width >= 640px) {
+    border-radius: 20px;
+  }
 }
 
 /* inline code */
@@ -55,7 +65,7 @@ pre[class*='language-'] {
 }
 
 /**
- * line numbers
+ * Line numbers
  */
 .code-highlight {
   min-width: 100%;
@@ -65,21 +75,23 @@ pre[class*='language-'] {
   position: relative;
   display: block;
   box-shadow: inset 4px 0 rgb(0 0 0 / 0); /* Set placeholder for highlight accent border color to transparent */
-  padding-inline: theme('padding.8');
-  margin-inline: calc(-1 * theme('margin.8'));
+  padding-inline: 2rem;
+  margin-inline: -2rem;
 }
 
-
 .highlight-line {
-  margin-inline: calc(-1 * theme('padding.8'));
+  margin-inline: -2rem;
 }
 
 .highlight-line,
 .highlight-line.line-number:before {
-  background-color: oklch(32.7% 0.108727 258.5); /* Set highlight bg color */
-  color: oklch(83.3% 0.077752 252.1);
+  background-color: light-dark(var(--color-cornflour-0), oklch(32.7% 0.108727 258.5));
+  color: light-dark(var(--color-cornflour-500), oklch(83.3% 0.077752 252.1));
 }
 
+/**
+ * Diff styling
+ */
 .token.prefix.deleted,
 .token.prefix.inserted {
   inline-size: 2ch;
@@ -116,18 +128,18 @@ pre[class*='language-'] {
 
 .line-number::before {
   display: inline-block;
-  padding: 0 theme('padding.8');
-  margin: 0 calc(-1 * calc(theme('padding.8') * 2));
-  width: calc(2ch + calc(theme('padding.8') * 2));
+  padding: 0 2rem;
+  margin: 0 -4rem;
+  width: calc(2ch + 4rem);
   margin-right: 3ch;
   text-align: right;
-  color: theme('colors.fern.800'); /* Line number color */
+  color: light-dark(var(--color-neutral-01-400), var(--color-fern-800));
   content: attr(line);
   position: sticky;
   z-index: 2;
   top: 0;
   left: -32px;
-  background-color: theme('colors.fern.1100');
+  background-color: light-dark(var(--color-neutral-01-50), var(--color-fern-1100));
   mask: linear-gradient(to right, #000 66%, transparent);
 }
 
@@ -136,166 +148,257 @@ pre[class*='language-'] {
   z-index: 1;
 }
 
-/**
- * theme
- **/
+@layer prism-shared {
+  /**
+   * Shared tokens across all languages
+   */
 
-/* css, scss */
-.token.atrule .token.rule,
-.token.atrule .token.number,
-.token.atrule .token.unit {
-  color: var(--code-red);
-}
+  /* Comments */
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: var(--code-comment);
+  }
 
-.token.selector {
-  color: var(--code-yellow);
-}
+  /* Punctuation */
+  .token.punctuation {
+    color: var(--code-comment);
+  }
 
-.token.selector .token.variable {
-  color: var(--code-yellow);
-}
+  /* Strings & Characters */
+  .token.string,
+  .token.char {
+    color: var(--code-yellow);
+  }
 
-.token.keyword + .token.selector:has(.token.variable),
-.token.keyword {
-  color: var(--code-white);
-}
+  /* Numbers & Units */
+  .token.number,
+  .token.unit {
+    color: var(--code-magenta);
+  }
 
-.token.property {
-  color: theme('colors.magenta.100');
-  color: var(--code-cyan);
-}
+  /* Booleans & Constants */
+  .token.boolean,
+  .token.constant {
+    color: var(--code-yellow);
+  }
 
-.token.atrule .token.property {
-  color: var(--code-magenta);
-}
+  /* Keywords */
+  .token.keyword {
+    color: light-dark(var(--code-lavender), var(--code-white));
+  }
 
-.code-line:has(.token.keyword + .token.selector) .token.selector {
-  color: var(--code-green);
-}
+  /* Operators */
+  .token.operator {
+    color: light-dark(var(--code-black), var(--code-white));
+  }
 
-/* .language-scss .token.variable { color: var(--code-white); } */
-/* .language-scss .code-line:has(.property:first-child) { color: var(--code-red); } */
-.language-scss .code-line:has(.property:first-child) .function {
-  color: var(--code-yellow);
-}
+  /* Functions */
+  .token.function {
+    color: light-dark(var(--code-black), var(--code-yellow));
+  }
 
-/* variables */
-.token.variable,
-.language-scss .code-line:has(.selector:first-child) .variable {
-  color: var(--code-magenta);
-}
+  /* Variables */
+  .token.variable {
+    color: light-dark(var(--code-black), var(--code-magenta));
+  }
 
-.token.atrule > .token.variable,
-.token.keyword + .token.selector > .token.variable {
-  color: var(--code-white);
-}
+  /* Classes */
+  .token.class-name {
+    color: var(--code-red);
+  }
 
-/* functions */
-.language-scss .function {
-  color: var(--code-blue);
-}
+  /* Symbols */
+  .token.symbol {
+    color: var(--code-magenta);
+  }
 
-.code-line:has(.function, .punctuation, .operator) .operator {
-  color: var(--code-green);
-}
+  /* Built-in */
+  .token.builtin {
+    color: var(--code-yellow);
+  }
 
-/* html */
-.language-markup .token.tag .token.tag,
-.language-markup .token.tag .token.tag .token.punctuation,
-.language-markup .token.tag + .token.punctuation,
-.language-markup .token.attr-value + .token.punctuation {
-  color: var(--code-magenta);
-}
-.language-markup .token.attr-name {
-  color: var(--code-white);
-}
-.language-markup .token.attr-value {
-  color: var(--code-yellow);
-}
+  /* Entities & URLs */
+  .token.entity {
+    color: var(--code-yellow);
+    cursor: help;
+  }
 
-/* comments, punctuation */
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata,
-.token.punctuation {
-  color: var(--code-comment);
-}
+  .token.url {
+    color: var(--code-yellow);
+  }
 
-/* TODO: all below need to be checked */
-.namespace {
-  opacity: 0.7;
-}
+  /* Regex */
+  .token.regex {
+    color: var(--code-yellow);
+  }
 
-.token.tag {
-  color: var(--code-blue);
-}
+  /* Important */
+  .token.important {
+    color: var(--code-yellow);
+  }
 
-.token.class-name {
-  color: var(--code-red);
-}
+  /* Text formatting */
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
 
-.token.boolean,
-.token.constant {
-  color: var(--code-yellow);
-}
+  .token.italic {
+    font-style: italic;
+  }
 
-.token.symbol {
-  color: var(--code-magenta);
-}
+  /* Namespace */
+  .namespace {
+    opacity: 0.7;
+  }
 
-.token.number,
-.token.unit {
-  color: var(--code-magenta);
-}
-
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin {
-  color: var(--code-yellow);
+  /* Tags (generic) */
+  .token.tag {
+    color: var(--code-blue);
+  }
 }
 
-.token.operator {
-  color: var(--code-white);
+@layer prism-css {
+  /**
+   * CSS & SCSS specific tokens
+   */
+
+  /* Selectors */
+  .token.selector {
+    color: var(--code-yellow);
+  }
+
+  .token.selector .token.variable {
+    color: var(--code-yellow);
+  }
+
+  .code-line:has(.token.keyword + .token.selector) .token.selector {
+    color: var(--code-green);
+  }
+
+  /* Properties */
+  .token.property {
+    color: light-dark(var(--color-neutral-02-400), var(--code-cyan));
+  }
+
+  /* At-rules */
+  .token.atrule .token.rule,
+  .token.atrule .token.number,
+  .token.atrule .token.unit {
+    color: var(--code-red);
+  }
+
+  .token.atrule .token.property {
+    color: var(--code-magenta);
+  }
+
+  .token.atrule {
+    color: var(--code-yellow);
+  }
+
+  .token.atrule > .token.variable,
+  .token.keyword + .token.selector > .token.variable {
+    color: light-dark(var(--code-lavender), var(--code-white));
+  }
+
+  /* SCSS specific */
+  .language-scss .code-line:has(.property:first-child) .function {
+    color: var(--code-yellow);
+  }
+
+  .language-scss .code-line:has(.selector:first-child) .variable {
+    color: light-dark(var(--code-black), var(--code-magenta));
+  }
+
+  .language-scss .function {
+    color: var(--code-blue);
+  }
+
+  .code-line:has(.function, .punctuation, .operator) .operator {
+    color: var(--code-green);
+  }
+
+  /* CSS strings */
+  .language-css .token.string,
+  .style .token.string {
+    color: var(--code-yellow);
+  }
+
+  /* Attribute values */
+  .token.attr-value {
+    color: var(--code-yellow);
+  }
 }
 
-.token.entity {
-  color: var(--code-yellow);
-  cursor: help;
+@layer prism-html {
+  /**
+   * HTML & Markup specific tokens
+   */
+
+  /* Tags */
+  .language-markup .token.tag .token.tag,
+  .language-markup .token.tag .token.tag .token.punctuation,
+  .language-markup .token.tag + .token.punctuation,
+  .language-markup .token.attr-value + .token.punctuation {
+    color: var(--code-magenta);
+  }
+
+  /* Attributes */
+  .language-markup .token.attr-name {
+    color: light-dark(var(--code-neutral-02-400), var(--code-white));
+  }
+
+  .token.attr-name {
+    color: var(--code-yellow);
+  }
+
+  /* Attribute values */
+  .language-markup .token.attr-value {
+    color: var(--code-yellow);
+  }
 }
 
-.token.url {
-  color: var(--code-yellow);
-}
+@layer prism-javascript {
+  /**
+   * JavaScript specific tokens
+   */
 
-.language-css .token.string,
-.style .token.string {
-  color: var(--code-yellow);
-}
+  /* Keywords */
+  .token.keyword + .token.selector:has(.token.variable) {
+    color: light-dark(var(--code-lavender), var(--code-white));
+  }
 
-.token.atrule,
-.token.attr-value {
-  color: var(--code-yellow);
-}
+  /* Functions & Methods */
+  .token.method.function {
+    color: light-dark(var(--code-lavender), var(--code-yellow));
+  }
 
-.token.function {
-  color: var(--code-yellow);
-}
+  .token.function-variable {
+    /* TODO: Define specific color scheme */
+    /* Currently inherits from .token.function */
+  }
 
-.token.regex {
-  color: var(--code-yellow);
-}
+  .token.method.function.property-access {
+    /* TODO: Define specific color scheme */
+    /* Currently inherits .token.method.function */
+  }
 
-.token.important {
-  color: var(--code-yellow);
-}
+  /* Variables */
+  .token.dom.variable {
+    /* TODO: Define specific color scheme */
+    /* Currently inherits .token.variable */
+  }
 
-.token.important,
-.token.bold {
-  font-weight: bold;
-}
+  .token.parameter {
+    /* TODO: Define specific color scheme */
+    /* Currently unstyled - needs definition */
+  }
 
-.token.italic {
-  font-style: italic;
+  /* Property access */
+  .token.property-access {
+    /* TODO: Define specific color scheme */
+    /* Currently unstyled - needs definition */
+  }
 }

@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24">
   <g class="clock-reverse">
-    <path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18Z" class="fill-white"/>
-    <path d="M3 9s1.988-2.32 2.727-3.192c.176-.208.382-.436.587-.615C9.1 2.753 13.09 2.237 16.5 4.206a9 9 0 0 1-9 15.588" class="stroke-current stroke-2 sl-r"/>
+    <path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18Z" class="fill-(--icon-fill)"/>
+    <path d="M3 9s1.988-2.32 2.727-3.192c.176-.208.382-.436.587-.615C9.1 2.753 13.09 2.237 16.5 4.206a9 9 0 0 1-9 15.588" class="fill-none stroke-current stroke-2 sl-r"/>
     <path d="m15 15-3-3V8" class="stroke-current stroke-2 sl-r"/>
     <path d="M3 5v4h4" class="stroke-current stroke-2 sl-r"/>
   </g>

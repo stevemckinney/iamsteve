@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" class="clipboard">
-    <rect width="16" height="18" x="4" y="4" class="fill-white stroke-current stroke-2 sl-r" rx="1"/>
-    <path d="M8 4h8v3H8z" class="fill-currentcolor stroke-current stroke-2 sl-r"/>
-    <circle cx="12" cy="3" r="2" class="stroke-current stroke-2 sl-r fill-white"/>
+<svg viewBox="0 0 24 24">
+  <g class="clipboard">
+    <rect width="16" height="18" x="4" y="4" class="fill-(--icon-fill) stroke-current stroke-2 sl-r" rx="1"/>
+    <path d="M8 4h8v3H8z" class="fill-current stroke-current stroke-2 sl-r"/>
+    <circle cx="12" cy="3" r="2" class="stroke-current stroke-2 sl-r fill-(--icon-fill)"/>
   </g>
 </svg>

@@ -1,30 +1,42 @@
-const Icon = ({ icon = 'folder', className = 'text-fern-1100', size = 24 }) => {
-  if (icon === 'design' || icon === 'Design') icon = 'pen'
-  if (
-    icon === 'everything' ||
-    icon === 'archive' ||
-    icon === 'all' ||
-    icon === 'Everything' ||
-    icon === 'Archive' ||
-    icon === 'All'
-  ) {
-    icon = 'folder'
-  }
+import { cn } from '@/lib/utils'
+
+const folderIcons = new Set(['everything', 'archive', 'all', 'folder'])
+const penIcons = new Set(['design', 'pen'])
+
+const variantClasses = {
+  default: 'icon',
+  header: 'icon-header',
+  'on-light': 'icon-on-light',
+  none: '',
+}
+
+const Icon = ({
+  icon = 'folder',
+  className,
+  variant = 'default',
+  size = 24,
+  ...props
+}) => {
+  const normalisedIcon = icon.toLowerCase()
+
+  const resolvedIcon = folderIcons.has(normalisedIcon)
+    ? 'folder'
+    : penIcons.has(normalisedIcon)
+    ? 'pen'
+    : normalisedIcon
+
+  const variantClass = variantClasses[variant] || 'icon'
 
   return (
-    <>
-      <svg
-        width={size}
-        height={size}
-        viewBox={`0 0 ${size} ${size}`}
-        className={className}
-      >
-        <use
-          className={icon.toLowerCase()}
-          xlinkHref={`#${icon.toLowerCase()}-${size}`}
-        />
-      </svg>
-    </>
+    <svg
+      width={size}
+      height={size}
+      viewBox={`0 0 ${size} ${size}`}
+      className={cn('shrink-0', 'text-current', variantClass, className)}
+      {...props}
+    >
+      <use xlinkHref={`#${resolvedIcon}-${size}`} />
+    </svg>
   )
 }
 

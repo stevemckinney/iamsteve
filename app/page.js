@@ -86,7 +86,7 @@ export default async function Home() {
             title="design"
             linkText="Explore design"
             linkHref="/category/design"
-            accentColor="text-rio-400"
+            accentColor="text-rio"
           />
         </Frame>
 
@@ -96,7 +96,7 @@ export default async function Home() {
             title="code"
             linkText="Explore code"
             linkHref="/category/code"
-            accentColor="text-dandelion-400"
+            accentColor="text-dandelion"
           />
         </Frame>
       </main>

@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24">
   <g class="bolt">
-    <path d="m13 10-1-8-6 12h5l1 8 6-12h-5Z" class="fill-white stroke-current stroke-2 sl-r"/>
+    <path d="m13 10-1-8-6 12h5l1 8 6-12h-5Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
   </g>
 </svg>

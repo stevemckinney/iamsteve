@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24">
   <g class="puzzle">
-    <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h11A1.5 1.5 0 0 1 18 5.5V9s4-2 4 3-4 3-4 3v3.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5V15s4 1.5 4-3-4-3-4-3V5.5Z" class="fill-white stroke-current stroke-2 sl-r"/>
+    <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h11A1.5 1.5 0 0 1 18 5.5V9s4-2 4 3-4 3-4 3v3.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5V15s4 1.5 4-3-4-3-4-3V5.5Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
   </g>
 </svg>
