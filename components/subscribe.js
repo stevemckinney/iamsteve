@@ -1,6 +1,6 @@
 import { Envelope } from '@/components/illustration'
 import ErrorBoundary from '@/components/error-boundary'
-import NewsletterForm from '@/components/newsletter-form'
+import Newsletter from '@/components/newsletter'
 
 const Subscribe = ({
   title = 'Get the articles',
@@ -15,12 +15,12 @@ const Subscribe = ({
           {title}
         </h2>
         <p className="m-0 text-base text-ui-body text-balance text-center max-w-[40ch]">
-          Join the RSS alternative and I’ll notify you when the latest posts go
+          Join the RSS alternative and I'll notify you when the latest posts go
           out. Unsubscribe at anytime.
         </p>
       </header>
       <ErrorBoundary>
-        <NewsletterForm unique={unique} />
+        <Newsletter unique={unique} />
       </ErrorBoundary>
       <p className="text-ui-body text-balance text-sm text-center max-w-[55ch]">
         You will receive two emails to begin with. One to confirm your

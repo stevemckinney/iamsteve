@@ -4,16 +4,17 @@ import { useRef, useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
 import Button from '@/components/button'
 
-const NewsletterForm = ({ className = 'w-full', unique = 'footer' }) => {
+const NewsletterForm = ({
+  className = 'w-full',
+  unique = 'footer',
+  initialCount = 700,
+}) => {
   const inputEmail = useRef(null)
   const inputName = useRef(null)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
-  const [subscriberCount, setSubscriberCount] = useState(700)
   const [emailError, setEmailError] = useState('')
-
-  const roundDownToNearest10 = (num) => Math.floor(num / 10) * 10
 
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
