@@ -118,7 +118,8 @@ export default async function CollectionsPage(props) {
       <Header className="max-sm:frame max-sm:frame-24 max-sm:px-8 max-sm:py-12 flex flex-col gap-2 col-start-content-start col-end-content-end md:col-end-7 md:sticky top-8 self-start">
         <Title className="font-variation-bold text-5xl">Collections</Title>
         <Description>
-          Curated design resources organised by topic, from typography and color to tools and techniques.
+          Curated design resources organised by topic, from typography and color
+          to tools and techniques.
         </Description>
         <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
           {collections

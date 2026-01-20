@@ -6,10 +6,13 @@ export async function GET(request, { params }) {
   const post = allPosts.find((p) => p.slug === `/blog/${slug}`)
 
   if (!post) {
-    return new Response('# Not Found\n\nThe requested article does not exist.', {
-      status: 404,
-      headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
-    })
+    return new Response(
+      '# Not Found\n\nThe requested article does not exist.',
+      {
+        status: 404,
+        headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
+      }
+    )
   }
 
   const cleanedMarkdown = cleanMarkdownForLLMs(post.body.raw)
@@ -20,7 +23,9 @@ export async function GET(request, { params }) {
     `author: Steve McKinney`,
     `date: ${post.date}`,
     post.lastmod ? `lastmod: ${post.lastmod}` : null,
-    post.description ? `description: "${post.description.replace(/"/g, '\\"')}"` : null,
+    post.description
+      ? `description: "${post.description.replace(/"/g, '\\"')}"`
+      : null,
     `categories: [${post.categories.map((c) => `"${c}"`).join(', ')}]`,
     `url: https://iamsteve.me${post.slug}`,
     '---',

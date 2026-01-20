@@ -92,7 +92,11 @@ const jsonLD = {
       },
       jobTitle: 'User interface designer',
       knowsAbout: [
-        'Web Design', 'Visual Design', 'UI Design', 'Typography', 'CSS'
+        'Web Design',
+        'Visual Design',
+        'UI Design',
+        'Typography',
+        'CSS',
       ],
       worksFor: {
         '@id': `${siteMetadata.siteUrl}/#organization`,
