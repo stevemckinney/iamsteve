@@ -32,43 +32,45 @@ jobs:
           CURRENT_VERSION=$(node -p "require('./package.json').version")
           echo "version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
 
-      - name: Detect version bump type from branch name
-        id: detect_bump_type
+      - name: Determine version bump type
+        id: bump_type
         run: |
-          # Get the merge commit message which contains the branch name
-          COMMIT_MSG=$(git log -1 --pretty=%B)
-          echo "Commit message: $COMMIT_MSG"
+          # Get the merge commit message (includes branch name for PR merges)
+          MERGE_MSG=$(git log -1 --pretty=%B)
 
-          # Extract branch name from merge commit
-          # Handles both "Merge pull request #X from user/branch" and "Merge branch 'branch'"
-          BRANCH_NAME=""
-          if [[ "$COMMIT_MSG" =~ Merge\ pull\ request\ #[0-9]+\ from\ [^/]+/([^\ ]+) ]]; then
-            BRANCH_NAME="${BASH_REMATCH[1]}"
-          elif [[ "$COMMIT_MSG" =~ Merge\ branch\ \'([^\']+)\' ]]; then
-            BRANCH_NAME="${BASH_REMATCH[1]}"
+          # Get all commit messages since last tag (for squash merges)
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -n "$LAST_TAG" ]; then
+            COMMIT_MSGS=$(git log ${LAST_TAG}..HEAD --pretty=%B)
+          else
+            COMMIT_MSGS=$(git log -10 --pretty=%B)
           fi
 
-          echo "Detected branch: $BRANCH_NAME"
+          # Combine both for checking
+          ALL_MSGS="$MERGE_MSG $COMMIT_MSGS"
 
-          # Determine bump type from branch prefix
-          BUMP_TYPE="patch"
-          if [[ "$BRANCH_NAME" =~ ^(feat|feature)- ]]; then
-            BUMP_TYPE="minor"
-          elif [[ "$BRANCH_NAME" =~ ^(fix|bugfix)- ]]; then
-            BUMP_TYPE="patch"
-          elif [[ "$BRANCH_NAME" =~ ^(breaking|major)- ]]; then
-            BUMP_TYPE="major"
+          echo "Checking messages for version bump type..."
+          echo "$ALL_MSGS"
+
+          # Check for breaking changes (major)
+          if echo "$ALL_MSGS" | grep -qiE "(breaking|major/|BREAKING CHANGE)"; then
+            echo "type=major" >> $GITHUB_OUTPUT
+            echo "Detected: MAJOR bump"
+          # Check for features (minor)
+          elif echo "$ALL_MSGS" | grep -qiE "(feat/|feature/|feat:|feat\()"; then
+            echo "type=minor" >> $GITHUB_OUTPUT
+            echo "Detected: MINOR bump"
+          # Default to patch
+          else
+            echo "type=patch" >> $GITHUB_OUTPUT
+            echo "Detected: PATCH bump"
           fi
-
-          echo "Version bump type: $BUMP_TYPE"
-          echo "bump_type=$BUMP_TYPE" >> $GITHUB_OUTPUT
-
       - name: Bump version
         id: bump_version
         run: |
           IFS='.' read -r MAJOR MINOR PATCH <<< "${{ steps.current_version.outputs.version }}"
 
-          BUMP_TYPE="${{ steps.detect_bump_type.outputs.bump_type }}"
+          BUMP_TYPE="${{ steps.bump_type.outputs.type }}"
 
           # Calculate new version based on bump type
           case "$BUMP_TYPE" in
