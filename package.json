@@ -17,7 +17,8 @@
     "post": "node ./scripts/compose.js",
     "build": "contentlayer2 build && pnpm lint && next build",
     "validate:links": "node scripts/validate-collection-links.js",
-    "validate:links:all": "CHECK_ALL=true node scripts/validate-collection-links.js"
+    "validate:links:all": "CHECK_ALL=true node scripts/validate-collection-links.js",
+    "prepare": "husky"
   },
   "browserslist": [
     "> 2%",
@@ -119,6 +120,7 @@
     "eslint-plugin-prettier": "^4.2.5",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.7",
     "p-limit": "^7.2.0",
     "prettier": "2.7.1",
     "sass": "^1.94.2",
