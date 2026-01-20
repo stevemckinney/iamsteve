@@ -66,7 +66,6 @@ jobs:
       - name: Bump version
         id: bump_version
         run: |
-          # Split version into parts
           IFS='.' read -r MAJOR MINOR PATCH <<< "${{ steps.current_version.outputs.version }}"
 
           BUMP_TYPE="${{ steps.detect_bump_type.outputs.bump_type }}"
@@ -88,8 +87,6 @@ jobs:
           echo "Bump type: $BUMP_TYPE"
           echo "New version: $NEW_VERSION"
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-
-          # Update package.json
           npm version $NEW_VERSION --no-git-tag-version
 
       - name: Commit version bump
