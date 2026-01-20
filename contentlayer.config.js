@@ -68,7 +68,7 @@ export const Collections = defineDocumentType(() => ({
     },
     date: {
       type: 'date',
-      required: true
+      required: true,
     },
     collection: {
       type: 'list',
@@ -172,9 +172,17 @@ export const Post = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => {
         try {
-          return compileMdxForRssWithMarked(doc.body.raw)
+          const result = compileMdxForRssWithMarked(doc.body.raw)
+          if (!result) {
+            console.warn(`RSS body is empty for ${doc._raw.flattenedPath}`)
+            return doc.body.raw
+          }
+          return result
         } catch (error) {
-          console.error(`Error compiling RSS body for ${doc._raw.flattenedPath}:`, error)
+          console.error(
+            `Error compiling RSS body for ${doc._raw.flattenedPath}:`,
+            error.message
+          )
           return doc.body.raw
         }
       },

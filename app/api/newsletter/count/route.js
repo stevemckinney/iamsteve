@@ -26,7 +26,8 @@ export const GET = async () => {
         {
           status: 200,
           headers: {
-            'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=172800',
+            'Cache-Control':
+              'public, s-maxage=86400, stale-while-revalidate=172800',
           },
         }
       )

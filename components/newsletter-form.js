@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 import Button from '@/components/button'
 
@@ -250,7 +250,7 @@ const NewsletterForm = ({
                 '@sm:text-left'
               )}
             >
-              Join {subscriberCount.toLocaleString()}+ designers
+              Join {initialCount.toLocaleString()}+ designers
             </p>
             <Button
               theme="dandelion"
