@@ -1,0 +1,10 @@
+<svg viewBox="0 0 24 24">
+  <g class="note-plus">
+    <rect width="16" height="18" x="4" y="3" class="fill-(--icon-fill)" rx="1"/>
+    <path d="M13 21H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v10" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M8 7h3" class="stroke-current stroke-2 sl-r"/>
+    <path d="M8 11h8" class="stroke-current stroke-2 sl-r"/>
+    <path d="M15 18h4" class="stroke-current stroke-2 sl-r"/>
+    <path d="M17 16v4" class="stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

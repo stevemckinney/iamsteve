@@ -1,0 +1,6 @@
+<svg viewBox="0 0 16 16">
+  <g class="autolayout / v">
+    <rect width="12" height="4" x="2" y="2" class="fill-(--icon-fill) stroke-current stroke-2 sl-r" rx="1"/>
+    <rect width="12" height="4" x="2" y="10" class="fill-(--icon-fill) stroke-current stroke-2 sl-r" rx="1"/>
+  </g>
+</svg>

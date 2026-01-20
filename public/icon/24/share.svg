@@ -1,0 +1,8 @@
+<svg viewBox="0 0 24 24">
+  <g class="share">
+    <rect width="14" height="13" x="5" y="8" class="fill-(--icon-fill)" rx="1"/>
+    <path d="M8 8H6.5A1.5 1.5 0 0 0 5 9.5v10A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 17.5 8H16" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M12 2v12" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="m15 5-3-3-3 3" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

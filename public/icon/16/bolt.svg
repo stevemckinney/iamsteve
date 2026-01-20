@@ -1,3 +1,5 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M9 6L8 1L2.99999 10H7L8 15L13 6H9Z" stroke="#092E24" stroke-width="2" stroke-linejoin="round"/>
+<svg viewBox="0 0 16 16">
+  <g class="bolt">
+    <path d="M9 6 8 1l-5 9h4l1 5 5-9H9Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

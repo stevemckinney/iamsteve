@@ -1,0 +1,6 @@
+<svg viewBox="0 0 16 16">
+  <g class="navigation">
+    <path d="M13 4H3" class="stroke-current stroke-2 sl-r"/>
+    <path d="M13 12H3" class="stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

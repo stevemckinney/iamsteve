@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24">
   <g class="pen">
     <path d="M16 22H8c0-3-4-7-4-7l8-13 8 13s-4 4-4 7Z" class="stroke-current stroke-2 sl-r"/>
-    <path d="M16 22H8c0-3-4-7-4-7l8-13 8 13s-4 4-4 7Z" class="fill-white stroke-current stroke-2 sl-r"/>
+    <path d="M16 22H8c0-3-4-7-4-7l8-13 8 13s-4 4-4 7Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
     <path d="M12 2v12" class="stroke-current stroke-2 sl-r"/>
-    <circle cx="12" cy="14" r="1" class="fill-currentcolor stroke-current stroke-2 sl-r"/>
+    <circle cx="12" cy="14" r="1" class="fill-current stroke-current stroke-2 sl-r"/>
     <path d="M7 22h10" class="stroke-current stroke-2 sl-s"/>
   </g>
 </svg>

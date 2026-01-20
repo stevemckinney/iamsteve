@@ -1,9 +1,13 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2 5.29L1 6V15H15V6L14 5.28" fill="white"/>
-<path d="M2 5.29L1 6V15H15V6L14 5.28" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14 7V3H2V7H1L8 11L15 7H14Z" fill="white"/>
-<path d="M1 7L8 11L15 7" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10.8 3L8 1" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M8.00002 1L5.20001 3" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M2 7V3H14V7" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<svg viewBox="0 0 16 16">
+  <g class="envelope">
+    <g class="fill-(--icon-fill) stroke-current stroke-2 sl-r">
+      <path d="M2 5.29 1 6v9h14V6l-1-.72"/>
+      <path d="M2 5.29 1 6v9h14V6l-1-.72"/>
+    </g>
+    <path d="M14 7V3H2v4H1l7 4 7-4h-1Z" class="fill-(--icon-fill)"/>
+    <path d="m1 7 7 4 7-4" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M10.8 3 8 1" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M8 1 5.2 3" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M2 7V3h12v4" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

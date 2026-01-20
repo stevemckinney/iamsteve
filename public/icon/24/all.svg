@@ -1,0 +1,13 @@
+<svg viewBox="0 0 24 24">
+  <g class="all">
+    <path d="M7 3H3v4h4V3Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M14 3h-4v4h4V3Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M14 10h-4v4h4v-4Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M14 17h-4v4h4v-4Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M7 17H3v4h4v-4Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M7 10H3v4h4v-4Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M21 3h-4v4h4V3Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M21 17h-4v4h4v-4Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M21 10h-4v4h4v-4Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

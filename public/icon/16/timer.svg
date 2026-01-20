@@ -1,6 +1,8 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8 14.5C11.0376 14.5 13.5 12.0376 13.5 9C13.5 5.96243 11.0376 3.5 8 3.5C4.96243 3.5 2.5 5.96243 2.5 9C2.5 12.0376 4.96243 14.5 8 14.5Z" fill="white" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M2 3.5L4 1.5" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14 3.5L12 1.5" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M8 7V9H10" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<svg viewBox="0 0 16 16">
+  <g class="timer">
+    <path d="M8 14.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="m2 3.5 2-2" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="m14 3.5-2-2" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M8 7v2h2" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

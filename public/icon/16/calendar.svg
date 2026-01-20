@@ -1,5 +1,7 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="2" y="3" width="12" height="10" rx="1" fill="#092E24" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3 5H13" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="3" y="6" width="10" height="6" rx="0.5" fill="white"/>
+<svg viewBox="0 0 16 16">
+  <g class="calendar">
+    <rect width="12" height="10" x="2" y="3" class="fill-current stroke-current stroke-2 sl-r" rx="1"/>
+    <path d="M3 5h10" class="fill-none stroke-current stroke-2 sl-r"/>
+    <rect width="10" height="6" x="3" y="6" class="fill-(--icon-fill)" rx=".5"/>
+  </g>
 </svg>

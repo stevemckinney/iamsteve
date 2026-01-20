@@ -1,4 +1,6 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="8" cy="6" r="4" fill="white" stroke="#092E24" stroke-width="2"/>
-<path d="M3.10101 12C4.36355 13.2372 6.09269 14 8 14C9.9073 14 11.6364 13.2372 12.899 12" stroke="#092E24" stroke-width="2" stroke-linecap="round"/>
+<svg viewBox="0 0 16 16">
+  <g class="shadow">
+    <circle cx="8" cy="6" r="4" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M3.101 12a6.977 6.977 0 0 0 4.9 2 6.977 6.977 0 0 0 4.898-2" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" class="design">
+<svg viewBox="0 0 24 24">
+  <g class="design">
     <path d="M4 16c0-4.416 3.584-8 8-8s8 3.584 8 8" class="stroke-current stroke-2 sl-r"/>
-    <path d="M4 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class="fill-white stroke-current stroke-2 sl-r"/>
-    <path d="M20 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class="fill-white stroke-current stroke-2 sl-r"/>
+    <path d="M4 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M20 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
     <path d="M4 8h16" class="stroke-current stroke-2 sl-r"/>
-    <path d="M10 8a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z" class="fill-currentcolor stroke-current stroke-2 sl-r"/>
-    <path d="M6 6H2v4h4V6Z" class="fill-white stroke-current stroke-2 sl-r"/>
-    <path d="M22 6h-4v4h4V6Z" class="fill-white stroke-current stroke-2 sl-r"/>
+    <path d="M10 8a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z" class="fill-current stroke-current stroke-2 sl-r"/>
+    <path d="M6 6H2v4h4V6Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M22 6h-4v4h4V6Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
   </g>
 </svg>

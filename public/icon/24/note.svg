@@ -1,8 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" class="note">
-    <path d="M5 21a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v11l-6 6H5Z" class="fill-white stroke-current stroke-2 sl-r"/>
-    <path d="M14 20v-5h5" class="stroke-current stroke-2 sl-r"/>
-    <path d="M8 7h8" class="stroke-current stroke-2 sl-r"/>
-    <path d="M8 11h8" class="stroke-current stroke-2 sl-r"/>
+<svg viewBox="0 0 24 24">
+  <g class="note">
+    <path d="M7.707 3.293A1 1 0 0 1 8.414 3H19a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7.414a1 1 0 0 1 .293-.707l3.414-3.414Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M8 13h8" class="stroke-current stroke-2 sl-r"/>
+    <path d="M12 9h4" class="stroke-current stroke-2 sl-r"/>
+    <path d="M8 17h8" class="stroke-current stroke-2 sl-r"/>
+    <path d="M9 3v3a2 2 0 0 1-2 2H4" class="stroke-current stroke-2 sl-r"/>
   </g>
 </svg>

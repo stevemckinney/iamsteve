@@ -1,0 +1,6 @@
+<svg viewBox="0 0 16 16">
+  <g class="checkmark / underline">
+    <path d="M2 15h12" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="m3 8 3 3 7-7" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

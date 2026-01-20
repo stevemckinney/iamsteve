@@ -1,0 +1,8 @@
+<svg viewBox="0 0 16 16">
+  <g class="shapes">
+    <circle cx="5" cy="11" r="2" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <circle cx="11" cy="5" r="2" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M7 3H3v4h4V3Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M13 9H9v4h4V9Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

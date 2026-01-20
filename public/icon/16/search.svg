@@ -1,4 +1,6 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11 11L13 13" stroke="#092E24" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round"/>
-<circle cx="7" cy="7" r="5" fill="white" stroke="#092E24" stroke-width="2"/>
+<svg viewBox="0 0 16 16">
+  <g class="search">
+    <path d="m11 11 2 2" class="fill-none stroke-current stroke-4 sl-r"/>
+    <circle cx="7" cy="7" r="5" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

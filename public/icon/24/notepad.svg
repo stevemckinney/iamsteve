@@ -1,0 +1,9 @@
+<svg viewBox="0 0 24 24">
+  <g class="notepad">
+    <path d="M6.496 20A1.497 1.497 0 0 1 5 18.5V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13.5c0 .828-.669 1.5-1.497 1.5H6.496Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M9 2v4" class="stroke-current stroke-2 sl-r"/>
+    <path d="M15 2v4" class="stroke-current stroke-2 sl-r"/>
+    <path d="M9 16h6" class="stroke-current stroke-2 sl-r"/>
+    <path d="M9 12h6" class="stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

@@ -1,7 +1,16 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 3L12 3" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M8 3V12" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3 4H5" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
-<path d="M13 4H11" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linejoin="round"/>
-<path d="M7 13H9" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" stroke-linejoin="round"/>
+<svg viewBox="0 0 16 16">
+  <g class="type">
+    <path d="m8 3 1 1v6H5l3-7Z" class="fill-(--icon-fill)"/>
+    <g class="mask-type-16">
+      <mask id="a" width="8" height="14" x="1" y="1" class="a" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+        <path d="M1 1h8v14H1z" class="mask"/>
+      </mask>
+      <g mask="url(#a)">
+        <path d="M4 11h5" class="fill-none stroke-current stroke-2 sl-r"/>
+        <path d="M2 16 7.76 2 14 16" class="fill-none stroke-current stroke-2 sl-r"/>
+      </g>
+    </g>
+    <path d="M11 2h1v12h-1" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M13 2h-1v12h1" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>
