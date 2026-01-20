@@ -29,7 +29,7 @@ import {
 } from 'date-fns'
 import Icon from '@/components/icon'
 import Link from '@/components/link'
-import NewsletterForm from '@/components/newsletter-form'
+import Newsletter from '@/components/newsletter'
 
 import { Suspense } from 'react'
 import { getPageView } from '../views'
@@ -472,7 +472,7 @@ export function Sidebar({ post, ...props }) {
         <p className="mb-4">
           Get notified you when the latest posts go out. Unsubscribe anytime.
         </p>
-        <NewsletterForm />
+        <Newsletter />
       </section>
     </aside>
   )
