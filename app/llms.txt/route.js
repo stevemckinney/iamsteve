@@ -1,21 +1,14 @@
 import { allPosts } from 'contentlayer/generated'
-import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { createClient } from '@supabase/supabase-js'
 
 export const revalidate = 86400 // Revalidate daily
+export const dynamic = 'force-static'
 
 export async function GET() {
   // Get view counts from Supabase
-  const supabase = createServerClient(
+  const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        async getAll() {
-          return (await cookies()).getAll()
-        },
-      },
-    }
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   )
 
   const { data: dbPosts } = await supabase
