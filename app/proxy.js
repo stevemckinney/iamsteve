@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-export function middleware(request) {
+export function GET(request) {
   const pathname = request.nextUrl.pathname
 
   // Handle .md extension requests
