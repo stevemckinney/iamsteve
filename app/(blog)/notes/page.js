@@ -11,10 +11,12 @@ import { sortPosts } from '@/lib/utils/content'
 import { Header, Title, Column, Description } from '@/components/page'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
 import Icon from '@/components/icon'
+import Link from '@/components/link'
 
 export const metadata = {
   title: 'Notes',
-  description: 'Quick posts, streams of consciousness, not main feed worthy',
+  description:
+    'Quick, short and simple posts, a feed for everything outside design and code',
 }
 
 export const dynamic = 'force-static'
@@ -117,7 +119,8 @@ export default async function NotesIndex() {
           <Column>
             <Title>Notes</Title>
             <Description>
-              Quick posts, streams of consciousness, not main feed worthy
+              Quick, short and simple posts, a feed for everything outside
+              design and code
             </Description>
           </Column>
         </Header>
@@ -136,7 +139,8 @@ export default async function NotesIndex() {
         <Column>
           <Title>Notes</Title>
           <Description>
-            Quick posts, streams of consciousness, not main feed worthy
+            Quick, short and simple posts, a feed for everything outside design
+            and code
           </Description>
         </Column>
       </Header>
@@ -148,20 +152,29 @@ export default async function NotesIndex() {
             const yearNotes = groupedNotes[year]
 
             return (
-              <section key={year}>
+              <section key={year} className="relative">
                 <h2 className="text-2xl font-variation-bold font-display lowercase text-heading mb-6">
-                  {year} ({yearNotes.length})
+                  <time dateTime={year}>{year}</time> ({yearNotes.length})
                 </h2>
 
-                <div className="space-y-6">
+                <div className="space-y-12">
                   {yearNotes.map((note) => (
-                    <article key={note._id} className="flex flex-col gap-2">
+                    <article
+                      key={note._id}
+                      className="relative not-last:pb-12 not-last:after:content-[''] not-last:after:absolute not-last:after:bottom-0 not-last:after:left-0 not-last:after:right-0 not-last:after:h-[2px] not-last:after:bg-[url(/images/dash.svg)] dark:not-last:after:bg-[url(/images/dash-dark.svg)] flex flex-col gap-2 max-w-prose mx-auto grid grid-cols-[120px_1fr]"
+                    >
                       <div className="flex gap-2">
-                        <time className="font-medium">
+                        <time dateTime={note.date} className="font-medium">
                           {formatDate(note.date)}
                         </time>
-                        <span className="text-body-60">•</span>
-                        <h3 className="font-medium">{note.title}</h3>
+                        <span className="text-body-60" aria-hidden="true">
+                          •
+                        </span>
+                        <h3 className="font-medium">
+                          <Link href={note.slug} className="hover:text-link">
+                            {note.title}
+                          </Link>
+                        </h3>
                       </div>
                       <NoteContent note={note} />
                     </article>
