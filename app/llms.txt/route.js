@@ -15,8 +15,12 @@ export async function GET() {
     .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
     .select()
 
+  const cutoffDate = new Date('2015-01-01')
+
   const postsWithViews = allPosts
-    .filter((post) => post.status === 'open')
+    .filter(
+      (post) => post.status === 'open' && new Date(post.date) >= cutoffDate
+    )
     .map((post) => ({
       ...post,
       view_count: dbPosts?.find((p) => p.slug === post.slug)?.view_count || 0,
