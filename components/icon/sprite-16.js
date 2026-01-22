@@ -195,6 +195,18 @@ const Sprite16 = (props) => (
           />
         </g>
       </symbol>
+      <symbol id="book-16" viewBox="0 0 16 16">
+        <path
+          stroke="color(display-p3 .0353 .1804 .1412)"
+          d="M12 14V9H3v4a1 1 0 0 0 1 1h8Zm-1 0h2"
+          className="slc-r sl-r stroke-2"
+        />
+        <path
+          className="fill-(--icon-fill) stroke-2"
+          stroke="color(display-p3 .0353 .1804 .1412)"
+          d="M13 11V2H4a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h9Z"
+        />
+      </symbol>
       <symbol id="box-16" viewBox="0 0 16 16">
         <g className="box">
           <path

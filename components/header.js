@@ -19,8 +19,8 @@ export default function Header() {
   const isArticlePage = pathname.startsWith('/blog/') && pathname !== '/blog'
 
   const nav =
-    'flex flex-[1_0_auto] lg:gap-8 2xl:gap-12 xl:justify-center max-lg:px-2'
-  const tabbarNav = `max-lg:transition-all max-lg:duration-200 max-lg:ease-out max-lg:px-8 max-lg:bg-white/80 dark:max-lg:bg-fern-1200/90 max-lg:shadow-placed max-lg:justify-between max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100 max-lg:backdrop-blur-sm max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150 max-lg:gap-6 max-lg:rounded-full ${styles.tabbar}`
+    'flex justify-between lg:gap-8 max-lg:px-2 lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150'
+  const tabbarNav = `max-lg:transition-all max-lg:duration-200 max-lg:ease-out max-lg:px-8 max-lg:bg-white/80 dark:max-lg:bg-fern-1200/90 max-lg:shadow-placed max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100 max-lg:backdrop-blur-sm max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150 max-lg:gap-6 max-lg:rounded-full ${styles.tabbar}`
 
   // Some styles exist in the header.module to handle safe-area
   const navLink = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
@@ -74,15 +74,15 @@ export default function Header() {
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-10"
         id="top"
       >
-        <div
+        {/* <div
           className="absolute col-container lg:col-content lg:-mx-8 h-[4px] top-1/2 -translate-y-1/2 right-0 left-0 bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-canvas z-[-1]"
           aria-hidden="true"
-        />
+        /> */}
         {/*bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150*/}
-        <div className="col-container 2xl:col-content flex items-center align-center max-lg:justify-between py-4 px-4 lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 max-2xl:gap-8 text-emphasis">
+        <div className="col-container 2xl:col-content flex items-center align-center justify-between max-2xl:gap-8 text-emphasis max-lg:py-4 max-lg:px-4">
           <Link
             href="/"
-            className="flex-[1_0_10%]"
+            className="flex bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150 lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4"
             title="iamsteve.me homepage"
           >
             <Icon
@@ -134,20 +134,6 @@ export default function Header() {
               )
             })}
           </nav>
-          <div className="flex-[1_0_10%] flex justify-end max-lg:hidden">
-            <Link
-              href="/newsletter"
-              className={cn(navLink, horizontalNavLink, styles.end)}
-            >
-              <span>Subscribe</span>
-              <Icon
-                icon={`airplane`}
-                size={24}
-                className="text-current"
-                variant="header"
-              />
-            </Link>
-          </div>
           <Navigation />
         </div>
       </header>
