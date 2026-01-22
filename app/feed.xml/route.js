@@ -1,12 +1,19 @@
-import { allPosts } from 'contentlayer/generated'
+import { allPosts, allNotes } from 'contentlayer/generated'
 import siteMetadata from '@/content/metadata'
 
 export const revalidate = 2592000
 
 export async function GET() {
-  // Generate the feed
+  // Combine posts and notes
   const posts = allPosts
     .filter((post) => post.status === 'open')
+    .map((post) => ({ ...post, type: 'post' }))
+
+  const notes = allNotes
+    .filter((note) => note.status === 'published')
+    .map((note) => ({ ...note, type: 'note' }))
+
+  const items = [...posts, ...notes]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 60)
 
@@ -21,16 +28,16 @@ export async function GET() {
     <atom:link href="${
       siteMetadata.siteUrl
     }/feed.xml" rel="self" type="application/rss+xml"/>
-    ${posts
+    ${items
       .map(
-        (post) => `
+        (item) => `
     <item>
-      <title>${escapeXml(post.title)}</title>
-      <link>${siteMetadata.siteUrl}${post.slug}</link>
-      <guid isPermaLink="true">${siteMetadata.siteUrl}${post.slug}</guid>
-      <pubDate>${new Date(post.date).toUTCString()}</pubDate>
-      <description>${escapeXml(post.summary)}</description>
-      <content:encoded><![CDATA[${post.rssBody}]]></content:encoded>
+      <title>${escapeXml(item.title)}</title>
+      <link>${siteMetadata.siteUrl}${item.slug}</link>
+      <guid isPermaLink="true">${siteMetadata.siteUrl}${item.slug}</guid>
+      <pubDate>${new Date(item.date).toUTCString()}</pubDate>
+      <description>${escapeXml(item.summary || '')}</description>
+      <content:encoded><![CDATA[${item.rssBody}]]></content:encoded>
     </item>
     `
       )
