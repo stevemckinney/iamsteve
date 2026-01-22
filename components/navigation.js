@@ -5,7 +5,7 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import clsx from 'clsx'
 
 import siteMetadata from '@/content/metadata'
-import navigation from '@/content/navigation'
+import { mobile } from '@/content/navigation'
 
 // components
 import Link from '@/components/link'
@@ -61,7 +61,7 @@ const Navigation = () => {
             )}
           >
             <ul className="flex flex-col gap-2">
-              {navigation.map((link, index) => (
+              {mobile.map((link, index) => (
                 <ListItem
                   href={link.href}
                   key={link.href}
@@ -90,7 +90,7 @@ const Navigation = () => {
               <ListItem
                 href="/newsletter"
                 isOpen={isOpen}
-                index={navigation.length}
+                index={mobile.length}
                 className={clsx(
                   pathname === '/newsletter'
                     ? 'text-dandelion-500 dark:text-dandelion-300'

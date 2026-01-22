@@ -1,6 +1,7 @@
 import Subscribe from '@/components/subscribe'
 import Icon from '@/components/icon'
 import Link from '@/components/link'
+import { footer } from '@/content/navigation'
 
 export default function FooterProfile() {
   return (
@@ -37,92 +38,26 @@ export default function FooterProfile() {
           Site
         </h3>
         <ul className="flex flex-row flex-wrap gap-x-6 gap-y-2 sm:gap-y-4">
-          <li>
-            <Link
-              href="/"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
-            >
-              <Icon icon="home" size={16} variant="header" />
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/blog"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
-            >
-              <Icon icon="folder" size={16} variant="header" />
-              Archive
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/category/design"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
-            >
-              <Icon icon="pen" size={16} variant="header" />
-              Design
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/category/code"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
-            >
-              <Icon icon="code" size={16} variant="header" />
-              Code
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/collections"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
-            >
-              <Icon icon="collections" size={16} variant="header" />
-              Collections
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/uses"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
-            >
-              <Icon icon="settings" size={16} variant="header" />
-              Uses
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
-            >
-              <Icon icon="person" size={16} variant="header" />
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
-            >
-              <Icon icon="envelope" size={16} variant="header" />
-              Contact
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/newsletter"
-              className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
-            >
-              <Icon
-                icon="airplane"
-                size={16}
-                variant="none"
-                style={{ '--icon-fill': 'transparent' }}
-              />
-              Newsletter
-            </Link>
-          </li>
+          {footer.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
+              >
+                <Icon
+                  icon={link.icon}
+                  size={link.size}
+                  variant={link.icon === 'airplane' ? 'none' : 'header'}
+                  style={
+                    link.icon === 'airplane'
+                      ? { '--icon-fill': 'transparent' }
+                      : undefined
+                  }
+                />
+                {link.title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
 

@@ -3,13 +3,14 @@
 import { usePathname } from 'next/navigation'
 
 import siteMetadata from '@/content/metadata'
-import navigation from '@/content/navigation'
+import { navigation, library, tabbar } from '@/content/navigation'
 import { cn } from '@/lib/utils'
 
 // components
 import Link from './link'
 import Icon from '@/components/icon'
 import { Navigation, Toggle } from '@/components/navigation'
+import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 
 // css
 import styles from './header.module.css'
@@ -101,38 +102,136 @@ export default function Header() {
               variant="header"
             />
           </Link>
-          <nav className={cn(nav, tabbarNav)} id="nav" suppressHydrationWarning>
-            {navigation.map((link) => {
-              const isActive = pathname === link.href
-              return (
-                <Link
-                  href={link.href}
-                  className={cn(
-                    navLink,
-                    tabbarNavLink,
-                    horizontalNavLink,
-                    styles.start,
-                    {
-                      'lg:hidden': link.title === 'Home',
-                      'max-lg:hidden': link.title === 'Contact',
-                      'max-lg:text-emphasis': isActive,
-                      'max-lg:text-fern-700 dark:max-lg:text-fern-400':
-                        !isActive,
-                    }
-                  )}
-                  key={link.href}
-                  suppressHydrationWarning
-                >
-                  <Icon
-                    icon={link.icon}
-                    size={link.size}
-                    className="text-current"
-                    variant="header"
-                  />
-                  {link.title}
-                </Link>
-              )
-            })}
+          {/* Desktop nav - hidden on mobile */}
+          <nav
+            className={cn(nav, 'max-lg:hidden')}
+            id="nav"
+            suppressHydrationWarning
+          >
+            <NavigationMenu.Root className="flex">
+              <NavigationMenu.List className="flex justify-between lg:gap-8">
+                {navigation.map((link) => {
+                  const isActive = pathname === link.href
+                  const isLibrary = link.title === 'Library'
+
+                  if (isLibrary) {
+                    return (
+                      <NavigationMenu.Item key={link.href}>
+                        <NavigationMenu.Trigger
+                          className={cn(
+                            navLink,
+                            horizontalNavLink,
+                            styles.start,
+                            'cursor-pointer'
+                          )}
+                          onPointerMove={(event) => event.preventDefault()}
+                          onPointerLeave={(event) => event.preventDefault()}
+                        >
+                          <Icon
+                            icon={link.icon}
+                            size={link.size}
+                            className="text-current"
+                            variant="header"
+                          />
+                          {link.title}
+                          <Icon
+                            icon="angle-down"
+                            size={16}
+                            className="text-current"
+                            variant="header"
+                          />
+                        </NavigationMenu.Trigger>
+                        <NavigationMenu.Content
+                          className={cn(
+                            'absolute left-0 top-full mt-2 w-[410px] rounded-lg bg-white dark:bg-fern-1200 shadow-lg overflow-hidden z-50',
+                            styles.libraryDropdown
+                          )}
+                        >
+                          <div className="flex flex-col">
+                            {library.map((item, index) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className={cn(
+                                  'flex flex-col gap-1 p-4 hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition-colors border-b border-neutral-01-50 dark:border-fern-1100 last:border-b-0',
+                                  index === 0 && 'rounded-t-lg'
+                                )}
+                              >
+                                <div className="flex items-center gap-2">
+                                  <Icon
+                                    icon={item.icon}
+                                    size={16}
+                                    className="text-emphasis"
+                                    variant="header"
+                                  />
+                                  <span className="font-ui text-base font-medium text-emphasis lowercase">
+                                    {item.title}
+                                  </span>
+                                </div>
+                                <p className="text-base text-emphasis leading-relaxed font-ui">
+                                  {item.description}
+                                </p>
+                              </Link>
+                            ))}
+                          </div>
+                        </NavigationMenu.Content>
+                      </NavigationMenu.Item>
+                    )
+                  }
+
+                  return (
+                    <NavigationMenu.Item key={link.href}>
+                      <Link
+                        href={link.href}
+                        className={cn(navLink, horizontalNavLink, styles.start)}
+                        suppressHydrationWarning
+                      >
+                        <Icon
+                          icon={link.icon}
+                          size={link.size}
+                          className="text-current"
+                          variant="header"
+                        />
+                        {link.title}
+                      </Link>
+                    </NavigationMenu.Item>
+                  )
+                })}
+              </NavigationMenu.List>
+            </NavigationMenu.Root>
+          </nav>
+
+          {/* Mobile tabbar - hidden on desktop */}
+          <nav
+            className={cn(nav, tabbarNav, 'lg:hidden')}
+            suppressHydrationWarning
+          >
+            <ul className="flex justify-between max-lg:gap-6">
+              {tabbar.map((link) => {
+                const isActive = pathname === link.href
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={cn(navLink, tabbarNavLink, styles.start, {
+                        'max-lg:text-emphasis': isActive,
+                        'max-lg:text-fern-700 dark:max-lg:text-fern-400':
+                          !isActive,
+                      })}
+                      suppressHydrationWarning
+                    >
+                      <Icon
+                        icon={link.icon}
+                        size={link.size}
+                        className="text-current"
+                        variant="header"
+                      />
+                      {link.title}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
           </nav>
           <Navigation />
         </div>
