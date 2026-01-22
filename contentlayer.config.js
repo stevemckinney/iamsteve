@@ -272,6 +272,24 @@ export const Note = defineDocumentType(() => ({
       type: 'string',
       resolve: (doc) => doc._raw.flattenedPath.split('/').pop(),
     },
+    rssBody: {
+      type: 'string',
+      resolve: (doc) => {
+        try {
+          const result = compileMdxForRssWithMarked(doc.body.raw)
+          if (!result) {
+            return doc.body.raw
+          }
+          return result
+        } catch (error) {
+          console.error(
+            `Error compiling RSS body for note ${doc._raw.flattenedPath}:`,
+            error.message
+          )
+          return doc.body.raw
+        }
+      },
+    },
   },
 }))
 
