@@ -2,237 +2,271 @@
 
 import { usePathname } from 'next/navigation'
 
-import siteMetadata from '@/content/metadata'
 import { navigation, library, tabbar } from '@/content/navigation'
 import { cn } from '@/lib/utils'
 
-// components
 import Link from './link'
 import Icon from '@/components/icon'
-import { Navigation, Toggle } from '@/components/navigation'
-import * as NavigationMenu from '@radix-ui/react-navigation-menu'
+import { Navigation } from '@/components/navigation'
+import {
+  MenuTrigger,
+  Button,
+  Popover,
+  Menu,
+  MenuItem,
+} from 'react-aria-components'
 
-// css
 import styles from './header.module.css'
+
+const navClass =
+  'flex justify-between lg:gap-8 max-lg:px-2 lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas'
+const tabbarClass = `max-lg:transition-all max-lg:duration-200 max-lg:ease-out max-lg:px-8 max-lg:bg-white/80 dark:max-lg:bg-fern-1200/90 max-lg:shadow-placed max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100 max-lg:backdrop-blur-sm max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150 max-lg:gap-6 max-lg:rounded-full ${styles.tabbar}`
+const linkClass = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
+const horizontalLinkClass = 'lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5'
+const tabbarLinkClass =
+  'max-lg:text-[12px] max-lg:font-sans max-lg:font-medium max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:py-3'
+
+function AccessibilityLinks({ isArticlePage }) {
+  return (
+    <ul
+      role="list"
+      id="accessibility-links"
+      className={cn(
+        'sr-only focus-within:not-sr-only',
+        'focus-within:fixed focus-within:top-2 focus-within:left-2 focus-within:z-[1000]',
+        'focus-within:bg-fern-1200 focus-within:text-fern-100',
+        'focus-within:p-8 focus-within:flex focus-within:flex-col focus-within:gap-2 rounded-md'
+      )}
+    >
+      {isArticlePage && (
+        <li>
+          <a
+            href="#article"
+            className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]"
+          >
+            Skip to article
+          </a>
+        </li>
+      )}
+      <li>
+        <a
+          href="#content"
+          className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]"
+        >
+          Skip to main content
+        </a>
+      </li>
+      <li>
+        <a
+          href="#nav"
+          className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]"
+        >
+          Skip to nav
+        </a>
+      </li>
+    </ul>
+  )
+}
+
+function Desktop({ pathname }) {
+  return (
+    <nav
+      className={cn(navClass, 'max-lg:hidden')}
+      id="nav"
+      suppressHydrationWarning
+    >
+      <ul className="flex justify-between lg:gap-8">
+        {navigation.map((link) => {
+          const isLibrary = link.title === 'Library'
+
+          if (isLibrary) {
+            return (
+              <li key={link.href} className="relative">
+                <MenuTrigger>
+                  <Button
+                    className={cn(
+                      linkClass,
+                      horizontalLinkClass,
+                      styles.start,
+                      'cursor-pointer'
+                    )}
+                  >
+                    <Icon
+                      icon={link.icon}
+                      size={link.size}
+                      className="text-current"
+                      variant="header"
+                      aria-hidden="true"
+                    />
+                    {link.title}
+                    <Icon
+                      icon="angle-down"
+                      size={16}
+                      className="text-current"
+                      variant="header"
+                      aria-hidden="true"
+                    />
+                  </Button>
+                  <Popover
+                    placement="bottom"
+                    offset={-12}
+                    className={cn(
+                      'flex flex-col items-center mt-4',
+                      styles.library
+                    )}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="10"
+                      fill="none"
+                      viewBox="0 0 22 10"
+                      aria-hidden="true"
+                      className="relative z-10"
+                    >
+                      <path
+                        fill="light-dark(#fff, var(--color-fern-1200))"
+                        d="M10.375 2.5a1 1 0 0 1 1.25 0L21 10H1l9.375-7.5Z"
+                      />
+                      <path
+                        fill="light-dark(rgb(117 99 98), var(--color-fern-800))"
+                        opacity=".24"
+                        d="M21.35 9h-1.6l-8.125-6.5a1 1 0 0 0-1.25 0L2.25 9H.65l9.1-7.28a2 2 0 0 1 2.5 0L21.35 9Z"
+                      />
+                    </svg>
+                    <div className="w-[412px] rounded-2xl shadow-picked bg-neutral-01-100/80 backdrop-blur-sm dark:bg-fern-1200">
+                      <Menu className="rounded-t-2xl flex flex-col p-4 bg-surface shadow-reduced dark:shadow-[0_1px_var(--color-fern-1000)]">
+                        {library.map((item) => (
+                          <MenuItem
+                            key={item.href}
+                            href={item.href}
+                            className="relative flex flex-col gap-1 p-4 hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition duration-200 ease-out rounded-sm outline-none cursor-pointer not-last:content-[''] not-last:after:block not-last:after:absolute not-last:after:top-full not-last:after:left-0 not-last:after:right-0 not-last:after:border-b not-last:after:border-neutral-01-50 dark:not-last:after:border-fern-1100 focus-visible:z-10"
+                          >
+                            <span className="flex items-center gap-2">
+                              <Icon
+                                icon={item.icon}
+                                size={16}
+                                className="text-emphasis"
+                                variant="header"
+                                aria-hidden="true"
+                              />
+                              <span className="text-base font-medium">
+                                {item.title}
+                              </span>
+                            </span>
+                            <span className="text-base">
+                              {item.description}
+                            </span>
+                          </MenuItem>
+                        ))}
+                      </Menu>
+                      <div className="px-8 py-4 flex flex-row items-center justify-between gap-4">
+                        <p className="m-0 p-0 font-ui">Subscribe with RSS</p>
+                        <button className="px-6 py-1.5 rounded-sm bg-white bg-[image:linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--color-neutral-01-250),transparent_88%))] shadow-placed hover:shadow-picked transition duration-200 ease-out font-ui">
+                          Copy URL
+                        </button>
+                      </div>
+                    </div>
+                  </Popover>
+                </MenuTrigger>
+              </li>
+            )
+          }
+
+          return (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={cn(linkClass, horizontalLinkClass, styles.start)}
+                suppressHydrationWarning
+              >
+                <Icon
+                  icon={link.icon}
+                  size={link.size}
+                  className="text-current"
+                  variant="header"
+                  aria-hidden="true"
+                />
+                {link.title}
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
+    </nav>
+  )
+}
+
+function Tabbar({ pathname }) {
+  return (
+    <nav
+      className={cn(navClass, tabbarClass, 'lg:hidden')}
+      suppressHydrationWarning
+    >
+      <ul className="flex justify-between max-lg:gap-6">
+        {tabbar.map((link) => {
+          const isActive = pathname === link.href
+          return (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={cn(linkClass, tabbarLinkClass, styles.start, {
+                  'max-lg:text-emphasis': isActive,
+                  'max-lg:text-fern-700 dark:max-lg:text-fern-400': !isActive,
+                })}
+                suppressHydrationWarning
+              >
+                <Icon
+                  icon={link.icon}
+                  size={link.size}
+                  className="text-current"
+                  variant="header"
+                  aria-hidden="true"
+                />
+                {link.title}
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
+    </nav>
+  )
+}
 
 export default function Header() {
   const pathname = usePathname()
   const isArticlePage = pathname.startsWith('/blog/') && pathname !== '/blog'
 
-  const nav =
-    'flex justify-between lg:gap-8 max-lg:px-2 lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150'
-  const tabbarNav = `max-lg:transition-all max-lg:duration-200 max-lg:ease-out max-lg:px-8 max-lg:bg-white/80 dark:max-lg:bg-fern-1200/90 max-lg:shadow-placed max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100 max-lg:backdrop-blur-sm max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150 max-lg:gap-6 max-lg:rounded-full ${styles.tabbar}`
-
-  // Some styles exist in the header.module to handle safe-area
-  const navLink = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
-  const compactHorizontalNavLink =
-    'lg:bg-neutral-01-500/10 lg:rounded-full lg:pl-10 lg:pr-1 lg:relative'
-  const horizontalNavLink = 'lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5'
-  const tabbarNavLink =
-    'max-lg:text-[12px] max-lg:font-sans max-lg:font-medium max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:py-3'
-
   return (
     <>
-      <ul
-        role="list"
-        id="accessibility-links"
-        className={cn(
-          'sr-only focus-within:not-sr-only',
-          'focus-within:fixed focus-within:top-2 focus-within:left-2 focus-within:z-[1000]',
-          'focus-within:bg-fern-1200 focus-within:text-fern-100',
-          'focus-within:p-8 focus-within:flex focus-within:flex-col focus-within:gap-2 rounded-md'
-        )}
-      >
-        {isArticlePage && (
-          <li>
-            <a
-              href="#article"
-              className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]"
-            >
-              Skip to article
-            </a>
-          </li>
-        )}
-        <li>
-          <a
-            href="#content"
-            className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]"
-          >
-            Skip to main content
-          </a>
-        </li>
-        <li>
-          <a
-            href="#nav"
-            className="text-lg underline underline-offset-3 [text-decoration-thickness:.25px]"
-          >
-            Skip to nav
-          </a>
-        </li>
-      </ul>
-
+      <AccessibilityLinks isArticlePage={isArticlePage} />
       <header
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-10"
         id="top"
       >
-        {/* <div
-          className="absolute col-container lg:col-content lg:-mx-8 h-[4px] top-1/2 -translate-y-1/2 right-0 left-0 bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-canvas z-[-1]"
-          aria-hidden="true"
-        /> */}
-        {/*bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150*/}
         <div className="col-container 2xl:col-content flex items-center align-center justify-between max-2xl:gap-8 text-emphasis max-lg:py-4 max-lg:px-4">
           <Link
             href="/"
-            className="flex bg-[url(/images/texture.png)] bg-size-[172px_auto] bg-blend-multiply bg-neutral-01-150 lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4"
-            title="iamsteve.me homepage"
+            className="flex lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas"
+            aria-label="iamsteve.me homepage"
           >
             <Icon
               icon="logo"
-              role="img"
               size={32}
               className="max-xl:hidden"
               variant="header"
+              aria-hidden="true"
             />
             <Icon
               icon="logo"
-              role="img"
-              aria-hidden="true"
               size={24}
               className="xl:hidden"
               variant="header"
+              aria-hidden="true"
             />
           </Link>
-          {/* Desktop nav - hidden on mobile */}
-          <nav
-            className={cn(nav, 'max-lg:hidden')}
-            id="nav"
-            suppressHydrationWarning
-          >
-            <NavigationMenu.Root className="flex">
-              <NavigationMenu.List className="flex justify-between lg:gap-8">
-                {navigation.map((link) => {
-                  const isActive = pathname === link.href
-                  const isLibrary = link.title === 'Library'
-
-                  if (isLibrary) {
-                    return (
-                      <NavigationMenu.Item key={link.href}>
-                        <NavigationMenu.Trigger
-                          className={cn(
-                            navLink,
-                            horizontalNavLink,
-                            styles.start,
-                            'cursor-pointer'
-                          )}
-                          onPointerMove={(event) => event.preventDefault()}
-                          onPointerLeave={(event) => event.preventDefault()}
-                        >
-                          <Icon
-                            icon={link.icon}
-                            size={link.size}
-                            className="text-current"
-                            variant="header"
-                          />
-                          {link.title}
-                          <Icon
-                            icon="angle-down"
-                            size={16}
-                            className="text-current"
-                            variant="header"
-                          />
-                        </NavigationMenu.Trigger>
-                        <NavigationMenu.Content
-                          className={cn(
-                            'absolute left-0 top-full mt-2 w-[410px] rounded-lg bg-white dark:bg-fern-1200 shadow-lg overflow-hidden z-50',
-                            styles.libraryDropdown
-                          )}
-                        >
-                          <div className="flex flex-col">
-                            {library.map((item, index) => (
-                              <Link
-                                key={item.href}
-                                href={item.href}
-                                className={cn(
-                                  'flex flex-col gap-1 p-4 hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition-colors border-b border-neutral-01-50 dark:border-fern-1100 last:border-b-0',
-                                  index === 0 && 'rounded-t-lg'
-                                )}
-                              >
-                                <div className="flex items-center gap-2">
-                                  <Icon
-                                    icon={item.icon}
-                                    size={16}
-                                    className="text-emphasis"
-                                    variant="header"
-                                  />
-                                  <span className="font-ui text-base font-medium text-emphasis lowercase">
-                                    {item.title}
-                                  </span>
-                                </div>
-                                <p className="text-base text-emphasis leading-relaxed font-ui">
-                                  {item.description}
-                                </p>
-                              </Link>
-                            ))}
-                          </div>
-                        </NavigationMenu.Content>
-                      </NavigationMenu.Item>
-                    )
-                  }
-
-                  return (
-                    <NavigationMenu.Item key={link.href}>
-                      <Link
-                        href={link.href}
-                        className={cn(navLink, horizontalNavLink, styles.start)}
-                        suppressHydrationWarning
-                      >
-                        <Icon
-                          icon={link.icon}
-                          size={link.size}
-                          className="text-current"
-                          variant="header"
-                        />
-                        {link.title}
-                      </Link>
-                    </NavigationMenu.Item>
-                  )
-                })}
-              </NavigationMenu.List>
-            </NavigationMenu.Root>
-          </nav>
-
-          {/* Mobile tabbar - hidden on desktop */}
-          <nav
-            className={cn(nav, tabbarNav, 'lg:hidden')}
-            suppressHydrationWarning
-          >
-            <ul className="flex justify-between max-lg:gap-6">
-              {tabbar.map((link) => {
-                const isActive = pathname === link.href
-                return (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className={cn(navLink, tabbarNavLink, styles.start, {
-                        'max-lg:text-emphasis': isActive,
-                        'max-lg:text-fern-700 dark:max-lg:text-fern-400':
-                          !isActive,
-                      })}
-                      suppressHydrationWarning
-                    >
-                      <Icon
-                        icon={link.icon}
-                        size={link.size}
-                        className="text-current"
-                        variant="header"
-                      />
-                      {link.title}
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </nav>
+          <Desktop pathname={pathname} />
+          <Tabbar pathname={pathname} />
           <Navigation />
         </div>
       </header>

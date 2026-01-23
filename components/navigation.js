@@ -1,10 +1,9 @@
 'use client'
-import { useState, forwardRef } from 'react'
+import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import * as NavigationMenu from '@radix-ui/react-navigation-menu'
+import { DialogTrigger, Button, Popover } from 'react-aria-components'
 import clsx from 'clsx'
 
-import siteMetadata from '@/content/metadata'
 import { mobile } from '@/content/navigation'
 
 // components
@@ -33,115 +32,98 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen)
-  }
-
   return (
-    <NavigationMenu.Root
-      orientation="vertical"
-      className="flex nroot lg:hidden"
-    >
-      <NavigationMenu.List className="flex nlist">
-        <NavigationMenu.Item className="flex nitem">
-          <NavigationMenu.Trigger
-            className="toggle-nav"
-            aria-label="Toggle navigation menu"
-            onPointerMove={(event) => event.preventDefault()}
-            onPointerLeave={(event) => event.preventDefault()}
-            onClick={handleToggle}
-          >
-            <Toggle />
-          </NavigationMenu.Trigger>
-          <NavigationMenu.Content
+    <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
+      <Button
+        className="toggle-nav lg:hidden max-lg:-mx-4"
+        aria-label="Toggle navigation menu"
+        data-state={isOpen ? 'open' : 'closed'}
+      >
+        <Toggle />
+      </Button>
+      <Popover
+        placement="bottom"
+        offset={16}
+        containerPadding={12}
+        className={clsx(
+          'w-[calc(100vw-1.5rem)] shadow-placed bg-[light-dark(rgb(255_255_255/.90),color-mix(in_oklab,var(--color-fern-1200),transparent_20%))] backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg z-200 p-6 outline-none',
+          'transition-all duration-300 ease-in-out',
+          'data-[entering]:opacity-0 data-[exiting]:opacity-0'
+        )}
+      >
+        <ul className="flex flex-col gap-2">
+          {mobile.map((link, index) => (
+            <ListItem
+              href={link.href}
+              key={link.href}
+              isOpen={isOpen}
+              index={index}
+              className={clsx(
+                pathname === link.href
+                  ? 'text-dandelion-500 dark:text-dandelion-300'
+                  : 'text-emphasis'
+              )}
+            >
+              <Icon
+                icon={link.icon}
+                size={link.size}
+                className={clsx(
+                  'relative -top-px',
+                  pathname === link.href
+                    ? 'text-dandelion-500 dark:text-dandelion-300'
+                    : 'text-neutral-03-500 dark:text-fern-500'
+                )}
+                variant="header"
+              />
+              {link.title}
+            </ListItem>
+          ))}
+          <ListItem
+            href="/newsletter"
+            isOpen={isOpen}
+            index={mobile.length}
             className={clsx(
-              'nav-content shadow-placed bg-[light-dark(rgb(255_255_255/.90),color-mix(in_oklab,var(--color-fern-1200),transparent_20%))] backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg relative z-200 lg:left-1/2 lg:-translate-x-1/2 p-6 outline-hidden',
-              'transition-all duration-300 ease-in-out',
-              isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+              pathname === '/newsletter'
+                ? 'text-dandelion-500 dark:text-dandelion-300'
+                : 'text-emphasis'
             )}
           >
-            <ul className="flex flex-col gap-2">
-              {mobile.map((link, index) => (
-                <ListItem
-                  href={link.href}
-                  key={link.href}
-                  isOpen={isOpen}
-                  index={index}
-                  className={clsx(
-                    pathname === link.href
-                      ? 'text-dandelion-500 dark:text-dandelion-300'
-                      : 'text-emphasis'
-                  )}
-                >
-                  <Icon
-                    icon={link.icon}
-                    size={link.size}
-                    className={clsx(
-                      'relative -top-px',
-                      pathname === link.href
-                        ? 'text-dandelion-500 dark:text-dandelion-300'
-                        : 'text-neutral-03-500 dark:text-fern-500'
-                    )}
-                    variant="header"
-                  />
-                  {link.title}
-                </ListItem>
-              ))}
-              <ListItem
-                href="/newsletter"
-                isOpen={isOpen}
-                index={mobile.length}
-                className={clsx(
-                  pathname === '/newsletter'
-                    ? 'text-dandelion-500 dark:text-dandelion-300'
-                    : 'text-emphasis'
-                )}
-              >
-                <Icon
-                  icon="airplane"
-                  className={clsx(
-                    'relative -top-px',
-                    pathname === '/newsletter'
-                      ? 'text-dandelion-500 dark:text-dandelion-300'
-                      : 'text-neutral-03-500 dark:text-fern-500'
-                  )}
-                  variant="header"
-                />
-                Subscribe
-              </ListItem>
-            </ul>
-          </NavigationMenu.Content>
-        </NavigationMenu.Item>
-      </NavigationMenu.List>
-      <NavigationMenu.Viewport className="nav-viewport px-4 absolute flex justify-center top-full left-0 right-0" />
-    </NavigationMenu.Root>
+            <Icon
+              icon="airplane"
+              className={clsx(
+                'relative -top-px',
+                pathname === '/newsletter'
+                  ? 'text-dandelion-500 dark:text-dandelion-300'
+                  : 'text-neutral-03-500 dark:text-fern-500'
+              )}
+              variant="header"
+            />
+            Subscribe
+          </ListItem>
+        </ul>
+      </Popover>
+    </DialogTrigger>
   )
 }
 
-const ListItem = forwardRef(
-  ({ className, children, isOpen, index, ...props }, forwardedRef) => (
-    <li className="flex">
-      <NavigationMenu.Link asChild>
-        <a
-          className={clsx(
-            'flex shrink-0 basis-full gap-4 py-2.5 rounded-sm px-4 text-2xl font-ui items-center lowercase',
-            'transition-all duration-300 ease-in-out',
-            className
-          )}
-          style={{
-            filter: `blur(${isOpen ? 0 : 8}px)`,
-            transitionDelay: `${isOpen ? index * 50 : 0}ms`,
-          }}
-          {...props}
-          ref={forwardedRef}
-        >
-          {children}
-        </a>
-      </NavigationMenu.Link>
-    </li>
-  )
+const ListItem = ({ className, children, isOpen, index, href, ...props }) => (
+  <li className="flex">
+    <Link
+      href={href}
+      className={clsx(
+        'flex shrink-0 basis-full gap-4 py-2.5 rounded-sm px-4 text-2xl font-ui items-center lowercase',
+        'transition-all duration-300 ease-in-out',
+        className
+      )}
+      style={{
+        filter: `blur(${isOpen ? 0 : 8}px)`,
+        transitionDelay: `${isOpen ? index * 50 : 0}ms`,
+      }}
+      {...props}
+    >
+      {children}
+    </Link>
+  </li>
 )
 
-ListItem.displayName = 'ListItem'
-
-export { Navigation }
+export { Navigation, Toggle }

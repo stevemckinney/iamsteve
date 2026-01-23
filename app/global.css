@@ -9,9 +9,9 @@
 }
 
 :not(input):focus-visible {
-  --outline-color: var(--color-cornflour-400);
+  --outline-color: var(--color-cornflour-500);
   outline: 2px solid var(--outline-color);
-  outline-offset: 6px;
+  outline-offset: 2px;
   border-radius: minmax(6px, calc(inherit + 6px));
 }
 
