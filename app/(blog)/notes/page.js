@@ -32,33 +32,12 @@ const getData = cache(async () => {
   }
 })
 
-// Group notes by year and month
-function groupNotesByYearAndMonth(notes) {
-  const grouped = {}
-
-  notes.forEach((note) => {
-    const date = new Date(note.date)
-    const year = date.getFullYear()
-    const month = date.toLocaleString('en-GB', { month: 'long' })
-
-    if (!grouped[year]) {
-      grouped[year] = {}
-    }
-
-    if (!grouped[year][month]) {
-      grouped[year][month] = []
-    }
-
-    grouped[year][month].push(note)
-  })
-
-  return grouped
-}
-
-// Format day with ordinal suffix
-function formatDay(date) {
+// Format date as "21st January, 2025"
+function formatDate(date) {
   const d = new Date(date)
   const day = d.getDate()
+  const month = d.toLocaleString('en-GB', { month: 'long' })
+  const year = d.getFullYear()
 
   const ordinal = (n) => {
     const s = ['th', 'st', 'nd', 'rd']
@@ -66,7 +45,7 @@ function formatDay(date) {
     return n + (s[(v - 20) % 10] || s[v] || s[0])
   }
 
-  return ordinal(day)
+  return `${ordinal(day)} ${month}, ${year}`
 }
 
 // Basic MDX components for note content
@@ -95,7 +74,13 @@ const mdxComponents = {
       {...props}
     />
   ),
-  code: (props) => <code className="font-mono text-sm" {...props} />,
+  p: (props) => <p className="not-first:not-a:indent-8" {...props} />,
+  code: (props) => (
+    <code
+      className="font-mono bg-fern-500/12 text-fern-800 rounded-sm px-1"
+      {...props}
+    />
+  ),
   a: (props) => (
     <a
       className="text-link underline hover:text-link-hover hover:no-underline has-[svg]:inline-flex has-[svg]:gap-0 has-[svg]:items-center has-[svg]:align-middle"
@@ -135,8 +120,6 @@ export default async function NotesIndex() {
     )
   }
 
-  const groupedNotes = groupNotesByYearAndMonth(notes)
-
   return (
     <>
       <Header>
@@ -149,81 +132,26 @@ export default async function NotesIndex() {
         </Column>
       </Header>
 
-      <div className="col-content">
-        {Object.keys(groupedNotes)
-          .sort((a, b) => b - a)
-          .map((year) => {
-            const monthsInYear = groupedNotes[year]
-            const months = Object.keys(monthsInYear)
-
-            return (
-              <section
-                key={year}
-                className="grid grid-cols-[auto_1fr] lg:grid-cols-[80px_120px_1fr] gap-x-6"
-              >
-                <h2 className="sticky top-0 self-start py-4 text-xl font-variation-bold font-display lowercase text-heading">
-                  <time dateTime={year}>{year}</time>
-                </h2>
-
-                <div className="col-span-1 lg:col-span-2 grid grid-cols-subgrid">
-                  {months.map((month, monthIndex) => {
-                    const notesInMonth = monthsInYear[month]
-
-                    return (
-                      <div
-                        key={month}
-                        className="grid grid-cols-subgrid col-span-1 lg:col-span-2"
-                      >
-                        <h3 className="sticky top-0 self-start py-4 text-xl font-variation-bold font-display lowercase text-heading">
-                          <time
-                            dateTime={`${year}-${String(
-                              months.indexOf(month) + 1
-                            ).padStart(2, '0')}`}
-                          >
-                            {month}
-                          </time>
-                        </h3>
-
-                        <div className="flex flex-col">
-                          {notesInMonth.map((note, noteIndex) => (
-                            <article
-                              key={note._id}
-                              className="relative py-6 not-last:after:content-[''] not-last:after:absolute not-last:after:bottom-0 not-last:after:left-0 not-last:after:right-0 not-last:after:h-[2px] not-last:after:bg-[url(/images/dash.svg)] dark:not-last:after:bg-[url(/images/dash-dark.svg)]"
-                            >
-                              <div className="flex gap-2 mb-2">
-                                <time
-                                  dateTime={note.date}
-                                  className="text-sm text-ui-body"
-                                >
-                                  {formatDay(note.date)}
-                                </time>
-                                <span
-                                  className="text-body-60"
-                                  aria-hidden="true"
-                                >
-                                  •
-                                </span>
-                                <h4 className="font-medium">
-                                  <Link
-                                    href={note.slug}
-                                    className="hover:text-link"
-                                  >
-                                    {note.title}
-                                  </Link>
-                                </h4>
-                              </div>
-                              <NoteContent note={note} />
-                            </article>
-                          ))}
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              </section>
-            )
-          })}
-      </div>
+      {notes.map((note) => (
+        <article
+          key={note._id}
+          className="col-content grid grid-cols-subgrid relative pt-8 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[2px] before:bg-[url(/images/dash.svg)] dark:before:bg-[url(/images/dash-dark.svg)]"
+        >
+          <div className="flex flex-col mb-2 col-span-4">
+            <time dateTime={note.date} className="text-xl text-ui-body">
+              {formatDate(note.date)}
+            </time>
+            <h2 className="font-medium text-xl">
+              <Link href={note.slug} className="hover:text-link">
+                {note.title}
+              </Link>
+            </h2>
+          </div>
+          <div class="col-span-6 text-xl">
+            <NoteContent note={note} />
+          </div>
+        </article>
+      ))}
     </>
   )
 }

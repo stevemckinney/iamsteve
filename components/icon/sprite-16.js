@@ -403,6 +403,14 @@ const Sprite16 = (props) => (
         <title>checkbox</title>
         <polyline points="3 8 6 11 13 4" />
       </symbol>
+      <symbol id="checkmark-16" viewBox="0 0 16 16">
+        <g className="checkmark">
+          <path
+            d="m3 8 3 3 7-7"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="close-16" viewBox="0 0 16 16">
         <g className="close">
           <path d="M12 12 4 4" className="stroke-current stroke-2 sl-r" />
@@ -494,12 +502,16 @@ const Sprite16 = (props) => (
       <symbol id="copy-16" viewBox="0 0 16 16">
         <g className="copy">
           <path
-            d="M3 2h10v12H3z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
+            d="M5 6H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3"
+            className="fill-none stroke-current stroke-2 sl-r"
           />
-          <path
-            d="M7 2h2v1H7z"
-            className="fill-none stroke-current stroke-2 sl-s"
+          <rect
+            width="8"
+            height="8"
+            x="6"
+            y="2"
+            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
+            rx="1"
           />
         </g>
       </symbol>

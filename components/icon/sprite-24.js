@@ -423,6 +423,14 @@ const Sprite24 = (props) => (
           />
         </g>
       </symbol>
+      <symbol id="checkmark-24" viewBox="0 0 24 24">
+        <g className="checkmark">
+          <path
+            d="m4 13 5 4L20 6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="clipboard-24" viewBox="0 0 24 24">
         <g className="clipboard">
           <rect
@@ -662,22 +670,13 @@ const Sprite24 = (props) => (
             d="m12 3-8 7v11h5v-8h6v8h5V10l-8-7Z"
             className="fill-(--icon-fill)"
           />
-          <path
-            d="m2 12 10-9 10 9"
-            className="fill-none stroke-current stroke-2 sl-s"
-          />
-          <path
-            d="M15 13H9v7h6v-7Z"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
+          <path d="m2 12 10-9 10 9" className="stroke-current stroke-2 sl-s" />
+          <path d="M15 13H9v7h6v-7Z" className="stroke-current stroke-2 sl-r" />
           <path
             d="M4 11v10h5v-7.93h6V21h5V11"
-            className="fill-none stroke-current stroke-2 sl-r"
+            className="stroke-current stroke-2 sl-r"
           />
-          <path
-            d="M9 20h6"
-            className="fill-none stroke-current stroke-2 sl-s"
-          />
+          <path d="M9 20h6" className="stroke-current stroke-2 sl-s" />
         </g>
       </symbol>
       <symbol id="link-24" viewBox="0 0 24 24">

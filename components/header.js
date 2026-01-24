@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 import Link from './link'
 import Icon from '@/components/icon'
 import { Navigation } from '@/components/navigation'
+import { CopyFeedUrl } from '@/components/button/index'
 import {
   MenuTrigger,
   Button,
@@ -162,9 +163,7 @@ function Desktop({ pathname }) {
                       </Menu>
                       <div className="px-8 py-4 flex flex-row items-center justify-between gap-4">
                         <p className="m-0 p-0 font-ui">Subscribe with RSS</p>
-                        <button className="px-6 py-1.5 rounded-sm bg-white bg-[image:linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--color-neutral-01-250),transparent_88%))] shadow-placed hover:shadow-picked transition duration-200 ease-out font-ui">
-                          Copy URL
-                        </button>
+                        <CopyFeedUrl />
                       </div>
                     </div>
                   </Popover>
