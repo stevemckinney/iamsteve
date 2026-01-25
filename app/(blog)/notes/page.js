@@ -7,8 +7,10 @@ import { cache } from 'react'
 import { allNotes } from 'contentlayer/generated'
 
 import { sortPosts } from '@/lib/utils/content'
+import { format, parseISO } from 'date-fns'
 
 import { Header, Title, Column, Description } from '@/components/page'
+import Badge from '@/components/badge'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
 import Icon from '@/components/icon'
 import Link from '@/components/link'
@@ -31,22 +33,6 @@ const getData = cache(async () => {
     notesByDate,
   }
 })
-
-// Format date as "21st January, 2025"
-function formatDate(date) {
-  const d = new Date(date)
-  const day = d.getDate()
-  const month = d.toLocaleString('en-GB', { month: 'long' })
-  const year = d.getFullYear()
-
-  const ordinal = (n) => {
-    const s = ['th', 'st', 'nd', 'rd']
-    const v = n % 100
-    return n + (s[(v - 20) % 10] || s[v] || s[0])
-  }
-
-  return `${ordinal(day)} ${month}, ${year}`
-}
 
 // Basic MDX components for note content
 const mdxComponents = {
@@ -74,16 +60,16 @@ const mdxComponents = {
       {...props}
     />
   ),
-  p: (props) => <p className="not-first:not-a:indent-8" {...props} />,
+  p: (props) => <p className="not-first:indent-8 [&>a]:indent-0" {...props} />,
   code: (props) => (
     <code
-      className="font-mono bg-fern-500/12 text-fern-800 rounded-sm px-1"
+      className="font-mono bg-fern-500/12 dark:bg-dandelion-400/12 text-fern-800 dark:text-dandelion-400 rounded-sm px-1"
       {...props}
     />
   ),
   a: (props) => (
     <a
-      className="text-link underline hover:text-link-hover hover:no-underline has-[svg]:inline-flex has-[svg]:gap-0 has-[svg]:items-center has-[svg]:align-middle"
+      className="text-link underline [text-underline-offset:15%] [text-decoration-thickness:.5px] hover:text-link-hover hover:no-underline has-[svg]:inline-flex has-[svg]:gap-0 has-[svg]:items-center has-[svg]:align-middle"
       {...props}
     />
   ),
@@ -137,17 +123,24 @@ export default async function NotesIndex() {
           key={note._id}
           className="col-content grid grid-cols-subgrid relative pt-8 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[2px] before:bg-[url(/images/dash.svg)] dark:before:bg-[url(/images/dash-dark.svg)]"
         >
-          <div className="flex flex-col mb-2 col-span-4">
-            <time dateTime={note.date} className="text-xl text-ui-body">
-              {formatDate(note.date)}
-            </time>
-            <h2 className="font-medium text-xl">
+          <div className="flex flex-col gap-4 mb-2 col-span-full lg:col-span-4">
+            <div className="flex flex-row gap-4 lg:order-2">
+              <Badge size={16} theme="cornflour" iconStart="calendar">
+                <time dateTime={note.date}>
+                  {format(parseISO(note.date), 'do LLL yyyy')}
+                </time>
+              </Badge>
+              <Badge size={16} theme="lavender" iconStart="views">
+                {note.body.raw.split(/\s+/).length} words
+              </Badge>
+            </div>
+            <h2 className="font-display font-variation-bold lowercase text-3xl">
               <Link href={note.slug} className="hover:text-link">
                 {note.title}
               </Link>
             </h2>
           </div>
-          <div class="col-span-6 text-xl">
+          <div className="col-span-full lg:col-span-6 lg:text-xl">
             <NoteContent note={note} />
           </div>
         </article>
