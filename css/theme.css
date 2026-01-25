@@ -68,8 +68,8 @@
   /* all other content */
   --color-emphasis: light-dark(var(--color-fern-1100), var(--color-fern-100));
   --color-link: light-dark(
-    var(--color-dandelion-700),
-    var(--color-dandelion-600)
+    var(--color-dandelion-600),
+    var(--color-dandelion-500)
   );
   --color-link-hover: light-dark(
     var(--color-dandelion-800),
@@ -91,9 +91,12 @@
 
   /* surfaces, eg: cards, badges, etc. */
   --color-canvas: light-dark(
-    var(--color-neutral-01-150),
-    var(--color-fern-1300)
+    var(--color-canvas-light),
+    var(--color-canvas-dark)
   );
+  --color-canvas-light: var(--color-neutral-01-150);
+  --color-canvas-dark: var(--color-fern-1300);
+
   --color-surface: light-dark(
     rgb(255 255 255),
     color-mix(in oklch, var(--color-fern-1100), transparent 70%)
