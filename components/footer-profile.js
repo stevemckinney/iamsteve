@@ -21,7 +21,7 @@ export default function FooterProfile() {
           </p>
           <p className="text-ui-body text-base flex-1">
             This is a broad topic in itself, which feels challenging to achieve.
-            But it remains—a way to encourage self learning and sharing what I
+            But it remains a way to encourage self learning and sharing what I
             know…
             <Link
               href="/about"
@@ -44,16 +44,7 @@ export default function FooterProfile() {
                 href={link.href}
                 className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
               >
-                <Icon
-                  icon={link.icon}
-                  size={link.size}
-                  variant={link.icon === 'airplane' ? 'none' : 'header'}
-                  style={
-                    link.icon === 'airplane'
-                      ? { '--icon-fill': 'transparent' }
-                      : undefined
-                  }
-                />
+                <Icon icon={link.icon} size={link.size} variant="header" />
                 {link.title}
               </Link>
             </li>
@@ -67,7 +58,7 @@ export default function FooterProfile() {
           className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
         >
           Old design
-          <Icon icon="external" size={16} />
+          <Icon icon="external" variant="header" size={16} />
         </Link>
       </div>
 

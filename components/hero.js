@@ -45,11 +45,7 @@ export default function Hero() {
               className="p-1 rounded-lg bg-[light-dark(var(--color-rio-300),var(--color-rio-300))] max-lg:hidden"
               aria-hidden="true"
             >
-              <Icon
-                icon="pen"
-                variant="on-light"
-                className="dark:text-fern-1100"
-              />
+              <Icon icon="pen" variant="on-light" className="text-fern-1100" />
             </span>
             <span
               className="p-1 rounded-lg bg-rio lg:hidden"
@@ -59,7 +55,7 @@ export default function Hero() {
                 icon="pen"
                 size={16}
                 variant="on-light"
-                className="dark:text-fern-1100"
+                className="text-fern-1100"
               />
             </span>
             Explore design
@@ -74,11 +70,7 @@ export default function Hero() {
               className="p-1 rounded-lg bg-dandelion max-lg:hidden"
               aria-hidden="true"
             >
-              <Icon
-                icon="code"
-                variant="on-light"
-                className="dark:text-fern-1100"
-              />
+              <Icon icon="code" variant="on-light" className="text-fern-1100" />
             </span>
             <span
               className="p-1 rounded-lg bg-[light-dark(var(--color-dandelion-300),var(--color-dandelion-200))] lg:hidden"
@@ -88,7 +80,7 @@ export default function Hero() {
                 icon="code"
                 size={16}
                 variant="on-light"
-                className="dark:text-fern-1100"
+                className="text-fern-1100"
               />
             </span>
             Explore code

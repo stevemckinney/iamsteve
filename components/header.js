@@ -19,14 +19,6 @@ import {
 
 import styles from './header.module.css'
 
-const navClass =
-  'flex justify-between lg:gap-8 max-lg:px-2 lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas'
-const tabbarClass = `max-lg:transition-all max-lg:duration-200 max-lg:ease-out max-lg:px-8 max-lg:bg-white/80 dark:max-lg:bg-fern-1200/90 max-lg:shadow-placed max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100 max-lg:backdrop-blur-sm max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150 max-lg:gap-6 max-lg:rounded-full ${styles.tabbar}`
-const linkClass = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
-const horizontalLinkClass = 'lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5'
-const tabbarLinkClass =
-  'max-lg:text-[12px] max-lg:font-sans max-lg:font-medium max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:py-3'
-
 function AccessibilityLinks({ isArticlePage }) {
   return (
     <ul
@@ -72,7 +64,11 @@ function AccessibilityLinks({ isArticlePage }) {
 function Desktop({ pathname }) {
   return (
     <nav
-      className={cn(navClass, 'max-lg:hidden')}
+      className={cn(
+        'flex justify-between lg:gap-8 max-lg:px-2 lg:-mx-4 lg:py-6.5 2xl:py-9 lg:px-8 lg:-mx-8 max-lg:-mx-4',
+        'max-lg:hidden',
+        'bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas'
+      )}
       id="nav"
       suppressHydrationWarning
     >
@@ -86,10 +82,10 @@ function Desktop({ pathname }) {
                 <MenuTrigger>
                   <Button
                     className={cn(
-                      linkClass,
-                      horizontalLinkClass,
-                      styles.start,
-                      'cursor-pointer'
+                      'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
+                      'lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5',
+                      styles.link,
+                      styles.start
                     )}
                   >
                     <Icon
@@ -176,7 +172,12 @@ function Desktop({ pathname }) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={cn(linkClass, horizontalLinkClass, styles.start)}
+                className={cn(
+                  'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
+                  'lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5',
+                  styles.link,
+                  styles.start
+                )}
                 suppressHydrationWarning
               >
                 <Icon
@@ -199,7 +200,27 @@ function Desktop({ pathname }) {
 function Tabbar({ pathname }) {
   return (
     <nav
-      className={cn(navClass, tabbarClass, 'lg:hidden')}
+      className={cn(
+        // Layout
+        'flex justify-between',
+        // Large screens
+        'lg:hidden lg:gap-8 lg:-mx-4 lg:py-6.5',
+        // 2XL screens
+        '2xl:py-9 2xl:px-8 2xl:-mx-8',
+        // Mobile positioning
+        'max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100',
+        // Mobile spacing
+        'max-lg:px-8 max-lg:gap-6',
+        // Mobile appearance
+        'max-lg:rounded-full max-lg:shadow-placed',
+        // Mobile background
+        'max-lg:bg-white/80 dark:max-lg:bg-fern-1200/90',
+        // Mobile backdrop
+        'max-lg:backdrop-blur-sm max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150',
+        // Mobile transition
+        'max-lg:transition-all max-lg:duration-200 max-lg:ease-out',
+        styles.tabbar
+      )}
       suppressHydrationWarning
     >
       <ul className="flex justify-between max-lg:gap-6">
@@ -209,10 +230,16 @@ function Tabbar({ pathname }) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={cn(linkClass, tabbarLinkClass, styles.start, {
-                  'max-lg:text-emphasis': isActive,
-                  'max-lg:text-fern-700 dark:max-lg:text-fern-400': !isActive,
-                })}
+                className={cn(
+                  'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
+                  'max-lg:text-[12px] max-lg:font-sans max-lg:font-medium max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:py-3',
+                  styles.link,
+                  styles.start,
+                  {
+                    'max-lg:text-emphasis': isActive,
+                    'max-lg:text-fern-700 dark:max-lg:text-fern-400': !isActive,
+                  }
+                )}
                 suppressHydrationWarning
               >
                 <Icon
@@ -246,7 +273,7 @@ export default function Header() {
         <div className="col-container 2xl:col-content flex items-center align-center justify-between max-2xl:gap-8 text-emphasis max-lg:py-4 max-lg:px-4">
           <Link
             href="/"
-            className="flex lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas"
+            className="flex lg:-mx-4 lg:py-6.5 2xl:py-9 lg:px-8 lg:-mx-8 max-lg:-mx-4 bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas"
             aria-label="iamsteve.me homepage"
           >
             <Icon

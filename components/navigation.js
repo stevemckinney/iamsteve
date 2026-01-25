@@ -35,7 +35,7 @@ const Navigation = () => {
   return (
     <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
       <Button
-        className="toggle-nav lg:hidden max-lg:-mx-4"
+        className="toggle-nav md:hidden max-md:-mx-4"
         aria-label="Toggle navigation menu"
         data-state={isOpen ? 'open' : 'closed'}
       >
