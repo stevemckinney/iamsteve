@@ -14,12 +14,24 @@
   --code-black: light-dark(var(--color-fern-900), var(--color-fern-1100));
   --code-white: var(--color-neutral-01-50);
   --code-red: light-dark(var(--color-rio-500), var(--color-rio-200));
-  --code-yellow: light-dark(var(--color-dandelion-500), var(--color-dandelion-300));
+  --code-yellow: light-dark(
+    var(--color-dandelion-500),
+    var(--color-dandelion-300)
+  );
   --code-green: light-dark(var(--color-grass-500), var(--color-grass-300));
-  --code-blue: light-dark(var(--color-cornflour-500), var(--color-cornflour-300));
-  --code-magenta: light-dark(var(--color-magenta-500), var(--color-magenta-200));
+  --code-blue: light-dark(
+    var(--color-cornflour-500),
+    var(--color-cornflour-300)
+  );
+  --code-magenta: light-dark(
+    var(--color-magenta-500),
+    var(--color-magenta-200)
+  );
   --code-cyan: light-dark(var(--color-fern-500), var(--color-fern-300));
-  --code-comment: light-dark(var(--color-neutral-02-400), var(--color-neutral-03-400));
+  --code-comment: light-dark(
+    var(--color-neutral-02-400),
+    var(--color-neutral-03-400)
+  );
 
   --code-lavender: var(--color-lavender-700);
   --offset-spacing: 2rem;
@@ -51,7 +63,8 @@ pre[class*='language-'] {
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
   color: light-dark(var(--code-black), var(--code-white));
-  border: 1px solid var(--color-surface-raised);
+  box-shadow: 0 0 0 1px
+    light-dark(var(--color-neutral-01-150), var(--color-fern-900));
   background: light-dark(var(--code-white), var(--code-black));
 
   @media (width >= 640px) {
@@ -85,7 +98,10 @@ pre[class*='language-'] {
 
 .highlight-line,
 .highlight-line.line-number:before {
-  background-color: light-dark(var(--color-cornflour-0), oklch(32.7% 0.108727 258.5));
+  background-color: light-dark(
+    var(--color-cornflour-0),
+    oklch(32.7% 0.108727 258.5)
+  );
   color: light-dark(var(--color-cornflour-500), oklch(83.3% 0.077752 252.1));
 }
 
@@ -139,7 +155,10 @@ pre[class*='language-'] {
   z-index: 2;
   top: 0;
   left: -32px;
-  background-color: light-dark(var(--color-neutral-01-50), var(--color-fern-1100));
+  background-color: light-dark(
+    var(--color-neutral-01-50),
+    var(--color-fern-1100)
+  );
   mask: linear-gradient(to right, #000 66%, transparent);
 }
 

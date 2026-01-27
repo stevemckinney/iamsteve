@@ -45,7 +45,7 @@
     inset 0 1px 3px oklch(87.1% 0.184 95 / 0.5), var(--shadow-placed-depth);
   color: var(--color-dandelion-800);
   border-radius: var(--radius-sm);
-  padding: theme('padding[3.5]') theme('padding.8');
+  padding: calc(var(--spacing) * 3.5) calc(var(--spacing) * 8);
 
   background: padding-box
       linear-gradient(
@@ -311,7 +311,7 @@
       var(--shadow-reduced-depth);
     --shadow-reduced: light-dark(
       var(--shadow-reduced-light),
-      inset 0 0 0 1px var(--color-surface-02)
+      0 0 0 1px var(--color-surface-02)
     );
 
     --shadow-placed-border: 0 -1px var(--ui-border-color-weak),
@@ -489,23 +489,6 @@
 
 .toggle-nav[data-state='open'] span > span:last-child {
   animation: opened-last 200ms ease-out both;
-}
-
-.nav-content {
-  position: relative;
-  width: 100%;
-  transform-origin: 0 0;
-  height: var(--radix-navigation-menu-viewport-height);
-}
-
-.nav-viewport[data-state='open'] {
-  transform-origin: 50% 0;
-  animation: show 200ms ease-out;
-}
-
-.nav-viewport[data-state='closed'] {
-  transform-origin: 50% 0;
-  animation: hide 200ms ease-in;
 }
 
 .column-categories li:not(:first-child):not(:nth-of-type(2)) {

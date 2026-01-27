@@ -11,15 +11,42 @@
    * Light mode: -100 level (lighter), Dark mode: -200 level (better contrast)
    */
   --placeholder-color-0: light-dark(var(--color-rio-100), var(--color-rio-400));
-  --placeholder-color-1: light-dark(var(--color-dandelion-100), var(--color-dandelion-400));
-  --placeholder-color-2: light-dark(var(--color-lavender-100), var(--color-lavender-400));
-  --placeholder-color-3: light-dark(var(--color-magenta-100), var(--color-magenta-400));
-  --placeholder-color-4: light-dark(var(--color-grass-100), var(--color-grass-400));
-  --placeholder-color-5: light-dark(var(--color-fern-100), var(--color-fern-400));
-  --placeholder-color-6: light-dark(var(--color-moss-100), var(--color-moss-400));
-  --placeholder-color-7: light-dark(var(--color-cornflour-100), var(--color-cornflour-400));
-  --placeholder-color-8: light-dark(var(--color-neutral-01-200), var(--color-neutral-01-400));
-  --placeholder-color-9: light-dark(var(--color-neutral-02-200), var(--color-neutral-02-400));
+  --placeholder-color-1: light-dark(
+    var(--color-dandelion-100),
+    var(--color-dandelion-400)
+  );
+  --placeholder-color-2: light-dark(
+    var(--color-lavender-100),
+    var(--color-lavender-400)
+  );
+  --placeholder-color-3: light-dark(
+    var(--color-magenta-100),
+    var(--color-magenta-400)
+  );
+  --placeholder-color-4: light-dark(
+    var(--color-grass-100),
+    var(--color-grass-400)
+  );
+  --placeholder-color-5: light-dark(
+    var(--color-fern-100),
+    var(--color-fern-400)
+  );
+  --placeholder-color-6: light-dark(
+    var(--color-moss-100),
+    var(--color-moss-400)
+  );
+  --placeholder-color-7: light-dark(
+    var(--color-cornflour-100),
+    var(--color-cornflour-400)
+  );
+  --placeholder-color-8: light-dark(
+    var(--color-neutral-01-200),
+    var(--color-neutral-01-400)
+  );
+  --placeholder-color-9: light-dark(
+    var(--color-neutral-02-200),
+    var(--color-neutral-02-400)
+  );
 }
 
 /**
@@ -30,40 +57,97 @@
   --color-heading: light-dark(var(--color-fern-1100), var(--color-fern-100));
   --color-body: light-dark(var(--color-fern-1100), var(--color-fern-300));
   --color-body-80: light-dark(
-    oklch(from var(--color-fern-1100) l c h / .8),
-    oklch(from var(--color-fern-300) l c h / .8)
+    oklch(from var(--color-fern-1100) l c h / 0.8),
+    oklch(from var(--color-fern-300) l c h / 0.8)
   );
   --color-body-60: light-dark(
-    oklch(from var(--color-fern-1100) l c h / .6),
-    oklch(from var(--color-fern-300) l c h / .6)
+    oklch(from var(--color-fern-1100) l c h / 0.6),
+    oklch(from var(--color-fern-300) l c h / 0.6)
   );
 
   /* all other content */
   --color-emphasis: light-dark(var(--color-fern-1100), var(--color-fern-100));
-  --color-link: light-dark(var(--color-dandelion-700), var(--color-dandelion-600));
-  --color-link-hover: light-dark(var(--color-dandelion-800), var(--color-dandelion-300));
+  --color-link: light-dark(
+    var(--color-dandelion-600),
+    var(--color-dandelion-500)
+  );
+  --color-link-hover: light-dark(
+    var(--color-dandelion-800),
+    var(--color-dandelion-300)
+  );
 
-  --color-text-secondary: light-dark(var(--color-fern-700), var(--color-ui-body));
-  --color-text-tertiary: light-dark(var(--color-neutral-01-600), var(--color-neutral-01-500));
-  --color-text-inverse: light-dark(var(--color-fern-1100), var(--color-neutral-01-0));
+  --color-text-secondary: light-dark(
+    var(--color-fern-700),
+    var(--color-ui-body)
+  );
+  --color-text-tertiary: light-dark(
+    var(--color-neutral-01-600),
+    var(--color-neutral-01-500)
+  );
+  --color-text-inverse: light-dark(
+    var(--color-fern-1100),
+    var(--color-neutral-01-0)
+  );
 
   /* surfaces, eg: cards, badges, etc. */
-  --color-canvas: light-dark(var(--color-neutral-01-150), var(--color-fern-1300));
-  --color-surface: light-dark(rgb(255 255 255), color-mix(in oklch, var(--color-fern-1100), transparent 70%));
-  --color-surface-02: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-900), transparent 60%));
-  --color-surface-03: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-900), transparent 50%));
-  --color-surface-04: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-900), transparent 10%));
-  --color-surface-raised: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-900), transparent 30%));
-  --color-surface-pressed: light-dark(var(--color-neutral-01-50), color-mix(in oklch, var(--color-fern-1000), transparent 80%));
+  --color-canvas: light-dark(
+    var(--color-canvas-light),
+    var(--color-canvas-dark)
+  );
+  --color-canvas-light: var(--color-neutral-01-150);
+  --color-canvas-dark: var(--color-fern-1300);
+
+  --color-surface: light-dark(
+    rgb(255 255 255),
+    color-mix(in oklch, var(--color-fern-1100), transparent 70%)
+  );
+  --color-surface-02: light-dark(
+    var(--color-neutral-01-50),
+    color-mix(in oklch, var(--color-fern-900), transparent 60%)
+  );
+  --color-surface-03: light-dark(
+    var(--color-neutral-01-50),
+    color-mix(in oklch, var(--color-fern-900), transparent 50%)
+  );
+  --color-surface-04: light-dark(
+    var(--color-neutral-01-50),
+    color-mix(in oklch, var(--color-fern-900), transparent 10%)
+  );
+  --color-surface-raised: light-dark(
+    var(--color-neutral-01-50),
+    color-mix(in oklch, var(--color-fern-900), transparent 30%)
+  );
+  --color-surface-pressed: light-dark(
+    var(--color-neutral-01-50),
+    color-mix(in oklch, var(--color-fern-1000), transparent 80%)
+  );
 
   /* definitions in progress */
-  --color-subtle: light-dark(var(--color-neutral-01-250), oklch(from var(--color-fern-300) l c h / .12));
-  --color-overlay: light-dark(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
+  --color-subtle: light-dark(
+    var(--color-neutral-01-250),
+    oklch(from var(--color-fern-300) l c h / 0.12)
+  );
+  --color-overlay: light-dark(
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
 
-  --color-table: light-dark(var(--color-neutral-01-150), oklch(from var(--color-fern-300) l c h / .12));
-  --color-table-darker: light-dark(var(--color-neutral-01-200), oklch(from var(--color-fern-300) l c h / .24));
-  --color-border-medium: light-dark(var(--color-neutral-01-300), var(--color-neutral-01-400));
-  --color-border-strong: light-dark(var(--color-neutral-01-400), var(--color-neutral-01-500));
+  --color-table: light-dark(
+    var(--color-neutral-01-150),
+    oklch(from var(--color-fern-300) l c h / 0.12)
+  );
+  --color-table-darker: light-dark(
+    var(--color-neutral-01-200),
+    oklch(from var(--color-fern-300) l c h / 0.24)
+  );
+  --color-border-medium: light-dark(
+    var(--color-neutral-01-300),
+    var(--color-neutral-01-400)
+  );
+  --color-border-strong: light-dark(
+    var(--color-neutral-01-400),
+    var(--color-neutral-01-500)
+  );
 
   --bg-texture-image: url(/images/texture.png);
   --bg-dash-image: light-dark(url(/images/dash.svg), url(/images/dash.svg));
@@ -73,13 +157,22 @@
   --color-ui-body: var(--color-body-80);
 
   /* form */
-  --color-input: light-dark(var(--color-white), color-mix(in oklch, var(--color-fern-1000), transparent 80%));
+  --color-input: light-dark(
+    var(--color-white),
+    color-mix(in oklch, var(--color-fern-1000), transparent 80%)
+  );
 
   /* themed elements, eg: (hero.js links) */
   --color-rio: light-dark(var(--color-rio-400), var(--color-rio-300));
   --color-rio-hover: light-dark(var(--color-rio-500), var(--color-rio-400));
-  --color-dandelion: light-dark(var(--color-dandelion-400), var(--color-dandelion-300));
-  --color-dandelion-hover: light-dark(var(--color-dandelion-500), var(--color-dandelion-400));
+  --color-dandelion: light-dark(
+    var(--color-dandelion-400),
+    var(--color-dandelion-300)
+  );
+  --color-dandelion-hover: light-dark(
+    var(--color-dandelion-500),
+    var(--color-dandelion-400)
+  );
 }
 
 /**
@@ -87,7 +180,10 @@
  * Generic fill color for icon components
  */
 .icon {
-  --icon-fill: light-dark(var(--color-white), color-mix(in oklab, white 90%, currentcolor));
+  --icon-fill: light-dark(
+    var(--color-white),
+    color-mix(in oklab, white 90%, currentcolor)
+  );
 }
 
 .icon-header {
@@ -98,73 +194,168 @@
   --icon-fill: var(--color-white);
 }
 
-
 /**
  * Illustration color classes
  * Direct mapping to neutral/fern color scales
  */
+/* Default illustration theme (hero theme) */
+:root {
+  --fill-foreground: light-dark(var(--color-white), var(--color-fern-0));
+  --fill-surface: light-dark(var(--color-neutral-01-50), var(--color-fern-100));
+  --fill-surface-100: light-dark(
+    var(--color-neutral-01-100),
+    var(--color-fern-200)
+  );
+  --fill-surface-150: light-dark(
+    var(--color-neutral-01-150),
+    var(--color-fern-300)
+  );
+  --fill-lowlight: light-dark(
+    var(--color-neutral-01-200),
+    var(--color-fern-400)
+  );
+  --fill-subtle: light-dark(var(--color-neutral-01-250), var(--color-fern-400));
+  --fill-muted: light-dark(var(--color-neutral-01-300), var(--color-fern-600));
+  --fill-border: light-dark(
+    var(--color-neutral-01-400),
+    var(--color-fern-1100)
+  );
+  --stroke-foreground: light-dark(var(--color-white), var(--color-white));
+  --stroke-surface: light-dark(rgb(249 243 241), var(--color-fern-200));
+  --stroke-lowlight: light-dark(
+    var(--color-neutral-01-200),
+    var(--color-fern-200)
+  );
+  --stroke-border: light-dark(
+    var(--color-neutral-01-400),
+    var(--color-fern-1100)
+  );
+  --stroke-muted: light-dark(
+    var(--color-neutral-01-300),
+    var(--color-fern-600)
+  );
+  --stroke-subtle: light-dark(
+    var(--color-neutral-01-250),
+    var(--color-fern-500)
+  );
+  --stroke-accent: light-dark(
+    var(--color-neutral-01-400),
+    var(--color-fern-700)
+  );
+  --stroke-highlight: light-dark(rgb(255 255 255), var(--color-fern-1100));
+}
+
+.illo-cool {
+  --fill-foreground: light-dark(var(--color-white), var(--color-fern-0));
+  --fill-surface: light-dark(
+    var(--color-neutral-02-100),
+    var(--color-fern-100)
+  );
+  --fill-surface-100: light-dark(
+    var(--color-neutral-02-150),
+    var(--color-fern-200)
+  );
+  --fill-surface-150: light-dark(
+    var(--color-neutral-02-200),
+    var(--color-fern-300)
+  );
+  --fill-lowlight: light-dark(
+    var(--color-neutral-02-250),
+    var(--color-fern-400)
+  );
+  --fill-subtle: light-dark(var(--color-neutral-02-300), var(--color-fern-400));
+  --fill-muted: light-dark(var(--color-neutral-02-350), var(--color-fern-600));
+  --fill-border: light-dark(
+    var(--color-neutral-02-500),
+    var(--color-fern-1100)
+  );
+  --stroke-foreground: light-dark(var(--color-white), var(--color-white));
+  --stroke-surface: light-dark(rgb(249 243 241), var(--color-fern-200));
+  --stroke-lowlight: light-dark(
+    var(--color-neutral-02-250),
+    var(--color-fern-200)
+  );
+  --stroke-border: light-dark(
+    var(--color-neutral-02-500),
+    var(--color-fern-1100)
+  );
+  --stroke-muted: light-dark(
+    var(--color-neutral-02-350),
+    var(--color-fern-600)
+  );
+  --stroke-subtle: light-dark(
+    var(--color-neutral-02-300),
+    var(--color-fern-500)
+  );
+  --stroke-accent: light-dark(
+    var(--color-neutral-02-500),
+    var(--color-fern-700)
+  );
+  --stroke-highlight: light-dark(rgb(255 255 255), var(--color-fern-1100));
+}
+
 .fill-foreground {
-  fill: light-dark(var(--color-white), var(--color-fern-0));
+  fill: var(--fill-foreground);
 }
 
 .fill-surface {
-  fill: light-dark(var(--color-neutral-01-50), var(--color-fern-100));
+  fill: var(--fill-surface);
 }
 
 .fill-surface-100 {
-  fill: light-dark(var(--color-neutral-01-100), var(--color-fern-200));
+  fill: var(--fill-surface-100);
 }
 
 .fill-surface-150 {
-  fill: light-dark(var(--color-neutral-01-150), var(--color-fern-300));
+  fill: var(--fill-surface-150);
 }
 
 .fill-lowlight {
-  fill: light-dark(var(--color-neutral-01-200), var(--color-fern-400));
+  fill: var(--fill-lowlight);
 }
 
 .fill-subtle {
-  fill: light-dark(var(--color-neutral-01-250), var(--color-fern-400));
+  fill: var(--fill-subtle);
 }
 
 .fill-muted {
-  fill: light-dark(var(--color-neutral-01-300), var(--color-fern-600));
+  fill: var(--fill-muted);
 }
 
 .fill-border {
-  fill: light-dark(var(--color-neutral-01-400), var(--color-fern-1100));
+  fill: var(--fill-border);
 }
 
 .stroke-foreground {
-  stroke: light-dark(var(--color-white), var(--color-white));
+  stroke: var(--stroke-foreground);
 }
 
 .stroke-surface {
-  stroke: light-dark(rgb(249 243 241), var(--color-fern-200));
+  stroke: var(--stroke-surface);
 }
 
 .stroke-lowlight {
-  stroke: light-dark(var(--color-neutral-01-200), var(--color-fern-200));
+  stroke: var(--stroke-lowlight);
 }
 
 .stroke-border {
-  stroke: light-dark(var(--color-neutral-01-400), var(--color-fern-1100));
+  stroke: var(--stroke-border);
 }
 
 .stroke-muted {
-  stroke: light-dark(var(--color-neutral-01-300), var(--color-fern-600));
+  stroke: var(--stroke-muted);
 }
 
 .stroke-subtle {
-  stroke: light-dark(var(--color-neutral-01-250), var(--color-fern-500));
+  stroke: var(--stroke-subtle);
 }
 
 .stroke-accent {
-  stroke: light-dark(var(--color-neutral-01-400), var(--color-fern-700));
+  stroke: var(--stroke-accent);
 }
 
 .stroke-highlight {
-  stroke: light-dark(rgb(255 255 255), var(--color-fern-1100));
+  stroke: var(--stroke-highlight);
 }
 
 .opacity-low {

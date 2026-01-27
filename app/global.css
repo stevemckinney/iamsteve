@@ -9,10 +9,13 @@
 }
 
 :not(input):focus-visible {
-  --outline-color: var(--color-cornflour-400);
+  --outline-color: var(--color-fern-300);
   outline: 2px solid var(--outline-color);
-  outline-offset: 6px;
-  border-radius: minmax(6px, calc(inherit + 6px));
+  outline-offset: 2px;
+}
+
+:not(input):not([role='menu']):focus-visible {
+  border-radius: 4px;
 }
 
 @media (prefers-color-scheme: dark) {

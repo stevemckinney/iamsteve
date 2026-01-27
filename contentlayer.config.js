@@ -249,10 +249,54 @@ export const Post = defineDocumentType(() => ({
   },
 }))
 
+export const Note = defineDocumentType(() => ({
+  name: 'Note',
+  filePathPattern: `notes/**/*.md`,
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+    status: {
+      type: 'enum',
+      options: ['draft', 'published'],
+      default: 'published',
+    },
+    summary: { type: 'string' },
+  },
+  computedFields: {
+    slug: {
+      type: 'string',
+      resolve: (doc) => `/notes/${doc._raw.flattenedPath.split('/').pop()}`,
+    },
+    slugAsParams: {
+      type: 'string',
+      resolve: (doc) => doc._raw.flattenedPath.split('/').pop(),
+    },
+    rssBody: {
+      type: 'string',
+      resolve: (doc) => {
+        try {
+          const result = compileMdxForRssWithMarked(doc.body.raw)
+          if (!result) {
+            return doc.body.raw
+          }
+          return result
+        } catch (error) {
+          console.error(
+            `Error compiling RSS body for note ${doc._raw.flattenedPath}:`,
+            error.message
+          )
+          return doc.body.raw
+        }
+      },
+    },
+  },
+}))
+
 export default makeSource({
   contentDirPath: './content',
   contentDirExclude: ['./content/draft'],
-  documentTypes: [Post, Page, Collections],
+  documentTypes: [Post, Page, Collections, Note],
   mdx: {
     remarkPlugins: [remarkGfm, remarkCodeTitles, smartypants],
     rehypePlugins: [

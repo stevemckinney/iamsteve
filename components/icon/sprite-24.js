@@ -132,25 +132,37 @@ const Sprite24 = (props) => (
       <symbol id="arrow-down-24" viewBox="0 0 24 24">
         <g className="arrow-down">
           <path d="M12 22V2" className="stroke-current stroke-2 sl-r" />
-          <path d="m6 16 6 6 6-6" className="stroke-current stroke-2 sl-r" />
+          <path
+            d="m6 16 6 6 6-6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
       <symbol id="arrow-left-24" viewBox="0 0 24 24">
         <g className="arrow-left">
           <path d="M2 12h20" className="stroke-current stroke-2 sl-r" />
-          <path d="m8 6-6 6 6 6" className="stroke-current stroke-2 sl-r" />
+          <path
+            d="m8 6-6 6 6 6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
       <symbol id="arrow-right-24" viewBox="0 0 24 24">
         <g className="arrow-right">
           <path d="M22 12H2" className="stroke-current stroke-2 sl-r" />
-          <path d="m16 18 6-6-6-6" className="stroke-current stroke-2 sl-r" />
+          <path
+            d="m16 18 6-6-6-6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
       <symbol id="arrow-up-24" viewBox="0 0 24 24">
         <g className="arrow-up">
           <path d="M12 2v20" className="stroke-current stroke-2 sl-r" />
-          <path d="m18 8-6-6-6 6" className="stroke-current stroke-2 sl-r" />
+          <path
+            d="m18 8-6-6-6 6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
       <symbol id="bee-24" viewBox="0 0 24 24">
@@ -190,6 +202,19 @@ const Sprite24 = (props) => (
         <g className="bolt">
           <path
             d="m13 10-1-8-6 12h5l1 8 6-12h-5Z"
+            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="book-24" viewBox="0 0 24 24">
+        <g className="book">
+          <path
+            d="M18 21v-8H5v6.5A1.5 1.5 0 0 0 6.5 21H18Z"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path d="M16 21h3" className="stroke-current stroke-2 sl-r" />
+          <path
+            d="M19 17V3H6.5A1.5 1.5 0 0 0 5 4.5v11A1.5 1.5 0 0 0 6.5 17H19Z"
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
         </g>
@@ -395,6 +420,14 @@ const Sprite24 = (props) => (
           <path
             d="m17 15-5-8-5 8h10Z"
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="checkmark-24" viewBox="0 0 24 24">
+        <g className="checkmark">
+          <path
+            d="m4 13 5 4L20 6"
+            className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>

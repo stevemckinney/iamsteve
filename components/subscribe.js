@@ -10,7 +10,7 @@ const Subscribe = ({
   return (
     <section className={`${className} flex flex-col items-center gap-8`}>
       <header className={`flex flex-col gap-2 items-center`}>
-        <Envelope width={96} height={96} className="mb-2" />
+        <Envelope width={96} height={96} className="mb-2 illo-cool" />
         <h2 className="text-3xl sm:text-5xl font-display font-variation-bold lowercase text-heading text-center">
           {title}
         </h2>
