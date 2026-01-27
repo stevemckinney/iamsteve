@@ -11,7 +11,7 @@ It’s been on my mind for a little while if it’s worth just having an open st
 
 I’ve been thinking of expanding in different areas of this website since redesigning back in 2024.
 
-The direction is set around web design craft and seeing the digital garden approach this has allowed me to shift my mindset a bit. I can still do this by having the “/blog” side of it. I see this as only the “audience” side of it picking a topic and sticking with it. But I want to allow myself more freedom with notes.
+The direction is set around web design craft and seeing the digital garden approach this has allowed me to shift my mindset a bit. I can still do this by having the “/blog”, as I see this as the reason people visit or articles are indexed. But I want to allow myself more freedom with notes.
 
 ### Expanding beyond blog posts
 
