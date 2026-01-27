@@ -1,5 +1,5 @@
 'use client'
-
+import React from 'react'
 import { usePathname } from 'next/navigation'
 
 import { navigation, library, tabbar } from '@/content/navigation'
@@ -15,6 +15,9 @@ import {
   Popover,
   Menu,
   MenuItem,
+  MenuSection,
+  Header as MenuHeader,
+  Separator,
 } from 'react-aria-components'
 
 import styles from './header.module.css'
@@ -78,7 +81,7 @@ function Desktop({ pathname }) {
 
           if (isLibrary) {
             return (
-              <li key={link.href} className="relative">
+              <li key={link.href} className="relative -mr-1 group/library">
                 <MenuTrigger>
                   <Button
                     className={cn(
@@ -131,37 +134,46 @@ function Desktop({ pathname }) {
                         d="M21.35 9h-1.6l-8.125-6.5a1 1 0 0 0-1.25 0L2.25 9H.65l9.1-7.28a2 2 0 0 1 2.5 0L21.35 9Z"
                       />
                     </svg>
-                    <div className="w-[412px] rounded-2xl shadow-picked bg-neutral-01-100/80 backdrop-blur-sm dark:bg-fern-1200">
-                      <Menu className="rounded-t-2xl flex flex-col p-4 bg-surface shadow-reduced dark:shadow-[0_1px_var(--color-fern-1000)]">
-                        {library.map((item) => (
-                          <MenuItem
-                            key={item.href}
-                            href={item.href}
-                            className="relative flex flex-col gap-1 p-4 hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition duration-200 ease-out rounded-sm outline-none cursor-pointer not-last:content-[''] not-last:after:block not-last:after:absolute not-last:after:top-full not-last:after:left-0 not-last:after:right-0 not-last:after:border-b not-last:after:border-neutral-01-50 dark:not-last:after:border-fern-1100 focus-visible:z-10"
-                          >
-                            <span className="flex items-center gap-2">
-                              <Icon
-                                icon={item.icon}
-                                size={16}
-                                className="text-emphasis"
-                                variant="header"
-                                aria-hidden="true"
-                              />
-                              <span className="text-base font-medium">
-                                {item.title}
+                    <Menu className="w-[412px] rounded-2xl shadow-picked bg-neutral-01-100/80 backdrop-blur-sm dark:bg-fern-1200 outline-none focus-visible:outline-2 focus-visible:outline-fern-900 dark:focus-visible:outline-fern-400 focus-visible:outline-offset-2">
+                      <MenuSection className="rounded-t-2xl flex flex-col p-4 bg-surface shadow-reduced dark:shadow-[0_1px_var(--color-fern-1000)]">
+                        {library.map((item, index) => (
+                          <React.Fragment key={index}>
+                            <MenuItem
+                              key={item.href}
+                              href={item.href}
+                              className="relative flex flex-col gap-1 p-4 hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition duration-200 ease-out rounded-sm outline-none cursor-pointer focus-visible:z-10"
+                            >
+                              <span className="flex items-center gap-2">
+                                <Icon
+                                  icon={item.icon}
+                                  size={16}
+                                  className="text-emphasis"
+                                  variant="header"
+                                  aria-hidden="true"
+                                />
+                                <span className="text-base font-medium">
+                                  {item.title}
+                                </span>
                               </span>
-                            </span>
-                            <span className="text-base">
-                              {item.description}
-                            </span>
-                          </MenuItem>
+                              <span className="text-base">
+                                {item.description}
+                              </span>
+                            </MenuItem>
+                            {index < library.length - 1 && (
+                              <Separator className="border-b border-neutral-01-50 dark:border-fern-1100" />
+                            )}
+                          </React.Fragment>
                         ))}
-                      </Menu>
-                      <div className="px-8 py-4 flex flex-row items-center justify-between gap-4">
-                        <p className="m-0 p-0 font-ui">Subscribe with RSS</p>
-                        <CopyFeedUrl />
-                      </div>
-                    </div>
+                      </MenuSection>
+                      <MenuSection>
+                        <MenuHeader className="px-8 py-4 flex flex-row items-center justify-between gap-4">
+                          <span className="m-0 p-0 font-ui">
+                            Subscribe with RSS
+                          </span>
+                          <CopyFeedUrl />
+                        </MenuHeader>
+                      </MenuSection>
+                    </Menu>
                   </Popover>
                 </MenuTrigger>
               </li>
@@ -271,26 +283,24 @@ export default function Header() {
         id="top"
       >
         <div className="col-container 2xl:col-content flex items-center align-center justify-between max-2xl:gap-8 text-emphasis max-lg:py-4 max-lg:px-4">
-          <Link
-            href="/"
-            className="flex lg:-mx-4 lg:py-6.5 2xl:py-9 lg:px-8 lg:-mx-8 max-lg:-mx-4 bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas"
-            aria-label="iamsteve.me homepage"
-          >
-            <Icon
-              icon="logo"
-              size={32}
-              className="max-xl:hidden"
-              variant="header"
-              aria-hidden="true"
-            />
-            <Icon
-              icon="logo"
-              size={24}
-              className="xl:hidden"
-              variant="header"
-              aria-hidden="true"
-            />
-          </Link>
+          <span className="flex bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas lg:-mx-4 lg:py-6.5 2xl:py-9 lg:px-8 lg:-mx-8 max-lg:-mx-4">
+            <Link href="/" className="flex" aria-label="iamsteve.me homepage">
+              <Icon
+                icon="logo"
+                size={32}
+                className="max-xl:hidden"
+                variant="header"
+                aria-hidden="true"
+              />
+              <Icon
+                icon="logo"
+                size={24}
+                className="xl:hidden"
+                variant="header"
+                aria-hidden="true"
+              />
+            </Link>
+          </span>
           <Desktop pathname={pathname} />
           <Tabbar pathname={pathname} />
           <Navigation />

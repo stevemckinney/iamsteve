@@ -45,7 +45,7 @@
     inset 0 1px 3px oklch(87.1% 0.184 95 / 0.5), var(--shadow-placed-depth);
   color: var(--color-dandelion-800);
   border-radius: var(--radius-sm);
-  padding: var(--spacing-3_5) var(--spacing-8);
+  padding: calc(var(--spacing) * 3.5) calc(var(--spacing) * 8);
 
   background: padding-box
       linear-gradient(
