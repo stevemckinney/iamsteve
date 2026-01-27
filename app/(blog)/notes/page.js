@@ -38,19 +38,19 @@ const getData = cache(async () => {
 const mdxComponents = {
   h2: (props) => (
     <h2
-      className="text-xl font-variation-bold font-display lowercase text-heading mt-6 mb-3"
+      className="text-lg lg:text-2xl font-variation-bold font-display lowercase text-heading mt-6 mb-2"
       {...props}
     />
   ),
   h3: (props) => (
     <h3
-      className="text-lg font-variation-bold font-display lowercase text-heading mt-5 mb-2"
+      className="text-base lg:text-xl font-variation-bold font-display lowercase text-heading mt-5 mb-2"
       {...props}
     />
   ),
   h4: (props) => (
     <h4
-      className="text-base font-variation-bold font-display lowercase text-heading mt-4 mb-2"
+      className="text-base lg:text-xl font-variation-bold font-display lowercase text-heading mt-4 mb-2"
       {...props}
     />
   ),
