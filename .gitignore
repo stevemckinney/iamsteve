@@ -55,3 +55,6 @@ uploads
 # Link validation cache
 .link-validation-cache
 .validation-results.json
+
+# Notes processing
+.notes-processing-results.json
