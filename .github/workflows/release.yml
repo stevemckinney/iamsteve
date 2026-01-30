@@ -52,8 +52,8 @@ jobs:
           echo "Checking messages for version bump type..."
           echo "$ALL_MSGS"
 
-          # Check for breaking changes (major)
-          if echo "$ALL_MSGS" | grep -qiE "(breaking|major/|BREAKING CHANGE)"; then
+          # Check for breaking changes (major) - requires explicit "major" keyword
+          if echo "$ALL_MSGS" | grep -qE "(^major:|major!:|BREAKING CHANGE|\[major\])"; then
             echo "type=major" >> $GITHUB_OUTPUT
             echo "Detected: MAJOR bump"
           # Check for features (minor)
