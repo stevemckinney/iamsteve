@@ -173,6 +173,9 @@
     var(--color-dandelion-500),
     var(--color-dandelion-400)
   );
+
+  --icon-fill: none;
+  --icon-fill-bg: none;
 }
 
 /**

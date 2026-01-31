@@ -1,0 +1,8 @@
+<svg viewBox="0 0 24 24">
+  <g class="align-left">
+    <path d="M3 3h18" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M3 9h12" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M3 15h9" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M3 21h15" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

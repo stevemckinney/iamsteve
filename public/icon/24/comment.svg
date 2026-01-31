@@ -1,0 +1,5 @@
+<svg viewBox="0 0 24 24">
+  <g class="comment">
+    <path d="M16.5 3h-9A4.5 4.5 0 0 0 3 7.5v12c0 1.236 1.411 1.942 2.4 1.2l2-1.5A6 6 0 0 1 11 18h5.5a4.5 4.5 0 0 0 4.5-4.5v-6A4.5 4.5 0 0 0 16.5 3Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>
