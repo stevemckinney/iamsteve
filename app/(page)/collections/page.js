@@ -14,13 +14,33 @@ import path from 'path'
 
 import { allCollections } from 'contentlayer/generated'
 import collections from '@/content/collections'
+import siteMetadata from '@/content/metadata'
 
 export const revalidate = false
 
+const title = 'Collections'
+const description =
+  'Curated design resources organised by topic, from typography and colour to tools and techniques.'
+
 export const metadata = {
-  title: 'Collections • iamsteve',
-  description:
-    'Curated design resources organised by topic, from typography and color to tools and techniques.',
+  title,
+  description,
+  alternates: {
+    canonical: '/collections',
+  },
+  openGraph: {
+    title: `${title} • iamsteve`,
+    description,
+    url: '/collections',
+    siteName: 'iamsteve',
+    locale: 'en_GB',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${title} • iamsteve`,
+    description,
+  },
 }
 
 const getData = cache(async () => {
@@ -113,12 +133,40 @@ async function Collections() {
 
 export default async function CollectionsPage(props) {
   const params = await props.params
+
+  const jsonLD = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${siteMetadata.siteUrl}/collections#webpage`,
+    name: title,
+    description,
+    url: `${siteMetadata.siteUrl}/collections`,
+    isPartOf: {
+      '@id': `${siteMetadata.siteUrl}/#website`,
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: collections
+        .sort((a, b) => (a.title < b.title ? -1 : a.title > b.title ? 1 : 0))
+        .map((collection, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: collection.title,
+          url: `${siteMetadata.siteUrl}${collection.slug}`,
+        })),
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
+      />
       <Header className="max-sm:frame max-sm:frame-24 max-sm:px-8 max-sm:py-12 flex flex-col gap-2 col-start-content-start col-end-content-end md:col-end-7 md:sticky top-8 self-start">
         <Title className="font-variation-bold text-5xl">Collections</Title>
         <Description>
-          Curated design resources organised by topic, from typography and color
+          Curated design resources organised by topic, from typography and colour
           to tools and techniques.
         </Description>
         <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
