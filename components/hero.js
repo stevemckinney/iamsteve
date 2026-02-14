@@ -22,7 +22,7 @@ import {
 export default function Hero() {
   return (
     <section
-      className={`mb-10 md:mb-18 max-lg:grid max-lg:grid-cols-subgrid col-start-container-start col-end-container-end place-items-center flex flex-col items-center relative frame frame-24 2xl:frame-40 2xl:frame-outset-top py-12 lg:pt-18 2xl:pt-10 lg:pb-22 gap-y-4 max-lg:px-4`}
+      className={`mb-10 md:mb-18 max-lg:grid max-lg:grid-cols-subgrid col-start-container-start col-end-container-end place-items-center flex flex-col items-center relative frame frame-24 2xl:frame-40 lg:frame-outset-top-md 2xl:frame-outset-top py-12 md:pt-18 lg:pt-10 lg:pb-22 gap-y-4 max-lg:px-4`}
       aria-labelledby="hero-title"
     >
       <h1

@@ -24,8 +24,8 @@
   }
 }
 
-.tabbar-hidden {
-  @media not all and (min-width: 1024px) {
+@media not all and (min-width: 1024px) {
+  .tabbar-hidden {
     transform: translateY(calc(100% + 0.5rem));
     transition: transform 0.2s ease;
   }

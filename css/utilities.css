@@ -237,8 +237,8 @@
 
   :root {
     /**
-   * grid
-   */
+    * grid
+    */
     --grid-container: 1920px;
     --grid-content: 1344px;
 
@@ -253,9 +253,9 @@
       var(--grid-margin) [margin-end];
 
     /**
-   * --spacing isn't * 3 as the gutter is included.
-   * The gutter here is using a gap-x-4 so that plus --spacing is equal to 24px
-   */
+    * --spacing isn't * 3 as the gutter is included.
+    * The gutter here is using a gap-x-4 so that plus --spacing is equal to 24px
+    */
     --grid-6: [margin-start] var(--spacing) [container-start content-start
       prose-start] repeat(6, minmax(0, 1fr)) [prose-end content-end
       container-end] var(--spacing) [margin-end];
@@ -284,8 +284,8 @@
       [container-end] var(--grid-margin) [margin-end];
 
     /**
-   * Overridable capability for tailwind
-   */
+    * Overridable capability for tailwind
+    */
     --ui-border-opacity-weak: 0.08;
     --ui-border-opacity-strong: 0.12;
     --ui-border-color: rgba(117 99 98 / var(--ui-border-opacity-strong));

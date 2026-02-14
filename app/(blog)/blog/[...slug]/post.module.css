@@ -28,6 +28,10 @@
     grid-column: content-start / content-end;
 
     @media (width >= 1280px) {
+      grid-column: 2 / 11;
+    }
+
+    @media (width >= 1528px) {
       grid-column: 3 / 11;
     }
   }

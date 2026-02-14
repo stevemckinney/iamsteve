@@ -268,18 +268,14 @@ const Sprite24 = (props) => (
       </symbol>
       <symbol id="book-24" viewBox="0 0 24 24">
         <g className="book">
-          <path
-            d="M18 21v-8H5v6.5A1.5 1.5 0 0 0 6.5 21H18Z"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
           <path d="M16 21h3" className="stroke-current stroke-2 sl-r" />
           <path
             d="M19 17V3H6.5A1.5 1.5 0 0 0 5 4.5v11A1.5 1.5 0 0 0 6.5 17H19Z"
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
           <path
-            d="M8.416 4v13"
-            className="fill-none stroke-current stroke-2 sl-r"
+            d="M5 15v4.5A1.5 1.5 0 0 0 6.5 21H18v-4"
+            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>
@@ -518,7 +514,7 @@ const Sprite24 = (props) => (
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
           <path
-            d="M9 5h6v2H9z"
+            d="M8 5h8v1H8z"
             className="fill-current stroke-current stroke-2 sl-r"
           />
           <circle
@@ -536,7 +532,7 @@ const Sprite24 = (props) => (
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
           <path
-            d="M9 5h6v2H9z"
+            d="M8 5h8v1H8z"
             className="fill-current stroke-current stroke-2 sl-r"
           />
           <circle
@@ -982,10 +978,6 @@ const Sprite24 = (props) => (
         <g className="pen">
           <path
             d="M16 22H8c0-3-4-7-4-7l8-13 8 13s-4 4-4 7Z"
-            className="stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M16 22H8c0-3-4-7-4-7l8-13 8 13s-4 4-4 7Z"
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
           <path d="M12 2v12" className="stroke-current stroke-2 sl-r" />
@@ -1145,12 +1137,52 @@ const Sprite24 = (props) => (
           />
         </g>
       </symbol>
+      <symbol id="sidebar-bottom-24" viewBox="0 0 24 24">
+        <g className="sidebar-bottom">
+          <path
+            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-3A1.5 1.5 0 0 1 4.5 14h15a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-15Z"
+            className="fill-(--icon-fill)"
+          />
+          <path
+            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
+            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M3 14h18"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="sidebar-bottom-closed-24" viewBox="0 0 24 24">
+        <g className="sidebar-bottom-closed">
+          <path
+            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
+            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M3 14h18"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="sidebar-left-24" viewBox="0 0 24 24">
         <g className="sidebar-left">
           <path
             d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h3A1.5 1.5 0 0 1 9 5.5v13A1.5 1.5 0 0 1 7.5 20h-3Z"
             className="fill-(--icon-fill)"
           />
+          <path
+            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
+            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M9 4v15"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="sidebar-left-closed-24" viewBox="0 0 24 24">
+        <g className="sidebar-left-closed">
           <path
             d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
             className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
@@ -1176,6 +1208,13 @@ const Sprite24 = (props) => (
             className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
+      </symbol>
+      <symbol id="sidebar-right-closed-24" viewBox="0 0 24 24">
+        <path
+          stroke="color(display-p3 .0353 .1804 .1412)"
+          d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15ZM15 4v15"
+          className="slc-r sl-r stroke-2"
+        />
       </symbol>
       <symbol id="square-info-24" viewBox="0 0 24 24">
         <g className="square-info">

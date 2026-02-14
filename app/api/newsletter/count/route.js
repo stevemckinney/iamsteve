@@ -28,6 +28,9 @@ export const GET = async () => {
           headers: {
             'Cache-Control':
               'public, s-maxage=86400, stale-while-revalidate=172800',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
           },
         }
       )
@@ -36,13 +39,44 @@ export const GET = async () => {
         console.error('Failed to fetch subscriber count:', data.error?.message)
       }
       // Return fallback count on error
-      return NextResponse.json({ count: 700 }, { status: 200 })
+      return NextResponse.json(
+        { count: 700 },
+        {
+          status: 200,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type',
+          },
+        }
+      )
     }
   } catch (error) {
     if (process.env.NODE_ENV !== 'production') {
       console.error('Subscriber count error:', error.message)
     }
     // Return fallback count on error
-    return NextResponse.json({ count: 700 }, { status: 200 })
+    return NextResponse.json(
+      { count: 700 },
+      {
+        status: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      }
+    )
   }
+}
+
+export const OPTIONS = async () => {
+  return new NextResponse(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  })
 }

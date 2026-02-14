@@ -12,7 +12,7 @@ function Title({
 }) {
   return (
     <h1
-      className={`w-full max-sm:text-center text-heading font-display lowercase self-start min-w-0 min-h-0 ${className}`}
+      className={`w-full text-heading font-display lowercase self-start min-w-0 min-h-0 ${className}`}
       {...props}
     >
       {children}
@@ -20,10 +20,10 @@ function Title({
   )
 }
 
-function Description({ className = 'd', children }) {
+function Description({ className = 'desc', children }) {
   return (
     <p
-      className={`max-sm:text-center md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch] ${className}`}
+      className={`md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch] ${className}`}
     >
       {children}
     </p>
