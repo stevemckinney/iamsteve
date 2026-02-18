@@ -980,12 +980,12 @@ const Sprite24 = (props) => (
             d="M16 22H8c0-3-4-7-4-7l8-13 8 13s-4 4-4 7Z"
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
-          <path d="M12 2v12" className="stroke-current stroke-2 sl-r" />
+          <path d="M12 2v9" className="stroke-current stroke-2 sl-r" />
           <circle
             cx="12"
             cy="14"
-            r="1"
-            className="fill-current stroke-current stroke-2 sl-r"
+            r="2"
+            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
           />
           <path d="M7 22h10" className="stroke-current stroke-2 sl-s" />
         </g>
