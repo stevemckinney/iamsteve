@@ -13,35 +13,39 @@ import {
 
 import Card from '@/components/card'
 import Icon from '@/components/icon'
+import { BadgeIcon } from '@/components/badge'
 
 const categoryConfig = {
   Design: {
-    accent: 'text-rio',
+    accent: 'text-rio hover:text-rio-hover',
     link: '/category/design',
     linkText: 'Explore design',
-    icon: 'design',
+    icon: 'pen',
+    theme: 'rio',
   },
   Code: {
-    accent: 'text-dandelion',
+    accent: 'text-dandelion hover:text-dandelion-hover',
     link: '/category/code',
     linkText: 'Explore code',
     icon: 'code',
+    theme: 'dandelion',
   },
-  Everything: {
-    accent: 'text-cornflour',
+  All: {
+    accent: 'text-cornflour hover:text-cornflour-hover',
     link: '/blog',
     linkText: 'View the archive',
     icon: 'folder',
+    theme: 'cornflour',
   },
 }
 
-const categories = ['Design', 'Code', 'Everything']
+const categories = ['Design', 'Code', 'All']
 
 export default function PopularPosts({ posts }) {
   const [category, setCategory] = useState('Design')
 
   const filteredPosts =
-    category === 'Everything'
+    category === 'All'
       ? posts.slice(0, 6)
       : posts.filter((p) => p.categories.includes(category)).slice(0, 6)
 
@@ -61,7 +65,7 @@ export default function PopularPosts({ posts }) {
             aria-label="Category"
           >
             <Button
-              className={`${config.accent} inline-flex items-center gap-1 cursor-pointer lowercase`}
+              className={`${config.accent} relative inline-flex items-center gap-1 cursor-pointer lowercase before:absolute before:-inset-2 before:rounded-sm before:transition-colors before:duration-200 before:ease-out hover:before:bg-[color-mix(in_oklch,currentcolor,transparent_94%)]`}
             >
               <SelectValue>{() => category}</SelectValue>
               <Icon
@@ -72,18 +76,18 @@ export default function PopularPosts({ posts }) {
               />
             </Button>
 
-            <Popover className="bg-surface p-2 rounded-lg shadow-lg entering:animate-in entering:fade-in exiting:animate-out exiting:fade-out">
-              <ListBox className="outline-none">
+            <Popover className="min-w-56 bg-surface backdrop-blur-md p-1 rounded shadow-picked opacity-100 transition-opacity duration-200 ease-out data-[entering]:opacity-0 data-[exiting]:opacity-0">
+              <ListBox className="outline-none flex flex-col gap-px">
                 {categories.map((cat) => (
                   <ListBoxItem
                     key={cat}
                     id={cat}
-                    className="relative flex items-center gap-2 px-3 py-2 rounded-md text-lg font-ui lowercase text-faded-02 font-medium focus:bg-neutral-01-50 data-[selected]:text-text outline-none select-none cursor-pointer"
+                    className="relative flex items-center gap-3 pl-2 pr-4 py-2 select-none rounded-[12px] font-ui text-xl cursor-pointer outline-none data-[hovered]:bg-surface-02 data-[hovered]:z-10 focus-visible:-outline-offset-2 data-[selected]:bg-surface-02 dark:data-[selected]:shadow-[0_0_0_1px_var(--color-fern-1200),inset_0_1px_var(--color-fern-1000)]"
                   >
-                    <Icon
+                    <BadgeIcon
                       icon={categoryConfig[cat].icon}
                       size={24}
-                      variant="none"
+                      theme={categoryConfig[cat].theme}
                     />
                     {cat}
                   </ListBoxItem>

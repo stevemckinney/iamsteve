@@ -4,23 +4,22 @@
 @import '../css/typography.css';
 @import '../css/prism.css' layer(base);
 
-:focus {
-  outline: none;
-}
+@layer base {
+  :focus {
+    outline: none;
+  }
 
-:not(input):focus-visible {
-  --outline-color: var(--color-fern-300);
-  outline: 2px solid var(--outline-color);
-  outline-offset: 2px;
-}
-
-:not(input):not([role='menu']):focus-visible {
-  border-radius: 4px;
-}
-
-@media (prefers-color-scheme: dark) {
   :not(input):focus-visible {
-    --outline-color: var(--color-cornflour-700);
+    outline: 1px solid
+      light-dark(
+        color-mix(in oklch, currentcolor, transparent 20%),
+        var(--color-cornflour-700)
+      );
+    outline-offset: 1px;
+  }
+
+  :not(input):not([role='menu']):focus-visible {
+    border-radius: 4px;
   }
 }
 
