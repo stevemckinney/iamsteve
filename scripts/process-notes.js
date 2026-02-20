@@ -48,10 +48,24 @@ function extractTitleFromContent(body) {
 
 function processNote(filePath, existingFiles) {
   const content = fs.readFileSync(filePath, 'utf8')
-  const { data: frontmatter, content: body } = matter(content)
+  const { data: frontmatter, content: rawBody } = matter(content)
+  let body = rawBody
 
   let modified = false
   const changes = []
+
+  // Extract H1 title before stripping, then remove from body
+  const h1Match = body.match(/^#\s+(.+)$/m)
+  if (h1Match) {
+    if (!frontmatter.title) {
+      frontmatter.title = h1Match[1].trim()
+      changes.push(`Added title from content: "${frontmatter.title}"`)
+      modified = true
+    }
+    body = body.replace(/^#\s+.+$\n?/m, '').replace(/^\n+/, '')
+    modified = true
+    changes.push('Stripped H1 from body')
+  }
 
   // Ensure title
   if (!frontmatter.title) {
