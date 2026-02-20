@@ -1,3 +1,9 @@
+---
+title: Anything to avoid a CMS
+date: '2026-02-20T19:44:59.776Z'
+status: published
+---
+
 # Anything to avoid a CMS
 
 I’ve had this website quite a while in a flat file system now. But there’s always a bit of friction when publishing something. As you have to write in a file, commit and push.
