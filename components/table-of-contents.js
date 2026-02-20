@@ -75,7 +75,7 @@ function TableOfContents({ headings, open = false, ...props }) {
           // Background/effects
           'before:bg-canvas before:mask-(--blur-mask)',
           'max-lg:data-[sticky=true]:backdrop-blur-md',
-          'max-lg:data-[sticky=true]:bg-white/80 max-lg:data-[sticky=true]:dark:bg-fern-1200/90',
+          'max-lg:data-[sticky=true]:bg-gradient-to-b max-lg:data-[sticky=true]:from-[light-dark(var(--color-canvas-light),var(--color-canvas-dark))] max-lg:data-[sticky=true]:from-50% max-lg:data-[sticky=true]:to-transparent', //'max-lg:data-[sticky=true]:dark:bg-fern-1200/90',
           'max-lg:data-[sticky=true]:shadow-reduced',
           'max-lg:will-change-transform'
         )}

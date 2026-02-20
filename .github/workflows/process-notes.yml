@@ -1,0 +1,79 @@
+name: Process Notes
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'content/notes/**'
+  workflow_dispatch:
+
+concurrency:
+  group: process-notes-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check if bot commit
+        id: check_actor
+        run: |
+          LAST_AUTHOR=$(git log -1 --format='%an')
+          if [ "$LAST_AUTHOR" = "github-actions[bot]" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Process notes
+        id: process
+        if: steps.check_actor.outputs.skip == 'false'
+        run: node scripts/process-notes.js
+
+      - name: Commit changes
+        if: steps.process.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/notes/
+          git commit -m "Process notes: add frontmatter and slugify filenames"
+          git push
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs')
+            if (fs.existsSync('.notes-processing-results.json')) {
+              const results = JSON.parse(fs.readFileSync('.notes-processing-results.json', 'utf8'))
+              if (results.changes.length > 0) {
+                const body = `## 📝 Notes processed\n\n${results.changes.join('\n\n')}`
+                github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body
+                })
+              }
+            }

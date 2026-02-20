@@ -61,6 +61,7 @@ export const footer = [
   { href: '/category/design', title: 'Design', icon: 'pen', size: 16 },
   { href: '/category/code', title: 'Code', icon: 'code', size: 16 },
   { href: '/collections', title: 'Collections', icon: 'collections', size: 16 },
+  { href: '/notes', title: 'Notes', icon: 'notepad', size: 16 },
   { href: '/uses', title: 'Uses', icon: 'settings', size: 16 },
   { href: '/about', title: 'About', icon: 'person', size: 16 },
   { href: '/contact', title: 'Contact', icon: 'envelope', size: 16 },

@@ -851,6 +851,18 @@ const Sprite16 = (props) => (
           <path d="M10 6H6" className="stroke-current stroke-2 sl-r" />
         </g>
       </symbol>
+      <symbol id="notepad-16" viewBox="0 0 16 16">
+        <g className="notepad">
+          <path
+            d="M4 14a1 1 0 0 1-1-1V2.667C3 2.298 3.298 2 3.667 2h8.666c.368 0 .667.298.667.667V13c0 .552-.444 1-.996 1H4Z"
+            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
+          />
+          <path d="M6 2v2" className="stroke-current stroke-2 sl-r" />
+          <path d="M10 2v2" className="stroke-current stroke-2 sl-r" />
+          <path d="M6 7h2" className="stroke-current stroke-2 sl-r" />
+          <path d="M6 10h4" className="stroke-current stroke-2 sl-r" />
+        </g>
+      </symbol>
       <symbol id="palette-16" viewBox="0 0 16 16">
         <g className="palette">
           <path

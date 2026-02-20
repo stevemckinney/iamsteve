@@ -3,19 +3,19 @@
   :global(.codepen),
   :global(.codepen-wide) {
     overflow: auto;
-    border-radius: theme('borderRadius.lg');
-    background-color: theme('colors.fern.1100');
+    border-radius: var(--radius-lg);
+    background-color: var(--color-fern-1100);
     margin-inline: -2rem;
-    margin-block: theme('margin.8');
+    margin-block: var(--spacing-8);
   }
 
   :global(.remark-code-container) {
-    border: 1px solid theme('colors.neutral-03.900');
+    border: 1px solid var(--color-neutral-03-900);
   }
 
   :global(.codepen),
   :global(.codepen-wide) {
-    box-shadow: theme('boxShadow.floating');
+    box-shadow: var(--shadow-floating);
   }
 
   :global(.remark-code-container pre),
@@ -23,23 +23,25 @@
     display: block;
   }
 
-  :global(.remark-code-bar), :global([data-rehype-pretty-code-fragment]) {
-    border-radius: theme('borderRadius.lg') theme('borderRadius.lg') 0 0;
+  :global(.remark-code-bar),
+  :global([data-rehype-pretty-code-fragment]) {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     box-shadow: inset 0 2px 0 0 rgba(39, 93, 78, 0.6);
-    background-color: theme('colors.neutral-03.900');
-    padding-inline: theme('padding.8');
-    border-block-end: 1px solid theme('colors.fern.900');
+    background-color: var(--color-neutral-03-900);
+    padding-inline: var(--spacing-8);
+    border-block-end: 1px solid var(--color-fern-900);
   }
 
-  :global(.remark-code-title), :global([data-rehype-pretty-code-title]) {
+  :global(.remark-code-title),
+  :global([data-rehype-pretty-code-title]) {
     display: inline-block;
-    background-color: theme('colors.fern.1100');
-    color: theme('colors.fern.200');
-    border-inline: 1px solid theme('colors.fern.900');
-    box-shadow: 0 2px 0 -1px theme('colors.fern.1100');
-    padding-inline: theme('padding.8');
-    padding-block: theme('padding.3');
-    font-size: theme('fontSize.base');
+    background-color: var(--color-fern-1100);
+    color: var(--color-fern-200);
+    border-inline: 1px solid var(--color-fern-900);
+    box-shadow: 0 2px 0 -1px var(--color-fern-1100);
+    padding-inline: var(--spacing-8);
+    padding-block: var(--spacing-3);
+    font-size: var(--text-base);
     line-height: 1;
   }
 }

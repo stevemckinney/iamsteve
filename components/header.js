@@ -1,5 +1,5 @@
 'use client'
-
+import React from 'react'
 import { usePathname } from 'next/navigation'
 
 import { navigation, library, tabbar } from '@/content/navigation'
@@ -15,17 +15,12 @@ import {
   Popover,
   Menu,
   MenuItem,
+  MenuSection,
+  Header as MenuHeader,
+  Separator,
 } from 'react-aria-components'
 
 import styles from './header.module.css'
-
-const navClass =
-  'flex justify-between lg:gap-8 max-lg:px-2 lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas'
-const tabbarClass = `max-lg:transition-all max-lg:duration-200 max-lg:ease-out max-lg:px-8 max-lg:bg-white/80 dark:max-lg:bg-fern-1200/90 max-lg:shadow-placed max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100 max-lg:backdrop-blur-sm max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150 max-lg:gap-6 max-lg:rounded-full ${styles.tabbar}`
-const linkClass = `flex items-center gap-1 text-base font-ui lowercase leading-none relative ${styles.link}`
-const horizontalLinkClass = 'lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5'
-const tabbarLinkClass =
-  'max-lg:text-[12px] max-lg:font-sans max-lg:font-medium max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:py-3'
 
 function AccessibilityLinks({ isArticlePage }) {
   return (
@@ -72,7 +67,11 @@ function AccessibilityLinks({ isArticlePage }) {
 function Desktop({ pathname }) {
   return (
     <nav
-      className={cn(navClass, 'max-lg:hidden')}
+      className={cn(
+        'flex justify-between lg:gap-8 max-lg:px-2 lg:-mx-4 lg:py-6.5 2xl:py-9 lg:px-8 lg:-mx-8 max-lg:-mx-4',
+        'max-lg:hidden',
+        'bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas'
+      )}
       id="nav"
       suppressHydrationWarning
     >
@@ -82,14 +81,14 @@ function Desktop({ pathname }) {
 
           if (isLibrary) {
             return (
-              <li key={link.href} className="relative">
+              <li key={link.href} className="relative -mr-1 group/library">
                 <MenuTrigger>
                   <Button
                     className={cn(
-                      linkClass,
-                      horizontalLinkClass,
-                      styles.start,
-                      'cursor-pointer'
+                      'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
+                      'lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5',
+                      styles.link,
+                      styles.start
                     )}
                   >
                     <Icon
@@ -135,37 +134,46 @@ function Desktop({ pathname }) {
                         d="M21.35 9h-1.6l-8.125-6.5a1 1 0 0 0-1.25 0L2.25 9H.65l9.1-7.28a2 2 0 0 1 2.5 0L21.35 9Z"
                       />
                     </svg>
-                    <div className="w-[412px] rounded-2xl shadow-picked bg-neutral-01-100/80 backdrop-blur-sm dark:bg-fern-1200">
-                      <Menu className="rounded-t-2xl flex flex-col p-4 bg-surface shadow-reduced dark:shadow-[0_1px_var(--color-fern-1000)]">
-                        {library.map((item) => (
-                          <MenuItem
-                            key={item.href}
-                            href={item.href}
-                            className="relative flex flex-col gap-1 p-4 hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition duration-200 ease-out rounded-sm outline-none cursor-pointer not-last:content-[''] not-last:after:block not-last:after:absolute not-last:after:top-full not-last:after:left-0 not-last:after:right-0 not-last:after:border-b not-last:after:border-neutral-01-50 dark:not-last:after:border-fern-1100 focus-visible:z-10"
-                          >
-                            <span className="flex items-center gap-2">
-                              <Icon
-                                icon={item.icon}
-                                size={16}
-                                className="text-emphasis"
-                                variant="header"
-                                aria-hidden="true"
-                              />
-                              <span className="text-base font-medium">
-                                {item.title}
+                    <Menu className="w-[412px] rounded-2xl shadow-picked bg-neutral-01-100/80 backdrop-blur-sm dark:bg-fern-1200 outline-none focus-visible:outline-2 focus-visible:outline-fern-900 dark:focus-visible:outline-fern-400 focus-visible:outline-offset-2">
+                      <MenuSection className="rounded-t-2xl flex flex-col p-4 bg-surface shadow-reduced dark:shadow-[0_1px_var(--color-fern-1000)]">
+                        {library.map((item, index) => (
+                          <React.Fragment key={index}>
+                            <MenuItem
+                              key={item.href}
+                              href={item.href}
+                              className="relative flex flex-col gap-1 p-4 hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition duration-200 ease-out rounded-sm outline-none cursor-pointer focus-visible:z-10"
+                            >
+                              <span className="flex items-center gap-2">
+                                <Icon
+                                  icon={item.icon}
+                                  size={16}
+                                  className="text-emphasis"
+                                  variant="header"
+                                  aria-hidden="true"
+                                />
+                                <span className="text-base font-medium">
+                                  {item.title}
+                                </span>
                               </span>
-                            </span>
-                            <span className="text-base">
-                              {item.description}
-                            </span>
-                          </MenuItem>
+                              <span className="text-base">
+                                {item.description}
+                              </span>
+                            </MenuItem>
+                            {index < library.length - 1 && (
+                              <Separator className="border-b border-neutral-01-50 dark:border-fern-1100" />
+                            )}
+                          </React.Fragment>
                         ))}
-                      </Menu>
-                      <div className="px-8 py-4 flex flex-row items-center justify-between gap-4">
-                        <p className="m-0 p-0 font-ui">Subscribe with RSS</p>
-                        <CopyFeedUrl />
-                      </div>
-                    </div>
+                      </MenuSection>
+                      <MenuSection>
+                        <MenuHeader className="px-8 py-4 flex flex-row items-center justify-between gap-4">
+                          <span className="m-0 p-0 font-ui">
+                            Subscribe with RSS
+                          </span>
+                          <CopyFeedUrl />
+                        </MenuHeader>
+                      </MenuSection>
+                    </Menu>
                   </Popover>
                 </MenuTrigger>
               </li>
@@ -176,7 +184,12 @@ function Desktop({ pathname }) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={cn(linkClass, horizontalLinkClass, styles.start)}
+                className={cn(
+                  'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
+                  'lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5',
+                  styles.link,
+                  styles.start
+                )}
                 suppressHydrationWarning
               >
                 <Icon
@@ -199,7 +212,27 @@ function Desktop({ pathname }) {
 function Tabbar({ pathname }) {
   return (
     <nav
-      className={cn(navClass, tabbarClass, 'lg:hidden')}
+      className={cn(
+        // Layout
+        'flex justify-between',
+        // Large screens
+        'lg:hidden lg:gap-8 lg:-mx-4 lg:py-6.5',
+        // 2XL screens
+        '2xl:py-9 2xl:px-8 2xl:-mx-8',
+        // Mobile positioning
+        'max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100',
+        // Mobile spacing
+        'max-lg:px-8 max-lg:gap-6',
+        // Mobile appearance
+        'max-lg:rounded-full max-lg:shadow-placed',
+        // Mobile background
+        'max-lg:bg-white/80 dark:max-lg:bg-fern-1200/90',
+        // Mobile backdrop
+        'max-lg:backdrop-blur-sm max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150',
+        // Mobile transition
+        'max-lg:transition-all max-lg:duration-200 max-lg:ease-out',
+        styles.tabbar
+      )}
       suppressHydrationWarning
     >
       <ul className="flex justify-between max-lg:gap-6">
@@ -209,10 +242,16 @@ function Tabbar({ pathname }) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={cn(linkClass, tabbarLinkClass, styles.start, {
-                  'max-lg:text-emphasis': isActive,
-                  'max-lg:text-fern-700 dark:max-lg:text-fern-400': !isActive,
-                })}
+                className={cn(
+                  'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
+                  'max-lg:text-[12px] max-lg:font-sans max-lg:font-medium max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:py-3',
+                  styles.link,
+                  styles.start,
+                  {
+                    'max-lg:text-emphasis': isActive,
+                    'max-lg:text-fern-700 dark:max-lg:text-fern-400': !isActive,
+                  }
+                )}
                 suppressHydrationWarning
               >
                 <Icon
@@ -244,26 +283,24 @@ export default function Header() {
         id="top"
       >
         <div className="col-container 2xl:col-content flex items-center align-center justify-between max-2xl:gap-8 text-emphasis max-lg:py-4 max-lg:px-4">
-          <Link
-            href="/"
-            className="flex lg:-mx-4 lg:py-6.5 2xl:py-9 2xl:px-8 2xl:-mx-8 max-lg:-mx-4 bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas"
-            aria-label="iamsteve.me homepage"
-          >
-            <Icon
-              icon="logo"
-              size={32}
-              className="max-xl:hidden"
-              variant="header"
-              aria-hidden="true"
-            />
-            <Icon
-              icon="logo"
-              size={24}
-              className="xl:hidden"
-              variant="header"
-              aria-hidden="true"
-            />
-          </Link>
+          <span className="flex bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas lg:-mx-4 lg:py-6.5 2xl:py-9 lg:px-8 lg:-mx-8 max-lg:-mx-4">
+            <Link href="/" className="flex" aria-label="iamsteve.me homepage">
+              <Icon
+                icon="logo"
+                size={32}
+                className="max-xl:hidden"
+                variant="header"
+                aria-hidden="true"
+              />
+              <Icon
+                icon="logo"
+                size={24}
+                className="xl:hidden"
+                variant="header"
+                aria-hidden="true"
+              />
+            </Link>
+          </span>
           <Desktop pathname={pathname} />
           <Tabbar pathname={pathname} />
           <Navigation />
