@@ -58,7 +58,7 @@ export async function generateMetadata(props) {
       url: `${note.slug}`,
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: note.title,
       description: note.summary,
     },

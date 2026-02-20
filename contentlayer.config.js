@@ -203,49 +203,6 @@ export const Post = defineDocumentType(() => ({
           .pop()
           .replace(/^\d{4}-/, ''),
     },
-    structuredData: {
-      type: 'json',
-      resolve: (doc) => ({
-        '@context': 'https://schema.org',
-        '@type': 'Article',
-        mainEntityOfPage: {
-          '@type': 'WebPage',
-          '@id': `${siteMetadata.siteUrl}/${doc._raw.flattenedPath.replace(
-            /^(blog\/)(?:\d{4}-)?/,
-            '$1'
-          )}`,
-        },
-        headline: doc.title,
-        datePublished: doc.date,
-        dateModified: doc.lastmod || doc.date,
-        description: doc.summary,
-        image: doc.ogImage ? doc.ogImage : siteMetadata.socialBanner,
-        url: `${siteMetadata.siteUrl}/blog/${doc._raw.flattenedPath
-          .split('/')
-          .slice(1)
-          .join('/')
-          .replace(/^(?:\d\d\d\d-)?/, '')}`,
-        author: [
-          {
-            '@context': 'https://schema.org',
-            '@type': 'Person',
-            name: 'Steve McKinney',
-            url: `${siteMetadata.siteUrl}`,
-          },
-        ],
-        publisher: [
-          {
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: 'Steve',
-            logo: {
-              '@type': 'ImageObject',
-              url: `${siteMetadata.siteUrl}/images/logo.svg`,
-            },
-          },
-        ],
-      }),
-    },
   },
 }))
 

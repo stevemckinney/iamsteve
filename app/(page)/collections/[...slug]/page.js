@@ -7,6 +7,7 @@ import { Header, Title, Column, Description } from '@/components/page'
 import Image from '@/components/image'
 import Link from '@/components/link'
 import collections from '@/content/collections'
+import siteMetadata from '@/content/metadata'
 import Icon from '@/components/icon'
 
 import { format, subWeeks, isAfter, parseISO } from 'date-fns'
@@ -63,10 +64,28 @@ export async function generateMetadata(props) {
     return {}
   }
 
+  const description = page.description ||
+    `Curated ${page.title.toLowerCase()} resources for designers and developers.`
+
   return {
-    template: '%s • iamsteve',
     title: page.title,
-    description: page.description,
+    description,
+    alternates: {
+      canonical: page.slug,
+    },
+    openGraph: {
+      title: `${page.title} • Collections • iamsteve`,
+      description,
+      url: page.slug,
+      siteName: 'iamsteve',
+      locale: 'en_GB',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${page.title} • Collections • iamsteve`,
+      description,
+    },
   }
 }
 
@@ -154,8 +173,59 @@ export default async function CollectionPage(props) {
     notFound()
   }
 
+  const slug = params?.slug?.join('/')
+  const collectionItems = allCollections.filter((item) =>
+    item.collection.some((c) => c.toLowerCase() === slug.toLowerCase())
+  )
+
+  const pageDescription = page.description ||
+    `Curated ${page.title.toLowerCase()} resources for designers and developers.`
+
+  const jsonLD = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${siteMetadata.siteUrl}${page.slug}#webpage`,
+    name: page.title,
+    description: pageDescription,
+    url: `${siteMetadata.siteUrl}${page.slug}`,
+    isPartOf: {
+      '@id': `${siteMetadata.siteUrl}/collections#webpage`,
+    },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Collections',
+          item: `${siteMetadata.siteUrl}/collections`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: page.title,
+          item: `${siteMetadata.siteUrl}${page.slug}`,
+        },
+      ],
+    },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: collectionItems.length,
+      itemListElement: collectionItems.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.title,
+        url: item.url,
+      })),
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
+      />
       <Header className="max-sm:frame max-sm:frame-24 max-sm:px-8 max-sm:py-12 flex flex-col gap-2 col-start-content-start col-end-content-end md:col-end-7 md:sticky top-8 self-start">
         <Title className="font-variation-bold text-5xl">
           {/* <Link
@@ -168,7 +238,7 @@ export default async function CollectionPage(props) {
           Collections
         </Title>
         <Description>
-          Curated design resources organised by topic, from typography and color
+          Curated design resources organised by topic, from typography and colour
           to tools and techniques.
         </Description>
         <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
