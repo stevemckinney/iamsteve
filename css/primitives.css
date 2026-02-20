@@ -54,6 +54,7 @@
   --grid-column-content: content-start / content-end;
   --grid-column-prose: prose-start / prose-end;
   --grid-column-margin: margin-start / margin-end;
+  --grid-column-page: page-start / page-end;
 
   --grid-column-start-margin-start: margin-start;
   --grid-column-start-margin-end: margin-end;
@@ -63,6 +64,8 @@
   --grid-column-start-content-end: content-end;
   --grid-column-start-prose-start: prose-start;
   --grid-column-start-prose-end: prose-end;
+  --grid-column-start-page-start: page-start;
+  --grid-column-start-page-end: page-end;
 
   --grid-column-end-margin-start: margin-start;
   --grid-column-end-margin-end: margin-end;
@@ -72,6 +75,8 @@
   --grid-column-end-content-end: content-end;
   --grid-column-end-prose-start: prose-start;
   --grid-column-end-prose-end: prose-end;
+  --grid-column-end-page-start: page-start;
+  --grid-column-end-page-end: page-end;
 
   --leading-7xl: 0.81818;
   --leading-6xl: 0.875;
@@ -83,7 +88,8 @@
   --leading-lg: 1.333333;
 
   --font-sans: elza, elza-fallback, sans-serif;
-  --font-display: roc-grotesk-variable, roc-grotesk-variable-fallback, sans-serif;
+  --font-display: roc-grotesk-variable, roc-grotesk-variable-fallback,
+    sans-serif;
   --font-mono: covik-sans-mono, monospace;
 
   --shadow-subtle: var(--shadow-subtle);
@@ -91,32 +97,28 @@
   --shadow-placed: var(--shadow-placed);
   --shadow-picked: var(--shadow-picked);
   --shadow-floating: var(--shadow-floating);
-  --shadow-tabbar:
-    0 0 0 1px oklch(24.3% 0.014 30 / 0.04),
+  --shadow-tabbar: 0 0 0 1px oklch(24.3% 0.014 30 / 0.04),
     inset 0 0 0 1px oklch(100% 0 0 / 0.8),
     0 1px 3px -1.5px oklch(24.3% 0.014 30 / 0.04),
     0 2px 4px -2px oklch(24.3% 0.014 30 / 0.04);
 
-  --shadow-dandelion-reduced:
-    0 -1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color),
-    0 2px 4px -4px rgb(117 99 98 / 0.1), 0 1px 3px rgb(117 99 98 / 0.12);
+  --shadow-dandelion-reduced: 0 -1px var(--ui-border-color-strong),
+    0 0 0 1px var(--ui-border-color), 0 2px 4px -4px rgb(117 99 98 / 0.1),
+    0 1px 3px rgb(117 99 98 / 0.12);
 
-  --shadow-dandelion-placed:
-    0 -1px var(--ui-border-color-weak), 0 1px var(--ui-border-color-strong),
-    0 0 0 1px var(--ui-border-color), inset 0 1px 3px rgb(244 211 64 / 1),
-    inset 0 -1px 3px rgb(221 142 0 / 0.6),
+  --shadow-dandelion-placed: 0 -1px var(--ui-border-color-weak),
+    0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color),
+    inset 0 1px 3px rgb(244 211 64 / 1), inset 0 -1px 3px rgb(221 142 0 / 0.6),
     inset 0 0 0 1px rgb(248 229 142 / 0.6), 0 4px 10px rgb(117 99 98 / 0.1),
     0 1px 3px 0 rgb(117 99 98 / 0.1);
 
-  --shadow-dandelion-picked:
-    0 -1px var(--ui-border-color-weak-hover),
+  --shadow-dandelion-picked: 0 -1px var(--ui-border-color-weak-hover),
     0 1px var(--ui-border-color-strong-hover),
     0 0 0 1px var(--ui-border-color-hover), inset 0 2px rgb(249 239 189 / 0.2),
     inset 0 -3px rgba(203 113 0 / 0.2), 0 6px 12px rgba(117, 99, 98, 0.14),
     0 2px 4px rgba(117, 99, 98, 0.16);
 
-  --background-image-fade:
-    linear-gradient(
+  --background-image-fade: linear-gradient(
       180deg,
       rgba(var(--bg-fade-top), 1) 0%,
       rgba(var(--bg-fade-top), 0.6) 4.09%,
@@ -128,8 +130,7 @@
       rgba(255, 255, 255, 0) 78.71%,
       #ffffff 100%
     );
-  --background-image-fade-neutral:
-    radial-gradient(
+  --background-image-fade-neutral: radial-gradient(
       95.19% 153.13% at 50% 0%,
       rgba(252, 249, 248, 0.07) 56.58%,
       #fcf9f8 80.19%

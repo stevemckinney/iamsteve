@@ -59,7 +59,7 @@ function TableOfContents({ headings, open = false, ...props }) {
           'collapsible isolate overscroll-contain [scroll-padding:4rem]',
           'max-lg:z-250',
           'transition duration-200 ease',
-          'max-md:data-[sticky=false]:-mx-6 max-lg:px-6 max-lg:pt-4 max-lg:pb-3.5',
+          'max-lg:pt-4 max-lg:pb-3.5',
           'max-lg:overflow-x-clip max-lg:overflow-y-auto',
           'max-lg:data-[sticky=true]:px-5',
           // 'max-lg:data-[sticky=true]:px-5',

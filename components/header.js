@@ -281,11 +281,11 @@ export default function Header() {
       >
         <div
           className={cn(
-            'col-container md:col-content flex items-center align-center justify-between gap-8 text-emphasis'
+            'col-container md:col-content lg:col-page flex items-center align-center justify-between gap-8 text-emphasis'
           )}
         >
           {/* span so that focus indicator isn't weird with the spacing applied here */}
-          <span className="flex bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas py-4 sm:px-4 lg:-mx-4 md:py-6.5 xl:px-8 xl:-mx-8 2xl:py-9">
+          <span className="flex bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas py-4 sm:px-4 sm:-mx-4 md:py-6.5 xl:px-8 xl:-mx-8 2xl:py-9">
             <Link href="/" className="flex" aria-label="iamsteve.me homepage">
               <Icon
                 icon="logo"

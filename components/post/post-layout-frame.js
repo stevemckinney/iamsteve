@@ -32,33 +32,31 @@ export function PostLayoutFrame({
   return (
     <>
       {/* Sticky top bar */}
-      <div className="max-lg:hidden col-content grid grid-cols-subgrid">
+      {/* <div className="max-lg:hidden col-content grid grid-cols-subgrid">
         <div className="col-content flex flex-row items-center justify-between gap-4 py-3">
-          {toolbar}
           <SidebarToggle isOpen={isSidebarOpen} onToggle={handleToggle} />
+          {toolbar}
         </div>
-      </div>
+      </div> */}
 
       <article
         className={`${
           styles.article || ''
         } isolate grid col-container grid-cols-subgrid relative`}
       >
-        <hr className="absolute z-11 top-0 left-0 right-0 col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] border-none" />
+        <hr className="absolute z-11 top-0 left-0 right-0 col-container md:col-content lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] border-none" />
 
         <aside
           aria-label="Table of contents and newsletter subscription form"
           className={cn(
-            'max-lg:col-container',
-            'lg:col-start-10 lg:col-span-2',
-            'xl:col-start-12 xl:col-span-3',
+            'max-md:col-container max-lg:col-content',
+            'lg:col-start-page-start lg:col-span-3',
             'lg:row-span-5',
             'lg:h-screen lg:overflow-y-scroll',
             'sticky z-10 top-0 bottom-0 lg:right-0',
             'lg:py-12 lg:-mt-12',
-            'flex flex-col lg:gap-12 lg:pb-16',
             'lg:px-6 lg:-mx-6',
-            'lg:mask-[linear-gradient(180deg,transparent,#000_64px,#000_calc(100%-10vh),transparent)]',
+            'flex flex-col lg:gap-12 lg:pb-16',
             {
               'max-lg:hidden lg:hidden': !isSidebarOpen,
             }
@@ -67,36 +65,36 @@ export function PostLayoutFrame({
           {asideContent}
         </aside>
 
-        <hr className="relative col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] border-none" />
-
-        <header
-          className={cn(
-            styles.header,
-            'lg:row-start-1 lg:row-span-1',
-            'flex flex-col max-lg:pt-12 gap-y-4 mb-12',
-            'col-start-1 col-end-12',
-            {
-              'lg:col-start-2 lg:col-end-11': isSidebarOpen,
-              'lg:col-start-4 lg:col-end-14': !isSidebarOpen,
-            }
-          )}
-        >
-          {headerContent}
-        </header>
+        <hr className="relative col-container md:col-content lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] border-none" />
 
         <div
           className={cn(
             styles.prose,
             styles.content,
             'prose grid grid-cols-subgrid',
+            'lg:row-start-1 lg:row-span-1',
             'gap-x-8 gap-y-0',
+            'col-prose',
             {
-              'col-start-1 col-end-11': isSidebarOpen,
-              'col-start-5 col-end-13': !isSidebarOpen,
+              'lg:col-start-4 lg:col-end-14': isSidebarOpen,
+              'lg:col-start-5 lg:col-end-13': !isSidebarOpen,
             }
           )}
           id="article"
         >
+          <header
+            className={cn(
+              styles.header,
+              'flex flex-col max-lg:pt-12 gap-y-4 mb-12',
+              'col-prose',
+              {
+                'lg:col-start-6 lg:col-end-14': isSidebarOpen,
+                'lg:col-start-4 lg:col-end-14': !isSidebarOpen,
+              }
+            )}
+          >
+            {headerContent}
+          </header>
           {proseContent}
         </div>
       </article>
