@@ -1,10 +1,8 @@
-# Anything to avoid a CMS
-
 I’ve had this website quite a while in a flat file system now. But there’s always a bit of friction when publishing something. As you have to write in a file, commit and push.
 
 It’s not big a deal, but depending on your setup you may have different quantities of frontmatter to contend with.
 
-However, a CMS isn’t all that better. You still have much of the faff, but it looks a bit different. And with a CMS I’ve not seen one replicate the niceties of writing in iA Writer. Be it on a computer or phone.
+However, a CMS isn’t all that better. You still have much of the faff, but the process looks different. And with a CMS I’ve not seen one replicate the niceties of writing in iA Writer. Be it on a computer or phone.
 
 In effect not much changes. Some of the tedious publishing workflow remains with file based but with better version control.
 
