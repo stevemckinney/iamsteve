@@ -88,7 +88,7 @@ export function PostLayoutFrame({
           <header
             className={cn(
               styles.header,
-              'flex flex-col max-lg:pt-12 gap-y-4 mb-12',
+              'flex flex-col max-lg:pt-12 gap-y-4',
               'col-content lg:col-prose',
               {
                 'lg:col-start-6 lg:col-end-14': isSidebarOpen,
