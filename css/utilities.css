@@ -256,35 +256,91 @@
     * --spacing isn't * 3 as the gutter is included.
     * The gutter here is using a gap-x-4 so that plus --spacing is equal to 24px
     */
-    --grid-6: [margin-start] var(--spacing) [page-start container-start
-      content-start prose-start] repeat(6, minmax(0, 1fr)) [page-end prose-end
-      content-end container-end] var(--spacing) [margin-end];
-
-    --grid-12: [margin-start] calc(var(--spacing) * 2) [container-start]
-      minmax(0, 1fr) [page-start content-start prose-start]
-      repeat(10, minmax(0, 1fr)) [page-end prose-end content-end] minmax(0, 1fr)
-      [container-end] calc(var(--spacing) * 2) [margin-end];
-
-    --grid-12-wide: [margin-start] calc(var(--spacing) * 2) [container-start]
-      minmax(0, 1fr) [page-start content-start] minmax(0, 1fr) [prose-start]
-      repeat(8, minmax(0, 1fr)) [prose-end] minmax(0, 1fr) [page-end
-      content-end] minmax(0, 1fr) [container-end] calc(var(--spacing) * 2)
+    /* prettier-ignore */
+    --grid-6:
+      [margin-start]
+        var(--spacing)
+        [page-start container-start content-start prose-start]
+          repeat(6, minmax(0, 1fr))
+        [page-end prose-end content-end container-end]
+        var(--spacing)
       [margin-end];
 
-    --grid-16-narrow: [margin-start] calc(var(--grid-margin) - 4px)
-      [container-start] repeat(1, minmax(0, 1fr)) [page-start]
-      repeat(1, minmax(0, 1fr)) [content-start] repeat(2, minmax(0, 1fr))
-      [prose-start] repeat(8, minmax(0, 1fr)) [prose-end]
-      repeat(2, minmax(0, 1fr)) [content-end] repeat(1, minmax(0, 1fr))
-      [page-end] repeat(1, minmax(0, 1fr)) [container-end]
-      calc(var(--grid-margin) - 4px) [margin-end];
+    /* prettier-ignore */
+    --grid-12:
+      [margin-start]
+        calc(var(--spacing) * 2)
+        [container-start]
+          minmax(0, 1fr)
+          [page-start content-start prose-start]
+            repeat(10, minmax(0, 1fr))
+          [page-end content-end prose-end]
+          minmax(0, 1fr)
+        [container-end]
+        calc(var(--spacing) * 2)
+      [margin-end];
 
-    --grid-16: [margin-start] var(--grid-margin) [container-start]
-      repeat(1, minmax(0, 1fr)) [page-start] repeat(1, minmax(0, 1fr))
-      [content-start] repeat(2, minmax(0, 1fr)) [prose-start]
-      repeat(8, minmax(0, 1fr)) [prose-end] repeat(2, minmax(0, 1fr))
-      [content-end] repeat(1, minmax(0, 1fr)) [page-end]
-      repeat(1, minmax(0, 1fr)) [container-end] var(--grid-margin) [margin-end];
+    /* prettier-ignore */
+    --grid-12-wide:
+      [margin-start]
+        calc(var(--spacing) * 2)
+        [container-start]
+          minmax(0, 1fr)
+          [page-start content-start]
+            minmax(0, 1fr)
+            [prose-start]
+              repeat(8, minmax(0, 1fr))
+            [prose-end]
+            minmax(0, 1fr)
+          [page-end content-end]
+          minmax(0, 1fr)
+        [container-end]
+        calc(var(--spacing) * 2)
+      [margin-end];
+
+    /* prettier-ignore */
+    --grid-16-narrow:
+      [margin-start]
+        calc(var(--grid-margin) - 4px)
+        [container-start]
+          repeat(1, minmax(0, 1fr))
+          [page-start]
+            repeat(1, minmax(0, 1fr))
+            [content-start]
+              repeat(2, minmax(0, 1fr))
+              [prose-start]
+                repeat(8, minmax(0, 1fr))
+              [prose-end]
+              repeat(2, minmax(0, 1fr))
+            [content-end]
+            repeat(1, minmax(0, 1fr))
+          [page-end]
+          repeat(1, minmax(0, 1fr))
+        [container-end]
+        calc(var(--grid-margin) - 4px)
+      [margin-end];
+
+    /* prettier-ignore */
+    --grid-16:
+      [margin-start]
+        var(--grid-margin)
+        [container-start]
+          repeat(1, minmax(0, 1fr))
+          [page-start]
+            repeat(1, minmax(0, 1fr))
+            [content-start]
+              repeat(2, minmax(0, 1fr))
+              [prose-start]
+                repeat(8, minmax(0, 1fr))
+              [prose-end]
+              repeat(2, minmax(0, 1fr))
+            [content-end]
+            repeat(1, minmax(0, 1fr))
+          [page-end]
+          repeat(1, minmax(0, 1fr))
+        [container-end]
+        var(--grid-margin)
+      [margin-end];
 
     /**
     * Overridable capability for tailwind

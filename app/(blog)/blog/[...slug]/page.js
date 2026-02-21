@@ -268,7 +268,7 @@ export default async function PostPage(props) {
               </div>
             )}
             {isOldCodePost && (
-              <div className="shadow-placed dark:shadow-[0_0_0_1px_color-mix(in_oklch,var(--color-cornflour-900),transparent_50%)] col-prose flex gap-3 leading-tight bg-cornflour-0 dark:bg-cornflour-900/30 rounded-md p-4">
+              <div className="shadow-placed dark:shadow-[0_0_0_1px_color-mix(in_oklch,var(--color-cornflour-900),transparent_50%)] col-content lg:col-prose flex gap-3 leading-tight bg-cornflour-0 dark:bg-cornflour-900/30 rounded-md p-4">
                 <Icon
                   icon="square-info"
                   className="text-cornflour-900 dark:text-cornflour-400 flex-[0_0_auto]"

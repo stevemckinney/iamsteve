@@ -74,10 +74,13 @@ export function PostLayoutFrame({
             'prose grid grid-cols-subgrid',
             'lg:row-start-1 lg:row-span-1',
             'gap-x-8 gap-y-0',
-            'col-prose',
+            'col-content lg:col-prose',
             {
-              'lg:col-start-4 lg:col-end-14': isSidebarOpen,
+              'lg:col-start-4 lg:col-end-12 xl:col-start-5 xl:col-end-16':
+                isSidebarOpen,
               'lg:col-start-5 lg:col-end-13': !isSidebarOpen,
+
+              // 'outline xl:outline-red-500 2xl:outline-blue-500'
             }
           )}
           id="article"
@@ -86,7 +89,7 @@ export function PostLayoutFrame({
             className={cn(
               styles.header,
               'flex flex-col max-lg:pt-12 gap-y-4 mb-12',
-              'col-prose',
+              'col-content lg:col-prose',
               {
                 'lg:col-start-6 lg:col-end-14': isSidebarOpen,
                 'lg:col-start-4 lg:col-end-14': !isSidebarOpen,

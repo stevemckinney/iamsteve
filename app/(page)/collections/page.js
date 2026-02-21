@@ -115,7 +115,7 @@ export default async function CollectionsPage(props) {
   const params = await props.params
   return (
     <>
-      <Header className="max-sm:frame max-sm:frame-24 max-sm:px-8 max-sm:py-12 flex flex-col gap-2 col-start-content-start col-end-content-end md:col-end-7 md:sticky top-8 self-start">
+      <Header className="max-md:frame max-md:frame-24 max-md:px-8 max-md:py-12 flex flex-col gap-2 col-container md:col-content md:col-end-7 md:sticky top-8 self-start">
         <Title className="font-variation-bold text-5xl">Collections</Title>
         <Description>
           Curated design resources organised by topic, from typography and color
