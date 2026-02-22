@@ -1,6 +1,6 @@
 'use client'
 import { cn } from '@/lib/utils'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { SidebarToggle } from './sidebar-toggle'
 
 export function PostLayoutFrame({
@@ -11,22 +11,18 @@ export function PostLayoutFrame({
   headerContent,
   proseContent,
 }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
-
-  // Optional: Persist sidebar state to localStorage
-  useEffect(() => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(() => {
+    if (typeof window === 'undefined') return true
     const saved = localStorage.getItem('sidebar-open')
-    if (saved !== null) {
-      setIsSidebarOpen(saved === 'true')
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem('sidebar-open', String(isSidebarOpen))
-  }, [isSidebarOpen])
+    return saved !== null ? saved === 'true' : true
+  })
 
   const handleToggle = () => {
-    setIsSidebarOpen((prev) => !prev)
+    setIsSidebarOpen((prev) => {
+      const next = !prev
+      localStorage.setItem('sidebar-open', String(next))
+      return next
+    })
   }
 
   return (
