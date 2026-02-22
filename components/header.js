@@ -71,12 +71,12 @@ function Desktop({ pathname }) {
         'flex justify-between',
         'max-md:hidden',
         'bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas',
-        'py-4 sm:px-4 lg:py-6.5 lg:-mx-4 xl:px-8 xl:-mx-8 2xl:py-9'
+        'py-4 sm:px-4 lg:py-6.5 lg:-mx-4 xl:px-8 xl:-mx-8 2xl:py-7'
       )}
       id="nav"
       suppressHydrationWarning
     >
-      <ul className="flex justify-between md:gap-8">
+      <ul className="flex justify-between md:gap-8 2xl:py-0.5">
         {navigation.map((link) => {
           const isLibrary = link.title === 'Library'
 
@@ -285,19 +285,19 @@ export default function Header() {
           )}
         >
           {/* span so that focus indicator isn't weird with the spacing applied here */}
-          <span className="flex bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas py-4 sm:px-4 sm:-mx-4 lg:py-6.5 xl:px-8 xl:-mx-8 2xl:py-9">
+          <span className="flex bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas py-4 sm:px-4 sm:-mx-4 lg:py-6.5 xl:px-8 xl:-mx-8 2xl:py-7">
             <Link href="/" className="flex" aria-label="iamsteve.me homepage">
               <Icon
                 icon="logo"
                 size={32}
-                className="max-xl:hidden"
+                className="max-lg:hidden"
                 variant="header"
                 aria-hidden="true"
               />
               <Icon
                 icon="logo"
                 size={24}
-                className="xl:hidden"
+                className="lg:hidden"
                 variant="header"
                 aria-hidden="true"
               />

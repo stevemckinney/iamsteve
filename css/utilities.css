@@ -215,7 +215,7 @@
 }
 
 @utility frame-outset-top {
-  border-image-outset: 3.375rem 0 0;
+  border-image-outset: 2.75rem 0 0;
 }
 
 @layer utilities {

@@ -1,16 +1,16 @@
 ---
 title: Build a bento layout with CSS grid
-date: "2024-07-02T14:58:09.706Z"
-lastmod: "2024-07-02T14:58:09.706Z"
+date: '2024-07-02T14:58:09.706Z'
+lastmod: '2024-07-02T14:58:09.706Z'
 summary: Bento grids offer a unique layout challenge for CSS. With the use of Tailwind you can create a flexible layout with modern CSS grid and @container queries.
 metadesc: Build a bento grid using CSS grid and @container queries with Tailwind
-theme: "#fcf9f8"
+theme: '#fcf9f8'
 tags: ['Code', 'Bento']
 categories: ['Code', 'Patterns']
 images: []
-large: "/images/blog/0175-bento-grid-featured-image.svg"
-medium: "/images/blog/0175-bento-grid-featured-image-medium.svg"
-ogImage: "/images/blog/0175-bento-grid-opengraph-image.png"
+large: '/images/blog/0175-bento-grid-featured-image.svg'
+medium: '/images/blog/0175-bento-grid-featured-image-medium.svg'
+ogImage: '/images/blog/0175-bento-grid-opengraph-image.png'
 status: open
 codepen: false
 twitter: false
@@ -25,14 +25,16 @@ For this example masonry isn’t required—but it’s something I would like to
 <Blockquote style="notice">I make the assumption that you’re comfortable setting up Tailwind for your project</Blockquote>
 
 ## The bento design
+
 The design showcases a rough idea of an app I wish existed. Each section displays a different feature with larger sections having an illustration of the feature.
 
-<figure className="prose-exclude flex flex-col gap-2 col-content">
+<figure className="flex flex-col gap-2">
 <Demo src="https://stevemckinney.github.io/bento-grid/option-1.html" />
 <figcaption>A compact grid showing 6 features of a fictional app. Layout will vary based on your device. This is a live demo.</figcaption>
 </figure>
 
 ### Considerations
+
 - Content spans different column widths
 - Icon plus title style in unpredictable width containers
 - Rows with equal height content and imagery
@@ -40,6 +42,7 @@ The design showcases a rough idea of an app I wish existed. Each section display
 - Image masks will need to change with different image crops
 
 ## Project files
+
 The design is available through Figma’s community and the code is available through Github. There’s two layout options in both.
 
 <div className={`flex gap-2`}>
@@ -48,9 +51,11 @@ The design is available through Figma’s community and the code is available th
 </div>
 
 ## HTML structure
+
 First, it’s necessary to get the structure of the bento grid. Then it makes sense to cover the rest of the layout and visual style with Tailwind.
 
 ### Create a container
+
 Everything needs to be contained within a `<div>` with this you’ll apply the grid styles to it.
 
 ```markup:bento.html showLineNumbers {6-8}
@@ -66,6 +71,7 @@ Everything needs to be contained within a `<div>` with this you’ll apply the g
 ```
 
 ### Basic structure for each section
+
 As the design features sections with different sizing and visual weight through use of imagery your markup for each will differ slightly.
 
 ```markup:bento.html showLineNumbers {9-11}
@@ -86,6 +92,7 @@ As the design features sections with different sizing and visual weight through 
 Grouping the text based content together and applying a container around the image allows you greater control later when adding style and layout.
 
 ### Putting all the HTML together
+
 Overall for this design there’s 6 sections. Some sections will have an image others without. Some will span more columns and some will span more rows. For layouts like this tailwind is perfect to manage these variations.
 
 If you’re working in an environment that allows for a components, each section could be a single component with some properties for customisation.
@@ -168,6 +175,7 @@ If you’re working in an environment that allows for a components, each section
 ```
 
 ## On to the grid’s CSS
+
 To create a bento with CSS grid doesn’t require too much to get going. You could also use `subgrid` for your columns, if your grid is defined on a parent element.
 
 ```css:app.css showLineNumbers
@@ -181,8 +189,9 @@ To create a bento with CSS grid doesn’t require too much to get going. You cou
 
 The important bit of CSS here is `grid-auto-flow` aside from defining the 12 column grid itself. This tells the grid algorithm to fill in gaps where possible with smaller grid items.
 
-{/*<figure>
-  <Image src="/images/blog/0175-bento-grid-columns@2x.png" width={864} height={564} alt=" " />
+{/\*<figure>
+<Image src="/images/blog/0175-bento-grid-columns@2x.png" width={864} height={564} alt=" " />
+
   <figcaption>Grid overlay shows the columns applied to the design</figcaption>
 </figure>*/}
 
@@ -205,6 +214,7 @@ Another important part to the design is `grid-auto-rows`. As this affects the tw
 When a grid is overlayed onto the design you can see what to aim for. Each section aligns with a row and each row is of an equal height.
 
 ### Grid sections CSS
+
 This is a matter of setting how many columns and rows you wish for each section to `span`. As part of the design there are 3 different sizes for sections.
 
 ```css
@@ -225,6 +235,7 @@ This is a matter of setting how many columns and rows you wish for each section 
 ```
 
 ### What this looks like
+
 Without the content you’re left with a shell that matches the initial design.
 
 <figure>
@@ -235,6 +246,7 @@ Without the content you’re left with a shell that matches the initial design.
 </figure>
 
 ## Tailwind setup
+
 For this I have used [Tailwind 4 alpha](https://tailwindcss.com/blog/tailwindcss-v4-alpha), which changes from using `tailwind.config.js` to using CSS for most configuration.
 
 In this CSS file we’ll setup the type as well, for which I’m using [Inter Variable](https://rsms.me/inter/).
@@ -281,6 +293,7 @@ In this CSS file we’ll setup the type as well, for which I’m using [Inter Va
 If you’re looking for a standard CSS application you can take the variables here too or the [compiled CSS](https://github.com/stevemckinney/bento-grid/blob/main/app.output.css).
 
 ## Applying layout
+
 You can get the complete markup on [Github](https://github.com/stevemckinney/bento-grid)—there’s a lot to get through but I will run through what’s needed with Tailwind to create this layout.
 
 ```markup showLineNumbers {7-9}
@@ -299,6 +312,7 @@ You can get the complete markup on [Github](https://github.com/stevemckinney/ben
 What was `bento-container` earlier now contains all of those same styles within. In addition to setting a `max-width` to the container.
 
 ### Section breakdown
+
 Now to apply all of the style and additional layout adjustments. Highlighted are the lines which affect layout.
 
 ```markup showLineNumbers {1, 2, 8-10}
@@ -316,6 +330,7 @@ Now to apply all of the style and additional layout adjustments. Highlighted are
 ```
 
 #### Setup the @container
+
 There’s adjustments that need to be made based on the containers size for images and titles which will be covered shortly. You can scope this container as well with a `container-name` or use Tailwind’s `/` syntax.
 
 ```markup showLineNumbers
@@ -332,6 +347,7 @@ Here the container has further adjustment on column width throughout the standar
 Spacing is another crucial element. It’s applied to the outer edge of the container and between the content and image.
 
 #### Ensure content fills the available space
+
 On line 2 you’re using `flex-1` or `flex: 1 1 0%` to have the text content to expand fill any remaining space. It ensures when content differs in height images will be in alignment.
 
 ```markup showLineNumbers=2
@@ -341,6 +357,7 @@ On line 2 you’re using `flex-1` or `flex: 1 1 0%` to have the text content to 
 This could be seen as optional or applied to the image container. It depends on your preference.
 
 #### Section title
+
 Within each of titles there is an a `<span>` with an `<svg>` referencing a sprite icon with the fill colour applied as a `class`.
 
 ```markup showLineNumbers=3
@@ -352,6 +369,7 @@ Within each of titles there is an a `<span>` with an `<svg>` referencing a sprit
 Each title will switch its layout to row when the space available is `17.5rem` or greater. You could do this automatically with `flex-wrap`—but I have opted for greater control here so that all titles will wrap at this point.
 
 #### Art directed images
+
 Lines 8–10 are ensuring each image is tailored for the container it’s in. Each image uses `object-none` or `object-fit: none` to ensure the image doesn’t scale down.
 
 ```markup showLineNumbers=8
@@ -367,6 +385,7 @@ And by setting an `aspect-ratio` on the container it allows more precision for t
 **This does differ for each image. The alignment of each image does change. A freedom we’re allowed in this demo at least.**
 
 ## Finishing up
+
 Well this post is longer than I had anticipated—hopefully it’s clear enough to follow. There’s a lot to go through to get through with the slight differences between sections—and that’s why I enjoy using Tailwind. This could be easily created with components in mind, whether that’s using a React framework or Web Components.
 
 I’ve also not covered too much in terms of implementing the visual design here—again due to the length of the post.

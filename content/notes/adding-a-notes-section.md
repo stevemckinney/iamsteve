@@ -23,6 +23,6 @@ Type design trends come and go also, but this will be a growing collection. It�
 
 I’d like to use this notes section to post design practice, which can fuel ideas for blog posts or to build out a “patterns” section.
 
-I want it to almost be a place where I collect things and be kind of fun. I started this with [<Icon size={24} icon="collections" /> Collections](/collections) for a link library. I intend to build upon this further as I've been prototyping some ideas.
+I want it to almost be a place where I collect things and be kind of fun. I started this with [<Icon size={24} icon="collections" class="fill-none" /> Collections](/collections) for a link library. I intend to build upon this further as I've been prototyping some ideas.
 
 Let’s see where I go with this.

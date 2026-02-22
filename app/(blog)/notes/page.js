@@ -70,7 +70,7 @@ const mdxComponents = {
   ),
   a: (props) => (
     <a
-      className="text-link underline [text-underline-offset:15%] [text-decoration-thickness:.5px] hover:text-link-hover hover:no-underline has-[svg]:inline-flex has-[svg]:gap-0 has-[svg]:items-center has-[svg]:align-middle"
+      className="text-link underline [text-underline-offset:15%] [text-decoration-thickness:1px] hover:text-link-hover hover:no-underline has-[svg]:inline-flex has-[svg]:gap-0 has-[svg]:items-center has-[svg]:align-middle transition duration-200 ease-out"
       {...props}
     />
   ),

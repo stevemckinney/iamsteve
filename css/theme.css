@@ -67,13 +67,10 @@
 
   /* all other content */
   --color-emphasis: light-dark(var(--color-fern-1100), var(--color-fern-100));
-  --color-link: light-dark(
-    var(--color-dandelion-600),
-    var(--color-dandelion-500)
-  );
+  --color-link: light-dark(var(--color-fern-800), var(--color-dandelion-300));
   --color-link-hover: light-dark(
-    var(--color-dandelion-800),
-    var(--color-dandelion-300)
+    var(--color-fern-600),
+    var(--color-dandelion-500)
   );
 
   --color-text-secondary: light-dark(
