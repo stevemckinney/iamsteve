@@ -30,25 +30,23 @@
 }
 
 @media (min-width: 1024px) {
-  article aside li,
-  article aside button,
-  article aside a,
-  article aside > section > :not(section) {
+  .toc * {
     animation: toc-blur-scroll linear both;
     animation-timeline: view();
   }
 
   @keyframes toc-blur-scroll {
     0% {
-      filter: blur(0);
-      opacity: 1;
+      filter: blur(12px);
+      opacity: 0;
     }
-    92.5% {
+    10%,
+    90% {
       filter: blur(0);
       opacity: 1;
     }
     100% {
-      filter: blur(12px);
+      filter: blur(24px);
       opacity: 0;
     }
   }

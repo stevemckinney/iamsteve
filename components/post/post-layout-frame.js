@@ -8,6 +8,7 @@ export function PostLayoutFrame({
   children,
   toolbar,
   asideContent,
+  afterContent,
   headerContent,
   proseContent,
 }) {
@@ -45,14 +46,16 @@ export function PostLayoutFrame({
         <aside
           aria-label="Table of contents and newsletter subscription form"
           className={cn(
+            'toc',
             'max-md:col-container max-lg:col-content',
             'lg:col-start-page-start lg:col-span-3',
-            'lg:row-span-5',
+            'lg:row-start-1',
             'lg:h-screen lg:overflow-y-scroll',
             'sticky z-10 top-0 bottom-0 lg:right-0',
-            'lg:py-12 lg:-mt-12',
+            'lg:-mt-12 2xl:pt-10 2xl:-mt-10 lg:pb-18',
             'lg:px-6 lg:-mx-6',
-            'flex flex-col lg:gap-12 lg:pb-16',
+            'flex flex-col lg:gap-12',
+            'max-h-[100dvh]',
             {
               'max-lg:hidden lg:hidden': !isSidebarOpen,
             }
@@ -68,7 +71,8 @@ export function PostLayoutFrame({
             styles.prose,
             styles.content,
             'prose grid grid-cols-subgrid',
-            'lg:row-start-1 lg:row-span-1',
+            'lg:row-start-1',
+            'md:pt-12 2xl:pt-10 pb-18',
             'gap-x-8 gap-y-0',
             'col-content lg:col-prose',
             {
@@ -96,6 +100,7 @@ export function PostLayoutFrame({
           </header>
           {proseContent}
         </div>
+        {afterContent && afterContent}
       </article>
 
       {children}

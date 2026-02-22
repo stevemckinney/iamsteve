@@ -33,8 +33,8 @@ import Newsletter from '@/components/newsletter'
 import { PostLayoutFrame } from '@/components/post'
 
 import { Suspense } from 'react'
-import { getPageView } from '../views'
-import ViewCounter from '../counter'
+import { getPageView } from '../../../(blog)/blog/views'
+import ViewCounter from '../../../(blog)/blog/counter'
 
 const editUrl = (fileName) =>
   `${siteMetadata.siteRepo}/blob/main/content/blog/${fileName}`
@@ -350,9 +350,13 @@ export default async function PostPage(props) {
             </Badge>
           </>
         }
+        afterContent={
+          <>
+            <Support />
+            <NextPosts post={post} />
+          </>
+        }
       >
-        <Support />
-        <NextPosts post={post} />
         {post.twitter === true && (
           <Script
             async
@@ -384,7 +388,7 @@ export async function NextPost({ id }) {
 export function NextPosts({ post }) {
   return (
     <aside
-      className={`xl:row-span-1 col-content lg:col-start-3 lg:col-span-8 flex flex-col gap-4 lg:-mx-8`}
+      className={`xl:row-span-1 col-content lg:col-start-6 xl:col-start-7 lg:col-span-8 flex flex-col gap-4 lg:-mx-8 pb-18 mt-8`}
     >
       <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 lg:px-8">
         Next to read
@@ -455,7 +459,7 @@ export function PostImage({ post }) {
 
 export function Support() {
   return (
-    <aside className="xl:row-span-1 bg-surface-02 dark:bg-surface shadow-[0_0_0_1px_var(--color-white)] dark:shadow-[0_0_0_1px_var(--color-surface-02)] rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content xl:col-start-3 xl:col-span-8">
+    <aside className="xl:row-span-1 bg-surface-02 dark:bg-surface shadow-[0_0_0_1px_var(--color-white)] dark:shadow-[0_0_0_1px_var(--color-surface-02)] rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content lg:col-start-6 xl:col-start-7 xl:col-span-8">
       <p className="p-0 m-0 text-base text-ui-body flex flex-col">
         <strong className="text-heading font-bold">
           Enjoying the reading experience?
