@@ -189,11 +189,10 @@ To create a bento with CSS grid doesn’t require too much to get going. You cou
 
 The important bit of CSS here is `grid-auto-flow` aside from defining the 12 column grid itself. This tells the grid algorithm to fill in gaps where possible with smaller grid items.
 
-{/\*<figure>
-<Image src="/images/blog/0175-bento-grid-columns@2x.png" width={864} height={564} alt=" " />
-
+<figure>
+  <Image src="/images/blog/0175-bento-grid-columns@2x.png" width={864} height={564} alt=" " />
   <figcaption>Grid overlay shows the columns applied to the design</figcaption>
-</figure>*/}
+</figure>
 
 ```css:app.css showLineNumbers=7
 /* optional */
