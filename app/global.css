@@ -41,7 +41,7 @@
       opacity: 0;
     }
     10%,
-    90% {
+    95% {
       filter: blur(0);
       opacity: 1;
     }

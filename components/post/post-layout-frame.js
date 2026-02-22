@@ -52,7 +52,7 @@ export function PostLayoutFrame({
             'lg:row-start-1',
             'lg:h-screen lg:overflow-y-scroll',
             'sticky z-10 top-0 bottom-0 lg:right-0',
-            'lg:-mt-12 2xl:pt-10 2xl:-mt-10 lg:pb-18',
+            'lg:-mt-12 lg:pt-12 2xl:-mt-10 lg:pb-18',
             'lg:px-6 lg:-mx-6',
             'flex flex-col lg:gap-12',
             'max-h-[100dvh]',
@@ -72,7 +72,7 @@ export function PostLayoutFrame({
             styles.content,
             'prose grid grid-cols-subgrid',
             'lg:row-start-1',
-            'md:pt-12 2xl:pt-10 pb-18',
+            'pb-18',
             'gap-x-8 gap-y-0',
             'col-content lg:col-prose',
             {
