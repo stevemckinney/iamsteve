@@ -1,39 +1,44 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useMemo,
+  useSyncExternalStore,
+} from 'react'
 import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
 
-function TableOfContents({ headings, open = false, ...props }) {
-  const [isOpen, setIsOpen] = useState(open)
-  const [isSticky, setIsSticky] = useState(false)
-  const contentRef = useRef(null)
-  const wrapperRef = useRef(null)
+function useStickyScroll(wrapperRef) {
   const initialTopRef = useRef(null)
 
-  // Track scroll position to determine sticky state
-  useEffect(() => {
-    const wrapper = wrapperRef.current
-    if (!wrapper) return
+  const subscribe = useCallback((callback) => {
+    window.addEventListener('scroll', callback, { passive: true })
+    return () => window.removeEventListener('scroll', callback)
+  }, [])
 
-    // Capture the initial top position once
+  const getSnapshot = useCallback(() => {
+    const wrapper = wrapperRef.current
+    if (!wrapper) return false
+
     if (initialTopRef.current === null) {
       initialTopRef.current =
         wrapper.getBoundingClientRect().top + window.scrollY
     }
 
-    const handleScroll = () => {
-      const scrollY = window.scrollY
-      const shouldBeSticky = scrollY >= initialTopRef.current
-      setIsSticky(shouldBeSticky)
-    }
+    return window.scrollY >= initialTopRef.current
+  }, [wrapperRef])
 
-    // Check initial state
-    handleScroll()
+  return useSyncExternalStore(subscribe, getSnapshot, () => false)
+}
 
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+function TableOfContents({ headings, open = false, ...props }) {
+  const [isOpen, setIsOpen] = useState(open)
+  const contentRef = useRef(null)
+  const wrapperRef = useRef(null)
+  const isSticky = useStickyScroll(wrapperRef)
 
   const toggleOpen = useCallback(() => {
     setIsOpen((prev) => !prev)
@@ -126,18 +131,20 @@ function TableOfContents({ headings, open = false, ...props }) {
 }
 
 function useMediaQuery(query) {
-  const [matches, setMatches] = useState(false)
+  const subscribe = useCallback(
+    (callback) => {
+      const mediaQuery = window.matchMedia(query)
+      mediaQuery.addEventListener('change', callback)
+      return () => mediaQuery.removeEventListener('change', callback)
+    },
+    [query]
+  )
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(query)
-    setMatches(mediaQuery.matches)
-
-    const handler = (e) => setMatches(e.matches)
-    mediaQuery.addEventListener('change', handler)
-    return () => mediaQuery.removeEventListener('change', handler)
+  const getSnapshot = useCallback(() => {
+    return window.matchMedia(query).matches
   }, [query])
 
-  return matches
+  return useSyncExternalStore(subscribe, getSnapshot, () => false)
 }
 
 function createNestedHeadings(headings) {
