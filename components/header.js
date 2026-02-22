@@ -286,7 +286,7 @@ export default function Header() {
           )}
         >
           {/* span so that focus indicator isn't weird with the spacing applied here */}
-          <span className="flex bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas py-4 sm:px-4 sm:-mx-4 lg:py-6.5 xl:px-8 xl:-mx-8 2xl:py-7">
+          <span className="flex bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas py-4 sm:px-4 sm:-mx-4 lg:py-6.5 xl:px-8 xl:-mx-8 2xl:pt-7 2xl:pb-4">
             <Link href="/" className="flex" aria-label="iamsteve.me homepage">
               <Icon
                 icon="logo"

@@ -28,3 +28,28 @@
     overflow: hidden;
   }
 }
+
+@media (min-width: 1024px) {
+  article aside li,
+  article aside button,
+  article aside a,
+  article aside > section > :not(section) {
+    animation: toc-blur-scroll linear both;
+    animation-timeline: view();
+  }
+
+  @keyframes toc-blur-scroll {
+    0% {
+      filter: blur(0);
+      opacity: 1;
+    }
+    92.5% {
+      filter: blur(0);
+      opacity: 1;
+    }
+    100% {
+      filter: blur(12px);
+      opacity: 0;
+    }
+  }
+}
