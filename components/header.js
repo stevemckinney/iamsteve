@@ -230,6 +230,7 @@ function Tabbar({ pathname }) {
         'max-lg:transition-all max-lg:duration-200 max-lg:ease-out',
         styles.tabbar
       )}
+      id="tabbar"
       suppressHydrationWarning
     >
       <ul className="flex justify-between max-lg:gap-6">

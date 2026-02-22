@@ -23,9 +23,8 @@
   }
 }
 
-@media not all and (max-width: 1024px) {
-  .tabbar-hidden {
-    transform: translateY(calc(100% + 0.5rem));
-    transition: transform 0.2s ease;
+@media (max-width: 1023px) {
+  html[data-toc-open='true'] body {
+    overflow: hidden;
   }
 }
