@@ -15,8 +15,16 @@ function useStickyScroll(wrapperRef) {
   const initialTopRef = useRef(null)
 
   const subscribe = useCallback((callback) => {
+    const reset = () => {
+      initialTopRef.current = null
+      callback()
+    }
     window.addEventListener('scroll', callback, { passive: true })
-    return () => window.removeEventListener('scroll', callback)
+    window.addEventListener('resize', reset, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', callback)
+      window.removeEventListener('resize', reset)
+    }
   }, [])
 
   const getSnapshot = useCallback(() => {
