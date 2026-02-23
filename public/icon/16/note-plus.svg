@@ -1,0 +1,9 @@
+<svg viewBox="0 0 16 16">
+  <g class="note-plus">
+    <rect width="10" height="12" x="3" y="2" class="fill-(--icon-fill)" rx=".667"/>
+    <path d="M10 6H6" class="stroke-current stroke-2 sl-r"/>
+    <path d="M8.333 14H3.667A.667.667 0 0 1 3 13.333V2.667C3 2.298 3.298 2 3.667 2h8.666c.368 0 .667.298.667.667V8" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M11.5 12.5h3" class="stroke-current stroke-2 sl-r"/>
+    <path d="M13 11v3" class="stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

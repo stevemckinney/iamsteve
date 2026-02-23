@@ -30,10 +30,11 @@ import {
 import Icon from '@/components/icon'
 import Link from '@/components/link'
 import Newsletter from '@/components/newsletter'
+import { PostLayoutFrame } from '@/components/post'
 
 import { Suspense } from 'react'
-import { getPageView } from '../views'
-import ViewCounter from '../counter'
+import { getPageView } from '../../../(blog)/blog/views'
+import ViewCounter from '../../../(blog)/blog/counter'
 
 const editUrl = (fileName) =>
   `${siteMetadata.siteRepo}/blob/main/content/blog/${fileName}`
@@ -205,129 +206,165 @@ export default async function PostPage(props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
-      <article
-        className={`isolate grid row-start-1 col-container grid-cols-subgrid relative`}
-      >
-        <hr className="absolute z-11 top-0 left-0 right-0 col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] border-none" />
-        <Sidebar
-          post={post}
-          aria-label="Table of contents and newsletter subscription form"
-          className="max-lg:col-container lg:col-start-10 lg:col-span-2 xl:col-start-12 lg:row-span-5 xl:col-span-3 lg:h-screen lg:overflow-y-scroll sticky z-10 top-0 bottom-0 lg:right-0 lg:py-12 lg:-mt-12 flex flex-col lg:gap-12 lg:pb-16 lg:px-6 lg:-mx-6 lg:mask-[linear-gradient(180deg,transparent,#000_64px,#000_calc(100%-10vh),transparent)]"
-        />
-        <hr className="relative col-container lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] border-none" />
-        <header className="col-content lg:col-container lg:col-start-2 lg:col-end-9 xl:col-start-3 xl:col-end-11 lg:row-start-1 lg:row-span-1 flex flex-col max-lg:pt-12 gap-y-4 mb-12">
-          {showDrafts && (
-            <div className="col-content mb-8">
-              <div className="shadow-placed flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
+      <PostLayoutFrame
+        styles={styles}
+        toolbar={
+          <div className="flex flex-row gap-3 items-center">
+            {post.categories.length > 0 &&
+              post.categories.map((category, index) => (
+                <Category size={16} key={index}>
+                  {category}
+                </Category>
+              ))}
+          </div>
+        }
+        asideContent={
+          <>
+            <section
+              className="flex flex-col gap-2 relative"
+              aria-labelledby="aside-contents"
+            >
+              <div className="lg:hidden" aria-hidden="true">
+                <TableOfContents headings={post.headings} />
+              </div>
+              <div className="hidden lg:block">
+                <TableOfContents headings={post.headings} open />
+              </div>
+            </section>
+            <section
+              className="flex flex-col gap-2 pb-12 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0"
+              aria-labelledby="aside-subscribe"
+            >
+              <h2 className="font-bold text-heading" id="aside-subscribe">
+                Subscribe
+              </h2>
+              <p className="mb-4">
+                Get notified you when the latest posts go out. Unsubscribe
+                anytime.
+              </p>
+              <Newsletter />
+            </section>
+          </>
+        }
+        headerContent={
+          <>
+            {showDrafts && (
+              <div className="col-content mb-8">
+                <div className="shadow-placed flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
+                  <Icon
+                    icon="square-info"
+                    className="text-cornflour-900 flex-[0_0_auto]"
+                    variant="default"
+                  />
+                  <div className="flex flex-col">
+                    <p className="p-0 m-0 font-body text-sm text-cornflour-900">
+                      <strong>Viewing draft post</strong>
+                    </p>
+                    <p className="p-0 m-0 font-body text-sm text-cornflour-900">
+                      This post is not publicly visible
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+            {isOldCodePost && (
+              <div className="shadow-placed dark:shadow-[0_0_0_1px_color-mix(in_oklch,var(--color-cornflour-900),transparent_50%)] col-content lg:col-prose flex gap-3 leading-tight bg-cornflour-0 dark:bg-cornflour-900/30 rounded-md p-4">
                 <Icon
                   icon="square-info"
-                  className="text-cornflour-900 flex-[0_0_auto]"
-                  variant="default"
+                  className="text-cornflour-900 dark:text-cornflour-400 flex-[0_0_auto]"
+                  variant="header"
                 />
                 <div className="flex flex-col">
-                  <p className="p-0 m-0 font-body text-sm text-cornflour-900">
-                    <strong>Viewing draft post</strong>
+                  <p className="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-300">
+                    <strong>
+                      This post was published {yearsAgo}{' '}
+                      {yearsAgo === 1 ? 'year' : 'years'} ago
+                    </strong>
                   </p>
-                  <p className="p-0 m-0 font-body text-sm text-cornflour-900">
-                    This post is not publicly visible
+                  <p className="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-300/80">
+                    There's a chance things are out of date or no longer reflect
+                    my views today
                   </p>
                 </div>
               </div>
-            </div>
-          )}
-          {isOldCodePost && (
-            <div className="shadow-placed dark:shadow-[0_0_0_1px_color-mix(in_oklch,var(--color-cornflour-900),transparent_50%)] col-prose flex gap-3 leading-tight bg-cornflour-0 dark:bg-cornflour-900/30 rounded-md p-4">
-              <Icon
-                icon="square-info"
-                className="text-cornflour-900 dark:text-cornflour-400 flex-[0_0_auto]"
-                variant="header"
-              />
-              <div className="flex flex-col">
-                <p className="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-300">
-                  <strong>
-                    This post was published {yearsAgo}{' '}
-                    {yearsAgo === 1 ? 'year' : 'years'} ago
-                  </strong>
-                </p>
-                <p className="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-300/80">
-                  There’s a chance things are out of date or no longer reflect
-                  my views today
-                </p>
-              </div>
-            </div>
-          )}
-          <Badge size={16} theme={`cornflour`} iconStart={`calendar`}>
-            <time dateTime={post.date} className={`date`}>
-              {format(date, 'do LLL yyyy')}
-            </time>
-          </Badge>
-          <PageTitle
-            className="mt-4"
-            key={`title-${post.id}`}
-            id={`title-${post.id}`}
-          >
-            {post.title}
-          </PageTitle>
-          {post.summary && (
-            <p className="text-lg text-pretty lg:text-2xl text-emphasis mb-2">
-              {post.summary}
-            </p>
-          )}
-          <div className="flex flex-row flex-wrap justify-between gap-6">
-            <div className="flex flex-row gap-4 items-center">
-              {post.categories.length > 0 &&
-                post.categories.map((category, index) => {
-                  return (
-                    <Category size={16} key={index}>
-                      {category}
-                    </Category>
-                  )
-                })}
-            </div>
-            {enableViewCounting && (
-              <Badge size={16} theme={`text`} iconStart={`views`}>
-                <Suspense
-                  fallback={
-                    <span className="text-emphasis">
-                      {initialViews.toLocaleString()} views
-                    </span>
-                  }
-                >
-                  <ViewCounter
-                    slug={cleanSlug}
-                    initialViews={initialViews}
-                    trackView={true}
-                  />
-                </Suspense>
-              </Badge>
             )}
-          </div>
-        </header>
-        <div
-          className={`${styles.prose} prose grid grid-cols-subgrid col-container lg:col-span-8 xl:col-span-10 gap-x-8 gap-y-0`}
-          id="article"
-        >
-          <PostImage post={post} />
-          <PostMdx code={post.body.code} />
-          <Badge
-            href={editUrl(post._raw.sourceFileName)}
-            size={16}
-            theme={`text`}
-            iconStart={`github`}
-          >
-            View on Github
-          </Badge>
-        </div>
-      </article>
-      <Support />
-      <NextPosts post={post} />
-      {post.twitter === true && (
-        <Script
-          async
-          src="https://platform.twitter.com/widgets.js"
-          strategy="afterInteractive"
-        />
-      )}
+            <Badge size={16} theme={`cornflour`} iconStart={`calendar`}>
+              <time dateTime={post.date} className={`date`}>
+                {format(date, 'do LLL yyyy')}
+              </time>
+            </Badge>
+            <PageTitle
+              className="mt-4"
+              key={`title-${post.id}`}
+              id={`title-${post.id}`}
+            >
+              {post.title}
+            </PageTitle>
+            {post.summary && (
+              <p className="text-lg text-pretty lg:text-2xl text-emphasis mb-2">
+                {post.summary}
+              </p>
+            )}
+            <div className="flex flex-row flex-wrap justify-between gap-6">
+              <div className="flex flex-row gap-4 items-center">
+                {post.categories.length > 0 &&
+                  post.categories.map((category, index) => {
+                    return (
+                      <Category size={16} key={index}>
+                        {category}
+                      </Category>
+                    )
+                  })}
+              </div>
+              {enableViewCounting && (
+                <Badge size={16} theme={`text`} iconStart={`views`}>
+                  <Suspense
+                    fallback={
+                      <span className="text-emphasis">
+                        {initialViews.toLocaleString()} views
+                      </span>
+                    }
+                  >
+                    <ViewCounter
+                      slug={cleanSlug}
+                      initialViews={initialViews}
+                      trackView={true}
+                    />
+                  </Suspense>
+                </Badge>
+              )}
+            </div>
+          </>
+        }
+        proseContent={
+          <>
+            <PostImage post={post} />
+            <PostMdx code={post.body.code} />
+            <Badge
+              href={editUrl(post._raw.sourceFileName)}
+              size={16}
+              theme={`text`}
+              iconStart={`github`}
+            >
+              View on Github
+            </Badge>
+          </>
+        }
+        afterContent={
+          <>
+            <Support />
+            <NextPosts post={post} />
+          </>
+        }
+      >
+        {post.twitter === true && (
+          <Script
+            async
+            src="https://platform.twitter.com/widgets.js"
+            strategy="afterInteractive"
+          />
+        )}
+      </PostLayoutFrame>
     </>
   )
 }
@@ -351,7 +388,7 @@ export async function NextPost({ id }) {
 export function NextPosts({ post }) {
   return (
     <aside
-      className={`xl:row-span-1 col-content lg:col-start-3 lg:col-span-8 flex flex-col gap-4 lg:-mx-8`}
+      className={`xl:row-span-1 col-content lg:col-start-6 xl:col-start-7 lg:col-span-8 flex flex-col gap-4 lg:-mx-8 pb-18 mt-8`}
     >
       <h2 className="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 lg:px-8">
         Next to read
@@ -422,7 +459,7 @@ export function PostImage({ post }) {
 
 export function Support() {
   return (
-    <aside className="xl:row-span-1 bg-surface-02 dark:bg-surface shadow-[0_0_0_1px_var(--color-white)] dark:shadow-[0_0_0_1px_var(--color-surface-02)] rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content xl:col-start-3 xl:col-span-8">
+    <aside className="xl:row-span-1 bg-surface-02 dark:bg-surface shadow-[0_0_0_1px_var(--color-white)] dark:shadow-[0_0_0_1px_var(--color-surface-02)] rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content lg:col-start-6 xl:col-start-7 xl:col-span-8">
       <p className="p-0 m-0 text-base text-ui-body flex flex-col">
         <strong className="text-heading font-bold">
           Enjoying the reading experience?
@@ -438,42 +475,6 @@ export function Support() {
           <Icon icon="bmc" />
         </span>
       </Link>
-    </aside>
-  )
-}
-
-// mask-[linear-gradient(0deg,transparent_0%,transparent_1%,rgba(0,0,0,0.56)_3%,#000_6%,#000_18%,#000_82%,#000_90%,rgba(0,0,0,0.56)_95%,transparent_99%,transparent_100%)]
-// max-xl:bg-[url(/images/texture.png)] max-xl:bg-size-[172px_auto] max-xl:bg-blend-multiply max-xl:bg-neutral-01-150 max-xl:px-6
-
-export function Sidebar({ post, ...props }) {
-  return (
-    <aside {...props}>
-      <section
-        className="flex flex-col gap-2 relative"
-        aria-labelledby="aside-contents"
-      >
-        {/* mobile contents */}
-        <div className="lg:hidden" aria-hidden="true">
-          <TableOfContents headings={post.headings} />
-        </div>
-
-        {/* desktop contents */}
-        <div className="hidden lg:block">
-          <TableOfContents headings={post.headings} open />
-        </div>
-      </section>
-      <section
-        className="flex flex-col gap-2 pb-12 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0"
-        aria-labelledby="aside-subscribe"
-      >
-        <h2 className="font-bold text-heading" id="aside-subscribe">
-          Subscribe
-        </h2>
-        <p className="mb-4">
-          Get notified you when the latest posts go out. Unsubscribe anytime.
-        </p>
-        <Newsletter />
-      </section>
     </aside>
   )
 }

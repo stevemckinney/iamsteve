@@ -1,0 +1,6 @@
+<svg viewBox="0 0 16 16">
+  <g class="clipboard">
+    <path d="M3 2h10v12H3z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M7 2h2v1H7z" class="fill-none stroke-current stroke-2 sl-s"/>
+  </g>
+</svg>

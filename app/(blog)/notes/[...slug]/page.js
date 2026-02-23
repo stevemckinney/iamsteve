@@ -4,6 +4,7 @@
  */
 
 import { notFound } from 'next/navigation'
+import { PencilMono } from '@/components/illustration'
 import { allNotes } from 'contentlayer/generated'
 import { PostMdx } from '@/components/mdx-components'
 import siteMetadata from '@/content/metadata'
@@ -94,6 +95,11 @@ export default async function NotePage(props) {
 
   return (
     <>
+      <PencilMono
+        width={962}
+        height={46}
+        className="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}

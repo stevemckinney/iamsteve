@@ -4,29 +4,50 @@
 @import '../css/typography.css';
 @import '../css/prism.css' layer(base);
 
-:focus {
-  outline: none;
-}
+@layer base {
+  :focus {
+    outline: none;
+  }
 
-:not(input):focus-visible {
-  --outline-color: var(--color-fern-300);
-  outline: 2px solid var(--outline-color);
-  outline-offset: 2px;
-}
-
-:not(input):not([role='menu']):focus-visible {
-  border-radius: 4px;
-}
-
-@media (prefers-color-scheme: dark) {
   :not(input):focus-visible {
-    --outline-color: var(--color-cornflour-700);
+    outline: 1px solid
+      light-dark(
+        color-mix(in oklch, currentcolor, transparent 20%),
+        var(--color-cornflour-700)
+      );
+    outline-offset: 1px;
+  }
+
+  :not(input):not([role='menu']):focus-visible {
+    border-radius: 4px;
   }
 }
 
-.tabbar-hidden {
-  @media not all and (min-width: 1024px) {
-    transform: translateY(calc(100% + 0.5rem));
-    transition: transform 0.2s ease;
+@media (max-width: 1023px) {
+  html[data-toc-open='true'] body {
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 1024px) {
+  .toc * {
+    animation: toc-blur-scroll linear both;
+    animation-timeline: view();
+  }
+
+  @keyframes toc-blur-scroll {
+    0% {
+      filter: blur(12px);
+      opacity: 0;
+    }
+    10%,
+    95% {
+      filter: blur(0);
+      opacity: 1;
+    }
+    100% {
+      filter: blur(24px);
+      opacity: 0;
+    }
   }
 }

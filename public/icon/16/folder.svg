@@ -1,6 +1,6 @@
 <svg viewBox="0 0 16 16">
   <g class="folder">
-    <path d="M15 6H1V3c0-.55.45-1 1-1h5l.67 1H14c.55 0 1 .45 1 1v2Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
-    <path d="M1 6h14v7a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M2 6h12v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M3 3a1 1 0 0 1 1-1h2l2 1h4a1 1 0 0 1 1 1v2H3V3Z" class="fill-none stroke-current stroke-2 sl-r"/>
   </g>
 </svg>

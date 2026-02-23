@@ -2,7 +2,7 @@
   <g class="type">
     <path d="m12 3 3 6.5V16H6l6-13Z" class="fill-(--icon-fill)"/>
     <path d="M12 2a1 1 0 0 1 .912.59L15 7.23v4.873l-3-6.666L4.547 22H2.354l8.734-19.41A1 1 0 0 1 12 2Z" class="fill-current"/>
-    <path d="M6 16h9" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M6 16h9" class="fill-none stroke-current stroke-2"/>
     <path d="M16 3h2v18h-2" class="fill-none stroke-current stroke-2 sl-r"/>
     <path d="M20 3h-2v18h2" class="fill-none stroke-current stroke-2 sl-r"/>
   </g>

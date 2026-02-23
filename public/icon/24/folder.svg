@@ -1,6 +1,6 @@
 <svg viewBox="0 0 24 24">
   <g class="folder">
-    <path d="M21 19.003A.997.997 0 0 1 20 20H4a1 1 0 0 1-1-1V5.5A1.5 1.5 0 0 1 4.5 4H7l1 1h11.5c.828 0 1.5.67 1.5 1.498v12.505Z" class="fill-none stroke-current stroke-2 sl-r"/>
-    <path d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-8A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5h-15Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M20 19.003A.997.997 0 0 1 19 20H5a1 1 0 0 1-1-1V5.5A1.5 1.5 0 0 1 5.5 4H8l1 1h9.5c.828 0 1.5.67 1.5 1.498v12.505Z" class="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+    <path d="M2.05 9.545A.5.5 0 0 1 2.548 9h18.905a.5.5 0 0 1 .497.545l-.826 9.09A1.5 1.5 0 0 1 19.63 20H4.37a1.5 1.5 0 0 1-1.494-1.364l-.826-9.09Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
   </g>
 </svg>

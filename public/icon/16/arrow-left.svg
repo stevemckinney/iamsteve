@@ -1,4 +1,6 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 8L15 8" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M5 4L1 8L5 12" stroke="#092E24" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<svg viewBox="0 0 16 16">
+  <g class="arrow-left">
+    <path d="M1 8h14" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M5 4 1 8l4 4" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
 </svg>

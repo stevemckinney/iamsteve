@@ -27,7 +27,15 @@
   & > *:not(:global(.prose-exclude)) {
     grid-column: content-start / content-end;
 
+    @media (width >= 1024px) {
+      grid-column: 3 / 10;
+    }
+
     @media (width >= 1280px) {
+      grid-column: 2 / 12;
+    }
+
+    @media (width >= 1528px) {
       grid-column: 3 / 11;
     }
   }

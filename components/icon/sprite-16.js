@@ -158,35 +158,52 @@ const Sprite16 = (props) => (
         </g>
       </symbol>
       <symbol id="arrow-down-16" viewBox="0 0 16 16">
-        <path d="M8 15L8 1" className="stroke-current stroke-2 slc-r sl-r" />
-        <path
-          d="M4 11L8 15L12 11"
-          className="stroke-current stroke-2 slc-r sl-r"
-        />
+        <g className="arrow-down">
+          <path
+            d="M8 15V1"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m4 11 4 4 4-4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
       </symbol>
       <symbol id="arrow-left-16" viewBox="0 0 16 16">
-        <path d="M1 8L15 8" className="stroke-current stroke-2 slc-r sl-r" />
-        <path
-          d="M5 4L1 8L5 12"
-          className="stroke-current stroke-2 slc-r sl-r"
-        />
+        <g className="arrow-left">
+          <path
+            d="M1 8h14"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M5 4 1 8l4 4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
       </symbol>
       <symbol id="arrow-right-16" viewBox="0 0 16 16">
-        <path d="M15 8H1" className="stroke-current stroke-2 slc-r sl-r" />
-        <path
-          d="M11 12L15 8L11 4"
-          className="stroke-current stroke-2 slc-r sl-r"
-        />
+        <g className="arrow-right">
+          <path
+            d="M15 8H1"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m11 12 4-4-4-4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
       </symbol>
       <symbol id="arrow-up-16" viewBox="0 0 16 16">
-        <path
-          d="M8 0.999999L8 15"
-          className="stroke-current stroke-2 slc-r sl-r"
-        />
-        <path
-          d="M12 5L8 1L4 5"
-          className="stroke-current stroke-2 slc-r sl-r"
-        />
+        <g className="arrow-up">
+          <path
+            d="M8 1v14"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M12 5 8 1 4 5"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
       </symbol>
       <symbol id="autolayout-h-16" viewBox="0 0 16 16">
         <g className="autolayout / h">
@@ -265,12 +282,13 @@ const Sprite16 = (props) => (
       <symbol id="box-16" viewBox="0 0 16 16">
         <g className="box">
           <path
-            d="M4 13a1 1 0 0 1-1-1V7h10v5a1 1 0 0 1-1 1H4Z"
+            d="M4 14a1 1 0 0 1-1-1V6h10v7a1 1 0 0 1-1 1H4Z"
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
+          <path d="M6 9h4" className="stroke-current stroke-2" />
           <path
-            d="M2 7V3h12v4H2Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
+            d="M2.5 6a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-11Z"
+            className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>
@@ -407,6 +425,31 @@ const Sprite16 = (props) => (
         <g className="checkmark">
           <path
             d="m3 8 3 3 7-7"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="clipboard-16" viewBox="0 0 16 16">
+        <g className="clipboard">
+          <path
+            d="M3 2h10v12H3z"
+            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M7 2h2v1H7z"
+            className="fill-none stroke-current stroke-2 sl-s"
+          />
+        </g>
+      </symbol>
+      <symbol id="clipboard-success-16" viewBox="0 0 16 16">
+        <g className="clipboard-success">
+          <path d="M3 2h10v12H3z" className="fill-success" />
+          <path
+            d="M7 2h2v1H7z"
+            className="fill-none stroke-current stroke-2 sl-s"
+          />
+          <path
+            d="m6 9 1 1 3-3"
             className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
@@ -678,7 +721,10 @@ const Sprite16 = (props) => (
             <path d="M2 5.29 1 6v9h14V6l-1-.72" />
             <path d="M2 5.29 1 6v9h14V6l-1-.72" />
           </g>
-          <path d="M14 7V3H2v4H1l7 4 7-4h-1Z" className="fill-(--icon-fill)" />
+          <path
+            d="M14 7V3H2v4H1l7 4 7-4h-1Z"
+            className="fill-(--icon-fill-bg)"
+          />
           <path
             d="m1 7 7 4 7-4"
             className="fill-none stroke-current stroke-2 sl-r"
@@ -735,14 +781,37 @@ const Sprite16 = (props) => (
       <symbol id="folder-16" viewBox="0 0 16 16">
         <g className="folder">
           <path
-            d="M15 6H1V3c0-.55.45-1 1-1h5l.67 1H14c.55 0 1 .45 1 1v2Z"
+            d="M2 6h12v7a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6Z"
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
           <path
-            d="M1 6h14v7a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
+            d="M3 3a1 1 0 0 1 1-1h2l2 1h4a1 1 0 0 1 1 1v2H3V3Z"
+            className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
+      </symbol>
+      <symbol id="font-16" viewBox="0 0 16 16">
+        <g className="font">
+          <path
+            d="m3 4 .625-2 .535.214a4 4 0 0 0 1.485.286h4.71a4 4 0 0 0 1.485-.286L12.375 2 13 4a2.438 2.438 0 0 0-2.25-1.5H10C9.375 2.5 8 3 8 4c0-1-1.375-1.5-2-1.5h-.75C4.266 2.5 3.378 3.092 3 4Z"
+            className="Vector 35"
+          />
+          <path
+            d="M8 3v10"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M6 14h4Z"
+            className="fill-none stroke-current stroke-2 sl-s"
+          />
+        </g>
+      </symbol>
+      <symbol id="font-outline-16" viewBox="0 0 16 16">
+        <path
+          className="fill-(--icon-fill) stroke-2"
+          stroke="color(display-p3 .0353 .1804 .1412)"
+          d="M4.104 2.385 3.334 2l-.667 4.667s.666-1.334 2.666-1.334h1.334V10c0 1.333-.667 2-1.334 2v2h5.334v-2c-.667 0-1.334-.667-1.334-2V5.333h1.334c2 0 2.666 1.334 2.666 1.334L12.667 2l-.77.385c-.37.185-.78.282-1.193.282H5.296c-.414 0-.822-.097-1.192-.282Z"
+        />
       </symbol>
       <symbol id="frame-16" viewBox="0 0 16 16">
         <g className="frame">
@@ -775,7 +844,6 @@ const Sprite16 = (props) => (
             d="m1 7 7-6 7 6"
             className="fill-none stroke-current stroke-2 sl-r"
           />
-          <path d="M10 9H6v5h4V9Z" className="fill-(--icon-fill)" />
           <path
             d="M2 6.33V15h4V9h4v6h4V6.33"
             className="fill-none stroke-current stroke-2 sl-r"
@@ -787,14 +855,12 @@ const Sprite16 = (props) => (
         </g>
       </symbol>
       <symbol id="link-16" viewBox="0 0 16 16">
-        <path
-          className="b"
-          d="M10.12132,5.87868A3.95126,3.95126,0,0,0,9.31374,5.272L8,6.58579a.93749.93749,0,0,0-.14.21342,1.97553,1.97553,0,0,1,.84707.49369,2.002,2.002,0,0,1,0,2.82843L5.87868,12.94975a2,2,0,0,1-2.82843-2.82843l1.0068-1.0068a5.015,5.015,0,0,1-.27777-2.55066L1.636,8.70711A4,4,0,0,0,7.29289,14.364l2.82843-2.82843A4.00458,4.00458,0,0,0,10.12132,5.87868Z"
-        />
-        <path
-          className="b"
-          d="M6.68626,10.728,8,9.41421a.93749.93749,0,0,0,.14-.21342,1.97553,1.97553,0,0,1-.84707-.49369,2.002,2.002,0,0,1,0-2.82843l2.82843-2.82843a2,2,0,1,1,2.82843,2.82843l-1.0068,1.0068a5.015,5.015,0,0,1,.27777,2.55066L14.364,7.29289A4,4,0,0,0,8.70711,1.636L5.87868,4.46447a4.00458,4.00458,0,0,0,0,5.65685A3.95126,3.95126,0,0,0,6.68626,10.728Z"
-        />
+        <g className="link">
+          <path
+            d="M13.084 7.337a3.126 3.126 0 1 0-4.42-4.421l-1.77 1.768a3.126 3.126 0 0 0 0 4.421m-3.978-.442a3.126 3.126 0 1 0 4.42 4.421l1.77-1.768a3.126 3.126 0 0 0 0-4.421"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
       </symbol>
       <symbol id="move-16" viewBox="0 0 16 16">
         <g className="move">
@@ -849,6 +915,46 @@ const Sprite16 = (props) => (
             <path d="M8 14v-4a1 1 0 0 1 1-1h4m-5 5H3.5a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H12a1 1 0 0 1 1 1v6m-5 5 5-5" />
           </g>
           <path d="M10 6H6" className="stroke-current stroke-2 sl-r" />
+        </g>
+      </symbol>
+      <symbol id="note-pencil-16" viewBox="0 0 16 16">
+        <g className="note-pencil">
+          <rect
+            width="10.667"
+            height="12"
+            x="2.667"
+            y="2"
+            className="fill-(--icon-fill)"
+            rx=".667"
+          />
+          <path d="M10 10H6" className="stroke-current stroke-2 sl-r" />
+          <path
+            d="M8.667 2H3.333a.667.667 0 0 0-.666.667v10.666c0 .368.298.667.666.667h9.334a.667.667 0 0 0 .666-.667V6.667"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M12 2 8.667 5.333v1.334H10l3.333-3.334L12 2Z"
+            className="Vector 33"
+          />
+        </g>
+      </symbol>
+      <symbol id="note-plus-16" viewBox="0 0 16 16">
+        <g className="note-plus">
+          <rect
+            width="10"
+            height="12"
+            x="3"
+            y="2"
+            className="fill-(--icon-fill)"
+            rx=".667"
+          />
+          <path d="M10 6H6" className="stroke-current stroke-2 sl-r" />
+          <path
+            d="M8.333 14H3.667A.667.667 0 0 1 3 13.333V2.667C3 2.298 3.298 2 3.667 2h8.666c.368 0 .667.298.667.667V8"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path d="M11.5 12.5h3" className="stroke-current stroke-2 sl-r" />
+          <path d="M13 11v3" className="stroke-current stroke-2 sl-r" />
         </g>
       </symbol>
       <symbol id="notepad-16" viewBox="0 0 16 16">
@@ -1003,25 +1109,51 @@ const Sprite16 = (props) => (
       <symbol id="shapes-16" viewBox="0 0 16 16">
         <g className="shapes">
           <circle
-            cx="5"
-            cy="11"
+            cx="4"
+            cy="12"
             r="2"
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
           <circle
-            cx="11"
-            cy="5"
+            cx="12"
+            cy="4"
             r="2"
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
           <path
-            d="M7 3H3v4h4V3Z"
+            d="M14 10h-4v4h4v-4Z"
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
           <path
-            d="M13 9H9v4h4V9Z"
+            d="M6 2H2v4h4V2Z"
             className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
+        </g>
+      </symbol>
+      <symbol id="share-16" viewBox="0 0 16 16">
+        <g className="share">
+          <g className="Group 2">
+            <rect
+              width="10"
+              height="6"
+              x="3"
+              y="7"
+              className="fill-(--icon-fill)"
+              rx="1"
+            />
+            <path
+              d="M5.143 7H3.5a.5.5 0 0 0-.5.5v5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-5a.5.5 0 0 0-.5-.5h-1.643"
+              className="fill-none stroke-current stroke-2 sl-r"
+            />
+            <path
+              d="M8 3v6"
+              className="fill-none stroke-current stroke-2 sl-r"
+            />
+            <path
+              d="M10 4 8 2 6 4"
+              className="fill-none stroke-current stroke-2 sl-r"
+            />
+          </g>
         </g>
       </symbol>
       <symbol id="sidebar-left-16" viewBox="0 0 16 16">
@@ -1035,7 +1167,7 @@ const Sprite16 = (props) => (
             height="12"
             x="2"
             y="2"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
+            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
             rx="1"
           />
           <path
@@ -1055,12 +1187,20 @@ const Sprite16 = (props) => (
             height="12"
             x="2"
             y="2"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
+            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
             rx="1"
           />
           <path
             d="M10 3v10"
             className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="star-16" viewBox="0 0 16 16">
+        <g className="star">
+          <path
+            d="M7.407 2.154a.667.667 0 0 1 1.186 0l1.36 2.647c.097.188.277.32.486.353l2.937.476a.667.667 0 0 1 .367 1.128l-2.097 2.11a.666.666 0 0 0-.186.572l.456 2.94a.667.667 0 0 1-.96.698l-2.655-1.342a.667.667 0 0 0-.602 0l-2.655 1.342a.667.667 0 0 1-.96-.697l.456-2.94a.667.667 0 0 0-.186-.572L2.257 6.758a.667.667 0 0 1 .367-1.128l2.937-.476a.667.667 0 0 0 .486-.353l1.36-2.647Z"
+            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
           />
         </g>
       </symbol>

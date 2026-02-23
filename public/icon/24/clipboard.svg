@@ -1,7 +1,7 @@
 <svg viewBox="0 0 24 24">
   <g class="clipboard">
-    <rect width="16" height="18" x="4" y="4" class="fill-(--icon-fill) stroke-current stroke-2 sl-r" rx="1"/>
-    <path d="M8 4h8v3H8z" class="fill-current stroke-current stroke-2 sl-r"/>
-    <circle cx="12" cy="3" r="2" class="stroke-current stroke-2 sl-r fill-(--icon-fill)"/>
+    <path d="M6.496 21A1.497 1.497 0 0 1 5 19.5V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14.5c0 .828-.669 1.5-1.497 1.5H6.496Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M8 5h8v1H8z" class="fill-current stroke-current stroke-2 sl-r"/>
+    <circle cx="12" cy="4" r="2" class="stroke-current stroke-2 sl-r fill-(--icon-fill)"/>
   </g>
 </svg>

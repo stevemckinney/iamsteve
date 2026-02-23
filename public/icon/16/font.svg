@@ -1,0 +1,7 @@
+<svg viewBox="0 0 16 16">
+  <g class="font">
+    <path d="m3 4 .625-2 .535.214a4 4 0 0 0 1.485.286h4.71a4 4 0 0 0 1.485-.286L12.375 2 13 4a2.438 2.438 0 0 0-2.25-1.5H10C9.375 2.5 8 3 8 4c0-1-1.375-1.5-2-1.5h-.75C4.266 2.5 3.378 3.092 3 4Z" class="Vector 35"/>
+    <path d="M8 3v10" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M6 14h4Z" class="fill-none stroke-current stroke-2 sl-s"/>
+  </g>
+</svg>
