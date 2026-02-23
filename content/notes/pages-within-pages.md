@@ -5,6 +5,6 @@ status: draft
 summary:
 ---
 
-<Image src="/images/notes/pages-within-pages-apple.png" alt="Apple" width={1280} height={800} />
-<Image src="/images/notes/pages-within-pages-linear.png" alt="Linear" width={1280} height={800} />
-<Image src="/images/notes/pages-within-pages-stripe.png" alt="Stripe" width={1280} height={800} />
+<Image src="/images/notes/pages-within-pages-apple.png" alt="Apple" width={3680} height={2292} />
+<Image src="/images/notes/pages-within-pages-linear.png" alt="Linear" width={3680} height={2292} />
+<Image src="/images/notes/pages-within-pages-stripe.png" alt="Stripe" width={3680} height={2292} />
