@@ -49,7 +49,7 @@ export function PostLayoutFrame({
             'toc',
             'max-md:col-container max-lg:col-content',
             'lg:row-start-1',
-            'lg:col-start-page-start lg:col-span-2 xl:col-span-3',
+            'lg:col-start-page-start xl:col-start-2 lg:col-span-2 xl:col-end-5',
             'lg:h-screen lg:overflow-y-scroll',
             'sticky z-10 top-0 bottom-0 lg:right-0',
             'lg:-mt-12 lg:pt-12 2xl:-mt-10 lg:pb-18',
