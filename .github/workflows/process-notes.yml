@@ -7,6 +7,10 @@ on:
       - 'content/notes/**'
   workflow_dispatch:
 
+concurrency:
+  group: process-notes-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   process:
     runs-on: ubuntu-latest
@@ -31,8 +35,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check if bot commit
+        id: check_actor
+        run: |
+          LAST_AUTHOR=$(git log -1 --format='%an')
+          if [ "$LAST_AUTHOR" = "github-actions[bot]" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Process notes
         id: process
+        if: steps.check_actor.outputs.skip == 'false'
         run: node scripts/process-notes.js
 
       - name: Commit changes

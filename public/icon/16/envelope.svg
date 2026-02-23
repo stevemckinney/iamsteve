@@ -4,7 +4,7 @@
       <path d="M2 5.29 1 6v9h14V6l-1-.72"/>
       <path d="M2 5.29 1 6v9h14V6l-1-.72"/>
     </g>
-    <path d="M14 7V3H2v4H1l7 4 7-4h-1Z" class="fill-(--icon-fill)"/>
+    <path d="M14 7V3H2v4H1l7 4 7-4h-1Z" class="fill-(--icon-fill-bg)"/>
     <path d="m1 7 7 4 7-4" class="fill-none stroke-current stroke-2 sl-r"/>
     <path d="M10.8 3 8 1" class="fill-none stroke-current stroke-2 sl-r"/>
     <path d="M8 1 5.2 3" class="fill-none stroke-current stroke-2 sl-r"/>

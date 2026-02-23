@@ -52,17 +52,12 @@ const getData = cache(async () => {
 
   return {
     postsByDate: postsByDate.slice(0, 4),
-    design: mergedData
-      .filter((post) => post.categories.includes('Design'))
-      .slice(0, 6),
-    code: mergedData
-      .filter((post) => post.categories.includes('Code'))
-      .slice(0, 6),
+    popularPosts: mergedData.slice(0, 18),
   }
 })
 
 export default async function Home() {
-  const { postsByDate, design, code } = await getData()
+  const { postsByDate, popularPosts } = await getData()
 
   return (
     <>
@@ -80,24 +75,8 @@ export default async function Home() {
           />
         </Frame>
 
-        <Frame id="popular-design">
-          <PopularPosts
-            posts={design}
-            title="design"
-            linkText="Explore design"
-            linkHref="/category/design"
-            accentColor="text-rio"
-          />
-        </Frame>
-
-        <Frame id="popular-code">
-          <PopularPosts
-            posts={code}
-            title="code"
-            linkText="Explore code"
-            linkHref="/category/code"
-            accentColor="text-dandelion"
-          />
+        <Frame id="popular">
+          <PopularPosts posts={popularPosts} />
         </Frame>
       </main>
     </>

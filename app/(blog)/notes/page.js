@@ -10,6 +10,7 @@ import { sortPosts } from '@/lib/utils/content'
 import { format, parseISO } from 'date-fns'
 
 import { Header, Title, Column, Description } from '@/components/page'
+import { PencilMono } from '@/components/illustration'
 import Badge from '@/components/badge'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
 import Icon from '@/components/icon'
@@ -69,7 +70,7 @@ const mdxComponents = {
   ),
   a: (props) => (
     <a
-      className="text-link underline [text-underline-offset:15%] [text-decoration-thickness:.5px] hover:text-link-hover hover:no-underline has-[svg]:inline-flex has-[svg]:gap-0 has-[svg]:items-center has-[svg]:align-middle"
+      className="text-link underline [text-underline-offset:15%] [text-decoration-thickness:1px] hover:text-link-hover hover:no-underline has-[svg]:inline-flex has-[svg]:gap-0 has-[svg]:items-center has-[svg]:align-middle transition duration-200 ease-out"
       {...props}
     />
   ),
@@ -90,6 +91,11 @@ export default async function NotesIndex() {
   if (notes.length === 0) {
     return (
       <>
+        <PencilMono
+          width={962}
+          height={46}
+          className="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+        />
         <Header>
           <Column>
             <Title>Notes</Title>
@@ -108,6 +114,11 @@ export default async function NotesIndex() {
 
   return (
     <>
+      <PencilMono
+        width={962}
+        height={46}
+        className="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+      />
       <Header>
         <Column>
           <Title>Notes</Title>

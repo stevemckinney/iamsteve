@@ -363,7 +363,7 @@ const components = {
   a: (props) => (
     <Link
       {...props}
-      className="text-heading md:text-lg lg:text-xl underline underline-offset-2 hover:text-link-hover transition duration-200 ease-linear"
+      className="text-heading md:text-lg lg:text-xl underline [text-underline-offset:15%] [text-decoration-thickness:1px] hover:text-link-hover transition duration-200 ease-linear"
     />
   ),
   p: (props) => (

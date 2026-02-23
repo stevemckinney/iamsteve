@@ -68,14 +68,15 @@ function Desktop({ pathname }) {
   return (
     <nav
       className={cn(
-        'flex justify-between lg:gap-8 max-lg:px-2 lg:-mx-4 lg:py-6.5 2xl:py-9 lg:px-8 lg:-mx-8 max-lg:-mx-4',
-        'max-lg:hidden',
-        'bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas'
+        'flex justify-between',
+        'max-md:hidden',
+        'bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas',
+        'py-4 sm:px-4 lg:py-6.5 lg:-mx-4 xl:px-8 xl:-mx-8 2xl:py-7'
       )}
       id="nav"
       suppressHydrationWarning
     >
-      <ul className="flex justify-between lg:gap-8">
+      <ul className="flex justify-between md:gap-8 2xl:py-0.5">
         {navigation.map((link) => {
           const isLibrary = link.title === 'Library'
 
@@ -214,13 +215,9 @@ function Tabbar({ pathname }) {
     <nav
       className={cn(
         // Layout
-        'flex justify-between',
-        // Large screens
-        'lg:hidden lg:gap-8 lg:-mx-4 lg:py-6.5',
-        // 2XL screens
-        '2xl:py-9 2xl:px-8 2xl:-mx-8',
+        'flex justify-between md:hidden',
         // Mobile positioning
-        'max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100',
+        'max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100 isolate',
         // Mobile spacing
         'max-lg:px-8 max-lg:gap-6',
         // Mobile appearance
@@ -233,6 +230,7 @@ function Tabbar({ pathname }) {
         'max-lg:transition-all max-lg:duration-200 max-lg:ease-out',
         styles.tabbar
       )}
+      id="tabbar"
       suppressHydrationWarning
     >
       <ul className="flex justify-between max-lg:gap-6">
@@ -282,20 +280,30 @@ export default function Header() {
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-10"
         id="top"
       >
-        <div className="col-container 2xl:col-content flex items-center align-center justify-between max-2xl:gap-8 text-emphasis max-lg:py-4 max-lg:px-4">
-          <span className="flex bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas lg:-mx-4 lg:py-6.5 2xl:py-9 lg:px-8 lg:-mx-8 max-lg:-mx-4">
+        <div
+          className={cn(
+            'col-container md:col-content lg:col-page flex items-center align-center justify-between gap-8 text-emphasis'
+          )}
+        >
+          {/* span so that focus indicator isn't weird with the spacing applied here */}
+          <span className="flex py-4 sm:px-4 sm:-mx-4 lg:py-6.5 xl:px-8 xl:-mx-8 2xl:pt-7 2xl:pb-4 rounded-full relative">
+            <span
+              className="absolute col-container lg:col-content h-[4px] top-1/2
+            -translate-y-1/2 right-0 left-0 bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas z-[-1]"
+              aria-hidden="true"
+            />
             <Link href="/" className="flex" aria-label="iamsteve.me homepage">
               <Icon
                 icon="logo"
                 size={32}
-                className="max-xl:hidden"
+                className="max-lg:hidden"
                 variant="header"
                 aria-hidden="true"
               />
               <Icon
                 icon="logo"
                 size={24}
-                className="xl:hidden"
+                className="lg:hidden"
                 variant="header"
                 aria-hidden="true"
               />

@@ -1,4 +1,5 @@
 .link {
+  /* @media (hover: hover) { */
   @media (width >= 1024px) {
     &:after {
       content: '';

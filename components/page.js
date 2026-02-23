@@ -1,5 +1,5 @@
 function Header({
-  className = `max-sm:frame max-sm:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-start-content-start col-end-content-end max-sm:px-8 max-sm:py-12`,
+  className = `max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12`,
   children,
 }) {
   return <header className={`${className}`}>{children}</header>
@@ -12,7 +12,7 @@ function Title({
 }) {
   return (
     <h1
-      className={`w-full max-sm:text-center text-heading font-display lowercase self-start min-w-0 min-h-0 ${className}`}
+      className={`w-full text-heading font-display lowercase self-start min-w-0 min-h-0 ${className}`}
       {...props}
     >
       {children}
@@ -20,10 +20,10 @@ function Title({
   )
 }
 
-function Description({ className = 'd', children }) {
+function Description({ className = 'desc', children }) {
   return (
     <p
-      className={`max-sm:text-center md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch] ${className}`}
+      className={`md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch] ${className}`}
     >
       {children}
     </p>

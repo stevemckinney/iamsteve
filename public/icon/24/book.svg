@@ -1,7 +1,7 @@
 <svg viewBox="0 0 24 24">
   <g class="book">
-    <path d="M18 21v-8H5v6.5A1.5 1.5 0 0 0 6.5 21H18Z" class="fill-none stroke-current stroke-2 sl-r"/>
     <path d="M16 21h3" class="stroke-current stroke-2 sl-r"/>
     <path d="M19 17V3H6.5A1.5 1.5 0 0 0 5 4.5v11A1.5 1.5 0 0 0 6.5 17H19Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <path d="M5 15v4.5A1.5 1.5 0 0 0 6.5 21H18v-4" class="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
   </g>
 </svg>

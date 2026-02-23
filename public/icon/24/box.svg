@@ -1,7 +1,7 @@
 <svg viewBox="0 0 24 24">
   <g class="box">
-    <path d="M5.5 20A1.5 1.5 0 0 1 4 18.5V9h16v9.5a1.5 1.5 0 0 1-1.5 1.5h-13Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
-    <path d="M3 9V6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5V9H3Z" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M4 9h16v9.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5V9Z" class="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+    <rect width="18" height="4" x="3" y="5" class="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r" rx="1"/>
     <path d="M9 13h6" class="stroke-current stroke-2"/>
   </g>
 </svg>

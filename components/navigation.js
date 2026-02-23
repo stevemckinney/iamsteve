@@ -35,7 +35,7 @@ const Navigation = () => {
   return (
     <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
       <Button
-        className="toggle-nav md:hidden max-md:-mx-4"
+        className="toggle-nav md:hidden"
         aria-label="Toggle navigation menu"
         data-state={isOpen ? 'open' : 'closed'}
       >
@@ -48,7 +48,8 @@ const Navigation = () => {
         className={clsx(
           'w-[calc(100vw-1.5rem)] shadow-placed bg-[light-dark(rgb(255_255_255/.90),color-mix(in_oklab,var(--color-fern-1200),transparent_20%))] backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg z-200 p-6 outline-none',
           'transition-all duration-300 ease-in-out',
-          'data-[entering]:opacity-0 data-[exiting]:opacity-0'
+          'data-[entering]:opacity-0 data-[exiting]:opacity-0',
+          'max-h-[calc(100dvh-4rem)] overflow-y-auto'
         )}
       >
         <ul className="flex flex-col gap-2">

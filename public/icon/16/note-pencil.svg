@@ -1,0 +1,8 @@
+<svg viewBox="0 0 16 16">
+  <g class="note-pencil">
+    <rect width="10.667" height="12" x="2.667" y="2" class="fill-(--icon-fill)" rx=".667"/>
+    <path d="M10 10H6" class="stroke-current stroke-2 sl-r"/>
+    <path d="M8.667 2H3.333a.667.667 0 0 0-.666.667v10.666c0 .368.298.667.666.667h9.334a.667.667 0 0 0 .666-.667V6.667" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M12 2 8.667 5.333v1.334H10l3.333-3.334L12 2Z" class="Vector 33"/>
+  </g>
+</svg>

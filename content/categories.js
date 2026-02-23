@@ -170,7 +170,7 @@ const categories = [
     parent: false,
     theme: 'cornflour',
     icon: 'folder',
-    exclude: true,
+    exclude: false,
   },
 ]
 

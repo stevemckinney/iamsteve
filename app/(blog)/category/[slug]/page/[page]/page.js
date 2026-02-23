@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation'
 import { allPosts } from 'contentlayer/generated'
 import { sortPosts } from '@/lib/utils/content'
 import { Header, Title, Column, Description } from '@/components/page'
+import { PencilMono } from '@/components/illustration'
 import Category from '@/components/category'
 import Icon from '@/components/icon'
 import Card from '@/components/card'
@@ -103,6 +104,11 @@ export default async function BlogCategory(props) {
 
   return (
     <>
+      <PencilMono
+        width={962}
+        height={46}
+        className="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+      />
       <Header>
         <Column className="md:col-span-1">
           <Title>{data.title}</Title>
@@ -131,7 +137,7 @@ export default async function BlogCategory(props) {
           })}
         </ul>
       </Header>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 col-content gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 col-container md:col-content gap-8">
         {paginatedPosts.length > 0 ? (
           paginatedPosts.map((post) => (
             <Card
