@@ -48,8 +48,8 @@ export function PostLayoutFrame({
           className={cn(
             'toc',
             'max-md:col-container max-lg:col-content',
-            'lg:col-start-page-start lg:col-span-3',
             'lg:row-start-1',
+            'lg:col-start-page-start lg:col-span-2 xl:col-span-3',
             'lg:h-screen lg:overflow-y-scroll',
             'sticky z-10 top-0 bottom-0 lg:right-0',
             'lg:-mt-12 lg:pt-12 2xl:-mt-10 lg:pb-18',
@@ -76,7 +76,7 @@ export function PostLayoutFrame({
             'gap-x-8 gap-y-0',
             'col-content lg:col-prose',
             {
-              'lg:col-start-4 lg:col-end-12 xl:col-start-5 xl:col-end-16':
+              'lg:col-start-3 lg:col-end-12 xl:col-start-5 xl:col-end-16':
                 isSidebarOpen,
               'lg:col-start-5 lg:col-end-13': !isSidebarOpen,
 
