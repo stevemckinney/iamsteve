@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import Image from '@/components/image'
 import Link from '@/components/link'
 import ContactForm from '@/components/contact-form'
+import { figureComponents, noteFigureComponents } from '@/components/figure'
 import Icon from '@/components/icon'
 import Social from '@/components/social'
 import Card from '@/components/card'
@@ -422,6 +423,7 @@ const postComponents = {
   ),
   li: (props) => <li {...props} />,
   Image,
+  ...figureComponents,
   a: (props) => <Link {...props} />,
   Shortcut,
   Link,
@@ -436,9 +438,6 @@ const postComponents = {
   Images,
   BentoGridShell,
   CodePen,
-  Fig: (props) => (
-    <span className="text-heading/40 uppercase">Fig. {props.children}</span>
-  ),
   LinkFigma: (props) => (
     <Link
       href={props.href}
@@ -530,3 +529,4 @@ export function PostMdx({ code }) {
 }
 
 export { postComponents, components }
+export { figureComponents, noteFigureComponents } from '@/components/figure'
