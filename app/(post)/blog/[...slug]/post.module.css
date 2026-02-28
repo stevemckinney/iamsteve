@@ -218,24 +218,22 @@
     display: inline-block;
     vertical-align: text-top;
     transform-origin: center center;
-    mix-blend-mode: multiply;
 
     @media (width >= 640px) {
       top: 0.025em;
     }
   }
 
-  & :global(.fragment .icon:before) {
-    content: url(/icon/16/link.svg);
+  & :global(.fragment svg.icon) {
     display: block;
     width: 16px;
     height: 16px;
     margin-inline-end: 0.25rem;
     margin-inline-start: calc(-0.25rem - 16px);
     opacity: 0.4;
+    color: inherit;
 
     @media (width >= 640px) {
-      content: url(/icon/24/link.svg);
       width: 24px;
       height: 24px;
       margin-inline-end: 0.5rem;

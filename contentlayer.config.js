@@ -309,6 +309,27 @@ export default makeSource({
             ariaHidden: true,
             tabIndex: -1,
           },
+          content: {
+            type: 'element',
+            tagName: 'svg',
+            properties: {
+              width: 16,
+              height: 16,
+              viewBox: '0 0 16 16',
+              ariaHidden: 'true',
+              className: ['icon'],
+            },
+            children: [
+              {
+                type: 'element',
+                tagName: 'use',
+                properties: {
+                  href: '#link-16',
+                },
+                children: [],
+              },
+            ],
+          },
         },
       ],
       [rehypePrism, { ignoreMissing: true }],
