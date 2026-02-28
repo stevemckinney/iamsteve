@@ -700,6 +700,42 @@ const Sprite24 = (props) => (
           className="slc-r sl-r stroke-2"
         />
       </symbol>
+      <symbol id="enlarge-24" viewBox="0 0 24 24">
+        <g className="enlarge">
+          <path
+            d="M3 18v3h3"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M21 6V3h-3"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M6 3H3v3"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m21 3-6 6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m9 15-6 6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m3 3 6 6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m15 15 6 6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M18 21h3v-3"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="envelope-24" viewBox="0 0 24 24">
         <g className="envelope">
           <path d="M21 10v11H3V10l9 6 9-6Z" className="fill-(--icon-fill)" />

@@ -715,6 +715,42 @@ const Sprite16 = (props) => (
       <symbol id="dropdown-16" viewBox="0 0 16 16">
         <path d="M8.27,10.58a.5.5,0,0,1-.54,0l-5.7-7A.5.5,0,0,1,2.3,3h11.4a.5.5,0,0,1,.27.92Z" />
       </symbol>
+      <symbol id="enlarge-16" viewBox="0 0 16 16">
+        <g className="enlarge">
+          <path
+            d="M2 11v3h3"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M14 5V2h-3"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M5 2H2v3"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m14 2-4 4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m6 10-4 4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m2 2 4 4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m10 10 4 4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M11 14h3v-3"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="envelope-16" viewBox="0 0 16 16">
         <g className="envelope">
           <g className="fill-(--icon-fill) stroke-current stroke-2 sl-r">
@@ -739,6 +775,26 @@ const Sprite16 = (props) => (
           />
           <path
             d="M2 7V3h12v4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="expand-16" viewBox="0 0 16 16">
+        <g className="expand">
+          <path
+            d="M10 2h4v4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M6 2H2v4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M10 14h4v-4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M6 14H2v-4"
             className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>

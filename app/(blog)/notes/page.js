@@ -15,6 +15,8 @@ import Badge from '@/components/badge'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
 import Icon from '@/components/icon'
 import Link from '@/components/link'
+import Image from '@/components/image'
+import { noteFigureComponents } from '@/components/figure'
 
 export const metadata = {
   title: 'Notes',
@@ -75,6 +77,8 @@ const mdxComponents = {
     />
   ),
   img: (props) => <img className="rounded-sm my-4" {...props} />,
+  Image,
+  ...noteFigureComponents,
   Icon,
 }
 
