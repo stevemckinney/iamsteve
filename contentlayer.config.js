@@ -304,6 +304,25 @@ export default makeSource({
       [
         rehypeAutolinkHeadings,
         {
+          content: {
+            type: 'element',
+            tagName: 'svg',
+            properties: {
+              className: ['icon'],
+              'aria-hidden': 'true',
+              focusable: 'false',
+              width: '16',
+              height: '16',
+            },
+            children: [
+              {
+                type: 'element',
+                tagName: 'use',
+                properties: { href: '#link-16' },
+                children: [],
+              },
+            ],
+          },
           properties: {
             className: ['fragment'],
             ariaHidden: true,
