@@ -1,3 +1,5 @@
+import { FigureModal } from '@/components/figure-modal'
+
 const figureComponents = {
   figure: (props) => <figure {...props} />,
   figcaption: (props) => (
@@ -6,16 +8,26 @@ const figureComponents = {
       {...props}
     />
   ),
-  Figure: ({ imageShadow, className = '', ...props }) => (
-    <figure
-      className={
-        `${
-          imageShadow ? '[&_img]:drop-shadow-image' : ''
-        } ${className}`.trim() || undefined
-      }
-      {...props}
-    />
-  ),
+  Figure: ({
+    imageShadow,
+    enlargeable,
+    src,
+    alt,
+    className = '',
+    ...props
+  }) => {
+    const figureClass =
+      `${imageShadow ? '[&_img]:drop-shadow-image' : ''} ${className}`.trim() ||
+      undefined
+    if (enlargeable) {
+      return (
+        <FigureModal src={src} alt={alt} className="group/modal">
+          <figure className={figureClass} {...props} />
+        </FigureModal>
+      )
+    }
+    return <figure className={figureClass} {...props} />
+  },
   Figcaption: (props) => (
     <figcaption
       className="text-body/60 font-mono text-base tracking-[-0.03em] leading-tight pt-2"
@@ -30,14 +42,26 @@ const figureComponents = {
 const noteFigureComponents = {
   ...figureComponents,
   figure: (props) => <figure className="my-4" {...props} />,
-  Figure: ({ imageShadow, className = '', ...props }) => (
-    <figure
-      className={`my-4${
-        imageShadow ? ' [&_img]:drop-shadow-image' : ''
-      } ${className}`.trim()}
-      {...props}
-    />
-  ),
+  Figure: ({
+    imageShadow,
+    enlargeable,
+    src,
+    alt,
+    className = '',
+    ...props
+  }) => {
+    const figureClass = `my-4${
+      imageShadow ? ' [&_img]:drop-shadow-image' : ''
+    } ${className}`.trim()
+    if (enlargeable) {
+      return (
+        <FigureModal src={src} alt={alt}>
+          <figure className={figureClass} {...props} />
+        </FigureModal>
+      )
+    }
+    return <figure className={figureClass} {...props} />
+  },
 }
 
 export { figureComponents, noteFigureComponents }

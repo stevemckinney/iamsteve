@@ -51,6 +51,27 @@ MUST use the correct quote. For contractions you should use a curly quote (this 
 - Longer names: When brevity hurts clarity
 - ARIA: When semantic HTML isn’t sufficient
 
+## Icons
+
+SVG icons are served as a sprite system. Source SVGs live in `public/icon/16/` and `public/icon/24/`. Run `node scripts/generate-icon-sprite.js` after adding or changing any SVG — this regenerates `components/icon/sprite-16.js` and `components/icon/sprite-24.js`.
+
+Use the `Icon` component:
+
+```jsx
+import Icon from '@/components/icon'
+
+<Icon icon="external" size={16} />
+<Icon icon="arrow-right" size={24} />
+```
+
+- `icon` — filename without extension, lowercased (e.g. `expand`, `external`, `arrow-right`)
+- `size` — `16` or `24` (must match the folder the SVG lives in); defaults to `24`
+- `variant` — `default` | `header` | `on-light` | `none`; controls colour via CSS classes
+
+Some icon names are aliased: `everything`, `archive`, `all`, `folder` → `folder`; `design`, `pen` → `pen`.
+
+The sprite is mounted once via `components/icon/sprite.js` and icons are referenced with `<use xlinkHref="#name-size" />`.
+
 ## You might not need an effect
 
 - https://react.dev/learn/you-might-not-need-an-effect

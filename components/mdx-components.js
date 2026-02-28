@@ -375,7 +375,7 @@ const components = {
   ),
   ul: (props) => (
     <ul
-      className="text-ui-body md:text-lg lg:text-xl list-outside list-[square] [li::marker]-[theme('colors.neutral-03.400')] mb-3"
+      className="text-ui-body md:text-lg lg:text-xl list-outside list-[square] [li::marker]-[var(--color-neutral-03-400)] mb-3"
       {...props}
     />
   ),
