@@ -339,7 +339,7 @@ const AppIcon = ({ src, alt, type = 'app', size = 72, className }) => (
   <span
     className={cn(
       'flex items-center justify-center row-span-2 self-start shrink-0 aspect-square',
-      type !== 'favicon' && 'relative top-[2px]',
+      type === 'favicon' && 'relative top-[2px]',
       type !== 'favicon' && 'bg-surface-02 rounded-md shadow-placed p-2',
       className
     )}
