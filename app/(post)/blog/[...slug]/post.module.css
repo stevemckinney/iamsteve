@@ -41,7 +41,7 @@
   }
 
   & [id] {
-    scroll-margin-top: 2rem;
+    scroll-margin-top: 4.5rem;
   }
 
   & figure :where(figcaption, figcaption p) {
@@ -212,30 +212,24 @@
   }
 
   & :global(.fragment) {
-    position: relative;
-    top: -0.025em;
+    display: inline-flex;
+    align-items: center;
+    height: 1lh;
     transition: opacity 0.2s, transform 0.4s;
-    display: inline-block;
-    vertical-align: text-top;
     transform-origin: center center;
-    mix-blend-mode: multiply;
-
-    @media (width >= 640px) {
-      top: 0.025em;
-    }
   }
 
-  & :global(.fragment .icon:before) {
-    content: url(/icon/16/link.svg);
+  & :global(.fragment svg.icon) {
     display: block;
     width: 16px;
     height: 16px;
     margin-inline-end: 0.25rem;
     margin-inline-start: calc(-0.25rem - 16px);
     opacity: 0.4;
+    color: inherit;
+    flex-shrink: 0;
 
     @media (width >= 640px) {
-      content: url(/icon/24/link.svg);
       width: 24px;
       height: 24px;
       margin-inline-end: 0.5rem;
