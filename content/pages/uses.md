@@ -19,7 +19,7 @@ description: Everything (almost) I use associated with this website and my day t
     <div className="grid grid-cols-[4.5rem_1fr] gap-x-4 gap-y-0">
       <AppIcon src="/icon/apps/acorn.png" alt="" />
       <dt className="text-heading mb-1 text-lg">[Acorn](https://flyingmeat.com/acorn/)</dt>
-      <dd className="text-ui-body text-lg">For all the things Illustrator and Figma can't do&thinsp;—&thinsp;which now is mostly photo editing. Without having to pay for Photoshop.</dd>
+      <dd className="text-ui-body text-lg">An underrated app for all the things Illustrator and Figma can't do&thinsp;—&thinsp;which now is some photo editing stuff. Without wasting additional money to pay for Photoshop.</dd>
     </div>
     <div className="grid grid-cols-[4.5rem_1fr] gap-x-4 gap-y-0">
       <AppIcon src="/icon/apps/xscope.png" alt="" />
