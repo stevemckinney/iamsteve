@@ -12,13 +12,17 @@ import Icon from '@/components/icon'
 
 const MIN_SCALE = 1
 const MAX_SCALE = 4
-const SPRING_SNAP = { type: 'spring', stiffness: 400, damping: 40 }
-const SPRING_RESET = { type: 'spring', stiffness: 300, damping: 35 }
+const SPRING_SNAP = { type: 'spring', stiffness: 500, damping: 45 }
+const SPRING_RESET = { type: 'spring', stiffness: 350, damping: 38 }
 const SPRING_DISMISS = { type: 'spring', stiffness: 250, damping: 30 }
 const DOUBLE_TAP_MS = 300
 const DOUBLE_TAP_PX = 30
 const DISMISS_VY = 500
 const DISMISS_DY = 150
+// How much of the release velocity projects forward before settling
+const MOMENTUM = 0.18
+// Rubber-band resistance beyond bounds (0 = wall, 1 = no resistance)
+const ELASTIC = 0.4
 
 function getBoundsAtScale(s, fitDimensions) {
   const { w, h } = fitDimensions
@@ -31,6 +35,7 @@ function LightboxContent({ src, alt, close }) {
   const containerRef = useRef(null)
   const fitDimensionsRef = useRef({ w: 0, h: 0 })
   const activePointers = useRef(new Map())
+  // Stores previous frame's dist + midpoint for incremental pinch computation
   const pinchRef = useRef(null)
   const lastTap = useRef(null)
   const justPinched = useRef(false)
@@ -84,13 +89,11 @@ function LightboxContent({ src, alt, close }) {
         const dist = Math.sqrt(dx * dx + dy * dy)
         const midX = (pts[0].x + pts[1].x) / 2
         const midY = (pts[0].y + pts[1].y) / 2
+        // Store previous-frame state for incremental zoom computation
         pinchRef.current = {
-          startDist: dist,
-          startScale: scaleValue.get(),
-          startPanX: xValue.get(),
-          startPanY: yValue.get(),
-          startMidX: midX,
-          startMidY: midY,
+          prevDist: dist,
+          prevMidX: midX,
+          prevMidY: midY,
         }
       }
     }
@@ -104,21 +107,44 @@ function LightboxContent({ src, alt, close }) {
         const dx = pts[1].x - pts[0].x
         const dy = pts[1].y - pts[0].y
         const dist = Math.sqrt(dx * dx + dy * dy)
+        const currentMidX = (pts[0].x + pts[1].x) / 2
+        const currentMidY = (pts[0].y + pts[1].y) / 2
         const p = pinchRef.current
-        const newScale = Math.min(
-          MAX_SCALE,
-          Math.max(MIN_SCALE, p.startScale * (dist / p.startDist))
-        )
-        const scaleDelta = newScale / p.startScale
-        const viewportCentreX = window.innerWidth / 2
-        const viewportCentreY = window.innerHeight / 2
+
+        const vpCx = window.innerWidth / 2
+        const vpCy = window.innerHeight / 2
+
+        const prevScale = scaleValue.get()
+        const prevX = xValue.get()
+        const prevY = yValue.get()
+
+        // Clamp scale but track the ratio for position computation
+        const rawNewScale = prevScale * (dist / p.prevDist)
+        const newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, rawNewScale))
+        const scaleRatio = newScale / prevScale
+
+        // Keep the image point under the current pinch midpoint stationary,
+        // and also translate the image as the midpoint moves across the screen.
+        // Formula: zoom around currentMid + translate by midpoint delta
         const newX =
-          p.startPanX - (p.startMidX - viewportCentreX) * (scaleDelta - 1)
+          (currentMidX - vpCx) * (1 - scaleRatio) +
+          prevX * scaleRatio +
+          (currentMidX - p.prevMidX)
         const newY =
-          p.startPanY - (p.startMidY - viewportCentreY) * (scaleDelta - 1)
+          (currentMidY - vpCy) * (1 - scaleRatio) +
+          prevY * scaleRatio +
+          (currentMidY - p.prevMidY)
+
         scaleValue.set(newScale)
         xValue.set(newX)
         yValue.set(newY)
+
+        // Update for next frame's delta computation
+        pinchRef.current = {
+          prevDist: dist,
+          prevMidX: currentMidX,
+          prevMidY: currentMidY,
+        }
       }
     }
 
@@ -226,17 +252,18 @@ function LightboxContent({ src, alt, close }) {
         )
         const newX = x + info.delta.x
         const newY = y + info.delta.y
+        // Rubber-band resistance when dragging beyond bounds
         const elasticX =
           newX < minX
-            ? minX + (newX - minX) * 0.15
+            ? minX + (newX - minX) * ELASTIC
             : newX > maxX
-            ? maxX + (newX - maxX) * 0.15
+            ? maxX + (newX - maxX) * ELASTIC
             : newX
         const elasticY =
           newY < minY
-            ? minY + (newY - minY) * 0.15
+            ? minY + (newY - minY) * ELASTIC
             : newY > maxY
-            ? maxY + (newY - maxY) * 0.15
+            ? maxY + (newY - maxY) * ELASTIC
             : newY
         xValue.set(elasticX)
         yValue.set(elasticY)
@@ -270,7 +297,23 @@ function LightboxContent({ src, alt, close }) {
           animate(yValue, 0, SPRING_RESET)
         }
       } else {
-        snapToBoundsRef.current?.()
+        const { minX, maxX, minY, maxY } = getBoundsAtScale(
+          scale,
+          fitDimensionsRef.current
+        )
+        // Project where the image would land given the release velocity,
+        // then clamp to bounds. Passing velocity to the spring gives it
+        // initial momentum so the deceleration feels natural rather than abrupt.
+        const targetX = Math.min(
+          maxX,
+          Math.max(minX, xValue.get() + info.velocity.x * MOMENTUM)
+        )
+        const targetY = Math.min(
+          maxY,
+          Math.max(minY, yValue.get() + info.velocity.y * MOMENTUM)
+        )
+        animate(xValue, targetX, { ...SPRING_SNAP, velocity: info.velocity.x })
+        animate(yValue, targetY, { ...SPRING_SNAP, velocity: info.velocity.y })
       }
     },
     [scaleValue, xValue, yValue, opacityVal, close]
