@@ -4,6 +4,7 @@ import { useMDXComponent } from 'next-contentlayer2/hooks'
 import dynamic from 'next/dynamic'
 
 import Image from '@/components/image'
+import { cn } from '@/lib/utils'
 import Link from '@/components/link'
 import ContactForm from '@/components/contact-form'
 import { figureComponents, noteFigureComponents } from '@/components/figure'
@@ -334,9 +335,29 @@ const Images = ({ children, align, compare = false, options, ...props }) => {
   )
 }
 
+const AppIcon = ({ src, alt, type = 'app', size = 72, className }) => (
+  <span
+    className={cn(
+      'flex items-center justify-center row-span-2 self-start shrink-0 aspect-square',
+      type !== 'favicon' && 'relative top-[2px]',
+      type !== 'favicon' && 'bg-surface-02 rounded-md shadow-placed p-2',
+      className
+    )}
+  >
+    <Image
+      src={src}
+      alt={alt}
+      width={size}
+      height={size}
+      className="object-contain"
+    />
+  </span>
+)
+
 const components = {
   Image,
   Icon,
+  AppIcon,
   Card,
   Link,
   // Campaigns: Campaigns,
