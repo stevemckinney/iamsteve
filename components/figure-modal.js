@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useRef, useState } from 'react'
 import { Button } from 'react-aria-components'
 import {
   motion,
@@ -7,6 +7,7 @@ import {
   useMotionValue,
   useMotionValueEvent,
 } from 'motion/react'
+import { useGesture } from '@use-gesture/react'
 import { Modal } from '@/components/modal'
 import Icon from '@/components/icon'
 
@@ -17,10 +18,10 @@ const SPRING_RESET = { type: 'spring', stiffness: 350, damping: 38 }
 const SPRING_DISMISS = { type: 'spring', stiffness: 250, damping: 30 }
 const DOUBLE_TAP_MS = 300
 const DOUBLE_TAP_PX = 30
-const DISMISS_VY = 500
-const DISMISS_DY = 150
-// How much of the release velocity projects forward before settling
-const MOMENTUM = 0.18
+const DISMISS_VY = 700   // px/s — requires a deliberate flick
+const DISMISS_DY = 200   // px  — requires a deliberate drag
+// Seconds of velocity projected forward on release for momentum feel
+const MOMENTUM = 0.15
 // Rubber-band resistance beyond bounds (0 = wall, 1 = no resistance)
 const ELASTIC = 0.4
 
@@ -34,13 +35,9 @@ function getBoundsAtScale(s, fitDimensions) {
 function LightboxContent({ src, alt, close }) {
   const containerRef = useRef(null)
   const fitDimensionsRef = useRef({ w: 0, h: 0 })
-  const activePointers = useRef(new Map())
-  // Stores previous frame's dist + midpoint for incremental pinch computation
-  const pinchRef = useRef(null)
   const lastTap = useRef(null)
-  const justPinched = useRef(false)
-  const isDraggingRef = useRef(false)
-  const snapToBoundsRef = useRef(null)
+  const isPinching = useRef(false)
+  const isDragging = useRef(false)
 
   const scaleValue = useMotionValue(1)
   const xValue = useMotionValue(0)
@@ -50,290 +47,235 @@ function LightboxContent({ src, alt, close }) {
   const [cursor, setCursor] = useState('cursor-zoom-in')
 
   useMotionValueEvent(scaleValue, 'change', (s) => {
-    const clamped = Math.max(MIN_SCALE, s)
-    if (clamped <= 1) setCursor('cursor-zoom-in')
-    else if (clamped >= MAX_SCALE) setCursor('cursor-zoom-out')
-    else setCursor(isDraggingRef.current ? 'cursor-grabbing' : 'cursor-grab')
+    if (s <= 1) setCursor('cursor-zoom-in')
+    else if (s >= MAX_SCALE) setCursor('cursor-zoom-out')
+    else setCursor(isDragging.current ? 'cursor-grabbing' : 'cursor-grab')
   })
 
-  // Pinch-to-zoom via raw pointer events
-  useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
+  function snapToBounds(s) {
+    const { minX, maxX, minY, maxY } = getBoundsAtScale(s, fitDimensionsRef.current)
+    const cx = xValue.get()
+    const cy = yValue.get()
+    const clampedX = Math.min(maxX, Math.max(minX, cx))
+    const clampedY = Math.min(maxY, Math.max(minY, cy))
+    if (Math.abs(cx - clampedX) > 0.5) animate(xValue, clampedX, SPRING_SNAP)
+    if (Math.abs(cy - clampedY) > 0.5) animate(yValue, clampedY, SPRING_SNAP)
+  }
 
-    function snapToBounds() {
-      const s = scaleValue.get()
-      const { minX, maxX, minY, maxY } = getBoundsAtScale(
-        s,
-        fitDimensionsRef.current
-      )
-      const cx = xValue.get()
-      const cy = yValue.get()
-      const clampedX = Math.min(maxX, Math.max(minX, cx))
-      const clampedY = Math.min(maxY, Math.max(minY, cy))
-      if (cx !== clampedX) animate(xValue, clampedX, SPRING_SNAP)
-      if (cy !== clampedY) animate(yValue, clampedY, SPRING_SNAP)
+  function toggleZoom(clientX, clientY) {
+    const scale = scaleValue.get()
+    if (scale > 1) {
+      animate(scaleValue, 1, SPRING_RESET)
+      animate(xValue, 0, SPRING_RESET)
+      animate(yValue, 0, SPRING_RESET)
+    } else {
+      const TARGET = 2
+      const vpCx = window.innerWidth / 2
+      const vpCy = window.innerHeight / 2
+      animate(scaleValue, TARGET, SPRING_RESET)
+      animate(xValue, -(clientX - vpCx) * (TARGET - 1), SPRING_RESET)
+      animate(yValue, -(clientY - vpCy) * (TARGET - 1), SPRING_RESET)
     }
+  }
 
-    snapToBoundsRef.current = snapToBounds
+  // Double-tap detection — fired from the native onClick on the image container.
+  // Clicks on the container are stopped from reaching the outer close-on-click
+  // overlay, so this only handles the image-tap interaction.
+  function handleClick(e) {
+    e.stopPropagation()
+    const { clientX, clientY } = e
+    const now = Date.now()
+    const last = lastTap.current
+    if (
+      last &&
+      now - last.time < DOUBLE_TAP_MS &&
+      Math.abs(clientX - last.x) < DOUBLE_TAP_PX &&
+      Math.abs(clientY - last.y) < DOUBLE_TAP_PX
+    ) {
+      lastTap.current = null
+      toggleZoom(clientX, clientY)
+    } else {
+      lastTap.current = { time: now, x: clientX, y: clientY }
+    }
+  }
 
-    function onPointerDown(e) {
-      el.setPointerCapture(e.pointerId)
-      activePointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
-      justPinched.current = false
+  // useGesture is the single source of truth for all gesture handling.
+  // It manages drag (pan + swipe-to-dismiss) and pinch-to-zoom in one
+  // unified system, eliminating the conflicts that arise from mixing
+  // Framer Motion's onPan events with raw pointer listeners.
+  useGesture(
+    {
+      onDragStart: () => {
+        if (isPinching.current) return
+        isDragging.current = true
+        if (scaleValue.get() > 1) setCursor('cursor-grabbing')
+      },
 
-      if (activePointers.current.size === 2) {
-        const pts = [...activePointers.current.values()]
-        const dx = pts[1].x - pts[0].x
-        const dy = pts[1].y - pts[0].y
-        const dist = Math.sqrt(dx * dx + dy * dy)
-        const midX = (pts[0].x + pts[1].x) / 2
-        const midY = (pts[0].y + pts[1].y) / 2
-        // Store previous-frame state for incremental zoom computation
-        pinchRef.current = {
-          prevDist: dist,
-          prevMidX: midX,
-          prevMidY: midY,
+      onDrag: ({ pinching, cancel, offset: [ox, oy] }) => {
+        // A second finger arrived mid-drag — hand off to pinch
+        if (pinching) return cancel()
+
+        const scale = scaleValue.get()
+        if (scale > 1) {
+          // use-gesture applies rubberband + bounds via config, so we just
+          // mirror the offset directly into the motion values
+          xValue.set(ox)
+          yValue.set(oy)
+        } else {
+          // Swipe-to-dismiss: constrain horizontal travel, follow vertically
+          xValue.set(ox * 0.3)
+          yValue.set(oy)
         }
-      }
-    }
+      },
 
-    function onPointerMove(e) {
-      if (!activePointers.current.has(e.pointerId)) return
-      activePointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
+      onDragEnd: ({ pinching, tap, velocity: [vx, vy], offset: [ox, oy], event }) => {
+        isDragging.current = false
+        // Pinch took over — don't process as a drag end
+        if (pinching) return
+        // Taps are handled by the native onClick on the container
+        if (tap) return
 
-      if (activePointers.current.size === 2 && pinchRef.current) {
-        const pts = [...activePointers.current.values()]
-        const dx = pts[1].x - pts[0].x
-        const dy = pts[1].y - pts[0].y
-        const dist = Math.sqrt(dx * dx + dy * dy)
-        const currentMidX = (pts[0].x + pts[1].x) / 2
-        const currentMidY = (pts[0].y + pts[1].y) / 2
-        const p = pinchRef.current
+        const scale = scaleValue.get()
+
+        if (scale <= 1) {
+          // use-gesture velocity is in px/ms; convert to px/s for comparison
+          const absVy = Math.abs(vy) * 1000
+          const absOy = Math.abs(oy)
+          if (absVy > DISMISS_VY || absOy > DISMISS_DY) {
+            const dir = oy >= 0 ? 1 : -1
+            animate(yValue, dir * (window.innerHeight + 300), {
+              ...SPRING_DISMISS,
+              onComplete: close,
+            })
+            animate(opacityVal, 0, { duration: 0.25 })
+          } else {
+            animate(xValue, 0, SPRING_RESET)
+            animate(yValue, 0, SPRING_RESET)
+          }
+        } else {
+          const { minX, maxX, minY, maxY } = getBoundsAtScale(
+            scale,
+            fitDimensionsRef.current
+          )
+          // Project forward by MOMENTUM seconds of velocity, then clamp to bounds.
+          // Passing velocity to the spring gives natural deceleration feel.
+          const velX = vx * 1000 // px/ms → px/s
+          const velY = vy * 1000
+          const targetX = Math.min(maxX, Math.max(minX, ox + velX * MOMENTUM))
+          const targetY = Math.min(maxY, Math.max(minY, oy + velY * MOMENTUM))
+          animate(xValue, targetX, { ...SPRING_SNAP, velocity: velX })
+          animate(yValue, targetY, { ...SPRING_SNAP, velocity: velY })
+        }
+      },
+
+      onPinchStart: () => {
+        isPinching.current = true
+        lastTap.current = null // a pinch is never a double-tap
+      },
+
+      // use-gesture's onPinch provides:
+      //   origin  — the current midpoint of both fingers (window coords)
+      //   offset  — [cumulativeScale, cumulativeAngle] from gesture start
+      //   memo    — return value from the previous call (persistent across frames)
+      //
+      // We store the image state at gesture start in memo, then each frame we
+      // compute the new position: zoom around the start origin + track any
+      // translation of the midpoint across the screen.
+      onPinch: ({ origin: [ox, oy], offset: [s], memo }) => {
+        const startState = memo ?? {
+          x: xValue.get(),
+          y: yValue.get(),
+          scale: scaleValue.get(),
+          ox,
+          oy,
+        }
 
         const vpCx = window.innerWidth / 2
         const vpCy = window.innerHeight / 2
 
-        const prevScale = scaleValue.get()
-        const prevX = xValue.get()
-        const prevY = yValue.get()
+        // Actual world scale = start scale × gesture's cumulative factor
+        const newScale = Math.min(
+          MAX_SCALE,
+          Math.max(MIN_SCALE, startState.scale * s)
+        )
+        const scaleRatio = newScale / startState.scale
 
-        // Clamp scale but track the ratio for position computation
-        const rawNewScale = prevScale * (dist / p.prevDist)
-        const newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, rawNewScale))
-        const scaleRatio = newScale / prevScale
-
-        // Keep the image point under the current pinch midpoint stationary,
-        // and also translate the image as the midpoint moves across the screen.
-        // Formula: zoom around currentMid + translate by midpoint delta
+        // Zoom around the start-of-gesture origin, plus translate by however
+        // much the pinch midpoint has moved since the gesture began
         const newX =
-          (currentMidX - vpCx) * (1 - scaleRatio) +
-          prevX * scaleRatio +
-          (currentMidX - p.prevMidX)
+          (startState.ox - vpCx) * (1 - scaleRatio) +
+          startState.x * scaleRatio +
+          (ox - startState.ox)
         const newY =
-          (currentMidY - vpCy) * (1 - scaleRatio) +
-          prevY * scaleRatio +
-          (currentMidY - p.prevMidY)
+          (startState.oy - vpCy) * (1 - scaleRatio) +
+          startState.y * scaleRatio +
+          (oy - startState.oy)
 
         scaleValue.set(newScale)
         xValue.set(newX)
         yValue.set(newY)
 
-        // Update for next frame's delta computation
-        pinchRef.current = {
-          prevDist: dist,
-          prevMidX: currentMidX,
-          prevMidY: currentMidY,
-        }
-      }
-    }
+        return startState
+      },
 
-    function onPointerUp(e) {
-      activePointers.current.delete(e.pointerId)
-
-      if (activePointers.current.size < 2 && pinchRef.current) {
-        pinchRef.current = null
-        justPinched.current = true
-        lastTap.current = null
-        snapToBounds()
-        return
-      }
-
-      if (justPinched.current) return
-
-      function toggleZoom(clientX, clientY) {
-        const scale = scaleValue.get()
-        if (scale > 1) {
+      onPinchEnd: () => {
+        isPinching.current = false
+        const s = scaleValue.get()
+        if (s <= MIN_SCALE + 0.05) {
           animate(scaleValue, 1, SPRING_RESET)
           animate(xValue, 0, SPRING_RESET)
           animate(yValue, 0, SPRING_RESET)
         } else {
-          const TARGET = 2
-          const viewportCentreX = window.innerWidth / 2
-          const viewportCentreY = window.innerHeight / 2
-          const newX = -(clientX - viewportCentreX) * (TARGET - 1)
-          const newY = -(clientY - viewportCentreY) * (TARGET - 1)
-          animate(scaleValue, TARGET, SPRING_RESET)
-          animate(xValue, newX, SPRING_RESET)
-          animate(yValue, newY, SPRING_RESET)
+          snapToBounds(s)
         }
-      }
-
-      function isDoubleTap(clientX, clientY) {
-        const now = Date.now()
-        const last = lastTap.current
-        if (
-          last &&
-          now - last.time < DOUBLE_TAP_MS &&
-          Math.abs(clientX - last.x) < DOUBLE_TAP_PX &&
-          Math.abs(clientY - last.y) < DOUBLE_TAP_PX
-        ) {
-          lastTap.current = null
-          return true
-        }
-        lastTap.current = { time: now, x: clientX, y: clientY }
-        return false
-      }
-
-      // Mouse: double-click toggles zoom, single click at scale 1 handled
-      // by the outer Button's onPress
-      // Touch: double-tap toggles zoom
-      if (isDoubleTap(e.clientX, e.clientY)) {
-        toggleZoom(e.clientX, e.clientY)
-      }
-    }
-
-    function onPointerCancel(e) {
-      activePointers.current.delete(e.pointerId)
-      if (pinchRef.current) {
-        pinchRef.current = null
-        justPinched.current = true
-        snapToBounds()
-      }
-    }
-
-    function onTouchMove(e) {
-      if (activePointers.current.size >= 2) {
-        e.preventDefault()
-      }
-    }
-
-    el.addEventListener('pointerdown', onPointerDown)
-    el.addEventListener('pointermove', onPointerMove)
-    el.addEventListener('pointerup', onPointerUp)
-    el.addEventListener('pointercancel', onPointerCancel)
-    el.addEventListener('touchmove', onTouchMove, { passive: false })
-
-    return () => {
-      el.removeEventListener('pointerdown', onPointerDown)
-      el.removeEventListener('pointermove', onPointerMove)
-      el.removeEventListener('pointerup', onPointerUp)
-      el.removeEventListener('pointercancel', onPointerCancel)
-      el.removeEventListener('touchmove', onTouchMove)
-    }
-  }, [scaleValue, xValue, yValue])
-
-  const handlePanStart = useCallback(() => {
-    isDraggingRef.current = true
-    if (scaleValue.get() > 1) setCursor('cursor-grabbing')
-  }, [scaleValue])
-
-  const handlePan = useCallback(
-    (e, info) => {
-      if (activePointers.current.size > 1) return
-      const scale = scaleValue.get()
-      const x = xValue.get()
-      const y = yValue.get()
-
-      if (scale > 1) {
-        const { minX, maxX, minY, maxY } = getBoundsAtScale(
-          scale,
-          fitDimensionsRef.current
-        )
-        const newX = x + info.delta.x
-        const newY = y + info.delta.y
-        // Rubber-band resistance when dragging beyond bounds
-        const elasticX =
-          newX < minX
-            ? minX + (newX - minX) * ELASTIC
-            : newX > maxX
-            ? maxX + (newX - maxX) * ELASTIC
-            : newX
-        const elasticY =
-          newY < minY
-            ? minY + (newY - minY) * ELASTIC
-            : newY > maxY
-            ? maxY + (newY - maxY) * ELASTIC
-            : newY
-        xValue.set(elasticX)
-        yValue.set(elasticY)
-      } else {
-        yValue.set(y + info.delta.y)
-        xValue.set(x + info.delta.x * 0.3)
-      }
+      },
     },
-    [scaleValue, xValue, yValue]
-  )
-
-  const handlePanEnd = useCallback(
-    (e, info) => {
-      isDraggingRef.current = false
-      if (activePointers.current.size > 1) return
-
-      const scale = scaleValue.get()
-
-      if (scale <= 1) {
-        const vy = Math.abs(info.velocity.y)
-        const dy = Math.abs(yValue.get())
-        if (vy > DISMISS_VY || dy > DISMISS_DY) {
-          const direction = yValue.get() >= 0 ? 1 : -1
-          animate(yValue, direction * (window.innerHeight + 300), {
-            ...SPRING_DISMISS,
-            onComplete: close,
-          })
-          animate(opacityVal, 0, { duration: 0.25 })
-        } else {
-          animate(xValue, 0, SPRING_RESET)
-          animate(yValue, 0, SPRING_RESET)
-        }
-      } else {
-        const { minX, maxX, minY, maxY } = getBoundsAtScale(
-          scale,
-          fitDimensionsRef.current
-        )
-        // Project where the image would land given the release velocity,
-        // then clamp to bounds. Passing velocity to the spring gives it
-        // initial momentum so the deceleration feels natural rather than abrupt.
-        const targetX = Math.min(
-          maxX,
-          Math.max(minX, xValue.get() + info.velocity.x * MOMENTUM)
-        )
-        const targetY = Math.min(
-          maxY,
-          Math.max(minY, yValue.get() + info.velocity.y * MOMENTUM)
-        )
-        animate(xValue, targetX, { ...SPRING_SNAP, velocity: info.velocity.x })
-        animate(yValue, targetY, { ...SPRING_SNAP, velocity: info.velocity.y })
-      }
-    },
-    [scaleValue, xValue, yValue, opacityVal, close]
+    {
+      target: containerRef,
+      drag: {
+        // Always start from the current motion value position so a drag
+        // immediately following a pinch/spring picks up without a jump
+        from: () => [xValue.get(), yValue.get()],
+        bounds: () => {
+          const scale = scaleValue.get()
+          if (scale <= 1) return {} // no bounds — free-drag for swipe-to-dismiss
+          const { minX, maxX, minY, maxY } = getBoundsAtScale(
+            scale,
+            fitDimensionsRef.current
+          )
+          return { left: minX, right: maxX, top: minY, bottom: maxY }
+        },
+        rubberband: ELASTIC,
+        filterTaps: true,
+        pointer: { touch: true },
+      },
+      pinch: {
+        scaleBounds: { min: MIN_SCALE, max: MAX_SCALE },
+        rubberband: true,
+        pointer: { touch: true },
+      },
+      eventOptions: { passive: false },
+    }
   )
 
   return (
-    <Button
-      onPress={() => scaleValue.get() <= 1 && close()}
+    // Outer: full-screen overlay. Clicking outside the image closes the modal.
+    // This is a plain div (not react-aria Button) to avoid press-event conflicts
+    // with the gesture system on the inner element.
+    <div
       className={`w-full h-full flex items-center justify-center ${cursor}`}
+      onClick={close}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') close()
+      }}
+      role="button"
+      tabIndex={0}
       aria-label="Close image"
     >
       <motion.div
         ref={containerRef}
         style={{ x: xValue, y: yValue, scale: scaleValue, opacity: opacityVal }}
-        onPanStart={handlePanStart}
-        onPan={handlePan}
-        onPanEnd={handlePanEnd}
-        onClick={(e) => {
-          if (scaleValue.get() > 1) e.stopPropagation()
-        }}
+        onClick={handleClick}
         className="touch-none select-none"
       >
         <img
@@ -349,7 +291,7 @@ function LightboxContent({ src, alt, close }) {
           className="block max-w-[calc(100vw-4rem)] max-h-[calc(100vh-4rem)] object-contain drop-shadow-image pointer-events-none"
         />
       </motion.div>
-    </Button>
+    </div>
   )
 }
 
