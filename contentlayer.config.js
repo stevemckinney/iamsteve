@@ -22,6 +22,7 @@ import { compileMdxForRssWithMarked } from './lib/compile-mdx-for-rss.js'
 
 import rehypePrism from 'rehype-prism-plus'
 import remarkCodeTitles from './lib/remark-code-title'
+import remarkChat from './lib/remark-chat'
 
 const root = process.cwd()
 
@@ -298,7 +299,7 @@ export default makeSource({
   contentDirExclude: ['./content/draft'],
   documentTypes: [Post, Page, Collections, Note],
   mdx: {
-    remarkPlugins: [remarkGfm, remarkCodeTitles, smartypants],
+    remarkPlugins: [remarkGfm, remarkCodeTitles, remarkChat, smartypants],
     rehypePlugins: [
       rehypeSlug,
       [
