@@ -17,6 +17,13 @@ const Chat = ({ title, children }) => {
 
 const ChatMessage = ({ align = 'left', children }) => {
   const isRight = align === 'right'
+  const isAi = align === 'ai'
+
+  const styles = isRight
+    ? 'bg-cornflour-500 text-white rounded-br-md'
+    : isAi
+      ? 'bg-transparent text-heading border border-neutral-01-300 dark:border-neutral-01-700 rounded-bl-md'
+      : 'bg-neutral-01-200 dark:bg-neutral-01-800 text-heading rounded-bl-md'
 
   return (
     <div
@@ -25,11 +32,7 @@ const ChatMessage = ({ align = 'left', children }) => {
       <div
         className={`
           max-w-[75%] px-3 py-1.5 rounded-2xl text-base leading-normal
-          ${
-            isRight
-              ? 'bg-cornflour-500 text-white rounded-br-md'
-              : 'bg-neutral-01-200 dark:bg-neutral-01-800 text-heading rounded-bl-md'
-          }
+          ${styles}
         `}
       >
         {children}

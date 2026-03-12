@@ -46,6 +46,16 @@ export default function ComponentsPage() {
         </Chat>
 
         <h3 className="font-display font-variation-bold text-lg lowercase text-heading mt-4">
+          With AI responses
+        </h3>
+        <Chat title="Claude">
+          <ChatMessage align="right">what colour should I use for links?</ChatMessage>
+          <ChatMessage align="ai">I&rsquo;d recommend a blue with good contrast against your background. Something like cornflour-500 would work well.</ChatMessage>
+          <ChatMessage align="right">thanks, that looks great</ChatMessage>
+          <ChatMessage align="ai">You&rsquo;re welcome! Make sure it meets AA contrast ratio.</ChatMessage>
+        </Chat>
+
+        <h3 className="font-display font-variation-bold text-lg lowercase text-heading mt-4">
           Short exchange
         </h3>
         <Chat title="Messages">
@@ -59,11 +69,13 @@ export default function ComponentsPage() {
           </h3>
           <pre className="text-sm bg-fern-1100 text-neutral-01-200 p-4 rounded-lg overflow-x-auto"><code>{`\`\`\`chat:iMessage
 L: hello how are you
-L: what have you been up to
 R: hello I'm good thank you
-R: just working on the blog
-L: nice, sounds fun
-\`\`\``}</code></pre>
+AI: here's a suggestion for you
+\`\`\`
+
+L:  left-aligned (received)
+R:  right-aligned (sent)
+AI: left-aligned, no background (AI response)`}</code></pre>
         </div>
       </section>
     </article>
