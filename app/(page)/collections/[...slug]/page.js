@@ -173,6 +173,7 @@ export default async function CollectionPage(props) {
     notFound()
   }
 
+  // padding is controlled through `<main>` but changes to the `<header>` when `max-sm` as the frame is then applied to the header to change the design overall
   const slug = params?.slug?.join('/')
   const collectionItems = allCollections.filter((item) =>
     item.collection.some((c) => c.toLowerCase() === slug.toLowerCase())
@@ -226,7 +227,7 @@ export default async function CollectionPage(props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
-      <Header className="max-sm:frame max-sm:frame-24 max-sm:px-8 max-sm:py-12 flex flex-col gap-2 col-start-content-start col-end-content-end md:col-end-7 md:sticky top-8 self-start">
+      <Header className="max-md:frame max-md:frame-24 max-md:px-8 max-md:py-12 flex flex-col gap-2 col-container md:col-content md:col-end-7 md:sticky top-8 self-start">
         <Title className="font-variation-bold text-5xl">
           {/* <Link
               href="/collections"
