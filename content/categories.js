@@ -162,16 +162,6 @@ const categories = [
     icon: 'code',
     exclude: true,
   },
-  {
-    title: 'Everything',
-    slug: '/blog',
-    slugAsParams: 'blog',
-    description: 'All posts',
-    parent: false,
-    theme: 'cornflour',
-    icon: 'folder',
-    exclude: true,
-  },
 ]
 
 export default categories
