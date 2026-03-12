@@ -17,11 +17,13 @@ import { visit } from 'unist-util-visit'
 import { toString } from 'mdast-util-to-string'
 import { compileMdxForRssWithMarked } from './lib/compile-mdx-for-rss.js'
 
-// import rehypePrettyCode from 'rehype-pretty-code'
 // import rehypeCitation from 'rehype-citation'
 
-import rehypePrism from 'rehype-prism-plus'
-import remarkCodeTitles from './lib/remark-code-title'
+import rehypeShiki from '@shikijs/rehype'
+import { transformerMetaHighlight } from '@shikijs/transformers'
+import { shikiLightTheme, shikiDarkTheme } from './lib/shiki-theme.js'
+import { transformerLineNumbers } from './lib/shiki-transformers.js'
+import remarkCodeTitles from './lib/remark-code-title.js'
 
 const root = process.cwd()
 
@@ -330,7 +332,31 @@ export default makeSource({
           },
         },
       ],
-      [rehypePrism, { ignoreMissing: true }],
+      [
+        rehypeShiki,
+        {
+          themes: {
+            light: shikiLightTheme,
+            dark: shikiDarkTheme,
+          },
+          defaultLanguage: 'text',
+          transformers: [transformerMetaHighlight(), transformerLineNumbers()],
+          parseMetaString: (str) => {
+            const meta = {}
+
+            // Parse showLineNumbers and showLineNumbers=N
+            const lineNumMatch = str.match(/showLineNumbers(?:=(\d+))?/)
+            if (lineNumMatch) {
+              meta.showLineNumbers = true
+              if (lineNumMatch[1]) {
+                meta.startLineNumber = parseInt(lineNumMatch[1], 10)
+              }
+            }
+
+            return meta
+          },
+        },
+      ],
     ],
     // Add this configuration
     options: {

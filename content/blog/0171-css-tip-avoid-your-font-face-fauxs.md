@@ -18,11 +18,12 @@ A practice to improve web font compatibility in the past was to define your font
 As begin to use more and more variable fonts, this will become more of an occurrence as it can be easy to end up with the wrong weight applied.
 
 ## What is faux bold or italic?
+
 Well, when you apply a bolder weight, italic style or generally any variation to any font that doesn’t have it available in the browser it will emulate it (in most cases).
 
 I believe it to be most common when you use a font generator. Generators do this to improve compatibility with older browsers. The generator will separate out each weight and style into it’s own unique font. So you end up with `font-family` rules looking something like the following:
 
-```css
+```css showLineNumbers
 h1 {
   font-family: “Font Name Bold”;
 }
@@ -72,7 +73,7 @@ Some may argue this is a reasonable tradeoff, but the way that this is treated b
 
 If you’re self hosting, the right way to define your `@font-face` rules are by keeping the `font-family` name the same and defining the correct `font-weight` and `font-style`, like so:
 
-```css:simple-font-face.css showLineNumbers
+```css title="simple-font-face.css" showLineNumbers
 /* Normal */
 @font-face {
   font-family: 'Inter';
@@ -122,7 +123,7 @@ If you have no choice but to work with font weights declared as new font familie
 
 Your type may have to look like the following:
 
-```css
+```css showLineNumbers
 /* Normal */
 @font-face {
   font-family: 'Averta';
@@ -144,7 +145,7 @@ Your type may have to look like the following:
 
 You could apply `font-synthesis`. Which tells the browser to not apply any synthesised styles by the browser.
 
-```css
+```css showLineNumbers
 p {
   font-synthesis: none;
 }

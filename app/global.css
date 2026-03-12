@@ -2,7 +2,7 @@
 @import '../css/theme.css';
 @import '../css/utilities.css';
 @import '../css/typography.css';
-@import '../css/prism.css' layer(base);
+@import '../css/shiki.css' layer(base);
 
 @layer base {
   :focus {

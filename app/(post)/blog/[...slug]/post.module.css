@@ -378,11 +378,11 @@
 }
 
 /**
- * code highlighting blocks
- * see prism.css for the code highlighting theme
+ * Code highlighting blocks
+ * see shiki.css for the code highlighting theme
  */
 .prose {
-  & :global(.remark-code-container) {
+  & :global([data-rehype-pretty-code-figure]) {
     display: flex;
     flex-direction: column;
     gap: calc(var(--spacing) * 1);
@@ -395,8 +395,8 @@
     );
   }
 
-  & :global(pre[data-language]),
-  & :global(code[data-language]) {
+  & :global(pre.shiki),
+  & :global(pre.shiki code) {
     color: var(--code-white);
     direction: ltr;
     text-align: left;
@@ -408,9 +408,7 @@
     hyphens: none;
   }
 
-  & :global(pre[data-language]) {
-    display: grid;
-    grid-template-columns: max-content 1fr;
+  & :global(pre.shiki) {
     overflow: clip;
     padding: calc(var(--spacing) * 8);
   }
@@ -419,7 +417,7 @@
     overflow: hidden;
   }
 
-  & :global(.remark-code-container),
+  & :global([data-rehype-pretty-code-figure]),
   & :global(.cp_embed_wrapper) {
     margin-inline: -2.25rem;
 
@@ -428,22 +426,29 @@
     }
   }
 
-  :global(.remark-code-container) {
+  :global([data-rehype-pretty-code-figure]) {
     overflow: auto;
   }
 
   :global(.codepen),
   :global(.codepen-wide),
-  :global(.remark-code-container) {
+  :global([data-rehype-pretty-code-figure]) {
     box-shadow: var(--shadow-placed);
   }
 
-  & :global(.remark-code-bar) {
+  /**
+   * Title bar
+   *
+   * rehype-pretty-code outputs a single <figcaption> where the old system
+   * had a two-part bar + title structure. We recreate the bar effect by
+   * making the figcaption full-width (the bar) and using a pseudo-element
+   * or inner styling for the pill-shaped title appearance.
+   */
+  & :global([data-rehype-pretty-code-title]) {
     display: flex;
     flex: 0 0 auto;
-  }
-
-  & :global(.remark-code-title) {
+    align-self: start;
+    flex: 0 0 max-content;
     background-color: light-dark(
       var(--color-neutral-01-50),
       var(--color-fern-1100)
@@ -458,15 +463,12 @@
     font-family: var(--font-display);
     font-variation-settings: 'wdth' 100, 'wght' 500;
     line-height: 1.5;
-    display: flex;
     flex-flow: row nowrap;
     gap: calc(var(--spacing) * 2);
-    align-self: start;
-    flex: 0 0 max-content;
   }
 
   /* tailwind class override */
-  & :global(.remark-code-container) :global(.table) {
+  & :global([data-rehype-pretty-code-figure]) :global(.table) {
     display: unset !important;
   }
 }

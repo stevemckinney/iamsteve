@@ -1,16 +1,15 @@
 .prose {
-  :global(.remark-code-container),
+  :global([data-rehype-pretty-code-figure]),
   :global(.codepen),
   :global(.codepen-wide) {
     overflow: auto;
     border-radius: var(--radius-lg);
-    background-color: var(--color-fern-1100);
+    background-color: light-dark(
+      var(--color-neutral-01-50),
+      var(--color-fern-1100)
+    );
     margin-inline: -2rem;
     margin-block: var(--spacing-8);
-  }
-
-  :global(.remark-code-container) {
-    border: 1px solid var(--color-neutral-03-900);
   }
 
   :global(.codepen),
@@ -18,27 +17,34 @@
     box-shadow: var(--shadow-floating);
   }
 
-  :global(.remark-code-container pre),
-  :global(.remark-code-container code) {
+  :global([data-rehype-pretty-code-figure] pre),
+  :global([data-rehype-pretty-code-figure] code) {
     display: block;
   }
 
-  :global(.remark-code-bar),
-  :global([data-rehype-pretty-code-fragment]) {
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    box-shadow: inset 0 2px 0 0 rgba(39, 93, 78, 0.6);
-    background-color: var(--color-neutral-03-900);
-    padding-inline: var(--spacing-8);
-    border-block-end: 1px solid var(--color-fern-900);
+  /* Pre inside a titled figure shouldn't double up the border-radius */
+  :global([data-rehype-pretty-code-figure]:has([data-rehype-pretty-code-title])
+      pre) {
+    border-radius: 0;
+    box-shadow: none;
   }
 
-  :global(.remark-code-title),
+  /**
+   * Title (base styles)
+   *
+   * The figcaption is styled as a pill-shaped title.
+   * Post-specific overrides live in post.module.css.
+   */
   :global([data-rehype-pretty-code-title]) {
     display: inline-block;
-    background-color: var(--color-fern-1100);
-    color: var(--color-fern-200);
-    border-inline: 1px solid var(--color-fern-900);
-    box-shadow: 0 2px 0 -1px var(--color-fern-1100);
+    background-color: light-dark(
+      var(--color-neutral-01-50),
+      var(--color-fern-1100)
+    );
+    color: light-dark(var(--color-fern-900), var(--color-fern-200));
+    border-inline: 1px solid
+      light-dark(var(--color-neutral-01-150), var(--color-fern-900));
+    box-shadow: 0 2px 0 -1px light-dark(var(--color-neutral-01-50), var(--color-fern-1100));
     padding-inline: var(--spacing-8);
     padding-block: var(--spacing-3);
     font-size: var(--text-base);

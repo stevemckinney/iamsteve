@@ -1,0 +1,188 @@
+/**
+ * CSS styles for Shiki syntax highlighting via @shikijs/rehype.
+ *
+ * Replaces the previous prism.css. Token colours are handled by Shiki
+ * inline styles (--shiki-light / --shiki-dark). This file handles
+ * layout, line numbers, line highlighting, and diff styling.
+ */
+
+/**
+ * Dual theme toggle
+ *
+ * @shikijs/rehype with dual themes sets inline styles on each span:
+ *   style="--shiki-light:#hex; --shiki-dark:#hex"
+ *
+ * We use light-dark() to select the correct value based on colour scheme.
+ */
+.shiki,
+.shiki span {
+  color: light-dark(var(--shiki-light), var(--shiki-dark));
+  background-color: light-dark(
+    var(--shiki-light-bg, transparent),
+    var(--shiki-dark-bg, transparent)
+  );
+}
+
+/**
+ * Base configuration
+ */
+.prose pre {
+  --code-black: light-dark(var(--color-fern-900), var(--color-fern-1100));
+  --code-white: var(--color-neutral-01-50);
+  --offset-spacing: 2rem;
+  isolation: isolate;
+}
+
+/**
+ * Basic formatting
+ */
+pre.shiki,
+pre.shiki code {
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  tab-size: 2;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre.shiki {
+  overflow: auto;
+  padding: 2rem;
+  max-height: 20lh;
+  color: light-dark(var(--code-black), var(--code-white));
+  box-shadow: 0 0 0 1px
+    light-dark(var(--color-neutral-01-150), var(--color-fern-900));
+  background: light-dark(var(--code-white), var(--code-black));
+
+  @media (width >= 640px) {
+    border-radius: 20px;
+  }
+}
+
+/* Inline code */
+:not(pre) > code {
+  padding: 0.1em;
+}
+
+/**
+ * Line numbers
+ *
+ * Our custom transformer adds [data-line-numbers] to <code>
+ * and [data-line] to each line span. CSS counters render the numbers.
+ */
+code[data-line-numbers] {
+  counter-reset: line;
+}
+
+/* Support custom start line via data attribute */
+code[data-line-numbers-start] {
+  counter-reset: line calc(attr(data-line-numbers-start type(<integer>)) - 1);
+}
+
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  padding: 0 2rem;
+  margin: 0 -4rem;
+  width: calc(2ch + 4rem);
+  margin-right: 3ch;
+  text-align: right;
+  color: light-dark(var(--color-neutral-01-400), var(--color-fern-800));
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  left: -32px;
+  background-color: light-dark(
+    var(--color-neutral-01-50),
+    var(--color-fern-1100)
+  );
+  mask: linear-gradient(to right, #000 66%, transparent);
+}
+
+/**
+ * Line styling
+ */
+.shiki [data-line] {
+  position: relative;
+  display: block;
+  box-shadow: inset 4px 0 rgb(0 0 0 / 0);
+  padding-inline: 2rem;
+  margin-inline: -2rem;
+}
+
+.shiki [data-line] > span {
+  position: relative;
+  z-index: 1;
+}
+
+/**
+ * Highlighted lines
+ *
+ * transformerMetaHighlight adds [data-highlighted-line] to lines
+ * matching the {1,3-5} range in the meta string.
+ */
+[data-highlighted-line] {
+  margin-inline: -2rem;
+  background-color: light-dark(
+    var(--color-cornflour-0),
+    oklch(32.7% 0.108727 258.5)
+  );
+  color: light-dark(var(--color-cornflour-500), oklch(83.3% 0.077752 252.1));
+}
+
+[data-highlighted-line]::before {
+  background-color: light-dark(
+    var(--color-cornflour-0),
+    oklch(32.7% 0.108727 258.5)
+  );
+  color: light-dark(var(--color-cornflour-500), oklch(83.3% 0.077752 252.1));
+}
+
+/**
+ * Diff styling
+ */
+[data-diff-add] {
+  background-color: oklch(34.7% 0.087346 153);
+  color: oklch(88.3% 0.11647 118.7);
+}
+
+[data-diff-remove] {
+  background-color: oklch(23.6% 0.104608 27.9);
+  color: oklch(85.6% 0.088899 46.8);
+}
+
+/**
+ * Highlighted chars (word highlighting)
+ */
+[data-highlighted-chars] {
+  background-color: light-dark(
+    var(--color-cornflour-0),
+    oklch(32.7% 0.108727 258.5)
+  );
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: -2px -4px;
+}
+
+/**
+ * Figure wrapper
+ *
+ * remark-code-title wraps titled code in <figure> with a
+ * <figcaption data-rehype-pretty-code-title> element.
+ * Title styling lives in remark-code.css (base) and
+ * post.module.css (post-specific overrides).
+ */
+[data-rehype-pretty-code-figure] {
+  position: relative;
+}
+
+/* Pre inside a titled figure */
+[data-rehype-pretty-code-figure] pre.shiki {
+  border-radius: 0;
+  box-shadow: none;
+}

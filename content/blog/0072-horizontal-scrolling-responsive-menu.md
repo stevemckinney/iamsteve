@@ -50,7 +50,7 @@ The implementation is flexible to work with your layout. Whether you have it pos
 
 The two properties that do the work here are `white-space: nowrap` and `overflow-x: auto`. You need to make sure items don't wrap otherwise, it will behave normally and allowing scrolling using `auto` means scrolling will be available when necessary. This small amount of CSS will make any area have horizontal scrolling.
 
-```css
+```css showLineNumbers
 /*
 [1]: All items a forced onto a single line, causing the overflow when necessary.
 [2]: Automatic overflow means a scroll bar won’t be present if it isn’t needed
@@ -79,7 +79,7 @@ Finally, you may be wondering about Firefox, it seems there isn’t a way at the
 
 ### HTML
 
-```markup
+```html showLineNumbers
 <header class="scroll">
   <a href="http://iamsteve.me">Logo</a>
   <nav>
@@ -120,7 +120,7 @@ Something I want to look at will be implementing this with [Flickity](http://fli
 
 Once Flickity is implemented, you can retain the `.scroll` CSS and add to that the following:
 
-```css
+```css showLineNumbers
 .scroll::-webkit-scrollbar {
   display: none;
 }

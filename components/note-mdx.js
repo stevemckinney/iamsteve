@@ -6,23 +6,44 @@ import Icon from '@/components/icon'
 import { noteFigureComponents } from '@/components/figure'
 
 const noteComponents = {
-  h2: (props) => (
+  h2: ({ children, id, ...props }) => (
     <h2
       className="text-lg lg:text-2xl font-variation-bold font-display lowercase text-heading mt-6 mb-2"
       {...props}
-    />
+    >
+      {React.Children.toArray(children).filter(
+        (child) =>
+          !(
+            React.isValidElement(child) && child.props?.className === 'fragment'
+          )
+      )}
+    </h2>
   ),
-  h3: (props) => (
+  h3: ({ children, id, ...props }) => (
     <h3
       className="text-base lg:text-xl font-variation-bold font-display lowercase text-heading mt-5 mb-2"
       {...props}
-    />
+    >
+      {React.Children.toArray(children).filter(
+        (child) =>
+          !(
+            React.isValidElement(child) && child.props?.className === 'fragment'
+          )
+      )}
+    </h3>
   ),
-  h4: (props) => (
+  h4: ({ children, id, ...props }) => (
     <h4
       className="text-base lg:text-xl font-variation-bold font-display lowercase text-heading mt-4 mb-2"
       {...props}
-    />
+    >
+      {React.Children.toArray(children).filter(
+        (child) =>
+          !(
+            React.isValidElement(child) && child.props?.className === 'fragment'
+          )
+      )}
+    </h4>
   ),
   pre: (props) => (
     <pre

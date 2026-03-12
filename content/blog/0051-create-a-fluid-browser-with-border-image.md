@@ -1,76 +1,83 @@
 ---
-title: "Create a fluid browser with border-image"
-date: "2013-03-24T13:38:00+00:00"
-lastmod: "2021-06-09T06:13:07+00:00"
-summary: "An attempt at adding browser chrome to images without the need for extra markup."
-metadesc: "Using border image we can use a small image and define slices to make a repeatable area."
-theme: "#fffbf2"
-tags: ["Design", "Code", "CSS", "HTML", "Sass"]
-categories: ["Code", "CSS"]
-ogImage: "/opengraph-image.png"
-status: "open"
+title: 'Create a fluid browser with border-image'
+date: '2013-03-24T13:38:00+00:00'
+lastmod: '2021-06-09T06:13:07+00:00'
+summary: 'An attempt at adding browser chrome to images without the need for extra markup.'
+metadesc: 'Using border image we can use a small image and define slices to make a repeatable area.'
+theme: '#fffbf2'
+tags: ['Design', 'Code', 'CSS', 'HTML', 'Sass']
+categories: ['Code', 'CSS']
+ogImage: '/opengraph-image.png'
+status: 'open'
 codepen: true
 id: 51
-fileroot: "create_a_fluid_browser_with_border_image"
+fileroot: 'create_a_fluid_browser_with_border_image'
 ---
 
 I have been curious to try find a solution to having a fluid browser around portfolio images. I have attempted to find a solution which is as simple as I have been able to find. The overall idea uses `:before` to apply the browser and `border-image`, this is purely to offset extra space caused by the widths of the border.
 
 ## The idea
+
 Using `border-image` take it's ability to divide an image in 9 slices and repeat it round another image. Simple in theory.
 
 ## The solution
+
 Using `:before` to offset the `border-width` apply our browser to a `div` using `border-image`. The reason we can't just apply the `border-image` directly to the image itself is because we have to define slices of the image. Those slice dimensions are used in the `border-width`. As the border is part of the box the image it contains ends up being undesirably offset, which is expected. I wasn't able to find anything to get around this.
 
 ### The code
-```scss
+
+```scss showLineNumbers
 .browser {
   position: relative;
   width: 50%;
   margin: auto;
-  padding: 2.25em 0 .5625em;
+  padding: 2.25em 0 0.5625em;
 
   img {
-    border-left: 1px solid rgba(black, .4);
-    border-right: 1px solid rgba(black, .4); }
+    border-left: 1px solid rgba(black, 0.4);
+    border-right: 1px solid rgba(black, 0.4);
+  }
 
   &:before {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    border-width: 2.25em .5em .5625em 5em;
-    border-image: url(http://iamsteve.me/assets/images/browser.png) 72 16 18 160; } }
+    border-width: 2.25em 0.5em 0.5625em 5em;
+    border-image: url(http://iamsteve.me/assets/images/browser.png) 72 16 18 160;
+  }
+}
 ```
 
 To understand this better the 3 lines of code that really make this work are:
 
-```scss
-padding: 2.25em 0 .5625em;
+```scss showLineNumbers
+padding: 2.25em 0 0.5625em;
 ```
 
 This offsets our image top and bottom the height of the url and status bar in the browsers design.
 
-```scss
-border-width: 2.25em .5em .5625em 5em;
+```scss showLineNumbers
+border-width: 2.25em 0.5em 0.5625em 5em;
 ```
 
 This is the size of the border corresponding to the size of each slice of the border image.
 
-```scss
+```scss showLineNumbers
 border-image: url(http://iamsteve.me/assets/images/browser.png) 72 16 18 160;
 ```
 
 Our border image and with the slices.
 
-
 ## Codepen
+
 <CodePen slug="vuCea" title="Fluid browser with border-image" height={420} />
 
 ## Justifications
+
 Pseudo elements can't be applied to `img` elements so the use of the extra div is necessary.
 
 <figure>

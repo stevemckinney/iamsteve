@@ -1,16 +1,16 @@
 ---
-title: "Wordpress custom fields"
-date: "2015-06-09T06:41:00+00:00"
-lastmod: "2016-08-28T10:59:28+00:00"
-summary: "I have only recently looked into using the custom meta boxes that come with Wordpress. I’ve been a fan of Advanced Custom Fields for a long time, so it’s something I’ve never had a great urge to use.I’m going share with you over the course of this post how to get them set up. You’ll learn to add them efficiently, how to add custom CSS, change placement to under the title and finally how to use them in your theme."
-metadesc: "Learn to add Wordpress Custom Fields efficiently, how to add custom CSS, change placement to under the title and how to use them in your theme."
-theme: "#e1f7ee"
-tags: ["Code", "Wordpress"]
-categories: ["Code"]
-ogImage: "/opengraph-image.png"
-status: "open"
+title: 'Wordpress custom fields'
+date: '2015-06-09T06:41:00+00:00'
+lastmod: '2016-08-28T10:59:28+00:00'
+summary: 'I have only recently looked into using the custom meta boxes that come with Wordpress. I’ve been a fan of Advanced Custom Fields for a long time, so it’s something I’ve never had a great urge to use.I’m going share with you over the course of this post how to get them set up. You’ll learn to add them efficiently, how to add custom CSS, change placement to under the title and finally how to use them in your theme.'
+metadesc: 'Learn to add Wordpress Custom Fields efficiently, how to add custom CSS, change placement to under the title and how to use them in your theme.'
+theme: '#e1f7ee'
+tags: ['Code', 'Wordpress']
+categories: ['Code']
+ogImage: '/opengraph-image.png'
+status: 'open'
 id: 78
-fileroot: "wordpress-custom-fields"
+fileroot: 'wordpress-custom-fields'
 ---
 
 I have only recently looked into using the custom meta boxes that come with Wordpress. I've been a fan of [Advanced Custom Fields](http://advancedcustomfields.com) for a long time, so it's something I've never had a great urge to use.
@@ -18,18 +18,20 @@ I have only recently looked into using the custom meta boxes that come with Word
 I’m going share with you over the course of this post how to get them set up. You’ll learn to add them efficiently, how to add custom CSS, change placement to under the title and finally how to use them in your theme.
 
 ## Introducing the code we’ll be using
+
 All meta boxes are built with `add_meta_box`, which takes 6 parameters. The approach we will be using will build upon this to add them in a more efficient and customisable manner.
 
-```php
+```php showLineNumbers
 add_meta_box( $id, $title, $callback, $screen, $context, $priority, $callback_args );
 ```
 
 I have used much of the code, what’s set by the references of the [Wordpress Theme Boilerplate](https://github.com/fixate/wordpress-theme-boilerplate/blob/master/inc/wp-admin/metaboxes.php) and [Wordpress Codex](https://codex.wordpress.org/Function_Reference/add_meta_box).
 
 ### The code
+
 > Find and replace ‘iamsteve’ with your own prefix.
 
-```php
+```php showLineNumbers
 // Start with an underscore to hide fields from custom fields list
 $prefix = '_iamsteve_meta_';
 
@@ -191,29 +193,34 @@ class Iamsteve_Meta_Box
 ```
 
 ### Explanation
+
 Here is an overview of what all the code is doing. Generally if you find yourself getting stuck with the code this should help you.
 
 #### $prefix = '_iamsteve_'
+
 You use a prefix with an underscore at the start as this ensures our fields can’t be used anywhere or conflict potentially. You may have seen this in some themes, where you can select custom fields. It can be really confusing for a user if there is no output from it.
 
 #### $meta_boxes array
+
 The array has a nested array for each meta box you create, which contains the parameters which match up with [`add_meta_box()`](https://codex.wordpress.org/Function_Reference/add_meta_box#Usage).
 
 The important part is the ‘fields’ array. Which relies on the function within the `class` called `show`. This has a `case` statement which checks for which field type is passed. You can adjust this here should you need more field types.
 
 #### The class
+
 Inside the construct you have the code to make sure the fields are setup properly.
 
-Part of the setup uses `admin_menu` hook, to make sure our fields are added through the `add` function. This function does the bulk of the work for displaying the fields. Calling the `show` function,  based on the field we defined in our `$meta_boxes` array.
+Part of the setup uses `admin_menu` hook, to make sure our fields are added through the `add` function. This function does the bulk of the work for displaying the fields. Calling the `show` function, based on the field we defined in our `$meta_boxes` array.
 
 Another part uses the `save_post` action, which calls save function. This checks for correct [nonce](https://codex.wordpress.org/WordPress_Nonces), permissions and whether it’s a new field or we’re updating an existing field.
 
 The final hooks add your custom CSS, found inside the ‘style’ function. You can replace `wp_enqueue_style` and `echo` some CSS between `<style>` tags, if you only require minimal CSS.
 
 ## Moving the meta box under the title
+
 Utilising the ‘advanced’ context, the following code will place them the title. I think this is a good way to utilise the advanced context. You can add this with the rest of your meta box code.
 
-```php
+```php showLineNumbers
 add_action('edit_form_after_title', 'advanced_meta_boxes_under_title');
 
 function advanced_meta_boxes_under_title()
@@ -224,17 +231,20 @@ function advanced_meta_boxes_under_title()
   unset($wp_meta_boxes[get_post_type($post)]['advanced']);
 }
 ```
+
 Credit: [Andrew, Wordpress Stack Exchange](http://wordpress.stackexchange.com/questions/36600/how-can-i-put-a-custom-meta-box-above-the-editor-but-below-the-title-section-on)
 
 ## Using the fields in your theme
+
 To use the custom fields within your theme, you use the `get_post_meta` function, within your loop.
 
 ### get_post_meta takes 3 parameters
+
 - The post ID, inside the loop this is easy to get with `get_the_ID()`
 - The field key, in our case this would be the field ID in the array `_iamsteve_meta_role`
 - The single parameter, which if set to true will return a single result. Otherwise it will return an array.
 
-```php
+```php showLineNumbers
 $role = get_post_meta( get_the_ID(), '_iamsteve_meta_role', true );
 
 if (have_posts()) :
@@ -245,4 +255,5 @@ endif;
 ```
 
 ## That’s custom fields
+
 That’s it, there is quite a bit to custom fields. I would like to explore in future posts more detailed uses of setting up the boxes with more complex fields.
