@@ -15,4 +15,4 @@ I’ve been finding that there’s always that little bit more you can do. The i
 
 However, I’m finding it fun and I wonder what my design workflow will look like in the next 6 months? There’s so much change and stuff going on in this space I am just going with the flow. 
 
-[1]: https://en.wikipedia.org/wiki/Jevons_paradox
+[^1]: https://en.wikipedia.org/wiki/Jevons_paradox
