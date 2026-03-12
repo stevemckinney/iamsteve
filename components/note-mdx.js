@@ -4,6 +4,7 @@ import { useMDXComponent } from 'next-contentlayer2/hooks'
 import Image from '@/components/image'
 import Icon from '@/components/icon'
 import { noteFigureComponents } from '@/components/figure'
+import { Chat, ChatMessage } from '@/components/chat'
 
 const noteComponents = {
   h2: (props) => (
@@ -52,6 +53,8 @@ const noteComponents = {
   Image,
   ...noteFigureComponents,
   Icon,
+  Chat,
+  ChatMessage,
 }
 
 const NoteMdxComponent = React.memo(function NoteMdxComponent({ code }) {
