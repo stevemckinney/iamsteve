@@ -2,10 +2,8 @@
 title: Have LLM’s finally cracked smart quotes?
 date: '2026-03-10T20:38:47.000Z'
 status: draft
-summary:
+summary: null
 ---
-
-# Have LLM’s finally cracked smart quotes?
 
 Spoiler: not in code contexts
 
