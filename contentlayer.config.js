@@ -299,7 +299,7 @@ export default makeSource({
   contentDirExclude: ['./content/draft'],
   documentTypes: [Post, Page, Collections, Note],
   mdx: {
-    remarkPlugins: [remarkGfm, remarkCodeTitles, remarkChat, smartypants],
+    remarkPlugins: [remarkGfm, remarkCodeTitles, smartypants, remarkChat],
     rehypePlugins: [
       rehypeSlug,
       [
