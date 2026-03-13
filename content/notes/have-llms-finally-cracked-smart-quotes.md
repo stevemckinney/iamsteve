@@ -7,17 +7,15 @@ summary: null
 
 Spoiler: not in code contexts
 
-When you write your text editor or messaging app will likely do this for you across the OS. However with the advent of LLM assisted code, writing, etc. they have a habit in my experience of undoing them.
+When you write in your text editor or messaging app, it will likely change the quote to the correct one and do this for you across the OS. However with the advent of LLM assisted code, writing, etc. they have a habit in my experience of undoing them.
 
-The reason this bugs me moreso than correctness because they are more stylised you can spot it. If you have multiple people working on a project, some people typing in code, or directly into a CMS, some copy direct from the app, you’ll have a pretty inconsistent experience with quotes used.
+The reason this bugs me moreso than correctness is because smart/curly quotes are more stylised. It’s easy to spot in a design if you use them in larger headings as well as mixed in different blocks of content. If you have multiple people working on a project, some people typing in code, or directly into a CMS, some copy direct from the app, you’ll have a pretty inconsistent experience with quotes used.
 
-However well intentioned you are, with LLM’s they work through and changed them to dumb quotes.
+You can be well intentioned and try to ensure you have the correct quote, but with LLM’s they work through the document and change them to dumb quotes.
 
-I was writing this post with a different angle but I was using vacode the day before publishing and copilot tried to autocomplete some code I didn’t need and I noticed it had used the correct entity in the content it generated.
+I was writing this post with a different angle but I was using vscode the day before publishing and copilot tried to autocomplete some code I didn’t need and I noticed it had used the correct entity in the content it generated.
 
-So this led me to think have LLM’s finally cracked it?
-
-By no means scientific and the use cases are entirely different.
+So this led me to think have LLM’s finally cracked it? This is by no means conclusive and the use cases are entirely different.
 
 I asked Claude in a couple of situations.
 
@@ -30,7 +28,7 @@ R: She said, ‘I think the word “serendipity” is underused.’
 R: Both systems work, but the single-outer/double-inner style is the standard British convention. Would you like to know more about when to use each?​​​​​​​​​​​​​​​​
 ```
 
-Opus in app gets it, however, Claude Code and Raycast don’t. Their use cases are very different but considering code is a big way they interact with our code. I wish they treated them the same.
+Opus in app gets it, however, Claude Code and Raycast don’t. Their use cases are very different but considering code is a big way they interact with our code. I wish they treated them the same. Or maybe it’s how the app itself encodes the output or something beyond my comprehension?
 
 ```chat:Claude Code (Opus 4.6)
 L: Can you use ‘’ “” in a sentence
@@ -49,7 +47,7 @@ AI: - " closes the outer quote
 
 ## It doesn’t work with AGENTS.md or CLAUDE.md
 
-You could add to either of these docs the guidance on how to use quotes, dashes, ellipsis—down to the specific HTML entities—and it will ignore.
+You could add to either of these docs the guidance on how to use quotes, dashes, ellipsis—down to the specific HTML entities—and it will ignore them in my experience.
 
 ## Lint and GitHub action all the things
 
