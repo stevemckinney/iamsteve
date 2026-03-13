@@ -5,7 +5,7 @@ status: published
 summary: "There’s a strong bias towards just a little more."
 ---
 
-By no means a unique thought, but something I‘m feeling that many are experiencing too. There’s a strong bias towards just a little more. Tweak this tweak that. Oh what about this idea. With building things with Claude Code at your disposal. 
+By no means a unique thought, but something I‘m feeling that many are experiencing too. There’s a strong bias towards just a little more. Tweak this tweak that. Oh what about this idea. Wehn you’re building things with Claude Code at your disposal. 
 
 > In economics, the Jevons paradox, or Jevons effect, is said to occur when technological improvements that increase the efficiency of a resource's use lead to a rise, rather than a fall, in total consumption of that resource.[^1]
 
