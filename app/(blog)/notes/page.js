@@ -17,6 +17,8 @@ import Icon from '@/components/icon'
 import Link from '@/components/link'
 import Image from '@/components/image'
 import { noteFigureComponents } from '@/components/figure'
+import { Chat, ChatMessage } from '@/components/chat'
+import styles from '@/components/note-mdx.module.css'
 
 export const metadata = {
   title: 'Notes',
@@ -80,11 +82,17 @@ const mdxComponents = {
   Image,
   ...noteFigureComponents,
   Icon,
+  Chat,
+  ChatMessage,
 }
 
 function NoteContent({ note }) {
   const MDXContent = useMDXComponent(note.body.code)
-  return <MDXContent components={mdxComponents} />
+  return (
+    <div className={styles.note}>
+      <MDXContent components={mdxComponents} />
+    </div>
+  )
 }
 
 export default async function NotesIndex() {

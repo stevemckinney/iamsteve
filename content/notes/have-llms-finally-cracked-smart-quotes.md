@@ -1,6 +1,6 @@
 ---
 title: Have LLM’s finally cracked smart quotes?
-date: '2026-03-10T20:38:47.000Z'
+date: '2026-03-13T20:38:47.000Z'
 status: published
 summary: null
 ---
@@ -19,19 +19,19 @@ So this led me to think have LLM’s finally cracked it? This is by no means con
 
 I asked Claude in a couple of situations.
 
-```chat:Claude app (Opus 4.6)
-L: Can you use ‘’ “” in a sentence
-R: Sure! Here’s a sentence using both single and double quotation marks:
-R: She said, “I think the word ‘serendipity’ is underused.”
-R: In British English, the convention is actually the reverse — single quotes for primary quotations, with double quotes nested inside:
-R: She said, ‘I think the word “serendipity” is underused.’
-R: Both systems work, but the single-outer/double-inner style is the standard British convention. Would you like to know more about when to use each?​​​​​​​​​​​​​​​​
+```chat title="Claude app (Opus 4.6)"
+R: Can you use ‘’ “” in a sentence
+AI: Sure! Here’s a sentence using both single and double quotation marks:
+AI: She said, “I think the word ‘serendipity’ is underused.”
+AI: In British English, the convention is actually the reverse — single quotes for primary quotations, with double quotes nested inside:
+AI: She said, ‘I think the word “serendipity” is underused.’
+AI: Both systems work, but the single-outer/double-inner style is the standard British convention. Would you like to know more about when to use each?
 ```
 
 Opus in app gets it, however, Claude Code and Raycast don’t. Their use cases are very different but considering code is a big way they interact with our code. I wish they treated them the same. Or maybe it’s how the app itself encodes the output or something beyond my comprehension?
 
-```chat:Claude Code (Opus 4.6)
-L: Can you use ‘’ “” in a sentence
+```chat title="Claude Code (Opus 4.6)"
+R: Can you use ‘’ “” in a sentence
 AI: Sure — here's an example using all four curly quote characters:
 AI: - Left single quote ( ' ): 'Hello
 AI: - Right single quote ( ' ): Hello'

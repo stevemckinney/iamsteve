@@ -5,6 +5,7 @@ import Image from '@/components/image'
 import Icon from '@/components/icon'
 import { noteFigureComponents } from '@/components/figure'
 import { Chat, ChatMessage } from '@/components/chat'
+import styles from './note-mdx.module.css'
 
 const noteComponents = {
   h2: (props) => (
@@ -64,7 +65,11 @@ const NoteMdxComponent = React.memo(function NoteMdxComponent({ code }) {
     return <p>Failed to load content.</p>
   }
 
-  return <Component components={noteComponents} />
+  return (
+    <div className={styles.note}>
+      <Component components={noteComponents} />
+    </div>
+  )
 })
 
 export function NoteMdx({ code }) {

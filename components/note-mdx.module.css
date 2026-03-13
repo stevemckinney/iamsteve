@@ -1,0 +1,27 @@
+.note {
+  & :global(.fragment) {
+    display: inline-flex;
+    align-items: center;
+    height: 1lh;
+    transition: opacity 0.2s, transform 0.4s;
+    transform-origin: center center;
+  }
+
+  & :global(.fragment svg.icon) {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-inline-end: 0.25rem;
+    margin-inline-start: calc(-0.25rem - 16px);
+    opacity: 0.4;
+    color: inherit;
+    flex-shrink: 0;
+
+    @media (width >= 640px) {
+      width: 24px;
+      height: 24px;
+      margin-inline-end: 0.5rem;
+      margin-inline-start: calc(-0.5rem - 24px);
+    }
+  }
+}
