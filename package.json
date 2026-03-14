@@ -19,6 +19,8 @@
     "build": "contentlayer2 build && pnpm lint && next build",
     "validate:links": "node scripts/validate-collection-links.js",
     "validate:links:all": "CHECK_ALL=true node scripts/validate-collection-links.js",
+    "tokens:export": "node scripts/tokens-export.js",
+    "tokens:import": "node scripts/tokens-import.js",
     "prepare": "husky"
   },
   "browserslist": [
