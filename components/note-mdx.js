@@ -34,19 +34,22 @@ const noteComponents = {
   ),
   p: (props) => (
     <p
-      className="md:text-lg lg:text-xl not-first:indent-8 [&>a]:indent-0"
+      className="md:text-lg lg:text-xl not-first:indent-8 [&>a]:indent-0 [.not-prose_&]:indent-0 [.not-prose_&]:text-base text-ui-body mb-2"
       {...props}
     />
   ),
   code: (props) => (
-    <code
-      className="font-mono bg-code text-code rounded-sm px-1"
-      {...props}
-    />
+    <code className="font-mono bg-code text-code rounded-sm px-1" {...props} />
   ),
   a: (props) => (
     <a
-      className="text-link underline [text-underline-offset:15%] [text-decoration-thickness:1px] hover:text-link-hover hover:no-underline has-[svg]:inline-flex has-[svg]:gap-0 has-[svg]:items-center has-[svg]:align-middle transition duration-200 ease-out"
+      className="text-link underline [text-underline-offset:12.5%] [text-decoration-thickness:1.5px] [text-decoration-color:color-mix(in_oklch,currentcolor,transparent_60%)] hover:text-link-hover hover:no-underline has-[svg]:inline-flex has-[svg]:gap-0 has-[svg]:items-center has-[svg]:align-middle transition duration-200 ease-out"
+      {...props}
+    />
+  ),
+  blockquote: (props) => (
+    <blockquote
+      className="border-l-2 border-l-cornflour-500 pl-4 my-4 text-ui-body"
       {...props}
     />
   ),
