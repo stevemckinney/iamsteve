@@ -7,7 +7,7 @@ import collections from './content/collections'
 import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
 import smartypants from 'remark-smartypants'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeHeadingLinks from './lib/rehype-heading-links'
 import remarkRehype from 'remark-rehype'
 import rehypeSlug from 'rehype-slug'
 import GithubSlugger from 'github-slugger'
@@ -302,35 +302,7 @@ export default makeSource({
     remarkPlugins: [remarkGfm, remarkCodeTitles, smartypants, remarkChat],
     rehypePlugins: [
       rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          content: {
-            type: 'element',
-            tagName: 'svg',
-            properties: {
-              className: ['icon'],
-              'aria-hidden': 'true',
-              focusable: 'false',
-              width: '16',
-              height: '16',
-            },
-            children: [
-              {
-                type: 'element',
-                tagName: 'use',
-                properties: { href: '#link-16' },
-                children: [],
-              },
-            ],
-          },
-          properties: {
-            className: ['fragment'],
-            ariaHidden: true,
-            tabIndex: -1,
-          },
-        },
-      ],
+      rehypeHeadingLinks,
       [rehypePrism, { ignoreMissing: true }],
     ],
     // Add this configuration

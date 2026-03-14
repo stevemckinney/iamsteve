@@ -1,7 +1,7 @@
 const Chat = ({ title, children }) => {
   return (
     <div
-      className="rounded-2xl bg-neutral-01-100 dark:bg-surface-02 shadow-placed overflow-hidden my-6 not-prose"
+      className="rounded-2xl bg-surface shadow-placed overflow-hidden my-6 not-prose"
       role="log"
       aria-label={title ? `${title} conversation` : 'Chat conversation'}
     >
@@ -20,7 +20,7 @@ const ChatMessage = ({ align = 'left', children }) => {
   const isAi = align === 'ai'
 
   const styles = isRight
-    ? 'bg-cornflour-500 text-white'
+    ? 'bg-cornflour-600 text-white'
     : isAi
     ? 'bg-transparent text-heading'
     : 'bg-neutral-01-200 dark:bg-neutral-01-800 text-heading'
@@ -29,7 +29,8 @@ const ChatMessage = ({ align = 'left', children }) => {
     <div className={`flex ${isRight ? 'justify-end' : 'justify-start'}`}>
       <div
         className={`
-          max-w-[75%] px-3 py-1.5 rounded-sm text-base leading-normal
+          max-w-[calc(100%-32px)] px-4 pt-1.75 pb-1.5 rounded-sm text-base leading-normal
+          [&>p]:mt-0 [&>p+p]:mt-1
           ${styles}
         `}
       >

@@ -202,7 +202,7 @@ export default function RootLayout({ children }) {
           </footer>
           <div className="col-container relative -top-4 pb-24 flex flex-row items-center gap-8">
             <span
-              className="flex-1 bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] h-[2px]"
+              className="flex-1 bg-dash-image h-[2px]"
               aria-hidden="true"
             />
             <Icon
@@ -212,7 +212,7 @@ export default function RootLayout({ children }) {
               size={32}
             />
             <span
-              className="flex-1 bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] h-[2px]"
+              className="flex-1 bg-dash-image h-[2px]"
               aria-hidden="true"
             />
           </div>
