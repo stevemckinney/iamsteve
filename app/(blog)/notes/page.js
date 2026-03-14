@@ -157,7 +157,7 @@ export default async function NotesIndex() {
                 {note.body.raw.split(/\s+/).length} words
               </Badge>
             </div>
-            <h2 className="font-display font-variation-bold lowercase text-3xl">
+            <h2 className="text-heading font-display font-variation-bold lowercase text-3xl">
               <Link href={note.slug} className="hover:text-link">
                 {note.title}
               </Link>
