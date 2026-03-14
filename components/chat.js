@@ -29,7 +29,7 @@ const ChatMessage = ({ align = 'left', children }) => {
     <div className={`flex ${isRight ? 'justify-end' : 'justify-start'}`}>
       <div
         className={`
-          max-w-[75%] px-3 py-1.5 rounded-sm text-base leading-normal
+          max-w-[calc(100%-32px)] px-3 py-1.5 rounded-sm text-base leading-normal
           ${styles}
         `}
       >
