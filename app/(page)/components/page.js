@@ -6,6 +6,9 @@ import TypographySection from './_components/typography-section'
 import SpacingSection from './_components/spacing-section'
 import ShadowsSection from './_components/shadows-section'
 import IconsSection from './_components/icons-section'
+import GridSection from './_components/grid-section'
+import DarkModeSection from './_components/dark-mode-section'
+import UtilitiesSection from './_components/utilities-section'
 import {
   BadgeDemo,
   ButtonDemo,
@@ -20,6 +23,25 @@ import {
   PaginationDemo,
   IllustrationDemo,
 } from './_components/component-demos'
+import {
+  CategoryDemo,
+  CodePenDemo,
+  FigureDemo,
+  ContactFormDemo,
+  NewsletterFormDemo,
+  SocialDemo,
+  PlaceholderDemo,
+  TableOfContentsDemo,
+} from './_components/component-demos-extra'
+import {
+  ShortcutDemo,
+  ComparisonImagesDemo,
+  BlockquoteDemo,
+  GalleryDemo,
+  LinkButtonsDemo,
+  DemoComponentDemo,
+  RemarkPluginsDemo,
+} from './_components/mdx-section'
 
 export default function ComponentsPage() {
   return (
@@ -46,19 +68,39 @@ export default function ComponentsPage() {
           <SpacingSection />
           <ShadowsSection />
           <IconsSection />
+          <GridSection />
+          <DarkModeSection />
+          <UtilitiesSection />
 
           {/* ── Components ──────────────────────────────── */}
           <BadgeDemo />
           <ButtonDemo />
           <CardDemo />
+          <CategoryDemo />
           <ChatDemo />
           <ChipDemo />
+          <CodePenDemo />
+          <ContactFormDemo />
           <DateDemo />
+          <FigureDemo />
           <IconDemo />
           <LinkDemo />
           <ModalDemo />
+          <NewsletterFormDemo />
           <NotepadDemo />
           <PaginationDemo />
+          <PlaceholderDemo />
+          <SocialDemo />
+          <TableOfContentsDemo />
+
+          {/* ── MDX authoring ──────────────────────────── */}
+          <BlockquoteDemo />
+          <ComparisonImagesDemo />
+          <DemoComponentDemo />
+          <GalleryDemo />
+          <LinkButtonsDemo />
+          <ShortcutDemo />
+          <RemarkPluginsDemo />
 
           {/* ── Patterns ────────────────────────────────── */}
           <IllustrationDemo />
