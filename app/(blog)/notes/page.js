@@ -67,10 +67,7 @@ const mdxComponents = {
   ),
   p: (props) => <p className="not-first:indent-8 [&>a]:indent-0" {...props} />,
   code: (props) => (
-    <code
-      className="font-mono bg-code text-code rounded-sm px-1"
-      {...props}
-    />
+    <code className="font-mono bg-code text-code rounded-sm px-1" {...props} />
   ),
   a: (props) => (
     <a
@@ -157,13 +154,13 @@ export default async function NotesIndex() {
                 {note.body.raw.split(/\s+/).length} words
               </Badge>
             </div>
-            <h2 className="text-heading font-display font-variation-bold lowercase text-3xl">
+          </div>
+          <div className="col-span-full lg:col-span-6 lg:text-xl">
+            <h2 className="text-heading font-display font-variation-bold lowercase text-3xl mb-4">
               <Link href={note.slug} className="hover:text-link">
                 {note.title}
               </Link>
             </h2>
-          </div>
-          <div className="col-span-full lg:col-span-6 lg:text-xl">
             <NoteContent note={note} />
           </div>
         </article>
