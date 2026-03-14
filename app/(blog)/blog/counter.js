@@ -46,7 +46,7 @@ const ViewCounter = ({
     <span
       className={`${className} ${
         isUpdated
-          ? 'text-grass-500 dark:text-grass-300 transition-colors duration-1000 ease-out'
+          ? 'text-counter-updated transition-colors duration-1000 ease-out'
           : ''
       }`}
     >

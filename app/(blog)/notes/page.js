@@ -68,7 +68,7 @@ const mdxComponents = {
   p: (props) => <p className="not-first:indent-8 [&>a]:indent-0" {...props} />,
   code: (props) => (
     <code
-      className="font-mono bg-fern-500/12 dark:bg-dandelion-400/12 text-fern-800 dark:text-dandelion-400 rounded-sm px-1"
+      className="font-mono bg-code text-code rounded-sm px-1"
       {...props}
     />
   ),
@@ -144,7 +144,7 @@ export default async function NotesIndex() {
       {notes.map((note) => (
         <article
           key={note._id}
-          className="col-content grid grid-cols-subgrid relative pt-8 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[2px] before:bg-[url(/images/dash.svg)] dark:before:bg-[url(/images/dash-dark.svg)]"
+          className="col-content grid grid-cols-subgrid relative pt-8 before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[2px] before:bg-dash-image"
         >
           <div className="flex flex-col gap-4 mb-2 col-span-full lg:col-span-4">
             <div className="flex flex-row gap-4 lg:order-2">

@@ -40,7 +40,7 @@ const noteComponents = {
   ),
   code: (props) => (
     <code
-      className="font-mono bg-fern-500/12 dark:bg-dandelion-400/12 text-fern-800 dark:text-dandelion-400 rounded-sm px-1"
+      className="font-mono bg-code text-code rounded-sm px-1"
       {...props}
     />
   ),

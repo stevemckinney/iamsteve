@@ -16,7 +16,7 @@ const Selector = ({ categories }) => {
         <span aria-hidden="true">▼</span>
       </Button>
 
-      <Popover className="bg-surface dark:bg-gray-800 p-2 rounded-lg shadow-lg">
+      <Popover className="bg-surface p-2 rounded-lg shadow-lg">
         <ListBox className="outline-none">
           {categories.map((category) => {
             if (category.exclude) return null
@@ -25,7 +25,7 @@ const Selector = ({ categories }) => {
                 key={category.slug}
                 id={category.slug}
                 isDisabled={category.title === 'Design'}
-                className="relative flex items-center px-8 py-2 rounded-md text-lg font-ui lowercase text-gray-700 dark:text-gray-300 font-medium focus:bg-gray-100 dark:focus:bg-gray-900 data-[disabled]:opacity-50 outline-none select-none cursor-pointer"
+                className="relative flex items-center px-8 py-2 rounded-md text-lg font-ui lowercase text-body font-medium focus:bg-surface-02 data-[disabled]:opacity-50 outline-none select-none cursor-pointer"
               >
                 {({ isSelected }) => (
                   <>

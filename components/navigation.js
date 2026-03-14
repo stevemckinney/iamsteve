@@ -61,7 +61,7 @@ const Navigation = () => {
               index={index}
               className={clsx(
                 pathname === link.href
-                  ? 'text-dandelion-500 dark:text-dandelion-300'
+                  ? 'text-nav-active'
                   : 'text-emphasis'
               )}
             >
@@ -71,8 +71,8 @@ const Navigation = () => {
                 className={clsx(
                   'relative -top-px',
                   pathname === link.href
-                    ? 'text-dandelion-500 dark:text-dandelion-300'
-                    : 'text-neutral-03-500 dark:text-fern-500'
+                    ? 'text-nav-active'
+                    : 'text-nav-icon'
                 )}
                 variant="header"
               />
@@ -85,7 +85,7 @@ const Navigation = () => {
             index={mobile.length}
             className={clsx(
               pathname === '/newsletter'
-                ? 'text-dandelion-500 dark:text-dandelion-300'
+                ? 'text-nav-active'
                 : 'text-emphasis'
             )}
           >
@@ -94,8 +94,8 @@ const Navigation = () => {
               className={clsx(
                 'relative -top-px',
                 pathname === '/newsletter'
-                  ? 'text-dandelion-500 dark:text-dandelion-300'
-                  : 'text-neutral-03-500 dark:text-fern-500'
+                  ? 'text-nav-active'
+                  : 'text-nav-icon'
               )}
               variant="header"
             />
