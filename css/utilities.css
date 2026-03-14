@@ -162,6 +162,10 @@
   background-image: url('data:image/svg+xml,<svg width="20" height="2" viewBox="0 0 20 2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1H19" stroke="%23CBBAB7" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/></svg>');
 }
 
+@utility bg-dash-image {
+  background-image: var(--bg-dash-image);
+}
+
 @utility content-grid {
   grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
   grid-template-rows: masonry;
