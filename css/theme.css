@@ -54,8 +54,8 @@
  */
 @theme {
   /* general content */
-  --color-heading: light-dark(var(--color-fern-1100), var(--color-fern-100));
-  --color-body: light-dark(var(--color-fern-1100), var(--color-fern-300));
+  --color-heading: light-dark(var(--color-fern-1100), var(--color-fern-0));
+  --color-body: light-dark(var(--color-fern-1100), var(--color-fern-200));
   --color-body-80: light-dark(
     oklch(from var(--color-fern-1100) l c h / 0.8),
     oklch(from var(--color-fern-300) l c h / 0.8)
