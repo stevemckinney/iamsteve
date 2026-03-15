@@ -39,7 +39,7 @@ export function Section({
       open={defaultOpen || undefined}
     >
       <summary className="flex items-center gap-3 cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none">
-        <span className="flex items-center justify-center w-6 h-6 rounded-sm bg-neutral-01-100 dark:bg-neutral-01-800 transition-transform group-open/section:rotate-90">
+        <span className="flex items-center justify-center w-6 h-6 transition-transform group-open/section:rotate-90">
           <DisclosureChevron />
         </span>
         <div className="flex flex-col gap-0.5">
@@ -51,7 +51,9 @@ export function Section({
           )}
         </div>
       </summary>
-      <div className="flex flex-col gap-6 divide-y divide-subtle sm:divide-y-0 [&>*]:pt-6 sm:[&>*]:pt-0 [&>*:first-child]:pt-0">{children}</div>
+      <div className="flex flex-col gap-0 sm:gap-6 divide-y divide-subtle sm:divide-y-0 [&>*]:pt-4 sm:[&>*]:pt-0 [&>*:first-child]:pt-0">
+        {children}
+      </div>
     </details>
   )
 }
@@ -69,7 +71,7 @@ export function Disclosure({
       open={defaultOpen || undefined}
     >
       <summary className="flex items-center gap-2 cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none">
-        <span className="flex items-center justify-center w-5 h-5 rounded-xs bg-neutral-01-100 dark:bg-neutral-01-800 transition-transform group-open/disclosure:rotate-90">
+        <span className="flex items-center justify-center w-5 h-5 transition-transform group-open/disclosure:rotate-90">
           <DisclosureChevron />
         </span>
         <div className="flex flex-col gap-0.5">
