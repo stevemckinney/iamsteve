@@ -191,7 +191,7 @@ function IconCell({ name, size, available, copied, onCopy }) {
   if (!available) {
     return (
       <div
-        className="flex items-center justify-center w-full h-full"
+        className="flex items-center justify-center w-full h-full min-h-[40px]"
         title={`No ${size}px version`}
       >
         <span className="w-3 h-3 rounded-full border border-dashed border-neutral-01-300/25 dark:border-neutral-01-700/25" />
@@ -203,7 +203,7 @@ function IconCell({ name, size, available, copied, onCopy }) {
     <button
       type="button"
       className={cn(
-        'flex items-center justify-center w-full h-full rounded-xs cursor-pointer',
+        'flex items-center justify-center w-full h-full min-h-[40px] rounded-xs cursor-pointer',
         'transition-colors duration-100',
         'hover:bg-fern-100/40 dark:hover:bg-fern-1100/40',
         copied && 'bg-fern-100 dark:bg-fern-1100'
@@ -216,8 +216,51 @@ function IconCell({ name, size, available, copied, onCopy }) {
   )
 }
 
+function SizeToggle({ activeSize, onChange, only16Count, only24Count }) {
+  return (
+    <div className="flex items-center gap-3">
+      <div className="flex rounded-md overflow-hidden border border-neutral-01-300/20 dark:border-neutral-01-700/20">
+        <button
+          type="button"
+          className={cn(
+            'px-3 py-1.5 text-xs font-mono cursor-pointer transition-colors',
+            activeSize === 16
+              ? 'bg-fern-600 text-white dark:bg-fern-500'
+              : 'bg-surface text-body-60 hover:bg-neutral-01-100 dark:hover:bg-neutral-01-800'
+          )}
+          onClick={() => onChange(16)}
+        >
+          16px
+        </button>
+        <button
+          type="button"
+          className={cn(
+            'px-3 py-1.5 text-xs font-mono cursor-pointer transition-colors border-l border-neutral-01-300/20 dark:border-neutral-01-700/20',
+            activeSize === 24
+              ? 'bg-fern-600 text-white dark:bg-fern-500'
+              : 'bg-surface text-body-60 hover:bg-neutral-01-100 dark:hover:bg-neutral-01-800'
+          )}
+          onClick={() => onChange(24)}
+        >
+          24px
+        </button>
+      </div>
+      <span className="text-2xs text-body-40">
+        {activeSize === 16
+          ? `${only16Count} icons only in this set`
+          : `${only24Count} icons only in this set`}{' '}
+        &middot;{' '}
+        {activeSize === 16
+          ? `${only24Count} missing`
+          : `${only16Count} missing`}
+      </span>
+    </div>
+  )
+}
+
 export default function IconsSection() {
   const [copied, setCopied] = useState(null)
+  const [activeSize, setActiveSize] = useState(16)
 
   const handleCopy = (name, size) => {
     navigator.clipboard?.writeText(`<Icon icon="${name}" size={${size}} />`)
@@ -227,27 +270,33 @@ export default function IconsSection() {
 
   const only16 = allIcons.filter((n) => set16.has(n) && !set24.has(n))
   const only24 = allIcons.filter((n) => !set16.has(n) && set24.has(n))
+  const activeSet = activeSize === 16 ? set16 : set24
 
   return (
     <Section
       id="icons"
       title="Icons"
-      description={`SVG sprite system with ${allIcons.length} unique icons across two sizes. Click to copy JSX. Dashed circles indicate a missing size.`}
+      description={`SVG sprite system with ${allIcons.length} unique icons across two sizes. Toggle between sizes to compare coverage. Click to copy JSX.`}
     >
       <Subsection title="Icon specimen">
-        {/* Grid key */}
-        <div className="flex items-center gap-4 text-2xs text-body-60 mb-2">
-          <div className="flex items-center gap-1.5">
-            <span className="inline-block w-3 h-3 rounded-full border border-dashed border-neutral-01-300/25 dark:border-neutral-01-700/25" />
-            <span>Missing size</span>
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+          <SizeToggle
+            activeSize={activeSize}
+            onChange={setActiveSize}
+            only16Count={only16.length}
+            only24Count={only24.length}
+          />
+          {/* Grid key */}
+          <div className="flex items-center gap-4 text-2xs text-body-60">
+            <div className="flex items-center gap-1.5">
+              <span className="inline-block w-3 h-3 rounded-full border border-dashed border-neutral-01-300/25 dark:border-neutral-01-700/25" />
+              <span>Missing</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="inline-block w-3 h-3 rounded-xs bg-fern-100 dark:bg-fern-1100" />
+              <span>Copied</span>
+            </div>
           </div>
-          <div className="flex items-center gap-1.5">
-            <span className="inline-block w-3 h-3 rounded-xs bg-fern-100 dark:bg-fern-1100" />
-            <span>Copied</span>
-          </div>
-          <span className="text-body-40">
-            {only16.length} only 16px &middot; {only24.length} only 24px
-          </span>
         </div>
 
         {/* Specimen grid */}
@@ -261,67 +310,38 @@ export default function IconsSection() {
           <div
             className="grid"
             style={{
-              gridTemplateColumns: 'repeat(auto-fill, minmax(104px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))',
             }}
           >
             {allIcons.map((name) => {
-              const has16 = set16.has(name)
-              const has24 = set24.has(name)
-              const isMissingSomething = !has16 || !has24
+              const available = activeSet.has(name)
 
               return (
                 <div
                   key={name}
                   className={cn(
                     'flex flex-col border-r border-b border-neutral-01-300/10 dark:border-neutral-01-700/10',
-                    isMissingSomething && 'bg-rio-100/20 dark:bg-rio-1100/10'
+                    !available && 'bg-rio-100/20 dark:bg-rio-1100/10'
                   )}
                 >
-                  {/* Icon pair area */}
-                  <div className="flex items-center justify-center gap-3 px-3 pt-4 pb-2 min-h-[52px]">
+                  <div className="flex items-center justify-center px-3 pt-3 pb-1">
                     <IconCell
                       name={name}
-                      size={16}
-                      available={has16}
-                      copied={copied === `${name}-16`}
-                      onCopy={handleCopy}
-                    />
-                    <div className="w-px h-6 bg-neutral-01-300/10 dark:bg-neutral-01-700/10" />
-                    <IconCell
-                      name={name}
-                      size={24}
-                      available={has24}
-                      copied={copied === `${name}-24`}
+                      size={activeSize}
+                      available={available}
+                      copied={copied === `${name}-${activeSize}`}
                       onCopy={handleCopy}
                     />
                   </div>
-                  {/* Size labels */}
-                  <div className="flex justify-center gap-3 px-3">
+                  <div className="px-2 pb-2.5 pt-0.5">
                     <span
                       className={cn(
-                        'text-center text-[9px] uppercase tracking-wider',
-                        has16
-                          ? 'text-body-40'
+                        'block text-center font-mono text-2xs truncate',
+                        available
+                          ? 'text-body-60'
                           : 'text-rio-400 dark:text-rio-600'
                       )}
                     >
-                      16
-                    </span>
-                    <span className="w-px" />
-                    <span
-                      className={cn(
-                        'text-center text-[9px] uppercase tracking-wider',
-                        has24
-                          ? 'text-body-40'
-                          : 'text-rio-400 dark:text-rio-600'
-                      )}
-                    >
-                      24
-                    </span>
-                  </div>
-                  {/* Icon name */}
-                  <div className="px-2 pb-3 pt-1">
-                    <span className="block text-center font-mono text-2xs text-body-60 truncate">
                       {name}
                     </span>
                   </div>
