@@ -9,44 +9,49 @@ const primitives = {
   rio: {
     label: 'Rio',
     description: 'Warm orange, used for the Design category',
-    steps: [0, 50, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900],
+    steps: [0, 50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900],
   },
   dandelion: {
     label: 'Dandelion',
     description: 'Golden yellow, used for Code category and primary actions',
-    steps: [0, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+    steps: [0, 50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000],
   },
   fern: {
     label: 'Fern',
     description: 'Cool teal-green, the primary brand colour',
     steps: [
-      0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300,
+      0, 50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000, 1100,
+      1200, 1300,
     ],
   },
   cornflour: {
     label: 'Cornflour',
     description: 'Bright blue, used for links and notices',
-    steps: [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100],
+    steps: [
+      0, 50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000, 1100,
+    ],
   },
   grass: {
     label: 'Grass',
     description: 'Yellow-green, used for CSS and UX design categories',
-    steps: [0, 50, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900],
+    steps: [0, 50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900],
   },
   moss: {
     label: 'Moss',
     description: 'Forest green, a deeper natural green',
-    steps: [0, 50, 100, 150, 200, 300, 400, 500, 600, 700, 800, 900],
+    steps: [0, 50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900],
   },
   lavender: {
     label: 'Lavender',
     description: 'Purple, used for Visual design category',
-    steps: [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100],
+    steps: [
+      0, 50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000, 1100,
+    ],
   },
   magenta: {
     label: 'Magenta',
     description: 'Pink-magenta, used for Animation and JavaScript categories',
-    steps: [0, 50, 100, 150, 200, 300, 400, 500, 600, 700, 750, 800],
+    steps: [0, 50, 100, 150, 200, 250, 300, 400, 500, 600, 700, 750, 800, 900],
   },
   'neutral-01': {
     label: 'Neutral 01',
