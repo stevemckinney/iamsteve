@@ -4,6 +4,10 @@ import { Section, Subsection, DemoCard, CodeExample } from './section'
 import PropsTable from './props-table'
 import Icon from '@/components/icon'
 import Social from '@/components/social'
+import ContactForm from '@/components/contact-form'
+import NewsletterForm from '@/components/newsletter-form'
+import Placeholder from '@/components/placeholder'
+import Collapsible from '@/components/table-of-contents/collapsible'
 
 // ─── Category ─────────────────────────────────────────────────
 function CategoryDemo() {
@@ -292,6 +296,9 @@ function ContactFormDemo() {
       description="Accessible contact form built with React Aria components. Includes name, email, and message fields with validation, rate limiting, and honeypot spam protection."
     >
       <DemoCard>
+        <DemoCard.Preview className="flex-col">
+          <ContactForm />
+        </DemoCard.Preview>
         <DemoCard.Split>
           <DemoCard.Docs>
             <Subsection title="Features">
@@ -329,6 +336,9 @@ function NewsletterFormDemo() {
       description="Email subscription form with name and email fields. Uses container queries for responsive layout."
     >
       <DemoCard>
+        <DemoCard.Preview className="flex-col">
+          <NewsletterForm unique="demo" initialCount={700} />
+        </DemoCard.Preview>
         <DemoCard.Split>
           <DemoCard.Docs>
             <PropsTable
@@ -401,24 +411,27 @@ function PlaceholderDemo() {
       description="Generates deterministic coloured placeholder images for posts without a featured image. The colour is seeded from the slug hash so it's consistent."
     >
       <DemoCard>
-        <DemoCard.Preview className="flex-col gap-3">
-          <Subsection title="Colour generation">
-            <p className="text-sm text-body-80">
-              Uses a hash of the post slug to pick from 10 placeholder colours
-              defined in{' '}
-              <code className="font-mono text-code-text bg-code-bg px-1 py-0.5 rounded text-xs">
-                theme.css
-              </code>{' '}
-              as{' '}
-              <code className="font-mono text-code-text bg-code-bg px-1 py-0.5 rounded text-xs">
-                --placeholder-color-0
-              </code>{' '}
-              through{' '}
-              <code className="font-mono text-code-text bg-code-bg px-1 py-0.5 rounded text-xs">
-                --placeholder-color-9
-              </code>
-              .
-            </p>
+        <DemoCard.Preview className="flex-col gap-6">
+          <Subsection title="Rendered examples">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {[
+                { slug: 'getting-started-with-flexbox', category: 'Code' },
+                { slug: 'colour-contrast-guide', category: 'Design' },
+                { slug: 'responsive-typography', category: 'Code' },
+              ].map((item) => (
+                <Placeholder
+                  key={item.slug}
+                  slug={item.slug}
+                  category={item.category}
+                  alt={`${item.category} placeholder`}
+                  width={384}
+                  height={240}
+                  className="rounded-sm overflow-hidden"
+                />
+              ))}
+            </div>
+          </Subsection>
+          <Subsection title="Colour palette">
             <div className="flex gap-2">
               {Array.from({ length: 10 }, (_, i) => (
                 <div
@@ -483,6 +496,49 @@ function PlaceholderDemo() {
 }
 
 // ─── Table of Contents ────────────────────────────────────────
+const demoHeadings = [
+  { level: 'two', text: 'Getting started', slug: 'getting-started' },
+  { level: 'three', text: 'Installation', slug: 'installation' },
+  { level: 'three', text: 'Configuration', slug: 'configuration' },
+  { level: 'two', text: 'Usage', slug: 'usage' },
+  { level: 'three', text: 'Basic example', slug: 'basic-example' },
+  { level: 'two', text: 'API reference', slug: 'api-reference' },
+]
+
+const demoNestedHeadings = [
+  {
+    level: 'two',
+    text: 'Getting started',
+    slug: 'getting-started',
+    url: '',
+    children: [
+      { level: 'three', text: 'Installation', slug: 'installation', url: '' },
+      {
+        level: 'three',
+        text: 'Configuration',
+        slug: 'configuration',
+        url: '',
+      },
+    ],
+  },
+  {
+    level: 'two',
+    text: 'Usage',
+    slug: 'usage',
+    url: '',
+    children: [
+      { level: 'three', text: 'Basic example', slug: 'basic-example', url: '' },
+    ],
+  },
+  {
+    level: 'two',
+    text: 'API reference',
+    slug: 'api-reference',
+    url: '',
+    children: [],
+  },
+]
+
 function TableOfContentsDemo() {
   return (
     <Section
@@ -491,6 +547,15 @@ function TableOfContentsDemo() {
       description="Collapsible table of contents with sticky behaviour. Uses IntersectionObserver to highlight the active heading and smooth-scrolls to sections."
     >
       <DemoCard>
+        <DemoCard.Preview className="flex-col">
+          <div className="max-w-sm">
+            <Collapsible
+              nestedHeadings={demoNestedHeadings}
+              headings={demoHeadings}
+              open={true}
+            />
+          </div>
+        </DemoCard.Preview>
         <DemoCard.Split>
           <DemoCard.Docs>
             <Subsection title="Features">

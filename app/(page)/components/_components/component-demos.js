@@ -5,6 +5,7 @@ import PropsTable from './props-table'
 
 import Badge from '@/components/badge'
 import Button from '@/components/button'
+import Card from '@/components/card'
 import { Chat, ChatMessage } from '@/components/chat'
 import Chip from '@/components/chip'
 import DateComponent from '@/components/date'
@@ -12,6 +13,14 @@ import Icon from '@/components/icon'
 import { Modal } from '@/components/modal'
 import Notepad from '@/components/notepad'
 import Pagination from '@/components/pagination'
+import {
+  Star,
+  Pencil,
+  Terminal,
+  Envelope,
+  Cursor,
+  Figma,
+} from '@/components/illustration'
 import { Button as AriaButton } from 'react-aria-components'
 
 // ─── Badge ────────────────────────────────────────────────────
@@ -208,6 +217,21 @@ function ButtonDemo() {
 }
 
 // ─── Card ─────────────────────────────────────────────────────
+const dummyPost = {
+  slug: 'how-to-use-colour-in-ui-design',
+  date: '2025-11-20',
+  title: 'How to use colour in UI design',
+  summary:
+    'A practical guide to choosing and applying colour palettes that work well across interfaces.',
+  categories: ['Design'],
+  _id: 'demo-card',
+  lastmod: '2025-11-20',
+  theme: '#f1e8e4',
+  images: false,
+  medium: null,
+  tags: [],
+}
+
 function CardDemo() {
   return (
     <Section
@@ -216,6 +240,13 @@ function CardDemo() {
       description="Content card with four size variants: container, large, medium, and small. Each renders a different layout optimised for the content area."
     >
       <DemoCard>
+        <DemoCard.Preview className="flex-col gap-6">
+          <Subsection title="Small">
+            <div className="max-w-lg">
+              <Card size="small" frontmatter={dummyPost} />
+            </div>
+          </Subsection>
+        </DemoCard.Preview>
         <DemoCard.Split>
           <DemoCard.Docs>
             <PropsTable
@@ -843,11 +874,43 @@ function IllustrationDemo() {
               ))}
             </div>
           </Subsection>
-          <Subsection title="Available illustrations">
+          <Subsection title="Examples">
+            <div className="flex flex-wrap gap-6 items-end">
+              <div className="flex flex-col items-center gap-2">
+                <Star width={64} height={64} />
+                <span className="font-mono text-2xs text-body-60">Star</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Pencil width={64} height={64} />
+                <span className="font-mono text-2xs text-body-60">Pencil</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Terminal width={64} height={64} />
+                <span className="font-mono text-2xs text-body-60">
+                  Terminal
+                </span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Envelope width={64} height={64} />
+                <span className="font-mono text-2xs text-body-60">
+                  Envelope
+                </span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Cursor width={64} height={64} />
+                <span className="font-mono text-2xs text-body-60">Cursor</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Figma width={64} height={64} />
+                <span className="font-mono text-2xs text-body-60">Figma</span>
+              </div>
+            </div>
+          </Subsection>
+          <Subsection title="All illustrations">
             <p className="text-sm text-body-80">
-              16 illustration components: Brush, Colour, Component, Cursor,
-              Envelope, Figma, Pen, PencilMono, Pencil, RulerMono, Safari,
-              Sharpener, Star, Sticky, Terminal, Type
+              Brush, Colour, Component, Cursor, Envelope, Figma, Pen,
+              PencilMono, Pencil, RulerMono, Safari, Sharpener, Star, Sticky,
+              Terminal, Type
             </p>
           </Subsection>
         </DemoCard.Preview>
