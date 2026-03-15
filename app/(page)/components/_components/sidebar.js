@@ -95,6 +95,16 @@ export default function Sidebar() {
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
+                  onClick={(e) => {
+                    const target = document.getElementById(item.id)
+                    if (
+                      target &&
+                      target.tagName === 'DETAILS' &&
+                      !target.open
+                    ) {
+                      target.open = true
+                    }
+                  }}
                   className={cn(
                     'block px-3 py-1.5 text-sm rounded-sm transition-colors duration-150',
                     activeId === item.id
