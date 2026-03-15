@@ -1,100 +1,97 @@
 'use client'
 
-import { Chat, ChatMessage } from '@/components/chat'
-import Icon from '@/components/icon'
+import Sidebar from './_components/sidebar'
+import ColourPalette from './_components/colour-palette'
+import TypographySection from './_components/typography-section'
+import SpacingSection from './_components/spacing-section'
+import ShadowsSection from './_components/shadows-section'
+import IconsSection from './_components/icons-section'
+import GridSection from './_components/grid-section'
+import DarkModeSection from './_components/dark-mode-section'
+import UtilitiesSection from './_components/utilities-section'
+import {
+  BadgeDemo,
+  ButtonDemo,
+  CardDemo,
+  ChatDemo,
+  ChipDemo,
+  DateDemo,
+  IconDemo,
+  LinkDemo,
+  ModalDemo,
+  NotepadDemo,
+  PaginationDemo,
+  IllustrationDemo,
+} from './_components/component-demos'
+import {
+  CategoryDemo,
+  CodePenDemo,
+  FigureDemo,
+  ContactFormDemo,
+  NewsletterFormDemo,
+  SocialDemo,
+  PlaceholderDemo,
+  TableOfContentsDemo,
+} from './_components/component-demos-extra'
+import { MdxSection } from './_components/mdx-section'
 
 export default function ComponentsPage() {
   return (
-    <article className="col-content py-18 flex flex-col gap-18">
+    <div className="col-content py-18 flex flex-col gap-8">
       <header>
         <h1 className="font-display font-variation-bold text-4xl lowercase text-heading">
-          Components
+          Design system
         </h1>
-        <p className="text-ui-body text-lg mt-2">
-          A reference page for MDX components used across the site.
+        <p className="text-body-80 text-lg mt-2 max-w-prose">
+          A comprehensive reference for the colour system, typography, spacing,
+          and every component used across the site.
         </p>
       </header>
 
-      {/* Chat */}
-      <section className="flex flex-col gap-4 max-w-lg">
-        <h2 className="font-display font-variation-bold text-2xl lowercase text-heading">
-          Chat
-        </h2>
-        <p className="text-ui-body">
-          Apple Messages-style conversation bubbles. Use a{' '}
-          <code className="text-sm bg-neutral-01-200 dark:bg-neutral-01-800 px-1.5 py-0.5 rounded">
-            chat
-          </code>{' '}
-          code fence in markdown.
-        </p>
+      <div className="flex gap-12 relative">
+        <aside className="hidden lg:block w-48 shrink-0">
+          <Sidebar />
+        </aside>
 
-        <h3 className="font-display font-variation-bold text-lg lowercase text-heading mt-4">
-          With title
-        </h3>
-        <Chat title="iMessage">
-          <ChatMessage align="left">hello how are you</ChatMessage>
-          <ChatMessage align="left">what have you been up to</ChatMessage>
-          <ChatMessage align="right">
-            hello I&rsquo;m good thank you
-          </ChatMessage>
-          <ChatMessage align="right">just working on the blog</ChatMessage>
-          <ChatMessage align="left">nice, sounds fun</ChatMessage>
-        </Chat>
+        <article className="flex flex-col gap-18 min-w-0 flex-1">
+          {/* ── Foundations ─────────────────────────────── */}
+          <ColourPalette />
+          <TypographySection />
+          <SpacingSection />
+          <ShadowsSection />
+          <IconsSection />
+          <GridSection />
+          <DarkModeSection />
+          <UtilitiesSection />
 
-        <h3 className="font-display font-variation-bold text-lg lowercase text-heading mt-4">
-          Without title
-        </h3>
-        <Chat>
-          <ChatMessage align="left">
-            have you tried the new feature?
-          </ChatMessage>
-          <ChatMessage align="right">not yet, will check it out</ChatMessage>
-          <ChatMessage align="right">looks great though</ChatMessage>
-          <ChatMessage align="left">let me know what you think</ChatMessage>
-        </Chat>
+          {/* ── Components ──────────────────────────────── */}
+          <BadgeDemo />
+          <ButtonDemo />
+          <CardDemo />
+          <CategoryDemo />
+          <ChatDemo />
+          <ChipDemo />
+          <CodePenDemo />
+          <ContactFormDemo />
+          <DateDemo />
+          <FigureDemo />
+          <IconDemo />
+          <LinkDemo />
+          <ModalDemo />
+          <NewsletterFormDemo />
+          <NotepadDemo />
+          <PaginationDemo />
+          <PlaceholderDemo />
+          <SocialDemo />
+          <TableOfContentsDemo />
 
-        <h3 className="font-display font-variation-bold text-lg lowercase text-heading mt-4">
-          With AI responses
-        </h3>
-        <Chat title="Claude">
-          <ChatMessage align="right">
-            what colour should I use for links?
-          </ChatMessage>
-          <ChatMessage align="ai">
-            I&rsquo;d recommend a blue with good contrast against your
-            background. Something like cornflour-500 would work well.
-          </ChatMessage>
-          <ChatMessage align="right">thanks, that looks great</ChatMessage>
-          <ChatMessage align="ai">
-            You&rsquo;re welcome! Make sure it meets AA contrast ratio.
-          </ChatMessage>
-        </Chat>
+          {/* ── MDX authoring ──────────────────────────── */}
+          <MdxSection />
 
-        <h3 className="font-display font-variation-bold text-lg lowercase text-heading mt-4">
-          Short exchange
-        </h3>
-        <Chat title="Messages">
-          <ChatMessage align="right">are you free tomorrow?</ChatMessage>
-          <ChatMessage align="left">yes!</ChatMessage>
-        </Chat>
-
-        <div className="bg-surface shadow-placed rounded-lg p-6 mt-4">
-          <h3 className="font-display font-variation-bold text-lg lowercase text-heading mb-2">
-            Usage
-          </h3>
-          <pre className="text-sm bg-fern-1100 text-neutral-01-200 p-4 rounded-lg overflow-x-auto">
-            <code>{`\`\`\`chat:iMessage
-L: hello how are you
-R: hello I'm good thank you
-AI: here's a suggestion for you
-\`\`\`
-
-L:  left-aligned (received)
-R:  right-aligned (sent)
-AI: left-aligned, no background (AI response)`}</code>
-          </pre>
-        </div>
-      </section>
-    </article>
+          {/* ── Patterns ────────────────────────────────── */}
+          <IllustrationDemo />
+        </article>
+      </div>
+    </div>
   )
 }
