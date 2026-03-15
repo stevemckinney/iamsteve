@@ -5,7 +5,7 @@
  */
 
 import { notFound } from 'next/navigation'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import Script from 'next/script'
 import { PostMdx } from '@/components/mdx-components'
 import siteMetadata from '@/content/metadata'
@@ -156,7 +156,7 @@ export default async function PostPage(props) {
         datePublished: post.date,
         dateModified: post.lastmod,
         description: post.summary,
-        wordCount: post.body.raw.split(/\s+/).length,
+        wordCount: post.content.split(/\s+/).length,
         keywords: post.tags?.join(', '),
         articleSection: post.categories[0],
         image: {
@@ -339,9 +339,9 @@ export default async function PostPage(props) {
         proseContent={
           <>
             <PostImage post={post} />
-            <PostMdx code={post.body.code} />
+            <PostMdx code={post.mdx} />
             <Badge
-              href={editUrl(post._raw.sourceFileName)}
+              href={editUrl(post._meta.fileName)}
               size={16}
               theme={`text`}
               iconStart={`github`}

@@ -1,4 +1,4 @@
-import { allNotes } from 'contentlayer/generated'
+import { allNotes } from 'content-collections'
 import { cleanMarkdownForLLMs } from '@/lib/utils/clean-markdown-for-llms'
 
 export async function GET(request, { params }) {
@@ -12,7 +12,7 @@ export async function GET(request, { params }) {
     })
   }
 
-  const cleanedMarkdown = cleanMarkdownForLLMs(note.body.raw)
+  const cleanedMarkdown = cleanMarkdownForLLMs(note.content)
 
   const frontmatter = [
     '---',

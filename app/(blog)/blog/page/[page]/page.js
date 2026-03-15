@@ -1,6 +1,6 @@
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import { sortPosts } from '@/lib/utils/content'
 
 import { Header, Title, Column, Description } from '@/components/page'
@@ -98,7 +98,7 @@ export default async function BlogIndex(props) {
             size="container"
             frontmatter={post}
             image={true}
-            key={post._id}
+            key={post._meta.filePath}
           />
         ))}
       </div>

@@ -12,7 +12,7 @@ import { format, subWeeks, isAfter, parseISO } from 'date-fns'
 import fs from 'fs'
 import path from 'path'
 
-import { allCollections } from 'contentlayer/generated'
+import { allCollections } from 'content-collections'
 import collections from '@/content/collections'
 
 export const revalidate = false

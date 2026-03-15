@@ -5,7 +5,7 @@
 
 import { notFound } from 'next/navigation'
 import { PencilMono } from '@/components/illustration'
-import { allNotes } from 'contentlayer/generated'
+import { allNotes } from 'content-collections'
 import { NoteMdx } from '@/components/note-mdx'
 import siteMetadata from '@/content/metadata'
 
@@ -119,7 +119,7 @@ export default async function NotePage(props) {
           )}
         </header>
         <div>
-          <NoteMdx code={note.body.code} />
+          <NoteMdx code={note.mdx} />
         </div>
         <footer className="flex items-center gap-4 pt-6 border-t border-neutral-01-400/20">
           <Badge size={16} theme="cornflour" iconStart="calendar">

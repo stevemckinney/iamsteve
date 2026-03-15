@@ -1,4 +1,4 @@
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import { cleanMarkdownForLLMs } from '@/lib/utils/clean-markdown-for-llms'
 
 export async function GET(request, { params }) {
@@ -15,7 +15,7 @@ export async function GET(request, { params }) {
     )
   }
 
-  const cleanedMarkdown = cleanMarkdownForLLMs(post.body.raw)
+  const cleanedMarkdown = cleanMarkdownForLLMs(post.content)
 
   const frontmatter = [
     '---',

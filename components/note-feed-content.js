@@ -1,5 +1,5 @@
 'use client'
-import { useMDXComponent } from 'next-contentlayer2/hooks'
+import { MDXContent } from '@content-collections/mdx/react'
 import { noteComponents } from '@/components/note-mdx'
 import { Chat, ChatMessage } from '@/components/chat'
 import styles from '@/components/note-mdx.module.css'
@@ -18,10 +18,9 @@ const mdxComponents = {
 }
 
 export function NoteFeedContent({ code }) {
-  const MDXContent = useMDXComponent(code)
   return (
     <div className={styles.note}>
-      <MDXContent components={mdxComponents} />
+      <MDXContent code={code} components={mdxComponents} />
     </div>
   )
 }

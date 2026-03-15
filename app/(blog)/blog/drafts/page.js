@@ -1,5 +1,5 @@
 import { cache } from 'react'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import { sortPosts } from '@/lib/utils/content'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
@@ -64,7 +64,7 @@ export default async function DraftsIndex(props) {
           <ul className="list-none p-0 m-0 flex flex-col gap-4">
             {draftPosts.map((post) => (
               <li
-                key={post._id}
+                key={post._meta.filePath}
                 className="p-4 border border-neutral-01-200 rounded-md hover:border-neutral-01-300 transition-colors"
               >
                 <Link
