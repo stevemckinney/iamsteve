@@ -321,9 +321,8 @@ function Swatch({ color, step, name }) {
     >
       <div
         className={cn(
-          'w-full aspect-square rounded-sm shadow-reduced',
-          'transition-shadow duration-150 group-hover:shadow-picked',
-          'ring-1 ring-black/5'
+          'w-full aspect-square rounded-sm shadow-[var(--shadow-reduced),inset_0_0_0_1px_rgba(0,0,0,0.2)]',
+          'transition-shadow duration-150 group-hover:shadow-[var(--shadow-picked),inset_0_0_0_1px_rgba(0,0,0,0.2)]'
         )}
         style={{ backgroundColor: cssVar }}
       />
@@ -362,7 +361,7 @@ function TokenSwatch({ item }) {
       title={`Copy ${item.variable}`}
     >
       <div
-        className="w-8 h-8 rounded-xs shadow-reduced ring-1 ring-black/5 shrink-0"
+        className="w-8 h-8 rounded-xs shadow-[var(--shadow-reduced),inset_0_0_0_1px_rgba(0,0,0,0.2)] shrink-0"
         style={
           isText
             ? { backgroundColor: item.variable }

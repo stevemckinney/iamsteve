@@ -805,7 +805,7 @@ function IllustrationDemo() {
               ].map((token) => (
                 <div key={token.name} className="flex items-center gap-2">
                   <div
-                    className="w-6 h-6 rounded-xs ring-1 ring-black/5 shrink-0"
+                    className="w-6 h-6 rounded-xs shadow-[inset_0_0_0_1px_rgba(0,0,0,0.2)] shrink-0"
                     style={{ backgroundColor: token.var }}
                   />
                   <span className="font-mono text-2xs text-body-80 truncate">
@@ -833,7 +833,7 @@ function IllustrationDemo() {
               ].map((token) => (
                 <div key={token.name} className="flex items-center gap-2">
                   <div
-                    className="w-6 h-6 rounded-xs ring-1 ring-black/5 shrink-0"
+                    className="w-6 h-6 rounded-xs shadow-[inset_0_0_0_1px_rgba(0,0,0,0.2)] shrink-0"
                     style={{ backgroundColor: token.var }}
                   />
                   <span className="font-mono text-2xs text-body-80 truncate">

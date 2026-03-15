@@ -423,7 +423,7 @@ function PlaceholderDemo() {
               {Array.from({ length: 10 }, (_, i) => (
                 <div
                   key={i}
-                  className="w-8 h-8 rounded-xs ring-1 ring-black/5"
+                  className="w-8 h-8 rounded-xs shadow-[inset_0_0_0_1px_rgba(0,0,0,0.2)]"
                   style={{
                     backgroundColor: `var(--placeholder-color-${i})`,
                   }}

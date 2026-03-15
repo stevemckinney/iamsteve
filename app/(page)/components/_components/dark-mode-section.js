@@ -111,7 +111,7 @@ export default function DarkModeSection() {
                   }`}
                 >
                   <div
-                    className="w-6 h-6 rounded-xs ring-1 ring-black/5"
+                    className="w-6 h-6 rounded-xs shadow-[inset_0_0_0_1px_rgba(0,0,0,0.2)]"
                     style={{ backgroundColor: ex.lightVar }}
                   />
                 </div>
@@ -127,7 +127,7 @@ export default function DarkModeSection() {
                     i % 2 === 0 ? 'bg-surface' : 'bg-surface-02'
                   }`}
                 >
-                  <div className="w-6 h-6 rounded-xs ring-1 ring-white/10 bg-fern-1100" />
+                  <div className="w-6 h-6 rounded-xs shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)] bg-fern-1100" />
                 </div>
                 <div
                   className={`px-4 py-2 font-mono text-2xs text-body-60 ${
