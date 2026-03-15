@@ -51,7 +51,7 @@ export function Section({
           )}
         </div>
       </summary>
-      <div className="flex flex-col gap-6 divide-y divide-border-light sm:divide-y-0 [&>*]:pt-6 sm:[&>*]:pt-0 [&>*:first-child]:pt-0">{children}</div>
+      <div className="flex flex-col gap-6 divide-y divide-subtle sm:divide-y-0 [&>*]:pt-6 sm:[&>*]:pt-0 [&>*:first-child]:pt-0">{children}</div>
     </details>
   )
 }
