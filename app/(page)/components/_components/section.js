@@ -33,7 +33,7 @@ export function Section({
       id={id}
       data-section
       className={cn(
-        'flex flex-col gap-6 scroll-mt-24 group/section',
+        'flex flex-col gap-4 sm:gap-6 scroll-mt-24 group/section',
         className
       )}
       open={defaultOpen || undefined}
@@ -51,7 +51,7 @@ export function Section({
           )}
         </div>
       </summary>
-      <div className="flex flex-col gap-6">{children}</div>
+      <div className="flex flex-col gap-6 divide-y divide-border-light sm:divide-y-0 [&>*]:pt-6 sm:[&>*]:pt-0 [&>*:first-child]:pt-0">{children}</div>
     </details>
   )
 }
@@ -65,7 +65,7 @@ export function Disclosure({
 }) {
   return (
     <details
-      className={cn('flex flex-col gap-4 group/disclosure', className)}
+      className={cn('flex flex-col gap-3 sm:gap-4 group/disclosure', className)}
       open={defaultOpen || undefined}
     >
       <summary className="flex items-center gap-2 cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none">

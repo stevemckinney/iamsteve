@@ -37,7 +37,7 @@ import { MdxSection } from './_components/mdx-section'
 
 export default function ComponentsPage() {
   return (
-    <div className="col-content py-18 flex flex-col gap-8">
+    <div className="col-content py-8 sm:py-18 flex flex-col gap-8">
       <header>
         <h1 className="font-display font-variation-bold text-4xl lowercase text-heading">
           Design system
@@ -53,7 +53,7 @@ export default function ComponentsPage() {
           <Sidebar />
         </aside>
 
-        <article className="flex flex-col gap-18 min-w-0 flex-1">
+        <article className="flex flex-col min-w-0 flex-1 gap-6 sm:gap-18 divide-y divide-border-light sm:divide-y-0 [&>*]:pt-6 sm:[&>*]:pt-0 [&>*:first-child]:pt-0">
           {/* ── Foundations ─────────────────────────────── */}
           <ColourPalette />
           <TypographySection />
