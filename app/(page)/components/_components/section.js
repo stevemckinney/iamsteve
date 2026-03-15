@@ -33,13 +33,13 @@ export function Section({
       id={id}
       data-section
       className={cn(
-        'flex flex-col gap-4 sm:gap-6 scroll-mt-24 group/section',
+        'flex flex-col gap-4 scroll-mt-24 group/section',
         className
       )}
       open={defaultOpen || undefined}
     >
-      <summary className="flex items-center gap-3 cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none">
-        <span className="flex items-center justify-center w-6 h-6 transition-transform group-open/section:rotate-90">
+      <summary className="flex items-center gap-2 cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none">
+        <span className="flex items-center justify-center w-5 h-5 transition-transform group-open/section:rotate-90">
           <DisclosureChevron />
         </span>
         <h2 className="font-display font-variation-bold text-2xl lowercase text-heading">
@@ -47,11 +47,9 @@ export function Section({
         </h2>
       </summary>
       {description && (
-        <p className="text-body-80 text-sm max-w-prose">{description}</p>
+        <p className="pl-7 text-body-80 text-sm max-w-prose">{description}</p>
       )}
-      <div className="flex flex-col gap-0 sm:gap-6 divide-y divide-subtle sm:divide-y-0 [&>*]:pt-4 sm:[&>*]:pt-0 [&>*:first-child]:pt-0">
-        {children}
-      </div>
+      <div className="flex flex-col gap-4">{children}</div>
     </details>
   )
 }
@@ -65,11 +63,11 @@ export function Disclosure({
 }) {
   return (
     <details
-      className={cn('flex flex-col gap-3 sm:gap-4 group/disclosure', className)}
+      className={cn('flex flex-col gap-4 group/disclosure', className)}
       open={defaultOpen || undefined}
     >
       <summary className="flex items-center gap-2 cursor-pointer list-none [&::-webkit-details-marker]:hidden select-none">
-        <span className="flex items-center justify-center w-5 h-5 transition-transform group-open/disclosure:rotate-90">
+        <span className="flex items-center justify-center w-4 h-4 transition-transform group-open/disclosure:rotate-90">
           <DisclosureChevron />
         </span>
         <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
@@ -77,7 +75,7 @@ export function Disclosure({
         </h3>
       </summary>
       {description && (
-        <p className="text-body-80 text-sm max-w-prose">{description}</p>
+        <p className="pl-6 text-body-80 text-sm max-w-prose">{description}</p>
       )}
       <div className="flex flex-col gap-4">{children}</div>
     </details>
@@ -88,7 +86,7 @@ export function Subsection({ title, description, children, className }) {
   return (
     <div className={cn('flex flex-col gap-4', className)}>
       {title && (
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-0.5 pt-2">
           <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
             {title}
           </h3>
@@ -115,7 +113,9 @@ export function DemoCard({ children, className }) {
 
 DemoCard.Preview = function DemoCardPreview({ children, className }) {
   return (
-    <div className={cn('p-6 flex flex-wrap items-start gap-4', className)}>
+    <div
+      className={cn('p-4 sm:p-6 flex flex-wrap items-start gap-4', className)}
+    >
       {children}
     </div>
   )
@@ -123,13 +123,17 @@ DemoCard.Preview = function DemoCardPreview({ children, className }) {
 
 DemoCard.Docs = function DemoCardDocs({ children, className }) {
   return (
-    <div className={cn('flex flex-col gap-4 p-6', className)}>{children}</div>
+    <div className={cn('flex flex-col gap-4 p-4 sm:p-6', className)}>
+      {children}
+    </div>
   )
 }
 
 DemoCard.Usage = function DemoCardUsage({ children, className }) {
   return (
-    <div className={cn('flex flex-col gap-4 p-6', className)}>{children}</div>
+    <div className={cn('flex flex-col gap-4 p-4 sm:p-6', className)}>
+      {children}
+    </div>
   )
 }
 
@@ -150,7 +154,7 @@ export function Preview({ children, className }) {
   return (
     <div
       className={cn(
-        'bg-surface rounded-lg shadow-placed p-6 flex flex-wrap items-start gap-4',
+        'bg-surface rounded-lg shadow-placed p-4 sm:p-6 flex flex-wrap items-start gap-4',
         className
       )}
     >

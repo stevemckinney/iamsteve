@@ -53,7 +53,7 @@ export default function ComponentsPage() {
           <Sidebar />
         </aside>
 
-        <article className="flex flex-col min-w-0 flex-1 gap-0 sm:gap-18 divide-y divide-subtle sm:divide-y-0 [&>*]:pt-4 sm:[&>*]:pt-0 [&>*:first-child]:pt-0">
+        <article className="flex flex-col min-w-0 flex-1 gap-4 sm:gap-18 divide-y divide-subtle sm:divide-y-0">
           {/* ── Foundations ─────────────────────────────── */}
           <ColourPalette />
           <TypographySection />
