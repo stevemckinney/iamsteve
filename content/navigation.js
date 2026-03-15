@@ -1,3 +1,5 @@
+const isProduction = process.env.NODE_ENV === 'production'
+
 // Desktop nav (header)
 export const navigation = [
   { href: '#', title: 'Library', icon: 'book', size: 24 },
@@ -52,6 +54,16 @@ export const mobile = [
   { href: '/about', title: 'About', icon: 'person', size: 24 },
   { href: '/uses', title: 'Uses', icon: 'settings', size: 24 },
   { href: '/contact', title: 'Contact', icon: 'envelope', size: 24 },
+  ...(!isProduction
+    ? [
+        {
+          href: '/components',
+          title: 'Components',
+          icon: 'component',
+          size: 24,
+        },
+      ]
+    : []),
 ]
 
 // Footer site links
@@ -66,4 +78,14 @@ export const footer = [
   { href: '/about', title: 'About', icon: 'person', size: 16 },
   { href: '/contact', title: 'Contact', icon: 'envelope', size: 16 },
   { href: '/newsletter', title: 'Newsletter', icon: 'airplane', size: 16 },
+  ...(!isProduction
+    ? [
+        {
+          href: '/components',
+          title: 'Components',
+          icon: 'component',
+          size: 16,
+        },
+      ]
+    : []),
 ]
