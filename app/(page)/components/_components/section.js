@@ -42,15 +42,13 @@ export function Section({
         <span className="flex items-center justify-center w-6 h-6 transition-transform group-open/section:rotate-90">
           <DisclosureChevron />
         </span>
-        <div className="flex flex-col gap-0.5">
-          <h2 className="font-display font-variation-bold text-2xl lowercase text-heading">
-            {title}
-          </h2>
-          {description && (
-            <p className="text-body-80 text-sm max-w-prose">{description}</p>
-          )}
-        </div>
+        <h2 className="font-display font-variation-bold text-2xl lowercase text-heading">
+          {title}
+        </h2>
       </summary>
+      {description && (
+        <p className="text-body-80 text-sm max-w-prose">{description}</p>
+      )}
       <div className="flex flex-col gap-0 sm:gap-6 divide-y divide-subtle sm:divide-y-0 [&>*]:pt-4 sm:[&>*]:pt-0 [&>*:first-child]:pt-0">
         {children}
       </div>
@@ -74,15 +72,13 @@ export function Disclosure({
         <span className="flex items-center justify-center w-5 h-5 transition-transform group-open/disclosure:rotate-90">
           <DisclosureChevron />
         </span>
-        <div className="flex flex-col gap-0.5">
-          <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
-            {title}
-          </h3>
-          {description && (
-            <p className="text-body-80 text-sm max-w-prose">{description}</p>
-          )}
-        </div>
+        <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+          {title}
+        </h3>
       </summary>
+      {description && (
+        <p className="text-body-80 text-sm max-w-prose">{description}</p>
+      )}
       <div className="flex flex-col gap-4">{children}</div>
     </details>
   )
