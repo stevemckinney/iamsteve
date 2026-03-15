@@ -44,15 +44,7 @@ const sections = [
   },
   {
     title: 'MDX authoring',
-    items: [
-      { id: 'blockquote', label: 'Blockquote' },
-      { id: 'comparison-images', label: 'ComparisonImages' },
-      { id: 'demo', label: 'Demo' },
-      { id: 'gallery', label: 'Gallery' },
-      { id: 'link-buttons', label: 'LinkFigma & LinkGithub' },
-      { id: 'shortcut', label: 'Shortcut' },
-      { id: 'remark-plugins', label: 'Remark plugins' },
-    ],
+    items: [{ id: 'mdx-authoring', label: 'MDX authoring' }],
   },
   {
     title: 'Patterns',

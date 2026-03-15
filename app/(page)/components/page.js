@@ -33,15 +33,7 @@ import {
   PlaceholderDemo,
   TableOfContentsDemo,
 } from './_components/component-demos-extra'
-import {
-  ShortcutDemo,
-  ComparisonImagesDemo,
-  BlockquoteDemo,
-  GalleryDemo,
-  LinkButtonsDemo,
-  DemoComponentDemo,
-  RemarkPluginsDemo,
-} from './_components/mdx-section'
+import { MdxSection } from './_components/mdx-section'
 
 export default function ComponentsPage() {
   return (
@@ -94,13 +86,7 @@ export default function ComponentsPage() {
           <TableOfContentsDemo />
 
           {/* ── MDX authoring ──────────────────────────── */}
-          <BlockquoteDemo />
-          <ComparisonImagesDemo />
-          <DemoComponentDemo />
-          <GalleryDemo />
-          <LinkButtonsDemo />
-          <ShortcutDemo />
-          <RemarkPluginsDemo />
+          <MdxSection />
 
           {/* ── Patterns ────────────────────────────────── */}
           <IllustrationDemo />
