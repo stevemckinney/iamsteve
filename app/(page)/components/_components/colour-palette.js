@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { TabList, TabPanel, Tab, Tabs } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { Section, Subsection } from './section'
+import { Showcase } from './_showcase'
 
 const primitives = {
   rio: {
@@ -385,8 +385,7 @@ function TokenSwatch({ item }) {
 
 export default function ColourPalette() {
   return (
-    <Section
-      id="colours"
+    <Showcase
       title="Colours"
       description="A two-layer token system: primitives define raw colour scales, semantic tokens map them to purposes. Click any swatch to copy the CSS variable."
     >
@@ -411,11 +410,17 @@ export default function ColourPalette() {
 
         <TabPanel id="primitives" className="flex flex-col gap-8">
           {Object.entries(primitives).map(([name, palette]) => (
-            <Subsection
-              key={name}
-              title={palette.label}
-              description={palette.description}
-            >
+            <div key={name} className="flex flex-col gap-4">
+              <div className="flex flex-col gap-0.5">
+                <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+                  {palette.label}
+                </h3>
+                {palette.description && (
+                  <p className="text-body-80 text-sm max-w-prose">
+                    {palette.description}
+                  </p>
+                )}
+              </div>
               <div
                 className="grid gap-2"
                 style={{
@@ -429,22 +434,27 @@ export default function ColourPalette() {
                   <Swatch key={step} color={palette} step={step} name={name} />
                 ))}
               </div>
-            </Subsection>
+            </div>
           ))}
         </TabPanel>
 
         <TabPanel id="tokens" className="flex flex-col gap-8">
           {tokens.map((group) => (
-            <Subsection key={group.group} title={group.group}>
+            <div key={group.group} className="flex flex-col gap-4">
+              <div className="flex flex-col gap-0.5">
+                <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+                  {group.group}
+                </h3>
+              </div>
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-0.5">
                 {group.items.map((item) => (
                   <TokenSwatch key={item.name} item={item} />
                 ))}
               </div>
-            </Subsection>
+            </div>
           ))}
         </TabPanel>
       </Tabs>
-    </Section>
+    </Showcase>
   )
 }

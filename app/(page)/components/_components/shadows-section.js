@@ -1,4 +1,4 @@
-import { Section, Preview } from './section'
+import { Showcase, ShowcaseBlock } from './_showcase'
 
 const shadows = [
   {
@@ -30,12 +30,11 @@ const shadows = [
 
 export default function ShadowsSection() {
   return (
-    <Section
-      id="shadows"
+    <Showcase
       title="Shadows"
       description="A five-step elevation system using layered box shadows with border effects. Each level adapts between light and dark modes."
     >
-      <Preview className="gap-8 items-start py-10 justify-center">
+      <ShowcaseBlock className="gap-8 items-start py-10 justify-center">
         {shadows.map((shadow) => (
           <div key={shadow.name} className="flex flex-col items-center gap-3">
             <div className={`w-24 h-24 bg-surface rounded-lg ${shadow.css}`} />
@@ -49,7 +48,7 @@ export default function ShadowsSection() {
             </div>
           </div>
         ))}
-      </Preview>
-    </Section>
+      </ShowcaseBlock>
+    </Showcase>
   )
 }

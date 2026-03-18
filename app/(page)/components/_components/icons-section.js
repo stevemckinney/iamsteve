@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
-import { Section, Subsection } from './section'
+import { Showcase } from './_showcase'
 
 const icons16 = [
   'about',
@@ -273,12 +273,16 @@ export default function IconsSection() {
   const activeSet = activeSize === 16 ? set16 : set24
 
   return (
-    <Section
-      id="icons"
+    <Showcase
       title="Icons"
       description={`SVG sprite system with ${allIcons.length} unique icons across two sizes. Toggle between sizes to compare coverage. Click to copy JSX.`}
     >
-      <Subsection title="Icon specimen">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-0.5">
+          <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+            Icon specimen
+          </h3>
+        </div>
         <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
           <SizeToggle
             activeSize={activeSize}
@@ -350,12 +354,15 @@ export default function IconsSection() {
             })}
           </div>
         </div>
-      </Subsection>
+      </div>
 
-      <Subsection
-        title="Missing from 16px"
-        description={`${only24.length} icons only available at 24px.`}
-      >
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-0.5">
+          <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+            Missing from 16px
+          </h3>
+          <p className="text-body-80 text-sm max-w-prose">{`${only24.length} icons only available at 24px.`}</p>
+        </div>
         <div className="flex flex-wrap gap-1.5">
           {only24.map((name) => (
             <span
@@ -366,12 +373,15 @@ export default function IconsSection() {
             </span>
           ))}
         </div>
-      </Subsection>
+      </div>
 
-      <Subsection
-        title="Missing from 24px"
-        description={`${only16.length} icons only available at 16px.`}
-      >
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-0.5">
+          <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+            Missing from 24px
+          </h3>
+          <p className="text-body-80 text-sm max-w-prose">{`${only16.length} icons only available at 16px.`}</p>
+        </div>
         <div className="flex flex-wrap gap-1.5">
           {only16.map((name) => (
             <span
@@ -382,7 +392,7 @@ export default function IconsSection() {
             </span>
           ))}
         </div>
-      </Subsection>
-    </Section>
+      </div>
+    </Showcase>
   )
 }

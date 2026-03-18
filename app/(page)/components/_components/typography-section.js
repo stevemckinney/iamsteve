@@ -1,4 +1,4 @@
-import { Section, Subsection, Preview } from './section'
+import { Showcase, ShowcaseBlock } from './_showcase'
 
 const typeScale = [
   { name: '7xl', size: '5.5rem', sample: 'Display heading' },
@@ -32,41 +32,43 @@ const fontVariations = [
 
 export default function TypographySection() {
   return (
-    <Section
-      id="typography"
+    <Showcase
       title="Typography"
       description="Three font families with a custom type scale. The display font (Roc Grotesk) uses variable font settings for weight control."
     >
-      <Subsection title="Font families">
-        <Preview className="flex-col gap-6">
-          <div className="flex flex-col gap-1 w-full">
-            <span className="text-2xs font-mono text-body-60">
-              font-display &middot; Roc Grotesk Variable
-            </span>
-            <p className="font-display font-variation-bold text-3xl lowercase text-heading">
-              The quick brown fox jumps over the lazy dog
-            </p>
-          </div>
-          <div className="flex flex-col gap-1 w-full">
-            <span className="text-2xs font-mono text-body-60">
-              font-sans &middot; Elza
-            </span>
-            <p className="font-sans text-xl text-heading">
-              The quick brown fox jumps over the lazy dog
-            </p>
-          </div>
-          <div className="flex flex-col gap-1 w-full">
-            <span className="text-2xs font-mono text-body-60">
-              font-mono &middot; Covik Sans Mono
-            </span>
-            <p className="font-mono text-lg text-heading">
-              The quick brown fox jumps over the lazy dog
-            </p>
-          </div>
-        </Preview>
-      </Subsection>
+      <ShowcaseBlock title="Font families" className="flex-col gap-6">
+        <div className="flex flex-col gap-1 w-full">
+          <span className="text-2xs font-mono text-body-60">
+            font-display &middot; Roc Grotesk Variable
+          </span>
+          <p className="font-display font-variation-bold text-3xl lowercase text-heading">
+            The quick brown fox jumps over the lazy dog
+          </p>
+        </div>
+        <div className="flex flex-col gap-1 w-full">
+          <span className="text-2xs font-mono text-body-60">
+            font-sans &middot; Elza
+          </span>
+          <p className="font-sans text-xl text-heading">
+            The quick brown fox jumps over the lazy dog
+          </p>
+        </div>
+        <div className="flex flex-col gap-1 w-full">
+          <span className="text-2xs font-mono text-body-60">
+            font-mono &middot; Covik Sans Mono
+          </span>
+          <p className="font-mono text-lg text-heading">
+            The quick brown fox jumps over the lazy dog
+          </p>
+        </div>
+      </ShowcaseBlock>
 
-      <Subsection title="Type scale">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-0.5">
+          <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+            Type scale
+          </h3>
+        </div>
         <div className="bg-surface rounded-lg shadow-placed overflow-hidden">
           {typeScale.map((item, i) => (
             <div
@@ -89,30 +91,29 @@ export default function TypographySection() {
             </div>
           ))}
         </div>
-      </Subsection>
+      </div>
 
-      <Subsection
+      <ShowcaseBlock
         title="Font variations"
         description="Variable font settings used with the display font."
+        className="flex-col gap-4"
       >
-        <Preview className="flex-col gap-4">
-          {fontVariations.map((v) => (
-            <div key={v.name} className="flex flex-col gap-1 w-full">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-2xs text-code-text bg-code-bg px-1.5 py-0.5 rounded">
-                  {v.name}
-                </span>
-                <span className="text-2xs text-body-60">{v.weight}</span>
-              </div>
-              <p
-                className={`font-display ${v.name} text-2xl lowercase text-heading`}
-              >
-                The quick brown fox jumps over the lazy dog
-              </p>
+        {fontVariations.map((v) => (
+          <div key={v.name} className="flex flex-col gap-1 w-full">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-2xs text-code-text bg-code-bg px-1.5 py-0.5 rounded">
+                {v.name}
+              </span>
+              <span className="text-2xs text-body-60">{v.weight}</span>
             </div>
-          ))}
-        </Preview>
-      </Subsection>
-    </Section>
+            <p
+              className={`font-display ${v.name} text-2xl lowercase text-heading`}
+            >
+              The quick brown fox jumps over the lazy dog
+            </p>
+          </div>
+        ))}
+      </ShowcaseBlock>
+    </Showcase>
   )
 }

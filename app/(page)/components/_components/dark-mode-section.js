@@ -1,5 +1,5 @@
 import React from 'react'
-import { Section, Subsection, Preview, CodeExample } from './section'
+import { Showcase, ShowcaseBlock, CodeExample } from './_showcase'
 
 const examples = [
   {
@@ -41,44 +41,46 @@ const examples = [
 
 export default function DarkModeSection() {
   return (
-    <Section
-      id="dark-mode"
+    <Showcase
       title="Dark mode"
       description="The theme uses CSS light-dark() for automatic dark mode. Tokens resolve to different primitives based on the colour scheme preference."
     >
-      <Subsection title="How it works">
-        <Preview className="flex-col gap-4">
-          <div className="flex flex-col gap-2 text-sm text-body-80">
-            <p>
-              The root element sets{' '}
-              <code className="font-mono text-code-text bg-code-bg px-1 py-0.5 rounded text-xs">
-                color-scheme: light dark
-              </code>{' '}
-              enabling the CSS{' '}
-              <code className="font-mono text-code-text bg-code-bg px-1 py-0.5 rounded text-xs">
-                light-dark()
-              </code>{' '}
-              function throughout the theme.
-            </p>
-            <p>
-              Semantic tokens in{' '}
-              <code className="font-mono text-code-text bg-code-bg px-1 py-0.5 rounded text-xs">
-                theme.css
-              </code>{' '}
-              map to different primitive values for each mode. No{' '}
-              <code className="font-mono text-code-text bg-code-bg px-1 py-0.5 rounded text-xs">
-                dark:
-              </code>{' '}
-              prefix classes are needed for token-based styles.
-            </p>
-          </div>
-        </Preview>
-      </Subsection>
+      <ShowcaseBlock title="How it works" className="flex-col gap-4">
+        <div className="flex flex-col gap-2 text-sm text-body-80">
+          <p>
+            The root element sets{' '}
+            <code className="font-mono text-code-text bg-code-bg px-1 py-0.5 rounded text-xs">
+              color-scheme: light dark
+            </code>{' '}
+            enabling the CSS{' '}
+            <code className="font-mono text-code-text bg-code-bg px-1 py-0.5 rounded text-xs">
+              light-dark()
+            </code>{' '}
+            function throughout the theme.
+          </p>
+          <p>
+            Semantic tokens in{' '}
+            <code className="font-mono text-code-text bg-code-bg px-1 py-0.5 rounded text-xs">
+              theme.css
+            </code>{' '}
+            map to different primitive values for each mode. No{' '}
+            <code className="font-mono text-code-text bg-code-bg px-1 py-0.5 rounded text-xs">
+              dark:
+            </code>{' '}
+            prefix classes are needed for token-based styles.
+          </p>
+        </div>
+      </ShowcaseBlock>
 
-      <Subsection
-        title="Token mapping examples"
-        description="How semantic tokens resolve differently in light and dark modes."
-      >
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-0.5">
+          <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+            Token mapping examples
+          </h3>
+          <p className="text-body-80 text-sm max-w-prose">
+            How semantic tokens resolve differently in light and dark modes.
+          </p>
+        </div>
         <div className="bg-surface rounded-lg shadow-placed overflow-hidden">
           <div className="grid grid-cols-[1fr_auto_auto_auto_auto] text-sm">
             <div className="px-4 py-2 bg-surface-02 font-display font-variation-bold text-heading lowercase">
@@ -140,9 +142,14 @@ export default function DarkModeSection() {
             ))}
           </div>
         </div>
-      </Subsection>
+      </div>
 
-      <Subsection title="Syntax">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-0.5">
+          <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+            Syntax
+          </h3>
+        </div>
         <CodeExample>{`/* In theme.css - tokens auto-switch between modes */
 @theme {
   --color-heading: light-dark(
@@ -158,7 +165,7 @@ export default function DarkModeSection() {
 <div className="bg-white dark:bg-fern-1100">
   Inline override
 </div>`}</CodeExample>
-      </Subsection>
-    </Section>
+      </div>
+    </Showcase>
   )
 }

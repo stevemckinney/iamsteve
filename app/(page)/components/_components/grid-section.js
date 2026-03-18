@@ -1,4 +1,4 @@
-import { Section, Subsection, Preview, CodeExample } from './section'
+import { Showcase, ShowcaseBlock, CodeExample } from './_showcase'
 
 const gridRegions = [
   {
@@ -59,15 +59,20 @@ const gridConfigs = [
 
 export default function GridSection() {
   return (
-    <Section
-      id="grid"
+    <Showcase
       title="Grid & layout"
       description="A responsive named-column grid system with five breakpoint configurations. Named regions allow components to span semantic content areas."
     >
-      <Subsection
-        title="Named regions"
-        description="Grid areas that can be targeted with utility classes for column placement."
-      >
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-0.5">
+          <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+            Named regions
+          </h3>
+          <p className="text-body-80 text-sm max-w-prose">
+            Grid areas that can be targeted with utility classes for column
+            placement.
+          </p>
+        </div>
         <div className="bg-surface rounded-lg shadow-placed overflow-hidden">
           {gridRegions.map((region, i) => (
             <div
@@ -86,12 +91,18 @@ export default function GridSection() {
             </div>
           ))}
         </div>
-      </Subsection>
+      </div>
 
-      <Subsection
-        title="Grid configurations"
-        description="Responsive grid definitions applied via the .layout class at different breakpoints."
-      >
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-0.5">
+          <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+            Grid configurations
+          </h3>
+          <p className="text-body-80 text-sm max-w-prose">
+            Responsive grid definitions applied via the .layout class at
+            different breakpoints.
+          </p>
+        </div>
         <div className="bg-surface rounded-lg shadow-placed overflow-hidden">
           {gridConfigs.map((config, i) => (
             <div
@@ -110,50 +121,46 @@ export default function GridSection() {
             </div>
           ))}
         </div>
-      </Subsection>
+      </div>
 
-      <Subsection title="Breakpoints">
-        <Preview className="gap-3 flex-col">
-          {breakpoints.map((bp) => (
-            <div key={bp.name} className="flex items-center gap-4">
-              <span className="font-mono text-xs text-heading w-10 shrink-0">
-                {bp.name}
-              </span>
-              <span className="font-mono text-2xs text-body-60 w-16 shrink-0">
-                {bp.value}
-              </span>
-              <div className="flex-1 h-3 bg-surface-02 rounded-xs overflow-hidden">
-                <div
-                  className="h-full bg-fern-400 rounded-xs"
-                  style={{ width: `${(parseInt(bp.value) / 1536) * 100}%` }}
-                />
-              </div>
-              <span className="text-2xs text-body-60 w-40 shrink-0">
-                {bp.description}
-              </span>
+      <ShowcaseBlock title="Breakpoints" className="gap-3 flex-col">
+        {breakpoints.map((bp) => (
+          <div key={bp.name} className="flex items-center gap-4">
+            <span className="font-mono text-xs text-heading w-10 shrink-0">
+              {bp.name}
+            </span>
+            <span className="font-mono text-2xs text-body-60 w-16 shrink-0">
+              {bp.value}
+            </span>
+            <div className="flex-1 h-3 bg-surface-02 rounded-xs overflow-hidden">
+              <div
+                className="h-full bg-fern-400 rounded-xs"
+                style={{ width: `${(parseInt(bp.value) / 1536) * 100}%` }}
+              />
             </div>
-          ))}
-        </Preview>
-      </Subsection>
+            <span className="text-2xs text-body-60 w-40 shrink-0">
+              {bp.description}
+            </span>
+          </div>
+        ))}
+      </ShowcaseBlock>
 
-      <Subsection title="Grid variables">
-        <div className="bg-surface rounded-lg shadow-placed p-6 flex flex-col gap-2">
-          {[
-            { name: '--grid-container', value: '1920px' },
-            { name: '--grid-content', value: '1344px' },
-            { name: '--grid-margin', value: 'calc(48px - var(--grid-gutter))' },
-            { name: '--grid-gutter', value: '32px' },
-            { name: '--grid-gap', value: '32px' },
-          ].map((v) => (
-            <div key={v.name} className="flex items-center gap-4">
-              <span className="font-mono text-xs text-code-text bg-code-bg px-1.5 py-0.5 rounded">
-                {v.name}
-              </span>
-              <span className="font-mono text-2xs text-body-60">{v.value}</span>
-            </div>
-          ))}
-        </div>
-      </Subsection>
+      <ShowcaseBlock title="Grid variables" className="flex-col gap-2">
+        {[
+          { name: '--grid-container', value: '1920px' },
+          { name: '--grid-content', value: '1344px' },
+          { name: '--grid-margin', value: 'calc(48px - var(--grid-gutter))' },
+          { name: '--grid-gutter', value: '32px' },
+          { name: '--grid-gap', value: '32px' },
+        ].map((v) => (
+          <div key={v.name} className="flex items-center gap-4">
+            <span className="font-mono text-xs text-code-text bg-code-bg px-1.5 py-0.5 rounded">
+              {v.name}
+            </span>
+            <span className="font-mono text-2xs text-body-60">{v.value}</span>
+          </div>
+        ))}
+      </ShowcaseBlock>
 
       <CodeExample>{`{/* Using named grid regions */}
 <div className="col-content">Full content width</div>
@@ -164,6 +171,6 @@ export default function GridSection() {
 <div className="col-start-prose-start col-end-prose-end">
   Custom span within prose
 </div>`}</CodeExample>
-    </Section>
+    </Showcase>
   )
 }

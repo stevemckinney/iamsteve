@@ -1,6 +1,6 @@
 'use client'
 
-import { Section, Subsection, Preview, CodeExample } from './section'
+import { Showcase, ShowcaseBlock, CodeExample } from './_showcase'
 
 const customUtilities = [
   {
@@ -95,24 +95,26 @@ const customUtilities = [
 
 export default function UtilitiesSection() {
   return (
-    <Section
-      id="utilities"
+    <Showcase
       title="Custom utilities"
       description="Tailwind @utility directives that extend the design system beyond standard Tailwind classes."
     >
-      <Subsection title="Button">
-        <Preview className="gap-4 items-center">
-          <button className="button-dandelion px-8 py-3 font-ui text-base/tight lowercase select-none cursor-pointer">
-            button-dandelion
-          </button>
-        </Preview>
-        <CodeExample>{`{/* Primary action button with full styling */}
+      <ShowcaseBlock title="Button" className="gap-4 items-center">
+        <button className="button-dandelion px-8 py-3 font-ui text-base/tight lowercase select-none cursor-pointer">
+          button-dandelion
+        </button>
+      </ShowcaseBlock>
+      <CodeExample>{`{/* Primary action button with full styling */}
 <button className="button-dandelion px-8 py-3 font-ui text-base/tight lowercase">
   Subscribe
 </button>`}</CodeExample>
-      </Subsection>
 
-      <Subsection title="All custom utilities">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-0.5">
+          <h3 className="font-display font-variation-bold text-lg lowercase text-heading">
+            All custom utilities
+          </h3>
+        </div>
         <div className="bg-surface rounded-lg shadow-placed overflow-hidden">
           {customUtilities.map((util, i) => (
             <div
@@ -128,7 +130,7 @@ export default function UtilitiesSection() {
             </div>
           ))}
         </div>
-      </Subsection>
-    </Section>
+      </div>
+    </Showcase>
   )
 }
