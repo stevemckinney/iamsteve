@@ -2,6 +2,7 @@
 
 import { Suspense } from 'react'
 import Sidebar from './_components/sidebar'
+import MobileNavigation from './_components/mobile-navigation'
 import { sectionComponents } from './_components/registry'
 import { useActiveSection } from './_components/use-active-section'
 
@@ -20,6 +21,11 @@ export default function ComponentsPage() {
           and every component used across the site.
         </p>
       </header>
+
+      <MobileNavigation
+        activeSection={activeSection}
+        onSelect={setActiveSection}
+      />
 
       <div className="flex gap-12 relative">
         <aside className="hidden lg:block w-48 shrink-0">
