@@ -18,7 +18,7 @@ export default function LatestPosts({ posts, title, linkText, linkHref }) {
             size="container"
             frontmatter={post}
             image={true}
-            key={post._id}
+            key={post._meta?.filePath}
             className="max-sm:w-[calc(100vw-48px)] max-sm:snap-center md:col-span-1"
           />
         ))}

@@ -6,7 +6,7 @@
 
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import { sortPosts } from '@/lib/utils/content'
 import { Header, Title, Column, Description } from '@/components/page'
 import { PencilMono } from '@/components/illustration'
@@ -158,7 +158,7 @@ export default async function BlogCategory(props) {
               size="container"
               frontmatter={post}
               image={true}
-              key={post._id}
+              key={post._meta.filePath}
             />
           ))
         ) : (

@@ -1,4 +1,4 @@
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 import { createClient } from '@supabase/supabase-js'
 
 export const revalidate = 86400 // Revalidate daily

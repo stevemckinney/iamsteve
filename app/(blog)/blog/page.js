@@ -4,7 +4,7 @@
  */
 
 import { cache } from 'react'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 
 import { sortPosts } from '@/lib/utils/content'
 
@@ -93,7 +93,7 @@ export default async function BlogIndex(props) {
             size="container"
             frontmatter={post}
             image={true}
-            key={post._id}
+            key={post._meta.filePath}
           />
         ))}
       </div>

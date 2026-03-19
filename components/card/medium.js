@@ -46,7 +46,7 @@ const Medium = ({ frontmatter, image, className }) => {
     title,
     summary,
     tags,
-    _id,
+    _meta,
     theme,
     categories,
     images,
@@ -75,7 +75,7 @@ const Medium = ({ frontmatter, image, className }) => {
             title=""
             className={`flex w-full items-center justify-center aspect-video w-full relative overflow-hidden [mask:radial-gradient(150%_150%_at_50%_25%,#fff_24.1%,rgba(255,255,255,0.56)_41.94%,transparent_48.59%,transparent_100%)]`}
             style={{ backgroundColor: `${imageColor}` }}
-            aria-labelledby={`title-${_id}`}
+            aria-labelledby={`title-${_meta?.filePath}`}
             tabIndex="0"
           >
             <>
@@ -121,7 +121,7 @@ const Medium = ({ frontmatter, image, className }) => {
         <div className="flex flex-col gap-2 px-8 pt-[.8125rem]">
           <h2
             className="p-0 m-0 text-3xl leading-none lowercase font-display font-variation-bold"
-            id={`title-${_id}`}
+            id={`title-${_meta?.filePath}`}
           >
             <Link
               href={slug}
