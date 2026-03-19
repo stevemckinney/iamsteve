@@ -41,7 +41,7 @@ export function PostLayoutFrame({
           styles.article || ''
         } isolate grid col-container grid-cols-subgrid relative`}
       >
-        <hr className="absolute z-11 top-0 left-0 right-0 col-container md:col-content lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] border-none" />
+        <hr className="absolute z-11 top-0 left-0 right-0 col-container md:col-content lg:hidden w-full h-[2px] bg-dash-image border-none" />
 
         <aside
           aria-label="Table of contents and newsletter subscription form"
@@ -64,7 +64,7 @@ export function PostLayoutFrame({
           {asideContent}
         </aside>
 
-        <hr className="relative col-container md:col-content lg:hidden w-full h-[2px] bg-[url(/images/dash.svg)] dark:bg-[url(/images/dash-dark.svg)] border-none" />
+        <hr className="relative col-container md:col-content lg:hidden w-full h-[2px] bg-dash-image border-none" />
 
         <div
           className={cn(

@@ -6,7 +6,7 @@
 import { notFound } from 'next/navigation'
 import { PencilMono } from '@/components/illustration'
 import { allNotes } from 'contentlayer/generated'
-import { PostMdx } from '@/components/mdx-components'
+import { NoteMdx } from '@/components/note-mdx'
 import siteMetadata from '@/content/metadata'
 
 import Badge from '@/components/badge'
@@ -118,8 +118,8 @@ export default async function NotePage(props) {
             <p className="text-lg text-pretty text-emphasis">{note.summary}</p>
           )}
         </header>
-        <div className="prose">
-          <PostMdx code={note.body.code} />
+        <div>
+          <NoteMdx code={note.body.code} />
         </div>
         <footer className="flex items-center gap-4 pt-6 border-t border-neutral-01-400/20">
           <Badge size={16} theme="cornflour" iconStart="calendar">

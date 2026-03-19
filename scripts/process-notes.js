@@ -46,6 +46,22 @@ function extractTitleFromContent(body) {
   return null
 }
 
+function wasStatusDraft(filePath) {
+  if (!process.env.DIFF_BEFORE) return false
+  const relativePath = path.relative(process.cwd(), filePath)
+  try {
+    const previousContent = execSync(
+      `git show ${process.env.DIFF_BEFORE}:${relativePath}`,
+      { encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe'] }
+    )
+    const { data } = matter(previousContent)
+    return data.status === 'draft'
+  } catch {
+    // File didn't exist before — treat as a new note, not a status change
+    return false
+  }
+}
+
 function processNote(filePath, existingFiles) {
   const content = fs.readFileSync(filePath, 'utf8')
   const { data: frontmatter, content: rawBody } = matter(content)
@@ -85,11 +101,19 @@ function processNote(filePath, existingFiles) {
     modified = true
   }
 
-  // Ensure date
+  // Ensure date — or update to publish date when status changes to published
   if (!frontmatter.date) {
     frontmatter.date = new Date().toISOString()
     modified = true
     changes.push('Added date')
+  } else if (
+    process.env.PUBLISH_DATE &&
+    frontmatter.status === 'published' &&
+    wasStatusDraft(filePath)
+  ) {
+    frontmatter.date = new Date().toISOString()
+    modified = true
+    changes.push('Updated date to publish date')
   }
 
   // Ensure status
@@ -150,9 +174,14 @@ function writeNote(result) {
 
 function getChangedNotes() {
   try {
-    // Get files changed in the PR (added or modified)
+    // On push to main, diff only the commits in this push
+    const diffRange =
+      process.env.DIFF_BEFORE && process.env.DIFF_AFTER
+        ? `${process.env.DIFF_BEFORE}..${process.env.DIFF_AFTER}`
+        : 'origin/main...HEAD'
+
     const changedFiles = execSync(
-      'git diff --diff-filter=AM --name-only origin/main...HEAD'
+      `git diff --diff-filter=AM --name-only ${diffRange}`
     )
       .toString()
       .trim()
