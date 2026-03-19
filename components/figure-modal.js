@@ -23,6 +23,8 @@ const DOUBLE_TAP_PX = 30
 const DISMISS_VY = 500
 const DISMISS_DY = 150
 const WHEEL_ZOOM_SPEED = 0.005
+const MOMENTUM_DECAY = 0.97
+const MOMENTUM_MIN_VELOCITY = 0.5
 
 function getBoundsAtScale(s, fitDimensions) {
   const { w, h } = fitDimensions
@@ -53,6 +55,7 @@ function LightboxContent({ src, alt, close }) {
   const justPinched = useRef(false)
   const isDraggingRef = useRef(false)
   const imgRef = useRef(null)
+  const momentumFrame = useRef(null)
 
   const scaleValue = useMotionValue(1)
   const xValue = useMotionValue(0)
@@ -271,6 +274,10 @@ function LightboxContent({ src, alt, close }) {
   }, [scaleValue, xValue, yValue, snapToBounds, toggleZoom])
 
   const handlePanStart = useCallback(() => {
+    if (momentumFrame.current) {
+      cancelAnimationFrame(momentumFrame.current)
+      momentumFrame.current = null
+    }
     isDraggingRef.current = true
     if (buttonRef.current) {
       updateCursor(buttonRef.current, scaleValue.get(), true)
@@ -313,6 +320,63 @@ function LightboxContent({ src, alt, close }) {
     [scaleValue, xValue, yValue]
   )
 
+  const applyMomentum = useCallback(
+    (vx, vy) => {
+      const scale = scaleValue.get()
+      const { minX, maxX, minY, maxY } = getBoundsAtScale(
+        scale,
+        fitDimensionsRef.current
+      )
+
+      let velocityX = vx
+      let velocityY = vy
+      let frame
+
+      function step() {
+        velocityX *= MOMENTUM_DECAY
+        velocityY *= MOMENTUM_DECAY
+
+        if (
+          Math.abs(velocityX) < MOMENTUM_MIN_VELOCITY &&
+          Math.abs(velocityY) < MOMENTUM_MIN_VELOCITY
+        ) {
+          snapToBounds()
+          return
+        }
+
+        const cx = xValue.get()
+        const cy = yValue.get()
+        let nextX = cx + velocityX * (1 / 60)
+        let nextY = cy + velocityY * (1 / 60)
+
+        // Apply resistance when beyond bounds
+        if (nextX < minX) {
+          nextX = minX + (nextX - minX) * ELASTIC_FACTOR
+          velocityX *= 0.5
+        } else if (nextX > maxX) {
+          nextX = maxX + (nextX - maxX) * ELASTIC_FACTOR
+          velocityX *= 0.5
+        }
+
+        if (nextY < minY) {
+          nextY = minY + (nextY - minY) * ELASTIC_FACTOR
+          velocityY *= 0.5
+        } else if (nextY > maxY) {
+          nextY = maxY + (nextY - maxY) * ELASTIC_FACTOR
+          velocityY *= 0.5
+        }
+
+        xValue.set(nextX)
+        yValue.set(nextY)
+        frame = requestAnimationFrame(step)
+      }
+
+      frame = requestAnimationFrame(step)
+      momentumFrame.current = frame
+    },
+    [scaleValue, xValue, yValue, snapToBounds]
+  )
+
   const handlePanEnd = useCallback(
     (e, info) => {
       isDraggingRef.current = false
@@ -335,10 +399,18 @@ function LightboxContent({ src, alt, close }) {
           animate(yValue, 0, SPRING_RESET)
         }
       } else {
-        snapToBounds()
+        const hasVelocity =
+          Math.abs(info.velocity.x) > MOMENTUM_MIN_VELOCITY ||
+          Math.abs(info.velocity.y) > MOMENTUM_MIN_VELOCITY
+
+        if (hasVelocity) {
+          applyMomentum(info.velocity.x, info.velocity.y)
+        } else {
+          snapToBounds()
+        }
       }
     },
-    [scaleValue, xValue, yValue, opacityVal, close, snapToBounds]
+    [scaleValue, xValue, yValue, opacityVal, close, snapToBounds, applyMomentum]
   )
 
   return (
