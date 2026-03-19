@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { DialogTrigger, Button, Popover } from 'react-aria-components'
 import clsx from 'clsx'
@@ -31,6 +31,10 @@ const Toggle = () => {
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
 
   return (
     <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
