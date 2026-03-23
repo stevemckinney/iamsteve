@@ -58,3 +58,6 @@ uploads
 
 # Notes processing
 .notes-processing-results.json
+
+# Memory
+memory/

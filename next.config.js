@@ -163,6 +163,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/blog/how-to-use-kerning-tracking',
+        destination: '/blog/kerning-vs-tracking',
+        permanent: true,
+      },
+      {
         source: '/blog/entry/horizontal‑scrolling‑responsive‑menu',
         destination: '/blog/horizontal-scrolling-responsive-menu',
         permanent: true,
