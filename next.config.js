@@ -282,6 +282,67 @@ const nextConfig = {
         destination: '/static/favicon.png',
         permanent: true,
       },
+      // Legacy URL redirects
+      {
+        source: '/design',
+        destination: '/category/design',
+        permanent: true,
+      },
+      {
+        source: '/portfolio',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/blog/\\{site_url\\}',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/category/css/page/:num',
+        destination: '/category/code',
+        permanent: true,
+      },
+      {
+        source: '/mo',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blog/entry/sass_hints_tips',
+        destination: '/blog/sass-hints-and-tips',
+        permanent: true,
+      },
+      {
+        source: '/2',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/subscribe',
+        destination: '/newsletter',
+        permanent: true,
+      },
+      {
+        source: '/blog/about-version-6',
+        destination: '/blog/about-version-six',
+        permanent: true,
+      },
+      {
+        source: '/blog/category/:slug',
+        destination: '/category/:slug',
+        permanent: true,
+      },
+      {
+        source: '/category/everything',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/$',
+        destination: '/',
+        permanent: true,
+      },
       // Junk redirects
       {
         source: '/:path(index.php)',
