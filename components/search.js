@@ -11,14 +11,55 @@ import {
 import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
 
+let indexCache = null
+
+async function getSearchIndex() {
+  if (indexCache) return indexCache
+  const response = await fetch('/api/search')
+  indexCache = await response.json()
+  return indexCache
+}
+
+function searchIndex(index, query) {
+  if (!query || query.trim().length < 2) return []
+
+  const terms = query.toLowerCase().trim().split(/\s+/)
+
+  const matchScore = (text) => {
+    if (!text) return 0
+    const lower = text.toLowerCase()
+    let score = 0
+    for (const term of terms) {
+      if (lower.includes(term)) score++
+    }
+    return score
+  }
+
+  return index
+    .map((item) => {
+      const titleScore = matchScore(item.title) * 3
+      const summaryScore = matchScore(item.summary) * 2
+      const tagScore = matchScore(item.tags?.join(' '))
+      const categoryScore = matchScore(item.categories?.join(' '))
+      const total = titleScore + summaryScore + tagScore + categoryScore
+      return { ...item, score: total }
+    })
+    .filter((r) => r.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 20)
+    .map(({ score, ...rest }) => rest)
+}
+
 function typeLabel(type) {
   switch (type) {
     case 'post':
       return 'Blog'
     case 'note':
       return 'Note'
-    case 'collection':
-      return 'Collection'
+    case 'page':
+      return 'Page'
+    case 'category':
+      return 'Category'
     default:
       return type
   }
@@ -30,15 +71,16 @@ function typeIcon(type) {
       return 'pen'
     case 'note':
       return 'notepad'
-    case 'collection':
-      return 'collections'
+    case 'page':
+      return 'home'
+    case 'category':
+      return 'folder'
     default:
       return 'search'
   }
 }
 
 function SearchResult({ result, isSelected, onSelect, onHover }) {
-  const isExternal = result.type === 'collection'
   const ref = useRef(null)
 
   useEffect(() => {
@@ -88,15 +130,6 @@ function SearchResult({ result, isSelected, onSelect, onHover }) {
         <span className="text-[10px] uppercase tracking-wider text-ui-body/50 font-medium">
           {typeLabel(result.type)}
         </span>
-        {isExternal && (
-          <Icon
-            icon="external"
-            size={16}
-            variant="default"
-            aria-hidden="true"
-            className="text-ui-body/40"
-          />
-        )}
       </span>
     </li>
   )
@@ -115,39 +148,28 @@ function SearchModal({ isOpen, onOpenChange }) {
   const [results, setResults] = useState([])
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [loading, setLoading] = useState(false)
+  const [index, setIndex] = useState(null)
   const inputRef = useRef(null)
-  const debounceRef = useRef(null)
   const router = useRouter()
 
-  const fetchResults = useCallback(async (q) => {
-    if (!q || q.trim().length < 2) {
-      setResults([])
-      setLoading(false)
-      return
-    }
-
-    setLoading(true)
-    try {
-      const response = await fetch(
-        `/api/search?q=${encodeURIComponent(q.trim())}`
-      )
-      const data = await response.json()
-      setResults(data.results || [])
-      setSelectedIndex(0)
-    } catch {
-      setResults([])
-    } finally {
-      setLoading(false)
-    }
-  }, [])
-
+  // Load the search index when the modal first opens
   useEffect(() => {
-    if (debounceRef.current) clearTimeout(debounceRef.current)
-    debounceRef.current = setTimeout(() => fetchResults(query), 200)
-    return () => {
-      if (debounceRef.current) clearTimeout(debounceRef.current)
+    if (isOpen && !index) {
+      setLoading(true)
+      getSearchIndex().then((data) => {
+        setIndex(data)
+        setLoading(false)
+      })
     }
-  }, [query, fetchResults])
+  }, [isOpen, index])
+
+  // Filter client-side whenever query or index changes
+  useEffect(() => {
+    if (!index) return
+    const filtered = searchIndex(index, query)
+    setResults(filtered)
+    setSelectedIndex(0)
+  }, [query, index])
 
   useEffect(() => {
     if (!isOpen) {
@@ -159,11 +181,7 @@ function SearchModal({ isOpen, onOpenChange }) {
 
   const navigateToResult = useCallback(
     (result) => {
-      if (result.type === 'collection') {
-        window.open(result.slug, '_blank', 'noopener,noreferrer')
-      } else {
-        router.push(result.slug)
-      }
+      router.push(result.slug)
       onOpenChange(false)
     },
     [router, onOpenChange]
@@ -217,7 +235,7 @@ function SearchModal({ isOpen, onOpenChange }) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Search posts, notes, collections\u2026"
+                placeholder="Search posts, notes, pages\u2026"
                 className="flex-1 py-3.5 bg-transparent text-base text-heading placeholder:text-ui-body/40 outline-none border-0"
                 autoFocus
                 autoComplete="off"
@@ -248,14 +266,15 @@ function SearchModal({ isOpen, onOpenChange }) {
               </kbd>
             </div>
 
-            {query.trim().length >= 2 && (
+            {loading && (
+              <div className="px-4 py-8 text-center text-sm text-ui-body/50">
+                Loading&hellip;
+              </div>
+            )}
+
+            {!loading && query.trim().length >= 2 && (
               <div className="max-h-[60vh] overflow-y-auto">
-                {loading && results.length === 0 && (
-                  <div className="px-4 py-8 text-center text-sm text-ui-body/50">
-                    Searching&hellip;
-                  </div>
-                )}
-                {!loading && results.length === 0 && (
+                {results.length === 0 && (
                   <div className="px-4 py-8 text-center text-sm text-ui-body/50">
                     No results found for &ldquo;{query}&rdquo;
                   </div>
@@ -280,7 +299,7 @@ function SearchModal({ isOpen, onOpenChange }) {
               </div>
             )}
 
-            {query.trim().length < 2 && (
+            {!loading && query.trim().length < 2 && (
               <div className="px-4 py-6 text-center text-sm text-ui-body/40">
                 Type to search across all content
               </div>
