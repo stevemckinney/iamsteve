@@ -31,6 +31,7 @@ import Icon from '@/components/icon'
 import Link from '@/components/link'
 import Newsletter from '@/components/newsletter'
 import { PostLayoutFrame } from '@/components/post'
+import FragmentLinks from '@/components/fragment-links'
 
 import { Suspense } from 'react'
 import { getPageView } from '../../../(blog)/blog/views'
@@ -340,6 +341,7 @@ export default async function PostPage(props) {
           <>
             <PostImage post={post} />
             <PostMdx code={post.mdx} />
+            <FragmentLinks />
             <Badge
               href={editUrl(post._meta.fileName)}
               size={16}
