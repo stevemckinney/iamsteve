@@ -17,7 +17,6 @@ export default async function generateSitemap() {
     '/uses',
     '/contact',
     '/newsletter',
-    '/subscribe',
   ].map((route) => ({
     url: `${siteMetadata.siteUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],

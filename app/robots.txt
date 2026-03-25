@@ -23,5 +23,10 @@ Allow: /
 # All other crawlers
 User-agent: *
 Allow: /
+Disallow: /_next/image
+Disallow: /_next/data
+Disallow: /*?URL=
+Disallow: /*?_rsc=
+Disallow: /*?PageSpeed=
 
 Sitemap: https://iamsteve.me/sitemap.xml
