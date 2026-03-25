@@ -1,6 +1,6 @@
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
-import { allCollections } from 'contentlayer/generated'
+import { allCollections } from 'content-collections'
 
 import { Mdx } from '@/components/mdx-components'
 import { Header, Title, Column, Description } from '@/components/page'

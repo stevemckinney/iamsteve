@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { allPages } from 'contentlayer/generated'
+import { allPages } from 'content-collections'
 
 import { MDX } from '@/components/mdx-components'
 import { Header, Title, Column, Description } from '@/components/page'
@@ -62,13 +62,13 @@ export default async function PagePage(props) {
             <Title>{page.title}</Title>
             <Description>{page.description}</Description>
           </Column>
-          {page.slot && (
+          {page.slotMdx && (
             <Column className="md:col-span-1 self-end">
-              <MDX code={page.slot.code} />
+              <MDX code={page.slotMdx} />
             </Column>
           )}
         </Header>
-        <MDX code={page.body.code} />
+        <MDX code={page.mdx} />
       </article>
     </>
   )

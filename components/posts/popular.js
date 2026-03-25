@@ -110,7 +110,7 @@ export default function PopularPosts({ posts }) {
             size="container"
             frontmatter={post}
             image={false}
-            key={post._id}
+            key={post._meta?.filePath}
             className="max-sm:w-[calc(100vw-48px)] max-sm:snap-center md:col-span-1"
           />
         ))}

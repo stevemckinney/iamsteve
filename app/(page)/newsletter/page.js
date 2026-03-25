@@ -5,7 +5,7 @@ import Newsletter from '@/components/newsletter'
 import Card from '@/components/card'
 import Campaigns from './campaigns'
 import ErrorBoundary from '@/components/error-boundary'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 export const revalidate = 2592000
 
 export default async function NewsletterPage({ data, Post }) {

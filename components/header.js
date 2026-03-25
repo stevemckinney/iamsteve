@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 import Link from './link'
 import Icon from '@/components/icon'
 import { Navigation } from '@/components/navigation'
+import Search from '@/components/search'
 import { CopyFeedUrl } from '@/components/button/index'
 import {
   MenuTrigger,
@@ -76,7 +77,7 @@ function Desktop({ pathname }) {
       id="nav"
       suppressHydrationWarning
     >
-      <ul className="flex justify-between md:gap-8 2xl:py-0.5">
+      <ul className="flex justify-between md:gap-8 2xl:py-0.5 items-center">
         {navigation.map((link) => {
           const isLibrary = link.title === 'Library'
 
@@ -205,6 +206,15 @@ function Desktop({ pathname }) {
             </li>
           )
         })}
+        <li>
+          <Search
+            variant="desktop"
+            className={cn(
+              'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
+              'lg:text-xl/none lg:py-1 xl:py-0.5'
+            )}
+          />
+        </li>
       </ul>
     </nav>
   )
@@ -311,7 +321,10 @@ export default function Header() {
           </span>
           <Desktop pathname={pathname} />
           <Tabbar pathname={pathname} />
-          <Navigation />
+          <span className="flex items-center gap-3 md:hidden">
+            <Search variant="mobile" />
+            <Navigation />
+          </span>
         </div>
       </header>
     </>

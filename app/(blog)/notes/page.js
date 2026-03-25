@@ -4,7 +4,7 @@
  */
 
 import { cache } from 'react'
-import { allNotes } from 'contentlayer/generated'
+import { allNotes } from 'content-collections'
 
 import { sortPosts } from '@/lib/utils/content'
 import { format, parseISO } from 'date-fns'
@@ -84,7 +84,7 @@ export default async function NotesIndex() {
       <div className="col-content flex flex-col">
         {notes.map((note, index) => (
           <article
-            key={note._id}
+            key={note._meta.filePath}
             className={`grid grid-cols-1 md:grid-cols-[minmax(8rem,_auto)_24px_1fr_auto] gap-x-4 lg:gap-x-6 ${
               index > 0 ? 'pt-8' : ''
             }`}
@@ -133,12 +133,12 @@ export default async function NotesIndex() {
                 </Link>
               </h2>
               <div className="lg:text-xl">
-                <NoteFeedContent code={note.body.code} />
+                <NoteFeedContent code={note.mdx} />
               </div>
               {/* Mobile meta */}
               <div className="flex items-center gap-4 mt-6 md:hidden">
                 <Badge size={16} theme="lavender" iconStart="views">
-                  {note.body.raw.split(/\s+/).length} words
+                  {note.content.split(/\s+/).length} words
                 </Badge>
                 <CopyLink slug={note.slug} />
               </div>
@@ -151,7 +151,7 @@ export default async function NotesIndex() {
               }`}
             >
               <Badge size={16} theme="lavender" iconStart="views">
-                {note.body.raw.split(/\s+/).length} words
+                {note.content.split(/\s+/).length} words
               </Badge>
               <CopyLink slug={note.slug} />
             </div>

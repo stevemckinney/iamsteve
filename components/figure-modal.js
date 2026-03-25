@@ -38,7 +38,12 @@ function clamp(value, min, max) {
 }
 
 function updateCursor(el, scale, isDragging) {
-  const classes = ['cursor-zoom-in', 'cursor-zoom-out', 'cursor-grab', 'cursor-grabbing']
+  const classes = [
+    'cursor-zoom-in',
+    'cursor-zoom-out',
+    'cursor-grab',
+    'cursor-grabbing',
+  ]
   el.classList.remove(...classes)
   if (scale <= 1) el.classList.add('cursor-zoom-in')
   else if (scale >= MAX_SCALE) el.classList.add('cursor-zoom-out')
@@ -99,7 +104,11 @@ function LightboxContent({ src, alt, close }) {
   // Update cursor via DOM to avoid re-renders
   useMotionValueEvent(scaleValue, 'change', (s) => {
     if (buttonRef.current) {
-      updateCursor(buttonRef.current, Math.max(MIN_SCALE, s), isDraggingRef.current)
+      updateCursor(
+        buttonRef.current,
+        Math.max(MIN_SCALE, s),
+        isDraggingRef.current
+      )
     }
   })
 
