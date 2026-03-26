@@ -10,7 +10,7 @@ import styles from './note-mdx.module.css'
 const noteComponents = {
   h2: (props) => (
     <h2
-      className="text-lg lg:text-2xl font-variation-bold font-display lowercase text-heading mt-6 mb-2"
+      className="text-lg lg:text-2xl lg:leading-2xl font-variation-bold font-display lowercase text-heading mt-6 mb-2"
       {...props}
     />
   ),
