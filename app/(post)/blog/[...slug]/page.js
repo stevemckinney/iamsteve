@@ -93,6 +93,9 @@ export async function generateMetadata(props, parent) {
       images: [
         {
           url: post.ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
         },
       ],
     },
