@@ -64,9 +64,7 @@ const Navigation = () => {
               isOpen={isOpen}
               index={index}
               className={clsx(
-                pathname === link.href
-                  ? 'text-nav-active'
-                  : 'text-emphasis'
+                pathname === link.href ? 'text-nav-active' : 'text-emphasis'
               )}
             >
               <Icon
@@ -74,9 +72,7 @@ const Navigation = () => {
                 size={link.size}
                 className={clsx(
                   'relative -top-px',
-                  pathname === link.href
-                    ? 'text-nav-active'
-                    : 'text-nav-icon'
+                  pathname === link.href ? 'text-nav-active' : 'text-nav-icon'
                 )}
                 variant="header"
               />
@@ -88,18 +84,14 @@ const Navigation = () => {
             isOpen={isOpen}
             index={mobile.length}
             className={clsx(
-              pathname === '/newsletter'
-                ? 'text-nav-active'
-                : 'text-emphasis'
+              pathname === '/newsletter' ? 'text-nav-active' : 'text-emphasis'
             )}
           >
             <Icon
               icon="airplane"
               className={clsx(
                 'relative -top-px',
-                pathname === '/newsletter'
-                  ? 'text-nav-active'
-                  : 'text-nav-icon'
+                pathname === '/newsletter' ? 'text-nav-active' : 'text-nav-icon'
               )}
               variant="header"
             />

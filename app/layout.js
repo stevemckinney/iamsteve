@@ -45,10 +45,20 @@ export const metadata = {
     siteName: 'iamsteve',
     locale: 'en_GB',
     type: 'website',
+    images: [
+      {
+        url: '/images/twitter-card.png',
+        width: 1200,
+        height: 600,
+        alt: 'iamsteve — design and code blog',
+      },
+    ],
   },
   twitter: {
     title: 'iamsteve.me • design & code blog',
     card: 'summary_large_image',
+    site: '@irsteve',
+    creator: '@irsteve',
   },
 }
 
@@ -201,20 +211,14 @@ export default function RootLayout({ children }) {
             </ul>
           </footer>
           <div className="col-container relative -top-4 pb-24 flex flex-row items-center gap-8">
-            <span
-              className="flex-1 bg-dash-image h-[2px]"
-              aria-hidden="true"
-            />
+            <span className="flex-1 bg-dash-image h-[2px]" aria-hidden="true" />
             <Icon
               icon="logo"
               className="text-emphasis"
               variant="header"
               size={32}
             />
-            <span
-              className="flex-1 bg-dash-image h-[2px]"
-              aria-hidden="true"
-            />
+            <span className="flex-1 bg-dash-image h-[2px]" aria-hidden="true" />
           </div>
         </div>
       </body>
