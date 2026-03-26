@@ -21,10 +21,10 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1(@types/react@18.3.12)(react@19.0.0)
       '@next/bundle-analyzer':
-        specifier: ^14.2.33
+        specifier: ^16.2.0
         version: 14.2.33
       '@next/mdx':
-        specifier: ^15.5.7
+        specifier: ^16.2.0
         version: 15.5.7(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@18.3.12)(react@19.0.0))
       '@supabase/ssr':
         specifier: ^0.5.2
@@ -63,7 +63,7 @@ importers:
         specifier: ^0.25.0
         version: 0.25.12
       eslint-config-next:
-        specifier: ^14.2.33
+        specifier: ^16.2.0
         version: 14.2.33(eslint@9.39.1(jiti@2.6.1))(typescript@5.7.2)
       feed:
         specifier: ^4.2.2
@@ -90,7 +90,7 @@ importers:
         specifier: ^12.23.25
         version: 12.23.25(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next:
-        specifier: 16.0.10
+        specifier: 16.2.0
         version: 16.0.10(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.94.2)
       next-contentlayer2:
         specifier: ^0.5.8
@@ -187,7 +187,7 @@ importers:
         specifier: ^9.39.1
         version: 9.39.1
       '@next/eslint-plugin-next':
-        specifier: ^15.5.7
+        specifier: ^16.2.0
         version: 15.5.7
       '@tailwindcss/postcss':
         specifier: ^4.1.18
