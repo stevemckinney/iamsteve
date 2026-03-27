@@ -1,5 +1,5 @@
 ---
-title: 'The best ink trap fonts for web design (free & premium)'
+title: 'The best ink trap fonts for web design'
 date: '2021-07-28T10:28:00+00:00'
 lastmod: '2021-07-28T10:28:00+00:00'
 summary: 'A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs.'
