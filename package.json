@@ -2,7 +2,7 @@
   "name": "iamsteve",
   "version": "8.3.33",
   "private": true,
-  "packageManager": "pnpm@10.25.0",
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "lint": "ESLINT_USE_FLAT_CONFIG=true eslint app components lib --fix",
     "icons": "pnpm icons-16 && pnpm icons-24",
@@ -31,16 +31,20 @@
       "whatwg-url": "13.0.0"
     },
     "onlyBuiltDependencies": [
+      "@parcel/watcher",
       "contentlayer2",
-      "esbuild"
+      "esbuild",
+      "protobufjs",
+      "sharp",
+      "unrs-resolver"
     ]
   },
   "dependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@next/bundle-analyzer": "^14.2.33",
-    "@next/mdx": "^15.5.7",
+    "@next/bundle-analyzer": "^16.2.0",
+    "@next/mdx": "^16.2.0",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.86.2",
     "@tailwindcss/container-queries": "^0.1.1",
@@ -53,7 +57,7 @@
     "dedent": "^0.7.0",
     "encoding": "^0.1.13",
     "esbuild": "^0.25.0",
-    "eslint-config-next": "^14.2.33",
+    "eslint-config-next": "^16.2.0",
     "feed": "^4.2.2",
     "github-slugger": "^2.0.0",
     "globby": "^11.1.0",
@@ -62,7 +66,7 @@
     "marked": "^14.1.4",
     "mdast-util-to-string": "^4.0.0",
     "motion": "^12.23.25",
-    "next": "16.0.10",
+    "next": "^16.2.0",
     "next-contentlayer2": "^0.5.8",
     "postcss": "^8.5.6",
     "postcss-nesting": "^12.1.5",
@@ -104,7 +108,7 @@
     "@eslint/compat": "^1.4.1",
     "@eslint/eslintrc": "^3.3.3",
     "@eslint/js": "^9.39.1",
-    "@next/eslint-plugin-next": "^15.5.7",
+    "@next/eslint-plugin-next": "^16.2.0",
     "@tailwindcss/postcss": "^4.1.18",
     "axios": "^1.13.5",
     "baseline-browser-mapping": "^2.9.19",
