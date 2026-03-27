@@ -1,7 +1,43 @@
 import { NextResponse } from 'next/server'
 
+const STRIP_PARAMS = [
+  'URL',
+  '_rsc',
+  'PageSpeed',
+  'source',
+  'ref',
+  'S',
+  'D',
+  'C',
+  'M',
+  'channel_id',
+  'entry_id',
+]
+
+const GONE_PATHS = ['/fonts/InterVariable.woff2', '/cdn-cgi/l/email-protection']
+
 export function proxy(request) {
-  const pathname = request.nextUrl.pathname
+  const { pathname } = request.nextUrl
+
+  // Return 410 Gone for removed resources
+  if (GONE_PATHS.includes(pathname)) {
+    return new NextResponse(null, { status: 410 })
+  }
+
+  // Strip junk query parameters
+  const url = request.nextUrl.clone()
+  let stripped = false
+
+  for (const param of STRIP_PARAMS) {
+    if (url.searchParams.has(param)) {
+      url.searchParams.delete(param)
+      stripped = true
+    }
+  }
+
+  if (stripped) {
+    return NextResponse.redirect(url, 301)
+  }
 
   // Handle .md extension requests
   if (pathname.endsWith('.md')) {
@@ -46,10 +82,13 @@ export function proxy(request) {
 
 export const config = {
   matcher: [
-    '/blog/:path*.md',
-    '/collections/:path*.md',
-    '/uses.md',
-    '/about.md',
-    '/notes/:path*.md',
+    /*
+     * Match all paths except:
+     * - _next/static (static files)
+     * - _next/image (image optimisation)
+     * - favicon.ico
+     * - public assets (images, fonts, icons)
+     */
+    '/((?!_next/static|_next/image|favicon.ico|images|fonts|icon).*)',
   ],
 }
