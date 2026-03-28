@@ -9,7 +9,10 @@ import rehypeSlug from 'rehype-slug'
 import rehypeShiki from '@shikijs/rehype'
 import { transformerMetaHighlight } from '@shikijs/transformers'
 import { shikiLightTheme, shikiDarkTheme } from './lib/shiki-theme.js'
-import { transformerLineNumbers } from './lib/shiki-transformers.js'
+import {
+  transformerCSSThemeDirective,
+  transformerLineNumbers,
+} from './lib/shiki-transformers.js'
 import rehypeHeadingLinks from './lib/rehype-heading-links'
 import remarkCodeTitles from './lib/remark-code-title'
 import remarkChat from './lib/remark-chat'
@@ -30,7 +33,11 @@ const mdxOptions = {
           dark: shikiDarkTheme,
         },
         defaultLanguage: 'text',
-        transformers: [transformerMetaHighlight(), transformerLineNumbers()],
+        transformers: [
+          transformerMetaHighlight(),
+          transformerCSSThemeDirective(),
+          transformerLineNumbers(),
+        ],
         parseMetaString: (str) => {
           const meta = {}
           const lineNumMatch = str.match(/showLineNumbers(?:=(\d+))?/)
