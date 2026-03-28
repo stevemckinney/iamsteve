@@ -1,25 +1,49 @@
-import { defineCollection, defineConfig } from "@content-collections/core"
-import { compileMDX } from "@content-collections/mdx"
-import { z } from "zod"
+import { defineCollection, defineConfig } from '@content-collections/core'
+import { compileMDX } from '@content-collections/mdx'
+import { z } from 'zod'
 
-import readingTime from "reading-time"
-import remarkGfm from "remark-gfm"
-import smartypants from "remark-smartypants"
-import rehypeSlug from "rehype-slug"
-import rehypePrism from "rehype-prism-plus"
-import rehypeHeadingLinks from "./lib/rehype-heading-links"
-import remarkCodeTitles from "./lib/remark-code-title"
-import remarkChat from "./lib/remark-chat"
-import { compileMdxForRssWithMarked } from "./lib/compile-mdx-for-rss.js"
-import GithubSlugger from "github-slugger"
-import siteMetadata from "./content/metadata"
+import readingTime from 'reading-time'
+import remarkGfm from 'remark-gfm'
+import smartypants from 'remark-smartypants'
+import rehypeSlug from 'rehype-slug'
+import rehypeShiki from '@shikijs/rehype'
+import { transformerMetaHighlight } from '@shikijs/transformers'
+import { shikiLightTheme, shikiDarkTheme } from './lib/shiki-theme.js'
+import { transformerLineNumbers } from './lib/shiki-transformers.js'
+import rehypeHeadingLinks from './lib/rehype-heading-links'
+import remarkCodeTitles from './lib/remark-code-title'
+import remarkChat from './lib/remark-chat'
+import { compileMdxForRssWithMarked } from './lib/compile-mdx-for-rss.js'
+import GithubSlugger from 'github-slugger'
+import siteMetadata from './content/metadata'
 
 const mdxOptions = {
   remarkPlugins: [remarkGfm, remarkCodeTitles, smartypants, remarkChat],
   rehypePlugins: [
     rehypeSlug,
     rehypeHeadingLinks,
-    [rehypePrism, { ignoreMissing: true }],
+    [
+      rehypeShiki,
+      {
+        themes: {
+          light: shikiLightTheme,
+          dark: shikiDarkTheme,
+        },
+        defaultLanguage: 'text',
+        transformers: [transformerMetaHighlight(), transformerLineNumbers()],
+        parseMetaString: (str) => {
+          const meta = {}
+          const lineNumMatch = str.match(/showLineNumbers(?:=(\d+))?/)
+          if (lineNumMatch) {
+            meta.showLineNumbers = true
+            if (lineNumMatch[1]) {
+              meta.startLineNumber = parseInt(lineNumMatch[1], 10)
+            }
+          }
+          return meta
+        },
+      },
+    ],
   ],
 }
 
@@ -30,19 +54,17 @@ function computeHeadings(raw) {
     const flag = groups?.flag
     const content = groups?.content
     const cleanContent = content
-      ? content
-          .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1")
-          .replace(/<[^>]+>/g, "")
-      : ""
+      ? content.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/<[^>]+>/g, '')
+      : ''
     return {
       level:
         flag?.length == 1
-          ? "one"
+          ? 'one'
           : flag?.length == 2
-          ? "two"
+          ? 'two'
           : flag?.length == 3
-          ? "three"
-          : "four",
+          ? 'three'
+          : 'four',
       text: cleanContent,
       slug: cleanContent ? slugger.slug(cleanContent) : undefined,
     }
@@ -64,9 +86,9 @@ function computeRssBody(raw, filePath) {
 }
 
 const posts = defineCollection({
-  name: "posts",
-  directory: "content/blog",
-  include: "**/*.md",
+  name: 'posts',
+  directory: 'content/blog',
+  include: '**/*.md',
   schema: z.object({
     content: z.string(),
     title: z.string(),
@@ -85,11 +107,14 @@ const posts = defineCollection({
     codepen: z.boolean().optional(),
     twitter: z.boolean().optional(),
     id: z.number(),
-    status: z.enum(["draft", "open", "closed"]).default("draft"),
+    status: z.enum(['draft', 'open', 'closed']).default('draft'),
   }),
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)
-    const slugAsParams = doc._meta.path.split("/").pop().replace(/^\d{4}-/, "")
+    const slugAsParams = doc._meta.path
+      .split('/')
+      .pop()
+      .replace(/^\d{4}-/, '')
     return {
       ...doc,
       mdx,
@@ -99,11 +124,11 @@ const posts = defineCollection({
       slug: `/blog/${slugAsParams}`,
       slugAsParams,
       structuredData: {
-        "@context": "https://schema.org",
-        "@type": "Article",
+        '@context': 'https://schema.org',
+        '@type': 'Article',
         mainEntityOfPage: {
-          "@type": "WebPage",
-          "@id": `${siteMetadata.siteUrl}/blog/${slugAsParams}`,
+          '@type': 'WebPage',
+          '@id': `${siteMetadata.siteUrl}/blog/${slugAsParams}`,
         },
         headline: doc.title,
         datePublished: doc.date,
@@ -113,19 +138,19 @@ const posts = defineCollection({
         url: `${siteMetadata.siteUrl}/blog/${slugAsParams}`,
         author: [
           {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            name: "Steve McKinney",
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Steve McKinney',
             url: `${siteMetadata.siteUrl}`,
           },
         ],
         publisher: [
           {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "Steve",
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'Steve',
             logo: {
-              "@type": "ImageObject",
+              '@type': 'ImageObject',
               url: `${siteMetadata.siteUrl}/images/logo.svg`,
             },
           },
@@ -136,19 +161,19 @@ const posts = defineCollection({
 })
 
 const notes = defineCollection({
-  name: "notes",
-  directory: "content/notes",
-  include: "**/*.md",
+  name: 'notes',
+  directory: 'content/notes',
+  include: '**/*.md',
   schema: z.object({
     content: z.string(),
     title: z.string(),
     date: z.string(),
-    status: z.enum(["draft", "published"]).default("published"),
+    status: z.enum(['draft', 'published']).default('published'),
     summary: z.string().nullable().optional(),
   }),
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)
-    const slugAsParams = doc._meta.path.split("/").pop()
+    const slugAsParams = doc._meta.path.split('/').pop()
     return {
       ...doc,
       mdx,
@@ -160,9 +185,9 @@ const notes = defineCollection({
 })
 
 const collections = defineCollection({
-  name: "collections",
-  directory: "content/collections",
-  include: "**/*.md",
+  name: 'collections',
+  directory: 'content/collections',
+  include: '**/*.md',
   schema: z.object({
     content: z.string(),
     title: z.string(),
@@ -170,13 +195,13 @@ const collections = defineCollection({
     date: z.string(),
     collection: z.array(z.string()).optional(),
     kind: z
-      .enum(["website", "article", "resource", "tool"])
-      .default("website")
+      .enum(['website', 'article', 'resource', 'tool'])
+      .default('website')
       .optional(),
   }),
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)
-    const slugAsParams = doc._meta.path.split("/").pop()
+    const slugAsParams = doc._meta.path.split('/').pop()
     return {
       ...doc,
       mdx,
@@ -187,9 +212,9 @@ const collections = defineCollection({
 })
 
 const pages = defineCollection({
-  name: "pages",
-  directory: "content/pages",
-  include: "**/*.md",
+  name: 'pages',
+  directory: 'content/pages',
+  include: '**/*.md',
   schema: z.object({
     content: z.string(),
     title: z.string(),
@@ -203,7 +228,7 @@ const pages = defineCollection({
     if (doc.slot) {
       slotMdx = await compileMDX(ctx, { ...doc, content: doc.slot }, mdxOptions)
     }
-    const slugAsParams = doc._meta.path.split("/").pop()
+    const slugAsParams = doc._meta.path.split('/').pop()
     return {
       ...doc,
       mdx,
