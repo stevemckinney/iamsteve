@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.content-collections
 .contentlayer
 .velite
 
