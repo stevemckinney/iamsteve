@@ -17,8 +17,7 @@
     box-shadow: var(--shadow-floating);
   }
 
-  [data-rehype-pretty-code-figure] pre,
-  [data-rehype-pretty-code-figure] code {
+  [data-rehype-pretty-code-figure] pre {
     display: block;
   }
 

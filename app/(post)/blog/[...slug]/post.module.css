@@ -407,6 +407,7 @@
   }
 
   & :global([data-rehype-pretty-code-figure]) {
+    box-shadow: var(--shadow-placed);
     margin-inline: -2.25rem;
 
     @media (width >= 640px) {

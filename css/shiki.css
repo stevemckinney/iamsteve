@@ -76,6 +76,8 @@ pre.shiki {
  */
 code[data-line-numbers] {
   counter-reset: line;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Support custom start line via data attribute */
