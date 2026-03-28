@@ -454,7 +454,7 @@ The spacing flows much better when there is a paragraph to break it up. Your rhy
 
 Sometimes you can’t avoid it and it shouldn’t be at the expense of unnatural writing or forcing it but it’s a conscious effort I make.
 
-## Avoid widows
+## Avoid widows and orphans
 Widows can create some awkwardness in your design. A widow is a single word or short line of text. So where you have greater control over the flow of text in a component you can try to ensure it doesn’t happen.
 
 <figure>
@@ -498,7 +498,10 @@ Don’t reach for `<br/>`. Use `<wbr/>` or `&nbsp;`.
 
 Using a `&nbsp;` (non-breaking space) will ensure you can keep word pairs together and using `<wbr/>` will only insert a `<br/>` when necessary.
 
-## Ending thoughts
+### Avoiding widows
+A widow is where a single line of a paragraph ends up at the top of a new column or page, separated from the rest of its text. In print, this is a well-known problem. On the web it’s less common because we rarely work with columns or paged layouts.
+
+But if you use CSS columns or `break-inside` for content layout, it’s easy to come up against them. That lone line draws the eye to an awkward gap rather than the content. It breaks the reading flow. You can use `break-inside: avoid` on elements you don’t want split across columns, but that can create its own spacing issues. The honest answer is that if you’re using CSS columns for long-form text, you’ll likely need to test and adjust manually.​​​​​​​​​​​​​​​​## Ending thoughts
 Taking these rules into account, a balanced approach to typesetting improves both readability and visual appeal.  Paying attention to factors like line height, letter spacing, and alignment makes things more intentional and works within the constraints of the chosen typeface.
 
 Keeping in mind the practicality of doing these things ensures your design is maintainable and not introducing more work. However, I have written similarly before with [visual design tips](/blog/visual-design-tips-you-can-apply-immediately) and these posts seem to go down well.
