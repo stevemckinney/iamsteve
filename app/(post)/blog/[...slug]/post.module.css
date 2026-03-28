@@ -386,47 +386,13 @@
 
 /**
  * code highlighting blocks
- * see prism.css for the code highlighting theme
+ * see shiki.css for the code highlighting theme
  */
 .prose {
-  & :global(.remark-code-container) {
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--spacing) * 1);
-    overflow: hidden;
-    background-color: var(--color-surface);
-    padding: calc(var(--spacing) * 1);
-    box-shadow: light-dark(
-      0 0 0 1px var(--color-neutral-01-150),
-      0 0 0 1px var(--color-surface-02)
-    );
-  }
-
-  & :global(pre[data-language]),
-  & :global(code[data-language]) {
-    color: var(--code-white);
-    direction: ltr;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    line-height: 1.5;
-    tab-size: 2;
-    hyphens: none;
-  }
-
-  & :global(pre[data-language]) {
-    display: grid;
-    grid-template-columns: max-content 1fr;
-    overflow: clip;
-    padding: calc(var(--spacing) * 8);
-  }
-
   & :global(.cp_embed_wrapper) {
     overflow: hidden;
   }
 
-  & :global(.remark-code-container),
   & :global(.cp_embed_wrapper) {
     margin-inline: -2.25rem;
 
@@ -435,22 +401,21 @@
     }
   }
 
-  :global(.remark-code-container) {
-    overflow: auto;
-  }
-
   :global(.codepen),
-  :global(.codepen-wide),
-  :global(.remark-code-container) {
+  :global(.codepen-wide) {
     box-shadow: var(--shadow-placed);
   }
 
-  & :global(.remark-code-bar) {
-    display: flex;
-    flex: 0 0 auto;
+  & :global([data-rehype-pretty-code-figure]) {
+    margin-inline: -2.25rem;
+
+    @media (width >= 640px) {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
   }
 
-  & :global(.remark-code-title) {
+  & :global([data-rehype-pretty-code-title]) {
     background-color: light-dark(
       var(--color-neutral-01-50),
       var(--color-fern-1100)
@@ -470,10 +435,5 @@
     gap: calc(var(--spacing) * 2);
     align-self: start;
     flex: 0 0 max-content;
-  }
-
-  /* tailwind class override */
-  & :global(.remark-code-container) :global(.table) {
-    display: unset !important;
   }
 }

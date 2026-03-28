@@ -79,7 +79,7 @@ Finally, you may be wondering about Firefox, it seems there isn’t a way at the
 
 ### HTML
 
-```markup
+```html
 <header class="scroll">
   <a href="http://iamsteve.me">Logo</a>
   <nav>

@@ -58,11 +58,15 @@ First, it’s necessary to get the structure of the bento grid. Then it makes se
 
 Everything needs to be contained within a `<div>` with this you’ll apply the grid styles to it.
 
-```markup:bento.html showLineNumbers {6-8}
+```html title="bento.html" showLineNumbers {6-8}
 <section>
   <header>
     <h2>Publish from anywhere with your frontmatter blog</h2>
-    <p>Why should you be left out of a cross device writing experience because you’re using a static site? Bureau takes away the pain of manually moving posts to your codebase and gives you the writing experience you need.</p>
+    <p>
+      Why should you be left out of a cross device writing experience because
+      you’re using a static site? Bureau takes away the pain of manually moving
+      posts to your codebase and gives you the writing experience you need.
+    </p>
   </header>
   <div class="bento-container">
     <!-- sections here -->
@@ -74,7 +78,7 @@ Everything needs to be contained within a `<div>` with this you’ll apply the g
 
 As the design features sections with different sizing and visual weight through use of imagery your markup for each will differ slightly.
 
-```markup:bento.html showLineNumbers {9-11}
+```html title="bento.html" showLineNumbers {9-11}
 <section class="bento-section">
   <div class="bento-body">
     <h3>
@@ -97,7 +101,7 @@ Overall for this design there’s 6 sections. Some sections will have an image o
 
 If you’re working in an environment that allows for a components, each section could be a single component with some properties for customisation.
 
-```markup showLineNumbers
+```html title="bento.html" showLineNumbers
 <section class="features">
   <header class="features-header">
     <h2 class="features-title">Publish from anywhere with your frontmatter blog</h2>
@@ -178,7 +182,7 @@ If you’re working in an environment that allows for a components, each section
 
 To create a bento with CSS grid doesn’t require too much to get going. You could also use `subgrid` for your columns, if your grid is defined on a parent element.
 
-```css:app.css showLineNumbers
+```css title="app.css" showLineNumbers
 .bento-container {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr);
@@ -194,7 +198,7 @@ The important bit of CSS here is `grid-auto-flow` aside from defining the 12 col
   <figcaption>Grid overlay shows the columns applied to the design</figcaption>
 </figure>
 
-```css:app.css showLineNumbers=7
+```css title="app.css" showLineNumbers=7
 /* optional */
 @media (min-width 1280px) {
   .bento-container {
@@ -216,7 +220,7 @@ When a grid is overlayed onto the design you can see what to aim for. Each secti
 
 This is a matter of setting how many columns and rows you wish for each section to `span`. As part of the design there are 3 different sizes for sections.
 
-```css
+```css title="app.css" showLineNumbers
 .bento-section-primary {
   grid-column: span 6;
   grid-row: span 4;
@@ -250,10 +254,10 @@ For this I have used [Tailwind 4 alpha](https://tailwindcss.com/blog/tailwindcss
 
 In this CSS file we’ll setup the type as well, for which I’m using [Inter Variable](https://rsms.me/inter/).
 
-```css:app.css
+```css title="app.css" showLineNumbers
 @font-face {
   font-family: 'Inter';
-  src: url("/fonts/InterVariable.woff2") format('woff2');
+  src: url('/fonts/InterVariable.woff2') format('woff2');
   font-display: swap;
   font-weight: 100 900;
 }
@@ -279,8 +283,16 @@ In this CSS file we’ll setup the type as well, for which I’m using [Inter Va
   --color-gunmetal-450: rgb(95 144 149);
 
   /* mask */
-  --image-mask-bottom: radial-gradient(125% 85% at 50% 15%, #000 65%, transparent 100%);
-  --image-mask-top: radial-gradient(97.5% 80% at 50% 80%, #000 65%, transparent 100%);
+  --image-mask-bottom: radial-gradient(
+    125% 85% at 50% 15%,
+    #000 65%,
+    transparent 100%
+  );
+  --image-mask-top: radial-gradient(
+    97.5% 80% at 50% 80%,
+    #000 65%,
+    transparent 100%
+  );
 }
 
 :root {
@@ -295,14 +307,24 @@ If you’re looking for a standard CSS application you can take the variables he
 
 You can get the complete markup on [Github](https://github.com/stevemckinney/bento-grid)—there’s a lot to get through but I will run through what’s needed with Tailwind to create this layout.
 
-```markup showLineNumbers {7-9}
+```html showLineNumbers {7-9}
 <section class="w-full px-4 md:px-14 py-16 flex flex-col items-center gap-10">
   <header class="flex flex-col gap-4 items-center max-w-[612px]">
-    <h2 class="text-cream text-center text-balance text-4xl md:text-[3.5rem] leading-[.9285714286] font-medium tracking-[-.03em] m-0 optical-size-32">Publish from anywhere with your frontmatter blog</h2>
-    <p class="text-white text-center m-0 max-w-prose">Why should you be left out of a cross device writing experience because you’re using a static site? Bureau takes away the pain of manually moving posts to your codebase and gives you the writing experience you need.</p>
+    <h2
+      class="text-cream text-center text-balance text-4xl md:text-[3.5rem] leading-[.9285714286] font-medium tracking-[-.03em] m-0 optical-size-32"
+    >
+      Publish from anywhere with your frontmatter blog
+    </h2>
+    <p class="text-white text-center m-0 max-w-prose">
+      Why should you be left out of a cross device writing experience because
+      you’re using a static site? Bureau takes away the pain of manually moving
+      posts to your codebase and gives you the writing experience you need.
+    </p>
   </header>
 
-  <div class="w-full max-w-[1328px] grid grid-cols-12 grid-flow-dense xl:auto-rows-fr gap-4">
+  <div
+    class="w-full max-w-[1328px] grid grid-cols-12 grid-flow-dense xl:auto-rows-fr gap-4"
+  >
     <!-- sections here -->
   </div>
 </section>
@@ -314,7 +336,7 @@ What was `bento-container` earlier now contains all of those same styles within.
 
 Now to apply all of the style and additional layout adjustments. Highlighted are the lines which affect layout.
 
-```markup showLineNumbers {1, 2, 8-10}
+```html showLineNumbers {1, 2, 8-10}
 <section class="@container/section flex flex-col col-span-full md:col-span-6 xl:row-span-4 gap-2 p-2 bg-gunmetal-850 ring-3 ring-gunmetal-750 rounded-2xl">
   <div class="p-6 flex flex-1 flex-col gap-4">
     <h3 class="text-cream font-semibold flex flex-col @[17.5rem]:flex-row @[17.5rem]:items-center gap-4 [font-variation-settings:'opsz'_32]">
@@ -332,8 +354,10 @@ Now to apply all of the style and additional layout adjustments. Highlighted are
 
 There’s adjustments that need to be made based on the containers size for images and titles which will be covered shortly. You can scope this container as well with a `container-name` or use Tailwind’s `/` syntax.
 
-```markup showLineNumbers
-<section class="@container/section flex flex-col col-span-full md:col-span-6 xl:row-span-4 gap-2 p-2 bg-gunmetal-850 ring-3 ring-gunmetal-750 rounded-2xl">
+```html showLineNumbers
+<section
+  class="@container/section flex flex-col col-span-full md:col-span-6 xl:row-span-4 gap-2 p-2 bg-gunmetal-850 ring-3 ring-gunmetal-750 rounded-2xl"
+></section>
 ```
 
 Here the container has further adjustment on column width throughout the standard Tailwind breakpoints.
@@ -349,8 +373,8 @@ Spacing is another crucial element. It’s applied to the outer edge of the cont
 
 On line 2 you’re using `flex-1` or `flex: 1 1 0%` to have the text content to expand fill any remaining space. It ensures when content differs in height images will be in alignment.
 
-```markup showLineNumbers=2
-<div class="p-6 flex flex-1 flex-col gap-4">
+```html showLineNumbers=2
+<div class="p-6 flex flex-1 flex-col gap-4"></div>
 ```
 
 This could be seen as optional or applied to the image container. It depends on your preference.
@@ -359,7 +383,7 @@ This could be seen as optional or applied to the image container. It depends on 
 
 Within each of titles there is an a `<span>` with an `<svg>` referencing a sprite icon with the fill colour applied as a `class`.
 
-```markup showLineNumbers=3
+```html showLineNumbers=3
 <h3 class="text-cream font-semibold flex flex-col @[17.5rem]:flex-row @[17.5rem]:items-center gap-4 [font-variation-settings:'opsz'_32]">
   <span class="bg-gunmetal-750 ring-3 ring-gunmetal-650 w-10 h-10 flex flex-[0_0_auto] items-center justify-center rounded-full" aria-hidden="true"><svg class="fill-cream" width="24" height="24"><use href="#automated"></svg></span> Automated versioning with Git
 </h3>
@@ -371,9 +395,16 @@ Each title will switch its layout to row when the space available is `17.5rem` o
 
 Lines 8–10 are ensuring each image is tailored for the container it’s in. Each image uses `object-none` or `object-fit: none` to ensure the image doesn’t scale down.
 
-```markup showLineNumbers=8
-<div class="flex rounded-lg bg-gunmetal-800 ring-3 ring-gunmetal-750 overflow-hidden aspect-340/376 @md:aspect-640/376">
-  <img srcset="images/git-versioning.png 1x, images/git-versioning@2x.png 2x" class="object-none object-[1rem_1rem] @md:object-[center_1rem] w-full h-full mask-(--image-mask-bottom)" width="468" height="376">
+```html showLineNumbers=8
+<div
+  class="flex rounded-lg bg-gunmetal-800 ring-3 ring-gunmetal-750 overflow-hidden aspect-340/376 @md:aspect-640/376"
+>
+  <img
+    srcset="images/git-versioning.png 1x, images/git-versioning@2x.png 2x"
+    class="object-none object-[1rem_1rem] @md:object-[center_1rem] w-full h-full mask-(--image-mask-bottom)"
+    width="468"
+    height="376"
+  />
 </div>
 ```
 
