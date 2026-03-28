@@ -1,7 +1,7 @@
 ---
 title: Rules I follow when typesetting
 date: "2025-03-10T08:37:00.168Z"
-lastmod: "2025-03-10T08:37:00.168Z"
+lastmod: "2026-03-28T21:47:00.168Z"
 summary: I’ve developed some habits over the years when it comes to the display of text in a design with the aim of readability and aesthetic balance. And it feels like it could be useful to document this.
 metadesc: I’ve developed some habits over the years when it comes to the display of text in a design with the aim of readability and aesthetic balance. And it feels like it could be useful to document this.
 theme: "#fcf9f8"
