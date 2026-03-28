@@ -23,15 +23,15 @@ function useMediaQuery(query) {
 const childBranchClasses = cn(
   'relative pl-6',
   'before:content-[""] before:absolute before:left-0 before:top-[-6px] before:w-4 before:h-6',
-  'before:border-l-2 before:border-b-2 before:border-neutral-01-600/30 dark:before:border-fern-400/12',
+  'before:border-l-2 before:border-b-2 before:border-toc-branch',
   'last:before:rounded-bl-sm',
   'after:content-[""] after:absolute after:left-0 after:bottom-[.375rem] after:w-4 after:h-[.75rem]',
-  'after:border-l-2 after:border-neutral-01-600/30 dark:after:border-fern-400/12 last:after:hidden',
+  'after:border-l-2 after:border-toc-branch last:after:hidden',
   'hover:before:w-6 before:will-change-auto before:transform-gpu before:transition-all before:duration-200 before:ease'
 )
 
 const linkBaseClasses =
-  'block truncate font-medium py-1.5 hover:text-fern-600 dark:hover:text-dandelion-300 hover:translate-x-2 transform-gpu transition-all duration-200 ease'
+  'block truncate font-medium py-1.5 hover:text-link-hover hover:translate-x-2 transform-gpu transition-all duration-200 ease'
 
 export default function HeadingList({ nestedHeadings, headings, toggleOpen }) {
   const [activeId, setActiveId] = useState('')
@@ -92,7 +92,7 @@ export default function HeadingList({ nestedHeadings, headings, toggleOpen }) {
               href={`#${heading.slug}`}
               className={cn(
                 linkBaseClasses,
-                activeId === heading.slug && 'text-fern-600 dark:text-fern-200'
+                activeId === heading.slug && 'text-toc-active'
               )}
               aria-current={activeId === heading.slug ? 'location' : undefined}
               aria-label={`Go to section: ${heading.text}`}

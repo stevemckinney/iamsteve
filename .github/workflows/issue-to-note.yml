@@ -1,0 +1,128 @@
+name: Publish note from issue
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  create-note:
+    if: github.event.label.name == 'note'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Create note from issue
+        id: create_note
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = context.payload.issue.title
+            const body = context.payload.issue.body || ''
+            const issueNumber = context.payload.issue.number
+
+            // Slugify the title for the filename
+            const slug = title
+              .toLowerCase()
+              .replace(/[^a-z0-9\s-]/g, '')
+              .replace(/\s+/g, '-')
+              .replace(/-+/g, '-')
+              .replace(/^-+|-+$/g, '')
+
+            // Generate summary from first sentence of the body
+            // if it looks short enough to be a summary
+            const firstLine = body.split('\n').filter(l => l.trim())[0] || ''
+            const firstSentence = firstLine.split(/(?<=[.!?])\s/)[0] || ''
+            let summary = ''
+
+            if (firstSentence.length > 0 && firstSentence.length <= 160) {
+              summary = firstSentence
+            } else if (body.length > 0) {
+              // Truncate to ~150 chars at a word boundary
+              const truncated = body.substring(0, 150).replace(/\s+\S*$/, '')
+              summary = truncated + '…'
+            }
+
+            // Build frontmatter
+            const date = new Date().toISOString()
+            const frontmatter = [
+              '---',
+              `title: "${title.replace(/"/g, '\\"')}"`,
+              `date: "${date}"`,
+              `status: published`,
+              summary ? `summary: "${summary.replace(/"/g, '\\"')}"` : null,
+              '---',
+            ].filter(Boolean).join('\n')
+
+            const content = `${frontmatter}\n\n${body}\n`
+
+            // Check for filename conflicts
+            const fs = require('fs')
+            const path = require('path')
+            const notesDir = 'content/notes'
+            let filename = `${slug}.md`
+            let counter = 1
+
+            while (fs.existsSync(path.join(notesDir, filename))) {
+              filename = `${slug}-${counter}.md`
+              counter++
+            }
+
+            const filePath = path.join(notesDir, filename)
+            fs.writeFileSync(filePath, content)
+
+            core.setOutput('file_path', filePath)
+            core.setOutput('slug', slug)
+            core.setOutput('issue_number', issueNumber)
+            core.setOutput('title', title)
+
+      - name: Create pull request
+        id: create_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          SLUG="${{ steps.create_note.outputs.slug }}"
+          ISSUE_NUMBER="${{ steps.create_note.outputs.issue_number }}"
+          TITLE="${{ steps.create_note.outputs.title }}"
+          FILE_PATH="${{ steps.create_note.outputs.file_path }}"
+          BRANCH="note/${SLUG}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b "$BRANCH"
+          git add "$FILE_PATH"
+          git commit -m "Add note: ${TITLE}"
+          git push -u origin "$BRANCH"
+
+          gh pr create \
+            --title "Add note: ${TITLE}" \
+            --body "$(cat <<EOF
+          ## Note from issue #${ISSUE_NUMBER}
+
+          Creates \`${FILE_PATH}\` from issue [#${ISSUE_NUMBER}](${{ github.event.issue.html_url }}).
+
+          Closes #${ISSUE_NUMBER}
+          EOF
+          )"
+
+      - name: Comment on issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = ${{ steps.create_note.outputs.issue_number }}
+            const slug = '${{ steps.create_note.outputs.slug }}'
+
+            github.rest.issues.createComment({
+              issue_number: issueNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `PR created to publish this note. Once merged it will be available at \`/notes/${slug}\`.`
+            })

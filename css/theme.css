@@ -54,8 +54,8 @@
  */
 @theme {
   /* general content */
-  --color-heading: light-dark(var(--color-fern-1100), var(--color-fern-100));
-  --color-body: light-dark(var(--color-fern-1100), var(--color-fern-300));
+  --color-heading: light-dark(var(--color-fern-1100), var(--color-fern-0));
+  --color-body: light-dark(var(--color-fern-1100), var(--color-fern-200));
   --color-body-80: light-dark(
     oklch(from var(--color-fern-1100) l c h / 0.8),
     oklch(from var(--color-fern-300) l c h / 0.8)
@@ -147,11 +147,69 @@
   );
 
   --bg-texture-image: url(/images/texture.png);
-  --bg-dash-image: light-dark(url(/images/dash.svg), url(/images/dash.svg));
+  --bg-dash-image: light-dark(
+    url(/images/dash.svg),
+    url(/images/dash-dark.svg)
+  );
 
   --color-ui-normal: light-dark(rgba(79, 64, 63, 0.12), rgba(79, 64, 63, 0.16));
   --color-ui-raised: light-dark(rgba(79, 64, 63, 0.18), rgba(79, 64, 63, 0.24));
   --color-ui-body: var(--color-body-80);
+
+  /* notice box */
+  --color-notice-bg: light-dark(
+    var(--color-cornflour-0),
+    color-mix(in oklch, var(--color-cornflour-900), transparent 70%)
+  );
+  --color-notice-text: light-dark(
+    var(--color-cornflour-900),
+    var(--color-cornflour-300)
+  );
+  --color-notice-muted: light-dark(
+    oklch(from var(--color-cornflour-900) l c h / 0.8),
+    oklch(from var(--color-cornflour-300) l c h / 0.8)
+  );
+  --color-notice-icon: light-dark(
+    var(--color-cornflour-900),
+    var(--color-cornflour-400)
+  );
+  --shadow-notice: light-dark(
+    var(--shadow-placed),
+    0 0 0 1px color-mix(in oklch, var(--color-cornflour-900), transparent 50%)
+  );
+
+  /* inline code */
+  --color-code-bg: light-dark(
+    oklch(from var(--color-fern-500) l c h / 0.12),
+    oklch(from var(--color-dandelion-400) l c h / 0.12)
+  );
+  --color-code-text: light-dark(
+    var(--color-fern-800),
+    var(--color-dandelion-400)
+  );
+
+  /* navigation */
+  --color-nav-active: light-dark(
+    var(--color-dandelion-500),
+    var(--color-dandelion-300)
+  );
+  --color-nav-icon: light-dark(
+    var(--color-neutral-03-500),
+    var(--color-fern-500)
+  );
+
+  /* table of contents */
+  --color-toc-active: light-dark(var(--color-fern-600), var(--color-fern-200));
+  --color-toc-branch: light-dark(
+    oklch(from var(--color-neutral-01-600) l c h / 0.3),
+    oklch(from var(--color-fern-400) l c h / 0.12)
+  );
+
+  /* blog counter */
+  --color-counter-updated: light-dark(
+    var(--color-grass-500),
+    var(--color-grass-300)
+  );
 
   /* form */
   --color-input: light-dark(

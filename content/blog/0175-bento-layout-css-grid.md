@@ -1,9 +1,9 @@
 ---
-title: Build a bento layout with CSS grid
+title: Bento grid layout with CSS grid and container queries
 date: '2024-07-02T14:58:09.706Z'
 lastmod: '2024-07-02T14:58:09.706Z'
 summary: Bento grids offer a unique layout challenge for CSS. With the use of Tailwind you can create a flexible layout with modern CSS grid and @container queries.
-metadesc: Build a bento grid using CSS grid and @container queries with Tailwind
+metadesc: Build a responsive bento grid using CSS grid, container queries and Tailwind. Includes a Figma design file and complete code on GitHub.
 theme: '#fcf9f8'
 tags: ['Code', 'Bento']
 categories: ['Code', 'Patterns']

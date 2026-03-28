@@ -212,28 +212,33 @@
   }
 
   & :global(.fragment) {
-    display: inline-flex;
-    align-items: center;
-    height: 1lh;
-    transition: opacity 0.2s, transform 0.4s;
-    transform-origin: center center;
+    text-decoration: none;
+    color: inherit;
   }
 
-  & :global(.fragment svg.icon) {
+  & :global(.fragment-icon) {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-inline-start: 0.25rem;
+    transition: opacity 0.15s ease-out, transform 0.3s ease-out;
+    transform-origin: center center;
+
+    @media (width >= 640px) {
+      margin-inline-start: 0.5rem;
+    }
+  }
+
+  & :global(.fragment-icon svg.icon) {
     display: block;
     width: 16px;
     height: 16px;
-    margin-inline-end: 0.25rem;
-    margin-inline-start: calc(-0.25rem - 16px);
-    opacity: 0.4;
-    color: inherit;
     flex-shrink: 0;
+    color: oklch(from var(--color-heading) l c h / 0.7);
 
     @media (width >= 640px) {
       width: 24px;
       height: 24px;
-      margin-inline-end: 0.5rem;
-      margin-inline-start: calc(-0.5rem - 24px);
     }
   }
 
@@ -241,8 +246,9 @@
     & > a[rel] {
       text-decoration: underline;
       text-decoration-skip-ink: auto;
-      text-underline-offset: 4px;
-      text-decoration-thickness: 1px;
+      text-underline-offset: 12.5%;
+      text-decoration-thickness: 1.5px;
+      text-decoration-color: color-mix(in oklch, currentcolor, transparent 60%);
       transition: 0.2s ease;
 
       &:hover,
@@ -253,9 +259,9 @@
     }
 
     @media (hover: hover) {
-      &:not(:hover, :focus) :global(.fragment) {
-        transition: opacity 0.2s, transform 0.4s;
-        transform: scale3d(0.5, 0.5, 0.5) translate3d(32px, 0, 0);
+      &:not(:hover, :focus-within) :global(.fragment-icon) {
+        transition: opacity 0.15s ease-out, transform 0.2s ease-out;
+        transform: scale3d(0.5, 0.5, 0.5) translate3d(-32px, 0, 0);
         opacity: 0;
       }
     }
@@ -264,9 +270,10 @@
   & p > a {
     transition: 0.2s ease-out;
     text-decoration-line: underline;
-    text-underline-offset: 2px;
+    text-underline-offset: 12.5%;
     text-decoration-skip: ink;
-    text-decoration-thickness: 0.5px;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: color-mix(in oklch, currentcolor, transparent 60%);
 
     &:hover {
       color: var(--color-link-hover);

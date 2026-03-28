@@ -31,6 +31,7 @@ import Icon from '@/components/icon'
 import Link from '@/components/link'
 import Newsletter from '@/components/newsletter'
 import { PostLayoutFrame } from '@/components/post'
+import FragmentLinks from '@/components/fragment-links'
 
 import { Suspense } from 'react'
 import { getPageView } from '../../../(blog)/blog/views'
@@ -92,6 +93,9 @@ export async function generateMetadata(props, parent) {
       images: [
         {
           url: post.ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
         },
       ],
     },
@@ -268,20 +272,20 @@ export default async function PostPage(props) {
               </div>
             )}
             {isOldCodePost && (
-              <div className="shadow-placed dark:shadow-[0_0_0_1px_color-mix(in_oklch,var(--color-cornflour-900),transparent_50%)] col-content lg:col-prose flex gap-3 leading-tight bg-cornflour-0 dark:bg-cornflour-900/30 rounded-md p-4">
+              <div className="shadow-notice col-content lg:col-prose flex gap-3 leading-tight bg-notice rounded-md p-4">
                 <Icon
                   icon="square-info"
-                  className="text-cornflour-900 dark:text-cornflour-400 flex-[0_0_auto]"
+                  className="text-notice-icon flex-[0_0_auto]"
                   variant="header"
                 />
                 <div className="flex flex-col">
-                  <p className="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-300">
+                  <p className="p-0 m-0 font-body text-sm text-notice">
                     <strong>
                       This post was published {yearsAgo}{' '}
                       {yearsAgo === 1 ? 'year' : 'years'} ago
                     </strong>
                   </p>
-                  <p className="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-300/80">
+                  <p className="p-0 m-0 font-body text-sm text-notice-muted">
                     There's a chance things are out of date or no longer reflect
                     my views today
                   </p>
@@ -340,6 +344,7 @@ export default async function PostPage(props) {
           <>
             <PostImage post={post} />
             <PostMdx code={post.body.code} />
+            <FragmentLinks />
             <Badge
               href={editUrl(post._raw.sourceFileName)}
               size={16}

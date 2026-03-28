@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.content-collections
 .contentlayer
 .velite
 
@@ -58,3 +59,6 @@ uploads
 
 # Notes processing
 .notes-processing-results.json
+
+# Memory
+memory/

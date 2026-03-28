@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { DialogTrigger, Button, Popover } from 'react-aria-components'
 import clsx from 'clsx'
@@ -32,6 +32,10 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
 
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
+
   return (
     <DialogTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
       <Button
@@ -60,9 +64,7 @@ const Navigation = () => {
               isOpen={isOpen}
               index={index}
               className={clsx(
-                pathname === link.href
-                  ? 'text-dandelion-500 dark:text-dandelion-300'
-                  : 'text-emphasis'
+                pathname === link.href ? 'text-nav-active' : 'text-emphasis'
               )}
             >
               <Icon
@@ -70,9 +72,7 @@ const Navigation = () => {
                 size={link.size}
                 className={clsx(
                   'relative -top-px',
-                  pathname === link.href
-                    ? 'text-dandelion-500 dark:text-dandelion-300'
-                    : 'text-neutral-03-500 dark:text-fern-500'
+                  pathname === link.href ? 'text-nav-active' : 'text-nav-icon'
                 )}
                 variant="header"
               />
@@ -84,18 +84,14 @@ const Navigation = () => {
             isOpen={isOpen}
             index={mobile.length}
             className={clsx(
-              pathname === '/newsletter'
-                ? 'text-dandelion-500 dark:text-dandelion-300'
-                : 'text-emphasis'
+              pathname === '/newsletter' ? 'text-nav-active' : 'text-emphasis'
             )}
           >
             <Icon
               icon="airplane"
               className={clsx(
                 'relative -top-px',
-                pathname === '/newsletter'
-                  ? 'text-dandelion-500 dark:text-dandelion-300'
-                  : 'text-neutral-03-500 dark:text-fern-500'
+                pathname === '/newsletter' ? 'text-nav-active' : 'text-nav-icon'
               )}
               variant="header"
             />

@@ -14,6 +14,7 @@ import Card from '@/components/card'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
 import CodePen from '@/components/codepen'
+import { Chat, ChatMessage } from '@/components/chat'
 
 // Dynamically import heavy post-specific components
 const BentoGridShell = dynamic(
@@ -340,7 +341,6 @@ const AppIcon = ({ src, alt, type = 'app', size = 72, className }) => (
     className={cn(
       'flex items-center justify-center row-span-2 self-start shrink-0 aspect-square',
       type === 'favicon' && 'relative top-[2px]',
-      //type !== 'favicon' && '',
       className
     )}
   >
@@ -385,7 +385,7 @@ const components = {
   a: (props) => (
     <Link
       {...props}
-      className="text-heading md:text-lg lg:text-xl underline [text-underline-offset:15%] [text-decoration-thickness:1px] hover:text-link-hover transition duration-200 ease-linear"
+      className="text-heading md:text-lg lg:text-xl underline [text-underline-offset:12.5%] [text-decoration-thickness:1.5px] [text-decoration-color:color-mix(in_oklch,currentcolor,transparent_60%)] hover:text-link-hover transition duration-200 ease-linear"
     />
   ),
   p: (props) => (
@@ -458,6 +458,8 @@ const postComponents = {
   Blockquote,
   Images,
   BentoGridShell,
+  Chat,
+  ChatMessage,
   CodePen,
   LinkFigma: (props) => (
     <Link
