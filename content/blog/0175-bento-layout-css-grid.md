@@ -176,7 +176,7 @@ If you’re working in an environment that allows for a components, each section
 
 ## On to the grid’s CSS
 
-To create a bento with CSS grid doesn’t require too much to get going. You could also use `subgrid` for your columns, if your grid is defined on a parent element. It’s worth noting that `subgrid` would be particularly useful for aligning the internal content of each card&thinsp;&mdash;&thinsp;icon, title, and description&thinsp;&mdash;&thinsp;consistently across cards without extra CSS. That’s a worthwhile next step if you’re building this into a component system.
+The CSS grid setup for a bento layout is surprisingly minimal. You could also use `subgrid` for your columns, if your grid is defined on a parent element. It’s worth noting that `subgrid` would be particularly useful for aligning the internal content of each card&thinsp;&mdash;&thinsp;icon, title, and description&thinsp;&mdash;&thinsp;consistently across cards without extra CSS. That’s a worthwhile next step if you’re building this into a component system.
 
 ```css:app.css showLineNumbers
 .bento-container {
