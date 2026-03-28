@@ -203,7 +203,7 @@ The important bit of CSS here is `grid-auto-flow` aside from defining the 12 col
 }
 ```
 
-Another important part to the design is `grid-auto-rows`. As this affects the two smaller square items they need to occupy an equal amount of rows. Only applying this to larger screens ensures it doesn’t create excess space on smaller screen layouts. Be aware that this means rows will behave differently across breakpoints&thinsp;&mdash;&thinsp;on smaller screens rows size to their content, while on desktop they’re forced to equal height. If your content varies significantly in height, this can create noticeable layout shifts when resizing across the `1280px` boundary.
+Another important part to the design is `grid-auto-rows`. As this affects the two smaller square items they need to occupy an equal amount of rows. Only applying this to larger screens ensures it doesn’t create excess space on smaller screen layouts. This is a deliberate design choice&thinsp;&mdash;&thinsp;achieving a true bento style layout on smaller screens is difficult with the space constraint, so rows size to their content on mobile and are forced to equal height on desktop where the grid has room to breathe.
 
 <figure>
   <Image src="/images/blog/0175-bento-grid-rows@2x.png" width={864} height={564} alt=" " />
