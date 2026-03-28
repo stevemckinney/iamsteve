@@ -1,5 +1,5 @@
 import siteMetadata from '@/content/metadata'
-import { allPosts, allNotes } from 'contentlayer/generated'
+import { allPosts, allNotes } from 'content-collections'
 
 export default async function generateSitemap() {
   let posts = allPosts

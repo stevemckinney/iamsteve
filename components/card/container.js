@@ -68,7 +68,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
     title,
     summary,
     tags,
-    _id,
+    _meta,
     theme,
     categories,
     images,
@@ -101,7 +101,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
           title=""
           className={imageClass}
           style={{ backgroundColor: `${imageColor}` }}
-          aria-labelledby={`title-${_id}`}
+          aria-labelledby={`title-${_meta?.filePath}`}
         >
           <>
             <PostImage
@@ -172,7 +172,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
         <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @lg/card:pt-2 @lg/card:gap-3 @lg/card:px-12">
           <h2
             className="p-0 m-0 leading-none text-balance lowercase font-display font-variation-bold hyphens-auto text-3xl @lg/card:text-5xl"
-            id={`title-${_id}`}
+            id={`title-${_meta?.filePath}`}
           >
             <Link
               href={slug}

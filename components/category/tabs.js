@@ -51,12 +51,12 @@ const Tabs = ({ posts }) => {
 
       <div className="grid grid-cols-3 col-content gap-8">
         {design.map((post) => (
-          <Suspense fallback={Loading()} key={post._id}>
+          <Suspense fallback={Loading()} key={post._meta.filePath}>
             <Card
               size="medium"
               frontmatter={post}
               image={false}
-              key={post._id}
+              key={post._meta.filePath}
             />
           </Suspense>
         ))}

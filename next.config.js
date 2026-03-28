@@ -1,4 +1,4 @@
-const { withContentlayer } = require('next-contentlayer2')
+const { withContentCollections } = require('@content-collections/next')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -374,5 +374,5 @@ const nextConfig = {
   },
 }
 
-// Wrap the config with both withContentlayer and withBundleAnalyzer
-module.exports = withContentlayer(withMDX(withBundleAnalyzer(nextConfig)))
+// Wrap the config with both withContentCollections and withBundleAnalyzer
+module.exports = withContentCollections(withMDX(withBundleAnalyzer(nextConfig)))

@@ -7,7 +7,7 @@ import PageTitle from '@/components/page-title'
 import Notepad from '@/components/notepad'
 import Card from '@/components/card'
 import Campaigns from '../newsletter/campaigns'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 export const revalidate = 2592000
 
 export default async function NewsletterPage({ data, Post }) {

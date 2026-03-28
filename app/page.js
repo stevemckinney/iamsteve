@@ -2,7 +2,7 @@
 import { cache } from 'react'
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
-import { allPosts } from 'contentlayer/generated'
+import { allPosts } from 'content-collections'
 
 import mergeDataBySlug from '@/lib/utils/merge-data-by-slug'
 

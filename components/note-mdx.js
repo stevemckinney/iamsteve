@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { useMDXComponent } from 'next-contentlayer2/hooks'
+import { MDXContent } from '@content-collections/mdx/react'
 import Image from '@/components/image'
 import Icon from '@/components/icon'
 import { noteFigureComponents } from '@/components/figure'
@@ -61,22 +61,15 @@ const noteComponents = {
   ChatMessage,
 }
 
-const NoteMdxComponent = React.memo(function NoteMdxComponent({ code }) {
-  const Component = useMDXComponent(code)
-
-  if (!Component) {
+export function NoteMdx({ code }) {
+  if (!code) {
     return <p>Failed to load content.</p>
   }
-
   return (
     <div className={styles.note}>
-      <Component components={noteComponents} />
+      <MDXContent code={code} components={noteComponents} />
     </div>
   )
-})
-
-export function NoteMdx({ code }) {
-  return <NoteMdxComponent code={code} />
 }
 
 export { noteComponents }

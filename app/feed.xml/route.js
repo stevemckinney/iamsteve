@@ -1,4 +1,4 @@
-import { allPosts, allNotes } from 'contentlayer/generated'
+import { allPosts, allNotes } from 'content-collections'
 import siteMetadata from '@/content/metadata'
 
 export const revalidate = 2592000

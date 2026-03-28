@@ -9,9 +9,8 @@
       "@/lib/*": ["lib/*"],
       "@/css/*": ["css/*"],
       "@/images/*": ["/public/images/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"],
-      "contentlayer/source-files": ["./.contentlayer/source-files"]
+      "content-collections": ["./.content-collections/generated"]
     }
   },
-  "include": [".contentlayer/generated"]
+  "include": [".content-collections/generated"]
 }
