@@ -406,7 +406,8 @@
     box-shadow: var(--shadow-placed);
   }
 
-  & :global([data-rehype-pretty-code-figure]) {
+  & :global([data-rehype-pretty-code-figure]),
+  & > :global(.shiki) {
     box-shadow: var(--shadow-placed);
     margin-inline: -2.25rem;
 
