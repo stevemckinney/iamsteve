@@ -30,7 +30,7 @@ const mdxOptions = {
           light: shikiLightTheme,
           dark: shikiDarkTheme,
         },
-        langs: [tailwindCssInjection],
+        langs: ['css', tailwindCssInjection],
         defaultLanguage: 'text',
         transformers: [transformerMetaHighlight(), transformerLineNumbers()],
         parseMetaString: (str) => {
