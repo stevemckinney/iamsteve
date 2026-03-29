@@ -11,6 +11,7 @@ ogImage: "/opengraph-image.png"
 status: "open"
 id: 15
 fileroot: "dribbble_invite_giveaway"
+noindex: true
 ---
 
 I have a single Dribbble invite to giveaway. I assume the majority of people who will come to this post will know what Dribbble is but for those who don't here is a quote from the Dribbble about page.

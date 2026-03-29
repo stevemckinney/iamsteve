@@ -14,6 +14,7 @@ ogImage: "/opengraph-image.png"
 status: "open"
 id: 153
 fileroot: "go2golf-logo-case-study"
+noindex: true
 ---
 
 I’ve been working on a recent branding project for a company called Go2Golf. It will be a website that will help people find golf courses across the UK. The first step for them was to have a logo made this is the process I went through to make it.

@@ -15,6 +15,7 @@ codepen: false
 twitter: false
 id: 174
 fileroot: about-version-8
+noindex: true
 ---
 
 I had been wanting to redesign for a while—it’s been more than enough time. The previous design had been in place since late 2016—along with iterations throughout 2017. I think the design held up well, but it’s time for something new. And as with some form of tradition in writing about major changes here, I want to document some of the decisions.
@@ -87,8 +88,8 @@ I struggled with the amount of colour used throughout the website. It’s probab
 <figure>
   <div className="sandbox">
     <div className="bg-neutral-01-100  relative flex items-center justify-center group">
-      <Image src="/images/blog/about-version-8-hero-mono.svg" width={1216} height={774} className="transition duration-200 ease group-hover:opacity-0" />
-      <Image src="/images/blog/about-version-8-hero-colour.svg" width={1216} height={774} className="transition duration-200 ease absolute inset-0 opacity-0 group-hover:opacity-100" />
+      <Image src="/images/blog/about-version-8-hero-mono.svg" width={1216} height={774} className="transition duration-200 ease group-hover:opacity-0" alt="Monochrome version of the homepage hero with heading and illustrations" />
+      <Image src="/images/blog/about-version-8-hero-colour.svg" width={1216} height={774} className="transition duration-200 ease absolute inset-0 opacity-0 group-hover:opacity-100" alt="Colour version of the homepage hero with heading and illustrations" />
     </div>
   </div>
   <figcaption>Starting with the monochrome version of a hero image that contains a heading and various illustrations positioned in such a way. Hovering over the image to see the difference between a colour and monochrome versions.</figcaption>
@@ -115,9 +116,9 @@ The one thing I feel with the design I have now, is it will hold up better over 
 
 ### Early mobile ideas
 <Images>
-  <Image src="/images/blog/about-version-8-mobile-home.svg" width={320} height={1000} className="col-span-6 bg-white rounded-lg" alt=" " />
-  <Image src="/images/blog/about-version-8-mobile-home-02.svg" width={308} height={1000} className="col-span-6 bg-white rounded-lg" alt=" " />
-  <Image src="/images/blog/about-version-8-mobile-article.svg" width={320} height={1000} className="bg-white col-span-6 rounded-lg" alt=" " />
+  <Image src="/images/blog/about-version-8-mobile-home.svg" width={320} height={1000} className="col-span-6 bg-white rounded-lg" alt="Early mobile homepage design iteration" />
+  <Image src="/images/blog/about-version-8-mobile-home-02.svg" width={308} height={1000} className="col-span-6 bg-white rounded-lg" alt="Alternative mobile homepage design iteration" />
+  <Image src="/images/blog/about-version-8-mobile-article.svg" width={320} height={1000} className="bg-white col-span-6 rounded-lg" alt="Early mobile article page design iteration" />
 </Images>
 
 Mobile was where I kicked off the design, I wanted to not leave it as an afterthought even though it’s a small portion of the traffic. It felt easier to approach a redesign from mobile as well.

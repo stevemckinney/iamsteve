@@ -14,6 +14,7 @@ ogImage: "/opengraph-image.png"
 status: "open"
 id: 145
 fileroot: "maintenance-week-5"
+noindex: true
 ---
 
 Maintenance weeks are where detail website tasks, instead of a regular post. I spend time fixing bugs, updating grammar and posts in general, as well as adding featured images. It varies what I will do, and this posts serves as detailing what has been done.

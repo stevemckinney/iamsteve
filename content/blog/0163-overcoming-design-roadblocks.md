@@ -14,6 +14,7 @@ ogImage: "/opengraph-image.png"
 status: "open"
 id: 163
 fileroot: "overcoming-design-roadblocks"
+noindex: true
 ---
 
 When starting out on a new project or being newer to design, getting your ideas to be what you visualise can be difficult. Whether you’re new or are aiming to broaden your specialism you’ll find some things more challenging. In this post I’ll share some tips of how I approach these challenges.

@@ -14,6 +14,7 @@ ogImage: "/opengraph-image.png"
 status: "open"
 id: 156
 fileroot: "monthly-design-roundup-2"
+noindex: true
 ---
 
 The second in a monthly series where I roundup some of the best things in design I found over the course of the previous month. It aims to be a source of website, illustration and branding inspiration, as well as some articles that are a good read.

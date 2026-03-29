@@ -86,6 +86,7 @@ const posts = defineCollection({
     twitter: z.boolean().optional(),
     id: z.number(),
     status: z.enum(["draft", "open", "closed"]).default("draft"),
+    noindex: z.boolean().optional(),
   }),
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)

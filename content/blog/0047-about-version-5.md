@@ -11,6 +11,7 @@ ogImage: "/opengraph-image.png"
 status: "open"
 id: 47
 fileroot: "about_version_5"
+noindex: true
 ---
 
 Another redesign, another blog post. It’s the majority of what my blog posts are based around. With each version I say I'm going to blog more, but the redesign has never really focused on it. This was one of my main goals, to bring more focus to the blog. Then maybe it would add to making me write more.
@@ -46,7 +47,7 @@ Overall I'm pretty happy with this change to my website. I've still got a bit of
 From the last version of this site I've tried yet again to go mobile first. With better decisions made. I've gone for an off canvas navigation this time:
 
 <figure>
-<Image src="/images/blog/v5_nav.png" width={381} height={800} />
+<Image src="/images/blog/v5_nav.png" width={381} height={800} alt="Version 5 off-canvas navigation with the three line hamburger icon" />
 <figcaption>I'm using what's becoming the standard three line icon.</figcaption>
 </figure>
 

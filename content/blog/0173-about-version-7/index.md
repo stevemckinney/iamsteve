@@ -15,6 +15,7 @@ codepen: false
 twitter: false
 id: 173
 fileroot: 'about-version-7'
+noindex: true
 ---
 
 With this version there was little to no visual change. I say was, as this post was created after going live. The purpose was to move from ExpressionEngine to Next.js. It was an important change as I felt at the time at a dead end with ExpressionEngine.

@@ -14,6 +14,7 @@ ogImage: "/opengraph-image.png"
 status: "open"
 id: 132
 fileroot: "redesign-progress-update"
+noindex: true
 ---
 
 One of my aims during redesigning this website is to keep the seamlessness between content output and redesign. It’s not the easiest of tasks, as any time spent writing, is time taken away from the redesign or vice versa.
