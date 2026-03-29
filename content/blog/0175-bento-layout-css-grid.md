@@ -20,7 +20,7 @@ fileroot: bento-grid-with-css-grid
 
 There’s a lot of discussion happening around whether masonry is needed in CSS. And this discussion brings in things like bento grids. It inspired me to create a bento grid using today’s CSS grid and @container queries.
 
-For this example masonry isn’t required—but it’s something I would like to see part of CSS in whatever way it ends up being.
+For this example masonry isn’t required&thinsp;&mdash;&thinsp;we have a known number of items with predetermined sizes, so CSS grid handles it well. That said, masonry would shine if you had a variable number of items or unpredictable content heights&thinsp;&mdash;&thinsp;it’s something I would like to see part of CSS in whatever way it ends up being.
 
 <Blockquote style="notice">I make the assumption that you’re comfortable setting up Tailwind for your project</Blockquote>
 
@@ -180,12 +180,12 @@ If you’re working in an environment that allows for a components, each section
 
 ## On to the grid’s CSS
 
-To create a bento with CSS grid doesn’t require too much to get going. You could also use `subgrid` for your columns, if your grid is defined on a parent element.
+The CSS required to create a bento grid is surprisingly minimal. You could also use `subgrid` for your columns, if your grid is defined on a parent element. It’s worth noting that `subgrid` would be particularly useful for aligning the internal content of each card&thinsp;&mdash;&thinsp;icon, title, and description&thinsp;&mdash;&thinsp;consistently across cards without extra CSS. That’s a worthwhile next step if you’re building this into a component system.
 
 ```css title="app.css" showLineNumbers
 .bento-container {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-auto-flow: dense;
   gap: 1rem;
 }
@@ -207,7 +207,7 @@ The important bit of CSS here is `grid-auto-flow` aside from defining the 12 col
 }
 ```
 
-Another important part to the design is `grid-auto-rows`. As this affects the two smaller square items they need to occupy an equal amount of rows. Only applying this to larger screens ensures it doesn’t create excess space on smaller screen layouts.
+Another important part to the design is `grid-auto-rows`. As this affects the two smaller square items they need to occupy an equal amount of rows. Only applying this to larger screens ensures it doesn’t create excess space on smaller screen layouts. This is a deliberate design choice&thinsp;&mdash;&thinsp;achieving a true bento style layout on smaller screens is difficult with the space constraint, so rows size to their content on mobile and are forced to equal height on desktop where the grid has room to breathe.
 
 <figure>
   <Image src="/images/blog/0175-bento-grid-rows@2x.png" width={864} height={564} alt=" " />

@@ -1,7 +1,7 @@
 ---
 title: 'The best ink trap fonts for web design'
 date: '2021-07-28T10:28:00+00:00'
-lastmod: '2021-07-28T10:28:00+00:00'
+lastmod: '2026-03-29T08:28:00+00:00'
 summary: 'A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs.'
 metadesc: 'A curated collection of ink trap typefaces for websites, including free Google Fonts options and premium picks from foundries like OH no Type Co and Pangram Pangram.'
 theme: '#f9f3f1'
@@ -33,6 +33,16 @@ The majority in this post will be ‘ink trap’ by definition, but some may use
 </div>
 
 Looking at another less apparent example, with Degular Display the tapering happens far quicker to create a stronger contrast. Unlike Whyte it isn’t as like a ridge, creating a different feel.
+
+## What’s the purpose of an ink trap
+
+Ink traps retain legibility at smaller sizes in print. They’re carefully designed parts of type, which disappear when printed—due to the ink bleeding and filling in the gaps.
+
+While it may display a certain way on screen, the appearance will change when printed. If you pay attention to printed material and notice the type isn’t as crisp as it could be, this could be down to the choice of typeface.
+
+### What’s this got to do with websites?
+
+It can serve the same purpose on the web. Looking at the examples at smaller type sizes, ink traps help by opening spaces in the letters further. This can make legibility better at those sizes.
 
 ## Fonts
 
@@ -220,16 +230,6 @@ DM Sans is another example that’s pushing it, but it has a subtle tapering at 
   <Image src="/images/blog/the-best-ink-trap-typefaces-for-websites-pathway-extreme.svg" width={738} height={492} />
 </div>
 There’s a uniqueness to Pathway Extreme deep angular cuts that differ from typical ink traps. The thinner crossbars add personality if you were to use it as a display choice.
-
-## What’s the purpose of an ink trap
-
-Ink traps retain legibility at smaller sizes in print. They’re carefully designed parts of type, which disappear when printed—due to the ink bleeding and filling in the gaps.
-
-While it may display a certain way on screen, the appearance will change when printed. If you pay attention to printed material and notice the type isn’t as crisp as it could be, this could be down to the choice of typeface.
-
-### What’s this got to do with websites?
-
-It can serve the same purpose on the web. Looking at the examples at smaller type sizes, ink traps help by opening spaces in the letters further. This can make legibility better at those sizes.
 
 ## A style that’s grown on me
 
