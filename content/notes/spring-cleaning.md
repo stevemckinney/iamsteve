@@ -5,11 +5,22 @@ status: published
 summary: "A roundup of under the hood improvements I've made to the site recently."
 ---
 
-It's been a productive few weeks for this site. Most of the changes aren't visible on the surface, but they make a real difference to how things work behind the scenes&thinsp;&mdash;&thinsp;and set things up nicely for future posts.
+Spring cleaning is possibly the wrong word but as we’re heading into spring it works… I’ve made a conscious effort since starting this notes section since the start of the year to work on some design improvements. 
 
-## Content infrastructure
+There’s a lot of papercuts, general polish required and and endless list of things to make better as my opinions have evolved since this current design was released in early 2024. 
+
+## Moving to Content Collections
 
 The biggest change was **migrating from Contentlayer to Content Collections**. Contentlayer hasn't been actively maintained for a while, so I moved to Content Collections which has a cleaner API with Zod schemas. Alongside that, I **upgraded Next.js to 16.2**.
+
+## Post layout improvements 
+One of the things that bugged me for a good while was the post layout. I’ve changed things up slightly. 
+
+For larger screens you had the table of contents on the right, it’s now on the left. I also managed to get it to feel better when scrolling. 
+
+Scroll driven animations are a real nice addition—which allowed me to blur the contents on exit. It creates a more seamless feel that was lacking previously. 
+
+It cleaned up the code massively from having a janky masking implementation that masks the scroll bar and there’s not really a way to get that to work nicely
 
 ## Syntax highlighting
 
@@ -36,7 +47,6 @@ I replaced Prism with **Shiki** for syntax highlighting. This was a multi-step e
 - Improved sitemap, metadata, and robots configuration
 - Fixed indexing issues: stripping spam parameters, adding redirects, blocking unwanted crawl paths
 - Added `noindex` support for specific pages
-- Moved Simple Analytics to a **custom CNAME**
 
 ## Small fixes
 
