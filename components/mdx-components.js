@@ -15,6 +15,7 @@ import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
 import CodePen from '@/components/codepen'
 import { Chat, ChatMessage } from '@/components/chat'
+import CodeFigure from '@/components/code/figure'
 
 // Dynamically import heavy post-specific components
 const BentoGridShell = dynamic(
@@ -359,6 +360,7 @@ const components = {
   Icon,
   AppIcon,
   Card,
+  CodeFigure,
   Link,
   // Campaigns: Campaigns,
   NewsletterForm: NewsletterForm,
@@ -460,6 +462,7 @@ const postComponents = {
   BentoGridShell,
   Chat,
   ChatMessage,
+  CodeFigure,
   CodePen,
   LinkFigma: (props) => (
     <Link

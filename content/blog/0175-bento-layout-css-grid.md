@@ -336,7 +336,7 @@ What was `bento-container` earlier now contains all of those same styles within.
 
 Now to apply all of the style and additional layout adjustments. Highlighted are the lines which affect layout.
 
-```html showLineNumbers {1, 2, 8-10}
+```html showLineNumbers {1,2,8-10}
 <section class="@container/section flex flex-col col-span-full md:col-span-6 xl:row-span-4 gap-2 p-2 bg-gunmetal-850 ring-3 ring-gunmetal-750 rounded-2xl">
   <div class="p-6 flex flex-1 flex-col gap-4">
     <h3 class="text-cream font-semibold flex flex-col @[17.5rem]:flex-row @[17.5rem]:items-center gap-4 [font-variation-settings:'opsz'_32]">

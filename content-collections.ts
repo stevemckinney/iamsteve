@@ -7,7 +7,13 @@ import remarkGfm from 'remark-gfm'
 import smartypants from 'remark-smartypants'
 import rehypeSlug from 'rehype-slug'
 import rehypeShiki from '@shikijs/rehype'
-import { transformerMetaHighlight } from '@shikijs/transformers'
+import {
+  transformerMetaHighlight,
+  transformerNotationDiff,
+  transformerNotationFocus,
+  transformerNotationErrorLevel,
+  transformerNotationWordHighlight,
+} from '@shikijs/transformers'
 import { shikiLightTheme, shikiDarkTheme } from './lib/shiki-theme.js'
 import {
   transformerCSSThemeDirective,
@@ -32,9 +38,14 @@ const mdxOptions = {
           light: shikiLightTheme,
           dark: shikiDarkTheme,
         },
+        defaultColor: false,
         defaultLanguage: 'text',
         transformers: [
           transformerMetaHighlight(),
+          transformerNotationDiff(),
+          transformerNotationFocus(),
+          transformerNotationErrorLevel(),
+          transformerNotationWordHighlight(),
           transformerCSSThemeDirective(),
           transformerLineNumbers(),
         ],

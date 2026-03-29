@@ -2,8 +2,8 @@
 @import '../css/theme.css';
 @import '../css/utilities.css';
 @import '../css/typography.css';
+@import '../css/code.css' layer(base);
 @import '../css/shiki.css' layer(base);
-@import '../css/remark-code.css' layer(base);
 
 @layer base {
   :focus {
