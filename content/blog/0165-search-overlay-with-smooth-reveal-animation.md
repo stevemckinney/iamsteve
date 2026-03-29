@@ -33,7 +33,7 @@ Here’s the design you’ll be making. It’s quite simple, so I have avoided a
 
 ### Search overlay
 <div className="article-image">
-  <Image src="/images/blog/search-reveal-large@2x.png" width={896} height={504} />
+  <Image src="/images/blog/search-reveal-large@2x.png" width={896} height={504} alt="Desktop search overlay design with large input field and icons" />
 </div>
 
 Overall, the design aims to visually grab the attention. It makes use of the screen size available through the large input and icons. I wanted the form to appear ‘clickable’ through having clearly a defined input. As you see some which do away with the defined field approach.
@@ -44,7 +44,7 @@ The background has a subtle gradient, the aim is for it to have a sense of depth
 
 ### Small screen
 <div className="article-image">
-  <Image src="/images/blog/search-reveal-small@2x.png" width={738} height={631} />
+  <Image src="/images/blog/search-reveal-small@2x.png" width={738} height={631} alt="Small screen search overlay design with input positioned at the bottom" />
 </div>
 
 For smaller screens, I've opted to move the search to the bottom of the screen. This means it’s easier to reach, as you can focus on the input with JavaScript, but it doesn’t always bring up the keyboard.
@@ -53,7 +53,7 @@ Things are sized more according to the screen size, with the icons and form fiel
 
 ## Icon setup
 <div className="article-image">
-  <Image src="/images/blog/search-reveal-icons@2x.png" width={738} height={492} />
+  <Image src="/images/blog/search-reveal-icons@2x.png" width={738} height={492} alt="Search and close icons at 32px and 24px sizes" />
 </div>
 
 The icons are designed on at 32px x 32px and scaled down to 24px x 24px for the small screen design. [You can download the two icons used](https://www.dropbox.com/s/jgm07uywlt18hbh/design-code-search-overlay-icons.ai?dl=0) for your design.

@@ -51,7 +51,7 @@ Typically, you take a pixel value to base it on. You can use other units such as
 The way items will align to the baseline, is by spanning one or multiple lines. Like you can have items span multiple columns, in a traditional grid.
 
 <figure>
-<Image src="/images/blog/vertical-rhythm-sizes.png" width={738} height={492} />
+<Image src="/images/blog/vertical-rhythm-sizes.png" width={738} height={492} alt="" />
 <figcaption>Here’s a demonstration of a couple of text sizes on a 12px baseline. With a line height that is 1.5 times the font size.</figcaption>
 </figure>
 

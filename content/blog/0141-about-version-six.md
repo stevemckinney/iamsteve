@@ -16,6 +16,7 @@ codepen: false
 twitter: true
 id: 141
 fileroot: "about-version-six"
+noindex: true
 ---
 
 I’ve finally done the redesign of this website! Version five lived for longer than I ever intended. This post is going to be a shorter summary of the changes. I’ll be posting a full case study over the coming weeks.

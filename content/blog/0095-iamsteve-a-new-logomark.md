@@ -11,6 +11,7 @@ ogImage: "/opengraph-image.png"
 status: "open"
 id: 95
 fileroot: "iamsteve-a-new-logomark"
+noindex: true
 ---
 
 I have updated my logomark. It's been around 5 years, since I last made a change relating to my logo. Since then, I have grown as a designer, my aims, goals, and where I am have shifted.

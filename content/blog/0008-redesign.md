@@ -11,6 +11,7 @@ ogImage: "/opengraph-image.png"
 status: "open"
 id: 8
 fileroot: "redesign"
+noindex: true
 ---
 
 This post is just about some thoughts and processes I make whilst designing a website, but this one is about one for myself. As the saying goes “you are your own worst critic.” It certainly stands true for this, many ideas went to waste but I’ve got something I’m relatively happy with. I hope you enjoy the read.

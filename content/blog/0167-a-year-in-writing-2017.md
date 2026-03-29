@@ -14,6 +14,7 @@ ogImage: "/opengraph-image.png"
 status: "open"
 id: 167
 fileroot: "a-year-in-writing-2017"
+noindex: true
 ---
 
 This year I decided to take it at a slower pace with articles. It was a year I felt I didn’t focus so much on this website. I posted a lot less and stopped towards the end of the year. Still, I was quite surprised to see the website continue to grow.

@@ -105,6 +105,16 @@ export async function generateMetadata(props, parent) {
       description: post.summary,
       images: [post.ogImage],
     },
+    ...(post.noindex && {
+      robots: {
+        index: false,
+        follow: false,
+        googleBot: {
+          index: false,
+          follow: false,
+        },
+      },
+    }),
   }
 }
 
