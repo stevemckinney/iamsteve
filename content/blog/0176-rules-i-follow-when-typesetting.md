@@ -156,7 +156,7 @@ Like line height, I don’t think you can apply a simple percentage rule to any 
   <figcaption><p><Fig>5</Fig> Shows the difference between the heading with tracking on and off</p></figcaption>
 </figure>
 
-It takes a little tweaking depending on the typeface you’re using. Think of a display typeface versus a text typeface. Using them at varying sizes will require different extremes of tracking.
+It takes a little tweaking depending on the typeface you’re using. Think of a display typeface versus a text typeface. Using them at varying sizes will require different extremes of tracking. Typefaces with [ink traps](/blog/the-best-ink-trap-typefaces-for-websites), for example, tend to be designed for display use and benefit from tighter tracking at large sizes.
 
 ## Everything is sentence case
 Everything, whether that is a heading, button, navigation link or whatever else you can think of. It’s sentence case—no exceptions.

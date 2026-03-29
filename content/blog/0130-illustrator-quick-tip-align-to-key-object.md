@@ -39,3 +39,5 @@ Using align to key object is a quick method for aligning horizontally or vertica
 ## That’s it
 
 I do wish there was a way to somehow default this behaviour. Taking the item in the back as the key object, this would work well. Anyway, I felt this was a necessary quick tip to highlight, as I’ve found it valuable.
+
+Once you’re comfortable with this, it’s also the key to [evenly spacing objects](/blog/illustrator-quick-tip-equally-space-objects) with a precise pixel value.
