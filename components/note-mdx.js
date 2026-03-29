@@ -5,6 +5,7 @@ import Image from '@/components/image'
 import Icon from '@/components/icon'
 import { noteFigureComponents } from '@/components/figure'
 import { Chat, ChatMessage } from '@/components/chat'
+import CodeFigure from '@/components/code/figure'
 import styles from './note-mdx.module.css'
 
 const noteComponents = {
@@ -59,6 +60,7 @@ const noteComponents = {
   Icon,
   Chat,
   ChatMessage,
+  CodeFigure,
 }
 
 export function NoteMdx({ code }) {
