@@ -10,8 +10,8 @@
 /**
  * Shared custom properties
  */
-.prose pre,
-.prose [data-rehype-pretty-code-figure] {
+:is(.prose, .codeblock) pre,
+:is(.prose, .codeblock) [data-rehype-pretty-code-figure] {
   --code-bg: light-dark(var(--color-neutral-01-50), var(--color-fern-1200));
   --code-fg: light-dark(var(--color-fern-900), var(--color-fern-200));
   --code-border: light-dark(
@@ -169,16 +169,17 @@ code[data-line-numbers] {
 }
 
 /**
- * Figure container (prose context)
+ * Figure container (prose & notes context)
  */
-.prose {
+:is(.prose, .codeblock) {
   [data-rehype-pretty-code-figure],
+  & > .shiki,
   .codepen,
   .codepen-wide {
     overflow: auto;
     border-radius: var(--radius-lg);
     background-color: var(--code-bg);
-    margin-inline: calc(var(--code-padding) * -1);
+    box-shadow: var(--shadow-placed);
     margin-block: calc(var(--spacing) * 8);
   }
 
@@ -186,37 +187,54 @@ code[data-line-numbers] {
   .codepen-wide {
     box-shadow: var(--shadow-floating);
   }
+}
 
-  [data-rehype-pretty-code-figure] pre {
-    display: block;
-  }
+/**
+ * Shared figure/title styles (prose & notes)
+ */
+:is(.prose, .codeblock) [data-rehype-pretty-code-figure] pre {
+  display: block;
+}
 
-  /* Pre inside a titled figure shouldn't double up the border-radius */
-  [data-rehype-pretty-code-figure]:has([data-rehype-pretty-code-title]) pre {
-    border-radius: 0;
-    box-shadow: none;
-  }
+/* Pre inside a titled figure shouldn't double up the border-radius */
+:is(.prose, .codeblock)
+  [data-rehype-pretty-code-figure]:has([data-rehype-pretty-code-title])
+  pre {
+  border-radius: 0;
+  box-shadow: none;
+}
 
-  /**
-   * Title bar
-   */
-  [data-rehype-pretty-code-title] {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    gap: calc(var(--spacing) * 2);
-    background-color: var(--code-title-bg);
-    box-shadow: inset 0 -1px 0 var(--code-border);
-    padding-inline: var(--code-padding);
-    padding-block: calc(var(--spacing) * 3);
-  }
+/**
+ * Title bar
+ */
+:is(.prose, .codeblock) [data-rehype-pretty-code-title] {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  background-color: var(--code-title-bg);
+  box-shadow: inset 0 -1px 0 var(--code-border);
+  padding-inline: var(--code-padding);
+  padding-block: calc(var(--spacing) * 3);
+}
 
-  [data-rehype-pretty-code-title] > span {
-    display: inline-flex;
-    font-family: var(--font-sans) !important;
-    font-weight: 500;
-    color: var(--code-fg);
-    line-height: 1.5;
-    padding: 6px 12px 0;
+:is(.prose, .codeblock) [data-rehype-pretty-code-title] > span {
+  display: inline-flex;
+  font-family: var(--font-sans) !important;
+  font-weight: 500;
+  color: var(--code-fg);
+  line-height: 1.5;
+  padding: 6px 12px 0;
+}
+
+/**
+ * Prose-specific overrides (post bleed layout)
+ */
+.prose {
+  [data-rehype-pretty-code-figure],
+  & > .shiki,
+  .codepen,
+  .codepen-wide {
+    margin-inline: calc(var(--code-padding) * -1);
   }
 }
