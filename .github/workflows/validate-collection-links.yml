@@ -49,7 +49,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Comment PR with results
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && hashFiles('.validation-results.json') != ''
         uses: actions/github-script@v7
         with:
           script: |
@@ -90,7 +90,7 @@ jobs:
             return existing ? existing.number : null;
 
       - name: Update or create issue
-        if: github.event_name == 'schedule' && steps.validate.outputs.broken_count > 0
+        if: github.event_name == 'schedule' && steps.validate.outputs.broken_count > 0 && hashFiles('.validation-results.json') != ''
         uses: actions/github-script@v7
         with:
           script: |
