@@ -1,6 +1,6 @@
 ---
 title: VJ Type
-url: https://vj-type.com/16-dahlia
+url: https://vj-type.com
 date: "2025-12-06T18:47:01.796Z"
 collection:
   - Foundry
