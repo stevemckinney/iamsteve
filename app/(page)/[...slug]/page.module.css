@@ -1,0 +1,33 @@
+.page {
+  & :global(.fragment) {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  & :where(h2, h3, h4, h5, h6) {
+    @media (hover: hover) {
+      &:not(:hover, :focus-within) :global(.fragment-icon) {
+        transition: opacity 0.15s ease-out, transform 0.2s ease-out;
+        transform: scale3d(0.5, 0.5, 0.5) translate3d(-32px, 0, 0);
+        opacity: 0;
+      }
+    }
+  }
+
+  & :global(.fragment-icon) {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-inline-start: 0.25rem;
+    transition: opacity 0.15s ease-out, transform 0.3s ease-out;
+    transform-origin: center center;
+  }
+
+  & :global(.fragment-icon .icon) {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: oklch(from var(--color-heading) l c h / 0.7);
+  }
+}

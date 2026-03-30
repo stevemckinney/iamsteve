@@ -127,7 +127,7 @@ export default async function NotesIndex() {
               >
                 {format(parseISO(note.date), 'do LLL yyyy')}
               </time>
-              <h2 className="text-heading font-display font-variation-bold lowercase text-2xl lg:text-3xl mb-4">
+              <h2 className="text-heading font-display font-variation-bold lowercase text-2xl/tight lg:text-3xl/tight mb-4">
                 <Link href={note.slug} className="hover:text-link">
                   {note.title}
                 </Link>
