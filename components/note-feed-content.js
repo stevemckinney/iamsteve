@@ -19,7 +19,7 @@ const mdxComponents = {
 
 export function NoteFeedContent({ code }) {
   return (
-    <div className={styles.note}>
+    <div className={`${styles.note} codeblock`}>
       <MDXContent code={code} components={mdxComponents} />
     </div>
   )

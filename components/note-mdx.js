@@ -40,13 +40,23 @@ const noteComponents = {
     />
   ),
   code: (props) => (
-    <code className="font-mono bg-code text-code rounded-sm px-1" {...props} />
+    <code
+      className={
+        props.style || props['data-line-numbers'] !== undefined
+          ? undefined
+          : 'font-mono bg-code text-code rounded-sm px-1'
+      }
+      {...props}
+    />
   ),
   a: (props) => (
     <a
       className="text-link underline [text-underline-offset:12.5%] [text-decoration-thickness:1.5px] [text-decoration-color:color-mix(in_oklch,currentcolor,transparent_60%)] hover:text-link-hover hover:no-underline has-[svg]:inline-flex has-[svg]:gap-0 has-[svg]:items-center has-[svg]:align-middle transition duration-200 ease-out"
       {...props}
     />
+  ),
+  strong: (props) => (
+    <strong className="font-medium text-emphasis" {...props} />
   ),
   blockquote: (props) => (
     <blockquote
@@ -68,7 +78,7 @@ export function NoteMdx({ code }) {
     return <p>Failed to load content.</p>
   }
   return (
-    <div className={styles.note}>
+    <div className={`${styles.note} codeblock`}>
       <MDXContent code={code} components={noteComponents} />
     </div>
   )
