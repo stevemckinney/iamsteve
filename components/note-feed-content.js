@@ -1,7 +1,6 @@
 'use client'
 import { MDXContent } from '@content-collections/mdx/react'
 import { noteComponents } from '@/components/note-mdx'
-import { Chat, ChatMessage } from '@/components/chat'
 import styles from '@/components/note-mdx.module.css'
 
 // Override noteComponents for the feed context (no text size bump)
@@ -13,8 +12,6 @@ const mdxComponents = {
       {...props}
     />
   ),
-  Chat,
-  ChatMessage,
 }
 
 export function NoteFeedContent({ code }) {
