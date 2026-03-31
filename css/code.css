@@ -71,7 +71,10 @@
  * Inline code
  */
 :not(pre) > code {
-  padding: 0.1em;
+  padding: 0.1em 0.35em;
+  background-color: var(--color-code-bg);
+  color: var(--color-code-text);
+  border-radius: 0.25em;
 }
 
 /**

@@ -157,7 +157,7 @@
   }
 
   & p code {
-    color: light-dark(var(--color-dandelion-600), var(--color-dandelion-300));
+    color: var(--color-code-text);
 
     @supports (font-size-adjust: ex-height 0.51) {
       font-size-adjust: ex-height 0.51;
