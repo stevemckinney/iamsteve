@@ -64,6 +64,18 @@ const noteComponents = {
       {...props}
     />
   ),
+  ul: (props) => (
+    <ul
+      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-[square] [li::marker]-[theme('colors.neutral-03.400')] mb-2"
+      {...props}
+    />
+  ),
+  ol: (props) => (
+    <ol
+      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-decimal [li::marker]-[theme('colors.neutral-03.400')] mb-2"
+      {...props}
+    />
+  ),
   img: (props) => <img className="rounded-sm my-4" {...props} />,
   Image,
   ...noteFigureComponents,
