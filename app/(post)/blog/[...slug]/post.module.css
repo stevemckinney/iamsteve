@@ -211,37 +211,6 @@
     text-align: right;
   }
 
-  & :global(.fragment) {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  & :global(.fragment-icon) {
-    display: inline-flex;
-    align-items: center;
-    vertical-align: middle;
-    margin-inline-start: 0.25rem;
-    transition: opacity 0.15s ease-out, transform 0.3s ease-out;
-    transform-origin: center center;
-
-    @media (width >= 640px) {
-      margin-inline-start: 0.5rem;
-    }
-  }
-
-  & :global(.fragment-icon svg.icon) {
-    display: block;
-    width: 16px;
-    height: 16px;
-    flex-shrink: 0;
-    color: oklch(from var(--color-heading) l c h / 0.7);
-
-    @media (width >= 640px) {
-      width: 24px;
-      height: 24px;
-    }
-  }
-
   & :where(h2, h3, h4, h5, h6) {
     & > a[rel] {
       text-decoration: underline;
@@ -255,14 +224,6 @@
       &:focus {
         color: var(--color-link-hover);
         text-decoration-color: var(--color-link-hover);
-      }
-    }
-
-    @media (hover: hover) {
-      &:not(:hover, :focus-within) :global(.fragment-icon) {
-        transition: opacity 0.15s ease-out, transform 0.2s ease-out;
-        transform: scale3d(0.5, 0.5, 0.5) translate3d(-32px, 0, 0);
-        opacity: 0;
       }
     }
   }
@@ -371,16 +332,10 @@
  * footnotes
  */
 .prose :global(.footnotes) {
-  border-top: 1px solid var(--color-neutral-01-250);
   box-shadow: inset 0 1px var(--color-neutral-01-100);
-  padding-block-start: calc(var(--spacing) * 8);
 
   & > :global(h2) {
     font-size: var(--text-3xl);
-  }
-
-  & :global(.data-footnote-backref) {
-    text-decoration: none;
   }
 }
 
