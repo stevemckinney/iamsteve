@@ -71,10 +71,28 @@
  * Inline code
  */
 :not(pre) > code {
-  padding: 0.1em 0.35em;
-  background-color: var(--color-code-bg);
+  position: relative;
+  padding-inline: 0.5ch;
   color: var(--color-code-text);
-  border-radius: 0.25em;
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 2px 2px 0;
+    border-radius: var(--radius-sm);
+    background: var(--color-code-bg);
+    box-shadow: inset 0 0 0 1px
+      light-dark(
+        oklch(from var(--color-fern-700) l c h / 0.2),
+        oklch(from var(--color-dandelion-400) l c h / 0.12)
+      );
+    z-index: -1;
+  }
+
+  @supports (font-size-adjust: ex-height 0.51) {
+    font-size-adjust: ex-height 0.51;
+    line-height: 1;
+  }
 }
 
 /**
