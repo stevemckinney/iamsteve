@@ -61,6 +61,21 @@
 }
 
 /**
+ * Lists
+ */
+:is(.prose, .codeblock) ul {
+  list-style-type: square;
+}
+
+:is(.prose, .codeblock) ol {
+  list-style-type: decimal;
+}
+
+:is(.prose, .codeblock) ul > li::marker {
+  font-size: 112.5%;
+}
+
+/**
  * Footnotes
  */
 :is(.prose, .codeblock) .footnotes {

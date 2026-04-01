@@ -147,10 +147,6 @@
     line-height: var(--leading-xl);
   }
 
-  & ul > li::marker {
-    font-size: 112.5%;
-  }
-
   & :where(p, li) {
     color: var(--color-ui-body);
     text-wrap: pretty;
