@@ -156,15 +156,6 @@
     text-wrap: pretty;
   }
 
-  & p code {
-    color: light-dark(var(--color-dandelion-600), var(--color-dandelion-300));
-
-    @supports (font-size-adjust: ex-height 0.51) {
-      font-size-adjust: ex-height 0.51;
-      line-height: 1;
-    }
-  }
-
   & table {
     width: 100%;
     padding: 0;

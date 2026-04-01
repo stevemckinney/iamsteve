@@ -180,8 +180,8 @@
 
   /* inline code */
   --color-code-bg: light-dark(
-    oklch(from var(--color-fern-500) l c h / 0.12),
-    oklch(from var(--color-dandelion-400) l c h / 0.12)
+    oklch(from var(--color-fern-500) l c h / 0.1),
+    oklch(from var(--color-dandelion-400) l c h / 0.1)
   );
   --color-code-text: light-dark(
     var(--color-fern-800),
