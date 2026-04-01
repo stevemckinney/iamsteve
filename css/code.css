@@ -242,6 +242,7 @@ code[data-line-numbers] {
 :is(.prose, .codeblock) [data-rehype-pretty-code-title] > span {
   display: inline-flex;
   font-family: var(--font-sans) !important;
+  font-size: var(--text-base);
   font-weight: 500;
   color: var(--code-fg);
   line-height: 1.5;

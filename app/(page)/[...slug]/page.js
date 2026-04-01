@@ -57,7 +57,9 @@ export default async function PagePage(props) {
         height={46}
         className={`col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden`}
       />
-      <article className={`grid grid-cols-subgrid col-container row-start-1 lg:pb-18 gap-y-10 lg:gap-y-18 ${styles.page}`}>
+      <article
+        className={`grid grid-cols-subgrid col-container row-start-1 lg:pb-18 gap-y-10 lg:gap-y-18 ${styles.page}`}
+      >
         <Header>
           <Column className="md:col-span-1">
             <Title>{page.title}</Title>
