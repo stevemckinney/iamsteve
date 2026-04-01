@@ -1,6 +1,6 @@
 {
   "name": "iamsteve",
-  "version": "8.5.9",
+  "version": "8.5.10",
   "private": true,
   "packageManager": "pnpm@10.33.0",
   "scripts": {
