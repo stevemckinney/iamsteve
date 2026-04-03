@@ -11,6 +11,7 @@ import { format, parseISO } from 'date-fns'
 
 import { Header, Title, Column, Description } from '@/components/page'
 import { PencilMono } from '@/components/illustration'
+import { cn } from '@/lib/utils'
 import Badge from '@/components/badge'
 import Link from '@/components/link'
 import { NoteFeedContent } from '@/components/note-feed-content'
@@ -85,15 +86,17 @@ export default async function NotesIndex() {
         {notes.map((note, index) => (
           <article
             key={note._meta.filePath}
-            className={`grid grid-cols-1 md:grid-cols-[minmax(8rem,_auto)_24px_1fr_auto] gap-x-4 lg:gap-x-6 ${
-              index > 0 ? 'pt-8' : ''
-            }`}
+            className={cn(
+              'grid grid-cols-1 md:grid-cols-[minmax(8rem,_auto)_24px_1fr_auto] gap-x-4 lg:gap-x-6',
+              index > 0 && 'pt-8'
+            )}
           >
             {/* Date column — hidden on mobile */}
             <div
-              className={`hidden md:flex items-start sticky top-8 self-start pb-8 justify-end ${
-                index > 0 ? 'mt-[11px]' : ''
-              }`}
+              className={cn(
+                'hidden md:flex items-start sticky top-8 self-start pb-8 justify-end',
+                index > 0 && 'mt-3'
+              )}
             >
               <time
                 dateTime={note.date}
@@ -106,15 +109,18 @@ export default async function NotesIndex() {
             {/* Timeline line + dot */}
             <div className="hidden md:flex relative justify-center">
               <div
-                className={`absolute w-px bg-subtle ${
+                className={cn(
+                  'absolute w-px bg-subtle bottom-0',
                   index === 0 ? 'top-0' : '-top-8'
-                } bottom-0`}
+                )}
               />
               {/* Dot */}
               <div
-                className={`sticky top-8 self-start mb-12 size-2.5 rounded-full bg-border-medium ring-4 ring-canvas shrink-0 ${
-                  index > 0 ? 'mt-3' : ''
-                }`}
+                className={cn(
+                  'sticky top-8.25 self-start mb-10 size-2.5 rounded-full bg-border-medium ring-4 ring-canvas shrink-0',
+                  index > 0 && 'mt-[13px]',
+                  index === 0 && 'mt-0.5'
+                )}
               />
             </div>
 
@@ -127,7 +133,12 @@ export default async function NotesIndex() {
               >
                 {format(parseISO(note.date), 'do LLLL yyyy')}
               </time>
-              <h2 className="text-heading font-display font-variation-bold lowercase text-2xl/tight lg:text-3xl/tight mb-4">
+              <h2
+                className={cn(
+                  'text-heading font-display font-variation-bold lowercase text-2xl/tight lg:text-3xl/tight mb-4',
+                  index === 0 && '-mt-3'
+                )}
+              >
                 <Link href={note.slug} className="hover:text-link">
                   {note.title}
                 </Link>
@@ -146,9 +157,11 @@ export default async function NotesIndex() {
 
             {/* Desktop meta column */}
             <div
-              className={`hidden md:flex flex-col gap-3 sticky top-8 self-start pb-12 ${
-                index > 0 ? 'mt-1.5' : ''
-              }`}
+              className={cn(
+                'hidden md:flex flex-col gap-3 sticky top-8 self-start pb-12',
+                index > 0 && 'mt-1.75',
+                index === 0 && '-mt-1.5'
+              )}
             >
               <Badge size={16} theme="lavender" iconStart="views">
                 {note.content.split(/\s+/).length} words
