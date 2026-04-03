@@ -20,7 +20,7 @@ export default function CopyCode({ getCode }) {
   return (
     <Button
       onPress={handleCopy}
-      className="flex gap-1.5 items-center justify-center px-3 py-1.5 rounded-sm bg-surface bg-[image:linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--color-neutral-01-250),transparent_88%))] dark:bg-[image:linear-gradient(to_top,transparent,color-mix(in_oklab,var(--color-fern-900),transparent_88%))] shadow-placed hover:shadow-picked active:shadow-reduced transition duration-100 ease-out font-ui cursor-pointer ml-auto text-body"
+      className="flex gap-1.5 items-center justify-center px-3 py-1.5 rounded-sm bg-surface bg-[image:linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--color-neutral-01-250),transparent_88%))] dark:bg-[image:linear-gradient(to_top,transparent,color-mix(in_oklab,var(--color-fern-900),transparent_88%))] shadow-placed hover:shadow-picked active:shadow-reduced transition duration-100 ease-out font-ui cursor-pointer ml-auto text-body text-sm"
       aria-label={copied ? 'Copied' : 'Copy code'}
     >
       <span className="relative w-4 h-4">
