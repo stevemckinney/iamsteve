@@ -2,7 +2,7 @@
 title: 'Tips for sketching websites'
 date: '2015-11-10T07:29:00+00:00'
 lastmod: '2016-08-28T10:49:36+00:00'
-summary: 'I’ve seen tweets, and hear people say “I’m no good at sketching/drawing.” So they don’t bother with doing it. For me not sketching your website before going into a wireframe or design, means you’re missing out!Just because you feel like you can’t sketch, doesn’t mean you shouldn’t do it. After all, you’re capable of building a website, and at some point in the past you weren’t. In this post, I’ll show you my process and how to sketch websites.'
+summary: ‘Feeling unable to sketch is no reason to skip it. Sketching before wireframing gives you something that cannot be replaced — this is my process for sketching websites.’
 metadesc: "I believe sketching should always be part of your process. It's the quickest method to iterate and ingrain ideas in our minds."
 theme: '#fffbf2'
 tags: ['Design']
