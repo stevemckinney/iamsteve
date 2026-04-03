@@ -6,6 +6,14 @@
 @import '../css/shiki.css' layer(base);
 
 @layer base {
+  ::selection {
+    background: light-dark(
+      oklch(from var(--color-dandelion-100) l c h / 0.4),
+      oklch(from var(--color-cornflour-600) l c h / 0.4)
+    );
+    color: light-dark(var(--color-fern-1100), var(--color-fern-0));
+  }
+
   :focus {
     outline: none;
   }
