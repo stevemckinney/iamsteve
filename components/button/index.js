@@ -1,3 +1,4 @@
+export { default as CopyButton } from './button-copy'
 export { default as CopyFeedUrl } from './copy-feed-url'
 export { default as CopyLink } from './copy-link'
 export { default as ShareFeed } from './share-feed'
