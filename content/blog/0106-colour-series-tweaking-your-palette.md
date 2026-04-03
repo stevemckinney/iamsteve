@@ -2,7 +2,7 @@
 title: "Colour series: tweaking your palette"
 date: "2015-12-22T08:34:00+00:00"
 lastmod: "2017-04-25T15:26:44+00:00"
-summary: "This is the second part in this colour series. The topic I will cover in this post is tweaking your palette. Following the previous post, you will have selected a 5 colour palette, which should serve for the majority of your use cases. However, at this stage, it won’t be perfect. I’ll guide you through the process of tweaking your palette. From trying your colours in different combinations, to colour blindness. This post helps to refine your palette."
+summary: "Part two of the colour series. Once you’ve picked your palette, this post guides you through refining it — testing combinations, checking contrast and colour blindness."
 metadesc: "How to make effective tweaks to your colour palette. From checking text and background combinations to whether you have enough contrast."
 theme: "#ffede5"
 tags: ["Design"]

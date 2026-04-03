@@ -2,7 +2,7 @@
 title: "Typekit gems"
 date: "2015-09-01T07:31:00+00:00"
 lastmod: "2016-08-28T10:54:25+00:00"
-summary: "Here’s 4 typefaces from typekit; that you may not have used. These are typefaces I have used in the past and have qualities that I believe make a good choice. Generally they are all suitable for paragraph text. They feature nice italics and a variety of weights. Hopefully through this post you can discover some nice typefaces that you can find appropriate for your designs."
+summary: "Four underused Typekit typefaces worth considering. All suitable for paragraph text, with good italics and a range of weights — each with a rationale for the choice."
 metadesc: "Here's 4 typefaces from typekit; that you may not have used. These are typefaces I have used in the past and have qualities that I believe make a good choice."
 theme: "#e1f7ee"
 tags: ["Design"]

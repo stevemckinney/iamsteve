@@ -2,7 +2,7 @@
 title: 'Custom stroke width profiles in Illustrator: create, edit & save'
 date: '2015-07-14T06:33:00+00:00'
 lastmod: '2017-08-19T16:22:46+00:00'
-summary: 'Illustrator has a fair variety of default width profiles, however you may find yourself wanting to tweak them slightly. In my case I needed to tweak one, for creating some eyelashes. It’s not apparent how to do this. So it makes for a good post to explain for anyone having a similar problem.'
+summary: "Illustrator’s default stroke width profiles don’t always suit. This post shows how to create, edit, flip, and save your own custom width profiles."
 metadesc: 'Learn how to create custom stroke profiles in Illustrator, edit existing width presets, flip paths, and save your own profiles. A quick, practical guide.'
 theme: '#fff5f3'
 tags: ['Design']
