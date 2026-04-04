@@ -50,6 +50,7 @@
 .shiki {
   overflow-x: auto;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 0;
   max-height: 20lh;
   isolation: isolate;
@@ -164,6 +165,7 @@ code[data-line-numbers] {
 
 [data-line-numbers-content] {
   overflow-x: auto;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
 }
@@ -244,8 +246,6 @@ code[data-line-numbers] {
   font-family: var(--font-sans) !important;
   font-weight: 500;
   color: var(--code-fg);
-  line-height: 1.5;
-  padding: 6px 12px 0;
 }
 
 /**

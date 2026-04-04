@@ -6,7 +6,7 @@
 import { notFound } from 'next/navigation'
 import { PencilMono } from '@/components/illustration'
 import { allNotes } from 'content-collections'
-import { NoteMdx } from '@/components/note-mdx'
+import { NoteMdx } from '@/components/mdx-note'
 import siteMetadata from '@/content/metadata'
 
 import Badge from '@/components/badge'

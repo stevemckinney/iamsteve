@@ -102,7 +102,7 @@ I replaced Prism with [Shiki](https://shiki.style/) for syntax highlighting. Ini
 
 With the help of Claude I was able to move to Shiki and update every code block and improve upon everything I was trying to achieve with Prism previously.
 
-**What’s improved?**
+### What’s improved?
 
 1. Light and dark themes
 2. Handling of line numbers with scrolling

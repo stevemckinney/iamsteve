@@ -14,7 +14,7 @@ export default function CodeFigure({ title, language, children }) {
   return (
     <figure ref={figureRef} data-rehype-pretty-code-figure="">
       <figcaption data-rehype-pretty-code-title="" data-language={language}>
-        <span className="text-base tracking-normal">{title}</span>
+        <span className="text-base tracking-normal py-1.5 px-3">{title}</span>
         <CopyCode getCode={getCode} />
       </figcaption>
       {children}

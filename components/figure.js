@@ -39,29 +39,4 @@ const figureComponents = {
   ),
 }
 
-const noteFigureComponents = {
-  ...figureComponents,
-  figure: (props) => <figure className="my-4" {...props} />,
-  Figure: ({
-    imageShadow,
-    enlargeable,
-    src,
-    alt,
-    className = '',
-    ...props
-  }) => {
-    const figureClass = `my-4${
-      imageShadow ? ' [&_img]:drop-shadow-image' : ''
-    } ${className}`.trim()
-    if (enlargeable) {
-      return (
-        <FigureModal src={src} alt={alt}>
-          <figure className={figureClass} {...props} />
-        </FigureModal>
-      )
-    }
-    return <figure className={figureClass} {...props} />
-  },
-}
-
-export { figureComponents, noteFigureComponents }
+export { figureComponents }

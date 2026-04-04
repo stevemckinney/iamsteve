@@ -139,7 +139,7 @@
   );
   --color-border-medium: light-dark(
     var(--color-neutral-01-300),
-    var(--color-neutral-01-400)
+    var(--color-fern-600)
   );
   --color-border-strong: light-dark(
     var(--color-neutral-01-400),

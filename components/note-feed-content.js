@@ -1,7 +1,7 @@
 'use client'
 import { MDXContent } from '@content-collections/mdx/react'
-import { noteComponents } from '@/components/note-mdx'
-import styles from '@/components/note-mdx.module.css'
+import { noteComponents } from '@/components/mdx-note'
+import styles from '@/components/mdx-note.module.css'
 
 // Override noteComponents for the feed context (no text size bump)
 const mdxComponents = {

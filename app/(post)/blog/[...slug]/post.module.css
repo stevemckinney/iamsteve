@@ -257,20 +257,6 @@
       }
     }
   }
-
-  & p > a {
-    transition: 0.2s ease-out;
-    text-decoration-line: underline;
-    text-underline-offset: 12.5%;
-    text-decoration-skip: ink;
-    text-decoration-thickness: 1.5px;
-    text-decoration-color: color-mix(in oklch, currentcolor, transparent 60%);
-
-    &:hover {
-      color: var(--color-link-hover);
-      text-decoration-color: transparent;
-    }
-  }
 }
 
 /**
@@ -310,10 +296,13 @@
 
   /* legacy posts start */
   & :global(.article-image) {
-    margin-block: var(--block-space);
+    margin-block-start: var(--block-space);
   }
 
-  & h2 + :global(.article-image),
+  & h2 + :global(.article-image) {
+    margin-block-start: calc(var(--block-space) * 2);
+  }
+
   & h3 + :global(.article-image) {
     margin-block-start: var(--block-space-small);
   }
