@@ -2,7 +2,7 @@
 title: 'Avoid your font face fauxs'
 date: '2024-02-19T08:11:37.767Z'
 lastmod: '2019-12-18T07:57:57+00:00'
-summary: 'A practice to improve web font compatibility in the past was to define your font weights and styles as a new font each time. However, it’s for little gain and increases complexity. It’s easy to end up with unsightly double italics or fuzzy bold weights.'
+summary: ‘Defining font weights as separate @font-face declarations is outdated and causes faux bold and italic issues. Here’s how to avoid it and do it correctly.’
 metadesc: 'A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS.'
 theme: '#fffbf2'
 tags: ['Code', 'CSS']

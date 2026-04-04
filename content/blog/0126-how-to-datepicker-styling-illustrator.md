@@ -2,7 +2,7 @@
 title: "How to: datepicker styling using Illustrator"
 date: "2016-05-17T06:45:00+00:00"
 lastmod: "2016-08-28T09:18:26+00:00"
-summary: "Following on from the datepicker post where it was more about getting the basics in place and focusing on some important Illustrator techniques that allow for accuracy and efficiency. This post will focus on guiding you through the process of making the datepicker easy to understand and have better aesthetics."
+summary: "Part two of designing a datepicker in Illustrator. After the structural basics, this post focuses on styling — clarity, aesthetics, and a better user experience."
 metadesc: "Following on from the datepicker post where it was more about getting the basics in place and focusing on some important Illustrator techniques that allow for accuracy and efficiency. "
 theme: "#e9f5f5"
 tags: ["Design"]
