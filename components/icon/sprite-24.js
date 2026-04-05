@@ -18,1389 +18,620 @@ const Sprite24 = (props) => (
     <defs>
       <symbol id="accessibility-24" viewBox="0 0 24 24">
         <g className="accessibility">
-          <path
-            d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M12 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
-            className="fill-(--icon-fill) stroke-current stroke-1 sl-r"
-          />
-          <path
-            d="M16 10s-2.318 1-4 1-4-1-4-1"
-            className="stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M13 11h-2v4h2v-4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m11 15-1 3"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m13 15 1 3"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M12 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" className="fill-(--icon-fill) stroke-current stroke-1 sl-r"/>
+            <path d="M16 10s-2.318 1-4 1-4-1-4-1" className="stroke-current stroke-2 sl-r"/>
+            <path d="M13 11h-2v4h2v-4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="m11 15-1 3" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m13 15 1 3" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="airplane-24" viewBox="0 0 24 24">
         <g className="airplane">
-          <path d="M22 12 8 21v-6l4-3-4-3V3l14 9Z" className="fill-current" />
-          <path
-            d="M22 12 8 21v-6l4-3-4-3V3l14 9Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path d="M21 12h-9" className="stroke-current stroke-2 sl-r" />
-          <path d="M3 8h1" className="stroke-current stroke-2 sl-r" />
-          <path d="M3 16h1" className="stroke-current stroke-2 sl-r" />
-          <path d="M2 12h4" className="stroke-current stroke-2 sl-r" />
-        </g>
+            <path d="M22 12 8 21v-6l4-3-4-3V3l14 9Z" className="fill-current"/>
+            <path d="M22 12 8 21v-6l4-3-4-3V3l14 9Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M21 12h-9" className="stroke-current stroke-2 sl-r"/>
+            <path d="M3 8h1" className="stroke-current stroke-2 sl-r"/>
+            <path d="M3 16h1" className="stroke-current stroke-2 sl-r"/>
+            <path d="M2 12h4" className="stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="align-centre-24" viewBox="0 0 24 24">
         <g className="align-centre">
-          <path
-            d="M3 3h18"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M3 21h18"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M6 9h12"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M6 15h12"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M3 3h18" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M3 21h18" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M6 9h12" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M6 15h12" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="align-left-24" viewBox="0 0 24 24">
         <g className="align-left">
-          <path
-            d="M3 3h18"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M3 9h12"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M3 15h9"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M3 21h15"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M3 3h18" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M3 9h12" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M3 15h9" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M3 21h15" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="align-right-24" viewBox="0 0 24 24">
         <g className="align-right">
-          <path
-            d="M3 3h18"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M9 9h12"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M12 15h9"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M6 21h15"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M3 3h18" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M9 9h12" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M12 15h9" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M6 21h15" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="all-24" viewBox="0 0 24 24">
         <g className="all">
-          <path
-            d="M7 3H3v4h4V3Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M14 3h-4v4h4V3Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M14 10h-4v4h4v-4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M14 17h-4v4h4v-4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M7 17H3v4h4v-4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M7 10H3v4h4v-4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M21 3h-4v4h4V3Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M21 17h-4v4h4v-4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M21 10h-4v4h4v-4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M7 3H3v4h4V3Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M14 3h-4v4h4V3Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M14 10h-4v4h4v-4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M14 17h-4v4h4v-4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M7 17H3v4h4v-4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M7 10H3v4h4v-4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M21 3h-4v4h4V3Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M21 17h-4v4h4v-4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M21 10h-4v4h4v-4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="angle-down-24" viewBox="0 0 24 24">
         <g className="angle-down">
-          <path
-            d="m4 8 8 8 8-8"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m4 8 8 8 8-8" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="angle-left-24" viewBox="0 0 24 24">
         <g className="angle-left">
-          <path
-            d="m16 4-8 8 8 8"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m16 4-8 8 8 8" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="angle-right-24" viewBox="0 0 24 24">
         <g className="angle-right">
-          <path
-            d="m8 4 8 8-8 8"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m8 4 8 8-8 8" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="angle-up-24" viewBox="0 0 24 24">
         <g className="angle-up">
-          <path
-            d="m4 16 8-8 8 8"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m4 16 8-8 8 8" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="arrow-down-24" viewBox="0 0 24 24">
         <g className="arrow-down">
-          <path d="M12 22V2" className="stroke-current stroke-2 sl-r" />
-          <path
-            d="m6 16 6 6 6-6"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M12 22V2" className="stroke-current stroke-2 sl-r"/>
+            <path d="m6 16 6 6 6-6" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="arrow-left-24" viewBox="0 0 24 24">
         <g className="arrow-left">
-          <path d="M2 12h20" className="stroke-current stroke-2 sl-r" />
-          <path
-            d="m8 6-6 6 6 6"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M2 12h20" className="stroke-current stroke-2 sl-r"/>
+            <path d="m8 6-6 6 6 6" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="arrow-right-24" viewBox="0 0 24 24">
         <g className="arrow-right">
-          <path d="M22 12H2" className="stroke-current stroke-2 sl-r" />
-          <path
-            d="m16 18 6-6-6-6"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M22 12H2" className="stroke-current stroke-2 sl-r"/>
+            <path d="m16 18 6-6-6-6" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="arrow-up-24" viewBox="0 0 24 24">
         <g className="arrow-up">
-          <path d="M12 2v20" className="stroke-current stroke-2 sl-r" />
-          <path
-            d="m18 8-6-6-6 6"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M12 2v20" className="stroke-current stroke-2 sl-r"/>
+            <path d="m18 8-6-6-6 6" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="bee-24" viewBox="0 0 24 24">
         <g className="bee">
-          <path
-            d="M10 6c0-3-1-4-4-4"
-            className="stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M14 6c0-3 1-4 4-4"
-            className="stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"
-            className="fill-current stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M12 21a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"
-            className="fill-dandelion-100 dark:fill-fern-900 stroke-current stroke-2 sl-r"
-          />
-          <path d="M7 12c3.871 1.341 6.058 1.325 10 0" className="path" />
-          <path
-            d="M7 16c3.871 1.341 6.058 1.325 10 0"
-            className="stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M22 17.667A8.667 8.667 0 0 0 13.333 9H12v1.333A8.667 8.667 0 0 0 20.667 19c.736 0 1.333-.597 1.333-1.333Z"
-            className="fill-dandelion-0 dark:fill-fern-900 stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M2 17.667A8.667 8.667 0 0 1 10.667 9H12v1.333A8.667 8.667 0 0 1 3.333 19 1.333 1.333 0 0 1 2 17.667Z"
-            className="fill-dandelion-0 dark:fill-fern-900 stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M10 6c0-3-1-4-4-4" className="stroke-current stroke-2 sl-r"/>
+            <path d="M14 6c0-3 1-4 4-4" className="stroke-current stroke-2 sl-r"/>
+            <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" className="fill-current stroke-current stroke-2 sl-r"/>
+            <path d="M12 21a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" className="fill-dandelion-100 dark:fill-fern-900 stroke-current stroke-2 sl-r"/>
+            <path d="M7 12c3.871 1.341 6.058 1.325 10 0" className="path"/>
+            <path d="M7 16c3.871 1.341 6.058 1.325 10 0" className="stroke-current stroke-2 sl-r"/>
+            <path d="M22 17.667A8.667 8.667 0 0 0 13.333 9H12v1.333A8.667 8.667 0 0 0 20.667 19c.736 0 1.333-.597 1.333-1.333Z" className="fill-dandelion-0 dark:fill-fern-900 stroke-current stroke-2 sl-r"/>
+            <path d="M2 17.667A8.667 8.667 0 0 1 10.667 9H12v1.333A8.667 8.667 0 0 1 3.333 19 1.333 1.333 0 0 1 2 17.667Z" className="fill-dandelion-0 dark:fill-fern-900 stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="bolt-24" viewBox="0 0 24 24">
         <g className="bolt">
-          <path
-            d="m13 10-1-8-6 12h5l1 8 6-12h-5Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m13 10-1-8-6 12h5l1 8 6-12h-5Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="book-24" viewBox="0 0 24 24">
         <g className="book">
-          <path d="M16 21h3" className="stroke-current stroke-2 sl-r" />
-          <path
-            d="M19 17V3H6.5A1.5 1.5 0 0 0 5 4.5v11A1.5 1.5 0 0 0 6.5 17H19Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M5 15v4.5A1.5 1.5 0 0 0 6.5 21H18v-4"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M16 21h3" className="stroke-current stroke-2 sl-r"/>
+            <path d="M19 17V3H6.5A1.5 1.5 0 0 0 5 4.5v11A1.5 1.5 0 0 0 6.5 17H19Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M5 15v4.5A1.5 1.5 0 0 0 6.5 21H18v-4" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="bookmark-24" viewBox="0 0 24 24">
         <g className="bookmark">
-          <rect
-            width="18"
-            height="11"
-            x="3"
-            y="9"
-            className="fill-(--icon-fill)"
-            rx="1"
-          />
-          <path
-            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
-          <path d="M4 9h10" className="stroke-current stroke-2 sl-r" />
-          <path d="M18 9h3" className="stroke-current stroke-2 sl-r" />
-          <path
-            d="M14 4h4v12l-2-2-2 2V4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <rect width="18" height="11" x="3" y="9" className="fill-(--icon-fill)" rx="1"/>
+            <path d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+            <path d="M4 9h10" className="stroke-current stroke-2 sl-r"/>
+            <path d="M18 9h3" className="stroke-current stroke-2 sl-r"/>
+            <path d="M14 4h4v12l-2-2-2 2V4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="box-24" viewBox="0 0 24 24">
         <g className="box">
-          <path
-            d="M4 9h16v9.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5V9Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <rect
-            width="18"
-            height="4"
-            x="3"
-            y="5"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-            rx="1"
-          />
-          <path d="M9 13h6" className="stroke-current stroke-2" />
-        </g>
+            <path d="M4 9h16v9.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5V9Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <rect width="18" height="4" x="3" y="5" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r" rx="1"/>
+            <path d="M9 13h6" className="stroke-current stroke-2"/>
+          </g>
       </symbol>
       <symbol id="bulb-24" viewBox="0 0 24 24">
         <g className="bulb">
-          <path
-            d="M12 2C9 2 6 4 6 8s3 4 3 8v2h6v-2c0-4 3-4 3-8s-3-6-6-6Z"
-            className="fill-(--icon-fill) stroke-current stroke-2"
-          />
-          <path d="M9 15h6" className="stroke-current stroke-2" />
-          <path
-            d="M15 19a3 3 0 1 1-6 0v-1h6v1Z"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2"
-          />
-        </g>
+            <path d="M12 2C9 2 6 4 6 8s3 4 3 8v2h6v-2c0-4 3-4 3-8s-3-6-6-6Z" className="fill-(--icon-fill) stroke-current stroke-2"/>
+            <path d="M9 15h6" className="stroke-current stroke-2"/>
+            <path d="M15 19a3 3 0 1 1-6 0v-1h6v1Z" className="fill-(--icon-fill-bg) stroke-current stroke-2"/>
+          </g>
       </symbol>
       <symbol id="calendar-24" viewBox="0 0 24 24">
         <g className="calendar">
-          <rect
-            width="20"
-            height="16"
-            x="2"
-            y="4"
-            className="fill-current stroke-current stroke-2 sl-r"
-            rx="1"
-          />
-          <rect
-            width="18"
-            height="12"
-            x="3"
-            y="7"
-            className="fill-(--icon-fill)"
-            rx=".5"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="5"
-            y="15"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="5"
-            y="12"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="8"
-            y="15"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="8"
-            y="12"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="8"
-            y="9"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="11"
-            y="15"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="14"
-            y="15"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="11"
-            y="12"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="11"
-            y="9"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="14"
-            y="12"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="17"
-            y="12"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="14"
-            y="9"
-            className="fill-current"
-            rx="1"
-          />
-          <rect
-            width="2"
-            height="2"
-            x="17"
-            y="9"
-            className="fill-current"
-            rx="1"
-          />
-        </g>
+            <rect width="20" height="16" x="2" y="4" className="fill-current stroke-current stroke-2 sl-r" rx="1"/>
+            <rect width="18" height="12" x="3" y="7" className="fill-(--icon-fill)" rx=".5"/>
+            <rect width="2" height="2" x="5" y="15" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="5" y="12" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="8" y="15" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="8" y="12" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="8" y="9" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="11" y="15" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="14" y="15" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="11" y="12" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="11" y="9" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="14" y="12" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="17" y="12" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="14" y="9" className="fill-current" rx="1"/>
+            <rect width="2" height="2" x="17" y="9" className="fill-current" rx="1"/>
+          </g>
       </symbol>
       <symbol id="caret-down-24" viewBox="0 0 24 24">
         <g className="caret-down">
-          <path
-            d="m17 9-5 8-5-8h10Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m17 9-5 8-5-8h10Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="caret-left-24" viewBox="0 0 24 24">
         <g className="caret-left">
-          <path
-            d="m15 7-8 5 8 5V7Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m15 7-8 5 8 5V7Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="caret-right-24" viewBox="0 0 24 24">
         <g className="caret-right">
-          <path
-            d="m9 7 8 5-8 5V7Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m9 7 8 5-8 5V7Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="caret-up-24" viewBox="0 0 24 24">
         <g className="caret-up">
-          <path
-            d="m17 15-5-8-5 8h10Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m17 15-5-8-5 8h10Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="checkmark-24" viewBox="0 0 24 24">
         <g className="checkmark">
-          <path
-            d="m4 13 5 4L20 6"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m4 13 5 4L20 6" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="checkmark-underline-24" viewBox="0 0 24 24">
         <g className="checkmark-underline">
-          <path
-            d="M3 22.5h18"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m4 13 5 4L20 6"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M3 22.5h18" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m4 13 5 4L20 6" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="clipboard-24" viewBox="0 0 24 24">
         <g className="clipboard">
-          <path
-            d="M6.496 21A1.497 1.497 0 0 1 5 19.5V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14.5c0 .828-.669 1.5-1.497 1.5H6.496Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M8 5h8v1H8z"
-            className="fill-current stroke-current stroke-2 sl-r"
-          />
-          <circle
-            cx="12"
-            cy="4"
-            r="2"
-            className="stroke-current stroke-2 sl-r fill-(--icon-fill)"
-          />
-        </g>
+            <path d="M6.496 21A1.497 1.497 0 0 1 5 19.5V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14.5c0 .828-.669 1.5-1.497 1.5H6.496Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M8 5h8v1H8z" className="fill-current stroke-current stroke-2 sl-r"/>
+            <circle cx="12" cy="4" r="2" className="stroke-current stroke-2 sl-r fill-(--icon-fill)"/>
+          </g>
       </symbol>
       <symbol id="clipboard-success-24" viewBox="0 0 24 24">
         <g className="clipboard-success">
-          <path
-            d="M6.496 21A1.497 1.497 0 0 1 5 19.5V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14.5c0 .828-.669 1.5-1.497 1.5H6.496Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M8 5h8v1H8z"
-            className="fill-current stroke-current stroke-2 sl-r"
-          />
-          <circle
-            cx="12"
-            cy="4"
-            r="2"
-            className="stroke-current stroke-2 sl-r fill-(--icon-fill)"
-          />
-          <path
-            d="m15 11-4 4-2-2"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M6.496 21A1.497 1.497 0 0 1 5 19.5V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14.5c0 .828-.669 1.5-1.497 1.5H6.496Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M8 5h8v1H8z" className="fill-current stroke-current stroke-2 sl-r"/>
+            <circle cx="12" cy="4" r="2" className="stroke-current stroke-2 sl-r fill-(--icon-fill)"/>
+            <path d="m15 11-4 4-2-2" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="clock-reverse-24" viewBox="0 0 24 24">
         <g className="clock-reverse">
-          <path
-            d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18Z"
-            className="fill-(--icon-fill)"
-          />
-          <path
-            d="M3 9s1.988-2.32 2.727-3.192c.176-.208.382-.436.587-.615C9.1 2.753 13.09 2.237 16.5 4.206a9 9 0 0 1-9 15.588"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path d="m15 15-3-3V8" className="stroke-current stroke-2 sl-r" />
-          <path d="M3 5v4h4" className="stroke-current stroke-2 sl-r" />
-        </g>
+            <path d="M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18Z" className="fill-(--icon-fill)"/>
+            <path d="M3 9s1.988-2.32 2.727-3.192c.176-.208.382-.436.587-.615C9.1 2.753 13.09 2.237 16.5 4.206a9 9 0 0 1-9 15.588" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m15 15-3-3V8" className="stroke-current stroke-2 sl-r"/>
+            <path d="M3 5v4h4" className="stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="close-24" viewBox="0 0 24 24">
         <g className="close">
-          <path d="M19 19 5 5" className="stroke-current stroke-2 sl-r" />
-          <path d="M19 5 5 19" className="stroke-current stroke-2 sl-r" />
-        </g>
+            <path d="M19 19 5 5" className="stroke-current stroke-2 sl-r"/>
+            <path d="M19 5 5 19" className="stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="code-24" viewBox="0 0 24 24">
         <g className="code">
-          <path
-            d="M3.993 20A.994.994 0 0 1 3 19V5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v14c0 .552-.442 1-.995 1H3.993Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m7 12 2 2-2 2"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path d="M12 16h3" className="stroke-current stroke-2 sl-r" />
-        </g>
+            <path d="M3.993 20A.994.994 0 0 1 3 19V5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v14c0 .552-.442 1-.995 1H3.993Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="m7 12 2 2-2 2" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M12 16h3" className="stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="collections-24" viewBox="0 0 24 24">
         <g className="collections">
-          <path
-            d="M8 6H3v15h5V6Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m17.812 4.005-4.83 1.294 4.209 15.706 4.83-1.294-4.21-15.706Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M13 3H8v18h5V3Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M8 6H3v15h5V6Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="m17.812 4.005-4.83 1.294 4.209 15.706 4.83-1.294-4.21-15.706Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M13 3H8v18h5V3Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="comment-24" viewBox="0 0 24 24">
         <g className="comment">
-          <path
-            d="M16.5 3h-9A4.5 4.5 0 0 0 3 7.5v12c0 1.236 1.411 1.942 2.4 1.2l2-1.5A6 6 0 0 1 11 18h5.5a4.5 4.5 0 0 0 4.5-4.5v-6A4.5 4.5 0 0 0 16.5 3Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M16.5 3h-9A4.5 4.5 0 0 0 3 7.5v12c0 1.236 1.411 1.942 2.4 1.2l2-1.5A6 6 0 0 1 11 18h5.5a4.5 4.5 0 0 0 4.5-4.5v-6A4.5 4.5 0 0 0 16.5 3Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="component-24" viewBox="0 0 24 24">
         <g className="component">
-          <path
-            d="m14.632 12 3.684-3.684L22 12l-3.684 3.684z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M8.316 18.316 12 14.632l3.684 3.684L12 22z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M8.316 5.684 12 2l3.684 3.684L12 9.368z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m2 12 3.684-3.684L9.368 12l-3.684 3.684z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m14.632 12 3.684-3.684L22 12l-3.684 3.684z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M8.316 18.316 12 14.632l3.684 3.684L12 22z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M8.316 5.684 12 2l3.684 3.684L12 9.368z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="m2 12 3.684-3.684L9.368 12l-3.684 3.684z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="copy-24" viewBox="0 0 24 24">
         <g className="copy">
-          <path
-            d="M8 9H4.5A1.5 1.5 0 0 0 3 10.5v9A1.5 1.5 0 0 0 4.5 21h10a1.5 1.5 0 0 0 1.5-1.5V15"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
-          <rect
-            width="13"
-            height="12"
-            x="8"
-            y="3"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-            rx="1.5"
-          />
-        </g>
+            <path d="M8 9H4.5A1.5 1.5 0 0 0 3 10.5v9A1.5 1.5 0 0 0 4.5 21h10a1.5 1.5 0 0 0 1.5-1.5V15" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+            <rect width="13" height="12" x="8" y="3" className="fill-(--icon-fill) stroke-current stroke-2 sl-r" rx="1.5"/>
+          </g>
       </symbol>
       <symbol id="css-24" viewBox="0 0 24 24">
         <g className="css">
-          <path
-            d="M6 2h12v6.667L21 12l-3 3.333V22H6v-6.667L3 12l3-3.333V2Z"
-            className="fill-(--icon-fill)"
-          />
-          <path
-            d="M9 2H7.417a1.5 1.5 0 0 0-1.5 1.5v4.979a.5.5 0 0 1-.124.33L3.288 11.67a.5.5 0 0 0 0 .658l2.505 2.863a.5.5 0 0 1 .124.33V20.5a1.5 1.5 0 0 0 1.5 1.5H9"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M15 2h1.583a1.5 1.5 0 0 1 1.5 1.5v4.979a.5.5 0 0 0 .124.33l2.505 2.862a.5.5 0 0 1 0 .658l-2.505 2.863a.5.5 0 0 0-.124.33V20.5a1.5 1.5 0 0 1-1.5 1.5H15"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M6 2h12v6.667L21 12l-3 3.333V22H6v-6.667L3 12l3-3.333V2Z" className="fill-(--icon-fill)"/>
+            <path d="M9 2H7.417a1.5 1.5 0 0 0-1.5 1.5v4.979a.5.5 0 0 1-.124.33L3.288 11.67a.5.5 0 0 0 0 .658l2.505 2.863a.5.5 0 0 1 .124.33V20.5a1.5 1.5 0 0 0 1.5 1.5H9" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M15 2h1.583a1.5 1.5 0 0 1 1.5 1.5v4.979a.5.5 0 0 0 .124.33l2.505 2.862a.5.5 0 0 1 0 .658l-2.505 2.863a.5.5 0 0 0-.124.33V20.5a1.5 1.5 0 0 1-1.5 1.5H15" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="cursor-24" viewBox="0 0 24 24">
         <g className="cursor">
-          <path
-            d="m4 4 18 6-9 3-3 9L4 4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m4 4 18 6-9 3-3 9L4 4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="design-24" viewBox="0 0 24 24">
         <g className="design">
-          <path
-            d="M4 15c0-4.416 3.584-8 8-8s8 3.584 8 8"
-            className="stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M4 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M20 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path d="M4 7h16" className="stroke-current stroke-2 sl-r" />
-          <path
-            d="M10 7a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z"
-            className="fill-current stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M6 5H2v4h4V5Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M22 5h-4v4h4V5Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M4 15c0-4.416 3.584-8 8-8s8 3.584 8 8" className="stroke-current stroke-2 sl-r"/>
+            <path d="M4 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M20 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M4 7h16" className="stroke-current stroke-2 sl-r"/>
+            <path d="M10 7a2 2 0 1 0 4 0 2 2 0 0 0-4 0Z" className="fill-current stroke-current stroke-2 sl-r"/>
+            <path d="M6 5H2v4h4V5Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M22 5h-4v4h4V5Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="download-24" viewBox="0 0 24 24">
-        <path
-          stroke="color(display-p3 .0353 .1804 .1412)"
-          d="M3 22.5h18m-13.5-9L12 18l4.5-4.5M12 3v13.5"
-          className="slc-r sl-r stroke-2"
-        />
+        <path stroke="color(display-p3 .0353 .1804 .1412)" d="M3 22.5h18m-13.5-9L12 18l4.5-4.5M12 3v13.5" className="slc-r sl-r stroke-2" />
       </symbol>
       <symbol id="enlarge-24" viewBox="0 0 24 24">
         <g className="enlarge">
-          <path
-            d="M3 18v3h3"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M21 6V3h-3"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M6 3H3v3"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m21 3-6 6"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m9 15-6 6"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m3 3 6 6"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m15 15 6 6"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M18 21h3v-3"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M3 18v3h3" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M21 6V3h-3" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M6 3H3v3" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m21 3-6 6" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m9 15-6 6" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m3 3 6 6" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m15 15 6 6" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M18 21h3v-3" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="envelope-24" viewBox="0 0 24 24">
         <g className="envelope">
-          <path d="M21 10v11H3V10l9 6 9-6Z" className="fill-(--icon-fill)" />
-          <path
-            d="M5 4h14v6h2l-9 6-9-6h2V4Z"
-            className="fill-(--icon-fill-bg)"
-          />
-          <path
-            d="M19 8.222 21 10v11H3V10l2-1.778"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M14.25 4 12 2 9.75 4"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m3 10 9 6 9-6"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M19 11V4H5v7"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M21 10v11H3V10l9 6 9-6Z" className="fill-(--icon-fill)"/>
+            <path d="M5 4h14v6h2l-9 6-9-6h2V4Z" className="fill-(--icon-fill-bg)"/>
+            <path d="M19 8.222 21 10v11H3V10l2-1.778" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M14.25 4 12 2 9.75 4" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m3 10 9 6 9-6" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M19 11V4H5v7" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="external-24" viewBox="0 0 24 24">
         <g className="external">
-          <rect
-            width="13"
-            height="13"
-            x="4"
-            y="7"
-            className="fill-(--icon-fill)"
-            rx="1"
-          />
-          <path d="m12 12 8-8" className="stroke-current stroke-2 sl-r" />
-          <path d="M15 4h5v5" className="stroke-current stroke-2 sl-r" />
-          <path
-            d="M9.333 7H5.5A1.5 1.5 0 0 0 4 8.5v10A1.5 1.5 0 0 0 5.5 20h10a1.5 1.5 0 0 0 1.5-1.5v-3.833"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <rect width="13" height="13" x="4" y="7" className="fill-(--icon-fill)" rx="1"/>
+            <path d="m12 12 8-8" className="stroke-current stroke-2 sl-r"/>
+            <path d="M15 4h5v5" className="stroke-current stroke-2 sl-r"/>
+            <path d="M9.333 7H5.5A1.5 1.5 0 0 0 4 8.5v10A1.5 1.5 0 0 0 5.5 20h10a1.5 1.5 0 0 0 1.5-1.5v-3.833" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="folder-24" viewBox="0 0 24 24">
         <g className="folder">
-          <path
-            d="M20 19.003A.997.997 0 0 1 19 20H5a1 1 0 0 1-1-1V5.5A1.5 1.5 0 0 1 5.5 4H8l1 1h9.5c.828 0 1.5.67 1.5 1.498v12.505Z"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M2.05 9.545A.5.5 0 0 1 2.548 9h18.905a.5.5 0 0 1 .497.545l-.826 9.09A1.5 1.5 0 0 1 19.63 20H4.37a1.5 1.5 0 0 1-1.494-1.364l-.826-9.09Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M20 19.003A.997.997 0 0 1 19 20H5a1 1 0 0 1-1-1V5.5A1.5 1.5 0 0 1 5.5 4H8l1 1h9.5c.828 0 1.5.67 1.5 1.498v12.505Z" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+            <path d="M2.05 9.545A.5.5 0 0 1 2.548 9h18.905a.5.5 0 0 1 .497.545l-.826 9.09A1.5 1.5 0 0 1 19.63 20H4.37a1.5 1.5 0 0 1-1.494-1.364l-.826-9.09Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="font-24" viewBox="0 0 24 24">
         <g className="font">
-          <path
-            d="M12 5v15"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M9 21h6Z"
-            className="fill-none stroke-current stroke-2 sl-s"
-          />
-          <path
-            d="m4 7 1-4 1.155.578A4 4 0 0 0 7.945 4h8.11a4 4 0 0 0 1.79-.422L19 3l1 4-.088-.265A4 4 0 0 0 16.116 4H15c-1 0-2 1-2 3h-2c0-2-1-3-2-3H7.884a4 4 0 0 0-3.796 2.735L4 7Z"
-            className="Vector 35"
-          />
-        </g>
+            <path d="M12 5v15" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M9 21h6Z" className="fill-none stroke-current stroke-2 sl-s"/>
+            <path d="m4 7 1-4 1.155.578A4 4 0 0 0 7.945 4h8.11a4 4 0 0 0 1.79-.422L19 3l1 4-.088-.265A4 4 0 0 0 16.116 4H15c-1 0-2 1-2 3h-2c0-2-1-3-2-3H7.884a4 4 0 0 0-3.796 2.735L4 7Z" className="Vector 35"/>
+          </g>
       </symbol>
       <symbol id="font-outline-24" viewBox="0 0 24 24">
         <g className="font-outline">
-          <path
-            d="M6.155 3.578 5 3l-1 7s1-2 4-2h2v7c0 2-1 3-2 3v3h8v-3c-1 0-2-1-2-3V8h2c3 0 4 2 4 2l-1-7-1.155.578a4 4 0 0 1-1.79.422h-8.11a4 4 0 0 1-1.79-.422Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-s"
-          />
-        </g>
+            <path d="M6.155 3.578 5 3l-1 7s1-2 4-2h2v7c0 2-1 3-2 3v3h8v-3c-1 0-2-1-2-3V8h2c3 0 4 2 4 2l-1-7-1.155.578a4 4 0 0 1-1.79.422h-8.11a4 4 0 0 1-1.79-.422Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-s"/>
+          </g>
       </symbol>
       <symbol id="foundry-24" viewBox="0 0 24 24">
         <g className="foundry">
-          <path
-            d="M3.993 21A.994.994 0 0 1 3 20V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v16c0 .552-.442 1-.995 1H3.993Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M8 9V7h8v2"
-            className="fill-none stroke-current stroke-2 slj-r"
-          />
-          <path
-            d="M12 7v9"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M11 17h2"
-            className="fill-none stroke-current stroke-2 sl-s"
-          />
-        </g>
+            <path d="M3.993 21A.994.994 0 0 1 3 20V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v16c0 .552-.442 1-.995 1H3.993Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M8 9V7h8v2" className="fill-none stroke-current stroke-2 slj-r"/>
+            <path d="M12 7v9" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M11 17h2" className="fill-none stroke-current stroke-2 sl-s"/>
+          </g>
       </symbol>
       <symbol id="frame-24" viewBox="0 0 24 24">
         <g className="frame">
-          <path d="M6 6h12v12H6z" className="fill-(--icon-fill)" />
-          <path d="M3 6h18" className="stroke-current stroke-2 sl-r" />
-          <path d="M6 3v18" className="stroke-current stroke-2 sl-r" />
-          <path d="M18 3v18" className="stroke-current stroke-2 sl-r" />
-          <path d="M3 18h18" className="stroke-current stroke-2 sl-r" />
-        </g>
+            <path d="M6 6h12v12H6z" className="fill-(--icon-fill)"/>
+            <path d="M3 6h18" className="stroke-current stroke-2 sl-r"/>
+            <path d="M6 3v18" className="stroke-current stroke-2 sl-r"/>
+            <path d="M18 3v18" className="stroke-current stroke-2 sl-r"/>
+            <path d="M3 18h18" className="stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="home-24" viewBox="0 0 24 24">
         <g className="home">
-          <path
-            d="m12 3-8 7v11h5v-8h6v8h5V10l-8-7Z"
-            className="fill-(--icon-fill)"
-          />
-          <path
-            d="m2 12 10-9 10 9"
-            className="fill-none stroke-current stroke-2 sl-s"
-          />
-          <path
-            d="M4 11v10h5v-7.93h6V21h5V11"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path d="M9 20h6" className="stroke-current stroke-2 sl-s" />
-        </g>
+            <path d="m12 3-8 7v11h5v-8h6v8h5V10l-8-7Z" className="fill-(--icon-fill)"/>
+            <path d="m2 12 10-9 10 9" className="fill-none stroke-current stroke-2 sl-s"/>
+            <path d="M4 11v10h5v-7.93h6V21h5V11" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M9 20h6" className="stroke-current stroke-2 sl-s"/>
+          </g>
       </symbol>
       <symbol id="link-24" viewBox="0 0 24 24">
         <g className="link">
-          <path
-            d="m18.364 13.207 1.768-1.768a5 5 0 1 0-7.071-7.07l-2.829 2.828a5 5 0 0 0 0 7.07 6.81 6.81 0 0 0 1.633 1.197m-6.229-3.671L3.868 13.56a5 5 0 0 0 7.071 7.07l2.829-2.828a5 5 0 0 0 0-7.07 6.796 6.796 0 0 0-1.633-1.197"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m18.364 13.207 1.768-1.768a5 5 0 1 0-7.071-7.07l-2.829 2.828a5 5 0 0 0 0 7.07 6.81 6.81 0 0 0 1.633 1.197m-6.229-3.671L3.868 13.56a5 5 0 0 0 7.071 7.07l2.829-2.828a5 5 0 0 0 0-7.07 6.796 6.796 0 0 0-1.633-1.197" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="move-24" viewBox="0 0 24 24">
         <g className="move">
-          <path
-            d="m9 18 3 3 3-3"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m15 6-3-3-3 3"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m6 9-3 3 3 3"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M15 12h4.5"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M4.5 12H9"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M12 4.5V9"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M12 15v4.5"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m18 15 3-3-3-3"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m9 18 3 3 3-3" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m15 6-3-3-3 3" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m6 9-3 3 3 3" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M15 12h4.5" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M4.5 12H9" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M12 4.5V9" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M12 15v4.5" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m18 15 3-3-3-3" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="navigation-24" viewBox="0 0 24 24">
         <g className="navigation">
-          <path d="M21 5H3" className="stroke-current stroke-2 sl-r" />
-          <path d="M19 12H5" className="stroke-current stroke-2 sl-r" />
-          <path d="M21 19H3" className="stroke-current stroke-2 sl-r" />
-        </g>
+            <path d="M21 5H3" className="stroke-current stroke-2 sl-r"/>
+            <path d="M19 12H5" className="stroke-current stroke-2 sl-r"/>
+            <path d="M21 19H3" className="stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="note-24" viewBox="0 0 24 24">
         <g className="note">
-          <path
-            d="M7.707 3.293A1 1 0 0 1 8.414 3H19a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7.414a1 1 0 0 1 .293-.707l3.414-3.414Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path d="M8 13h8" className="stroke-current stroke-2 sl-r" />
-          <path d="M12 9h4" className="stroke-current stroke-2 sl-r" />
-          <path d="M8 17h8" className="stroke-current stroke-2 sl-r" />
-          <path
-            d="M9 3v3a2 2 0 0 1-2 2H4"
-            className="stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M7.707 3.293A1 1 0 0 1 8.414 3H19a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7.414a1 1 0 0 1 .293-.707l3.414-3.414Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M8 13h8" className="stroke-current stroke-2 sl-r"/>
+            <path d="M12 9h4" className="stroke-current stroke-2 sl-r"/>
+            <path d="M8 17h8" className="stroke-current stroke-2 sl-r"/>
+            <path d="M9 3v3a2 2 0 0 1-2 2H4" className="stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="note-pencil-24" viewBox="0 0 24 24">
         <g className="note-pencil">
-          <rect
-            width="16"
-            height="18"
-            x="4"
-            y="3"
-            className="fill-(--icon-fill)"
-            rx="1"
-          />
-          <path
-            d="M13 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V10"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path d="M8 17h8" className="stroke-current stroke-2 sl-r" />
-          <path d="M8 14h8" className="stroke-current stroke-2 sl-r" />
-          <path d="m18 3-5 5v2h2l5-5-2-2Z" className="Vector 33" />
-        </g>
+            <rect width="16" height="18" x="4" y="3" className="fill-(--icon-fill)" rx="1"/>
+            <path d="M13 3H5a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V10" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M8 17h8" className="stroke-current stroke-2 sl-r"/>
+            <path d="M8 14h8" className="stroke-current stroke-2 sl-r"/>
+            <path d="m18 3-5 5v2h2l5-5-2-2Z" className="Vector 33"/>
+          </g>
       </symbol>
       <symbol id="note-plus-24" viewBox="0 0 24 24">
         <g className="note-plus">
-          <rect
-            width="16"
-            height="18"
-            x="4"
-            y="3"
-            className="fill-(--icon-fill)"
-            rx="1"
-          />
-          <path
-            d="M13 21H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v10"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path d="M8 7h3" className="stroke-current stroke-2 sl-r" />
-          <path d="M8 11h8" className="stroke-current stroke-2 sl-r" />
-          <path d="M15 18h4" className="stroke-current stroke-2 sl-r" />
-          <path d="M17 16v4" className="stroke-current stroke-2 sl-r" />
-        </g>
+            <rect width="16" height="18" x="4" y="3" className="fill-(--icon-fill)" rx="1"/>
+            <path d="M13 21H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v10" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M8 7h3" className="stroke-current stroke-2 sl-r"/>
+            <path d="M8 11h8" className="stroke-current stroke-2 sl-r"/>
+            <path d="M15 18h4" className="stroke-current stroke-2 sl-r"/>
+            <path d="M17 16v4" className="stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="notepad-24" viewBox="0 0 24 24">
         <g className="notepad">
-          <path
-            d="M6.496 21A1.497 1.497 0 0 1 5 19.5V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14.5c0 .828-.669 1.5-1.497 1.5H6.496Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path d="M9 2v4" className="stroke-current stroke-2 sl-r" />
-          <path d="M15 2v4" className="stroke-current stroke-2 sl-r" />
-          <path d="M9 16h6" className="stroke-current stroke-2 sl-r" />
-          <path d="M9 12h6" className="stroke-current stroke-2 sl-r" />
-        </g>
+            <path d="M6.496 21A1.497 1.497 0 0 1 5 19.5V5a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14.5c0 .828-.669 1.5-1.497 1.5H6.496Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M9 2v4" className="stroke-current stroke-2 sl-r"/>
+            <path d="M15 2v4" className="stroke-current stroke-2 sl-r"/>
+            <path d="M9 16h6" className="stroke-current stroke-2 sl-r"/>
+            <path d="M9 12h6" className="stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="palette-24" viewBox="0 0 24 24">
         <g className="palette">
-          <path
-            d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10v1.32a.68.68 0 0 1-.68.68h-4.653A2.667 2.667 0 0 0 14 16.667v4.654a.68.68 0 0 1-.68.679H12C6.477 22 2 17.523 2 12Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <circle
-            cx="12"
-            cy="6"
-            r="1"
-            className="fill-current stroke-current stroke-1"
-          />
-          <circle
-            cx="8"
-            cy="8"
-            r="1"
-            className="fill-current stroke-current stroke-1"
-          />
-          <circle
-            cx="6"
-            cy="12"
-            r="1"
-            className="fill-current stroke-current stroke-1"
-          />
-          <circle
-            cx="8"
-            cy="16"
-            r="1"
-            className="fill-current stroke-current stroke-1"
-          />
-        </g>
+            <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10v1.32a.68.68 0 0 1-.68.68h-4.653A2.667 2.667 0 0 0 14 16.667v4.654a.68.68 0 0 1-.68.679H12C6.477 22 2 17.523 2 12Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <circle cx="12" cy="6" r="1" className="fill-current stroke-current stroke-1"/>
+            <circle cx="8" cy="8" r="1" className="fill-current stroke-current stroke-1"/>
+            <circle cx="6" cy="12" r="1" className="fill-current stroke-current stroke-1"/>
+            <circle cx="8" cy="16" r="1" className="fill-current stroke-current stroke-1"/>
+          </g>
       </symbol>
       <symbol id="pen-24" viewBox="0 0 24 24">
         <g className="pen">
-          <path
-            d="M16 22H8c0-3-4-7-4-7l8-13 8 13s-4 4-4 7Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path d="M12 2v9" className="stroke-current stroke-2 sl-r" />
-          <circle
-            cx="12"
-            cy="14"
-            r="2"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
-          <path d="M7 22h10" className="stroke-current stroke-2 sl-s" />
-        </g>
+            <path d="M16 22H8c0-3-4-7-4-7l8-13 8 13s-4 4-4 7Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M12 2v9" className="stroke-current stroke-2 sl-r"/>
+            <circle cx="12" cy="14" r="2" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+            <path d="M7 22h10" className="stroke-current stroke-2 sl-s"/>
+          </g>
       </symbol>
       <symbol id="person-24" viewBox="0 0 24 24">
         <g className="person">
-          <path
-            d="M14.478 14.186V13.8c1.215-.926 2.012-1.813 2.012-3.6V7.5c0-1.556 0-2.777-.905-3.639C14.84 3.151 13.79 3 12.898 3c-.81 0-.898.836-2.215.836-1.833 0-3.186 1.864-3.186 3.625V10.2c0 1.787.796 2.687 2.012 3.6v.373c-.122 1.556-1.256 1.556-2.823 2.018a18.32 18.32 0 0 0-2.106.759C3.62 17.374 3 18.287 3 19.29V21h18v-1.697c0-1.003-.608-1.916-1.58-2.34a19.11 19.11 0 0 0-2.106-.759c-1.567-.463-2.715-.463-2.836-2.018Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M14.478 14.186V13.8c1.215-.926 2.012-1.813 2.012-3.6V7.5c0-1.556 0-2.777-.905-3.639C14.84 3.151 13.79 3 12.898 3c-.81 0-.898.836-2.215.836-1.833 0-3.186 1.864-3.186 3.625V10.2c0 1.787.796 2.687 2.012 3.6v.373c-.122 1.556-1.256 1.556-2.823 2.018a18.32 18.32 0 0 0-2.106.759C3.62 17.374 3 18.287 3 19.29V21h18v-1.697c0-1.003-.608-1.916-1.58-2.34a19.11 19.11 0 0 0-2.106-.759c-1.567-.463-2.715-.463-2.836-2.018Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="play-24" viewBox="0 0 24 24">
         <g className="play">
-          <path
-            d="M5 3.7a1 1 0 0 1 1.486-.875l14.94 8.3a1 1 0 0 1 0 1.75l-14.94 8.3A1 1 0 0 1 5 20.3V3.7Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M5 3.7a1 1 0 0 1 1.486-.875l14.94 8.3a1 1 0 0 1 0 1.75l-14.94 8.3A1 1 0 0 1 5 20.3V3.7Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="plus-24" viewBox="0 0 24 24">
         <g className="plus">
-          <path
-            d="M4.5 12h15"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M12 4.5v15"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M4.5 12h15" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M12 4.5v15" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="publication-24" viewBox="0 0 24 24">
         <g className="publication">
-          <path
-            d="M4.5 21A1.5 1.5 0 0 1 3 19.5v-15A1.5 1.5 0 0 1 4.5 3h15A1.5 1.5 0 0 1 21 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-15Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M13.5 12a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path d="M6 8h4" className="stroke-current stroke-2" />
-          <path d="M6 12h4" className="stroke-current stroke-2" />
-          <path d="M6 16h12" className="stroke-current stroke-2" />
-        </g>
+            <path d="M4.5 21A1.5 1.5 0 0 1 3 19.5v-15A1.5 1.5 0 0 1 4.5 3h15A1.5 1.5 0 0 1 21 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-15Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M13.5 12a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M6 8h4" className="stroke-current stroke-2"/>
+            <path d="M6 12h4" className="stroke-current stroke-2"/>
+            <path d="M6 16h12" className="stroke-current stroke-2"/>
+          </g>
       </symbol>
       <symbol id="puzzle-24" viewBox="0 0 24 24">
         <g className="puzzle">
-          <path
-            d="M4 5.5A1.5 1.5 0 0 1 5.5 4h11A1.5 1.5 0 0 1 18 5.5V9s4-2 4 3-4 3-4 3v3.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5V15s4 1.5 4-3-4-3-4-3V5.5Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h11A1.5 1.5 0 0 1 18 5.5V9s4-2 4 3-4 3-4 3v3.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5V15s4 1.5 4-3-4-3-4-3V5.5Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="rectangle-24" viewBox="0 0 24 24">
         <g className="rectangle">
-          <rect
-            width="16"
-            height="16"
-            x="4"
-            y="4"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-            rx="1.5"
-          />
-        </g>
+            <rect width="16" height="16" x="4" y="4" className="fill-(--icon-fill) stroke-current stroke-2 sl-r" rx="1.5"/>
+          </g>
       </symbol>
       <symbol id="search-24" viewBox="0 0 24 24">
         <g className="search">
-          <path d="m19 19 1 1" className="stroke-current stroke-4 sl-r" />
-          <path d="m17 17 1 1" className="stroke-current stroke-4 sl-s" />
-          <path
-            d="M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m19 19 1 1" className="stroke-current stroke-4 sl-r"/>
+            <path d="m17 17 1 1" className="stroke-current stroke-4 sl-s"/>
+            <path d="M10.5 18a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="settings-24" viewBox="0 0 24 24">
         <g className="settings">
-          <path d="M8 9v12" className="stroke-current stroke-2 sl-r" />
-          <circle
-            cx="8"
-            cy="6"
-            r="3"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path d="M16 3v12" className="stroke-current stroke-2 sl-r" />
-          <circle
-            cx="16"
-            cy="18"
-            r="3"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M8 9v12" className="stroke-current stroke-2 sl-r"/>
+            <circle cx="8" cy="6" r="3" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M16 3v12" className="stroke-current stroke-2 sl-r"/>
+            <circle cx="16" cy="18" r="3" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="shadow-24" viewBox="0 0 24 24">
         <g className="shadow">
-          <circle
-            cx="12"
-            cy="10"
-            r="6"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M18.983 19A10.955 10.955 0 0 1 12 21.5c-2.651 0-5.083-.938-6.983-2.5"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <circle cx="12" cy="10" r="6" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M18.983 19A10.955 10.955 0 0 1 12 21.5c-2.651 0-5.083-.938-6.983-2.5" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="shapes-24" viewBox="0 0 24 24">
         <g className="shapes">
-          <circle
-            cx="17.5"
-            cy="17.5"
-            r="3.5"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M10 14H3v7h7v-7Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M8 10h8l-4-7-4 7Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <circle cx="17.5" cy="17.5" r="3.5" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M10 14H3v7h7v-7Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M8 10h8l-4-7-4 7Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="share-24" viewBox="0 0 24 24">
         <g className="share">
-          <rect
-            width="14"
-            height="11"
-            x="5"
-            y="10"
-            className="fill-(--icon-fill)"
-            rx="1"
-          />
-          <path
-            d="M8 10H6.5A1.5 1.5 0 0 0 5 11.5v8A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5H16"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M12 3v11"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m15 6-3-3-3 3"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <rect width="14" height="11" x="5" y="10" className="fill-(--icon-fill)" rx="1"/>
+            <path d="M8 10H6.5A1.5 1.5 0 0 0 5 11.5v8A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-8a1.5 1.5 0 0 0-1.5-1.5H16" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M12 3v11" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="m15 6-3-3-3 3" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="sidebar-bottom-24" viewBox="0 0 24 24">
         <g className="sidebar-bottom">
-          <path
-            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-3A1.5 1.5 0 0 1 4.5 14h15a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-15Z"
-            className="fill-(--icon-fill)"
-          />
-          <path
-            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M3 14h18"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-3A1.5 1.5 0 0 1 4.5 14h15a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-15Z" className="fill-(--icon-fill)"/>
+            <path d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+            <path d="M3 14h18" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="sidebar-bottom-closed-24" viewBox="0 0 24 24">
         <g className="sidebar-bottom-closed">
-          <path
-            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M3 14h18"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+            <path d="M3 14h18" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="sidebar-left-24" viewBox="0 0 24 24">
         <g className="sidebar-left">
-          <path
-            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h3A1.5 1.5 0 0 1 9 5.5v13A1.5 1.5 0 0 1 7.5 20h-3Z"
-            className="fill-(--icon-fill)"
-          />
-          <path
-            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M9 4v15"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h3A1.5 1.5 0 0 1 9 5.5v13A1.5 1.5 0 0 1 7.5 20h-3Z" className="fill-(--icon-fill)"/>
+            <path d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+            <path d="M9 4v15" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="sidebar-left-closed-24" viewBox="0 0 24 24">
         <g className="sidebar-left-closed">
-          <path
-            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M9 4v15"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+            <path d="M9 4v15" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="sidebar-right-24" viewBox="0 0 24 24">
         <g className="sidebar-right">
-          <path
-            d="M16.5 20a1.5 1.5 0 0 1-1.5-1.5v-13A1.5 1.5 0 0 1 16.5 4h3A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-3Z"
-            className="fill-(--icon-fill)"
-          />
-          <path
-            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M15 4v15"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M16.5 20a1.5 1.5 0 0 1-1.5-1.5v-13A1.5 1.5 0 0 1 16.5 4h3A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-3Z" className="fill-(--icon-fill)"/>
+            <path d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+            <path d="M15 4v15" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="sidebar-right-closed-24" viewBox="0 0 24 24">
-        <path
-          stroke="color(display-p3 .0353 .1804 .1412)"
-          d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15ZM15 4v15"
-          className="slc-r sl-r stroke-2"
-        />
+        <path stroke="color(display-p3 .0353 .1804 .1412)" d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15ZM15 4v15" className="slc-r sl-r stroke-2" />
       </symbol>
       <symbol id="square-info-24" viewBox="0 0 24 24">
         <g className="square-info">
-          <path
-            d="M3.993 21A.994.994 0 0 1 3 20V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v16c0 .552-.442 1-.995 1H3.993Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path d="M10 11h2v6" className="stroke-current stroke-2 sl-r" />
-          <path d="M10 17h4" className="stroke-current stroke-2 sl-r" />
-          <circle
-            cx="11.5"
-            cy="7.5"
-            r=".5"
-            className="fill-current stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M3.993 21A.994.994 0 0 1 3 20V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v16c0 .552-.442 1-.995 1H3.993Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M10 11h2v6" className="stroke-current stroke-2 sl-r"/>
+            <path d="M10 17h4" className="stroke-current stroke-2 sl-r"/>
+            <circle cx="11.5" cy="7.5" r=".5" className="fill-current stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="star-24" viewBox="0 0 24 24">
         <g className="star">
-          <path
-            d="M11.11 3.231a1 1 0 0 1 1.78 0l2.19 4.263a1 1 0 0 0 .73.53l4.73.766a1 1 0 0 1 .55 1.692l-3.378 3.4a1 1 0 0 0-.278.858l.734 4.736a1 1 0 0 1-1.44 1.045l-4.277-2.161a1 1 0 0 0-.902 0l-4.277 2.16a1 1 0 0 1-1.44-1.045l.734-4.736a1 1 0 0 0-.278-.858l-3.378-3.4a1 1 0 0 1 .55-1.692l4.73-.766a1 1 0 0 0 .73-.53l2.19-4.263Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M11.11 3.231a1 1 0 0 1 1.78 0l2.19 4.263a1 1 0 0 0 .73.53l4.73.766a1 1 0 0 1 .55 1.692l-3.378 3.4a1 1 0 0 0-.278.858l.734 4.736a1 1 0 0 1-1.44 1.045l-4.277-2.161a1 1 0 0 0-.902 0l-4.277 2.16a1 1 0 0 1-1.44-1.045l.734-4.736a1 1 0 0 0-.278-.858l-3.378-3.4a1 1 0 0 1 .55-1.692l4.73-.766a1 1 0 0 0 .73-.53l2.19-4.263Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="star-square-24" viewBox="0 0 24 24">
         <g className="star-square">
-          <path
-            d="M4.5 21A1.5 1.5 0 0 1 3 19.5v-15A1.5 1.5 0 0 1 4.5 3h15A1.5 1.5 0 0 1 21 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-15Z"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M11.784 6.618a.25.25 0 0 1 .432 0l1.676 2.858a.25.25 0 0 0 .162.118l3.236.71a.25.25 0 0 1 .133.41l-2.2 2.478a.25.25 0 0 0-.062.19l.324 3.298a.25.25 0 0 1-.349.253L12.1 15.606a.25.25 0 0 0-.2 0l-3.036 1.327a.25.25 0 0 1-.349-.253l.324-3.298a.25.25 0 0 0-.062-.19l-2.2-2.477a.25.25 0 0 1 .133-.41l3.236-.711a.25.25 0 0 0 .162-.118l1.676-2.858Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M4.5 21A1.5 1.5 0 0 1 3 19.5v-15A1.5 1.5 0 0 1 4.5 3h15A1.5 1.5 0 0 1 21 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-15Z" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M11.784 6.618a.25.25 0 0 1 .432 0l1.676 2.858a.25.25 0 0 0 .162.118l3.236.71a.25.25 0 0 1 .133.41l-2.2 2.478a.25.25 0 0 0-.062.19l.324 3.298a.25.25 0 0 1-.349.253L12.1 15.606a.25.25 0 0 0-.2 0l-3.036 1.327a.25.25 0 0 1-.349-.253l.324-3.298a.25.25 0 0 0-.062-.19l-2.2-2.477a.25.25 0 0 1 .133-.41l3.236-.711a.25.25 0 0 0 .162-.118l1.676-2.858Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="timer-24" viewBox="0 0 24 24">
         <g className="timer">
-          <path d="M6 17h2v4H6z" className="Rectangle 152" />
-          <path d="M16 17h2v4h-2z" className="Rectangle 153" />
-          <path
-            d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path d="M12 8v5.25L14 15" className="stroke-current stroke-2 sl-r" />
-          <g className="fill-current stroke-current stroke-2 sl-r">
-            <path
-              fillRule="evenodd"
-              d="M8.199 4.959a8.023 8.023 0 0 0-3.81 4.572 3 3 0 1 1 3.81-4.572Z"
-              clipRule="evenodd"
-            />
-            <path d="m8.199 4.959.476.88a1 1 0 0 0 .257-1.56l-.733.68Zm-3.81 4.572-.539.843a1 1 0 0 0 1.49-.535l-.952-.308Zm3.81-4.572-.476-.88a9.023 9.023 0 0 0-4.286 5.143l.951.309.952.308a7.023 7.023 0 0 1 3.335-4l-.476-.88Zm-3.81 4.572.537-.843A1.998 1.998 0 0 1 4 7H2c0 1.42.74 2.665 1.85 3.374l.538-.843ZM3 7h1a2 2 0 0 1 2-2V3a4 4 0 0 0-4 4h1Zm3-3v1c.58 0 1.1.245 1.466.64l.733-.681.733-.68A3.992 3.992 0 0 0 6 3v1Z" />
+            <path d="M6 17h2v4H6z" className="Rectangle 152"/>
+            <path d="M16 17h2v4h-2z" className="Rectangle 153"/>
+            <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M12 8v5.25L14 15" className="stroke-current stroke-2 sl-r"/>
+            <g className="fill-current stroke-current stroke-2 sl-r">
+              <path fillRule="evenodd" d="M8.199 4.959a8.023 8.023 0 0 0-3.81 4.572 3 3 0 1 1 3.81-4.572Z" clipRule="evenodd"/>
+              <path d="m8.199 4.959.476.88a1 1 0 0 0 .257-1.56l-.733.68Zm-3.81 4.572-.539.843a1 1 0 0 0 1.49-.535l-.952-.308Zm3.81-4.572-.476-.88a9.023 9.023 0 0 0-4.286 5.143l.951.309.952.308a7.023 7.023 0 0 1 3.335-4l-.476-.88Zm-3.81 4.572.537-.843A1.998 1.998 0 0 1 4 7H2c0 1.42.74 2.665 1.85 3.374l.538-.843ZM3 7h1a2 2 0 0 1 2-2V3a4 4 0 0 0-4 4h1Zm3-3v1c.58 0 1.1.245 1.466.64l.733-.681.733-.68A3.992 3.992 0 0 0 6 3v1Z"/>
+            </g>
+            <g className="fill-current stroke-current stroke-2 sl-r">
+              <path fillRule="evenodd" d="M15.801 4.959a8.023 8.023 0 0 1 3.81 4.572 3 3 0 1 0-3.81-4.572Z" clipRule="evenodd"/>
+              <path d="m15.801 4.959-.476.88a1 1 0 0 1-.256-1.56l.732.68Zm3.81 4.572.539.843a1 1 0 0 1-1.49-.535l.952-.308Zm-3.81-4.572.476-.88a9.023 9.023 0 0 1 4.286 5.143l-.951.309-.952.308a7.023 7.023 0 0 0-3.335-4l.476-.88Zm3.81 4.572-.537-.843A2 2 0 0 0 20 7h2c0 1.42-.74 2.665-1.85 3.374l-.538-.843ZM21 7h-1a2 2 0 0 0-2-2V3a4 4 0 0 1 4 4h-1Zm-3-3v1c-.58 0-1.1.245-1.466.64l-.733-.681-.732-.68A3.992 3.992 0 0 1 18 3v1Z"/>
+            </g>
           </g>
-          <g className="fill-current stroke-current stroke-2 sl-r">
-            <path
-              fillRule="evenodd"
-              d="M15.801 4.959a8.023 8.023 0 0 1 3.81 4.572 3 3 0 1 0-3.81-4.572Z"
-              clipRule="evenodd"
-            />
-            <path d="m15.801 4.959-.476.88a1 1 0 0 1-.256-1.56l.732.68Zm3.81 4.572.539.843a1 1 0 0 1-1.49-.535l.952-.308Zm-3.81-4.572.476-.88a9.023 9.023 0 0 1 4.286 5.143l-.951.309-.952.308a7.023 7.023 0 0 0-3.335-4l.476-.88Zm3.81 4.572-.537-.843A2 2 0 0 0 20 7h2c0 1.42-.74 2.665-1.85 3.374l-.538-.843ZM21 7h-1a2 2 0 0 0-2-2V3a4 4 0 0 1 4 4h-1Zm-3-3v1c-.58 0-1.1.245-1.466.64l-.733-.681-.732-.68A3.992 3.992 0 0 1 18 3v1Z" />
-          </g>
-        </g>
       </symbol>
       <symbol id="type-24" viewBox="0 0 24 24">
         <g className="type">
-          <path d="m12 3 3 6.5V16H6l6-13Z" className="fill-(--icon-fill)" />
-          <path
-            d="M12 2a1 1 0 0 1 .912.59L15 7.23v4.873l-3-6.666L4.547 22H2.354l8.734-19.41A1 1 0 0 1 12 2Z"
-            className="fill-current"
-          />
-          <path d="M6 16h9" className="fill-none stroke-current stroke-2" />
-          <path
-            d="M16 3h2v18h-2"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M20 3h-2v18h2"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="m12 3 3 6.5V16H6l6-13Z" className="fill-(--icon-fill)"/>
+            <path d="M12 2a1 1 0 0 1 .912.59L15 7.23v4.873l-3-6.666L4.547 22H2.354l8.734-19.41A1 1 0 0 1 12 2Z" className="fill-current"/>
+            <path d="M6 16h9" className="fill-none stroke-current stroke-2"/>
+            <path d="M16 3h2v18h-2" className="fill-none stroke-current stroke-2 sl-r"/>
+            <path d="M20 3h-2v18h2" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="vector-square-24" viewBox="0 0 24 24">
         <g className="vector-square">
-          <path
-            d="M6 19a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12c0 .552-.442 1-.994 1H6Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M7 3H3v4h4V3Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M7 17H3v4h4v-4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M21 3h-4v4h4V3Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="M21 17h-4v4h4v-4Z"
-            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <path d="M6 19a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12c0 .552-.442 1-.994 1H6Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M7 3H3v4h4V3Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M7 17H3v4h4v-4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M21 3h-4v4h4V3Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            <path d="M21 17h-4v4h4v-4Z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
       <symbol id="views-24" viewBox="0 0 24 24">
         <g className="views">
-          <g className="fill-(--icon-fill) stroke-current stroke-2 sl-r">
-            <path
-              d="M4 9h4v12H4z"
-              className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-            />
-            <path
-              d="M8 5h4v16H8z"
-              className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-            />
-            <path
-              d="M12 9h4v12h-4z"
-              className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-            />
-            <path
-              d="M16 3h4v18h-4z"
-              className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
-            />
+            <g className="fill-(--icon-fill) stroke-current stroke-2 sl-r">
+              <path d="M4 9h4v12H4z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+              <path d="M8 5h4v16H8z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+              <path d="M12 9h4v12h-4z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+              <path d="M16 3h4v18h-4z" className="fill-(--icon-fill) stroke-current stroke-2 sl-r"/>
+            </g>
           </g>
-        </g>
       </symbol>
       <symbol id="website-24" viewBox="0 0 24 24">
         <g className="website">
-          <rect
-            width="18"
-            height="12"
-            x="3"
-            y="8"
-            className="fill-(--icon-fill)"
-            rx="1"
-          />
-          <path
-            d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z"
-            className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
-          />
-          <path d="M4 8h16" className="stroke-current stroke-2 sl-r" />
-          <path d="M11 12h6" className="stroke-current stroke-2 sl-r" />
-          <path d="M11 15h4" className="stroke-current stroke-2 sl-r" />
-          <path
-            d="M8 8v11"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
+            <rect width="18" height="12" x="3" y="8" className="fill-(--icon-fill)" rx="1"/>
+            <path d="M4.5 20A1.5 1.5 0 0 1 3 18.5v-13A1.5 1.5 0 0 1 4.5 4h15A1.5 1.5 0 0 1 21 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-15Z" className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"/>
+            <path d="M4 8h16" className="stroke-current stroke-2 sl-r"/>
+            <path d="M11 12h6" className="stroke-current stroke-2 sl-r"/>
+            <path d="M11 15h4" className="stroke-current stroke-2 sl-r"/>
+            <path d="M8 8v11" className="fill-none stroke-current stroke-2 sl-r"/>
+          </g>
       </symbol>
     </defs>
   </svg>
