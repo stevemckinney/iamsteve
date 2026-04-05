@@ -242,7 +242,9 @@ async function main() {
       } else {
         const errorCategory = categorizeError(result)
         console.log(
-          `${errorCategory.icon} ${filename}: ${result.error || result.statusCode}`
+          `${errorCategory.icon} ${filename}: ${
+            result.error || result.statusCode
+          }`
         )
 
         const errorInfo = {
@@ -365,7 +367,13 @@ main().catch((error) => {
         summary: `**Summary:**\n- ⚠️ Validation script encountered an error: ${error.message}`,
         details: '',
         broken_count: 0,
-        results: { valid: [], broken: [], needs_check: [], duplicates: [], skipped: [] },
+        results: {
+          valid: [],
+          broken: [],
+          needs_check: [],
+          duplicates: [],
+          skipped: [],
+        },
       },
       null,
       2

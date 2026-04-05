@@ -1,16 +1,16 @@
 ---
-title: "About version 2"
-date: "2010-10-20T17:41:00+00:00"
-lastmod: "2010-10-20T06:35:36+00:00"
-summary: "A look at some of the design decisions and iterations for version two."
-metadesc: "A look at some of the design decisions and iterations for version two."
-theme: "#fffbf2"
-tags: ["Website"]
-categories: ["Website"]
-ogImage: "/opengraph-image.png"
-status: "open"
+title: 'About version 2'
+date: '2010-10-20T17:41:00+00:00'
+lastmod: '2010-10-20T06:35:36+00:00'
+summary: 'A look at some of the design decisions and iterations for version two.'
+metadesc: 'A look at some of the design decisions and iterations for version two.'
+theme: '#fffbf2'
+tags: ['Website']
+categories: ['Website']
+ogImage: '/opengraph-image.png'
+status: 'open'
 id: 8
-fileroot: "redesign"
+fileroot: 'redesign'
 noindex: true
 ---
 
@@ -19,9 +19,11 @@ This post is just about some thoughts and processes I make whilst designing a we
 Well where do I start? Like everyone redesigning their own personal website, it takes a lot for you to design something you truly, truly are happy with. While I’m not truly happy with this redesign, I’m happier than the previous version. I think I went through around 10 different designs, while some may have done more. I completed a fair few in full code and the majority of the pages of that design.
 
 ## Why this design?
+
 Well it’s a pretty easy to answer that question. I came to this design through chance to an extent. I thought the idea of adding a 3D type depth, was a pretty cool idea. The other challenge I kind of set myself was, being able to do it in as few images as possible and replicating as much in CSS. Which I think I have done very well (just try zooming in and everything apart from the header will remain crisp).
 
 ### Inspiring buttons
+
 <figure>
 ![3D buttons by Rogie King](/images/blog/shot_1278576561.png)
 <figcaption>
@@ -35,6 +37,7 @@ Well it’s a pretty easy to answer that question. I came to this design through
 </figure>
 
 ### Inspiring designs
+
 <figure>
 ![An older design of Made by Elephant](/images/blog/15500311949dc17f712a39_l1.png)
 <figcaption>[An older design of Made by Elephant](http://emberapp.com/samwieck/images/made-by-elephant-we-craft-interfaces/sizes/l)</figcaption>
@@ -43,9 +46,11 @@ Well it’s a pretty easy to answer that question. I came to this design through
 The vertical navigation and display of the work helped inspire the recent work on the home page.
 
 ## Not enough inspiration?
+
 While I have only noted a few examples, they are the ones that played quite a big part. Various websites, articles and such, helped me with ideas for content layout. As that was what the main focus was to me, I want to give users a good experience, a simple experience and not too much ‘blab.’ However I did do a rather large amount of sketches to get a rough idea, far too many to show just on here, as well as Photoshop mockups. Reason being I was trying to go for something that wasn’t really inspired from anywhere, though the overall design probably relates to many things, of course.
 
 ## Sketches
+
 Albeit poor quality, you will get an understanding as to where I was going!
 
 ![The drawings most like this design.](/images/blog/photo-5.jpg)
@@ -73,4 +78,5 @@ The two which I was most happy with before hand. Both of these examples are in t
 </figure>
 
 ## Wrapping up
- Well, this turned out to be longer than I’d expected. I had so much to show of how I got to this design you see now and all that I’ve done leading up to it, the post could easily have been twice the length. Basically I wanted to achieve something that would work responsively (when I’ve got the correct CSS in place) and a design which could easily adapt from time to time to make easy changes for blog posts.
+
+Well, this turned out to be longer than I’d expected. I had so much to show of how I got to this design you see now and all that I’ve done leading up to it, the post could easily have been twice the length. Basically I wanted to achieve something that would work responsively (when I’ve got the correct CSS in place) and a design which could easily adapt from time to time to make easy changes for blog posts.

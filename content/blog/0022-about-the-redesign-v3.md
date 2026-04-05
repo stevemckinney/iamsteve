@@ -1,16 +1,16 @@
 ---
-title: "About the redesign V3"
-date: "2011-03-07T18:01:00+00:00"
-lastmod: "2021-06-03T06:22:06+00:00"
-summary: "A look at 2011’s redesign. I moved the website from Wordpress to ExpressionEngine."
-metadesc: "A look at 2011’s redesign. I moved the website from Wordpress to ExpressionEngine."
-theme: "#e9f5f5"
-tags: ["Website"]
-categories: ["Website"]
-ogImage: "/opengraph-image.png"
-status: "open"
+title: 'About the redesign V3'
+date: '2011-03-07T18:01:00+00:00'
+lastmod: '2021-06-03T06:22:06+00:00'
+summary: 'A look at 2011’s redesign. I moved the website from Wordpress to ExpressionEngine.'
+metadesc: 'A look at 2011’s redesign. I moved the website from Wordpress to ExpressionEngine.'
+theme: '#e9f5f5'
+tags: ['Website']
+categories: ['Website']
+ogImage: '/opengraph-image.png'
+status: 'open'
 id: 22
-fileroot: "about_the_redesign_v3"
+fileroot: 'about_the_redesign_v3'
 noindex: true
 ---
 
@@ -18,11 +18,11 @@ Well another redesign, another run through it. V2 lasted I'm guessing around 8 m
 
 ## Reasons for a redesign
 
--   Something more simplified for responsiveness;
--   _Obviously_ something new and fresh;
--   Better focus on content and layout of content;
--   Try to refine the design and rid unneeded stuff;
--   More editorial friendly layout for blog posts.
+- Something more simplified for responsiveness;
+- _Obviously_ something new and fresh;
+- Better focus on content and layout of content;
+- Try to refine the design and rid unneeded stuff;
+- More editorial friendly layout for blog posts.
 
 These are just reasons I found needing a redesign with V2. The biggest one was to make it responsive, while possible with V2 I didn't feel like attempting to while it was live and risk messing the site up, it would've took a lot of media queries and adjustments too. Though while V3 isn't lacking in the amount of media queries and changes in CSS, it works much nicer I think. The difficulties were with the slider and main page headings.
 
