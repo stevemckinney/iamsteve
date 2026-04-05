@@ -1204,3 +1204,176 @@ Even though this is a "big bang" migration (full parity before switch-over), the
 - Database changes (Supabase schema unchanged)
 - Domain/DNS changes (staying on Vercel)
 - Content editing or restructuring
+
+---
+
+## Appendix A: Gap analysis (claude/migrate-to-astro-DiFCM branch)
+
+Detailed comparison of the migration branch against the Next.js source (main branch). Many pages were redesigned rather than migrated 1:1. This appendix catalogues every difference.
+
+### Critical config issues
+
+1. **`output: 'hybrid'` missing from astro.config.mjs** — API endpoints with `prerender = false` will not work without this. All POST/dynamic GET endpoints will fail.
+2. **compose.js references `/content/blog/`** instead of `/src/content/blog/` — new post creation will put files in the wrong directory.
+
+### Blog post page (`[...slug].astro`)
+
+The most significant divergence. The Next.js version uses `PostLayoutFrame` for a complex sidebar layout.
+
+| Feature | Next.js | Astro | Status |
+|---------|---------|-------|--------|
+| Table of contents sidebar | Sticky sidebar with collapsible TOC | Not present | MISSING |
+| Newsletter subscription in sidebar | Section with subscribe form | Not present | MISSING |
+| Sidebar toggle (localStorage) | Toggle show/hide sidebar | Not present | MISSING |
+| View counter badge | Suspense-wrapped counter in header | Not present | MISSING |
+| Support/Coffee section | After content section | Not present | MISSING |
+| Draft warning banner | Shown when ?draft=true | Not present | MISSING |
+| Fragment links | Copy-link icons on headings | Not present | MISSING |
+| Article wrapper class | `isolate grid col-container grid-cols-subgrid relative` | `grid grid-cols-subgrid col-start-container-start col-end-container-end gap-y-4` | DIVERGENT |
+| TOC sidebar grid positioning | `lg:col-start-page-start xl:col-start-2 lg:col-span-2 xl:col-end-5` | N/A | MISSING |
+| Prose wrapper grid | `lg:col-start-3 lg:col-end-12 xl:col-start-5 xl:col-end-16` (with sidebar) or `lg:col-start-5 lg:col-end-13` (without) | `col-content lg:col-prose` | DIVERGENT |
+| Mobile divider `<hr>` elements | 2 dividers between sections | Not present | MISSING |
+| h1 font weight | `font-variation-bold lg:font-variation-extrabold` | `font-variation-bold` only | PARTIAL |
+| Featured image container | `grid-cols-subgrid` + CSS Module `.featured` class | `rounded-lg` only | PARTIAL |
+| Image component | Next.js `<Image>` with blur placeholder | Standard `<img>` | DIVERGENT |
+| Next posts aside | `xl:row-span-1` class | Missing `xl:row-span-1` | PARTIAL |
+
+### Home page (`index.astro`)
+
+| Feature | Next.js | Astro | Status |
+|---------|---------|-------|--------|
+| Hero component | Full Hero section | Removed entirely | MISSING |
+| Popular posts section | 18 popular posts via SWR | Removed entirely | MISSING |
+| Frame component wrappers | Frame components around sections | Removed | MISSING |
+| Latest posts section | 4 latest posts with `id="latest"` | 4 cards without section wrapper | PARTIAL |
+| Section IDs | `id="latest"`, `id="popular"` | Not present | MISSING |
+
+### Notes listing (`notes/index.astro`)
+
+| Feature | Next.js | Astro | Status |
+|---------|---------|-------|--------|
+| Timeline layout | 4-column grid with sticky date, timeline dots/lines | Basic card grid | REDESIGNED |
+| Sticky date column | `sticky top-8` positioning | Not present | MISSING |
+| Timeline visual elements | Dots (`size-2.5 bg-border-medium`) and lines | Not present | MISSING |
+| Desktop/mobile conditional layout | Different layouts per viewport | Single layout | MISSING |
+| Content rendering | `NoteFeedContent` MDX component | Summary text only | DIVERGENT |
+| Word count badge | Badge with word count | Not present | MISSING |
+| Copy link button | Per-note copy link | Not present | MISSING |
+| Title font | `text-2xl/tight lg:text-3xl/tight` | `text-3xl` (no responsive) | PARTIAL |
+| Content width | `max-w-prose` constraint | Not present | MISSING |
+| PencilMono illustration | Decorative illustration | Removed | MISSING |
+
+### Notes single (`notes/[...slug].astro`)
+
+| Feature | Next.js | Astro | Status |
+|---------|---------|-------|--------|
+| JSON-LD structured data | Full schema markup | Not present | MISSING |
+| Back link to notes list | Icon link back to /notes | Not present | MISSING |
+| Footer with badges | Date badge, word count, copy link | Not present | MISSING |
+| PageTitle component | Styled title wrapper | Direct h1 | DIVERGENT |
+| Content wrapper | `col-content flex flex-col gap-6 max-w-prose mx-auto` | Complex grid frame layout | DIVERGENT |
+
+### Collections page (`collections/index.astro`)
+
+| Feature | Next.js | Astro | Status |
+|---------|---------|-------|--------|
+| Sticky sidebar header | 2-column with sticky left section | Centered single column | REDESIGNED |
+| Collection navigation menu | Sidebar nav for collection groups | Not present | MISSING |
+| URL domain display | Shows domain with gradient mask `[mask:linear-gradient(90deg,black_80%,transparent)]` | Not present | MISSING |
+| "New" badge | Badge for recently added items | Not present | MISSING |
+| List item layout | `flex whitespace-nowrap flex-1 gap-2` with gradient fade | Simple card grid `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3` | REDESIGNED |
+| Last import date | Tracking when items were added | Not present | MISSING |
+
+### Newsletter page (`newsletter.astro`)
+
+| Feature | Next.js | Astro | Status |
+|---------|---------|-------|--------|
+| Multi-section layout | 2-column grid with sidebar | Centered single column | REDESIGNED |
+| "Get the articles" section | Heading + signup box `bg-surface shadow-placed px-10 py-8 rounded-lg` | Not present | MISSING |
+| Featured posts sidebar | Card size="small" posts | Not present | MISSING |
+| Previous campaigns | Campaigns component | Not present | MISSING |
+| Grid positioning | `col-start-content-start max-lg:col-end-content-end lg:col-span-5 xl:col-span-7 2xl:col-span-6` | Not present | MISSING |
+
+### Thanks page (`thanks.astro`)
+
+| Feature | Next.js | Astro | Status |
+|---------|---------|-------|--------|
+| Illustration | PencilMono decorative illustration | Not present | MISSING |
+| Follow-up email section | Detailed message box with styling | Single paragraph | MISSING |
+| Previous campaigns | Campaigns section | Not present | MISSING |
+| Featured posts sidebar | Card posts | Not present | MISSING |
+| 2-column layout | Grid with sticky left section | Centered column | REDESIGNED |
+
+### Category page (`category/[slug]/index.astro`)
+
+| Feature | Next.js | Astro | Status |
+|---------|---------|-------|--------|
+| Subcategory navigation | List with `column-categories -mb-2 lg:-mb-3` | Not present | MISSING |
+| Full pagination | Multiple page links | "Page X of Y" with Next only | PARTIAL |
+| Empty state | "No posts in this category yet" message | Not present | MISSING |
+| PencilMono illustration | Decorative illustration | Not present | MISSING |
+| Header component structure | Header/Column/Title/Description wrappers | Simplified header | DIVERGENT |
+
+### Catch-all pages (`[...slug].astro`)
+
+| Feature | Next.js | Astro | Status |
+|---------|---------|-------|--------|
+| slotMdx second column | Renders page.slotMdx in Column | Not present | MISSING |
+| CSS Module import | `styles.page` for page-specific styling | Not present | MISSING |
+| PencilMono illustration | Decorative illustration | Not present | MISSING |
+| Header/Column/Title/Description | Component-based structure | Simplified header | DIVERGENT |
+
+### Blog listing (`blog/index.astro`)
+
+| Feature | Next.js | Astro | Status |
+|---------|---------|-------|--------|
+| Category list | `column-categories` class with Category component | Simple `<a>` links | PARTIAL |
+| PencilMono illustration | Decorative illustration | Not present | MISSING |
+| Full pagination | Multiple page number links | "Page X of Y" with Next only | PARTIAL |
+| Header/Column structure | Component wrappers | Inline header | DIVERGENT |
+
+### Components
+
+| Component | Next.js | Astro | Status |
+|-----------|---------|-------|--------|
+| Footer | `components/footer.js` | Inlined in Base.astro layout | DIVERGENT |
+| Hero | `components/hero.js` | Not present | MISSING |
+| PostLayoutFrame | `components/post/post-layout-frame.js` | Not present | MISSING |
+| SidebarToggle | `components/post/sidebar-toggle.js` | Not present | MISSING |
+| Pagination (full) | `components/pagination.js` | Simplified inline | PARTIAL |
+| Popular | `components/posts/popular.js` | Not present | MISSING |
+| Frame | Used across pages | Not present | MISSING |
+| Header/Column/Title/Description | Reusable layout components | Replaced with inline HTML | DIVERGENT |
+| PencilMono illustration | Used across all pages | Not present | MISSING |
+| NoteFeedContent | MDX rendering for note feed | Not present | MISSING |
+| Campaigns | Newsletter campaigns display | Not present | MISSING |
+| FragmentLinks | Copy-link on headings | Not present | MISSING |
+| Badge (hover variants) | `hoverVariants` and `darkRingHoverVariants` | Removed | MISSING |
+
+### Font weight issues
+
+These classes are used inconsistently in the Astro branch:
+
+| Element | Next.js | Astro |
+|---------|---------|-------|
+| Page h1 (large screens) | `font-variation-bold lg:font-variation-extrabold` | `font-variation-bold` only |
+| Note date | `font-variation-medium` | Not applied |
+| Various headings | Responsive font-variation classes | Fixed weight |
+
+### Package.json
+
+Old Next.js dependencies still present (should be removed):
+- `next@^16.2.0`
+- `@next/bundle-analyzer`, `@next/mdx`, `@next/eslint-plugin-next`
+- `@content-collections/core`, `@content-collections/mdx`, `@content-collections/next`
+- `eslint-config-next@^16.2.0`
+- `contentlayer2`, `next-contentlayer2`
+
+### Security headers missing from vercel.json
+
+- Content-Security-Policy (CSP)
+- Strict-Transport-Security (HSTS)
+
+### Missing redirects
+
+~40 redirects from next.config.js not yet in astro.config.mjs or vercel.json, including WordPress junk paths.

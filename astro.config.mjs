@@ -27,6 +27,7 @@ import remarkChat from './lib/remark-chat.js'
 
 export default defineConfig({
   site: 'https://iamsteve.me',
+  output: 'hybrid',
   adapter: vercel(),
   integrations: [
     react(),
