@@ -12,7 +12,7 @@ import Icon from '@/components/icon'
 
 const Toggle = () => {
   return (
-    <div className="relative before:z-1 before:-inset-10 before:absolute">
+    <div className="relative before:z-1 before:-inset-y-10 before:-inset-x-4 before:absolute">
       <span className="block w-[24px] h-[24px] relative">
         <span
           className={`h-[2px] w-[20px] bg-emphasis block rounded absolute`}
