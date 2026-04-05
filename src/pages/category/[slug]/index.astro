@@ -2,58 +2,104 @@
 import Blog from '../../../layouts/Blog.astro'
 import { getCollection } from 'astro:content'
 import Card from '../../../components/Card.astro'
-import categories from '../../../../content/categories.js'
+import Icon from '../../../components/Icon.astro'
+import { PencilMono } from '../../../../components/illustration'
+import { categories } from '../../../lib/categories'
 
 const POSTS_PER_PAGE = 12
 
 export async function getStaticPaths() {
-  const cats = (await import('../../../../content/categories.js')).default
-  return cats.map((cat: any) => ({
+  const { categories } = await import('../../../lib/categories')
+  return categories.map((cat: any) => ({
     params: { slug: cat.slugAsParams },
   }))
 }
 
 const { slug } = Astro.params
-const category = categories.find((c: any) => c.slugAsParams === slug)
+const data = categories.find((c: any) => c.slugAsParams === slug)
 
-if (!category) {
+if (!data) {
   return Astro.redirect('/blog')
 }
 
-// Get posts matching this category or its children
-const childSlugs = categories
-  .filter((c: any) => c.parent === slug || c.slugAsParams === slug)
-  .map((c: any) => c.title)
+const parent = data.parent
 
-const allPosts = await getCollection('blog', ({ data }) => {
-  if (data.status !== 'open') return false
-  return data.categories.some((cat: string) =>
-    childSlugs.some((cs: string) => cs.toLowerCase() === cat.toLowerCase())
-  )
+// Get subcategories for this category
+const subcategories = categories.filter((category) => {
+  if (category.parent === false || category.exclude === true) return false
+  if (!parent && data.title.toLowerCase() === category.parent) return true
+  if (parent && category.parent === parent) return true
+  return false
+})
+
+// Get posts matching this category
+const allPosts = await getCollection('blog', ({ data: postData }) => {
+  if (postData.status !== 'open') return false
+  return postData.categories.some((cat: string) => {
+    const normalised = cat.replace(' ', '-').toLowerCase()
+    return normalised === slug!.toLowerCase()
+  })
 })
 
 const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
 const paginatedPosts = posts.slice(0, POSTS_PER_PAGE)
 const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
+const currentPage = 1
 ---
 
-<Blog title={category.title} description={category.description}>
+<Blog title={data.title} description={data.description}>
+  <PencilMono
+    width={962}
+    height={46}
+    className="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+  />
   <header class="max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12">
     <div class="flex flex-col gap-4 md:col-span-1">
       <h1 class="w-full text-heading font-display lowercase self-start min-w-0 min-h-0 font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl">
-        {category.title}
+        {data.title}
       </h1>
-      <p class="md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch]">{category.description}</p>
+      <p class="md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch]">{data.description}</p>
     </div>
+    <ul class="md:col-span-1 grid grid-cols-2 gap-x-4 md:gap-x-8 self-end column-categories lg:-mb-2">
+      {subcategories.map((category) => (
+        <li class="self-end">
+          <a
+            href={category.slug}
+            class="py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+          >
+            <Icon class="text-current shrink-0" icon={category.icon} size={24} variant="header" />
+            {category.title}
+          </a>
+        </li>
+      ))}
+    </ul>
   </header>
   <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 col-container md:col-content gap-8">
-    {paginatedPosts.map((post) => <Card post={post} image={true} size="container" />)}
+    {paginatedPosts.length > 0 ? (
+      paginatedPosts.map((post) => <Card post={post} image={true} size="container" />)
+    ) : (
+      <p>No posts in this category yet.</p>
+    )}
   </div>
   {totalPages > 1 && (
-    <nav class="col-content flex items-center justify-center gap-4 pt-8" aria-label="Pagination">
-      <span class="text-ui-body opacity-50">Page 1 of {totalPages}</span>
-      <a href={`/category/${slug}/page/2`} class="text-emphasis hover:text-link-hover transition duration-200">
-        Next &rarr;
+    <nav class="col-content flex justify-between items-center -my-2 relative" aria-label="Pagination">
+      <button class="flex items-center gap-1 text-xl font-ui lowercase leading-[1.1428571429] py-2 cursor-not-allowed text-ui-body/70" disabled>
+        <Icon icon="angle-left" class="stroke-current relative -top-px" size={24} />
+        Newer
+      </button>
+      <span
+        class="absolute left-1/2 transform -translate-x-1/2 text-xl font-ui lowercase text-ui-body flex items-center gap-1 leading-[1.1428571429] py-2"
+        style="font-variant-numeric: lining-nums tabular-nums ordinal; font-feature-settings: 'dlig' on, 'case' on;"
+      >
+        {currentPage} of {totalPages}
+      </span>
+      <a
+        href={`/category/${slug}/page/2`}
+        class="flex items-center gap-1 text-xl font-ui lowercase leading-[1.1428571429] py-2 transition duration-200 hover:text-link-hover"
+        rel="next"
+      >
+        Older
+        <Icon icon="angle-right" class="stroke-current relative -top-px" size={24} />
       </a>
     </nav>
   )}
