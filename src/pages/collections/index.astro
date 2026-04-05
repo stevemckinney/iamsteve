@@ -1,0 +1,56 @@
+---
+import Page from '../../layouts/Page.astro'
+import { getCollection } from 'astro:content'
+import Icon from '../../components/Icon.astro'
+
+const allCollections = await getCollection('collections')
+const collections = allCollections.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+
+// Group by collection tag
+const grouped = new Map<string, typeof collections>()
+for (const item of collections) {
+  const tags = item.data.collection || ['Uncategorised']
+  for (const tag of tags) {
+    if (!grouped.has(tag)) grouped.set(tag, [])
+    grouped.get(tag)!.push(item)
+  }
+}
+const sortedGroups = Array.from(grouped.entries()).sort(([a], [b]) => a.localeCompare(b))
+---
+
+<Page title="Collections" description="A growing collection of links, articles and tools">
+  <header class="max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12">
+    <div class="flex flex-col gap-4 md:col-span-1">
+      <h1 class="w-full text-heading font-display lowercase self-start min-w-0 min-h-0 font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl">
+        Collections
+      </h1>
+      <p class="md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch]">
+        A growing collection of links, articles and tools
+      </p>
+    </div>
+  </header>
+  <div class="col-container md:col-content flex flex-col gap-12">
+    {sortedGroups.map(([group, items]) => (
+      <section class="flex flex-col gap-4">
+        <h2 class="text-2xl font-display font-variation-bold lowercase text-heading">{group}</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {items.map((item) => (
+            <li>
+              <a
+                href={item.data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-3 p-4 rounded-lg shadow-placed bg-surface hover:shadow-picked transition duration-200"
+              >
+                <span class="flex flex-col min-w-0 flex-1">
+                  <span class="text-base font-medium text-heading truncate">{item.data.title}</span>
+                </span>
+                <Icon icon="external" size={16} variant="header" class="shrink-0" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Page>

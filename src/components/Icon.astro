@@ -1,0 +1,47 @@
+---
+interface Props {
+  icon?: string
+  size?: number
+  variant?: 'default' | 'header' | 'on-light' | 'none'
+  class?: string
+  [key: string]: any
+}
+
+const folderIcons = new Set(['everything', 'archive', 'all', 'folder'])
+const penIcons = new Set(['design', 'pen'])
+
+const variantClasses: Record<string, string> = {
+  default: 'icon',
+  header: 'icon-header',
+  'on-light': 'icon-on-light',
+  none: '',
+}
+
+const {
+  icon = 'folder',
+  size = 24,
+  variant = 'default',
+  class: className,
+  ...rest
+} = Astro.props
+
+const normalisedIcon = icon.toLowerCase()
+const resolvedIcon = folderIcons.has(normalisedIcon)
+  ? 'folder'
+  : penIcons.has(normalisedIcon)
+  ? 'pen'
+  : normalisedIcon
+
+const variantClass = variant in variantClasses ? variantClasses[variant] : 'icon'
+const classes = ['shrink-0', 'text-current', variantClass, className].filter(Boolean).join(' ')
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox={`0 0 ${size} ${size}`}
+  class={classes}
+  {...rest}
+>
+  <use xlink:href={`#${resolvedIcon}-${size}`} />
+</svg>

@@ -2,10 +2,12 @@
 
 # dependencies
 /node_modules
+package-lock.json
 /.pnp
 .pnp.js
 .content-collections
 .contentlayer
+.content-collections
 .velite
 
 # testing
@@ -62,3 +64,7 @@ uploads
 
 # Memory
 memory/
+
+# Astro build output
+.astro/
+dist/

@@ -1,0 +1,38 @@
+---
+import Base from './Base.astro'
+
+interface Props {
+  title?: string
+  description?: string
+  ogImage?: string
+  ogType?: string
+  publishedTime?: Date
+  modifiedTime?: Date
+  noindex?: boolean
+  structuredData?: object
+}
+
+const {
+  title,
+  description,
+  ogImage,
+  ogType = 'article',
+  publishedTime,
+  modifiedTime,
+  noindex,
+  structuredData,
+} = Astro.props
+---
+
+<Base
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  ogType={ogType}
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
+  noindex={noindex}
+  structuredData={structuredData}
+>
+  <slot />
+</Base>

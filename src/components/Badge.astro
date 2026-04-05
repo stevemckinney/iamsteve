@@ -1,0 +1,81 @@
+---
+import Icon from './Icon.astro'
+
+interface Props {
+  theme?: string
+  size?: number
+  iconStart?: string
+  href?: string
+  class?: string
+}
+
+const defaultVariants: Record<string, string> = {
+  rio: 'text-[light-dark(var(--color-rio-500),var(--color-rio-900))]',
+  dandelion: 'text-[light-dark(var(--color-dandelion-600),var(--color-dandelion-900))]',
+  lavender: 'text-[light-dark(var(--color-lavender-600),var(--color-lavender-900))]',
+  magenta: 'text-[light-dark(var(--color-magenta-600),var(--color-magenta-800))]',
+  grass: 'text-[light-dark(var(--color-grass-600),var(--color-grass-900))]',
+  fern: 'text-[light-dark(var(--color-fern-700),var(--color-fern-900))]',
+  moss: 'text-[light-dark(var(--color-moss-500),var(--color-moss-900))]',
+  'neutral-01': 'text-[light-dark(var(--color-neutral-01-600),var(--color-neutral-01-900))]',
+  'neutral-02': 'text-[light-dark(var(--color-neutral-02-600),var(--color-neutral-02-900))]',
+  cornflour: 'text-[light-dark(var(--color-cornflour-700),var(--color-cornflour-900))]',
+  text: 'text-[light-dark(var(--color-fern-1100),var(--color-fern-1100))]',
+}
+
+const darkBgVariants: Record<string, string> = {
+  rio: 'dark:bg-rio-300', dandelion: 'dark:bg-dandelion-300', lavender: 'dark:bg-lavender-300',
+  magenta: 'dark:bg-magenta-300', grass: 'dark:bg-grass-300', fern: 'dark:bg-fern-300',
+  moss: 'dark:bg-moss-300', 'neutral-01': 'dark:bg-neutral-01-300', 'neutral-02': 'dark:bg-neutral-02-300',
+  cornflour: 'dark:bg-cornflour-500', text: 'dark:bg-fern-300',
+}
+
+const darkRingVariants: Record<string, string> = {
+  rio: 'dark:ring-1 dark:ring-rio-300', dandelion: 'dark:ring-1 dark:ring-dandelion-200',
+  lavender: 'dark:ring-1 dark:ring-lavender-300', magenta: 'dark:ring-1 dark:ring-magenta-300',
+  grass: 'dark:ring-1 dark:ring-grass-300', fern: 'dark:ring-1 dark:ring-fern-300',
+  moss: 'dark:ring-1 dark:ring-moss-300', 'neutral-01': 'dark:ring-1 dark:ring-neutral-01-300',
+  'neutral-02': 'dark:ring-1 dark:ring-neutral-02-300', cornflour: 'dark:ring-1 dark:ring-cornflour-300',
+  text: 'dark:ring-1 dark:ring-fern-300',
+}
+
+const {
+  theme = 'cornflour',
+  size = 16,
+  iconStart,
+  href,
+  class: className,
+} = Astro.props
+
+const iconSizeClass = size === 16 ? 'w-6 h-6 rounded-[.375rem]' : 'w-8 h-8 rounded-sm'
+const gapClass = size === 16 ? 'gap-2' : 'gap-3'
+const textHeightClass = size === 16 ? 'h-6' : 'h-8'
+const iconThemeClass = `${defaultVariants[theme] || ''} ${darkBgVariants[theme] || ''} ${darkRingVariants[theme] || ''}`
+---
+
+{href ? (
+  <a
+    href={href}
+    class:list={['flex flex-[0_0_auto] font-variation-medium group/badge transition-all duration-100 ease-linear text-emphasis', gapClass, className]}
+  >
+    {iconStart && (
+      <span class:list={['flex-[0_0_auto] bg-surface shadow-reduced dark:shadow-none group-hover/badge:shadow-picked group-active/badge:shadow-reduced flex items-center justify-center transition-all duration-100 ease-linear', iconSizeClass, iconThemeClass]}>
+        <Icon class="text-current" icon={iconStart} size={size} variant="default" />
+      </span>
+    )}
+    <span class:list={['pt-[2px] text-base font-medium flex-[0_0_auto] transition-all duration-100 ease-linear font-body leading-none rounded flex items-center text-current relative top-px', textHeightClass]}>
+      <slot />
+    </span>
+  </a>
+) : (
+  <p class:list={['flex flex-[0_0_auto] font-variation-medium text-emphasis', gapClass, className]}>
+    {iconStart && (
+      <span class:list={['flex-[0_0_auto] bg-surface shadow-reduced dark:shadow-none flex items-center justify-center transition-all duration-100 ease-linear', iconSizeClass, iconThemeClass]}>
+        <Icon class="text-current" icon={iconStart} size={size} variant="default" />
+      </span>
+    )}
+    <span class:list={['pt-[2px] text-base font-medium flex-[0_0_auto] transition-all duration-100 ease-linear font-body leading-none rounded flex items-center text-current relative top-px', textHeightClass]}>
+      <slot />
+    </span>
+  </p>
+)}

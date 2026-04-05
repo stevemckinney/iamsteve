@@ -1,4 +1,53 @@
 {
+  "framework": "astro",
   "installCommand": "npm install -g pnpm && pnpm install",
-  "buildCommand": "pnpm run build"
+  "buildCommand": "pnpm run build",
+  "redirects": [
+    { "source": "/apple-touch-icon-precomposed.png", "destination": "/static/apple-touch-icon.png", "permanent": true },
+    { "source": "/android.png", "destination": "/static/favicon.png", "permanent": true },
+    { "source": "/category/css/page/:num", "destination": "/category/code", "permanent": true },
+    { "source": "/:path(index.php)", "destination": "/", "permanent": true },
+    { "source": "/:path(xmlrpc.php)", "destination": "https://google.com", "permanent": true },
+    { "source": "/:path(wp-content|wp-admin|wp-includes|vendor|wp-json)/:slug*", "destination": "https://google.com", "permanent": true },
+    { "source": "/.env", "destination": "https://google.com", "permanent": true },
+    { "source": "/login.php", "destination": "https://google.com", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/icon/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/feed.xml",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=43200" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-DNS-Prefetch-Control", "value": "on" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' api.iamsteve.me *.codepen.io use.typekit.net platform.twitter.com *.twimg.com vercel.live; style-src 'self' 'unsafe-inline' use.typekit.net p.typekit.net; img-src 'self' data: *.twimg.com; font-src 'self' use.typekit.net; connect-src 'self' api.iamsteve.me *.supabase.co vitals.vercel-insights.com; frame-src codepen.io *.twitter.com" }
+      ]
+    }
+  ]
 }

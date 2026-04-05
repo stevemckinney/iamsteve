@@ -1,0 +1,61 @@
+---
+import Page from '../layouts/Page.astro'
+import { getCollection } from 'astro:content'
+import Card from '../components/Card.astro'
+import Notepad from '../components/react/Notepad'
+import { PencilMono } from '../../components/illustration'
+
+const includedIds = [160, 161, 157, 164, 165, 72]
+const allPosts = await getCollection('blog', ({ data }) => data.status === 'open')
+const posts = allPosts.filter((post) => includedIds.includes(post.data.id))
+---
+
+<Page title="Thanks" description="Your subscription has been confirmed">
+  <PencilMono
+    width={962}
+    height={46}
+    className="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+  />
+  <header class="max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12">
+    <div class="flex flex-col gap-4 md:col-span-1">
+      <h1 class="w-full text-heading font-display lowercase self-start min-w-0 min-h-0 font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl">
+        Thanks
+      </h1>
+      <p class="md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch]">Your subscription has been confirmed.</p>
+    </div>
+  </header>
+  <article class="grid grid-cols-subgrid col-content pb-18 gap-y-18">
+    <div class="col-start-content-start max-lg:col-end-content-end lg:col-span-5 xl:col-span-7 2xl:col-span-6">
+      <div class="sticky top-8 flex flex-col gap-8">
+        <section class="flex flex-col gap-4">
+          <h2 class="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0">
+            You\u2019ll receive a follow up email
+          </h2>
+          <div class="bg-surface shadow-placed px-10 py-8 rounded-lg flex flex-col gap-4">
+            <p>
+              Your subscription has been confirmed. There will be a follow
+              up email to your confirmation email welcoming you to the
+              newsletter. If you have any problems{' '}
+              <a href="/contact" class="link">let me know</a>{' '}
+              or reply to any of the emails you receive.
+            </p>
+          </div>
+        </section>
+        <Notepad client:idle>
+          <Notepad.Header>Previous issues</Notepad.Header>
+          <Notepad.Body>
+            <p class="text-lg text-ui-body">Previous issues will appear here.</p>
+          </Notepad.Body>
+        </Notepad>
+      </div>
+    </div>
+    <div class="col-start-content-start col-end-content-end lg:col-start-6 xl:col-start-9 2xl:col-start-8 flex flex-col gap-4">
+      <h2 class="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0">
+        What you can expect
+      </h2>
+      {posts.map((post) => (
+        <Card size="small" post={post} />
+      ))}
+    </div>
+  </article>
+</Page>

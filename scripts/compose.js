@@ -8,7 +8,7 @@ const root = process.cwd()
 
 // Function to get the next available post ID
 const getNextPostId = () => {
-  const blogDir = path.join(root, 'content/blog')
+  const blogDir = path.join(root, 'src/content/blog')
 
   // Get all blog post files
   const posts = fs.readdirSync(blogDir)
@@ -148,12 +148,12 @@ inquirer
     let filePath
     if (answers.structure === 'folder') {
       // Create folder and index.md file
-      const folderPath = path.join('content/blog', postName)
+      const folderPath = path.join('src/content/blog', postName)
       fs.mkdirSync(folderPath, { recursive: true })
       filePath = path.join(folderPath, 'index.md')
     } else {
       // Create single file
-      filePath = path.join('content/blog', `${postName}.md`)
+      filePath = path.join('src/content/blog', `${postName}.md`)
     }
 
     fs.writeFile(filePath, frontmatter, { flag: 'wx' }, (err) => {
@@ -165,7 +165,7 @@ inquirer
         console.log(`\nBlog post generated successfully at ${filePath}`)
 
         if (answers.structure === 'folder') {
-          console.log(`\nFolder created for assets at: content/blog/${postName}/`)
+          console.log(`\nFolder created for assets at: src/content/blog/${postName}/`)
         }
 
         // Create branch if selected

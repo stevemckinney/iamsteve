@@ -1,0 +1,129 @@
+---
+import siteMetadata from '../../content/metadata.js'
+
+interface Props {
+  title?: string
+  description?: string
+  ogImage?: string
+  ogType?: string
+  canonicalUrl?: string
+  publishedTime?: Date
+  modifiedTime?: Date
+  noindex?: boolean
+  structuredData?: object
+}
+
+const {
+  title,
+  description = siteMetadata.description,
+  ogImage = siteMetadata.socialBanner,
+  ogType = 'website',
+  canonicalUrl,
+  publishedTime,
+  modifiedTime,
+  noindex = false,
+  structuredData,
+} = Astro.props
+
+const pageTitle = title
+  ? `${title} \u2022 iamsteve`
+  : 'iamsteve \u2022 design & code blog'
+
+const ogImageUrl = ogImage?.startsWith('http')
+  ? ogImage
+  : `${siteMetadata.siteUrl}${ogImage}`
+
+const siteJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteMetadata.siteUrl}/#organization`,
+      name: 'iamsteve',
+      url: siteMetadata.siteUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteMetadata.siteUrl}/images/logo.svg`,
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteMetadata.siteUrl}/#website`,
+      url: siteMetadata.siteUrl,
+      name: 'iamsteve',
+      description: siteMetadata.description,
+      publisher: {
+        '@id': `${siteMetadata.siteUrl}/#organization`,
+      },
+    },
+    {
+      '@type': 'Person',
+      '@id': `${siteMetadata.siteUrl}/#person`,
+      name: 'Steve McKinney',
+      url: 'https://iamsteve.me',
+      sameAs: [
+        'https://twitter.com/irsteve',
+        'https://instagram.com/stevemckinney',
+        'https://www.linkedin.com/in/smcknny/',
+      ],
+      homeLocation: {
+        '@type': 'City',
+        name: 'Manchester',
+      },
+      jobTitle: 'User interface designer',
+      knowsAbout: [
+        'Web Design',
+        'Visual Design',
+        'UI Design',
+        'Typography',
+        'CSS',
+      ],
+      worksFor: {
+        '@id': `${siteMetadata.siteUrl}/#organization`,
+      },
+    },
+  ],
+}
+---
+
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+{canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+{noindex
+  ? <meta name="robots" content="noindex, nofollow" />
+  : <meta name="robots" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1" />
+}
+
+<!-- Open Graph -->
+<meta property="og:title" content={title || 'iamsteve \u2022 design & code blog'} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:site_name" content="iamsteve" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content={ogType} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="600" />
+<meta property="og:image:alt" content="iamsteve \u2014 design and code blog" />
+
+{publishedTime && (
+  <meta property="article:published_time" content={publishedTime.toISOString()} />
+)}
+{modifiedTime && (
+  <meta property="article:modified_time" content={modifiedTime.toISOString()} />
+)}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@irsteve" />
+<meta name="twitter:creator" content="@irsteve" />
+<meta name="twitter:title" content={title || 'iamsteve.me \u2022 design & code blog'} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(siteJsonLd)} />
+{structuredData && (
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+)}

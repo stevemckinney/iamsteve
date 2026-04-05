@@ -1,0 +1,239 @@
+---
+import Post from '../../layouts/Post.astro'
+import { getCollection, render } from 'astro:content'
+import { format } from 'date-fns'
+import Badge from '../../components/Badge.astro'
+import Icon from '../../components/Icon.astro'
+import Card from '../../components/Card.astro'
+import { getCategoryTheme, getCategoryIcon } from '../../lib/categories'
+import siteMetadata from '../../../content/metadata.js'
+
+// React islands
+import PostLayoutFrame from '../../components/react/PostLayoutFrame'
+import TableOfContents from '../../components/react/TableOfContents'
+import ViewCounter from '../../components/react/ViewCounter'
+import Subscribe from '../../components/react/Subscribe'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.status === 'open')
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/^\d{4}-/, '') },
+    props: { post },
+  }))
+}
+
+const { post } = Astro.props
+const { Content, headings } = await render(post)
+
+const date = new Date(post.data.date)
+const slug = `/blog/${post.id.replace(/^\d{4}-/, '')}`
+const cleanSlug = slug.replace(/^\/blog\//, '')
+
+const currentYear = new Date().getFullYear()
+const postYear = new Date(post.data.date).getFullYear()
+const yearsAgo = currentYear - postYear
+const isOldCodePost = post.data.categories.includes('Code') && yearsAgo > 2
+
+const showDrafts = Astro.url.searchParams.get('draft') === 'true'
+
+const editUrl = `${siteMetadata.siteRepo}/blob/main/src/content/blog/${post.id}`
+
+const enableViewCounting = import.meta.env.PUBLIC_ENABLE_VIEW_COUNTING === 'true'
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BlogPosting',
+      '@id': `${siteMetadata.siteUrl}${slug}#article`,
+      isPartOf: { '@id': `${siteMetadata.siteUrl}/#website` },
+      author: {
+        '@type': 'Person',
+        name: siteMetadata.author,
+        '@id': `${siteMetadata.siteUrl}/#person`,
+      },
+      headline: post.data.title,
+      datePublished: post.data.date.toISOString(),
+      dateModified: post.data.lastmod?.toISOString() || post.data.date.toISOString(),
+      description: post.data.summary,
+      wordCount: post.body?.split(/\s+/).length,
+      keywords: post.data.tags?.join(', '),
+      articleSection: post.data.categories[0],
+      image: {
+        '@type': 'ImageObject',
+        url: post.data.ogImage,
+        width: 1200,
+        height: 630,
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `${siteMetadata.siteUrl}${slug}`,
+      },
+      publisher: { '@id': `${siteMetadata.siteUrl}/#organization` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${siteMetadata.siteUrl}${slug}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'iamsteve.me', item: siteMetadata.siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteMetadata.siteUrl}/blog` },
+        { '@type': 'ListItem', position: 3, name: post.data.title, item: `${siteMetadata.siteUrl}${slug}` },
+      ],
+    },
+  ],
+}
+
+// Get random next posts from same category
+const allPosts = await getCollection('blog', ({ data }) => data.status === 'open')
+const sameCategoryPosts = allPosts.filter((p) =>
+  p.data.categories.includes(post.data.categories[0]) && p.id !== post.id
+)
+const nextPosts = sameCategoryPosts.sort(() => Math.random() - 0.5).slice(0, 2)
+
+// Image colour
+const imageColor = post.data.theme ? post.data.theme : '#fcf9f8'
+---
+
+<Post
+  title={post.data.title}
+  description={post.data.metadesc || post.data.summary}
+  ogImage={post.data.ogImage}
+  ogType="article"
+  publishedTime={post.data.date}
+  modifiedTime={post.data.lastmod}
+  noindex={post.data.noindex}
+  structuredData={structuredData}
+>
+  <PostLayoutFrame
+    client:load
+    asideContent={
+      <>
+        <section class="flex flex-col gap-2 relative" aria-labelledby="aside-contents">
+          <div class="lg:hidden" aria-hidden="true">
+            <TableOfContents headings={headings} client:idle />
+          </div>
+          <div class="hidden lg:block">
+            <TableOfContents headings={headings} open client:idle />
+          </div>
+        </section>
+        <section
+          class="flex flex-col gap-2 pb-12 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0"
+          aria-labelledby="aside-subscribe"
+        >
+          <h2 class="font-bold text-heading" id="aside-subscribe">Subscribe</h2>
+          <p class="mb-4">Get notified you when the latest posts go out. Unsubscribe anytime.</p>
+          <Subscribe unique="sidebar" client:visible />
+        </section>
+      </>
+    }
+    headerContent={
+      <>
+        {showDrafts && (
+          <div class="col-content mb-8">
+            <div class="shadow-placed flex gap-3 leading-tight bg-cornflour-0 dark:bg-cornflour-900 rounded-md p-4">
+              <Icon icon="square-info" class="text-cornflour-900 dark:text-cornflour-100 flex-[0_0_auto]" variant="default" />
+              <div class="flex flex-col">
+                <p class="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-100">
+                  <strong>Viewing draft post</strong>
+                </p>
+                <p class="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-200">
+                  This post is not publicly visible
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+        {isOldCodePost && (
+          <div class="shadow-(--shadow-notice) col-content lg:col-prose flex gap-3 leading-tight bg-(--color-notice-bg) rounded-md p-4">
+            <Icon icon="square-info" class="text-(--color-notice-icon) flex-[0_0_auto]" variant="header" />
+            <div class="flex flex-col">
+              <p class="p-0 m-0 font-body text-sm text-(--color-notice-text)">
+                <strong>This post was published {yearsAgo} {yearsAgo === 1 ? 'year' : 'years'} ago</strong>
+              </p>
+              <p class="p-0 m-0 font-body text-sm text-(--color-notice-muted)">
+                There&rsquo;s a chance things are out of date or no longer reflect my views today
+              </p>
+            </div>
+          </div>
+        )}
+        <Badge size={16} theme="cornflour" iconStart="calendar">
+          <time datetime={post.data.date.toISOString()}>{format(date, 'do LLL yyyy')}</time>
+        </Badge>
+        <h1 class="text-heading text-balance font-display text-3xl xs:text-5xl md:text-6xl lg:text-7xl font-variation-bold lg:font-variation-extrabold lowercase mt-4">
+          {post.data.title}
+        </h1>
+        {post.data.summary && (
+          <p class="text-lg text-pretty lg:text-2xl text-emphasis mb-2">{post.data.summary}</p>
+        )}
+        <div class="flex flex-row flex-wrap justify-between gap-6">
+          <div class="flex flex-row gap-4 items-center">
+            {post.data.categories.map((category: string) => (
+              <Badge size={16} theme={getCategoryTheme(category)} iconStart={getCategoryIcon(category)} href={`/category/${category.toLowerCase().replace(/\s+/g, '-')}`}>
+                {category}
+              </Badge>
+            ))}
+          </div>
+          {enableViewCounting && (
+            <Badge size={16} theme="text" iconStart="views">
+              <ViewCounter slug={cleanSlug} trackView={true} client:idle />
+            </Badge>
+          )}
+        </div>
+      </>
+    }
+    proseContent={
+      <>
+        {post.data.large && (
+          <div
+            class="col-content lg:col-prose grid-cols-subgrid flex items-center overflow-hidden justify-center rounded-lg"
+            style={`background-color: ${imageColor}`}
+          >
+            <img
+              src={post.data.large}
+              alt={`${post.data.title} (featured image)`}
+              width="864"
+              height="540"
+            />
+          </div>
+        )}
+        <Content />
+        <Badge href={editUrl} size={16} theme="text" iconStart="github">
+          View on Github
+        </Badge>
+      </>
+    }
+    afterContent={
+      <>
+        <aside class="xl:row-span-1 bg-surface-02 dark:bg-surface shadow-[0_0_0_1px_var(--color-white)] dark:shadow-[0_0_0_1px_var(--color-surface-02)] rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content lg:col-start-6 xl:col-start-7 xl:col-span-8">
+          <p class="p-0 m-0 text-base text-ui-body flex flex-col">
+            <strong class="text-heading font-bold">Enjoying the reading experience?</strong>
+            {' '}There&rsquo;s no ads, tracking or cookie banners, so your support is valued
+          </p>
+          <a
+            href={siteMetadata.bmc}
+            class="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase transition duration-200 mt-1 pl-6 pr-5 py-2 bg-surface shadow-reduced hover:opacity-70"
+          >
+            Buy me a coffee
+            <span class="flex shrink-0 grow-0 items-center justify-center">
+              <Icon icon="bmc" />
+            </span>
+          </a>
+        </aside>
+        {nextPosts.length > 0 && (
+          <aside class="xl:row-span-1 col-content lg:col-start-6 xl:col-start-7 lg:col-span-8 flex flex-col gap-4 lg:-mx-8 pb-18 mt-8">
+            <h2 class="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 lg:px-8">
+              Next to read
+            </h2>
+            <div class="grid lg:grid-cols-2 gap-8">
+              {nextPosts.map((p) => <Card post={p} image={false} size="medium" />)}
+            </div>
+          </aside>
+        )}
+      </>
+    }
+  />
+
+  {post.data.twitter && (
+    <script src="https://platform.twitter.com/widgets.js" async></script>
+  )}
+</Post>

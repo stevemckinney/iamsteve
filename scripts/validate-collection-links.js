@@ -6,7 +6,7 @@ const axios = require('axios')
 const pLimit = require('p-limit').default
 
 // Configuration
-const COLLECTIONS_DIR = 'content/collections'
+const COLLECTIONS_DIR = 'src/content/collections'
 const CACHE_FILE = '.link-validation-cache'
 const RESULTS_FILE = '.validation-results.json'
 const CACHE_TTL_DAYS = 7
@@ -242,7 +242,9 @@ async function main() {
       } else {
         const errorCategory = categorizeError(result)
         console.log(
-          `${errorCategory.icon} ${filename}: ${result.error || result.statusCode}`
+          `${errorCategory.icon} ${filename}: ${
+            result.error || result.statusCode
+          }`
         )
 
         const errorInfo = {
@@ -365,7 +367,13 @@ main().catch((error) => {
         summary: `**Summary:**\n- ⚠️ Validation script encountered an error: ${error.message}`,
         details: '',
         broken_count: 0,
-        results: { valid: [], broken: [], needs_check: [], duplicates: [], skipped: [] },
+        results: {
+          valid: [],
+          broken: [],
+          needs_check: [],
+          duplicates: [],
+          skipped: [],
+        },
       },
       null,
       2

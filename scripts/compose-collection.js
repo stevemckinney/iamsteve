@@ -128,7 +128,7 @@ const handleInteractiveInput = async () => {
 
   const fileName = normalizeUrlForFilename(answers.url)
   const frontmatter = genFrontMatter(answers)
-  const filePath = `content/collections/${fileName}.${answers.extension || 'md'}`
+  const filePath = `src/content/collections/${fileName}.${answers.extension || 'md'}`
 
   fs.writeFile(filePath, frontmatter, { flag: 'wx' }, (err) => {
     if (err) {
@@ -160,7 +160,7 @@ const handleJsonImport = (bookmarksFilePath) => {
         ...bookmark,
         kind: bookmark.kind || 'website'
       })
-      const filePath = `content/collections/${fileName}.${bookmark.extension || 'md'}`
+      const filePath = `src/content/collections/${fileName}.${bookmark.extension || 'md'}`
 
       try {
         fs.writeFileSync(filePath, frontmatter, { flag: 'wx' })
