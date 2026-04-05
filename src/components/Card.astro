@@ -1,0 +1,87 @@
+---
+import Icon from './Icon.astro'
+import Badge from './Badge.astro'
+import { format } from 'date-fns'
+import { getCategoryTheme, getCategoryIcon } from '../lib/categories'
+
+interface Props {
+  post: any
+  image?: boolean
+  size?: 'container' | 'medium'
+}
+
+const { post, image = true, size = 'container' } = Astro.props
+
+const slug = `/blog/${post.id.replace(/^\d{4}-/, '')}`
+const date = new Date(post.data.date)
+const imageColor = post.data.theme || '#f1e8e4'
+const categories = post.data.categories || []
+const title = post.data.title
+const summary = post.data.summary
+const large = post.data.large
+const medium = post.data.medium
+
+// Filter out parent categories when there are subcategories
+const displayCategories = categories.filter((cat: string) => {
+  if (categories.length > 1 && (cat.toLowerCase() === 'design' || cat.toLowerCase() === 'code')) return false
+  return true
+})
+---
+
+{size === 'container' ? (
+  <article class="@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced dark:active:shadow-[inset_0_0_0_1px_var(--color-surface-02)] bg-surface active:bg-surface-pressed active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative h-full card">
+    {image && (large || medium) && (
+      <a href={slug} class="relative flex items-center justify-center" style={`background-color: ${imageColor}`}>
+        {medium && <img src={medium} width="384" height="240" alt={title} class="@lg/card:hidden w-full" loading="lazy" />}
+        {large && <img src={large} width="592" height="368" alt={title} aria-hidden="true" class="hidden @lg/card:block w-full" loading="lazy" />}
+      </a>
+    )}
+    <div class="flex flex-col flex-auto relative py-8 @lg/card:pb-10.5 @lg/card:pt-12">
+      <div class="flex flex-row gap-6 relative z-2 overflow-x-auto pb-4 @lg/card:pb-5 px-8 @lg/card:px-12 pt-px -mt-px">
+        {displayCategories.map((category: string) => (
+          <Badge size={24} theme={getCategoryTheme(category)} iconStart={getCategoryIcon(category)}>
+            {category}
+          </Badge>
+        ))}
+        <Badge size={24} theme="cornflour" iconStart="calendar" class="sr-only @lg/card:not-sr-only">
+          <time datetime={post.data.date.toString()}>{format(date, 'do LLL yyyy')}</time>
+        </Badge>
+      </div>
+      <div class="flex flex-col gap-2.5 px-8 pt-[.8125rem] @lg/card:pt-2 @lg/card:gap-3 @lg/card:px-12">
+        <h2 class="p-0 m-0 leading-none text-balance lowercase font-display font-variation-bold hyphens-auto text-3xl @lg/card:text-5xl">
+          <a href={slug} class="text-heading group-hover/card:text-[light-dark(var(--color-fern-800),var(--color-white))] transition duration-200 ease-out before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @lg/card:before:rounded-lg before:z-1">
+            {title}
+          </a>
+        </h2>
+        {summary && <p class="flex-auto md:text-lg text-ui-body line-clamp-4 @lg/card:line-clamp-3">{summary}</p>}
+      </div>
+    </div>
+  </article>
+) : (
+  <div class="group/medium isolate relative flex flex-col rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced active:scale-[.99375] bg-surface active:bg-surface-pressed bg-clip-padding transition ease-linear duration-200 overflow-hidden">
+    {image && medium && (
+      <a href={slug} class="flex w-full items-center justify-center aspect-video relative overflow-hidden" style={`background-color: ${imageColor}`}>
+        <img src={medium} width="384" height="240" alt={title} class="absolute z-1 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 border-0" loading="lazy" />
+      </a>
+    )}
+    <div class="flex flex-col flex-auto relative z-1 pb-6.5">
+      {categories.length > 0 && (
+        <div class={`flex flex-row gap-4 relative z-2 overflow-x-auto pb-3 px-8 ${image ? 'pt-px -mt-px' : 'pt-8'}`}>
+          {categories.map((category: string) => (
+            <Badge size={24} theme={getCategoryTheme(category)} iconStart={getCategoryIcon(category)}>
+              {category}
+            </Badge>
+          ))}
+        </div>
+      )}
+      <div class="flex flex-col gap-2 px-8 pt-[.8125rem]">
+        <h2 class="p-0 m-0 text-3xl leading-none lowercase font-display font-variation-bold">
+          <a href={slug} class="text-heading before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1">
+            {title}
+          </a>
+        </h2>
+        {summary && <p class="text-ui-body line-clamp-3 text-lg">{summary}</p>}
+      </div>
+    </div>
+  </div>
+)}

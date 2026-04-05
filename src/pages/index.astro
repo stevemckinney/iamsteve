@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro'
+import { getCollection } from 'astro:content'
+import Card from '../components/Card.astro'
+
+const allPosts = await getCollection('blog', ({ data }) => data.status === 'open')
+const latestPosts = allPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 4)
+---
+
+<Base>
+  <main class="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18" id="content">
+    <div class="grid col-start-margin-start col-end-margin-end sm:col-start-container-start sm:col-end-container-end grid-cols-subgrid sm:frame sm:frame-24 2xl:frame-40 gap-y-4 md:gap-y-8 pb-10 md:pb-18 sm:mt-5 md:mt-5.5" id="latest">
+      <header class="max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12">
+        <div class="flex flex-col gap-4 md:col-span-1">
+          <h1 class="w-full text-heading font-display lowercase self-start min-w-0 min-h-0 font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl">
+            Exploring web design craft
+          </h1>
+          <p class="md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch]">
+            Tips and tutorials about the design and build of web interfaces
+          </p>
+        </div>
+      </header>
+      <div class="grid grid-cols-1 sm:grid-cols-2 col-container md:col-content gap-8">
+        {latestPosts.map((post) => <Card post={post} image={true} size="container" />)}
+      </div>
+    </div>
+  </main>
+</Base>

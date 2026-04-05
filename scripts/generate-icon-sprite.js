@@ -383,7 +383,7 @@ function build() {
     }
   }
 
-  // Write sprite files
+  // Write sprite files (React JSX)
   for (const [size, symbols] of Object.entries(symbolsBySize)) {
     if (symbols.size === 0) {
       console.log(`  ⏭ No icons for sprite-${size}.js`)
@@ -399,6 +399,32 @@ function build() {
 
     fs.writeFileSync(spritePath, content)
     console.log(`\n✅ Written ${spritePath} (${symbols.size} icons)`)
+  }
+
+  // Write combined raw SVG sprite for Astro
+  const allSymbols = []
+  for (const [size, symbols] of Object.entries(symbolsBySize)) {
+    const sorted = Array.from(symbols.entries())
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([, content]) => content)
+    allSymbols.push(...sorted)
+  }
+
+  if (allSymbols.length > 0) {
+    // Convert className to class for HTML/Astro compatibility
+    const htmlSymbols = allSymbols
+      .map((s) => s.replace(/className=/g, 'class='))
+      .join('\n')
+
+    const svgSprite = `<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;display:none">
+  <defs>
+${htmlSymbols}
+  </defs>
+</svg>`
+
+    const svgSpritePath = path.join(ICON_DIR, 'sprite-all.svg')
+    fs.writeFileSync(svgSpritePath, svgSprite)
+    console.log(`\n✅ Written ${svgSpritePath} (combined SVG sprite for Astro)`)
   }
 
   console.log('\n')

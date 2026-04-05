@@ -1,0 +1,28 @@
+---
+import Page from '../layouts/Page.astro'
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages')
+  return pages.map((page) => ({
+    params: { slug: page.id },
+    props: { page },
+  }))
+}
+
+const { page } = Astro.props
+const { Content } = await render(page)
+---
+
+<Page title={page.data.title} description={page.data.description}>
+  <header class="max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12">
+    <div class="flex flex-col gap-4 md:col-span-1">
+      <h1 class="w-full text-heading font-display lowercase self-start min-w-0 min-h-0 font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl">
+        {page.data.title}
+      </h1>
+    </div>
+  </header>
+  <div class="col-container md:col-content prose">
+    <Content />
+  </div>
+</Page>

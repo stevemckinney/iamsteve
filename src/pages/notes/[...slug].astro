@@ -1,0 +1,34 @@
+---
+import Post from '../../layouts/Post.astro'
+import { getCollection, render } from 'astro:content'
+import { format } from 'date-fns'
+import Badge from '../../components/Badge.astro'
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes', ({ data }) => data.status === 'published')
+  return notes.map((note) => ({
+    params: { slug: note.id },
+    props: { note },
+  }))
+}
+
+const { note } = Astro.props
+const { Content } = await render(note)
+const date = new Date(note.data.date)
+---
+
+<Post title={note.data.title} description={note.data.summary ?? undefined}>
+  <article class="grid grid-cols-subgrid col-start-container-start col-end-container-end gap-y-4 md:gap-y-8 md:frame md:frame-24 2xl:frame-40 md:pt-12 2xl:pt-10 pb-18 sm:mb-18" id="article">
+    <header class="col-content lg:col-prose flex flex-col gap-4">
+      <Badge size={16} theme="cornflour" iconStart="calendar">
+        <time datetime={note.data.date.toISOString()}>{format(date, 'do LLL yyyy')}</time>
+      </Badge>
+      <h1 class="text-3xl md:text-5xl xl:text-7xl font-display font-variation-bold lowercase text-heading leading-none mt-4">
+        {note.data.title}
+      </h1>
+    </header>
+    <div class="col-content lg:col-prose prose">
+      <Content />
+    </div>
+  </article>
+</Post>

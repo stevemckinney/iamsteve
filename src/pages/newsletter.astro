@@ -1,0 +1,10 @@
+---
+import Page from '../layouts/Page.astro'
+import Subscribe from '../components/react/Subscribe.tsx'
+---
+
+<Page title="Newsletter" description="Subscribe to get notified when new posts go out">
+  <div class="col-container md:col-content flex flex-col items-center gap-8 py-12">
+    <Subscribe client:visible title="Get the articles" unique="page" />
+  </div>
+</Page>

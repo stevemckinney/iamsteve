@@ -1,0 +1,180 @@
+interface Category {
+  title: string
+  slug: string
+  slugAsParams: string
+  description: string
+  parent: string | false
+  theme: string
+  icon: string
+  exclude: boolean
+}
+
+const categories: Category[] = [
+  {
+    title: 'Design',
+    slug: '/category/design',
+    slugAsParams: 'design',
+    description: 'From speedy workflow based quick tips and resources, practical techniques to create well designed interfaces.',
+    parent: false,
+    theme: 'rio',
+    icon: 'pen',
+    exclude: false,
+  },
+  {
+    title: 'Quick tip',
+    slug: '/category/quick-tip',
+    slugAsParams: 'quick-tip',
+    description: 'Short posts covering a technique or feature to help you figure something out and get back to designing',
+    parent: 'design',
+    theme: 'dandelion',
+    icon: 'bolt',
+    exclude: false,
+  },
+  {
+    title: 'Typography',
+    slug: '/category/typography',
+    slugAsParams: 'typography',
+    description: 'The latest type trends, alternatives to popular typefaces and typography techniques',
+    parent: 'design',
+    theme: 'neutral-02',
+    icon: 'type',
+    exclude: false,
+  },
+  {
+    title: 'Colour',
+    slug: '/category/colour',
+    slugAsParams: 'colour',
+    description: 'A fundamental skill within design, it\u2019s a balance through brand, emotion, accessibility and usabilility',
+    parent: 'design',
+    theme: 'cornflour',
+    icon: 'palette',
+    exclude: false,
+  },
+  {
+    title: 'Resources',
+    slug: '/category/resources',
+    slugAsParams: 'resources',
+    description: 'Collections of links or specific articles, to things I wish I had written or designed.',
+    parent: 'design',
+    theme: 'fern',
+    icon: 'settings',
+    exclude: false,
+  },
+  {
+    title: 'UX design',
+    slug: '/category/ux-design',
+    slugAsParams: 'ux-design',
+    description: 'Exploring the principles and practices of usability, and how to apply them to your projects',
+    parent: 'design',
+    theme: 'grass',
+    icon: 'cursor',
+    exclude: false,
+  },
+  {
+    title: 'Prototyping',
+    slug: '/category/prototyping',
+    slugAsParams: 'prototyping',
+    description: 'Prototyping posts',
+    parent: 'design',
+    theme: 'neutral-02',
+    icon: 'play',
+    exclude: true,
+  },
+  {
+    title: 'Visual design',
+    slug: '/category/visual-design',
+    slugAsParams: 'visual-design',
+    description: 'Looking at how we design the interfaces we use and a look at the how and why behind visual techniques',
+    parent: 'design',
+    theme: 'lavender',
+    icon: 'vector-square',
+    exclude: false,
+  },
+  {
+    title: 'Code',
+    slug: '/category/code',
+    slugAsParams: 'code',
+    description: 'Building interfaces with CSS and JavaScript, from implementation details to development workflows.',
+    parent: false,
+    theme: 'dandelion',
+    icon: 'code',
+    exclude: false,
+  },
+  {
+    title: 'Animation',
+    slug: '/category/animation',
+    slugAsParams: 'animation',
+    description: 'Add some motion and interactivity to your interfaces using animation techniques and libraries like Framer Motion.',
+    parent: 'code',
+    theme: 'magenta',
+    icon: 'play',
+    exclude: false,
+  },
+  {
+    title: 'CSS',
+    slug: '/category/css',
+    slugAsParams: 'css',
+    description: 'Dive deeper into the powerful and versatile styling language that can transform your interfaces.',
+    parent: 'code',
+    theme: 'grass',
+    icon: 'css',
+    exclude: false,
+  },
+  {
+    title: 'Patterns',
+    slug: '/category/patterns',
+    slugAsParams: 'patterns',
+    description: 'Reusable techniques that you can apply to your projects that solve common problems and challenges.',
+    parent: 'code',
+    theme: 'fern',
+    icon: 'puzzle',
+    exclude: false,
+  },
+  {
+    title: 'JavaScript',
+    slug: '/category/javascript',
+    slugAsParams: 'javascript',
+    description: 'Enhance your interfaces with dynamic and interactive features to build upon the foundations of your markup',
+    parent: 'code',
+    theme: 'magenta',
+    icon: 'note',
+    exclude: false,
+  },
+  {
+    title: 'Website',
+    slug: '/category/website',
+    slugAsParams: 'website',
+    description: 'Posts specific to this website, such as design maintenance, updates and changes',
+    parent: false,
+    theme: 'cornflour',
+    icon: 'folder',
+    exclude: true,
+  },
+  {
+    title: 'Terminal',
+    slug: '/category/terminal',
+    slugAsParams: 'terminal',
+    description: 'Terminal posts',
+    parent: false,
+    theme: 'cornflour',
+    icon: 'code',
+    exclude: true,
+  },
+]
+
+export function getCategoryTheme(name: string): string {
+  const cat = categories.find((c) => c.title.toLowerCase() === name.toLowerCase())
+  return cat?.theme || 'cornflour'
+}
+
+export function getCategoryIcon(name: string): string {
+  const cat = categories.find((c) => c.title.toLowerCase() === name.toLowerCase())
+  return cat?.icon || 'folder'
+}
+
+export function getCategorySlug(name: string): string {
+  return `/category/${name.toLowerCase().replace(/\s+/g, '-')}`
+}
+
+export { categories }
+export type { Category }

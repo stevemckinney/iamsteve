@@ -1,0 +1,51 @@
+---
+import Blog from '../../../layouts/Blog.astro'
+import { getCollection } from 'astro:content'
+import Card from '../../../components/Card.astro'
+
+export async function getStaticPaths() {
+  const POSTS_PER_PAGE = 12
+  const allPosts = await getCollection('blog', ({ data }) => data.status === 'open')
+  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE)
+
+  return Array.from({ length: totalPages - 1 }, (_, i) => ({
+    params: { page: String(i + 2) },
+  }))
+}
+
+const POSTS_PER_PAGE = 12
+const { page } = Astro.params
+const pageNumber = parseInt(page!)
+
+const allPosts = await getCollection('blog', ({ data }) => data.status === 'open')
+const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+const paginatedPosts = posts.slice(POSTS_PER_PAGE * (pageNumber - 1), POSTS_PER_PAGE * pageNumber)
+const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
+---
+
+<Blog title={`Blog archive \u2013 Page ${pageNumber}`} description="Tips and tutorials about the design and build of web interfaces">
+  <header class="max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12">
+    <div class="flex flex-col gap-4 md:col-span-1">
+      <h1 class="w-full text-heading font-display lowercase self-start min-w-0 min-h-0 font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl">
+        Blog
+      </h1>
+      <p class="md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch]">Page {pageNumber} of {totalPages}</p>
+    </div>
+  </header>
+  <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 col-container md:col-content gap-8">
+    {paginatedPosts.map((post) => <Card post={post} image={true} size="container" />)}
+  </div>
+  <nav class="col-content flex items-center justify-center gap-4 pt-8" aria-label="Pagination">
+    {pageNumber > 1 && (
+      <a href={pageNumber === 2 ? '/blog' : `/blog/page/${pageNumber - 1}`} class="text-emphasis hover:text-link-hover transition duration-200">
+        &larr; Previous
+      </a>
+    )}
+    <span class="text-ui-body opacity-50">Page {pageNumber} of {totalPages}</span>
+    {pageNumber < totalPages && (
+      <a href={`/blog/page/${pageNumber + 1}`} class="text-emphasis hover:text-link-hover transition duration-200">
+        Next &rarr;
+      </a>
+    )}
+  </nav>
+</Blog>

@@ -1,0 +1,123 @@
+---
+import '@/css/primitives.css'
+import '@/css/theme.css'
+import '@/css/utilities.css'
+import '@/css/typography.css'
+import '@/css/code.css'
+import '@/css/shiki.css'
+import '../styles/global.css'
+
+import { ClientRouter } from 'astro:transitions'
+import Head from '@/components/Head.astro'
+import Header from '@/components/react/Header.tsx'
+import FooterProfile from '@/components/FooterProfile.astro'
+import Icon from '@/components/Icon.astro'
+import Sprite from '@/components/icon/Sprite.astro'
+
+import siteMetadata from '../../content/metadata.js'
+
+interface Props {
+  title?: string
+  description?: string
+  ogImage?: string
+  ogType?: string
+  publishedTime?: Date
+  modifiedTime?: Date
+  noindex?: boolean
+  structuredData?: object
+}
+
+const {
+  title,
+  description,
+  ogImage,
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
+  noindex = false,
+  structuredData,
+} = Astro.props
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
+---
+
+<html lang="en" class="overflow-x-hidden lg:overflow-x-clip">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1, shrink-to-fit=no, viewport-fit=cover" />
+    <meta name="theme-color" content="rgb(241 232 228)" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="iamsteve" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-title" content="iamsteve" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="dns-prefetch" href="https://use.typekit.net" />
+    <link rel="stylesheet" href="https://use.typekit.net/bvl2qse.css" />
+    <link rel="alternate" type="application/rss+xml" title="iamsteve" href={`${siteMetadata.siteUrl}/feed.xml`} />
+
+    <Head
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      ogType={ogType}
+      canonicalUrl={canonicalUrl.toString()}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
+      noindex={noindex}
+      structuredData={structuredData}
+    />
+
+    <ClientRouter />
+  </head>
+  <body
+    class="antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas text-body overflow-x-hidden lg:overflow-x-clip"
+  >
+    <Sprite />
+
+    <div class="grid layout relative gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto items-baseline">
+      <Header client:load pathname={Astro.url.pathname} />
+
+      <slot />
+
+      <FooterProfile />
+
+      <footer class="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-18 md:py-18">
+        <p class="flex flex-1 max-md:flex-col max-md:items-center gap-1 text-balance text-center">
+          <Icon icon="bee" variant="header" /> Designed in Manchester using Figma & Astro
+        </p>
+        <ul class="flex gap-8">
+          <li>
+            <a
+              href="#top"
+              class="text-emphasis hover:text-link-hover transition duration-200 ease-linear"
+            >Top</a>
+          </li>
+          <li>
+            <a
+              href="/feed.xml"
+              class="text-emphasis hover:text-link-hover transition duration-200 ease-linear"
+            >RSS</a>
+          </li>
+          <li>
+            <p class="text-ui-body">
+              &copy; <a
+                href="/"
+                class="text-ui-body hover:text-link-hover transition duration-200 ease-linear"
+              >{siteMetadata.title}</a> {new Date().getFullYear()}
+            </p>
+          </li>
+        </ul>
+      </footer>
+      <div class="col-container relative -top-4 pb-24 flex flex-row items-center gap-8">
+        <span class="flex-1 bg-dash-image h-[2px]" aria-hidden="true"></span>
+        <Icon icon="logo" class="text-emphasis" variant="header" size={32} />
+        <span class="flex-1 bg-dash-image h-[2px]" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    {import.meta.env.PROD && (
+      <script src="https://api.iamsteve.me/latest.js" defer></script>
+    )}
+  </body>
+</html>
