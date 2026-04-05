@@ -216,11 +216,11 @@ function SearchModal({ isOpen, onOpenChange }) {
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       isDismissable
-      className="fixed inset-0 z-50 bg-neutral-01-900/60 backdrop-blur-sm transition-opacity duration-200 data-[entering]:opacity-0 data-[exiting]:opacity-0"
+      className="fixed inset-0 z-50 transition-opacity duration-200 data-[entering]:opacity-0 data-[exiting]:opacity-0"
     >
       <AriaModal className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] px-4 outline-none transition-all duration-200 data-[entering]:opacity-0 data-[entering]:-translate-y-2 data-[exiting]:opacity-0 data-[exiting]:-translate-y-2">
         <Dialog className="w-full max-w-xl outline-none" aria-label="Search">
-          <div className="bg-surface rounded-xl shadow-picked overflow-hidden">
+          <div className="bg-surface rounded-lg shadow-picked overflow-hidden">
             <div className="flex items-center gap-3 px-4 border-b border-neutral-01-100 dark:border-fern-1100">
               <Icon
                 icon="search"
