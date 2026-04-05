@@ -107,7 +107,7 @@ function SearchResult({ result, isSelected, onSelect, onHover }) {
         <Icon
           icon={typeIcon(result.type)}
           size={16}
-          variant="default"
+          variant="none"
           aria-hidden="true"
         />
       </span>
@@ -123,11 +123,11 @@ function SearchResult({ result, isSelected, onSelect, onHover }) {
       </span>
       <span className="flex shrink-0 items-center gap-2">
         {result.categories?.length > 0 && (
-          <span className="text-xs text-ui-body/60 hidden sm:inline">
+          <span className="text-xs text-ui-body hidden sm:inline">
             {result.categories[0]}
           </span>
         )}
-        <span className="text-[10px] uppercase tracking-wider text-ui-body/50 font-medium">
+        <span className="text-[10px] uppercase tracking-wider text-ui-body font-medium">
           {typeLabel(result.type)}
         </span>
       </span>
@@ -225,9 +225,9 @@ function SearchModal({ isOpen, onOpenChange }) {
               <Icon
                 icon="search"
                 size={16}
-                variant="default"
+                variant="none"
                 aria-hidden="true"
-                className="text-ui-body/50 shrink-0"
+                className="text-ui-body shrink-0"
               />
               <input
                 ref={inputRef}
@@ -236,7 +236,7 @@ function SearchModal({ isOpen, onOpenChange }) {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Search posts, notes, pages\u2026"
-                className="flex-1 py-3.5 bg-transparent text-base text-heading placeholder:text-ui-body/40 outline-none border-0"
+                className="flex-1 py-3.5 bg-transparent text-base text-heading placeholder:text-ui-body outline-none border-0"
                 autoFocus
                 autoComplete="off"
                 autoCorrect="off"
@@ -255,19 +255,19 @@ function SearchModal({ isOpen, onOpenChange }) {
                   <Icon
                     icon="close"
                     size={16}
-                    variant="default"
+                    variant="none"
                     aria-hidden="true"
-                    className="text-ui-body/50"
+                    className="text-ui-body"
                   />
                 </button>
               )}
-              <kbd className="hidden sm:flex items-center gap-0.5 text-[11px] text-ui-body/40 font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1.5 py-0.5">
+              <kbd className="hidden sm:flex items-center gap-0.5 text-[11px] text-ui-body font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1.5 py-0.5">
                 esc
               </kbd>
             </div>
 
             {loading && (
-              <div className="px-4 py-8 text-center text-sm text-ui-body/50">
+              <div className="px-4 py-8 text-center text-sm text-ui-body">
                 Loading&hellip;
               </div>
             )}
@@ -275,7 +275,7 @@ function SearchModal({ isOpen, onOpenChange }) {
             {!loading && query.trim().length >= 2 && (
               <div className="max-h-[60vh] overflow-y-auto">
                 {results.length === 0 && (
-                  <div className="px-4 py-8 text-center text-sm text-ui-body/50">
+                  <div className="px-4 py-8 text-center text-sm text-ui-body">
                     No results found for &ldquo;{query}&rdquo;
                   </div>
                 )}
@@ -300,12 +300,12 @@ function SearchModal({ isOpen, onOpenChange }) {
             )}
 
             {!loading && query.trim().length < 2 && (
-              <div className="px-4 py-6 text-center text-sm text-ui-body/40">
+              <div className="px-4 py-6 text-center text-sm text-ui-body">
                 Type to search across all content
               </div>
             )}
 
-            <div className="flex items-center justify-between gap-4 px-4 py-2.5 border-t border-neutral-01-100 dark:border-fern-1100 text-[11px] text-ui-body/40">
+            <div className="flex items-center justify-between gap-4 px-4 py-2.5 border-t border-neutral-01-100 dark:border-fern-1100 text-[11px] text-ui-body">
               <span className="flex items-center gap-3">
                 <span className="flex items-center gap-1">
                   <kbd className="font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1 py-0.5">
