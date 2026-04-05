@@ -60,6 +60,8 @@ function typeLabel(type) {
       return 'Page'
     case 'category':
       return 'Category'
+    case 'collection':
+      return 'Collection'
     default:
       return type
   }
@@ -75,6 +77,8 @@ function typeIcon(type) {
       return 'home'
     case 'category':
       return 'folder'
+    case 'collection':
+      return 'bookmark'
     default:
       return 'search'
   }
