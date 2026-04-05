@@ -2,29 +2,63 @@
 import Base from '../layouts/Base.astro'
 import { getCollection } from 'astro:content'
 import Card from '../components/Card.astro'
+import Hero from '../components/Hero.astro'
+import PopularPosts from '../components/react/PopularPosts'
 
 const allPosts = await getCollection('blog', ({ data }) => data.status === 'open')
-const latestPosts = allPosts
+const postsByDate = allPosts
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 4)
+
+// For popular posts, we pass all open posts sorted by date
+// The PopularPosts React island handles client-side category filtering
+const allOpenPosts = allPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 18)
+  .map((post) => ({
+    slug: `/blog/${post.id.replace(/^\d{4}-/, '')}`,
+    title: post.data.title,
+    categories: post.data.categories,
+    date: post.data.date.toISOString(),
+    summary: post.data.summary,
+    theme: post.data.theme,
+    large: post.data.large,
+    medium: post.data.medium,
+  }))
 ---
 
 <Base>
-  <main class="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18" id="content">
-    <div class="grid col-start-margin-start col-end-margin-end sm:col-start-container-start sm:col-end-container-end grid-cols-subgrid sm:frame sm:frame-24 2xl:frame-40 gap-y-4 md:gap-y-8 pb-10 md:pb-18 sm:mt-5 md:mt-5.5" id="latest">
-      <header class="max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12">
-        <div class="flex flex-col gap-4 md:col-span-1">
-          <h1 class="w-full text-heading font-display lowercase self-start min-w-0 min-h-0 font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl">
-            Exploring web design craft
-          </h1>
-          <p class="md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch]">
-            Tips and tutorials about the design and build of web interfaces
-          </p>
-        </div>
+  <Hero />
+  <main
+    class="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18"
+    id="content"
+  >
+    <!-- Latest posts -->
+    <div
+      class="grid col-start-margin-start col-end-margin-end sm:col-start-container-start sm:col-end-container-end grid-cols-subgrid sm:frame sm:frame-24 2xl:frame-40 gap-y-4 md:gap-y-8 pb-10 md:pb-18 sm:mt-5 md:mt-5.5"
+      id="latest"
+    >
+      <header class="col-start-content-start col-end-content-end flex justify-between items-baseline md:items-center sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-canvas sm:bg-[url(/images/texture.png)] sm:bg-size-[172px_auto] sm:bg-blend-multiply sm:-mt-4.5 md:-mt-5.5">
+        <h2 class="font-display text-heading text-2xl md:text-5xl font-variation-bold lowercase" id="latest-posts">
+          What&rsquo;s new
+        </h2>
+        <a href="/blog" class="flex gap-1 text-base md:text-xl font-ui lowercase transition duration-200 hover:text-link-hover">
+          View the archive
+        </a>
       </header>
-      <div class="grid grid-cols-1 sm:grid-cols-2 col-container md:col-content gap-8">
-        {latestPosts.map((post) => <Card post={post} image={true} size="container" />)}
+      <div class="grid col-start-margin-start col-end-margin-end sm:col-content gap-4 md:gap-8 max-sm:grid-flow-col max-sm:auto-cols-auto max-sm:overflow-auto max-sm:snap-x max-sm:snap-always max-sm:overscroll-x-contain md:grid-cols-2 max-sm:px-8 max-sm:py-8 max-sm:-my-8">
+        {postsByDate.map((post) => (
+          <Card post={post} size="container" image={true} class="max-sm:w-[calc(100vw-48px)] max-sm:snap-center md:col-span-1" />
+        ))}
       </div>
+    </div>
+
+    <!-- Popular posts -->
+    <div
+      class="grid col-start-margin-start col-end-margin-end sm:col-start-container-start sm:col-end-container-end grid-cols-subgrid sm:frame sm:frame-24 2xl:frame-40 gap-y-4 md:gap-y-8 pb-10 md:pb-18 sm:mt-5 md:mt-5.5"
+      id="popular"
+    >
+      <PopularPosts posts={allOpenPosts} client:idle />
     </div>
   </main>
 </Base>
