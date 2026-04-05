@@ -235,7 +235,7 @@ function SearchModal({ isOpen, onOpenChange }) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Search posts, notes, pages\u2026"
+                placeholder="Search posts, notes, pages"
                 className="flex-1 py-3.5 bg-transparent text-base text-heading placeholder:text-ui-body outline-none border-0"
                 autoFocus
                 autoComplete="off"
