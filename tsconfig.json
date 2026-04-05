@@ -12,5 +12,14 @@
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
-  }
+  },
+  "exclude": [
+    "content-collections.ts",
+    "contentlayer.config.js",
+    "next.config.js",
+    "app/**",
+    "components/**",
+    "layouts/**",
+    "node_modules"
+  ]
 }
