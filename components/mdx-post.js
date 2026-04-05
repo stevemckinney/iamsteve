@@ -7,14 +7,14 @@ import Image from '@/components/image'
 import { cn } from '@/lib/utils'
 import Link from '@/components/link'
 import ContactForm from '@/components/contact-form'
-import { figureComponents, noteFigureComponents } from '@/components/figure'
+import { figureComponents } from '@/components/figure'
 import Icon from '@/components/icon'
 import Social from '@/components/social'
 import Card from '@/components/card'
 import Notepad from '@/components/notepad'
 import NewsletterForm from '@/components/newsletter-form'
 import CodePen from '@/components/codepen'
-import { Chat, ChatMessage } from '@/components/chat'
+import { components as sharedComponents } from '@/components/mdx'
 
 // Dynamically import heavy post-specific components
 const BentoGridShell = dynamic(
@@ -200,9 +200,8 @@ const ComparisonImages = ({
     { label: 'Before', value: 0 },
     { label: 'After', value: 1 },
   ],
-  contextLabel, // New prop for the context label
+  contextLabel,
 }) => {
-  // Find default option index or fallback to 0
   const defaultIndex = options.findIndex((opt) => opt.default) || 0
   const [activeIndex, setActiveIndex] = useState(defaultIndex)
 
@@ -214,7 +213,6 @@ const ComparisonImages = ({
     }
   }
 
-  // Validate and limit options
   const validOptions = options.slice(0, 5)
   const images = React.Children.toArray(children)
 
@@ -224,9 +222,7 @@ const ComparisonImages = ({
       role="region"
       aria-label={description}
     >
-      {/* Segmented control */}
       <div className="flex w-full gap-3 p-1 items-center ml-4 relative">
-        {/* Context label */}
         {contextLabel && (
           <span className="text-sm text-heading/60 pt-2 pb-1.5 order-last">
             {contextLabel}
@@ -308,7 +304,6 @@ const ComparisonImages = ({
         })}
       </div>
 
-      {/* Screen reader instructions */}
       <span className="sr-only">
         Use the segmented control above to switch between views. Currently
         showing {validOptions[activeIndex]?.label} state.
@@ -354,21 +349,20 @@ const AppIcon = ({ src, alt, type = 'app', size = 72, className }) => (
   </span>
 )
 
-const components = {
-  Image,
-  Icon,
+/**
+ * Generic page components (used by collections, generic pages)
+ */
+const pageComponents = {
+  ...sharedComponents,
+  ...figureComponents,
+  Link,
   AppIcon,
   Card,
-  Link,
-  // Campaigns: Campaigns,
   NewsletterForm: NewsletterForm,
   Notepad: Notepad,
   Prose: Prose,
   ContactForm: ContactForm,
   Social,
-  // wrapper: ({ components, ...rest }) => (
-  //   <div className="col-content" {...rest} />
-  // ),
   Content: (props) => <div {...props} />,
   h2: (props) => (
     <h2
@@ -400,11 +394,6 @@ const components = {
       {...props}
     />
   ),
-  blockquote: (props) => (
-    <blockquote className={`border-l-2 border-l-cornflour-500 pl-4 -ml-4`}>
-      {props.children}
-    </blockquote>
-  ),
   Blockquote,
   Gallery: (props) => (
     <div className="grid gap-2 grid-cols-6 grid-flow-dense">
@@ -426,10 +415,15 @@ const components = {
   Sandbox: (props) => <div className="sandbox">{props.children}</div>,
 }
 
+/**
+ * Blog post components
+ */
 const postComponents = {
+  ...sharedComponents,
+  ...figureComponents,
   h1: (props) => <h1 {...props} className="text-2xl font-bold" />,
   h2: (props) => <h2 {...props} className="text-xl" />,
-  p: (props) => <p {...props} className="mt-2" />,
+  p: (props) => <p {...props} />,
   ul: (props) => (
     <ul
       className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-[square] [li::marker]-[theme('colors.neutral-03.400')] mb-3"
@@ -443,23 +437,18 @@ const postComponents = {
     />
   ),
   li: (props) => <li {...props} />,
-  Image,
-  ...figureComponents,
-  a: (props) => <Link {...props} />,
+  a: (props) => (
+    <Link
+      className="underline [text-underline-offset:12.5%] [text-decoration-skip-ink:auto] [text-decoration-thickness:1.5px] [text-decoration-color:color-mix(in_oklch,currentcolor,transparent_60%)] hover:text-link-hover hover:[text-decoration-color:transparent] transition duration-200 ease-out"
+      {...props}
+    />
+  ),
   Shortcut,
   Link,
-  Icon,
   Prose: Prose,
-  blockquote: (props) => (
-    <blockquote className={`border-l-2 border-l-cornflour-500 pl-4 -ml-4`}>
-      {props.children}
-    </blockquote>
-  ),
   Blockquote,
   Images,
   BentoGridShell,
-  Chat,
-  ChatMessage,
   CodePen,
   LinkFigma: (props) => (
     <Link
@@ -503,7 +492,7 @@ export function MDX({ code }) {
   if (!code) {
     return <p>No content available.</p>
   }
-  return <MDXContent code={code} components={components} />
+  return <MDXContent code={code} components={pageComponents} />
 }
 
 export function PostMdx({ code }) {
@@ -513,5 +502,5 @@ export function PostMdx({ code }) {
   return <MDXContent code={code} components={postComponents} />
 }
 
-export { postComponents, components }
-export { figureComponents, noteFigureComponents } from '@/components/figure'
+export { postComponents, pageComponents }
+export { figureComponents } from '@/components/figure'

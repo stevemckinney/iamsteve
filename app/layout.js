@@ -19,7 +19,7 @@ export const metadata = {
     template: '%s • iamsteve',
   },
   description:
-    'Tips and tutorials about the design and build of web interfaces.',
+    'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
   alternates: {
     canonical: './',
     types: {
@@ -40,15 +40,25 @@ export const metadata = {
   openGraph: {
     title: 'iamsteve • design & code blog',
     description:
-      'Tips and tutorials about the design and build of web interfaces.',
+      'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
     url: './',
     siteName: 'iamsteve',
     locale: 'en_GB',
     type: 'website',
+    images: [
+      {
+        url: '/images/twitter-card.png',
+        width: 1200,
+        height: 600,
+        alt: 'iamsteve — design and code blog',
+      },
+    ],
   },
   twitter: {
     title: 'iamsteve.me • design & code blog',
     card: 'summary_large_image',
+    site: '@irsteve',
+    creator: '@irsteve',
   },
 }
 
@@ -71,7 +81,7 @@ const jsonLD = {
       url: `${siteMetadata.siteUrl}`,
       name: 'iamsteve',
       description:
-        'Tips and tutorials about the design and build of web interfaces.',
+        'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
       publisher: {
         '@id': `${siteMetadata.siteUrl}/#organization`,
       },
@@ -213,7 +223,7 @@ export default function RootLayout({ children }) {
         </div>
       </body>
       {process.env.NODE_ENV === 'production' && (
-        <Script src="https://scripts.simpleanalyticscdn.com/latest.js" />
+        <Script src="https://api.iamsteve.me/latest.js" />
       )}
     </html>
   )

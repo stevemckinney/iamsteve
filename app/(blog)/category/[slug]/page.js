@@ -79,6 +79,11 @@ export default async function BlogCategory(props) {
   const data = categories.find(
     (category) => category.slugAsParams === params.slug
   )
+
+  if (!data) {
+    notFound()
+  }
+
   const parent = data.parent
 
   const posts = await Promise.all(
@@ -106,10 +111,6 @@ export default async function BlogCategory(props) {
   const pagination = {
     current: pageNumber,
     total: Math.ceil(posts.length / POSTS_PER_PAGE),
-  }
-
-  if (!data) {
-    notFound()
   }
 
   if (isNaN(pageNumber)) {

@@ -6,7 +6,7 @@ const Chat = ({ title, children }) => {
       aria-label={title ? `${title} conversation` : 'Chat conversation'}
     >
       {title && (
-        <div className="text-center py-2 px-4 text-sm text-ui-body font-ui border-b border-neutral-01-200 dark:border-neutral-01-800">
+        <div className="text-center py-2 px-4 text-sm text-ui-body font-ui border-b border-neutral-01-200 dark:border-fern-1100">
           {title}
         </div>
       )}

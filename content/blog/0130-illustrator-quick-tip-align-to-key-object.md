@@ -25,17 +25,19 @@ The most common use case I can think of is making buttons. You’ve got a rectan
 ## How to
 
 <div className="article-image">
-  <Image src="/images/blog/align-button.gif" unoptimized={true} width={738} height={420} />
+  <Image src="/images/blog/align-button.gif" unoptimized={true} width={738} height={420} alt="Animated demonstration of aligning objects to a key object in Illustrator" />
 </div>
 
 To align to key object you must select two items and then change the ‘Align To’ option to Align to Key Object. **The crucial part is then clicking the item you want to use to for aligning to**.
 
 ## Quicker for axis alignment
 
-<figure><Image src="/images/blog/align-axis.gif" unoptimized={true} width={738} height={420} /><figcaption>In the making of this post I discovered you could click the key object without having to choose the align to method.</figcaption></figure>
+<figure><Image src="/images/blog/align-axis.gif" unoptimized={true} width={738} height={420} alt="" /><figcaption>In the making of this post I discovered you could click the key object without having to choose the align to method.</figcaption></figure>
 
 Using align to key object is a quick method for aligning horizontally or vertically. Using the same method it will help save time.
 
 ## That’s it
 
 I do wish there was a way to somehow default this behaviour. Taking the item in the back as the key object, this would work well. Anyway, I felt this was a necessary quick tip to highlight, as I’ve found it valuable.
+
+Once you’re comfortable with this, it’s also the key to [evenly spacing objects](/blog/illustrator-quick-tip-equally-space-objects) with a precise pixel value.

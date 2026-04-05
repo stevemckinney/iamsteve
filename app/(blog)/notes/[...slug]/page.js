@@ -6,10 +6,11 @@
 import { notFound } from 'next/navigation'
 import { PencilMono } from '@/components/illustration'
 import { allNotes } from 'content-collections'
-import { NoteMdx } from '@/components/note-mdx'
+import { NoteMdx } from '@/components/mdx-note'
 import siteMetadata from '@/content/metadata'
 
 import Badge from '@/components/badge'
+import CopyLink from '@/components/button/copy-link'
 import PageTitle from '@/components/page-title'
 import { format, parseISO } from 'date-fns'
 import Icon from '@/components/icon'
@@ -46,13 +47,13 @@ export async function generateMetadata(props) {
 
   return {
     title: note.title,
-    description: note.summary,
+    description: note.summary ?? '',
     alternates: {
       canonical: note.slug,
     },
     openGraph: {
       title: note.title,
-      description: note.summary,
+      description: note.summary ?? '',
       type: 'article',
       publishedTime: note.date,
       authors: [siteMetadata.author],
@@ -61,7 +62,7 @@ export async function generateMetadata(props) {
     twitter: {
       card: 'summary',
       title: note.title,
-      description: note.summary,
+      description: note.summary ?? '',
     },
   }
 }
@@ -123,8 +124,12 @@ export default async function NotePage(props) {
         </div>
         <footer className="flex items-center gap-4 pt-6 border-t border-neutral-01-400/20">
           <Badge size={16} theme="cornflour" iconStart="calendar">
-            <time dateTime={note.date}>{format(date, 'do LLL yyyy')}</time>
+            <time dateTime={note.date}>{format(date, 'do LLLL yyyy')}</time>
           </Badge>
+          <Badge size={16} theme="lavender" iconStart="views">
+            {note.content.split(/\s+/).length} words
+          </Badge>
+          <CopyLink slug={note.slug} />
         </footer>
       </article>
     </>

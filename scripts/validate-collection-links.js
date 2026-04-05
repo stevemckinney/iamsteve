@@ -242,7 +242,9 @@ async function main() {
       } else {
         const errorCategory = categorizeError(result)
         console.log(
-          `${errorCategory.icon} ${filename}: ${result.error || result.statusCode}`
+          `${errorCategory.icon} ${filename}: ${
+            result.error || result.statusCode
+          }`
         )
 
         const errorInfo = {
@@ -354,4 +356,27 @@ async function main() {
   // process.exit(results.broken.length > 0 ? 1 : 0);
 }
 
-main().catch(console.error)
+main().catch((error) => {
+  console.error(error)
+
+  // Write a fallback results file so downstream workflow steps don't fail
+  fs.writeFileSync(
+    RESULTS_FILE,
+    JSON.stringify(
+      {
+        summary: `**Summary:**\n- ⚠️ Validation script encountered an error: ${error.message}`,
+        details: '',
+        broken_count: 0,
+        results: {
+          valid: [],
+          broken: [],
+          needs_check: [],
+          duplicates: [],
+          skipped: [],
+        },
+      },
+      null,
+      2
+    )
+  )
+})

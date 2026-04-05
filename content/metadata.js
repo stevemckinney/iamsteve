@@ -5,7 +5,7 @@ const siteMetadata = {
   last_name: 'McKinney',
   headerTitle: 'iamsteve',
   description:
-    'iamsteve is a blog written by Steve McKinney, focusing on the design and build of websites. The aim is to bridge the gap in building your design.',
+    'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
   language: 'en-gb',
   theme: 'light',
   siteUrl: 'https://iamsteve.me',

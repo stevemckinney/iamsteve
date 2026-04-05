@@ -1,7 +1,7 @@
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
 
-import { Mdx } from '@/components/mdx-components'
+import { MDX as Mdx } from '@/components/mdx-post'
 import { Header, Title, Column, Description } from '@/components/page'
 import Image from '@/components/image'
 import Chip from '@/components/chip'
