@@ -52,7 +52,7 @@ inquirer
     const frontmatter = genFrontMatter(answers)
 
     // Create notes directory if it doesn't exist
-    const notesDir = path.join('content/notes')
+    const notesDir = path.join('src/content/notes')
     if (!fs.existsSync(notesDir)) {
       fs.mkdirSync(notesDir, { recursive: true })
     }

@@ -6,7 +6,7 @@ const axios = require('axios')
 const pLimit = require('p-limit').default
 
 // Configuration
-const COLLECTIONS_DIR = 'content/collections'
+const COLLECTIONS_DIR = 'src/content/collections'
 const CACHE_FILE = '.link-validation-cache'
 const RESULTS_FILE = '.validation-results.json'
 const CACHE_TTL_DAYS = 7
