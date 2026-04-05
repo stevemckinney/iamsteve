@@ -3,6 +3,9 @@ import Post from '../../layouts/Post.astro'
 import { getCollection, render } from 'astro:content'
 import { format } from 'date-fns'
 import Badge from '../../components/Badge.astro'
+import Icon from '../../components/Icon.astro'
+import { PencilMono } from '../../../components/illustration'
+import siteMetadata from '../../../content/metadata'
 
 export async function getStaticPaths() {
   const notes = await getCollection('notes', ({ data }) => data.status === 'published')
@@ -15,20 +18,63 @@ export async function getStaticPaths() {
 const { note } = Astro.props
 const { Content } = await render(note)
 const date = new Date(note.data.date)
+const noteSlug = `/notes/${note.id}`
+const wordCount = note.body ? note.body.split(/\s+/).length : 0
+
+const jsonLD = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': `${siteMetadata.siteUrl}${noteSlug}#article`,
+  author: {
+    '@type': 'Person',
+    name: siteMetadata.author,
+  },
+  headline: note.data.title,
+  datePublished: note.data.date.toISOString(),
+  description: note.data.summary ?? '',
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': `${siteMetadata.siteUrl}${noteSlug}`,
+  },
+}
 ---
 
-<Post title={note.data.title} description={note.data.summary ?? undefined}>
-  <article class="grid grid-cols-subgrid col-start-container-start col-end-container-end gap-y-4 md:gap-y-8 md:frame md:frame-24 2xl:frame-40 md:pt-12 2xl:pt-10 pb-18 sm:mb-18" id="article">
-    <header class="col-content lg:col-prose flex flex-col gap-4">
-      <Badge size={16} theme="cornflour" iconStart="calendar">
-        <time datetime={note.data.date.toISOString()}>{format(date, 'do LLL yyyy')}</time>
-      </Badge>
-      <h1 class="text-3xl md:text-5xl xl:text-7xl font-display font-variation-bold lowercase text-heading leading-none mt-4">
+<Post
+  title={note.data.title}
+  description={note.data.summary ?? undefined}
+  structuredData={jsonLD}
+>
+  <PencilMono
+    width={962}
+    height={46}
+    className="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+  />
+  <article class="col-content flex flex-col gap-6 max-w-prose mx-auto">
+    <header class="flex flex-col gap-4">
+      <a
+        href="/notes"
+        class="flex items-center content-center gap-2 text-ui-body hover:text-link font-medium text-base leading-normal"
+      >
+        <Icon icon="arrow-left" size={24} class="relative -top-px" />
+        <span>Notes</span>
+      </a>
+      <h1 class="text-3xl md:text-5xl xl:text-7xl font-display font-variation-bold lowercase text-heading leading-none">
         {note.data.title}
       </h1>
+      {note.data.summary && (
+        <p class="text-lg text-pretty text-emphasis">{note.data.summary}</p>
+      )}
     </header>
-    <div class="col-content lg:col-prose prose">
+    <div class="prose">
       <Content />
     </div>
+    <footer class="flex items-center gap-4 pt-6 border-t border-neutral-01-400/20">
+      <Badge size={16} theme="cornflour" iconStart="calendar">
+        <time datetime={note.data.date.toISOString()}>{format(date, 'do LLLL yyyy')}</time>
+      </Badge>
+      <Badge size={16} theme="lavender" iconStart="views">
+        {wordCount} words
+      </Badge>
+    </footer>
   </article>
 </Post>

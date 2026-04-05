@@ -1,0 +1,35 @@
+---
+import Blog from '../../layouts/Blog.astro'
+import { getCollection } from 'astro:content'
+import Card from '../../components/Card.astro'
+
+// Only accessible in dev mode
+if (import.meta.env.PROD) {
+  return Astro.redirect('/blog')
+}
+
+const allPosts = await getCollection('blog', ({ data }) => data.status === 'draft')
+const posts = allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+---
+
+<Blog title="Drafts" description="Draft posts (dev only)">
+  <header class="max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12">
+    <div class="flex flex-col gap-4 md:col-span-1">
+      <h1 class="w-full text-heading font-display lowercase self-start min-w-0 min-h-0 font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl">
+        Drafts
+      </h1>
+      <p class="md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch]">
+        Draft posts &ndash; only visible in development
+      </p>
+    </div>
+  </header>
+  {posts.length > 0 ? (
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 col-container md:col-content gap-8">
+      {posts.map((post) => <Card post={post} image={true} size="container" />)}
+    </div>
+  ) : (
+    <div class="col-content">
+      <p class="text-ui-body">No draft posts.</p>
+    </div>
+  )}
+</Blog>

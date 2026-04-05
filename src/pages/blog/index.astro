@@ -2,7 +2,6 @@
 import Blog from '../../layouts/Blog.astro'
 import { getCollection } from 'astro:content'
 import Card from '../../components/Card.astro'
-import Badge from '../../components/Badge.astro'
 import Icon from '../../components/Icon.astro'
 import { PencilMono } from '../../../components/illustration'
 import { categories } from '../../lib/categories'
@@ -16,6 +15,9 @@ const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE)
 const currentPage = 1
 
 const topCategories = categories.filter((c) => !c.exclude && !c.parent)
+
+const prevPage = false
+const nextPage = currentPage + 1 <= totalPages
 ---
 
 <Blog title="Blog archive" description="Tips and tutorials about the design and build of web interfaces">
@@ -63,7 +65,7 @@ const topCategories = categories.filter((c) => !c.exclude && !c.parent)
     >
       {currentPage} of {totalPages}
     </span>
-    {totalPages > 1 ? (
+    {nextPage ? (
       <a
         href="/blog/page/2"
         class="flex items-center gap-1 text-xl font-ui lowercase leading-[1.1428571429] py-2 transition duration-200 hover:text-link-hover"

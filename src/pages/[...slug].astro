@@ -1,6 +1,7 @@
 ---
 import Page from '../layouts/Page.astro'
 import { getCollection, render } from 'astro:content'
+import { PencilMono } from '../../components/illustration'
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages')
@@ -15,14 +16,27 @@ const { Content } = await render(page)
 ---
 
 <Page title={page.data.title} description={page.data.description}>
-  <header class="max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12">
-    <div class="flex flex-col gap-4 md:col-span-1">
-      <h1 class="w-full text-heading font-display lowercase self-start min-w-0 min-h-0 font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl">
-        {page.data.title}
-      </h1>
+  <PencilMono
+    width={962}
+    height={46}
+    className="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+  />
+  <article class="grid grid-cols-subgrid col-container row-start-1 lg:pb-18 gap-y-10 lg:gap-y-18">
+    <header class="max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12">
+      <div class="flex flex-col gap-4 md:col-span-1">
+        <h1 class="w-full text-heading font-display lowercase self-start min-w-0 min-h-0 font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl">
+          {page.data.title}
+        </h1>
+        {page.data.description && (
+          <p class="md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch]">{page.data.description}</p>
+        )}
+      </div>
+      {page.data.slot && (
+        <div class="md:col-span-1 self-end" set:html={page.data.slot} />
+      )}
+    </header>
+    <div class="col-container md:col-content prose">
+      <Content />
     </div>
-  </header>
-  <div class="col-container md:col-content prose">
-    <Content />
-  </div>
+  </article>
 </Page>

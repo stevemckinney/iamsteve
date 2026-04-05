@@ -7,7 +7,7 @@ import { getCategoryTheme, getCategoryIcon } from '../lib/categories'
 interface Props {
   post: any
   image?: boolean
-  size?: 'container' | 'medium'
+  size?: 'container' | 'medium' | 'small'
 }
 
 const { post, image = true, size = 'container' } = Astro.props
@@ -84,4 +84,27 @@ const displayCategories = categories.filter((cat: string) => {
       </div>
     </div>
   </div>
-)}
+) : size === 'small' ? (
+  <div class="relative flex gap-4 rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced dark:active:shadow-[inset_0_0_0_1px_var(--color-surface-02)] bg-surface active:bg-surface-pressed active:scale-[.99375] bg-clip-padding transition ease-linear duration-200 overflow-hidden p-8">
+    {displayCategories.length > 0 && (
+      <div class="flex flex-row gap-4 relative z-2 overflow-x-auto">
+        {displayCategories.slice(0, 1).map((category: string) => (
+          <span class:list={['flex-[0_0_auto] bg-surface shadow-reduced dark:shadow-none flex items-center justify-center transition-all duration-100 ease-linear w-8 h-8 rounded-sm', `text-[light-dark(var(--color-${getCategoryTheme(category)}-600),var(--color-${getCategoryTheme(category)}-900))] dark:bg-${getCategoryTheme(category)}-300 dark:ring-1 dark:ring-${getCategoryTheme(category)}-300`]}>
+            <Icon class="text-current" icon={getCategoryIcon(category)} size={24} variant="on-light" />
+          </span>
+        ))}
+      </div>
+    )}
+    <div class="flex flex-1 flex-col gap-[.5625rem]">
+      <h3 class="font-display font-variation-bold text-xl leading-xl lowercase m-0 p-0">
+        <a href={slug} class="text-heading before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1">
+          {title}
+        </a>
+      </h3>
+      <span class="flex gap-1 items-center text-sm leading-none">
+        <Icon icon="calendar" size={16} class="text-ui-body relative -top-px" variant="header" />
+        <span class="date font-ui lowercase text-ui-body">{format(date, 'do LLL yyyy')}</span>
+      </span>
+    </div>
+  </div>
+) : null}

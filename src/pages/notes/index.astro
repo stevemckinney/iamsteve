@@ -1,36 +1,134 @@
 ---
-import Page from '../../layouts/Page.astro'
+import Blog from '../../layouts/Blog.astro'
 import { getCollection, render } from 'astro:content'
 import { format } from 'date-fns'
+import Badge from '../../components/Badge.astro'
+import { PencilMono } from '../../../components/illustration'
 
 const allNotes = await getCollection('notes', ({ data }) => data.status === 'published')
 const notes = allNotes.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+
+// Pre-render all note content
+const renderedNotes = await Promise.all(
+  notes.map(async (note) => {
+    const { Content } = await render(note)
+    const wordCount = note.body ? note.body.split(/\s+/).length : 0
+    return { ...note, Content, wordCount }
+  })
+)
 ---
 
-<Page title="Notes" description="Short thoughts, updates, and musings">
+<Blog title="Notes" description="Quick, short and simple posts, a feed for everything outside design and code">
+  <PencilMono
+    width={962}
+    height={46}
+    className="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+  />
   <header class="max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12">
-    <div class="flex flex-col gap-4 md:col-span-1">
+    <div class="flex flex-col gap-4">
       <h1 class="w-full text-heading font-display lowercase self-start min-w-0 min-h-0 font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl">
         Notes
       </h1>
       <p class="md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch]">
-        Short thoughts, updates, and musings
+        Quick, short and simple posts, a feed for everything outside design and code
       </p>
     </div>
   </header>
-  <div class="col-container md:col-content flex flex-col gap-8">
-    {notes.map((note) => (
-      <article class="flex flex-col gap-2 p-8 rounded-lg shadow-placed bg-surface">
-        <time datetime={note.data.date.toISOString()} class="text-sm text-ui-body">
-          {format(new Date(note.data.date), 'do MMMM yyyy')}
-        </time>
-        <h2 class="text-3xl font-display font-variation-bold lowercase text-heading leading-none">
-          <a href={`/notes/${note.id}`} class="text-heading hover:text-link-hover transition duration-200">
-            {note.data.title}
-          </a>
-        </h2>
-        {note.data.summary && <p class="text-ui-body text-lg">{note.data.summary}</p>}
-      </article>
-    ))}
-  </div>
-</Page>
+
+  {notes.length === 0 ? (
+    <div class="col-content">
+      <p class="text-ui-body">No notes yet.</p>
+    </div>
+  ) : (
+    <div class="col-content flex flex-col">
+      {renderedNotes.map((note, index) => {
+        const noteSlug = `/notes/${note.id}`
+        const dateStr = note.data.date.toISOString()
+        return (
+          <article
+            class:list={[
+              'grid grid-cols-1 md:grid-cols-[minmax(8rem,_auto)_24px_1fr_auto] gap-x-4 lg:gap-x-6',
+              index > 0 && 'pt-8',
+            ]}
+          >
+            {/* Date column -- hidden on mobile */}
+            <div
+              class:list={[
+                'hidden md:flex items-start sticky top-8 self-start pb-8 justify-end',
+                index > 0 && 'mt-3',
+              ]}
+            >
+              <time
+                datetime={dateStr}
+                class="text-sm font-variation-medium text-emphasis leading-tight text-right"
+              >
+                {format(new Date(note.data.date), 'do LLLL yyyy')}
+              </time>
+            </div>
+
+            {/* Timeline line + dot */}
+            <div class="hidden md:flex relative justify-center">
+              <div
+                class:list={[
+                  'absolute w-px bg-subtle bottom-0',
+                  index === 0 ? 'top-0' : '-top-8',
+                ]}
+              />
+              {/* Dot */}
+              <div
+                class:list={[
+                  'sticky top-8.25 self-start mb-10 size-2.5 rounded-full bg-border-medium shrink-0',
+                  index > 0 && 'mt-[13px]',
+                  index === 0 && 'mt-0.5',
+                ]}
+              />
+            </div>
+
+            {/* Content column */}
+            <div class="pb-12 max-w-prose mx-auto w-full">
+              {/* Mobile date */}
+              <time
+                datetime={dateStr}
+                class="block md:hidden text-sm font-variation-medium text-body-60 mb-2"
+              >
+                {format(new Date(note.data.date), 'do LLLL yyyy')}
+              </time>
+              <h2
+                class:list={[
+                  'text-heading font-display font-variation-bold lowercase text-2xl/tight lg:text-3xl/tight mb-2',
+                  index === 0 && '-mt-3',
+                ]}
+              >
+                <a href={noteSlug} class="hover:text-link">
+                  {note.data.title}
+                </a>
+              </h2>
+              <div class="lg:text-xl">
+                <note.Content />
+              </div>
+              {/* Mobile meta */}
+              <div class="flex items-center gap-4 mt-6 md:hidden">
+                <Badge size={16} theme="lavender" iconStart="views">
+                  {note.wordCount} words
+                </Badge>
+              </div>
+            </div>
+
+            {/* Desktop meta column */}
+            <div
+              class:list={[
+                'hidden md:flex flex-col gap-3 sticky top-8 self-start pb-12',
+                index > 0 && 'mt-1.75',
+                index === 0 && '-mt-1.5',
+              ]}
+            >
+              <Badge size={16} theme="lavender" iconStart="views">
+                {note.wordCount} words
+              </Badge>
+            </div>
+          </article>
+        )
+      })}
+    </div>
+  )}
+</Blog>
