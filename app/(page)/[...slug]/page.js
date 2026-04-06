@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { allPages } from 'content-collections'
 
-import { MDX } from '@/components/mdx-components'
+import { MDX } from '@/components/mdx-post'
 import { Header, Title, Column, Description } from '@/components/page'
 import { PencilMono } from '@/components/illustration'
 import categories from '@/content/categories'

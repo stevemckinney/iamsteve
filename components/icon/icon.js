@@ -25,7 +25,8 @@ const Icon = ({
     ? 'pen'
     : normalisedIcon
 
-  const variantClass = variantClasses[variant] || 'icon'
+  const variantClass =
+    variant in variantClasses ? variantClasses[variant] : 'icon'
 
   return (
     <svg

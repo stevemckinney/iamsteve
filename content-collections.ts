@@ -16,6 +16,7 @@ import {
 } from '@shikijs/transformers'
 import { shikiLightTheme, shikiDarkTheme } from './lib/shiki-theme.js'
 import {
+  transformerCSSPartialProperties,
   transformerCSSThemeDirective,
   transformerLineNumbers,
 } from './lib/shiki-transformers.js'
@@ -46,6 +47,7 @@ const mdxOptions = {
           transformerNotationFocus(),
           transformerNotationErrorLevel(),
           transformerNotationWordHighlight(),
+          transformerCSSPartialProperties(),
           transformerCSSThemeDirective(),
           transformerLineNumbers(),
         ],
