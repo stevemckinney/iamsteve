@@ -95,7 +95,7 @@ function SearchResult({ result, isSelected, onSelect, onHover }) {
       role="option"
       aria-selected={isSelected}
       className={cn(
-        'flex items-center gap-3 px-4 py-3 cursor-pointer rounded-lg transition-colors duration-100',
+        'flex items-center gap-3 px-4 py-3 cursor-pointer rounded-md transition-colors duration-100',
         isSelected
           ? 'bg-fern-100 dark:bg-fern-1100'
           : 'hover:bg-neutral-01-50 dark:hover:bg-fern-1100/50'
@@ -103,7 +103,7 @@ function SearchResult({ result, isSelected, onSelect, onHover }) {
       onClick={onSelect}
       onMouseMove={onHover}
     >
-      <span className="flex shrink-0 items-center justify-center w-8 h-8 rounded-md bg-neutral-01-50 dark:bg-fern-1100">
+      <span className="flex shrink-0 items-center justify-center w-8 h-8 rounded-sm bg-neutral-01-50 dark:bg-fern-1100">
         <Icon
           icon={typeIcon(result.type)}
           size={16}
@@ -123,11 +123,11 @@ function SearchResult({ result, isSelected, onSelect, onHover }) {
       </span>
       <span className="flex shrink-0 items-center gap-2">
         {result.categories?.length > 0 && (
-          <span className="text-xs text-ui-body/60 hidden sm:inline">
+          <span className="text-xs text-ui-body hidden sm:inline">
             {result.categories[0]}
           </span>
         )}
-        <span className="text-[10px] uppercase tracking-wider text-ui-body/50 font-medium">
+        <span className="text-[10px] uppercase tracking-wider text-ui-body font-medium">
           {typeLabel(result.type)}
         </span>
       </span>
@@ -135,12 +135,24 @@ function SearchResult({ result, isSelected, onSelect, onHover }) {
   )
 }
 
-function usePlatform() {
-  const [isMac, setIsMac] = useState(false)
+function Kbd({ children }) {
+  return (
+    <kbd className="font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1 py-0.5">
+      {children}
+    </kbd>
+  )
+}
+
+function PlatformKey() {
+  const [isMac, setIsMac] = useState(null)
+
   useEffect(() => {
     setIsMac(/Mac|iPhone|iPad/.test(navigator.platform))
   }, [])
-  return isMac
+
+  // Render ⌘ on the server and for Mac; only switch to ctrl for non-Mac after hydration
+  if (isMac === null || isMac) return '\u2318'
+  return 'ctrl'
 }
 
 function SearchModal({ isOpen, onOpenChange }) {
@@ -209,25 +221,28 @@ function SearchModal({ isOpen, onOpenChange }) {
     [results, selectedIndex, navigateToResult]
   )
 
-  const isMac = usePlatform()
-
   return (
     <ModalOverlay
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       isDismissable
-      className="fixed inset-0 z-50 bg-neutral-01-900/60 backdrop-blur-sm transition-opacity duration-200 data-[entering]:opacity-0 data-[exiting]:opacity-0"
+      className="fixed inset-0 z-50 transition-opacity duration-200 data-[entering]:opacity-0 data-[exiting]:opacity-0"
     >
-      <AriaModal className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] px-4 outline-none transition-all duration-200 data-[entering]:opacity-0 data-[entering]:-translate-y-2 data-[exiting]:opacity-0 data-[exiting]:-translate-y-2">
+      <AriaModal
+        className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] px-4 outline-none transition-all duration-200 data-[entering]:opacity-0 data-[entering]:-translate-y-2 data-[exiting]:opacity-0 data-[exiting]:-translate-y-2"
+        onMouseDown={(e) => {
+          if (e.target === e.currentTarget) onOpenChange(false)
+        }}
+      >
         <Dialog className="w-full max-w-xl outline-none" aria-label="Search">
-          <div className="bg-surface rounded-xl shadow-picked overflow-hidden">
-            <div className="flex items-center gap-3 px-4 border-b border-neutral-01-100 dark:border-fern-1100">
+          <div className="bg-neutral-01-100 dark:bg-fern-1100 backdrop-blur-sm backdrop-brightness-100 backdrop-contrast-100 backdrop-saturate-150 rounded-md shadow-picked overflow-hidden p-2">
+            <label className="flex items-center gap-3 px-4 bg-white dark:bg-fern-1000 rounded-sm cursor-text has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-fern-900 dark:has-[:focus-visible]:ring-fern-400 shadow-placed dark:shadow-[0_0_0_1px_var(--color-fern-900)]">
               <Icon
                 icon="search"
                 size={16}
                 variant="default"
                 aria-hidden="true"
-                className="text-ui-body/50 shrink-0"
+                className="text-body shrink-0"
               />
               <input
                 ref={inputRef}
@@ -236,38 +251,19 @@ function SearchModal({ isOpen, onOpenChange }) {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Search posts, notes, pages\u2026"
-                className="flex-1 py-3.5 bg-transparent text-base text-heading placeholder:text-ui-body/40 outline-none border-0"
+                className="flex-1 py-3.5 bg-transparent text-base text-heading placeholder:text-body outline-none focus:ring-0 border-0"
                 autoFocus
                 autoComplete="off"
                 autoCorrect="off"
                 spellCheck="false"
               />
-              {query && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setQuery('')
-                    inputRef.current?.focus()
-                  }}
-                  className="p-1 rounded-sm hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition-colors cursor-pointer"
-                  aria-label="Clear search"
-                >
-                  <Icon
-                    icon="close"
-                    size={16}
-                    variant="default"
-                    aria-hidden="true"
-                    className="text-ui-body/50"
-                  />
-                </button>
-              )}
-              <kbd className="hidden sm:flex items-center gap-0.5 text-[11px] text-ui-body/40 font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1.5 py-0.5">
+              <kbd className="hidden sm:flex items-center gap-0.5 text-[11px] text-body font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1.5 py-0.5">
                 esc
               </kbd>
-            </div>
+            </label>
 
             {loading && (
-              <div className="px-4 py-8 text-center text-sm text-ui-body/50">
+              <div className="px-4 py-8 text-center text-sm text-body">
                 Loading&hellip;
               </div>
             )}
@@ -275,7 +271,7 @@ function SearchModal({ isOpen, onOpenChange }) {
             {!loading && query.trim().length >= 2 && (
               <div className="max-h-[60vh] overflow-y-auto">
                 {results.length === 0 && (
-                  <div className="px-4 py-8 text-center text-sm text-ui-body/50">
+                  <div className="px-4 py-8 text-center text-sm text-body">
                     No results found for &ldquo;{query}&rdquo;
                   </div>
                 )}
@@ -300,36 +296,31 @@ function SearchModal({ isOpen, onOpenChange }) {
             )}
 
             {!loading && query.trim().length < 2 && (
-              <div className="px-4 py-6 text-center text-sm text-ui-body/40">
+              <div className="px-4 py-6 text-center text-sm text-body">
                 Type to search across all content
               </div>
             )}
 
-            <div className="flex items-center justify-between gap-4 px-4 py-2.5 border-t border-neutral-01-100 dark:border-fern-1100 text-[11px] text-ui-body/40">
+            <div className="flex items-center justify-between gap-4 px-4 py-2.5 border-t border-neutral-01-100 dark:border-fern-1100 text-[11px] text-body">
               <span className="flex items-center gap-3">
                 <span className="flex items-center gap-1">
-                  <kbd className="font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1 py-0.5">
-                    &uarr;
-                  </kbd>
-                  <kbd className="font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1 py-0.5">
-                    &darr;
-                  </kbd>
+                  <Kbd>&uarr;</Kbd>
+                  <Kbd>&darr;</Kbd>
                   navigate
                 </span>
                 <span className="flex items-center gap-1">
-                  <kbd className="font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1 py-0.5">
-                    &crarr;
-                  </kbd>
+                  <Kbd>&crarr;</Kbd>
                   open
                 </span>
               </span>
-              <span className="flex items-center gap-1">
-                <kbd className="font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1 py-0.5">
-                  {isMac ? '\u2318' : 'ctrl'}
-                </kbd>
-                <kbd className="font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1 py-0.5">
-                  K
-                </kbd>
+              <span
+                className="flex items-center gap-1"
+                suppressHydrationWarning
+              >
+                <Kbd>
+                  <PlatformKey />
+                </Kbd>
+                <Kbd>K</Kbd>
                 to toggle
               </span>
             </div>
@@ -342,7 +333,6 @@ function SearchModal({ isOpen, onOpenChange }) {
 
 export default function Search({ className, variant = 'desktop' }) {
   const [isOpen, setIsOpen] = useState(false)
-  const isMac = usePlatform()
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -364,19 +354,25 @@ export default function Search({ className, variant = 'desktop' }) {
         className={cn(
           'flex items-center gap-1.5 cursor-pointer outline-none transition-opacity duration-200 hover:opacity-70',
           'focus-visible:ring-2 focus-visible:ring-fern-900 dark:focus-visible:ring-fern-400 focus-visible:ring-offset-2 rounded-sm',
+          'shadow-reduced p-5',
           className
         )}
       >
         <Icon
           icon="search"
-          size={24}
+          size={16}
           className="text-current"
           variant="header"
           aria-hidden="true"
         />
         {variant === 'desktop' && (
-          <kbd className="hidden lg:flex items-center gap-0.5 text-[11px] text-ui-body/40 font-sans border border-current/15 rounded px-1.5 py-0.5 -mr-0.5">
-            <span>{isMac ? '\u2318' : 'ctrl'}</span>
+          <kbd
+            className="hidden lg:flex items-center gap-0.5 text-[11px] text-body font-sans uppercase"
+            suppressHydrationWarning
+          >
+            <span>
+              <PlatformKey />
+            </span>
             <span>K</span>
           </kbd>
         )}
