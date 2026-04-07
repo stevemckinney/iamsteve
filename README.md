@@ -207,6 +207,53 @@ This ensures newly imported items are highlighted until you perform another impo
 
 </details>
 
+## Releases and versioning
+<details>
+<summary>How releases are created automatically</summary>
+
+### How it works
+When a PR is merged to `main`, the release action automatically:
+1. Finds the latest git tag (e.g. `v9.0.0`)
+2. Checks if there are meaningful changes since that tag
+3. Determines the version bump type from commit messages
+4. Tags the merge commit directly (no extra commit pushed to `main`)
+5. Creates a GitHub release with grouped release notes
+
+This means **one merge = one Vercel build**, not two.
+
+### Version bump rules
+
+**Patch** (automatic &mdash; the default, e.g. `v9.0.0` &rarr; `v9.0.1`):
+Most merges create a patch release. Bug fixes, content updates, design tweaks, and chores all fall into this category.
+
+**Minor** (automatic for features, e.g. `v9.0.0` &rarr; `v9.1.0`):
+Triggered when commit messages or branch names include `feat:`, `feat/`, or `feature/`:
+```
+feat: add search to blog
+feat(collections): filter by tag
+```
+Or use a branch name like `feat/search` or `feature/dark-mode`.
+
+**Major** (manual only, e.g. `v9.0.0` &rarr; `v10.0.0`):
+Major versions are reserved for significant milestones like a full redesign or framework migration. To create one, trigger the release workflow manually from the Actions tab and select "major" as the bump type.
+
+### Release note categories
+Release notes are grouped by PR labels (configured in `.github/release.yml`):
+- **New features** &mdash; `feature`, `enhancement`
+- **Bug fixes** &mdash; `bug`, `fix`
+- **Design** &mdash; `design`
+- **Content** &mdash; `content`
+- **Other changes** &mdash; everything else
+
+PRs labelled `skip-changelog` and commits from `github-actions[bot]` are excluded.
+
+### Checking out a past version
+Every release is tagged, so you can check out any version:
+```bash
+git checkout v8.2.0
+```
+</details>
+
 ## Credits
 <details>
 <summary>Acknowledgements</summary>
