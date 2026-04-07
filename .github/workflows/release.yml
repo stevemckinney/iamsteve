@@ -8,6 +8,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    # Skip version bump commits from this workflow
+    if: "!startsWith(github.event.head_commit.message, 'chore: bump version')"
     permissions:
       contents: write
 
@@ -16,63 +18,66 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Configure git
+      - name: Get latest tag
+        id: latest_tag
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "Latest tag: $LATEST_TAG"
 
-      - name: Get current version
-        id: current_version
+      - name: Check for meaningful changes
+        id: changes
         run: |
-          CURRENT_VERSION=$(node -p "require('./package.json').version")
-          echo "version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          LATEST_TAG="${{ steps.latest_tag.outputs.tag }}"
 
-      - name: Determine version bump type
-        id: bump_type
-        run: |
-          # Get the merge commit message (includes branch name for PR merges)
-          MERGE_MSG=$(git log -1 --pretty=%B)
+          # Get PR titles and commit messages since the last tag
+          MSGS=$(git log ${LATEST_TAG}..HEAD --pretty=%s)
 
-          # Get all commit messages since last tag (for squash merges)
-          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-          if [ -n "$LAST_TAG" ]; then
-            COMMIT_MSGS=$(git log ${LAST_TAG}..HEAD --pretty=%B)
+          echo "Commits since ${LATEST_TAG}:"
+          echo "$MSGS"
+
+          # Skip release if the only commits are version bumps or empty
+          MEANINGFUL=$(echo "$MSGS" | grep -cvE "^(chore: bump version|Merge branch)" || true)
+          if [ "$MEANINGFUL" -eq 0 ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "No meaningful changes, skipping release"
           else
-            COMMIT_MSGS=$(git log -10 --pretty=%B)
+            echo "skip=false" >> $GITHUB_OUTPUT
           fi
 
-          # Combine both for checking
-          ALL_MSGS="$MERGE_MSG $COMMIT_MSGS"
+      - name: Determine version bump type
+        if: steps.changes.outputs.skip == 'false'
+        id: bump_type
+        run: |
+          LATEST_TAG="${{ steps.latest_tag.outputs.tag }}"
+          MSGS=$(git log ${LATEST_TAG}..HEAD --pretty=%s)
 
           echo "Checking messages for version bump type..."
-          echo "$ALL_MSGS"
 
-          # Check for breaking changes (major) - requires explicit "major" keyword
-          if echo "$ALL_MSGS" | grep -qE "(^major:|major!:|BREAKING CHANGE|\[major\])"; then
+          # Major: explicit breaking change
+          if echo "$MSGS" | grep -qE "(^major:|major!:|BREAKING CHANGE|\[major\])"; then
             echo "type=major" >> $GITHUB_OUTPUT
             echo "Detected: MAJOR bump"
-          # Check for features (minor)
-          elif echo "$ALL_MSGS" | grep -qiE "(feat/|feature/|feat:|feat\()"; then
+          # Minor: features
+          elif echo "$MSGS" | grep -qiE "(feat/|feature/|feat:|feat\()"; then
             echo "type=minor" >> $GITHUB_OUTPUT
             echo "Detected: MINOR bump"
-          # Default to patch
+          # Patch: everything else
           else
             echo "type=patch" >> $GITHUB_OUTPUT
             echo "Detected: PATCH bump"
           fi
-      - name: Bump version
-        id: bump_version
+
+      - name: Calculate new version
+        if: steps.changes.outputs.skip == 'false'
+        id: new_version
         run: |
-          IFS='.' read -r MAJOR MINOR PATCH <<< "${{ steps.current_version.outputs.version }}"
+          VERSION="${{ steps.latest_tag.outputs.tag }}"
+          VERSION="${VERSION#v}"
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
 
           BUMP_TYPE="${{ steps.bump_type.outputs.type }}"
 
-          # Calculate new version based on bump type
           case "$BUMP_TYPE" in
             major)
               NEW_VERSION="$((MAJOR + 1)).0.0"
@@ -85,22 +90,22 @@ jobs:
               ;;
           esac
 
-          echo "Current version: ${{ steps.current_version.outputs.version }}"
-          echo "Bump type: $BUMP_TYPE"
-          echo "New version: $NEW_VERSION"
-          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
-          npm version $NEW_VERSION --no-git-tag-version
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "${{ steps.latest_tag.outputs.tag }} → v${NEW_VERSION} (${BUMP_TYPE})"
 
-      - name: Commit version bump
-        run: |
-          git add package.json
-          git commit -m "chore: bump version to ${{ steps.bump_version.outputs.new_version }}"
-          git push
-
-      - name: Create GitHub release
+      - name: Create tag and release
+        if: steps.changes.outputs.skip == 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "v${{ steps.bump_version.outputs.new_version }}" \
-            --title "v${{ steps.bump_version.outputs.new_version }}" \
-            --generate-notes
+          NEW_TAG="v${{ steps.new_version.outputs.version }}"
+
+          # Tag the current commit (the merge commit) directly
+          git tag "$NEW_TAG"
+          git push origin "$NEW_TAG"
+
+          # Create release with auto-generated notes grouped by .github/release.yml
+          gh release create "$NEW_TAG" \
+            --title "$NEW_TAG" \
+            --generate-notes \
+            --latest
