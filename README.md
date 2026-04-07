@@ -222,29 +222,20 @@ When a PR is merged to `main`, the release action automatically:
 This means **one merge = one Vercel build**, not two.
 
 ### Version bump rules
-The version bump is determined by your commit messages or branch names. Use the following patterns to control which type of release is created:
 
-**Major** (breaking changes, e.g. `v9.0.0` &rarr; `v10.0.0`):
-```
-major: redesign navigation
-BREAKING CHANGE: remove legacy API
-[major] overhaul theme system
-```
+**Patch** (automatic &mdash; the default, e.g. `v9.0.0` &rarr; `v9.0.1`):
+Most merges create a patch release. Bug fixes, content updates, design tweaks, and chores all fall into this category.
 
-**Minor** (new features, e.g. `v9.0.0` &rarr; `v9.1.0`):
+**Minor** (automatic for features, e.g. `v9.0.0` &rarr; `v9.1.0`):
+Triggered when commit messages or branch names include `feat:`, `feat/`, or `feature/`:
 ```
 feat: add search to blog
 feat(collections): filter by tag
 ```
 Or use a branch name like `feat/search` or `feature/dark-mode`.
 
-**Patch** (bug fixes, content, design tweaks &mdash; the default, e.g. `v9.0.0` &rarr; `v9.0.1`):
-```
-fix: broken link on homepage
-chore: update dependencies
-post/new-blog-post
-```
-Everything that doesn't match major or minor patterns is a patch.
+**Major** (manual only, e.g. `v9.0.0` &rarr; `v10.0.0`):
+Major versions are reserved for significant milestones like a full redesign or framework migration. To create one, trigger the release workflow manually from the Actions tab and select "major" as the bump type.
 
 ### Release note categories
 Release notes are grouped by PR labels (configured in `.github/release.yml`):
