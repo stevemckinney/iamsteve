@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { allPosts, allNotes, allPages } from 'content-collections'
+import collectionsConfig from '@/content/collections'
 
 export async function GET() {
   const posts = allPosts
@@ -51,7 +52,22 @@ export async function GET() {
     tags: [],
   }))
 
-  const index = [...posts, ...notes, ...pages, ...categories]
+  const collectionCategories = collectionsConfig.map((item) => ({
+    type: 'collection',
+    title: item.title,
+    summary: null,
+    slug: item.slug,
+    categories: [],
+    tags: [],
+  }))
+
+  const index = [
+    ...posts,
+    ...notes,
+    ...pages,
+    ...categories,
+    ...collectionCategories,
+  ]
 
   return NextResponse.json(index, {
     headers: {

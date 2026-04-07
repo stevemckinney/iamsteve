@@ -60,6 +60,8 @@ function typeLabel(type) {
       return 'Page'
     case 'category':
       return 'Category'
+    case 'collection':
+      return 'Collection'
     default:
       return type
   }
@@ -75,6 +77,8 @@ function typeIcon(type) {
       return 'home'
     case 'category':
       return 'folder'
+    case 'collection':
+      return 'bookmark'
     default:
       return 'search'
   }
@@ -97,8 +101,8 @@ function SearchResult({ result, isSelected, onSelect, onHover }) {
       className={cn(
         'flex items-center gap-3 px-4 py-3 cursor-pointer rounded-md transition-colors duration-100',
         isSelected
-          ? 'bg-fern-100 dark:bg-fern-1100'
-          : 'hover:bg-neutral-01-50 dark:hover:bg-fern-1100/50'
+          ? 'bg-neutral-01-50 dark:bg-fern-1000'
+          : 'hover:bg-white dark:hover:bg-fern-1100'
       )}
       onClick={onSelect}
       onMouseMove={onHover}
@@ -107,7 +111,7 @@ function SearchResult({ result, isSelected, onSelect, onHover }) {
         <Icon
           icon={typeIcon(result.type)}
           size={16}
-          variant="default"
+          variant="none"
           aria-hidden="true"
         />
       </span>
@@ -240,7 +244,7 @@ function SearchModal({ isOpen, onOpenChange }) {
               <Icon
                 icon="search"
                 size={16}
-                variant="default"
+                variant="none"
                 aria-hidden="true"
                 className="text-body shrink-0"
               />
@@ -257,6 +261,25 @@ function SearchModal({ isOpen, onOpenChange }) {
                 autoCorrect="off"
                 spellCheck="false"
               />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuery('')
+                    inputRef.current?.focus()
+                  }}
+                  className="p-1 rounded-sm hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition-colors cursor-pointer"
+                  aria-label="Clear search"
+                >
+                  <Icon
+                    icon="close"
+                    size={16}
+                    variant="none"
+                    aria-hidden="true"
+                    className="text-body"
+                  />
+                </button>
+              )}
               <kbd className="hidden sm:flex items-center gap-0.5 text-[11px] text-body font-sans border border-neutral-01-100 dark:border-fern-1100 rounded px-1.5 py-0.5">
                 esc
               </kbd>
