@@ -3,7 +3,7 @@ import { allPosts, allNotes } from 'content-collections'
 
 export default async function generateSitemap() {
   let posts = allPosts
-    .filter((post) => post.status === 'open')
+    .filter((post) => post.status === 'open' && !post.noindex)
     .map((post) => ({
       url: `${siteMetadata.siteUrl}${post.slug}`,
       lastModified: post.lastmod,
