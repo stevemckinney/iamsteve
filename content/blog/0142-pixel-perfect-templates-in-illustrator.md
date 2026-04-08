@@ -2,7 +2,7 @@
 title: "Pixel perfect templates in Illustrator"
 date: "2016-09-06T06:30:00+00:00"
 lastmod: "2016-10-21T18:34:56+00:00"
-summary: "Illustrator being a vector application means it can be easy to overlook the export process and making things pixel perfect. It’s easy to do, so you don’t notice it. It’s particularly important that you try to retain this for logos and icons."
+summary: "How to set up Illustrator to stay pixel perfect. Using snap to grid and saving a template means you won’t accidentally export on half pixels for logos and icons."
 metadesc: "Using Illustrator’s gridlines and snap to grid you can align things without worrying about half pixels. By making a grid and saving a template you can forget having to do this."
 theme: "#fff3f0"
 tags: ["Design"]

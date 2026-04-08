@@ -2,7 +2,7 @@
 title: "My design process — v6 case study"
 date: "2016-10-25T06:30:00+00:00"
 lastmod: "2017-01-14T08:48:49+00:00"
-summary: "The redesign of this website has been needed for some time. Overall the website is quite small in terms of templates required. I wanted to put the effort into making the website feel like it is a growing source of content. There is much to cover in this, as I start with the new logo briefly, sketching, wireframes and design."
+summary: "A case study of the v6 redesign of iamsteve. Covers the new logo, sketching, wireframes and the full design process from start to finish."
 metadesc: "The redesign of this website has been needed for some time. There is much to cover in this, as I start with the new logo briefly, sketching, wireframes and design."
 theme: "#ffe3de"
 tags: ["Design"]

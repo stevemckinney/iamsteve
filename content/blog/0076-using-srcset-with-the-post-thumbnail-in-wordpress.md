@@ -2,7 +2,7 @@
 title: "Using srcset with the_post_thumbnail() in Wordpress"
 date: "2015-05-26T07:02:00+00:00"
 lastmod: "2016-08-28T10:59:45+00:00"
-summary: "If you use Wordpress, it’s likely you’ll be familiar with the_post_thumbnail() or one of its variants. In this post I want to provide a way of using srcset with your post thumbnails today. The aim will be to create a similar function, that takes the same parameters and except the output will contain the srcset attribute."
+summary: "How to add srcset support to Wordpress post thumbnails. A custom function mirroring the_post_thumbnail() that outputs the srcset attribute for responsive images."
 metadesc: "How you can repurpose the_post_thumbnail() to use srcset today in Wordpress. "
 theme: "#fffbf2"
 tags: ["Code"]

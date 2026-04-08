@@ -2,7 +2,7 @@
 title: "How to: datepicker using Illustrator"
 date: "2016-05-10T07:45:00+0100"
 lastmod: "2016-08-28T09:18:26+00:00"
-summary: "In this post I’m going to show you how to make a datepicker efficiently. A reasonably common user interface element, but can be a source of frustration, to make in design applications. Due to the grid, and amount of items in that grid it can be difficult to align everything…"
+summary: "How to design a datepicker efficiently in Illustrator. The grid layout makes alignment tricky — this post uses split into grid and align tools to tackle it."
 metadesc: "Following on from the datepicker post where it was more about getting the basics in place and focusing on some important Illustrator techniques that allow for accuracy and efficiency. "
 theme: "#ffede5"
 tags: ["Design"]
