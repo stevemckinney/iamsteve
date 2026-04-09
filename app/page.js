@@ -15,36 +15,46 @@ export const dynamic = 'force-static'
 export const revalidate = 86400
 
 const getData = cache(async () => {
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        async getAll() {
-          return (await cookies()).getAll()
-        },
-        async setAll(cookiesToSet) {
-          const cookieStore = await cookies()
-          cookiesToSet.forEach(({ name, value, options }) => {
-            cookieStore.set(name, value, { ...options, path: '/' })
-          })
-        },
-      },
-    }
-  )
+  let dbPosts = null
 
-  const { data: dbPosts } = await supabase
-    .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
-    .select()
+  if (
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  ) {
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      {
+        cookies: {
+          async getAll() {
+            return (await cookies()).getAll()
+          },
+          async setAll(cookiesToSet) {
+            const cookieStore = await cookies()
+            cookiesToSet.forEach(({ name, value, options }) => {
+              cookieStore.set(name, value, { ...options, path: '/' })
+            })
+          },
+        },
+      }
+    )
+
+    const { data } = await supabase
+      .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
+      .select()
+
+    dbPosts = data
+  }
 
   const postsByDate = allPosts
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .filter((post) => post.status === 'open')
 
-  const postsWithViews = dbPosts?.map(({ slug, view_count }) => ({
-    slug,
-    view_count,
-  }))
+  const postsWithViews =
+    dbPosts?.map(({ slug, view_count }) => ({
+      slug,
+      view_count,
+    })) || []
 
   const mergedData = mergeDataBySlug(postsWithViews, allPosts)
     .filter((post) => post.status === 'open')
