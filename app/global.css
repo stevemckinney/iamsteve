@@ -128,6 +128,28 @@
   animation: search-fade-in 150ms ease 120ms both;
 }
 
+/* Search results: scroll-driven blur at edges */
+.search-dialog .search-body [role='listbox'] > * {
+  animation: search-blur-scroll linear both;
+  animation-timeline: view();
+}
+
+@keyframes search-blur-scroll {
+  0% {
+    filter: blur(24px);
+    opacity: 0;
+  }
+  8%,
+  94% {
+    filter: blur(0);
+    opacity: 1;
+  }
+  100% {
+    filter: blur(8px);
+    opacity: 0;
+  }
+}
+
 /* Reduced motion: keep opacity fade, strip spatial movement */
 @media (prefers-reduced-motion: reduce) {
   .search-dialog .search-field,
@@ -139,6 +161,10 @@
 
   .search-dialog .search-footer {
     animation-delay: 0ms;
+  }
+
+  .search-dialog .search-body [role='listbox'] > * {
+    animation: none;
   }
 }
 

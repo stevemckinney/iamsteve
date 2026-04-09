@@ -78,7 +78,7 @@ function typeIcon(type) {
     case 'category':
       return 'folder'
     case 'collection':
-      return 'bookmark'
+      return 'collections'
     default:
       return 'search'
   }
