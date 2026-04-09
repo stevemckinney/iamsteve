@@ -230,20 +230,23 @@ function SearchModal({ isOpen, onOpenChange }) {
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       isDismissable
-      className="fixed inset-0 z-50 transition-opacity duration-200 data-[entering]:opacity-0 data-[exiting]:opacity-0"
+      className="fixed inset-0 z-50 transition-[opacity] duration-150 data-[entering]:opacity-0 data-[exiting]:opacity-0"
     >
       <AriaModal
-        className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] px-4 outline-none transition-all duration-200 data-[entering]:opacity-0 data-[entering]:-translate-y-2 data-[exiting]:opacity-0 data-[exiting]:-translate-y-2"
+        className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] px-4 outline-none transition-[opacity,transform] duration-150 data-[entering]:opacity-0 data-[entering]:-translate-y-2 data-[exiting]:opacity-0 data-[exiting]:duration-100"
         onMouseDown={(e) => {
           if (e.target === e.currentTarget) onOpenChange(false)
         }}
       >
-        <Dialog className="w-full max-w-xl outline-none" aria-label="Search">
-          <div className="bg-neutral-01-100 dark:bg-fern-1100 backdrop-blur-sm backdrop-brightness-100 backdrop-contrast-100 backdrop-saturate-150 rounded-md shadow-picked overflow-hidden p-2">
-            <label className="flex items-center gap-3 px-4 bg-white dark:bg-fern-1000 rounded-sm cursor-text has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-fern-900 dark:has-[:focus-visible]:ring-fern-400 shadow-placed dark:shadow-[0_0_0_1px_var(--color-fern-900)]">
+        <Dialog
+          className="blur-aura w-full max-w-xl outline-none"
+          aria-label="Search"
+        >
+          <div className="search-dialog relative bg-neutral-01-100 dark:bg-fern-1100 rounded-md shadow-picked p-2">
+            <label className="search-field flex items-center gap-3 px-4 bg-white dark:bg-fern-1000 rounded-sm cursor-text has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-cornflour-600 dark:has-[:focus-visible]:ring-fern-400 shadow-placed dark:shadow-[0_0_0_1px_var(--color-fern-900)]">
               <Icon
                 icon="search"
-                size={16}
+                size={24}
                 variant="none"
                 aria-hidden="true"
                 className="text-body shrink-0"
@@ -254,7 +257,7 @@ function SearchModal({ isOpen, onOpenChange }) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Search posts, notes, pages\u2026"
+                placeholder="Search everything…"
                 className="flex-1 py-3.5 bg-transparent text-base text-heading placeholder:text-body outline-none focus:ring-0 border-0"
                 autoFocus
                 autoComplete="off"
@@ -268,7 +271,7 @@ function SearchModal({ isOpen, onOpenChange }) {
                     setQuery('')
                     inputRef.current?.focus()
                   }}
-                  className="p-1 rounded-sm hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition-colors cursor-pointer"
+                  className="p-1 rounded hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition-colors cursor-pointer"
                   aria-label="Clear search"
                 >
                   <Icon
@@ -285,46 +288,48 @@ function SearchModal({ isOpen, onOpenChange }) {
               </kbd>
             </label>
 
-            {loading && (
-              <div className="px-4 py-8 text-center text-sm text-body">
-                Loading&hellip;
-              </div>
-            )}
+            <div className="search-body">
+              {loading && (
+                <div className="px-4 py-8 text-center text-sm text-body">
+                  Loading&hellip;
+                </div>
+              )}
 
-            {!loading && query.trim().length >= 2 && (
-              <div className="max-h-[60vh] overflow-y-auto">
-                {results.length === 0 && (
-                  <div className="px-4 py-8 text-center text-sm text-body">
-                    No results found for &ldquo;{query}&rdquo;
-                  </div>
-                )}
-                {results.length > 0 && (
-                  <ul
-                    role="listbox"
-                    className="p-2"
-                    aria-label="Search results"
-                  >
-                    {results.map((result, index) => (
-                      <SearchResult
-                        key={`${result.type}-${result.slug}`}
-                        result={result}
-                        isSelected={index === selectedIndex}
-                        onSelect={() => navigateToResult(result)}
-                        onHover={() => setSelectedIndex(index)}
-                      />
-                    ))}
-                  </ul>
-                )}
-              </div>
-            )}
+              {!loading && query.trim().length >= 2 && (
+                <div className="max-h-[60vh] overflow-y-auto">
+                  {results.length === 0 && (
+                    <div className="px-4 py-8 text-center text-sm text-body">
+                      No results found for &ldquo;{query}&rdquo;
+                    </div>
+                  )}
+                  {results.length > 0 && (
+                    <ul
+                      role="listbox"
+                      className="p-2"
+                      aria-label="Search results"
+                    >
+                      {results.map((result, index) => (
+                        <SearchResult
+                          key={`${result.type}-${result.slug}`}
+                          result={result}
+                          isSelected={index === selectedIndex}
+                          onSelect={() => navigateToResult(result)}
+                          onHover={() => setSelectedIndex(index)}
+                        />
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
 
-            {!loading && query.trim().length < 2 && (
-              <div className="px-4 py-6 text-center text-sm text-body">
-                Type to search across all content
-              </div>
-            )}
+              {!loading && query.trim().length < 2 && (
+                <div className="px-4 py-6 text-center text-sm text-body">
+                  Type to search across all content
+                </div>
+              )}
+            </div>
 
-            <div className="flex items-center justify-between gap-4 px-4 py-2.5 border-t border-neutral-01-100 dark:border-fern-1100 text-[11px] text-body">
+            <div className="search-footer flex items-center justify-between gap-4 px-4 py-2.5 border-t border-neutral-01-100 dark:border-fern-1100 text-[11px] text-body">
               <span className="flex items-center gap-3">
                 <span className="flex items-center gap-1">
                   <Kbd>&uarr;</Kbd>

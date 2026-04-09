@@ -33,6 +33,115 @@
   }
 }
 
+.blur-aura {
+  position: relative;
+}
+
+/* Progressive blur: two layers at increasing intensity */
+.blur-aura::before,
+.blur-aura::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  background-color: color-mix(in oklch, var(--color-canvas), transparent 80%);
+}
+
+/* Outer layer: wide, subtle blur */
+.blur-aura::before {
+  inset: -120px;
+  backdrop-filter: blur(4px);
+  mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 120px,
+      black calc(100% - 120px),
+      transparent
+    ),
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 120px,
+      black calc(100% - 120px),
+      transparent
+    );
+  mask-composite: intersect;
+  border-radius: 32px;
+}
+
+/* Inner layer: tight, strong blur */
+.blur-aura::after {
+  inset: -48px;
+  backdrop-filter: blur(16px);
+  mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 48px,
+      black calc(100% - 48px),
+      transparent
+    ),
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 48px,
+      black calc(100% - 48px),
+      transparent
+    );
+  mask-composite: intersect;
+  border-radius: 20px;
+}
+
+/* Search modal staggered entrance
+ * - Only transform + opacity (compositor-friendly, no layout thrash)
+ * - Enter curve: cubic-bezier(0.22, 1, 0.36, 1)
+ * - Total stagger kept under 300ms
+ * - Short durations: keyboard shortcut opens this frequently */
+@keyframes search-field-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+}
+
+@keyframes search-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes search-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.search-dialog .search-field {
+  animation: search-field-in 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.search-dialog .search-body {
+  animation: search-reveal-in 200ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both;
+}
+
+.search-dialog .search-footer {
+  animation: search-fade-in 150ms ease 120ms both;
+}
+
+/* Reduced motion: keep opacity fade, strip spatial movement */
+@media (prefers-reduced-motion: reduce) {
+  .search-dialog .search-field,
+  .search-dialog .search-body {
+    animation-name: search-fade-in;
+    animation-duration: 120ms;
+    animation-delay: 0ms;
+  }
+
+  .search-dialog .search-footer {
+    animation-delay: 0ms;
+  }
+}
+
 @media (max-width: 1023px) {
   html[data-toc-open='true'] body {
     overflow: hidden;
