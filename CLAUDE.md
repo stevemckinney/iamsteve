@@ -5,7 +5,30 @@
 - Use 2 spaces for indentation
 - Prefer Next.js App Router
 - Strictly tailwindcss, do not use @apply and where something may have regular CSS look to convert to tailwind. When writing class names prefer kebab-case.
-- Keep it short but not purposefully abbreviated: `Navigation` not `Nav`, `Card` not `ContentCard`, `Link` not `TextLink`.
+
+## Naming
+
+- Keep names to 1-3 words. Prefer `getUser` over `getUserFromDatabase`.
+- Let the module/class name carry context — don't repeat it in function names.
+- Use verb+noun for exported/public functions; single verbs are fine for private/internal ones.
+- Never use phase-based or implementation-detail names.
+- Other examples include: `Navigation` not `Nav`, `Card` not `ContentCard`, `Link` not `TextLink`.
+
+### Favour succinct names when
+
+- The function's context (class, module, file) already provides meaning — e.g., user.activate() not user.activateUserAccount()
+- The function does one obvious thing — save(), parse(), reset()
+- The abbreviation is universally understood — init, auth, config, db
+- The scope is small/local — helper functions within a narrow scope can be shorter
+
+### Favour descriptive names when
+
+- The function is part of a public API or widely imported — readers won't have surrounding context
+- There's genuine ambiguity — process() could mean anything; processPayment() is clearer
+- The function has side effects or non-obvious behaviour — deleteAndNotify() is safer than delete()
+- Multiple similar functions exist — findById vs findByEmail need the distinction
+
+Studies show single-letter names are terrible for comprehension, but names that are too long crowd working memory. The sweet spot is 2–3 words that capture the action and, if needed, the target — e.g., fetchUser, validateInput, renderPage.
 
 ## Writing style
 
@@ -27,12 +50,12 @@ Use the correct type of dash when necessary.
 
 MUST use the correct quote. For contractions you should use a curly quote (this is a curly quote ’) not a straight quote (this is a straight quote '). example one: `I’ve` not `I've`. example two: `Doesn’t` not `Doesn't`.
 
-| Character | Name                        | Unicode  | HTML entity | Numeric entity          |
-| --------- | --------------------------- | -------- | ----------- | ----------------------- |
-| ‘         | Left single quotation mark  | `U+2018` | `&lsquo;`   | `&#8216;` or `&#x2018;` |
-| ’         | Right single quotation mark | `U+2019` | `&rsquo;`   | `&#8217;` or `&#x2019;` |
-| “         | Left double quotation mark  | `U+201C` | `&ldquo;`   | `&#8220;` or `&#x201C;` |
-| ”         | Right double quotation mark | `U+201D` | `&rdquo;`   | `&#8221;` or `&#x201D;` |
+| Character | Name                        | HTML entity | Numeric entity          |
+| --------- | --------------------------- | ----------- | ----------------------- |
+| ‘         | Left single quotation mark  | `&lsquo;`   | `&#8216;` or `&#x2018;` |
+| ’         | Right single quotation mark | `&rsquo;`   | `&#8217;` or `&#x2019;` |
+| “         | Left double quotation mark  | `&ldquo;`   | `&#8220;` or `&#x201C;` |
+| ”         | Right double quotation mark | `&rdquo;`   | `&#8221;` or `&#x201D;` |
 
 ## A11y checklist
 
@@ -71,6 +94,124 @@ import Icon from '@/components/icon'
 Some icon names are aliased: `everything`, `archive`, `all`, `folder` → `folder`; `design`, `pen` → `pen`.
 
 The sprite is mounted once via `components/icon/sprite.js` and icons are referenced with `<use xlinkHref="#name-size" />`.
+
+### Icon stroke and fill
+
+- Use `stroke-2` for all icon strokes. `stroke-4` is reserved for emphasis only (e.g. the search icon line).
+- Stroke line utilities: `sl-r` (round cap + round join, most common), `sl-s` (round cap + square join). Defined in `css/utilities.css`.
+- Fill classes: `fill-(--icon-fill)` for themed fill, `fill-currentcolor` to inherit, `fill-none` for outline-only icons.
+
+## Class merging
+
+Always use `cn()` from `@/lib/utils` (wraps clsx + tailwind-merge). Never concatenate class strings manually.
+
+```jsx
+import { cn } from '@/lib/utils'
+
+cn('base-classes', conditional && 'conditional-classes', className)
+```
+
+## Typography
+
+Three font families loaded via Adobe TypeKit:
+
+- `font-display` — roc-grotesk-variable (headings, display text)
+- `font-sans` — elza (body text, default)
+- `font-mono` — covik-sans-mono (code)
+
+Custom utilities:
+
+- `font-ui` — display font with lowercase transform, `'wdth' 100, 'wght' 500`
+- `font-mono` — lining numbers, proportional nums, `'salt'` feature
+
+Font weight via variation settings (not standard font-weight):
+
+- `font-variation-bold` (wght 700)
+- `font-variation-extrabold` (wght 750)
+- `font-variation-medium` (wght 800)
+
+## Semantic colours
+
+Prefer semantic tokens over raw colour scales in components. The raw scales (fern, dandelion, rio, cornflour, grass, moss, lavender, magenta, neutral-01/02/03) exist in `css/primitives.css` but are for building tokens, not direct use.
+
+Common semantic classes:
+
+- Text: `text-heading`, `text-body`, `text-secondary`, `text-tertiary`
+- Surfaces: `bg-canvas`, `bg-surface`, `bg-surface-02`, `bg-surface-03`, `bg-surface-04`
+- Borders: `border-medium`, `border-strong`
+- Code: `bg-code-bg`, `text-code-text`
+- Navigation: `text-nav-active`, `text-toc-active`
+
+All tokens support light/dark mode via `light-dark()` in `css/theme.css`.
+
+## Layout and grid
+
+The site uses a custom CSS grid with named column lines defined in `css/utilities.css`:
+
+- `col-content` — main content width (1344px max)
+- `col-container` — outer container (1920px max)
+- `col-page` — full page width
+- `col-prose` — narrower reading width
+- `col-margin` — margin columns
+
+Uses CSS subgrid extensively. For responsive behaviour in card-like components, prefer container queries (`@md`, `@container`) over media queries.
+
+## Shadows
+
+Semantic shadow scale defined in `css/utilities.css`:
+
+- `shadow-subtle` — minimal outline-based
+- `shadow-reduced` — light, layered
+- `shadow-placed` — standard elevation
+- `shadow-picked` — active/focused state
+- `shadow-floating` — modals, floating elements
+- `shadow-dandelion-*` — button-specific variants (reduced, placed, picked)
+
+## Border radius
+
+Custom scale defined in `css/primitives.css`:
+
+- `radius-xs` (0.25rem), `radius-sm` (0.5rem), `radius` (1rem), `radius-lg` (1.5rem), `radius-xl` (2rem), `radius-full` (999rem)
+
+## Images
+
+Use the `Image` wrapper from `@/components/image` (wraps next/image). Standard blur placeholder pattern:
+
+```jsx
+import Image from '@/components/image'
+
+;<Image
+  src="/images/example.png"
+  width={592}
+  height={368}
+  placeholder="blur"
+  blurDataURL="data:image/gif;base64,R0lGODlh..."
+  alt="Descriptive alt text"
+/>
+```
+
+## Links
+
+Use `Link` from `@/components/link`. It auto-detects internal routes (`/`-prefixed → next/link) vs external URLs (plain `<a>` with `rel="noopener noreferrer"`), and handles anchor links (`#`-prefixed).
+
+```jsx
+import Link from '@/components/link'
+
+<Link href="/blog">Internal</Link>
+<Link href="https://example.com">External</Link>
+```
+
+## Component conventions
+
+- Server components by default. Only add `'use client'` when hooks or interactivity require it.
+- Use react-aria-components for accessible modals, menus, and popovers.
+- Standard transition: `transition duration-200` with `ease-in`, `ease-out`, or `ease-linear`.
+
+## Content structure
+
+Blog posts live in `content/blog/*.md`, notes in `content/notes/*.md`, pages in `content/pages/*.md`. Categories are defined in `content/categories.js`, collections in `content/collections.js`.
+
+Key frontmatter fields for posts: `title`, `date`, `lastmod`, `summary`, `metadesc`, `ogImage`, `categories[]`, `tags[]`, `status` (draft/open/closed), `theme`, `large`, `medium`, `fileroot`, `id`.
 
 ## You might not need an effect
 
