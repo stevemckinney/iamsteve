@@ -462,6 +462,7 @@ export function PostImage({ post }) {
             alt={`${post.title} (featured image)`}
             width={864}
             height={540}
+            className="w-full h-auto"
             blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
             placeholder="blur"
             priority

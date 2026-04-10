@@ -33,62 +33,61 @@
   }
 }
 
-.blur-aura {
+.aura {
   position: relative;
 }
 
 /* Progressive blur: two layers at increasing intensity */
-.blur-aura::before,
-.blur-aura::after {
+.aura::before,
+.aura::after {
   content: '';
   position: absolute;
   z-index: -1;
   pointer-events: none;
-  background-color: color-mix(in oklch, var(--color-canvas), transparent 80%);
+  background-color: color-mix(in oklch, var(--color-canvas), transparent 99%);
+  border-radius: 40px;
 }
 
-/* Outer layer: wide, subtle blur */
-.blur-aura::before {
-  inset: -120px;
+/* Outer layer */
+.aura::before {
+  inset: -72px;
   backdrop-filter: blur(4px);
   mask-image: linear-gradient(
       to right,
       transparent,
-      black 120px,
-      black calc(100% - 120px),
+      black 72px,
+      black calc(100% - 72px),
       transparent
     ),
     linear-gradient(
       to bottom,
       transparent,
-      black 120px,
-      black calc(100% - 120px),
+      black 72px,
+      black calc(100% - 72px),
       transparent
     );
   mask-composite: intersect;
-  border-radius: 32px;
 }
 
-/* Inner layer: tight, strong blur */
-.blur-aura::after {
-  inset: -48px;
-  backdrop-filter: blur(16px);
+/* Inner layer */
+.aura::after {
+  inset: -32px;
+  backdrop-filter: blur(24px);
   mask-image: linear-gradient(
       to right,
       transparent,
-      black 48px,
-      black calc(100% - 48px),
+      black 32px,
+      black calc(100% - 32px),
       transparent
     ),
     linear-gradient(
       to bottom,
       transparent,
-      black 48px,
-      black calc(100% - 48px),
+      black 32px,
+      black calc(100% - 32px),
       transparent
     );
   mask-composite: intersect;
-  border-radius: 20px;
 }
 
 /* Search modal staggered entrance
