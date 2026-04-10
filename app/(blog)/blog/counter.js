@@ -36,7 +36,7 @@ const ViewCounter = ({
     }
 
     incrementView()
-  }, [slug, trackView, views])
+  }, [slug, trackView])
 
   if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {
     return null
