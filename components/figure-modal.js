@@ -451,13 +451,17 @@ function LightboxContent({ src, alt, close }) {
           src={src}
           alt={alt}
           onLoad={(e) => {
+            const { naturalWidth, naturalHeight } = e.target
+            const img = imgRef.current
+            img.width = Math.round(naturalWidth / 2)
+            img.height = Math.round(naturalHeight / 2)
             fitDimensionsRef.current = {
-              w: e.target.offsetWidth,
-              h: e.target.offsetHeight,
+              w: img.offsetWidth,
+              h: img.offsetHeight,
             }
           }}
           draggable={false}
-          className="block max-w-[calc(100vw-4rem)] max-h-[calc(100vh-4rem)] object-contain drop-shadow-image pointer-events-none"
+          className="block max-w-[calc(100vw-4rem)] max-h-[calc(100vh-4rem)] object-contain drop-shadow-image-modal pointer-events-none"
         />
       </motion.div>
     </Button>
@@ -472,7 +476,7 @@ export function FigureModal({ children, src, alt }) {
       )}
     >
       <Button
-        className="relative group cursor-zoom-in block w-full text-left [&_img]:transition-opacity [&_img]:duration-200 [&_img]:drop-shadow-placed hover:[&_img]:opacity-80"
+        className="relative group cursor-zoom-in block w-full text-left my-8 [&_img]:transition-opacity [&_img]:duration-200 [&_img]:drop-shadow-placed hover:[&_img]:opacity-80"
         aria-label={`Enlarge image: ${alt}`}
       >
         {children}
