@@ -3,7 +3,7 @@ title: 'Avoid your font face fauxs'
 date: '2026-04-14T09:00:00.000Z'
 lastmod: '2026-04-14T09:00:00.000Z'
 summary: Defining font weights as separate @font-face declarations is outdated and causes faux bold and italic issues. Here’s how to avoid it and do it correctly.
-metadesc: 'Defining font weights as separate @font-face declarations causes faux bold and italic. Here's how to avoid it with correct font-family grouping, variable fonts, and font-synthesis.'
+metadesc: "Defining font weights as separate @font-face declarations causes faux bold and italic. Here's how to avoid it with correct font-family grouping, variable fonts, and font-synthesis."
 theme: '#fffbf2'
 tags: ['Code', 'CSS']
 categories: ['Code', 'CSS']
