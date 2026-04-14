@@ -113,7 +113,7 @@ In the `src` only woff and woff2 are used, [this covers a very broad range of br
 
 Third party hosting services should give you an option to change the way things are setup. This will come under a different name depending on the service.
 
-Services like Typekit (Adobe Fonts) and cloud.Typography offer this, if you’re looking for the earlier mentioned browser support.
+Services like Typekit (Adobe Fonts), if you’re looking for the earlier mentioned browser support.
 
 In both of these services it is turned off by default. So, if it does happen to be on you can disable it.
 
