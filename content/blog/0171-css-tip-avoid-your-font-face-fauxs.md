@@ -2,7 +2,7 @@
 title: 'Avoid your font face fauxs'
 date: '2026-04-14T09:00:00.000Z'
 lastmod: '2026-04-14T09:00:00.000Z'
-summary: ‘Defining font weights as separate @font-face declarations is outdated and causes faux bold and italic issues. Here’s how to avoid it and do it correctly.’
+summary: Defining font weights as separate @font-face declarations is outdated and causes faux bold and italic issues. Here’s how to avoid it and do it correctly.
 metadesc: 'A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS.'
 theme: '#fffbf2'
 tags: ['Code', 'CSS']
@@ -15,13 +15,13 @@ fileroot: 'css-tip-avoid-your-font-face-fauxs'
 
 A practice to improve web font compatibility in the past was to define your font weights and styles as a new font each time. However, it’s for little gain and increases complexity nowadays. It’s easy to end up with unsightly double italics or fuzzy bold weights.
 
-As begin to use more and more variable fonts, this will become more of an occurrence as it can be easy to end up with the wrong weight applied.
+As variable fonts become the majority usecase for web type, I predict this will become more of an occurrence as it can be easy to end up with the wrong weight applied.
 
 ## What is faux bold or italic?
 
 Well, when you apply a bolder weight, italic style or generally any variation to any font that doesn’t have it available in the browser it will emulate it (in most cases).
 
-I believe it to be most common when you use a font generator. Generators do this to improve compatibility with older browsers. The generator will separate out each weight and style into it’s own unique font. So you end up with `font-family` rules looking something like the following:
+I believe it to be most common when you use a font generator and don't correct or change the output. The generator will separate out each weight and style into it’s own unique font. So you end up with `font-family` rules looking something like the following:
 
 ```css
 h1 {
@@ -59,7 +59,7 @@ On top of that, all of your `<i>`, `<em>`, `<b>`, and `<strong>` rules have to b
 <figcaption>A couple examples of faux weights & styles. It can be quite subtle, so tricky to notice depending on the browser you’re using.</figcaption>
 </figure>
 
-1. Lower pixel density displays text tends to look blurry
+1. On lower pixel density displays text tends to look blurry
 2. The weight doesn’t look as bold as you intended
 3. Italics are over exaggerated or jagged
 4. Spaces between letters and words seem larger
