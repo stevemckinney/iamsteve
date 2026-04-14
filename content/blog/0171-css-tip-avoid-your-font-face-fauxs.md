@@ -8,7 +8,7 @@ theme: '#fffbf2'
 tags: ['Code', 'CSS']
 categories: ['Code', 'CSS']
 ogImage: '/assets/og/cover.jpg'
-status: 'closed'
+status: 'unlisted'
 id: 171
 fileroot: 'css-tip-avoid-your-font-face-fauxs'
 ---
