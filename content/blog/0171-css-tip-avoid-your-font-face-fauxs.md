@@ -3,7 +3,7 @@ title: 'Avoid your font face fauxs'
 date: '2026-04-14T09:00:00.000Z'
 lastmod: '2026-04-14T09:00:00.000Z'
 summary: Defining font weights as separate @font-face declarations is outdated and causes faux bold and italic issues. Here’s how to avoid it and do it correctly.
-metadesc: 'A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS.'
+metadesc: 'Defining font weights as separate @font-face declarations causes faux bold and italic. Here's how to avoid it with correct font-family grouping, variable fonts, and font-synthesis.'
 theme: '#fffbf2'
 tags: ['Code', 'CSS']
 categories: ['Code', 'CSS']
@@ -21,7 +21,7 @@ As variable fonts become the majority usecase for web type, I predict this will 
 
 Well, when you apply a bolder weight, italic style or generally any variation to any font that doesn’t have it available in the browser it will emulate it (in most cases).
 
-I believe it to be most common when you use a font generator and don't correct or change the output. The generator will separate out each weight and style into it’s own unique font. So you end up with `font-family` rules looking something like the following:
+I believe it to be most common when you use a font generator and don't correct or change the output. The generator will separate out each weight and style into its own unique font. So you end up with `font-family` rules looking something like the following:
 
 ```css
 h1 {
@@ -65,7 +65,7 @@ On top of that, all of your `<i>`, `<em>`, `<b>`, and `<strong>` rules have to b
 4. Spaces between letters and words seem larger
 5. Chromium based browsers tend to ignore, whereas Safari and Firefox are more apparent
 
-Something doesn’t look quite look right, is the general summary of these points. Give the codebase a check or look at the inspector to see how things are managed.
+Something doesn’t look quite right, is the general summary of these points. Give the codebase a check or look at the inspector to see how things are managed.
 
 Some may argue this is a reasonable tradeoff, but the way that this is treated between browsers can make copy difficult to read. And depending on the typeface you’re using it can distort it moreso than the examples given.
 
@@ -80,8 +80,7 @@ If you’re self hosting, the right way to define your `@font-face` rules are by
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../path/to/font.woff2) format('woff2'), url(../path/to/font.woff)
-      format('woff');
+  src: url(../path/to/font.woff2) format('woff2');
 }
 
 /* Italic */
@@ -90,8 +89,7 @@ If you’re self hosting, the right way to define your `@font-face` rules are by
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url(../path/to/font.woff2) format('woff2'), url(../path/to/font.woff)
-      format('woff');
+  src: url(../path/to/font.woff2) format('woff2');
 }
 
 /* Bold */
@@ -100,22 +98,33 @@ If you’re self hosting, the right way to define your `@font-face` rules are by
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(../path/to/font.woff2) format('woff2'), url(../path/to/font.woff)
-      format('woff');
+  src: url(../path/to/font.woff2) format('woff2');
 }
 ```
 
-Using the Inter as an example, there are 3 definitions two with font weights at 400, but where they differ are their `font-style` for italics. And a bold option.
+Using Inter as an example, there are 3 definitions: two with font weights at 400, but where they differ is their `font-style` for italics. And a bold option.
 
-In the `src` only woff and woff2 are used, [this covers a very broad range of browsers](https://caniuse.com/#search=woff). Arguably, you could drop the woff src, as this is necessary to support IE 9.
+In the `src` only woff2 is needed&thinsp;&mdash;&thinsp;[browser support is excellent](https://caniuse.com/?search=woff2).
+
+### Variable fonts
+
+If you're using a variable font, a single `@font-face` rule covers the full weight range:
+
+```css title="variable-font-face.css" showLineNumbers
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../path/to/inter-variable.woff2) format('woff2');
+}
+```
+
+The `font-weight: 100 900` range tells the browser every weight from thin to black is available in this single file, so there's no reason to synthesise any of them.
 
 ## What if I don’t self host and I’m seeing faux styles?
 
-Third party hosting services should give you an option to change the way things are setup. This will come under a different name depending on the service.
-
-Services like Typekit (Adobe Fonts), if you’re looking for the earlier mentioned browser support.
-
-In both of these services it is turned off by default. So, if it does happen to be on you can disable it.
+Third party hosting services should give you an option to change the way the font family is structured or delivered. Look for a setting related to how the font family is grouped&thinsp;&mdash;&thinsp;it may be called something different depending on the service, but the goal is the same: each weight and style should share one `font-family` name.
 
 ## font-synthesis to the rescue
 
@@ -126,24 +135,22 @@ Your type may have to look like the following:
 ```css
 /* Normal */
 @font-face {
-  font-family: 'Averta';
+  font-family: ‘Averta’;
   font-style: normal;
   font-weight: 400;
-  src: url(../path/to/normal.woff2) format('woff2'), url(../path/to/normal.woff)
-      format('woff');
+  src: url(../path/to/normal.woff2) format(‘woff2’);
 }
 
 /* Bold */
 @font-face {
-  font-family: 'Averta Bold';
+  font-family: ‘Averta Bold’;
   font-style: normal;
   font-weight: 400;
-  src: url(../path/to/medium.woff2) format('woff2'), url(../path/to/medium.woff)
-      format('woff');
+  src: url(../path/to/medium.woff2) format(‘woff2’);
 }
 ```
 
-You could apply `font-synthesis`. Which tells the browser to not apply any synthesised styles by the browser.
+You could apply `font-synthesis`, which tells the browser not to apply any synthesised styles.
 
 ```css
 p {
@@ -151,10 +158,18 @@ p {
 }
 ```
 
-I had this article in my drafts for a long time and the only reason I could find to do this was supporting IE 8 and that means needing .eot. Which no one should have to do in 2024.
+If you need more control, the shorthand accepts individual values. The catch is that the keywords *enable* synthesis for that axis rather than blocking it&thinsp;&mdash;&thinsp;which is counterintuitive. So to allow only style synthesis (blocking weight), you’d write:
 
-## Something to be aware of
+```css
+p {
+  font-synthesis: style;
+}
+```
 
-I suspect some of the reasoning behind this is a lack of understanding around font face. I’ve noticed it on quite a lot of websites, hence the main reason for writing this article.
+And to allow only weight synthesis (blocking style):
 
-However, I’m sure the majority reason is to get a broad range of browser support. For this reason, I write to encourage you to not. Becuase you’re supporting one extra browser (IE 8) for that frustration, and also limitation in the amount of font weights/styles you can have.
+```css
+p {
+  font-synthesis: weight;
+}
+```
