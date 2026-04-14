@@ -1,7 +1,7 @@
 ---
 title: 'Avoid your font face fauxs'
-date: '2024-02-19T08:11:37.767Z'
-lastmod: '2019-12-18T07:57:57+00:00'
+date: '2026-04-14T09:00:00.000Z'
+lastmod: '2026-04-14T09:00:00.000Z'
 summary: ‘Defining font weights as separate @font-face declarations is outdated and causes faux bold and italic issues. Here’s how to avoid it and do it correctly.’
 metadesc: 'A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS.'
 theme: '#fffbf2'
