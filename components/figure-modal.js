@@ -461,7 +461,7 @@ function LightboxContent({ src, alt, close }) {
             }
           }}
           draggable={false}
-          className="block max-w-[calc(100vw-4rem)] max-h-[calc(100vh-4rem)] object-contain drop-shadow-image-modal pointer-events-none"
+          className="block max-w-[calc(100vw-4rem)] max-h-[calc(100vh-4rem)] object-contain drop-shadow-image-modal pointer-events-none rounded-sm"
         />
       </motion.div>
     </Button>
@@ -476,13 +476,13 @@ export function FigureModal({ children, src, alt }) {
       )}
     >
       <Button
-        className="relative group cursor-zoom-in block w-full text-left my-8 [&_img]:transition-opacity [&_img]:duration-200 [&_img]:drop-shadow-placed hover:[&_img]:opacity-80"
+        className="relative group cursor-zoom-in text-left my-4"
         aria-label={`Enlarge image: ${alt}`}
       >
         {children}
         <span
           aria-hidden="true"
-          className="absolute top-8 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-canvas shadow-reduced p-2 rounded-sm"
+          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-200 bg-[light-dark(theme(--color-neutral-01-50/.8),theme(--color-fern-1100/.8))] backdrop-blur-md shadow-reduced p-2 rounded-sm"
         >
           <Icon icon="enlarge" size={16} />
         </span>
