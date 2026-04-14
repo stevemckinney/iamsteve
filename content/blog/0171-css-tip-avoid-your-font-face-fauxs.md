@@ -124,7 +124,7 @@ The `font-weight: 100 900` range tells the browser every weight from thin to bla
 
 ## What if I don’t self host and I’m seeing faux styles?
 
-Third party hosting services should give you an option to change the way the font family is structured or delivered. Look for a setting related to how the font family is grouped&thinsp;&mdash;&thinsp;it may be called something different depending on the service, but the goal is the same: each weight and style should share one `font-family` name.
+Third party hosting services should give you an option to change the way the font family is structured or delivered. Look for a setting related to how the font family is grouped&thinsp;&mdash;&thinsp;it may be called something different depending on the service, but the aim is for each weight and style should share one `font-family` name.
 
 ## font-synthesis to the rescue
 
