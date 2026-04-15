@@ -240,8 +240,12 @@ code[data-line-numbers] {
   gap: calc(var(--spacing) * 2);
   background-color: var(--code-title-bg);
   box-shadow: inset 0 -1px 0 var(--code-border);
-  padding-inline: var(--code-padding);
+  padding-inline: calc(var(--spacing) * 2) var(--code-padding);
   padding-block: calc(var(--spacing) * 3);
+
+  @media (width >= 640px) {
+    padding-inline: var(--code-padding);
+  }
 }
 
 :is(.prose, .codeblock) [data-rehype-pretty-code-title] > span {
