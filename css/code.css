@@ -200,10 +200,13 @@ code[data-line-numbers] {
   .codepen,
   .codepen-wide {
     overflow: auto;
-    border-radius: var(--radius-lg);
     background-color: var(--code-bg);
     box-shadow: var(--shadow-placed);
     margin-block: calc(var(--spacing) * 8);
+
+    @media (width >= 640px) {
+      border-radius: var(--radius-lg);
+    }
   }
 
   .codepen,
