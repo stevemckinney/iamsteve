@@ -1,9 +1,11 @@
 ![iamsteve.me banner](/app/opengraph-image.png)
 
 # iamsteve.me design & code blog
+
 A design and code blog using Next.js with App Router.
 
 ## Quick start
+
 <details>
 <summary>Development setup</summary>
 
@@ -16,19 +18,24 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
 </details>
 
 ## Creating posts
+
 <details>
 <summary>How to create and manage blog posts</summary>
 
 ### Starting a new post
+
 1. Create a new branch:
+
 ```bash
 git checkout -b post/your-post-name
 ```
 
 2. Generate the post:
+
 ```bash
 node ./scripts/compose.js
 ```
@@ -39,14 +46,17 @@ node ./scripts/compose.js
    - Post status (open, draft, closed)
 
 ### Post structure
+
 Posts can be created in two formats:
 
 1. Single file:
+
 ```
 content/blog/0177-your-post-title.mdx
 ```
 
 2. Directory with index file (for posts with assets):
+
 ```
 content/blog/0177-your-post-title/
   ├─ index.mdx
@@ -55,12 +65,14 @@ content/blog/0177-your-post-title/
 ```
 
 ### Post id system
+
 - IDs are automatically managed:
   - `compose.js` scans existing posts to assign the next available ID
   - GitHub Actions handle ID conflicts during pull requests
   - Pre-merge-commit hook ensures ID uniqueness when merging
 
 ### Publishing workflow
+
 1. Create your post on a new branch
 2. Make your changes and commit
 3. Create a pull request
@@ -68,34 +80,37 @@ content/blog/0177-your-post-title/
    - Check for ID conflicts
    - Update IDs if needed
    - Handle merging safely
-</details>
+   </details>
 
 ## Post configuration
+
 <details>
 <summary>Frontmatter and image requirements</summary>
 
 Example frontmatter:
+
 ```yaml
 ---
-title: "Visual design tips you can apply immediately"
-date: "2017-07-04T11:51:00+00:00"
-lastmod: "2019-10-04T07:24:49+00:00"
-summary: "Add a little extra polish to any of your designs with these tips."
-metadesc: "When designing there are things you can rely upon regardless of the situation."
-theme: "#fff7e0"
-tags: ["Design"]
-categories: ["Design"]
-images: ["/images/blog/visual-design-tips-featured-image.png"]
-large: "/images/blog/visual-design-tips-featured-image.png"
-medium: "/images/blog/visual-design-tips-featured-image-medium.png"
-ogImage: "/opengraph-image.png"
-status: "open"
+title: 'Visual design tips you can apply immediately'
+date: '2017-07-04T11:51:00+00:00'
+lastmod: '2019-10-04T07:24:49+00:00'
+summary: 'Add a little extra polish to any of your designs with these tips.'
+metadesc: 'When designing there are things you can rely upon regardless of the situation.'
+theme: '#fff7e0'
+tags: ['Design']
+categories: ['Design']
+images: ['/images/blog/visual-design-tips-featured-image.png']
+large: '/images/blog/visual-design-tips-featured-image.png'
+medium: '/images/blog/visual-design-tips-featured-image-medium.png'
+ogImage: '/opengraph-image.png'
+status: 'open'
 id: 164
-fileroot: "visual-design-tips-you-can-apply-immediately"
+fileroot: 'visual-design-tips-you-can-apply-immediately'
 ---
 ```
 
 ### Field descriptions
+
 - `large`: Main image (592x368 SVG)
 - `medium`: Medium image (384x240 SVG)
 - `ogImage`: Custom post opengraph image (optional)
@@ -110,6 +125,7 @@ fileroot: "visual-design-tips-you-can-apply-immediately"
 The collections script helps manage design and development resource links. It supports both individual entries and bulk imports.
 
 ### Adding individual collections
+
 Run the script without arguments for interactive mode:
 
 ```bash
@@ -117,6 +133,7 @@ node scripts/compose-collection.js
 ```
 
 You'll be prompted for:
+
 - Title: Name of the resource
 - URL: Web address
 - Collection: Category (e.g., Inspiration, Typography, UX Design)
@@ -124,6 +141,7 @@ You'll be prompted for:
 - Extension: File format (md or mdx)
 
 Example output:
+
 ```bash
 Title: Awesome Design System
 URL: https://design-system-example.com
@@ -135,6 +153,7 @@ Updated .last-collection-import to 2025-12-06
 ```
 
 ### Bulk import
+
 To import multiple items, create a JSON file with your collections and pass it to the script:
 
 ```bash
@@ -142,6 +161,7 @@ node scripts/compose-collection.js bookmarks.json
 ```
 
 JSON file structure:
+
 ```json
 [
   {
@@ -155,6 +175,7 @@ JSON file structure:
 ```
 
 Example output:
+
 ```bash
 Created: example
 Created: another-example
@@ -165,6 +186,7 @@ Import complete: 2 items processed
 ```
 
 #### Fields:
+
 - `title`: Resource name (required)
 - `url`: Web address (required)
 - `collection`: Category name (required) - case-insensitive, automatically normalized (e.g., "inspiration", "Foundry", "UX design", "ux-design" all work)
@@ -174,6 +196,7 @@ Import complete: 2 items processed
   - Options: md, mdx
 
 #### Available collections:
+
 The script automatically normalizes collection names, so you can use any casing:
 
 - **Accessibility** - accessibility standards and guidelines
@@ -191,6 +214,7 @@ The script automatically normalizes collection names, so you can use any casing:
 - **UX design** - UX/UI design resources (ux design, ux-design, uxdesign all work)
 
 The script automatically:
+
 - Generates unique filenames from URLs
 - Prevents duplicate entries
 - Creates properly formatted markdown files with quoted titles
@@ -198,7 +222,9 @@ The script automatically:
 - Updates `.last-collection-import` tracking file
 
 ### "New" badge behavior
+
 Collection items display a "New" badge based on:
+
 - Items added after the last import date (tracked in `.last-collection-import`)
 - OR items added within the last 3 months (whichever is more recent)
 - The badge automatically disappears on the next import or after 3 months
@@ -208,11 +234,14 @@ This ensures newly imported items are highlighted until you perform another impo
 </details>
 
 ## Releases and versioning
+
 <details>
 <summary>How releases are created automatically</summary>
 
 ### How it works
+
 When a PR is merged to `main`, the release action automatically:
+
 1. Finds the latest git tag (e.g. `v9.0.0`)
 2. Checks if there are meaningful changes since that tag
 3. Determines the version bump type from commit messages
@@ -228,17 +257,21 @@ Most merges create a patch release. Bug fixes, content updates, design tweaks, a
 
 **Minor** (automatic for features, e.g. `v9.0.0` &rarr; `v9.1.0`):
 Triggered when commit messages or branch names include `feat:`, `feat/`, or `feature/`:
+
 ```
 feat: add search to blog
 feat(collections): filter by tag
 ```
+
 Or use a branch name like `feat/search` or `feature/dark-mode`.
 
 **Major** (manual only, e.g. `v9.0.0` &rarr; `v10.0.0`):
 Major versions are reserved for significant milestones like a full redesign or framework migration. To create one, trigger the release workflow manually from the Actions tab and select "major" as the bump type.
 
 ### Release note categories
+
 Release notes are grouped by PR labels (configured in `.github/release.yml`):
+
 - **New features** &mdash; `feature`, `enhancement`
 - **Bug fixes** &mdash; `bug`, `fix`
 - **Design** &mdash; `design`
@@ -248,15 +281,20 @@ Release notes are grouped by PR labels (configured in `.github/release.yml`):
 PRs labelled `skip-changelog` and commits from `github-actions[bot]` are excluded.
 
 ### Checking out a past version
+
 Every release is tagged, so you can check out any version:
+
 ```bash
 git checkout v8.2.0
 ```
+
 </details>
 
 ## Credits
+
 <details>
 <summary>Acknowledgements</summary>
 
 The codebase started from the excellent [tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog) and has since evolved from that.
+
 </details>
