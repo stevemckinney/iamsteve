@@ -84,8 +84,10 @@ const ContactForm = () => {
 
   if (isRateLimited || FORM_DISABLED) {
     return (
-      <div className="flex w-full p-12 shadow-notice col-prose flex gap-3 leading-tight bg-notice rounded-md p-4 justify-center rounded-sm">
-        <p className="m-0 text-notice-muted">Form currently unavailable.</p>
+      <div className="flex w-full p-12 shadow-(--shadow-notice) col-prose flex gap-3 leading-tight bg-(--color-notice-bg) rounded-md p-4 justify-center rounded-sm">
+        <p className="m-0 text-(--color-notice-muted)">
+          Form currently unavailable.
+        </p>
       </div>
     )
   }

@@ -2,7 +2,7 @@ import { cache } from 'react'
 import { notFound } from 'next/navigation'
 import { allCollections } from 'content-collections'
 
-import { Mdx } from '@/components/mdx-components'
+import { MDX as Mdx } from '@/components/mdx-post'
 import { Header, Title, Column, Description } from '@/components/page'
 import Image from '@/components/image'
 import Link from '@/components/link'
@@ -10,7 +10,7 @@ import collections from '@/content/collections'
 import Icon from '@/components/icon'
 
 import { format, subWeeks, isAfter, parseISO } from 'date-fns'
-import fs from 'fs'
+import { readFile } from 'fs/promises'
 import path from 'path'
 
 export const dynamic = 'force-static'
@@ -31,7 +31,7 @@ const getData = cache(async () => {
   let lastImportDate
   try {
     const importDatePath = path.join(process.cwd(), '.last-collection-import')
-    const importDateContent = fs.readFileSync(importDatePath, 'utf-8').trim()
+    const importDateContent = (await readFile(importDatePath, 'utf-8')).trim()
     lastImportDate = parseISO(importDateContent)
   } catch (error) {
     // Fall back to 12 weeks if file doesn't exist

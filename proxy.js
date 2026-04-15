@@ -12,9 +12,23 @@ const STRIP_PARAMS = [
   'M',
   'channel_id',
   'entry_id',
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+  'fbclid',
 ]
 
-const GONE_PATHS = ['/fonts/InterVariable.woff2', '/cdn-cgi/l/email-protection']
+const GONE_PATHS = [
+  '/fonts/InterVariable.woff2',
+  '/cdn-cgi/l/email-protection',
+  '/blog/:splat',
+  '/blog/entry/*',
+  '/blog/entry/[slug]',
+]
+
+const GONE_PREFIXES = ['/Users/']
 
 export function proxy(request) {
   const { pathname } = request.nextUrl
@@ -22,6 +36,12 @@ export function proxy(request) {
   // Return 410 Gone for removed resources
   if (GONE_PATHS.includes(pathname)) {
     return new NextResponse(null, { status: 410 })
+  }
+
+  for (const prefix of GONE_PREFIXES) {
+    if (pathname.startsWith(prefix)) {
+      return new NextResponse(null, { status: 410 })
+    }
   }
 
   // Strip junk query parameters

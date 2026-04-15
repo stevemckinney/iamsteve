@@ -2,7 +2,6 @@ const fs = require('fs')
 const path = require('path')
 const { execSync } = require('child_process')
 const matter = require('gray-matter')
-const axios = require('axios')
 const pLimit = require('p-limit').default
 
 // Configuration
@@ -14,22 +13,17 @@ const CONCURRENT_REQUESTS = 5
 const REQUEST_TIMEOUT_MS = 10000
 const MAX_RETRIES = 2
 
-// HTTP client with browser-like headers
-const client = axios.create({
-  timeout: REQUEST_TIMEOUT_MS,
-  headers: {
-    'User-Agent':
-      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Language': 'en-US,en;q=0.9',
-    'Accept-Encoding': 'gzip, deflate, br',
-    DNT: '1',
-    Connection: 'keep-alive',
-    'Upgrade-Insecure-Requests': '1',
-  },
-  maxRedirects: 5,
-  validateStatus: (status) => status >= 200 && status < 400,
-})
+// Browser-like headers for requests
+const REQUEST_HEADERS = {
+  'User-Agent':
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'en-US,en;q=0.9',
+  'Accept-Encoding': 'gzip, deflate, br',
+  DNT: '1',
+  Connection: 'keep-alive',
+  'Upgrade-Insecure-Requests': '1',
+}
 
 // Load cache
 function loadCache() {
@@ -119,18 +113,37 @@ function categorizeError(result) {
   return { category: 'needs_check', priority: 'low', icon: '⚠️' }
 }
 
+// Make a fetch request with timeout and browser-like headers
+async function request(url, method = 'HEAD') {
+  const response = await fetch(url, {
+    method,
+    headers: REQUEST_HEADERS,
+    redirect: 'follow',
+    signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
+  })
+
+  if (response.status >= 200 && response.status < 400) {
+    return { status: 'valid', statusCode: response.status }
+  }
+
+  return {
+    status: 'error',
+    statusCode: response.status,
+    error: `HTTP ${response.status}`,
+  }
+}
+
 // Validate single URL with retries
 async function validateUrl(url, retries = MAX_RETRIES) {
   try {
     // Try HEAD first (faster)
-    await client.head(url)
-    return { status: 'valid', statusCode: 200 }
-  } catch (error) {
-    if (error.response?.status === 405) {
-      // Method not allowed, try GET
+    const headResult = await request(url, 'HEAD')
+    if (headResult.status === 'valid') return headResult
+
+    // 405 Method Not Allowed — fall back to GET
+    if (headResult.statusCode === 405) {
       try {
-        await client.get(url, { maxContentLength: 1024 * 100 }) // 100KB limit
-        return { status: 'valid', statusCode: 200 }
+        return await request(url, 'GET')
       } catch (getError) {
         if (retries > 0) {
           await new Promise((resolve) =>
@@ -141,17 +154,28 @@ async function validateUrl(url, retries = MAX_RETRIES) {
         return {
           status: 'error',
           error: getError.message,
-          statusCode: getError.response?.status,
+          statusCode: getError.cause?.code,
         }
       }
     }
 
+    // Retry on timeout, rate limit, or server error
     if (
       retries > 0 &&
-      (error.code === 'ETIMEDOUT' ||
-        error.response?.status === 429 ||
-        error.response?.status >= 500)
+      (headResult.statusCode === 429 || headResult.statusCode >= 500)
     ) {
+      await new Promise((resolve) =>
+        setTimeout(resolve, 2000 * (MAX_RETRIES - retries + 1))
+      )
+      return validateUrl(url, retries - 1)
+    }
+
+    return headResult
+  } catch (error) {
+    const isTimeout =
+      error.name === 'TimeoutError' || error.cause?.code === 'ETIMEDOUT'
+
+    if (retries > 0 && isTimeout) {
       await new Promise((resolve) =>
         setTimeout(resolve, 2000 * (MAX_RETRIES - retries + 1))
       )
@@ -161,8 +185,7 @@ async function validateUrl(url, retries = MAX_RETRIES) {
     return {
       status: 'error',
       error: error.message,
-      statusCode: error.response?.status,
-      code: error.code,
+      code: error.cause?.code,
     }
   }
 }
@@ -242,7 +265,9 @@ async function main() {
       } else {
         const errorCategory = categorizeError(result)
         console.log(
-          `${errorCategory.icon} ${filename}: ${result.error || result.statusCode}`
+          `${errorCategory.icon} ${filename}: ${
+            result.error || result.statusCode
+          }`
         )
 
         const errorInfo = {
@@ -354,4 +379,27 @@ async function main() {
   // process.exit(results.broken.length > 0 ? 1 : 0);
 }
 
-main().catch(console.error)
+main().catch((error) => {
+  console.error(error)
+
+  // Write a fallback results file so downstream workflow steps don't fail
+  fs.writeFileSync(
+    RESULTS_FILE,
+    JSON.stringify(
+      {
+        summary: `**Summary:**\n- ⚠️ Validation script encountered an error: ${error.message}`,
+        details: '',
+        broken_count: 0,
+        results: {
+          valid: [],
+          broken: [],
+          needs_check: [],
+          duplicates: [],
+          skipped: [],
+        },
+      },
+      null,
+      2
+    )
+  )
+})

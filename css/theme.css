@@ -139,7 +139,7 @@
   );
   --color-border-medium: light-dark(
     var(--color-neutral-01-300),
-    var(--color-neutral-01-400)
+    var(--color-fern-600)
   );
   --color-border-strong: light-dark(
     var(--color-neutral-01-400),
@@ -147,7 +147,10 @@
   );
 
   --bg-texture-image: url(/images/texture.png);
-  --bg-dash-image: light-dark(url(/images/dash.svg), url(/images/dash-dark.svg));
+  --bg-dash-image: light-dark(
+    url(/images/dash.svg),
+    url(/images/dash-dark.svg)
+  );
 
   --color-ui-normal: light-dark(rgba(79, 64, 63, 0.12), rgba(79, 64, 63, 0.16));
   --color-ui-raised: light-dark(rgba(79, 64, 63, 0.18), rgba(79, 64, 63, 0.24));
@@ -177,8 +180,8 @@
 
   /* inline code */
   --color-code-bg: light-dark(
-    oklch(from var(--color-fern-500) l c h / 0.12),
-    oklch(from var(--color-dandelion-400) l c h / 0.12)
+    oklch(from var(--color-fern-500) l c h / 0.1),
+    oklch(from var(--color-dandelion-400) l c h / 0.1)
   );
   --color-code-text: light-dark(
     var(--color-fern-800),
@@ -234,6 +237,8 @@
     var(--color-cornflour-400)
   );
 
+  --color-success: light-dark(var(--color-moss-700), var(--color-moss-400));
+
   --icon-fill: none;
   --icon-fill-bg: none;
 }
@@ -251,7 +256,10 @@
 }
 
 .icon-header {
-  --icon-fill: light-dark(var(--color-white), var(--color-fern-1300));
+  --icon-fill: light-dark(
+    var(--color-white),
+    color-mix(in oklab, transparent 90%, currentcolor)
+  );
 }
 
 .icon-on-light {

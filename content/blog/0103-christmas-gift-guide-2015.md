@@ -1,16 +1,16 @@
 ---
-title: "Christmas gift guide 2015"
-date: "2015-12-01T07:30:00+00:00"
-lastmod: "2016-08-28T10:49:04+00:00"
-summary: "As it’s the festive time of year, I thought I would add to the lists of gifts that people are writing. Christmas is one of my favourite times of year, not just for the gift giving, but it’s a time to relax and enjoy what surrounds Christmas. Usually there’s a bit of a designer spin on it, which is my aim, but I think they’re suitable for everyone. I own some of these things already, so for what I can I have provided a brief review. There’s a mix of things from notebooks to shoes, with varying price points."
-metadesc: "A selection of products that I think would make good gifts for Christmas 2015."
-theme: "#ffede5"
-tags: ["Website"]
-categories: ["Website"]
-ogImage: "/opengraph-image.png"
-status: "open"
+title: 'Christmas gift guide 2015'
+date: '2015-12-01T07:30:00+00:00'
+lastmod: '2016-08-28T10:49:04+00:00'
+summary: 'A designer-leaning Christmas gift guide for 2015. A mix of items from notebooks to shoes, with brief reviews on the ones I own, at varying price points.'
+metadesc: 'A selection of products that I think would make good gifts for Christmas 2015.'
+theme: '#ffede5'
+tags: ['Website']
+categories: ['Website']
+ogImage: '/opengraph-image.png'
+status: 'open'
 id: 103
-fileroot: "christmas-gift-guide-2015"
+fileroot: 'christmas-gift-guide-2015'
 ---
 
 As it’s the festive time of year, I thought I would add to the lists of gifts that people are writing. Christmas is one of my favourite times of year, not just for the gift giving, but it's a time to relax and enjoy what surrounds Christmas. Usually there’s a bit of a designer spin on it, which is my aim, but I think they’re suitable for everyone. I own some of these things already, so for what I can I have provided a brief review. There’s a mix of things from notebooks to shoes, with varying price points.
@@ -18,6 +18,7 @@ As it’s the festive time of year, I thought I would add to the lists of gifts 
 I've provided prices alongside them in the currency that the website uses. As exchange rates change so often, I thought this was the best approach.
 
 ## Baron Fig apprentice – $9
+
 <figure>
 <Image src="/images/blog/baronfig-apprentice.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://www.baronfig.com">Baron Fig</a></figcaption>
@@ -27,6 +28,7 @@ I really like these little notebooks, they’re good quality and fair priced. Th
 Order from: [Baron Fig](http://www.baronfig.com/pages/apprentice)
 
 ## Grovemade keyboard tray – $99
+
 <figure>
 <Image src="/images/blog/grovemade-keyboard-tray.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://grovemade.com">Grovemade</a></figcaption>
@@ -37,6 +39,7 @@ I’m yet to get one of these. They look great and serves as a nice convenient w
 Order from: [Grovemade](http://grovemade.com/product/walnut-keyboard-tray/?initial=68)
 
 ## Grovemade wrist pad – $49
+
 <figure>
 <Image src="/images/blog/grovemade-wrist-pad.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://grovemade.com">Grovemade</a></figcaption>
@@ -47,6 +50,7 @@ It goes hand in hand with the keyboard tray. It looks like a must have because o
 Order from: [Grovemade](http://grovemade.com/product/walnut-keyboard-wrist-pad/?initial=70)
 
 ## Jessica Hische: In Progress ~£18
+
 <figure>
 <Image src="/images/blog/jessica-hische-in-progress.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="https://amazon.co.uk">Amazon</a></figcaption>
@@ -59,6 +63,7 @@ At the time I got it, it was £12. For how inspirational it is, it’s a steal f
 Order from: [Amazon](http://www.amazon.co.uk/Progress-Lettering-Artists-Sketchbook-Process/dp/145213622X/)
 
 ## Apple leather case – £39
+
 <figure>
 <Image src="/images/blog/apple-leather-case.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="https://apple.com">Apple</a></figcaption>
@@ -68,6 +73,7 @@ The previous couple of cases I have had for my iPhone's have been by Apple. They
 Order from: [Apple](https://www.apple.com/uk/shop/product/MKXF2ZM/A/iphone-6s-plus-leather-case-black)
 
 ## Saki roll pen case – ~$18
+
 <figure>
 <Image src="/images/blog/saki-pen-case.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://jetpens.com">Jetpens</a></figcaption>
@@ -82,6 +88,7 @@ If you’re in the US, you’ll be able to get it shipped from [jetpens](http://
 Order from: [Jetpens (US)](http://www.jetpens.com/search?q=saki&v=2) or [Amazon (UK)](http://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=saki+pen+case&rh=i%3Aaps%2Ck%3Asaki+pen+case)
 
 ## Uniform Wares M40 – ~£350
+
 <figure>
 <Image src="/images/blog/uniform-wares-m40.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://www.uniformwares.com">Uniform Wares</a></figcaption>
@@ -94,6 +101,7 @@ In my time choosing a new watch, I looked at many reviews for this, to see if it
 Order from: [Uniform Wares](http://www.uniformwares.com/m40-date-watch-in-pvd-rose-gold/M40-SRG-01.html?dwvar_M40-SRG-01_color=brown-nappa-leather&cgid=M40)
 
 ## Nike Roshe – ~£70
+
 <figure>
 <Image src="/images/blog/nike-roshe.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://nike.com">Nike</a></figcaption>
@@ -103,6 +111,7 @@ These are the comfiest shoes I have ever worn. They come in a few varieties whic
 Order from: [Nike](http://store.nike.com/gb/en_gb/pd/roshe-one-shoe/pid-10000021/pgid-10294803)
 
 ## Bose In Ear Headphones - £114.95
+
 <figure>
 <Image src="/images/blog/bose-earphones.jpg" width={620} height={420} />
 <figcaption>Credit: <a href="http://amazon.co.uk">Amazon</a></figcaption>
@@ -115,6 +124,7 @@ The reason I rate them so highly is because of the comfort in your ears. I disli
 Order from: [Amazon](http://www.amazon.co.uk/Bose-SoundSport-Headphones-Apple-Devices/dp/B0117RFPAE/ref=sr_1_1?ie=UTF8&qid=1448870992&sr=8-1)
 
 ## Incase EO Travel Backpack – $179.99
+
 <figure>
 <Image src="/images/blog/incase-travel-backpack.jpg" width={738} height={420} />
 <figcaption>Credit: <a href="http://goincase.com">Incase</a></figcaption>
@@ -124,4 +134,3 @@ I have had a few backpacks from incase, I would highly recommend them, along wit
 I have this bag and it has a lot of space, so may be a bit over the top for you. I have used it for short breaks and managed to fit everything I’ve needed into it. I wasn’t able to find this particular bag sold in the UK, so if you order it you will likely get a customs charge.
 
 Order from: [Incase](https://www.incase.com/shop/backpacks/incase-eo-travel-backpack/black/)
-

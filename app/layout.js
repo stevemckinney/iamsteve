@@ -19,7 +19,7 @@ export const metadata = {
     template: '%s • iamsteve',
   },
   description:
-    'Tips and tutorials about the design and build of web interfaces.',
+    'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
   alternates: {
     canonical: './',
     types: {
@@ -40,7 +40,7 @@ export const metadata = {
   openGraph: {
     title: 'iamsteve • design & code blog',
     description:
-      'Tips and tutorials about the design and build of web interfaces.',
+      'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
     url: './',
     siteName: 'iamsteve',
     locale: 'en_GB',
@@ -81,7 +81,7 @@ const jsonLD = {
       url: `${siteMetadata.siteUrl}`,
       name: 'iamsteve',
       description:
-        'Tips and tutorials about the design and build of web interfaces.',
+        'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
       publisher: {
         '@id': `${siteMetadata.siteUrl}/#organization`,
       },

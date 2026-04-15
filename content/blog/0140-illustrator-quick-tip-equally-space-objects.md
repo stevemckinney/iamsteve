@@ -2,7 +2,7 @@
 title: 'How to evenly space objects in Illustrator'
 date: '2016-08-23T06:30:00+00:00'
 lastmod: '2018-09-13T18:56:32+00:00'
-summary: 'It’s likely you know how to align things in Illustrator, but you can never remember how to space things equally, so you resort to the tedious way of spacing them individually. If you want to align objects with an equal space between them, this quick tip will show you how.'
+summary: ‘How to distribute objects with equal spacing in Illustrator using align to key object. A quick tip that saves spacing things out one by one.’
 metadesc: 'The quickest way to add equal spacing between objects in Illustrator. Use align to key object to distribute space with a precise pixel value.'
 theme: '#fefbed'
 tags: ['Design']

@@ -1,0 +1,24 @@
+changelog:
+  exclude:
+    labels:
+      - skip-changelog
+    authors:
+      - github-actions[bot]
+  categories:
+    - title: "New features"
+      labels:
+        - feature
+        - enhancement
+    - title: "Bug fixes"
+      labels:
+        - bug
+        - fix
+    - title: "Design"
+      labels:
+        - design
+    - title: "Content"
+      labels:
+        - content
+    - title: "Other changes"
+      labels:
+        - "*"

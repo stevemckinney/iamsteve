@@ -7,7 +7,7 @@
 import { notFound } from 'next/navigation'
 import { allPosts } from 'content-collections'
 import Script from 'next/script'
-import { PostMdx } from '@/components/mdx-components'
+import { PostMdx } from '@/components/mdx-post'
 import siteMetadata from '@/content/metadata'
 
 // page components
@@ -48,7 +48,7 @@ import styles from './post.module.css'
 
 export async function generateStaticParams() {
   return allPosts
-    .filter((post) => post.status === 'open')
+    .filter((post) => post.status === 'open' || post.status === 'unlisted')
     .map((post) => ({
       slug: post.slugAsParams.split('/'),
     }))
@@ -59,7 +59,9 @@ async function getPostFromParams(params, showDrafts = false) {
   const slug = params?.slug?.join('/')
   const post = allPosts.find((post) => {
     const slugMatch = post.slugAsParams === slug
-    const statusMatch = showDrafts ? true : post.status === 'open'
+    const statusMatch = showDrafts
+      ? true
+      : post.status === 'open' || post.status === 'unlisted'
     return slugMatch && statusMatch
   })
 
@@ -105,6 +107,16 @@ export async function generateMetadata(props, parent) {
       description: post.summary,
       images: [post.ogImage],
     },
+    ...(post.noindex && {
+      robots: {
+        index: false,
+        follow: false,
+        googleBot: {
+          index: false,
+          follow: false,
+        },
+      },
+    }),
   }
 }
 
@@ -254,17 +266,17 @@ export default async function PostPage(props) {
           <>
             {showDrafts && (
               <div className="col-content mb-8">
-                <div className="shadow-placed flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4">
+                <div className="shadow-placed flex gap-3 leading-tight bg-cornflour-0 dark:bg-cornflour-900 rounded-md p-4">
                   <Icon
                     icon="square-info"
-                    className="text-cornflour-900 flex-[0_0_auto]"
+                    className="text-cornflour-900 dark:text-cornflour-100 flex-[0_0_auto]"
                     variant="default"
                   />
                   <div className="flex flex-col">
-                    <p className="p-0 m-0 font-body text-sm text-cornflour-900">
+                    <p className="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-100">
                       <strong>Viewing draft post</strong>
                     </p>
-                    <p className="p-0 m-0 font-body text-sm text-cornflour-900">
+                    <p className="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-200">
                       This post is not publicly visible
                     </p>
                   </div>
@@ -272,20 +284,20 @@ export default async function PostPage(props) {
               </div>
             )}
             {isOldCodePost && (
-              <div className="shadow-notice col-content lg:col-prose flex gap-3 leading-tight bg-notice rounded-md p-4">
+              <div className="shadow-(--shadow-notice) col-content lg:col-prose flex gap-3 leading-tight bg-(--color-notice-bg) rounded-md p-4">
                 <Icon
                   icon="square-info"
-                  className="text-notice-icon flex-[0_0_auto]"
+                  className="text-(--color-notice-icon) flex-[0_0_auto]"
                   variant="header"
                 />
                 <div className="flex flex-col">
-                  <p className="p-0 m-0 font-body text-sm text-notice">
+                  <p className="p-0 m-0 font-body text-sm text-(--color-notice-text)">
                     <strong>
                       This post was published {yearsAgo}{' '}
                       {yearsAgo === 1 ? 'year' : 'years'} ago
                     </strong>
                   </p>
-                  <p className="p-0 m-0 font-body text-sm text-notice-muted">
+                  <p className="p-0 m-0 font-body text-sm text-(--color-notice-muted)">
                     There's a chance things are out of date or no longer reflect
                     my views today
                   </p>
