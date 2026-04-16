@@ -203,10 +203,7 @@ code[data-line-numbers] {
     background-color: var(--code-bg);
     box-shadow: var(--shadow-placed);
     margin-block: calc(var(--spacing) * 8);
-
-    @media (width >= 640px) {
-      border-radius: var(--radius-lg);
-    }
+    border-radius: var(--radius-lg);
   }
 
   .codepen,
@@ -259,8 +256,6 @@ code[data-line-numbers] {
  * Prose-specific overrides (post bleed layout)
  */
 .prose {
-  [data-rehype-pretty-code-figure],
-  & > .shiki,
   .codepen,
   .codepen-wide {
     margin-inline: calc(var(--code-padding) * -1);
