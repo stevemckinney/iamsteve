@@ -5,15 +5,15 @@ status: published
 summary:
 ---
 
-SaaS products largely look the same irrespective of functionality and that’s not a dig.
+SaaS products largely look the same irrespective of functionality. That’s not a dig it’s just where I’m spending time design wise lately.
 
-It’s typically a sidebar layout (albeit some break this) with a large content area. And depending on the challenges your product faces, be it multiple workspaces, projects, notifications or profiles sometimes you’re forced down a particular route.
+You’re likely to be familiar with the sidebar layout and a large content area. And depending on the challenges your product faces, be it multiple workspaces, projects, notifications or profiles it is the effective route. People are generally using these tools on larger screens.
 
 However, there are little moments outside of that where you can add your own choice of detail with relatively low impact on user experience. And I want to look at the frame detail as there’s a few subtle ways to differentiate this.
 
-## Sidebar variants
+## Sidebar with content variation
 
-We’ll start with the most straight forward
+The first place to start with is how the content is
 
 <Figure imageShadow enlargeable src="/images/notes/frames-of-product-ui-01.png" alt="">
 <Image src="/images/notes/frames-of-product-ui-01.png" alt="" width={960} height={640} />
