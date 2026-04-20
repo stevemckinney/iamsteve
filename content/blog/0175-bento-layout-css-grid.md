@@ -1,7 +1,7 @@
 ---
-title: Bento grid layout with CSS grid and container queries
+title: Build a bento grid layout with CSS
 date: '2024-07-02T14:58:09.706Z'
-lastmod: '2024-07-02T14:58:09.706Z'
+lastmod: '2026-04-20T17:48:51.000Z'
 summary: Bento grids offer a unique layout challenge for CSS. With the use of Tailwind you can create a flexible layout with modern CSS grid and @container queries.
 metadesc: Build a responsive bento grid using CSS grid, container queries and Tailwind. Includes a Figma design file and complete code on GitHub.
 theme: '#fcf9f8'
@@ -18,9 +18,9 @@ id: 175
 fileroot: bento-grid-with-css-grid
 ---
 
-There’s a lot of discussion happening around whether masonry is needed in CSS. And this discussion brings in things like bento grids. It inspired me to create a bento grid using today’s CSS grid and @container queries.
+Bento grids are an interesting layout pattern, and CSS grid handles them well. This post covers building a bento with CSS grid and `@container` queries to make subtle adjustments throughout. The idea was inspired by the discussion around whether masonry is needed in CSS at the time of writing.
 
-For this example masonry isn’t required&thinsp;&mdash;&thinsp;we have a known number of items with predetermined sizes, so CSS grid handles it well. That said, masonry would shine if you had a variable number of items or unpredictable content heights&thinsp;&mdash;&thinsp;it’s something I would like to see part of CSS in whatever way it ends up being.
+For this example, masonry isn’t required&thinsp;&mdash;&thinsp;we have a known number of items with predetermined sizes, so CSS grid is all we need.
 
 <Blockquote style="notice">I make the assumption that you’re comfortable setting up Tailwind for your project</Blockquote>
 
