@@ -13,6 +13,7 @@ const LINK_HEADER = [
 const MARKDOWN_ACCEPT = /(^|,\s*)text\/markdown(\s*;|\s*,|\s*$)/i
 
 const MARKDOWN_ROUTES = [
+  { pattern: /^\/$/, target: () => '/api/content/home' },
   { pattern: /^\/blog\/(.+)$/, target: (slug) => `/api/content/${slug}` },
   {
     pattern: /^\/notes\/(.+)$/,
