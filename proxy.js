@@ -10,28 +10,28 @@ const LINK_HEADER = [
   '</robots.txt>; rel="https://www.rfc-editor.org/rfc/rfc9309"; type="text/plain"',
 ].join(', ')
 
-function wantsMarkdown(accept) {
-  if (!accept) return false
-  return /(^|,\s*)text\/markdown(\s*;|\s*,|\s*$)/i.test(accept)
-}
+const MARKDOWN_ACCEPT = /(^|,\s*)text\/markdown(\s*;|\s*,|\s*$)/i
+
+const MARKDOWN_ROUTES = [
+  { pattern: /^\/blog\/(.+)$/, target: (slug) => `/api/content/${slug}` },
+  {
+    pattern: /^\/notes\/(.+)$/,
+    target: (slug) => `/api/content/notes/${slug}`,
+  },
+  {
+    pattern: /^\/collections\/(.+)$/,
+    target: (slug) => `/api/content/collections/${slug}`,
+  },
+  { pattern: /^\/uses$/, target: () => '/api/content/pages/uses' },
+  { pattern: /^\/about$/, target: () => '/api/content/pages/about' },
+]
 
 function markdownTargetFor(pathname) {
-  const blog = pathname.match(/^\/blog\/([^/]+)\/?$/)
-  if (blog) return `/api/content/${blog[1]}`
-
-  const note = pathname.match(/^\/notes\/([^/]+)\/?$/)
-  if (note) return `/api/content/notes/${note[1]}`
-
-  const collection = pathname.match(/^\/collections\/([^/]+)\/?$/)
-  if (collection) return `/api/content/collections/${collection[1]}`
-
-  if (pathname === '/uses' || pathname === '/uses/') {
-    return '/api/content/pages/uses'
+  const normalized = pathname.replace(/\.md$/, '').replace(/\/$/, '') || '/'
+  for (const { pattern, target } of MARKDOWN_ROUTES) {
+    const match = normalized.match(pattern)
+    if (match) return target(match[1])
   }
-  if (pathname === '/about' || pathname === '/about/') {
-    return '/api/content/pages/about'
-  }
-
   return null
 }
 
@@ -74,7 +74,6 @@ const GONE_PREFIXES = ['/Users/']
 export function proxy(request) {
   const { pathname } = request.nextUrl
 
-  // Return 410 Gone for removed resources
   if (GONE_PATHS.includes(pathname)) {
     return new NextResponse(null, { status: 410 })
   }
@@ -85,7 +84,6 @@ export function proxy(request) {
     }
   }
 
-  // Strip junk query parameters
   const url = request.nextUrl.clone()
   let stripped = false
 
@@ -100,52 +98,16 @@ export function proxy(request) {
     return NextResponse.redirect(url, 301)
   }
 
-  // Markdown content negotiation: agents that send `Accept: text/markdown`
-  // get the existing markdown API response in place of the HTML page.
-  if (wantsMarkdown(request.headers.get('accept'))) {
+  // Serve markdown when the agent asks for it via Accept header or .md suffix.
+  const acceptsMarkdown = MARKDOWN_ACCEPT.test(
+    request.headers.get('accept') || ''
+  )
+  if (acceptsMarkdown || pathname.endsWith('.md')) {
     const target = markdownTargetFor(pathname)
     if (target) {
       const rewriteUrl = request.nextUrl.clone()
       rewriteUrl.pathname = target
       return withDiscoveryHeaders(NextResponse.rewrite(rewriteUrl))
-    }
-  }
-
-  // Handle .md extension requests
-  if (pathname.endsWith('.md')) {
-    // Blog posts
-    if (pathname.startsWith('/blog/')) {
-      const slug = pathname.replace(/^\/blog\//, '').replace(/\.md$/, '')
-      return NextResponse.rewrite(new URL(`/api/content/${slug}`, request.url))
-    }
-
-    // Collections
-    if (pathname.startsWith('/collections/')) {
-      const slug = pathname.replace(/^\/collections\//, '').replace(/\.md$/, '')
-      return NextResponse.rewrite(
-        new URL(`/api/content/collections/${slug}`, request.url)
-      )
-    }
-
-    // Static pages (uses, about)
-    if (pathname === '/uses.md') {
-      return NextResponse.rewrite(
-        new URL('/api/content/pages/uses', request.url)
-      )
-    }
-
-    if (pathname === '/about.md') {
-      return NextResponse.rewrite(
-        new URL('/api/content/pages/about', request.url)
-      )
-    }
-
-    // Notes
-    if (pathname.startsWith('/notes/')) {
-      const slug = pathname.replace(/^\/notes\//, '').replace(/\.md$/, '')
-      return NextResponse.rewrite(
-        new URL(`/api/content/notes/${slug}`, request.url)
-      )
     }
   }
 
