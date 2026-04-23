@@ -1,19 +1,19 @@
 ---
-title: "Pro Dev Day"
-date: "2010-11-10T20:39:00+00:00"
-lastmod: "2021-06-03T06:04:23+00:00"
-summary: "Reflections on attending Pro Dev Day as a final year student — talking to companies, learning what employers actually want, and what the day taught me."
-metadesc: "A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
-theme: "#ffede5"
-tags: ["Website"]
-categories: ["Website"]
-ogImage: "/opengraph-image.png"
-status: "draft"
+title: 'Pro Dev Day'
+date: '2010-11-10T20:39:00+00:00'
+lastmod: '2021-06-03T06:04:23+00:00'
+summary: 'Reflections on attending Pro Dev Day as a final year student — talking to companies, learning what employers actually want, and what the day taught me.'
+metadesc: 'A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS.'
+theme: '#ffede5'
+tags: ['Website']
+categories: ['Website']
+ogImage: '/opengraph-image.png'
+status: 'draft'
 id: 17
-fileroot: "pro_dev_day"
+fileroot: 'pro_dev_day'
 ---
 
-Today was Pro Dev Day, it's a few hours of a lot of companies and freelancers willing to talk to students and anyone really about their company. Some have job placements or permanent jobs available for graduates, which is great for someone like me in their final year of University. While that's briefly about what it is here's the website: [http://prodevday.com](http://prodevday.com/ "Pro Dev Day website for full information").
+Today was Pro Dev Day, it's a few hours of a lot of companies and freelancers willing to talk to students and anyone really about their company. Some have job placements or permanent jobs available for graduates, which is great for someone like me in their final year of University. While that's briefly about what it is here's the website: [http://prodevday.com](http://prodevday.com/ 'Pro Dev Day website for full information').
 
 ## Overview of my day
 

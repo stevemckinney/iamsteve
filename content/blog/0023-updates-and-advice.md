@@ -1,16 +1,16 @@
 ---
-title: "Updates and advice"
-date: "2011-04-06T09:04:00+00:00"
-lastmod: "2021-06-03T07:39:19+00:00"
-summary: "A quick update on university deadlines keeping me away from posting, plus some advice on getting started in web design as a student."
-metadesc: "A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS."
-theme: "#e1f7ee"
-tags: ["Website"]
-categories: ["Website"]
-ogImage: "/opengraph-image.png"
-status: "draft"
+title: 'Updates and advice'
+date: '2011-04-06T09:04:00+00:00'
+lastmod: '2021-06-03T07:39:19+00:00'
+summary: 'A quick update on university deadlines keeping me away from posting, plus some advice on getting started in web design as a student.'
+metadesc: 'A blog written by Steve McKinney, focused on designing with Illustrator and writing maintainable CSS.'
+theme: '#e1f7ee'
+tags: ['Website']
+categories: ['Website']
+ogImage: '/opengraph-image.png'
+status: 'draft'
 id: 23
-fileroot: "updates_and_advice"
+fileroot: 'updates_and_advice'
 ---
 
 ## What's been going on
@@ -19,7 +19,7 @@ So since the update I haven't really posted. The reason being I have had a lot o
 
 ## My advice to fellow people like me
 
-I was fairly worried about finding a job when graduating but a lot begin to go up for graduates around the start of March, while this is a good time to start looking. Make considerations for whether you want a break or not, this is a big deciding part of when you finish, do you want a break? More than likely the answer is yes, but you may think what if it takes 6 months to find a job? Well that's a long break and some people will find it more difficult than others to find a job. The jobs are all available now, which is why I went ahead and found one, I thought it would be a definite missed opportunity. It depends on you as a person and I thought it was the best thing to do. If you don't have industry experience like me and you want a break, I would start looking fairly soon for a job, as I'm not sure how often graduate jobs stay around for but they certainly are more vast between March and May (I'm guessing). Even if you end up having a year out, it won't be the end of the world as you can try gain improvement in your skills and favourite areas. You won't have the nag of university work, so while you don't have a job you should focus on what's probably been said a lot to you 'get your name out there'. It's difficult, but joining in communities such as [Forrst](http://forrst.com "A web community focused on a lot of web technologies"), [Dribbble](http://dribbble.com "Dribbble is primarily a design community") and [LoveDsgn](http://lovedsgn.com "Like Dribbble, LoveDsgn is a design community too.") to name a few. These places generally offer feedback too and can offer advice, which can be super helpful.
+I was fairly worried about finding a job when graduating but a lot begin to go up for graduates around the start of March, while this is a good time to start looking. Make considerations for whether you want a break or not, this is a big deciding part of when you finish, do you want a break? More than likely the answer is yes, but you may think what if it takes 6 months to find a job? Well that's a long break and some people will find it more difficult than others to find a job. The jobs are all available now, which is why I went ahead and found one, I thought it would be a definite missed opportunity. It depends on you as a person and I thought it was the best thing to do. If you don't have industry experience like me and you want a break, I would start looking fairly soon for a job, as I'm not sure how often graduate jobs stay around for but they certainly are more vast between March and May (I'm guessing). Even if you end up having a year out, it won't be the end of the world as you can try gain improvement in your skills and favourite areas. You won't have the nag of university work, so while you don't have a job you should focus on what's probably been said a lot to you 'get your name out there'. It's difficult, but joining in communities such as [Forrst](http://forrst.com 'A web community focused on a lot of web technologies'), [Dribbble](http://dribbble.com 'Dribbble is primarily a design community') and [LoveDsgn](http://lovedsgn.com 'Like Dribbble, LoveDsgn is a design community too.') to name a few. These places generally offer feedback too and can offer advice, which can be super helpful.
 
 ## Building a portfolio!
 

@@ -99,6 +99,28 @@ const nextConfig = {
         source: '/:path*',
         headers: [...securityHeaders],
       },
+      {
+        source: '/.well-known/agent-skills/:path*.md',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/markdown; charset=utf-8',
+          },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
+      {
+        source: '/.well-known/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
     ]
 
     // Caching headers only for production
@@ -340,6 +362,11 @@ const nextConfig = {
       },
       {
         source: '/$',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/index',
         destination: '/',
         permanent: true,
       },

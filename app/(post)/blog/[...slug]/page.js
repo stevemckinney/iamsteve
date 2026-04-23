@@ -48,7 +48,7 @@ import styles from './post.module.css'
 
 export async function generateStaticParams() {
   return allPosts
-    .filter((post) => post.status === 'open')
+    .filter((post) => post.status === 'open' || post.status === 'unlisted')
     .map((post) => ({
       slug: post.slugAsParams.split('/'),
     }))
@@ -59,7 +59,9 @@ async function getPostFromParams(params, showDrafts = false) {
   const slug = params?.slug?.join('/')
   const post = allPosts.find((post) => {
     const slugMatch = post.slugAsParams === slug
-    const statusMatch = showDrafts ? true : post.status === 'open'
+    const statusMatch = showDrafts
+      ? true
+      : post.status === 'open' || post.status === 'unlisted'
     return slugMatch && statusMatch
   })
 
