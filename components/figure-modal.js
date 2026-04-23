@@ -476,15 +476,17 @@ export function FigureModal({ children, src, alt }) {
       )}
     >
       <Button
-        className="relative group cursor-zoom-in text-left my-4"
+        className="group cursor-zoom-in text-left my-4 block w-full"
         aria-label={`Enlarge image: ${alt}`}
       >
-        {children}
-        <span
-          aria-hidden="true"
-          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-200 bg-[light-dark(theme(--color-neutral-01-50/.8),theme(--color-fern-1100/.8))] backdrop-blur-md shadow-reduced p-2 rounded-sm"
-        >
-          <Icon icon="enlarge" size={16} />
+        <span className="relative block">
+          {children}
+          <span
+            aria-hidden="true"
+            className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-200 bg-[light-dark(theme(--color-neutral-01-50/.8),theme(--color-fern-1100/.8))] backdrop-blur-md shadow-reduced p-2 rounded-sm"
+          >
+            <Icon icon="enlarge" size={16} />
+          </span>
         </span>
       </Button>
     </Modal>
