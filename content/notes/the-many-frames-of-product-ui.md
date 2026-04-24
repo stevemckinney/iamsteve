@@ -5,9 +5,9 @@ status: published
 summary:
 ---
 
-SaaS products largely look the same irrespective of functionality. People are generally using these tools on larger screens and they serve a functional purpose. That’s not a dig it’s just where I’m spending time design wise lately.
+SaaS products largely look the same irrespective of functionality. They serve a functional purpose, so familiarity drives this. That’s not a dig&thinsp;—&thinsp;it’s just where I’m spending time design wise lately.
 
-However, there are little moments outside of that where you can add your own choice of detail without affecting user experience too much (I guess).
+However, there are little moments outside of that where you can add your own choice of detail without degrading user experience.
 
 ## Sidebar with content variation
 
@@ -18,26 +18,32 @@ You’re likely to be familiar with the sidebar layout and a large content area.
 <Figcaption>Sidebar and content area divided by contrasting background colour</Figcaption>
 </Figure>
 
+This is the most common approach. It keeps things easy to manage from a code point of view as well.
+
 <Figure imageShadow enlargeable src="/images/notes/frames-of-product-ui-02.png" alt="">
 <Image src="/images/notes/frames-of-product-ui-02.png" alt="" width={960} height={640} />
-<Figcaption>Rounded content frame to create a defining border</Figcaption>
+<Figcaption>Rounded content frame with padding to define the edge</Figcaption>
 </Figure>
+
+When I say from a code point of view, this is the variation that trips you up. You have to make the content area scroll, then think about where to undo that for smaller screens.
 
 <Figure imageShadow enlargeable src="/images/notes/frames-of-product-ui-03.png" alt="">
 <Image src="/images/notes/frames-of-product-ui-03.png" alt="" width={960} height={640} />
-<Figcaption>Top padding plus rounded top left corner</Figcaption>
+<Figcaption>Less defined border with top padding and a rounded top left corner</Figcaption>
 </Figure>
+
+A halfway point. But do you keep the top-right corner in view, or let it scroll away?
 
 <Figure imageShadow enlargeable src="/images/notes/frames-of-product-ui-05.png" alt="">
 <Image src="/images/notes/frames-of-product-ui-05.png" alt="" width={960} height={640} />
 <Figcaption>Relies on borders for hierarchy</Figcaption>
 </Figure>
 
-The variations split between drawing attention away from the sidebar and then adding a stylistic twist to the content. Each come with their own benefits. And how you approach the scrolling could make it feel more like a ‘desktop app’.
+Visually, the variations split between drawing attention away from the sidebar and then adding a stylistic twist to the content. Each comes with their own benefits. And how you approach the scrolling could make it feel more like a ‘desktop app’.
 
 ### Multiple workspaces or accounts
 
-Think Slack or Discord, lots of products have ways to manage multiple accounts and workspaces. It’s a tricky one as it can add confusion to the mental model of managing an account.
+Think Slack or Discord&thinsp;—&thinsp;lots of products have ways to manage multiple accounts and workspaces. It’s tricky because it muddies the mental model of managing an account.
 
 <Figure imageShadow enlargeable src="/images/notes/frames-of-product-ui-04.png" alt="">
 <Image src="/images/notes/frames-of-product-ui-04.png" alt="" width={960} height={640} />
@@ -62,31 +68,29 @@ I like it in the sense that you don’t end up with nested sidebars when the fea
 <Figcaption>Settings mode with back button to “app”</Figcaption>
 </Figure>
 
-Which is probably why it’s a rarity. As a lot of products seem to address the sidebar issue&thinsp;—&thinsp;where it regards “settings”&thinsp;—&thinsp;by entering a mode.
+Which is probably why it’s a rarity&thinsp;—&thinsp;a lot of products seem to address the sidebar issue, where it regards “settings”, by entering a mode.
 
 ## Tables
 
-Another side to this is how your product deals with tables. Do you go with a contrasting background, add a shadow, keep it flush or add padding? These are all decisions you can find yourself competing against.
+Another side to this is how your product deals with tables. Do you go with a contrasting background, add a shadow, keep it flush or add padding? These are all decisions you’ll find yourself weighing up.
 
 <Figure imageShadow enlargeable src="/images/notes/frames-of-product-ui-table-01.png" alt="">
 <Image src="/images/notes/frames-of-product-ui-table-01.png" alt="" width={960} height={640} />
-<Figcaption>Contrasting background</Figcaption>
+<Figcaption>Table with a contrasting background</Figcaption>
 </Figure>
 
-Having a contrasting background is useful to differentiate the interactive areas. Equally this could be a shadow. I find this one allows you a bit more freedom to change row hover colours and table headers if needs be.
+Having a contrasting background is useful to differentiate the interactive areas. Equally this could be a shadow. I find this one allows you a bit more freedom to change row and header styling.
 
 <Figure imageShadow enlargeable src="/images/notes/frames-of-product-ui-table-03.png" alt="">
 <Image src="/images/notes/frames-of-product-ui-table-03.png" alt="" width={960} height={640} />
 <Figcaption>Flush with content container</Figcaption>
 </Figure>
 
-I like this approach as it feels like an app. The challenges come with colour choices, as it can unsettle the balance with your choice of sidebar colour. Technically this feels like a "layer" above the sidebar so choosing a daker colour pushes that back down.
+I like this approach as it feels like an app. The challenges come with colour choices, as it can unsettle the balance with your choice of sidebar colour. Technically this feels like a ‘layer’ above the sidebar so choosing a darker colour pushes that back down.
 
 <Figure imageShadow enlargeable src="/images/notes/frames-of-product-ui-table-04.png" alt="">
 <Image src="/images/notes/frames-of-product-ui-table-04.png" alt="" width={960} height={640} />
-<Figcaption>Alternative contrasting background</Figcaption>
+<Figcaption>Alternative contrasting background against header at the top</Figcaption>
 </Figure>
 
-Each choice here can really set the tone throughout your product.
-
-This is by no means exhaustive, but gives something to think about.
+Each choice here sets the tone throughout your product, so it’s worth thinking about what you’re committing to. This is by no means exhaustive, but it’s a detail I wanted to take a look at.
