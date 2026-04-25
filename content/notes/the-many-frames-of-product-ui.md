@@ -1,6 +1,6 @@
 ---
 title: The many frames of product UI
-date: '2026-04-11T12:00:00.000Z'
+date: '2026-04-25T13:00:00.000Z'
 status: published
 summary:
 ---
