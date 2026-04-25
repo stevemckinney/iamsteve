@@ -21,6 +21,7 @@ export default function robots() {
         disallow: [
           '/_next/image',
           '/_next/data',
+          '/search?q=',
           '/*?URL=',
           '/*?_rsc=',
           '/*?PageSpeed=',
