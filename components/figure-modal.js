@@ -450,14 +450,12 @@ function LightboxContent({ src, alt, close }) {
           ref={imgRef}
           src={src}
           alt={alt}
+          fetchPriority="high"
+          decoding="async"
           onLoad={(e) => {
-            const { naturalWidth, naturalHeight } = e.target
-            const img = imgRef.current
-            img.width = Math.round(naturalWidth / 2)
-            img.height = Math.round(naturalHeight / 2)
             fitDimensionsRef.current = {
-              w: img.offsetWidth,
-              h: img.offsetHeight,
+              w: e.target.offsetWidth,
+              h: e.target.offsetHeight,
             }
           }}
           draggable={false}
