@@ -1,13 +1,69 @@
 # iamsteve.me Claude guidelines
 
-## General coding
+## 1. Think Before Coding
+
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
+
+Before implementing:
+- State your assumptions explicitly. If uncertain, ask.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
+
+## 2. Simplicity First
+
+**Minimum code that solves the problem. Nothing speculative.**
+
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
+
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+
+## 3. Surgical Changes
+
+**Touch only what you must. Clean up only your own mess.**
+
+When editing existing code:
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
+
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
+
+The test: Every changed line should trace directly to the user's request.
+
+## 4. Goal-Driven Execution
+
+**Define success criteria. Loop until verified.**
+
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
+
+For multi-step tasks, state a brief plan:
+```
+1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]
+```
+
+Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+
+## 5. General coding
 
 - Use 2 spaces for indentation
 - Prefer Next.js App Router
 - Strictly tailwindcss, do not use @apply and where something may have regular CSS look to convert to tailwind. When writing class names prefer kebab-case.
 - Keep it short but not purposefully abbreviated: `Navigation` not `Nav`, `Card` not `ContentCard`, `Link` not `TextLink`.
 
-## Writing style
+## 6. Writing style
 
 - Hanging lists and punctuation
 - Avoid punctuating titles where possible
@@ -15,7 +71,7 @@
   In HTML, “curly quotes” are typically these Unicode characters (with their HTML entity and numeric forms):
 - Use British English
 
-## Dashes
+## 7. Dashes
 
 Use the correct type of dash when necessary.
 
@@ -34,7 +90,7 @@ MUST use the correct quote. For contractions you should use a curly quote (this 
 | “         | Left double quotation mark  | `U+201C` | `&ldquo;`   | `&#8220;` or `&#x201C;` |
 | ”         | Right double quotation mark | `U+201D` | `&rdquo;`   | `&#8221;` or `&#x201D;` |
 
-## A11y checklist
+## 8. A11y checklist
 
 - Keyboard navigation works
 - Screen reader friendly
@@ -44,14 +100,14 @@ MUST use the correct quote. For contractions you should use a curly quote (this 
 - Form labels present
 - Heading hierarchy logical
 
-## When to break rules
+## 9. When to break rules
 
 - Framework components: Complex state management
 - Client-side JS: Real-time features, heavy interactions
 - Longer names: When brevity hurts clarity
 - ARIA: When semantic HTML isn’t sufficient
 
-## Icons
+## 10. Icons
 
 SVG icons are served as a sprite system. Source SVGs live in `public/icon/16/` and `public/icon/24/`. Run `node scripts/generate-icon-sprite.js` after adding or changing any SVG — this regenerates `components/icon/sprite-16.js` and `components/icon/sprite-24.js`.
 
@@ -72,6 +128,5 @@ Some icon names are aliased: `everything`, `archive`, `all`, `folder` → `folde
 
 The sprite is mounted once via `components/icon/sprite.js` and icons are referenced with `<use xlinkHref="#name-size" />`.
 
-## You might not need an effect
-
-- https://react.dev/learn/you-might-not-need-an-effect
+## 12. You might not need an effect
+It's important useEffect is avoided where possible and only used if absolutely necessary. reference: https://react.dev/learn/you-might-not-need-an-effect
