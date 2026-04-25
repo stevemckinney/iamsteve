@@ -1,4 +1,4 @@
-import Link from './Link'
+import Link from './link'
 import { useRouter } from 'next/router'
 import headerNavLinks from '@/data/headerNavLinks'
 import Icon from '@/components/icon/index.js'

@@ -106,6 +106,7 @@ const NewsletterForm = ({
       <div className={className}>
         {subscribed && (
           <div
+            role="status"
             className={cn(
               'bg-grass-50/40',
               'rounded-sm',
@@ -122,6 +123,7 @@ const NewsletterForm = ({
         )}
         {error && (
           <div
+            role="alert"
             className={cn(
               'bg-rio-50/40',
               'rounded-sm',
@@ -221,9 +223,17 @@ const NewsletterForm = ({
                 required
                 disabled={subscribed}
                 onChange={() => setEmailError('')}
+                aria-invalid={emailError ? 'true' : undefined}
+                aria-describedby={
+                  emailError ? `input-email-${unique}-error` : undefined
+                }
               />
               {emailError && (
-                <p className={cn('text-red-500', 'text-sm', 'mt-1')}>
+                <p
+                  id={`input-email-${unique}-error`}
+                  role="alert"
+                  className={cn('text-red-500', 'text-sm', 'mt-1')}
+                >
                   {emailError}
                 </p>
               )}

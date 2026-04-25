@@ -12,7 +12,7 @@ import CardLayout from '@/layouts/CardLayout'
 import Card from '@/components/card'
 import Icon from '@/components/icon'
 import Link from '@/components/link'
-import Pagination from '@/components/Pagination'
+import Pagination from '@/components/pagination'
 import Tag from '@/components/Tag'
 
 export default function Search({
