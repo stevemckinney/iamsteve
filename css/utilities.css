@@ -183,10 +183,26 @@
 
 @utility drop-shadow-image {
   filter: light-dark(
-    drop-shadow(0px 8px 12px rgba(117, 99, 98, 0.12))
-      drop-shadow(0px 3px 4px rgba(117, 99, 98, 0.12)),
-    drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.4))
-      drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.3))
+    drop-shadow(0px 0.5px 0.5px rgb(117 99 98 / 0.6))
+      drop-shadow(0px 1px 1px rgb(117 99 98 / 0.3))
+      drop-shadow(0px 2px 1px rgb(117 99 98 / 0.08))
+      drop-shadow(0px 3px 1px rgb(117 99 98 / 0.08))
+      drop-shadow(0px 6px 1px rgb(117 99 98 / 0.05)),
+    drop-shadow(0px 1px 1px rgb(0 0 0 / 0.4))
+      drop-shadow(0px 2px 1px rgb(0 0 0 / 0.1))
+      drop-shadow(0px 3px 1px rgb(0 0 0 / 0.1))
+  );
+}
+
+@utility drop-shadow-image-modal {
+  filter: light-dark(
+    drop-shadow(0px 1px 1px rgb(117 99 98 / 0.4))
+      drop-shadow(0px 2px 1px rgb(117 99 98 / 0.1))
+      drop-shadow(0px 3px 1px rgb(117 99 98 / 0.1)),
+    drop-shadow(0px 1px 1px rgb(0 0 0 / 0.4))
+      drop-shadow(0px 2px 1px rgb(0 0 0 / 0.1))
+      drop-shadow(0px 3px 1px rgb(0 0 0 / 0.1))
+      drop-shadow(0px 6px 24px rgb(0 0 0 / 0.4))
   );
 }
 

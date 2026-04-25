@@ -17,8 +17,9 @@ const figureComponents = {
     ...props
   }) => {
     const figureClass =
-      `${imageShadow ? '[&_img]:drop-shadow-image' : ''} ${className}`.trim() ||
-      undefined
+      `${
+        imageShadow ? '[&_img]:drop-shadow-image [&_img]:rounded-sm' : ''
+      } ${className}`.trim() || undefined
     if (enlargeable) {
       return (
         <FigureModal src={src} alt={alt} className="group/modal">

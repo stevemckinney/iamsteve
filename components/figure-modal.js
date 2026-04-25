@@ -451,13 +451,17 @@ function LightboxContent({ src, alt, close }) {
           src={src}
           alt={alt}
           onLoad={(e) => {
+            const { naturalWidth, naturalHeight } = e.target
+            const img = imgRef.current
+            img.width = Math.round(naturalWidth / 2)
+            img.height = Math.round(naturalHeight / 2)
             fitDimensionsRef.current = {
-              w: e.target.offsetWidth,
-              h: e.target.offsetHeight,
+              w: img.offsetWidth,
+              h: img.offsetHeight,
             }
           }}
           draggable={false}
-          className="block max-w-[calc(100vw-4rem)] max-h-[calc(100vh-4rem)] object-contain drop-shadow-image pointer-events-none"
+          className="block max-w-[calc(100vw-4rem)] max-h-[calc(100vh-4rem)] object-contain drop-shadow-image-modal pointer-events-none rounded-sm"
         />
       </motion.div>
     </Button>
@@ -472,15 +476,17 @@ export function FigureModal({ children, src, alt }) {
       )}
     >
       <Button
-        className="relative group cursor-zoom-in block w-full text-left [&_img]:transition-opacity [&_img]:duration-200 [&_img]:drop-shadow-placed hover:[&_img]:opacity-80"
+        className="group cursor-zoom-in text-left my-4 block w-full"
         aria-label={`Enlarge image: ${alt}`}
       >
-        {children}
-        <span
-          aria-hidden="true"
-          className="absolute top-8 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-canvas shadow-reduced p-2 rounded-sm"
-        >
-          <Icon icon="enlarge" size={16} />
+        <span className="relative block">
+          {children}
+          <span
+            aria-hidden="true"
+            className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity ease-out duration-200 bg-[light-dark(theme(--color-neutral-01-50/.8),theme(--color-fern-1100/.8))] backdrop-blur-md shadow-reduced p-2 rounded-sm"
+          >
+            <Icon icon="enlarge" size={16} />
+          </span>
         </span>
       </Button>
     </Modal>
