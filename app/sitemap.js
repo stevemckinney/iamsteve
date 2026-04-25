@@ -3,7 +3,10 @@ import { allPosts, allNotes } from 'content-collections'
 
 export default async function generateSitemap() {
   let posts = allPosts
-    .filter((post) => post.status === 'open')
+    .filter(
+      (post) =>
+        (post.status === 'open' || post.status === 'unlisted') && !post.noindex
+    )
     .map((post) => ({
       url: `${siteMetadata.siteUrl}${post.slug}`,
       lastModified: post.lastmod,
@@ -23,6 +26,7 @@ export default async function generateSitemap() {
   let routes = [
     { route: '', priority: 1.0, changeFrequency: 'daily' },
     { route: '/blog', priority: 0.9, changeFrequency: 'daily' },
+    { route: '/search', priority: 0.4, changeFrequency: 'monthly' },
     { route: '/collections', priority: 0.7, changeFrequency: 'weekly' },
     { route: '/about', priority: 0.5, changeFrequency: 'monthly' },
     { route: '/uses', priority: 0.4, changeFrequency: 'monthly' },

@@ -2,7 +2,7 @@
 title: 'A guide to vertical rhythm'
 date: '2015-08-11T06:41:00+00:00'
 lastmod: '2018-10-15T11:09:25+00:00'
-summary: 'Vertical rhythm is the typographic practice, to create a vertical harmony between text, images and so on. On the web it’s quite difficult to achieve. Yet understanding what it is, with the aim to maintain it, you can improve your reading experience. If you’re aware of it, but have struggled to understand vertical rhythm, this post is for you. It will focus more on the why, rather than the how. So you come away with a better understanding.'
+summary: ‘Vertical rhythm creates visual harmony between text and other elements on a page. This guide focuses on the why rather than the how, to build a solid understanding.’
 metadesc: "If you've ever struggled with how vertical rhythm is achieved, I will guide you through how you choose a baseline, sizing and images."
 theme: '#fffbee'
 tags: ['Design']

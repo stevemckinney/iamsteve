@@ -1,16 +1,16 @@
 ---
-title: "How to: datepicker using Illustrator"
-date: "2016-05-10T07:45:00+0100"
-lastmod: "2016-08-28T09:18:26+00:00"
-summary: "In this post I’m going to show you how to make a datepicker efficiently. A reasonably common user interface element, but can be a source of frustration, to make in design applications. Due to the grid, and amount of items in that grid it can be difficult to align everything…"
-metadesc: "Following on from the datepicker post where it was more about getting the basics in place and focusing on some important Illustrator techniques that allow for accuracy and efficiency. "
-theme: "#ffede5"
-tags: ["Design"]
-categories: ["Design"]
-ogImage: "/opengraph-image.png"
-status: "open"
+title: 'How to: datepicker using Illustrator'
+date: '2016-05-10T07:45:00+0100'
+lastmod: '2016-08-28T09:18:26+00:00'
+summary: 'How to design a datepicker efficiently in Illustrator. The grid layout makes alignment tricky — this post uses split into grid and align tools to tackle it.'
+metadesc: 'Following on from the datepicker post where it was more about getting the basics in place and focusing on some important Illustrator techniques that allow for accuracy and efficiency. '
+theme: '#ffede5'
+tags: ['Design']
+categories: ['Design']
+ogImage: '/opengraph-image.png'
+status: 'open'
 id: 125
-fileroot: "how-to-datepicker-using-illustrator"
+fileroot: 'how-to-datepicker-using-illustrator'
 ---
 
 In this post I’m going to show you how to make a datepicker efficiently. A reasonably common user interface element, but can be a source of frustration, to make in design applications. Due to the grid, and amount of items in that grid it can be difficult to align everything quickly in an application like Illustrator.
@@ -18,12 +18,15 @@ In this post I’m going to show you how to make a datepicker efficiently. A rea
 The purpose of this post, is to use it as an opportunity, to show use cases of the split into grid and align tools. If you have ever wondered how to align something in place in Illustrator, read on.
 
 ## Feel free to download the document
+
 This won’t be focusing on the more visual style and implementing hierarchy, in this post, next week I will cover that. If you would like to skip ahead, [you can download the template](https://www.dropbox.com/s/smpvf0ffy2yxnrh/datepicker.ai?dl=0).
 
 ## Make a new document
+
 The first step is to setup a new document, the size isn’t too important, but I’ve made an 800⨉800 web artboard.
 
 ## Make the main rectangle
+
 **Press <kbd>m</kbd> or select the rectangle tool**. Then click anywhere on the artboard, you will be presented with a window to add dimensions.
 
 <div className="article-image">
@@ -33,6 +36,7 @@ The first step is to setup a new document, the size isn’t too important, but I
 **Make the rectangle 280⨉240**, you can make this larger if you like, but **the width must be able to be divided by 7 and the height divided by 6**. The values must end up being whole numbers. In this case 280⨉240 each square ends up being 40⨉40.
 
 ## Fill the rectangle for visibility
+
 Your rectangle may have drawn with a black stroke by default, remove that by pressing <kbd>x</kbd>, this should activate selection of the stroke, then press <kbd>/</kbd>.
 
 <div className="article-image">
@@ -42,6 +46,7 @@ Your rectangle may have drawn with a black stroke by default, remove that by pre
 An alternate method is to double click on the fill and choose a colour, then click the fill and box with the red line through it just below.
 
 ## Split into grid
+
 This is such a powerful tool within Illustrator and is by far the quickest method. **Select your rectangle then go to Object > Path > Split into Grid**.
 
 ### Add 6 rows and 7 columns
@@ -53,14 +58,17 @@ This is such a powerful tool within Illustrator and is by far the quickest metho
 As the image demonstrates adding 6 rows and 7 columns allows both the width and height to be 40px.
 
 ### Maintain the selection
+
 One thing that happens when you split into grid, is the amount of similar items it creates. So you will want to press <kbd>cmd</kbd> + <kbd>g</kbd>. This makes it easier to move in the future.
 
 Then with it still selected, add a stroke. This will add visibility for aligning text later on.
 
 ## Day numbers
+
 The basis for the view in this date picker is May, with a view into April and June. This step is quite tedious, but the technique for aligning the numbers should be helpful. At this stage the numbers don’t need to be placed accurately.
 
 ### Add text layers and align centre
+
 <div className="article-image">
   <Image src="/images/blog/datepicker_text-center.png" width={738} height={492} />
 </div>
@@ -76,6 +84,7 @@ Add 6 numbers of the previous month from 25 to 30, 1 to fill the final day of th
 Fill in the rest of the days from there with 2–31, and finally the last row will finish with the first 5 days of June. Of course you can pick any month, the day setup will likely differ.
 
 ### Aligning the day numbers
+
 To align each number we’re going to align to key object. This will take some of annoyance out of aligning so many items centrally within boxes.
 
 <div className="article-image">
@@ -91,6 +100,7 @@ Open the align window, by going to the menu Window > Align. Then you need to cli
 **Before you skip ahead**, there is a process to doing this. Instead of individually selecting and aligning each item, if you do it by row then or column, you can drastically reduce the amount of clicking you need to do.
 
 ### Aligning by row
+
 <div className="article-image">
   <Image src="/images/blog/datepicker_align-by-row.png" width={738} height={492} />
 </div>
@@ -100,6 +110,7 @@ Select a row of squares and numbers. **With the items selected change align to �
 **Finally, you can ‘Vertical Align Centre’, in the align panel, repeating this process for each row**.
 
 ### Aligning by column
+
 <div className="article-image">
   <Image src="/images/blog/datepicker_align-by-column.png" width={738} height={492} />
 </div>
@@ -109,6 +120,7 @@ Similarly to aligning by the row select a column, change align to ‘Align to Ke
 > Maybe you have a quicker way of doing this? [I’d like to hear](https://twitter.com/irsteve).
 
 ## Days of the week
+
 Press <kbd>m</kbd> to select the rectangle tool, and click the artboard and add a rectangle that is 280⨉24. This will offer a sufficient space for the days of the week. The height of this is debatable, I prefer to make the height smaller, as it’s not the main focus. The next post will cover the finer details on visual hierarchy.
 
 <figure>
@@ -119,6 +131,7 @@ Press <kbd>m</kbd> to select the rectangle tool, and click the artboard and add 
 Press <kbd>t</kbd> or select the type tool and add individual type layers for the days of the week. **They should also be aligned centrally like the day numbers and placed very close to the right location**.
 
 ### Aligning the days
+
 <div className="article-image">
   <Image src="/images/blog/datepicker_day-alignment.png" width={738} height={492} />
 </div>
@@ -128,6 +141,7 @@ Now you will want to align each of the days, again the most accurate way to do t
 However, this time you will only need to select a day and one of the day number squares directly below it. After that, in the align panel, choose Align to Key Object. Then click your square to make it the key object. Finally to align the day use ‘Align Horizontal Center’.
 
 ## Current month and year
+
 <div className="article-image">
   <Image src="/images/blog/datepicker_current-month.png" width={738} height={492} />
 </div>
@@ -137,12 +151,15 @@ Now to add another rectangle to accommodate the current month and year, select t
 Press <kbd>t</kbd> or select the type tool and add the month and year.
 
 ## Next and previous months
+
 With a datepicker, you will need to navigate months, more often than not. So you will need some arrows, which are reasonably easy to make in Illustrator.
 
 ### Making an arrow
+
 Press <kbd>\\</kbd> or select the Line Segment Tool. Click on your artboard and set the length to be 12px with a 0° angle. Repeat this process, and make another line that has a 90° angle.
 
 #### Choose a reference point
+
 Now we need the correct alignment. To do this most accurately, in this particular case you need to select the bottom left reference point. To do this open the transform panel by going to Window > Transform.
 
 <div className="article-image">
@@ -154,6 +171,7 @@ Once you have selected the bottom left reference point your horizontal line shou
 > I use this method because I always find snapping points to be hit and miss. However, you can drag the lines to the correct locations and see how you go, but this technique removes any doubts.
 
 #### Joining and rotating the lines
+
 Now to make sure both of the lines are part of the same path. Using the direct selection tool (by pressing <kbd>a</kbd>) you can grab both points without selecting the whole path.
 
 <div className="article-image">
@@ -169,9 +187,11 @@ Drag and select the corner where both paths meet. Then right click the points th
 Now that we have the basic path, it needs rotating. With the path selected, highlight near one the points, and you should see the cursor change. Hold <kbd>shift</kbd>, click and drag until it snaps into the position needed for an arrow.
 
 #### Positioning
+
 Position the arrow to the left side of the datepicker month. Copy the arrow and paste in place with <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>v</kbd>. With the arrow still selected nudge it over a bit and rotate until it faces the opposite side. Position on the opposite side to the first arrow.
 
 ## Finishing
+
 <div className="article-image">
   <Image src="/images/blog/datepicker_final.png" width={738} height={492} />
 </div>

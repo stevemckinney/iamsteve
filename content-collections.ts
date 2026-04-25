@@ -127,7 +127,7 @@ const posts = defineCollection({
     codepen: z.boolean().optional(),
     twitter: z.boolean().optional(),
     id: z.number(),
-    status: z.enum(['draft', 'open', 'closed']).default('draft'),
+    status: z.enum(['draft', 'open', 'closed', 'unlisted']).default('draft'),
     noindex: z.boolean().optional(),
   }),
   transform: async (doc, ctx) => {

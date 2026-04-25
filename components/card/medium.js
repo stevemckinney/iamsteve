@@ -12,8 +12,10 @@ function autoParagraph(text) {
   return `<p>` + text.split(/\n+/).join(`</p>\n<p>`) + `</p>`
 }
 
+const HEX_REGEX = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i
+
 function hexToRgb(hex) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+  const result = HEX_REGEX.exec(hex)
   return result
     ? {
         r: parseInt(result[1], 16),

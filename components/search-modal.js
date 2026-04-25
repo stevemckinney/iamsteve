@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { ModalOverlay, Modal as AriaModal, Dialog } from 'react-aria-components'
 import { cn } from '@/lib/utils'
+import { search } from '@/lib/search'
 import Icon from '@/components/icon'
 import { navigation, library } from '@/content/navigation'
 
@@ -14,36 +15,6 @@ export async function fetchIndex() {
   const response = await fetch('/api/search')
   cache = await response.json()
   return cache
-}
-
-function search(index, query) {
-  if (!query || query.trim().length < 2) return []
-
-  const terms = query.toLowerCase().trim().split(/\s+/)
-
-  const matchScore = (text) => {
-    if (!text) return 0
-    const lower = text.toLowerCase()
-    let score = 0
-    for (const term of terms) {
-      if (lower.includes(term)) score++
-    }
-    return score
-  }
-
-  return index
-    .map((item) => {
-      const titleScore = matchScore(item.title) * 3
-      const summaryScore = matchScore(item.summary) * 2
-      const tagScore = matchScore(item.tags?.join(' '))
-      const categoryScore = matchScore(item.categories?.join(' '))
-      const total = titleScore + summaryScore + tagScore + categoryScore
-      return { ...item, score: total }
-    })
-    .filter((r) => r.score > 0)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 20)
-    .map(({ score, ...rest }) => rest)
 }
 
 function label(type) {

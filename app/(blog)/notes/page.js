@@ -117,7 +117,7 @@ export default async function NotesIndex() {
               {/* Dot */}
               <div
                 className={cn(
-                  'sticky top-8.25 self-start mb-10 size-2.5 rounded-full bg-border-medium shrink-0',
+                  'sticky top-8.25 self-start mb-10 size-2.5 rounded-full bg-border-medium ring-4 ring-canvas shrink-0',
                   index > 0 && 'mt-[13px]',
                   index === 0 && 'mt-0.5'
                 )}

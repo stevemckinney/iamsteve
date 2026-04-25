@@ -1,4 +1,3 @@
-const { codeInspectorPlugin } = require('code-inspector-plugin')
 const { withContentCollections } = require('@content-collections/next')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -83,12 +82,6 @@ const nextConfig = {
     imageSizes: [400, 600],
     qualities: [75, 100],
   },
-  webpack: (config, { dev }) => {
-    if (dev) {
-      config.plugins.push(codeInspectorPlugin({ bundler: 'webpack' }))
-    }
-    return config
-  },
   async rewrites() {
     return [
       {
@@ -105,6 +98,28 @@ const nextConfig = {
       {
         source: '/:path*',
         headers: [...securityHeaders],
+      },
+      {
+        source: '/.well-known/agent-skills/:path*.md',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/markdown; charset=utf-8',
+          },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
+      },
+      {
+        source: '/.well-known/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+        ],
       },
     ]
 
@@ -347,6 +362,11 @@ const nextConfig = {
       },
       {
         source: '/$',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/index',
         destination: '/',
         permanent: true,
       },
