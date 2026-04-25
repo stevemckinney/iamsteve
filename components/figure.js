@@ -1,4 +1,5 @@
 import { FigureModal } from '@/components/figure-modal'
+import { FigureDialog } from '@/components/figure-dialog'
 
 const figureComponents = {
   figure: (props) => <figure {...props} />,
@@ -11,6 +12,7 @@ const figureComponents = {
   Figure: ({
     imageShadow,
     enlargeable,
+    dialog,
     src,
     alt,
     className = '',
@@ -21,10 +23,11 @@ const figureComponents = {
         imageShadow ? '[&_img]:drop-shadow-image [&_img]:rounded-sm' : ''
       } ${className}`.trim() || undefined
     if (enlargeable) {
+      const Wrap = dialog ? FigureDialog : FigureModal
       return (
-        <FigureModal src={src} alt={alt} className="group/modal">
+        <Wrap src={src} alt={alt}>
           <figure className={figureClass} {...props} />
-        </FigureModal>
+        </Wrap>
       )
     }
     return <figure className={figureClass} {...props} />
