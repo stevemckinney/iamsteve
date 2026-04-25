@@ -459,7 +459,7 @@ function LightboxContent({ src, alt, close }) {
             }
           }}
           draggable={false}
-          className="block max-w-[calc(100vw-4rem)] max-h-[calc(100vh-4rem)] object-contain drop-shadow-image-modal pointer-events-none rounded-sm"
+          className="block max-w-[calc(100vw-4rem)] max-h-[calc(100vh-4rem)] object-contain pointer-events-none rounded-sm"
         />
       </motion.div>
     </Button>
