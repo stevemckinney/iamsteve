@@ -86,22 +86,17 @@ export default async function BlogCategory(props) {
 
   const parent = data.parent
 
-  const posts = await Promise.all(
-    allPosts
-      .filter((post) => {
-        const categories = post.categories.map((category) => {
-          if (typeof category === 'object' && category !== null) {
-            return 'website'
-          } else return category.replace(' ', '-').toLowerCase()
-        })
-        return categories.includes(params.slug.toLowerCase())
+  const posts = allPosts
+    .filter((post) => {
+      const categories = post.categories.map((category) => {
+        if (typeof category === 'object' && category !== null) {
+          return 'website'
+        } else return category.replace(' ', '-').toLowerCase()
       })
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .filter((post) => post.status === 'open')
-      .map(async (post) => ({
-        ...post,
-      }))
-  )
+      return categories.includes(params.slug.toLowerCase())
+    })
+    .filter((post) => post.status === 'open')
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
 
   const pageNumber = 1
   const paginatedPosts = posts.slice(

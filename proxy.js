@@ -1,5 +1,47 @@
 import { NextResponse } from 'next/server'
 
+// Agent discovery resources advertised via RFC 8288 Link headers.
+const LINK_HEADER = [
+  '</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',
+  '</.well-known/agent-skills/index.json>; rel="https://agentskills.io/rel/index"; type="application/json"',
+  '</llms.txt>; rel="https://llmstxt.org/rel/llms"; type="text/plain"',
+  '</feed.xml>; rel="alternate"; type="application/rss+xml"; title="RSS feed"',
+  '</sitemap.xml>; rel="sitemap"; type="application/xml"',
+  '</robots.txt>; rel="https://www.rfc-editor.org/rfc/rfc9309"; type="text/plain"',
+].join(', ')
+
+const MARKDOWN_ACCEPT = /(^|,\s*)text\/markdown(\s*;|\s*,|\s*$)/i
+
+const MARKDOWN_ROUTES = [
+  { pattern: /^\/$/, target: () => '/api/content/home' },
+  { pattern: /^\/blog\/(.+)$/, target: (slug) => `/api/content/${slug}` },
+  {
+    pattern: /^\/notes\/(.+)$/,
+    target: (slug) => `/api/content/notes/${slug}`,
+  },
+  {
+    pattern: /^\/collections\/(.+)$/,
+    target: (slug) => `/api/content/collections/${slug}`,
+  },
+  { pattern: /^\/uses$/, target: () => '/api/content/pages/uses' },
+  { pattern: /^\/about$/, target: () => '/api/content/pages/about' },
+]
+
+function markdownTargetFor(pathname) {
+  const normalized = pathname.replace(/\.md$/, '').replace(/\/$/, '') || '/'
+  for (const { pattern, target } of MARKDOWN_ROUTES) {
+    const match = normalized.match(pattern)
+    if (match) return target(match[1])
+  }
+  return null
+}
+
+function withDiscoveryHeaders(response) {
+  response.headers.append('Link', LINK_HEADER)
+  response.headers.set('Vary', 'Accept')
+  return response
+}
+
 const STRIP_PARAMS = [
   'URL',
   '_rsc',
@@ -12,19 +54,37 @@ const STRIP_PARAMS = [
   'M',
   'channel_id',
   'entry_id',
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+  'fbclid',
 ]
 
-const GONE_PATHS = ['/fonts/InterVariable.woff2', '/cdn-cgi/l/email-protection']
+const GONE_PATHS = [
+  '/fonts/InterVariable.woff2',
+  '/cdn-cgi/l/email-protection',
+  '/blog/:splat',
+  '/blog/entry/*',
+  '/blog/entry/[slug]',
+]
+
+const GONE_PREFIXES = ['/Users/']
 
 export function proxy(request) {
   const { pathname } = request.nextUrl
 
-  // Return 410 Gone for removed resources
   if (GONE_PATHS.includes(pathname)) {
     return new NextResponse(null, { status: 410 })
   }
 
-  // Strip junk query parameters
+  for (const prefix of GONE_PREFIXES) {
+    if (pathname.startsWith(prefix)) {
+      return new NextResponse(null, { status: 410 })
+    }
+  }
+
   const url = request.nextUrl.clone()
   let stripped = false
 
@@ -39,45 +99,20 @@ export function proxy(request) {
     return NextResponse.redirect(url, 301)
   }
 
-  // Handle .md extension requests
-  if (pathname.endsWith('.md')) {
-    // Blog posts
-    if (pathname.startsWith('/blog/')) {
-      const slug = pathname.replace(/^\/blog\//, '').replace(/\.md$/, '')
-      return NextResponse.rewrite(new URL(`/api/content/${slug}`, request.url))
-    }
-
-    // Collections
-    if (pathname.startsWith('/collections/')) {
-      const slug = pathname.replace(/^\/collections\//, '').replace(/\.md$/, '')
-      return NextResponse.rewrite(
-        new URL(`/api/content/collections/${slug}`, request.url)
-      )
-    }
-
-    // Static pages (uses, about)
-    if (pathname === '/uses.md') {
-      return NextResponse.rewrite(
-        new URL('/api/content/pages/uses', request.url)
-      )
-    }
-
-    if (pathname === '/about.md') {
-      return NextResponse.rewrite(
-        new URL('/api/content/pages/about', request.url)
-      )
-    }
-
-    // Notes
-    if (pathname.startsWith('/notes/')) {
-      const slug = pathname.replace(/^\/notes\//, '').replace(/\.md$/, '')
-      return NextResponse.rewrite(
-        new URL(`/api/content/notes/${slug}`, request.url)
-      )
+  // Serve markdown when the agent asks for it via Accept header or .md suffix.
+  const acceptsMarkdown = MARKDOWN_ACCEPT.test(
+    request.headers.get('accept') || ''
+  )
+  if (acceptsMarkdown || pathname.endsWith('.md')) {
+    const target = markdownTargetFor(pathname)
+    if (target) {
+      const rewriteUrl = request.nextUrl.clone()
+      rewriteUrl.pathname = target
+      return withDiscoveryHeaders(NextResponse.rewrite(rewriteUrl))
     }
   }
 
-  return NextResponse.next()
+  return withDiscoveryHeaders(NextResponse.next())
 }
 
 export const config = {

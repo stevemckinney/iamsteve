@@ -5,15 +5,23 @@ export const revalidate = 86400 // Revalidate daily
 export const dynamic = 'force-static'
 
 export async function GET() {
-  // Get view counts from Supabase
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  )
+  let dbPosts = null
 
-  const { data: dbPosts } = await supabase
-    .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
-    .select()
+  if (
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  ) {
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    )
+
+    const { data } = await supabase
+      .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
+      .select()
+
+    dbPosts = data
+  }
 
   const cutoffDate = new Date('2015-01-01')
 

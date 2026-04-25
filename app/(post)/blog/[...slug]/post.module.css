@@ -239,7 +239,7 @@
     text-wrap: pretty;
   }
 
-  & figure :where(figcaption) {
+  & figure :where(figcaption:not([data-rehype-pretty-code-title])) {
     padding-block-start: var(--block-space-small);
   }
 
@@ -340,7 +340,6 @@
   & :global([data-rehype-pretty-code-figure]),
   & > :global(.shiki) {
     box-shadow: var(--shadow-placed);
-    margin-inline: -2.25rem;
 
     @media (width >= 640px) {
       border-radius: var(--radius-lg);

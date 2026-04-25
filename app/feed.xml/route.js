@@ -5,13 +5,15 @@ export const revalidate = 2592000
 
 export async function GET() {
   // Combine posts and notes
-  const posts = allPosts
-    .filter((post) => post.status === 'open')
-    .map((post) => ({ ...post, type: 'post' }))
+  const posts = allPosts.reduce((acc, post) => {
+    if (post.status === 'open') acc.push({ ...post, type: 'post' })
+    return acc
+  }, [])
 
-  const notes = allNotes
-    .filter((note) => note.status === 'published')
-    .map((note) => ({ ...note, type: 'note' }))
+  const notes = allNotes.reduce((acc, note) => {
+    if (note.status === 'published') acc.push({ ...note, type: 'note' })
+    return acc
+  }, [])
 
   const items = [...posts, ...notes]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
