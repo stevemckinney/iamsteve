@@ -112,7 +112,6 @@
     "@next/eslint-plugin-next": "^16.2.0",
     "@tailwindcss/postcss": "^4.1.18",
     "baseline-browser-mapping": "^2.9.19",
-    "code-inspector-plugin": "^1.5.1",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^8.10.2",
     "eslint-plugin-import": "^2.32.0",

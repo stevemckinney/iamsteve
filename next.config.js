@@ -1,4 +1,3 @@
-const { codeInspectorPlugin } = require('code-inspector-plugin')
 const { withContentCollections } = require('@content-collections/next')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -82,12 +81,6 @@ const nextConfig = {
     deviceSizes: [800, 1200, 1600, 2400],
     imageSizes: [400, 600],
     qualities: [75, 100],
-  },
-  webpack: (config, { dev }) => {
-    if (dev) {
-      config.plugins.push(codeInspectorPlugin({ bundler: 'webpack' }))
-    }
-    return config
   },
   async rewrites() {
     return [
