@@ -1,13 +1,15 @@
 import { FigureModal } from '@/components/figure-modal'
 
+const Figcaption = (props) => (
+  <figcaption
+    className="text-body/60 font-mono text-base tracking-[-0.03em] leading-tight pt-2"
+    {...props}
+  />
+)
+
 const figureComponents = {
   figure: (props) => <figure {...props} />,
-  figcaption: (props) => (
-    <figcaption
-      className="text-body/60 font-mono text-base tracking-[-0.03em] leading-tight pt-2"
-      {...props}
-    />
-  ),
+  figcaption: Figcaption,
   Figure: ({
     imageShadow,
     enlargeable,
@@ -29,12 +31,7 @@ const figureComponents = {
     }
     return <figure className={figureClass} {...props} />
   },
-  Figcaption: (props) => (
-    <figcaption
-      className="text-body/60 font-mono text-base tracking-[-0.03em] leading-tight pt-2"
-      {...props}
-    />
-  ),
+  Figcaption,
   Fig: (props) => (
     <span className="text-heading/40 uppercase">Fig. {props.children}</span>
   ),
