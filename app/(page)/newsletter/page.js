@@ -8,6 +8,22 @@ import ErrorBoundary from '@/components/error-boundary'
 import { allPosts } from 'content-collections'
 export const revalidate = 2592000
 
+export const metadata = {
+  title: 'Newsletter',
+  description:
+    'Get notified when new articles about design, typography and CSS are published. Monthly at most. Unsubscribe anytime.',
+  alternates: {
+    canonical: '/newsletter',
+  },
+  openGraph: {
+    title: 'Newsletter • iamsteve',
+    description:
+      'Get notified when new articles about design, typography and CSS are published. Monthly at most. Unsubscribe anytime.',
+    url: '/newsletter',
+    type: 'website',
+  },
+}
+
 export default async function NewsletterPage({ data, Post }) {
   const includedPosts = [165, 164, 72, 157, 160]
   const posts = allPosts

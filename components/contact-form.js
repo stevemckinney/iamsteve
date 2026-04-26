@@ -39,6 +39,7 @@ const Toast = ({ open, onOpenChange, title, description }) => {
         <p className="font-medium m-0">{title}</p>
         <p className="m-0">{description}</p>
         <button
+          type="button"
           onClick={() => onOpenChange(false)}
           className="w-6 h-6 flex items-center justify-center absolute top-0 right-0"
           aria-label="Close"

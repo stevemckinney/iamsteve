@@ -21,7 +21,7 @@ export const metadata = {
   description:
     'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
   alternates: {
-    canonical: './',
+    canonical: siteMetadata.siteUrl,
     types: {
       'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
     },
@@ -41,7 +41,7 @@ export const metadata = {
     title: 'iamsteve • design & code blog',
     description:
       'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
-    url: './',
+    url: siteMetadata.siteUrl,
     siteName: 'iamsteve',
     locale: 'en_GB',
     type: 'website',

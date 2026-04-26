@@ -6,6 +6,7 @@ import {
   animate,
   useMotionValue,
   useMotionValueEvent,
+  useReducedMotion,
 } from 'motion/react'
 import { Modal } from '@/components/modal'
 import Icon from '@/components/icon'
@@ -18,6 +19,7 @@ const DISMISS_X_DAMPING = 0.3
 const SPRING_SNAP = { type: 'spring', stiffness: 400, damping: 40 }
 const SPRING_RESET = { type: 'spring', stiffness: 300, damping: 35 }
 const SPRING_DISMISS = { type: 'spring', stiffness: 250, damping: 30 }
+const INSTANT = { duration: 0 }
 const DOUBLE_TAP_MS = 300
 const DOUBLE_TAP_PX = 30
 const DISMISS_VY = 500
@@ -75,6 +77,11 @@ function LightboxContent({ src, alt, close }) {
   const yValue = useMotionValue(0)
   const opacityVal = useMotionValue(1)
 
+  const prefersReducedMotion = useReducedMotion()
+  const snapTransition = prefersReducedMotion ? INSTANT : SPRING_SNAP
+  const resetTransition = prefersReducedMotion ? INSTANT : SPRING_RESET
+  const dismissTransition = prefersReducedMotion ? INSTANT : SPRING_DISMISS
+
   const snapToBounds = useCallback(() => {
     const s = scaleValue.get()
     const { minX, maxX, minY, maxY } = getBoundsAtScale(
@@ -85,28 +92,28 @@ function LightboxContent({ src, alt, close }) {
     const cy = yValue.get()
     const clampedX = clamp(cx, minX, maxX)
     const clampedY = clamp(cy, minY, maxY)
-    if (cx !== clampedX) animate(xValue, clampedX, SPRING_SNAP)
-    if (cy !== clampedY) animate(yValue, clampedY, SPRING_SNAP)
-  }, [scaleValue, xValue, yValue])
+    if (cx !== clampedX) animate(xValue, clampedX, snapTransition)
+    if (cy !== clampedY) animate(yValue, clampedY, snapTransition)
+  }, [scaleValue, xValue, yValue, snapTransition])
 
   const toggleZoom = useCallback(
     (clientX, clientY) => {
       const scale = scaleValue.get()
       if (scale > 1) {
-        animate(scaleValue, 1, SPRING_RESET)
-        animate(xValue, 0, SPRING_RESET)
-        animate(yValue, 0, SPRING_RESET)
+        animate(scaleValue, 1, resetTransition)
+        animate(xValue, 0, resetTransition)
+        animate(yValue, 0, resetTransition)
       } else {
         const viewportCentreX = window.innerWidth / 2
         const viewportCentreY = window.innerHeight / 2
         const newX = -(clientX - viewportCentreX) * (ZOOM_TARGET - 1)
         const newY = -(clientY - viewportCentreY) * (ZOOM_TARGET - 1)
-        animate(scaleValue, ZOOM_TARGET, SPRING_RESET)
-        animate(xValue, newX, SPRING_RESET)
-        animate(yValue, newY, SPRING_RESET)
+        animate(scaleValue, ZOOM_TARGET, resetTransition)
+        animate(xValue, newX, resetTransition)
+        animate(yValue, newY, resetTransition)
       }
     },
-    [scaleValue, xValue, yValue]
+    [scaleValue, xValue, yValue, resetTransition]
   )
 
   // Update cursor via DOM to avoid re-renders
@@ -161,14 +168,14 @@ function LightboxContent({ src, alt, close }) {
 
       // Snap when zooming settles at min scale
       if (newScale <= MIN_SCALE) {
-        animate(xValue, 0, SPRING_RESET)
-        animate(yValue, 0, SPRING_RESET)
+        animate(xValue, 0, resetTransition)
+        animate(yValue, 0, resetTransition)
       }
     }
 
     el.addEventListener('wheel', onWheel, { passive: false })
     return () => el.removeEventListener('wheel', onWheel)
-  }, [scaleValue, xValue, yValue])
+  }, [scaleValue, xValue, yValue, resetTransition])
 
   useEffect(() => {
     function animateToScale(newScale) {
@@ -471,29 +478,43 @@ function LightboxContent({ src, alt, close }) {
         const vy = Math.abs(info.velocity.y)
         const dy = Math.abs(yValue.get())
         if (vy > DISMISS_VY || dy > DISMISS_DY) {
-          const direction = yValue.get() >= 0 ? 1 : -1
-          animate(yValue, direction * (window.innerHeight + 300), {
-            ...SPRING_DISMISS,
-            onComplete: close,
-          })
-          animate(opacityVal, 0, { duration: 0.25 })
+          if (prefersReducedMotion) {
+            close()
+          } else {
+            const direction = yValue.get() >= 0 ? 1 : -1
+            animate(yValue, direction * (window.innerHeight + 300), {
+              ...SPRING_DISMISS,
+              onComplete: close,
+            })
+            animate(opacityVal, 0, { duration: 0.25 })
+          }
         } else {
-          animate(xValue, 0, SPRING_RESET)
-          animate(yValue, 0, SPRING_RESET)
+          animate(xValue, 0, resetTransition)
+          animate(yValue, 0, resetTransition)
         }
       } else {
         const hasVelocity =
           Math.abs(info.velocity.x) > MOMENTUM_MIN_VELOCITY ||
           Math.abs(info.velocity.y) > MOMENTUM_MIN_VELOCITY
 
-        if (hasVelocity) {
+        if (hasVelocity && !prefersReducedMotion) {
           applyMomentum(info.velocity.x, info.velocity.y)
         } else {
           snapToBounds()
         }
       }
     },
-    [scaleValue, xValue, yValue, opacityVal, close, snapToBounds, applyMomentum]
+    [
+      scaleValue,
+      xValue,
+      yValue,
+      opacityVal,
+      close,
+      snapToBounds,
+      applyMomentum,
+      prefersReducedMotion,
+      resetTransition,
+    ]
   )
 
   return (

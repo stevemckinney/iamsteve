@@ -22,6 +22,12 @@ import {
 
 import styles from './header.module.css'
 
+function isActiveLink(pathname, href) {
+  if (!href) return false
+  if (href === '/') return pathname === '/'
+  return pathname === href || pathname.startsWith(`${href}/`)
+}
+
 function AccessibilityLinks({ isArticlePage }) {
   return (
     <ul
@@ -181,10 +187,12 @@ function Desktop({ pathname }) {
             )
           }
 
+          const isActive = isActiveLink(pathname, link.href)
           return (
             <li key={link.href}>
               <Link
                 href={link.href}
+                aria-current={isActive ? 'page' : undefined}
                 className={cn(
                   'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
                   'lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5',
@@ -235,11 +243,12 @@ function Tabbar({ pathname }) {
     >
       <ul className="flex justify-between max-lg:gap-6">
         {tabbar.map((link) => {
-          const isActive = pathname === link.href
+          const isActive = isActiveLink(pathname, link.href)
           return (
             <li key={link.href}>
               <Link
                 href={link.href}
+                aria-current={isActive ? 'page' : undefined}
                 className={cn(
                   'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
                   'max-lg:text-[12px] max-lg:font-sans max-lg:font-medium max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:py-3',
