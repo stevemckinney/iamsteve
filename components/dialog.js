@@ -1,5 +1,6 @@
 'use client'
-import { useId } from 'react'
+import { useCallback, useId, useState } from 'react'
+import { FocusScope } from 'react-aria-components'
 
 const base = [
   'm-auto p-0 border-0 outline-none bg-transparent',
@@ -15,18 +16,32 @@ const base = [
 
 export function Dialog({ trigger, children, label, className = '' }) {
   const id = `dialog-${useId().replace(/:/g, '')}`
+  const [isOpen, setIsOpen] = useState(false)
+
+  const popoverRef = useCallback((el) => {
+    if (!el) return
+    const onToggle = (e) => setIsOpen(e.newState === 'open')
+    el.addEventListener('toggle', onToggle)
+    return () => el.removeEventListener('toggle', onToggle)
+  }, [])
 
   return (
     <>
       {trigger(id)}
       <div
+        ref={popoverRef}
         id={id}
         popover="auto"
         role="dialog"
         aria-label={label}
+        tabIndex={-1}
         className={`${base} ${className}`.trim()}
       >
-        {typeof children === 'function' ? children(id) : children}
+        {isOpen && (
+          <FocusScope contain autoFocus>
+            {typeof children === 'function' ? children(id) : children}
+          </FocusScope>
+        )}
       </div>
     </>
   )

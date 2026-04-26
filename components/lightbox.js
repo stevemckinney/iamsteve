@@ -2,7 +2,7 @@
 import Icon from '@/components/icon'
 import { Dialog } from '@/components/dialog'
 
-export function FigureDialog({ children, src, alt }) {
+export function Lightbox({ children, src, alt }) {
   return (
     <Dialog
       label={alt}
