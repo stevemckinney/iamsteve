@@ -27,6 +27,12 @@ const MOMENTUM_DECAY = 0.97
 const MOMENTUM_MIN_VELOCITY = 0.5
 const KEY_ZOOM_STEP = 0.5
 const KEY_PAN_STEP = 60
+const PAN_DIRECTIONS = {
+  ArrowLeft: [1, 0],
+  ArrowRight: [-1, 0],
+  ArrowUp: [0, 1],
+  ArrowDown: [0, -1],
+}
 
 function getBoundsAtScale(s, fitDimensions) {
   const { w, h } = fitDimensions
@@ -164,47 +170,56 @@ function LightboxContent({ src, alt, close }) {
     return () => el.removeEventListener('wheel', onWheel)
   }, [scaleValue, xValue, yValue])
 
-  // Keyboard zoom and pan
   useEffect(() => {
+    function animateToScale(newScale) {
+      animate(scaleValue, newScale, SPRING_RESET)
+      if (newScale <= MIN_SCALE) {
+        animate(xValue, 0, SPRING_RESET)
+        animate(yValue, 0, SPRING_RESET)
+        return
+      }
+      const bounds = getBoundsAtScale(newScale, fitDimensionsRef.current)
+      animate(xValue, clamp(xValue.get(), bounds.minX, bounds.maxX), SPRING_RESET)
+      animate(yValue, clamp(yValue.get(), bounds.minY, bounds.maxY), SPRING_RESET)
+    }
+
     function onKeyDown(e) {
+      const panDir = PAN_DIRECTIONS[e.key]
+      const isZoomKey =
+        e.key === '+' ||
+        e.key === '=' ||
+        e.key === '-' ||
+        e.key === '_' ||
+        e.key === '0'
+      if (!isZoomKey && !panDir) return
+
+      e.preventDefault()
       const scale = scaleValue.get()
 
       if (e.key === '+' || e.key === '=') {
-        e.preventDefault()
-        const newScale = clamp(scale + KEY_ZOOM_STEP, MIN_SCALE, MAX_SCALE)
-        const bounds = getBoundsAtScale(newScale, fitDimensionsRef.current)
-        animate(scaleValue, newScale, SPRING_RESET)
-        animate(xValue, clamp(xValue.get(), bounds.minX, bounds.maxX), SPRING_RESET)
-        animate(yValue, clamp(yValue.get(), bounds.minY, bounds.maxY), SPRING_RESET)
+        animateToScale(clamp(scale + KEY_ZOOM_STEP, MIN_SCALE, MAX_SCALE))
       } else if (e.key === '-' || e.key === '_') {
-        e.preventDefault()
-        const newScale = clamp(scale - KEY_ZOOM_STEP, MIN_SCALE, MAX_SCALE)
-        animate(scaleValue, newScale, SPRING_RESET)
-        if (newScale <= MIN_SCALE) {
-          animate(xValue, 0, SPRING_RESET)
-          animate(yValue, 0, SPRING_RESET)
-        } else {
-          const bounds = getBoundsAtScale(newScale, fitDimensionsRef.current)
-          animate(xValue, clamp(xValue.get(), bounds.minX, bounds.maxX), SPRING_RESET)
-          animate(yValue, clamp(yValue.get(), bounds.minY, bounds.maxY), SPRING_RESET)
-        }
+        animateToScale(clamp(scale - KEY_ZOOM_STEP, MIN_SCALE, MAX_SCALE))
       } else if (e.key === '0') {
-        e.preventDefault()
-        animate(scaleValue, 1, SPRING_RESET)
-        animate(xValue, 0, SPRING_RESET)
-        animate(yValue, 0, SPRING_RESET)
-      } else if (scale > 1 && e.key.startsWith('Arrow')) {
-        e.preventDefault()
+        animateToScale(MIN_SCALE)
+      } else if (scale > 1) {
+        const [dx, dy] = panDir
         const { minX, maxX, minY, maxY } = getBoundsAtScale(
           scale,
           fitDimensionsRef.current
         )
-        const x = xValue.get()
-        const y = yValue.get()
-        if (e.key === 'ArrowLeft') animate(xValue, clamp(x + KEY_PAN_STEP, minX, maxX), SPRING_SNAP)
-        else if (e.key === 'ArrowRight') animate(xValue, clamp(x - KEY_PAN_STEP, minX, maxX), SPRING_SNAP)
-        else if (e.key === 'ArrowUp') animate(yValue, clamp(y + KEY_PAN_STEP, minY, maxY), SPRING_SNAP)
-        else if (e.key === 'ArrowDown') animate(yValue, clamp(y - KEY_PAN_STEP, minY, maxY), SPRING_SNAP)
+        if (dx)
+          animate(
+            xValue,
+            clamp(xValue.get() + dx * KEY_PAN_STEP, minX, maxX),
+            SPRING_SNAP
+          )
+        if (dy)
+          animate(
+            yValue,
+            clamp(yValue.get() + dy * KEY_PAN_STEP, minY, maxY),
+            SPRING_SNAP
+          )
       }
     }
 
