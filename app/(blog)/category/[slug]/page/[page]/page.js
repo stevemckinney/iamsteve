@@ -74,7 +74,6 @@ export async function generateMetadata(props) {
 }
 
 export default async function BlogCategory(props) {
-  const searchParams = await props.searchParams
   const params = await props.params
   const data = categories.find(
     (category) => category.slugAsParams === params.slug

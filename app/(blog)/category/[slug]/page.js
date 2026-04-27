@@ -73,7 +73,6 @@ export async function generateMetadata(props) {
 }
 
 export default async function BlogCategory(props) {
-  const searchParams = await props.searchParams
   const params = await props.params
   const allData = await getData()
   const data = categories.find(

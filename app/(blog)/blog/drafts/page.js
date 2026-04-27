@@ -1,7 +1,6 @@
 import { cache } from 'react'
 import { allPosts } from 'content-collections'
 import { sortPosts } from '@/lib/utils/content'
-import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Header, Title, Column, Description } from '@/components/page'
 import Icon from '@/components/icon'
@@ -9,6 +8,11 @@ import Icon from '@/components/icon'
 export const metadata = {
   title: 'Draft posts',
   description: 'Posts in progress',
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
 }
 
 export const dynamic = 'force-dynamic'
@@ -23,16 +27,7 @@ const getData = cache(async () => {
   }
 })
 
-export default async function DraftsIndex(props) {
-  // Check for draft parameter
-  const searchParams = await props.searchParams
-  const showDrafts = searchParams?.draft === 'true'
-
-  // Redirect to 404 if draft parameter is not present
-  if (!showDrafts) {
-    notFound()
-  }
-
+export default async function DraftsIndex() {
   const { draftPosts } = await getData()
 
   return (
@@ -68,7 +63,7 @@ export default async function DraftsIndex(props) {
                 className="p-4 border border-neutral-01-200 rounded-md hover:border-neutral-01-300 transition-colors"
               >
                 <Link
-                  href={`${post.slug}?draft=true`}
+                  href={`/blog/drafts/${post.slugAsParams}`}
                   className="text-heading hover:text-fern-900 transition-colors no-underline"
                 >
                   <span className="font-mono text-sm text-neutral-01-600">

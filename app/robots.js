@@ -19,6 +19,7 @@ export default function robots() {
         userAgent: '*',
         allow: ['/'],
         disallow: [
+          '/blog/drafts',
           '/_next/image',
           '/_next/data',
           '/*?URL=',
