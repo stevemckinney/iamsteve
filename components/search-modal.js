@@ -137,10 +137,16 @@ export default function SearchModal({ isOpen, onOpenChange }) {
   const inputRef = useRef(null)
   const router = useRouter()
 
-  // If cache wasn't ready at mount, resolve the in-flight fetch
-  if (!index) {
-    fetchIndex().then(setIndex)
-  }
+  useEffect(() => {
+    if (index) return
+    let cancelled = false
+    fetchIndex().then((data) => {
+      if (!cancelled) setIndex(data)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [index])
 
   const results = index ? search(index, query) : []
   const pages = [...navigation.filter((n) => n.href !== '#'), ...library]
