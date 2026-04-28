@@ -10,6 +10,18 @@ import Campaigns from '../newsletter/campaigns'
 import { allPosts } from 'content-collections'
 export const revalidate = 2592000
 
+export const metadata = {
+  title: 'Thanks',
+  description: 'Your newsletter subscription has been confirmed.',
+  alternates: {
+    canonical: '/thanks',
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
+}
+
 export default async function NewsletterPage({ data, Post }) {
   const includedPosts = [160, 161, 157, 164, 165, 72]
   const posts = allPosts

@@ -6,6 +6,7 @@ import {
   animate,
   useMotionValue,
   useMotionValueEvent,
+  useReducedMotion,
 } from 'motion/react'
 import { Modal } from '@/components/modal'
 import Icon from '@/components/icon'
@@ -18,6 +19,7 @@ const DISMISS_X_DAMPING = 0.3
 const SPRING_SNAP = { type: 'spring', stiffness: 400, damping: 40 }
 const SPRING_RESET = { type: 'spring', stiffness: 300, damping: 35 }
 const SPRING_DISMISS = { type: 'spring', stiffness: 250, damping: 30 }
+const INSTANT = { duration: 0 }
 const DOUBLE_TAP_MS = 300
 const DOUBLE_TAP_PX = 30
 const DISMISS_VY = 500
@@ -25,6 +27,14 @@ const DISMISS_DY = 150
 const WHEEL_ZOOM_SPEED = 0.005
 const MOMENTUM_DECAY = 0.97
 const MOMENTUM_MIN_VELOCITY = 0.5
+const KEY_ZOOM_STEP = 0.5
+const KEY_PAN_STEP = 60
+const PAN_DIRECTIONS = {
+  ArrowLeft: [1, 0],
+  ArrowRight: [-1, 0],
+  ArrowUp: [0, 1],
+  ArrowDown: [0, -1],
+}
 
 function getBoundsAtScale(s, fitDimensions) {
   const { w, h } = fitDimensions
@@ -67,6 +77,11 @@ function LightboxContent({ src, alt, close }) {
   const yValue = useMotionValue(0)
   const opacityVal = useMotionValue(1)
 
+  const prefersReducedMotion = useReducedMotion()
+  const snapTransition = prefersReducedMotion ? INSTANT : SPRING_SNAP
+  const resetTransition = prefersReducedMotion ? INSTANT : SPRING_RESET
+  const dismissTransition = prefersReducedMotion ? INSTANT : SPRING_DISMISS
+
   const snapToBounds = useCallback(() => {
     const s = scaleValue.get()
     const { minX, maxX, minY, maxY } = getBoundsAtScale(
@@ -77,28 +92,28 @@ function LightboxContent({ src, alt, close }) {
     const cy = yValue.get()
     const clampedX = clamp(cx, minX, maxX)
     const clampedY = clamp(cy, minY, maxY)
-    if (cx !== clampedX) animate(xValue, clampedX, SPRING_SNAP)
-    if (cy !== clampedY) animate(yValue, clampedY, SPRING_SNAP)
-  }, [scaleValue, xValue, yValue])
+    if (cx !== clampedX) animate(xValue, clampedX, snapTransition)
+    if (cy !== clampedY) animate(yValue, clampedY, snapTransition)
+  }, [scaleValue, xValue, yValue, snapTransition])
 
   const toggleZoom = useCallback(
     (clientX, clientY) => {
       const scale = scaleValue.get()
       if (scale > 1) {
-        animate(scaleValue, 1, SPRING_RESET)
-        animate(xValue, 0, SPRING_RESET)
-        animate(yValue, 0, SPRING_RESET)
+        animate(scaleValue, 1, resetTransition)
+        animate(xValue, 0, resetTransition)
+        animate(yValue, 0, resetTransition)
       } else {
         const viewportCentreX = window.innerWidth / 2
         const viewportCentreY = window.innerHeight / 2
         const newX = -(clientX - viewportCentreX) * (ZOOM_TARGET - 1)
         const newY = -(clientY - viewportCentreY) * (ZOOM_TARGET - 1)
-        animate(scaleValue, ZOOM_TARGET, SPRING_RESET)
-        animate(xValue, newX, SPRING_RESET)
-        animate(yValue, newY, SPRING_RESET)
+        animate(scaleValue, ZOOM_TARGET, resetTransition)
+        animate(xValue, newX, resetTransition)
+        animate(yValue, newY, resetTransition)
       }
     },
-    [scaleValue, xValue, yValue]
+    [scaleValue, xValue, yValue, resetTransition]
   )
 
   // Update cursor via DOM to avoid re-renders
@@ -153,13 +168,78 @@ function LightboxContent({ src, alt, close }) {
 
       // Snap when zooming settles at min scale
       if (newScale <= MIN_SCALE) {
-        animate(xValue, 0, SPRING_RESET)
-        animate(yValue, 0, SPRING_RESET)
+        animate(xValue, 0, resetTransition)
+        animate(yValue, 0, resetTransition)
       }
     }
 
     el.addEventListener('wheel', onWheel, { passive: false })
     return () => el.removeEventListener('wheel', onWheel)
+  }, [scaleValue, xValue, yValue, resetTransition])
+
+  useEffect(() => {
+    function animateToScale(newScale) {
+      animate(scaleValue, newScale, SPRING_RESET)
+      if (newScale <= MIN_SCALE) {
+        animate(xValue, 0, SPRING_RESET)
+        animate(yValue, 0, SPRING_RESET)
+        return
+      }
+      const bounds = getBoundsAtScale(newScale, fitDimensionsRef.current)
+      animate(
+        xValue,
+        clamp(xValue.get(), bounds.minX, bounds.maxX),
+        SPRING_RESET
+      )
+      animate(
+        yValue,
+        clamp(yValue.get(), bounds.minY, bounds.maxY),
+        SPRING_RESET
+      )
+    }
+
+    function onKeyDown(e) {
+      const panDir = PAN_DIRECTIONS[e.key]
+      const isZoomKey =
+        e.key === '+' ||
+        e.key === '=' ||
+        e.key === '-' ||
+        e.key === '_' ||
+        e.key === '0'
+      if (!isZoomKey && !panDir) return
+
+      e.preventDefault()
+      const scale = scaleValue.get()
+
+      if (e.key === '+' || e.key === '=') {
+        animateToScale(clamp(scale + KEY_ZOOM_STEP, MIN_SCALE, MAX_SCALE))
+      } else if (e.key === '-' || e.key === '_') {
+        animateToScale(clamp(scale - KEY_ZOOM_STEP, MIN_SCALE, MAX_SCALE))
+      } else if (e.key === '0') {
+        animateToScale(MIN_SCALE)
+      } else if (scale > 1) {
+        const [dx, dy] = panDir
+        const { minX, maxX, minY, maxY } = getBoundsAtScale(
+          scale,
+          fitDimensionsRef.current
+        )
+        if (dx)
+          animate(
+            xValue,
+            clamp(xValue.get() + dx * KEY_PAN_STEP, minX, maxX),
+            SPRING_SNAP
+          )
+        if (dy)
+          animate(
+            yValue,
+            clamp(yValue.get() + dy * KEY_PAN_STEP, minY, maxY),
+            SPRING_SNAP
+          )
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
   }, [scaleValue, xValue, yValue])
 
   // Pinch-to-zoom via raw pointer events
@@ -339,11 +419,21 @@ function LightboxContent({ src, alt, close }) {
 
       let velocityX = vx
       let velocityY = vy
-      let frame
+      let prevTime = null
 
-      function step() {
-        velocityX *= MOMENTUM_DECAY
-        velocityY *= MOMENTUM_DECAY
+      function step(now) {
+        if (prevTime === null) {
+          prevTime = now
+          momentumFrame.current = requestAnimationFrame(step)
+          return
+        }
+        // Cap dt so a backgrounded tab doesn't produce a huge jump on resume
+        const dt = Math.min((now - prevTime) / 1000, 1 / 30)
+        prevTime = now
+
+        const decay = Math.pow(MOMENTUM_DECAY, dt * 60)
+        velocityX *= decay
+        velocityY *= decay
 
         if (
           Math.abs(velocityX) < MOMENTUM_MIN_VELOCITY &&
@@ -355,8 +445,8 @@ function LightboxContent({ src, alt, close }) {
 
         const cx = xValue.get()
         const cy = yValue.get()
-        let nextX = cx + velocityX * (1 / 60)
-        let nextY = cy + velocityY * (1 / 60)
+        let nextX = cx + velocityX * dt
+        let nextY = cy + velocityY * dt
 
         // Apply resistance when beyond bounds
         if (nextX < minX) {
@@ -377,11 +467,10 @@ function LightboxContent({ src, alt, close }) {
 
         xValue.set(nextX)
         yValue.set(nextY)
-        frame = requestAnimationFrame(step)
+        momentumFrame.current = requestAnimationFrame(step)
       }
 
-      frame = requestAnimationFrame(step)
-      momentumFrame.current = frame
+      momentumFrame.current = requestAnimationFrame(step)
     },
     [scaleValue, xValue, yValue, snapToBounds]
   )
@@ -397,70 +486,93 @@ function LightboxContent({ src, alt, close }) {
         const vy = Math.abs(info.velocity.y)
         const dy = Math.abs(yValue.get())
         if (vy > DISMISS_VY || dy > DISMISS_DY) {
-          const direction = yValue.get() >= 0 ? 1 : -1
-          animate(yValue, direction * (window.innerHeight + 300), {
-            ...SPRING_DISMISS,
-            onComplete: close,
-          })
-          animate(opacityVal, 0, { duration: 0.25 })
+          if (prefersReducedMotion) {
+            close()
+          } else {
+            const direction = yValue.get() >= 0 ? 1 : -1
+            animate(yValue, direction * (window.innerHeight + 300), {
+              ...SPRING_DISMISS,
+              onComplete: close,
+            })
+            animate(opacityVal, 0, { duration: 0.25 })
+          }
         } else {
-          animate(xValue, 0, SPRING_RESET)
-          animate(yValue, 0, SPRING_RESET)
+          animate(xValue, 0, resetTransition)
+          animate(yValue, 0, resetTransition)
         }
       } else {
         const hasVelocity =
           Math.abs(info.velocity.x) > MOMENTUM_MIN_VELOCITY ||
           Math.abs(info.velocity.y) > MOMENTUM_MIN_VELOCITY
 
-        if (hasVelocity) {
+        if (hasVelocity && !prefersReducedMotion) {
           applyMomentum(info.velocity.x, info.velocity.y)
         } else {
           snapToBounds()
         }
       }
     },
-    [scaleValue, xValue, yValue, opacityVal, close, snapToBounds, applyMomentum]
+    [
+      scaleValue,
+      xValue,
+      yValue,
+      opacityVal,
+      close,
+      snapToBounds,
+      applyMomentum,
+      prefersReducedMotion,
+      resetTransition,
+    ]
   )
 
   return (
-    <Button
-      ref={buttonRef}
-      onPress={() => scaleValue.get() <= 1 && close()}
-      className="w-full h-full flex items-center justify-center cursor-zoom-in"
-      aria-label="Close image"
-    >
-      <motion.div
-        ref={containerRef}
-        style={{
-          x: xValue,
-          y: yValue,
-          scale: scaleValue,
-          opacity: opacityVal,
-          willChange: 'transform',
-        }}
-        onPanStart={handlePanStart}
-        onPan={handlePan}
-        onPanEnd={handlePanEnd}
-        onClick={(e) => {
-          if (scaleValue.get() > 1) e.stopPropagation()
-        }}
-        className="touch-none select-none"
+    <>
+      <Button
+        ref={buttonRef}
+        onPress={() => scaleValue.get() <= 1 && close()}
+        className="w-full h-full flex items-center justify-center cursor-zoom-in"
+        aria-label="Close image"
       >
-        <img
-          ref={imgRef}
-          src={src}
-          alt={alt}
-          onLoad={(e) => {
-            fitDimensionsRef.current = {
-              w: e.target.offsetWidth,
-              h: e.target.offsetHeight,
-            }
+        <motion.div
+          ref={containerRef}
+          style={{
+            x: xValue,
+            y: yValue,
+            scale: scaleValue,
+            opacity: opacityVal,
           }}
-          draggable={false}
-          className="block max-w-[calc(100vw-4rem)] max-h-[calc(100vh-4rem)] object-contain drop-shadow-image pointer-events-none"
-        />
-      </motion.div>
-    </Button>
+          onPanStart={handlePanStart}
+          onPan={handlePan}
+          onPanEnd={handlePanEnd}
+          onClick={(e) => {
+            if (scaleValue.get() > 1) e.stopPropagation()
+          }}
+          className="touch-none select-none"
+        >
+          <img
+            ref={imgRef}
+            src={src}
+            alt={alt}
+            onLoad={() => {
+              const img = imgRef.current
+              fitDimensionsRef.current = {
+                w: img.offsetWidth,
+                h: img.offsetHeight,
+              }
+            }}
+            draggable={false}
+            className="block max-w-[calc(100vw-4rem)] max-h-[calc(100vh-4rem)] object-contain pointer-events-none rounded-sm"
+          />
+        </motion.div>
+      </Button>
+      <Button
+        onPress={close}
+        aria-label="Close"
+        className="fixed top-4 right-4 p-2 rounded-sm bg-[light-dark(theme(--color-neutral-01-50/.8),theme(--color-fern-1100/.8))] backdrop-blur-md shadow-reduced cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2"
+      >
+        <Icon icon="close" size={24} />
+      </Button>
+    </>
   )
 }
 
@@ -472,15 +584,17 @@ export function FigureModal({ children, src, alt }) {
       )}
     >
       <Button
-        className="relative group cursor-zoom-in block w-full text-left [&_img]:transition-opacity [&_img]:duration-200 [&_img]:drop-shadow-placed hover:[&_img]:opacity-80"
+        className="group cursor-zoom-in text-left my-4 block w-full"
         aria-label={`Enlarge image: ${alt}`}
       >
-        {children}
-        <span
-          aria-hidden="true"
-          className="absolute top-8 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-canvas shadow-reduced p-2 rounded-sm"
-        >
-          <Icon icon="enlarge" size={16} />
+        <span className="relative block">
+          {children}
+          <span
+            aria-hidden="true"
+            className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity ease-out duration-200 bg-[light-dark(theme(--color-neutral-01-50/.8),theme(--color-fern-1100/.8))] backdrop-blur-md shadow-reduced p-2 rounded-sm"
+          >
+            <Icon icon="enlarge" size={16} />
+          </span>
         </span>
       </Button>
     </Modal>

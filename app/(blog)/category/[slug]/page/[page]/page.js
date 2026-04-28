@@ -57,15 +57,23 @@ export async function generateMetadata(props) {
     return
   }
 
+  const pageNumber = parseInt(params.page) || 1
+
   return {
     template: '%s • iamsteve',
-    title: category.title,
+    title:
+      pageNumber > 1
+        ? `${category.title} • Page ${pageNumber}`
+        : category.title,
     description: category.description,
+    alternates: {
+      canonical: `/category/${params.slug}`,
+    },
+    robots: pageNumber > 1 ? { index: false, follow: true } : undefined,
   }
 }
 
 export default async function BlogCategory(props) {
-  const searchParams = await props.searchParams
   const params = await props.params
   const data = categories.find(
     (category) => category.slugAsParams === params.slug

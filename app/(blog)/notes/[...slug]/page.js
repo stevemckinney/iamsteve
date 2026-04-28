@@ -58,11 +58,20 @@ export async function generateMetadata(props) {
       publishedTime: note.date,
       authors: [siteMetadata.author],
       url: `${note.slug}`,
+      images: [
+        {
+          url: siteMetadata.socialBanner,
+          width: 1200,
+          height: 600,
+          alt: note.title,
+        },
+      ],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: note.title,
       description: note.summary ?? '',
+      images: [siteMetadata.socialBanner],
     },
   }
 }
@@ -79,19 +88,54 @@ export default async function NotePage(props) {
 
   const jsonLD = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    '@id': `${siteMetadata.siteUrl}${note.slug}#article`,
-    author: {
-      '@type': 'Person',
-      name: siteMetadata.author,
-    },
-    headline: note.title,
-    datePublished: note.date,
-    description: note.summary,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${siteMetadata.siteUrl}${note.slug}`,
-    },
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': `${siteMetadata.siteUrl}${note.slug}#article`,
+        isPartOf: {
+          '@id': `${siteMetadata.siteUrl}/#website`,
+        },
+        author: {
+          '@type': 'Person',
+          name: siteMetadata.author,
+          '@id': `${siteMetadata.siteUrl}/#person`,
+        },
+        headline: note.title,
+        datePublished: note.date,
+        description: note.summary,
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `${siteMetadata.siteUrl}${note.slug}`,
+        },
+        publisher: {
+          '@id': `${siteMetadata.siteUrl}/#organization`,
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${siteMetadata.siteUrl}${note.slug}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'iamsteve.me',
+            item: `${siteMetadata.siteUrl}`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Notes',
+            item: `${siteMetadata.siteUrl}/notes`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: note.title,
+            item: `${siteMetadata.siteUrl}${note.slug}`,
+          },
+        ],
+      },
+    ],
   }
 
   return (

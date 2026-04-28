@@ -12,9 +12,23 @@ import Image from '@/components/image'
 
 import categories from '@/content/categories'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = false
+export const revalidate = 86400
 const POSTS_PER_PAGE = 12
+
+export async function generateMetadata(props) {
+  const params = await props.params
+  const pageNumber = parseInt(params.page) || 1
+
+  return {
+    title: pageNumber > 1 ? `Blog • Page ${pageNumber}` : 'Blog',
+    description:
+      'Tips and tutorials about the design and build of web interfaces',
+    alternates: {
+      canonical: '/blog',
+    },
+    robots: pageNumber > 1 ? { index: false, follow: true } : undefined,
+  }
+}
 
 const getData = cache(async () => {
   const postsByDate = sortPosts(allPosts).filter(

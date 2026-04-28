@@ -7,6 +7,11 @@
 @import '../css/shiki.css' layer(base);
 
 @layer base {
+  :root {
+    scrollbar-width: thin;
+    scrollbar-color: gray transparent;
+  }
+
   ::selection {
     background: light-dark(
       oklch(from var(--color-dandelion-100) l c h / 0.4),

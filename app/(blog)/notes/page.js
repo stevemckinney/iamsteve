@@ -16,11 +16,37 @@ import Badge from '@/components/badge'
 import Link from '@/components/link'
 import { NoteFeedContent } from '@/components/note-feed-content'
 import CopyLink from '@/components/button/copy-link'
+import siteMetadata from '@/content/metadata'
 
 export const metadata = {
   title: 'Notes',
   description:
     'Quick, short and simple posts, a feed for everything outside design and code',
+  alternates: {
+    canonical: '/notes',
+  },
+  openGraph: {
+    title: 'Notes • iamsteve',
+    description:
+      'Quick, short and simple posts, a feed for everything outside design and code',
+    url: '/notes',
+    type: 'website',
+    images: [
+      {
+        url: siteMetadata.socialBanner,
+        width: 1200,
+        height: 600,
+        alt: 'iamsteve — notes',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Notes • iamsteve',
+    description:
+      'Quick, short and simple posts, a feed for everything outside design and code',
+    images: [siteMetadata.socialBanner],
+  },
 }
 
 export const dynamic = 'force-static'

@@ -5,6 +5,7 @@
 **Don't assume. Don't hide confusion. Surface tradeoffs.**
 
 Before implementing:
+
 - State your assumptions explicitly. If uncertain, ask.
 - If multiple interpretations exist, present them - don't pick silently.
 - If a simpler approach exists, say so. Push back when warranted.
@@ -27,12 +28,14 @@ Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, sim
 **Touch only what you must. Clean up only your own mess.**
 
 When editing existing code:
+
 - Don't "improve" adjacent code, comments, or formatting.
 - Don't refactor things that aren't broken.
 - Match existing style, even if you'd do it differently.
 - If you notice unrelated dead code, mention it - don't delete it.
 
 When your changes create orphans:
+
 - Remove imports/variables/functions that YOUR changes made unused.
 - Don't remove pre-existing dead code unless asked.
 
@@ -43,11 +46,13 @@ The test: Every changed line should trace directly to the user's request.
 **Define success criteria. Loop until verified.**
 
 Transform tasks into verifiable goals:
+
 - "Add validation" → "Write tests for invalid inputs, then make them pass"
 - "Fix the bug" → "Write a test that reproduces it, then make it pass"
 - "Refactor X" → "Ensure tests pass before and after"
 
 For multi-step tasks, state a brief plan:
+
 ```
 1. [Step] → verify: [check]
 2. [Step] → verify: [check]
@@ -106,12 +111,12 @@ Use the correct type of dash when necessary.
 
 MUST use the correct quote. For contractions you should use a curly quote (this is a curly quote ’) not a straight quote (this is a straight quote '). example one: `I’ve` not `I've`. example two: `Doesn’t` not `Doesn't`.
 
-| Character | Name                        | HTML entity | Numeric entity          |
-| --------- | --------------------------- | ----------- | ----------------------- |
-| ‘         | Left single quotation mark  | `&lsquo;`   | `&#8216;` or `&#x2018;` |
-| ’         | Right single quotation mark | `&rsquo;`   | `&#8217;` or `&#x2019;` |
-| “         | Left double quotation mark  | `&ldquo;`   | `&#8220;` or `&#x201C;` |
-| ”         | Right double quotation mark | `&rdquo;`   | `&#8221;` or `&#x201D;` |
+| Character | Name                        | Unicode  | HTML entity | Numeric entity          |
+| --------- | --------------------------- | -------- | ----------- | ----------------------- |
+| ‘         | Left single quotation mark  | `U+2018` | `&lsquo;`   | `&#8216;` or `&#x2018;` |
+| ’         | Right single quotation mark | `U+2019` | `&rsquo;`   | `&#8217;` or `&#x2019;` |
+| “         | Left double quotation mark  | `U+201C` | `&ldquo;`   | `&#8220;` or `&#x201C;` |
+| ”         | Right double quotation mark | `U+201D` | `&rdquo;`   | `&#8221;` or `&#x201D;` |
 
 ## 8. A11y checklist
 
@@ -235,7 +240,6 @@ Use the `Image` wrapper from `@/components/image` (wraps next/image). Standard b
 
 ```jsx
 import Image from '@/components/image'
-
 ;<Image
   src="/images/example.png"
   width={592}
@@ -269,6 +273,6 @@ Blog posts live in `content/blog/*.md`, notes in `content/notes/*.md`, pages in 
 
 Key frontmatter fields for posts: `title`, `date`, `lastmod`, `summary`, `metadesc`, `ogImage`, `categories[]`, `tags[]`, `status` (draft/open/closed), `theme`, `large`, `medium`, `fileroot`, `id`.
 
-## You might not need an effect
+## 12. You might not need an effect
 
-- https://react.dev/learn/you-might-not-need-an-effect
+It's important useEffect is avoided where possible and only used if absolutely necessary. Reference: https://react.dev/learn/you-might-not-need-an-effect
