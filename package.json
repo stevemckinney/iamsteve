@@ -68,7 +68,7 @@
     "marked": "^14.1.4",
     "mdast-util-to-string": "^4.0.0",
     "motion": "^12.23.25",
-    "next": "^16.2.0",
+    "next": "^16.2.3",
     "postcss": "^8.5.10",
     "postcss-nesting": "^12.1.5",
     "radix-ui": "^1.4.3",
