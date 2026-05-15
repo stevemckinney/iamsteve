@@ -69,6 +69,9 @@ export async function generateMetadata(props) {
     template: '%s • iamsteve',
     title: category.title,
     description: category.description,
+    alternates: {
+      canonical: `/category/${params.slug}`,
+    },
   }
 }
 

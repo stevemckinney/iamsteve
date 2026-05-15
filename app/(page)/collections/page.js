@@ -21,6 +21,9 @@ export const metadata = {
   title: 'Collections • iamsteve',
   description:
     'Curated design resources organised by topic, from typography and color to tools and techniques.',
+  alternates: {
+    canonical: '/collections',
+  },
 }
 
 const getData = cache(async () => {

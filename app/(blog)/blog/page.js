@@ -22,6 +22,9 @@ export const metadata = {
   title: 'Blog archive',
   description:
     'Tips and tutorials about the design and build of web interfaces',
+  alternates: {
+    canonical: '/blog',
+  },
 }
 
 export const dynamic = 'force-static'

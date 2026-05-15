@@ -67,6 +67,9 @@ export async function generateMetadata(props) {
     template: '%s • iamsteve',
     title: page.title,
     description: page.description,
+    alternates: {
+      canonical: `/collections/${params.slug.join('/')}`,
+    },
   }
 }
 
