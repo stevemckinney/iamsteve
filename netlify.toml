@@ -136,6 +136,55 @@
   status = 301
   force = true
 
+# Legacy URL cleanup — surfaced by Search Console 404 report
+[[redirects]]
+  from = "/blog/about-version-6"
+  to = "/blog/about-version-six"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/visual-design-tips-you-can-apply-immediately"
+  to = "/blog/visual-design-tips-you-can-apply-immediately"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/entry/photoshop-grids-using-"
+  to = "/blog/photoshop-grids-using-guide-layouts"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/entry/sass_hints_tips"
+  to = "/blog/sass-hints-tips-revisited"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/design"
+  to = "/category/design"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/subscribe"
+  to = "/newsletter"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/category/css/page/2"
+  to = "/category/code"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/inc/customizer.php"
+  to = "/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/rss"
   to = "/feed.xml"

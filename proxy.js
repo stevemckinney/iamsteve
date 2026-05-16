@@ -68,6 +68,11 @@ const GONE_PATHS = [
   '/blog/:splat',
   '/blog/entry/*',
   '/blog/entry/[slug]',
+  '/portfolio',
+  '/blog/entry/unique',
+  '/blog/some-post',
+  '/2',
+  '/mo',
 ]
 
 const GONE_PREFIXES = ['/Users/']
