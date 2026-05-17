@@ -78,5 +78,3 @@ button:active {
     0 4px 0 #b64a4a, 0 5px 2px rgba(0, 0, 0, 0.3);
 }
 ```
-
-[View the 3D button demo](https://assets.iamsteve.me/archive/tutorials/button/).
