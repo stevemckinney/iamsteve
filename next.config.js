@@ -370,6 +370,16 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/visual-design-tips-you-can-apply-immediately',
+        destination: '/blog/visual-design-tips-you-can-apply-immediately',
+        permanent: true,
+      },
+      {
+        source: '/blog/entry/photoshop-grids-using-',
+        destination: '/blog/photoshop-grids-using-guide-layouts',
+        permanent: true,
+      },
       // Junk redirects
       {
         source: '/:path(index.php)',
@@ -383,7 +393,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/:path(wp-content|wp-admin|wp-includes|vendor|wp-json)/:slug*',
+        source:
+          '/:path(wp-content|wp-admin|wp-includes|vendor|wp-json|inc)/:slug*',
         destination: 'https://google.com',
         permanent: true,
       },
