@@ -81,7 +81,7 @@ server {
 }
 ```
 
-The important things to note here: we're hardcoding `https://` rather than using `$scheme` so the redirect always lands on HTTPS regardless of how the request came in. And `$request_uri` preserves anything after the domain, so `/blog/some-post` on the old domain redirects to `/blog/some-post` on the new one. Your visitors and any existing links will end up in the right place.
+The important things to note here: we're hardcoding `https://` rather than using `$scheme` so the redirect always lands on HTTPS regardless of how the request came in. And `$request_uri` preserves anything after the domain, so a path like `/blog/<slug>` on the old domain ends up at the same path on the new one. Your visitors and any existing links will end up in the right place.
 
 Update any other instances of `server_name` throughout your config file that you may have.
 
