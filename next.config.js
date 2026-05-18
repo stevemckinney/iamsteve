@@ -195,6 +195,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/blog/entry/:slug(horizontal-scrolling-responsive-menu.*)',
+        destination: '/blog/horizontal-scrolling-responsive-menu',
+        permanent: true,
+      },
+      {
         source: '/blog/about_version_six',
         destination: '/blog/about-version-six',
         permanent: true,
@@ -311,11 +316,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/portfolio',
-        destination: '/about',
-        permanent: true,
-      },
-      {
         source: '/blog/\\{site_url\\}',
         destination: '/blog',
         permanent: true,
@@ -326,18 +326,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/mo',
-        destination: '/',
-        permanent: true,
-      },
-      {
         source: '/blog/entry/sass_hints_tips',
         destination: '/blog/sass-hints-and-tips',
-        permanent: true,
-      },
-      {
-        source: '/2',
-        destination: '/',
         permanent: true,
       },
       {

@@ -73,6 +73,7 @@ const GONE_PATHS = [
   '/blog/some-post',
   '/2',
   '/mo',
+  '/**',
 ]
 
 const GONE_PREFIXES = ['/Users/']
@@ -129,6 +130,6 @@ export const config = {
      * - favicon.ico
      * - public assets (images, fonts, icons)
      */
-    '/((?!_next/static|_next/image|favicon.ico|images|fonts|icon).*)',
+    '/((?!_next/static|_next/image|favicon.ico|images|icon).*)',
   ],
 }
