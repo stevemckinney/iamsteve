@@ -7,6 +7,7 @@
 import { notFound } from 'next/navigation'
 import { allPosts } from 'content-collections'
 import siteMetadata from '@/content/metadata'
+import { getDocumentUri } from '@/lib/standard-site'
 
 import PostBody from './post-body'
 
@@ -90,6 +91,8 @@ export default async function PostPage(props) {
   const enableViewCounting =
     process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING === 'true'
 
+  const standardDocumentUri = getDocumentUri(post.slugAsParams)
+
   const jsonLD = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -154,6 +157,9 @@ export default async function PostPage(props) {
 
   return (
     <>
+      {standardDocumentUri && (
+        <link rel="site.standard.document" href={standardDocumentUri} />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}

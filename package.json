@@ -15,6 +15,7 @@
     "analyze": "cross-env ANALYZE=true next build",
     "post": "node ./scripts/compose.js",
     "note": "node ./scripts/compose-note.js",
+    "sync:standard": "node ./scripts/sync-standard-site.js",
     "build": "pnpm lint && next build",
     "validate:links": "node scripts/validate-collection-links.js",
     "validate:links:all": "CHECK_ALL=true node scripts/validate-collection-links.js",
@@ -38,6 +39,7 @@
     ]
   },
   "dependencies": {
+    "@atproto/api": "^0.13.35",
     "@content-collections/core": "^0.14.2",
     "@shikijs/rehype": "^4.0.0",
     "@shikijs/transformers": "^4.0.0",
