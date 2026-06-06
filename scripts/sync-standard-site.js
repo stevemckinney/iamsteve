@@ -29,6 +29,19 @@ const BLOG_DIR = path.join(ROOT, 'content/blog')
 const MAP_PATH = path.join(ROOT, 'content/standard-site.json')
 const ICON_PATH = path.join(ROOT, process.env.STANDARD_ICON || 'app/icon.svg')
 
+// site.standard.theme.basic — fern-900 and neutral-01-150 design tokens as
+// sRGB (fern-900 is authored in oklch; this is its sRGB conversion).
+const rgb = (r, g, b) => ({ $type: 'site.standard.theme.color#rgb', r, g, b })
+const FERN_900 = rgb(0, 84, 67)
+const NEUTRAL_01_150 = rgb(241, 232, 228)
+const BASIC_THEME = {
+  $type: 'site.standard.theme.basic',
+  background: NEUTRAL_01_150,
+  foreground: FERN_900,
+  accent: FERN_900,
+  accentForeground: NEUTRAL_01_150,
+}
+
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
     const full = path.join(dir, entry.name)
@@ -118,9 +131,10 @@ async function main() {
       $type: 'site.standard.publication',
       // Best practice: trim trailing slashes so url + document path joins cleanly.
       url: siteMetadata.siteUrl.replace(/\/+$/, ''),
-      name: siteMetadata.title,
+      name: new URL(siteMetadata.siteUrl).host,
       description: siteMetadata.description,
       ...(icon ? { icon } : {}),
+      basicTheme: BASIC_THEME,
       preferences: { showInDiscover: true },
     }
   )
