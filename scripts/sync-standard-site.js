@@ -20,12 +20,14 @@
 const fs = require('fs')
 const path = require('path')
 const matter = require('gray-matter')
+const sharp = require('sharp')
 const { AtpAgent } = require('@atproto/api')
 const siteMetadata = require('../content/metadata')
 
 const ROOT = process.cwd()
 const BLOG_DIR = path.join(ROOT, 'content/blog')
 const MAP_PATH = path.join(ROOT, 'content/standard-site.json')
+const ICON_PATH = path.join(ROOT, process.env.STANDARD_ICON || 'app/icon.svg')
 
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -53,6 +55,23 @@ function slugFor(filePath) {
 
 function rkeyFromUri(uri) {
   return uri.split('/').pop()
+}
+
+// Rasterise the brand mark to a square PNG and upload it as the publication
+// icon blob. Returns the blob ref, or null if the source is missing.
+async function uploadIcon(agent) {
+  if (!fs.existsSync(ICON_PATH)) return null
+  const png = await sharp(ICON_PATH)
+    .resize(512, 512, {
+      fit: 'contain',
+      background: { r: 255, g: 255, b: 255, alpha: 0 },
+    })
+    .png()
+    .toBuffer()
+  const res = await agent.com.atproto.repo.uploadBlob(png, {
+    encoding: 'image/png',
+  })
+  return res.data.blob
 }
 
 async function upsert(agent, repo, collection, rkey, record) {
@@ -89,6 +108,7 @@ async function main() {
   const documents = { ...map.documents }
 
   // Publication
+  const icon = await uploadIcon(agent)
   const publicationUri = await upsert(
     agent,
     did,
@@ -96,9 +116,11 @@ async function main() {
     map.publication ? rkeyFromUri(map.publication) : null,
     {
       $type: 'site.standard.publication',
-      url: siteMetadata.siteUrl,
+      // Best practice: trim trailing slashes so url + document path joins cleanly.
+      url: siteMetadata.siteUrl.replace(/\/+$/, ''),
       name: siteMetadata.title,
       description: siteMetadata.description,
+      ...(icon ? { icon } : {}),
       preferences: { showInDiscover: true },
     }
   )
