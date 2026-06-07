@@ -70,6 +70,31 @@ function rkeyFromUri(uri) {
   return uri.split('/').pop()
 }
 
+// Plaintext extraction. remark/mdast are ESM-only, so load them lazily.
+let _toPlain
+async function getToPlain() {
+  if (_toPlain) return _toPlain
+  const [{ remark }, gfm, { toString }] = await Promise.all([
+    import('remark'),
+    import('remark-gfm'),
+    import('mdast-util-to-string'),
+  ])
+  const processor = remark().use(gfm.default)
+  // Prose only: drop fenced code blocks (noise for a plaintext field) and any
+  // residual inline tags so textContent stays clean plaintext.
+  _toPlain = (markdown) =>
+    processor
+      .parse(markdown)
+      .children.filter((node) => node.type !== 'code')
+      .map((node) => toString(node, { includeHtml: false }).trim())
+      .filter(Boolean)
+      .join('\n\n')
+      .replace(/<[^>\n]{1,80}>/g, '')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim()
+  return _toPlain
+}
+
 // Rasterise the brand mark to a square PNG and upload it as the publication
 // icon blob. Returns the blob ref, or null if the source is missing.
 async function uploadIcon(agent) {
@@ -141,14 +166,16 @@ async function main() {
   console.log(`Publication: ${publicationUri}`)
 
   // Documents — published, indexable posts
+  const toPlain = await getToPlain()
   let count = 0
   for (const file of walk(BLOG_DIR)) {
-    const { data } = matter(fs.readFileSync(file, 'utf8'))
+    const { data, content } = matter(fs.readFileSync(file, 'utf8'))
     if (data.status !== 'open' || data.noindex === true) continue
 
     const slug = slugFor(file)
     const tags =
       Array.isArray(data.tags) && data.tags.length ? data.tags : undefined
+    const textContent = toPlain(content)
 
     documents[slug] = await upsert(
       agent,
@@ -168,6 +195,7 @@ async function main() {
           ? { description: data.summary || data.metadesc }
           : {}),
         ...(tags ? { tags } : {}),
+        ...(textContent ? { textContent } : {}),
       }
     )
     count++
