@@ -161,6 +161,9 @@ async function main() {
         title: data.title,
         path: `/blog/${slug}`,
         publishedAt: new Date(data.date).toISOString(),
+        ...(data.lastmod
+          ? { updatedAt: new Date(data.lastmod).toISOString() }
+          : {}),
         ...(data.summary || data.metadesc
           ? { description: data.summary || data.metadesc }
           : {}),
