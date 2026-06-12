@@ -2,7 +2,7 @@
 title: 'Adobe generator syntax ‘cheatsheet’'
 date: '2015-03-17T08:00:00+00:00'
 lastmod: '2018-06-01T08:49:16+00:00'
-summary: ‘A clear reference for Adobe Generator layer naming syntax, with examples for common use cases — the cheatsheet the Adobe docs never quite provided.’
+summary: 'A clear reference for Adobe Generator layer naming syntax, with examples for common use cases — the cheatsheet the Adobe docs never quite provided.'
 metadesc: 'A cheatsheet for Adobe’s generator syntax, with examples for common use cases.'
 theme: '#e1f7ee'
 tags: ['Design']

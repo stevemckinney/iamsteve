@@ -2,7 +2,7 @@
 title: 'Flexbox quick wins'
 date: '2015-05-05T06:00:00+00:00'
 lastmod: '2016-08-28T11:00:20+00:00'
-summary: ‘A few flexbox techniques you can use today without worrying about older browser knock-on effects. Handy when you don’t have time for a full flexbox layout.’
+summary: 'A few flexbox techniques you can use today without worrying about older browser knock-on effects. Handy when you don’t have time for a full flexbox layout.'
 metadesc: 'Flexbox isn‘t quite ready to have layouts built dedicated with it. There are some uses with flexbox we can apply without worry of what will impact other browsers.'
 theme: '#e9f5f5'
 tags: ['Code']
