@@ -2,7 +2,7 @@
 title: 'Colour series: picking your palette'
 date: '2015-12-15T07:28:00+00:00'
 lastmod: '2018-03-07T13:17:26+00:00'
-summary: ‘Part one of the colour series. Colour theory is only a starting point — this post walks through what to actually consider when picking a 5-colour palette for a project.’
+summary: 'Part one of the colour series. Colour theory is only a starting point — this post walks through what to actually consider when picking a 5-colour palette for a project.'
 metadesc: 'How to choose an effective colour for your website project. From colours that represent your project to ones that help readability.'
 theme: '#f9f3f1'
 tags: ['Design']
