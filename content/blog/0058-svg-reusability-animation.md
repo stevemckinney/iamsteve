@@ -2,7 +2,7 @@
 title: 'SVG reusability & animation'
 date: '2015-01-27T08:00:00+00:00'
 lastmod: '2021-06-11T06:05:56+00:00'
-summary: ‘How to animate and reuse inline SVG with CSS. Using currentColor and groups you can change fills and animate paths, saving on page weight by avoiding multiple images.’
+summary: 'How to animate and reuse inline SVG with CSS. Using currentColor and groups you can change fills and animate paths, saving on page weight by avoiding multiple images.'
 metadesc: 'How to animate and change fill colours on inline SVG. Using currentcolor and groups we can animate and manipulate SVG unlike any other image type.'
 theme: '#ffede5'
 tags: ['Code']

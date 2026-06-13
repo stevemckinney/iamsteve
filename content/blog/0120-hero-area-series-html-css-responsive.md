@@ -2,7 +2,7 @@
 title: 'Hero area series: HTML, CSS & responsive'
 date: '2016-04-05T06:30:00+00:00'
 lastmod: '2016-08-28T09:58:02+00:00'
-summary: ‘Coding the hero area using flexbox and making it responsive. A mostly mobile-first approach, applying CSS where it makes logical sense to avoid undoing it later.’
+summary: 'Coding the hero area using flexbox and making it responsive. A mostly mobile-first approach, applying CSS where it makes logical sense to avoid undoing it later.'
 metadesc: 'The second to last post in this series, coding the page. You’re going to build the page using flexbox and make it responsive.'
 theme: '#e9f5f5'
 tags: ['Design', 'Code']
