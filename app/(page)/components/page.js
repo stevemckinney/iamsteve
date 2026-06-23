@@ -1,100 +1,51 @@
 'use client'
 
-import { Chat, ChatMessage } from '@/components/chat'
-import Icon from '@/components/icon'
+import { Suspense } from 'react'
+import Sidebar from './_components/sidebar'
+import MobileNavigation from './_components/mobile-navigation'
+import { sectionComponents } from './_components/registry'
+import { useActiveSection } from './_components/use-active-section'
 
 export default function ComponentsPage() {
+  const { activeSection, setActiveSection } = useActiveSection()
+  const SectionComponent = sectionComponents[activeSection]
+
   return (
-    <article className="col-content py-18 flex flex-col gap-18">
+    <div className="col-content py-8 sm:py-18 flex flex-col gap-8">
       <header>
         <h1 className="font-display font-variation-bold text-4xl lowercase text-heading">
-          Components
+          Design system
         </h1>
-        <p className="text-ui-body text-lg mt-2">
-          A reference page for MDX components used across the site.
+        <p className="text-body-80 text-lg mt-2 max-w-prose">
+          A comprehensive reference for the colour system, typography, spacing,
+          and every component used across the site.
         </p>
       </header>
 
-      {/* Chat */}
-      <section className="flex flex-col gap-4 max-w-lg">
-        <h2 className="font-display font-variation-bold text-2xl lowercase text-heading">
-          Chat
-        </h2>
-        <p className="text-ui-body">
-          Apple Messages-style conversation bubbles. Use a{' '}
-          <code className="text-sm bg-neutral-01-200 dark:bg-neutral-01-800 px-1.5 py-0.5 rounded">
-            chat
-          </code>{' '}
-          code fence in markdown.
-        </p>
+      <MobileNavigation
+        activeSection={activeSection}
+        onSelect={setActiveSection}
+      />
 
-        <h3 className="font-display font-variation-bold text-lg lowercase text-heading mt-4">
-          With title
-        </h3>
-        <Chat title="iMessage">
-          <ChatMessage align="left">hello how are you</ChatMessage>
-          <ChatMessage align="left">what have you been up to</ChatMessage>
-          <ChatMessage align="right">
-            hello I&rsquo;m good thank you
-          </ChatMessage>
-          <ChatMessage align="right">just working on the blog</ChatMessage>
-          <ChatMessage align="left">nice, sounds fun</ChatMessage>
-        </Chat>
+      <div className="flex gap-12 relative">
+        <aside className="hidden lg:block w-48 shrink-0">
+          <Sidebar activeSection={activeSection} onSelect={setActiveSection} />
+        </aside>
 
-        <h3 className="font-display font-variation-bold text-lg lowercase text-heading mt-4">
-          Without title
-        </h3>
-        <Chat>
-          <ChatMessage align="left">
-            have you tried the new feature?
-          </ChatMessage>
-          <ChatMessage align="right">not yet, will check it out</ChatMessage>
-          <ChatMessage align="right">looks great though</ChatMessage>
-          <ChatMessage align="left">let me know what you think</ChatMessage>
-        </Chat>
-
-        <h3 className="font-display font-variation-bold text-lg lowercase text-heading mt-4">
-          With AI responses
-        </h3>
-        <Chat title="Claude">
-          <ChatMessage align="right">
-            what colour should I use for links?
-          </ChatMessage>
-          <ChatMessage align="ai">
-            I&rsquo;d recommend a blue with good contrast against your
-            background. Something like cornflour-500 would work well.
-          </ChatMessage>
-          <ChatMessage align="right">thanks, that looks great</ChatMessage>
-          <ChatMessage align="ai">
-            You&rsquo;re welcome! Make sure it meets AA contrast ratio.
-          </ChatMessage>
-        </Chat>
-
-        <h3 className="font-display font-variation-bold text-lg lowercase text-heading mt-4">
-          Short exchange
-        </h3>
-        <Chat title="Messages">
-          <ChatMessage align="right">are you free tomorrow?</ChatMessage>
-          <ChatMessage align="left">yes!</ChatMessage>
-        </Chat>
-
-        <div className="bg-surface shadow-placed rounded-lg p-6 mt-4">
-          <h3 className="font-display font-variation-bold text-lg lowercase text-heading mb-2">
-            Usage
-          </h3>
-          <pre className="text-sm bg-fern-1100 text-neutral-01-200 p-4 rounded-lg overflow-x-auto">
-            <code>{`\`\`\`chat:iMessage
-L: hello how are you
-R: hello I'm good thank you
-AI: here's a suggestion for you
-\`\`\`
-
-L:  left-aligned (received)
-R:  right-aligned (sent)
-AI: left-aligned, no background (AI response)`}</code>
-          </pre>
+        <div className="flex flex-col min-w-0 flex-1">
+          <Suspense
+            fallback={
+              <div className="flex flex-col gap-4 animate-pulse">
+                <div className="h-8 w-48 bg-surface-02 rounded-sm" />
+                <div className="h-4 w-96 bg-surface-02 rounded-sm" />
+                <div className="h-64 bg-surface-02 rounded-lg" />
+              </div>
+            }
+          >
+            {SectionComponent && <SectionComponent />}
+          </Suspense>
         </div>
-      </section>
-    </article>
+      </div>
+    </div>
   )
 }
