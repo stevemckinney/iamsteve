@@ -24,17 +24,21 @@
       Cache-Control = "public, max-age=0, s-maxage=3600, stale-while-revalidate=60"
 
 # Development context (includes deploy previews and branch deploys)
+# X-Robots-Tag keeps non-production deploys out of Google's index while
+# leaving them crawlable, so the noindex is actually seen
 [context.deploy-preview]
   [[context.deploy-preview.headers]]
     for = "/*"
     [context.deploy-preview.headers.values]
       Cache-Control = "public, max-age=0, must-revalidate"
+      X-Robots-Tag = "noindex"
 
 [context.branch-deploy]
   [[context.branch-deploy.headers]]
     for = "/*"
     [context.branch-deploy.headers.values]
       Cache-Control = "public, max-age=0, must-revalidate"
+      X-Robots-Tag = "noindex"
 
 [[headers]]
   for = "/*"
