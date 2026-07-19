@@ -58,7 +58,7 @@
     "date-fns": "^2.30.0",
     "dedent": "^0.7.0",
     "encoding": "^0.1.13",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.28.1",
     "eslint-config-next": "^16.2.0",
     "feed": "^4.2.2",
     "github-slugger": "^2.0.0",
