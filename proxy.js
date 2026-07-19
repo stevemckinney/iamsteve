@@ -78,16 +78,27 @@ const GONE_PATHS = [
 
 const GONE_PREFIXES = ['/Users/']
 
+// Only the canonical host may be indexed. Archive subdomains, branch
+// deploys and previews stay crawlable so Google can see the noindex.
+const INDEXABLE_HOSTS = ['iamsteve.me', 'localhost']
+
 export function proxy(request) {
   const { pathname } = request.nextUrl
 
+  const respond = (response) => {
+    if (!INDEXABLE_HOSTS.includes(request.nextUrl.hostname)) {
+      response.headers.set('X-Robots-Tag', 'noindex')
+    }
+    return response
+  }
+
   if (GONE_PATHS.includes(pathname)) {
-    return new NextResponse(null, { status: 410 })
+    return respond(new NextResponse(null, { status: 410 }))
   }
 
   for (const prefix of GONE_PREFIXES) {
     if (pathname.startsWith(prefix)) {
-      return new NextResponse(null, { status: 410 })
+      return respond(new NextResponse(null, { status: 410 }))
     }
   }
 
@@ -102,7 +113,7 @@ export function proxy(request) {
   }
 
   if (stripped) {
-    return NextResponse.redirect(url, 301)
+    return respond(NextResponse.redirect(url, 301))
   }
 
   // Serve markdown when the agent asks for it via Accept header or .md suffix.
@@ -114,11 +125,11 @@ export function proxy(request) {
     if (target) {
       const rewriteUrl = request.nextUrl.clone()
       rewriteUrl.pathname = target
-      return withDiscoveryHeaders(NextResponse.rewrite(rewriteUrl))
+      return respond(withDiscoveryHeaders(NextResponse.rewrite(rewriteUrl)))
     }
   }
 
-  return withDiscoveryHeaders(NextResponse.next())
+  return respond(withDiscoveryHeaders(NextResponse.next()))
 }
 
 export const config = {
