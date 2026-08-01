@@ -1,0 +1,4 @@
+{
+  "_readme": "Links you have checked by hand and want the validator to leave alone. Add an entry to \"urls\" as \"the-url\": \"why it is fine\" — the reason is a note to yourself, the script only reads the key. Matching ignores protocol, www, trailing slash, fragments and tracking params, so https://www.example.com/ and https://example.com match the same entry. Example: \"https://example.com\": \"Cloudflare refuses CI runners, opened it manually 2026-08-01\".",
+  "urls": {}
+}
