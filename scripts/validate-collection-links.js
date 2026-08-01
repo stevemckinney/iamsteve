@@ -75,6 +75,33 @@ function isCacheValid(entry) {
   return age < CACHE_TTL_DAYS * 24 * 60 * 60 * 1000
 }
 
+// Track how long a URL has held its current status, across runs. A link that
+// has been refused every week is stable; one that just changed is the news.
+function recordStatus(cache, url, status, statusCode) {
+  const previous = cache[url]
+  const now = Date.now()
+  const changed = !previous || previous.status !== status
+
+  cache[url] = {
+    status,
+    statusCode,
+    timestamp: now,
+    since: changed ? now : previous.since || previous.timestamp || now,
+    runs: changed ? 1 : (previous.runs || 1) + 1,
+  }
+
+  return cache[url]
+}
+
+// A bare domain link — for these a responding host answers most of the question
+function isHomepage(url) {
+  try {
+    return new URL(url).pathname.replace(/\/$/, '') === ''
+  } catch {
+    return false
+  }
+}
+
 // Normalise a URL so that two links to the same page produce the same key.
 // Collapses protocol, www, trailing slash, fragment and tracking params.
 function normaliseUrl(url) {
@@ -302,8 +329,12 @@ async function main() {
         return
       }
 
-      // Check cache
-      if (cache[url] && isCacheValid(cache[url])) {
+      // Check cache — only a known-good result lets us skip the request
+      if (
+        cache[url] &&
+        cache[url].status === 'valid' &&
+        isCacheValid(cache[url])
+      ) {
         console.log(`✓ ${filename} (cached)`)
         results.valid.push({ file: filename, url, cached: true })
         return
@@ -316,24 +347,40 @@ async function main() {
       if (result.status === 'valid') {
         console.log(`✓ ${filename}`)
         results.valid.push({ file: filename, url })
-        cache[url] = { status: 'valid', timestamp: Date.now() }
+        recordStatus(cache, url, 'valid', result.statusCode)
       } else {
         const errorCategory = categorizeError(result)
+
+        // Track the raw category so a streak keeps counting across runs
+        const history = recordStatus(
+          cache,
+          url,
+          errorCategory.category,
+          result.statusCode
+        )
+
+        // A domain that repeatedly fails to resolve has genuinely gone, but one
+        // transient DNS blip in CI should not condemn a live site
+        const deadDomain = result.code === 'ENOTFOUND' && history.runs >= 2
+        const category = deadDomain ? 'broken' : errorCategory.category
+
         console.log(
-          `${errorCategory.icon} ${filename}: ${
+          `${deadDomain ? '❌' : errorCategory.icon} ${filename}: ${
             result.error || result.statusCode
           }`
         )
 
-        const errorInfo = {
+        results[category].push({
           file: filename,
           url,
           error: result.error,
           statusCode: result.statusCode,
           code: result.code,
-        }
-
-        results[errorCategory.category].push(errorInfo)
+          since: history.since,
+          runs: history.runs,
+          changed: history.runs === 1,
+          homepage: isHomepage(url),
+        })
       }
     })
   )
@@ -356,12 +403,20 @@ async function main() {
   // Save cache and results
   saveCache(cache)
 
+  const failures = [
+    ...results.broken,
+    ...results.blocked,
+    ...results.needs_check,
+  ]
+  const changedCount = failures.filter((r) => r.changed).length
+
   const summary = `
 **Summary:**
 - ✅ Valid: ${results.valid.length}
 - ❌ Broken (High Priority): ${results.broken.length}
 - ⚠️ Needs Check (Low Priority): ${results.needs_check.length}
 - 🛡️ Blocked by bot protection: ${results.blocked.length}
+- 🆕 Changed since last run: ${changedCount}
 - 🔗 Duplicate URLs: ${results.duplicates.length}
 - 🔕 Acknowledged: ${results.acknowledged.length}
   `.trim()
@@ -369,12 +424,17 @@ async function main() {
   let details = ''
 
   const errorTable = (rows) => {
-    let table = '| File | URL | Error |\n|------|-----|-------|\n'
-    rows.forEach(({ file, url, error, statusCode, code }) => {
+    let table =
+      '| File | URL | Error | Since |\n|------|-----|-------|-------|\n'
+    rows.forEach(({ file, url, error, statusCode, code, since, runs }) => {
       const errorMsg = statusCode
         ? `HTTP ${statusCode}`
         : code || error || 'Unknown'
-      table += `| ${file} | ${url} | ${errorMsg} |\n`
+      const seen =
+        runs > 1
+          ? `${new Date(since).toISOString().slice(0, 10)} (${runs} runs)`
+          : '🆕 new'
+      table += `| ${file} | ${url} | ${errorMsg} | ${seen} |\n`
     })
     return table
   }
@@ -391,13 +451,27 @@ async function main() {
     details += errorTable(results.needs_check)
   }
 
-  // Blocked by bot protection — collapsed, since there is nothing to action
+  // Blocked by bot protection — split by how much doubt there actually is.
+  // A refusal still proves DNS, TLS and a live server, so for a bare domain
+  // there is little left to doubt. Only a deep link can still have rotted.
   if (results.blocked.length > 0) {
-    details += '\n\n<details>\n<summary>🛡️ Blocked by bot protection '
-    details += `(${results.blocked.length}) — unverifiable, not necessarily broken</summary>\n\n`
-    details += errorTable(results.blocked)
-    details += `\nThese refused an automated request. Open one by hand, and if it is fine add it to \`${IGNORE_FILE}\` to stop it appearing here.\n`
-    details += '\n</details>\n'
+    const deepLinks = results.blocked.filter((r) => !r.homepage)
+    const homepages = results.blocked.filter((r) => r.homepage)
+
+    if (deepLinks.length > 0) {
+      details += `\n\n### 🛡️ Blocked deep links (${deepLinks.length})\n\n`
+      details +=
+        'The host is answering, but these point at a specific page that could not be confirmed. Worth opening by hand.\n\n'
+      details += errorTable(deepLinks)
+    }
+
+    if (homepages.length > 0) {
+      details += '\n\n<details>\n<summary>🛡️ Blocked homepages '
+      details += `(${homepages.length}) — host responding, so the site is alive</summary>\n\n`
+      details += errorTable(homepages)
+      details += `\nAdd any of these to \`${IGNORE_FILE}\` to stop them appearing here.\n`
+      details += '\n</details>\n'
+    }
   }
 
   // Duplicate URLs — two files pointing at the same page
