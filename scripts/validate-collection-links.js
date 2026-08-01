@@ -8,10 +8,21 @@ const pLimit = require('p-limit').default
 const COLLECTIONS_DIR = 'content/collections'
 const CACHE_FILE = '.link-validation-cache'
 const RESULTS_FILE = '.validation-results.json'
+const IGNORE_FILE = 'link-check-ignore.json'
 const CACHE_TTL_DAYS = 7
 const CONCURRENT_REQUESTS = 5
 const REQUEST_TIMEOUT_MS = 10000
 const MAX_RETRIES = 2
+
+// Query params that never change which page you land on
+const TRACKING_PARAMS =
+  /^(utm_|mc_(cid|eid)$|fbclid$|gclid$|igshid$|ref$|source$)/i
+
+// Many CDNs reject HEAD outright, so retry these with GET before believing them
+const RETRY_WITH_GET = new Set([403, 404, 405, 406, 409, 429, 501])
+
+// Responses that mean "a server answered, but refused to prove the page exists"
+const BOT_PROTECTION_CODES = new Set([401, 403, 406, 429, 503])
 
 // Browser-like headers for requests
 const REQUEST_HEADERS = {
@@ -40,6 +51,23 @@ function saveCache(cache) {
   fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2))
 }
 
+// Load acknowledged links — URLs checked by hand that should be left alone
+function loadIgnoreList() {
+  if (!fs.existsSync(IGNORE_FILE)) return new Map()
+  try {
+    const { urls } = JSON.parse(fs.readFileSync(IGNORE_FILE, 'utf8'))
+    return new Map(
+      Object.entries(urls || {}).map(([url, reason]) => [
+        normaliseUrl(url),
+        reason,
+      ])
+    )
+  } catch (error) {
+    console.warn(`⚠️  Could not read ${IGNORE_FILE}: ${error.message}`)
+    return new Map()
+  }
+}
+
 // Check if cache entry is still valid
 function isCacheValid(entry) {
   if (!entry || !entry.timestamp) return false
@@ -47,43 +75,34 @@ function isCacheValid(entry) {
   return age < CACHE_TTL_DAYS * 24 * 60 * 60 * 1000
 }
 
-// Get domain key for duplicate detection
-function getDomainKey(url) {
+// Normalise a URL so that two links to the same page produce the same key.
+// Collapses protocol, www, trailing slash, fragment and tracking params.
+function normaliseUrl(url) {
   try {
     const urlObj = new URL(url)
-    const domain = urlObj.hostname.replace('www.', '')
 
-    // Special handling for platforms with unique content per path
-    const platformsWithUniqueContent = [
-      'medium.com',
-      'github.com',
-      'youtube.com',
-      'twitter.com',
-      'x.com',
-      'linkedin.com',
-      'behance.net',
-      'dribbble.com',
-    ]
+    urlObj.protocol = 'https:'
+    urlObj.hostname = urlObj.hostname.replace(/^www\./, '').toLowerCase()
+    urlObj.hash = ''
 
-    // For content platforms, include path in key
-    if (platformsWithUniqueContent.some((p) => domain.includes(p))) {
-      return `${domain}${urlObj.pathname}`
+    for (const param of [...urlObj.searchParams.keys()]) {
+      if (TRACKING_PARAMS.test(param)) urlObj.searchParams.delete(param)
     }
+    urlObj.searchParams.sort()
 
-    // For regular sites, just use domain
-    return domain
+    return urlObj.toString().replace(/\/$/, '')
   } catch {
     return url // Fallback to full URL if parsing fails
   }
 }
 
-// Detect duplicate URLs across all collections
+// Detect links to the same page across all collections
 function detectDuplicates(allCollections) {
-  const urlMap = new Map() // domain/path -> [files]
+  const urlMap = new Map() // normalised url -> [files]
   const duplicates = []
 
   allCollections.forEach(({ file, url }) => {
-    const key = getDomainKey(url)
+    const key = normaliseUrl(url)
 
     if (!urlMap.has(key)) {
       urlMap.set(key, [])
@@ -91,11 +110,10 @@ function detectDuplicates(allCollections) {
     urlMap.get(key).push({ file, url })
   })
 
-  // Find duplicates
   for (const [key, files] of urlMap.entries()) {
     if (files.length > 1) {
       duplicates.push({
-        domain: key,
+        url: key,
         files: files,
         count: files.length,
       })
@@ -105,12 +123,32 @@ function detectDuplicates(allCollections) {
   return duplicates
 }
 
-// Categorize errors: 404 is definitely broken, everything else needs manual check
+// Categorize: 404/410 are dead, bot protection is unverifiable, rest needs a look
 function categorizeError(result) {
-  if (result.statusCode === 404) {
+  if (result.statusCode === 404 || result.statusCode === 410) {
     return { category: 'broken', priority: 'high', icon: '❌' }
   }
+  if (result.blocked) {
+    return { category: 'blocked', priority: 'none', icon: '🛡️' }
+  }
   return { category: 'needs_check', priority: 'low', icon: '⚠️' }
+}
+
+// Identify a refusal by bot protection rather than a missing page
+function isBotProtection(status, headers) {
+  if (!BOT_PROTECTION_CODES.has(status)) return false
+
+  const via = `${headers.get('server') || ''} ${
+    headers.get('cf-mitigated') || ''
+  } ${headers.get('x-powered-by') || ''}`.toLowerCase()
+
+  const vendor =
+    headers.has('cf-ray') ||
+    headers.has('x-datadome') ||
+    /cloudflare|akamai|datadome|sucuri|incapsula|imperva|perimeterx/.test(via)
+
+  // 401/403 from a known WAF, or any of these codes, means we simply can't tell
+  return vendor || status === 403 || status === 429 || status === 503
 }
 
 // Make a fetch request with timeout and browser-like headers
@@ -130,6 +168,7 @@ async function request(url, method = 'HEAD') {
     status: 'error',
     statusCode: response.status,
     error: `HTTP ${response.status}`,
+    blocked: isBotProtection(response.status, response.headers),
   }
 }
 
@@ -137,13 +176,15 @@ async function request(url, method = 'HEAD') {
 async function validateUrl(url, retries = MAX_RETRIES) {
   try {
     // Try HEAD first (faster)
-    const headResult = await request(url, 'HEAD')
-    if (headResult.status === 'valid') return headResult
+    let result = await request(url, 'HEAD')
+    if (result.status === 'valid') return result
 
-    // 405 Method Not Allowed — fall back to GET
-    if (headResult.statusCode === 405) {
+    // Plenty of servers and CDNs reject HEAD, so a GET is the honest answer
+    if (RETRY_WITH_GET.has(result.statusCode)) {
       try {
-        return await request(url, 'GET')
+        const getResult = await request(url, 'GET')
+        if (getResult.status === 'valid') return getResult
+        result = getResult
       } catch (getError) {
         if (retries > 0) {
           await new Promise((resolve) =>
@@ -162,7 +203,7 @@ async function validateUrl(url, retries = MAX_RETRIES) {
     // Retry on timeout, rate limit, or server error
     if (
       retries > 0 &&
-      (headResult.statusCode === 429 || headResult.statusCode >= 500)
+      (result.statusCode === 429 || result.statusCode >= 500)
     ) {
       await new Promise((resolve) =>
         setTimeout(resolve, 2000 * (MAX_RETRIES - retries + 1))
@@ -170,7 +211,7 @@ async function validateUrl(url, retries = MAX_RETRIES) {
       return validateUrl(url, retries - 1)
     }
 
-    return headResult
+    return result
   } catch (error) {
     const isTimeout =
       error.name === 'TimeoutError' || error.cause?.code === 'ETIMEDOUT'
@@ -220,15 +261,18 @@ function getFilesToCheck() {
 
 async function main() {
   const cache = loadCache()
+  const ignored = loadIgnoreList()
   const filesToCheck = getFilesToCheck()
 
   console.log(`Checking ${filesToCheck.length} collection files...`)
 
   const results = {
     valid: [],
-    broken: [], // 404 errors only
-    needs_check: [], // All other errors
+    broken: [], // 404/410 — the page is genuinely gone
+    blocked: [], // Refused by bot protection — unverifiable, not actionable
+    needs_check: [], // Everything else
     duplicates: [],
+    acknowledged: [], // Listed in link-check-ignore.json
     skipped: [],
   }
 
@@ -246,6 +290,17 @@ async function main() {
 
       const url = data.url
       const filename = path.basename(file)
+
+      // Acknowledged by hand — leave it alone
+      if (ignored.has(normaliseUrl(url))) {
+        console.log(`🔕 ${filename} (acknowledged)`)
+        results.acknowledged.push({
+          file: filename,
+          url,
+          reason: ignored.get(normaliseUrl(url)),
+        })
+        return
+      }
 
       // Check cache
       if (cache[url] && isCacheValid(cache[url])) {
@@ -278,12 +333,7 @@ async function main() {
           code: result.code,
         }
 
-        // Categorize: 404s are definitely broken, everything else needs manual check
-        if (errorCategory.category === 'broken') {
-          results.broken.push(errorInfo)
-        } else {
-          results.needs_check.push(errorInfo)
-        }
+        results[errorCategory.category].push(errorInfo)
       }
     })
   )
@@ -311,43 +361,50 @@ async function main() {
 - ✅ Valid: ${results.valid.length}
 - ❌ Broken (High Priority): ${results.broken.length}
 - ⚠️ Needs Check (Low Priority): ${results.needs_check.length}
+- 🛡️ Blocked by bot protection: ${results.blocked.length}
 - 🔗 Duplicate URLs: ${results.duplicates.length}
+- 🔕 Acknowledged: ${results.acknowledged.length}
   `.trim()
 
   let details = ''
 
-  // Broken links (404s only - high priority)
+  const errorTable = (rows) => {
+    let table = '| File | URL | Error |\n|------|-----|-------|\n'
+    rows.forEach(({ file, url, error, statusCode, code }) => {
+      const errorMsg = statusCode
+        ? `HTTP ${statusCode}`
+        : code || error || 'Unknown'
+      table += `| ${file} | ${url} | ${errorMsg} |\n`
+    })
+    return table
+  }
+
+  // Broken links (404/410 confirmed by GET - high priority)
   if (results.broken.length > 0) {
     details += '\n\n### ❌ Broken Links (Definitely Dead - High Priority)\n\n'
-    details += '| File | URL | Error |\n'
-    details += '|------|-----|-------|\n'
-    results.broken.forEach(({ file, url, error, statusCode, code }) => {
-      const errorMsg = statusCode
-        ? `HTTP ${statusCode}`
-        : code || error || 'Unknown'
-      details += `| ${file} | ${url} | ${errorMsg} |\n`
-    })
+    details += errorTable(results.broken)
   }
 
-  // Needs manual check (everything else - low priority, likely bot blocks)
+  // Needs manual check (timeouts, DNS failures, server errors)
   if (results.needs_check.length > 0) {
-    details +=
-      '\n\n### ⚠️ Needs Manual Check (Likely Bot Protection - Low Priority)\n\n'
-    details += '| File | URL | Error |\n'
-    details += '|------|-----|-------|\n'
-    results.needs_check.forEach(({ file, url, error, statusCode, code }) => {
-      const errorMsg = statusCode
-        ? `HTTP ${statusCode}`
-        : code || error || 'Unknown'
-      details += `| ${file} | ${url} | ${errorMsg} |\n`
-    })
+    details += '\n\n### ⚠️ Needs Manual Check (Low Priority)\n\n'
+    details += errorTable(results.needs_check)
   }
 
-  // Duplicate URLs
+  // Blocked by bot protection — collapsed, since there is nothing to action
+  if (results.blocked.length > 0) {
+    details += '\n\n<details>\n<summary>🛡️ Blocked by bot protection '
+    details += `(${results.blocked.length}) — unverifiable, not necessarily broken</summary>\n\n`
+    details += errorTable(results.blocked)
+    details += `\nThese refused an automated request. Open one by hand, and if it is fine add it to \`${IGNORE_FILE}\` to stop it appearing here.\n`
+    details += '\n</details>\n'
+  }
+
+  // Duplicate URLs — two files pointing at the same page
   if (results.duplicates.length > 0) {
     details += '\n\n### 🔗 Duplicate URLs Found\n\n'
-    results.duplicates.forEach(({ domain, files, count }) => {
-      details += `**${domain}** (${count} files)\n`
+    results.duplicates.forEach(({ url, files, count }) => {
+      details += `**${url}** (${count} files)\n`
       files.forEach(({ file, url }) => {
         details += `  - \`${file}\` → ${url}\n`
       })
@@ -372,8 +429,13 @@ async function main() {
   console.log('\n' + summary)
   console.log(details)
 
-  // Set output for GitHub Actions
-  console.log(`::set-output name=broken_count::${results.broken.length}`)
+  // Set output for GitHub Actions (::set-output is no longer honoured)
+  if (process.env.GITHUB_OUTPUT) {
+    fs.appendFileSync(
+      process.env.GITHUB_OUTPUT,
+      `broken_count=${results.broken.length}\n`
+    )
+  }
 
   // Exit with non-zero if broken links found (optional - comment out to make non-blocking)
   // process.exit(results.broken.length > 0 ? 1 : 0);
@@ -393,8 +455,10 @@ main().catch((error) => {
         results: {
           valid: [],
           broken: [],
+          blocked: [],
           needs_check: [],
           duplicates: [],
+          acknowledged: [],
           skipped: [],
         },
       },
@@ -402,4 +466,9 @@ main().catch((error) => {
       2
     )
   )
+
+  // -1 means "unknown", so a crash neither files an issue nor closes an open one
+  if (process.env.GITHUB_OUTPUT) {
+    fs.appendFileSync(process.env.GITHUB_OUTPUT, 'broken_count=-1\n')
+  }
 })
