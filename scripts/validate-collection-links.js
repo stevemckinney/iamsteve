@@ -187,6 +187,10 @@ async function request(url, method = 'HEAD') {
     signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
   })
 
+  // Only the status line matters here. Releasing the body frees the socket
+  // straight away instead of holding it while a whole page arrives.
+  await response.body?.cancel().catch(() => {})
+
   if (response.status >= 200 && response.status < 400) {
     return { status: 'valid', statusCode: response.status }
   }
