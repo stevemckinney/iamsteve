@@ -281,6 +281,7 @@ function getFilesToCheck() {
     return output
       .split('\n')
       .filter((f) => f.startsWith(COLLECTIONS_DIR) && f.endsWith('.md'))
+      .filter((f) => fs.existsSync(f)) // a removed collection has nothing to check
   } catch {
     // Fallback: check all if git diff fails
     return fs
