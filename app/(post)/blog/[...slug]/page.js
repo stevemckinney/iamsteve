@@ -42,6 +42,9 @@ export async function generateMetadata(props) {
     description: post.metadesc,
     alternates: {
       canonical: post.slug,
+      types: {
+        'text/markdown': `/api/content/${post.slugAsParams}`,
+      },
     },
     openGraph: {
       title: post.title,

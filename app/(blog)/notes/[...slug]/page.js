@@ -50,6 +50,9 @@ export async function generateMetadata(props) {
     description: note.summary ?? '',
     alternates: {
       canonical: note.slug,
+      types: {
+        'text/markdown': `/api/content/notes/${note.slugAsParams}`,
+      },
     },
     openGraph: {
       title: note.title,
