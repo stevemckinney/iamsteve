@@ -2,6 +2,7 @@ import { allPosts } from 'content-collections'
 import { createClient } from '@supabase/supabase-js'
 
 import siteMetadata from '@/content/metadata'
+import { MARKDOWN_VARY } from '@/lib/agent/markdown'
 
 export const revalidate = 86400
 export const dynamic = 'force-static'
@@ -73,12 +74,14 @@ ${popular.map(line).join('\n')}
 
 - [RSS feed](${siteMetadata.siteUrl}/feed.xml)
 - [llms.txt](${siteMetadata.siteUrl}/llms.txt)
+- [OpenAPI description](${siteMetadata.siteUrl}/openapi.json)
 `
 
   return new Response(markdown, {
     headers: {
       'Content-Type': 'text/markdown; charset=utf-8',
       'Cache-Control': 'public, max-age=86400, s-maxage=86400',
+      Vary: MARKDOWN_VARY,
     },
   })
 }

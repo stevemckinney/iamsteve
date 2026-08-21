@@ -1,18 +1,13 @@
 import { allPosts } from 'content-collections'
 import { cleanMarkdownForLLMs } from '@/lib/utils/clean-markdown-for-llms'
+import { markdownHeaders, markdownNotFound } from '@/lib/agent/markdown'
 
 export async function GET(request, { params }) {
   const { slug } = await params
   const post = allPosts.find((p) => p.slug === `/blog/${slug}`)
 
   if (!post) {
-    return new Response(
-      '# Not Found\n\nThe requested article does not exist.',
-      {
-        status: 404,
-        headers: { 'Content-Type': 'text/markdown; charset=utf-8' },
-      }
-    )
+    return markdownNotFound(`/blog/${slug}`)
   }
 
   const cleanedMarkdown = cleanMarkdownForLLMs(post.content)
@@ -35,10 +30,5 @@ export async function GET(request, { params }) {
 
   const output = `${frontmatter}\n\n${cleanedMarkdown}`
 
-  return new Response(output, {
-    headers: {
-      'Content-Type': 'text/markdown; charset=utf-8',
-      'Cache-Control': 'public, max-age=86400, s-maxage=86400',
-    },
-  })
+  return new Response(output, { headers: markdownHeaders })
 }

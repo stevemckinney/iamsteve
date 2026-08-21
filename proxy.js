@@ -1,9 +1,13 @@
 import { NextResponse } from 'next/server'
 
+import siteMetadata from '@/content/metadata'
+import { notFoundMarkdown, goneMarkdown } from '@/lib/agent/not-found'
+
 // Agent discovery resources advertised via RFC 8288 Link headers.
 const LINK_HEADER = [
   '</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',
   '</.well-known/agent-skills/index.json>; rel="https://agentskills.io/rel/index"; type="application/json"',
+  '</openapi.json>; rel="service-desc"; type="application/json"',
   '</llms.txt>; rel="https://llmstxt.org/rel/llms"; type="text/plain"',
   '</feed.xml>; rel="alternate"; type="application/rss+xml"; title="RSS feed"',
   '</sitemap.xml>; rel="sitemap"; type="application/xml"',
@@ -11,6 +15,11 @@ const LINK_HEADER = [
 ].join(', ')
 
 const MARKDOWN_ACCEPT = /(^|,\s*)text\/markdown(\s*;|\s*,|\s*$)/i
+
+// Paths served from disk or by a route handler. They answer for themselves, so
+// negotiation must not touch them: `/.well-known/agent-skills/*/SKILL.md` is a
+// real file and would otherwise be swallowed by the markdown 404 below.
+const RESERVED_PREFIXES = ['/.well-known/', '/api/', '/_next/']
 
 const MARKDOWN_ROUTES = [
   { pattern: /^\/$/, target: () => '/api/content/home' },
@@ -36,10 +45,19 @@ function markdownTargetFor(pathname) {
   return null
 }
 
+// `Vary` is deliberately not set here. Next.js overwrites it on every page
+// response with its own RSC token list, so `Accept` has to be added at the CDN
+// for the negotiated paths — see the Vary rules in netlify.toml and
+// vercel.json. Markdown responses set their own `Vary` in the route handler.
 function withDiscoveryHeaders(response) {
   response.headers.append('Link', LINK_HEADER)
-  response.headers.set('Vary', 'Accept')
   return response
+}
+
+const MARKDOWN_HEADERS = {
+  'Content-Type': 'text/markdown; charset=utf-8',
+  'Cache-Control': 'no-store',
+  Vary: 'Accept, Accept-Encoding',
 }
 
 const STRIP_PARAMS = [
@@ -92,14 +110,18 @@ export function proxy(request) {
     return response
   }
 
-  if (GONE_PATHS.includes(pathname)) {
-    return respond(new NextResponse(null, { status: 410 }))
-  }
+  const isGone =
+    GONE_PATHS.includes(pathname) ||
+    GONE_PREFIXES.some((prefix) => pathname.startsWith(prefix))
 
-  for (const prefix of GONE_PREFIXES) {
-    if (pathname.startsWith(prefix)) {
-      return respond(new NextResponse(null, { status: 410 }))
-    }
+  if (isGone) {
+    // A bare 410 tells an agent nothing about where to go instead.
+    return respond(
+      new NextResponse(goneMarkdown(siteMetadata.siteUrl, pathname), {
+        status: 410,
+        headers: MARKDOWN_HEADERS,
+      })
+    )
   }
 
   const url = request.nextUrl.clone()
@@ -120,12 +142,31 @@ export function proxy(request) {
   const acceptsMarkdown = MARKDOWN_ACCEPT.test(
     request.headers.get('accept') || ''
   )
-  if (acceptsMarkdown || pathname.endsWith('.md')) {
+  const reserved = RESERVED_PREFIXES.some((prefix) =>
+    pathname.startsWith(prefix)
+  )
+  const wantsMarkdown =
+    (acceptsMarkdown || pathname.endsWith('.md')) && !reserved
+
+  if (wantsMarkdown) {
     const target = markdownTargetFor(pathname)
     if (target) {
       const rewriteUrl = request.nextUrl.clone()
       rewriteUrl.pathname = target
       return respond(withDiscoveryHeaders(NextResponse.rewrite(rewriteUrl)))
+    }
+
+    // A `.md` URL with no markdown representation never existed as a page, so
+    // answer in the format that was asked for rather than the HTML 404.
+    if (pathname.endsWith('.md')) {
+      return respond(
+        withDiscoveryHeaders(
+          new NextResponse(notFoundMarkdown(siteMetadata.siteUrl, pathname), {
+            status: 404,
+            headers: MARKDOWN_HEADERS,
+          })
+        )
+      )
     }
   }
 

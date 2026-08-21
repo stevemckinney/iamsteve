@@ -75,6 +75,8 @@ ${featured
 - [Full archive](${base}/blog)
 - [RSS feed](${base}/feed.xml)
 - [About](${base}/about)
+- [OpenAPI description](${base}/openapi.json)
+- [API catalog](${base}/.well-known/api-catalog)
 `
 
   return new Response(content, {

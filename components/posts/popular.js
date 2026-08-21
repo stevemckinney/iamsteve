@@ -111,6 +111,7 @@ export default function PopularPosts({ posts }) {
             frontmatter={post}
             image={false}
             key={post._meta?.filePath}
+            headingLevel={3}
             className="max-sm:w-[calc(100vw-48px)] max-sm:snap-center md:col-span-1"
           />
         ))}

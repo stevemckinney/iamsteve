@@ -28,12 +28,34 @@ curl -X POST https://iamsteve.me/api/newsletter \
 
 ## Responses
 
-- `200 OK` with `{ "success": true }` &mdash; subscription created and
-  confirmation email sent.
-- `400 Bad Request` with `{ "error": "MEMBER_EXISTS_WITH_EMAIL_ADDRESS" }`
-  &mdash; the email is already on the list.
-- `400 Bad Request` with `{ "error": "Email is required" }` &mdash; the
-  request is missing the `email` field.
+`200 OK` returns `{ "success": true }` &mdash; the subscription was created and
+the confirmation email sent.
+
+Every failure returns the same JSON shape, so branch on `error.code` rather
+than on the message text.
+
+```json
+{
+  "error": {
+    "code": "MEMBER_EXISTS_WITH_EMAIL_ADDRESS",
+    "message": "That email address is already subscribed.",
+    "hint": "No action needed. Check the inbox for the confirmation email.",
+    "status": 400,
+    "documentation": "https://iamsteve.me/openapi.json"
+  }
+}
+```
+
+| Code                               | Status | Meaning                               |
+| ---------------------------------- | ------ | ------------------------------------- |
+| `EMAIL_REQUIRED`                   | 400    | The body is missing the `email` field |
+| `INVALID_JSON`                     | 400    | The body could not be parsed as JSON  |
+| `MEMBER_EXISTS_WITH_EMAIL_ADDRESS` | 400    | The address is already on the list    |
+| `SUBSCRIPTION_FAILED`              | 4xx    | The provider rejected the address     |
+| `NEWSLETTER_UNAVAILABLE`           | 500    | The provider could not be reached     |
+
+The full request and response schemas are published at
+[/openapi.json](https://iamsteve.me/openapi.json).
 
 ## Notes
 

@@ -73,6 +73,11 @@ export async function generateMetadata(props) {
   }
 }
 
+// Every renderable slug is prerendered below, so anything else is a 404.
+// Saying so up front means Next serves the prerendered not-found page
+// instead of an empty shell that only fills in once JavaScript runs.
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   return collections.map((page) => ({
     slug: page.slugAsParams.split('/'),
