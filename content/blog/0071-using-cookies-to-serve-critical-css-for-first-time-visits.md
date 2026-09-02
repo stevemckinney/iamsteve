@@ -2,7 +2,7 @@
 title: 'Using cookies to serve critical CSS for first time visits'
 date: '2015-04-21T06:45:00+00:00'
 lastmod: '2016-08-28T11:00:46+00:00'
-summary: ‘How to use cookies with critical path CSS so returning visitors load the full stylesheet instead. A follow-up to the critical CSS post, covering the caching side.’
+summary: 'How to use cookies with critical path CSS so returning visitors load the full stylesheet instead. A follow-up to the critical CSS post, covering the caching side.'
 metadesc: 'How to use cookies to cache your critical CSS. A simple approach involving making your CSS asynchronous, applying a cookie and checking for it.'
 theme: '#ffede5'
 tags: ['Code']

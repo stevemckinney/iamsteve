@@ -1,5 +1,6 @@
 import { allPosts } from 'content-collections'
 import { createClient } from '@supabase/supabase-js'
+import siteMetadata from '@/content/metadata'
 
 export const revalidate = 86400 // Revalidate daily
 export const dynamic = 'force-static'
@@ -48,25 +49,32 @@ export async function GET() {
     ...new Map([...topByViews, ...mostRecent].map((p) => [p.slug, p])).values(),
   ]
 
+  const base = siteMetadata.siteUrl
+
   const content = `# iamsteve.me
 
 > Tips and tutorials about the design and build of web interfaces. Through design and code tutorials focused on maintainable CSS, good typography and UI fundamentals by Steve McKinney.
 
 ## Best articles
 
-${featured.map((post) => `- [${post.title}](${post.slug})`).join('\n')}
+${featured
+  .map(
+    (post) =>
+      `- [${post.title}](${base}${post.slug}): markdown at ${base}/api/content/${post.slugAsParams}`
+  )
+  .join('\n')}
 
 ## Categories
 
-- [Design articles](/category/design)
-- [Code articles](/category/code)
-- [Typography articles](/category/typography)
+- [Design articles](${base}/category/design)
+- [Code articles](${base}/category/code)
+- [Typography articles](${base}/category/typography)
 
 ## Optional
 
-- [Full archive](/blog)
-- [RSS feed](/feed.xml)
-- [About](/about)
+- [Full archive](${base}/blog)
+- [RSS feed](${base}/feed.xml)
+- [About](${base}/about)
 `
 
   return new Response(content, {

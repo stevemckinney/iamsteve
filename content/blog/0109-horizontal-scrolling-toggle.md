@@ -2,7 +2,7 @@
 title: 'Browse content efficiently with toggling horizontal scrolling'
 date: '2016-01-12T07:30:00+00:00'
 lastmod: '2021-06-17T06:24:00+00:00'
-summary: ‘A Finder-inspired pattern for toggling between horizontal and vertical scrolling layouts. Built with flexbox, making it easy to switch between compact and expanded views.’
+summary: 'A Finder-inspired pattern for toggling between horizontal and vertical scrolling layouts. Built with flexbox, making it easy to switch between compact and expanded views.'
 metadesc: 'Allow for the best of both worlds with horizontal scrolling and toggle to vertical layout. Using flexbox this makes layouts easy to adjust.'
 theme: '#e9f5f5'
 tags: ['Code']
