@@ -189,7 +189,7 @@ const notes = defineCollection({
     content: z.string(),
     title: z.string(),
     date: z.string(),
-    status: z.enum(['draft', 'published']).default('published'),
+    status: z.enum(['draft', 'published']).default('draft'),
     summary: z.string().nullable().optional(),
   }),
   transform: async (doc, ctx) => {
