@@ -94,6 +94,13 @@ jobs:
               ;;
           esac
 
+          # Skip past any tag that already exists on another commit
+          while git rev-parse -q --verify "refs/tags/v${NEW_VERSION}" >/dev/null; do
+            echo "v${NEW_VERSION} already exists, bumping patch"
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$NEW_VERSION"
+            NEW_VERSION="${MAJOR}.${MINOR}.$((PATCH + 1))"
+          done
+
           echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
           echo "${{ steps.latest_tag.outputs.tag }} → v${NEW_VERSION} (${BUMP_TYPE})"
 
