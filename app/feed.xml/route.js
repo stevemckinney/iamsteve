@@ -1,7 +1,7 @@
 import { allPosts, allNotes } from 'content-collections'
 import siteMetadata from '@/content/metadata'
 
-export const revalidate = 2592000
+export const revalidate = 3600
 
 export async function GET() {
   // Combine posts and notes
