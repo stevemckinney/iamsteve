@@ -118,9 +118,9 @@ function processNote(filePath, existingFiles) {
 
   // Ensure status
   if (!frontmatter.status) {
-    frontmatter.status = 'published'
+    frontmatter.status = 'draft'
     modified = true
-    changes.push('Added status: published')
+    changes.push('Added status: draft')
   }
 
   // Check filename matches slugified title
