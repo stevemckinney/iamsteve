@@ -18,7 +18,9 @@
     "build": "pnpm lint && next build",
     "validate:links": "node scripts/validate-collection-links.js",
     "validate:links:all": "CHECK_ALL=true node scripts/validate-collection-links.js",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "node --no-warnings --import ./tests/register.mjs --test \"tests/*.test.js\"",
+    "verify:agents": "node scripts/verify-agent-endpoints.js"
   },
   "browserslist": [
     "> 2%",

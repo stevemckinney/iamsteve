@@ -18,6 +18,11 @@ import Link from '@/components/link'
 
 export const revalidate = 86400
 
+// Every renderable slug is prerendered below, so anything else is a 404.
+// Saying so up front means Next serves the prerendered not-found page
+// instead of an empty shell that only fills in once JavaScript runs.
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   return allNotes
     .filter((note) => note.status === 'published')

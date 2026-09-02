@@ -1,24 +1,25 @@
-import { allNotes } from 'content-collections'
+import { allPages } from 'content-collections'
 import { cleanMarkdownForLLMs } from '@/lib/utils/clean-markdown-for-llms'
 import { markdownHeaders, markdownNotFound } from '@/lib/agent/markdown'
 
 export async function GET(request, { params }) {
   const { slug } = await params
-  const note = allNotes.find((n) => n.slug === `/notes/${slug}`)
+  const page = allPages.find((p) => p.slugAsParams === slug)
 
-  if (!note) {
-    return markdownNotFound(`/notes/${slug}`)
+  if (!page) {
+    return markdownNotFound(`/${slug}`)
   }
 
-  const cleanedMarkdown = cleanMarkdownForLLMs(note.content)
+  const cleanedMarkdown = cleanMarkdownForLLMs(page.content)
 
   const frontmatter = [
     '---',
-    `title: "${note.title.replace(/"/g, '\\"')}"`,
+    `title: "${page.title.replace(/"/g, '\\"')}"`,
     `author: Steve McKinney`,
-    `date: ${note.date}`,
-    note.summary ? `summary: "${note.summary.replace(/"/g, '\\"')}"` : null,
-    `url: https://iamsteve.me${note.slug}`,
+    page.description
+      ? `description: "${page.description.replace(/"/g, '\\"')}"`
+      : null,
+    `url: https://iamsteve.me/${slug}`,
     '---',
   ]
     .filter(Boolean)

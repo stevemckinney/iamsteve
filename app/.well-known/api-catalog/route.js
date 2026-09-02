@@ -14,6 +14,13 @@ export async function GET() {
     linkset: [
       {
         anchor: `${base}/api/content`,
+        'service-desc': [
+          {
+            href: `${base}/openapi.json`,
+            type: 'application/json',
+            title: 'OpenAPI description of the whole API',
+          },
+        ],
         'service-doc': [
           {
             href: `${base}/llms.txt`,
@@ -22,6 +29,11 @@ export async function GET() {
           },
         ],
         item: [
+          {
+            href: `${base}/api/content/home`,
+            title: 'Get the homepage as markdown',
+            type: 'text/markdown',
+          },
           {
             href: `${base}/api/content/{slug}`,
             title: 'Get a blog article as markdown',
@@ -32,10 +44,27 @@ export async function GET() {
             title: 'Get a note as markdown',
             type: 'text/markdown',
           },
+          {
+            href: `${base}/api/content/pages/{slug}`,
+            title: 'Get a standalone page as markdown',
+            type: 'text/markdown',
+          },
+          {
+            href: `${base}/api/content/collections/{slug}`,
+            title: 'Get a collection entry as markdown',
+            type: 'text/markdown',
+          },
         ],
       },
       {
         anchor: `${base}/api/newsletter`,
+        'service-desc': [
+          {
+            href: `${base}/openapi.json`,
+            type: 'application/json',
+            title: 'OpenAPI description of the whole API',
+          },
+        ],
         item: [
           {
             href: `${base}/api/newsletter`,

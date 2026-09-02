@@ -60,7 +60,7 @@ const NewsletterForm = ({
         setMessage(`The server cannot be reached to submit your request.`)
       } else if (
         res.status === 400 &&
-        data.error === 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS'
+        data.error?.code === 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS'
       ) {
         setError(true)
         setMessage(`This email is already subscribed to the newsletter.`)

@@ -23,6 +23,40 @@
     [context.production.headers.values]
       Cache-Control = "public, max-age=0, s-maxage=3600, stale-while-revalidate=60"
 
+# Markdown content negotiation. Next.js overwrites `Vary` on every page
+# response with its own RSC token list, so `Accept` has to be added here or a
+# CDN can hand the cached HTML to an agent that asked for markdown. The RSC
+# tokens are repeated so replacing the header loses nothing.
+  [[context.production.headers]]
+    for = "/"
+    [context.production.headers.values]
+      Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
+
+  [[context.production.headers]]
+    for = "/blog/*"
+    [context.production.headers.values]
+      Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
+
+  [[context.production.headers]]
+    for = "/notes/*"
+    [context.production.headers.values]
+      Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
+
+  [[context.production.headers]]
+    for = "/collections/*"
+    [context.production.headers.values]
+      Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
+
+  [[context.production.headers]]
+    for = "/about"
+    [context.production.headers.values]
+      Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
+
+  [[context.production.headers]]
+    for = "/uses"
+    [context.production.headers.values]
+      Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
+
 # Development context (includes deploy previews and branch deploys)
 # X-Robots-Tag keeps non-production deploys out of Google's index while
 # leaving them crawlable, so the noindex is actually seen
@@ -49,6 +83,37 @@
   for = "/feed.xml"
   [headers.values]
     Cache-Control = "public, s-maxage=3600, stale-while-revalidate=60"
+
+# Markdown content negotiation, see the note in the production context above.
+[[headers]]
+  for = "/"
+  [headers.values]
+    Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
+
+[[headers]]
+  for = "/blog/*"
+  [headers.values]
+    Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
+
+[[headers]]
+  for = "/notes/*"
+  [headers.values]
+    Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
+
+[[headers]]
+  for = "/collections/*"
+  [headers.values]
+    Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
+
+[[headers]]
+  for = "/about"
+  [headers.values]
+    Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
+
+[[headers]]
+  for = "/uses"
+  [headers.values]
+    Vary = "Accept, RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Router-Segment-Prefetch, Accept-Encoding"
 
 [[redirects]]
   from = "/blog/entry/horizontal‑scrolling‑responsive‑menu"

@@ -61,7 +61,12 @@ const PostImage = ({ ...props }) => {
   )
 }
 
-const Container = ({ frontmatter, image, className = 'card' }) => {
+const Container = ({
+  frontmatter,
+  image,
+  className = 'card',
+  headingLevel = 2,
+}) => {
   const {
     slug,
     date,
@@ -84,6 +89,10 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
   // [mask:radial-gradient(155%_140%_at_50%_30%,#fff_24.1%,rgba(255,255,255,0.56)_41.94%,transparent_48.59%,transparent_100%)]
   // [mask:linear-gradient(to_right,#fff_75%,#fff_80%,transparent_97.5%)]
   //  [mask:radial-gradient(163.02%_100%_at_50%_0%,#fff_83.77%,rgba(255,255,255,0.8)_90.28%,transparent_100%)]
+
+  // Cards sit under a section heading on the homepage and under the page
+  // heading elsewhere, so the level has to follow the outline.
+  const Heading = 'h' + headingLevel
 
   const imageColor = theme ? theme.toString() : '#f1e8e4'
   const imageClass = `relative flex items-center justify-center`
@@ -170,7 +179,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
           </Badge>
         </div>
         <div className="flex flex-col gap-2.5 px-8 pt-[.8125rem] @lg/card:pt-2 @lg/card:gap-3 @lg/card:px-12">
-          <h2
+          <Heading
             className="p-0 m-0 leading-none text-balance lowercase font-display font-variation-bold hyphens-auto text-3xl @lg/card:text-5xl"
             id={`title-${_meta?.filePath}`}
           >
@@ -180,7 +189,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
             >
               {title}
             </Link>
-          </h2>
+          </Heading>
           {summary && (
             <div
               className="flex-auto md:text-lg text-ui-body line-clamp-4 @lg/card:line-clamp-3"
