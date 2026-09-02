@@ -1,7 +1,7 @@
 ---
-title: 'The best ink trap fonts for web design'
+title: 'The best ink trap typefaces for websites'
 date: '2021-07-28T10:28:00+00:00'
-lastmod: '2026-04-20T18:21:44+00:00'
+lastmod: '2026-06-12T20:45:00+00:00'
 summary: 'A look at type that features prominent cuts or tapering into the type and a variety of recommendations you can use in your designs.'
 metadesc: 'A curated collection of ink trap typefaces for websites, including free Google Fonts options and premium picks from foundries like OH no Type Co and Pangram Pangram.'
 theme: '#f9f3f1'

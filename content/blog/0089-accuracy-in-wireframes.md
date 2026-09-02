@@ -2,7 +2,7 @@
 title: 'Accuracy in wireframes'
 date: '2015-08-25T06:17:00+00:00'
 lastmod: '2016-08-28T10:54:41+00:00'
-summary: ‘Why wireframes should strip all visual style and focus purely on layout. Accurate wireframes make for a stronger foundation before adding visual design.’
+summary: 'Why wireframes should strip all visual style and focus purely on layout. Accurate wireframes make for a stronger foundation before adding visual design.'
 metadesc: 'My opinion on why wireframes should be completely accurate to the final design and how it can save you time and frustration.'
 theme: '#e9f5f5'
 tags: ['Design']

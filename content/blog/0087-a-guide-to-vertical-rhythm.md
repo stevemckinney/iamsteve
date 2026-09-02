@@ -2,7 +2,7 @@
 title: 'A guide to vertical rhythm'
 date: '2015-08-11T06:41:00+00:00'
 lastmod: '2018-10-15T11:09:25+00:00'
-summary: ‘Vertical rhythm creates visual harmony between text and other elements on a page. This guide focuses on the why rather than the how, to build a solid understanding.’
+summary: 'Vertical rhythm creates visual harmony between text and other elements on a page. This guide focuses on the why rather than the how, to build a solid understanding.'
 metadesc: "If you've ever struggled with how vertical rhythm is achieved, I will guide you through how you choose a baseline, sizing and images."
 theme: '#fffbee'
 tags: ['Design']

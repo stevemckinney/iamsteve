@@ -2,7 +2,7 @@
 title: 'Overcoming a couple of issues with SVG filter effects'
 date: '2015-02-03T08:00:00+00:00'
 lastmod: '2016-08-28T12:54:02+00:00'
-summary: ‘SVG filter effects are useful for illustration details on the web. This post covers two problems encountered using Gaussian blur — lower saturation in Safari and filter clipping.’
+summary: 'SVG filter effects are useful for illustration details on the web. This post covers two problems encountered using Gaussian blur — lower saturation in Safari and filter clipping.'
 metadesc: 'SVG filters are really useful for infinitely scalable effects but they come with some issues, such as appearing with lower saturation in Safari and filter clipping at certain sizes.'
 theme: '#fffbf2'
 tags: ['Code']

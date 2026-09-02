@@ -66,7 +66,7 @@ Thankfully one was far easier than the others.
 
 One of the things I felt ~~could~~ would be a problem was the current URL structure surrounding blog posts. And I didn’t want to have that as a problem on top of moving to Next.js and a new hosting platform.
 
-The structure was `/blog/entry/[slug]` and was moving to `/blog/[slug]`.
+The structure was `/blog/entry/<slug>` and was moving to `/blog/<slug>`.
 
 I was aware this would break links from other websites, for which I setup redirects. And knew by the time I’d finally finish redeveloping the website on Next all the issues will have been ironed out.
 
