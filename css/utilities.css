@@ -38,11 +38,15 @@
   --bg-gradient-strong: oklch(78% 0.186 80.6 / 0.2);
   border: 1px solid transparent;
   position: relative;
-  box-shadow: inset 0 -2px 4px -2px
-      light-dark(oklch(71.7% 0.18 68.6 / 0.8), oklch(71.7% 0.18 68.6 / 0)),
-    inset 0 0 light-dark(0, 3px) 1px
-      light-dark(oklch(87.1% 0.184 95 / 0.6), var(--color-dandelion-400)),
+  box-shadow: inset 0 -2px 4px -2px oklch(71.7% 0.18 68.6 / 0.8),
+    inset 0 0 0 1px oklch(87.1% 0.184 95 / 0.6),
     inset 0 1px 3px oklch(87.1% 0.184 95 / 0.5), var(--shadow-placed-depth);
+
+  @media (prefers-color-scheme: dark) {
+    box-shadow: inset 0 -2px 4px -2px oklch(71.7% 0.18 68.6 / 0),
+      inset 0 0 3px 1px var(--color-dandelion-400),
+      inset 0 1px 3px oklch(87.1% 0.184 95 / 0.5), var(--shadow-placed-depth);
+  }
   color: var(--color-dandelion-800);
   border-radius: var(--radius-sm);
   padding: calc(var(--spacing) * 3.5) calc(var(--spacing) * 8);
@@ -177,37 +181,40 @@
 }
 
 @utility drop-shadow-placed {
-  filter: light-dark(
-    drop-shadow(0px 8px 12px rgba(117, 99, 98, 0.12))
-      drop-shadow(0px 3px 4px rgba(117, 99, 98, 0.12)),
-    drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.4))
-      drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.3))
-  );
+  filter: drop-shadow(0px 8px 12px rgba(117, 99, 98, 0.12))
+    drop-shadow(0px 3px 4px rgba(117, 99, 98, 0.12));
+
+  @media (prefers-color-scheme: dark) {
+    filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.4))
+      drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.3));
+  }
 }
 
 @utility drop-shadow-image {
-  filter: light-dark(
-    drop-shadow(0px 0.5px 0.5px rgb(117 99 98 / 0.6))
-      drop-shadow(0px 1px 1px rgb(117 99 98 / 0.3))
-      drop-shadow(0px 2px 1px rgb(117 99 98 / 0.08))
-      drop-shadow(0px 3px 1px rgb(117 99 98 / 0.08))
-      drop-shadow(0px 6px 1px rgb(117 99 98 / 0.05)),
-    drop-shadow(0px 1px 1px rgb(0 0 0 / 0.4))
+  filter: drop-shadow(0px 0.5px 0.5px rgb(117 99 98 / 0.6))
+    drop-shadow(0px 1px 1px rgb(117 99 98 / 0.3))
+    drop-shadow(0px 2px 1px rgb(117 99 98 / 0.08))
+    drop-shadow(0px 3px 1px rgb(117 99 98 / 0.08))
+    drop-shadow(0px 6px 1px rgb(117 99 98 / 0.05));
+
+  @media (prefers-color-scheme: dark) {
+    filter: drop-shadow(0px 1px 1px rgb(0 0 0 / 0.4))
       drop-shadow(0px 2px 1px rgb(0 0 0 / 0.1))
-      drop-shadow(0px 3px 1px rgb(0 0 0 / 0.1))
-  );
+      drop-shadow(0px 3px 1px rgb(0 0 0 / 0.1));
+  }
 }
 
 @utility drop-shadow-image-modal {
-  filter: light-dark(
-    drop-shadow(0px 1px 1px rgb(117 99 98 / 0.4))
-      drop-shadow(0px 2px 1px rgb(117 99 98 / 0.1))
-      drop-shadow(0px 3px 1px rgb(117 99 98 / 0.1)),
-    drop-shadow(0px 1px 1px rgb(0 0 0 / 0.4))
+  filter: drop-shadow(0px 1px 1px rgb(117 99 98 / 0.4))
+    drop-shadow(0px 2px 1px rgb(117 99 98 / 0.1))
+    drop-shadow(0px 3px 1px rgb(117 99 98 / 0.1));
+
+  @media (prefers-color-scheme: dark) {
+    filter: drop-shadow(0px 1px 1px rgb(0 0 0 / 0.4))
       drop-shadow(0px 2px 1px rgb(0 0 0 / 0.1))
       drop-shadow(0px 3px 1px rgb(0 0 0 / 0.1))
-      drop-shadow(0px 6px 24px rgb(0 0 0 / 0.4))
-  );
+      drop-shadow(0px 6px 24px rgb(0 0 0 / 0.4));
+  }
 }
 
 @utility frame {
@@ -408,10 +415,7 @@
       0px 3px 4px -2px var(--ui-border-color);
     --shadow-reduced-light: var(--shadow-reduced-border),
       var(--shadow-reduced-depth);
-    --shadow-reduced: light-dark(
-      var(--shadow-reduced-light),
-      0 0 0 1px var(--color-surface-02)
-    );
+    --shadow-reduced: var(--shadow-reduced-light);
 
     --shadow-placed-border: 0 -1px var(--ui-border-color-weak),
       0 1px var(--ui-border-color-strong), 0 0 0 1px var(--ui-border-color);
@@ -423,10 +427,7 @@
       0 6px 9px -4.5px var(--ui-border-color);
     --shadow-placed-light: var(--shadow-placed-border),
       var(--shadow-placed-depth);
-    --shadow-placed: light-dark(
-      var(--shadow-placed-light),
-      0 0 0 1px var(--color-surface-02)
-    );
+    --shadow-placed: var(--shadow-placed-light);
 
     --shadow-picked-border: 0 -1px var(--ui-border-color-weak),
       0 1px var(--ui-border-color-strong),
@@ -439,13 +440,16 @@
       0 12px 18px -9px var(--ui-border-color);
     --shadow-picked-light: var(--shadow-picked-border),
       var(--shadow-picked-depth);
-    --shadow-picked: light-dark(
-      var(--shadow-picked-light),
-      0 0 0 1px var(--color-surface-03)
-    );
+    --shadow-picked: var(--shadow-picked-light);
 
     --shadow-floating: 0 10px 24px -2px rgba(117, 99, 98, 0.12),
       0 2px 4px rgba(117, 99, 98, 0.08);
+
+    @media (prefers-color-scheme: dark) {
+      --shadow-reduced: 0 0 0 1px var(--color-surface-02);
+      --shadow-placed: 0 0 0 1px var(--color-surface-02);
+      --shadow-picked: 0 0 0 1px var(--color-surface-03);
+    }
   }
 }
 
