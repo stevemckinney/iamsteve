@@ -147,10 +147,6 @@
   );
 
   --bg-texture-image: url(/images/texture.png);
-  --bg-dash-image: light-dark(
-    url(/images/dash.svg),
-    url(/images/dash-dark.svg)
-  );
 
   --color-ui-normal: light-dark(rgba(79, 64, 63, 0.12), rgba(79, 64, 63, 0.16));
   --color-ui-raised: light-dark(rgba(79, 64, 63, 0.18), rgba(79, 64, 63, 0.24));
@@ -172,10 +168,6 @@
   --color-notice-icon: light-dark(
     var(--color-cornflour-900),
     var(--color-cornflour-400)
-  );
-  --shadow-notice: light-dark(
-    var(--shadow-placed),
-    0 0 0 1px color-mix(in oklch, var(--color-cornflour-900), transparent 50%)
   );
 
   /* inline code */
@@ -241,6 +233,16 @@
 
   --icon-fill: none;
   --icon-fill-bg: none;
+}
+
+/* notice box shadow, outside @theme so it can change with the colour scheme */
+:root {
+  --shadow-notice: var(--shadow-placed);
+
+  @media (prefers-color-scheme: dark) {
+    --shadow-notice: 0 0 0 1px
+      color-mix(in oklch, var(--color-cornflour-900), transparent 50%);
+  }
 }
 
 /**
@@ -431,9 +433,17 @@
 }
 
 .opacity-low {
-  opacity: light-dark(0.1, 0.2);
+  opacity: 0.1;
+
+  @media (prefers-color-scheme: dark) {
+    opacity: 0.2;
+  }
 }
 
 .opacity-mid {
-  opacity: light-dark(0.4, 0.5);
+  opacity: 0.4;
+
+  @media (prefers-color-scheme: dark) {
+    opacity: 0.5;
+  }
 }
