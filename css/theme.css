@@ -147,10 +147,6 @@
   );
 
   --bg-texture-image: url(/images/texture.png);
-  --bg-dash-image: light-dark(
-    url(/images/dash.svg),
-    url(/images/dash-dark.svg)
-  );
 
   --color-ui-normal: light-dark(rgba(79, 64, 63, 0.12), rgba(79, 64, 63, 0.16));
   --color-ui-raised: light-dark(rgba(79, 64, 63, 0.18), rgba(79, 64, 63, 0.24));

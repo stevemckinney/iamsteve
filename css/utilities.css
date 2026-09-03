@@ -163,7 +163,11 @@
 }
 
 @utility bg-dash-image {
-  background-image: var(--bg-dash-image);
+  background-image: url('/images/dash.svg');
+
+  @media (prefers-color-scheme: dark) {
+    background-image: url('/images/dash-dark.svg');
+  }
 }
 
 @utility content-grid {
@@ -213,30 +217,33 @@
 }
 
 @utility frame-40 {
-  border-image-source: light-dark(
-    url('/images/rounded-border-40px.svg'),
-    url('/images/dark-rounded-border-40px.svg')
-  );
+  border-image-source: url('/images/rounded-border-40px.svg');
   border-image-slice: 46.75324675%;
   border-image-width: 4.5rem;
+
+  @media (prefers-color-scheme: dark) {
+    border-image-source: url('/images/dark-rounded-border-40px.svg');
+  }
 }
 
 @utility frame-24 {
-  border-image-source: light-dark(
-    url('/images/rounded-border-24px.svg'),
-    url('/images/dark-rounded-border-24px.svg')
-  );
+  border-image-source: url('/images/rounded-border-24px.svg');
   border-image-slice: 46.75324675%;
   border-image-width: 4.5rem;
+
+  @media (prefers-color-scheme: dark) {
+    border-image-source: url('/images/dark-rounded-border-24px.svg');
+  }
 }
 
 @utility frame-16 {
-  border-image-source: light-dark(
-    url('/images/rounded-border-16px.svg'),
-    url('/images/dark-rounded-border-16px.svg')
-  );
+  border-image-source: url('/images/rounded-border-16px.svg');
   border-image-slice: 46.75324675%;
   border-image-width: 4.5rem;
+
+  @media (prefers-color-scheme: dark) {
+    border-image-source: url('/images/dark-rounded-border-16px.svg');
+  }
 }
 
 @utility frame-outset-top-sm {
