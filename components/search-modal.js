@@ -1,10 +1,22 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { useRouter } from 'next/navigation'
-import { ModalOverlay, Modal as AriaModal, Dialog } from 'react-aria-components'
+import {
+  ModalOverlay,
+  Modal as AriaModal,
+  Dialog,
+  Autocomplete,
+  TextField,
+  Input,
+  ListBox,
+  ListBoxItem,
+  ListBoxSection,
+  Collection,
+  Header,
+} from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { search } from '@/lib/search'
+import { search, groupResults } from '@/lib/search'
 import Icon from '@/components/icon'
 import { navigation, library } from '@/content/navigation'
 import collectionsConfig from '@/content/collections'
@@ -37,25 +49,6 @@ export async function fetchIndex() {
   return cache
 }
 
-function label(type) {
-  switch (type) {
-    case 'post':
-      return 'Blog'
-    case 'note':
-      return 'Note'
-    case 'page':
-      return 'Page'
-    case 'category':
-      return 'Category'
-    case 'collection':
-      return 'Collection'
-    case 'link':
-      return 'Link'
-    default:
-      return type
-  }
-}
-
 function icon(type) {
   switch (type) {
     case 'post':
@@ -75,17 +68,19 @@ function icon(type) {
   }
 }
 
+function key(item) {
+  return item.slug || item.href
+}
+
 function Kbd({ children, className }) {
   const isText = typeof children === 'string'
   return (
-    // className="flex items-center font-sans ml-2 hidden lg:flex items-center gap-0.5 text-sm font-medium px-1 bg-neutral-01-100 text-body shadow-picked rounded-xs"
     <kbd
       className={cn(
         'flex items-center',
         'hidden lg:flex',
         'font-sans text-xs font-medium uppercase',
         'bg-neutral-01-50 text-body',
-        //'shadow-[var(--shadow-placed),inset_0_1px_0_theme(--color-white/0.5),inset_0_-1px_0.1px_theme(--color-neutral-01-900/.08)]',
         'shadow-placed',
         'rounded-xs',
         'px-1.5 py-0.5',
@@ -97,32 +92,12 @@ function Kbd({ children, className }) {
   )
 }
 
-function Result({ result, isSelected, onSelect, onHover }) {
-  const ref = useRef(null)
-
-  useEffect(() => {
-    if (isSelected && ref.current) {
-      ref.current.scrollIntoView({ block: 'nearest' })
-    }
-  }, [isSelected])
-
+function ResultContent({ item }) {
   return (
-    <li
-      ref={ref}
-      role="option"
-      aria-selected={isSelected}
-      className={cn(
-        'flex items-center cursor-default p-2 gap-2',
-        isSelected
-          ? 'bg-neutral-01-50 dark:bg-fern-1000'
-          : 'hover:bg-white dark:hover:bg-fern-1100'
-      )}
-      onClick={onSelect}
-      onMouseMove={onHover}
-    >
+    <>
       <span className="flex shrink-0">
         <Icon
-          icon={result.icon || icon(result.type)}
+          icon={item.icon || icon(item.type)}
           size={16}
           variant="none"
           aria-hidden="true"
@@ -131,35 +106,31 @@ function Result({ result, isSelected, onSelect, onHover }) {
       <span className="flex flex-col min-w-0 flex-1">
         <span className="flex items-baseline gap-2 min-w-0">
           <span className="text-sm font-medium text-heading truncate">
-            {result.title}
+            {item.title}
           </span>
-          {result.type === 'link' && result.summary && (
+          {item.type === 'link' && item.summary && (
             <span className="text-xs text-ui-body truncate">
-              {result.summary}
+              {item.summary}
             </span>
           )}
         </span>
-        {/*(result.summary || result.description) && (
-          <span className="text-xs text-ui-body truncate">
-            {result.summary || result.description}
-          </span>
-        )*/}
       </span>
-      {result.type && (
-        <span className="flex shrink-0 items-center gap-2">
-          {result.categories?.length > 0 && (
-            <span className="text-xs text-ui-body hidden sm:inline">
-              {result.categories[0]}
-            </span>
-          )}
-          <span className="text-[10px] uppercase tracking-wider text-ui-body font-medium">
-            {label(result.type)}
-          </span>
+      {item.categories?.length > 0 && (
+        <span className="flex shrink-0 text-xs text-ui-body hidden sm:inline">
+          {item.categories[0]}
         </span>
       )}
-    </li>
+    </>
   )
 }
+
+const rowStyle = ({ isFocused }) =>
+  cn(
+    'flex items-center cursor-default p-2 gap-2 outline-none',
+    isFocused
+      ? 'bg-neutral-01-50 dark:bg-fern-1000'
+      : 'hover:bg-white dark:hover:bg-fern-1100'
+  )
 
 export default function SearchModal({
   isOpen,
@@ -168,7 +139,6 @@ export default function SearchModal({
   onScopeChange,
 }) {
   const [query, setQuery] = useState('')
-  const [selected, setSelected] = useState(0)
   const [index, setIndex] = useState(cache)
   const inputRef = useRef(null)
   const router = useRouter()
@@ -185,23 +155,47 @@ export default function SearchModal({
     }
   }, [index, isOpen])
 
-  const scopedIndex =
-    index && activeScope
+  const isSearching = query.trim().length >= 2
+
+  const sections = useMemo(() => {
+    if (!isSearching) {
+      const items = activeScope
+        ? activeScope.items
+        : [...navigation.filter((item) => item.href !== '#'), ...library]
+      return [
+        {
+          id: 'default',
+          title: activeScope?.label ?? 'Pages',
+          items: items.map((item) => ({ ...item, id: key(item) })),
+        },
+      ]
+    }
+    if (!index) return []
+    const scoped = activeScope
       ? index.filter((item) => activeScope.types.includes(item.type))
       : index
-  const results = scopedIndex ? search(scopedIndex, query) : []
-  const pages = activeScope
-    ? activeScope.items
-    : [...navigation.filter((n) => n.href !== '#'), ...library]
-  const isSearching = query.trim().length >= 2
-  const activeItems = isSearching ? results : pages
-  const itemsRef = useRef(activeItems)
-  itemsRef.current = activeItems
-  const selectedRef = useRef(selected)
-  selectedRef.current = selected
+    return groupResults(search(scoped, query)).map((group) => ({
+      id: group.type,
+      title: group.title,
+      items: group.items.map((item) => ({ ...item, id: key(item) })),
+    }))
+  }, [index, query, isSearching, activeScope])
 
-  const navigate = (result) => {
-    const href = result.slug || result.href
+  // ListBox hands back the key of the chosen row, so keep a way back to the item
+  const byKey = useMemo(() => {
+    const map = new Map()
+    for (const section of sections) {
+      for (const item of section.items) map.set(key(item), item)
+    }
+    return map
+  }, [sections])
+
+  const isEmpty = sections.every((section) => section.items.length === 0)
+
+  const navigate = (id) => {
+    const item = byKey.get(id)
+    if (!item) return
+    const href = key(item)
     if (href.startsWith('http')) {
       window.location.href = href
     } else {
@@ -212,33 +206,19 @@ export default function SearchModal({
 
   const clearScope = () => {
     onScopeChange?.(null)
-    setSelected(0)
     inputRef.current?.focus()
   }
 
-  const onKeyDown = (e) => {
-    const items = itemsRef.current
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault()
-        setSelected((prev) => (prev < items.length - 1 ? prev + 1 : 0))
-        break
-      case 'ArrowUp':
-        e.preventDefault()
-        setSelected((prev) => (prev > 0 ? prev - 1 : items.length - 1))
-        break
-      case 'Enter':
-        e.preventDefault()
-        if (items[selectedRef.current]) {
-          navigate(items[selectedRef.current])
-        }
-        break
-      case 'Backspace':
-        if (!query && activeScope) {
-          e.preventDefault()
-          clearScope()
-        }
-        break
+  const onKeyDown = (event) => {
+    // Backspace on an empty field drops the scope, the way a removable token
+    // behaves elsewhere. Escape closes rather than only clearing the input.
+    if (event.key === 'Backspace' && !query && activeScope) {
+      event.preventDefault()
+      clearScope()
+    }
+    if (event.key === 'Escape' && !query) {
+      event.preventDefault()
+      onOpenChange(false)
     }
   }
 
@@ -261,8 +241,8 @@ export default function SearchModal({
           'data-[entering]:opacity-0 data-[entering]:-translate-y-2',
           'data-[exiting]:opacity-0 data-[exiting]:duration-150'
         )}
-        onMouseDown={(e) => {
-          if (e.target === e.currentTarget) onOpenChange(false)
+        onMouseDown={(event) => {
+          if (event.target === event.currentTarget) onOpenChange(false)
         }}
       >
         <Dialog
@@ -276,41 +256,85 @@ export default function SearchModal({
               'rounded-md shadow-picked'
             )}
           >
-            <label
-              className={cn(
-                'search-field relative z-10',
-                'flex items-center px-4 cursor-text',
-                'bg-white dark:bg-fern-1000',
-                'rounded-sm shadow-placed dark:shadow-[0_0_0_1px_var(--color-fern-900)]',
-                'has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-cornflour-600 dark:has-[:focus-visible]:ring-fern-400'
-              )}
-            >
-              <Icon
-                icon="search"
-                size={24}
-                variant="none"
-                aria-hidden="true"
-                className="text-body shrink-0"
-              />
-              {activeScope && (
-                <span
+            <Autocomplete inputValue={query} onInputChange={setQuery}>
+              <TextField
+                aria-label={
+                  activeScope ? `Search ${activeScope.label}` : 'Search'
+                }
+                className={cn(
+                  'search-field relative z-10',
+                  'flex items-center px-4 cursor-text',
+                  'bg-white dark:bg-fern-1000',
+                  'rounded-sm shadow-placed dark:shadow-[0_0_0_1px_var(--color-fern-900)]',
+                  'has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-cornflour-600 dark:has-[:focus-visible]:ring-fern-400'
+                )}
+              >
+                <Icon
+                  icon="search"
+                  size={24}
+                  variant="none"
+                  aria-hidden="true"
+                  className="text-body shrink-0"
+                />
+                {activeScope && (
+                  <span
+                    className={cn(
+                      'flex items-center gap-1 shrink-0 ml-2 -mr-1',
+                      'pl-2 pr-1 py-1 rounded-xs',
+                      'bg-neutral-01-100 dark:bg-fern-1100',
+                      'text-sm font-medium text-heading'
+                    )}
+                  >
+                    {activeScope.label}
+                    <button
+                      type="button"
+                      onClick={clearScope}
+                      className={cn(
+                        'flex rounded-xs cursor-pointer',
+                        'hover:bg-neutral-01-50 dark:hover:bg-fern-1000',
+                        'transition-colors'
+                      )}
+                      aria-label={`Search everything instead of ${activeScope.label.toLowerCase()}`}
+                    >
+                      <Icon
+                        icon="close"
+                        size={16}
+                        variant="none"
+                        aria-hidden="true"
+                        className="text-body"
+                      />
+                    </button>
+                  </span>
+                )}
+                <Input
+                  ref={inputRef}
+                  onKeyDown={onKeyDown}
+                  placeholder={
+                    activeScope ? activeScope.placeholder : 'Search everything…'
+                  }
                   className={cn(
-                    'flex items-center gap-1 shrink-0 ml-2 -mr-1',
-                    'pl-2 pr-1 py-1 rounded-xs',
-                    'bg-neutral-01-100 dark:bg-fern-1100',
-                    'text-sm font-medium text-heading'
+                    'flex-1 py-3.5 bg-transparent',
+                    'text-base text-heading placeholder:text-body',
+                    'outline-none focus:ring-0 border-0'
                   )}
-                >
-                  {activeScope.label}
+                  autoFocus
+                  autoComplete="off"
+                  autoCorrect="off"
+                  spellCheck="false"
+                />
+                {query && (
                   <button
                     type="button"
-                    onClick={clearScope}
+                    onClick={() => {
+                      setQuery('')
+                      inputRef.current?.focus()
+                    }}
                     className={cn(
-                      'flex rounded-xs cursor-pointer',
-                      'hover:bg-neutral-01-50 dark:hover:bg-fern-1000',
+                      'p-1 rounded cursor-pointer',
+                      'hover:bg-neutral-01-50 dark:hover:bg-fern-1100',
                       'transition-colors'
                     )}
-                    aria-label={`Search everything instead of ${activeScope.label.toLowerCase()}`}
+                    aria-label="Clear search"
                   >
                     <Icon
                       icon="close"
@@ -320,92 +344,51 @@ export default function SearchModal({
                       className="text-body"
                     />
                   </button>
-                </span>
-              )}
-              <input
-                ref={inputRef}
-                type="text"
-                value={query}
-                onChange={(e) => {
-                  setQuery(e.target.value)
-                  setSelected(0)
-                }}
-                onKeyDown={onKeyDown}
-                placeholder={
-                  activeScope ? activeScope.placeholder : 'Search everything…'
-                }
-                className={cn(
-                  'flex-1 py-3.5 bg-transparent',
-                  'text-base text-heading placeholder:text-body',
-                  'outline-none focus:ring-0 border-0'
                 )}
-                autoFocus
-                autoComplete="off"
-                autoCorrect="off"
-                spellCheck="false"
-              />
-              {query && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setQuery('')
-                    inputRef.current?.focus()
-                  }}
-                  className={cn(
-                    'p-1 rounded cursor-pointer',
-                    'hover:bg-neutral-01-50 dark:hover:bg-fern-1100',
-                    'transition-colors'
-                  )}
-                  aria-label="Clear search"
-                >
-                  <Icon
-                    icon="close"
-                    size={16}
-                    variant="none"
-                    aria-hidden="true"
-                    className="text-body"
-                  />
-                </button>
-              )}
-            </label>
+              </TextField>
 
-            <div className="search-body relative z-1">
-              <div className="max-h-[60vh] overflow-y-auto">
-                {isSearching && !index && (
-                  <div className="px-4 py-8 text-center text-sm text-body">
-                    Loading&hellip;
-                  </div>
-                )}
-                {isSearching && index && activeItems.length === 0 && (
-                  <div className="px-4 py-8 text-center text-sm text-body">
-                    No results found for &ldquo;{query}&rdquo;
-                  </div>
-                )}
-                {activeItems.length > 0 && (
-                  <ul
-                    role="listbox"
-                    className="px-0 py-2 m-0"
-                    aria-label={
-                      isSearching
-                        ? 'Search results'
-                        : activeScope
-                        ? activeScope.label
-                        : 'Pages'
-                    }
+              <div className="search-body relative z-1">
+                <div className="max-h-[60vh] overflow-y-auto">
+                  {isSearching && !index && (
+                    <div className="px-4 py-8 text-center text-sm text-body">
+                      Loading&hellip;
+                    </div>
+                  )}
+                  {isSearching && index && isEmpty && (
+                    <div className="px-4 py-8 text-center text-sm text-body">
+                      No results found for &ldquo;{query}&rdquo;
+                    </div>
+                  )}
+                  <ListBox
+                    items={sections}
+                    onAction={navigate}
+                    aria-label={isSearching ? 'Search results' : 'Pages'}
+                    className="px-0 py-2 m-0 outline-none"
                   >
-                    {activeItems.map((item, i) => (
-                      <Result
-                        key={item.slug || item.href}
-                        result={item}
-                        isSelected={i === selected}
-                        onSelect={() => navigate(item)}
-                        onHover={() => setSelected(i)}
-                      />
-                    ))}
-                  </ul>
-                )}
+                    {(section) => (
+                      <ListBoxSection id={section.id}>
+                        {isSearching && (
+                          <Header className="px-2 pt-2 pb-1 text-[10px] uppercase tracking-wider text-ui-body font-medium">
+                            {section.title}
+                          </Header>
+                        )}
+                        <Collection items={section.items}>
+                          {(item) => (
+                            <ListBoxItem
+                              id={item.id}
+                              textValue={item.title}
+                              className={rowStyle}
+                            >
+                              <ResultContent item={item} />
+                            </ListBoxItem>
+                          )}
+                        </Collection>
+                      </ListBoxSection>
+                    )}
+                  </ListBox>
+                </div>
               </div>
-            </div>
+            </Autocomplete>
 
             <div
               className={cn(

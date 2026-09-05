@@ -67,6 +67,7 @@
     "inquirer": "^8.2.7",
     "marked": "^14.1.4",
     "mdast-util-to-string": "^4.0.0",
+    "minisearch": "^7.2.0",
     "motion": "^12.23.25",
     "next": "^16.2.11",
     "postcss": "^8.5.23",
