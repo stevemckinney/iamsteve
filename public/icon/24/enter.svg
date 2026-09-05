@@ -1,0 +1,6 @@
+<svg viewBox="0 0 24 24">
+  <g class="enter">
+    <path d="M4.5 12h15V6" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="m6 9-3 3 3 3" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

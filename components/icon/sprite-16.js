@@ -160,11 +160,11 @@ const Sprite16 = (props) => (
       <symbol id="arrow-down-16" viewBox="0 0 16 16">
         <g className="arrow-down">
           <path
-            d="M8 15V1"
+            d="M8 14V2"
             className="fill-none stroke-current stroke-2 sl-r"
           />
           <path
-            d="m4 11 4 4 4-4"
+            d="m4 10 4 4 4-4"
             className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
@@ -172,11 +172,11 @@ const Sprite16 = (props) => (
       <symbol id="arrow-left-16" viewBox="0 0 16 16">
         <g className="arrow-left">
           <path
-            d="M1 8h14"
+            d="M2 8h12"
             className="fill-none stroke-current stroke-2 sl-r"
           />
           <path
-            d="M5 4 1 8l4 4"
+            d="M6 4 2 8l4 4"
             className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
@@ -184,11 +184,11 @@ const Sprite16 = (props) => (
       <symbol id="arrow-right-16" viewBox="0 0 16 16">
         <g className="arrow-right">
           <path
-            d="M15 8H1"
+            d="M14 8H2"
             className="fill-none stroke-current stroke-2 sl-r"
           />
           <path
-            d="m11 12 4-4-4-4"
+            d="m10 12 4-4-4-4"
             className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
@@ -196,11 +196,11 @@ const Sprite16 = (props) => (
       <symbol id="arrow-up-16" viewBox="0 0 16 16">
         <g className="arrow-up">
           <path
-            d="M8 1v14"
+            d="M8 2v12"
             className="fill-none stroke-current stroke-2 sl-r"
           />
           <path
-            d="M12 5 8 1 4 5"
+            d="M12 6 8 2 4 6"
             className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
@@ -458,6 +458,14 @@ const Sprite16 = (props) => (
         <g className="close">
           <path d="M12 12 4 4" className="stroke-current stroke-2 sl-r" />
           <path d="m12 4-8 8" className="stroke-current stroke-2 sl-r" />
+        </g>
+      </symbol>
+      <symbol id="cmd-16" viewBox="0 0 16 16">
+        <g className="cmd">
+          <path
+            d="M4 14a2 2 0 0 0 2-2V4a2 2 0 1 0-2 2h8a2 2 0 1 0-2-2v8a2 2 0 1 0 2-2H4a2 2 0 1 0 0 4Z"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
         </g>
       </symbol>
       <symbol id="code-16" viewBox="0 0 16 16">
@@ -747,6 +755,18 @@ const Sprite16 = (props) => (
           />
           <path
             d="M11 14h3v-3"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="enter-16" viewBox="0 0 16 16">
+        <g className="enter">
+          <path
+            d="M3 8h10V4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M4 6 2 8l2 2"
             className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
