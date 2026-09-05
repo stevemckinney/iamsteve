@@ -54,6 +54,14 @@ const getData = cache(async () => {
   }
 })
 
+// Get the proper title from collections config
+function getDisplayTitle(collection) {
+  const collectionConfig = collections.find(
+    (c) => c.slugAsParams === collection.toLowerCase()
+  )
+  return collectionConfig ? collectionConfig.title : collection
+}
+
 async function Collections() {
   const { groupedCollections, lastImportDate } = await getData()
 
@@ -64,7 +72,7 @@ async function Collections() {
         .map(([collection, items]) => (
           <div className="flex flex-col gap-4" key={collection}>
             <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 pt-2">
-              {collection}
+              {getDisplayTitle(collection)}
 
               <span className="text-cornflour-600">{items.length}</span>
             </h2>
