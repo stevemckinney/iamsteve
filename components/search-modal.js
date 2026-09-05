@@ -102,17 +102,15 @@ function ResultContent({ item }) {
           aria-hidden="true"
         />
       </span>
-      <span className="flex flex-col min-w-0 flex-1">
-        <span className="flex items-baseline gap-2 min-w-0">
-          <span className="text-sm font-medium text-heading truncate">
-            {item.title}
-          </span>
-          {item.type === 'link' && item.summary && (
-            <span className="text-xs text-ui-body truncate">
-              {item.summary}
-            </span>
-          )}
+      <span className="flex items-baseline gap-2 min-w-0 flex-1">
+        <span className="relative top-px text-sm font-medium text-heading truncate">
+          {item.title}
         </span>
+        {item.type === 'link' && item.summary && (
+          <span className="relative top-px text-xs text-ui-body truncate">
+            {item.summary}
+          </span>
+        )}
       </span>
       {item.categories?.length > 0 && (
         <span className="flex shrink-0 text-xs text-ui-body hidden sm:inline">
@@ -153,6 +151,24 @@ export default function SearchModal({
       cancelled = true
     }
   }, [index, isOpen])
+
+  // The on-screen keyboard does not shrink the layout viewport on iOS, so dvh
+  // alone leaves the dialog running underneath it. visualViewport is the only
+  // thing that reports the area actually left to draw in.
+  const [visible, setVisible] = useState(null)
+
+  useEffect(() => {
+    const viewport = globalThis.visualViewport
+    if (!isOpen || !viewport) return
+    const update = () => setVisible(viewport.height)
+    update()
+    viewport.addEventListener('resize', update)
+    viewport.addEventListener('scroll', update)
+    return () => {
+      viewport.removeEventListener('resize', update)
+      viewport.removeEventListener('scroll', update)
+    }
+  }, [isOpen])
 
   const isSearching = query.trim().length >= 2
 
@@ -235,22 +251,27 @@ export default function SearchModal({
       <AriaModal
         className={cn(
           'fixed inset-0 z-50 outline-none',
-          'flex items-start justify-center pt-[15vh] px-4',
+          'flex items-start justify-center px-4 py-4 sm:pt-[15vh] sm:pb-8',
+          'h-dvh',
           'transition-[opacity,transform] duration-200',
           'data-[entering]:opacity-0 data-[entering]:-translate-y-2',
           'data-[exiting]:opacity-0 data-[exiting]:duration-150'
         )}
+        style={visible ? { height: `${visible}px` } : undefined}
         onMouseDown={(event) => {
           if (event.target === event.currentTarget) onOpenChange(false)
         }}
       >
         <Dialog
-          className="aura w-full max-w-xl outline-none"
+          className={cn(
+            'aura w-full max-w-xl outline-none',
+            'max-h-full sm:max-h-[min(36rem,100%)]'
+          )}
           aria-label="Search"
         >
           <div
             className={cn(
-              'search-dialog relative p-2',
+              'search-dialog relative flex flex-col max-h-full p-2',
               'bg-neutral-01-100 dark:bg-fern-1100',
               'rounded-md shadow-picked'
             )}
@@ -261,7 +282,7 @@ export default function SearchModal({
                   activeScope ? `Search ${activeScope.label}` : 'Search'
                 }
                 className={cn(
-                  'search-field relative z-10',
+                  'search-field relative z-10 shrink-0',
                   'flex items-center px-4 cursor-text',
                   'bg-white dark:bg-fern-1000',
                   'rounded-sm shadow-placed dark:shadow-[0_0_0_1px_var(--color-fern-900)]',
@@ -312,7 +333,7 @@ export default function SearchModal({
                     activeScope ? activeScope.placeholder : 'Search everything…'
                   }
                   className={cn(
-                    'flex-1 py-3.5 bg-transparent',
+                    'relative top-px flex-1 py-3.5 bg-transparent',
                     'text-base text-heading placeholder:text-body',
                     'outline-none focus:ring-0 border-0'
                   )}
@@ -346,8 +367,8 @@ export default function SearchModal({
                 )}
               </TextField>
 
-              <div className="search-body relative z-1">
-                <div className="max-h-[60vh] overflow-y-auto">
+              <div className="search-body relative z-1 flex min-h-0 flex-1">
+                <div className="w-full overflow-y-auto">
                   {isSearching && !index && (
                     <div className="px-4 py-8 text-center text-sm text-body">
                       Loading&hellip;
@@ -391,7 +412,7 @@ export default function SearchModal({
 
             <div
               className={cn(
-                'search-footer hidden any-pointer-fine:flex',
+                'search-footer hidden any-pointer-fine:flex shrink-0',
                 'items-center justify-between gap-4',
                 'text-ui-body text-sm font-medium pt-2 pb-0.5 mx-1.5',
                 'shadow-[0_-1px_light-dark(var(--color-neutral-01-200),var(--color-fern-1000))]'
