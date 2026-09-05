@@ -22,7 +22,7 @@ export const revalidate = false
 export const metadata = {
   title: 'Collections • iamsteve',
   description:
-    'Curated design resources organised by topic, from typography and color to tools and techniques.',
+    'Curated design resources organised by topic, from typography and colour to tools and techniques.',
   alternates: {
     canonical: '/collections',
   },
@@ -123,8 +123,8 @@ export default async function CollectionsPage(props) {
       <Header className="max-md:frame max-md:frame-24 max-md:px-8 max-md:py-12 flex flex-col gap-2 col-container md:col-content md:col-end-7 md:sticky top-8 self-start">
         <Title className="font-variation-bold text-5xl">Collections</Title>
         <Description>
-          Curated design resources organised by topic, from typography and color
-          to tools and techniques.
+          Curated design resources organised by topic, from typography and
+          colour to tools and techniques.
         </Description>
         <CollectionsSearch className="mt-2" />
         <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">

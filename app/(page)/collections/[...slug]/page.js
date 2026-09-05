@@ -173,8 +173,8 @@ export default async function CollectionPage(props) {
           Collections
         </Title>
         <Description>
-          Curated design resources organised by topic, from typography and color
-          to tools and techniques.
+          Curated design resources organised by topic, from typography and
+          colour to tools and techniques.
         </Description>
         <CollectionsSearch className="mt-2" />
         <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
