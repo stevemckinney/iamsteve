@@ -265,13 +265,14 @@ export default function SearchModal({
         <Dialog
           className={cn(
             'aura w-full max-w-xl outline-none',
-            'max-h-full sm:max-h-[min(36rem,100%)]'
+            'flex flex-col min-h-0 max-h-full',
+            'pointer-coarse:max-h-[min(50dvh,100%)] sm:max-h-[min(36rem,100%)]'
           )}
           aria-label="Search"
         >
           <div
             className={cn(
-              'search-dialog relative flex flex-col max-h-full p-2',
+              'search-dialog relative flex min-h-0 flex-col p-2',
               'bg-neutral-01-100 dark:bg-fern-1100',
               'rounded-md shadow-picked'
             )}
@@ -367,8 +368,8 @@ export default function SearchModal({
                 )}
               </TextField>
 
-              <div className="search-body relative z-1 flex min-h-0 flex-1">
-                <div className="w-full overflow-y-auto">
+              <div className="search-body relative z-1 min-h-0 flex-1 overflow-y-auto">
+                <div className="w-full">
                   {isSearching && !index && (
                     <div className="px-4 py-8 text-center text-sm text-body">
                       Loading&hellip;
