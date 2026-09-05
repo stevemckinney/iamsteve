@@ -25,6 +25,10 @@ export default function Search({ className, variant = 'desktop' }) {
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
+    // The header renders a desktop and a mobile trigger, both always mounted.
+    // Only one may own the shortcut, or cmd K opens two dialogs.
+    if (variant !== 'desktop') return
+
     const handleKeyDown = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault()
@@ -35,7 +39,7 @@ export default function Search({ className, variant = 'desktop' }) {
 
     document.addEventListener('keydown', handleKeyDown)
     return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [])
+  }, [variant])
 
   return (
     <>

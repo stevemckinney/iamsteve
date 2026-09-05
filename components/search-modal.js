@@ -8,6 +8,16 @@ import { search } from '@/lib/search'
 import Icon from '@/components/icon'
 import { navigation, library } from '@/content/navigation'
 
+// Opening the menu from a scoped trigger limits it to these types. The default
+// list, shown before anyone types, falls back to the collection topics.
+const scopes = {
+  collections: {
+    label: 'Collections',
+    types: ['collection', 'link'],
+    placeholder: 'Search collections…',
+  },
+}
+
 let cache = null
 
 export async function fetchIndex() {
@@ -29,6 +39,8 @@ function label(type) {
       return 'Category'
     case 'collection':
       return 'Collection'
+    case 'link':
+      return 'Link'
     default:
       return type
   }
@@ -46,6 +58,8 @@ function icon(type) {
       return 'folder'
     case 'collection':
       return 'collections'
+    case 'link':
+      return 'link'
     default:
       return 'search'
   }
@@ -105,8 +119,15 @@ function Result({ result, isSelected, onSelect, onHover }) {
         />
       </span>
       <span className="flex flex-col min-w-0 flex-1">
-        <span className="text-sm font-medium text-heading truncate">
-          {result.title}
+        <span className="flex items-baseline gap-2 min-w-0">
+          <span className="text-sm font-medium text-heading truncate">
+            {result.title}
+          </span>
+          {result.type === 'link' && result.summary && (
+            <span className="text-xs text-ui-body truncate">
+              {result.summary}
+            </span>
+          )}
         </span>
         {/*(result.summary || result.description) && (
           <span className="text-xs text-ui-body truncate">
@@ -130,12 +151,18 @@ function Result({ result, isSelected, onSelect, onHover }) {
   )
 }
 
-export default function SearchModal({ isOpen, onOpenChange }) {
+export default function SearchModal({
+  isOpen,
+  onOpenChange,
+  scope,
+  onScopeChange,
+}) {
   const [query, setQuery] = useState('')
   const [selected, setSelected] = useState(0)
   const [index, setIndex] = useState(cache)
   const inputRef = useRef(null)
   const router = useRouter()
+  const activeScope = scopes[scope] || null
 
   useEffect(() => {
     if (index) return
@@ -148,8 +175,14 @@ export default function SearchModal({ isOpen, onOpenChange }) {
     }
   }, [index])
 
-  const results = index ? search(index, query) : []
-  const pages = [...navigation.filter((n) => n.href !== '#'), ...library]
+  const scopedIndex =
+    index && activeScope
+      ? index.filter((item) => activeScope.types.includes(item.type))
+      : index
+  const results = scopedIndex ? search(scopedIndex, query) : []
+  const pages = activeScope
+    ? (scopedIndex ?? []).filter((item) => item.type === 'collection')
+    : [...navigation.filter((n) => n.href !== '#'), ...library]
   const isSearching = query.trim().length >= 2
   const activeItems = isSearching ? results : pages
   const itemsRef = useRef(activeItems)
@@ -158,8 +191,19 @@ export default function SearchModal({ isOpen, onOpenChange }) {
   selectedRef.current = selected
 
   const navigate = (result) => {
-    router.push(result.slug || result.href)
+    const href = result.slug || result.href
+    if (href.startsWith('http')) {
+      window.location.href = href
+    } else {
+      router.push(href)
+    }
     onOpenChange(false)
+  }
+
+  const clearScope = () => {
+    onScopeChange?.(null)
+    setSelected(0)
+    inputRef.current?.focus()
   }
 
   const onKeyDown = (e) => {
@@ -177,6 +221,12 @@ export default function SearchModal({ isOpen, onOpenChange }) {
         e.preventDefault()
         if (items[selectedRef.current]) {
           navigate(items[selectedRef.current])
+        }
+        break
+      case 'Backspace':
+        if (!query && activeScope) {
+          e.preventDefault()
+          clearScope()
         }
         break
     }
@@ -232,6 +282,36 @@ export default function SearchModal({ isOpen, onOpenChange }) {
                 aria-hidden="true"
                 className="text-body shrink-0"
               />
+              {activeScope && (
+                <span
+                  className={cn(
+                    'flex items-center gap-1 shrink-0 ml-2 -mr-1',
+                    'pl-2 pr-1 py-1 rounded-xs',
+                    'bg-neutral-01-100 dark:bg-fern-1100',
+                    'text-sm font-medium text-heading'
+                  )}
+                >
+                  {activeScope.label}
+                  <button
+                    type="button"
+                    onClick={clearScope}
+                    className={cn(
+                      'flex rounded-xs cursor-pointer',
+                      'hover:bg-neutral-01-50 dark:hover:bg-fern-1000',
+                      'transition-colors'
+                    )}
+                    aria-label={`Search everything instead of ${activeScope.label.toLowerCase()}`}
+                  >
+                    <Icon
+                      icon="close"
+                      size={16}
+                      variant="none"
+                      aria-hidden="true"
+                      className="text-body"
+                    />
+                  </button>
+                </span>
+              )}
               <input
                 ref={inputRef}
                 type="text"
@@ -241,7 +321,9 @@ export default function SearchModal({ isOpen, onOpenChange }) {
                   setSelected(0)
                 }}
                 onKeyDown={onKeyDown}
-                placeholder="Search everything…"
+                placeholder={
+                  activeScope ? activeScope.placeholder : 'Search everything…'
+                }
                 className={cn(
                   'flex-1 py-3.5 bg-transparent',
                   'text-base text-heading placeholder:text-body',
@@ -295,7 +377,13 @@ export default function SearchModal({ isOpen, onOpenChange }) {
                     <ul
                       role="listbox"
                       className="px-0 py-2 m-0"
-                      aria-label={isSearching ? 'Search results' : 'Pages'}
+                      aria-label={
+                        isSearching
+                          ? 'Search results'
+                          : activeScope
+                          ? activeScope.label
+                          : 'Pages'
+                      }
                     >
                       {activeItems.map((item, i) => (
                         <Result

@@ -7,6 +7,7 @@ import Image from '@/components/image'
 import Chip from '@/components/chip'
 import Card from '@/components/card'
 import Icon from '@/components/icon'
+import CollectionsSearch from '@/components/collections-search'
 
 import { format, subWeeks, isAfter, parseISO } from 'date-fns'
 import { readFile } from 'fs/promises'
@@ -14,6 +15,7 @@ import path from 'path'
 
 import { allCollections } from 'content-collections'
 import collections from '@/content/collections'
+import { collectionTitle } from '@/lib/collections'
 
 export const revalidate = false
 
@@ -54,14 +56,6 @@ const getData = cache(async () => {
   }
 })
 
-// Get the proper title from collections config
-function getDisplayTitle(collection) {
-  const collectionConfig = collections.find(
-    (c) => c.slugAsParams === collection.toLowerCase()
-  )
-  return collectionConfig ? collectionConfig.title : collection
-}
-
 async function Collections() {
   const { groupedCollections, lastImportDate } = await getData()
 
@@ -72,7 +66,7 @@ async function Collections() {
         .map(([collection, items]) => (
           <div className="flex flex-col gap-4" key={collection}>
             <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 pt-2">
-              {getDisplayTitle(collection)}
+              {collectionTitle(collection)}
 
               <span className="text-cornflour-600">{items.length}</span>
             </h2>
@@ -132,6 +126,7 @@ export default async function CollectionsPage(props) {
           Curated design resources organised by topic, from typography and color
           to tools and techniques.
         </Description>
+        <CollectionsSearch className="mt-2" />
         <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
           {collections
             .sort((a, b) =>

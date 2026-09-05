@@ -8,6 +8,7 @@ import Image from '@/components/image'
 import Link from '@/components/link'
 import collections from '@/content/collections'
 import Icon from '@/components/icon'
+import CollectionsSearch from '@/components/collections-search'
 
 import { format, subWeeks, isAfter, parseISO } from 'date-fns'
 import { readFile } from 'fs/promises'
@@ -175,6 +176,7 @@ export default async function CollectionPage(props) {
           Curated design resources organised by topic, from typography and color
           to tools and techniques.
         </Description>
+        <CollectionsSearch className="mt-2" />
         <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
           {collections
             .sort((a, b) =>
