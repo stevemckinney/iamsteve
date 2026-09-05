@@ -78,7 +78,6 @@ function Kbd({ children, className }) {
     <kbd
       className={cn(
         'flex items-center',
-        'hidden lg:flex',
         'font-sans text-xs font-medium uppercase',
         'bg-neutral-01-50 text-body',
         'shadow-placed',
@@ -392,7 +391,8 @@ export default function SearchModal({
 
             <div
               className={cn(
-                'search-footer flex items-center justify-between gap-4',
+                'search-footer hidden any-pointer-fine:flex',
+                'items-center justify-between gap-4',
                 'text-ui-body text-sm font-medium pt-2 pb-0.5 mx-1.5',
                 'shadow-[0_-1px_light-dark(var(--color-neutral-01-200),var(--color-fern-1000))]'
               )}
