@@ -843,7 +843,7 @@ const Sprite24 = (props) => (
           />
           <path
             d="M8 9V7h8v2"
-            className="fill-none stroke-current stroke-2 slj-r"
+            className="fill-none stroke-current stroke-2 sl-r"
           />
           <path
             d="M12 7v9"
