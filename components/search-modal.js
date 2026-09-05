@@ -21,6 +21,7 @@ const scopes = {
       type: 'collection',
       title: item.title,
       slug: item.slug,
+      icon: item.icon,
     })),
   },
 }
