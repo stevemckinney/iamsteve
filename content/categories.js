@@ -37,7 +37,7 @@ const categories = [
     slug: '/category/colour',
     slugAsParams: 'colour',
     description:
-      'A fundamental skill within design, it’s a balance through brand, emotion, accessibility and usabilility',
+      'A fundamental skill within design, it’s a balance through brand, emotion, accessibility and usability',
     parent: 'design',
     theme: 'cornflour',
     icon: 'palette',
