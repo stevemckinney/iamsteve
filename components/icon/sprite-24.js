@@ -567,6 +567,14 @@ const Sprite24 = (props) => (
           <path d="M19 5 5 19" className="stroke-current stroke-2 sl-r" />
         </g>
       </symbol>
+      <symbol id="cmd-24" viewBox="0 0 24 24">
+        <g className="cmd">
+          <path
+            d="M6 21a3 3 0 0 0 3-3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 0 6Z"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="code-24" viewBox="0 0 24 24">
         <g className="code">
           <path
@@ -736,6 +744,18 @@ const Sprite24 = (props) => (
           />
         </g>
       </symbol>
+      <symbol id="enter-24" viewBox="0 0 24 24">
+        <g className="enter">
+          <path
+            d="M4.5 12h15V6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="m6 9-3 3 3 3"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="envelope-24" viewBox="0 0 24 24">
         <g className="envelope">
           <path d="M21 10v11H3V10l9 6 9-6Z" className="fill-(--icon-fill)" />
@@ -823,7 +843,7 @@ const Sprite24 = (props) => (
           />
           <path
             d="M8 9V7h8v2"
-            className="fill-none stroke-current stroke-2 slj-r"
+            className="fill-none stroke-current stroke-2 sl-r"
           />
           <path
             d="M12 7v9"

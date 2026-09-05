@@ -3,6 +3,7 @@
 @import '../css/utilities.css';
 @import '../css/typography.css';
 @import '../css/code.css' layer(base);
+@import '../css/prose.css' layer(base);
 @import '../css/shiki.css' layer(base);
 
 @layer base {
@@ -10,7 +11,7 @@
     scrollbar-width: thin;
     scrollbar-color: gray transparent;
   }
-  
+
   ::selection {
     background: light-dark(
       oklch(from var(--color-dandelion-100) l c h / 0.4),
@@ -34,6 +35,140 @@
 
   :not(input):not([role='menu']):focus-visible {
     border-radius: 4px;
+  }
+}
+
+.aura {
+  position: relative;
+}
+
+/* Progressive blur: two layers at increasing intensity */
+.aura::before,
+.aura::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  background-color: color-mix(in oklch, var(--color-canvas), transparent 99%);
+  border-radius: 40px;
+}
+
+/* Outer layer */
+.aura::before {
+  inset: -72px;
+  backdrop-filter: blur(4px);
+  mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 72px,
+      black calc(100% - 72px),
+      transparent
+    ),
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 72px,
+      black calc(100% - 72px),
+      transparent
+    );
+  mask-composite: intersect;
+}
+
+/* Inner layer */
+.aura::after {
+  inset: -32px;
+  backdrop-filter: blur(24px);
+  mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 32px,
+      black calc(100% - 32px),
+      transparent
+    ),
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 32px,
+      black calc(100% - 32px),
+      transparent
+    );
+  mask-composite: intersect;
+}
+
+/* Search modal staggered entrance
+ * - Only transform + opacity (compositor-friendly, no layout thrash)
+ * - Enter curve: cubic-bezier(0.22, 1, 0.36, 1)
+ * - Total stagger kept under 300ms
+ * - Short durations: keyboard shortcut opens this frequently */
+@keyframes search-field-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.97);
+  }
+}
+
+@keyframes search-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes search-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.search-dialog .search-field {
+  animation: search-field-in 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.search-dialog .search-body {
+  animation: search-reveal-in 200ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both;
+}
+
+.search-dialog .search-footer {
+  animation: search-fade-in 150ms ease 120ms both;
+}
+
+/* Search results: scroll-driven blur at edges */
+.search-dialog .search-body [role='listbox'] > * {
+  animation: search-blur-scroll linear both;
+  animation-timeline: view();
+}
+
+@keyframes search-blur-scroll {
+  0% {
+    filter: blur(24px);
+    opacity: 0;
+  }
+  8%,
+  94% {
+    filter: blur(0);
+    opacity: 1;
+  }
+  100% {
+    filter: blur(8px);
+    opacity: 0;
+  }
+}
+
+/* Reduced motion: keep opacity fade, strip spatial movement */
+@media (prefers-reduced-motion: reduce) {
+  .search-dialog .search-field,
+  .search-dialog .search-body {
+    animation-name: search-fade-in;
+    animation-duration: 120ms;
+    animation-delay: 0ms;
+  }
+
+  .search-dialog .search-footer {
+    animation-delay: 0ms;
+  }
+
+  .search-dialog .search-body [role='listbox'] > * {
+    animation: none;
   }
 }
 

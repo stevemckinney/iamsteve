@@ -135,7 +135,7 @@
 
 @utility sl-s {
   stroke-linecap: round;
-  stroke-linejoin: square;
+  stroke-linejoin: miter;
 }
 
 @utility font-variation-medium {
