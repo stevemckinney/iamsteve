@@ -7,23 +7,32 @@ import { cn } from '@/lib/utils'
 import { search } from '@/lib/search'
 import Icon from '@/components/icon'
 import { navigation, library } from '@/content/navigation'
+import collectionsConfig from '@/content/collections'
 
-// Opening the menu from a scoped trigger limits it to these types. The default
-// list, shown before anyone types, falls back to the collection topics.
+// Opening the menu from a scoped trigger limits it to these types. Its default
+// list, shown before anyone types, comes from config rather than the fetched
+// index so the menu has something to draw the moment it opens.
 const scopes = {
   collections: {
     label: 'Collections',
     types: ['collection', 'link'],
     placeholder: 'Search collections…',
+    items: collectionsConfig.map((item) => ({
+      type: 'collection',
+      title: item.title,
+      slug: item.slug,
+    })),
   },
 }
 
 let cache = null
+let pending = null
 
 export async function fetchIndex() {
   if (cache) return cache
-  const response = await fetch('/api/search')
-  cache = await response.json()
+  pending ??= fetch('/api/search').then((response) => response.json())
+  cache = await pending
+  pending = null
   return cache
 }
 
@@ -165,7 +174,7 @@ export default function SearchModal({
   const activeScope = scopes[scope] || null
 
   useEffect(() => {
-    if (index) return
+    if (index || !isOpen) return
     let cancelled = false
     fetchIndex().then((data) => {
       if (!cancelled) setIndex(data)
@@ -173,7 +182,7 @@ export default function SearchModal({
     return () => {
       cancelled = true
     }
-  }, [index])
+  }, [index, isOpen])
 
   const scopedIndex =
     index && activeScope
@@ -181,7 +190,7 @@ export default function SearchModal({
       : index
   const results = scopedIndex ? search(scopedIndex, query) : []
   const pages = activeScope
-    ? (scopedIndex ?? []).filter((item) => item.type === 'collection')
+    ? activeScope.items
     : [...navigation.filter((n) => n.href !== '#'), ...library]
   const isSearching = query.trim().length >= 2
   const activeItems = isSearching ? results : pages
@@ -360,44 +369,41 @@ export default function SearchModal({
             </label>
 
             <div className="search-body relative z-1">
-              {!index && (
-                <div className="px-4 py-8 text-center text-sm text-body">
-                  Loading&hellip;
-                </div>
-              )}
-
-              {index && (
-                <div className="max-h-[60vh] overflow-y-auto">
-                  {isSearching && activeItems.length === 0 && (
-                    <div className="px-4 py-8 text-center text-sm text-body">
-                      No results found for &ldquo;{query}&rdquo;
-                    </div>
-                  )}
-                  {activeItems.length > 0 && (
-                    <ul
-                      role="listbox"
-                      className="px-0 py-2 m-0"
-                      aria-label={
-                        isSearching
-                          ? 'Search results'
-                          : activeScope
-                          ? activeScope.label
-                          : 'Pages'
-                      }
-                    >
-                      {activeItems.map((item, i) => (
-                        <Result
-                          key={item.slug || item.href}
-                          result={item}
-                          isSelected={i === selected}
-                          onSelect={() => navigate(item)}
-                          onHover={() => setSelected(i)}
-                        />
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              )}
+              <div className="max-h-[60vh] overflow-y-auto">
+                {isSearching && !index && (
+                  <div className="px-4 py-8 text-center text-sm text-body">
+                    Loading&hellip;
+                  </div>
+                )}
+                {isSearching && index && activeItems.length === 0 && (
+                  <div className="px-4 py-8 text-center text-sm text-body">
+                    No results found for &ldquo;{query}&rdquo;
+                  </div>
+                )}
+                {activeItems.length > 0 && (
+                  <ul
+                    role="listbox"
+                    className="px-0 py-2 m-0"
+                    aria-label={
+                      isSearching
+                        ? 'Search results'
+                        : activeScope
+                        ? activeScope.label
+                        : 'Pages'
+                    }
+                  >
+                    {activeItems.map((item, i) => (
+                      <Result
+                        key={item.slug || item.href}
+                        result={item}
+                        isSelected={i === selected}
+                        onSelect={() => navigate(item)}
+                        onHover={() => setSelected(i)}
+                      />
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
 
             <div
