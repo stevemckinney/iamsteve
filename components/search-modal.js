@@ -68,11 +68,18 @@ function matchScope(query) {
   return Object.keys(scopes).find((name) => name.startsWith(typed)) ?? null
 }
 
-function pageActions(pathname) {
+// Posts and notes are the only content served as markdown, and the index is
+// the only thing that knows a path is really one of them.
+function markdownUrl(pathname, index) {
+  const type = index?.find((item) => item.slug === pathname)?.type
+  if (type === 'post') return pathname.replace('/blog/', '/api/content/')
+  if (type === 'note') return pathname.replace('/notes/', '/api/content/notes/')
+  return null
+}
+
+function pageActions(pathname, index) {
   const url = `${siteMetadata.siteUrl}${pathname}`
-  const post = pathname.startsWith('/blog/')
-    ? pathname.slice('/blog/'.length)
-    : null
+  const markdown = markdownUrl(pathname, index)
 
   return [
     {
@@ -91,13 +98,13 @@ function pageActions(pathname) {
         icon: 'share',
         run: () => navigator.share({ url }),
       },
-    post && {
+    markdown && {
       id: 'action:copy-markdown',
       title: 'Copy this page as markdown',
       confirms: true,
       icon: 'copy',
       run: async () => {
-        const response = await fetch(`/api/content/${post}`)
+        const response = await fetch(markdown)
         navigator.clipboard.writeText(await response.text())
       },
     },
@@ -256,8 +263,9 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
         .filter((item) => !seen.has(item.slug))
         .map((item) => ({ ...item, id: item.slug }))
 
-      const actions = (activeScope ? [] : pageActions(pathname)).map((action) =>
-        done === action.id ? { ...action, title: 'Copied' } : action
+      const actions = (activeScope ? [] : pageActions(pathname, index)).map(
+        (action) =>
+          done === action.id ? { ...action, title: 'Copied' } : action
       )
 
       return [
