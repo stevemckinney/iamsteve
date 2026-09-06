@@ -8,6 +8,7 @@ import Image from '@/components/image'
 import Link from '@/components/link'
 import collections from '@/content/collections'
 import Icon from '@/components/icon'
+import { collectionTitle } from '@/lib/collections'
 import CollectionsSearch from '@/components/collections-search'
 
 import { format, subWeeks, isAfter, parseISO } from 'date-fns'
@@ -93,11 +94,7 @@ async function Collections({ page }) {
     return <div>No collections found for the current page.</div>
   }
 
-  // Get the proper title from collections config
-  const collectionConfig = collections.find(
-    (c) => c.slugAsParams === lowercasePage
-  )
-  const displayTitle = collectionConfig ? collectionConfig.title : collectionKey
+  const displayTitle = collectionTitle(lowercasePage)
 
   return (
     <div className="flex flex-col gap-4">

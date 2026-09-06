@@ -1,7 +1,7 @@
 import { cache } from 'react'
 
 import { buildIndex } from '@/lib/search-index'
-import { search } from '@/lib/search'
+import { search, typeIcon } from '@/lib/search'
 import { cn } from '@/lib/utils'
 
 import { Header, Title, Column, Description } from '@/components/page'
@@ -32,23 +32,6 @@ function label(type) {
   }
 }
 
-function icon(type) {
-  switch (type) {
-    case 'post':
-      return 'pen'
-    case 'note':
-      return 'notepad'
-    case 'page':
-      return 'home'
-    case 'category':
-      return 'folder'
-    case 'collection':
-      return 'collections'
-    default:
-      return 'search'
-  }
-}
-
 export async function generateMetadata({ searchParams }) {
   const params = await searchParams
   const q = typeof params?.q === 'string' ? params.q.trim() : ''
@@ -72,7 +55,7 @@ export default async function SearchPage({ searchParams }) {
   const params = await searchParams
   const q = typeof params?.q === 'string' ? params.q.trim() : ''
   const index = getIndex()
-  const results = q ? search(index, q, RESULT_LIMIT) : []
+  const results = q ? search(index, q, { limit: RESULT_LIMIT }) : []
 
   return (
     <>
@@ -164,7 +147,7 @@ export default async function SearchPage({ searchParams }) {
                   >
                     <span className="flex shrink-0 mt-1">
                       <Icon
-                        icon={icon(result.type)}
+                        icon={typeIcon(result.type)}
                         size={16}
                         variant="none"
                         aria-hidden="true"
@@ -204,7 +187,12 @@ export default async function SearchPage({ searchParams }) {
                   'bg-neutral-01-50 text-body shadow-placed rounded-xs'
                 )}
               >
-                <Icon icon="cmd" size={16} variant="none" aria-label="Command" />
+                <Icon
+                  icon="cmd"
+                  size={16}
+                  variant="none"
+                  aria-label="Command"
+                />
                 <span className="relative top-px">K</span>
               </kbd>
               anywhere on the site to open the quick search.

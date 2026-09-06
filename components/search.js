@@ -17,15 +17,8 @@ function Kbd({ children }) {
   )
 }
 
-function PlatformKey() {
-  return <Icon icon="cmd" size={16} variant="none" aria-label="Command" />
-}
-
 export default function Search({ className, variant = 'desktop' }) {
   const [isOpen, setIsOpen] = useState(false)
-  // The menu can narrow itself to one kind of content, so it needs somewhere to
-  // keep that. Opening from here always starts wide.
-  const [scope, setScope] = useState(null)
 
   useEffect(() => {
     // The header renders a desktop and a mobile trigger, both always mounted.
@@ -36,7 +29,6 @@ export default function Search({ className, variant = 'desktop' }) {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault()
         prefetch()
-        setScope(null)
         setIsOpen((prev) => !prev)
       }
     }
@@ -50,7 +42,6 @@ export default function Search({ className, variant = 'desktop' }) {
       <Button
         onPress={() => {
           prefetch()
-          setScope(null)
           setIsOpen(true)
         }}
         aria-label="Search"
@@ -67,18 +58,13 @@ export default function Search({ className, variant = 'desktop' }) {
           aria-hidden="true"
         />
         {variant === 'desktop' && (
-          <Kbd suppressHydrationWarning>
-            <PlatformKey />
+          <Kbd>
+            <Icon icon="cmd" size={16} variant="none" aria-label="Command" />
             <span className="relative top-px uppercase">K</span>
           </Kbd>
         )}
       </Button>
-      <SearchModal
-        isOpen={isOpen}
-        onOpenChange={setIsOpen}
-        scope={scope}
-        onScopeChange={setScope}
-      />
+      <SearchModal isOpen={isOpen} onOpenChange={setIsOpen} />
     </>
   )
 }

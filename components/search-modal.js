@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useMemo, useRef } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import {
   ModalOverlay,
   Modal as AriaModal,
@@ -16,13 +16,13 @@ import {
   Header,
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { search, groupResults } from '@/lib/search'
+import { search, groupResults, typeIcon } from '@/lib/search'
 import Icon from '@/components/icon'
 import { navigation, library } from '@/content/navigation'
 import collectionsConfig from '@/content/collections'
 import categoriesConfig from '@/content/categories'
 import { readRecents, addRecent } from '@/lib/recents'
-import { usePathname } from 'next/navigation'
+import siteMetadata from '@/content/metadata'
 
 // Opening the menu from a scoped trigger limits it to these types. Its default
 // list, shown before anyone types, comes from config rather than the fetched
@@ -65,16 +65,11 @@ const scopes = {
 function matchScope(query) {
   const typed = query.trim().toLowerCase()
   if (!typed) return null
-  return (
-    Object.keys(scopes).find(
-      (name) =>
-        name.startsWith(typed) || scopes[name].label.toLowerCase() === typed
-    ) ?? null
-  )
+  return Object.keys(scopes).find((name) => name.startsWith(typed)) ?? null
 }
 
 function pageActions(pathname) {
-  const url = `${location.origin}${pathname}`
+  const url = `${siteMetadata.siteUrl}${pathname}`
   const post = pathname.startsWith('/blog/')
     ? pathname.slice('/blog/'.length)
     : null
@@ -82,15 +77,15 @@ function pageActions(pathname) {
   return [
     {
       id: 'action:copy-link',
-      type: 'action',
       title: 'Copy link to this page',
+      confirms: true,
       icon: 'link',
       run: () => navigator.clipboard.writeText(url),
     },
     post && {
       id: 'action:copy-markdown',
-      type: 'action',
       title: 'Copy this page as markdown',
+      confirms: true,
       icon: 'copy',
       run: async () => {
         const response = await fetch(`/api/content/${post}`)
@@ -111,30 +106,7 @@ export async function fetchIndex() {
   return cache
 }
 
-function icon(type) {
-  switch (type) {
-    case 'post':
-      return 'pen'
-    case 'note':
-      return 'notepad'
-    case 'page':
-      return 'home'
-    case 'category':
-      return 'folder'
-    case 'collection':
-      return 'collections'
-    case 'link':
-      return 'link'
-    default:
-      return 'search'
-  }
-}
-
-function key(item) {
-  return item.slug || item.href
-}
-
-function Kbd({ children, className }) {
+function Kbd({ children }) {
   const isText = typeof children === 'string'
   return (
     <kbd
@@ -144,8 +116,7 @@ function Kbd({ children, className }) {
         'bg-neutral-01-50 text-body',
         'shadow-placed',
         'rounded-xs',
-        'px-1.5 py-0.5',
-        className
+        'px-1.5 py-0.5'
       )}
     >
       {isText ? <span className="relative top-px">{children}</span> : children}
@@ -158,22 +129,23 @@ function ResultContent({ item }) {
     <>
       <span className="flex shrink-0">
         <Icon
-          icon={item.icon || icon(item.type)}
-          size={16}
+          icon={item.icon || typeIcon(item.type)}
+          size={24}
           variant="none"
           aria-hidden="true"
+          className="w-4 h-4"
         />
       </span>
       <span className="flex items-baseline gap-2 min-w-0 flex-1">
         <span
           className={cn(
             'relative top-px text-sm truncate',
-            item.type === 'search' ? 'text-body' : 'font-medium text-heading'
+            item.muted ? 'text-body' : 'font-medium text-heading'
           )}
         >
           {item.title}
         </span>
-        {item.type === 'link' && item.summary && (
+        {item.summary && (
           <span className="relative top-px text-xs text-ui-body truncate">
             {item.summary}
           </span>
@@ -196,17 +168,13 @@ const rowStyle = ({ isFocused }) =>
       : 'hover:bg-white dark:hover:bg-fern-1100'
   )
 
-export default function SearchModal({
-  isOpen,
-  onOpenChange,
-  scope,
-  onScopeChange,
-}) {
+export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   const [query, setQuery] = useState('')
+  const [activeName, setActiveName] = useState(scope)
   const [index, setIndex] = useState(cache)
   const inputRef = useRef(null)
   const router = useRouter()
-  const activeScope = scopes[scope] || null
+  const activeScope = scopes[activeName] || null
 
   useEffect(() => {
     if (index || !isOpen) return
@@ -241,9 +209,14 @@ export default function SearchModal({
   const [done, setDone] = useState(null)
   const pathname = usePathname()
 
+  // Closed does not mean unmounted, so anything that should not survive an
+  // open is cleared here rather than by each caller's press handler.
   useEffect(() => {
-    if (isOpen) setRecents(readRecents())
-  }, [isOpen])
+    if (!isOpen) return
+    setRecents(readRecents())
+    setActiveName(scope)
+    setQuery('')
+  }, [isOpen, scope])
 
   useEffect(() => {
     if (!done) return
@@ -265,11 +238,13 @@ export default function SearchModal({
           : (index ?? []).filter((entry) =>
               activeScope.types.includes(entry.type)
             )
-        : [...navigation.filter((item) => item.href !== '#'), ...library]
+        : [...navigation.filter((item) => item.href !== '#'), ...library].map(
+            ({ href, ...rest }) => ({ ...rest, slug: href })
+          )
       const seen = new Set(recents.map((recent) => recent.slug))
       const rest = items
-        .filter((item) => !seen.has(key(item)))
-        .map((item) => ({ ...item, id: key(item) }))
+        .filter((item) => !seen.has(item.slug))
+        .map((item) => ({ ...item, id: item.slug }))
 
       const actions = (activeScope ? [] : pageActions(pathname)).map((action) =>
         done === action.id ? { ...action, title: 'Copied' } : action
@@ -290,14 +265,13 @@ export default function SearchModal({
       ].filter(Boolean)
     }
     if (!index) return []
-    const scoped = activeScope
-      ? index.filter((item) => activeScope.types.includes(item.type))
-      : index
     const suggestion = activeScope ? null : matchScope(query)
-    const found = groupResults(search(scoped, query)).map((group) => ({
+    const found = groupResults(
+      search(index, query, { types: activeScope?.types })
+    ).map((group) => ({
       id: group.type,
       title: group.title,
-      items: group.items.map((item) => ({ ...item, id: key(item) })),
+      items: group.items.map((item) => ({ ...item, id: item.slug })),
     }))
 
     return [
@@ -306,10 +280,12 @@ export default function SearchModal({
         items: [
           {
             id: `scope:${suggestion}`,
-            type: 'scope',
             title: `Search ${scopes[suggestion].label} only`,
             icon: 'folder',
-            scope: suggestion,
+            run: () => {
+              setActiveName(suggestion)
+              setQuery('')
+            },
           },
         ],
       },
@@ -319,14 +295,27 @@ export default function SearchModal({
         items: [
           {
             id: 'search:all',
-            type: 'search',
             title: `See all results for “${query.trim()}”`,
-            slug: `/search?q=${encodeURIComponent(query.trim())}`,
+            muted: true,
+            run: () => {
+              router.push(`/search?q=${encodeURIComponent(query.trim())}`)
+              onOpenChange(false)
+            },
           },
         ],
       },
     ].filter(Boolean)
-  }, [index, query, isSearching, activeScope, recents, pathname, done])
+  }, [
+    index,
+    query,
+    isSearching,
+    activeScope,
+    recents,
+    pathname,
+    done,
+    router,
+    onOpenChange,
+  ])
 
   // ListBox hands back the key of the chosen row, so keep a way back to the item
   const byKey = useMemo(() => {
@@ -337,7 +326,9 @@ export default function SearchModal({
     return map
   }, [sections])
 
-  const isEmpty = sections.every((section) => section.items.length === 0)
+  const noResults = sections.every((section) =>
+    section.items.every((item) => item.run)
+  )
 
   const modified = useRef(false)
   const rememberModifier = (event) => {
@@ -348,46 +339,39 @@ export default function SearchModal({
     const item = byKey.get(id)
     if (!item) return
 
-    if (item.type === 'action') {
+    // A row either does something or goes somewhere. Only the ones that go
+    // somewhere are worth remembering.
+    if (item.run) {
       Promise.resolve(item.run()).then(
-        () => setDone(item.id),
+        () => setDone(item.confirms ? item.id : null),
         () => setDone(null)
       )
       inputRef.current?.focus()
       return
     }
 
-    if (item.type === 'scope') {
-      onScopeChange?.(item.scope)
-      setQuery('')
-      inputRef.current?.focus()
-      return
-    }
-
-    const href = key(item)
     const newTab = modified.current
     modified.current = false
+    setRecents(addRecent(item))
 
     // Most of the index is links out. Opening one in the background leaves the
     // menu where it was, so a run through a collection is one visit, not ten.
-    if (item.type !== 'search') setRecents(addRecent(item))
-
     if (newTab) {
-      window.open(href, '_blank', 'noopener,noreferrer')
+      window.open(item.slug, '_blank', 'noopener,noreferrer')
       inputRef.current?.focus()
       return
     }
 
-    if (href.startsWith('http')) {
-      window.location.href = href
+    if (item.slug.startsWith('http')) {
+      window.location.href = item.slug
     } else {
-      router.push(href)
+      router.push(item.slug)
     }
     onOpenChange(false)
   }
 
   const clearScope = () => {
-    onScopeChange?.(null)
+    setActiveName(null)
     inputRef.current?.focus()
   }
 
@@ -398,7 +382,7 @@ export default function SearchModal({
       const match = matchScope(query)
       if (match) {
         event.preventDefault()
-        onScopeChange?.(match)
+        setActiveName(match)
         setQuery('')
         return
       }
@@ -557,7 +541,7 @@ export default function SearchModal({
                       Loading&hellip;
                     </div>
                   )}
-                  {isSearching && index && isEmpty && (
+                  {isSearching && index && noResults && (
                     <div className="px-4 py-8 text-center text-sm text-body">
                       No results found for &ldquo;{query}&rdquo;
                     </div>

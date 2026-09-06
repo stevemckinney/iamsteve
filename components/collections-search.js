@@ -13,14 +13,12 @@ const prefetch = () => import('./search-modal').then((m) => m.fetchIndex())
 // this only opens on press, scoped to collections until the scope is removed.
 export default function CollectionsSearch({ className }) {
   const [isOpen, setIsOpen] = useState(false)
-  const [scope, setScope] = useState('collections')
 
   return (
     <>
       <Button
         onPress={() => {
           prefetch()
-          setScope('collections')
           setIsOpen(true)
         }}
         className={cn(
@@ -38,8 +36,7 @@ export default function CollectionsSearch({ className }) {
       <SearchModal
         isOpen={isOpen}
         onOpenChange={setIsOpen}
-        scope={scope}
-        onScopeChange={setScope}
+        scope="collections"
       />
     </>
   )

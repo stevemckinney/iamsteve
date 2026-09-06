@@ -46,16 +46,10 @@ function getIconName(filename) {
   return path.basename(filename, '.svg').toLowerCase()
 }
 
-function transformSvgToSymbol(svg, iconName, size, viewBoxSize = size) {
+function transformSvgToSymbol(svg, iconName, size) {
   const viewBox = parseViewBox(svg)
-  if (
-    !viewBox ||
-    viewBox.width !== viewBoxSize ||
-    viewBox.height !== viewBoxSize
-  ) {
-    console.warn(
-      `  ⚠ ${iconName}: viewBox mismatch (expected ${viewBoxSize}x${viewBoxSize})`
-    )
+  if (!viewBox || viewBox.width !== size || viewBox.height !== size) {
+    console.warn(`  ⚠ ${iconName}: viewBox mismatch (expected ${size}x${size})`)
   }
 
   let content = svg
@@ -70,7 +64,7 @@ function transformSvgToSymbol(svg, iconName, size, viewBoxSize = size) {
   // Make mask/clipPath IDs unique by prefixing with icon name
   content = makeIdsUnique(content, iconName, size)
 
-  return `      <symbol id="${iconName}-${size}" viewBox="0 0 ${viewBoxSize} ${viewBoxSize}">
+  return `      <symbol id="${iconName}-${size}" viewBox="0 0 ${size} ${size}">
 ${indent(content, 8)}
       </symbol>`
 }
@@ -363,7 +357,6 @@ function processFolder(folderName, targetSize) {
         console.log(`  ✓ ${iconName} (${displayPath}/)`)
         symbols.push({
           name: iconName,
-          svg,
           content: transformSvgToSymbol(svg, iconName, targetSize),
         })
       }
@@ -379,31 +372,15 @@ function build() {
   console.log('\n🎨 Building icon sprites...\n')
 
   const symbolsBySize = { 16: new Map(), 24: new Map() }
-  const sources = { 16: new Map(), 24: new Map() }
 
   // Process each watch folder
   for (const [folder, size] of Object.entries(WATCH_FOLDERS)) {
     console.log(`📂 ${folder}/ → sprite-${size}.js`)
     const symbols = processFolder(folder, size)
 
-    for (const { name, svg, content } of symbols) {
+    for (const { name, content } of symbols) {
       symbolsBySize[size].set(name, content)
-      sources[size].set(name, svg)
     }
-  }
-
-  // An icon drawn only at 24 would render nothing when asked for at 16, so give
-  // it a 16 symbol that keeps the 24 viewBox. The browser scales it to fit,
-  // which thins the strokes a little — replace it by drawing a real 16px
-  // version, and this stops emitting one.
-  const scaled = []
-  for (const [name, svg] of sources[24]) {
-    if (symbolsBySize[16].has(name)) continue
-    symbolsBySize[16].set(name, transformSvgToSymbol(svg, name, 16, 24))
-    scaled.push(name)
-  }
-  if (scaled.length) {
-    console.log(`\n  ↘ scaled from 24 to fill sprite-16: ${scaled.join(', ')}`)
   }
 
   // Write sprite files
