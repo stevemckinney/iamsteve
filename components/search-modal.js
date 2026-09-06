@@ -159,14 +159,15 @@ function ResultContent({ item }) {
   )
 }
 
-const rowStyle = ({ isFocused }) =>
-  cn(
+const rowStyle = ({ isHovered, isFocused, isPressed }) => {
+  const active = isHovered || isFocused
+  return cn(
     'flex items-center cursor-default p-2 gap-2 outline-none rounded-sm',
-    'transition-shadow duration-150 ease-linear',
-    isFocused
-      ? 'bg-white dark:bg-fern-1000 shadow-picked'
-      : 'hover:bg-white/60 dark:hover:bg-fern-1000/50'
+    'transition-all duration-100 ease-linear',
+    active && 'bg-white dark:bg-fern-1000 dark:shadow-none',
+    active && (isPressed ? 'shadow-reduced' : 'shadow-picked')
   )
+}
 
 export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   const [query, setQuery] = useState('')
