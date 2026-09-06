@@ -104,7 +104,12 @@ function ResultContent({ item }) {
         />
       </span>
       <span className="flex items-baseline gap-2 min-w-0 flex-1">
-        <span className="relative top-px text-sm font-medium text-heading truncate">
+        <span
+          className={cn(
+            'relative top-px text-sm truncate',
+            item.type === 'search' ? 'text-body' : 'font-medium text-heading'
+          )}
+        >
           {item.title}
         </span>
         {item.type === 'link' && item.summary && (
@@ -206,18 +211,33 @@ export default function SearchModal({
     const scoped = activeScope
       ? index.filter((item) => activeScope.types.includes(item.type))
       : index
-    return groupResults(search(scoped, query)).map((group) => ({
+    const found = groupResults(search(scoped, query)).map((group) => ({
       id: group.type,
       title: group.title,
       items: group.items.map((item) => ({ ...item, id: key(item) })),
     }))
+
+    return [
+      ...found,
+      {
+        id: 'all',
+        items: [
+          {
+            id: 'search:all',
+            type: 'search',
+            title: `See all results for “${query.trim()}”`,
+            slug: `/search?q=${encodeURIComponent(query.trim())}`,
+          },
+        ],
+      },
+    ]
   }, [index, query, isSearching, activeScope, recents])
 
   // ListBox hands back the key of the chosen row, so keep a way back to the item
   const byKey = useMemo(() => {
     const map = new Map()
     for (const section of sections) {
-      for (const item of section.items) map.set(key(item), item)
+      for (const item of section.items) map.set(item.id, item)
     }
     return map
   }, [sections])
@@ -238,7 +258,7 @@ export default function SearchModal({
 
     // Most of the index is links out. Opening one in the background leaves the
     // menu where it was, so a run through a collection is one visit, not ten.
-    setRecents(addRecent(item))
+    if (item.type !== 'search') setRecents(addRecent(item))
 
     if (newTab) {
       window.open(href, '_blank', 'noopener,noreferrer')
@@ -427,11 +447,12 @@ export default function SearchModal({
                   >
                     {(section) => (
                       <ListBoxSection id={section.id}>
-                        {(isSearching || sections.length > 1) && (
-                          <Header className="px-2 pt-2 pb-1 text-[10px] uppercase tracking-wider text-ui-body font-medium">
-                            {section.title}
-                          </Header>
-                        )}
+                        {section.title &&
+                          (isSearching || sections.length > 1) && (
+                            <Header className="px-2 pt-2 pb-1 text-[10px] uppercase tracking-wider text-ui-body font-medium">
+                              {section.title}
+                            </Header>
+                          )}
                         <Collection items={section.items}>
                           {(item) => (
                             <ListBoxItem
