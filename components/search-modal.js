@@ -22,6 +22,7 @@ import { navigation, library } from '@/content/navigation'
 import collectionsConfig from '@/content/collections'
 import categoriesConfig from '@/content/categories'
 import { readRecents, addRecent } from '@/lib/recents'
+import { usePathname } from 'next/navigation'
 
 // Opening the menu from a scoped trigger limits it to these types. Its default
 // list, shown before anyone types, comes from config rather than the fetched
@@ -70,6 +71,33 @@ function matchScope(query) {
         name.startsWith(typed) || scopes[name].label.toLowerCase() === typed
     ) ?? null
   )
+}
+
+function pageActions(pathname) {
+  const url = `${location.origin}${pathname}`
+  const post = pathname.startsWith('/blog/')
+    ? pathname.slice('/blog/'.length)
+    : null
+
+  return [
+    {
+      id: 'action:copy-link',
+      type: 'action',
+      title: 'Copy link to this page',
+      icon: 'link',
+      run: () => navigator.clipboard.writeText(url),
+    },
+    post && {
+      id: 'action:copy-markdown',
+      type: 'action',
+      title: 'Copy this page as markdown',
+      icon: 'copy',
+      run: async () => {
+        const response = await fetch(`/api/content/${post}`)
+        navigator.clipboard.writeText(await response.text())
+      },
+    },
+  ].filter(Boolean)
 }
 
 let cache = null
@@ -210,9 +238,21 @@ export default function SearchModal({
   }, [isOpen])
 
   const [recents, setRecents] = useState([])
+  const [done, setDone] = useState(null)
+  const pathname = usePathname()
 
   useEffect(() => {
     if (isOpen) setRecents(readRecents())
+  }, [isOpen])
+
+  useEffect(() => {
+    if (!done) return
+    const timer = setTimeout(() => setDone(null), 1600)
+    return () => clearTimeout(timer)
+  }, [done])
+
+  useEffect(() => {
+    if (!isOpen) setDone(null)
   }, [isOpen])
 
   const isSearching = query.trim().length >= 2
@@ -231,6 +271,10 @@ export default function SearchModal({
         .filter((item) => !seen.has(key(item)))
         .map((item) => ({ ...item, id: key(item) }))
 
+      const actions = (activeScope ? [] : pageActions(pathname)).map((action) =>
+        done === action.id ? { ...action, title: 'Copied' } : action
+      )
+
       return [
         recents.length && {
           id: 'recent',
@@ -242,6 +286,7 @@ export default function SearchModal({
           title: activeScope?.label ?? 'Pages',
           items: rest,
         },
+        actions.length && { id: 'actions', title: 'Actions', items: actions },
       ].filter(Boolean)
     }
     if (!index) return []
@@ -281,7 +326,7 @@ export default function SearchModal({
         ],
       },
     ].filter(Boolean)
-  }, [index, query, isSearching, activeScope, recents])
+  }, [index, query, isSearching, activeScope, recents, pathname, done])
 
   // ListBox hands back the key of the chosen row, so keep a way back to the item
   const byKey = useMemo(() => {
@@ -302,6 +347,15 @@ export default function SearchModal({
   const navigate = (id) => {
     const item = byKey.get(id)
     if (!item) return
+
+    if (item.type === 'action') {
+      Promise.resolve(item.run()).then(
+        () => setDone(item.id),
+        () => setDone(null)
+      )
+      inputRef.current?.focus()
+      return
+    }
 
     if (item.type === 'scope') {
       onScopeChange?.(item.scope)
