@@ -113,7 +113,7 @@ function Kbd({ children }) {
       className={cn(
         'flex items-center',
         'font-sans text-xs font-medium uppercase',
-        'bg-neutral-01-50 text-body',
+        'bg-surface-raised text-body',
         'shadow-placed',
         'rounded-xs',
         'px-1.5 py-0.5'

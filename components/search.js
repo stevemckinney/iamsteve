@@ -11,7 +11,7 @@ const prefetch = () => import('./search-modal').then((m) => m.fetchIndex())
 
 function Kbd({ children }) {
   return (
-    <kbd className="hidden any-pointer-fine:flex items-center font-sans ml-2 gap-0.5 text-sm font-medium px-1 bg-neutral-01-100 text-body shadow-placed rounded-xs">
+    <kbd className="hidden any-pointer-fine:flex items-center font-sans ml-2 gap-0.5 text-sm font-medium px-1 bg-surface-raised text-body shadow-placed rounded-xs">
       {children}
     </kbd>
   )

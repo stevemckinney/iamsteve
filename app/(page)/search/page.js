@@ -184,7 +184,7 @@ export default async function SearchPage({ searchParams }) {
                 className={cn(
                   'mx-1.5 inline-flex items-center gap-0.5 px-1.5 py-0.5',
                   'font-sans text-xs font-variation-medium uppercase',
-                  'bg-neutral-01-50 text-body shadow-placed rounded-xs'
+                  'bg-surface-raised text-body shadow-placed rounded-xs'
                 )}
               >
                 <Icon
