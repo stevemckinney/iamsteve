@@ -3,7 +3,10 @@ import { cleanMarkdownForLLMs } from '@/lib/utils/clean-markdown-for-llms'
 
 export async function GET(request, { params }) {
   const { slug } = await params
-  const note = allNotes.find((n) => n.slug === `/notes/${slug}`)
+  // Draft notes have no page, so they must not be readable here either
+  const note = allNotes.find(
+    (n) => n.slug === `/notes/${slug}` && n.status === 'published'
+  )
 
   if (!note) {
     return new Response('# Not Found\n\nThe requested note does not exist.', {
