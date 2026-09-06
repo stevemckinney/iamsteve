@@ -92,7 +92,7 @@
     var(--color-canvas-dark)
   );
   --color-canvas-light: var(--color-neutral-01-150);
-  --color-canvas-dark: var(--color-fern-1300);
+  --color-canvas-dark: var(--color-fern-1400);
 
   --color-surface: light-dark(
     rgb(255 255 255),
