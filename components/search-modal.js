@@ -20,6 +20,7 @@ import { search, groupResults } from '@/lib/search'
 import Icon from '@/components/icon'
 import { navigation, library } from '@/content/navigation'
 import collectionsConfig from '@/content/collections'
+import categoriesConfig from '@/content/categories'
 import { readRecents, addRecent } from '@/lib/recents'
 
 // Opening the menu from a scoped trigger limits it to these types. Its default
@@ -37,6 +38,38 @@ const scopes = {
       icon: item.icon,
     })),
   },
+  blog: {
+    label: 'Blog',
+    types: ['post', 'category'],
+    placeholder: 'Search the blog…',
+    items: categoriesConfig
+      .filter((item) => !item.exclude)
+      .map((item) => ({
+        type: 'category',
+        title: item.title,
+        slug: item.slug,
+        icon: item.icon,
+      })),
+  },
+  notes: {
+    label: 'Notes',
+    types: ['note'],
+    placeholder: 'Search notes…',
+    items: [],
+  },
+}
+
+// Typing a scope's name and pressing Tab drops into it, the way a filter token
+// is committed elsewhere. Backspace on the empty field takes you back out.
+function matchScope(query) {
+  const typed = query.trim().toLowerCase()
+  if (!typed) return null
+  return (
+    Object.keys(scopes).find(
+      (name) =>
+        name.startsWith(typed) || scopes[name].label.toLowerCase() === typed
+    ) ?? null
+  )
 }
 
 let cache = null
@@ -187,7 +220,11 @@ export default function SearchModal({
   const sections = useMemo(() => {
     if (!isSearching) {
       const items = activeScope
-        ? activeScope.items
+        ? activeScope.items.length
+          ? activeScope.items
+          : (index ?? []).filter((entry) =>
+              activeScope.types.includes(entry.type)
+            )
         : [...navigation.filter((item) => item.href !== '#'), ...library]
       const seen = new Set(recents.map((recent) => recent.slug))
       const rest = items
@@ -211,6 +248,7 @@ export default function SearchModal({
     const scoped = activeScope
       ? index.filter((item) => activeScope.types.includes(item.type))
       : index
+    const suggestion = activeScope ? null : matchScope(query)
     const found = groupResults(search(scoped, query)).map((group) => ({
       id: group.type,
       title: group.title,
@@ -218,6 +256,18 @@ export default function SearchModal({
     }))
 
     return [
+      suggestion && {
+        id: 'scope',
+        items: [
+          {
+            id: `scope:${suggestion}`,
+            type: 'scope',
+            title: `Search ${scopes[suggestion].label} only`,
+            icon: 'folder',
+            scope: suggestion,
+          },
+        ],
+      },
       ...found,
       {
         id: 'all',
@@ -230,7 +280,7 @@ export default function SearchModal({
           },
         ],
       },
-    ]
+    ].filter(Boolean)
   }, [index, query, isSearching, activeScope, recents])
 
   // ListBox hands back the key of the chosen row, so keep a way back to the item
@@ -252,6 +302,14 @@ export default function SearchModal({
   const navigate = (id) => {
     const item = byKey.get(id)
     if (!item) return
+
+    if (item.type === 'scope') {
+      onScopeChange?.(item.scope)
+      setQuery('')
+      inputRef.current?.focus()
+      return
+    }
+
     const href = key(item)
     const newTab = modified.current
     modified.current = false
@@ -281,6 +339,17 @@ export default function SearchModal({
 
   const onKeyDown = (event) => {
     if (event.key === 'Enter') rememberModifier(event)
+
+    if (event.key === 'Tab' && !event.shiftKey && !activeScope) {
+      const match = matchScope(query)
+      if (match) {
+        event.preventDefault()
+        onScopeChange?.(match)
+        setQuery('')
+        return
+      }
+    }
+
     // Backspace on an empty field drops the scope, the way a removable token
     // behaves elsewhere. Escape closes rather than only clearing the input.
     if (event.key === 'Backspace' && !query && activeScope) {
