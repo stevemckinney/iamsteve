@@ -20,6 +20,7 @@ import { search, groupResults } from '@/lib/search'
 import Icon from '@/components/icon'
 import { navigation, library } from '@/content/navigation'
 import collectionsConfig from '@/content/collections'
+import { readRecents, addRecent } from '@/lib/recents'
 
 // Opening the menu from a scoped trigger limits it to these types. Its default
 // list, shown before anyone types, comes from config rather than the fetched
@@ -170,6 +171,12 @@ export default function SearchModal({
     }
   }, [isOpen])
 
+  const [recents, setRecents] = useState([])
+
+  useEffect(() => {
+    if (isOpen) setRecents(readRecents())
+  }, [isOpen])
+
   const isSearching = query.trim().length >= 2
 
   const sections = useMemo(() => {
@@ -177,13 +184,23 @@ export default function SearchModal({
       const items = activeScope
         ? activeScope.items
         : [...navigation.filter((item) => item.href !== '#'), ...library]
+      const seen = new Set(recents.map((recent) => recent.slug))
+      const rest = items
+        .filter((item) => !seen.has(key(item)))
+        .map((item) => ({ ...item, id: key(item) }))
+
       return [
-        {
+        recents.length && {
+          id: 'recent',
+          title: 'Recent',
+          items: recents.map((recent) => ({ ...recent, id: recent.slug })),
+        },
+        rest.length && {
           id: 'default',
           title: activeScope?.label ?? 'Pages',
-          items: items.map((item) => ({ ...item, id: key(item) })),
+          items: rest,
         },
-      ]
+      ].filter(Boolean)
     }
     if (!index) return []
     const scoped = activeScope
@@ -194,7 +211,7 @@ export default function SearchModal({
       title: group.title,
       items: group.items.map((item) => ({ ...item, id: key(item) })),
     }))
-  }, [index, query, isSearching, activeScope])
+  }, [index, query, isSearching, activeScope, recents])
 
   // ListBox hands back the key of the chosen row, so keep a way back to the item
   const byKey = useMemo(() => {
@@ -221,6 +238,8 @@ export default function SearchModal({
 
     // Most of the index is links out. Opening one in the background leaves the
     // menu where it was, so a run through a collection is one visit, not ten.
+    setRecents(addRecent(item))
+
     if (newTab) {
       window.open(href, '_blank', 'noopener,noreferrer')
       inputRef.current?.focus()
@@ -408,7 +427,7 @@ export default function SearchModal({
                   >
                     {(section) => (
                       <ListBoxSection id={section.id}>
-                        {isSearching && (
+                        {(isSearching || sections.length > 1) && (
                           <Header className="px-2 pt-2 pb-1 text-[10px] uppercase tracking-wider text-ui-body font-medium">
                             {section.title}
                           </Header>
