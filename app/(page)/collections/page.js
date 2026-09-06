@@ -20,7 +20,7 @@ import { collectionTitle } from '@/lib/collections'
 export const revalidate = false
 
 export const metadata = {
-  title: 'Collections • iamsteve',
+  title: 'Collections',
   description:
     'Curated design resources organised by topic, from typography and colour to tools and techniques.',
   alternates: {
