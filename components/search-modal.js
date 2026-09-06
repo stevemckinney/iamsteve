@@ -207,10 +207,26 @@ export default function SearchModal({
 
   const isEmpty = sections.every((section) => section.items.length === 0)
 
+  const modified = useRef(false)
+  const rememberModifier = (event) => {
+    modified.current = event.metaKey || event.ctrlKey
+  }
+
   const navigate = (id) => {
     const item = byKey.get(id)
     if (!item) return
     const href = key(item)
+    const newTab = modified.current
+    modified.current = false
+
+    // Most of the index is links out. Opening one in the background leaves the
+    // menu where it was, so a run through a collection is one visit, not ten.
+    if (newTab) {
+      window.open(href, '_blank', 'noopener,noreferrer')
+      inputRef.current?.focus()
+      return
+    }
+
     if (href.startsWith('http')) {
       window.location.href = href
     } else {
@@ -225,6 +241,7 @@ export default function SearchModal({
   }
 
   const onKeyDown = (event) => {
+    if (event.key === 'Enter') rememberModifier(event)
     // Backspace on an empty field drops the scope, the way a removable token
     // behaves elsewhere. Escape closes rather than only clearing the input.
     if (event.key === 'Backspace' && !query && activeScope) {
@@ -368,7 +385,10 @@ export default function SearchModal({
                 )}
               </TextField>
 
-              <div className="search-body relative z-1 min-h-0 flex-1 overflow-y-auto">
+              <div
+                className="search-body relative z-1 min-h-0 flex-1 overflow-y-auto"
+                onPointerDownCapture={rememberModifier}
+              >
                 <div className="w-full">
                   {isSearching && !index && (
                     <div className="px-4 py-8 text-center text-sm text-body">
@@ -448,7 +468,26 @@ export default function SearchModal({
                       aria-label="Enter"
                     />
                   </Kbd>
-                  <span className="relative top-px">Open</span>
+                  <span className="relative top-px mr-2">Open</span>
+                </span>
+                <span className="hidden items-center gap-1 sm:flex">
+                  <Kbd>
+                    <Icon
+                      icon="cmd"
+                      size={16}
+                      variant="none"
+                      aria-label="Command"
+                    />
+                  </Kbd>
+                  <Kbd>
+                    <Icon
+                      icon="enter"
+                      size={16}
+                      variant="none"
+                      aria-label="Enter"
+                    />
+                  </Kbd>
+                  <span className="relative top-px ml-1">New tab</span>
                 </span>
               </span>
               <span className="flex items-center gap-2">
