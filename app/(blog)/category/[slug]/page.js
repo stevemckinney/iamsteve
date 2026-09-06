@@ -59,7 +59,9 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props) {
   const params = await props.params
-  const category = categories.find((category) => category.slug === params.slug)
+  const category = categories.find(
+    (category) => category.slugAsParams === params.slug
+  )
 
   if (!category) {
     return
