@@ -16,6 +16,7 @@
     "post": "node ./scripts/compose.js",
     "note": "node ./scripts/compose-note.js",
     "build": "pnpm lint && next build",
+    "validate:content": "node scripts/validate-content.mjs",
     "validate:links": "node scripts/validate-collection-links.js",
     "validate:links:all": "CHECK_ALL=true node scripts/validate-collection-links.js",
     "prepare": "husky"
@@ -126,6 +127,9 @@
     ],
     "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
       "prettier --write"
+    ],
+    "content/**/*.md": [
+      "node scripts/validate-content.mjs"
     ]
   },
   "devDependencies": {
@@ -147,6 +151,7 @@
     "p-limit": "^7.2.0",
     "prettier": "2.7.1",
     "sass": "^1.94.2",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "yaml": "^2.8.3"
   }
 }

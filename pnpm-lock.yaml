@@ -266,6 +266,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.18
         version: 4.1.18
+      yaml:
+        specifier: ^2.8.3
+        version: 2.9.0
 
 packages:
 
