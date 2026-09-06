@@ -82,6 +82,15 @@ function pageActions(pathname) {
       icon: 'link',
       run: () => navigator.clipboard.writeText(url),
     },
+    // Safari and Android hand this to the system share sheet. Everywhere else
+    // the row would go nowhere, so it isn't offered.
+    typeof navigator !== 'undefined' &&
+      navigator.share && {
+        id: 'action:share',
+        title: 'Share this page',
+        icon: 'share',
+        run: () => navigator.share({ url }),
+      },
     post && {
       id: 'action:copy-markdown',
       title: 'Copy this page as markdown',
