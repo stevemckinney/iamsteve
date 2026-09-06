@@ -130,10 +130,9 @@ function ResultContent({ item }) {
       <span className="flex shrink-0">
         <Icon
           icon={item.icon || typeIcon(item.type)}
-          size={24}
+          size={16}
           variant="none"
           aria-hidden="true"
-          className="w-4 h-4"
         />
       </span>
       <span className="flex items-baseline gap-2 min-w-0 flex-1">
@@ -162,10 +161,11 @@ function ResultContent({ item }) {
 
 const rowStyle = ({ isFocused }) =>
   cn(
-    'flex items-center cursor-default p-2 gap-2 outline-none',
+    'flex items-center cursor-default p-2 gap-2 outline-none rounded-sm',
+    'transition-shadow duration-150 ease-linear',
     isFocused
-      ? 'bg-neutral-01-50 dark:bg-fern-1000'
-      : 'hover:bg-white dark:hover:bg-fern-1100'
+      ? 'bg-white dark:bg-fern-1000 shadow-picked'
+      : 'hover:bg-white/60 dark:hover:bg-fern-1000/50'
   )
 
 export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
@@ -550,7 +550,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                     items={sections}
                     onAction={navigate}
                     aria-label={isSearching ? 'Search results' : 'Pages'}
-                    className="px-0 py-2 m-0 outline-none"
+                    className="px-1.5 py-2 m-0 outline-none"
                   >
                     {(section) => (
                       <ListBoxSection id={section.id}>
