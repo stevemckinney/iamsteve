@@ -515,7 +515,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                     activeScope ? activeScope.placeholder : 'Search everything…'
                   }
                   className={cn(
-                    'relative top-px flex-1 py-3.5 bg-transparent',
+                    'relative top-px flex-1 px-0 py-3.5 bg-transparent',
                     'text-base text-heading placeholder:text-body',
                     'outline-none focus:ring-0 border-0'
                   )}
@@ -571,7 +571,10 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                     className="px-1.5 py-2 m-0 outline-none"
                   >
                     {(section) => (
-                      <ListBoxSection id={section.id}>
+                      <ListBoxSection
+                        id={section.id}
+                        className="flex flex-col gap-px"
+                      >
                         {section.title &&
                           (isSearching || sections.length > 1) && (
                             <Header className="px-2 pt-2 pb-1 text-[10px] uppercase tracking-wider text-ui-body font-medium">
