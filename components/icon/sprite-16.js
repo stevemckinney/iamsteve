@@ -324,6 +324,18 @@ const Sprite16 = (props) => (
           />
         </g>
       </symbol>
+      <symbol id="bulb-16" viewBox="0 0 16 16">
+        <g className="bulb">
+          <path
+            d="M8 1.159C6 1.159 4 2.492 4 5.159C4 7.825 6 7.825 6 10.492V12H10V10.492C10 7.825 12 7.825 12 5.159C12 2.492 10 1.159 8 1.159Z"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M10 13C10 14 9 15 8 15C7 15 6 14 6 13C6 12.381 6 12 6 12H10C10 12 10 12.381 10 13Z"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="calendar-16" viewBox="0 0 16 16">
         <g className="calendar">
           <rect
