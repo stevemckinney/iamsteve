@@ -218,7 +218,7 @@ function Desktop({ pathname }) {
           <Search
             variant="desktop"
             className={cn(
-              'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
+              'flex items-center gap-2 text-base font-ui lowercase leading-none relative',
               'lg:text-xl/none lg:py-1 xl:py-0.5'
             )}
           />

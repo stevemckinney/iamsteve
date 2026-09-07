@@ -465,7 +465,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                 }
                 className={cn(
                   'search-field relative z-10 shrink-0',
-                  'flex items-center px-4 cursor-text',
+                  'flex items-center gap-2 px-4 cursor-text',
                   'bg-white dark:bg-fern-1000',
                   'rounded-sm shadow-placed dark:shadow-[0_0_0_1px_var(--color-fern-900)]',
                   'has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-cornflour-600 dark:has-[:focus-visible]:ring-fern-400'
@@ -481,13 +481,13 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                 {activeScope && (
                   <span
                     className={cn(
-                      'flex items-center gap-1 shrink-0 ml-2 -mr-1',
-                      'pl-2 pr-1 py-1 rounded-xs',
-                      'bg-neutral-01-100 dark:bg-fern-1100',
-                      'text-sm font-medium text-heading'
+                      'flex items-center gap-0.5 shrink-0',
+                      'px-1 rounded-xs',
+                      'bg-surface-raised text-body shadow-placed',
+                      'text-sm font-medium'
                     )}
                   >
-                    {activeScope.label}
+                    <span className="relative top-px">{activeScope.label}</span>
                     <button
                       type="button"
                       onClick={clearScope}

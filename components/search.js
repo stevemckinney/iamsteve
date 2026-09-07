@@ -11,7 +11,7 @@ const prefetch = () => import('./search-modal').then((m) => m.fetchIndex())
 
 function Kbd({ children }) {
   return (
-    <kbd className="hidden any-pointer-fine:flex items-center font-sans ml-2 gap-0.5 text-sm font-medium px-1 bg-surface-raised text-body shadow-placed rounded-xs">
+    <kbd className="hidden any-pointer-fine:flex items-center font-sans gap-0.5 text-sm font-medium px-1 bg-surface-raised text-body shadow-placed rounded-xs">
       {children}
     </kbd>
   )
@@ -46,7 +46,7 @@ export default function Search({ className, variant = 'desktop' }) {
         }}
         aria-label="Search"
         className={cn(
-          'flex items-center gap-1.5 cursor-pointer outline-none transition-opacity duration-200',
+          'flex items-center gap-2 cursor-pointer outline-none transition-opacity duration-200',
           className
         )}
       >
