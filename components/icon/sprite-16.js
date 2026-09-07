@@ -39,6 +39,30 @@ const Sprite16 = (props) => (
       <symbol id="about-16" viewBox="0 0 16 16">
         <path d="M9.84335,9.69765l-.00229-.031a4.25032,4.25032,0,0,0,1.49227-3.33334v-2c0-1.20734,0-2-.66666-2.66666a2.44912,2.44912,0,0,0-2-.66667c-.60143,0-.66029.54257-1.645.64876a2.72461,2.72461,0,0,0-2.355,2.74544V6.33333A4.25032,4.25032,0,0,0,6.15894,9.66667l-.0023.03113C6.06721,10.90871,5.223,10.908,4.063,11.26685a12.9908,12.9908,0,0,0-1.56186.59426,1.99748,1.99748,0,0,0-1.16784,1.82032V14a1,1,0,0,0,1,1H13.66667a1,1,0,0,0,1-1v-.3186a1.9975,1.9975,0,0,0-1.1678-1.82031,12.99024,12.99024,0,0,0-1.56184-.59427C10.777,10.90791,9.93278,10.90862,9.84335,9.69765Z" />
       </symbol>
+      <symbol id="accessibility-16" viewBox="0 0 16 16">
+        <g className="accessibility">
+          <path
+            d="M8 4C8.552 4 9 3.552 9 3C9 2.448 8.552 2 8 2C7.448 2 7 2.448 7 3C7 3.552 7.448 4 8 4Z"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M12 6C12 6 9.682 7 8 7C6.318 7 4 6 4 6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M9 7H7V11H9Z"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M7 11L6 14"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M9 11L10 14"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="airplane-16" viewBox="0 0 16 16">
         <g className="airplane">
           <path
@@ -278,6 +302,14 @@ const Sprite16 = (props) => (
           stroke="color(display-p3 .0353 .1804 .1412)"
           d="M13 11V2H4a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h9Z"
         />
+      </symbol>
+      <symbol id="bookmark-16" viewBox="0 0 16 16">
+        <g className="bookmark">
+          <path
+            d="M5 2H11V14L8 12L5 14Z"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
       </symbol>
       <symbol id="box-16" viewBox="0 0 16 16">
         <g className="box">
@@ -889,6 +921,26 @@ const Sprite16 = (props) => (
           d="M4.104 2.385 3.334 2l-.667 4.667s.666-1.334 2.666-1.334h1.334V10c0 1.333-.667 2-1.334 2v2h5.334v-2c-.667 0-1.334-.667-1.334-2V5.333h1.334c2 0 2.666 1.334 2.666 1.334L12.667 2l-.77.385c-.37.185-.78.282-1.193.282H5.296c-.414 0-.822-.097-1.192-.282Z"
         />
       </symbol>
+      <symbol id="foundry-16" viewBox="0 0 16 16">
+        <g className="foundry">
+          <path
+            d="M2.662 14C2.294 14 2 13.702 2 13.333V2.667C2 2.298 2.298 2 2.667 2C6.222 2 9.778 2 13.333 2C13.702 2 14 2.298 14 2.667V13.333C14 13.702 13.705 14 13.337 14C11.259 14 4.882 14 2.662 14Z"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M5 6V5H11V6"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M8 5V11"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M7 11H9"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="frame-16" viewBox="0 0 16 16">
         <g className="frame">
           <path d="M4 4h8v8H4z" className="fill-(--icon-fill)" />
@@ -1099,6 +1151,22 @@ const Sprite16 = (props) => (
           />
           <path
             d="M8 3v10"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="publication-16" viewBox="0 0 16 16">
+        <g className="publication">
+          <path
+            d="M3 14C2.448 14 2 13.552 2 13V3C2 2.448 2.448 2 3 2H13C13.552 2 14 2.448 14 3V13C14 13.552 13.552 14 13 14Z"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M5 6H11"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M6 9H10"
             className="fill-none stroke-current stroke-2 sl-r"
           />
         </g>
