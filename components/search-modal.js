@@ -111,6 +111,11 @@ function pageActions(pathname, index) {
   ].filter(Boolean)
 }
 
+// A scope opens on what it holds rather than a blank list. Everything is a
+// keystroke away, so this only has to be enough to browse — 217 collection
+// rows cost a second to paint on a slow phone, 40 cost nothing.
+const SCOPE_ROWS = 40
+
 let cache = null
 let pending = null
 
@@ -255,18 +260,25 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   const sections = useMemo(() => {
     if (!isSearching) {
       const items = activeScope
-        ? activeScope.items.length
-          ? activeScope.items
-          : (index ?? []).filter((entry) =>
+        ? [
+            // the scope's own topics draw before the index lands; its content
+            // follows once it has, newest first
+            ...activeScope.items,
+            ...(index ?? []).filter((entry) =>
               activeScope.types.includes(entry.type)
-            )
+            ),
+          ]
         : [...navigation.filter((item) => item.href !== '#'), ...library].map(
             ({ href, ...rest }) => ({ ...rest, slug: href })
           )
       const seen = new Set(recents.map((recent) => recent.slug))
-      const rest = items
-        .filter((item) => !seen.has(item.slug))
-        .map((item) => ({ ...item, id: item.slug }))
+      const rest = []
+      for (const item of items) {
+        if (seen.has(item.slug)) continue
+        seen.add(item.slug)
+        rest.push({ ...item, id: item.slug })
+        if (activeScope && rest.length === SCOPE_ROWS) break
+      }
 
       const actions = (activeScope ? [] : pageActions(pathname, index)).map(
         (action) =>
