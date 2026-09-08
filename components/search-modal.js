@@ -166,6 +166,11 @@ function ResultContent({ item }) {
           </span>
         )}
       </span>
+      {item.hint && (
+        <span className="hidden any-pointer-fine:flex shrink-0">
+          <Kbd>{item.hint}</Kbd>
+        </span>
+      )}
       {item.categories?.length > 0 && (
         <span className="flex shrink-0 text-xs text-ui-body hidden sm:inline">
           {item.categories[0]}
@@ -279,6 +284,22 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
           title: activeScope?.label ?? 'Pages',
           items: rest,
         },
+        !activeScope && {
+          id: 'scopes',
+          title: 'Search in',
+          items: Object.entries(scopes).map(([name, { label, types }]) => ({
+            id: `scope:${name}`,
+            title: label,
+            // the row wears the icon of the results it will produce
+            icon: typeIcon(types[0]),
+            hint: 'Tab',
+            scope: name,
+            run: () => {
+              setActiveName(name)
+              setQuery('')
+            },
+          })),
+        },
         actions.length && { id: 'actions', title: 'Actions', items: actions },
       ].filter(Boolean)
     }
@@ -391,6 +412,21 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   const clearScope = () => {
     setActiveName(null)
     inputRef.current?.focus()
+  }
+
+  // react-aria walks the list with Tab and handles it before our own keydown,
+  // so a scope row has to be caught on the way down or it has already moved on.
+  const onKeyDownCapture = (event) => {
+    if (event.key !== 'Tab' || event.shiftKey || activeScope) return
+    const focused = document.getElementById(
+      event.currentTarget.getAttribute('aria-activedescendant')
+    )
+    const name = byKey.get(focused?.dataset.key)?.scope
+    if (!name) return
+    event.preventDefault()
+    event.stopPropagation()
+    setActiveName(name)
+    setQuery('')
   }
 
   const onKeyDown = (event) => {
@@ -510,6 +546,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                 )}
                 <Input
                   ref={inputRef}
+                  onKeyDownCapture={onKeyDownCapture}
                   onKeyDown={onKeyDown}
                   placeholder={
                     activeScope ? activeScope.placeholder : 'Search everything…'
