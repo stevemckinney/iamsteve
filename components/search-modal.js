@@ -173,7 +173,9 @@ function ResultContent({ item }) {
       </span>
       {item.hint && (
         <span className="hidden any-pointer-fine:flex shrink-0">
-          <Kbd>{item.hint}</Kbd>
+          <Kbd>
+            <Icon icon={item.hint} size={16} variant="none" aria-label="Tab" />
+          </Kbd>
         </span>
       )}
       {item.categories?.length > 0 && (
@@ -304,7 +306,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
             title: label,
             // the row wears the icon of the results it will produce
             icon: typeIcon(types[0]),
-            hint: 'Tab',
+            hint: 'tab',
             scope: name,
             run: () => {
               setActiveName(name)

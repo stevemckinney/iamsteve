@@ -1295,6 +1295,22 @@ const Sprite16 = (props) => (
           />
         </g>
       </symbol>
+      <symbol id="tab-16" viewBox="0 0 16 16">
+        <g className="tab">
+          <path
+            d="M13 8H2"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M9 12L13 8L9 4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M14 4V12"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="time-16" viewBox="0 0 16 16">
         <circle className="fill-s1" cx="8" cy="9" r="5.5" />
         <line x1="2" y1="3.5" x2="4" y2="1.5" />
