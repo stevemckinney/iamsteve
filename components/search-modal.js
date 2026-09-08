@@ -617,7 +617,9 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                     items={sections}
                     onAction={navigate}
                     aria-label={isSearching ? 'Search results' : 'Pages'}
-                    className="px-1.5 py-2 m-0 outline-none"
+                    // shadow-picked reaches 12px below a row, so the last one
+                    // needs that much room or the scroll edge cuts it
+                    className="px-1.5 pt-2 pb-3 m-0 outline-none"
                   >
                     {(section) => (
                       <ListBoxSection
