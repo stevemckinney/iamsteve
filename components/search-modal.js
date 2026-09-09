@@ -165,9 +165,7 @@ function ResultContent({ item }) {
         >
           {item.title}
         </span>
-        {item.summary && (
-          // basis-0 grow: it fills only the room the title leaves, so the
-          // title is never the one squeezed while a summary keeps its length
+        {item.type === 'link' && item.summary && (
           <span className="relative top-px text-xs text-ui-body truncate basis-0 grow">
             {item.summary}
           </span>
@@ -181,6 +179,10 @@ function ResultContent({ item }) {
           aria-hidden="true"
           className={cn(
             'flex shrink-0 rounded-xs cursor-pointer text-body',
+            'transition-opacity duration-100 ease-linear',
+            'any-pointer-fine:opacity-0',
+            'any-pointer-fine:group-data-[hovered]:opacity-100',
+            'any-pointer-fine:group-data-[focused]:opacity-100',
             'hover:bg-neutral-01-50 dark:hover:bg-fern-1000',
             'transition-colors',
             'relative after:absolute after:-inset-1 after:content-[""]'
@@ -206,7 +208,7 @@ function ResultContent({ item }) {
 const rowStyle = ({ isHovered, isFocused, isPressed }) => {
   const active = isHovered || isFocused
   return cn(
-    'flex items-center cursor-default p-2 gap-2 outline-none rounded-sm',
+    'group flex items-center cursor-default p-2 gap-2 outline-none rounded-sm',
     'transition-all duration-100 ease-linear',
     active && 'bg-white dark:bg-fern-1000 dark:shadow-none',
     active && (isPressed ? 'shadow-reduced' : 'shadow-picked')
