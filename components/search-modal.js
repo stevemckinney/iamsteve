@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo, useRef } from 'react'
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import {
   ModalOverlay,
@@ -19,54 +19,9 @@ import { cn } from '@/lib/utils'
 import { search, groupResults, typeIcon } from '@/lib/search'
 import Icon from '@/components/icon'
 import { navigation, library } from '@/content/navigation'
-import collectionsConfig from '@/content/collections'
-import categoriesConfig from '@/content/categories'
+import { root, resolve, holds, contents, matching } from '@/lib/search-tree'
 import { readRecents, addRecent } from '@/lib/recents'
 import siteMetadata from '@/content/metadata'
-
-// Opening the menu from a scoped trigger limits it to these types. Its default
-// list, shown before anyone types, comes from config rather than the fetched
-// index so the menu has something to draw the moment it opens.
-const scopes = {
-  collections: {
-    label: 'Collections',
-    types: ['collection', 'link'],
-    placeholder: 'Search collections…',
-    items: collectionsConfig.map((item) => ({
-      type: 'collection',
-      title: item.title,
-      slug: item.slug,
-      icon: item.icon,
-    })),
-  },
-  blog: {
-    label: 'Blog',
-    types: ['post', 'category'],
-    placeholder: 'Search the blog…',
-    items: categoriesConfig
-      .filter((item) => !item.exclude)
-      .map((item) => ({
-        type: 'category',
-        title: item.title,
-        slug: item.slug,
-        icon: item.icon,
-      })),
-  },
-  notes: {
-    label: 'Notes',
-    types: ['note'],
-    placeholder: 'Search notes…',
-    items: [],
-  },
-}
-
-// Typing a scope's name and pressing Tab drops into it, the way a filter token
-// is committed elsewhere. Backspace on the empty field takes you back out.
-function matchScope(query) {
-  const typed = query.trim().toLowerCase()
-  if (!typed) return null
-  return Object.keys(scopes).find((name) => name.startsWith(typed)) ?? null
-}
 
 // Posts and notes are the only content served as markdown, and the index is
 // the only thing that knows a path is really one of them.
@@ -211,16 +166,32 @@ function ResultContent({ item }) {
           {item.title}
         </span>
         {item.summary && (
-          <span className="relative top-px text-xs text-ui-body truncate">
+          // basis-0 grow: it fills only the room the title leaves, so the
+          // title is never the one squeezed while a summary keeps its length
+          <span className="relative top-px text-xs text-ui-body truncate basis-0 grow">
             {item.summary}
           </span>
         )}
       </span>
-      {item.hint && (
-        <span className="hidden any-pointer-fine:flex shrink-0">
-          <Kbd>
-            <Icon icon={item.hint} size={16} variant="none" aria-label="Tab" />
-          </Kbd>
+      {item.enter && (
+        // A way in for touch; the keyboard has →. Not a control of its own —
+        // an option may not nest one — the row's press reads where it landed.
+        <span
+          data-enter
+          aria-hidden="true"
+          className={cn(
+            'flex shrink-0 rounded-xs cursor-pointer text-body',
+            'hover:bg-neutral-01-50 dark:hover:bg-fern-1000',
+            'transition-colors',
+            'relative after:absolute after:-inset-1 after:content-[""]'
+          )}
+        >
+          <Icon
+            icon="angle-right"
+            size={16}
+            variant="none"
+            aria-hidden="true"
+          />
         </span>
       )}
       {item.categories?.length > 0 && (
@@ -244,11 +215,12 @@ const rowStyle = ({ isHovered, isFocused, isPressed }) => {
 
 export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   const [query, setQuery] = useState('')
-  const [activeName, setActiveName] = useState(scope)
+  // Where in the tree the menu is standing; empty is the root
+  const [path, setPath] = useState(scope ? [scope] : [])
   const [index, setIndex] = useState(cache)
   const inputRef = useRef(null)
   const router = useRouter()
-  const activeScope = scopes[activeName] || null
+  const node = resolve(path)
 
   useEffect(() => {
     if (index || !isOpen) return
@@ -290,7 +262,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   useEffect(() => {
     if (!isOpen) return
     setRecents(readRecents())
-    setActiveName(scope)
+    setPath(scope ? [scope] : [])
     setQuery('')
   }, [isOpen, scope])
 
@@ -310,24 +282,37 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
 
   const isSearching = query.trim().length >= 2
 
+  // Stepping into a node. Enter and click open a node's page; this is what
+  // the arrow, Tab and the chevron do instead.
+  const enter = useCallback((id) => {
+    setPath((current) => [...current, id])
+    setQuery('')
+  }, [])
+
   const sections = useMemo(() => {
+    // A node as a row: its page to open, and a way in
+    const rowFor = (item) => ({
+      id: `node:${item.id}`,
+      type: item.type,
+      title: item.label,
+      icon: item.icon,
+      summary: item.summary,
+      slug: item.slug,
+      node: item.id,
+      enter: () => enter(item.id),
+    })
+    const children = (node ? node.children : root).map(rowFor)
+
     if (!isSearching) {
-      const items = activeScope
-        ? [
-            // the scope's own topics draw before the index lands; its content
-            // follows once it has, newest first
-            ...activeScope.items,
-            ...(index ?? []).filter((entry) =>
-              activeScope.types.includes(entry.type)
-            ),
-          ]
+      const items = node
+        ? contents(node, index)
         : [...navigation.filter((item) => item.href !== '#'), ...library].map(
             ({ href, ...rest }) => ({ ...rest, slug: href })
           )
-      // A scope is a promise about what is in the list, so recents that fall
+      // A node is a promise about what is in the list, so recents that fall
       // outside it stay out of it
-      const remembered = activeScope
-        ? recents.filter((recent) => activeScope.types.includes(recent.type))
+      const remembered = node
+        ? recents.filter((recent) => holds(node, recent))
         : recents
       const seen = new Set(remembered.map((recent) => recent.slug))
       const rest = []
@@ -335,13 +320,13 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
         if (seen.has(item.slug)) continue
         seen.add(item.slug)
         rest.push({ ...item, id: item.slug })
-        if (activeScope && rest.length === SCOPE_ROWS) break
+        // children are rows too, so they spend from the same budget
+        if (node && rest.length >= SCOPE_ROWS - children.length) break
       }
 
-      const actions = (
-        activeScope ? [] : pageActions(pathname, index, nearest)
-      ).map((action) =>
-        done === action.id ? { ...action, title: 'Copied' } : action
+      const actions = (node ? [] : pageActions(pathname, index, nearest)).map(
+        (action) =>
+          done === action.id ? { ...action, title: 'Copied' } : action
       )
 
       return [
@@ -350,34 +335,38 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
           title: 'Recent',
           items: remembered.map((recent) => ({ ...recent, id: recent.slug })),
         },
-        rest.length && {
-          id: 'default',
-          title: activeScope?.label ?? 'Pages',
-          items: rest,
+        !node &&
+          rest.length && {
+            id: 'default',
+            title: 'Pages',
+            items: rest,
+          },
+        children.length && {
+          id: 'browse',
+          title: node ? node.label : 'Browse',
+          items: children,
         },
-        !activeScope && {
-          id: 'scopes',
-          title: 'Search in',
-          items: Object.entries(scopes).map(([name, { label, types }]) => ({
-            id: `scope:${name}`,
-            title: label,
-            // the row wears the icon of the results it will produce
-            icon: typeIcon(types[0]),
-            hint: 'tab',
-            scope: name,
-            run: () => {
-              setActiveName(name)
-              setQuery('')
-            },
-          })),
-        },
+        node &&
+          rest.length && {
+            id: 'default',
+            title: node.children.length ? 'Latest' : node.label,
+            items: rest,
+          },
         actions.length && { id: 'actions', title: 'Actions', items: actions },
       ].filter(Boolean)
     }
     if (!index) return []
-    const suggestion = activeScope ? null : matchScope(query)
+
+    // Somewhere to go that matches what was typed, then what was found there.
+    // A child stands for its own index entry, so that entry is not repeated.
+    const places = matching(node, query).map(rowFor)
+    const taken = new Set(places.map((place) => place.slug))
     const found = groupResults(
-      search(index, query, { types: activeScope?.types })
+      search(index, query, { types: node?.types }).filter(
+        (result) =>
+          !taken.has(result.slug) &&
+          (!node?.within || result.categories?.includes(node.within))
+      )
     ).map((group) => ({
       id: group.type,
       title: group.title,
@@ -385,20 +374,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     }))
 
     return [
-      suggestion && {
-        id: 'scope',
-        items: [
-          {
-            id: `scope:${suggestion}`,
-            title: `Search ${scopes[suggestion].label} only`,
-            icon: 'folder',
-            run: () => {
-              setActiveName(suggestion)
-              setQuery('')
-            },
-          },
-        ],
-      },
+      places.length && { id: 'browse', title: 'Browse', items: places },
       ...found,
       {
         id: 'all',
@@ -419,7 +395,8 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     index,
     query,
     isSearching,
-    activeScope,
+    node,
+    enter,
     recents,
     pathname,
     nearest,
@@ -471,13 +448,22 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   )
 
   const modified = useRef(false)
+  const entering = useRef(false)
   const rememberModifier = (event) => {
     modified.current = event.metaKey || event.ctrlKey
+    entering.current = !!event.target?.closest?.('[data-enter]')
   }
 
   const navigate = (id) => {
     const item = byKey.get(id)
     if (!item) return
+
+    // A press that began on the chevron steps in rather than opening the page
+    if (entering.current) {
+      entering.current = false
+      item.enter?.()
+      return
+    }
 
     // A row either does something or goes somewhere. Only the ones that go
     // somewhere are worth remembering.
@@ -510,44 +496,60 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     onOpenChange(false)
   }
 
-  const clearScope = () => {
-    setActiveName(null)
+  const up = () => {
+    setPath(path.slice(0, -1))
     inputRef.current?.focus()
   }
 
-  // react-aria walks the list with Tab and handles it before our own keydown,
-  // so a scope row has to be caught on the way down or it has already moved on.
+  const toRoot = () => {
+    setPath([])
+    inputRef.current?.focus()
+  }
+
+  // The arrows move the caret while there is text, so they only walk the tree
+  // on an empty field. react-aria claims Tab and handles it before our own
+  // keydown, so the focused row has to be read on the way down or it has
+  // already moved on. Tab stays as an alias for → for now.
   const onKeyDownCapture = (event) => {
-    if (event.key !== 'Tab' || event.shiftKey || activeScope) return
+    if (query) return
+    const goesIn =
+      event.key === 'ArrowRight' || (event.key === 'Tab' && !event.shiftKey)
+    if (event.key === 'ArrowLeft' && node) {
+      event.preventDefault()
+      event.stopPropagation()
+      up()
+      return
+    }
+    if (!goesIn) return
     const focused = document.getElementById(
       event.currentTarget.getAttribute('aria-activedescendant')
     )
-    const name = byKey.get(focused?.dataset.key)?.scope
-    if (!name) return
+    const id = byKey.get(focused?.dataset.key)?.node
+    if (!id) return
     event.preventDefault()
     event.stopPropagation()
-    setActiveName(name)
-    setQuery('')
+    enter(id)
   }
 
   const onKeyDown = (event) => {
     if (event.key === 'Enter') rememberModifier(event)
 
-    if (event.key === 'Tab' && !event.shiftKey && !activeScope) {
-      const match = matchScope(query)
-      if (match) {
+    // Typing the start of a place and pressing Tab goes there, the way a
+    // filter token is committed elsewhere
+    if (event.key === 'Tab' && !event.shiftKey && query) {
+      const [place] = matching(node, query)
+      if (place) {
         event.preventDefault()
-        setActiveName(match)
-        setQuery('')
+        enter(place.id)
         return
       }
     }
 
-    // Backspace on an empty field drops the scope, the way a removable token
+    // Backspace on an empty field steps back up, the way a removable token
     // behaves elsewhere. Escape closes rather than only clearing the input.
-    if (event.key === 'Backspace' && !query && activeScope) {
+    if (event.key === 'Backspace' && !query && node) {
       event.preventDefault()
-      clearScope()
+      up()
     }
     if (event.key === 'Escape' && !query) {
       event.preventDefault()
@@ -600,9 +602,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
           >
             <Autocomplete inputValue={query} onInputChange={setQuery}>
               <TextField
-                aria-label={
-                  activeScope ? `Search ${activeScope.label}` : 'Search'
-                }
+                aria-label={node ? `Search ${node.label}` : 'Search'}
                 className={cn(
                   'search-field relative z-10 shrink-0',
                   'flex items-center gap-2 px-4 cursor-text',
@@ -618,7 +618,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                   aria-hidden="true"
                   className="text-body shrink-0"
                 />
-                {activeScope && (
+                {node && (
                   <span
                     className={cn(
                       'flex items-center gap-0.5 shrink-0',
@@ -627,10 +627,10 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                       'text-sm font-medium'
                     )}
                   >
-                    <span className="relative top-px">{activeScope.label}</span>
+                    <span className="relative top-px">{node.label}</span>
                     <button
                       type="button"
-                      onClick={clearScope}
+                      onClick={toRoot}
                       className={cn(
                         'flex rounded-xs cursor-pointer',
                         'hover:bg-neutral-01-50 dark:hover:bg-fern-1000',
@@ -639,7 +639,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                         // reaches the 24px minimum without it growing
                         'relative after:absolute after:-inset-1 after:content-[""]'
                       )}
-                      aria-label={`Search everything instead of ${activeScope.label.toLowerCase()}`}
+                      aria-label={`Search everything instead of ${node.label.toLowerCase()}`}
                     >
                       <Icon
                         icon="close"
@@ -655,9 +655,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                   ref={inputRef}
                   onKeyDownCapture={onKeyDownCapture}
                   onKeyDown={onKeyDown}
-                  placeholder={
-                    activeScope ? activeScope.placeholder : 'Search everything…'
-                  }
+                  placeholder={node ? node.placeholder : 'Search everything…'}
                   className={cn(
                     'relative top-px flex-1 px-0 py-3.5 bg-transparent',
                     'text-base text-heading placeholder:text-body',
