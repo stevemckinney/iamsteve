@@ -157,7 +157,7 @@ function Kbd({ children }) {
 // A footer hint. Always mounted, so a change of context slides a hint open
 // or closed over 150ms rather than reflowing the row in one frame. The
 // spacing lives inside the collapsing box, so a closed hint takes no room.
-function Hint({ on, className, children }) {
+function Hint({ on, className, pad = 'pr-4', children }) {
   return (
     <span
       aria-hidden={!on}
@@ -174,7 +174,7 @@ function Hint({ on, className, children }) {
           // the spacing is padding, and padding is not content, so 0fr alone
           // would leave 16px of it behind. It goes with the width instead.
           'transition-[padding] duration-150 ease-out motion-reduce:transition-none',
-          on ? 'pr-4' : 'pr-0'
+          on ? pad : 'pr-0'
         )}
       >
         {children}
@@ -838,27 +838,28 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                   </Kbd>
                   <span className="relative top-px ml-1">Navigate</span>
                 </Hint>
-                <Hint on={!!node}>
-                  <Kbd>
-                    <Icon
-                      icon="arrow-left"
-                      size={16}
-                      variant="none"
-                      aria-label="Left"
-                    />
-                  </Kbd>
-                  <span className="relative top-px ml-1">Back</span>
-                </Hint>
-                <Hint on={!!focused?.node}>
-                  <Kbd>
-                    <Icon
-                      icon="arrow-right"
-                      size={16}
-                      variant="none"
-                      aria-label="Right"
-                    />
-                  </Kbd>
-                  <span className="relative top-px ml-1">Browse</span>
+                <Hint on={!!node || !!focused?.node}>
+                  <Hint on={!!node} pad="pr-1">
+                    <Kbd>
+                      <Icon
+                        icon="arrow-left"
+                        size={16}
+                        variant="none"
+                        aria-label="Left"
+                      />
+                    </Kbd>
+                  </Hint>
+                  <Hint on={!!focused?.node} pad="pr-1">
+                    <Kbd>
+                      <Icon
+                        icon="arrow-right"
+                        size={16}
+                        variant="none"
+                        aria-label="Right"
+                      />
+                    </Kbd>
+                  </Hint>
+                  <span className="relative top-px">Browse</span>
                 </Hint>
                 <Hint on={!!focused?.slug}>
                   <Kbd>
