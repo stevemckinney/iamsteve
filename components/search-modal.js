@@ -324,7 +324,12 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
         : [...navigation.filter((item) => item.href !== '#'), ...library].map(
             ({ href, ...rest }) => ({ ...rest, slug: href })
           )
-      const seen = new Set(recents.map((recent) => recent.slug))
+      // A scope is a promise about what is in the list, so recents that fall
+      // outside it stay out of it
+      const remembered = activeScope
+        ? recents.filter((recent) => activeScope.types.includes(recent.type))
+        : recents
+      const seen = new Set(remembered.map((recent) => recent.slug))
       const rest = []
       for (const item of items) {
         if (seen.has(item.slug)) continue
@@ -340,10 +345,10 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       )
 
       return [
-        recents.length && {
+        remembered.length && {
           id: 'recent',
           title: 'Recent',
-          items: recents.map((recent) => ({ ...recent, id: recent.slug })),
+          items: remembered.map((recent) => ({ ...recent, id: recent.slug })),
         },
         rest.length && {
           id: 'default',
