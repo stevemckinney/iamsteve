@@ -126,7 +126,6 @@ export default async function CollectionsPage(props) {
           Curated design resources organised by topic, from typography and
           colour to tools and techniques.
         </Description>
-        <CollectionsSearch className="mt-2" />
         <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
           {collections
             .sort((a, b) =>
@@ -146,6 +145,7 @@ export default async function CollectionsPage(props) {
               )
             })}
         </ul>
+        <CollectionsSearch className="mt-4" />
       </Header>
       <section className="flex flex-col col-start-content-start md:col-start-8 col-end-content-end gap-y-10">
         <Collections />
