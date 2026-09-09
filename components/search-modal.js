@@ -146,6 +146,35 @@ function Kbd({ children }) {
   )
 }
 
+// A footer hint. Always mounted, so a change of context slides a hint open
+// or closed over 150ms rather than reflowing the row in one frame. The
+// spacing lives inside the collapsing box, so a closed hint takes no room.
+function Hint({ on, className, children }) {
+  return (
+    <span
+      aria-hidden={!on}
+      className={cn(
+        'grid transition-[grid-template-columns,opacity] duration-150 ease-out',
+        'motion-reduce:transition-none',
+        on ? 'grid-cols-[1fr] opacity-100' : 'grid-cols-[0fr] opacity-0',
+        className
+      )}
+    >
+      <span
+        className={cn(
+          'flex items-center gap-1 min-w-0 overflow-hidden whitespace-nowrap',
+          // the spacing is padding, and padding is not content, so 0fr alone
+          // would leave 16px of it behind. It goes with the width instead.
+          'transition-[padding] duration-150 ease-out motion-reduce:transition-none',
+          on ? 'pr-4' : 'pr-0'
+        )}
+      >
+        {children}
+      </span>
+    </span>
+  )
+}
+
 function ResultContent({ item }) {
   return (
     <>
@@ -257,6 +286,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   const [done, setDone] = useState(null)
   const [status, setStatus] = useState('')
   const [nearest, setNearest] = useState(null)
+  const [focusedKey, setFocusedKey] = useState(null)
   const pathname = usePathname()
 
   // Closed does not mean unmounted, so anything that should not survive an
@@ -407,6 +437,27 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     onOpenChange,
   ])
 
+  // The footer describes what the keys will do to the focused row. react-aria
+  // only tells us which row that is through aria-activedescendant on the
+  // input, so watch it.
+  useEffect(() => {
+    const input = inputRef.current
+    if (!isOpen || !input) return
+    const read = () => {
+      const id = input.getAttribute('aria-activedescendant')
+      setFocusedKey(
+        id ? document.getElementById(id)?.dataset.key ?? null : null
+      )
+    }
+    read()
+    const observer = new MutationObserver(read)
+    observer.observe(input, {
+      attributes: true,
+      attributeFilter: ['aria-activedescendant'],
+    })
+    return () => observer.disconnect()
+  }, [isOpen])
+
   // ListBox hands back the key of the chosen row, so keep a way back to the item
   const byKey = useMemo(() => {
     const map = new Map()
@@ -444,6 +495,8 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     }, 500)
     return () => clearTimeout(timer)
   }, [isOpen, done, isSearching, sections, query])
+
+  const focused = focusedKey ? byKey.get(focusedKey) : null
 
   const noResults = sections.every((section) =>
     section.items.every((item) => item.run)
@@ -753,8 +806,8 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                 'shadow-[0_-1px_light-dark(var(--color-neutral-01-200),var(--color-fern-1000))]'
               )}
             >
-              <span className="flex items-center gap-2">
-                <span className="flex items-center gap-1">
+              <span className="flex items-center">
+                <Hint on>
                   <Kbd>
                     <Icon
                       icon="arrow-up"
@@ -771,9 +824,20 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                       aria-label="Down"
                     />
                   </Kbd>
-                </span>
-                <span className="ml-0 mr-2 relative top-px">Navigate</span>
-                <span className="flex items-center gap-2">
+                  <span className="relative top-px ml-1">Navigate</span>
+                </Hint>
+                <Hint on={!!node}>
+                  <Kbd>
+                    <Icon
+                      icon="arrow-left"
+                      size={16}
+                      variant="none"
+                      aria-label="Left"
+                    />
+                  </Kbd>
+                  <span className="relative top-px ml-1">Back</span>
+                </Hint>
+                <Hint on={!!focused?.node}>
                   <Kbd>
                     <Icon
                       icon="arrow-right"
@@ -782,9 +846,9 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                       aria-label="Right"
                     />
                   </Kbd>
-                  <span className="relative top-px mr-2">Browse</span>
-                </span>
-                <span className="flex items-center gap-2">
+                  <span className="relative top-px ml-1">Browse</span>
+                </Hint>
+                <Hint on={!!focused?.slug}>
                   <Kbd>
                     <Icon
                       icon="enter"
@@ -793,9 +857,12 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                       aria-label="Enter"
                     />
                   </Kbd>
-                  <span className="relative top-px mr-2">Open</span>
-                </span>
-                <span className="hidden items-center gap-1 sm:flex">
+                  <span className="relative top-px ml-1">Open</span>
+                </Hint>
+                <Hint
+                  on={!!focused?.slug && !focused.node}
+                  className="max-sm:hidden"
+                >
                   <Kbd>
                     <Icon
                       icon="cmd"
@@ -813,7 +880,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                     />
                   </Kbd>
                   <span className="relative top-px ml-1">New tab</span>
-                </span>
+                </Hint>
               </span>
               <span className="flex items-center gap-2">
                 <span className="relative top-px">Close</span>
