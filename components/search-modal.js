@@ -776,6 +776,17 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                 <span className="flex items-center gap-2">
                   <Kbd>
                     <Icon
+                      icon="arrow-right"
+                      size={16}
+                      variant="none"
+                      aria-label="Right"
+                    />
+                  </Kbd>
+                  <span className="relative top-px mr-2">Browse</span>
+                </span>
+                <span className="flex items-center gap-2">
+                  <Kbd>
+                    <Icon
                       icon="enter"
                       size={16}
                       variant="none"
