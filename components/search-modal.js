@@ -742,7 +742,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
 
             <div
               className={cn(
-                'search-footer hidden any-pointer-fine:flex shrink-0',
+                'search-footer hidden any-pointer-fine:flex shrink-0 select-none',
                 'items-center justify-between gap-4',
                 'text-ui-body text-sm font-medium pt-2 pb-0.5 mx-1.5',
                 'shadow-[0_-1px_light-dark(var(--color-neutral-01-200),var(--color-fern-1000))]'
