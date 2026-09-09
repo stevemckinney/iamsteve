@@ -189,7 +189,7 @@ function ResultContent({ item }) {
           )}
         >
           <Icon
-            icon="angle-right"
+            icon="arrow-right"
             size={16}
             variant="none"
             aria-hidden="true"
