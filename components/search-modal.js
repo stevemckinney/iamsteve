@@ -629,7 +629,10 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                       className={cn(
                         'flex rounded-xs cursor-pointer',
                         'hover:bg-neutral-01-50 dark:hover:bg-fern-1000',
-                        'transition-colors'
+                        'transition-colors',
+                        // the × stays 16px to sit in the chip; the hit area
+                        // reaches the 24px minimum without it growing
+                        'relative after:absolute after:-inset-1 after:content-[""]'
                       )}
                       aria-label={`Search everything instead of ${activeScope.label.toLowerCase()}`}
                     >
