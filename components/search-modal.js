@@ -194,14 +194,13 @@ function Kbd({ children }) {
 function ResultContent({ item }) {
   return (
     <>
-      <span className="flex shrink-0">
-        <Icon
-          icon={item.icon || typeIcon(item.type)}
-          size={16}
-          variant="none"
-          aria-hidden="true"
-        />
-      </span>
+      <Icon
+        icon={item.icon || typeIcon(item.type)}
+        size={16}
+        variant="none"
+        aria-hidden="true"
+        className="flex shrink-0 opacity-80"
+      />
       <span className="flex items-baseline gap-2 min-w-0 flex-1">
         <span
           className={cn(
@@ -683,7 +682,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                       >
                         {section.title &&
                           (isSearching || sections.length > 1) && (
-                            <Header className="px-2 pt-2 pb-1 text-[10px] uppercase tracking-wider text-ui-body font-medium">
+                            <Header className="px-2 pt-2 pb-1 text-xs text-ui-body font-medium">
                               {section.title}
                             </Header>
                           )}
