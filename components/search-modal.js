@@ -77,7 +77,46 @@ function markdownUrl(pathname, index) {
   return null
 }
 
-function pageActions(pathname, index) {
+// The menu opens over the page without moving it, so where the reader had got
+// to is still there to be read. The last heading, or note, scrolled past is the
+// one they are on.
+function nearestAnchor(pathname) {
+  const line = window.innerHeight / 3
+  const pick = (selector) => {
+    let passed = null
+    for (const el of document.querySelectorAll(selector)) {
+      if (el.getBoundingClientRect().top > line) return passed ?? el
+      passed = el
+    }
+    return passed
+  }
+
+  if (pathname.startsWith('/blog/')) {
+    const heading = pick('.prose h2[id], .prose h3[id]')
+    return (
+      heading && {
+        title: heading.textContent.trim(),
+        url: `${siteMetadata.siteUrl}${pathname}#${heading.id}`,
+      }
+    )
+  }
+
+  // Notes are listed in full, so a link to the page is a link to the feed. The
+  // one in view has its own page worth pointing at.
+  if (pathname === '/notes') {
+    const link = pick('article')?.querySelector('h2 a')
+    return (
+      link && {
+        title: link.textContent.trim(),
+        url: `${siteMetadata.siteUrl}${link.getAttribute('href')}`,
+      }
+    )
+  }
+
+  return null
+}
+
+function pageActions(pathname, index, nearest) {
   const url = `${siteMetadata.siteUrl}${pathname}`
   const markdown = markdownUrl(pathname, index)
 
@@ -88,6 +127,13 @@ function pageActions(pathname, index) {
       confirms: true,
       icon: 'link',
       run: () => navigator.clipboard.writeText(url),
+    },
+    nearest && {
+      id: 'action:copy-anchor',
+      title: `Copy link to “${nearest.title}”`,
+      confirms: true,
+      icon: 'link',
+      run: () => navigator.clipboard.writeText(nearest.url),
     },
     // Safari and Android hand this to the system share sheet. Everywhere else
     // the row would go nowhere, so it isn't offered.
@@ -236,6 +282,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
 
   const [recents, setRecents] = useState([])
   const [done, setDone] = useState(null)
+  const [nearest, setNearest] = useState(null)
   const pathname = usePathname()
 
   // Closed does not mean unmounted, so anything that should not survive an
@@ -254,8 +301,12 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   }, [done])
 
   useEffect(() => {
-    if (!isOpen) setDone(null)
-  }, [isOpen])
+    if (!isOpen) {
+      setDone(null)
+      return
+    }
+    setNearest(nearestAnchor(pathname))
+  }, [isOpen, pathname])
 
   const isSearching = query.trim().length >= 2
 
@@ -282,9 +333,10 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
         if (activeScope && rest.length === SCOPE_ROWS) break
       }
 
-      const actions = (activeScope ? [] : pageActions(pathname, index)).map(
-        (action) =>
-          done === action.id ? { ...action, title: 'Copied' } : action
+      const actions = (
+        activeScope ? [] : pageActions(pathname, index, nearest)
+      ).map((action) =>
+        done === action.id ? { ...action, title: 'Copied' } : action
       )
 
       return [
@@ -365,6 +417,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     activeScope,
     recents,
     pathname,
+    nearest,
     done,
     router,
     onOpenChange,
