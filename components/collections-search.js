@@ -7,7 +7,12 @@ import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
 
 const SearchModal = dynamic(() => import('./search-modal'), { ssr: false })
-const prefetch = () => import('./search-modal').then((m) => m.fetchIndex())
+// A warm-up only: if it fails the modal's own load retries, so nothing
+// should hear about it here
+const prefetch = () =>
+  import('./search-modal')
+    .then((m) => m.fetchIndex())
+    .catch(() => {})
 
 // A button dressed as a search field. The header owns the cmd K shortcut, so
 // this only opens on press, scoped to collections until the scope is removed.

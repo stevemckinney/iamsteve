@@ -7,7 +7,6 @@ package-lock.json
 .pnp.js
 .content-collections
 .contentlayer
-.content-collections
 .velite
 
 # testing

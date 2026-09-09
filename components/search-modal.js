@@ -122,9 +122,17 @@ let pending = null
 
 export async function fetchIndex() {
   if (cache) return cache
-  pending ??= fetch('/api/search').then((response) => response.json())
-  cache = await pending
-  pending = null
+  pending ??= fetch('/api/search').then((response) => {
+    if (!response.ok) throw new Error(`search index ${response.status}`)
+    return response.json()
+  })
+  // Clear the in-flight promise whether it settled or threw, or one bad
+  // response would be handed back to every later call for the session
+  try {
+    cache = await pending
+  } finally {
+    pending = null
+  }
   return cache
 }
 
@@ -256,9 +264,13 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   useEffect(() => {
     if (index || !isOpen) return
     let cancelled = false
-    fetchIndex().then((data) => {
-      if (!cancelled) setIndex(data)
-    })
+    // Without the index the default list still draws from config, and the
+    // next open tries again
+    fetchIndex()
+      .then((data) => {
+        if (!cancelled) setIndex(data)
+      })
+      .catch(() => {})
     return () => {
       cancelled = true
     }

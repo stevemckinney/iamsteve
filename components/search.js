@@ -7,7 +7,12 @@ import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
 
 const SearchModal = dynamic(() => import('./search-modal'), { ssr: false })
-const prefetch = () => import('./search-modal').then((m) => m.fetchIndex())
+// A warm-up only: if it fails the modal's own load retries, so nothing
+// should hear about it here
+const prefetch = () =>
+  import('./search-modal')
+    .then((m) => m.fetchIndex())
+    .catch(() => {})
 
 function Kbd({ children }) {
   return (
@@ -26,7 +31,7 @@ export default function Search({ className, variant = 'desktop' }) {
     if (variant !== 'desktop') return
 
     const handleKeyDown = (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault()
         prefetch()
         setIsOpen((prev) => !prev)

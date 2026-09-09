@@ -1,5 +1,3 @@
-import { cache } from 'react'
-
 import { buildIndex } from '@/lib/search-index'
 import { search, typeIcon } from '@/lib/search'
 import { cn } from '@/lib/utils'
@@ -12,8 +10,6 @@ import Link from '@/components/link'
 export const dynamic = 'force-dynamic'
 
 const RESULT_LIMIT = 40
-
-const getIndex = cache(() => buildIndex())
 
 function label(type) {
   switch (type) {
@@ -54,7 +50,7 @@ export async function generateMetadata({ searchParams }) {
 export default async function SearchPage({ searchParams }) {
   const params = await searchParams
   const q = typeof params?.q === 'string' ? params.q.trim() : ''
-  const index = getIndex()
+  const index = buildIndex()
   const results = q ? search(index, q, { limit: RESULT_LIMIT }) : []
 
   return (
