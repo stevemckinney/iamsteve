@@ -281,6 +281,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
 
   const [recents, setRecents] = useState([])
   const [done, setDone] = useState(null)
+  const [status, setStatus] = useState('')
   const [nearest, setNearest] = useState(null)
   const pathname = usePathname()
 
@@ -431,6 +432,35 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     return map
   }, [sections])
 
+  // react-aria drives this list from a searchbox rather than a combobox, so
+  // nothing here speaks for itself. Counts and confirmations have to be said
+  // out loud, and only once the typing settles.
+  useEffect(() => {
+    if (!isOpen) return
+    if (done) {
+      setStatus('Copied')
+      return
+    }
+    if (!isSearching) {
+      setStatus('')
+      return
+    }
+    const timer = setTimeout(() => {
+      const found = sections.reduce(
+        (total, section) =>
+          total + section.items.filter((item) => !item.run).length,
+        0
+      )
+      const term = query.trim()
+      setStatus(
+        found === 0
+          ? `No results for ${term}`
+          : `${found} result${found === 1 ? '' : 's'} for ${term}`
+      )
+    }, 500)
+    return () => clearTimeout(timer)
+  }, [isOpen, done, isSearching, sections, query])
+
   const noResults = sections.every((section) =>
     section.items.every((item) => item.run)
   )
@@ -553,6 +583,9 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
           )}
           aria-label="Search"
         >
+          <div role="status" className="sr-only">
+            {status}
+          </div>
           <div
             className={cn(
               'search-dialog relative flex min-h-0 flex-col p-2',
