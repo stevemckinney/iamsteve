@@ -171,7 +171,7 @@ function Hint({ on, className, pad = 'pr-4', children }) {
         className={cn(
           // Only the width is clipped, so a chip keeps the shadow that
           // reaches past its box
-          'flex items-center gap-1 min-w-0 overflow-x-clip whitespace-nowrap',
+          'flex items-center gap-1 min-w-0 px-1 -mx-1 overflow-x-clip whitespace-nowrap',
           // the spacing is padding, and padding is not content, so 0fr alone
           // would leave 16px of it behind. It goes with the width instead.
           'transition-[padding] duration-150 ease-out motion-reduce:transition-none',
