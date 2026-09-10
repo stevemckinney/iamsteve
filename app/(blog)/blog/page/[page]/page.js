@@ -9,6 +9,8 @@ import Card from '@/components/card'
 import Category from '@/components/category'
 import Pagination from '@/components/pagination'
 import Image from '@/components/image'
+import SearchField from '@/components/search-field'
+import Topics from '@/components/topics'
 
 import categories from '@/content/categories'
 
@@ -72,6 +74,8 @@ export default async function BlogIndex(props) {
     total: totalPages,
   }
 
+  const items = categories.filter((category) => !category.exclude)
+
   return (
     <>
       <PencilMono
@@ -86,11 +90,13 @@ export default async function BlogIndex(props) {
             Tips and tutorials about the design and build of web interfaces
           </Description>
         </Column>
+        <div className="grid grid-cols-2 gap-2 md:hidden">
+          <Topics items={items} label="Categories" icon="folder" />
+          <SearchField scope="blog">Search</SearchField>
+        </div>
         {categories && (
-          <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories -mb-2 lg:-mb-3">
-            {categories.map((category) => {
-              if (category.exclude === true || category.parent === true)
-                return null
+          <ul className="max-md:hidden md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories -mb-2 lg:-mb-3">
+            {items.map((category) => {
               return (
                 <li className="self-end" key={category.title}>
                   <Category

@@ -9,7 +9,8 @@ import Link from '@/components/link'
 import collections from '@/content/collections'
 import Icon from '@/components/icon'
 import { collectionTitle } from '@/lib/collections'
-import CollectionsSearch from '@/components/collections-search'
+import SearchField from '@/components/search-field'
+import Topics from '@/components/topics'
 
 import { format, subWeeks, isAfter, parseISO } from 'date-fns'
 import { readFile } from 'fs/promises'
@@ -155,6 +156,10 @@ export default async function CollectionPage(props) {
     notFound()
   }
 
+  const items = [...collections].sort((a, b) =>
+    a.title < b.title ? -1 : a.title > b.title ? 1 : 0
+  )
+
   // padding is controlled through `<main>` but changes to the `<header>` when `max-sm` as the frame is then applied to the header to change the design overall
   return (
     <>
@@ -173,25 +178,32 @@ export default async function CollectionPage(props) {
           Curated design resources organised by topic, from typography and
           colour to tools and techniques.
         </Description>
-        <CollectionsSearch className="mt-2" />
-        <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
-          {collections
-            .sort((a, b) =>
-              a.title < b.title ? -1 : a.title > b.title ? 1 : 0
+        <div className="grid grid-cols-2 gap-2 md:hidden">
+          <Topics
+            items={items}
+            current={page.slug}
+            label="Topics"
+            icon="collections"
+          />
+          <SearchField scope="collections">Search</SearchField>
+        </div>
+        <SearchField scope="collections" className="max-md:hidden mt-2">
+          Search collections
+        </SearchField>
+        <ul className="max-md:hidden grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
+          {items.map((collection) => {
+            return (
+              <li key={collection.id} className="self-end">
+                <a
+                  href={collection.slug}
+                  className={`py-2 md:py-3 text-base md:text-lg lg:text-xl text-current hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center`}
+                >
+                  <Icon icon={collection.icon} size={24} variant="header" />
+                  {collection.title}
+                </a>
+              </li>
             )
-            .map((collection) => {
-              return (
-                <li key={collection.id} className="self-end">
-                  <a
-                    href={collection.slug}
-                    className={`py-2 md:py-3 text-base md:text-lg lg:text-xl text-current hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center`}
-                  >
-                    <Icon icon={collection.icon} size={24} variant="header" />
-                    {collection.title}
-                  </a>
-                </li>
-              )
-            })}
+          })}
         </ul>
       </Header>
       <section className="flex flex-col col-start-content-start md:col-start-8 col-end-content-end gap-y-10">

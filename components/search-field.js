@@ -14,9 +14,18 @@ const prefetch = () =>
     .then((m) => m.fetchIndex())
     .catch(() => {})
 
+// Shared with the topics menu, so the two read as one row when paired
+export const fieldStyle = cn(
+  'flex items-center gap-2 w-full text-left',
+  'px-3 py-2.5 rounded-sm bg-surface shadow-placed',
+  'text-base lg:text-lg font-ui lowercase leading-none text-body',
+  'hover:text-heading transition-colors duration-200 ease-linear',
+  'outline-none focus-visible:ring-2 focus-visible:ring-cornflour-600 dark:focus-visible:ring-fern-400'
+)
+
 // A button dressed as a search field. The header owns the cmd K shortcut, so
-// this only opens on press, scoped to collections until the scope is removed.
-export default function CollectionsSearch({ className }) {
+// this only opens on press, standing in the scope it was given.
+export default function SearchField({ scope, className, children }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -26,23 +35,12 @@ export default function CollectionsSearch({ className }) {
           prefetch()
           setIsOpen(true)
         }}
-        className={cn(
-          'flex items-center gap-2 w-full cursor-text text-left',
-          'px-3 py-2.5 rounded-sm bg-surface shadow-placed',
-          'text-base lg:text-lg font-ui lowercase leading-none text-body',
-          'hover:text-heading transition-colors duration-200 ease-linear',
-          'outline-none focus-visible:ring-2 focus-visible:ring-cornflour-600 dark:focus-visible:ring-fern-400',
-          className
-        )}
+        className={cn(fieldStyle, 'cursor-text', className)}
       >
         <Icon icon="search" size={24} variant="header" aria-hidden="true" />
-        Search collections
+        {children}
       </Button>
-      <SearchModal
-        isOpen={isOpen}
-        onOpenChange={setIsOpen}
-        scope="collections"
-      />
+      <SearchModal isOpen={isOpen} onOpenChange={setIsOpen} scope={scope} />
     </>
   )
 }

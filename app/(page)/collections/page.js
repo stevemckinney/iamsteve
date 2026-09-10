@@ -7,7 +7,8 @@ import Image from '@/components/image'
 import Chip from '@/components/chip'
 import Card from '@/components/card'
 import Icon from '@/components/icon'
-import CollectionsSearch from '@/components/collections-search'
+import SearchField from '@/components/search-field'
+import Topics from '@/components/topics'
 
 import { format, subWeeks, isAfter, parseISO } from 'date-fns'
 import { readFile } from 'fs/promises'
@@ -118,6 +119,10 @@ async function Collections() {
 
 export default async function CollectionsPage(props) {
   const params = await props.params
+  const items = [...collections].sort((a, b) =>
+    a.title < b.title ? -1 : a.title > b.title ? 1 : 0
+  )
+
   return (
     <>
       <Header className="max-md:frame max-md:frame-24 max-md:px-8 max-md:py-12 flex flex-col gap-2 col-container md:col-content md:col-end-7 md:sticky top-8 self-start">
@@ -126,26 +131,28 @@ export default async function CollectionsPage(props) {
           Curated design resources organised by topic, from typography and
           colour to tools and techniques.
         </Description>
-        <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
-          {collections
-            .sort((a, b) =>
-              a.title < b.title ? -1 : a.title > b.title ? 1 : 0
+        <div className="grid grid-cols-2 gap-2 md:hidden">
+          <Topics items={items} label="Topics" icon="collections" />
+          <SearchField scope="collections">Search</SearchField>
+        </div>
+        <ul className="max-md:hidden grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
+          {items.map((collection) => {
+            return (
+              <li key={collection.id} className="self-end">
+                <a
+                  href={collection.slug}
+                  className={`py-2 md:py-3 text-base md:text-lg lg:text-xl text-current hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center`}
+                >
+                  <Icon icon={collection.icon} size={24} variant="header" />
+                  {collection.title}
+                </a>
+              </li>
             )
-            .map((collection) => {
-              return (
-                <li key={collection.id} className="self-end">
-                  <a
-                    href={collection.slug}
-                    className={`py-2 md:py-3 text-base md:text-lg lg:text-xl text-current hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center`}
-                  >
-                    <Icon icon={collection.icon} size={24} variant="header" />
-                    {collection.title}
-                  </a>
-                </li>
-              )
-            })}
+          })}
         </ul>
-        <CollectionsSearch className="mt-4" />
+        <SearchField scope="collections" className="max-md:hidden mt-4">
+          Search collections
+        </SearchField>
       </Header>
       <section className="flex flex-col col-start-content-start md:col-start-8 col-end-content-end gap-y-10">
         <Collections />
