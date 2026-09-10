@@ -28,6 +28,7 @@ import {
   pathTo,
 } from '@/lib/search-tree'
 import siteMetadata from '@/content/metadata'
+import { fetchIndex, peekIndex } from '@/lib/search-cache'
 
 // Posts and notes are the only content served as markdown, and the index is
 // the only thing that knows a path is really one of them.
@@ -131,25 +132,6 @@ const pages = [
 // keystroke away, so this only has to be enough to browse — 217 collection
 // rows cost a second to paint on a slow phone, 40 cost nothing.
 const SCOPE_ROWS = 40
-
-let cache = null
-let pending = null
-
-export async function fetchIndex() {
-  if (cache) return cache
-  pending ??= fetch('/api/search').then((response) => {
-    if (!response.ok) throw new Error(`search index ${response.status}`)
-    return response.json()
-  })
-  // Clear the in-flight promise whether it settled or threw, or one bad
-  // response would be handed back to every later call for the session
-  try {
-    cache = await pending
-  } finally {
-    pending = null
-  }
-  return cache
-}
 
 function Kbd({ children }) {
   const isText = typeof children === 'string'
@@ -271,7 +253,10 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   const [query, setQuery] = useState('')
   // Where in the tree the menu is standing; empty is the root
   const [path, setPath] = useState(scope ? [scope] : [])
-  const [index, setIndex] = useState(cache)
+  // The menu is mounted closed, so the index may well arrive while it waits.
+  // It is read on the way in, not only when it lands.
+  const [fetched, setFetched] = useState(null)
+  const index = fetched ?? peekIndex()
   const inputRef = useRef(null)
   const router = useRouter()
   const node = resolve(path)
@@ -283,7 +268,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     // next open tries again
     fetchIndex()
       .then((data) => {
-        if (!cancelled) setIndex(data)
+        if (!cancelled) setFetched(data)
       })
       .catch(() => {})
     return () => {

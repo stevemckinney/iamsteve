@@ -1,18 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { Button } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
+import { fetchIndex } from '@/lib/search-cache'
 
 const SearchModal = dynamic(() => import('./search-modal'), { ssr: false })
-// A warm-up only: if it fails the modal's own load retries, so nothing
-// should hear about it here
-const prefetch = () =>
-  import('./search-modal')
-    .then((m) => m.fetchIndex())
-    .catch(() => {})
+// A warm-up only, of the index and the menu's code side by side. If either
+// fails the menu's own load and fetch retry, so nothing hears about it here.
+const warm = () => {
+  fetchIndex().catch(() => {})
+  import('./search-modal').catch(() => {})
+}
 
 // Shared with the topics menu, so the two read as one row when paired
 export const fieldStyle = cn(
@@ -28,11 +29,25 @@ export const fieldStyle = cn(
 export default function SearchField({ scope, className, children }) {
   const [isOpen, setIsOpen] = useState(false)
 
+  // This field is the page's own search, so the index comes in once the page
+  // has settled rather than on the first tap. Safari has no idle callback.
+  useEffect(() => {
+    if ('requestIdleCallback' in window) {
+      const id = requestIdleCallback(warm, { timeout: 3000 })
+      return () => cancelIdleCallback(id)
+    }
+    const id = setTimeout(warm, 1500)
+    return () => clearTimeout(id)
+  }, [])
+
   return (
     <>
       <Button
+        onPressStart={warm}
+        onHoverStart={warm}
+        onFocus={warm}
         onPress={() => {
-          prefetch()
+          warm()
           setIsOpen(true)
         }}
         className={cn(fieldStyle, 'cursor-text', className)}

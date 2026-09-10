@@ -5,14 +5,15 @@ import dynamic from 'next/dynamic'
 import { Button } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
+import { fetchIndex } from '@/lib/search-cache'
 
 const SearchModal = dynamic(() => import('./search-modal'), { ssr: false })
-// A warm-up only: if it fails the modal's own load retries, so nothing
-// should hear about it here
-const prefetch = () =>
-  import('./search-modal')
-    .then((m) => m.fetchIndex())
-    .catch(() => {})
+// A warm-up only, of the index and the menu's code side by side. If either
+// fails the menu's own load and fetch retry, so nothing hears about it here.
+const warm = () => {
+  fetchIndex().catch(() => {})
+  import('./search-modal').catch(() => {})
+}
 
 function Kbd({ children }) {
   return (
@@ -33,7 +34,7 @@ export default function Search({ className, variant = 'desktop' }) {
     const handleKeyDown = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault()
-        prefetch()
+        warm()
         setIsOpen((prev) => !prev)
       }
     }
@@ -45,8 +46,11 @@ export default function Search({ className, variant = 'desktop' }) {
   return (
     <>
       <Button
+        onPressStart={warm}
+        onHoverStart={warm}
+        onFocus={warm}
         onPress={() => {
-          prefetch()
+          warm()
           setIsOpen(true)
         }}
         aria-label="Search"
