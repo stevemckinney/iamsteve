@@ -31,10 +31,16 @@ export default function Sheet({ title, icon, className, children, ...props }) {
       <Modal
         ref={panel}
         className={cn(
-          'fixed inset-x-0 bottom-0 z-200 flex flex-col max-h-[calc(100dvh-4rem)] outline-none',
+          'fixed inset-x-0 z-200 flex flex-col outline-none',
+          // Safari's bottom bar is translucent and shows what is behind it.
+          // A fixed panel stops at the top of the bar, so the bar would show
+          // the page. Reaching under it by the bar's height, and padding by
+          // the same, fills the bar with the panel. Elsewhere the bar is 0.
+          '[--bar:0px] supports-[height:100svh]:[--bar:calc(100lvh_-_100svh)]',
+          'bottom-[calc(var(--bar)_*_-1)] max-h-[calc(100dvh_-_4rem_+_var(--bar))]',
+          'pb-[calc(var(--bar)_+_max(1.5rem,env(safe-area-inset-bottom)))]',
           'rounded-t-lg shadow-placed backdrop-blur-md backdrop-contrast-200 backdrop-saturate-100',
           'bg-[light-dark(rgb(255_255_255/.90),color-mix(in_oklab,var(--color-fern-1200),transparent_20%))]',
-          'pb-[max(1.5rem,env(safe-area-inset-bottom))]',
           'transition-transform duration-300 ease-out motion-reduce:transition-none',
           'data-[entering]:translate-y-full data-[exiting]:translate-y-full',
           className
