@@ -6,7 +6,7 @@
 import { cache } from 'react'
 import { allPosts } from 'content-collections'
 
-import { sortPosts } from '@/lib/utils/content'
+import { sortPosts, getCategories } from '@/lib/utils/content'
 
 import { Header, Title, Column, Description } from '@/components/page'
 import { PencilMono } from '@/components/illustration'
@@ -17,8 +17,6 @@ import Pagination from '@/components/pagination'
 import Image from '@/components/image'
 import SearchField from '@/components/search-field'
 import Topics from '@/components/topics'
-
-import categories from '@/content/categories'
 
 export const metadata = {
   title: 'Blog archive',
@@ -58,7 +56,7 @@ export default async function BlogIndex(props) {
     total: Math.ceil(posts.length / POSTS_PER_PAGE),
   }
 
-  const items = categories.filter((category) => !category.exclude)
+  const items = getCategories()
 
   return (
     <>
@@ -78,7 +76,7 @@ export default async function BlogIndex(props) {
           <Topics items={items} label="Categories" icon="folder" />
           <SearchField scope="blog">Search</SearchField>
         </div>
-        {categories && (
+        {items.length > 0 && (
           <ul className="max-md:hidden md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories -mb-2 lg:-mb-3">
             {items.map((category) => {
               return (

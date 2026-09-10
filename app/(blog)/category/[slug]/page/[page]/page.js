@@ -7,7 +7,7 @@
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
 import { allPosts } from 'content-collections'
-import { sortPosts } from '@/lib/utils/content'
+import { sortPosts, getCategories } from '@/lib/utils/content'
 import { Header, Title, Column, Description } from '@/components/page'
 import { PencilMono } from '@/components/illustration'
 import Category from '@/components/category'
@@ -85,9 +85,7 @@ export default async function BlogCategory(props) {
 
   const parent = data.parent ? data.parent : false
   const group = parent || data.title.toLowerCase()
-  const items = categories.filter(
-    (category) => category.parent === group && !category.exclude
-  )
+  const items = getCategories().filter((category) => category.parent === group)
 
   const posts = allPosts
     .filter((post) => post.status === 'open')

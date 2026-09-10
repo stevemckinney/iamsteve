@@ -19,8 +19,7 @@ import { cn } from '@/lib/utils'
 import { search, groupResults, typeIcon } from '@/lib/search'
 import Icon from '@/components/icon'
 import { navigation, library } from '@/content/navigation'
-import { root, resolve, holds, contents, matching } from '@/lib/search-tree'
-import { readRecents, addRecent } from '@/lib/recents'
+import { resolve, contents, listed, matching } from '@/lib/search-tree'
 import siteMetadata from '@/content/metadata'
 
 // Posts and notes are the only content served as markdown, and the index is
@@ -170,7 +169,9 @@ function Hint({ on, className, pad = 'pr-4', children }) {
     >
       <span
         className={cn(
-          'flex items-center gap-1 min-w-0 overflow-hidden whitespace-nowrap',
+          // Only the width is clipped, so a chip keeps the shadow that
+          // reaches past its box
+          'flex items-center gap-1 min-w-0 overflow-x-clip whitespace-nowrap',
           // the spacing is padding, and padding is not content, so 0fr alone
           // would leave 16px of it behind. It goes with the width instead.
           'transition-[padding] duration-150 ease-out motion-reduce:transition-none',
@@ -216,12 +217,10 @@ function ResultContent({ item }) {
           aria-hidden="true"
           className={cn(
             'flex shrink-0 rounded-xs cursor-pointer text-body',
-            'transition-opacity duration-100 ease-linear',
             'any-pointer-fine:opacity-0',
             'any-pointer-fine:group-data-[hovered]:opacity-100',
             'any-pointer-fine:group-data-[focused]:opacity-100',
             'hover:bg-neutral-01-50 dark:hover:bg-fern-1000',
-            'transition-colors',
             'relative after:absolute after:-inset-1 after:content-[""]'
           )}
         >
@@ -242,11 +241,11 @@ function ResultContent({ item }) {
   )
 }
 
+// The highlight moves with the keys, so it lands at once rather than easing
 const rowStyle = ({ isHovered, isFocused, isPressed }) => {
   const active = isHovered || isFocused
   return cn(
     'group flex items-center cursor-default p-2 gap-2 outline-none rounded-sm',
-    'transition-all duration-100 ease-linear',
     active && 'bg-white dark:bg-fern-1000 dark:shadow-none',
     active && (isPressed ? 'shadow-reduced' : 'shadow-picked')
   )
@@ -294,7 +293,6 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     }
   }, [isOpen])
 
-  const [recents, setRecents] = useState([])
   const [done, setDone] = useState(null)
   const [status, setStatus] = useState('')
   const [nearest, setNearest] = useState(null)
@@ -305,7 +303,6 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   // open is cleared here rather than by each caller's press handler.
   useEffect(() => {
     if (!isOpen) return
-    setRecents(readRecents())
     setPath(scope ? [scope] : [])
     setQuery('')
   }, [isOpen, scope])
@@ -345,7 +342,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       node: item.id,
       enter: () => enter(item.id),
     })
-    const children = (node ? node.children : root).map(rowFor)
+    const children = listed(node, index).map(rowFor)
 
     if (!isSearching) {
       const items = node
@@ -353,20 +350,10 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
         : [...navigation.filter((item) => item.href !== '#'), ...library].map(
             ({ href, ...rest }) => ({ ...rest, slug: href })
           )
-      // A node is a promise about what is in the list, so recents that fall
-      // outside it stay out of it
-      const remembered = node
-        ? recents.filter((recent) => holds(node, recent))
-        : recents
-      const seen = new Set(remembered.map((recent) => recent.slug))
-      const rest = []
-      for (const item of items) {
-        if (seen.has(item.slug)) continue
-        seen.add(item.slug)
-        rest.push({ ...item, id: item.slug })
-        // children are rows too, so they spend from the same budget
-        if (node && rest.length >= SCOPE_ROWS - children.length) break
-      }
+      // children are rows too, so they spend from the same budget
+      const rest = (
+        node ? items.slice(0, Math.max(0, SCOPE_ROWS - children.length)) : items
+      ).map((item) => ({ ...item, id: item.slug }))
 
       const actions = (node ? [] : pageActions(pathname, index, nearest)).map(
         (action) =>
@@ -374,11 +361,6 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       )
 
       return [
-        remembered.length && {
-          id: 'recent',
-          title: 'Recent',
-          items: remembered.map((recent) => ({ ...recent, id: recent.slug })),
-        },
         !node &&
           rest.length && {
             id: 'default',
@@ -403,7 +385,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
 
     // Somewhere to go that matches what was typed, then what was found there.
     // A child stands for its own index entry, so that entry is not repeated.
-    const places = matching(node, query).map(rowFor)
+    const places = matching(node, query, index).map(rowFor)
     const taken = new Set(places.map((place) => place.slug))
     const found = groupResults(
       search(index, query, { types: node?.types }).filter(
@@ -441,7 +423,6 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     isSearching,
     node,
     enter,
-    recents,
     pathname,
     nearest,
     done,
@@ -532,8 +513,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       return
     }
 
-    // A row either does something or goes somewhere. Only the ones that go
-    // somewhere are worth remembering.
+    // A row either does something or goes somewhere
     if (item.run) {
       Promise.resolve(item.run()).then(
         () => setDone(item.confirms ? item.id : null),
@@ -545,7 +525,6 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
 
     const newTab = modified.current
     modified.current = false
-    setRecents(addRecent(item))
 
     // Most of the index is links out. Opening one in the background leaves the
     // menu where it was, so a run through a collection is one visit, not ten.
@@ -604,7 +583,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     // Typing the start of a place and pressing Tab goes there, the way a
     // filter token is committed elsewhere
     if (event.key === 'Tab' && !event.shiftKey && query) {
-      const [place] = matching(node, query)
+      const [place] = matching(node, query, index)
       if (place) {
         event.preventDefault()
         enter(place.id)

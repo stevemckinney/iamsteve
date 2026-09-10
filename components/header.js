@@ -229,6 +229,13 @@ function Desktop({ pathname }) {
 }
 
 function Tabbar({ pathname }) {
+  const tab = cn(
+    'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
+    'max-lg:text-[12px] max-lg:font-sans max-lg:font-medium max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:py-3',
+    styles.link,
+    styles.start
+  )
+
   return (
     <nav
       className={cn(
@@ -236,8 +243,8 @@ function Tabbar({ pathname }) {
         'flex justify-between md:hidden',
         // Mobile positioning
         'max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100 isolate',
-        // Mobile spacing
-        'max-lg:px-8 max-lg:gap-6',
+        // Mobile spacing: six items have to fit a 360px screen
+        'max-lg:px-6 max-lg:gap-6',
         // Mobile appearance
         'max-lg:rounded-full max-lg:shadow-placed',
         // Mobile background
@@ -251,7 +258,7 @@ function Tabbar({ pathname }) {
       id="tabbar"
       suppressHydrationWarning
     >
-      <ul className="flex justify-between max-lg:gap-6">
+      <ul className="flex justify-between max-lg:gap-4">
         {tabbar.map((link) => {
           const isActive = isActiveLink(pathname, link.href)
           return (
@@ -259,16 +266,10 @@ function Tabbar({ pathname }) {
               <Link
                 href={link.href}
                 aria-current={isActive ? 'page' : undefined}
-                className={cn(
-                  'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
-                  'max-lg:text-[12px] max-lg:font-sans max-lg:font-medium max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:py-3',
-                  styles.link,
-                  styles.start,
-                  {
-                    'max-lg:text-emphasis': isActive,
-                    'max-lg:text-fern-700 dark:max-lg:text-fern-400': !isActive,
-                  }
-                )}
+                className={cn(tab, {
+                  'max-lg:text-emphasis': isActive,
+                  'max-lg:text-fern-700 dark:max-lg:text-fern-400': !isActive,
+                })}
                 suppressHydrationWarning
               >
                 <Icon
@@ -283,6 +284,15 @@ function Tabbar({ pathname }) {
             </li>
           )
         })}
+        <li>
+          <Search
+            variant="tabbar"
+            className={cn(
+              tab,
+              'max-lg:text-fern-700 dark:max-lg:text-fern-400'
+            )}
+          />
+        </li>
       </ul>
     </nav>
   )
@@ -330,10 +340,7 @@ export default function Header() {
           </span>
           <Desktop pathname={pathname} />
           <Tabbar pathname={pathname} />
-          <span className="flex items-center gap-3 md:hidden">
-            <Search variant="mobile" />
-            <Navigation />
-          </span>
+          <Navigation />
         </div>
       </header>
     </>
