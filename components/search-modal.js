@@ -636,20 +636,20 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       isDismissable
-      className={cn(
-        'fixed inset-0 z-50',
-        'transition-[opacity] duration-150',
-        'data-[entering]:opacity-0 data-[exiting]:opacity-0'
-      )}
+      className="fixed inset-0 z-50"
     >
+      {/* Nothing above the halo may fade. A fading ancestor cuts a backdrop
+          blur off from the page behind it until the fade ends, so the blur
+          would snap in late. The panel only slides; the box fades and the
+          halo blooms on their own. */}
       <AriaModal
         className={cn(
-          'fixed inset-0 z-50 outline-none',
+          'group/modal fixed inset-0 z-50 outline-none',
           'flex items-start justify-center px-4 py-4 sm:pt-[15vh] sm:pb-8',
           'h-dvh',
-          'transition-[opacity,transform] duration-200',
-          'data-[entering]:opacity-0 data-[entering]:-translate-y-2',
-          'data-[exiting]:opacity-0 data-[exiting]:duration-150'
+          'transition-transform duration-200 ease-out',
+          'data-[entering]:-translate-y-2',
+          'data-[exiting]:-translate-y-2 data-[exiting]:duration-150'
         )}
         style={visible ? { height: `${visible}px` } : undefined}
         onMouseDown={(event) => {
@@ -671,7 +671,10 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
             className={cn(
               'search-dialog relative flex min-h-0 flex-col p-2',
               'bg-neutral-01-100 dark:bg-fern-1100',
-              'rounded-md shadow-picked'
+              'rounded-md shadow-picked',
+              'transition-opacity duration-200 ease-out',
+              'group-data-[entering]/modal:opacity-0',
+              'group-data-[exiting]/modal:opacity-0 group-data-[exiting]/modal:duration-150'
             )}
           >
             <Autocomplete inputValue={query} onInputChange={setQuery}>

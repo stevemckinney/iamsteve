@@ -95,6 +95,25 @@
   mask-composite: intersect;
 }
 
+/* The halo blooms in from no blur while the dialog enters, and out again as
+   it leaves. Both layers follow the panel's entering and exiting state. */
+.aura::before,
+.aura::after {
+  transition: backdrop-filter 200ms ease-out;
+}
+
+[data-entering] .aura::before,
+[data-entering] .aura::after,
+[data-exiting] .aura::before,
+[data-exiting] .aura::after {
+  backdrop-filter: blur(0);
+}
+
+[data-exiting] .aura::before,
+[data-exiting] .aura::after {
+  transition-duration: 150ms;
+}
+
 /* Search modal staggered entrance
  * - Only transform + opacity (compositor-friendly, no layout thrash)
  * - Enter curve: cubic-bezier(0.22, 1, 0.36, 1)
