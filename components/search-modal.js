@@ -133,6 +133,39 @@ const pages = [
 // rows cost a second to paint on a slow phone, 40 cost nothing.
 const SCOPE_ROWS = 40
 
+// The box follows its content, and a change of height eases over rather
+// than jumping. The parts that set the height are watched, not the box, or
+// the motion would be watching itself: while it runs the box is held at a
+// height of its own, and the parts are not. By the time a part reports, the
+// box has already grown with it, so the motion starts from the height it
+// last settled on, or the one it is passing through if it is still moving.
+function breathe(box) {
+  if (!box) return
+  let last = null
+  const observer = new ResizeObserver(() => {
+    const running = box
+      .getAnimations()
+      .find((animation) => animation.id === 'height')
+    const from = running ? box.offsetHeight : last
+    running?.cancel()
+    const to = box.offsetHeight
+    last = to
+    if (from === null || from === to) return
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    box.animate([{ height: `${from}px` }, { height: `${to}px` }], {
+      id: 'height',
+      duration: 200,
+      easing: 'ease-out',
+    })
+  })
+  for (const part of box.querySelectorAll(
+    '.search-field, .search-body > *, .search-footer'
+  )) {
+    observer.observe(part)
+  }
+  return () => observer.disconnect()
+}
+
 function Kbd({ children }) {
   const isText = typeof children === 'string'
   return (
@@ -653,6 +686,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
             {status}
           </div>
           <div
+            ref={breathe}
             className={cn(
               'search-dialog relative flex min-h-0 flex-col p-2',
               'bg-neutral-01-100 dark:bg-fern-1100',
