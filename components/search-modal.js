@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
+import { useState, useEffect, useMemo, useRef } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import {
   ModalOverlay,
@@ -19,7 +19,14 @@ import { cn } from '@/lib/utils'
 import { search, groupResults, typeIcon } from '@/lib/search'
 import Icon from '@/components/icon'
 import { navigation, library } from '@/content/navigation'
-import { resolve, contents, listed, matching } from '@/lib/search-tree'
+import {
+  root,
+  resolve,
+  contents,
+  listed,
+  matching,
+  pathTo,
+} from '@/lib/search-tree'
 import siteMetadata from '@/content/metadata'
 
 // Posts and notes are the only content served as markdown, and the index is
@@ -110,6 +117,15 @@ function pageActions(pathname, index, nearest) {
     },
   ].filter(Boolean)
 }
+
+// The root list: the pages the header offers, and the blog, which the header
+// has no link to, ahead of its categories
+const blog = root.find((item) => item.id === 'blog')
+const pages = [
+  ...navigation.filter((item) => item.href !== '#'),
+  { href: blog.slug, title: blog.label, icon: blog.icon },
+  ...library,
+].map(({ href, ...rest }) => ({ ...rest, slug: href }))
 
 // A scope opens on what it holds rather than a blank list. Everything is a
 // keystroke away, so this only has to be enough to browse — 217 collection
@@ -209,7 +225,7 @@ function ResultContent({ item }) {
           </span>
         )}
       </span>
-      {item.enter && (
+      {item.path && (
         // A way in for touch; the keyboard has →. Not a control of its own —
         // an option may not nest one — the row's press reads where it landed.
         <span
@@ -323,37 +339,48 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
 
   const isSearching = query.trim().length >= 2
 
-  // Stepping into a node. Enter and click open a node's page; this is what
-  // the arrow, Tab and the chevron do instead.
-  const enter = useCallback((id) => {
-    setPath((current) => [...current, id])
+  const list = useRef(null)
+
+  // Going to a place. Enter and click open its page; this is what the arrow,
+  // Tab and the chevron do instead. The place starts at its first row: the
+  // cue is react-aria's own, sent to the list just before it changes, and it
+  // also keeps the keyboard pointed at the new list rather than at a row that
+  // has gone.
+  const enter = (path) => {
+    list.current?.dispatchEvent(
+      // FOCUS_EVENT in @react-aria/utils
+      new CustomEvent('react-aria-focus', {
+        bubbles: true,
+        cancelable: true,
+        detail: { focusStrategy: 'first' },
+      })
+    )
+    setPath(path)
     setQuery('')
-  }, [])
+  }
 
   const sections = useMemo(() => {
-    // A node as a row: its page to open, and a way in
-    const rowFor = (item) => ({
-      id: `node:${item.id}`,
-      type: item.type,
-      title: item.label,
-      icon: item.icon,
-      summary: item.summary,
-      slug: item.slug,
-      node: item.id,
-      enter: () => enter(item.id),
-    })
-    const children = listed(node, index).map(rowFor)
+    // A row is a page. One that is also a place in the tree can be entered
+    // as well as opened.
+    const row = (item) => ({ ...item, id: item.slug, path: pathTo(item.slug) })
+    const children = node
+      ? listed(node, index).map((item) =>
+          row({
+            type: item.type,
+            title: item.label,
+            icon: item.icon,
+            summary: item.summary,
+            slug: item.slug,
+          })
+        )
+      : []
 
     if (!isSearching) {
-      const items = node
-        ? contents(node, index)
-        : [...navigation.filter((item) => item.href !== '#'), ...library].map(
-            ({ href, ...rest }) => ({ ...rest, slug: href })
-          )
+      const items = node ? contents(node, index) : pages
       // children are rows too, so they spend from the same budget
       const rest = (
         node ? items.slice(0, Math.max(0, SCOPE_ROWS - children.length)) : items
-      ).map((item) => ({ ...item, id: item.slug }))
+      ).map(row)
 
       const actions = (node ? [] : pageActions(pathname, index, nearest)).map(
         (action) =>
@@ -369,7 +396,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
           },
         children.length && {
           id: 'browse',
-          title: node ? node.label : 'Browse',
+          title: node.label,
           items: children,
         },
         node &&
@@ -383,24 +410,23 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     }
     if (!index) return []
 
-    // Somewhere to go that matches what was typed, then what was found there.
-    // A child stands for its own index entry, so that entry is not repeated.
-    const places = matching(node, query, index).map(rowFor)
-    const taken = new Set(places.map((place) => place.slug))
+    // What was found, by kind. A category or collection is a place too, and
+    // one of this node's own comes through even though it carries no
+    // category itself.
     const found = groupResults(
       search(index, query, { types: node?.types }).filter(
         (result) =>
-          !taken.has(result.slug) &&
-          (!node?.within || result.categories?.includes(node.within))
+          !node?.within ||
+          result.categories?.includes(node.within) ||
+          children.some((child) => child.slug === result.slug)
       )
     ).map((group) => ({
       id: group.type,
       title: group.title,
-      items: group.items.map((item) => ({ ...item, id: item.slug })),
+      items: group.items.map(row),
     }))
 
     return [
-      places.length && { id: 'browse', title: 'Browse', items: places },
       ...found,
       {
         id: 'all',
@@ -416,13 +442,12 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
           },
         ],
       },
-    ].filter(Boolean)
+    ]
   }, [
     index,
     query,
     isSearching,
     node,
-    enter,
     pathname,
     nearest,
     done,
@@ -509,7 +534,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     // A press that began on the chevron steps in rather than opening the page
     if (entering.current) {
       entering.current = false
-      item.enter?.()
+      if (item.path) enter(item.path)
       return
     }
 
@@ -543,12 +568,12 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   }
 
   const up = () => {
-    setPath(path.slice(0, -1))
+    enter(path.slice(0, -1))
     inputRef.current?.focus()
   }
 
   const toRoot = () => {
-    setPath([])
+    enter([])
     inputRef.current?.focus()
   }
 
@@ -570,11 +595,11 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     const focused = document.getElementById(
       event.currentTarget.getAttribute('aria-activedescendant')
     )
-    const id = byKey.get(focused?.dataset.key)?.node
-    if (!id) return
+    const place = byKey.get(focused?.dataset.key)?.path
+    if (!place) return
     event.preventDefault()
     event.stopPropagation()
-    enter(id)
+    enter(place)
   }
 
   const onKeyDown = (event) => {
@@ -585,8 +610,11 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     if (event.key === 'Tab' && !event.shiftKey && query) {
       const [place] = matching(node, query, index)
       if (place) {
+        // The dialog's focus containment moves focus on Tab whatever was
+        // prevented, so it must not hear this one
         event.preventDefault()
-        enter(place.id)
+        event.stopPropagation()
+        enter(pathTo(place.slug))
         return
       }
     }
@@ -753,6 +781,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                     </div>
                   )}
                   <ListBox
+                    ref={list}
                     items={sections}
                     onAction={navigate}
                     aria-label={isSearching ? 'Search results' : 'Pages'}
@@ -817,7 +846,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                   </Kbd>
                   <span className="relative top-px ml-1">Navigate</span>
                 </Hint>
-                <Hint on={!!node || !!focused?.node}>
+                <Hint on={!!node || !!focused?.path}>
                   <Hint on={!!node} pad="pr-1">
                     <Kbd>
                       <Icon
@@ -828,7 +857,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                       />
                     </Kbd>
                   </Hint>
-                  <Hint on={!!focused?.node} pad="pr-1">
+                  <Hint on={!!focused?.path} pad="pr-1">
                     <Kbd>
                       <Icon
                         icon="arrow-right"
@@ -851,10 +880,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                   </Kbd>
                   <span className="relative top-px ml-1">Open</span>
                 </Hint>
-                <Hint
-                  on={!!focused?.slug && !focused.node}
-                  className="max-sm:hidden"
-                >
+                <Hint on={!!focused?.slug} className="max-sm:hidden">
                   <Kbd>
                     <Icon
                       icon="cmd"
