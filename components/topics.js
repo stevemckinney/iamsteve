@@ -31,7 +31,7 @@ export default function Topics({
     <Menu
       aria-label={label}
       className={cn(
-        'flex flex-col gap-px min-h-0 overflow-auto outline-none',
+        'flex flex-col gap-px outline-none',
         // Two plus the item's four lines the icons up with the title's
         sheet ? 'px-2' : 'p-1 max-h-[inherit]'
       )}
