@@ -178,11 +178,11 @@ export default async function CollectionPage(props) {
           Curated design resources organised by topic, from typography and
           colour to tools and techniques.
         </Description>
-        <div className="grid grid-cols-2 gap-2 md:hidden">
+        <div className="grid grid-cols-[1fr_auto] gap-2 md:hidden">
           <Topics
             items={items}
             current={page.slug}
-            label="Topics"
+            label="Collections"
             icon="collections"
           />
           <SearchField scope="collections">Search</SearchField>

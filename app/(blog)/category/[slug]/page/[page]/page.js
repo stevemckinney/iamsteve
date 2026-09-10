@@ -128,7 +128,7 @@ export default async function BlogCategory(props) {
           <Title>{data.title}</Title>
           <Description>{data.description}</Description>
         </Column>
-        <div className="grid grid-cols-2 gap-2 md:hidden">
+        <div className="grid grid-cols-[1fr_auto] gap-2 md:hidden">
           <Topics
             items={items}
             current={data.slug}

@@ -15,8 +15,10 @@ import { fieldStyle } from '@/components/search-field'
 // The category or collection list folded behind a button. The list is the
 // same whichever container holds it: a sheet from the bottom edge for small
 // screens, or a popover under the button where there is room for one. The
-// item the page is on is marked in the list. The button carries only its
-// label, as half a row does not fit an icon beside the longer ones.
+// item the page is on is marked in the list, and the button reads as a
+// select would, showing that item, or the label where the page is on none.
+// The button carries no icon, as half a row does not fit one beside the
+// longer names.
 export default function Topics({
   items,
   current,
@@ -26,6 +28,7 @@ export default function Topics({
   className,
 }) {
   const sheet = container === 'sheet'
+  const chosen = items.find((item) => item.slug === current)
 
   const list = (
     <Menu
@@ -80,7 +83,7 @@ export default function Topics({
   return (
     <MenuTrigger>
       <Button className={cn(fieldStyle, 'cursor-pointer', className)}>
-        <span className="truncate">{label}</span>
+        <span className="truncate">{chosen ? chosen.title : label}</span>
         <Icon
           icon="angle-down"
           size={16}
