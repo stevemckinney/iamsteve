@@ -42,16 +42,15 @@ export const components = {
   ),
   ul: (props) => (
     <ul
-      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-[square] [li::marker]-[theme('colors.neutral-03.400')] mb-3"
+      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-[square] marker:text-neutral-03-400 mb-3"
       {...props}
     />
   ),
   ol: (props) => (
     <ol
-      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-decimal [li::marker]-[theme('colors.neutral-03.400')] mb-3"
+      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-decimal marker:text-neutral-03-400 mb-3"
       {...props}
     />
   ),
-  li: (props) => <li {...props} />,
   img: (props) => <img className="rounded-sm my-4" {...props} />,
 }

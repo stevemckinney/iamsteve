@@ -2,88 +2,88 @@
  * Shared content styles for prose and notes
  *
  * Fragment links, fragment icons, heading hover behaviour,
- * and footnote base styles shared between blog posts (.prose)
- * and notes (.codeblock).
+ * list markers and footnote base styles shared between blog
+ * posts (.prose) and notes (.codeblock).
+ *
+ * Imported unlayered so these rules beat the Tailwind utilities
+ * that the MDX element mappings apply (eg the underline on links).
  *
  * Context-specific overrides live in each CSS module:
  *   - app/(post)/blog/[...slug]/post.module.css
- *   - components/note-mdx.module.css
+ *   - components/mdx-note.module.css
  */
-
-/**
- * Fragment links
- */
-:is(.prose, .codeblock) .fragment {
-  text-decoration: none;
-  color: inherit;
-}
-
-/**
- * Fragment icons
- */
-:is(.prose, .codeblock) .fragment-icon {
-  display: inline-flex;
-  align-items: center;
-  vertical-align: middle;
-  margin-inline-start: 0.25rem;
-  transition: opacity 0.15s ease-out, transform 0.3s ease-out;
-  transform-origin: center center;
-
-  @media (width >= 640px) {
-    margin-inline-start: 0.5rem;
+:is(.prose, .codeblock) {
+  /**
+   * Fragment links
+   */
+  & .fragment {
+    text-decoration: none;
+    color: inherit;
   }
-}
 
-:is(.prose, .codeblock) .fragment-icon svg.icon {
-  display: block;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  color: oklch(from var(--color-heading) l c h / 0.7);
-
-  @media (width >= 640px) {
-    width: 24px;
-    height: 24px;
+  & .fragment-icon {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-inline-start: 0.25rem;
+    transition: opacity 0.15s ease-out, transform 0.3s ease-out;
+    transform-origin: center center;
   }
-}
 
-/**
- * Heading hover: hide fragment icon when not hovered
- */
-:is(.prose, .codeblock) :where(h2, h3, h4, h5, h6) {
-  @media (hover: hover) {
-    &:not(:hover, :focus-within) .fragment-icon {
-      transition: opacity 0.15s ease-out, transform 0.2s ease-out;
-      transform: scale3d(0.5, 0.5, 0.5) translate3d(-32px, 0, 0);
-      opacity: 0;
+  & .fragment-icon svg.icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: oklch(from var(--color-heading) l c h / 0.7);
+  }
+
+  /**
+   * Heading hover: hide fragment icon when not hovered
+   */
+  & :where(h2, h3, h4, h5, h6) {
+    @media (hover: hover) {
+      &:not(:hover, :focus-within) .fragment-icon {
+        transition: opacity 0.15s ease-out, transform 0.2s ease-out;
+        transform: scale3d(0.5, 0.5, 0.5) translate3d(-32px, 0, 0);
+        opacity: 0;
+      }
+    }
+  }
+
+  /**
+   * Lists
+   * List type and marker colour are Tailwind utilities on the
+   * MDX ul/ol mappings; only the marker size lives here.
+   */
+  & ul > li::marker {
+    font-size: 112.5%;
+  }
+
+  /**
+   * Footnotes
+   */
+  & .footnotes {
+    border-top: 1px solid var(--color-subtle);
+    padding-block-start: calc(var(--spacing) * 8);
+    margin-block-start: calc(var(--spacing) * 8);
+
+    & .data-footnote-backref {
+      text-decoration: none;
     }
   }
 }
 
 /**
- * Lists
+ * Larger fragment icons alongside the bigger post headings
  */
-:is(.prose, .codeblock) ul {
-  list-style-type: square;
-}
+.prose .fragment-icon {
+  @media (width >= 640px) {
+    margin-inline-start: 0.5rem;
 
-:is(.prose, .codeblock) ol {
-  list-style-type: decimal;
-}
-
-:is(.prose, .codeblock) ul > li::marker {
-  font-size: 112.5%;
-}
-
-/**
- * Footnotes
- */
-:is(.prose, .codeblock) .footnotes {
-  border-top: 1px solid var(--color-subtle);
-  padding-block-start: calc(var(--spacing) * 8);
-  margin-block-start: calc(var(--spacing) * 8);
-}
-
-:is(.prose, .codeblock) .footnotes .data-footnote-backref {
-  text-decoration: none;
+    & svg.icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
 }

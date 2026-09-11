@@ -241,6 +241,7 @@ const pages = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     slot: z.string().optional(),
+    noindex: z.boolean().default(false),
   }),
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)
@@ -254,7 +255,7 @@ const pages = defineCollection({
       ...doc,
       mdx,
       slotMdx,
-      slug: `/pages/${slugAsParams}`,
+      slug: `/${slugAsParams}`,
       slugAsParams,
     }
   },

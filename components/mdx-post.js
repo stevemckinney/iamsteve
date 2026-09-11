@@ -390,7 +390,7 @@ const pageComponents = {
   ),
   ul: (props) => (
     <ul
-      className="text-ui-body md:text-lg lg:text-xl list-outside list-[square] [li::marker]-[var(--color-neutral-03-400)] mb-3"
+      className="text-ui-body md:text-lg lg:text-xl list-outside list-[square] marker:text-neutral-03-400 mb-3"
       {...props}
     />
   ),
@@ -426,17 +426,16 @@ const postComponents = {
   p: (props) => <p {...props} />,
   ul: (props) => (
     <ul
-      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-[square] [li::marker]-[theme('colors.neutral-03.400')] mb-3"
+      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-[square] marker:text-neutral-03-400 mb-3"
       {...props}
     />
   ),
   ol: (props) => (
     <ol
-      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-decimal [li::marker]-[theme('colors.neutral-03.400')] mb-3"
+      className="text-ui-body md:text-lg lg:text-xl list-inside sm:list-outside list-decimal marker:text-neutral-03-400 mb-3"
       {...props}
     />
   ),
-  li: (props) => <li {...props} />,
   a: (props) => (
     <Link
       className="underline [text-underline-offset:12.5%] [text-decoration-skip-ink:auto] [text-decoration-thickness:1.5px] [text-decoration-color:color-mix(in_oklch,currentcolor,transparent_60%)] hover:text-link-hover hover:[text-decoration-color:transparent] transition duration-200 ease-out"

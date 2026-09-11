@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 import Link from './link'
 import Icon from '@/components/icon'
 import { Navigation } from '@/components/navigation'
-import Search from '@/components/search'
+import { SearchProvider, SearchTrigger } from '@/components/search'
 import { CopyFeedUrl } from '@/components/button/index'
 import {
   MenuTrigger,
@@ -207,7 +207,7 @@ function Desktop({ pathname }) {
           )
         })}
         <li>
-          <Search
+          <SearchTrigger
             variant="desktop"
             className={cn(
               'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
@@ -284,7 +284,7 @@ export default function Header() {
   const isArticlePage = pathname.startsWith('/blog/') && pathname !== '/blog'
 
   return (
-    <>
+    <SearchProvider>
       <AccessibilityLinks isArticlePage={isArticlePage} />
       <header
         className="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-10"
@@ -322,11 +322,11 @@ export default function Header() {
           <Desktop pathname={pathname} />
           <Tabbar pathname={pathname} />
           <span className="flex items-center gap-3 md:hidden">
-            <Search variant="mobile" />
+            <SearchTrigger variant="mobile" />
             <Navigation />
           </span>
         </div>
       </header>
-    </>
+    </SearchProvider>
   )
 }
