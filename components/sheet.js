@@ -61,12 +61,9 @@ export default function Sheet({ title, icon, className, children, ...props }) {
             />
           </div>
           <div className="flex items-center gap-3 px-6 pb-4">
-            {icon && (
-              <Icon icon={icon} size={24} variant="header" aria-hidden="true" />
-            )}
             <Heading
               slot="title"
-              className="grow text-2xl font-display font-variation-bold lowercase leading-none text-heading"
+              className="relative top-px grow text-2xl font-display font-variation-bold lowercase leading-none text-heading"
             >
               {title}
             </Heading>
