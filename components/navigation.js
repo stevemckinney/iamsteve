@@ -47,7 +47,7 @@ const Navigation = () => {
         <Toggle />
       </Button>
       <Sheet title="Menu" icon="navigation">
-        <ul className="flex flex-col gap-2 px-2">
+        <ul className="flex flex-col gap-px px-2">
           {mobile.map((link, index) => (
             <ListItem
               href={link.href}
@@ -99,7 +99,7 @@ const ListItem = ({ className, children, isOpen, index, href, ...props }) => (
     <Link
       href={href}
       className={clsx(
-        'flex shrink-0 basis-full gap-4 py-2.5 rounded-sm px-4 text-2xl font-ui items-center lowercase',
+        'flex shrink-0 basis-full gap-3 py-2 rounded-sm px-4 text-lg font-ui lowercase font-medium items-center',
         'transition-all duration-300 ease-in-out',
         className
       )}

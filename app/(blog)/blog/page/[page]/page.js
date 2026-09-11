@@ -88,7 +88,7 @@ export default async function BlogIndex(props) {
             Tips and tutorials about the design and build of web interfaces
           </Description>
         </Column>
-        <div className="grid grid-cols-[1fr_auto] gap-2 md:hidden">
+        <div className="grid grid-cols-[1fr_1.5fr] gap-2 md:hidden">
           <Topics items={items} label="Categories" icon="folder" />
           <SearchField scope="blog">Search</SearchField>
         </div>

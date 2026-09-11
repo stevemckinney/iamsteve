@@ -214,6 +214,7 @@ function Desktop({ pathname }) {
             </li>
           )
         })}
+        <li aria-hidden className="w-0.5 h-7 bg-border-medium" />
         <li>
           <Search
             variant="desktop"
