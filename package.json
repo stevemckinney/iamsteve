@@ -93,7 +93,7 @@
     "mdast-util-to-string": "^4.0.0",
     "minisearch": "^7.2.0",
     "motion": "^12.23.25",
-    "next": "^16.2.11",
+    "next": "^16.3.3",
     "postcss": "^8.5.23",
     "postcss-nesting": "^12.1.5",
     "radix-ui": "^1.4.3",
