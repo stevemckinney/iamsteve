@@ -14,7 +14,6 @@ import Category from '@/components/category'
 import Icon from '@/components/icon'
 import Card from '@/components/card'
 import Pagination from '@/components/pagination'
-import SearchField from '@/components/search-field'
 import Topics from '@/components/topics'
 import Image from '@/components/image'
 
@@ -126,17 +125,17 @@ export default async function BlogCategory(props) {
       <Header>
         <Column className="md:col-span-1">
           <Title>{data.title}</Title>
-          <Description>{data.description}</Description>
+          <Description className="desc max-md:mb-2">
+            {data.description}
+          </Description>
         </Column>
-        <div className="grid grid-cols-[1fr_1.5fr] gap-2 md:hidden">
-          <Topics
-            items={items}
-            current={data.slug}
-            label="Categories"
-            icon="folder"
-          />
-          <SearchField scope="blog">Search</SearchField>
-        </div>
+        <Topics
+          items={items}
+          current={data.slug}
+          label="Categories"
+          icon="folder"
+          className="md:hidden"
+        />
         <ul className="max-md:hidden md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories lg:-mb-3">
           {items.map((category) => (
             <li className="self-end" key={category.title}>

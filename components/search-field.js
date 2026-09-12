@@ -50,7 +50,7 @@ export default function SearchField({ scope, className, children }) {
           warm()
           setIsOpen(true)
         }}
-        className={cn(fieldStyle, 'cursor-text', className)}
+        className={cn(fieldStyle, 'cursor-default', className)}
       >
         <Icon icon="search" size={24} variant="header" aria-hidden="true" />
         {children}
