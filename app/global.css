@@ -25,12 +25,9 @@
   }
 
   :not(input):focus-visible {
-    outline: 1px solid
-      light-dark(
-        color-mix(in oklch, currentcolor, transparent 20%),
-        var(--color-cornflour-700)
-      );
-    outline-offset: 1px;
+    outline: 2px solid
+      light-dark(var(--color-cornflour-600), var(--color-cornflour-700));
+    outline-offset: 2px;
   }
 
   :not(input):not([role='menu']):focus-visible {
