@@ -47,7 +47,7 @@ const Navigation = () => {
       >
         <Toggle />
       </Button>
-      <Sheet title="Menu" icon="navigation">
+      <Sheet title="Menu">
         <ul className="flex flex-col gap-px px-2">
           {mobile.map((link, index) => (
             <ListItem

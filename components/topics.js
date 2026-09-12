@@ -101,9 +101,7 @@ export default function Topics({
         />
       </Button>
       {sheet ? (
-        <Sheet title={label} icon={icon}>
-          {list}
-        </Sheet>
+        <Sheet title={label}>{list}</Sheet>
       ) : (
         <Popover
           placement="bottom start"
