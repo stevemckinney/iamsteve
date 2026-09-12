@@ -15,7 +15,6 @@ import Icon from '@/components/icon'
 import Category from '@/components/category'
 import Pagination from '@/components/pagination'
 import Image from '@/components/image'
-import SearchField from '@/components/search-field'
 import Topics from '@/components/topics'
 
 export const metadata = {
@@ -68,14 +67,16 @@ export default async function BlogIndex(props) {
       <Header>
         <Column className="md:col-span-1">
           <Title>Blog</Title>
-          <Description>
+          <Description className="desc max-md:mb-2">
             Tips and tutorials about the design and build of web interfaces
           </Description>
         </Column>
-        <div className="grid grid-cols-[1fr_auto] gap-2 md:hidden">
-          <Topics items={items} label="Categories" icon="folder" />
-          <SearchField scope="blog">Search</SearchField>
-        </div>
+        <Topics
+          items={items}
+          label="Categories"
+          icon="folder"
+          className="md:hidden"
+        />
         {items.length > 0 && (
           <ul className="max-md:hidden md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories -mb-2 lg:-mb-3">
             {items.map((category) => {

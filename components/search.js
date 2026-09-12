@@ -55,7 +55,7 @@ export default function Search({ className, variant = 'desktop' }) {
         }}
         aria-label="Search"
         className={cn(
-          'flex items-center gap-2 cursor-pointer outline-none transition-opacity duration-200',
+          'flex items-center gap-2 cursor-default outline-none transition-opacity duration-200',
           className
         )}
       >

@@ -127,14 +127,16 @@ export default async function CollectionsPage(props) {
     <>
       <Header className="max-md:frame max-md:frame-24 max-md:px-8 max-md:py-12 flex flex-col gap-2 col-container md:col-content md:col-end-7 md:sticky top-8 self-start">
         <Title className="font-variation-bold text-5xl">Collections</Title>
-        <Description>
+        <Description className="desc max-md:mb-2">
           Curated design resources organised by topic, from typography and
           colour to tools and techniques.
         </Description>
-        <div className="grid grid-cols-[1fr_1.5fr] gap-2 md:hidden">
-          <Topics items={items} label="Collections" icon="collections" />
-          <SearchField scope="collections">Search</SearchField>
-        </div>
+        <Topics
+          items={items}
+          label="Collections"
+          icon="collections"
+          className="md:hidden"
+        />
         <ul className="max-md:hidden grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
           {items.map((collection) => {
             return (
