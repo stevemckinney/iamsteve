@@ -20,6 +20,13 @@ const CLOSE_AT = 0.25
 const FLICK = 0.5
 const ARRIVING = 300
 
+// Arriving decelerates, leaving accelerates and is quicker: an entrance
+// wants to settle, an exit wants to be out of the way.
+const LEAVING = 200
+
+// Whether the reader asked for less movement
+const still = () => matchMedia('(prefers-reduced-motion: reduce)').matches
+
 // Whether the browser can be told to pan one way only. Read once, in the
 // browser: the module is evaluated on the server too.
 let panDown = null
@@ -80,12 +87,22 @@ export default function Sheet({ title, className, children, ...props }) {
     <ModalOverlay
       isDismissable
       {...props}
-      className={cn(
-        'fixed inset-0 z-200 bg-canvas/60',
-        'transition-opacity duration-300 ease-out motion-reduce:transition-none',
-        'data-[entering]:opacity-0 data-[exiting]:opacity-0'
-      )}
+      className="group/overlay fixed inset-0 z-200"
     >
+      {/* The dimming is its own layer rather than the whole overlay, or the
+          panel fades along with it. Closing costs react around a tenth of a
+          second before the exit starts, and a panel that fades through that
+          pause reads as a glitch where one that slides reads as leaving. */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          'absolute inset-0 bg-canvas/60',
+          'transition-opacity duration-300 ease-out motion-reduce:transition-none',
+          'group-data-[entering]/overlay:opacity-0',
+          // Leaves with the panel, or the page stays dimmed after it has gone
+          'group-data-[exiting]/overlay:opacity-0 group-data-[exiting]/overlay:duration-200'
+        )}
+      />
       <Panel
         scroller={scroller}
         onClose={() => props.onOpenChange?.(false)}
@@ -181,16 +198,35 @@ function Panel({ scroller, onClose, className, children }) {
     pull.current = null
     if (!current.moved) return
     pulled.current = true
-    panel.current.style.transition = ''
-    panel.current.style.translate = ''
+    const height = panel.current.offsetHeight
     const distance = Math.max(0, event.clientY - current.start)
-    const far = panel.current.offsetHeight * CLOSE_AT
     // Speed over the last stretch of the pull, so one odd sample cannot flick
     const { samples } = current
     const last = samples[samples.length - 1]
     const first = samples.find((sample) => last.t - sample.t <= 100)
     const speed = (last.y - first.y) / Math.max(1, last.t - first.t)
-    if (distance > far || (distance > 16 && speed > FLICK)) close()
+
+    if (distance > height * CLOSE_AT || (distance > 16 && speed > FLICK)) {
+      // Carry on to the bottom edge from here rather than waiting for the
+      // close to come back through react, which costs a tenth of a second
+      // the pull has no reason to sit through. The panel is already moving
+      // and already most of the way down, so it keeps going and settles,
+      // over whatever is left of the distance rather than a fixed time.
+      const left = Math.max(0, height - distance)
+      const ms = still()
+        ? 0
+        : Math.max(80, Math.round((left / height) * LEAVING))
+      panel.current.style.transition = 'none'
+      panel.current.animate(
+        [{ translate: `0 ${distance}px` }, { translate: `0 ${height}px` }],
+        { duration: ms, easing: 'ease-out', fill: 'forwards' }
+      )
+      panel.current.style.translate = `0 ${height}px`
+      close()
+      return
+    }
+    panel.current.style.transition = ''
+    panel.current.style.translate = ''
   }
 
   return (
@@ -210,8 +246,13 @@ function Panel({ scroller, onClose, className, children }) {
         // re-filtering everything behind it on every frame of the slide
         'rounded-t-lg shadow-placed',
         'bg-[light-dark(rgb(255_255_255),var(--color-fern-1200))]',
+        // Its own layer, so the slide runs on the compositor: closing costs
+        // react a tenth of a second of layout, and the panel should not be
+        // stuck to the floor waiting for it
+        'will-change-transform',
         'transition-transform duration-300 ease-out motion-reduce:transition-none',
-        'data-[entering]:translate-y-full data-[exiting]:translate-y-full',
+        'data-[entering]:translate-y-full',
+        'data-[exiting]:translate-y-full data-[exiting]:duration-200 data-[exiting]:ease-in',
         className
       )}
       onPointerDownCapture={(event) => {
