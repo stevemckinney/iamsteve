@@ -12,6 +12,14 @@ import {
 import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
 
+// A row in a list a sheet holds. The menu and the topics list share it, so
+// they read as one thing. Colour is left to each, as the page you are on is
+// marked differently in each.
+export const itemStyle = cn(
+  'flex items-center gap-3 px-4 py-2 rounded-sm',
+  'text-lg font-ui lowercase font-medium'
+)
+
 // A panel that slides up from the bottom edge. It takes its open state from
 // the trigger it sits in (DialogTrigger, MenuTrigger) or from isOpen and
 // onOpenChange when used on its own. The look follows the hamburger menu.

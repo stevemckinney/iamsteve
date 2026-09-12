@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import { DialogTrigger, Button } from 'react-aria-components'
 import clsx from 'clsx'
+import { cn } from '@/lib/utils'
 
 import { mobile } from '@/content/navigation'
 
 // components
 import Link from '@/components/link'
 import Icon from '@/components/icon'
-import Sheet from '@/components/sheet'
+import Sheet, { itemStyle } from '@/components/sheet'
 
 const Toggle = () => {
   return (
@@ -98,9 +99,9 @@ const ListItem = ({ className, children, isOpen, index, href, ...props }) => (
   <li className="flex">
     <Link
       href={href}
-      className={clsx(
-        'flex shrink-0 basis-full gap-3 py-2 rounded-sm px-4 text-lg font-ui lowercase font-medium items-center',
-        'transition-all duration-300 ease-in-out',
+      className={cn(
+        itemStyle,
+        'shrink-0 basis-full transition-all duration-300 ease-in-out',
         className
       )}
       style={{
