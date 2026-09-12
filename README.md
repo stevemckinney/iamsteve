@@ -233,6 +233,40 @@ This ensures newly imported items are highlighted until you perform another impo
 
 </details>
 
+<details>
+<summary>Safari bookmark sync</summary>
+
+`scripts/sync-bookmarks.js` keeps Safari bookmarks and `content/collections` in step.
+
+The rule: every bookmark under **Bookmarks Bar > Collections > \<Name\>** maps to collection `<Name>`. Folder names match the canonical collection names exactly, so there is no mapping table to maintain. Subfolders are allowed for browsing (eg. `Collections/Inspiration/Galleries`) and still resolve to the parent collection.
+
+```bash
+node scripts/sync-bookmarks.js status    # drift report, both directions
+node scripts/sync-bookmarks.js export    # write bookmarks-import.json
+node scripts/sync-bookmarks.js pull      # write reconcile.html for Safari import
+```
+
+### Typical flow
+
+1. Save new links into **Bookmarks Bar > Inbox** as you find them.
+2. Triage the inbox into `Collections/<Name>` (publishable) or a private folder.
+3. `node scripts/sync-bookmarks.js export`
+4. Review `bookmarks-import.json`, then `node scripts/compose-collection.js bookmarks-import.json`
+
+### Directions
+
+Safari is the source for what should be published. The site is the source for anything already published, including extra collections a single folder cannot express, so `export` only ever emits items that are not yet on the site and never rewrites existing entries.
+
+`pull` covers the other direction. Because macOS protects `~/Library/Safari`, the script cannot write to Safari directly, so it emits a bookmarks HTML file to import via **Safari > File > Import From > Bookmarks HTML File**.
+
+### Reading Safari bookmarks
+
+macOS blocks reads of `~/Library/Safari` unless the calling app has Full Disk Access. Grant it to Terminal in **System Settings > Privacy & Security > Full Disk Access**, then restart Terminal. Without it the script falls back to `~/Downloads/Bookmarks.plist`, which you would need to copy across in Finder before each run.
+
+Safari also keeps bookmarks in memory and only flushes them to disk every so often, so a reorganise you just did in the browser may not be on disk yet. The script warns when Safari is running and shows how long ago it last wrote. Quit Safari to force a flush. Importing an HTML file is unaffected, since Safari performs that write itself.
+
+</details>
+
 ## Releases and versioning
 
 <details>

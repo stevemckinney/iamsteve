@@ -1,6 +1,5 @@
 import { defineCollection, defineConfig } from '@content-collections/core'
 import { compileMDX } from '@content-collections/mdx'
-import { z } from 'zod'
 
 import readingTime from 'reading-time'
 import remarkGfm from 'remark-gfm'
@@ -24,6 +23,12 @@ import rehypeHeadingLinks from './lib/rehype-heading-links'
 import remarkCodeTitles from './lib/remark-code-title'
 import remarkChat from './lib/remark-chat'
 import { compileMdxForRssWithMarked } from './lib/compile-mdx-for-rss.js'
+import {
+  postSchema,
+  noteSchema,
+  collectionSchema,
+  pageSchema,
+} from './lib/content-schemas.mjs'
 import GithubSlugger from 'github-slugger'
 import siteMetadata from './content/metadata'
 
@@ -109,27 +114,7 @@ const posts = defineCollection({
   name: 'posts',
   directory: 'content/blog',
   include: '**/*.md',
-  schema: z.object({
-    content: z.string(),
-    title: z.string(),
-    summary: z.string().optional(),
-    metadesc: z.string().optional(),
-    theme: z.string().optional(),
-    fileroot: z.string().optional(),
-    medium: z.string().optional(),
-    large: z.string().optional(),
-    ogImage: z.string().optional(),
-    images: z.array(z.string()).nullable().optional(),
-    date: z.string(),
-    lastmod: z.string(),
-    tags: z.array(z.string()).optional(),
-    categories: z.array(z.string()),
-    codepen: z.boolean().optional(),
-    twitter: z.boolean().optional(),
-    id: z.number(),
-    status: z.enum(['draft', 'open', 'closed', 'unlisted']).default('draft'),
-    noindex: z.boolean().optional(),
-  }),
+  schema: postSchema,
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)
     const slugAsParams = doc._meta.path
@@ -185,13 +170,7 @@ const notes = defineCollection({
   name: 'notes',
   directory: 'content/notes',
   include: '**/*.md',
-  schema: z.object({
-    content: z.string(),
-    title: z.string(),
-    date: z.string(),
-    status: z.enum(['draft', 'published']).default('draft'),
-    summary: z.string().nullable().optional(),
-  }),
+  schema: noteSchema,
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)
     const slugAsParams = doc._meta.path.split('/').pop()
@@ -209,17 +188,7 @@ const collections = defineCollection({
   name: 'collections',
   directory: 'content/collections',
   include: '**/*.md',
-  schema: z.object({
-    content: z.string(),
-    title: z.string(),
-    url: z.string(),
-    date: z.string(),
-    collection: z.array(z.string()).optional(),
-    kind: z
-      .enum(['website', 'article', 'resource', 'tool'])
-      .default('website')
-      .optional(),
-  }),
+  schema: collectionSchema,
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)
     const slugAsParams = doc._meta.path.split('/').pop()
@@ -236,12 +205,7 @@ const pages = defineCollection({
   name: 'pages',
   directory: 'content/pages',
   include: '**/*.md',
-  schema: z.object({
-    content: z.string(),
-    title: z.string(),
-    description: z.string().optional(),
-    slot: z.string().optional(),
-  }),
+  schema: pageSchema,
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)
     // Compile the slot field separately if it exists
