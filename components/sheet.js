@@ -12,6 +12,35 @@ import {
 import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
 
+// A pull is worth closing on past a quarter of the panel, or on a flick.
+// Measured as a share, so a tall sheet asks for a longer pull than a short
+// one. A drag is ignored while the sheet is still arriving, or it would
+// fight the entrance.
+const CLOSE_AT = 0.25
+const FLICK = 0.5
+const ARRIVING = 300
+
+// Whether the browser can be told to pan one way only. Read once, in the
+// browser: the module is evaluated on the server too.
+let panDown = null
+const downward = () => {
+  panDown ??=
+    typeof CSS !== 'undefined' && CSS.supports('touch-action', 'pan-up')
+  return panDown
+}
+
+// Who owns a touch on the list. A list that fits leaves every touch to the
+// sheet. A list that scrolls keeps them, except at its very top, where a
+// downward drag has nowhere to scroll and belongs to the sheet, the way a
+// sheet behaves natively. Only a browser that understands a direction can be
+// told that much; the rest keep the whole axis.
+const owner = (list) =>
+  list.scrollHeight <= list.clientHeight
+    ? 'none'
+    : list.scrollTop === 0 && downward()
+    ? 'pan-up'
+    : 'pan-y'
+
 // A row in a list a sheet holds. The menu and the topics list share it, so
 // they read as one thing. Colour is left to each, as the page you are on is
 // marked differently in each.
@@ -26,22 +55,23 @@ export const itemStyle = cn(
 export default function Sheet({ title, className, children, ...props }) {
   const scroller = useRef(null)
 
-  // The list scrolls inside the sheet. When it fits, a touch anywhere on it
-  // may pull the sheet instead, so the browser must not claim it for panning.
   // Measured again whenever the box changes size, as a react-aria collection
-  // renders its items a pass after the box first appears.
+  // renders its items a pass after the box first appears, and whenever it
+  // scrolls, as reaching the top hands the next drag back.
   const fit = (element) => {
     if (!element) return
     scroller.current = element
     const measure = () => {
-      element.style.touchAction =
-        element.scrollHeight > element.clientHeight ? 'pan-y' : 'none'
+      const next = owner(element)
+      if (element.style.touchAction !== next) element.style.touchAction = next
     }
     measure()
     const observer = new ResizeObserver(measure)
     observer.observe(element)
+    element.addEventListener('scroll', measure, { passive: true })
     return () => {
       observer.disconnect()
+      element.removeEventListener('scroll', measure)
       scroller.current = null
     }
   }
@@ -119,6 +149,7 @@ function Panel({ scroller, onClose, className, children }) {
   const panel = useRef(null)
   const pull = useRef(null)
   const pulled = useRef(false)
+  const arrived = useRef(0)
 
   // The strip behind the browser's bottom bar is the browser's own, painted
   // from the page's theme colour, so nothing in the page can reach it. While
@@ -127,6 +158,7 @@ function Panel({ scroller, onClose, className, children }) {
   // form it is written in reaches the meta tag as plain red, green and blue.
   const hold = (element) => {
     panel.current = element
+    arrived.current = performance.now()
     const meta = document.querySelector('meta[name="theme-color"]')
     if (!element || !meta) return
     const was = meta.getAttribute('content')
@@ -152,12 +184,13 @@ function Panel({ scroller, onClose, className, children }) {
     panel.current.style.transition = ''
     panel.current.style.translate = ''
     const distance = Math.max(0, event.clientY - current.start)
+    const far = panel.current.offsetHeight * CLOSE_AT
     // Speed over the last stretch of the pull, so one odd sample cannot flick
     const { samples } = current
     const last = samples[samples.length - 1]
     const first = samples.find((sample) => last.t - sample.t <= 100)
     const speed = (last.y - first.y) / Math.max(1, last.t - first.t)
-    if (distance > 80 || (distance > 16 && speed > 0.5)) close()
+    if (distance > far || (distance > 16 && speed > FLICK)) close()
   }
 
   return (
@@ -184,13 +217,9 @@ function Panel({ scroller, onClose, className, children }) {
       onPointerDownCapture={(event) => {
         pulled.current = false
         if (event.button !== 0) return
+        if (performance.now() - arrived.current < ARRIVING) return
         const list = scroller.current
-        if (
-          list?.contains(event.target) &&
-          list.scrollHeight > list.clientHeight
-        ) {
-          return
-        }
+        if (list?.contains(event.target) && owner(list) === 'pan-y') return
         pull.current = {
           id: event.pointerId,
           start: event.clientY,
