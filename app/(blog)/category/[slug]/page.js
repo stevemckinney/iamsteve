@@ -7,12 +7,13 @@
 import { cache } from 'react'
 import { notFound } from 'next/navigation'
 import { allPosts } from 'content-collections'
-import { sortPosts } from '@/lib/utils/content'
+import { sortPosts, getCategories } from '@/lib/utils/content'
 import { Header, Title, Column, Description } from '@/components/page'
 import { PencilMono } from '@/components/illustration'
 import Category from '@/components/category'
 import Card from '@/components/card'
 import Pagination from '@/components/pagination'
+import Topics from '@/components/topics'
 
 import categories from '@/content/categories'
 
@@ -59,7 +60,9 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props) {
   const params = await props.params
-  const category = categories.find((category) => category.slug === params.slug)
+  const category = categories.find(
+    (category) => category.slugAsParams === params.slug
+  )
 
   if (!category) {
     return
@@ -87,6 +90,8 @@ export default async function BlogCategory(props) {
   }
 
   const parent = data.parent
+  const group = parent || data.title.toLowerCase()
+  const items = getCategories().filter((category) => category.parent === group)
 
   const posts = allPosts
     .filter((post) => {
@@ -124,29 +129,29 @@ export default async function BlogCategory(props) {
       <Header>
         <Column className="md:col-span-1">
           <Title>{data.title}</Title>
-          <Description>{data.description}</Description>
+          <Description className="desc max-md:mb-2">
+            {data.description}
+          </Description>
         </Column>
-        <ul className="md:col-span-1 grid grid-cols-2 gap-x-4 md:gap-x-8 self-end column-categories lg:-mb-2">
-          {categories.map((category) => {
-            if (category.parent === false || category.exclude === true) return
-
-            if (
-              (!parent && data.title.toLowerCase() === category.parent) ||
-              (parent && category.parent === parent)
-            ) {
-              return (
-                <li className="self-end" key={category.title}>
-                  <Category
-                    size={24}
-                    badge={false}
-                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
-                  >
-                    {category.title}
-                  </Category>
-                </li>
-              )
-            }
-          })}
+        <Topics
+          items={items}
+          current={data.slug}
+          label="Categories"
+          icon="folder"
+          className="md:hidden"
+        />
+        <ul className="max-md:hidden md:col-span-1 grid grid-cols-2 gap-x-4 md:gap-x-8 self-end column-categories lg:-mb-2">
+          {items.map((category) => (
+            <li className="self-end" key={category.title}>
+              <Category
+                size={24}
+                badge={false}
+                className="py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current"
+              >
+                {category.title}
+              </Category>
+            </li>
+          ))}
         </ul>
       </Header>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 col-container md:col-content gap-8">

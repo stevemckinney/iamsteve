@@ -8,6 +8,9 @@ import Image from '@/components/image'
 import Link from '@/components/link'
 import collections from '@/content/collections'
 import Icon from '@/components/icon'
+import { collectionTitle } from '@/lib/collections'
+import SearchField from '@/components/search-field'
+import Topics from '@/components/topics'
 
 import { format, subWeeks, isAfter, parseISO } from 'date-fns'
 import { readFile } from 'fs/promises'
@@ -92,11 +95,7 @@ async function Collections({ page }) {
     return <div>No collections found for the current page.</div>
   }
 
-  // Get the proper title from collections config
-  const collectionConfig = collections.find(
-    (c) => c.slugAsParams === lowercasePage
-  )
-  const displayTitle = collectionConfig ? collectionConfig.title : collectionKey
+  const displayTitle = collectionTitle(lowercasePage)
 
   return (
     <div className="flex flex-col gap-4">
@@ -157,10 +156,14 @@ export default async function CollectionPage(props) {
     notFound()
   }
 
+  const items = [...collections].sort((a, b) =>
+    a.title < b.title ? -1 : a.title > b.title ? 1 : 0
+  )
+
   // padding is controlled through `<main>` but changes to the `<header>` when `max-sm` as the frame is then applied to the header to change the design overall
   return (
     <>
-      <Header className="max-md:frame max-md:frame-24 max-md:px-8 max-md:py-12 flex flex-col gap-2 col-container md:col-content md:col-end-7 md:sticky top-8 self-start">
+      <Header className="max-md:frame max-md:frame-24 max-md:px-8 max-md:py-8 flex flex-col gap-2 col-container md:col-content md:col-end-7 md:sticky top-8 self-start">
         <Title className="font-variation-bold text-5xl">
           {/* <Link
               href="/collections"
@@ -171,28 +174,34 @@ export default async function CollectionPage(props) {
             <span>/</span> */}
           Collections
         </Title>
-        <Description>
-          Curated design resources organised by topic, from typography and color
-          to tools and techniques.
+        <Description className="desc max-md:mb-2">
+          Curated design resources organised by topic, from typography and
+          colour to tools and techniques.
         </Description>
-        <ul className="grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
-          {collections
-            .sort((a, b) =>
-              a.title < b.title ? -1 : a.title > b.title ? 1 : 0
+        <Topics
+          items={items}
+          current={page.slug}
+          label="Collections"
+          icon="collections"
+          className="md:hidden"
+        />
+        <SearchField scope="collections" className="max-md:hidden mt-2">
+          Search collections
+        </SearchField>
+        <ul className="max-md:hidden grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
+          {items.map((collection) => {
+            return (
+              <li key={collection.id} className="self-end">
+                <a
+                  href={collection.slug}
+                  className={`py-2 md:py-3 text-base md:text-lg lg:text-xl text-current hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center`}
+                >
+                  <Icon icon={collection.icon} size={24} variant="header" />
+                  {collection.title}
+                </a>
+              </li>
             )
-            .map((collection) => {
-              return (
-                <li key={collection.id} className="self-end">
-                  <a
-                    href={collection.slug}
-                    className={`py-2 md:py-3 text-base md:text-lg lg:text-xl text-current hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center`}
-                  >
-                    <Icon icon={collection.icon} size={24} variant="header" />
-                    {collection.title}
-                  </a>
-                </li>
-              )
-            })}
+          })}
         </ul>
       </Header>
       <section className="flex flex-col col-start-content-start md:col-start-8 col-end-content-end gap-y-10">

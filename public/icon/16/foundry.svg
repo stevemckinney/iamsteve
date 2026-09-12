@@ -1,0 +1,8 @@
+<svg viewBox="0 0 16 16">
+  <g class="foundry">
+    <path d="M2.662 14C2.294 14 2 13.702 2 13.333V2.667C2 2.298 2.298 2 2.667 2C6.222 2 9.778 2 13.333 2C13.702 2 14 2.298 14 2.667V13.333C14 13.702 13.705 14 13.337 14C11.259 14 4.882 14 2.662 14Z" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M5 6V5H11V6" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M8 5V11" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M7 11H9" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>

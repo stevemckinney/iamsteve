@@ -4,7 +4,7 @@ const categories = [
     slug: '/category/design',
     slugAsParams: 'design',
     description:
-      'From speedy workflow based quick tips and resources, practical techniques to create well designed interfaces.',
+      'From speedy workflow based quick tips and resources, practical techniques to create well designed interfaces',
     parent: false,
     theme: 'rio',
     icon: 'pen',
@@ -37,7 +37,7 @@ const categories = [
     slug: '/category/colour',
     slugAsParams: 'colour',
     description:
-      'A fundamental skill within design, it’s a balance through brand, emotion, accessibility and usabilility',
+      'A fundamental skill within design, it’s a balance through brand, emotion, accessibility and usability',
     parent: 'design',
     theme: 'cornflour',
     icon: 'palette',
@@ -48,7 +48,7 @@ const categories = [
     slug: '/category/resources',
     slugAsParams: 'resources',
     description:
-      'Collections of links or specific articles, to things I wish I had written or designed.',
+      'Collections of links or specific articles, to things I wish I had written or designed',
     parent: 'design',
     theme: 'fern',
     icon: 'settings',
@@ -91,7 +91,7 @@ const categories = [
     slug: '/category/code',
     slugAsParams: 'code',
     description:
-      'Building interfaces with CSS and JavaScript, from implementation details to development workflows.',
+      'Building interfaces with CSS and JavaScript, from implementation details to development workflows',
     parent: false,
     theme: 'dandelion',
     icon: 'code',
@@ -102,7 +102,7 @@ const categories = [
     slug: '/category/animation',
     slugAsParams: 'animation',
     description:
-      'Add some motion and interactivity to your interfaces using animation techniques and libraries like Framer Motion.',
+      'Add some motion and interactivity to your interfaces using animation techniques and libraries like Framer Motion',
     parent: 'code',
     theme: 'magenta',
     icon: 'play',
@@ -113,7 +113,7 @@ const categories = [
     slug: '/category/css',
     slugAsParams: 'css',
     description:
-      'Dive deeper into the powerful and versatile styling language that can transform your interfaces.',
+      'Dive deeper into the powerful and versatile styling language that can transform your interfaces',
     parent: 'code',
     theme: 'grass',
     icon: 'css',
@@ -124,7 +124,7 @@ const categories = [
     slug: '/category/patterns',
     slugAsParams: 'patterns',
     description:
-      'Reusable techniques that you can apply to your projects that solve common problems and challenges.',
+      'Reusable techniques that you can apply to your projects that solve common problems and challenges',
     parent: 'code',
     theme: 'fern',
     icon: 'puzzle',

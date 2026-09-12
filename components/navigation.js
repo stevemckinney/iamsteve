@@ -1,18 +1,20 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import { DialogTrigger, Button, Popover } from 'react-aria-components'
+import { DialogTrigger, Button } from 'react-aria-components'
 import clsx from 'clsx'
+import { cn } from '@/lib/utils'
 
 import { mobile } from '@/content/navigation'
 
 // components
 import Link from '@/components/link'
 import Icon from '@/components/icon'
+import Sheet, { itemStyle } from '@/components/sheet'
 
 const Toggle = () => {
   return (
-    <div className="relative before:z-1 before:-inset-10 before:absolute">
+    <div className="relative before:z-1 before:-inset-y-10 before:-inset-x-4 before:absolute">
       <span className="block w-[24px] h-[24px] relative">
         <span
           className={`h-[2px] w-[20px] bg-emphasis block rounded absolute`}
@@ -45,18 +47,8 @@ const Navigation = () => {
       >
         <Toggle />
       </Button>
-      <Popover
-        placement="bottom"
-        offset={16}
-        containerPadding={12}
-        className={clsx(
-          'w-[calc(100vw-1.5rem)] shadow-placed bg-[light-dark(rgb(255_255_255/.90),color-mix(in_oklab,var(--color-fern-1200),transparent_20%))] backdrop-blur-md backdrop-filter backdrop-contrast-200 backdrop-saturate-100 flex flex-col rounded-lg z-200 p-6 outline-none',
-          'transition-all duration-300 ease-in-out',
-          'data-[entering]:opacity-0 data-[exiting]:opacity-0',
-          'max-h-[calc(100dvh-4rem)] overflow-y-auto'
-        )}
-      >
-        <ul className="flex flex-col gap-2">
+      <Sheet title="Menu">
+        <ul className="flex flex-col gap-px px-2">
           {mobile.map((link, index) => (
             <ListItem
               href={link.href}
@@ -98,7 +90,7 @@ const Navigation = () => {
             Subscribe
           </ListItem>
         </ul>
-      </Popover>
+      </Sheet>
     </DialogTrigger>
   )
 }
@@ -107,9 +99,9 @@ const ListItem = ({ className, children, isOpen, index, href, ...props }) => (
   <li className="flex">
     <Link
       href={href}
-      className={clsx(
-        'flex shrink-0 basis-full gap-4 py-2.5 rounded-sm px-4 text-2xl font-ui items-center lowercase',
-        'transition-all duration-300 ease-in-out',
+      className={cn(
+        itemStyle,
+        'shrink-0 basis-full transition-all duration-300 ease-in-out',
         className
       )}
       style={{

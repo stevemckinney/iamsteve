@@ -186,8 +186,16 @@ function LightboxContent({ src, alt, close }) {
         return
       }
       const bounds = getBoundsAtScale(newScale, fitDimensionsRef.current)
-      animate(xValue, clamp(xValue.get(), bounds.minX, bounds.maxX), SPRING_RESET)
-      animate(yValue, clamp(yValue.get(), bounds.minY, bounds.maxY), SPRING_RESET)
+      animate(
+        xValue,
+        clamp(xValue.get(), bounds.minX, bounds.maxX),
+        SPRING_RESET
+      )
+      animate(
+        yValue,
+        clamp(yValue.get(), bounds.minY, bounds.maxY),
+        SPRING_RESET
+      )
     }
 
     function onKeyDown(e) {

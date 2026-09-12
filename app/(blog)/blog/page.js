@@ -6,7 +6,7 @@
 import { cache } from 'react'
 import { allPosts } from 'content-collections'
 
-import { sortPosts } from '@/lib/utils/content'
+import { sortPosts, getCategories } from '@/lib/utils/content'
 
 import { Header, Title, Column, Description } from '@/components/page'
 import { PencilMono } from '@/components/illustration'
@@ -15,8 +15,7 @@ import Icon from '@/components/icon'
 import Category from '@/components/category'
 import Pagination from '@/components/pagination'
 import Image from '@/components/image'
-
-import categories from '@/content/categories'
+import Topics from '@/components/topics'
 
 export const metadata = {
   title: 'Blog archive',
@@ -56,6 +55,8 @@ export default async function BlogIndex(props) {
     total: Math.ceil(posts.length / POSTS_PER_PAGE),
   }
 
+  const items = getCategories()
+
   return (
     <>
       <PencilMono
@@ -66,21 +67,25 @@ export default async function BlogIndex(props) {
       <Header>
         <Column className="md:col-span-1">
           <Title>Blog</Title>
-          <Description>
+          <Description className="desc max-md:mb-2">
             Tips and tutorials about the design and build of web interfaces
           </Description>
         </Column>
-        {categories && (
-          <ul className="md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories -mb-2 lg:-mb-3">
-            {categories.map((category) => {
-              if (category.exclude === true || category.parent === true)
-                return null
+        <Topics
+          items={items}
+          label="Categories"
+          icon="folder"
+          className="md:hidden"
+        />
+        {items.length > 0 && (
+          <ul className="max-md:hidden md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories -mb-2 lg:-mb-3">
+            {items.map((category) => {
               return (
                 <li className="self-end" key={category.title}>
                   <Category
                     size={24}
                     badge={false}
-                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-emphasis hover:text-link-hover transition-all duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center text-current"
+                    className="py-2 md:py-3 text-base md:text-lg lg:text-xl text-emphasis hover:text-link-hover transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current"
                   >
                     {category.title}
                   </Category>
