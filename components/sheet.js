@@ -23,7 +23,7 @@ export const itemStyle = cn(
 // A panel that slides up from the bottom edge. It takes its open state from
 // the trigger it sits in (DialogTrigger, MenuTrigger) or from isOpen and
 // onOpenChange when used on its own. The look follows the hamburger menu.
-export default function Sheet({ title, icon, className, children, ...props }) {
+export default function Sheet({ title, className, children, ...props }) {
   const scroller = useRef(null)
 
   // The list scrolls inside the sheet. When it fits, a touch anywhere on it
