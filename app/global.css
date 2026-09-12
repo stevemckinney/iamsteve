@@ -92,16 +92,6 @@
   mask-composite: intersect;
 }
 
-/* The strip behind Safari's bottom bar, painted from the root rather than
-   the page, so the sheet appears to carry on under it. It follows the
-   sheet's own background. */
-html[data-sheet] {
-  background-color: light-dark(
-    rgb(255 255 255),
-    color-mix(in oklab, var(--color-fern-1200), var(--color-canvas) 20%)
-  );
-}
-
 /* The halo blooms in from no blur while the dialog enters, and out again as
    it leaves. Both layers follow the panel's entering and exiting state. */
 .aura::before,
