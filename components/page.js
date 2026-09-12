@@ -1,5 +1,5 @@
 function Header({
-  className = `max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-12`,
+  className = `max-md:frame max-md:frame-24 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 col-container md:col-content max-md:px-8 max-md:py-8`,
   children,
 }) {
   return <header className={`${className}`}>{children}</header>

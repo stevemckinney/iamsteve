@@ -46,9 +46,21 @@ export default function Sheet({ title, className, children, ...props }) {
     }
   }
 
+  // Safari's bottom bar sits outside every viewport unit on current iOS: the
+  // page's own viewport stops above it, so nothing positioned in the page can
+  // paint behind it. The canvas can. It comes from the root element and
+  // covers the whole screen, which is why the page colour shows there now.
+  // Marking the root while a sheet is open hands that strip to the sheet.
+  const canvas = (element) => {
+    if (!element) return
+    document.documentElement.dataset.sheet = ''
+    return () => delete document.documentElement.dataset.sheet
+  }
+
   return (
     <ModalOverlay
       isDismissable
+      ref={canvas}
       {...props}
       className={cn(
         'fixed inset-0 z-200 bg-canvas/60',
