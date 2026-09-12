@@ -89,7 +89,7 @@ export default function Topics({
 
   return (
     <MenuTrigger>
-      <Button className={cn(fieldStyle, 'cursor-pointer', className)}>
+      <Button className={cn(fieldStyle, 'cursor-default', className)}>
         <Icon icon={icon} size={24} variant="header" aria-hidden="true" />
         <span className="truncate">{chosen ? chosen.title : label}</span>
         <Icon
