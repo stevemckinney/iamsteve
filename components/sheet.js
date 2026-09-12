@@ -46,21 +46,9 @@ export default function Sheet({ title, className, children, ...props }) {
     }
   }
 
-  // Safari's bottom bar sits outside every viewport unit on current iOS: the
-  // page's own viewport stops above it, so nothing positioned in the page can
-  // paint behind it. The canvas can. It comes from the root element and
-  // covers the whole screen, which is why the page colour shows there now.
-  // Marking the root while a sheet is open hands that strip to the sheet.
-  const canvas = (element) => {
-    if (!element) return
-    document.documentElement.dataset.sheet = ''
-    return () => delete document.documentElement.dataset.sheet
-  }
-
   return (
     <ModalOverlay
       isDismissable
-      ref={canvas}
       {...props}
       className={cn(
         'fixed inset-0 z-200 bg-canvas/60',
@@ -132,6 +120,27 @@ function Panel({ scroller, onClose, className, children }) {
   const pull = useRef(null)
   const pulled = useRef(false)
 
+  // The strip behind the browser's bottom bar is the browser's own, painted
+  // from the page's theme colour, so nothing in the page can reach it. While
+  // the sheet is up the theme colour is the sheet's, and the strip matches.
+  // The panel's colour is painted onto a canvas and read back, so whatever
+  // form it is written in reaches the meta tag as plain red, green and blue.
+  const hold = (element) => {
+    panel.current = element
+    const meta = document.querySelector('meta[name="theme-color"]')
+    if (!element || !meta) return
+    const was = meta.getAttribute('content')
+    const paint = document.createElement('canvas').getContext('2d')
+    paint.fillStyle = getComputedStyle(element).backgroundColor
+    paint.fillRect(0, 0, 1, 1)
+    const [r, g, b] = paint.getImageData(0, 0, 1, 1).data
+    meta.setAttribute('content', `rgb(${r}, ${g}, ${b})`)
+    return () => {
+      meta.setAttribute('content', was)
+      panel.current = null
+    }
+  }
+
   const close = () => (state ? state.close() : onClose())
 
   const end = (event) => {
@@ -153,7 +162,7 @@ function Panel({ scroller, onClose, className, children }) {
 
   return (
     <Modal
-      ref={panel}
+      ref={hold}
       className={cn(
         'fixed inset-x-0 z-200 flex flex-col outline-none touch-none select-none',
         // Safari's bottom bar is translucent and shows what is behind it.
@@ -163,8 +172,11 @@ function Panel({ scroller, onClose, className, children }) {
         '[--bar:0px] supports-[height:100svh]:[--bar:calc(100lvh_-_100svh)]',
         'bottom-[calc(var(--bar)_*_-1)] max-h-[calc(100dvh_-_4rem_+_var(--bar))]',
         'pb-[calc(var(--bar)_+_max(1.5rem,env(safe-area-inset-bottom)))]',
-        'rounded-t-lg shadow-placed backdrop-blur-md backdrop-contrast-200 backdrop-saturate-100',
-        'bg-[light-dark(rgb(255_255_255/.90),color-mix(in_oklab,var(--color-fern-1200),transparent_20%))]',
+        // Opaque, and with no backdrop filter: the panel was 90% white over
+        // a blurred page, which reads the same as white but has the browser
+        // re-filtering everything behind it on every frame of the slide
+        'rounded-t-lg shadow-placed',
+        'bg-[light-dark(rgb(255_255_255),var(--color-fern-1200))]',
         'transition-transform duration-300 ease-out motion-reduce:transition-none',
         'data-[entering]:translate-y-full data-[exiting]:translate-y-full',
         className
