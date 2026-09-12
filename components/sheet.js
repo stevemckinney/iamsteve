@@ -1,0 +1,306 @@
+'use client'
+
+import { useContext, useRef } from 'react'
+import {
+  ModalOverlay,
+  Modal,
+  Dialog,
+  Heading,
+  Button,
+  OverlayTriggerStateContext,
+} from 'react-aria-components'
+import { cn } from '@/lib/utils'
+import Icon from '@/components/icon'
+
+// A pull is worth closing on past a quarter of the panel, or on a flick.
+// Measured as a share, so a tall sheet asks for a longer pull than a short
+// one. A drag is ignored while the sheet is still arriving, or it would
+// fight the entrance.
+const CLOSE_AT = 0.25
+const FLICK = 0.5
+const ARRIVING = 300
+
+// Arriving decelerates, leaving accelerates and is quicker: an entrance
+// wants to settle, an exit wants to be out of the way.
+const LEAVING = 200
+
+// Whether the reader asked for less movement
+const still = () => matchMedia('(prefers-reduced-motion: reduce)').matches
+
+// Whether the browser can be told to pan one way only. Read once, in the
+// browser: the module is evaluated on the server too.
+let panDown = null
+const downward = () => {
+  panDown ??=
+    typeof CSS !== 'undefined' && CSS.supports('touch-action', 'pan-up')
+  return panDown
+}
+
+// Who owns a touch on the list. A list that fits leaves every touch to the
+// sheet. A list that scrolls keeps them, except at its very top, where a
+// downward drag has nowhere to scroll and belongs to the sheet, the way a
+// sheet behaves natively. Only a browser that understands a direction can be
+// told that much; the rest keep the whole axis.
+const owner = (list) =>
+  list.scrollHeight <= list.clientHeight
+    ? 'none'
+    : list.scrollTop === 0 && downward()
+    ? 'pan-up'
+    : 'pan-y'
+
+// A row in a list a sheet holds. The menu and the topics list share it, so
+// they read as one thing. Colour is left to each, as the page you are on is
+// marked differently in each.
+export const itemStyle = cn(
+  'flex items-center gap-3 px-4 py-2 rounded-sm',
+  'text-lg font-ui lowercase font-medium'
+)
+
+// A panel that slides up from the bottom edge. It takes its open state from
+// the trigger it sits in (DialogTrigger, MenuTrigger) or from isOpen and
+// onOpenChange when used on its own. The look follows the hamburger menu.
+export default function Sheet({ title, className, children, ...props }) {
+  const scroller = useRef(null)
+
+  // Measured again whenever the box changes size, as a react-aria collection
+  // renders its items a pass after the box first appears, and whenever it
+  // scrolls, as reaching the top hands the next drag back.
+  const fit = (element) => {
+    if (!element) return
+    scroller.current = element
+    const measure = () => {
+      const next = owner(element)
+      if (element.style.touchAction !== next) element.style.touchAction = next
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(element)
+    element.addEventListener('scroll', measure, { passive: true })
+    return () => {
+      observer.disconnect()
+      element.removeEventListener('scroll', measure)
+      scroller.current = null
+    }
+  }
+
+  return (
+    <ModalOverlay
+      isDismissable
+      {...props}
+      className="group/overlay fixed inset-0 z-200"
+    >
+      {/* The dimming is its own layer rather than the whole overlay, or the
+          panel fades along with it. Closing costs react around a tenth of a
+          second before the exit starts, and a panel that fades through that
+          pause reads as a glitch where one that slides reads as leaving. */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          'absolute inset-0 bg-canvas/60',
+          'transition-opacity duration-300 ease-out motion-reduce:transition-none',
+          'group-data-[entering]/overlay:opacity-0',
+          // Leaves with the panel, or the page stays dimmed after it has gone
+          'group-data-[exiting]/overlay:opacity-0 group-data-[exiting]/overlay:duration-200'
+        )}
+      />
+      <Panel
+        scroller={scroller}
+        onClose={() => props.onOpenChange?.(false)}
+        className={className}
+      >
+        <Dialog className="flex flex-col min-h-0 outline-none">
+          <div className="flex justify-center py-3 cursor-grab active:cursor-grabbing">
+            <span
+              aria-hidden="true"
+              className="h-1 w-10 rounded-full bg-body/25"
+            />
+          </div>
+          <div className="flex items-center gap-3 px-6 pb-4">
+            <Heading
+              slot="title"
+              className="relative top-px grow text-2xl font-display font-variation-bold lowercase leading-none text-heading"
+            >
+              {title}
+            </Heading>
+            <Button
+              slot="close"
+              aria-label="Close"
+              className={cn(
+                'flex p-2 -m-2 rounded-sm text-body cursor-pointer',
+                'hover:text-heading transition-colors duration-200 ease-linear',
+                'outline-none focus-visible:ring-2 focus-visible:ring-cornflour-600 dark:focus-visible:ring-fern-400'
+              )}
+            >
+              <Icon
+                icon="close"
+                size={24}
+                variant="header"
+                aria-hidden="true"
+              />
+            </Button>
+          </div>
+          <div
+            ref={fit}
+            className="min-h-0 overflow-auto"
+            // A mouse dragging a link would start the browser's own link drag
+            // and end the pull
+            onDragStart={(event) => event.preventDefault()}
+          >
+            {children}
+          </div>
+        </Dialog>
+      </Panel>
+    </ModalOverlay>
+  )
+}
+
+// The panel itself, and the pull that dismisses it. A pull can start anywhere
+// except on a list that scrolls, which keeps its touches for scrolling. The
+// handlers run in the capture phase, as react-aria's pressable items stop
+// pointer events from bubbling. Once a pull has moved past a few pixels the
+// press underneath it is cancelled, so letting go over a link does not follow
+// it. Past the threshold, or on a flick, the panel closes from where it was;
+// otherwise it settles back.
+function Panel({ scroller, onClose, className, children }) {
+  const state = useContext(OverlayTriggerStateContext)
+  const panel = useRef(null)
+  const pull = useRef(null)
+  const pulled = useRef(false)
+  const arrived = useRef(0)
+
+  // The strip behind the browser's bottom bar is the browser's own, painted
+  // from the page's theme colour, so nothing in the page can reach it. While
+  // the sheet is up the theme colour is the sheet's, and the strip matches.
+  // The panel's colour is painted onto a canvas and read back, so whatever
+  // form it is written in reaches the meta tag as plain red, green and blue.
+  const hold = (element) => {
+    panel.current = element
+    arrived.current = performance.now()
+    const meta = document.querySelector('meta[name="theme-color"]')
+    if (!element || !meta) return
+    const was = meta.getAttribute('content')
+    const paint = document.createElement('canvas').getContext('2d')
+    paint.fillStyle = getComputedStyle(element).backgroundColor
+    paint.fillRect(0, 0, 1, 1)
+    const [r, g, b] = paint.getImageData(0, 0, 1, 1).data
+    meta.setAttribute('content', `rgb(${r}, ${g}, ${b})`)
+    return () => {
+      meta.setAttribute('content', was)
+      panel.current = null
+    }
+  }
+
+  const close = () => (state ? state.close() : onClose())
+
+  const end = (event) => {
+    const current = pull.current
+    if (!current || !event.isTrusted || event.pointerId !== current.id) return
+    pull.current = null
+    if (!current.moved) return
+    pulled.current = true
+    const height = panel.current.offsetHeight
+    const distance = Math.max(0, event.clientY - current.start)
+    // Speed over the last stretch of the pull, so one odd sample cannot flick
+    const { samples } = current
+    const last = samples[samples.length - 1]
+    const first = samples.find((sample) => last.t - sample.t <= 100)
+    const speed = (last.y - first.y) / Math.max(1, last.t - first.t)
+
+    if (distance > height * CLOSE_AT || (distance > 16 && speed > FLICK)) {
+      // Carry on to the bottom edge from here rather than waiting for the
+      // close to come back through react, which costs a tenth of a second
+      // the pull has no reason to sit through. The panel is already moving
+      // and already most of the way down, so it keeps going and settles,
+      // over whatever is left of the distance rather than a fixed time.
+      const left = Math.max(0, height - distance)
+      const ms = still()
+        ? 0
+        : Math.max(80, Math.round((left / height) * LEAVING))
+      panel.current.style.transition = 'none'
+      panel.current.animate(
+        [{ translate: `0 ${distance}px` }, { translate: `0 ${height}px` }],
+        { duration: ms, easing: 'ease-out', fill: 'forwards' }
+      )
+      panel.current.style.translate = `0 ${height}px`
+      close()
+      return
+    }
+    panel.current.style.transition = ''
+    panel.current.style.translate = ''
+  }
+
+  return (
+    <Modal
+      ref={hold}
+      className={cn(
+        'fixed inset-x-0 z-200 flex flex-col outline-none touch-none select-none',
+        // Safari's bottom bar is translucent and shows what is behind it.
+        // A fixed panel stops at the top of the bar, so the bar would show
+        // the page. Reaching under it by the bar's height, and padding by
+        // the same, fills the bar with the panel. Elsewhere the bar is 0.
+        '[--bar:0px] supports-[height:100svh]:[--bar:calc(100lvh_-_100svh)]',
+        'bottom-[calc(var(--bar)_*_-1)] max-h-[calc(100dvh_-_4rem_+_var(--bar))]',
+        'pb-[calc(var(--bar)_+_max(1.5rem,env(safe-area-inset-bottom)))]',
+        // Opaque, and with no backdrop filter: the panel was 90% white over
+        // a blurred page, which reads the same as white but has the browser
+        // re-filtering everything behind it on every frame of the slide
+        'rounded-t-lg shadow-placed',
+        'bg-[light-dark(rgb(255_255_255),var(--color-fern-1200))]',
+        // Its own layer, so the slide runs on the compositor: closing costs
+        // react a tenth of a second of layout, and the panel should not be
+        // stuck to the floor waiting for it
+        'will-change-transform',
+        'transition-transform duration-300 ease-out motion-reduce:transition-none',
+        'data-[entering]:translate-y-full',
+        'data-[exiting]:translate-y-full data-[exiting]:duration-200 data-[exiting]:ease-in',
+        className
+      )}
+      onPointerDownCapture={(event) => {
+        pulled.current = false
+        if (event.button !== 0) return
+        if (performance.now() - arrived.current < ARRIVING) return
+        const list = scroller.current
+        if (list?.contains(event.target) && owner(list) === 'pan-y') return
+        pull.current = {
+          id: event.pointerId,
+          start: event.clientY,
+          target: event.target,
+          moved: false,
+          samples: [{ y: event.clientY, t: event.timeStamp }],
+        }
+      }}
+      onPointerMoveCapture={(event) => {
+        const current = pull.current
+        if (!current || event.pointerId !== current.id) return
+        if (!current.moved) {
+          if (event.clientY - current.start < 8) return
+          current.moved = true
+          event.currentTarget.setPointerCapture(current.id)
+          current.target.dispatchEvent(
+            new PointerEvent('pointercancel', {
+              bubbles: true,
+              pointerId: current.id,
+            })
+          )
+          panel.current.style.transition = 'none'
+        }
+        current.samples.push({ y: event.clientY, t: event.timeStamp })
+        if (current.samples.length > 12) current.samples.shift()
+        panel.current.style.translate = `0 ${Math.max(
+          0,
+          event.clientY - current.start
+        )}px`
+      }}
+      onPointerUpCapture={end}
+      onPointerCancelCapture={end}
+      onClickCapture={(event) => {
+        if (!pulled.current) return
+        pulled.current = false
+        event.preventDefault()
+        event.stopPropagation()
+      }}
+    >
+      {children}
+    </Modal>
+  )
+}

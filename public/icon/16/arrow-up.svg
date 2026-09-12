@@ -1,6 +1,6 @@
 <svg viewBox="0 0 16 16">
   <g class="arrow-up">
-    <path d="M8 1v14" class="fill-none stroke-current stroke-2 sl-r"/>
-    <path d="M12 5 8 1 4 5" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M8 2v12" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M12 6 8 2 4 6" class="fill-none stroke-current stroke-2 sl-r"/>
   </g>
 </svg>

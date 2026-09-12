@@ -1,0 +1,9 @@
+<svg viewBox="0 0 16 16">
+  <g class="accessibility">
+    <path d="M8 4C8.552 4 9 3.552 9 3C9 2.448 8.552 2 8 2C7.448 2 7 2.448 7 3C7 3.552 7.448 4 8 4Z" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M12 6C12 6 9.682 7 8 7C6.318 7 4 6 4 6" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M9 7H7V11H9Z" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M7 11L6 14" class="fill-none stroke-current stroke-2 sl-r"/>
+    <path d="M9 11L10 14" class="fill-none stroke-current stroke-2 sl-r"/>
+  </g>
+</svg>
