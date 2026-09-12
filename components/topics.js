@@ -9,7 +9,7 @@ import {
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
-import Sheet from '@/components/sheet'
+import Sheet, { itemStyle } from '@/components/sheet'
 import { fieldStyle } from '@/components/search-field'
 
 // The category or collection list folded behind a button. The list is the
@@ -17,8 +17,6 @@ import { fieldStyle } from '@/components/search-field'
 // screens, or a popover under the button where there is room for one. The
 // item the page is on is marked in the list, and the button reads as a
 // select would, showing that item, or the label where the page is on none.
-// The button carries no icon, as half a row does not fit one beside the
-// longer names.
 export default function Topics({
   items,
   current,
@@ -47,12 +45,16 @@ export default function Topics({
           textValue={item.title}
           data-current={item.slug === current || undefined}
           className={cn(
-            'flex items-center rounded-xs cursor-pointer select-none outline-none',
-            'font-ui lowercase text-body',
-            sheet ? 'gap-3 px-4 py-3 text-xl' : 'gap-2 px-2 py-2 text-base',
-            // After the size: tailwind-merge drops a leading that precedes a text size
-            'leading-none',
-            'data-[focused]:bg-surface-02 data-[focused]:text-heading data-[current]:text-heading',
+            'cursor-pointer select-none outline-none',
+            sheet
+              ? cn(itemStyle, 'text-emphasis data-[current]:text-nav-active')
+              : cn(
+                  'flex items-center gap-2 px-2 py-2 rounded-xs',
+                  'text-base font-ui lowercase text-body',
+                  // After the size: tailwind-merge drops a leading that precedes a text size
+                  'leading-none',
+                  'data-[focused]:bg-surface-02 data-[focused]:text-heading data-[current]:text-heading'
+                ),
             'data-[focus-visible]:ring-2 data-[focus-visible]:ring-inset data-[focus-visible]:ring-cornflour-600 dark:data-[focus-visible]:ring-fern-400'
           )}
         >
@@ -60,6 +62,11 @@ export default function Topics({
             icon={item.icon}
             size={24}
             variant="header"
+            className={cn(
+              sheet && 'relative -top-px',
+              sheet &&
+                (item.slug === current ? 'text-nav-active' : 'text-nav-icon')
+            )}
             aria-hidden="true"
           />
           {item.title}
@@ -83,6 +90,7 @@ export default function Topics({
   return (
     <MenuTrigger>
       <Button className={cn(fieldStyle, 'cursor-pointer', className)}>
+        <Icon icon={icon} size={24} variant="header" aria-hidden="true" />
         <span className="truncate">{chosen ? chosen.title : label}</span>
         <Icon
           icon="angle-down"
