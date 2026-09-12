@@ -143,7 +143,7 @@ export default async function CollectionsPage(props) {
               <li key={collection.id} className="self-end">
                 <a
                   href={collection.slug}
-                  className={`py-2 md:py-3 text-base md:text-lg lg:text-xl text-current hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none rounded flex gap-2 items-center`}
+                  className={`py-2 md:py-3 text-base md:text-lg lg:text-xl text-current hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center`}
                 >
                   <Icon icon={collection.icon} size={24} variant="header" />
                   {collection.title}

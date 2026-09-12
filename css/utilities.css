@@ -594,11 +594,11 @@
   animation: opened-last 200ms ease-out both;
 }
 
-.column-categories li:not(:first-child):not(:nth-of-type(2)) {
+.column-categories li:not(:first-child):not(:nth-of-type(2)) a {
   border-top: 1px solid var(--color-subtle);
 }
 
-.list-categories li:not(:first-child) {
+.list-categories li:not(:first-child) a {
   border-top: 1px solid var(--color-subtle);
 }
 
