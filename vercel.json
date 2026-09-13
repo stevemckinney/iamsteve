@@ -1,4 +1,5 @@
 {
   "installCommand": "npm install -g pnpm && pnpm install",
-  "buildCommand": "pnpm run build"
+  "buildCommand": "pnpm run build",
+  "ignoreCommand": "git log -1 --pretty=%s | grep -q '^chore: bump version'"
 }

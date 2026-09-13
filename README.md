@@ -276,13 +276,16 @@ Safari also keeps bookmarks in memory and only flushes them to disk every so oft
 
 When a PR is merged to `main`, the release action automatically:
 
-1. Finds the latest git tag (e.g. `v9.0.0`)
+1. Finds the latest git tag (e.g. `v8.6.0`)
 2. Checks if there are meaningful changes since that tag
 3. Determines the version bump type from commit messages
-4. Tags the merge commit directly (no extra commit pushed to `main`)
-5. Creates a GitHub release with grouped release notes
+4. Writes the new version into `package.json` and commits it to `main`
+5. Tags that commit and creates a GitHub release with grouped release notes
 
-This means **one merge = one Vercel build**, not two.
+The bump commit keeps `package.json` honest, so checking out a tag gives
+you the version it claims. It still costs **one Vercel build per merge**,
+not two: `ignoreCommand` in `vercel.json` skips any deployment whose commit
+message starts with `chore: bump version`.
 
 ### Version bump rules
 
