@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useTransition } from 'react'
+import { createPortal } from 'react-dom'
 import { Turnstile } from '@marsidev/react-turnstile'
 import {
   Form,
@@ -35,7 +36,8 @@ const Toast = ({ open, onOpenChange, title, description }) => {
 
   if (!open) return null
 
-  return (
+  // Render on the body, because the notepad header sits above anything inside it
+  return createPortal(
     <div className="fixed top-6 right-6 z-300 w-96 max-w-[calc(100vw-3rem)]">
       <div className="shadow-placed flex flex-col gap-1 leading-tight bg-cornflour-0 rounded-md p-4 relative animate-[slideIn_200ms_ease-out]">
         <p className="font-medium m-0">{title}</p>
@@ -49,7 +51,8 @@ const Toast = ({ open, onOpenChange, title, description }) => {
           <Icon icon="close" size={16} />
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
