@@ -18,6 +18,9 @@ jobs:
     #   github.event.pull_request.user.login == 'new-developer' ||
     #   github.event.pull_request.author_association == 'FIRST_TIME_CONTRIBUTOR'
 
+    # The action refuses to run for bots, so skip PRs that Dependabot opens or updates
+    if: github.actor != 'dependabot[bot]'
+
     runs-on: ubuntu-latest
     permissions:
       contents: read
