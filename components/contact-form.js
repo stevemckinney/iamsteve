@@ -1,6 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useTransition } from 'react'
+import { createPortal } from 'react-dom'
+import { Turnstile } from '@marsidev/react-turnstile'
 import {
   Form,
   TextField,
@@ -11,11 +13,12 @@ import {
   Button,
 } from 'react-aria-components'
 import Icon from '@/components/icon'
+import { sendMessage } from '@/lib/contact'
 
 const RATE_LIMIT_DURATION = 60 * 60 * 1000 // 1 hour in milliseconds
 const MAX_SUBMISSIONS = 5 // Maximum submissions per hour
 const MIN_WORD_COUNT = 8 // Minimum word count for the message
-const FORM_DISABLED = true // Set this to true to disable the form
+const TURNSTILE_ENABLED = process.env.NEXT_PUBLIC_ENABLE_TURNSTILE === 'true'
 
 const fieldLabelClass =
   'font-ui text-base lowercase text-emphasis leading-none mb-1'
@@ -33,7 +36,8 @@ const Toast = ({ open, onOpenChange, title, description }) => {
 
   if (!open) return null
 
-  return (
+  // Render on the body, because the notepad header sits above anything inside it
+  return createPortal(
     <div className="fixed top-6 right-6 z-300 w-96 max-w-[calc(100vw-3rem)]">
       <div className="shadow-placed flex flex-col gap-1 leading-tight bg-cornflour-0 rounded-md p-4 relative animate-[slideIn_200ms_ease-out]">
         <p className="font-medium m-0">{title}</p>
@@ -47,7 +51,8 @@ const Toast = ({ open, onOpenChange, title, description }) => {
           <Icon icon="close" size={16} />
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
@@ -55,13 +60,12 @@ const ContactForm = () => {
   const [isRateLimited, setIsRateLimited] = useState(false)
   const [toastOpen, setToastOpen] = useState(false)
   const [wordCount, setWordCount] = useState(0)
+  const [result, setResult] = useState({})
+  const [isPending, startTransition] = useTransition()
+  const turnstile = useRef(null)
 
   useEffect(() => {
     checkRateLimit()
-    const urlParams = new URLSearchParams(window.location.search)
-    if (urlParams.get('success') === 'true') {
-      setToastOpen(true)
-    }
   }, [])
 
   const checkRateLimit = () => {
@@ -83,7 +87,27 @@ const ContactForm = () => {
     setWordCount(words.length)
   }
 
-  if (isRateLimited || FORM_DISABLED) {
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const form = event.currentTarget
+
+    startTransition(async () => {
+      const response = await sendMessage(new FormData(form)).catch(() => ({
+        status: 'failed',
+      }))
+      // A Turnstile token works once, so get a new one for the next try
+      turnstile.current?.reset()
+      setResult(response)
+
+      if (response.status === 'sent') {
+        form.reset()
+        setWordCount(0)
+        setToastOpen(true)
+      }
+    })
+  }
+
+  if (isRateLimited) {
     return (
       <div className="flex w-full p-12 shadow-(--shadow-notice) col-prose flex gap-3 leading-tight bg-(--color-notice-bg) rounded-md p-4 justify-center rounded-sm">
         <p className="m-0 text-(--color-notice-muted)">
@@ -97,13 +121,9 @@ const ContactForm = () => {
     <>
       <Form
         className="w-full grid grid-cols-5 gap-8"
-        data-netlify="true"
-        name="contact"
-        method="POST"
-        action="/contact?success=true"
+        onSubmit={handleSubmit}
+        validationErrors={result.errors}
       >
-        <input type="hidden" name="form-name" value="contact" />
-
         {/* Honeypot field */}
         <div className="sr-only" aria-hidden="true">
           <label htmlFor="title">
@@ -113,6 +133,7 @@ const ContactForm = () => {
               name="title"
               id="title"
               tabIndex="-1"
+              autoComplete="off"
               className="opacity-0 absolute w-0 h-0"
             />
           </label>
@@ -181,13 +202,32 @@ const ContactForm = () => {
           <FieldError className={errorClass} />
         </TextField>
 
+        {TURNSTILE_ENABLED && (
+          <Turnstile
+            ref={turnstile}
+            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+            className="col-span-5"
+          />
+        )}
+
         <Button
           type="submit"
           className="button-dandelion self-start min-w-fit font-ui text-base/tight lowercase text-center select-none w-full @sm:w-auto @sm:grow-0 flex-auto"
           isDisabled={wordCount < MIN_WORD_COUNT}
+          isPending={isPending}
         >
-          Send
+          {isPending ? 'Sending…' : 'Send'}
         </Button>
+
+        {result.status === 'failed' && (
+          <p
+            role="alert"
+            className="col-span-5 m-0 font-ui text-xs text-rio-600"
+          >
+            Your message couldn’t be sent. Please try again or send an email
+            instead.
+          </p>
+        )}
       </Form>
 
       <Toast
