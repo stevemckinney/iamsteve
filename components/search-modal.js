@@ -150,6 +150,23 @@ function isQuestion(term) {
 const answers = new Map()
 const keyFor = (term, path) => `${path.join('/')}|${term.toLowerCase()}`
 
+// Whether AI search is on, found out once a page load and shared by every
+// menu. Off, whether switched off or out of budget for the month, the menu
+// is as it was before there was AI in it. Not knowing counts as off.
+let aiOn = null
+let aiChecked = null
+function checkAI() {
+  aiChecked ??= fetch('/api/search/ai')
+    .then((response) => response.json())
+    .then((data) => (aiOn = data.on === true))
+    .catch(() => (aiOn = false))
+  // A budget that runs out mid-visit turns it off after the check
+  return aiChecked.then(() => aiOn)
+}
+
+// What the route says when AI search is off: no key, or no budget left
+const OFF = new Error('AI search is off')
+
 // react-aria's own cue, sent to a list just before it changes, to start the
 // keyboard at the first row of the new list rather than leave it on a row
 // that has gone
@@ -193,7 +210,10 @@ async function fetchMatches(term, path, { signal, onMatch }) {
     body: JSON.stringify({ query: term, scope: path }),
     signal,
   })
-  if (!response.ok) throw new Error(`ai search ${response.status}`)
+  if (!response.ok) {
+    const { off } = await response.json().catch(() => ({}))
+    throw off ? OFF : new Error(`ai search ${response.status}`)
+  }
   const reader = response.body.pipeThrough(new TextDecoderStream()).getReader()
   let text = ''
   for (;;) {
@@ -204,6 +224,7 @@ async function fetchMatches(term, path, { signal, onMatch }) {
     text = lines.pop()
     for (const line of lines) {
       const match = JSON.parse(line)
+      if (match.off) throw OFF
       // The route says so when Claude stopped short of an answer
       if (match.error) throw new Error('ai search stopped')
       onMatch(match)
@@ -402,6 +423,21 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     }
   }, [index, isOpen])
 
+  // Whether AI search is on is read on every open, which costs nothing after
+  // the first, so a menu hears when another has found the budget spent
+  const [hasAI, setHasAI] = useState(aiOn === true)
+
+  useEffect(() => {
+    if (!isOpen) return
+    let cancelled = false
+    checkAI().then((on) => {
+      if (!cancelled) setHasAI(on)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [isOpen])
+
   // The on-screen keyboard does not shrink the layout viewport on iOS, so dvh
   // alone leaves the dialog running underneath it. visualViewport is the only
   // thing that reports the area actually left to draw in.
@@ -494,10 +530,18 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       })
       answers.set(key, { key, status: 'done', matches })
       update({ status: 'done', matches })
-    } catch {
+    } catch (error) {
       // Left behind for other words, or a closed menu, it was never asked
       if (controller.signal.aborted) {
         setAsked((shown) => (shown?.controller === controller ? null : shown))
+      } else if (error === OFF) {
+        // The month's budget is spent, so the menu goes back to how it was
+        // for the rest of the visit, and says so to anyone listening. The
+        // keyboard starts again at the top rather than where the row was.
+        if (activeKey(inputRef.current) === 'ai:ask') focusFirst(list.current)
+        aiOn = false
+        setHasAI(false)
+        update({ status: 'off' })
       } else {
         update({ status: 'failed' })
       }
@@ -607,9 +651,9 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     const first = !!answer || isQuestion(term) || found.length === 0
 
     return [
-      first && ai,
+      hasAI && first && ai,
       ...found,
-      !first && ai,
+      hasAI && !first && ai,
       {
         id: 'all',
         items: [
@@ -636,6 +680,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     done,
     router,
     onOpenChange,
+    hasAI,
     answer,
     ask,
   ])
@@ -694,7 +739,9 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       if (answer) {
         const found = answer.matches.length
         setStatus(
-          found > 0
+          answer.status === 'off'
+            ? 'AI search is off for now'
+            : found > 0
             ? `AI found ${found} match${found === 1 ? '' : 'es'} for ${term}`
             : answer.status === 'failed'
             ? 'AI search isn’t available'
