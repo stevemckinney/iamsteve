@@ -1287,6 +1287,18 @@ const Sprite16 = (props) => (
           />
         </g>
       </symbol>
+      <symbol id="sparkle-16" viewBox="0 0 16 16">
+        <g className="sparkle">
+          <path
+            d="M6.5 4C7 7.5 8 8.5 11.5 9C8 9.5 7 10.5 6.5 14C6 10.5 5 9.5 1.5 9C5 8.5 6 7.5 6.5 4Z"
+            className="fill-(--icon-fill) stroke-current stroke-2 sl-r"
+          />
+          <path
+            d="M12.5 1.5v4m-2-2h4"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
       <symbol id="star-16" viewBox="0 0 16 16">
         <g className="star">
           <path

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo, useRef } from 'react'
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import {
   ModalOverlay,
@@ -14,6 +14,7 @@ import {
   ListBoxSection,
   Collection,
   Header,
+  Text,
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 import { search, groupResults, typeIcon } from '@/lib/search'
@@ -133,6 +134,83 @@ const pages = [
 // rows cost a second to paint on a slow phone, 40 cost nothing.
 const SCOPE_ROWS = 40
 
+// A question, or a search long enough to describe what it is after, is put
+// to Claude ahead of the keyword search, which can only match the words
+const questions =
+  /^(how|what|why|where|which|who|when|can|could|should|is|are|do|does|any)\b/i
+function isQuestion(term) {
+  const words = term.split(/\s+/).length
+  return (
+    words >= 4 || term.endsWith('?') || (words >= 2 && questions.test(term))
+  )
+}
+
+// Questions already answered this page load, so asking again costs nothing.
+// The same words asked from another place are another question.
+const answers = new Map()
+const keyFor = (term, path) => `${path.join('/')}|${term.toLowerCase()}`
+
+// react-aria's own cue, sent to a list just before it changes, to start the
+// keyboard at the first row of the new list rather than leave it on a row
+// that has gone
+function focusFirst(list) {
+  list?.dispatchEvent(
+    // FOCUS_EVENT in @react-aria/utils
+    new CustomEvent('react-aria-focus', {
+      bubbles: true,
+      cancelable: true,
+      detail: { focusStrategy: 'first' },
+    })
+  )
+}
+
+// The row the keyboard is on, which react-aria only gives away through the
+// input's aria-activedescendant
+function activeKey(input) {
+  const id = input?.getAttribute('aria-activedescendant')
+  return id ? document.getElementById(id)?.dataset.key ?? null : null
+}
+
+// The row that offers Claude, then says how it is getting on until there is
+// something to show
+function offer(answer, term) {
+  if (!answer) return { title: `Ask AI about “${term}”` }
+  if (answer.status === 'asking') {
+    return { title: 'Asking AI…', muted: true, busy: true }
+  }
+  if (answer.status === 'failed') {
+    return { title: 'AI search isn’t available, try again', muted: true }
+  }
+  return { title: `No AI matches for “${term}”`, muted: true }
+}
+
+// Claude's matches arrive as lines of JSON, and each is handed on as it lands
+// rather than once they all have
+async function fetchMatches(term, path, { signal, onMatch }) {
+  const response = await fetch('/api/search/ai', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: term, scope: path }),
+    signal,
+  })
+  if (!response.ok) throw new Error(`ai search ${response.status}`)
+  const reader = response.body.pipeThrough(new TextDecoderStream()).getReader()
+  let text = ''
+  for (;;) {
+    const { value, done } = await reader.read()
+    if (done) return
+    text += value
+    const lines = text.split('\n')
+    text = lines.pop()
+    for (const line of lines) {
+      const match = JSON.parse(line)
+      // The route says so when Claude stopped short of an answer
+      if (match.error) throw new Error('ai search stopped')
+      onMatch(match)
+    }
+  }
+}
+
 // The box follows its content, and a change of height eases over rather
 // than jumping. The parts that set the height are watched, not the box, or
 // the motion would be watching itself: while it runs the box is held at a
@@ -223,21 +301,36 @@ function ResultContent({ item }) {
         size={16}
         variant="none"
         aria-hidden="true"
-        className="flex shrink-0 opacity-80"
+        className={cn(
+          'flex shrink-0 opacity-80',
+          // while Claude is still thinking
+          item.busy && 'motion-safe:animate-pulse'
+        )}
       />
-      <span className="flex items-baseline gap-2 min-w-0 flex-1">
-        <span
-          className={cn(
-            'relative top-px text-sm truncate',
-            item.muted ? 'text-body' : 'font-medium text-heading'
-          )}
-        >
-          {item.title}
-        </span>
-        {item.type === 'link' && item.summary && (
-          <span className="relative top-px text-xs text-ui-body truncate basis-0 grow">
-            {item.summary}
+      <span className="flex flex-col min-w-0 flex-1">
+        <span className="flex items-baseline gap-2 min-w-0">
+          <span
+            className={cn(
+              'relative top-px text-sm truncate',
+              item.muted ? 'text-body' : 'font-medium text-heading'
+            )}
+          >
+            {item.title}
           </span>
+          {item.type === 'link' && item.summary && (
+            <span className="relative top-px text-xs text-ui-body truncate basis-0 grow">
+              {item.summary}
+            </span>
+          )}
+        </span>
+        {item.reason && (
+          // Why Claude picked it, which a screen reader hears after the title
+          <Text
+            slot="description"
+            className="relative top-px text-xs text-ui-body truncate"
+          >
+            {item.reason}
+          </Text>
         )}
       </span>
       {item.path && (
@@ -360,22 +453,60 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   const list = useRef(null)
 
   // Going to a place. Enter and click open its page; this is what the arrow,
-  // Tab and the chevron do instead. The place starts at its first row: the
-  // cue is react-aria's own, sent to the list just before it changes, and it
-  // also keeps the keyboard pointed at the new list rather than at a row that
-  // has gone.
+  // Tab and the chevron do instead. The place starts at its first row.
   const enter = (path) => {
-    list.current?.dispatchEvent(
-      // FOCUS_EVENT in @react-aria/utils
-      new CustomEvent('react-aria-focus', {
-        bubbles: true,
-        cancelable: true,
-        detail: { focusStrategy: 'first' },
-      })
-    )
+    focusFirst(list.current)
     setPath(path)
     setQuery('')
   }
+
+  // Claude's answer belongs to the words asked and the place they were typed
+  // in, so typing on or moving away leaves it behind, until they come back
+  const [asked, setAsked] = useState(null)
+  const key = keyFor(query.trim(), path)
+  const answer = asked?.key === key ? asked : answers.get(key) ?? null
+
+  const ask = useCallback(async (term, path) => {
+    const key = keyFor(term, path)
+    const controller = new AbortController()
+    const matches = []
+    setAsked({ key, status: 'asking', matches: [], controller })
+    // Only the latest question may change what is shown
+    const update = (next) =>
+      setAsked((shown) =>
+        shown?.controller === controller ? { ...shown, ...next } : shown
+      )
+    try {
+      await fetchMatches(term, path, {
+        signal: controller.signal,
+        onMatch: (match) => {
+          // The first match takes the keyboard from the row that asked,
+          // which goes as it lands, unless the reader has moved on from it
+          if (
+            matches.length === 0 &&
+            activeKey(inputRef.current) === 'ai:ask'
+          ) {
+            focusFirst(list.current)
+          }
+          matches.push(match)
+          update({ matches: [...matches] })
+        },
+      })
+      answers.set(key, { key, status: 'done', matches })
+      update({ status: 'done', matches })
+    } catch {
+      // Left behind for other words, or a closed menu, it was never asked
+      if (controller.signal.aborted) {
+        setAsked((shown) => (shown?.controller === controller ? null : shown))
+      } else {
+        update({ status: 'failed' })
+      }
+    }
+  }, [])
+
+  // Only the question on screen is worth finishing, and paying for
+  const controller = asked?.controller
+  useEffect(() => () => controller?.abort(), [controller, key, isOpen])
 
   const sections = useMemo(() => {
     // A row is a page. One that is also a place in the tree can be entered
@@ -444,8 +575,41 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       items: group.items.map(row),
     }))
 
+    // What Claude found, under its own ids so a page the keywords also found
+    // can be listed twice. Until there is something, one row offers it.
+    const term = query.trim()
+    const matches = answer?.matches ?? []
+    const ai = {
+      id: 'ai',
+      title:
+        matches.length > 0 &&
+        (answer.status === 'asking' ? 'Finding AI matches…' : 'AI matches'),
+      items:
+        matches.length > 0
+          ? matches.map((match) => ({ ...row(match), id: `ai:${match.slug}` }))
+          : [
+              {
+                id: 'ai:ask',
+                icon: 'sparkle',
+                ...offer(answer, term),
+                run: () => {
+                  if (answer && answer.status !== 'failed') return
+                  // The answer leads the list, so that is where to look
+                  list.current?.closest('.search-body')?.scrollTo({ top: 0 })
+                  return ask(term, path)
+                },
+              },
+            ],
+    }
+
+    // Asking comes first for a question, or when the keywords found nothing,
+    // and last otherwise. Once asked, the answer leads.
+    const first = !!answer || isQuestion(term) || found.length === 0
+
     return [
+      first && ai,
       ...found,
+      !first && ai,
       {
         id: 'all',
         items: [
@@ -460,17 +624,20 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
           },
         ],
       },
-    ]
+    ].filter(Boolean)
   }, [
     index,
     query,
     isSearching,
     node,
+    path,
     pathname,
     nearest,
     done,
     router,
     onOpenChange,
+    answer,
+    ask,
   ])
 
   // The footer describes what the keys will do to the focused row. react-aria
@@ -516,13 +683,30 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       setStatus('')
       return
     }
+    // Claude takes a few seconds, so say it has been asked, and once it has
+    // finished, what it found
+    if (answer?.status === 'asking') {
+      setStatus('Asking AI')
+      return
+    }
     const timer = setTimeout(() => {
+      const term = query.trim()
+      if (answer) {
+        const found = answer.matches.length
+        setStatus(
+          found > 0
+            ? `AI found ${found} match${found === 1 ? '' : 'es'} for ${term}`
+            : answer.status === 'failed'
+            ? 'AI search isn’t available'
+            : `No AI matches for ${term}`
+        )
+        return
+      }
       const found = sections.reduce(
         (total, section) =>
           total + section.items.filter((item) => !item.run).length,
         0
       )
-      const term = query.trim()
       setStatus(
         found === 0
           ? `No results for ${term}`
@@ -530,7 +714,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       )
     }, 500)
     return () => clearTimeout(timer)
-  }, [isOpen, done, isSearching, sections, query])
+  }, [isOpen, done, isSearching, sections, query, answer])
 
   const focused = focusedKey ? byKey.get(focusedKey) : null
 
@@ -827,7 +1011,14 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                             <ListBoxItem
                               id={item.id}
                               textValue={item.title}
-                              className={rowStyle}
+                              className={(state) =>
+                                cn(
+                                  rowStyle(state),
+                                  // Claude's matches ease in as they arrive
+                                  item.reason &&
+                                    'motion-safe:animate-[search-fade-in_200ms_ease-out]'
+                                )
+                              }
                             >
                               <ResultContent item={item} />
                             </ListBoxItem>

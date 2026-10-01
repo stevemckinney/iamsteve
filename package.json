@@ -62,6 +62,7 @@
     ]
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
     "@content-collections/core": "^0.14.2",
     "@content-collections/mdx": "^0.2.2",
     "@content-collections/next": "^0.2.11",
