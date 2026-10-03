@@ -160,12 +160,9 @@ function checkAI() {
     .then((response) => response.json())
     .then((data) => (aiOn = data.on === true))
     .catch(() => (aiOn = false))
-  // A budget that runs out mid-visit turns it off after the check
+  // AI search that steps aside mid-visit stays aside after the check
   return aiChecked.then(() => aiOn)
 }
-
-// What the route says when AI search is off: no key, or no budget left
-const OFF = new Error('AI search is off')
 
 // react-aria's own cue, sent to a list just before it changes, to start the
 // keyboard at the first row of the new list rather than leave it on a row
@@ -195,9 +192,6 @@ function offer(answer, term) {
   if (answer.status === 'asking') {
     return { title: 'Asking AI…', muted: true, busy: true }
   }
-  if (answer.status === 'failed') {
-    return { title: 'AI search isn’t available, try again', muted: true }
-  }
   return { title: `No AI matches for “${term}”`, muted: true }
 }
 
@@ -210,10 +204,7 @@ async function fetchMatches(term, path, { signal, onMatch }) {
     body: JSON.stringify({ query: term, scope: path }),
     signal,
   })
-  if (!response.ok) {
-    const { off } = await response.json().catch(() => ({}))
-    throw off ? OFF : new Error(`ai search ${response.status}`)
-  }
+  if (!response.ok) throw new Error(`ai search ${response.status}`)
   const reader = response.body.pipeThrough(new TextDecoderStream()).getReader()
   let text = ''
   for (;;) {
@@ -224,7 +215,6 @@ async function fetchMatches(term, path, { signal, onMatch }) {
     text = lines.pop()
     for (const line of lines) {
       const match = JSON.parse(line)
-      if (match.off) throw OFF
       // The route says so when Claude stopped short of an answer
       if (match.error) throw new Error('ai search stopped')
       onMatch(match)
@@ -530,21 +520,25 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       })
       answers.set(key, { key, status: 'done', matches })
       update({ status: 'done', matches })
-    } catch (error) {
+    } catch {
       // Left behind for other words, or a closed menu, it was never asked
       if (controller.signal.aborted) {
         setAsked((shown) => (shown?.controller === controller ? null : shown))
-      } else if (error === OFF) {
-        // The month's budget is spent, so the menu goes back to how it was
-        // for the rest of the visit, and says so to anyone listening. The
-        // keyboard starts again at the top rather than where the row was.
-        if (activeKey(inputRef.current) === 'ai:ask') focusFirst(list.current)
-        aiOn = false
-        setHasAI(false)
-        update({ status: 'off' })
-      } else {
-        update({ status: 'failed' })
+        return
       }
+      // What arrived before it stopped is still an answer
+      if (matches.length > 0) {
+        update({ status: 'done' })
+        return
+      }
+      // With nothing to show, whether the month's budget is spent or the
+      // gateway is down, AI search steps aside without a word for the rest
+      // of the visit, and the menu is the one it always was. The keyboard
+      // starts again at the top rather than where the row was.
+      if (activeKey(inputRef.current) === 'ai:ask') focusFirst(list.current)
+      aiOn = false
+      setHasAI(false)
+      setAsked((shown) => (shown?.controller === controller ? null : shown))
     }
   }, [])
 
@@ -637,7 +631,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                 icon: 'sparkle',
                 ...offer(answer, term),
                 run: () => {
-                  if (answer && answer.status !== 'failed') return
+                  if (answer) return
                   // The answer leads the list, so that is where to look
                   list.current?.closest('.search-body')?.scrollTo({ top: 0 })
                   return ask(term, path)
@@ -739,12 +733,8 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       if (answer) {
         const found = answer.matches.length
         setStatus(
-          answer.status === 'off'
-            ? 'AI search is off for now'
-            : found > 0
+          found > 0
             ? `AI found ${found} match${found === 1 ? '' : 'es'} for ${term}`
-            : answer.status === 'failed'
-            ? 'AI search isn’t available'
             : `No AI matches for ${term}`
         )
         return

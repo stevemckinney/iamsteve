@@ -76,13 +76,10 @@ async function* matches(stream, node) {
     const match = pick(text)
     if (match) yield match
   } catch (error) {
-    // A spent month turns AI search off, so the menu goes back to how it was
-    if (spent(error)) {
-      yield `${JSON.stringify({ off: true })}\n`
-      return
-    }
-    // The menu keeps whatever arrived; this only says the rest never will
-    if (!stream.aborted) console.error('AI search failed', error)
+    // The menu keeps whatever arrived; this only says the rest never will.
+    // A spent month is expected, so it is not worth a line in the logs.
+    if (!stream.aborted && !spent(error))
+      console.error('AI search failed', error)
     yield `${JSON.stringify({ error: true })}\n`
   }
 }
