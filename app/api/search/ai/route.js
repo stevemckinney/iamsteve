@@ -1,17 +1,10 @@
-import Anthropic from '@anthropic-ai/sdk'
-import { catalogue, question, read, within } from '@/lib/search-ai'
+import { answer, gateway, spent } from '@/lib/search-ai'
 import { resolve } from '@/lib/search-tree'
 
-// Claude, through Vercel’s AI Gateway, on a key of its own. The key is the
-// switch: without AI_GATEWAY_API_KEY there is no AI search, and the menu is
-// as it was. The key’s monthly budget is kept by the gateway, which turns it
-// away once the month is spent, however many functions are asking.
-const gateway = 'https://ai-gateway.vercel.sh'
-
-// What the gateway says once the key’s budget for the month is spent
-const spent = (error) =>
-  error instanceof Anthropic.APIError &&
-  error.type === 'quota_for_entity_exceeded'
+// The key is the switch: without AI_GATEWAY_API_KEY there is no AI search,
+// and the menu is as it was. The key’s monthly budget is kept by the
+// gateway, which turns it away once the month is spent, however many
+// functions are asking.
 
 // Whether there is budget left this month. The key’s id lets the budget be
 // read before anyone asks; without it, the first refusal has to tell. A
@@ -51,35 +44,15 @@ export async function GET() {
 
 // Each match goes out as a line of JSON as soon as Claude has written it, so
 // an answer cut short still keeps what came before
-async function* matches(stream, node) {
-  const seen = new Set()
-  const pick = (line) => {
-    const match = read(line)
-    if (!match || seen.has(match.slug) || !within(node, match)) return null
-    seen.add(match.slug)
-    return `${JSON.stringify(match)}\n`
-  }
-
-  let text = ''
+async function* lines(matches, signal) {
   try {
-    for await (const event of stream) {
-      if (event.type !== 'content_block_delta') continue
-      if (event.delta.type !== 'text_delta') continue
-      text += event.delta.text
-      const lines = text.split('\n')
-      text = lines.pop()
-      for (const line of lines) {
-        const match = pick(line)
-        if (match) yield match
-      }
-    }
-    const match = pick(text)
-    if (match) yield match
+    for await (const match of matches) yield `${JSON.stringify(match)}\n`
   } catch (error) {
     // The menu keeps whatever arrived; this only says the rest never will.
     // A spent month is expected, so it is not worth a line in the logs.
-    if (!stream.aborted && !spent(error))
+    if (!signal.aborted && !spent(error)) {
       console.error('AI search failed', error)
+    }
     yield `${JSON.stringify({ error: true })}\n`
   }
 }
@@ -94,33 +67,15 @@ export async function POST(request) {
     )
   }
 
-  const apiKey = process.env.AI_GATEWAY_API_KEY
-  if (!apiKey) return Response.json({ off: true }, { status: 503 })
+  if (!process.env.AI_GATEWAY_API_KEY) {
+    return Response.json({ off: true }, { status: 503 })
+  }
 
   const node = Array.isArray(scope) ? resolve(scope) : null
-  const client = new Anthropic({ apiKey, baseURL: gateway, timeout: 30_000 })
-  const stream = client.messages.stream(
-    {
-      model: 'anthropic/claude-opus-5.5',
-      // Thinking is always on, and is paid out of this too
-      max_tokens: 4096,
-      // Picking from a list is light work, and every second of it shows
-      output_config: { effort: 'low' },
-      system: [
-        {
-          type: 'text',
-          text: catalogue().prompt,
-          cache_control: { type: 'ephemeral' },
-        },
-      ],
-      messages: [{ role: 'user', content: question(term, node) }],
-    },
-    // A reader who has moved on stops the answer, and what it costs
-    { signal: request.signal }
-  )
+  const matches = answer(term, node, { signal: request.signal })
 
   return new Response(
-    ReadableStream.from(matches(stream, node)).pipeThrough(
+    ReadableStream.from(lines(matches, request.signal)).pipeThrough(
       new TextEncoderStream()
     ),
     {

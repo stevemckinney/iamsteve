@@ -1,15 +1,72 @@
+import { Suspense, cache } from 'react'
+
 import { buildIndex } from '@/lib/search-index'
-import { search, groupResults } from '@/lib/search'
+import { search } from '@/lib/search'
+import { answer, spent } from '@/lib/search-ai'
 import { cn } from '@/lib/utils'
 
 import { Header, Title, Description } from '@/components/page'
 import { PencilMono } from '@/components/illustration'
 import Icon from '@/components/icon'
 import Link from '@/components/link'
+import Results from './results'
 
 export const dynamic = 'force-dynamic'
 
 const RESULT_LIMIT = 40
+
+// Claude is asked once there is enough of a search to go on
+const asks = (q) =>
+  !!process.env.AI_GATEWAY_API_KEY && q.length >= 3 && q.length <= 200
+
+// Claude’s picks lead, then whatever the keywords found that it did not.
+// Switched off, out of budget, failing or slow, it is the keyword search
+// alone. The count and the list share the one answer.
+const find = cache(async (q) => {
+  const found = search(buildIndex(), q, { limit: RESULT_LIMIT })
+  if (!asks(q)) return found
+  const best = []
+  const signal = AbortSignal.timeout(10_000)
+  try {
+    for await (const match of answer(q, null, { signal })) best.push(match)
+  } catch (error) {
+    if (!signal.aborted && !spent(error)) {
+      console.error('AI search failed', error)
+    }
+  }
+  const taken = new Set(best.map((match) => match.slug))
+  return [...best, ...found.filter((result) => !taken.has(result.slug))].slice(
+    0,
+    RESULT_LIMIT
+  )
+})
+
+const countOf = (results, q) =>
+  results.length === 0
+    ? `No results for “${q}”`
+    : `${results.length} ${
+        results.length === 1 ? 'result' : 'results'
+      } for “${q}”`
+
+async function Count({ q }) {
+  return countOf(await find(q), q)
+}
+
+// With nothing found yet and Claude still to answer, there is nothing to say
+function List({ items, waiting = false }) {
+  if (items.length > 0) return <Results items={items} />
+  if (waiting) return null
+  return (
+    <p className="text-ui-body md:text-lg">
+      {'Try another word, or browse the '}
+      <Link href="/blog">blog archive</Link>.
+    </p>
+  )
+}
+
+async function Found({ q }) {
+  return <List items={await find(q)} />
+}
 
 export async function generateMetadata({ searchParams }) {
   const params = await searchParams
@@ -30,54 +87,12 @@ export async function generateMetadata({ searchParams }) {
   }
 }
 
-// One result, as a row of a card list like those on /collections. A link
-// out shows its domain beside the title; everything else has a summary.
-function Result({ result }) {
-  const isLink = result.type === 'link'
-
-  return (
-    <li className="border-b last:border-0 border-neutral-01-500/10">
-      <Link
-        href={result.slug}
-        className={cn(
-          'group flex flex-col gap-1 px-4 py-3 md:px-5 md:py-4',
-          'hover:bg-neutral-01-50 dark:hover:bg-surface-02/20',
-          'transition duration-200 ease-linear',
-          // The card clips what reaches past it, so the ring sits inside
-          'focus-visible:-outline-offset-2'
-        )}
-      >
-        <span className="flex items-baseline gap-2 min-w-0">
-          <span className="text-heading lg:text-lg leading-snug">
-            {result.title}
-          </span>
-          {isLink && result.summary && (
-            <span className="text-emphasis/40 group-hover:text-emphasis/80 transition duration-200 ease-linear truncate">
-              {result.summary}
-            </span>
-          )}
-        </span>
-        {!isLink && result.summary && (
-          <span className="text-sm md:text-base text-ui-body line-clamp-2">
-            {result.summary}
-          </span>
-        )}
-      </Link>
-    </li>
-  )
-}
-
 export default async function SearchPage({ searchParams }) {
   const params = await searchParams
   const q = typeof params?.q === 'string' ? params.q.trim() : ''
-  const index = buildIndex()
-  const results = q ? search(index, q, { limit: RESULT_LIMIT }) : []
-  const count =
-    results.length === 0
-      ? `No results for “${q}”`
-      : `${results.length} ${
-          results.length === 1 ? 'result' : 'results'
-        } for “${q}”`
+  // The keyword results stand in until Claude has answered
+  const found = q ? search(buildIndex(), q, { limit: RESULT_LIMIT }) : []
+  const waiting = asks(q) && found.length === 0
 
   return (
     <>
@@ -91,9 +106,15 @@ export default async function SearchPage({ searchParams }) {
         <Description className="desc max-md:mb-2">
           {/* Once there is a search, what it found says more than what the
               page is for */}
-          {q
-            ? count
-            : 'Find blog posts, notes, categories and collections across the site'}
+          {q ? (
+            <Suspense
+              fallback={waiting ? `Searching for “${q}”…` : countOf(found, q)}
+            >
+              <Count q={q} />
+            </Suspense>
+          ) : (
+            'Find blog posts, notes, categories and collections across the site'
+          )}
         </Description>
         <form
           role="search"
@@ -120,7 +141,11 @@ export default async function SearchPage({ searchParams }) {
             name="q"
             type="search"
             defaultValue={q}
-            placeholder="Search everything…"
+            placeholder={
+              process.env.AI_GATEWAY_API_KEY
+                ? 'Prompt to find something…'
+                : 'Search everything…'
+            }
             autoComplete="off"
             autoCorrect="off"
             spellCheck="false"
@@ -171,26 +196,14 @@ export default async function SearchPage({ searchParams }) {
           </p>
         )}
 
-        {q && results.length === 0 && (
-          <p className="text-ui-body md:text-lg">
-            {'Try another word, or browse the '}
-            <Link href="/blog">blog archive</Link>.
-          </p>
+        {q && (
+          <>
+            <h2 className="sr-only">Results</h2>
+            <Suspense fallback={<List items={found} waiting={waiting} />}>
+              <Found q={q} />
+            </Suspense>
+          </>
         )}
-
-        {groupResults(results).map((group) => (
-          <div className="flex flex-col gap-4" key={group.type}>
-            <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 pt-2">
-              {group.title}
-              <span className="text-cornflour-600">{group.items.length}</span>
-            </h2>
-            <ul className="bg-surface shadow-placed rounded-md flex flex-col overflow-hidden m-0 p-0 list-none">
-              {group.items.map((result) => (
-                <Result result={result} key={result.slug} />
-              ))}
-            </ul>
-          </div>
-        ))}
       </section>
     </>
   )
