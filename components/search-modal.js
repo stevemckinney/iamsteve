@@ -29,7 +29,13 @@ import {
   pathTo,
 } from '@/lib/search-tree'
 import siteMetadata from '@/content/metadata'
-import { fetchIndex, peekIndex } from '@/lib/search-cache'
+import {
+  fetchIndex,
+  peekIndex,
+  checkAI,
+  peekAI,
+  disableAI,
+} from '@/lib/search-cache'
 
 // Posts and notes are the only content served as markdown, and the index is
 // the only thing that knows a path is really one of them.
@@ -134,35 +140,10 @@ const pages = [
 // rows cost a second to paint on a slow phone, 40 cost nothing.
 const SCOPE_ROWS = 40
 
-// A question, or a search long enough to describe what it is after, is put
-// to Claude ahead of the keyword search, which can only match the words
-const questions =
-  /^(how|what|why|where|which|who|when|can|could|should|is|are|do|does|any)\b/i
-function isQuestion(term) {
-  const words = term.split(/\s+/).length
-  return (
-    words >= 4 || term.endsWith('?') || (words >= 2 && questions.test(term))
-  )
-}
-
-// Questions already answered this page load, so asking again costs nothing.
-// The same words asked from another place are another question.
+// Searches Claude has already answered this page load, so coming back to one
+// costs nothing. The same words typed in another place are another search.
 const answers = new Map()
 const keyFor = (term, path) => `${path.join('/')}|${term.toLowerCase()}`
-
-// Whether AI search is on, found out once a page load and shared by every
-// menu. Off, whether switched off or out of budget for the month, the menu
-// is as it was before there was AI in it. Not knowing counts as off.
-let aiOn = null
-let aiChecked = null
-function checkAI() {
-  aiChecked ??= fetch('/api/search/ai')
-    .then((response) => response.json())
-    .then((data) => (aiOn = data.on === true))
-    .catch(() => (aiOn = false))
-  // AI search that steps aside mid-visit stays aside after the check
-  return aiChecked.then(() => aiOn)
-}
 
 // react-aria's own cue, sent to a list just before it changes, to start the
 // keyboard at the first row of the new list rather than leave it on a row
@@ -178,25 +159,11 @@ function focusFirst(list) {
   )
 }
 
-// The row the keyboard is on, which react-aria only gives away through the
-// input's aria-activedescendant
-function activeKey(input) {
-  const id = input?.getAttribute('aria-activedescendant')
-  return id ? document.getElementById(id)?.dataset.key ?? null : null
-}
+// The keys react-aria hands on from the field to move along the list
+const moves = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End']
 
-// The row that offers Claude, then says how it is getting on until there is
-// something to show
-function offer(answer, term) {
-  if (!answer) return { title: `Ask AI about “${term}”` }
-  if (answer.status === 'asking') {
-    return { title: 'Asking AI…', muted: true, busy: true }
-  }
-  return { title: `No AI matches for “${term}”`, muted: true }
-}
-
-// Claude's matches arrive as lines of JSON, and each is handed on as it lands
-// rather than once they all have
+// Claude's matches arrive as lines of JSON. Each is handed on as it lands, so
+// an answer cut short still keeps what came before.
 async function fetchMatches(term, path, { signal, onMatch }) {
   const response = await fetch('/api/search/ai', {
     method: 'POST',
@@ -312,11 +279,7 @@ function ResultContent({ item }) {
         size={16}
         variant="none"
         aria-hidden="true"
-        className={cn(
-          'flex shrink-0 opacity-80',
-          // while Claude is still thinking
-          item.busy && 'motion-safe:animate-pulse'
-        )}
+        className="flex shrink-0 opacity-80"
       />
       <span className="flex flex-col min-w-0 flex-1">
         <span className="flex items-baseline gap-2 min-w-0">
@@ -413,15 +376,17 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     }
   }, [index, isOpen])
 
-  // Whether AI search is on is read on every open, which costs nothing after
-  // the first, so a menu hears when another has found the budget spent
-  const [hasAI, setHasAI] = useState(aiOn === true)
+  // Whether Claude searches too is read on the way in like the index, so a
+  // menu hears when another has found the budget spent. One opened before
+  // anyone knew finds out once it is open.
+  const [checked, setChecked] = useState(null)
+  const hasAI = (peekAI() ?? checked) === true
 
   useEffect(() => {
-    if (!isOpen) return
+    if (!isOpen || peekAI() !== null) return
     let cancelled = false
     checkAI().then((on) => {
-      if (!cancelled) setHasAI(on)
+      if (!cancelled) setChecked(on)
     })
     return () => {
       cancelled = true
@@ -477,6 +442,9 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   const isSearching = query.trim().length >= 2
 
   const list = useRef(null)
+  // Whether the reader has moved along the list since they last typed. A
+  // late answer then leaves the keyboard where they put it.
+  const navigated = useRef(false)
 
   // Going to a place. Enter and click open its page; this is what the arrow,
   // Tab and the chevron do instead. The place starts at its first row.
@@ -489,62 +457,60 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   // Claude's answer belongs to the words asked and the place they were typed
   // in, so typing on or moving away leaves it behind, until they come back
   const [asked, setAsked] = useState(null)
-  const key = keyFor(query.trim(), path)
+  const term = query.trim()
+  const key = keyFor(term, path)
   const answer = asked?.key === key ? asked : answers.get(key) ?? null
+  // Claude has yet to answer, so a list with nothing in it may still fill
+  const finding = hasAI && term.length >= 3 && answer?.status !== 'done'
 
-  const ask = useCallback(async (term, path) => {
+  // The answer goes in whole, so the list changes the once rather than with
+  // every match
+  const ask = useCallback(async (term, path, signal) => {
     const key = keyFor(term, path)
-    const controller = new AbortController()
     const matches = []
-    setAsked({ key, status: 'asking', matches: [], controller })
-    // Only the latest question may change what is shown
-    const update = (next) =>
-      setAsked((shown) =>
-        shown?.controller === controller ? { ...shown, ...next } : shown
-      )
+    // Only this search may change what it set
+    const settle = (next) =>
+      setAsked((shown) => (shown?.signal === signal ? next : shown))
+    setAsked({ key, status: 'asking', signal })
     try {
       await fetchMatches(term, path, {
-        signal: controller.signal,
-        onMatch: (match) => {
-          // The first match takes the keyboard from the row that asked,
-          // which goes as it lands, unless the reader has moved on from it
-          if (
-            matches.length === 0 &&
-            activeKey(inputRef.current) === 'ai:ask'
-          ) {
-            focusFirst(list.current)
-          }
-          matches.push(match)
-          update({ matches: [...matches] })
-        },
+        signal,
+        onMatch: (match) => matches.push(match),
       })
       answers.set(key, { key, status: 'done', matches })
-      update({ status: 'done', matches })
     } catch {
-      // Left behind for other words, or a closed menu, it was never asked
-      if (controller.signal.aborted) {
-        setAsked((shown) => (shown?.controller === controller ? null : shown))
-        return
-      }
-      // What arrived before it stopped is still an answer
-      if (matches.length > 0) {
-        update({ status: 'done' })
-        return
-      }
+      // Typed on from, moved away from or closed on, it was never asked
+      if (signal.aborted) return settle(null)
       // With nothing to show, whether the month's budget is spent or the
-      // gateway is down, AI search steps aside without a word for the rest
-      // of the visit, and the menu is the one it always was. The keyboard
-      // starts again at the top rather than where the row was.
-      if (activeKey(inputRef.current) === 'ai:ask') focusFirst(list.current)
-      aiOn = false
-      setHasAI(false)
-      setAsked((shown) => (shown?.controller === controller ? null : shown))
+      // gateway is down, the menu is the keyword search it always was for
+      // the rest of the visit, without a word
+      if (matches.length === 0) {
+        disableAI()
+        setChecked(false)
+        return settle(null)
+      }
+      // What arrived before it stopped is still worth showing
     }
+    // The best match leads, and the keyboard goes to it, unless the reader
+    // has already set off down the list
+    if (matches.length > 0 && !signal.aborted && !navigated.current) {
+      focusFirst(list.current)
+    }
+    settle({ key, status: 'done', matches, signal })
   }, [])
 
-  // Only the question on screen is worth finishing, and paying for
-  const controller = asked?.controller
-  useEffect(() => () => controller?.abort(), [controller, key, isOpen])
+  // Every search goes to Claude once the typing settles, and the keyword
+  // results stand in until it answers. Only the search on screen is worth
+  // finishing, and paying for.
+  useEffect(() => {
+    if (!isOpen || !hasAI || term.length < 3 || answers.has(key)) return
+    const controller = new AbortController()
+    const timer = setTimeout(() => ask(term, path, controller.signal), 600)
+    return () => {
+      clearTimeout(timer)
+      controller.abort()
+    }
+  }, [isOpen, hasAI, term, key, path, ask])
 
   const sections = useMemo(() => {
     // A row is a page. One that is also a place in the tree can be entered
@@ -597,15 +563,22 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     }
     if (!index) return []
 
+    // What Claude found leads. Its rows have the same ids as the keyword
+    // results, so the row the keyboard is on stays put as the list changes
+    // around it, and a page it found is not listed twice.
+    const best = answer?.status === 'done' ? answer.matches : []
+    const taken = new Set(best.map((match) => match.slug))
+
     // What was found, by kind. A category or collection is a place too, and
     // one of this node's own comes through even though it carries no
     // category itself.
     const found = groupResults(
       search(index, query, { types: node?.types }).filter(
         (result) =>
-          !node?.within ||
-          result.categories?.includes(node.within) ||
-          children.some((child) => child.slug === result.slug)
+          !taken.has(result.slug) &&
+          (!node?.within ||
+            result.categories?.includes(node.within) ||
+            children.some((child) => child.slug === result.slug))
       )
     ).map((group) => ({
       id: group.type,
@@ -613,41 +586,13 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       items: group.items.map(row),
     }))
 
-    // What Claude found, under its own ids so a page the keywords also found
-    // can be listed twice. Until there is something, one row offers it.
-    const term = query.trim()
-    const matches = answer?.matches ?? []
-    const ai = {
-      id: 'ai',
-      title:
-        matches.length > 0 &&
-        (answer.status === 'asking' ? 'Finding AI matches…' : 'AI matches'),
-      items:
-        matches.length > 0
-          ? matches.map((match) => ({ ...row(match), id: `ai:${match.slug}` }))
-          : [
-              {
-                id: 'ai:ask',
-                icon: 'sparkle',
-                ...offer(answer, term),
-                run: () => {
-                  if (answer) return
-                  // The answer leads the list, so that is where to look
-                  list.current?.closest('.search-body')?.scrollTo({ top: 0 })
-                  return ask(term, path)
-                },
-              },
-            ],
-    }
-
-    // Asking comes first for a question, or when the keywords found nothing,
-    // and last otherwise. Once asked, the answer leads.
-    const first = !!answer || isQuestion(term) || found.length === 0
-
     return [
-      hasAI && first && ai,
+      best.length > 0 && {
+        id: 'best',
+        title: 'Best matches',
+        items: best.map(row),
+      },
       ...found,
-      hasAI && !first && ai,
       {
         id: 'all',
         items: [
@@ -668,15 +613,12 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     query,
     isSearching,
     node,
-    path,
     pathname,
     nearest,
     done,
     router,
     onOpenChange,
-    hasAI,
     answer,
-    ask,
   ])
 
   // The footer describes what the keys will do to the focused row. react-aria
@@ -722,28 +664,18 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       setStatus('')
       return
     }
-    // Claude takes a few seconds, so say it has been asked, and once it has
-    // finished, what it found
-    if (answer?.status === 'asking') {
-      setStatus('Asking AI')
-      return
-    }
     const timer = setTimeout(() => {
-      const term = query.trim()
-      if (answer) {
-        const found = answer.matches.length
-        setStatus(
-          found > 0
-            ? `AI found ${found} match${found === 1 ? '' : 'es'} for ${term}`
-            : `No AI matches for ${term}`
-        )
-        return
-      }
       const found = sections.reduce(
         (total, section) =>
           total + section.items.filter((item) => !item.run).length,
         0
       )
+      // Nothing is said of an empty list until Claude has looked too
+      if (found === 0 && finding) {
+        setStatus('')
+        return
+      }
+      const term = query.trim()
       setStatus(
         found === 0
           ? `No results for ${term}`
@@ -751,7 +683,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
       )
     }, 500)
     return () => clearTimeout(timer)
-  }, [isOpen, done, isSearching, sections, query, answer])
+  }, [isOpen, done, isSearching, sections, query, finding])
 
   const focused = focusedKey ? byKey.get(focusedKey) : null
 
@@ -843,6 +775,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
 
   const onKeyDown = (event) => {
     if (event.key === 'Enter') rememberModifier(event)
+    if (moves.includes(event.key)) navigated.current = true
 
     // Typing the start of a place and pressing Tab goes there, the way a
     // filter token is committed elsewhere
@@ -917,7 +850,13 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
               'group-data-[exiting]/modal:opacity-0 group-data-[exiting]/modal:duration-150'
             )}
           >
-            <Autocomplete inputValue={query} onInputChange={setQuery}>
+            <Autocomplete
+              inputValue={query}
+              onInputChange={(value) => {
+                navigated.current = false
+                setQuery(value)
+              }}
+            >
               <TextField
                 aria-label={node ? `Search ${node.label}` : 'Search'}
                 className={cn(
@@ -933,7 +872,11 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                   size={24}
                   variant="none"
                   aria-hidden="true"
-                  className="text-body shrink-0"
+                  className={cn(
+                    'text-body shrink-0',
+                    // while Claude is still looking
+                    answer?.status === 'asking' && 'motion-safe:animate-pulse'
+                  )}
                 />
                 {node && (
                   <span
@@ -972,7 +915,13 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                   ref={inputRef}
                   onKeyDownCapture={onKeyDownCapture}
                   onKeyDown={onKeyDown}
-                  placeholder={node ? node.placeholder : 'Search everything…'}
+                  placeholder={
+                    node
+                      ? node.placeholder
+                      : hasAI
+                      ? 'Prompt to find something…'
+                      : 'Search everything…'
+                  }
                   className={cn(
                     'relative top-px flex-1 px-0 py-3.5 bg-transparent',
                     'text-base text-heading placeholder:text-body',
@@ -1020,7 +969,11 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                   )}
                   {isSearching && index && noResults && (
                     <div className="px-4 py-8 text-center text-sm text-body">
-                      No results found for &ldquo;{query}&rdquo;
+                      {finding ? (
+                        <>Searching&hellip;</>
+                      ) : (
+                        <>No results found for &ldquo;{query}&rdquo;</>
+                      )}
                     </div>
                   )}
                   <ListBox

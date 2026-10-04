@@ -5,13 +5,15 @@ import dynamic from 'next/dynamic'
 import { Button } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 import Icon from '@/components/icon'
-import { fetchIndex } from '@/lib/search-cache'
+import { fetchIndex, checkAI } from '@/lib/search-cache'
 
 const SearchModal = dynamic(() => import('./search-modal'), { ssr: false })
-// A warm-up only, of the index and the menu's code side by side. If either
-// fails the menu's own load and fetch retry, so nothing hears about it here.
+// A warm-up only, of the index, whether Claude searches too, and the menu's
+// code side by side. If any fails the menu's own load and fetch retry, so
+// nothing hears about it here.
 const warm = () => {
   fetchIndex().catch(() => {})
+  checkAI()
   import('./search-modal').catch(() => {})
 }
 
