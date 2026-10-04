@@ -50,7 +50,7 @@ export async function GET() {
 }
 
 // Each match goes out as a line of JSON as soon as Claude has written it, so
-// the menu can show the first while the rest are still on their way
+// an answer cut short still keeps what came before
 async function* matches(stream, node) {
   const seen = new Set()
   const pick = (line) => {

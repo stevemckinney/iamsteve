@@ -14,7 +14,6 @@ import {
   ListBoxSection,
   Collection,
   Header,
-  Text,
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
 import { search, groupResults, typeIcon } from '@/lib/search'
@@ -281,30 +280,19 @@ function ResultContent({ item }) {
         aria-hidden="true"
         className="flex shrink-0 opacity-80"
       />
-      <span className="flex flex-col min-w-0 flex-1">
-        <span className="flex items-baseline gap-2 min-w-0">
-          <span
-            className={cn(
-              'relative top-px text-sm truncate',
-              item.muted ? 'text-body' : 'font-medium text-heading'
-            )}
-          >
-            {item.title}
-          </span>
-          {item.type === 'link' && item.summary && (
-            <span className="relative top-px text-xs text-ui-body truncate basis-0 grow">
-              {item.summary}
-            </span>
+      <span className="flex items-baseline gap-2 min-w-0 flex-1">
+        <span
+          className={cn(
+            'relative top-px text-sm truncate',
+            item.muted ? 'text-body' : 'font-medium text-heading'
           )}
+        >
+          {item.title}
         </span>
-        {item.reason && (
-          // Why Claude picked it, which a screen reader hears after the title
-          <Text
-            slot="description"
-            className="relative top-px text-xs text-ui-body truncate"
-          >
-            {item.reason}
-          </Text>
+        {item.type === 'link' && item.summary && (
+          <span className="relative top-px text-xs text-ui-body truncate basis-0 grow">
+            {item.summary}
+          </span>
         )}
       </span>
       {item.path && (
@@ -1005,7 +993,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                                 cn(
                                   rowStyle(state),
                                   // Claude's matches ease in as they arrive
-                                  item.reason &&
+                                  section.id === 'best' &&
                                     'motion-safe:animate-[search-fade-in_200ms_ease-out]'
                                 )
                               }

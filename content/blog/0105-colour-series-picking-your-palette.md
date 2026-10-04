@@ -6,7 +6,7 @@ summary: 'Part one of the colour series. Colour theory is only a starting point 
 metadesc: 'How to choose an effective colour for your website project. From colours that represent your project to ones that help readability.'
 theme: '#f9f3f1'
 tags: ['Design']
-categories: ['Design']
+categories: ['Design', 'Colour']
 large: /images/blog/colour-series-featured-image-large.svg
 medium: /images/blog/colour-series-featured-image-medium.svg
 ogImage: '/assets/og/cover.jpg'
