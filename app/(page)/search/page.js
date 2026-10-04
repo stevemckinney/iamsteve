@@ -72,6 +72,12 @@ export default async function SearchPage({ searchParams }) {
   const q = typeof params?.q === 'string' ? params.q.trim() : ''
   const index = buildIndex()
   const results = q ? search(index, q, { limit: RESULT_LIMIT }) : []
+  const count =
+    results.length === 0
+      ? `No results for “${q}”`
+      : `${results.length} ${
+          results.length === 1 ? 'result' : 'results'
+        } for “${q}”`
 
   return (
     <>
@@ -83,7 +89,11 @@ export default async function SearchPage({ searchParams }) {
       <Header className="max-md:frame max-md:frame-24 max-md:px-8 max-md:py-8 flex flex-col gap-2 col-container md:col-content md:col-end-7 md:sticky top-8 self-start">
         <Title className="font-variation-bold text-5xl">Search</Title>
         <Description className="desc max-md:mb-2">
-          Find blog posts, notes, categories and collections across the site
+          {/* Once there is a search, what it found says more than what the
+              page is for */}
+          {q
+            ? count
+            : 'Find blog posts, notes, categories and collections across the site'}
         </Description>
         <form
           role="search"
@@ -163,36 +173,24 @@ export default async function SearchPage({ searchParams }) {
 
         {q && results.length === 0 && (
           <p className="text-ui-body md:text-lg">
-            {`No results for “${q}”. Try another word, or browse the `}
+            {'Try another word, or browse the '}
             <Link href="/blog">blog archive</Link>.
           </p>
         )}
 
-        {q && results.length > 0 && (
-          <>
-            {/* One string, as split JSX text loses the space before “for” */}
-            <p className="text-ui-body md:text-lg">
-              {`${results.length} ${
-                results.length === 1 ? 'result' : 'results'
-              } for “${q}”`}
-            </p>
-            {groupResults(results).map((group) => (
-              <div className="flex flex-col gap-4" key={group.type}>
-                <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 pt-2">
-                  {group.title}
-                  <span className="text-cornflour-600">
-                    {group.items.length}
-                  </span>
-                </h2>
-                <ul className="bg-surface shadow-placed rounded-md flex flex-col overflow-hidden m-0 p-0 list-none">
-                  {group.items.map((result) => (
-                    <Result result={result} key={result.slug} />
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </>
-        )}
+        {groupResults(results).map((group) => (
+          <div className="flex flex-col gap-4" key={group.type}>
+            <h2 className="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 pt-2">
+              {group.title}
+              <span className="text-cornflour-600">{group.items.length}</span>
+            </h2>
+            <ul className="bg-surface shadow-placed rounded-md flex flex-col overflow-hidden m-0 p-0 list-none">
+              {group.items.map((result) => (
+                <Result result={result} key={result.slug} />
+              ))}
+            </ul>
+          </div>
+        ))}
       </section>
     </>
   )
