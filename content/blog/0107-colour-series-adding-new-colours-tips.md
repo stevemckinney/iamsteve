@@ -6,7 +6,7 @@ summary: "Part three of the colour series. Practical tips for selecting colours 
 metadesc: 'Tips that I have learnt over the years from making colour palettes. Such as why you should be careful using yellow as your main colour.'
 theme: '#ffede5'
 tags: ['Design']
-categories: ['Design']
+categories: ['Design', 'Colour']
 images: ['/images/blog/colour-series-post-images-011.png']
 large: '/images/blog/colour-series-post-images-011.png'
 medium: '/images/blog/colour-series-post-images-021.png'

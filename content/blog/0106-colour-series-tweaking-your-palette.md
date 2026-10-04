@@ -6,7 +6,7 @@ summary: 'Part two of the colour series. Once you’ve picked your palette, this
 metadesc: 'How to make effective tweaks to your colour palette. From checking text and background combinations to whether you have enough contrast.'
 theme: '#ffede5'
 tags: ['Design']
-categories: ['Design']
+categories: ['Design', 'Colour']
 images: ['/images/blog/colour-series-post-images-011.png']
 large: '/images/blog/colour-series-post-images-011.png'
 medium: '/images/blog/colour-series-post-images-021.png'
