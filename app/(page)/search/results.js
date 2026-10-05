@@ -63,8 +63,8 @@ function Result({ item }) {
 }
 
 // Links that come one after another share a card, the way the collections
-// page lists them. The corners and inset are the post card's, so the rows
-// line up with the cards around them.
+// page lists them. The corners and inset are the post card's, and the link
+// icon sits where a card's chip does, so the titles line up with theirs.
 function Links({ items }) {
   return (
     <ul className="bg-surface shadow-placed rounded-lg flex flex-col overflow-hidden m-0 p-0 list-none">
@@ -75,11 +75,22 @@ function Links({ items }) {
         >
           <Link
             href={item.slug}
-            className="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 dark:hover:bg-surface-02/20 transition duration-200 ease-linear items-baseline py-2.5 px-8 w-full [mask:linear-gradient(90deg,black_80%,transparent)] focus-visible:-outline-offset-2"
+            className="flex flex-1 items-center gap-4 group hover:bg-neutral-01-50 dark:hover:bg-surface-02/20 transition duration-200 ease-linear py-2.5 px-8 w-full focus-visible:-outline-offset-2"
           >
-            {item.title}
-            <span className="text-emphasis/40 group-hover:text-emphasis/80 transition duration-200 ease-linear line-clamp-1">
-              {item.summary}
+            <span className="flex justify-center w-8 shrink-0">
+              <Icon
+                icon="link"
+                size={24}
+                variant="none"
+                aria-hidden="true"
+                className="text-ui-body"
+              />
+            </span>
+            <span className="flex items-baseline gap-2 min-w-0 whitespace-nowrap overflow-hidden [mask:linear-gradient(90deg,black_80%,transparent)]">
+              {item.title}
+              <span className="text-emphasis/40 group-hover:text-emphasis/80 transition duration-200 ease-linear line-clamp-1">
+                {item.summary}
+              </span>
             </span>
           </Link>
         </li>
