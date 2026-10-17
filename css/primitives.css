@@ -198,6 +198,7 @@
   --color-rio-100: rgb(247 193 163);
   --color-rio-150: oklch(81.3% 0.121 44.3);
   --color-rio-200: oklch(76.9% 0.152 42.4);
+  --color-rio-250: oklch(73.6% 0.174 40.5);
   --color-rio-300: oklch(70.3% 0.196 38.6);
   --color-rio-400: oklch(64.9% 0.222 35);
   --color-rio-500: oklch(59.8% 0.23 32.8);
@@ -209,7 +210,9 @@
   --color-dandelion-0: rgb(250 248 236);
   --color-dandelion-50: rgb(249 239 189);
   --color-dandelion-100: rgb(248 229 142);
+  --color-dandelion-150: oklch(89.5% 0.1467 96.2);
   --color-dandelion-200: oklch(87.1% 0.184 95);
+  --color-dandelion-250: oklch(84.7% 0.1885 91.8);
   --color-dandelion-300: oklch(82.4% 0.193 88.5);
   --color-dandelion-400: oklch(78% 0.186 80.6);
   --color-dandelion-500: oklch(71.7% 0.18 68.6);
@@ -220,8 +223,11 @@
   --color-dandelion-1000: oklch(23.8% 0.064 59.5);
 
   --color-fern-0: rgb(235 250 245);
+  --color-fern-50: oklch(93.8% 0.025 174.7);
   --color-fern-100: rgb(202 231 222);
+  --color-fern-150: oklch(87.1% 0.0403 174.7);
   --color-fern-200: rgb(171 213 200);
+  --color-fern-250: oklch(80.7% 0.0527 174.5);
   --color-fern-300: rgb(143 194 179);
   --color-fern-400: rgb(118 176 159);
   --color-fern-500: rgb(95 157 139);
@@ -235,8 +241,11 @@
   --color-fern-1300: oklch(20.2% 0.035089 171.8);
 
   --color-cornflour-0: rgb(235 242 250);
+  --color-cornflour-50: oklch(92.8% 0.027 252.9);
   --color-cornflour-100: rgb(203 223 248);
+  --color-cornflour-150: oklch(86.5% 0.0551 255.4);
   --color-cornflour-200: rgb(172 203 246);
+  --color-cornflour-250: oklch(80.3% 0.0829 257.7);
   --color-cornflour-300: rgb(143 182 242);
   --color-cornflour-400: rgb(118 163 237);
   --color-cornflour-500: rgb(97 144 229);
@@ -252,6 +261,7 @@
   --color-grass-100: rgb(212 227 148);
   --color-grass-150: rgb(190 215 116);
   --color-grass-200: rgb(167 204 86);
+  --color-grass-250: oklch(74.8% 0.1767 128.2);
   --color-grass-300: oklch(70.2% 0.202 132);
   --color-grass-400: oklch(62.3% 0.206 136.2);
   --color-grass-500: oklch(54.8% 0.196 138.8);
@@ -265,6 +275,7 @@
   --color-moss-100: rgb(192 227 176);
   --color-moss-150: rgb(168 216 153);
   --color-moss-200: rgb(144 205 131);
+  --color-moss-250: oklch(74.7% 0.1293 141.6);
   --color-moss-300: rgb(104 182 100);
   --color-moss-400: rgb(78 159 83);
   --color-moss-500: rgb(61 137 72);
@@ -274,8 +285,11 @@
   --color-moss-900: rgb(18 46 26);
 
   --color-lavender-0: rgb(243 238 250);
+  --color-lavender-50: oklch(92.3% 0.0345 303.5);
   --color-lavender-100: rgb(225 211 248);
+  --color-lavender-150: oklch(85.7% 0.0689 301.1);
   --color-lavender-200: rgb(205 185 245);
+  --color-lavender-250: oklch(79% 0.1017 298.1);
   --color-lavender-300: rgb(183 160 242);
   --color-lavender-400: rgb(161 138 236);
   --color-lavender-500: rgb(142 119 228);
@@ -291,6 +305,7 @@
   --color-magenta-100: oklch(88.9% 0.077 343.2);
   --color-magenta-150: oklch(85.6% 0.109 339.7);
   --color-magenta-200: oklch(82.7% 0.141 337);
+  --color-magenta-250: oklch(79.5% 0.1545 332.8);
   --color-magenta-300: rgb(235 136 231);
   --color-magenta-400: rgb(214 110 222);
   --color-magenta-500: rgb(183 88 201);
@@ -298,6 +313,7 @@
   --color-magenta-700: rgb(99 44 118);
   --color-magenta-750: rgb(75 33 89);
   --color-magenta-800: rgb(51 22 61);
+  --color-magenta-900: oklch(19% 0.051 316.5);
 
   --color-neutral-01-0: rgb(255 255 255);
   --color-neutral-01-50: rgb(252 249 248);
