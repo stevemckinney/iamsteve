@@ -16,7 +16,7 @@ import {
   Header,
 } from 'react-aria-components'
 import { cn } from '@/lib/utils'
-import { search, groupResults, typeIcon } from '@/lib/search'
+import { search, groupResults, typeIcon, isPrompt } from '@/lib/search'
 import Icon from '@/components/icon'
 import { navigation, library } from '@/content/navigation'
 import {
@@ -449,7 +449,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
   const key = keyFor(term, path)
   const answer = asked?.key === key ? asked : answers.get(key) ?? null
   // Claude has yet to answer, so a list with nothing in it may still fill
-  const finding = hasAI && term.length >= 3 && answer?.status !== 'done'
+  const finding = hasAI && isPrompt(term) && answer?.status !== 'done'
 
   // The answer goes in whole, so the list changes the once rather than with
   // every match
@@ -487,13 +487,13 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
     settle({ key, status: 'done', matches, signal })
   }, [])
 
-  // Every search goes to Claude once the typing settles, and the keyword
-  // results stand in until it answers. Only the search on screen is worth
-  // finishing, and paying for.
+  // A search that reads like a prompt goes to Claude once the typing has
+  // stopped for a second, and the keyword results stand in until it answers.
+  // Only the search on screen is worth finishing, and paying for.
   useEffect(() => {
-    if (!isOpen || !hasAI || term.length < 3 || answers.has(key)) return
+    if (!isOpen || !hasAI || !isPrompt(term) || answers.has(key)) return
     const controller = new AbortController()
-    const timer = setTimeout(() => ask(term, path, controller.signal), 600)
+    const timer = setTimeout(() => ask(term, path, controller.signal), 1000)
     return () => {
       clearTimeout(timer)
       controller.abort()

@@ -1,7 +1,7 @@
 import { Suspense, cache } from 'react'
 
 import { buildIndex } from '@/lib/search-index'
-import { search } from '@/lib/search'
+import { search, isPrompt } from '@/lib/search'
 import { answer, spent } from '@/lib/search-ai'
 import { cn } from '@/lib/utils'
 
@@ -15,9 +15,9 @@ export const dynamic = 'force-dynamic'
 
 const RESULT_LIMIT = 40
 
-// Claude is asked once there is enough of a search to go on
+// Claude is asked when the search reads like a prompt
 const asks = (q) =>
-  !!process.env.AI_GATEWAY_API_KEY && q.length >= 3 && q.length <= 200
+  !!process.env.AI_GATEWAY_API_KEY && isPrompt(q) && q.length <= 200
 
 // Claude’s picks lead, then whatever the keywords found that it did not.
 // Switched off, out of budget, failing or slow, it is the keyword search
