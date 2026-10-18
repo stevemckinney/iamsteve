@@ -140,12 +140,13 @@ export default function Collapsible({
           </span>
           Contents
         </button>
+        {/* Closed links leave the tab order. Opacity and height still animate. */}
         <div
           id="toc-content"
           ref={contentRef}
           className={contentClasses}
           data-state={isOpen ? 'open' : 'closed'}
-          aria-hidden={!isOpen}
+          inert={!isOpen}
         >
           <HeadingList
             nestedHeadings={nestedHeadings}
