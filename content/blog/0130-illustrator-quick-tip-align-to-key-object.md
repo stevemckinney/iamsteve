@@ -32,7 +32,7 @@ To align to key object you must select two items and then change the ‘Align To
 
 ## Quicker for axis alignment
 
-<figure><Image src="/images/blog/align-axis.gif" unoptimized={true} width={738} height={420} alt="" /><figcaption>In the making of this post I discovered you could click the key object without having to choose the align to method.</figcaption></figure>
+<figure><Image src="/images/blog/align-axis.gif" unoptimized={true} width={738} height={420} alt="Three buttons selected, with the right-hand one clicked as the key object before Vertical Align Center is applied" /><figcaption>In the making of this post I discovered you could click the key object without having to choose the align to method.</figcaption></figure>
 
 Using align to key object is a quick method for aligning horizontally or vertically. Using the same method it will help save time.
 

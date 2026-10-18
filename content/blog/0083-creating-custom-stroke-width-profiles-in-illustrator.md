@@ -25,7 +25,7 @@ Select the line tool or press <kbd>\\</kbd> and draw out a line of any width.
 ## Adjust the stroke width
 
 <figure>
-<Image src="/images/blog/illustrator-stroke-width-tool@2x1.png" width={640} height={420} />
+<Image src="/images/blog/illustrator-stroke-width-tool@2x1.png" width={640} height={420} alt="Illustrator toolbar with the Width tool highlighted" />
 <figcaption>
 Press <kbd>shift</kbd> <kbd>w</kbd> or select the width tool.
 </figcaption>
@@ -38,7 +38,7 @@ With the width tool, there are a few ways, to interact with it, to adjust the wi
 - <kbd>alt</kbd> click and drag, to adjust one side of the path
 
 <figure>
-<Image src="/images/blog/illustrator-stroke-width-example@2x.png" width={640} height={420} />
+<Image src="/images/blog/illustrator-stroke-width-example@2x.png" width={640} height={420} alt="A stroke tapering from thick on the left to thin on the right" />
 <figcaption>
 Your line should end up something like this.
 </figcaption>
@@ -55,7 +55,7 @@ Sometimes you may want a smoother line than what the width tool offers from an a
 ## Adding it to your presets
 
 <figure>
-<Image src="/images/blog/width-adding-preset.gif" unoptimized={true} width={640} height={420} />
+<Image src="/images/blog/width-adding-preset.gif" unoptimized={true} width={640} height={420} alt="Saving the tapered stroke as a variable width profile preset" />
 <figcaption>
 Add the width profile to your presets for later reuse.
 </figcaption>
@@ -68,7 +68,7 @@ To add it to your presets, with your stroke selected. You should see the stroke 
 You can draw a path and change the variable width, and it appears to go against the way you want it.
 
 <figure>
-<Image src="/images/blog/flipping.gif" unoptimized={true} width={640} height={420} />
+<Image src="/images/blog/flipping.gif" unoptimized={true} width={640} height={420} alt="Clicking Flip Along in the Stroke panel to flip a variable width profile" />
 <figcaption>
 You can flip the variable width profile on either axis.
 </figcaption>
@@ -83,7 +83,7 @@ Customising can be the tricky part, as the presets can be a little awkward to ad
 ### Highlight the point
 
 <figure>
-<Image src="/images/blog/adjust-existing.gif" unoptimized={true} width={640} height={420} />
+<Image src="/images/blog/adjust-existing.gif" unoptimized={true} width={640} height={420} alt="Dragging width points on an existing profile to reshape the stroke" />
 <figcaption>
 Choose your existing width profile. Then highlight the points and you can adjust, remove or add more points as necessary.
 </figcaption>
@@ -98,7 +98,7 @@ Follow the same process as earlier to save and then you’re able to use it for 
 I feel like this should be easier, as it wasn’t immediately apparent to me. The ability to stroke the inside or outside of an unclosed path. The same techniques mentioned in this post is used, to achieve this.
 
 <div className="article-image">
-  <Image src="/images/blog/adjust-width-one-side.png" width={640} height={420} />
+  <Image src="/images/blog/adjust-width-one-side.png" width={640} height={420} alt="Width Point Edit dialog with Side 1 at 0 px and Side 2 at 1 px" />
 </div>
 
 ### Steps
