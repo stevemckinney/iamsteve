@@ -177,6 +177,15 @@ const nextConfig = {
               },
             ],
           },
+          {
+            source: '/api/views/:slug',
+            headers: [
+              {
+                key: 'Cache-Control',
+                value: 'no-store',
+              },
+            ],
+          },
         ]
       : []
 

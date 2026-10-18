@@ -62,9 +62,23 @@ const getData = cache(async () => {
 
   return {
     postsByDate: postsByDate.slice(0, 4),
-    popularPosts: mergedData.slice(0, 18),
+    popularPosts: mergedData.slice(0, 18).map(popularCard),
   }
 })
+
+function popularCard(post) {
+  return {
+    slug: post.slug,
+    title: post.title,
+    date: post.date,
+    lastmod: post.lastmod,
+    summary: post.summary,
+    categories: post.categories,
+    _meta: {
+      filePath: post._meta.filePath,
+    },
+  }
+}
 
 export default async function Home() {
   const { postsByDate, popularPosts } = await getData()
