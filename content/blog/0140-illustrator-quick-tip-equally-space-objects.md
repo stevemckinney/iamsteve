@@ -23,19 +23,19 @@ It’s likely you know how to align things in Illustrator, but you can never rem
 You have a set of unequally sized objects. Such as navigation items. Select them all.
 
 <div className="article-image flex center">
-  <Image src="/images/blog/space-equally-selected.png" width={640} height={420} />
+  <Image src="/images/blog/space-equally-selected.png" width={640} height={420} alt="Home, About, Portfolio, Blog and Contact selected in Illustrator" />
 </div>
 
 ## Click any item without holding shift
 
 <div className="article-image flex center">
-  <Image src="/images/blog/space-equally-key-highlight.png" width={640} height={420} />
+  <Image src="/images/blog/space-equally-key-highlight.png" width={640} height={420} alt="The same navigation words, with one item highlighted as the key object" />
 </div>
 
 It doesn’t matter much which item as the items are having space put between them. After clicking, you should see that item highlight in a bolder blue. This chooses a [key object](/blog/illustrator-quick-tip-align-to-key-object) and activates more align options.
 
 <div className="article-image flex center">
-  <Image src="/images/blog/space-equally-align-panel-distribute.png" width={640} height={420} />
+  <Image src="/images/blog/space-equally-align-panel-distribute.png" width={640} height={420} alt="Align panel with Distribute Spacing available once a key object is set" />
 </div>
 
 ## Choose how to distribute the space
@@ -43,7 +43,7 @@ It doesn’t matter much which item as the items are having space put between th
 You can distribute the space horizontally or vertically, and with any amount of spacing you like. Once you have entered a value to space the items by click the relevant way to distribute space.
 
 <div className="article-image flex center">
-  <Image src="/images/blog/align-objects-equally.gif" unoptimized={true} width={640} height={420} />
+  <Image src="/images/blog/align-objects-equally.gif" unoptimized={true} width={640} height={420} alt="Distributing the navigation words so the gaps between them are equal" />
 </div>
 
 ## That’s it

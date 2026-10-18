@@ -106,7 +106,7 @@ The important thing to note about the CSS is you’ll find text also aligns to t
 ## How to deal with spaces
 
 <div className="article-image flex center">
-  <Image src="/images/blog/inline-block-whitespace.png" width={640} height={360} />
+  <Image src="/images/blog/inline-block-whitespace.png" width={640} height={360} alt="Indented HTML for two inline-block elements, which leaves a gap between them" />
 </div>
 
 Elements which are `inline-block` recognise spaces around them, this causes layout to break. In rare cases you may intend to have these spaces, but in this context, your indentation is purely for code formatting.
