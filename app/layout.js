@@ -143,6 +143,8 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://use.typekit.net" />
+        {/* No crossOrigin: the kit's CSS imports p.css without CORS */}
+        <link rel="preconnect" href="https://p.typekit.net" />
         <link
           rel="stylesheet"
           href="https://use.typekit.net/bvl2qse.css"
