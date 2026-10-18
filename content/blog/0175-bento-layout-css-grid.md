@@ -194,7 +194,7 @@ The CSS required to create a bento grid is surprisingly minimal. You could also 
 The important bit of CSS here is `grid-auto-flow` aside from defining the 12 column grid itself. This tells the grid algorithm to fill in gaps where possible with smaller grid items.
 
 <figure>
-  <Image src="/images/blog/0175-bento-grid-columns@2x.png" width={864} height={564} alt="Bento cards with vertical guides showing how they sit on the column grid" />
+  <Image src="/images/blog/0175-bento-grid-columns@2x.png" width={864} height={564} alt="Bento cards with a 12-column grid overlay showing how each card spans the columns" />
   <figcaption>Grid overlay shows the columns applied to the design</figcaption>
 </figure>
 
@@ -363,7 +363,7 @@ There’s adjustments that need to be made based on the containers size for imag
 Here the container has further adjustment on column width throughout the standard Tailwind breakpoints.
 
 <figure>
-  <Image src="/images/blog/0175-bento-grid-section-structure.png" width={864} height={564} alt="Padding marked between the edge, the text and the preview of a bento card" />
+  <Image src="/images/blog/0175-bento-grid-section-structure.png" width={864} height={564} alt="A bento card with its heading, description and preview highlighted to show the space around each" />
   <figcaption>Highlighting how space is applied to each section</figcaption>
 </figure>
 

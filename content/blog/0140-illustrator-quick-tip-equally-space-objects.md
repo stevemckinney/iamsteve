@@ -29,13 +29,13 @@ You have a set of unequally sized objects. Such as navigation items. Select them
 ## Click any item without holding shift
 
 <div className="article-image flex center">
-  <Image src="/images/blog/space-equally-key-highlight.png" width={640} height={420} alt="The same navigation words, with one item highlighted as the key object" />
+  <Image src="/images/blog/space-equally-key-highlight.png" width={640} height={420} alt="Home, About, Portfolio, Blog and Contact selected, with Home highlighted in blue as the key object" />
 </div>
 
 It doesn’t matter much which item as the items are having space put between them. After clicking, you should see that item highlight in a bolder blue. This chooses a [key object](/blog/illustrator-quick-tip-align-to-key-object) and activates more align options.
 
 <div className="article-image flex center">
-  <Image src="/images/blog/space-equally-align-panel-distribute.png" width={640} height={420} alt="Align panel with Distribute Spacing available once a key object is set" />
+  <Image src="/images/blog/space-equally-align-panel-distribute.png" width={640} height={420} alt="Align panel with the Distribute Spacing buttons highlighted and 32 px entered" />
 </div>
 
 ## Choose how to distribute the space

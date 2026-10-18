@@ -25,7 +25,7 @@ Select the line tool or press <kbd>\\</kbd> and draw out a line of any width.
 ## Adjust the stroke width
 
 <figure>
-<Image src="/images/blog/illustrator-stroke-width-tool@2x1.png" width={640} height={420} alt="Illustrator toolbar with the Width tool, beside a straight path" />
+<Image src="/images/blog/illustrator-stroke-width-tool@2x1.png" width={640} height={420} alt="Illustrator toolbar with the Width tool highlighted" />
 <figcaption>
 Press <kbd>shift</kbd> <kbd>w</kbd> or select the width tool.
 </figcaption>
@@ -68,7 +68,7 @@ To add it to your presets, with your stroke selected. You should see the stroke 
 You can draw a path and change the variable width, and it appears to go against the way you want it.
 
 <figure>
-<Image src="/images/blog/flipping.gif" unoptimized={true} width={640} height={420} alt="Flipping a variable width profile so the taper reverses along the path" />
+<Image src="/images/blog/flipping.gif" unoptimized={true} width={640} height={420} alt="Clicking Flip Along in the Stroke panel to flip a variable width profile" />
 <figcaption>
 You can flip the variable width profile on either axis.
 </figcaption>
@@ -98,7 +98,7 @@ Follow the same process as earlier to save and then you’re able to use it for 
 I feel like this should be easier, as it wasn’t immediately apparent to me. The ability to stroke the inside or outside of an unclosed path. The same techniques mentioned in this post is used, to achieve this.
 
 <div className="article-image">
-  <Image src="/images/blog/adjust-width-one-side.png" width={640} height={420} alt="Width tool settings with one side at 0px and the other at 1px" />
+  <Image src="/images/blog/adjust-width-one-side.png" width={640} height={420} alt="Width Point Edit dialog with Side 1 at 0 px and Side 2 at 1 px" />
 </div>
 
 ### Steps
