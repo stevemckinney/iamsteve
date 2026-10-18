@@ -51,7 +51,7 @@ export default function PostBody({ post, showViews = true, banner = null }) {
             className="flex flex-col gap-2 relative"
             aria-labelledby="aside-contents"
           >
-            <div className="lg:hidden" aria-hidden="true">
+            <div className="lg:hidden">
               <TableOfContents headings={post.headings} />
             </div>
             <div className="hidden lg:block">

@@ -13,7 +13,7 @@ function autoParagraph(text, size) {
   )
 }
 
-const LargeImage = ({ ...props }) => {
+const LargeImage = ({ priority = false, ...props }) => {
   const { image, title, imageColor, categories } = props
 
   return (
@@ -26,12 +26,13 @@ const LargeImage = ({ ...props }) => {
         placeholder="blur"
         alt={title}
         className={`object-fill object-center height-[initial]`}
+        priority={priority}
       />
     </>
   )
 }
 
-const Large = ({ frontmatter, image, className }) => {
+const Large = ({ frontmatter, image, className, priority = false }) => {
   const {
     slug,
     date,
@@ -65,6 +66,7 @@ const Large = ({ frontmatter, image, className }) => {
               imageColor={imageColor}
               categories={categories}
               title={title}
+              priority={priority}
             />
           </>
         </Link>

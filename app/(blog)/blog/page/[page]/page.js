@@ -112,11 +112,12 @@ export default async function BlogIndex(props) {
         )}
       </Header>
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 col-container md:col-content gap-8">
-        {paginatedPosts.map((post) => (
+        {paginatedPosts.map((post, index) => (
           <Card
             size="container"
             frontmatter={post}
             image={true}
+            priority={index === 0}
             key={post._meta.filePath}
           />
         ))}

@@ -3,7 +3,13 @@ import Large from './large'
 import Medium from './medium'
 import Small from './small'
 
-const Card = ({ size = 'medium', image, frontmatter, className }) => {
+const Card = ({
+  size = 'medium',
+  image,
+  frontmatter,
+  className,
+  priority = false,
+}) => {
   return (
     <>
       {size === 'container' && (
@@ -11,13 +17,24 @@ const Card = ({ size = 'medium', image, frontmatter, className }) => {
           image={image}
           frontmatter={frontmatter}
           className={className}
+          priority={priority}
         />
       )}
       {size === 'large' && (
-        <Large image={image} frontmatter={frontmatter} className={className} />
+        <Large
+          image={image}
+          frontmatter={frontmatter}
+          className={className}
+          priority={priority}
+        />
       )}
       {size === 'medium' && (
-        <Medium image={image} frontmatter={frontmatter} className={className} />
+        <Medium
+          image={image}
+          frontmatter={frontmatter}
+          className={className}
+          priority={priority}
+        />
       )}
       {size === 'small' && (
         <Small image={image} frontmatter={frontmatter} className={className} />

@@ -25,7 +25,7 @@ function hexToRgb(hex) {
     : null
 }
 
-const PostImage = ({ ...props }) => {
+const PostImage = ({ priority = false, ...props }) => {
   const { large, medium, title, imageColor, categories, year } = props
   const oldWidthMedium = 378
   const oldHeightMedium = 252
@@ -44,6 +44,7 @@ const PostImage = ({ ...props }) => {
         className="@lg/card:hidden w-full"
         quality={100}
         unoptimized
+        priority={priority}
       />
       <Image
         src={large}
@@ -56,12 +57,18 @@ const PostImage = ({ ...props }) => {
         className="hidden @lg/card:block w-full"
         quality={100}
         unoptimized
+        priority={priority}
       />
     </>
   )
 }
 
-const Container = ({ frontmatter, image, className = 'card' }) => {
+const Container = ({
+  frontmatter,
+  image,
+  className = 'card',
+  priority = false,
+}) => {
   const {
     slug,
     date,
@@ -111,6 +118,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
               categories={categories}
               title={title}
               year={postYear(date)}
+              priority={priority}
             />
           </>
         </Link>

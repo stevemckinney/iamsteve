@@ -21,7 +21,10 @@ export const metadata = {
   description:
     'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
   alternates: {
-    canonical: siteMetadata.siteUrl,
+    // './' resolves against the current pathname, so a route that does not
+    // set its own canonical points at itself. An absolute home URL here
+    // would make every forgotten canonical the home page.
+    canonical: './',
     types: {
       'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
     },
@@ -38,10 +41,11 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'iamsteve • design & code blog',
+    // Title is omitted so each page inherits its own resolved document title.
+    // A title set here wins over the page title for every route.
     description:
       'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
-    url: siteMetadata.siteUrl,
+    url: './',
     siteName: 'iamsteve',
     locale: 'en_GB',
     type: 'website',
@@ -119,7 +123,6 @@ export const viewport = {
   themeColor: 'rgb(241 232 228)', //'rgb(241 232 228)',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
   userScalable: 1,
   shrinkToFit: 'no',
   viewportFit: 'cover',
@@ -127,7 +130,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="overflow-x-hidden lg:overflow-x-clip">
+    <html lang="en-GB" className="overflow-x-hidden lg:overflow-x-clip">
       <head>
         <meta
           name="apple-mobile-web-app-status-bar-style"

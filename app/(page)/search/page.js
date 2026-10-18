@@ -36,10 +36,14 @@ export async function generateMetadata({ searchParams }) {
     return {
       title: `Search: ${q}`,
       description: `Search results for “${q}” across blog, notes and collections`,
+      // Query URLs are not worth indexing. Canonical stays the pathname
+      // (/search), which the root './' canonical already resolves to.
       robots: { index: false, follow: true },
     }
   }
 
+  // /search itself is a stable landing page, so it stays indexable with a
+  // self canonical and remains in the sitemap.
   return {
     title: 'Search',
     description:

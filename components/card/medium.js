@@ -25,7 +25,7 @@ function hexToRgb(hex) {
     : null
 }
 
-const MediumImage = ({ ...props }) => {
+const MediumImage = ({ priority = false, ...props }) => {
   const { image, title, medium, imageColor, categories } = props
 
   // New 384x316
@@ -37,11 +37,12 @@ const MediumImage = ({ ...props }) => {
       height={240}
       alt={title}
       className={`absolute z-1 transform -translate-x-1/2 -translate-y-1/2 border top-1/2 left-1/2 border-0`}
+      priority={priority}
     />
   )
 }
 
-const Medium = ({ frontmatter, image, className }) => {
+const Medium = ({ frontmatter, image, className, priority = false }) => {
   const {
     slug,
     date,
@@ -86,6 +87,7 @@ const Medium = ({ frontmatter, image, className }) => {
                 imageColor={imageColor}
                 categories={categories}
                 title={title}
+                priority={priority}
               />
             </>
           </Link>

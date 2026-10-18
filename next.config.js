@@ -264,6 +264,19 @@ const nextConfig = {
         destination: '/blog/create-a-sass-button-element-mixin',
         permanent: true,
       },
+      // These two must stay above the /blog/entry/:slug catch-all.
+      // Next uses the first matching redirect, so the catch-all would
+      // otherwise send them to a slug that 404s.
+      {
+        source: '/blog/entry/sass_hints_tips',
+        destination: '/blog/sass-hints-and-tips',
+        permanent: true,
+      },
+      {
+        source: '/blog/entry/photoshop-grids-using-',
+        destination: '/blog/photoshop-grids-using-guide-layouts',
+        permanent: true,
+      },
       {
         source: '/blog/entry/:slug',
         destination: '/blog/:slug',
@@ -326,11 +339,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/blog/entry/sass_hints_tips',
-        destination: '/blog/sass-hints-and-tips',
-        permanent: true,
-      },
-      {
         source: '/subscribe',
         destination: '/newsletter',
         permanent: true,
@@ -363,11 +371,6 @@ const nextConfig = {
       {
         source: '/visual-design-tips-you-can-apply-immediately',
         destination: '/blog/visual-design-tips-you-can-apply-immediately',
-        permanent: true,
-      },
-      {
-        source: '/blog/entry/photoshop-grids-using-',
-        destination: '/blog/photoshop-grids-using-guide-layouts',
         permanent: true,
       },
       // Junk redirects
