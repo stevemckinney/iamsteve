@@ -45,6 +45,7 @@ const PostImage = ({ priority = false, ...props }) => {
         quality={100}
         unoptimized
         priority={priority}
+        fetchPriority={priority ? 'high' : undefined}
       />
       <Image
         src={large}
@@ -58,6 +59,7 @@ const PostImage = ({ priority = false, ...props }) => {
         quality={100}
         unoptimized
         priority={priority}
+        fetchPriority={priority ? 'high' : undefined}
       />
     </>
   )

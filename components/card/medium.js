@@ -38,6 +38,7 @@ const MediumImage = ({ priority = false, ...props }) => {
       alt={title}
       className={`absolute z-1 transform -translate-x-1/2 -translate-y-1/2 border top-1/2 left-1/2 border-0`}
       priority={priority}
+      fetchPriority={priority ? 'high' : undefined}
     />
   )
 }

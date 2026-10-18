@@ -27,6 +27,7 @@ const LargeImage = ({ priority = false, ...props }) => {
         alt={title}
         className={`object-fill object-center height-[initial]`}
         priority={priority}
+        fetchPriority={priority ? 'high' : undefined}
       />
     </>
   )
