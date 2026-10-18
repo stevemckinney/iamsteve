@@ -49,13 +49,9 @@ export async function POST(request, context) {
     return json({ views: null })
   }
 
-  const { data, error } = await SupabaseAdmin.rpc(
-    process.env.NEXT_PUBLIC_DB_VIEWS_RPC,
-    {
-      page_slug: slug,
-      table_name: process.env.NEXT_PUBLIC_DB_VIEWS_TABLE,
-    }
-  )
+  const { data, error } = await SupabaseAdmin.rpc('increment_page_view', {
+    page_slug: slug,
+  })
 
   if (error) {
     console.error('Error incrementing view count:', error)
