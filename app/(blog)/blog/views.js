@@ -1,4 +1,3 @@
-import { cache } from 'react'
 import { unstable_cache } from 'next/cache'
 import { createClient } from '@supabase/supabase-js'
 
@@ -15,10 +14,6 @@ function createReadClient() {
 }
 
 async function readPageView(slug) {
-  if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {
-    return 0
-  }
-
   const supabase = createReadClient()
 
   const { data, error } = await supabase
@@ -28,19 +23,24 @@ async function readPageView(slug) {
     .maybeSingle()
 
   if (error) {
-    console.error('Error fetching page view:', error)
     throw error
   }
 
-  return data?.view_count || 0
+  return data?.view_count ?? 0
 }
 
-export const getPageView = cache((slug) =>
-  unstable_cache(() => readPageView(slug), ['page-view', slug], {
-    revalidate: 3600,
-    tags: [`views:${slug}`],
-  })()
-)
+export async function getPageView(slug) {
+  if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {
+    return 0
+  }
+
+  try {
+    return await readPageView(slug)
+  } catch (error) {
+    console.error('Error fetching page view:', error)
+    return null
+  }
+}
 
 async function readAllPageViews() {
   if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {

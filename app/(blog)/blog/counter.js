@@ -20,7 +20,6 @@ const ViewCounter = ({
 
     try {
       if (sessionStorage.getItem(storageKey)) return
-      sessionStorage.setItem(storageKey, 'true')
     } catch (error) {
       console.error('Error reading view session:', error)
     }
@@ -29,12 +28,24 @@ const ViewCounter = ({
       method: 'POST',
       keepalive: true,
     })
-      .then((response) => (response.ok ? response.json() : null))
+      .then(async (response) => {
+        if (!response.ok) return null
+
+        try {
+          sessionStorage.setItem(storageKey, 'true')
+        } catch (error) {
+          console.error('Error storing view session:', error)
+        }
+
+        return response.json()
+      })
       .then((data) => {
         if (!data || typeof data.views !== 'number') return
 
         setViews((current) => {
-          if (data.views <= current) return current
+          if (typeof current === 'number' && data.views <= current) {
+            return current
+          }
           setIsUpdated(true)
           window.setTimeout(() => setIsUpdated(false), 2000)
           return data.views
@@ -45,7 +56,10 @@ const ViewCounter = ({
       })
   }, [slug, trackView])
 
-  if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {
+  if (
+    process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true' ||
+    typeof views !== 'number'
+  ) {
     return null
   }
 

@@ -124,13 +124,15 @@ export default function PostBody({ post, showViews = true, banner = null }) {
                 ))}
             </div>
             {showViews && (
-              <Badge size={16} theme={`text`} iconStart={`views`}>
-                <Suspense
-                  fallback={<span className="text-emphasis">— views</span>}
-                >
-                  <PostViews slug={cleanSlug} />
-                </Suspense>
-              </Badge>
+              <Suspense
+                fallback={
+                  <Badge size={16} theme="text" iconStart="views">
+                    <span className="text-emphasis">— views</span>
+                  </Badge>
+                }
+              >
+                <PostViews slug={cleanSlug} />
+              </Suspense>
             )}
           </div>
         </>
