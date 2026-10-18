@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Increment } from './increment'
 
 const ViewCounter = ({
   slug,
@@ -13,29 +12,37 @@ const ViewCounter = ({
   const [isUpdated, setIsUpdated] = useState(false)
 
   useEffect(() => {
-    const incrementView = async () => {
-      if (
-        trackView &&
-        process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING === 'true'
-      ) {
-        const hasViewed = sessionStorage.getItem(`viewed-${slug}`)
-        if (!hasViewed) {
-          try {
-            const updatedViews = await Increment(slug)
-            if (updatedViews !== null && updatedViews > views) {
-              setViews(updatedViews)
-              setIsUpdated(true)
-              setTimeout(() => setIsUpdated(false), 2000)
-              sessionStorage.setItem(`viewed-${slug}`, 'true')
-            }
-          } catch (error) {
-            console.error('Error updating view count:', error)
-          }
-        }
-      }
+    if (!trackView || process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {
+      return
     }
 
-    incrementView()
+    const storageKey = `viewed-${slug}`
+
+    try {
+      if (sessionStorage.getItem(storageKey)) return
+      sessionStorage.setItem(storageKey, 'true')
+    } catch (error) {
+      console.error('Error reading view session:', error)
+    }
+
+    fetch(`/api/views/${encodeURIComponent(slug)}`, {
+      method: 'POST',
+      keepalive: true,
+    })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (!data || typeof data.views !== 'number') return
+
+        setViews((current) => {
+          if (data.views <= current) return current
+          setIsUpdated(true)
+          window.setTimeout(() => setIsUpdated(false), 2000)
+          return data.views
+        })
+      })
+      .catch((error) => {
+        console.error('Error updating view count:', error)
+      })
   }, [slug, trackView])
 
   if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {

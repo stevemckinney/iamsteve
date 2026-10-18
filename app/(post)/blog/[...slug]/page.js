@@ -10,7 +10,7 @@ import siteMetadata from '@/content/metadata'
 
 import PostBody from './post-body'
 
-export const revalidate = 86400
+export const revalidate = 3600
 
 export async function generateStaticParams() {
   return allPosts

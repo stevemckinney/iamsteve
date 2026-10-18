@@ -1,62 +1,55 @@
-'use server'
-
 import { cache } from 'react'
 import { unstable_cache } from 'next/cache'
-import { cookies } from 'next/headers'
-import { createServerClient } from '@supabase/ssr'
+import { createClient } from '@supabase/supabase-js'
 
-// Helper function to create Supabase client
-async function createClient() {
-  return createServerClient(
+function createReadClient() {
+  return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
     {
-      cookies: {
-        async getAll() {
-          return (await cookies()).getAll()
-        },
-        async setAll(cookiesToSet) {
-          const cookieStore = await cookies()
-          cookiesToSet.forEach(({ name, value, options }) => {
-            cookieStore.set(name, value, { ...options, path: '/' })
-          })
-        },
+      auth: {
+        persistSession: false,
       },
     }
   )
 }
 
-// Optimized function to fetch a single page view count
-export const getPageView = cache(async (slug) => {
+async function readPageView(slug) {
   if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {
     return 0
   }
 
-  const supabase = await createClient()
+  const supabase = createReadClient()
 
   const { data, error } = await supabase
     .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
     .select('view_count')
     .eq('slug', slug)
-    .single()
+    .maybeSingle()
 
   if (error) {
     console.error('Error fetching page view:', error)
-    return 0
+    throw error
   }
 
   return data?.view_count || 0
-})
+}
 
-// Internal function to fetch all page views
-async function _getAllPageViews() {
+export const getPageView = cache((slug) =>
+  unstable_cache(() => readPageView(slug), ['page-view', slug], {
+    revalidate: 3600,
+    tags: [`views:${slug}`],
+  })()
+)
+
+async function readAllPageViews() {
   if (process.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING !== 'true') {
     return {}
   }
 
-  const supabase = await createClient()
+  const supabase = createReadClient()
 
-  const { data: pages, error } = await supabase
+  const { data, error } = await supabase
     .from(process.env.NEXT_PUBLIC_DB_VIEWS_TABLE)
     .select('slug, view_count')
 
@@ -65,18 +58,17 @@ async function _getAllPageViews() {
     return {}
   }
 
-  return pages.reduce((acc, page) => {
+  return (data || []).reduce((acc, page) => {
     acc[page.slug] = page.view_count
     return acc
   }, {})
 }
 
-// Cached version of getAllPageViews with 5-minute revalidation
 export const getAllPageViews = unstable_cache(
-  async () => _getAllPageViews(),
+  readAllPageViews,
   ['all-page-views'],
   {
-    revalidate: 300, // 5 minutes
+    revalidate: 300,
     tags: ['page-views'],
   }
 )
