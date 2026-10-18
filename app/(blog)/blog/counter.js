@@ -19,7 +19,13 @@ const ViewCounter = ({
     const storageKey = `viewed-${slug}`
 
     try {
-      if (sessionStorage.getItem(storageKey)) return
+      const seen = sessionStorage.getItem(storageKey)
+      if (seen) {
+        const count = Number(seen)
+        // The cached page can be an hour behind the count this tab was given
+        if (count) setViews((current) => Math.max(current ?? 0, count))
+        return
+      }
     } catch (error) {
       console.error('Error reading view session:', error)
     }
@@ -28,19 +34,20 @@ const ViewCounter = ({
       method: 'POST',
       keepalive: true,
     })
-      .then(async (response) => {
-        if (!response.ok) return null
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (!data) return
 
         try {
-          sessionStorage.setItem(storageKey, 'true')
+          sessionStorage.setItem(
+            storageKey,
+            typeof data.views === 'number' ? data.views : 'true'
+          )
         } catch (error) {
           console.error('Error storing view session:', error)
         }
 
-        return response.json()
-      })
-      .then((data) => {
-        if (!data || typeof data.views !== 'number') return
+        if (typeof data.views !== 'number') return
 
         setViews((current) => {
           if (typeof current === 'number' && data.views <= current) {
