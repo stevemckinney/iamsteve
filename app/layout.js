@@ -1,6 +1,7 @@
 import './global.css'
 import Script from 'next/script'
 import { Suspense } from 'react'
+import { preload } from 'react-dom'
 import siteMetadata from '@/content/metadata'
 
 import Header from '@/components/header'
@@ -128,6 +129,8 @@ export const viewport = {
 const typekit = 'https://use.typekit.net/bvl2qse.css'
 
 export default function RootLayout({ children }) {
+  preload(typekit, { as: 'style' })
+
   return (
     <html lang="en" className="overflow-x-hidden lg:overflow-x-clip">
       <head>
@@ -145,7 +148,6 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://use.typekit.net" />
-        <link rel="preload" href={typekit} as="style" />
         {/* A script-inserted stylesheet does not block the first paint */}
         <script
           dangerouslySetInnerHTML={{
