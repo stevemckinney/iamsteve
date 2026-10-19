@@ -125,6 +125,8 @@ export const viewport = {
   viewportFit: 'cover',
 }
 
+const typekit = 'https://use.typekit.net/bvl2qse.css'
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="overflow-x-hidden lg:overflow-x-clip">
@@ -143,13 +145,16 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://use.typekit.net" />
-        {/* No crossOrigin: the kit's CSS imports p.css without CORS */}
-        <link rel="preconnect" href="https://p.typekit.net" />
-        <link
-          rel="stylesheet"
-          href="https://use.typekit.net/bvl2qse.css"
-          precedence="default"
+        <link rel="preload" href={typekit} as="style" />
+        {/* A script-inserted stylesheet does not block the first paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.head.appendChild(Object.assign(document.createElement('link'), { rel: 'stylesheet', href: '${typekit}' }))`,
+          }}
         />
+        <noscript>
+          <link rel="stylesheet" href={typekit} />
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
