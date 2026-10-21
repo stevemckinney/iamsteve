@@ -243,6 +243,7 @@ export function PostImage({ post }) {
             blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
             placeholder="blur"
             priority
+            fetchPriority="high"
           />
         </div>
       )}

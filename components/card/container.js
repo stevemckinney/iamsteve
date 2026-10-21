@@ -26,7 +26,7 @@ function hexToRgb(hex) {
 }
 
 const PostImage = ({ ...props }) => {
-  const { large, medium, title, imageColor, categories, year } = props
+  const { large, medium, title, imageColor, categories, year, priority } = props
   const oldWidthMedium = 378
   const oldHeightMedium = 252
   const oldWidthLarge = 738
@@ -43,6 +43,10 @@ const PostImage = ({ ...props }) => {
         placeholder="blur"
         className="@lg/card:hidden w-full"
         quality={100}
+        // Narrow cards (as on phones) show this image. The large one stays
+        // lazy, since eager images download even when hidden.
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : undefined}
         unoptimized
       />
       <Image
@@ -61,7 +65,7 @@ const PostImage = ({ ...props }) => {
   )
 }
 
-const Container = ({ frontmatter, image, className = 'card' }) => {
+const Container = ({ frontmatter, image, className = 'card', priority }) => {
   const {
     slug,
     date,
@@ -111,6 +115,7 @@ const Container = ({ frontmatter, image, className = 'card' }) => {
               categories={categories}
               title={title}
               year={postYear(date)}
+              priority={priority}
             />
           </>
         </Link>
