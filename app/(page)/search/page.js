@@ -63,19 +63,16 @@ export default async function SearchPage({ searchParams }) {
       <Header>
         <Column>
           <Title>Search</Title>
-          <Description>
+          <Description className="desc max-md:mb-2">
             Find blog posts, notes, categories and collections across the site
           </Description>
         </Column>
-      </Header>
-
-      <div className="col-content flex flex-col gap-8">
         <form
           role="search"
           method="get"
           action="/search"
           className={cn(
-            'search-field relative flex items-center px-4 cursor-text',
+            'search-field relative flex items-center px-4 cursor-text md:self-end',
             'bg-surface rounded-sm shadow-placed',
             'has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-cornflour-600 dark:has-[:focus-visible]:ring-fern-400'
           )}
@@ -100,7 +97,7 @@ export default async function SearchPage({ searchParams }) {
             autoCorrect="off"
             spellCheck="false"
             className={cn(
-              'flex-1 py-3.5 bg-transparent',
+              'flex-1 min-w-0 py-3.5 bg-transparent',
               'text-base text-heading placeholder:text-body',
               'outline-none focus:ring-0 border-0'
             )}
@@ -108,16 +105,18 @@ export default async function SearchPage({ searchParams }) {
           <button
             type="submit"
             className={cn(
-              'ml-2 px-3 py-1.5 rounded-xs cursor-pointer',
+              'ml-2 shrink-0 px-3 py-1.5 rounded-xs cursor-pointer',
               'text-sm font-variation-medium',
-              'bg-neutral-01-100 text-heading',
-              'hover:bg-neutral-01-50 transition-colors'
+              'bg-neutral-01-100 dark:bg-surface-raised dark:shadow-placed text-heading',
+              'hover:bg-neutral-01-50 dark:hover:bg-surface-02 transition-colors'
             )}
           >
             Search
           </button>
         </form>
+      </Header>
 
+      <div className="col-container md:col-content max-md:frame max-md:frame-24 max-md:px-8 max-md:py-8 flex flex-col gap-8">
         {q && results.length === 0 && (
           <p className="text-body">
             No results found for &ldquo;{q}&rdquo;. Try a different term or
