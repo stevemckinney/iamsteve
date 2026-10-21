@@ -120,7 +120,6 @@ export const viewport = {
   themeColor: 'rgb(241 232 228)', //'rgb(241 232 228)',
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
   userScalable: 1,
   shrinkToFit: 'no',
   viewportFit: 'cover',
