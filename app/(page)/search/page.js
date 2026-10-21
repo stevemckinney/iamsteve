@@ -153,9 +153,7 @@ export default async function SearchPage({ searchParams }) {
                         <span className="text-base font-variation-medium text-heading group-hover:text-link">
                           {result.title}
                         </span>
-                        <span className="text-[10px] uppercase tracking-wider text-ui-body font-medium">
-                          {label(result.type)}
-                        </span>
+                        <span className="sr-only">({label(result.type)})</span>
                       </span>
                       {result.summary && (
                         <span className="text-sm text-body">
