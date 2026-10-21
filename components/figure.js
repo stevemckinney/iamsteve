@@ -1,4 +1,4 @@
-import { FigureModal } from '@/components/figure-modal'
+import { FigureModal } from '@/components/figure-modal-lazy'
 
 const Figcaption = (props) => (
   <figcaption
