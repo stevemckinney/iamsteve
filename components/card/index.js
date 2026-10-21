@@ -3,7 +3,7 @@ import Large from './large'
 import Medium from './medium'
 import Small from './small'
 
-const Card = ({ size = 'medium', image, frontmatter, className }) => {
+const Card = ({ size = 'medium', image, frontmatter, className, priority }) => {
   return (
     <>
       {size === 'container' && (
@@ -11,6 +11,7 @@ const Card = ({ size = 'medium', image, frontmatter, className }) => {
           image={image}
           frontmatter={frontmatter}
           className={className}
+          priority={priority}
         />
       )}
       {size === 'large' && (
