@@ -145,7 +145,7 @@ export default function Collapsible({
           ref={contentRef}
           className={contentClasses}
           data-state={isOpen ? 'open' : 'closed'}
-          aria-hidden={!isOpen}
+          inert={!isOpen}
         >
           <HeadingList
             nestedHeadings={nestedHeadings}
