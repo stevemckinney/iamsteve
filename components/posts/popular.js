@@ -82,7 +82,7 @@ export default function PopularPosts({ posts }) {
                   <ListBoxItem
                     key={cat}
                     id={cat}
-                    className="relative flex items-center gap-3 pl-2 pr-4 py-2 select-none rounded-[12px] font-ui text-xl cursor-pointer outline-none data-[hovered]:bg-surface-02 data-[hovered]:z-10 focus-visible:-outline-offset-2 data-[selected]:bg-surface-02 dark:data-[selected]:shadow-[0_0_0_1px_var(--color-fern-1200),inset_0_1px_var(--color-fern-1000)]"
+                    className="relative flex items-center gap-3 pl-2 pr-4 py-2 select-none rounded-[12px] font-ui text-xl cursor-pointer outline-none data-[focused]:bg-surface-02 data-[focused]:z-10 focus-visible:-outline-offset-2 data-[selected]:bg-surface-02 dark:data-[selected]:shadow-[0_0_0_1px_var(--color-fern-1200),inset_0_1px_var(--color-fern-1000)]"
                   >
                     <BadgeIcon
                       icon={categoryConfig[cat].icon}
