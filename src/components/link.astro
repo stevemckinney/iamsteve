@@ -1,8 +1,8 @@
 ---
-// Internal and anchor links stay as they are. Anything else gets
-// noopener noreferrer, as components/link.js does
+// Internal and anchor links stay as they are. Anything else, an empty href
+// included, gets noopener noreferrer, as components/link.js does
 const { href, class: ownClass, className, ...attributes } = Astro.props
-const external = href && !href.startsWith('/') && !href.startsWith('#')
+const external = !href?.startsWith('/') && !href?.startsWith('#')
 ---
 
 <a
