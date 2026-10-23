@@ -269,7 +269,7 @@ function getFilesToCheck() {
   if (checkAll) {
     return fs
       .readdirSync(COLLECTIONS_DIR)
-      .filter((f) => f.endsWith('.md'))
+      .filter((f) => f.endsWith('.mdx'))
       .map((f) => path.join(COLLECTIONS_DIR, f))
   }
 
@@ -280,13 +280,13 @@ function getFilesToCheck() {
     })
     return output
       .split('\n')
-      .filter((f) => f.startsWith(COLLECTIONS_DIR) && f.endsWith('.md'))
+      .filter((f) => f.startsWith(COLLECTIONS_DIR) && f.endsWith('.mdx'))
       .filter((f) => fs.existsSync(f)) // a removed collection has nothing to check
   } catch {
     // Fallback: check all if git diff fails
     return fs
       .readdirSync(COLLECTIONS_DIR)
-      .filter((f) => f.endsWith('.md'))
+      .filter((f) => f.endsWith('.mdx'))
       .map((f) => path.join(COLLECTIONS_DIR, f))
   }
 }
@@ -395,7 +395,7 @@ async function main() {
   // Detect duplicate URLs across all collections
   const allCollections = fs
     .readdirSync(COLLECTIONS_DIR)
-    .filter((f) => f.endsWith('.md'))
+    .filter((f) => f.endsWith('.mdx'))
     .map((f) => {
       const content = fs.readFileSync(path.join(COLLECTIONS_DIR, f), 'utf8')
       const { data } = matter(content)

@@ -130,7 +130,7 @@
     "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
       "prettier --write"
     ],
-    "content/**/*.md": [
+    "content/**/*.{md,mdx}": [
       "node scripts/validate-content.mjs"
     ]
   },

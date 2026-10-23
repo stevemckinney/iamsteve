@@ -16,12 +16,12 @@ function slugify(text) {
 }
 
 function getUniqueFilename(dir, baseName) {
-  let filename = `${baseName}.md`
+  let filename = `${baseName}.mdx`
   let filePath = path.join(dir, filename)
   let counter = 1
 
   while (fs.existsSync(filePath)) {
-    filename = `${baseName}-${counter}.md`
+    filename = `${baseName}-${counter}.mdx`
     filePath = path.join(dir, filename)
     counter++
   }
@@ -86,7 +86,7 @@ function processNote(filePath, existingFiles) {
   // Ensure title
   if (!frontmatter.title) {
     const titleFromContent = extractTitleFromContent(body)
-    const filename = path.basename(filePath, '.md')
+    const filename = path.basename(filePath, '.mdx')
 
     if (titleFromContent) {
       frontmatter.title = titleFromContent
@@ -124,7 +124,7 @@ function processNote(filePath, existingFiles) {
   }
 
   // Check filename matches slugified title
-  const currentName = path.basename(filePath, '.md')
+  const currentName = path.basename(filePath, '.mdx')
   const expectedName = slugify(frontmatter.title)
   let newPath = filePath
 
@@ -134,22 +134,22 @@ function processNote(filePath, existingFiles) {
     // Check if target filename already exists (excluding current file)
     const otherFiles = existingFiles.filter((f) => f !== filePath)
     const targetExists = otherFiles.some(
-      (f) => path.basename(f, '.md') === expectedName
+      (f) => path.basename(f, '.mdx') === expectedName
     )
 
     let finalName
     if (targetExists) {
       finalName = getUniqueFilename(dir, expectedName)
-      // Remove .md extension for path construction
-      finalName = finalName.replace('.md', '')
+      // Remove .mdx extension for path construction
+      finalName = finalName.replace('.mdx', '')
     } else {
       finalName = expectedName
     }
 
-    newPath = path.join(dir, `${finalName}.md`)
+    newPath = path.join(dir, `${finalName}.mdx`)
 
     if (newPath !== filePath) {
-      changes.push(`Renamed: ${currentName}.md → ${finalName}.md`)
+      changes.push(`Renamed: ${currentName}.mdx → ${finalName}.mdx`)
       modified = true
     }
   }
@@ -187,7 +187,7 @@ function getChangedNotes() {
       .trim()
       .split('\n')
       .filter(
-        (file) => file.startsWith('content/notes/') && file.endsWith('.md')
+        (file) => file.startsWith('content/notes/') && file.endsWith('.mdx')
       )
 
     return changedFiles.map((file) => path.join(process.cwd(), file))
@@ -199,7 +199,7 @@ function getChangedNotes() {
     }
     return fs
       .readdirSync(NOTES_DIR)
-      .filter((file) => file.endsWith('.md'))
+      .filter((file) => file.endsWith('.mdx'))
       .map((file) => path.join(NOTES_DIR, file))
   }
 }
@@ -219,7 +219,7 @@ function main() {
   const existingFiles = fs.existsSync(NOTES_DIR)
     ? fs
         .readdirSync(NOTES_DIR)
-        .filter((f) => f.endsWith('.md'))
+        .filter((f) => f.endsWith('.mdx'))
         .map((f) => path.join(NOTES_DIR, f))
     : []
 

@@ -34,14 +34,14 @@ function collectionFor(file) {
   )
 }
 
-// Recursive, because the collections all include '**/*.md' — a post can sit in
-// its own folder as index.md
+// Recursive, because a post can sit in its own folder as index.mdx. Plain .md
+// files are collected too, so a stray one is reported rather than skipped
 function findAllContent() {
   return COLLECTIONS.flatMap(({ directory }) =>
     fs.existsSync(directory)
       ? fs
           .readdirSync(directory, { recursive: true })
-          .filter((file) => file.endsWith('.md'))
+          .filter((file) => /\.mdx?$/.test(file))
           .map((file) => path.join(directory, file))
       : []
   )
@@ -86,7 +86,10 @@ for (const file of toCheck) {
   const collection = collectionFor(file)
   if (!collection || !fs.existsSync(file)) continue
 
-  const problems = validate(file, collection.schema)
+  // Content is compiled as MDX, and the build only reads .mdx files
+  const problems = file.endsWith('.md')
+    ? ['rename to .mdx, or the build skips this file']
+    : validate(file, collection.schema)
   if (problems.length === 0) continue
 
   failed = true

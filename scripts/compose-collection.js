@@ -7,23 +7,23 @@ const dedent = require('dedent')
 const normalizeCollection = (collection) => {
   // Map of common collection names to their proper slug format
   const collectionMap = {
-    'accessibility': 'Accessibility',
-    'css': 'CSS',
-    'code': 'Code',
-    'colour': 'Colour',
-    'color': 'Colour', // Handle US spelling
-    'content': 'Content',
-    'favourites': 'Favourites',
-    'favorites': 'Favourites', // Handle US spelling
-    'foundry': 'Foundry',
-    'inspiration': 'Inspiration',
-    'motion': 'Motion',
-    'publication': 'Publication',
-    'resource': 'Resource',
-    'typography': 'Typography',
+    accessibility: 'Accessibility',
+    css: 'CSS',
+    code: 'Code',
+    colour: 'Colour',
+    color: 'Colour', // Handle US spelling
+    content: 'Content',
+    favourites: 'Favourites',
+    favorites: 'Favourites', // Handle US spelling
+    foundry: 'Foundry',
+    inspiration: 'Inspiration',
+    motion: 'Motion',
+    publication: 'Publication',
+    resource: 'Resource',
+    typography: 'Typography',
     'ux design': 'ux-design',
     'ux-design': 'ux-design',
-    'uxdesign': 'ux-design',
+    uxdesign: 'ux-design',
   }
 
   // Normalize input: lowercase and trim
@@ -118,17 +118,11 @@ const handleInteractiveInput = async () => {
       choices: ['website', 'article', 'resource', 'tool'],
       default: 'website',
     },
-    {
-      name: 'extension',
-      message: 'Extension:',
-      type: 'list',
-      choices: ['mdx', 'md'],
-    },
   ])
 
   const fileName = normalizeUrlForFilename(answers.url)
   const frontmatter = genFrontMatter(answers)
-  const filePath = `content/collections/${fileName}.${answers.extension || 'md'}`
+  const filePath = `content/collections/${fileName}.mdx`
 
   fs.writeFile(filePath, frontmatter, { flag: 'wx' }, (err) => {
     if (err) {
@@ -154,13 +148,13 @@ const handleJsonImport = (bookmarksFilePath) => {
     const bookmarksData = fs.readFileSync(bookmarksFilePath, 'utf8')
     const bookmarks = JSON.parse(bookmarksData)
 
-    bookmarks.forEach(bookmark => {
+    bookmarks.forEach((bookmark) => {
       const fileName = normalizeUrlForFilename(bookmark.url)
       const frontmatter = genFrontMatter({
         ...bookmark,
-        kind: bookmark.kind || 'website'
+        kind: bookmark.kind || 'website',
       })
-      const filePath = `content/collections/${fileName}.${bookmark.extension || 'md'}`
+      const filePath = `content/collections/${fileName}.mdx`
 
       try {
         fs.writeFileSync(filePath, frontmatter, { flag: 'wx' })
@@ -192,12 +186,11 @@ const jsonFilePath = args[0]
 if (jsonFilePath) {
   handleJsonImport(jsonFilePath)
 } else {
-  handleInteractiveInput()
-    .catch((error) => {
-      if (error.isTtyError) {
-        console.log("Prompt couldn't be rendered in the current environment")
-      } else {
-        console.log('Something went wrong, sorry!')
-      }
-    })
+  handleInteractiveInput().catch((error) => {
+    if (error.isTtyError) {
+      console.log("Prompt couldn't be rendered in the current environment")
+    } else {
+      console.log('Something went wrong, sorry!')
+    }
+  })
 }

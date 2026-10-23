@@ -11,10 +11,12 @@ const getNextPostId = () => {
   const blogDir = path.join(root, 'content/blog')
 
   // Get all blog post files
-  const posts = fs.readdirSync(blogDir)
-    .filter(file =>
-      file.match(/^\d{4}-.*\.(md|mdx)$/) &&
-      fs.statSync(path.join(blogDir, file)).isFile()
+  const posts = fs
+    .readdirSync(blogDir)
+    .filter(
+      (file) =>
+        file.match(/^\d{4}-.*\.(md|mdx)$/) &&
+        fs.statSync(path.join(blogDir, file)).isFile()
     )
 
   // Find highest ID from both filenames and frontmatter
@@ -98,7 +100,7 @@ inquirer
       type: 'list',
       choices: [
         { name: 'Single file', value: 'file' },
-        { name: 'Folder with index', value: 'folder' }
+        { name: 'Folder with index', value: 'folder' },
       ],
     },
     {
@@ -117,14 +119,14 @@ inquirer
         'Animation',
         'CSS',
         'Patterns',
-        'JavaScript'
+        'JavaScript',
       ],
       validate: (input) => {
         if (input.length === 0) {
           return 'Please select at least one category'
         }
         return true
-      }
+      },
     },
     {
       name: 'status',
@@ -147,13 +149,13 @@ inquirer
 
     let filePath
     if (answers.structure === 'folder') {
-      // Create folder and index.md file
+      // Create folder and index.mdx file
       const folderPath = path.join('content/blog', postName)
       fs.mkdirSync(folderPath, { recursive: true })
-      filePath = path.join(folderPath, 'index.md')
+      filePath = path.join(folderPath, 'index.mdx')
     } else {
       // Create single file
-      filePath = path.join('content/blog', `${postName}.md`)
+      filePath = path.join('content/blog', `${postName}.mdx`)
     }
 
     fs.writeFile(filePath, frontmatter, { flag: 'wx' }, (err) => {
@@ -161,11 +163,13 @@ inquirer
         throw err
       } else {
         console.log(`\nSelected categories:`)
-        answers.categories.forEach(cat => console.log(`- ${cat}`))
+        answers.categories.forEach((cat) => console.log(`- ${cat}`))
         console.log(`\nBlog post generated successfully at ${filePath}`)
 
         if (answers.structure === 'folder') {
-          console.log(`\nFolder created for assets at: content/blog/${postName}/`)
+          console.log(
+            `\nFolder created for assets at: content/blog/${postName}/`
+          )
         }
 
         // Create branch if selected
@@ -174,7 +178,10 @@ inquirer
           if (success) {
             console.log(`\nCreated and switched to branch: ${branchName}`)
           } else {
-            console.log('\nCould not create git branch:', error?.message || 'Unknown error')
+            console.log(
+              '\nCould not create git branch:',
+              error?.message || 'Unknown error'
+            )
           }
         }
       }

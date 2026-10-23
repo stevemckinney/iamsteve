@@ -276,7 +276,6 @@ const commands = {
       url: i.url,
       collection: i.collection,
       kind: 'website',
-      extension: 'md',
     }))
     const out = path.join(ROOT, 'bookmarks-import.json')
     fs.writeFileSync(out, JSON.stringify(payload, null, 2) + '\n')

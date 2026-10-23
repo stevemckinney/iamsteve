@@ -67,11 +67,11 @@ jobs:
             const fs = require('fs')
             const path = require('path')
             const notesDir = 'content/notes'
-            let filename = `${slug}.md`
+            let filename = `${slug}.mdx`
             let counter = 1
 
             while (fs.existsSync(path.join(notesDir, filename))) {
-              filename = `${slug}-${counter}.md`
+              filename = `${slug}-${counter}.mdx`
               counter++
             }
 

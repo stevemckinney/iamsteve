@@ -58,7 +58,7 @@ inquirer
     }
 
     // Create single file
-    const filePath = path.join(notesDir, `${fileName}.md`)
+    const filePath = path.join(notesDir, `${fileName}.mdx`)
 
     fs.writeFile(filePath, frontmatter, { flag: 'wx' }, (err) => {
       if (err) {

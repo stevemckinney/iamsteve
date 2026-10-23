@@ -269,7 +269,7 @@ import Link from '@/components/link'
 
 ## Content structure
 
-Blog posts live in `content/blog/*.md`, notes in `content/notes/*.md`, pages in `content/pages/*.md`. Categories are defined in `content/categories.js`, collections in `content/collections.js`.
+Blog posts live in `content/blog/*.mdx`, notes in `content/notes/*.mdx`, pages in `content/pages/*.mdx`. Categories are defined in `content/categories.js`, collections in `content/collections.js`.
 
 Key frontmatter fields for posts: `title`, `date`, `lastmod`, `summary`, `metadesc`, `ogImage`, `categories[]`, `tags[]`, `status` (draft/open/closed), `theme`, `large`, `medium`, `fileroot`, `id`.
 

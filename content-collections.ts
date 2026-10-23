@@ -113,7 +113,7 @@ function computeRssBody(raw, filePath) {
 const posts = defineCollection({
   name: 'posts',
   directory: 'content/blog',
-  include: '**/*.md',
+  include: '**/*.mdx',
   schema: postSchema,
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)
@@ -169,7 +169,7 @@ const posts = defineCollection({
 const notes = defineCollection({
   name: 'notes',
   directory: 'content/notes',
-  include: '**/*.md',
+  include: '**/*.mdx',
   schema: noteSchema,
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)
@@ -187,7 +187,7 @@ const notes = defineCollection({
 const collections = defineCollection({
   name: 'collections',
   directory: 'content/collections',
-  include: '**/*.md',
+  include: '**/*.mdx',
   schema: collectionSchema,
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)
@@ -204,7 +204,7 @@ const collections = defineCollection({
 const pages = defineCollection({
   name: 'pages',
   directory: 'content/pages',
-  include: '**/*.md',
+  include: '**/*.mdx',
   schema: pageSchema,
   transform: async (doc, ctx) => {
     const mdx = await compileMDX(ctx, doc, mdxOptions)

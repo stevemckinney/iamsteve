@@ -1,0 +1,3 @@
+# Content is compiled as MDX 3, and Prettier 2 only parses MDX 1, so
+# formatting it can change how a post renders. Leave content as written.
+content/**/*.mdx
