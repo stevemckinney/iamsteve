@@ -156,7 +156,7 @@ export default async function CollectionsPage(props) {
           Search collections
         </SearchField>
       </Header>
-      <section className="flex flex-col col-start-content-start md:col-start-8 col-end-content-end gap-y-10">
+      <section className="flex flex-col col-container md:col-start-8 md:col-end-content-end gap-y-10">
         <Collections />
       </section>
     </>
