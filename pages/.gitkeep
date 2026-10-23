@@ -1,0 +1,2 @@
+# Next.js looks for pages/ here before src/pages/, which is Astro’s. This
+# empty folder keeps it from finding Astro’s routes. Delete it at cutover.
