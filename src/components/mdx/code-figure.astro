@@ -1,0 +1,64 @@
+---
+// A titled code block from lib/remark-code-title.js, with its copy button
+import { cn } from '@/lib/utils'
+import Icon from '../icon.astro'
+
+const { title, language } = Astro.props
+const iconClass = 'absolute top-0 left-0 transition-all duration-200'
+---
+
+<figure data-rehype-pretty-code-figure="">
+  <figcaption data-rehype-pretty-code-title="" data-language={language}>
+    <span class="text-base tracking-normal py-1.5 px-3">{title}</span>
+    <button
+      type="button"
+      class={cn(
+        'flex items-center justify-center gap-1.5',
+        'leading-normal px-3 py-1.5 rounded-sm',
+        'bg-surface',
+        'shadow-placed hover:shadow-picked active:shadow-reduced',
+        'transition duration-100 ease-out',
+        'font-ui cursor-pointer',
+        'ml-auto text-body text-base'
+      )}
+      aria-label="Copy code"
+      data-copy-code
+    >
+      <span class="relative w-4 h-4">
+        <Icon icon="copy" size={16} variant="header" class={iconClass} />
+        <Icon
+          icon="checkmark"
+          size={16}
+          variant="header"
+          class={cn(iconClass, 'opacity-0 scale-75 blur-sm')}
+        />
+      </span>
+      <span>Copy code</span>
+    </button>
+  </figcaption>
+  <slot />
+</figure>
+
+<script>
+  // Copy the figure’s code, and show the tick for two seconds
+  const hidden = ['opacity-0', 'scale-75', 'blur-sm']
+
+  document.addEventListener('click', async (event) => {
+    const button = event.target.closest('[data-copy-code]')
+    const code = button?.closest('figure')?.querySelector('pre')?.textContent
+    if (!code) return
+
+    await navigator.clipboard.writeText(code)
+    const [copy, done] = button.querySelectorAll('svg')
+    button.setAttribute('aria-label', 'Copied')
+    copy.classList.add(...hidden)
+    done.classList.remove(...hidden)
+
+    clearTimeout(button.reset)
+    button.reset = setTimeout(() => {
+      button.setAttribute('aria-label', 'Copy code')
+      copy.classList.remove(...hidden)
+      done.classList.add(...hidden)
+    }, 2000)
+  })
+</script>

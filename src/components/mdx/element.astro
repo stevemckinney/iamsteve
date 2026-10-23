@@ -1,0 +1,17 @@
+---
+// An element MDX hands to the components map, rendered with the map’s
+// class. As in the React maps, the element’s own class wins unless the
+// override is marked `force`, which mirrors `{...props} className=…`
+const {
+  as: Tag,
+  base,
+  force = false,
+  class: ownClass,
+  className,
+  ...attributes
+} = Astro.props
+
+const own = ownClass ?? className
+---
+
+<Tag class={force ? base : (own ?? base)} {...attributes}><slot /></Tag>

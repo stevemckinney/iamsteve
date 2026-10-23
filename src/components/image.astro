@@ -1,0 +1,43 @@
+---
+// What next/image rendered here, without its loader: the file exactly as
+// it is, lazy and decoded off the main thread unless it’s the LCP image.
+// An LCP image also needs a preload link in the head, which the layout adds
+const {
+  src,
+  alt,
+  width,
+  height,
+  priority = false,
+  loading,
+  fetchPriority,
+  style,
+  class: ownClass,
+  className,
+  // next/image options with nothing to do without an optimiser
+  unoptimized,
+  placeholder,
+  blurDataURL,
+  quality,
+  sizes,
+  loader,
+  ...attributes
+} = Astro.props
+
+const styles =
+  typeof style === 'string'
+    ? `color:transparent;${style}`
+    : { color: 'transparent', ...style }
+---
+
+<img
+  alt={alt}
+  loading={priority ? 'eager' : (loading ?? 'lazy')}
+  fetchpriority={priority ? 'high' : fetchPriority}
+  width={width}
+  height={height}
+  decoding="async"
+  class={ownClass ?? className}
+  style={styles}
+  src={src}
+  {...attributes}
+/>

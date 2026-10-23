@@ -1,0 +1,13 @@
+---
+// The React Demo read its props as its first argument, `src`, so its
+// className and zoom parameters always fell back to these defaults
+const { src } = Astro.props
+const className = '-mx-6 col-content h-[33vmax] overflow-hidden bg-fern-1100 p-1.5'
+---
+
+<div class={`demo sm:rounded-lg overflow-clip ${className}`} style="--zoom:.5">
+  <iframe
+    src={src}
+    class="sm:rounded-[2.35rem] ring ring-fern-800 origin-top-left w-[calc(1/var(--zoom)*100%)] h-[calc(1/var(--zoom)*100%)] transform-gpu scale-(--zoom)"
+  ></iframe>
+</div>

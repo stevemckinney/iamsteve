@@ -18,6 +18,10 @@ package-lock.json
 public/sitemap.xml
 .vercel
 
+# astro
+/.astro/
+/dist/
+
 # production
 /build
 # *.xml

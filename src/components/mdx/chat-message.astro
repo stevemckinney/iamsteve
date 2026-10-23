@@ -1,0 +1,19 @@
+---
+const { align = 'left' } = Astro.props
+const isRight = align === 'right'
+const isAi = align === 'ai'
+
+const styles = isRight
+  ? 'bg-cornflour-600 text-white'
+  : isAi
+  ? 'bg-transparent text-heading'
+  : 'bg-neutral-01-200 dark:bg-neutral-01-800 text-heading'
+---
+
+<div class={`flex ${isRight ? 'justify-end' : 'justify-start'}`}>
+  <div
+    class={`max-w-[calc(100%-32px)] px-4 pt-1.75 pb-1.5 rounded-sm text-base leading-normal [&>p]:mt-0 [&>p+p]:mt-1 ${styles}`}
+  >
+    <slot />
+  </div>
+</div>

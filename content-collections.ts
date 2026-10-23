@@ -2,26 +2,7 @@ import { defineCollection, defineConfig } from '@content-collections/core'
 import { compileMDX } from '@content-collections/mdx'
 
 import readingTime from 'reading-time'
-import remarkGfm from 'remark-gfm'
-import smartypants from 'remark-smartypants'
-import rehypeSlug from 'rehype-slug'
-import rehypeShiki from '@shikijs/rehype'
-import {
-  transformerMetaHighlight,
-  transformerNotationDiff,
-  transformerNotationFocus,
-  transformerNotationErrorLevel,
-  transformerNotationWordHighlight,
-} from '@shikijs/transformers'
-import { shikiLightTheme, shikiDarkTheme } from './lib/shiki-theme.js'
-import {
-  transformerCSSPartialProperties,
-  transformerCSSThemeDirective,
-  transformerLineNumbers,
-} from './lib/shiki-transformers.js'
-import rehypeHeadingLinks from './lib/rehype-heading-links'
-import remarkCodeTitles from './lib/remark-code-title'
-import remarkChat from './lib/remark-chat'
+import { remarkPlugins, rehypePlugins } from './lib/markdown.js'
 import { compileMdxForRssWithMarked } from './lib/compile-mdx-for-rss.js'
 import {
   postSchema,
@@ -32,45 +13,7 @@ import {
 import GithubSlugger from 'github-slugger'
 import siteMetadata from './content/metadata'
 
-const mdxOptions = {
-  remarkPlugins: [remarkGfm, remarkCodeTitles, smartypants, remarkChat],
-  rehypePlugins: [
-    rehypeSlug,
-    rehypeHeadingLinks,
-    [
-      rehypeShiki,
-      {
-        themes: {
-          light: shikiLightTheme,
-          dark: shikiDarkTheme,
-        },
-        defaultColor: false,
-        defaultLanguage: 'text',
-        transformers: [
-          transformerMetaHighlight(),
-          transformerNotationDiff(),
-          transformerNotationFocus(),
-          transformerNotationErrorLevel(),
-          transformerNotationWordHighlight(),
-          transformerCSSPartialProperties(),
-          transformerCSSThemeDirective(),
-          transformerLineNumbers(),
-        ],
-        parseMetaString: (str) => {
-          const meta = {}
-          const lineNumMatch = str.match(/showLineNumbers(?:=(\d+))?/)
-          if (lineNumMatch) {
-            meta.showLineNumbers = true
-            if (lineNumMatch[1]) {
-              meta.startLineNumber = parseInt(lineNumMatch[1], 10)
-            }
-          }
-          return meta
-        },
-      },
-    ],
-  ],
-}
+const mdxOptions = { remarkPlugins, rehypePlugins }
 
 function computeHeadings(raw) {
   const regXHeader = /\n(?<flag>#{1,6})\s+(?<content>.+)/g

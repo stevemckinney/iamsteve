@@ -1,0 +1,14 @@
+---
+import Link from '../link.astro'
+
+const { class: ownClass, className, ...attributes } = Astro.props
+---
+
+<Link
+  class={ownClass ??
+    className ??
+    'underline [text-underline-offset:12.5%] [text-decoration-skip-ink:auto] [text-decoration-thickness:1.5px] [text-decoration-color:color-mix(in_oklch,currentcolor,transparent_60%)] hover:text-link-hover hover:[text-decoration-color:transparent] transition duration-200 ease-out'}
+  {...attributes}
+>
+  <slot />
+</Link>

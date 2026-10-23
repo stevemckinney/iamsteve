@@ -1,0 +1,13 @@
+---
+import Link from '../link.astro'
+import Icon from '../icon.astro'
+
+const { href } = Astro.props
+---
+
+<Link
+  href={href}
+  class="flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion w-full @sm:w-auto @sm:grow-0 flex-auto"
+>
+  <Icon icon="github" size={16} class="text-current shrink-0" />{' '}<slot />
+</Link>

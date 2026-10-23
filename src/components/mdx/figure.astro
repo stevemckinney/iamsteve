@@ -1,0 +1,20 @@
+---
+// `enlargeable` opens the image in the FigureModal island, which arrives
+// with the rest of the islands. Until then it renders as a plain figure
+const {
+  imageShadow,
+  enlargeable,
+  src,
+  alt,
+  class: ownClass,
+  className = '',
+  ...attributes
+} = Astro.props
+
+const figureClass =
+  `${imageShadow ? '[&_img]:drop-shadow-image [&_img]:rounded-sm' : ''} ${
+    ownClass ?? className
+  }`.trim() || undefined
+---
+
+<figure class={figureClass} {...attributes}><slot /></figure>

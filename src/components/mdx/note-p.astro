@@ -1,0 +1,9 @@
+---
+import Element from './element.astro'
+---
+
+<Element
+  as="p"
+  base="md:text-lg lg:text-xl not-first:indent-8 [&>a]:indent-0 [.not-prose_&]:indent-0 [.not-prose_&]:text-base text-ui-body mb-2"
+  {...Astro.props}><slot /></Element
+>

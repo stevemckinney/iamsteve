@@ -1,0 +1,41 @@
+---
+// A symbol from the inline sprite, as components/icon/icon.js draws it
+import { cn } from '@/lib/utils'
+
+const folderIcons = new Set(['everything', 'archive', 'all', 'folder'])
+const penIcons = new Set(['design', 'pen'])
+
+const variantClasses = {
+  default: 'icon',
+  header: 'icon-header',
+  'on-light': 'icon-on-light',
+  none: '',
+}
+
+const {
+  icon = 'folder',
+  class: ownClass,
+  className,
+  variant = 'default',
+  size = 24,
+  ...attributes
+} = Astro.props
+
+const name = icon.toLowerCase()
+const resolved = folderIcons.has(name)
+  ? 'folder'
+  : penIcons.has(name)
+  ? 'pen'
+  : name
+const variantClass = variant in variantClasses ? variantClasses[variant] : 'icon'
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox={`0 0 ${size} ${size}`}
+  class={cn('shrink-0', 'text-current', variantClass, ownClass ?? className)}
+  {...attributes}
+>
+  <use xlink:href={`#${resolved}-${size}`}></use>
+</svg>

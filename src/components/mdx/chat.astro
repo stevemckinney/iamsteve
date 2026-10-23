@@ -1,0 +1,18 @@
+---
+const { title } = Astro.props
+---
+
+<div
+  class="rounded-2xl bg-surface shadow-placed overflow-hidden my-6 not-prose"
+  role="log"
+  aria-label={title ? `${title} conversation` : 'Chat conversation'}
+>
+  {
+    title && (
+      <div class="text-center py-2 px-4 text-sm text-ui-body font-ui border-b border-neutral-01-200 dark:border-fern-1100">
+        {title}
+      </div>
+    )
+  }
+  <div class="flex flex-col gap-1 p-3"><slot /></div>
+</div>

@@ -1,0 +1,5 @@
+---
+const { class: ownClass, className, ...attributes } = Astro.props
+---
+
+<img class={ownClass ?? className ?? 'rounded-sm my-4'} {...attributes} />

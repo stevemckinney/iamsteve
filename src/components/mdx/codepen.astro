@@ -1,0 +1,42 @@
+---
+import { cn } from '@/lib/utils'
+
+const {
+  slug,
+  user = 'stevemckinney',
+  height = 520,
+  defaultTab = 'result',
+  themeId = '23161',
+  title = 'CodePen',
+  editable = false,
+  class: ownClass,
+  className = '',
+} = Astro.props
+
+const embedUrl = slug && new URL(`https://codepen.io/${user}/embed/${slug}`)
+if (embedUrl) {
+  embedUrl.searchParams.set('default-tab', defaultTab)
+  embedUrl.searchParams.set('theme-id', themeId)
+  if (editable) embedUrl.searchParams.set('editable', 'true')
+} else {
+  console.error('CodePen component requires a slug prop')
+}
+---
+
+{
+  embedUrl && (
+    <div class={cn('codepen-wide', ownClass ?? className)}>
+      <iframe
+        height={height}
+        style="width:100%"
+        scrolling="no"
+        title={title}
+        src={embedUrl.toString()}
+        frameborder="no"
+        loading="lazy"
+        allowtransparency="true"
+        allowfullscreen
+      />
+    </div>
+  )
+}

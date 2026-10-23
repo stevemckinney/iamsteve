@@ -1,0 +1,29 @@
+---
+// The document shell. For now it carries only what the post route needs to
+// render: the full head, sprites, header and footer from app/layout.js come
+// with the layouts phase in MIGRATION.md
+import '../../app/global.css'
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en" class="overflow-x-hidden lg:overflow-x-clip">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover"
+    />
+    <title>{title ? `${title} • iamsteve` : 'iamsteve • design & code blog'}</title>
+  </head>
+  <body
+    class="antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas text-body overflow-x-hidden lg:overflow-x-clip"
+  >
+    <div
+      class="grid layout relative gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto items-baseline"
+    >
+      <slot />
+    </div>
+  </body>
+</html>

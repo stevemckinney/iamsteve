@@ -1,0 +1,9 @@
+---
+import Element from './element.astro'
+---
+
+<Element
+  as="a"
+  base="text-link underline [text-underline-offset:12.5%] [text-decoration-thickness:1.5px] [text-decoration-color:color-mix(in_oklch,currentcolor,transparent_60%)] hover:text-link-hover hover:no-underline has-[svg]:inline-flex has-[svg]:gap-0 has-[svg]:items-center has-[svg]:align-middle transition duration-200 ease-out"
+  {...Astro.props}><slot /></Element
+>

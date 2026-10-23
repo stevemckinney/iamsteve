@@ -1,0 +1,35 @@
+---
+// Posts, rendered through the same MDX pipeline and component map as the
+// Next.js site. The post layout around the body (header, featured image,
+// table of contents, aside, next posts) comes with the layouts phase
+import { getCollection, render } from 'astro:content'
+import Base from '../../layouts/base.astro'
+import { postComponents } from '../../components/mdx/index.js'
+
+export async function getStaticPaths() {
+  // Closed and draft posts 404, as they do today
+  const posts = await getCollection(
+    'blog',
+    ({ data }) => data.status === 'open' || data.status === 'unlisted'
+  )
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }))
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+---
+
+<Base title={post.data.title}>
+  <main
+    id="content"
+    class="grid grid-cols-subgrid col-start-container-start col-end-container-end gap-y-8 sm:gap-y-12 md:gap-y-18 md:frame md:frame-24 md:frame-outset-top-sm lg:frame-outset-top-md 2xl:frame-40 2xl:frame-outset-top sm:mb-18"
+  >
+    <h1 class="col-content lg:col-prose">{post.data.title}</h1>
+    <div
+      class="prose grid grid-cols-subgrid lg:row-start-1 pb-18 gap-x-8 gap-y-0 col-content lg:col-prose lg:col-start-3 lg:col-end-12 xl:col-start-5 xl:col-end-16"
+      id="article"
+    >
+      <Content components={postComponents} />
+    </div>
+  </main>
+</Base>

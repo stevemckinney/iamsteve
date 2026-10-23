@@ -1,0 +1,13 @@
+---
+import Element from './element.astro'
+
+// Shiki’s code keeps its own styling; only inline code gets the chip
+const shiki =
+  Astro.props.style || Astro.props['data-line-numbers'] !== undefined
+---
+
+<Element
+  as="code"
+  base={shiki ? undefined : 'font-mono bg-code text-code rounded-sm px-1'}
+  {...Astro.props}><slot /></Element
+>
