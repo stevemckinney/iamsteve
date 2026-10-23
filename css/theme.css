@@ -60,6 +60,10 @@
     oklch(from var(--color-fern-1100) l c h / 0.8),
     oklch(from var(--color-fern-300) l c h / 0.8)
   );
+  --color-body-70: light-dark(
+    oklch(from var(--color-fern-1100) l c h / 0.7),
+    oklch(from var(--color-fern-300) l c h / 0.7)
+  );
   --color-body-60: light-dark(
     oklch(from var(--color-fern-1100) l c h / 0.6),
     oklch(from var(--color-fern-300) l c h / 0.6)
