@@ -43,7 +43,7 @@
   }
 
   & figure :where(figcaption, figcaption p) {
-    color: var(--color-body-60);
+    color: var(--color-body-70);
     font-family: var(--font-mono);
     font-size: var(--text-base);
     letter-spacing: -0.03em;

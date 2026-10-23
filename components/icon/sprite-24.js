@@ -867,7 +867,7 @@ const Sprite24 = (props) => (
       <symbol id="folder-24" viewBox="0 0 24 24">
         <g className="folder">
           <path
-            d="M20 19.003A.997.997 0 0 1 19 20H5a1 1 0 0 1-1-1V5.5A1.5 1.5 0 0 1 5.5 4H8l1 1h9.5c.828 0 1.5.67 1.5 1.498v12.505Z"
+            d="M4 9V5.5A1.5 1.5 0 0 1 5.5 4H8l1 1h9.5c.828 0 1.5.67 1.5 1.498V9"
             className="fill-(--icon-fill-bg) stroke-current stroke-2 sl-r"
           />
           <path

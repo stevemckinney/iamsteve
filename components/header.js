@@ -149,7 +149,7 @@ function Desktop({ pathname }) {
                             <MenuItem
                               key={item.href}
                               href={item.href}
-                              className="relative flex flex-col gap-1 p-4 hover:bg-neutral-01-50 dark:hover:bg-fern-1100 transition duration-200 ease-out rounded-sm outline-none cursor-pointer focus-visible:z-10"
+                              className="relative flex flex-col gap-1 p-4 data-[focused]:bg-neutral-01-50 dark:data-[focused]:bg-fern-1100 transition duration-200 ease-out rounded-sm outline-none cursor-pointer focus-visible:z-10"
                             >
                               <span className="flex items-center gap-2">
                                 <Icon

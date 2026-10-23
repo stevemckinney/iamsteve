@@ -63,19 +63,16 @@ export default async function SearchPage({ searchParams }) {
       <Header>
         <Column>
           <Title>Search</Title>
-          <Description>
+          <Description className="desc max-md:mb-2">
             Find blog posts, notes, categories and collections across the site
           </Description>
         </Column>
-      </Header>
-
-      <div className="col-content flex flex-col gap-8">
         <form
           role="search"
           method="get"
           action="/search"
           className={cn(
-            'search-field relative flex items-center px-4 cursor-text',
+            'search-field relative flex items-center px-4 cursor-text md:self-end',
             'bg-surface rounded-sm shadow-placed',
             'has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-cornflour-600 dark:has-[:focus-visible]:ring-fern-400'
           )}
@@ -100,24 +97,15 @@ export default async function SearchPage({ searchParams }) {
             autoCorrect="off"
             spellCheck="false"
             className={cn(
-              'flex-1 py-3.5 bg-transparent',
+              'flex-1 min-w-0 py-3.5 bg-transparent',
               'text-base text-heading placeholder:text-body',
               'outline-none focus:ring-0 border-0'
             )}
           />
-          <button
-            type="submit"
-            className={cn(
-              'ml-2 px-3 py-1.5 rounded-xs cursor-pointer',
-              'text-sm font-variation-medium',
-              'bg-neutral-01-100 text-heading',
-              'hover:bg-neutral-01-50 transition-colors'
-            )}
-          >
-            Search
-          </button>
         </form>
+      </Header>
 
+      <div className="col-container md:col-content max-md:frame max-md:frame-24 max-md:px-8 max-md:py-8 flex flex-col gap-8">
         {q && results.length === 0 && (
           <p className="text-body">
             No results found for &ldquo;{q}&rdquo;. Try a different term or
@@ -127,7 +115,7 @@ export default async function SearchPage({ searchParams }) {
 
         {q && results.length > 0 && (
           <>
-            <p className="text-body text-sm">
+            <p className="sr-only">
               {results.length} result{results.length === 1 ? '' : 's'} for
               &ldquo;{q}&rdquo;
             </p>
@@ -137,33 +125,26 @@ export default async function SearchPage({ searchParams }) {
                   <Link
                     href={result.slug}
                     className={cn(
-                      'group flex items-start gap-3 p-3 -mx-3 rounded',
+                      'group flex flex-col gap-1 p-3 -mx-3 rounded',
                       'hover:bg-surface transition-colors'
                     )}
                   >
-                    <span className="flex shrink-0 mt-1">
+                    <span className="font-display font-variation-bold text-xl leading-xl lowercase text-heading group-hover:text-link">
                       <Icon
                         icon={typeIcon(result.type)}
                         size={16}
                         variant="none"
                         aria-hidden="true"
+                        className="inline-block align-middle mr-2"
                       />
+                      {result.title}
+                      <span className="sr-only">({label(result.type)})</span>
                     </span>
-                    <span className="flex flex-col min-w-0 flex-1 gap-1">
-                      <span className="flex items-center gap-2">
-                        <span className="text-base font-variation-medium text-heading group-hover:text-link">
-                          {result.title}
-                        </span>
-                        <span className="text-[10px] uppercase tracking-wider text-ui-body font-medium">
-                          {label(result.type)}
-                        </span>
+                    {result.summary && (
+                      <span className="text-sm text-body">
+                        {result.summary}
                       </span>
-                      {result.summary && (
-                        <span className="text-sm text-body">
-                          {result.summary}
-                        </span>
-                      )}
-                    </span>
+                    )}
                   </Link>
                 </li>
               ))}

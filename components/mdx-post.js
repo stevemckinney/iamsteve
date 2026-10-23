@@ -275,7 +275,7 @@ const pageComponents = {
     </figure>
   ),
   GalleryFigcaption: (props) => (
-    <figcaption className="text-heading/60 font-body leading-normal pt-4 pb-2 *:underline *:text-base">
+    <figcaption className="text-heading/70 font-body leading-normal pt-4 pb-2 *:underline *:text-base">
       {props.children}
     </figcaption>
   ),
