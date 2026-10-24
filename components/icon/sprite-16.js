@@ -16,26 +16,6 @@ const Sprite16 = (props) => (
     {...props}
   >
     <defs>
-      <symbol id=" checkmark-16" viewBox="0 0 16 16">
-        <g className="checkmark / checkmark">
-          <path
-            d="m3 8 3 3 7-7"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
-      </symbol>
-      <symbol id=" checkmark-underline-16" viewBox="0 0 16 16">
-        <g className="checkmark / underline">
-          <path
-            d="M2 15h12"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-          <path
-            d="m3 8 3 3 7-7"
-            className="fill-none stroke-current stroke-2 sl-r"
-          />
-        </g>
-      </symbol>
       <symbol id="about-16" viewBox="0 0 16 16">
         <path d="M9.84335,9.69765l-.00229-.031a4.25032,4.25032,0,0,0,1.49227-3.33334v-2c0-1.20734,0-2-.66666-2.66666a2.44912,2.44912,0,0,0-2-.66667c-.60143,0-.66029.54257-1.645.64876a2.72461,2.72461,0,0,0-2.355,2.74544V6.33333A4.25032,4.25032,0,0,0,6.15894,9.66667l-.0023.03113C6.06721,10.90871,5.223,10.908,4.063,11.26685a12.9908,12.9908,0,0,0-1.56186.59426,1.99748,1.99748,0,0,0-1.16784,1.82032V14a1,1,0,0,0,1,1H13.66667a1,1,0,0,0,1-1v-.3186a1.9975,1.9975,0,0,0-1.1678-1.82031,12.99024,12.99024,0,0,0-1.56184-.59427C10.777,10.90791,9.93278,10.90862,9.84335,9.69765Z" />
       </symbol>
@@ -402,6 +382,18 @@ const Sprite16 = (props) => (
       </symbol>
       <symbol id="checkmark-16" viewBox="0 0 16 16">
         <g className="checkmark">
+          <path
+            d="m3 8 3 3 7-7"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
+        </g>
+      </symbol>
+      <symbol id="checkmark-underline-16" viewBox="0 0 16 16">
+        <g className="checkmark / underline">
+          <path
+            d="M2 15h12"
+            className="fill-none stroke-current stroke-2 sl-r"
+          />
           <path
             d="m3 8 3 3 7-7"
             className="fill-none stroke-current stroke-2 sl-r"
