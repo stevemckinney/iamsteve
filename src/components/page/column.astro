@@ -1,0 +1,7 @@
+---
+// Without a class this renders `undefined` in the class list, as the React
+// Column does today
+const { class: ownClass, className } = Astro.props
+---
+
+<div class={`flex flex-col gap-4 ${ownClass ?? className}`}><slot /></div>
