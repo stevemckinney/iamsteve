@@ -11,7 +11,7 @@
     "reason": "next/script injects the Twitter widget from the client, and Astro writes the tag; both preload it in the head"
   },
   {
-    "url": "/blog/**",
+    "url": "/**",
     "part": "body",
     "attribute": "data-copy-code",
     "kind": "extra",
