@@ -1,0 +1,150 @@
+---
+// app/(post)/blog/[...slug]/post-body.js: a post with its table of
+// contents, subscribe form, support box and next posts. `post` is the
+// entry shaped by postData, as content-collections gave it
+import { format, parseISO } from 'date-fns'
+import { render } from 'astro:content'
+import siteMetadata from '@/content/metadata'
+import styles from '../../../app/(post)/blog/[...slug]/post.module.css'
+import { postComponents } from '../mdx/index.js'
+import { pageViews } from '../../lib/views.js'
+import LayoutFrame from './layout-frame.astro'
+import PostImage from './image.astro'
+import Support from './support.astro'
+import NextPosts from './next-posts.astro'
+import TableOfContents from '../table-of-contents.astro'
+import NewsletterForm from '../newsletter-form.astro'
+import Category from '../category.astro'
+import Badge from '../badge.astro'
+import PageTitle from '../page-title.astro'
+import Icon from '../icon.astro'
+
+const { entry, post, showViews = true } = Astro.props
+const { Content } = await render(entry)
+
+const editUrl = (fileName) =>
+  `${siteMetadata.siteRepo}/blob/main/content/blog/${fileName}`
+
+const cleanSlug = post.slug.replace(/^\/blog\//, '')
+const currentYear = new Date().getFullYear()
+const postYear = new Date(post.date).getFullYear()
+const yearsAgo = currentYear - postYear
+const isOldCodePost = post.categories.includes('Code') && yearsAgo > 2
+const date = parseISO(post.date)
+
+// PostViews: the count when the page was built, where a post without a
+// row has 0. Counting new views arrives with the view counter island
+const views = showViews ? ((await pageViews()).get(cleanSlug) ?? 0) : null
+---
+
+<LayoutFrame styles={styles}>
+  <Fragment slot="aside">
+    <section
+      class="flex flex-col gap-2 relative"
+      aria-labelledby="aside-contents"
+    >
+      <div class="lg:hidden">
+        <TableOfContents headings={post.headings} />
+      </div>
+      <div class="hidden lg:block">
+        <TableOfContents headings={post.headings} open />
+      </div>
+    </section>
+    <section
+      class="flex flex-col gap-2 pb-12 max-lg:fixed max-lg:hidden max-lg:top-0 max-lg:left-0 max-lg:right-0"
+      aria-labelledby="aside-subscribe"
+    >
+      <h2 class="font-bold text-heading" id="aside-subscribe">Subscribe</h2>
+      <p class="mb-4">
+        Get notified you when the latest posts go out. Unsubscribe anytime.
+      </p>
+      <NewsletterForm />
+    </section>
+  </Fragment>
+
+  <Fragment slot="header">
+    <slot name="banner" />
+    {
+      isOldCodePost && (
+        <div class="shadow-(--shadow-notice) col-content lg:col-prose flex gap-3 leading-tight bg-(--color-notice-bg) rounded-md p-4">
+          <Icon
+            icon="square-info"
+            class="text-(--color-notice-icon) flex-[0_0_auto]"
+            variant="header"
+          />
+          <div class="flex flex-col">
+            <p class="p-0 m-0 font-body text-sm text-(--color-notice-text)">
+              <strong>
+                This post was published {yearsAgo}{' '}
+                {yearsAgo === 1 ? 'year' : 'years'} ago
+              </strong>
+            </p>
+            <p class="p-0 m-0 font-body text-sm text-(--color-notice-muted)">
+              There’s a chance things are out of date or no longer reflect my
+              views today
+            </p>
+          </div>
+        </div>
+      )
+    }
+    <Badge size={16} theme="cornflour" iconStart="calendar">
+      <time datetime={post.date} class="date">
+        {format(date, 'do LLL yyyy')}
+      </time>
+    </Badge>
+    <PageTitle class="mt-4" id={`title-${post.id}`}>{post.title}</PageTitle>
+    {
+      post.summary && (
+        <p class="text-lg text-pretty lg:text-2xl text-emphasis mb-2">
+          {post.summary}
+        </p>
+      )
+    }
+    <div class="flex flex-row flex-wrap justify-between gap-6">
+      <div class="flex flex-row gap-4 items-center">
+        {
+          post.categories.length > 0 &&
+            post.categories.map((category) => (
+              <Category size={16} title={category} />
+            ))
+        }
+      </div>
+      {
+        showViews && (
+          <Badge size={16} theme="text" iconStart="views">
+            <span class="text-emphasis">
+              {`${views.toLocaleString('en-US')} views`}
+            </span>
+          </Badge>
+        )
+      }
+    </div>
+  </Fragment>
+
+  <Fragment slot="prose">
+    <PostImage post={post} styles={styles} />
+    <Content components={postComponents} />
+    <Badge
+      href={editUrl(post._meta.fileName)}
+      size={16}
+      theme="text"
+      iconStart="github">View on Github</Badge
+    >
+  </Fragment>
+
+  <Fragment slot="after">
+    <Support />
+    <NextPosts post={post} />
+  </Fragment>
+
+  {
+    post.twitter === true && (
+      <script is:inline async src="https://platform.twitter.com/widgets.js" />
+    )
+  }
+</LayoutFrame>
+
+<script>
+  import '../../scripts/copy-code.js'
+  import '../../scripts/fragment-links.js'
+</script>

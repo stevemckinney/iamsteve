@@ -1,0 +1,79 @@
+---
+// components/post/post-layout-frame.js as the server rendered it, with
+// the sidebar open. Its toggle is commented out there, so it stays open
+import { cn } from '@/lib/utils'
+
+const { styles = {} } = Astro.props
+const isSidebarOpen = true
+---
+
+<article
+  class={`${
+    styles.article || ''
+  } isolate grid col-container grid-cols-subgrid relative`}
+>
+  <hr
+    class="absolute z-11 top-0 left-0 right-0 col-container md:col-content lg:hidden w-full h-[2px] bg-dash-image border-none"
+  />
+
+  <aside
+    aria-label="Table of contents and newsletter subscription form"
+    class={cn(
+      'toc',
+      'max-md:col-container max-lg:col-content',
+      'lg:row-start-1',
+      'lg:col-start-page-start xl:col-start-2 lg:col-span-2 xl:col-end-5',
+      'lg:h-screen lg:overflow-y-scroll',
+      'sticky z-10 top-0 bottom-0 lg:right-0',
+      'lg:-mt-12 lg:pt-12 2xl:-mt-10 lg:pb-18',
+      'lg:px-6 lg:-mx-6',
+      'flex flex-col lg:gap-12',
+      'max-h-[100dvh]',
+      {
+        'max-lg:hidden lg:hidden': !isSidebarOpen,
+      }
+    )}
+  >
+    <slot name="aside" />
+  </aside>
+
+  <hr
+    class="relative col-container md:col-content lg:hidden w-full h-[2px] bg-dash-image border-none"
+  />
+
+  <div
+    class={cn(
+      styles.prose,
+      styles.content,
+      'prose grid grid-cols-subgrid',
+      'lg:row-start-1',
+      'pb-18',
+      'gap-x-8 gap-y-0',
+      'col-content lg:col-prose',
+      {
+        'lg:col-start-3 lg:col-end-12 xl:col-start-5 xl:col-end-16':
+          isSidebarOpen,
+        'lg:col-start-5 lg:col-end-13': !isSidebarOpen,
+      }
+    )}
+    id="article"
+  >
+    <header
+      class={cn(
+        styles.header,
+        'flex flex-col max-lg:pt-12 gap-y-4',
+        'col-content lg:col-prose',
+        {
+          'lg:col-start-6 lg:col-end-14': isSidebarOpen,
+          'lg:col-start-4 lg:col-end-14': !isSidebarOpen,
+        }
+      )}
+    >
+      <slot name="header" />
+    </header>
+    <slot name="prose" />
+  </div>
+  <slot name="after" />
+</article>
+
+<slot />

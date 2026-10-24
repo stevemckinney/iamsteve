@@ -1,0 +1,36 @@
+---
+// NextPosts from app/(post)/blog/[...slug]/post-body.js: two open posts
+// picked at random from the post’s first category, when the page builds
+import Card from '../card/index.astro'
+import { openPosts, cardData } from '../../lib/content.js'
+
+const { post } = Astro.props
+const posts = await openPosts()
+
+function getRandomItem(category) {
+  const items = posts.filter((item) => item.data.categories.includes(category))
+  return cardData(items[Math.floor(Math.random() * items.length)])
+}
+---
+
+<aside
+  class={`xl:row-span-1 col-content lg:col-start-6 xl:col-start-7 lg:col-span-8 flex flex-col gap-4 lg:-mx-8 pb-18 mt-8`}
+>
+  <h2
+    class="text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 lg:px-8"
+  >
+    Next to read
+  </h2>
+  <div class="grid lg:grid-cols-2 gap-8">
+    <Card
+      size="medium"
+      image={false}
+      frontmatter={getRandomItem(post.categories[0])}
+    />
+    <Card
+      size="medium"
+      image={false}
+      frontmatter={getRandomItem(post.categories[0])}
+    />
+  </div>
+</aside>

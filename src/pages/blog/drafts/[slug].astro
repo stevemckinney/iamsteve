@@ -1,0 +1,53 @@
+---
+// app/(post)/blog/drafts/[...slug]/page.js. It previews any post by its
+// slug, whatever its status, as it does today
+import { getCollection } from 'astro:content'
+import Frame from '../../../layouts/frame.astro'
+import PostBody from '../../../components/post/body.astro'
+import Icon from '../../../components/icon.astro'
+import { postData, postPreloads } from '../../../lib/content.js'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }))
+}
+
+const { entry } = Astro.props
+const post = postData(entry)
+
+const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
+}
+---
+
+<Frame variant="post" metadata={metadata} preloads={postPreloads(post)}>
+  <PostBody entry={entry} post={post} showViews={false}>
+    <div class="col-content mb-8" slot="banner">
+      <div
+        class="shadow-placed flex gap-3 leading-tight bg-cornflour-0 dark:bg-cornflour-900 rounded-md p-4"
+      >
+        <Icon
+          icon="square-info"
+          class="text-cornflour-900 dark:text-cornflour-100 flex-[0_0_auto]"
+          variant="default"
+        />
+        <div class="flex flex-col">
+          <p
+            class="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-100"
+          >
+            <strong>Viewing draft post</strong>
+          </p>
+          <p
+            class="p-0 m-0 font-body text-sm text-cornflour-900 dark:text-cornflour-200"
+          >
+            This post is not publicly visible
+          </p>
+        </div>
+      </div>
+    </div>
+  </PostBody>
+</Frame>

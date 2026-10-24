@@ -1,68 +1,131 @@
 ---
-// Posts, rendered through the same MDX pipeline and component map as the
-// Next.js site. The post layout around the body (header, featured image,
-// table of contents, aside, next posts) comes next
-import { getCollection, render } from 'astro:content'
+// app/(post)/blog/[...slug]/page.js
+import { getCollection } from 'astro:content'
 import Frame from '../../layouts/frame.astro'
-import { postComponents } from '../../components/mdx/index.js'
-import { isRoutable } from '../../lib/content.js'
+import PostBody from '../../components/post/body.astro'
+import { isRoutable, postData, postPreloads } from '../../lib/content.js'
 import siteMetadata from '@/content/metadata'
 
 export async function getStaticPaths() {
   // Closed and draft posts 404, as they do today
   const posts = await getCollection('blog', isRoutable)
-  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }))
+  return posts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }))
 }
 
-const { post } = Astro.props
-const { Content } = await render(post)
-const { title, summary, metadesc, date, lastmod, ogImage, noindex } = post.data
-const url = `/blog/${post.id}`
+const { entry } = Astro.props
+const post = postData(entry)
+const enableViewCounting =
+  import.meta.env.NEXT_PUBLIC_ENABLE_VIEW_COUNTING === 'true'
 
-// app/(post)/blog/[...slug]/page.js generateMetadata
+// generateMetadata
 const metadata = {
-  title,
-  description: metadesc,
+  title: post.title,
+  description: post.metadesc,
   alternates: {
-    canonical: url,
-    types: { 'text/markdown': `/api/content/${post.id}` },
+    canonical: post.slug,
+    types: {
+      'text/markdown': `/api/content/${post.slugAsParams}`,
+    },
   },
   openGraph: {
-    title,
-    description: summary,
+    title: post.title,
+    description: post.summary,
     type: 'article',
-    publishedTime: date,
-    modifiedTime: lastmod,
+    publishedTime: post.date,
+    modifiedTime: post.lastmod,
     authors: [siteMetadata.author],
-    url,
-    images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+    url: `${post.slug}`,
+    images: [
+      {
+        url: post.ogImage,
+        width: 1200,
+        height: 630,
+        alt: post.title,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title,
-    description: summary,
-    images: [ogImage],
+    title: post.title,
+    description: post.summary,
+    images: [post.ogImage],
   },
-  ...(noindex && {
+  ...(post.noindex && {
     robots: {
       index: false,
       follow: false,
-      googleBot: { index: false, follow: false },
+      googleBot: {
+        index: false,
+        follow: false,
+      },
     },
   }),
 }
+
+const jsonLD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BlogPosting',
+      '@id': `${siteMetadata.siteUrl}${post.slug}#article`,
+      isPartOf: {
+        '@id': `${siteMetadata.siteUrl}/#website`,
+      },
+      author: {
+        '@type': 'Person',
+        name: siteMetadata.author,
+        '@id': `${siteMetadata.siteUrl}/#person`,
+      },
+      headline: post.title,
+      datePublished: post.date,
+      dateModified: post.lastmod,
+      description: post.summary,
+      wordCount: post.content.split(/\s+/).length,
+      keywords: post.tags?.join(', '),
+      articleSection: post.categories[0],
+      image: {
+        '@type': 'ImageObject',
+        url: post.ogImage,
+        width: 1200,
+        height: 630,
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `${siteMetadata.siteUrl}${post.slug}`,
+      },
+      publisher: {
+        '@id': `${siteMetadata.siteUrl}/#organization`,
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${siteMetadata.siteUrl}${post.slug}#breadcrumb`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'iamsteve.me',
+          item: `${siteMetadata.siteUrl}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Blog',
+          item: `${siteMetadata.siteUrl}/blog`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: post.title,
+          item: `${siteMetadata.siteUrl}${post.slug}`,
+        },
+      ],
+    },
+  ],
+}
 ---
 
-<Frame variant="post" metadata={metadata}>
-  <h1 class="col-content lg:col-prose">{title}</h1>
-  <div
-    class="prose grid grid-cols-subgrid lg:row-start-1 pb-18 gap-x-8 gap-y-0 col-content lg:col-prose lg:col-start-3 lg:col-end-12 xl:col-start-5 xl:col-end-16"
-    id="article"
-  >
-    <Content components={postComponents} />
-  </div>
+<Frame variant="post" metadata={metadata} preloads={postPreloads(post)}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />
+  <PostBody entry={entry} post={post} showViews={enableViewCounting} />
 </Frame>
-
-<script>
-  import '../../scripts/copy-code.js'
-</script>

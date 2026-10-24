@@ -1,0 +1,50 @@
+---
+// PostImage from app/(post)/blog/[...slug]/post-body.js: the featured
+// image, or the category’s placeholder artwork when a post has none
+import Image from '../image.astro'
+import Placeholder from '../placeholder.astro'
+
+const { post, styles } = Astro.props
+const imageColor = post.theme ? post.theme : `#fcf9f8`
+const placeholderClass = `col-content lg:col-container grid-cols-subgrid overflow-hidden *:w-full ${styles.featured}`
+---
+
+{
+  !post.large &&
+    (post.categories && post.categories.includes('Design') ? (
+      <Placeholder
+        category="Design"
+        slug={post.slug}
+        alt={`${post.title} (featured image)`}
+        width={864}
+        height={540}
+        class={placeholderClass}
+      />
+    ) : (
+      <Placeholder
+        category="Code"
+        slug={post.slug}
+        alt={`${post.title} (featured image)`}
+        width={864}
+        height={540}
+        class={placeholderClass}
+      />
+    ))
+}
+{
+  post.large && (
+    <div
+      class={`col-content lg:col-prose grid-cols-subgrid flex items-center overflow-hidden justify-center ${styles.featured}`}
+      style={`background-color:${imageColor}`}
+    >
+      <Image
+        src={post.large}
+        alt={`${post.title} (featured image)`}
+        width={864}
+        height={540}
+        priority
+        fetchPriority="high"
+      />
+    </div>
+  )
+}

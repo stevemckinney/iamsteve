@@ -3,6 +3,7 @@
 // date, so posts with the same date stay in file order
 import { getCollection } from 'astro:content'
 import categories from '@/content/categories'
+import { computeHeadings } from './headings.js'
 
 const byPath = (a, b) => a.filePath.localeCompare(b.filePath)
 const byDate = (a, b) => new Date(b.data.date) - new Date(a.data.date)
@@ -45,6 +46,20 @@ export async function listedCategories() {
   )
 }
 
+// A post as the Next.js post pages read it from content-collections,
+// whose trimmed body matches Astro’s
+export function postData(entry) {
+  const filePath = entry.filePath.replace(/^content\/blog\//, '')
+  return {
+    ...entry.data,
+    content: entry.body,
+    headings: computeHeadings(entry.body),
+    slug: `/blog/${entry.id}`,
+    slugAsParams: entry.id,
+    _meta: { filePath, fileName: filePath.split('/').pop() },
+  }
+}
+
 // The shape the cards read, as content-collections documents had it
 export function cardData(entry) {
   return {
@@ -69,4 +84,21 @@ export function cardPreloads(post) {
   return post?.data.large && post?.data.medium
     ? [{ href: post.data.medium }]
     : []
+}
+
+// A post page’s preloads: the featured image, its LCP, and the Twitter
+// widget next/script preloaded for posts that embed tweets
+export function postPreloads(post) {
+  return [
+    ...(post.large ? [{ href: post.large }] : []),
+    ...(post.twitter === true
+      ? [
+          {
+            href: 'https://platform.twitter.com/widgets.js',
+            as: 'script',
+            fetchpriority: null,
+          },
+        ]
+      : []),
+  ]
 }

@@ -1,0 +1,25 @@
+---
+// Support from app/(post)/blog/[...slug]/post-body.js
+import siteMetadata from '@/content/metadata'
+import Icon from '../icon.astro'
+import Link from '../link.astro'
+---
+
+<aside
+  class="xl:row-span-1 bg-surface-02 dark:bg-surface shadow-[0_0_0_1px_var(--color-white)] dark:shadow-[0_0_0_1px_var(--color-surface-02)] rounded-lg flex flex-row flex-wrap content-center items-center gap-4 justify-between p-8 lg:-mx-8 col-content lg:col-start-6 xl:col-start-7 xl:col-span-8"
+>
+  <p class="p-0 m-0 text-base text-ui-body flex flex-col">
+    <strong class="text-heading font-bold">
+      Enjoying the reading experience?
+    </strong>{' '}
+    There’s no ads, tracking or cookie banners, so your support is valued
+  </p>
+  <Link
+    href={siteMetadata.bmc}
+    class="flex shrink-0 grow-0 self-start flex-row rounded-sm items-center gap-2 text-base font-ui lowercase transition duration-200 mt-1 pl-6 pr-5 py-2 bg-surface shadow-reduced hover:opacity-70"
+    >Buy me a coffee<span
+      class="flex shrink-0 grow-0 items-center justify-center"
+      ><Icon icon="bmc" /></span
+    ></Link
+  >
+</aside>
