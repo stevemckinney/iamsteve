@@ -1,0 +1,87 @@
+---
+// app/(page)/collections/page.js
+import collections from '@/content/collections'
+import { collectionTitle } from '@/lib/collections'
+import Frame from '../../layouts/frame.astro'
+import Header from '../../components/page/header.astro'
+import Title from '../../components/page/title.astro'
+import Description from '../../components/page/description.astro'
+import Topics from '../../components/topics.astro'
+import Icon from '../../components/icon.astro'
+import SearchField from '../../components/search-field.astro'
+import Bookmarks from '../../components/bookmarks.astro'
+import { groupBookmarks, lastImport } from '../../lib/bookmarks.js'
+
+const metadata = {
+  title: 'Collections',
+  description:
+    'Curated design resources organised by topic, from typography and colour to tools and techniques.',
+  alternates: {
+    canonical: '/collections',
+  },
+}
+
+const lastImportDate = await lastImport()
+// The entries compare as strings, `topic,[object Object],…`, which sorts
+// them by topic with capitals first
+const groups = Object.entries(await groupBookmarks()).sort((a, b) =>
+  a < b ? -1 : a > b ? 1 : 0
+)
+const items = [...collections].sort((a, b) =>
+  a.title < b.title ? -1 : a.title > b.title ? 1 : 0
+)
+---
+
+<Frame variant="page" metadata={metadata}>
+  <Header
+    class="max-md:frame max-md:frame-24 max-md:px-8 max-md:py-8 flex flex-col gap-2 col-container md:col-content md:col-end-7 md:sticky top-8 self-start"
+  >
+    <Title class="font-variation-bold text-5xl">Collections</Title>
+    <Description class="desc max-md:mb-2"
+      >{
+        'Curated design resources organised by topic, from typography and colour to tools and techniques.'
+      }</Description
+    >
+    <Topics
+      items={items}
+      label="Collections"
+      icon="collections"
+      class="md:hidden"
+    />
+    <ul
+      class="max-md:hidden grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories"
+    >
+      {
+        items.map((collection) => (
+          <li class="self-end">
+            <a
+              href={collection.slug}
+              class="py-2 md:py-3 text-base md:text-lg lg:text-xl text-current hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center"
+            >
+              <Icon icon={collection.icon} size={24} variant="header" />
+              {collection.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <SearchField scope="collections" class="max-md:hidden mt-4"
+      >Search collections</SearchField
+    >
+  </Header>
+  <section
+    class="flex flex-col col-container md:col-start-8 md:col-end-content-end gap-y-10"
+  >
+    {
+      groups.map(([collection, bookmarks]) => (
+        <Bookmarks
+          title={collectionTitle(collection)}
+          items={bookmarks}
+          lastImport={lastImportDate}
+          listClass="bg-surface shadow-placed rounded-md flex flex-col overflow-hidden"
+          itemClass="flex items-center border-b last:border-0 border-neutral-01-500/10 leading-loose relative lg:text-lg"
+        />
+      ))
+    }
+  </section>
+</Frame>

@@ -1,0 +1,93 @@
+---
+// app/(page)/search/page.js as it renders without a query: the field and
+// the help text. Results for ?q= need the page rendered on demand, which
+// comes with the adapter
+import { cn } from '@/lib/utils'
+import Frame from '../layouts/frame.astro'
+import PencilMono from '../components/illustration/pencil-mono.astro'
+import Header from '../components/page/header.astro'
+import Column from '../components/page/column.astro'
+import Title from '../components/page/title.astro'
+import Description from '../components/page/description.astro'
+import Icon from '../components/icon.astro'
+
+const metadata = {
+  title: 'Search',
+  description:
+    'Search blog posts, notes, categories and collections across iamsteve',
+}
+---
+
+<Frame variant="page" metadata={metadata}>
+  <PencilMono
+    width={962}
+    height={46}
+    class="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+  />
+  <Header>
+    <Column>
+      <Title>Search</Title>
+      <Description class="desc max-md:mb-2"
+        >Find blog posts, notes, categories and collections across the site</Description
+      >
+    </Column>
+    <form
+      role="search"
+      method="get"
+      action="/search"
+      class={cn(
+        'search-field relative flex items-center px-4 cursor-text md:self-end',
+        'bg-surface rounded-sm shadow-placed',
+        'has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-cornflour-600 dark:has-[:focus-visible]:ring-fern-400'
+      )}
+    >
+      <label for="q" class="sr-only">Search</label>
+      <Icon
+        icon="search"
+        size={24}
+        variant="none"
+        aria-hidden="true"
+        class="text-body shrink-0"
+      />
+      <input
+        id="q"
+        name="q"
+        type="search"
+        value=""
+        placeholder="Search everything…"
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+        class={cn(
+          'flex-1 min-w-0 py-3.5 bg-transparent',
+          'text-base text-heading placeholder:text-body',
+          'outline-none focus:ring-0 border-0'
+        )}
+      />
+    </form>
+  </Header>
+
+  <div
+    class="col-container md:col-content max-md:frame max-md:frame-24 max-md:px-8 max-md:py-8 flex flex-col gap-8"
+  >
+    <div class="flex flex-col gap-4">
+      <p class="text-body">
+        {
+          'Type a query above to search posts, notes, categories and collections. You can also press'
+        }<kbd
+          class={cn(
+            'mx-1.5 inline-flex items-center gap-0.5 px-1.5 py-0.5',
+            'font-sans text-xs font-variation-medium uppercase',
+            'bg-surface-raised text-body shadow-placed rounded-xs'
+          )}
+          ><Icon
+            icon="cmd"
+            size={16}
+            variant="none"
+            aria-label="Command"
+          /><span class="relative top-px">K</span></kbd
+        >{'anywhere on the site to open the quick search.'}
+      </p>
+    </div>
+  </div>
+</Frame>
