@@ -1,0 +1,62 @@
+---
+// app/(page)/[...slug]/page.js: the pages in content/pages
+import { getCollection, render } from 'astro:content'
+import Frame from '../layouts/frame.astro'
+import { pageComponents } from '../components/mdx/index.js'
+import Header from '../components/page/header.astro'
+import Column from '../components/page/column.astro'
+import Title from '../components/page/title.astro'
+import Description from '../components/page/description.astro'
+import { PencilMono } from '../components/illustration/index.js'
+import AboutNav from '../components/about-nav.astro'
+import styles from '../../app/(page)/[...slug]/page.module.css'
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages')
+  return pages.map((page) => ({ params: { slug: page.id }, props: { page } }))
+}
+
+const { page } = Astro.props
+const { Content } = await render(page)
+const { title, description, slot } = page.data
+
+// A page’s frontmatter `slot` is MDX for a second header column, which
+// Astro doesn’t compile. Each one is ported by hand
+const slots = { about: AboutNav }
+const Slot = slot && slots[page.id]
+if (slot && !Slot) {
+  throw new Error(`content/pages/${page.id}.mdx has a slot with no Astro port`)
+}
+
+const metadata = {
+  title,
+  description,
+  alternates: { canonical: `/${page.id}` },
+}
+---
+
+<Frame variant="page" metadata={metadata}>
+  <PencilMono
+    width={962}
+    height={46}
+    class="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+  />
+  <article
+    class={`grid grid-cols-subgrid col-container row-start-1 lg:pb-18 gap-y-10 lg:gap-y-18 ${styles.page}`}
+  >
+    <Header>
+      <Column class="md:col-span-1">
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+      </Column>
+      {
+        Slot && (
+          <Column class="md:col-span-1 self-end">
+            <Slot />
+          </Column>
+        )
+      }
+    </Header>
+    <Content components={pageComponents} />
+  </article>
+</Frame>

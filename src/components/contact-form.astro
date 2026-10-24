@@ -1,0 +1,82 @@
+---
+// components/contact-form.js as production’s server HTML has it: empty
+// fields and Send disabled until the message reaches 8 words. Submitting,
+// the word count, the rate limit, Turnstile and the toast arrive with the
+// contact form island, along with React Aria’s generated ids, which the
+// labels’ `for` and the fields’ aria attributes point at
+const fieldLabelClass =
+  'font-ui text-base lowercase text-emphasis leading-none mb-1'
+const inputClass =
+  'form-input border-0 w-full text-base shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_64_63/0.1)] bg-linear-to-b from-[rgb(79_64_63/0.03)] from-0% to-[rgb(79_64_63/0)] to-100% px-4 py-3 rounded-sm placeholder-fern-1100/30 focus-visible:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_127_218),0_0_0_6px_rgb(79_127_218/0.08)] data-[invalid]:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_#E5542B,0_0_0_5px_rgb(229_84_43/0.08)]'
+const hintClass = 'text-sm text-ui-body opacity-80 leading-none mb-3'
+---
+
+<form class="w-full grid grid-cols-5 gap-8">
+  {/* Honeypot field */}
+  <div class="sr-only" aria-hidden="true">
+    <label for="title"
+      >Title<input
+        type="text"
+        id="title"
+        tabindex="-1"
+        autocomplete="off"
+        class="opacity-0 absolute w-0 h-0"
+        name="title"
+      /></label
+    >
+  </div>
+
+  <div class="col-span-2 flex flex-col relative" data-required="true">
+    <div class="flex flex-col items-baseline justify-between">
+      <label class={fieldLabelClass}>Name</label>
+      <p class={hintClass}>What do you go by?</p>
+    </div>
+    <input
+      type="text"
+      required
+      tabindex="0"
+      class={inputClass}
+      name="name"
+      value=""
+    />
+  </div>
+
+  <div class="col-span-3 flex flex-col relative" data-required="true">
+    <div class="flex flex-col items-baseline justify-between">
+      <label class={fieldLabelClass}>Email</label>
+      <p class={hintClass}>So I can reply to you</p>
+    </div>
+    <input
+      type="email"
+      required
+      tabindex="0"
+      class={inputClass}
+      name="email"
+      value=""
+    />
+  </div>
+
+  <div class="col-span-5 flex flex-col relative" data-required="true">
+    <div class="flex flex-col items-baseline justify-between">
+      <label class={fieldLabelClass}>Message</label>
+      <p class={hintClass}>How can I help?</p>
+    </div>
+    {/* React Aria passes the field’s type on to the textarea */}
+    <textarea
+      type="text"
+      required
+      name="message"
+      tabindex="0"
+      class={`${inputClass} min-h-46`}></textarea>
+    <p class="text-sm text-ui-body opacity-80 leading-none mt-3">
+      Enter at least 8 words. Currently used: 0 words.
+    </p>
+  </div>
+
+  <button
+    class="button-dandelion self-start min-w-fit font-ui text-base/tight lowercase text-center select-none w-full @sm:w-auto @sm:grow-0 flex-auto"
+    type="submit"
+    disabled
+    data-disabled="true">Send</button
+  >
+</form>

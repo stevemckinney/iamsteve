@@ -1,0 +1,39 @@
+---
+// app/(page)/newsletter/campaigns.js once its data has loaded. The build
+// reads the issues, where the client component fetched them after load.
+// The repeated not-first:border-t is in production too
+import Date from './date.astro'
+import Icon from './icon.astro'
+import { getCampaigns } from '../lib/campaigns.js'
+
+const campaigns = await getCampaigns()
+---
+
+{
+  campaigns.length === 0 ? (
+    <p class="text-lg">There are no previous issues</p>
+  ) : (
+    <ul class="flex flex-col -my-2">
+      {campaigns
+        .filter((campaign) => campaign.status === 'SENT')
+        .map((campaign) => (
+          <li class="not-first:border-t not-first:border-t not-first:border-neutral-01-200">
+            <div class="flex justify-between py-2 text-lg text-emphasis">
+              {`${campaign.subject} `}
+              <span class="flex items-center leading-none gap-2 text-base">
+                <Date
+                  dateString={campaign.sent_at}
+                  class="font-ui lowercase text-neutral-01-400 dark:text-fern-400"
+                />
+                <Icon
+                  icon="arrow-right"
+                  class="text-neutral-01-400 dark:text-fern-400 relative -top-px"
+                  size={16}
+                />
+              </span>
+            </div>
+          </li>
+        ))}
+    </ul>
+  )
+}
