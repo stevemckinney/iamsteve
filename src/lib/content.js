@@ -23,6 +23,9 @@ export async function allEntries(collection) {
 }
 
 // Newest first. The sort is stable, so equal dates keep file order
+// Cards on each archive page
+export const perPage = 12
+
 export function sortByDate(entries) {
   return [...entries].sort(byDate)
 }
@@ -40,4 +43,30 @@ export async function listedCategories() {
       !category.exclude &&
       open.some((post) => post.data.categories.includes(category.title))
   )
+}
+
+// The shape the cards read, as content-collections documents had it
+export function cardData(entry) {
+  return {
+    ...entry.data,
+    slug: `/blog/${entry.id}`,
+    _meta: { filePath: entry.filePath.replace(/^content\/blog\//, '') },
+  }
+}
+
+// Whether a post is in the category with this slug. Both category routes
+// use it; Next.js’s paged route capitalised the slug instead, which found
+// nothing for multi-word or capitalised categories
+export const inCategory = (slug) => (post) =>
+  post.data.categories.some(
+    (category) => category.replace(' ', '-').toLowerCase() === slug
+  )
+
+// An archive’s LCP image: the first card’s medium image, which React
+// preloaded because it loads eagerly. Cards without both images show a
+// lazy placeholder instead
+export function cardPreloads(post) {
+  return post?.data.large && post?.data.medium
+    ? [{ href: post.data.medium }]
+    : []
 }

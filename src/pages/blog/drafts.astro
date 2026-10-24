@@ -1,0 +1,75 @@
+---
+// app/(blog)/blog/drafts/page.js. Public, as it is today: the list is
+// built from content in the repo
+import Frame from '../../layouts/frame.astro'
+import Header from '../../components/page/header.astro'
+import Column from '../../components/page/column.astro'
+import Title from '../../components/page/title.astro'
+import Description from '../../components/page/description.astro'
+import Icon from '../../components/icon.astro'
+import Link from '../../components/link.astro'
+import { allEntries, sortByDate } from '../../lib/content.js'
+
+const drafts = sortByDate(
+  (await allEntries('blog')).filter(({ data }) => data.status === 'draft')
+)
+
+const metadata = {
+  title: 'Draft posts',
+  description: 'Posts in progress',
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
+}
+---
+
+<Frame metadata={metadata}>
+  <Header>
+    <Column class="md:col-span-1">
+      <Title>Draft posts</Title>
+      <Description>Posts in progress</Description>
+    </Column>
+  </Header>
+
+  <div class="col-content">
+    <div
+      class="shadow-placed flex gap-3 leading-tight bg-cornflour-0 rounded-md p-4 mb-8"
+    >
+      <Icon icon="square-info" class="text-cornflour-900 flex-[0_0_auto]" />
+      <div class="flex flex-col">
+        <p class="p-0 m-0 font-body text-sm text-cornflour-900">
+          <strong>Draft posts listing</strong>
+        </p>
+        <p class="p-0 m-0 font-body text-sm text-cornflour-900">
+          These posts are not publicly visible
+        </p>
+      </div>
+    </div>
+
+    {
+      drafts.length > 0 ? (
+        <ul class="list-none p-0 m-0 flex flex-col gap-4">
+          {drafts.map((post) => (
+            <li class="p-4 border border-neutral-01-200 rounded-md hover:border-neutral-01-300 transition-colors">
+              <Link
+                href={`/blog/drafts/${post.id}`}
+                class="text-heading hover:text-fern-900 transition-colors no-underline"
+              >
+                <span class="font-mono text-sm text-neutral-01-600">
+                  {String(post.data.id).padStart(4, '0')}
+                </span>
+                <h2 class="text-lg font-display font-variation-bold mt-1 mb-0">
+                  {post.data.title}
+                </h2>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-neutral-01-600">No draft posts found</p>
+      )
+    }
+  </div>
+</Frame>

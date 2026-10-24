@@ -1,0 +1,52 @@
+---
+// components/posts/popular.js as it first renders, with Design chosen.
+// Choosing Code or All arrives with the popular posts island
+import Card from '../card/index.astro'
+import Icon from '../icon.astro'
+import Link from '../link.astro'
+
+const { posts } = Astro.props
+const shown = posts.filter((post) => post.categories.includes('Design')).slice(0, 6)
+---
+
+<header
+  class="col-start-content-start col-end-content-end flex justify-between items-baseline md:items-center sm:px-4 md:px-8 sm:-mx-4 md:-mx-8 sm:bg-canvas sm:bg-[url(/images/texture.png)] sm:bg-size-[172px_auto] sm:bg-blend-multiply sm:-mt-4.5 md:-mt-5.5"
+>
+  <h2
+    class="font-display text-heading text-2xl md:text-5xl font-variation-bold lowercase inline-flex gap-2"
+    id="popular-posts"
+  >
+    Popular in{' '}
+    <div class="react-aria-Select">
+      <button
+        type="button"
+        class="text-rio hover:text-rio-hover relative inline-flex items-center gap-1 cursor-pointer lowercase before:absolute before:-inset-2 before:rounded-sm before:transition-colors before:duration-200 before:ease-out hover:before:bg-[color-mix(in_oklch,currentcolor,transparent_94%)]"
+        aria-label="Category"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+      >
+        <span class="react-aria-SelectValue">Design</span>
+        <Icon icon="angle-down" size={24} variant="none" aria-hidden="true" />
+      </button>
+    </div>
+  </h2>
+  <Link
+    href="/category/design"
+    class="flex gap-1 text-base md:text-xl font-ui lowercase transition duration-200 hover:text-link-hover"
+    >Explore design</Link
+  >
+</header>
+<div
+  class="grid col-margin sm:col-content gap-4 md:gap-8 max-sm:grid-flow-col max-sm:auto-cols-auto max-sm:overflow-auto max-sm:snap-x max-sm:snap-always max-sm:overscroll-x-contain md:grid-cols-2 xl:grid-cols-3 max-sm:px-8 max-sm:py-8 max-sm:-my-8"
+>
+  {
+    shown.map((post) => (
+      <Card
+        size="container"
+        frontmatter={post}
+        image={false}
+        class="max-sm:w-[calc(100vw-48px)] max-sm:snap-center md:col-span-1"
+      />
+    ))
+  }
+</div>

@@ -11,11 +11,9 @@ export function subscriberCount() {
 }
 
 async function read() {
-  const {
-    EMAILOCTOPUS_API_URL: url,
-    EMAILOCTOPUS_API_KEY: key,
-    EMAILOCTOPUS_LIST_ID: list,
-  } = process.env
+  const url = import.meta.env.EMAILOCTOPUS_API_URL
+  const key = import.meta.env.EMAILOCTOPUS_API_KEY
+  const list = import.meta.env.EMAILOCTOPUS_LIST_ID
   if (!url || !key || !list) return FALLBACK
 
   try {

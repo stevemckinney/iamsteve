@@ -1,0 +1,53 @@
+---
+// app/(blog)/category/[slug]/page/[page]/page.js, with the posts matched
+// the same way as on the category’s first page
+import categories from '@/content/categories'
+import Frame from '../../../../layouts/frame.astro'
+import Archive from '../../../../components/archive.astro'
+import {
+  allEntries,
+  isOpen,
+  inCategory,
+  sortByDate,
+  listedCategories,
+  cardPreloads,
+  perPage,
+} from '../../../../lib/content.js'
+
+export async function getStaticPaths() {
+  const open = (await allEntries('blog')).filter(isOpen)
+  return categories.flatMap((category) => {
+    const posts = sortByDate(open.filter(inCategory(category.slugAsParams)))
+    const total = Math.ceil(posts.length / perPage)
+    return Array.from({ length: total }, (_, index) => ({
+      params: { slug: category.slugAsParams, page: String(index + 1) },
+      props: { category, posts, current: index + 1, total },
+    }))
+  })
+}
+
+const { category, posts, current, total } = Astro.props
+const page = posts.slice(perPage * (current - 1), perPage * current)
+const group = category.parent || category.title.toLowerCase()
+const items = (await listedCategories()).filter((item) => item.parent === group)
+
+const metadata = {
+  title: current > 1 ? `${category.title} • Page ${current}` : category.title,
+  description: category.description,
+  alternates: { canonical: `/category/${category.slugAsParams}` },
+  robots: current > 1 ? { index: false, follow: true } : undefined,
+}
+---
+
+<Frame metadata={metadata} preloads={cardPreloads(page[0])}>
+  <Archive
+    title={category.title}
+    description={category.description}
+    categories={items}
+    current={category.slug}
+    listClass="max-md:hidden md:col-span-1 grid grid-cols-2 gap-x-8 self-end column-categories lg:-mb-3"
+    linkClass="py-2 md:py-3 text-base md:text-lg lg:text-xl text-emphasis hover:text-link-hover transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current"
+    posts={page}
+    pagination={{ current, total, base: `/category/${category.slugAsParams}` }}
+  />
+</Frame>

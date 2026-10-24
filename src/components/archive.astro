@@ -1,0 +1,83 @@
+---
+// The blog and category archives: header with the category list, a grid
+// of cards, and pagination. The route decides the posts and the details
+// that differed between the Next.js pages
+import PencilMono from './illustration/pencil-mono.astro'
+import Header from './page/header.astro'
+import Column from './page/column.astro'
+import Title from './page/title.astro'
+import Description from './page/description.astro'
+import Card from './card/index.astro'
+import Category from './category.astro'
+import Pagination from './pagination.astro'
+import Topics from './topics.astro'
+import { cardData } from '../lib/content.js'
+
+const {
+  title,
+  description,
+  categories,
+  current,
+  listClass,
+  linkClass,
+  posts,
+  pagination,
+  hideEmptyList = false,
+  hideSinglePage = false,
+} = Astro.props
+---
+
+<PencilMono
+  width={962}
+  height={46}
+  class="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+/>
+<Header>
+  <Column class="md:col-span-1">
+    <Title>{title}</Title>
+    <Description class="desc max-md:mb-2">{description}</Description>
+  </Column>
+  <Topics
+    items={categories}
+    current={current}
+    label="Categories"
+    icon="folder"
+    class="md:hidden"
+  />
+  {
+    (!hideEmptyList || categories.length > 0) && (
+      <ul class={listClass}>
+        {categories.map((category) => (
+          <li class="self-end">
+            <Category title={category.title} size={24} badge={false} class={linkClass} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Header>
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 col-container md:col-content gap-8"
+>
+  {
+    posts.length > 0 ? (
+      posts.map((post, index) => (
+        <Card
+          size="container"
+          frontmatter={cardData(post)}
+          image={true}
+          priority={index === 0}
+        />
+      ))
+    ) : (
+      <p>No posts in this category yet.</p>
+    )
+  }
+</div>
+{
+  !(hideSinglePage && pagination.total <= 1) && (
+    <div class="col-content">
+      <Pagination total={pagination.total} current={pagination.current} base={pagination.base} />
+    </div>
+  )
+}

@@ -22,9 +22,8 @@ const arrow = 'stroke-current relative -top-px'
         class={`${link} ${linkState}`}
         rel="prev"
       >
-        <Icon icon="angle-left" class={arrow} />
-        Newer
-      </Link>
+        <Icon icon="angle-left" class={arrow} />Newer</Link
+      >
     ) : (
       <button class={linkDisabled} disabled>
         <Icon icon="angle-left" class={arrow} />
@@ -40,10 +39,12 @@ const arrow = 'stroke-current relative -top-px'
   </span>
   {
     nextPage ? (
-      <Link href={`${base}/page/${current + 1}`} class={`${link} ${linkState}`} rel="next">
-        Older
-        <Icon icon="angle-right" class={arrow} />
-      </Link>
+      <Link
+        href={`${base}/page/${current + 1}`}
+        class={`${link} ${linkState}`}
+        rel="next"
+        >Older<Icon icon="angle-right" class={arrow} /></Link
+      >
     ) : (
       <button class={linkDisabled} disabled>
         Older

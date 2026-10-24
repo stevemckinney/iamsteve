@@ -1,0 +1,53 @@
+---
+// app/(blog)/category/[slug]/page.js
+import categories from '@/content/categories'
+import Frame from '../../../layouts/frame.astro'
+import Archive from '../../../components/archive.astro'
+import {
+  allEntries,
+  isOpen,
+  inCategory,
+  sortByDate,
+  listedCategories,
+  cardPreloads,
+  perPage,
+} from '../../../lib/content.js'
+
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { slug: category.slugAsParams },
+    props: { category },
+  }))
+}
+
+const { category } = Astro.props
+const posts = sortByDate(
+  (await allEntries('blog')).filter(inCategory(category.slugAsParams)).filter(isOpen)
+)
+const group = category.parent || category.title.toLowerCase()
+const items = (await listedCategories()).filter((item) => item.parent === group)
+
+const metadata = {
+  title: category.title,
+  description: category.description,
+  alternates: { canonical: `/category/${category.slugAsParams}` },
+}
+---
+
+<Frame metadata={metadata} preloads={cardPreloads(posts[0])}>
+  <Archive
+    title={category.title}
+    description={category.description}
+    categories={items}
+    current={category.slug}
+    listClass="max-md:hidden md:col-span-1 grid grid-cols-2 gap-x-4 md:gap-x-8 self-end column-categories lg:-mb-2"
+    linkClass="py-2 md:py-3 text-base md:text-lg lg:text-xl hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current"
+    posts={posts.slice(0, perPage)}
+    pagination={{
+      current: 1,
+      total: Math.ceil(posts.length / perPage),
+      base: `/category/${category.slugAsParams}`,
+    }}
+    hideSinglePage
+  />
+</Frame>

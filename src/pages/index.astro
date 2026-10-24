@@ -1,0 +1,48 @@
+---
+// app/page.js. The home page keeps the root metadata
+import Base from '../layouts/base.astro'
+import Hero from '../components/hero.astro'
+import Frame from '../components/frame.astro'
+import LatestPosts from '../components/posts/latest.astro'
+import PopularPosts from '../components/posts/popular.astro'
+import { openPosts, cardData, cardPreloads } from '../lib/content.js'
+import { pageViews } from '../lib/views.js'
+
+const posts = await openPosts()
+const views = await pageViews()
+
+// The most viewed open posts, with the fields popular cards read. As in
+// lib/utils/merge-data-by-slug.js, only posts with a views row count, and
+// ties keep the rows’ order
+const bySlug = new Map(posts.map((post) => [post.id, post]))
+const popular = [...views]
+  .filter(([slug]) => bySlug.has(slug))
+  .sort(([, a], [, b]) => (b || 0) - (a || 0))
+  .map(([slug]) => bySlug.get(slug))
+  .slice(0, 18)
+  .map((post) => {
+    const { slug, title, date, lastmod, summary, categories, _meta } = cardData(post)
+    return { slug, title, date, lastmod, summary, categories, _meta }
+  })
+const latest = posts.slice(0, 4)
+---
+
+<Base metadata={{}} preloads={cardPreloads(latest[0])}>
+  <Hero />
+  <main
+    class="grid grid-cols-subgrid col-margin gap-y-10 md:gap-y-18 md:pb-18"
+    id="content"
+  >
+    <Frame id="latest">
+      <LatestPosts
+        posts={latest}
+        title="What’s new"
+        linkText="View the archive"
+        linkHref="/blog"
+      />
+    </Frame>
+    <Frame id="popular">
+      <PopularPosts posts={popular} />
+    </Frame>
+  </main>
+</Base>

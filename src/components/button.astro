@@ -1,12 +1,13 @@
 ---
 // components/button.js: a link when it has an href, otherwise a button
-// with its label in a span
+// with its label in a span. The theme lands on the element as an
+// attribute too, as React’s spread props put it there
 import Link from './link.astro'
 
-const { href, theme, class: ownClass, className, ...attributes } = Astro.props
+const { href, class: ownClass, className, ...attributes } = Astro.props
 
 const variants = { dandelion: 'button-dandelion' }
-const classes = `select-none font-ui text-base/tight lowercase text-center ${variants[theme]} ${ownClass ?? className}`
+const classes = `select-none font-ui text-base/tight lowercase text-center ${variants[attributes.theme]} ${ownClass ?? className}`
 ---
 
 {
