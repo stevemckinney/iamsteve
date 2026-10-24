@@ -1,6 +1,8 @@
 ---
-// `enlargeable` opens the image in the FigureModal island, which arrives
-// with the rest of the islands. Until then it renders as a plain figure
+// `enlargeable` wraps the figure in the FigureModal trigger. Opening the
+// image arrives with the island; until then the trigger is static markup
+import FigureModal from '../figure-modal.astro'
+
 const {
   imageShadow,
   enlargeable,
@@ -17,4 +19,12 @@ const figureClass =
   }`.trim() || undefined
 ---
 
-<figure class={figureClass} {...attributes}><slot /></figure>
+{
+  enlargeable ? (
+    <FigureModal alt={alt}>
+      <figure class={figureClass} {...attributes}><slot /></figure>
+    </FigureModal>
+  ) : (
+    <figure class={figureClass} {...attributes}><slot /></figure>
+  )
+}

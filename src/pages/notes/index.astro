@@ -1,0 +1,163 @@
+---
+// app/(blog)/notes/page.js: every published note in full, newest first,
+// on a timeline
+import { format, parseISO } from 'date-fns'
+import { cn } from '@/lib/utils'
+import siteMetadata from '@/content/metadata'
+import Frame from '../../layouts/frame.astro'
+import PencilMono from '../../components/illustration/pencil-mono.astro'
+import Header from '../../components/page/header.astro'
+import Column from '../../components/page/column.astro'
+import Title from '../../components/page/title.astro'
+import Description from '../../components/page/description.astro'
+import Badge from '../../components/badge.astro'
+import Link from '../../components/link.astro'
+import CopyLink from '../../components/copy-link.astro'
+import NoteContent from '../../components/note-content.astro'
+import { allEntries, sortByDate, isPublished } from '../../lib/content.js'
+
+const notes = sortByDate((await allEntries('notes')).filter(isPublished))
+
+const description =
+  'Quick, short and simple posts, a feed for everything outside design and code'
+
+const metadata = {
+  title: 'Notes',
+  description,
+  alternates: { canonical: '/notes' },
+  openGraph: {
+    title: 'Notes • iamsteve',
+    description,
+    url: '/notes',
+    type: 'website',
+    images: [
+      {
+        url: siteMetadata.socialBanner,
+        width: 1200,
+        height: 600,
+        alt: 'iamsteve — notes',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Notes • iamsteve',
+    description,
+    images: [siteMetadata.socialBanner],
+  },
+}
+
+const formatDate = (date) => format(parseISO(date), 'do LLLL yyyy')
+
+// content-collections counted the words in the trimmed body
+const wordCount = (note) => note.body.trim().split(/\s+/).length
+---
+
+<Frame metadata={metadata}>
+  <PencilMono
+    width={962}
+    height={46}
+    class="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+  />
+  <Header>
+    <Column>
+      <Title>Notes</Title>
+      <Description>{description}</Description>
+    </Column>
+  </Header>
+
+  {
+    notes.length === 0 ? (
+      <div class="col-content">
+        <p class="text-ui-body">No notes yet.</p>
+      </div>
+    ) : (
+      <div class="col-content flex flex-col">
+        {notes.map((note, index) => (
+          <article
+            class={cn(
+              'grid grid-cols-1 md:grid-cols-[minmax(8rem,_auto)_24px_1fr_auto] gap-x-4 lg:gap-x-6',
+              index > 0 && 'pt-8'
+            )}
+          >
+            {/* Date column, hidden on mobile */}
+            <div
+              class={cn(
+                'hidden md:flex items-start sticky top-8 self-start pb-8 justify-end',
+                index > 0 && 'mt-3'
+              )}
+            >
+              <time
+                datetime={note.data.date}
+                class="text-sm font-variation-medium text-emphasis leading-tight text-right"
+              >
+                {formatDate(note.data.date)}
+              </time>
+            </div>
+
+            {/* Timeline line and dot */}
+            <div class="hidden md:flex relative justify-center">
+              <div
+                class={cn(
+                  'absolute w-px bg-subtle bottom-0',
+                  index === 0 ? 'top-0' : '-top-8'
+                )}
+              />
+              <div
+                class={cn(
+                  'sticky top-8.25 self-start mb-10 size-2.5 rounded-full bg-border-medium ring-4 ring-canvas shrink-0',
+                  index > 0 && 'mt-[13px]',
+                  index === 0 && 'mt-0.5'
+                )}
+              />
+            </div>
+
+            {/* Content column */}
+            <div class="pb-12 max-w-prose mx-auto w-full">
+              <time
+                datetime={note.data.date}
+                class="block md:hidden text-sm font-variation-medium text-body-60 mb-2"
+              >
+                {formatDate(note.data.date)}
+              </time>
+              <h2
+                class={cn(
+                  'text-heading font-display font-variation-bold lowercase text-2xl/tight lg:text-3xl/tight mb-2',
+                  index === 0 && '-mt-3'
+                )}
+              >
+                <Link href={`/notes/${note.id}`} class="hover:text-link">
+                  {note.data.title}
+                </Link>
+              </h2>
+              <div class="lg:text-xl">
+                <NoteContent note={note} feed />
+              </div>
+              {/* Mobile meta */}
+              <div class="flex items-center gap-4 mt-6 md:hidden">
+                <Badge size={16} theme="lavender" iconStart="views">
+                  {`${wordCount(note)} words`}
+                </Badge>
+                <CopyLink />
+              </div>
+            </div>
+
+            {/* Desktop meta column */}
+            <div
+              class={cn(
+                'hidden md:flex flex-col gap-3 sticky top-8 self-start pb-12',
+                index > 0 && 'mt-1.75',
+                index === 0 && '-mt-1.5'
+              )}
+            >
+              <Badge size={16} theme="lavender" iconStart="views">
+                {`${wordCount(note)} words`}
+              </Badge>
+              <CopyLink />
+            </div>
+          </article>
+        ))}
+      </div>
+    )
+  }
+</Frame>

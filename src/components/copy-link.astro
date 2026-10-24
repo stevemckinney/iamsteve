@@ -1,0 +1,43 @@
+---
+// components/button/copy-link.js: a React Aria button, rendered as the
+// server rendered it before anything was copied. Copying the link arrives
+// with the islands
+import { cn } from '@/lib/utils'
+import Icon from './icon.astro'
+import BadgeText from './badge-text.astro'
+
+const iconClass = 'absolute text-current transition-all duration-200'
+---
+
+<button
+  type="button"
+  tabindex="0"
+  class={cn(
+    'flex flex-[0_0_auto] font-variation-medium text-emphasis gap-2 cursor-pointer group/badge',
+    'transition-all duration-100 ease-linear'
+  )}
+>
+  <span
+    class={cn(
+      'flex-[0_0_auto] bg-surface',
+      'dark:bg-cornflour-300',
+      'dark:ring-1 dark:ring-cornflour-300',
+      'shadow-reduced dark:shadow-none',
+      'group-hover/badge:shadow-picked',
+      'group-active/badge:shadow-reduced',
+      'flex items-center justify-center relative',
+      'transition-all duration-100 ease-linear',
+      'w-6 h-6 rounded-[.375rem]',
+      'text-[light-dark(var(--color-cornflour-700),var(--color-cornflour-900))]'
+    )}
+  >
+    <Icon icon="link" size={16} variant="default" class={iconClass} />
+    <Icon
+      icon="checkmark"
+      size={16}
+      variant="default"
+      class={cn(iconClass, 'opacity-0 scale-75')}
+    />
+  </span>
+  <BadgeText size={16}>Copy link</BadgeText>
+</button>
