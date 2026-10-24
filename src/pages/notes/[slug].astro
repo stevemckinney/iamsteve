@@ -1,0 +1,124 @@
+---
+// app/(blog)/notes/[...slug]/page.js. Only published notes have a page, so
+// a draft 404s, as it does today
+import { getCollection } from 'astro:content'
+import { format, parseISO } from 'date-fns'
+import siteMetadata from '@/content/metadata'
+import Frame from '../../layouts/frame.astro'
+import PencilMono from '../../components/illustration/pencil-mono.astro'
+import PageTitle from '../../components/page-title.astro'
+import Badge from '../../components/badge.astro'
+import Icon from '../../components/icon.astro'
+import Link from '../../components/link.astro'
+import CopyLink from '../../components/copy-link.astro'
+import NoteContent from '../../components/note-content.astro'
+import { isPublished } from '../../lib/content.js'
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes', isPublished)
+  return notes.map((note) => ({ params: { slug: note.id }, props: { note } }))
+}
+
+const { note } = Astro.props
+const { title, date, summary } = note.data
+const slug = `/notes/${note.id}`
+const site = siteMetadata.siteUrl
+
+const metadata = {
+  title,
+  description: summary ?? '',
+  alternates: {
+    canonical: slug,
+    types: { 'text/markdown': `/api/content/notes/${note.id}` },
+  },
+  openGraph: {
+    title,
+    description: summary ?? '',
+    type: 'article',
+    publishedTime: date,
+    authors: [siteMetadata.author],
+    url: slug,
+    images: [
+      { url: siteMetadata.socialBanner, width: 1200, height: 600, alt: title },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description: summary ?? '',
+    images: [siteMetadata.socialBanner],
+  },
+}
+
+const jsonLD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BlogPosting',
+      '@id': `${site}${slug}#article`,
+      isPartOf: { '@id': `${site}/#website` },
+      author: {
+        '@type': 'Person',
+        name: siteMetadata.author,
+        '@id': `${site}/#person`,
+      },
+      headline: title,
+      datePublished: date,
+      description: summary,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': `${site}${slug}` },
+      publisher: { '@id': `${site}/#organization` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${site}${slug}#breadcrumb`,
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'iamsteve.me', item: site },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Notes',
+          item: `${site}/notes`,
+        },
+        { '@type': 'ListItem', position: 3, name: title, item: `${site}${slug}` },
+      ],
+    },
+  ],
+}
+
+// content-collections counted the words in the trimmed body
+const words = note.body.trim().split(/\s+/).length
+---
+
+<Frame metadata={metadata}>
+  <PencilMono
+    width={962}
+    height={46}
+    class="col-start-1 col-end-3 row-start-1 max-w-[initial] justify-self-end self-start mt-3 drop-shadow-placed max-2xl:hidden"
+  />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />
+  <article class="col-content flex flex-col gap-6 max-w-prose mx-auto">
+    <header class="flex flex-col gap-4">
+      <Link
+        href="/notes"
+        class="flex items-center content-center gap-2 text-ui-body hover:text-link font-medium text-base leading-normal"
+      >
+        <Icon icon="arrow-left" size={24} class="relative -top-px" />
+        <span>Notes</span>
+      </Link>
+      <PageTitle>{title}</PageTitle>
+      {summary && <p class="text-lg text-pretty text-emphasis">{summary}</p>}
+    </header>
+    <div>
+      <NoteContent note={note} />
+    </div>
+    <footer
+      class="flex items-center gap-4 pt-6 border-t border-neutral-01-400/20"
+    >
+      <Badge size={16} theme="cornflour" iconStart="calendar">
+        <time datetime={date}>{format(parseISO(date), 'do LLLL yyyy')}</time>
+      </Badge>
+      <Badge size={16} theme="lavender" iconStart="views">{words} words</Badge>
+      <CopyLink />
+    </footer>
+  </article>
+</Frame>

@@ -1,0 +1,17 @@
+---
+// A note’s body, as NoteMdx in components/mdx-note.js renders it. With
+// `feed`, as NoteFeedContent in components/note-feed-content.js does, where
+// paragraphs keep the feed’s text size
+import { render } from 'astro:content'
+import styles from '@/components/mdx-note.module.css'
+import { noteComponents } from './mdx/index.js'
+import NoteFeedP from './mdx/note-feed-p.astro'
+
+const { note, feed = false } = Astro.props
+const { Content } = await render(note)
+const components = feed ? { ...noteComponents, p: NoteFeedP } : noteComponents
+---
+
+<div class={`${styles.note} codeblock`}>
+  <Content components={components} />
+</div>
