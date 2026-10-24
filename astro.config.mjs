@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { Features } from 'lightningcss'
 import { unified } from '@astrojs/markdown-remark'
 import { remarkPlugins, rehypePlugins } from './lib/markdown.js'
+import remarkDropKeys from './src/lib/remark-drop-keys.js'
 
 export default defineConfig({
   site: 'https://iamsteve.me',
@@ -22,7 +23,7 @@ export default defineConfig({
     processor: unified({
       gfm: false,
       smartypants: false,
-      remarkPlugins,
+      remarkPlugins: [...remarkPlugins, remarkDropKeys],
       rehypePlugins,
     }),
   },

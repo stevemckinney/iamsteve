@@ -1,11 +1,12 @@
 ---
-// app/not-found.js
-import Base from '../layouts/base.astro'
+// app/not-found.js, in the frame of the (page) layout, as production
+// renders it once its JavaScript runs
+import Frame from '../layouts/frame.astro'
 import Link from '../components/link.astro'
 import Button from '../components/button.astro'
 ---
 
-<Base notFound>
+<Frame variant="page" notFound>
   <div
     class="grid grid-cols-subgrid col-container flex flex-col relative gap-8 pb-7.5"
   >
@@ -23,9 +24,7 @@ import Button from '../components/button.astro'
     <Button
       href="/"
       theme="dandelion"
-      class="col-content max-w-max self-start flex-auto"
+      class="col-content max-w-max self-start flex-auto">Back to homepage</Button
     >
-      Back to homepage
-    </Button>
   </div>
-</Base>
+</Frame>

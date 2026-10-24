@@ -92,5 +92,12 @@
     "url": "/this-page-does-not-exist",
     "part": "body",
     "reason": "Production’s 404 sends an empty body and draws the page from the RSC payload once JavaScript runs. The build sends the page itself"
+  },
+  {
+    "url": "/{newsletter,thanks}",
+    "part": "body",
+    "region": "main#content",
+    "node": ".isolate > .bg-neutral-01-50 > p.text-lg, .isolate > .bg-neutral-01-50 > ul.-my-2",
+    "reason": "Campaigns: production fetches /api/campaigns after load, so its HTML only has “Loading...”. The build reads the issues from EmailOctopus once per build and lists them"
   }
 ]
