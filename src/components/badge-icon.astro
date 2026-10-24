@@ -1,0 +1,87 @@
+---
+import { cn } from '@/lib/utils'
+import Icon from './icon.astro'
+
+const darkBgVariants = {
+  rio: 'dark:bg-rio-300',
+  dandelion: 'dark:bg-dandelion-300',
+  lavender: 'dark:bg-lavender-300',
+  magenta: 'dark:bg-magenta-300',
+  grass: 'dark:bg-grass-300',
+  fern: 'dark:bg-fern-300',
+  moss: 'dark:bg-moss-300',
+  'neutral-01': 'dark:bg-neutral-01-300',
+  'neutral-02': 'dark:bg-neutral-02-300',
+  cornflour: 'dark:bg-cornflour-500',
+  text: 'dark:bg-fern-300',
+}
+
+const darkRingVariants = {
+  rio: 'dark:ring-1 dark:ring-rio-300',
+  dandelion: 'dark:ring-1 dark:ring-dandelion-200',
+  lavender: 'dark:ring-1 dark:ring-lavender-300',
+  magenta: 'dark:ring-1 dark:ring-magenta-300',
+  grass: 'dark:ring-1 dark:ring-grass-300',
+  fern: 'dark:ring-1 dark:ring-fern-300',
+  moss: 'dark:ring-1 dark:ring-moss-300',
+  'neutral-01': 'dark:ring-1 dark:ring-neutral-01-300',
+  'neutral-02': 'dark:ring-1 dark:ring-neutral-02-300',
+  cornflour: 'dark:ring-1 dark:ring-cornflour-300',
+  text: 'dark:ring-1 dark:ring-fern-300',
+}
+
+const darkRingHoverVariants = {
+  rio: 'dark:group-hover/badge:ring-rio-100',
+  dandelion: 'dark:group-hover/badge:ring-dandelion-0',
+  lavender: 'dark:group-hover/badge:ring-lavender-100',
+  magenta: 'dark:group-hover/badge:ring-magenta-100',
+  grass: 'dark:group-hover/badge:ring-grass-100',
+  fern: 'dark:group-hover/badge:ring-fern-100',
+  moss: 'dark:group-hover/badge:ring-moss-100',
+  'neutral-01': 'dark:group-hover/badge:ring-neutral-01-100',
+  'neutral-02': 'dark:group-hover/badge:ring-neutral-02-100',
+  cornflour: 'dark:group-hover/badge:ring-cornflour-100',
+  text: 'dark:group-hover/badge:ring-fern-100',
+}
+
+const defaultVariants = {
+  rio: 'text-[light-dark(var(--color-rio-500),var(--color-rio-900))]',
+  dandelion:
+    'text-[light-dark(var(--color-dandelion-600),var(--color-dandelion-900))]',
+  lavender:
+    'text-[light-dark(var(--color-lavender-600),var(--color-lavender-900))]',
+  magenta:
+    'text-[light-dark(var(--color-magenta-600),var(--color-magenta-800))]',
+  grass: 'text-[light-dark(var(--color-grass-600),var(--color-grass-900))]',
+  fern: 'text-[light-dark(var(--color-fern-700),var(--color-fern-900))]',
+  moss: 'text-[light-dark(var(--color-moss-500),var(--color-moss-900))]',
+  'neutral-01':
+    'text-[light-dark(var(--color-neutral-01-600),var(--color-neutral-01-900))]',
+  'neutral-02':
+    'text-[light-dark(var(--color-neutral-02-600),var(--color-neutral-02-900))]',
+  cornflour:
+    'text-[light-dark(var(--color-cornflour-700),var(--color-cornflour-900))]',
+  text: 'text-[light-dark(var(--color-fern-1100),var(--color-fern-1100))]',
+}
+
+const { icon, size, theme, class: className } = Astro.props
+---
+
+<span
+  class={cn(
+    'flex-[0_0_auto] bg-surface',
+    darkBgVariants[theme],
+    darkRingVariants[theme],
+    darkRingHoverVariants[theme],
+    'shadow-reduced dark:shadow-none',
+    'group-hover/badge:shadow-picked',
+    'group-active/badge:shadow-reduced',
+    'flex items-center justify-center',
+    'transition-all duration-100 ease-linear',
+    size === 16 ? 'w-6 h-6 rounded-[.375rem]' : 'w-8 h-8 rounded-sm',
+    defaultVariants[theme],
+    className
+  )}
+>
+  <Icon class="text-current" icon={icon} size={size} variant="default" />
+</span>

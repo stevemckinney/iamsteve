@@ -1,0 +1,28 @@
+---
+// components/category.js. Badge drops the rel it was given, as it did
+import GithubSlugger from 'github-slugger'
+import categories from '@/content/categories'
+import Badge from './badge.astro'
+import Icon from './icon.astro'
+import Link from './link.astro'
+
+const { title, size = 16, badge = true, class: className = 'category' } = Astro.props
+
+const category = categories.find((category) => category.title === title)
+const href = `/category/${new GithubSlugger().slug(title)}`
+const theme = category?.theme || 'cornflour'
+const icon = category?.icon || 'folder'
+---
+
+{
+  badge ? (
+    <Badge href={href} theme={theme} iconStart={icon} size={size} class={className}>
+      {title}
+    </Badge>
+  ) : (
+    <Link href={href} class={className} rel="category tag">
+      <Icon class="text-current shrink-0" icon={icon} size={size} variant="header" />
+      {title}
+    </Link>
+  )
+}

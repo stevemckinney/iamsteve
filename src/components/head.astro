@@ -1,0 +1,155 @@
+---
+// The document head from app/layout.js, in the order Next.js rendered it,
+// with the tags resolved by src/lib/metadata.js. `preloads` are the LCP
+// images a page asks for (React used to hoist these itself)
+import siteMetadata from '@/content/metadata'
+
+const { meta, preloads = [] } = Astro.props
+const { openGraph: og, twitter } = meta
+
+const typekit = 'https://use.typekit.net/bvl2qse.css'
+const analytics = 'https://api.iamsteve.me/latest.js'
+const site = siteMetadata.siteUrl
+
+const jsonLD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${site}/#organization`,
+      name: 'iamsteve',
+      url: `${site}`,
+      logo: { '@type': 'ImageObject', url: `${site}/images/logo.svg` },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site}/#website`,
+      url: `${site}`,
+      name: 'iamsteve',
+      description:
+        'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
+      publisher: { '@id': `${site}/#organization` },
+    },
+    {
+      '@type': 'Person',
+      '@id': `${site}/#person`,
+      name: 'Steve McKinney',
+      url: 'https://iamsteve.me',
+      sameAs: [
+        'https://twitter.com/irsteve',
+        'https://instagram.com/stevemckinney',
+        'https://www.linkedin.com/in/smcknny/',
+      ],
+      homeLocation: { '@type': 'City', name: 'Manchester' },
+      jobTitle: 'User interface designer',
+      knowsAbout: ['Web Design', 'Visual Design', 'UI Design', 'Typography', 'CSS'],
+      worksFor: { '@id': `${site}/#organization` },
+    },
+  ],
+}
+
+const toArray = (value) => (value === undefined ? [] : [value].flat())
+---
+
+<meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover"
+/>
+{
+  preloads.map(({ href, as = 'image', fetchpriority = 'high' }) => (
+    <link rel="preload" as={as} href={href} fetchpriority={fetchpriority} />
+  ))
+}
+<link rel="preload" href={typekit} as="style" />
+{import.meta.env.PROD && <link rel="preload" href={analytics} as="script" />}
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="iamsteve" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-title" content="iamsteve" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link rel="preconnect" href="https://use.typekit.net" crossorigin="anonymous" />
+<link rel="dns-prefetch" href="https://use.typekit.net" />
+<meta name="theme-color" content="rgb(241 232 228)" />
+<title>{meta.title}</title>
+{meta.description && <meta name="description" content={meta.description} />}
+{meta.robots && <meta name="robots" content={meta.robots} />}
+{meta.googlebot && <meta name="googlebot" content={meta.googlebot} />}
+{meta.canonical && <link rel="canonical" href={meta.canonical} />}
+{
+  meta.alternates.map(({ type, href }) => (
+    <link rel="alternate" type={type} href={href} />
+  ))
+}
+{og.title && <meta property="og:title" content={og.title} />}
+{og.description && <meta property="og:description" content={og.description} />}
+{og.url && <meta property="og:url" content={og.url} />}
+{og.siteName && <meta property="og:site_name" content={og.siteName} />}
+{og.locale && <meta property="og:locale" content={og.locale} />}
+{
+  og.images.map((image) => (
+    <>
+      <meta property="og:image" content={image.url} />
+      {image.type && <meta property="og:image:type" content={image.type} />}
+      {image.width && <meta property="og:image:width" content={image.width} />}
+      {image.height && (
+        <meta property="og:image:height" content={image.height} />
+      )}
+      {image.alt && <meta property="og:image:alt" content={image.alt} />}
+    </>
+  ))
+}
+{og.type && <meta property="og:type" content={og.type} />}
+{
+  og.publishedTime && (
+    <meta property="article:published_time" content={og.publishedTime} />
+  )
+}
+{
+  og.modifiedTime && (
+    <meta property="article:modified_time" content={og.modifiedTime} />
+  )
+}
+{
+  toArray(og.authors).map((author) => (
+    <meta property="article:author" content={author} />
+  ))
+}
+{twitter.card && <meta name="twitter:card" content={twitter.card} />}
+{twitter.site && <meta name="twitter:site" content={twitter.site} />}
+{twitter.creator && <meta name="twitter:creator" content={twitter.creator} />}
+{twitter.title && <meta name="twitter:title" content={twitter.title} />}
+{
+  twitter.description && (
+    <meta name="twitter:description" content={twitter.description} />
+  )
+}
+{
+  twitter.images.map((image) => (
+    <>
+      <meta name="twitter:image" content={image.url} />
+      {image.alt && <meta name="twitter:image:alt" content={image.alt} />}
+      {image.type && <meta name="twitter:image:type" content={image.type} />}
+      {image.width && <meta name="twitter:image:width" content={image.width} />}
+      {
+        image.height && (
+          <meta name="twitter:image:height" content={image.height} />
+        )
+      }
+    </>
+  ))
+}
+<link rel="icon" href="/favicon.ico" sizes="48x48" type="image/x-icon" />
+<link rel="icon" href="/icon.svg" sizes="any" type="image/svg+xml" />
+<link
+  rel="apple-touch-icon"
+  href="/apple-icon.png"
+  sizes="192x192"
+  type="image/png"
+/>
+{/* A script-inserted stylesheet doesn’t block the first paint */}
+<script is:inline>
+  document.head.appendChild(Object.assign(document.createElement('link'), { rel: 'stylesheet', href: 'https://use.typekit.net/bvl2qse.css' }))
+</script>
+<noscript><link rel="stylesheet" href={typekit} /></noscript>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLD)} />

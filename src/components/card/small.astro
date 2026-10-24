@@ -1,0 +1,60 @@
+---
+// components/card/small.js
+import categories from '@/content/categories'
+import ChipIcon from '../chip-icon.astro'
+import Date from '../date.astro'
+import Icon from '../icon.astro'
+import Link from '../link.astro'
+import Byline from './byline.astro'
+
+const { frontmatter } = Astro.props
+const { slug, date, title, _meta, categories: postCategories, lastmod } = frontmatter
+const first = postCategories?.slice(0, 1).map((title) =>
+  categories.find((category) => category.title === title)
+)
+---
+
+<div
+  class="relative flex gap-4 rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced dark:active:shadow-[inset_0_0_0_1px_var(--color-surface-02)] bg-surface active:bg-surface-pressed active:scale-[.99375] bg-clip-padding transition ease-linear duration-200 overflow-hidden p-8"
+>
+  {
+    first && (
+      <div class="flex flex-row gap-4 relative z-2 overflow-x-auto">
+        {first.map((category) => (
+          <ChipIcon size={24} theme={category.theme}>
+            <Icon
+              icon={category.icon}
+              size={24}
+              variant="on-light"
+              class="dark:text-fern-1100"
+            />
+          </ChipIcon>
+        ))}
+      </div>
+    )
+  }
+  <div class="flex flex-1 flex-col gap-[.5625rem]">
+    <h3
+      class="font-display font-variation-bold text-xl leading-xl lowercase m-0 p-0"
+      id={`title-${_meta?.filePath}`}
+    >
+      <Link
+        href={slug}
+        tabindex="0"
+        class="text-heading before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-lg before:z-1"
+      >
+        {title}
+      </Link>
+    </h3>
+    <span class="flex gap-1 items-center text-sm leading-none">
+      <Icon
+        icon="calendar"
+        size={16}
+        class="text-ui-body relative -top-px"
+        variant="header"
+      />
+      <Date dateString={date} class="date font-ui lowercase text-ui-body" />
+    </span>
+    <Byline lastmod={lastmod} />
+  </div>
+</div>

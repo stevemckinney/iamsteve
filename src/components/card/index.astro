@@ -1,0 +1,12 @@
+---
+// components/card/index.js: picks the card by size
+import Container from './container.astro'
+import Medium from './medium.astro'
+import Small from './small.astro'
+
+const { size = 'medium', ...props } = Astro.props
+---
+
+{size === 'container' && <Container {...props} />}
+{size === 'medium' && <Medium {...props} />}
+{size === 'small' && <Small {...props} />}

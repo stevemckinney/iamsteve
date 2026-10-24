@@ -1,0 +1,32 @@
+---
+// ChipIcon from components/chip.js
+const themes = {
+  rio: 'bg-[light-dark(var(--color-rio-400),var(--color-rio-300))] group-hover/chip:bg-[light-dark(var(--color-rio-500),var(--color-rio-400))]',
+  dandelion:
+    'bg-[light-dark(var(--color-dandelion-400),var(--color-dandelion-300))] group-hover/chip:bg-[light-dark(var(--color-dandelion-500),var(--color-dandelion-400))]',
+  lavender:
+    'bg-[light-dark(var(--color-lavender-300),var(--color-lavender-200))] group-hover/chip:bg-[light-dark(var(--color-lavender-500),var(--color-lavender-400))]',
+  magenta:
+    'bg-[light-dark(var(--color-magenta-300),var(--color-magenta-200))] group-hover/chip:bg-[light-dark(var(--color-magenta-500),var(--color-magenta-400))]',
+  grass:
+    'bg-[light-dark(var(--color-grass-300),var(--color-grass-200))] group-hover/chip:bg-[light-dark(var(--color-grass-500),var(--color-grass-400))]',
+  fern: 'bg-[light-dark(var(--color-fern-300),var(--color-fern-200))] group-hover/chip:bg-[light-dark(var(--color-fern-500),var(--color-fern-400))]',
+  moss: 'bg-[light-dark(var(--color-moss-300),var(--color-moss-200))] group-hover/chip:bg-[light-dark(var(--color-moss-500),var(--color-moss-400))]',
+  'neutral-01':
+    'bg-[light-dark(var(--color-neutral-01-300),var(--color-neutral-01-200))] group-hover/chip:bg-[light-dark(var(--color-neutral-01-500),var(--color-neutral-01-400))]',
+  'neutral-02':
+    'bg-[light-dark(var(--color-neutral-02-300),var(--color-neutral-02-200))] group-hover/chip:bg-[light-dark(var(--color-neutral-02-400),var(--color-neutral-02-300))]',
+}
+// Anything else, such as a date, is cornflour
+const fallback =
+  'bg-[light-dark(var(--color-cornflour-300),var(--color-cornflour-200))] group-hover/chip:bg-[light-dark(var(--color-cornflour-600),var(--color-cornflour-500))]'
+
+const { theme, size, class: className = 'ci' } = Astro.props
+const sizing = size === 16 ? 'w-6 h-6 flex-[0_0_auto]' : 'w-8 h-8 flex-[0_0_auto]'
+---
+
+<span
+  class={`${themes[theme] ?? fallback} ${sizing} rounded flex items-center justify-center group-hover/chip:transition-all duration-200 group-hover/chip:transition-all duration-200 ease-linear ${className}`}
+>
+  <slot />
+</span>

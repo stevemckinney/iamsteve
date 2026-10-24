@@ -1,0 +1,31 @@
+---
+// app/not-found.js
+import Base from '../layouts/base.astro'
+import Link from '../components/link.astro'
+import Button from '../components/button.astro'
+---
+
+<Base notFound>
+  <div
+    class="grid grid-cols-subgrid col-container flex flex-col relative gap-8 pb-7.5"
+  >
+    <h1
+      class="col-content text-7xl font-variation-extrabold font-display text-heading"
+    >
+      404
+    </h1>
+    <p class="col-content mb-2 text-ui-body max-w-prose">
+      There’s a chance you’re here because a redirect went wrong or I guess
+      you’ve made a typo, no problem. If you believe the page should be here,
+      please{' '}
+      <Link href="/contact" class="text-underline">contact me</Link>.
+    </p>
+    <Button
+      href="/"
+      theme="dandelion"
+      class="col-content max-w-max self-start flex-auto"
+    >
+      Back to homepage
+    </Button>
+  </div>
+</Base>

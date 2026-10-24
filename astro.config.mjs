@@ -1,3 +1,5 @@
+import { createHash } from 'node:crypto'
+import path from 'node:path'
 import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 import mdx from '@astrojs/mdx'
@@ -27,7 +29,19 @@ export default defineConfig({
     plugins: [tailwindcss()],
     // postcss.config.js runs Tailwind for Next.js. An inline config stops
     // Vite loading it, so Tailwind doesn’t run twice
-    css: { postcss: { plugins: [] } },
+    css: {
+      postcss: { plugins: [] },
+      // Named like Next.js’s, six characters and the class, so parity
+      // checks can match them. Digits become letters, as a class can’t
+      // start with one
+      modules: {
+        generateScopedName: (name, filename) => {
+          const file = path.relative(process.cwd(), filename)
+          const hash = createHash('sha256').update(file).digest('hex')
+          return `${hash.slice(0, 6).replace(/\d/g, (d) => 'ghijklmnop'[d])}_${name}`
+        },
+      },
+    },
     // While Next.js is installed, shamefully-hoist puts @supabase/ssr’s
     // cookie 0.7 at the root, where Astro’s server bundles would find it
     // instead of its own 2.x. Bundling it avoids that until the cutover

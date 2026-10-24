@@ -1,0 +1,28 @@
+---
+import Envelope from './illustration/envelope.astro'
+import NewsletterForm from './newsletter-form.astro'
+
+const { title = 'Get the articles', class: className, unique = 'footer' } = Astro.props
+---
+
+<section class={`${className} flex flex-col items-center gap-8`}>
+  <header class="flex flex-col gap-2 items-center">
+    <Envelope width={96} height={96} class="mb-2 illo-cool" />
+    <h2
+      class="text-3xl sm:text-5xl font-display font-variation-bold lowercase text-heading text-center"
+    >
+      {title}
+    </h2>
+    <p
+      class="m-0 text-base text-ui-body text-balance text-center max-w-[40ch]"
+    >
+      Join the RSS alternative and I'll notify you when the latest posts go
+      out. Unsubscribe at anytime.
+    </p>
+  </header>
+  <NewsletterForm unique={unique} />
+  <p class="text-ui-body text-balance text-sm text-center max-w-[55ch]">
+    You will receive two emails to begin with. One to confirm your
+    subscription and then your welcome email—thanks in advance!
+  </p>
+</section>

@@ -1,0 +1,27 @@
+---
+// components/title.js: a section heading with an optional link
+import Link from './link.astro'
+
+const { link, text, ariaID, class: className } = Astro.props
+---
+
+<header
+  class={`col-start-content-start col-end-content-end flex justify-between items-baseline md:items-center ${className}`}
+>
+  <h2
+    class="font-display text-heading text-2xl md:text-5xl font-variation-bold lowercase"
+    id={ariaID}
+  >
+    <slot />
+  </h2>
+  {
+    link && (
+      <Link
+        href={link}
+        class="flex gap-1 text-base md:text-xl font-ui lowercase transition duration-200 hover:text-link-hover"
+      >
+        {text ? text : 'All posts'}
+      </Link>
+    )
+  }
+</header>

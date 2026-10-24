@@ -1,0 +1,229 @@
+---
+// The site header from components/header.js: skip links, logo, desktop nav
+// with the Library menu, the mobile tab bar and the menu toggle. The
+// Library menu, search and the menu sheet become islands; until then their
+// buttons render as the server rendered them
+import { navigation, tabbar } from '@/content/navigation'
+import { cn } from '@/lib/utils'
+import styles from '@/components/header.module.css'
+import Icon from './icon.astro'
+import Link from './link.astro'
+import SearchTrigger from './search-trigger.astro'
+
+const { pathname } = Astro.props
+const isArticlePage = pathname.startsWith('/blog/') && pathname !== '/blog'
+
+function isActiveLink(href) {
+  if (!href) return false
+  if (href === '/') return pathname === '/'
+  return pathname === href || pathname.startsWith(`${href}/`)
+}
+
+const skipLink = 'text-lg underline underline-offset-3 [text-decoration-thickness:.25px]'
+
+const desktopLink = cn(
+  'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
+  'lg:gap-2 lg:text-xl/none lg:py-1 xl:py-0.5',
+  styles.link,
+  styles.start
+)
+
+const tab = cn(
+  'flex items-center gap-1 text-base font-ui lowercase leading-none relative',
+  'max-lg:text-[12px] max-lg:font-sans max-lg:font-medium max-lg:flex-col max-lg:flex-1 max-lg:justify-center max-lg:py-3',
+  styles.link,
+  styles.start
+)
+---
+
+<ul
+  role="list"
+  id="accessibility-links"
+  class={cn(
+    'sr-only focus-within:not-sr-only',
+    'focus-within:fixed focus-within:top-2 focus-within:left-2 focus-within:z-[1000]',
+    'focus-within:bg-fern-1200 focus-within:text-fern-100',
+    'focus-within:p-8 focus-within:flex focus-within:flex-col focus-within:gap-2 rounded-md'
+  )}
+>
+  {
+    isArticlePage && (
+      <li>
+        <a href="#article" class={skipLink}>Skip to article</a>
+      </li>
+    )
+  }
+  <li><a href="#content" class={skipLink}>Skip to main content</a></li>
+  <li><a href="#nav" class={skipLink}>Skip to nav</a></li>
+</ul>
+<header
+  class="grid grid-cols-subgrid col-start-margin-start col-end-margin-end relative z-10"
+  id="top"
+>
+  <div
+    class="col-container md:col-content lg:col-page flex items-center align-center justify-between gap-8 text-emphasis"
+  >
+    {/* A span, so the focus ring isn’t thrown by the spacing on it */}
+    <span
+      class="flex py-4 sm:px-4 sm:-mx-4 lg:py-6.5 xl:px-8 xl:-mx-8 2xl:pt-7 2xl:pb-4 rounded-full relative"
+    >
+      <span
+        class="absolute col-container lg:col-content h-[4px] top-1/2 -translate-y-1/2 right-0 left-0 bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas z-[-1]"
+        aria-hidden="true"></span>
+      <Link href="/" class="flex" aria-label="iamsteve.me homepage">
+        <Icon
+          icon="logo"
+          size={32}
+          class="max-lg:hidden"
+          variant="header"
+          aria-hidden="true"
+        />
+        <Icon
+          icon="logo"
+          size={24}
+          class="lg:hidden"
+          variant="header"
+          aria-hidden="true"
+        />
+      </Link>
+    </span>
+    <nav
+      class={cn(
+        'flex justify-between',
+        'max-md:hidden',
+        'bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas',
+        'py-4 sm:px-4 lg:py-6.5 lg:-mx-4 xl:px-8 xl:-mx-8 2xl:py-7'
+      )}
+      id="nav"
+    >
+      <ul class="flex justify-between md:gap-8 2xl:py-0.5 items-center">
+        {
+          navigation.map((link) =>
+            link.title === 'Library' ? (
+              <li class="relative -mr-1 group/library">
+                <button
+                  type="button"
+                  class={desktopLink}
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <Icon
+                    icon={link.icon}
+                    size={link.size}
+                    class="text-current"
+                    variant="header"
+                    aria-hidden="true"
+                  />
+                  {link.title}
+                  <Icon
+                    icon="angle-down"
+                    size={16}
+                    class="text-current"
+                    variant="header"
+                    aria-hidden="true"
+                  />
+                </button>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  href={link.href}
+                  aria-current={isActiveLink(link.href) ? 'page' : undefined}
+                  class={desktopLink}
+                >
+                  <Icon
+                    icon={link.icon}
+                    size={link.size}
+                    class="text-current"
+                    variant="header"
+                    aria-hidden="true"
+                  />
+                  {link.title}
+                </Link>
+              </li>
+            )
+          )
+        }
+        <li aria-hidden="true" class="w-0.5 h-7 bg-border-medium"></li>
+        <li>
+          <SearchTrigger
+            variant="desktop"
+            class={cn(
+              'flex items-center gap-2 text-base font-ui lowercase leading-none relative',
+              'lg:text-xl/none lg:py-1 xl:py-0.5'
+            )}
+          />
+        </li>
+      </ul>
+    </nav>
+    <nav
+      class={cn(
+        'flex justify-between md:hidden',
+        'max-lg:fixed max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:z-100 isolate',
+        // Six items have to fit a 360px screen
+        'max-lg:px-6 max-lg:gap-6',
+        'max-lg:rounded-full max-lg:shadow-placed',
+        'max-lg:bg-white/80 dark:max-lg:bg-fern-1200/90',
+        'max-lg:backdrop-blur-sm max-lg:backdrop-brightness-100 max-lg:backdrop-contrast-100 max-lg:backdrop-saturate-150',
+        'max-lg:transition-all max-lg:duration-200 max-lg:ease-out',
+        styles.tabbar
+      )}
+      id="tabbar"
+    >
+      <ul class="flex justify-between max-lg:gap-4">
+        {
+          tabbar.map((link) => {
+            const isActive = isActiveLink(link.href)
+            return (
+              <li>
+                <Link
+                  href={link.href}
+                  aria-current={isActive ? 'page' : undefined}
+                  class={cn(tab, {
+                    'max-lg:text-emphasis': isActive,
+                    'max-lg:text-fern-700 dark:max-lg:text-fern-400': !isActive,
+                  })}
+                >
+                  <Icon
+                    icon={link.icon}
+                    size={link.size}
+                    class="text-current"
+                    variant="header"
+                    aria-hidden="true"
+                  />
+                  {link.title}
+                </Link>
+              </li>
+            )
+          })
+        }
+        <li>
+          <SearchTrigger
+            variant="tabbar"
+            class={cn(tab, 'max-lg:text-fern-700 dark:max-lg:text-fern-400')}
+          />
+        </li>
+      </ul>
+    </nav>
+    <button
+      type="button"
+      data-state="closed"
+      class="toggle-nav md:hidden"
+      aria-expanded="false"
+      aria-label="Toggle navigation menu"
+    >
+      <div
+        class="relative before:z-1 before:-inset-y-10 before:-inset-x-4 before:absolute"
+      >
+        <span class="block w-[24px] h-[24px] relative">
+          <span class="h-[2px] w-[20px] bg-emphasis block rounded absolute"
+          ></span>
+          <span class="h-[2px] w-[16px] bg-emphasis block rounded absolute"
+          ></span>
+          <span class="h-[2px] w-[20px] bg-emphasis block rounded absolute"
+          ></span>
+        </span>
+      </div>
+    </button>
+  </div>
+</header>

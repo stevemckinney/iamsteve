@@ -1,29 +1,79 @@
 ---
-// The document shell. For now it carries only what the post route needs to
-// render: the full head, sprites, header and footer from app/layout.js come
-// with the layouts phase in MIGRATION.md
+// The document shell from app/layout.js. Pages pass the metadata their
+// Next.js page exported, and any LCP images to preload
 import '../../app/global.css'
+import siteMetadata from '@/content/metadata'
+import { resolveMetadata } from '../lib/metadata.js'
+import Head from '../components/head.astro'
+import Header from '../components/header.astro'
+import FooterProfile from '../components/footer-profile.astro'
+import Icon from '../components/icon.astro'
+import Link from '../components/link.astro'
 
-const { title } = Astro.props
+const { metadata, preloads, notFound = false } = Astro.props
+
+const pathname =
+  Astro.url.pathname.length > 1
+    ? Astro.url.pathname.replace(/\/$/, '')
+    : Astro.url.pathname
+const meta = resolveMetadata(metadata, { pathname, notFound })
+const footerLink =
+  'text-emphasis hover:text-link-hover transition duration-200 ease-linear'
 ---
 
 <!doctype html>
-<html lang="en" class="overflow-x-hidden lg:overflow-x-clip">
+<html lang="en-GB" class="overflow-x-hidden lg:overflow-x-clip">
   <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover"
-    />
-    <title>{title ? `${title} • iamsteve` : 'iamsteve • design & code blog'}</title>
+    <Head meta={meta} preloads={preloads} />
   </head>
+  {/* No gap-y-18 between the footer, because it throws off the border alignment in the header */}
   <body
     class="antialiased min-w-screen min-h-screen bg-[url(/images/texture.png)] dark:bg-[url(/images/texture-dark.png)] bg-size-[172px_auto] bg-blend-multiply dark:bg-blend-color-dodge bg-canvas text-body overflow-x-hidden lg:overflow-x-clip"
   >
     <div
       class="grid layout relative gap-x-4 xl:gap-x-6 2xl:gap-x-8 max-w-[1728px] mx-auto items-baseline"
     >
+      <Header pathname={pathname} />
       <slot />
+      <FooterProfile />
+      <footer
+        class="col-content flex flex-col max-md:items-center md:flex-row gap-8 pt-18 pb-18 md:py-18"
+      >
+        <p
+          class="flex flex-1 max-md:flex-col max-md:items-center gap-1 text-balance text-center"
+        >
+          <Icon icon="bee" variant="header" /> Designed in Manchester using Figma
+          & Next.js
+        </p>
+        <ul class="flex gap-8">
+          <li><Link href="#top" class={footerLink}>Top</Link></li>
+          <li><Link href="/feed.xml" class={footerLink}>RSS</Link></li>
+          <li>
+            <p class="text-ui-body">
+              ©{' '}
+              <Link
+                href="/"
+                class="text-ui-body hover:text-link-hover transition duration-200 ease-linear"
+              >
+                {siteMetadata.title}
+              </Link>{' '}
+              {new Date().getFullYear()}
+            </p>
+          </li>
+        </ul>
+      </footer>
+      <div
+        class="col-container relative -top-4 pb-24 flex flex-row items-center gap-8"
+      >
+        <span class="flex-1 bg-dash-image h-[2px]" aria-hidden="true"></span>
+        <Icon icon="logo" class="text-emphasis" variant="header" size={32} />
+        <span class="flex-1 bg-dash-image h-[2px]" aria-hidden="true"></span>
+      </div>
     </div>
+    {
+      import.meta.env.PROD && (
+        <script is:inline async src="https://api.iamsteve.me/latest.js" />
+      )
+    }
   </body>
 </html>

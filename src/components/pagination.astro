@@ -1,0 +1,54 @@
+---
+// components/pagination.js. `base` replaces reading the path in the
+// browser: /blog, or /category/<slug>
+import Icon from './icon.astro'
+import Link from './link.astro'
+
+const { total, current, base } = Astro.props
+const prevPage = current - 1 > 0
+const nextPage = current + 1 <= total
+
+const link = `flex items-center gap-1 text-xl font-ui lowercase leading-[1.1428571429] py-2`
+const linkState = `transition duration-200 hover:text-link-hover`
+const linkDisabled = `${link} cursor-not-allowed disabled:text-ui-body/70`
+const arrow = 'stroke-current relative -top-px'
+---
+
+<nav class="flex justify-between items-center -my-2 relative">
+  {
+    prevPage ? (
+      <Link
+        href={current - 1 === 1 ? base : `${base}/page/${current - 1}`}
+        class={`${link} ${linkState}`}
+        rel="prev"
+      >
+        <Icon icon="angle-left" class={arrow} />
+        Newer
+      </Link>
+    ) : (
+      <button class={linkDisabled} disabled>
+        <Icon icon="angle-left" class={arrow} />
+        Newer
+      </button>
+    )
+  }
+  <span
+    class="absolute left-1/2 transform -translate-x-1/2 text-xl font-ui lowercase text-ui-body flex items-center gap-1 leading-[1.1428571429] py-2"
+    style="font-variant-numeric:lining-nums tabular-nums ordinal;font-feature-settings:'dlig' on, 'case' on"
+  >
+    {current} of {total}
+  </span>
+  {
+    nextPage ? (
+      <Link href={`${base}/page/${current + 1}`} class={`${link} ${linkState}`} rel="next">
+        Older
+        <Icon icon="angle-right" class={arrow} />
+      </Link>
+    ) : (
+      <button class={linkDisabled} disabled>
+        Older
+        <Icon icon="angle-right" class={arrow} />
+      </button>
+    )
+  }
+</nav>

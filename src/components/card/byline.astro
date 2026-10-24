@@ -1,0 +1,16 @@
+---
+// The hidden author and updated date the cards carry for microformats
+import Date from '../date.astro'
+import Link from '../link.astro'
+
+const { lastmod } = Astro.props
+---
+
+<div class="sr-only" aria-hidden="true" tabindex="-1">
+  <Link href="/about" class="author vcard url fn" rel="author" tabindex="-1">
+    Steve McKinney
+  </Link>{' '}
+  <time datetime={lastmod} class="updated" tabindex="-1">
+    <Date dateString={lastmod} />
+  </time>
+</div>

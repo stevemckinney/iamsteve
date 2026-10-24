@@ -1,0 +1,119 @@
+---
+// components/card/container.js: the archive card, with the medium image
+// on narrow cards and the large one on wide cards
+import { getYear, parseISO } from 'date-fns'
+import Badge from '../badge.astro'
+import Category from '../category.astro'
+import Date from '../date.astro'
+import Image from '../image.astro'
+import Link from '../link.astro'
+import Placeholder from '../placeholder.astro'
+import Byline from './byline.astro'
+
+const { frontmatter, image, class: className = 'card', priority } = Astro.props
+const { slug, date, title, summary, _meta, theme, categories, large, medium, lastmod } =
+  frontmatter
+
+// The old site’s summaries could hold paragraphs. The literal className is
+// what production renders; fix it once the port has parity
+function autoParagraph(text, size) {
+  return `<p className="${size}">` + text.split(/\n+/).join(`</p>\n<p>`) + `</p>`
+}
+
+const imageColor = theme ? theme.toString() : '#f1e8e4'
+const imageClass = `relative flex items-center justify-center`
+const year = getYear(parseISO(date))
+const titleId = `title-${_meta?.filePath}`
+
+// Design and Code are implied when a post has another category
+const shown = categories.filter(
+  (category) =>
+    !(categories.length > 1 && ['design', 'code'].includes(category.toLowerCase()))
+)
+---
+
+<article
+  class={`@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced dark:active:shadow-[inset_0_0_0_1px_var(--color-surface-02)] bg-surface active:bg-surface-pressed active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative h-full ${className}`}
+>
+  {
+    image && (large || medium) && (
+      <Link
+        href={slug}
+        title=""
+        class={imageClass}
+        style={`background-color:${imageColor}`}
+        aria-labelledby={titleId}
+      >
+        <Image
+          src={medium}
+          width={384}
+          height={240}
+          alt={title}
+          class="@lg/card:hidden w-full"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : undefined}
+        />
+        <Image
+          src={large}
+          width={year > 2020 ? 592 : 738}
+          height={year > 2020 ? 368 : 492}
+          alt={title}
+          aria-hidden="true"
+          class="hidden @lg/card:block w-full"
+        />
+      </Link>
+    )
+  }
+  {
+    image && (!large || !medium) && (
+      <Placeholder
+        category={categories?.includes('Design') ? 'Design' : 'Code'}
+        slug={slug}
+        width={592}
+        height={368}
+        href={slug}
+        alt={title}
+        class={imageClass}
+      />
+    )
+  }
+  <div class="flex flex-col flex-auto relative py-8 @lg/card:pb-10.5 @lg/card:pt-12">
+    <div
+      class="flex flex-row gap-6 relative z-2 overflow-x-auto pb-4 @lg/card:pb-5 px-8 @lg/card:px-12 pt-px -mt-px"
+    >
+      {shown.map((category) => <Category title={category} size={24} />)}
+      <Badge
+        size={24}
+        theme="cornflour"
+        iconStart="calendar"
+        class="sr-only @lg/card:not-sr-only"
+      >
+        <Date dateString={date} />
+      </Badge>
+    </div>
+    <div
+      class="flex flex-col gap-2.5 px-8 pt-[.8125rem] @lg/card:pt-2 @lg/card:gap-3 @lg/card:px-12"
+    >
+      <h2
+        class="p-0 m-0 leading-none text-balance lowercase font-display font-variation-bold hyphens-auto text-3xl @lg/card:text-5xl"
+        id={titleId}
+      >
+        <Link
+          href={slug}
+          class="text-heading group-hover/card:text-[light-dark(var(--color-fern-800),var(--color-white))] transition duration-200 ease-out before:content-[''] before:absolute before:inset-0 before:cursor-pointer before:rounded-md @lg/card:before:rounded-lg before:z-1"
+        >
+          {title}
+        </Link>
+      </h2>
+      {
+        summary && (
+          <div
+            class="flex-auto md:text-lg text-ui-body line-clamp-4 @lg/card:line-clamp-3"
+            set:html={autoParagraph(summary, 'font-body')}
+          />
+        )
+      }
+      <Byline lastmod={lastmod} />
+    </div>
+  </div>
+</article>

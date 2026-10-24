@@ -1,0 +1,24 @@
+---
+// components/button.js: a link when it has an href, otherwise a button
+// with its label in a span
+import Link from './link.astro'
+
+const { href, theme, class: ownClass, className, ...attributes } = Astro.props
+
+const variants = { dandelion: 'button-dandelion' }
+const classes = `select-none font-ui text-base/tight lowercase text-center ${variants[theme]} ${ownClass ?? className}`
+---
+
+{
+  href ? (
+    <Link href={href} class={classes} {...attributes}>
+      <slot />
+    </Link>
+  ) : (
+    <button class={classes} {...attributes}>
+      <span>
+        <slot />
+      </span>
+    </button>
+  )
+}

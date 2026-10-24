@@ -1,0 +1,10 @@
+---
+// components/date.js
+import { format, parseISO } from 'date-fns'
+
+const { dateString, class: className = 'date' } = Astro.props
+---
+
+<time datetime={dateString} class={className}>
+  {format(parseISO(dateString), 'do LLL yyyy')}
+</time>

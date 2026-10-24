@@ -1,0 +1,64 @@
+---
+// components/placeholder/index.js: the default artwork for a post without
+// images, on a background chosen from its slug
+import Image from './image.astro'
+import Link from './link.astro'
+
+const {
+  category,
+  slug,
+  alt = '',
+  width = 384,
+  height = 240,
+  href,
+  class: className = '',
+} = Astro.props
+
+// A deterministic pseudo-random colour from the slug
+function hashString(value) {
+  let hash = 0
+  for (let i = 0; i < value.length; i++) {
+    hash = (hash << 5) - hash + value.charCodeAt(i)
+    hash = hash | 0
+  }
+  return Math.abs(hash)
+}
+
+const colorIndex = hashString(slug || category || 'default') % 10
+const style = `background-color:var(--placeholder-color-${colorIndex})`
+
+const design = category === 'Design'
+const small = design ? '/images/default/design-default.svg' : '/images/default/code-default.svg'
+const large = design
+  ? '/images/default/design-default-large.svg'
+  : '/images/default/code-default-large.svg'
+const altText = alt || `${category} placeholder`
+---
+
+{
+  href ? (
+    <Link href={href} class={`${className} relative`} style={style}>
+      <Image src={small} alt={altText} width={width} height={height} class="@md:hidden" />
+      <Image
+        src={large}
+        alt={altText}
+        width={width}
+        height={height}
+        class="hidden @md:block"
+        aria-hidden="true"
+      />
+    </Link>
+  ) : (
+    <div class={className} style={style}>
+      <Image src={small} alt={altText} width={width} height={height} class="@md:hidden" />
+      <Image
+        src={large}
+        alt={altText}
+        width={width}
+        height={height}
+        class="hidden @md:block"
+        aria-hidden="true"
+      />
+    </div>
+  )
+}
