@@ -1,0 +1,19 @@
+---
+// The button dressed as a search field from components/search-field.js, as
+// the server rendered it. Opening search in the field’s `scope` arrives
+// with the search island
+import { cn } from '@/lib/utils'
+import { fieldStyle } from '../lib/field-style.js'
+import Icon from './icon.astro'
+
+const { class: className } = Astro.props
+---
+
+<button
+  type="button"
+  class={cn(fieldStyle, 'cursor-default', className)}
+  tabindex="0"
+>
+  <Icon icon="search" size={24} variant="header" aria-hidden="true" />
+  <slot />
+</button>

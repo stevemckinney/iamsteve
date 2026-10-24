@@ -1,0 +1,105 @@
+---
+// app/(page)/collections/[...slug]/page.js. One page for each topic in
+// content/collections.js; any other slug 404s, as it does today
+import collections from '@/content/collections'
+import { collectionTitle } from '@/lib/collections'
+import Frame from '../../layouts/frame.astro'
+import Header from '../../components/page/header.astro'
+import Title from '../../components/page/title.astro'
+import Description from '../../components/page/description.astro'
+import Topics from '../../components/topics.astro'
+import Icon from '../../components/icon.astro'
+import SearchField from '../../components/search-field.astro'
+import Bookmarks from '../../components/bookmarks.astro'
+import { groupBookmarks, lastImport } from '../../lib/bookmarks.js'
+
+export function getStaticPaths() {
+  return collections.map((page) => ({
+    params: { slug: page.slugAsParams },
+    props: { page },
+  }))
+}
+
+const { page } = Astro.props
+const { slug } = Astro.params
+
+// The topics have no description, which leaves the page without one. The
+// stray template does nothing, as in Next.js
+const metadata = {
+  template: '%s • iamsteve',
+  title: page.title,
+  description: page.description,
+  alternates: {
+    canonical: `/collections/${slug}`,
+  },
+}
+
+const grouped = await groupBookmarks()
+const lastImportDate = await lastImport()
+const lowercasePage = slug.toLowerCase()
+// The first topic whatever its case, so of `Motion` and `motion` the one
+// filed first is shown
+const collectionKey = Object.keys(grouped).find(
+  (key) => key.toLowerCase() === lowercasePage
+)
+const items = [...collections].sort((a, b) =>
+  a.title < b.title ? -1 : a.title > b.title ? 1 : 0
+)
+---
+
+<Frame variant="page" metadata={metadata}>
+  <Header
+    class="max-md:frame max-md:frame-24 max-md:px-8 max-md:py-8 flex flex-col gap-2 col-container md:col-content md:col-end-7 md:sticky top-8 self-start"
+  >
+    <Title class="font-variation-bold text-5xl">Collections</Title>
+    <Description class="desc max-md:mb-2"
+      >{
+        'Curated design resources organised by topic, from typography and colour to tools and techniques.'
+      }</Description
+    >
+    <Topics
+      items={items}
+      current={page.slug}
+      label="Collections"
+      icon="collections"
+      class="md:hidden"
+    />
+    <SearchField scope="collections" class="max-md:hidden mt-2"
+      >Search collections</SearchField
+    >
+    <ul
+      class="max-md:hidden grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories"
+    >
+      {
+        items.map((collection) => (
+          <li class="self-end">
+            <a
+              href={collection.slug}
+              class="py-2 md:py-3 text-base md:text-lg lg:text-xl text-current hover:text-link-hover transition duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center"
+            >
+              <Icon icon={collection.icon} size={24} variant="header" />
+              {collection.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Header>
+  <section
+    class="flex flex-col col-container md:col-start-8 md:col-end-content-end gap-y-10"
+  >
+    {
+      collectionKey ? (
+        <Bookmarks
+          title={collectionTitle(lowercasePage)}
+          items={grouped[collectionKey]}
+          lastImport={lastImportDate}
+          listClass="bg-surface shadow-placed rounded-lg flex flex-col overflow-hidden"
+          itemClass="flex items-center border-b last:border-0 border-neutral-01-500/10 dark:border-surface-01 leading-loose relative lg:text-lg"
+        />
+      ) : (
+        <div>No collections found for the current page.</div>
+      )
+    }
+  </section>
+</Frame>

@@ -11,6 +11,7 @@
 // - og:title falls back to the resolved title
 // - twitter fills a missing title, description and images from openGraph
 // - Only the home page gets app/opengraph-image.png
+// - A description set to undefined leaves none, rather than the root’s
 import siteMetadata from '@/content/metadata'
 
 const site = siteMetadata.siteUrl
@@ -140,7 +141,7 @@ export function resolveMetadata(page = {}, { pathname, notFound = false }) {
 
   return {
     title,
-    description: page.description ?? description,
+    description: 'description' in page ? page.description : description,
     robots: robotsContent(robots),
     googlebot: robots.googleBot ? robotsContent(robots.googleBot) : undefined,
     canonical,

@@ -1,0 +1,40 @@
+---
+// One topic’s bookmarks from the collections pages: a heading with the
+// count, then each link with its address and the “New” badge. The pages
+// round the list and border the rows a little differently
+import { isNew, displayUrl } from '../lib/bookmarks.js'
+
+const { title, items, lastImport, listClass, itemClass } = Astro.props
+---
+
+<div class="flex flex-col gap-4">
+  <h2
+    class="flex justify-between text-xl md:text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0 pt-2"
+  >
+    {title}
+    <span class="text-cornflour-600">{items.length}</span>
+  </h2>
+  <ul class={listClass}>
+    {
+      items.map((item) => (
+        <li class={itemClass}>
+          <a
+            href={item.url}
+            class="flex whitespace-nowrap flex-1 gap-2 group hover:bg-neutral-01-50 dark:hover:bg-surface-02/20 transition duration-200 linear items-baseline py-2.5 px-4 w-full [mask:linear-gradient(90deg,black_80%,transparent)]"
+            rel="noopener noreferrer"
+          >
+            {item.title}
+            <span class="text-emphasis/40 group-hover:text-emphasis/80 transition duration-200 linear line-clamp-1">
+              {displayUrl(item.url)}
+            </span>
+          </a>
+          {isNew(item.date, lastImport) && (
+            <span class="flex self-center px-2 pt-1.5 pb-1 text-sm font-sans font-medium lowercase bg-cornflour-100 leading-none text-cornflour-600 justify-center rounded-sm absolute top-1/2 right-3 -translate-y-1/2">
+              New
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</div>
