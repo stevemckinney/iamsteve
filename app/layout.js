@@ -22,7 +22,8 @@ export const metadata = {
   description:
     'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
   alternates: {
-    canonical: siteMetadata.siteUrl,
+    // Relative, so a page without its own canonical points at itself
+    canonical: './',
     types: {
       'application/rss+xml': `${siteMetadata.siteUrl}/feed.xml`,
     },
@@ -38,11 +39,11 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
+  // No title here, so each page’s own title is used for og:title
   openGraph: {
-    title: 'iamsteve • design & code blog',
     description:
       'A blog by Steve McKinney about the design and build of websites. Bridging the gap between your design tool and code, with a focus on typography, CSS and visual craft.',
-    url: siteMetadata.siteUrl,
+    url: './',
     siteName: 'iamsteve',
     locale: 'en_GB',
     type: 'website',
@@ -131,7 +132,7 @@ export default function RootLayout({ children }) {
   preload(typekit, { as: 'style' })
 
   return (
-    <html lang="en" className="overflow-x-hidden lg:overflow-x-clip">
+    <html lang="en-GB" className="overflow-x-hidden lg:overflow-x-clip">
       <head>
         <meta
           name="apple-mobile-web-app-status-bar-style"
