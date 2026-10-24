@@ -1,21 +1,96 @@
 [
   {
-    "url": "/blog/{rules-i-follow-when-typesetting,using-analytics-again-with-simple-analytics}",
-    "part": "body",
-    "region": "#article",
-    "node": "[role=region], .images",
-    "reason": "Comparison images: production renders the ComparisonImages island, and the build shows the images as a gallery until that island exists (phase 3)"
-  },
-  {
-    "url": "/blog/maintenance-week",
+    "url": "/blog/{,drafts/}maintenance-week",
     "node": "script[src=\"//platform.twitter.com/widgets.js\"]",
     "reason": "The tweet’s widgets script: React hoists it into the head, and Astro leaves it inline where the post has it"
   },
   {
-    "url": "/blog/*",
+    "url": "/blog/{,drafts/}about-version-six",
+    "part": "body",
+    "node": "script[src=\"https://platform.twitter.com/widgets.js\"]",
+    "reason": "next/script injects the Twitter widget from the client, and Astro writes the tag; both preload it in the head"
+  },
+  {
+    "url": "/blog/**",
     "part": "body",
     "attribute": "data-copy-code",
     "kind": "extra",
     "reason": "src/scripts/copy-code.js finds code figures’ copy buttons by data-copy-code, where React gave each button its own handler"
+  },
+  {
+    "url": "/**",
+    "part": "body",
+    "text": "Join 700+ designers",
+    "reason": "The build reads the subscriber count from EmailOctopus once per build. Production’s count API call fails, so it always shows the 700 fallback"
+  },
+  {
+    "url": "/blog/**",
+    "part": "body",
+    "region": "#article",
+    "attribute": "href",
+    "text": ".mdx",
+    "reason": "The GitHub link names the content file, now .mdx"
+  },
+  {
+    "url": "/blog/**",
+    "part": "body",
+    "node": "aside.mt-8.pb-18 *",
+    "reason": "Next to read picks two posts at random each time the page renders"
+  },
+  {
+    "url": "/**",
+    "part": "body",
+    "attribute": "style",
+    "text": "data:image/svg+xml",
+    "reason": "next/image’s blur placeholder. Every use passes the same transparent 1×1 GIF, so it never showed anything, and the build leaves it out"
+  },
+  {
+    "url": "/blog/{,drafts/}{about-version-4,redesign}",
+    "part": "head",
+    "node": "link[rel=preload][as=image]",
+    "reason": "React 19 preloads the first images it renders without loading=lazy, here a plain markdown image further down the post"
+  },
+  {
+    "url": "/",
+    "part": "head",
+    "text": "https://iamsteve.me/index",
+    "reason": "Production’s home canonical and og:url point at /index, which 308s to / (since #369). The build points at the root"
+  },
+  {
+    "url": "/this-page-does-not-exist",
+    "part": "head",
+    "reason": "The 404 gets the full layout head, a single noindex, and no canonical or og:url. Production’s has both robots values and a canonical to the missing URL"
+  },
+  {
+    "url": "/category/{javascript,quick-tip,visual-design}/page/1",
+    "part": "urls",
+    "reason": "The paged category route matches slugs the way the category page does. Production capitalises the slug, so these 404"
+  },
+  {
+    "url": "/blog/*",
+    "part": "body",
+    "region": "#article",
+    "node": "header span.text-emphasis",
+    "text": " views",
+    "reason": "View counts are read when each side renders, so they drift between the snapshot and the build"
+  },
+  {
+    "url": "/",
+    "part": "body",
+    "region": "header#top",
+    "node": "nav#tabbar a",
+    "attribute": "{aria-current,class}",
+    "reason": "Production renders the home page as /index, so its tab isn’t marked current. The build marks it"
+  },
+  {
+    "url": "/",
+    "part": "body",
+    "node": "h2#popular-posts template, h2#popular-posts [data-testid=hidden-select-container]",
+    "reason": "React Aria’s Select renders a hidden native select and a template for its popover. They arrive with the popular posts island"
+  },
+  {
+    "url": "/this-page-does-not-exist",
+    "part": "body",
+    "reason": "Production’s 404 sends an empty body and draws the page from the RSC payload once JavaScript runs. The build sends the page itself"
   }
 ]

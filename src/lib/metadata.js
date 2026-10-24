@@ -7,6 +7,8 @@
 // - The page’s title goes through the template; no title uses the default
 // - alternates, robots, openGraph and twitter each replace the root’s whole
 //   object when a page sets them
+// - A page that names description, robots or alternates replaces the
+//   root’s, even with undefined, which leaves the tag out
 // - A relative canonical or og:url resolves against the page’s path
 // - og:title falls back to the resolved title
 // - twitter fills a missing title, description and images from openGraph
@@ -111,11 +113,13 @@ function resolveImages(images = []) {
 export function resolveMetadata(page = {}, { pathname, notFound = false }) {
   const path = pathname.length > 1 ? pathname.replace(/\/$/, '') : pathname
   const title = resolveTitle(page.title)
+  const own = (key) => (key in page ? page[key] : root[key])
+  const pageDescription = own('description')
 
   // A missing page gets a single noindex and no canonical
-  const robots = notFound ? { index: false } : page.robots ?? root.robots
+  const robots = notFound ? { index: false } : own('robots')
 
-  const alternates = page.alternates ?? root.alternates
+  const alternates = own('alternates') ?? {}
   const canonical =
     !notFound && alternates.canonical !== undefined
       ? resolveUrl(alternates.canonical, path)
@@ -132,17 +136,16 @@ export function resolveMetadata(page = {}, { pathname, notFound = false }) {
 
   const twitter = { ...(page.twitter ?? root.twitter) }
   twitter.title ??= openGraph.title
-  twitter.description ??=
-    openGraph.description || (page.description ?? description)
+  twitter.description ??= openGraph.description || pageDescription
   twitter.images = twitter.images
     ? resolveImages(twitter.images)
     : openGraph.images
 
   return {
     title,
-    description: page.description ?? description,
-    robots: robotsContent(robots),
-    googlebot: robots.googleBot ? robotsContent(robots.googleBot) : undefined,
+    description: pageDescription,
+    robots: robots && robotsContent(robots),
+    googlebot: robots?.googleBot ? robotsContent(robots.googleBot) : undefined,
     canonical,
     alternates: Object.entries(alternates.types ?? {}).map(([type, href]) => ({
       type,
