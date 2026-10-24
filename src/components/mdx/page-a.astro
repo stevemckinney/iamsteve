@@ -1,0 +1,12 @@
+---
+// A Link with the page map’s class, which wins over the link’s own
+import Element from './element.astro'
+import Link from '../link.astro'
+---
+
+<Element
+  as={Link}
+  base="text-heading md:text-lg lg:text-xl underline [text-underline-offset:12.5%] [text-decoration-thickness:1.5px] [text-decoration-color:color-mix(in_oklch,currentcolor,transparent_60%)] hover:text-link-hover transition duration-200 ease-linear"
+  force
+  {...Astro.props}><slot /></Element
+>

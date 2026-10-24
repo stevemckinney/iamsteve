@@ -1,0 +1,51 @@
+---
+// The nav in about.mdx’s frontmatter `slot`, which content-collections
+// compiled as MDX. Astro doesn’t compile frontmatter, so it’s ported here
+// as production renders it, with the same spaces between and inside the
+// links (MDX kept them, and Astro’s HTML compression would drop them)
+import Icon from './icon.astro'
+
+const link =
+  'col-span-1 py-2 md:py-3 text-base md:text-lg lg:text-xl text-emphasis hover:text-link-hover transition-all duration-200 ease-linear font-ui lowercase leading-none flex gap-2 items-center text-current'
+const divided = `border-t border-neutral-500/20 ${link}`
+---
+
+<nav class="grid grid-cols-2 w-full gap-x-8 self-end lg:-mb-3">
+  {' '}
+  <a href="#site" class={link}
+    ><Icon
+      icon="website"
+      size={24}
+      class="text-current shrink-0"
+      variant="header"
+    />{' website'}</a
+  >
+  {' '}
+  <a href="#author" class={link}
+    ><Icon
+      icon="person"
+      size={24}
+      class="text-current shrink-0"
+      variant="header"
+    />{' Author'}</a
+  >
+  {' '}
+  <a href="#examples" class={divided}
+    >{' '}<Icon
+      icon="bolt"
+      size={24}
+      class="text-current shrink-0"
+      variant="header"
+    />{' Best posts'}</a
+  >
+  {' '}
+  <a href="#history" class={divided}
+    >{' '}<Icon
+      icon="clock-reverse"
+      size={24}
+      class="text-current shrink-0"
+      variant="header"
+    />{' Design history'}</a
+  >
+  {' '}
+</nav>

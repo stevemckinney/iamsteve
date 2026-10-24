@@ -1,0 +1,13 @@
+---
+// Without a class this renders `undefined` in the class list, as the React
+// GalleryFigure does
+const { class: ownClass, className } = Astro.props
+---
+
+<figure
+  class={`flex flex-col items-center justify-center p-4 self-start rounded-lg bg-surface shadow-placed ${
+    ownClass ?? className
+  }`}
+>
+  <slot />
+</figure>
