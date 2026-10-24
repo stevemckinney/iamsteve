@@ -1,0 +1,21 @@
+[
+  {
+    "url": "/blog/{rules-i-follow-when-typesetting,using-analytics-again-with-simple-analytics}",
+    "part": "body",
+    "region": "#article",
+    "node": "[role=region], .images",
+    "reason": "Comparison images: production renders the ComparisonImages island, and the build shows the images as a gallery until that island exists (phase 3)"
+  },
+  {
+    "url": "/blog/maintenance-week",
+    "node": "script[src=\"//platform.twitter.com/widgets.js\"]",
+    "reason": "The tweet’s widgets script: React hoists it into the head, and Astro leaves it inline where the post has it"
+  },
+  {
+    "url": "/blog/*",
+    "part": "body",
+    "attribute": "data-copy-code",
+    "kind": "extra",
+    "reason": "src/scripts/copy-code.js finds code figures’ copy buttons by data-copy-code, where React gave each button its own handler"
+  }
+]
