@@ -1,0 +1,23 @@
+---
+import { cn } from '@/lib/utils'
+import Image from '../image.astro'
+
+const {
+  src,
+  alt,
+  type = 'app',
+  size = 72,
+  class: ownClass,
+  className,
+} = Astro.props
+---
+
+<span
+  class={cn(
+    'flex items-center justify-center row-span-2 self-start shrink-0 aspect-square',
+    type === 'favicon' && 'relative top-[2px]',
+    ownClass ?? className
+  )}
+>
+  <Image src={src} alt={alt} width={size} height={size} class="object-contain" />
+</span>

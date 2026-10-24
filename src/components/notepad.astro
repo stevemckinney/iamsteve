@@ -1,0 +1,8 @@
+---
+// Without a class this renders `undefined` in the class list, as the React
+// Notepad does on /newsletter and /thanks today. Import ./notepad.js to
+// write the header and body as Notepad.Header and Notepad.Body
+const { class: ownClass, className } = Astro.props
+---
+
+<div class={`isolate relative ${ownClass ?? className}`}><slot /></div>

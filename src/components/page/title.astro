@@ -1,0 +1,16 @@
+---
+const {
+  class: ownClass,
+  className = 'font-variation-bold lg:font-variation-extrabold text-3xl xs:text-5xl lg:text-7xl',
+  ...attributes
+} = Astro.props
+---
+
+<h1
+  class={`w-full text-heading font-display lowercase self-start min-w-0 min-h-0 ${
+    ownClass ?? className
+  }`}
+  {...attributes}
+>
+  <slot />
+</h1>

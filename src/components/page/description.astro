@@ -1,0 +1,11 @@
+---
+const { class: ownClass, className = 'desc' } = Astro.props
+---
+
+<p
+  class={`md:text-lg lg:text-xl text-ui-body sm:max-w-[34ch] ${
+    ownClass ?? className
+  }`}
+>
+  <slot />
+</p>
