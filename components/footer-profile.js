@@ -1,5 +1,6 @@
 import Subscribe from '@/components/subscribe'
 import Icon from '@/components/icon'
+import { Logo } from '@parchment/logos/react'
 import Link from '@/components/link'
 import { footer } from '@/content/navigation'
 
@@ -72,7 +73,7 @@ export default function FooterProfile() {
               href="https://x.com/irsteve"
               className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="x" size={16} variant="header" />
+              <Logo name="x" className="shrink-0" />
               x.com
             </Link>
           </li>
@@ -81,7 +82,7 @@ export default function FooterProfile() {
               href="https://www.figma.com/@stevemckinney"
               className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="figma" size={16} variant="header" />
+              <Logo name="figma" className="shrink-0" />
               Figma
             </Link>
           </li>
@@ -90,7 +91,7 @@ export default function FooterProfile() {
               href="https://github.com/stevemckinney"
               className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="github" size={16} variant="header" />
+              <Logo name="github" className="shrink-0" />
               Github
             </Link>
           </li>
@@ -99,7 +100,7 @@ export default function FooterProfile() {
               href="https://www.linkedin.com/in/steve-mckinney-5b5836102/"
               className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
             >
-              <Icon icon="linkedin" size={16} variant="header" />
+              <Logo name="linkedin" className="shrink-0" />
               Linkedin
             </Link>
           </li>
@@ -109,7 +110,7 @@ export default function FooterProfile() {
               className="flex flex-row items-center gap-2 text-base font-ui lowercase text-body hover:text-link-hover transition duration-200"
               rel="me"
             >
-              <Icon icon="mastodon" size={16} variant="header" />
+              <Logo name="mastodon" className="shrink-0" />
               Mastodon
             </Link>
           </li>

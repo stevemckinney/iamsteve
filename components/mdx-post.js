@@ -6,7 +6,7 @@ import Link from '@/components/link'
 import ContactForm from '@/components/contact-form-lazy'
 import ComparisonImages from '@/components/comparison-images'
 import { figureComponents } from '@/components/figure'
-import Icon from '@/components/icon'
+import { Logo } from '@parchment/logos/react'
 import Social from '@/components/social'
 import Card from '@/components/card'
 import Notepad from '@/components/notepad'
@@ -322,8 +322,7 @@ const postComponents = {
       href={props.href}
       className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion w-full @sm:w-auto @sm:grow-0 flex-auto`}
     >
-      <Icon icon="figma" size={16} className="text-current shrink-0" />{' '}
-      {props.children}
+      <Logo name="figma" className="shrink-0" /> {props.children}
     </Link>
   ),
   LinkGithub: (props) => (
@@ -331,8 +330,7 @@ const postComponents = {
       href={props.href}
       className={`flex flex-1 justify-center items-center gap-2 select-none font-ui text-base/tight lowercase text-center button-dandelion w-full @sm:w-auto @sm:grow-0 flex-auto`}
     >
-      <Icon icon="github" size={16} className="text-current shrink-0" />{' '}
-      {props.children}
+      <Logo name="github" className="shrink-0" /> {props.children}
     </Link>
   ),
   Demo: (

@@ -162,6 +162,18 @@ The sprite is mounted once via `components/icon/sprite.js` and icons are referen
 - Stroke line utilities: `sl-r` (round cap + round join, most common), `sl-s` (round cap + square join). Defined in `css/utilities.css`.
 - Fill classes: `fill-(--icon-fill)` for themed fill, `fill-currentcolor` to inherit, `fill-none` for outline-only icons.
 
+### Logos
+
+Other companies’ logos, such as the social links’, come from Loupe rather than the sprite. They draw in `currentColor` and are 16px tall unless `size` says otherwise:
+
+```jsx
+import { Logo } from '@parchment/logos/react'
+
+;<Logo name="github" className="shrink-0" />
+```
+
+Use it in server components. The component carries every logo’s markup, so a client component would ship them all.
+
 ## Class merging
 
 Always use `cn()` from `@/lib/utils` (wraps clsx + tailwind-merge). Never concatenate class strings manually.

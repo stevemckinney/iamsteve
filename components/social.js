@@ -1,4 +1,4 @@
-import Icon from '@/components/icon'
+import { Logo } from '@parchment/logos/react'
 import Link from '@/components/link'
 
 const Social = () => {
@@ -10,7 +10,7 @@ const Social = () => {
             href="https://x.com/irsteve"
             className="flex flex-row items-center gap-2 text-base font-ui lowercase text-emphasis hover:text-link-hover transition duration-200"
           >
-            <Icon icon="x" size={16} className="text-current shrink-0" />
+            <Logo name="x" className="shrink-0" />
             x.com
           </Link>
         </li>
@@ -19,7 +19,7 @@ const Social = () => {
             href="https://www.figma.com/@stevemckinney"
             className="flex flex-row items-center gap-2 text-base font-ui lowercase text-emphasis hover:text-link-hover transition duration-200"
           >
-            <Icon icon="figma" size={16} className="text-current shrink-0" />
+            <Logo name="figma" className="shrink-0" />
             Figma
           </Link>
         </li>
@@ -28,7 +28,7 @@ const Social = () => {
             href="https://github.com/stevemckinney"
             className="flex flex-row items-center gap-2 text-base font-ui lowercase text-emphasis hover:text-link-hover transition duration-200"
           >
-            <Icon icon="github" size={16} className="text-current shrink-0" />
+            <Logo name="github" className="shrink-0" />
             Github
           </Link>
         </li>
@@ -37,7 +37,7 @@ const Social = () => {
             href="https://www.linkedin.com/in/smcknny/"
             className="flex flex-row items-center gap-2 text-base font-ui lowercase text-emphasis hover:text-link-hover transition duration-200"
           >
-            <Icon icon="linkedin" size={16} className="text-current shrink-0" />
+            <Logo name="linkedin" className="shrink-0" />
             Linkedin
           </Link>
         </li>
@@ -47,7 +47,7 @@ const Social = () => {
             className="flex flex-row items-center gap-2 text-base font-ui lowercase text-emphasis hover:text-link-hover transition duration-200"
             rel="me"
           >
-            <Icon icon="mastodon" size={16} className="text-current shrink-0" />
+            <Logo name="mastodon" className="shrink-0" />
             Mastodon
           </Link>
         </li>
