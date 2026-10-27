@@ -61,6 +61,9 @@ importers:
       '@next/mdx':
         specifier: ^16.2.0
         version: 16.2.1(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@18.3.12)(react@19.0.0))
+      '@parchment/logos':
+        specifier: github:parchmentdesignstudio/loupe#logos
+        version: git+https://github.com/parchmentdesignstudio/loupe.git#6e2137440fc7ec28987a08ee1162b732bd941792(react@19.0.0)
       '@shikijs/rehype':
         specifier: ^4.0.0
         version: 4.0.2
@@ -1284,6 +1287,18 @@ packages:
   '@parcel/watcher@2.5.1':
     resolution: {integrity: sha512-dfUnCxiN9H4ap84DvD2ubjw+3vUNpstxa0TneY/Paat8a3R4uQZDLSvWjmznAY/DoahqTHl9V46HF/Zs3F29pg==}
     engines: {node: '>= 10.0.0'}
+
+  '@parchment/logos@git+https://github.com/parchmentdesignstudio/loupe.git#6e2137440fc7ec28987a08ee1162b732bd941792':
+    resolution: {commit: 6e2137440fc7ec28987a08ee1162b732bd941792, repo: https://github.com/parchmentdesignstudio/loupe.git, type: git}
+    version: 0.1.0
+    peerDependencies:
+      astro: '>=4'
+      react: '>=18'
+    peerDependenciesMeta:
+      astro:
+        optional: true
+      react:
+        optional: true
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
@@ -6448,6 +6463,10 @@ snapshots:
       '@parcel/watcher-win32-ia32': 2.5.1
       '@parcel/watcher-win32-x64': 2.5.1
     optional: true
+
+  '@parchment/logos@git+https://github.com/parchmentdesignstudio/loupe.git#6e2137440fc7ec28987a08ee1162b732bd941792(react@19.0.0)':
+    optionalDependencies:
+      react: 19.0.0
 
   '@polka/url@1.0.0-next.29': {}
 
