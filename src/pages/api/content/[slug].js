@@ -1,10 +1,10 @@
-// app/api/content/[slug]/route.js: any post as markdown, whatever its
-// status, as on the Next.js site
-import { allEntries } from '../../../lib/content.js'
+// app/api/content/[slug]/route.js: each post with a page as markdown.
+// The Next.js route served drafts and closed posts too
+import { allEntries, isRoutable } from '../../../lib/content.js'
 import { postMarkdown } from '../../../lib/markdown-api.js'
 
 export async function getStaticPaths() {
-  return (await allEntries('blog')).map((entry) => ({
+  return (await allEntries('blog')).filter(isRoutable).map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
   }))
