@@ -8,6 +8,8 @@
  *   compared as normalised sets without framework internals
  * - Body: the page shell region by region, normalised and aligned node by
  *   node
+ * - Files: every other text response (feeds, markdown, JSON) byte for byte,
+ *   apart from the dates a build stamps
  *
  * Production is read as it is once loaded: React’s streamed Suspense
  * boundaries swapped in, and Cloudflare’s email obfuscation decoded. Then
@@ -19,7 +21,7 @@
  * Production is cached in node_modules/.cache/parity. Accepted differences
  * live in scripts/parity-expected.json, an array of entries. Each needs a
  * `url` glob and a `reason`, and narrows itself with any of `part` (urls,
- * head or body), `region`, `kind` (missing, extra, changed, type), `node`
+ * head, body or files), `region`, `kind` (missing, extra, changed, type), `node`
  * (a CSS selector over normalised markup, so module classes read
  * `.module:name`), `attribute` (a name glob, for attribute differences) and
  * `text` (a substring of the difference as the report prints it).
@@ -54,7 +56,8 @@ const USAGE = `Usage: node scripts/parity.mjs [options]
   --urls           compare URLs, statuses and content types
   --head           compare heads
   --body           compare bodies
-                   (without any of these three, all of them run)
+  --files          compare other text files byte for byte
+                   (without any of these four, all of them run)
   --expected       list the differences parity-expected.json suppresses
   --verbose        list every page and difference
   --json <file>    write the full report as JSON
@@ -80,7 +83,7 @@ function parseArgs(argv) {
     }
     if (name === '--refresh') options.refresh = true
     else if (name === '--only') options.only = value()
-    else if (['--urls', '--head', '--body'].includes(name))
+    else if (['--urls', '--head', '--body', '--files'].includes(name))
       options.parts.add(name.slice(2))
     else if (name === '--expected') options.expected = true
     else if (name === '--verbose') options.verbose = true
@@ -90,7 +93,8 @@ function parseArgs(argv) {
       process.exit(0)
     } else fail(`Unknown option ${argv[index]}\n\n${USAGE}`)
   }
-  if (!options.parts.size) options.parts = new Set(['urls', 'head', 'body'])
+  if (!options.parts.size)
+    options.parts = new Set(['urls', 'head', 'body', 'files'])
   options.filter = options.only ? glob(options.only) : /^/
   return options
 }
@@ -1567,6 +1571,8 @@ function where(record) {
 
 function describe(record) {
   if (record.part === 'urls') return record.text
+  if (record.part === 'files')
+    return `${record.text}: ${quote(record.live)} → ${quote(record.build)}`
   if (record.part === 'head') {
     if (record.kind !== 'changed')
       return `${record.kind} ${(record.live ?? record.build).text}`
@@ -1783,6 +1789,49 @@ function comparePages(snapshot, inventory, options, expected, suppressed) {
       }
       return page
     })
+}
+
+// Dates a build stamps on its output, which differ every time
+const VOLATILE = [
+  [/^\/feed\.xml$/, /<lastBuildDate>[^<]*<\/lastBuildDate>/g],
+  [/^\/sitemap\.xml$/, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/g],
+]
+
+function steady(url, text) {
+  return VOLATILE.reduce(
+    (out, [route, pattern]) =>
+      route.test(url) ? out.replace(pattern, '«build date»') : out,
+    text
+  )
+}
+
+// Text responses that aren’t HTML, in both, byte for byte
+function compareFiles(snapshot, inventory, filter) {
+  const result = { records: [], identical: 0 }
+  for (const [url, record] of Object.entries(snapshot.urls)) {
+    const built = inventory.urls.get(url)
+    const text = record.status === 200 && record.body && !isHtml(record.type)
+    if (!text || !built || !filter.test(url)) continue
+    const live = steady(url, read(url))
+    const build = steady(
+      url,
+      fs.readFileSync(path.join(DIST, built.file), 'utf8')
+    )
+    if (live === build) {
+      result.identical++
+      continue
+    }
+    const [from, to] = divergence(live, build)
+    result.records.push({
+      part: 'files',
+      kind: 'changed',
+      url,
+      text: `changed ${url}`,
+      live: from,
+      build: to,
+    })
+  }
+  return result
 }
 
 // partial: everything the build has matches, but production has more
@@ -2076,6 +2125,20 @@ function printBody(lines, pages, options) {
   }
 }
 
+function printFiles(lines, files, options) {
+  lines.push('', `Files that differ (${number(files.records.length)})`)
+  const shown = options.verbose ? files.records : files.records.slice(0, 30)
+  for (const { url, live, build } of shown) {
+    lines.push(
+      `  ${url}`,
+      `    live:  ${quote(live)}`,
+      `    build: ${quote(build)}`
+    )
+  }
+  if (shown.length < files.records.length)
+    lines.push(`  and ${files.records.length - shown.length} more (--verbose)`)
+}
+
 function printExpected(lines, report) {
   const { suppressed, expected, options } = report
   if (options.expected) {
@@ -2103,7 +2166,7 @@ function printExpected(lines, report) {
   for (const { entry } of unused) lines.push(`  ${entry.url}: ${entry.reason}`)
 }
 
-function summary({ options, urls, pages = [], suppressed }) {
+function summary({ options, urls, files, pages = [], suppressed }) {
   const lines = []
   const count = (records, names) =>
     names.map((name) =>
@@ -2152,6 +2215,14 @@ function summary({ options, urls, pages = [], suppressed }) {
       )
     }
   }
+  if (files) {
+    const compared = plural(files.identical + files.records.length, 'file')
+    lines.push(
+      `  Files     ${compared}: ${number(files.identical)} identical, ${number(
+        files.records.length
+      )} differ`
+    )
+  }
   const differences = plural(suppressed.length, 'difference')
   const on = plural(new Set(suppressed.map(({ url }) => url)).size, 'page')
   const hint = options.expected ? '' : ' (--expected lists them)'
@@ -2174,6 +2245,7 @@ function print(report) {
     printHead(lines, pages, options)
   if (pages.length && options.parts.has('body'))
     printBody(lines, pages, options)
+  if (report.files?.records.length) printFiles(lines, report.files, options)
   printExpected(lines, report)
   console.log(lines.join('\n'))
 }
@@ -2216,6 +2288,14 @@ function writeJson(file, report) {
       gone: urls.gone,
       errors: urls.errors,
       broken: urls.broken,
+    },
+    files: report.files && {
+      identical: report.files.identical,
+      differences: report.files.records.map(({ url, live, build }) => ({
+        url,
+        live,
+        build,
+      })),
     },
     pages: pages.map(({ url, emails, head, body }) => ({
       url,
@@ -2275,14 +2355,23 @@ async function main() {
     )
   }
 
+  if (options.parts.has('files')) {
+    const files = compareFiles(snapshot, inventory, options.filter)
+    files.records = files.records.flatMap((record) =>
+      suppress(record.url, [record], expected, suppressed)
+    )
+    report.files = files
+  }
+
   // Only a full run can tell that an entry no longer matches anything
-  const full = !options.only && options.parts.size === 3
+  const full = !options.only && options.parts.size === 4
   report.unused = full ? expected.filter(({ used }) => !used) : []
 
   print(report)
   if (options.json) writeJson(options.json, report)
   const unexpected =
     (report.urls?.records.length ?? 0) +
+    (report.files?.records.length ?? 0) +
     (report.pages ?? []).reduce(
       (sum, { head = [], body = {} }) =>
         sum + head.length + Object.values(body).flat().length,

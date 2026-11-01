@@ -99,5 +99,23 @@
     "region": "main#content",
     "node": ".isolate > .bg-neutral-01-50 > p.text-lg, .isolate > .bg-neutral-01-50 > ul.-my-2",
     "reason": "Campaigns: production fetches /api/campaigns after load, so its HTML only has “Loading...”. The build reads the issues from EmailOctopus once per build and lists them"
+  },
+  {
+    "url": "/{newsletter,thanks}",
+    "part": "body",
+    "node": "div.col-end-content-end > div.bg-clip-padding",
+    "reason": "Production lists these posts in the shared allPosts array’s order, which another page’s in-place sort may have changed first in the same server process, so it flips between file order and newest first. The build always lists them newest first"
+  },
+  {
+    "url": "/index.md",
+    "part": "urls",
+    "kind": "extra",
+    "reason": "New: the home page’s markdown at its own URL, where Accept negotiation for / will point. Production only rewrote / with that Accept header"
+  },
+  {
+    "url": "/{api/**,.well-known/api-catalog}",
+    "part": "urls",
+    "kind": "type",
+    "reason": "Until phase 4: these files have no extension, so their Content-Type comes from vercel.json, which doesn’t exist yet"
   }
 ]
