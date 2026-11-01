@@ -49,21 +49,20 @@ export function noteMarkdown(entry) {
   return `${frontmatter}\n\n${cleanedMarkdown}`
 }
 
-// app/api/content/home/route.js. Views are looked up by the post’s
-// /blog/ path, which the bare slugs in the table never match, as on the
-// Next.js site
+// app/api/content/home/route.js. The Next.js route looked views up by the
+// /blog/ path, which the bare slugs in the table never match
 export async function homeMarkdown() {
   const views = await pageViews()
   const open = (await allEntries('blog'))
     .filter(({ data }) => data.status === 'open')
-    .map(({ id, data }) => ({ ...data, slug: `/blog/${id}` }))
+    .map(({ id, data }) => ({ ...data, slug: `/blog/${id}`, slugAsParams: id }))
 
   const latest = [...open]
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 10)
 
   const popular = [...open]
-    .map((post) => ({ ...post, view_count: views.get(post.slug) || 0 }))
+    .map((post) => ({ ...post, view_count: views.get(post.slugAsParams) || 0 }))
     .sort((a, b) => b.view_count - a.view_count)
     .slice(0, 10)
 

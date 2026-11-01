@@ -117,5 +117,10 @@
     "part": "urls",
     "kind": "type",
     "reason": "Until phase 4: these files have no extension, so their Content-Type comes from vercel.json, which doesn’t exist yet"
+  },
+  {
+    "url": "/{llms.txt,api/content/home}",
+    "part": "files",
+    "reason": "Fixed: views are looked up by the bare slug the table keys them on. Production looks them up by the /blog/ path, which never matches, so its most viewed posts are really the oldest in file order"
   }
 ]

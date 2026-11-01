@@ -1,6 +1,6 @@
-// app/llms.txt/route.js. “Best articles” looks views up by the post’s
-// /blog/ path, which the bare slugs in the table never match, so it lists
-// the first 15 posts in file order, then the newest, as on the Next.js site
+// app/llms.txt/route.js. “Best articles” is the 15 most viewed posts and
+// the 15 newest. The Next.js route looked views up by the /blog/ path,
+// which the bare slugs in the table never match, so it listed file order
 import siteMetadata from '@/content/metadata'
 import { allEntries } from '../lib/content.js'
 import { pageViews } from '../lib/views.js'
@@ -14,7 +14,10 @@ export async function GET() {
     .filter(
       (post) => post.status === 'open' && new Date(post.date) >= cutoffDate
     )
-    .map((post) => ({ ...post, view_count: views.get(post.slug) || 0 }))
+    .map((post) => ({
+      ...post,
+      view_count: views.get(post.slugAsParams) || 0,
+    }))
 
   // Get top 15 by views + 15 most recent
   const topByViews = postsWithViews
