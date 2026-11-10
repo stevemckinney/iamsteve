@@ -729,9 +729,11 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                       onClick={toRoot}
                       className={cn(
                         'flex rounded-xs cursor-pointer',
-                        'text-body-60 hover:text-body',
+                        // opacity rather than a translucent colour, so the
+                        // two strokes don’t darken where they cross
+                        'opacity-60 hover:opacity-100',
                         'hover:bg-neutral-01-50 dark:hover:bg-fern-1000',
-                        'transition-colors',
+                        'transition',
                         // the × is 12px so it sits back from the label; the
                         // hit area reaches the 24px minimum without it growing
                         'relative after:absolute after:-inset-1.5 after:content-[""]'
