@@ -723,17 +723,20 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                       'text-sm font-medium'
                     )}
                   >
-                    <span className="relative top-px">{node.label}</span>
+                    {node.label}
                     <button
                       type="button"
                       onClick={toRoot}
                       className={cn(
                         'flex rounded-xs cursor-pointer',
+                        // opacity rather than a translucent colour, so the
+                        // two strokes don’t darken where they cross
+                        'opacity-60 hover:opacity-100',
                         'hover:bg-neutral-01-50 dark:hover:bg-fern-1000',
-                        'transition-colors',
-                        // the × stays 16px to sit in the chip; the hit area
-                        // reaches the 24px minimum without it growing
-                        'relative after:absolute after:-inset-1 after:content-[""]'
+                        'transition',
+                        // the × is 12px so it sits back from the label; the
+                        // hit area reaches the 24px minimum without it growing
+                        'relative after:absolute after:-inset-1.5 after:content-[""]'
                       )}
                       aria-label={`Search everything instead of ${node.label.toLowerCase()}`}
                     >
@@ -742,7 +745,7 @@ export default function SearchModal({ isOpen, onOpenChange, scope = null }) {
                         size={16}
                         variant="none"
                         aria-hidden="true"
-                        className="text-body"
+                        className="size-3"
                       />
                     </button>
                   </span>
