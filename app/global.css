@@ -159,9 +159,10 @@
     filter: blur(24px);
     opacity: 0;
   }
+  /* No filter while in view, so nothing trims a hovered row’s shadow */
   8%,
   94% {
-    filter: blur(0);
+    filter: none;
     opacity: 1;
   }
   100% {
