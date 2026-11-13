@@ -167,5 +167,11 @@
     "part": "head",
     "field": "image.url",
     "reason": "Agreed fix: a post’s JSON-LD image URL is absolute, where production’s is the frontmatter’s relative path"
+  },
+  {
+    "url": "/{blog,category/design}/page/*",
+    "part": "body",
+    "node": "a[href=\"/blog/tools-i-use\"], a[href=\"/blog/tools-i-use\"] img",
+    "reason": "Agreed fix: 0122 (Tools I use) has a medium image, its large one, so its card shows its images. Production gave it an image with no src and the placeholder"
   }
 ]

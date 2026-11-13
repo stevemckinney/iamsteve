@@ -35,8 +35,9 @@ const shown = categories.filter(
 <article
   class={`@container/card group/card isolate flex flex-col self-start rounded-lg shadow-placed hover:shadow-picked active:shadow-reduced dark:active:shadow-[inset_0_0_0_1px_var(--color-surface-02)] bg-surface active:bg-surface-pressed active:scale-[.99375] bg-clip-padding transition duration-200 ease-in overflow-hidden relative h-full ${className}`}
 >
+  {/* The images or the placeholder. Production gave a post with only a large image both, the medium one with no src */}
   {
-    image && (large || medium) && (
+    image && large && medium && (
       <Link
         href={slug}
         title=""
