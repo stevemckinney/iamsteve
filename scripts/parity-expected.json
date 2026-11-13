@@ -143,6 +143,6 @@
     "url": "/notes{,/pages-within-pages,/the-many-frames-of-product-ui}",
     "part": "body",
     "node": "button[aria-label^=\"Enlarge image\"], div.relative.text-left.my-4.w-full",
-    "reason": "Fixed: an enlargeable figure sat inside the button that opens it, and a button can’t hold a figure. The figure sits in a div now, with the button laid over it"
+    "reason": "Fixed: an enlargeable figure sat inside the button that opens it, and a button can’t hold a figure. The figure sits in a div now, with the button laid over it. A figure without alt is now labelled “Enlarge image”, not “Enlarge image: ”"
   }
 ]

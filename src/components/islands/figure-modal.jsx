@@ -614,7 +614,7 @@ export default function FigureModal({ children, src, alt }) {
           {children}
           <Button
             className="group absolute inset-0 cursor-zoom-in"
-            aria-label={`Enlarge image: ${alt}`}
+            aria-label={alt ? `Enlarge image: ${alt}` : 'Enlarge image'}
           >
             <span
               aria-hidden="true"

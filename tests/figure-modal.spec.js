@@ -56,6 +56,17 @@ test.describe('on desktop', () => {
     expect(await button.boundingBox()).toEqual(await figure.boundingBox())
   })
 
+  test('a figure without alt text still gets a clean label', async ({
+    page,
+  }) => {
+    await page.goto('/notes/the-many-frames-of-product-ui')
+    const buttons = page.getByRole('button', { name: /^Enlarge image/ })
+    await expect(buttons).toHaveCount(10)
+    for (const button of await buttons.all()) {
+      await expect(button).toHaveAttribute('aria-label', 'Enlarge image')
+    }
+  })
+
   test('the figure opens its image, and Escape or a button closes it', async ({
     page,
   }) => {
