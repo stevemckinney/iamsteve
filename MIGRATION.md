@@ -50,7 +50,8 @@ Move iamsteve.me from Next.js 16 (App Router) to Astro 7, with the same URLs, ma
   - `scripts/serve.mjs` applies `vercel.json`, merged with the adapter’s routes the way a Vercel build merges them, and serves `_strip`. `scripts/edge-check.mjs` compares 138 requests with production. Locally nothing differs unexpectedly, and 147 accepted differences carry their reasons.
   - Agreed fix, in its own commit: redirects #2 and #29 match now that their sources are percent-encoded (see bugs). A case’s `fix` in the matrix says what the target has to answer instead of production.
   - Tests: 90 Playwright tests pass. The newsletter count test now expects `public`, which is what a browser gets. Parity: 368 pages and 298 files match production, and the extensionless files take their types from `vercel.json` (`parity.mjs` skips routes with conditions).
-  - Still to check on a preview: the matrix with a bypass token, `_strip` seeing the original URL, the empty 410 bodies, HSTS, and the 500 fallback.
+  - Pushed 2026-11-13. The preview of `0b12da67` builds on Vercel (install, `astro build` and deploy in 48 s), so Vercel accepts `vercel.json`. It sits behind Vercel Authentication, so the matrix needs a way past it: a protection bypass secret (`VERCEL_BYPASS`) or a share link. Still to check there: the matrix, `_strip` seeing the original URL, the empty 410 bodies and HSTS.
+  - Error pages the function renders come back empty. Astro fetches a prerendered error page over HTTP, from `localhost` unless `security.allowedDomains` lists the request’s host, and nothing answers there on Vercel. So a GET to `/_actions/*` gets an empty 404, and with no `500.astro`, an error in `/search` would get an empty 500. No safe request makes the function fail on the preview, so this comes from Astro’s code and a local run, where Laravel Herd answers on port 80 instead. See decisions to revisit.
 
 **Working on the branch:**
 
@@ -439,3 +440,4 @@ Fix during the port unless marked “decide”. Agree each one before the parity
 - **ClientRouter:** only if MPA navigation doesn’t feel right after parity.
 - **Quirks ported as is:** the known bugs marked “Ported as is” keep the parity diffs readable. Fix them in one pass once parity holds, or after cutover.
 - **Bento grid CSS:** about 375 bytes inline on every post. Accept it, or load it with the bento post only.
+- **Error pages from the function:** an error in `/search`, the only page rendered on demand, gives an empty 500 where Next.js showed its own error page. An on-demand `500.astro` would render in the function, without the fetch. Or accept it.
