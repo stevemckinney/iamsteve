@@ -57,6 +57,8 @@ Astro.response.headers.set(
   'Cache-Control',
   'private, no-cache, no-store, max-age=0, must-revalidate'
 )
+// Astro sends text/html alone. The charset is production’s
+Astro.response.headers.set('Content-Type', 'text/html; charset=utf-8')
 ---
 
 <Frame variant="page" metadata={metadata}>

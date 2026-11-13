@@ -1,4 +1,636 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
   "installCommand": "npm install -g pnpm && pnpm install",
-  "buildCommand": "pnpm run build"
+  "buildCommand": "pnpm exec astro build",
+  "routes": [
+    {
+      "src": "^/.*$",
+      "missing": [
+        {
+          "type": "host",
+          "value": "iamsteve\\.me"
+        }
+      ],
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/.*$",
+      "headers": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://api.iamsteve.me https://static.codepen.io https://use.typekit.net https://platform.twitter.com https://vercel.live https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net https://platform.twitter.com; img-src * blob: data:; media-src 'self'; connect-src *; font-src 'self' https://use.typekit.net https://p.typekit.net; frame-src https://codepen.io https://stevemckinney.github.io https://platform.twitter.com https://syndication.twitter.com https://x.com https://challenges.cloudflare.com; worker-src 'self' blob:;",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "X-Frame-Options": "DENY",
+        "X-Content-Type-Options": "nosniff",
+        "X-DNS-Prefetch-Control": "on",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/(?!_astro/).*$",
+      "headers": {
+        "Cache-Control": "public, max-age=0, s-maxage=3600, stale-while-revalidate=60"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/api/views/[^/]+$",
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/\\.well-known/.*$",
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/\\.well-known/api-catalog$",
+      "headers": {
+        "Content-Type": "application/linkset+json; charset=utf-8"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/\\.well-known/agent-skills/.*\\.json$",
+      "headers": {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/(?:\\.well-known/agent-skills/.*|index)\\.md$",
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/api/content/home$",
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/(?:(?:blog|notes)/[^/]+\\.md|api/content/(?!home$).+)$",
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Cache-Control": "public, max-age=86400"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/api/search$",
+      "headers": {
+        "Content-Type": "application/json",
+        "Cache-Control": "public"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/(?:feed|sitemap)\\.xml$",
+      "headers": {
+        "Content-Type": "application/xml"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/(?:robots|llms)\\.txt$",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/blog/how-to-use-kerning-tracking$",
+      "headers": {
+        "Location": "/blog/kerning-vs-tracking"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/entry/horizontal‑scrolling‑responsive‑menu$",
+      "headers": {
+        "Location": "/blog/horizontal-scrolling-responsive-menu"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/entry(?:/(horizontal-scrolling-responsive-menu.*))$",
+      "headers": {
+        "Location": "/blog/horizontal-scrolling-responsive-menu"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/about_version_six$",
+      "headers": {
+        "Location": "/blog/about-version-six"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/compass_mixins_you_should_know_about$",
+      "headers": {
+        "Location": "/blog/compass-mixins-you-should-know-about"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/downloads$",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/entry/buttons$",
+      "headers": {
+        "Location": "/blog/buttons"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/my_svg_workflow_from_awkward_to_simple$",
+      "headers": {
+        "Location": "/blog/my-svg-workflow-from-awkward-to-simple"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/typekit-gems$",
+      "headers": {
+        "Location": "/blog/typekit-gems-number-one"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/stop-headroom\\.js-hiding-when-your-navigation-is-open$",
+      "headers": {
+        "Location": "/blog/stop-headroom-hiding-when-your-navigation-is-open"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/inline_block$",
+      "headers": {
+        "Location": "/blog/inline-block"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/entry/inline_block$",
+      "headers": {
+        "Location": "/blog/inline-block"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/using_scale_color_in_sass$",
+      "headers": {
+        "Location": "/blog/using-scale-color-in-sass"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/entry/using_scale_color_in_sass$",
+      "headers": {
+        "Location": "/blog/using-scale-color-in-sass"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/create_a_sass_button_element_mixin$",
+      "headers": {
+        "Location": "/blog/create-a-sass-button-element-mixin"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/entry/create_a_sass_button_element_mixin$",
+      "headers": {
+        "Location": "/blog/create-a-sass-button-element-mixin"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/entry/sass_hints_tips$",
+      "headers": {
+        "Location": "/blog/sass-hints-and-tips"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/entry/photoshop-grids-using-$",
+      "headers": {
+        "Location": "/blog/photoshop-grids-using-guide-layouts"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/entry(?:/([^/]+?))$",
+      "headers": {
+        "Location": "/blog/$1"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/rss$",
+      "headers": {
+        "Location": "/feed.xml"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/public/feed$",
+      "headers": {
+        "Location": "/feed.xml"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/feed$",
+      "headers": {
+        "Location": "/feed.xml"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/feeds$",
+      "headers": {
+        "Location": "/feed.xml"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/feed$",
+      "headers": {
+        "Location": "/feed.xml"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/static/favicon\\.ico$",
+      "headers": {
+        "Location": "/favicon.ico"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/apple-touch-icon-precomposed\\.png$",
+      "headers": {
+        "Location": "/static/apple-touch-icon.png"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/android\\.png$",
+      "headers": {
+        "Location": "/static/favicon.png"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/design$",
+      "headers": {
+        "Location": "/category/design"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/\\{site_url\\}$",
+      "headers": {
+        "Location": "/blog"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/category/css/page(?:/([^/]+?))$",
+      "headers": {
+        "Location": "/category/code"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/subscribe$",
+      "headers": {
+        "Location": "/newsletter"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/about-version-6$",
+      "headers": {
+        "Location": "/blog/about-version-six"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/blog/category(?:/([^/]+?))$",
+      "headers": {
+        "Location": "/category/$1"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/category/everything$",
+      "headers": {
+        "Location": "/blog"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/\\$$",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/index$",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/visual-design-tips-you-can-apply-immediately$",
+      "headers": {
+        "Location": "/blog/visual-design-tips-you-can-apply-immediately"
+      },
+      "status": 308
+    },
+    {
+      "src": "^(?:/(index.php))$",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
+    },
+    {
+      "src": "^(?:/(simple.php|wp.php|moon.php|wp-signup.php|ads.txt|admin.php|wp-login.php|wp-info.php|mailer.php|inputs.php|404.php|403.php|xmlrpc.php|xml.php))$",
+      "headers": {
+        "Location": "https://google.com/"
+      },
+      "status": 308
+    },
+    {
+      "src": "^(?:/(wp-content|wp-admin|wp-includes|vendor|wp-json|inc))(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?$",
+      "headers": {
+        "Location": "https://google.com/"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/\\.env$",
+      "headers": {
+        "Location": "https://google.com"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/login\\.php$",
+      "headers": {
+        "Location": "https://google.com"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/(?:fonts/InterVariable\\.woff2|cdn-cgi/l/email-protection|blog/:splat|blog/some-post|portfolio|2|mo|\\*\\*|Users/.*)$",
+      "caseSensitive": true,
+      "status": 410
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "URL"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "_rsc"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "PageSpeed"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "source"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "ref"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "S"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "D"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "C"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "M"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "channel_id"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "entry_id"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "utm_source"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "utm_medium"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "utm_campaign"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "utm_term"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "utm_content"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "has": [
+        {
+          "type": "query",
+          "key": "fbclid"
+        }
+      ],
+      "dest": "_strip"
+    },
+    {
+      "src": "^/(?!_astro/|favicon\\.ico|images|icon).*$",
+      "headers": {
+        "Link": "</.well-known/api-catalog>; rel=\"api-catalog\"; type=\"application/linkset+json\", </.well-known/agent-skills/index.json>; rel=\"https://agentskills.io/rel/index\"; type=\"application/json\", </llms.txt>; rel=\"https://llmstxt.org/rel/llms\"; type=\"text/plain\", </feed.xml>; rel=\"alternate\"; type=\"application/rss+xml\"; title=\"RSS feed\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\", </robots.txt>; rel=\"https://www.rfc-editor.org/rfc/rfc9309\"; type=\"text/plain\"",
+        "Vary": "Accept"
+      },
+      "continue": true
+    },
+    {
+      "src": "^/$",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "^(?:.*,)?\\s*[Tt][Ee][Xx][Tt]/[Mm][Aa][Rr][Kk][Dd][Oo][Ww][Nn]\\s*(?:[;,].*)?$"
+        }
+      ],
+      "dest": "/index.md",
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8"
+      }
+    },
+    {
+      "src": "^/blog/([^/]+?)(?:\\.md)?$",
+      "caseSensitive": true,
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "^(?:.*,)?\\s*[Tt][Ee][Xx][Tt]/[Mm][Aa][Rr][Kk][Dd][Oo][Ww][Nn]\\s*(?:[;,].*)?$"
+        }
+      ],
+      "dest": "/blog/$1.md",
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Cache-Control": "public, max-age=86400"
+      }
+    },
+    {
+      "src": "^/notes/([^/]+?)(?:\\.md)?$",
+      "caseSensitive": true,
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "^(?:.*,)?\\s*[Tt][Ee][Xx][Tt]/[Mm][Aa][Rr][Kk][Dd][Oo][Ww][Nn]\\s*(?:[;,].*)?$"
+        }
+      ],
+      "dest": "/notes/$1.md",
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Cache-Control": "public, max-age=86400"
+      }
+    }
+  ]
 }

@@ -111,13 +111,7 @@
     "url": "/index.md",
     "part": "urls",
     "kind": "extra",
-    "reason": "New: the home page’s markdown at its own URL, where Accept negotiation for / will point. Production only rewrote / with that Accept header"
-  },
-  {
-    "url": "/{api/**,.well-known/api-catalog}",
-    "part": "urls",
-    "kind": "type",
-    "reason": "Until phase 4: these files have no extension, so their Content-Type comes from vercel.json, which doesn’t exist yet"
+    "reason": "New: the home page’s markdown at its own URL, where Accept negotiation for / points. Production only rewrote / with that Accept header"
   },
   {
     "url": "/{llms.txt,api/content/home}",

@@ -259,11 +259,11 @@ test.describe('newsletter endpoints', () => {
     })
     const { count } = await response.json()
     expect(Number.isInteger(count) && count > 0).toBe(true)
-    // Only a count EmailOctopus gave is cached
-    if (headers['cache-control'] !== undefined) {
-      expect(headers['cache-control']).toBe(
-        'public, s-maxage=86400, stale-while-revalidate=172800'
-      )
+    // Only a count EmailOctopus gave is cached. Vercel’s CDN keeps the
+    // header’s s-maxage and stale-while-revalidate to itself, as serve.mjs
+    // does, so public is what’s left. The fallback gets vercel.json’s header
+    if (headers['cache-control'] !== 'public, max-age=0') {
+      expect(headers['cache-control']).toBe('public')
     } else {
       expect(count).toBe(700)
     }

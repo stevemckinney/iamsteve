@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
 import path from 'node:path'
-import { defineConfig, envField } from 'astro/config'
+import { defineConfig, envField, passthroughImageService } from 'astro/config'
 import vercel from '@astrojs/vercel'
 import react from '@astrojs/react'
 import mdx from '@astrojs/mdx'
@@ -9,6 +9,7 @@ import { Features } from 'lightningcss'
 import { unified } from '@astrojs/markdown-remark'
 import { remarkPlugins, rehypePlugins } from './lib/markdown.js'
 import remarkDropKeys from './src/lib/remark-drop-keys.js'
+import stripParams from './src/lib/strip-params.js'
 
 // Server values for the endpoints that run on demand, read when they run.
 // They keep the names Vercel has today until the cutover renames them.
@@ -23,7 +24,11 @@ export default defineConfig({
   trailingSlash: 'never',
   // Pages are prerendered. Routes with prerender = false run in one function
   adapter: vercel(),
-  integrations: [react(), mdx()],
+  // stripParams writes the function vercel.json sends tracking parameters to
+  integrations: [react(), mdx(), stripParams()],
+  // Nothing uses astro:assets, and the default service would bundle sharp
+  // into the function for Astro’s image endpoint
+  image: { service: passthroughImageService() },
   env: {
     schema: {
       NEXT_PUBLIC_SUPABASE_URL: secret(),
@@ -64,7 +69,9 @@ export default defineConfig({
       lightningcss: {
         include: Features.Nesting | Features.MediaQueries,
         exclude:
-          Features.LogicalProperties | Features.DirSelector | Features.LightDark,
+          Features.LogicalProperties |
+          Features.DirSelector |
+          Features.LightDark,
       },
       // postcss.config.js runs Tailwind for Next.js. An inline config stops
       // Vite loading it, so Tailwind doesn’t run twice

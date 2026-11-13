@@ -447,7 +447,10 @@ function overrides() {
     )
     if (header) rules.push([sourcePattern(source), header.value])
   }
-  for (const { src, headers = {} } of config.routes ?? []) {
+  for (const { src, headers = {}, has, missing } of config.routes ?? []) {
+    // Parity asks the canonical host for HTML, which a route with
+    // conditions (markdown negotiation, the host check) never answers
+    if (has || missing) continue
     const header = contentType(headers)
     if (src && header) rules.push([new RegExp(`^${src}$`), header[1]])
   }
