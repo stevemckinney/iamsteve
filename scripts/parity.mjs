@@ -25,7 +25,8 @@
  * `url` glob and a `reason`, and narrows itself with any of `part` (urls,
  * head, body or files), `region`, `kind` (missing, extra, changed, type), `node`
  * (a CSS selector over normalised markup, so module classes read
- * `.module:name`), `attribute` (a name glob, for attribute differences) and
+ * `.module:name`), `attribute` (a name glob, for attribute differences),
+ * `field` (a path glob such as `image.url`, for changes inside JSON-LD) and
  * `text` (a substring of the difference as the report prints it).
  *
  * Usage: pnpm exec astro build && node scripts/parity.mjs [options]
@@ -1541,13 +1542,24 @@ function loadExpected() {
       url: glob(entry.url),
       node: entry.node && selector(entry.node),
       attribute: entry.attribute && glob(entry.attribute),
+      field: entry.field && glob(entry.field),
       used: 0,
     }
   })
 }
 
+// Set the value at a path as jsonChanges writes it, such as `a.b[0].c`
+function setField(object, path, value) {
+  const keys = path.match(/[^.[\]]+/g)
+  const last = keys.pop()
+  const parent = keys.reduce((node, key) => node[key], object)
+  if (value === undefined) delete parent[last]
+  else parent[last] = value
+}
+
 // Take expected differences out of a page’s records: whole records, or
-// single attribute changes when an entry names an attribute
+// single attribute or JSON-LD changes when an entry names an attribute or
+// a field
 function suppress(url, records, expected, suppressed) {
   return records.flatMap((record) => {
     let current = record
@@ -1570,6 +1582,28 @@ function suppress(url, records, expected, suppressed) {
         if (!live && !build) continue
       }
       if (entry.text && !describe(current).includes(entry.text)) continue
+      if (rule.field) {
+        if (!current.live?.json || !current.build?.json) continue
+        const changes = jsonChanges(current.live.json, current.build.json)
+        const hits = changes.filter((change) => rule.field.test(change.path))
+        if (!hits.length) continue
+        rule.used += hits.length
+        // The accepted changes on their own, and the record without them
+        const accepted = structuredClone(current.live.json)
+        const rest = structuredClone(current.build.json)
+        for (const { path, live, build } of hits) {
+          setField(accepted, path, build)
+          setField(rest, path, live)
+        }
+        suppressed.push({
+          url,
+          rule,
+          record: { ...current, build: { ...current.build, json: accepted } },
+        })
+        if (hits.length === changes.length) return []
+        current = { ...current, build: { ...current.build, json: rest } }
+        continue
+      }
       if (rule.attribute) {
         if (!current.attributes) continue
         const hit = (change) =>
