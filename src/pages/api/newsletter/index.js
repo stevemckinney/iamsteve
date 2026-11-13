@@ -8,14 +8,37 @@ import {
 
 export const prerender = false
 
-export const POST = async ({ request }) => {
+export const POST = async ({ request, redirect }) => {
+  // Without JavaScript, or before its island hydrates, the form posts
+  // itself here. The reader goes on to a page that says how it went:
+  // /confirm, or the /newsletter message the hash shows
+  const type = request.headers.get('content-type') ?? ''
+  if (type.startsWith('application/x-www-form-urlencoded')) {
+    const form = await request.formData()
+    const response = await subscribe({
+      email: form.get('email_address'),
+      name: form.get('fields[first_name]'),
+      source: '',
+    })
+    if (response.ok) return redirect('/confirm', 303)
+    const { error } = await response.json()
+    return redirect(
+      error === 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS'
+        ? '/newsletter#already-subscribed'
+        : '/newsletter#subscribe-error',
+      303
+    )
+  }
+
   // Next.js answers a body that isn’t JSON, or is null, with an empty 500.
   // Astro would look for a 500 page instead
   const body = await request.json().catch(() => undefined)
   if (body == null) return new Response(null, { status: 500 })
 
-  const { email, name, source } = body
+  return subscribe(body)
+}
 
+async function subscribe({ email, name, source }) {
   if (!email) {
     return Response.json({ error: 'Email is required' }, { status: 400 })
   }

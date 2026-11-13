@@ -1,6 +1,8 @@
 // The newsletter form island, with /api/newsletter mocked in the browser so
 // nothing is subscribed, and the endpoints on the paths that answer before
-// they reach EmailOctopus (the count and campaigns GETs only read)
+// they reach EmailOctopus (the count and campaigns GETs only read). A form
+// post runs the function against a local stand-in for EmailOctopus
+import http from 'node:http'
 import { devices } from '@playwright/test'
 import { test, expect } from './fixtures.js'
 
@@ -141,6 +143,41 @@ test.describe('newsletter form', () => {
   })
 })
 
+test.describe('newsletter form without JavaScript', () => {
+  test.use({ javaScriptEnabled: false })
+
+  test('posts the form, so the name and address stay out of the URL', async ({
+    page,
+  }) => {
+    const sent = []
+    await page.route('**/api/newsletter', async (route) => {
+      sent.push([route.request().method(), route.request().postData()])
+      await route.fulfill({ status: 303, headers: { location: '/confirm' } })
+    })
+    await page.goto('/')
+    await fill(footerForm(page))
+
+    await expect(page).toHaveURL(/\/confirm$/)
+    expect(sent).toEqual([
+      ['POST', 'fields%5Bfirst_name%5D=Ada&email_address=ada%40example.com'],
+    ])
+  })
+
+  test('/newsletter shows the message its hash names', async ({ page }) => {
+    await page.goto('/newsletter')
+    await expect(page.getByRole('alert')).toHaveCount(0)
+
+    await page.goto('/newsletter#already-subscribed')
+    await expect(page.getByRole('alert')).toHaveText([
+      'This email is already subscribed to the newsletter.',
+    ])
+    await page.goto('/newsletter#subscribe-error')
+    await expect(page.getByRole('alert')).toHaveText([
+      'There was an error subscribing to the list.',
+    ])
+  })
+})
+
 test.describe('newsletter form on a phone', () => {
   // Without its browser type, which a describe block can’t set
   const { defaultBrowserType, ...phone } = devices['Pixel 7']
@@ -253,5 +290,102 @@ test.describe('newsletter endpoints', () => {
     expect(options.headers().allow).toBe('GET, HEAD, OPTIONS')
     const post = await request.post('/api/campaigns')
     expect(post.status()).toBe(405)
+  })
+})
+
+test.describe('a form posted to /api/newsletter', () => {
+  // The function runs in this process, with EmailOctopus swapped for a local
+  // server that gives the answer a test sets and keeps what it was sent
+  const calls = []
+  let reply
+  let upstream
+  let handle
+
+  test.beforeAll(async () => {
+    upstream = http.createServer(async (req, res) => {
+      let body = ''
+      for await (const chunk of req) body += chunk
+      calls.push({ path: req.url, body: JSON.parse(body) })
+      res.writeHead(reply.status, { 'content-type': 'application/json' })
+      res.end(JSON.stringify(reply.json))
+    })
+    await new Promise((resolve) => upstream.listen(0, resolve))
+    const { port } = upstream.address()
+    process.env.EMAILOCTOPUS_API_URL = `http://localhost:${port}/`
+    process.env.EMAILOCTOPUS_API_KEY = 'key'
+    process.env.EMAILOCTOPUS_LIST_ID = 'list'
+    const { createHandler } = await import('../scripts/serve.mjs')
+    handle = await createHandler()
+  })
+
+  test.afterAll(() => upstream.close())
+  test.beforeEach(() => {
+    calls.length = 0
+  })
+
+  const post = (fields, origin = 'http://localhost') =>
+    handle(
+      new Request('http://localhost/api/newsletter', {
+        method: 'POST',
+        headers: { origin },
+        body: new URLSearchParams(fields),
+      })
+    )
+  const ada = { 'fields[first_name]': 'Ada', email_address: 'ada@example.com' }
+
+  test('subscribes the address, then goes on to /confirm', async () => {
+    reply = { status: 200, json: { id: 'contact' } }
+    const response = await post(ada)
+    expect(response.status).toBe(303)
+    expect(response.headers.get('location')).toBe('/confirm')
+    expect(calls).toEqual([
+      {
+        path: '/lists/list/contacts',
+        body: {
+          api_key: 'key',
+          email_address: 'ada@example.com',
+          fields: { FirstName: 'Ada', Source: '' },
+          status: 'PENDING',
+        },
+      },
+    ])
+  })
+
+  const failures = [
+    [
+      'an address already on the list',
+      {
+        status: 409,
+        json: { error: { code: 'MEMBER_EXISTS_WITH_EMAIL_ADDRESS' } },
+      },
+      '/newsletter#already-subscribed',
+    ],
+    [
+      'an EmailOctopus error',
+      { status: 500, json: { error: { code: 'UNKNOWN', message: 'Down' } } },
+      '/newsletter#subscribe-error',
+    ],
+  ]
+
+  for (const [name, answer, location] of failures) {
+    test(`sends ${name} to ${location}`, async () => {
+      reply = answer
+      const response = await post(ada)
+      expect(response.status).toBe(303)
+      expect(response.headers.get('location')).toBe(location)
+      expect(calls).toHaveLength(1)
+    })
+  }
+
+  test('sends a form without an address to the error', async () => {
+    const response = await post({ 'fields[first_name]': 'Ada' })
+    expect(response.headers.get('location')).toBe('/newsletter#subscribe-error')
+    expect(calls).toEqual([])
+  })
+
+  test('refuses a form from another site', async () => {
+    const response = await post(ada, 'https://example.com')
+    expect(response.status).toBe(403)
+    expect(calls).toEqual([])
   })
 })

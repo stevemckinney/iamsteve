@@ -152,5 +152,20 @@
     "attribute": "data-copy-link",
     "kind": "extra",
     "reason": "src/scripts/copy-link.js copies a note’s URL from its button’s data-copy-link, where React gave each button its own handler"
+  },
+  {
+    "url": "/**",
+    "part": "body",
+    "node": "form[action=\"/api/newsletter\"]",
+    "attribute": "{action,method}",
+    "kind": "extra",
+    "reason": "The newsletter form posts to /api/newsletter, which goes on to /confirm or a /newsletter message. Without JavaScript, or before its island hydrated, production’s form sent a GET to the page itself, with the name and address in the URL"
+  },
+  {
+    "url": "/newsletter",
+    "part": "body",
+    "node": "#already-subscribed, #subscribe-error",
+    "kind": "extra",
+    "reason": "The messages /api/newsletter sends a form posted without JavaScript to when it doesn’t subscribe, shown by :target"
   }
 ]

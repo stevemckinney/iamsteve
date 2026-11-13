@@ -35,6 +35,10 @@ const metadata = {
 
 const heading =
   'text-3xl font-display font-variation-bold leading-none lowercase text-heading m-0'
+
+// The form island’s alert, shown by :target
+const alert =
+  'hidden target:block bg-rio-50/40 rounded-sm ring-1 ring-rio-400/40 text-rio-800 px-3 py-2'
 ---
 
 <Frame variant="page" metadata={metadata}>
@@ -60,6 +64,14 @@ const heading =
             out—if that’s what you prefer. This happens monthly at most. You can
             unsubscribe anytime.
           </p>
+          {/* Where /api/newsletter sends a form posted without JavaScript
+              that didn’t subscribe, the hash naming the message */}
+          <div id="already-subscribed" role="alert" class={alert}>
+            <p class="m-0">This email is already subscribed to the newsletter.</p>
+          </div>
+          <div id="subscribe-error" role="alert" class={alert}>
+            <p class="m-0">There was an error subscribing to the list.</p>
+          </div>
           {/* Its field ids are the footer form’s too, as in production */}
           <NewsletterForm />
         </div>

@@ -140,7 +140,11 @@ const NewsletterForm = ({
             {message && <p className="m-0">{message}</p>}
           </div>
         )}
+        {/* Posted, not sent as a GET, before the island hydrates or without
+            JavaScript, so the name and address stay out of the URL */}
         <form
+          method="post"
+          action="/api/newsletter"
           className={cn('@container', 'flex', 'flex-col', 'gap-10')}
           onSubmit={subscribe}
         >
