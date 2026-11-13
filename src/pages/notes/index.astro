@@ -138,7 +138,7 @@ const wordCount = (note) => note.body.trim().split(/\s+/).length
                 <Badge size={16} theme="lavender" iconStart="views">
                   {`${wordCount(note)} words`}
                 </Badge>
-                <CopyLink />
+                <CopyLink slug={`/notes/${note.id}`} />
               </div>
             </div>
 
@@ -153,7 +153,7 @@ const wordCount = (note) => note.body.trim().split(/\s+/).length
               <Badge size={16} theme="lavender" iconStart="views">
                 {`${wordCount(note)} words`}
               </Badge>
-              <CopyLink />
+              <CopyLink slug={`/notes/${note.id}`} />
             </div>
           </article>
         ))}

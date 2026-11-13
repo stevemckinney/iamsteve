@@ -1,6 +1,6 @@
 ---
-// `enlargeable` wraps the figure in the FigureModal trigger. Opening the
-// image arrives with the island; until then the trigger is static markup
+// components/figure.js’s Figure: `enlargeable` wraps the figure in the
+// FigureModal trigger, which opens `src` in a lightbox
 import FigureModal from '../figure-modal.astro'
 
 const {
@@ -21,7 +21,7 @@ const figureClass =
 
 {
   enlargeable ? (
-    <FigureModal alt={alt}>
+    <FigureModal src={src} alt={alt}>
       <figure class={figureClass} {...attributes}><slot /></figure>
     </FigureModal>
   ) : (

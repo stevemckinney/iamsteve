@@ -123,5 +123,34 @@
     "url": "/{llms.txt,api/content/home}",
     "part": "files",
     "reason": "Fixed: views are looked up by the bare slug the table keys them on. Production looks them up by the /blog/ path, which never matches, so its most viewed posts are really the oldest in file order"
+  },
+  {
+    "url": "/blog/**",
+    "part": "body",
+    "node": "[aria-labelledby=\"aside-contents\"]",
+    "attribute": "aria-labelledby",
+    "kind": "missing",
+    "reason": "Fixed: the contents section and its nav were labelled by aside-contents, an id nothing has. The nav is labelled by its Contents toggle now, through a generated id parity drops, and the section loses the attribute"
+  },
+  {
+    "url": "/blog/**",
+    "part": "body",
+    "node": "[id=\"toc-content\"], [aria-controls=\"toc-content\"]",
+    "attribute": "{id,aria-controls}",
+    "kind": "missing",
+    "reason": "Fixed: both instances of the contents gave their list id=\"toc-content\", so the desktop toggle controlled the phone’s list. Each list has its own generated id now, which parity drops"
+  },
+  {
+    "url": "/notes{,/pages-within-pages,/the-many-frames-of-product-ui}",
+    "part": "body",
+    "node": "button[aria-label^=\"Enlarge image\"], div.relative.text-left.my-4.w-full",
+    "reason": "Fixed: an enlargeable figure sat inside the button that opens it, and a button can’t hold a figure. The figure sits in a div now, with the button laid over it. A figure without alt is now labelled “Enlarge image”, not “Enlarge image: ”"
+  },
+  {
+    "url": "/notes{,/**}",
+    "part": "body",
+    "attribute": "data-copy-link",
+    "kind": "extra",
+    "reason": "src/scripts/copy-link.js copies a note’s URL from its button’s data-copy-link, where React gave each button its own handler"
   }
 ]

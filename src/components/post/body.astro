@@ -13,6 +13,7 @@ import PostImage from './image.astro'
 import Support from './support.astro'
 import NextPosts from './next-posts.astro'
 import TableOfContents from '../table-of-contents.astro'
+import ViewCounter from '../islands/view-counter.jsx'
 import NewsletterForm from '../newsletter-form.astro'
 import Category from '../category.astro'
 import Badge from '../badge.astro'
@@ -33,21 +34,22 @@ const isOldCodePost = post.categories.includes('Code') && yearsAgo > 2
 const date = parseISO(post.date)
 
 // PostViews: the count when the page was built, where a post without a
-// row has 0. Counting new views arrives with the view counter island
+// row has 0. The counter records the view and shows the live count
 const views = showViews ? ((await pageViews()).get(cleanSlug) ?? 0) : null
 ---
 
 <LayoutFrame styles={styles}>
   <Fragment slot="aside">
-    <section
-      class="flex flex-col gap-2 relative"
-      aria-labelledby="aside-contents"
-    >
+    <section class="flex flex-col gap-2 relative">
       <div class="lg:hidden">
-        <TableOfContents headings={post.headings} />
+        <TableOfContents headings={post.headings} media="(max-width:1023px)" />
       </div>
       <div class="hidden lg:block">
-        <TableOfContents headings={post.headings} open />
+        <TableOfContents
+          headings={post.headings}
+          open
+          media="(min-width:1024px)"
+        />
       </div>
     </section>
     <section
@@ -112,9 +114,12 @@ const views = showViews ? ((await pageViews()).get(cleanSlug) ?? 0) : null
       {
         showViews && (
           <Badge size={16} theme="text" iconStart="views">
-            <span class="text-emphasis">
-              {`${views.toLocaleString('en-US')} views`}
-            </span>
+            <ViewCounter
+              client:load
+              slug={cleanSlug}
+              initialViews={views}
+              trackView
+            />
           </Badge>
         )
       }

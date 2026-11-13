@@ -1,26 +1,10 @@
 ---
-// FigureModal from components/figure-modal.js, as the server rendered it:
-// the React Aria button that wraps the figure. The lightbox arrives with
-// the islands
-import Icon from './icon.astro'
+// components/figure-modal.js: the figure under a button that opens its
+// image in a lightbox, once the island is on screen. `src` and `alt` are
+// the image’s, for the lightbox to show
+import FigureModal from './islands/figure-modal.jsx'
 
-const { alt } = Astro.props
+const { src, alt } = Astro.props
 ---
 
-<button
-  type="button"
-  tabindex="0"
-  aria-expanded="false"
-  aria-label={`Enlarge image: ${alt}`}
-  class="group cursor-zoom-in text-left my-4 block w-full"
->
-  <span class="relative block">
-    <slot />
-    <span
-      aria-hidden="true"
-      class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity ease-out duration-200 bg-[light-dark(theme(--color-neutral-01-50/.8),theme(--color-fern-1100/.8))] backdrop-blur-md shadow-reduced p-2 rounded-sm"
-    >
-      <Icon icon="enlarge" size={16} />
-    </span>
-  </span>
-</button>
+<FigureModal client:visible src={src} alt={alt}><slot /></FigureModal>
