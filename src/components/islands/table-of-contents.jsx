@@ -203,6 +203,7 @@ function Collapsible({ nestedHeadings, headings, open = false }) {
   const wrapperRef = useRef(null)
   const isSticky = useStickyScroll(wrapperRef)
   const labelId = useId()
+  const contentId = useId()
 
   const toggleOpen = useCallback(() => {
     setIsOpen((prev) => {
@@ -241,7 +242,7 @@ function Collapsible({ nestedHeadings, headings, open = false }) {
           onClick={toggleOpen}
           className={toggleButtonClasses}
           aria-expanded={isOpen}
-          aria-controls="toc-content"
+          aria-controls={contentId}
         >
           <span className="-ml-2 lg:-ml-6 flex items-center justify-center w-6 h-6 relative top-[-2px]">
             <Icon
@@ -255,7 +256,7 @@ function Collapsible({ nestedHeadings, headings, open = false }) {
           Contents
         </button>
         <div
-          id="toc-content"
+          id={contentId}
           ref={contentRef}
           className={contentClasses}
           data-state={isOpen ? 'open' : 'closed'}

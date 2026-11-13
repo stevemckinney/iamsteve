@@ -45,6 +45,15 @@ test.describe('on desktop', () => {
     ).toBeVisible()
   })
 
+  test('each instance’s toggle controls its own list', async ({ page }) => {
+    await page.goto(post)
+    for (const toc of [phoneToc(page), desktopToc(page)]) {
+      const id = await toc.locator('button').getAttribute('aria-controls')
+      await expect(page.locator(`[id="${id}"]`)).toHaveCount(1)
+      await expect(toc.locator(`[id="${id}"]`)).toHaveCount(1)
+    }
+  })
+
   test('the section being read is marked', async ({ page }) => {
     await page.goto(post)
     const { content } = await parts(desktopToc(page))

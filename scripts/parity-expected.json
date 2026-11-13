@@ -130,5 +130,13 @@
     "attribute": "aria-labelledby",
     "kind": "missing",
     "reason": "Fixed: the contents section and its nav were labelled by aside-contents, an id nothing has. The nav is labelled by its Contents toggle now, through a generated id parity drops, and the section loses the attribute"
+  },
+  {
+    "url": "/blog/**",
+    "part": "body",
+    "node": "[id=\"toc-content\"], [aria-controls=\"toc-content\"]",
+    "attribute": "{id,aria-controls}",
+    "kind": "missing",
+    "reason": "Fixed: both instances of the contents gave their list id=\"toc-content\", so the desktop toggle controlled the phone’s list. Each list has its own generated id now, which parity drops"
   }
 ]
