@@ -56,7 +56,7 @@ export function postData(entry) {
     headings: computeHeadings(entry.body),
     slug: `/blog/${entry.id}`,
     slugAsParams: entry.id,
-    _meta: { filePath, fileName: filePath.split('/').pop() },
+    _meta: { filePath },
   }
 }
 

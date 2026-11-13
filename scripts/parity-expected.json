@@ -29,7 +29,7 @@
     "region": "#article",
     "attribute": "href",
     "text": ".mdx",
-    "reason": "The GitHub link names the content file, now .mdx"
+    "reason": "The GitHub link names the content file, now .mdx, and by its path. Agreed fix: production links the folder post’s as content/blog/index.md, which doesn’t exist"
   },
   {
     "url": "/blog/**",

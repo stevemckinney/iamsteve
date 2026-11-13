@@ -23,8 +23,10 @@ import Icon from '../icon.astro'
 const { entry, post, showViews = true } = Astro.props
 const { Content } = await render(entry)
 
-const editUrl = (fileName) =>
-  `${siteMetadata.siteRepo}/blob/main/content/blog/${fileName}`
+// From the path, where production used the file name, which for the
+// folder post is index.md
+const editUrl = (filePath) =>
+  `${siteMetadata.siteRepo}/blob/main/content/blog/${filePath}`
 
 const cleanSlug = post.slug.replace(/^\/blog\//, '')
 const currentYear = new Date().getFullYear()
@@ -130,7 +132,7 @@ const views = showViews ? ((await pageViews()).get(cleanSlug) ?? 0) : null
     <PostImage post={post} styles={styles} />
     <Content components={postComponents} />
     <Badge
-      href={editUrl(post._meta.fileName)}
+      href={editUrl(post._meta.filePath)}
       size={16}
       theme="text"
       iconStart="github">View on Github</Badge
