@@ -42,13 +42,13 @@ const views = showViews ? ((await pageViews()).get(cleanSlug) ?? 0) : null
   <Fragment slot="aside">
     <section class="flex flex-col gap-2 relative">
       <div class="lg:hidden">
-        <TableOfContents headings={post.headings} media="(max-width:1023px)" />
+        <TableOfContents headings={post.headings} media="(width < 64rem)" />
       </div>
       <div class="hidden lg:block">
         <TableOfContents
           headings={post.headings}
           open
-          media="(min-width:1024px)"
+          media="(width >= 64rem)"
         />
       </div>
     </section>

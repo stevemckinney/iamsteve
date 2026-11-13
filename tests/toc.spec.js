@@ -6,8 +6,9 @@ const tabbarHidden = 'max-lg:translate-y-[calc(100%+0.5rem)]'
 
 // Each width has its own instance, hydrated by client:media; Astro drops
 // ssr once an island has hydrated
-const phoneToc = (page) => page.locator('astro-island[opts*="max-width"]')
-const desktopToc = (page) => page.locator('astro-island[opts*="min-width"]')
+const phoneToc = (page) => page.locator('astro-island[opts*="width < 64rem"]')
+const desktopToc = (page) =>
+  page.locator('astro-island[opts*="width >= 64rem"]')
 
 async function parts(toc) {
   await expect(toc).not.toHaveAttribute('ssr')
