@@ -44,10 +44,14 @@ const views = showViews ? ((await pageViews()).get(cleanSlug) ?? 0) : null
       aria-labelledby="aside-contents"
     >
       <div class="lg:hidden">
-        <TableOfContents headings={post.headings} />
+        <TableOfContents headings={post.headings} media="(max-width:1023px)" />
       </div>
       <div class="hidden lg:block">
-        <TableOfContents headings={post.headings} open />
+        <TableOfContents
+          headings={post.headings}
+          open
+          media="(min-width:1024px)"
+        />
       </div>
     </section>
     <section
