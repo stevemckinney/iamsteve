@@ -275,6 +275,14 @@ function extras() {
     '/notes',
     '/thanks',
     '/components',
+    // Search results, rendered on demand: the 40-result cap, every label,
+    // nothing found, a query too short to search and one that’s trimmed
+    '/search?q=css',
+    '/search?q=notes',
+    '/search?q=motion',
+    '/search?q=qwxzv',
+    '/search?q=a',
+    '/search?q=%20css%20',
     ...Array.from({ length: 12 }, (_, index) => `/blog/page/${index + 1}`),
     ...slugs('content/categories.js').flatMap((slug) => [
       `/category/${slug}`,
