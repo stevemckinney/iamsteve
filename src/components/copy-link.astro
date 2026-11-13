@@ -1,11 +1,13 @@
 ---
 // components/button/copy-link.js: a React Aria button, rendered as the
-// server rendered it before anything was copied. Copying the link arrives
-// with the islands
+// server rendered it before anything was copied. src/scripts/copy-link.js
+// copies the full URL of `slug`, which data-copy-link holds
 import { cn } from '@/lib/utils'
+import siteMetadata from '@/content/metadata'
 import Icon from './icon.astro'
 import BadgeText from './badge-text.astro'
 
+const { slug } = Astro.props
 const iconClass = 'absolute text-current transition-all duration-200'
 ---
 
@@ -16,6 +18,7 @@ const iconClass = 'absolute text-current transition-all duration-200'
     'flex flex-[0_0_auto] font-variation-medium text-emphasis gap-2 cursor-pointer group/badge',
     'transition-all duration-100 ease-linear'
   )}
+  data-copy-link={`${siteMetadata.siteUrl}${slug}`}
 >
   <span
     class={cn(
@@ -41,3 +44,7 @@ const iconClass = 'absolute text-current transition-all duration-200'
   </span>
   <BadgeText size={16}>Copy link</BadgeText>
 </button>
+
+<script>
+  import '../scripts/copy-link.js'
+</script>
