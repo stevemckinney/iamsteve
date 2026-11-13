@@ -17,7 +17,7 @@ const warm = () => {
 
 function Kbd({ children }) {
   return (
-    <kbd className="hidden any-pointer-fine:flex items-center font-sans gap-0.5 text-sm font-medium px-1 bg-surface-raised text-body shadow-placed rounded-xs">
+    <kbd className="hidden any-pointer-fine:flex items-center font-sans gap-0.5 text-base/5 font-medium px-1 bg-surface-raised text-body shadow-placed rounded-xs">
       {children}
     </kbd>
   )
@@ -68,8 +68,15 @@ export default function Search({ className, variant = 'desktop' }) {
         />
         {variant === 'desktop' && (
           <Kbd>
-            <Icon icon="cmd" size={16} variant="none" aria-label="Command" />
-            <span className="relative top-px uppercase">K</span>
+            {/* 14px, so the ⌘ matches the K in height and weight */}
+            <Icon
+              icon="cmd"
+              size={16}
+              variant="none"
+              aria-label="Command"
+              className="size-3.5"
+            />
+            <span className="uppercase">K</span>
           </Kbd>
         )}
         {variant === 'tabbar' && 'Search'}

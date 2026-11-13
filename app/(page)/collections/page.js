@@ -137,6 +137,9 @@ export default async function CollectionsPage(props) {
           icon="collections"
           className="md:hidden"
         />
+        <SearchField scope="collections" className="max-md:hidden mt-2">
+          Search collections
+        </SearchField>
         <ul className="max-md:hidden grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories">
           {items.map((collection) => {
             return (
@@ -152,9 +155,6 @@ export default async function CollectionsPage(props) {
             )
           })}
         </ul>
-        <SearchField scope="collections" className="max-md:hidden mt-4">
-          Search collections
-        </SearchField>
       </Header>
       <section className="flex flex-col col-container md:col-start-8 md:col-end-content-end gap-y-10">
         <Collections />
