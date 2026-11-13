@@ -1,103 +1,19 @@
 ---
-// The form from components/newsletter-form.js as it first renders.
-// Submitting it arrives with the newsletter island
-import { cn } from '@/lib/utils'
+// The newsletter form island, with the subscriber count read from
+// EmailOctopus at build. It hydrates once it’s in view: most forms sit in
+// the footer, and the post aside’s is hidden on phones
+import NewsletterForm from './islands/newsletter-form.jsx'
 import { subscriberCount } from '../lib/newsletter.js'
 
 const { class: className = 'w-full', unique = 'footer' } = Astro.props
 
-// Rounded down to the nearest 10, as the old form showed it
+// Rounded down to the nearest 10, as components/newsletter.js shows it
 const count = Math.floor((await subscriberCount()) / 10) * 10
-
-const label = cn(
-  'font-sans',
-  'text-base',
-  'font-medium',
-  'lowercase',
-  'text-emphasis',
-  'leading-none',
-  'mb-1'
-)
-const hint = cn('text-sm', 'text-ui-body', 'opacity-80', 'leading-none', 'mb-3')
-const input = cn(
-  'form-input',
-  'border-0',
-  'w-full',
-  'text-base',
-  'bg-linear-to-b',
-  'from-[rgb(79_64_63/0.03)]',
-  'from-0%',
-  'to-[rgb(79_64_63/0)]',
-  'to-100%',
-  'px-4',
-  'py-3',
-  'rounded-sm',
-  'placeholder-fern-1100/30',
-  'shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_64_63/0.1)]',
-  'dark:shadow-[inset_0_0_0_1px_var(--color-surface-02)]',
-  'focus-visible:shadow-[0_-1px_rgb(79_64_63/0.2),0_0_0_1px_rgb(79_127_218),0_0_0_6px_rgb(79_127_218/0.08)]',
-  'dark:focus-visible:shadow-[0_-1px_var(--color-cornflour-600),0_0_0_6px_color-mix(in_srgb,_var(--color-cornflour-600),transparent_80%)]',
-  'bg-input'
-)
 ---
 
-<div class={className}>
-  <form class={cn('@container', 'flex', 'flex-col', 'gap-10')}>
-    <div class={cn('@container', 'flex', 'flex-col', '@xl:flex-row', 'gap-6')}>
-      <div class={cn('flex', 'flex-col', '@xl:w-2/5')}>
-        <label for={`input-name-${unique}`} class={label}>First name</label>
-        <p class={hint}>What do you go by?</p>
-        <input
-          type="text"
-          class={input}
-          name="fields[first_name]"
-          id={`input-name-${unique}`}
-        />
-      </div>
-      <div class={cn('flex', 'flex-col', '@xl:w-3/5')}>
-        <label for={`input-email-${unique}`} class={label}>Email</label>
-        <p class={hint}>Your best email address</p>
-        <input
-          type="email"
-          autocomplete="email"
-          autocapitalize="none"
-          class={input}
-          id={`input-email-${unique}`}
-          name="email_address"
-          required
-        />
-      </div>
-    </div>
-    <div
-      class={cn(
-        'flex',
-        'flex-col',
-        'flex-col-reverse',
-        '@sm:flex-row',
-        'gap-4',
-        'items-center',
-        'justify-between'
-      )}
-    >
-      <p
-        class={cn(
-          'm-0',
-          'p-0',
-          'text-fern-700',
-          'flex-1',
-          'text-center',
-          '@sm:text-left'
-        )}
-      >
-        Join {count.toLocaleString()}+ designers
-      </p>
-      <button
-        aria-label="Subscribe to the newsletter"
-        class="select-none font-ui text-base/tight lowercase text-center button-dandelion button-dandelion select-none w-full @sm:w-auto @sm:grow-0 flex-auto font-ui text-base/tight lowercase text-center"
-        theme="dandelion"
-      >
-        <span>Sign me up</span>
-      </button>
-    </div>
-  </form>
-</div>
+<NewsletterForm
+  client:visible
+  className={className}
+  unique={unique}
+  initialCount={count}
+/>
