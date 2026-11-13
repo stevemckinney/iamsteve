@@ -14,10 +14,10 @@ const { frontmatter, image, class: className = 'card', priority } = Astro.props
 const { slug, date, title, summary, _meta, theme, categories, large, medium, lastmod } =
   frontmatter
 
-// The old site’s summaries could hold paragraphs. The literal className is
-// what production renders; fix it once the port has parity
+// The old site’s summaries could hold paragraphs. Production writes a
+// literal className attribute here
 function autoParagraph(text, size) {
-  return `<p className="${size}">` + text.split(/\n+/).join(`</p>\n<p>`) + `</p>`
+  return `<p class="${size}">` + text.split(/\n+/).join(`</p>\n<p>`) + `</p>`
 }
 
 const imageColor = theme ? theme.toString() : '#f1e8e4'
