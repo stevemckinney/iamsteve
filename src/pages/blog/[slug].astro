@@ -83,9 +83,10 @@ const jsonLD = {
       wordCount: post.content.split(/\s+/).length,
       keywords: post.tags?.join(', '),
       articleSection: post.categories[0],
+      // Absolute, where production’s is the frontmatter’s relative path
       image: {
         '@type': 'ImageObject',
-        url: post.ogImage,
+        url: new URL(post.ogImage, siteMetadata.siteUrl).href,
         width: 1200,
         height: 630,
       },

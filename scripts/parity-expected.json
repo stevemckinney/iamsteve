@@ -161,5 +161,11 @@
     "node": "#already-subscribed, #subscribe-error",
     "kind": "extra",
     "reason": "The messages /api/newsletter sends a form posted without JavaScript to when it doesn’t subscribe, shown by :target"
+  },
+  {
+    "url": "/blog/*",
+    "part": "head",
+    "field": "image.url",
+    "reason": "Agreed fix: a post’s JSON-LD image URL is absolute, where production’s is the frontmatter’s relative path"
   }
 ]
