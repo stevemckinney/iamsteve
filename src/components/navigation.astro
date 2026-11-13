@@ -1,0 +1,9 @@
+---
+// The menu toggle from components/navigation.js and the sheet it opens. The
+// toggle shows below the md breakpoint, so the island hydrates only there
+import Navigation from './islands/navigation.jsx'
+
+const { pathname } = Astro.props
+---
+
+<Navigation client:media="(width < 48rem)" pathname={pathname} />
