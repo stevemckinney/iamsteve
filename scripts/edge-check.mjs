@@ -13,7 +13,8 @@
  *
  * VERCEL_BYPASS is the project’s protection bypass secret, sent to the
  * target only. --expected lists the accepted differences too. Exits 1 when
- * a difference isn’t accepted, here or in a case’s `expect`.
+ * a difference isn’t accepted, here or in a case’s `expect`, or when the
+ * target doesn’t answer what a case’s `fix` says an agreed fix gives.
  */
 import crypto from 'node:crypto'
 import pLimit from 'p-limit'
@@ -90,7 +91,6 @@ const RANKED = {
 
 const REDIRECTS = [
   '/blog/how-to-use-kerning-tracking',
-  '/blog/entry/horizontal‑scrolling‑responsive‑menu',
   '/blog/entry/horizontal-scrolling-responsive-menu-2',
   '/blog/about_version_six',
   '/blog/compass_mixins_you_should_know_about',
@@ -117,7 +117,6 @@ const REDIRECTS = [
   '/apple-touch-icon-precomposed.png',
   '/android.png',
   '/design',
-  '/blog/{site_url}',
   '/category/css/page/2',
   '/subscribe',
   '/blog/about-version-6',
@@ -246,6 +245,20 @@ const CASES = [
   })),
   // Redirects, 410s and tracking parameters
   ...REDIRECTS.map((path) => ({ path })),
+  // Agreed fixes. Production never matched these sources, as the paths
+  // arrive percent-encoded
+  {
+    path: '/blog/entry/horizontal‑scrolling‑responsive‑menu',
+    fix: {
+      status: 308,
+      location: '/blog/horizontal-scrolling-responsive-menu',
+    },
+  },
+  {
+    path: '/blog/{site_url}',
+    fix: { status: 308, location: '/blog' },
+    expect: { '*': 'A redirect, where production answers its 404 page' },
+  },
   ...GONE.map((path) => ({ path })),
   ...TRACKING.map((param) => ({
     path: `/?${param}=x`,
@@ -313,6 +326,13 @@ const results = await Promise.all(
       const differences = []
       for (const [field, read] of Object.entries(FIELDS)) {
         const value = read(ours, false) ?? null
+        if (test.fix && field in test.fix) {
+          const expected = test.fix[field]
+          if (value !== expected) {
+            differences.push({ field, value, expected, against: 'fix' })
+          }
+          continue
+        }
         const expected = read(theirs, true) ?? null
         if (value === expected) continue
         const reason =
@@ -335,8 +355,10 @@ for (const { test, differences } of results) {
   accepted += differences.filter(({ reason }) => reason).length
   if (!shown.length) continue
   console.log(label(test))
-  for (const { field, value, expected, reason } of shown) {
-    console.log(`  ${field}: ${value} (production: ${expected})`)
+  for (const { field, value, expected, reason, against } of shown) {
+    console.log(
+      `  ${field}: ${value} (${against ?? 'production'}: ${expected})`
+    )
     if (reason) console.log(`    accepted: ${reason}`)
   }
 }

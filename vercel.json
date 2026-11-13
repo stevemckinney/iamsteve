@@ -117,7 +117,7 @@
       "status": 308
     },
     {
-      "src": "^/blog/entry/horizontal‑scrolling‑responsive‑menu$",
+      "src": "^/blog/entry/horizontal%E2%80%91scrolling%E2%80%91responsive%E2%80%91menu$",
       "headers": {
         "Location": "/blog/horizontal-scrolling-responsive-menu"
       },
@@ -306,7 +306,7 @@
       "status": 308
     },
     {
-      "src": "^/blog/\\{site_url\\}$",
+      "src": "^/blog/%7Bsite_url%7D$",
       "headers": {
         "Location": "/blog"
       },
