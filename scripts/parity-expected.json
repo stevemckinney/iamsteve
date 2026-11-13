@@ -85,8 +85,9 @@
   {
     "url": "/",
     "part": "body",
-    "node": "h2#popular-posts template, h2#popular-posts [data-testid=hidden-select-container]",
-    "reason": "React Aria’s Select renders a hidden native select and a template for its popover. They arrive with the popular posts island"
+    "node": "div#popular > template[data-astro-template]",
+    "kind": "extra",
+    "reason": "The popular posts island takes each list as a slot. Astro sends the Code and All lists, which it doesn’t show first, as templates the island swaps in when they’re chosen. Production sends them in its RSC payload"
   },
   {
     "url": "/this-page-does-not-exist",

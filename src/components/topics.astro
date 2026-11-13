@@ -1,29 +1,19 @@
 ---
-// The button for the category or collection list from components/topics.js.
-// It reads as a select would: the current item, or the label. The list it
-// opens arrives with the topics island
-import { cn } from '@/lib/utils'
-import { fieldStyle } from '../lib/field-style.js'
-import Icon from './icon.astro'
+// The category or collection list from components/topics.js: a button that
+// reads as a select would, and the sheet it opens. Pages show it below the
+// md breakpoint, so the island hydrates only there
+import Topics from './islands/topics.jsx'
 
 const { items, current, label, icon, class: className } = Astro.props
-const chosen = items.find((item) => item.slug === current)
+// Only what the list shows goes into the island’s props
+const list = items.map(({ slug, title, icon }) => ({ slug, title, icon }))
 ---
 
-<button
-  type="button"
-  class={cn(fieldStyle, 'cursor-default', className)}
-  aria-haspopup="true"
-  aria-expanded="false"
-  tabindex="0"
->
-  <Icon icon={icon} size={24} variant="header" aria-hidden="true" />
-  <span class="truncate">{chosen ? chosen.title : label}</span>
-  <Icon
-    icon="angle-down"
-    size={16}
-    variant="header"
-    class="ml-auto shrink-0"
-    aria-hidden="true"
-  />
-</button>
+<Topics
+  client:media="(width < 48rem)"
+  items={list}
+  current={current}
+  label={label}
+  icon={icon}
+  className={className}
+/>

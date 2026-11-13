@@ -1,0 +1,16 @@
+---
+// The Library item in the header’s desktop nav. Its menu is an island,
+// hydrated from the md breakpoint up, where the desktop nav shows
+import LibraryMenu from './islands/library-menu.jsx'
+
+const { link } = Astro.props
+---
+
+<li class="relative -mr-1 group/library">
+  <LibraryMenu
+    client:media="(width >= 48rem)"
+    title={link.title}
+    icon={link.icon}
+    size={link.size}
+  />
+</li>

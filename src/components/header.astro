@@ -1,13 +1,15 @@
 ---
 // The site header from components/header.js: skip links, logo, desktop nav
 // with the Library menu, the mobile tab bar and the menu toggle. The
-// Library menu, search and the menu sheet become islands; until then their
-// buttons render as the server rendered them
+// Library menu and the menu sheet are islands. Search becomes one; until
+// then its buttons render as the server rendered them
 import { navigation, tabbar } from '@/content/navigation'
 import { cn } from '@/lib/utils'
 import styles from '@/components/header.module.css'
 import Icon from './icon.astro'
 import Link from './link.astro'
+import LibraryMenu from './library-menu.astro'
+import Navigation from './navigation.astro'
 import SearchTrigger from './search-trigger.astro'
 
 const { pathname } = Astro.props
@@ -100,31 +102,7 @@ const tab = cn(
         {
           navigation.map((link) =>
             link.title === 'Library' ? (
-              <li class="relative -mr-1 group/library">
-                <button
-                  type="button"
-                  class={desktopLink}
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  tabindex="0"
-                >
-                  <Icon
-                    icon={link.icon}
-                    size={link.size}
-                    class="text-current"
-                    variant="header"
-                    aria-hidden="true"
-                  />
-                  {link.title}
-                  <Icon
-                    icon="angle-down"
-                    size={16}
-                    class="text-current"
-                    variant="header"
-                    aria-hidden="true"
-                  />
-                </button>
-              </li>
+              <LibraryMenu link={link} />
             ) : (
               <li>
                 <Link
@@ -206,26 +184,6 @@ const tab = cn(
         </li>
       </ul>
     </nav>
-    <button
-      type="button"
-      data-state="closed"
-      class="toggle-nav md:hidden"
-      aria-expanded="false"
-      aria-label="Toggle navigation menu"
-      tabindex="0"
-    >
-      <div
-        class="relative before:z-1 before:-inset-y-10 before:-inset-x-4 before:absolute"
-      >
-        <span class="block w-[24px] h-[24px] relative">
-          <span class="h-[2px] w-[20px] bg-emphasis block rounded absolute"
-          ></span>
-          <span class="h-[2px] w-[16px] bg-emphasis block rounded absolute"
-          ></span>
-          <span class="h-[2px] w-[20px] bg-emphasis block rounded absolute"
-          ></span>
-        </span>
-      </div>
-    </button>
+    <Navigation pathname={pathname} />
   </div>
 </header>
