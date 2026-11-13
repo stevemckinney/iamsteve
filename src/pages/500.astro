@@ -1,0 +1,32 @@
+---
+// Production shows Next.js’s own error page. This one renders on demand,
+// so the function renders it itself: Astro fetches a prerendered error
+// page over HTTP, which fails on Vercel and leaves the 500 empty
+import Frame from '../layouts/frame.astro'
+import Link from '../components/link.astro'
+import Button from '../components/button.astro'
+
+export const prerender = false
+---
+
+<Frame variant="page" notFound metadata={{ title: 'Something went wrong' }}>
+  <div
+    class="grid grid-cols-subgrid col-container flex flex-col relative gap-8 pb-7.5"
+  >
+    <h1
+      class="col-content text-7xl font-variation-extrabold font-display text-heading"
+    >
+      500
+    </h1>
+    <p class="col-content mb-2 text-ui-body max-w-prose">
+      Something went wrong on my end while loading this page. Try again in a
+      moment, and if it keeps happening, please{' '}
+      <Link href="/contact" class="text-underline">contact me</Link>.
+    </p>
+    <Button
+      href="/"
+      theme="dandelion"
+      class="col-content max-w-max self-start flex-auto">Back to homepage</Button
+    >
+  </div>
+</Frame>
