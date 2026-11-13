@@ -7,4 +7,4 @@ import SearchField from './islands/search-field.jsx'
 const { class: className, scope } = Astro.props
 ---
 
-<SearchField client:media="(min-width: 768px)" className={className} scope={scope}><slot /></SearchField>
+<SearchField client:media="(width >= 48rem)" className={className} scope={scope}><slot /></SearchField>
