@@ -46,6 +46,16 @@ const transform = (page) =>
     })
 
 test.describe('on desktop', () => {
+  test('the button lies over the figure rather than around it', async ({
+    page,
+  }) => {
+    await page.goto(note)
+    const button = await trigger(page)
+    const figure = page.locator('figure').filter({ hasText: alt })
+    await expect(button.locator('figure')).toHaveCount(0)
+    expect(await button.boundingBox()).toEqual(await figure.boundingBox())
+  })
+
   test('the figure opens its image, and Escape or a button closes it', async ({
     page,
   }) => {

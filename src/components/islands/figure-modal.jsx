@@ -600,6 +600,8 @@ function LightboxContent({ src, alt, close }) {
   )
 }
 
+// The button lies over the figure rather than around it, as a figure
+// can’t sit in a button
 export default function FigureModal({ children, src, alt }) {
   return (
     <Locale>
@@ -608,20 +610,20 @@ export default function FigureModal({ children, src, alt }) {
           <LightboxContent src={src} alt={alt} close={close} />
         )}
       >
-        <Button
-          className="group cursor-zoom-in text-left my-4 block w-full"
-          aria-label={`Enlarge image: ${alt}`}
-        >
-          <span className="relative block">
-            {children}
+        <div className="relative text-left my-4 w-full">
+          {children}
+          <Button
+            className="group absolute inset-0 cursor-zoom-in"
+            aria-label={`Enlarge image: ${alt}`}
+          >
             <span
               aria-hidden="true"
               className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity ease-out duration-200 bg-[light-dark(theme(--color-neutral-01-50/.8),theme(--color-fern-1100/.8))] backdrop-blur-md shadow-reduced p-2 rounded-sm"
             >
               <Icon icon="enlarge" size={16} />
             </span>
-          </span>
-        </Button>
+          </Button>
+        </div>
       </Modal>
     </Locale>
   )
