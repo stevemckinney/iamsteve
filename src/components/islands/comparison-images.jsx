@@ -15,7 +15,9 @@ export default function ComparisonImages({
   ],
   contextLabel,
 }) {
-  const defaultIndex = options.findIndex((opt) => opt.default) || 0
+  // The option marked default, or the first
+  const marked = options.findIndex((opt) => opt.default)
+  const defaultIndex = marked === -1 ? 0 : marked
   const [activeIndex, setActiveIndex] = useState(defaultIndex)
 
   const handleKeyDown = (event) => {
