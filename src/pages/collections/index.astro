@@ -48,6 +48,9 @@ const items = [...collections].sort((a, b) =>
       icon="collections"
       class="md:hidden"
     />
+    <SearchField scope="collections" class="max-md:hidden mt-2"
+      >Search collections</SearchField
+    >
     <ul
       class="max-md:hidden grid grid-cols-2 gap-x-8 md:-mt-1 -mb-2 column-categories"
     >
@@ -65,9 +68,6 @@ const items = [...collections].sort((a, b) =>
         ))
       }
     </ul>
-    <SearchField scope="collections" class="max-md:hidden mt-4"
-      >Search collections</SearchField
-    >
   </Header>
   <section
     class="flex flex-col col-container md:col-start-8 md:col-end-content-end gap-y-10"

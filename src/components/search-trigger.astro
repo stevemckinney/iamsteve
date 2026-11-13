@@ -25,9 +25,15 @@ const { class: className, variant = 'desktop' } = Astro.props
   />
   {
     variant === 'desktop' && (
-      <kbd class="hidden any-pointer-fine:flex items-center font-sans gap-0.5 text-sm font-medium px-1 bg-surface-raised text-body shadow-placed rounded-xs">
-        <Icon icon="cmd" size={16} variant="none" aria-label="Command" />
-        <span class="relative top-px uppercase">K</span>
+      <kbd class="hidden any-pointer-fine:flex items-center font-sans gap-0.5 text-base/5 font-medium px-1 bg-surface-raised text-body shadow-placed rounded-xs">
+        <Icon
+          icon="cmd"
+          size={16}
+          variant="none"
+          aria-label="Command"
+          class="size-3.5"
+        />
+        <span class="uppercase">K</span>
       </kbd>
     )
   }
