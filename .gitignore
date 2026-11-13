@@ -68,3 +68,8 @@ uploads
 # Memory
 memory/
 _issues/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/

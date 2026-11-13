@@ -1,9 +1,9 @@
 /**
  * Compare each post body in the Astro build with the live site.
  *
- * Reads dist/blog/<slug>/index.html, fetches https://iamsteve.me/blog/<slug>
- * (cached in node_modules/.cache/compare-posts), and compares the children of
- * #article once both are normalised. Production wraps the MDX in the post
+ * Reads .vercel/output/static/blog/<slug>/index.html, fetches
+ * https://iamsteve.me/blog/<slug> (cached in node_modules/.cache/compare-posts),
+ * and compares the children of #article once both are normalised. Production wraps the MDX in the post
  * layout, so the comparison starts at the first node of the build’s body.
  *
  * Set aside as expected: attribute and class order, whitespace, comments,
@@ -20,7 +20,7 @@ import rehypeParse from 'rehype-parse'
 import rehypeStringify from 'rehype-stringify'
 
 const ORIGIN = 'https://iamsteve.me'
-const DIST = 'dist/blog'
+const DIST = '.vercel/output/static/blog'
 const CACHE = 'node_modules/.cache/compare-posts'
 const DROP = new Set([
   'srcSet',

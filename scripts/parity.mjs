@@ -1,9 +1,11 @@
 /**
- * Site-wide parity check: the Astro build in dist/ against production.
+ * Site-wide parity check: the Astro build in .vercel/output/static against
+ * production.
  *
  * - URLs: what production serves (its sitemap, a bounded crawl of real
  *   <a href> elements and head links, known extras, and probes for what
- *   only the build has) against the files in dist/
+ *   only the build has) against the files in the build. Pages that render
+ *   on demand go through the build’s function (scripts/serve.mjs)
  * - Head: <html lang>, title, meta, link, script, noscript and JSON-LD,
  *   compared as normalised sets without framework internals
  * - Body: the page shell region by region, normalised and aligned node by
@@ -38,7 +40,8 @@ import pLimit from 'p-limit'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const ORIGIN = 'https://iamsteve.me'
-const DIST = path.join(ROOT, 'dist')
+const OUTPUT = path.join(ROOT, '.vercel/output')
+const DIST = path.join(OUTPUT, 'static')
 const PUBLIC = path.join(ROOT, 'public')
 const CACHE = path.join(ROOT, 'node_modules/.cache/parity')
 const SNAPSHOT = path.join(CACHE, 'snapshot.json')
@@ -459,7 +462,7 @@ function sourcePattern(source) {
 
 function build() {
   if (!fs.existsSync(DIST))
-    fail('No dist/ folder: run pnpm exec astro build first')
+    fail('No .vercel/output/static: run pnpm exec astro build first')
   const rules = overrides()
   const inventory = { urls: new Map(), framework: 0, notFound: null }
   for (const file of files(DIST)) {
@@ -484,6 +487,39 @@ function build() {
     inventory.urls.set(url, { file, asset, type })
   }
   return inventory
+}
+
+// Pages that render on demand have no file in the build. The ones
+// production serves go through the build’s own function, as on Vercel, and
+// their responses are kept in the cache for the comparisons to read
+async function renderOnDemand(snapshot, inventory) {
+  const config = JSON.parse(
+    fs.readFileSync(path.join(OUTPUT, 'config.json'), 'utf8')
+  )
+  const routes = config.routes
+    .filter(({ src, dest }) => src && dest && !dest.startsWith('/'))
+    .map(({ src }) => new RegExp(src))
+  const urls = Object.entries(snapshot.urls)
+    .filter(([url, { status }]) => status === 200 && !inventory.urls.has(url))
+    .map(([url]) => url)
+    .filter((url) =>
+      routes.some((route) => route.test(new URL(url, ORIGIN).pathname))
+    )
+  if (!urls.length) return
+  const { createHandler } = await import('./serve.mjs')
+  const handle = await createHandler()
+  const folder = path.join(CACHE, 'on-demand')
+  fs.rmSync(folder, { recursive: true, force: true })
+  fs.mkdirSync(folder, { recursive: true })
+  for (const url of urls) {
+    const response = await handle(new Request(new URL(url, 'http://localhost')))
+    if (response.status !== 200) continue
+    const type = response.headers.get('content-type') ?? ''
+    const name = encodeURIComponent(url) + (isHtml(type) ? '.html' : '')
+    const file = path.join(folder, name)
+    fs.writeFileSync(file, Buffer.from(await response.arrayBuffer()))
+    inventory.urls.set(url, { file, asset: false, type, onDemand: true })
+  }
 }
 
 /* Parsing */
@@ -1729,9 +1765,8 @@ function compareUrls(snapshot, inventory, filter) {
         add('type', url, text, { live: record.type, build: built.type })
       }
     } else if (status === 404 && url === NOT_FOUND) {
-      // The 404 page itself, which the build writes as dist/404.html
-      if (!inventory.notFound)
-        add('missing', url, `missing ${url} (dist/404.html)`)
+      // The 404 page itself, which the build writes as 404.html
+      if (!inventory.notFound) add('missing', url, `missing ${url} (404.html)`)
     } else if (status === 404) {
       if (built && !built.asset) {
         add('extra', url, `extra ${url} (404 in production)`)
@@ -1769,7 +1804,7 @@ function comparePages(snapshot, inventory, options, expected, suppressed) {
     .sort(([a], [b]) => (a < b ? -1 : 1))
     .map(([url, file]) => {
       const live = load(read(url))
-      const build = load(fs.readFileSync(path.join(DIST, file), 'utf8'))
+      const build = load(fs.readFileSync(path.resolve(DIST, file), 'utf8'))
       const page = { url, emails: live.emails }
       if (options.parts.has('head')) {
         page.head = suppress(
@@ -1815,7 +1850,7 @@ function compareFiles(snapshot, inventory, filter) {
     const live = steady(url, read(url))
     const build = steady(
       url,
-      fs.readFileSync(path.join(DIST, built.file), 'utf8')
+      fs.readFileSync(path.resolve(DIST, built.file), 'utf8')
     )
     if (live === build) {
       result.identical++
@@ -2235,7 +2270,7 @@ function print(report) {
   const only = options.only ? `, URLs matching ${options.only}` : ''
   const crawled = when(snapshot.crawledAt)
   const lines = [
-    `Parity: dist/ against ${ORIGIN}${only}`,
+    `Parity: the build against ${ORIGIN}${only}`,
     `Production snapshot crawled ${crawled} (--refresh fetches it again)`,
   ]
   if (snapshot.limited) lines.push(`The crawl stopped at ${CRAWL_LIMIT} URLs`)
@@ -2334,6 +2369,7 @@ async function main() {
     .filter(([, { asset }]) => !asset)
     .map(([url]) => url)
   const snapshot = await production(options, generated)
+  await renderOnDemand(snapshot, inventory)
   const expected = loadExpected()
   const suppressed = []
   const report = { options, snapshot, inventory, expected, suppressed }

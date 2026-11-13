@@ -122,11 +122,5 @@
     "url": "/{llms.txt,api/content/home}",
     "part": "files",
     "reason": "Fixed: views are looked up by the bare slug the table keys them on. Production looks them up by the /blog/ path, which never matches, so its most viewed posts are really the oldest in file order"
-  },
-  {
-    "url": "/{api/content/,blog/}{updates,pro-dev-day,portfolio-additions,updates-and-advice,long-time-no-blog,patience-a-wordpress-tumblog-theme}{,.md}",
-    "part": "urls",
-    "kind": "missing",
-    "reason": "Fixed: the markdown of draft and closed posts isn’t served, as their pages aren’t. Production serves it"
   }
 ]
