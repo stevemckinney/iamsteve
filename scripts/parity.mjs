@@ -740,8 +740,10 @@ const isJsonLd = (node) =>
   node.tag === 'script' && node.attrs.type === 'application/ld+json'
 
 // Next’s chunks, RSC payload and React’s streaming runtime; Astro’s bundles,
-// inlined modules and island runtime; Cloudflare’s email decoder
+// inlined modules and island runtime, with the style it writes before the
+// first island; Cloudflare’s email decoder
 function isFramework(node) {
+  if (node.tag === 'style') return RUNTIME.test(textOf(node))
   if (node.tag !== 'script') return false
   if (node.attrs.src !== undefined) return FRAMEWORK_URL.test(node.attrs.src)
   return (
@@ -1014,6 +1016,7 @@ const URLS = new Set(['action', 'cite', 'href', 'poster', 'src'])
 function dropped(node) {
   const { tag, attrs } = node
   if (tag === 'script') return isJsonLd(node) || isFramework(node)
+  if (tag === 'style') return isFramework(node)
   if (tag === 'template')
     return 'data-dgst' in attrs || /^[BP]:\d+$/.test(attrs.id)
   if (tag === 'div' && 'hidden' in attrs) {
