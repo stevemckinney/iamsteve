@@ -130,7 +130,8 @@ jobs:
               .toString()
               .trim()
               .split('\n')
-              .filter(file => file.startsWith('content/blog/'))
+              // Post files only, so a folder post’s images aren’t rewritten as text
+              .filter(file => file.startsWith('content/blog/') && /\.mdx?$/.test(file))
 
             if (newFiles.length === 0 || (newFiles.length === 1 && newFiles[0] === '')) {
               console.log('No new blog posts found in this PR')
@@ -160,7 +161,7 @@ jobs:
               // Update .current-post-id with the next available ID
               fs.writeFileSync(currentIdFile, String(nextId))
               console.log(`Updated .current-post-id to ${nextId}`)
-              console.log('::set-output name=files-updated::true')
+              fs.appendFileSync(process.env.GITHUB_OUTPUT, 'files-updated=true\n')
             } else {
               console.log('No new posts processed')
             }
