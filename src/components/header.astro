@@ -1,13 +1,14 @@
 ---
 // The site header from components/header.js: skip links, logo, desktop nav
 // with the Library menu, the mobile tab bar and the menu toggle. The
-// Library menu, search and the menu sheet become islands; until then their
-// buttons render as the server rendered them
+// Library menu is an island. Search and the menu sheet become islands;
+// until then their buttons render as the server rendered them
 import { navigation, tabbar } from '@/content/navigation'
 import { cn } from '@/lib/utils'
 import styles from '@/components/header.module.css'
 import Icon from './icon.astro'
 import Link from './link.astro'
+import LibraryMenu from './library-menu.astro'
 import SearchTrigger from './search-trigger.astro'
 
 const { pathname } = Astro.props
@@ -100,31 +101,7 @@ const tab = cn(
         {
           navigation.map((link) =>
             link.title === 'Library' ? (
-              <li class="relative -mr-1 group/library">
-                <button
-                  type="button"
-                  class={desktopLink}
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  tabindex="0"
-                >
-                  <Icon
-                    icon={link.icon}
-                    size={link.size}
-                    class="text-current"
-                    variant="header"
-                    aria-hidden="true"
-                  />
-                  {link.title}
-                  <Icon
-                    icon="angle-down"
-                    size={16}
-                    class="text-current"
-                    variant="header"
-                    aria-hidden="true"
-                  />
-                </button>
-              </li>
+              <LibraryMenu link={link} />
             ) : (
               <li>
                 <Link
