@@ -174,6 +174,12 @@ test.describe('cmd+K search', () => {
       'data-focused',
       'true'
     )
+    // → reads the row from the field’s aria-activedescendant, which react-aria
+    // sets a moment after the row’s data-focused
+    await expect(field(page)).toHaveAttribute(
+      'aria-activedescendant',
+      /-option-\/collections$/
+    )
     await page.keyboard.press('ArrowRight')
     await scoped()
     await page.keyboard.press('ArrowLeft')
