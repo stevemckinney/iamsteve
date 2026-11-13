@@ -1010,10 +1010,12 @@ const FOCUSABLE = new Set(['button', 'input', 'select', 'summary', 'textarea'])
 const URLS = new Set(['action', 'cite', 'href', 'poster', 'src'])
 
 // React SSR leftovers: client-rendered Suspense markers, unresolved
-// boundaries and the empty hidden div Next streams metadata into
+// boundaries and the empty hidden div Next streams metadata into. And the
+// display: contents rule Astro writes before a page’s first island
 function dropped(node) {
   const { tag, attrs } = node
   if (tag === 'script') return isJsonLd(node) || isFramework(node)
+  if (tag === 'style') return /^astro-island,astro-slot,/.test(textOf(node))
   if (tag === 'template')
     return 'data-dgst' in attrs || /^[BP]:\d+$/.test(attrs.id)
   if (tag === 'div' && 'hidden' in attrs) {
