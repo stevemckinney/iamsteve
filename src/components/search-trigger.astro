@@ -1,41 +1,9 @@
 ---
-// The button that opens cmd+K search, as components/search.js renders it.
-// Opening the dialog arrives with the search island
-import { cn } from '@/lib/utils'
-import Icon from './icon.astro'
+// The button that opens cmd+K search, from components/search.js. It’s in
+// the header, and the desktop one owns cmd K, so both hydrate at once
+import SearchTrigger from './islands/search-trigger.jsx'
 
 const { class: className, variant = 'desktop' } = Astro.props
 ---
 
-<button
-  type="button"
-  aria-label="Search"
-  class={cn(
-    'flex items-center gap-2 cursor-default transition-opacity duration-200',
-    className
-  )}
-  tabindex="0"
->
-  <Icon
-    icon="search"
-    size={24}
-    class="text-current"
-    variant="header"
-    aria-hidden="true"
-  />
-  {
-    variant === 'desktop' && (
-      <kbd class="hidden any-pointer-fine:flex items-center font-sans gap-0.5 text-base/5 font-medium px-1 bg-surface-raised text-body shadow-placed rounded-xs">
-        <Icon
-          icon="cmd"
-          size={16}
-          variant="none"
-          aria-label="Command"
-          class="size-3.5"
-        />
-        <span class="uppercase">K</span>
-      </kbd>
-    )
-  }
-  {variant === 'tabbar' && 'Search'}
-</button>
+<SearchTrigger client:load className={className} variant={variant} />

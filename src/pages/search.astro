@@ -1,8 +1,9 @@
 ---
-// app/(page)/search/page.js as it renders without a query: the field and
-// the help text. Results for ?q= need the page rendered on demand, which
-// comes with the adapter
+// app/(page)/search/page.js, rendered on demand so ?q= gets its results.
+// The form is a plain GET, so it works without JavaScript
+import { search, typeIcon } from '@/lib/search'
 import { cn } from '@/lib/utils'
+import { buildIndex } from '../lib/search-index.js'
 import Frame from '../layouts/frame.astro'
 import PencilMono from '../components/illustration/pencil-mono.astro'
 import Header from '../components/page/header.astro'
@@ -10,12 +11,52 @@ import Column from '../components/page/column.astro'
 import Title from '../components/page/title.astro'
 import Description from '../components/page/description.astro'
 import Icon from '../components/icon.astro'
+import Link from '../components/link.astro'
 
-const metadata = {
-  title: 'Search',
-  description:
-    'Search blog posts, notes, categories and collections across iamsteve',
+export const prerender = false
+
+const RESULT_LIMIT = 40
+
+function label(type) {
+  switch (type) {
+    case 'post':
+      return 'Blog'
+    case 'note':
+      return 'Note'
+    case 'page':
+      return 'Page'
+    case 'category':
+      return 'Category'
+    case 'collection':
+      return 'Collection'
+    default:
+      return type
+  }
 }
+
+// Next.js gave a repeated q as an array, which isn’t a query
+const values = Astro.url.searchParams.getAll('q')
+const q = values.length === 1 ? values[0].trim() : ''
+const results = q
+  ? search(await buildIndex(), q, { limit: RESULT_LIMIT })
+  : []
+
+const metadata = q
+  ? {
+      title: `Search: ${q}`,
+      description: `Search results for “${q}” across blog, notes and collections`,
+      robots: { index: false, follow: true },
+    }
+  : {
+      title: 'Search',
+      description:
+        'Search blog posts, notes, categories and collections across iamsteve',
+    }
+
+Astro.response.headers.set(
+  'Cache-Control',
+  'private, no-cache, no-store, max-age=0, must-revalidate'
+)
 ---
 
 <Frame variant="page" metadata={metadata}>
@@ -53,7 +94,7 @@ const metadata = {
         id="q"
         name="q"
         type="search"
-        value=""
+        value={q}
         placeholder="Search everything…"
         autocomplete="off"
         autocorrect="off"
@@ -70,24 +111,74 @@ const metadata = {
   <div
     class="col-container md:col-content max-md:frame max-md:frame-24 max-md:px-8 max-md:py-8 flex flex-col gap-8"
   >
-    <div class="flex flex-col gap-4">
-      <p class="text-body">
-        {
-          'Type a query above to search posts, notes, categories and collections. You can also press'
-        }<kbd
-          class={cn(
-            'mx-1.5 inline-flex items-center gap-0.5 px-1.5 py-0.5',
-            'font-sans text-xs font-variation-medium uppercase',
-            'bg-surface-raised text-body shadow-placed rounded-xs'
-          )}
-          ><Icon
-            icon="cmd"
-            size={16}
-            variant="none"
-            aria-label="Command"
-          /><span class="relative top-px">K</span></kbd
-        >{'anywhere on the site to open the quick search.'}
-      </p>
-    </div>
+    {
+      q && results.length === 0 && (
+        <p class="text-body">
+          {`No results found for “${q}”. Try a different term or browse the `}
+          <Link href="/blog">blog archive</Link>.
+        </p>
+      )
+    }
+
+    {
+      q && results.length > 0 && (
+        <>
+          <p class="sr-only">
+            {`${results.length} result${results.length === 1 ? '' : 's'} for “${q}”`}
+          </p>
+          <ul class="flex flex-col gap-2 m-0 p-0 list-none">
+            {results.map((result) => (
+              <li>
+                <Link
+                  href={result.slug}
+                  class={cn(
+                    'group flex flex-col gap-1 p-3 -mx-3 rounded',
+                    'hover:bg-surface transition-colors'
+                  )}
+                >
+                  <span class="font-display font-variation-bold text-xl leading-xl lowercase text-heading group-hover:text-link">
+                    <Icon
+                      icon={typeIcon(result.type)}
+                      size={16}
+                      variant="none"
+                      aria-hidden="true"
+                      class="inline-block align-middle mr-2"
+                    />
+                    {result.title}
+                    <span class="sr-only">{`(${label(result.type)})`}</span>
+                  </span>
+                  {result.summary && (
+                    <span class="text-sm text-body">{result.summary}</span>
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+
+    {
+      !q && (
+        <div class="flex flex-col gap-4">
+          <p class="text-body">
+            {
+              'Type a query above to search posts, notes, categories and collections. You can also press'
+            }
+            <kbd
+              class={cn(
+                'mx-1.5 inline-flex items-center gap-0.5 px-1.5 py-0.5',
+                'font-sans text-xs font-variation-medium uppercase',
+                'bg-surface-raised text-body shadow-placed rounded-xs'
+              )}
+            >
+              <Icon icon="cmd" size={16} variant="none" aria-label="Command" />
+              <span class="relative top-px">K</span>
+            </kbd>
+            {'anywhere on the site to open the quick search.'}
+          </p>
+        </div>
+      )
+    }
   </div>
 </Frame>

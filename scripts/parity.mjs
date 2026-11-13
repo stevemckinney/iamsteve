@@ -275,6 +275,14 @@ function extras() {
     '/notes',
     '/thanks',
     '/components',
+    // Search results, rendered on demand: the 40-result cap, every label,
+    // nothing found, a query too short to search and one that’s trimmed
+    '/search?q=css',
+    '/search?q=notes',
+    '/search?q=motion',
+    '/search?q=qwxzv',
+    '/search?q=a',
+    '/search?q=%20css%20',
     ...Array.from({ length: 12 }, (_, index) => `/blog/page/${index + 1}`),
     ...slugs('content/categories.js').flatMap((slug) => [
       `/category/${slug}`,
@@ -1010,10 +1018,12 @@ const FOCUSABLE = new Set(['button', 'input', 'select', 'summary', 'textarea'])
 const URLS = new Set(['action', 'cite', 'href', 'poster', 'src'])
 
 // React SSR leftovers: client-rendered Suspense markers, unresolved
-// boundaries and the empty hidden div Next streams metadata into
+// boundaries and the empty hidden div Next streams metadata into. And the
+// display: contents rule Astro writes before a page’s first island
 function dropped(node) {
   const { tag, attrs } = node
   if (tag === 'script') return isJsonLd(node) || isFramework(node)
+  if (tag === 'style') return /^astro-island,astro-slot,/.test(textOf(node))
   if (tag === 'template')
     return 'data-dgst' in attrs || /^[BP]:\d+$/.test(attrs.id)
   if (tag === 'div' && 'hidden' in attrs) {

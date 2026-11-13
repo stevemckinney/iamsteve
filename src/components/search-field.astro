@@ -1,19 +1,10 @@
 ---
-// The button dressed as a search field from components/search-field.js, as
-// the server rendered it. Opening search in the field’s `scope` arrives
-// with the search island
-import { cn } from '@/lib/utils'
-import { fieldStyle } from '../lib/field-style.js'
-import Icon from './icon.astro'
+// The button dressed as a search field from components/search-field.js,
+// opening search in the field’s `scope`. Both pages that use it hide it
+// below md, so it hydrates from md up
+import SearchField from './islands/search-field.jsx'
 
-const { class: className } = Astro.props
+const { class: className, scope } = Astro.props
 ---
 
-<button
-  type="button"
-  class={cn(fieldStyle, 'cursor-default', className)}
-  tabindex="0"
->
-  <Icon icon="search" size={24} variant="header" aria-hidden="true" />
-  <slot />
-</button>
+<SearchField client:media="(min-width: 768px)" className={className} scope={scope}><slot /></SearchField>
