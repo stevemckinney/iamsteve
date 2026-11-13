@@ -39,10 +39,7 @@ const views = showViews ? ((await pageViews()).get(cleanSlug) ?? 0) : null
 
 <LayoutFrame styles={styles}>
   <Fragment slot="aside">
-    <section
-      class="flex flex-col gap-2 relative"
-      aria-labelledby="aside-contents"
-    >
+    <section class="flex flex-col gap-2 relative">
       <div class="lg:hidden">
         <TableOfContents headings={post.headings} media="(max-width:1023px)" />
       </div>

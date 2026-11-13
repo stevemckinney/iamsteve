@@ -122,5 +122,13 @@
     "url": "/{llms.txt,api/content/home}",
     "part": "files",
     "reason": "Fixed: views are looked up by the bare slug the table keys them on. Production looks them up by the /blog/ path, which never matches, so its most viewed posts are really the oldest in file order"
+  },
+  {
+    "url": "/blog/**",
+    "part": "body",
+    "node": "[aria-labelledby=\"aside-contents\"]",
+    "attribute": "aria-labelledby",
+    "kind": "missing",
+    "reason": "Fixed: the contents section and its nav were labelled by aside-contents, an id nothing has. The nav is labelled by its Contents toggle now, through a generated id parity drops, and the section loses the attribute"
   }
 ]

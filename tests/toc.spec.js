@@ -38,6 +38,13 @@ test.describe('on desktop', () => {
     await expect(content).not.toHaveAttribute('inert')
   })
 
+  test('the toggle names the list it opens', async ({ page }) => {
+    await page.goto(post)
+    await expect(
+      desktopToc(page).getByRole('navigation', { name: 'Contents' })
+    ).toBeVisible()
+  })
+
   test('the section being read is marked', async ({ page }) => {
     await page.goto(post)
     const { content } = await parts(desktopToc(page))

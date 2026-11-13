@@ -6,6 +6,7 @@ import {
   useEffect,
   useRef,
   useCallback,
+  useId,
   useSyncExternalStore,
 } from 'react'
 import { cn } from '@/lib/utils'
@@ -113,7 +114,7 @@ const linkBaseClasses =
 const blurMask =
   'linear-gradient(to top, #000 18%, rgb(0 0 0 /.99) 30%, rgb(0 0 0 /.96) 40%, rgb(0 0 0 /.92) 48%, rgb(0 0 0 /.86) 56%, rgb(0 0 0 /.79) 62%, rgb(0 0 0 /.71) 67%, rgb(0 0 0 /.63) 72%,rgb(0 0 0 /.54) 75.05%, rgb(0 0 0 /.45) 78%, rgb(0 0 0 /.36) 81%, rgb(0 0 0 /.27) 84%, rgb(0 0 0 /.19) 87%, rgb(0 0 0 /.12) 91%, rgb(0 0 0 /.05) 95%, transparent 100%)'
 
-function HeadingList({ nestedHeadings, headings, toggleOpen }) {
+function HeadingList({ nestedHeadings, headings, toggleOpen, labelId }) {
   const [activeId, setActiveId] = useState('')
   const isMobile = useMediaQuery('(max-width: 1023px)')
 
@@ -190,7 +191,7 @@ function HeadingList({ nestedHeadings, headings, toggleOpen }) {
   }
 
   return (
-    <nav aria-labelledby="aside-contents">
+    <nav aria-labelledby={labelId}>
       {nestedHeadings.length > 0 ? renderHeadings(nestedHeadings) : null}
     </nav>
   )
@@ -201,6 +202,7 @@ function Collapsible({ nestedHeadings, headings, open = false }) {
   const contentRef = useRef(null)
   const wrapperRef = useRef(null)
   const isSticky = useStickyScroll(wrapperRef)
+  const labelId = useId()
 
   const toggleOpen = useCallback(() => {
     setIsOpen((prev) => {
@@ -235,6 +237,7 @@ function Collapsible({ nestedHeadings, headings, open = false }) {
         style={{ '--blur-mask': blurMask }}
       >
         <button
+          id={labelId}
           onClick={toggleOpen}
           className={toggleButtonClasses}
           aria-expanded={isOpen}
@@ -262,6 +265,7 @@ function Collapsible({ nestedHeadings, headings, open = false }) {
             nestedHeadings={nestedHeadings}
             headings={headings}
             toggleOpen={toggleOpen}
+            labelId={labelId}
           />
         </div>
       </div>
