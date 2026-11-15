@@ -75,6 +75,7 @@
     "@mdx-js/react": "^3.1.1",
     "@next/bundle-analyzer": "^16.2.0",
     "@next/mdx": "^16.2.0",
+    "@parchment/ui": "github:parchmentdesignstudio/loupe#ui@0.8.0",
     "@shikijs/rehype": "^4.0.0",
     "@shikijs/transformers": "^4.0.0",
     "@supabase/ssr": "^0.5.2",

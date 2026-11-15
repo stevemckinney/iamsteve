@@ -6,16 +6,40 @@
  */
 
 /**
- * Dual theme toggle
+ * Token colours
  *
- * @shikijs/rehype with dual themes sets inline styles on each span:
- *   style="--shiki-light:#hex; --shiki-dark:#hex"
- *
- * We use light-dark() to select the correct value based on colour scheme.
+ * Loupe's Shiki theme (@parchment/ui/shiki) colours each token with a role,
+ * as style="color:var(--color-code-keyword)", so the colours are set here.
  */
-.shiki,
-.shiki span:not([data-line-number]) {
-  color: light-dark(var(--shiki-light), var(--shiki-dark));
+:root {
+  --color-code-ground: light-dark(
+    var(--color-neutral-01-50),
+    var(--color-fern-1200)
+  );
+  --color-code-text: light-dark(var(--color-fern-900), var(--color-fern-200));
+  --color-code-comment: light-dark(
+    var(--color-neutral-02-400),
+    var(--color-neutral-03-400)
+  );
+  --color-code-keyword: light-dark(
+    var(--color-lavender-700),
+    var(--color-lavender-300)
+  );
+  --color-code-string: light-dark(var(--color-rio-600), var(--color-rio-200));
+  --color-code-constant: light-dark(var(--color-rio-600), var(--color-rio-200));
+  --color-code-function: light-dark(
+    var(--color-moss-700),
+    var(--color-moss-300)
+  );
+  --color-code-type: light-dark(
+    var(--color-dandelion-700),
+    var(--color-dandelion-300)
+  );
+  --color-code-builtin: light-dark(
+    var(--color-cornflour-700),
+    var(--color-cornflour-300)
+  );
+  --color-code-tag: var(--color-code-text);
 }
 
 /**
