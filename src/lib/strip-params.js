@@ -4,7 +4,13 @@
 // Vercel copies the request’s query onto a route’s Location, so the
 // redirect would loop. The routes send those requests to a small function
 // instead, and this integration writes it after each build, with the
-// parameters the routes name
+// parameters the routes name.
+//
+// Vercel’s CDN caches a function’s response on its Cache-Control, and then
+// keeps s-maxage and stale-while-revalidate to itself. proxy.js’s 301s
+// weren’t cached, so they went out with vercel.json’s Cache-Control whole.
+// Given a Vercel-CDN-Cache-Control, the CDN caches on that instead (for as
+// long as vercel.json says) and leaves Cache-Control alone
 import fs from 'node:fs'
 
 const source = (params) => `const params = ${JSON.stringify(params)}
@@ -15,7 +21,10 @@ export default {
     for (const param of params) url.searchParams.delete(param)
     return new Response(null, {
       status: 301,
-      headers: { location: url.pathname + url.search },
+      headers: {
+        location: url.pathname + url.search,
+        'vercel-cdn-cache-control': 'max-age=3600, stale-while-revalidate=60',
+      },
     })
   },
 }

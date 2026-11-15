@@ -86,15 +86,20 @@ function fileResponse(file, status, headers) {
 
 // A function’s own headers win over route headers. Vercel’s CDN keeps
 // s-maxage and stale-while-revalidate to itself when it caches a function’s
-// response, as it did production’s GET 200s and 404s. proxy.js’s 301s and
-// the OPTIONS 204 kept them, so whether _strip’s 301s do is for a preview
+// response on Cache-Control, as it did production’s GET 200s and 404s and
+// a preview’s 301s from _strip. Given a Vercel-CDN-Cache-Control, it caches
+// on that, which no one else sees, and leaves Cache-Control alone
 function withHeaders(response, headers, method) {
   const out = new Response(response.body, response)
   for (const [key, value] of Object.entries(headers)) {
     if (!out.headers.has(key)) out.headers.set(key, value)
   }
+  const cdn = out.headers.has('vercel-cdn-cache-control')
+  out.headers.delete('vercel-cdn-cache-control')
   const cached =
-    ['GET', 'HEAD'].includes(method) && [200, 404].includes(out.status)
+    !cdn &&
+    ['GET', 'HEAD'].includes(method) &&
+    [200, 301, 404].includes(out.status)
   const cache = out.headers.get('cache-control')
   if (cached && cache) {
     const kept = cache

@@ -314,7 +314,7 @@ URLs have no trailing slash (`/blog/`, `/about/`, `/feed.xml/` and `/blog/page/2
 
     `'unsafe-eval'` exists for client-side note MDX; once notes render on the server it may go (verify islands first).
 
-  - Effective cache today: `public, max-age=0, s-maxage=3600, stale-while-revalidate=60` on everything prerendered (it overrides the configured immutable image and 1-hour feed rules). Decide effective values or configured intent. `/_astro/*` is immutable from the adapter. `vercel.json` keeps the effective values. On a function’s cached response, Vercel’s CDN keeps `s-maxage` and `stale-while-revalidate` to itself, as it does today.
+  - Effective cache today: `public, max-age=0, s-maxage=3600, stale-while-revalidate=60` on everything prerendered (it overrides the configured immutable image and 1-hour feed rules). Decide effective values or configured intent. `/_astro/*` is immutable from the adapter. `vercel.json` keeps the effective values. On a function’s cached response, Vercel’s CDN keeps `s-maxage` and `stale-while-revalidate` to itself, as it does today. `_strip`’s 301s give the CDN a `Vercel-CDN-Cache-Control` of their own, so they keep the whole header, as `proxy.js`’s did.
   - `/api/views/*`: `no-store`. `/.well-known/*`: ACAO `*`. Agent skills `.md`: `text/markdown; charset=utf-8`.
   - Content-Type for extensionless prerendered endpoints (`/api/content/*`, `/api/search`, `/.well-known/api-catalog`).
 
