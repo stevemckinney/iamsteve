@@ -406,6 +406,7 @@
     {
       "src": "^/(?:fonts/InterVariable\\.woff2|cdn-cgi/l/email-protection|blog/:splat|blog/some-post|portfolio|2|mo|\\*\\*|Users/.*)$",
       "caseSensitive": true,
+      "dest": "/410",
       "status": 410
     },
     {
