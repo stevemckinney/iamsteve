@@ -10,9 +10,12 @@
  *
  *   node scripts/edge-check.mjs http://localhost:4323 [--expected]
  *   VERCEL_BYPASS=… node scripts/edge-check.mjs https://….vercel.app
+ *   VERCEL_SHARE=<share link> node scripts/edge-check.mjs https://….vercel.app
  *
- * VERCEL_BYPASS is the project’s protection bypass secret, sent to the
- * target only. --expected lists the accepted differences too. Exits 1 when
+ * A preview sits behind Vercel Authentication. VERCEL_BYPASS is the
+ * project’s protection bypass secret. VERCEL_SHARE is a share link to the
+ * deployment, opened once for the cookie it sets. Either goes to the target
+ * only. --expected lists the accepted differences too. Exits 1 when
  * a difference isn’t accepted, here or in a case’s `expect`, or when the
  * target doesn’t answer what a case’s `fix` says an agreed fix gives.
  */
@@ -311,16 +314,34 @@ if (!target) {
   process.exit(1)
 }
 const listExpected = process.argv.includes('--expected')
-const bypass = process.env.VERCEL_BYPASS
-  ? { 'x-vercel-protection-bypass': process.env.VERCEL_BYPASS }
-  : {}
+const access = await accessHeaders()
+
+// What gets a request past Vercel Authentication on a preview
+async function accessHeaders() {
+  const { VERCEL_BYPASS, VERCEL_SHARE } = process.env
+  if (VERCEL_BYPASS) return { 'x-vercel-protection-bypass': VERCEL_BYPASS }
+  if (!VERCEL_SHARE) return {}
+  // A share link redirects and sets the auth cookie
+  const response = await fetch(VERCEL_SHARE, { redirect: 'manual' })
+  const cookie = response.headers
+    .getSetCookie()
+    .map((value) => value.split(';')[0])
+    .join('; ')
+  if (!cookie) {
+    console.error(
+      `The share link set no cookie (${response.status}). Has it expired?`
+    )
+    process.exit(1)
+  }
+  return { cookie }
+}
 
 const limit = pLimit(6)
 const results = await Promise.all(
   CASES.map((test) =>
     limit(async () => {
       const [ours, theirs] = await Promise.all([
-        snapshot(target, test, bypass),
+        snapshot(target, test, access),
         snapshot(PRODUCTION, test),
       ])
       const differences = []
