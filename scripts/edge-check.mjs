@@ -92,6 +92,10 @@ const RANKED = {
   body: 'Popular follows real view counts (77ba82b2) when the build has them',
 }
 
+const CASED = {
+  '*': 'Pages are files now, and Vercel matches their paths by case. Next.js’s dynamic routes took any case of their prefix',
+}
+
 const REDIRECTS = [
   '/blog/how-to-use-kerning-tracking',
   '/blog/entry/horizontal-scrolling-responsive-menu-2',
@@ -232,7 +236,7 @@ const CASES = [
   markdown(`/blog/${POST}`, 'application/text/markdown'),
   markdown(`/blog/${POST}.md`, 'text/html'),
   markdown(`/notes/${NOTE}`),
-  markdown(`/BLOG/${POST}`),
+  { ...markdown(`/BLOG/${POST}`), expect: CASED },
   {
     ...markdown('/blog/nope'),
     expect: {
@@ -246,6 +250,9 @@ const CASES = [
       '*': 'Production answers a 404 in markdown, as nothing serves it. Here it’s the page',
     },
   })),
+  // Case
+  { path: '/ABOUT' },
+  { path: `/Blog/${POST}`, expect: CASED },
   // Redirects, 410s and tracking parameters
   ...REDIRECTS.map((path) => ({ path })),
   // Agreed fixes. Production never matched these sources, as the paths

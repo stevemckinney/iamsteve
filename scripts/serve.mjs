@@ -55,7 +55,8 @@ const TYPES = {
   pdf: 'application/pdf',
 }
 
-// A file in the static output for a path, as /about finds about/index.html
+// A file in the static output for a path, as /about finds about/index.html.
+// Vercel matches the case exactly, where macOS would find /ABOUT too
 function staticFile(pathname) {
   let base
   try {
@@ -65,7 +66,9 @@ function staticFile(pathname) {
   }
   if (base !== STATIC && !base.startsWith(STATIC + path.sep)) return null
   for (const file of [base, path.join(base, 'index.html')]) {
-    if (fs.statSync(file, { throwIfNoEntry: false })?.isFile()) return file
+    if (!fs.statSync(file, { throwIfNoEntry: false })?.isFile()) continue
+    const exact = path.sep + path.relative(STATIC, file)
+    if (fs.realpathSync.native(file).endsWith(exact)) return file
   }
   return null
 }
