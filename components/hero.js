@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Icon from '@/components/icon'
 import Image from '@/components/image'
+import HeroScene from '@/components/hero-scene'
 import {
   Sharpener,
   Star,
@@ -128,63 +129,78 @@ export default function Hero() {
           className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
         />
         <PencilMono
+          data-model="pencil-mono"
           width={962}
           height={46}
           className={`max-lg:hidden max-w-[initial] lg:absolute right-[calc(100%-175px)] bottom-40.5 drop-shadow-placed`}
         />
         <RulerMono
+          data-model="ruler-mono"
           width={744}
           height={122}
           className={`max-lg:hidden max-w-[initial] lg:absolute left-[calc(100%-111px)] bottom-70 drop-shadow-placed`}
         />
         <Type
+          data-model="type"
           width={32}
           height={32}
           className={`max-lg:hidden absolute max-w-[initial] top-[1.6rem] left-[13.275rem] drop-shadow-placed`}
         />
         <Terminal
+          data-model="terminal"
           className={`lg:absolute max-w-[initial] top-7.5 right-[12.525rem] drop-shadow-placed flex-[0_0_auto]`}
         />
         <Pen
+          data-model="pen"
           className={`lg:absolute max-w-[initial] top-[.625rem] left-87 drop-shadow-placed flex-[0_0_auto]`}
         />
         <Pencil
           className={`lg:hidden max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
         />
         <Sharpener
+          data-model="sharpener"
           className={`lg:absolute top-[-4.35rem] left-[3.425rem] lg:rotate-15 max-w-[initial] drop-shadow-placed flex-[0_0_auto]`}
         />
         <Star
+          data-model="star"
           className={`lg:absolute max-w-[initial] bottom-9 left-[5.95rem] drop-shadow-placed flex-[0_0_auto]`}
         />
         <Sticky
+          data-model="sticky"
           className={`lg:absolute max-w-[initial] top-[3.4rem] right-[3.525rem] lg:rotate-[-15deg] drop-shadow-placed flex-[0_0_auto]`}
         />
         <Safari
+          data-model="safari"
           className={`lg:absolute max-w-[initial] top-[5.35rem] left-[12.95rem] drop-shadow-placed flex-[0_0_auto]`}
         />
         <Cursor
+          data-model="cursor"
           width={32}
           height={32}
           className={`max-lg:hidden absolute max-w-[initial] bottom-7.5 left-[16.2rem] drop-shadow-placed flex-[0_0_auto]`}
         />
         <Colour
+          data-model="colour"
           width={32}
           height={32}
           className={`max-lg:hidden absolute max-w-[initial] top-34.5 left-[20.825rem] drop-shadow-placed flex-[0_0_auto]`}
         />
         <Component
+          data-model="component"
           width={32}
           height={32}
           className={`max-lg:hidden absolute max-w-[initial] bottom-[4.235rem] right-[15.675rem] drop-shadow-placed flex-[0_0_auto]`}
         />
         <Figma
+          data-model="figma"
           className={`lg:absolute max-w-[initial] bottom-8.5 right-[19.05rem] drop-shadow-placed flex-[0_0_auto]`}
         />
         <Pencil
+          data-model="pencil"
           className={`lg:absolute max-w-[initial] bottom-[-.625rem] right-[7.45rem] drop-shadow-placed flex-[0_0_auto]`}
         />
         <Brush
+          data-model="brush"
           width={32}
           height={32}
           className={`max-lg:hidden absolute max-w-[initial] bottom-14.5 right-12 drop-shadow-placed`}
@@ -202,6 +218,7 @@ export default function Hero() {
           className={`max-w-[initial] lg:hidden drop-shadow-placed flex-[0_0_auto]`}
         />
       </div>
+      <HeroScene />
     </section>
   )
 }
