@@ -6,6 +6,10 @@
 @import '../css/prose.css' layer(base);
 @import '../css/shiki.css' layer(base);
 
+/* Tailwind skips gitignored files, and .gitignore hides new notes. A bare
+   folder here would still be skipped, so the pattern names the file type */
+@source '../content/notes/**/*.md';
+
 @layer base {
   :root {
     scrollbar-width: thin;

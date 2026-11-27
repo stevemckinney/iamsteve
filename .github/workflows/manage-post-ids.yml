@@ -31,49 +31,6 @@ jobs:
           const path = require('path')
           const { execSync } = require('child_process')
           
-          function findPostFiles(dir) {
-            let results = []
-            const items = fs.readdirSync(dir)
-          
-            items.forEach(item => {
-              const fullPath = path.join(dir, item)
-              const stat = fs.statSync(fullPath)
-          
-              if (stat.isDirectory()) {
-                if (item.match(/^\d{4}-/) || fs.existsSync(path.join(fullPath, 'index.md')) || fs.existsSync(path.join(fullPath, 'index.mdx'))) {
-                  const indexFile = fs.existsSync(path.join(fullPath, 'index.mdx'))
-                    ? path.join(fullPath, 'index.mdx')
-                    : path.join(fullPath, 'index.md')
-          
-                  if (fs.existsSync(indexFile)) {
-                    results.push(indexFile)
-                  }
-                } else {
-                  results = results.concat(findPostFiles(fullPath))
-                }
-              } else if (item.match(/^\d{4}-.*\.(md|mdx)$/)) {
-                results.push(fullPath)
-              }
-            })
-          
-            return results
-          }
-          
-          function getPostId(filePath) {
-            const content = fs.readFileSync(filePath, 'utf8')
-            const parentDir = path.dirname(filePath)
-            const parentDirName = path.basename(parentDir)
-            const fileName = path.basename(filePath)
-          
-            const idMatch = parentDirName.match(/^(\d{4})-/) || fileName.match(/^(\d{4})-/)
-            const fileId = idMatch ? parseInt(idMatch[1]) : 0
-          
-            const frontmatterMatch = content.match(/id:\s*(\d+)/)
-            const frontmatterId = frontmatterMatch ? parseInt(frontmatterMatch[1]) : 0
-          
-            return Math.max(fileId, frontmatterId)
-          }
-          
           function updatePostId(filePath, newId) {
             const paddedId = String(newId).padStart(4, '0')
             const dir = path.dirname(filePath)
@@ -108,29 +65,28 @@ jobs:
           }
           
           try {
-            const blogDir = path.join(process.cwd(), 'content/blog')
             const currentIdFile = path.join(process.cwd(), '.current-post-id')
 
-            // Get next ID from .current-post-id file
-            let nextId = 0
-            if (fs.existsSync(currentIdFile)) {
-              const idContent = fs.readFileSync(currentIdFile, 'utf8').trim()
-              nextId = parseInt(idContent) || 0
-              console.log(`Starting from ID ${nextId + 1} (from .current-post-id)`)
-            } else {
-              // Fallback: find highest ID if .current-post-id doesn't exist
-              const existingPosts = findPostFiles(blogDir)
-              const existingIds = existingPosts.map(file => getPostId(file))
-              nextId = Math.max(0, ...existingIds)
-              console.log(`No .current-post-id found, starting from highest ID ${nextId + 1}`)
-            }
+            // Count from main, never this branch. The branch's copy already has
+            // this PR's bump, so reading it renumbered the post on every push.
+            // The highest post on main counts too, as the file has fallen behind.
+            const mainIds = execSync('git ls-tree -r --name-only origin/main -- content/blog')
+              .toString()
+              .split('\n')
+              .map(file => parseInt((file.match(/^content\/blog\/(\d{4})-/) || [])[1]) || 0)
+            let nextId = Math.max(
+              parseInt(execSync('git show origin/main:.current-post-id').toString()) || 0,
+              ...mainIds
+            )
+            console.log(`Starting from ID ${nextId + 1}, one past the highest on main`)
 
-            // Get only NEW files added in the PR (not modified files)
+            // Get only NEW posts added in the PR: not modified files, and not
+            // images, which a text rewrite would corrupt
             const newFiles = execSync('git diff --diff-filter=A --name-only origin/main...HEAD')
               .toString()
               .trim()
               .split('\n')
-              .filter(file => file.startsWith('content/blog/'))
+              .filter(file => file.startsWith('content/blog/') && /\.mdx?$/.test(file))
 
             if (newFiles.length === 0 || (newFiles.length === 1 && newFiles[0] === '')) {
               console.log('No new blog posts found in this PR')
@@ -158,9 +114,8 @@ jobs:
 
             if (updatedFiles) {
               // Update .current-post-id with the next available ID
-              fs.writeFileSync(currentIdFile, String(nextId))
+              fs.writeFileSync(currentIdFile, `${nextId}\n`)
               console.log(`Updated .current-post-id to ${nextId}`)
-              console.log('::set-output name=files-updated::true')
             } else {
               console.log('No new posts processed')
             }
@@ -171,14 +126,16 @@ jobs:
           EOF
 
       - name: Run post ID management
-        id: update-ids
         run: node manage-post-ids.js
 
       - name: Commit changes if needed
-        if: steps.update-ids.outputs.files-updated == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add content/blog/ .current-post-id
-          git commit -m "Assign IDs to new blog posts"
-          git push
+          if git diff --cached --quiet; then
+            echo "No ID changes"
+          else
+            git commit -m "Assign IDs to new blog posts"
+            git push
+          fi

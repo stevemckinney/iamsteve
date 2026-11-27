@@ -64,3 +64,9 @@ uploads
 # Memory
 memory/
 _issues/
+
+# Notes: new files here stay out of git unless added by name with -f, as
+# /publish does. A bulk commit once swept in a private document that iA
+# Writer had saved here. Notes already tracked aren’t affected, and
+# app/global.css points Tailwind back at them.
+/content/notes/*

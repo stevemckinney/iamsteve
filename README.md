@@ -26,24 +26,31 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 <details>
 <summary>How to create and manage blog posts</summary>
 
+### Drafts
+
+Drafts live on the `drafts` branch, which holds nothing but drafts and never merges into `main`. Notes go in `notes/`, and posts in `posts/` with their images in `posts/images/`. Anything there is public on GitHub, though not on the site, and Vercel doesn’t build the branch.
+
+On the Mac, the branch is checked out at `~/Sites/iamsteve-drafts`. To set it up again:
+
+```bash
+git clone --branch drafts --single-branch git@github.com:stevemckinney/iamsteve.git ~/Sites/iamsteve-drafts
+```
+
+Write in iA Writer on either device, then commit and push as usual.
+
 ### Starting a new post
 
-1. Create a new branch:
+Ask Claude to start one, or run the skill with a title:
 
-```bash
-git checkout -b post/your-post-name
+```
+/new-post Your post title
 ```
 
-2. Generate the post:
+It writes the draft into `~/Sites/iamsteve-drafts/posts/` with the next post ID and `status: draft`. Notes work the same way, with `/new-note`. To preview a post, ask Claude: `pnpm dev` only shows drafts from `content/blog/`, so it copies the draft in and clears it away after.
 
-```bash
-node ./scripts/compose.js
-```
+When it’s ready, say publish (or run `/publish`). Claude takes the version on GitHub, asks for anything missing, and sets the status (`open` for a post, `published` for a note). Then it merges it into `main` through a pull request of its own, and takes the draft off the `drafts` branch.
 
-3. Follow the prompts for:
-   - Post title
-   - File extension (md or mdx)
-   - Post status (open, draft, closed)
+Git ignores new files in `content/notes/` until `/publish` adds them, so a stray document saved there can’t be committed by accident.
 
 ### Post structure
 
@@ -67,9 +74,8 @@ content/blog/0177-your-post-title/
 ### Post id system
 
 - IDs are automatically managed:
-  - `compose.js` scans existing posts to assign the next available ID
+  - `/new-post` takes the next ID after the highest on `main` and in the drafts, and `/publish` checks it again
   - GitHub Actions handle ID conflicts during pull requests
-  - Pre-merge-commit hook ensures ID uniqueness when merging
 
 ### Publishing workflow
 
