@@ -1,1 +1,8 @@
+# Only drafts belong on this branch, so ignore everything else. A site
+# checkout switched to drafts then can’t commit .env.local or node_modules.
+/*
+!/.gitignore
+!/vercel.json
+!/notes/
+!/posts/
 .DS_Store
