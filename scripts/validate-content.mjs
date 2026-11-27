@@ -104,7 +104,7 @@ if (failed) {
     '\nThe build reads frontmatter with these same rules, so this would fail on deploy.'
   )
   console.error(
-    'Add the missing fields, or scaffold with `pnpm note`/`pnpm post`.\n'
+    'Add the missing fields, or scaffold with the /new-note or /new-post skill.\n'
   )
   process.exit(1)
 }

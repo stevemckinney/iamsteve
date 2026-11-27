@@ -13,8 +13,6 @@
     "icons-24": "create-react-icons -s 'public/icon/24/**.svg' -d 'components/icon/24' -t 'lib/icon-24.ejs'",
     "sourcemap": "NODE_OPTIONS=--enable-source-maps next build",
     "analyze": "cross-env ANALYZE=true next build",
-    "post": "node ./scripts/compose.js",
-    "note": "node ./scripts/compose-note.js",
     "build": "pnpm lint && next build",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:links": "node scripts/validate-collection-links.js",
